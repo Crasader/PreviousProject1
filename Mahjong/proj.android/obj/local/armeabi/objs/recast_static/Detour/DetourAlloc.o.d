@@ -1,5 +1,5 @@
 obj/local/armeabi/objs/recast_static/Detour/DetourAlloc.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/Detour/DetourAlloc.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/Detour/DetourAlloc.cpp \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdlib.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -21,7 +21,7 @@ obj/local/armeabi/objs/recast_static/Detour/DetourAlloc.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/machine/kernel.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/sysmacros.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/Detour/DetourAlloc.h
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/Detour/DetourAlloc.h
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdlib.h:
 
@@ -65,4 +65,4 @@ obj/local/armeabi/objs/recast_static/Detour/DetourAlloc.o: \
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/Detour/DetourAlloc.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/Detour/DetourAlloc.h:

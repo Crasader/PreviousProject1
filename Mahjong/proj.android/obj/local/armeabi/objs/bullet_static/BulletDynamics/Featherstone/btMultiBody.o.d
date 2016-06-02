@@ -1,7 +1,7 @@
 obj/local/armeabi/objs/bullet_static/BulletDynamics/Featherstone/btMultiBody.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBody.cpp \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBody.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBody.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBody.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -32,30 +32,30 @@ obj/local/armeabi/objs/bullet_static/BulletDynamics/Featherstone/btMultiBody.o: 
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/strings.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btVector3.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMinMax.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuaternion.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btVector3.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuadWord.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMatrix3x3.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuaternion.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btVector3.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMinMax.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuaternion.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btVector3.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuadWord.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMatrix3x3.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuaternion.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedObjectArray.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedObjectArray.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/new \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBodyLink.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/BulletCollision//CollisionDispatch/btCollisionObject.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btTransform.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMatrix3x3.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMotionState.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btTransform.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBodyLink.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/BulletCollision//CollisionDispatch/btCollisionObject.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btTransform.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMatrix3x3.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMotionState.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btTransform.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBody.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBody.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h:
 
@@ -117,42 +117,42 @@ obj/local/armeabi/objs/bullet_static/BulletDynamics/Featherstone/btMultiBody.o: 
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btVector3.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btVector3.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMinMax.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMinMax.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuaternion.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuaternion.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btVector3.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btVector3.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuadWord.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuadWord.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMatrix3x3.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMatrix3x3.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuaternion.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btQuaternion.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedObjectArray.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedObjectArray.h:
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/new:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBodyLink.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBodyLink.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/BulletCollision//CollisionDispatch/btCollisionObject.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/BulletCollision//CollisionDispatch/btCollisionObject.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btTransform.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btTransform.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMatrix3x3.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMatrix3x3.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMotionState.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btMotionState.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btTransform.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btTransform.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h:

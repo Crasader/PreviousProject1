@@ -1,5 +1,5 @@
 obj/local/armeabi/objs/cocos2dx_internal_static/base/base64.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/base64.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/base64.cpp \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -22,12 +22,12 @@ obj/local/armeabi/objs/cocos2dx_internal_static/base/base64.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/alloca.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/strings.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/base64.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/base64.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/android/log.h
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h:
@@ -74,16 +74,16 @@ obj/local/armeabi/objs/cocos2dx_internal_static/base/base64.o: \
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/base64.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/base64.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/android/log.h:

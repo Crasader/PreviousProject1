@@ -1,6 +1,6 @@
 obj/local/armeabi/objs/bullet_static/BulletDynamics/MLCPSolvers/btDantzigLCP.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/MLCPSolvers/btDantzigLCP.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/MLCPSolvers/btDantzigLCP.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdlib.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -24,7 +24,7 @@ obj/local/armeabi/objs/bullet_static/BulletDynamics/MLCPSolvers/btDantzigLCP.o: 
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/limits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/limits.h \
@@ -33,12 +33,12 @@ obj/local/armeabi/objs/bullet_static/BulletDynamics/MLCPSolvers/btDantzigLCP.o: 
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/machine/limits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/syslimits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/asm/page.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedObjectArray.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedObjectArray.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/new
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/MLCPSolvers/btDantzigLCP.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletDynamics/MLCPSolvers/btDantzigLCP.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdlib.h:
 
@@ -86,7 +86,7 @@ obj/local/armeabi/objs/bullet_static/BulletDynamics/MLCPSolvers/btDantzigLCP.o: 
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h:
 
@@ -104,10 +104,10 @@ obj/local/armeabi/objs/bullet_static/BulletDynamics/MLCPSolvers/btDantzigLCP.o: 
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/asm/page.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedObjectArray.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedObjectArray.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h:
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/new:

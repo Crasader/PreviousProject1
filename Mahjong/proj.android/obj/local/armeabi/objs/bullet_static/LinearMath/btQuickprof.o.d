@@ -1,6 +1,6 @@
 obj/local/armeabi/objs/bullet_static/LinearMath/btQuickprof.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btQuickprof.cpp \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btQuickprof.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btQuickprof.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btQuickprof.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -17,7 +17,7 @@ obj/local/armeabi/objs/bullet_static/LinearMath/btQuickprof.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/linux/types.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/machine/kernel.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/sysmacros.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btScalar.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btScalar.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/limits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/limits.h \
@@ -33,12 +33,12 @@ obj/local/armeabi/objs/bullet_static/LinearMath/btQuickprof.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/strings.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btAlignedAllocator.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btAlignedAllocator.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/new \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/time.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/linux/time.h
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btQuickprof.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btQuickprof.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h:
 
@@ -72,7 +72,7 @@ obj/local/armeabi/objs/bullet_static/LinearMath/btQuickprof.o: \
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/sysmacros.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btScalar.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btScalar.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h:
 
@@ -104,7 +104,7 @@ obj/local/armeabi/objs/bullet_static/LinearMath/btQuickprof.o: \
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btAlignedAllocator.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/LinearMath/btAlignedAllocator.h:
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/new:
 

@@ -1,15 +1,15 @@
 obj/local/armeabi/objs/recast_static/DetourTileCache/DetourTileCache.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCache.cpp \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCache.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourStatus.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCacheBuilder.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAlloc.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourNavMeshBuilder.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAlloc.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourNavMesh.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourStatus.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourCommon.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourMath.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCache.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCache.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourStatus.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCacheBuilder.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAlloc.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourNavMeshBuilder.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAlloc.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourNavMesh.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourStatus.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourCommon.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourMath.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -33,31 +33,31 @@ obj/local/armeabi/objs/recast_static/DetourTileCache/DetourTileCache.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/machine/limits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/syslimits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/asm/page.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourMath.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAssert.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourMath.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAssert.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/string.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/malloc.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/new
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCache.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCache.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourStatus.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourStatus.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCacheBuilder.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/DetourTileCache/DetourTileCacheBuilder.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAlloc.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAlloc.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourNavMeshBuilder.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourNavMeshBuilder.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAlloc.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAlloc.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourNavMesh.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourNavMesh.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourStatus.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourStatus.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourCommon.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourCommon.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourMath.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourMath.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h:
 
@@ -105,9 +105,9 @@ obj/local/armeabi/objs/recast_static/DetourTileCache/DetourTileCache.o: \
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/asm/page.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourMath.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourMath.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAssert.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/recast/../recast/Detour/DetourAssert.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/string.h:
 

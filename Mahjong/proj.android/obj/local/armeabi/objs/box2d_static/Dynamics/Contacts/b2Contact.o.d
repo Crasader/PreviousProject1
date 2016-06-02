@@ -1,8 +1,8 @@
 obj/local/armeabi/objs/box2d_static/Dynamics/Contacts/b2Contact.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/Dynamics/Contacts/b2Contact.cpp \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2Contact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Math.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Settings.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/Dynamics/Contacts/b2Contact.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2Contact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Math.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Settings.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -27,38 +27,38 @@ obj/local/armeabi/objs/box2d_static/Dynamics/Contacts/b2Contact.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/machine/limits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/syslimits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/asm/page.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Collision.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/Shapes/b2Shape.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2BlockAllocator.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2Fixture.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2Body.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Collision.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/Shapes/b2Shape.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2BlockAllocator.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2Fixture.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2Body.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/memory \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2CircleContact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2PolygonContact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ContactSolver.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2TimeStep.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2TimeOfImpact.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Distance.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2World.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2StackAllocator.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2ContactManager.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2BroadPhase.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2DynamicTree.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2GrowableStack.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2CircleContact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2PolygonContact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ContactSolver.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2TimeStep.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2TimeOfImpact.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Distance.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2World.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2StackAllocator.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2ContactManager.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2BroadPhase.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2DynamicTree.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2GrowableStack.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2WorldCallbacks.h
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2WorldCallbacks.h
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2Contact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2Contact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Math.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Math.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Settings.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Settings.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h:
 
@@ -108,54 +108,54 @@ obj/local/armeabi/objs/box2d_static/Dynamics/Contacts/b2Contact.o: \
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/asm/page.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Collision.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Collision.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/Shapes/b2Shape.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/Shapes/b2Shape.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2BlockAllocator.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2BlockAllocator.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2Fixture.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2Fixture.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2Body.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2Body.h:
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/memory:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2CircleContact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2CircleContact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2PolygonContact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2PolygonContact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ContactSolver.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Contacts/b2ContactSolver.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2TimeStep.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2TimeStep.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2TimeOfImpact.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2TimeOfImpact.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Distance.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Distance.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2World.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2World.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2StackAllocator.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2StackAllocator.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2ContactManager.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2ContactManager.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2BroadPhase.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2BroadPhase.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2DynamicTree.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2DynamicTree.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2GrowableStack.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2GrowableStack.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h:
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2WorldCallbacks.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/b2WorldCallbacks.h:

@@ -1,13 +1,13 @@
 obj/local/armeabi/objs/cocos2dx_internal_static/base/s3tc.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/s3tc.cpp \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/s3tc.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCStdC.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/s3tc.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/s3tc.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCStdC.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/android/log.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
@@ -46,21 +46,21 @@ obj/local/armeabi/objs/cocos2dx_internal_static/base/s3tc.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/asm-generic/siginfo.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/s3tc.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/s3tc.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCStdC.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCStdC.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/android/log.h:
 

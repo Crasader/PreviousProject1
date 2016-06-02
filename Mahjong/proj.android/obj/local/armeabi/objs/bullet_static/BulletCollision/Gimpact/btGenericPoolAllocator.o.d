@@ -1,6 +1,6 @@
 obj/local/armeabi/objs/bullet_static/BulletCollision/Gimpact/btGenericPoolAllocator.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletCollision/Gimpact/btGenericPoolAllocator.cpp \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletCollision/Gimpact/btGenericPoolAllocator.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletCollision/Gimpact/btGenericPoolAllocator.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletCollision/Gimpact/btGenericPoolAllocator.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/limits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -26,8 +26,8 @@ obj/local/armeabi/objs/bullet_static/BulletCollision/Gimpact/btGenericPoolAlloca
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/sysmacros.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/string.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/malloc.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdlib.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/alloca.h \
@@ -35,7 +35,7 @@ obj/local/armeabi/objs/bullet_static/BulletCollision/Gimpact/btGenericPoolAlloca
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletCollision/Gimpact/btGenericPoolAllocator.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/BulletCollision/Gimpact/btGenericPoolAllocator.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/limits.h:
 
@@ -87,9 +87,9 @@ obj/local/armeabi/objs/bullet_static/BulletCollision/Gimpact/btGenericPoolAlloca
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/malloc.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btAlignedAllocator.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/bullet/../bullet/LinearMath/btScalar.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h:
 

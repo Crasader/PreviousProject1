@@ -1,16 +1,16 @@
 obj/local/armeabi/objs/cocosbuilder_static/CCBSequenceProperty.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBSequenceProperty.cpp \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBSequenceProperty.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCRef.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBSequenceProperty.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBSequenceProperty.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCRef.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/android/log.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCVector.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccMacros.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCConsole.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCVector.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccMacros.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCConsole.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/select.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -51,42 +51,42 @@ obj/local/armeabi/objs/cocosbuilder_static/CCBSequenceProperty.o: \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCStdC.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCStdC.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdlib.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/alloca.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/strings.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccRandom.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccRandom.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/random \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBKeyframe.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCValue.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBKeyframe.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCValue.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_map
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBSequenceProperty.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBSequenceProperty.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCRef.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCRef.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccConfig.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/android/log.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCVector.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCVector.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccMacros.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccMacros.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCConsole.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCConsole.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/select.h:
 
@@ -168,9 +168,9 @@ obj/local/armeabi/objs/cocosbuilder_static/CCBSequenceProperty.o: \
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCStdC.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCStdC.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h:
 
@@ -184,14 +184,14 @@ obj/local/armeabi/objs/cocosbuilder_static/CCBSequenceProperty.o: \
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccRandom.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/ccRandom.h:
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/random:
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/algorithm:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBKeyframe.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/editor-support/cocosbuilder/CCBKeyframe.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCValue.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/CCValue.h:
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_map:

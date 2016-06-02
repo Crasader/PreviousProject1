@@ -1,5 +1,5 @@
 obj/local/armeabi/objs/cocos2dx_internal_static/base/pvr.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/pvr.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/pvr.cpp \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdlib.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -32,7 +32,7 @@ obj/local/armeabi/objs/cocos2dx_internal_static/base/pvr.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/math.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/assert.h \
  /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdint \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/pvr.h
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/pvr.h
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdlib.h:
 
@@ -98,4 +98,4 @@ obj/local/armeabi/objs/cocos2dx_internal_static/base/pvr.o: \
 
 /usr/local/Cellar/android-ndk/r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdint:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./base/pvr.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./base/pvr.h:

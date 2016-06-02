@@ -1,5 +1,5 @@
 obj/local/armeabi/objs/cocos2dx_internal_static/__/external/unzip/ioapi_mem.o: \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi_mem.cpp \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi_mem.cpp \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -22,8 +22,8 @@ obj/local/armeabi/objs/cocos2dx_internal_static/__/external/unzip/ioapi_mem.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/alloca.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/strings.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/zlib/prebuilt/android/../../include/zlib.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/zlib/prebuilt/android/../../include/zconf.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/zlib/prebuilt/android/../../include/zlib.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/zlib/prebuilt/android/../../include/zconf.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/limits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/limits.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/linux/limits.h \
@@ -46,9 +46,9 @@ obj/local/armeabi/objs/cocos2dx_internal_static/__/external/unzip/ioapi_mem.o: \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/sys/sysconf.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/linux/capability.h \
  /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/pathconf.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi_mem.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi.h \
- /Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi_mem.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi.h \
+ /Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/stdio.h:
 
@@ -94,9 +94,9 @@ obj/local/armeabi/objs/cocos2dx_internal_static/__/external/unzip/ioapi_mem.o: \
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/memory.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/zlib/prebuilt/android/../../include/zlib.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/zlib/prebuilt/android/../../include/zlib.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/external/zlib/prebuilt/android/../../include/zconf.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/external/zlib/prebuilt/android/../../include/zconf.h:
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/limits.h:
 
@@ -142,8 +142,8 @@ obj/local/armeabi/objs/cocos2dx_internal_static/__/external/unzip/ioapi_mem.o: \
 
 /usr/local/Cellar/android-ndk/r10e/platforms/android-17/arch-arm/usr/include/pathconf.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi_mem.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi_mem.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./../external/unzip/ioapi.h:
 
-/Users/qiuzhong/GitHub/CardGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
+/Users/qiuzhong/GitHub/PoxiaoGame/Mahjong/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
