@@ -495,33 +495,11 @@ void LobbyScene::addEventListener(){
 
 
 void LobbyScene::showLobbyAnim(){
-    //初级房间眨眼
-    auto levelLowEye = Sprite::create();
-    levelLowEye->setPosition(496,342);
-    addChild(levelLowEye);
-    levelLowEye->runAction(Repeat::create(Sequence::create(
-                                                           CallFunc::create([=](){
-        levelLowEye->setTexture("mjlobby/level_1_eye_1.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelLowEye->setTexture("mjlobby/level_1_eye_2.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelLowEye->setTexture("mjlobby/level_1_eye_1.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelLowEye->setTexture("");
-    }),
-                                                           DelayTime::create(72.0/24),
-                                                           NULL), CC_REPEAT_FOREVER));
     //中级房间眨眼
     auto levelMidEye = Sprite::create();
     levelMidEye->setPosition(790,342);
     addChild(levelMidEye);
-    levelLowEye->runAction(Repeat::create(Sequence::create(
+    levelMidEye->runAction(Repeat::create(Sequence::create(
                                                            CallFunc::create([=](){
         levelMidEye->setTexture("mjlobby/level_2_eye_1.png");
     }),
@@ -537,13 +515,15 @@ void LobbyScene::showLobbyAnim(){
                                                            CallFunc::create([=](){
         levelMidEye->setTexture("");
     }),
-                                                           DelayTime::create(72.0/24),
+                                                           DelayTime::create(96.0/24),
                                                            NULL), CC_REPEAT_FOREVER));
+    
+
     //高级房间眨眼
     auto levelHighEye = Sprite::create();
     levelHighEye->setPosition(1084,342);
     addChild(levelHighEye);
-    levelHighEye->runAction(Repeat::create(Sequence::create(
+    levelHighEye->runAction(Repeat::create(Sequence::create(DelayTime::create(20.0/24),
                                                             CallFunc::create([=](){
         levelHighEye->setTexture("mjlobby/level_3_eye_1.png");
     }),
@@ -559,8 +539,51 @@ void LobbyScene::showLobbyAnim(){
                                                             CallFunc::create([=](){
         levelHighEye->setTexture("");
     }),
-                                                            DelayTime::create(72.0/24),
+                                                            DelayTime::create(76.0/24),
                                                             NULL), CC_REPEAT_FOREVER));
+    
+    //初级房间眨眼
+    auto levelLowEye = Sprite::create();
+    levelLowEye->setPosition(496,342);
+    addChild(levelLowEye);
+    levelLowEye->runAction(Repeat::create(Sequence::create(
+                                                           DelayTime::create(40.0/24),
+                                                           CallFunc::create([=](){
+        levelLowEye->setTexture("mjlobby/level_1_eye_1.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelLowEye->setTexture("mjlobby/level_1_eye_2.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelLowEye->setTexture("mjlobby/level_1_eye_1.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelLowEye->setTexture("");
+    }),
+                                                           DelayTime::create(56.0/24),
+                                                        NULL), CC_REPEAT_FOREVER));
+    //中级房光效
+    auto midLight1 = Sprite::create("mjlobby/mid_light.png");
+    midLight1->setPosition(790,200);
+    midLight1->setVisible(false);
+    addChild(midLight1);
+    midLight1->runAction(Repeat::create(Sequence::create(DelayTime::create(10.0/24), CallFunc::create([=](){
+        midLight1->setVisible(true);
+    }), MoveTo::create(20.0/24, Point(790,600)),NULL), CC_REPEAT_FOREVER));
+    
+    auto midLight2 = Sprite::create("mjlobby/mid_light.png");
+    midLight2->setPosition(790,200);
+    addChild(midLight2);
+//    midLight1->runAction(<#cocos2d::Action *action#>);
+    
+    auto midLight3 = Sprite::create("mjlobby/mid_light.png");
+    midLight3->setPosition(790,200);
+    addChild(midLight3);
+//    midLight1->runAction(<#cocos2d::Action *action#>);
+    
     //logo光效
     auto logoLight = Sprite::create();
     logoLight->setPosition(1070, 645);
@@ -594,17 +617,54 @@ void LobbyScene::showLobbyAnim(){
     logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(24.0/24), NULL), CC_REPEAT_FOREVER), NULL));
     
     //光效
-    auto lobbyLight = Sprite::create();
-    lobbyLight->setPosition(640, 360);
-    addChild(lobbyLight);
-    auto animation3 = Animation::create();
-    for( int k=1;k<4;k++)
-    {
-        std::string imageName = cocos2d::String::createWithFormat("mjlobby/lobby_light_%d.png",k)->_string;
-        animation3->addSpriteFrameWithFile(imageName);
-    }
-    animation3->setDelayPerUnit(24.0f / 24.0f);
-    animation3->setRestoreOriginalFrame(true);
-    auto action3 = Animate::create(animation3);
-    lobbyLight->runAction(Sequence::create(Repeat::create(Sequence::create(action3,DelayTime::create(72.0/24), NULL), CC_REPEAT_FOREVER), NULL));
+    auto lobbyLight_1 = Sprite::create("mjlobby/lobby_light_1.png");
+    lobbyLight_1->setPosition(640, 360);
+    addChild(lobbyLight_1);
+    lobbyLight_1->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    auto lobbyLight_2 = Sprite::create("mjlobby/lobby_light_2.png");
+    lobbyLight_2->setPosition(640, 360);
+    addChild(lobbyLight_2);
+    lobbyLight_2->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    auto lobbyLight_3 = Sprite::create("mjlobby/lobby_light_3.png");
+    lobbyLight_3->setPosition(640, 360);
+    addChild(lobbyLight_3);
+    lobbyLight_3->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    //光斑
+    auto lightSpot1 = Sprite::create("mjlobby/light_spot.png");
+    lightSpot1->setPosition(640,360);
+    lightSpot1->setTag(602);
+    addChild(lightSpot1);
+    auto lightSpot = Sprite::create("mjlobby/light_spot.png");
+    lightSpot->setPosition(-640,360);
+    lightSpot1->setTag(603);
+    addChild(lightSpot);
+    schedule(schedule_selector(LobbyScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
+    
+    
 }
+
+
+void LobbyScene:: scrollLightSpot(float dt){
+    if(NULL!=getChildByTag(602)){
+        if(getChildByTag(602)->getPositionX()>1920){
+            getChildByTag(602)->setPosition(-640,360);
+        }else{
+            getChildByTag(602)->setPosition(getChildByTag(602)->getPosition().x+1,getChildByTag(602)->getPosition().y);
+        }
+    }
+    if(NULL!=getChildByTag(603)){
+        if(getChildByTag(603)->getPositionX()>1920){
+            getChildByTag(603)->setPosition(-640,360);
+        }
+        getChildByTag(603)->setPosition(getChildByTag(603)->getPosition().x+1,getChildByTag(603)->getPosition().y);
+    }
+}
+
+
+
+
+
+

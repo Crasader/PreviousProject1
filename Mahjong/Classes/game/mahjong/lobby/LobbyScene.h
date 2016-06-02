@@ -69,5 +69,6 @@ private:
     void showLobbyAnim();
 	void addEventListener();
 	void addCustomEventListener();
+    void scrollLightSpot(float dt);
 };
 #endif
