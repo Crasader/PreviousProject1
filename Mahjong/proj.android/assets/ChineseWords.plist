@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>1</key>
+		<string>开宝</string>
+		<key>2</key>
+		<string>荒翻</string>
+		<key>3</key>
+		<string>杠开</string>
+		<key>4</key>
+		<string>门清</string>
+		<key>5</key>
+		<string>混碰</string>
+		<key>6</key>
+		<string>清碰</string>
+		<key>7</key>
+		<string>大吊车</string>
+		<key>8</key>
+		<string>清一色</string>
+		<key>9</key>
+		<string>混一色</string>
+		<key>10</key>
+		<string>碰碰胡</string>
+		<key>11</key>
+		<string>垃圾胡</string>
+		<key>12</key>
+		<string>抢杠</string>
+		<key>male</key>
+		<string>男</string>
+		<key>female</key>
+		<string>女</string>
+		<key>haoyou</key>
+		<string>好友</string>
+		<key>yaoqing</key>
+		<string>邀请您一起游戏</string>
+		<key>tongyi</key>
+		<string>是否同意</string>
+		<key>zuoman</key>
+		<string>好友房间已坐满</string>
+		<key>wanjinbi</key>
+		<string>万金币</string>
+		<key>shouchongzeng</key>
+		<string>首充赠</string>
+		<key>panshu</key>
+		<string>盘数</string>
+		<key>heji</key>
+		<string>合计</string>
+		<key>kongzhangdan</key>
+		<string>你还没有与好友进行过游戏</string>
+	</dict>
+</array>
+</plist>

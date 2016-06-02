@@ -1,0 +1,28 @@
+#ifndef __DAILYTASK_H__
+#define __DAILYTASK_H__
+#include "cocos2d.h"
+#include "cocos-ext.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/mahjong/dialog/daily/task/TaskCell.h"
+USING_NS_CC;
+USING_NS_CC_EXT;
+
+class DailyTask :public Layer{
+public :
+	virtual bool init();
+    void onEnter() override;
+    void onExit() override;
+	void updateData();
+	CREATE_FUNC(DailyTask);
+private:
+	TaskCell* cell1;
+	TaskCell* cell2;
+	TaskCell* cell3;
+	TaskCell* cell4;
+	Menu * extraMenu;
+	Sprite* lingqu;
+	MenuItemImage* extra;
+	void showDailyTaskLayer();
+	void recieveExtraPride(Ref* ref);
+};
+#endif
