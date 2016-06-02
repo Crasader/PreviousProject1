@@ -269,6 +269,9 @@ void PlayerRight::recoverHua(int hua){
 
 void PlayerRight::recoverPlayed(std::string played){
     playerPlayedJongs.clear();
+    if(played == ""){
+        return;
+    }
     vector<std::string>  playeds = StringUtil::split(played, ",");
     for (int i = 0; i < playeds.size(); i++){
         Jong* lastPlayedJong = Jong::create();

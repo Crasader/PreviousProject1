@@ -279,6 +279,9 @@ void PlayerOpposite::updateHandJongs(std::string jongs){
 
 void PlayerOpposite::recoverPlayed(std::string played){
     playerPlayedJongs.clear();
+    if(played == ""){
+        return;
+    }
     vector<std::string>  playeds = StringUtil::split(played, ",");
     for (int i = 0; i < playeds.size(); i++){
         Jong* lastPlayedJong = Jong::create();
