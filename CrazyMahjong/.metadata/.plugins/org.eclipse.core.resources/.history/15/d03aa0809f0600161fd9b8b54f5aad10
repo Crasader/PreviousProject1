@@ -1,0 +1,404 @@
+/*
+检测胡牌【2张或5张】  大吊车，碰碰胡，杠开，清一色
+【2张】->碰，杠，大吊车
+【5张】->碰，杠，				
+清一色。
+
+
+游戏开始
+ 
+ 是否发好牌->更改发牌函数
+
+ 发牌->On发牌结束-> 检测 庄家【自摸胡？】，
+	【庄胡】->添加胡牌表，更新胡牌表
+	【否则】-> 检测 庄家【杠？】
+		【是】->开杠，摸牌，打牌
+		【否】->打牌
+
+		On打牌结束->其他是否【点炮胡？】
+		【是】->添加胡牌表，更新胡牌表
+		【否】->其他是否碰杠牌，有一人碰杠则可以停止检测，
+			【是】->
+			【否】->跳到下家
+
+跳到下家
+ 下家【摸牌】->【是否胡？】    
+ 【是】->【自摸胡牌】
+ 【否】->【是否杠】
+
+ 胡牌表更新结束->算分抓鸟->游戏结束，显示分数板
+
+
+ === 算分 ===
+ 底分
+
+ 点炮和自摸的算分是不同的。
+
+ 自摸：
+	牌型：根据自己的胡牌牌型，计算出番数减去给其他所有人
+	摸鸟：摸到自己，其他人【番数加倍】 | 摸到他人，他人【番数加倍】 | 摸鸟结束所有番数之和绝对值加给自己【赢】 === 最终自己【赢】为正，输番负，中立0
+
+点炮：
+	牌型：每个选择了胡牌的人，根据自己的胡牌牌型，计算番数加给自己 === 赢者番数为正
+	摸鸟：摸到输者，所有赢者【番数加倍】 | 摸到赢者，赢着【自己加倍】 | 摸到中立，不变 | 摸鸟结束所有人番数之和减给输者 === 最终赢番正，输番负，中立0
+
+分数：便利四个玩家，分数 = 番数 * 底分，
+
+ 要所有人都胡牌结束后，再摸鸟。
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+*/
+
+#include "GameFlow.h"
+#include "Rules.h"
+#include "AccountPanel.h"
+#include "UIPos.h"
+#include "MahjongDatas.h"
+
+//---------------------------------------   游戏流程    -------------------------------------------
+
+//------------------------------------------ 初始化 ----------------------------------------------
+bool GameFlow::init()
+{
+	CCLOG("GameFlow : init");
+
+	if (!Node::init())
+	{
+		return false;
+	}
+	isGameOver = false;
+
+	pRules = Rules::getInstance();
+
+	MahjongDatas::getInstance()->initData();
+
+	initPlayers();
+
+	return true;
+}
+
+void GameFlow::onEnter() 
+{
+	CCLOG("GameFlow : onEnter");
+	Node::onEnter();
+	addGameFlowEvent();
+}
+
+void GameFlow::onExit()
+{
+	Node::onExit();
+	//_eventDispatcher->resumeEventListenersForTarget(this, true);
+	removeMahjongListener(DEALCARDS);
+
+	removeMahjongListener(OPERA_PICK_END);
+	removeMahjongListener(OPERA_PLAY_END);
+	removeMahjongListener(OPERA_PENGGANG_END);
+	removeMahjongListener(QI_RETURN_BEFORE);
+
+	removeMahjongListener(OPERA_ZIMO_END);
+	removeMahjongListener(OPERA_DIANPAO_END);
+	removeMahjongListener(	OPERA_DIAMPAO_ENDALL);
+	removeMahjongListener(OPERA_QIANGGANG_END);
+	removeMahjongListener(OPERA_QIANGGANG_ENDALL);
+	removeMahjongListener(GAME_OVER);
+}
+
+void GameFlow::initPlayers()
+{
+	CCLOG("");
+	CCLOG("GameFlow : init Players");
+	//Vec2(*cardHandPos)[5] = getHandCardPos();
+	for (int i = 0; i < 4; i++)
+	{
+		players[i] = NULL;
+		players[i] = Player::createPlayer((PLAYER)i);
+		this->addChild(players[i]);
+		//players[i]->drawer->cardPos = cardHandPos[i];
+		//players[i]->drawer->cardPos = getHandCardPs(i);	//两种方法
+	}
+	players[PLAYER_0]->set_isPlayer(true);
+	Player::playMenu = initMenu();
+	Player::playMenu->getPlayer(players[PLAYER_0]);
+}
+PlayMenu* GameFlow::initMenu()
+{	
+	CCLOG("");
+	CCLOG("GameFlow : initMenu");
+	PlayMenu* playMenu = PlayMenu::create();
+	this->addChild(playMenu);
+	return playMenu;
+}
+void GameFlow::addGameFlowEvent()
+{
+	CCLOG("GameFlow : addGameFlowEvent");
+	addMahjongListener(FLOW_NAME::DEALCARDS, 
+		CC_CALLBACK_1(GameFlow::onDealCardsBegin, this));
+
+	addMahjongListener(FLOW_NAME::OPERA_PLAY_END, 
+		CC_CALLBACK_1(GameFlow::onOperaPlayEnd, this) );
+	addMahjongListener(FLOW_NAME::OPERA_PENGGANG_END,
+		CC_CALLBACK_1(GameFlow::onOperaPengGangEnd, this));
+	addMahjongListener(FLOW_NAME::QI_RETURN_BEFORE,
+		CC_CALLBACK_1(GameFlow::returnBefore, this));
+
+	addMahjongListener(FLOW_NAME::OPERA_ZIMO_END,
+		CC_CALLBACK_1(GameFlow::onOperaZiMoEnd, this));
+
+	addMahjongListener(FLOW_NAME::OPERA_DIANPAO_END,
+		CC_CALLBACK_1(Rules::subCanHuNumToNull, pRules));
+	addMahjongListener(FLOW_NAME::OPERA_DIAMPAO_ENDALL,
+		CC_CALLBACK_1(GameFlow::onOperaDianPaoEnd, this));
+
+	addMahjongListener(FLOW_NAME::OPERA_QIANGGANG_END,
+		CC_CALLBACK_1(Rules::subCanQiangNumToNull, pRules));
+	addMahjongListener(FLOW_NAME::OPERA_QIANGGANG_ENDALL
+		,CC_CALLBACK_1(GameFlow::onOperaQiangGangEnd, this));
+
+	addMahjongListener(FLOW_NAME::GAME_OVER, 
+		CC_CALLBACK_1(GameFlow::onGameOver, this));
+}
+
+//-------------------------------------------- 发牌 ----------------------------------------------
+void GameFlow::onDealCardsBegin(EventCustom* event)
+{
+	CCLOG("GameFlow : onDealCardsBegin");
+	CCLOG("");
+	currentPlayer = pRules->get_zhuangPlayer();
+	// 每隔0.2s发一张牌，发17张
+	schedule(schedule_selector(GameFlow::dealACard), 0.2f, 16, 0.0f);
+	schedule(schedule_selector(GameFlow::startGame), 5.0f, 0, 0.0f);
+}
+void GameFlow::dealACard(float dt)
+{
+	CCLOG("GameFlow : dealACard");
+	players[currentPlayer]->operaPick();
+	playerPlusPlus(currentPlayer);
+}
+
+void GameFlow::startGame(float dt)
+{
+	CCLOG("");
+	CCLOG("GameFlow : startGame");
+	addMahjongListener(OPERA_PICK_END, CC_CALLBACK_1(GameFlow::onOperaPickEnd, this));
+
+	currentPlayer = pRules->get_zhuangPlayer();
+	sortCardForAll();
+	CCLOG("");
+	// 发牌之后，游戏开始，进行庄家的摸牌判断	
+	dispatchMahjongEvent(OPERA_PICK_END, NULL);
+}
+//------------------------------------------- 摸牌后 ----------------------------------------------
+void GameFlow::onOperaPickEnd(EventCustom* event)
+{
+	CCLOG("---------------------------------------------------------------");
+	CCLOG("-------------------GameFlow : Player[%d]PickEnd-------------------", currentPlayer);
+	CCLOG("---------------------------------------------------------------");
+	switch (pRules->testAfterOnePick(*this))
+	{
+	case PICK_ZIMO:
+		players[currentPlayer]->operaZiMo();
+		break;
+	case PICK_ANGANG:
+		players[currentPlayer]->operaAnGang();
+		break;
+	case PICK_PENGGANG:
+		players[currentPlayer]->operaPengGang();
+		break;
+	case PICK_NEXT:
+		players[currentPlayer]->operaPlay();
+		break;
+	case PICK_LIUJU:
+		showAccount();
+		break;
+	default:
+		break;
+	}
+}
+
+void GameFlow::onOperaZiMoEnd(EventCustom* event)
+{
+	if (0 == event->getUserData())
+	{
+		PLAYER losePlayer = currentPlayer;
+		for (int i = 0; i < 3; i++)
+		{
+			players[++losePlayer]->set_Result(LOSE);
+		}
+		dispatchMahjongEvent(GAME_OVER, NULL);
+	}
+	else
+	{
+		players[currentPlayer]->operaPlay();
+	}
+}
+//------------------------------------------- 碰杠后 ---------------------------------------------------
+void GameFlow::onOperaPengGangEnd(EventCustom* event)
+{
+	CCLOG("------------------GameFlow : Player[%d]PlayEnd------------------", currentPlayer);
+	if (pRules->testAfterOneGang(*this))
+	{
+		// 有人抢杠
+		OperaWhenCanQiangGang();
+	}
+	else
+	{
+		// 没人抢杠
+		players[currentPlayer]->goOnOperaPick();
+	}
+}
+
+void GameFlow::OperaWhenCanQiangGang()
+{
+	CCLOG("GameFlow : OperaWhenCanQiangGang");
+	for (Player* player : players)
+	{
+		if (player->get_canHu())
+		{
+			CCLOG("Player %d : canQiangGang", player->drawer->get_dir());
+			player->operaQiangGang();
+		}
+	}
+}
+
+void GameFlow::onOperaQiangGangEnd(EventCustom* event)
+{
+	CCLOG("GameFlow : onAllHuOperaEnd");
+	for (Player* player : players)
+	{
+		if (WIN == player->get_Result())
+		{
+			players[currentPlayer]->set_Result(LOSE);
+			set_isGameOver(true);
+			break;
+		}
+	}
+	if (isGameOver)
+	{
+		dispatchMahjongEvent(GAME_OVER, NULL);
+	}
+	else
+	{
+		pRules->subCanHuNum();
+		players[currentPlayer]->operaPick();
+	}
+}
+//------------------------------------------- 打牌后 ---------------------------------------------------
+void GameFlow::onOperaPlayEnd(EventCustom* event)
+{
+	CCLOG("------------------GameFlow : Player[%d]PlayEnd------------------", currentPlayer);
+	players[currentPlayer]->drawer->sortCard();
+
+	PLAY_RESULT result = pRules->testAfterOnePlayed(*this);
+	switch (result)
+	{
+	case PLAY_DIANPAO:
+		OperaWhenCanDianPaoHu();
+		break;
+
+	case PLAY_PENG:
+		beforePlayer = currentPlayer;
+		currentPlayer = pRules->get_pengPlayer();
+		players[currentPlayer]->operaPeng();
+		break;
+
+	case PLAY_GANG:
+		beforePlayer = currentPlayer;
+		currentPlayer = pRules->get_gangPlayer();
+		players[currentPlayer]->operaGang();
+		break;
+
+	case PLAY_NEXT:
+		turnToNext();
+		break;
+
+	default:
+		CCLOG("======== Rules : TestAfterOnePlayed : Wrong");
+		break;
+	}
+}
+
+void GameFlow::OperaWhenCanDianPaoHu()
+{
+	CCLOG("GameFlow : OperaWhenCanDianPaoHu");
+	for (Player* player : players)
+	{
+		if (player->get_canHu())
+		{
+			CCLOG("Player %d : canDianPao", player->drawer->get_dir());
+			player->operaDianPao();
+		}
+	}
+}
+
+void GameFlow::onOperaDianPaoEnd(EventCustom* event)
+{
+	CCLOG("GameFlow : onAllHuOperaEnd");
+	for (Player* player : players)
+	{
+		if (WIN == player->get_Result())
+		{
+			players[currentPlayer]->set_Result(LOSE);
+			CCLOG("Win : %d ----------- Lose : %d", player->drawer->get_dir(), currentPlayer);
+			set_isGameOver(true);
+		}
+	}
+	if (isGameOver)
+	{
+		dispatchMahjongEvent(GAME_OVER, NULL);
+	}
+	else
+	{
+		pRules->subCanHuNum();
+		dispatchMahjongEvent(QI_RETURN_BEFORE, NULL);
+	}
+}
+
+void GameFlow::returnBefore(EventCustom* event)
+{
+	CCLOG("");
+	CCLOG("GameFlow : onNext");
+	currentPlayer = beforePlayer;
+	turnToNext();
+}
+void GameFlow::turnToNext()
+{
+	CCLOG("GameFlow : turnToNext");
+	currentPlayer = (PLAYER)((currentPlayer+1)%4);
+	beforePlayer = currentPlayer;
+	auto card = players[currentPlayer]->operaPick();
+	card->runAction(MoveBy::create(0.1f, MahjongDrawer::cardPickDis[currentPlayer]));
+	card->setLocalZOrder( 1 == players[currentPlayer]->drawer->get_dir() ? -10 : 10 );
+}
+//------------------------------------------ 胜负已分 -------------------------------------------------------------
+void GameFlow::onGameOver(EventCustom* event)
+{
+	CCLOG("---------------------------------------------------------------");
+	CCLOG("------------------GameFlow : onGameOver---------------");
+	CCLOG("---------------------------------------------------------------");
+
+	// 这里是个什么原理？？？
+	scheduleOnce([this](float dt){ pRules->zhuaNiao(*this); }, 3.0f, "zhuaNiao");
+	scheduleOnce([this](float dt){showAccount(); }, 15.0f, "showAccount");
+}
+
+void GameFlow::showAccount()
+{
+	CCLOG("");
+	CCLOG("------------------GameFlow : showAccount---------------");
+	pRules->accountFanshu(*this);
+	auto panel = AccountPanel::create();
+	for (Player* player : players)
+	{
+		panel->getInfo(*player);
+	}
+	this->addChild(panel);
+}
+//------------------------------------------ 支持函数 -------------------------------------------
+void GameFlow::sortCardForAll()
+{
+	CCLOG("GameFlow : sortCardFowAll");
+	for (Player* player : players)
+	{
+		player->drawer->sortCard();
+	}
+}
