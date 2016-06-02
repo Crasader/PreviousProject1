@@ -566,27 +566,32 @@ void LobbyScene::showLobbyAnim(){
                                                            DelayTime::create(56.0/24),
                                                         NULL), CC_REPEAT_FOREVER));
     //中级房光效
-//    auto midLight1 = Sprite::create("mjlobby/mid_light.png");
-//    midLight1->setPosition(790,200);
-//    midLight1->setVisible(false);
-//    addChild(midLight1,2);
-//    midLight1->runAction(Repeat::create(Sequence::create(DelayTime::create(18.0/24), CallFunc::create([=](){
-//        midLight1->setVisible(true);
-//    }), MoveTo::create(20.0/24, Point(790,500)),DelayTime::create(66.0/24),NULL), CC_REPEAT_FOREVER));
-//    
-//    auto midLight2 = Sprite::create("mjlobby/mid_light.png");
-//    midLight2->setPosition(790,200);
-//    addChild(midLight2,2);
-//    midLight2->runAction(Repeat::create(Sequence::create(DelayTime::create(10.0/24), CallFunc::create([=](){
-//        midLight2->setVisible(true);
-//    }), MoveTo::create(20.0/24, Point(790,500)),DelayTime::create(58.0/24),NULL), CC_REPEAT_FOREVER));
-//    
-//    auto midLight3 = Sprite::create("mjlobby/mid_light.png");
-//    midLight3->setPosition(790,200);
-//    addChild(midLight3,2);
-//    midLight3->runAction(Repeat::create(Sequence::create(DelayTime::create(26.0/24), CallFunc::create([=](){
-//        midLight3->setVisible(true);
-//    }), MoveTo::create(20.0/24, Point(790,500)),DelayTime::create(50.0/24),NULL), CC_REPEAT_FOREVER));
+    auto midLight1 = Sprite::create("mjlobby/mid_light.png");
+    midLight1->setPosition(800,190);
+    midLight1->setVisible(false);
+    addChild(midLight1,2);
+    midLight1->runAction(Repeat::create(Sequence::create(DelayTime::create(18.0/24), CallFunc::create([=](){
+        midLight1->setVisible(true);
+    }), MoveTo::create(20.0/24, Point(800,500)),DelayTime::create(66.0/24),NULL), CC_REPEAT_FOREVER));
+    
+    auto midLight2 = Sprite::create("mjlobby/mid_light.png");
+    midLight2->setPosition(800,190);
+    addChild(midLight2,2);
+    midLight2->runAction(Repeat::create(Sequence::create(DelayTime::create(10.0/24), CallFunc::create([=](){
+        midLight2->setVisible(true);
+    }), MoveTo::create(20.0/24, Point(800,500)),DelayTime::create(58.0/24),NULL), CC_REPEAT_FOREVER));
+    
+    auto midLight3 = Sprite::create("mjlobby/mid_light.png");
+    midLight3->setPosition(800,190);
+    addChild(midLight3,2);
+    midLight3->runAction(Repeat::create(Sequence::create(DelayTime::create(26.0/24), CallFunc::create([=](){
+        midLight3->setVisible(true);
+    }), MoveTo::create(20.0/24, Point(800,500)),DelayTime::create(50.0/24),NULL), CC_REPEAT_FOREVER));
+    
+    auto midLight4 = Sprite::create("mjlobby/mid_light_yellow.png");
+    midLight4->setPosition(790,342);
+    addChild(midLight4,2);
+
     
     //logo光效
     auto logoLight = Sprite::create();
