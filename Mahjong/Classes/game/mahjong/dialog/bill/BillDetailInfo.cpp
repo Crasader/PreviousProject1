@@ -3,6 +3,7 @@
 #include "game/utils/StringUtil.h"
 #include "game/utils/Chinese.h"
 #include "game/loading/Loading.h"
+#include "userdata/UserData.h"
 
 bool BillDetailInfo::init()
 {
@@ -48,9 +49,9 @@ bool BillDetailInfo::init()
     Label* panshu = Label::create(ChineseWord("panshu"),"arial",20);
     panshu->setPosition(330,535);
     addChild(panshu);
-    
-    for(int i=0;i<data.content.size();i++){
-        Label* player1 = Label::create(data.content.at(i).nickName,"arial",20);
+    std::vector<BillContent> conBill = sortBillInfo(data.content);
+    for(int i=0;i<conBill.size();i++){
+        Label* player1 = Label::create(conBill.at(i).nickName,"arial",20);
         player1->setPosition(460+160*i,535);
         addChild(player1);
     }
@@ -114,10 +115,10 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         panId->setAnchorPoint(Point::ANCHOR_MIDDLE);
         panId->setPosition(15,15);
         cell->addChild(panId);
-        
-        for(int i=0;i<detail.detail.size();i++){
+        std::vector<BillContent> conBill = sortBillInfo(detail.detail);
+        for(int i=0;i<conBill.size();i++){
             std::string imageName ="bill/yellow_num.png";
-            int score =atoi(detail.detail.at(i).score.c_str());
+            int score =atoi(conBill.at(i).score.c_str());
             if(score<0){
                 imageName="bill/purper_num.png";
             }
@@ -133,10 +134,11 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         if(NULL != getChildByTag(99)){
           ((Label*)getChildByTag(99))-> setString(cocos2d::String::createWithFormat("%ld",idx+1)->_string);
         }
-        for(int i=0;i<detail.detail.size();i++){
+        std::vector<BillContent> conBill = sortBillInfo(detail.detail);
+        for(int i=0;i<conBill.size();i++){
             if(NULL !=getChildByTag(100+i)){
                 std::string imageName ="bill/yellow_num.png";
-                int score =atoi(detail.detail.at(i).score.c_str());
+                int score =atoi(conBill.at(i).score.c_str());
                 if(score<0){
                     imageName="bill/purper_num.png";
                 }
@@ -165,4 +167,14 @@ void BillDetailInfo::updateBillDetail(){
     }
 
     tableView->reloadData();
+}
+
+
+std::vector<BillContent> BillDetailInfo::sortBillInfo(std::vector<BillContent> content){
+    for (int i=1; i<content.size(); i++) {
+        if(content.at(i).nickName == UserData::getInstance()->getNickName()){
+            swap(content.at(i), content.at(0));
+        }
+    }
+    return content;
 }

@@ -1319,11 +1319,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/bill/BillDetailInfo.cpp"
-            timestampString = "486626662.12596"
+            timestampString = "486628556.340619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "BillDetailInfo::closeView()"
             landmarkType = "5">
          </BreakpointContent>
