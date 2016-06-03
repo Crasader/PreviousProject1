@@ -195,6 +195,7 @@ void GuiLayer::drawPlayerInvite(){
 }
 
 void GuiLayer::invitePlayer(Ref* ref){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     FriendInvite* invite = FriendInvite::create();
     addChild(invite);
 }

@@ -21,6 +21,7 @@ public:
     void updateFriendList();
     CREATE_FUNC(FriendInvite);
 private:
+    EventListenerCustom* friendLsitListener3;
     std::vector<FriendInfo> inviteFriends;
     TableView* tableView;
     void inviteWxFriend();

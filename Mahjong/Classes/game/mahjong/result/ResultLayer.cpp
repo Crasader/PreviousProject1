@@ -147,6 +147,7 @@ void ResultLayer::showWinAnim(){
                     players.at(i)->setDiamond(resData.diamond);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
+                    players.at(i)->setScore(resData.jifen);
                 }
             }
         }else{
@@ -156,6 +157,8 @@ void ResultLayer::showWinAnim(){
                     players.at(i)->setDiamond(resData.diamond);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
+                    players.at(i)->setScore(resData.jifen);
+
                 }
             }
         }
@@ -326,6 +329,7 @@ void ResultLayer::showLoseAnim(){
                     players.at(i)->setDiamond(resData.diamond);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
+                    players.at(i)->setScore(resData.jifen);
                 }
             }
         }else{
@@ -335,6 +339,7 @@ void ResultLayer::showLoseAnim(){
                     players.at(i)->setDiamond(resData.diamond);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
+                    players.at(i)->setScore(resData.jifen);
                 }
             }
         }

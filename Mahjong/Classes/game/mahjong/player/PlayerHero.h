@@ -61,7 +61,6 @@ private:
 	Sprite* playedIcon;
 	std::vector<std::string> pokerV;
 	std::vector<std::string> replaceV;
-	Menu* start;
 	Jong* currentJong;
 	Jong* selectJong;
 	Jong* virtualJong;

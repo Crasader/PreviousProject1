@@ -18,7 +18,6 @@ bool PlayerHero::init() {
 void PlayerHero::initData() {
     doubleClickJong = NULL;
     virtualJong = NULL;
-    start = NULL;
     setHandPosX(JONG_POS_START_X);
     setIsAllowPlay(false);
     setIsAllowTouch(true);
@@ -232,21 +231,24 @@ void PlayerHero::resetHandJongsY(Jong* jong) {
 void PlayerHero::drawReady(bool ready){
     if (!ready){
         MenuItemImage* image = MenuItemImage::create("gameview/ready_1.png", "gameview/ready_2.png", CC_CALLBACK_0(PlayerHero::readyGo, this));
-        start = Menu::create(image, NULL);
+        auto start = Menu::create(image, NULL);
+        start->setTag(888);
         start->setPosition(Point(640, 200));
         this->addChild(start);
     }
 }
 
 void PlayerHero::hideReadyButton(){
-    if (start != NULL){
-        start->setVisible(false);
+    if (NULL != getChildByTag(888)){
+        getChildByTag(888)->setVisible(false);
     }
     this->setIsReady(true);
 }
 
 void PlayerHero::readyGo(){
-    start->setVisible(false);
+    if (NULL != getChildByTag(888)){
+        getChildByTag(888)->setVisible(false);
+    }
     this->setIsReady(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
 }

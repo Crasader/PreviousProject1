@@ -42,12 +42,18 @@ bool FriendInvite::init()
 
 
 void FriendInvite::onEnter(){
-	Node::onEnter();
+    Layer::onEnter();
+    friendLsitListener3 = EventListenerCustom::create(MSG_HERO_FRIEND_LIST, [=](EventCustom* event){
+        updateFriendList();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendLsitListener3, 1);
+    
 }
 
 
 void FriendInvite::onExit(){
-	Node::onExit();
+    Layer::onExit();
+    _eventDispatcher->removeEventListener(friendLsitListener3);
 }
 
 
