@@ -905,6 +905,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
     lastGameData.loard = loard.GetInt();
     std::string result = isprivate.GetString();
     lastGameData.isprivate = (result == "1"?true:false);
+    GAMEDATA::getInstance()->setIsPrivateRoom(lastGameData.isprivate);//设置是否是私人房间
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;

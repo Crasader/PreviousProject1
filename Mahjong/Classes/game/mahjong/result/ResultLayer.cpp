@@ -136,6 +136,7 @@ void ResultLayer::showWinAnim(){
             cell->setVisible(false);
             cells.push_back(cell);
         }
+        //更新玩家自己
         if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), resData.seatId) == ClientSeatId::hero){
             UserData::getInstance()->setDiamond(resData.diamond);
             UserData::getInstance()->setGold(resData.gold);
@@ -143,6 +144,15 @@ void ResultLayer::showWinAnim(){
             vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
             for (int i = 0; i < players.size(); i++){
                 if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()) == ClientSeatId::hero){
+                    players.at(i)->setDiamond(resData.diamond);
+                    players.at(i)->setGold(resData.gold);
+                    players.at(i)->setTicket(resData.lequan);
+                }
+            }
+        }else{
+            vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+            for (int i = 0; i < players.size(); i++){
+                if (players.at(i)->getSeatId() == resData.seatId){
                     players.at(i)->setDiamond(resData.diamond);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
@@ -313,6 +323,15 @@ void ResultLayer::showLoseAnim(){
             vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
             for (int i = 0; i < players.size(); i++){
                 if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()) == ClientSeatId::hero){
+                    players.at(i)->setDiamond(resData.diamond);
+                    players.at(i)->setGold(resData.gold);
+                    players.at(i)->setTicket(resData.lequan);
+                }
+            }
+        }else{
+            vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+            for (int i = 0; i < players.size(); i++){
+                if (players.at(i)->getSeatId() == resData.seatId){
                     players.at(i)->setDiamond(resData.diamond);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
