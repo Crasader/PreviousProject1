@@ -79,3 +79,5 @@ Mahjong/proj.android/.settings/org.eclipse.cdt.core.prefs
 Mahjong/proj.android/build_native.py
 
 Mahjong/proj.android/project.properties
+
+*.xcuserstate
