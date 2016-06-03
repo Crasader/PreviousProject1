@@ -31,8 +31,8 @@ public:
     void updateBillInfo();
     //调整显示位置
     void setShowPosition();
-
 	CREATE_FUNC(BillInfo);
+    CC_SYNTHESIZE(bool, isPrivatebill, IsPrivateBill);
 private:
     EventListenerCustom* detailBillListener;
     EventListenerCustom* playerBillListener;

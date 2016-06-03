@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "486633178.270527"
+            timestampString = "486636488.315193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "ResultLayer::showLoseAnim()"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/bill/BillInfo.cpp"
-            timestampString = "486632550.75686"
+            timestampString = "486638681.806923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "BillInfo::updateBillInfo()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1303,11 +1303,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/bill/BillInfo.cpp"
-            timestampString = "486632550.75686"
+            timestampString = "486638681.806923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "BillInfo::closeView()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1319,12 +1319,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/bill/BillDetailInfo.cpp"
-            timestampString = "486629989.646445"
+            timestampString = "486639320.12424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "BillDetailInfo::closeView()"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "BillDetailInfo::updateBillDetail()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

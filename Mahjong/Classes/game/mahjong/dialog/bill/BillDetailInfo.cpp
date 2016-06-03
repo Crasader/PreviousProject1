@@ -41,9 +41,9 @@ bool BillDetailInfo::init()
     BillInfoData data = GAMEDATA::getInstance()->getBillInfoData();
     
     Label* date = Label::create(data.date,"Arial",22);
+    date->setAnchorPoint(Point::ANCHOR_MIDDLE);
     date->setColor(Color3B(21,50,91));
-    date->setAnchorPoint(Vec2::ZERO);
-    date->setPosition(Vec2(18, 115));
+    date->setPosition(640,585);
     addChild(date);
     
     Label* panshu = Label::create(ChineseWord("panshu"),"arial",20);
@@ -179,6 +179,10 @@ void BillDetailInfo::updateBillDetail(){
     tableView->reloadData();
 }
 
+
+void BillDetailInfo::setPrivatePostion(){
+    setPosition(250,0);
+}
 
 std::vector<BillContent> BillDetailInfo::sortBillInfo(std::vector<BillContent> content){
     for (int i=1; i<content.size(); i++) {

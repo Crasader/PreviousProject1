@@ -15,7 +15,7 @@ bool BillInfo::init()
     MenuItem* item = MenuItem::create();
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
-    this->addChild(bg);
+    this->addChild(bg,-1);
     
     auto all_bg = Sprite::create("common/all_bg.jpg");
     all_bg->setTag(100);
@@ -73,6 +73,9 @@ void BillInfo::onEnter(){
     //显示账单详情
     detailBillListener = EventListenerCustom::create(MSG_PLAYER_BILL_DETAIL, [=](EventCustom* event){
         BillDetailInfo* detail =BillDetailInfo::create();
+        if(getIsPrivateBill()){
+            detail->setPrivatePostion();
+        }
         addChild(detail);
     });
     _eventDispatcher->addEventListenerWithFixedPriority(detailBillListener, 1);
@@ -231,6 +234,7 @@ std::vector<BillContent> BillInfo::sortBillInfo(std::vector<BillContent> content
 }
 
 void BillInfo::setShowPosition(){
+    setIsPrivateBill(true);
     getChildByTag(100)->setVisible(false);
     getChildByTag(101)->setPositionX(890);
     getChildByTag(102)->setPositionX(1230);

@@ -20,7 +20,9 @@ public:
 
 	virtual void scrollViewDidScroll(cocos2d::extension::ScrollView* view) {};
     
-	virtual void scrollViewDidZoom(cocos2d::extension::ScrollView* view) {}
+    virtual void scrollViewDidZoom(cocos2d::extension::ScrollView* view) {};
+    
+    void setPrivatePostion();
 
 	CREATE_FUNC(BillDetailInfo);
 private:
