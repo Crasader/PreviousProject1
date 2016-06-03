@@ -23,6 +23,7 @@ public:
     void updateFriendList();
     CREATE_FUNC(FriendRoom);
 private:
+    EventListenerCustom* friendLsitListener2;
     InviteCell* inviters[4];
     std::vector<FriendInfo> inviteFriends;
     TableView* tableView;

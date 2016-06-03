@@ -73,14 +73,19 @@ bool FriendRoom::init()
 
 
 void FriendRoom::onEnter(){
-    Node::onEnter();
+    Layer::onEnter();
+    friendLsitListener2 = EventListenerCustom::create(MSG_HERO_FRIEND_LIST, [=](EventCustom* event){
+        updateFriendList();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendLsitListener2, 1);
+    
 }
 
 
 void FriendRoom::onExit(){
-    Node::onExit();
+    Layer::onExit();
+    _eventDispatcher->removeEventListener(friendLsitListener2);
 }
-
 
 void FriendRoom::tableCellTouched(TableView* table, TableViewCell* cell)
 {
