@@ -904,7 +904,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
     lastGameData.rest = rest.GetString();
     lastGameData.loard = loard.GetInt();
     std::string result = isprivate.GetString();
-    lastGameData.isprivate = result == "1"?false:true;
+    lastGameData.isprivate = (result == "1"?true:false);
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;

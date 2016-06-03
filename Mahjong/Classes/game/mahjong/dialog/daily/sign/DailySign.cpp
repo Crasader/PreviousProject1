@@ -51,7 +51,7 @@ void DailySign::onEnter(){
         }
         Huode* huode = Huode::create(gold, diamond, lequan);
         huode->setVisible(false);
-        getParent()->getParent()->addChild(huode);
+        getParent()->getParent()->addChild(huode,3);
         huode->runAction(Sequence::create(DelayTime::create(4.5f),CallFunc::create([=](){
             huode->setVisible(true);
             getParent()->setVisible(false);

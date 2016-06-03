@@ -646,8 +646,7 @@ void MahjongView::dealJongFinish(){
     playerRight->drawHandJong();
     playerOpposite->drawHandJong();
     playerLeft->drawHandJong();
-    if(GAMEDATA::getInstance()->getHeroSeatId()==GAMEDATA::getInstance()->getCurrentBank())
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getStartHuaCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getStartHuaCommand());
 }
 
 void MahjongView::addPlayerTurnListener(){
