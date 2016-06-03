@@ -47,16 +47,25 @@ bool BillDetailInfo::init()
     addChild(date);
     
     Label* panshu = Label::create(ChineseWord("panshu"),"arial",20);
+    panshu->setColor(Color3B(38,158,228));
     panshu->setPosition(330,535);
     addChild(panshu);
+    
     std::vector<BillContent> conBill = sortBillInfo(data.content);
     for(int i=0;i<conBill.size();i++){
         Label* player1 = Label::create(conBill.at(i).nickName,"arial",20);
         player1->setPosition(460+160*i,535);
+        if(conBill.at(i).nickName == UserData::getInstance()->getNickName()){
+            player1->setColor(Color3B(91,220,168));
+        }else{
+            player1->setColor(Color3B(38,158,228));
+        }
+
         addChild(player1);
     }
     
     Label* heji = Label::create(ChineseWord("heji"),"arial",20);
+    heji->setColor(Color3B(38,158,228));
     heji->setPosition(330,157);
     addChild(heji);
     
@@ -112,6 +121,7 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->autorelease();
         Label* panId = Label::create(cocos2d::String::createWithFormat("%ld",idx+1)->_string,"arial",20);
         panId->setTag(99);
+        panId->setColor(Color3B(38,158,228));
         panId->setAnchorPoint(Point::ANCHOR_MIDDLE);
         panId->setPosition(15,15);
         cell->addChild(panId);
