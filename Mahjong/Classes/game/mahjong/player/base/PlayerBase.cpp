@@ -17,7 +17,6 @@ bool PlayerBase::init(){
 
 void PlayerBase::initData(){
 	mCDTime = 20;
-	readyTitle = NULL;
 	playerCpgRecords.clear();
 	playerHandJongs.clear();
 	playerPlayedJongs.clear();
@@ -64,7 +63,9 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
 		diamondNum->setString(cocos2d::String::createWithFormat("%d", playerInfo->getGold())->_string);
 	}
 
-	readyTitle = Sprite::create("gameview/ready_title.png");
+    
+	auto readyTitle = Sprite::create("gameview/ready_title.png");
+    readyTitle->setTag(1001);
 	readyTitle->setPosition(getPostionBySeat(clientSeatId));
 	this->addChild(readyTitle);
 
@@ -196,7 +197,9 @@ void PlayerBase::setIsReady(bool b){
 	if (!getPlayerEnable()){
 		return;
 	}
-	readyTitle->setVisible(b);
+    if(NULL != getChildByTag(1001)){
+        getChildByTag(1001)->setVisible(b);
+    }
 }
 
 void PlayerBase::setIsTing(bool b){

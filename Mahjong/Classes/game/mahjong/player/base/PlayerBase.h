@@ -67,7 +67,6 @@ private:
 	bool isReady;
 	int mCDTime;
 	Menu* headimage;
-	Sprite* readyTitle;
 	Sprite* tingTitle;
 	Label* nickName;
 	LabelAtlas* diamondNum;
