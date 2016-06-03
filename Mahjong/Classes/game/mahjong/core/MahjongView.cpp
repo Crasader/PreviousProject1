@@ -26,18 +26,17 @@ bool MahjongView::init(){
     }
     initData();
     loadView();
-    
-    if(GAMEDATA::getInstance()->getContinueAgain()){
-        startGameAgain();
-        GAMEDATA::getInstance()->setContinueAgain(false);
-    }else{
-        startGameFirst();
-    }
     if (GAMEDATA::getInstance()->getIsRecover()){
         recoverGame();
         GAMEDATA::getInstance()->setIsRecover(false);
     }
     else{
+        if(GAMEDATA::getInstance()->getContinueAgain()){
+            startGameAgain();
+            GAMEDATA::getInstance()->setContinueAgain(false);
+        }else{
+            startGameFirst();
+        }
         addPlayer2Room();
     }
     return true;
@@ -69,10 +68,10 @@ void MahjongView::loadView(){
     trusteeship = Trusteeship::create();
     this->addChild(trusteeship, 160);
     trusteeship->setVisible(false);
-    showOriention();
 }
 
 void MahjongView::startGameFirst(){
+    showOriention();
     Player* info = new Player();
     info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
     info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
@@ -86,6 +85,7 @@ void MahjongView::startGameFirst(){
 }
 
 void MahjongView::startGameAgain(){
+    showOriention();
     GAMEDATA::getInstance()->setKaibao("0");
     GAMEDATA::getInstance()->setHuangfan("0");
     guiLayer->updateData();
@@ -428,9 +428,9 @@ void MahjongView::recoverGame(){
         GAMEDATA::getInstance()->addPlayersInfo(info);
         recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
     }
-    showOriention();
     showGamePaidui(atoi(data.rest.c_str()));
     //重新设置庄的位置
+    showOriention();
     ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
 }
 
