@@ -5,6 +5,8 @@
 #define MSGCODE_HEARTBEAT  1
 #define MSGCODE_HEARTBEAT_RETURN  2
 
+#define MSGCODE_ACCOUNTREPEAT_REQUEST  98// 判断用户名重复请求 {code:98,username:"abc"}
+#define MSGCODE_ACCOUNTREPEAT_RESPONSE  99// 判断用户名重复回复 {code:99,result:"1"} result为1是可以注册  0为不可以注册
 #define MSGCODE_REGISTER_MOBILE_YZM  100// 客户端手机验证码{code:100,mobile:13989877777}
 #define MSGCODE_REGISTER_REQUEST  101// 客户端到服务端注册请求 {code:101,mobile:13989877777,yzm:56789,username:abc,password:678aaa}
 #define MSGCODE_GET_GAME_LIST_REQUEST  102//获取游戏列表请求{code:102,poxiaoId:poxiaoId}
@@ -39,7 +41,7 @@
 #define MSGCODE_MODIFY_PIC_REQUEST  130// 修改头像请求{code:130,poxiaoId:"456"}
 
 #define MSGCODE_HONGBAO_REQUEST  131// 红包获取请求{code:131,poxiaoId:"456"}
-#define MSGCODE_HONGBAO_RESPONSE  132//红包获取回复{code:132,poxiaoId:"456",hbcode:"12345689",lequan:"12",gold:"0",diamond:"0",count:"1"}
+#define MSGCODE_HONGBAO_RESPONSE  132//红包获取回复{code:132,poxiaoId:"456",hbcode:"12345689",lequan:"12",gold:"0",diamond:"0",count:"1",lequan2:"12",gold2:"0",diamond2:"0",list:[{pId:"11",nickname:"好啊",status:"1"},{pId:"21",nickname:"我是谁",status:"0"}]}
 #define MSGCODE_HONGBAO_GET_REQUEST  133// 领取红包请求{code:133,poxiaoId:"456",hsman:厂商,hstype:机型,imsi:imsi,imei:imei}
 #define MSGCODE_HONGBAO_GET_RESPONSE  134// 领取红包回复{code:134,poxiaoId:"456",result:"1"} result 1为成功 2为该红包领取达上限 3为此人已经领取过红包
 
@@ -47,8 +49,14 @@
 #define MSGCODE_SIGN_CONTENT_RESPONSE  136// 签到情况回复{code:136,poxiaoId:"456",day:"6",prize:{gold:"15",lequan:"20"},result:"1"} result为1表示可以签到，为2表示今天已签到，为0表示签到功能关闭 day为已签到几天，prize为签到能获得的奖品
 #define MSGCODE_SIGN_ON_REQUEST  137// 签到{code:137,poxiaoId:"456"}
 #define MSGCODE_SIGN_ON_RESPONSE  138// 签到回复{code:138,poxiaoId:"456",day:"6",prize:{gold:"15",lequan:"20"}} day为已签到几天，prize为签到获得的奖品
-
-
+#define MSGCODE_GONGGAO_REQUEST  140// 获取公告请求{code:140,poxiaoId:poxiaoId}
+#define MSGCODE_GONGGAO_RESPONSE  141// 获取公告回复{code:141,poxiaoId:poxiaoId,content:"11111111"}
+#define MSGCODE_MARQUEE_REQUEST  142// 获取走马灯请求{code:142,poxiaoId:poxiaoId}
+#define MSGCODE_MARQUEE_RESPONSE  143// 获取走马灯回复{code:143,poxiaoId:poxiaoId,content:"11111111"}
+#define MSGCODE_QUICK_ADD_FRIEND_REQUEST  144// 快速互加好友请求{code:144,poxiaoId:poxiaoId,key:"1234"}
+#define MSGCODE_QUICK_ADD_FRIEND_RESPONSE  145// 快速互加好友回复{code:145,poxiaoId:poxiaoId,result:"1"} 1成功0失败
+#define MSGCODE_HONGBAO_GETED_REQUEST  146// 红包被领取情况获取奖励请求{code:146,poxiaoId:"456"}
+#define MSGCODE_HONGBAO_GETED_RESPONSE  147//红包被领取情况获取奖励回复{code:147,poxiaoId:"456",result:"1"}
 
 #define MSGCODE_INTO_ROOMSTYLE_REQUEST  1000 //进入房间请求{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 #define MSGCODE_INTO_ROOMSTYLE_RESPONSE 1001 //进入房间回复{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]} result1为成功 2为金币低于下限 3为金币高于上线 4为其他错误
@@ -60,6 +68,58 @@
 #define MSGCODE_LOGIN_NOTIFY  1008// 服务端到客户端登陆通知{code:1008,result:0,poxiaoId:poxiaoId,seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0} gender性别0女1男 ifready准备0未准备1准备
 #define MSGCODE_READY_NOTIFY  1009// 服务端到客户端准备通知{code:1009,poxiaoId:poxiaoId,seatId:1}
 #define MSGCODE_DX_NOTIFY  1010// 服务端到客户端掉线通知{code:1010,poxiaoId:poxiaoId}
+
+#define MSGCODE_FULI_REQUEST  1012// 福利情况获取请求{code:1012,poxiaoId:poxiaoId}
+#define MSGCODE_FULI_RESPONSE  1013//福利情况获取回复{code:1013,poxiaoId:poxiaoId,jjj:{count:"2",used:"0",gold:"10000"},wx:{result:"1",gold:"10000",bangzuan:"20"},bzjjj:{count:"2",used:"0",bangzuan:"20"},mobile:{result:"1",gold:"10000"}} count可以领几次 used已经领取几次
+#define MSGCODE_JJJ_GET_REQUEST  1014// 救济金请求{code:1014,poxiaoId:poxiaoId}
+#define MSGCODE_JJJ_GET_RESPONSE  1015// 救济金回复{code:1015,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
+#define MSGCODE_BDWEIXIN_GET_REQUEST  1016// 绑定微信奖励领取请求{code:1016,poxiaoId:poxiaoId}
+#define MSGCODE_BDWEIXIN_GET_RESPONSE  1017// 绑定微信奖励领取回复{code:1017,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
+#define MSGCODE_BZJJJ_GET_REQUEST  1018// 绑钻救济请求{code:1018,poxiaoId:poxiaoId}
+#define MSGCODE_BZJJJ_GET_RESPONSE  1019// 绑钻救济回复{code:1019,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
+#define MSGCODE_BDPHONE_GET_REQUEST  1020// 绑定手机领取请求{code:1020,poxiaoId:poxiaoId}
+#define MSGCODE_BDPHONE_GET_RESPONSE  1021// 绑定手机领取回复{code:1021,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
+
+#define MSGCODE_LOTTERY_REQUEST  1022// 金币抽奖情况获取请求{code:1022,poxiaoId:poxiaoId}
+#define MSGCODE_LOTTERY_RESPONSE  1023// 金币抽奖情况获取回复{code:1023,poxiaoId:poxiaoId,result:"1",gold:"50000",prize:[{gold:30000},{lequan:300},{lequan:800},{lequan:100},{bangzuan:80},{bangzuan:50},{bangzuan:20},{gold:60000},{diamond:11}],count:"1",max:"5"} result1为可以参加，0为不可参加 ，count为可以抽奖几次，max为最多能抽奖几次，prize奖品里面数值为整数
+#define MSGCODE_LOTTERY_GET_REQUEST  1024// 金币抽奖奖励领取请求{code:1024,poxiaoId:poxiaoId}
+#define MSGCODE_LOTTERY_GET_RESPONSE  1025// 金币抽奖奖励领取回复{code:1025,poxiaoId:poxiaoId,result:"1",prize:{gold:10}} 1为成功 0失败,prize为抽到的奖品，奖品里面数值为整数
+
+#define MSGCODE_TASK_REQUEST  1026// 任务情况获取请求{code:1026,poxiaoId:poxiaoId}
+#define MSGCODE_TASK_RESPONSE  1027// 任务情况获取回复{code:1027,poxiaoId:poxiaoId,mq3:{used:"0"},pp3:{used:"0"},lz4:{used:"0"},daycharge:{result:"1"},alltask:{result:"1"})  used已经完成几把 -1为已领取,result为-1表示已领取 1为可以领取 0为不可以领取
+#define MSGCODE_MQ3_GET_REQUEST  1028// 门清三把奖励获取请求{code:1028,poxiaoId:poxiaoId}
+#define MSGCODE_MQ3_GET_RESPONSE  1029// 门清三把奖励获取回复{code:1029,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
+#define MSGCODE_PPH3_GET_REQUEST  1030// 碰碰胡三把奖励获取请求{code:1030,poxiaoId:poxiaoId}
+#define MSGCODE_PPH3_GET_RESPONSE  1031// 碰碰胡三把奖励获取回复{code:1031,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
+#define MSGCODE_LEZI4_GET_REQUEST  1032// 勒子牌型四把奖励获取请求{code:1032,poxiaoId:poxiaoId}
+#define MSGCODE_LEZI4_GET_RESPONSE  1033// 勒子牌型四把奖励获取回复{code:1033,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
+#define MSGCODE_DAYCHARGE_GET_REQUEST  1034// 每日充值请求{code:1034,poxiaoId:poxiaoId,channelId:"lele",chargetype:"1"}chargetype微信为1
+#define MSGCODE_DAYCHARGE_GET_RESPONSE  1035// 每日充值回复{code:1035,poxiaoId:poxiaoId,result:"1",orderId:"1234"} 1为成功 0失败
+#define MSGCODE_ALLTASK_GET_REQUEST  1036// 全部任务获取请求{code:1036,poxiaoId:poxiaoId}
+#define MSGCODE_ALLTASK_GET_RESPONSE  1037// 全部任务获取回复{code:1037,poxiaoId:poxiaoId,result:"1"} 1为成功 0为失败
+
+#define MSGCODE_LEQUAN_MALL_REQUEST  1040// 乐券商城请求{code:1040,poxiaoId:poxiaoId}
+#define MSGCODE_LEQUAN_MALL_RESPONSE  1041// 乐券商城回复{code:1041,poxiaoId:poxiaoId,mall:[{goodsId:"1",goodsName:"手机",goodsPrice:"100"},{goodsId:"2",goodsName:"流量",goodsPrice:"1000"}]}
+#define MSGCODE_LEQUAN_MALL_EXCHANGE_REQUEST  1042// 乐券商城兑换请求{code:1042,poxiaoId:poxiaoId,phone:"13999999",address:"浙江杭州",name:"张三",goodsId:"1"}
+#define MSGCODE_LEQUAN_MALL_EXCHANGE_RESPONSE  1043// 乐券商城兑换回复{code:1043,poxiaoId:poxiaoId,result:"1"} 1成功0失败
+
+#define MSGCODE_CHARGE_LIST_REQUEST  1044// 充值列表请求{code:1044,poxiaoId:poxiaoId}
+#define MSGCODE_CHARGE_LIST_RESPONSE  1045// 充值列表回复{code:1045,poxiaoId:poxiaoId,list:[{id:"1",money:"1000",diamond:"100"},{id:"2",money:"2000",diamond:"200"}]}
+#define MSGCODE_CHARGE_REQUEST  1046// 充值下单请求{code:1046,poxiaoId:poxiaoId,gameId:"1",channelId:"lele",feecode:"12",money:"100",chargetype:"1"}
+#define MSGCODE_CHARGE_RESPONSE  1047// 充值下单回复{code:1047,poxiaoId:poxiaoId,result:"1",orderId:"201601010111"} 1成功0失败
+
+#define MSGCODE_EXCHANGE_LIST_REQUEST  1048// 兑换列表请求{code:1048,poxiaoId:poxiaoId}
+#define MSGCODE_EXCHANGE_LIST_RESPONSE  1049// 兑换列表回复{code:1049,poxiaoId:poxiaoId,list:[{id:"1",gold:"1000",diamond:"100"},{id:"2",gold:"2000",diamond:"200"}]}
+#define MSGCODE_EXCHANGE_REQUEST  1050// 兑换请求{code:1050,poxiaoId:poxiaoId,gold:"1000"}
+#define MSGCODE_EXCHANGE_RESPONSE  1051// 兑换回复{code:1051,poxiaoId:poxiaoId,result:"1"} 1成功0失败
+
+#define MSGCODE_FIRST_CHARGE_GET_REQUEST  1052// 首次充值獲取请求{code:1052,poxiaoId:poxiaoId}
+#define MSGCODE_FIRST_CHARGE_GET_RESPONSE  1053// 首次充值获取回复{code:1053,poxiaoId:poxiaoId,gold:"123",diamond:"456"}
+#define MSGCODE_FIRST_CHARGE_REQUEST  1054// 首次充值下单请求{code:1054,poxiaoId:poxiaoId,gameId:"1",channelId:"lele",feecode:"12",money:"100",chargetype:"1"}
+#define MSGCODE_FIRST_CHARGE_RESPONSE  1055// 首次充值下单回复{code:1055,poxiaoId:poxiaoId,result:"1",orderId:"201601010111"} 1成功0失败
+
+#define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_REQUEST  1056// 乐券商城兑换记录请求{code:1056,poxiaoId:poxiaoId}
+#define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_RESPONSE  1057// 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
 
 #define MSGCODE_MAJIANG_FIRSTHUA_REQUEST  1999// 首次清理花牌请求{code:1999,poxiaoId:poxiaoId,seatId:seatId}
 #define MSGCODE_MAJIANG_KICKOUT_REQUEST  2000// 剔除玩家请求{code:2000,poxiaoId:poxiaoId,seatId:seatId}
@@ -118,65 +178,9 @@
 #define MSGCODE_FRIEND_GAME_BILL_DETAIL_REQUEST  2043//获取账单明细请求{code:2043,poxiaoId:poxiaoId,billid:"8888"}
 #define MSGCODE_FRIEND_GAME_BILL_DETAIL_RESPONSE  2044//获取账单明细回复{code:2044,poxiaoId:poxiaoId,detail:[{nickname:"张三",score:"1000"},{nickname:"李四",score:"2000"},{nickname:"王五",score:"-1000"},{nickname:"赵六",score:"-1100"}]}
 
-#define MSGCODE_FULI_REQUEST  1012// 福利情况获取请求{code:1012,poxiaoId:poxiaoId}
-#define MSGCODE_FULI_RESPONSE  1013//福利情况获取回复{code:1013,poxiaoId:poxiaoId,jjj:{count:"2",used:"0",gold:"10000"},wx:{result:"1",gold:"10000",bangzuan:"20"},bzjjj:{count:"2",used:"0",bangzuan:"20"},mobile:{result:"1",gold:"10000"}} count可以领几次 used已经领取几次
-#define MSGCODE_JJJ_GET_REQUEST  1014// 救济金请求{code:1014,poxiaoId:poxiaoId}
-#define MSGCODE_JJJ_GET_RESPONSE  1015// 救济金回复{code:1015,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
-#define MSGCODE_BDWEIXIN_GET_REQUEST  1016// 绑定微信奖励领取请求{code:1016,poxiaoId:poxiaoId}
-#define MSGCODE_BDWEIXIN_GET_RESPONSE  1017// 绑定微信奖励领取回复{code:1017,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
-#define MSGCODE_BZJJJ_GET_REQUEST  1018// 绑钻救济请求{code:1018,poxiaoId:poxiaoId}
-#define MSGCODE_BZJJJ_GET_RESPONSE  1019// 绑钻救济回复{code:1019,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
-#define MSGCODE_BDPHONE_GET_REQUEST  1020// 绑定手机领取请求{code:1020,poxiaoId:poxiaoId}
-#define MSGCODE_BDPHONE_GET_RESPONSE  1021// 绑定手机领取回复{code:1021,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
-
-#define MSGCODE_LOTTERY_REQUEST  1022// 金币抽奖情况获取请求{code:1022,poxiaoId:poxiaoId}
-#define MSGCODE_LOTTERY_RESPONSE  1023// 金币抽奖情况获取回复{code:1023,poxiaoId:poxiaoId,result:"1",gold:"50000",prize:[{gold:30000},{lequan:300},{lequan:800},{lequan:100},{bangzuan:80},{bangzuan:50},{bangzuan:20},{gold:60000},{diamond:11}],count:"1",max:"5"} result1为可以参加，0为不可参加 ，count为可以抽奖几次，max为最多能抽奖几次，prize奖品里面数值为整数
-#define MSGCODE_LOTTERY_GET_REQUEST  1024// 金币抽奖奖励领取请求{code:1024,poxiaoId:poxiaoId}
-#define MSGCODE_LOTTERY_GET_RESPONSE  1025// 金币抽奖奖励领取回复{code:1025,poxiaoId:poxiaoId,result:"1",prize:{gold:10}} 1为成功 0失败,prize为抽到的奖品，奖品里面数值为整数
-
-#define MSGCODE_TASK_REQUEST  1026// 任务情况获取请求{code:1026,poxiaoId:poxiaoId}
-#define MSGCODE_TASK_RESPONSE  1027// 任务情况获取回复{code:1027,poxiaoId:poxiaoId,mq3:{used:"0"},pp3:{used:"0"},lz4:{used:"0"},daycharge:{result:"1"},alltask:{result:"1"})  used已经完成几把 -1为已领取,result为-1表示已领取 1为可以领取 0为不可以领取
-#define MSGCODE_MQ3_GET_REQUEST  1028// 门清三把奖励获取请求{code:1028,poxiaoId:poxiaoId}
-#define MSGCODE_MQ3_GET_RESPONSE  1029// 门清三把奖励获取回复{code:1029,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
-#define MSGCODE_PPH3_GET_REQUEST  1030// 碰碰胡三把奖励获取请求{code:1030,poxiaoId:poxiaoId}
-#define MSGCODE_PPH3_GET_RESPONSE  1031// 碰碰胡三把奖励获取回复{code:1031,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
-#define MSGCODE_LEZI4_GET_REQUEST  1032// 勒子牌型四把奖励获取请求{code:1032,poxiaoId:poxiaoId}
-#define MSGCODE_LEZI4_GET_RESPONSE  1033// 勒子牌型四把奖励获取回复{code:1033,poxiaoId:poxiaoId,result:"1"} 1为成功 0失败
-#define MSGCODE_DAYCHARGE_GET_REQUEST  1034// 每日充值请求{code:1034,poxiaoId:poxiaoId,channelId:"lele",chargetype:"1"}chargetype微信为1
-#define MSGCODE_DAYCHARGE_GET_RESPONSE  1035// 每日充值回复{code:1035,poxiaoId:poxiaoId,result:"1",orderId:"1234"} 1为成功 0失败
-#define MSGCODE_ALLTASK_GET_REQUEST  1036// 全部任务获取请求{code:1036,poxiaoId:poxiaoId}
-#define MSGCODE_ALLTASK_GET_RESPONSE  1037// 全部任务获取回复{code:1037,poxiaoId:poxiaoId,result:"1"} 1为成功 0为失败
-
-#define MSGCODE_LEQUAN_MALL_REQUEST  1040// 乐券商城请求{code:1040,poxiaoId:poxiaoId}
-#define MSGCODE_LEQUAN_MALL_RESPONSE  1041// 乐券商城回复{code:1041,poxiaoId:poxiaoId,mall:[{goodsId:"1",goodsName:"手机",goodsPrice:"100"},{goodsId:"2",goodsName:"流量",goodsPrice:"1000"}]}
-#define MSGCODE_LEQUAN_MALL_EXCHANGE_REQUEST  1042// 乐券商城兑换请求{code:1042,poxiaoId:poxiaoId,phone:"13999999",address:"浙江杭州",name:"张三",goodsId:"1"}
-#define MSGCODE_LEQUAN_MALL_EXCHANGE_RESPONSE  1043// 乐券商城兑换回复{code:1043,poxiaoId:poxiaoId,result:"1"} 1成功0失败
-
-#define MSGCODE_CHARGE_LIST_REQUEST  1044// 充值列表请求{code:1044,poxiaoId:poxiaoId}
-#define MSGCODE_CHARGE_LIST_RESPONSE  1045// 充值列表回复{code:1045,poxiaoId:poxiaoId,list:[{id:"1",money:"1000",diamond:"100"},{id:"2",money:"2000",diamond:"200"}]}
-#define MSGCODE_CHARGE_REQUEST  1046// 充值下单请求{code:1046,poxiaoId:poxiaoId,gameId:"1",channelId:"lele",feecode:"12",money:"100",chargetype:"1"}
-#define MSGCODE_CHARGE_RESPONSE  1047// 充值下单回复{code:1047,poxiaoId:poxiaoId,result:"1",orderId:"201601010111"} 1成功0失败
-
-#define MSGCODE_EXCHANGE_LIST_REQUEST  1048// 兑换列表请求{code:1048,poxiaoId:poxiaoId}
-#define MSGCODE_EXCHANGE_LIST_RESPONSE  1049// 兑换列表回复{code:1049,poxiaoId:poxiaoId,list:[{id:"1",gold:"1000",diamond:"100"},{id:"2",gold:"2000",diamond:"200"}]}
-#define MSGCODE_EXCHANGE_REQUEST  1050// 兑换请求{code:1050,poxiaoId:poxiaoId,gold:"1000"}
-#define MSGCODE_EXCHANGE_RESPONSE  1051// 兑换回复{code:1051,poxiaoId:poxiaoId,result:"1"} 1成功0失败
-
-#define MSGCODE_FIRST_CHARGE_GET_REQUEST  1052// 首次充值獲取请求{code:1052,poxiaoId:poxiaoId}
-#define MSGCODE_FIRST_CHARGE_GET_RESPONSE  1053// 首次充值获取回复{code:1053,poxiaoId:poxiaoId,gold:"123",diamond:"456"}
-#define MSGCODE_FIRST_CHARGE_REQUEST  1054// 首次充值下单请求{code:1054,poxiaoId:poxiaoId,gameId:"1",channelId:"lele",feecode:"12",money:"100",chargetype:"1"}
-#define MSGCODE_FIRST_CHARGE_RESPONSE  1055// 首次充值下单回复{code:1055,poxiaoId:poxiaoId,result:"1",orderId:"201601010111"} 1成功0失败
 
 
 
-#define MSGCODE_ACCOUNTREPEAT_REQUEST  98// 判断用户名重复请求 {code:98,username:"abc"}
-#define MSGCODE_ACCOUNTREPEAT_RESPONSE  99// 判断用户名重复回复 {code:99,result:"1"} result为1是可以注册  0为不可以注册
-#define MSGCODE_GONGGAO_REQUEST  140// 获取公告请求{code:140,poxiaoId:poxiaoId}
-#define MSGCODE_GONGGAO_RESPONSE  141// 获取公告回复{code:141,poxiaoId:poxiaoId,content:"11111111"}
-#define MSGCODE_MARQUEE_REQUEST  142// 获取走马灯请求{code:142,poxiaoId:poxiaoId}
-#define MSGCODE_MARQUEE_RESPONSE  143// 获取走马灯回复{code:143,poxiaoId:poxiaoId,content:"11111111"}
-#define MSGCODE_QUICK_ADD_FRIEND_REQUEST  144// 快速互加好友请求{code:144,poxiaoId:poxiaoId,key:"1234"}
-#define MSGCODE_QUICK_ADD_FRIEND_RESPONSE  145// 快速互加好友回复{code:145,poxiaoId:poxiaoId,result:"1"} 1成功0失败
 
 
 #define LOGIN_SUCCESS "login_success"
