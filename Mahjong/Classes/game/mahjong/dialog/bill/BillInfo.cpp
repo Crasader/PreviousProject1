@@ -29,9 +29,9 @@ bool BillInfo::init()
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(BillInfo::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 650);
+    closeMenu->setPosition(980, 655);
     closeMenu->setTag(102);
-    addChild(closeMenu,2);
+    addChild(closeMenu);
     
     auto paodai = Sprite::create("common/piaodai_zi.png");
     paodai->setPosition(640, 660);
@@ -65,11 +65,12 @@ bool BillInfo::init()
 
 void BillInfo::onEnter(){
     Layer::onEnter();
+    //刷新账单信息
     playerBillListener = EventListenerCustom::create(MSG_PLAYER_BILL, [=](EventCustom* event){
         updateBillInfo();
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerBillListener, 1);
-    
+    //显示账单详情
     detailBillListener = EventListenerCustom::create(MSG_PLAYER_BILL_DETAIL, [=](EventCustom* event){
         BillDetailInfo* detail =BillDetailInfo::create();
         addChild(detail);
@@ -156,7 +157,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         Menu* myMenu = Menu::create(detailImage,NULL);
         myMenu->setPosition(690,125);
         cell->addChild(myMenu);
-        
+        cell->setName(data.billId);
     }else{
         ((Label*)cell->getChildByTag(100))->setString(data.date);
         std::vector<BillContent> conBill = sortBillInfo(data.content);
@@ -173,6 +174,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             }
             ((LabelAtlas*)cell->getChildByTag(300+i))->setString(myScore);
         }
+        cell->setName(data.billId);
     }
     return cell;
 }
@@ -187,8 +189,14 @@ ssize_t BillInfo::numberOfCellsInTableView(TableView *table)
 void BillInfo::showDetailInfo(Ref* ref){
     MenuItemImage* image = (MenuItemImage*)ref;
     BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillDetailCommand(info.bills.at(image->getTag()).billId));
-    GAMEDATA::getInstance()->setBillInfoData(info.bills.at(image->getTag()));
+    string bId =(image->getParent())->getParent()->getName();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillDetailCommand(bId));
+    for(int i=0;i<info.bills.size();i++){
+        if(info.bills.at(i).billId == bId){
+         GAMEDATA::getInstance()->setBillInfoData(info.bills.at(i));
+        }
+    }
+   
 }
 
 void BillInfo::closeView(){

@@ -10,6 +10,7 @@ bool BillDetailInfo::init()
     {
         return false;
     }
+    
     MenuItem* item = MenuItem::create();
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
@@ -22,7 +23,7 @@ bool BillDetailInfo::init()
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(BillDetailInfo::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 650);
+    closeMenu->setPosition(980, 655);
     addChild(closeMenu);
     
     auto paodai = Sprite::create("common/piaodai_zi.png");
@@ -109,9 +110,11 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
         Label* panId = Label::create(cocos2d::String::createWithFormat("%ld",idx+1)->_string,"arial",20);
+        panId->setTag(99);
         panId->setAnchorPoint(Point::ANCHOR_MIDDLE);
         panId->setPosition(15,15);
         cell->addChild(panId);
+        
         for(int i=0;i<detail.detail.size();i++){
             std::string imageName ="bill/yellow_num.png";
             int score =atoi(detail.detail.at(i).score.c_str());
@@ -120,12 +123,27 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             }
             std::string myScore =  ":"+StringUtil::itos(abs(score));
             LabelAtlas* playerNum = LabelAtlas::create(myScore,imageName,20,30,'0');
+            playerNum->setTag(100+i);
             playerNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
             playerNum->setPosition(Vec2(145+i*160, 15));
             cell->addChild(playerNum);
         }
     }else{
-        //TODO
+        
+        if(NULL != getChildByTag(99)){
+          ((Label*)getChildByTag(99))-> setString(cocos2d::String::createWithFormat("%ld",idx+1)->_string);
+        }
+        for(int i=0;i<detail.detail.size();i++){
+            if(NULL !=getChildByTag(100+i)){
+                std::string imageName ="bill/yellow_num.png";
+                int score =atoi(detail.detail.at(i).score.c_str());
+                if(score<0){
+                    imageName="bill/purper_num.png";
+                }
+                std::string myScore =  ":"+StringUtil::itos(abs(score));
+                ((Label*)getChildByTag(100+i)) -> setString(myScore);
+            }
+        }
     }
     return cell;
 }
