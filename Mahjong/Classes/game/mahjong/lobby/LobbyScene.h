@@ -33,10 +33,6 @@ public:
 private:
     EventListenerCustom* enterRoomListener;
     EventListenerCustom* enterFriendRoomListener;
-    EventListenerCustom* friendLsitListener;
-    EventListenerCustom* addFriendRespListener;
-    EventListenerCustom* deleteFriendRespListener;
-    EventListenerCustom* addFriendNotifyListener;
     EventListenerCustom* openFriendRoomListener;
     EventListenerCustom* friendInviteListener;
     EventListenerCustom* dailySignListener;

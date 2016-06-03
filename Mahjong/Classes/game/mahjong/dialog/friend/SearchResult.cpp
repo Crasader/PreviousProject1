@@ -24,6 +24,27 @@ bool SearchResult::init()
 }
 
 
+void SearchResult::onEnter(){
+    Layer::onEnter();
+    
+    addFriendRespListener = EventListenerCustom::create(MSG_ADD_FRIEND_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+        }else{
+            //TODO 添加好友失败
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addFriendRespListener, 1);
+}
+
+
+void SearchResult::onExit(){
+    Layer::onExit();
+    _eventDispatcher->removeEventListener(addFriendRespListener);
+}
+
 void SearchResult::tableCellTouched(TableView* table, TableViewCell* cell)
 {
 	log("cell touched at index: %ld", cell->getIdx());

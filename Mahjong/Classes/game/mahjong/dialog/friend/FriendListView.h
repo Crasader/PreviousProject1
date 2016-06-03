@@ -20,6 +20,7 @@ public:
 	CREATE_FUNC(FriendListView);
     
 private:
+    EventListenerCustom* friendLsitListener;
 	TableView* tableView;
 	void addConfirm();
 	void chatFriend(Ref* ref);

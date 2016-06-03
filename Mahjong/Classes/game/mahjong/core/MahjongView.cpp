@@ -1123,7 +1123,7 @@ void MahjongView::addFriendInviteMeListener(){
     friendInviteMeListener = EventListenerCustom::create(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
         PromptDialog* invite = PromptDialog::create();
         invite->setTextInfo(0);
-        this->addChild(invite, 300);
+        addChild(invite, 4);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendInviteMeListener, 1);
 }

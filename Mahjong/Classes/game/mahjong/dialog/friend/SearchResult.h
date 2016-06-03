@@ -7,6 +7,8 @@ USING_NS_CC_EXT;
 class SearchResult :public Layer, public TableViewDataSource, public TableViewDelegate{
 public:
 	virtual bool init();
+    virtual void onEnter() override;
+    virtual void onExit() override;
 
 	virtual void tableCellTouched(TableView* table, TableViewCell* cell);
 
@@ -22,6 +24,7 @@ public:
 	void updateResultList();
 	CREATE_FUNC(SearchResult);
 private:
+    EventListenerCustom* addFriendRespListener;
 	TableView* tableView;
 	void addFriend(Ref* ref);
 	void closeView();

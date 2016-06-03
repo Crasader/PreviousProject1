@@ -40,10 +40,6 @@ void LobbyScene::onExit(){
     Scene::onExit();
     _eventDispatcher->removeEventListener(enterRoomListener);
     _eventDispatcher->removeEventListener(enterFriendRoomListener);
-    _eventDispatcher->removeEventListener(friendLsitListener);
-    _eventDispatcher->removeEventListener(addFriendRespListener);
-    _eventDispatcher->removeEventListener(addFriendNotifyListener);
-    _eventDispatcher->removeEventListener(deleteFriendRespListener);
     _eventDispatcher->removeEventListener(openFriendRoomListener);
     _eventDispatcher->removeEventListener(friendInviteListener);
     _eventDispatcher->removeEventListener(dailySignListener);
@@ -379,7 +375,7 @@ void LobbyScene::getDailyTaskInfo(){
 
 
 void LobbyScene::addCustomEventListener(){
-    
+    //进入房间回复
     enterRoomListener = EventListenerCustom::create(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
@@ -388,12 +384,11 @@ void LobbyScene::addCustomEventListener(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
         else{
-            //TODO
             removeLoading();
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(enterRoomListener, 1);
-    
+    //进入好友房间回复
     enterFriendRoomListener = EventListenerCustom::create(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
@@ -403,62 +398,26 @@ void LobbyScene::addCustomEventListener(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
         else{
-            //TODO
             removeLoading();
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(enterFriendRoomListener, 1);
+
     
-    friendLsitListener = EventListenerCustom::create(MSG_HERO_FRIEND_LIST, [=](EventCustom* event){
-        if(NULL != getChildByTag(524)){
-            ((FriendListView*)getChildByTag(524))->updateFriendList();
-        }
-        if(NULL != getChildByTag(525)){
-            ((FriendRoom*)getChildByTag(525))->updateFriendList();
-        }
-     
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendLsitListener, 1);
+ 
     
-    addFriendRespListener = EventListenerCustom::create(MSG_ADD_FRIEND_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        if (result == "1"){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-        }
-        else{
-            //TODO
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addFriendRespListener, 1);
     
-    addFriendNotifyListener = EventListenerCustom::create(MSG_ADD_FRIEND_NOTIFY, [=](EventCustom* event){
-        //		char* buf = static_cast<char*>(event->getUserData());
-        //TODO
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addFriendNotifyListener, 1);
-    
-    deleteFriendRespListener = EventListenerCustom::create(MSG_DELETE_FRIEND_RESP, [=](EventCustom* event){
-        //		char* buf = static_cast<char*>(event->getUserData());
-        /*if (friendAdd != NULL&&friendAdd->isVisible())
-         friendAdd->updateFriendList();
-         if (friendroom != NULL && friendroom->isVisible())
-         friendroom->updateFriendList();*/
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(deleteFriendRespListener, 1);
     
     openFriendRoomListener = EventListenerCustom::create(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
-        //		FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         GAMEDATA::getInstance()->setIsPrivateRoom(true);
         Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(openFriendRoomListener, 1);
     
     friendInviteListener = EventListenerCustom::create(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
-        //		char* buf = static_cast<char*>(event->getUserData());
         PromptDialog* invite = PromptDialog::create();
         invite->setTextInfo(0);
-        addChild(invite);
+        addChild(invite,4);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendInviteListener, 1);
     

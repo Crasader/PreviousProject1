@@ -61,11 +61,17 @@ bool FriendListView::init()
 
 void FriendListView::onEnter(){
 	Layer::onEnter();
+    friendLsitListener = EventListenerCustom::create(MSG_HERO_FRIEND_LIST, [=](EventCustom* event){
+        updateFriendList();        
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendLsitListener, 1);
+    
 }
 
 
 void FriendListView::onExit(){
 	Layer::onExit();
+      _eventDispatcher->removeEventListener(friendLsitListener);
 }
 
 void FriendListView::tableCellTouched(TableView* table, TableViewCell* cell)
