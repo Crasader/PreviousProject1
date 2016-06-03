@@ -74,7 +74,7 @@ void FriendAddView::showDialog(){
 	addChild(searchSprite);
 
 
-	quickSpite = Sprite::create("friend/search_friend_1.png");
+	quickSpite = Sprite::create("friend/quick_add_1.png");
 	quickSpite->setPosition(565, 525);
 	addChild(quickSpite);
 

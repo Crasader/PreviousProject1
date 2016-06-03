@@ -90,10 +90,13 @@ void BillInfo::tableCellTouched(TableView* table, TableViewCell* cell)
 {
     log("cell touched at index: %ld", cell->getIdx());
     BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
-    BillInfoData data = info.bills.at(cell->getIdx());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillDetailCommand(data.billId));
-    BillDetailInfo* billDetailInfo = BillDetailInfo::create();
-    addChild(billDetailInfo);
+    string bId =cell->getName();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillDetailCommand(bId));
+    for(int i=0;i<info.bills.size();i++){
+        if(info.bills.at(i).billId == bId){
+            GAMEDATA::getInstance()->setBillInfoData(info.bills.at(i));
+        }
+    }
 }
 
 Size BillInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
@@ -187,16 +190,8 @@ ssize_t BillInfo::numberOfCellsInTableView(TableView *table)
 
 
 void BillInfo::showDetailInfo(Ref* ref){
-    MenuItemImage* image = (MenuItemImage*)ref;
-    BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
-    string bId =(image->getParent())->getParent()->getName();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillDetailCommand(bId));
-    for(int i=0;i<info.bills.size();i++){
-        if(info.bills.at(i).billId == bId){
-         GAMEDATA::getInstance()->setBillInfoData(info.bills.at(i));
-        }
-    }
-   
+//    MenuItemImage* image = (MenuItemImage*)ref;
+//    BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
 }
 
 void BillInfo::closeView(){
