@@ -61,6 +61,8 @@
 		D226FD2B1D051DBA00324097 /* DropDownListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD261D051DBA00324097 /* DropDownListBox.cpp */; };
 		D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
 		D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
+		D226FD301D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
+		D226FD311D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
 		D22F1C181CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
@@ -364,6 +366,8 @@
 		D226FD271D051DBA00324097 /* DropDownListBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownListBox.h; sourceTree = "<group>"; };
 		D226FD281D051DBA00324097 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		D226FD291D051DBA00324097 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
+		D226FD2E1D05292400324097 /* LoadResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadResource.cpp; sourceTree = "<group>"; };
+		D226FD2F1D05292400324097 /* LoadResource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadResource.hpp; sourceTree = "<group>"; };
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
@@ -773,6 +777,8 @@
 				D226FD271D051DBA00324097 /* DropDownListBox.h */,
 				D226FD281D051DBA00324097 /* SplashScene.cpp */,
 				D226FD291D051DBA00324097 /* SplashScene.h */,
+				D226FD2E1D05292400324097 /* LoadResource.cpp */,
+				D226FD2F1D05292400324097 /* LoadResource.hpp */,
 			);
 			path = splash;
 			sourceTree = "<group>";
@@ -1437,6 +1443,7 @@
 				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
 				D2B1A8E51CCDF0F400A20896 /* GameData.cpp in Sources */,
 				D2B1A8D11CCDF0F400A20896 /* Jong.cpp in Sources */,
+				D226FD301D05292400324097 /* LoadResource.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D2B1A8931CCDF0F400A20896 /* DayCell.cpp in Sources */,
 				D2BDE3B71CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */,
@@ -1521,6 +1528,7 @@
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D2B1A8AC1CCDF0F400A20896 /* GenderDialog.cpp in Sources */,
+				D226FD311D05292400324097 /* LoadResource.cpp in Sources */,
 				D2B1A8DE1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				D2B1A8B61CCDF0F400A20896 /* PromptDialog.cpp in Sources */,
 				D2B1A88C1CCDF0F400A20896 /* DailyEvent.cpp in Sources */,

@@ -5,6 +5,7 @@
 #include "game/mahjong/dialog/register/FindPassword.h"
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
+#include "game/mahjong/splash/LoadResource.hpp"
 
 Scene* SplashScene::createScene()
 {
@@ -20,12 +21,14 @@ bool SplashScene::init()
     {
         return false;
     }
-    //add all  plsit
-    loadResource();
-    //draw scene
-    drawLonginScene();
-    //add event listener
-    addTocuhListener();
+    LoadResource* loda = LoadResource::create();
+    addChild(loda);
+//    //add all  plsit
+//    loadResource();
+//    //draw scene
+//    drawLonginScene();
+//    //add event listener
+//    addTocuhListener();
     return true;
 }
 
