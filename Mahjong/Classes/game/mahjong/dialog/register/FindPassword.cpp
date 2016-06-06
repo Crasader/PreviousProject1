@@ -48,6 +48,7 @@ void FindPassword::showDialog(){
     _account->setPosition(Point(720, 450));
     _account->setTag(0);
     _account->setFont("American Typewriter", 24);
+    _account->setInputMode(EditBox::InputMode::SINGLE_LINE);
     _account->setDelegate(this);
     addChild(_account);
     
@@ -75,7 +76,7 @@ void FindPassword::showDialog(){
     _phone = EditBox::create(Size(445, 81), Scale9Sprite::create());
     _phone->setPosition(Point(720, 335));
     _phone->setFont("American Typewriter", 24);
-    _phone->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _phone->setInputMode(EditBox::InputMode::PHONE_NUMBER);
     _phone->setTag(1);
     _phone->setDelegate(this);
     addChild(_phone);

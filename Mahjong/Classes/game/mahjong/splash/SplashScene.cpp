@@ -243,13 +243,13 @@ void SplashScene::setChangeNickName(std::string name){
 
 void SplashScene::showUserRegister(){
     UserRegister* layer = UserRegister::create();
-    this->addChild(layer);
+    this->addChild(layer,2);
 }
 
 
 void SplashScene::findbackPwd(){
     FindPassword* pass = FindPassword::create();
-    this->addChild(pass);
+    this->addChild(pass,2);
 }
 
 
