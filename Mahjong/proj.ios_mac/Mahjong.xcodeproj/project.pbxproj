@@ -109,6 +109,12 @@
 		D25DEE381CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE411CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
 		D25DEE421CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
+		D28A49FF1D0562D600741FD0 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A49FD1D0562D600741FD0 /* UrlImageMannger.cpp */; };
+		D28A4A001D0562D600741FD0 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A49FD1D0562D600741FD0 /* UrlImageMannger.cpp */; };
+		D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
+		D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
+		D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
+		D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
 		D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */; };
 		D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */; };
 		D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
@@ -391,6 +397,12 @@
 		D25329531CC0D33600DDAD97 /* trusteeship */ = {isa = PBXFileReference; lastKnownFileType = folder; path = trusteeship; sourceTree = "<group>"; };
 		D25DEE361CC0F56A007D428A /* bill */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bill; sourceTree = "<group>"; };
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
+		D28A49FD1D0562D600741FD0 /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
+		D28A49FE1D0562D600741FD0 /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
+		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
+		D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientUtill.h; sourceTree = "<group>"; };
+		D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMannger.cpp; sourceTree = "<group>"; };
+		D28A4A0E1D0565C200741FD0 /* HttpMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpMannger.h; sourceTree = "<group>"; };
 		D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiuJuAnim.cpp; sourceTree = "<group>"; };
 		D28B6AE01CF3E0A30033C9DE /* LiuJuAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LiuJuAnim.hpp; sourceTree = "<group>"; };
 		D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuaAnim.cpp; sourceTree = "<group>"; };
@@ -715,6 +727,7 @@
 				D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */,
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
 				D2B1A7B11CCDF0F300A20896 /* game */,
+				D28A4A0A1D0565C200741FD0 /* http */,
 				D2B1A85A1CCDF0F300A20896 /* server */,
 				D2B1A8641CCDF0F300A20896 /* socket */,
 				D2B1A86C1CCDF0F400A20896 /* userdata */,
@@ -781,6 +794,17 @@
 				D226FD2F1D05292400324097 /* LoadResource.hpp */,
 			);
 			path = splash;
+			sourceTree = "<group>";
+		};
+		D28A4A0A1D0565C200741FD0 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */,
+				D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */,
+				D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */,
+				D28A4A0E1D0565C200741FD0 /* HttpMannger.h */,
+			);
+			path = http;
 			sourceTree = "<group>";
 		};
 		D2B1A7B11CCDF0F300A20896 /* game */ = {
@@ -1176,6 +1200,8 @@
 		D2B1A84D1CCDF0F300A20896 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				D28A49FD1D0562D600741FD0 /* UrlImageMannger.cpp */,
+				D28A49FE1D0562D600741FD0 /* UrlImageMannger.h */,
 				D2B1A84E1CCDF0F300A20896 /* Audio.cpp */,
 				D2B1A84F1CCDF0F300A20896 /* Audio.h */,
 				D2B1A8501CCDF0F300A20896 /* Chinese.cpp */,
@@ -1417,6 +1443,7 @@
 				D2B1A8B31CCDF0F400A20896 /* UserInfo.cpp in Sources */,
 				D2B1A9031CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D2B1A8B91CCDF0F400A20896 /* UserRegister.cpp in Sources */,
+				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D2B1A8811CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D2B1A8911CCDF0F400A20896 /* DailySign.cpp in Sources */,
 				D2B1A8C11CCDF0F400A20896 /* ExchangePropCell.cpp in Sources */,
@@ -1475,8 +1502,10 @@
 				D2B1A8A91CCDF0F400A20896 /* ChangePassword.cpp in Sources */,
 				D2B1A87B1CCDF0F400A20896 /* PlayerChat.cpp in Sources */,
 				D2B1A8C31CCDF0F400A20896 /* FaHongbao.cpp in Sources */,
+				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D2B1A8E11CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
+				D28A49FF1D0562D600741FD0 /* UrlImageMannger.cpp in Sources */,
 				D2B1A8A51CCDF0F400A20896 /* SearchResult.cpp in Sources */,
 				D2B1A8AB1CCDF0F400A20896 /* GenderDialog.cpp in Sources */,
 				D2BDE3A81CEB101600754AC0 /* ResultScene.cpp in Sources */,
@@ -1547,6 +1576,8 @@
 				D2B1A8CA1CCDF0F400A20896 /* LequanShop.cpp in Sources */,
 				D2B1A8EE1CCDF0F400A20896 /* Chinese.cpp in Sources */,
 				D2B1A8901CCDF0F400A20896 /* PrideCell.cpp in Sources */,
+				D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */,
+				D28A4A001D0562D600741FD0 /* UrlImageMannger.cpp in Sources */,
 				D2B1A8B41CCDF0F400A20896 /* UserInfo.cpp in Sources */,
 				D2B1A8961CCDF0F400A20896 /* DailyTask.cpp in Sources */,
 				D2B1A8A61CCDF0F400A20896 /* SearchResult.cpp in Sources */,
@@ -1565,6 +1596,7 @@
 				D2B1A8CE1CCDF0F400A20896 /* Redwallet.cpp in Sources */,
 				D2B1A8C21CCDF0F400A20896 /* ExchangePropCell.cpp in Sources */,
 				D2BDE3B81CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */,
+				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D2B1A8801CCDF0F400A20896 /* MahjongView.cpp in Sources */,
 				D2B1A8F21CCDF0F400A20896 /* SeatIdUtil.cpp in Sources */,
 				D2B1A8BC1CCDF0F400A20896 /* UserSetting.cpp in Sources */,

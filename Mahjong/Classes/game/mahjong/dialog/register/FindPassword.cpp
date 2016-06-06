@@ -49,6 +49,7 @@ void FindPassword::showDialog(){
     _account->setTag(0);
     _account->setFont("American Typewriter", 24);
     _account->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _account->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _account->setDelegate(this);
     addChild(_account);
     
@@ -77,6 +78,7 @@ void FindPassword::showDialog(){
     _phone->setPosition(Point(720, 335));
     _phone->setFont("American Typewriter", 24);
     _phone->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+    _phone->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _phone->setTag(1);
     _phone->setDelegate(this);
     addChild(_phone);

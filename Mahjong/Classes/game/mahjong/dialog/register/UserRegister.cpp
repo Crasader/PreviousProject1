@@ -77,6 +77,7 @@ void UserRegister::drawDialog(){
 	_editName->setTag(0);
 	_editName->setFont("American Typewriter", 24);
     _editName->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	_editName->setDelegate(this);
 	addChild(_editName);
 
@@ -102,6 +103,7 @@ void UserRegister::drawDialog(){
 	_editPwd->setFont("American Typewriter", 24);
 	_editPwd->setInputFlag(EditBox::InputFlag::PASSWORD);
 	_editPwd->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _editPwd->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	_editPwd->setTag(1);
 	_editPwd->setDelegate(this);
 	addChild(_editPwd);
@@ -124,6 +126,7 @@ void UserRegister::drawDialog(){
 	_editPwd2->setFont("American Typewriter", 24);
 	_editPwd2->setInputFlag(EditBox::InputFlag::PASSWORD);
 	_editPwd2->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _editPwd2->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	_editPwd2->setTag(2);
 	_editPwd2->setDelegate(this);
 	addChild(_editPwd2);

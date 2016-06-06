@@ -120,20 +120,19 @@ void SplashScene::drawLonginScene(){
     
     _editName = EditBox::create(Size(400, 81), Scale9Sprite::create());
     _editName->setPosition(Point(1010, 475));
-    _editName->setTag(0);
     _editName->setFont("arial", 30);
     _editName->setTag(606);
     if (UserData::getInstance()->getPassword() != "unknow"){
         _editName->setPlaceHolder(UserData::getInstance()->getUserName().c_str());
     }
     _editName->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _editName->setDelegate(this);
     addChild(_editName);
 
     
     _editPwd = EditBox::create(Size(400, 81), Scale9Sprite::create());
     _editPwd->setPosition(Point(1010, 352));
-    _editPwd->setTag(1);
     _editPwd->setTag(607);
     _editPwd->setFont("arial", 30);
     if (UserData::getInstance()->getPassword() != "unknow"){
@@ -146,6 +145,8 @@ void SplashScene::drawLonginScene(){
     }
     _editPwd->setInputFlag(EditBox::InputFlag::PASSWORD);
     _editPwd->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _editPwd->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
+    _editPwd->setFocused(true);
     _editPwd->setDelegate(this);
     addChild(_editPwd);
     
@@ -319,10 +320,10 @@ void SplashScene::removeLoading(){
 
 
 void SplashScene::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
-    if (editBox->getTag() == 0){
+    if (editBox->getTag() == 606){
         username_text->setVisible(false);
     }
-    if (editBox->getTag() == 1){
+    if (editBox->getTag() == 607){
         password_text->setVisible(false);
     }
     
@@ -338,5 +339,8 @@ void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const
 }
 
 void SplashScene::editBoxReturn(cocos2d::extension::EditBox* editBox){
-
+    if(editBox->getTag()==606){
+        log("PPPPPPPPPPPPPPPPPPPPPPP");
+        ((cocos2d::extension::EditBox*)getChildByTag(607))->requestFocus();
+    }
 }
