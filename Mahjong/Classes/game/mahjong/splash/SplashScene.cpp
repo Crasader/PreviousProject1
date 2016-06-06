@@ -1,4 +1,4 @@
-#include "game/splash/SplashScene.h"
+#include "game/mahjong/splash/SplashScene.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/result/ResultLayer.h"
 #include "game/mahjong/dialog/register/UserRegister.h"

@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "game/splash/SplashScene.h"
+#include "game/mahjong/splash/SplashScene.h"
 
 USING_NS_CC;
 

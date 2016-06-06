@@ -57,6 +57,10 @@
 		D20C391B1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C39181CFEAB37006F6C9E /* ExchangeItem.cpp */; };
 		D20C391E1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
 		D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
+		D226FD2A1D051DBA00324097 /* DropDownListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD261D051DBA00324097 /* DropDownListBox.cpp */; };
+		D226FD2B1D051DBA00324097 /* DropDownListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD261D051DBA00324097 /* DropDownListBox.cpp */; };
+		D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
+		D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
 		D22F1C181CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
@@ -225,10 +229,6 @@
 		D2B1A8E41CCDF0F400A20896 /* ResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8421CCDF0F300A20896 /* ResultLayer.cpp */; };
 		D2B1A8E51CCDF0F400A20896 /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8461CCDF0F300A20896 /* GameData.cpp */; };
 		D2B1A8E61CCDF0F400A20896 /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8461CCDF0F300A20896 /* GameData.cpp */; };
-		D2B1A8E71CCDF0F400A20896 /* DropDownListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8491CCDF0F300A20896 /* DropDownListBox.cpp */; };
-		D2B1A8E81CCDF0F400A20896 /* DropDownListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8491CCDF0F300A20896 /* DropDownListBox.cpp */; };
-		D2B1A8E91CCDF0F400A20896 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A84B1CCDF0F300A20896 /* SplashScene.cpp */; };
-		D2B1A8EA1CCDF0F400A20896 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A84B1CCDF0F300A20896 /* SplashScene.cpp */; };
 		D2B1A8EB1CCDF0F400A20896 /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A84E1CCDF0F300A20896 /* Audio.cpp */; };
 		D2B1A8EC1CCDF0F400A20896 /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A84E1CCDF0F300A20896 /* Audio.cpp */; };
 		D2B1A8ED1CCDF0F400A20896 /* Chinese.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8501CCDF0F300A20896 /* Chinese.cpp */; };
@@ -360,6 +360,10 @@
 		D20C39191CFEAB37006F6C9E /* ExchangeItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeItem.hpp; sourceTree = "<group>"; };
 		D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutFogAnim.cpp; sourceTree = "<group>"; };
 		D20C391D1CFEC2E7006F6C9E /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
+		D226FD261D051DBA00324097 /* DropDownListBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DropDownListBox.cpp; sourceTree = "<group>"; };
+		D226FD271D051DBA00324097 /* DropDownListBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownListBox.h; sourceTree = "<group>"; };
+		D226FD281D051DBA00324097 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
+		D226FD291D051DBA00324097 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
@@ -506,10 +510,6 @@
 		D2B1A8451CCDF0F300A20896 /* DataStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStruct.h; sourceTree = "<group>"; };
 		D2B1A8461CCDF0F300A20896 /* GameData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameData.cpp; sourceTree = "<group>"; };
 		D2B1A8471CCDF0F300A20896 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
-		D2B1A8491CCDF0F300A20896 /* DropDownListBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DropDownListBox.cpp; sourceTree = "<group>"; };
-		D2B1A84A1CCDF0F300A20896 /* DropDownListBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownListBox.h; sourceTree = "<group>"; };
-		D2B1A84B1CCDF0F300A20896 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
-		D2B1A84C1CCDF0F300A20896 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		D2B1A84E1CCDF0F300A20896 /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
 		D2B1A84F1CCDF0F300A20896 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		D2B1A8501CCDF0F300A20896 /* Chinese.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chinese.cpp; sourceTree = "<group>"; };
@@ -766,12 +766,22 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		D226FD251D051DBA00324097 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				D226FD261D051DBA00324097 /* DropDownListBox.cpp */,
+				D226FD271D051DBA00324097 /* DropDownListBox.h */,
+				D226FD281D051DBA00324097 /* SplashScene.cpp */,
+				D226FD291D051DBA00324097 /* SplashScene.h */,
+			);
+			path = splash;
+			sourceTree = "<group>";
+		};
 		D2B1A7B11CCDF0F300A20896 /* game */ = {
 			isa = PBXGroup;
 			children = (
 				D2B1A7B21CCDF0F300A20896 /* loading */,
 				D2B1A7B51CCDF0F300A20896 /* mahjong */,
-				D2B1A8481CCDF0F300A20896 /* splash */,
 				D2B1A84D1CCDF0F300A20896 /* utils */,
 			);
 			path = game;
@@ -789,6 +799,7 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D226FD251D051DBA00324097 /* splash */,
 				D2B1A7B61CCDF0F300A20896 /* anim */,
 				D2B1A7BF1CCDF0F300A20896 /* chat */,
 				D2B1A7C21CCDF0F300A20896 /* core */,
@@ -1156,17 +1167,6 @@
 			path = state;
 			sourceTree = "<group>";
 		};
-		D2B1A8481CCDF0F300A20896 /* splash */ = {
-			isa = PBXGroup;
-			children = (
-				D2B1A8491CCDF0F300A20896 /* DropDownListBox.cpp */,
-				D2B1A84A1CCDF0F300A20896 /* DropDownListBox.h */,
-				D2B1A84B1CCDF0F300A20896 /* SplashScene.cpp */,
-				D2B1A84C1CCDF0F300A20896 /* SplashScene.h */,
-			);
-			path = splash;
-			sourceTree = "<group>";
-		};
 		D2B1A84D1CCDF0F300A20896 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1429,6 +1429,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D2B1A8F51CCDF0F400A20896 /* Toast.cpp in Sources */,
 				D2B1A8731CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
+				D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */,
 				D2B1A8CF1CCDF0F400A20896 /* Trusteeship.cpp in Sources */,
 				D2B1A8951CCDF0F400A20896 /* DailyTask.cpp in Sources */,
 				D2B1A8AD1CCDF0F400A20896 /* HeadImageDialog.cpp in Sources */,
@@ -1448,7 +1449,6 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				D2B1A8D91CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D2B1A8E31CCDF0F400A20896 /* ResultLayer.cpp in Sources */,
-				D2B1A8E91CCDF0F400A20896 /* SplashScene.cpp in Sources */,
 				D2B1A8C51CCDF0F400A20896 /* FirstChageDialog.cpp in Sources */,
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2B1A90B1CCDF78300A20896 /* ZimoAnim.cpp in Sources */,
@@ -1473,7 +1473,6 @@
 				D2B1A8A51CCDF0F400A20896 /* SearchResult.cpp in Sources */,
 				D2B1A8AB1CCDF0F400A20896 /* GenderDialog.cpp in Sources */,
 				D2BDE3A81CEB101600754AC0 /* ResultScene.cpp in Sources */,
-				D2B1A8E71CCDF0F400A20896 /* DropDownListBox.cpp in Sources */,
 				D2B1A8DF1CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D2B1A8711CCDF0F400A20896 /* Loading.cpp in Sources */,
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
@@ -1488,6 +1487,7 @@
 				D2B1A87F1CCDF0F400A20896 /* MahjongView.cpp in Sources */,
 				D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D2B1A8DB1CCDF0F400A20896 /* Player.cpp in Sources */,
+				D226FD2A1D051DBA00324097 /* DropDownListBox.cpp in Sources */,
 				D2B1A8BD1CCDF0F400A20896 /* ChargeDiamond.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1514,6 +1514,7 @@
 				D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D2B1A87A1CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
 				D2B1A8CC1CCDF0F400A20896 /* LingHongbao.cpp in Sources */,
+				D226FD2B1D051DBA00324097 /* DropDownListBox.cpp in Sources */,
 				D2B1A8C01CCDF0F400A20896 /* ChargeGold.cpp in Sources */,
 				D2B1A8841CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
 				D2B1A8B21CCDF0F400A20896 /* NickNameDialog.cpp in Sources */,
@@ -1533,7 +1534,6 @@
 				D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D20C39161CFD8222006F6C9E /* ShopHintDialog.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
-				D2B1A8EA1CCDF0F400A20896 /* SplashScene.cpp in Sources */,
 				D2B1A87E1CCDF0F400A20896 /* GuiLayer.cpp in Sources */,
 				D2B1A8D41CCDF0F400A20896 /* LobbyScene.cpp in Sources */,
 				D2B1A8CA1CCDF0F400A20896 /* LequanShop.cpp in Sources */,
@@ -1542,10 +1542,10 @@
 				D2B1A8B41CCDF0F400A20896 /* UserInfo.cpp in Sources */,
 				D2B1A8961CCDF0F400A20896 /* DailyTask.cpp in Sources */,
 				D2B1A8A61CCDF0F400A20896 /* SearchResult.cpp in Sources */,
+				D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */,
 				D2B1A8E21CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
 				D2B1A8E41CCDF0F400A20896 /* ResultLayer.cpp in Sources */,
 				D2B1A8861CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
-				D2B1A8E81CCDF0F400A20896 /* DropDownListBox.cpp in Sources */,
 				D2B1A8C41CCDF0F400A20896 /* FaHongbao.cpp in Sources */,
 				D2B1A89E1CCDF0F400A20896 /* FriendInvite.cpp in Sources */,
 				D2B1A8761CCDF0F400A20896 /* GangkaiAnim.cpp in Sources */,

@@ -1,4 +1,4 @@
-#include "game/splash/DropDownListBox.h"
+#include "game/mahjong/splash/DropDownListBox.h"
 #include "game/utils/Chinese.h"
 
 DropDownList::DropDownList(Sprite* label, Size size)
@@ -6,7 +6,6 @@ DropDownList::DropDownList(Sprite* label, Size size)
 	, isShowMenu(false)
 	, lastSelectedIndex(0)
 {
-	//创建好一个menu，但是现在还不添加到视图中
 	mainMenu =Menu::create();
 	mainMenu->setPosition(Point(size.width , size.height / 2));
 	mainMenu->retain();
@@ -76,7 +75,7 @@ bool DropDownList::onTouchBegan(CCTouch *touch, CCEvent *event)
 	
 }
 
-//创建以menu item 并添加一个label覆盖到上面
+
 void DropDownList::addLabel(std::string label)
 {
 	Size size = getContentSize();
@@ -98,7 +97,7 @@ void DropDownList::addLabel(std::string label)
 	item->setTag((int)selectLabels.size() - 1);
 }
 
-//选中下拉列表后
+
 void DropDownList::onSelected(CCObject* sender)
 {
 	MenuItem* item = dynamic_cast<MenuItem*>(sender);
@@ -108,13 +107,13 @@ void DropDownList::onSelected(CCObject* sender)
 		_loginscene->setChangeNickName(selectLabels.at(lastSelectedIndex));
 
 	}
-	onClose(); //关闭下拉列表框
+	onClose();
 }
 
-//关闭下拉列表框
+
 void DropDownList::onClose()
 {
-	removeChild(mainMenu, true);  //通过删除mainMenu,关闭下拉列表框
+	removeChild(mainMenu, true); 
 	isShowMenu = false;
 	bgFrame->setVisible(false);
 }
