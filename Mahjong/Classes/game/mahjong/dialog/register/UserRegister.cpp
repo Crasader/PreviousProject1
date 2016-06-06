@@ -29,7 +29,7 @@ void UserRegister::onExit(){
 }
 
 void UserRegister::drawDialog(){
-	//添加一个全屏的Menu来屏蔽点击事件
+
 	MenuItem* item1 = MenuItem::create();
 	item1->setContentSize(Size(1280, 720));
 	Menu* menu1 = Menu::create(item1, NULL);
@@ -76,6 +76,7 @@ void UserRegister::drawDialog(){
 	_editName->setPosition(Point(720, 510));
 	_editName->setTag(0);
 	_editName->setFont("American Typewriter", 24);
+    _editName->setInputMode(EditBox::InputMode::SINGLE_LINE);
 	_editName->setDelegate(this);
 	addChild(_editName);
 

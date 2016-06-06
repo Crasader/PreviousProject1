@@ -1223,11 +1223,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "486613793.40321"
+            timestampString = "486885377.164836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "467"
-            endingLineNumber = "467"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
             landmarkName = "LobbyScene::showLobbyAnim()"
             landmarkType = "5">
             <Locations>

@@ -21,14 +21,14 @@ bool SplashScene::init()
     {
         return false;
     }
-    LoadResource* loda = LoadResource::create();
-    addChild(loda);
-//    //add all  plsit
-//    loadResource();
-//    //draw scene
-//    drawLonginScene();
-//    //add event listener
-//    addTocuhListener();
+//    LoadResource* loda = LoadResource::create();
+//    addChild(loda);
+    //add all  plsit
+    loadResource();
+    //draw scene
+    drawLonginScene();
+    //add event listener
+    addTocuhListener();
     return true;
 }
 
@@ -122,15 +122,19 @@ void SplashScene::drawLonginScene(){
     _editName->setPosition(Point(1010, 475));
     _editName->setTag(0);
     _editName->setFont("arial", 30);
+    _editName->setTag(606);
     if (UserData::getInstance()->getPassword() != "unknow"){
         _editName->setPlaceHolder(UserData::getInstance()->getUserName().c_str());
     }
+    _editName->setInputMode(EditBox::InputMode::SINGLE_LINE);
     _editName->setDelegate(this);
     addChild(_editName);
+
     
     _editPwd = EditBox::create(Size(400, 81), Scale9Sprite::create());
     _editPwd->setPosition(Point(1010, 352));
     _editPwd->setTag(1);
+    _editPwd->setTag(607);
     _editPwd->setFont("arial", 30);
     if (UserData::getInstance()->getPassword() != "unknow"){
         std::string star = "";
@@ -200,7 +204,7 @@ void SplashScene::loginByPass(){
             showLoading();
         }
         else{
-            //Ã· æ”√ªß◊¢≤·
+         
         }
         
     }
@@ -293,6 +297,7 @@ void SplashScene::addTocuhListener(){
             case cocos2d::EventKeyboard::KeyCode::KEY_BACK:
                 Director::getInstance()->end();
                 break;
+
             default:
                 break;
         }
@@ -324,8 +329,7 @@ void SplashScene::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 }
 
 void SplashScene::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
-    
-    
+
 }
 
 void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
@@ -334,6 +338,5 @@ void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const
 }
 
 void SplashScene::editBoxReturn(cocos2d::extension::EditBox* editBox){
-    
-    
+
 }

@@ -805,7 +805,6 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
-				D226FD251D051DBA00324097 /* splash */,
 				D2B1A7B61CCDF0F300A20896 /* anim */,
 				D2B1A7BF1CCDF0F300A20896 /* chat */,
 				D2B1A7C21CCDF0F300A20896 /* core */,
@@ -814,6 +813,7 @@
 				D2B1A82D1CCDF0F300A20896 /* lobby */,
 				D2B1A8321CCDF0F300A20896 /* player */,
 				D2B1A8411CCDF0F300A20896 /* result */,
+				D226FD251D051DBA00324097 /* splash */,
 				D2B1A8441CCDF0F300A20896 /* state */,
 			);
 			path = mahjong;

@@ -444,6 +444,7 @@ void LobbyScene::addEventListener(){
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLobbyQuitCommand());
                 Director::getInstance()->end();
                 break;
+
             default:
                 break;
         }
