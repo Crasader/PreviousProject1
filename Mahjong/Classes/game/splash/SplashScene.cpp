@@ -45,10 +45,19 @@ void SplashScene::onExit(){
 
 void SplashScene::drawLonginScene(){
     //add game bg to layer
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Sprite* splash_bg = Sprite::create("mainlogin/splah_bg_.jpg");
-    splash_bg->setPosition(visibleSize.width / 2, visibleSize.height / 2);
+    Sprite* splash_bg = Sprite::create("mainlogin/splah_bg_.png");
+    splash_bg->setPosition(640,360);
     this->addChild(splash_bg, -1);
+    
+    auto lightOne = Sprite::create("mainlogin/splash_light_1.png");
+    lightOne->setPosition(640,360);
+    addChild(lightOne);
+    lightOne->runAction(Repeat::create(Sequence::create(FadeTo::create(1.0f, 150),FadeTo::create(1.0f, 0), NULL), CC_REPEAT_FOREVER));
+    
+    auto lightTwo = Sprite::create("mainlogin/splash_light_2.png");
+    lightTwo->setPosition(640,360);
+    addChild(lightTwo);
+    lightTwo->runAction(Repeat::create(Sequence::create(DelayTime::create(1.0f),FadeTo::create(1.0f, 150),FadeTo::create(1.0f, 0), NULL), CC_REPEAT_FOREVER));
     
     auto gameTitle = Sprite::create("mainlogin/splah_title.png");
     gameTitle->setPosition(875, 630);
@@ -60,6 +69,51 @@ void SplashScene::drawLonginScene(){
     auto accountIcon = Sprite::create("mainlogin/password_box.png");
     accountIcon->setPosition(955, 350);
     this->addChild(accountIcon);
+    
+    auto girlSprite = Sprite::create("mainlogin/girl_image.png");
+    girlSprite->setPosition(220,360);
+    addChild(girlSprite);
+    //眨眼动画
+    auto levelMidEye = Sprite::create();
+    levelMidEye->setPosition(220,360);
+    addChild(levelMidEye,2);
+    levelMidEye->runAction(Repeat::create(Sequence::create(
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/splash_eye_1.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/splash_eye_2.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/splash_eye_1.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("");
+    }),
+                                                           DelayTime::create(96.0/24),
+                                                           NULL), CC_REPEAT_FOREVER));
+    
+    auto shanghai = Sprite::create("mainlogin/splash_logo.png");
+    shanghai->setPosition(420,120);
+    addChild(shanghai);
+    
+    auto logoText = Sprite::create();
+    logoText->setPosition(420, 120);
+    addChild(logoText);
+    auto animation2 = Animation::create();
+    for( int j=1;j<5;j++)
+    {
+        std::string imageName = cocos2d::String::createWithFormat("mainlogin/splash_logo_%d.png",j)->_string;
+        animation2->addSpriteFrameWithFile(imageName);
+    }
+    // should last 1 seconds. And there are 24 frames.
+    animation2->setDelayPerUnit(3.0f / 24.0f);
+    animation2->setRestoreOriginalFrame(true);
+    auto action2 = Animate::create(animation2);
+    logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(48.0/24), NULL), CC_REPEAT_FOREVER), NULL));
     
     _editName = EditBox::create(Size(400, 81), Scale9Sprite::create());
     _editName->setPosition(Point(1010, 475));
@@ -108,6 +162,12 @@ void SplashScene::drawLonginScene(){
     loginMenu->alignItemsHorizontallyWithPadding(5);
     loginMenu->setPosition(960, 228);
     this->addChild(loginMenu);
+    
+    auto confirmLight = Sprite::create("mainlogin/confirm_btn_light.png");
+    confirmLight->setPosition(855,228);
+    addChild(confirmLight);
+    confirmLight->setOpacity(0);
+    confirmLight->runAction(Repeat::create(Sequence::create(FadeTo::create(1.0f, 255),FadeTo::create(1.0f, 0), NULL), CC_REPEAT_FOREVER));
     
     auto bottom = Sprite::create("mainlogin/bottom_bg.png");
     bottom->setPosition(960, 94);
