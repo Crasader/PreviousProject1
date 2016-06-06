@@ -483,6 +483,12 @@ void MsgHandler::loginResp(std::string msg){
         UserData::getInstance()->setGender(gender.GetInt());
         const rapidjson::Value &lequan = _mDoc["lequan"];
         UserData::getInstance()->setTicket(lequan.GetInt());
+        if(_mDoc.HasMember("mobile")){
+            const rapidjson::Value &mobile = _mDoc["mobile"];
+            UserData::getInstance()->setBoundPhone(mobile.GetString());
+        }else{
+            UserData::getInstance()->setBoundPhone("unknow");
+        }
         if (_mDoc.HasMember("pic")){
             const rapidjson::Value &pic = _mDoc["pic"];
             UserData::getInstance()->setPicture(pic.GetString());

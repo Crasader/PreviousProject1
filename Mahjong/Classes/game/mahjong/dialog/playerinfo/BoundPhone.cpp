@@ -48,6 +48,8 @@ void BoundPhone::showDialog(){
 		_phoneNum = EditBox::create(Size(220, 81), Scale9Sprite::create());
 		_phoneNum->setPosition(Point(635, 410));
 		_phoneNum->setTag(0);
+        _phoneNum->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+        _phoneNum->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 		_phoneNum->setFont("arial", 24);
 		_phoneNum->setDelegate(this);
 		addChild(_phoneNum);
@@ -83,6 +85,8 @@ void BoundPhone::showDialog(){
 		_verification->setPosition(Point(635, 305));
 		_verification->setTag(0);
 		_verification->setFont("arial", 24);
+        _verification->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+        _verification->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 		_verification->setDelegate(this);
 		addChild(_verification);
 
@@ -105,13 +109,16 @@ void BoundPhone::showDialog(){
 		label->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
 		label->setPosition(530, 360);
 		addChild(label);
+        pause();
 	}
 }
 
 
 void BoundPhone::getVerification(){
 	totalTime = 60;
-	if (checkPhone(_phoneNum->getText())){
+    string phone =_phoneNum->getText();
+	if (checkPhone(phone)){
+        hintSprite->setVisible(false);
 		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVerifyCommand(_phoneNum->getText()));
 		schedule(schedule_selector(BoundPhone::updateSecond), 1, CC_REPEAT_FOREVER, 0);
 	}
@@ -147,12 +154,12 @@ void BoundPhone::updateSecond(float dt){
 }
 
 
-//开始进入编辑
 void BoundPhone::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 
 
 }
-//结束编辑
+
+
 void BoundPhone::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 	if (checkPhone(_phoneNum->getText())){
 		hintSprite->setVisible(false);
@@ -161,12 +168,12 @@ void BoundPhone::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 		hintSprite->setVisible(true);
 	}
 }
-//编辑框文本改变
+
 void BoundPhone::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
 
 
 }
-//当触发return后的回调函数
+
 void BoundPhone::editBoxReturn(cocos2d::extension::EditBox* editBox){
 
 

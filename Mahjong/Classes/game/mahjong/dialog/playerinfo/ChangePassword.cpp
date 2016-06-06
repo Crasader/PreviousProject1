@@ -44,6 +44,8 @@ void ChangePassword::showDialog(){
 	_newPassword->setTag(0);
 	_newPassword->setFont("arial", 24);
 	_newPassword->setDelegate(this);
+    _newPassword->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+    _newPassword->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	addChild(_newPassword);
 
 
@@ -70,6 +72,8 @@ void ChangePassword::showDialog(){
 	_confirmPassword->setTag(1);
 	_confirmPassword->setFont("arial", 24);
 	_confirmPassword->setDelegate(this);
+    _confirmPassword->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+    _confirmPassword->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	addChild(_confirmPassword);
 
 	auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",
