@@ -1,0 +1,65 @@
+//
+//  HintDialog.cpp
+//  Mahjong
+//
+//  Created by qiuzhong on 16/6/7.
+//
+//
+
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
+
+
+HintDialog* HintDialog::create(std::string msg){
+    HintDialog* ret = new HintDialog();
+    if(ret &&ret->init(msg)){
+        ret->autorelease();
+        return ret;
+    }else{
+        
+        CC_SAFE_DELETE(ret);
+        return NULL;
+    }
+}
+
+
+bool HintDialog::init(std::string msg){
+    if(!Layer::init()){
+        return false;
+    }
+    auto dialogBg = Sprite::create("common/dialog_bg_small.png");
+    dialogBg->setPosition(640, 360);
+    this->addChild(dialogBg);
+    
+    auto title = Sprite::create("common/tishi_icon.png");
+    title->setPosition(640, 500);
+    this->addChild(title);
+    
+    auto thishiBg = Sprite::create("common/thishi_bg.png");
+    thishiBg->setPosition(640, 375);
+    addChild(thishiBg);
+    
+    Label* text = Label::create(msg, "Arial", 30);
+    text->setColor(Color3B(38,158,228));
+    text->setPosition(640, 360);
+    addChild(text);
+    
+    auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
+                                       CC_CALLBACK_0(HintDialog::closeView, this));
+    auto closeMenu = Menu::create(close, NULL);
+    closeMenu->setPosition(860, 490);
+    this->addChild(closeMenu);
+    
+    auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",
+                                         CC_CALLBACK_0(HintDialog::closeView, this));
+    auto confirmMenu = Menu::create(confirm, NULL);
+    confirmMenu->setPosition(640, 240);
+    addChild(confirmMenu);
+    
+    return true;
+}
+
+
+void HintDialog::closeView(){
+    EventCustom ev(CLOSE_HINT_DIALOG);
+    _eventDispatcher-> dispatchEvent(&ev);
+}

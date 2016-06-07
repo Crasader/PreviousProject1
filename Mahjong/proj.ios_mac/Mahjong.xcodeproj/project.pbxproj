@@ -131,6 +131,8 @@
 		D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A2A1D056B7A00741FD0 /* Toast.cpp */; };
 		D28A4A381D056B7A00741FD0 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A2C1D056B7A00741FD0 /* UrlImageMannger.cpp */; };
 		D28A4A391D056B7A00741FD0 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A2C1D056B7A00741FD0 /* UrlImageMannger.cpp */; };
+		D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */; };
+		D28A4A3D1D065B4D00741FD0 /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */; };
 		D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */; };
 		D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */; };
 		D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
@@ -419,6 +421,8 @@
 		D28A4A2B1D056B7A00741FD0 /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
 		D28A4A2C1D056B7A00741FD0 /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
 		D28A4A2D1D056B7A00741FD0 /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
+		D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HintDialog.cpp; sourceTree = "<group>"; };
+		D28A4A3B1D065B4D00741FD0 /* HintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HintDialog.hpp; sourceTree = "<group>"; };
 		D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiuJuAnim.cpp; sourceTree = "<group>"; };
 		D28B6AE01CF3E0A30033C9DE /* LiuJuAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LiuJuAnim.hpp; sourceTree = "<group>"; };
 		D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuaAnim.cpp; sourceTree = "<group>"; };
@@ -1089,6 +1093,8 @@
 			children = (
 				D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */,
 				D2B1A80B1CCDF0F300A20896 /* PromptDialog.h */,
+				D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */,
+				D28A4A3B1D065B4D00741FD0 /* HintDialog.hpp */,
 			);
 			path = prompt;
 			sourceTree = "<group>";
@@ -1472,6 +1478,7 @@
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D2B1A8931CCDF0F400A20896 /* DayCell.cpp in Sources */,
 				D2BDE3B71CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */,
+				D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D2B1A8CD1CCDF0F400A20896 /* Redwallet.cpp in Sources */,
 				D2B1A8A71CCDF0F400A20896 /* BoundPhone.cpp in Sources */,
 				D2B1A8F71CCDF0F400A20896 /* CommandManage.cpp in Sources */,
@@ -1550,6 +1557,7 @@
 				D2B1A8DA1CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D2B1A87A1CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
+				D28A4A3D1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D2B1A8CC1CCDF0F400A20896 /* LingHongbao.cpp in Sources */,
 				D226FD2B1D051DBA00324097 /* DropDownListBox.cpp in Sources */,
 				D2B1A8C01CCDF0F400A20896 /* ChargeGold.cpp in Sources */,

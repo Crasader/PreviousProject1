@@ -3,6 +3,7 @@
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "game/loading/Loading.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include <Regex>
 
 bool ChangePassword::init(){
@@ -17,16 +18,33 @@ bool ChangePassword::init(){
 void ChangePassword::onEnter(){
 	Layer::onEnter();
 	changePwdListener = EventListenerCustom::create(MSG_CHANGE_PASSWORD_RESP, [=](EventCustom* event){
-			//TOOD checkNickName
-	
+        if(NULL !=getChildByTag(6007)){
+            getChildByTag(6007)->removeFromParent();
+        }
+        std::string result = static_cast<char*>(event->getUserData());
+        if(result == "1"){
+            if(newPassword != ""){
+                UserData::getInstance()->setPassword(newPassword);
+            }
+            HintDialog* hin = HintDialog::create("密码修改成功");
+            addChild(hin);
+        }else{
+            HintDialog* hin2 = HintDialog::create("密码修改失败");
+            addChild(hin2);
+        }
 	});
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(changePwdListener, 1);
-
+    
+    closeDialogListener = EventListenerCustom::create(CLOSE_HINT_DIALOG, [=](EventCustom* event){
+        getParent()->removeFromParent();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(closeDialogListener, 1);
 }
 
 void ChangePassword::onExit(){
 	Layer::onExit();
 	_eventDispatcher->removeEventListener(changePwdListener);
+    _eventDispatcher->removeEventListener(closeDialogListener);
 }
 
 void ChangePassword::showDialog(){
@@ -44,7 +62,8 @@ void ChangePassword::showDialog(){
 	_newPassword->setTag(0);
 	_newPassword->setFont("arial", 24);
 	_newPassword->setDelegate(this);
-    _newPassword->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+    _newPassword->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _newPassword->setInputFlag(EditBox::InputFlag::PASSWORD);
     _newPassword->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	addChild(_newPassword);
 
@@ -72,7 +91,8 @@ void ChangePassword::showDialog(){
 	_confirmPassword->setTag(1);
 	_confirmPassword->setFont("arial", 24);
 	_confirmPassword->setDelegate(this);
-    _confirmPassword->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+    _confirmPassword->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _confirmPassword->setInputFlag(EditBox::InputFlag::PASSWORD);
     _confirmPassword->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	addChild(_confirmPassword);
 
@@ -88,7 +108,11 @@ void ChangePassword::changePassword(){
 	std::string passwrod1 = _newPassword->getText();
 	std::string passwrod2 = _confirmPassword->getText();
 	if (passwrod1 != ""&&passwrod2 != ""&&!password_hint_info1->isVisible() && !password_hint_info2->isVisible()){
+        newPassword = passwrod1;
 		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangePasswordCommand(passwrod1));
+        Loading* load = Loading::create();
+        load->setTag(6007);
+        addChild(load);
 	}
 }
 
@@ -112,7 +136,7 @@ void ChangePassword::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox
 }
 
 void ChangePassword::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
-	if (editBox->getTag() == 1){
+	if (editBox->getTag() == 0){
 		if (!checkPassword(editBox->getText())){
 			password_hint_info1->setVisible(true);
 		}
@@ -120,7 +144,7 @@ void ChangePassword::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 			password_hint_info1->setVisible(false);
 		}
 	}
-	else if (editBox->getTag() == 2){
+	else if (editBox->getTag() == 1){
 		std::string passwrod1 = _newPassword->getText();
 		std::string passwrod2 = _confirmPassword->getText();
 		if (passwrod1 != passwrod2){

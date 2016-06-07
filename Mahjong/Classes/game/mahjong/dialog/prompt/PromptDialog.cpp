@@ -19,16 +19,20 @@ void PromptDialog::drawDialog(){
 	title->setPosition(640, 500);
 	this->addChild(title);
 
+    auto thishiBg = Sprite::create("common/thishi_bg.png");
+    thishiBg->setPosition(640, 375);
+    addChild(thishiBg);
+    
 	auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
 		CC_CALLBACK_0(PromptDialog::closeView, this));
 	auto closeMenu = Menu::create(close, NULL);
-	closeMenu->setPosition(850, 480);
+	closeMenu->setPosition(860, 490);
 	this->addChild(closeMenu);
 
 	auto confirm = MenuItemImage::create("common/user_box_confirm_a.png", "common/user_box_confirm_b.png",
 		CC_CALLBACK_0(PromptDialog::clickComfirm, this));
 	auto confirmMenu = Menu::create(confirm, NULL);
-	confirmMenu->setPosition(640, 250);
+	confirmMenu->setPosition(640, 240);
 	this->addChild(confirmMenu);
 }
 

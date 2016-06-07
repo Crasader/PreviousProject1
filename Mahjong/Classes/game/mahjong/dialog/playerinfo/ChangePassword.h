@@ -14,8 +14,11 @@ private:
 	EditBox* _newPassword;
 	EditBox* _confirmPassword;
 	EventListenerCustom* changePwdListener;
+    EventListenerCustom* closeDialogListener;
 	Sprite* password_hint_info1;
 	Sprite* password_hint_info2;
+    std::string newPassword;
+    
 	void showDialog();
 	void changePassword();
 	void updateSecond(float dt);
