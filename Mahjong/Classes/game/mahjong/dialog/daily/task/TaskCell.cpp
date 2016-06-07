@@ -56,7 +56,6 @@ bool TaskCell::init(TaskType type){
 		taskProgress->setPosition(25, 93);
 		addChild(taskProgress);
 
-		//任务完成进度
 		std::string num = cocos2d::String::createWithFormat("%d:%d", 0, type == task3 ? 4 : 3)->_string;
 		taskFinishNum = LabelAtlas::create(num, "daily/task/num.png", 16, 24, '0');
 		taskFinishNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
@@ -104,10 +103,10 @@ void TaskCell::recievePride(){
 		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskMQ3Command());
 	}
 	else if (getMyTaskType() == task2){
-		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskMQ3Command());
+		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskPPH3Command());
 	}
 	else if (getMyTaskType() == task3){
-		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskMQ3Command());
+		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskLZ4Command());
 	}
 	else{
 		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskMQ3Command());
@@ -141,7 +140,7 @@ void TaskCell::updateData(){
 	if (getMyTaskType() != task4){
 		if (result == "-1"){
 			taskProgress->setContentSize(Size(146, 20));
-			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", getMyTaskType() == task3 ? 4 : 3, getMyTaskType() == task3 ? 4 : 3)->_string);
+			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", getMyTaskType() == task3 ? 2 : 3, getMyTaskType() == task3 ? 4 : 3)->_string);
 			setTaskState(2);
 			finishMenu->setVisible(false);
 			unfinish->setVisible(false);
@@ -153,7 +152,7 @@ void TaskCell::updateData(){
 			unfinish->setVisible(true);
 			revcieved->setVisible(false);
 			taskProgress->setContentSize(Size(146 * res / (getMyTaskType() == task3 ? 4 : 3), 20));
-			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", res, getMyTaskType() == task3 ? 4 : 3)->_string);
+			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", res, getMyTaskType() == task3 ? 2 : 3)->_string);
 			if (res == (getMyTaskType() == task3 ? 4 : 3)){
 				setTaskState(1);
 				finishMenu->setVisible(true);

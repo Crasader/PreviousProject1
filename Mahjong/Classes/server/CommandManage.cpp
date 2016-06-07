@@ -367,6 +367,13 @@ std::string CommandManage::getTaskLZ4Command(){
 	return commandString(keyValue);
 }
 
+std::string CommandManage::getTaskExtraCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_ALLTASK_GET_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::getDailyTaskCommand(){
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_TASK_REQUEST)));

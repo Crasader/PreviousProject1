@@ -13,11 +13,45 @@ bool DailyTask::init(){
 
 void DailyTask::onEnter(){
     Layer::onEnter();
+    mq3 = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
+    
+    
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(mq3, 1);
+    
+    EventListenerCustom* pph3 = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
+        
+        
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(pph3, 1);
+    
+    EventListenerCustom* lz2 = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
+        
+        
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(lz2, 1);
+    
+    EventListenerCustom* charge = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
+        
+        
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(charge, 1);
+    
+    EventListenerCustom* extra = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
+        
+        
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(extra, 1);
 }
 
 
 void DailyTask::onExit(){
     Layer::onExit();
+    _eventDispatcher->removeEventListener(mq3);
+     _eventDispatcher->removeEventListener(pph3);
+     _eventDispatcher->removeEventListener(lz2);
+     _eventDispatcher->removeEventListener(charge);
+     _eventDispatcher->removeEventListener(extra);
 }
 
 
@@ -87,6 +121,5 @@ void DailyTask::updateData(){
 }
 
 void DailyTask::recieveExtraPride(Ref* ref){
-	//MenuItemImage* temp = (MenuItemImage*)ref;
-	//temp->setEnabled(false);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskExtraCommand());
 }

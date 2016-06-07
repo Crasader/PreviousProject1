@@ -378,6 +378,26 @@ void MsgHandler::distribute(int code, std::string msg){
             lequanChangeListResp(msg);
             break;
         }
+        case MSGCODE_MQ3_GET_RESPONSE :{
+            dailyTaskMQ3Resp(msg);
+         break;
+        };
+        case MSGCODE_PPH3_GET_RESPONSE :{
+            dailyTaskPPH33Resp(msg);
+            break;
+        };
+        case MSGCODE_LEZI4_GET_RESPONSE :{
+            dailyTaskLZ2Resp(msg);
+            break;
+        };
+        case MSGCODE_DAYCHARGE_GET_RESPONSE :{
+            dailyTaskChargeResp(msg);
+            break;
+        };
+        case MSGCODE_ALLTASK_GET_RESPONSE :{
+            dailyTaskExtraResp(msg);
+            break;
+        };
         default:
             break;
     }
@@ -1659,6 +1679,55 @@ void MsgHandler::todayPrideResp(std::string msg){
     }
     GAMEDATA::getInstance()->setTodayPrideData(data);
     postNotifyMessage(MSG_PLAYER_TODAY_PRIDE, "");
+}
+
+
+void MsgHandler::dailyTaskMQ3Resp(std::string msg){
+
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_PLAYER_DAILY_TASK_MQ3, result.GetString());
+}
+
+void MsgHandler::dailyTaskPPH33Resp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_PLAYER_DAILY_TASK_PPH3, result.GetString());
+}
+
+void MsgHandler::dailyTaskLZ2Resp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_PLAYER_DAILY_TASK_LZ2, result.GetString());
+
+}
+
+void MsgHandler::dailyTaskExtraResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_PLAYER_DAILY_TASK_EXTRA, result.GetString());
+}
+
+void MsgHandler::dailyTaskChargeResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_PLAYER_DAILY_TASK_CHARGE, result.GetString());
+
 }
 
 void MsgHandler::checkAccountResp(std::string msg){

@@ -66,6 +66,11 @@ private:
 	void welfareWxResp(std::string msg);
 	void dailyPrideResp(std::string msg);
 	void todayPrideResp(std::string msg);
+    void dailyTaskMQ3Resp(std::string msg);
+    void dailyTaskPPH33Resp(std::string msg);
+    void dailyTaskLZ2Resp(std::string msg);
+    void dailyTaskExtraResp(std::string msg);
+    void dailyTaskChargeResp(std::string msg);
 	void checkAccountResp(std::string msg);
     void firstChargeInfoResp(std::string msg);
     void goldChangeListResp(std::string msg);

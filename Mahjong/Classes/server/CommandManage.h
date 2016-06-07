@@ -46,6 +46,7 @@ public:
 	std::string getTaskMQ3Command();
 	std::string getTaskPPH3Command();
 	std::string getTaskLZ4Command();
+    std::string getTaskExtraCommand();
 	std::string getWelfareCommand();
 	std::string getDailySignCommand();
 	std::string getSignCommand();

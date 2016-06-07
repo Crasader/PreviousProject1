@@ -245,4 +245,9 @@
 #define MSG_PLAYER_GOLD_CHANGE_LIST "msg_player_gold_change_list"
 #define MSG_PLAYER_GOLD_CHANGE_RESP "msg_player_gold_change_resp"
 #define MSG_PLAYER_LEQUAN_CHANGE_LIST "msg_player_lequan_change_list"
+#define MSG_PLAYER_DAILY_TASK_MQ3 "msg_player_daiy_task_mq3"
+#define MSG_PLAYER_DAILY_TASK_PPH3 "msg_player_daiy_task_pph3"
+#define MSG_PLAYER_DAILY_TASK_LZ2 "msg_player_daiy_task_lz2"
+#define MSG_PLAYER_DAILY_TASK_CHARGE "msg_player_daiy_task_charge"
+#define MSG_PLAYER_DAILY_TASK_EXTRA "msg_player_daiy_task_extra"
 #endif
