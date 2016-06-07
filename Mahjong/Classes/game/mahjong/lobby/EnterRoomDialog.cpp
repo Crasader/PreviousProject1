@@ -41,6 +41,11 @@ bool EnterRoomDialog::init(EnterRoomDialogType msg){
     closeMenu->setPosition(875, 525);
     this->addChild(closeMenu);
     
+    auto bg_2 = Sprite::create("shop/first_charge_bg_2.png");
+    bg_2->setScale(0.8f);
+    bg_2->setPosition(645,370);
+    addChild(bg_2);
+    
     if(msg == EnterRoomDialogType::goldNotEnough){
         Label* text = Label::create("金币不足请充值", "Arial", 30);
         text->setColor(Color3B(38,158,228));
