@@ -389,15 +389,15 @@ void LobbyScene::addCustomEventListener(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
             EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldNotEnough);
-            addChild(dia);
+            addChild(dia,4);
         }
         else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
             if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
                 EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
-                addChild(dia);
+                addChild(dia,4);
             }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
                 EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
-                addChild(dia);
+                addChild(dia,4);
             }
         }
     });

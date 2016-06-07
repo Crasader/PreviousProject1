@@ -7,6 +7,8 @@
 //
 
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
+#include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
+#include "server/NetworkManage.h"
 
 
 EnterRoomDialog* EnterRoomDialog::create(EnterRoomDialogType msg){
@@ -24,17 +26,20 @@ bool EnterRoomDialog::init(EnterRoomDialogType msg){
     if(!Layer::init()){
         return false;
     }
+    setDialogType(msg);
     auto dialogBg = Sprite::create("shop/shop_bg_4.png");
     dialogBg->setPosition(640, 360);
     this->addChild(dialogBg);
     
     auto title = Sprite::create("mjlobby/tuhao.png");
-    title->setPosition(640, 500);
+    title->setPosition(640, 580);
     this->addChild(title);
     
-    auto thishiBg = Sprite::create("common/thishi_bg.png");
-    thishiBg->setPosition(640, 375);
-    addChild(thishiBg);
+    auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
+                                       CC_CALLBACK_0(EnterRoomDialog::closeView, this));
+    auto closeMenu = Menu::create(close, NULL);
+    closeMenu->setPosition(875, 525);
+    this->addChild(closeMenu);
     
     if(msg == EnterRoomDialogType::goldNotEnough){
         Label* text = Label::create("金币不足请充值", "Arial", 30);
@@ -50,21 +55,26 @@ bool EnterRoomDialog::init(EnterRoomDialogType msg){
         levelHigh->setPosition(640, 360);
         addChild(levelHigh);
     }
-    auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
-                                       CC_CALLBACK_0(EnterRoomDialog::closeView, this));
-    auto closeMenu = Menu::create(close, NULL);
-    closeMenu->setPosition(860, 490);
-    this->addChild(closeMenu);
     
     auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",
-                                         CC_CALLBACK_0(EnterRoomDialog::closeView, this));
+                                         CC_CALLBACK_0(EnterRoomDialog::confirm, this));
     auto confirmMenu = Menu::create(confirm, NULL);
-    confirmMenu->setPosition(640, 240);
+    confirmMenu->setPosition(640, 220);
     addChild(confirmMenu);
     return  true;
 }
 
 
 void EnterRoomDialog::closeView(){
+    removeFromParent();
+}
 
+
+void EnterRoomDialog::confirm(){
+    if(getDialogType() == EnterRoomDialogType::goldNotEnough){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDiamondChangeListCommand());
+        ChargeDiamond* charge = ChargeDiamond::create();
+        getParent()->addChild(charge,3);
+    }
+    removeFromParent();
 }

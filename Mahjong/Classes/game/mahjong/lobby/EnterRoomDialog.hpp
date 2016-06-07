@@ -25,5 +25,7 @@ public:
     virtual bool init(EnterRoomDialogType goldLess);
 private:
     void closeView();
+    void confirm();
+    CC_SYNTHESIZE(EnterRoomDialogType, dialogType, DialogType);
 };
 #endif /* EnterRoomDialog_hpp */
