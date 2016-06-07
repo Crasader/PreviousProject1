@@ -10,11 +10,18 @@ bool DailyEvent::init(){
 void DailyEvent::onEnter(){
 	Layer::onEnter();
 	addEventCustom();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());//任务
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyPrideCommand());//抽奖
 }
 
 void DailyEvent::onExit(){
 	Layer::onExit();
-	_eventDispatcher->removeEventListener(dailyTaskLitener);
+	_eventDispatcher->removeEventListener(dailyTaskListener);
+    _eventDispatcher->removeEventListener(dailyWelfareListener);
+    _eventDispatcher->removeEventListener(dailyPrideListener);
+    _eventDispatcher->removeEventListener(dailySignListener);
 }
 
 void DailyEvent::showDailyEvent(DailyType type){
@@ -130,6 +137,7 @@ void DailyEvent::showDailyEvent(DailyType type){
 
 
 void DailyEvent::showDailyTask(Ref* ref){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());//任务
 	MenuItemToggle* temp = (MenuItemToggle*)ref;
 	taskToggle->setSelectedIndex(1);
 	welfareToggle->setSelectedIndex(0);
@@ -146,6 +154,7 @@ void DailyEvent::showDailyTask(Ref* ref){
 }
 
 void DailyEvent::showWelFare(Ref* ref){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
 	MenuItemToggle* temp = (MenuItemToggle*)ref;
 	taskToggle->setSelectedIndex(0);
 	welfareToggle->setSelectedIndex(1);
@@ -162,6 +171,7 @@ void DailyEvent::showWelFare(Ref* ref){
 }
 
 void DailyEvent::showDailyPride(Ref* ref){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyPrideCommand());//抽奖
 	MenuItemToggle* temp = (MenuItemToggle*)ref;
 	taskToggle->setSelectedIndex(0);
 	welfareToggle->setSelectedIndex(0);
@@ -178,6 +188,7 @@ void DailyEvent::showDailyPride(Ref* ref){
 }
 
 void DailyEvent::showDailySign(Ref* ref){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
 	MenuItemToggle* temp = (MenuItemToggle*)ref;
 	taskToggle->setSelectedIndex(0);
 	welfareToggle->setSelectedIndex(0);
@@ -199,11 +210,31 @@ void DailyEvent::closeView(){
 
 
 void DailyEvent::addEventCustom(){
-	dailyTaskLitener = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK, [=](EventCustom* event){
+	dailyTaskListener = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK, [=](EventCustom* event){
 		if (dailyTaskLayer->isVisible()){
 			dailyTaskLayer->updateData();
 		}	
 	});
-	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailyTaskLitener, 1);
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailyTaskListener, 1);
 
+    dailyWelfareListener = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK, [=](EventCustom* event){
+        if (dailyWelfareLayer->isVisible()){
+            dailyWelfareLayer->updateData();
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailyWelfareListener, 1);
+    
+    dailyPrideListener = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK, [=](EventCustom* event){
+        if (dailyPrideLayer->isVisible()){
+            dailyPrideLayer->updateData();
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailyPrideListener, 1);
+    
+    dailySignListener = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK, [=](EventCustom* event){
+        if (dailySignLayer->isVisible()){
+            dailySignLayer->updateData();
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailySignListener, 1);
 }

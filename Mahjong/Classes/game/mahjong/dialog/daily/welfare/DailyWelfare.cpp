@@ -139,3 +139,8 @@ void DailyWelfare::recievePride(Ref* ref){
 		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareMobile());
 	}
 }
+
+void DailyWelfare::updateData(){
+
+
+}

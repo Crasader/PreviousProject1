@@ -9,6 +9,7 @@ public:
 	virtual bool init();
 	void onEnter() override;
 	void onExit() override;
+    void updateData();
 	CREATE_FUNC(DailyPride);
 	
 private:
@@ -18,7 +19,6 @@ private:
 	Sprite* m_turnBg;
 	void showDailyPrideLayer();
 	void beginPride();
-    void updateData();
 	std::string getImageNameById(int id);
 	Point getPosByRotation(Point pos,float r,float a);//Ô²ÐÄ£¬°ë¾¶£¬½Ç¶È
 };

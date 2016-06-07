@@ -243,3 +243,8 @@ void DailySign::showDialogAnim(){
 
 
 }
+
+void DailySign::updateData(){
+    
+    
+}

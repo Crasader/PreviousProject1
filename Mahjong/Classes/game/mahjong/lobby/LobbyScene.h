@@ -66,5 +66,6 @@ private:
 	void addEventListener();
 	void addCustomEventListener();
     void scrollLightSpot(float dt);
+    void signUpdate(float dt);
 };
 #endif

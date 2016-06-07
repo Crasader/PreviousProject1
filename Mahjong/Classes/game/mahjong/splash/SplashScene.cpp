@@ -23,6 +23,7 @@ bool SplashScene::init()
     }
 //    LoadResource* loda = LoadResource::create();
 //    addChild(loda);
+    
     //add all  plsit
     loadResource();
     //draw scene
@@ -205,9 +206,8 @@ void SplashScene::loginByPass(){
             showLoading();
         }
         else{
-         
+         //TODO
         }
-        
     }
     else{
         NetworkManage::getInstance()->sendMsg(
@@ -265,11 +265,12 @@ void  SplashScene::addCustomEventListener(){
         std::string result = buf;
         
         if (result == LOGIN_SUCCESS){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
-            NetworkManage::getInstance()->heartbeat();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));//房间列表
+            NetworkManage::getInstance()->heartbeat();//心跳
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
         }
         else{
-            //TODO
+            //TODO 弹出登录错误信息
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(loginRespListener, 1);
@@ -339,8 +340,5 @@ void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const
 }
 
 void SplashScene::editBoxReturn(cocos2d::extension::EditBox* editBox){
-    if(editBox->getTag()==606){
-        log("PPPPPPPPPPPPPPPPPPPPPPP");
-        ((cocos2d::extension::EditBox*)getChildByTag(607))->requestFocus();
-    }
+  
 }

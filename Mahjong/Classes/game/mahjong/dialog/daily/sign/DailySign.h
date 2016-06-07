@@ -8,6 +8,7 @@ public:
 	virtual bool init();
 	void onEnter() override;
 	void onExit() override;
+    void updateData();
 	CREATE_FUNC(DailySign);
 private:
 	EventListenerCustom* todaySignListener;

@@ -31,9 +31,19 @@ void LobbyScene::onEnter(){
     Scene::onEnter();
     GAMEDATA::getInstance()->setIsPrivateRoom(false);
     addCustomEventListener();
-    schedule([=](float dt){getDailyTaskInfo();}, 0, 0, 2.0f,"bobo");
+    schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0);
 }
 
+
+void LobbyScene::signUpdate(float dt){
+    DailySignData data = GAMEDATA::getInstance()->getDailySignData();
+    if (data.result == "1"){
+        DailyEvent* day = DailyEvent::create();
+        day->showDailyEvent(DailyType::sign);
+        addChild(day,3);
+        unschedule(schedule_selector(LobbyScene::signUpdate));
+    }
+}
 
 
 void LobbyScene::onExit(){
@@ -286,10 +296,10 @@ void LobbyScene::showRedWallet(){
 }
 
 void LobbyScene::showDayTask(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());
     DailyEvent* day = DailyEvent::create();
     day->showDailyEvent(DailyType::task);
     addChild(day,3);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());
 }
 
 
@@ -365,15 +375,6 @@ void LobbyScene::removeLoading(){
     }
 }
 
-void LobbyScene::getDailyTaskInfo(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyPrideCommand());
-}
-
-
-
 void LobbyScene::addCustomEventListener(){
     //进入房间回复
     enterRoomListener = EventListenerCustom::create(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
@@ -402,12 +403,8 @@ void LobbyScene::addCustomEventListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(enterFriendRoomListener, 1);
-
-    
  
-    
-    
-    
+    //好友开房
     openFriendRoomListener = EventListenerCustom::create(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsPrivateRoom(true);
         Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
@@ -420,16 +417,6 @@ void LobbyScene::addCustomEventListener(){
         addChild(invite,4);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendInviteListener, 1);
-    
-    dailySignListener = EventListenerCustom::create(MSG_PLAYER_DAILY_SIGN, [=](EventCustom* event){
-        DailySignData data = GAMEDATA::getInstance()->getDailySignData();
-        if (data.result == "1"){
-            DailyEvent* day = DailyEvent::create();
-            day->showDailyEvent(DailyType::sign);
-            addChild(day,3);
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailySignListener, 1);
 }
 
 

@@ -38,7 +38,11 @@ private:
 	MenuItemToggle* welfareToggle;
 	MenuItemToggle* taskToggle;
 	MenuItemToggle* signToggle;
-	EventListenerCustom* dailyTaskLitener;
+	EventListenerCustom* dailyTaskListener;
+    EventListenerCustom* dailyWelfareListener;
+    EventListenerCustom* dailyPrideListener;
+    EventListenerCustom* dailySignListener;
+    
 	void showDailyTask(Ref* ref);
 	void showWelFare(Ref* ref);
 	void showDailyPride(Ref* ref);
