@@ -4,6 +4,11 @@
 #include "game/mahjong/jong/Jong.h"
 USING_NS_CC;
 
+struct EnterRoomResp{
+    std::string result;
+    std::string rsid;
+};
+
 struct ReplaceJong
 {
 	int seatId;

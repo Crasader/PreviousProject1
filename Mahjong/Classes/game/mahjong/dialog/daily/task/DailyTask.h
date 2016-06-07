@@ -27,7 +27,7 @@ private:
 	TaskCell* cell4;
 	Menu * extraMenu;
 	Sprite* lingqu;
-	MenuItemImage* extra;
+	MenuItemImage* extraImage;
 	void showDailyTaskLayer();
 	void recieveExtraPride(Ref* ref);
 };

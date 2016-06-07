@@ -439,7 +439,14 @@ void MsgHandler::enterRoomResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
+    EnterRoomResp resp;
     const rapidjson::Value &result = _mDoc["result"];
+    resp.result = StringUtil::itos(result.GetInt());
+    if(_mDoc.HasMember("rsid")){
+        const rapidjson::Value &rsid = _mDoc["rsid"];
+        resp.rsid = rsid.GetString();
+    }
+    GAMEDATA::getInstance()->setEnterRoomResp(resp);
     if (result.GetInt() == 1){
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
@@ -473,7 +480,7 @@ void MsgHandler::enterRoomResp(std::string msg){
             }
         }
     }
-    postNotifyMessage(MSG_ENTER_ROOM_RESP, StringUtil::itos(result.GetInt()));
+    postNotifyMessage(MSG_ENTER_ROOM_RESP, "");
 }
 
 void MsgHandler::loginResp(std::string msg){

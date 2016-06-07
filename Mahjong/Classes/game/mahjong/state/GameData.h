@@ -31,7 +31,7 @@ public:
 	CC_SYNTHESIZE(int, currentBank, CurrentBank);
     CC_SYNTHESIZE(bool, continueAgain, ContinueAgain);
     CC_SYNTHESIZE(bool, isPlaying, IsPlaying);
-
+    CC_SYNTHESIZE(EnterRoomResp, enterRoomResp, EnterRoomResp);
 	CC_SYNTHESIZE(OtherPlayedJong, otherPlayJong, OtherPlayJong);
 	CC_SYNTHESIZE(PlayerCpgtData, playerCpgtData, PlayerCpgt);
 	CC_SYNTHESIZE(PlayerTurnData, playerTurnData, PlayerTurn);

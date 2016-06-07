@@ -138,7 +138,6 @@ std::string CommandManage::getVisitorLoginCommand(){
 
 
 std::string CommandManage::getRoomListCommand(std::string gameId){
-	//ªÒ»°∑øº‰¡–±Ì«Î«Û{code:106,poxiaoId:poxiaoId,gameid:1} ¬ÈΩ´”Œœ∑idŒ™1
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_GET_ROOMSTYLE_LIST_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -148,7 +147,7 @@ std::string CommandManage::getRoomListCommand(std::string gameId){
 }
 
 std::string CommandManage::getEnterRoomCommand(std::string gameId, std::string roomId){
-	//Ω¯»Î∑øº‰«Î«Û{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
+	//code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_INTO_ROOMSTYLE_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -158,7 +157,7 @@ std::string CommandManage::getEnterRoomCommand(std::string gameId, std::string r
 }
 
 std::string CommandManage::getRegisterCommand(std::string account, std::string password){
-	// øÕªß∂ÀµΩ∑˛ŒÒ∂À◊¢≤·«Î«Û {code:101,mobile:13989877777,yzm:56789,username:abc,password:678aaa}
+	// {code:101,mobile:13989877777,yzm:56789,username:abc,password:678aaa}
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_REGISTER_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("password", password));
@@ -169,7 +168,7 @@ std::string CommandManage::getRegisterCommand(std::string account, std::string p
 }
 
 std::string CommandManage::getVerifyCommand(std::string phone){
-	// øÕªß∂À ÷ª˙—È÷§¬Î{code:100,mobile:13989877777}
+	//{code:100,mobile:13989877777}
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_REGISTER_MOBILE_YZM)));
 	keyValue.insert(map<string, string>::value_type("mobile", phone));
@@ -177,7 +176,7 @@ std::string CommandManage::getVerifyCommand(std::string phone){
 }
 
 std::string CommandManage::getChangeNickNameCommand(std::string nickname){
-	// –ﬁ∏ƒÍ«≥∆«Î«Û{code:109,nickname:"π˛π˛"}
+	// {code:109,nickname:"π˛π˛"}
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_NICKNAME_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -186,7 +185,7 @@ std::string CommandManage::getChangeNickNameCommand(std::string nickname){
 }
 
 std::string CommandManage::getChangeAccountCommand(std::string account){
-	// –ﬁ∏ƒ’À∫≈«Î«Û{code:111,poxiaoId:poxiaoId,account:"aaa"}
+	//{code:111,poxiaoId:poxiaoId,account:"aaa"}
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_ACCOUNT_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -195,7 +194,7 @@ std::string CommandManage::getChangeAccountCommand(std::string account){
 }
 
 std::string CommandManage::getChangePasswordCommand(std::string password){
-	// –ﬁ∏ƒ√‹¬Î«Î«Û{code:115,password:"123"}
+	// {code:115,password:"123"}
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_PASSWORD_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -204,7 +203,7 @@ std::string CommandManage::getChangePasswordCommand(std::string password){
 }
 
 std::string CommandManage::getChangeGenderCommand(std::string gender){
-	// –ﬁ∏ƒ–‘±«Î«Û{code:117,poxiaoId:"123",gender:"1"}
+	//{code:117,poxiaoId:"123",gender:"1"}
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_GENDER_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -213,7 +212,7 @@ std::string CommandManage::getChangeGenderCommand(std::string gender){
 }
 
 std::string CommandManage::getBoundPhoneCommand(std::string phone, std::string verify){
-	// ∞Û∂® ÷ª˙«Î«Û{code:113,poxiaoId:poxiaoId,mobile:"13122221111",yzm:"33"}
+	//{code:113,poxiaoId:poxiaoId,mobile:"13122221111",yzm:"33"}
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_PHONE_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));

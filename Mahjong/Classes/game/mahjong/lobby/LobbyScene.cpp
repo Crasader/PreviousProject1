@@ -8,6 +8,7 @@
 #include "game/mahjong/dialog/shop/ChargeGold.hpp"
 #include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
 #include "game/mahjong/dialog/shop/LequanShop.hpp"
+#include "game/mahjong/lobby/EnterRoomDialog.hpp"
 
 bool LobbyScene::init()
 {
@@ -195,14 +196,17 @@ void LobbyScene::drawSceneMid(){
         if (roomList.rooms.at(i) == ROOM_1){
             gameMenu->addChild(room1);
             room1->setTag(ROOM_1);
+            setCurrentSelectRoomId(ROOM_1);
         }
         else if (roomList.rooms.at(i) == ROOM_2){
             gameMenu->addChild(room2);
             room2->setTag(ROOM_2);
+            setCurrentSelectRoomId(ROOM_2);
         }
         else if (roomList.rooms.at(i) == ROOM_3){
             gameMenu->addChild(room3);
             room3->setTag(ROOM_3);
+            setCurrentSelectRoomId(ROOM_3);
         }
     }
     gameMenu->alignItemsHorizontallyWithPadding(20);
@@ -378,14 +382,23 @@ void LobbyScene::removeLoading(){
 void LobbyScene::addCustomEventListener(){
     //进入房间回复
     enterRoomListener = EventListenerCustom::create(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        if (result == "1"){
-            removeLoading();
+
+        removeLoading();
+        
+        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
+            EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldNotEnough);
+            addChild(dia);
         }
-        else{
-            removeLoading();
+        else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
+            if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
+                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
+                addChild(dia);
+            }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
+                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
+                addChild(dia);
+            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(enterRoomListener, 1);
