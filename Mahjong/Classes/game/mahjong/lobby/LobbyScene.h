@@ -61,7 +61,6 @@ private:
 	void showHeroInfo();
     void showLoading();
     void removeLoading();
-	void getDailyTaskInfo();
     void showLobbyAnim();
 	void addEventListener();
 	void addCustomEventListener();

@@ -3,6 +3,8 @@
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "game/mahjong/dialog/shop/Huode.hpp"
+#include "userdata/UserData.h"
+#include "game/mahjong/lobby/LobbyScene.h"
 bool DailySign::init(){
     
     if (!Layer::init()){
@@ -39,16 +41,10 @@ void DailySign::onEnter(){
                 showLightAnim(an);
             }), NULL));
         }
-        float scale = 1.0f;
-        if(gold == 0){
-            scale -= 0.15f;
-        }
-        if(diamond== 0){
-            scale -= 0.15f;
-        }
-        if(lequan == 0){
-            scale -= 0.15f;
-        }
+        UserData::getInstance()->setGold(UserData::getInstance()->getGold()+gold);
+        UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+diamond);
+        UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+lequan);
+        ((LobbyScene*)(getParent()->getParent()))->updateHeroInfo();
         Huode* huode = Huode::create(gold, diamond, lequan);
         huode->setVisible(false);
         getParent()->getParent()->addChild(huode,3);
@@ -231,7 +227,7 @@ void DailySign::confirmSign(Ref* ref){
      for(int i=0;i<=atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str());i++){
         Sprite* sp = (Sprite*)getChildByTag(200+i);
         DayCell* cell = (DayCell*)sp->getChildByTag(300+i);
-        cell->runAction(Sequence::create(DelayTime::create(1.0f*i),CallFunc::create([=](){
+        cell->runAction(Sequence::create(CallFunc::create([=](){
             cell->startAnimate();
         }),NULL));
     }
