@@ -34,17 +34,11 @@ void ChangePassword::onEnter(){
         }
 	});
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(changePwdListener, 1);
-    
-    closeDialogListener = EventListenerCustom::create(CLOSE_HINT_DIALOG, [=](EventCustom* event){
-        getParent()->removeFromParent();
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(closeDialogListener, 1);
 }
 
 void ChangePassword::onExit(){
 	Layer::onExit();
 	_eventDispatcher->removeEventListener(changePwdListener);
-    _eventDispatcher->removeEventListener(closeDialogListener);
 }
 
 void ChangePassword::showDialog(){

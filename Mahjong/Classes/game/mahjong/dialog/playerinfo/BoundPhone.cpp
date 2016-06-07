@@ -4,6 +4,7 @@
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "game/loading/Loading.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include <Regex>
 
 bool BoundPhone::init(){
@@ -23,11 +24,15 @@ void BoundPhone::onEnter(){
 		if (data.result == 1){
 			UserData::getInstance()->setBoundPhone(data.phoneNum);
 			removeAllChildren();
-			showDialog();
-		}
+            showDialog();
+            HintDialog* dia = HintDialog::create("绑定手机成功");
+            addChild(dia);
+        }else{
+            HintDialog* dia = HintDialog::create("绑定手机失败");
+            addChild(dia);
+        }
 	});
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(boundPhoneListener, 1);
-
 }
 
 void BoundPhone::onExit(){
@@ -55,9 +60,11 @@ void BoundPhone::showDialog(){
 		addChild(_phoneNum);
 
 		auto itemImage = MenuItemImage::create("playerinfo/verification_btn_1.png", "playerinfo/verification_btn_2.png",
-			CC_CALLBACK_0(BoundPhone::getVerification, this));
+			CC_CALLBACK_1(BoundPhone::getVerification, this));
+        itemImage->setTag(1001);
 		Menu* myMneu = Menu::create(itemImage, NULL);
 		myMneu->setPosition(835, 410);
+        myMneu->setTag(1000);
 		addChild(myMneu);
 
 		hintSprite = Sprite::create("playerinfo/phone_error_hint.png");
@@ -114,10 +121,12 @@ void BoundPhone::showDialog(){
 }
 
 
-void BoundPhone::getVerification(){
+void BoundPhone::getVerification(Ref* ref){
 	totalTime = 60;
     string phone =_phoneNum->getText();
 	if (checkPhone(phone)){
+        MenuItemImage* temp = (MenuItemImage*)ref;
+        temp->setEnabled(false);
         hintSprite->setVisible(false);
 		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVerifyCommand(_phoneNum->getText()));
 		schedule(schedule_selector(BoundPhone::updateSecond), 1, CC_REPEAT_FOREVER, 0);
@@ -148,9 +157,13 @@ void BoundPhone::confirmBound(){
 
 void BoundPhone::updateSecond(float dt){
 	totalTime--;
-	if (totalTime > 0){
+	if (totalTime >= 0){
 		clock->setString(cocos2d::String::createWithFormat("%ds", totalTime)->_string);
-	}
+    }else{
+        if(NULL != getChildByTag(1000)){
+            ((MenuItemImage*)(getChildByTag(1000)->getChildByTag(1001)))->setEnabled(true);
+        }
+    }
 }
 
 

@@ -17,8 +17,9 @@ private:
 	EditBox* _verification;
 	Sprite* hintSprite;
 	EventListenerCustom* boundPhoneListener;
+    
 	void showDialog();
-	void getVerification();
+	void getVerification(Ref* ref);
 	void updateSecond(float dt);
 	void confirmBound();
 	bool checkPhone(std::string phone);

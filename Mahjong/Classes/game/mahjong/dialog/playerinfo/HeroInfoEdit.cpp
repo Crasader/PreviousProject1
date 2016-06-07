@@ -1,4 +1,5 @@
 #include "game/mahjong/dialog/playerinfo/HeroInfoEdit.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 bool HeroInfoEdit::init(){
 	if (!Layer::init()){
@@ -8,41 +9,54 @@ bool HeroInfoEdit::init(){
 	return true;
 }
 
+void HeroInfoEdit::onEnter(){
+    Layer::onEnter();
+    
+    closeDialogListener = EventListenerCustom::create(CLOSE_HINT_DIALOG, [=](EventCustom* event){
+        removeFromParent();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(closeDialogListener, 1);
+}
+
+void HeroInfoEdit::onExit(){
+    Layer::onExit();
+    _eventDispatcher->removeEventListener(closeDialogListener);
+}
+
 void HeroInfoEdit::drawHeroInfoEdit(){
-	MenuItem* item1 = MenuItem::create();
-	item1->setContentSize(Size(1280, 720));
-	Menu* menu1 = Menu::create(item1, NULL);
-	this->addChild(menu1);
-
-	auto all_bg = Sprite::create("common/all_bg.jpg");
-	all_bg->setPosition(640, 360);
-	addChild(all_bg);
-
-
-	auto  dialogBg = Sprite::create("common/dialog_bg.png");
-	dialogBg->setPosition(640, 360);
-	this->addChild(dialogBg);
-
-	auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(HeroInfoEdit::closeView, this));
-	auto closeMenu = Menu::create(closeImage, NULL);
-	closeMenu->setPosition(980, 580);
-	addChild(closeMenu);
-
-	auto paodai = Sprite::create("common/piaodai_zi.png");
-	paodai->setPosition(640, 590);
-	this->addChild(paodai);
-	auto icon = Sprite::create("playerinfo/hero_info.png");
-	icon->setPosition(640, 615);
-	addChild(icon);
-
-	//tabÒ³±êÇ©
-	Scale9Sprite* tabBg = Scale9Sprite::create("common/tab_bg.png");
-	tabBg->setContentSize(Size(540,71));
-	tabBg->setPosition(550,525);
-	addChild(tabBg);
-	
-	auto heroInfoImage1 = MenuItemImage::create("common/tab_btn_1.png", "common/tab_btn_1.png");
-	auto heroInfoImage2 = MenuItemImage::create("common/tab_btn_2.png", "common/tab_btn_2.png");
+    MenuItem* item1 = MenuItem::create();
+    item1->setContentSize(Size(1280, 720));
+    Menu* menu1 = Menu::create(item1, NULL);
+    this->addChild(menu1);
+    
+    auto all_bg = Sprite::create("common/all_bg.jpg");
+    all_bg->setPosition(640, 360);
+    addChild(all_bg);
+    
+    
+    auto  dialogBg = Sprite::create("common/dialog_bg.png");
+    dialogBg->setPosition(640, 360);
+    this->addChild(dialogBg);
+    
+    auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(HeroInfoEdit::closeView, this));
+    auto closeMenu = Menu::create(closeImage, NULL);
+    closeMenu->setPosition(980, 580);
+    addChild(closeMenu);
+    
+    auto paodai = Sprite::create("common/piaodai_zi.png");
+    paodai->setPosition(640, 590);
+    this->addChild(paodai);
+    auto icon = Sprite::create("playerinfo/hero_info.png");
+    icon->setPosition(640, 615);
+    addChild(icon);
+    
+    Scale9Sprite* tabBg = Scale9Sprite::create("common/tab_bg.png");
+    tabBg->setContentSize(Size(540,71));
+    tabBg->setPosition(550,525);
+    addChild(tabBg);
+    
+    auto heroInfoImage1 = MenuItemImage::create("common/tab_btn_1.png", "common/tab_btn_1.png");
+    auto heroInfoImage2 = MenuItemImage::create("common/tab_btn_2.png", "common/tab_btn_2.png");
 	heroInfoImage = MenuItemToggle::createWithCallback(CC_CALLBACK_1(HeroInfoEdit::clickTabBtn, this), heroInfoImage1, heroInfoImage2, NULL);
 	heroInfoImage->setTag(0);
 	heroInfoImage->setSelectedIndex(1);
