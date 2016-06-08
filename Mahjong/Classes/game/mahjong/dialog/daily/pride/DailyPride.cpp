@@ -21,8 +21,18 @@ void DailyPride::onEnter(){
     _eventDispatcher->addEventListenerWithFixedPriority(prideCallBackListener1, 1);
     
     prideCallBackListener2 = EventListenerCustom::create(MSG_PLAYER_TODAY_PRIDE, [=](EventCustom* event){
-        m_turnBg->stopAllActions();
-        //TODO
+        schedule([=](float dt){
+            m_turnBg->stopAllActions();
+            DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
+            for (int i = 0; i < data.prides.size(); i++){
+                if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTodayPrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTodayPrideData().pride.number){
+                    m_turnBg->setRotation(-90+45*i);
+                    startMenu->setEnabled(true);
+                }
+            }
+
+        },0.0f,0,4.0f,"m_turnBg");
+        
     });
     _eventDispatcher->addEventListenerWithFixedPriority(prideCallBackListener2, 1);
 }
@@ -52,8 +62,9 @@ void DailyPride::showDailyPrideLayer(){
 	hint->setPosition(900, 420);
 	addChild(hint);
 
-	auto num = Sprite::create(getImageNameById(1));
+    auto num = Sprite::create(getImageNameById(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())));
 	num->setPosition(910,425);
+    num->setTag(1000);
 	addChild(num);
 
 	auto text = Sprite::create("daily/pride/text_info.png");
@@ -91,6 +102,7 @@ void DailyPride::showDailyPrideLayer(){
 }
 
 void DailyPride::updateData(){
+    ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())));
     DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
     for (int i = 0; i < data.prides.size(); i++){
         PrideCell* cell = PrideCell::create(data.prides.at(i).type, data.prides.at(i).number);
@@ -103,15 +115,17 @@ void DailyPride::updateData(){
 
 
 void DailyPride::beginPride(){
-	NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTodayPrideCommand());
-	startMenu->setEnabled(false);
-	srand(unsigned(time(NULL)));
-	float angleZ = rand() % 720 + 720;
-	auto pAction = EaseExponentialIn::create(RotateBy::create(3, Vec3(0, 0, angleZ)));
-	auto roate = RotateBy::create(3, Vec3(0, 0, angleZ));
-	auto repeat = Repeat::create(roate, CC_REPEAT_FOREVER);
-	auto sequence = Sequence::create(pAction, repeat,NULL);
-	m_turnBg->runAction(sequence);
+    if(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())>0){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTodayPrideCommand());
+        startMenu->setEnabled(false);
+        srand(unsigned(time(NULL)));
+        float angleZ = rand() % 720 + 720;
+        auto pAction = EaseExponentialIn::create(RotateBy::create(2, Vec3(0, 0, angleZ)));
+        auto roate = RotateBy::create(2, Vec3(0, 0, angleZ));
+        auto repeat = Repeat::create(roate, CC_REPEAT_FOREVER);
+        auto sequence = Sequence::create(pAction, repeat,NULL);
+        m_turnBg->runAction(sequence);
+    }
 }
 
 std::string DailyPride::getImageNameById(int id){

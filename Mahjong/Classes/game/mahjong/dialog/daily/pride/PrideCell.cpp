@@ -18,6 +18,8 @@ bool PrideCell::init(PrideType propId, int propNum){
 	if (!Sprite::init()){
 		return false;
 	}
+    setPropId(propId);
+    setPropNum(propNum);
 	auto prop = Sprite::create(getImageNameById(propId));
 	prop->setPosition(0, 65);
 	addChild(prop);
@@ -42,16 +44,16 @@ std::string PrideCell::getImageNameById(PrideType id){
 	switch (id)
 	{
 	case 0:
-		imageName = "mjitem/diamond.png";
+		imageName = "mjitem/gold_iocn.png";
 		break;
 	case 1:
-		imageName = "mjitem/gold_iocn.png";
+		imageName = "mjitem/lequan_icon.png";
 		break;
 	case 2:
 		imageName = "mjitem/jifen_icon.png";
 		break;
 	case 3:
-		imageName = "mjitem/lequan_icon.png";
+		imageName = "mjitem/diamond.png";
 		break;
 	default:
 		break;
@@ -59,3 +61,13 @@ std::string PrideCell::getImageNameById(PrideType id){
 	return imageName;
 }
 
+
+PrideType getPropType(){
+
+
+}
+
+int getPropNum(){
+
+
+}

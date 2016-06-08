@@ -1750,6 +1750,7 @@ void MsgHandler::todayPrideResp(std::string msg){
             info.type = PrideType::diamond;
             info.number = temp["diamond"].GetInt();
         }
+        data.pride = info;
     }
     GAMEDATA::getInstance()->setTodayPrideData(data);
     postNotifyMessage(MSG_PLAYER_TODAY_PRIDE, "");
