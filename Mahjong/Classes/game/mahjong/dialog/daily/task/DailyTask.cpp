@@ -92,7 +92,7 @@ void DailyTask::showDailyTaskLayer(){
         extraMenu->setVisible(false);
         lingqu->setVisible(true);
     }else if (GAMEDATA::getInstance()->getDailyTaskInfo().extra == "0"){
-        extra->setEnabled(false);
+        extraMenu->setEnabled(false);
         lingqu->setVisible(false);
     }
     else{
@@ -108,7 +108,7 @@ void DailyTask::updateData(){
         lingqu->setVisible(true);
     }
     else if (GAMEDATA::getInstance()->getDailyTaskInfo().extra == "0"){
-        extra->setEnabled(false);
+        extraMenu->setEnabled(false);
         lingqu->setVisible(false);
     }
     else{
