@@ -17,7 +17,7 @@ public:
 
 	virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
 	virtual void editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox);
-	virtual void editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text);
+	virtual void editBoxTextChanged(cocos2d::extension::EditBox* editBox,const std::string& text);
 	virtual void editBoxReturn(cocos2d::extension::EditBox* editBox);
 private:
 	EditBox* _editName;

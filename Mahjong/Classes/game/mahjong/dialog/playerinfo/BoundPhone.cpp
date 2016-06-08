@@ -5,7 +5,7 @@
 #include "userdata/UserData.h"
 #include "game/loading/Loading.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
-#include <Regex>
+#include "game/utils/StringUtil.h"
 
 bool BoundPhone::init(){
 	if (!Layer::init()){
@@ -124,7 +124,7 @@ void BoundPhone::showDialog(){
 void BoundPhone::getVerification(Ref* ref){
 	totalTime = 60;
     string phone =_phoneNum->getText();
-	if (checkPhone(phone)){
+    if (StringUtil::checkPhone(phone)){
         MenuItemImage* temp = (MenuItemImage*)ref;
         temp->setEnabled(false);
         hintSprite->setVisible(false);
@@ -136,14 +136,6 @@ void BoundPhone::getVerification(Ref* ref){
 	}
 }
 
-bool BoundPhone::checkPhone(std::string phone){
-	if (phone.length() != 11){
-		return false;
-	}
-	std::regex rx("[0-9]+");
-	bool result = std::regex_match(phone.begin(), phone.end(), rx);
-	return result;
-}
 
 void BoundPhone::confirmBound(){
 	std::string phone = _phoneNum->getText();
@@ -174,7 +166,7 @@ void BoundPhone::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 
 
 void BoundPhone::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
-	if (checkPhone(_phoneNum->getText())){
+	if (StringUtil::checkPhone(_phoneNum->getText())){
 		hintSprite->setVisible(false);
 	}
 	else{

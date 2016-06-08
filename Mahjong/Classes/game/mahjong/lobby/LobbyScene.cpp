@@ -53,7 +53,6 @@ void LobbyScene::onExit(){
     _eventDispatcher->removeEventListener(enterFriendRoomListener);
     _eventDispatcher->removeEventListener(openFriendRoomListener);
     _eventDispatcher->removeEventListener(friendInviteListener);
-    _eventDispatcher->removeEventListener(dailySignListener);
 }
 
 void LobbyScene::updateHeroInfo(){

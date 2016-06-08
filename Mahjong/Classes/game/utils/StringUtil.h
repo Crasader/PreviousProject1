@@ -7,6 +7,7 @@ class StringUtil{
 public:
 	static std::string itos(int target);
 	static std::vector<std::string> split(std::string str, std::string pattern);
+    static bool checkPhone(std::string str);
 };
 
 #endif

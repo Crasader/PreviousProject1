@@ -174,7 +174,7 @@ bool UserRegister::checkPassword(std::string string){
 	return result_1 && (!result_2) && (!result_3);
 }
 
-//开始进入编辑
+
 void UserRegister::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 	if (editBox->getTag() == 0){
 		account_input_info->setVisible(false);
@@ -184,14 +184,14 @@ void UserRegister::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 	}
 
 }
-//结束编辑
+
 void UserRegister::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 	if (editBox->getTag() == 0){
 		if (checkAccount(editBox->getText())){
 			NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAccountCheckCommand(editBox->getText()));
 		}
 		else{
-			account_hint_info->setVisible(true);
+			account_hint_info->setVisible(false);
 		}
 	}
 	else if (editBox->getTag() == 1){
@@ -213,12 +213,13 @@ void UserRegister::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 		}
 	}
 }
-//编辑框文本改变
+
 void UserRegister::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
 
 
 }
-//当触发return后的回调函数
+
+
 void UserRegister::editBoxReturn(cocos2d::extension::EditBox* editBox){
 
 

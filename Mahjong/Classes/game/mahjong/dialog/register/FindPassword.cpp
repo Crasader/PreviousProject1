@@ -1,4 +1,5 @@
 #include "game/mahjong/dialog/register/FindPassword.h"
+#include "game/utils/StringUtil.h"
 
 bool FindPassword::init(){
 	if (!Layer::init()){
@@ -57,6 +58,7 @@ void FindPassword::showDialog(){
     auto accountHint = Sprite::create("register/accout_exist.png");
     accountHint->setPosition(600,400);
     accountHint->setTag(102);
+    accountHint->setVisible(false);
     addChild(accountHint);
     
     
@@ -97,7 +99,7 @@ void FindPassword::closeView(){
 
 
 void FindPassword::findPassword(){
-    
+    //TODO
 }
 
 
@@ -107,7 +109,17 @@ void FindPassword::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 
 
 void FindPassword::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
-   
+    if(editBox->getTag()==1){
+        if(!StringUtil::checkPhone(editBox->getText())){
+            if(NULL != getChildByTag(101)){
+                getChildByTag(101)->setVisible(true);
+            }
+        }else{
+            if(NULL != getChildByTag(101)){
+                getChildByTag(101)->setVisible(false);
+            }
+        }
+    }
 }
 
 

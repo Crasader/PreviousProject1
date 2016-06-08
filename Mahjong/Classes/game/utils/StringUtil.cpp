@@ -1,4 +1,5 @@
 #include "game/utils/StringUtil.h"
+#include <Regex>
 
 std::string StringUtil::itos(int target){
 	char ctime[16];
@@ -24,4 +25,15 @@ std::vector<std::string> StringUtil::split(std::string str, std::string pattern)
 		}
 	}
 	return result;
+}
+
+
+bool StringUtil::checkPhone(std::string phone){
+
+    if (phone.length() != 11){
+        return false;
+    }
+    std::regex rx("[0-9]+");
+    bool result = std::regex_match(phone.begin(), phone.end(), rx);
+    return result;
 }

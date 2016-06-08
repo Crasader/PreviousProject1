@@ -22,7 +22,6 @@ private:
 	void getVerification(Ref* ref);
 	void updateSecond(float dt);
 	void confirmBound();
-	bool checkPhone(std::string phone);
 	virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
 	virtual void editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox);
 	virtual void editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text);
