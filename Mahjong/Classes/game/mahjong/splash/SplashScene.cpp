@@ -6,6 +6,7 @@
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
 #include "game/mahjong/splash/LoadResource.hpp"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 Scene* SplashScene::createScene()
 {
@@ -24,8 +25,6 @@ bool SplashScene::init()
 //    LoadResource* loda = LoadResource::create();
 //    addChild(loda);
     
-    //add all  plsit
-    loadResource();
     //draw scene
     drawLonginScene();
     //add event listener
@@ -124,7 +123,7 @@ void SplashScene::drawLonginScene(){
     _editName->setFont("arial", 30);
     _editName->setTag(606);
     if (UserData::getInstance()->getPassword() != "unknow"){
-        _editName->setPlaceHolder(UserData::getInstance()->getUserName().c_str());
+        _editName->setText(UserData::getInstance()->getUserName().c_str());
     }
     _editName->setInputMode(EditBox::InputMode::SINGLE_LINE);
     _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
@@ -136,13 +135,16 @@ void SplashScene::drawLonginScene(){
     _editPwd->setPosition(Point(1010, 352));
     _editPwd->setTag(607);
     _editPwd->setFont("arial", 30);
+//    if (UserData::getInstance()->getPassword() != "unknow"){
+//        std::string star = "";
+//        for (int i = 0; i < UserData::getInstance()->getPassword().size(); i++){
+//            star += "*";
+//        }
+//        _editPwd->setPlaceHolder(star.c_str());
+//        
+//    }
     if (UserData::getInstance()->getPassword() != "unknow"){
-        std::string star = "";
-        for (int i = 0; i < UserData::getInstance()->getPassword().size(); i++){
-            star += "*";
-        }
-        _editPwd->setPlaceHolder(star.c_str());
-        
+        _editPwd->setText(UserData::getInstance()->getPassword().c_str());
     }
     _editPwd->setInputFlag(EditBox::InputFlag::PASSWORD);
     _editPwd->setInputMode(EditBox::InputMode::SINGLE_LINE);
@@ -204,9 +206,6 @@ void SplashScene::loginByPass(){
                                                   CommandManage::getInstance()->getLoginCommmand(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
             showLoading();
         }
-        else{
-         //TODO
-        }
     }
     else{
         NetworkManage::getInstance()->sendMsg(
@@ -237,10 +236,6 @@ void SplashScene::loginByVisitor(){
 }
 
 
-void SplashScene::setChangeNickName(std::string name){
-    
-}
-
 void SplashScene::showUserRegister(){
     UserRegister* layer = UserRegister::create();
     this->addChild(layer,2);
@@ -250,11 +245,6 @@ void SplashScene::showUserRegister(){
 void SplashScene::findbackPwd(){
     FindPassword* pass = FindPassword::create();
     this->addChild(pass,2);
-}
-
-
-void SplashScene::loadResource(){
-    //TODO
 }
 
 
@@ -269,7 +259,9 @@ void  SplashScene::addCustomEventListener(){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
         }
         else{
-            //TODO 弹出登录错误信息
+            removeLoading();
+            HintDialog* hint = HintDialog::create("用户名或者密码错误",false);
+            addChild(hint);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(loginRespListener, 1);
@@ -293,16 +285,13 @@ void  SplashScene::addCustomEventListener(){
     registerRespListener = EventListenerCustom::create(MSG_PLAYER_REGISTER_RESP, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
-            _editName->setPlaceHolder(UserData::getInstance()->getUserName().c_str());
+            _editName->setText(UserData::getInstance()->getUserName().c_str());
             if (UserData::getInstance()->getPassword() != "unknow"){
-                std::string star = "";
-                for (int i = 0; i < UserData::getInstance()->getPassword().size(); i++){
-                    star += "*";
-                }
-                _editPwd->setPlaceHolder(star.c_str());
+                _editPwd->setText(UserData::getInstance()->getPassword().c_str());
             }
         }else{
-            
+            HintDialog* hint = HintDialog::create("注册失败",false);
+            addChild(hint);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(registerRespListener, 1);
@@ -328,13 +317,16 @@ void SplashScene::addTocuhListener(){
 
 void SplashScene::showLoading(){
     Loading* loadLayer = Loading::create();
+    loadLayer->setTag(1000);
     this->addChild(loadLayer);
 }
 
 
 
 void SplashScene::removeLoading(){
-    //TODO
+    if(NULL != getChildByTag(1000)){
+        getChildByTag(1000)->removeFromParent();
+    }
 }
 
 

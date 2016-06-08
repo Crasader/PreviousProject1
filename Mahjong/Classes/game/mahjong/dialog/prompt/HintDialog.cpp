@@ -11,7 +11,7 @@
 
 HintDialog* HintDialog::create(std::string msg){
     HintDialog* ret = new HintDialog();
-    if(ret &&ret->init(msg)){
+    if(ret &&ret->init(msg,true)){
         ret->autorelease();
         return ret;
     }else{
@@ -22,10 +22,24 @@ HintDialog* HintDialog::create(std::string msg){
 }
 
 
-bool HintDialog::init(std::string msg){
+HintDialog* HintDialog::create(std::string msg,bool sendBroadCast){
+
+    HintDialog* ret = new HintDialog();
+    if(ret &&ret->init(msg,sendBroadCast)){
+        ret->autorelease();
+        return ret;
+    }else{
+        
+        CC_SAFE_DELETE(ret);
+        return NULL;
+    }
+}
+
+bool HintDialog::init(std::string msg,bool sendBroadCast){
     if(!Layer::init()){
         return false;
     }
+    setSendBroadCast(sendBroadCast);
     auto dialogBg = Sprite::create("common/dialog_bg_small.png");
     dialogBg->setPosition(640, 360);
     this->addChild(dialogBg);
@@ -60,6 +74,10 @@ bool HintDialog::init(std::string msg){
 
 
 void HintDialog::closeView(){
-    EventCustom ev(CLOSE_HINT_DIALOG);
-    _eventDispatcher-> dispatchEvent(&ev);
+    if(getSendBroadCast()){
+        EventCustom ev(CLOSE_HINT_DIALOG);
+        _eventDispatcher-> dispatchEvent(&ev);
+    }else{
+        removeFromParent();
+    }
 }

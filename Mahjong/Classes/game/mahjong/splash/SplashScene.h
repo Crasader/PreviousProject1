@@ -17,10 +17,8 @@ public:
 	virtual void onEnter() override;
 	virtual void onExit() override;
 
-	void loadResource();
 	void loginByPass();
 	void loginByVisitor();
-	void setChangeNickName(std::string name);
 
 
 	virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);

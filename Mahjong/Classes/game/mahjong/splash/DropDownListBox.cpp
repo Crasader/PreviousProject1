@@ -104,7 +104,7 @@ void DropDownList::onSelected(CCObject* sender)
 	if (item)
 	{
 		lastSelectedIndex = item->getTag();
-		_loginscene->setChangeNickName(selectLabels.at(lastSelectedIndex));
+//		_loginscene->setChangeNickName(selectLabels.at(lastSelectedIndex));
 
 	}
 	onClose();
