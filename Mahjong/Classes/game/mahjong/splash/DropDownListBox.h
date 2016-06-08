@@ -30,7 +30,7 @@ USING_NS_CC;
 
 		void onClose();
 
-		void setLoginscene(SplashScene*scene);
+		void setLoginscene(SplashScene* scene);
 	private:
 		CCMenu* mainMenu;
 

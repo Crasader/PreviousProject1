@@ -167,6 +167,15 @@ std::string CommandManage::getRegisterCommand(std::string account, std::string p
 	return commandString(keyValue);
 }
 
+std::string CommandManage::getFindPassword(std::string account,std::string phone){
+    // 找回密码请求{code:148,account:"真心常在",mobile:"131111111"}
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FIND_PASSWORD_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("account", account));
+    keyValue.insert(map<string, string>::value_type("mobile", phone));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::getVerifyCommand(std::string phone){
 	//{code:100,mobile:13989877777}
 	std::map<std::string, std::string> keyValue;

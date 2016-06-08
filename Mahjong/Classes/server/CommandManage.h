@@ -21,6 +21,7 @@ public:
 	std::string getRoomListCommand(std::string gameId);
 	std::string getEnterRoomCommand(std::string gameId, std::string roomId);
 	std::string getRegisterCommand(std::string account, std::string password);
+    std::string getFindPassword(std::string account,std::string password);
 	std::string getVerifyCommand(std::string phone);
 	std::string getChangeNickNameCommand(std::string nickname);
 	std::string getChangeAccountCommand(std::string account);

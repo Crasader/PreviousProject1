@@ -57,6 +57,7 @@
 #define MSGCODE_QUICK_ADD_FRIEND_RESPONSE  145// 快速互加好友回复{code:145,poxiaoId:poxiaoId,result:"1"} 1成功0失败
 #define MSGCODE_HONGBAO_GETED_REQUEST  146// 红包被领取情况获取奖励请求{code:146,poxiaoId:"456"}
 #define MSGCODE_HONGBAO_GETED_RESPONSE  147//红包被领取情况获取奖励回复{code:147,poxiaoId:"456",result:"1"}
+#define MSGCODE_FIND_PASSWORD_REQUEST  148// 找回密码请求{code:148,account:"真心常在",mobile:"131111111"}
 
 #define MSGCODE_INTO_ROOMSTYLE_REQUEST  1000 //进入房间请求{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 #define MSGCODE_INTO_ROOMSTYLE_RESPONSE 1001 //进入房间回复{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]} result1为成功 2为金币低于下限 3为金币高于上线 4为其他错误

@@ -7,6 +7,9 @@
 #include "game/loading/Loading.h"
 #include "game/mahjong/splash/LoadResource.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "game/mahjong/splash/DropDownListBox.h"
+#include "game/mahjong/splash/LoginMannger.h"
+
 
 Scene* SplashScene::createScene()
 {
@@ -65,13 +68,7 @@ void SplashScene::drawLonginScene(){
     auto gameTitle = Sprite::create("mainlogin/splah_title.png");
     gameTitle->setPosition(875, 630);
     this->addChild(gameTitle);
-    
-    auto accountBg = Sprite::create("mainlogin/username_box.png");
-    accountBg->setPosition(955, 475);
-    this->addChild(accountBg);
-    auto accountIcon = Sprite::create("mainlogin/password_box.png");
-    accountIcon->setPosition(955, 350);
-    this->addChild(accountIcon);
+
     
     auto girlSprite = Sprite::create("mainlogin/girl_image.png");
     girlSprite->setPosition(220,360);
@@ -118,6 +115,12 @@ void SplashScene::drawLonginScene(){
     auto action2 = Animate::create(animation2);
     logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(48.0/24), NULL), CC_REPEAT_FOREVER), NULL));
     
+    
+    auto accountBg = Sprite::create("mainlogin/username_box.png");
+    accountBg->setPosition(955, 475);
+    addChild(accountBg);
+    
+
     _editName = EditBox::create(Size(400, 81), Scale9Sprite::create());
     _editName->setPosition(Point(1010, 475));
     _editName->setFont("arial", 30);
@@ -128,21 +131,21 @@ void SplashScene::drawLonginScene(){
     _editName->setInputMode(EditBox::InputMode::SINGLE_LINE);
     _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _editName->setDelegate(this);
-    addChild(_editName);
-
+    addChild(_editName,1);
+    
+    DropDownList* drop = DropDownList::create(Sprite::create(), Size(450,240));
+    drop->setPosition(Point(508, 200));
+    drop->setLoginscene(this);
+    addChild(drop,5);
+    
+    auto accountIcon = Sprite::create("mainlogin/password_box.png");
+    accountIcon->setPosition(955, 350);
+    this->addChild(accountIcon);
     
     _editPwd = EditBox::create(Size(400, 81), Scale9Sprite::create());
     _editPwd->setPosition(Point(1010, 352));
     _editPwd->setTag(607);
     _editPwd->setFont("arial", 30);
-//    if (UserData::getInstance()->getPassword() != "unknow"){
-//        std::string star = "";
-//        for (int i = 0; i < UserData::getInstance()->getPassword().size(); i++){
-//            star += "*";
-//        }
-//        _editPwd->setPlaceHolder(star.c_str());
-//        
-//    }
     if (UserData::getInstance()->getPassword() != "unknow"){
         _editPwd->setText(UserData::getInstance()->getPassword().c_str());
     }
@@ -150,7 +153,7 @@ void SplashScene::drawLonginScene(){
     _editPwd->setInputMode(EditBox::InputMode::SINGLE_LINE);
     _editPwd->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _editPwd->setDelegate(this);
-    addChild(_editPwd);
+    addChild(_editPwd,1);
     
     username_text = Sprite::create("mainlogin/username_text.png");
     username_text->setPosition(920, 475);
@@ -236,15 +239,20 @@ void SplashScene::loginByVisitor(){
 }
 
 
+void SplashScene::setChangeNickName(std::string name,std::string pwd){
+    _editName->setText(name.c_str());
+    _editPwd->setText(pwd.c_str());
+}
+
 void SplashScene::showUserRegister(){
     UserRegister* layer = UserRegister::create();
-    this->addChild(layer,2);
+    this->addChild(layer,6);
 }
 
 
 void SplashScene::findbackPwd(){
     FindPassword* pass = FindPassword::create();
-    this->addChild(pass,2);
+    this->addChild(pass,6);
 }
 
 
@@ -257,11 +265,12 @@ void  SplashScene::addCustomEventListener(){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));//房间列表
             NetworkManage::getInstance()->heartbeat();//心跳
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
+            LoginMannger::getInstance()->addMemoryNickname(UserData::getInstance()->getUserName().c_str(), UserData::getInstance()->getPassword().c_str());
         }
         else{
             removeLoading();
             HintDialog* hint = HintDialog::create("用户名或者密码错误",false);
-            addChild(hint);
+            addChild(hint,6);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(loginRespListener, 1);
@@ -285,13 +294,15 @@ void  SplashScene::addCustomEventListener(){
     registerRespListener = EventListenerCustom::create(MSG_PLAYER_REGISTER_RESP, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
+            username_text->setVisible(false);
+            password_text->setVisible(false);
             _editName->setText(UserData::getInstance()->getUserName().c_str());
-            if (UserData::getInstance()->getPassword() != "unknow"){
-                _editPwd->setText(UserData::getInstance()->getPassword().c_str());
-            }
+            _editPwd->setText(UserData::getInstance()->getPassword().c_str());
+            LoginMannger::getInstance()->addMemoryNickname(UserData::getInstance()->getUserName().c_str(), UserData::getInstance()->getPassword().c_str());
+            
         }else{
             HintDialog* hint = HintDialog::create("注册失败",false);
-            addChild(hint);
+            addChild(hint,6);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(registerRespListener, 1);

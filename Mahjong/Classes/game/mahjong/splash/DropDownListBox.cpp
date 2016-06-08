@@ -1,4 +1,5 @@
 #include "game/mahjong/splash/DropDownListBox.h"
+#include "game/mahjong/splash/LoginMannger.h"
 #include "game/utils/Chinese.h"
 
 DropDownList::DropDownList(Sprite* label, Size size)
@@ -6,14 +7,15 @@ DropDownList::DropDownList(Sprite* label, Size size)
 	, isShowMenu(false)
 	, lastSelectedIndex(0)
 {
+//    auto bgFrame = MenuItemImage::create("mainlogin/drop_list_bg.png","mainlogin/drop_list_bg.png");
 	mainMenu =Menu::create();
+    mainMenu->setContentSize(size);
 	mainMenu->setPosition(Point(size.width , size.height / 2));
 	mainMenu->retain();
-	bgFrame = Sprite::create("DropDownListFrame.png");
-	bgFrame->setAnchorPoint(Point(0, 1));
-	bgFrame->setPosition(62,-3);
+	bgFrame = Sprite::create("mainlogin/drop_list_bg.png");
+	bgFrame->setPosition(Point(size.width , size.height / 2));
 	addChild(bgFrame,-1);
-	bgFrame->setVisible(false); 
+	bgFrame->setVisible(false);
 
 	showLabel->setPosition(Point(size.width / 2, size.height / 2));
 	addChild(showLabel);
@@ -50,29 +52,43 @@ void DropDownList::onEnter()
 
 bool DropDownList::onTouchBegan(CCTouch *touch, CCEvent *event)
 {
-	auto rect = _loginscene->_editName->getBoundingBox();
-	if (rect.containsPoint(touch->getLocation()))
-	{
-		if (!isShowMenu)
-		{
-			bgFrame->setVisible(true);
-			isShowMenu = true;
-			addChild(mainMenu);
-			_loginscene->_editName->setText(ChineseWord("UserOtherNickname").c_str());
-			_loginscene->_editName->setFontColor(Color3B::GRAY);
-			return true;
-
-		}
-		else
-		{
-			onClose();
-			return false;
-		}
-		
-	}
-	return false;
-
-	
+    auto rect = _loginscene->_editName->getBoundingBox();
+    if (rect.containsPoint(touch->getLocation()))
+    {
+        if (!isShowMenu)
+        {
+            bgFrame->setVisible(true);
+            isShowMenu = true;
+            addChild(mainMenu);
+            _loginscene->_editName->setText("使用其他账号登录");
+            _loginscene->_editName->setFontColor(Color3B::GRAY);
+            selectLabels.clear();
+            mainMenu->removeAllChildren();
+            for(auto var:LoginMannger::getInstance()->getMemoryNickname()){
+                addLabel(var);
+            }
+            return true;
+            
+        }
+        else
+        {
+            onClose();
+            return false;
+        }
+        
+    }
+    else
+    {
+        if (isShowMenu)
+        {
+            _loginscene->setChangeNickName(selectLabels.at(0),LoginMannger::getInstance()->getPassword(selectLabels.at(lastSelectedIndex).c_str()));
+            onClose(); 
+            return true;
+        }
+        
+        
+    }
+    return false;
 }
 
 
@@ -81,18 +97,18 @@ void DropDownList::addLabel(std::string label)
 	Size size = getContentSize();
 
 	auto ttf = LabelTTF::create(label, "arial",22);
-	auto frame = Sprite::create("nicknameSelected.png");
+	auto frame = Sprite::create();
 	frame->setPosition(ttf->getContentSize() / 2);
 	ttf->addChild(frame,-1);
 
 	selectLabels.push_back(label);
-
-	MenuItem* item = MenuItemSprite::create(
-		LabelTTF::create(label, "arial", 22),ttf,
+    auto labelttf = LabelTTF::create(label, "arial", 30);
+	MenuItem* item = MenuItemSprite::create(labelttf
+		,ttf,
 		CC_CALLBACK_1(DropDownList::onSelected,this)
 		);
 	item->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	item->setPosition(65, -(int)selectLabels.size() * 37);
+	item->setPosition(0, -(int)selectLabels.size() * 45+125);
 	mainMenu->addChild(item);
 	item->setTag((int)selectLabels.size() - 1);
 }
@@ -104,7 +120,7 @@ void DropDownList::onSelected(CCObject* sender)
 	if (item)
 	{
 		lastSelectedIndex = item->getTag();
-//		_loginscene->setChangeNickName(selectLabels.at(lastSelectedIndex));
+        _loginscene->setChangeNickName(selectLabels.at(lastSelectedIndex),LoginMannger::getInstance()->getPassword(selectLabels.at(lastSelectedIndex).c_str()));
 
 	}
 	onClose();
@@ -117,7 +133,8 @@ void DropDownList::onClose()
 	isShowMenu = false;
 	bgFrame->setVisible(false);
 }
-void DropDownList::setLoginscene(SplashScene*scene)
+
+void DropDownList::setLoginscene(SplashScene* scene)
 {
 	_loginscene = scene;
 }

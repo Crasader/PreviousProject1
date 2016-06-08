@@ -19,7 +19,7 @@ public:
 
 	void loginByPass();
 	void loginByVisitor();
-
+    void setChangeNickName(std::string name,std::string pwd);
 
 	virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
 
