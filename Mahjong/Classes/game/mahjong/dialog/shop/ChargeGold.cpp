@@ -59,8 +59,8 @@ void ChargeGold::onEnter(){
     goldChangeList = EventListenerCustom::create(MSG_PLAYER_GOLD_CHANGE_LIST, [=](EventCustom* event){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
-            showChargeGold();
         }
+        showChargeGold();
     });
     _eventDispatcher->addEventListenerWithFixedPriority(goldChangeList, 1);
     

@@ -55,8 +55,8 @@ void FirstChargeDialog::onEnter(){
     firstChargeInfo = EventListenerCustom::create(MSG_PLAYER_FIRST_CHARGE, [=](EventCustom* event){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
-            showFirstCharge();
         }
+        showFirstCharge();
     });
     _eventDispatcher->addEventListenerWithFixedPriority(firstChargeInfo, 1);
 }
