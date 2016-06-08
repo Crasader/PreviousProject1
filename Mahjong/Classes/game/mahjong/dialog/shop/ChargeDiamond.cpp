@@ -59,8 +59,8 @@ void ChargeDiamond::onEnter(){
     diamondChangeList = EventListenerCustom::create(MSG_PLAYER_GOLD_CHANGE_LIST, [=](EventCustom* event){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
-            showChargeDialog();
         }
+        showChargeDialog();
     });
     _eventDispatcher->addEventListenerWithFixedPriority(diamondChangeList, 1);
 
