@@ -98,7 +98,7 @@ void FindPassword::closeView(){
 }
 
 
-void FindPassword::≥(){
+void FindPassword::findPassword(){
     //TODO
 }
 

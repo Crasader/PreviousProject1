@@ -147,7 +147,6 @@ void SplashScene::drawLonginScene(){
     _editPwd->setInputFlag(EditBox::InputFlag::PASSWORD);
     _editPwd->setInputMode(EditBox::InputMode::SINGLE_LINE);
     _editPwd->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
-    _editPwd->setFocused(true);
     _editPwd->setDelegate(this);
     addChild(_editPwd);
     
@@ -275,18 +274,38 @@ void  SplashScene::addCustomEventListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(loginRespListener, 1);
     
+    //获取房间列表
     roomRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
         removeLoading();
         Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomRespListener, 1);
     
+    //断线续玩
     reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         NetworkManage::getInstance()->heartbeat();
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(TransitionFade::create(0.12f, MjGameScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(reConnectAgain, 1);
+    
+    //注册结果返回
+    registerRespListener = EventListenerCustom::create(MSG_PLAYER_REGISTER_RESP, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        if(result == "1"){
+            _editName->setPlaceHolder(UserData::getInstance()->getUserName().c_str());
+            if (UserData::getInstance()->getPassword() != "unknow"){
+                std::string star = "";
+                for (int i = 0; i < UserData::getInstance()->getPassword().size(); i++){
+                    star += "*";
+                }
+                _editPwd->setPlaceHolder(star.c_str());
+            }
+        }else{
+            
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(registerRespListener, 1);
 }
 
 void SplashScene::addTocuhListener(){

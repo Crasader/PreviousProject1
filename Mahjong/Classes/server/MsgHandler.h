@@ -77,6 +77,7 @@ private:
     void goldChangeResp(std::string msg);
     void diamondChangeListResp(std::string msg);
     void lequanChangeListResp(std::string msg);
+    void registerAccountResp(std::string msg);
 
 };
 #endif

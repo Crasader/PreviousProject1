@@ -15,6 +15,7 @@ void UserRegister::onEnter(){
 	checkAccountListener = EventListenerCustom::create(MSG_PLAYER_CHECK_ACCOUNT, [=](EventCustom* event){
 		char* buf = static_cast<char*>(event->getUserData());
 		if (buf == "1"){
+            account_hint_info->setTexture("register/accout_exist.png");
 			account_hint_info->setVisible(true);
 		}
 		else{
@@ -191,7 +192,8 @@ void UserRegister::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 			NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAccountCheckCommand(editBox->getText()));
 		}
 		else{
-			account_hint_info->setVisible(false);
+			account_hint_info->setVisible(true);
+            account_hint_info->setTexture("register/accout_too_simple.png");
 		}
 	}
 	else if (editBox->getTag() == 1){

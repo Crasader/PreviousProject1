@@ -26,7 +26,7 @@
 #define MSGCODE_MODIFY_PASSWORD_RESPONSE  116// 修改密码请求{code:116,result:"1"} 1成功 2原密码不正确，3其他错误
 #define MSGCODE_MODIFY_GENDER_REQUEST  117// 修改性别请求{code:117,poxiaoId:"123",gender:"1"}
 #define MSGCODE_MODIFY_GENDER_RESPONSE  118// 修改性别请求{code:118,result:"1"} 1成功 其他 失败
-#define MSGCODE_REGISTER_RESPONSE  119//注册回复 {code:103,poxiaoId:poxiaoId,username:"avc",password:"123",result:1,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',level:"滚地龙"}1成功 2 用户名已存在 3验证码错误  4其他错误
+#define MSGCODE_REGISTER_RESPONSE  119//注册回复 {code:119,poxiaoId:poxiaoId,username:"avc",password:"123",result:1,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',level:"滚地龙"}1成功 2 用户名已存在 3验证码错误  4其他错误
 
 #define MSGCODE_QUIT_REQUEST 120//退出请求 {code:120,poxiaoId:poxiaoId}
 #define MSGCODE_SEARCH_FRIEND_REQUEST  121// 搜索好友请求{code:121,poxiaoId:"123",key:"好啊"}
@@ -250,4 +250,5 @@
 #define MSG_PLAYER_DAILY_TASK_LZ2 "msg_player_daiy_task_lz2"
 #define MSG_PLAYER_DAILY_TASK_CHARGE "msg_player_daiy_task_charge"
 #define MSG_PLAYER_DAILY_TASK_EXTRA "msg_player_daiy_task_extra"
+#define MSG_PLAYER_REGISTER_RESP "msg_player_register_resp"
 #endif
