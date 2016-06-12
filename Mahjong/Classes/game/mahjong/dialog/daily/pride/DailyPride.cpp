@@ -1,7 +1,9 @@
 #include "game/mahjong/dialog/daily/pride/DailyPride.h"
 #include "game/mahjong/dialog/daily/pride/PrideCell.h"
 #include "game/mahjong/state/GameData.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "server/NetworkManage.h"
+#include "userdata/UserData.h"
 #include "math.h"
 bool DailyPride::init(){
 	if (!Layer::init()){
@@ -115,16 +117,21 @@ void DailyPride::updateData(){
 
 
 void DailyPride::beginPride(){
-    if(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())>0){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTodayPrideCommand());
-        startMenu->setEnabled(false);
-        srand(unsigned(time(NULL)));
-        float angleZ = rand() % 720 + 720;
-        auto pAction = EaseExponentialIn::create(RotateBy::create(2, Vec3(0, 0, angleZ)));
-        auto roate = RotateBy::create(2, Vec3(0, 0, angleZ));
-        auto repeat = Repeat::create(roate, CC_REPEAT_FOREVER);
-        auto sequence = Sequence::create(pAction, repeat,NULL);
-        m_turnBg->runAction(sequence);
+    if(UserData::getInstance()->getGold()<50000){
+        HintDialog* hit = HintDialog::create("金币不足,请充值",false);
+        addChild(hit);
+    }else{
+        if(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())>0){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTodayPrideCommand());
+            startMenu->setEnabled(false);
+            srand(unsigned(time(NULL)));
+            float angleZ = rand() % 720 + 720;
+            auto pAction = EaseExponentialIn::create(RotateBy::create(2, Vec3(0, 0, angleZ)));
+            auto roate = RotateBy::create(2, Vec3(0, 0, angleZ));
+            auto repeat = Repeat::create(roate, CC_REPEAT_FOREVER);
+            auto sequence = Sequence::create(pAction, repeat,NULL);
+            m_turnBg->runAction(sequence);
+        }
     }
 }
 
