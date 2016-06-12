@@ -19,12 +19,16 @@ USING_NS_CC_EXT;
 class OtherPlayerInfo : public Layer{
 public:
     virtual bool init(Player* player);
+    void onEnter() override;
+    void onExit() override;
     static OtherPlayerInfo* create(Player* player);
 private:
     Label* nickNameLabel;
     Sprite* playerGender;
+    EventListenerCustom* addFriendRespListener2;
     void closeView();
-    void addFriend();
+    void addFriend(Ref* ref);
+    CC_SYNTHESIZE(std::string, poxiaoId, PoxiaoId);
 
 };
 #endif /* OtherPlayerInfo_hpp */

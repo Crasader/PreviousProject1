@@ -11,6 +11,8 @@
 #include "game/utils/Chinese.h"
 #include "game/utils/SeatIdUtil.h"
 #include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 OtherPlayerInfo* OtherPlayerInfo::create(Player* player){
     OtherPlayerInfo* bRet = new OtherPlayerInfo();
@@ -27,10 +29,35 @@ OtherPlayerInfo* OtherPlayerInfo::create(Player* player){
     }
 }
 
+void OtherPlayerInfo::onEnter(){
+    Layer::onEnter();
+    addFriendRespListener2 = EventListenerCustom::create(MSG_ADD_FRIEND_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+            HintDialog* hint = HintDialog::create("添加好友成功",false);
+            addChild(hint);
+        }else{
+            HintDialog* hint = HintDialog::create("添加好友失败",false);
+            addChild(hint);
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addFriendRespListener2, 1);
+}
+
+void OtherPlayerInfo::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(addFriendRespListener2);
+}
+
+
+
 bool OtherPlayerInfo::init(Player* player){
     if(!Layer::init()){
         return false;
     }
+    
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     item1->setCallback(CC_CALLBACK_0(OtherPlayerInfo::closeView, this));
@@ -63,12 +90,17 @@ bool OtherPlayerInfo::init(Player* player){
     nickNameLabel->setPosition(130, 190);
     dialogBg->addChild(nickNameLabel);
     
-    MenuItemImage* addImage = MenuItemImage::create("playerinfo/add_friend_btn_1.png","playerinfo/add_friend_btn_2.png",CC_CALLBACK_0(OtherPlayerInfo::addFriend, this));
+    MenuItemImage* addImage = MenuItemImage::create("playerinfo/add_friend_btn_1.png","playerinfo/add_friend_btn_2.png",CC_CALLBACK_1(OtherPlayerInfo::addFriend, this));
     addImage->setScale(0.6f);
     Menu* myMenu = Menu::create(addImage,NULL);
     myMenu->setPosition(180, 150);
     dialogBg->addChild(myMenu);
-
+    for(auto var : GAMEDATA::getInstance()->getFriendList().friends){
+        if(var.poxiaoId == player->getPoxiaoId()){
+            addImage->setVisible(false);
+        }
+    }
+    setPoxiaoId(player->getPoxiaoId());
     std::string gen = player->getGender() == 0 ? "playerinfo/female.png" : "playerinfo/male.png";
     playerGender = Sprite::create(gen);
     playerGender->setPosition(120, 120);
@@ -136,7 +168,8 @@ void OtherPlayerInfo::closeView(){
 }
 
 
-void OtherPlayerInfo::addFriend(){
-
-
+void OtherPlayerInfo::addFriend(Ref* ref){
+    MenuItemImage* temp = (MenuItemImage*)ref;
+    temp->setVisible(false);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAddFriendCommand(getPoxiaoId()));
 }
