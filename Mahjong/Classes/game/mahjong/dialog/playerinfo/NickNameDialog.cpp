@@ -70,6 +70,8 @@ void NickNameDialog::showDialog(){
 	_editName->setPosition(Point(640, 400));
 	_editName->setTag(0);
 	_editName->setFont("arial", 24);
+    _editName->setInputMode(cocos2d::ui::EditBox::InputMode::SINGLE_LINE);
+    _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	_editName->setDelegate(this);
 	addChild(_editName);
 	nickNameHintInfo = Sprite::create();

@@ -92,6 +92,8 @@ void FriendAddView::showDialog(){
 	_editName->setPosition(Point(620, 420));
 	_editName->setTag(0);
 	_editName->setFont("arial", 24);
+    _editName->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+    _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
 	_editName->setDelegate(this);
 	tabLayer1->addChild(_editName);
 
