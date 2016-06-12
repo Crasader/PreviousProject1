@@ -101,13 +101,13 @@ void DailySign::drawDayBgAndTitle(){
         sign_bg->setPosition(260+i*126, 335);
         addChild(sign_bg);
         std::string imageName = "daily/sign/di_x_tian_2.png";
-        if (i < index){
+        if (i <= index){
             imageName = "daily/sign/di_x_tian_1.png";
         }
         auto title = Sprite::create(imageName);
         title->setPosition(260 + i * 126, 445);
         addChild(title,2);
-        bool normal = i < index ? true : false;
+        bool normal = i <= index ? true : false;
         auto dayNum = Sprite::create(getImageNameById(i+1, normal));
         dayNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         dayNum->setPosition(260 + i * 126, 450);
@@ -123,7 +123,7 @@ void DailySign::drawDayBgAndTitle(){
             
         DayCell* cell = DayCell::create(1);//被裁剪的内容
         cell->setTag(300+i);
-        if(i<index){
+        if(i<=index){
             if(data.result == "1"){
                 cell->setDayState(1);
             }else{

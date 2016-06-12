@@ -120,7 +120,7 @@ void DailyPride::beginPride(){
     
     if(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())>0){
         if(UserData::getInstance()->getGold()<50000){
-            HintDialog* hit = HintDialog::create("未达成抽奖条件",false);
+            HintDialog* hit = HintDialog::create("金币不足,请充值",false);
             addChild(hit);
         }else{
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTodayPrideCommand());
@@ -134,7 +134,7 @@ void DailyPride::beginPride(){
             m_turnBg->runAction(sequence);
         }
     }else{
-        HintDialog* hit = HintDialog::create("金币不足,请充值",false);
+        HintDialog* hit = HintDialog::create("未达成抽奖条件",false);
         addChild(hit);
     }
 }
