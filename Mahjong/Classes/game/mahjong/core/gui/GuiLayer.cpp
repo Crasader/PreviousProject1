@@ -119,8 +119,8 @@ void GuiLayer::chatButtonClick(){
 }
 
 void GuiLayer::settingButtonClick(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
-    
+    UserSetting* setting = UserSetting::create();
+    this->addChild(setting,3);
 }
 
 void GuiLayer::quitButtonClick(){
