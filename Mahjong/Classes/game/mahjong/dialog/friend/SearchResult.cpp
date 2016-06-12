@@ -11,7 +11,6 @@ bool SearchResult::init()
 	auto input_bg_1 = Sprite::create("friend/searchResult.png");
 	input_bg_1->setPosition(640, 255);
 	addChild(input_bg_1);
-
 	tableView = TableView::create(this, Size(625, 220));
 	tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
 	tableView->setDirection(ScrollView::Direction::VERTICAL);
@@ -62,8 +61,7 @@ TableViewCell* SearchResult::tableCellAtIndex(TableView *table, ssize_t idx)
 	if (!cell) {
 		cell = new (std::nothrow) TableViewCell();
 		cell->autorelease();
-
-       
+        
 		auto head = Sprite::create("gameview/head_image_1.png");
 		head->setAnchorPoint(Vec2::ZERO);
 		head->setPosition(Vec2(19, 19));
@@ -118,9 +116,11 @@ TableViewCell* SearchResult::tableCellAtIndex(TableView *table, ssize_t idx)
         ((Menu*)cell->getChildByTag(124))->setName(GAMEDATA::getInstance()->getFriendSearch().friends.at(idx * 2).poxiaoId);
         
 		if (idx * 2 + 1 < GAMEDATA::getInstance()->getFriendSearch().friends.size()){
-			if (NULL != getChildByTag(321))
-				((Label*)cell->getChildByTag(321))->setString(GAMEDATA::getInstance()->getFriendSearch().friends.at(idx * 2 + 1).nickname);
+            if (NULL != getChildByTag(321)){
+                ((Label*)cell->getChildByTag(321))->setString(GAMEDATA::getInstance()->getFriendSearch().friends.at(idx * 2 + 1).nickname);}
+            if (NULL != getChildByTag(320)){
                 ((Menu*)cell->getChildByTag(320))->setName(GAMEDATA::getInstance()->getFriendSearch().friends.at(idx * 2 + 1).poxiaoId);
+            }
 		}
 	}
 	return cell;
@@ -138,6 +138,7 @@ ssize_t SearchResult::numberOfCellsInTableView(TableView *table)
 
 
 void SearchResult::updateResultList(){
+    
 	tableView->reloadData();
 }
 

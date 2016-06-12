@@ -19,7 +19,6 @@ private:
     Sprite* quickSpite;
     Layer* tabLayer1;
     Layer* tabLayer2;
-    SearchResult* resultLayer;
     Menu* wxMenu;
     Sprite* wxText;
     EditBox* _editName;

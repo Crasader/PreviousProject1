@@ -137,9 +137,6 @@ void FriendAddView::showDialog(){
 	confirmMenu->setPosition(640, 180);
 	tabLayer2->addChild(confirmMenu);
 
-	resultLayer = SearchResult::create();
-	resultLayer->setVisible(false);
-	addChild(resultLayer);
 
 }
 
@@ -152,7 +149,9 @@ void FriendAddView::clickTabBtn(Ref* ref){
 		quickSpite->setTexture("friend/quick_add_1.png");
 		tabLayer1->setVisible(true);
 		tabLayer2->setVisible(false);
-		resultLayer->setVisible(false);
+        if(NULL != getChildByTag(1001)){
+            getChildByTag(1001)->removeFromParent();
+        }
 		wxText->setVisible(true);
 		wxMenu->setVisible(true);
 	}
@@ -163,7 +162,9 @@ void FriendAddView::clickTabBtn(Ref* ref){
 		quickSpite->setTexture("friend/quick_add_2.png");
 		tabLayer1->setVisible(false);
 		tabLayer2->setVisible(true);
-		resultLayer->setVisible(false);
+        if(NULL != getChildByTag(1001)){
+            getChildByTag(1001)->removeFromParent();
+        }
 	}
 
 }
@@ -193,10 +194,14 @@ void FriendAddView::addCustomEventlistener(){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
         }
-		resultLayer->setVisible(true);
+        if(NULL != getChildByTag(1001)){
+            getChildByTag(1001)->removeFromParent();
+        }
+        SearchResult* resultLayer = SearchResult::create();
+        resultLayer->setTag(1001);
+        addChild(resultLayer);
 		wxText->setVisible(false);
 		wxMenu->setVisible(false);
-		resultLayer->updateResultList();
 	});
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendSearchListener, 1);
 }
