@@ -73,6 +73,7 @@ void ChargeGold::onEnter(){
         ShopHintDialog* da = ShopHintDialog::create();
         if(buf == "1"){
             da->showText("充值成功");
+            ((LobbyScene*)getParent())->updateHeroInfo();
         }else{
             da->showText("充值失败");
         }
@@ -135,13 +136,17 @@ void ChargeGold::showChargeGold(){
             
         }
         
-        LabelAtlas* diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",list.list.at(i).gold)->_string,"shop/prop_num.png",21,28,'0');
-        diamondNum->setPosition(290+175*i,291);
+        LabelAtlas* diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",list.list.at(i).gold/10000)->_string,"shop/prop_num.png",21,28,'0');
+        diamondNum->setPosition(270+175*i,291);
         diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(diamondNum);
         
+        auto fontWan = Sprite::create("shop/font_wan.png");
+        addChild(fontWan);
+        fontWan->setPosition(280+175*i,291);
+        
         auto zhuan = Sprite::create("shop/gold_text.png");
-        zhuan->setPosition(320+175*i,291);
+        zhuan->setPosition(325+175*i,291);
         addChild(zhuan);
         
         

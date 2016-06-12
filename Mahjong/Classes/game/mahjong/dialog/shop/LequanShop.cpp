@@ -63,21 +63,6 @@ void LequanShop::onEnter(){
     });
     _eventDispatcher->addEventListenerWithFixedPriority(lequanChangeList, 1);
     
-//    goldChangeResp = EventListenerCustom::create(MSG_PLAYER_GOLD_CHANGE_RESP, [=](EventCustom* event){
-//        if(NULL != getChildByTag(2000)){
-//            getChildByTag(2000)->removeFromParent();
-//        }
-//        ((LobbyScene*)getParent())->updateHeroInfo();
-//        std::string buf = static_cast<char*>(event->getUserData());
-//        ShopHintDialog* da = ShopHintDialog::create();
-//        if(buf == "1"){
-//            da->showText("充值成功");
-//        }else{
-//            da->showText("充值失败");
-//        }
-//        addChild(da);
-//    });
-//    _eventDispatcher->addEventListenerWithFixedPriority(goldChangeResp, 1);
 }
 
 void LequanShop::onExit(){

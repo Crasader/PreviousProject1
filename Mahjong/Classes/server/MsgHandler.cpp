@@ -1864,8 +1864,14 @@ void MsgHandler:: goldChangeResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
-    const rapidjson::Value &gold = _mDoc["gold"];
-    UserData::getInstance()->setGold(gold.GetInt());
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        UserData::getInstance()->setGold(gold.GetInt());
+    }
+    if(_mDoc.HasMember("diamond")){
+        const rapidjson::Value &diamond = _mDoc["diamond"];
+        UserData::getInstance()->setDiamond(diamond.GetInt());
+    }
     postNotifyMessage(MSG_PLAYER_GOLD_CHANGE_RESP, result.GetString());
 }
 
