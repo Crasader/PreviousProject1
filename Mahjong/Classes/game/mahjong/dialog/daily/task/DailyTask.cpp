@@ -1,6 +1,7 @@
 #include "game/mahjong/dialog/daily/task/DailyTask.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
+#include "userdata/UserData.h"
 
 
 bool DailyTask::init(){
@@ -13,33 +14,53 @@ bool DailyTask::init(){
 
 void DailyTask::onEnter(){
     Layer::onEnter();
-    mq3 = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
-        
-        
+    mq3 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_MQ3, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        if(result == "1"){
+            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
+        }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(mq3, 1);
     
-    EventListenerCustom* pph3 = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
-        
-        
+    EventListenerCustom* pph3 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_PPH3, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        if(result == "1"){
+            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
+        }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(pph3, 1);
     
-    EventListenerCustom* lz2 = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
-        
-        
+    EventListenerCustom* lz2 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_LZ2, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        if(result == "1"){
+            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
+        }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(lz2, 1);
     
-    EventListenerCustom* charge = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
-        
-        
+    EventListenerCustom* charge = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_CHARGE, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        if(result == "1"){
+           //TODO
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
+        }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(charge, 1);
     
-    EventListenerCustom* extra = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
-        
-        
+    EventListenerCustom* extra = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_EXTRA, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        if(result == "1"){
+             UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+20);
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
+        }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(extra, 1);
 }

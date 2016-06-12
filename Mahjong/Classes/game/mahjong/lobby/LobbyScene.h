@@ -35,6 +35,7 @@ private:
     EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* openFriendRoomListener;
     EventListenerCustom* friendInviteListener;
+    EventListenerCustom* updateHeroInfoListener;
     
 	Label* nickName;
 	LabelAtlas* goldNum;

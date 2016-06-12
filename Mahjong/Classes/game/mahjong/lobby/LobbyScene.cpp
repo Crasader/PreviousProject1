@@ -57,6 +57,7 @@ void LobbyScene::onExit(){
     _eventDispatcher->removeEventListener(enterFriendRoomListener);
     _eventDispatcher->removeEventListener(openFriendRoomListener);
     _eventDispatcher->removeEventListener(friendInviteListener);
+    _eventDispatcher->removeEventListener(updateHeroInfoListener);
 }
 
 void LobbyScene::updateHeroInfo(){
@@ -425,12 +426,20 @@ void LobbyScene::addCustomEventListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(openFriendRoomListener, 1);
     
+    //好友开房通知
     friendInviteListener = EventListenerCustom::create(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
         PromptDialog* invite = PromptDialog::create();
         invite->setTextInfo(0);
         addChild(invite,4);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendInviteListener, 1);
+    
+    //刷新自己的信息
+    updateHeroInfoListener =  EventListenerCustom::create(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
+        updateHeroInfo();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendInviteListener, 1);
+
 }
 
 
