@@ -1,13 +1,19 @@
 #include "game/mahjong/dialog/daily/welfare/DailyWelfare.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
+#include "game/loading/Loading.h"
 
 bool DailyWelfare::init(){
     if (!Layer::init()){
         return false;
     }
-    //    if(GAMEDATA::getInstance()->getWelfareData())
-    showDailyWelfareLayer();
+    if(!GAMEDATA::getInstance()->getWelfareData().needInit){
+        Loading* load = Loading::create();
+        load->setTag(3000);
+        addChild(load);
+    }else{
+        showDailyWelfareLayer();
+    }
     return true;
 }
 
@@ -68,11 +74,11 @@ void DailyWelfare::showDailyWelfareLayer(){
     jjjNum->setPosition(355,276);
     jjjNum->setTag(1000);
     addChild(jjjNum,6);
-    if(data.jjj_count == "0"){
+    if(data.jjj_result == "0"){
         auto text1 = Sprite::create("daily/task/wei_wan_chen.png");
         text1->setPosition(307, 210);
         addChild(text1);
-    }else if (data.jjj_count > data.jjj_used){
+    }else if (data.jjj_result == "1" ){
         auto finish1 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",
                                              CC_CALLBACK_1(DailyWelfare::recievePride, this));
         finish1->setTag(0);
@@ -85,7 +91,12 @@ void DailyWelfare::showDailyWelfareLayer(){
         text1->setPosition(307, 210);
         addChild(text1);
     }
-    if (data.bzjjj_count != data.bzjjj_used){
+    
+    if(data.jjj_result == "0"){
+        auto text2 = Sprite::create("daily/task/wei_wan_chen.png");
+        text2->setPosition(307+ 1 * 222, 210);
+        addChild(text2);
+    }else if (data.bzjjj_result == "1"){
         auto finish2 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",
                                              CC_CALLBACK_1(DailyWelfare::recievePride, this));
         finish2->setTag(1);
@@ -93,12 +104,13 @@ void DailyWelfare::showDailyWelfareLayer(){
         finishMenu2->setPosition(307 + 1 * 222, 210);
         addChild(finishMenu2);
     }
-    else{
+    else {
         auto text2 = Sprite::create("daily/task/yilingqu.png");
         text2->setPosition(307 + 1 * 222, 210);
         addChild(text2);
     }
-    if (true){
+    
+    if (data.wx_result == "1"){
         auto finish3 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",
                                              CC_CALLBACK_1(DailyWelfare::recievePride, this));
         finish3->setTag(2);
@@ -111,9 +123,8 @@ void DailyWelfare::showDailyWelfareLayer(){
         text3->setPosition(307 + 2 * 222, 210);
         addChild(text3);
     }
-    if (true){
-        auto finish4 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",
-                                             CC_CALLBACK_1(DailyWelfare::recievePride, this));
+    if (data.mobile_result == "1"){
+        auto finish4 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",                                             CC_CALLBACK_1(DailyWelfare::recievePride, this));
         finish4->setTag(3);
         auto finishMenu4 = Menu::create(finish4, NULL);
         finishMenu4->setPosition(307 + 3 * 222, 210);
@@ -143,5 +154,8 @@ void DailyWelfare::recievePride(Ref* ref){
 }
 
 void DailyWelfare::updateData(){
+    if(NULL != getChildByTag(3000)){
+        getChildByTag(3000)->removeFromParent();
+    }
     showDailyWelfareLayer();
 }

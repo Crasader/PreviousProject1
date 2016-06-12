@@ -29,7 +29,7 @@ void DailyEvent::showDailyEvent(DailyType type){
 	MenuItem* item1 = MenuItem::create();
 	item1->setContentSize(Size(1280, 720));
 	Menu* menu1 = Menu::create(item1, NULL);
-	this->addChild(menu1);
+	this->addChild(menu1,-1);
 
 	auto all_bg = Sprite::create("common/all_bg.jpg");
 	all_bg->setPosition(640, 360);
@@ -43,11 +43,11 @@ void DailyEvent::showDailyEvent(DailyType type){
 		CC_CALLBACK_0(DailyEvent::closeView, this));
 	auto closeMenu = Menu::create(close, NULL);
 	closeMenu->setPosition(1050, 610);
-	addChild(closeMenu);
+	addChild(closeMenu,1);
 
 	auto table_bg = Sprite::create("daily/tab_bg.png");
 	table_bg->setPosition(560, 610);
-	addChild(table_bg);
+	addChild(table_bg,1);
 
 	auto day_task_normal = MenuItemImage::create("daily/tab_btn_1.png", "daily/tab_btn_1.png");
 	auto day_task_selected = MenuItemImage::create("daily/tab_btn_2.png", "daily/tab_btn_2.png");
@@ -68,20 +68,20 @@ void DailyEvent::showDailyEvent(DailyType type){
 	auto menu = Menu::create(taskToggle, welfareToggle, prideToggle, signToggle, NULL);
 	menu->alignItemsHorizontallyWithPadding(20);
 	menu->setPosition(560, 610);
-	addChild(menu);
+	addChild(menu,1);
 
 	dailyTask = Sprite::create("daily/daily_task_1.png");
 	dailyTask->setPosition(302, 610);
-	addChild(dailyTask);
+	addChild(dailyTask,1);
 	dailyWelfare = Sprite::create("daily/daily_welfare_1.png");
 	dailyWelfare->setPosition(479, 610);
-	addChild(dailyWelfare);
+	addChild(dailyWelfare,1);
 	dailyPride = Sprite::create("daily/daily_pride_1.png");
 	dailyPride->setPosition(650, 610);
-	addChild(dailyPride);
+	addChild(dailyPride,1);
 	dailySign = Sprite::create("daily/daily_sign_1.png");
 	dailySign->setPosition(823, 610);
-	addChild(dailySign);
+	addChild(dailySign,1);
 
 	dailyTaskLayer = DailyTask::create();
 	dailyTaskLayer->setVisible(false);

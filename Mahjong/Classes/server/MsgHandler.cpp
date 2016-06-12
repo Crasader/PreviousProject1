@@ -1590,11 +1590,13 @@ void MsgHandler::welfareResp(std::string msg){
     //福利情况获取回复{code:1013,poxiaoId:poxiaoId,jjj:{count:"2",used:"0",gold:"10000"},wx:{result:"1",gold:"10000",bangzuan:"20"},
     //bzjjj:{count:"2",used:"0",bangzuan:"20"},mobile:{result:"1",gold:"10000"}} count可以领几次 used已经领取几次
     WelfareData data;
+    data.needInit = true;
     if (_mDoc.HasMember("jjj")){
         const rapidjson::Value &jjj = _mDoc["jjj"];
         data.jjj_count = jjj["count"].GetString();
         data.jjj_gold = jjj["used"].GetString();
         data.jjj_gold = jjj["gold"].GetString();
+        data.jjj_result = jjj["result"].GetString();
     }
     if (_mDoc.HasMember("wx")){
         const rapidjson::Value &wx = _mDoc["wx"];
@@ -1612,6 +1614,8 @@ void MsgHandler::welfareResp(std::string msg){
         data.bzjjj_bangzuan = bzjjj["bangzuan"].GetString();
         data.bzjjj_count = bzjjj["count"].GetString();
         data.bzjjj_used = bzjjj["used"].GetString();
+        data.bzjjj_result = bzjjj["result"].GetString();
+
     }
     GAMEDATA::getInstance()->setWelfareData(data);
     postNotifyMessage(MSG_PLAYER_WELFARE_INFO, "");

@@ -222,15 +222,18 @@ struct TodaySignData{
 };
 
 struct WelfareData{
+    bool needInit;
 	std::string jjj_count;
 	std::string jjj_used;
 	std::string jjj_gold;
+    std::string jjj_result;
 	std::string wx_result;
 	std::string wx_gold;
 	std::string wx_bangzuan;
 	std::string bzjjj_count;
 	std::string bzjjj_used;
 	std::string bzjjj_bangzuan;
+    std::string bzjjj_result;
 	std::string mobile_result;
 	std::string mobile_gold;
 };

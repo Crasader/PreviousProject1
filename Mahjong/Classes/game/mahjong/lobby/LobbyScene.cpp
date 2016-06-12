@@ -33,17 +33,20 @@ void LobbyScene::onEnter(){
     Scene::onEnter();
     GAMEDATA::getInstance()->setIsPrivateRoom(false);
     addCustomEventListener();
-    schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0);
+    schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
 }
 
 
 void LobbyScene::signUpdate(float dt){
     DailySignData data = GAMEDATA::getInstance()->getDailySignData();
     if (data.result == "1"){
-        DailyEvent* day = DailyEvent::create();
-        day->showDailyEvent(DailyType::sign);
-        addChild(day,3);
         unschedule(schedule_selector(LobbyScene::signUpdate));
+        if(NULL == getChildByTag(6667)){
+            DailyEvent* day = DailyEvent::create();
+            day->setTag(6667);
+            day->showDailyEvent(DailyType::sign);
+            addChild(day,3);
+        }
     }
 }
 
