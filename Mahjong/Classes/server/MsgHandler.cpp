@@ -593,11 +593,13 @@ void MsgHandler::loginResp(std::string msg){
         }
         if (_mDoc.HasMember("firstcharge")){
             const rapidjson::Value &firstcharge = _mDoc["firstcharge"];//首充
-            UserData::getInstance()->setFirstCharge(firstcharge.GetString() == "1" ? false : true);
+            std::string result = firstcharge.GetString();
+            UserData::getInstance()->setFirstCharge(result == "1" ? true : false);
         }
         if (_mDoc.HasMember("ischacc")){
-            const rapidjson::Value &ischacc = _mDoc["ischacc"];//首充
-            UserData::getInstance()->setFirstCharge(ischacc.GetString() == "1" ? false : true);
+            const rapidjson::Value &ischacc = _mDoc["ischacc"];
+            std::string result = ischacc.GetString();
+            UserData::getInstance()->setChangeName( result == "1" ? true : false);
         }
         if (_mDoc.HasMember("username")){
             const rapidjson::Value &username = _mDoc["username"];

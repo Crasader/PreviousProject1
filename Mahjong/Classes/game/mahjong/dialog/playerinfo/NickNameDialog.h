@@ -19,12 +19,8 @@ private:
 	void closeView();
 	void clearInput();
 	void changeNickName();
-	//开始进入编辑
 	virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
-	//结束编辑
 	virtual void editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox);
-	//编辑框文本改变
 	virtual void editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text);
-	//当触发return后的回调函数
 	virtual void editBoxReturn(cocos2d::extension::EditBox* editBox);
 };

@@ -126,7 +126,7 @@ bool UserData::isChangeName(){
 }
 
 void UserData::setChangeName(bool change){
-	UserDefault::getInstance()->getBoolForKey("changename", change);
+	UserDefault::getInstance()->setBoolForKey("changename", change);
 }
 
 

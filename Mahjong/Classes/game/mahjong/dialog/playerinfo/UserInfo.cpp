@@ -59,9 +59,9 @@ void UserInfo::showUserInfo(){
 	changeNickName = Menu::create(editBtn1, NULL);
 	changeNickName->setPosition(935, 350);
 	addChild(changeNickName);
-	if (!UserData::getInstance()->isChangeName()){
+	if (UserData::getInstance()->isChangeName()){
 		changeNickName->setVisible(false);
-	}
+    }
 	auto input_bg_3 = Scale9Sprite::create("common/input_box_bg.png");
 	input_bg_3->setContentSize(Size(430, 81));
 	input_bg_3->setPosition(760, 260);
@@ -153,7 +153,7 @@ void UserInfo::menuBtnClick(Ref* ref){
 
 void UserInfo::updateNickname(){
 	nickNameLabel->setString(UserData::getInstance()->getNickName());
-	if (!UserData::getInstance()->isChangeName()){
+	if (UserData::getInstance()->isChangeName()){
 		changeNickName->setVisible(false);
 	}
 }

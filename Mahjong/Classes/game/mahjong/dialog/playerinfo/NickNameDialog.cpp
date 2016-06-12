@@ -16,7 +16,7 @@ bool NickNameDialog::init(){
 void NickNameDialog::onEnter(){
 	Layer::onEnter();
 	checkNickName = EventListenerCustom::create("", [=](EventCustom* event){
-			//TOOD checkNickName¿É¼ûÓë²»¿É¼û
+			
 	});
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(checkNickName, 1);
 
@@ -26,17 +26,15 @@ void NickNameDialog::onEnter(){
 		if (result == "1"){
 			std::string nickname = _editName->getText();
 			UserData::getInstance()->setNickName(nickname);
-			UserData::getInstance()->setChangeName(false);
+			UserData::getInstance()->setChangeName(true);
 			((UserInfo*)this->getParent())->updateNickname();
 			this->removeFromParent();
 		}
 		else if (result == "2"){
-			//êÇ³ÆĞŞ¸ÄÊ§°Ü 
 			nickNameHintInfo->setTexture("playerinfo/nickname_hint.png");
 			nickNameHintInfo->setVisible(true);
 		}
 		else{
-			//êÇ³ÆĞŞ¸ÄÊ§°ÜnickNameHintInfo
 			nickNameHintInfo->setTexture("playerinfo/nickname_hint_2.png");
 			nickNameHintInfo->setVisible(true);
 		}
@@ -109,21 +107,21 @@ void NickNameDialog::changeNickName(){
 		}
 }
 
-//¿ªÊ¼½øÈë±à¼­
+//Ã¸â„¢Â ÂºÎ©Â¯Â»ÃÂ±â€¡Âºâ‰ 
 void NickNameDialog::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 
 
 }
-//½áÊø±à¼­
+//Î©Â·Â Â¯Â±â€¡Âºâ‰ 
 void NickNameDialog::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 
 }
-//±à¼­¿òÎÄ±¾¸Ä±ä
+//Â±â€¡Âºâ‰ Ã¸ÃšÅ’Æ’Â±Ã¦âˆÆ’Â±â€°
 void NickNameDialog::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
 
 
 }
-//µ±´¥·¢returnºóµÄ»Øµ÷º¯Êı
+//ÂµÂ±Â¥â€¢âˆ‘Â¢returnâˆ«Ã›ÂµÆ’ÂªÃ¿ÂµËœâˆ«Ã˜Â Ë
 void NickNameDialog::editBoxReturn(cocos2d::extension::EditBox* editBox){
 
 
