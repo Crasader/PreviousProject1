@@ -52,7 +52,7 @@ bool TaskCell::init(TaskType type){
 
 		taskProgress = Scale9Sprite::create("daily/task/jindutiao.png");
 		taskProgress->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-		taskProgress->setContentSize(Size(146 * 0 / (type == task3 ? 4 : 3), 20));
+		taskProgress->setContentSize(Size(146 * 0 / (type == task3 ? 2 : 3), 20));
 		taskProgress->setPosition(25, 93);
 		addChild(taskProgress);
 

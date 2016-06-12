@@ -438,7 +438,7 @@ void LobbyScene::addCustomEventListener(){
     updateHeroInfoListener =  EventListenerCustom::create(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
         updateHeroInfo();
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendInviteListener, 1);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(updateHeroInfoListener, 1);
 
 }
 
