@@ -154,8 +154,6 @@ void DailyWelfare::recievePride(Ref* ref){
 }
 
 void DailyWelfare::updateData(){
-    if(NULL != getChildByTag(3000)){
-        getChildByTag(3000)->removeFromParent();
-    }
+    removeAllChildren();
     showDailyWelfareLayer();
 }
