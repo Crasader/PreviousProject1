@@ -345,9 +345,11 @@ void SplashScene::removeLoading(){
 void SplashScene::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
     if (editBox->getTag() == 606){
         username_text->setVisible(false);
+        _editName->setText("");
     }
     if (editBox->getTag() == 607){
         password_text->setVisible(false);
+        _editPwd->setText("");
     }
     
 }
