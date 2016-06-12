@@ -25,6 +25,12 @@ bool GoldNotEnoughDialog::init(int type){
     if(!Layer::init()){
         return false;
     }
+    
+    MenuItem* item1 = MenuItem::create();
+    item1->setContentSize(Size(1280, 720));
+    Menu* menu0 = Menu::create(item1, NULL);
+    this->addChild(menu0);
+    
     auto dialogBg = Sprite::create("shop/gold_not_enough.png");
     dialogBg->setPosition(640, 360);
     this->addChild(dialogBg);

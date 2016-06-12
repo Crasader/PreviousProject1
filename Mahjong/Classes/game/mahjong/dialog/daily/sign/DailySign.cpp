@@ -16,7 +16,13 @@ bool DailySign::init(){
 
 void DailySign::onEnter(){
     Layer::onEnter();
+    signListener  = EventListenerCustom::create(MSG_PLAYER_DAILY_SIGN, [=](EventCustom* event){
+        //TODO
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(signListener, 1);
+    
     todaySignListener = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
         int gold =0;
         int diamond =0;
         int lequan =0;
@@ -45,13 +51,6 @@ void DailySign::onEnter(){
         UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+diamond);
         UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+lequan);
         ((LobbyScene*)(getParent()->getParent()))->updateHeroInfo();
-        Huode* huode = Huode::create(gold, diamond, lequan);
-        huode->setVisible(false);
-        getParent()->getParent()->addChild(huode,3);
-        huode->runAction(Sequence::create(DelayTime::create(4.5f),CallFunc::create([=](){
-            huode->setVisible(true);
-            getParent()->setVisible(false);
-        }), NULL));
     });
     _eventDispatcher->addEventListenerWithFixedPriority(todaySignListener, 1);
 }
@@ -60,6 +59,8 @@ void DailySign::onEnter(){
 void DailySign::onExit(){
     Layer::onExit();
     _eventDispatcher->removeEventListener(todaySignListener);
+    _eventDispatcher->removeEventListener(signListener);
+    
 }
 
 void DailySign::drawLayer(){
@@ -79,7 +80,10 @@ void DailySign::drawLayer(){
     auto confirmMenu = Menu::create(confirm, NULL);
     confirmMenu->setPosition(948,146);
     addChild(confirmMenu);
-    
+    DailySignData data = GAMEDATA::getInstance()->getDailySignData();
+    if(data.result == "2"){
+        confirm->setEnabled(false);
+    }
     //add sing bg
     drawDayBgAndTitle();
     
@@ -97,13 +101,13 @@ void DailySign::drawDayBgAndTitle(){
         sign_bg->setPosition(260+i*126, 335);
         addChild(sign_bg);
         std::string imageName = "daily/sign/di_x_tian_2.png";
-        if (i <= index){
+        if (i < index){
             imageName = "daily/sign/di_x_tian_1.png";
         }
         auto title = Sprite::create(imageName);
         title->setPosition(260 + i * 126, 445);
         addChild(title,2);
-        bool normal = i <= index ? true : false;
+        bool normal = i < index ? true : false;
         auto dayNum = Sprite::create(getImageNameById(i+1, normal));
         dayNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         dayNum->setPosition(260 + i * 126, 450);
@@ -119,8 +123,12 @@ void DailySign::drawDayBgAndTitle(){
             
         DayCell* cell = DayCell::create(1);//被裁剪的内容
         cell->setTag(300+i);
-        if(i<=index){
-            cell->setDayState(1);
+        if(i<index){
+            if(data.result == "1"){
+                cell->setDayState(1);
+            }else{
+                cell->setDayState(2);
+            }
         }else{
             cell->setDayState(3);
         }

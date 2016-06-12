@@ -130,6 +130,9 @@ void DayCell::showPropResult(PrideData data){
     content2->stopAllActions();
     content1->setPositionY(posY- 905);
     content2->setPositionY(posY );
+    Sprite* state = Sprite::create("daily/sign/yi_ling_qu.png");
+    state->setPosition(0,-95);
+    addChild(state);
 }
 
 
