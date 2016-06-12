@@ -1,7 +1,7 @@
 #include "game/mahjong/dialog/friend/SearchResult.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
-
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 bool SearchResult::init()
 {
 	if (!Layer::init())
@@ -31,8 +31,11 @@ void SearchResult::onEnter(){
         std::string result = buf;
         if (result == "1"){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+            HintDialog* hint = HintDialog::create("添加好友成功",false);
+            addChild(hint);
         }else{
-            //TODO 添加好友失败
+            HintDialog* hint = HintDialog::create("添加好友失败",false);
+            addChild(hint);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addFriendRespListener, 1);

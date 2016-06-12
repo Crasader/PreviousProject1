@@ -25,6 +25,7 @@ private:
     EditBox* _number;
     Sprite* hintInfo;
     EventListenerCustom* friendSearchListener;
+    EventListenerCustom* quickAddFriendListener;
     MenuItemToggle* searchToggle;
     MenuItemToggle* quickToggle;
     EditBox* searchContent;

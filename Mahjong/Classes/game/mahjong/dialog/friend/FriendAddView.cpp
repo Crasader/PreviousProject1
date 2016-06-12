@@ -1,6 +1,7 @@
 #include "game/mahjong/dialog/friend/FriendAddView.h"
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 bool FriendAddView::init(){
 	if (!Layer::init()){
@@ -19,6 +20,7 @@ void FriendAddView::onEnter(){
 void FriendAddView::onExit(){
 	Layer::onExit();
 	_eventDispatcher->removeEventListener(friendSearchListener);
+    _eventDispatcher->removeEventListener(quickAddFriendListener);
 }
 
 void FriendAddView::showDialog(){
@@ -86,8 +88,8 @@ void FriendAddView::showDialog(){
 	input_bg_1->setContentSize(Size(600, 81));
 	input_bg_1->setPosition(640, 420);
 	tabLayer1->addChild(input_bg_1);
-	_editName = EditBox::create(Size(410, 81), Scale9Sprite::create());
-	_editName->setPosition(Point(640, 420));
+	_editName = EditBox::create(Size(370, 81), Scale9Sprite::create());
+	_editName->setPosition(Point(620, 420));
 	_editName->setTag(0);
 	_editName->setFont("arial", 24);
 	_editName->setDelegate(this);
@@ -175,10 +177,13 @@ void FriendAddView::closeView(){
 }
 
 void FriendAddView::clickSearch(){
-	Loading* load = Loading::create();
-    load->setTag(1000);
-	addChild(load);
-	NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSearchFriendCommand(_editName->getText()));
+    std::string key = _editName->getText();
+    if(key!= ""){
+        Loading* load = Loading::create();
+        load->setTag(1000);
+        addChild(load);
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSearchFriendCommand(key));
+    }
 }
 
 void FriendAddView::clickWeChat(){
@@ -186,6 +191,13 @@ void FriendAddView::clickWeChat(){
 }
 
 void FriendAddView::quickAdd(){
+    std::string key = _number->getText();
+    if(key!= ""){
+        Loading* load = Loading::create();
+        load->setTag(1000);
+        addChild(load);
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAddFriendQuickCommand(key));
+    }
 
 }
 
@@ -204,6 +216,24 @@ void FriendAddView::addCustomEventlistener(){
 		wxMenu->setVisible(false);
 	});
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendSearchListener, 1);
+    
+    quickAddFriendListener =EventListenerCustom::create(MSG_PLAYER_ADD_FRIEND_QUICK, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        if(NULL != getChildByTag(1000)){
+            getChildByTag(1000)->removeFromParent();
+        }
+        if (result == "1"){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+            HintDialog* hint = HintDialog::create("添加好友成功",false);
+            addChild(hint);
+        }else{
+            HintDialog* hint = HintDialog::create("添加好友失败",false);
+            addChild(hint);
+        }
+
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(quickAddFriendListener, 1);
+    
 }
 
 

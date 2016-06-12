@@ -252,4 +252,5 @@
 #define MSG_PLAYER_DAILY_TASK_CHARGE "msg_player_daiy_task_charge"
 #define MSG_PLAYER_DAILY_TASK_EXTRA "msg_player_daiy_task_extra"
 #define MSG_PLAYER_REGISTER_RESP "msg_player_register_resp"
+#define MSG_PLAYER_ADD_FRIEND_QUICK "msg_player_add_friend_quick"
 #endif

@@ -402,6 +402,10 @@ void MsgHandler::distribute(int code, std::string msg){
             registerAccountResp(msg);
             break;
         };
+        case MSGCODE_QUICK_ADD_FRIEND_RESPONSE:{
+            quickAddFriendResp(msg);
+            break;
+        };
         default:
             break;
     }
@@ -1904,5 +1908,16 @@ void MsgHandler::lequanChangeListResp(std::string msg){
     GAMEDATA::getInstance()->setLequanChangeList(data);
     postNotifyMessage(MSG_PLAYER_LEQUAN_CHANGE_LIST, "");
     
+}
+
+
+void MsgHandler::quickAddFriendResp(std::string msg){
+    // 快速互加好友回复{code:145,poxiaoId:poxiaoId,result:"1"} 1成功0失败
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_PLAYER_ADD_FRIEND_QUICK, result.GetString());
 }
 

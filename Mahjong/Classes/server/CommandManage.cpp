@@ -280,6 +280,14 @@ std::string CommandManage::getAddFriendCommand(std::string poxiaoId){
 	return commandString(keyValue);
 }
 
+std::string CommandManage::getAddFriendQuickCommand(std::string key){
+    // 快速互加好友请求{code:144,poxiaoId:poxiaoId,key:"1234"}
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_QUICK_ADD_FRIEND_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("key", key));
+    return commandString(keyValue);
+}
 
 std::string CommandManage::getDeleteFriendCommand(std::string poxiaoId){
 	std::map<std::string, std::string> keyValue;
