@@ -9,6 +9,7 @@
 #include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
 #include "game/mahjong/dialog/shop/LequanShop.hpp"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
+#include "game/mahjong/dialog/shop/GoldNotEnoughDialog.hpp"
 
 bool LobbyScene::init()
 {
@@ -72,6 +73,7 @@ void LobbyScene::initView(){
 
 void LobbyScene::startGame(Ref* psend){
     MenuItemImage* item = (MenuItemImage*)psend;
+    setCurrentSelectRoomId(item->getTag());
     if (item->getTag() == ROOM_1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_1)));
     }
@@ -195,17 +197,14 @@ void LobbyScene::drawSceneMid(){
         if (roomList.rooms.at(i) == ROOM_1){
             gameMenu->addChild(room1);
             room1->setTag(ROOM_1);
-            setCurrentSelectRoomId(ROOM_1);
         }
         else if (roomList.rooms.at(i) == ROOM_2){
             gameMenu->addChild(room2);
             room2->setTag(ROOM_2);
-            setCurrentSelectRoomId(ROOM_2);
         }
         else if (roomList.rooms.at(i) == ROOM_3){
             gameMenu->addChild(room3);
             room3->setTag(ROOM_3);
-            setCurrentSelectRoomId(ROOM_3);
         }
     }
     gameMenu->alignItemsHorizontallyWithPadding(20);
@@ -387,8 +386,8 @@ void LobbyScene::addCustomEventListener(){
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
-            EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldNotEnough);
-            addChild(dia,4);
+            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(getCurrentSelectRoomId());
+            addChild(gold,4);
         }
         else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
             if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){

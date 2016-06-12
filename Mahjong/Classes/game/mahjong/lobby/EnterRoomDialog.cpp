@@ -11,6 +11,7 @@
 #include "server/NetworkManage.h"
 
 
+
 EnterRoomDialog* EnterRoomDialog::create(EnterRoomDialogType msg){
     EnterRoomDialog* ret = new EnterRoomDialog();
     if(ret &&ret->init(msg)){
@@ -46,12 +47,7 @@ bool EnterRoomDialog::init(EnterRoomDialogType msg){
     bg_2->setPosition(645,370);
     addChild(bg_2);
     
-    if(msg == EnterRoomDialogType::goldNotEnough){
-        Label* text = Label::create("金币不足请充值", "Arial", 30);
-        text->setColor(Color3B(38,158,228));
-        text->setPosition(640, 360);
-        addChild(text);
-    }else if (msg == EnterRoomDialogType::goldMoreLeve1){
+    if (msg == EnterRoomDialogType::goldMoreLeve1){
         auto levelMid = Sprite::create("mjlobby/gold_enter_mid.png");
         levelMid->setPosition(640, 360);
         addChild(levelMid);
