@@ -1534,15 +1534,12 @@ void MsgHandler::dailySignResp(std::string msg){
             }
             if(temp.HasMember("lequan")){
                 info.type=PrideType::lequan;
-                
                 info.number = atoi(temp["lequan"].GetString());
             }
             if(temp.HasMember("bangzuan")){
                 info.type=PrideType::lockDiammond;
-                
                 info.number = atoi(temp["bangzuan"].GetString());
             }
-            
             data.pride.push_back(info);
         }
     }

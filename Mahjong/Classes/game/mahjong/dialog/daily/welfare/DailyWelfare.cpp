@@ -65,6 +65,7 @@ void DailyWelfare::showDailyWelfareLayer(){
 	WelfareData data = GAMEDATA::getInstance()->getWelfareData();
     LabelAtlas* jjjNum = LabelAtlas::create(data.jjj_count,"daily/task/num.png",16,24,'0');
     jjjNum->setPosition(355,276);
+    jjjNum->setTag(1000);
     addChild(jjjNum,6);
     if(data.jjj_count == "0"){
         auto text1 = Sprite::create("daily/task/wei_wan_chen.png");
