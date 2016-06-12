@@ -218,21 +218,21 @@ void DailyEvent::addEventCustom(){
 	});
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailyTaskListener, 1);
 
-    dailyWelfareListener = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK, [=](EventCustom* event){
+    dailyWelfareListener = EventListenerCustom::create(MSG_PLAYER_WELFARE_INFO, [=](EventCustom* event){
         if (dailyWelfareLayer->isVisible()){
             dailyWelfareLayer->updateData();
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailyWelfareListener, 1);
     
-    dailyPrideListener = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK, [=](EventCustom* event){
+    dailyPrideListener = EventListenerCustom::create(MSG_PLAYER_DAILY_PRIDE, [=](EventCustom* event){
         if (dailyPrideLayer->isVisible()){
             dailyPrideLayer->updateData();
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dailyPrideListener, 1);
     
-    dailySignListener = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK, [=](EventCustom* event){
+    dailySignListener = EventListenerCustom::create(MSG_PLAYER_DAILY_SIGN, [=](EventCustom* event){
         if (dailySignLayer->isVisible()){
             dailySignLayer->updateData();
         }
