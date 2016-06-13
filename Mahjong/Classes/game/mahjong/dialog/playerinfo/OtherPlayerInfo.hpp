@@ -28,7 +28,7 @@ private:
     EventListenerCustom* addFriendRespListener2;
     void closeView();
     void addFriend(Ref* ref);
-    CC_SYNTHESIZE(std::string, poxiaoId, PoxiaoId);
+    CC_SYNTHESIZE(Player*, player, Player);
 
 };
 #endif /* OtherPlayerInfo_hpp */

@@ -8,6 +8,7 @@
 #include "game/utils/Chinese.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
+#include "game/utils/ParticleUtil.hpp"
 
 bool ResultLayer::init(){
     if (!Layer::init()){
@@ -474,56 +475,13 @@ void ResultLayer::showCaidaiAnim(Sprite* sprite){
 }
 
 void ResultLayer::showLequanExplosion(){
-    ParticleExplosion* effect = ParticleExplosion::create();
-    effect->setTexture(Director::getInstance()->getTextureCache()->addImage("mjitem/lequan_icon.png"));
-    effect->setTotalParticles(500);
-    effect->setStartColor(Color4F(255, 255, 255, 255));
-    effect->setStartColorVar(Color4F(0, 0, 0, 0));
-    effect->setEndColor(Color4F(255, 255, 255, 255));
-    effect->setEndColorVar(Color4F(0, 0, 0, 0));
-    effect->setStartSize(40.0f);	// 初始化粒子元素的尺寸
-    effect->setGravity(Point(0, -400));
-    effect->setDuration(0.2f);
-    effect->setLife(2.0f);
-    effect->setSpeed(300.0f);
-    effect->setSpeedVar(20);
-    effect->setPosition(640,600);
-    addChild(effect);
-    //
-    ParticleExplosion* effect2 = ParticleExplosion::create();
-    effect2->setTexture(Director::getInstance()->getTextureCache()->addImage("result/gold_1.png"));
-    effect2->setTotalParticles(500);
-    effect2->setStartColor(Color4F(255, 255, 255, 255));
-    effect2->setStartColorVar(Color4F(0, 0, 0, 0));
-    effect2->setEndColor(Color4F(255, 255, 255, 255));
-    effect2->setEndColorVar(Color4F(0, 0, 0, 0));
-    effect2->setStartSize(40.0f);	// 初始化粒子元素的尺寸
-    effect2->setGravity(Point(0, -400));
-    effect2->setDuration(0.2f);
-    effect2->setLife(2.0f);
-    effect2->setSpeed(300.0f);
-    effect2->setSpeedVar(20);
-    effect2->setPosition(640,600);
-    addChild(effect2);
-    
+    ParticleUtil* util = ParticleUtil::create(MyParticleType::goldAndLequan);
+    addChild(util);
 }
 
 void ResultLayer::showGoldExplosion(){
-    ParticleExplosion* effect = ParticleExplosion::create();
-    effect->setTexture(Director::getInstance()->getTextureCache()->addImage("result/gold_1.png"));
-    effect->setTotalParticles(1000);
-    effect->setStartColor(Color4F(255, 255, 255, 255));
-    effect->setStartColorVar(Color4F(0, 0, 0, 0));
-    effect->setEndColor(Color4F(255, 255, 255, 255));
-    effect->setEndColorVar(Color4F(0, 0, 0, 0));
-    effect->setStartSize(40.0f);	// 初始化粒子元素的尺寸
-    effect->setGravity(Point(0, -400));
-    effect->setDuration(0.2f);
-    effect->setLife(2.0f);
-    effect->setSpeed(300.0f);
-    effect->setSpeedVar(20);
-    effect->setPosition(640,600);
-    addChild(effect);
+    ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+    addChild(util);
 }
 
 void ResultLayer::setWinOrLose(){

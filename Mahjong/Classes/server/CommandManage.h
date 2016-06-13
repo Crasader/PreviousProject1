@@ -33,7 +33,7 @@ public:
 	std::string getQuitRoomCommand();
 	std::string getFriendListCommand();
 	std::string getSearchFriendCommand(std::string name);
-	std::string getAddFriendCommand(std::string poxiaoId);
+	std::string getAddFriendCommand(std::string poxiaoId,std::string nickname);
     std::string getAddFriendQuickCommand(std::string key);
 	std::string getDeleteFriendCommand(std::string poxiaoId);
 	std::string getChangeHeadCommand();

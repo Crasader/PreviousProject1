@@ -149,7 +149,7 @@ void SearchResult::addFriend(Ref* ref){
 	MenuItemImage* temp = (MenuItemImage*)ref;
 	temp->setVisible(false);
 	string id = temp->getParent()->getName();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAddFriendCommand(id));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAddFriendCommand(id,""));
     for(FriendInfo info: GAMEDATA::getInstance()->getFriendSearch().friends){
         if(info.poxiaoId==id){
          GAMEDATA::getInstance()->setFriendInfoData(info);

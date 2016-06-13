@@ -875,10 +875,11 @@ void MsgHandler::nextPlayer(std::string msg){
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
         GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        schedule([=](float dt){
-           postNotifyMessage(MSG_HERO_TING_GANG, "");
-        }, 0, 0, StringUtil::split(playerTurnData.replace, ",").size()*0.82f,"FirstBlood");
+        int times = (playerTurnData.replace == ""? 0: StringUtil::split(playerTurnData.replace, ",").size());
         
+        Director::getInstance()->getScheduler()->schedule([=](float dt){
+            postNotifyMessage(MSG_HERO_TING_GANG, "");
+        }, this, 0,0,0.82*times, false,"FirstBlood");
     }
 }
 

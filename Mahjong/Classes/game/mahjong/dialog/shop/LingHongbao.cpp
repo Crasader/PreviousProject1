@@ -74,7 +74,8 @@ void LingHongbao::showLingHongbao(){
     _editPwd  = EditBox::create(Size(445, 81), Scale9Sprite::create());
     _editPwd->setPosition(Point(720, 360));
     _editPwd->setFont("American Typewriter", 24);
-    _editPwd->setInputMode(EditBox::InputMode::SINGLE_LINE);
+    _editPwd->setInputMode(EditBox::InputMode::PHONE_NUMBER);
+    _editPwd->setReturnType(EditBox::KeyboardReturnType::DONE);
     _editPwd->setTag(1);
     addChild(_editPwd);
     

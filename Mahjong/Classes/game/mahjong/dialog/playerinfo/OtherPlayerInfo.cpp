@@ -57,7 +57,7 @@ bool OtherPlayerInfo::init(Player* player){
     if(!Layer::init()){
         return false;
     }
-    
+    setPlayer(player);
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     item1->setCallback(CC_CALLBACK_0(OtherPlayerInfo::closeView, this));
@@ -100,7 +100,7 @@ bool OtherPlayerInfo::init(Player* player){
             addImage->setVisible(false);
         }
     }
-    setPoxiaoId(player->getPoxiaoId());
+    
     std::string gen = player->getGender() == 0 ? "playerinfo/female.png" : "playerinfo/male.png";
     playerGender = Sprite::create(gen);
     playerGender->setPosition(120, 120);
@@ -171,5 +171,5 @@ void OtherPlayerInfo::closeView(){
 void OtherPlayerInfo::addFriend(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
     temp->setVisible(false);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAddFriendCommand(getPoxiaoId()));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAddFriendCommand(getPlayer()->getPoxiaoId(),getPlayer()->getNickname()));
 }
