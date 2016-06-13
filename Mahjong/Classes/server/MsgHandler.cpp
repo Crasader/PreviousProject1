@@ -523,6 +523,7 @@ void MsgHandler::enterRoomResp(std::string msg){
         resp.rsid = rsid.GetString();
     }
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
+    GAMEDATA::getInstance()->clearPlayersInfo();
     if (result.GetInt() == 1){
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());

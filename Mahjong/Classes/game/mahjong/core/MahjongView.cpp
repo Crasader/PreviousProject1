@@ -935,6 +935,7 @@ void MahjongView::addOthersPengListener(){
             playerOpposite->drawPlayerPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
         }
+        hideTingGangControllPad();
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
 }

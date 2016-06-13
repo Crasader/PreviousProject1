@@ -263,8 +263,15 @@ TableViewCell* Redwallet::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->setName(GAMEDATA::getInstance()->getRedWalletRespData().friends.at(idx).pId);
         
         if(GAMEDATA::getInstance()->getRedWalletRespData().friends.at(idx).status == "0"){
-            //TODO 可以领取
+            auto lihe = Sprite::create();
+            lihe->setAnchorPoint(Vec2::ZERO);
+            lihe->setPosition(Vec2(125, 65));
+            addChild(lihe);
             
+            auto newIcon = Sprite::create();
+            newIcon->setAnchorPoint(Vec2::ZERO);
+            newIcon->setPosition(Vec2(125, 65));
+            addChild(newIcon);
         }
     }else{
         //TODO
