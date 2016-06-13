@@ -505,11 +505,12 @@ void PlayerHero::replaceFlower(){
 void PlayerHero::playerTurnReplace(PlayerTurnData data){
     index = 0;
     std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+    Jong* jong = Jong::create();
+    addChild(jong);
     if (data.replace != "" && replace.size() > 0){
-        CallFunc* myCallfunc = CallFunc::create([=](){
+        schedule([=](float dt){
             std::vector<Jong*> needReplace;
             needReplace.clear();
-            Jong* jong = Jong::create();
             jong->showJong(herohand, atoi(replace.at(index).c_str()));
             needReplace.push_back(jong);
             HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
@@ -518,23 +519,15 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             }));
             addChild(huaAnim,100);
             index++;
-        });
-        CallFunc* finalJong = CallFunc::create([=](){
-            Jong* jong = Jong::create();
+        }, 0.2f, replace.size()-1, 0,"hua2poker");
+        schedule([=](float dt){
             jong->showJong(herohand, data.poker);
             playerHandJongs.pushBack(jong);
             jong->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
             currentJong = jong;
-            this->addChild(jong);
-        });
-        DelayTime* delay = DelayTime::create(0.65f);
-        Sequence* seq = Sequence::create(myCallfunc, delay, NULL);
-        Repeat* repeat = Repeat::create(seq, replace.size());
-        Sequence* mySeq = Sequence::create(repeat, finalJong, NULL);
-        Sprite* huanhua2 = Sprite::create();
-        addChild(huanhua2);
-        huanhua2->runAction(mySeq);
-        isAllowPlay = true;
+            isAllowPlay = true;
+        }, 0, 0, 0.2f*replace.size(),"hua2pokerdelay");
+        
     }
     else{
         Jong* jong = Jong::create();
