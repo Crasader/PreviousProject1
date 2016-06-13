@@ -257,6 +257,8 @@ void MahjongView::showTingGangControllPad(){
 void MahjongView::hideTingGangControllPad(){
     controllPad->removeAllChildrenWithCleanup(true);
     controllPad->setVisible(false);
+    choiceMenu->removeAllChildren();
+    choiceMenu->setVisible(false);
     if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
                                    GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
        ClientSeatId::left){
@@ -299,6 +301,7 @@ void MahjongView::showHeroChiUi(){
             choice->setPosition(0, 0);
             choiceMenu->addChild(choice);
         }
+        playerHero->startTimeClockAnim(5, 1);
     }
     else{
         //choiceMenu = NULL;
