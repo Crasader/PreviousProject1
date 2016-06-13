@@ -327,6 +327,14 @@ struct RedWalletRespData{
     vector<RedShareFriend> friends;
 };
 
+struct ReciveRedWallet{
+    std::string result;
+    std::string gold;
+    std::string lequan;
+    std::string diamond;
+    std::string bangzuan;
+};
+
 enum CpgType
 {
     chi,

@@ -406,6 +406,11 @@ void MsgHandler::distribute(int code, std::string msg){
             quickAddFriendResp(msg);
             break;
         };
+        case MSGCODE_HONGBAO_GETED_RESPONSE:{
+            getAllRedWalletPushResp(msg);
+            break;
+        };
+            
         default:
             break;
     }
@@ -869,7 +874,10 @@ void MsgHandler::nextPlayer(std::string msg){
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
         GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        postNotifyMessage(MSG_HERO_TING_GANG, "");
+        schedule([=](float dt){
+           postNotifyMessage(MSG_HERO_TING_GANG, "");
+        }, 0, 0, StringUtil::split(playerTurnData.replace, ",").size()*0.82f,"FirstBlood");
+        
     }
 }
 
@@ -1449,12 +1457,34 @@ void MsgHandler::sendRedWalletResp(std::string msg){
 }
 
 void MsgHandler::reciveRedWalletResp(std::string msg){
-    // {code:134,poxiaoId:"456",result:"1",gold:"1",lequan:"2",diamond:"3",bangzuan:"4"}
+    // 领取红包回复{code:134,poxiaoId:"456",result:"1",gold:"1",lequan:"2",diamond:"3",bangzuan:"4"} result 0为推广结束 1为成功 2为该红包领取达上限 3为此人已经领取过红包 
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    
+    ReciveRedWallet wallet;
+    if (_mDoc.HasMember("result")){
+        const rapidjson::Value &result = _mDoc["result"];
+        wallet.result = result.GetString();
+    }
+    if (_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        wallet.gold = gold.GetString();
+    }
+    if (_mDoc.HasMember("lequan")){
+        const rapidjson::Value &lequan = _mDoc["lequan"];
+        wallet.lequan = lequan.GetString();
+    }
+    if (_mDoc.HasMember("diamond")){
+        const rapidjson::Value &diamond = _mDoc["diamond"];
+        wallet.diamond = diamond.GetString();
+    }
+    if (_mDoc.HasMember("bangzuan")){
+        const rapidjson::Value &bangzuan = _mDoc["bangzuan"];
+        wallet.bangzuan = bangzuan.GetString();
+    }
+    GAMEDATA::getInstance()->setReciveRedWallet(wallet);
+    postNotifyMessage(MSG_RECIVE_RED_WALLET_INFO, "");
 }
 
 
@@ -1972,4 +2002,15 @@ void MsgHandler::quickAddFriendResp(std::string msg){
     const rapidjson::Value &result = _mDoc["result"];
     postNotifyMessage(MSG_PLAYER_ADD_FRIEND_QUICK, result.GetString());
 }
+
+void MsgHandler::getAllRedWalletPushResp(std::string msg){
+    //红包被领取情况获取奖励回复{code:147,poxiaoId:"456",result:"1"}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_RECIVE_RED_WALLET_PSUH, result.GetString());
+}
+
 

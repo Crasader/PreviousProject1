@@ -20,18 +20,17 @@ public :
 
 private:
     EventListenerCustom* redWalletRespListener;
+    EventListenerCustom* redWalletPushListener;
 	Layer* giveRedwalletLayer;
 	Layer* getRedwalletLayer;
 	Layer* tishiLayer;
 	EditBox* _editPwd;
     TableView* tableView;
 	void drawDialog();
-	void drawGiveRedwallet();
-	void drawGetRedwallet();
 	void drawTishiLayer();
 	void giveRedwallet();
 	void getRedwallet();
-	void drawRedpride(Layer* layer,Point startpos);
+    void getPushPride();
 	void closeView();
 	void closeTishiView();
 };

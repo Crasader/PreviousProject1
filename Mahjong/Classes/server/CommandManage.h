@@ -40,7 +40,8 @@ public:
 	std::string getOpenRoomCommand(std::string pids);
 	std::string getEnterFriendRoomCommand(std::string pid);
 	std::string getSendRedWalletCommand();
-	std::string getReciveRedWalletCommand();
+	std::string getReciveRedWalletCommand(std::string hbcode);
+    std::string getRedWalletPushCommand();
 	std::string getBillCommand();
 	std::string getBillDetailCommand(std::string billId);
 	std::string getLobbyQuitCommand();

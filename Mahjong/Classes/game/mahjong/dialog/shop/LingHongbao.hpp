@@ -18,10 +18,15 @@ USING_NS_CC_EXT;
 class LingHongbao : public Layer{
 public:
     virtual bool init();
+    void onEnter() override;
+    void onExit() override;
     CREATE_FUNC(LingHongbao);
 private:
+    EditBox* _editPwd;
+    EventListenerCustom* redWalletReciveListener;
     void showLingHongbao();
     void closeView();
+    void confirmHongbao();
     
 };
 #endif /* LingHongbao_hpp */

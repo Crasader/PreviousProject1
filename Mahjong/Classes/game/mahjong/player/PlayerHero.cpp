@@ -490,7 +490,7 @@ void PlayerHero::replaceFlower(){
             //            labe->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             //            addChild(labe);
             
-        }, 1.2f, rejong.poker.size()-1, 0,"huahuahua");
+        }, 0.8f, rejong.poker.size()-1, 0,"huahuahua");
         
         schedule([=](float dt){
             int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
@@ -498,7 +498,7 @@ void PlayerHero::replaceFlower(){
                 isAllowPlay = true;
             }
             sortHandJongs(this->getHandPosX(), true);
-        }, 0, 0, 1.3f*rejong.poker.size(),"huadelay");
+        }, 0, 0, 0.8f*rejong.poker.size(),"huadelay");
     }
 }
 
@@ -519,14 +519,14 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             }));
             addChild(huaAnim,100);
             index++;
-        }, 0.2f, replace.size()-1, 0,"hua2poker");
+        }, 0.8f, replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
             jong->showJong(herohand, data.poker);
             playerHandJongs.pushBack(jong);
             jong->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
             currentJong = jong;
             isAllowPlay = true;
-        }, 0, 0, 0.2f*replace.size(),"hua2pokerdelay");
+        }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
         
     }
     else{

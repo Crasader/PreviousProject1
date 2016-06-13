@@ -1,15 +1,17 @@
 #include "game/mahjong/dialog/shop/Redwallet.h"
 #include "server/NetworkManage.h"
-#include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/mahjong/dialog/shop/LingHongbao.hpp"
+#include "game/mahjong/dialog/shop/HongbaoPride.hpp"
 
 bool Redwallet::init(){
-	if (!Layer::init()){
-		return false;
-	}
-	giveRedwalletLayer = NULL;
-	getRedwalletLayer = NULL;
-	tishiLayer = NULL;
+    if (!Layer::init()){
+        return false;
+    }
+    giveRedwalletLayer = NULL;
+    getRedwalletLayer = NULL;
+    tishiLayer = NULL;
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
@@ -31,7 +33,7 @@ bool Redwallet::init(){
     auto closeMenu = Menu::create(closeImage, NULL);
     closeMenu->setPosition(1060, 610);
     addChild(closeMenu);
-
+    
     if(GAMEDATA::getInstance()->getRedWalletRespData().needInit){
         drawDialog();
     }else{
@@ -39,7 +41,7 @@ bool Redwallet::init(){
         load->setTag(1001);
         addChild(load);
     }
-		return true;
+    return true;
 }
 
 void Redwallet::onEnter(){
@@ -51,17 +53,26 @@ void Redwallet::onEnter(){
         drawDialog();
     });
     _eventDispatcher->addEventListenerWithFixedPriority(redWalletRespListener, 1);
+    
+    redWalletPushListener = EventListenerCustom::create(MSG_RECIVE_RED_WALLET_PSUH, [=](EventCustom* event){
+        if(NULL != getChildByTag(1006)){
+            getChildByTag(1006)->removeFromParent();
+        }
+        
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(redWalletPushListener, 1);
 }
 
 void Redwallet::onExit(){
     Layer::onExit();
     _eventDispatcher->removeEventListener(redWalletRespListener);
+    _eventDispatcher->removeEventListener(redWalletPushListener);
 }
 
 void Redwallet::drawDialog(){
     
     
-//box1
+    //box1
     auto boxBg1 = Sprite::create("shop/red_box.png");
     boxBg1->setPosition(350,350);
     addChild(boxBg1);
@@ -83,7 +94,7 @@ void Redwallet::drawDialog(){
     gold->setPosition(270,395);
     addChild(gold);
     
-    LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",atoi(GAMEDATA::getInstance()->getRedWalletRespData().gold.c_str()))->_string,"shop/prop_num.png",21,28,'0');
+    LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%s",GAMEDATA::getInstance()->getRedWalletRespData().gold.c_str())->_string,"shop/prop_num.png",21,28,'0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     goldNum->setPosition(300,395);
     goldNum->setScale(0.9);
@@ -123,11 +134,11 @@ void Redwallet::drawDialog(){
     diamondText->setPosition(425,275);
     addChild(diamondText);
     
-    auto btnImage1 = MenuItemImage::create("shop/get_wallet_1.png","shop/get_wallet_2.png");
+    auto btnImage1 = MenuItemImage::create("shop/get_wallet_1.png","shop/get_wallet_2.png",CC_CALLBACK_0(Redwallet::getRedwallet,this));
     Menu* mymenu1 = Menu::create(btnImage1,NULL);
     mymenu1->setPosition(350,170);
     addChild(mymenu1);
-
+    
     // box2
     auto boxBg2 = Sprite::create("shop/red_box.png");
     boxBg2->setPosition(640,350);
@@ -176,16 +187,16 @@ void Redwallet::drawDialog(){
     auto diamondText2 = Sprite::create("shop/gold_text.png");
     diamondText2->setPosition(690,295);
     addChild(diamondText2);
-
+    
     auto extra_text = Sprite::create("shop/fahongbaokedejaingli.png");
     extra_text->setPosition(640,235);
     addChild(extra_text);
     
-    auto btnImage2 = MenuItemImage::create("shop/free_red_wallet_1.png","shop/free_red_wallet_2.png");
+    auto btnImage2 = MenuItemImage::create("shop/free_red_wallet_1.png","shop/free_red_wallet_2.png",CC_CALLBACK_0(Redwallet::giveRedwallet,this));
     Menu* mymenu2 = Menu::create(btnImage2,NULL);
     mymenu2->setPosition(640,170);
     addChild(mymenu2);
-
+    
     
     //box3
     auto boxBg3 = Sprite::create("shop/red_box.png");
@@ -253,11 +264,11 @@ TableViewCell* Redwallet::tableCellAtIndex(TableView *table, ssize_t idx)
         
         if(GAMEDATA::getInstance()->getRedWalletRespData().friends.at(idx).status == "0"){
             //TODO 可以领取
-        
+            
         }
     }else{
         //TODO
-    
+        
     }
     return cell;
 }
@@ -268,177 +279,45 @@ ssize_t Redwallet::numberOfCellsInTableView(TableView *table)
 }
 
 
-void Redwallet::drawGiveRedwallet(){
-	if (getRedwalletLayer != NULL){
-		getRedwalletLayer->removeFromParent();
-		getRedwalletLayer = NULL;
-	}
-	if (giveRedwalletLayer != NULL){
-		return;
-	}
-
-	giveRedwalletLayer = Layer::create();
-	this->addChild(giveRedwalletLayer);
-    
-	auto kouling = Sprite::create("dialog/redwallet/redwalet_password.png");
-	kouling->setPosition(480, 310);
-	giveRedwalletLayer->addChild(kouling);
-
-	auto miling = Label::create("123456", "Arial", 18);
-	miling->setPosition(480, 265);
-	giveRedwalletLayer->addChild(miling);
-
-	auto jaingli = Sprite::create("dialog/redwallet/get_pride_text.png");
-	jaingli->setPosition(480, 235);
-	giveRedwalletLayer->addChild(jaingli);
-
-	drawRedpride(giveRedwalletLayer, Point(365,205));
-
-	auto person = Sprite::create("dialog/redwallet/redwalet_password_person.png");
-	person->setPosition(480, 178);
-	giveRedwalletLayer->addChild(person);
-	auto personNum = LabelAtlas::create("1000", "dialog/redwallet/redwalet_password_num.png", 8, 12, '0');
-	personNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	personNum->setPosition(512, 178);
-	giveRedwalletLayer->addChild(personNum);
-
-	auto item = MenuItemImage::create("dialog/redwallet/share_redwallet_bnt_1.png", "dialog/redwallet/share_redwallet_bnt_2.png",
-		CC_CALLBACK_0(Redwallet::giveRedwallet, this));
-	auto giveMenu = Menu::create(item,NULL);
-	giveMenu->setPosition(480,130);
-	giveRedwalletLayer->addChild(giveMenu);
-}
-
-void Redwallet::drawGetRedwallet(){
-    
-	if (giveRedwalletLayer != NULL){
-		giveRedwalletLayer->removeFromParent();
-		giveRedwalletLayer = NULL;
-	}
-	if (getRedwalletLayer != NULL){
-		return;
-	}
-	getRedwalletLayer = Layer::create();
-	this->addChild(getRedwalletLayer);
-	auto kouling = Sprite::create("dialog/redwallet/redwalet_password_input.png");
-	kouling->setPosition(480, 310);
-	getRedwalletLayer->addChild(kouling);
-
-	_editPwd = EditBox::create(Size(257, 40), Scale9Sprite::create("dialog/user_input_box.png"));
-	_editPwd->setPosition(Point(480, 270));
-	_editPwd->setFont("American Typewriter", 24);
-	getRedwalletLayer->addChild(_editPwd);
-
-	auto jaingli = Sprite::create("dialog/redwallet/get_pride_text.png");
-	jaingli->setPosition(480, 235);
-	getRedwalletLayer->addChild(jaingli);
-
-	drawRedpride(getRedwalletLayer, Point(477, 205));
-
-	auto item = MenuItemImage::create("dialog/redwallet/confirm_redwallet_btn_1.png", "dialog/redwallet/confirm_redwallet_btn_2.png",
-		CC_CALLBACK_0(Redwallet::getRedwallet, this));
-	auto giveMenu = Menu::create(item, NULL);
-	giveMenu->setPosition(480, 130);
-	getRedwalletLayer->addChild(giveMenu);
-}
-
-void Redwallet::drawTishiLayer(){
-	if (getRedwalletLayer != NULL){
-		getRedwalletLayer->removeFromParent();
-		getRedwalletLayer = NULL;
-	}
-	if (tishiLayer == NULL){
-		tishiLayer = Layer::create();
-		this->addChild(tishiLayer);
-
-		auto dialogBg = Sprite::create("dialog/dialog_bg_small.png");
-		dialogBg->setPosition(480, 270);
-		tishiLayer->addChild(dialogBg);
-
-		auto title = Sprite::create("dialog/tishi_icon.png");
-		title->setPosition(480, 365);
-		tishiLayer->addChild(title);
-
-		auto info = Label::create("helle world!","Arial",20);
-		info->setPosition(480,312);
-		tishiLayer->addChild(info);
-
-		drawRedpride(tishiLayer, Point(365, 250));
-
-		auto close = MenuItemImage::create("dialog/dialog_close_a.png", "dialog/dialog_close_b.png",
-			CC_CALLBACK_0(Redwallet::closeTishiView, this));
-		auto closeMenu = Menu::create(close, NULL);
-		closeMenu->setPosition(640, 370);
-		tishiLayer->addChild(closeMenu);
-
-		auto confirm = MenuItemImage::create("dialog/user_box_confirm_a.png", "dialog/user_box_confirm_b.png",
-			CC_CALLBACK_0(Redwallet::closeTishiView, this));
-		auto confirmMenu = Menu::create(confirm, NULL);
-		confirmMenu->setPosition(480, 190);
-		tishiLayer->addChild(confirmMenu);
-	}
-}
-
-void Redwallet::drawRedpride(Layer* layer, Point startpos){
-
-	auto godNum = LabelAtlas::create("1000", "dialog/redwallet/pride_num.png", 14, 19, '0');
-	godNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	godNum->setPosition(365, startpos.y);
-	layer->addChild(godNum);
-	auto goldIcon = Sprite::create("dialog/redwallet/gold_icon.png");
-	goldIcon->setPosition(416, startpos.y);
-	layer->addChild(goldIcon);
-	auto plusIcon1 = Sprite::create("dialog/redwallet/plus.png");
-	plusIcon1->setPosition(448, startpos.y);
-	layer->addChild(plusIcon1);
-
-	auto lequanNum = LabelAtlas::create("100", "dialog/redwallet/pride_num.png", 14, 19, '0');
-	lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	lequanNum->setPosition(477, startpos.y);
-	layer->addChild(lequanNum);
-	auto lequanIcon = Sprite::create("dialog/redwallet/lequan_icon.png");
-	lequanIcon->setPosition(520, startpos.y);
-	layer->addChild(lequanIcon);
-	auto plusIcon2 = Sprite::create("dialog/redwallet/plus.png");
-	plusIcon2->setPosition(558, startpos.y);
-	layer->addChild(plusIcon2);
-
-	auto diamondNum = LabelAtlas::create("100", "dialog/redwallet/pride_num.png", 14, 19, '0');
-	diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	diamondNum->setPosition(591, startpos.y);
-	layer->addChild(diamondNum);
-	auto diamondIcon = Sprite::create("dialog/redwallet/diamond.png");
-	diamondIcon->setPosition(625, startpos.y);
-	layer->addChild(diamondIcon);
-}
 
 
 void Redwallet::giveRedwallet(){
-	//TODO
+    
+    HongbaoPride* pride = HongbaoPride::create();
+    addChild(pride);
 }
 
 
 void Redwallet::getRedwallet(){
-	NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReciveRedWalletCommand());
-	drawTishiLayer();
+    LingHongbao* bao = LingHongbao::create();
+    addChild(bao);
+}
+
+void Redwallet::getPushPride(){
+    if(GAMEDATA::getInstance()->getRedWalletRespData().friends.size()>0){
+        Loading* lod = Loading::create();
+        lod->setTag(1006);
+        addChild(lod);
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRedWalletPushCommand());
+    }
+    
 }
 
 void Redwallet::closeView(){
-	this->removeFromParent();
+    this->removeFromParent();
 }
 
 void Redwallet::closeTishiView(){
-	if (NULL != tishiLayer){
-		tishiLayer->removeFromParent();
-		tishiLayer = NULL;
-	}
-	if (NULL == getRedwalletLayer){
-		getRedwalletLayer = Layer::create();
-		this->addChild(getRedwalletLayer);
-		auto info = Label::create("helle world!", "Arial", 20);
-		info->setPosition(480, 300);
-		getRedwalletLayer->addChild(info);
-		drawRedpride(getRedwalletLayer, Point(365, 205));
-	}
+    if (NULL != tishiLayer){
+        tishiLayer->removeFromParent();
+        tishiLayer = NULL;
+    }
+    if (NULL == getRedwalletLayer){
+        getRedwalletLayer = Layer::create();
+        this->addChild(getRedwalletLayer);
+        auto info = Label::create("helle world!", "Arial", 20);
+        info->setPosition(480, 300);
+        getRedwalletLayer->addChild(info);
+    }
 }
 

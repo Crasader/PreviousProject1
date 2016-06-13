@@ -327,13 +327,21 @@ std::string CommandManage::getSendRedWalletCommand(){
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getReciveRedWalletCommand(){
+std::string CommandManage::getReciveRedWalletCommand(std::string hbcode){
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HONGBAO_GET_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("hbcode", hbcode));
 	return commandString(keyValue);
 }
 
+
+std::string CommandManage::getRedWalletPushCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HONGBAO_GETED_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
 
 
 std::string CommandManage::getBillCommand(){

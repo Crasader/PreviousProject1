@@ -42,7 +42,7 @@
 
 #define MSGCODE_HONGBAO_REQUEST  131// 红包获取请求{code:131,poxiaoId:"456"}
 #define MSGCODE_HONGBAO_RESPONSE  132//红包获取回复{code:132,poxiaoId:"456",hbcode:"12345689",lequan:"12",gold:"0",diamond:"0",count:"1",lequan2:"12",gold2:"0",diamond2:"0",list:[{pId:"11",nickname:"好啊",status:"1"},{pId:"21",nickname:"我是谁",status:"0"}]}
-#define MSGCODE_HONGBAO_GET_REQUEST  133// 领取红包请求{code:133,poxiaoId:"456",hsman:厂商,hstype:机型,imsi:imsi,imei:imei}
+#define MSGCODE_HONGBAO_GET_REQUEST  133// 领取红包请求{code:133,poxiaoId:"456",hsman:厂商,hstype:机型,imsi:imsi,imei:imei,hbcode:"12345689"}
 #define MSGCODE_HONGBAO_GET_RESPONSE  134// 领取红包回复{code:134,poxiaoId:"456",result:"1"} result 1为成功 2为该红包领取达上限 3为此人已经领取过红包
 
 #define MSGCODE_SIGN_CONTENT_REQUEST  135// 签到情况获取{code:135,poxiaoId:"456"}
@@ -255,4 +255,6 @@
 #define MSG_PLAYER_ADD_FRIEND_QUICK "msg_player_add_friend_quick"
 #define MSG_UPDATE_HERO_INFO "msg_update_hero_info"
 #define MSG_RED_WALLET_RESP_INFO "msg_red_wallet_resp_info"
+#define MSG_RECIVE_RED_WALLET_INFO "msg_recive_red_wallet_resp_info"
+#define MSG_RECIVE_RED_WALLET_PSUH "msg_recive_red_wallet_resp_push"
 #endif

@@ -79,5 +79,6 @@ private:
     void lequanChangeListResp(std::string msg);
     void registerAccountResp(std::string msg);
     void quickAddFriendResp(std::string msg);
+    void getAllRedWalletPushResp(std::string msg);
 };
 #endif
