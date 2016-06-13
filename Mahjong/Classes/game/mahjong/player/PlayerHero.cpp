@@ -624,10 +624,15 @@ void PlayerHero::removePlayedIcon(){
     playedIcon->setVisible(false);
 }
 
+
+void PlayerHero::doEventTimeOverUi(){
+    ((MahjongView*)getParent())->hideTingGangControllPad();
+    this->setIsAllowPlay(false);
+}
+
 void PlayerHero::doEventTimeOver(int type){
     if (type < 0){
         if (isAllowPlay && !GAMEDATA::getInstance()->getIsTingState()){
-            
             playedPokerAuto(true);
         }
         auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
@@ -637,6 +642,11 @@ void PlayerHero::doEventTimeOver(int type){
     }
     else if (type == 1){
         ((MahjongView*)getParent())->hideTingGangControllPad();
+        if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
+                                       GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
+           ClientSeatId::hero){
+            startTimeClockAnim();
+        }
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
     }
     else if (type == 2){
@@ -649,6 +659,11 @@ void PlayerHero::doEventTimeOver(int type){
             ((MahjongView*)getParent())->hideTingGangControllPad();
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
             this->setIsAllowTouch(true);
+        }
+        if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
+                                       GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
+           ClientSeatId::hero){
+            startTimeClockAnim();
         }
     }
 }

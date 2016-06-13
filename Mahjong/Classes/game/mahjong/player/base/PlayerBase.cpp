@@ -189,7 +189,8 @@ void  PlayerBase::stopTimeClockAnim(){
 		return;
 	}
 	mProgressTimer->setVisible(false);
-	timeClock->setVisible(false);
+    timeClock->setVisible(false);
+	unschedule(schedule_selector(PlayerBase::updateTime));
 }
 
 
@@ -221,19 +222,19 @@ void PlayerBase::playerCpgAnim(CpgType cpgType, ClientSeatId type){
 
 
 void PlayerBase::updateTime(float dt){
-	if (timeClock->isVisible()){
-		if (mCDTime > 0){
-			mCDTime--;
-			timeClock->setString(cocos2d::String::createWithFormat("%d", mCDTime)->_string);
-			if (mCDTime == 0){
-				timeClock->setVisible(false);
-				doEventTimeOver(this->getTag());
-			}
-		}
-		else{
-			timeClock->setVisible(false);
-		}
-	}
+    mCDTime--;
+    if (mCDTime > 0){
+        timeClock->setString(cocos2d::String::createWithFormat("%d", mCDTime)->_string);
+    }
+    else{
+        timeClock->setVisible(false);
+        if(mCDTime == 0){
+            doEventTimeOverUi();
+        }
+        if (mCDTime <=-1){
+            doEventTimeOver(this->getTag());
+        }
+    }
 }
 
 Jong* PlayerBase::getCurrentJong(){

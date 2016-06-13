@@ -259,11 +259,6 @@ void MahjongView::hideTingGangControllPad(){
     controllPad->setVisible(false);
     choiceMenu->removeAllChildren();
     choiceMenu->setVisible(false);
-    if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
-                                   GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
-       ClientSeatId::left){
-     playerHero->startTimeClockAnim();
-    }
 }
 
 void MahjongView::showGuiLayer(){
