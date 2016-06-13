@@ -1394,13 +1394,58 @@ void MsgHandler::playerChatNotify(std::string msg){
 }
 
 void MsgHandler::sendRedWalletResp(std::string msg){
-    //红包获取回复{code:132,poxiaoId:"456",hbcode:"12345689",lequan:"12",gold:"0",diamond:"0",count:"1"}
-    //result 1为成功 2为该红包领取达上限 3为此人已经领取过红包
+    //红包获取回复{code:132,poxiaoId:"456",hbcode:"12345689",lequan:"12",gold:"0",diamond:"0",count:"1",lequan2:"12",gold2:"0",diamond2:"0",list:[{pId:"11",nickname:"好啊",status:"1"},{pId:"21",nickname:"我是谁",status:"0"}]}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //TODO
+    RedWalletRespData respData;
+    respData.needInit = false;
+    if (_mDoc.HasMember("hbcode")){
+         const rapidjson::Value &hbcode = _mDoc["hbcode"];
+        respData.hbcode = hbcode.GetString();
+    }
+    if (_mDoc.HasMember("lequan")){
+        const rapidjson::Value &lequan = _mDoc["lequan"];
+        respData.lequan = lequan.GetString();
+    }
+    if (_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        respData.gold = gold.GetString();
+    }
+    if (_mDoc.HasMember("diamond")){
+        const rapidjson::Value &diamond = _mDoc["diamond"];
+        respData.diamond = diamond.GetString();
+    }
+    if (_mDoc.HasMember("count")){
+        const rapidjson::Value &count = _mDoc["count"];
+        respData.count = count.GetString();
+    }
+    if (_mDoc.HasMember("lequan2")){
+        const rapidjson::Value &lequan2 = _mDoc["lequan2"];
+        respData.lequan2 = lequan2.GetString();
+    }
+    if (_mDoc.HasMember("gold2")){
+        const rapidjson::Value &gold2 = _mDoc["gold2"];
+        respData.gold2 = gold2.GetString();
+    }
+    if (_mDoc.HasMember("diamond2")){
+        const rapidjson::Value &diamond2 = _mDoc["diamond2"];
+        respData.diamond2 = diamond2.GetString();
+    }
+    if (_mDoc.HasMember("list")){
+        const rapidjson::Value &list = _mDoc["list"];
+        for(int i=0; i<list.Capacity();i++){
+            RedShareFriend _friend;
+            const rapidjson::Value &temp = list[i];
+            _friend.pId = temp["pId"].GetString();
+            _friend.nickname = temp["nickname"].GetString();
+            _friend.status = temp["status"].GetString();
+            respData.friends.push_back(_friend);
+        }
+    }
+    GAMEDATA::getInstance()->setRedWalletRespData(respData);
+    postNotifyMessage(MSG_RED_WALLET_RESP_INFO, "");
 }
 
 void MsgHandler::reciveRedWalletResp(std::string msg){

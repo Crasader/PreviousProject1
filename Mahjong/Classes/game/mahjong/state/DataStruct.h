@@ -11,70 +11,70 @@ struct EnterRoomResp{
 
 struct ReplaceJong
 {
-	int seatId;
-	std::vector<std::string> poker;
-	std::vector<std::string> replace;
+    int seatId;
+    std::vector<std::string> poker;
+    std::vector<std::string> replace;
 };
 
 struct ReplaceJongVec{
     std::string rest;
-	std::vector<ReplaceJong> times;
+    std::vector<ReplaceJong> times;
 };
 
 struct OtherPlayedJong
 {
-	int poker;
-	int seatId;
+    int poker;
+    int seatId;
 };
 
 struct PlayerTurnData
 {
-	int seatId;
+    int seatId;
     int poker;
     std::string rest;
-	std::string replace;
+    std::string replace;
 };
 
 struct PlayerCpgtData
 {
-	int seatId;
-	int sId;
-	int flag;
-	std::string ting;
-	std::string poker;
-	std::vector<std::string> chi;
-	std::string peng;
-	std::string gang;
+    int seatId;
+    int sId;
+    int flag;
+    std::string ting;
+    std::string poker;
+    std::vector<std::string> chi;
+    std::string peng;
+    std::string gang;
 };
 
 struct GameResultData
 {
-	int result;//0打酱油,1自摸,3胡牌,2点炮
-	int seatId;
-	int gold;
-	int diamond;
-	int jifen;
-	int lequan;
-	int golddelta;
-	int diamonddelta;
-	int jifendelta;
-	int lequandelta;
-	int hua;
-	std::string nickName;
-	std::string huType;
-	std::string showPoker;
+    int result;//0打酱油,1自摸,3胡牌,2点炮
+    int seatId;
+    int gold;
+    int diamond;
+    int jifen;
+    int lequan;
+    int golddelta;
+    int diamonddelta;
+    int jifendelta;
+    int lequandelta;
+    int hua;
+    std::string nickName;
+    std::string huType;
+    std::string showPoker;
 };
 
 struct PlayerCpgRecord
 {
     int pengDir;//碰牌方向
-	int type;
-	Vector<Jong*> pokersRecord;
+    int type;
+    Vector<Jong*> pokersRecord;
 };
 
 struct HeroCpgRespData{
-	int result;
-	std::string ting;
+    int result;
+    std::string ting;
 };
 
 
@@ -94,44 +94,44 @@ struct PlayerGangData{
 };
 
 struct PlayerGameData{
-	int seatId;
-	int gold;
-	int diamond;
-	int jifen;
-	int lequan;
-	int hua;
+    int seatId;
+    int gold;
+    int diamond;
+    int jifen;
+    int lequan;
+    int hua;
     int status;
-	vector<PlayerChiData> chiData;
-	vector<PlayerPengData> pengData;
-	vector<PlayerGangData> gangData;
-	std::string angang;
-	std::string outhand;
-	std::string nickname;
-	std::string money;
-	std::string hand;
+    vector<PlayerChiData> chiData;
+    vector<PlayerPengData> pengData;
+    vector<PlayerGangData> gangData;
+    std::string angang;
+    std::string outhand;
+    std::string nickname;
+    std::string money;
+    std::string hand;
     std::string pic;
 };
 
 struct LastGameData
 {
-	int seatId;
+    int seatId;
     int loard;
     bool isprivate;
     std::string rest;
-	std::string hand;
-	std::vector <PlayerGameData> players;
+    std::string hand;
+    std::vector <PlayerGameData> players;
 };
 
 struct RoomListData
 {
-	std::vector <int> rooms;
+    std::vector <int> rooms;
 };
 
 
 struct FriendInfo{
-	std::string poxiaoId;
-	std::string image;
-	std::string nickname;
+    std::string poxiaoId;
+    std::string image;
+    std::string nickname;
     int diamond;
     int lockDiamond;
     int gold;
@@ -140,26 +140,26 @@ struct FriendInfo{
 };
 
 struct FriendListData{
-	std::vector<FriendInfo> friends;
+    std::vector<FriendInfo> friends;
 };
 
 struct FriendSearchData{
-	std::vector<FriendInfo> friends;
+    std::vector<FriendInfo> friends;
 };
 
 struct RemovePlayerData{
-	int setaId;
-	std::string pid;
+    int setaId;
+    std::string pid;
 };
 
 struct FriendOpenRoomRespData{
-	int seatId;
-	int result;
+    int seatId;
+    int result;
 };
 
 struct FriendOpenRoomNotifyData{
-	std::string nickname;
-	std::string pid;
+    std::string nickname;
+    std::string pid;
 };
 
 struct BillContent{
@@ -181,21 +181,21 @@ struct BillInfoAll{
 
 struct BillInfoDetail
 {
-	std::vector<BillContent> detail;
+    std::vector<BillContent> detail;
 };
 
 struct BillInfoDetailAll
 {
     bool needInit = true;
-	std::vector<BillInfoDetail> detail;
+    std::vector<BillInfoDetail> detail;
 };
 
 struct DailyTaskData{
-	std::string task1;
-	std::string task2;
-	std::string task3;
-	std::string task4;
-	std::string extra;
+    std::string task1;
+    std::string task2;
+    std::string task3;
+    std::string task4;
+    std::string extra;
 };
 
 enum PrideType{
@@ -211,61 +211,61 @@ struct PrideData{
 };
 
 struct DailySignData{
-	std::string day;
-	std::vector<PrideData> pride;
-	std::string result;
+    std::string day;
+    std::vector<PrideData> pride;
+    std::string result;
 };
 
 struct TodaySignData{
-	std::string day;
-	std::vector<PrideData> pride;
+    std::string day;
+    std::vector<PrideData> pride;
 };
 
 struct WelfareData{
     bool needInit;
-	std::string jjj_count;
-	std::string jjj_used;
-	std::string jjj_gold;
+    std::string jjj_count;
+    std::string jjj_used;
+    std::string jjj_gold;
     std::string jjj_result;
-	std::string wx_result;
-	std::string wx_gold;
-	std::string wx_bangzuan;
-	std::string bzjjj_count;
-	std::string bzjjj_used;
-	std::string bzjjj_bangzuan;
+    std::string wx_result;
+    std::string wx_gold;
+    std::string wx_bangzuan;
+    std::string bzjjj_count;
+    std::string bzjjj_used;
+    std::string bzjjj_bangzuan;
     std::string bzjjj_result;
-	std::string mobile_result;
-	std::string mobile_gold;
+    std::string mobile_result;
+    std::string mobile_gold;
 };
 
 
 struct WelfareBZ{
-	string result;
-	string bangzuan;
+    string result;
+    string bangzuan;
 };
 
 struct WelfareGold{
-	string result;
-	string gold;
+    string result;
+    string gold;
 };
 
 
 struct DailyPrideData{
-	string needGold;
-	string result;
-	string count;
-	string max;
-	vector<PrideData> prides;
+    string needGold;
+    string result;
+    string count;
+    string max;
+    vector<PrideData> prides;
 };
 
 struct TodayPrideData{
-	string result;
-	PrideData pride;
+    string result;
+    PrideData pride;
 };
 
 struct BoundPhoneData{
-	int result;
-	string phoneNum;
+    int result;
+    string phoneNum;
 };
 
 
@@ -308,28 +308,47 @@ struct LequanChangeList{
     vector<LequanChange> list;
 };
 
+struct RedShareFriend{
+    std::string pId;
+    std::string nickname;
+    std::string status;
+};
+
+struct RedWalletRespData{
+    bool needInit;
+    std::string hbcode;
+    std::string lequan;
+    std::string gold;
+    std::string diamond;
+    std::string count;
+    std::string lequan2;
+    std::string gold2;
+    std::string diamond2;
+    vector<RedShareFriend> friends;
+};
+
 enum CpgType
 {
-	chi,
-	peng,
-	gang,
-	angang,
-	penggang,
+    chi,
+    peng,
+    gang,
+    angang,
+    penggang,
     ting
 };
 
 enum HuType{
-	kaibao  = 1,
-	huangfan,
-	gangkai,
-	mengqing,
-	hunpeng,
-	qingpeng,
-	dadiaoche,
-	qingyise,
-	hunyise,
-	pengpenghu,
-	lajihu
+    kaibao  = 1,
+    huangfan,
+    gangkai,
+    mengqing,
+    hunpeng,
+    qingpeng,
+    dadiaoche,
+    qingyise,
+    hunyise,
+    pengpenghu,
+    lajihu
 };
 
 

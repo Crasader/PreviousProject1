@@ -297,6 +297,7 @@ void LobbyScene::showFirstCharge(){
 }
 
 void LobbyScene::showRedWallet(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSendRedWalletCommand());
     Redwallet* wallet = Redwallet::create();
     this->addChild(wallet,3);
 }

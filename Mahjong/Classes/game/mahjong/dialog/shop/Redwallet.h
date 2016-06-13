@@ -7,6 +7,8 @@ USING_NS_CC_EXT;
 class Redwallet :public Layer, public TableViewDelegate, public TableViewDataSource{
 public :
 	virtual bool init();
+    void onEnter() override;
+    void onExit() override;
 	CREATE_FUNC(Redwallet);
     virtual void tableCellTouched(TableView* table, TableViewCell* cell);
     virtual Size tableCellSizeForIndex(TableView *table, ssize_t idx);
@@ -17,6 +19,7 @@ public :
     virtual void scrollViewDidZoom(cocos2d::extension::ScrollView* view) {}
 
 private:
+    EventListenerCustom* redWalletRespListener;
 	Layer* giveRedwalletLayer;
 	Layer* getRedwalletLayer;
 	Layer* tishiLayer;

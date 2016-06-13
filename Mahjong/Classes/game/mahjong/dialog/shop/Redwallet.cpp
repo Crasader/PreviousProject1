@@ -1,5 +1,7 @@
 #include "game/mahjong/dialog/shop/Redwallet.h"
 #include "server/NetworkManage.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/loading/Loading.h"
 
 bool Redwallet::init(){
 	if (!Layer::init()){
@@ -8,13 +10,6 @@ bool Redwallet::init(){
 	giveRedwalletLayer = NULL;
 	getRedwalletLayer = NULL;
 	tishiLayer = NULL;
-	drawDialog();
-	return true;
-}
-
-
-void Redwallet::drawDialog(){
-    
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
@@ -36,6 +31,35 @@ void Redwallet::drawDialog(){
     auto closeMenu = Menu::create(closeImage, NULL);
     closeMenu->setPosition(1060, 610);
     addChild(closeMenu);
+
+    if(GAMEDATA::getInstance()->getRedWalletRespData().needInit){
+        drawDialog();
+    }else{
+        Loading* load = Loading::create(true);
+        load->setTag(1001);
+        addChild(load);
+    }
+		return true;
+}
+
+void Redwallet::onEnter(){
+    Layer::onEnter();
+    redWalletRespListener = EventListenerCustom::create(MSG_RED_WALLET_RESP_INFO, [=](EventCustom* event){
+        if(NULL != getChildByTag(1001)){
+            getChildByTag(1001)->removeFromParent();
+        }
+        drawDialog();
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(redWalletRespListener, 1);
+}
+
+void Redwallet::onExit(){
+    Layer::onExit();
+    _eventDispatcher->removeEventListener(redWalletRespListener);
+}
+
+void Redwallet::drawDialog(){
+    
     
 //box1
     auto boxBg1 = Sprite::create("shop/red_box.png");
@@ -56,47 +80,47 @@ void Redwallet::drawDialog(){
     
     auto gold = Sprite::create("mjitem/gold_iocn.png");
     gold->setScale(0.8f);
-    gold->setPosition(275,395);
+    gold->setPosition(270,395);
     addChild(gold);
     
-    LabelAtlas* goldNum = LabelAtlas::create("999","shop/prop_num.png",21,28,'0');
+    LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",atoi(GAMEDATA::getInstance()->getRedWalletRespData().gold.c_str()))->_string,"shop/prop_num.png",21,28,'0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    goldNum->setPosition(305,395);
+    goldNum->setPosition(300,395);
     goldNum->setScale(0.9);
     addChild(goldNum);
     
     auto goldText = Sprite::create("shop/gold_text.png");
-    goldText->setPosition(415,395);
+    goldText->setPosition(425,395);
     addChild(goldText);
     
     auto lequan = Sprite::create("mjitem/lequan_icon.png");
     lequan->setScale(0.8f);
-    lequan->setPosition(275,335);
+    lequan->setPosition(270,335);
     addChild(lequan);
     
-    LabelAtlas* lequanNum = LabelAtlas::create("999","shop/prop_num.png",21,28,'0');
-    lequanNum->setPosition(305,335);
+    LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%s",GAMEDATA::getInstance()->getRedWalletRespData().lequan.c_str())->_string,"shop/prop_num.png",21,28,'0');
+    lequanNum->setPosition(300,335);
     lequanNum->setScale(0.9);
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(lequanNum);
     
     auto lequanText = Sprite::create("shop/lequan_text.png");
-    lequanText->setPosition(415,335);
+    lequanText->setPosition(425,335);
     addChild(lequanText);
     
     auto diamond = Sprite::create("mjitem/diamond.png");
-    diamond->setPosition(275,275);
+    diamond->setPosition(270,275);
     diamond->setScale(0.8f);
     addChild(diamond);
     
-    LabelAtlas* diamondNum = LabelAtlas::create("999","shop/prop_num.png",21,28,'0');
-    diamondNum->setPosition(305,275);
+    LabelAtlas* diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%s",GAMEDATA::getInstance()->getRedWalletRespData().diamond.c_str())->_string,"shop/prop_num.png",21,28,'0');
+    diamondNum->setPosition(300,275);
     diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     diamondNum->setScale(0.9);
     addChild(diamondNum);
     
     auto diamondText = Sprite::create("shop/bangzhuan_text.png");
-    diamondText->setPosition(415,275);
+    diamondText->setPosition(425,275);
     addChild(diamondText);
     
     auto btnImage1 = MenuItemImage::create("shop/get_wallet_1.png","shop/get_wallet_2.png");
@@ -121,7 +145,7 @@ void Redwallet::drawDialog(){
     text2->setPosition(640,465);
     addChild(text2);
     
-    LabelAtlas* goldNum2 = LabelAtlas::create("999","shop/prop_num.png",21,28,'0');
+    LabelAtlas* goldNum2 = LabelAtlas::create(cocos2d::String::createWithFormat("%s",GAMEDATA::getInstance()->getRedWalletRespData().gold2.c_str())->_string,"shop/prop_num.png",21,28,'0');
     goldNum2->setPosition(580,375);
     goldNum2->setScale(0.9f);
     goldNum2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
@@ -132,7 +156,7 @@ void Redwallet::drawDialog(){
     addChild(goldText2);
     
     
-    LabelAtlas* lequanNum2 = LabelAtlas::create("999","shop/prop_num.png",21,28,'0');
+    LabelAtlas* lequanNum2 = LabelAtlas::create(cocos2d::String::createWithFormat("%s",GAMEDATA::getInstance()->getRedWalletRespData().lequan2.c_str())->_string,"shop/prop_num.png",21,28,'0');
     lequanNum2->setPosition(580,335);
     lequanNum2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum2->setScale(0.9f);
@@ -143,7 +167,7 @@ void Redwallet::drawDialog(){
     addChild(lequanText2);
     
     
-    LabelAtlas* diamondNum2 = LabelAtlas::create("999","shop/prop_num.png",21,28,'0');
+    LabelAtlas* diamondNum2 = LabelAtlas::create(cocos2d::String::createWithFormat("%s",GAMEDATA::getInstance()->getRedWalletRespData().diamond2.c_str())->_string,"shop/prop_num.png",21,28,'0');
     diamondNum2->setPosition(580,295);
     diamondNum2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     diamondNum2->setScale(0.9f);
@@ -220,20 +244,27 @@ TableViewCell* Redwallet::tableCellAtIndex(TableView *table, ssize_t idx)
         head->setPosition(Vec2(25, 5));
         cell->addChild(head);
         
-        auto label = Label::createWithSystemFont("abc", "arial", 30);
-        label->setTag(801);
+        auto label = Label::createWithSystemFont(GAMEDATA::getInstance()->getRedWalletRespData().friends.at(idx).nickname, "arial", 30);
         label->setColor(Color3B(69,131,172));
         label->setAnchorPoint(Vec2::ZERO);
         label->setPosition(Vec2(125, 65));
         cell->addChild(label);
+        cell->setName(GAMEDATA::getInstance()->getRedWalletRespData().friends.at(idx).pId);
         
+        if(GAMEDATA::getInstance()->getRedWalletRespData().friends.at(idx).status == "0"){
+            //TODO 可以领取
+        
+        }
+    }else{
+        //TODO
+    
     }
     return cell;
 }
 
 ssize_t Redwallet::numberOfCellsInTableView(TableView *table)
 {
-    return 2;
+    return GAMEDATA::getInstance()->getRedWalletRespData().friends.size();
 }
 
 
@@ -383,7 +414,7 @@ void Redwallet::drawRedpride(Layer* layer, Point startpos){
 
 
 void Redwallet::giveRedwallet(){
-	NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSendRedWalletCommand());
+	//TODO
 }
 
 
