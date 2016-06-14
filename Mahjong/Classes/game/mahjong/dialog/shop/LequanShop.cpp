@@ -14,6 +14,7 @@
 #include "game/utils/StringUtil.h"
 #include "userdata/UserData.h"
 #include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
+#include "game/mahjong/dialog/shop/LequanExchangeRecord.hpp"
 
 bool LequanShop::init(){
     if(!Layer::init()){
@@ -63,12 +64,31 @@ void LequanShop::onEnter(){
     });
     _eventDispatcher->addEventListenerWithFixedPriority(lequanChangeList, 1);
     
+    lequanChangeResp = EventListenerCustom::create(MSG_PLAYER_LEQUAN_EXCHANGE, [=](EventCustom* event){
+        if(NULL != getChildByTag(1000)){
+            getChildByTag(1000)->removeFromParent();
+            showLequanShop();
+        }
+        if(GAMEDATA::getInstance()->getLequanChangeResult().result == "1"){
+            ShopHintDialog* shop = ShopHintDialog::create();
+            shop->showText("兑换成功");
+            addChild(shop);
+            UserData::getInstance()->setTicket(GAMEDATA::getInstance()->getLequanChangeResult().lequan);
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
+        }else{
+            ShopHintDialog* shop = ShopHintDialog::create();
+            shop->showText("兑换失败");
+            addChild(shop);
+        }
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(lequanChangeResp, 1);
 }
 
 void LequanShop::onExit(){
     Layer::onExit();
     _eventDispatcher->removeEventListener(lequanChangeList);
-//    _eventDispatcher->removeEventListener(goldChangeResp);
+    _eventDispatcher->removeEventListener(lequanChangeResp);
 }
 
 void LequanShop::showLequanShop(){
@@ -107,10 +127,8 @@ void LequanShop::exchange(Ref* ref){
 }
 
 void LequanShop::showRecord(){
-    
-    
-    
-    
+    LequanExchangeRecord* record  = LequanExchangeRecord::create();
+    addChild(record);
 }
 
 void  LequanShop:: closeView(){

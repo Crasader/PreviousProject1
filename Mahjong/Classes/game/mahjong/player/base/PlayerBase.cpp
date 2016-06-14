@@ -232,6 +232,7 @@ void PlayerBase::updateTime(float dt){
             doEventTimeOverUi();
         }
         if (mCDTime <=-1){
+            mCDTime = 1000000;
             doEventTimeOver(this->getTag());
         }
     }

@@ -21,6 +21,7 @@ public:
     CREATE_FUNC(LequanShop);
 private:
     EventListenerCustom* lequanChangeList;
+    EventListenerCustom* lequanChangeResp;
     void showLequanShop();
     void exchange(Ref* ref);
     void showRecord();

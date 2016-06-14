@@ -20,18 +20,21 @@ public:
     static ExchangeItem* create(int propId,std::string propName);
     virtual bool init(int propId,std::string propName);
 private:
+    
+    
     EditBox* _lianXiRen;
     EditBox* _shouJiHao;
     EditBox* _xiangXiDiZhi;
     
     EditBox* _newPhoneNumber;
     EditBox* _confirmPhoneNumber;
-    Sprite* password_hint_info1;
-    Sprite* password_hint_info2;
+    
+    CC_SYNTHESIZE(int , itemPropId, ItemPropId);
+    CC_SYNTHESIZE(bool, isVirtual, IsVirtual);
     
     void showRealItem(int propId,std::string propName);
     void showVirtualItem(int propId,std::string propName);
-    void confirm();
+    void confirm(Ref* ref);
     void closeView();
 
     virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);

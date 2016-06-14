@@ -308,6 +308,11 @@ struct LequanChangeList{
     vector<LequanChange> list;
 };
 
+struct LequanChangeResult{
+    std::string result;
+    int  lequan;
+};
+
 struct RedShareFriend{
     std::string pId;
     std::string nickname;
@@ -334,6 +339,8 @@ struct ReciveRedWallet{
     std::string diamond;
     std::string bangzuan;
 };
+
+
 
 enum CpgType
 {

@@ -21,7 +21,6 @@ private:
 	void showDialog();
 	void changePassword();
 	void updateSecond(float dt);
-	bool checkPassword(std::string string);
 	
 	virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
 	

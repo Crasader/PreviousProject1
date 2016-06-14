@@ -64,6 +64,28 @@ void ExchangePropCell::confirmChange(Ref* ref){
 }
 
 std::string ExchangePropCell::getImageNameById(int id){
+    //后期可以做成从网络获取数据,目前在客户端写死
+    switch (id) {
+        case 1:
+            return "shop/huafei_30.png";
+        case 2:
+            return "shop/huafei_30.png";
+        case 3:
+            return "shop/huafei_30.png";
+        case 4:
+            return "shop/huafei_30.png";
+        case 5:
+            return "shop/huafei_100.png";
+        case 6:
+            return "shop/huafei_50.png";
+        case 7:
+            return "shop/huafei_50.png";
+        case 11:
+            return "shop/liuliang_50.png";
+        case 21:
+            return "shop/ipones_6s.png";
+        default:
+            return "shop/huafei_30.png";
+    }
     
-    return "shop/huafei_30.png";
 }

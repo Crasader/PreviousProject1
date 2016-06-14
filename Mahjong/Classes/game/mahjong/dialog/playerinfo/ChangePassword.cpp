@@ -4,7 +4,7 @@
 #include "userdata/UserData.h"
 #include "game/loading/Loading.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
-#include <Regex>
+#include "game/utils/StringUtil.h"
 
 bool ChangePassword::init(){
 	if (!Layer::init()){
@@ -110,18 +110,6 @@ void ChangePassword::changePassword(){
 	}
 }
 
-bool ChangePassword::checkPassword(std::string string){
-	if (string.length() < 5 || string.length() > 10){
-		return false;
-	}
-	std::regex rx1("^[A-Za-z0-9]+$");
-	bool result_1 = std::regex_match(string.begin(), string.end(), rx1);
-	std::regex rx2("[0-9]+");
-	bool result_2 = std::regex_match(string.begin(), string.end(), rx2);
-	std::regex rx3("^[A-Za-z]+$");
-	bool result_3 = std::regex_match(string.begin(), string.end(), rx3);
-	return result_1 && (!result_2) && (!result_3);
-}
 
 
 void ChangePassword::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
@@ -131,7 +119,7 @@ void ChangePassword::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox
 
 void ChangePassword::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 	if (editBox->getTag() == 0){
-		if (!checkPassword(editBox->getText())){
+		if (!StringUtil::checkPassword(editBox->getText())){
 			password_hint_info1->setVisible(true);
 		}
 		else{

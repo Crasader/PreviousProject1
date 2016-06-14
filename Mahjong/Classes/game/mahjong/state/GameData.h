@@ -61,8 +61,9 @@ public:
     CC_SYNTHESIZE(GoldChangeList, goldChangeList, GoldChangeList);
     CC_SYNTHESIZE(DiamondChangeList, diamondChangeList, DiamondChangeList);
     CC_SYNTHESIZE(LequanChangeList, lequanChangeList, LequanChangeList);
+    CC_SYNTHESIZE(LequanChangeResult, lequanChangeResult, LequanChangeResult);
     CC_SYNTHESIZE(RedWalletRespData, redWalletRespData, RedWalletRespData);
-     CC_SYNTHESIZE(ReciveRedWallet, reciveRedWallet, ReciveRedWallet);
+    CC_SYNTHESIZE(ReciveRedWallet, reciveRedWallet, ReciveRedWallet);
 
 	CC_SYNTHESIZE(bool, updatePlayer, UpdatePlayer);
 	CC_SYNTHESIZE(bool, replaceFlower, ReplaceFlower);

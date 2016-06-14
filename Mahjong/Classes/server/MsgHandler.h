@@ -80,5 +80,6 @@ private:
     void registerAccountResp(std::string msg);
     void quickAddFriendResp(std::string msg);
     void getAllRedWalletPushResp(std::string msg);
+    void getLequanExchangeResp(std::string msg);
 };
 #endif

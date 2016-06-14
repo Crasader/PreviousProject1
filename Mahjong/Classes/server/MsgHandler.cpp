@@ -410,7 +410,10 @@ void MsgHandler::distribute(int code, std::string msg){
             getAllRedWalletPushResp(msg);
             break;
         };
-            
+        case MSGCODE_LEQUAN_MALL_EXCHANGE_RESPONSE:{
+            getLequanExchangeResp(msg);
+            break;
+        };
         default:
             break;
     }
@@ -686,6 +689,9 @@ void MsgHandler::getHeroJongs(std::string msg){
     GAMEDATA::getInstance()->setKaibao(_mDoc["kb"].GetString());
     GAMEDATA::getInstance()->setHuangfan(_mDoc["hf"].GetString());
     postNotifyMessage(MSG_GAME_START_NOTIFY, "");
+    PlayerTurnData playerTurnData;
+    playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    GAMEDATA::getInstance()->setPlayerTurn(playerTurnData);
 }
 
 void MsgHandler::replaceFlower(std::string msg){
@@ -2013,6 +2019,22 @@ void MsgHandler::getAllRedWalletPushResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
     postNotifyMessage(MSG_RECIVE_RED_WALLET_PSUH, result.GetString());
+}
+
+void MsgHandler::getLequanExchangeResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    LequanChangeResult myResult;
+    myResult.result = result.GetString();
+    if(_mDoc.HasMember("lequan")){
+        const rapidjson::Value &lequan = _mDoc["lequan"];
+        myResult.lequan = lequan.GetInt();
+    }
+    GAMEDATA::getInstance()->setLequanChangeResult(myResult);
+    postNotifyMessage(MSG_PLAYER_LEQUAN_EXCHANGE, "");
 }
 
 

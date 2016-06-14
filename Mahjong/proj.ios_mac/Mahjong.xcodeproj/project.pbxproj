@@ -67,6 +67,8 @@
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
+		D239A55C1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */; };
+		D239A55D1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D2435FA41CC73525000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
@@ -387,6 +389,8 @@
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
+		D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanExchangeRecord.cpp; sourceTree = "<group>"; };
+		D239A55B1D100287009DB640 /* LequanExchangeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanExchangeRecord.hpp; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
@@ -1168,6 +1172,8 @@
 				D20C39191CFEAB37006F6C9E /* ExchangeItem.hpp */,
 				D28A4A481D0D40C400741FD0 /* GoldNotEnoughDialog.cpp */,
 				D28A4A491D0D40C400741FD0 /* GoldNotEnoughDialog.hpp */,
+				D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */,
+				D239A55B1D100287009DB640 /* LequanExchangeRecord.hpp */,
 			);
 			path = shop;
 			sourceTree = "<group>";
@@ -1519,6 +1525,7 @@
 				D2B1A8C51CCDF0F400A20896 /* FirstChageDialog.cpp in Sources */,
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2B1A90B1CCDF78300A20896 /* ZimoAnim.cpp in Sources */,
+				D239A55C1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */,
 				D2B1A8A11CCDF0F400A20896 /* FriendRoom.cpp in Sources */,
 				D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
@@ -1634,6 +1641,7 @@
 				D2BDE3B81CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D2B1A8801CCDF0F400A20896 /* MahjongView.cpp in Sources */,
+				D239A55D1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */,
 				D2B1A8BC1CCDF0F400A20896 /* UserSetting.cpp in Sources */,
 				D2B1A8C81CCDF0F400A20896 /* HongbaoPride.cpp in Sources */,
 				D28A4A451D07F59800741FD0 /* LoginMannger.cpp in Sources */,
