@@ -5,6 +5,7 @@
 #include "game/mahjong/dialog/shop/Huode.hpp"
 #include "userdata/UserData.h"
 #include "game/mahjong/lobby/LobbyScene.h"
+#include "game/utils/ParticleUtil.hpp"
 bool DailySign::init(){
     
     if (!Layer::init()){
@@ -45,6 +46,9 @@ void DailySign::onEnter(){
             addChild(an);
             an->runAction(Sequence::create(DelayTime::create(3.8f),CallFunc::create([=](){
                 showLightAnim(an);
+            }), DelayTime::create(1.0f),CallFunc::create([=](){
+                ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+                getParent()->addChild(util,5);
             }), NULL));
         }
         UserData::getInstance()->setGold(UserData::getInstance()->getGold()+gold);
