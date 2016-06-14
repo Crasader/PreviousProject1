@@ -455,7 +455,7 @@ void ResultLayer::clickQuit(){
 
 void ResultLayer::showContinueButton(float dt){
     resultMenu->setVisible(true);
-    timeLable->setVisible(true);
+//    timeLable->setVisible(true);
     schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
 }
 

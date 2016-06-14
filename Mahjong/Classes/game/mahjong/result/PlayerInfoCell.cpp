@@ -25,7 +25,6 @@ bool PlayerInfoCell::init(GameResultData data){
     }
     std::string bgImageName;
     if(GAMEDATA::getInstance()->getIsPrivateRoom()){
-        //TODO
         if(data.result==1||data.result==3){
             bgImageName = "result/player_result_4.png";
         }else{
@@ -73,7 +72,6 @@ bool PlayerInfoCell::init(GameResultData data){
         else{
             goldNum->setString(cocos2d::String::createWithFormat(":%d", data.jifendelta)->_string);
         }
-        
     }else{
         if (data.golddelta < 0){
             goldNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.golddelta))->_string);
