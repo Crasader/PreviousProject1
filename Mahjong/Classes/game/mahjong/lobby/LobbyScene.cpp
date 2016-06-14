@@ -346,7 +346,7 @@ void LobbyScene::showHotActivity(){
 }
 
 void LobbyScene::showHeroInfo(){
-    HeroInfoEdit* dialog = HeroInfoEdit::create();
+    HeroInfoEdit* dialog = HeroInfoEdit::create(1);
     this->addChild(dialog,3);
 }
 

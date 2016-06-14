@@ -9,10 +9,10 @@ USING_NS_CC_EXT;
 
 class HeroInfoEdit : public Layer{
 public:
-	virtual bool init();
+    static HeroInfoEdit* create(int type);
+	virtual bool init(int type);
     void onEnter() override;
     void onExit() override;
-	CREATE_FUNC(HeroInfoEdit);
 private:
     EventListenerCustom* closeDialogListener;
 	Sprite* heroInfo;
@@ -25,7 +25,9 @@ private:
 	BoundPhone* boundPhoneLayer;
 	ChangePassword* changePasswordLayer;
 	void clickTabBtn(Ref* ref);
-    void drawHeroInfoEdit();
+    void drawHeroInfoEdit(int type);
     void closeView();
-	
+    void showTabelLayer1();
+    void showTabelLayer2();
+    void showTabelLayer3();
 };

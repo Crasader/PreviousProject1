@@ -5,6 +5,8 @@
 #include "game/utils/ParticleUtil.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "userdata/UserData.h"
+#include "game/mahjong/dialog/playerinfo/HeroInfoEdit.h"
+
 
 bool DailyWelfare::init(){
     if (!Layer::init()){
@@ -52,7 +54,7 @@ void DailyWelfare::onEnter(){
             _eventDispatcher->dispatchEvent(&ev);
         }else {
             HintDialog* hint = HintDialog::create("绑钻救济金领取失败",false);
-           addChild(hint,5);
+            addChild(hint,5);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(BZJJRespListener, 1);
@@ -178,10 +180,17 @@ void DailyWelfare::showDailyWelfareLayer(){
         addChild(text2);
     }
     
-    if (data.wx_result == "1"){
+    if (data.wx_result == "0"){
         auto finish3 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",
                                              CC_CALLBACK_1(DailyWelfare::recievePride, this));
         finish3->setTag(2);
+        auto finishMenu3 = Menu::create(finish3, NULL);
+        finishMenu3->setPosition(307 + 2 * 222, 210);
+        addChild(finishMenu3);
+    }else if (data.wx_result == "1"){
+        auto finish3 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",
+                                             CC_CALLBACK_1(DailyWelfare::recievePride, this));
+        finish3->setTag(3);
         auto finishMenu3 = Menu::create(finish3, NULL);
         finishMenu3->setPosition(307 + 2 * 222, 210);
         addChild(finishMenu3);
@@ -191,9 +200,16 @@ void DailyWelfare::showDailyWelfareLayer(){
         text3->setPosition(307 + 2 * 222, 210);
         addChild(text3);
     }
-    if (data.mobile_result == "1"){
+    
+    if (data.mobile_result == "0"){
         auto finish4 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",                                             CC_CALLBACK_1(DailyWelfare::recievePride, this));
-        finish4->setTag(3);
+        finish4->setTag(4);
+        auto finishMenu4 = Menu::create(finish4, NULL);
+        finishMenu4->setPosition(307 + 3 * 222, 210);
+        addChild(finishMenu4);
+    }else if (data.mobile_result == "1"){
+        auto finish4 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",                                             CC_CALLBACK_1(DailyWelfare::recievePride, this));
+        finish4->setTag(5);
         auto finishMenu4 = Menu::create(finish4, NULL);
         finishMenu4->setPosition(307 + 3 * 222, 210);
         addChild(finishMenu4);
@@ -207,7 +223,10 @@ void DailyWelfare::showDailyWelfareLayer(){
 
 void DailyWelfare::recievePride(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
-     temp->setEnabled(false);
+    temp->setEnabled(false);
+    Loading* load = Loading::create();
+    load->setTag(666);
+    addChild(load);
     if (temp->getTag() == 0){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareJJJ());
     }
@@ -215,14 +234,22 @@ void DailyWelfare::recievePride(Ref* ref){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareBZJJJ());
     }
     else if (temp->getTag() == 2){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareWx());
+        //绑定微信 TODO
+        load->removeFromParent();
     }
     else if (temp->getTag() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareMobile());
     }
-    Loading* load = Loading::create();
-    load->setTag(666);
-    addChild(load);
+    else if (temp->getTag() == 4){
+        //绑定手机
+        load->removeFromParent();
+        HeroInfoEdit* dialog = HeroInfoEdit::create(2);
+        getParent()->addChild(dialog,3);
+    }
+    else if (temp->getTag() == 5){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareMobile());
+    }
+    
 }
 
 void DailyWelfare::updateData(){
