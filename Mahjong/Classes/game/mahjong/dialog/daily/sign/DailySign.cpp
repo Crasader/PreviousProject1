@@ -6,6 +6,7 @@
 #include "userdata/UserData.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/utils/ParticleUtil.hpp"
+
 bool DailySign::init(){
     
     if (!Layer::init()){

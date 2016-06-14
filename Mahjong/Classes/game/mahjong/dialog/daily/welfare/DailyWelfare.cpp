@@ -17,6 +17,52 @@ bool DailyWelfare::init(){
     return true;
 }
 
+void DailyWelfare::onEnter(){
+    Layer::onEnter();
+    JJJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+        WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
+        if(gold.result == "1"){
+        
+        
+        }else {
+            //TODO
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(JJJRespListener, 1);
+    
+    BZJJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+        WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
+        if(gold.result == "1"){
+            
+            
+        }else {
+            //TODO
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(BZJJRespListener, 1);
+    
+    WXRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        //TODO
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(WXRespListener, 1);
+    
+    SJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        //TODO
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(SJRespListener, 1);
+    
+}
+
+
+void DailyWelfare::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(JJJRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(BZJJRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(WXRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(SJRespListener);
+}
 
 void DailyWelfare::showDailyWelfareLayer(){
     for (int i = 0; i < 4; i++){

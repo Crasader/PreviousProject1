@@ -2,9 +2,11 @@
 #include "game/mahjong/dialog/daily/pride/PrideCell.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "game/utils/ParticleUtil.hpp"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "math.h"
+
 bool DailyPride::init(){
     if (!Layer::init()){
         return false;
@@ -30,6 +32,16 @@ void DailyPride::onEnter(){
                 if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTodayPrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTodayPrideData().pride.number){
                     m_turnBg->setRotation(-90+45*i);
                     startMenu->setEnabled(true);
+                    if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::gold){
+                        ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+                        getParent()->addChild(util,5);
+                    }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::diamond){
+                        ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
+                        getParent()->addChild(util,5);
+                    }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
+                        ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
+                        getParent()->addChild(util,5);
+                    }
                 }
             }
             
