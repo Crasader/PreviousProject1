@@ -262,10 +262,25 @@ void ResultLayer::showLoseAnim(){
     addChild(goldIcon);
     auto lequanIcon = Sprite::create("mjitem/lequan_icon.png");
     addChild(lequanIcon);
-    LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d", abs(GAMEDATA::getInstance()->getIsPrivateRoom()?getheroData().jifendelta:getheroData().golddelta))->_string,
+    
+    LabelAtlas* goldNum = LabelAtlas::create("0",
                                              "result/big_num_lose.png", 52, 64, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(goldNum);
+    if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+        if(getheroData().jifendelta<0){
+            goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().jifendelta))->_string);
+        }else{
+             goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().jifendelta))->_string);
+        }
+    }else{
+        if(getheroData().golddelta<0){
+            goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().golddelta))->_string);
+        }else{
+            goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().golddelta))->_string);
+        }
+    }
+    
     LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d", abs(getheroData().lequandelta))->_string,
                                                "result/big_num_lose.png", 52, 64, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);

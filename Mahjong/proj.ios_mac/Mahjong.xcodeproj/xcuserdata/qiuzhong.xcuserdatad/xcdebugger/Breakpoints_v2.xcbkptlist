@@ -351,7 +351,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1132"
             endingLineNumber = "1132"
-            landmarkName = "MahjongView::addEnterFriendRoomListener()"
+            landmarkName = "MahjongView::addFriendInviteMeListener()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "487511957.485193"
+            timestampString = "487605698.575225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "ResultLayer::showLoseAnim()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2124,7 +2124,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1006"
             endingLineNumber = "1006"
-            landmarkName = "MahjongView::addHeroTingNotifyListener()"
+            landmarkName = "MahjongView::addPlayerTingNotifyListener()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
