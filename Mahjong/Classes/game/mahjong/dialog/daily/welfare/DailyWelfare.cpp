@@ -4,6 +4,7 @@
 #include "game/loading/Loading.h"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "userdata/UserData.h"
 
 bool DailyWelfare::init(){
     if (!Layer::init()){
@@ -22,23 +23,24 @@ bool DailyWelfare::init(){
 void DailyWelfare::onEnter(){
     Layer::onEnter();
     JJJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
-        WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
         if(NULL != getChildByTag(666)){
             getChildByTag(666)->removeFromParent();
         }
+        WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
         if(gold.result == "1"){
             ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
             getParent()->addChild(util,5);
+            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+atoi(gold.gold.c_str()));
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
         }else {
             HintDialog* hint = HintDialog::create("救济金领取失败");
-            getParent()->addChild(hint,5);
+            addChild(hint,5);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(JJJRespListener, 1);
     
-    BZJJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+    BZJJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
         WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
         if(NULL != getChildByTag(666)){
             getChildByTag(666)->removeFromParent();
@@ -50,12 +52,12 @@ void DailyWelfare::onEnter(){
             _eventDispatcher->dispatchEvent(&ev);
         }else {
             HintDialog* hint = HintDialog::create("绑钻救济金领取失败");
-            getParent()->addChild(hint,5);
+           addChild(hint,5);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(BZJJRespListener, 1);
     
-    WXRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+    WXRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_WX, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(NULL != getChildByTag(666)){
             getChildByTag(666)->removeFromParent();
@@ -64,7 +66,7 @@ void DailyWelfare::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(WXRespListener, 1);
     
-    SJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+    SJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_MOBILE, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(NULL != getChildByTag(666)){
             getChildByTag(666)->removeFromParent();
@@ -207,6 +209,7 @@ void DailyWelfare::recievePride(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
     if (temp->getTag() == 0){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareJJJ());
+        temp->setEnabled(false);
     }
     else if (temp->getTag() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareBZJJJ());
