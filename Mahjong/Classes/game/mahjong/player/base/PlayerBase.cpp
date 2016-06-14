@@ -55,12 +55,16 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
 	this->addChild(diamondNum);
     if (GAMEDATA::getInstance()->getIsPrivateRoom()){
 		diamond->setTexture("gameview/score_small.png");
-		diamondNum->setString(cocos2d::String::createWithFormat("%d", playerInfo->getScore())->_string);
+        if(playerInfo->getScore()>=0){
+            diamondNum->setString(cocos2d::String::createWithFormat("%d", playerInfo->getScore())->_string);
+        }else{
+            diamondNum->setString(cocos2d::String::createWithFormat(";%d", abs(playerInfo->getScore()))->_string);
+        }
         diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 8, getPostionBySeat(clientSeatId).y - 55);
 	}
 	else {
 		diamond->setTexture("gameview/gold_small.png");
-		diamondNum->setString(cocos2d::String::createWithFormat("%d", playerInfo->getGold())->_string);
+        diamondNum->setString(cocos2d::String::createWithFormat("%d", playerInfo->getGold())->_string);
 	}
 
     

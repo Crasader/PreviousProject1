@@ -48,7 +48,7 @@ void MahjongView::initData(){
     playerRight = NULL;
     playerOpposite = NULL;
     GAMEDATA::getInstance()->setIsPlaying(false);
-    }
+}
 
 void MahjongView::loadView(){
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -272,7 +272,6 @@ void MahjongView::removeHeroPlayedIcon(){
 
 void MahjongView::showHeroChiUi(){
     controllPad->setVisible(false);
-    playerHero->startTimeClockAnim();
     PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     if (cpg.chi.size() > 1){
         for (int i = 0; i < cpg.chi.size(); i++){
@@ -314,6 +313,7 @@ void MahjongView::heroDoChi(Ref* psend){
     PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     MenuItemImage* item = (MenuItemImage*)psend;
     selectedChi = cpg.chi.at(item->getTag());
+    playerHero->stopTimeClockAnim();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg.poker.c_str())));
 }
 
@@ -379,7 +379,7 @@ void MahjongView::playerTingAnim(int seatId){
         {
             playerHero->setIsTing(true);
         }
-    
+        
     },0,0,1.5f,"delay");
     
 }
@@ -454,7 +454,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerLeft->recoverHand(data.hand);
             playerLeft->recoverPlayed(data.outhand);
             playerLeft->recoverHua(data.hua);
-
+            
         }
     }
     else if (type == ClientSeatId::right){
@@ -466,7 +466,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerRight->recoverHand(data.hand);
             playerRight->recoverPlayed(data.outhand);
             playerRight->recoverHua(data.hua);
-
+            
         }
     }
     else if (type == ClientSeatId::opposite){
@@ -478,7 +478,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerOpposite->recoverHand(data.hand);
             playerOpposite->recoverPlayed(data.outhand);
             playerOpposite->recoverHua(data.hua);
-
+            
         }
     }
 }
@@ -612,8 +612,6 @@ void MahjongView::addCoustomReplaceFlower() {
             playerRight->startTimeClockAnim();
         }
         else if (bankId == ClientSeatId::opposite){
-            
-            
             playerOpposite->startTimeClockAnim();
         }
     });
@@ -807,7 +805,7 @@ void MahjongView::showHuPaiXing(std::string paixing){
     guangXiao1->setOpacity(77);
     addChild(guangXiao1,999);
     guangXiao1->runAction(Sequence::create(DelayTime::create(12.0f/24),Spawn::create(ScaleTo::create(5.0/24, 2.0f,1.2f),MoveTo::create(5.0/24, pos2),FadeTo::create(5.0/24, 200),NULL),Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0), NULL),NULL));
-
+    
     
 }
 
@@ -824,9 +822,9 @@ void MahjongView::showHandPokerOver(int seatId){
         if(seat == ClientSeatId::left){
             leftJongs =data.showPoker;
         }else if(seat == ClientSeatId::opposite){
-             oppositeJongs =data.showPoker;
+            oppositeJongs =data.showPoker;
         }else if(seat == ClientSeatId::right){
-             rightJongs =data.showPoker;
+            rightJongs =data.showPoker;
         }else{
             heroJongs =data.showPoker;
         }
@@ -845,8 +843,8 @@ void MahjongView::showHandPokerOver(int seatId){
     }
     //翻牌
     if(seatId == ClientSeatId::left){
-         playerLeft->hideHandJongs();
-         playerLeft->updateHandJongs(leftJongs);
+        playerLeft->hideHandJongs();
+        playerLeft->updateHandJongs(leftJongs);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerRight->hideHandJongs();
@@ -857,8 +855,8 @@ void MahjongView::showHandPokerOver(int seatId){
             playerHero->updateHandJongs(heroJongs);
         }, 0, 0, 15.0f/24,"fanpai");
     }else if(seatId == ClientSeatId::opposite){
-         playerOpposite->hideHandJongs();
-         playerOpposite->updateHandJongs(oppositeJongs);
+        playerOpposite->hideHandJongs();
+        playerOpposite->updateHandJongs(oppositeJongs);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerRight->hideHandJongs();
@@ -869,8 +867,8 @@ void MahjongView::showHandPokerOver(int seatId){
             playerHero->updateHandJongs(heroJongs);
         }, 0, 0, 15.0f/24,"fanpai");
     }else if(seatId == ClientSeatId::right){
-         playerRight->hideHandJongs();
-         playerRight->updateHandJongs(rightJongs);
+        playerRight->hideHandJongs();
+        playerRight->updateHandJongs(rightJongs);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerOpposite->hideHandJongs();
@@ -881,8 +879,8 @@ void MahjongView::showHandPokerOver(int seatId){
             playerHero->updateHandJongs(heroJongs);
         }, 0, 0, 15.0f/24,"fanpai");
     }else{
-         playerHero->hideHandJongs();
-         playerHero->updateHandJongs(heroJongs);
+        playerHero->hideHandJongs();
+        playerHero->updateHandJongs(heroJongs);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerOpposite->hideHandJongs();
@@ -893,7 +891,7 @@ void MahjongView::showHandPokerOver(int seatId){
             playerHero->updateHandJongs(heroJongs);
         }, 0, 0, 15.0f/24,"fanpai");
     }
-
+    
 }
 
 void MahjongView::addOthersChiListener(){
@@ -904,14 +902,17 @@ void MahjongView::addOthersChiListener(){
         if (seatId == ClientSeatId::left){
             playerLeft->drawPlayerChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerLeft->playerCpgAnim(CpgType::chi, ClientSeatId::left);
+            playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             playerRight->drawPlayerChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerRight->playerCpgAnim(CpgType::chi, ClientSeatId::right);
+            playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->drawPlayerChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerOpposite->playerCpgAnim(CpgType::chi, ClientSeatId::opposite);
+            playerOpposite->startTimeClockAnim();
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersChiListener, 1);
@@ -926,14 +927,17 @@ void MahjongView::addOthersPengListener(){
         if (seatId == ClientSeatId::left){
             playerLeft->drawPlayerPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
+            playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             playerRight->drawPlayerPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
+            playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->drawPlayerPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
+            playerOpposite->startTimeClockAnim();
         }
         hideTingGangControllPad();
     });
@@ -1154,7 +1158,7 @@ void MahjongView::addPlayerRemoveListener(){
                     playerLeft =NULL;
                     OutFogAnim* out = OutFogAnim::create(Point(70, 455));
                     addChild(out);
-
+                    
                 }else if(playerRight !=NULL&&playerRight->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
                     playerRight->removeFromParent();
                     playerRight =NULL;
@@ -1173,5 +1177,5 @@ void MahjongView::addPlayerRemoveListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerRemoveListener, 1);
-
+    
 }

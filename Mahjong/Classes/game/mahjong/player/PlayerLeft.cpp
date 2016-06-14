@@ -216,10 +216,20 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }
     else{
-        for (int j = 0; j < 3; j++)
-        {
-            playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
-            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));		}
+        if(data.flag == 0){
+            for (int j = 0; j < 3; j++)
+            {
+                playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
+                playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
+            }
+        }else if(data.flag == 1){
+            for (int j = 0; j < 4; j++)
+            {
+                playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
+                playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
+            }
+
+        }
     }
     std::vector<std::string> gang = StringUtil::split(data.gang, ",");
     gang.push_back(data.poker);
@@ -355,7 +365,7 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             else{
                 jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * j);
             }
-
+            
             this->addChild(jong,10);
             record.pokersRecord.pushBack(jong);
         }

@@ -745,8 +745,9 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
             setCpgPostionX(getCpgPostionX()+170);
         });
         Sequence* mySe = Sequence::create(callFuc0, delay, callFuc1, NULL);
-        this->runAction(mySe);
-        this->setIsAllowPlay(true);
+        runAction(mySe);
+        setIsAllowPlay(true);
+        startTimeClockAnim();
     }
     else{
         stopTimeClockAnim();
@@ -833,8 +834,9 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         }
     });
     Sequence* mySe = Sequence::create(action1, delay, action2, NULL);
-    this->runAction(mySe);
-    this->setIsAllowPlay(true);
+    runAction(mySe);
+    setIsAllowPlay(true);
+    startTimeClockAnim();
     if (resp.result == 2 && resp.ting != ""){
         PlayerCpgtData tingData;
         tingData.ting = resp.ting;
