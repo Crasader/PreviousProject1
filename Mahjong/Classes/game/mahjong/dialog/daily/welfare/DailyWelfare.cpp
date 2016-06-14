@@ -34,7 +34,7 @@ void DailyWelfare::onEnter(){
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
         }else {
-            HintDialog* hint = HintDialog::create("救济金领取失败");
+            HintDialog* hint = HintDialog::create("救济金领取失败",false);
             addChild(hint,5);
         }
     });
@@ -51,7 +51,7 @@ void DailyWelfare::onEnter(){
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
         }else {
-            HintDialog* hint = HintDialog::create("绑钻救济金领取失败");
+            HintDialog* hint = HintDialog::create("绑钻救济金领取失败",false);
            addChild(hint,5);
         }
     });
@@ -207,9 +207,9 @@ void DailyWelfare::showDailyWelfareLayer(){
 
 void DailyWelfare::recievePride(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
+     temp->setEnabled(false);
     if (temp->getTag() == 0){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareJJJ());
-        temp->setEnabled(false);
     }
     else if (temp->getTag() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareBZJJJ());

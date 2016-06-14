@@ -2,6 +2,7 @@
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
+#include "game/utils/ParticleUtil.hpp"
 
 
 bool DailyTask::init(){
@@ -20,46 +21,55 @@ void DailyTask::onEnter(){
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+            getParent()->addChild(util,5);
         }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(mq3, 1);
     
-    EventListenerCustom* pph3 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_PPH3, [=](EventCustom* event){
+     pph3 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_PPH3, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+            getParent()->addChild(util,5);
         }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(pph3, 1);
     
-    EventListenerCustom* lz2 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_LZ2, [=](EventCustom* event){
+    lz2 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_LZ2, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+            getParent()->addChild(util,5);
         }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(lz2, 1);
     
-    EventListenerCustom* charge = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_CHARGE, [=](EventCustom* event){
+    charge = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_CHARGE, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
-           //TODO
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+            getParent()->addChild(util,5);
         }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(charge, 1);
     
-    EventListenerCustom* extra = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_EXTRA, [=](EventCustom* event){
+    extra = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_EXTRA, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
-             UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+20);
+            UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+20);
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
+            getParent()->addChild(util,5);
         }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(extra, 1);
@@ -117,7 +127,7 @@ void DailyTask::showDailyTaskLayer(){
         lingqu->setVisible(false);
     }
     else{
-        extraMenu->setVisible(false);
+        extraMenu->setVisible(true);
         lingqu->setVisible(false);
     }
 }
@@ -142,5 +152,7 @@ void DailyTask::updateData(){
 }
 
 void DailyTask::recieveExtraPride(Ref* ref){
+    MenuItemImage* temp = (MenuItemImage*)ref;
+    temp->setEnabled(false);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskExtraCommand());
 }

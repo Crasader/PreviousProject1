@@ -56,7 +56,7 @@ bool TaskCell::init(TaskType type){
 		taskProgress->setPosition(25, 93);
 		addChild(taskProgress);
 
-		std::string num = cocos2d::String::createWithFormat("%d:%d", 0, type == task3 ? 4 : 3)->_string;
+		std::string num = cocos2d::String::createWithFormat("%d:%d", 0, type == task3 ? 2 : 3)->_string;
 		taskFinishNum = LabelAtlas::create(num, "daily/task/num.png", 16, 24, '0');
 		taskFinishNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
 		taskFinishNum->setPosition(100, 93);
@@ -68,8 +68,8 @@ bool TaskCell::init(TaskType type){
 		charge->setPosition(100, 93);
 		addChild(charge);
 	}
-	auto finish = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png",
-		CC_CALLBACK_0(TaskCell::recievePride, this));
+	auto finish = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png","daily/recieve_btn_3.png",
+		CC_CALLBACK_1(TaskCell::recievePride, this));
 	finishMenu = Menu::create(finish, NULL);
 	finishMenu->setPosition(100, 40);
 	finishMenu->setVisible(false);
@@ -98,7 +98,9 @@ bool TaskCell::init(TaskType type){
 }
 
 
-void TaskCell::recievePride(){
+void TaskCell::recievePride(Ref* ref){
+    MenuItemImage* temp = (MenuItemImage*)ref;
+    temp->setEnabled(false);
 	if (getMyTaskType() == task1){
 		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskMQ3Command());
 	}
@@ -111,7 +113,6 @@ void TaskCell::recievePride(){
 	else{
 		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTaskMQ3Command());
 	}
-	
 
 }
 
@@ -140,7 +141,7 @@ void TaskCell::updateData(){
 	if (getMyTaskType() != task4){
 		if (result == "-1"){
 			taskProgress->setContentSize(Size(146, 20));
-			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", getMyTaskType() == task3 ? 2 : 3, getMyTaskType() == task3 ? 4 : 3)->_string);
+			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", getMyTaskType() == task3 ? 2 : 3, getMyTaskType() == task3 ? 2 : 3)->_string);
 			setTaskState(2);
 			finishMenu->setVisible(false);
 			unfinish->setVisible(false);
@@ -151,9 +152,9 @@ void TaskCell::updateData(){
 			finishMenu->setVisible(false);
 			unfinish->setVisible(true);
 			revcieved->setVisible(false);
-			taskProgress->setContentSize(Size(146 * res / (getMyTaskType() == task3 ? 4 : 3), 20));
-			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", res, getMyTaskType() == task3 ? 2 : 3)->_string);
-			if (res == (getMyTaskType() == task3 ? 4 : 3)){
+			taskProgress->setContentSize(Size(146 * res / (getMyTaskType() == task3 ? 2 : 3), 20));
+			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d",res, getMyTaskType() == task3 ? 2 : 3)->_string);
+			if (res == (getMyTaskType() == task3 ? 2 : 3)){
 				setTaskState(1);
 				finishMenu->setVisible(true);
 				unfinish->setVisible(false);

@@ -25,6 +25,6 @@ private:
 	Sprite* unfinish;
 	Sprite* revcieved;
 	Menu* chargeMenu;
-	void recievePride();
+	void recievePride(Ref* ref);
 	void charge();
 };
