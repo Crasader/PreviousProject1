@@ -1703,11 +1703,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/welfare/DailyWelfare.cpp"
-            timestampString = "487567068.051177"
+            timestampString = "487568662.337775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "DailyWelfare::updateData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1719,11 +1719,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/welfare/DailyWelfare.cpp"
-            timestampString = "487567068.051177"
+            timestampString = "487568662.337775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "DailyWelfare::showDailyWelfareLayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1735,11 +1735,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/welfare/DailyWelfare.cpp"
-            timestampString = "487428684.799756"
+            timestampString = "487568662.337775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "DailyWelfare::init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1799,11 +1799,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/welfare/DailyWelfare.cpp"
-            timestampString = "487430642.924936"
+            timestampString = "487568662.337775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "DailyWelfare::init()"
             landmarkType = "5">
          </BreakpointContent>
