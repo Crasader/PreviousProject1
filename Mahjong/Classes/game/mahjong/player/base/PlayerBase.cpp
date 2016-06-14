@@ -190,6 +190,7 @@ void  PlayerBase::stopTimeClockAnim(){
 	}
 	mProgressTimer->setVisible(false);
     timeClock->setVisible(false);
+    mCDTime = 1000000;
 	unschedule(schedule_selector(PlayerBase::updateTime));
 }
 
