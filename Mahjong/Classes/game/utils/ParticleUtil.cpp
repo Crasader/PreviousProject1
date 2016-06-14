@@ -28,9 +28,9 @@ bool ParticleUtil::init(MyParticleType type)
     if(type == MyParticleType::goldOnly){
         showGoldExplosion();
     }else if(type == MyParticleType::diamondOnly){
-        showLequanExplosion();
-    }else if(type == MyParticleType::lequanOnly){
         showDiamondExplosion();
+    }else if(type == MyParticleType::lequanOnly){
+         showLequanExplosion();
     }else if(type == MyParticleType::goldAndLequan){
         showGoldAndLequanExplosion();
     }else if(type == MyParticleType::goldAndDianmond){

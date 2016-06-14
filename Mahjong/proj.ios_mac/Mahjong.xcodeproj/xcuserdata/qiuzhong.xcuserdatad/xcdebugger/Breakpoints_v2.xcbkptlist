@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/sign/DailySign.cpp"
-            timestampString = "487512892.013114"
+            timestampString = "487564933.241795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "DailySign::drawDayBgAndTitle()"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/sign/DailySign.cpp"
-            timestampString = "487512892.013114"
+            timestampString = "487564933.241795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "DailySign::confirmSign(Ref* ref)"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/sign/DailySign.cpp"
-            timestampString = "487512892.013114"
+            timestampString = "487564933.241795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "DailySign::confirmSign(Ref* ref)"
             landmarkType = "5">
          </BreakpointContent>

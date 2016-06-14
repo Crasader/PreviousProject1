@@ -47,9 +47,29 @@ void DailySign::onEnter(){
             an->runAction(Sequence::create(DelayTime::create(3.8f),CallFunc::create([=](){
                 showLightAnim(an);
             }), DelayTime::create(1.0f),CallFunc::create([=](){
-                ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
-                getParent()->addChild(util,5);
-            }), NULL));
+                if( gold > 0 && diamond ==0 && lequan == 0){
+                    ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+                    getParent()->addChild(util,5);
+                }else if(gold == 0 && diamond >0 && lequan == 0){
+                    ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
+                    getParent()->addChild(util,5);
+                }else if(gold == 0 && diamond ==0 && lequan > 0){
+                    ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
+                    getParent()->addChild(util,5);
+                }else if(gold > 0 && diamond >0 && lequan == 0){
+                    ParticleUtil* util = ParticleUtil::create(MyParticleType::goldAndDianmond);
+                    getParent()->addChild(util,5);
+                }else if(gold > 0 && diamond ==0 && lequan > 0){
+                    ParticleUtil* util = ParticleUtil::create(MyParticleType::goldAndLequan);
+                    getParent()->addChild(util,5);
+                }else if(gold == 0 && diamond >0 && lequan > 0){
+                    ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanAndDiamond);
+                    getParent()->addChild(util,5);
+                }else{
+                    ParticleUtil* util = ParticleUtil::create(MyParticleType::three);
+                    getParent()->addChild(util,5);
+                }
+         }), NULL));
         }
         UserData::getInstance()->setGold(UserData::getInstance()->getGold()+gold);
         UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+diamond);
