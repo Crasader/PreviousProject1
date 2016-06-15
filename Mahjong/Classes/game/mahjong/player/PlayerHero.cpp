@@ -415,7 +415,7 @@ void PlayerHero::arrangeHandJongs() {
         currentJong->runAction(actionMove);
     }
     
-    this->setIsAllowPlay(false);
+    setIsAllowPlay(false);
     selectJong->removeFromParent();
     eraseHeroJong(selectJong);
     auto delay = DelayTime::create(0.6f);
@@ -646,6 +646,7 @@ void PlayerHero::doEventTimeOver(int type){
                                        GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
            ClientSeatId::hero){
            startTimeClockAnim();
+           setIsAllowPlay(true);
         }
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
     }
@@ -687,12 +688,13 @@ void PlayerHero::actionTing(){
 
 void PlayerHero::sendTingRequest(int poker){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTingCommand(poker));
+    setIsAllowPlay(true);
     this->stopTimeClockAnim();
 }
 
 void PlayerHero::actionQi(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
-    this->setIsAllowTouch(true);
+    setIsAllowTouch(true);
 }
 
 

@@ -159,7 +159,7 @@ void ResultLayer::showWinAnim(){
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
                     players.at(i)->setScore(resData.jifen+players.at(i)->getScore());
-
+                    
                 }
             }
         }
@@ -258,7 +258,7 @@ void ResultLayer::showLoseAnim(){
     }else{
         goldIcon->setTexture("mjitem/gold_iocn.png");
     }
-
+    
     addChild(goldIcon);
     auto lequanIcon = Sprite::create("mjitem/lequan_icon.png");
     addChild(lequanIcon);
@@ -271,7 +271,7 @@ void ResultLayer::showLoseAnim(){
         if(getheroData().jifendelta<0){
             goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().jifendelta))->_string);
         }else{
-             goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().jifendelta))->_string);
+            goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().jifendelta))->_string);
         }
     }else{
         if(getheroData().golddelta<0){
@@ -285,7 +285,7 @@ void ResultLayer::showLoseAnim(){
                                                "result/big_num_lose.png", 52, 64, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(lequanNum);
- if (getheroData().result == 0){
+    if (getheroData().result == 0){
         title->setTexture("result/da_jiang_you.png");
     }
     else{
@@ -303,7 +303,7 @@ void ResultLayer::showLoseAnim(){
         lequanIcon->setVisible(false);
         lequanNum->setVisible(false);
     }
-
+    
     auto players_bg = Sprite::create("result/player_info_bg.png");
     players_bg->setPosition(640, 360);
     addChild(players_bg);
@@ -347,6 +347,10 @@ void ResultLayer::showLoseAnim(){
                     players.at(i)->setTicket(resData.lequan);
                     players.at(i)->setScore( players.at(i)->getScore()+resData.jifen);
                 }
+            }
+            if(GAMEDATA::getInstance()->getIsLiuJu()){
+                GAMEDATA::getInstance()->setIsLiuJu(false);
+                maxData = resData;
             }
         }else{
             vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
@@ -470,7 +474,7 @@ void ResultLayer::clickQuit(){
 
 void ResultLayer::showContinueButton(float dt){
     resultMenu->setVisible(true);
-//    timeLable->setVisible(true);
+    //    timeLable->setVisible(true);
     schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
 }
 

@@ -770,6 +770,7 @@ void MahjongView::addGameResultListener(){
             //流局动画
             LiuJuAnim* liuju = LiuJuAnim::create();
             addChild(liuju,3);
+            GAMEDATA::getInstance()->setIsLiuJu(true);
         }
         schedule([=](float dt){
             clearRoomPlayer();
