@@ -28,6 +28,7 @@ bool MahjongView::init(){
     loadView();
     if (GAMEDATA::getInstance()->getIsRecover()){
         recoverGame();
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
         GAMEDATA::getInstance()->setIsRecover(false);
     }
     else{
