@@ -2,6 +2,11 @@
 #include "http/HttpMannger.h"
 #include "server/CommandManage.h"
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include <jni.h>
+#include "platform/android/jni/JniHelper.h"
+#endif
+
 UrlImageMannger* UrlImageMannger::_instance = NULL;
 
 UrlImageMannger::UrlImageMannger(){
