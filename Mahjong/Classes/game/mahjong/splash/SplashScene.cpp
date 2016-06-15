@@ -351,7 +351,6 @@ void SplashScene::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
         password_text->setVisible(false);
         _editPwd->setText("");
     }
-    
 }
 
 void SplashScene::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){

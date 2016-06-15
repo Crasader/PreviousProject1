@@ -16,14 +16,6 @@ HttpMannger* HttpMannger::getInstance(){
     return _instance;
 }
 
-
-
-
-
-
-
-
-
 void HttpMannger::HttpToPostRequestToGetUrlImg(std::string url)
 {
 	HttpClientUtill::getInstance()->onGetHttp(url.c_str(), CC_CALLBACK_2(HttpMannger::onHttpRequestCompletedForGetUrlImg, this));
@@ -47,8 +39,6 @@ void HttpMannger::onHttpRequestCompletedForGetUrlImg(HttpClient *sender, HttpRes
 		buffer = response->getResponseData();
 		break;
 	}
-
-
 
 	EventCustom event(response->getHttpRequest()->getUrl());
 	event.setUserData(buffer);
