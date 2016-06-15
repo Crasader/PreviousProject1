@@ -20,10 +20,10 @@ void Trusteeship::drawDialog(){
 	auto bg = LayerColor::create(Color4B(0, 0, 0, 150), visibleSize.width, visibleSize.height);
 	this->addChild(bg, 20);
 	auto text = Sprite::create("trusteeship/trusteeship_cancel.png");
-	text->setPosition(640,300);
+	text->setPosition(640,200);
 	this->addChild(text);
 	auto hand = Sprite::create("trusteeship/trusteeship_hand.png");
-	hand->setPosition(640, 400);
+	hand->setPosition(640, 280);
 	this->addChild(hand);
 
 }
