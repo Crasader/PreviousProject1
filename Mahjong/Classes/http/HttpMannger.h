@@ -12,8 +12,10 @@ public:
     static HttpMannger* getInstance();
     
     
-    void HttpToPostRequestToGetUrlImg(std::string url); 
+    void httpToPostRequestToGetUrlImg(std::string url);
     void onHttpRequestCompletedForGetUrlImg(HttpClient *sender, HttpResponse *response);
+    void httpToPostRequestToSendImage(std::string url,std::string postData);
+    void onHttpRequestCompletedForSendImage(HttpClient *sender, HttpResponse *response);
     
 private:
     HttpMannger();

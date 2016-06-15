@@ -1559,11 +1559,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/playerinfo/UserInfo.cpp"
-            timestampString = "487402342.258925"
+            timestampString = "487673152.648765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "UserInfo::updateNickname()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1575,11 +1575,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/playerinfo/UserInfo.cpp"
-            timestampString = "487402355.993526"
+            timestampString = "487673152.648765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "UserInfo::showUserInfo()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1607,11 +1607,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/playerinfo/UserInfo.cpp"
-            timestampString = "487402475.161533"
+            timestampString = "487673152.648765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "UserInfo::showUserInfo()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2269,6 +2269,22 @@
             startingLineNumber = "680"
             endingLineNumber = "680"
             landmarkName = "MahjongView::addJongPlayedListener()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/http/HttpMannger.cpp"
+            timestampString = "487673484.952256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "HttpMannger::httpToPostRequestToSendImage(std::string url,std::string postData)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

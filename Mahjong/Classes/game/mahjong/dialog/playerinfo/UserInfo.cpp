@@ -4,6 +4,7 @@
 #include "game/mahjong/dialog/playerinfo/GenderDialog.h"
 #include "userdata/UserData.h"
 #include "game/utils/Chinese.h"
+#include "image/UrlImageMannger.h"
 
 bool UserInfo::init(){
 	if (!Layer::init()){
@@ -135,8 +136,12 @@ void UserInfo::showUserInfo(){
 }
 
 void UserInfo::editHeadImage(){
-	HeadImageDialog* headImageDialog = HeadImageDialog::create();
-	addChild(headImageDialog);
+//	HeadImageDialog* headImageDialog = HeadImageDialog::create();
+//	addChild(headImageDialog);
+    UrlImageMannger::getInstance()->uploadImage2Server(CallFunc::create([=](){
+    
+    
+    }));
 }
 
 

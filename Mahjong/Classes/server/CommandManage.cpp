@@ -1,9 +1,9 @@
+#include "server/CommandManage.h"
 #include "json/document.h"
 #include "json/rapidjson.h"
 #include "json/stringbuffer.h"
 #include "json/prettywriter.h"  
-#include "json/filestream.h" 
-#include "server/CommandManage.h"
+#include "json/filestream.h"
 #include "userdata/UserData.h"
 #include "game/mahjong/state/GAMEDATA.h"
 #include "game/utils/StringUtil.h"
@@ -529,6 +529,16 @@ std::string CommandManage::getLequanChangeCommand(std::string propId,std::string
     keyValue.insert(map<string, string>::value_type("address", address));
     return commandString(keyValue);
 }
+
+std::string CommandManage::testQiniu(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("key", "my-nodejs-logo.png"));
+    keyValue.insert(map<string, string>::value_type("token", "Rx3HPZ0AYIYHj4qVSGrGAbRX7MTVaNOx_UGNaRtZ:G3xXZjOmoWHHANqdEkT1vDJOhgM=:eyJzY29wZSI6InBveGlhby1yZXNvdXJjZTpteS1ub2RlanMtbG9nby5wbmciLCJkZWFkbGluZSI6MTQ2NTk4NjAyMn0="));
+    keyValue.insert(map<string, string>::value_type("x:username", ""));
+    keyValue.insert(map<string, string>::value_type("file", ""));
+    return commandString(keyValue);
+}
+
 
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
 	rapidjson::Document document;
