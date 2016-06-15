@@ -1019,6 +1019,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
     const rapidjson::Value &rest = _mDoc["rest"];
     const rapidjson::Value &loard = _mDoc["lord"];
     const rapidjson::Value &isprivate = _mDoc["isprivate"];
+    GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     LastGameData lastGameData;
     lastGameData.seatId = seatId.GetInt();
     lastGameData.rest = rest.GetString();

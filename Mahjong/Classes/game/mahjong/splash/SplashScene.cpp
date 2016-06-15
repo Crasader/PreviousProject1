@@ -286,7 +286,7 @@ void  SplashScene::addCustomEventListener(){
     reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         NetworkManage::getInstance()->heartbeat();
         GAMEDATA::getInstance()->setIsRecover(true);
-        Director::getInstance()->replaceScene(TransitionFade::create(0.12f, MjGameScene::create()));
+        Director::getInstance()->replaceScene(TransitionFade::create(0.2f, MjGameScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(reConnectAgain, 1);
     
