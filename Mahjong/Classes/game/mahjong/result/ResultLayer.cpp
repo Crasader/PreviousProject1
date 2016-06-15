@@ -84,9 +84,9 @@ void ResultLayer::showWinAnim(){
     
     LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",GAMEDATA::getInstance()->getIsPrivateRoom()?getheroData().jifendelta:getheroData().golddelta)->_string, "result/big_num_win.png", 52, 64, '0');
     if(getheroData().lequandelta>0){
-        goldNum->setPosition(390, 505);
+        goldNum->setPosition(380, 505);
     }else{
-        goldNum->setPosition(590, 505);
+        goldNum->setPosition(600, 505);
     }
     goldNum->setVisible(false);
     addChild(goldNum);
