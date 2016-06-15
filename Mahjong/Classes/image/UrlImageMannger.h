@@ -15,6 +15,7 @@ public:
 	static UrlImageMannger* getInstance();
 	void LoadImgByUrl(std::string url);
 	std::string getImgNameByUrl(std::string url);
+    void uploadImage2Server(CallFunc* callBack);//上传图片到七牛的服务器
 private:
 	UrlImageMannger();
 	static UrlImageMannger* _instance;

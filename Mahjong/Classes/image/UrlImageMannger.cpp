@@ -50,3 +50,9 @@ std::string UrlImageMannger::getImgNameByUrl(std::string url)
 	temp = FileUtils::sharedFileUtils()->getWritablePath() + temp;
 	return temp;
 }
+
+
+void UrlImageMannger::uploadImage2Server(CallFunc* callBack){
+    //TODO
+
+}
