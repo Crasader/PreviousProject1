@@ -276,7 +276,7 @@ void MahjongView::showHeroChiUi(){
     PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     if (cpg.chi.size() > 1){
         for (int i = 0; i < cpg.chi.size(); i++){
-            std::vector<string> pai = StringUtil::split(cpg.chi.at(cpg.chi.size()-i-1), ",");
+            std::vector<string> pai = StringUtil::split(cpg.chi.at(i), ",");
             pai.push_back(cpg.poker);
             sort(pai.begin(), pai.end());
             auto choice = Menu::create();
