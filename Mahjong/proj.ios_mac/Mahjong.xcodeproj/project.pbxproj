@@ -69,6 +69,10 @@
 		D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D239A55C1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */; };
 		D239A55D1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */; };
+		D23EFCCB1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */; };
+		D23EFCCC1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */; };
+		D23EFCCF1D10F695002A48A5 /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */; };
+		D23EFCD01D10F695002A48A5 /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D2435FA41CC73525000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
@@ -133,8 +137,6 @@
 		D28A4A351D056B7A00741FD0 /* StringUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A281D056B7A00741FD0 /* StringUtil.cpp */; };
 		D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A2A1D056B7A00741FD0 /* Toast.cpp */; };
 		D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A2A1D056B7A00741FD0 /* Toast.cpp */; };
-		D28A4A381D056B7A00741FD0 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A2C1D056B7A00741FD0 /* UrlImageMannger.cpp */; };
-		D28A4A391D056B7A00741FD0 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A2C1D056B7A00741FD0 /* UrlImageMannger.cpp */; };
 		D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */; };
 		D28A4A3D1D065B4D00741FD0 /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */; };
 		D28A4A401D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3E1D06B19E00741FD0 /* EnterRoomDialog.cpp */; };
@@ -391,6 +393,10 @@
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
 		D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanExchangeRecord.cpp; sourceTree = "<group>"; };
 		D239A55B1D100287009DB640 /* LequanExchangeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanExchangeRecord.hpp; sourceTree = "<group>"; };
+		D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
+		D23EFCCA1D10F54D002A48A5 /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
+		D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePicker.cpp; sourceTree = "<group>"; };
+		D23EFCCE1D10F695002A48A5 /* ImagePicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePicker.hpp; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
@@ -433,8 +439,6 @@
 		D28A4A291D056B7A00741FD0 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
 		D28A4A2A1D056B7A00741FD0 /* Toast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toast.cpp; sourceTree = "<group>"; };
 		D28A4A2B1D056B7A00741FD0 /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
-		D28A4A2C1D056B7A00741FD0 /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
-		D28A4A2D1D056B7A00741FD0 /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
 		D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HintDialog.cpp; sourceTree = "<group>"; };
 		D28A4A3B1D065B4D00741FD0 /* HintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HintDialog.hpp; sourceTree = "<group>"; };
 		D28A4A3E1D06B19E00741FD0 /* EnterRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnterRoomDialog.cpp; sourceTree = "<group>"; };
@@ -752,6 +756,7 @@
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
 				D2B1A7B11CCDF0F300A20896 /* game */,
 				D28A4A0A1D0565C200741FD0 /* http */,
+				D23EFCC81D10F54D002A48A5 /* image */,
 				D2B1A85A1CCDF0F300A20896 /* server */,
 				D2B1A8641CCDF0F300A20896 /* socket */,
 				D2B1A86C1CCDF0F400A20896 /* userdata */,
@@ -822,6 +827,17 @@
 			path = splash;
 			sourceTree = "<group>";
 		};
+		D23EFCC81D10F54D002A48A5 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */,
+				D23EFCCA1D10F54D002A48A5 /* UrlImageMannger.h */,
+				D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */,
+				D23EFCCE1D10F695002A48A5 /* ImagePicker.hpp */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
 		D28A4A0A1D0565C200741FD0 /* http */ = {
 			isa = PBXGroup;
 			children = (
@@ -859,8 +875,6 @@
 				D28A4A291D056B7A00741FD0 /* StringUtil.h */,
 				D28A4A2A1D056B7A00741FD0 /* Toast.cpp */,
 				D28A4A2B1D056B7A00741FD0 /* Toast.h */,
-				D28A4A2C1D056B7A00741FD0 /* UrlImageMannger.cpp */,
-				D28A4A2D1D056B7A00741FD0 /* UrlImageMannger.h */,
 				D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */,
 				D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */,
 			);
@@ -1537,8 +1551,8 @@
 				D2B1A88D1CCDF0F400A20896 /* DailyPride.cpp in Sources */,
 				D28A4A1B1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A301D056B7A00741FD0 /* Chinese.cpp in Sources */,
+				D23EFCCF1D10F695002A48A5 /* ImagePicker.cpp in Sources */,
 				D2B1A8B71CCDF0F400A20896 /* FindPassword.cpp in Sources */,
-				D28A4A381D056B7A00741FD0 /* UrlImageMannger.cpp in Sources */,
 				D2B1A8871CCDF0F400A20896 /* BillInfo.cpp in Sources */,
 				D2C0E3E71CF6ECB1003AA986 /* Huode.cpp in Sources */,
 				D2B1A8991CCDF0F400A20896 /* DailyWelfare.cpp in Sources */,
@@ -1561,6 +1575,7 @@
 				D20C391A1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */,
 				D2B1A8C91CCDF0F400A20896 /* LequanShop.cpp in Sources */,
 				D2B1A89F1CCDF0F400A20896 /* FriendListView.cpp in Sources */,
+				D23EFCCB1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */,
 				D2B1A87F1CCDF0F400A20896 /* MahjongView.cpp in Sources */,
 				D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D2B1A8DB1CCDF0F400A20896 /* Player.cpp in Sources */,
@@ -1591,6 +1606,7 @@
 				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,
 				D2B1A8DA1CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
+				D23EFCCC1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */,
 				D2B1A87A1CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
 				D28A4A3D1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */,
@@ -1649,7 +1665,6 @@
 				D2B1A8741CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
 				D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D2B1A8981CCDF0F400A20896 /* TaskCell.cpp in Sources */,
-				D28A4A391D056B7A00741FD0 /* UrlImageMannger.cpp in Sources */,
 				D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D2B1A8BA1CCDF0F400A20896 /* UserRegister.cpp in Sources */,
 				D2B1A8B81CCDF0F400A20896 /* FindPassword.cpp in Sources */,
@@ -1671,6 +1686,7 @@
 				D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D28A4A331D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
 				D28A4A411D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
+				D23EFCD01D10F695002A48A5 /* ImagePicker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

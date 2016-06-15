@@ -1,4 +1,4 @@
-#include "game/utils//UrlImageMannger.h"
+#include "image/UrlImageMannger.h"
 #include "http/HttpMannger.h"
 
 UrlImageMannger* UrlImageMannger::_instance = NULL;

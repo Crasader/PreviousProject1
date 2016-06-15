@@ -1,3 +1,10 @@
+//
+//  UrlImageMannger.h
+//  图片上传下载工具类
+//
+//
+//
+
 #pragma once
 #include "cocos2d.h"
 using namespace cocos2d;
