@@ -159,28 +159,28 @@ void HupaiAnim::showHuAnim(int seatid){
     huText->runAction(sequ4);
     
     //胡牌动画转向
-    if(seatid == ClientSeatId::left){
-        bgLight->setRotation(90);
-        bg1->setRotation(90);
-        light1->setRotation(90);
-        bg2->setRotation(90);
-        huText->setRotation(90);
-        spec->setRotation(90);
-    }else if(seatid == ClientSeatId::opposite){
-        bgLight->setRotation(180);
-         bg1->setRotation(180);
-        light1->setRotation(180);
-        bg2->setRotation(180);
-        huText->setRotation(180);
-        spec->setRotation(180);
-    }else if(seatid == ClientSeatId::right){
-        bgLight->setRotation(270);
-         bg1->setRotation(270);
-        light1->setRotation(270);
-        bg2->setRotation(270);
-        huText->setRotation(270);
-        spec->setRotation(270);
-    }
+//    if(seatid == ClientSeatId::left){
+//        bgLight->setRotation(90);
+//        bg1->setRotation(90);
+//        light1->setRotation(90);
+//        bg2->setRotation(90);
+//        huText->setRotation(90);
+//        spec->setRotation(90);
+//    }else if(seatid == ClientSeatId::opposite){
+//        bgLight->setRotation(180);
+//         bg1->setRotation(180);
+//        light1->setRotation(180);
+//        bg2->setRotation(180);
+//        huText->setRotation(180);
+//        spec->setRotation(180);
+//    }else if(seatid == ClientSeatId::right){
+//        bgLight->setRotation(270);
+//         bg1->setRotation(270);
+//        light1->setRotation(270);
+//        bg2->setRotation(270);
+//        huText->setRotation(270);
+//        spec->setRotation(270);
+//    }
    
     
     auto remove = Sprite::create();

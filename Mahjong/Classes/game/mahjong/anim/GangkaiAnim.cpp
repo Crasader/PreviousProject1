@@ -115,34 +115,34 @@ void GangkaiAnim::showCircle(int seatId,bool qiang){
     }), Spawn::create(ScaleTo::create(3.0/24, 0.9f),FadeTo::create(3.0/24, 255), NULL),ScaleTo::create(3.0/24, 1.0f),NULL));
     
     //自摸动画转向
-    if(seatId == ClientSeatId::left){
-        cirlce1->setRotation(90);
-        circle2->setRotation(90);
-        circle3->setRotation(90);
-        light->setRotation(90);
-        flower->setRotation(90);
-        bg->setRotation(90);
-        gang->setRotation(90);
-        kai->setRotation(90);
-    }else if(seatId == ClientSeatId::opposite){
-        cirlce1->setRotation(180);
-        circle2->setRotation(180);
-        circle3->setRotation(180);
-        light->setRotation(180);
-        flower->setRotation(180);
-        bg->setRotation(180);
-        gang->setRotation(180);
-        kai->setRotation(180);
-    }else if(seatId == ClientSeatId::right){
-        cirlce1->setRotation(270);
-        circle2->setRotation(270);
-        circle3->setRotation(270);
-        light->setRotation(270);
-        bg->setRotation(270);
-        flower->setRotation(270);
-        gang->setRotation(270);
-        kai->setRotation(270);
-    }
+//    if(seatId == ClientSeatId::left){
+//        cirlce1->setRotation(90);
+//        circle2->setRotation(90);
+//        circle3->setRotation(90);
+//        light->setRotation(90);
+//        flower->setRotation(90);
+//        bg->setRotation(90);
+//        gang->setRotation(90);
+//        kai->setRotation(90);
+//    }else if(seatId == ClientSeatId::opposite){
+//        cirlce1->setRotation(180);
+//        circle2->setRotation(180);
+//        circle3->setRotation(180);
+//        light->setRotation(180);
+//        flower->setRotation(180);
+//        bg->setRotation(180);
+//        gang->setRotation(180);
+//        kai->setRotation(180);
+//    }else if(seatId == ClientSeatId::right){
+//        cirlce1->setRotation(270);
+//        circle2->setRotation(270);
+//        circle3->setRotation(270);
+//        light->setRotation(270);
+//        bg->setRotation(270);
+//        flower->setRotation(270);
+//        gang->setRotation(270);
+//        kai->setRotation(270);
+//    }
 
 }
 

@@ -136,37 +136,37 @@ void ZimoAnim:: showZimoAnim(int seatId){
     
     
     //自摸动画转向
-    if(seatId == ClientSeatId::left){
-        shadow->setRotation(90);
-        color->setRotation(90);
-        nimo->setRotation(90);
-        redStar->setRotation(90);
-        greenStar->setRotation(90);
-        fontZi->setRotation(90);
-        fontMo->setRotation(90);
-        start5->setRotation(90);
-        demo->setRotation(90);
-    }else if(seatId == ClientSeatId::opposite){
-        shadow->setRotation(180);
-        color->setRotation(180);
-        redStar->setRotation(180);
-        nimo->setRotation(180);
-        greenStar->setRotation(180);
-        fontZi->setRotation(180);
-        fontMo->setRotation(180);
-        start5->setRotation(180);
-        demo->setRotation(180);
-    }else if(seatId == ClientSeatId::right){
-        shadow->setRotation(270);
-        color->setRotation(270);
-        redStar->setRotation(270);
-        greenStar->setRotation(270);
-        nimo->setRotation(270);
-        fontZi->setRotation(270);
-        fontMo->setRotation(270);
-        start5->setRotation(270);
-        demo->setRotation(270);
-    }
+//    if(seatId == ClientSeatId::left){
+//        shadow->setRotation(90);
+//        color->setRotation(90);
+//        nimo->setRotation(90);
+//        redStar->setRotation(90);
+//        greenStar->setRotation(90);
+//        fontZi->setRotation(90);
+//        fontMo->setRotation(90);
+//        start5->setRotation(90);
+//        demo->setRotation(90);
+//    }else if(seatId == ClientSeatId::opposite){
+//        shadow->setRotation(180);
+//        color->setRotation(180);
+//        redStar->setRotation(180);
+//        nimo->setRotation(180);
+//        greenStar->setRotation(180);
+//        fontZi->setRotation(180);
+//        fontMo->setRotation(180);
+//        start5->setRotation(180);
+//        demo->setRotation(180);
+//    }else if(seatId == ClientSeatId::right){
+//        shadow->setRotation(270);
+//        color->setRotation(270);
+//        redStar->setRotation(270);
+//        greenStar->setRotation(270);
+//        nimo->setRotation(270);
+//        fontZi->setRotation(270);
+//        fontMo->setRotation(270);
+//        start5->setRotation(270);
+//        demo->setRotation(270);
+//    }
 }
 
 
