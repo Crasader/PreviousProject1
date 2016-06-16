@@ -28,15 +28,15 @@ bool FriendRoom::init()
     addChild(closeMenu);
     
     auto qiao = Sprite::create("friend/qiaoma.png");
-    qiao->setPosition(410,600);
+    qiao->setPosition(410,590);
     addChild(qiao);
     
     auto dihua = Sprite::create("friend/1di1hua.png");
-    dihua->setPosition(607,600);
+    dihua->setPosition(607,590);
     addChild(dihua);
     
     auto xiao = Sprite::create("friend/xiaohao.png");
-    xiao->setPosition(800,600);
+    xiao->setPosition(800,585);
     addChild(xiao);
     
     
@@ -49,7 +49,12 @@ bool FriendRoom::init()
     openBtn->setPosition(883,470);
     addChild(openBtn);
     
-    for(int i=0;i<4;i++){
+    InviteCell* hero  = InviteCell::create("gameview/head_image_1.png", UserData::getInstance()->getNickName());
+    hero->setPosition(348,488);
+    addChild(hero);
+            
+    //邀请3个好友
+    for(int i=0;i<3;i++){
         inviters[i]=NULL;
     }
     
@@ -99,9 +104,9 @@ void FriendRoom::tableCellTouched(TableView* table, TableViewCell* cell)
         InviteCell* sprite  = InviteCell::create("gameview/head_image_1.png", data.friends.at(cell->getIdx()).nickname);
         sprite->setName(data.friends.at(cell->getIdx()).poxiaoId);
         addChild(sprite);
-        for(int i=0;i<4;i++){
+        for(int i=0;i<3;i++){
             if(inviters[i]==NULL){
-                sprite->setPosition(348+120*i,488);
+                sprite->setPosition(468+120*i,488);
                 inviters[i] =sprite;
                 break;
             }
@@ -116,7 +121,7 @@ void FriendRoom::tableCellTouched(TableView* table, TableViewCell* cell)
             else
                 ++it;
         }
-        for(int i=0;i<4;i++){
+        for(int i=0;i<3;i++){
             if(inviters[i]!=NULL){
                 if(inviters[i]->getName()==pid){
                     inviters[i]->removeFromParent();
