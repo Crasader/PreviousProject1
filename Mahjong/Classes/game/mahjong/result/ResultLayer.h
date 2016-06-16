@@ -8,10 +8,13 @@ USING_NS_CC;
 class ResultLayer :public Layer{
 public:
 	virtual bool init();
+    virtual void onEnter() override;
+    virtual void onExit() override;
 	void updateTime(float dt);
 	CREATE_FUNC(ResultLayer);
 private:
     CC_SYNTHESIZE(GameResultData, heroData, heroData);
+    EventListenerCustom* continueAgainLisetner;
 	int timeToatal;
 	LabelAtlas* timeLable;
 	Menu* resultMenu;

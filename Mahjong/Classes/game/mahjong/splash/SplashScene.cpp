@@ -25,8 +25,8 @@ bool SplashScene::init()
     {
         return false;
     }
-//    LoadResource* loda = LoadResource::create();
-//    addChild(loda);
+    //    LoadResource* loda = LoadResource::create();
+    //    addChild(loda);
     
     //draw scene
     drawLonginScene();
@@ -69,7 +69,7 @@ void SplashScene::drawLonginScene(){
     auto gameTitle = Sprite::create("mainlogin/splah_title.png");
     gameTitle->setPosition(875, 630);
     this->addChild(gameTitle);
-
+    
     
     auto girlSprite = Sprite::create("mainlogin/girl_image.png");
     girlSprite->setPosition(220,360);
@@ -121,7 +121,7 @@ void SplashScene::drawLonginScene(){
     accountBg->setPosition(955, 475);
     addChild(accountBg);
     
-
+    
     _editName = EditBox::create(Size(400, 81), Scale9Sprite::create());
     _editName->setPosition(Point(1010, 475));
     _editName->setFont("arial", 30);
@@ -326,7 +326,7 @@ void SplashScene::addTocuhListener(){
             case cocos2d::EventKeyboard::KeyCode::KEY_BACK:
                 Director::getInstance()->end();
                 break;
-
+                
             default:
                 break;
         }
@@ -362,7 +362,7 @@ void SplashScene::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 }
 
 void SplashScene::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
-
+    
 }
 
 void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
@@ -371,5 +371,5 @@ void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const
 }
 
 void SplashScene::editBoxReturn(cocos2d::extension::EditBox* editBox){
-  
+    
 }

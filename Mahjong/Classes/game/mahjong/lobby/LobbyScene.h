@@ -42,8 +42,6 @@ private:
 	LabelAtlas* diamondNum;
 	LabelAtlas* lequanNum;
 	LabelAtlas* lockDiamondNum;
-    
-    CC_SYNTHESIZE(int, currentSelectRoomId, CurrentSelectRoomId);
 
 	void initView();
 	void drawSceneMid();

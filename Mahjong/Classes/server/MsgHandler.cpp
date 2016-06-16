@@ -624,8 +624,19 @@ void MsgHandler::loginResp(std::string msg){
 }
 
 void MsgHandler::readyStateResp(std::string msg){
-    
-    
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    EnterRoomResp resp;
+    const rapidjson::Value &result = _mDoc["result"];
+    resp.result = StringUtil::itos(result.GetInt());
+    if(_mDoc.HasMember("rsid")){
+        const rapidjson::Value &rsid = _mDoc["rsid"];
+        resp.rsid = rsid.GetString();
+    }
+    GAMEDATA::getInstance()->setEnterRoomResp(resp);
+    postNotifyMessage(MSG_HERO_READY_RESP, "");
 }
 
 void MsgHandler::addPalyer(std::string msg){

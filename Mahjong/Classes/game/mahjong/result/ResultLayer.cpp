@@ -9,6 +9,8 @@
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "game/utils/ParticleUtil.hpp"
+#include "game/mahjong/lobby/EnterRoomDialog.hpp"
+#include "game/mahjong/dialog/shop/GoldNotEnoughDialog.hpp"
 
 bool ResultLayer::init(){
     if (!Layer::init()){
@@ -17,6 +19,34 @@ bool ResultLayer::init(){
     initData();
     initView();
     return true;
+}
+
+void ResultLayer::onEnter(){
+    Layer::onEnter();
+    continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_READY_RESP, [=](EventCustom* event){
+        std::string result  = static_cast<char*>(event->getUserData());
+        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
+            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+            addChild(gold,4);
+        }
+        else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
+            if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
+                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
+                addChild(dia,4);
+            }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
+                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
+                addChild(dia,4);
+            }
+        }
+    
+    });
+     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
+}
+void ResultLayer::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
 }
 
 void ResultLayer::initData(){

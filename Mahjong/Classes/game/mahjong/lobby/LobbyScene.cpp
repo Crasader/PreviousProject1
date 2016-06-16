@@ -77,7 +77,7 @@ void LobbyScene::initView(){
 
 void LobbyScene::startGame(Ref* psend){
     MenuItemImage* item = (MenuItemImage*)psend;
-    setCurrentSelectRoomId(item->getTag());
+    GAMEDATA::getInstance()->setCurrentSelectRoomId(item->getTag());
     if (item->getTag() == ROOM_1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_1)));
     }
@@ -391,7 +391,7 @@ void LobbyScene::addCustomEventListener(){
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
-            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(getCurrentSelectRoomId());
+            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
             addChild(gold,4);
         }
         else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
@@ -411,7 +411,8 @@ void LobbyScene::addCustomEventListener(){
         std::string result = buf;
         if (result == "1"){
             removeLoading();
-            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
         else{
             removeLoading();
@@ -421,7 +422,8 @@ void LobbyScene::addCustomEventListener(){
     
     //好友开房
     openFriendRoomListener = EventListenerCustom::create(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);        Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(openFriendRoomListener, 1);
     

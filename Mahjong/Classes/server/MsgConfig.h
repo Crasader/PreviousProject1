@@ -258,4 +258,5 @@
 #define MSG_RECIVE_RED_WALLET_INFO "msg_recive_red_wallet_resp_info"
 #define MSG_RECIVE_RED_WALLET_PSUH "msg_recive_red_wallet_resp_push"
 #define MSG_PLAYER_LEQUAN_EXCHANGE "msg_player_lequan_exchange"
+#define MSG_HERO_READY_RESP "msg_hero_ready_resp"
 #endif
