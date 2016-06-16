@@ -9,6 +9,38 @@ enum MahjongRoom{
     privateRoom
 };
 
+enum PrideType{
+    gold,
+    lequan,
+   	lockDiammond,
+    diamond
+};
+
+enum CpgType
+{
+    chi,
+    peng,
+    gang,
+    angang,
+    penggang,
+    ting
+};
+
+enum HuType{
+    kaibao  = 1,
+    huangfan,
+    gangkai,
+    mengqing,
+    hunpeng,
+    qingpeng,
+    dadiaoche,
+    qingyise,
+    hunyise,
+    pengpenghu,
+    lajihu
+};
+
+
 struct EnterRoomResp{
     std::string result;
     std::string rsid;
@@ -203,12 +235,7 @@ struct DailyTaskData{
     std::string extra;
 };
 
-enum PrideType{
-    gold,
-    lequan,
-   	lockDiammond,
-    diamond
-};
+
 
 struct PrideData{
     PrideType type;
@@ -344,33 +371,6 @@ struct ReciveRedWallet{
     std::string diamond;
     std::string bangzuan;
 };
-
-
-
-enum CpgType
-{
-    chi,
-    peng,
-    gang,
-    angang,
-    penggang,
-    ting
-};
-
-enum HuType{
-    kaibao  = 1,
-    huangfan,
-    gangkai,
-    mengqing,
-    hunpeng,
-    qingpeng,
-    dadiaoche,
-    qingyise,
-    hunyise,
-    pengpenghu,
-    lajihu
-};
-
 
 
 #endif
