@@ -46,6 +46,7 @@ void SplashScene::onExit(){
     _eventDispatcher->removeEventListener(loginRespListener);
     _eventDispatcher->removeEventListener(roomRespListener);
     _eventDispatcher->removeEventListener(reConnectAgain);
+    _eventDispatcher->removeEventListener(dropListListener);
 }
 
 
@@ -133,9 +134,9 @@ void SplashScene::drawLonginScene(){
     _editName->setDelegate(this);
     addChild(_editName,1);
     
-    DropDownList* drop = DropDownList::create(Sprite::create(), Size(450,240));
+    DropDownList* drop = DropDownList::create(Sprite::create(), Size(450,240),"splashCallBack");
     drop->setPosition(Point(508, 200));
-    drop->setLoginscene(this);
+    drop->setTouchAbleRect(_editName->getBoundingBox());
     addChild(drop,5);
     
     auto accountIcon = Sprite::create("mainlogin/password_box.png");
@@ -240,6 +241,7 @@ void SplashScene::loginByVisitor(){
 
 
 void SplashScene::setChangeNickName(std::string name,std::string pwd){
+    username_text->setVisible(false);
     _editName->setText(name.c_str());
     _editPwd->setText(pwd.c_str());
 }
@@ -306,6 +308,12 @@ void  SplashScene::addCustomEventListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(registerRespListener, 1);
+    
+    //用户名下拉列表
+    dropListListener = EventListenerCustom::create("splashCallBack", [=](EventCustom* event){
+        setChangeNickName(GAMEDATA::getInstance()->getLoginAccPwd().account,GAMEDATA::getInstance()->getLoginAccPwd().password);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dropListListener, 1);
 }
 
 void SplashScene::addTocuhListener(){

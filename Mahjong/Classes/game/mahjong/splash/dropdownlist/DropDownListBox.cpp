@@ -1,11 +1,13 @@
 #include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
 #include "game/mahjong/splash/dropdownlist/LoginMannger.h"
+#include "game/mahjong/state/GameData.h"
 #include "game/utils/Chinese.h"
 
-DropDownList::DropDownList(Sprite* label, Size size)
+DropDownList::DropDownList(Sprite* label, Size size,std::string eventName)
 	: showLabel(label)
 	, isShowMenu(false)
 	, lastSelectedIndex(0)
+    , eventName(eventName)
 {
 //    auto bgFrame = MenuItemImage::create("mainlogin/drop_list_bg.png","mainlogin/drop_list_bg.png");
 	mainMenu =Menu::create();
@@ -27,7 +29,6 @@ DropDownList::DropDownList(Sprite* label, Size size)
 	touchListener->onTouchEnded = CC_CALLBACK_2(DropDownList::onTouchEnded, this);
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 
-
 }
 
 DropDownList::~DropDownList()
@@ -35,9 +36,9 @@ DropDownList::~DropDownList()
 	
 }
 
-DropDownList*DropDownList::create(Sprite* label, CCSize size)
+DropDownList*DropDownList::create(Sprite* label, CCSize size,std::string eventName)
 {
-	DropDownList* list = new DropDownList(label, size);
+	DropDownList* list = new DropDownList(label, size,eventName);
 	list->autorelease();
 	return list;
 }
@@ -52,7 +53,7 @@ void DropDownList::onEnter()
 
 bool DropDownList::onTouchBegan(CCTouch *touch, CCEvent *event)
 {
-    auto rect = _loginscene->_editName->getBoundingBox();
+    auto rect = getTouchAbleRect();
     if (rect.containsPoint(touch->getLocation()))
     {
         if (!isShowMenu)
@@ -60,8 +61,12 @@ bool DropDownList::onTouchBegan(CCTouch *touch, CCEvent *event)
             bgFrame->setVisible(true);
             isShowMenu = true;
             addChild(mainMenu);
-            _loginscene->_editName->setText("使用其他账号登录");
-            _loginscene->_editName->setFontColor(Color3B::GRAY);
+            LoginAccPwd lap ;
+            lap.account = "使用其他账号登录";
+            lap.password = "";
+            GAMEDATA::getInstance()->setLoginAccPwd(lap);
+            EventCustom ev(eventName);
+            _eventDispatcher->dispatchEvent(&ev);
             selectLabels.clear();
             mainMenu->removeAllChildren();
             for(auto var:LoginMannger::getInstance()->getMemoryNickname()){
@@ -81,8 +86,15 @@ bool DropDownList::onTouchBegan(CCTouch *touch, CCEvent *event)
     {
         if (isShowMenu)
         {
-            _loginscene->setChangeNickName(selectLabels.at(0),LoginMannger::getInstance()->getPassword(selectLabels.at(lastSelectedIndex).c_str()));
-            onClose(); 
+            if(selectLabels.size()>0){
+                LoginAccPwd lap ;
+                lap.account = selectLabels.at(0);
+                lap.password = LoginMannger::getInstance()->getPassword(selectLabels.at(0).c_str());
+                GAMEDATA::getInstance()->setLoginAccPwd(lap);
+                EventCustom ev(eventName);
+                _eventDispatcher->dispatchEvent(&ev);
+            }
+            onClose();
             return true;
         }
         
@@ -120,8 +132,12 @@ void DropDownList::onSelected(CCObject* sender)
 	if (item)
 	{
 		lastSelectedIndex = item->getTag();
-        _loginscene->setChangeNickName(selectLabels.at(lastSelectedIndex),LoginMannger::getInstance()->getPassword(selectLabels.at(lastSelectedIndex).c_str()));
-
+        LoginAccPwd lap ;
+        lap.account = selectLabels.at(lastSelectedIndex);
+        lap.password = LoginMannger::getInstance()->getPassword(selectLabels.at(lastSelectedIndex).c_str());
+        GAMEDATA::getInstance()->setLoginAccPwd(lap);
+        EventCustom ev(eventName);
+        _eventDispatcher->dispatchEvent(&ev);
 	}
 	onClose();
 }
@@ -132,9 +148,4 @@ void DropDownList::onClose()
 	removeChild(mainMenu, true); 
 	isShowMenu = false;
 	bgFrame->setVisible(false);
-}
-
-void DropDownList::setLoginscene(SplashScene* scene)
-{
-	_loginscene = scene;
 }

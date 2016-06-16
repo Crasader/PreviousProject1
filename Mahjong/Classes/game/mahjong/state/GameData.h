@@ -60,6 +60,7 @@ public:
     CC_SYNTHESIZE(LequanChangeResult, lequanChangeResult, LequanChangeResult);
     CC_SYNTHESIZE(RedWalletRespData, redWalletRespData, RedWalletRespData);
     CC_SYNTHESIZE(ReciveRedWallet, reciveRedWallet, ReciveRedWallet);
+    CC_SYNTHESIZE(LoginAccPwd, loginAccPwd, LoginAccPwd);
     CC_SYNTHESIZE(MahjongRoom, mahjongRoomType, MahjongRoomType);
     CC_SYNTHESIZE(MahjongState, mahjongState, MahjongState);
     

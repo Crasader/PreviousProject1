@@ -33,10 +33,6 @@ void DailyPride::onEnter(){
                 if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTodayPrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTodayPrideData().pride.number){
                     m_turnBg->setRotation(-90+45*i);
                     startMenu->setEnabled(true);
-                    if(NULL != getChildByTag(1000)){
-                        int num = atoi(((LabelAtlas*)getChildByTag(1000))->getString().c_str());
-                        ((LabelAtlas*)getChildByTag(1000))->setString(StringUtil::itos(num-1));
-                    }
                     if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::gold){
                         ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
                         getParent()->addChild(util,5);
@@ -46,6 +42,9 @@ void DailyPride::onEnter(){
                     }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
                         ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
                         getParent()->addChild(util,5);
+                    }
+                    if(NULL != getChildByTag(1000)){
+                        ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(GAMEDATA::getInstance()->getTodayPrideData().rest));
                     }
                 }
             }

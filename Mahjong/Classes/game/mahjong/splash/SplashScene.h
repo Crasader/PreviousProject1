@@ -37,6 +37,7 @@ private:
 	EventListenerCustom* roomRespListener;
 	EventListenerCustom* reConnectAgain;
     EventListenerCustom* registerRespListener;
+    EventListenerCustom* dropListListener;
 	Sprite* username_text;
 	Sprite* password_text;
 	void addTocuhListener();

@@ -8,6 +8,10 @@ class FindPassword :public Layer, public EditBoxDelegate{
 public:
 	virtual bool init();
 	CREATE_FUNC(FindPassword);
+    
+    void onEnter() override;
+    
+    void onExit() override;
 
     virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
 
@@ -19,6 +23,7 @@ public:
 private:
     EditBox* _phone;
     EditBox* _account;
+    EventListenerCustom* dropListListener2;
 	void showDialog();
 	void closeView();
     void findPassword();

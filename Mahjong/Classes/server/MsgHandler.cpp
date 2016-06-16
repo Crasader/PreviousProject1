@@ -1822,6 +1822,9 @@ void MsgHandler::todayPrideResp(std::string msg){
     if (_mDoc.HasMember("result")){
         data.result = _mDoc["result"].GetString();
     }
+    if (_mDoc.HasMember("rest")){
+        data.rest = _mDoc["rest"].GetInt();
+    }
     if (_mDoc.HasMember("prize")){
         PrideData info;
         const rapidjson::Value &temp = _mDoc["prize"];

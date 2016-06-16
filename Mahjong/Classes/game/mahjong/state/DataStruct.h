@@ -304,6 +304,7 @@ struct DailyPrideData{
 struct TodayPrideData{
     string result;
     PrideData pride;
+    int rest;
 };
 
 struct BoundPhoneData{
@@ -383,5 +384,8 @@ struct ReciveRedWallet{
     std::string bangzuan;
 };
 
-
+struct LoginAccPwd{
+    std::string account;
+    std::string password;
+};
 #endif

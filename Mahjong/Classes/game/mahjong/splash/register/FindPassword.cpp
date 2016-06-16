@@ -1,5 +1,9 @@
 #include "game/mahjong/splash/register/FindPassword.h"
+#include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
+#include "game/mahjong/splash/dropdownlist/LoginMannger.h"
+#include "game/mahjong/state/GameData.h"
 #include "game/utils/StringUtil.h"
+
 
 bool FindPassword::init(){
 	if (!Layer::init()){
@@ -7,6 +11,20 @@ bool FindPassword::init(){
 	}
 	showDialog();
 	return true;
+}
+
+void FindPassword::onEnter(){
+    Layer::onEnter();
+    //用户名下拉列表
+    dropListListener2 = EventListenerCustom::create("findPasswordCallBack", [=](EventCustom* event){
+        _account->setText(GAMEDATA::getInstance()->getLoginAccPwd().account.c_str());
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dropListListener2, 1);
+}
+
+void FindPassword::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dropListListener2);
 }
 
 
@@ -54,6 +72,11 @@ void FindPassword::showDialog(){
     _account->setDelegate(this);
     addChild(_account);
     
+    
+    DropDownList* drop = DropDownList::create(Sprite::create(), Size(450,240),"findPasswordCallBack");
+    drop->setPosition(Point(270, 175));
+    drop->setTouchAbleRect(_account->getBoundingBox());
+    addChild(drop,1);
     
     auto accountHint = Sprite::create("register/accout_exist.png");
     accountHint->setPosition(600,400);
