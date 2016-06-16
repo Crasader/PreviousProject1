@@ -311,9 +311,7 @@ void LobbyScene::showDayTask(){
 
 
 void LobbyScene::showAddFriend(){
-    if (GAMEDATA::getInstance()->getFriendList().friends.size() == 0){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-    }
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     FriendListView* friendAdd = FriendListView::create();
     friendAdd->setTag(524);
     addChild(friendAdd,3);
@@ -321,9 +319,7 @@ void LobbyScene::showAddFriend(){
 }
 
 void LobbyScene::showOpenRoom(){
-    if (GAMEDATA::getInstance()->getFriendList().friends.size() == 0){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-    }
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     FriendRoom* friendroom = FriendRoom::create();
     friendroom->setTag(525);
     this->addChild(friendroom,3);

@@ -152,7 +152,11 @@ void TaskCell::updateData(){
 			finishMenu->setVisible(false);
 			unfinish->setVisible(true);
 			revcieved->setVisible(false);
-			taskProgress->setContentSize(Size(146 * res / (getMyTaskType() == task3 ? 2 : 3), 20));
+            float rate =  res / (getMyTaskType() == task3 ? 2 : 3);
+            if(rate>1){
+                rate =1;
+            }
+			taskProgress->setContentSize(Size(146 *rate, 20));
 			taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d",res, getMyTaskType() == task3 ? 2 : 3)->_string);
 			if (res == (getMyTaskType() == task3 ? 2 : 3)){
 				setTaskState(1);
