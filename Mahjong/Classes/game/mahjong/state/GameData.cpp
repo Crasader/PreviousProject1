@@ -15,7 +15,6 @@ void GAMEDATA::init(){
 	this->setIsTingState(false);
 	this->setIsTrusteeship(false);
 	this->setIsRecover(false);
-	this->setIsPrivateRoom(false);
 	this->setNeedAddPlayer(false);
     this->setContinueAgain(false);
     this->setHuangfan("0");

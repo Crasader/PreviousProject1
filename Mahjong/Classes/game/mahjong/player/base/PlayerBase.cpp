@@ -53,7 +53,7 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
 	diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
 	diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 16, getPostionBySeat(clientSeatId).y - 55);
 	this->addChild(diamondNum);
-    if (GAMEDATA::getInstance()->getIsPrivateRoom()){
+    if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
 		diamond->setTexture("gameview/score_small.png");
         if(playerInfo->getScore()>=0){
             diamondNum->setString(cocos2d::String::createWithFormat("%d", playerInfo->getScore())->_string);

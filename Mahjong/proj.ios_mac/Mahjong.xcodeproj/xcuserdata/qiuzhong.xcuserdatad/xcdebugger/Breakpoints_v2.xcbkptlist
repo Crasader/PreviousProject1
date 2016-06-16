@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1136"
-            endingLineNumber = "1136"
+            startingLineNumber = "1135"
+            endingLineNumber = "1135"
             landmarkName = "MahjongView::addEnterFriendRoomListener()"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1137"
-            endingLineNumber = "1137"
+            startingLineNumber = "1136"
+            endingLineNumber = "1136"
             landmarkName = "MahjongView::addEnterFriendRoomListener()"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1133"
-            endingLineNumber = "1133"
+            startingLineNumber = "1132"
+            endingLineNumber = "1132"
             landmarkName = "MahjongView::addFriendInviteMeListener()"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "783"
-            endingLineNumber = "783"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
             landmarkName = "MahjongView::showHuPaiXing(std::string paixing)"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "794"
-            endingLineNumber = "794"
+            startingLineNumber = "793"
+            endingLineNumber = "793"
             landmarkName = "MahjongView::showHuPaiXing(std::string paixing)"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "427"
-            endingLineNumber = "427"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "MahjongView::recoverGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
             landmarkName = "MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo)"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "443"
-            endingLineNumber = "443"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo)"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo)"
             landmarkType = "5">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
             landmarkName = "MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo)"
             landmarkType = "5">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo)"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
             landmarkName = "MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo)"
             landmarkType = "5">
          </BreakpointContent>
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1223,11 +1223,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "487492476.144554"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "LobbyScene::showLobbyAnim()"
             landmarkType = "5">
             <Locations>
@@ -2119,11 +2119,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1007"
-            endingLineNumber = "1007"
+            startingLineNumber = "1006"
+            endingLineNumber = "1006"
             landmarkName = "MahjongView::addPlayerTingNotifyListener()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2231,43 +2231,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "681"
-            endingLineNumber = "681"
-            landmarkName = "MahjongView::addJongPlayedListener()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "695"
-            endingLineNumber = "695"
-            landmarkName = "MahjongView::addJongPlayedListener()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "487689831.091569"
+            timestampString = "487737043.546877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "680"
             endingLineNumber = "680"
+            landmarkName = "MahjongView::addJongPlayedListener()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
+            timestampString = "487737043.546877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "694"
+            endingLineNumber = "694"
+            landmarkName = "MahjongView::addJongPlayedListener()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
+            timestampString = "487737043.546877"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "679"
+            endingLineNumber = "679"
             landmarkName = "MahjongView::addJongPlayedListener()"
             landmarkType = "5">
          </BreakpointContent>

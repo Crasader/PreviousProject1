@@ -105,7 +105,7 @@ void MahjongView::update(float dt){
 
 
 void MahjongView::updatePlayerView(int type, Player* playerInfo){
-    if (GAMEDATA::getInstance()->getIsPrivateRoom()){
+    if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
         guiLayer->hideInvitePlayer(type);
     }
     if (type == ClientSeatId::hero){
@@ -412,7 +412,6 @@ void MahjongView::clearRoomPlayer(){
 
 void MahjongView::recoverGame(){
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
-    GAMEDATA::getInstance()->setIsPrivateRoom(data.isprivate);
     GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
     GAMEDATA::getInstance()->setCurrentBank(data.loard);
     for (int i = 0; i < data.players.size(); i++)
@@ -830,7 +829,7 @@ void MahjongView::showHandPokerOver(int seatId){
             heroJongs =data.showPoker;
         }
         //获取一炮多响情况下胡的最大的数据
-        if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+        if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
             if(data.jifendelta >= max){
                 maxHuType = data.huType;
                 max = data.jifendelta;
@@ -1138,7 +1137,7 @@ void MahjongView::addEnterFriendRoomListener(){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
-            GAMEDATA::getInstance()->setIsPrivateRoom(true);
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
         else{
@@ -1171,7 +1170,7 @@ void MahjongView::addPlayerRemoveListener(){
                     OutFogAnim* out = OutFogAnim::create(Point(945, 642));
                     addChild(out);
                 }
-                if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+                if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
                     guiLayer->showInvitePlayer(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId));
                 }
             }

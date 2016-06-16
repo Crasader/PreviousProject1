@@ -4,6 +4,11 @@
 #include "game/mahjong/jong/Jong.h"
 USING_NS_CC;
 
+enum MahjongRoom{
+    publicRoom,
+    privateRoom
+};
+
 struct EnterRoomResp{
     std::string result;
     std::string rsid;
@@ -116,7 +121,7 @@ struct LastGameData
 {
     int seatId;
     int loard;
-    bool isprivate;
+    MahjongRoom roomType;
     std::string rest;
     std::string hand;
     std::vector <PlayerGameData> players;

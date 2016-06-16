@@ -624,8 +624,8 @@ void MsgHandler::loginResp(std::string msg){
 }
 
 void MsgHandler::readyStateResp(std::string msg){
-
-
+    
+    
 }
 
 void MsgHandler::addPalyer(std::string msg){
@@ -1023,13 +1023,12 @@ void MsgHandler::playerConnectAgain(std::string msg){
     const rapidjson::Value &loard = _mDoc["lord"];
     const rapidjson::Value &isprivate = _mDoc["isprivate"];
     GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
-    LastGameData lastGameData;
+    //设置是否是私人房间
+    std::string roomType = isprivate.GetString();
+    GAMEDATA::getInstance()->setMahjongRoomType(roomType == "1" ? (MahjongRoom::privateRoom):(MahjongRoom::publicRoom));LastGameData lastGameData;
     lastGameData.seatId = seatId.GetInt();
     lastGameData.rest = rest.GetString();
     lastGameData.loard = loard.GetInt();
-    std::string result = isprivate.GetString();
-    lastGameData.isprivate = (result == "1"?true:false);
-    GAMEDATA::getInstance()->setIsPrivateRoom(lastGameData.isprivate);//设置是否是私人房间
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;
@@ -1422,7 +1421,7 @@ void MsgHandler::sendRedWalletResp(std::string msg){
     RedWalletRespData respData;
     respData.needInit = false;
     if (_mDoc.HasMember("hbcode")){
-         const rapidjson::Value &hbcode = _mDoc["hbcode"];
+        const rapidjson::Value &hbcode = _mDoc["hbcode"];
         respData.hbcode = hbcode.GetString();
     }
     if (_mDoc.HasMember("lequan")){
@@ -1469,7 +1468,7 @@ void MsgHandler::sendRedWalletResp(std::string msg){
 }
 
 void MsgHandler::reciveRedWalletResp(std::string msg){
-    // 领取红包回复{code:134,poxiaoId:"456",result:"1",gold:"1",lequan:"2",diamond:"3",bangzuan:"4"} result 0为推广结束 1为成功 2为该红包领取达上限 3为此人已经领取过红包 
+    // 领取红包回复{code:134,poxiaoId:"456",result:"1",gold:"1",lequan:"2",diamond:"3",bangzuan:"4"} result 0为推广结束 1为成功 2为该红包领取达上限 3为此人已经领取过红包
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -1702,7 +1701,7 @@ void MsgHandler::welfareResp(std::string msg){
         data.bzjjj_count = bzjjj["count"].GetString();
         data.bzjjj_used = bzjjj["used"].GetString();
         data.bzjjj_result = bzjjj["result"].GetString();
-
+        
     }
     GAMEDATA::getInstance()->setWelfareData(data);
     postNotifyMessage(MSG_PLAYER_WELFARE_INFO, "");

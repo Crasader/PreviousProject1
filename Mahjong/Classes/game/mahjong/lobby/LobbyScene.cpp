@@ -31,7 +31,7 @@ bool LobbyScene::init()
 
 void LobbyScene::onEnter(){
     Scene::onEnter();
-    GAMEDATA::getInstance()->setIsPrivateRoom(false);
+    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
     addCustomEventListener();
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
 }
@@ -215,56 +215,56 @@ void LobbyScene::drawSceneMid(){
     gameMenu->setPosition(790, 342);
     this->addChild(gameMenu,2);
     
-//    LabelAtlas* fen_500 = LabelAtlas::create("500","mjlobby/player_info_num.png",15,22,'0');
-//    fen_500->setAnchorPoint(Point::ANCHOR_MIDDLE);
-//    fen_500->setPosition(457, 165);
-//    addChild(fen_500);
-//    Sprite* di_1 = Sprite::create("mjlobby/font_di.png");
-//    di_1->setPosition(496,165);
-//    addChild(di_1);
-//    LabelAtlas* hua_500 = LabelAtlas::create("500", "mjlobby/player_info_num.png", 15, 22, '0');
-//    hua_500->setAnchorPoint(Point::ANCHOR_MIDDLE);
-//    hua_500->setPosition(539, 165);
-//    addChild(hua_500);
-//    Sprite* hua_1 = Sprite::create("mjlobby/font_hua.png");
-//    hua_1->setPosition(578, 165);
-//    addChild(hua_1);
+    //    LabelAtlas* fen_500 = LabelAtlas::create("500","mjlobby/player_info_num.png",15,22,'0');
+    //    fen_500->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    //    fen_500->setPosition(457, 165);
+    //    addChild(fen_500);
+    //    Sprite* di_1 = Sprite::create("mjlobby/font_di.png");
+    //    di_1->setPosition(496,165);
+    //    addChild(di_1);
+    //    LabelAtlas* hua_500 = LabelAtlas::create("500", "mjlobby/player_info_num.png", 15, 22, '0');
+    //    hua_500->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    //    hua_500->setPosition(539, 165);
+    //    addChild(hua_500);
+    //    Sprite* hua_1 = Sprite::create("mjlobby/font_hua.png");
+    //    hua_1->setPosition(578, 165);
+    //    addChild(hua_1);
     
-//    LabelAtlas* fen_5k = LabelAtlas::create("5000", "mjlobby/player_info_num.png", 15, 22, '0');
-//    fen_5k->setAnchorPoint(Point::ANCHOR_MIDDLE);
-//    fen_5k->setPosition(753, 165);
-//    addChild(fen_5k);
-//    Sprite* di_2 = Sprite::create("mjlobby/font_di.png");
-//    di_2->setPosition(793, 165);
-//    addChild(di_2);
-//    LabelAtlas* hua_5k = LabelAtlas::create("5000", "mjlobby/player_info_num.png", 15, 22, '0');
-//    hua_5k->setAnchorPoint(Point::ANCHOR_MIDDLE);
-//    hua_5k->setPosition(838, 165);
-//    addChild(hua_5k);
-//    Sprite* hua_2 = Sprite::create("mjlobby/font_hua.png");
-//    hua_2->setPosition(880, 165);
-//    addChild(hua_2);
+    //    LabelAtlas* fen_5k = LabelAtlas::create("5000", "mjlobby/player_info_num.png", 15, 22, '0');
+    //    fen_5k->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    //    fen_5k->setPosition(753, 165);
+    //    addChild(fen_5k);
+    //    Sprite* di_2 = Sprite::create("mjlobby/font_di.png");
+    //    di_2->setPosition(793, 165);
+    //    addChild(di_2);
+    //    LabelAtlas* hua_5k = LabelAtlas::create("5000", "mjlobby/player_info_num.png", 15, 22, '0');
+    //    hua_5k->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    //    hua_5k->setPosition(838, 165);
+    //    addChild(hua_5k);
+    //    Sprite* hua_2 = Sprite::create("mjlobby/font_hua.png");
+    //    hua_2->setPosition(880, 165);
+    //    addChild(hua_2);
     
-//    LabelAtlas* fen_5w = LabelAtlas::create("5", "mjlobby/player_info_num.png", 15, 22, '0');
-//    fen_5w->setAnchorPoint(Point::ANCHOR_MIDDLE);
-//    fen_5w->setPosition(1030, 165);
-//    addChild(fen_5w);
-//    Sprite* font_w1= Sprite::create("mjlobby/font_wan.png");
-//    font_w1->setPosition(1050,165);
-//    addChild(font_w1);
-//    Sprite* di_3= Sprite::create("mjlobby/font_di.png");
-//    di_3->setPosition(1075, 165);
-//    addChild(di_3);
-//    LabelAtlas* hua_5w= LabelAtlas::create("5", "mjlobby/player_info_num.png", 15, 22, '0');
-//    hua_5w->setAnchorPoint(Point::ANCHOR_MIDDLE);
-//    hua_5w->setPosition(1120, 165);
-//    addChild(hua_5w);
-//    Sprite* font_w2 = Sprite::create("mjlobby/font_wan.png");
-//    font_w2->setPosition(1140, 165);
-//    addChild(font_w2);
-//    Sprite* hua_3 = Sprite::create("mjlobby/font_hua.png");
-//    hua_3->setPosition(1164, 165);
-//    addChild(hua_3);
+    //    LabelAtlas* fen_5w = LabelAtlas::create("5", "mjlobby/player_info_num.png", 15, 22, '0');
+    //    fen_5w->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    //    fen_5w->setPosition(1030, 165);
+    //    addChild(fen_5w);
+    //    Sprite* font_w1= Sprite::create("mjlobby/font_wan.png");
+    //    font_w1->setPosition(1050,165);
+    //    addChild(font_w1);
+    //    Sprite* di_3= Sprite::create("mjlobby/font_di.png");
+    //    di_3->setPosition(1075, 165);
+    //    addChild(di_3);
+    //    LabelAtlas* hua_5w= LabelAtlas::create("5", "mjlobby/player_info_num.png", 15, 22, '0');
+    //    hua_5w->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    //    hua_5w->setPosition(1120, 165);
+    //    addChild(hua_5w);
+    //    Sprite* font_w2 = Sprite::create("mjlobby/font_wan.png");
+    //    font_w2->setPosition(1140, 165);
+    //    addChild(font_w2);
+    //    Sprite* hua_3 = Sprite::create("mjlobby/font_hua.png");
+    //    hua_3->setPosition(1164, 165);
+    //    addChild(hua_3);
 }
 
 void LobbyScene::drawSceneBot(){
@@ -385,7 +385,7 @@ void LobbyScene::removeLoading(){
 void LobbyScene::addCustomEventListener(){
     //进入房间回复
     enterRoomListener = EventListenerCustom::create(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
-
+        
         removeLoading();
         
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
@@ -411,19 +411,17 @@ void LobbyScene::addCustomEventListener(){
         std::string result = buf;
         if (result == "1"){
             removeLoading();
-            GAMEDATA::getInstance()->setIsPrivateRoom(true);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
         else{
             removeLoading();
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(enterFriendRoomListener, 1);
- 
+    
     //好友开房
     openFriendRoomListener = EventListenerCustom::create(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setIsPrivateRoom(true);
-        Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);        Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(openFriendRoomListener, 1);
     
@@ -440,7 +438,7 @@ void LobbyScene::addCustomEventListener(){
         updateHeroInfo();
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(updateHeroInfoListener, 1);
-
+    
 }
 
 
@@ -455,7 +453,7 @@ void LobbyScene::addEventListener(){
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLobbyQuitCommand());
                 Director::getInstance()->end();
                 break;
-
+                
             default:
                 break;
         }
@@ -489,7 +487,7 @@ void LobbyScene::showLobbyAnim(){
                                                            DelayTime::create(96.0/24),
                                                            NULL), CC_REPEAT_FOREVER));
     
-
+    
     //高级房间眨眼
     auto levelHighEye = Sprite::create();
     levelHighEye->setPosition(1084,342);
@@ -535,7 +533,7 @@ void LobbyScene::showLobbyAnim(){
         levelLowEye->setTexture("");
     }),
                                                            DelayTime::create(56.0/24),
-                                                        NULL), CC_REPEAT_FOREVER));
+                                                           NULL), CC_REPEAT_FOREVER));
     //中级房光效
     auto midLight1 = Sprite::create("mjlobby/mid_light.png");
     midLight1->setVisible(false);

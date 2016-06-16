@@ -64,7 +64,7 @@ void ResultLayer::showWinAnim(){
         light->setVisible(true);
     }),Spawn::create(ScaleTo::create(3.0f/24, 6.0f), FadeTo::create(3.0f/24, 255),NULL), Spawn::create(ScaleTo::create(4.0f/24, 0.1f), FadeTo::create(4.0f/24, 0),NULL),NULL));
     auto goldIcon= Sprite::create();
-    if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         goldIcon->setTexture("mjitem/jifen_icon.png");
     }else{
         goldIcon->setTexture("mjitem/gold_iocn.png");
@@ -82,7 +82,7 @@ void ResultLayer::showWinAnim(){
         goldIcon->setVisible(true);
     }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
     
-    LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",GAMEDATA::getInstance()->getIsPrivateRoom()?getheroData().jifendelta:getheroData().golddelta)->_string, "result/big_num_win.png", 52, 64, '0');
+    LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom?getheroData().jifendelta:getheroData().golddelta)->_string, "result/big_num_win.png", 52, 64, '0');
     if(getheroData().lequandelta>0){
         goldNum->setPosition(380, 505);
     }else{
@@ -253,7 +253,7 @@ void ResultLayer::showLoseAnim(){
     title->setPosition(640, 625);
     addChild(title);
     auto goldIcon = Sprite::create();
-    if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         goldIcon->setTexture("mjitem/jifen_icon.png");
     }else{
         goldIcon->setTexture("mjitem/gold_iocn.png");
@@ -267,7 +267,7 @@ void ResultLayer::showLoseAnim(){
                                              "result/big_num_lose.png", 52, 64, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(goldNum);
-    if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         if(getheroData().jifendelta<0){
             goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().jifendelta))->_string);
         }else{
@@ -323,7 +323,7 @@ void ResultLayer::showLoseAnim(){
             index++;
         }
         //赢得最多的玩家
-        if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             if(resData.jifendelta>=maxGold){
                 maxData = resData;
                 maxGold = maxData.jifendelta;

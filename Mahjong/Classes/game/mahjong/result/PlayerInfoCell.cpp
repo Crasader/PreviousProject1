@@ -24,7 +24,7 @@ bool PlayerInfoCell::init(GameResultData data){
         return false;
     }
     std::string bgImageName;
-    if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+    if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
         if(data.result==1||data.result==3){
             bgImageName = "result/player_result_4.png";
         }else{
@@ -65,7 +65,7 @@ bool PlayerInfoCell::init(GameResultData data){
     this->addChild(nickname, 20);
     
     LabelAtlas* goldNum = LabelAtlas::create("0", "result/result_num.png", 9, 13, '0');
-    if(GAMEDATA::getInstance()->getIsPrivateRoom()){
+    if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
         if (data.jifendelta < 0){
             goldNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.jifendelta))->_string);
         }
