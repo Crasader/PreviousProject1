@@ -73,6 +73,9 @@ void MahjongView::loadView(){
 
 void MahjongView::startGameFirst(){
     showOriention();
+    GAMEDATA::getInstance()->setKaibao("0");
+    GAMEDATA::getInstance()->setHuangfan("0");
+    guiLayer->updateData();
     Player* info = new Player();
     info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
     info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
