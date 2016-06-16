@@ -463,6 +463,7 @@ void ResultLayer::updateTime(float dt){
 
 void ResultLayer::clickContinu(){
     GAMEDATA::getInstance()->setContinueAgain(true);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
     Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
 }
 

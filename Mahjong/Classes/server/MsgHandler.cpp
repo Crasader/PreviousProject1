@@ -99,7 +99,7 @@ void MsgHandler::distribute(int code, std::string msg){
         case MSGCODE_READY_RESPONSE:
         {
             log(" *** ready resp *** ");
-            //postNotifyMessage(MSG_READY_RESP, "");
+            readyStateResp(msg);
             break;
         }
             
@@ -623,7 +623,10 @@ void MsgHandler::loginResp(std::string msg){
     }
 }
 
+void MsgHandler::readyStateResp(std::string msg){
 
+
+}
 
 void MsgHandler::addPalyer(std::string msg){
     //{code:1008,result:0,poxiaoId:poxiaoId,seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0}
