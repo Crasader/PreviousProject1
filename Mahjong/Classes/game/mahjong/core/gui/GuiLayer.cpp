@@ -60,7 +60,7 @@ void GuiLayer::initView(){
     haungNum->setPosition(1220, 614);
     addChild(haungNum);
 
-    if (GAMEDATA::getInstance()->getIsPrivateRoom()){
+    if (GAMEDATA::getInstance()->getIsPrivateRoom() && !GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()){
         
         drawPlayerInvite();
         
