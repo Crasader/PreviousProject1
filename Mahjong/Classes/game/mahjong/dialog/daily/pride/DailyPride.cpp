@@ -49,7 +49,7 @@ void DailyPride::onEnter(){
                 }
             }
             
-        },0.0f,0,4.0f,"m_turnBg");
+        },0.0f,0,2.5f,"m_turnBg");
     });
     _eventDispatcher->addEventListenerWithFixedPriority(prideCallBackListener2, 1);
 }
