@@ -144,8 +144,14 @@ void DailyWelfare::showDailyWelfareLayer(){
     jjjNum->setPosition(355,276);
     jjjNum->setTag(1000);
     addChild(jjjNum,6);
+    
+    LabelAtlas* bzjjjNum = LabelAtlas::create(data.jjj_count,"daily/task/num.png",16,24,'0');
+    bzjjjNum->setPosition(565,276);
+    bzjjjNum->setTag(1001);
+    addChild(bzjjjNum,6);
+    
     if(data.jjj_result == "0"){
-        auto text1 = Sprite::create("daily/task/wei_wan_chen.png");
+        auto text1 = Sprite::create("daily/sign/wei_man_zhu.png");
         text1->setPosition(307, 210);
         addChild(text1);
     }else if (data.jjj_result == "1" ){
@@ -163,7 +169,7 @@ void DailyWelfare::showDailyWelfareLayer(){
     }
     
     if(data.jjj_result == "0"){
-        auto text2 = Sprite::create("daily/task/wei_wan_chen.png");
+        auto text2 = Sprite::create("daily/sign/wei_man_zhu.png");
         text2->setPosition(307+ 1 * 222, 210);
         addChild(text2);
     }else if (data.bzjjj_result == "1"){
