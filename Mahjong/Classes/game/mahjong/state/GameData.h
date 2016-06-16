@@ -26,11 +26,7 @@ public:
     vector<GameResultData> getGameResults();
     void setGameResults(vector<GameResultData> result);
     
-    CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
-    CC_SYNTHESIZE(int, currentTingSeatId, CurrentTingSeatId);
-    CC_SYNTHESIZE(int, currentBank, CurrentBank);
-    CC_SYNTHESIZE(bool, continueAgain, ContinueAgain);
-    CC_SYNTHESIZE(bool, isPlaying, IsPlaying);
+    //服务端返回数据结构体
     CC_SYNTHESIZE(EnterRoomResp, enterRoomResp, EnterRoomResp);
     CC_SYNTHESIZE(OtherPlayedJong, otherPlayJong, OtherPlayJong);
     CC_SYNTHESIZE(PlayerCpgtData, playerCpgtData, PlayerCpgt);
@@ -64,7 +60,15 @@ public:
     CC_SYNTHESIZE(LequanChangeResult, lequanChangeResult, LequanChangeResult);
     CC_SYNTHESIZE(RedWalletRespData, redWalletRespData, RedWalletRespData);
     CC_SYNTHESIZE(ReciveRedWallet, reciveRedWallet, ReciveRedWallet);
+    CC_SYNTHESIZE(MahjongRoom, mahjongRoomType, MahjongRoomType);
+    CC_SYNTHESIZE(MahjongState, mahjongState, MahjongState);
     
+    //游戏状态
+    CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
+    CC_SYNTHESIZE(int, currentTingSeatId, CurrentTingSeatId);
+    CC_SYNTHESIZE(int, currentBank, CurrentBank);
+    CC_SYNTHESIZE(bool, continueAgain, ContinueAgain);
+    CC_SYNTHESIZE(bool, isPlaying, IsPlaying);
     CC_SYNTHESIZE(bool, updatePlayer, UpdatePlayer);
     CC_SYNTHESIZE(bool, replaceFlower, ReplaceFlower);
     CC_SYNTHESIZE(bool, otherPlayed, OtherPlayed);
@@ -73,7 +77,6 @@ public:
     CC_SYNTHESIZE(bool, isTingState, IsTingState);
     CC_SYNTHESIZE(bool, isTrusteeship, IsTrusteeship);
     CC_SYNTHESIZE(bool, isRecover, IsRecover);
-    CC_SYNTHESIZE(MahjongRoom, mahjongRoomType, MahjongRoomType);
     CC_SYNTHESIZE(bool, needAddPlayer,NeedAddPlayer);
     CC_SYNTHESIZE(bool, isLiuJu, IsLiuJu);
     CC_SYNTHESIZE(string, dice, Dice);

@@ -40,6 +40,17 @@ enum HuType{
     lajihu
 };
 
+//麻将游戏状态
+enum MahjongState{
+    heroChi,//吃牌
+    heroPeng,//碰牌
+    heroGang,//杠牌
+    heroPreTing,//预备听（玩家点击听牌）
+    heroTing,//听牌
+    readyGo,//已准备
+    playing,//游戏中
+    continueAgain//断线续玩
+};
 
 struct EnterRoomResp{
     std::string result;
