@@ -65,8 +65,8 @@ public:
     
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
-    CC_SYNTHESIZE(int, currentTingSeatId, CurrentTingSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
+    CC_SYNTHESIZE(int, currentTingSeatId, CurrentTingSeatId);
     CC_SYNTHESIZE(bool, continueAgain, ContinueAgain);
     CC_SYNTHESIZE(bool, isPlaying, IsPlaying);
     CC_SYNTHESIZE(bool, updatePlayer, UpdatePlayer);
