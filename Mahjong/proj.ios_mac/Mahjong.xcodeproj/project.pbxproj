@@ -63,6 +63,10 @@
 		D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
 		D226FD301D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
 		D226FD311D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
+		D22912381D128103005C7167 /* FindPassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912341D128103005C7167 /* FindPassword.cpp */; };
+		D22912391D128103005C7167 /* FindPassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912341D128103005C7167 /* FindPassword.cpp */; };
+		D229123A1D128103005C7167 /* UserRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912361D128103005C7167 /* UserRegister.cpp */; };
+		D229123B1D128103005C7167 /* UserRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912361D128103005C7167 /* UserRegister.cpp */; };
 		D22F1C181CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
@@ -221,10 +225,6 @@
 		D2B1A8B41CCDF0F400A20896 /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8071CCDF0F300A20896 /* UserInfo.cpp */; };
 		D2B1A8B51CCDF0F400A20896 /* PromptDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */; };
 		D2B1A8B61CCDF0F400A20896 /* PromptDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */; };
-		D2B1A8B71CCDF0F400A20896 /* FindPassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80D1CCDF0F300A20896 /* FindPassword.cpp */; };
-		D2B1A8B81CCDF0F400A20896 /* FindPassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80D1CCDF0F300A20896 /* FindPassword.cpp */; };
-		D2B1A8B91CCDF0F400A20896 /* UserRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80F1CCDF0F300A20896 /* UserRegister.cpp */; };
-		D2B1A8BA1CCDF0F400A20896 /* UserRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80F1CCDF0F300A20896 /* UserRegister.cpp */; };
 		D2B1A8BB1CCDF0F400A20896 /* UserSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8121CCDF0F300A20896 /* UserSetting.cpp */; };
 		D2B1A8BC1CCDF0F400A20896 /* UserSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8121CCDF0F300A20896 /* UserSetting.cpp */; };
 		D2B1A8BD1CCDF0F400A20896 /* ChargeDiamond.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8151CCDF0F300A20896 /* ChargeDiamond.cpp */; };
@@ -388,6 +388,10 @@
 		D226FD291D051DBA00324097 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		D226FD2E1D05292400324097 /* LoadResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadResource.cpp; sourceTree = "<group>"; };
 		D226FD2F1D05292400324097 /* LoadResource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadResource.hpp; sourceTree = "<group>"; };
+		D22912341D128103005C7167 /* FindPassword.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FindPassword.cpp; sourceTree = "<group>"; };
+		D22912351D128103005C7167 /* FindPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPassword.h; sourceTree = "<group>"; };
+		D22912361D128103005C7167 /* UserRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserRegister.cpp; sourceTree = "<group>"; };
+		D22912371D128103005C7167 /* UserRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegister.h; sourceTree = "<group>"; };
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
@@ -523,10 +527,6 @@
 		D2B1A8081CCDF0F300A20896 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PromptDialog.cpp; sourceTree = "<group>"; };
 		D2B1A80B1CCDF0F300A20896 /* PromptDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptDialog.h; sourceTree = "<group>"; };
-		D2B1A80D1CCDF0F300A20896 /* FindPassword.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FindPassword.cpp; sourceTree = "<group>"; };
-		D2B1A80E1CCDF0F300A20896 /* FindPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPassword.h; sourceTree = "<group>"; };
-		D2B1A80F1CCDF0F300A20896 /* UserRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserRegister.cpp; sourceTree = "<group>"; };
-		D2B1A8101CCDF0F300A20896 /* UserRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegister.h; sourceTree = "<group>"; };
 		D2B1A8121CCDF0F300A20896 /* UserSetting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserSetting.cpp; sourceTree = "<group>"; };
 		D2B1A8131CCDF0F300A20896 /* UserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetting.h; sourceTree = "<group>"; };
 		D2B1A8151CCDF0F300A20896 /* ChargeDiamond.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeDiamond.cpp; sourceTree = "<group>"; };
@@ -815,6 +815,7 @@
 		D226FD251D051DBA00324097 /* splash */ = {
 			isa = PBXGroup;
 			children = (
+				D22912331D128103005C7167 /* register */,
 				D28A4A421D07F59800741FD0 /* LoginMannger.cpp */,
 				D28A4A431D07F59800741FD0 /* LoginMannger.h */,
 				D226FD261D051DBA00324097 /* DropDownListBox.cpp */,
@@ -825,6 +826,17 @@
 				D226FD2F1D05292400324097 /* LoadResource.hpp */,
 			);
 			path = splash;
+			sourceTree = "<group>";
+		};
+		D22912331D128103005C7167 /* register */ = {
+			isa = PBXGroup;
+			children = (
+				D22912341D128103005C7167 /* FindPassword.cpp */,
+				D22912351D128103005C7167 /* FindPassword.h */,
+				D22912361D128103005C7167 /* UserRegister.cpp */,
+				D22912371D128103005C7167 /* UserRegister.h */,
+			);
+			path = register;
 			sourceTree = "<group>";
 		};
 		D23EFCC81D10F54D002A48A5 /* image */ = {
@@ -992,7 +1004,6 @@
 				D2B1A7ED1CCDF0F300A20896 /* friend */,
 				D2B1A7FA1CCDF0F300A20896 /* playerinfo */,
 				D2B1A8091CCDF0F300A20896 /* prompt */,
-				D2B1A80C1CCDF0F300A20896 /* register */,
 				D2B1A8111CCDF0F300A20896 /* setting */,
 				D2B1A8141CCDF0F300A20896 /* shop */,
 				D2B1A8271CCDF0F300A20896 /* trusteeship */,
@@ -1135,17 +1146,6 @@
 				D28A4A3B1D065B4D00741FD0 /* HintDialog.hpp */,
 			);
 			path = prompt;
-			sourceTree = "<group>";
-		};
-		D2B1A80C1CCDF0F300A20896 /* register */ = {
-			isa = PBXGroup;
-			children = (
-				D2B1A80D1CCDF0F300A20896 /* FindPassword.cpp */,
-				D2B1A80E1CCDF0F300A20896 /* FindPassword.h */,
-				D2B1A80F1CCDF0F300A20896 /* UserRegister.cpp */,
-				D2B1A8101CCDF0F300A20896 /* UserRegister.h */,
-			);
-			path = register;
 			sourceTree = "<group>";
 		};
 		D2B1A8111CCDF0F300A20896 /* setting */ = {
@@ -1482,6 +1482,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D22912381D128103005C7167 /* FindPassword.cpp in Sources */,
+				D229123A1D128103005C7167 /* UserRegister.cpp in Sources */,
 				D2B1A8971CCDF0F400A20896 /* TaskCell.cpp in Sources */,
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D2B1A8851CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
@@ -1490,7 +1492,6 @@
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D2B1A8B31CCDF0F400A20896 /* UserInfo.cpp in Sources */,
 				D2B1A9031CCDF0F400A20896 /* stdafx.cpp in Sources */,
-				D2B1A8B91CCDF0F400A20896 /* UserRegister.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D2B1A8811CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D2B1A8911CCDF0F400A20896 /* DailySign.cpp in Sources */,
@@ -1552,7 +1553,6 @@
 				D28A4A1B1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A301D056B7A00741FD0 /* Chinese.cpp in Sources */,
 				D23EFCCF1D10F695002A48A5 /* ImagePicker.cpp in Sources */,
-				D2B1A8B71CCDF0F400A20896 /* FindPassword.cpp in Sources */,
 				D2B1A8871CCDF0F400A20896 /* BillInfo.cpp in Sources */,
 				D2C0E3E71CF6ECB1003AA986 /* Huode.cpp in Sources */,
 				D2B1A8991CCDF0F400A20896 /* DailyWelfare.cpp in Sources */,
@@ -1646,6 +1646,7 @@
 				D2B1A8E21CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
 				D2B1A8861CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
 				D2B1A8C41CCDF0F400A20896 /* FaHongbao.cpp in Sources */,
+				D229123B1D128103005C7167 /* UserRegister.cpp in Sources */,
 				D2B1A89E1CCDF0F400A20896 /* FriendInvite.cpp in Sources */,
 				D2B1A8761CCDF0F400A20896 /* GangkaiAnim.cpp in Sources */,
 				D2B1A8E01CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
@@ -1666,8 +1667,6 @@
 				D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D2B1A8981CCDF0F400A20896 /* TaskCell.cpp in Sources */,
 				D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
-				D2B1A8BA1CCDF0F400A20896 /* UserRegister.cpp in Sources */,
-				D2B1A8B81CCDF0F400A20896 /* FindPassword.cpp in Sources */,
 				D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */,
 				D2B1A8881CCDF0F400A20896 /* BillInfo.cpp in Sources */,
 				D2B1A8A01CCDF0F400A20896 /* FriendListView.cpp in Sources */,
@@ -1685,6 +1684,7 @@
 				D2B1A90C1CCDF78300A20896 /* ZimoAnim.cpp in Sources */,
 				D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D28A4A331D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
+				D22912391D128103005C7167 /* FindPassword.cpp in Sources */,
 				D28A4A411D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
 				D23EFCD01D10F695002A48A5 /* ImagePicker.cpp in Sources */,
 			);

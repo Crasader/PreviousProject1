@@ -1,4 +1,4 @@
-#include "game/mahjong/dialog/register/FindPassword.h"
+#include "game/mahjong/splash/register/FindPassword.h"
 #include "game/utils/StringUtil.h"
 
 bool FindPassword::init(){
