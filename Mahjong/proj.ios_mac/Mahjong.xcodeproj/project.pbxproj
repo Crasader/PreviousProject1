@@ -69,6 +69,8 @@
 		D22912431D128367005C7167 /* DropDownListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D229123E1D128367005C7167 /* DropDownListBox.cpp */; };
 		D22912441D128367005C7167 /* LoginMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912401D128367005C7167 /* LoginMannger.cpp */; };
 		D22912451D128367005C7167 /* LoginMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912401D128367005C7167 /* LoginMannger.cpp */; };
+		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
+		D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D22F1C181CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
@@ -265,8 +267,6 @@
 		D2B1A8E21CCDF0F400A20896 /* PlayerRight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A83F1CCDF0F300A20896 /* PlayerRight.cpp */; };
 		D2B1A8E51CCDF0F400A20896 /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8461CCDF0F300A20896 /* GameData.cpp */; };
 		D2B1A8E61CCDF0F400A20896 /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8461CCDF0F300A20896 /* GameData.cpp */; };
-		D2B1A8F71CCDF0F400A20896 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A85B1CCDF0F300A20896 /* CommandManage.cpp */; };
-		D2B1A8F81CCDF0F400A20896 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A85B1CCDF0F300A20896 /* CommandManage.cpp */; };
 		D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A85E1CCDF0F300A20896 /* MsgHandler.cpp */; };
 		D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A85E1CCDF0F300A20896 /* MsgHandler.cpp */; };
 		D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8601CCDF0F300A20896 /* NetworkManage.cpp */; };
@@ -394,6 +394,8 @@
 		D229123F1D128367005C7167 /* DropDownListBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownListBox.h; sourceTree = "<group>"; };
 		D22912401D128367005C7167 /* LoginMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoginMannger.cpp; sourceTree = "<group>"; };
 		D22912411D128367005C7167 /* LoginMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginMannger.h; sourceTree = "<group>"; };
+		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
+		D22912481D12C583005C7167 /* CommandManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandManage.h; sourceTree = "<group>"; };
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
@@ -568,8 +570,6 @@
 		D2B1A8451CCDF0F300A20896 /* DataStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStruct.h; sourceTree = "<group>"; };
 		D2B1A8461CCDF0F300A20896 /* GameData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameData.cpp; sourceTree = "<group>"; };
 		D2B1A8471CCDF0F300A20896 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
-		D2B1A85B1CCDF0F300A20896 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
-		D2B1A85C1CCDF0F300A20896 /* CommandManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandManage.h; sourceTree = "<group>"; };
 		D2B1A85D1CCDF0F300A20896 /* MsgConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgConfig.h; sourceTree = "<group>"; };
 		D2B1A85E1CCDF0F300A20896 /* MsgHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MsgHandler.cpp; sourceTree = "<group>"; };
 		D2B1A85F1CCDF0F300A20896 /* MsgHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgHandler.h; sourceTree = "<group>"; };
@@ -1277,8 +1277,8 @@
 		D2B1A85A1CCDF0F300A20896 /* server */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1A85B1CCDF0F300A20896 /* CommandManage.cpp */,
-				D2B1A85C1CCDF0F300A20896 /* CommandManage.h */,
+				D22912471D12C583005C7167 /* CommandManage.cpp */,
+				D22912481D12C583005C7167 /* CommandManage.h */,
 				D2B1A85D1CCDF0F300A20896 /* MsgConfig.h */,
 				D2B1A85E1CCDF0F300A20896 /* MsgHandler.cpp */,
 				D2B1A85F1CCDF0F300A20896 /* MsgHandler.h */,
@@ -1496,6 +1496,7 @@
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D2B1A8851CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
 				D2B1A8A31CCDF0F400A20896 /* InviteCell.cpp in Sources */,
+				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D2B1A8C71CCDF0F400A20896 /* HongbaoPride.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D2B1A8B31CCDF0F400A20896 /* UserInfo.cpp in Sources */,
@@ -1536,7 +1537,6 @@
 				D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D2B1A8CD1CCDF0F400A20896 /* Redwallet.cpp in Sources */,
 				D2B1A8A71CCDF0F400A20896 /* BoundPhone.cpp in Sources */,
-				D2B1A8F71CCDF0F400A20896 /* CommandManage.cpp in Sources */,
 				D28A4A1D1D056B4700741FD0 /* ResultLayer.cpp in Sources */,
 				D2B1A89D1CCDF0F400A20896 /* FriendInvite.cpp in Sources */,
 				D2B1A8B11CCDF0F400A20896 /* NickNameDialog.cpp in Sources */,
@@ -1607,7 +1607,6 @@
 				D28A4A201D056B4700741FD0 /* ResultScene.cpp in Sources */,
 				D2B1A8BE1CCDF0F400A20896 /* ChargeDiamond.cpp in Sources */,
 				D2B1A9001CCDF0F400A20896 /* ODSocket.cpp in Sources */,
-				D2B1A8F81CCDF0F400A20896 /* CommandManage.cpp in Sources */,
 				D2B1A8D21CCDF0F400A20896 /* Jong.cpp in Sources */,
 				D2B1A8AE1CCDF0F400A20896 /* HeadImageDialog.cpp in Sources */,
 				D2B1A8DC1CCDF0F400A20896 /* Player.cpp in Sources */,
@@ -1674,6 +1673,7 @@
 				D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D2B1A8981CCDF0F400A20896 /* TaskCell.cpp in Sources */,
 				D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
+				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */,
 				D2B1A8881CCDF0F400A20896 /* BillInfo.cpp in Sources */,
 				D2B1A8A01CCDF0F400A20896 /* FriendListView.cpp in Sources */,

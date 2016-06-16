@@ -92,3 +92,22 @@ void GAMEDATA::setGameResults(vector<GameResultData> results){
 	this->gameResults.clear();
 	this->gameResults = results;
 }
+
+
+FriendListData GAMEDATA::sortFriendList(FriendListData data){
+    std::vector<FriendInfo> tempList;
+    for (auto iter = data.friends.cbegin(); iter != data.friends.cend();)
+    {
+        FriendInfo info = *iter;
+        if(!info.isOnLine){
+            tempList.push_back(info);
+            data.friends.erase(iter);
+        }else{
+            iter++;
+        }
+    }
+    for(auto var:tempList){
+        data.friends.push_back(var);
+    }
+    return data;
+}

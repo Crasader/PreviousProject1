@@ -156,12 +156,17 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
         label->setPosition(Vec2(130, 25));
         cell->addChild(label);
         
-        Sprite* circle = Sprite::create("friend/online_icon.png");
+        Sprite* circle = Sprite::create("friend/offline_icon.png");
         circle->setPosition(350, 35);
         cell->addChild(circle);
-        Sprite* text = Sprite::create("friend/online.png");
+        Sprite* text = Sprite::create("friend/offline.png");
         text->setPosition(400,35);
         cell->addChild(text);
+        
+        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
+            circle->setTexture("friend/online_icon.png");
+            text->setTexture("friend/online.png");
+        }
         
         auto box = Sprite::create("friend/select_box.png");
         box->setPosition(620,35);

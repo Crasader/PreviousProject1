@@ -26,6 +26,7 @@ void ResultLayer::onEnter(){
     continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_READY_RESP, [=](EventCustom* event){
         std::string result  = static_cast<char*>(event->getUserData());
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
+             GAMEDATA::getInstance()->setContinueAgain(true);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
             GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
@@ -100,9 +101,9 @@ void ResultLayer::showWinAnim(){
         goldIcon->setTexture("mjitem/gold_iocn.png");
     }
     if(getheroData().lequandelta>0){
-        goldIcon->setPosition(356, 525);
+        goldIcon->setPosition(311, 535);
     }else{
-        goldIcon->setPosition(530, 525);
+        goldIcon->setPosition(530, 535);
     }
     addChild(goldIcon);
     goldIcon->setOpacity(77);
@@ -114,7 +115,7 @@ void ResultLayer::showWinAnim(){
     
     LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom?getheroData().jifendelta:getheroData().golddelta)->_string, "result/big_num_win.png", 52, 64, '0');
     if(getheroData().lequandelta>0){
-        goldNum->setPosition(380, 505);
+        goldNum->setPosition(335, 505);
     }else{
         goldNum->setPosition(600, 505);
     }
@@ -127,7 +128,7 @@ void ResultLayer::showWinAnim(){
     auto lequanIcon= Sprite::create("mjitem/lequan_icon.png");
     addChild(lequanIcon);
     if(getheroData().lequandelta>0){
-        lequanIcon->setPosition(701, 525);
+        lequanIcon->setPosition(731, 535);
         lequanIcon->setOpacity(77);
         lequanIcon->setScale(2.0f);
         lequanIcon->setVisible(false);
@@ -142,7 +143,7 @@ void ResultLayer::showWinAnim(){
     LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",getheroData().lequandelta )->_string, "result/big_num_win.png", 52, 64, '0');
     lequanNum->setVisible(false);
     if(getheroData().lequandelta>0){
-        lequanNum->setPosition(735, 505);
+        lequanNum->setPosition(765, 505);
         lequanNum->runAction(Sequence::create(DelayTime::create(32.0f/24),CallFunc::create([=](){
             lequanNum->setVisible(true);
         }),NULL));
@@ -492,9 +493,7 @@ void ResultLayer::updateTime(float dt){
 
 
 void ResultLayer::clickContinu(){
-    GAMEDATA::getInstance()->setContinueAgain(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
-    Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
 }
 
 void ResultLayer::clickQuit(){

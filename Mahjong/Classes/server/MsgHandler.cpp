@@ -1273,15 +1273,16 @@ void MsgHandler::friendListResp(std::string msg){
             info.image = temp["pic"].GetString();
             info.poxiaoId = temp["poxiaoId"].GetString();
             info.nickname = temp["nickname"].GetString();
-            std::string online =temp["isonline"].GetString();
-            info.isOnLine = (online =="0" ? false : true);
+            std::string online = temp["isonline"].GetString();
+            info.isOnLine = (online == "0" ? false : true);
             info.gold =temp["gold"].GetInt();
             info.diamond =temp["daimond"].GetInt();
             info.lockDiamond =temp["bangzuan"].GetInt();
             info.lequan =temp["lequan"].GetInt();
             lists.friends.push_back(info);
         }
-        GAMEDATA::getInstance()->setFriendList(lists);
+        
+        GAMEDATA::getInstance()->setFriendList(GAMEDATA::getInstance()->sortFriendList(lists));
     }
     postNotifyMessage(MSG_HERO_FRIEND_LIST, "");
 }

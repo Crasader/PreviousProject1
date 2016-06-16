@@ -26,6 +26,7 @@ public:
     vector<GameResultData> getGameResults();
     void setGameResults(vector<GameResultData> result);
     
+    FriendListData sortFriendList(FriendListData data);
     //服务端返回数据结构体
     CC_SYNTHESIZE(EnterRoomResp, enterRoomResp, EnterRoomResp);
     CC_SYNTHESIZE(OtherPlayedJong, otherPlayJong, OtherPlayJong);
