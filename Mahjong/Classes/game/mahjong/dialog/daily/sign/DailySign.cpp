@@ -31,7 +31,7 @@ void DailySign::onEnter(){
         for(int i=0;i<atoi(GAMEDATA::getInstance()->getTodaySignData().day.c_str());i++){
             Sprite* sp = (Sprite*)getChildByTag(200+i);
             DayCell* cell = (DayCell*)sp->getChildByTag(300+i);
-            cell->runAction(Sequence::create(DelayTime::create(4.0f),CallFunc::create([=](){
+            cell->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
                 cell->stopAllActions();
                 cell->showPropResult(GAMEDATA::getInstance()->getTodaySignData().pride.at(i));
             }), NULL));
@@ -45,7 +45,7 @@ void DailySign::onEnter(){
             auto an = Sprite::create();
             an->setPosition(sp->getPosition().x-10,sp->getPosition().y-100);
             addChild(an);
-            an->runAction(Sequence::create(DelayTime::create(3.8f),CallFunc::create([=](){
+            an->runAction(Sequence::create(DelayTime::create(2.8f),CallFunc::create([=](){
                 showLightAnim(an);
             }), DelayTime::create(1.0f),CallFunc::create([=](){
                 if( gold > 0 && diamond ==0 && lequan == 0){
