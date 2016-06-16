@@ -7,8 +7,8 @@
 #include "game/loading/Loading.h"
 #include "game/mahjong/splash/LoadResource.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
-#include "game/mahjong/splash/DropDownListBox.h"
-#include "game/mahjong/splash/LoginMannger.h"
+#include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
+#include "game/mahjong/splash/dropdownlist/LoginMannger.h"
 
 
 Scene* SplashScene::createScene()

@@ -1,5 +1,5 @@
-#include "game/mahjong/splash/DropDownListBox.h"
-#include "game/mahjong/splash/LoginMannger.h"
+#include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
+#include "game/mahjong/splash/dropdownlist/LoginMannger.h"
 #include "game/utils/Chinese.h"
 
 DropDownList::DropDownList(Sprite* label, Size size)
