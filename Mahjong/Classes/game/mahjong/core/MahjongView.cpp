@@ -16,6 +16,7 @@
 #include "game/mahjong/result/ResultScene.hpp"
 #include "game/mahjong/anim/LiuJuAnim.hpp"
 #include "game/mahjong/anim/OutFogAnim.hpp"
+ #include "game/utils/Audio.h"
 
 
 
@@ -682,18 +683,22 @@ void MahjongView::addJongPlayedListener(){
     otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
         if (seatId == ClientSeatId::left){
+            Audio::getInstance()->playMahjong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerLeft->drawLeftPlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerLeft->stopTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
+            Audio::getInstance()->playMahjong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerRight->drawRightPlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerRight->stopTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
+            Audio::getInstance()->playMahjong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerOpposite->drawOppositePlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerOpposite->stopTimeClockAnim();
         }
         else{
+            Audio::getInstance()->playMahjong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerHero->drawHeroPlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerHero->stopTimeClockAnim();
         }
