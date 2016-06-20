@@ -76,6 +76,8 @@ void Audio::prepare(){
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_NANFENG);
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_XIFENG);
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_BEIFENG);
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_BEIFENG);
 }
 
 void Audio::playMahjong(int type){
@@ -176,4 +178,48 @@ void Audio::playMahjong(int type){
         default:
             break;
     }
+}
+
+void Audio::playSoundChi(){
+    int ran = rand()%5;
+    switch (ran) {
+        case 0:
+            playSound(SOUND_MALE_CHI_1);
+            break;
+        case 1:
+            playSound(SOUND_MALE_CHI_2);
+            break;
+        case 2:
+            playSound(SOUND_MALE_CHI_3);
+            break;
+        case 3:
+            playSound(SOUND_MALE_CHI_4);
+            break;
+        case 4:
+            playSound(SOUND_MALE_CHI_5);
+            break;
+        default:
+            playSound(SOUND_MALE_CHI_1);
+            break;
+    }
+
+}
+
+void Audio::playSoundPeng(){
+    int ran = rand()%2;
+    switch (ran) {
+        case 0:
+            playSound(SOUND_MALE_PENG_1);
+            break;
+        case 1:
+            playSound(SOUND_MALE_PENG_2);
+            break;
+        default:
+            playSound(SOUND_MALE_PENG_1);
+            break;
+    }
+}
+
+void Audio::playSoundGang(){
+    playSound(SOUND_MALE_GANG);
 }

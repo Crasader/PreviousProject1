@@ -29,7 +29,7 @@ bool OutFogAnim::init(Point pos){
     }),DelayTime::create(6.0f/24),CallFunc::create([=](){
         removeFromParent();
     }), NULL));
-    
+    return true;
 }
 
 void OutFogAnim::showFogAnim(Sprite* sprite){

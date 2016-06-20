@@ -34,6 +34,14 @@
 #define SOUND_MALE_NANFENG "audio/male/xifeng.ogg"
 #define SOUND_MALE_XIFENG "audio/male/nanfeng.ogg"
 #define SOUND_MALE_BEIFENG "audio/male/beifeng.ogg"
+#define SOUND_MALE_CHI_1 "audio/male/chi_1.ogg"
+#define SOUND_MALE_CHI_2 "audio/male/chi_2.ogg"
+#define SOUND_MALE_CHI_3 "audio/male/chi_3.ogg"
+#define SOUND_MALE_CHI_4 "audio/male/chi_4.ogg"
+#define SOUND_MALE_CHI_5 "audio/male/chi_5.ogg"
+#define SOUND_MALE_PENG_1 "audio/male/peng_1.ogg"
+#define SOUND_MALE_PENG_2 "audio/male/peng_2.ogg"
+#define SOUND_MALE_GANG "audio/male/gang_1.ogg"
 
 #define SOUND_FAMEL_1WAN "audio/male/1wan.ogg"
 #define SOUND_FAMEL_2WAN "audio/male/2wan.ogg"
@@ -67,17 +75,24 @@
 #define SOUND_FEMALE_XIFENG "audio/female/nanfeng.ogg"
 #define SOUND_FEMALE_BEIFENG "audio/female/beifeng.ogg"
 
+
+
 class Audio{
 public:
 	static Audio* getInstance();
-	void playBGM(char* soundName);
-	void playSound(std::string soundName);
-    void playMahjong(int type);
+    void playBGM(char* soundName);
 	void pauseBGM();
+    void playMahjong(int type);
+    
+    void playSoundChi();
+    void playSoundPeng();
+    void playSoundGang();
+    
 	void prepare();
 	void setBGMValue(float value);
 	void setEffectValue(float value);
 private:
 	static Audio* m_instance;
+    void playSound(std::string soundName);
 };
 #endif

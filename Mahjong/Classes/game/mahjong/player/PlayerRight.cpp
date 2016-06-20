@@ -163,6 +163,7 @@ void PlayerRight::removeLastJong(){
 
 void PlayerRight::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
      setStateCpg(true);
+    Audio::getInstance()->playSoundChi();
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
     for (int j = 0; j < 2; j++){
         playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
@@ -187,6 +188,7 @@ void PlayerRight::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
 
 void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     setStateCpg(true);
+    Audio::getInstance()->playSoundPeng();
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
     for (int j = 0; j < 2; j++){
         playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
@@ -209,6 +211,7 @@ void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
 }
 
 void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
+    Audio::getInstance()->playSoundGang();
     if (data.flag == 2){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }

@@ -611,7 +611,7 @@ void PlayerHero::playedPokerAuto(bool send){
         spJong->setScale(1.0f);
         playerPlayedJongs.pushBack(spJong);
         playerHandJongs.eraseObject(spJong);
-        this->stopTimeClockAnim();
+        stopTimeClockAnim();
         isAllowPlay = false;
     });
     Sequence* seq = Sequence::create(spa, callback, NULL);
@@ -701,6 +701,7 @@ void PlayerHero::actionQi(){
 
 
 void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
+    Audio::getInstance()->playSoundChi();
     if (cpgResp.result == 1 || cpgResp.result == 2){
         Vector<Jong*> chiVector;
         //根据吃牌的位置显示,显示吃牌堆得形状
@@ -767,6 +768,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
 
 
 void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
+    Audio::getInstance()->playSoundPeng();
     std::vector<string> pengpai = StringUtil::split(cpg.peng, ",");
     Vector<Jong*> pengVector;
     for (int i = 0; i < pengpai.size(); i++){
@@ -850,6 +852,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
 }
 
 void PlayerHero::drawHeroMingGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
+    Audio::getInstance()->playSoundGang();
     std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
     Vector<Jong*> gangVector;
     for (int i = 0; i < gangpai.size(); i++){
@@ -912,6 +915,7 @@ void PlayerHero::drawHeroMingGang(HeroCpgRespData resp, PlayerCpgtData cpg, Play
 }
 
 void PlayerHero::drawPengGangAndAGang(PlayerCpgtData tingData){
+     Audio::getInstance()->playSoundGang();
     std::vector<string> gangpai = StringUtil::split(tingData.gang, ",");
     Vector<Jong*> gangVector;
     if (tingData.flag == 2){

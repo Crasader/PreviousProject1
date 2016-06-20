@@ -111,6 +111,11 @@ TableViewCell* FriendInvite::tableCellAtIndex(TableView *table, ssize_t idx)
         text->setPosition(390,35);
         cell->addChild(text);
         
+        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
+            circle->setTexture("friend/offline_icon.png");
+            text->setTexture("friend/offline.png");
+        }
+        
         auto box = Sprite::create("friend/select_box.png");
         box->setPosition(455,35);
         cell->addChild(box);
