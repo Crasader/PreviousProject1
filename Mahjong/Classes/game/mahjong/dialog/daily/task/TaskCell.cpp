@@ -152,7 +152,7 @@ void TaskCell::updateData(){
 			finishMenu->setVisible(false);
 			unfinish->setVisible(true);
 			revcieved->setVisible(false);
-            float rate =  res / (getMyTaskType() == task3 ? 2 : 3);
+            float rate =  1.0f*res / ((getMyTaskType() == task3 ? 2 : 3));
             if(rate>1){
                 rate =1;
             }

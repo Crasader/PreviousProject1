@@ -1,4 +1,5 @@
 #include "game/mahjong/dialog/setting/UserSetting.h"
+#include "game/utils/Audio.h"
 
 bool UserSetting::init(){
 	if (!BaseDialog::init()){
@@ -64,7 +65,7 @@ void UserSetting::drawDialog(){
     slide_control2->setMinimumValue(0.0f);//设置最小值
     slide_control2->setMaximumValue(100.0f);//设置最大值
     slide_control2->setValue(0.0f);//设置初始值
-    slide_control2->setTag(20);
+    slide_control2->setTag(30);
     slide_control2->addTargetWithActionForControlEvents(this,cccontrol_selector(UserSetting::slideCallback),Control::EventType::VALUE_CHANGED);//设置拖动回调
     slide_control2->setPosition(720,345);
     addChild(slide_control2);
@@ -87,9 +88,13 @@ void UserSetting::slideCallback(Object *sender, Control::EventType controlEvent)
 {
     auto slide_control = (ControlSlider*)sender;//通过回调参数sender 获得ControlSlider
     int current_value = slide_control->getValue();//获取slide当前的值
+    if(slide_control->getTag() == 20){
+        Audio::getInstance()->
+    }
     
-    char buf_str[16];
-    sprintf(buf_str,"%d",current_value);
+    if(slide_control->getTag() == 30){
+    
+    }
     
 }
 
