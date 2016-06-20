@@ -10,9 +10,7 @@
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "game/mahjong/anim/HupaiAnim.hpp"
-#include "game/mahjong/anim/ZimoAnim.hpp"
 #include "game/mahjong/anim/PlayerCpgAnim.hpp"
-#include "game/mahjong/anim/GangkaiAnim.hpp"
 #include "game/mahjong/result/ResultScene.hpp"
 #include "game/mahjong/anim/LiuJuAnim.hpp"
 #include "game/mahjong/anim/OutFogAnim.hpp"
@@ -756,18 +754,18 @@ void MahjongView::addGameResultListener(){
             }
         }
         if(zimoState){
-            ZimoAnim* zimo = ZimoAnim::create(seatId1);
-            addChild(zimo,999);
+            HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::zimoHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+            addChild(hupai,999);
         }else if(gangkaiState){
-            GangkaiAnim* kai = GangkaiAnim::create(seatId3, false);
-            addChild(kai,999);
+            HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::gangkaiHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+            addChild(hupai,999);
         }else if(qianggangState){
-            GangkaiAnim* kai = GangkaiAnim::create(seatId3, true);
-            addChild(kai,999);
+            HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::qianggangHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+            addChild(hupai,999);
         }
         else if(!isliuju){
             //判断胡牌的类型
-            HupaiAnim* hupai = HupaiAnim::create(atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+            HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::putongHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
             addChild(hupai,999);
         }else{
             //流局动画

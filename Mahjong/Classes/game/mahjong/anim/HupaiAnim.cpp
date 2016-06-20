@@ -11,9 +11,9 @@
 #include "game/utils/SeatIdUtil.h"
 #include "game/mahjong/core/MahjongView.h"
 
-HupaiAnim*  HupaiAnim::create(int jongType,int seatId1,std::vector<int> seatId2){
+HupaiAnim*  HupaiAnim::create(MahjongHuType hutype,int jongType,int seatId1,std::vector<int> seatId2){
     HupaiAnim* hupai = new HupaiAnim();
-    if(hupai&&hupai->init(jongType,seatId1,seatId2)){
+    if(hupai&&hupai->init(hutype,jongType,seatId1,seatId2)){
         hupai->autorelease();
         return hupai;
     }
@@ -21,7 +21,7 @@ HupaiAnim*  HupaiAnim::create(int jongType,int seatId1,std::vector<int> seatId2)
     return NULL;
 }
 
-bool HupaiAnim::init( int jongType,int seatId1,std::vector<int> seatId2){
+bool HupaiAnim::init(MahjongHuType hutype,int jongType,int seatId1,std::vector<int> seatId2){
     if(!Layer::init()){
         return false;
     }
@@ -29,12 +29,12 @@ bool HupaiAnim::init( int jongType,int seatId1,std::vector<int> seatId2){
         for(int i=0;i<seatId2.size();i++){
             showDianpaoAnim(seatId1,seatId2.at(i),jongType);
             schedule([=](float dt){
-                showHuAnim(seatId2.at(i));
-            }, 0, 0, 0.5f,"helle");
+                showHuAnim(hutype,seatId2.at(i));
+            }, 0, 0, 0.5f,"helle233");
         }
     }else{
         schedule([=](float dt){
-            showHuAnim(seatId1);
+            showHuAnim(hutype,seatId1);
         }, 0, 0, 0.5f,"helle");
     }
 
@@ -93,7 +93,7 @@ void HupaiAnim::showPokersLight(int seatId){
 
 
 
-void HupaiAnim::showHuAnim(int seatid){
+void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     
     auto bgLight = Sprite::create("gameview/bg_light_red.png");
     bgLight->setPosition(getPosbySeat(seatid));

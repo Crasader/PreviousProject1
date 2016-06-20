@@ -13,13 +13,20 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+enum MahjongHuType{
+    zimoHu,
+    gangkaiHu,
+    qianggangHu,
+    putongHu
+};
+
 class HupaiAnim : public Layer{
 public:
-    static HupaiAnim* create(int jongType,int seatId1,std::vector<int> seatId2);
-    virtual bool init(int jongType,int seatId1,std::vector<int> seatId2);
+    static HupaiAnim* create(MahjongHuType hutype,int jongType,int seatId1,std::vector<int> seatId2);
+    virtual bool init(MahjongHuType hutype,int jongType,int seatId1,std::vector<int> seatId2);
 private:
     void showPokersLight(int seatId);
-    void showHuAnim(int seatid);
+    void showHuAnim(MahjongHuType hutype,int seatid);
     void showDianpaoAnim(int seatId1,int seatId2,int jong);
     Point getPosbySeat(int seatId);
     void showLightAnim(Sprite* sprite);

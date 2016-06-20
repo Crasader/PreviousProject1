@@ -161,8 +161,6 @@
 		D2B1A8721CCDF0F400A20896 /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B31CCDF0F300A20896 /* Loading.cpp */; };
 		D2B1A8731CCDF0F400A20896 /* DealJongAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B71CCDF0F300A20896 /* DealJongAnim.cpp */; };
 		D2B1A8741CCDF0F400A20896 /* DealJongAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B71CCDF0F300A20896 /* DealJongAnim.cpp */; };
-		D2B1A8751CCDF0F400A20896 /* GangkaiAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B91CCDF0F300A20896 /* GangkaiAnim.cpp */; };
-		D2B1A8761CCDF0F400A20896 /* GangkaiAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B91CCDF0F300A20896 /* GangkaiAnim.cpp */; };
 		D2B1A8771CCDF0F400A20896 /* HupaiAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7BB1CCDF0F300A20896 /* HupaiAnim.cpp */; };
 		D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7BB1CCDF0F300A20896 /* HupaiAnim.cpp */; };
 		D2B1A8791CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7BD1CCDF0F300A20896 /* PlayerCpgAnim.cpp */; };
@@ -281,8 +279,6 @@
 		D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8681CCDF0F300A20896 /* stdafx.cpp */; };
 		D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
-		D2B1A90B1CCDF78300A20896 /* ZimoAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A9091CCDF78300A20896 /* ZimoAnim.cpp */; };
-		D2B1A90C1CCDF78300A20896 /* ZimoAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A9091CCDF78300A20896 /* ZimoAnim.cpp */; };
 		D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */; };
 		D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */; };
 		D2BDE3B71CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3B51CEC367D00754AC0 /* OtherPlayerInfo.cpp */; };
@@ -463,8 +459,6 @@
 		D2B1A7B41CCDF0F300A20896 /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		D2B1A7B71CCDF0F300A20896 /* DealJongAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DealJongAnim.cpp; sourceTree = "<group>"; };
 		D2B1A7B81CCDF0F300A20896 /* DealJongAnim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealJongAnim.h; sourceTree = "<group>"; };
-		D2B1A7B91CCDF0F300A20896 /* GangkaiAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GangkaiAnim.cpp; sourceTree = "<group>"; };
-		D2B1A7BA1CCDF0F300A20896 /* GangkaiAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GangkaiAnim.hpp; sourceTree = "<group>"; };
 		D2B1A7BB1CCDF0F300A20896 /* HupaiAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HupaiAnim.cpp; sourceTree = "<group>"; };
 		D2B1A7BC1CCDF0F300A20896 /* HupaiAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HupaiAnim.hpp; sourceTree = "<group>"; };
 		D2B1A7BD1CCDF0F300A20896 /* PlayerCpgAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerCpgAnim.cpp; sourceTree = "<group>"; };
@@ -586,8 +580,6 @@
 		D2B1A86B1CCDF0F300A20896 /* tchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tchar.h; sourceTree = "<group>"; };
 		D2B1A86D1CCDF0F400A20896 /* UserData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserData.cpp; sourceTree = "<group>"; };
 		D2B1A86E1CCDF0F400A20896 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
-		D2B1A9091CCDF78300A20896 /* ZimoAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZimoAnim.cpp; sourceTree = "<group>"; };
-		D2B1A90A1CCDF78300A20896 /* ZimoAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZimoAnim.hpp; sourceTree = "<group>"; };
 		D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MjGameScene.cpp; sourceTree = "<group>"; };
 		D2BDE3AB1CEB10E100754AC0 /* MjGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MjGameScene.h; sourceTree = "<group>"; };
 		D2BDE3B51CEC367D00754AC0 /* OtherPlayerInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OtherPlayerInfo.cpp; sourceTree = "<group>"; };
@@ -942,14 +934,10 @@
 			children = (
 				D2B1A7B71CCDF0F300A20896 /* DealJongAnim.cpp */,
 				D2B1A7B81CCDF0F300A20896 /* DealJongAnim.h */,
-				D2B1A7B91CCDF0F300A20896 /* GangkaiAnim.cpp */,
-				D2B1A7BA1CCDF0F300A20896 /* GangkaiAnim.hpp */,
 				D2B1A7BB1CCDF0F300A20896 /* HupaiAnim.cpp */,
 				D2B1A7BC1CCDF0F300A20896 /* HupaiAnim.hpp */,
 				D2B1A7BD1CCDF0F300A20896 /* PlayerCpgAnim.cpp */,
 				D2B1A7BE1CCDF0F300A20896 /* PlayerCpgAnim.hpp */,
-				D2B1A9091CCDF78300A20896 /* ZimoAnim.cpp */,
-				D2B1A90A1CCDF78300A20896 /* ZimoAnim.hpp */,
 				D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */,
 				D2A175271CE0562A00CEDAE4 /* HuaAnim.hpp */,
 				D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */,
@@ -1506,7 +1494,6 @@
 				D2B1A8911CCDF0F400A20896 /* DailySign.cpp in Sources */,
 				D2B1A8C11CCDF0F400A20896 /* ExchangePropCell.cpp in Sources */,
 				D2B1A8791CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
-				D2B1A8751CCDF0F400A20896 /* GangkaiAnim.cpp in Sources */,
 				D2B1A87D1CCDF0F400A20896 /* GuiLayer.cpp in Sources */,
 				D20C391E1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */,
 				D2B1A8BB1CCDF0F400A20896 /* UserSetting.cpp in Sources */,
@@ -1547,7 +1534,6 @@
 				D28A4A1F1D056B4700741FD0 /* ResultScene.cpp in Sources */,
 				D2B1A8C51CCDF0F400A20896 /* FirstChageDialog.cpp in Sources */,
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
-				D2B1A90B1CCDF78300A20896 /* ZimoAnim.cpp in Sources */,
 				D239A55C1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */,
 				D2B1A8A11CCDF0F400A20896 /* FriendRoom.cpp in Sources */,
 				D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
@@ -1655,7 +1641,6 @@
 				D2B1A8C41CCDF0F400A20896 /* FaHongbao.cpp in Sources */,
 				D229123B1D128103005C7167 /* UserRegister.cpp in Sources */,
 				D2B1A89E1CCDF0F400A20896 /* FriendInvite.cpp in Sources */,
-				D2B1A8761CCDF0F400A20896 /* GangkaiAnim.cpp in Sources */,
 				D2B1A8E01CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D2B1A8941CCDF0F400A20896 /* DayCell.cpp in Sources */,
 				D2B1A8D01CCDF0F400A20896 /* Trusteeship.cpp in Sources */,
@@ -1688,7 +1673,6 @@
 				D2B1A8D81CCDF0F400A20896 /* PlayerBase.cpp in Sources */,
 				D28A4A4B1D0D40C400741FD0 /* GoldNotEnoughDialog.cpp in Sources */,
 				D20C391B1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */,
-				D2B1A90C1CCDF78300A20896 /* ZimoAnim.cpp in Sources */,
 				D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D28A4A331D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
 				D22912451D128367005C7167 /* LoginMannger.cpp in Sources */,
