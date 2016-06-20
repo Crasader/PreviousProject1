@@ -137,6 +137,7 @@ Point PlayerRight::getPlayedJongPos(int count){
 
 
 void PlayerRight::drawRightPlayerPlay(int type){
+     Audio::getInstance()->playMahjong(type);
     drawPlayedJong(type);
     showCurrentBigJong(type, Vec2(980, 400));
 }

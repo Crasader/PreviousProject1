@@ -6,6 +6,7 @@
 #include "game/mahjong/state/GameData.h"
 #include "game/utils/StringUtil.h"
 #include "game/utils/SeatIdUtil.h"
+#include "game/utils/Audio.h"
 
 USING_NS_CC;
 

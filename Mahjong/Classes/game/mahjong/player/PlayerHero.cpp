@@ -127,6 +127,7 @@ Jong* PlayerHero::getTouchJong(Touch *touch){
 
 
 void PlayerHero::playPokerByHand(Jong* jong){
+    Audio::getInstance()->playMahjong(jong->getJongType());//音效
     this->stopTimeClockAnim();
     Point startPoint = jong->getPosition();
     Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
@@ -587,6 +588,7 @@ void PlayerHero::playedPokerAuto(bool send){
     selectJong = NULL;
     resetHandJongsY(NULL);
     Jong* spJong = playerHandJongs.at(playerHandJongs.size() - 1);
+    Audio::getInstance()->playMahjong(spJong->getJongType());//音效
     Point startPoint = spJong->getPosition();
     Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
     float sx = startPoint.x;
