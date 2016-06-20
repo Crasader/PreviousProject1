@@ -31,9 +31,11 @@ bool LobbyScene::init()
 
 void LobbyScene::onEnter(){
     Scene::onEnter();
+    updateHeroInfo();
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
     addCustomEventListener();
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
+    
 }
 
 

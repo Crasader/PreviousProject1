@@ -89,11 +89,11 @@ void UserSetting::slideCallback(Object *sender, Control::EventType controlEvent)
     auto slide_control = (ControlSlider*)sender;//通过回调参数sender 获得ControlSlider
     int current_value = slide_control->getValue();//获取slide当前的值
     if(slide_control->getTag() == 20){
-        Audio::getInstance()->
+        Audio::getInstance()->setBGMValue(current_value/100.0f);
     }
     
     if(slide_control->getTag() == 30){
-    
+        Audio::getInstance()->setEffectValue(current_value/100.0f);
     }
     
 }
