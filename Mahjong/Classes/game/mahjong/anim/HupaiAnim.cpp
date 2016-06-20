@@ -146,42 +146,79 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     }), Spawn::create(ScaleTo::create(4.0f/24,1.0),FadeTo::create(3.0f/24,255), NULL),NULL);
     bg2->runAction(sequ3);
     
-    auto huText = Sprite::create("gameview/font_hu.png");
-    huText->setPosition(getPosbySeat(seatid));
-    addChild(huText);
-    huText->setOpacity(77);
-    huText->setScale(2.2);
     
-    auto sequ4 =Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
-        showPokersLight(seatid);
-        ((MahjongView*)getParent())->showHandPokerOver(seatid);
-    }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL);
-    huText->runAction(sequ4);
-    
-    //胡牌动画转向
-//    if(seatid == ClientSeatId::left){
-//        bgLight->setRotation(90);
-//        bg1->setRotation(90);
-//        light1->setRotation(90);
-//        bg2->setRotation(90);
-//        huText->setRotation(90);
-//        spec->setRotation(90);
-//    }else if(seatid == ClientSeatId::opposite){
-//        bgLight->setRotation(180);
-//         bg1->setRotation(180);
-//        light1->setRotation(180);
-//        bg2->setRotation(180);
-//        huText->setRotation(180);
-//        spec->setRotation(180);
-//    }else if(seatid == ClientSeatId::right){
-//        bgLight->setRotation(270);
-//         bg1->setRotation(270);
-//        light1->setRotation(270);
-//        bg2->setRotation(270);
-//        huText->setRotation(270);
-//        spec->setRotation(270);
-//    }
-   
+    if(hutype == MahjongHuType::gangkaiHu){
+        auto gang = Sprite::create("gameview/gang_kai.png");
+        gang->setPosition(getPosbySeat(seatid));
+        addChild(gang);
+        gang->setVisible(false);
+        gang->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+            showPokersLight(seatid);
+            ((MahjongView*)getParent())->showHandPokerOver(seatid);
+        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        
+        auto kai = Sprite::create("gameview/gang_kai2.png");
+        kai->setPosition(getPosbySeat(seatid));
+        addChild(kai);
+        kai->setVisible(false);
+        kai->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+            showPokersLight(seatid);
+            ((MahjongView*)getParent())->showHandPokerOver(seatid);
+        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+    }else if(hutype == MahjongHuType::qianggangHu){
+        auto gang = Sprite::create("gameview/qg_font_qiang.png");
+        gang->setPosition(getPosbySeat(seatid));
+        addChild(gang);
+        gang->setVisible(false);
+        gang->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+            showPokersLight(seatid);
+            ((MahjongView*)getParent())->showHandPokerOver(seatid);
+        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        
+        auto kai = Sprite::create("gameview/qg_font_gang.png");
+        kai->setPosition(getPosbySeat(seatid));
+        addChild(kai);
+        kai->setVisible(false);
+        kai->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+            showPokersLight(seatid);
+            ((MahjongView*)getParent())->showHandPokerOver(seatid);
+        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        
+    }else if(hutype == MahjongHuType::zimoHu){
+        auto fontZi = Sprite::create("gameview/font_zi.png");
+        fontZi->setPosition(getPosbySeat(seatid));
+        fontZi->setVisible(false);
+        fontZi->setScale(1.6f);
+        fontZi->setOpacity(80);
+        addChild(fontZi,1);
+        fontZi->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+            showPokersLight(seatid);
+            ((MahjongView*)getParent())->showHandPokerOver(seatid);
+        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        
+        auto fontMo = Sprite::create("gameview/font_mo.png");
+        fontMo->setPosition(getPosbySeat(seatid));
+        fontMo->setVisible(false);
+        fontMo->setScale(1.6f);
+        fontMo->setOpacity(80);
+        addChild(fontMo,1);
+        fontMo->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+            showPokersLight(seatid);
+            ((MahjongView*)getParent())->showHandPokerOver(seatid);
+        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        
+    }else if(hutype == MahjongHuType::putongHu){
+        auto huText = Sprite::create("gameview/font_hu.png");
+        huText->setPosition(getPosbySeat(seatid));
+        addChild(huText);
+        huText->setOpacity(77);
+        huText->setScale(2.2);
+        auto sequ4 =Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+            showPokersLight(seatid);
+            ((MahjongView*)getParent())->showHandPokerOver(seatid);
+        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL);
+        huText->runAction(sequ4);
+    }
     
     auto remove = Sprite::create();
     addChild(remove);
