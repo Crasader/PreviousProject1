@@ -26,7 +26,7 @@ void QuitRoomDialog::showDialog(){
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg);
- 
+    
     auto quitBg = Sprite::create("common/dialog_bg_small.png");
     quitBg->setPosition(640,360);
     addChild(quitBg);
@@ -60,7 +60,8 @@ void QuitRoomDialog::contiueGame(){
 
 
 void QuitRoomDialog::quitRoom(){
-        GAMEDATA::getInstance()->clearPlayersInfo();
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+    GAMEDATA::getInstance()->clearPlayersInfo();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
 }

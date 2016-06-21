@@ -82,5 +82,6 @@ private:
     void quickAddFriendResp(std::string msg);
     void getAllRedWalletPushResp(std::string msg);
     void getLequanExchangeResp(std::string msg);
+    void getPlayerInfoResp(std::string msg);
 };
 #endif

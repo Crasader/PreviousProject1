@@ -31,11 +31,11 @@ bool LobbyScene::init()
 
 void LobbyScene::onEnter(){
     Scene::onEnter();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     updateHeroInfo();
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
     addCustomEventListener();
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
-    
 }
 
 
@@ -60,6 +60,7 @@ void LobbyScene::onExit(){
     _eventDispatcher->removeEventListener(openFriendRoomListener);
     _eventDispatcher->removeEventListener(friendInviteListener);
     _eventDispatcher->removeEventListener(updateHeroInfoListener);
+    _eventDispatcher->removeEventListener(heroInfoListener);
 }
 
 void LobbyScene::updateHeroInfo(){
@@ -439,6 +440,10 @@ void LobbyScene::addCustomEventListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(updateHeroInfoListener, 1);
     
+    heroInfoListener = EventListenerCustom::create(MSG_PLAYER_INFO_RESP, [=](EventCustom* event){
+        updateHeroInfo();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroInfoListener, 1);
 }
 
 

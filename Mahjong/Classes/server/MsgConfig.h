@@ -58,6 +58,8 @@
 #define MSGCODE_HONGBAO_GETED_REQUEST  146// 红包被领取情况获取奖励请求{code:146,poxiaoId:"456"}
 #define MSGCODE_HONGBAO_GETED_RESPONSE  147//红包被领取情况获取奖励回复{code:147,poxiaoId:"456",result:"1"}
 #define MSGCODE_FIND_PASSWORD_REQUEST  148// 找回密码请求{code:148,account:"真心常在",mobile:"131111111"}
+#define MSGCODE_GETINFO_REQUEST  149// 获取用户信息请求{code:140,poxiaoId:poxiaoId}
+#define MSGCODE_GETINFO_RESPONSE  150// 获取用户信息回复{code:141,poxiaoId:poxiaoId,lequan:11,bangzuan:22,diamond:33,gold:55,jifen:0}
 
 #define MSGCODE_INTO_ROOMSTYLE_REQUEST  1000 //进入房间请求{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 #define MSGCODE_INTO_ROOMSTYLE_RESPONSE 1001 //进入房间回复{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]} result1为成功 2为金币低于下限 3为金币高于上线 4为其他错误
@@ -259,4 +261,5 @@
 #define MSG_RECIVE_RED_WALLET_PSUH "msg_recive_red_wallet_resp_push"
 #define MSG_PLAYER_LEQUAN_EXCHANGE "msg_player_lequan_exchange"
 #define MSG_HERO_READY_RESP "msg_hero_ready_resp"
+#define MSG_PLAYER_INFO_RESP "msg_player_info_resp"
 #endif

@@ -67,7 +67,7 @@ public:
     std::string getDiamondChangeListCommand();
     std::string getLequanChangeListCommand();
     std::string getLequanChangeCommand(std::string propId,std::string phone,std::string name,std::string address);
-    std::string testQiniu();
+    std::string getPlayerInfoCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

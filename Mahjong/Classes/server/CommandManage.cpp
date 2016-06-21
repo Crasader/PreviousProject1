@@ -530,12 +530,10 @@ std::string CommandManage::getLequanChangeCommand(std::string propId,std::string
     return commandString(keyValue);
 }
 
-std::string CommandManage::testQiniu(){
+std::string CommandManage::getPlayerInfoCommand(){
     std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("key", "my-nodejs-logo.png"));
-    keyValue.insert(map<string, string>::value_type("token", "Rx3HPZ0AYIYHj4qVSGrGAbRX7MTVaNOx_UGNaRtZ:G3xXZjOmoWHHANqdEkT1vDJOhgM=:eyJzY29wZSI6InBveGlhby1yZXNvdXJjZTpteS1ub2RlanMtbG9nby5wbmciLCJkZWFkbGluZSI6MTQ2NTk4NjAyMn0="));
-    keyValue.insert(map<string, string>::value_type("x:username", ""));
-    keyValue.insert(map<string, string>::value_type("file", ""));
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_GETINFO_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     return commandString(keyValue);
 }
 

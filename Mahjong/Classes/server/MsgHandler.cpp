@@ -414,6 +414,10 @@ void MsgHandler::distribute(int code, std::string msg){
             getLequanExchangeResp(msg);
             break;
         };
+        case MSGCODE_GETINFO_RESPONSE:{
+            getPlayerInfoResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2055,4 +2059,32 @@ void MsgHandler::getLequanExchangeResp(std::string msg){
     postNotifyMessage(MSG_PLAYER_LEQUAN_EXCHANGE, "");
 }
 
-
+void MsgHandler::getPlayerInfoResp(std::string msg){
+    //{code:150,poxiaoId:poxiaoId,lequan:11,bangzuan:22,diamond:33,gold:55,jifen:0}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("lequan")){
+        const rapidjson::Value &lequan = _mDoc["lequan"];
+        UserData::getInstance()->setTicket(lequan.GetInt());
+    }
+    if(_mDoc.HasMember("bangzuan")){
+        const rapidjson::Value &bangzuan = _mDoc["bangzuan"];
+        UserData::getInstance()->setLockDiamond(bangzuan.GetInt());
+    }
+    if(_mDoc.HasMember("diamond")){
+        const rapidjson::Value &diamond = _mDoc["diamond"];
+        UserData::getInstance()->setDiamond(diamond.GetInt());
+    }
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        UserData::getInstance()->setGold(gold.GetInt());
+    }
+    if(_mDoc.HasMember("jifen")){
+        const rapidjson::Value &jifen = _mDoc["jifen"];
+        UserData::getInstance()->setScore(jifen.GetInt());
+    }
+    postNotifyMessage(MSG_PLAYER_INFO_RESP, "");
+    
+}

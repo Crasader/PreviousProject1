@@ -791,8 +791,20 @@ void MahjongView::showHuPaiXing(std::string paixing){
     if(paixing==""){
         return;
     }
+    
+    float posY = 260;
+    //判断是不是自己胡了
+    vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
+    for(auto var : results){
+        if(var.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+            if(var.result == 1||var.result == 3){
+                posY=520;
+            }
+        }
+    }
     auto paixinBg = Sprite::create("result/second_bg.png");
-    paixinBg->setPosition(640,360);
+    paixinBg->setScaleY(1.4f);
+    paixinBg->setPosition(640,posY);
     addChild(paixinBg,999);
     paixinBg->setOpacity(77);
     paixinBg->runAction(Sequence::create(FadeTo::create(3.0/24, 255), NULL));
@@ -803,12 +815,12 @@ void MahjongView::showHuPaiXing(std::string paixing){
         addChild(xing,999);
         xing->setOpacity(77);
         xing->setScale(3.0f);
-        xing->setPosition(640 - 60*(pais.size()-1)+i*120,360);
+        xing->setPosition(640 - 60*(pais.size()-1)+i*120,posY);
         xing->runAction(Sequence::create(DelayTime::create(i*(5.0f/24)),Spawn::create(ScaleTo::create(3.0/24, 0.8f),FadeTo::create(3.0f/24, 255), NULL),ScaleTo::create(2.0/24, 1.0f), NULL));
     }
     //光效动画
-    Point pos1 = Point(200,360);
-    Point pos2 = Point(1000,360);
+    Point pos1 = Point(200,posY);
+    Point pos2 = Point(1000,posY);
     Sprite* guangXiao1 = Sprite::create("result/hupai_light.png");
     guangXiao1->setPosition(pos1);
     guangXiao1->setOpacity(77);
@@ -1187,3 +1199,5 @@ void MahjongView::addPlayerRemoveListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerRemoveListener, 1);
     
 }
+
+

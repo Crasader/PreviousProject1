@@ -119,6 +119,5 @@ private:
 	void addFriendInviteMeListener();
 	void addEnterFriendRoomListener();
     void addPlayerRemoveListener();
-	
 };
 #endif
