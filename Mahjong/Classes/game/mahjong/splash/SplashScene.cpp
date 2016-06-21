@@ -29,7 +29,7 @@ bool SplashScene::init()
     //    LoadResource* loda = LoadResource::create();
     //    addChild(loda);
     Audio::getInstance()->prepare();
-    Audio::getInstance()->playBGM(BACKGORUNDMUSIC);
+    Audio::getInstance()->playBGM();
     //draw scene
     drawLonginScene();
     //add event listener

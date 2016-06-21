@@ -164,7 +164,7 @@ void PlayerLeft::removeLastJong(){
 
 void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
     setStateCpg(true);
-    Audio::getInstance()->playSoundChi();
+    Audio::getInstance()->playSoundChi(1);
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
     for (int j = 0; j < 2; j++)
     {

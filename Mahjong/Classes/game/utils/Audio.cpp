@@ -7,219 +7,703 @@
 Audio* Audio::m_instance = nullptr;
 
 Audio* Audio::getInstance(){
-	if(m_instance == nullptr){
-		m_instance = new Audio();
-	}
-	return m_instance;
+    if(m_instance == nullptr){
+        m_instance = new Audio();
+    }
+    return m_instance;
 }
 
-void Audio::playBGM(char* soundName){
-	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(soundName,true);
-
+void Audio::playBGM(){
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("audio/mahjong_bgm.mp3",true);
+    
 }
 
 void Audio::pauseBGM()
 {
-	CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
-void Audio::playSound(std::string soundName){
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
-}
+
 
 void Audio::setBGMValue(float value)
 {
-	CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(value);
+    CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(value);
 }
 
 void Audio::setEffectValue(float value)
 {
-	CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(value);
+    CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(value);
 }
 
-void Audio::prepare(){
-    setEffectValue(1.0);
-    setBGMValue(0.5);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BACKGORUNDMUSIC);
-    
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_1WAN);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_2WAN);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_2WAN);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_4WAN);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_5WAN);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_6WAN);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_7WAN);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_8WAN);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_9WAN);
 
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_1TONG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_2TONG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_2TONG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_4TONG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_5TONG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_6TONG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_7TONG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_8TONG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_9TONG);
-    
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_1TIAO);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_2TIAO);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_2TIAO);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_4TIAO);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_5TIAO);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_6TIAO);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_7TIAO);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_8TIAO);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_9TIAO);
-    
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_DONGFENG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_NANFENG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_XIFENG);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_BEIFENG);
-    
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SOUND_MALE_BEIFENG);
-}
 
 void Audio::playMahjong(int type){
     switch (type) {
         case JongEnum::wan_1:
-            playSound(SOUND_MALE_1WAN);
+            playSoundWan1();
             break;
         case JongEnum::wan_2:
-            playSound(SOUND_MALE_2WAN);
+            playSoundWan2();
             break;
         case JongEnum::wan_3:
-            playSound(SOUND_MALE_3WAN);
+            playSoundWan3();
             break;
         case JongEnum::wan_4:
-            playSound(SOUND_MALE_4WAN);
+            playSoundWan4();
             break;
         case JongEnum::wan_5:
-            playSound(SOUND_MALE_5WAN);
+            playSoundWan5();
             break;
         case JongEnum::wan_6:
-            playSound(SOUND_MALE_6WAN);
+            playSoundWan6();
             break;
         case JongEnum::wan_7:
-            playSound(SOUND_MALE_7WAN);
+            playSoundWan7();
             break;
         case JongEnum::wan_8:
-            playSound(SOUND_MALE_8WAN);
+            playSoundWan8();
             break;
         case JongEnum::wan_9:
-            playSound(SOUND_MALE_9WAN);
+            playSoundWan9();
             break;
         case JongEnum::tiao_1:
-            playSound(SOUND_MALE_1TIAO);
+            playSoundTiao1();
             break;
         case JongEnum::tiao_2:
-            playSound(SOUND_MALE_2TIAO);
+            playSoundTiao2();
             break;
         case JongEnum::tiao_3:
-            playSound(SOUND_MALE_3TIAO);
+            playSoundTiao3();
             break;
         case JongEnum::tiao_4:
-            playSound(SOUND_MALE_4TIAO);
+            playSoundTiao4();
             break;
         case JongEnum::tiao_5:
-            playSound(SOUND_MALE_5TIAO);
+            playSoundTiao5();
             break;
         case JongEnum::tiao_6:
-            playSound(SOUND_MALE_6TIAO);
+            playSoundTiao6();
             break;
         case JongEnum::tiao_7:
-            playSound(SOUND_MALE_7TIAO);
+            playSoundTiao7();
             break;
         case JongEnum::tiao_8:
-            playSound(SOUND_MALE_8TIAO);
+            playSoundTiao8();
             break;
         case JongEnum::tiao_9:
-            playSound(SOUND_MALE_9TIAO);
+            playSoundTiao9();
             break;
         case JongEnum::tong_1:
-            playSound(SOUND_MALE_1TONG);
+            playSoundTong1();
             break;
         case JongEnum::tong_2:
-            playSound(SOUND_MALE_2TONG);
+            playSoundTong2();
             break;
         case JongEnum::tong_3:
-            playSound(SOUND_MALE_3TONG);
+            playSoundTong3();
             break;
         case JongEnum::tong_4:
-            playSound(SOUND_MALE_4TONG);
+            playSoundTong4();
             break;
         case JongEnum::tong_5:
-            playSound(SOUND_MALE_5TONG);
+            playSoundTong5();
             break;
         case JongEnum::tong_6:
-            playSound(SOUND_MALE_6TONG);
+            playSoundTong6();
             break;
         case JongEnum::tong_7:
-            playSound(SOUND_MALE_7TONG);
+            playSoundTong7();
             break;
         case JongEnum::tong_8:
-            playSound(SOUND_MALE_8TONG);
+            playSoundTong8();
             break;
         case JongEnum::tong_9:
-            playSound(SOUND_MALE_9TONG);
+            playSoundTong9();
             break;
         case JongEnum::east :
-            playSound(SOUND_MALE_DONGFENG);
+            playSoundEast();
             break;
         case JongEnum::west:
-            playSound(SOUND_MALE_XIFENG);
+            playSoundWest();
             break;
         case JongEnum::south:
-            playSound(SOUND_MALE_NANFENG);
+            playSoundSouth();
             break;
         case JongEnum::north:
-            playSound(SOUND_MALE_BEIFENG);
+            playSoundNorth();
             break;
         default:
             break;
     }
 }
 
-void Audio::playSoundChi(){
+void Audio::playSoundChi(int type){
     int ran = rand()%5;
     switch (ran) {
         case 0:
-            playSound(SOUND_MALE_CHI_1);
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/chi_1.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/chi_1.ogg");}
             break;
         case 1:
-            playSound(SOUND_MALE_CHI_2);
-            break;
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/chi_2.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/chi_2.ogg");}            break;
         case 2:
-            playSound(SOUND_MALE_CHI_3);
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/chi_3.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/chi_3.ogg");}
             break;
         case 3:
-            playSound(SOUND_MALE_CHI_4);
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/chi_4.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/chi_4.ogg");}
             break;
         case 4:
-            playSound(SOUND_MALE_CHI_5);
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/chi_5.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/chi_5.ogg");}
             break;
         default:
-            playSound(SOUND_MALE_CHI_1);
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/chi_1.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/chi_1.ogg");}
             break;
     }
-
+    
 }
 
 void Audio::playSoundPeng(){
     int ran = rand()%2;
     switch (ran) {
         case 0:
-            playSound(SOUND_MALE_PENG_1);
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/peng_1.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/peng_1.ogg");}
             break;
         case 1:
-            playSound(SOUND_MALE_PENG_2);
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/peng_2.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/peng_2.ogg");}
             break;
         default:
-            playSound(SOUND_MALE_PENG_1);
+            if(UserData::getInstance()->getGender()==0){
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/peng_1.ogg");}
+            else{
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/peng_1.ogg");}
             break;
     }
 }
 
 void Audio::playSoundGang(){
-    playSound(SOUND_MALE_GANG);
+    
+    if(UserData::getInstance()->getGender()==0){
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/gang_1.ogg");}
+    else{
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/female/gang_1.ogg");}
 }
+
+
+void Audio::playSoundWan1(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/1wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/1wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundWan2(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/2wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/2wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
+}
+
+void Audio::playSoundWan3(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/3wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/3wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
+}
+
+void Audio::playSoundWan4(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/4wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/4wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
+}
+
+void Audio::playSoundWan5(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/5wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/5wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
+}
+
+void Audio::playSoundWan6(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/6wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/6wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
+}
+
+void Audio::playSoundWan7(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/7wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/7wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
+}
+
+void Audio::playSoundWan8(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/8wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/8wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
+}
+
+void Audio::playSoundWan9(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/9wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/9wan_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+
+void Audio::playSoundTong1(){
+    int soundId = rand()%4+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/1tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/1tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTong2(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/2tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/2tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTong3(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/3tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/3tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTong4(){
+    int soundId = 1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/4tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/4tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTong5(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/5tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/5tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTong6(){
+    int soundId = 1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/6tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/6tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTong7(){
+    int soundId = 1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/7tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/7tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTong8(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/8tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/8tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTong9(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/9tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/9tong_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+
+void Audio::playSoundTiao1(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/1tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/1tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+    
+}
+
+void Audio::playSoundTiao2(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/2tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/2tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTiao3(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/3tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/3tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTiao4(){
+    int soundId = 1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/4tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/4tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTiao5(){
+    int soundId = 1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/5tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/5tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTiao6(){
+    int soundId = 1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/6tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/6tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTiao7(){
+    int soundId = 1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/7tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/7tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTiao8(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/8tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/8tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundTiao9(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/9tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/9tiao_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+
+void Audio::playSoundEast(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/dongfeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/dongfeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundWest(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/xifeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/xifeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundNorth(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/nanfeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/nanfeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+void Audio::playSoundSouth(){
+    int soundId = 1;
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/beifeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/female/beifeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
+    }
+}
+
+
+void Audio::prepare(){
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("audio/mahjong_bgm.mp3");
+    
+    //male
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/2wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/2wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/2wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/3wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/3wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/3wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/4wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/4wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/4wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/5wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/5wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/5wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/6wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/6wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/7wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/7wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/7wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/8wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/9wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/9wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/9wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/9wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1tiao_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1tiao_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/2tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/2tiao_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/3tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/3tiao_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/4tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/5tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/6tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/7tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/8tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/8tiao_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/9tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/9tiao_2.ogg");
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1tong_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/1tong_4.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/2tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/2tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/3tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/3tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/4tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/5tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/5tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/6tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/7tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/8tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/8tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/9tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/9tong_2.ogg");
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/chi_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/chi_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/chi_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/chi_4.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/chi_5.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/peng_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/peng_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/male/gang_1.ogg");
+    
+    //famale
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/2wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/2wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/2wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/3wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/3wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/3wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/4wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/4wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/4wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/5wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/5wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/5wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/6wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/6wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/7wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/7wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/7wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/8wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/9wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/9wan_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/9wan_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/9wan_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1tiao_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1tiao_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/2tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/2tiao_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/3tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/3tiao_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/4tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/5tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/6tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/7tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/8tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/8tiao_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/9tiao_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/9tiao_2.ogg");
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1tong_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/1tong_4.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/2tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/2tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/3tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/3tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/4tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/5tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/5tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/6tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/7tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/8tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/8tong_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/9tong_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/9tong_2.ogg");
+    
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/chi_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/chi_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/chi_3.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/chi_4.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/chi_5.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/peng_1.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/peng_2.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/female/gang_1.ogg");
+}
+
