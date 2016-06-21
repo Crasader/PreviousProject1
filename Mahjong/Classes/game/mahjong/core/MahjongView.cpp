@@ -87,6 +87,12 @@ void MahjongView::startGameFirst(){
 }
 
 void MahjongView::startGameAgain(){
+    vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+    for (int i = 0; i < players.size(); i++){
+        if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
+            players.at(i)->setIsReady(true);
+        }
+    }
     showOriention();
     GAMEDATA::getInstance()->setKaibao("0");
     GAMEDATA::getInstance()->setHuangfan("0");
@@ -288,7 +294,7 @@ void MahjongView::showHeroChiUi(){
                 choiceMenu->addChild(chibg);
                 std::string imageName = Jong::getContextImage(atoi(pai.at(j).c_str()));
                 MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(MahjongView::heroDoChi, this));
-                imageItem->setTag(cpg.chi.size()-i-1);
+                imageItem->setTag(i);
                 imageItem->setPosition(1000 + j * 40 - i * 130, 160);
                 imageItem->setScale(0.5f);
                 choice->addChild(imageItem);
