@@ -1,8 +1,8 @@
 #ifndef __RESULT_LAYER_H__
 #define __RESULT_LAYER_H__
 #include "cocos2d.h"
-#include "GameData.h"
-#include "PlayerInfoCell.hpp"
+#include "game/mahjong/state/GameData.h"
+#include "game/mahjong/result/PlayerInfoCell.hpp"
 USING_NS_CC;
 
 class ResultLayer :public Layer{

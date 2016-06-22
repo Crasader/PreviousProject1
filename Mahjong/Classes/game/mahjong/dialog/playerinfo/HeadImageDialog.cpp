@@ -1,7 +1,7 @@
-#include "HeadImageDialog.h"
-#include "UserInfo.h"
-#include "NetworkManage.h"
-#include "UserData.h"
+#include "game/mahjong/dialog/playerinfo/HeadImageDialog.h"
+#include "game/mahjong/dialog/playerinfo/UserInfo.h"
+#include "server/NetworkManage.h"
+#include "userdata/UserData.h"
 
 bool HeadImageDialog::init(){
 	if (!Layer::init()){

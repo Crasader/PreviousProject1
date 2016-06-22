@@ -1,7 +1,7 @@
-#include "Audio.h"
+#include "game/utils/Audio.h"
 #include "SimpleAudioEngine.h"
-#include "UserData.h"
-#include "Jong.h"
+#include "userdata/UserData.h"
+#include "game/mahjong/jong/Jong.h"
 
 
 Audio* Audio::m_instance = nullptr;
@@ -13,12 +13,9 @@ Audio* Audio::getInstance(){
     return m_instance;
 }
 
-void Audio::clearRecord(){
-    setIsFirstFeng(true);
-}
-
 void Audio::playBGM(){
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("audio/mahjong_bgm.mp3",true);
+    
 }
 
 void Audio::pauseBGM()
@@ -153,8 +150,7 @@ void Audio::playSoundChi(int type){
             if(UserData::getInstance()->getGender()==0){
                 CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/chi_2.ogg");}
             else{
-                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/famale/chi_2.ogg");}
-            break;
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/famale/chi_2.ogg");}            break;
         case 2:
             if(UserData::getInstance()->getGender()==0){
                 CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/chi_3.ogg");}
@@ -526,20 +522,16 @@ void Audio::playSoundTiao9(){
 
 void Audio::playSoundEast(){
     int soundId = rand()%2+1;
-    if(getIsFirstFeng()){
-        //头打东,勿出冲
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/dongfeng_2.ogg");
+    if(UserData::getInstance()->getGender()==0){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/dongfeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }else{
-        if(UserData::getInstance()->getGender()==0){
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/male/dongfeng_1.ogg");
-        }else{
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/famale/dongfeng_1.ogg");
-        }
+        std::string soundName = cocos2d::String::createWithFormat("audio/famale/dongfeng_%d.ogg",soundId)->_string;
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(soundName.c_str());
     }
 }
 
 void Audio::playSoundWest(){
-    setIsFirstFeng(false);
     int soundId = rand()%2+1;
     if(UserData::getInstance()->getGender()==0){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/xifeng_%d.ogg",soundId)->_string;
@@ -551,7 +543,6 @@ void Audio::playSoundWest(){
 }
 
 void Audio::playSoundSouth(){
-    setIsFirstFeng(false);
     int soundId = rand()%2+1;
     if(UserData::getInstance()->getGender()==0){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/nanfeng_%d.ogg",soundId)->_string;
@@ -563,7 +554,6 @@ void Audio::playSoundSouth(){
 }
 
 void Audio::playSoundNorth(){
-    setIsFirstFeng(false);
     int soundId = 1;
     if(UserData::getInstance()->getGender()==0){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/beifeng_%d.ogg",soundId)->_string;

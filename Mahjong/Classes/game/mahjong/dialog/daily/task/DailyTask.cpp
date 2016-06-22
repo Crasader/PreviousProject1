@@ -1,8 +1,8 @@
-#include "DailyTask.h"
-#include "GameData.h"
-#include "NetworkManage.h"
-#include "UserData.h"
-#include "ParticleUtil.hpp"
+#include "game/mahjong/dialog/daily/task/DailyTask.h"
+#include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
+#include "userdata/UserData.h"
+#include "game/utils/ParticleUtil.hpp"
 
 
 bool DailyTask::init(){

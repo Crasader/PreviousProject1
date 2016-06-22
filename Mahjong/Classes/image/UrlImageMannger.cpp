@@ -1,6 +1,6 @@
-#include "UrlImageMannger.h"
-#include "HttpMannger.h"
-#include "CommandManage.h"
+#include "image/UrlImageMannger.h"
+#include "http/HttpMannger.h"
+#include "server/CommandManage.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include <jni.h>

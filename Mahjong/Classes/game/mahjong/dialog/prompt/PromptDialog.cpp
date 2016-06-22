@@ -1,7 +1,7 @@
-#include "PromptDialog.h"
-#include "GameData.h"
-#include "Chinese.h"
-#include "NetworkManage.h"
+#include "game/mahjong/dialog/prompt/PromptDialog.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/utils/Chinese.h"
+#include "server/NetworkManage.h"
 bool PromptDialog::init(){
 	if (!BaseDialog::init()){
 		return false;

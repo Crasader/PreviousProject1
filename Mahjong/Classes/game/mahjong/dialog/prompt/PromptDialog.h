@@ -1,7 +1,7 @@
 #ifndef __FRIENDINVITEINFO_H__
 #define __FRIENDINVITEINFO_H__
 #include "cocos2d.h"
-#include "BaseDialog.h"
+#include "game/mahjong/dialog/base/BaseDialog.h"
 USING_NS_CC;
 
 class PromptDialog : public BaseDialog{

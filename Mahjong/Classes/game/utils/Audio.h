@@ -2,24 +2,14 @@
 #define _AUDIO_H_
 #include <string>
 
+
 class Audio{
 public:
     static Audio* getInstance();
-    
-    void clearRecord();
     void playBGM();
     void pauseBGM();
-    
     void playMahjong(int type);
-    void playSoundChi(int type);
-    void playSoundPeng();
-    void playSoundGang();
     
-    void prepare();
-    void setBGMValue(float value);
-    void setEffectValue(float value);
-private:
-    static Audio* m_instance;
     void playSoundWan1();
     void playSoundWan2();
     void playSoundWan3();
@@ -54,7 +44,15 @@ private:
     void playSoundWest();
     void playSoundNorth();
     void playSoundSouth();
-
-    CC_SYNTHESIZE(bool,isFirstFeng,IsFirstFeng);
+    
+    void playSoundChi(int type);
+    void playSoundPeng();
+    void playSoundGang();
+    
+    void prepare();
+    void setBGMValue(float value);
+    void setEffectValue(float value);
+private:
+    static Audio* m_instance;
 };
 #endif

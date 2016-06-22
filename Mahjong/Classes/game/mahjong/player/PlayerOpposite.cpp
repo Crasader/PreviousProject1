@@ -1,6 +1,6 @@
-#include "PlayerOpposite.h"
-#include "MahjongView.h"
-#include "HuaAnim.hpp"
+#include "game/mahjong/player/PlayerOpposite.h"
+#include "game/mahjong/core/MahjongView.h"
+#include "game/mahjong/anim/HuaAnim.hpp"
 
 bool PlayerOpposite::init(){
     if (!PlayerBase::init()){

@@ -1,10 +1,9 @@
-#ifndef __DAILY_TASK_H__
-#define __DAILY_TASK_H__
-
+#ifndef __DAILYTASK_H__
+#define __DAILYTASK_H__
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "GameData.h"
-#include "TaskCell.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/mahjong/dialog/daily/task/TaskCell.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 

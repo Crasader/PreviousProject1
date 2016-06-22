@@ -1,10 +1,10 @@
-#include "ChangePassword.h"
-#include "UserInfo.h"
-#include "NetworkManage.h"
-#include "UserData.h"
-#include "Loading.h"
-#include "HintDialog.hpp"
-#include "StringUtil.h"
+#include "game/mahjong/dialog/playerinfo/ChangePassword.h"
+#include "game/mahjong/dialog/playerinfo/UserInfo.h"
+#include "server/NetworkManage.h"
+#include "userdata/UserData.h"
+#include "game/loading/Loading.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "game/utils/StringUtil.h"
 
 bool ChangePassword::init(){
 	if (!Layer::init()){

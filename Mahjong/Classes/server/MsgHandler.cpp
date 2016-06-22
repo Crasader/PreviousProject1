@@ -1,13 +1,13 @@
 #include "json/document.h"
 #include "json/rapidjson.h"
-#include "MsgHandler.h"
-#include "MsgConfig.h"
-#include "UserData.h"
-#include "UserData.h"
-#include "GameData.h"
-#include "GAMEDATA.h"
-#include "SeatIdUtil.h"
-#include "StringUtil.h"
+#include "server/MsgHandler.h"
+#include "server/MsgConfig.h"
+#include "userdata/UserData.h"
+#include "userdata/UserData.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/mahjong/state/GAMEDATA.h"
+#include "game/utils/SeatIdUtil.h"
+#include "game/utils/StringUtil.h"
 
 #define RETURN_IF(cond)           if((cond)) return
 

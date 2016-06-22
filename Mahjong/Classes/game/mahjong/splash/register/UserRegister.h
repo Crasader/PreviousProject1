@@ -2,8 +2,8 @@
 #define __USER_REGISTER_H__
 
 #include "cocos2d.h"
-#include "cocos-ext.h"
-#include "BaseDialog.h"
+#include "extensions/cocos-ext.h"
+#include "game/mahjong/dialog/base/BaseDialog.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;

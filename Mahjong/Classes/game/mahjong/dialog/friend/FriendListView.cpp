@@ -1,8 +1,8 @@
-#include "FriendListView.h"
-#include "FriendAddView.h"
-#include "GameData.h"
-#include "LobbyScene.h"
-#include "NetworkManage.h"
+#include "game/mahjong/dialog/friend/FriendListView.h"
+#include "game/mahjong/dialog/friend/FriendAddView.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/mahjong/lobby/LobbyScene.h"
+#include "server/NetworkManage.h"
 
 bool FriendListView::init()
 {

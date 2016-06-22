@@ -1,6 +1,6 @@
 #pragma once
 #include "cocos2d.h"
-#include "HttpClient.h"
+#include "network/HttpClient.h"
 
 
 using namespace cocos2d::network;

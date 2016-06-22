@@ -6,8 +6,8 @@
 //
 //
 
-#include "GoldNotEnoughDialog.hpp"
-#include "LobbyScene.h"
+#include "game/mahjong/dialog/shop/GoldNotEnoughDialog.hpp"
+#include "game/mahjong/lobby/LobbyScene.h"
 
 GoldNotEnoughDialog* GoldNotEnoughDialog::create(int type){
     GoldNotEnoughDialog* ret = new GoldNotEnoughDialog();

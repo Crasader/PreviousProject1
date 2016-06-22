@@ -2,9 +2,9 @@
 #define __NETWORK_MANAGE_H__
 #include "cocos2d.h"
 #include <thread>
-#include "ODSocket.h"
-#include "MsgConfig.h"
-#include "CommandManage.h"
+#include "socket/ODSocket.h"
+#include "server/MsgConfig.h"
+#include "server/CommandManage.h"
 
 USING_NS_CC;
 

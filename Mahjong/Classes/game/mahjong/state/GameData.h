@@ -1,8 +1,8 @@
 #ifndef _GAMEDATA_H_
 #define _GAMEDATA_H_
 #include "cocos2d.h"
-#include "Player.h"
-#include "DataStruct.h"
+#include "game/mahjong/player/playerinfo/Player.h"
+#include "game/mahjong/state/DataStruct.h"
 USING_NS_CC;
 
 

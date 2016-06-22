@@ -1,17 +1,17 @@
 #ifndef __LOBBY_SCENE_H__
 #define __LOBBY_SCENE_H__
 #include "cocos2d.h"
-#include "UserData.h"
-#include "NetworkManage.h"
-#include "CommandManage.h"
-#include "StringUtil.h"
-#include "Loading.h"
-#include "GameData.h"
-#include "MjGameScene.h"
-#include "UserSetting.h"
-#include "FriendListView.h"
-#include "FriendRoom.h"
-#include "BillInfo.h"
+#include "userdata/UserData.h"
+#include "server/NetworkManage.h"
+#include "server/CommandManage.h"
+#include "game/utils/StringUtil.h"
+#include "game/loading/Loading.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/mahjong/core/MjGameScene.h"
+#include "game/mahjong/dialog/setting/UserSetting.h"
+#include "game/mahjong/dialog/friend/FriendListView.h"
+#include "game/mahjong/dialog/friend/FriendRoom.h"
+#include "game/mahjong/dialog/bill/BillInfo.h"
 
 USING_NS_CC;
 

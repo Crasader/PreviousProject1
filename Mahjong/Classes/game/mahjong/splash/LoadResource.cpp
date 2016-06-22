@@ -6,7 +6,7 @@
 //
 //
 
-#include "LoadResource.hpp"
+#include "game/mahjong/splash/LoadResource.hpp"
 
 bool LoadResource::init(){
     if(!Layer::init()){

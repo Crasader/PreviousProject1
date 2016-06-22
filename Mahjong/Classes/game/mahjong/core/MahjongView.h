@@ -1,16 +1,16 @@
 #ifndef __MAHJONG_VIEW__
 #define __MAHJONG_VIEW__
 #include "cocos2d.h"
-#include "GuiLayer.h"
-#include "Jong.h"
-#include "PlayerBase.h"
-#include "PlayerLeft.h"
-#include "PlayerRight.h"
-#include "PlayerOpposite.h"
-#include "PlayerHero.h"
-#include "Player.h"
-#include "Trusteeship.h"
-#include "UserData.h"
+#include "game/mahjong/core/gui/GuiLayer.h"
+#include "game/mahjong/jong/Jong.h"
+#include "game/mahjong/player/base/PlayerBase.h"
+#include "game/mahjong/player/PlayerLeft.h"
+#include "game/mahjong/player/PlayerRight.h"
+#include "game/mahjong/player/PlayerOpposite.h"
+#include "game/mahjong/player/PlayerHero.h"
+#include "game/mahjong/player/playerinfo/Player.h"
+#include "game/mahjong/dialog/trusteeship/Trusteeship.h"
+#include "userdata/UserData.h"
 USING_NS_CC;
 
 class MahjongView : public cocos2d::Layer

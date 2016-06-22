@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
-#include "GameData.h"
+#include "game/mahjong/state/GameData.h"
 
 USING_NS_CC;
 

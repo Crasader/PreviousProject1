@@ -1,7 +1,7 @@
 #ifndef __DATA_STRUCT_H__
 #define __DATA_STRUCT_H__
 #include "cocos2d.h"
-#include "Jong.h"
+#include "game/mahjong/jong/Jong.h"
 USING_NS_CC;
 
 enum MahjongRoom{

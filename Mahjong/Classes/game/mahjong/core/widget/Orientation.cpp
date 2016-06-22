@@ -1,5 +1,5 @@
-#include "Orientation.h"
-#include "SeatIdUtil.h"
+#include "game/mahjong/core/widget/Orientation.h"
+#include "game/utils/SeatIdUtil.h"
 
 bool Orientation::init(){
 	if (!Node::init()){

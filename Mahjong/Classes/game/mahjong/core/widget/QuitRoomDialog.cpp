@@ -6,10 +6,10 @@
 //
 //
 
-#include "QuitRoomDialog.hpp"
-#include "GameData.h"
-#include "NetworkManage.h"
-#include "LobbyScene.h"
+#include "game/mahjong/core/widget/QuitRoomDialog.hpp"
+#include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
+#include "game/mahjong/lobby/LobbyScene.h"
 
 
 bool QuitRoomDialog::init(){

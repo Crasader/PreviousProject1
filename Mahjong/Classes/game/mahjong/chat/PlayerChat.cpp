@@ -1,5 +1,5 @@
-#include "PlayerChat.h"
-#include "SeatIdUtil.h"
+#include "game/mahjong/chat/PlayerChat.h"
+#include "game/utils/SeatIdUtil.h"
 
 bool PlayerChat::init(){
 	if (!Layer::init()){

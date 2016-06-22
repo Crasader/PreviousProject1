@@ -1,5 +1,5 @@
-#include "UserSetting.h"
-#include "Audio.h"
+#include "game/mahjong/dialog/setting/UserSetting.h"
+#include "game/utils/Audio.h"
 
 bool UserSetting::init(){
 	if (!BaseDialog::init()){

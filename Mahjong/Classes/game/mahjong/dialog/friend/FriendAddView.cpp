@@ -1,7 +1,7 @@
-#include "FriendAddView.h"
-#include "NetworkManage.h"
-#include "Loading.h"
-#include "HintDialog.hpp"
+#include "game/mahjong/dialog/friend/FriendAddView.h"
+#include "server/NetworkManage.h"
+#include "game/loading/Loading.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 bool FriendAddView::init(){
 	if (!Layer::init()){

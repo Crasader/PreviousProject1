@@ -1,5 +1,5 @@
-#include "TaskCell.h"
-#include "NetworkManage.h"
+#include "game/mahjong/dialog/daily/task/TaskCell.h"
+#include "server/NetworkManage.h"
 
 TaskCell* TaskCell::create(TaskType type){
 	TaskCell* bRet = new TaskCell();

@@ -9,6 +9,7 @@
 #ifndef HongbaoPride_hpp
 #define HongbaoPride_hpp
 
+#include <stdio.h>
 #include "cocos2d.h"
 #include "cocos-ext.h"
 USING_NS_CC;

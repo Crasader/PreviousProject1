@@ -1,11 +1,11 @@
-#include "DailySign.h"
-#include "DayCell.hpp"
-#include "GameData.h"
-#include "NetworkManage.h"
-#include "Huode.hpp"
-#include "UserData.h"
-#include "LobbyScene.h"
-#include "ParticleUtil.hpp"
+#include "game/mahjong/dialog/daily/sign/DailySign.h"
+#include "game/mahjong/dialog/daily/sign/DayCell.hpp"
+#include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
+#include "game/mahjong/dialog/shop/Huode.hpp"
+#include "userdata/UserData.h"
+#include "game/mahjong/lobby/LobbyScene.h"
+#include "game/utils/ParticleUtil.hpp"
 
 bool DailySign::init(){
     

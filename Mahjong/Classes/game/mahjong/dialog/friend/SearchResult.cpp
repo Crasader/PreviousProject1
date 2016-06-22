@@ -1,7 +1,7 @@
-#include "SearchResult.h"
-#include "GameData.h"
-#include "NetworkManage.h"
-#include "HintDialog.hpp"
+#include "game/mahjong/dialog/friend/SearchResult.h"
+#include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 bool SearchResult::init()
 {
 	if (!Layer::init())
