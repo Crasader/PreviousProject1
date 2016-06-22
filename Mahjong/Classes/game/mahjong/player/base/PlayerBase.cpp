@@ -1,6 +1,6 @@
-#include "game/mahjong/player/base/PlayerBase.h"
-#include "game/mahjong/anim/PlayerCpgAnim.hpp"
-#include "game/mahjong/dialog/playerinfo/OtherPlayerInfo.hpp"
+#include "PlayerBase.h"
+#include "PlayerCpgAnim.hpp"
+#include "OtherPlayerInfo.hpp"
 
 Sprite* PlayerBase::biaoji = NULL;
 Sprite* PlayerBase::currentBigJongBg = NULL;

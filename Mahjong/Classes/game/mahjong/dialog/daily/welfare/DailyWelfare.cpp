@@ -1,11 +1,11 @@
-#include "game/mahjong/dialog/daily/welfare/DailyWelfare.h"
-#include "game/mahjong/state/GameData.h"
-#include "server/NetworkManage.h"
-#include "game/loading/Loading.h"
-#include "game/utils/ParticleUtil.hpp"
-#include "game/mahjong/dialog/prompt/HintDialog.hpp"
-#include "userdata/UserData.h"
-#include "game/mahjong/dialog/playerinfo/HeroInfoEdit.h"
+#include "DailyWelfare.h"
+#include "GameData.h"
+#include "NetworkManage.h"
+#include "Loading.h"
+#include "ParticleUtil.hpp"
+#include "HintDialog.hpp"
+#include "UserData.h"
+#include "HeroInfoEdit.h"
 
 
 bool DailyWelfare::init(){

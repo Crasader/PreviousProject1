@@ -1,5 +1,5 @@
-#include "server/MsgHandler.h"
-#include "server/SocketDataManage.h"
+#include "MsgHandler.h"
+#include "SocketDataManage.h"
 
 SocketDataManage* SocketDataManage::instance = nullptr;
 

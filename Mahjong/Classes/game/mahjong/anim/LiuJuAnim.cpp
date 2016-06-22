@@ -6,9 +6,9 @@
 //
 //
 
-#include "game/mahjong/anim/LiuJuAnim.hpp"
-#include "game/utils/SeatIdUtil.h"
-#include "game/mahjong/core/MahjongView.h"
+#include "LiuJuAnim.hpp"
+#include "SeatIdUtil.h"
+#include "MahjongView.h"
 
 bool LiuJuAnim::init(){
     if(!Layer::init()){

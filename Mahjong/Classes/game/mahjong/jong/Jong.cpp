@@ -1,4 +1,4 @@
-#include "game/mahjong/jong/Jong.h"
+#include "Jong.h"
 
 bool Jong::init(){
     if (!Node::init()){

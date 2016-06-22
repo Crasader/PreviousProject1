@@ -6,13 +6,13 @@
 //
 //
 
-#include "game/mahjong/dialog/playerinfo/OtherPlayerInfo.hpp"
-#include "userdata/UserData.h"
-#include "game/utils/Chinese.h"
-#include "game/utils/SeatIdUtil.h"
-#include "game/mahjong/state/GameData.h"
-#include "server/NetworkManage.h"
-#include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "OtherPlayerInfo.hpp"
+#include "UserData.h"
+#include "Chinese.h"
+#include "SeatIdUtil.h"
+#include "GameData.h"
+#include "NetworkManage.h"
+#include "HintDialog.hpp"
 
 OtherPlayerInfo* OtherPlayerInfo::create(Player* player){
     OtherPlayerInfo* bRet = new OtherPlayerInfo();

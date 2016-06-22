@@ -6,8 +6,8 @@
 //
 //
 
-#include "game/mahjong/anim/PlayerCpgAnim.hpp"
-#include "game/utils/SeatIdUtil.h"
+#include "PlayerCpgAnim.hpp"
+#include "SeatIdUtil.h"
 
 PlayerCpgAnim* PlayerCpgAnim::create(CpgType type,int seatId){
     PlayerCpgAnim* anim = new PlayerCpgAnim();

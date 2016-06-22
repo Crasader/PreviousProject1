@@ -6,13 +6,13 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/ChargeGold.hpp"
-#include "game/mahjong/state/GameData.h"
-#include "game/loading/Loading.h"
-#include "server/NetworkManage.h"
-#include "game/utils/StringUtil.h"
-#include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
-#include "game/mahjong/lobby/LobbyScene.h"
+#include "ChargeGold.hpp"
+#include "GameData.h"
+#include "Loading.h"
+#include "NetworkManage.h"
+#include "StringUtil.h"
+#include "ShopHintDialog.hpp"
+#include "LobbyScene.h"
 
 bool ChargeGold::init(){
     if(!Layer::init()){

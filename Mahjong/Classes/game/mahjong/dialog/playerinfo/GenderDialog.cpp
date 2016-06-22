@@ -1,8 +1,8 @@
-#include "game/mahjong/dialog/playerinfo/GenderDialog.h"
-#include "game/mahjong/dialog/playerinfo/UserInfo.h"
-#include "server/NetworkManage.h"
-#include "userdata/UserData.h"
-#include "game/loading/Loading.h"
+#include "GenderDialog.h"
+#include "UserInfo.h"
+#include "NetworkManage.h"
+#include "UserData.h"
+#include "Loading.h"
 
 bool GenderDialog::init(){
 	if (!Layer::init()){

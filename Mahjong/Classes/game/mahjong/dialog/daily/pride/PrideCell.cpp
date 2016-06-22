@@ -1,4 +1,4 @@
-#include "game/mahjong/dialog/daily/pride/PrideCell.h"
+#include "PrideCell.h"
 
 
 PrideCell* PrideCell::create(PrideType propId, int propNum){

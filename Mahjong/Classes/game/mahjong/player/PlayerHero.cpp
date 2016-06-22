@@ -1,10 +1,10 @@
-#include "game/mahjong/player/PlayerHero.h"
-#include "game/mahjong/core/MahjongView.h"
-#include "game/utils/StringUtil.h"
-#include "server/NetworkManage.h"
-#include "server/CommandManage.h"
-#include "server/MsgConfig.h"
-#include "game/mahjong/anim/HuaAnim.hpp"
+#include "PlayerHero.h"
+#include "MahjongView.h"
+#include "StringUtil.h"
+#include "NetworkManage.h"
+#include "CommandManage.h"
+#include "MsgConfig.h"
+#include "HuaAnim.hpp"
 
 
 bool PlayerHero::init() {

@@ -1,11 +1,11 @@
-#include "game/mahjong/dialog/playerinfo/BoundPhone.h"
-#include "game/mahjong/dialog/playerinfo/UserInfo.h"
-#include "game/mahjong/state/GameData.h"
-#include "server/NetworkManage.h"
-#include "userdata/UserData.h"
-#include "game/loading/Loading.h"
-#include "game/mahjong/dialog/prompt/HintDialog.hpp"
-#include "game/utils/StringUtil.h"
+#include "BoundPhone.h"
+#include "UserInfo.h"
+#include "GameData.h"
+#include "NetworkManage.h"
+#include "UserData.h"
+#include "Loading.h"
+#include "HintDialog.hpp"
+#include "StringUtil.h"
 
 bool BoundPhone::init(){
 	if (!Layer::init()){

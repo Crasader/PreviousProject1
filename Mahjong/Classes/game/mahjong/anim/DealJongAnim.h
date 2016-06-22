@@ -1,7 +1,7 @@
 #ifndef __DEAL_JONG_ANIM__
 #define __DEAL_JONG_ANIM__
 #include "cocos2d.h"
-#include "game/utils/SeatIdUtil.h"
+#include "SeatIdUtil.h"
 USING_NS_CC;
 
 class DealJongAnim :public Layer{

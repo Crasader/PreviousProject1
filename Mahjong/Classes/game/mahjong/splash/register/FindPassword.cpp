@@ -1,8 +1,8 @@
-#include "game/mahjong/splash/register/FindPassword.h"
-#include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
-#include "game/mahjong/splash/dropdownlist/LoginMannger.h"
-#include "game/mahjong/state/GameData.h"
-#include "game/utils/StringUtil.h"
+#include "FindPassword.h"
+#include "DropDownListBox.h"
+#include "LoginMannger.h"
+#include "GameData.h"
+#include "StringUtil.h"
 
 
 bool FindPassword::init(){

@@ -6,10 +6,10 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/FirstChageDialog.hpp"
-#include "game/mahjong/state/GameData.h"
-#include "game/loading/Loading.h"
-#include "server/NetworkManage.h"
+#include "FirstChageDialog.hpp"
+#include "GameData.h"
+#include "Loading.h"
+#include "NetworkManage.h"
 
 bool FirstChargeDialog::init(){
 

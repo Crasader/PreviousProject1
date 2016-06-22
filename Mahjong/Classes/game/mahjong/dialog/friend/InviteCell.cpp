@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/dialog/friend/InviteCell.hpp"
+#include "InviteCell.hpp"
 
 
 InviteCell* InviteCell::create(std::string filepath,std::string name){

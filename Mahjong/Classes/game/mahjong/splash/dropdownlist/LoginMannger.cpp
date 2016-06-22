@@ -1,4 +1,4 @@
-#include "game/mahjong/splash/dropdownlist/LoginMannger.h"
+#include "LoginMannger.h"
 
 
 LoginMannger* LoginMannger::_instance = NULL;

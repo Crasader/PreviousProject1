@@ -6,8 +6,8 @@
 //
 //
 
-#include "game/mahjong/result/ResultScene.hpp"
-#include "game/mahjong/result/ResultLayer.h"
+#include "ResultScene.hpp"
+#include "ResultLayer.h"
 
 bool ResultScene::init(){
     if (!Scene::init()){

@@ -1,6 +1,6 @@
-#include "game/mahjong/dialog/trusteeship/Trusteeship.h"
-#include "game/mahjong/state/GameData.h"
-#include "server/NetworkManage.h"
+#include "Trusteeship.h"
+#include "GameData.h"
+#include "NetworkManage.h"
 
 bool Trusteeship::init(){
 	if (!Layer::init()){

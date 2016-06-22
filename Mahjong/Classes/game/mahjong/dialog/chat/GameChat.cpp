@@ -1,5 +1,5 @@
-#include "game/mahjong/dialog/chat/GameChat.h"
-#include "game/mahjong/chat/PlayerChat.h"
+#include "GameChat.h"
+#include "PlayerChat.h"
 
 bool GameChat::init(){
 	if (!Layer::init()){

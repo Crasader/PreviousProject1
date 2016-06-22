@@ -6,15 +6,15 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/LequanShop.hpp"
-#include "game/mahjong/dialog/shop/ExchangePropCell.hpp"
-#include "game/mahjong/state/GameData.h"
-#include "game/loading/Loading.h"
-#include "server/NetworkManage.h"
-#include "game/utils/StringUtil.h"
-#include "userdata/UserData.h"
-#include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
-#include "game/mahjong/dialog/shop/LequanExchangeRecord.hpp"
+#include "LequanShop.hpp"
+#include "ExchangePropCell.hpp"
+#include "GameData.h"
+#include "Loading.h"
+#include "NetworkManage.h"
+#include "StringUtil.h"
+#include "UserData.h"
+#include "ShopHintDialog.hpp"
+#include "LequanExchangeRecord.hpp"
 
 bool LequanShop::init(){
     if(!Layer::init()){

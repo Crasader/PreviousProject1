@@ -1,5 +1,5 @@
-#include "game/mahjong/splash/register/UserRegister.h"
-#include "server/NetworkManage.h"
+#include "UserRegister.h"
+#include "NetworkManage.h"
 #include <Regex>
 
 bool UserRegister::init(){

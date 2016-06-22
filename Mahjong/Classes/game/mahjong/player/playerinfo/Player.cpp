@@ -1,4 +1,4 @@
-#include "game/mahjong/player/playerinfo/Player.h"
+#include "Player.h"
 
 Player::Player()
 {

@@ -9,14 +9,12 @@
 #ifndef InviteCell_hpp
 #define InviteCell_hpp
 
-#include <stdio.h>
-
 #include "cocos2d.h"
 
 USING_NS_CC;
 
 class InviteCell : public Sprite{
-    public :
+public :
     static InviteCell* create(std::string filepath,std::string name);
     bool init(std::string filepath,std::string name);
 

@@ -1,6 +1,6 @@
-#include "game/mahjong/anim/DealJongAnim.h"
-#include "game/mahjong/jong/Jong.h"
-#include "game/mahjong/core/MahjongView.h"
+#include "DealJongAnim.h"
+#include "Jong.h"
+#include "MahjongView.h"
 
 bool DealJongAnim::init(){
     if (!Layer::init()){

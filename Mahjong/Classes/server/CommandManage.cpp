@@ -1,13 +1,13 @@
-#include "server/CommandManage.h"
+#include "CommandManage.h"
 #include "json/document.h"
 #include "json/rapidjson.h"
 #include "json/stringbuffer.h"
 #include "json/prettywriter.h"  
 #include "json/filestream.h"
-#include "userdata/UserData.h"
-#include "game/mahjong/state/GAMEDATA.h"
-#include "game/utils/StringUtil.h"
-#include "server/MsgConfig.h"
+#include "UserData.h"
+#include "GAMEDATA.h"
+#include "StringUtil.h"
+#include "MsgConfig.h"
 
 CommandManage* CommandManage::_instance = 0;
 

@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/utils/ParticleUtil.hpp"
+#include "ParticleUtil.hpp"
 
 ParticleUtil* ParticleUtil::create(MyParticleType type){
     ParticleUtil* ret = new ParticleUtil();

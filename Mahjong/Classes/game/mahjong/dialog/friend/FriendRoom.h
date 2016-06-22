@@ -2,9 +2,9 @@
 #define __FRIEND_ROOM_H__
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "game/loading/Loading.h"
-#include "game/mahjong/state/GameData.h"
-#include "game/mahjong/dialog/friend/InviteCell.hpp"
+#include "Loading.h"
+#include "GameData.h"
+#include "InviteCell.hpp"
 USING_NS_CC;
 USING_NS_CC_EXT;
 

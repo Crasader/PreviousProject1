@@ -6,8 +6,8 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/HongbaoPride.hpp"
-#include "game/mahjong/state/GameData.h"
+#include "HongbaoPride.hpp"
+#include "GameData.h"
 
 bool HongbaoPride::init(){
     if(!Layer::init()){

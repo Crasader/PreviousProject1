@@ -1,8 +1,8 @@
-#include "game/mahjong/dialog/playerinfo/NickNameDialog.h"
-#include "game/mahjong/dialog/playerinfo/UserInfo.h"
-#include "server/NetworkManage.h"
-#include "userdata/UserData.h"
-#include "game/loading/Loading.h"
+#include "NickNameDialog.h"
+#include "UserInfo.h"
+#include "NetworkManage.h"
+#include "UserData.h"
+#include "Loading.h"
 
 bool NickNameDialog::init(){
 	if (!Layer::init()){

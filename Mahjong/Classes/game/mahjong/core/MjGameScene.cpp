@@ -1,5 +1,5 @@
-#include"game/mahjong/core/MjGameScene.h"
-#include"game/mahjong/core/MahjongView.h"
+#include"MjGameScene.h"
+#include"MahjongView.h"
 
 bool MjGameScene::init(){
 	if (!Scene::init()){

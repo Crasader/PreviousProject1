@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/result/PlayerInfoCell.hpp"
+#include "PlayerInfoCell.hpp"
 
 
 PlayerInfoCell* PlayerInfoCell::create(GameResultData data){

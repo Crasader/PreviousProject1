@@ -1,10 +1,10 @@
-#include "game/mahjong/dialog/playerinfo/UserInfo.h"
-#include "game/mahjong/dialog/playerinfo/NickNameDialog.h"
-#include "game/mahjong/dialog/playerinfo/HeadImageDialog.h"
-#include "game/mahjong/dialog/playerinfo/GenderDialog.h"
-#include "userdata/UserData.h"
-#include "game/utils/Chinese.h"
-#include "image/UrlImageMannger.h"
+#include "UserInfo.h"
+#include"NickNameDialog.h"
+#include"HeadImageDialog.h"
+#include"GenderDialog.h"
+#include"UserData.h"
+#include"Chinese.h"
+#include"UrlImageMannger.h"
 
 bool UserInfo::init(){
 	if (!Layer::init()){

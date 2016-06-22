@@ -1,7 +1,7 @@
 #ifndef __PLAYER_HERO__
 #define __PLAYER_HERO__
 #include "cocos2d.h"
-#include "game/mahjong/player/base/PlayerBase.h"
+#include "PlayerBase.h"
 
 USING_NS_CC;
 using namespace std;

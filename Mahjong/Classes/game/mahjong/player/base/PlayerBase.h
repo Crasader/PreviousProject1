@@ -1,12 +1,12 @@
 #ifndef __PLAYER_BASE__
 #define __PLAYER_BASE__
 #include "cocos2d.h"
-#include "game/mahjong/player/playerinfo/Player.h"
-#include "game/mahjong/jong/Jong.h"
-#include "game/mahjong/state/GameData.h"
-#include "game/utils/StringUtil.h"
-#include "game/utils/SeatIdUtil.h"
-#include "game/utils/Audio.h"
+#include "Player.h"
+#include "Jong.h"
+#include "GameData.h"
+#include "StringUtil.h"
+#include "SeatIdUtil.h"
+#include "Audio.h"
 
 USING_NS_CC;
 

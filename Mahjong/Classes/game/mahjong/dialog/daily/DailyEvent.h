@@ -2,13 +2,13 @@
 #define __DAILYEVENT_H__
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "game/mahjong/dialog/daily/sign/DailySign.h"
-#include "game/mahjong/dialog/daily/task/DailyTask.h"
-#include "game/mahjong/dialog/daily/pride/DailyPride.h"
-#include "game/mahjong/dialog/daily/welfare/DailyWelfare.h"
-#include "game/mahjong/state/GameData.h"
-#include "server/NetworkManage.h"
-#include "server/CommandManage.h"
+#include "DailySign.h"
+#include "DailyTask.h"
+#include "DailyPride.h"
+#include "DailyWelfare.h"
+#include "GameData.h"
+#include "NetworkManage.h"
+#include "CommandManage.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 enum DailyType{

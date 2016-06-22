@@ -1,10 +1,10 @@
-#include "game/mahjong/dialog/bill/BillInfo.h"
-#include "game/mahjong/dialog/bill/BillDetailInfo.h"
-#include "server/NetworkManage.h"
-#include "userdata/UserData.h"
-#include "game/utils/StringUtil.h"
-#include "game/loading/Loading.h"
-#include "game/utils/Chinese.h"
+#include "BillInfo.h"
+#include "BillDetailInfo.h"
+#include "NetworkManage.h"
+#include "UserData.h"
+#include "StringUtil.h"
+#include "Loading.h"
+#include "Chinese.h"
 
 bool BillInfo::init()
 {

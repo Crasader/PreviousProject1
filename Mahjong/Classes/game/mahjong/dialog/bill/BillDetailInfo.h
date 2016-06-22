@@ -1,8 +1,9 @@
 #ifndef __BILL_DETAIL_INFO_H__
 #define __BILL_DETAIL_INFO_H__
+
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "game/mahjong/state/GameData.h"
+#include "GameData.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -31,4 +32,5 @@ private:
 	void updateBillDetail();
     std::vector<BillContent> sortBillInfo(std::vector<BillContent> content);
 };
+
 #endif

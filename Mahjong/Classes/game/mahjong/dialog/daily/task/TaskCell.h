@@ -1,8 +1,9 @@
-#pragma once
+#ifndef __TASKCELL_H__
+#define __TASKCELL_H__
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "game/mahjong/state/GameData.h"
+#include "GameData.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 enum TaskType{
@@ -28,3 +29,5 @@ private:
 	void recievePride(Ref* ref);
 	void charge();
 };
+
+#endif

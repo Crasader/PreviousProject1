@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __USER_INFO_H__
+#define __USER_INFO_H__
 #include "cocos2d.h"
 #include "cocos-ext.h"
 USING_NS_CC;
@@ -18,3 +19,4 @@ private:
 	void editHeadImage();
 	void menuBtnClick(Ref* ref);
 };
+#endif

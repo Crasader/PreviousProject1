@@ -1,6 +1,6 @@
-#include "game/mahjong/dialog/friend/FriendInvite.h"
-#include "game/mahjong/lobby/LobbyScene.h"
-#include "server/NetworkManage.h"
+#include "FriendInvite.h"
+#include "LobbyScene.h"
+#include "NetworkManage.h"
 
 bool FriendInvite::init()
 {
