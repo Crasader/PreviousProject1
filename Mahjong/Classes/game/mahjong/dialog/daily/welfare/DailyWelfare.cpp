@@ -1,4 +1,4 @@
-#include "game/mahjong/dialog/daily/welfare/DailyWelfare.h"
+#include "DailyWelfare.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"

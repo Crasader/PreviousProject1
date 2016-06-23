@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/dialog/playerinfo/OtherPlayerInfo.hpp"
+#include "OtherPlayerInfo.hpp"
 #include "userdata/UserData.h"
 #include "game/utils/Chinese.h"
 #include "game/utils/SeatIdUtil.h"

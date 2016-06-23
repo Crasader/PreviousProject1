@@ -1,5 +1,5 @@
-#include "game/mahjong/dialog/daily/sign/DailySign.h"
-#include "game/mahjong/dialog/daily/sign/DayCell.hpp"
+#include "DailySign.h"
+#include "DayCell.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "game/mahjong/dialog/shop/Huode.hpp"

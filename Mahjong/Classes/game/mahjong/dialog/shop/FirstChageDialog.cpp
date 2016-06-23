@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/FirstChageDialog.hpp"
+#include "FirstChageDialog.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"

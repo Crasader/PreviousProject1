@@ -1,4 +1,5 @@
-#include "game/mahjong/lobby/LobbyScene.h"
+#include "LobbyScene.h"
+#include "EnterRoomDialog.hpp"
 #include "game/mahjong/dialog/bill/BillInfo.h"
 #include "game/mahjong/dialog/shop/Redwallet.h"
 #include "game/mahjong/dialog/prompt/PromptDialog.h"
@@ -8,7 +9,6 @@
 #include "game/mahjong/dialog/shop/ChargeGold.hpp"
 #include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
 #include "game/mahjong/dialog/shop/LequanShop.hpp"
-#include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/dialog/shop/GoldNotEnoughDialog.hpp"
 
 bool LobbyScene::init()

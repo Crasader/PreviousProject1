@@ -1,4 +1,4 @@
-#include "game/mahjong/dialog/daily/task/DailyTask.h"
+#include "DailyTask.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"

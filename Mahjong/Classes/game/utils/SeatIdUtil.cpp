@@ -1,4 +1,4 @@
-#include "game/utils/SeatIdUtil.h"
+#include "SeatIdUtil.h"
 
 int SeatIdUtil::getClientSeatId(int heroId, int seatId){
     if(heroId == seatId){

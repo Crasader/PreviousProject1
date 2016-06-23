@@ -1,4 +1,4 @@
-#include "game/mahjong/dialog/bill/BillDetailInfo.h"
+#include "BillDetailInfo.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/utils/StringUtil.h"
 #include "game/utils/Chinese.h"

@@ -1,4 +1,4 @@
-#include "game/mahjong/dialog/prompt/PromptDialog.h"
+#include "PromptDialog.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/utils/Chinese.h"
 #include "server/NetworkManage.h"

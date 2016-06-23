@@ -1,4 +1,4 @@
-#include "game/mahjong/core/gui/GuiLayer.h"
+#include "GuiLayer.h"
 #include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
 #include "game/mahjong/dialog/chat/GameChat.h"
 #include "game/mahjong/lobby/LobbyScene.h"

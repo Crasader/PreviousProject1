@@ -1,5 +1,5 @@
-#include "game/mahjong/dialog/playerinfo/BoundPhone.h"
-#include "game/mahjong/dialog/playerinfo/UserInfo.h"
+#include "BoundPhone.h"
+#include "UserInfo.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"

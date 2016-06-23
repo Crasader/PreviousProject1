@@ -1,4 +1,4 @@
-#include "game/mahjong/player/PlayerLeft.h"
+#include "PlayerLeft.h"
 #include "game/mahjong/core/MahjongView.h"
 #include "game/mahjong/anim/HuaAnim.hpp"
 

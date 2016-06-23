@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "HintDialog.hpp"
 
 
 HintDialog* HintDialog::create(std::string msg){
