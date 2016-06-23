@@ -72,4 +72,7 @@ std::vector<int> StringUtil::getArrayByInt(std::string string){
     std::vector<int> result;
     char tmp1[10];
     strncpy(tmp1,string.c_str(),string.length());
+//    for(int ){
+//    
+//    }
 }

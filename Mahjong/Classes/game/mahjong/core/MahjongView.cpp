@@ -721,7 +721,7 @@ void MahjongView::addPlayerCpgListener(){
 
 void MahjongView::addGameResultListener(){
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
-        
+        GAMEDATA::getInstance()->setIsPlaying(false);
         trusteeship->setVisible(false);
         GAMEDATA::getInstance()->setIsTrusteeship(false);
         //播放动画
