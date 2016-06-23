@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/dialog/daily/sign/DayCell.hpp"
+#include "DayCell.hpp"
 
 
 DayCell* DayCell::create(int propType){

@@ -1,4 +1,4 @@
-#include "game/mahjong/player/base/PlayerBase.h"
+#include "PlayerBase.h"
 #include "game/mahjong/anim/PlayerCpgAnim.hpp"
 #include "game/mahjong/dialog/playerinfo/OtherPlayerInfo.hpp"
 

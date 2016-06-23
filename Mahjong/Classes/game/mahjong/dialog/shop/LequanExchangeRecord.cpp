@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/LequanExchangeRecord.hpp"
+#include "LequanExchangeRecord.hpp"
 
 bool LequanExchangeRecord::init(){
     if(!Layer::init()){

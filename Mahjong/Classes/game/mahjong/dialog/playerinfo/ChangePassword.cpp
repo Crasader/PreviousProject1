@@ -1,5 +1,5 @@
-#include "game/mahjong/dialog/playerinfo/ChangePassword.h"
-#include "game/mahjong/dialog/playerinfo/UserInfo.h"
+#include "ChangePassword.h"
+#include "UserInfo.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "game/loading/Loading.h"

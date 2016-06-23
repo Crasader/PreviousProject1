@@ -1,4 +1,4 @@
-#include "game/mahjong/dialog/base/BaseDialog.h"
+#include "BaseDialog.h"
 
 bool BaseDialog::init(){
 	if (!Layer::init()){

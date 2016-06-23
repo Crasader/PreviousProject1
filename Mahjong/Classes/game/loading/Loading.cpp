@@ -1,4 +1,4 @@
-#include "game/loading/Loading.h"
+#include "Loading.h"
 
 
 Loading* Loading::create(){

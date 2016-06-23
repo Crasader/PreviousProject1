@@ -1,5 +1,5 @@
-#include "game/mahjong/dialog/bill/BillInfo.h"
-#include "game/mahjong/dialog/bill/BillDetailInfo.h"
+#include "BillInfo.h"
+#include "BillDetailInfo.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "game/utils/StringUtil.h"

@@ -6,12 +6,12 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/ExchangeItem.hpp"
+#include "ExchangeItem.hpp"
+#include "ShopHintDialog.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "game/utils/StringUtil.h"
-#include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
 
 ExchangeItem* ExchangeItem::create(int propId,std::string propName){
     ExchangeItem* ret = new ExchangeItem();

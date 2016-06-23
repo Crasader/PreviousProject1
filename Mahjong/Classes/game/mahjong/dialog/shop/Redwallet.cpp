@@ -1,9 +1,9 @@
-#include "game/mahjong/dialog/shop/Redwallet.h"
+#include "Redwallet.h"
+#include "LingHongbao.hpp"
+#include "HongbaoPride.hpp"
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
 #include "game/mahjong/state/GameData.h"
-#include "game/mahjong/dialog/shop/LingHongbao.hpp"
-#include "game/mahjong/dialog/shop/HongbaoPride.hpp"
 
 bool Redwallet::init(){
     if (!Layer::init()){

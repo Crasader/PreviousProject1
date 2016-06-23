@@ -1,4 +1,4 @@
-#include "game/mahjong/splash/register/UserRegister.h"
+#include "UserRegister.h"
 #include "server/NetworkManage.h"
 #include <Regex>
 

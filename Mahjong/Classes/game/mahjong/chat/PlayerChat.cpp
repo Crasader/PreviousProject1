@@ -1,4 +1,4 @@
-#include "game/mahjong/chat/PlayerChat.h"
+#include "PlayerChat.h"
 #include "game/utils/SeatIdUtil.h"
 
 bool PlayerChat::init(){
