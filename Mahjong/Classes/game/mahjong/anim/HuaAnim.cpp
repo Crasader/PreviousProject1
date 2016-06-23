@@ -6,7 +6,7 @@
 //
 //
 
-#include "HuaAnim.hpp"
+#include "game/mahjong/anim/HuaAnim.hpp"
 #include "game/utils/SeatIdUtil.h"
 
 HuaAnim* HuaAnim::create(std::vector<Jong*> jongs,int seatId,CallFunc* func){

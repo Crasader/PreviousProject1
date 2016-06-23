@@ -1,4 +1,4 @@
-#include "DailyEvent.h"
+#include "game/mahjong/dialog/daily/DailyEvent.h"
 
 bool DailyEvent::init(){
 	if (!Layer::init()){

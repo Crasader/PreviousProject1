@@ -1,4 +1,4 @@
-#include "GameData.h"
+#include "game/mahjong/state/GameData.h"
 
 GAMEDATA* GAMEDATA::_instance = 0;
 

@@ -1,5 +1,5 @@
-#include "HeadImageDialog.h"
-#include "UserInfo.h"
+#include "game/mahjong/dialog/playerinfo/HeadImageDialog.h"
+#include "game/mahjong/dialog/playerinfo/UserInfo.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 
@@ -21,7 +21,7 @@ void HeadImageDialog::onEnter(){
 			//TODO
 		}
 		else{
-			//ï¿½Ç³ï¿½ï¿½Þ¸ï¿½Ê§ï¿½ï¿½
+			//êÇ³ÆÐÞ¸ÄÊ§°Ü
 		}
 	});
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(changeImageListener, 1);

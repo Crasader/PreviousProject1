@@ -2,7 +2,7 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "../../../state/GameData.h"
+#include "game/mahjong/state/GameData.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 enum TaskType{

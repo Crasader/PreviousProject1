@@ -1,5 +1,5 @@
-#include "DailyPride.h"
-#include "PrideCell.h"
+#include "game/mahjong/dialog/daily/pride/DailyPride.h"
+#include "game/mahjong/dialog/daily/pride/PrideCell.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/utils/ParticleUtil.hpp"

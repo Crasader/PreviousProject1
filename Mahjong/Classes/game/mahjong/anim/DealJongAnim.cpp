@@ -1,4 +1,4 @@
-#include "DealJongAnim.h"
+#include "game/mahjong/anim/DealJongAnim.h"
 #include "game/mahjong/jong/Jong.h"
 #include "game/mahjong/core/MahjongView.h"
 

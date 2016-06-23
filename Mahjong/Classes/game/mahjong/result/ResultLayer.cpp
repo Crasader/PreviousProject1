@@ -1,4 +1,4 @@
-#include "ResultLayer.h"
+#include "game/mahjong/result/ResultLayer.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/jong/Jong.h"
 #include"game/mahjong/core/MjGameScene.h"
