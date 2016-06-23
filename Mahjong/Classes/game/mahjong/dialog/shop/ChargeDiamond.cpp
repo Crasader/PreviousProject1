@@ -6,12 +6,12 @@
 //
 //
 
-#include "ChargeDiamond.hpp"
-#include "ShopHintDialog.hpp"
+#include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "game/utils/StringUtil.h"
+#include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
 
 bool ChargeDiamond::init(){
 

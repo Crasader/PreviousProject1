@@ -1,5 +1,5 @@
-#include "NetworkManage.h"
-#include "SocketDataManage.h"
+#include "server/NetworkManage.h"
+#include "server/SocketDataManage.h"
 
 NetworkManage* NetworkManage::_instance = NULL;
 std::string NetworkManage::allReciveInfo;

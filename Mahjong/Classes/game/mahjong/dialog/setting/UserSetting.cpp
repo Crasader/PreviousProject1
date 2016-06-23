@@ -1,4 +1,4 @@
-#include "UserSetting.h"
+#include "game/mahjong/dialog/setting/UserSetting.h"
 #include "game/utils/Audio.h"
 
 bool UserSetting::init(){

@@ -6,7 +6,7 @@
 //
 //
 
-#include "EnterRoomDialog.hpp"
+#include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
 #include "server/NetworkManage.h"
 

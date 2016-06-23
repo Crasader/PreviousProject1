@@ -1,5 +1,5 @@
-#include "DropDownListBox.h"
-#include "LoginMannger.h"
+#include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
+#include "game/mahjong/splash/dropdownlist/LoginMannger.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/utils/Chinese.h"
 

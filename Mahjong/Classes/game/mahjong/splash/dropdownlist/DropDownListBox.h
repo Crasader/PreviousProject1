@@ -1,6 +1,6 @@
 #pragma once
 #include "cocos2d.h"
-#include "../SplashScene.h"
+#include "game/mahjong/splash/SplashScene.h"
 USING_NS_CC;
 
 

@@ -1,4 +1,4 @@
-#include "GameChat.h"
+#include "game/mahjong/dialog/chat/GameChat.h"
 #include "game/mahjong/chat/PlayerChat.h"
 
 bool GameChat::init(){

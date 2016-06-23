@@ -1,4 +1,4 @@
-#include "HeroInfoEdit.h"
+#include "game/mahjong/dialog/playerinfo/HeroInfoEdit.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 

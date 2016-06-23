@@ -1,4 +1,4 @@
-#include "FriendAddView.h"
+#include "game/mahjong/dialog/friend/FriendAddView.h"
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"

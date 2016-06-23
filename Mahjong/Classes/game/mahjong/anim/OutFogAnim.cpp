@@ -6,7 +6,7 @@
 //
 //
 
-#include "OutFogAnim.hpp"
+#include "game/mahjong/anim/OutFogAnim.hpp"
 
 
 OutFogAnim* OutFogAnim::create(Point pos){

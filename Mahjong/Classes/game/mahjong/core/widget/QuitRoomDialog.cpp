@@ -6,7 +6,7 @@
 //
 //
 
-#include "QuitRoomDialog.hpp"
+#include "game/mahjong/core/widget/QuitRoomDialog.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "game/mahjong/lobby/LobbyScene.h"

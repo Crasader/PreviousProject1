@@ -1,4 +1,4 @@
-#include "Trusteeship.h"
+#include "game/mahjong/dialog/trusteeship/Trusteeship.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 

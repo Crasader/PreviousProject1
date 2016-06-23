@@ -1,4 +1,4 @@
-#include "SearchResult.h"
+#include "game/mahjong/dialog/friend/SearchResult.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"

@@ -1,12 +1,12 @@
-#include "MsgHandler.h"
-#include "SocketDataManage.h"
+#include "server/MsgHandler.h"
+#include "server/SocketDataManage.h"
 
 SocketDataManage* SocketDataManage::instance = nullptr;
 
 SocketDataManage* SocketDataManage::getInstance(){
 	if (nullptr == instance){
 		instance = SocketDataManage::create();
-		instance->retain();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bug
+		instance->retain();//²»¼ÓÕâ¸ö»áÓĞbug
 	}
 	return instance;
 }

@@ -1,5 +1,5 @@
-#include "MahjongView.h"
 #include "game/mahjong/anim/DealJongAnim.h"
+#include "game/mahjong/core/MahjongView.h"
 #include "game/mahjong/core/widget/Orientation.h"
 #include "game/mahjong/dialog/prompt/PromptDialog.h"
 #include "game/mahjong/lobby/LobbyScene.h"
