@@ -24,6 +24,7 @@ private:
     EditBox* _phone;
     EditBox* _account;
     EventListenerCustom* dropListListener2;
+    EventListenerCustom* findPasswordListener;
 	void showDialog();
 	void closeView();
     void findPassword();

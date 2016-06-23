@@ -47,7 +47,7 @@ void DailySign::onEnter(){
             addChild(an);
             an->runAction(Sequence::create(DelayTime::create(1.8f),CallFunc::create([=](){
                 showLightAnim(an);
-            }), DelayTime::create(1.0f),CallFunc::create([=](){
+            }), DelayTime::create(0.5f),CallFunc::create([=](){
                 if( gold > 0 && diamond ==0 && lequan == 0){
                     ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
                     getParent()->addChild(util,5);

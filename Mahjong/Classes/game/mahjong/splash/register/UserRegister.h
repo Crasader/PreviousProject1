@@ -31,8 +31,6 @@ private:
 	Sprite* password_input_info;
 	void drawDialog() override;
 	void registerConfirm();
-	bool checkAccount(std::string std);
-	bool checkPassword(std::string std);
 	CC_SYNTHESIZE(bool,allow,Allow);
 };
 #endif

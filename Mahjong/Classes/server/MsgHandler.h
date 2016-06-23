@@ -83,5 +83,6 @@ private:
     void getAllRedWalletPushResp(std::string msg);
     void getLequanExchangeResp(std::string msg);
     void getPlayerInfoResp(std::string msg);
+    void getFindPasswordResp(std::string msg);
 };
 #endif

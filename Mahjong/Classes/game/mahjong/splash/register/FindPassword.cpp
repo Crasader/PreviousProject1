@@ -1,6 +1,7 @@
 #include "game/mahjong/splash/register/FindPassword.h"
 #include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
 #include "game/mahjong/splash/dropdownlist/LoginMannger.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/utils/StringUtil.h"
 
@@ -20,11 +21,28 @@ void FindPassword::onEnter(){
         _account->setText(GAMEDATA::getInstance()->getLoginAccPwd().account.c_str());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dropListListener2, 1);
+    
+    findPasswordListener = EventListenerCustom::create(MSG_PLAYER_FIND_PASSWORD_RESP, [=](EventCustom* event){
+        std::string result = static_cast<char*>(event->getUserData());
+        if(result == "1"){
+            HintDialog* dia = HintDialog::create("密码会通过短信发送到绑定手机",false);
+            addChild(dia);
+        }else if(result == "2"){
+            HintDialog* dia = HintDialog::create("账号未绑定手机",false);
+            addChild(dia);
+
+        }else{
+            HintDialog* dia = HintDialog::create("账号和绑定手机不匹配",false);
+            addChild(dia);
+        }
+     });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(findPasswordListener, 1);
 }
 
 void FindPassword::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(dropListListener2);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(findPasswordListener);
 }
 
 
@@ -111,6 +129,7 @@ void FindPassword::showDialog(){
 
     auto imageItem = MenuItemImage::create("register/find_btn_1.png","register/find_btn_2.png",CC_CALLBACK_0(FindPassword::findPassword, this));
     Menu* menu = Menu::create(imageItem,NULL);
+    menu->setTag(962);
     addChild(menu);
     menu->setPosition(640,190);
 }
@@ -122,7 +141,16 @@ void FindPassword::closeView(){
 
 
 void FindPassword::findPassword(){
-    //TODO
+    std::string acc = _account->getText();
+    if(!getChildByTag(101)->isVisible()&& acc != ""){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFindPassword(acc, _phone->getText()));
+        if(NULL != getChildByTag(962)){
+            ((Menu*)getChildByTag(962))->setEnabled(false);
+        }
+    }else{
+        HintDialog* dia = HintDialog::create("请输入账号",false);
+        addChild(dia);
+    }
 }
 
 

@@ -1,4 +1,5 @@
 #include "game/mahjong/splash/register/UserRegister.h"
+#include "game/utils/StringUtil.h"
 #include "server/NetworkManage.h"
 #include <Regex>
 
@@ -149,32 +150,6 @@ void UserRegister::registerConfirm(){
 	}
 }
 
-bool UserRegister::checkAccount(std::string string){
-	if (string.length() < 8 || string.length() > 12){
-		return false;
-	}
-	std::regex rx1("^[A-Za-z0-9]+$");
-	bool result_1 = std::regex_match(string.begin(), string.end(), rx1);
-	std::regex rx2("[0-9]+");
-	bool result_2 = std::regex_match(string.begin(), string.end(), rx2);
-	std::regex rx3("^[A-Za-z]+$");
-	bool result_3 = std::regex_match(string.begin(), string.end(), rx3);
-	return result_1 && (!result_2) && (!result_3);
-}
-
-bool UserRegister::checkPassword(std::string string){
-	if (string.length() < 5 || string.length() > 10){
-		return false;
-	}
-	std::regex rx1("^[A-Za-z0-9]+$");
-	bool result_1 = std::regex_match(string.begin(), string.end(), rx1);
-	std::regex rx2("[0-9]+");
-	bool result_2 = std::regex_match(string.begin(), string.end(), rx2);
-	std::regex rx3("^[A-Za-z]+$");
-	bool result_3 = std::regex_match(string.begin(), string.end(), rx3);
-	return result_1 && (!result_2) && (!result_3);
-}
-
 
 void UserRegister::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 	if (editBox->getTag() == 0){
@@ -188,7 +163,7 @@ void UserRegister::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 
 void UserRegister::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 	if (editBox->getTag() == 0){
-		if (checkAccount(editBox->getText())){
+        if (StringUtil::checkAccount(editBox->getText())){
 			NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAccountCheckCommand(editBox->getText()));
 		}
 		else{
@@ -197,7 +172,7 @@ void UserRegister::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
 		}
 	}
 	else if (editBox->getTag() == 1){
-		if (!checkPassword(editBox->getText())){
+		if (!StringUtil::checkPassword(editBox->getText())){
 			password_hint_info->setVisible(true);
 		}
 		else{

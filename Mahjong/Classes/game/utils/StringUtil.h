@@ -9,6 +9,9 @@ public:
 	static std::vector<std::string> split(std::string str, std::string pattern);
     static bool checkPhone(std::string str);
     static bool checkPassword(std::string string);
+    static bool checkAccount(std::string string);
+private:
+    static std::vector<int> getArrayByInt(std::string string);
 };
 
 #endif

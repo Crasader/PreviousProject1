@@ -418,6 +418,10 @@ void MsgHandler::distribute(int code, std::string msg){
             getPlayerInfoResp(msg);
             break;
         }
+        case MSGCODE_FIND_PASSWORD_RESPONSE:{
+            getFindPasswordResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2087,4 +2091,18 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
     }
     postNotifyMessage(MSG_PLAYER_INFO_RESP, "");
     
+}
+
+void MsgHandler::getFindPasswordResp(std::string msg){
+
+    // 找回密码回复{code:151,result:1} 1成功 2未绑定 3 跟绑定的不一致
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("result")){
+        const rapidjson::Value &result = _mDoc["result"];
+        postNotifyMessage(MSG_PLAYER_FIND_PASSWORD_RESP, StringUtil::itos(result.GetInt()));
+    }
+
 }

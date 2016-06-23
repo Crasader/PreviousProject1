@@ -106,9 +106,9 @@ bool GoldNotEnoughDialog::init(int type){
         diamondNum->setString("150");
     }else if(type == ROOM_3){
         textInfo->setTexture("shop/gold_less_210w.png");
-        alt->setString("2580000");
+        alt->setString("1680000");
         ico->setTexture("shop/258_yuan_icon.png");
-         diamondNum->setString("2580");
+         diamondNum->setString("1680");
     }
     
     return true;
