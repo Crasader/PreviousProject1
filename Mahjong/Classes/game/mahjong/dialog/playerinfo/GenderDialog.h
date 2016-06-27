@@ -11,7 +11,6 @@ public:
 	void onExit() override;
 	CREATE_FUNC(GenderDialog);
 private:
-	EventListenerCustom* changeGenderListener;
 	Sprite* nike;
 	void showDialog();
 	void choseGender(Ref* ref);

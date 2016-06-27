@@ -10,10 +10,14 @@ public:
 	void onEnter() override;
 	void onExit() override;
 	CREATE_FUNC(HeadImageDialog);
+    CC_SYNTHESIZE(std::string, currentGender, CurrentGender);
 private:
 	EventListenerCustom* changeImageListener;
 	void showDialog();
 	void closeView();
 	void useCamara();
 	void usePhoto();
+    void selectedHeadImage(Ref* ref);
+    void confirmHead();
+    CC_SYNTHESIZE(int , selectId, SelectId);
 };

@@ -15,22 +15,10 @@ bool GenderDialog::init(){
 
 void GenderDialog::onEnter(){
 	Layer::onEnter();
-	changeGenderListener = EventListenerCustom::create(MSG_CHANGE_GENDER_RESP, [=](EventCustom* event){
-		char* buf = static_cast<char*>(event->getUserData());
-		std::string result = buf;
-		if (result == "1"){
-			int gender = nike->getTag() == 0 ? 1 : 0;
-			UserData::getInstance()->setGender(gender);
-			((UserInfo*)this->getParent())->updateGender();
-			this->removeFromParent();
-		}
-	});
-	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(changeGenderListener, 1);
 }
 
 void GenderDialog::onExit(){
 	Layer::onExit();
-	_eventDispatcher->removeEventListener(changeGenderListener);
 }
 
 void GenderDialog::showDialog(){

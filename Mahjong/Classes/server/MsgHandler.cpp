@@ -1156,6 +1156,10 @@ void MsgHandler::changeGenderResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
+    if(_mDoc.HasMember("gender")){
+    const rapidjson::Value &gender = _mDoc["gender"];
+        UserData::getInstance()->setGender(gender.GetInt());
+    }
     postNotifyMessage(MSG_CHANGE_GENDER_RESP, StringUtil::itos(result.GetInt()));
 }
 
