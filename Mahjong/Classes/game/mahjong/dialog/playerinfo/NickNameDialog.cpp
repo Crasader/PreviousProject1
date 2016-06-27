@@ -27,7 +27,7 @@ void NickNameDialog::onEnter(){
 			std::string nickname = _editName->getText();
 			UserData::getInstance()->setNickName(nickname);
 			UserData::getInstance()->setChangeName(true);
-			((UserInfo*)this->getParent())->updateNickname();
+			((UserInfo*)getParent())->updateNickname();
 			this->removeFromParent();
 		}
 		else if (result == "2"){

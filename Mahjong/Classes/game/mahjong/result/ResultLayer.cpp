@@ -173,6 +173,8 @@ void ResultLayer::showWinAnim(){
             UserData::getInstance()->setDiamond(resData.diamond);
             UserData::getInstance()->setGold(resData.gold);
             UserData::getInstance()->setTicket(resData.lequan);
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
             vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
             for (int i = 0; i < players.size(); i++){
                 if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()) == ClientSeatId::hero){

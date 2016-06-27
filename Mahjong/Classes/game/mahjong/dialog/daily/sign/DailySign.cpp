@@ -75,7 +75,8 @@ void DailySign::onEnter(){
         UserData::getInstance()->setGold(UserData::getInstance()->getGold()+gold);
         UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+diamond);
         UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+lequan);
-        ((LobbyScene*)(getParent()->getParent()))->updateHeroInfo();
+        EventCustom ev(MSG_UPDATE_HERO_INFO);
+        _eventDispatcher->dispatchEvent(&ev);
     });
     _eventDispatcher->addEventListenerWithFixedPriority(todaySignListener, 1);
 }

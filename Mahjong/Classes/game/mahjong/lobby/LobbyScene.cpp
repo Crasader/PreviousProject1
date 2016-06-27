@@ -64,6 +64,7 @@ void LobbyScene::onExit(){
 }
 
 void LobbyScene::updateHeroInfo(){
+    nickName->setString(UserData::getInstance()->getNickName());
     goldNum ->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string);
     diamondNum->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string);
     lequanNum->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getTicket())->_string);
@@ -284,11 +285,11 @@ void LobbyScene::drawSceneBot(){
     gameMenu->alignItemsHorizontallyWithPadding(65);
     gameMenu->setPosition(785, 43);
     addChild(gameMenu);
-    
-    auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
-    auto openMenu = Menu::create(openRoom,NULL);
-    openMenu->setPosition(1203,67);
-    addChild(openMenu);
+    //TODO 好友开房功能暂时关闭
+    //    auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
+    //    auto openMenu = Menu::create(openRoom,NULL);
+    //    openMenu->setPosition(1203,67);
+    //    addChild(openMenu);
     
 }
 

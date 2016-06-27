@@ -5,6 +5,7 @@
 #include "userdata/UserData.h"
 #include "game/utils/Chinese.h"
 #include "image/UrlImageMannger.h"
+#include "game/mahjong/lobby/LobbyScene.h"
 
 bool UserInfo::init(){
 	if (!Layer::init()){
@@ -158,6 +159,8 @@ void UserInfo::menuBtnClick(Ref* ref){
 
 void UserInfo::updateNickname(){
 	nickNameLabel->setString(UserData::getInstance()->getNickName());
+    EventCustom ev(MSG_UPDATE_HERO_INFO);
+    _eventDispatcher->dispatchEvent(&ev);
 	if (UserData::getInstance()->isChangeName()){
 		changeNickName->setVisible(false);
 	}

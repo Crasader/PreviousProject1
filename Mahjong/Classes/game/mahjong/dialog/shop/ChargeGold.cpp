@@ -68,12 +68,12 @@ void ChargeGold::onEnter(){
         if(NULL != getChildByTag(2000)){
             getChildByTag(2000)->removeFromParent();
         }
-        ((LobbyScene*)getParent())->updateHeroInfo();
         std::string buf = static_cast<char*>(event->getUserData());
         ShopHintDialog* da = ShopHintDialog::create();
         if(buf == "1"){
             da->showText("充值成功");
-            ((LobbyScene*)getParent())->updateHeroInfo();
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
         }else{
             da->showText("充值失败");
         }

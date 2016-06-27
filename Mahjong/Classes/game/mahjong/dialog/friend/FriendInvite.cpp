@@ -22,7 +22,6 @@ bool FriendInvite::init()
     auto menuWx = Menu::create(wxBtnImage,NULL);
     menuWx->setPosition(1010,596);
     addChild(menuWx);
-    
     tableView = TableView::create(this, Size(490, 400));
     tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView->setDirection(ScrollView::Direction::VERTICAL);
