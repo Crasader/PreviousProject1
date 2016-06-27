@@ -4,10 +4,10 @@
 
 bool FriendInvite::init()
 {
-	if (!Layer::init())
-	{
-		return false;
-	}
+    if (!Layer::init())
+    {
+        return false;
+    }
     MenuItem* item = MenuItem::create();
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
@@ -23,21 +23,21 @@ bool FriendInvite::init()
     menuWx->setPosition(1010,596);
     addChild(menuWx);
     
-	tableView = TableView::create(this, Size(490, 400));
-	tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	tableView->setDirection(ScrollView::Direction::VERTICAL);
-	tableView->setPosition(780, 90);
-	tableView->setDelegate(this);
-	tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-	this->addChild(tableView);
-	//tableView->reloadData();
-
-
+    tableView = TableView::create(this, Size(490, 400));
+    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    tableView->setDirection(ScrollView::Direction::VERTICAL);
+    tableView->setPosition(780, 90);
+    tableView->setDelegate(this);
+    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
+    this->addChild(tableView);
+    //tableView->reloadData();
+    
+    
     auto openImage = MenuItemImage::create("friend/open_room_btn.png","friend/open_room_btn.png",CC_CALLBACK_0(FriendInvite::addConfirm, this));
     Menu* openBtn = Menu::create(openImage,NULL);
     openBtn->setPosition(1010,70);
     addChild(openBtn);
-	return true;
+    return true;
 }
 
 
@@ -65,7 +65,7 @@ void FriendInvite::tableCellTouched(TableView* table, TableViewCell* cell)
     std::string pid = data.friends.at(cell->getIdx()).poxiaoId;
     if (cell->getChildByTag(520)->isVisible()){
         inviteFriends.push_back(data.friends.at(cell->getIdx()));
-           }
+    }
     else{
         vector<FriendInfo>::iterator it;
         for (it = inviteFriends.begin(); it != inviteFriends.end();)
@@ -80,16 +80,16 @@ void FriendInvite::tableCellTouched(TableView* table, TableViewCell* cell)
 
 Size FriendInvite::tableCellSizeForIndex(TableView *table, ssize_t idx)
 {
-	return Size(490, 60);
+    return Size(490, 60);
 }
 
 TableViewCell* FriendInvite::tableCellAtIndex(TableView *table, ssize_t idx)
 {
-	auto string = String::createWithFormat("%ld", idx);
-	TableViewCell *cell = table->dequeueCell();
-	if (!cell) {
-		cell = new (std::nothrow) TableViewCell();
-		cell->autorelease();
+    auto string = String::createWithFormat("%ld", idx);
+    TableViewCell *cell = table->dequeueCell();
+    if (!cell) {
+        cell = new (std::nothrow) TableViewCell();
+        cell->autorelease();
         Sprite* head = Sprite::create("gameview/head_image_1.png");
         head->setAnchorPoint(Vec2::ZERO);
         head->setScale(0.6f);
@@ -106,12 +106,14 @@ TableViewCell* FriendInvite::tableCellAtIndex(TableView *table, ssize_t idx)
         
         Sprite* circle = Sprite::create("friend/online_icon.png");
         circle->setPosition(340, 35);
+        circle->setTag(802);
         cell->addChild(circle);
         Sprite* text = Sprite::create("friend/online.png");
         text->setPosition(390,35);
+        text->setTag(803);
         cell->addChild(text);
         
-        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
+        if(!GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
             circle->setTexture("friend/offline_icon.png");
             text->setTexture("friend/offline.png");
         }
@@ -125,47 +127,57 @@ TableViewCell* FriendInvite::tableCellAtIndex(TableView *table, ssize_t idx)
         select->setTag(520);
         select->setVisible(false);
         cell->addChild(select);
-
-	}
-	return cell;
+        
+    }else{
+        std::string nickname = GAMEDATA::getInstance()->getFriendList().friends.at(idx).nickname;
+        ((Label*)getChildByTag(801))->setString(nickname);
+        if(!GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
+            ((Sprite*)getChildByTag(802))->setTexture("friend/offline_icon.png");
+            ((Sprite*)getChildByTag(803))->setTexture("friend/offline.png");
+        }else{
+            ((Sprite*)getChildByTag(802))->setTexture("friend/online_icon.png");
+            ((Sprite*)getChildByTag(803))->setTexture("friend/online.png");
+        }
+    }
+    return cell;
 }
 
 ssize_t FriendInvite::numberOfCellsInTableView(TableView *table)
 {
-	int size = GAMEDATA::getInstance()->getFriendList().friends.size();
-	if (size < 0){
-		size = 0;
-	}
-	return size;
+    int size = GAMEDATA::getInstance()->getFriendList().friends.size();
+    if (size < 0){
+        size = 0;
+    }
+    return size;
 }
 
 void FriendInvite::addConfirm(){
-	std::string pid = "";
-	for (int i = 0; i < inviteFriends.size(); i++){
-		
-		if (i == inviteFriends.size() - 1){
-			pid += inviteFriends.at(i).poxiaoId;
-		}
-		else{
-			pid += inviteFriends.at(i).poxiaoId + ",";
-		}
-	}
-	NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(pid));
-	this->removeFromParent();
+    std::string pid = "";
+    for (int i = 0; i < inviteFriends.size(); i++){
+        
+        if (i == inviteFriends.size() - 1){
+            pid += inviteFriends.at(i).poxiaoId;
+        }
+        else{
+            pid += inviteFriends.at(i).poxiaoId + ",";
+        }
+    }
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(pid));
+    this->removeFromParent();
 }
 
 
 void FriendInvite::inviteWxFriend(){
-
-//TODO
-
+    
+    //TODO
+    
 }
 
 
 void FriendInvite::closeView(){
-	this->removeFromParent();
+    this->removeFromParent();
 }
 
 void FriendInvite::updateFriendList(){
-	tableView->reloadData();
+    tableView->reloadData();
 }

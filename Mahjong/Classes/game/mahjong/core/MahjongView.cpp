@@ -47,6 +47,7 @@ void MahjongView::initData(){
     playerRight = NULL;
     playerOpposite = NULL;
     GAMEDATA::getInstance()->setIsPlaying(false);
+    GAMEDATA::getInstance()->setIsLiuJu(false);
 }
 
 void MahjongView::loadView(){

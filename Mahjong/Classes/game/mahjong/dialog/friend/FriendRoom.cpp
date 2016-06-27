@@ -172,7 +172,6 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
             circle->setTexture("friend/online_icon.png");
             text->setTexture("friend/online.png");
         }
-        
         auto box = Sprite::create("friend/select_box.png");
         box->setPosition(620,35);
         cell->addChild(box);
@@ -182,6 +181,8 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
         select->setTag(520);
         select->setVisible(false);
         cell->addChild(select);
+    }else{
+        //TODO
     }
     return cell;
 }
