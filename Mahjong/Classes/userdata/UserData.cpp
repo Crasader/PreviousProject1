@@ -106,7 +106,7 @@ void UserData::setBoundPhone(std::string phone){
 }
 
 std::string UserData::getPicture(){
-	return UserDefault::getInstance()->getStringForKey("picture", "unknow");
+	return UserDefault::getInstance()->getStringForKey("picture", "gameview/head_image_1.png");
 }
 
 void UserData::setPicture(std::string pic){

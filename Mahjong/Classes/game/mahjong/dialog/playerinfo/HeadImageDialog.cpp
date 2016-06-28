@@ -18,7 +18,7 @@ void HeadImageDialog::onEnter(){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
-            //TODO
+        
         }
         else{
             
@@ -150,6 +150,8 @@ void HeadImageDialog::confirmHead(){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeGenderCommand("1"));
     }
     ((UserInfo*)getParent())->updateHeadImage();
+    EventCustom ev(MSG_UPDATE_HERO_INFO);
+    _eventDispatcher->dispatchEvent(&ev);
     removeFromParent();
 }
 

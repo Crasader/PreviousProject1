@@ -64,6 +64,7 @@ void LobbyScene::onExit(){
 }
 
 void LobbyScene::updateHeroInfo(){
+    ((Sprite*)getChildByTag(962))->setTexture(UserData::getInstance()->getPicture());
     nickName->setString(UserData::getInstance()->getNickName());
     goldNum ->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string);
     diamondNum->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string);
@@ -104,8 +105,14 @@ void LobbyScene::drawSceneTop(){
     auto head_bg = Sprite::create("mjlobby/head_image_bg.png");
     head_bg->setPosition(61, 660);
     this->addChild(head_bg);
-    auto head = MenuItemImage::create("mjlobby/head_image.png", "mjlobby/head_image.png",
-                                      CC_CALLBACK_0(LobbyScene::showHeroInfo, this));
+    
+    auto image = Sprite::create(UserData::getInstance()->getPicture());
+    image->setTag(962);
+    image->setPosition(61, 660);
+    addChild(image);
+    
+    auto head = MenuItem::create(CC_CALLBACK_0(LobbyScene::showHeroInfo, this));
+    head->setContentSize(Size(90,90));
     auto headmenu = Menu::create(head, NULL);
     headmenu->setPosition(61, 660);
     this->addChild(headmenu);
