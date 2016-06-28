@@ -13,6 +13,7 @@
 #include "game/utils/StringUtil.h"
 #include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
+#include "game/utils/ParticleUtil.hpp"
 
 bool ChargeGold::init(){
     if(!Layer::init()){
@@ -72,6 +73,8 @@ void ChargeGold::onEnter(){
         ShopHintDialog* da = ShopHintDialog::create();
         if(buf == "1"){
             da->showText("充值成功");
+            ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
+            addChild(par,2);
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
         }else{

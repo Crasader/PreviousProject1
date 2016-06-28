@@ -8,7 +8,8 @@
 
 #include "game/mahjong/dialog/shop/ExchangePropCell.hpp"
 #include "game/mahjong/dialog/shop/ExchangeItem.hpp"
-
+#include "userdata/UserData.h"
+#include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
 
 ExchangePropCell* ExchangePropCell::create(int propId,int lequanNum,std::string propName){
     
@@ -28,7 +29,7 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName){
     if(!Sprite::init()){
         return false;
     }
-    
+    setLequanNum(lequanNum);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
     bg->setPosition(0,0);
     addChild(bg);
@@ -59,8 +60,15 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName){
 
 void ExchangePropCell::confirmChange(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
-    ExchangeItem* item = ExchangeItem::create(temp->getTag(),temp->getName());
-    getParent()->addChild(item);
+    //判断乐券是否足够
+    if(UserData::getInstance()->getTicket()>=getLequanNum()){
+        ExchangeItem* item = ExchangeItem::create(temp->getTag(),temp->getName());
+        getParent()->addChild(item);
+    }else{
+        ShopHintDialog* dia = ShopHintDialog::create();
+        dia->showText("乐券不足");
+        getParent()->addChild(dia,2);
+    }
 }
 
 std::string ExchangePropCell::getImageNameById(int id){

@@ -27,11 +27,13 @@ void Audio::pauseBGM()
 
 void Audio::setBGMValue(float value)
 {
+    UserData::getInstance()->setMusicValue(value);
     CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(value);
 }
 
 void Audio::setEffectValue(float value)
 {
+    UserData::getInstance()->setSoundValue(value);
     CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(value);
 }
 

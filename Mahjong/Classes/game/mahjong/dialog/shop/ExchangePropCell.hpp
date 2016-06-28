@@ -21,6 +21,6 @@ public:
 private:
     std::string getImageNameById(int id);
     void confirmChange(Ref* ref);
-
+    CC_SYNTHESIZE(int, lequanNum, LequanNum);
 };
 #endif /* ExchangePropCell_hpp */

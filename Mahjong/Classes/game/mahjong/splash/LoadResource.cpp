@@ -8,6 +8,15 @@
 
 #include "game/mahjong/splash/LoadResource.hpp"
 
+Scene* LoadResource::createScene()
+{
+    auto scene = Scene::create();
+    auto layer = LoadResource::create();
+    scene->addChild(layer);
+    return scene;
+}
+
+
 bool LoadResource::init(){
     if(!Layer::init()){
     

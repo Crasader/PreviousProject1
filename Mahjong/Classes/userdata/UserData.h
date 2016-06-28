@@ -48,6 +48,12 @@ public:
 
 	bool isChangeName();
 	void setChangeName(bool firstcharge);
+    
+    float getMusicValue();
+    void setMusicValue(float value);
+    
+    float getSoundValue();
+    void setSoundValue(float value);
 private:
 	UserData();
 	static UserData* _instance;	

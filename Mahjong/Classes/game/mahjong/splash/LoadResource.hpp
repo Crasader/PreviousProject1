@@ -17,6 +17,7 @@ USING_NS_CC;
 class LoadResource : public Layer{
 public:
     virtual bool init();
+    static cocos2d::Scene* createScene();
     CREATE_FUNC(LoadResource);
 private:
     void showLayer();
