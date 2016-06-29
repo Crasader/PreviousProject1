@@ -54,5 +54,6 @@ public:
     void setEffectValue(float value);
 private:
     static Audio* m_instance;
+
 };
 #endif
