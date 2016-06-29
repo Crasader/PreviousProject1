@@ -9,7 +9,7 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
 #include "game/mahjong/splash/dropdownlist/LoginMannger.h"
-#include "game/utils/Audio.h"
+
 
 
 Scene* SplashScene::createScene()
@@ -26,10 +26,6 @@ bool SplashScene::init()
     {
         return false;
     }
-    //    LoadResource* loda = LoadResource::create();
-    //    addChild(loda);
-    Audio::getInstance()->prepare();
-    Audio::getInstance()->playBGM();
     //draw scene
     drawLonginScene();
     //add event listener

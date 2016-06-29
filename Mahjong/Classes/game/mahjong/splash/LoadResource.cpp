@@ -7,6 +7,8 @@
 //
 
 #include "game/mahjong/splash/LoadResource.hpp"
+#include "game/mahjong/splash/SplashScene.h"
+#include "game/utils/Audio.h"
 
 Scene* LoadResource::createScene()
 {
@@ -64,4 +66,21 @@ void LoadResource::showLayer(){
     auto loadProBg = Sprite::create("mainlogin/loading_pro_bg.png");
     loadProBg->setPosition(640,60);
     addChild(loadProBg);
+    
+    auto load = Sprite::create();
+    addChild(load);
+    load->runAction(Sequence::create(CallFunc::create([=](){
+        Audio::getInstance()->prepare();
+        Audio::getInstance()->playBGM();
+    }), NULL));
+    auto loadProgerss = ProgressTimer::create(Sprite::create("mainlogin/loading_pro_1.png"));
+    loadProgerss->setPosition(640,60);
+     addChild(loadProgerss,1);
+    loadProgerss->setType(ProgressTimer::Type::BAR);
+    loadProgerss->setBarChangeRate(Point(1,0));//设置进程条的变化速率
+    loadProgerss->setType(ProgressTimer::Type::BAR);//设置进程条的类型
+    loadProgerss->setMidpoint(Point(0,1));//设置进度的运动方向
+    loadProgerss->runAction(Sequence::create(ProgressTo::create(2, 100),CallFunc::create([=](){
+        Director::getInstance()->replaceScene(SplashScene::createScene());
+    }),NULL));
 }
