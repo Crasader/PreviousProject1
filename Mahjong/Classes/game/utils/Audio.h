@@ -49,7 +49,6 @@ public:
     void playSoundPeng();
     void playSoundGang();
     
-    void prepare();
     void setBGMValue(float value);
     void setEffectValue(float value);
 private:

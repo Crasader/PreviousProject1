@@ -70,7 +70,6 @@ void LoadResource::showLayer(){
     auto load = Sprite::create();
     addChild(load);
     load->runAction(Sequence::create(CallFunc::create([=](){
-        Audio::getInstance()->prepare();
         Audio::getInstance()->playBGM();
     }), NULL));
     auto loadProgerss = ProgressTimer::create(Sprite::create("mainlogin/loading_pro_1.png"));
