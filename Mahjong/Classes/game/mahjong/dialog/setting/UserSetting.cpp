@@ -1,4 +1,6 @@
 #include "game/mahjong/dialog/setting/UserSetting.h"
+#include "game/mahjong/dialog/setting/GameFeedDialog.hpp"
+#include "game/mahjong/dialog/setting/GameRuleDialog.hpp"
 #include "game/utils/Audio.h"
 #include "userdata/UserData.h"
 
@@ -101,13 +103,12 @@ void UserSetting::slideCallback(Object *sender, Control::EventType controlEvent)
 
 
 void UserSetting::showGameHelp(){
-
-
+    GameRuleDialog* rule = GameRuleDialog::create();
+    addChild(rule);
 }
 
 
 void UserSetting::feedBack(){
-
-
-
+    GameFeedDialog* feed = GameFeedDialog::create();
+    addChild(feed);
 }
