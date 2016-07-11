@@ -93,6 +93,7 @@ private:
 	EventListenerCustom* friendInviteMeListener;
 	EventListenerCustom* enterFrinedRoomListener;
     EventListenerCustom* playerRemoveListener;
+    EventListenerCustom* playerOffLineListener;
 
 	void addCoustomListener();
 	void addOthersReadyListener();
@@ -119,5 +120,6 @@ private:
 	void addFriendInviteMeListener();
 	void addEnterFriendRoomListener();
     void addPlayerRemoveListener();
+    void addPlayerOffLineListener();
 };
 #endif

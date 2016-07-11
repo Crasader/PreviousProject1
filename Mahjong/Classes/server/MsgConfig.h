@@ -264,4 +264,5 @@
 #define MSG_HERO_READY_RESP "msg_hero_ready_resp"
 #define MSG_PLAYER_INFO_RESP "msg_player_info_resp"
 #define MSG_PLAYER_FIND_PASSWORD_RESP "msg_player_find_password_resp"
+#define MSG_PLAYER_OFF_LINE_NOTIFY "msg_player_off_line_notify"
 #endif

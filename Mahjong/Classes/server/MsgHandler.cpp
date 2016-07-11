@@ -2110,3 +2110,15 @@ void MsgHandler::getFindPasswordResp(std::string msg){
     }
 
 }
+
+void MsgHandler::getPlayerOffLineNotify(std::string msg){
+    // 服务端到客户端掉线通知{code:1010,poxiaoId:poxiaoId}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("poxiaoId")){
+        const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
+        postNotifyMessage(MSG_PLAYER_OFF_LINE_NOTIFY, poxiaoId.GetString());
+    }
+}

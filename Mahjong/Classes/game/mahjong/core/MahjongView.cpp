@@ -1201,4 +1201,25 @@ void MahjongView::addPlayerRemoveListener(){
     
 }
 
+void MahjongView::addPlayerOffLineListener(){
+    playerOffLineListener = EventListenerCustom::create(MSG_PLAYER_OFF_LINE_NOTIFY, [=](EventCustom* event){
+        string buf = static_cast<char*>(event->getUserData());
+        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+        for (int i = 0; i < players.size(); i++){
+            if(players.at(i)->getPoxiaoId() ==  buf){
+                int seatId  = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId());
+                if(seatId == ClientSeatId::left){
+//                    playerLeft->set
+                }else if(seatId == ClientSeatId::opposite){
+                
+                }else if(seatId == ClientSeatId::right){
+                
+                
+                }
+            }
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerOffLineListener, 1);
+}
+
 
