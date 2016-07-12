@@ -12,11 +12,6 @@ bool LequanExchangeRecord::init(){
     if(!Layer::init()){
         return false;
     }
-    showLequanExchangeRecord();
-    return true;
-}
-
-void LequanExchangeRecord::showLequanExchangeRecord(){
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
@@ -38,9 +33,35 @@ void LequanExchangeRecord::showLequanExchangeRecord(){
     auto closeMenu = Menu::create(closeImage, NULL);
     closeMenu->setPosition(1050, 610);
     addChild(closeMenu);
-//    duihuanjilu_box.png
+    showLequanExchangeRecord();
+    return true;
+}
+
+void LequanExchangeRecord::showLequanExchangeRecord(){
+   //    duihuanjilu_box.png
 }
 
 void LequanExchangeRecord::closeView(){
     removeFromParent();
+}
+
+void LequanExchangeRecord::tableCellTouched(TableView* table,TableViewCell* cell){
+
+}
+
+
+Size LequanExchangeRecord::tableCellSizeForIndex(TableView *table, ssize_t idx){
+    return Size(722, 132);
+}
+
+TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t idx){
+    auto string = String::createWithFormat("%ld", idx);
+    TableViewCell *cell = table->dequeueCell();
+    if (!cell) {
+    }
+    return cell;
+}
+
+ssize_t LequanExchangeRecord::numberOfCellsInTableView(TableView *table){
+    return 0;
 }
