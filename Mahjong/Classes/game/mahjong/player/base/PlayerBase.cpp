@@ -72,6 +72,18 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
     readyTitle->setTag(1001);
 	readyTitle->setPosition(getPostionBySeat(clientSeatId));
 	this->addChild(readyTitle);
+    
+    auto offLineIcon = Sprite::create("trusteeship/offline_icon.png");
+    offLineIcon->setTag(1002);
+    offLineIcon->setVisible(false);
+    offLineIcon->setPosition(getPostionBySeat(clientSeatId).x+40,getPostionBySeat(clientSeatId).y-45);
+    this->addChild(offLineIcon);
+    
+    auto trueeIcon = Sprite::create("trusteeship/trustee_icon.png");
+    trueeIcon->setTag(1003);
+    trueeIcon->setVisible(false);
+    trueeIcon->setPosition(getPostionBySeat(clientSeatId).x+40,getPostionBySeat(clientSeatId).y-45);
+    this->addChild(trueeIcon);
 
 	tingTitle = Sprite::create("gameview/ting_icon.png");
 	tingTitle->setPosition(getPostionBySeat(clientSeatId).x + 40, getPostionBySeat(clientSeatId).y + 50);
@@ -205,6 +217,24 @@ void PlayerBase::setIsReady(bool b){
 	}
     if(NULL != getChildByTag(1001)){
         getChildByTag(1001)->setVisible(b);
+    }
+}
+
+void PlayerBase::setPlayerIsOffLine(bool b){
+    if (!getPlayerEnable()){
+        return;
+    }
+    if(NULL != getChildByTag(1002)){
+        getChildByTag(1002)->setVisible(b);
+    }
+}
+
+void PlayerBase::setPlayerTrustee(bool b){
+    if (!getPlayerEnable()){
+        return;
+    }
+    if(NULL != getChildByTag(1003)){
+        getChildByTag(1003)->setVisible(b);
     }
 }
 

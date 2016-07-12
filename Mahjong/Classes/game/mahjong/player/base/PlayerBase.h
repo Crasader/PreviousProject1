@@ -41,6 +41,8 @@ public:
     void showPlayerInfo();
 	
 	void setIsReady(bool b);
+    void setPlayerIsOffLine(bool b);
+    void setPlayerTrustee(bool b);
 	void setIsTing(bool b);
 	void startTimeClockAnim();
 	void startTimeClockAnim(int time, int type);
