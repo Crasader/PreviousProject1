@@ -422,6 +422,14 @@ void MsgHandler::distribute(int code, std::string msg){
             getFindPasswordResp(msg);
             break;
         }
+        case MSGCODE_DX_NOTIFY:{
+            getPlayerOffLineNotify(msg);
+            break;
+        }
+        case MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_RESPONSE:{
+            getLequanChangeRecordResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2120,5 +2128,16 @@ void MsgHandler::getPlayerOffLineNotify(std::string msg){
     if(_mDoc.HasMember("poxiaoId")){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         postNotifyMessage(MSG_PLAYER_OFF_LINE_NOTIFY, poxiaoId.GetString());
+    }
+}
+
+void MsgHandler::getLequanChangeRecordResp(std::string msg){
+    // 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("list")){
+        const rapidjson::Value &list = _mDoc["list"];
     }
 }

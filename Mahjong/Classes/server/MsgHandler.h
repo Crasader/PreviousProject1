@@ -85,5 +85,6 @@ private:
     void getPlayerInfoResp(std::string msg);
     void getFindPasswordResp(std::string msg);
     void getPlayerOffLineNotify(std::string msg);
+    void getLequanChangeRecordResp(std::string msg);
 };
 #endif
