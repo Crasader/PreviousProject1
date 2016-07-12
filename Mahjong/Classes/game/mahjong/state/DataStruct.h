@@ -388,4 +388,13 @@ struct LoginAccPwd{
     std::string account;
     std::string password;
 };
+
+struct LeRecord{
+    std::string propId;
+    std::string state;
+};
+
+struct LeChangeRecord{
+    std::vector<LeRecord> records;
+};
 #endif

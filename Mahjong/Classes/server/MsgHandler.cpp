@@ -2137,7 +2137,17 @@ void MsgHandler::getLequanChangeRecordResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    LeChangeRecord records;
     if(_mDoc.HasMember("list")){
         const rapidjson::Value &list = _mDoc["list"];
+        for(int i=0;i<list.Capacity();i++){
+            LeRecord rec;
+            const rapidjson::Value &temp = list[i];
+            rec.propId =temp["id"].GetString();
+            rec.state = temp["status"].GetString();
+            records.records.push_back(rec);
+        }
     }
+    GAMEDATA::getInstance()->setLeChangeRecord(records);
+    postNotifyMessage(MSG_PLAYER_LEQUAN_EXCHANGE_RECORD, "");
 }

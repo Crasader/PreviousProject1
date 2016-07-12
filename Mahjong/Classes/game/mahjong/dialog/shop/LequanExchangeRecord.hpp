@@ -17,6 +17,8 @@ USING_NS_CC_EXT;
 class LequanExchangeRecord : public Layer,public TableViewDelegate, public TableViewDataSource {
 public:
     virtual bool init();
+    void onEnter() override;
+    void onExit() override;
     virtual void tableCellTouched(TableView* table, TableViewCell* cell);
     virtual Size tableCellSizeForIndex(TableView *table, ssize_t idx);
     virtual TableViewCell* tableCellAtIndex(TableView *table, ssize_t idx);
@@ -26,6 +28,7 @@ public:
     virtual void scrollViewDidZoom(cocos2d::extension::ScrollView* view) {}
     CREATE_FUNC(LequanExchangeRecord);
 private:
+    EventListenerCustom* recordListener;
     void showLequanExchangeRecord();
     void closeView();
 };

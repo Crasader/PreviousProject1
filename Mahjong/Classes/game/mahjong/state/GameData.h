@@ -64,7 +64,7 @@ public:
     CC_SYNTHESIZE(LoginAccPwd, loginAccPwd, LoginAccPwd);
     CC_SYNTHESIZE(MahjongRoom, mahjongRoomType, MahjongRoomType);
     CC_SYNTHESIZE(MahjongState, mahjongState, MahjongState);
-    
+    CC_SYNTHESIZE(LeChangeRecord, leChangeRecord, LeChangeRecord);
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
