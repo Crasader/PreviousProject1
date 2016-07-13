@@ -5,6 +5,7 @@
 Sprite* PlayerBase::biaoji = NULL;
 Sprite* PlayerBase::currentBigJongBg = NULL;
 Jong* PlayerBase::currentBigJong = NULL;
+set<int> PlayerBase:: playedPokers;
 
 bool PlayerBase::init(){
 	if (!Layer::init()){
@@ -123,6 +124,17 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
 	playerHua->setVisible(false);
 	playerHuaCount->setVisible(false);
 	setPlayerEnable(true);
+}
+
+void PlayerBase::drawPlayedJong(int ctype){
+    playedPokers.insert(ctype);
+    if(getChiNumber()==0){
+        if(getPokerNumber()>10){
+            //10张牌后第一次吃
+        }
+    }else{
+        Audio::getInstance()->playMahjong(ctype);
+    }
 }
 
 

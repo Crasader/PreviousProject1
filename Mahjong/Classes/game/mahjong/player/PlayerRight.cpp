@@ -38,6 +38,7 @@ void PlayerRight::drawRightPlayerTurn(){
 }
 
 void PlayerRight::drawPlayedJong(int ctype){
+    Audio::getInstance()->playMahjong(ctype);
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(rightplayed, ctype);
     lastPlayedJong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y + 35));
@@ -67,7 +68,7 @@ void PlayerRight::drawPlayedJong(int ctype){
     }
     Sequence* sequence = Sequence::create(actionMove, callback, NULL);
     lastPlayedJong->runAction(sequence);
-    
+    showCurrentBigJong(ctype, Vec2(980, 400));
 }
 
 
@@ -136,11 +137,6 @@ Point PlayerRight::getPlayedJongPos(int count){
 }
 
 
-void PlayerRight::drawRightPlayerPlay(int type){
-     Audio::getInstance()->playMahjong(type);
-    drawPlayedJong(type);
-    showCurrentBigJong(type, Vec2(980, 400));
-}
 
 
 
@@ -162,7 +158,7 @@ void PlayerRight::removeLastJong(){
 
 
 void PlayerRight::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
-     setStateCpg(true);
+    setStateCpg(true);
     Audio::getInstance()->playSoundChi(1);
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
     for (int j = 0; j < 2; j++){

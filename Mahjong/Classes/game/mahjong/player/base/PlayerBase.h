@@ -24,8 +24,8 @@ public:
 	static Jong* currentBigJong;
 
 	virtual bool init();
-	void initPlayer(Player* playerInfo, int clientSeatId);
-
+	void initPlayer(Player* playerInfo, int clientSeatId);//初始化玩家UI
+    void drawPlayedJong(int ctype);//玩家打牌
 	
 	virtual void removeLastJong(){};
     virtual void doEventTimeOverUi(){};
@@ -56,15 +56,19 @@ public:
 	void recoverHand(std::string hand);
 	void cleanPlayerUI();
 	Jong* getCurrentJong();
-    
     //隐藏玩家的手牌
     void hideHandJongs();
+    
+    static set<int> playedPokers;//全部玩家打出过的牌,不重复
     CC_SYNTHESIZE(Player*, playerInfo, PlayerInfo);
 	CC_SYNTHESIZE(ReplaceJong, replacePoker, ReplacePoker);
 	CC_SYNTHESIZE(int, clientSeat, ClientSeat);
 	CC_SYNTHESIZE(bool, playerEnable, PlayerEnable);
     CC_SYNTHESIZE(int,huaNum,HuaNum);
     CC_SYNTHESIZE(bool, stateCpg, StateCpg);//吃碰杠状态
+    CC_SYNTHESIZE(int, chiNumber, ChiNumber);//吃的数量
+    CC_SYNTHESIZE(int, pokerNumber, PokerNumber);//打牌数量
+    CC_SYNTHESIZE(int, lastPoker, LastPoker);//打牌数量
 	CREATE_FUNC(PlayerBase);
 
 private:

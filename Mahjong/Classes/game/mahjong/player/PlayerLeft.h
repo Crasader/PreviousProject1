@@ -14,7 +14,6 @@ public:
 	void drawHandJong();
 	void drawPlayedJong(int ctype);
 	void drawHuaJong();
-	void drawLeftPlayerPlay(int type);
 	void drawLeftPlayerTurn();
 	void playerTurnReplace(PlayerTurnData data);
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);

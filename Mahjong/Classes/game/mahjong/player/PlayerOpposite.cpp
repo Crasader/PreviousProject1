@@ -45,6 +45,7 @@ void PlayerOpposite::drawOppositePlayerTurn(){
 }
 
 void PlayerOpposite::drawPlayedJong(int ctype){
+    Audio::getInstance()->playMahjong(ctype);
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(oppositeplayed, ctype);
     lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 31, OPPOSITE_POS_Y));
@@ -81,7 +82,7 @@ void PlayerOpposite::drawPlayedJong(int ctype){
         }
     }), NULL) ,callback, NULL);
     lastPlayedJong->runAction(sequence);
-    
+    showCurrentBigJong(ctype, Vec2(640, 550));
 }
 
 
@@ -121,11 +122,6 @@ Point PlayerOpposite::getPlayedJongPos(int count){
     }
 }
 
-void PlayerOpposite::drawOppositePlayerPlay(int type){
-    Audio::getInstance()->playMahjong(type);
-    drawPlayedJong(type);
-    showCurrentBigJong(type, Vec2(640, 550));
-}
 
 void PlayerOpposite::removeLastJong(){
     playerPlayedJongs.at(playerPlayedJongs.size() - 1)->removeFromParent();

@@ -687,16 +687,16 @@ void MahjongView::addJongPlayedListener(){
     otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
         if (seatId == ClientSeatId::left){
-            playerLeft->drawLeftPlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            playerLeft->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerLeft->stopTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->drawRightPlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            playerRight->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerRight->stopTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
            
-            playerOpposite->drawOppositePlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            playerOpposite->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerOpposite->stopTimeClockAnim();
         }
         else{

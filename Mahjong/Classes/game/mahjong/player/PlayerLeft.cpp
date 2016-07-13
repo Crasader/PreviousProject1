@@ -68,7 +68,7 @@ void PlayerLeft::drawPlayedJong(int ctype){
         }
     }), NULL) ,callback, NULL);
     lastPlayedJong->runAction(sequence);
-    
+    showCurrentBigJong(ctype,Vec2(300,400));
 }
 
 
@@ -136,11 +136,6 @@ Point PlayerLeft::getPlayedJongPos(int count){
     }
 }
 
-void PlayerLeft::drawLeftPlayerPlay(int type){
-    Audio::getInstance()->playMahjong(type);
-    drawPlayedJong(type);
-    showCurrentBigJong(type,Vec2(300,400));
-}
 
 
 void PlayerLeft::showCurrentPlayedJongIcon(bool isShow){

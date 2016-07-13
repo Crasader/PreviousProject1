@@ -12,7 +12,6 @@ public:
 	void drawHandJong();//
 	void drawPlayedJong(int ctype);//
 	void drawHuaJong();//
-	void drawRightPlayerPlay(int type);
 	void drawRightPlayerTurn();
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;
