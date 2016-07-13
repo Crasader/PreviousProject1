@@ -28,8 +28,9 @@ public:
     void drawPlayedJong(int ctype);//玩家打牌
     void drawPlayerChi(string chiPoker, PlayerBase* playerBase);//玩家吃牌
     void drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);//玩家碰牌
-    void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
-	
+    void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);//玩家杠牌
+	void showPlayerHua(Point pos,int num);//显示玩家花数
+    
 	virtual void removeLastJong(){};
     virtual void doEventTimeOverUi(){};
 	virtual void doEventTimeOver(int type){};
@@ -37,7 +38,7 @@ public:
     virtual void JongShowdown(vector<int> jongs){};
 	virtual Point getCpgShowPostion(int index){ return Point(0, 0); };
 
-	void showPlayerHua(Point pos,int num);
+	
 	void showCurrentBigJong(int cType,Vec2 pos);
 	void hideCurrentBigJong();
     
@@ -72,6 +73,7 @@ public:
     CC_SYNTHESIZE(int, chiNumber, ChiNumber);//吃的数量
     CC_SYNTHESIZE(int, pokerNumber, PokerNumber);//打牌数量
     CC_SYNTHESIZE(int, lastPoker, LastPoker);//打牌数量
+    CC_SYNTHESIZE(bool, isPlayHuaChi, IsPlayHuaChi);
 	CREATE_FUNC(PlayerBase);
 
 private:

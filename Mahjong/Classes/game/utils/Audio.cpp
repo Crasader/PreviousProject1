@@ -214,7 +214,6 @@ void Audio::playSoundPeng(){
 }
 
 void Audio::playSoundGang(){
-    
     if(UserData::getInstance()->getGender()==1){
         AudioEngine::play2d("audio/male/gang_1.ogg",false,UserData::getInstance()->getSoundValue());
     }
@@ -223,6 +222,47 @@ void Audio::playSoundGang(){
     }
 }
 
+void Audio::playSoundHua(){
+//    if(UserData::getInstance()->getGender()==1){
+//        AudioEngine::play2d("audio/male/gang_1.ogg",false,UserData::getInstance()->getSoundValue());
+//    }
+//    else{
+//        AudioEngine::play2d("audio/famale/gang_1.ogg",false,UserData::getInstance()->getSoundValue());
+//    }
+}
+
+void Audio::playSoundHuaChi(){
+    if(UserData::getInstance()->getGender()==1){
+        AudioEngine::play2d("audio/male/huachi_1.ogg",false,UserData::getInstance()->getSoundValue());
+    }
+    else{
+        AudioEngine::play2d("audio/famale/huachi_1.ogg",false,UserData::getInstance()->getSoundValue());
+    }
+}
+
+
+void Audio::playSoundTing(){
+    int soundId = rand()%3+1;
+    if(UserData::getInstance()->getGender()==1){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/tingpai_%d.ogg",soundId)->_string;
+        AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/famale/tingpai_%d.ogg",soundId)->_string;
+        AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
+    }
+}
+
+
+void Audio::playSoudnSlow(){
+    int soundId = rand()%2+1;
+    if(UserData::getInstance()->getGender()==1){
+        std::string soundName = cocos2d::String::createWithFormat("audio/male/tingpai_%d.ogg",soundId)->_string;
+        AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
+    }else{
+        std::string soundName = cocos2d::String::createWithFormat("audio/famale/tingpai_%d.ogg",soundId)->_string;
+        AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
+    }
+}
 
 void Audio::playSoundWan1(){
     int soundId = rand()%3+1;

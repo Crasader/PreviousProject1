@@ -375,7 +375,6 @@ void MahjongView::playerTingAnim(int seatId){
     schedule([=](float t){
         if (seatId == ClientSeatId::left){
             playerLeft->setIsTing(true);
-            
         }
         else if (seatId == ClientSeatId::right){
             playerRight->setIsTing(true);

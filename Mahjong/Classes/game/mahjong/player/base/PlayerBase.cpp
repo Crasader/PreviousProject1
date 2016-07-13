@@ -24,6 +24,7 @@ void PlayerBase::initData(){
     setHuaNum(0);
     setPlayerEnable(false);
     setStateCpg(false);
+    setIsPlayHuaChi(false);
 }
 
 
@@ -133,7 +134,7 @@ void PlayerBase::drawPlayedJong(int ctype){
 void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
     if(getChiNumber()==0){
         if(getPokerNumber()>10){
-             Audio::getInstance()->playSoundChi(4);
+            Audio::getInstance()->playSoundChi(4);
         }else{
             if(chiPoker=="1,2"||chiPoker=="8,9"||chiPoker=="10,11"||chiPoker=="17,18"||chiPoker=="19,20"||chiPoker=="26,27"){
                 //边一记
@@ -182,6 +183,10 @@ void PlayerBase::updatePlayerInfo(int num){
 void PlayerBase::showPlayerHua(Point pos, int num){
     if (!getPlayerEnable()){
         return;
+    }
+    if(num>5 && !getIsPlayHuaChi()){
+        Audio::getInstance()->playSoundHuaChi();
+        setIsPlayHuaChi(true);
     }
     playerHua->setVisible(true);
     playerHuaCount->setVisible(true);
@@ -284,6 +289,9 @@ void PlayerBase::setPlayerTrustee(bool b){
 void PlayerBase::setIsTing(bool b){
     if (!getPlayerEnable()){
         return;
+    }
+    if(b){
+        Audio::getInstance()->playSoundTing();
     }
     tingTitle->setVisible(b);
 }

@@ -48,6 +48,10 @@ public:
     void playSoundChi(int type);
     void playSoundPeng();
     void playSoundGang();
+    void playSoundHua();
+    void playSoundHuaChi();
+    void playSoundTing();
+    void playSoudnSlow();
     
     void setBGMValue(float value);
     void setEffectValue(float value);
