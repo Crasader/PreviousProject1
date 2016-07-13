@@ -135,15 +135,29 @@ void PlayerBase::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
         //TODO 第一次吃牌音效
         if(getPokerNumber()>10){
             //TODO 打了10张牌后第一次吃
+        }else{
+            if(data.chi.at(0)=="1,2"||data.chi.at(0)=="8,9"||data.chi.at(0)=="10,11"||data.chi.at(0)=="17,18"||data.chi.at(0)=="19,20"||data.chi.at(0)=="26,27"){
+                //TODO 边一记
+            }else {
+                std::vector<std::string> cha = StringUtil::split(data.chi.at(0), ",");
+                if(atoi(cha.at(1).c_str())-atoi(cha.at(0).c_str())>1){
+                    //TODO 卡一记
+                }else{
+                    //TODO 吃
+                }
+            }
         }
     }else if(getChiNumber() == 1){
-        //TODO
-    }else if(getChiNumber() ==2){
-        //TODO
+        //TODO 第二次吃牌
     }else{
-        //TODO
+        //TODO 吃牌
     }
     setChiNumber(getChiNumber()+1);
+}
+
+void PlayerBase::drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
+
+
 }
 
 

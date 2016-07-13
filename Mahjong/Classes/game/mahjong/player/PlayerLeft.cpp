@@ -186,6 +186,7 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
 }
 
 void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
+    PlayerBase::drawPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng();
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
