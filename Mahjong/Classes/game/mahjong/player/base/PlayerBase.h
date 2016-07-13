@@ -26,6 +26,7 @@ public:
 	virtual bool init();
 	void initPlayer(Player* playerInfo, int clientSeatId);//初始化玩家UI
     void drawPlayedJong(int ctype);//玩家打牌
+    void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);//玩家吃牌
 	
 	virtual void removeLastJong(){};
     virtual void doEventTimeOverUi(){};
