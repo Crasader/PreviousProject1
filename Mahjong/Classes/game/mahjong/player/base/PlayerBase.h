@@ -28,6 +28,7 @@ public:
     void drawPlayedJong(int ctype);//玩家打牌
     void drawPlayerChi(string chiPoker, PlayerBase* playerBase);//玩家吃牌
     void drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);//玩家碰牌
+    void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
 	
 	virtual void removeLastJong(){};
     virtual void doEventTimeOverUi(){};

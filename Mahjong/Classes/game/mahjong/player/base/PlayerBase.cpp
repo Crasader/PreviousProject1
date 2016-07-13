@@ -161,8 +161,11 @@ void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
 }
 
 void PlayerBase::drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
+    Audio::getInstance()->playSoundPeng();
+}
 
-
+void PlayerBase::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
+    Audio::getInstance()->playSoundGang();
 }
 
 

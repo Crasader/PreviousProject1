@@ -208,7 +208,7 @@ void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
 }
 
 void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundGang();
+    PlayerBase::drawPlayerGang(data,playerBase);
     if (data.flag == 2){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }
