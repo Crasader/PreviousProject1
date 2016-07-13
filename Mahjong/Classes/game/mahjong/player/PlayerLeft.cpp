@@ -39,6 +39,7 @@ void PlayerLeft::drawLeftPlayerTurn(){
 }
 
 void PlayerLeft::drawPlayedJong(int ctype){
+    Audio::getInstance()->playMahjong(ctype);
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(leftplayed, ctype);
     lastPlayedJong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 35));
