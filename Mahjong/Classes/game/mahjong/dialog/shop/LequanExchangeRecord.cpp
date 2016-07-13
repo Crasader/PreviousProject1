@@ -90,6 +90,24 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         auto recordBg = Sprite::create("shop/duihuanjilu_box.png");
         recordBg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         cell->addChild(recordBg);
+        
+        auto content = Sprite::create(getImageNameById(0));
+        content->setTag(100);
+        content->setPosition(20,20);
+        content->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        cell->addChild(content);
+        
+        auto propName = Label::create("30话费充值卡","Arial",20);
+        propName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        propName->setTag(101);
+        propName->setPosition(60,40);
+        cell->addChild(propName);
+        
+        auto propConfuse = Label::create("30话费充值卡","Arial",20);
+        propConfuse->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        propConfuse->setTag(102);
+        propConfuse->setPosition(60,20);
+        cell->addChild(propConfuse);
     }else{
         
     }
@@ -98,4 +116,32 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
 
 ssize_t LequanExchangeRecord::numberOfCellsInTableView(TableView *table){
    return GAMEDATA::getInstance()->getLeChangeRecord().records.size();
+}
+
+
+std::string LequanExchangeRecord::getImageNameById(int id){
+    //后期可以做成从网络获取数据,目前在客户端写死
+    switch (id) {
+        case 1:
+            return "shop/huafei_30.png";
+        case 2:
+            return "shop/huafei_30.png";
+        case 3:
+            return "shop/huafei_30.png";
+        case 4:
+            return "shop/huafei_30.png";
+        case 5:
+            return "shop/huafei_100.png";
+        case 6:
+            return "shop/huafei_50.png";
+        case 7:
+            return "shop/huafei_50.png";
+        case 11:
+            return "shop/liuliang_50.png";
+        case 21:
+            return "shop/ipones_6s.png";
+        default:
+            return "shop/huafei_30.png";
+    }
+    
 }

@@ -139,37 +139,37 @@ void Audio::playSoundChi(int type){
     int ran = rand()%5;
     switch (ran) {
         case 0:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/chi_1.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/chi_1.ogg",false,UserData::getInstance()->getSoundValue());}
             break;
         case 1:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/chi_2.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/chi_2.ogg",false,UserData::getInstance()->getSoundValue());}
             break;
         case 2:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/chi_3.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/chi_3.ogg",false,UserData::getInstance()->getSoundValue());}
             break;
         case 3:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/chi_4.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/chi_4.ogg",false,UserData::getInstance()->getSoundValue());}
             break;
         case 4:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/chi_5.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/chi_5.ogg",false,UserData::getInstance()->getSoundValue());}
             break;
         default:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/chi_1.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/chi_1.ogg",false,UserData::getInstance()->getSoundValue());}
@@ -182,19 +182,19 @@ void Audio::playSoundPeng(){
     int ran = rand()%2;
     switch (ran) {
         case 0:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/peng_1.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/peng_1.ogg",false,UserData::getInstance()->getSoundValue());}
             break;
         case 1:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/peng_2.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/peng_2.ogg",false,UserData::getInstance()->getSoundValue());}
             break;
         default:
-            if(UserData::getInstance()->getGender()==0){
+            if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/peng_1.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/peng_1.ogg",false,UserData::getInstance()->getSoundValue());}
@@ -204,7 +204,7 @@ void Audio::playSoundPeng(){
 
 void Audio::playSoundGang(){
     
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         AudioEngine::play2d("audio/male/gang_1.ogg",false,UserData::getInstance()->getSoundValue());
     }
     else{
@@ -215,7 +215,7 @@ void Audio::playSoundGang(){
 
 void Audio::playSoundWan1(){
     int soundId = rand()%3+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/1wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -226,7 +226,7 @@ void Audio::playSoundWan1(){
 
 void Audio::playSoundWan2(){
     int soundId = rand()%3+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/2wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -238,7 +238,7 @@ void Audio::playSoundWan2(){
 
 void Audio::playSoundWan3(){
     int soundId = rand()%3+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/3wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -249,7 +249,7 @@ void Audio::playSoundWan3(){
 
 void Audio::playSoundWan4(){
     int soundId = rand()%3+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/4wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -261,7 +261,7 @@ void Audio::playSoundWan4(){
 
 void Audio::playSoundWan5(){
     int soundId = rand()%3+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/5wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -273,7 +273,7 @@ void Audio::playSoundWan5(){
 
 void Audio::playSoundWan6(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/6wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -285,7 +285,7 @@ void Audio::playSoundWan6(){
 
 void Audio::playSoundWan7(){
     int soundId = rand()%3+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/7wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -297,7 +297,7 @@ void Audio::playSoundWan7(){
 
 void Audio::playSoundWan8(){
     int soundId = rand()%3+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/8wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -309,7 +309,7 @@ void Audio::playSoundWan8(){
 
 void Audio::playSoundWan9(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/9wan_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -321,7 +321,7 @@ void Audio::playSoundWan9(){
 
 void Audio::playSoundTong1(){
     int soundId = rand()%4+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/1tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -332,7 +332,7 @@ void Audio::playSoundTong1(){
 
 void Audio::playSoundTong2(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/2tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -343,7 +343,7 @@ void Audio::playSoundTong2(){
 
 void Audio::playSoundTong3(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/3tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -354,7 +354,7 @@ void Audio::playSoundTong3(){
 
 void Audio::playSoundTong4(){
     int soundId = 1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/4tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -365,7 +365,7 @@ void Audio::playSoundTong4(){
 
 void Audio::playSoundTong5(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/5tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -376,7 +376,7 @@ void Audio::playSoundTong5(){
 
 void Audio::playSoundTong6(){
     int soundId = 1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/6tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -387,7 +387,7 @@ void Audio::playSoundTong6(){
 
 void Audio::playSoundTong7(){
     int soundId = 1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/7tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -398,7 +398,7 @@ void Audio::playSoundTong7(){
 
 void Audio::playSoundTong8(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/8tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -409,7 +409,7 @@ void Audio::playSoundTong8(){
 
 void Audio::playSoundTong9(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/9tong_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -421,7 +421,7 @@ void Audio::playSoundTong9(){
 
 void Audio::playSoundTiao1(){
     int soundId = rand()%3+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/1tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -433,7 +433,7 @@ void Audio::playSoundTiao1(){
 
 void Audio::playSoundTiao2(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/2tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -444,7 +444,7 @@ void Audio::playSoundTiao2(){
 
 void Audio::playSoundTiao3(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/3tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -455,7 +455,7 @@ void Audio::playSoundTiao3(){
 
 void Audio::playSoundTiao4(){
     int soundId = 1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/4tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -466,7 +466,7 @@ void Audio::playSoundTiao4(){
 
 void Audio::playSoundTiao5(){
     int soundId = 1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/5tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -477,7 +477,7 @@ void Audio::playSoundTiao5(){
 
 void Audio::playSoundTiao6(){
     int soundId = 1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/6tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -488,7 +488,7 @@ void Audio::playSoundTiao6(){
 
 void Audio::playSoundTiao7(){
     int soundId = 1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/7tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -499,7 +499,7 @@ void Audio::playSoundTiao7(){
 
 void Audio::playSoundTiao8(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/8tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -510,7 +510,7 @@ void Audio::playSoundTiao8(){
 
 void Audio::playSoundTiao9(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/9tiao_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -522,7 +522,7 @@ void Audio::playSoundTiao9(){
 
 void Audio::playSoundEast(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/dongfeng_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -533,7 +533,7 @@ void Audio::playSoundEast(){
 
 void Audio::playSoundWest(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/xifeng_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -544,7 +544,7 @@ void Audio::playSoundWest(){
 
 void Audio::playSoundSouth(){
     int soundId = rand()%2+1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/nanfeng_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
@@ -555,7 +555,7 @@ void Audio::playSoundSouth(){
 
 void Audio::playSoundNorth(){
     int soundId = 1;
-    if(UserData::getInstance()->getGender()==0){
+    if(UserData::getInstance()->getGender()==1){
         std::string soundName = cocos2d::String::createWithFormat("audio/male/beifeng_%d.ogg",soundId)->_string;
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{

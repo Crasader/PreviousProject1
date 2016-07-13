@@ -31,5 +31,6 @@ private:
     EventListenerCustom* recordListener;
     void showLequanExchangeRecord();
     void closeView();
+    std::string getImageNameById(int id);
 };
 #endif /* LequanExchangeRecord_hpp */
