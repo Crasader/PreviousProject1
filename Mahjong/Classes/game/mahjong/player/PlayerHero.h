@@ -33,7 +33,7 @@ public:
 	void replaceFlower();
 	void playerTurnReplace(PlayerTurnData data);
     //玩家吃碰杠
-	void drawHeroChi(HeroCpgRespData resp, std::vector<string> chipai, PlayerBase* playerBase);
+	void drawPlayerChi(HeroCpgRespData resp, std::vector<string> chipai, PlayerBase* playerBase);
 	void drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
 	void drawHeroMingGang(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPengGangAndAGang(PlayerCpgtData cpg);

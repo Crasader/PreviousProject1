@@ -700,9 +700,9 @@ void PlayerHero::actionQi(){
 }
 
 
-void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundChi(1);
+void PlayerHero::drawPlayerChi(HeroCpgRespData cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
     if (cpgResp.result == 1 || cpgResp.result == 2){
+        PlayerBase::drawPlayerChi(chipai.at(0)+","+chipai.at(1), playerBase);
         Vector<Jong*> chiVector;
         //根据吃牌的位置显示,显示吃牌堆得形状
         Jong* jon = Jong::create();

@@ -154,9 +154,8 @@ void PlayerOpposite::playerTurnReplace(PlayerTurnData data){
 }
 
 void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
-    PlayerBase::drawPlayerChi(data, playerBase);
+    PlayerBase::drawPlayerChi(data.chi.at(0), playerBase);
     setStateCpg(true);
-    Audio::getInstance()->playSoundChi(1);
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
     for (int j = 0; j < 2; j++){
         playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();

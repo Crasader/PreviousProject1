@@ -14,7 +14,7 @@ Audio* Audio::getInstance(){
 }
 
 void Audio::playBGM(){
-  AudioEngine::play2d("audio/mahjong_bgm.mp3",true,UserData::getInstance()->getMusicValue());
+    AudioEngine::play2d("audio/mahjong_bgm.mp3",true,UserData::getInstance()->getMusicValue());
 }
 
 void Audio::pauseBGM()
@@ -136,8 +136,7 @@ void Audio::playMahjong(int type){
 }
 
 void Audio::playSoundChi(int type){
-    int ran = rand()%5;
-    switch (ran) {
+    switch (type) {
         case 0:
             if(UserData::getInstance()->getGender()==1){
                 AudioEngine::play2d("audio/male/chi_1.ogg",false,UserData::getInstance()->getSoundValue());}
@@ -167,6 +166,18 @@ void Audio::playSoundChi(int type){
                 AudioEngine::play2d("audio/male/chi_5.ogg",false,UserData::getInstance()->getSoundValue());}
             else{
                 AudioEngine::play2d("audio/famale/chi_5.ogg",false,UserData::getInstance()->getSoundValue());}
+            break;
+        case 5:
+            if(UserData::getInstance()->getGender()==1){
+                AudioEngine::play2d("audio/male/chi_6.ogg",false,UserData::getInstance()->getSoundValue());}
+            else{
+                AudioEngine::play2d("audio/famale/chi_6.ogg",false,UserData::getInstance()->getSoundValue());}
+            break;
+        case 6:
+            if(UserData::getInstance()->getGender()==1){
+                AudioEngine::play2d("audio/male/chi_7.ogg",false,UserData::getInstance()->getSoundValue());}
+            else{
+                AudioEngine::play2d("audio/famale/chi_7.ogg",false,UserData::getInstance()->getSoundValue());}
             break;
         default:
             if(UserData::getInstance()->getGender()==1){

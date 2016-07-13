@@ -18,13 +18,13 @@ public:
 	void playerTurnReplace(PlayerTurnData data);
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);
-	void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
-	Point getPlayedJongPos(int count);
+    void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
 	void recoverHua(int hua);
 	void recoverPlayed(std::string played);
 	void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
 	void recoverHand(std::string hand);
     void updateHandJongs(std::string jongs);
+    Point getPlayedJongPos(int count);
 	CREATE_FUNC(PlayerLeft);
 private:
 	static const int LEFT_POS_X = 170;

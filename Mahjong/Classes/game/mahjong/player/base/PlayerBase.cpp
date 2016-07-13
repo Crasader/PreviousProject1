@@ -130,27 +130,32 @@ void PlayerBase::drawPlayedJong(int ctype){
     playedPokers.insert(ctype);
     Audio::getInstance()->playMahjong(ctype);}
 
-void PlayerBase::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
+void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
     if(getChiNumber()==0){
-        //TODO 第一次吃牌音效
         if(getPokerNumber()>10){
-            //TODO 打了10张牌后第一次吃
+             Audio::getInstance()->playSoundChi(4);
         }else{
-            if(data.chi.at(0)=="1,2"||data.chi.at(0)=="8,9"||data.chi.at(0)=="10,11"||data.chi.at(0)=="17,18"||data.chi.at(0)=="19,20"||data.chi.at(0)=="26,27"){
-                //TODO 边一记
+            if(chiPoker=="1,2"||chiPoker=="8,9"||chiPoker=="10,11"||chiPoker=="17,18"||chiPoker=="19,20"||chiPoker=="26,27"){
+                //边一记
+                Audio::getInstance()->playSoundChi(3);
             }else {
-                std::vector<std::string> cha = StringUtil::split(data.chi.at(0), ",");
+                std::vector<std::string> cha = StringUtil::split(chiPoker, ",");
                 if(atoi(cha.at(1).c_str())-atoi(cha.at(0).c_str())>1){
-                    //TODO 卡一记
+                    //卡一记
+                    Audio::getInstance()->playSoundChi(2);
                 }else{
-                    //TODO 吃
+                    //吃
+                    int ran = rand()%2;
+                    Audio::getInstance()->playSoundChi(ran);
                 }
             }
         }
     }else if(getChiNumber() == 1){
-        //TODO 第二次吃牌
-    }else{
-        //TODO 吃牌
+        //第二次吃牌
+        int ran = rand()%2;
+        Audio::getInstance()->playSoundChi(ran+5);
+    }else if(getChiNumber() == 2){
+        //TODO 第三次吃牌,上家说话
     }
     setChiNumber(getChiNumber()+1);
 }
