@@ -504,6 +504,14 @@ void MsgHandler::registerAccountResp(std::string msg){
         if (_mDoc.HasMember("pic")){
             const rapidjson::Value &pic = _mDoc["pic"];
             UserData::getInstance()->setPicture(pic.GetString());
+        }else{
+            if(UserData::getInstance()->getGender()==0){
+                int ran = rand()%2+1;
+                UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
+            }else{
+                int ran = rand()%2+3;
+                UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
+            }
         }
         if (_mDoc.HasMember("firstcharge")){
             const rapidjson::Value &firstcharge = _mDoc["firstcharge"];//首充
@@ -571,7 +579,9 @@ void MsgHandler::enterRoomResp(std::string msg){
                 info->setGender(gender);
                 info->setNickname(nickname);
                 info->setTicket(lequan);
-                info->setPicture(pic);
+                if("" != pic){
+                    info->setPicture(pic);
+                }
                 GAMEDATA::getInstance()->addPlayersInfo(info);
             }
         }
@@ -615,6 +625,14 @@ void MsgHandler::loginResp(std::string msg){
         if (_mDoc.HasMember("pic")){
             const rapidjson::Value &pic = _mDoc["pic"];
             UserData::getInstance()->setPicture(pic.GetString());
+        }else{
+            if(UserData::getInstance()->getGender()==0){
+                int ran = rand()%2+1;
+                UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
+            }else{
+                int ran = rand()%2+3;
+                UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
+            }
         }
         if (_mDoc.HasMember("firstcharge")){
             const rapidjson::Value &firstcharge = _mDoc["firstcharge"];//首充
@@ -1165,7 +1183,7 @@ void MsgHandler::changeGenderResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
     if(_mDoc.HasMember("gender")){
-    const rapidjson::Value &gender = _mDoc["gender"];
+        const rapidjson::Value &gender = _mDoc["gender"];
         UserData::getInstance()->setGender(gender.GetInt());
     }
     postNotifyMessage(MSG_CHANGE_GENDER_RESP, StringUtil::itos(result.GetInt()));
@@ -1426,7 +1444,8 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
                 info->setScore(jifen);
                 info->setGender(gender);
                 info->setNickname(nickname);
-                info->setPicture(pic);
+                if("" != pic){
+                    info->setPicture(pic);}
                 GAMEDATA::getInstance()->addPlayersInfo(info);
             }
         }
@@ -2106,7 +2125,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
 }
 
 void MsgHandler::getFindPasswordResp(std::string msg){
-
+    
     // 找回密码回复{code:151,result:1} 1成功 2未绑定 3 跟绑定的不一致
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -2116,7 +2135,7 @@ void MsgHandler::getFindPasswordResp(std::string msg){
         const rapidjson::Value &result = _mDoc["result"];
         postNotifyMessage(MSG_PLAYER_FIND_PASSWORD_RESP, StringUtil::itos(result.GetInt()));
     }
-
+    
 }
 
 void MsgHandler::getPlayerOffLineNotify(std::string msg){

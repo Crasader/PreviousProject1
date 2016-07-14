@@ -45,7 +45,7 @@ void DailySign::onEnter(){
             auto an = Sprite::create();
             an->setPosition(sp->getPosition().x-10,sp->getPosition().y-100);
             addChild(an);
-            an->runAction(Sequence::create(DelayTime::create(1.8f),CallFunc::create([=](){
+            an->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
                 showLightAnim(an);
             }), DelayTime::create(0.5f),CallFunc::create([=](){
                 if( gold > 0 && diamond ==0 && lequan == 0){
