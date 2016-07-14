@@ -66,7 +66,7 @@ void ExchangePropCell::confirmChange(Ref* ref){
         getParent()->addChild(item);
     }else{
         ShopHintDialog* dia = ShopHintDialog::create();
-        dia->showText("乐券不足");
+        dia->showImage("shop/lequanbugou.png");
         getParent()->addChild(dia,2);
     }
 }

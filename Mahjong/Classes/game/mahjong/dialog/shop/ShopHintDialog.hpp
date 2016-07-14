@@ -17,6 +17,7 @@ class ShopHintDialog : public Layer{
 public:
     virtual bool init();
     void showText(std::string msg);
+    void showImage(std::string image);
     CREATE_FUNC(ShopHintDialog);
 private:
     void showDialog();

@@ -30,10 +30,7 @@ void ShopHintDialog::showDialog(){
     title->setPosition(640,480);
     addChild(title);
     
-    auto label = Label::create("","arial",30);
-    label->setPosition(640,380);
-    label->setTag(666);
-    addChild(label);
+
     
     auto continueImage =  MenuItemImage::create("common/confirm_btn_1.png","common/confirm_btn_1.png",CC_CALLBACK_0(ShopHintDialog::confirm, this));
     continueImage->setScale(0.7f);
@@ -43,9 +40,17 @@ void ShopHintDialog::showDialog(){
 }
 
 void ShopHintDialog::showText(std::string msg){
-    if(NULL != getChildByTag(666)){
-        ((Label*)getChildByTag(666)) -> setString(msg);
-        }
+    auto label = Label::create(msg,"arial",30);
+    label->setPosition(640,380);
+    label->setTag(666);
+    addChild(label);
+}
+
+void ShopHintDialog::showImage(std::string image){
+    auto sprite = Sprite::create(image);
+    sprite->setPosition(640,380);
+    sprite->setTag(667);
+    addChild(sprite);
 }
 
 void ShopHintDialog::confirm(){
