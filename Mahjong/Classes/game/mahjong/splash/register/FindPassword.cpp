@@ -26,14 +26,19 @@ void FindPassword::onEnter(){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             HintDialog* dia = HintDialog::create("密码会通过短信发送到绑定手机",false);
-            addChild(dia);
+            addChild(dia,3);
         }else if(result == "2"){
             HintDialog* dia = HintDialog::create("账号未绑定手机",false);
-            addChild(dia);
-
+            addChild(dia,3);
+            if(NULL != getChildByTag(962)){
+                ((Menu*)getChildByTag(962))->setEnabled(false);
+            }
         }else{
             HintDialog* dia = HintDialog::create("账号和绑定手机不匹配",false);
-            addChild(dia);
+            addChild(dia,3);
+            if(NULL != getChildByTag(962)){
+                ((Menu*)getChildByTag(962))->setEnabled(false);
+            }
         }
      });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(findPasswordListener, 1);
@@ -142,14 +147,21 @@ void FindPassword::closeView(){
 
 void FindPassword::findPassword(){
     std::string acc = _account->getText();
-    if(!getChildByTag(101)->isVisible()&& acc != ""){
+    std::string phone = _phone->getText();
+    if(!getChildByTag(101)->isVisible()&& acc != "" && phone != ""){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFindPassword(acc, _phone->getText()));
         if(NULL != getChildByTag(962)){
             ((Menu*)getChildByTag(962))->setEnabled(false);
         }
     }else{
-        HintDialog* dia = HintDialog::create("请输入账号",false);
-        addChild(dia);
+        if(acc == ""){
+            HintDialog* dia = HintDialog::create("请输入账号",false);
+            addChild(dia,3);
+        }else if(phone == ""){
+            HintDialog* dia = HintDialog::create("请输入手机号",false);
+            addChild(dia,3);
+        }
+     
     }
 }
 

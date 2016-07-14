@@ -79,6 +79,8 @@ void ExchangeItem::showRealItem(int propId,std::string propName){
     addChild(input_bg_1);
     _lianXiRen = EditBox::create(Size(220, 81), Scale9Sprite::create());
     _lianXiRen->setPosition(Point(635, 465));
+    _lianXiRen->setInputMode(cocos2d::ui::EditBox::InputMode::PHONE_NUMBER);
+    _lianXiRen->setReturnType(EditBox::KeyboardReturnType::DONE);
     _lianXiRen->setTag(11);
     _lianXiRen->setFont("arial", 24);
     _lianXiRen->setDelegate(this);
@@ -92,6 +94,8 @@ void ExchangeItem::showRealItem(int propId,std::string propName){
     addChild(input_bg_2);
     _shouJiHao = EditBox::create(Size(230, 81), Scale9Sprite::create());
     _shouJiHao->setPosition(Point(635, 380));
+    _shouJiHao->setInputMode(cocos2d::ui::EditBox::InputMode::PHONE_NUMBER);
+    _shouJiHao->setReturnType(EditBox::KeyboardReturnType::DONE);
     _shouJiHao->setTag(12);
     _shouJiHao->setFont("arial", 24);
     _shouJiHao->setDelegate(this);
@@ -112,6 +116,7 @@ void ExchangeItem::showRealItem(int propId,std::string propName){
     addChild(input_bg_3);
     _xiangXiDiZhi = EditBox::create(Size(230, 81), Scale9Sprite::create());
     _xiangXiDiZhi->setPosition(Point(635, 295));
+    _xiangXiDiZhi->setReturnType(EditBox::KeyboardReturnType::DONE);
     _xiangXiDiZhi->setTag(13);
     _xiangXiDiZhi->setFont("arial", 24);
     _xiangXiDiZhi->setDelegate(this);
@@ -150,6 +155,8 @@ void ExchangeItem::showVirtualItem(int propId,std::string propName){
     addChild(input_bg_1);
     _newPhoneNumber = EditBox::create(Size(220, 81), Scale9Sprite::create());
     _newPhoneNumber->setPosition(Point(635, 415));
+    _newPhoneNumber->setInputMode(cocos2d::ui::EditBox::InputMode::PHONE_NUMBER);
+    _newPhoneNumber->setReturnType(EditBox::KeyboardReturnType::DONE);
     _newPhoneNumber->setTag(0);
     _newPhoneNumber->setFont("arial", 24);
     _newPhoneNumber->setDelegate(this);
@@ -178,6 +185,8 @@ void ExchangeItem::showVirtualItem(int propId,std::string propName){
     addChild(input_bg_2);
     _confirmPhoneNumber = EditBox::create(Size(230, 81), Scale9Sprite::create());
     _confirmPhoneNumber->setPosition(Point(635, 305));
+    _confirmPhoneNumber->setInputMode(cocos2d::ui::EditBox::InputMode::PHONE_NUMBER);
+    _confirmPhoneNumber->setReturnType(EditBox::KeyboardReturnType::DONE);
     _confirmPhoneNumber->setTag(1);
     _confirmPhoneNumber->setFont("arial", 24);
     _confirmPhoneNumber->setDelegate(this);

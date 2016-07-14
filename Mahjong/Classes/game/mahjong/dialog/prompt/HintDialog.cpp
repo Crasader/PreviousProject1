@@ -39,6 +39,11 @@ bool HintDialog::init(std::string msg,bool sendBroadCast){
     if(!Layer::init()){
         return false;
     }
+    MenuItem* item1 = MenuItem::create();
+    item1->setContentSize(Size(1280, 720));
+    Menu* menu1 = Menu::create(item1, NULL);
+    this->addChild(menu1);
+    
     setSendBroadCast(sendBroadCast);
     auto dialogBg = Sprite::create("common/dialog_bg_small.png");
     dialogBg->setPosition(640, 360);

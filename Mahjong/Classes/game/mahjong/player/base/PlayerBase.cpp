@@ -129,7 +129,9 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
 
 void PlayerBase::drawPlayedJong(int ctype){
     playedPokers.insert(ctype);
-    Audio::getInstance()->playMahjong(ctype);}
+    Audio::getInstance()->playMahjong(ctype);
+    setLastPoker(ctype);
+}
 
 void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
     if(getChiNumber()==0){
@@ -156,7 +158,8 @@ void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
         int ran = rand()%2;
         Audio::getInstance()->playSoundChi(ran+5);
     }else if(getChiNumber() == 2){
-        //TODO 第三次吃牌,上家说话
+        //第三次吃牌,上家说话
+        Audio::getInstance()->playSoundChi3();
     }
     setChiNumber(getChiNumber()+1);
 }
@@ -286,12 +289,16 @@ void PlayerBase::setPlayerTrustee(bool b){
     }
 }
 
-void PlayerBase::setIsTing(bool b){
+void PlayerBase::setPlayerTingState(bool b){
     if (!getPlayerEnable()){
         return;
     }
     if(b){
-        Audio::getInstance()->playSoundTing();
+        Audio::getInstance()->playSoundTing();//听牌音效
+        set<int>::iterator it =playedPokers.find(lastPoker);
+        if(it == playedPokers.end()){
+            Audio::getInstance()->playSoundChong();//冲牌音效
+        }
     }
     tingTitle->setVisible(b);
 }

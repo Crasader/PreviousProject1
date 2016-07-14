@@ -74,6 +74,9 @@ void LequanShop::onEnter(){
             shop->showText("兑换成功");
             addChild(shop);
             UserData::getInstance()->setTicket(GAMEDATA::getInstance()->getLequanChangeResult().lequan);
+            if(NULL != getChildByTag(962)){
+                ((LabelAtlas*)getChildByTag(962))->setString(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getTicket())->_string);
+            }
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
         }else{
@@ -109,6 +112,7 @@ void LequanShop::showLequanShop(){
     
     LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getTicket())->_string,"shop/prop_num.png",21,28,'0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    lequanNum->setTag(962);
     lequanNum->setPosition(416,572);
     addChild(lequanNum);
     

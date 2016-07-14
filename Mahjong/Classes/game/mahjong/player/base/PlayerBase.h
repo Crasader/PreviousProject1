@@ -22,7 +22,7 @@ public:
 	static Sprite* biaoji;
 	static Sprite* currentBigJongBg;
 	static Jong* currentBigJong;
-
+    static set<int> playedPokers;//全部玩家打出过的牌,不重复
 	virtual bool init();
 	void initPlayer(Player* playerInfo, int clientSeatId);//初始化玩家UI
     void drawPlayedJong(int ctype);//玩家打牌
@@ -30,6 +30,7 @@ public:
     void drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);//玩家碰牌
     void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);//玩家杠牌
 	void showPlayerHua(Point pos,int num);//显示玩家花数
+    void setPlayerTingState(bool b);
     
 	virtual void removeLastJong(){};
     virtual void doEventTimeOverUi(){};
@@ -47,7 +48,6 @@ public:
 	void setIsReady(bool b);
     void setPlayerIsOffLine(bool b);
     void setPlayerTrustee(bool b);
-	void setIsTing(bool b);
 	void startTimeClockAnim();
 	void startTimeClockAnim(int time, int type);
 	void stopTimeClockAnim();
@@ -62,8 +62,7 @@ public:
 	Jong* getCurrentJong();
     //隐藏玩家的手牌
     void hideHandJongs();
-    
-    static set<int> playedPokers;//全部玩家打出过的牌,不重复
+
     CC_SYNTHESIZE(Player*, playerInfo, PlayerInfo);
 	CC_SYNTHESIZE(ReplaceJong, replacePoker, ReplacePoker);
 	CC_SYNTHESIZE(int, clientSeat, ClientSeat);
@@ -72,7 +71,7 @@ public:
     CC_SYNTHESIZE(bool, stateCpg, StateCpg);//吃碰杠状态
     CC_SYNTHESIZE(int, chiNumber, ChiNumber);//吃的数量
     CC_SYNTHESIZE(int, pokerNumber, PokerNumber);//打牌数量
-    CC_SYNTHESIZE(int, lastPoker, LastPoker);//打牌数量
+    CC_SYNTHESIZE(int, lastPoker, LastPoker);//最近一次出牌
     CC_SYNTHESIZE(bool, isPlayHuaChi, IsPlayHuaChi);
 	CREATE_FUNC(PlayerBase);
 

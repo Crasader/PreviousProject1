@@ -374,17 +374,17 @@ void MahjongView::playerTingAnim(int seatId){
     addChild(anim,121);
     schedule([=](float t){
         if (seatId == ClientSeatId::left){
-            playerLeft->setIsTing(true);
+            playerLeft->setPlayerTingState(true);
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->setIsTing(true);
+            playerRight->setPlayerTingState(true);
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->setIsTing(true);
+            playerOpposite->setPlayerTingState(true);
         }
         else
         {
-            playerHero->setIsTing(true);
+            playerHero->setPlayerTingState(true);
         }
         
     },0,0,1.5f,"delay");
@@ -688,20 +688,39 @@ void MahjongView::addJongPlayedListener(){
         if (seatId == ClientSeatId::left){
             playerLeft->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerLeft->stopTimeClockAnim();
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang();
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng();
+            }
         }
         else if (seatId == ClientSeatId::right){
             playerRight->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerRight->stopTimeClockAnim();
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang();
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng();
+            }
         }
         else if (seatId == ClientSeatId::opposite){
-           
             playerOpposite->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerOpposite->stopTimeClockAnim();
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang();
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng();
+            }
         }
         else{
            
             playerHero->drawHeroPlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerHero->stopTimeClockAnim();
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang();
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng();
+            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
