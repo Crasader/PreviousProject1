@@ -51,7 +51,13 @@ public:
     void playSoundHua();
     void playSoundHuaChi();
     void playSoundTing();
-    void playSoudnSlow();
+    void playSoundSlow();
+    void playSoundXiaGeng();
+    void playSoundGengShang();
+    void playSoundWaitChi();
+    void playSoundWaitPeng();
+    void playSoundChi3();
+    void playSoundChong();
     
     void setBGMValue(float value);
     void setEffectValue(float value);
