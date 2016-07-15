@@ -31,6 +31,8 @@ private:
     EventListenerCustom* recordListener;
     void showLequanExchangeRecord();
     void closeView();
+    std::string getPropName(std::string id);
+    std::string getPropConsume(std::string id);
     std::string getImageNameById(int id);
 };
 #endif /* LequanExchangeRecord_hpp */

@@ -131,6 +131,7 @@ void LequanShop::exchange(Ref* ref){
 }
 
 void LequanShop::showRecord(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeRecordCommand());
     LequanExchangeRecord* record  = LequanExchangeRecord::create();
     addChild(record);
 }

@@ -40,20 +40,20 @@ bool LequanExchangeRecord::init(){
     tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView->setDirection(ScrollView::Direction::VERTICAL);
     tableView->setPosition(270, 105);
+    tableView->setTag(1001);
     tableView->setDelegate(this);
     tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
     this->addChild(tableView);
-    tableView->reloadData();
-
-    showLequanExchangeRecord();
     return true;
 }
 
 
 void LequanExchangeRecord::onEnter(){
     Layer::onEnter();
-    recordListener = EventListenerCustom::create(MSG_PLAYER_LEQUAN_EXCHANGE_RECORD, [](EventCustom* event){
-    
+    recordListener = EventListenerCustom::create(MSG_PLAYER_LEQUAN_EXCHANGE_RECORD, [=](EventCustom* event){
+        if(NULL != getChildByTag(1001)){
+            ((TableView*)getChildByTag(1001))->reloadData();
+        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(recordListener, 1);
 };
@@ -66,6 +66,27 @@ void LequanExchangeRecord::onExit(){
 
 void LequanExchangeRecord::showLequanExchangeRecord(){
    //TODO
+}
+
+std::string LequanExchangeRecord::getPropName(std::string id){
+    vector<LequanChange> list = GAMEDATA::getInstance()->getLequanChangeList().list;
+    for(auto var:list){
+        if(id == var.propId){
+            return var.propName;
+        }
+    }
+    return "";
+}
+
+
+std::string LequanExchangeRecord::getPropConsume(std::string id){
+    vector<LequanChange> list = GAMEDATA::getInstance()->getLequanChangeList().list;
+    for(auto var:list){
+        if(id == var.propId){
+            return var.propPrice;
+        }
+    }
+    return "";
 }
 
 void LequanExchangeRecord::closeView(){
@@ -91,22 +112,22 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         recordBg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         cell->addChild(recordBg);
         
-        auto content = Sprite::create(getImageNameById(0));
+        auto content = Sprite::create(getImageNameById(atoi(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId.c_str())));
         content->setTag(100);
         content->setPosition(20,20);
         content->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         cell->addChild(content);
         
-        auto propName = Label::create("30话费充值卡","Arial",20);
+        auto propName = Label::create(getPropName(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId),"Arial",20);
         propName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         propName->setTag(101);
-        propName->setPosition(60,40);
+        propName->setPosition(200,80);
         cell->addChild(propName);
         
-        auto propConfuse = Label::create("30话费充值卡","Arial",20);
+        auto propConfuse = Label::create("消耗"+getPropConsume(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId)+"乐券","Arial",20);
         propConfuse->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         propConfuse->setTag(102);
-        propConfuse->setPosition(60,20);
+        propConfuse->setPosition(200,50);
         cell->addChild(propConfuse);
     }else{
         

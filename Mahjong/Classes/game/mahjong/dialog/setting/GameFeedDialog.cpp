@@ -41,12 +41,13 @@ bool GameFeedDialog::init(){
     input_bg->setPosition(640, 390);
     addChild(input_bg);
     
-    auto _editName = EditBox::create(Size(700, 300), Scale9Sprite::create());
-    _editName->setPosition(Point(640, 390));
+    auto _editName = EditBox::create(Size(680, 300), Scale9Sprite::create());
+    _editName->setPosition(Point(640, 480));
     _editName->setTag(0);
     _editName->setFont("arial", 24);
     _editName->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);
-    _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
+    _editName->setInputFlag(cocos2d::ui::EditBox::InputFlag::SENSITIVE);
+    _editName->setReturnType(cocos2d::ui::EditBox::KeyboardReturnType::DONE);
     _editName->setDelegate(this);
     addChild(_editName);
 
