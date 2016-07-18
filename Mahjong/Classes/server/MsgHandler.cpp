@@ -674,6 +674,7 @@ void MsgHandler::addPalyer(std::string msg){
     const rapidjson::Value &nickname = _mDoc["nickname"];
     const rapidjson::Value &ifready = _mDoc["ifready"];
     const rapidjson::Value &pId = _mDoc["pId"];
+    const rapidjson::Value &pic = _mDoc["pic"];
     Player* info = new Player();
     info->setSeatId(seatId.GetInt());
     if (seatId.GetInt() == 1){
@@ -690,6 +691,7 @@ void MsgHandler::addPalyer(std::string msg){
     info->setGender(gender.GetInt());
     info->setNickname(nickname.GetString());
     info->setTicket(lequan.GetInt());
+    info->setPicture(pic.GetString());
     info->setIsReady(ifready.GetInt() == 0 ? false : true);
     GAMEDATA::getInstance()->addPlayersInfo(info);
     GAMEDATA::getInstance()->setNeedAddPlayer(true);//解决场景跳转会有消息丢失的问题

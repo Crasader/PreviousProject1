@@ -41,6 +41,7 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
     nickName->setPosition(getPostionBySeat(clientSeatId).x, getPostionBySeat(clientSeatId).y + 55);
     this->addChild(nickName);
     
+    log("KKKKKKKKKKKKKKKKKKK === %s",playerInfo->getPicture().c_str());
     auto image = MenuItemImage::create(getHeadImageName(playerInfo->getPicture()),getHeadImageName(playerInfo->getPicture()),
                                        CC_CALLBACK_0(PlayerBase::showPlayerInfo, this));
     headimage = Menu::create(image,NULL);
@@ -362,9 +363,6 @@ Point PlayerBase::getPostionBySeat(int seatId){
 
 std::string PlayerBase::getHeadImageName(std::string id){
     std::string imageName = "gameview/head_image_1.png";
-    if (!getPlayerEnable()){
-        return imageName;
-    }
     if (id == "1"){
         imageName = "gameview/head_image_1.png";
     }
