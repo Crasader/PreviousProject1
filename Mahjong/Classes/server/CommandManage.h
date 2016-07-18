@@ -36,7 +36,7 @@ public:
 	std::string getAddFriendCommand(std::string poxiaoId,std::string nickname);
     std::string getAddFriendQuickCommand(std::string key);
 	std::string getDeleteFriendCommand(std::string poxiaoId);
-	std::string getChangeHeadCommand();
+	std::string getChangeHeadCommand(std::string pic);
 	std::string getOpenRoomCommand(std::string pids);
 	std::string getEnterFriendRoomCommand(std::string pid);
 	std::string getSendRedWalletCommand();

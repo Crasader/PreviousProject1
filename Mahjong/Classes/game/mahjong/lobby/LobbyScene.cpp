@@ -64,7 +64,19 @@ void LobbyScene::onExit(){
 }
 
 void LobbyScene::updateHeroInfo(){
-    ((Sprite*)getChildByTag(962))->setTexture(UserData::getInstance()->getPicture());
+    
+    if(UserData::getInstance()->getPicture() == "1"){
+        ((Sprite*)getChildByTag(962))->setTexture("gameview/head_image_1.png");
+    }else if(UserData::getInstance()->getPicture() == "2"){
+        ((Sprite*)getChildByTag(962))->setTexture("gameview/head_image_2.png");
+    }else if(UserData::getInstance()->getPicture() == "3"){
+        ((Sprite*)getChildByTag(962))->setTexture("gameview/head_image_3.png");
+    }else if(UserData::getInstance()->getPicture() == "4"){
+        ((Sprite*)getChildByTag(962))->setTexture("gameview/head_image_4.png");
+    }else{
+        //TODO
+        log("服务器下发的头像图片不存在");
+    }
     nickName->setString(UserData::getInstance()->getNickName());
     goldNum ->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string);
     diamondNum->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string);
@@ -106,7 +118,19 @@ void LobbyScene::drawSceneTop(){
     head_bg->setPosition(61, 660);
     this->addChild(head_bg);
     
-    auto image = Sprite::create(UserData::getInstance()->getPicture());
+    auto image = Sprite::create();
+    if(UserData::getInstance()->getPicture() == "1"){
+        image->setTexture("gameview/head_image_1.png");
+    }else if(UserData::getInstance()->getPicture() == "2"){
+        image->setTexture("gameview/head_image_2.png");
+    }else if(UserData::getInstance()->getPicture() == "3"){
+        image->setTexture("gameview/head_image_3.png");
+    }else if(UserData::getInstance()->getPicture() == "4"){
+        image->setTexture("gameview/head_image_4.png");
+    }else{
+        //TODO
+        log("服务器下发的头像图片不存在");
+    }
     image->setTag(962);
     image->setPosition(61, 660);
     addChild(image);
@@ -284,7 +308,7 @@ void LobbyScene::drawSceneBot(){
     addChild(bot_bg);
     
     auto btn_1 = MenuItemImage::create("mjlobby/friend_btn_1.png", "mjlobby/friend_btn_2.png", CC_CALLBACK_0(LobbyScene::showAddFriend, this));
-//    auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
+    //    auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_3 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
     auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
     auto btn_5 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));

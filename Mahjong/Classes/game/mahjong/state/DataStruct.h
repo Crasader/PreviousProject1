@@ -397,4 +397,5 @@ struct LeRecord{
 struct LeChangeRecord{
     std::vector<LeRecord> records;
 };
+
 #endif

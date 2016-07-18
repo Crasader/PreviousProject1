@@ -430,6 +430,10 @@ void MsgHandler::distribute(int code, std::string msg){
             getLequanChangeRecordResp(msg);
             break;
         }
+        case MSGCODE_MODIFY_PIC_RESPONSE:{
+            getHeadImageChangeResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -1167,6 +1171,10 @@ void MsgHandler::changeGenderResp(std::string msg){
     if(_mDoc.HasMember("gender")){
         const rapidjson::Value &gender = _mDoc["gender"];
         UserData::getInstance()->setGender(gender.GetInt());
+    }
+    if(_mDoc.HasMember("pic")){
+        const rapidjson::Value &pic = _mDoc["pic"];
+        UserData::getInstance()->setPicture(pic.GetString());
     }
     postNotifyMessage(MSG_CHANGE_GENDER_RESP, StringUtil::itos(result.GetInt()));
 }
@@ -2150,4 +2158,23 @@ void MsgHandler::getLequanChangeRecordResp(std::string msg){
     }
     GAMEDATA::getInstance()->setLeChangeRecord(records);
     postNotifyMessage(MSG_PLAYER_LEQUAN_EXCHANGE_RECORD, "");
+}
+
+
+void MsgHandler::getHeadImageChangeResp(std::string msg){
+    // 修改图片回复{code:153,result:"1",gender:1} 1成功 其他 失败
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    if(_mDoc.HasMember("gender")){
+        const rapidjson::Value &gender = _mDoc["gender"];
+        UserData::getInstance()->setGender(gender.GetInt());
+    }
+    if(_mDoc.HasMember("pic")){
+        const rapidjson::Value &pic = _mDoc["pic"];
+        UserData::getInstance()->setPicture(pic.GetString());
+    }
+    postNotifyMessage(MSG_PLAYER_CHANGE_HEAD_RESP, StringUtil::itos(result.GetInt()));
 }

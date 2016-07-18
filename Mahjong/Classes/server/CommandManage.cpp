@@ -298,10 +298,11 @@ std::string CommandManage::getDeleteFriendCommand(std::string poxiaoId){
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getChangeHeadCommand(){
+std::string CommandManage::getChangeHeadCommand(std::string pic){
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_PIC_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("pic", pic));
 	return commandString(keyValue);
 }
 

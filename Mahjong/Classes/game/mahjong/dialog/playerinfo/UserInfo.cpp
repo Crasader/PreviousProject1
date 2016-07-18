@@ -17,24 +17,17 @@ bool UserInfo::init(){
 
 void UserInfo::onEnter(){
     Layer::onEnter();
-    changeGenderListener = EventListenerCustom::create(MSG_CHANGE_GENDER_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        if (result == "1"){
-            updateGender();
-            if(NULL!=getChildByTag(123)){
-                getChildByTag(123)->removeFromParent();
-            }
-        }
+    updateImageListener =  EventListenerCustom::create(MSG_UPDATE_HEAD_IMAGE, [=](EventCustom* event){
+        updateHeadImage();
+        updateGender();
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(changeGenderListener, 1);
-    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(updateImageListener, 1);
 }
 
 
 void UserInfo::onExit(){
     Layer::onExit();
-    _eventDispatcher->removeEventListener(changeGenderListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(updateImageListener);
 }
 
 void UserInfo::showUserInfo(){
@@ -46,7 +39,19 @@ void UserInfo::showUserInfo(){
     headImage->setTag(1000);
     headImage->setPosition(415,380);
     headImage->setScale(1.9f);
-    headImage->setTexture(UserData::getInstance()->getPicture());
+    if(UserData::getInstance()->getPicture() == "1"){
+        headImage->setTexture("gameview/head_image_1.png");
+    }else if(UserData::getInstance()->getPicture() == "2"){
+        headImage->setTexture("gameview/head_image_2.png");
+    }else if(UserData::getInstance()->getPicture() == "3"){
+        headImage->setTexture("gameview/head_image_3.png");
+    }else if(UserData::getInstance()->getPicture() == "4"){
+        headImage->setTexture("gameview/head_image_4.png");
+    }else{
+        //TODO
+        log("服务器下发的头像图片不存在");
+    }
+
     addChild(headImage);
     
     auto itemImage = MenuItemImage::create("playerinfo/head_iamge_edit_1.png","playerinfo/head_iamge_edit_2.png",
@@ -202,5 +207,16 @@ void UserInfo::updateGender(){
 }
 
 void UserInfo::updateHeadImage(){
-    ((Sprite*)getChildByTag(1000))->setTexture(UserData::getInstance()->getPicture());
+    if(UserData::getInstance()->getPicture() == "1"){
+        ((Sprite*)getChildByTag(1000))->setTexture("gameview/head_image_1.png");
+    }else if(UserData::getInstance()->getPicture() == "2"){
+        ((Sprite*)getChildByTag(1000))->setTexture("gameview/head_image_2.png");
+    }else if(UserData::getInstance()->getPicture() == "3"){
+        ((Sprite*)getChildByTag(1000))->setTexture("gameview/head_image_3.png");
+    }else if(UserData::getInstance()->getPicture() == "4"){
+        ((Sprite*)getChildByTag(1000))->setTexture("gameview/head_image_4.png");
+    }else{
+        //TODO
+        log("服务器下发的头像图片不存在");
+    }
 }

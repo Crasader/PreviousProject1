@@ -14,21 +14,23 @@ bool HeadImageDialog::init(){
 
 void HeadImageDialog::onEnter(){
     Layer::onEnter();
-    changeImageListener = EventListenerCustom::create("", [=](EventCustom* event){
+    changeImageListener = EventListenerCustom::create(MSG_PLAYER_CHANGE_HEAD_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
-        
+            EventCustom ev0(MSG_UPDATE_HEAD_IMAGE);
+            _eventDispatcher->dispatchEvent(&ev0);
+            EventCustom ev1(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev1);
         }
-        else{
-            
-        }
+        removeFromParent();
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(changeImageListener, 1);
 }
 
 void HeadImageDialog::onExit(){
     Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(changeImageListener);
 }
 
 void HeadImageDialog::showDialog(){
@@ -137,21 +139,13 @@ void HeadImageDialog::selectedHeadImage(Ref* ref){
 
 void HeadImageDialog::confirmHead(){
     if(getSelectId() == 100){
-        UserData::getInstance()->setPicture("gameview/head_image_1.png");
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeGenderCommand("0"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeHeadCommand("1"));
     } else if(getSelectId() == 101){
-        UserData::getInstance()->setPicture("gameview/head_image_2.png");
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeGenderCommand("0"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeHeadCommand("2"));
     }else if(getSelectId() == 102){
-        UserData::getInstance()->setPicture("gameview/head_image_3.png");
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeGenderCommand("1"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeHeadCommand("3"));
     }else if(getSelectId() == 103){
-        UserData::getInstance()->setPicture("gameview/head_image_4.png");
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeGenderCommand("1"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeHeadCommand("4"));
     }
-    ((UserInfo*)getParent())->updateHeadImage();
-    EventCustom ev(MSG_UPDATE_HERO_INFO);
-    _eventDispatcher->dispatchEvent(&ev);
-    removeFromParent();
 }
 

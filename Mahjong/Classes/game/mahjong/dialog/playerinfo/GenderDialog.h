@@ -12,6 +12,7 @@ public:
 	CREATE_FUNC(GenderDialog);
 private:
 	Sprite* nike;
+    EventListenerCustom* changeGenderListener;
 	void showDialog();
 	void choseGender(Ref* ref);
 	void changeGender();

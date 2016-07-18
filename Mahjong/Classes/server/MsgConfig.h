@@ -61,6 +61,8 @@
 #define MSGCODE_GETINFO_REQUEST  149// 获取用户信息请求{code:140,poxiaoId:poxiaoId}
 #define MSGCODE_GETINFO_RESPONSE  150// 获取用户信息回复{code:141,poxiaoId:poxiaoId,lequan:11,bangzuan:22,diamond:33,gold:55,jifen:0}
 #define MSGCODE_FIND_PASSWORD_RESPONSE  151// 找回密码回复{code:151,result:1} 1成功 2未绑定 3 跟绑定的不一致
+#define MSGCODE_MODIFY_PIC_REQUEST  152// 修改图片请求{code:152,poxiaoId:"123",pic:"1"}
+#define MSGCODE_MODIFY_PIC_RESPONSE  153// 修改图片回复{code:153,result:"1",gender:1} 1成功 其他 失败
 
 #define MSGCODE_INTO_ROOMSTYLE_REQUEST  1000 //进入房间请求{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 #define MSGCODE_INTO_ROOMSTYLE_RESPONSE 1001 //进入房间回复{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]} result1为成功 2为金币低于下限 3为金币高于上线 4为其他错误
@@ -257,6 +259,7 @@
 #define MSG_PLAYER_REGISTER_RESP "msg_player_register_resp"
 #define MSG_PLAYER_ADD_FRIEND_QUICK "msg_player_add_friend_quick"
 #define MSG_UPDATE_HERO_INFO "msg_update_hero_info"
+#define MSG_UPDATE_HEAD_IMAGE "msg_update_head_image"
 #define MSG_RED_WALLET_RESP_INFO "msg_red_wallet_resp_info"
 #define MSG_RECIVE_RED_WALLET_INFO "msg_recive_red_wallet_resp_info"
 #define MSG_RECIVE_RED_WALLET_PSUH "msg_recive_red_wallet_resp_push"
@@ -266,4 +269,5 @@
 #define MSG_PLAYER_INFO_RESP "msg_player_info_resp"
 #define MSG_PLAYER_FIND_PASSWORD_RESP "msg_player_find_password_resp"
 #define MSG_PLAYER_OFF_LINE_NOTIFY "msg_player_off_line_notify"
+#define MSG_PLAYER_CHANGE_HEAD_RESP "msg_player_change_head_resp"
 #endif

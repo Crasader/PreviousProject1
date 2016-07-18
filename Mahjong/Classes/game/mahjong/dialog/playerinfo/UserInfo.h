@@ -14,7 +14,7 @@ public:
     void updateHeadImage();
     CREATE_FUNC(UserInfo);
 private:
-    EventListenerCustom* changeGenderListener;
+    EventListenerCustom* updateImageListener;
     Label* nickNameLabel;
     Sprite* playerGender;
     Menu* changeNickName;

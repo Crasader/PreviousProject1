@@ -16,10 +16,23 @@ bool GenderDialog::init(){
 
 void GenderDialog::onEnter(){
     Layer::onEnter();
+    changeGenderListener = EventListenerCustom::create(MSG_CHANGE_GENDER_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            EventCustom ev1(MSG_UPDATE_HEAD_IMAGE);
+            _eventDispatcher->dispatchEvent(&ev1);
+            EventCustom ev(MSG_UPDATE_HERO_INFO);
+            _eventDispatcher->dispatchEvent(&ev);
+        }
+            removeFromParent();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(changeGenderListener, 1);
 }
 
 void GenderDialog::onExit(){
     Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(changeGenderListener);
 }
 
 void GenderDialog::showDialog(){
@@ -102,14 +115,4 @@ void GenderDialog::changeGender(){
     Loading* load = Loading::create();
     addChild(load);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeGenderCommand(gender));
-    if(gender == "0"){
-        int ran = rand()%2+1;
-        UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
-    }else{
-        int ran = rand()%2+3;
-        UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
-    }
-    ((UserInfo*)getParent())->updateHeadImage();
-    EventCustom ev(MSG_UPDATE_HERO_INFO);
-    _eventDispatcher->dispatchEvent(&ev);
 }
