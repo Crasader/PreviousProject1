@@ -129,6 +129,18 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         propConfuse->setTag(102);
         propConfuse->setPosition(200,50);
         cell->addChild(propConfuse);
+        
+        
+        auto stateImage = Sprite::create();
+        stateImage->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        stateImage->setTag(103);
+        stateImage->setPosition(550,50);
+        cell->addChild(stateImage);
+        if(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).state == "1"){
+            stateImage->setTexture("shop/duihuanzhong.png");
+        }else{
+            stateImage->setTexture("shop/yiduihuan.png");
+        }
     }else{
         
     }

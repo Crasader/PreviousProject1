@@ -504,22 +504,14 @@ void MsgHandler::registerAccountResp(std::string msg){
         if (_mDoc.HasMember("pic")){
             const rapidjson::Value &pic = _mDoc["pic"];
             UserData::getInstance()->setPicture(pic.GetString());
-        }else{
-            if(UserData::getInstance()->getGender()==0){
-                int ran = rand()%2+1;
-                UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
-            }else{
-                int ran = rand()%2+3;
-                UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
-            }
         }
         if (_mDoc.HasMember("firstcharge")){
             const rapidjson::Value &firstcharge = _mDoc["firstcharge"];//首充
-            UserData::getInstance()->setFirstCharge(firstcharge.GetString() == "1" ? false : true);
+            UserData::getInstance()->setFirstCharge(strncmp(firstcharge.GetString(),"1",1) == 0 ? false : true);
         }
         if (_mDoc.HasMember("ischacc")){
             const rapidjson::Value &ischacc = _mDoc["ischacc"];//首充
-            UserData::getInstance()->setFirstCharge(ischacc.GetString() == "1" ? false : true);
+            UserData::getInstance()->setFirstCharge(strncmp(ischacc.GetString(),"1",1) == 0 ? false : true);
         }
         if (_mDoc.HasMember("username")){
             const rapidjson::Value &username = _mDoc["username"];
@@ -579,9 +571,7 @@ void MsgHandler::enterRoomResp(std::string msg){
                 info->setGender(gender);
                 info->setNickname(nickname);
                 info->setTicket(lequan);
-                if("" != pic){
-                    info->setPicture(pic);
-                }
+                info->setPicture(pic);
                 GAMEDATA::getInstance()->addPlayersInfo(info);
             }
         }
@@ -625,14 +615,6 @@ void MsgHandler::loginResp(std::string msg){
         if (_mDoc.HasMember("pic")){
             const rapidjson::Value &pic = _mDoc["pic"];
             UserData::getInstance()->setPicture(pic.GetString());
-        }else{
-            if(UserData::getInstance()->getGender()==0){
-                int ran = rand()%2+1;
-                UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
-            }else{
-                int ran = rand()%2+3;
-                UserData::getInstance()->setPicture(cocos2d::String::createWithFormat("gameview/head_image_%d.png",ran)->_string);
-            }
         }
         if (_mDoc.HasMember("firstcharge")){
             const rapidjson::Value &firstcharge = _mDoc["firstcharge"];//首充
@@ -1414,7 +1396,6 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &result = _mDoc["result"];
     if (result.GetInt() == 1){
         GAMEDATA::getInstance()->clearPlayersInfo();
@@ -1441,11 +1422,11 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
                 info->setIsReady(ifready == 0 ? false : true);
                 info->setGold(gold);
                 info->setDiamond(diamond);
+                info->setTicket(lequan);
                 info->setScore(jifen);
                 info->setGender(gender);
                 info->setNickname(nickname);
-                if("" != pic){
-                    info->setPicture(pic);}
+                info->setPicture(pic);
                 GAMEDATA::getInstance()->addPlayersInfo(info);
             }
         }

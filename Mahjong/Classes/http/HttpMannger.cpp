@@ -34,8 +34,7 @@ void HttpMannger::onHttpRequestCompletedForGetUrlImg(HttpClient *sender, HttpRes
 		{
 			return;
 		}
-		long statusCode = response->getResponseCode();
-
+//		long statusCode = response->getResponseCode();
 		buffer = response->getResponseData();
 		break;
 	}
