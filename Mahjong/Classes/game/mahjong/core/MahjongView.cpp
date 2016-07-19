@@ -628,7 +628,7 @@ void MahjongView::addCoustomReplaceFlower() {
 void MahjongView::addDealJongListener(){
     dealJongsListener = EventListenerCustom::create(MSG_GAME_START_NOTIFY, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsPlaying(true);
-//        int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
+        //        int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
         playerHero->setIsReady(false);
         playerRight->setIsReady(false);
         playerOpposite->setIsReady(false);
@@ -690,37 +690,36 @@ void MahjongView::addJongPlayedListener(){
             playerLeft->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerLeft->stopTimeClockAnim();
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang();
+                Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng();
+                Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
             }
         }
         else if (seatId == ClientSeatId::right){
             playerRight->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerRight->stopTimeClockAnim();
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang();
+                Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng();
+                Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
             }
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerOpposite->stopTimeClockAnim();
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang();
+                Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng();
+                Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
             }
         }
         else{
-            
             playerHero->drawHeroPlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerHero->stopTimeClockAnim();
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang();
+                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng();
+                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
             }
         }
     });

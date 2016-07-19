@@ -103,7 +103,7 @@ private:
 	void addPlayerTurnListener();
 	void addJongPlayedListener();
 	void addPlayerCpgListener();
-	void addGameResultListener();
+	void addGameResultListener();//胡牌事件
 	void addOthersChiListener();
 	void addOthersPengListener();
 	void addOthersGangListener();

@@ -39,7 +39,7 @@ void PlayerLeft::drawLeftPlayerTurn(){
 }
 
 void PlayerLeft::drawPlayedJong(int ctype){
-    Audio::getInstance()->playMahjong(ctype);
+    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(leftplayed, ctype);
     lastPlayedJong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 35));
@@ -187,7 +187,7 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
 void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::drawPlayerPeng(data, playerBase);
     setStateCpg(true);
-    Audio::getInstance()->playSoundPeng();
+    Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
     for (int j = 0; j < 2; j++)
     {

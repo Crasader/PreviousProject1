@@ -127,7 +127,7 @@ Jong* PlayerHero::getTouchJong(Touch *touch){
 
 
 void PlayerHero::playPokerByHand(Jong* jong){
-    Audio::getInstance()->playMahjong(jong->getJongType());//音效
+    Audio::getInstance()->playMahjong(jong->getJongType(),UserData::getInstance()->getGender());//音效
     this->stopTimeClockAnim();
     Point startPoint = jong->getPosition();
     Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
@@ -588,7 +588,7 @@ void PlayerHero::playedPokerAuto(bool send){
     selectJong = NULL;
     resetHandJongsY(NULL);
     Jong* spJong = playerHandJongs.at(playerHandJongs.size() - 1);
-    Audio::getInstance()->playMahjong(spJong->getJongType());//音效
+    Audio::getInstance()->playMahjong(spJong->getJongType(),UserData::getInstance()->getGender());//音效
     Point startPoint = spJong->getPosition();
     Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
     float sx = startPoint.x;
@@ -768,7 +768,7 @@ void PlayerHero::drawPlayerChi(HeroCpgRespData cpgResp, std::vector<string> chip
 
 
 void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundPeng();
+    Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
     std::vector<string> pengpai = StringUtil::split(cpg.peng, ",");
     Vector<Jong*> pengVector;
     for (int i = 0; i < pengpai.size(); i++){
@@ -852,7 +852,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
 }
 
 void PlayerHero::drawHeroMingGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundGang();
+    Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
     std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
     Vector<Jong*> gangVector;
     for (int i = 0; i < gangpai.size(); i++){
@@ -915,7 +915,7 @@ void PlayerHero::drawHeroMingGang(HeroCpgRespData resp, PlayerCpgtData cpg, Play
 }
 
 void PlayerHero::drawPengGangAndAGang(PlayerCpgtData tingData){
-     Audio::getInstance()->playSoundGang();
+     Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
     std::vector<string> gangpai = StringUtil::split(tingData.gang, ",");
     Vector<Jong*> gangVector;
     if (tingData.flag == 2){

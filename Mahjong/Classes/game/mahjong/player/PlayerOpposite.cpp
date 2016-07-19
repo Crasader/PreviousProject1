@@ -45,7 +45,7 @@ void PlayerOpposite::drawOppositePlayerTurn(){
 }
 
 void PlayerOpposite::drawPlayedJong(int ctype){
-    Audio::getInstance()->playMahjong(ctype);
+    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(oppositeplayed, ctype);
     lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 31, OPPOSITE_POS_Y));
@@ -181,7 +181,7 @@ void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
 void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
      PlayerBase::drawPlayerPeng(data, playerBase);
     setStateCpg(true);
-    Audio::getInstance()->playSoundPeng();
+    Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
     for (int j = 0; j < 2; j++){
         playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();

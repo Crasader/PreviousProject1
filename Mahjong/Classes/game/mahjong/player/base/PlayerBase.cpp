@@ -41,7 +41,6 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
     nickName->setPosition(getPostionBySeat(clientSeatId).x, getPostionBySeat(clientSeatId).y + 55);
     this->addChild(nickName);
     
-    log("KKKKKKKKKKKKKKKKKKK === %s",playerInfo->getPicture().c_str());
     auto image = MenuItemImage::create(getHeadImageName(playerInfo->getPicture()),getHeadImageName(playerInfo->getPicture()),
                                        CC_CALLBACK_0(PlayerBase::showPlayerInfo, this));
     headimage = Menu::create(image,NULL);
@@ -130,47 +129,47 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
 
 void PlayerBase::drawPlayedJong(int ctype){
     playedPokers.insert(ctype);
-    Audio::getInstance()->playMahjong(ctype);
+    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     setLastPoker(ctype);
 }
 
 void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
     if(getChiNumber()==0){
         if(getPokerNumber()>10){
-            Audio::getInstance()->playSoundChi(4);
+            Audio::getInstance()->playSoundChi(4,getPlayerInfo()->getGender());
         }else{
             if(chiPoker=="1,2"||chiPoker=="8,9"||chiPoker=="10,11"||chiPoker=="17,18"||chiPoker=="19,20"||chiPoker=="26,27"){
                 //边一记
-                Audio::getInstance()->playSoundChi(3);
+                Audio::getInstance()->playSoundChi(3,getPlayerInfo()->getGender());
             }else {
                 std::vector<std::string> cha = StringUtil::split(chiPoker, ",");
                 if(atoi(cha.at(1).c_str())-atoi(cha.at(0).c_str())>1){
                     //卡一记
-                    Audio::getInstance()->playSoundChi(2);
+                    Audio::getInstance()->playSoundChi(2,getPlayerInfo()->getGender());
                 }else{
                     //吃
                     int ran = rand()%2;
-                    Audio::getInstance()->playSoundChi(ran);
+                    Audio::getInstance()->playSoundChi(ran,getPlayerInfo()->getGender());
                 }
             }
         }
     }else if(getChiNumber() == 1){
         //第二次吃牌
         int ran = rand()%2;
-        Audio::getInstance()->playSoundChi(ran+5);
+        Audio::getInstance()->playSoundChi(ran+5,getPlayerInfo()->getGender());
     }else if(getChiNumber() == 2){
         //第三次吃牌,上家说话
-        Audio::getInstance()->playSoundChi3();
+        Audio::getInstance()->playSoundChi3(getPlayerInfo()->getGender());
     }
     setChiNumber(getChiNumber()+1);
 }
 
 void PlayerBase::drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
-    Audio::getInstance()->playSoundPeng();
+    Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
 }
 
 void PlayerBase::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundGang();
+    Audio::getInstance()->playSoundGang(getPlayerInfo()->getGender());
 }
 
 
@@ -189,7 +188,7 @@ void PlayerBase::showPlayerHua(Point pos, int num){
         return;
     }
     if(num>5 && !getIsPlayHuaChi()){
-        Audio::getInstance()->playSoundHuaChi();
+        Audio::getInstance()->playSoundHuaChi(getPlayerInfo()->getGender());
         setIsPlayHuaChi(true);
     }
     playerHua->setVisible(true);
@@ -295,10 +294,10 @@ void PlayerBase::setPlayerTingState(bool b){
         return;
     }
     if(b){
-        Audio::getInstance()->playSoundTing();//听牌音效
+        Audio::getInstance()->playSoundTing(getPlayerInfo()->getGender());//听牌音效
         set<int>::iterator it =playedPokers.find(lastPoker);
         if(it == playedPokers.end()){
-            Audio::getInstance()->playSoundChong();//冲牌音效
+            Audio::getInstance()->playSoundChong(getPlayerInfo()->getGender());//冲牌音效
         }
     }
     tingTitle->setVisible(b);
