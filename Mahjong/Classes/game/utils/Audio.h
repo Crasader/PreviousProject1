@@ -59,6 +59,7 @@ public:
     void playSoundChi3(int gender);
     void playSoundChong(int gender);
     void playSoundClick();
+    void playSoundHu(int type);
     
     void setBGMValue(float value);
     void setEffectValue(float value);

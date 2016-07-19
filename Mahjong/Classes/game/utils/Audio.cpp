@@ -694,5 +694,13 @@ void Audio::playSoundClick(){
     AudioEngine::play2d("audio/dian_ji_an_niu.ogg",false,UserData::getInstance()->getSoundValue());
 }
 
+void Audio::playSoundHu(int type){
+    if(type == 0){
+        AudioEngine::play2d("audio/hu_pai.mp3",false,UserData::getInstance()->getSoundValue());
+    }else{
+        AudioEngine::play2d("audio/zimo_gangkai.wav",false,UserData::getInstance()->getSoundValue());
+    }
+}
+
 
 

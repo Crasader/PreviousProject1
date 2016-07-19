@@ -779,17 +779,21 @@ void MahjongView::addGameResultListener(){
             }
         }
         if(zimoState){
+            Audio::getInstance()->playSoundHu(1);
             HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::zimoHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
             addChild(hupai,999);
         }else if(gangkaiState){
+            Audio::getInstance()->playSoundHu(1);
             HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::gangkaiHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
             addChild(hupai,999);
         }else if(qianggangState){
+            Audio::getInstance()->playSoundHu(1);
             HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::qianggangHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
             addChild(hupai,999);
         }
         else if(!isliuju){
             //判断胡牌的类型
+            Audio::getInstance()->playSoundHu(0);
             HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::putongHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
             addChild(hupai,999);
         }else{
