@@ -1,7 +1,7 @@
 #ifndef _AUDIO_H_
 #define _AUDIO_H_
 #include <string>
-
+#include "cocos2d.h"
 
 class Audio{
 public:
@@ -58,9 +58,11 @@ public:
     void playSoundWaitPeng(int gender);
     void playSoundChi3(int gender);
     void playSoundChong(int gender);
+    void playSoundClick();
     
     void setBGMValue(float value);
     void setEffectValue(float value);
+    CC_SYNTHESIZE(bool, isFirstDong, IsFirstDong);
 private:
     static Audio* m_instance;
 

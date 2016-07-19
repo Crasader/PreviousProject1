@@ -10,6 +10,7 @@
 #include "game/mahjong/dialog/shop/LequanShop.hpp"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/dialog/shop/GoldNotEnoughDialog.hpp"
+#include "game/utils/Audio.h"
 
 bool LobbyScene::init()
 {
@@ -325,6 +326,7 @@ void LobbyScene::drawSceneBot(){
 }
 
 void LobbyScene::showFirstCharge(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFirstChargeInfoCommand());
     //首冲
     FirstChargeDialog* firCharge = FirstChargeDialog::create();
@@ -332,12 +334,14 @@ void LobbyScene::showFirstCharge(){
 }
 
 void LobbyScene::showRedWallet(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSendRedWalletCommand());
     Redwallet* wallet = Redwallet::create();
     this->addChild(wallet,3);
 }
 
 void LobbyScene::showDayTask(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());
     DailyEvent* day = DailyEvent::create();
     day->showDailyEvent(DailyType::task);
@@ -346,6 +350,7 @@ void LobbyScene::showDayTask(){
 
 
 void LobbyScene::showAddFriend(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     FriendListView* friendAdd = FriendListView::create();
     friendAdd->setTag(524);
@@ -354,6 +359,7 @@ void LobbyScene::showAddFriend(){
 }
 
 void LobbyScene::showOpenRoom(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     FriendRoom* friendroom = FriendRoom::create();
     friendroom->setTag(525);
@@ -361,6 +367,7 @@ void LobbyScene::showOpenRoom(){
 }
 
 void LobbyScene::showPlayerBill(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
     BillInfo* billInfoView = BillInfo::create();
     billInfoView->setTag(526);
@@ -368,32 +375,38 @@ void LobbyScene::showPlayerBill(){
 }
 
 void LobbyScene::showGameSetting(){
+    Audio::getInstance()->playSoundClick();
     UserSetting* setting = UserSetting::create();
     this->addChild(setting,3);
 }
 
 void LobbyScene::showHotActivity(){
+    Audio::getInstance()->playSoundClick();
     //TODO
 }
 
 void LobbyScene::showHeroInfo(){
+    Audio::getInstance()->playSoundClick();
     HeroInfoEdit* dialog = HeroInfoEdit::create(1);
     this->addChild(dialog,3);
 }
 
 void LobbyScene::chargeGold(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGoldChangeListCommand());
     ChargeGold* gold = ChargeGold::create();
     addChild(gold,3);
 }
 
 void LobbyScene::chargeDiamond(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDiamondChangeListCommand());
     ChargeDiamond* charge = ChargeDiamond::create();
     this->addChild(charge,3);
 }
 
 void LobbyScene::exchangeLequan(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeListCommand());
     LequanShop* shop = LequanShop::create();
     addChild(shop,3);

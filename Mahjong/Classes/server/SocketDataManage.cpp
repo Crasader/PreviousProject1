@@ -6,7 +6,7 @@ SocketDataManage* SocketDataManage::instance = nullptr;
 SocketDataManage* SocketDataManage::getInstance(){
 	if (nullptr == instance){
 		instance = SocketDataManage::create();
-		instance->retain();//不加这个会有bug
+		instance->retain();//娣诲姞璁℃暟,鍚﹀垯浼氭湁bug
 	}
 	return instance;
 }

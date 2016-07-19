@@ -10,6 +10,7 @@
 #include "userdata/UserData.h"
 #include "game/mahjong/dialog/bill/BillInfo.h"
 #include "game/mahjong/core/widget/QuitRoomDialog.hpp"
+#include "game/utils/Audio.h"
 
 
 bool GuiLayer::init(){
@@ -103,11 +104,13 @@ void GuiLayer::chatButtonClick(){
 }
 
 void GuiLayer::settingButtonClick(){
+    Audio::getInstance()->playSoundClick();
     UserSetting* setting = UserSetting::create();
     this->addChild(setting,3);
 }
 
 void GuiLayer::quitButtonClick(){
+    Audio::getInstance()->playSoundClick();
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         GAMEDATA::getInstance()->clearPlayersInfo();
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
@@ -151,6 +154,7 @@ void GuiLayer::showInvitePlayer(int clientId){
 
 
 void GuiLayer::showPlayerBill(){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
     BillInfo* bill = BillInfo::create();
     bill->setShowPosition();

@@ -641,13 +641,19 @@ void Audio::playSoundTiao9(int gender){
 
 
 void Audio::playSoundEast(int gender){
-    int soundId = rand()%2+1;
-    if(gender==1){
-        std::string soundName = cocos2d::String::createWithFormat("audio/male/dongfeng_%d.ogg",soundId)->_string;
-        AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
+    if(getIsFirstDong()){
+        if(gender==1){
+            AudioEngine::play2d("audio/male/dongfeng_2.ogg",false,UserData::getInstance()->getSoundValue());
+        }else{
+            AudioEngine::play2d("audio/famale/dongfeng_2.ogg",false,UserData::getInstance()->getSoundValue());
+        }
+        setIsFirstDong(false);
     }else{
-        std::string soundName = cocos2d::String::createWithFormat("audio/famale/dongfeng_%d.ogg",soundId)->_string;
-        AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
+        if(gender==1){
+            AudioEngine::play2d("audio/male/dongfeng_1.ogg",false,UserData::getInstance()->getSoundValue());
+        }else{
+            AudioEngine::play2d("audio/famale/dongfeng_1.ogg",false,UserData::getInstance()->getSoundValue());
+        }
     }
 }
 
@@ -683,4 +689,10 @@ void Audio::playSoundNorth(int gender){
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }
 }
+
+void Audio::playSoundClick(){
+    AudioEngine::play2d("audio/dian_ji_an_niu.ogg",false,UserData::getInstance()->getSoundValue());
+}
+
+
 

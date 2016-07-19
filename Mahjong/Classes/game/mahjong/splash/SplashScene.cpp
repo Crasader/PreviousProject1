@@ -9,6 +9,7 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
 #include "game/mahjong/splash/dropdownlist/LoginMannger.h"
+#include "game/utils/Audio.h"
 
 
 
@@ -200,6 +201,7 @@ void SplashScene::drawLonginScene(){
 
 
 void SplashScene::loginByPass(){
+    Audio::getInstance()->playSoundClick();
     std::string userName = _editName->getText();
     std::string password = _editPwd->getText();
     if (userName == ""&&password == ""){
@@ -233,6 +235,7 @@ void SplashScene::loginByVisitor(){
     //else{
     //	NetworkManage::getInstance()->sendMsg(JsonManage::getInstance()->getVisitorLoginCommand());
     //}
+    Audio::getInstance()->playSoundClick();
     showLoading();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVisitorLoginCommand());
 }
@@ -245,12 +248,14 @@ void SplashScene::setChangeNickName(std::string name,std::string pwd){
 }
 
 void SplashScene::showUserRegister(){
+    Audio::getInstance()->playSoundClick();
     UserRegister* layer = UserRegister::create();
     this->addChild(layer,6);
 }
 
 
 void SplashScene::findbackPwd(){
+    Audio::getInstance()->playSoundClick();
     FindPassword* pass = FindPassword::create();
     this->addChild(pass,6);
 }
