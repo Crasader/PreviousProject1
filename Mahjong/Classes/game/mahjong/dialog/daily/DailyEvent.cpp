@@ -1,4 +1,5 @@
 #include "game/mahjong/dialog/daily/DailyEvent.h"
+#include "game/utils/Audio.h"
 
 bool DailyEvent::init(){
 	if (!Layer::init()){
@@ -138,6 +139,7 @@ void DailyEvent::showDailyEvent(DailyType type){
 
 
 void DailyEvent::showDailyTask(Ref* ref){
+    Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());//任务
 	MenuItemToggle* temp = (MenuItemToggle*)ref;
 	taskToggle->setSelectedIndex(1);
@@ -155,6 +157,7 @@ void DailyEvent::showDailyTask(Ref* ref){
 }
 
 void DailyEvent::showWelFare(Ref* ref){
+     Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
 	MenuItemToggle* temp = (MenuItemToggle*)ref;
 	taskToggle->setSelectedIndex(0);
@@ -172,6 +175,7 @@ void DailyEvent::showWelFare(Ref* ref){
 }
 
 void DailyEvent::showDailyPride(Ref* ref){
+     Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyPrideCommand());//抽奖
 	MenuItemToggle* temp = (MenuItemToggle*)ref;
 	taskToggle->setSelectedIndex(0);
@@ -189,6 +193,7 @@ void DailyEvent::showDailyPride(Ref* ref){
 }
 
 void DailyEvent::showDailySign(Ref* ref){
+     Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
 	MenuItemToggle* temp = (MenuItemToggle*)ref;
 	taskToggle->setSelectedIndex(0);
@@ -206,6 +211,7 @@ void DailyEvent::showDailySign(Ref* ref){
 }
 
 void DailyEvent::closeView(){
+     Audio::getInstance()->playSoundClick();
 	removeFromParent();
 }
 

@@ -6,6 +6,7 @@
 class Audio{
 public:
     static Audio* getInstance();
+    void init();
     void playBGM();
     void pauseBGM();
     void playMahjong(int type,int gender);

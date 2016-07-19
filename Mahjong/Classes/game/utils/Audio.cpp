@@ -9,8 +9,13 @@ Audio* Audio::m_instance = nullptr;
 Audio* Audio::getInstance(){
     if(m_instance == nullptr){
         m_instance = new Audio();
+        m_instance->init();
     }
     return m_instance;
+}
+
+void Audio::init(){
+    setIsFirstDong(true);
 }
 
 void Audio::playBGM(){
