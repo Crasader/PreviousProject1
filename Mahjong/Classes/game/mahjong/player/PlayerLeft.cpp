@@ -311,7 +311,7 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 Jong* jong = Jong::create();
                 jong->setScale(0.8f);
                 jong->showJong(leftplayed, atoi(chiPoker.at(j).c_str()));
-                jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * i);
+                jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * j);
                 this->addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
             }
