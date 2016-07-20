@@ -69,6 +69,7 @@ public:
     std::string getLequanChangeCommand(std::string propId,std::string phone,std::string name,std::string address);
     std::string getPlayerInfoCommand();
     std::string getLequanChangeRecordCommand();
+    std::string getFeedBackCommand(std::string msg);
 private:
 	CommandManage();
 	static CommandManage* _instance;

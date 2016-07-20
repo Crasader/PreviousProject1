@@ -19,7 +19,8 @@ void Audio::init(){
 }
 
 void Audio::playBGM(){
-    AudioEngine::play2d("audio/mahjong_bgm.mp3",true,UserData::getInstance()->getMusicValue());
+    int id = AudioEngine::play2d("audio/mahjong_bgm.mp3",true,UserData::getInstance()->getMusicValue());
+    setBgmId(id);
 }
 
 void Audio::pauseBGM()
@@ -32,6 +33,7 @@ void Audio::pauseBGM()
 void Audio::setBGMValue(float value)
 {
     UserData::getInstance()->setMusicValue(value);
+    AudioEngine::setVolume(getBgmId(), value);
 }
 
 void Audio::setEffectValue(float value)

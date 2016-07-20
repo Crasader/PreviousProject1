@@ -582,7 +582,6 @@ void PlayerHero:: drawHeroPlayerPlay(int type){
 
 void PlayerHero::playedPokerAuto(bool send){
     if (virtualJong != NULL){
-        virtualJong->removeFromParent();
         virtualJong = NULL;
     }
     selectJong = NULL;

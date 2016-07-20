@@ -7,6 +7,7 @@
 //
 
 #include "game/mahjong/dialog/setting/GameFeedDialog.hpp"
+#include "server/NetworkManage.h"
 
 bool GameFeedDialog::init(){
     if(!Layer::init()){
@@ -69,12 +70,27 @@ bool GameFeedDialog::init(){
 }
 
 
+void GameFeedDialog::onEnter() {
+    Layer::onEnter();
+    //TODO
+}
+
+
+void GameFeedDialog::onExit(){
+    Layer::onExit();
+
+}
+
+
 void GameFeedDialog::closeView(){
     removeFromParent();
 }
 
 
 void GameFeedDialog::clickComfirm(){
+    if(NULL != getChildByTag(0)){
+        NetworkManage::getInstance()->sendMsg(((EditBox*)getChildByTag(0))->getText());
+    }
     removeFromParent();
 }
 

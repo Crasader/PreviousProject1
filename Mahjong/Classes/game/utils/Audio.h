@@ -64,9 +64,11 @@ public:
     
     void setBGMValue(float value);
     void setEffectValue(float value);
-    CC_SYNTHESIZE(bool, isFirstDong, IsFirstDong);
+    
 private:
     static Audio* m_instance;
+    CC_SYNTHESIZE(bool, isFirstDong, IsFirstDong);
+    CC_SYNTHESIZE(int, bgmId, BgmId);
 
 };
 #endif

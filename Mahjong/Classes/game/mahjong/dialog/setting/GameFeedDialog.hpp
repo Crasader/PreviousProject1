@@ -16,6 +16,8 @@ USING_NS_CC_EXT;
 class GameFeedDialog : public Layer , public EditBoxDelegate{
 public:
     virtual bool init();
+    void onEnter() override;
+    void onExit() override;
     CREATE_FUNC(GameFeedDialog);
 private:
     void closeView();
