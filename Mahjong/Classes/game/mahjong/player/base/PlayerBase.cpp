@@ -267,7 +267,6 @@ void PlayerBase::setIsReady(bool b){
         return;
     }
     if(NULL != getChildByTag(1001)){
-        Audio::getInstance()->playSoundClick();
         getChildByTag(1001)->setVisible(b);
     }
 }
