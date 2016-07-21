@@ -567,12 +567,14 @@ void PlayerHero:: drawHeroPlayerPlay(int type){
 
 void PlayerHero::playedPokerAuto(bool send){
     if (virtualJong != NULL){
+        virtualJong->setVisible(false);
         virtualJong->removeFromParent();
         virtualJong = NULL;
     }
     selectJong = NULL;
     resetHandJongsY(NULL);
     Jong* spJong = playerHandJongs.at(playerHandJongs.size() - 1);
+    playerHandJongs.eraseObject(spJong);
     Audio::getInstance()->playMahjong(spJong->getJongType(),UserData::getInstance()->getGender());//音效
     Point startPoint = spJong->getPosition();
     Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
@@ -587,19 +589,16 @@ void PlayerHero::playedPokerAuto(bool send){
     bezier.endPosition = Point(endPoint.x , endPoint.y );
     BezierTo *actionMove = BezierTo::create(0.5f, bezier);
     ScaleTo* scale = ScaleTo::create(0.5f, 0.45f);
-    Spawn* spa = Spawn::create(actionMove, scale, NULL);
-    CallFunc* callback = CallFunc::create([=](){
+    Sequence* seq = Sequence::create(Spawn::create(actionMove, scale, NULL), CallFunc::create([=](){
         if (send){
             sendPokerRequest(spJong->getJongType());
         }
         spJong->showJong(heroplayed, spJong->getJongType());
         spJong->setScale(1.0f);
         playerPlayedJongs.pushBack(spJong);
-        playerHandJongs.eraseObject(spJong);
         stopTimeClockAnim();
         isAllowPlay = false;
-    });
-    Sequence* seq = Sequence::create(spa, callback, NULL);
+    }), NULL);
     spJong->runAction(seq);
 }
 
