@@ -451,31 +451,31 @@ void PlayerHero::replaceFlower(){
         //有花的情况
         index = 0;
         schedule([=](float dt){
-            pokerV = StringUtil::split(rejong.poker.at(index), ",");
-            replaceV = StringUtil::split(rejong.replace.at(index), ",");
-            index++;
-            std::vector<Jong*> needReplace;
-            needReplace.clear();
-            for (int i = 0; i < pokerV.size(); i++){
-                Jong* jon = Jong::create();
-                jon->showJong(herohand,atoi(pokerV.at(i).c_str()));
-                needReplace.push_back(jon);
-            }
-            for (int j = 0; j < pokerV.size(); j++){
-                for (int k = 0; k < playerHandJongs.size(); k++){
-                    if (atoi(pokerV.at(j).c_str()) == playerHandJongs.at(k)->getJongType()){
-                        playerHandJongs.at(k)->showJong(herohand, atoi(replaceV.at(j).c_str()));
-                        break;
+            if(rejong.poker.at(index)!="" && rejong.replace.at(index)!=""){
+                pokerV = StringUtil::split(rejong.poker.at(index), ",");
+                replaceV = StringUtil::split(rejong.replace.at(index), ",");
+                index++;
+                std::vector<Jong*> needReplace;
+                needReplace.clear();
+                for (int i = 0; i < pokerV.size(); i++){
+                    Jong* jon = Jong::create();
+                    jon->showJong(herohand,atoi(pokerV.at(i).c_str()));
+                    needReplace.push_back(jon);
+                }
+                for (int j = 0; j < pokerV.size(); j++){
+                    for (int k = 0; k < playerHandJongs.size(); k++){
+                        if (atoi(pokerV.at(j).c_str()) == playerHandJongs.at(k)->getJongType()){
+                            playerHandJongs.at(k)->showJong(herohand, atoi(replaceV.at(j).c_str()));
+                            break;
+                        }
                     }
                 }
+                HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
+                    setHuaNum(getHuaNum()+needReplace.size());
+                    showPlayerHua(Vec2(288,185),getHuaNum());
+                }));
+                addChild(huaAnim,100);
             }
-            HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
-                log("hua die jia = %d, %d",getHuaNum(),needReplace.size());
-                setHuaNum(getHuaNum()+needReplace.size());
-                showPlayerHua(Vec2(288,185),getHuaNum());
-            }));
-            addChild(huaAnim,100);
-            
         }, 0.8f, rejong.poker.size()-1, 0,"huahuahua");
         
         schedule([=](float dt){

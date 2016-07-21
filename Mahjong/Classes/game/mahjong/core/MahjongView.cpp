@@ -1235,12 +1235,11 @@ void MahjongView::addPlayerOffLineListener(){
             if(players.at(i)->getPoxiaoId() ==  buf){
                 int seatId  = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId());
                 if(seatId == ClientSeatId::left){
-                    //                    playerLeft->set
+                    playerLeft->setPlayerTingState(true);
                 }else if(seatId == ClientSeatId::opposite){
-                    
+                    playerOpposite->setPlayerTingState(true);
                 }else if(seatId == ClientSeatId::right){
-                    
-                    
+                    playerRight->setPlayerTingState(true);
                 }
             }
         }
