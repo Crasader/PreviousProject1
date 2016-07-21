@@ -158,6 +158,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
         playerPlayedJongs.pushBack(jong);
         isAllowPlay = false;
         resetHandJongsY(jong);
+        virtualJong = NULL;
     });
     CallFunc* callback2 = CallFunc::create([=](){
         showCurrentPlayedJongIcon(true);
@@ -447,14 +448,6 @@ void PlayerHero::replaceFlower(){
             isAllowPlay = true;
         }
     }else{
-        //        string handPoker;
-        //        for(int a=0;a<playerHandJongs.size();a++){
-        //            handPoker += playerHandJongs.at(a)->getJongName(playerHandJongs.at(a)->getJongType()) + ";";
-        //        }
-        //        Label* labe = Label::create(handPoker,"arial",20);
-        //        labe->setPosition(420,380);
-        //        labe->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        //        addChild(labe);
         //有花的情况
         index = 0;
         schedule([=](float dt){
@@ -477,19 +470,11 @@ void PlayerHero::replaceFlower(){
                 }
             }
             HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
+                log("hua die jia = %d, %d",getHuaNum(),needReplace.size());
                 setHuaNum(getHuaNum()+needReplace.size());
                 showPlayerHua(Vec2(288,185),getHuaNum());
             }));
             addChild(huaAnim,100);
-            
-            //            string handPoker2;
-            //            for(int a=0;a<playerHandJongs.size();a++){
-            //                handPoker2 += playerHandJongs.at(a)->getJongName(playerHandJongs.at(a)->getJongType()) + ";";
-            //            }
-            //            Label* labe = Label::create(handPoker2,"arial",20);
-            //            labe->setPosition(420,380-(index)*20);
-            //            labe->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            //            addChild(labe);
             
         }, 0.8f, rejong.poker.size()-1, 0,"huahuahua");
         
@@ -582,6 +567,7 @@ void PlayerHero:: drawHeroPlayerPlay(int type){
 
 void PlayerHero::playedPokerAuto(bool send){
     if (virtualJong != NULL){
+        virtualJong->removeFromParent();
         virtualJong = NULL;
     }
     selectJong = NULL;

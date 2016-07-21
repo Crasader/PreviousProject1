@@ -34,6 +34,9 @@ public:
     
 	virtual void removeLastJong(){};
     virtual void doEventTimeOverUi(){};
+    
+    
+    
 	virtual void doEventTimeOver(int type){};
 	virtual void showCurrentPlayedJongIcon(bool isShow){};
     virtual void JongShowdown(vector<int> jongs){};

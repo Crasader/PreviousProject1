@@ -78,6 +78,7 @@ void PlayerRight::drawHuaJong(){
     std::vector<Jong*> needReplace;
     needReplace.clear();
     for (int i = 0; i < rejong.poker.size(); i++){
+        log("RRRRRRRRRRRRRRRR  = %s ",rejong.poker.at(i).c_str());
         std::vector<std::string> pokerV = StringUtil::split(rejong.poker.at(i), ",");
         for (int j = 0; j < pokerV.size(); j++){
             Jong* jon = Jong::create();

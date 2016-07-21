@@ -608,7 +608,6 @@ void MahjongView::addCoustomReplaceFlower() {
             }
         }
         
-        
         int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
         if (bankId == ClientSeatId::hero){
             playerHero->startTimeClockAnim();
@@ -629,7 +628,6 @@ void MahjongView::addCoustomReplaceFlower() {
 void MahjongView::addDealJongListener(){
     dealJongsListener = EventListenerCustom::create(MSG_GAME_START_NOTIFY, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsPlaying(true);
-        //        int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
         playerHero->setIsReady(false);
         playerRight->setIsReady(false);
         playerOpposite->setIsReady(false);
