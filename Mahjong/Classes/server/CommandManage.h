@@ -70,6 +70,7 @@ public:
     std::string getPlayerInfoCommand();
     std::string getLequanChangeRecordCommand();
     std::string getFeedBackCommand(std::string msg);
+    std::string getOnResumeCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

@@ -88,5 +88,6 @@ private:
     void getLequanChangeRecordResp(std::string msg);
     void getHeadImageChangeResp(std::string msg);
     void getFeedBackResp(std::string msg);
+    void gameResumeResp(std::string msg);
 };
 #endif

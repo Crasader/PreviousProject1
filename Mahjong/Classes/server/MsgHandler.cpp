@@ -438,6 +438,10 @@ void MsgHandler::distribute(int code, std::string msg){
             getFeedBackResp(msg);
             break;
         }
+        case MSGCODE_MAJIANG_BACK_RESUME_RESPONSE:{
+            gameResumeResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2196,4 +2200,13 @@ void MsgHandler::getFeedBackResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
     postNotifyMessage(MSG_PLAYER_FEED_BACK_RESP, result.GetString());
+}
+
+void MsgHandler::gameResumeResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_PLAYER_RESUME_GAME, "");
 }

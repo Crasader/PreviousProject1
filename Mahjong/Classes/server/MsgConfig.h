@@ -38,7 +38,6 @@
 #define MSGCODE_GET_FRIEND_LIST_RESPONSE  127// 获取好友列表回复{code:127,poxiaoId:"456",friends:[{poxiaoId:"456",nickname:"红太阳"},{poxiaoId:"789",nickname:"蓝月亮"}}
 #define MSGCODE_DEL_FRIEND_LIST_REQUEST  128// 删除好友请求{code:128,poxiaoId:"456",pId:"11"}
 #define MSGCODE_DEL_FRIEND_LIST_RESPONSE  129// 删除好友回复{code:129,poxiaoId:"456"}
-#define MSGCODE_MODIFY_PIC_REQUEST  130// 修改头像请求{code:130,poxiaoId:"456"}
 
 #define MSGCODE_HONGBAO_REQUEST  131// 红包获取请求{code:131,poxiaoId:"456"}
 #define MSGCODE_HONGBAO_RESPONSE  132//红包获取回复{code:132,poxiaoId:"456",hbcode:"12345689",lequan:"12",gold:"0",diamond:"0",count:"1",lequan2:"12",gold2:"0",diamond2:"0",list:[{pId:"11",nickname:"好啊",status:"1"},{pId:"21",nickname:"我是谁",status:"0"}]}
@@ -277,4 +276,5 @@
 #define MSG_PLAYER_OFF_LINE_NOTIFY "msg_player_off_line_notify"
 #define MSG_PLAYER_CHANGE_HEAD_RESP "msg_player_change_head_resp"
 #define MSG_PLAYER_FEED_BACK_RESP "msg_player_feed_back_resp"
+#define MSG_PLAYER_RESUME_GAME "msg_player_resume_game"
 #endif

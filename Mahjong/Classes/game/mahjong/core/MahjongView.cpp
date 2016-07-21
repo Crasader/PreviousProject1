@@ -172,31 +172,31 @@ void MahjongView::onEnter(){
 void MahjongView::onExit()
 {
     Layer::onExit();
-    _eventDispatcher->removeEventListener(addOtherReadyListener);
-    _eventDispatcher->removeEventListener(loginRespListener);
-    _eventDispatcher->removeEventListener(addPlayersListener);
-    _eventDispatcher->removeEventListener(replaceListener);
-    _eventDispatcher->removeEventListener(dealJongsListener);
-    _eventDispatcher->removeEventListener(turnListener);
-    _eventDispatcher->removeEventListener(otherListener);
-    _eventDispatcher->removeEventListener(gameResultListener);
-    _eventDispatcher->removeEventListener(playerCpgListener);
-    _eventDispatcher->removeEventListener(othersPengListener);
-    _eventDispatcher->removeEventListener(othersGangListener);
-    _eventDispatcher->removeEventListener(othersChiListener);
-    _eventDispatcher->removeEventListener(tingNotifyListener);
-    _eventDispatcher->removeEventListener(tingRespListener);
-    _eventDispatcher->removeEventListener(trusteeshipRespListener);
-    _eventDispatcher->removeEventListener(trusteeshipNotifyListener);
-    _eventDispatcher->removeEventListener(trusteeshipCancelListener);
-    _eventDispatcher->removeEventListener(heroChiRespListener);
-    _eventDispatcher->removeEventListener(heroPengRespListener);
-    _eventDispatcher->removeEventListener(heroGangRespListener);
-    _eventDispatcher->removeEventListener(playerTingNotifyListener);
-    _eventDispatcher->removeEventListener(friendInviteMeListener);
-    _eventDispatcher->removeEventListener(enterFrinedRoomListener);
-    _eventDispatcher->removeEventListener(playerRemoveListener);
-    
+    Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(replaceListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dealJongsListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(turnListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(otherListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(gameResultListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerCpgListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersPengListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersGangListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersChiListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(tingNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(tingRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipCancelListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroChiRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(friendInviteMeListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFrinedRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
 }
 
 
@@ -550,6 +550,7 @@ void MahjongView::addCoustomListener(){
     this->addFriendInviteMeListener();
     this->addEnterFriendRoomListener();
     this->addPlayerRemoveListener();
+    this->addPlayerResumeListener();
 }
 
 
@@ -1241,6 +1242,16 @@ void MahjongView::addPlayerOffLineListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerOffLineListener, 1);
+}
+
+
+void MahjongView::addPlayerResumeListener(){
+    playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
+        string buf = static_cast<char*>(event->getUserData());
+        //TODO
+        log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
 }
 
 

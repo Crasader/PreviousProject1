@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "audio/include/AudioEngine.h"
 #include "game/mahjong/splash/LoadResource.hpp"
+#include "server/NetworkManage.h"
 
 USING_NS_CC;
 using namespace experimental;
@@ -79,4 +80,5 @@ void AppDelegate::applicationWillEnterForeground() {
 
 	// if you use SimpleAudioEngine, it must resume here
     AudioEngine::resumeAll();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
 }
