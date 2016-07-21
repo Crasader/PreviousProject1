@@ -108,6 +108,7 @@ struct GameResultData
     int jifendelta;
     int lequandelta;
     int hua;
+    std::string pic;
     std::string nickName;
     std::string huType;
     std::string showPoker;

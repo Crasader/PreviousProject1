@@ -1012,6 +1012,9 @@ void MsgHandler::gameResultNotify(std::string msg){
         if (temp.HasMember("lequandelta")){
             resultData.lequandelta = temp["lequandelta"].GetInt();
         }
+        if(temp.HasMember("pic")){
+            resultData.pic = temp["pic"].GetString();
+        }
         resultData.seatId = temp["seatId"].GetInt();
         resultData.showPoker = temp["poker"].GetString();
         if (temp.HasMember("hua")){
