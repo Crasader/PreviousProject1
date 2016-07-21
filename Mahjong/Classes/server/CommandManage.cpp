@@ -547,7 +547,7 @@ std::string CommandManage::getLequanChangeRecordCommand(){
 
 std::string CommandManage::getFeedBackCommand(std::string msg){
     std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEEDBACK_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("content", msg));
     return commandString(keyValue);

@@ -87,5 +87,6 @@ private:
     void getPlayerOffLineNotify(std::string msg);
     void getLequanChangeRecordResp(std::string msg);
     void getHeadImageChangeResp(std::string msg);
+    void getFeedBackResp(std::string msg);
 };
 #endif

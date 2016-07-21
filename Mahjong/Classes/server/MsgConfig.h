@@ -276,4 +276,5 @@
 #define MSG_PLAYER_FIND_PASSWORD_RESP "msg_player_find_password_resp"
 #define MSG_PLAYER_OFF_LINE_NOTIFY "msg_player_off_line_notify"
 #define MSG_PLAYER_CHANGE_HEAD_RESP "msg_player_change_head_resp"
+#define MSG_PLAYER_FEED_BACK_RESP "msg_player_feed_back_resp"
 #endif

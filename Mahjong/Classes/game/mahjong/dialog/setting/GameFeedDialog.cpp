@@ -72,13 +72,17 @@ bool GameFeedDialog::init(){
 
 void GameFeedDialog::onEnter() {
     Layer::onEnter();
-    //TODO
+    feedListener = EventListenerCustom::create("", [=](EventCustom* event){
+    
+    
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(feedListener, 1);
 }
 
 
 void GameFeedDialog::onExit(){
     Layer::onExit();
-
+    Director::getInstance()->getEventDispatcher()->removeEventListener(feedListener);
 }
 
 
@@ -89,7 +93,7 @@ void GameFeedDialog::closeView(){
 
 void GameFeedDialog::clickComfirm(){
     if(NULL != getChildByTag(0)){
-        NetworkManage::getInstance()->sendMsg(((EditBox*)getChildByTag(0))->getText());
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFeedBackCommand(((EditBox*)getChildByTag(0))->getText()));
     }
     removeFromParent();
 }

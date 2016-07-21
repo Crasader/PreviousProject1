@@ -20,6 +20,7 @@ public:
     void onExit() override;
     CREATE_FUNC(GameFeedDialog);
 private:
+    EventListenerCustom* feedListener;
     void closeView();
     void clickComfirm();
     virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
