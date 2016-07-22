@@ -744,7 +744,6 @@ void MahjongView::addPlayerCpgListener(){
 
 void MahjongView::addGameResultListener(){
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setIsPlaying(false);
         trusteeship->setVisible(false);
         GAMEDATA::getInstance()->setIsTrusteeship(false);
         //播放动画
@@ -1200,7 +1199,7 @@ void MahjongView::addPlayerRemoveListener(){
         if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId) == ClientSeatId::hero){
 //            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }else{
-            if(GAMEDATA::getInstance()->getIsPlaying()){
+            if(!GAMEDATA::getInstance()->getIsPlaying()){
                 if(playerLeft !=NULL&&playerLeft->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
                     playerLeft->removeFromParent();
                     playerLeft =NULL;

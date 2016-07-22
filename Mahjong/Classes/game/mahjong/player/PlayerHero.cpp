@@ -618,9 +618,9 @@ void PlayerHero::doEventTimeOverUi(){
 
 void PlayerHero::doEventTimeOver(int type){
     if (type < 0){
-        if (!GAMEDATA::getInstance()->getIsTingState()){
-            playedPokerAuto(true);
-        }
+        //        if (!GAMEDATA::getInstance()->getIsTingState()){
+        //            playedPokerAuto(true);
+        //        }
         auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
         }), NULL);
@@ -631,8 +631,8 @@ void PlayerHero::doEventTimeOver(int type){
         if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
                                        GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
            ClientSeatId::hero){
-           startTimeClockAnim();
-           setIsAllowPlay(true);
+            startTimeClockAnim();
+            setIsAllowPlay(true);
         }
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
     }
@@ -650,8 +650,8 @@ void PlayerHero::doEventTimeOver(int type){
         if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
                                        GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
            ClientSeatId::hero){
-           startTimeClockAnim();
-           setIsAllowPlay(true);
+            startTimeClockAnim();
+            setIsAllowPlay(true);
         }
     }
 }
@@ -899,7 +899,7 @@ void PlayerHero::drawHeroMingGang(HeroCpgRespData resp, PlayerCpgtData cpg, Play
 }
 
 void PlayerHero::drawPengGangAndAGang(PlayerCpgtData tingData){
-     Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
+    Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
     std::vector<string> gangpai = StringUtil::split(tingData.gang, ",");
     Vector<Jong*> gangVector;
     if (tingData.flag == 2){

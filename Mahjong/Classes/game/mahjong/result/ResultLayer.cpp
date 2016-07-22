@@ -25,7 +25,9 @@ void ResultLayer::onEnter(){
     Layer::onEnter();
     continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_READY_RESP, [=](EventCustom* event){
         std::string result  = static_cast<char*>(event->getUserData());
-        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
+        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "0"){
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        }else if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
              GAMEDATA::getInstance()->setContinueAgain(true);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
