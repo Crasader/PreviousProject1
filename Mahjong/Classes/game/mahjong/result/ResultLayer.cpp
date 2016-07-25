@@ -8,6 +8,7 @@
 #include "game/utils/Chinese.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
+#include "game/mahjong/dialog/shop/ChargeGold.hpp"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/dialog/shop/GoldNotEnoughDialog.hpp"
@@ -31,16 +32,21 @@ void ResultLayer::onEnter(){
              GAMEDATA::getInstance()->setContinueAgain(true);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
-            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-            addChild(gold,4);
+            if(UserData::getInstance()->getDiamond()>=GAMEDATA::getInstance()->getPlayRoomID()*1000){
+                ChargeGold* gold = ChargeGold::create();
+                addChild(gold,30);
+            }else{
+                GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                addChild(gold,30);
+            }
         }
         else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
             if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
                 EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
-                addChild(dia,4);
+                addChild(dia,30);
             }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
                 EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
-                addChild(dia,4);
+                addChild(dia,30);
             }
         }
     

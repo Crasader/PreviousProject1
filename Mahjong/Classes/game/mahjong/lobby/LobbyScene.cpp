@@ -251,56 +251,6 @@ void LobbyScene::drawSceneMid(){
     gameMenu->setPosition(790, 342);
     this->addChild(gameMenu,2);
     
-    //    LabelAtlas* fen_500 = LabelAtlas::create("500","mjlobby/player_info_num.png",15,22,'0');
-    //    fen_500->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    fen_500->setPosition(457, 165);
-    //    addChild(fen_500);
-    //    Sprite* di_1 = Sprite::create("mjlobby/font_di.png");
-    //    di_1->setPosition(496,165);
-    //    addChild(di_1);
-    //    LabelAtlas* hua_500 = LabelAtlas::create("500", "mjlobby/player_info_num.png", 15, 22, '0');
-    //    hua_500->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    hua_500->setPosition(539, 165);
-    //    addChild(hua_500);
-    //    Sprite* hua_1 = Sprite::create("mjlobby/font_hua.png");
-    //    hua_1->setPosition(578, 165);
-    //    addChild(hua_1);
-    
-    //    LabelAtlas* fen_5k = LabelAtlas::create("5000", "mjlobby/player_info_num.png", 15, 22, '0');
-    //    fen_5k->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    fen_5k->setPosition(753, 165);
-    //    addChild(fen_5k);
-    //    Sprite* di_2 = Sprite::create("mjlobby/font_di.png");
-    //    di_2->setPosition(793, 165);
-    //    addChild(di_2);
-    //    LabelAtlas* hua_5k = LabelAtlas::create("5000", "mjlobby/player_info_num.png", 15, 22, '0');
-    //    hua_5k->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    hua_5k->setPosition(838, 165);
-    //    addChild(hua_5k);
-    //    Sprite* hua_2 = Sprite::create("mjlobby/font_hua.png");
-    //    hua_2->setPosition(880, 165);
-    //    addChild(hua_2);
-    
-    //    LabelAtlas* fen_5w = LabelAtlas::create("5", "mjlobby/player_info_num.png", 15, 22, '0');
-    //    fen_5w->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    fen_5w->setPosition(1030, 165);
-    //    addChild(fen_5w);
-    //    Sprite* font_w1= Sprite::create("mjlobby/font_wan.png");
-    //    font_w1->setPosition(1050,165);
-    //    addChild(font_w1);
-    //    Sprite* di_3= Sprite::create("mjlobby/font_di.png");
-    //    di_3->setPosition(1075, 165);
-    //    addChild(di_3);
-    //    LabelAtlas* hua_5w= LabelAtlas::create("5", "mjlobby/player_info_num.png", 15, 22, '0');
-    //    hua_5w->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    hua_5w->setPosition(1120, 165);
-    //    addChild(hua_5w);
-    //    Sprite* font_w2 = Sprite::create("mjlobby/font_wan.png");
-    //    font_w2->setPosition(1140, 165);
-    //    addChild(font_w2);
-    //    Sprite* hua_3 = Sprite::create("mjlobby/font_hua.png");
-    //    hua_3->setPosition(1164, 165);
-    //    addChild(hua_3);
 }
 
 void LobbyScene::drawSceneBot(){
@@ -309,19 +259,18 @@ void LobbyScene::drawSceneBot(){
     addChild(bot_bg);
     
     auto btn_1 = MenuItemImage::create("mjlobby/friend_btn_1.png", "mjlobby/friend_btn_2.png", CC_CALLBACK_0(LobbyScene::showAddFriend, this));
-    //    auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
+    auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_3 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
     auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
     auto btn_5 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
-    auto gameMenu = Menu::create(btn_1, btn_3, btn_4, btn_5, NULL);
-    gameMenu->alignItemsHorizontallyWithPadding(85);
+    auto gameMenu = Menu::create(btn_1, btn_2,btn_3, btn_4, btn_5, NULL);
+    gameMenu->alignItemsHorizontallyWithPadding(75);
     gameMenu->setPosition(785, 43);
     addChild(gameMenu);
-    //TODO 好友开房功能暂时关闭
-    //    auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
-    //    auto openMenu = Menu::create(openRoom,NULL);
-    //    openMenu->setPosition(1203,67);
-    //    addChild(openMenu);
+        auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
+        auto openMenu = Menu::create(openRoom,NULL);
+        openMenu->setPosition(1203,67);
+        addChild(openMenu);
     
 }
 
