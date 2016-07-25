@@ -617,15 +617,14 @@ void PlayerHero::doEventTimeOverUi(){
 }
 
 void PlayerHero::doEventTimeOver(int type){
+    //type 负值正常打牌超时
     if (type < 0){
-        //        if (!GAMEDATA::getInstance()->getIsTingState()){
-        //            playedPokerAuto(true);
-        //        }
         auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
         }), NULL);
         runAction(sequence);
     }
+    //type 吃碰杠倒计时
     else if (type == 1){
         ((MahjongView*)getParent())->hideTingGangControllPad();
         if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
@@ -636,6 +635,7 @@ void PlayerHero::doEventTimeOver(int type){
         }
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
     }
+    //听牌倒计时
     else if (type == 2){
         if (GAMEDATA::getInstance()->getIsTingProcess()){
             playedPokerAuto(false);
@@ -646,6 +646,7 @@ void PlayerHero::doEventTimeOver(int type){
             ((MahjongView*)getParent())->hideTingGangControllPad();
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
             setIsAllowTouch(true);
+            setIsAllowPlay(true);
         }
         if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
                                        GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
@@ -674,7 +675,6 @@ void PlayerHero::actionTing(){
 
 void PlayerHero::sendTingRequest(int poker){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTingCommand(poker));
-    setIsAllowPlay(true);
     this->stopTimeClockAnim();
 }
 
