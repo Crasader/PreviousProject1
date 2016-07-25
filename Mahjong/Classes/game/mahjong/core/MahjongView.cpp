@@ -431,6 +431,8 @@ void MahjongView::recoverGame(){
         info->setDiamond(player.diamond);
         info->setNickname(player.nickname);
         info->setPicture(player.pic);
+        info->setGender(player.gender);
+        info->setLockDiamond(player.bangzuan);
         GAMEDATA::getInstance()->addPlayersInfo(info);
         recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
     }

@@ -1081,6 +1081,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.status = temp["status"].GetInt();
         data.gold = temp["gold"].GetInt();
         data.jifen = temp["jifen"].GetInt();
+        data.bangzuan = temp["bangzuan"].GetInt();
         data.lequan = temp["lequan"].GetInt();
         data.diamond = temp["diamond"].GetInt();
         data.hua = temp["hua"].GetInt();
@@ -1119,6 +1120,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.outhand = temp["out"].GetString();
         data.nickname =temp["nickname"].GetString();
         data.pic =temp["pic"].GetString();
+        data.gender = temp["gender"].GetInt();
         lastGameData.players.push_back(data);
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);

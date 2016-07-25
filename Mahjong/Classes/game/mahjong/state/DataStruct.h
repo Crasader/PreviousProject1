@@ -147,6 +147,8 @@ struct PlayerGameData{
     int gold;
     int diamond;
     int jifen;
+    int bangzuan;
+    int gender;
     int lequan;
     int hua;
     int status;
