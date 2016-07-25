@@ -88,7 +88,6 @@ bool OtherPlayerInfo::init(Player* player){
     }else if(player->getPicture() == "4"){
         headBg->setTexture("gameview/head_image_4.png");
     }else{
-        //TODO
         log("服务器下发的头像图片不存在");
     }
     headBg->setPosition(70,160);

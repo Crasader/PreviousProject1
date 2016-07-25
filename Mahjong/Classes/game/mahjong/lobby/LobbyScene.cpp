@@ -37,6 +37,7 @@ void LobbyScene::onEnter(){
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
     addCustomEventListener();
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
 }
 
 
@@ -300,7 +301,6 @@ void LobbyScene::showDayTask(){
 
 void LobbyScene::showAddFriend(){
     Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     FriendListView* friendAdd = FriendListView::create();
     friendAdd->setTag(524);
     addChild(friendAdd,3);
