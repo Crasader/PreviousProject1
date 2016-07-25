@@ -497,6 +497,38 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
     }
 }
 
+void MahjongView::resumePlayerUI(PlayerResumeData data,int type){
+    if (type == ClientSeatId::hero){
+            playerHero->setIsAllowPlay(false);
+            playerHero->setPlayerTingState(data.status == 1?true:false);
+            playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerHero->recoverHand(data.hand);
+            playerHero->recoverPlayed(data.outhand);
+            playerHero->recoverHua(data.hua);
+    }
+    else if (type == ClientSeatId::left){
+            playerLeft->setPlayerTingState(data.status == 1?true:false);
+            playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerLeft->recoverHand(data.hand);
+            playerLeft->recoverPlayed(data.outhand);
+            playerLeft->recoverHua(data.hua);
+    }
+    else if (type == ClientSeatId::right){
+            playerRight->setPlayerTingState(data.status == 1?true:false);
+            playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerRight->recoverHand(data.hand);
+            playerRight->recoverPlayed(data.outhand);
+            playerRight->recoverHua(data.hua);
+    }
+    else if (type == ClientSeatId::opposite){
+            playerOpposite->setPlayerTingState(data.status == 1?true:false);
+            playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerOpposite->recoverHand(data.hand);
+            playerOpposite->recoverPlayed(data.outhand);
+            playerOpposite->recoverHua(data.hua);
+    }
+}
+
 //显示玩家的方向和庄
 void MahjongView::showOriention(){
     Orientation* ori = Orientation::create();
@@ -1083,16 +1115,45 @@ void MahjongView::addTrusteeShipRespListener(){
 
 void MahjongView::addTrusteeShipNotifyListener(){
     trusteeshipNotifyListener = EventListenerCustom::create(MSG_TRUSTEESHIP_NOTIFY, [=](EventCustom* event){
-        trusteeship->setVisible(true);
-        GAMEDATA::getInstance()->setIsTrusteeship(true);
+        std::string pid = static_cast<char*>(event->getUserData());
+        for(auto var: GAMEDATA::getInstance()->getPlayersInfo()){
+            if( UserData::getInstance()->getPoxiaoId()== pid){
+                trusteeship->setVisible(true);
+                GAMEDATA::getInstance()->setIsTrusteeship(true);
+            }else if(var->getPoxiaoId() == pid){
+                int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), var->getSeatId());
+                if(seatID == ClientSeatId::left){
+                    playerLeft->setPlayerTrustee(true);
+                }else if(seatID == ClientSeatId::opposite){
+                    playerOpposite->setPlayerTrustee(true);
+                }else if(seatID == ClientSeatId::right){
+                    playerRight->setPlayerTrustee(true);
+                }
+            }
+        }
+
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(trusteeshipNotifyListener, 1);
 }
 
 void MahjongView::addTrusteeShipCancelListener(){
     trusteeshipCancelListener = EventListenerCustom::create(MSG_CANCEL_TRUSTEESHIP_RESP, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setIsTrusteeship(false);
-        trusteeship->setVisible(false);
+        std::string pid = static_cast<char*>(event->getUserData());
+        for(auto var: GAMEDATA::getInstance()->getPlayersInfo()){
+            if( UserData::getInstance()->getPoxiaoId()== pid){
+                trusteeship->setVisible(false);
+                GAMEDATA::getInstance()->setIsTrusteeship(false);
+            }else if(var->getPoxiaoId() == pid){
+                int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), var->getSeatId());
+                if(seatID == ClientSeatId::left){
+                    playerLeft->setPlayerTrustee(false);
+                }else if(seatID == ClientSeatId::opposite){
+                     playerOpposite->setPlayerTrustee(false);
+                }else if(seatID == ClientSeatId::right){
+                     playerRight->setPlayerTrustee(false);
+                }
+            }
+        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(trusteeshipCancelListener, 1);
 }
@@ -1252,8 +1313,18 @@ void MahjongView::addPlayerOffLineListener(){
 void MahjongView::addPlayerResumeListener(){
     playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
         string buf = static_cast<char*>(event->getUserData());
-        //TODO
-        log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+        GameResumeData  data =  GAMEDATA::getInstance()->getGameResumeData();
+        //重新绘制手牌和花
+        for (int i = 0; i < data.players.size(); i++)
+        {
+            PlayerResumeData player = data.players.at(i);
+            resumePlayerUI(player, SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId));
+        }
+        //设置牌数
+        if(NULL != getChildByTag(1000)){
+            ((DealJongAnim*)getChildByTag(1000))->updateRest(data.rest);
+        }
+        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
 }

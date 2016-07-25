@@ -401,4 +401,22 @@ struct LeChangeRecord{
     std::vector<LeRecord> records;
 };
 
+struct PlayerResumeData{
+    int seatId;
+    int hua;
+    int status;
+    std::string angang;
+    std::string outhand;
+    std::string hand;
+    vector<PlayerChiData> chiData;
+    vector<PlayerPengData> pengData;
+    vector<PlayerGangData> gangData;
+};
+
+struct GameResumeData
+{
+    std::string rest;
+    std::vector <PlayerResumeData> players;
+};
+
 #endif

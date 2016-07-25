@@ -530,6 +530,11 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
 }
 
 void PlayerHero:: drawHeroPlayerPlay(int type){
+    if (virtualJong != NULL){
+        virtualJong->setVisible(false);
+        virtualJong->removeFromParent();
+        virtualJong = NULL;
+    }
     resetHandJongsY(NULL);
     for(int i=playerHandJongs.size()-1;i>=0;i--){
         if(playerHandJongs.at(i)->getJongType()==type){

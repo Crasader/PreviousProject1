@@ -48,8 +48,8 @@ public:
     
     void showPlayerInfo();
 	
-	void setIsReady(bool b);
-    void setPlayerIsOffLine(bool b);
+	void setIsReady(bool b);//准备状态
+    void setPlayerIsOffLine(bool b);//是否断线
     void setPlayerTrustee(bool b);
 	void startTimeClockAnim();
 	void startTimeClockAnim(int time, int type);
@@ -75,7 +75,7 @@ public:
     CC_SYNTHESIZE(int, chiNumber, ChiNumber);//吃的数量
     CC_SYNTHESIZE(int, pokerNumber, PokerNumber);//打牌数量
     CC_SYNTHESIZE(int, lastPoker, LastPoker);//最近一次出牌
-    CC_SYNTHESIZE(bool, isPlayHuaChi, IsPlayHuaChi);
+    CC_SYNTHESIZE(bool, isPlayHuaChi, IsPlayHuaChi);//花痴音效
 	CREATE_FUNC(PlayerBase);
 
 private:

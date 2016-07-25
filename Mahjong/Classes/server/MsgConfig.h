@@ -175,7 +175,7 @@
 #define MSGCODE_MAJIANG_CHART_REQUEST  2032//{code:2032,poxiaoId:poxiaoId,seatId:seatId,no:"1"}
 #define MSGCODE_MAJIANG_CHART_NOTIFY  2033//{code:2033,poxiaoId:poxiaoId,seatId:seatId,nickName:"12",content:"你好啊1234"}
 #define MSGCODE_MAJIANG_TRUSTEESHIP_NOTIFY  2034// 托管通知{code:2034,poxiaoId:poxiaoId}
-#define MSGCODE_MAJIANG_TRUSTEESHIP_RESPONSE  2035// 托管回復{code:2035,poxiaoId:poxiaoId}
+//#define MSGCODE_MAJIANG_TRUSTEESHIP_RESPONSE  2035// 托管回復{code:2035,poxiaoId:poxiaoId}
 
 
 #define MSGCODE_FRIEND_GAME_REQUEST  2036// 好友开房请求{code:2036,poxiaoId:"123",pId:"456,789,333,444,555"}
