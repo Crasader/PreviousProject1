@@ -52,27 +52,27 @@ bool FriendRoom::init()
     InviteCell* hero  = InviteCell::create("gameview/head_image_1.png", UserData::getInstance()->getNickName());
     hero->setPosition(348,488);
     addChild(hero);
-            
+    
     //邀请3个好友
     for(int i=0;i<3;i++){
         inviters[i]=NULL;
     }
     
-    tableView = TableView::create(this, Size(660, 350));
-    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    tableView->setDirection(ScrollView::Direction::VERTICAL);
-    tableView->setPosition(300, 50);
-    tableView->setDelegate(this);
-    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-    this->addChild(tableView);
-    tableView->reloadData();
+    myTableView2 = TableView::create(this, Size(660, 350));
+    myTableView2->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    myTableView2->setDirection(ScrollView::Direction::VERTICAL);
+    myTableView2->setPosition(300, 50);
+    myTableView2->setDelegate(this);
+    myTableView2->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
+    addChild(myTableView2);
+    myTableView2->reloadData();
     
     if(GAMEDATA::getInstance()->getFriendList().friends.size()==0){
         Loading* load = Loading::create(true);
         load->setTag(100);
         addChild(load);
     }
-
+    
     return true;
 }
 
@@ -98,11 +98,30 @@ void FriendRoom::tableCellTouched(TableView* table, TableViewCell* cell)
     cell->getChildByTag(520)->setVisible(!cell->getChildByTag(520)->isVisible());
     
     FriendListData data = GAMEDATA::getInstance()->getFriendList();
-    std::string pid = data.friends.at(cell->getIdx()).poxiaoId;
+    FriendInfo info ;
+    for(auto var : data.friends){
+        if(var.poxiaoId ==  cell->getName()){
+            info = var;
+        }
+    }
+    
     if (cell->getChildByTag(520)->isVisible()){
-        inviteFriends.push_back(data.friends.at(cell->getIdx()));
-        InviteCell* sprite  = InviteCell::create("gameview/head_image_1.png", data.friends.at(cell->getIdx()).nickname);
-        sprite->setName(data.friends.at(cell->getIdx()).poxiaoId);
+        inviteFriends.push_back(info);
+        std::string imageName;
+        if(info.pic == "1"){
+            imageName= "gameview/head_image_1.png";
+        }else if(info.pic == "2"){
+            imageName = "gameview/head_image_2.png";
+        }else if(info.pic == "3"){
+            imageName = "gameview/head_image_3.png";
+        }else if(info.pic == "4"){
+            imageName = "gameview/head_image_4.png";
+        }else{
+            log("服务器下发的头像图片不存在");
+            imageName= "gameview/head_image_1.png";
+        }
+        InviteCell* sprite  = InviteCell::create(imageName, info.nickname);
+        sprite->setName(info.poxiaoId);
         addChild(sprite);
         for(int i=0;i<3;i++){
             if(inviters[i]==NULL){
@@ -116,14 +135,14 @@ void FriendRoom::tableCellTouched(TableView* table, TableViewCell* cell)
         vector<FriendInfo>::iterator it;
         for (it = inviteFriends.begin(); it != inviteFriends.end();)
         {
-            if (it->poxiaoId == pid)
+            if (it->poxiaoId == info.poxiaoId)
                 it = inviteFriends.erase(it);
             else
                 ++it;
         }
         for(int i=0;i<3;i++){
             if(inviters[i]!=NULL){
-                if(inviters[i]->getName()==pid){
+                if(inviters[i]->getName()==info.poxiaoId){
                     inviters[i]->removeFromParent();
                     inviters[i]=NULL;
                 }
@@ -145,9 +164,22 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
+        cell->setName(GAMEDATA::getInstance()->getFriendList().friends.at(idx).poxiaoId);
         
-        
-        Sprite* head = Sprite::create("gameview/head_image_1.png");
+        Sprite* head = Sprite::create();
+        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "1"){
+            head->setTexture("gameview/head_image_1.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "2"){
+            head->setTexture("gameview/head_image_2.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "3"){
+            head->setTexture("gameview/head_image_3.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "4"){
+            head->setTexture("gameview/head_image_4.png");
+        }else{
+            log("服务器下发的头像图片不存在");
+            head->setTexture("gameview/head_image_1.png");
+        }
+        head->setTag(500);
         head->setAnchorPoint(Vec2::ZERO);
         head->setScale(0.6f);
         head->setPosition(Vec2(5, 5));
@@ -155,7 +187,7 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
         
         std::string nickname = GAMEDATA::getInstance()->getFriendList().friends.at(idx).nickname;
         auto label = Label::createWithSystemFont(nickname, "arial", 24);
-        label->setTag(801);
+        label->setTag(501);
         label->setColor(Color3B(69,131,172));
         label->setAnchorPoint(Vec2::ZERO);
         label->setPosition(Vec2(130, 25));
@@ -163,9 +195,11 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
         
         Sprite* circle = Sprite::create("friend/offline_icon.png");
         circle->setPosition(350, 35);
+        circle->setTag(502);
         cell->addChild(circle);
         Sprite* text = Sprite::create("friend/offline.png");
         text->setPosition(400,35);
+        text->setTag(503);
         cell->addChild(text);
         
         if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
@@ -182,7 +216,32 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
         select->setVisible(false);
         cell->addChild(select);
     }else{
-        //TODO
+        cell->setName(GAMEDATA::getInstance()->getFriendList().friends.at(idx).poxiaoId);
+        auto sprite1 = (Sprite*)cell->getChildByTag(500);
+        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "1"){
+            sprite1->setTexture("gameview/head_image_1.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "2"){
+            sprite1->setTexture("gameview/head_image_2.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "3"){
+            sprite1->setTexture("gameview/head_image_3.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "4"){
+            sprite1->setTexture("gameview/head_image_4.png");
+        }else{
+            log("服务器下发的头像图片不存在");
+            sprite1->setTexture("gameview/head_image_1.png");
+        }
+        ((Label*)cell->getChildByTag(501))->setString(GAMEDATA::getInstance()->getFriendList().friends.at(idx).nickname);
+        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
+            ((Sprite*)cell->getChildByTag(502))->setTexture("friend/online_icon.png");
+        }else{
+            ((Sprite*)cell->getChildByTag(502))->setTexture("friend/offline_icon.png");
+        }
+        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
+            ((Sprite*)cell->getChildByTag(503))->setTexture("friend/online.png");
+        }else{
+            ((Sprite*)cell->getChildByTag(503))->setTexture("friend/offline.png");
+        }
+        
     }
     return cell;
 }
@@ -222,5 +281,5 @@ void FriendRoom::updateFriendList(){
     if(NULL != getChildByTag(100)){
         getChildByTag(100)->removeFromParent();
     }
-    tableView->reloadData();
+    myTableView2->reloadData();
 }

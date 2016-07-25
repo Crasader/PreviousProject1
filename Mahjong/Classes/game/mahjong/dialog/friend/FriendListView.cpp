@@ -97,7 +97,19 @@ TableViewCell* FriendListView::tableCellAtIndex(TableView *table, ssize_t idx)
 		sprite->setPosition(Vec2(0, 0));
 		cell->addChild(sprite);
         
-		Sprite* head = Sprite::create("gameview/head_image_1.png");
+		Sprite* head = Sprite::create();
+        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "1"){
+            head->setTexture("gameview/head_image_1.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "2"){
+            head->setTexture("gameview/head_image_2.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "3"){
+            head->setTexture("gameview/head_image_3.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "4"){
+            head->setTexture("gameview/head_image_4.png");
+        }else{
+            log("服务器下发的头像图片不存在");
+            head->setTexture("gameview/head_image_1.png");
+        }
 		head->setAnchorPoint(Vec2::ZERO);
 		head->setPosition(Vec2(21, 21));
 		cell->addChild(head);
@@ -171,7 +183,6 @@ TableViewCell* FriendListView::tableCellAtIndex(TableView *table, ssize_t idx)
 		label2->setString(cocos2d::String::createWithFormat("%d",GAMEDATA::getInstance()->getFriendList().friends.at(idx).gold)->_string);
 		auto label3 = (Label*)cell->getChildByTag(803);
 		label3->setString(cocos2d::String::createWithFormat("%d",GAMEDATA::getInstance()->getFriendList().friends.at(idx).lequan)->_string);
-        
         auto  online = (Sprite*)cell->getChildByTag(900);
         auto onlinetext = (Sprite*)cell->getChildByTag(901);
         if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){

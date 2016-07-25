@@ -1321,6 +1321,7 @@ void MsgHandler::friendListResp(std::string msg){
             std::string online = temp["isonline"].GetString();
             info.isOnLine = (online == "0" ? false : true);
             info.gold =temp["gold"].GetInt();
+            info.pic =temp["pic"].GetString();
             info.diamond =temp["daimond"].GetInt();
             info.lockDiamond =temp["bangzuan"].GetInt();
             info.lequan =temp["lequan"].GetInt();

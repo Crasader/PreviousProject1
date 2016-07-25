@@ -26,7 +26,7 @@ private:
     EventListenerCustom* friendLsitListener2;
     InviteCell* inviters[4];
     std::vector<FriendInfo> inviteFriends;
-    TableView* tableView;
+    TableView* myTableView2;
     void openRoom();
     void closeView();
 };

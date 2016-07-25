@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/friend/FriendListView.cpp"
-            timestampString = "486613793.40321"
+            timestampString = "491148017.243525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "FriendListView::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1559,11 +1559,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/playerinfo/OtherPlayerInfo.cpp"
-            timestampString = "487417963.645366"
+            timestampString = "491143429.729556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "OtherPlayerInfo::addFriend(Ref* ref)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2327,11 +2327,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/friend/FriendRoom.cpp"
-            timestampString = "488381961.763683"
+            timestampString = "491148622.285631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "5">
          </BreakpointContent>

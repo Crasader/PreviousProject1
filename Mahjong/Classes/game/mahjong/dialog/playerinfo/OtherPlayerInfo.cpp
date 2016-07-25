@@ -78,7 +78,19 @@ bool OtherPlayerInfo::init(Player* player){
     addChild(dialogBg);
     
     
-    auto headBg = Sprite::create("common/head_image_1.png");
+    auto headBg = Sprite::create();
+    if(player->getPicture() == "1"){
+        headBg->setTexture("gameview/head_image_1.png");
+    }else if(player->getPicture() == "2"){
+        headBg->setTexture("gameview/head_image_2.png");
+    }else if(player->getPicture() == "3"){
+        headBg->setTexture("gameview/head_image_3.png");
+    }else if(player->getPicture() == "4"){
+        headBg->setTexture("gameview/head_image_4.png");
+    }else{
+        //TODO
+        log("服务器下发的头像图片不存在");
+    }
     headBg->setPosition(70,160);
     headBg->setScale(0.6f);
     dialogBg->addChild(headBg);

@@ -183,6 +183,7 @@ struct FriendInfo{
     std::string poxiaoId;
     std::string image;
     std::string nickname;
+    std::string pic;
     int diamond;
     int lockDiamond;
     int gold;
