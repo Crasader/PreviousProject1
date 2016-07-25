@@ -19,6 +19,7 @@ void GAMEDATA::init(){
     this->setContinueAgain(false);
     this->setHuangfan("0");
     this->setKaibao("0");
+    this->setIsResume(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

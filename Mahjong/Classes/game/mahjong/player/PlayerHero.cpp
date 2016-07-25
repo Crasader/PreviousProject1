@@ -624,6 +624,7 @@ void PlayerHero::doEventTimeOverUi(){
 void PlayerHero::doEventTimeOver(int type){
     //type 负值正常打牌超时
     if (type < 0){
+        setIsAllowPlay(false);
         auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
         }), NULL);
@@ -643,8 +644,8 @@ void PlayerHero::doEventTimeOver(int type){
     //听牌倒计时
     else if (type == 2){
         if (GAMEDATA::getInstance()->getIsTingProcess()){
-            playedPokerAuto(false);
-            sendTingRequest(playerHandJongs.at(playerHandJongs.size() - 1)->getJongType());
+            playedPokerAuto(true);
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
             GAMEDATA::getInstance()->setIsTingProcess(false);
         }
         else{
@@ -1018,6 +1019,13 @@ void PlayerHero::recoverPlayed(std::string played){
 
 
 void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang){
+    for(auto var:playerCpgRecords){
+        for(auto poker:var.pokersRecord){
+            poker->removeFromParent();
+        }
+    }
+    playerCpgRecords.clear();
+    setCpgPostionX(JONG_POS_START_X);
     if(chi.size()>0){
         for(int i=0;i<chi.size();i++){
             PlayerCpgRecord record;
@@ -1111,6 +1119,10 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
 }
 
 void PlayerHero::recoverHand(std::string hand){
+    
+    for(auto var:playerHandJongs){
+        var->removeFromParent();
+    }
     playerHandJongs.clear();
     vector<std::string>  hands = StringUtil::split(hand, ",");
     for (int i = 0; i < hands.size(); i++)

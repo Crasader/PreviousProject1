@@ -78,7 +78,6 @@ void PlayerRight::drawHuaJong(){
     std::vector<Jong*> needReplace;
     needReplace.clear();
     for (int i = 0; i < rejong.poker.size(); i++){
-        log("RRRRRRRRRRRRRRRR  = %s ",rejong.poker.at(i).c_str());
         std::vector<std::string> pokerV = StringUtil::split(rejong.poker.at(i), ",");
         for (int j = 0; j < pokerV.size(); j++){
             Jong* jon = Jong::create();
@@ -287,6 +286,12 @@ void PlayerRight::recoverPlayed(std::string played){
 
 
 void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang){
+    for(auto var:playerCpgRecords){
+        for(auto poker:var.pokersRecord){
+            poker->removeFromParent();
+        }
+    }
+    playerCpgRecords.clear();
     if(chi.size()>0){
         for(int i=0;i<chi.size();i++){
             PlayerCpgRecord record;
@@ -361,6 +366,9 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
 }
 
 void PlayerRight::recoverHand(std::string hand){
+    for(auto var:playerHandJongs){
+        var->removeFromParent();
+    }
     playerHandJongs.clear();
     vector<std::string>  hands = StringUtil::split(hand, ",");
     for (int i = 0; i < hands.size(); i++)

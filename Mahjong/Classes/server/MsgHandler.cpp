@@ -212,12 +212,12 @@ void MsgHandler::distribute(int code, std::string msg){
             trusteeshipNotify(msg);
             break;
         }
-        case MSGCODE_MAJIANG_TRUSTEESHIP_RESPONSE:
-        {
-            log(" *** trusteeship resp *** ");
-            trusteeshipResp(msg);
-            break;
-        }
+//        case MSGCODE_MAJIANG_TRUSTEESHIP_RESPONSE:
+//        {
+//            log(" *** trusteeship resp *** ");
+//            trusteeshipResp(msg);
+//            break;
+//        }
         case MSGCODE_MAJIANG_CHI_RESPONSE:
         {
             log(" *** chi resp *** ");
@@ -1208,7 +1208,8 @@ void MsgHandler::trusteeshipCancelResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    postNotifyMessage(MSG_CANCEL_TRUSTEESHIP_RESP, "");
+    const rapidjson:: Value &pid =  _mDoc["pId"];
+    postNotifyMessage(MSG_CANCEL_TRUSTEESHIP_RESP, pid.GetString());
 }
 
 void MsgHandler::trusteeshipNotify(std::string msg){
@@ -1216,7 +1217,8 @@ void MsgHandler::trusteeshipNotify(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    postNotifyMessage(MSG_TRUSTEESHIP_NOTIFY, "");
+    const rapidjson:: Value &pid =  _mDoc["pId"];
+    postNotifyMessage(MSG_TRUSTEESHIP_NOTIFY, pid.GetString());
 }
 
 void MsgHandler::heroChiResp(std::string msg){
@@ -2209,6 +2211,51 @@ void MsgHandler::gameResumeResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
+    GameResumeData resume;
+    const rapidjson::Value &rest = _mDoc["rest"];
+    resume.rest = rest.GetString();
+    const rapidjson::Value &all = _mDoc["all"];
+    for(int i=0;i<all.Capacity();i++){
+        PlayerResumeData data;
+        const rapidjson::Value &temp = all[i];
+        data.status = temp["status"].GetInt();
+        data.hua = temp["hua"].GetInt();
+        data.seatId =  temp["seatId"].GetInt();
+        if(temp.HasMember("chi")){
+            const rapidjson::Value &chi = temp["chi"];
+            for(int j = 0; j < chi.Capacity(); ++j){
+                const rapidjson::Value &temp2 = chi[j];
+                PlayerChiData chiDa;
+                chiDa.chi = temp2["chi"].GetString();
+                chiDa.poker = temp2["poker"].GetString();
+                data.chiData.push_back(chiDa);
+            }
+        }
+        if(temp.HasMember("peng")){
+            const rapidjson::Value &peng = temp["peng"];
+            for(int j = 0; j < peng.Capacity(); ++j){
+                const rapidjson::Value &temp3 = peng[j];
+                PlayerPengData pengDa;
+                pengDa.peng = temp3["peng"].GetString();
+                pengDa.peId = temp3["peId"].GetString();
+                data.pengData.push_back(pengDa);
+            }
+        }
+        if(temp.HasMember("gang")){
+            const rapidjson::Value &gang = temp["gang"];
+            for(int j = 0; j < gang.Capacity(); ++j){
+                const rapidjson::Value &temp4 = gang[j];
+                PlayerGangData pengDa;
+                pengDa.gang = temp4["gang"].GetString();
+                pengDa.gaId = temp4["gaId"].GetString();
+                data.gangData.push_back(pengDa);
+            }
+        }
+        data.angang = temp["angang"].GetString();
+        data.hand = temp["hand"].GetString();
+        data.outhand = temp["out"].GetString();
+        resume.players.push_back(data);
+    }
+    GAMEDATA::getInstance()->setGameResumeData(resume);
     postNotifyMessage(MSG_PLAYER_RESUME_GAME, "");
 }
