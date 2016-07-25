@@ -342,7 +342,6 @@ void LobbyScene::showHeroInfo(){
 
 void LobbyScene::chargeGold(){
     Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGoldChangeListCommand());
     ChargeGold* gold = ChargeGold::create();
     addChild(gold,3);
 }

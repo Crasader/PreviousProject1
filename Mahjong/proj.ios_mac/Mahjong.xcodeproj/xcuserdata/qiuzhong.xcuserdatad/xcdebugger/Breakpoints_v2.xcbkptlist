@@ -250,7 +250,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "491102271.773961"
+            timestampString = "491141386.645709"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
+            landmarkName = "LobbyScene::addCustomEventListener()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
+            timestampString = "491141386.645709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "403"
@@ -266,27 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "491102271.773961"
+            timestampString = "491141386.645709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
-            landmarkName = "LobbyScene::addCustomEventListener()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "491102271.773961"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "LobbyScene::addCustomEventListener()"
             landmarkType = "5">
             <Locations>
@@ -1095,11 +1095,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "491102271.773961"
+            timestampString = "491141386.645709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
             landmarkName = "LobbyScene::showLobbyAnim()"
             landmarkType = "5">
             <Locations>
@@ -1495,11 +1495,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "491102271.773961"
+            timestampString = "491141386.645709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "LobbyScene::addCustomEventListener()"
             landmarkType = "5">
             <Locations>
@@ -2151,11 +2151,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "491102271.773961"
+            timestampString = "491141386.645709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "LobbyScene::addCustomEventListener()"
             landmarkType = "5">
             <Locations>
@@ -2199,11 +2199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "491102271.773961"
+            timestampString = "491141386.645709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
             landmarkName = "LobbyScene::addCustomEventListener()"
             landmarkType = "5">
          </BreakpointContent>
