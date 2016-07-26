@@ -1263,31 +1263,30 @@ void MahjongView::addEnterFriendRoomListener(){
 
 void MahjongView::addPlayerRemoveListener(){
     playerRemoveListener = EventListenerCustom::create(MSG_PLAYER_REMOVE, [=](EventCustom* event){
-        if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId) == ClientSeatId::hero){
-            //            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        }else{
-            if(!GAMEDATA::getInstance()->getIsPlaying()){
-                if(playerLeft !=NULL&&playerLeft->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
-                    playerLeft->removeFromParent();
-                    playerLeft =NULL;
-                    OutFogAnim* out1 = OutFogAnim::create(Point(70, 455));
-                    addChild(out1);
-                }else if(playerRight !=NULL&&playerRight->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
-                    playerRight->removeFromParent();
-                    playerRight =NULL;
-                    OutFogAnim* out2 = OutFogAnim::create(Point(1213, 455));
-                    addChild(out2);
-                }else if(playerOpposite !=NULL&&playerOpposite->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
-                    playerOpposite->removeFromParent();
-                    playerOpposite =NULL;
-                    OutFogAnim* out3 = OutFogAnim::create(Point(945, 642));
-                    addChild(out3);
-                }
-                if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-                    guiLayer->showInvitePlayer(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId));
-                }
+        //        if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId) == ClientSeatId::hero){
+        //        }else{
+        if(!GAMEDATA::getInstance()->getIsPlaying()){
+            if(playerLeft !=NULL&&playerLeft->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
+                playerLeft->removeFromParent();
+                playerLeft =NULL;
+                OutFogAnim* out1 = OutFogAnim::create(Point(70, 455));
+                addChild(out1);
+            }else if(playerRight !=NULL&&playerRight->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
+                playerRight->removeFromParent();
+                playerRight =NULL;
+                OutFogAnim* out2 = OutFogAnim::create(Point(1213, 455));
+                addChild(out2);
+            }else if(playerOpposite !=NULL&&playerOpposite->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
+                playerOpposite->removeFromParent();
+                playerOpposite =NULL;
+                OutFogAnim* out3 = OutFogAnim::create(Point(945, 642));
+                addChild(out3);
+            }
+            if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+                guiLayer->showInvitePlayer(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId));
             }
         }
+        //        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerRemoveListener, 1);
     

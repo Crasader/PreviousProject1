@@ -208,7 +208,7 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
         this->addChild(jong, 10);
         record.pokersRecord.pushBack(jong);
     }
-    this->playerCpgRecords.push_back(record);
+    playerCpgRecords.push_back(record);
 }
 
 void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
@@ -364,7 +364,7 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
         for(int j=0;j<4;j++){
             Jong* jong = Jong::create();
             jong->setScale(0.8f);
-            jong->showJong(leftdeal, atoi(angang.c_str()));
+            jong->showJong(leftdeal, -1);
             if (j == 3){
                 jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x + 2, getCpgShowPostion(playerCpgRecords.size()).y - 16);
             }

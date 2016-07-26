@@ -1292,11 +1292,8 @@ void MsgHandler::removePlayerNotify(std::string msg){
     RemovePlayerData data;
     data.pid = pId.GetString();
     data.setaId = seatId.GetInt();
-    vector<Player*> players=GAMEDATA::getInstance()->getPlayersInfo();
-    for(Player* play:players){
-        if(play->getPoxiaoId() == data.pid&&play->getPoxiaoId()!= UserData::getInstance()->getPoxiaoId()){
-            GAMEDATA::getInstance()->erasePlayersInfo(play->getPoxiaoId());
-        }
+    if(data.pid != UserData::getInstance()->getPoxiaoId()){
+        GAMEDATA::getInstance()->erasePlayersInfo(data.pid);
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, "");
