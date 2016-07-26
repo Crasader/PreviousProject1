@@ -503,7 +503,9 @@ void ResultLayer::updateTime(float dt){
 
 
 void ResultLayer::clickContinu(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+    schedule([=](float dt){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+    }, 0.0f, 0.0f, 1.0f,"delayGame");
 }
 
 void ResultLayer::clickQuit(){

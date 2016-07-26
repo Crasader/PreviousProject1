@@ -1168,6 +1168,7 @@ void MahjongView::addHeroChiRespListener(){
         playerHero->hideCurrentBigJong();
         std::vector<string> chipai = StringUtil::split(selectedChi, ",");
         playerHero->drawPlayerChi(GAMEDATA::getInstance()->getHeroCpgResp(), chipai, playerLeft);
+        //TODO 
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroChiRespListener, 1);
     
