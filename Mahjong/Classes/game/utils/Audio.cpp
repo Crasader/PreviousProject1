@@ -339,6 +339,14 @@ void Audio::playSoundChong(int gender){
     }
 }
 
+void Audio::playSoundLiuJu(int gender){
+    if(gender==1){
+        AudioEngine::play2d("audio/male/liuju_1.ogg",false,UserData::getInstance()->getSoundValue());
+    }else{
+        AudioEngine::play2d("audio/famale/liuju_1.ogg",false,UserData::getInstance()->getSoundValue());
+    }
+}
+
 
 void Audio::playSoundWan1(int gender){
     int soundId = rand()%3+1;

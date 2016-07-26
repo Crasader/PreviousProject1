@@ -59,11 +59,16 @@ public:
     void playSoundWaitPeng(int gender);
     void playSoundChi3(int gender);
     void playSoundChong(int gender);
+    void playSoundLiuJu(int gender);
+    
     void playSoundClick();
     void playSoundHu(int type);
     
+    
     void setBGMValue(float value);
     void setEffectValue(float value);
+    
+    CC_SYNTHESIZE(bool, hasTingPlayer, HasTingPlayer);//是否有玩家听牌(音效相关的状态)
     
 private:
     static Audio* m_instance;

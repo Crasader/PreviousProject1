@@ -129,8 +129,14 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
 
 void PlayerBase::drawPlayedJong(int ctype){
     playedPokers.insert(ctype);
-    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     setLastPoker(ctype);
+    set<int>::iterator it =playedPokers.find(lastPoker);
+    if(it == playedPokers.end() && Audio::getInstance()->getHasTingPlayer()){
+        Audio::getInstance()->playSoundChong(getPlayerInfo()->getGender());//冲牌音效
+    }else{
+        Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());//普通打牌音效
+    }
+
 }
 
 void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
@@ -295,10 +301,7 @@ void PlayerBase::setPlayerTingState(bool b){
     }
     if(b){
         Audio::getInstance()->playSoundTing(getPlayerInfo()->getGender());//听牌音效
-        set<int>::iterator it =playedPokers.find(lastPoker);
-        if(it == playedPokers.end()){
-            Audio::getInstance()->playSoundChong(getPlayerInfo()->getGender());//冲牌音效
-        }
+        Audio::getInstance()->setHasTingPlayer(true);
     }
     tingTitle->setVisible(b);
 }

@@ -30,7 +30,7 @@ public:
     void drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);//玩家碰牌
     void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);//玩家杠牌
 	void showPlayerHua(Point pos,int num);//显示玩家花数
-    void setPlayerTingState(bool b);
+    void setPlayerTingState(bool b);//设置玩家的听牌状态
     
 	virtual void removeLastJong(){};
     virtual void doEventTimeOverUi(){};

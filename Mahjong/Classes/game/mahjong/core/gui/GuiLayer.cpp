@@ -60,7 +60,7 @@ void GuiLayer::initView(){
     haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     haungNum->setPosition(1220, 614);
     addChild(haungNum);
-
+    
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && !GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()){
         
         drawPlayerInvite();
@@ -74,33 +74,34 @@ void GuiLayer::initView(){
 }
 
 void GuiLayer::soundButtonClick(){
-//    vector<GameResultData> gameResults;
-//    for (int i = 0; i < 4; i++){
-//        GameResultData resultData;
-//        resultData.result = 3;
-//        resultData.gold = 100;
-//        resultData.diamond = 100;
-//        resultData.jifen =10;
-//        resultData.lequan = 10;
-//        resultData.golddelta = 200000;
-//        resultData.diamonddelta =2;
-//        resultData.jifendelta = 2;
-//        resultData.lequandelta = 2000;
-//        resultData.seatId = i+1;
-//        resultData.hua = 3;
-//        resultData.showPoker = "1,2,3,4,5,5,5,5";
-//        resultData.huType = "1";
-//        resultData.nickName = "abc";
-//        gameResults.push_back(resultData);
-//    }
-//    GAMEDATA::getInstance()->setGameResults(gameResults);
-//    EventCustom event(MSG_GAME_RESULT);
-//      _eventDispatcher->dispatchEvent(&event);
+    //    vector<GameResultData> gameResults;
+    //    for (int i = 0; i < 4; i++){
+    //        GameResultData resultData;
+    //        resultData.result = 3;
+    //        resultData.gold = 100;
+    //        resultData.diamond = 100;
+    //        resultData.jifen =10;
+    //        resultData.lequan = 10;
+    //        resultData.golddelta = 200000;
+    //        resultData.diamonddelta =2;
+    //        resultData.jifendelta = 2;
+    //        resultData.lequandelta = 2000;
+    //        resultData.seatId = i+1;
+    //        resultData.hua = 3;
+    //        resultData.showPoker = "1,2,3,4,5,5,5,5";
+    //        resultData.huType = "1";
+    //        resultData.nickName = "abc";
+    //        gameResults.push_back(resultData);
+    //    }
+    //    GAMEDATA::getInstance()->setGameResults(gameResults);
+    //    EventCustom event(MSG_GAME_RESULT);
+    //      _eventDispatcher->dispatchEvent(&event);
 }
 
 void GuiLayer::chatButtonClick(){
     //   gameChat = GameChat::create();
     //this->addChild(gameChat);
+    //    Audio::getInstance()->playSoundChong(UserData::getInstance()->getGender());
 }
 
 void GuiLayer::settingButtonClick(){

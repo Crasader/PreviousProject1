@@ -48,6 +48,7 @@ void MahjongView::initData(){
     playerOpposite = NULL;
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setIsLiuJu(false);
+    Audio::getInstance()->setHasTingPlayer(false);
 }
 
 void MahjongView::loadView(){
@@ -837,6 +838,7 @@ void MahjongView::addGameResultListener(){
             addChild(hupai,999);
         }else{
             //流局动画
+            Audio::getInstance()->playSoundLiuJu(UserData::getInstance()->getGender());
             LiuJuAnim* liuju = LiuJuAnim::create();
             addChild(liuju,3);
             GAMEDATA::getInstance()->setIsLiuJu(true);
