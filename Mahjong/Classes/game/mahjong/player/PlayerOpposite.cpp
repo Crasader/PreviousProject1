@@ -338,7 +338,7 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
                 jong->showJong(oppositeplayed, atoi(gang.at(i).gang.c_str()));
-                if (i == 3){
+                if (j == 3){
                     jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - 35, getCpgShowPostion(playerCpgRecords.size()).y - 2));
                     this->addChild(jong, 10);
                 }

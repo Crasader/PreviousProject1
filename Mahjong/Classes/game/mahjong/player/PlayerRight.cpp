@@ -255,7 +255,7 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             }
             else{
                 jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y + i * 28));
-                this->addChild(jong, 30 - playerCpgRecords.size()*3-i);
+                addChild(jong, 30 - playerCpgRecords.size()*3-i);
             }
         }
         playerCpgRecords.push_back(record);
@@ -301,7 +301,7 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
                 Jong* jong = Jong::create();
                 jong->showJong(rightplayed, atoi(chiPoker.at(j).c_str()));
                 jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y + j* 28));
-                addChild(jong, 30 - playerCpgRecords.size()*3-i);
+                addChild(jong, 30 - playerCpgRecords.size()*3-j);
                 record.pokersRecord.pushBack(jong);
             }
             playerCpgRecords.push_back(record);
@@ -328,7 +328,7 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
                 jong->showJong(rightplayed, atoi(gang.at(i).gang.c_str()));
-                if (i == 3){
+                if (j == 3){
                     record.pokersRecord.pushBack(jong);
                     jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x-2, getCpgShowPostion(playerCpgRecords.size()).y +  28));
                     this->addChild(jong, 30);

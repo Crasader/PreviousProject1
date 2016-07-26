@@ -1047,7 +1047,7 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 record.pokersRecord.pushBack(jong);
             }
             playerCpgRecords.push_back(record);
-            setHandPosX(this->getHandPosX() + JONG_WIDTH * 3);
+            setHandPosX(getHandPosX() + JONG_WIDTH * 3);
             setCpgPostionX(getCpgPostionX()+170);
         }
     }
@@ -1093,7 +1093,8 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 record.pokersRecord.pushBack(jong);
             }
             playerCpgRecords.push_back(record);
-            setHandPosX(this->getHandPosX() + JONG_WIDTH * 3);
+            setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+            setCpgPostionX(getCpgPostionX()+170);
         }
     }
     if(angang != ""){
@@ -1114,7 +1115,8 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             record.pokersRecord.pushBack(jong);
         }
         playerCpgRecords.push_back(record);
-        setHandPosX(this->getHandPosX() + JONG_WIDTH * 3);
+        setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+        setCpgPostionX(getCpgPostionX()+170);
     }
 }
 
