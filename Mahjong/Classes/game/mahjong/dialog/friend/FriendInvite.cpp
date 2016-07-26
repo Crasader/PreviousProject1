@@ -129,13 +129,13 @@ TableViewCell* FriendInvite::tableCellAtIndex(TableView *table, ssize_t idx)
         
     }else{
         std::string nickname = GAMEDATA::getInstance()->getFriendList().friends.at(idx).nickname;
-        ((Label*)getChildByTag(801))->setString(nickname);
+        ((Label*)cell->getChildByTag(801))->setString(nickname);
         if(!GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
-            ((Sprite*)getChildByTag(802))->setTexture("friend/offline_icon.png");
-            ((Sprite*)getChildByTag(803))->setTexture("friend/offline.png");
+            ((Sprite*)cell->getChildByTag(802))->setTexture("friend/offline_icon.png");
+            ((Sprite*)cell->getChildByTag(803))->setTexture("friend/offline.png");
         }else{
-            ((Sprite*)getChildByTag(802))->setTexture("friend/online_icon.png");
-            ((Sprite*)getChildByTag(803))->setTexture("friend/online.png");
+            ((Sprite*)cell->getChildByTag(802))->setTexture("friend/online_icon.png");
+            ((Sprite*)cell->getChildByTag(803))->setTexture("friend/online.png");
         }
     }
     return cell;
