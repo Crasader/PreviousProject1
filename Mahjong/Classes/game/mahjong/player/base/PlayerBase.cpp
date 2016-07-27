@@ -278,9 +278,6 @@ void PlayerBase::setIsReady(bool b){
 }
 
 void PlayerBase::setPlayerIsOffLine(bool b){
-    if (!getPlayerEnable()){
-        return;
-    }
     if(NULL != getChildByTag(1002)){
         getChildByTag(1002)->setVisible(b);
     }
