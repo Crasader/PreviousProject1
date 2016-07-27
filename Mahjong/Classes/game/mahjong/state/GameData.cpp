@@ -7,19 +7,19 @@ GAMEDATA::GAMEDATA(){
 }
 
 void GAMEDATA::init(){
-	this->setReplaceFlower(false);
-	this->setOtherPlayed(false);
-	this->setHeroturn(false);
-	this->setIsPlaying(false);
-	this->setIsTingProcess(false);
-	this->setIsTingState(false);
-	this->setIsTrusteeship(false);
-	this->setIsRecover(false);
-	this->setNeedAddPlayer(false);
-    this->setContinueAgain(false);
-    this->setHuangfan("0");
-    this->setKaibao("0");
-    this->setIsResume(false);
+	setReplaceFlower(false);
+	setOtherPlayed(false);
+	setHeroturn(false);
+	setIsPlaying(false);
+	setIsTingProcess(false);
+	setIsTingState(false);
+	setIsTrusteeship(false);
+	setIsRecover(false);
+	setNeedAddPlayer(false);
+    setContinueAgain(false);
+    setHuangfan("0");
+    setKaibao("0");
+    setIsResume(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

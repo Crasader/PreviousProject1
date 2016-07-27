@@ -16,6 +16,7 @@ USING_NS_CC;
 class MahjongView : public cocos2d::Layer
 {
 public:
+    
 	virtual bool init();		
 	CREATE_FUNC(MahjongView);
 	virtual void onEnter() override;
@@ -28,6 +29,7 @@ public:
 	void removeHeroPlayedIcon();
     void dealJongFinish();
     void showHandPokerOver(int seatId);
+    
 private:
 	std::mutex m_mutex;
 	int currentReadyPlayer;
@@ -104,20 +106,20 @@ private:
 	void addCoustomReplaceFlower();
 	void addPlayerTurnListener();
 	void addJongPlayedListener();
-	void addPlayerCpgListener();
-	void addGameResultListener();//胡牌事件
-	void addOthersChiListener();
-	void addOthersPengListener();
-	void addOthersGangListener();
+	void addHeroCpgListener();//自己吃碰杠通知
+    void addHeroChiRespListener();//自己吃回复
+    void addHeroPengRespListener();//自己碰回复
+    void addHeroGangRespListener();//自己杠回复
+	void addGameResultListener();//胡牌结算
+	void addOthersChiListener();//其余玩家吃牌
+	void addOthersPengListener();//其余玩家碰牌
+	void addOthersGangListener();//其余玩家杠牌
 	void addPlayerTingNotifyListener();
 	void addHeroTingNotifyListener();
 	void addHeroTingRespListener();
 	void addTrusteeShipRespListener();
 	void addTrusteeShipNotifyListener();
 	void addTrusteeShipCancelListener();
-	void addHeroChiRespListener();
-	void addHeroPengRespListener();
-	void addHeroGangRespListener();
 	void addLostConnectListener();
 	void addFriendInviteMeListener();
 	void addEnterFriendRoomListener();

@@ -34,9 +34,9 @@ void Trusteeship::closeView(){
 
 bool Trusteeship::onTouchBegan(Touch *touch, Event  *event){
 	if (this->isVisible()){
-		NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCancelCommand());
-	/*	GAMEDATA::getInstance()->setIsTrusteeship(false);
-		this->setVisible(false);*/
+        schedule([=](float dt){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCancelCommand());
+        }, 0, 0, 3.0f,"delayCancelT");
 		return true;
 	}
 	return false;
