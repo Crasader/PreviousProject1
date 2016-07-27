@@ -352,6 +352,7 @@ void ResultLayer::showHeroPropInfo(){
         goldIcon->setTexture("mjitem/gold_iocn.png");
     }
     goldIcon->setOpacity(77);
+    goldIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     goldIcon->setScale(2.0f);
     goldIcon->setVisible(false);
     addChild(goldIcon);
@@ -379,7 +380,7 @@ void ResultLayer::showHeroPropInfo(){
         }
         
     }
-    
+    goldNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     goldNum->setVisible(false);
     addChild(goldNum);
     goldNum->runAction(Sequence::create(DelayTime::create(23.0f/24),CallFunc::create([=](){
@@ -389,10 +390,10 @@ void ResultLayer::showHeroPropInfo(){
     auto lequanIcon= Sprite::create("mjitem/lequan_icon.png");
     addChild(lequanIcon);
     if(getheroData().lequandelta>0){
-        lequanIcon->setPosition(731, 535);
         lequanIcon->setOpacity(77);
         lequanIcon->setScale(2.0f);
         lequanIcon->setVisible(false);
+        lequanIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         lequanIcon->runAction(Sequence::create(DelayTime::create(27.0f/24),CallFunc::create([=](){
             lequanIcon->setVisible(true);
         }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
@@ -408,9 +409,9 @@ void ResultLayer::showHeroPropInfo(){
         }
     }
     LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",getheroData().lequandelta )->_string, "result/big_num_win.png", 52, 64, '0');
+    lequanNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     lequanNum->setVisible(false);
     if(getheroData().lequandelta>0){
-        lequanNum->setPosition(765, 505);
         lequanNum->runAction(Sequence::create(DelayTime::create(32.0f/24),CallFunc::create([=](){
             lequanNum->setVisible(true);
         }),NULL));
@@ -418,8 +419,13 @@ void ResultLayer::showHeroPropInfo(){
     addChild(lequanNum);
     //更具数字区域大小设定位置
     if(getheroData().lequandelta>0){
-        goldIcon->setPosition(311, 535);
-        goldNum->setPosition(335, 505);
+        float width = goldIcon->getBoundingBox().size.width+ goldNum->getBoundingBox().size.width
+        + lequanIcon->getBoundingBox().size.width+lequanNum->getBoundingBox().size.width;
+        goldIcon->setPosition((1280-width)/2, 535);
+        goldNum->setPosition((1280-width)/2+goldIcon->getBoundingBox().size.width/2, 505);
+        lequanIcon->setPosition((1280-width)/2+goldIcon->getBoundingBox().size.width+goldNum->getBoundingBox().size.width, 535);
+        lequanNum->setPosition((1280-width)/2+goldIcon->getBoundingBox().size.width+goldNum->getBoundingBox().size.width
+                                + lequanIcon->getBoundingBox().size.width/2, 505);
     }else{
         goldNum->setPosition(600, 505);
         goldIcon->setPosition(530, 535);
