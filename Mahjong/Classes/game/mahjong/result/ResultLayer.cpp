@@ -85,6 +85,7 @@ void ResultLayer::initView(){
     }else{
         showLoseAnim();
     }
+    showHeroPropInfo();
 }
 
 
@@ -118,8 +119,6 @@ void ResultLayer::showWinAnim(){
     light->runAction(Sequence::create(DelayTime::create(8.0f/24),CallFunc::create([=](){
         light->setVisible(true);
     }),Spawn::create(ScaleTo::create(3.0f/24, 6.0f), FadeTo::create(3.0f/24, 255),NULL), Spawn::create(ScaleTo::create(4.0f/24, 0.1f), FadeTo::create(4.0f/24, 0),NULL),NULL));
-    
-    showHeroPropInfo();
     
     auto infoBg = Sprite::create("result/player_info_bg.png");
     infoBg->setPosition(640, 360);
@@ -262,8 +261,6 @@ void ResultLayer::showLoseAnim(){
         title->setTexture("result/you_lose.png");
     }
     
-    showHeroPropInfo();
-    
     auto players_bg = Sprite::create("result/player_info_bg.png");
     players_bg->setPosition(640, 360);
     addChild(players_bg);
@@ -354,15 +351,10 @@ void ResultLayer::showHeroPropInfo(){
     }else{
         goldIcon->setTexture("mjitem/gold_iocn.png");
     }
-    if(getheroData().lequandelta>0){
-        goldIcon->setPosition(311, 535);
-    }else{
-        goldIcon->setPosition(530, 535);
-    }
-    addChild(goldIcon);
     goldIcon->setOpacity(77);
     goldIcon->setScale(2.0f);
     goldIcon->setVisible(false);
+    addChild(goldIcon);
     goldIcon->runAction(Sequence::create(DelayTime::create(18.0f/24),CallFunc::create([=](){
         goldIcon->setVisible(true);
     }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
@@ -387,11 +379,7 @@ void ResultLayer::showHeroPropInfo(){
         }
         
     }
-    if(getheroData().lequandelta>0){
-        goldNum->setPosition(335, 505);
-    }else{
-        goldNum->setPosition(600, 505);
-    }
+    
     goldNum->setVisible(false);
     addChild(goldNum);
     goldNum->runAction(Sequence::create(DelayTime::create(23.0f/24),CallFunc::create([=](){
@@ -428,6 +416,14 @@ void ResultLayer::showHeroPropInfo(){
         }),NULL));
     }
     addChild(lequanNum);
+    //更具数字区域大小设定位置
+    if(getheroData().lequandelta>0){
+        goldIcon->setPosition(311, 535);
+        goldNum->setPosition(335, 505);
+    }else{
+        goldNum->setPosition(600, 505);
+        goldIcon->setPosition(530, 535);
+    }
 }
 
 
