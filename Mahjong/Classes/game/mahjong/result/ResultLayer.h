@@ -13,28 +13,24 @@ public:
 	void updateTime(float dt);
 	CREATE_FUNC(ResultLayer);
 private:
-    CC_SYNTHESIZE(GameResultData, heroData, heroData);
-    EventListenerCustom* continueAgainLisetner;
-	int timeToatal;
-	LabelAtlas* timeLable;
+   
+	int timeToatal;//自动再来一局的时间
 	Menu* resultMenu;
+    EventListenerCustom* continueAgainLisetner;
+    
 	void initView();
 	void initData();
+    void setWinOrLose();//设置玩家自己的结算信息
+    void showWinAnim();
+    void showLoseAnim();
     void drawPokerPad(std::string pokers, std::string hutype,int hua);
 	void drawHuType(std::string hutype);
 	void drawHuaNum(int hua);
-	void createPokersSprite(std::vector<std::string> showPokers);
-	void drawTimeClock();
-	void clickContinu();
-	void clickQuit();
-	void showContinueButton(float dt);
-	std::string getImageNameById(int id, bool normal);
+	void clickContinu();//再来一局
+	void clickQuit();//回到大厅
     void showCaidaiAnim(Sprite* sprite);
-    void showLequanExplosion();
-    void showGoldExplosion();
-    void setWinOrLose();
-    void showWinAnim();
-    void showLoseAnim();
+    
+    CC_SYNTHESIZE(GameResultData, heroData, heroData);
 };
 
 #endif

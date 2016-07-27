@@ -29,7 +29,7 @@ void ResultLayer::onEnter(){
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "0"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }else if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
-             GAMEDATA::getInstance()->setContinueAgain(true);
+            GAMEDATA::getInstance()->setContinueAgain(true);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
             if(UserData::getInstance()->getDiamond()>=GAMEDATA::getInstance()->getPlayRoomID()*1000){
@@ -49,10 +49,11 @@ void ResultLayer::onEnter(){
                 addChild(dia,30);
             }
         }
-    
+        
     });
-     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
 }
+
 void ResultLayer::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
@@ -67,13 +68,13 @@ void ResultLayer::initView(){
     auto reslut_bg = Sprite::create("result/result_bg.jpg");
     reslut_bg->setPosition(640, 360);
     addChild(reslut_bg);
+    //失败的玩家不播动画,分开实现
     if(getheroData().result==1||getheroData().result==3){
         showWinAnim();
     }else{
         showLoseAnim();
     }
 }
-
 
 void ResultLayer::showWinAnim(){
     auto title = Sprite::create();
@@ -143,10 +144,12 @@ void ResultLayer::showWinAnim(){
         lequanIcon->runAction(Sequence::create(DelayTime::create(27.0f/24),CallFunc::create([=](){
             lequanIcon->setVisible(true);
         }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
-        showLequanExplosion();
+        auto par = ParticleUtil::create(MyParticleType::goldAndLequan);
+        addChild(par);
     }else{
         lequanIcon->setVisible(false);
-        showGoldExplosion();
+        auto par = ParticleUtil::create(MyParticleType::goldOnly);
+        addChild(par);
     }
     LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",getheroData().lequandelta )->_string, "result/big_num_win.png", 52, 64, '0');
     lequanNum->setVisible(false);
@@ -282,7 +285,6 @@ void ResultLayer::showWinAnim(){
     addChild(pokers);
     pokers->runAction(Sequence::create(DelayTime::create(34.0f/24),CallFunc::create([=](){
         drawPokerPad(getheroData().showPoker,getheroData().huType,getheroData().hua);
-        drawTimeClock();
     }) ,NULL));
 }
 
@@ -420,9 +422,11 @@ void ResultLayer::showLoseAnim(){
     resultMenu->alignItemsHorizontallyWithPadding(60);
     this->addChild(resultMenu, 20);
     resultMenu->setVisible(false);
-    scheduleOnce(schedule_selector(ResultLayer::showContinueButton), 1.0f);
+    schedule([=](float dt){
+        resultMenu->setVisible(true);
+        schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+    }, 0, 0, 1.0f,"delayshowbtn");
     drawPokerPad(maxData.showPoker,maxData.huType,maxData.hua);
-    drawTimeClock();
 }
 
 
@@ -441,7 +445,16 @@ void ResultLayer::drawPokerPad(std::string pokers, std::string hutype, int hua){
         drawHuType(hu);
     }
     drawHuaNum(hua);
-    createPokersSprite(showPokers);
+    auto pad = Sprite::create();
+    for (int i = 0; i < showPokers.size(); i++){
+        Jong* jong = Jong::create();
+        jong->showJong(heroplayed, atoi(showPokers.at(i).c_str()));
+        jong->setPosition(i * 35, 0);
+        pad->addChild(jong, 35 - i);
+    }
+    pad->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    pad->setPosition(640-showPokers.size()*35/2,45);
+    addChild(pad,20);
 }
 
 
@@ -463,44 +476,14 @@ void ResultLayer::drawHuaNum(int hua){
     this->addChild(huaNum, 25);
 }
 
-
-void ResultLayer::createPokersSprite(std::vector<std::string> showPokers){
-    auto pad = Sprite::create();
-    for (int i = 0; i < showPokers.size(); i++){
-        Jong* jong = Jong::create();
-        jong->showJong(heroplayed, atoi(showPokers.at(i).c_str()));
-        jong->setPosition(i * 35, 0);
-        pad->addChild(jong, 35 - i);
-    }
-    pad->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    pad->setPosition(640-showPokers.size()*35/2,45);
-    addChild(pad,20);
-}
-
-
-
-void ResultLayer::drawTimeClock(){
-    timeLable = LabelAtlas::create(cocos2d::String::createWithFormat("%d", timeToatal)->_string,
-                                   "result/result_num.png", 9, 13, '0');
-    timeLable->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    timeLable->setPosition(680, 165);
-    this->addChild(timeLable, 20);
-    timeLable->setVisible(false);
-}
-
-
 void ResultLayer::updateTime(float dt){
     if (isVisible()){
         timeToatal--;
-        if (timeToatal > 0){
-            timeLable->setString(cocos2d::String::createWithFormat("%d", timeToatal)->_string);
-        }
-        else if (timeToatal == 0){
+        if (timeToatal == 0){
             clickContinu();
         }
     }
 }
-
 
 void ResultLayer::clickContinu(){
     schedule([=](float dt){
@@ -513,12 +496,6 @@ void ResultLayer::clickQuit(){
     Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
 }
 
-
-void ResultLayer::showContinueButton(float dt){
-    resultMenu->setVisible(true);
-    //    timeLable->setVisible(true);
-    schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
-}
 
 void ResultLayer::showCaidaiAnim(Sprite* sprite){
     auto animation = Animation::create();
@@ -533,16 +510,6 @@ void ResultLayer::showCaidaiAnim(Sprite* sprite){
     auto action = Animate::create(animation);
     sprite->runAction(action);
     
-}
-
-void ResultLayer::showLequanExplosion(){
-    ParticleUtil* util = ParticleUtil::create(MyParticleType::goldAndLequan);
-    addChild(util);
-}
-
-void ResultLayer::showGoldExplosion(){
-    ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
-    addChild(util);
 }
 
 void ResultLayer::setWinOrLose(){
