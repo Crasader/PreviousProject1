@@ -64,6 +64,17 @@ void ResultLayer::initData(){
     setWinOrLose();
 }
 
+void ResultLayer::setWinOrLose(){
+    vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
+    for (GameResultData data: results) {
+        if(data.seatId==GAMEDATA::getInstance()->getHeroSeatId()){
+            setheroData(data);
+        }
+    }
+}
+
+
+
 void ResultLayer::initView(){
     auto reslut_bg = Sprite::create("result/result_bg.jpg");
     reslut_bg->setPosition(640, 360);
@@ -76,11 +87,14 @@ void ResultLayer::initView(){
     }
 }
 
+
+
 void ResultLayer::showWinAnim(){
     auto title = Sprite::create();
     title->setPosition(640, 625);
     addChild(title);
     showCaidaiAnim(title);
+    
     auto text = Sprite::create("result/you_win.png");
     text->setPosition(640, 625);
     text->setScale(2.0f);
@@ -94,6 +108,7 @@ void ResultLayer::showWinAnim(){
         icon->setPosition(640, 625);
         addChild(icon);
     }), Spawn::create(ScaleTo::create(6.0f/24, 2.5f), FadeTo::create(6.0f/24, 0),NULL),NULL));
+    
     auto light = Sprite::create("result/yellow_light.png");
     light->setPosition(640, 625);
     addChild(light);
@@ -103,64 +118,8 @@ void ResultLayer::showWinAnim(){
     light->runAction(Sequence::create(DelayTime::create(8.0f/24),CallFunc::create([=](){
         light->setVisible(true);
     }),Spawn::create(ScaleTo::create(3.0f/24, 6.0f), FadeTo::create(3.0f/24, 255),NULL), Spawn::create(ScaleTo::create(4.0f/24, 0.1f), FadeTo::create(4.0f/24, 0),NULL),NULL));
-    auto goldIcon= Sprite::create();
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        goldIcon->setTexture("mjitem/jifen_icon.png");
-    }else{
-        goldIcon->setTexture("mjitem/gold_iocn.png");
-    }
-    if(getheroData().lequandelta>0){
-        goldIcon->setPosition(311, 535);
-    }else{
-        goldIcon->setPosition(530, 535);
-    }
-    addChild(goldIcon);
-    goldIcon->setOpacity(77);
-    goldIcon->setScale(2.0f);
-    goldIcon->setVisible(false);
-    goldIcon->runAction(Sequence::create(DelayTime::create(18.0f/24),CallFunc::create([=](){
-        goldIcon->setVisible(true);
-    }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
     
-    LabelAtlas* goldNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom?getheroData().jifendelta:getheroData().golddelta)->_string, "result/big_num_win.png", 52, 64, '0');
-    if(getheroData().lequandelta>0){
-        goldNum->setPosition(335, 505);
-    }else{
-        goldNum->setPosition(600, 505);
-    }
-    goldNum->setVisible(false);
-    addChild(goldNum);
-    goldNum->runAction(Sequence::create(DelayTime::create(23.0f/24),CallFunc::create([=](){
-        goldNum->setVisible(true);
-    }),NULL));
-    
-    auto lequanIcon= Sprite::create("mjitem/lequan_icon.png");
-    addChild(lequanIcon);
-    if(getheroData().lequandelta>0){
-        lequanIcon->setPosition(731, 535);
-        lequanIcon->setOpacity(77);
-        lequanIcon->setScale(2.0f);
-        lequanIcon->setVisible(false);
-        lequanIcon->runAction(Sequence::create(DelayTime::create(27.0f/24),CallFunc::create([=](){
-            lequanIcon->setVisible(true);
-        }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
-        auto par = ParticleUtil::create(MyParticleType::goldAndLequan);
-        addChild(par);
-    }else{
-        lequanIcon->setVisible(false);
-        auto par = ParticleUtil::create(MyParticleType::goldOnly);
-        addChild(par);
-    }
-    LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",getheroData().lequandelta )->_string, "result/big_num_win.png", 52, 64, '0');
-    lequanNum->setVisible(false);
-    if(getheroData().lequandelta>0){
-        lequanNum->setPosition(765, 505);
-        lequanNum->runAction(Sequence::create(DelayTime::create(32.0f/24),CallFunc::create([=](){
-            lequanNum->setVisible(true);
-        }),NULL));
-    }
-    addChild(lequanNum);
-    
+    showHeroPropInfo();
     
     auto infoBg = Sprite::create("result/player_info_bg.png");
     infoBg->setPosition(640, 360);
@@ -295,57 +254,15 @@ void ResultLayer::showLoseAnim(){
     auto title = Sprite::create();
     title->setPosition(640, 625);
     addChild(title);
-    auto goldIcon = Sprite::create();
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        goldIcon->setTexture("mjitem/jifen_icon.png");
-    }else{
-        goldIcon->setTexture("mjitem/gold_iocn.png");
-    }
     
-    addChild(goldIcon);
-    auto lequanIcon = Sprite::create("mjitem/lequan_icon.png");
-    addChild(lequanIcon);
-    
-    LabelAtlas* goldNum = LabelAtlas::create("0",
-                                             "result/big_num_lose.png", 52, 64, '0');
-    goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    addChild(goldNum);
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        if(getheroData().jifendelta<0){
-            goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().jifendelta))->_string);
-        }else{
-            goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().jifendelta))->_string);
-        }
-    }else{
-        if(getheroData().golddelta<0){
-            goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().golddelta))->_string);
-        }else{
-            goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().golddelta))->_string);
-        }
-    }
-    
-    LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d", abs(getheroData().lequandelta))->_string,
-                                               "result/big_num_lose.png", 52, 64, '0');
-    lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    addChild(lequanNum);
     if (getheroData().result == 0){
         title->setTexture("result/da_jiang_you.png");
     }
     else{
         title->setTexture("result/you_lose.png");
     }
-    if (getheroData().lequandelta > 0){
-        goldIcon->setPosition(356, 525);
-        goldNum->setPosition(390, 525);
-        lequanIcon->setPosition(701, 525);
-        lequanNum->setPosition(735, 525);
-    }
-    else{
-        goldIcon->setPosition(530, 525);
-        goldNum->setPosition(590, 525);
-        lequanIcon->setVisible(false);
-        lequanNum->setVisible(false);
-    }
+    
+    showHeroPropInfo();
     
     auto players_bg = Sprite::create("result/player_info_bg.png");
     players_bg->setPosition(640, 360);
@@ -429,6 +346,90 @@ void ResultLayer::showLoseAnim(){
     drawPokerPad(maxData.showPoker,maxData.huType,maxData.hua);
 }
 
+void ResultLayer::showHeroPropInfo(){
+    //金币显示
+    auto goldIcon= Sprite::create();
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        goldIcon->setTexture("mjitem/jifen_icon.png");
+    }else{
+        goldIcon->setTexture("mjitem/gold_iocn.png");
+    }
+    if(getheroData().lequandelta>0){
+        goldIcon->setPosition(311, 535);
+    }else{
+        goldIcon->setPosition(530, 535);
+    }
+    addChild(goldIcon);
+    goldIcon->setOpacity(77);
+    goldIcon->setScale(2.0f);
+    goldIcon->setVisible(false);
+    goldIcon->runAction(Sequence::create(DelayTime::create(18.0f/24),CallFunc::create([=](){
+        goldIcon->setVisible(true);
+    }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
+    
+    LabelAtlas* goldNum;
+    if(getheroData().result == 1 || getheroData().result == 3){
+        goldNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom?getheroData().jifendelta:getheroData().golddelta)->_string, "result/big_num_win.png", 52, 64, '0');
+    }else{
+        goldNum = LabelAtlas::create("0","result/big_num_lose.png", 52, 64, '0');
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            if(getheroData().jifendelta<0){
+                goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().jifendelta))->_string);
+            }else{
+                goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().jifendelta))->_string);
+            }
+        }else{
+            if(getheroData().golddelta<0){
+                goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().golddelta))->_string);
+            }else{
+                goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().golddelta))->_string);
+            }
+        }
+        
+    }
+    if(getheroData().lequandelta>0){
+        goldNum->setPosition(335, 505);
+    }else{
+        goldNum->setPosition(600, 505);
+    }
+    goldNum->setVisible(false);
+    addChild(goldNum);
+    goldNum->runAction(Sequence::create(DelayTime::create(23.0f/24),CallFunc::create([=](){
+        goldNum->setVisible(true);
+    }),NULL));
+    //乐券显示
+    auto lequanIcon= Sprite::create("mjitem/lequan_icon.png");
+    addChild(lequanIcon);
+    if(getheroData().lequandelta>0){
+        lequanIcon->setPosition(731, 535);
+        lequanIcon->setOpacity(77);
+        lequanIcon->setScale(2.0f);
+        lequanIcon->setVisible(false);
+        lequanIcon->runAction(Sequence::create(DelayTime::create(27.0f/24),CallFunc::create([=](){
+            lequanIcon->setVisible(true);
+        }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
+        if(getheroData().result == 1 || getheroData().result == 3){
+            auto par = ParticleUtil::create(MyParticleType::goldAndLequan);
+            addChild(par);
+        }
+    }else{
+        lequanIcon->setVisible(false);
+        if(getheroData().result == 1 || getheroData().result == 3){
+            auto par = ParticleUtil::create(MyParticleType::goldOnly);
+            addChild(par);
+        }
+    }
+    LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",getheroData().lequandelta )->_string, "result/big_num_win.png", 52, 64, '0');
+    lequanNum->setVisible(false);
+    if(getheroData().lequandelta>0){
+        lequanNum->setPosition(765, 505);
+        lequanNum->runAction(Sequence::create(DelayTime::create(32.0f/24),CallFunc::create([=](){
+            lequanNum->setVisible(true);
+        }),NULL));
+    }
+    addChild(lequanNum);
+}
+
 
 void ResultLayer::drawPokerPad(std::string pokers, std::string hutype, int hua){
     if(pokers==""){
@@ -510,13 +511,4 @@ void ResultLayer::showCaidaiAnim(Sprite* sprite){
     auto action = Animate::create(animation);
     sprite->runAction(action);
     
-}
-
-void ResultLayer::setWinOrLose(){
-    vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
-    for (GameResultData data: results) {
-        if(data.seatId==GAMEDATA::getInstance()->getHeroSeatId()){
-            setheroData(data);
-        }
-    }
 }

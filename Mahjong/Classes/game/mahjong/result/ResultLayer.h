@@ -21,8 +21,10 @@ private:
 	void initView();
 	void initData();
     void setWinOrLose();//设置玩家自己的结算信息
+    void showHeroPropInfo();//显示玩家输赢的数字信息
     void showWinAnim();
     void showLoseAnim();
+    
     void drawPokerPad(std::string pokers, std::string hutype,int hua);
 	void drawHuType(std::string hutype);
 	void drawHuaNum(int hua);
