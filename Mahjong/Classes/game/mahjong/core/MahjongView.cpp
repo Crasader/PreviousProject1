@@ -420,6 +420,7 @@ void MahjongView::clearRoomPlayer(){
 }
 
 void MahjongView::recoverGame(){
+    GAMEDATA::getInstance()->setIsPlaying(true);
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
     GAMEDATA::getInstance()->setCurrentBank(data.loard);
@@ -433,6 +434,7 @@ void MahjongView::recoverGame(){
         info->setNickname(player.nickname);
         info->setPicture(player.pic);
         info->setGender(player.gender);
+        info->setScore(player.jifen);
         info->setLockDiamond(player.bangzuan);
         GAMEDATA::getInstance()->addPlayersInfo(info);
         recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
@@ -1242,8 +1244,6 @@ void MahjongView::addEnterFriendRoomListener(){
 
 void MahjongView::addPlayerRemoveListener(){
     playerRemoveListener = EventListenerCustom::create(MSG_PLAYER_REMOVE, [=](EventCustom* event){
-        //        if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId) == ClientSeatId::hero){
-        //        }else{
         if(!GAMEDATA::getInstance()->getIsPlaying()){
             if(playerLeft !=NULL&&playerLeft->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
                 playerLeft->removeFromParent();
@@ -1265,7 +1265,6 @@ void MahjongView::addPlayerRemoveListener(){
                 guiLayer->showInvitePlayer(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId));
             }
         }
-        //        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerRemoveListener, 1);
     
