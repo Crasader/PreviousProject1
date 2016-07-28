@@ -37,6 +37,7 @@ bool MahjongView::init(){
             startGameFirst();
         }
         addPlayer2Room();
+
     }
     return true;
 }
@@ -416,7 +417,7 @@ void MahjongView::clearRoomPlayer(){
         playerOpposite = NULL;
     }
     guiLayer->setVisible(false);
-    addPlayer2Room();
+//    addPlayer2Room();
 }
 
 void MahjongView::recoverGame(){

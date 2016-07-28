@@ -290,6 +290,7 @@ void  SplashScene::addCustomEventListener(){
     //断线续玩
     reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         NetworkManage::getInstance()->heartbeat();
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
