@@ -348,6 +348,10 @@ void Audio::playSoundLiuJu(int gender){
 }
 
 
+void Audio::playSoundTouzi(){
+    AudioEngine::play2d("audio/tou_zi.wav.ogg",false,UserData::getInstance()->getSoundValue());
+}
+
 void Audio::playSoundWan1(int gender){
     int soundId = rand()%3+1;
     if(gender==1){

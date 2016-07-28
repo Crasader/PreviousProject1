@@ -35,6 +35,7 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2){
     base->setPosition(640,340);
     addChild(base,1);
     base->runAction(Sequence::create(DelayTime::create(42.0f/24),CallFunc::create([=](){
+        Audio::getInstance()->playSoundTouzi();
         showDiceAnim(base);
     }),DelayTime::create(11.0f/24),CallFunc::create([=](){
         base->setVisible(false);

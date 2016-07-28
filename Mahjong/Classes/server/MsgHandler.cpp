@@ -1085,6 +1085,8 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.lequan = temp["lequan"].GetInt();
         data.diamond = temp["diamond"].GetInt();
         data.hua = temp["hua"].GetInt();
+        data.tru = temp["tru"].GetInt();
+        data.isOnline = temp["isonline"].GetInt();
         if(temp.HasMember("chi")){
             const rapidjson::Value &chi = temp["chi"];
             for(int j = 0; j < chi.Capacity(); ++j){
@@ -1390,9 +1392,11 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     FriendOpenRoomRespData data;
     const rapidjson::Value &result = _mDoc["result"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
+    const rapidjson::Value &jifen = _mDoc["jifen"];
     data.result = result.GetInt();
     data.seatId = seatId.GetInt();
-    GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());//…Ë÷√ÕÊº“◊‘º∫µƒSEATID
+    UserData::getInstance()->setScore(jifen.GetInt());
+    GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, "");
 }

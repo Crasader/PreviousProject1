@@ -152,6 +152,8 @@ struct PlayerGameData{
     int lequan;
     int hua;
     int status;
+    int tru;
+    int isOnline;
     vector<PlayerChiData> chiData;
     vector<PlayerPengData> pengData;
     vector<PlayerGangData> gangData;

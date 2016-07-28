@@ -450,6 +450,8 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerHero->initPlayer(playerInfo, ClientSeatId::hero);
             playerHero->setIsAllowPlay(false);
             playerHero->setPlayerTingState(data.status == 1?true:false);
+//            playerHero->setPlayerIsOffLine(data.isOnline == 1?true:false);
+//            playerHero->setPlayerTrustee(data.tru == 1?true:false);
             addChild(playerHero, 2);
             playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerHero->recoverHand(data.hand);
@@ -462,6 +464,8 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerLeft = PlayerLeft::create();
             playerLeft->initPlayer(playerInfo, ClientSeatId::left);
             playerLeft->setPlayerTingState(data.status == 1?true:false);
+            playerLeft->setPlayerIsOffLine(data.isOnline == 0?true:false);
+            playerLeft->setPlayerTrustee(data.tru == 1?true:false);
             addChild(playerLeft);
             playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerLeft->recoverHand(data.hand);
@@ -475,6 +479,8 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerRight = PlayerRight::create();
             playerRight->initPlayer(playerInfo, ClientSeatId::right);
             playerRight->setPlayerTingState(data.status == 1?true:false);
+            playerRight->setPlayerIsOffLine(data.isOnline == 0?true:false);
+            playerRight->setPlayerTrustee(data.tru == 1?true:false);
             addChild(playerRight);
             playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerRight->recoverHand(data.hand);
@@ -488,6 +494,8 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerOpposite = PlayerOpposite::create();
             playerOpposite->initPlayer(playerInfo, ClientSeatId::opposite);
             playerOpposite->setPlayerTingState(data.status == 1?true:false);
+            playerOpposite->setPlayerIsOffLine(data.isOnline == 0?true:false);
+            playerOpposite->setPlayerTrustee(data.tru == 1?true:false);
             addChild(playerOpposite);
             playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerOpposite->recoverHand(data.hand);

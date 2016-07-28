@@ -564,6 +564,7 @@ void PlayerHero:: drawHeroPlayerPlay(int type){
                 sortHandJongs(getHandPosX(), false);
             }), NULL);
             spJong->runAction(seq);
+            Audio::getInstance()->playMahjong(type,UserData::getInstance()->getGender());//音效
             break;
         }
     }
