@@ -265,10 +265,12 @@ void MahjongView::showTingGangControllPad(){
 }
 
 void MahjongView::hideTingGangControllPad(){
-    controllPad->removeAllChildrenWithCleanup(true);
     controllPad->setVisible(false);
     choiceMenu->removeAllChildren();
     choiceMenu->setVisible(false);
+    schedule([=](float dt){
+        controllPad->removeAllChildrenWithCleanup(true);
+    }, 0, 0, 1.0f,"dalayRemovepad");
 }
 
 void MahjongView::showGuiLayer(){

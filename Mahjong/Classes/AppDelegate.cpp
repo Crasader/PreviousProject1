@@ -86,8 +86,7 @@ void AppDelegate::applicationWillEnterForeground() {
     }else{
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
     }
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#else
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
 #endif
 }

@@ -1020,13 +1020,14 @@ void PlayerHero::recoverPlayed(std::string played){
 
 
 void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang){
+    setCpgPostionX(JONG_POS_START_X);
+    setHandPosX(JONG_POS_START_X);
     for(auto var:playerCpgRecords){
         for(auto poker:var.pokersRecord){
             poker->removeFromParent();
         }
     }
     playerCpgRecords.clear();
-    setCpgPostionX(JONG_POS_START_X);
     if(chi.size()>0){
         for(int i=0;i<chi.size();i++){
             PlayerCpgRecord record;
