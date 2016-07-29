@@ -472,7 +472,7 @@ void PlayerHero::replaceFlower(){
                 }
                 HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
                     setHuaNum(getHuaNum()+needReplace.size());
-                    showPlayerHua(Vec2(288,185),getHuaNum());
+                    showPlayerHua(getHuaNum());
                 }));
                 addChild(huaAnim,100);
             }
@@ -501,7 +501,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             needReplace.push_back(jong);
             HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
                 setHuaNum(getHuaNum()+needReplace.size());
-                showPlayerHua(Vec2(288,185),getHuaNum());
+                showPlayerHua(getHuaNum());
             }));
             addChild(huaAnim,100);
             index++;
@@ -1000,7 +1000,7 @@ void PlayerHero::drawPengGangAndAGang(PlayerCpgtData tingData){
 
 void PlayerHero::recoverHua(int hua){
     setHuaNum(hua);
-    showPlayerHua(Vec2(288,185),getHuaNum());
+    showPlayerHua(getHuaNum());
 }
 
 void PlayerHero::recoverPlayed(std::string played){

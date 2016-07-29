@@ -14,7 +14,6 @@ public:
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;
 	void drawOppositePlayerTurn();
-	void playerTurnReplace(PlayerTurnData data);
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);

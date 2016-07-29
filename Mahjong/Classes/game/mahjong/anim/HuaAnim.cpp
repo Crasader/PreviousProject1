@@ -7,6 +7,7 @@
 //
 
 #include "game/mahjong/anim/HuaAnim.hpp"
+#include "game/mahjong/state/GameData.h"
 #include "game/utils/SeatIdUtil.h"
 
 HuaAnim* HuaAnim::create(std::vector<Jong*> jongs,int seatId,CallFunc* func){
@@ -63,11 +64,12 @@ void HuaAnim::showHuaAnim(Sprite* sprite){
 
 
 Point HuaAnim::getPosBySeatId(int seatId){
-    if(seatId == ClientSeatId::left){
+    int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId);
+    if(clientSeatId == ClientSeatId::left){
         return Point(300,400);
-    }else if(seatId == ClientSeatId::opposite){
+    }else if(clientSeatId == ClientSeatId::opposite){
         return Point(640,550);
-    }else if(seatId == ClientSeatId::right){
+    }else if(clientSeatId == ClientSeatId::right){
      return Point(980,400);
     }else {
         return Point(640,200);
@@ -75,11 +77,12 @@ Point HuaAnim::getPosBySeatId(int seatId){
 }
 
 Point HuaAnim::getHuaPosBySeatId(int seatId){
-    if(seatId == ClientSeatId::left){
+    int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId);
+    if(clientSeatId == ClientSeatId::left){
         return Point(45,545);
-    }else if(seatId == ClientSeatId::opposite){
+    }else if(clientSeatId == ClientSeatId::opposite){
         return Point(820,615);
-    }else if(seatId == ClientSeatId::right){
+    }else if(clientSeatId == ClientSeatId::right){
         return Point(1230,545);
     }else {
         return Point(300,170);

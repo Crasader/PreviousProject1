@@ -25,23 +25,24 @@ public:
 	virtual bool init();
 	void initPlayer(Player* playerInfo);//初始化玩家UI
     void replaceHandHua(JongViewType tpye);//玩家手牌换花
+    void replaceTurnHua(PlayerTurnData data);//摸牌换花
     void showPlayedJong(int ctype);//玩家打牌
     void showPlayerChi(string chiPoker, PlayerBase* playerBase);//玩家吃牌
     void showPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);//玩家碰牌
     void showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);//玩家杠牌
-	void showPlayerHua(Point pos,int num);//显示玩家花数
+	void showPlayerHua(int num);//显示玩家花数
     void setPlayerTingState(bool b);//设置玩家的听牌状态
     void showCurrentBigJong(int cType);
     void hideCurrentBigJong();
-
+    void setIsReady(bool b);//准备状态
+    void setIsOffLine(bool b);//是否断线
+    void setIsTrustee(bool b);//是否托管
     
     
     
 
     void showPlayerInfo();
-	void setIsReady(bool b);//准备状态
-    void setPlayerIsOffLine(bool b);//是否断线
-    void setPlayerTrustee(bool b);
+
 	void startTimeClockAnim();
 	void startTimeClockAnim(int time, int type);
 	void stopTimeClockAnim();
@@ -68,7 +69,6 @@ public:
     CC_SYNTHESIZE(Player*, playerInfo, PlayerInfo);
 	CC_SYNTHESIZE(ReplaceJong, replacePoker, ReplacePoker);
 	CC_SYNTHESIZE(int, clientSeat, ClientSeat);
-	CC_SYNTHESIZE(bool, playerEnable, PlayerEnable);
     CC_SYNTHESIZE(int,huaNum,HuaNum);
     CC_SYNTHESIZE(bool, stateCpg, StateCpg);//吃碰杠状态
     CC_SYNTHESIZE(int, chiNumber, ChiNumber);//吃的数量
@@ -97,6 +97,7 @@ private:
 	void updateTime(float dt);
 	Point getPostionBySeat(int seatId);
     Point getBigJongPos(int type);
+    Point getHuaNumPos(int type);
 	std::string getHeadImageName(std::string id);
 };
 

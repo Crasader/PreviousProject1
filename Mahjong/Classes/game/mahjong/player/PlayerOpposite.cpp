@@ -109,29 +109,6 @@ void PlayerOpposite::removeLastJong(){
     biaoji->setVisible(false);
 }
 
-void PlayerOpposite::playerTurnReplace(PlayerTurnData data){
-    if(data.replace==""){
-        return;
-    }
-    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
-    if(replace.size()>0){
-        huaIndex=0;
-        Sprite* ss = Sprite::create();
-        addChild(ss);
-        ss->runAction(Repeat::create(Sequence::create(CallFunc::create([=](){
-            needReplace.clear();
-            Jong* jon = Jong::create();
-            jon->showJong(leftplayed,atoi(replace.at(huaIndex).c_str()));
-            needReplace.push_back(jon);
-            HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::opposite,CallFunc::create([=](){
-                setHuaNum(getHuaNum()+1);
-                showPlayerHua(Vec2(800,615),getHuaNum());
-            }));
-            addChild(huaAnim,100);
-            huaIndex++;
-        }), DelayTime::create(2.0f),NULL),replace.size()-1));
-    }
-}
 
 void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerChi(data.chi.at(0), playerBase);
@@ -242,7 +219,7 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
 
 void PlayerOpposite::recoverHua(int hua){
     setHuaNum(hua);
-    showPlayerHua(Vec2(800,615),getHuaNum());
+    showPlayerHua(getHuaNum());
 }
 
 

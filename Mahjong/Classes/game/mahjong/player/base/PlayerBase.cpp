@@ -23,7 +23,6 @@ void PlayerBase::initData(){
     playerHandJongs.clear();
     playerPlayedJongs.clear();
     setHuaNum(0);
-    setPlayerEnable(false);
     setStateCpg(false);
     setIsPlayHuaChi(false);
 }
@@ -124,7 +123,6 @@ void PlayerBase::initPlayer(Player* playerInfo){
     timeClock->setVisible(false);
     playerHua->setVisible(false);
     playerHuaCount->setVisible(false);
-    setPlayerEnable(true);
 }
 
 
@@ -141,12 +139,37 @@ void PlayerBase::replaceHandHua(JongViewType tpye){
         }
     }
     if(needReplace.size()>0){
-        HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::left,CallFunc::create([=](){
+        HuaAnim* huaAnim = HuaAnim::create(needReplace,getPlayerInfo()->getSeatId(),CallFunc::create([=](){
             setHuaNum(getHuaNum()+needReplace.size());
-            showPlayerHua(Vec2(45,545),getHuaNum());
+            showPlayerHua(getHuaNum());
         }));
         addChild(huaAnim,100);
     }
+}
+
+void PlayerBase::replaceTurnHua(PlayerTurnData data){
+    if(data.replace==""){
+        return;
+    }
+    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+    if(replace.size()>0){
+        huaIndex=0;
+        Sprite* spr = Sprite::create();
+        addChild(spr);
+        spr->runAction(Repeat::create(Sequence::create(CallFunc::create([=](){
+            needReplace.clear();
+            Jong* jon = Jong::create();
+            jon->showJong(leftplayed,atoi(replace.at(huaIndex).c_str()));
+            needReplace.push_back(jon);
+            HuaAnim* huaAnim = HuaAnim::create(needReplace, getPlayerInfo()->getSeatId(),CallFunc::create([=](){
+                setHuaNum(getHuaNum()+1);
+                showPlayerHua(getHuaNum());
+            }));
+            addChild(huaAnim,100);
+            huaIndex++;
+        }), DelayTime::create(2.0f),NULL),replace.size()-1));
+    }
+    
 }
 
 void PlayerBase::showPlayedJong(int ctype){
@@ -201,40 +224,11 @@ void PlayerBase::showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
 }
 
 
-void PlayerBase::showPlayerInfo(){
-    OtherPlayerInfo* dialog = OtherPlayerInfo::create(getPlayerInfo());
-    getParent()->addChild(dialog,100);//添加到父场景,解决图层错位的问题
-}
-
-void PlayerBase::updatePlayerInfo(int num){
-    diamondNum->setString(cocos2d::String::createWithFormat("%d", num)->_string);
-}
-
-
-void PlayerBase::showPlayerHua(Point pos, int num){
-    if (!getPlayerEnable()){
-        return;
-    }
-    if(num>5 && !getIsPlayHuaChi()){
-        Audio::getInstance()->playSoundHuaChi(getPlayerInfo()->getGender());
-        setIsPlayHuaChi(true);
-    }
-    playerHua->setVisible(true);
-    playerHuaCount->setVisible(true);
-    playerHua->setPosition(pos);
-    playerHuaCount->setPosition(pos.x + 30, pos.y);
-    playerHuaCount->setString(cocos2d::String::createWithFormat(":%d",num)->_string);
-    playerHuaCount->setScale(2.0f);
-    playerHuaCount->setOpacity(77);
-    playerHuaCount->runAction(Sequence::create(Spawn::create(FadeTo::create(4.0/24, 255),ScaleTo::create(4.0f/24, 1.0f), NULL), NULL));
-}
-
 void PlayerBase::showCurrentBigJong(int cType){
     currentBigJongBg->setVisible(true);
     currentBigJong->setVisible(true);
     currentBigJong->showJong(playedshow,cType);
-    Point pos =  getBigJongPos(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
-                                                           getPlayerInfo()->getSeatId()));
+    Point pos = getBigJongPos(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),getPlayerInfo()->getSeatId()));
     currentBigJongBg->setPosition(pos);
     currentBigJong->setPosition(pos.x,pos.y+15);
     
@@ -246,11 +240,55 @@ void PlayerBase::hideCurrentBigJong(){
 }
 
 
+void PlayerBase::setIsReady(bool b){
+    if(NULL != getChildByTag(1001)){
+        getChildByTag(1001)->setVisible(b);
+    }
+}
+
+void PlayerBase::setIsOffLine(bool b){
+    if(NULL != getChildByTag(1002)){
+        getChildByTag(1002)->setVisible(b);
+    }
+}
+
+void PlayerBase::setIsTrustee(bool b){
+    if(NULL != getChildByTag(1003)){
+        getChildByTag(1003)->setVisible(b);
+    }
+}
+
+void PlayerBase::showPlayerInfo(){
+    OtherPlayerInfo* dialog = OtherPlayerInfo::create(getPlayerInfo());
+    getParent()->addChild(dialog,100);//添加到父场景,解决图层错位的问题
+}
+
+void PlayerBase::updatePlayerInfo(int num){
+    diamondNum->setString(cocos2d::String::createWithFormat("%d", num)->_string);
+}
+
+
+void PlayerBase::showPlayerHua(int num){
+    if(num>5 && !getIsPlayHuaChi()){
+        Audio::getInstance()->playSoundHuaChi(getPlayerInfo()->getGender());
+        setIsPlayHuaChi(true);
+    }
+    playerHua->setVisible(true);
+    playerHuaCount->setVisible(true);
+    Point pos = getHuaNumPos(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), playerInfo->getSeatId()));
+    playerHua->setPosition(pos);
+    playerHuaCount->setPosition(pos.x + 30, pos.y);
+    playerHuaCount->setString(cocos2d::String::createWithFormat(":%d",num)->_string);
+    playerHuaCount->setScale(2.0f);
+    playerHuaCount->setOpacity(77);
+    playerHuaCount->runAction(Sequence::create(Spawn::create(FadeTo::create(4.0/24, 255),ScaleTo::create(4.0f/24, 1.0f), NULL), NULL));
+}
+
+
+
+
 
 void PlayerBase::startTimeClockAnim(){
-    if (!getPlayerEnable()){
-        return;
-    }
     timeClock->setString(cocos2d::String::createWithFormat("%d", 20)->_string);
     this->setTag(-1);
     mCDTime = 20;
@@ -265,9 +303,6 @@ void PlayerBase::startTimeClockAnim(){
 }
 
 void PlayerBase::startTimeClockAnim(int time, int type){
-    if (!getPlayerEnable()){
-        return;
-    }
     timeClock->setString(cocos2d::String::createWithFormat("%d", time)->_string);
     this->setTag(type);
     mCDTime = time;
@@ -283,9 +318,6 @@ void PlayerBase::startTimeClockAnim(int time, int type){
 
 
 void  PlayerBase::stopTimeClockAnim(){
-    if (!getPlayerEnable()){
-        return;
-    }
     mProgressTimer->setVisible(false);
     timeClock->setVisible(false);
     mCDTime = 1000000;
@@ -293,34 +325,9 @@ void  PlayerBase::stopTimeClockAnim(){
 }
 
 
-void PlayerBase::setIsReady(bool b){
-    if (!getPlayerEnable()){
-        return;
-    }
-    if(NULL != getChildByTag(1001)){
-        getChildByTag(1001)->setVisible(b);
-    }
-}
 
-void PlayerBase::setPlayerIsOffLine(bool b){
-    if(NULL != getChildByTag(1002)){
-        getChildByTag(1002)->setVisible(b);
-    }
-}
-
-void PlayerBase::setPlayerTrustee(bool b){
-    if (!getPlayerEnable()){
-        return;
-    }
-    if(NULL != getChildByTag(1003)){
-        getChildByTag(1003)->setVisible(b);
-    }
-}
 
 void PlayerBase::setPlayerTingState(bool b){
-    if (!getPlayerEnable()){
-        return;
-    }
     if(b){
         Audio::getInstance()->playSoundTing(getPlayerInfo()->getGender());//听牌音效
         Audio::getInstance()->setHasTingPlayer(true);
@@ -329,9 +336,6 @@ void PlayerBase::setPlayerTingState(bool b){
 }
 
 void PlayerBase::playerCpgAnim(CpgType cpgType, ClientSeatId type){
-    if (!getPlayerEnable()){
-        return;
-    }
     hideCurrentBigJong();
     PlayerCpgAnim* anim = PlayerCpgAnim::create(cpgType, type);
     addChild(anim,100);
@@ -357,9 +361,6 @@ void PlayerBase::updateTime(float dt){
 }
 
 Jong* PlayerBase::getCurrentJong(){
-    if (!getPlayerEnable()){
-        return NULL;
-    }
     return playerPlayedJongs.at(playerPlayedJongs.size()-1);
 }
 
@@ -377,6 +378,25 @@ Point PlayerBase::getBigJongPos(int type){
     }
     else{
         log("PlayerBase getBigJongPos 传入参数有误");
+        return Vec2(0, 0);
+    }
+}
+
+Point PlayerBase::getHuaNumPos(int seatId){
+    if (seatId == ClientSeatId::hero){
+        return Vec2(288,185);
+    }
+    else if (seatId == ClientSeatId::left){
+        return Vec2(45,545);
+    }
+    else if (seatId == ClientSeatId::opposite){
+        return Vec2(800,615);
+    }
+    else if (seatId == ClientSeatId::right){
+        return Vec2(1200,545);
+    }
+    else{
+        log("PlayerBase getHuaNumPos 传入参数有误");
         return Vec2(0, 0);
     }
 }

@@ -468,8 +468,8 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerLeft = PlayerLeft::create();
             playerLeft->initPlayer(playerInfo);
             playerLeft->setPlayerTingState(data.status == 1?true:false);
-            playerLeft->setPlayerIsOffLine(data.isOnline == 0?true:false);
-            playerLeft->setPlayerTrustee(data.tru == 1?true:false);
+            playerLeft->setIsOffLine(data.isOnline == 0?true:false);
+            playerLeft->setIsTrustee(data.tru == 1?true:false);
             addChild(playerLeft);
             playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerLeft->recoverHand(data.hand);
@@ -483,8 +483,8 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerRight = PlayerRight::create();
             playerRight->initPlayer(playerInfo);
             playerRight->setPlayerTingState(data.status == 1?true:false);
-            playerRight->setPlayerIsOffLine(data.isOnline == 0?true:false);
-            playerRight->setPlayerTrustee(data.tru == 1?true:false);
+            playerRight->setIsOffLine(data.isOnline == 0?true:false);
+            playerRight->setIsTrustee(data.tru == 1?true:false);
             addChild(playerRight);
             playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerRight->recoverHand(data.hand);
@@ -498,8 +498,8 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerOpposite = PlayerOpposite::create();
             playerOpposite->initPlayer(playerInfo);
             playerOpposite->setPlayerTingState(data.status == 1?true:false);
-            playerOpposite->setPlayerIsOffLine(data.isOnline == 0?true:false);
-            playerOpposite->setPlayerTrustee(data.tru == 1?true:false);
+            playerOpposite->setIsOffLine(data.isOnline == 0?true:false);
+            playerOpposite->setIsTrustee(data.tru == 1?true:false);
             addChild(playerOpposite);
             playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerOpposite->recoverHand(data.hand);
@@ -727,17 +727,17 @@ void MahjongView::addPlayerTurnListener(){
         }
         else if (seatId == ClientSeatId::left){
             playerLeft->drawLeftPlayerTurn();
-            playerLeft->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
+            playerLeft->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             playerRight->drawRightPlayerTurn();
-            playerRight->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
+            playerRight->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->drawOppositePlayerTurn();
-            playerOpposite->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
+            playerOpposite->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
             playerOpposite->startTimeClockAnim();
         }
     });
@@ -1119,11 +1119,11 @@ void MahjongView::addTrusteeShipNotifyListener(){
             }else if(var->getPoxiaoId() == pid){
                 int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), var->getSeatId());
                 if(seatID == ClientSeatId::left){
-                    playerLeft->setPlayerTrustee(true);
+                    playerLeft->setIsTrustee(true);
                 }else if(seatID == ClientSeatId::opposite){
-                    playerOpposite->setPlayerTrustee(true);
+                    playerOpposite->setIsTrustee(true);
                 }else if(seatID == ClientSeatId::right){
-                    playerRight->setPlayerTrustee(true);
+                    playerRight->setIsTrustee(true);
                 }
             }
         }
@@ -1142,11 +1142,11 @@ void MahjongView::addTrusteeShipCancelListener(){
             }else if(var->getPoxiaoId() == pid){
                 int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), var->getSeatId());
                 if(seatID == ClientSeatId::left){
-                    playerLeft->setPlayerTrustee(false);
+                    playerLeft->setIsTrustee(false);
                 }else if(seatID == ClientSeatId::opposite){
-                    playerOpposite->setPlayerTrustee(false);
+                    playerOpposite->setIsTrustee(false);
                 }else if(seatID == ClientSeatId::right){
-                    playerRight->setPlayerTrustee(false);
+                    playerRight->setIsTrustee(false);
                 }
             }
         }
