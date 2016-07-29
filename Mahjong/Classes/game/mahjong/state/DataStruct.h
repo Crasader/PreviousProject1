@@ -163,6 +163,7 @@ struct PlayerGameData{
     std::string money;
     std::string hand;
     std::string pic;
+    string poxiaoId;
 };
 
 struct LastGameData

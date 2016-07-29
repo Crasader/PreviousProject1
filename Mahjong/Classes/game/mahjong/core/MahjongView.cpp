@@ -37,7 +37,6 @@ bool MahjongView::init(){
             startGameFirst();
         }
         addPlayer2Room();
-
     }
     return true;
 }
@@ -417,7 +416,6 @@ void MahjongView::clearRoomPlayer(){
         playerOpposite = NULL;
     }
     guiLayer->setVisible(false);
-//    addPlayer2Room();
 }
 
 void MahjongView::recoverGame(){
@@ -437,6 +435,7 @@ void MahjongView::recoverGame(){
         info->setGender(player.gender);
         info->setScore(player.jifen);
         info->setLockDiamond(player.bangzuan);
+        info->setPoxiaoId(player.poxiaoId); 
         GAMEDATA::getInstance()->addPlayersInfo(info);
         recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
     }
@@ -619,13 +618,19 @@ void MahjongView::addOthersReadyListener(){
         currentReadyPlayer = atoi(buf);
         int type = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), currentReadyPlayer);
         if (type == ClientSeatId::left){
-            playerLeft->setIsReady(true);
+            if(NULL != playerLeft){
+                playerLeft->setIsReady(true);
+            }
         }
         else if (type == ClientSeatId::right){
-            playerRight->setIsReady(true);
+            if(NULL != playerRight){
+                playerRight->setIsReady(true);
+            }
         }
         else if (type == ClientSeatId::opposite){
-            playerOpposite->setIsReady(true);
+            if(NULL != playerOpposite){
+                playerOpposite->setIsReady(true);
+            }
         }
         else{
             playerHero->hideReadyButton();
@@ -681,9 +686,12 @@ void MahjongView::addDealJongListener(){
     dealJongsListener = EventListenerCustom::create(MSG_GAME_START_NOTIFY, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsPlaying(true);
         playerHero->setIsReady(false);
-        playerRight->setIsReady(false);
-        playerOpposite->setIsReady(false);
-        playerLeft->setIsReady(false);
+        if(NULL != playerRight)
+            playerRight->setIsReady(false);
+        if(NULL != playerOpposite)
+            playerOpposite->setIsReady(false);
+        if(NULL != playerLeft)
+            playerLeft->setIsReady(false);
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         vector<string> dd =StringUtil::split(GAMEDATA::getInstance()->getDice(), ",") ;
         DealJongAnim* anim = DealJongAnim::create();
@@ -765,7 +773,7 @@ void MahjongView::addJongPlayedListener(){
             }
         }
         else{
-            playerHero->drawHeroPlayerPlay(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerHero->stopTimeClockAnim();
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());

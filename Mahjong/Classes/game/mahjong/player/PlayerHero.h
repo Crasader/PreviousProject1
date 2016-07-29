@@ -49,7 +49,7 @@ public:
 	void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
 	void recoverHand(std::string hand);
     void updateHandJongs(std::string jongs);
-    void drawHeroPlayerPlay(int type);
+    void drawPlayedJong(int type);
     
 	CC_SYNTHESIZE(bool, isAllowPlay, IsAllowPlay);
 	CC_SYNTHESIZE(bool, isAllowTouch, IsAllowTouch);

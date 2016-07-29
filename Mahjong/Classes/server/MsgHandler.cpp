@@ -1077,6 +1077,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;
         const rapidjson::Value &temp = all[i];
+        data.poxiaoId = temp["poxiaoId"].GetString();
         data.seatId = temp["seatId"].GetInt();
         data.status = temp["status"].GetInt();
         data.gold = temp["gold"].GetInt();

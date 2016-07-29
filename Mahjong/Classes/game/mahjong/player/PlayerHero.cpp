@@ -529,7 +529,8 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     doubleClickJong = NULL;
 }
 
-void PlayerHero:: drawHeroPlayerPlay(int type){
+void PlayerHero:: drawPlayedJong(int type){
+    PlayerBase::drawPlayedJong(type);
     if (virtualJong != NULL){
         virtualJong->setVisible(false);
         virtualJong->removeFromParent();
@@ -539,6 +540,7 @@ void PlayerHero:: drawHeroPlayerPlay(int type){
     for(int i=playerHandJongs.size()-1;i>=0;i--){
         if(playerHandJongs.at(i)->getJongType()==type){
             Jong* spJong = playerHandJongs.at(i);
+            playerHandJongs.eraseObject(spJong);//从手牌队列中移除
             Point startPoint = spJong->getPosition();
             Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
             float sx = startPoint.x;
@@ -557,14 +559,12 @@ void PlayerHero:: drawHeroPlayerPlay(int type){
                 spJong->showJong(heroplayed, spJong->getJongType());
                 spJong->setScale(1.0f);
                 playerPlayedJongs.pushBack(spJong);
-                playerHandJongs.eraseObject(spJong);
                 isAllowPlay = false;
             });
             Sequence* seq = Sequence::create(spa, callback, CallFunc::create([=](){
                 sortHandJongs(getHandPosX(), false);
             }), NULL);
             spJong->runAction(seq);
-            Audio::getInstance()->playMahjong(type,UserData::getInstance()->getGender());//音效
             break;
         }
     }
