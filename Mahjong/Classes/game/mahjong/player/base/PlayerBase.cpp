@@ -1,6 +1,7 @@
 #include "game/mahjong/player/base/PlayerBase.h"
 #include "game/mahjong/anim/PlayerCpgAnim.hpp"
 #include "game/mahjong/dialog/playerinfo/OtherPlayerInfo.hpp"
+#include "game/mahjong/anim/HuaAnim.hpp"
 
 Sprite* PlayerBase::biaoji = NULL;
 Sprite* PlayerBase::currentBigJongBg = NULL;
@@ -28,9 +29,10 @@ void PlayerBase::initData(){
 }
 
 
-void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
+void PlayerBase::initPlayer(Player* playerInfo){
     setPlayerInfo(playerInfo);
-    setClientSeat(clientSeatId);
+    int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), playerInfo->getSeatId());
+    
     auto head_bg = Sprite::create("gameview/head_image_bg.png");
     head_bg->setPosition(getPostionBySeat(clientSeatId));
     this->addChild(head_bg);
@@ -125,7 +127,29 @@ void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
     setPlayerEnable(true);
 }
 
-void PlayerBase::drawPlayedJong(int ctype){
+
+void PlayerBase::replaceHandHua(JongViewType tpye){
+    ReplaceJong rejong = getReplacePoker();
+    std::vector<Jong*> needReplace;
+    for (int i = 0; i < rejong.poker.size(); i++){
+        
+        std::vector<std::string> pokerV = StringUtil::split(rejong.poker.at(i), ",");
+        for (int j = 0; j < pokerV.size(); j++){
+            Jong* jon = Jong::create();
+            jon->showJong(tpye,atoi(pokerV.at(j).c_str()));
+            needReplace.push_back(jon);
+        }
+    }
+    if(needReplace.size()>0){
+        HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::left,CallFunc::create([=](){
+            setHuaNum(getHuaNum()+needReplace.size());
+            showPlayerHua(Vec2(45,545),getHuaNum());
+        }));
+        addChild(huaAnim,100);
+    }
+}
+
+void PlayerBase::showPlayedJong(int ctype){
     playedPokers.insert(ctype);
     setLastPoker(ctype);
     set<int>::iterator it =playedPokers.find(lastPoker);
@@ -134,10 +158,10 @@ void PlayerBase::drawPlayedJong(int ctype){
     }else{
         Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());//普通打牌音效
     }
-
+    
 }
 
-void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
+void PlayerBase::showPlayerChi(string chiPoker, PlayerBase* playerBase){
     if(getChiNumber()==0){
         if(getPokerNumber()>10){
             Audio::getInstance()->playSoundChi(4,getPlayerInfo()->getGender());
@@ -168,11 +192,11 @@ void PlayerBase::drawPlayerChi(string chiPoker, PlayerBase* playerBase){
     setChiNumber(getChiNumber()+1);
 }
 
-void PlayerBase::drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
+void PlayerBase::showPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
 }
 
-void PlayerBase::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
+void PlayerBase::showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(getPlayerInfo()->getGender());
 }
 
@@ -205,12 +229,15 @@ void PlayerBase::showPlayerHua(Point pos, int num){
     playerHuaCount->runAction(Sequence::create(Spawn::create(FadeTo::create(4.0/24, 255),ScaleTo::create(4.0f/24, 1.0f), NULL), NULL));
 }
 
-void PlayerBase::showCurrentBigJong(int cType, Vec2 pos){
+void PlayerBase::showCurrentBigJong(int cType){
     currentBigJongBg->setVisible(true);
     currentBigJong->setVisible(true);
-    currentBigJongBg->setPosition(pos);
     currentBigJong->showJong(playedshow,cType);
+    Point pos =  getBigJongPos(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
+                                                           getPlayerInfo()->getSeatId()));
+    currentBigJongBg->setPosition(pos);
     currentBigJong->setPosition(pos.x,pos.y+15);
+    
 }
 
 void PlayerBase::hideCurrentBigJong(){
@@ -337,7 +364,22 @@ Jong* PlayerBase::getCurrentJong(){
 }
 
 
-
+Point PlayerBase::getBigJongPos(int type){
+    
+    if (type == ClientSeatId::left){
+        return Vec2(300,400);
+    }
+    else if (type == ClientSeatId::opposite){
+        return Vec2(640, 550);
+    }
+    else if (type == ClientSeatId::right){
+        return Vec2(980, 400);
+    }
+    else{
+        log("PlayerBase getBigJongPos 传入参数有误");
+        return Vec2(0, 0);
+    }
+}
 
 Point PlayerBase::getPostionBySeat(int seatId){
     if (seatId == ClientSeatId::hero){
@@ -353,7 +395,7 @@ Point PlayerBase::getPostionBySeat(int seatId){
         return Vec2(70, 455);
     }
     else{
-        log("PlayerBase getPostionBySeat parameter seatId is error");
+        log("PlayerBase getPostionBySeat 传入参数有误");
         return Vec2(0, 0);
     }
 }

@@ -128,7 +128,7 @@ Jong* PlayerHero::getTouchJong(Touch *touch){
 
 void PlayerHero::playPokerByHand(Jong* jong){
     stopTimeClockAnim();
-    PlayerBase::drawPlayedJong(jong->getJongType());
+    PlayerBase::showPlayedJong(jong->getJongType());
     Point startPoint = jong->getPosition();
     Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
     float sx = startPoint.x;
@@ -530,7 +530,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
 }
 
 void PlayerHero:: drawPlayedJong(int type){
-    PlayerBase::drawPlayedJong(type);
+    PlayerBase::showPlayedJong(type);
     if (virtualJong != NULL){
         virtualJong->setVisible(false);
         virtualJong->removeFromParent();
@@ -694,7 +694,7 @@ void PlayerHero::actionQi(){
 
 void PlayerHero::drawPlayerChi(HeroCpgRespData cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
     if (cpgResp.result == 1 || cpgResp.result == 2){
-        PlayerBase::drawPlayerChi(chipai.at(0)+","+chipai.at(1), playerBase);
+        PlayerBase::showPlayerChi(chipai.at(0)+","+chipai.at(1), playerBase);
         Vector<Jong*> chiVector;
         //根据吃牌的位置显示,显示吃牌堆得形状
         Jong* jon = Jong::create();

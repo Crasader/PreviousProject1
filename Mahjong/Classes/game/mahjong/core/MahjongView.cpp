@@ -121,7 +121,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
     if (type == ClientSeatId::hero){
         if (playerHero == NULL){
             playerHero = PlayerHero::create();
-            playerHero->initPlayer(playerInfo, ClientSeatId::hero);
+            playerHero->initPlayer(playerInfo);
             playerHero->drawReady(playerInfo->getIsReady());
             playerHero->setIsReady(playerInfo->getIsReady());
             playerHero->setIsAllowPlay(false);
@@ -131,7 +131,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
     else if (type == ClientSeatId::left){
         if (playerLeft == NULL){
             playerLeft = PlayerLeft::create();
-            playerLeft->initPlayer(playerInfo, ClientSeatId::left);
+            playerLeft->initPlayer(playerInfo);
             playerLeft->setIsReady(playerInfo->getIsReady());
             this->addChild(playerLeft,1);
         }
@@ -139,7 +139,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
     else if (type == ClientSeatId::right){
         if (playerRight == NULL){
             playerRight = PlayerRight::create();
-            playerRight->initPlayer(playerInfo, ClientSeatId::right);
+            playerRight->initPlayer(playerInfo);
             playerRight->setIsReady(playerInfo->getIsReady());
             this->addChild(playerRight,1);
         }
@@ -147,7 +147,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
     else if (type == ClientSeatId::opposite){
         if (playerOpposite == NULL){
             playerOpposite = PlayerOpposite::create();
-            playerOpposite->initPlayer(playerInfo, ClientSeatId::opposite);
+            playerOpposite->initPlayer(playerInfo);
             playerOpposite->setIsReady(playerInfo->getIsReady());
             this->addChild(playerOpposite,1);
         }
@@ -451,7 +451,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
     if (type == ClientSeatId::hero){
         if (playerHero == NULL){
             playerHero = PlayerHero::create();
-            playerHero->initPlayer(playerInfo, ClientSeatId::hero);
+            playerHero->initPlayer(playerInfo);
             playerHero->setIsAllowPlay(false);
             playerHero->setPlayerTingState(data.status == 1?true:false);
 //            playerHero->setPlayerIsOffLine(data.isOnline == 1?true:false);
@@ -466,7 +466,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
     else if (type == ClientSeatId::left){
         if (playerLeft == NULL){
             playerLeft = PlayerLeft::create();
-            playerLeft->initPlayer(playerInfo, ClientSeatId::left);
+            playerLeft->initPlayer(playerInfo);
             playerLeft->setPlayerTingState(data.status == 1?true:false);
             playerLeft->setPlayerIsOffLine(data.isOnline == 0?true:false);
             playerLeft->setPlayerTrustee(data.tru == 1?true:false);
@@ -481,7 +481,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
     else if (type == ClientSeatId::right){
         if (playerRight == NULL){
             playerRight = PlayerRight::create();
-            playerRight->initPlayer(playerInfo, ClientSeatId::right);
+            playerRight->initPlayer(playerInfo);
             playerRight->setPlayerTingState(data.status == 1?true:false);
             playerRight->setPlayerIsOffLine(data.isOnline == 0?true:false);
             playerRight->setPlayerTrustee(data.tru == 1?true:false);
@@ -496,7 +496,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
     else if (type == ClientSeatId::opposite){
         if (playerOpposite == NULL){
             playerOpposite = PlayerOpposite::create();
-            playerOpposite->initPlayer(playerInfo, ClientSeatId::opposite);
+            playerOpposite->initPlayer(playerInfo);
             playerOpposite->setPlayerTingState(data.status == 1?true:false);
             playerOpposite->setPlayerIsOffLine(data.isOnline == 0?true:false);
             playerOpposite->setPlayerTrustee(data.tru == 1?true:false);
@@ -654,15 +654,15 @@ void MahjongView::addCoustomReplaceFlower() {
                 }
                 else if (seatId == ClientSeatId::left){
                     playerLeft->setReplacePoker(vec.times.at(i));
-                    playerLeft->drawHuaJong();
+                    playerLeft->replaceHandHua(leftplayed);
                 }
                 else if (seatId == ClientSeatId::right){
                     playerRight->setReplacePoker(vec.times.at(i));
-                    playerRight->drawHuaJong();
+                    playerRight->replaceHandHua(rightplayed);
                 }
                 else if (seatId == ClientSeatId::opposite){
                     playerOpposite->setReplacePoker(vec.times.at(i));
-                    playerOpposite->drawHuaJong();
+                    playerOpposite->replaceHandHua(oppositeplayed);
                 }
             }
             

@@ -9,9 +9,8 @@ class PlayerRight : public PlayerBase{
 public:
 
 	virtual bool init();
-	void drawHandJong();//
-	void drawPlayedJong(int ctype);//
-	void drawHuaJong();//
+	void drawHandJong();
+	void drawPlayedJong(int ctype);
 	void drawRightPlayerTurn();
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;

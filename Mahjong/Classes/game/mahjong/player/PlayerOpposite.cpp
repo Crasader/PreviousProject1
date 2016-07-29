@@ -82,30 +82,9 @@ void PlayerOpposite::drawPlayedJong(int ctype){
         }
     }), NULL) ,callback, NULL);
     lastPlayedJong->runAction(sequence);
-    showCurrentBigJong(ctype, Vec2(640, 550));
+    showCurrentBigJong(ctype);
 }
 
-
-void PlayerOpposite::drawHuaJong(){
-    ReplaceJong rejong = getReplacePoker();
-    std::vector<Jong*> needReplace;
-    for (int i = 0; i < rejong.poker.size(); i++){
-        
-        std::vector<std::string> pokerV = StringUtil::split(rejong.poker.at(i), ",");
-        for (int j = 0; j < pokerV.size(); j++){
-            Jong* jon = Jong::create();
-            jon->showJong(leftplayed,atoi(pokerV.at(j).c_str()));
-            needReplace.push_back(jon);
-        }
-    }
-    if(needReplace.size()>0){
-        HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::opposite ,CallFunc::create([=](){
-            setHuaNum(getHuaNum()+needReplace.size());
-            showPlayerHua(Vec2(800,615),getHuaNum());
-        }));
-        addChild(huaAnim,100);
-    }
-}
 
 Point PlayerOpposite::getHuaJongPos(int number){
     return Point(780 - 25 * number, 465);
@@ -155,7 +134,7 @@ void PlayerOpposite::playerTurnReplace(PlayerTurnData data){
 }
 
 void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
-    PlayerBase::drawPlayerChi(data.chi.at(0), playerBase);
+    PlayerBase::showPlayerChi(data.chi.at(0), playerBase);
     setStateCpg(true);
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
     for (int j = 0; j < 2; j++){
@@ -180,7 +159,7 @@ void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
 
 
 void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
-     PlayerBase::drawPlayerPeng(data, playerBase);
+     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
@@ -206,7 +185,7 @@ void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)
 
 
 void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
-    PlayerBase::drawPlayerGang(data,playerBase);
+    PlayerBase::showPlayerGang(data,playerBase);
     if (data.flag == 2){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }

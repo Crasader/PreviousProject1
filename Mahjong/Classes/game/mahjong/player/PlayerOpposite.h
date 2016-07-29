@@ -10,7 +10,6 @@ public:
 	virtual bool init();
 	void drawHandJong();
 	void drawPlayedJong(int ctype);
-	void drawHuaJong();
 	void removeLastJong();
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;
