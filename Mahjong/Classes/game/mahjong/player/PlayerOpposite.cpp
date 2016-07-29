@@ -50,14 +50,14 @@ void PlayerOpposite::drawPlayedJong(int ctype){
     lastPlayedJong->showJong(oppositeplayed, ctype);
     lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 31, OPPOSITE_POS_Y));
     playerPlayedJongs.pushBack(lastPlayedJong);
-    if (playerPlayedJongs.size() / 6 == 0){
-        this->addChild(lastPlayedJong, 3);
+    if (playerPlayedJongs.size() / 10 == 0){
+        addChild(lastPlayedJong, 3);
     }
-    else if (playerPlayedJongs.size() / 6 == 1){
-        this->addChild(lastPlayedJong, 2);
+    else if (playerPlayedJongs.size() / 10 == 1){
+        addChild(lastPlayedJong, 2);
     }
     else{
-        this->addChild(lastPlayedJong, 1);
+        addChild(lastPlayedJong, 1);
     }
     Point startPoint = Point(OPPOSITE_POS_X - 31, OPPOSITE_POS_Y);
     Point endPoint = getPlayedJongPos(playerPlayedJongs.size() - 1);
@@ -289,7 +289,15 @@ void PlayerOpposite::recoverPlayed(std::string played){
         Jong* lastPlayedJong = Jong::create();
         lastPlayedJong->showJong(oppositeplayed, atoi(playeds.at(i).c_str()));
         lastPlayedJong->setPosition(getPlayedJongPos(playerPlayedJongs.size()));
-        this->addChild(lastPlayedJong);
+        if (playerPlayedJongs.size() / 10 == 0){
+            this->addChild(lastPlayedJong, 3);
+        }
+        else if (playerPlayedJongs.size() / 10 == 1){
+            this->addChild(lastPlayedJong, 2);
+        }
+        else{
+            this->addChild(lastPlayedJong, 1);
+        }
         playerPlayedJongs.pushBack(lastPlayedJong);
     }
 }
