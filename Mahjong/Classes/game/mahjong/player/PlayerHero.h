@@ -44,12 +44,13 @@ public:
 	void removePlayedIcon();
 	Vector<Jong*> getSelfHandJongs();
 	Vector<Jong*>  sortJongs(Vector<Jong*> jongs);
+    void drawPlayedJong(int type);//玩家出牌
 	void recoverHua(int hua);
 	void recoverPlayed(std::string played);
 	void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
 	void recoverHand(std::string hand);
     void updateHandJongs(std::string jongs);
-    void drawPlayedJong(int type);
+    
     
 	CC_SYNTHESIZE(bool, isAllowPlay, IsAllowPlay);
 	CC_SYNTHESIZE(bool, isAllowTouch, IsAllowTouch);
