@@ -30,8 +30,6 @@ void PlayerBase::initData(){
 
 void PlayerBase::initPlayer(Player* playerInfo, int clientSeatId){
     setPlayerInfo(playerInfo);
-    playerJongLayer = Layer::create();
-    addChild(playerJongLayer);
     setClientSeat(clientSeatId);
     auto head_bg = Sprite::create("gameview/head_image_bg.png");
     head_bg->setPosition(getPostionBySeat(clientSeatId));

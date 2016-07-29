@@ -13,7 +13,6 @@ USING_NS_CC;
 class PlayerBase :public Layer{
 public:
     int huaIndex;
-	Layer* playerJongLayer;
 	static	const int jongNum = 13;
 	Vector<Jong*> playerHandJongs;
     Vector<Jong*> playerPlayedJongs;
