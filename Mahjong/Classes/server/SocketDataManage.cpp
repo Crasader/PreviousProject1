@@ -18,9 +18,7 @@ bool SocketDataManage::init(){
 
 void SocketDataManage::update(float dt){
 	m_mutex.lock();
-	
 	for (auto value : m_msgList){
-		//log("server msg : %s", value.c_str());
 		MsgHandler::getInstance()->handleMsg(value);
 	}
 	m_msgList.clear();

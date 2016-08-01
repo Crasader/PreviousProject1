@@ -8,7 +8,7 @@ public:
 	static SocketDataManage* getInstance();
 	virtual bool init();
 	virtual void update(float dt);
-	void pushMsg(std::string msg);//添加一条数据
+	void pushMsg(std::string msg);
 private:
 	static SocketDataManage* instance;
 	CREATE_FUNC(SocketDataManage);
