@@ -56,11 +56,13 @@ public:
 	CC_SYNTHESIZE(float, handPosX, HandPosX);
     CC_SYNTHESIZE(int, cpgPostionX, CpgPostionX);
 	CREATE_FUNC(PlayerHero);
+
 private:
 	std::mutex j_mutex;
-	Sprite* playedIcon;
 	std::vector<std::string> pokerV;
 	std::vector<std::string> replaceV;
+    
+    Sprite* playedIcon;
 	Jong* currentJong;
 	Jong* selectJong;
 	Jong* virtualJong;
@@ -79,6 +81,5 @@ private:
 	Point getHeroPlayedJongsPos(int index);
 	Vector<Jong*>  upsetJongs(Vector<Jong*> jongs);
 	Jong* getTouchJong(Touch *touch);
-	
 };
 #endif
