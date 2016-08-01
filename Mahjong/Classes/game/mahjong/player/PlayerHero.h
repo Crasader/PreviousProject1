@@ -28,7 +28,6 @@ public:
 	void onTouchEnded(Touch *touch, Event  *event) override;
 	void drawPlayerHero();
 	void drawReady(bool b);
-	void hideReadyButton();
 	void sortHandJongs(int posx,bool isTurn);
 	void replaceFlower();
 	void playerTurnReplace(PlayerTurnData data);
@@ -44,7 +43,7 @@ public:
 	void removePlayedIcon();
 	Vector<Jong*> getSelfHandJongs();
 	Vector<Jong*>  sortJongs(Vector<Jong*> jongs);
-    void drawPlayedJong(int type);//玩家出牌
+    void drawPlayedJong(int type);
 	void recoverHua(int hua);
 	void recoverPlayed(std::string played);
 	void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
@@ -58,7 +57,6 @@ public:
     CC_SYNTHESIZE(int, cpgPostionX, CpgPostionX);
 	CREATE_FUNC(PlayerHero);
 private:
-	int index;
 	std::mutex j_mutex;
 	Sprite* playedIcon;
 	std::vector<std::string> pokerV;

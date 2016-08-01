@@ -260,7 +260,7 @@ void PlayerBase::setIsTrustee(bool b){
 
 void PlayerBase::showPlayerInfo(){
     OtherPlayerInfo* dialog = OtherPlayerInfo::create(getPlayerInfo());
-    getParent()->addChild(dialog,100);//添加到父场景,解决图层错位的问题
+    getParent()->addChild(dialog,100);//添加到父场景,为了解决图层错位的问题
 }
 
 void PlayerBase::updatePlayerInfo(int num){
@@ -444,28 +444,23 @@ void PlayerBase::hideHandJongs(){
 }
 
 void PlayerBase::recoverHua(std::string hua){
-    //TODO
+    //
     
 }
 
 
 void PlayerBase::recoverPlayed(std::string played){
-    //TODO
+    //
     
 }
 
 
 void PlayerBase::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang){
-    //TODO
+    //
     
     
 }
 
 void PlayerBase::recoverHand(std::string hand){
-    //TODO
-}
-
-
-void PlayerBase::cleanPlayerUI(){
-    
+    //
 }

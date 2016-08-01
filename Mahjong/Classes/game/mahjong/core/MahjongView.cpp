@@ -125,7 +125,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerHero->drawReady(playerInfo->getIsReady());
             playerHero->setIsReady(playerInfo->getIsReady());
             playerHero->setIsAllowPlay(false);
-            this->addChild(playerHero, 1);
+            this->addChild(playerHero, 2);
         }
     }
     else if (type == ClientSeatId::left){
@@ -635,7 +635,7 @@ void MahjongView::addOthersReadyListener(){
             }
         }
         else{
-            playerHero->hideReadyButton();
+            playerHero->drawReady(false);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);

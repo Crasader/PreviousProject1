@@ -62,15 +62,15 @@ bool OtherPlayerInfo::init(Player* player){
     item1->setContentSize(Size(1280, 720));
     item1->setCallback(CC_CALLBACK_0(OtherPlayerInfo::closeView, this));
     Menu* menu1 = Menu::create(item1, NULL);
-    this->addChild(menu1);
+    addChild(menu1);
     auto  dialogBg = Sprite::create("gameview/other_player_bg.png");
     int cSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
     if(cSeatId == ClientSeatId::left){
-        dialogBg->setPosition(265, 485);
+        dialogBg->setPosition(265, 455);
     }else if(cSeatId == ClientSeatId::opposite){
         dialogBg->setPosition(745, 605);
     }else if(cSeatId == ClientSeatId::right){
-        dialogBg->setPosition(1015, 485);
+        dialogBg->setPosition(1015, 455);
     }else{
         removeFromParent();
         return true;

@@ -11,8 +11,7 @@ public:
     void drawHandJong();
     void drawPlayedJong(int ctype);
 	void removeLastJong() override;
-	void showCurrentPlayedJongIcon(bool isShow) override;
-	Point getCpgShowPostion(int index) override;
+    void showCurrentPlayedJongIcon(bool isShow) override;
 	void drawLeftPlayerTurn();
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);
@@ -22,8 +21,10 @@ public:
 	void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
 	void recoverHand(std::string hand);
     void updateHandJongs(std::string jongs);
+    Point getCpgShowPostion(int index) override;
     Point getPlayedJongPos(int count);
 	CREATE_FUNC(PlayerLeft);
+    
 private:
 	static const int LEFT_POS_X = 170;
 	static const int LEFT_POS_Y = 250;

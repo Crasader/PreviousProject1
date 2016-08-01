@@ -237,15 +237,14 @@ void PlayerHero::drawReady(bool ready){
         start->setTag(888);
         start->setPosition(Point(640, 200));
         this->addChild(start);
+    }else{
+        if (NULL != getChildByTag(888)){
+            getChildByTag(888)->setVisible(false);
+        }
+        this->setIsReady(true);
     }
 }
 
-void PlayerHero::hideReadyButton(){
-    if (NULL != getChildByTag(888)){
-        getChildByTag(888)->setVisible(false);
-    }
-    this->setIsReady(true);
-}
 
 void PlayerHero::readyGo(){
     if (NULL != getChildByTag(888)){
@@ -449,12 +448,12 @@ void PlayerHero::replaceFlower(){
         }
     }else{
         //有花的情况
-        index = 0;
+        huaIndex = 0;
         schedule([=](float dt){
-            if(rejong.poker.at(index)!="" && rejong.replace.at(index)!=""){
-                pokerV = StringUtil::split(rejong.poker.at(index), ",");
-                replaceV = StringUtil::split(rejong.replace.at(index), ",");
-                index++;
+            if(rejong.poker.at(huaIndex)!="" && rejong.replace.at(huaIndex)!=""){
+                pokerV = StringUtil::split(rejong.poker.at(huaIndex), ",");
+                replaceV = StringUtil::split(rejong.replace.at(huaIndex), ",");
+                huaIndex++;
                 std::vector<Jong*> needReplace;
                 needReplace.clear();
                 for (int i = 0; i < pokerV.size(); i++){
@@ -489,7 +488,7 @@ void PlayerHero::replaceFlower(){
 }
 
 void PlayerHero::playerTurnReplace(PlayerTurnData data){
-    index = 0;
+    huaIndex = 0;
     std::vector<std::string> replace = StringUtil::split(data.replace, ",");
     Jong* jong = Jong::create();
     addChild(jong);
@@ -497,14 +496,14 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         schedule([=](float dt){
             std::vector<Jong*> needReplace;
             needReplace.clear();
-            jong->showJong(herohand, atoi(replace.at(index).c_str()));
+            jong->showJong(herohand, atoi(replace.at(huaIndex).c_str()));
             needReplace.push_back(jong);
             HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
                 setHuaNum(getHuaNum()+needReplace.size());
                 showPlayerHua(getHuaNum());
             }));
             addChild(huaAnim,100);
-            index++;
+            huaIndex++;
         }, 0.8f, replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
             jong->showJong(herohand, data.poker);
