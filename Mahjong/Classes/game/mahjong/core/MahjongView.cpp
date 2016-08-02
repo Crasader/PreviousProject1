@@ -104,7 +104,10 @@ void MahjongView::startGameAgain(){
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
     GAMEDATA::getInstance()->setIsTingState(false);
-}
+    schedule([=](float dt){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+    }, 0, 0, 1.0f,"continueGame");
+    }
 
 void MahjongView::update(float dt){
     if (GAMEDATA::getInstance()->getNeedAddPlayer()){

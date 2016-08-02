@@ -32,12 +32,17 @@ void ResultLayer::onEnter(){
             GAMEDATA::getInstance()->setContinueAgain(true);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
-            if(UserData::getInstance()->getDiamond()>=GAMEDATA::getInstance()->getPlayRoomID()*1000){
-                ChargeGold* gold = ChargeGold::create();
-                addChild(gold,30);
-            }else{
-                GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                addChild(gold,30);
+            
+            for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
+                if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+                    if(UserData::getInstance()->getDiamond() >= var.minGold/1000){
+                        ChargeGold* gold = ChargeGold::create();
+                        addChild(gold,30);
+                    }else{
+                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                        addChild(gold,30);
+                    }
+                }
             }
         }
         else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){

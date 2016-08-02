@@ -176,9 +176,16 @@ struct LastGameData
     std::vector <PlayerGameData> players;
 };
 
+struct RoomData{
+    int roomId;
+    int maxGold;
+    int minGold;
+
+};
+
 struct RoomListData
 {
-    std::vector <int> rooms;
+    std::vector <RoomData> rooms;
 };
 
 

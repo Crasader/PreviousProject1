@@ -34,15 +34,14 @@ private:
 	std::mutex m_mutex;
 	int currentReadyPlayer;
 	std::string  selectedChi;
-	PlayerHero* playerHero;
-	PlayerLeft* playerLeft;
-	PlayerRight* playerRight;
-	PlayerOpposite* playerOpposite;
-
-	Menu* controllPad;
 	Sprite* choiceMenu;
+    Menu* controllPad;
 	Trusteeship* trusteeship;
 	GuiLayer* guiLayer;
+    PlayerHero* playerHero;
+    PlayerLeft* playerLeft;
+    PlayerRight* playerRight;
+    PlayerOpposite* playerOpposite;
 
 
 	void update(float dt);

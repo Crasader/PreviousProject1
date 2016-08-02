@@ -473,9 +473,12 @@ void MsgHandler::roomListResp(std::string msg){
     const rapidjson::Value &roomstyle = _mDoc["roomstyle"];
     RoomListData roomlist;
     for (int i = 0; i < roomstyle.Capacity(); ++i){
+        RoomData data;
         const rapidjson::Value &temp = roomstyle[i];
-        auto rsid = temp["rsid"].GetInt();
-        roomlist.rooms.push_back(rsid);
+        data.roomId = temp["rsid"].GetInt();
+        data.maxGold = temp["max"].GetInt();
+        data.minGold = temp["min"].GetInt();
+        roomlist.rooms.push_back(data);
     }
     GAMEDATA::getInstance()->setRoomList(roomlist);
     postNotifyMessage(MSG_ROOM_LIST_RESP, LOGIN_SUCCESS);

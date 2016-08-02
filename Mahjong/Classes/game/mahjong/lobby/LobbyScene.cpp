@@ -235,15 +235,15 @@ void LobbyScene::drawSceneMid(){
     auto gameMenu = Menu::create();
     RoomListData roomList = GAMEDATA::getInstance()->getRoomList();
     for (int i = 0; i < roomList.rooms.size(); i++){
-        if (roomList.rooms.at(i) == ROOM_1){
+        if (roomList.rooms.at(i).roomId == ROOM_1){
             gameMenu->addChild(room1);
             room1->setTag(ROOM_1);
         }
-        else if (roomList.rooms.at(i) == ROOM_2){
+        else if (roomList.rooms.at(i).roomId == ROOM_2){
             gameMenu->addChild(room2);
             room2->setTag(ROOM_2);
         }
-        else if (roomList.rooms.at(i) == ROOM_3){
+        else if (roomList.rooms.at(i).roomId == ROOM_3){
             gameMenu->addChild(room3);
             room3->setTag(ROOM_3);
         }
@@ -383,8 +383,18 @@ void LobbyScene::addCustomEventListener(){
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
-            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-            addChild(gold,4);
+            
+            for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
+                if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+                    if(UserData::getInstance()->getDiamond() >= var.minGold/1000){
+                        ChargeGold* gold = ChargeGold::create();
+                        addChild(gold,4);
+                    }else{
+                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                        addChild(gold,4);
+                    }
+                }
+            }
         }
         else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
             if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
