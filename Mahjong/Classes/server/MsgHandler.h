@@ -89,5 +89,6 @@ private:
     void getHeadImageChangeResp(std::string msg);
     void getFeedBackResp(std::string msg);
     void gameResumeResp(std::string msg);
+    void gameContinueResp(std::string msg);
 };
 #endif

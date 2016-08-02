@@ -129,6 +129,8 @@
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_REQUEST  1056// 乐券商城兑换记录请求{code:1056,poxiaoId:poxiaoId}
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_RESPONSE  1057// 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
 
+#define MSGCODE_MAJIANG_AGAIN_REQUEST 1995//再来一局请求{code:1995,poxiaoId:poxiaoId}
+#define MSGCODE_MAJIANG_AGAIN_RESPONSE 1996//再来一局回复{code:1996,poxiaoId:poxiaoId,result:1,rsid:1000}1为成功 2为金币小于下限 3为金币高于上限rsid为跳转房间
 #define MSGCODE_MAJIANG_BACK_RESUME_REQUEST 1997//后台切回请求{code:1997,poxiaoId:poxiaoId}
 #define MSGCODE_MAJIANG_BACK_RESUME_RESPONSE 1998//后台切回回复{code:1998,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,hua:"1",chi:[{chi:"1,2,3",poker:"3"},{chi:"11,12,13",poker:"13"}],peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",status:1}]} status1为听牌
 
@@ -270,7 +272,7 @@
 #define MSG_RECIVE_RED_WALLET_PSUH "msg_recive_red_wallet_resp_push"
 #define MSG_PLAYER_LEQUAN_EXCHANGE "msg_player_lequan_exchange"
 #define MSG_PLAYER_LEQUAN_EXCHANGE_RECORD "msg_player_lequan_exchange_record"
-#define MSG_HERO_READY_RESP "msg_hero_ready_resp"
+#define MSG_HERO_CONTINUE_RESP "msg_hero_continue_resp"
 #define MSG_PLAYER_INFO_RESP "msg_player_info_resp"
 #define MSG_PLAYER_FIND_PASSWORD_RESP "msg_player_find_password_resp"
 #define MSG_PLAYER_OFF_LINE_NOTIFY "msg_player_off_line_notify"

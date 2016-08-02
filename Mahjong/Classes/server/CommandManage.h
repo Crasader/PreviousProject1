@@ -71,6 +71,7 @@ public:
     std::string getLequanChangeRecordCommand();
     std::string getFeedBackCommand(std::string msg);
     std::string getOnResumeCommand();
+    std::string getContinueGameCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

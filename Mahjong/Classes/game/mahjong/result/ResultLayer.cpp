@@ -24,7 +24,7 @@ bool ResultLayer::init(){
 
 void ResultLayer::onEnter(){
     Layer::onEnter();
-    continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_READY_RESP, [=](EventCustom* event){
+    continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_CONTINUE_RESP, [=](EventCustom* event){
         std::string result  = static_cast<char*>(event->getUserData());
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "0"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
@@ -490,7 +490,7 @@ void ResultLayer::updateTime(float dt){
 
 void ResultLayer::clickContinu(){
     schedule([=](float dt){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getContinueGameCommand());
     }, 0.0f, 0.0f, 1.0f,"delayGame");
 }
 
