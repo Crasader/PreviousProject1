@@ -46,6 +46,8 @@ void DailyPride::onEnter(){
                     if(NULL != getChildByTag(1000)){
                         ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(GAMEDATA::getInstance()->getTodayPrideData().rest));
                     }
+                    //刷新用户信息
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
                 }
             }
             

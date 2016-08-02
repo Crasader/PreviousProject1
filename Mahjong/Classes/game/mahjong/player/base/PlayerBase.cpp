@@ -162,7 +162,7 @@ void PlayerBase::replaceTurnHua(PlayerTurnData data){
             jon->showJong(leftplayed,atoi(replace.at(huaIndex).c_str()));
             needReplace.push_back(jon);
             HuaAnim* huaAnim = HuaAnim::create(needReplace, getPlayerInfo()->getSeatId(),CallFunc::create([=](){
-                setHuaNum(getHuaNum()+1);
+                setHuaNum(getHuaNum()+needReplace.size());
                 showPlayerHua(getHuaNum());
             }));
             addChild(huaAnim,100);

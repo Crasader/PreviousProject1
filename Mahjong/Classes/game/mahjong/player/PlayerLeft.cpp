@@ -31,7 +31,7 @@ void PlayerLeft::drawLeftPlayerTurn(){
     jong->setTag(111);
     jong->showJong(lefthand, -1);
     jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 32));
-    this->addChild(jong,61);
+    addChild(jong,61);
     playerHandJongs.pushBack(jong);
     MoveTo* move = MoveTo::create(0.2f, Point(LEFT_POS_X, LEFT_POS_Y - 35));
     ActionInterval* dou = EaseBackInOut::create(move);
@@ -43,7 +43,7 @@ void PlayerLeft::drawPlayedJong(int ctype){
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(leftplayed, ctype);
     lastPlayedJong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 35));
-    this->addChild(lastPlayedJong);
+    addChild(lastPlayedJong);
     playerPlayedJongs.pushBack(lastPlayedJong);
     Point startPoint = Point(LEFT_POS_X, LEFT_POS_Y - 35);
     Point endPoint = getPlayedJongPos(playerPlayedJongs.size() - 1);

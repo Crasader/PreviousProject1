@@ -1317,11 +1317,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/pride/DailyPride.cpp"
-            timestampString = "487756414.63352"
+            timestampString = "491816156.690074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "DailyPride::updateData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2085,11 +2085,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/daily/pride/DailyPride.cpp"
-            timestampString = "487756414.63352"
+            timestampString = "491816156.690074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "DailyPride::showDailyPrideLayer()"
             landmarkType = "5">
          </BreakpointContent>
