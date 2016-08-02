@@ -20,7 +20,7 @@ void NetworkManage::connectServer() {
         // ODSocket socket;
         socket.Init();
         socket.Create(AF_INET, SOCK_STREAM, 0);
-        //        const char* ip = "172.23.1.251";
+//                const char* ip = "172.23.1.251";
         const char* ip = "183.129.206.54";
         int port = 9999;
         bool result = socket.Connect(ip, port);
