@@ -557,7 +557,7 @@ void PlayerHero:: drawPlayedJong(int type){
             CallFunc* callback = CallFunc::create([=](){
                 spJong->showJong(heroplayed, spJong->getJongType());
                 spJong->setScale(1.0f);
-//                spJong->setLocalZOrder(<#int localZOrder#>);
+                //                spJong->setLocalZOrder(<#int localZOrder#>);
                 playerPlayedJongs.pushBack(spJong);
                 isAllowPlay = false;
             });
@@ -742,18 +742,19 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         });
         Sequence* mySe = Sequence::create(callFuc0, delay, callFuc1, NULL);
         runAction(mySe);
-        setIsAllowPlay(true);
-        startTimeClockAnim();
+        //吃完后触发听牌
+        if (cpgResp.result == 2 && cpgResp.ting != ""){
+            PlayerCpgtData tingData;
+            tingData.ting = cpgResp.ting;
+            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+            ((MahjongView*)getParent())->showTingGangControllPad();
+        }else{
+            setIsAllowPlay(true);
+            startTimeClockAnim();
+        }
     }
     else{
         stopTimeClockAnim();
-    }
-    //吃完后触发听牌
-    if (cpgResp.result == 2 && cpgResp.ting != ""){
-        PlayerCpgtData tingData;
-        tingData.ting = cpgResp.ting;
-        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        ((MahjongView*)getParent())->showTingGangControllPad();
     }
 }
 
@@ -832,13 +833,15 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     });
     Sequence* mySe = Sequence::create(action1, delay, action2, NULL);
     runAction(mySe);
-    setIsAllowPlay(true);
-    startTimeClockAnim();
+    
     if (resp.result == 2 && resp.ting != ""){
         PlayerCpgtData tingData;
         tingData.ting = resp.ting;
         GAMEDATA::getInstance()->setPlayerCpgt(tingData);
         ((MahjongView*)getParent())->showTingGangControllPad();
+    }else{
+        setIsAllowPlay(true);
+        startTimeClockAnim();
     }
 }
 
@@ -904,7 +907,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             GAMEDATA::getInstance()->setPlayerCpgt(tingData);
             ((MahjongView*)getParent())->showTingGangControllPad();
         }
-    
+        
     }else{
         std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
         Vector<Jong*> gangVector;
@@ -993,9 +996,9 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             this->runAction(mySe);
         }
         setIsAllowTouch(true);
-    
+        
     }
-  }
+}
 
 
 void PlayerHero::recoverHua(int hua){
