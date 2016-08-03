@@ -424,7 +424,6 @@ void MahjongView::clearRoomPlayer(){
 }
 
 void MahjongView::recoverGame(){
-    GAMEDATA::getInstance()->setIsPlaying(true);
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
     GAMEDATA::getInstance()->setCurrentBank(data.loard);
@@ -448,6 +447,7 @@ void MahjongView::recoverGame(){
     //重新设置庄的位置
     showOriention();
     ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+    GAMEDATA::getInstance()->setIsPlaying(true);
 }
 
 void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo){
