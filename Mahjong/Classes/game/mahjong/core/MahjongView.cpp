@@ -1149,6 +1149,9 @@ void MahjongView::addTrusteeShipCancelListener(){
             if( UserData::getInstance()->getPoxiaoId()== pid){
                 trusteeship->setVisible(false);
                 GAMEDATA::getInstance()->setIsTrusteeship(false);
+                if(GAMEDATA::getInstance()->getPlayerTurn().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+                    playerHero->setIsAllowPlay(true);
+                }
             }else if(var->getPoxiaoId() == pid){
                 int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), var->getSeatId());
                 if(seatID == ClientSeatId::left){
