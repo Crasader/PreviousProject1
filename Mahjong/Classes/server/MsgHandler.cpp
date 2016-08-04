@@ -2231,6 +2231,8 @@ void MsgHandler::gameResumeResp(std::string msg){
         data.status = temp["status"].GetInt();
         data.hua = temp["hua"].GetInt();
         data.seatId =  temp["seatId"].GetInt();
+        data.tru = temp["tru"].GetInt();
+        data.isOnline = temp["isonline"].GetInt();
         if(temp.HasMember("chi")){
             const rapidjson::Value &chi = temp["chi"];
             for(int j = 0; j < chi.Capacity(); ++j){

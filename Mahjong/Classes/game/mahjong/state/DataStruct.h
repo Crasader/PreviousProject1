@@ -416,6 +416,8 @@ struct PlayerResumeData{
     int seatId;
     int hua;
     int status;
+    int tru;
+    int isOnline;
     std::string angang;
     std::string outhand;
     std::string hand;

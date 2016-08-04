@@ -561,7 +561,6 @@ void PlayerHero:: drawPlayedJong(int type){
             CallFunc* callback = CallFunc::create([=](){
                 spJong->showJong(heroplayed, spJong->getJongType());
                 spJong->setScale(1.0f);
-                //                spJong->setLocalZOrder(<#int localZOrder#>);
                 playerPlayedJongs.pushBack(spJong);
                 isAllowPlay = false;
             });

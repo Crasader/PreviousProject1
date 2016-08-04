@@ -63,6 +63,7 @@ void LobbyScene::onExit(){
     _eventDispatcher->removeEventListener(friendInviteListener);
     _eventDispatcher->removeEventListener(updateHeroInfoListener);
     _eventDispatcher->removeEventListener(heroInfoListener);
+    _eventDispatcher->removeEventListener(lobbyrReConnectAgain);
 }
 
 void LobbyScene::updateHeroInfo(){
@@ -447,6 +448,13 @@ void LobbyScene::addCustomEventListener(){
         updateHeroInfo();
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroInfoListener, 1);
+    
+    //断线续玩
+    lobbyrReConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setIsRecover(true);
+        Director::getInstance()->replaceScene(MjGameScene::create());
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyrReConnectAgain, 1);
 }
 
 

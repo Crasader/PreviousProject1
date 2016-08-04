@@ -522,6 +522,10 @@ void MahjongView::resumePlayerUI(PlayerResumeData data,int type){
         playerHero->recoverHand(data.hand);
         playerHero->recoverPlayed(data.outhand);
         playerHero->recoverHua(data.hua);
+        if(data.tru == 1){
+            trusteeship->setVisible(true);
+            GAMEDATA::getInstance()->setIsTrusteeship(true);
+        }
     }
     else if (type == ClientSeatId::left){
         playerLeft->setPlayerTingState(data.status == 1?true:false);

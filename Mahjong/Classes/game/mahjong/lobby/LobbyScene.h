@@ -37,6 +37,7 @@ private:
     EventListenerCustom* friendInviteListener;
     EventListenerCustom* updateHeroInfoListener;
     EventListenerCustom* heroInfoListener;
+    EventListenerCustom* lobbyrReConnectAgain;
     
 	Label* nickName;
 	LabelAtlas* goldNum;
