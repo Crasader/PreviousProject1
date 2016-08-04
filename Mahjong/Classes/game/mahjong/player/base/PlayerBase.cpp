@@ -167,7 +167,7 @@ void PlayerBase::replaceTurnHua(PlayerTurnData data){
             }));
             addChild(huaAnim,100);
             huaIndex++;
-        }), DelayTime::create(2.0f),NULL),replace.size()-1));
+        }), DelayTime::create(1.0f),NULL),replace.size()));
     }
     
 }
