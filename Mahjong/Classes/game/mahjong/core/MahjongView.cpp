@@ -457,8 +457,6 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerHero->initPlayer(playerInfo);
             playerHero->setIsAllowPlay(false);
             playerHero->setPlayerTingState(data.status == 1?true:false);
-//            playerHero->setPlayerIsOffLine(data.isOnline == 1?true:false);
-//            playerHero->setPlayerTrustee(data.tru == 1?true:false);
             addChild(playerHero, 2);
             playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerHero->recoverHand(data.hand);
@@ -1259,6 +1257,8 @@ void MahjongView::addPlayerRemoveListener(){
                 playerOpposite =NULL;
                 OutFogAnim* out3 = OutFogAnim::create(Point(945, 642));
                 addChild(out3);
+            }else if(GAMEDATA::getInstance()->getRemovePlayer().pid == UserData::getInstance()->getPoxiaoId()){
+                Director::getInstance()->replaceScene(LobbyScene::create());
             }
             if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
                 guiLayer->showInvitePlayer(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId));

@@ -61,6 +61,7 @@ public:
     void playSoundChong(int gender);
     void playSoundLiuJu(int gender);
     void playSoundTouzi();
+    void playSoundFapai();
     
     void playSoundClick();
     void playSoundHu(int type);

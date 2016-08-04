@@ -262,6 +262,7 @@ void DealJongAnim::faPaiAction(int seatId,int round){
     th000->runAction(Sequence::create(MoveTo::create(6.0/24, getPaiduiPos(seatId,round/4)),CallFunc::create([=](){
         th000->setVisible(false);
     }),CallFunc::create([=](){
+        Audio::getInstance()->playSoundFapai();
         Sprite* sky = createJong4(seatId);
         paishuLayer->addChild(sky);
         if(seatId == ClientSeatId::left){

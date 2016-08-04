@@ -352,6 +352,10 @@ void Audio::playSoundTouzi(){
     AudioEngine::play2d("audio/tou_zi.wav",false,UserData::getInstance()->getSoundValue());
 }
 
+void Audio::playSoundFapai(){
+ AudioEngine::play2d("audio/snd_getdun.mp3",false,UserData::getInstance()->getSoundValue());
+}
+
 void Audio::playSoundWan1(int gender){
     int soundId = rand()%3+1;
     if(gender==1){

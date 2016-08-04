@@ -20,6 +20,7 @@ void GAMEDATA::init(){
     setHuangfan("0");
     setKaibao("0");
     setIsResume(false);
+    setIsNeedLock(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){
