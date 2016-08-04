@@ -154,7 +154,7 @@ void MsgHandler::distribute(int code, std::string msg){
         }
         case MSGCODE_MAJIANG_PENG_NOTIFY:
         {
-            log(" ***  player chi notify *** ");
+            log(" ***  player peng notify *** ");
             showOtherPengNotify(msg);
             break;
         }
