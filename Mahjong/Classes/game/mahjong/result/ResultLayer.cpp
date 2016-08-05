@@ -220,10 +220,10 @@ void ResultLayer::showWinAnim(){
                                                    CC_CALLBACK_0(ResultLayer::clickContinu, this));
     auto continuMenu = Menu::create(continu, NULL);
     continuMenu->setPosition(840, 170);
-    this->addChild(continuMenu, 20);
+    addChild(continuMenu, 20);
     continuMenu->setVisible(false);
     continu->setOpacity(77);
-    continu->runAction(Sequence::create(DelayTime::create(33.0/24),CallFunc::create([=](){
+    continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
         continuMenu->setVisible(true);
     }),FadeTo::create(3.0/24, 255),CallFunc::create([=](){
         ClippingNode* cliper = ClippingNode::create();

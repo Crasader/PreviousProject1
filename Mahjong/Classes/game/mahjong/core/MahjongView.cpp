@@ -287,9 +287,11 @@ void MahjongView::removeHeroPlayedIcon(){
 void MahjongView::showHeroChiUi(){
     controllPad->setVisible(false);
     PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+    //吃牌排序
     if (cpg.chi.size() > 1){
+        sort(cpg.chi.begin(), cpg.chi.end());
         for (int i = 0; i < cpg.chi.size(); i++){
-            std::vector<string> pai = StringUtil::split(cpg.chi.at(i), ",");
+            std::vector<string> pai = StringUtil::split(cpg.chi.at(cpg.chi.size()-1-i), ",");
             pai.push_back(cpg.poker);
             sort(pai.begin(), pai.end());
             auto choice = Menu::create();

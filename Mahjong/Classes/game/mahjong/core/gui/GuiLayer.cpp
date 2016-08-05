@@ -22,11 +22,11 @@ bool GuiLayer::init(){
 }
 
 void GuiLayer::initView(){
-    auto soundButton = MenuItemImage::create("gameview/chat_sound_1.png", "gameview/chat_sound_2.png",
-                                             CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
-    auto soundMenu = Menu::create(soundButton,NULL);
-    soundMenu->setPosition(65,45);
-    addChild(soundMenu);
+//    auto soundButton = MenuItemImage::create("gameview/chat_sound_1.png", "gameview/chat_sound_2.png",
+//                                             CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
+//    auto soundMenu = Menu::create(soundButton,NULL);
+//    soundMenu->setPosition(65,45);
+//    addChild(soundMenu);
     
     auto chatButton = MenuItemImage::create("gameview/chat_btn_1.png", "gameview/chat_btn_2.png",
                                             CC_CALLBACK_0(GuiLayer::chatButtonClick, this));

@@ -680,7 +680,7 @@ void PlayerHero::actionTing(){
             }
         }
     }
-    startTimeClockAnim(5, 2);
+    startTimeClockAnim(20, 2);
 }
 
 void PlayerHero::sendTingRequest(int poker){
