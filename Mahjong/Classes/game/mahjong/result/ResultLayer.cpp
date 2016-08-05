@@ -212,7 +212,7 @@ void ResultLayer::showWinAnim(){
     this->addChild(quitMenu, 20);
     quitMenu->setVisible(false);
     quitImage->setOpacity(77);
-    quitImage->runAction(Sequence::create(DelayTime::create(30.0/24),CallFunc::create([=](){
+    quitImage->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
         quitMenu->setVisible(true);
     }),FadeTo::create(3.0/24, 255), NULL));
     
@@ -225,6 +225,7 @@ void ResultLayer::showWinAnim(){
     continu->setOpacity(77);
     continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
         continuMenu->setVisible(true);
+        schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
     }),FadeTo::create(3.0/24, 255),CallFunc::create([=](){
         ClippingNode* cliper = ClippingNode::create();
         Sprite* stencil =  Sprite::create("result/continue_btn_1.png");
@@ -339,12 +340,12 @@ void ResultLayer::showLoseAnim(){
     resultMenu = Menu::create(quit, continu, NULL);
     resultMenu->setPosition(640, 170);
     resultMenu->alignItemsHorizontallyWithPadding(60);
-    this->addChild(resultMenu, 20);
+    addChild(resultMenu, 20);
     resultMenu->setVisible(false);
     schedule([=](float dt){
         resultMenu->setVisible(true);
         schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
-    }, 0, 0, 1.0f,"delayshowbtn");
+    }, 0, 0, 3.0f,"delayshowbtn");
     drawPokerPad(maxData.showPoker,maxData.huType,maxData.hua);
 }
 
@@ -487,7 +488,7 @@ void ResultLayer::drawHuaNum(int hua){
 void ResultLayer::updateTime(float dt){
     if (isVisible()){
         timeToatal--;
-        if (timeToatal == 0){
+        if (timeToatal <= 0){
             clickContinu();
         }
     }
