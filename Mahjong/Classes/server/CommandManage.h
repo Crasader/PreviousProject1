@@ -72,6 +72,7 @@ public:
     std::string getFeedBackCommand(std::string msg);
     std::string getOnResumeCommand();
     std::string getContinueGameCommand();
+    std::string getPlayerChatMsgCommand(std::string msg,std::string picName);
 private:
 	CommandManage();
 	static CommandManage* _instance;

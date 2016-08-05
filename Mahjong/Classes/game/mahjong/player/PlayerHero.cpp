@@ -887,13 +887,13 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         CallFunc* action2 = CallFunc::create([=](){
             for (int k = 0; k < gangVector.size(); k++){
                 if (k != 3){
-                    MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX() + 47 * k, 35));
+                    MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX() + 47 * k, 45));
                     ScaleTo* scale = ScaleTo::create(0.2f, 0.75f);
                     Spawn* sp = Spawn::create(mv, scale, NULL);
                     gangVector.at(k)->runAction(sp);
                 }
                 else{
-                    MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX() + 47, 45));
+                    MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX() + 47, 55));
                     ScaleTo* scale = ScaleTo::create(0.2f, 0.75f);
                     Spawn* sp = Spawn::create(mv, scale, NULL);
                     gangVector.at(k)->setLocalZOrder(4);
@@ -903,7 +903,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             setCpgPostionX(getCpgPostionX()+170);
         });
         Sequence* mySe = Sequence::create(action1, delay, action2, NULL);
-        this->runAction(mySe);
+        runAction(mySe);
         if (resp.result == 2 && resp.ting != ""){
             PlayerCpgtData tingData;
             tingData.ting = resp.ting;

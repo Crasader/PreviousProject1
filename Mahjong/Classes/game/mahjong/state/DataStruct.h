@@ -432,4 +432,8 @@ struct GameResumeData
     std::vector <PlayerResumeData> players;
 };
 
+struct ChatData{
+    std::string content;
+    std::string faceId;
+};
 #endif

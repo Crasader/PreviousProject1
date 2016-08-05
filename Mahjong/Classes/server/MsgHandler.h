@@ -90,5 +90,6 @@ private:
     void getFeedBackResp(std::string msg);
     void gameResumeResp(std::string msg);
     void gameContinueResp(std::string msg);
+    void playerChatMsgNotify(std::string msg);
 };
 #endif
