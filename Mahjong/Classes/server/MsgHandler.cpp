@@ -1476,7 +1476,15 @@ void MsgHandler::playerChatNotify(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //TODO 
+    if (_mDoc.HasMember("content")){
+    const rapidjson::Value &content = _mDoc["content"];
+    }
+    if (_mDoc.HasMember("seatId")){
+        const rapidjson::Value &seatId = _mDoc["seatId"];
+    }
+    if (_mDoc.HasMember("faceId")){
+        const rapidjson::Value &faceId = _mDoc["faceId"];
+    }
     postNotifyMessage(MSG_PLAYER_CHAT_NOTIFY, "");
 }
 
