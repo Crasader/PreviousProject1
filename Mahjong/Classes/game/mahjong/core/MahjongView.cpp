@@ -289,7 +289,6 @@ void MahjongView::showHeroChiUi(){
     PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     //吃牌排序
     if (cpg.chi.size() > 1){
-        sort(cpg.chi.begin(), cpg.chi.end());
         for (int i = 0; i < cpg.chi.size(); i++){
             std::vector<string> pai = StringUtil::split(cpg.chi.at(cpg.chi.size()-1-i), ",");
             pai.push_back(cpg.poker);
@@ -328,7 +327,7 @@ void MahjongView::heroDoChi(Ref* psend){
     }
     PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     MenuItemImage* item = (MenuItemImage*)psend;
-    selectedChi = cpg.chi.at(item->getTag());
+    selectedChi = cpg.chi.at(cpg.chi.size()-1-item->getTag());
     playerHero->stopTimeClockAnim();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg.poker.c_str())));
 }
@@ -1212,13 +1211,13 @@ void MahjongView::addHeroGangRespListener(){
         else{
             
             if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroGang(resp, cpg, playerOpposite);
+                playerHero->drawHeroGang(resp, cpg, playerRight);
             }
             else if (clientSeatId == ClientSeatId::opposite){
                playerHero->drawHeroGang(resp, cpg, playerOpposite);
             }
             else{
-               playerHero->drawHeroGang(resp, cpg, playerOpposite);
+               playerHero->drawHeroGang(resp, cpg, playerLeft);
             }
         }
     });

@@ -502,7 +502,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             needReplace.clear();
             jong->showJong(herohand, atoi(replace.at(huaIndex).c_str()));
             needReplace.push_back(jong);
-            HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
+            HuaAnim* huaAnim = HuaAnim::create(needReplace, GAMEDATA::getInstance()->getHeroSeatId(),CallFunc::create([=](){
                 setHuaNum(getHuaNum()+needReplace.size());
                 showPlayerHua(getHuaNum());
             }));
@@ -902,8 +902,9 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             }
             setCpgPostionX(getCpgPostionX()+170);
         });
-        Sequence* mySe = Sequence::create(action1, delay, action2, NULL);
-        runAction(mySe);
+        auto spriteAnim = Sprite::create();
+        addChild(spriteAnim);
+        spriteAnim->runAction(Sequence::create(action1, delay, action2, NULL));
         if (resp.result == 2 && resp.ting != ""){
             PlayerCpgtData tingData;
             tingData.ting = resp.ting;

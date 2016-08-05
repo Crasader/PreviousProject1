@@ -826,6 +826,7 @@ void MsgHandler::showCpgNotify(std::string msg){
     else{
         cpg.gang = "";
     }
+    sort(cpg.chi.begin(), cpg.chi.end());
     GAMEDATA::getInstance()->setPlayerCpgt(cpg);
     postNotifyMessage(MSG_PLAYER_CPG, "");
 }
