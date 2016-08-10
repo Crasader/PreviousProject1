@@ -17,7 +17,7 @@ public:
     
     vector<Player*> getPlayersInfo();
     void addPlayersInfo(Player* players);
-    void erasePlayersInfo(std::string seatId);
+    void erasePlayersInfo(std::string poxiaoId);
     void clearPlayersInfo();
     
     std::vector<std::string> getHeroJongs();

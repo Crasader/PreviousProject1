@@ -55,7 +55,7 @@ void GAMEDATA::addPlayersInfo(Player* player){
 void GAMEDATA::erasePlayersInfo(std::string poxiaoId){
 	m_mutex.lock();
 	vector<Player*>::iterator it;
-	for (it = playerVector.begin(); it != playerVector.end();)
+    for (it = playerVector.begin(); it != playerVector.end();)
 	{
 		Player* pla = *it;
 		if (pla->getPoxiaoId() == poxiaoId)
@@ -67,7 +67,6 @@ void GAMEDATA::erasePlayersInfo(std::string poxiaoId){
 }
 
 void GAMEDATA::clearPlayersInfo(){
-    log("remove all player");
 	m_mutex.lock();
 	playerVector.clear();
 	m_mutex.unlock();
