@@ -57,6 +57,8 @@
 		D20C391B1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C39181CFEAB37006F6C9E /* ExchangeItem.cpp */; };
 		D20C391E1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
 		D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
+		D21D81C11D5859CF00560DC5 /* RoomChatModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81BF1D5859CF00560DC5 /* RoomChatModule.cpp */; };
+		D21D81C21D5859CF00560DC5 /* RoomChatModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81BF1D5859CF00560DC5 /* RoomChatModule.cpp */; };
 		D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
 		D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
 		D226FD301D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
@@ -383,6 +385,8 @@
 		D20C39191CFEAB37006F6C9E /* ExchangeItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeItem.hpp; sourceTree = "<group>"; };
 		D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutFogAnim.cpp; sourceTree = "<group>"; };
 		D20C391D1CFEC2E7006F6C9E /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
+		D21D81BF1D5859CF00560DC5 /* RoomChatModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomChatModule.cpp; sourceTree = "<group>"; };
+		D21D81C01D5859CF00560DC5 /* RoomChatModule.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RoomChatModule.hpp; sourceTree = "<group>"; };
 		D226FD281D051DBA00324097 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		D226FD291D051DBA00324097 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		D226FD2E1D05292400324097 /* LoadResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadResource.cpp; sourceTree = "<group>"; };
@@ -1044,6 +1048,8 @@
 			children = (
 				D2B1A7D51CCDF0F300A20896 /* GameChat.cpp */,
 				D2B1A7D61CCDF0F300A20896 /* GameChat.h */,
+				D21D81BF1D5859CF00560DC5 /* RoomChatModule.cpp */,
+				D21D81C01D5859CF00560DC5 /* RoomChatModule.hpp */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -1586,6 +1592,7 @@
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D2B1A8A51CCDF0F400A20896 /* SearchResult.cpp in Sources */,
 				D2B1A8AB1CCDF0F400A20896 /* GenderDialog.cpp in Sources */,
+				D21D81C11D5859CF00560DC5 /* RoomChatModule.cpp in Sources */,
 				D2B1A8DF1CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D2B1A8711CCDF0F400A20896 /* Loading.cpp in Sources */,
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
@@ -1697,6 +1704,7 @@
 				D2B1A88E1CCDF0F400A20896 /* DailyPride.cpp in Sources */,
 				D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D2B1A8AA1CCDF0F400A20896 /* ChangePassword.cpp in Sources */,
+				D21D81C21D5859CF00560DC5 /* RoomChatModule.cpp in Sources */,
 				D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
 				D2B1A89C1CCDF0F400A20896 /* FriendAddView.cpp in Sources */,
 				D2B1A8721CCDF0F400A20896 /* Loading.cpp in Sources */,

@@ -11,6 +11,7 @@
 #include "game/mahjong/dialog/bill/BillInfo.h"
 #include "game/mahjong/core/widget/QuitRoomDialog.hpp"
 #include "game/utils/Audio.h"
+#include "game/mahjong/dialog/chat/GameChat.h"
 
 
 bool GuiLayer::init(){
@@ -99,9 +100,9 @@ void GuiLayer::soundButtonClick(){
 }
 
 void GuiLayer::chatButtonClick(){
-    //   gameChat = GameChat::create();
-    //this->addChild(gameChat);
-    //    Audio::getInstance()->playSoundChong(UserData::getInstance()->getGender());
+    auto gameChat = GameChat::create();
+    gameChat->setTag(1001);
+    addChild(gameChat);
 }
 
 void GuiLayer::settingButtonClick(){

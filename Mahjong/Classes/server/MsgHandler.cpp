@@ -1305,6 +1305,8 @@ void MsgHandler::removePlayerNotify(std::string msg){
     data.setaId = seatId.GetInt();
     if(data.pid != UserData::getInstance()->getPoxiaoId()){
         GAMEDATA::getInstance()->erasePlayersInfo(data.pid);
+    }else{
+        log("hero is out room");
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, "");

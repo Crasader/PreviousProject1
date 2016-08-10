@@ -67,6 +67,7 @@ void GAMEDATA::erasePlayersInfo(std::string poxiaoId){
 }
 
 void GAMEDATA::clearPlayersInfo(){
+    log("remove all player");
 	m_mutex.lock();
 	playerVector.clear();
 	m_mutex.unlock();
