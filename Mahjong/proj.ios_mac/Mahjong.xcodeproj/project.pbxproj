@@ -59,6 +59,8 @@
 		D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
 		D21D81C11D5859CF00560DC5 /* RoomChatModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81BF1D5859CF00560DC5 /* RoomChatModule.cpp */; };
 		D21D81C21D5859CF00560DC5 /* RoomChatModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81BF1D5859CF00560DC5 /* RoomChatModule.cpp */; };
+		D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
+		D21D81C71D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
 		D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
 		D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
 		D226FD301D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
@@ -387,6 +389,8 @@
 		D20C391D1CFEC2E7006F6C9E /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
 		D21D81BF1D5859CF00560DC5 /* RoomChatModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomChatModule.cpp; sourceTree = "<group>"; };
 		D21D81C01D5859CF00560DC5 /* RoomChatModule.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RoomChatModule.hpp; sourceTree = "<group>"; };
+		D21D81C41D5B11AE00560DC5 /* IOSiAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSiAP.h; sourceTree = "<group>"; };
+		D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSiAP.mm; sourceTree = "<group>"; };
 		D226FD281D051DBA00324097 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		D226FD291D051DBA00324097 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		D226FD2E1D05292400324097 /* LoadResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadResource.cpp; sourceTree = "<group>"; };
@@ -762,6 +766,7 @@
 			children = (
 				D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */,
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
+				D21D81C31D5B11AE00560DC5 /* payment */,
 				D2B1A7B11CCDF0F300A20896 /* game */,
 				D28A4A0A1D0565C200741FD0 /* http */,
 				D23EFCC81D10F54D002A48A5 /* image */,
@@ -819,6 +824,15 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		D21D81C31D5B11AE00560DC5 /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				D21D81C41D5B11AE00560DC5 /* IOSiAP.h */,
+				D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */,
+			);
+			path = payment;
+			sourceTree = "<group>";
 		};
 		D226FD251D051DBA00324097 /* splash */ = {
 			isa = PBXGroup;
@@ -1514,6 +1528,7 @@
 				D229123A1D128103005C7167 /* UserRegister.cpp in Sources */,
 				D2B1A8971CCDF0F400A20896 /* TaskCell.cpp in Sources */,
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
+				D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */,
 				D2B1A8851CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
 				D2B1A8A31CCDF0F400A20896 /* InviteCell.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
@@ -1688,6 +1703,7 @@
 				D26081E01D2C9F7300FDBC40 /* GameFeedDialog.cpp in Sources */,
 				D2B1A8801CCDF0F400A20896 /* MahjongView.cpp in Sources */,
 				D239A55D1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */,
+				D21D81C71D5B11AE00560DC5 /* IOSiAP.mm in Sources */,
 				D2B1A8BC1CCDF0F400A20896 /* UserSetting.cpp in Sources */,
 				D2B1A8C81CCDF0F400A20896 /* HongbaoPride.cpp in Sources */,
 				D2B1A8E61CCDF0F400A20896 /* GameData.cpp in Sources */,
