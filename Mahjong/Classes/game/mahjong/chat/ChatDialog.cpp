@@ -26,7 +26,10 @@ bool ChatDialog::init(){
     closeMenu->setPosition(980, 650);
     addChild(closeMenu);
     
-    
+    auto inputText = Scale9Sprite::create("chat/chat_bg.png");
+    inputText->setContentSize(Size(720,565));
+    inputText->setPosition(640,335);
+    addChild(inputText);
 
     return true;
 }
