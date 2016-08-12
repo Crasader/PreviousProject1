@@ -6,4 +6,5 @@ Player::Player()
 
 Player::~Player()
 {
+    log("~Player ~Player ~Player");
 }

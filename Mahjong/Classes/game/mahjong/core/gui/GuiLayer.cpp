@@ -1,6 +1,6 @@
 #include "game/mahjong/core/gui/GuiLayer.h"
 #include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
-#include "game/mahjong/dialog/chat/GameChat.h"
+#include "game/mahjong/chat/GameChat.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/dialog/friend/FriendInvite.h"
 #include "game/mahjong/state/GameData.h"
@@ -11,7 +11,9 @@
 #include "game/mahjong/dialog/bill/BillInfo.h"
 #include "game/mahjong/core/widget/QuitRoomDialog.hpp"
 #include "game/utils/Audio.h"
-#include "game/mahjong/dialog/chat/GameChat.h"
+#include "game/mahjong/chat/GameChat.h"
+#include "game/mahjong/chat/ChatDialog.hpp"
+
 
 
 bool GuiLayer::init(){
@@ -100,7 +102,7 @@ void GuiLayer::soundButtonClick(){
 }
 
 void GuiLayer::chatButtonClick(){
-    auto gameChat = GameChat::create();
+    auto gameChat = ChatDialog::create();
     gameChat->setTag(1001);
     addChild(gameChat);
 }

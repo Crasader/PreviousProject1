@@ -6,18 +6,18 @@
 //
 //
 
-#ifndef RoomChatModule_hpp
-#define RoomChatModule_hpp
+#ifndef ChatModule_hpp
+#define ChatModule_hpp
 #include "cocos2d.h"
 USING_NS_CC;
 
-class RoomChatModule : public Layer{
+class ChatModule : public Layer{
 
 public:
     void onEnter() override;
     void onExit() override;
     virtual bool init();
-    CREATE_FUNC(RoomChatModule);
+    CREATE_FUNC(ChatModule);
 private:
     EventListenerCustom* roomChatListener;
     void showQuickText(std::string msg);

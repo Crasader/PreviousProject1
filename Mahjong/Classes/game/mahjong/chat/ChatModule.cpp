@@ -6,10 +6,10 @@
 //
 //
 
-#include "RoomChatModule.hpp"
+#include "ChatModule.hpp"
 
 
-bool RoomChatModule::init(){
+bool ChatModule::init(){
     if(!Layer::init()){
         return false;
     }
@@ -17,7 +17,7 @@ bool RoomChatModule::init(){
 }
 
 
-void RoomChatModule::onEnter(){
+void ChatModule::onEnter(){
     Layer::onEnter();
     roomChatListener =  EventListenerCustom::create("", [=](EventCustom* event){
         
@@ -25,12 +25,12 @@ void RoomChatModule::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
 }
 
-void RoomChatModule::onExit(){
+void ChatModule::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
 }
 
-void RoomChatModule::showQuickText(std::string msg){
+void ChatModule::showQuickText(std::string msg){
     
     
 }

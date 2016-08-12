@@ -1394,7 +1394,7 @@ void MsgHandler::friendAddNotify(std::string msg){
 }
 
 void MsgHandler::friendOpenRoomResp(std::string msg){
-    GAMEDATA::getInstance()->clearPlayersInfo();
+//    GAMEDATA::getInstance()->clearPlayersInfo();
     //{code:2038,poxiaoId:poxiaoId,result:"0",seatId:1}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));

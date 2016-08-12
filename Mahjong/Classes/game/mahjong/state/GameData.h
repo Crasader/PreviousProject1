@@ -97,8 +97,8 @@ private:
     void init();
     std::mutex m_mutex;
     static GAMEDATA* _instance;
-    vector<Player*> playerVector;
-    vector<GameResultData> gameResults;
+    std::vector<Player*> playerVector;
+    std::vector<GameResultData> gameResults;
     std::vector<std::string> heroJongs;
     std::vector<PlayerCpgRecord> heroCpgRecord;
 };

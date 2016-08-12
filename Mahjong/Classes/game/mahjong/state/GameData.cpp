@@ -48,6 +48,7 @@ bool GAMEDATA::getMusicState() {
 
 void GAMEDATA::addPlayersInfo(Player* player){
 	m_mutex.lock();
+    log("add player room  %d",playerVector.size());
 	playerVector.push_back(player);
 	m_mutex.unlock();
 }
@@ -58,8 +59,9 @@ void GAMEDATA::erasePlayersInfo(std::string poxiaoId){
     for (it = playerVector.begin(); it != playerVector.end();)
 	{
 		Player* pla = *it;
-		if (pla->getPoxiaoId() == poxiaoId)
-			it = playerVector.erase(it);
+        if (pla->getPoxiaoId() == poxiaoId){
+            it = playerVector.erase(it);
+        }
 		else
 			++it;
 	}
@@ -68,6 +70,7 @@ void GAMEDATA::erasePlayersInfo(std::string poxiaoId){
 
 void GAMEDATA::clearPlayersInfo(){
 	m_mutex.lock();
+    log("clear clear clear ");
 	playerVector.clear();
 	m_mutex.unlock();
 }
@@ -81,8 +84,8 @@ std::vector<std::string> GAMEDATA::getHeroJongs(){
 	return heroJongs;
 }
 
-void GAMEDATA::setHeroJongs(std::vector<std::string> heroJongs){
-	this->heroJongs = heroJongs;
+void GAMEDATA::setHeroJongs(std::vector<std::string> jongs){
+	heroJongs = jongs;
 }
 
 vector<GameResultData> GAMEDATA::getGameResults(){
@@ -90,8 +93,8 @@ vector<GameResultData> GAMEDATA::getGameResults(){
 }
 
 void GAMEDATA::setGameResults(vector<GameResultData> results){
-	this->gameResults.clear();
-	this->gameResults = results;
+	gameResults.clear();
+	gameResults = results;
 }
 
 

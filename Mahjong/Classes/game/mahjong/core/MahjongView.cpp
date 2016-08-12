@@ -162,9 +162,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
 
 void MahjongView::addPlayer2Room(){
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-    log("AAAAAAAAAAAAAAAAAA=%d",GAMEDATA::getInstance()->getPlayersInfo().size());
     for (int i = 0; i < players.size(); i++){
-        log("BBBBBBBBBBBBBBBB=%s",players.at(i)->getPoxiaoId().c_str());
         updatePlayerView(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()), players.at(i));
     }
 }
