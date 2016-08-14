@@ -121,7 +121,7 @@ void ChargeDiamond::showChargeDialog(){
         myMenu->setPosition(285+175*i,225);
         addChild(myMenu);
         
-        LabelAtlas* money = LabelAtlas::create(cocos2d::String::createWithFormat("%d",list.list.at(i).money)->_string,"shop/prop_num.png",21,28,'0');
+        LabelAtlas* money = LabelAtlas::create(cocos2d::String::createWithFormat("%d",list.list.at(i).money/100)->_string,"shop/prop_num.png",21,28,'0');
         money->setPosition(300+175*i,230);
         money->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(money);

@@ -31,6 +31,11 @@ bool ChatDialog::init(){
     inputText->setPosition(640,335);
     addChild(inputText);
 
+    listView = cocos2d::ui::ListView::create();
+    addChild(listView);
+
+    
+    
     return true;
 }
 

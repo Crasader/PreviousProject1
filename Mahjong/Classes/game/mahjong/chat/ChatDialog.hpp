@@ -10,6 +10,7 @@
 #define ChatDialog_hpp
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "ui/UIListView.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -20,5 +21,6 @@ public:
     CREATE_FUNC(ChatDialog);
 private:
     void closeView();
+    cocos2d::ui::ListView* listView;
 };
 #endif /* ChatDialog_hpp */
