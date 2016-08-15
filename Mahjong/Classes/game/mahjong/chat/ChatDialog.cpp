@@ -55,17 +55,20 @@ bool ChatDialog::init(){
     inputField->setPosition(Point(610,85));
     addChild(inputField);
     
-    MenuItemImage* image = MenuItemImage::create("chat/quick_chat_btn_1.png","chat/quick_chat_btn_2.png");
+    MenuItemImage* image = MenuItemImage::create("chat/quick_chat_btn_1.png","chat/quick_chat_btn_2.png",CC_CALLBACK_0(ChatDialog::showQuickChatList, this));
     auto quickChatBtn  = Menu::create(image,NULL);
     quickChatBtn->setPosition(895,85);
     addChild(quickChatBtn);
     
-    MenuItemImage* face = MenuItemImage::create("chat/face_btn_1.png","chat/face_btn_2.png");
+    MenuItemImage* face = MenuItemImage::create("chat/face_btn_1.png","chat/face_btn_2.png",CC_CALLBACK_0(ChatDialog::showFaceList, this));
     auto faceChatBtn  = Menu::create(face,NULL);
     faceChatBtn->setPosition(960,85);
     addChild(faceChatBtn);
     
-    //TODO
+    EditBox* field = EditBox::create(Size(570,71), Scale9Sprite::create());
+    field->setTag(1001);
+    field->setPosition(Point(580,85));
+    addChild(field);
     
     showChatList();
     
@@ -98,21 +101,31 @@ void ChatDialog::showChatList(){
         }
         customItem->addChild(iamge);
         listView->pushBackCustomItem(customItem);
+
         
         std::string content = msgList.at(i).content;
         RichElementText* element = RichElementText::create(1, Color3B(255,255,255), 200, content, "arial", 20);
         RichText* text = RichText ::create();
-        text->insertElement(element, 0);
-        customItem->addChild(text);
+        text->pushBackElement(element);
+        text->formatText();
+        customItem->addChild(text,1);
         
-        if(msgList.at(i).poxiaoId != UserData::getInstance()->getPoxiaoId()){
+        auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 40), Rect(5, 0, 6, 40));
+        bob->setContentSize(Size(text->getContentSize().width+20, 40));
+        customItem->addChild(bob);
+        
+        if(msgList.at(i).poxiaoId == UserData::getInstance()->getPoxiaoId()){
             iamge->setPosition(Point(645,30));
             text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-            text->setPosition(Point(580,30));
+            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+            text->setPosition(Point(580,32));
+            bob->setPosition(Point(585,30));
         }else{
             iamge->setPosition(Point(80,30));
             text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            text->setPosition(Point(140,30));
+            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            text->setPosition(Point(140,32));
+            bob->setPosition(Point(135,30));
         }
     }
     
@@ -157,7 +170,7 @@ void ChatDialog::showFaceList(){
 
 void ChatDialog::testData(){
     ChatData chatData;
-    chatData.content = "hello world";
+    chatData.content = "hello world ffff fe";
     chatData.poxiaoId = "201608151556445526C6";
     std::vector<ChatData> data = GAMEDATA::getInstance()->getChatMsgList().msgList;
     data.push_back(chatData);
