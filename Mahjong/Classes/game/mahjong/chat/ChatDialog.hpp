@@ -31,6 +31,8 @@ private:
     void closeView();
     void showChatList();
     void updateShowUI();
+    void showQuickChatList();
+    void showFaceList();
     void testData();
 };
 #endif /* ChatDialog_hpp */

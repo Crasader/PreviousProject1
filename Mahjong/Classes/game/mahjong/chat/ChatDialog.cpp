@@ -28,23 +28,47 @@ bool ChatDialog::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChatDialog::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 650);
+    closeMenu->setPosition(980, 660);
     addChild(closeMenu);
     
-    auto inputText = Scale9Sprite::create("chat/chat_bg.png");
-    inputText->setContentSize(Size(720,565));
-    inputText->setPosition(640,335);
+    auto inputText = Scale9Sprite::create("mainlogin/bottom_bg.png");
+    inputText->setContentSize(Size(720,500));
+    inputText->setPosition(640,375);
     addChild(inputText);
     
     listView = ListView::create();
     listView->setDirection(ui::ScrollView::Direction::VERTICAL);//设置ListView布局方向
     listView->setTouchEnabled(true);//可触摸
-    listView->setSize(Size(720,540));//设置ListView大小
+    listView->setSize(Size(720,500));//设置ListView大小
     listView->ignoreContentAdaptWithSize(false);//开启锚点设置，false可更改锚点，true不可更改，Layer默认为point(0,0),其他Node为Point(0.5,0.5)
     listView->setAnchorPoint(Vec2(0.5, 0.5));//设置锚点，即锚点放在节点setPosition的位置，0，0：表示节点左下角；1，1：表示节点右上角；0.5，0.5表示节点中点
-    listView->setPosition(Point(640,335));
+    listView->setPosition(Point(640,375));
     addChild(listView);
+    
+    auto inputBg =  Scale9Sprite::create("mainlogin/bottom_bg.png");
+    inputBg->setContentSize(Size(720,81));
+    inputBg->setPosition(Point(640,85));
+    addChild(inputBg);
+    
+    auto inputField =  Scale9Sprite::create("mainlogin/bottom_bg.png");
+    inputField->setContentSize(Size(650,71));
+    inputField->setPosition(Point(610,85));
+    addChild(inputField);
+    
+    MenuItemImage* image = MenuItemImage::create("chat/quick_chat_btn_1.png","chat/quick_chat_btn_2.png");
+    auto quickChatBtn  = Menu::create(image,NULL);
+    quickChatBtn->setPosition(895,85);
+    addChild(quickChatBtn);
+    
+    MenuItemImage* face = MenuItemImage::create("chat/face_btn_1.png","chat/face_btn_2.png");
+    auto faceChatBtn  = Menu::create(face,NULL);
+    faceChatBtn->setPosition(960,85);
+    addChild(faceChatBtn);
+    
+    //TODO
+    
     showChatList();
+    
     return true;
 }
 
@@ -117,6 +141,19 @@ void ChatDialog:: updateShowUI(){
 void ChatDialog::closeView(){
     removeFromParent();
 }
+
+
+void ChatDialog::showQuickChatList(){
+    
+
+}
+
+
+void ChatDialog::showFaceList(){
+
+
+}
+
 
 void ChatDialog::testData(){
     ChatData chatData;
