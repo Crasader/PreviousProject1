@@ -9,9 +9,10 @@
 #ifndef ChatModule_hpp
 #define ChatModule_hpp
 #include "cocos2d.h"
+#include "game/mahjong/state/GameData.h"
 USING_NS_CC;
 
-class ChatModule : public Layer{
+class ChatModule : public Node{
 
 public:
     void onEnter() override;
@@ -19,7 +20,7 @@ public:
     virtual bool init();
     CREATE_FUNC(ChatModule);
 private:
-    EventListenerCustom* roomChatListener;
-    void showQuickText(std::string msg);
+//    std::vector<ChatData> chatMsg;//聊天的消息队列
+//    EventListenerCustom* roomChatListener;
 };
 #endif /* RoomChatModule_hpp */

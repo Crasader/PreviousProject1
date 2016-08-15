@@ -434,6 +434,11 @@ struct GameResumeData
 
 struct ChatData{
     std::string content;
-    std::string faceId;
+    std::string poxiaoId;
 };
+
+struct ChatMsgList{
+    std::vector<ChatData> msgList;
+};
+
 #endif

@@ -7,10 +7,11 @@
 //
 
 #include "ChatModule.hpp"
+#include "server/NetworkManage.h"
 
 
 bool ChatModule::init(){
-    if(!Layer::init()){
+    if(!Node::init()){
         return false;
     }
     return true;
@@ -18,21 +19,16 @@ bool ChatModule::init(){
 
 
 void ChatModule::onEnter(){
-    Layer::onEnter();
-    roomChatListener =  EventListenerCustom::create("", [=](EventCustom* event){
-        
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
+    Node::onEnter();
+//    roomChatListener =  EventListenerCustom::create(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
+//        
+//    });
+//    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
 }
 
 void ChatModule::onExit(){
-    Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
-}
-
-void ChatModule::showQuickText(std::string msg){
-    
-    
+    Node::onExit();
+//    Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
 }
 
 

@@ -20,6 +20,7 @@ void GAMEDATA::init(){
     setHuangfan("0");
     setKaibao("0");
     setIsResume(false);
+    chatMsgList.msgList.clear();
 }
 
 GAMEDATA* GAMEDATA::getInstance(){
@@ -48,8 +49,8 @@ bool GAMEDATA::getMusicState() {
 
 void GAMEDATA::addPlayersInfo(Player* player){
 	m_mutex.lock();
-    log("add player room  %d",playerVector.size());
 	playerVector.push_back(player);
+    log("add player room  %d",playerVector.size());
 	m_mutex.unlock();
 }
 
@@ -115,3 +116,4 @@ FriendListData GAMEDATA::sortFriendList(FriendListData data){
     }
     return data;
 }
+
