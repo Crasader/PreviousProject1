@@ -49,7 +49,6 @@ bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
     if (!this->getIsAllowTouch() || GAMEDATA::getInstance()->getIsTingState()){
         return false;
     }
-    log("abhajcaschaskjdaslkdjaslkjaslkfhsajkfhsajkghaghajkhgsjkhgaj");
     selectJong = getTouchJong(touch);
     if(NULL != virtualJong){
         virtualJong->removeFromParent();

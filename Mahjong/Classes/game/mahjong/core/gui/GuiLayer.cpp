@@ -72,7 +72,7 @@ void GuiLayer::initView(){
                                           CC_CALLBACK_0(GuiLayer::showPlayerBill, this));
         Menu* billMenu = Menu::create(bill, NULL);
         billMenu->setPosition(Point(1225, 180));
-        this->addChild(billMenu);
+        addChild(billMenu);
     }
 }
 

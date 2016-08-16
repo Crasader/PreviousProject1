@@ -28,6 +28,7 @@ package org.cocos2dx.cpp;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.app.IntentService;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -39,4 +40,5 @@ public class AppActivity extends Cocos2dxActivity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
+	IntentService
 }

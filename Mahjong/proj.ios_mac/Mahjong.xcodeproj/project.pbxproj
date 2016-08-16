@@ -296,6 +296,10 @@
 		D2BDE3B81CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3B51CEC367D00754AC0 /* OtherPlayerInfo.cpp */; };
 		D2C0E3E71CF6ECB1003AA986 /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2C0E3E51CF6ECB1003AA986 /* Huode.cpp */; };
 		D2C0E3E81CF6ECB1003AA986 /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2C0E3E51CF6ECB1003AA986 /* Huode.cpp */; };
+		D2CF763A1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */; };
+		D2CF763B1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */; };
+		D2CF763E1D62AC690035B870 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */; };
+		D2CF763F1D62AC690035B870 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -608,6 +612,10 @@
 		D2BDE3B61CEC367D00754AC0 /* OtherPlayerInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OtherPlayerInfo.hpp; sourceTree = "<group>"; };
 		D2C0E3E51CF6ECB1003AA986 /* Huode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Huode.cpp; sourceTree = "<group>"; };
 		D2C0E3E61CF6ECB1003AA986 /* Huode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Huode.hpp; sourceTree = "<group>"; };
+		D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuickChatLayer.cpp; sourceTree = "<group>"; };
+		D2CF76391D62A68C0035B870 /* QuickChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuickChatLayer.hpp; sourceTree = "<group>"; };
+		D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaceChatLayer.cpp; sourceTree = "<group>"; };
+		D2CF763D1D62AC690035B870 /* FaceChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaceChatLayer.hpp; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -993,6 +1001,10 @@
 				D21D81CB1D5C147F00560DC5 /* PlayerChat.h */,
 				D21D81D81D5C191500560DC5 /* ChatDialog.cpp */,
 				D21D81D91D5C191500560DC5 /* ChatDialog.hpp */,
+				D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */,
+				D2CF76391D62A68C0035B870 /* QuickChatLayer.hpp */,
+				D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */,
+				D2CF763D1D62AC690035B870 /* FaceChatLayer.hpp */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -1559,6 +1571,7 @@
 				D28A4A321D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
 				D2B1A8951CCDF0F400A20896 /* DailyTask.cpp in Sources */,
 				D2B1A8AD1CCDF0F400A20896 /* HeadImageDialog.cpp in Sources */,
+				D2CF763A1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */,
 				D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
 				D2B1A8E51CCDF0F400A20896 /* GameData.cpp in Sources */,
@@ -1575,6 +1588,7 @@
 				D2B1A89D1CCDF0F400A20896 /* FriendInvite.cpp in Sources */,
 				D2B1A8B11CCDF0F400A20896 /* NickNameDialog.cpp in Sources */,
 				D26081DF1D2C9F7300FDBC40 /* GameFeedDialog.cpp in Sources */,
+				D2CF763E1D62AC690035B870 /* FaceChatLayer.cpp in Sources */,
 				D22912441D128367005C7167 /* LoginMannger.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				D2B1A8D91CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
@@ -1713,6 +1727,7 @@
 				D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */,
+				D2CF763B1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */,
 				D2B1A8881CCDF0F400A20896 /* BillInfo.cpp in Sources */,
 				D2B1A8A01CCDF0F400A20896 /* FriendListView.cpp in Sources */,
 				D28A4A351D056B7A00741FD0 /* StringUtil.cpp in Sources */,
@@ -1725,6 +1740,7 @@
 				D2B1A8721CCDF0F400A20896 /* Loading.cpp in Sources */,
 				D2B1A8D81CCDF0F400A20896 /* PlayerBase.cpp in Sources */,
 				D28A4A4B1D0D40C400741FD0 /* GoldNotEnoughDialog.cpp in Sources */,
+				D2CF763F1D62AC690035B870 /* FaceChatLayer.cpp in Sources */,
 				D20C391B1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */,
 				D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D28A4A331D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,

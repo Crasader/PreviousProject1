@@ -8,8 +8,10 @@
 
 #include "game/mahjong/chat/ChatDialog.hpp"
 #include "server/NetworkManage.h"
-#include "game/mahjong/state/GameData.h"
 #include "userdata/UserData.h"
+#include "game/mahjong/state/GameData.h"
+#include "game/mahjong/chat/QuickChatLayer.hpp"
+#include "game/mahjong/chat/FaceChatLayer.hpp"
 
 bool ChatDialog::init(){
     if(!Layer::init()){
@@ -101,7 +103,7 @@ void ChatDialog::showChatList(){
         }
         customItem->addChild(iamge);
         listView->pushBackCustomItem(customItem);
-
+        
         
         std::string content = msgList.at(i).content;
         RichElementText* element = RichElementText::create(1, Color3B(255,255,255), 200, content, "arial", 20);
@@ -157,14 +159,14 @@ void ChatDialog::closeView(){
 
 
 void ChatDialog::showQuickChatList(){
-    
-
+    QuickChatLayer* qc = QuickChatLayer::create();
+    addChild(qc);
 }
 
 
 void ChatDialog::showFaceList(){
-
-
+    FaceChatLayer* fc = FaceChatLayer::create();
+    addChild(fc);
 }
 
 
