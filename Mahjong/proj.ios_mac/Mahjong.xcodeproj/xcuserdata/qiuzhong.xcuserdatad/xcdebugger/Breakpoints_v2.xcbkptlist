@@ -2987,11 +2987,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/chat/QuickChatLayer.cpp"
-            timestampString = "493005082.293638"
+            timestampString = "493096520.153114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28">
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "QuickChatLayer::selectedItemEvent(Ref *pSender, ListView::EventType type)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
