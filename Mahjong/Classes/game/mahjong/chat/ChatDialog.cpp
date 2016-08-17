@@ -9,11 +9,20 @@
 #include "game/mahjong/chat/ChatDialog.hpp"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
-#include "game/mahjong/state/GameData.h"
 #include "game/mahjong/chat/QuickChatLayer.hpp"
 #include "game/mahjong/chat/FaceChatLayer.hpp"
 
-bool ChatDialog::init(){
+ChatDialog* ChatDialog::create(std::string poxiaoId){
+    ChatDialog* cell = new ChatDialog();
+    if(cell&& cell->init(poxiaoId)){
+        cell->autorelease();
+        return cell;
+    }
+    CC_SAFE_DELETE(cell);
+    return NULL;
+}
+
+bool ChatDialog::init(std::string poxiaoId){
     if(!Layer::init()){
         return false;
     }
@@ -77,13 +86,27 @@ bool ChatDialog::init(){
     field->setPosition(Point(545,85));
     addChild(field);
     
-    showChatList();
+    showChatList(poxiaoId);
     
     return true;
 }
 
-void ChatDialog::showChatList(){
-    std::vector<ChatData> msgList = GAMEDATA::getInstance()->getChatMsgList().msgList;
+void ChatDialog::showChatList(std::string poxiaoId){
+    std::vector<ChatData> msgList;
+    if(poxiaoId == "" || poxiaoId.size()<10){
+        RoomChatMsgList list = GAMEDATA::getInstance()->getRoomChatMsgList();
+        msgList = list.msgList;
+    }else{
+        FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
+        for(auto msg : list.friendMsgList){
+            if(msg.poxiaoId == poxiaoId){
+                msgList = msg.msgList;
+            }
+        }
+    }
+    if(msgList.size()==0){
+        return;
+    }
     for(int i = 0;i<msgList.size();i++){
         Layout *customItem = Layout::create();
         customItem->setLayoutType(Layout::Type::ABSOLUTE);
@@ -135,7 +158,7 @@ void ChatDialog::showChatList(){
             bob->setPosition(Point(135,30));
         }
     }
-    
+
 }
 
 
@@ -143,7 +166,7 @@ void ChatDialog::showChatList(){
 void ChatDialog::onEnter(){
     Layer::onEnter();
     roomChatListener =  EventListenerCustom::create(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
-        updateShowUI();
+        showChatInfo(GAMEDATA::getInstance()->getChatData());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
 }
@@ -154,8 +177,55 @@ void ChatDialog::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
 }
 
-void ChatDialog:: updateShowUI(){
-    showChatList();
+void ChatDialog:: showChatInfo(ChatData data){
+    Layout *customItem = Layout::create();
+    customItem->setLayoutType(Layout::Type::ABSOLUTE);
+    customItem->setContentSize(Size(720,100));
+    //显示聊天的头像
+    Sprite* iamge = Sprite::create();
+    for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
+        if(data.poxiaoId == player->getPoxiaoId()){
+            if(player->getPicture() == "1"){
+                iamge->setTexture("gameview/head_image_1.png");
+            }else if(player->getPicture() == "2"){
+                iamge->setTexture("gameview/head_image_2.png");
+            }else if(player->getPicture() == "3"){
+                iamge->setTexture("gameview/head_image_3.png");
+            }else if(player->getPicture() == "4"){
+                iamge->setTexture("gameview/head_image_4.png");
+            }else{
+                log("服务器下发的头像图片不存在");
+                iamge->setTexture("gameview/head_image_1.png");
+            }
+        }
+    }
+    customItem->addChild(iamge);
+    listView->pushBackCustomItem(customItem);
+
+    std::string content = data.content;
+    RichElementText* element = RichElementText::create(1, Color3B(255,255,255), 200, content, "arial", 20);
+    RichText* text = RichText ::create();
+    text->pushBackElement(element);
+    text->formatText();
+    customItem->addChild(text,1);
+    
+    auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 40), Rect(5, 0, 6, 40));
+    bob->setContentSize(Size(text->getContentSize().width+20, 40));
+    customItem->addChild(bob);
+    
+    if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
+        iamge->setPosition(Point(645,30));
+        text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+        bob->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+        text->setPosition(Point(580,32));
+        bob->setPosition(Point(585,30));
+    }else{
+        iamge->setPosition(Point(80,30));
+        text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        text->setPosition(Point(140,32));
+        bob->setPosition(Point(135,30));
+    }
 }
 
 void ChatDialog::closeView(){

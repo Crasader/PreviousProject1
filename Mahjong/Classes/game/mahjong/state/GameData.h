@@ -89,7 +89,9 @@ public:
     CC_SYNTHESIZE(string, kaibao, Kaibao);
     CC_SYNTHESIZE(string, huangfan, Huangfan);
     CC_SYNTHESIZE(string, diaopao, Diaopao);
-    CC_SYNTHESIZE(ChatMsgList, chatMsgList, ChatMsgList);
+    CC_SYNTHESIZE(ChatData, chatData, ChatData);
+    CC_SYNTHESIZE(RoomChatMsgList, roomChatMsgList, RoomChatMsgList);
+    CC_SYNTHESIZE(FriendChatMsgList, friendChatMsgList, FriendChatMsgList);
     
     
 private:

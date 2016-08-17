@@ -102,7 +102,7 @@ void GuiLayer::soundButtonClick(){
 }
 
 void GuiLayer::chatButtonClick(){
-    auto gameChat = ChatDialog::create();
+    auto gameChat = ChatDialog::create("");
     gameChat->setTag(1001);
     addChild(gameChat);
 }

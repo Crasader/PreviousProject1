@@ -433,12 +433,21 @@ struct GameResumeData
 };
 
 struct ChatData{
+    std::string nickname;
     std::string content;
     std::string poxiaoId;
 };
 
-struct ChatMsgList{
+struct RoomChatMsgList{
     std::vector<ChatData> msgList;
 };
 
+struct FriendChatData{
+    std::string poxiaoId;
+    std::vector<ChatData> msgList;
+};
+
+struct FriendChatMsgList{
+    std::vector<FriendChatData> friendMsgList;
+};
 #endif

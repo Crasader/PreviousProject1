@@ -1488,9 +1488,31 @@ void MsgHandler::playerChatNotify(std::string msg){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         chatData.poxiaoId = poxiaoId.GetString();
     }
-    ChatMsgList list;
-    list.msgList.push_back(chatData);
-    GAMEDATA::getInstance()->setChatMsgList(list);
+    if (_mDoc.HasMember("nickname")){
+        const rapidjson::Value &nickname = _mDoc["nickname"];
+        chatData.nickname = nickname.GetString();
+    }
+    if (_mDoc.HasMember("flag")){
+        const rapidjson::Value &flag = _mDoc["flag"];
+        if(flag.GetInt() == 0){
+            FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
+            if(_mDoc.HasMember("fId")){
+                const rapidjson::Value &fId = _mDoc["fId"];
+                for(auto var : list.friendMsgList){
+                    if(fId.GetString() == var.poxiaoId){
+                        var.msgList.push_back(chatData);
+                    }
+                }
+            }
+            GAMEDATA::getInstance()->setFriendChatMsgList(list);
+        }else{
+            RoomChatMsgList list = GAMEDATA::getInstance()->getRoomChatMsgList();
+            list.msgList.push_back(chatData);
+            GAMEDATA::getInstance()->setRoomChatMsgList(list);
+        }
+    }
+
+    GAMEDATA::getInstance()->setChatData(chatData);
     postNotifyMessage(MSG_PLAYER_CHAT_NOTIFY, "");
 }
 
