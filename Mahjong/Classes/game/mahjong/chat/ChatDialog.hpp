@@ -33,7 +33,7 @@ private:
     void updateShowUI();
     void showQuickChatList();
     void showFaceList();
-    void sendMessage(std::string msg);
+    void sendMessage();
     void testData();
 };
 #endif /* ChatDialog_hpp */

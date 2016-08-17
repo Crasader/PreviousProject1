@@ -53,23 +53,28 @@ bool ChatDialog::init(){
     addChild(inputBg);
     
     auto inputField =  Scale9Sprite::create("mainlogin/bottom_bg.png");
-    inputField->setContentSize(Size(650,71));
-    inputField->setPosition(Point(610,85));
+    inputField->setContentSize(Size(560,71));
+    inputField->setPosition(Point(565,85));
     addChild(inputField);
     
     MenuItemImage* image = MenuItemImage::create("chat/quick_chat_btn_1.png","chat/quick_chat_btn_2.png",CC_CALLBACK_0(ChatDialog::showQuickChatList, this));
     auto quickChatBtn  = Menu::create(image,NULL);
-    quickChatBtn->setPosition(895,85);
+    quickChatBtn->setPosition(805,85);
     addChild(quickChatBtn);
     
     MenuItemImage* face = MenuItemImage::create("chat/face_btn_1.png","chat/face_btn_2.png",CC_CALLBACK_0(ChatDialog::showFaceList, this));
     auto faceChatBtn  = Menu::create(face,NULL);
-    faceChatBtn->setPosition(960,85);
+    faceChatBtn->setPosition(865,85);
     addChild(faceChatBtn);
     
-    EditBox* field = EditBox::create(Size(570,71), Scale9Sprite::create());
+    MenuItemImage* snd = MenuItemImage::create("chat/send_btn_1.png","chat/send_btn_2.png",CC_CALLBACK_0(ChatDialog::sendMessage, this));
+    auto sendBtn  = Menu::create(snd,NULL);
+    sendBtn->setPosition(942,85);
+    addChild(sendBtn);
+    
+    EditBox* field = EditBox::create(Size(500,71), Scale9Sprite::create());
     field->setTag(1001);
-    field->setPosition(Point(580,85));
+    field->setPosition(Point(545,85));
     addChild(field);
     
     showChatList();
@@ -150,7 +155,8 @@ void ChatDialog::onExit(){
 }
 
 void ChatDialog:: updateShowUI(){
-    
+    log("SSSSSSSSSSSSSSSSSSSSS");
+    showChatList();
 }
 
 void ChatDialog::closeView(){
@@ -169,20 +175,19 @@ void ChatDialog::showFaceList(){
     addChild(fc);
 }
 
-void ChatDialog:: sendMessage(std::string msg){
-
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(<#std::string msg#>));
-
+void ChatDialog:: sendMessage(){
+    std::string msg = "hello world";
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg));
 }
 
 void ChatDialog::testData(){
-    ChatData chatData;
-    chatData.content = "hello world ffff fe";
-    chatData.poxiaoId = "201608151556445526C6";
-    std::vector<ChatData> data = GAMEDATA::getInstance()->getChatMsgList().msgList;
-    data.push_back(chatData);
-    ChatMsgList list;
-    list.msgList =  data;
-    GAMEDATA::getInstance()->setChatMsgList(list);
+//    ChatData chatData;
+//    chatData.content = "hello world ffff fe";
+//    chatData.poxiaoId = "201608151556445526C6";
+//    std::vector<ChatData> data = GAMEDATA::getInstance()->getChatMsgList().msgList;
+//    data.push_back(chatData);
+//    ChatMsgList list;
+//    list.msgList =  data;
+//    GAMEDATA::getInstance()->setChatMsgList(list);
 }
 
