@@ -175,8 +175,14 @@ void ChatDialog::showFaceList(){
 }
 
 void ChatDialog:: sendMessage(){
-    std::string msg = "hello world";
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg));
+    if(NULL != getChildByTag(1001)){
+        std::string msg = ((cocos2d::ui::EditBox*)getChildByTag(1001))->getText();
+        if("" != msg){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,""));
+        }
+        ((cocos2d::ui::EditBox*)getChildByTag(1001))->setText("");
+    }
+    
 }
 
 void ChatDialog::testData(){

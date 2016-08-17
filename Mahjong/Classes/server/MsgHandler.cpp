@@ -285,7 +285,7 @@ void MsgHandler::distribute(int code, std::string msg){
             friendEnterRoomResp(msg);
             break;
         }
-        case MSGCODE_CHART_NOTIFY:
+        case MSGCODE_GAME_CHART_NOTIFY:
         {
             log(" *** chat info notify *** ");
             playerChatNotify(msg);
