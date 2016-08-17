@@ -1488,10 +1488,8 @@ void MsgHandler::playerChatNotify(std::string msg){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         chatData.poxiaoId = poxiaoId.GetString();
     }
-    std::vector<ChatData> data = GAMEDATA::getInstance()->getChatMsgList().msgList;
-    data.push_back(chatData);
     ChatMsgList list;
-    list.msgList =  data;
+    list.msgList.push_back(chatData);
     GAMEDATA::getInstance()->setChatMsgList(list);
     postNotifyMessage(MSG_PLAYER_CHAT_NOTIFY, "");
 }

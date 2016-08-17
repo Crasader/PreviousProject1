@@ -96,9 +96,10 @@ void PlayerHero::onTouchMoved(Touch *touch, Event *event) {
 
 void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
     if (virtualJong != NULL&&selectJong != NULL){
+        virtualJong->setOpacity(255);
         playPokerByHand(virtualJong);
         arrangeHandJongs();
-        virtualJong->setOpacity(255);
+
     }
     if (isAllowPlay) {
         if (doubleClickJong == NULL){
@@ -130,6 +131,9 @@ Jong* PlayerHero::getTouchJong(Touch *touch){
 
 
 void PlayerHero::playPokerByHand(Jong* jong){
+    if(NULL != virtualJong){
+        virtualJong = NULL;
+    }
     stopTimeClockAnim();
     PlayerBase::showPlayedJong(jong->getJongType());
     Point startPoint = jong->getPosition();
