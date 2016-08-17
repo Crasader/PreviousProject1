@@ -567,12 +567,11 @@ std::string CommandManage:: getContinueGameCommand(){
     return commandString(keyValue);
 }
 
-std::string CommandManage::getPlayerChatMsgCommand(std::string msg,std::string picName){
+std::string CommandManage::getPlayerChatMsgCommand(std::string msg){
     std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_AGAIN_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CHART_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("content", msg));
-    keyValue.insert(map<string, string>::value_type("face", picName));
     return commandString(keyValue);
 }
 

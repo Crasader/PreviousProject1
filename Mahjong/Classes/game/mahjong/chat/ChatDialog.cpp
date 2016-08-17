@@ -169,6 +169,11 @@ void ChatDialog::showFaceList(){
     addChild(fc);
 }
 
+void ChatDialog:: sendMessage(std::string msg){
+
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(<#std::string msg#>));
+
+}
 
 void ChatDialog::testData(){
     ChatData chatData;
