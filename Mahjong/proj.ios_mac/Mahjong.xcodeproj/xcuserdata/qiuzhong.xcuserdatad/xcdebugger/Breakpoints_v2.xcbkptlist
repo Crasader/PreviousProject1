@@ -2987,11 +2987,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/chat/QuickChatLayer.cpp"
-            timestampString = "493096520.153114"
+            timestampString = "493178088.6309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "QuickChatLayer::selectedItemEvent(Ref *pSender, ListView::EventType type)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3003,29 +3003,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/chat/ChatDialog.cpp"
-            timestampString = "493120054.267542"
+            timestampString = "493183613.081571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "ChatDialog::showChatList(std::string poxiaoId)"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "ChatDialog:: showChatInfo(ChatData data)"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/game/mahjong/chat/ChatDialog.cpp"
-            timestampString = "493120065.064076"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "ChatDialog::showChatList(std::string poxiaoId)"
-            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChatDialog::showChatInfo(ChatData)"
+                  moduleName = "Mahjong-desktop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/game/mahjong/chat/ChatDialog.cpp"
+                  timestampString = "493182399.45372"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "4352">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChatDialog::showChatInfo(ChatData)"
+                  moduleName = "Mahjong-desktop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/game/mahjong/chat/ChatDialog.cpp"
+                  timestampString = "493182399.453886"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "4755">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

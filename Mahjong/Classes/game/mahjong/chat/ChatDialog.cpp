@@ -26,8 +26,7 @@ bool ChatDialog::init(std::string poxiaoId){
     if(!Layer::init()){
         return false;
     }
-    testData();
-    
+    initAllFace();
     MenuItem* item = MenuItem::create();
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
@@ -91,6 +90,32 @@ bool ChatDialog::init(std::string poxiaoId){
     return true;
 }
 
+void ChatDialog::initAllFace(){
+    allFaceName.push_back("[face1]");
+    allFaceName.push_back("[face2]");
+    allFaceName.push_back("[face3]");
+    allFaceName.push_back("[face4]");
+    allFaceName.push_back("[face5]");
+    allFaceName.push_back("[face6]");
+    allFaceName.push_back("[face7]");
+    allFaceName.push_back("[face8]");
+    allFaceName.push_back("[face9]");
+    allFaceName.push_back("[face10]");
+    allFaceName.push_back("[face11]");
+    allFaceName.push_back("[face12]");
+    allFaceName.push_back("[face13]");
+    allFaceName.push_back("[face14]");
+    allFaceName.push_back("[face15]");
+    allFaceName.push_back("[face16]");
+    allFaceName.push_back("[face17]");
+    allFaceName.push_back("[face18]");
+    allFaceName.push_back("[face19]");
+    allFaceName.push_back("[face20]");
+    allFaceName.push_back("[face21]");
+    allFaceName.push_back("[face22]");
+    allFaceName.push_back("[face23]");
+}
+
 void ChatDialog::showChatList(std::string poxiaoId){
     std::vector<ChatData> msgList;
     if(poxiaoId == "" || poxiaoId.size()<10){
@@ -108,57 +133,9 @@ void ChatDialog::showChatList(std::string poxiaoId){
         return;
     }
     for(int i = 0;i<msgList.size();i++){
-        Layout *customItem = Layout::create();
-        customItem->setLayoutType(Layout::Type::ABSOLUTE);
-        customItem->setContentSize(Size(720,100));
-        //显示聊天的头像
-        Sprite* iamge = Sprite::create();
-        for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
-            if(msgList.at(i).poxiaoId == player->getPoxiaoId()){
-                if(player->getPicture() == "1"){
-                    iamge->setTexture("gameview/head_image_1.png");
-                }else if(player->getPicture() == "2"){
-                    iamge->setTexture("gameview/head_image_2.png");
-                }else if(player->getPicture() == "3"){
-                    iamge->setTexture("gameview/head_image_3.png");
-                }else if(player->getPicture() == "4"){
-                    iamge->setTexture("gameview/head_image_4.png");
-                }else{
-                    log("服务器下发的头像图片不存在");
-                    iamge->setTexture("gameview/head_image_1.png");
-                }
-            }
-        }
-        customItem->addChild(iamge);
-        listView->pushBackCustomItem(customItem);
-        
-        
-        std::string content = msgList.at(i).content;
-        RichElementText* element = RichElementText::create(1, Color3B(255,255,255), 200, content, "arial", 20);
-        RichText* text = RichText ::create();
-        text->pushBackElement(element);
-        text->formatText();
-        customItem->addChild(text,1);
-        
-        auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 40), Rect(5, 0, 6, 40));
-        bob->setContentSize(Size(text->getContentSize().width+20, 40));
-        customItem->addChild(bob);
-        
-        if(msgList.at(i).poxiaoId == UserData::getInstance()->getPoxiaoId()){
-            iamge->setPosition(Point(645,30));
-            text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-            text->setPosition(Point(580,32));
-            bob->setPosition(Point(585,30));
-        }else{
-            iamge->setPosition(Point(80,30));
-            text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            text->setPosition(Point(140,32));
-            bob->setPosition(Point(135,30));
-        }
+        showChatInfo(msgList.at(i));
     }
-
+    
 }
 
 
@@ -201,29 +178,39 @@ void ChatDialog:: showChatInfo(ChatData data){
     }
     customItem->addChild(iamge);
     listView->pushBackCustomItem(customItem);
-
-    std::string content = data.content;
-    RichElementText* element = RichElementText::create(1, Color3B(255,255,255), 200, content, "arial", 20);
-    RichText* text = RichText ::create();
-    text->pushBackElement(element);
-    text->formatText();
-    customItem->addChild(text,1);
     
-    auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 40), Rect(5, 0, 6, 40));
-    bob->setContentSize(Size(text->getContentSize().width+20, 40));
+    std::string content = data.content;
+    vector<std::string> msgs = splitContentByFace(content);
+    RichText* text = RichText ::create();
+    text->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    for(auto var : msgs){
+        if(!isFaceImage(var)){
+            RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
+            text->pushBackElement(element1);
+            text->formatText();
+        }else{
+            RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, getFaceImageName(var));
+            text->pushBackElement(element2);
+            text->formatText();
+        }
+    }
+    customItem->addChild(text,1);
+    auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(5, 0, 6, 38));
+    bob->setContentSize(Size(text->getContentSize().width+20, 65));
     customItem->addChild(bob);
     
     if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
         iamge->setPosition(Point(645,30));
         text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         bob->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        text->setPosition(Point(580,32));
+        text->setPosition(Point(580,40));
         bob->setPosition(Point(585,30));
     }else{
         iamge->setPosition(Point(80,30));
         text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        text->setPosition(Point(140,32));
+        text->setPosition(Point(140,40
+                                ));
         bob->setPosition(Point(135,30));
     }
 }
@@ -235,6 +222,7 @@ void ChatDialog::closeView(){
 
 void ChatDialog::showQuickChatList(){
     QuickChatLayer* qc = QuickChatLayer::create();
+    qc->setTag(100);
     addChild(qc);
 }
 
@@ -252,17 +240,65 @@ void ChatDialog:: sendMessage(){
         }
         ((cocos2d::ui::EditBox*)getChildByTag(1001))->setText("");
     }
+}
+
+void ChatDialog::sendFaceId(int id){
+    if(NULL != getChildByTag(1001)){
+        std::string msg = ((cocos2d::ui::EditBox*)getChildByTag(1001))->getText();
+        std::string neeMsg = msg+ StringUtils::format("[face%d]",id);
+        ((cocos2d::ui::EditBox*)getChildByTag(1001))->setText(neeMsg.c_str());
+    }
     
 }
 
-void ChatDialog::testData(){
-//    ChatData chatData;
-//    chatData.content = "hello world ffff fe";
-//    chatData.poxiaoId = "201608151556445526C6";
-//    std::vector<ChatData> data = GAMEDATA::getInstance()->getChatMsgList().msgList;
-//    data.push_back(chatData);
-//    ChatMsgList list;
-//    list.msgList =  data;
-//    GAMEDATA::getInstance()->setChatMsgList(list);
+void ChatDialog::sendQuickChat(std::string msg){
+    if(NULL != getChildByTag(1001)){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,""));
+    }
 }
 
+
+vector<std::string> ChatDialog::splitContentByFace(std::string content){
+    vector<std::string> msgs;
+    
+    const char* mark1 = "[";
+    const char* mark2 = "]";
+    int pos1 = content.find(mark1);
+    int pos2 = content.find(mark2);
+    std::string part1 = "";
+    std::string part2 ="";
+    std::string part3 = "";
+    if(pos1>=0 && pos2>=0){
+        part1 = content.substr(0,pos1);
+        part2 = content.substr(pos1,pos2-pos1+1);
+        part3 = content.substr(pos2+1,content.size()-1);
+        if(part1 != "")
+            msgs.push_back(part1);
+        if(part2 != "")
+            msgs.push_back(part2);
+        if(part3 != "")
+            msgs.push_back(part3);
+    }else{
+        msgs.push_back(content);
+    }
+    return msgs;
+}
+
+bool ChatDialog::isFaceImage(std::string con){
+    for(auto var: allFaceName){
+        if(con == var){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+std::string ChatDialog::getFaceImageName(std::string name){
+    for(int i=0; i<allFaceName.size();i++){
+        if(name == allFaceName.at(i)){
+            return StringUtils::format("chat/face_%d.png",i+1);
+        }
+    }
+    return "chat/face_1.png";
+}

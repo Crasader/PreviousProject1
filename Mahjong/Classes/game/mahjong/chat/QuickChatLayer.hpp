@@ -23,5 +23,6 @@ private:
     void onTouchMoved(Touch *touch, Event  *event) override;
     void onTouchEnded(Touch *touch, Event  *event) override;
     void selectedItemEvent(Ref *pSender, ListView::EventType type);
+    std::string getQuickChatById(int id);
 };
 #endif /* QuickChatLayer_hpp */

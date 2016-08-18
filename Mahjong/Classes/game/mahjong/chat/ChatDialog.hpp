@@ -25,16 +25,21 @@ public:
     static ChatDialog* create(std::string poxiaoId);
     void onEnter() override;
     void onExit() override;
-    
+    void sendFaceId(int id);
+    void sendQuickChat(std::string msg);
 private:
     ListView* listView;
     EventListenerCustom* roomChatListener;
+    vector<std::string> allFaceName;
+    void initAllFace();
     void closeView();
     void showChatList(std::string poxiaoId);
     void showChatInfo(ChatData data);
     void showQuickChatList();
     void showFaceList();
     void sendMessage();
-    void testData();
+    std::string getFaceImageName(std::string name);
+    vector<std::string> splitContentByFace(std::string content);
+    bool isFaceImage(std::string con);
 };
 #endif /* ChatDialog_hpp */

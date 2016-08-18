@@ -7,6 +7,7 @@
 //
 
 #include "game/mahjong/chat/FaceChatLayer.hpp"
+#include "game/mahjong/chat/ChatDialog.hpp"
 
 
 bool FaceChatLayer::init(){
@@ -56,4 +57,5 @@ void FaceChatLayer:: onTouchEnded(Touch *touch, Event  *event){
 
 void FaceChatLayer::faceSelected(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
+    ((ChatDialog*)getParent())->sendFaceId(temp->getTag());
 }
