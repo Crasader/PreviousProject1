@@ -182,6 +182,7 @@ void ChatDialog:: showChatInfo(ChatData data){
         bob->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         text->setPosition(Point(580,40));
         bob->setPosition(Point(585,30));
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);//test
     }else{
         iamge->setPosition(Point(80,30));
         text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);

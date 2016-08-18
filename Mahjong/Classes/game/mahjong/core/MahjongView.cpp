@@ -61,7 +61,7 @@ void MahjongView::loadView(){
     controllPad->setVisible(false);
     this->addChild(controllPad, 10);
     guiLayer = GuiLayer::create();
-    this->addChild(guiLayer, 150);
+    addChild(guiLayer, 150);
     choiceMenu = Sprite::create();
     choiceMenu->setAnchorPoint(Point(0, 0));
     choiceMenu->setPosition(Point(0, 0));

@@ -45,7 +45,19 @@ void GuiLayer::onEnter(){
                 text->formatText();
             }
         }
-
+        int seatId = GAMEDATA::getInstance()->getHeroSeatId();
+        for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
+            if(play->getPoxiaoId() == data.poxiaoId){
+                seatId = play->getSeatId();
+            }
+        }
+        text->setPosition(getVec2BySeatId(seatId));
+        addChild(text,1);
+        auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(5, 0, 6, 38));
+        bob->setContentSize(Size(text->getContentSize().width+20, 65));
+        bob->setPosition(getVec2BySeatId(seatId));
+        addChild(bob);
+        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
 };
@@ -136,7 +148,7 @@ void GuiLayer::soundButtonClick(){
 void GuiLayer::chatButtonClick(){
     auto gameChat = ChatDialog::create("");
     gameChat->setTag(1001);
-    addChild(gameChat);
+    addChild(gameChat,2);
 }
 
 void GuiLayer::settingButtonClick(){
@@ -223,3 +235,16 @@ void GuiLayer::invitePlayer(Ref* ref){
     FriendInvite* invite = FriendInvite::create();
     addChild(invite);
 }
+
+Point GuiLayer::getVec2BySeatId(int seatId){
+    int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId);
+    if(seatID == ClientSeatId::left){
+        return Vec2(180,470);
+    }else if(seatID == ClientSeatId::opposite){
+        return Vec2(820,650);
+    }else if(seatID == ClientSeatId::right){
+        return Vec2(1100,470);;
+    }else{
+        return Vec2(180,200);
+    }
+ }
