@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
     name="Mahjong"
-    default="debug" >
+    default="release" >
 
     <!--
          The local.properties file is created and updated by the 'android' tool.

@@ -121,7 +121,7 @@ void ChatDialog::showChatList(std::string poxiaoId){
 
 void ChatDialog::onEnter(){
     Layer::onEnter();
-    roomChatListener =  EventListenerCustom::create(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
+    roomChatListener =  EventListenerCustom::create(MSG_PLAYER_ROOM_CHAT_SHOW, [=](EventCustom* event){
         showChatInfo(GAMEDATA::getInstance()->getChatData());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
@@ -139,15 +139,48 @@ void ChatDialog:: showChatInfo(ChatData data){
     customItem->setContentSize(Size(720,100));
     //显示聊天的头像
     Sprite* iamge = Sprite::create();
-    for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
-        if(data.poxiaoId == player->getPoxiaoId()){
-            if(player->getPicture() == "1"){
+    if(chatPid == ""){
+        for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
+            if(data.poxiaoId == player->getPoxiaoId()){
+                if(player->getPicture() == "1"){
+                    iamge->setTexture("gameview/head_image_1.png");
+                }else if(player->getPicture() == "2"){
+                    iamge->setTexture("gameview/head_image_2.png");
+                }else if(player->getPicture() == "3"){
+                    iamge->setTexture("gameview/head_image_3.png");
+                }else if(player->getPicture() == "4"){
+                    iamge->setTexture("gameview/head_image_4.png");
+                }else{
+                    log("服务器下发的头像图片不存在");
+                    iamge->setTexture("gameview/head_image_1.png");
+                }
+            }
+        }
+    }else{
+        for(auto player : GAMEDATA::getInstance()->getFriendList().friends){
+            if(data.poxiaoId == player.poxiaoId){
+                if(player.pic == "1"){
+                    iamge->setTexture("gameview/head_image_1.png");
+                }else if(player.pic== "2"){
+                    iamge->setTexture("gameview/head_image_2.png");
+                }else if(player.pic == "3"){
+                    iamge->setTexture("gameview/head_image_3.png");
+                }else if(player.pic == "4"){
+                    iamge->setTexture("gameview/head_image_4.png");
+                }else{
+                    log("服务器下发的头像图片不存在");
+                    iamge->setTexture("gameview/head_image_1.png");
+                }
+            }
+        }
+        if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
+            if(UserData::getInstance()->getPicture() == "1"){
                 iamge->setTexture("gameview/head_image_1.png");
-            }else if(player->getPicture() == "2"){
+            }else if(UserData::getInstance()->getPicture()== "2"){
                 iamge->setTexture("gameview/head_image_2.png");
-            }else if(player->getPicture() == "3"){
+            }else if(UserData::getInstance()->getPicture() == "3"){
                 iamge->setTexture("gameview/head_image_3.png");
-            }else if(player->getPicture() == "4"){
+            }else if(UserData::getInstance()->getPicture() == "4"){
                 iamge->setTexture("gameview/head_image_4.png");
             }else{
                 log("服务器下发的头像图片不存在");
@@ -184,14 +217,12 @@ void ChatDialog:: showChatInfo(ChatData data){
         bob->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         text->setPosition(Point(580,40));
         bob->setPosition(Point(585,30));
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);//test
     }else{
         iamge->setPosition(Point(80,30));
         text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         text->setPosition(Point(140,40));
         bob->setPosition(Point(135,30));
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
     }
 }
 

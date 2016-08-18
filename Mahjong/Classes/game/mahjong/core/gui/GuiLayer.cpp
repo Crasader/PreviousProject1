@@ -28,7 +28,8 @@ bool GuiLayer::init(){
 
 void GuiLayer::onEnter(){
     Layer::onEnter();
-    auto roomChatListener = EventListenerCustom::create(MSG_PLAYER_ROOM_CHAT_SHOW, [=](EventCustom* event){
+    auto roomChatListener = EventListenerCustom::create(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
         ChatData data = GAMEDATA::getInstance()->getChatData();
         std::string content = data.content;
         vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
@@ -57,7 +58,10 @@ void GuiLayer::onEnter(){
         bob->setContentSize(Size(text->getContentSize().width+20, 65));
         bob->setPosition(getVec2BySeatId(seatId));
         addChild(bob);
-        
+        schedule([=](float dt){
+            bob->removeFromParent();
+            text->removeFromParent();
+        },0,0,1.2,"removebob");
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
 };

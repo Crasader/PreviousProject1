@@ -3003,11 +3003,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/chat/ChatDialog.cpp"
-            timestampString = "493197163.806291"
+            timestampString = "493199397.122857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "ChatDialog:: showChatInfo(ChatData data)"
             landmarkType = "5">
             <Locations>
