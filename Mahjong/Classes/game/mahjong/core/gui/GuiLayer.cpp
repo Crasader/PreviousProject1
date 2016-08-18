@@ -1,6 +1,5 @@
 #include "game/mahjong/core/gui/GuiLayer.h"
 #include "game/mahjong/dialog/shop/ChargeDiamond.hpp"
-#include "game/mahjong/chat/GameChat.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/dialog/friend/FriendInvite.h"
 #include "game/mahjong/state/GameData.h"
@@ -11,8 +10,10 @@
 #include "game/mahjong/dialog/bill/BillInfo.h"
 #include "game/mahjong/core/widget/QuitRoomDialog.hpp"
 #include "game/utils/Audio.h"
-#include "game/mahjong/chat/GameChat.h"
 #include "game/mahjong/chat/ChatDialog.hpp"
+#include "ui/UIImageView.h"
+#include "ui/UIRichText.h"
+#include "game/mahjong/chat/PlayerChatManage.hpp"
 
 
 
@@ -23,6 +24,37 @@ bool GuiLayer::init(){
     initView();
     return true;
 }
+
+
+void GuiLayer::onEnter(){
+    Layer::onEnter();
+    auto roomChatListener = EventListenerCustom::create(MSG_PLAYER_ROOM_CHAT_SHOW, [=](EventCustom* event){
+        ChatData data = GAMEDATA::getInstance()->getChatData();
+        std::string content = data.content;
+        vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
+        RichText* text = RichText ::create();
+        text->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        for(auto var : msgs){
+            if(!PlayerChatManage::getInstance()->isFaceImage(var)){
+                RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
+                text->pushBackElement(element1);
+                text->formatText();
+            }else{
+                RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
+                text->pushBackElement(element2);
+                text->formatText();
+            }
+        }
+
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
+};
+
+
+void GuiLayer::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_ROOM_CHAT_SHOW);
+};
 
 void GuiLayer::initView(){
 //    auto soundButton = MenuItemImage::create("gameview/chat_sound_1.png", "gameview/chat_sound_2.png",

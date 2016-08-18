@@ -6,6 +6,8 @@ USING_NS_CC;
 class GuiLayer:public Layer{
 public:
 	virtual bool init();
+    void onEnter() override;
+    void onExit() override;
 	void updateData();
 	void hideInvitePlayer(int clientId);
     void showInvitePlayer(int clientId);

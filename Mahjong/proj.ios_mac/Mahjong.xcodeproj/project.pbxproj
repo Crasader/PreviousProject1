@@ -59,10 +59,6 @@
 		D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
 		D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
 		D21D81C71D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
-		D21D81CE1D5C147F00560DC5 /* GameChat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C81D5C147F00560DC5 /* GameChat.cpp */; };
-		D21D81CF1D5C147F00560DC5 /* GameChat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C81D5C147F00560DC5 /* GameChat.cpp */; };
-		D21D81D01D5C147F00560DC5 /* PlayerChat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81CA1D5C147F00560DC5 /* PlayerChat.cpp */; };
-		D21D81D11D5C147F00560DC5 /* PlayerChat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81CA1D5C147F00560DC5 /* PlayerChat.cpp */; };
 		D21D81D61D5C18EC00560DC5 /* ChatModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D41D5C18EC00560DC5 /* ChatModule.cpp */; };
 		D21D81D71D5C18EC00560DC5 /* ChatModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D41D5C18EC00560DC5 /* ChatModule.cpp */; };
 		D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D81D5C191500560DC5 /* ChatDialog.cpp */; };
@@ -300,6 +296,8 @@
 		D2CF763B1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */; };
 		D2CF763E1D62AC690035B870 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */; };
 		D2CF763F1D62AC690035B870 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */; };
+		D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */; };
+		D2CF764A1D6581EE0035B870 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -395,10 +393,6 @@
 		D20C391D1CFEC2E7006F6C9E /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
 		D21D81C41D5B11AE00560DC5 /* IOSiAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSiAP.h; sourceTree = "<group>"; };
 		D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSiAP.mm; sourceTree = "<group>"; };
-		D21D81C81D5C147F00560DC5 /* GameChat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameChat.cpp; sourceTree = "<group>"; };
-		D21D81C91D5C147F00560DC5 /* GameChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameChat.h; sourceTree = "<group>"; };
-		D21D81CA1D5C147F00560DC5 /* PlayerChat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerChat.cpp; sourceTree = "<group>"; };
-		D21D81CB1D5C147F00560DC5 /* PlayerChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerChat.h; sourceTree = "<group>"; };
 		D21D81D41D5C18EC00560DC5 /* ChatModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatModule.cpp; sourceTree = "<group>"; };
 		D21D81D51D5C18EC00560DC5 /* ChatModule.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChatModule.hpp; sourceTree = "<group>"; };
 		D21D81D81D5C191500560DC5 /* ChatDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatDialog.cpp; sourceTree = "<group>"; };
@@ -616,6 +610,8 @@
 		D2CF76391D62A68C0035B870 /* QuickChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuickChatLayer.hpp; sourceTree = "<group>"; };
 		D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaceChatLayer.cpp; sourceTree = "<group>"; };
 		D2CF763D1D62AC690035B870 /* FaceChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaceChatLayer.hpp; sourceTree = "<group>"; };
+		D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerChatManage.cpp; sourceTree = "<group>"; };
+		D2CF76481D6581EE0035B870 /* PlayerChatManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerChatManage.hpp; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -995,16 +991,14 @@
 			children = (
 				D21D81D41D5C18EC00560DC5 /* ChatModule.cpp */,
 				D21D81D51D5C18EC00560DC5 /* ChatModule.hpp */,
-				D21D81C81D5C147F00560DC5 /* GameChat.cpp */,
-				D21D81C91D5C147F00560DC5 /* GameChat.h */,
-				D21D81CA1D5C147F00560DC5 /* PlayerChat.cpp */,
-				D21D81CB1D5C147F00560DC5 /* PlayerChat.h */,
 				D21D81D81D5C191500560DC5 /* ChatDialog.cpp */,
 				D21D81D91D5C191500560DC5 /* ChatDialog.hpp */,
 				D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */,
 				D2CF76391D62A68C0035B870 /* QuickChatLayer.hpp */,
 				D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */,
 				D2CF763D1D62AC690035B870 /* FaceChatLayer.hpp */,
+				D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */,
+				D2CF76481D6581EE0035B870 /* PlayerChatManage.hpp */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -1569,6 +1563,7 @@
 				D28A4A341D056B7A00741FD0 /* StringUtil.cpp in Sources */,
 				D28A4A4A1D0D40C400741FD0 /* GoldNotEnoughDialog.cpp in Sources */,
 				D28A4A321D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
+				D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
 				D2B1A8951CCDF0F400A20896 /* DailyTask.cpp in Sources */,
 				D2B1A8AD1CCDF0F400A20896 /* HeadImageDialog.cpp in Sources */,
 				D2CF763A1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */,
@@ -1576,7 +1571,6 @@
 				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
 				D2B1A8E51CCDF0F400A20896 /* GameData.cpp in Sources */,
 				D2B1A8D11CCDF0F400A20896 /* Jong.cpp in Sources */,
-				D21D81D01D5C147F00560DC5 /* PlayerChat.cpp in Sources */,
 				D226FD301D05292400324097 /* LoadResource.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D2B1A8931CCDF0F400A20896 /* DayCell.cpp in Sources */,
@@ -1608,7 +1602,6 @@
 				D28A4A1B1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A301D056B7A00741FD0 /* Chinese.cpp in Sources */,
 				D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
-				D21D81CE1D5C147F00560DC5 /* GameChat.cpp in Sources */,
 				D23EFCCF1D10F695002A48A5 /* ImagePicker.cpp in Sources */,
 				D2B1A8871CCDF0F400A20896 /* BillInfo.cpp in Sources */,
 				D2C0E3E71CF6ECB1003AA986 /* Huode.cpp in Sources */,
@@ -1697,6 +1690,7 @@
 				D2B1A8961CCDF0F400A20896 /* DailyTask.cpp in Sources */,
 				D2B1A8A61CCDF0F400A20896 /* SearchResult.cpp in Sources */,
 				D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */,
+				D2CF764A1D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
 				D28A4A311D056B7A00741FD0 /* Chinese.cpp in Sources */,
 				D2B1A8E21CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
 				D2B1A8861CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
@@ -1714,7 +1708,6 @@
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D26081E01D2C9F7300FDBC40 /* GameFeedDialog.cpp in Sources */,
 				D2B1A8801CCDF0F400A20896 /* MahjongView.cpp in Sources */,
-				D21D81D11D5C147F00560DC5 /* PlayerChat.cpp in Sources */,
 				D239A55D1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */,
 				D21D81C71D5B11AE00560DC5 /* IOSiAP.mm in Sources */,
 				D2B1A8BC1CCDF0F400A20896 /* UserSetting.cpp in Sources */,
@@ -1747,7 +1740,6 @@
 				D22912451D128367005C7167 /* LoginMannger.cpp in Sources */,
 				D22912391D128103005C7167 /* FindPassword.cpp in Sources */,
 				D28A4A411D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
-				D21D81CF1D5C147F00560DC5 /* GameChat.cpp in Sources */,
 				D23EFCD01D10F695002A48A5 /* ImagePicker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

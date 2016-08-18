@@ -5,11 +5,11 @@ USING_NS_CC;
 
 class StringUtil{
 public:
-	static std::string itos(int target);
-	static std::vector<std::string> split(std::string str, std::string pattern);
     static bool checkPhone(std::string str);
     static bool checkPassword(std::string string);
     static bool checkAccount(std::string string);
+	static std::string itos(int target);
+	static std::vector<std::string> split(std::string str, std::string pattern);
 private:
     static std::vector<int> getArrayByInt(std::string string);
 };

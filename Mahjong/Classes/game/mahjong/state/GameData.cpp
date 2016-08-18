@@ -115,4 +115,3 @@ FriendListData GAMEDATA::sortFriendList(FriendListData data){
     }
     return data;
 }
-

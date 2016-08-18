@@ -30,16 +30,11 @@ public:
 private:
     ListView* listView;
     EventListenerCustom* roomChatListener;
-    vector<std::string> allFaceName;
-    void initAllFace();
     void closeView();
     void showChatList(std::string poxiaoId);
     void showChatInfo(ChatData data);
     void showQuickChatList();
     void showFaceList();
     void sendMessage();
-    std::string getFaceImageName(std::string name);
-    vector<std::string> splitContentByFace(std::string content);
-    bool isFaceImage(std::string con);
 };
 #endif /* ChatDialog_hpp */

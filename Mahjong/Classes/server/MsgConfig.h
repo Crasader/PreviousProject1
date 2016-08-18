@@ -282,4 +282,5 @@
 #define MSG_PLAYER_CHANGE_HEAD_RESP "msg_player_change_head_resp"
 #define MSG_PLAYER_FEED_BACK_RESP "msg_player_feed_back_resp"
 #define MSG_PLAYER_RESUME_GAME "msg_player_resume_game"
+#define MSG_PLAYER_ROOM_CHAT_SHOW "msg_player_room_chat_show"
 #endif
