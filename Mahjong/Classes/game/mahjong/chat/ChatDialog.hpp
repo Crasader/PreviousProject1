@@ -28,6 +28,7 @@ public:
     void sendFaceId(int id);
     void sendQuickChat(std::string msg);
 private:
+    std::string chatPid;
     ListView* listView;
     EventListenerCustom* roomChatListener;
     void closeView();

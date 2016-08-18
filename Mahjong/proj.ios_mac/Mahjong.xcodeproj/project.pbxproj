@@ -59,8 +59,6 @@
 		D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
 		D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
 		D21D81C71D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
-		D21D81D61D5C18EC00560DC5 /* ChatModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D41D5C18EC00560DC5 /* ChatModule.cpp */; };
-		D21D81D71D5C18EC00560DC5 /* ChatModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D41D5C18EC00560DC5 /* ChatModule.cpp */; };
 		D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D81D5C191500560DC5 /* ChatDialog.cpp */; };
 		D21D81DB1D5C191500560DC5 /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D81D5C191500560DC5 /* ChatDialog.cpp */; };
 		D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
@@ -393,8 +391,6 @@
 		D20C391D1CFEC2E7006F6C9E /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
 		D21D81C41D5B11AE00560DC5 /* IOSiAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSiAP.h; sourceTree = "<group>"; };
 		D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSiAP.mm; sourceTree = "<group>"; };
-		D21D81D41D5C18EC00560DC5 /* ChatModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatModule.cpp; sourceTree = "<group>"; };
-		D21D81D51D5C18EC00560DC5 /* ChatModule.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChatModule.hpp; sourceTree = "<group>"; };
 		D21D81D81D5C191500560DC5 /* ChatDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatDialog.cpp; sourceTree = "<group>"; };
 		D21D81D91D5C191500560DC5 /* ChatDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChatDialog.hpp; sourceTree = "<group>"; };
 		D226FD281D051DBA00324097 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
@@ -989,8 +985,6 @@
 		D2B1A7BF1CCDF0F300A20896 /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				D21D81D41D5C18EC00560DC5 /* ChatModule.cpp */,
-				D21D81D51D5C18EC00560DC5 /* ChatModule.hpp */,
 				D21D81D81D5C191500560DC5 /* ChatDialog.cpp */,
 				D21D81D91D5C191500560DC5 /* ChatDialog.hpp */,
 				D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */,
@@ -1535,7 +1529,6 @@
 				D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */,
 				D2B1A8851CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
 				D2B1A8A31CCDF0F400A20896 /* InviteCell.cpp in Sources */,
-				D21D81D61D5C18EC00560DC5 /* ChatModule.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D2B1A8C71CCDF0F400A20896 /* HongbaoPride.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
@@ -1713,7 +1706,6 @@
 				D2B1A8BC1CCDF0F400A20896 /* UserSetting.cpp in Sources */,
 				D2B1A8C81CCDF0F400A20896 /* HongbaoPride.cpp in Sources */,
 				D2B1A8E61CCDF0F400A20896 /* GameData.cpp in Sources */,
-				D21D81D71D5C18EC00560DC5 /* ChatModule.cpp in Sources */,
 				D2B1A8741CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
 				D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D2B1A8981CCDF0F400A20896 /* TaskCell.cpp in Sources */,

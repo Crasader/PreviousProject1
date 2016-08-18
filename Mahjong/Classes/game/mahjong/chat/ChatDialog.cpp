@@ -96,9 +96,11 @@ bool ChatDialog::init(std::string poxiaoId){
 void ChatDialog::showChatList(std::string poxiaoId){
     std::vector<ChatData> msgList;
     if(poxiaoId == "" || poxiaoId.size()<10){
+        chatPid = "";
         RoomChatMsgList list = GAMEDATA::getInstance()->getRoomChatMsgList();
         msgList = list.msgList;
     }else{
+        chatPid = poxiaoId;
         FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
         for(auto msg : list.friendMsgList){
             if(msg.poxiaoId == poxiaoId){
@@ -214,7 +216,7 @@ void ChatDialog:: sendMessage(){
     if(NULL != getChildByTag(1001)){
         std::string msg = ((cocos2d::ui::EditBox*)getChildByTag(1001))->getText();
         if("" != msg){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,""));
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,chatPid));
         }
         ((cocos2d::ui::EditBox*)getChildByTag(1001))->setText("");
     }
@@ -231,6 +233,6 @@ void ChatDialog::sendFaceId(int id){
 
 void ChatDialog::sendQuickChat(std::string msg){
     if(NULL != getChildByTag(1001)){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,""));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,chatPid));
     }
 }

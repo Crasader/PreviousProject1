@@ -3,6 +3,7 @@
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "server/NetworkManage.h"
+#include "game/mahjong/chat/ChatDialog.hpp"
 
 bool FriendListView::init()
 {
@@ -43,7 +44,7 @@ bool FriendListView::init()
 
 	tableView = TableView::create(this, Size(722, 520));
 	tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	tableView->setDirection(ScrollView::Direction::VERTICAL);
+    tableView->setDirection(cocos2d::extension::ScrollView::Direction::VERTICAL);
 	tableView->setPosition(280, 55);
 	tableView->setDelegate(this);
 	tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
@@ -166,11 +167,11 @@ TableViewCell* FriendListView::tableCellAtIndex(TableView *table, ssize_t idx)
 
 		MenuItemImage* chat = MenuItemImage::create("friend/friend_chat_btn.png", "friend/friend_chat_btn.png",
 			CC_CALLBACK_1(FriendListView::chatFriend, this));
-		MenuItemImage* view = MenuItemImage::create("friend/friend_view_btn.png", "friend/friend_view_btn.png",
-			CC_CALLBACK_1(FriendListView::viewFriend, this));
+//		MenuItemImage* view = MenuItemImage::create("friend/friend_view_btn.png", "friend/friend_view_btn.png",
+//			CC_CALLBACK_1(FriendListView::viewFriend, this));
 		MenuItemImage* dele = MenuItemImage::create("friend/friend_delete_btn.png", "friend/friend_delete_btn.png",
 			CC_CALLBACK_1(FriendListView::deleteFriend, this));
-		Menu* menu = Menu::create(chat, view, dele, NULL);
+		Menu* menu = Menu::create(chat, dele, NULL);
 		menu->setAnchorPoint(Vec2::ZERO);
 		menu->alignItemsHorizontallyWithPadding(5);
 		menu->setPosition(Vec2(590, 66));
@@ -218,12 +219,16 @@ void FriendListView::addConfirm(){
 }
 
 void FriendListView::chatFriend(Ref* ref){
-
-
+    MenuItemImage* temp = (MenuItemImage*)ref;
+    int id = ((TableViewCell*)temp->getParent()->getParent())->getIdx();
+    FriendListData data = GAMEDATA::getInstance()->getFriendList();
+    std::string pid = data.friends.at(id).poxiaoId;
+    ChatDialog* chat = ChatDialog::create(pid);
+    addChild(chat);
 }
 
 void FriendListView::viewFriend(Ref* ref){
-
+    //TODO
 }
 
 void FriendListView::deleteFriend(Ref* ref){
