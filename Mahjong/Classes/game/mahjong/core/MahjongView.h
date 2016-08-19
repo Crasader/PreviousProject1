@@ -9,7 +9,7 @@
 #include "game/mahjong/player/PlayerOpposite.h"
 #include "game/mahjong/player/PlayerHero.h"
 #include "game/mahjong/player/playerinfo/Player.h"
-#include "game/mahjong/dialog/trusteeship/Trusteeship.h"
+#include "game/mahjong/trusteeship/Trusteeship.h"
 #include "userdata/UserData.h"
 USING_NS_CC;
 
