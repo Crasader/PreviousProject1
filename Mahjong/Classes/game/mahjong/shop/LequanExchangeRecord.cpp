@@ -6,9 +6,9 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/LequanExchangeRecord.hpp"
-#include "server/NetworkManage.h"
+#include "game/mahjong/shop/LequanExchangeRecord.hpp"
 #include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
 
 bool LequanExchangeRecord::init(){
     if(!Layer::init()){

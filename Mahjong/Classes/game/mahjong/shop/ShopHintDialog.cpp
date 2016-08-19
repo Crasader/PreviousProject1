@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
+#include "game/mahjong/shop/ShopHintDialog.hpp"
 
 bool ShopHintDialog::init(){
     if(!Layer::init()){

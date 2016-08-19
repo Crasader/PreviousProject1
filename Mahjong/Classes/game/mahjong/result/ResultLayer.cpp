@@ -8,10 +8,10 @@
 #include "game/utils/Chinese.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
-#include "game/mahjong/dialog/shop/ChargeGold.hpp"
+#include "game/mahjong/shop/ChargeGold.hpp"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
-#include "game/mahjong/dialog/shop/GoldNotEnoughDialog.hpp"
+#include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
 
 bool ResultLayer::init(){
     if (!Layer::init()){

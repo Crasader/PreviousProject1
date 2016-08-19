@@ -51,10 +51,6 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C390F1CFD7446006F6C9E /* QuitRoomDialog.cpp */; };
 		D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C390F1CFD7446006F6C9E /* QuitRoomDialog.cpp */; };
-		D20C39151CFD8222006F6C9E /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C39131CFD8222006F6C9E /* ShopHintDialog.cpp */; };
-		D20C39161CFD8222006F6C9E /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C39131CFD8222006F6C9E /* ShopHintDialog.cpp */; };
-		D20C391A1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C39181CFEAB37006F6C9E /* ExchangeItem.cpp */; };
-		D20C391B1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C39181CFEAB37006F6C9E /* ExchangeItem.cpp */; };
 		D20C391E1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
 		D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
 		D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
@@ -75,12 +71,38 @@
 		D22912451D128367005C7167 /* LoginMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912401D128367005C7167 /* LoginMannger.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
+		D22EEF3A1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */; };
+		D22EEF3B1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */; };
+		D22EEF3C1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */; };
+		D22EEF3D1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */; };
+		D22EEF3E1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */; };
+		D22EEF3F1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */; };
+		D22EEF401D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF241D66AAF000BF1CCB /* ExchangePropCell.cpp */; };
+		D22EEF411D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF241D66AAF000BF1CCB /* ExchangePropCell.cpp */; };
+		D22EEF421D66AAF000BF1CCB /* FaHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF261D66AAF000BF1CCB /* FaHongbao.cpp */; };
+		D22EEF431D66AAF000BF1CCB /* FaHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF261D66AAF000BF1CCB /* FaHongbao.cpp */; };
+		D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
+		D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
+		D22EEF461D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2A1D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp */; };
+		D22EEF471D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2A1D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp */; };
+		D22EEF481D66AAF000BF1CCB /* HongbaoPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2C1D66AAF000BF1CCB /* HongbaoPride.cpp */; };
+		D22EEF491D66AAF000BF1CCB /* HongbaoPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2C1D66AAF000BF1CCB /* HongbaoPride.cpp */; };
+		D22EEF4A1D66AAF000BF1CCB /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */; };
+		D22EEF4B1D66AAF000BF1CCB /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */; };
+		D22EEF4C1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF301D66AAF000BF1CCB /* LequanExchangeRecord.cpp */; };
+		D22EEF4D1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF301D66AAF000BF1CCB /* LequanExchangeRecord.cpp */; };
+		D22EEF4E1D66AAF000BF1CCB /* LequanShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF321D66AAF000BF1CCB /* LequanShop.cpp */; };
+		D22EEF4F1D66AAF000BF1CCB /* LequanShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF321D66AAF000BF1CCB /* LequanShop.cpp */; };
+		D22EEF501D66AAF000BF1CCB /* LingHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF341D66AAF000BF1CCB /* LingHongbao.cpp */; };
+		D22EEF511D66AAF000BF1CCB /* LingHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF341D66AAF000BF1CCB /* LingHongbao.cpp */; };
+		D22EEF521D66AAF000BF1CCB /* Redwallet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF361D66AAF000BF1CCB /* Redwallet.cpp */; };
+		D22EEF531D66AAF000BF1CCB /* Redwallet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF361D66AAF000BF1CCB /* Redwallet.cpp */; };
+		D22EEF541D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */; };
+		D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */; };
 		D22F1C181CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
-		D239A55C1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */; };
-		D239A55D1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */; };
 		D23EFCCB1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */; };
 		D23EFCCC1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */; };
 		D23EFCCF1D10F695002A48A5 /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */; };
@@ -157,8 +179,6 @@
 		D28A4A3D1D065B4D00741FD0 /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */; };
 		D28A4A401D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3E1D06B19E00741FD0 /* EnterRoomDialog.cpp */; };
 		D28A4A411D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3E1D06B19E00741FD0 /* EnterRoomDialog.cpp */; };
-		D28A4A4A1D0D40C400741FD0 /* GoldNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A481D0D40C400741FD0 /* GoldNotEnoughDialog.cpp */; };
-		D28A4A4B1D0D40C400741FD0 /* GoldNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A481D0D40C400741FD0 /* GoldNotEnoughDialog.cpp */; };
 		D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */; };
 		D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */; };
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
@@ -232,24 +252,6 @@
 		D2B1A8B61CCDF0F400A20896 /* PromptDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */; };
 		D2B1A8BB1CCDF0F400A20896 /* UserSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8121CCDF0F300A20896 /* UserSetting.cpp */; };
 		D2B1A8BC1CCDF0F400A20896 /* UserSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8121CCDF0F300A20896 /* UserSetting.cpp */; };
-		D2B1A8BD1CCDF0F400A20896 /* ChargeDiamond.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8151CCDF0F300A20896 /* ChargeDiamond.cpp */; };
-		D2B1A8BE1CCDF0F400A20896 /* ChargeDiamond.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8151CCDF0F300A20896 /* ChargeDiamond.cpp */; };
-		D2B1A8BF1CCDF0F400A20896 /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8171CCDF0F300A20896 /* ChargeGold.cpp */; };
-		D2B1A8C01CCDF0F400A20896 /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8171CCDF0F300A20896 /* ChargeGold.cpp */; };
-		D2B1A8C11CCDF0F400A20896 /* ExchangePropCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8191CCDF0F300A20896 /* ExchangePropCell.cpp */; };
-		D2B1A8C21CCDF0F400A20896 /* ExchangePropCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8191CCDF0F300A20896 /* ExchangePropCell.cpp */; };
-		D2B1A8C31CCDF0F400A20896 /* FaHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A81B1CCDF0F300A20896 /* FaHongbao.cpp */; };
-		D2B1A8C41CCDF0F400A20896 /* FaHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A81B1CCDF0F300A20896 /* FaHongbao.cpp */; };
-		D2B1A8C51CCDF0F400A20896 /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A81D1CCDF0F300A20896 /* FirstChageDialog.cpp */; };
-		D2B1A8C61CCDF0F400A20896 /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A81D1CCDF0F300A20896 /* FirstChageDialog.cpp */; };
-		D2B1A8C71CCDF0F400A20896 /* HongbaoPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A81F1CCDF0F300A20896 /* HongbaoPride.cpp */; };
-		D2B1A8C81CCDF0F400A20896 /* HongbaoPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A81F1CCDF0F300A20896 /* HongbaoPride.cpp */; };
-		D2B1A8C91CCDF0F400A20896 /* LequanShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8211CCDF0F300A20896 /* LequanShop.cpp */; };
-		D2B1A8CA1CCDF0F400A20896 /* LequanShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8211CCDF0F300A20896 /* LequanShop.cpp */; };
-		D2B1A8CB1CCDF0F400A20896 /* LingHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8231CCDF0F300A20896 /* LingHongbao.cpp */; };
-		D2B1A8CC1CCDF0F400A20896 /* LingHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8231CCDF0F300A20896 /* LingHongbao.cpp */; };
-		D2B1A8CD1CCDF0F400A20896 /* Redwallet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8251CCDF0F300A20896 /* Redwallet.cpp */; };
-		D2B1A8CE1CCDF0F400A20896 /* Redwallet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8251CCDF0F300A20896 /* Redwallet.cpp */; };
 		D2B1A8CF1CCDF0F400A20896 /* Trusteeship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8281CCDF0F300A20896 /* Trusteeship.cpp */; };
 		D2B1A8D01CCDF0F400A20896 /* Trusteeship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8281CCDF0F300A20896 /* Trusteeship.cpp */; };
 		D2B1A8D11CCDF0F400A20896 /* Jong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A82B1CCDF0F300A20896 /* Jong.cpp */; };
@@ -288,8 +290,6 @@
 		D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */; };
 		D2BDE3B71CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3B51CEC367D00754AC0 /* OtherPlayerInfo.cpp */; };
 		D2BDE3B81CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3B51CEC367D00754AC0 /* OtherPlayerInfo.cpp */; };
-		D2C0E3E71CF6ECB1003AA986 /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2C0E3E51CF6ECB1003AA986 /* Huode.cpp */; };
-		D2C0E3E81CF6ECB1003AA986 /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2C0E3E51CF6ECB1003AA986 /* Huode.cpp */; };
 		D2CF763A1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */; };
 		D2CF763B1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */; };
 		D2CF763E1D62AC690035B870 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */; };
@@ -383,10 +383,6 @@
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D20C390F1CFD7446006F6C9E /* QuitRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuitRoomDialog.cpp; sourceTree = "<group>"; };
 		D20C39101CFD7446006F6C9E /* QuitRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuitRoomDialog.hpp; sourceTree = "<group>"; };
-		D20C39131CFD8222006F6C9E /* ShopHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopHintDialog.cpp; sourceTree = "<group>"; };
-		D20C39141CFD8222006F6C9E /* ShopHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShopHintDialog.hpp; sourceTree = "<group>"; };
-		D20C39181CFEAB37006F6C9E /* ExchangeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeItem.cpp; sourceTree = "<group>"; };
-		D20C39191CFEAB37006F6C9E /* ExchangeItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeItem.hpp; sourceTree = "<group>"; };
 		D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutFogAnim.cpp; sourceTree = "<group>"; };
 		D20C391D1CFEC2E7006F6C9E /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
 		D21D81C41D5B11AE00560DC5 /* IOSiAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSiAP.h; sourceTree = "<group>"; };
@@ -408,11 +404,37 @@
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
 		D22912481D12C583005C7167 /* CommandManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandManage.h; sourceTree = "<group>"; };
 		D22EEF1C1D66A97400BF1CCB /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
+		D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeDiamond.cpp; sourceTree = "<group>"; };
+		D22EEF1F1D66AAF000BF1CCB /* ChargeDiamond.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeDiamond.hpp; sourceTree = "<group>"; };
+		D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeGold.cpp; sourceTree = "<group>"; };
+		D22EEF211D66AAF000BF1CCB /* ChargeGold.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeGold.hpp; sourceTree = "<group>"; };
+		D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeItem.cpp; sourceTree = "<group>"; };
+		D22EEF231D66AAF000BF1CCB /* ExchangeItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeItem.hpp; sourceTree = "<group>"; };
+		D22EEF241D66AAF000BF1CCB /* ExchangePropCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangePropCell.cpp; sourceTree = "<group>"; };
+		D22EEF251D66AAF000BF1CCB /* ExchangePropCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangePropCell.hpp; sourceTree = "<group>"; };
+		D22EEF261D66AAF000BF1CCB /* FaHongbao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaHongbao.cpp; sourceTree = "<group>"; };
+		D22EEF271D66AAF000BF1CCB /* FaHongbao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaHongbao.hpp; sourceTree = "<group>"; };
+		D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirstChageDialog.cpp; sourceTree = "<group>"; };
+		D22EEF291D66AAF000BF1CCB /* FirstChageDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FirstChageDialog.hpp; sourceTree = "<group>"; };
+		D22EEF2A1D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldNotEnoughDialog.cpp; sourceTree = "<group>"; };
+		D22EEF2B1D66AAF000BF1CCB /* GoldNotEnoughDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldNotEnoughDialog.hpp; sourceTree = "<group>"; };
+		D22EEF2C1D66AAF000BF1CCB /* HongbaoPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongbaoPride.cpp; sourceTree = "<group>"; };
+		D22EEF2D1D66AAF000BF1CCB /* HongbaoPride.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongbaoPride.hpp; sourceTree = "<group>"; };
+		D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Huode.cpp; sourceTree = "<group>"; };
+		D22EEF2F1D66AAF000BF1CCB /* Huode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Huode.hpp; sourceTree = "<group>"; };
+		D22EEF301D66AAF000BF1CCB /* LequanExchangeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanExchangeRecord.cpp; sourceTree = "<group>"; };
+		D22EEF311D66AAF000BF1CCB /* LequanExchangeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanExchangeRecord.hpp; sourceTree = "<group>"; };
+		D22EEF321D66AAF000BF1CCB /* LequanShop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanShop.cpp; sourceTree = "<group>"; };
+		D22EEF331D66AAF000BF1CCB /* LequanShop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanShop.hpp; sourceTree = "<group>"; };
+		D22EEF341D66AAF000BF1CCB /* LingHongbao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LingHongbao.cpp; sourceTree = "<group>"; };
+		D22EEF351D66AAF000BF1CCB /* LingHongbao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LingHongbao.hpp; sourceTree = "<group>"; };
+		D22EEF361D66AAF000BF1CCB /* Redwallet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Redwallet.cpp; sourceTree = "<group>"; };
+		D22EEF371D66AAF000BF1CCB /* Redwallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Redwallet.h; sourceTree = "<group>"; };
+		D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopHintDialog.cpp; sourceTree = "<group>"; };
+		D22EEF391D66AAF000BF1CCB /* ShopHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShopHintDialog.hpp; sourceTree = "<group>"; };
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
-		D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanExchangeRecord.cpp; sourceTree = "<group>"; };
-		D239A55B1D100287009DB640 /* LequanExchangeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanExchangeRecord.hpp; sourceTree = "<group>"; };
 		D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
 		D23EFCCA1D10F54D002A48A5 /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
 		D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePicker.cpp; sourceTree = "<group>"; };
@@ -467,8 +489,6 @@
 		D28A4A3B1D065B4D00741FD0 /* HintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HintDialog.hpp; sourceTree = "<group>"; };
 		D28A4A3E1D06B19E00741FD0 /* EnterRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnterRoomDialog.cpp; sourceTree = "<group>"; };
 		D28A4A3F1D06B19E00741FD0 /* EnterRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnterRoomDialog.hpp; sourceTree = "<group>"; };
-		D28A4A481D0D40C400741FD0 /* GoldNotEnoughDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldNotEnoughDialog.cpp; sourceTree = "<group>"; };
-		D28A4A491D0D40C400741FD0 /* GoldNotEnoughDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldNotEnoughDialog.hpp; sourceTree = "<group>"; };
 		D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiuJuAnim.cpp; sourceTree = "<group>"; };
 		D28B6AE01CF3E0A30033C9DE /* LiuJuAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LiuJuAnim.hpp; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -542,24 +562,6 @@
 		D2B1A80B1CCDF0F300A20896 /* PromptDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptDialog.h; sourceTree = "<group>"; };
 		D2B1A8121CCDF0F300A20896 /* UserSetting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserSetting.cpp; sourceTree = "<group>"; };
 		D2B1A8131CCDF0F300A20896 /* UserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetting.h; sourceTree = "<group>"; };
-		D2B1A8151CCDF0F300A20896 /* ChargeDiamond.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeDiamond.cpp; sourceTree = "<group>"; };
-		D2B1A8161CCDF0F300A20896 /* ChargeDiamond.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeDiamond.hpp; sourceTree = "<group>"; };
-		D2B1A8171CCDF0F300A20896 /* ChargeGold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeGold.cpp; sourceTree = "<group>"; };
-		D2B1A8181CCDF0F300A20896 /* ChargeGold.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeGold.hpp; sourceTree = "<group>"; };
-		D2B1A8191CCDF0F300A20896 /* ExchangePropCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangePropCell.cpp; sourceTree = "<group>"; };
-		D2B1A81A1CCDF0F300A20896 /* ExchangePropCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangePropCell.hpp; sourceTree = "<group>"; };
-		D2B1A81B1CCDF0F300A20896 /* FaHongbao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaHongbao.cpp; sourceTree = "<group>"; };
-		D2B1A81C1CCDF0F300A20896 /* FaHongbao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaHongbao.hpp; sourceTree = "<group>"; };
-		D2B1A81D1CCDF0F300A20896 /* FirstChageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirstChageDialog.cpp; sourceTree = "<group>"; };
-		D2B1A81E1CCDF0F300A20896 /* FirstChageDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FirstChageDialog.hpp; sourceTree = "<group>"; };
-		D2B1A81F1CCDF0F300A20896 /* HongbaoPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongbaoPride.cpp; sourceTree = "<group>"; };
-		D2B1A8201CCDF0F300A20896 /* HongbaoPride.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongbaoPride.hpp; sourceTree = "<group>"; };
-		D2B1A8211CCDF0F300A20896 /* LequanShop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanShop.cpp; sourceTree = "<group>"; };
-		D2B1A8221CCDF0F300A20896 /* LequanShop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanShop.hpp; sourceTree = "<group>"; };
-		D2B1A8231CCDF0F300A20896 /* LingHongbao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LingHongbao.cpp; sourceTree = "<group>"; };
-		D2B1A8241CCDF0F300A20896 /* LingHongbao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LingHongbao.hpp; sourceTree = "<group>"; };
-		D2B1A8251CCDF0F300A20896 /* Redwallet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Redwallet.cpp; sourceTree = "<group>"; };
-		D2B1A8261CCDF0F300A20896 /* Redwallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Redwallet.h; sourceTree = "<group>"; };
 		D2B1A8281CCDF0F300A20896 /* Trusteeship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trusteeship.cpp; sourceTree = "<group>"; };
 		D2B1A8291CCDF0F300A20896 /* Trusteeship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trusteeship.h; sourceTree = "<group>"; };
 		D2B1A82B1CCDF0F300A20896 /* Jong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Jong.cpp; sourceTree = "<group>"; };
@@ -601,8 +603,6 @@
 		D2BDE3AB1CEB10E100754AC0 /* MjGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MjGameScene.h; sourceTree = "<group>"; };
 		D2BDE3B51CEC367D00754AC0 /* OtherPlayerInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OtherPlayerInfo.cpp; sourceTree = "<group>"; };
 		D2BDE3B61CEC367D00754AC0 /* OtherPlayerInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OtherPlayerInfo.hpp; sourceTree = "<group>"; };
-		D2C0E3E51CF6ECB1003AA986 /* Huode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Huode.cpp; sourceTree = "<group>"; };
-		D2C0E3E61CF6ECB1003AA986 /* Huode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Huode.hpp; sourceTree = "<group>"; };
 		D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuickChatLayer.cpp; sourceTree = "<group>"; };
 		D2CF76391D62A68C0035B870 /* QuickChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuickChatLayer.hpp; sourceTree = "<group>"; };
 		D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaceChatLayer.cpp; sourceTree = "<group>"; };
@@ -874,6 +874,41 @@
 			path = dropdownlist;
 			sourceTree = "<group>";
 		};
+		D22EEF1D1D66AAF000BF1CCB /* shop */ = {
+			isa = PBXGroup;
+			children = (
+				D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */,
+				D22EEF1F1D66AAF000BF1CCB /* ChargeDiamond.hpp */,
+				D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */,
+				D22EEF211D66AAF000BF1CCB /* ChargeGold.hpp */,
+				D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */,
+				D22EEF231D66AAF000BF1CCB /* ExchangeItem.hpp */,
+				D22EEF241D66AAF000BF1CCB /* ExchangePropCell.cpp */,
+				D22EEF251D66AAF000BF1CCB /* ExchangePropCell.hpp */,
+				D22EEF261D66AAF000BF1CCB /* FaHongbao.cpp */,
+				D22EEF271D66AAF000BF1CCB /* FaHongbao.hpp */,
+				D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */,
+				D22EEF291D66AAF000BF1CCB /* FirstChageDialog.hpp */,
+				D22EEF2A1D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp */,
+				D22EEF2B1D66AAF000BF1CCB /* GoldNotEnoughDialog.hpp */,
+				D22EEF2C1D66AAF000BF1CCB /* HongbaoPride.cpp */,
+				D22EEF2D1D66AAF000BF1CCB /* HongbaoPride.hpp */,
+				D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */,
+				D22EEF2F1D66AAF000BF1CCB /* Huode.hpp */,
+				D22EEF301D66AAF000BF1CCB /* LequanExchangeRecord.cpp */,
+				D22EEF311D66AAF000BF1CCB /* LequanExchangeRecord.hpp */,
+				D22EEF321D66AAF000BF1CCB /* LequanShop.cpp */,
+				D22EEF331D66AAF000BF1CCB /* LequanShop.hpp */,
+				D22EEF341D66AAF000BF1CCB /* LingHongbao.cpp */,
+				D22EEF351D66AAF000BF1CCB /* LingHongbao.hpp */,
+				D22EEF361D66AAF000BF1CCB /* Redwallet.cpp */,
+				D22EEF371D66AAF000BF1CCB /* Redwallet.h */,
+				D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */,
+				D22EEF391D66AAF000BF1CCB /* ShopHintDialog.hpp */,
+			);
+			path = shop;
+			sourceTree = "<group>";
+		};
 		D23EFCC81D10F54D002A48A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,6 +986,7 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D22EEF1D1D66AAF000BF1CCB /* shop */,
 				D2B1A7B61CCDF0F300A20896 /* anim */,
 				D2B1A7BF1CCDF0F300A20896 /* chat */,
 				D2B1A7C21CCDF0F300A20896 /* core */,
@@ -1042,7 +1078,6 @@
 				D2B1A7FA1CCDF0F300A20896 /* playerinfo */,
 				D2B1A8091CCDF0F300A20896 /* prompt */,
 				D2B1A8111CCDF0F300A20896 /* setting */,
-				D2B1A8141CCDF0F300A20896 /* shop */,
 				D2B1A8271CCDF0F300A20896 /* trusteeship */,
 			);
 			path = dialog;
@@ -1187,41 +1222,6 @@
 				D26081DE1D2C9F7300FDBC40 /* GameFeedDialog.hpp */,
 			);
 			path = setting;
-			sourceTree = "<group>";
-		};
-		D2B1A8141CCDF0F300A20896 /* shop */ = {
-			isa = PBXGroup;
-			children = (
-				D2B1A8151CCDF0F300A20896 /* ChargeDiamond.cpp */,
-				D2B1A8161CCDF0F300A20896 /* ChargeDiamond.hpp */,
-				D2B1A8171CCDF0F300A20896 /* ChargeGold.cpp */,
-				D2B1A8181CCDF0F300A20896 /* ChargeGold.hpp */,
-				D2B1A8191CCDF0F300A20896 /* ExchangePropCell.cpp */,
-				D2B1A81A1CCDF0F300A20896 /* ExchangePropCell.hpp */,
-				D2B1A81B1CCDF0F300A20896 /* FaHongbao.cpp */,
-				D2B1A81C1CCDF0F300A20896 /* FaHongbao.hpp */,
-				D2B1A81D1CCDF0F300A20896 /* FirstChageDialog.cpp */,
-				D2B1A81E1CCDF0F300A20896 /* FirstChageDialog.hpp */,
-				D2B1A81F1CCDF0F300A20896 /* HongbaoPride.cpp */,
-				D2B1A8201CCDF0F300A20896 /* HongbaoPride.hpp */,
-				D2B1A8211CCDF0F300A20896 /* LequanShop.cpp */,
-				D2B1A8221CCDF0F300A20896 /* LequanShop.hpp */,
-				D2B1A8231CCDF0F300A20896 /* LingHongbao.cpp */,
-				D2B1A8241CCDF0F300A20896 /* LingHongbao.hpp */,
-				D2B1A8251CCDF0F300A20896 /* Redwallet.cpp */,
-				D2B1A8261CCDF0F300A20896 /* Redwallet.h */,
-				D2C0E3E51CF6ECB1003AA986 /* Huode.cpp */,
-				D2C0E3E61CF6ECB1003AA986 /* Huode.hpp */,
-				D20C39131CFD8222006F6C9E /* ShopHintDialog.cpp */,
-				D20C39141CFD8222006F6C9E /* ShopHintDialog.hpp */,
-				D20C39181CFEAB37006F6C9E /* ExchangeItem.cpp */,
-				D20C39191CFEAB37006F6C9E /* ExchangeItem.hpp */,
-				D28A4A481D0D40C400741FD0 /* GoldNotEnoughDialog.cpp */,
-				D28A4A491D0D40C400741FD0 /* GoldNotEnoughDialog.hpp */,
-				D239A55A1D100287009DB640 /* LequanExchangeRecord.cpp */,
-				D239A55B1D100287009DB640 /* LequanExchangeRecord.hpp */,
-			);
-			path = shop;
 			sourceTree = "<group>";
 		};
 		D2B1A8271CCDF0F300A20896 /* trusteeship */ = {
@@ -1529,20 +1529,23 @@
 				D2B1A8971CCDF0F400A20896 /* TaskCell.cpp in Sources */,
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */,
+				D22EEF501D66AAF000BF1CCB /* LingHongbao.cpp in Sources */,
 				D2B1A8851CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
 				D2B1A8A31CCDF0F400A20896 /* InviteCell.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
-				D2B1A8C71CCDF0F400A20896 /* HongbaoPride.cpp in Sources */,
+				D22EEF521D66AAF000BF1CCB /* Redwallet.cpp in Sources */,
+				D22EEF4C1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D2B1A8B31CCDF0F400A20896 /* UserInfo.cpp in Sources */,
 				D2B1A9031CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D2B1A8811CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D2B1A8911CCDF0F400A20896 /* DailySign.cpp in Sources */,
-				D2B1A8C11CCDF0F400A20896 /* ExchangePropCell.cpp in Sources */,
+				D22EEF4A1D66AAF000BF1CCB /* Huode.cpp in Sources */,
 				D2B1A8791CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
 				D2B1A87D1CCDF0F400A20896 /* GuiLayer.cpp in Sources */,
 				D20C391E1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */,
+				D22EEF421D66AAF000BF1CCB /* FaHongbao.cpp in Sources */,
 				D2B1A8BB1CCDF0F400A20896 /* UserSetting.cpp in Sources */,
 				D2B1A8D71CCDF0F400A20896 /* PlayerBase.cpp in Sources */,
 				D2B1A89B1CCDF0F400A20896 /* FriendAddView.cpp in Sources */,
@@ -1552,11 +1555,11 @@
 				D2B1A8831CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
 				D2B1A88B1CCDF0F400A20896 /* DailyEvent.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				D22EEF3C1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */,
 				D2B1A8731CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
 				D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */,
 				D2B1A8CF1CCDF0F400A20896 /* Trusteeship.cpp in Sources */,
 				D28A4A341D056B7A00741FD0 /* StringUtil.cpp in Sources */,
-				D28A4A4A1D0D40C400741FD0 /* GoldNotEnoughDialog.cpp in Sources */,
 				D28A4A321D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
 				D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
 				D2B1A8951CCDF0F400A20896 /* DailyTask.cpp in Sources */,
@@ -1571,7 +1574,6 @@
 				D2B1A8931CCDF0F400A20896 /* DayCell.cpp in Sources */,
 				D2BDE3B71CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */,
 				D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
-				D2B1A8CD1CCDF0F400A20896 /* Redwallet.cpp in Sources */,
 				D2B1A8A71CCDF0F400A20896 /* BoundPhone.cpp in Sources */,
 				D28A4A1D1D056B4700741FD0 /* ResultLayer.cpp in Sources */,
 				D2B1A89D1CCDF0F400A20896 /* FriendInvite.cpp in Sources */,
@@ -1579,16 +1581,16 @@
 				D26081DF1D2C9F7300FDBC40 /* GameFeedDialog.cpp in Sources */,
 				D2CF763E1D62AC690035B870 /* FaceChatLayer.cpp in Sources */,
 				D22912441D128367005C7167 /* LoginMannger.cpp in Sources */,
+				D22EEF481D66AAF000BF1CCB /* HongbaoPride.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				D2B1A8D91CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D28A4A1F1D056B4700741FD0 /* ResultScene.cpp in Sources */,
-				D2B1A8C51CCDF0F400A20896 /* FirstChageDialog.cpp in Sources */,
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
-				D239A55C1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */,
 				D2B1A8A11CCDF0F400A20896 /* FriendRoom.cpp in Sources */,
+				D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
 				D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
+				D22EEF4E1D66AAF000BF1CCB /* LequanShop.cpp in Sources */,
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
-				D2B1A8CB1CCDF0F400A20896 /* LingHongbao.cpp in Sources */,
 				D2B1A8B51CCDF0F400A20896 /* PromptDialog.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2B1A88F1CCDF0F400A20896 /* PrideCell.cpp in Sources */,
@@ -1596,13 +1598,13 @@
 				D2B1A88D1CCDF0F400A20896 /* DailyPride.cpp in Sources */,
 				D28A4A1B1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A301D056B7A00741FD0 /* Chinese.cpp in Sources */,
+				D22EEF3A1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */,
 				D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
+				D22EEF3E1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */,
 				D23EFCCF1D10F695002A48A5 /* ImagePicker.cpp in Sources */,
 				D2B1A8871CCDF0F400A20896 /* BillInfo.cpp in Sources */,
-				D2C0E3E71CF6ECB1003AA986 /* Huode.cpp in Sources */,
 				D2B1A8991CCDF0F400A20896 /* DailyWelfare.cpp in Sources */,
 				D2B1A8A91CCDF0F400A20896 /* ChangePassword.cpp in Sources */,
-				D2B1A8C31CCDF0F400A20896 /* FaHongbao.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D28A4A2E1D056B7A00741FD0 /* Audio.cpp in Sources */,
 				D2B1A8E11CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
@@ -1612,21 +1614,19 @@
 				D2B1A8DF1CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D2B1A8711CCDF0F400A20896 /* Loading.cpp in Sources */,
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
-				D20C39151CFD8222006F6C9E /* ShopHintDialog.cpp in Sources */,
+				D22EEF401D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
 				D26081DB1D2C9F5800FDBC40 /* GameRuleDialog.cpp in Sources */,
 				D22912421D128367005C7167 /* DropDownListBox.cpp in Sources */,
-				D2B1A8BF1CCDF0F400A20896 /* ChargeGold.cpp in Sources */,
 				D2B1A8AF1CCDF0F400A20896 /* HeroInfoEdit.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
-				D20C391A1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */,
-				D2B1A8C91CCDF0F400A20896 /* LequanShop.cpp in Sources */,
 				D2B1A89F1CCDF0F400A20896 /* FriendListView.cpp in Sources */,
 				D23EFCCB1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */,
 				D2B1A87F1CCDF0F400A20896 /* MahjongView.cpp in Sources */,
 				D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D2B1A8DB1CCDF0F400A20896 /* Player.cpp in Sources */,
-				D2B1A8BD1CCDF0F400A20896 /* ChargeDiamond.cpp in Sources */,
 				D28A4A401D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
+				D22EEF461D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */,
+				D22EEF541D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1638,28 +1638,32 @@
 				D2B1A8B01CCDF0F400A20896 /* HeroInfoEdit.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D2B1A8A81CCDF0F400A20896 /* BoundPhone.cpp in Sources */,
-				D2B1A8C61CCDF0F400A20896 /* FirstChageDialog.cpp in Sources */,
+				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
 				D28A4A1E1D056B4700741FD0 /* ResultLayer.cpp in Sources */,
 				D28A4A201D056B4700741FD0 /* ResultScene.cpp in Sources */,
-				D2B1A8BE1CCDF0F400A20896 /* ChargeDiamond.cpp in Sources */,
 				D2B1A9001CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8D21CCDF0F400A20896 /* Jong.cpp in Sources */,
 				D2B1A8AE1CCDF0F400A20896 /* HeadImageDialog.cpp in Sources */,
 				D2B1A8DC1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,
+				D22EEF3B1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */,
 				D2B1A8DA1CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
+				D22EEF4B1D66AAF000BF1CCB /* Huode.cpp in Sources */,
 				D23EFCCC1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */,
 				D2B1A87A1CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
 				D28A4A3D1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */,
-				D2B1A8CC1CCDF0F400A20896 /* LingHongbao.cpp in Sources */,
-				D2B1A8C01CCDF0F400A20896 /* ChargeGold.cpp in Sources */,
+				D22EEF411D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
 				D2B1A8841CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
+				D22EEF531D66AAF000BF1CCB /* Redwallet.cpp in Sources */,
+				D22EEF471D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */,
 				D2B1A8B21CCDF0F400A20896 /* NickNameDialog.cpp in Sources */,
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
+				D22EEF4D1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */,
+				D22EEF4F1D66AAF000BF1CCB /* LequanShop.cpp in Sources */,
 				D2B1A8AC1CCDF0F400A20896 /* GenderDialog.cpp in Sources */,
 				D226FD311D05292400324097 /* LoadResource.cpp in Sources */,
 				D2B1A8DE1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
@@ -1673,12 +1677,12 @@
 				D2B1A89A1CCDF0F400A20896 /* DailyWelfare.cpp in Sources */,
 				D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D22912431D128367005C7167 /* DropDownListBox.cpp in Sources */,
-				D20C39161CFD8222006F6C9E /* ShopHintDialog.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D2B1A87E1CCDF0F400A20896 /* GuiLayer.cpp in Sources */,
+				D22EEF491D66AAF000BF1CCB /* HongbaoPride.cpp in Sources */,
 				D2B1A8D41CCDF0F400A20896 /* LobbyScene.cpp in Sources */,
-				D2B1A8CA1CCDF0F400A20896 /* LequanShop.cpp in Sources */,
 				D2B1A8901CCDF0F400A20896 /* PrideCell.cpp in Sources */,
+				D22EEF511D66AAF000BF1CCB /* LingHongbao.cpp in Sources */,
 				D28A4A1C1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D2B1A8B41CCDF0F400A20896 /* UserInfo.cpp in Sources */,
@@ -1686,27 +1690,24 @@
 				D2B1A8A61CCDF0F400A20896 /* SearchResult.cpp in Sources */,
 				D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */,
 				D2CF764A1D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
+				D22EEF3D1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */,
 				D28A4A311D056B7A00741FD0 /* Chinese.cpp in Sources */,
 				D2B1A8E21CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
 				D2B1A8861CCDF0F400A20896 /* BillDetailInfo.cpp in Sources */,
-				D2B1A8C41CCDF0F400A20896 /* FaHongbao.cpp in Sources */,
+				D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
 				D229123B1D128103005C7167 /* UserRegister.cpp in Sources */,
 				D2B1A89E1CCDF0F400A20896 /* FriendInvite.cpp in Sources */,
 				D2B1A8E01CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D2B1A8941CCDF0F400A20896 /* DayCell.cpp in Sources */,
 				D2B1A8D01CCDF0F400A20896 /* Trusteeship.cpp in Sources */,
-				D2C0E3E81CF6ECB1003AA986 /* Huode.cpp in Sources */,
 				D21D81DB1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
-				D2B1A8CE1CCDF0F400A20896 /* Redwallet.cpp in Sources */,
-				D2B1A8C21CCDF0F400A20896 /* ExchangePropCell.cpp in Sources */,
 				D2BDE3B81CEC367D00754AC0 /* OtherPlayerInfo.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D26081E01D2C9F7300FDBC40 /* GameFeedDialog.cpp in Sources */,
 				D2B1A8801CCDF0F400A20896 /* MahjongView.cpp in Sources */,
-				D239A55D1D100287009DB640 /* LequanExchangeRecord.cpp in Sources */,
 				D21D81C71D5B11AE00560DC5 /* IOSiAP.mm in Sources */,
 				D2B1A8BC1CCDF0F400A20896 /* UserSetting.cpp in Sources */,
-				D2B1A8C81CCDF0F400A20896 /* HongbaoPride.cpp in Sources */,
+				D22EEF3F1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */,
 				D2B1A8E61CCDF0F400A20896 /* GameData.cpp in Sources */,
 				D2B1A8741CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
 				D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */,
@@ -1715,6 +1716,7 @@
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */,
 				D2CF763B1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */,
+				D22EEF431D66AAF000BF1CCB /* FaHongbao.cpp in Sources */,
 				D2B1A8881CCDF0F400A20896 /* BillInfo.cpp in Sources */,
 				D2B1A8A01CCDF0F400A20896 /* FriendListView.cpp in Sources */,
 				D28A4A351D056B7A00741FD0 /* StringUtil.cpp in Sources */,
@@ -1726,9 +1728,7 @@
 				D2B1A89C1CCDF0F400A20896 /* FriendAddView.cpp in Sources */,
 				D2B1A8721CCDF0F400A20896 /* Loading.cpp in Sources */,
 				D2B1A8D81CCDF0F400A20896 /* PlayerBase.cpp in Sources */,
-				D28A4A4B1D0D40C400741FD0 /* GoldNotEnoughDialog.cpp in Sources */,
 				D2CF763F1D62AC690035B870 /* FaceChatLayer.cpp in Sources */,
-				D20C391B1CFEAB37006F6C9E /* ExchangeItem.cpp in Sources */,
 				D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D28A4A331D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
 				D22912451D128367005C7167 /* LoginMannger.cpp in Sources */,

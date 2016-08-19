@@ -6,10 +6,11 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/ExchangePropCell.hpp"
-#include "game/mahjong/dialog/shop/ExchangeItem.hpp"
+#include "game/mahjong/shop/ExchangePropCell.hpp"
+#include "game/mahjong/shop/ExchangeItem.hpp"
+#include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "userdata/UserData.h"
-#include "game/mahjong/dialog/shop/ShopHintDialog.hpp"
+
 
 ExchangePropCell* ExchangePropCell::create(int propId,int lequanNum,std::string propName){
     

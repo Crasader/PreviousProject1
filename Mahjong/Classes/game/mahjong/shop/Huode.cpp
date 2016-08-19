@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/dialog/shop/Huode.hpp"
+#include "game/mahjong/shop/Huode.hpp"
 
 Huode* Huode::create(int gold,int diamond,int lequan){
     Huode* huo = new Huode();
