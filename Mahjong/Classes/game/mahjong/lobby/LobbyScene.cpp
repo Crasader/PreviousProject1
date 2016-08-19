@@ -11,6 +11,7 @@
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/dialog/shop/GoldNotEnoughDialog.hpp"
 #include "game/utils/Audio.h"
+#include "game/utils/GameConfig.h"
 
 bool LobbyScene::init()
 {
@@ -99,7 +100,13 @@ void LobbyScene::startGame(Ref* psend){
     MenuItemImage* item = (MenuItemImage*)psend;
     GAMEDATA::getInstance()->setCurrentSelectRoomId(item->getTag());
     if (item->getTag() == ROOM_1){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_1)));
+        //判断是否需要弹出救济金
+        if(UserData::getInstance()->getGold()>=ENTER_ROOM_1_GOLD){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_1)));
+        }else{
+            
+        
+        }
     }
     else if (item->getTag() == ROOM_2){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_2)));
