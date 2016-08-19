@@ -17,7 +17,6 @@ public:
     virtual bool init();
     CREATE_FUNC(GoldRelieve);
 private:
-    
-
+    void closeView();
 };
 #endif /* GoldRelieve_hpp */

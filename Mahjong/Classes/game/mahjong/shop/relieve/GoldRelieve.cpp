@@ -21,6 +21,11 @@ bool GoldRelieve::init(){
     dialogBg->setPosition(Vec2(640,360));
     addChild(dialogBg);
     
+    auto closeBtnImage = MenuItemImage::create("common/close_btn_1.png","common/close_btn_1.png",CC_CALLBACK_0(GoldRelieve::closeView, this));
+    auto closeBtn = Menu::create(closeBtnImage,NULL);
+    closeBtn->setPosition(Vec2(980,580));
+    addChild(closeBtn);
+    
     auto dialogTitle = Sprite::create("relieve/relieve_image_5.png");
     dialogTitle->setPosition(Vec2(640,620));
     addChild(dialogTitle);
@@ -43,16 +48,21 @@ bool GoldRelieve::init(){
     addChild(itemtitle1);
     
     auto itemlight1 = Sprite::create("shop/gold_bg_light.png");
-    itemlight1->setPosition(Vec2(480,320));
+    itemlight1->setPosition(Vec2(480,340));
     addChild(itemlight1);
     
     auto itemcontent1 = Sprite::create("mjitem/gold_stack.png");
-    itemcontent1->setPosition(Vec2(480,320));
+    itemcontent1->setPosition(Vec2(480,340));
     addChild(itemcontent1);
     
     auto iteminfo1 = Sprite::create("relieve/relieve_image_2.png");
-    iteminfo1->setPosition(Vec2(480,260));
+    iteminfo1->setPosition(Vec2(480,280));
     addChild(iteminfo1);
+    
+    auto itembtnImage1 = MenuItemImage::create("relieve/linqu_btn_1.png","relieve/linqu_btn_2.png");
+    auto itembtn1 = Menu::create(itembtnImage1,NULL);
+    itembtn1->setPosition(Vec2(480,220));
+    addChild(itembtn1);
     
     auto itembg2 = Scale9Sprite::create("shop/red_box.png");
     itembg2->setContentSize(Size(285,315));
@@ -68,17 +78,25 @@ bool GoldRelieve::init(){
     addChild(itemtitle2);
     
     auto itemlight2 = Sprite::create("shop/gold_bg_light.png");
-    itemlight2->setPosition(Vec2(810,320));
+    itemlight2->setPosition(Vec2(810,340));
     addChild(itemlight2);
     
     auto itemcontent2 = Sprite::create("relieve/relieve_image_6.png");
-    itemcontent2->setPosition(Vec2(810,320));
+    itemcontent2->setPosition(Vec2(810,340));
     addChild(itemcontent2);
     
     auto iteminfo2 = Sprite::create("relieve/relieve_image_2.png");
-    iteminfo2->setPosition(Vec2(810,260));
+    iteminfo2->setPosition(Vec2(810,280));
     addChild(iteminfo2);
     
+    auto itembtnImage2 = MenuItemImage::create("relieve/charge_btn_1.png","relieve/charge_btn_2.png");
+    auto itembtn2 = Menu::create(itembtnImage2,NULL);
+    itembtn2->setPosition(Vec2(810,220));
+    addChild(itembtn2);
     
     return true;
+}
+
+void GoldRelieve::closeView(){
+    removeFromParent();
 }
