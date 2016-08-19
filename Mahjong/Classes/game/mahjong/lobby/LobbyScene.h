@@ -9,9 +9,9 @@
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/core/MjGameScene.h"
 #include "game/mahjong/dialog/setting/UserSetting.h"
-#include "game/mahjong/dialog/friend/FriendListView.h"
-#include "game/mahjong/dialog/friend/FriendRoom.h"
-#include "game/mahjong/dialog/bill/BillInfo.h"
+#include "game/mahjong/friend/FriendListView.h"
+#include "game/mahjong/friend/FriendRoom.h"
+#include "game/mahjong/bill/BillInfo.h"
 
 USING_NS_CC;
 

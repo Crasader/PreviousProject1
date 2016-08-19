@@ -4,7 +4,7 @@
 #include "cocos-ext.h"
 #include "game/loading/Loading.h"
 #include "game/mahjong/state/GameData.h"
-#include "game/mahjong/dialog/friend/InviteCell.hpp"
+#include "game/mahjong/friend/InviteCell.hpp"
 USING_NS_CC;
 USING_NS_CC_EXT;
 

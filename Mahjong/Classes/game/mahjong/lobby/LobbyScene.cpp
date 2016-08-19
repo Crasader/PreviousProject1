@@ -1,6 +1,5 @@
 #include "game/mahjong/lobby/LobbyScene.h"
-#include "game/mahjong/dialog/bill/BillInfo.h"
-#include "game/mahjong/shop/Redwallet.h"
+#include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/dialog/prompt/PromptDialog.h"
 #include "game/mahjong/dialog/daily/DailyEvent.h"
 #include "game/mahjong/dialog/playerinfo/HeroInfoEdit.h"
@@ -8,8 +7,9 @@
 #include "game/mahjong/shop/ChargeGold.hpp"
 #include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/shop/LequanShop.hpp"
-#include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
+#include "game/mahjong/share/Redwallet.h"
+#include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/utils/Audio.h"
 #include "game/utils/GameConfig.h"
 

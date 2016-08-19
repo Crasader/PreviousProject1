@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/shop/LingHongbao.hpp"
+#include "game/mahjong/share/LingHongbao.hpp"
 #include "server/NetworkManage.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"

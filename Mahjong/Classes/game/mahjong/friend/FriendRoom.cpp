@@ -1,4 +1,4 @@
-#include "game/mahjong/dialog/friend/FriendRoom.h"
+#include "game/mahjong/friend/FriendRoom.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "server/NetworkManage.h"
 

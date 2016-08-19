@@ -2,7 +2,7 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "game/mahjong/dialog/friend/SearchResult.h"
+#include "game/mahjong/friend/SearchResult.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 

@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/shop/FaHongbao.hpp"
+#include "game/mahjong/share/FaHongbao.hpp"
 
 bool FaHongbao::init(){
     if(!Layer::init()){

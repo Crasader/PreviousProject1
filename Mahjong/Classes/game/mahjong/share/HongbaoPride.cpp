@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/shop/HongbaoPride.hpp"
+#include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/state/GameData.h"
 
 bool HongbaoPride::init(){

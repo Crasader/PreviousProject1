@@ -1,19 +1,20 @@
 #include "game/mahjong/core/gui/GuiLayer.h"
 #include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
-#include "game/mahjong/dialog/friend/FriendInvite.h"
+#include "game/mahjong/friend/FriendInvite.h"
 #include "game/mahjong/state/GameData.h"
+#include "game/mahjong/bill/BillInfo.h"
+#include "game/mahjong/core/widget/QuitRoomDialog.hpp"
+#include "game/mahjong/chat/ChatDialog.hpp"
+#include "game/mahjong/chat/PlayerChatManage.hpp"
+#include "game/utils/Audio.h"
 #include "game/utils/SeatIdUtil.h"
 #include "server/MsgHandler.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
-#include "game/mahjong/dialog/bill/BillInfo.h"
-#include "game/mahjong/core/widget/QuitRoomDialog.hpp"
-#include "game/utils/Audio.h"
-#include "game/mahjong/chat/ChatDialog.hpp"
 #include "ui/UIImageView.h"
 #include "ui/UIRichText.h"
-#include "game/mahjong/chat/PlayerChatManage.hpp"
+
 
 
 
