@@ -288,6 +288,10 @@
 		D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8681CCDF0F300A20896 /* stdafx.cpp */; };
 		D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
+		D2BD08C21D66DAA400ADC31E /* GoldRelieve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD08C01D66DAA400ADC31E /* GoldRelieve.cpp */; };
+		D2BD08C31D66DAA400ADC31E /* GoldRelieve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD08C01D66DAA400ADC31E /* GoldRelieve.cpp */; };
+		D2BD08C51D66E76900ADC31E /* relieve in Resources */ = {isa = PBXBuildFile; fileRef = D2BD08C41D66E76900ADC31E /* relieve */; };
+		D2BD08C61D66E76900ADC31E /* relieve in Resources */ = {isa = PBXBuildFile; fileRef = D2BD08C41D66E76900ADC31E /* relieve */; };
 		D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */; };
 		D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */; };
 		D2CF763A1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */; };
@@ -601,6 +605,9 @@
 		D2B1A86B1CCDF0F300A20896 /* tchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tchar.h; sourceTree = "<group>"; };
 		D2B1A86D1CCDF0F400A20896 /* UserData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserData.cpp; sourceTree = "<group>"; };
 		D2B1A86E1CCDF0F400A20896 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
+		D2BD08C01D66DAA400ADC31E /* GoldRelieve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRelieve.cpp; sourceTree = "<group>"; };
+		D2BD08C11D66DAA400ADC31E /* GoldRelieve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldRelieve.hpp; sourceTree = "<group>"; };
+		D2BD08C41D66E76900ADC31E /* relieve */ = {isa = PBXFileReference; lastKnownFileType = folder; path = relieve; sourceTree = "<group>"; };
 		D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MjGameScene.cpp; sourceTree = "<group>"; };
 		D2BDE3AB1CEB10E100754AC0 /* MjGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MjGameScene.h; sourceTree = "<group>"; };
 		D2CF76381D62A68C0035B870 /* QuickChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuickChatLayer.cpp; sourceTree = "<group>"; };
@@ -738,6 +745,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2BD08C41D66E76900ADC31E /* relieve */,
 				D2435FA21CC73524000BC4F4 /* signanim */,
 				D22F1C171CC5CB67007270B2 /* setting */,
 				D25DEE401CC4AE78007D428A /* shop */,
@@ -877,6 +885,7 @@
 		D22EEF1D1D66AAF000BF1CCB /* shop */ = {
 			isa = PBXGroup;
 			children = (
+				D2BD08BF1D66DA8700ADC31E /* relieve */,
 				D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */,
 				D22EEF1F1D66AAF000BF1CCB /* ChargeDiamond.hpp */,
 				D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */,
@@ -1123,24 +1132,24 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
-				D22EEF891D66D14D00BF1CCB /* daily */,
-				D22EEF9E1D66D14D00BF1CCB /* playerinfo */,
-				D22EEFAF1D66D14D00BF1CCB /* setting */,
-				D22EEFB61D66D14D00BF1CCB /* trusteeship */,
-				D22EEF671D66CFC800BF1CCB /* bill */,
-				D22EEF6C1D66CFC800BF1CCB /* friend */,
-				D22EEF561D66CEB600BF1CCB /* share */,
-				D22EEF1D1D66AAF000BF1CCB /* shop */,
 				D2B1A7B61CCDF0F300A20896 /* anim */,
+				D22EEF671D66CFC800BF1CCB /* bill */,
 				D2B1A7BF1CCDF0F300A20896 /* chat */,
 				D2B1A7C21CCDF0F300A20896 /* core */,
+				D22EEF891D66D14D00BF1CCB /* daily */,
 				D2B1A7CB1CCDF0F300A20896 /* dialog */,
+				D22EEF6C1D66CFC800BF1CCB /* friend */,
 				D2B1A82A1CCDF0F300A20896 /* jong */,
 				D2B1A82D1CCDF0F300A20896 /* lobby */,
 				D2B1A8321CCDF0F300A20896 /* player */,
+				D22EEF9E1D66D14D00BF1CCB /* playerinfo */,
 				D28A4A141D056B4700741FD0 /* result */,
+				D22EEFAF1D66D14D00BF1CCB /* setting */,
+				D22EEF561D66CEB600BF1CCB /* share */,
+				D22EEF1D1D66AAF000BF1CCB /* shop */,
 				D226FD251D051DBA00324097 /* splash */,
 				D2B1A8441CCDF0F300A20896 /* state */,
+				D22EEFB61D66D14D00BF1CCB /* trusteeship */,
 			);
 			path = mahjong;
 			sourceTree = "<group>";
@@ -1182,11 +1191,11 @@
 		D2B1A7C21CCDF0F300A20896 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1A7C31CCDF0F300A20896 /* gui */,
 				D2B1A7C61CCDF0F300A20896 /* MahjongView.cpp */,
-				D2B1A7C71CCDF0F300A20896 /* MahjongView.h */,
 				D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */,
+				D2B1A7C71CCDF0F300A20896 /* MahjongView.h */,
 				D2BDE3AB1CEB10E100754AC0 /* MjGameScene.h */,
+				D2B1A7C31CCDF0F300A20896 /* gui */,
 				D2B1A7C81CCDF0F300A20896 /* widget */,
 			);
 			path = core;
@@ -1264,16 +1273,16 @@
 		D2B1A8321CCDF0F300A20896 /* player */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1A8331CCDF0F300A20896 /* base */,
 				D2B1A8361CCDF0F300A20896 /* PlayerHero.cpp */,
-				D2B1A8371CCDF0F300A20896 /* PlayerHero.h */,
-				D2B1A8381CCDF0F300A20896 /* playerinfo */,
 				D2B1A83B1CCDF0F300A20896 /* PlayerLeft.cpp */,
-				D2B1A83C1CCDF0F300A20896 /* PlayerLeft.h */,
 				D2B1A83D1CCDF0F300A20896 /* PlayerOpposite.cpp */,
-				D2B1A83E1CCDF0F300A20896 /* PlayerOpposite.h */,
 				D2B1A83F1CCDF0F300A20896 /* PlayerRight.cpp */,
+				D2B1A8371CCDF0F300A20896 /* PlayerHero.h */,
+				D2B1A83C1CCDF0F300A20896 /* PlayerLeft.h */,
+				D2B1A83E1CCDF0F300A20896 /* PlayerOpposite.h */,
 				D2B1A8401CCDF0F300A20896 /* PlayerRight.h */,
+				D2B1A8331CCDF0F300A20896 /* base */,
+				D2B1A8381CCDF0F300A20896 /* playerinfo */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -1343,6 +1352,15 @@
 				D2B1A86E1CCDF0F400A20896 /* UserData.h */,
 			);
 			path = userdata;
+			sourceTree = "<group>";
+		};
+		D2BD08BF1D66DA8700ADC31E /* relieve */ = {
+			isa = PBXGroup;
+			children = (
+				D2BD08C01D66DAA400ADC31E /* GoldRelieve.cpp */,
+				D2BD08C11D66DAA400ADC31E /* GoldRelieve.hpp */,
+			);
+			path = relieve;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1489,6 +1507,7 @@
 				D25329701CC0D33600DDAD97 /* mjitem in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				D25329781CC0D33600DDAD97 /* res in Resources */,
+				D2BD08C51D66E76900ADC31E /* relieve in Resources */,
 				D253297C1CC0D33600DDAD97 /* trusteeship in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
@@ -1511,6 +1530,7 @@
 				D253296F1CC0D33600DDAD97 /* mainlogin in Resources */,
 				D25329771CC0D33600DDAD97 /* register in Resources */,
 				D25329671CC0D33600DDAD97 /* gameview in Resources */,
+				D2BD08C61D66E76900ADC31E /* relieve in Resources */,
 				D253296B1CC0D33600DDAD97 /* jong in Resources */,
 				D2435FA41CC73525000BC4F4 /* signanim in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
@@ -1574,6 +1594,7 @@
 				D28A4A321D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
 				D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
 				D2CF763A1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */,
+				D2BD08C21D66DAA400ADC31E /* GoldRelieve.cpp in Sources */,
 				D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
 				D2B1A8E51CCDF0F400A20896 /* GameData.cpp in Sources */,
@@ -1684,6 +1705,7 @@
 				D2B1A8DE1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				D2B1A8B61CCDF0F400A20896 /* PromptDialog.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				D2BD08C31D66DAA400ADC31E /* GoldRelieve.cpp in Sources */,
 				D28A4A2F1D056B7A00741FD0 /* Audio.cpp in Sources */,
 				D22EEF801D66CFC800BF1CCB /* FriendInvite.cpp in Sources */,
 				D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */,

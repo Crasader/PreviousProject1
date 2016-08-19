@@ -9,6 +9,7 @@
 #include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/shop/LequanShop.hpp"
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
+#include "game/mahjong/shop/relieve/GoldRelieve.hpp"
 #include "game/mahjong/share/Redwallet.h"
 #include "game/utils/Audio.h"
 #include "game/utils/GameConfig.h"
@@ -101,20 +102,23 @@ void LobbyScene::startGame(Ref* psend){
     GAMEDATA::getInstance()->setCurrentSelectRoomId(item->getTag());
     if (item->getTag() == ROOM_1){
         //判断是否需要弹出救济金
-        if(UserData::getInstance()->getGold()>=ENTER_ROOM_1_GOLD){
+        if(UserData::getInstance()->getGold()<=ENTER_ROOM_1_GOLD){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_1)));
+            showLoading();
         }else{
-            
-        
+            GoldRelieve* goldRelieve = GoldRelieve::create();
+            addChild(goldRelieve,3);
         }
     }
     else if (item->getTag() == ROOM_2){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_2)));
+        showLoading();
     }
     else if (item->getTag() == ROOM_3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_3)));
+        showLoading();
     }
-    showLoading();
+    
 }
 
 
