@@ -24,23 +24,12 @@ bool DailyWelfare::init(){
 
 void DailyWelfare::onEnter(){
     Layer::onEnter();
-    JJJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(GET_JJJ_RESPONSE_REMOVE_LOADING,[=](EventCustom* event){
         if(NULL != getChildByTag(666)){
             getChildByTag(666)->removeFromParent();
         }
-        WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
-        if(gold.result == "1"){
-            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
-            getParent()->addChild(util,5);
-            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+atoi(gold.gold.c_str()));
-            EventCustom ev(MSG_UPDATE_HERO_INFO);
-            _eventDispatcher->dispatchEvent(&ev);
-        }else {
-            HintDialog* hint = HintDialog::create("救济金领取失败",false);
-            addChild(hint,5);
-        }
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(JJJRespListener, 1);
     
     BZJJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
         WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
@@ -82,10 +71,10 @@ void DailyWelfare::onEnter(){
 
 void DailyWelfare::onExit(){
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(JJJRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(BZJJRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(WXRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(SJRespListener);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(GET_JJJ_RESPONSE_REMOVE_LOADING);
 }
 
 void DailyWelfare::showDailyWelfareLayer(){

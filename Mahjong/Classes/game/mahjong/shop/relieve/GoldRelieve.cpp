@@ -7,6 +7,8 @@
 //
 
 #include "game/mahjong/shop/relieve/GoldRelieve.hpp"
+#include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
 
 bool GoldRelieve::init(){
     if(!Layer::init()){
@@ -34,6 +36,15 @@ bool GoldRelieve::init(){
     number->setPosition(Vec2(640,530));
     addChild(number);
     
+    auto surplusNumber = Label::create("0","arial",32);
+    surplusNumber->setTag(999);
+    if(GAMEDATA::getInstance()->getWelfareData().needInit){
+        surplusNumber->setString(GAMEDATA::getInstance()->getWelfareData().jjj_count);
+    }
+    surplusNumber->setColor(Color3B(237,182,60));
+    surplusNumber->setPosition(772,530);
+    addChild(surplusNumber);
+    
     auto itembg1 = Scale9Sprite::create("shop/red_box.png");
     itembg1->setContentSize(Size(285,315));
     itembg1->setPosition(Vec2(480,320));
@@ -59,9 +70,9 @@ bool GoldRelieve::init(){
     iteminfo1->setPosition(Vec2(480,280));
     addChild(iteminfo1);
     
-    auto itembtnImage1 = MenuItemImage::create("relieve/linqu_btn_1.png","relieve/linqu_btn_2.png");
+    auto itembtnImage1 = MenuItemImage::create("relieve/linqu_btn_1.png","relieve/linqu_btn_2.png",CC_CALLBACK_0(GoldRelieve::getRelieve, this));
     auto itembtn1 = Menu::create(itembtnImage1,NULL);
-    itembtn1->setPosition(Vec2(480,220));
+    itembtn1->setPosition(Vec2(480,215));
     addChild(itembtn1);
     
     auto itembg2 = Scale9Sprite::create("shop/red_box.png");
@@ -85,18 +96,41 @@ bool GoldRelieve::init(){
     itemcontent2->setPosition(Vec2(810,340));
     addChild(itemcontent2);
     
-    auto iteminfo2 = Sprite::create("relieve/relieve_image_2.png");
+    auto iteminfo2 = Sprite::create("relieve/relieve_image_1.png");
     iteminfo2->setPosition(Vec2(810,280));
     addChild(iteminfo2);
     
-    auto itembtnImage2 = MenuItemImage::create("relieve/charge_btn_1.png","relieve/charge_btn_2.png");
+    auto itembtnImage2 = MenuItemImage::create("relieve/charge_btn_1.png","relieve/charge_btn_2.png",CC_CALLBACK_0(GoldRelieve::chargeGold, this));
     auto itembtn2 = Menu::create(itembtnImage2,NULL);
-    itembtn2->setPosition(Vec2(810,220));
+    itembtn2->setPosition(Vec2(810,215));
     addChild(itembtn2);
     
     return true;
 }
 
+void GoldRelieve:: onEnter() {
+    Layer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(UPDATE_JJJ_COUNT_RESP, [=](EventCustom* event){
+        if(NULL != getChildByTag(999)){
+            ((Label*)getChildByTag(999))->setString(GAMEDATA::getInstance()->getWelfareData().jjj_count);
+        }
+    });
+};
+void GoldRelieve::onExit() {
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(UPDATE_JJJ_COUNT_RESP);
+};
+
 void GoldRelieve::closeView(){
     removeFromParent();
+
+}
+
+void GoldRelieve::chargeGold(){
+//TODO
+
+}
+
+void GoldRelieve::getRelieve(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareJJJ());
 }

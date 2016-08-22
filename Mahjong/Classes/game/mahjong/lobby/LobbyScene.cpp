@@ -1,6 +1,7 @@
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/dialog/prompt/PromptDialog.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/daily/DailyEvent.h"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/playerinfo/HeroInfoEdit.h"
@@ -11,8 +12,9 @@
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
 #include "game/mahjong/shop/relieve/GoldRelieve.hpp"
 #include "game/mahjong/share/Redwallet.h"
-#include "game/utils/Audio.h"
+#include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
+#include "game/utils/Audio.h"
 
 bool LobbyScene::init()
 {
@@ -59,13 +61,15 @@ void LobbyScene::signUpdate(float dt){
 
 void LobbyScene::onExit(){
     Scene::onExit();
-    _eventDispatcher->removeEventListener(enterRoomListener);
-    _eventDispatcher->removeEventListener(enterFriendRoomListener);
-    _eventDispatcher->removeEventListener(openFriendRoomListener);
-    _eventDispatcher->removeEventListener(friendInviteListener);
-    _eventDispatcher->removeEventListener(updateHeroInfoListener);
-    _eventDispatcher->removeEventListener(heroInfoListener);
-    _eventDispatcher->removeEventListener(lobbyrReConnectAgain);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(friendInviteListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(updateHeroInfoListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroInfoListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyrReConnectAgain);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_JJJ);
+
 }
 
 void LobbyScene::updateHeroInfo(){
@@ -102,7 +106,7 @@ void LobbyScene::startGame(Ref* psend){
     GAMEDATA::getInstance()->setCurrentSelectRoomId(item->getTag());
     if (item->getTag() == ROOM_1){
         //判断是否需要弹出救济金
-        if(UserData::getInstance()->getGold()<=ENTER_ROOM_1_GOLD){
+        if(UserData::getInstance()->getGold()>=ENTER_ROOM_1_GOLD){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_1)));
             showLoading();
         }else{
@@ -466,6 +470,22 @@ void LobbyScene::addCustomEventListener(){
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyrReConnectAgain, 1);
+    
+    //救济经领取
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
+        WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
+        if(gold.result == "1"){
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+            addChild(util,5);
+            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+atoi(gold.gold.c_str()));
+            updateHeroInfo();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
+        }else {
+            HintDialog* hint = HintDialog::create("救济金领取失败",false);
+            addChild(hint,5);
+        }
+    });
 }
 
 
