@@ -28,6 +28,8 @@ package org.cocos2dx.cpp;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import com.tbu.wx.pay.TbuWxPay;
+
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -38,5 +40,6 @@ public class AppActivity extends Cocos2dxActivity {
 		super.onCreate(savedInstanceState);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		TbuWxPay.getInstance().initOnFirstActivity(this);
 	}
 }
