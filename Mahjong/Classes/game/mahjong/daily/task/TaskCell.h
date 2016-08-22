@@ -17,7 +17,7 @@ class TaskCell :public Sprite{
 public:
 	virtual bool init(TASKID taskId);
 	static TaskCell* create(TASKID type);
-	void updateData();
+	void updateData(TASKID taskId);
 	CC_SYNTHESIZE(TASKID, taskID, TaskID);
 	CC_SYNTHESIZE(int,taskState,TaskState);
 private:
@@ -29,6 +29,7 @@ private:
 	Menu* chargeMenu;
 	void recievePride(Ref* ref);
 	void charge();
+    void drawTaskFinishStateById(TASKID taskId);
     std::string getPiaoDaiImageById(TASKID taskId);
     std::string getTitleImageById(TASKID taskId);
     std::string getContentImageById(TASKID taskId);

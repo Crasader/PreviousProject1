@@ -146,10 +146,10 @@ void DailyTask::updateData(){
     else{
         lingqu->setVisible(false);
     }
-    cell1->updateData();
-    cell2->updateData();
-    cell3->updateData();
-    cell4->updateData();
+    cell1->updateData(task1);
+    cell2->updateData(task2);
+    cell3->updateData(task3);
+    cell4->updateData(task4);
 }
 
 void DailyTask::recieveExtraPride(Ref* ref){

@@ -43,56 +43,10 @@ bool TaskCell::init(TASKID taskId){
     pride->setPosition(100, 138);
     addChild(pride);
     
-    if (getTaskFinishConditionById(taskId)>0){
-        auto jindu_bg = Sprite::create("daily/task/jingdutiao_bg.png");
-        jindu_bg->setPosition(100, 93);
-        addChild(jindu_bg);
-        
-        taskProgress = Scale9Sprite::create("daily/task/jindutiao.png");
-        taskProgress->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        taskProgress->setContentSize(Size(146 * 0 / getTaskFinishConditionById(taskId), 20));
-        taskProgress->setPosition(25, 93);
-        addChild(taskProgress);
-        
-        std::string num = StringUtils::format("%d:%d", 0, getTaskFinishConditionById(taskId));
-        taskFinishNum = LabelAtlas::create(num, "daily/task/num.png", 16, 24, '0');
-        taskFinishNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        taskFinishNum->setPosition(100, 93);
-        addChild(taskFinishNum);
-        
-    }
-    else{
-        auto charge = Sprite::create("daily/task/charge_6_yuan.png");
-        charge->setPosition(100, 93);
-        addChild(charge);
-    }
-    auto finish = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png","daily/recieve_btn_3.png",
-                                        CC_CALLBACK_1(TaskCell::recievePride, this));
-    finishMenu = Menu::create(finish, NULL);
-    finishMenu->setPosition(100, 40);
-    finishMenu->setVisible(false);
-    addChild(finishMenu);
+    drawTaskFinishStateById(taskId);
     
-    //    if (type != chargeTask){
-    //        std::string unfinishImage = cocos2d::String::createWithFormat("daily/task/task_info_%d.png", type)->_string;
-    //        unfinish = Sprite::create(unfinishImage);
-    //        unfinish->setPosition(100, 40);
-    //        unfinish->setVisible(false);
-    //        addChild(unfinish);
-    //    }
-    //    else{
-    //        auto chargeItem = MenuItemImage::create("daily/task/charge_btn_1.png", "daily/task/charge_btn_2.png",
-    //                                                CC_CALLBACK_0(TaskCell::charge, this));
-    //        chargeMenu = Menu::create(chargeItem, NULL);
-    //        chargeMenu->setPosition(100, 40);
-    //        chargeMenu->setVisible(false);
-    //        addChild(chargeMenu);
-    //    }
-    //    revcieved = Sprite::create("daily/task/yilingqu.png");
-    //    revcieved->setPosition(100, 40);
-    //    revcieved->setVisible(false);
-    //    addChild(revcieved);
-    updateData();
+    updateData(taskId);
+    
     return true;
 }
 
@@ -119,7 +73,60 @@ void TaskCell::charge(){
     
 }
 
-void TaskCell::updateData(){
+void TaskCell::drawTaskFinishStateById(TASKID taskId){
+    if (taskId != task4){
+        auto jindu_bg = Sprite::create("daily/task/jingdutiao_bg.png");
+        jindu_bg->setPosition(100, 93);
+        addChild(jindu_bg);
+        
+        taskProgress = Scale9Sprite::create("daily/task/jindutiao.png");
+        taskProgress->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        taskProgress->setContentSize(Size(146 * 0 / getTaskFinishConditionById(taskId), 20));
+        taskProgress->setPosition(25, 93);
+        addChild(taskProgress);
+        
+        std::string num = StringUtils::format("%d:%d", 0, getTaskFinishConditionById(taskId));
+        taskFinishNum = LabelAtlas::create(num, "daily/task/num.png", 16, 24, '0');
+        taskFinishNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        taskFinishNum->setPosition(100, 93);
+        addChild(taskFinishNum);
+        
+    }
+    else{
+        auto charge = Sprite::create("daily/task/charge_6_yuan.png");
+        charge->setPosition(100, 93);
+        addChild(charge);
+    }
+    if (taskId != task4){
+        std::string unfinishImage = cocos2d::String::createWithFormat("daily/task/task_info_%d.png", taskId)->_string;
+        unfinish = Sprite::create(unfinishImage);
+        unfinish->setPosition(100, 40);
+        unfinish->setVisible(false);
+        addChild(unfinish);
+    }
+    else{
+        auto chargeItem = MenuItemImage::create("daily/task/charge_btn_1.png", "daily/task/charge_btn_2.png",
+                                                CC_CALLBACK_0(TaskCell::charge, this));
+        chargeMenu = Menu::create(chargeItem, NULL);
+        chargeMenu->setPosition(100, 40);
+        chargeMenu->setVisible(false);
+        addChild(chargeMenu);
+    }
+    auto finish = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png","daily/recieve_btn_3.png",
+                                        CC_CALLBACK_1(TaskCell::recievePride, this));
+    finishMenu = Menu::create(finish, NULL);
+    finishMenu->setPosition(100, 40);
+    finishMenu->setVisible(false);
+    addChild(finishMenu);
+    
+    revcieved = Sprite::create("daily/task/yilingqu.png");
+    revcieved->setPosition(100, 40);
+    revcieved->setVisible(false);
+    addChild(revcieved);
+
+}
+
+void TaskCell::updateData(TASKID taskId){
     if (!isVisible()){
         return;
     }
@@ -140,7 +147,7 @@ void TaskCell::updateData(){
     if (getTaskID() != task4){
         if (result == "-1"){
             taskProgress->setContentSize(Size(146, 20));
-            taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", getTaskID() == task4 ? 2 : 3, getTaskID() == task4 ? 2 : 3)->_string);
+            taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d", getTaskFinishConditionById(taskId),getTaskFinishConditionById(taskId))->_string);
             setTaskState(2);
             finishMenu->setVisible(false);
             unfinish->setVisible(false);
@@ -151,13 +158,13 @@ void TaskCell::updateData(){
             finishMenu->setVisible(false);
             unfinish->setVisible(true);
             revcieved->setVisible(false);
-            float rate =  1.0f*res / ((getTaskID() == task4 ? 2 : 3));
+            float rate =  1.0f*res / (getTaskFinishConditionById(taskId));
             if(rate>1){
                 rate =1;
             }
             taskProgress->setContentSize(Size(146 *rate, 20));
-            taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d",res, getTaskID() == task4 ? 2 : 3)->_string);
-            if (res == (getTaskID() == task4 ? 2 : 3)){
+            taskFinishNum->setString(cocos2d::String::createWithFormat("%d:%d",res,getTaskFinishConditionById(taskId))->_string);
+            if (res == (getTaskFinishConditionById(taskId))){
                 setTaskState(1);
                 finishMenu->setVisible(true);
                 unfinish->setVisible(false);
@@ -201,11 +208,11 @@ std::string TaskCell::getPrideImageById(TASKID taskId){
 
 int TaskCell::getTaskFinishConditionById(TASKID taskId){
     if(taskId == task1){
-        return 2;
+        return 3;
     }else if(taskId == task2){
-        return 2;
-    }else if(taskId == task3){
         return 1;
+    }else if(taskId == task3){
+        return 2;
     }else if(taskId == task4){
         return 0;
     }
