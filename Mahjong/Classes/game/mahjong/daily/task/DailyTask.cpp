@@ -28,7 +28,7 @@ void DailyTask::onEnter(){
     });
     _eventDispatcher->addEventListenerWithFixedPriority(mq3, 1);
     
-     pph3 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_PPH3, [=](EventCustom* event){
+    pph3 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_PPH3, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
@@ -89,19 +89,19 @@ void DailyTask::onExit(){
 
 void DailyTask::showDailyTaskLayer(){
     
-    cell1 = TaskCell::create(TaskType::task1);
+    cell1 = TaskCell::create(TASKID::task1);
     cell1->setPosition(307, 355);
     addChild(cell1);
     
-    cell2 = TaskCell::create(TaskType::task2);
+    cell2 = TaskCell::create(TASKID::task2);
     cell2->setPosition(307+222, 355);
     addChild(cell2);
     
-    cell3 = TaskCell::create(TaskType::task3);
+    cell3 = TaskCell::create(TASKID::task3);
     cell3->setPosition(307 + 222*2, 355);
     addChild(cell3);
     
-    cell4 = TaskCell::create(TaskType::task4);
+    cell4 = TaskCell::create(TASKID::task4);
     cell4->setPosition(307+222*3, 355);
     addChild(cell4);
     
@@ -110,7 +110,7 @@ void DailyTask::showDailyTaskLayer(){
     addChild(text_info);
     
     extraImage = MenuItemImage::create("daily/recieve_btn_small_1.png", "daily/recieve_btn_small_2.png","daily/recieve_btn_small_3.png",
-                                  CC_CALLBACK_1(DailyTask::recieveExtraPride, this));
+                                       CC_CALLBACK_1(DailyTask::recieveExtraPride, this));
     extraMenu = Menu::create(extraImage, NULL);
     extraMenu->setPosition(660, 125);
     
