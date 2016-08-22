@@ -1394,7 +1394,7 @@ void MsgHandler::friendAddNotify(std::string msg){
 }
 
 void MsgHandler::friendOpenRoomResp(std::string msg){
-//    GAMEDATA::getInstance()->clearPlayersInfo();
+    //    GAMEDATA::getInstance()->clearPlayersInfo();
     //{code:2038,poxiaoId:poxiaoId,result:"0",seatId:1}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -1484,9 +1484,9 @@ void MsgHandler::playerChatNotify(std::string msg){
         const rapidjson::Value &content = _mDoc["content"];
         chatData.content = content.GetString();
     }
-    if (_mDoc.HasMember("poxiaoId")){
-        const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
-        chatData.poxiaoId = poxiaoId.GetString();
+    if (_mDoc.HasMember("fId")){
+        const rapidjson::Value &fId = _mDoc["fId"];
+        chatData.poxiaoId = fId.GetString();
     }
     if (_mDoc.HasMember("nickname")){
         const rapidjson::Value &nickname = _mDoc["nickname"];
@@ -1496,12 +1496,9 @@ void MsgHandler::playerChatNotify(std::string msg){
         const rapidjson::Value &flag = _mDoc["flag"];
         if(flag.GetInt() == 0){
             FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
-            if(_mDoc.HasMember("fId")){
-                const rapidjson::Value &fId = _mDoc["fId"];
-                for(auto var : list.friendMsgList){
-                    if(fId.GetString() == var.poxiaoId){
-                        var.msgList.push_back(chatData);
-                    }
+            for(auto var : list.friendMsgList){
+                if(chatData.poxiaoId == var.poxiaoId){
+                    var.msgList.push_back(chatData);
                 }
             }
             GAMEDATA::getInstance()->setFriendChatMsgList(list);
@@ -1511,7 +1508,7 @@ void MsgHandler::playerChatNotify(std::string msg){
             GAMEDATA::getInstance()->setRoomChatMsgList(list);
         }
     }
-
+    
     GAMEDATA::getInstance()->setChatData(chatData);
     postNotifyMessage(MSG_PLAYER_CHAT_NOTIFY, "");
 }
