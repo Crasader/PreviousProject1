@@ -53,8 +53,6 @@
 		D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C390F1CFD7446006F6C9E /* QuitRoomDialog.cpp */; };
 		D20C391E1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
 		D20C391F1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
-		D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
-		D21D81C71D5B11AE00560DC5 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */; };
 		D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D81D5C191500560DC5 /* ChatDialog.cpp */; };
 		D21D81DB1D5C191500560DC5 /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21D81D81D5C191500560DC5 /* ChatDialog.cpp */; };
 		D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
@@ -203,6 +201,12 @@
 		D253297B1CC0D33600DDAD97 /* result in Resources */ = {isa = PBXBuildFile; fileRef = D25329521CC0D33600DDAD97 /* result */; };
 		D253297C1CC0D33600DDAD97 /* trusteeship in Resources */ = {isa = PBXBuildFile; fileRef = D25329531CC0D33600DDAD97 /* trusteeship */; };
 		D253297D1CC0D33600DDAD97 /* trusteeship in Resources */ = {isa = PBXBuildFile; fileRef = D25329531CC0D33600DDAD97 /* trusteeship */; };
+		D257FD631D6AE0BA00B8C596 /* CallAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD5B1D6AE0BA00B8C596 /* CallAndroidMethod.cpp */; };
+		D257FD641D6AE0BA00B8C596 /* CallAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD5B1D6AE0BA00B8C596 /* CallAndroidMethod.cpp */; };
+		D257FD651D6AE0BA00B8C596 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D257FD5E1D6AE0BA00B8C596 /* IOSiAP.mm */; };
+		D257FD661D6AE0BA00B8C596 /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D257FD5E1D6AE0BA00B8C596 /* IOSiAP.mm */; };
+		D257FD691D6AE0BA00B8C596 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD601D6AE0BA00B8C596 /* MahjongPayHandler.cpp */; };
+		D257FD6A1D6AE0BA00B8C596 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD601D6AE0BA00B8C596 /* MahjongPayHandler.cpp */; };
 		D25DEE371CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE381CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE411CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
@@ -389,8 +393,6 @@
 		D20C39101CFD7446006F6C9E /* QuitRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuitRoomDialog.hpp; sourceTree = "<group>"; };
 		D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutFogAnim.cpp; sourceTree = "<group>"; };
 		D20C391D1CFEC2E7006F6C9E /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
-		D21D81C41D5B11AE00560DC5 /* IOSiAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSiAP.h; sourceTree = "<group>"; };
-		D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSiAP.mm; sourceTree = "<group>"; };
 		D21D81D81D5C191500560DC5 /* ChatDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatDialog.cpp; sourceTree = "<group>"; };
 		D21D81D91D5C191500560DC5 /* ChatDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChatDialog.hpp; sourceTree = "<group>"; };
 		D226FD281D051DBA00324097 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
@@ -519,6 +521,12 @@
 		D25329511CC0D33600DDAD97 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		D25329521CC0D33600DDAD97 /* result */ = {isa = PBXFileReference; lastKnownFileType = folder; path = result; sourceTree = "<group>"; };
 		D25329531CC0D33600DDAD97 /* trusteeship */ = {isa = PBXFileReference; lastKnownFileType = folder; path = trusteeship; sourceTree = "<group>"; };
+		D257FD5B1D6AE0BA00B8C596 /* CallAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallAndroidMethod.cpp; sourceTree = "<group>"; };
+		D257FD5C1D6AE0BA00B8C596 /* CallAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallAndroidMethod.h; sourceTree = "<group>"; };
+		D257FD5D1D6AE0BA00B8C596 /* IOSiAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSiAP.h; sourceTree = "<group>"; };
+		D257FD5E1D6AE0BA00B8C596 /* IOSiAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSiAP.mm; sourceTree = "<group>"; };
+		D257FD601D6AE0BA00B8C596 /* MahjongPayHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MahjongPayHandler.cpp; sourceTree = "<group>"; };
+		D257FD611D6AE0BA00B8C596 /* MahjongPayHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MahjongPayHandler.h; sourceTree = "<group>"; };
 		D25DEE361CC0F56A007D428A /* bill */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bill; sourceTree = "<group>"; };
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
@@ -779,7 +787,7 @@
 			children = (
 				D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */,
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
-				D21D81C31D5B11AE00560DC5 /* payment */,
+				D257FD5A1D6AE0BA00B8C596 /* payment */,
 				D2B1A7B11CCDF0F300A20896 /* game */,
 				D28A4A0A1D0565C200741FD0 /* http */,
 				D23EFCC81D10F54D002A48A5 /* image */,
@@ -837,15 +845,6 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
-		};
-		D21D81C31D5B11AE00560DC5 /* payment */ = {
-			isa = PBXGroup;
-			children = (
-				D21D81C41D5B11AE00560DC5 /* IOSiAP.h */,
-				D21D81C51D5B11AE00560DC5 /* IOSiAP.mm */,
-			);
-			path = payment;
-			sourceTree = "<group>";
 		};
 		D226FD251D051DBA00324097 /* splash */ = {
 			isa = PBXGroup;
@@ -1064,6 +1063,19 @@
 				D23EFCCE1D10F695002A48A5 /* ImagePicker.hpp */,
 			);
 			path = image;
+			sourceTree = "<group>";
+		};
+		D257FD5A1D6AE0BA00B8C596 /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				D257FD5B1D6AE0BA00B8C596 /* CallAndroidMethod.cpp */,
+				D257FD5C1D6AE0BA00B8C596 /* CallAndroidMethod.h */,
+				D257FD5D1D6AE0BA00B8C596 /* IOSiAP.h */,
+				D257FD5E1D6AE0BA00B8C596 /* IOSiAP.mm */,
+				D257FD601D6AE0BA00B8C596 /* MahjongPayHandler.cpp */,
+				D257FD611D6AE0BA00B8C596 /* MahjongPayHandler.h */,
+			);
+			path = payment;
 			sourceTree = "<group>";
 		};
 		D28A4A0A1D0565C200741FD0 /* http */ = {
@@ -1556,8 +1568,8 @@
 				D22EEF611D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */,
 				D22912381D128103005C7167 /* FindPassword.cpp in Sources */,
 				D229123A1D128103005C7167 /* UserRegister.cpp in Sources */,
+				D257FD631D6AE0BA00B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
-				D21D81C61D5B11AE00560DC5 /* IOSiAP.mm in Sources */,
 				D22EEFC31D66D14D00BF1CCB /* DailyTask.cpp in Sources */,
 				D22EEFDB1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */,
 				D22EEF811D66CFC800BF1CCB /* FriendListView.cpp in Sources */,
@@ -1588,6 +1600,7 @@
 				D2B1A8831CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D22EEF3C1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */,
+				D257FD691D6AE0BA00B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D2B1A8731CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
 				D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */,
 				D28A4A341D056B7A00741FD0 /* StringUtil.cpp in Sources */,
@@ -1622,6 +1635,7 @@
 				D22EEFC11D66D14D00BF1CCB /* DayCell.cpp in Sources */,
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D2B1A8B51CCDF0F400A20896 /* PromptDialog.cpp in Sources */,
+				D257FD651D6AE0BA00B8C596 /* IOSiAP.mm in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2B1A8D31CCDF0F400A20896 /* LobbyScene.cpp in Sources */,
@@ -1663,6 +1677,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D257FD641D6AE0BA00B8C596 /* CallAndroidMethod.cpp in Sources */,
+				D257FD6A1D6AE0BA00B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D22EEFCA1D66D14D00BF1CCB /* BoundPhone.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D22EEFC01D66D14D00BF1CCB /* DailySign.cpp in Sources */,
@@ -1732,7 +1748,6 @@
 				D21D81DB1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D2B1A8801CCDF0F400A20896 /* MahjongView.cpp in Sources */,
-				D21D81C71D5B11AE00560DC5 /* IOSiAP.mm in Sources */,
 				D22EEF3F1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */,
 				D2B1A8E61CCDF0F400A20896 /* GameData.cpp in Sources */,
 				D2B1A8741CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
@@ -1748,6 +1763,7 @@
 				D22EEFDC1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */,
 				D22EEF7E1D66CFC800BF1CCB /* FriendAddView.cpp in Sources */,
 				D28A4A351D056B7A00741FD0 /* StringUtil.cpp in Sources */,
+				D257FD661D6AE0BA00B8C596 /* IOSiAP.mm in Sources */,
 				D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D22EEFD21D66D14D00BF1CCB /* HeroInfoEdit.cpp in Sources */,
