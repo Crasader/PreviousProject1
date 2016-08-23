@@ -1,6 +1,7 @@
 #include "game/mahjong/anim/DealJongAnim.h"
 #include "game/mahjong/jong/Jong.h"
 #include "game/mahjong/core/MahjongView.h"
+#include "server/MsgConfig.h"
 
 bool DealJongAnim::init(){
     if (!Layer::init()){
@@ -214,7 +215,10 @@ void DealJongAnim::showDiceAnim(Sprite* sprite){
     animation->setDelayPerUnit(1.0f / 24.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
-    sprite->runAction(action);
+    sprite->runAction(Sequence::create(action,CallFunc::create([=](){
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
+        
+    }), NULL));
 }
 
 

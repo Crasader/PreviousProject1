@@ -708,8 +708,7 @@ void MahjongView::addDealJongListener(){
         DealJongAnim* anim = DealJongAnim::create();
         anim->setTag(1000);
         anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dd.at(0).c_str()),atoi(dd.at(1).c_str()));
-        this->addChild(anim);
-        guiLayer->updateData();
+        addChild(anim);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dealJongsListener, 1);
 }

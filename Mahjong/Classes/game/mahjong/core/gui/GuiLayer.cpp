@@ -26,11 +26,15 @@ bool GuiLayer::init(){
 
 void GuiLayer::onEnter(){
     Layer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(UPDATE_DICE_KAOBAO_STATE, [=](EventCustom* event){
+        updateData();
+    });
 };
 
 
 void GuiLayer::onExit(){
     Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(UPDATE_DICE_KAOBAO_STATE);
 };
 
 void GuiLayer::initView(){
