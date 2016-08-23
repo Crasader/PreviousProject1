@@ -9,6 +9,7 @@
 #include "game/utils/Audio.h"
 
 USING_NS_CC;
+using namespace cocos2d::ui;
 
 class PlayerBase :public Layer{
 public:
@@ -32,6 +33,8 @@ public:
     virtual void JongShowdown(vector<int> jongs){};
     virtual Point getCpgShowPostion(int index){ return Point(0, 0); };
     
+    void onEnter() override;
+    void onExit() override;
     void initPlayer(Player* playerInfo);//初始化玩家UI
     void replaceHandHua(JongViewType tpye);//玩家手牌换花
     void replaceTurnHua(PlayerTurnData data);//摸牌换花
@@ -84,11 +87,13 @@ private:
     LabelAtlas* timeClock;
     LabelAtlas* playerHuaCount;
     ProgressTimer* mProgressTimer;
+    Layer* chatShowLayer;//聊天显示图层
     void initData();
     void updateTime(float dt);
     Point getPostionBySeat(int seatId);
     Point getBigJongPos(int type);
     Point getHuaNumPos(int type);
+    Point getVec2BySeatId(int seatId);
     std::string getHeadImageName(std::string id);
 };
 

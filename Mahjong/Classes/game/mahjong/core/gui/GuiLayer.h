@@ -27,7 +27,7 @@ private:
 	void drawPlayerInvite();
     void showPlayerBill();
 	void invitePlayer(Ref* ref);
-    Point getVec2BySeatId(int seatId);
+    
 	
 };
 #endif

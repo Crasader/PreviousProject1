@@ -6,14 +6,11 @@
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/core/widget/QuitRoomDialog.hpp"
 #include "game/mahjong/chat/ChatDialog.hpp"
-#include "game/mahjong/chat/PlayerChatManage.hpp"
 #include "game/utils/Audio.h"
 #include "game/utils/SeatIdUtil.h"
 #include "server/MsgHandler.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
-#include "ui/UIImageView.h"
-#include "ui/UIRichText.h"
 
 
 
@@ -29,48 +26,11 @@ bool GuiLayer::init(){
 
 void GuiLayer::onEnter(){
     Layer::onEnter();
-    auto roomChatListener = EventListenerCustom::create(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
-        ChatData data = GAMEDATA::getInstance()->getChatData();
-        std::string content = data.content;
-        vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
-        RichText* text = RichText ::create();
-        text->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        for(auto var : msgs){
-            if(!PlayerChatManage::getInstance()->isFaceImage(var)){
-                RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
-                text->pushBackElement(element1);
-                text->formatText();
-            }else{
-                RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
-                text->pushBackElement(element2);
-                text->formatText();
-            }
-        }
-        int seatId = GAMEDATA::getInstance()->getHeroSeatId();
-        for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
-            if(play->getPoxiaoId() == data.poxiaoId){
-                seatId = play->getSeatId();
-            }
-        }
-        text->setPosition(getVec2BySeatId(seatId));
-        addChild(text,1);
-        auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(5, 0, 6, 38));
-        bob->setContentSize(Size(text->getContentSize().width+20, 65));
-        bob->setPosition(getVec2BySeatId(seatId));
-        addChild(bob);
-        schedule([=](float dt){
-            bob->removeFromParent();
-            text->removeFromParent();
-        },0,0,1.2,"removebob");
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomChatListener, 1);
 };
 
 
 void GuiLayer::onExit(){
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_ROOM_CHAT_SHOW);
 };
 
 void GuiLayer::initView(){
@@ -241,15 +201,3 @@ void GuiLayer::invitePlayer(Ref* ref){
     addChild(invite);
 }
 
-Point GuiLayer::getVec2BySeatId(int seatId){
-    int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId);
-    if(seatID == ClientSeatId::left){
-        return Vec2(180,470);
-    }else if(seatID == ClientSeatId::opposite){
-        return Vec2(820,650);
-    }else if(seatID == ClientSeatId::right){
-        return Vec2(1100,470);;
-    }else{
-        return Vec2(180,200);
-    }
- }
