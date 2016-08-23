@@ -1781,7 +1781,7 @@ void MsgHandler::welfareResp(std::string msg){
     if (_mDoc.HasMember("jjj")){
         const rapidjson::Value &jjj = _mDoc["jjj"];
         data.jjj_count = jjj["count"].GetString();
-        data.jjj_gold = jjj["used"].GetString();
+        data.jjj_used = jjj["used"].GetString();
         data.jjj_gold = jjj["gold"].GetString();
         data.jjj_result = jjj["result"].GetString();
     }

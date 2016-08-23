@@ -480,6 +480,7 @@ void LobbyScene::addCustomEventListener(){
             addChild(util,5);
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+atoi(gold.gold.c_str()));
             updateHeroInfo();
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_JJJ_COUNT_RESP);
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
         }else {
             HintDialog* hint = HintDialog::create("救济金领取失败",false);
