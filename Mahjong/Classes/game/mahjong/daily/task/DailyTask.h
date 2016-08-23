@@ -15,11 +15,6 @@ public :
 	void updateData();
 	CREATE_FUNC(DailyTask);
 private:
-    EventListenerCustom* mq3;
-    EventListenerCustom* pph3;
-    EventListenerCustom* lz2;
-    EventListenerCustom* charge;
-    EventListenerCustom* extra;
     
 	TaskCell* cell1;
 	TaskCell* cell2;

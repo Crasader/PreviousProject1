@@ -16,7 +16,7 @@ bool DailyTask::init(){
 
 void DailyTask::onEnter(){
     Layer::onEnter();
-    mq3 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_MQ3, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_DAILY_TASK_MQ3, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
@@ -26,9 +26,8 @@ void DailyTask::onEnter(){
             getParent()->addChild(util,5);
         }
     });
-    _eventDispatcher->addEventListenerWithFixedPriority(mq3, 1);
     
-    pph3 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_PPH3, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_DAILY_TASK_PPH3, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
@@ -38,9 +37,8 @@ void DailyTask::onEnter(){
             getParent()->addChild(util,5);
         }
     });
-    _eventDispatcher->addEventListenerWithFixedPriority(pph3, 1);
     
-    lz2 = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_LZ2, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_DAILY_TASK_LZ2, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+4000);
@@ -50,9 +48,8 @@ void DailyTask::onEnter(){
             getParent()->addChild(util,5);
         }
     });
-    _eventDispatcher->addEventListenerWithFixedPriority(lz2, 1);
     
-    charge = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_CHARGE, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_DAILY_TASK_CHARGE, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             EventCustom ev(MSG_UPDATE_HERO_INFO);
@@ -61,9 +58,8 @@ void DailyTask::onEnter(){
             getParent()->addChild(util,5);
         }
     });
-    _eventDispatcher->addEventListenerWithFixedPriority(charge, 1);
     
-    extra = EventListenerCustom::create(MSG_PLAYER_DAILY_TASK_EXTRA, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_DAILY_TASK_EXTRA, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
             UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+20);
@@ -73,17 +69,16 @@ void DailyTask::onEnter(){
             getParent()->addChild(util,5);
         }
     });
-    _eventDispatcher->addEventListenerWithFixedPriority(extra, 1);
 }
 
 
 void DailyTask::onExit(){
     Layer::onExit();
-    _eventDispatcher->removeEventListener(mq3);
-    _eventDispatcher->removeEventListener(pph3);
-    _eventDispatcher->removeEventListener(lz2);
-    _eventDispatcher->removeEventListener(charge);
-    _eventDispatcher->removeEventListener(extra);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_DAILY_TASK_MQ3);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_DAILY_TASK_PPH3);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_DAILY_TASK_LZ2);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_DAILY_TASK_CHARGE);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_DAILY_TASK_EXTRA);
 }
 
 
