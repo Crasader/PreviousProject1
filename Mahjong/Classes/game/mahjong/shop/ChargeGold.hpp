@@ -20,8 +20,6 @@ public:
     void onExit() override;
     CREATE_FUNC(ChargeGold);
 private:
-    EventListenerCustom* goldChangeList;
-    EventListenerCustom* goldChangeResp;
     void showChargeGold();
     void closeView();
     void chargeGoldBtn(Ref* ref);

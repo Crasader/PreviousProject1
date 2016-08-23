@@ -1784,6 +1784,7 @@ void MsgHandler::welfareResp(std::string msg){
         data.jjj_used = jjj["used"].GetString();
         data.jjj_gold = jjj["gold"].GetString();
         data.jjj_result = jjj["result"].GetString();
+        GAMEDATA::getInstance()->setReliveNumber(atoi(data.jjj_count.c_str())-atoi(data.jjj_used.c_str()));
     }
     if (_mDoc.HasMember("wx")){
         const rapidjson::Value &wx = _mDoc["wx"];

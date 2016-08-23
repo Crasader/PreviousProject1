@@ -31,13 +31,6 @@ public:
     CREATE_FUNC(LobbyScene);
 
 private:
-    EventListenerCustom* enterRoomListener;
-    EventListenerCustom* enterFriendRoomListener;
-    EventListenerCustom* openFriendRoomListener;
-    EventListenerCustom* friendInviteListener;
-    EventListenerCustom* updateHeroInfoListener;
-    EventListenerCustom* heroInfoListener;
-    EventListenerCustom* lobbyrReConnectAgain;
     
 	Label* nickName;
 	LabelAtlas* goldNum;

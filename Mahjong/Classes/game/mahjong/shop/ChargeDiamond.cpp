@@ -20,6 +20,8 @@ bool ChargeDiamond::init(){
     
         return false;
     }
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDiamondChangeListCommand());
+    
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
@@ -41,7 +43,7 @@ bool ChargeDiamond::init(){
     auto closeMenu = Menu::create(closeImage, NULL);
     closeMenu->setPosition(1050, 550);
     addChild(closeMenu);
-
+    
     if(!GAMEDATA::getInstance()->getDiamondChangeList().needInit){
         Loading* lod = Loading::create(true);
         lod->setTag(1000);
@@ -57,19 +59,17 @@ bool ChargeDiamond::init(){
 
 void ChargeDiamond::onEnter(){
     Layer::onEnter();
-    diamondChangeList = EventListenerCustom::create(MSG_PLAYER_GOLD_CHANGE_LIST, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_GOLD_CHANGE_LIST, [=](EventCustom* event){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
         }
         showChargeDialog();
     });
-    _eventDispatcher->addEventListenerWithFixedPriority(diamondChangeList, 1);
-
 }
 
 void ChargeDiamond::onExit(){
     Layer::onExit();
-    _eventDispatcher->removeEventListener(diamondChangeList);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_GOLD_CHANGE_LIST);
 }
 
 void ChargeDiamond::showChargeDialog(){

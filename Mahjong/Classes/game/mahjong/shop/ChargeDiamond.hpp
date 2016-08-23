@@ -21,7 +21,6 @@ public :
     void onExit() override;
     CREATE_FUNC(ChargeDiamond);
 private:
-    EventListenerCustom* diamondChangeList;
     void showChargeDialog();
     void closeView();
     void chargeButtonClick(Ref* ref);

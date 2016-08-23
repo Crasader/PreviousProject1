@@ -57,15 +57,15 @@ bool ChargeGold::init(){
 
 void ChargeGold::onEnter(){
     Layer::onEnter();
-    goldChangeList = EventListenerCustom::create(MSG_PLAYER_GOLD_CHANGE_LIST, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_GOLD_CHANGE_LIST, [=](EventCustom* event){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
         }
         showChargeGold();
     });
-    _eventDispatcher->addEventListenerWithFixedPriority(goldChangeList, 1);
     
-    goldChangeResp = EventListenerCustom::create(MSG_PLAYER_GOLD_CHANGE_RESP, [=](EventCustom* event){
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_GOLD_CHANGE_RESP, [=](EventCustom* event){
         if(NULL != getChildByTag(2000)){
             getChildByTag(2000)->removeFromParent();
         }
@@ -82,13 +82,13 @@ void ChargeGold::onEnter(){
         }
         addChild(da);
     });
-    _eventDispatcher->addEventListenerWithFixedPriority(goldChangeResp, 1);
+    
 }
 
 void ChargeGold::onExit(){
     Layer::onExit();
-    _eventDispatcher->removeEventListener(goldChangeList);
-    _eventDispatcher->removeEventListener(goldChangeResp);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_GOLD_CHANGE_LIST);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_GOLD_CHANGE_RESP);
 }
 
 void ChargeGold::closeView(){

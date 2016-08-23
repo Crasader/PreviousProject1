@@ -72,6 +72,7 @@ public:
     CC_SYNTHESIZE(int, currentTingSeatId, CurrentTingSeatId);
     CC_SYNTHESIZE(int, currentSelectRoomId, CurrentSelectRoomId);
     CC_SYNTHESIZE(int, playRoomID, PlayRoomID);
+    CC_SYNTHESIZE(int, reliveNumber, ReliveNumber);
     CC_SYNTHESIZE(bool, continueAgain, ContinueAgain);
     CC_SYNTHESIZE(bool, isPlaying, IsPlaying);
     CC_SYNTHESIZE(bool, updatePlayer, UpdatePlayer);
