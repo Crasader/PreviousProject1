@@ -1,5 +1,5 @@
-#include "payment/MahjongPayHandler.h"
-#include "payment/CallAndroidMethod.h"
+#include "payment/android/MahjongPayHandler.h"
+#include "payment/android/CallAndroidMethod.h"
 
 static MahjongPayHandler* _instance = nullptr;
 MahjongPayHandler* MahjongPayHandler::getInstance()

@@ -1,5 +1,7 @@
 package org.cocos2dx.cpp.payment.wxapi;
 
+import com.tbu.androidtools.Debug;
+import com.tbu.wx.util.WxAppInfo;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
@@ -19,7 +21,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		api = WXAPIFactory.createWXAPI(this, "wx650e2a97e8b7b265");
+		api = WXAPIFactory.createWXAPI(this, WxAppInfo.getWxInfo().getAppId());
 		api.handleIntent(getIntent(), this);
 	}
 
@@ -38,6 +40,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 	public void onResp(BaseResp resp) {
 		if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
 			PayResp payResp = (PayResp) resp;
+			Debug.e("wx pay result");
 			if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
 				//  TODO 支付成功
 			} else {

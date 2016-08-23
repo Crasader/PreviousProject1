@@ -3,6 +3,7 @@ package org.cocos2dx.cpp.payment;
 import com.tbu.wx.pay.TbuWxPay;
 
 import android.app.Activity;
+import android.util.Log;
 
 public class Payment {
 	
@@ -13,8 +14,8 @@ public class Payment {
 		TbuWxPay.getInstance().initOnFirstActivity(activity);
 	}
 
-	public static void pay(final String orderId, final String tbuId,
-			final String productId, final String productName, final String price) {
-		TbuWxPay.getInstance().Pay(orderId, tbuId, productId, productName, price);
+	public static void pay(int payId) {
+		Log.e("Mahjong","pay to wechat");
+		TbuWxPay.getInstance().Pay("20160822", "201503", "1", "abc", "100");
 	}	
 }

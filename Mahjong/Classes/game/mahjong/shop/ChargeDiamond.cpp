@@ -12,6 +12,7 @@
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "game/utils/StringUtil.h"
+#include "payment/android/CallAndroidMethod.h"
 
 
 bool ChargeDiamond::init(){
@@ -142,6 +143,5 @@ void ChargeDiamond::closeView(){
 }
 
 void ChargeDiamond::chargeButtonClick(Ref* ref){
-
-
+    CallAndroidMethod::getInstance()->requestEvent(0);
 }

@@ -1,5 +1,5 @@
-#include "payment/CallAndroidMethod.h"
-#include"payment/MahjongPayHandler.h"
+#include "payment/android/CallAndroidMethod.h"
+#include"payment/android/MahjongPayHandler.h"
 #include "json/document.h"
 #include "json/stringbuffer.h"
 #include "json/writer.h"
@@ -8,12 +8,7 @@
 CallAndroidMethod* CallAndroidMethod::_instance = 0;
 
 CallAndroidMethod::CallAndroidMethod(){
-
-	std::string filename = "ConfigJnipath.json";
-	rapidjson::Document doc;
-	std::string data = FileUtils::getInstance()->getStringFromFile(filename);
-	doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
-	_jniPath = doc["JniPath"].GetString();
+	_jniPath = "org/cocos2dx/cpp/payment";
 }
 CallAndroidMethod* CallAndroidMethod::getInstance(){
 	if(_instance == 0){
@@ -31,9 +26,8 @@ const char*  CallAndroidMethod::getJniPath()
 
 void CallAndroidMethod::requestEvent(int eventId){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//		GAMEDATA::getInstance()->gameState = GAMEDATA::GameState::Pause;
 		JniMethodInfo methodInfo;
-		auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/PayService");
+		auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
 		bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"pay","(I)V");
 		jint pay_point = eventId;
 		if(isHave){
@@ -43,7 +37,6 @@ void CallAndroidMethod::requestEvent(int eventId){
 #endif	
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-//		GAMEDATA::getInstance()->gameState = GAMEDATA::GameState::Pause;
 		MenuScenePayHandler::getInstance()->dealEventClose(eventId);
 #endif	
 }
