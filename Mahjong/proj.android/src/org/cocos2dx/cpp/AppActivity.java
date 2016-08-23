@@ -26,6 +26,7 @@ THE SOFTWARE.
  ****************************************************************************/
 package org.cocos2dx.cpp;
 
+import org.cocos2dx.cpp.payment.Payment;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import com.tbu.wx.pay.TbuWxPay;
@@ -40,6 +41,6 @@ public class AppActivity extends Cocos2dxActivity {
 		super.onCreate(savedInstanceState);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		TbuWxPay.getInstance().initOnFirstActivity(this);
+		Payment.init(this);
 	}
 }
