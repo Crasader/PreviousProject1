@@ -116,14 +116,14 @@ void PlayerBase::initPlayer(Player* playerInfo){
                                     "result/result_num.png", 9, 13, '0');
     diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 16, getPostionBySeat(clientSeatId).y - 55);
-    this->addChild(diamondNum);
+    addChild(diamondNum);
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
-        if(UserData::getInstance()->getLockDiamond()>0){
+        if(playerInfo->getLockDiamond()>0){
             diamond->setTexture("gameview/other_player_lockdiamond.png");
-            diamondNum->setString(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getLockDiamond())->_string);
+            diamondNum->setString(cocos2d::String::createWithFormat("%d",playerInfo->getLockDiamond())->_string);
         }else{
             diamond->setTexture("gameview/other_player_diamond.png");
-            diamondNum->setString(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getDiamond())->_string);
+            diamondNum->setString(cocos2d::String::createWithFormat("%d",playerInfo->getDiamond())->_string);
         }
         diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 8, getPostionBySeat(clientSeatId).y - 55);
     }
