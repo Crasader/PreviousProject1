@@ -1219,11 +1219,11 @@
 		D2B1A7C21CCDF0F300A20896 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1A7C61CCDF0F300A20896 /* MahjongView.cpp */,
-				D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */,
-				D2B1A7C71CCDF0F300A20896 /* MahjongView.h */,
-				D2BDE3AB1CEB10E100754AC0 /* MjGameScene.h */,
 				D2B1A7C31CCDF0F300A20896 /* gui */,
+				D2B1A7C61CCDF0F300A20896 /* MahjongView.cpp */,
+				D2B1A7C71CCDF0F300A20896 /* MahjongView.h */,
+				D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */,
+				D2BDE3AB1CEB10E100754AC0 /* MjGameScene.h */,
 				D2B1A7C81CCDF0F300A20896 /* widget */,
 			);
 			path = core;

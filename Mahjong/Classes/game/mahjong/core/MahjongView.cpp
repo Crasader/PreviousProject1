@@ -82,6 +82,7 @@ void MahjongView::startGameFirst(){
     info->setIsReady(false);
     info->setGold(UserData::getInstance()->getGold());
     info->setDiamond(UserData::getInstance()->getDiamond());
+    info->setLockDiamond(UserData::getInstance()->getLockDiamond());
     info->setScore(UserData::getInstance()->getScore());
     info->setGender(UserData::getInstance()->getGender());
     info->setNickname(UserData::getInstance()->getNickName());
