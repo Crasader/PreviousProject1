@@ -17,9 +17,9 @@ USING_NS_CC;
 
 class InviteCell : public Sprite{
     public :
-    static InviteCell* create(std::string filepath,std::string name);
-    bool init(std::string filepath,std::string name);
-
+        static InviteCell* create(std::string filepath,std::string name);
+        bool init(std::string filepath,std::string name);
+    
 };
 
 #endif /* InviteCell_hpp */

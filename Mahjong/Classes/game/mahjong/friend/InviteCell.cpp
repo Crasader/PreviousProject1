@@ -26,7 +26,7 @@ bool InviteCell::init(std::string filepath,std::string name){
     if(!Sprite::init()){
         return false;
     }
-    auto head = Sprite::create("gameview/head_image_1.png");
+    auto head = Sprite::create(filepath);
     addChild(head);
     Label* nickName = Label::create(name,"arial",20);
     addChild(nickName);
