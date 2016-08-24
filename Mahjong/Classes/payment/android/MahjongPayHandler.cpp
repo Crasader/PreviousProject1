@@ -11,7 +11,7 @@ MahjongPayHandler* MahjongPayHandler::getInstance()
 	return _instance;
 }
 
-void MahjongPayHandler::dealEventCallBack(int eventId, int result,int propIds[], int propNums[], int count){
+void MahjongPayHandler::dealEventCallBack(int eventId, int result,int propIds[], int propNums[]){
 	
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) 
 //	log("dealEventSuccess eventId=%d", eventId);
