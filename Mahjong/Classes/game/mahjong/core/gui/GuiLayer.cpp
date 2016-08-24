@@ -77,16 +77,18 @@ void GuiLayer::initView(){
     haungNum->setPosition(1220, 614);
     addChild(haungNum);
     
-    if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && !GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()){
+    if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         
-        drawPlayerInvite();
-        
+        if(!GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()){
+            drawPlayerInvite();
+        }
         auto bill = MenuItemImage::create("gameview/bill_btn_1.png", "gameview/bill_btn_2.png",
                                           CC_CALLBACK_0(GuiLayer::showPlayerBill, this));
         Menu* billMenu = Menu::create(bill, NULL);
         billMenu->setPosition(Point(1225, 180));
         addChild(billMenu);
     }
+
 }
 
 void GuiLayer::soundButtonClick(){

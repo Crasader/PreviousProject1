@@ -1424,7 +1424,8 @@ void MsgHandler::friendOpenRoomNotify(std::string msg){
     data.nickname = nickname.GetString();
     data.pid = pId.GetString();
     GAMEDATA::getInstance()->setFriendOpenRoomNotify(data);
-    postNotifyMessage(MSG_FRIEND_OPEN_ROOM_NOTIFY, "");
+    postNotifyMessage(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM, "");
+    postNotifyMessage(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY, "");
 }
 
 

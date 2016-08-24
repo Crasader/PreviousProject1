@@ -92,7 +92,6 @@ private:
 	EventListenerCustom* heroChiRespListener;
 	EventListenerCustom* heroPengRespListener;
 	EventListenerCustom* heroGangRespListener;
-	EventListenerCustom* friendInviteMeListener;
 	EventListenerCustom* enterFrinedRoomListener;
     EventListenerCustom* playerRemoveListener;
     EventListenerCustom* playerOffLineListener;

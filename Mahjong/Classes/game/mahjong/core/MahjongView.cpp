@@ -197,10 +197,10 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(friendInviteMeListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFrinedRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM);
 }
 
 
@@ -208,7 +208,7 @@ void MahjongView::onExit()
 
 void MahjongView::drawCpgControllPad(){
     controllPad->removeAllChildrenWithCleanup(true);
-    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoCpgQi, this));
+    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoCpgQi,this));
     qi->setPosition(Point(0, 0));
     controllPad->addChild(qi);
     MenuItemImage* chi = nullptr;
@@ -1227,12 +1227,11 @@ void MahjongView::addHeroGangRespListener(){
 
 
 void MahjongView::addFriendInviteMeListener(){
-    friendInviteMeListener = EventListenerCustom::create(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM, [=](EventCustom* event){
         PromptDialog* invite = PromptDialog::create();
         invite->setTextInfo(0);
         addChild(invite, 4);
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(friendInviteMeListener, 1);
 }
 
 
@@ -1244,8 +1243,10 @@ void MahjongView::addEnterFriendRoomListener(){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
-        else{
-            //进入私人房间失败
+        else if(result == "2"){
+            PromptDialog* invite = PromptDialog::create();
+            invite->setTextInfo(1);
+            addChild(invite,4);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(enterFrinedRoomListener, 1);

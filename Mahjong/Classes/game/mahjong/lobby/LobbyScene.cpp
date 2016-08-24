@@ -64,12 +64,12 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_ROOM_RESP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_FRIEND_ROOM_RESP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_RESP);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_UPDATE_HERO_INFO);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_INFO_RESP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_CONNECT_AGAIN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_JJJ);
-
+    
 }
 
 void LobbyScene::updateHeroInfo(){
@@ -294,10 +294,10 @@ void LobbyScene::drawSceneBot(){
     gameMenu->alignItemsHorizontallyWithPadding(75);
     gameMenu->setPosition(785, 43);
     addChild(gameMenu);
-        auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
-        auto openMenu = Menu::create(openRoom,NULL);
-        openMenu->setPosition(1203,67);
-        addChild(openMenu);
+    auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
+    auto openMenu = Menu::create(openRoom,NULL);
+    openMenu->setPosition(1203,67);
+    addChild(openMenu);
     
 }
 
@@ -436,13 +436,15 @@ void LobbyScene::addCustomEventListener(){
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
+        removeLoading();
         if (result == "1"){
-            removeLoading();
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }
-        else{
-            removeLoading();
+        } else if(result == "2")
+        {
+            PromptDialog* invite = PromptDialog::create();
+            invite->setTextInfo(1);
+            addChild(invite,4);
         }
     });
     
@@ -455,7 +457,7 @@ void LobbyScene::addCustomEventListener(){
     
     
     //好友开房通知
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY, [=](EventCustom* event){
         PromptDialog* invite = PromptDialog::create();
         invite->setTextInfo(0);
         addChild(invite,4);
