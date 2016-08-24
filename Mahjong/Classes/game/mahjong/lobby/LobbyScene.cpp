@@ -37,6 +37,7 @@ bool LobbyScene::init()
 void LobbyScene::onEnter(){
     Scene::onEnter();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     updateHeroInfo();
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
     addCustomEventListener();
