@@ -70,7 +70,7 @@ void PlayerBase::onEnter(){
         bob->setPosition(getVec2BySeatId(seatId));
         chatShowLayer->addChild(bob);
         if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left
-           || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left){
+           || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::hero){
             text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         }else{
