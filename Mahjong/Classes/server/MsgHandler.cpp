@@ -1307,6 +1307,7 @@ void MsgHandler::removePlayerNotify(std::string msg){
         GAMEDATA::getInstance()->erasePlayersInfo(data.pid);
     }else{
         log("hero is out room");
+        GAMEDATA::getInstance()->clearPlayersInfo();
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, "");
