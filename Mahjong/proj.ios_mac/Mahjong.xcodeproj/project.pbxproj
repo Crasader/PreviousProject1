@@ -1301,16 +1301,16 @@
 		D2B1A8321CCDF0F300A20896 /* player */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1A8361CCDF0F300A20896 /* PlayerHero.cpp */,
-				D2B1A83B1CCDF0F300A20896 /* PlayerLeft.cpp */,
-				D2B1A83D1CCDF0F300A20896 /* PlayerOpposite.cpp */,
-				D2B1A83F1CCDF0F300A20896 /* PlayerRight.cpp */,
-				D2B1A8371CCDF0F300A20896 /* PlayerHero.h */,
-				D2B1A83C1CCDF0F300A20896 /* PlayerLeft.h */,
-				D2B1A83E1CCDF0F300A20896 /* PlayerOpposite.h */,
-				D2B1A8401CCDF0F300A20896 /* PlayerRight.h */,
 				D2B1A8331CCDF0F300A20896 /* base */,
+				D2B1A8361CCDF0F300A20896 /* PlayerHero.cpp */,
+				D2B1A8371CCDF0F300A20896 /* PlayerHero.h */,
 				D2B1A8381CCDF0F300A20896 /* playerinfo */,
+				D2B1A83B1CCDF0F300A20896 /* PlayerLeft.cpp */,
+				D2B1A83C1CCDF0F300A20896 /* PlayerLeft.h */,
+				D2B1A83D1CCDF0F300A20896 /* PlayerOpposite.cpp */,
+				D2B1A83E1CCDF0F300A20896 /* PlayerOpposite.h */,
+				D2B1A83F1CCDF0F300A20896 /* PlayerRight.cpp */,
+				D2B1A8401CCDF0F300A20896 /* PlayerRight.h */,
 			);
 			path = player;
 			sourceTree = "<group>";

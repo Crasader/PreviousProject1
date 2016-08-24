@@ -11,6 +11,7 @@ public:
     virtual bool init();
     virtual void onEnter() override;
     virtual void onExit() override;
+    
     virtual void tableCellTouched(TableView* table, TableViewCell* cell);
     virtual Size tableCellSizeForIndex(TableView *table, ssize_t idx);
     virtual TableViewCell* tableCellAtIndex(TableView *table, ssize_t idx);
@@ -18,6 +19,10 @@ public:
     
     virtual void scrollViewDidScroll(cocos2d::extension::ScrollView* view) {};
     virtual void scrollViewDidZoom(cocos2d::extension::ScrollView* view) {}
+    
+    bool onTouchBegan(Touch *touch, Event  *event) override;
+    void onTouchEnded(Touch *touch, Event  *event) override;
+    
     void updateFriendList();
     CREATE_FUNC(FriendInvite);
 private:

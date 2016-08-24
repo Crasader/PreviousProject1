@@ -13,8 +13,15 @@ bool FriendInvite::init()
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg);
     
+    MenuItem* item2 = MenuItem::create(CC_CALLBACK_0(FriendInvite::closeView, this));
+    item2->setContentSize(Size(720, 720));
+    Menu* bg2 = Menu::create(item2, NULL);
+    bg2->setPosition(360,360);
+    this->addChild(bg2);
+    
     auto  dialogBg = Sprite::create("friend/room_invite_bg.png");
     dialogBg->setPosition(1010, 360);
+    dialogBg->setTag(824);
     this->addChild(dialogBg);
     
     auto wxBtnImage = MenuItemImage::create("friend/room_invite_wx.png","friend/room_invite_wx.png",
@@ -36,12 +43,19 @@ bool FriendInvite::init()
     Menu* openBtn = Menu::create(openImage,NULL);
     openBtn->setPosition(1010,70);
     addChild(openBtn);
+    
+    auto myInvitetouchListener = EventListenerTouchOneByOne::create();
+    myInvitetouchListener->onTouchBegan = CC_CALLBACK_2(FriendInvite::onTouchBegan, this);
+    myInvitetouchListener->onTouchEnded = CC_CALLBACK_2(FriendInvite::onTouchEnded, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(myInvitetouchListener,this);
+
     return true;
 }
 
 
 void FriendInvite::onEnter(){
     Layer::onEnter();
+    
     friendLsitListener3 = EventListenerCustom::create(MSG_HERO_FRIEND_LIST, [=](EventCustom* event){
         updateFriendList();
     });
@@ -192,4 +206,17 @@ void FriendInvite::closeView(){
 
 void FriendInvite::updateFriendList(){
     tableView->reloadData();
+}
+
+bool FriendInvite::onTouchBegan(Touch *touch, Event  *event){
+    return true;
+}
+
+
+void FriendInvite::onTouchEnded(Touch *touch, Event  *event){
+    if(NULL != getChildByTag(824)){
+        if(!((Sprite*)getChildByTag(824))->getBoundingBox().containsPoint(touch->getLocation())){
+            removeFromParent();
+        }
+    }
 }
