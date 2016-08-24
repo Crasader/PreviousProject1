@@ -89,7 +89,20 @@ TableViewCell* FriendInvite::tableCellAtIndex(TableView *table, ssize_t idx)
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
-        Sprite* head = Sprite::create("gameview/head_image_1.png");
+        Sprite* head = Sprite::create();
+        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "1"){
+            head->setTexture("gameview/head_image_1.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "2"){
+            head->setTexture("gameview/head_image_2.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "3"){
+            head->setTexture("gameview/head_image_3.png");
+        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "4"){
+            head->setTexture("gameview/head_image_4.png");
+        }else{
+            log("服务器下发的头像图片不存在");
+            head->setTexture("gameview/head_image_1.png");
+        }
+
         head->setAnchorPoint(Vec2::ZERO);
         head->setScale(0.6f);
         head->setPosition(Vec2(5, 5));
