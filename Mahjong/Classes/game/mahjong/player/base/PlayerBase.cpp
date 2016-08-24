@@ -43,7 +43,7 @@ void PlayerBase::onEnter(){
         ChatData data = GAMEDATA::getInstance()->getChatData();
         std::string content = data.content;
         vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
-       
+        
         RichText* text = RichText ::create();
         text->setAnchorPoint(Point::ANCHOR_MIDDLE);
         for(auto var : msgs){
@@ -66,12 +66,20 @@ void PlayerBase::onEnter(){
         text->setPosition(getVec2BySeatId(seatId));
         chatShowLayer->addChild(text,1);
         auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(5, 0, 6, 38));
-        bob->setContentSize(Size(text->getContentSize().width+20, 65));
+        bob->setContentSize(Size(text->getContentSize().width+10, 65));
         bob->setPosition(getVec2BySeatId(seatId));
         chatShowLayer->addChild(bob);
+        if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left
+           || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left){
+            text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        }else{
+            text->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
+            bob->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
+        }
         schedule([=](float dt){
             chatShowLayer->removeAllChildren();
-        },0,0,1.2,"removebob");
+        },0,0,3.0,"removebob");
     });
 }
 
@@ -524,12 +532,12 @@ void PlayerBase::recoverHand(std::string hand){
 Point PlayerBase::getVec2BySeatId(int seatId){
     int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId);
     if(seatID == ClientSeatId::left){
-        return Vec2(180,470);
+        return Vec2(150,470);
     }else if(seatID == ClientSeatId::opposite){
-        return Vec2(820,650);
+        return Vec2(840,670);
     }else if(seatID == ClientSeatId::right){
-        return Vec2(1050,470);;
+        return Vec2(1150,470);
     }else{
-        return Vec2(180,200);
+        return Vec2(150,200);
     }
 }
