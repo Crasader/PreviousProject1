@@ -196,7 +196,6 @@
 							<tool id="org.eclipse.cdt.build.core.settings.holder.55647957" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder">
 								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.814113654" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
 									<listOptionValue builtIn="false" value="${NDK_ROOT}/sources/android/native_app_glue"/>
-									<listOptionValue builtIn="false" value="${NDK_ROOT}/platforms/android-18/arch-arm/usr/include"/>
 									<listOptionValue builtIn="false" value="${NDK_ROOT}/sources/cxx-stl/gnu-libstdc++/4.8/include"/>
 									<listOptionValue builtIn="false" value="${ProjDirPath}/../cocos2d"/>
 									<listOptionValue builtIn="false" value="${ProjDirPath}/../cocos2d/cocos/2d"/>
@@ -211,6 +210,7 @@
 									<listOptionValue builtIn="false" value="${ProjDirPath}/../cocos2d/extensions"/>
 									<listOptionValue builtIn="false" value="${ProjDirPath}/../cocos2d/external"/>
 									<listOptionValue builtIn="false" value="${ProjDirPath}/../cocos2d/external/chipmunk/include/chipmunk"/>
+									<listOptionValue builtIn="false" value="&quot;${NDK_ROOT}/platforms/android-17/arch-arm/usr/include&quot;"/>
 								</option>
 								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.923561092" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="CC_TARGET_PLATFORM=CC_PLATFORM_ANDROID"/>
@@ -239,12 +239,6 @@
 			</storageModule>
 		</cconfiguration>
 	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="0.1230402123">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -252,5 +246,14 @@
 	</storageModule>
 	<storageModule moduleId="refreshScope" versionNumber="1">
 		<resource resourceType="PROJECT" workspacePath="/Mahjong"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="0.1230402123.1377291156">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="0.1230402123">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
 </cproject>
