@@ -1,13 +1,6 @@
 package org.cocos2dx.cpp.payment;
 
-public class JniPayCallbackHelper {	
-	public static native void eventSuccess(int eventId, int[] propIds,int[] propNums);
-	public static native void eventClose(int eventId);
-	public static native void eventFail(int eventId);
-	public static native void showMoreGameNative(boolean open);
-	public static native void showTehui(boolean open);
-	public static native void GameQuitLogEvent();
-
-	public static native void getHDstring(String info);
-	public static native void HotOver();
+public class JniPayCallbackHelper {
+	//0表示时间失败,1表示成功，2表示事件关闭
+	public static native void eventCallBack(int eventId, int resutt,int[] propIds,int[] propNums);
 }

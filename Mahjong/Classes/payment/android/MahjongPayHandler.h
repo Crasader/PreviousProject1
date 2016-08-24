@@ -7,10 +7,7 @@ class MahjongPayHandler
 public:
 	MahjongPayHandler() {};
 	~MahjongPayHandler() {};
-	void dealEventSuccess(int eventId, int propIds[], int propNums[], int count);
-	void dealEventFail(int eventId);
-	void dealRewardProp(int propId, int propNum);
-	void dealEventClose(int eventId);
+	void dealEventCallBack(int eventId, int result,int propIds[], int propNums[], int count);
 	static MahjongPayHandler* getInstance();
 private:
 	void doPayEvent1(int result);
