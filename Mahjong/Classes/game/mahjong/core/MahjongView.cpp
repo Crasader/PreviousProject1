@@ -1288,7 +1288,7 @@ void MahjongView::addPlayerOffLineListener(){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
         for (int i = 0; i < players.size(); i++){
             if(players.at(i)->getPoxiaoId() ==  buf){
-                int seatId  = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId());
+                int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId());
                 if(seatId == ClientSeatId::left){
                     playerLeft->setPlayerTingState(true);
                 }else if(seatId == ClientSeatId::opposite){

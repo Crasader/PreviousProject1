@@ -4,6 +4,7 @@
 #include "game/mahjong/anim/HuaAnim.hpp"
 #include "game/mahjong/chat/PlayerChatManage.hpp"
 #include "server/NetworkManage.h"
+#include "userdata/UserData.h"
 #include "ui/UIImageView.h"
 #include "ui/UIRichText.h"
 
@@ -109,11 +110,12 @@ void PlayerBase::initPlayer(Player* playerInfo){
     diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 16, getPostionBySeat(clientSeatId).y - 55);
     this->addChild(diamondNum);
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
-        diamond->setTexture("gameview/score_small.png");
-        if(playerInfo->getScore()>=0){
-            diamondNum->setString(cocos2d::String::createWithFormat("%d", playerInfo->getScore())->_string);
+        if(UserData::getInstance()->getLockDiamond()>0){
+            diamond->setTexture("gameview/other_player_lockdiamond.png");
+            diamondNum->setString(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getLockDiamond())->_string);
         }else{
-            diamondNum->setString(cocos2d::String::createWithFormat(";%d", abs(playerInfo->getScore()))->_string);
+            diamond->setTexture("gameview/other_player_diamond.png");
+            diamondNum->setString(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getDiamond())->_string);
         }
         diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 8, getPostionBySeat(clientSeatId).y - 55);
     }
