@@ -16,6 +16,6 @@ public class Payment {
 
 	public static void pay(int payId) {
 		Log.e("Mahjong","pay to wechat");
-		TbuWxPay.getInstance().Pay("20160822", "201503", "1", "abc", "100");
+		TbuWxPay.getInstance().Pay("20160823170043656", "201617", "1", "abc", "1000");
 	}	
 }

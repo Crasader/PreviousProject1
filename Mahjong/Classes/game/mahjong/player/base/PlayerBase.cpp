@@ -18,7 +18,7 @@ bool PlayerBase::init(){
     }
     initData();
     chatShowLayer = Layer::create();
-    addChild(chatShowLayer);
+    addChild(chatShowLayer,20);
     return true;
 }
 
