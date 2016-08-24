@@ -1,15 +1,1 @@
-{
-    "event2pay": [
-        { "eventid": 1, "payid": 1, "state": true, "isprotected": "false" },
-        { "eventid": 2, "payid": 2, "state": true, "isprotected": "false" },
-        { "eventid": 3, "payid": 3, "state": true, "isprotected": "false" },
-        { "eventid": 4, "payid": 4, "state": true, "isprotected": "false" },
-        { "eventid": 5, "payid": 5, "state": true, "isprotected": "false" },
-        { "eventid": 6, "payid": 6, "state": true, "isprotected": "false" },
-        { "eventid": 7, "payid": 7, "state": true, "isprotected": "false" },
-        { "eventid": 8, "payid": 8, "state": true, "isprotected": "false" },
-        { "eventid": 9, "payid": 9, "state": true, "isprotected": "false" }
-    ],
-    "protected_pay_point": 0,
-    "event_version": 101
-}
+c6ab32b9de8e919b56c034aaba3d0883a0cafa62aa215e83cbc5840d95f805f1bd056b0dcdbcdf218937e4b272ac0d63ed787aa9c1143a5971e2b6aa90eccfcaaa4d0a4aae02242655333c32093884876120226b6f8ffdd5fe9ad8182ddd840a976a2a592b7c494824d987107aeb48fb61a66d838beb9b43ede66c831c4dcc8021485d6daa870d8580e622425d1c5fc00175be10b6df4c2116bba7518b80ec2777b4ec7703b4fbd6007e0f3fe612c8b640e8ba3a856823ef1403cc491575d2818ea96956274ff568ab2a03d3bfce705f0364ff86e806402463cf956d7a9ef3442364fb03508caec98cadb71d1994b2cc56ce2048496f9426289eaaa42bdc0d9551a32b6ce4415ea9ba36629c7f3fd9141ccdecae5e7866bd5ef0631ac83bac0f49561ff15b02a2632f38f1dcb66afadd3335b2cc53ebb89a7902bf7aca5079bd95944afc90043b2a5e9c0408145f7e15cbc5840d95f805f1bd056b0dcdbcdf21f68dfbbe171bd00aed787aa9c1143a59b4a20a15ae8cf6b8aa4d0a4aae02242655333c32093884876120226b6f8ffdd5fe9ad8182ddd840a976a2a592b7c494824d987107aeb48fb61a66d838beb9b43b0f1a7100ce75889375802441589780580e622425d1c5fc00175be10b6df4c2116bba7518b80ec2777b4ec7703b4fbd6007e0f3fe612c8b640e8ba3a856823ef1403cc491575d2818ea96956274ff56886a4130a96e0785a81ffa12ce7adcb1363cf956d7a9ef3442364fb03508caec98cadb71d1994b2cc56ce2048496f9426289eaaa42bdc0d9551a32b6ce4415ea9ba36629c7f3fd914e8223982156a4a7d5ef0631ac83bac0fc92de686e602fe852f38f1dcb66afadd3335b2cc53ebb89a7902bf7aca5079bd95944afc90043b2a5e9c0408145f7e15cbc5840d95f805f1bd056b0dcdbcdf2198d5e0f199d5910bed787aa9c1143a5912917d566296296faa4d0a4aae02242655333c32093884876120226b6f8ffdd5fe9ad8182ddd840afa751ac51c147c330be49b3ae365b3985ff82ee956022e04733f22a481eb96cba208371a3f604c0ba99dff7da822862b79de0e3744a6683c7c0eafdba676bf3bf65f3290fd1194ab

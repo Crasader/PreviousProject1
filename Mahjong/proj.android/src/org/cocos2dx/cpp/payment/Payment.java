@@ -20,7 +20,7 @@ public class Payment {
 		TbuWxPay.getInstance().initOnFirstActivity(activity);
 	}
 
-	public static boolean requestEvent(int eventId) {
+	public static void requestEvent(int eventId) {
 		// 通过josn获取事件
 		final TbuEvent event = TbuAndroidTools.getTbuEventById(activity, eventId);
 		if (null != event) {
@@ -29,14 +29,11 @@ public class Payment {
 				final PayPoint payPoint = TbuAndroidTools.getPayPointById(activity, event.getPayId());
 				TbuWxPay.getInstance().Pay(getDateFormat(), AppInfo.getTbuId(), String.valueOf(payPoint.getType()),
 						payPoint.getName(), String.valueOf(payPoint.getMoney()));
-				return true;
 			} else {
 				Debug.i("Payment->requestEvent:事件点处于关闭状态");
-				return false;
 			}
 		} else {
 			Debug.i("Payment->requestEvent:无法找到事件点:"+eventId);
-			return false;
 		}
 	}
 	

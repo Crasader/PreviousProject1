@@ -143,5 +143,5 @@ void ChargeDiamond::closeView(){
 }
 
 void ChargeDiamond::chargeButtonClick(Ref* ref){
-    CallAndroidMethod::getInstance()->requestEvent(0);
+    CallAndroidMethod::getInstance()->requestEvent(1);
 }

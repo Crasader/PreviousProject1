@@ -28,7 +28,7 @@ void CallAndroidMethod::requestEvent(int eventId){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 		JniMethodInfo methodInfo;
 		auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
-		bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"pay","(I)V");
+		bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"requestEvent","(I)V");
 		jint pay_point = eventId;
 		if(isHave){
 			jobject jobj;

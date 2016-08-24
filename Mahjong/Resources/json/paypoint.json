@@ -1,16 +1,1 @@
-﻿{
-	"paypoint":[
-		
-		{ "id": 1, "name": "充值2元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 10000 }] },
-		{ "id": 2, "name": "充值4元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 20000 }] },
-		{ "id": 3, "name": "充值6元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 30000 }] },
-		{ "id": 4, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 40000 }] },	
-		{ "id": 5, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 2, "propnum": 40000 }] },
-		{ "id": 6, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 50000 }] },
-		{ "id": 7, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 50000 }] },
-		{ "id": 8, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 50000 }] },
-		{ "id": 9, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 50000 }] }
-		
-	],
-	"pay_version": 100
-}
+ce7cde78260b64aa281ea3e2bba61b10ef001c3a11bb4bc189091563e189af9b0f8a5a4d6c5ad3aaeae5f134528e1eaac5d5c72df1dace93c84b4b6feefb9e30addc1bbe133c9598794a0758c30302ceb6a7ae88591caef548bf10a7a53f86582997496ac106ef4fba669eba5ff5e8fa49f626c36c65cecd29c855e6c82bf937856ad1fa1b862a7f9b490d40fa9e1ad69111314b84e1abff6aa5d4301215dc81f06f476c8075f6b82c0487ab68f81c5cb5ecf3ea2b3ad81c3c32ad86d7126f35e8166473e883655ada2c5b2f4146da5e8241737cf032c03cd0ea3a08ead519138937e4b272ac0d6365ce46bcf151bbc3d69a1e28e25a89cd426584ffa27674db6ce02ad832e9f4ae395ec9f0bb50fb560fb0c77d21fbcbb7411be6a2bab0da6a3d76d8b52c921d4382eb03f5e0fbee837a78fbe0146593f8be1cf116bfb34a475cd6c6739e2b8e37b2238be3db1a0fda65924cd347bb41ec2c80e7a9bec46b7ee8ed6ddf38e18395d2387d00cd45604061a45fd79f707ba559ad5ba1e1e2732535ac25360e0166b543e51c6a56e18335e277099c65bb5dd18b24df9254ded4c4aeb9d43abd13e3fa3d3096ed62eda9489c9c2ea1e5e6297dc5ab139e8d40a3afa18e22798ef268773f486fadd2a186735c3fb40ddbd12d8aa00c442e854b290c2f7c554419442a0a75c76316df3a335e41282de9c1a03cbc34ab7bfbcaaa0e591d80bbad968d84a70aafb4f0163356c18e310d6b300fb091500c0af95c29ccb9e5ea9e563ff33e362ff8b28e2d2dae88e39ee5703d696d967bf080ec0dad887bec18125eae9c767a4571b62e27c7f7e8d099b97a99609dbf89091563e189af9ba9ad7829c9bc98e8eae5f134528e1eaa85b59a46759cdf20c84b4b6feefb9e30addc1bbe133c9598794a0758c30302ceb6a7ae88591caef548bf10a7a53f86582997496ac106ef4fba669eba5ff5e8fa49f626c36c65cecdf60b28dfbb0bc4e4856ad1fa1b862a7f9b490d40fa9e1ad67fe24e15d6ff0b926aa5d4301215dc81f06f476c8075f6b834d63a7c479f4e29b5ecf3ea2b3ad81c3c32ad86d7126f35e8166473e883655ada2c5b2f4146da5e8241737cf032c03cd0ea3a08ead519138937e4b272ac0d6365ce46bcf151bbc34079053ecf2ec437426584ffa27674db6ce02ad832e9f4aee921eebfedb1c5f40fb0c77d21fbcbb7fc24d9e711b499c43d76d8b52c921d4382eb03f5e0fbee837a78fbe0146593f8be1cf116bfb34a475cd6c6739e2b8e37b2238be3db1a0fda65924cd347bb41ec2c80e7a9bec46b7e709a3e6933aa02ebd2387d00cd45604061a45fd79f707ba598d5e0f199d5910b35ac25360e0166b543e51c6a56e18335e277099c65bb5dd18b24df9254ded4c4aeb9d43abd13e3fa3d3096ed62eda9489c9c2ea1e5e6297dc5ab139e8d40a3afa18e22798ef268773f486fadd2a186735c3fb40ddbd12d8a4b054df9b49711548f6634d60a8ecf40f9276d99697c9f26e41bc8e6618fa5914f97fb4045140504c1213e92bcdb3c95
