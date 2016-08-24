@@ -1,0 +1,15 @@
+{
+    "event2pay": [
+        { "eventid": 1, "payid": 1, "state": true, "isprotected": "false" },
+        { "eventid": 2, "payid": 2, "state": true, "isprotected": "false" },
+        { "eventid": 3, "payid": 3, "state": true, "isprotected": "false" },
+        { "eventid": 4, "payid": 4, "state": true, "isprotected": "false" },
+        { "eventid": 5, "payid": 5, "state": true, "isprotected": "false" },
+        { "eventid": 6, "payid": 6, "state": true, "isprotected": "false" },
+        { "eventid": 7, "payid": 7, "state": true, "isprotected": "false" },
+        { "eventid": 8, "payid": 8, "state": true, "isprotected": "false" },
+        { "eventid": 9, "payid": 9, "state": true, "isprotected": "false" }
+    ],
+    "protected_pay_point": 0,
+    "event_version": 101
+}

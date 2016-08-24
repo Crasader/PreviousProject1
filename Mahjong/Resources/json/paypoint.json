@@ -1,0 +1,16 @@
+﻿{
+	"paypoint":[
+		
+		{ "id": 1, "name": "充值2元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 10000 }] },
+		{ "id": 2, "name": "充值4元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 20000 }] },
+		{ "id": 3, "name": "充值6元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 30000 }] },
+		{ "id": 4, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 40000 }] },	
+		{ "id": 5, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 2, "propnum": 40000 }] },
+		{ "id": 6, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 50000 }] },
+		{ "id": 7, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 50000 }] },
+		{ "id": 8, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 50000 }] },
+		{ "id": 9, "name": "充值8元", "price": 1, "desc": "abc", "describe": [ { "propid": 1, "propnum": 50000 }] }
+		
+	],
+	"pay_version": 100
+}
