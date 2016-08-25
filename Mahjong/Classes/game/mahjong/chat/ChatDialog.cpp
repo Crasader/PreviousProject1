@@ -207,15 +207,16 @@ void ChatDialog:: showChatInfo(ChatData data){
         }
     }
     customItem->addChild(text,1);
-    auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(5, 0, 6, 38));
+    auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(20, 0, 6, 38));
     bob->setContentSize(Size(text->getContentSize().width+20, 65));
     customItem->addChild(bob);
     
     if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
         iamge->setPosition(Point(645,30));
         text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        bob->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+        bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         text->setPosition(Point(580,40));
+        bob->setFlippedX(true);
         bob->setPosition(Point(585,30));
     }else{
         iamge->setPosition(Point(80,30));

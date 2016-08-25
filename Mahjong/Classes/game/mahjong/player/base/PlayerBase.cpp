@@ -66,7 +66,7 @@ void PlayerBase::onEnter(){
             }
             text->setPosition(getVec2BySeatId(seatId));
             chatShowLayer->addChild(text,1);
-            auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(5, 0, 6, 38));
+            auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(20, 0, 6, 38));
             bob->setContentSize(Size(text->getContentSize().width+10, 65));
             bob->setPosition(getVec2BySeatId(seatId));
             chatShowLayer->addChild(bob);
@@ -75,8 +75,9 @@ void PlayerBase::onEnter(){
                 text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
                 bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             }else{
-                text->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
-                bob->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
+                text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+                bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+                bob->setFlippedX(true);
             }
             schedule([=](float dt){
                 chatShowLayer->removeAllChildren();
@@ -537,7 +538,7 @@ Point PlayerBase::getVec2BySeatId(int seatId){
     if(seatID == ClientSeatId::left){
         return Vec2(150,470);
     }else if(seatID == ClientSeatId::opposite){
-        return Vec2(840,670);
+        return Vec2(850,670);
     }else if(seatID == ClientSeatId::right){
         return Vec2(1150,470);
     }else{
