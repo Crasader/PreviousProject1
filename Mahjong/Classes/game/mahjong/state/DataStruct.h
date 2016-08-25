@@ -170,6 +170,8 @@ struct LastGameData
 {
     int seatId;
     int loard;
+    int kb;
+    int hf;
     MahjongRoom roomType;
     std::string rest;
     std::string hand;
@@ -428,6 +430,8 @@ struct PlayerResumeData{
 
 struct GameResumeData
 {
+    int kb;
+    int hf;
     std::string rest;
     std::vector <PlayerResumeData> players;
 };

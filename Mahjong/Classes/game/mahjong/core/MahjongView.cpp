@@ -428,6 +428,9 @@ void MahjongView::recoverGame(){
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
     GAMEDATA::getInstance()->setCurrentBank(data.loard);
+    GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
+    GAMEDATA::getInstance()->setKaibao(StringUtil::itos(data.kb));
+    guiLayer->updateData();
     for (int i = 0; i < data.players.size(); i++)
     {
         PlayerGameData player = data.players.at(i);

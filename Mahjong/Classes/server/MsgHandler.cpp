@@ -1074,6 +1074,8 @@ void MsgHandler::playerConnectAgain(std::string msg){
     const rapidjson::Value &rest = _mDoc["rest"];
     const rapidjson::Value &loard = _mDoc["lord"];
     const rapidjson::Value &isprivate = _mDoc["isprivate"];
+    const rapidjson::Value &kb = _mDoc["kb"];
+    const rapidjson::Value &hf = _mDoc["hf"];
     GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     //设置是否是私人房间
     std::string roomType = isprivate.GetString();
@@ -1081,6 +1083,8 @@ void MsgHandler::playerConnectAgain(std::string msg){
     lastGameData.seatId = seatId.GetInt();
     lastGameData.rest = rest.GetString();
     lastGameData.loard = loard.GetInt();
+    lastGameData.kb = kb.GetInt();
+    lastGameData.hf = hf.GetInt();
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;
@@ -2261,6 +2265,10 @@ void MsgHandler::gameResumeResp(std::string msg){
     GameResumeData resume;
     const rapidjson::Value &rest = _mDoc["rest"];
     resume.rest = rest.GetString();
+     const rapidjson::Value &kb = _mDoc["kb"];
+    resume.kb = kb.GetInt();
+    const rapidjson::Value &hf = _mDoc["hf"];
+    resume.hf = hf.GetInt();
     const rapidjson::Value &all = _mDoc["all"];
     for(int i=0;i<all.Capacity();i++){
         PlayerResumeData data;
