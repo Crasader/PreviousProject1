@@ -50,7 +50,7 @@ bool ChatDialog::init(std::string poxiaoId){
     listView = ListView::create();
     listView->setDirection(ui::ScrollView::Direction::VERTICAL);//设置ListView布局方向
     listView->setTouchEnabled(true);//可触摸
-    listView->setSize(Size(720,480));//设置ListView大小
+    listView->setContentSize(Size(720,480));//设置ListView大小
     listView->ignoreContentAdaptWithSize(false);//开启锚点设置，false可更改锚点，true不可更改，Layer默认为point(0,0),其他Node为Point(0.5,0.5)
     listView->setAnchorPoint(Vec2(0.5, 0.5));//设置锚点，即锚点放在节点setPosition的位置，0，0：表示节点左下角；1，1：表示节点右上角；0.5，0.5表示节点中点
     listView->setPosition(Point(640,375));
