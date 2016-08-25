@@ -91,8 +91,8 @@ void NetworkManage::receiveData() {
             if (pos1 >= 0 && pos2 >= 0) {
                 std::string msg = allReciveInfo.substr(pos1 + 3, pos2 - 3);
                 allReciveInfo = allReciveInfo.substr(pos2 + 3, allReciveInfo.size());
-                if (msg.size() > 0) {
-                    log("server msg = %s", allReciveInfo.c_str());
+                if (msg.size() > 0 ) {
+                    log("server msg = %s", msg.c_str());
                     SocketDataManage::getInstance()->pushMsg(msg);
                 }
             }
