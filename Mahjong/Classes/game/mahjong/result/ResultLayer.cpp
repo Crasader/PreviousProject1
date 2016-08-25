@@ -228,7 +228,7 @@ void ResultLayer::showWinAnim(){
     continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
         if(GAMEDATA::getInstance()->getIsGotoLobby()){
             GAMEDATA::getInstance()->setIsGotoLobby(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }else{
             continuMenu->setVisible(true);
         }
@@ -350,7 +350,14 @@ void ResultLayer::showLoseAnim(){
     addChild(resultMenu, 20);
     resultMenu->setVisible(false);
     schedule([=](float dt){
-        resultMenu->setVisible(true);
+        
+        if(GAMEDATA::getInstance()->getIsGotoLobby()){
+            GAMEDATA::getInstance()->setIsGotoLobby(false);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        }else{
+           resultMenu->setVisible(true);
+        }
+
         schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
     }, 0, 0, 3.0f,"delayshowbtn");
     drawPokerPad(maxData.showPoker,maxData.huType,maxData.hua);

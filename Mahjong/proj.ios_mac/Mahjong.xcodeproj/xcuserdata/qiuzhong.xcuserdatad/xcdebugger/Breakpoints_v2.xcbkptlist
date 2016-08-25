@@ -2273,11 +2273,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "493826204.791133"
+            timestampString = "493829452.686315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
+            startingLineNumber = "513"
+            endingLineNumber = "513"
             landmarkName = "ResultLayer::clickContinu()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2955,11 +2955,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "493826204.791133"
+            timestampString = "493829452.686315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "499"
-            endingLineNumber = "499"
+            startingLineNumber = "506"
+            endingLineNumber = "506"
             landmarkName = "ResultLayer::updateTime(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2971,11 +2971,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "493826204.791133"
+            timestampString = "493829452.686315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "ResultLayer::clickContinu()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3314,6 +3314,22 @@
                   offsetFromSymbolStart = "26">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/server/MsgHandler.cpp"
+            timestampString = "493829342.801799"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1328"
+            endingLineNumber = "1328"
+            landmarkName = "MsgHandler::removePlayerNotify(std::string msg)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
