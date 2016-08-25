@@ -104,7 +104,7 @@ Size BillInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
 
 TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
 {
-    auto string = String::createWithFormat("%ld", idx);
+    auto string = StringUtils::format("%ld", idx);
     
     BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
     
@@ -119,7 +119,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         sprite1->setPosition(Vec2(0, 0));
         cell->addChild(sprite1);
         
-        Label* date = Label::create(data.date,"Arial",22);
+        Label* date = Label::createWithSystemFont(data.date,"Arial",22);
         date->setTag(100);
         date->setColor(Color3B(21,50,91));
         date->setAnchorPoint(Vec2::ZERO);
@@ -128,7 +128,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         
         std::vector<BillContent> conBill = sortBillInfo(data.content);
         for (int i = 0; i < conBill.size(); i++){
-            Label* name = Label::create(conBill.at(i).nickName, "Arial", 24);
+            Label* name = Label::createWithSystemFont(conBill.at(i).nickName, "Arial", 24);
             name->setTag(200+i);
             name->setAnchorPoint(Point::ANCHOR_MIDDLE);
             name->setPosition(Vec2(85+185*i, 80));
@@ -208,7 +208,7 @@ void BillInfo::updateBillInfo(){
 
 void BillInfo::showKongBill(){
     if(GAMEDATA::getInstance()->getBillInfoAll().bills.size()==0){
-        Label* lalala = Label::create(ChineseWord("kongzhangdan"),"arial",20);
+        Label* lalala = Label::createWithSystemFont(ChineseWord("kongzhangdan"),"arial",20);
         lalala -> setTag(1001);
         lalala->setPosition(640,360);
         addChild(lalala);
@@ -230,7 +230,7 @@ std::vector<BillContent> BillInfo::sortBillInfo(std::vector<BillContent> content
 
 void BillInfo::setShowPosition(){
     setIsPrivateBill(true);
-    getChildByTag(100)->setVisible(false);
+//    getChildByTag(100)->setVisible(false);
     getChildByTag(101)->setPositionX(890);
     getChildByTag(102)->setPositionX(1230);
     getChildByTag(103)->setPositionX(890);
