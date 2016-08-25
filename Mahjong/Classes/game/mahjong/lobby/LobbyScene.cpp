@@ -435,13 +435,25 @@ void LobbyScene::addCustomEventListener(){
             invite->setTextInfo(1);
             addChild(invite,4);
         }
+        else if(result == "3")
+        {
+          //TODO
+            log("钻石不足 2040");
+        }
     });
     
     
     //好友开房
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-        Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else if(resp.result == 2){
+            //TODO
+            log("钻石不足 LobbySecne");
+        }
+       
     });
     
     
