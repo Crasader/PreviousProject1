@@ -125,7 +125,8 @@ void GoldNotEnoughDialog::closeView(){
 void GoldNotEnoughDialog::chargeGold(){
     if(UserData::getInstance()->getDiamond() >= getMinGoldEnterRoom(getRoomType())/1000){
         ChargeGold* gold = ChargeGold::create();
-        addChild(gold,4);
+        getParent()-> addChild(gold,4);
+        removeFromParent();
     }else{
         CallAndroidMethod::getInstance()->requestEvent(1);
     }
