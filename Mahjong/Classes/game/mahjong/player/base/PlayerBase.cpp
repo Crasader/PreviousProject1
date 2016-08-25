@@ -38,48 +38,51 @@ void PlayerBase::initData(){
 void PlayerBase::onEnter(){
     Layer::onEnter();
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
-        chatShowLayer->removeAllChildren();//清空界面
-        ChatData data = GAMEDATA::getInstance()->getChatData();
-        std::string content = data.content;
-        vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
-        
-        RichText* text = RichText ::create();
-        text->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        for(auto var : msgs){
-            if(!PlayerChatManage::getInstance()->isFaceImage(var)){
-                RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
-                text->pushBackElement(element1);
-                text->formatText();
+        if(playerInfo->getSeatId() == GAMEDATA::getInstance()->getHeroSeatId()){
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
+            chatShowLayer->removeAllChildren();//清空界面
+            ChatData data = GAMEDATA::getInstance()->getChatData();
+            std::string content = data.content;
+            vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
+            
+            RichText* text = RichText ::create();
+            text->setAnchorPoint(Point::ANCHOR_MIDDLE);
+            for(auto var : msgs){
+                if(!PlayerChatManage::getInstance()->isFaceImage(var)){
+                    RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
+                    text->pushBackElement(element1);
+                    text->formatText();
+                }else{
+                    RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
+                    text->pushBackElement(element2);
+                    text->formatText();
+                }
+            }
+            int seatId = GAMEDATA::getInstance()->getHeroSeatId();
+            for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
+                if(play->getPoxiaoId() == data.poxiaoId){
+                    seatId = play->getSeatId();
+                }
+            }
+            text->setPosition(getVec2BySeatId(seatId));
+            chatShowLayer->addChild(text,1);
+            auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(5, 0, 6, 38));
+            bob->setContentSize(Size(text->getContentSize().width+10, 65));
+            bob->setPosition(getVec2BySeatId(seatId));
+            chatShowLayer->addChild(bob);
+            if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left
+               || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::hero){
+                text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+                bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             }else{
-                RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
-                text->pushBackElement(element2);
-                text->formatText();
+                text->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
+                bob->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
             }
+            schedule([=](float dt){
+                chatShowLayer->removeAllChildren();
+            },0,0,3.0,"removebob");
+            
         }
-        int seatId = GAMEDATA::getInstance()->getHeroSeatId();
-        for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
-            if(play->getPoxiaoId() == data.poxiaoId){
-                seatId = play->getSeatId();
-            }
-        }
-        text->setPosition(getVec2BySeatId(seatId));
-        chatShowLayer->addChild(text,1);
-        auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(5, 0, 6, 38));
-        bob->setContentSize(Size(text->getContentSize().width+10, 65));
-        bob->setPosition(getVec2BySeatId(seatId));
-        chatShowLayer->addChild(bob);
-        if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left
-           || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::hero){
-            text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        }else{
-            text->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
-            bob->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
-        }
-        schedule([=](float dt){
-            chatShowLayer->removeAllChildren();
-        },0,0,3.0,"removebob");
     });
 }
 
