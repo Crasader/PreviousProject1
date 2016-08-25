@@ -11,7 +11,6 @@ public :
 	CREATE_FUNC(DailyWelfare);
     void updateData();
 private:
-    EventListenerCustom* BZJJRespListener;
     EventListenerCustom* WXRespListener;
     EventListenerCustom* SJRespListener;
 	void showDailyWelfareLayer();

@@ -31,23 +31,6 @@ void DailyWelfare::onEnter(){
         }
     });
     
-    BZJJRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
-        WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
-        if(NULL != getChildByTag(666)){
-            getChildByTag(666)->removeFromParent();
-        }
-        if(gold.result == "1"){
-            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
-            getParent()->addChild(util,5);
-            EventCustom ev(MSG_UPDATE_HERO_INFO);
-            _eventDispatcher->dispatchEvent(&ev);
-        }else {
-            HintDialog* hint = HintDialog::create("绑钻救济金领取失败",false);
-            addChild(hint,5);
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(BZJJRespListener, 1);
-    
     WXRespListener =  EventListenerCustom::create(MSG_PLAYER_WELFARE_WX, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(NULL != getChildByTag(666)){
@@ -71,7 +54,6 @@ void DailyWelfare::onEnter(){
 
 void DailyWelfare::onExit(){
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(BZJJRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(WXRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(SJRespListener);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(GET_JJJ_RESPONSE_REMOVE_LOADING);
@@ -83,12 +65,12 @@ void DailyWelfare::showDailyWelfareLayer(){
         task_bg->setPosition(307 + i * 222, 355);
         addChild(task_bg);
         
-        std::string piaoName = cocos2d::String::createWithFormat("daily/task/piao_dai_%d.png", 1)->_string;
+        std::string piaoName = StringUtils::format("daily/task/piao_dai_%d.png", 1);
         auto piao_dai = Sprite::create(piaoName);
         piao_dai->setPosition(307 + i * 222, 520);
         addChild(piao_dai);
         
-        std::string imageName = cocos2d::String::createWithFormat("daily/task/welfare_title_%d.png", i + 1)->_string;
+        std::string imageName = StringUtils::format("daily/task/welfare_title_%d.png", i + 1);
         auto title = Sprite::create(imageName);
         title->setPosition(307 + i * 222, 525);
         addChild(title);
@@ -134,7 +116,7 @@ void DailyWelfare::showDailyWelfareLayer(){
     jjjNum->setTag(1000);
     addChild(jjjNum,6);
     
-    LabelAtlas* bzjjjNum = LabelAtlas::create(data.jjj_count,"daily/task/num.png",16,24,'0');
+    LabelAtlas* bzjjjNum = LabelAtlas::create(data.bzjjj_count,"daily/task/num.png",16,24,'0');
     bzjjjNum->setPosition(565,276);
     bzjjjNum->setTag(1001);
     addChild(bzjjjNum,6);
@@ -157,12 +139,12 @@ void DailyWelfare::showDailyWelfareLayer(){
         addChild(text1);
     }
     
-    if(data.jjj_result == "0"){
+    if(data.bzjjj_result == "0"){
         auto text2 = Sprite::create("daily/sign/wei_man_zhu.png");
         text2->setPosition(307+ 1 * 222, 210);
         addChild(text2);
     }else if (data.bzjjj_result == "1"){
-        auto finish2 = MenuItemImage::create("daily/recieve_btn_1.png", "daily/recieve_btn_2.png", "daily/recieve_btn_3.png",
+        auto finish2 = MenuItemImage::create("daily/recieve_btn_1.png","daily/recieve_btn_2.png", "daily/recieve_btn_3.png",
                                              CC_CALLBACK_1(DailyWelfare::recievePride, this));
         finish2->setTag(1);
         auto finishMenu2 = Menu::create(finish2, NULL);

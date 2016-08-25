@@ -69,6 +69,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_INFO_RESP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_CONNECT_AGAIN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_JJJ);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_BZJJJ);
     
 }
 
@@ -496,6 +497,22 @@ void LobbyScene::addCustomEventListener(){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
         }else {
             HintDialog* hint = HintDialog::create("救济金领取失败",false);
+            addChild(hint,5);
+        }
+    });
+    
+    //绑钻救济金领取
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
+        WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
+        if(gold.result == "1"){
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
+            addChild(util,5);
+            UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+atoi(gold.bangzuan.c_str()));
+            updateHeroInfo();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
+        }else {
+            HintDialog* hint = HintDialog::create("绑钻救济金领取失败",false);
             addChild(hint,5);
         }
     });
