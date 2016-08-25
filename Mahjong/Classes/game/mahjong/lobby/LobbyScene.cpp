@@ -62,7 +62,7 @@ void LobbyScene::signUpdate(float dt){
 void LobbyScene::onExit(){
     Scene::onExit();
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_ROOM_RESP);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_FRIEND_ROOM_RESP);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_FRIEND_ROOM_RESP_LOBBY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_RESP);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_UPDATE_HERO_INFO);
@@ -423,7 +423,7 @@ void LobbyScene::addCustomEventListener(){
     });
     
     //进入好友房间回复
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP_LOBBY, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         removeLoading();

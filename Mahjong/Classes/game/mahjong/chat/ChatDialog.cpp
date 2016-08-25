@@ -190,6 +190,7 @@ void ChatDialog:: showChatInfo(ChatData data){
     }
     customItem->addChild(iamge);
     listView->pushBackCustomItem(customItem);
+    listView->setGravity(cocos2d::ui::ListView::Gravity::BOTTOM);
     
     std::string content = data.content;
     vector<std::string> msgs = PlayerChatManage::getInstance()->splitContentByFace(content);

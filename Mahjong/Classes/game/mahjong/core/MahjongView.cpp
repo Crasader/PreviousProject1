@@ -198,9 +198,9 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFrinedRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_FRIEND_ROOM_RESP_ROOM);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM);
 }
 
@@ -1240,7 +1240,7 @@ void MahjongView::addFriendInviteMeListener(){
 
 
 void MahjongView::addEnterFriendRoomListener(){
-    enterFrinedRoomListener = EventListenerCustom::create(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP_ROOM, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
@@ -1253,7 +1253,6 @@ void MahjongView::addEnterFriendRoomListener(){
             addChild(invite,4);
         }
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(enterFrinedRoomListener, 1);
 }
 
 void MahjongView::addPlayerRemoveListener(){

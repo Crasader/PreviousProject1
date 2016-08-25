@@ -1487,7 +1487,8 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
             }
         }
     }
-    postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP, StringUtil::itos(result.GetInt()));
+    postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP_LOBBY, StringUtil::itos(result.GetInt()));
+    postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP_ROOM, StringUtil::itos(result.GetInt()));
 }
 
 
