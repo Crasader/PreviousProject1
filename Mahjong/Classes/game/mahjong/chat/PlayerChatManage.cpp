@@ -73,26 +73,22 @@ std::string PlayerChatManage::getFaceImageName(std::string name){
 
 std::vector<std::string> PlayerChatManage::splitContentByFace(std::string content){
     std::vector<std::string> msgs;
-    
-    const char* mark1 = "[";
-    const char* mark2 = "]";
-    int pos1 = content.find(mark1);
-    int pos2 = content.find(mark2);
-    std::string part1 = "";
-    std::string part2 ="";
-    std::string part3 = "";
-    if(pos1>=0 && pos2>=0){
-        part1 = content.substr(0,pos1);
-        part2 = content.substr(pos1,pos2-pos1+1);
-        part3 = content.substr(pos2+1,content.size()-1);
-        if(part1 != "")
-            msgs.push_back(part1);
-        if(part2 != "")
-            msgs.push_back(part2);
-        if(part3 != "")
-            msgs.push_back(part3);
-    }else{
-        msgs.push_back(content);
+    while (content.size()>0) {
+        int firstRightPos = content.find_first_of("]");
+        if(firstRightPos>=0){
+            std::string temp = content.substr(0,firstRightPos+1);
+            int pos = temp.find_last_of("[");
+            if(pos >= 0){
+                msgs.push_back(temp.substr(0,pos));
+                msgs.push_back(temp.substr(pos));
+            }else{
+                msgs.push_back(temp);
+            }
+            content = content.substr(firstRightPos+1);
+        }else{
+            msgs.push_back(content);
+            content.clear();
+        }
     }
     return msgs;
 }

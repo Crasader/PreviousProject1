@@ -9,6 +9,7 @@
 #ifndef PlayerChatManage_hpp
 #define PlayerChatManage_hpp
 #include "cocos2d.h"
+
 USING_NS_CC;
 
 class PlayerChatManage : public Ref{
