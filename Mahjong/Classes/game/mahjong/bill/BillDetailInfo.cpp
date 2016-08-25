@@ -71,7 +71,7 @@ bool BillDetailInfo::init()
     
     for(int i=0;i<4;i++){
         std::string imageName ="bill/yellow_num.png";
-        int score =atoi(data.content.at(i).score.c_str());
+        int score =atoi(conBill.at(i).score.c_str());
         if(score<0){
             imageName="bill/purper_num.png";
         }
