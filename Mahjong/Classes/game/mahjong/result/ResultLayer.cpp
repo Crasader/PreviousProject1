@@ -59,7 +59,7 @@ void ResultLayer::onEnter(){
             }
         }else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "4"){
             ChargeDiamond* charge = ChargeDiamond::create();
-            addChild(charge,3);
+            addChild(charge,30);
         }
         
     });
@@ -502,6 +502,7 @@ void ResultLayer::updateTime(float dt){
         timeToatal--;
         if (timeToatal <= 0){
             clickContinu();
+            timeToatal = 10000000000;//填一个极大值
         }
     }
 }

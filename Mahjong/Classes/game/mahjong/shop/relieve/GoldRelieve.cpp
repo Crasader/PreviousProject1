@@ -38,9 +38,7 @@ bool GoldRelieve::init(){
     
     auto surplusNumber = Label::create("2","arial",32);
     surplusNumber->setTag(999);
-    if(GAMEDATA::getInstance()->getWelfareData().needInit){
-        surplusNumber->setString(StringUtils::format("%d",atoi(GAMEDATA::getInstance()->getWelfareData().jjj_count.c_str())-atoi(GAMEDATA::getInstance()->getWelfareData().jjj_used.c_str())));
-    }
+    surplusNumber->setString(StringUtils::format("%d",getRelieveNum()));
     surplusNumber->setColor(Color3B(237,182,60));
     surplusNumber->setPosition(772,530);
     addChild(surplusNumber);
@@ -111,7 +109,7 @@ bool GoldRelieve::init(){
 void GoldRelieve:: onEnter() {
     Layer::onEnter();
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(UPDATE_JJJ_COUNT_RESP, [=](EventCustom* event){
-        int num = atoi(GAMEDATA::getInstance()->getWelfareData().jjj_count.c_str())-atoi(GAMEDATA::getInstance()->getWelfareData().jjj_used.c_str())-1;
+        int num = getRelieveNum()-1;
         if(NULL != getChildByTag(999)){
             ((Label*)getChildByTag(999))->setString(StringUtils::format("%d",num>0?num:0));
         }

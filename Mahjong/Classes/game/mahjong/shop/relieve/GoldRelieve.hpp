@@ -19,6 +19,7 @@ public:
     virtual bool init();
     void onEnter() override;
     void onExit() override;
+    CC_SYNTHESIZE(int, relieveNum, RelieveNum);
     CREATE_FUNC(GoldRelieve);
 private:
     void closeView();
