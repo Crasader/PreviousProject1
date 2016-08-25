@@ -20,6 +20,8 @@ public:
 private:
     void closeView();
     void chargeGold();
+    CC_SYNTHESIZE(int , roomType, RoomType);
+    int getMinGoldEnterRoom(int type);
 
 };
 #endif /* GoldNotEnoughDialog_hpp */

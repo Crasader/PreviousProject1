@@ -39,13 +39,8 @@ void ResultLayer::onEnter(){
             
             for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
                 if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-                    if(UserData::getInstance()->getDiamond() >= var.minGold/1000){
-                        ChargeGold* gold = ChargeGold::create();
-                        addChild(gold,30);
-                    }else{
-                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                        addChild(gold,30);
-                    }
+                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                    addChild(gold,30);
                 }
             }
         }

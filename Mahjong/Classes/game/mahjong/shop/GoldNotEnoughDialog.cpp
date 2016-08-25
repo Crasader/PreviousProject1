@@ -7,7 +7,10 @@
 //
 
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
+#include "game/mahjong/shop/ChargeGold.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
+#include "payment/android/CallAndroidMethod.h"
+#include "game/utils/GameConfig.h"
 
 GoldNotEnoughDialog* GoldNotEnoughDialog::create(int type){
     GoldNotEnoughDialog* ret = new GoldNotEnoughDialog();
@@ -25,7 +28,7 @@ bool GoldNotEnoughDialog::init(int type){
     if(!Layer::init()){
         return false;
     }
-    
+    setRoomType(type);
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu0 = Menu::create(item1, NULL);
@@ -120,5 +123,23 @@ void GoldNotEnoughDialog::closeView(){
 
 
 void GoldNotEnoughDialog::chargeGold(){
-   //TODO
+    if(UserData::getInstance()->getDiamond() >= getMinGoldEnterRoom(getRoomType())/1000){
+        ChargeGold* gold = ChargeGold::create();
+        addChild(gold,4);
+    }else{
+        CallAndroidMethod::getInstance()->requestEvent(1);
+    }
+}
+
+int GoldNotEnoughDialog::getMinGoldEnterRoom(int type){
+    if (type == ROOM_1){
+        return ENTER_ROOM_1_GOLD;
+    }else if(type == ROOM_2){
+        return ENTER_ROOM_2_GOLD;
+
+    }else if(type == ROOM_3){
+        return ENTER_ROOM_3_GOLD;
+    }else {
+        return 0;
+    }
 }
