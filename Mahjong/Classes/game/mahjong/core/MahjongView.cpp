@@ -442,6 +442,7 @@ void MahjongView::recoverGame(){
         info->setPicture(player.pic);
         info->setGender(player.gender);
         info->setScore(player.jifen);
+        info->setTicket(player.lequan);
         info->setLockDiamond(player.bangzuan);
         info->setPoxiaoId(player.poxiaoId); 
         GAMEDATA::getInstance()->addPlayersInfo(info);

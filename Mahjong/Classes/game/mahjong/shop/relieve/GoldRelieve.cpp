@@ -14,6 +14,7 @@ bool GoldRelieve::init(){
     if(!Layer::init()){
         return false;
     }
+    
     MenuItem* item = MenuItem::create();
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
@@ -38,7 +39,7 @@ bool GoldRelieve::init(){
     
     auto surplusNumber = Label::create("2","arial",32);
     surplusNumber->setTag(999);
-    surplusNumber->setString(StringUtils::format("%d",getRelieveNum()));
+    surplusNumber->setString(StringUtils::format("%d",relieveNum));
     surplusNumber->setColor(Color3B(237,182,60));
     surplusNumber->setPosition(772,530);
     addChild(surplusNumber);
@@ -109,7 +110,7 @@ bool GoldRelieve::init(){
 void GoldRelieve:: onEnter() {
     Layer::onEnter();
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(UPDATE_JJJ_COUNT_RESP, [=](EventCustom* event){
-        int num = getRelieveNum()-1;
+        int num = relieveNum-1;
         if(NULL != getChildByTag(999)){
             ((Label*)getChildByTag(999))->setString(StringUtils::format("%d",num>0?num:0));
         }
@@ -133,4 +134,10 @@ void GoldRelieve::chargeGold(){
 
 void GoldRelieve::getRelieve(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareJJJ());
+}
+
+void GoldRelieve::setRelieveNum(int num){
+    if(NULL !=getChildByTag(999)){
+        ((Label*)getChildByTag(999))->setString(StringUtils::format("%d",num));
+    }
 }

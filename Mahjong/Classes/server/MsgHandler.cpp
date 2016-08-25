@@ -1110,6 +1110,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.bangzuan = temp["bangzuan"].GetInt();
         data.lequan = temp["lequan"].GetInt();
         data.diamond = temp["diamond"].GetInt();
+        data.lequan = temp["lequan"].GetInt();
         data.hua = temp["hua"].GetInt();
         data.tru = temp["tru"].GetInt();
         data.isOnline = temp["isonline"].GetInt();
