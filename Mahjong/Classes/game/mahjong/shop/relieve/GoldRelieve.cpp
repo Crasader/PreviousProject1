@@ -36,7 +36,7 @@ bool GoldRelieve::init(){
     number->setPosition(Vec2(640,530));
     addChild(number);
     
-    auto surplusNumber = Label::create("0","arial",32);
+    auto surplusNumber = Label::create("2","arial",32);
     surplusNumber->setTag(999);
     if(GAMEDATA::getInstance()->getWelfareData().needInit){
         surplusNumber->setString(StringUtils::format("%d",atoi(GAMEDATA::getInstance()->getWelfareData().jjj_count.c_str())-atoi(GAMEDATA::getInstance()->getWelfareData().jjj_used.c_str())));
@@ -115,6 +115,7 @@ void GoldRelieve:: onEnter() {
         if(NULL != getChildByTag(999)){
             ((Label*)getChildByTag(999))->setString(StringUtils::format("%d",num>0?num:0));
         }
+        removeFromParent();
     });
 };
 void GoldRelieve::onExit() {

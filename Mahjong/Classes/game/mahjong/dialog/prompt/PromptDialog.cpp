@@ -42,7 +42,7 @@ void PromptDialog::setTextInfo(int type){
 	if (type == 0){
 		FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
 		std::string context = ChineseWord("haoyou") + data.nickname+ "," + ChineseWord("yaoqing") + "." + ChineseWord("tongyi") + "!";
-		Label* text1 = Label::create(context, "Arial", 20);
+		Label* text1 = Label::create(context, "Arial", 30);
 		text1->setDimensions(240, 200);
 		text1->setAlignment(TextHAlignment::CENTER);
 		text1->setPosition(640, 300);
@@ -50,12 +50,12 @@ void PromptDialog::setTextInfo(int type){
 		this->addChild(text1);
 	}
 	else if (type == 1){
-		Label* text = Label::create(ChineseWord("zuoman") + "!", "Arial", 20);
+		Label* text = Label::create(ChineseWord("zuoman") + "!", "Arial", 30);
 		text->setPosition(640, 330);
 		this->addChild(text);
 	}
 	else{
-		Label* text = Label::create("socket lost connect", "Arial", 20);
+		Label* text = Label::create("socket lost connect", "Arial", 30);
 		text->setPosition(640, 330);
 		this->addChild(text);
 	}
