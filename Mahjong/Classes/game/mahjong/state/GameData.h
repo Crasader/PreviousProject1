@@ -86,6 +86,7 @@ public:
     CC_SYNTHESIZE(bool, needAddPlayer,NeedAddPlayer);
     CC_SYNTHESIZE(bool, isLiuJu, IsLiuJu);
     CC_SYNTHESIZE(bool, isResume, IsResume);
+    CC_SYNTHESIZE(bool, isGotoLobby, IsGotoLobby)
     CC_SYNTHESIZE(string, dice, Dice);
     CC_SYNTHESIZE(string, kaibao, Kaibao);
     CC_SYNTHESIZE(string, huangfan, Huangfan);

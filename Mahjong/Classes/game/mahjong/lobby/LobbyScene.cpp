@@ -437,8 +437,8 @@ void LobbyScene::addCustomEventListener(){
         }
         else if(result == "3")
         {
-          //TODO
-            log("钻石不足 2040");
+            ChargeDiamond* charge = ChargeDiamond::create();
+            addChild(charge,3);
         }
     });
     
@@ -450,8 +450,8 @@ void LobbyScene::addCustomEventListener(){
         if(resp.result == 1){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
-            //TODO
-            log("钻石不足 LobbySecne");
+            ChargeDiamond* charge = ChargeDiamond::create();
+            addChild(charge,3);
         }
        
     });

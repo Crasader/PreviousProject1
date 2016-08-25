@@ -17,9 +17,10 @@ void GAMEDATA::init(){
 	setIsRecover(false);
 	setNeedAddPlayer(false);
     setContinueAgain(false);
+    setIsResume(false);
+    setIsGotoLobby(false);
     setHuangfan("0");
     setKaibao("0");
-    setIsResume(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

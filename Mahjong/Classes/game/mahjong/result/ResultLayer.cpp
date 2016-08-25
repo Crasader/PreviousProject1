@@ -3,15 +3,19 @@
 #include "game/mahjong/jong/Jong.h"
 #include"game/mahjong/core/MjGameScene.h"
 #include "game/mahjong/core/MahjongView.h"
+#include "game/mahjong/lobby/EnterRoomDialog.hpp"
+#include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
+#include "game/mahjong/shop/ChargeDiamond.hpp"
+#include "game/mahjong/shop/ChargeGold.hpp"
 #include "game/utils/SeatIdUtil.h"
 #include "game/utils/StringUtil.h"
 #include "game/utils/Chinese.h"
+#include "game/utils/ParticleUtil.hpp"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
-#include "game/mahjong/shop/ChargeGold.hpp"
-#include "game/utils/ParticleUtil.hpp"
-#include "game/mahjong/lobby/EnterRoomDialog.hpp"
-#include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
+
+
+
 
 bool ResultLayer::init(){
     if (!Layer::init()){
@@ -54,8 +58,8 @@ void ResultLayer::onEnter(){
                 addChild(dia,30);
             }
         }else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "4"){
-            //TODO
-            log("钻石不足 ResultLayer");
+            ChargeDiamond* charge = ChargeDiamond::create();
+            addChild(charge,3);
         }
         
     });
@@ -227,7 +231,12 @@ void ResultLayer::showWinAnim(){
     continuMenu->setVisible(false);
     continu->setOpacity(77);
     continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
-        continuMenu->setVisible(true);
+        if(GAMEDATA::getInstance()->getIsGotoLobby()){
+            GAMEDATA::getInstance()->setIsGotoLobby(false);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else{
+            continuMenu->setVisible(true);
+        }
         schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
     }),FadeTo::create(3.0/24, 255),CallFunc::create([=](){
         ClippingNode* cliper = ClippingNode::create();

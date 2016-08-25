@@ -1323,6 +1323,7 @@ void MsgHandler::removePlayerNotify(std::string msg){
     }else{
         log("hero is out room");
         GAMEDATA::getInstance()->clearPlayersInfo();
+        GAMEDATA::getInstance()->setIsGotoLobby(true);
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, "");
