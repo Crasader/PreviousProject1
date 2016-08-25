@@ -688,7 +688,7 @@ void MsgHandler::addPalyer(std::string msg){
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &gold = _mDoc["gold"];
     const rapidjson::Value &diamond = _mDoc["diamond"];
-    const rapidjson::Value &lockdiamond = _mDoc["buangzuan"];
+    const rapidjson::Value &lockdiamond = _mDoc["bangzuan"];
     const rapidjson::Value &jifen = _mDoc["jifen"];
     const rapidjson::Value &lequan = _mDoc["lequan"];
     const rapidjson::Value &gender = _mDoc["gender"];
@@ -1466,7 +1466,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
                 auto seatId = temp["seatId"].GetInt();
                 auto gold = temp["gold"].GetInt();
                 auto diamond = temp["diamond"].GetInt();
-                auto lockdiamond = temp["buangzuan"].GetInt();
+                auto lockdiamond = temp["bangzuan"].GetInt();
                 auto jifen = temp["jifen"].GetInt();
                 auto lequan = temp["lequan"].GetInt();
                 auto gender = temp["gender"].GetInt();
