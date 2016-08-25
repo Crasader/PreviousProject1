@@ -17,11 +17,6 @@ bool BillInfo::init()
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg,-1);
     
-    auto all_bg = Sprite::create("common/all_bg.jpg");
-    all_bg->setTag(100);
-    all_bg->setPosition(640, 360);
-    addChild(all_bg);
-    
     auto  dialogBg = Sprite::create("friend/dialog_bg.png");
     dialogBg->setTag(101);
     dialogBg->setPosition(640, 360);

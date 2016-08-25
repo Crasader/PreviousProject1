@@ -16,6 +16,7 @@ bool DailyTask::init(){
 
 void DailyTask::onEnter(){
     Layer::onEnter();
+    
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_DAILY_TASK_MQ3, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
@@ -119,11 +120,12 @@ void DailyTask::showDailyTaskLayer(){
         extraMenu->setVisible(false);
         lingqu->setVisible(true);
     }else if (GAMEDATA::getInstance()->getDailyTaskInfo().extra == "0"){
-        extraMenu->setEnabled(false);
+        extraImage->setEnabled(false);
         lingqu->setVisible(false);
     }
     else{
         extraMenu->setVisible(true);
+        extraImage->setEnabled(true);
         lingqu->setVisible(false);
     }
 }
@@ -135,10 +137,12 @@ void DailyTask::updateData(){
         lingqu->setVisible(true);
     }
     else if (GAMEDATA::getInstance()->getDailyTaskInfo().extra == "0"){
-        extraMenu->setEnabled(false);
+        extraImage->setEnabled(false);
         lingqu->setVisible(false);
     }
     else{
+        extraMenu->setVisible(true);
+        extraImage->setEnabled(true);
         lingqu->setVisible(false);
     }
     cell1->updateData(task1);

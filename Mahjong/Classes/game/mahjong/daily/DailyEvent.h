@@ -11,6 +11,7 @@
 #include "server/CommandManage.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
+
 enum DailyType{
 	task,
 	pride,
@@ -49,6 +50,5 @@ private:
 	void showDailyPride(Ref* ref);
 	void showDailySign(Ref* ref);
 	void closeView();
-	void addEventCustom();
 };
 #endif

@@ -22,9 +22,6 @@ bool FirstChargeDialog::init(){
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
     
-    auto all_bg = Sprite::create("common/all_bg.jpg");
-    all_bg->setPosition(640, 360);
-    addChild(all_bg);
     
     auto dialog_bg = Sprite::create("shop/first_chage_bg.png");
     dialog_bg->setPosition(640,360);

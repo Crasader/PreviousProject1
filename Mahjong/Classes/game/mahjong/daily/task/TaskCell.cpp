@@ -1,5 +1,6 @@
 #include "game/mahjong/daily/task/TaskCell.h"
 #include "server/NetworkManage.h"
+#include "payment/android/CallAndroidMethod.h"
 
 TaskCell* TaskCell::create(TASKID taskId){
     TaskCell* bRet = new TaskCell();
@@ -70,7 +71,8 @@ void TaskCell::recievePride(Ref* ref){
 }
 
 void TaskCell::charge(){
-    
+    //触发事件
+    CallAndroidMethod::getInstance()->requestEvent(1);
 }
 
 void TaskCell::drawTaskFinishStateById(TASKID taskId){
@@ -179,6 +181,7 @@ void TaskCell::updateData(TASKID taskId){
         }
         else{
             chargeMenu->setVisible(true);
+            chargeMenu->setEnabled(true);
             revcieved->setVisible(false);
         }
     }

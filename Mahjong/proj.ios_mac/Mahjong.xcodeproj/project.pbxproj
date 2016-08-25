@@ -1290,10 +1290,10 @@
 		D2B1A82D1CCDF0F300A20896 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1A82E1CCDF0F300A20896 /* LobbyScene.cpp */,
-				D2B1A82F1CCDF0F300A20896 /* LobbyScene.h */,
 				D28A4A3E1D06B19E00741FD0 /* EnterRoomDialog.cpp */,
 				D28A4A3F1D06B19E00741FD0 /* EnterRoomDialog.hpp */,
+				D2B1A82E1CCDF0F300A20896 /* LobbyScene.cpp */,
+				D2B1A82F1CCDF0F300A20896 /* LobbyScene.h */,
 			);
 			path = lobby;
 			sourceTree = "<group>";

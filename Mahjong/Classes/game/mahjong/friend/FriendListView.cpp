@@ -16,10 +16,6 @@ bool FriendListView::init()
 	Menu* bg = Menu::create(item, NULL);
 	this->addChild(bg);
 
-	auto all_bg = Sprite::create("common/all_bg.jpg");
-	all_bg->setPosition(640, 360);
-	addChild(all_bg);
-
 	auto  dialogBg = Sprite::create("friend/dialog_bg.png");
 	dialogBg->setPosition(640, 360);
 	this->addChild(dialogBg);
