@@ -106,24 +106,8 @@ void LobbyScene::startGame(Ref* psend){
     MenuItemImage* item = (MenuItemImage*)psend;
     GAMEDATA::getInstance()->setCurrentSelectRoomId(item->getTag());
     if (item->getTag() == ROOM_1){
-        //判断是否需要弹出救济金
-        if(UserData::getInstance()->getGold()>=ENTER_ROOM_1_GOLD){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_1)));
-            showLoading();
-        }else{
-            if(GAMEDATA::getInstance()->getReliveNumber()>0){
-                GoldRelieve* goldRelieve = GoldRelieve::create();
-                addChild(goldRelieve,3);
-            }else{
-                if(UserData::getInstance()->getDiamond()*DIAMOND_TO_GOLD_RATE>=(ENTER_ROOM_1_GOLD-UserData::getInstance()->getGold())){
-                    ChargeGold* gold = ChargeGold::create();
-                    addChild(gold,3);
-                }else{
-                    ChargeDiamond* charge = ChargeDiamond::create();
-                    this->addChild(charge,3);
-                }
-            }
-        }
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtil::itos(ROOM_1)));
+        showLoading();
     }
     else if (item->getTag() == ROOM_2){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_2)));
@@ -431,6 +415,9 @@ void LobbyScene::addCustomEventListener(){
                 EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
                 addChild(dia,4);
             }
+        }else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "5"){
+            GoldRelieve* goldRelieve = GoldRelieve::create();
+            addChild(goldRelieve,3);
         }
     });
     

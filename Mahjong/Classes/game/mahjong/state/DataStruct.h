@@ -55,6 +55,8 @@ enum MahjongState{
 struct EnterRoomResp{
     std::string result;
     std::string rsid;
+    std::string jjj_count;
+    std::string jjj_used;
 };
 
 struct ReplaceJong
@@ -107,6 +109,8 @@ struct GameResultData
     int diamonddelta;
     int jifendelta;
     int lequandelta;
+    int bangzuan;
+    int bangzuandelta;
     int hua;
     std::string pic;
     std::string nickName;

@@ -560,6 +560,11 @@ void MsgHandler::enterRoomResp(std::string msg){
         const rapidjson::Value &rsid = _mDoc["rsid"];
         resp.rsid = rsid.GetString();
     }
+    if(_mDoc.HasMember("jjj")){
+        const rapidjson::Value &jjj = _mDoc["jjj"];
+        resp.jjj_count = jjj["count"].GetString();
+        resp.jjj_used = jjj["used"].GetString();
+    }
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
     GAMEDATA::getInstance()->clearPlayersInfo();
     if (result.GetInt() == 1){
@@ -1027,6 +1032,12 @@ void MsgHandler::gameResultNotify(std::string msg){
         }
         if (temp.HasMember("lequandelta")){
             resultData.lequandelta = temp["lequandelta"].GetInt();
+        }
+        if (temp.HasMember("bangzuan")){
+            resultData.bangzuan = temp["bangzuan"].GetInt();
+        }
+        if (temp.HasMember("bangzuandelta")){
+            resultData.bangzuandelta = temp["bangzuandelta"].GetInt();
         }
         if(temp.HasMember("pic")){
             resultData.pic = temp["pic"].GetString();
@@ -2265,7 +2276,7 @@ void MsgHandler::gameResumeResp(std::string msg){
     GameResumeData resume;
     const rapidjson::Value &rest = _mDoc["rest"];
     resume.rest = rest.GetString();
-     const rapidjson::Value &kb = _mDoc["kb"];
+    const rapidjson::Value &kb = _mDoc["kb"];
     resume.kb = kb.GetInt();
     const rapidjson::Value &hf = _mDoc["hf"];
     resume.hf = hf.GetInt();
