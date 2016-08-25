@@ -688,6 +688,7 @@ void MsgHandler::addPalyer(std::string msg){
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &gold = _mDoc["gold"];
     const rapidjson::Value &diamond = _mDoc["diamond"];
+    const rapidjson::Value &lockdiamond = _mDoc["buangzuan"];
     const rapidjson::Value &jifen = _mDoc["jifen"];
     const rapidjson::Value &lequan = _mDoc["lequan"];
     const rapidjson::Value &gender = _mDoc["gender"];
@@ -707,6 +708,7 @@ void MsgHandler::addPalyer(std::string msg){
     info->setIsReady(false);
     info->setGold(gold.GetInt());
     info->setDiamond(diamond.GetInt());
+    info->setLockDiamond(lockdiamond.GetInt());
     info->setScore(jifen.GetInt());
     info->setGender(gender.GetInt());
     info->setNickname(nickname.GetString());
@@ -1464,6 +1466,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
                 auto seatId = temp["seatId"].GetInt();
                 auto gold = temp["gold"].GetInt();
                 auto diamond = temp["diamond"].GetInt();
+                auto lockdiamond = temp["buangzuan"].GetInt();
                 auto jifen = temp["jifen"].GetInt();
                 auto lequan = temp["lequan"].GetInt();
                 auto gender = temp["gender"].GetInt();
@@ -1478,6 +1481,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
                 info->setIsReady(ifready == 0 ? false : true);
                 info->setGold(gold);
                 info->setDiamond(diamond);
+                info->setLockDiamond(lockdiamond);
                 info->setTicket(lequan);
                 info->setScore(jifen);
                 info->setGender(gender);
