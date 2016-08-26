@@ -221,7 +221,7 @@ void DailyWelfare::recievePride(Ref* ref){
         //绑定手机
         load->removeFromParent();
         HeroInfoEdit* dialog = HeroInfoEdit::create(2);
-        getParent()->addChild(dialog,3);
+        addChild(dialog,30);
     }
     else if (temp->getTag() == 5){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareMobile());

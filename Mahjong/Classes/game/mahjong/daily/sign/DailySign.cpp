@@ -72,11 +72,13 @@ void DailySign::onEnter(){
                 }
          }), NULL));
         }
-        UserData::getInstance()->setGold(UserData::getInstance()->getGold()+gold);
-        UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+diamond);
-        UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+lequan);
-        EventCustom ev(MSG_UPDATE_HERO_INFO);
-        _eventDispatcher->dispatchEvent(&ev);
+        schedule([=](float dt){
+            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+gold);
+            UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+diamond);
+            UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+lequan);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
+        },0,0,3.0f,"helledoubi");
+      
     });
     _eventDispatcher->addEventListenerWithFixedPriority(todaySignListener, 1);
 }
