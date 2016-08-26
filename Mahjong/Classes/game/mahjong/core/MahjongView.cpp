@@ -48,6 +48,7 @@ void MahjongView::initData(){
     playerOpposite = NULL;
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setIsLiuJu(false);
+    GAMEDATA::getInstance()->setIsGotoLobby(false);
     Audio::getInstance()->setHasTingPlayer(false);
 }
 

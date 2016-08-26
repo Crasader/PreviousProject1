@@ -228,6 +228,7 @@ void ResultLayer::showWinAnim(){
     continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
         if(GAMEDATA::getInstance()->getIsGotoLobby()){
             GAMEDATA::getInstance()->setIsGotoLobby(false);
+            log("KKKKKKKKKKKKKKKKKKKKKKKKKKKK11");
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }else{
             continuMenu->setVisible(true);
@@ -352,6 +353,7 @@ void ResultLayer::showLoseAnim(){
     schedule([=](float dt){
         
         if(GAMEDATA::getInstance()->getIsGotoLobby()){
+            log("KKKKKKKKKKKKKKKKKKKKKKKKKKKK11");
             GAMEDATA::getInstance()->setIsGotoLobby(false);
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }else{

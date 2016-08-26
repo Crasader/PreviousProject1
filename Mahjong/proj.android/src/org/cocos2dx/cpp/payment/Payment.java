@@ -28,9 +28,9 @@ public class Payment {
 				// 匹配相应的计费点
 				final PayPoint payPoint = TbuAndroidTools.getPayPointById(activity, event.getPayId());
 
-//				TbuWxPay.getInstance().Pay(getDateFormat(), AppInfo.getTbuId(), String.valueOf(payPoint.getType()),
-//						payPoint.getName(), String.valueOf(payPoint.getMoney()));
-				JniPayCallbackHelper.eventCallBack(eventId, 1, null, null);
+				TbuWxPay.getInstance().Pay(getDateFormat(), AppInfo.getTbuId(), String.valueOf(payPoint.getType()),
+						payPoint.getName(), String.valueOf(payPoint.getMoney()));
+//				JniPayCallbackHelper.eventCallBack(eventId, 1, null, null);
 			} else {
 				Debug.i("Payment->requestEvent:事件点处于关闭状态");
 			}

@@ -190,7 +190,7 @@ void ChatDialog:: showChatInfo(ChatData data){
     }
     customItem->addChild(iamge);
     listView->pushBackCustomItem(customItem);
-    listView->setGravity(cocos2d::ui::ListView::Gravity::BOTTOM);
+    listView->jumpToBottom();
     
     std::string content = data.content;
     vector<std::string> msgs = PlayerChatManage::getInstance()->splitContentByFace(content);
@@ -259,7 +259,6 @@ void ChatDialog::sendFaceId(int id){
     if(NULL != getChildByTag(1001)){
         std::string msg = ((cocos2d::ui::EditBox*)getChildByTag(1001))->getText();
         std::string neeMsg = msg+ StringUtils::format("[face%d]",id);
-        ((cocos2d::ui::EditBox*)getChildByTag(1001))->setText(neeMsg.c_str());
     }
     
 }
