@@ -10,8 +10,6 @@ public:
     static bool checkAccount(std::string string);
 	static std::string itos(int target);
 	static std::vector<std::string> split(std::string str, std::string pattern);
-private:
-    static std::vector<int> getArrayByInt(std::string string);
 };
 
 #endif

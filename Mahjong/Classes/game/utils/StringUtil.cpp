@@ -66,13 +66,3 @@ bool StringUtil::checkAccount(std::string string){
     //    return result_1 && (!result_2) && (!result_3);
     return result_1;
 }
-
-
-std::vector<int> StringUtil::getArrayByInt(std::string string){
-    std::vector<int> result;
-    char tmp1[10];
-    strncpy(tmp1,string.c_str(),string.length());
-//    for(int ){
-//    
-//    }
-}

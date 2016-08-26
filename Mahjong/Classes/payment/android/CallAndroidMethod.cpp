@@ -35,8 +35,4 @@ void CallAndroidMethod::requestEvent(int eventId){
 			JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,pay_point);
 		}
 #endif	
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-		MenuScenePayHandler::getInstance()->dealEventClose(eventId);
-#endif	
 }
