@@ -70,7 +70,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_CONNECT_AGAIN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_JJJ);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_BZJJJ);
-    
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
 }
 
 void LobbyScene::updateHeroInfo(){
@@ -449,7 +449,7 @@ void LobbyScene::addCustomEventListener(){
             ChargeDiamond* charge = ChargeDiamond::create();
             addChild(charge,3);
         }
-       
+        
     });
     
     
@@ -510,6 +510,13 @@ void LobbyScene::addCustomEventListener(){
             HintDialog* hint = HintDialog::create("绑钻救济金领取失败",false);
             addChild(hint,5);
         }
+    });
+    
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
+        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
+              HintDialog* hint = HintDialog::create("网络出现问题啦",false);
+              addChild(hint,5);
+        });
     });
 }
 

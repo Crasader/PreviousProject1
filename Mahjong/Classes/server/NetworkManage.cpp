@@ -58,6 +58,7 @@ void NetworkManage::sendMsg(std::string code) {
     if (sendResult < 0) {
         log("scoket connect again ...(^_^)");
         //connectServer();
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CLIENT_LOST_CONNECT);
     }
 }
 
