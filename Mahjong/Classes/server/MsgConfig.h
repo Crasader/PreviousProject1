@@ -65,6 +65,8 @@
 
 #define MSGCODE_FEEDBACK_REQUEST  154// 用户反馈请求{code:154,poxiaoId:poxiaoId,content:"llllll"}
 #define MSGCODE_FEEDBACK_RESPONSE  155// 用户反馈回复{code:155,poxiaoId:poxiaoId,result:"1"} 1成功 0 5分钟内发送一次
+#define MSGCODE_OTHER_REPLACE  156// 用户在别的设备上登陆{code:156,poxiaoId:poxiaoId}
+
 
 #define MSGCODE_INTO_ROOMSTYLE_REQUEST  1000 //进入房间请求{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 #define MSGCODE_INTO_ROOMSTYLE_RESPONSE 1001 //进入房间回复{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]} result1为成功 2为金币低于下限 3为金币高于上线 4为其他错误
@@ -193,7 +195,7 @@
 #define MSGCODE_FRIEND_GAME_BILL_RESPONSE  2042//获取账单回复{code:2042,poxiaoId:poxiaoId,bill:[{date:"2015-06-06 15:15",count:"10",billid:"8888888888",content:[{nickname:"张三",score:"1000"},{nickname:"李四",score:"2000"},{nickname:"王五",score:"1000"},{nickname:"赵六",score:"1100"}]}]}
 #define MSGCODE_FRIEND_GAME_BILL_DETAIL_REQUEST  2043//获取账单明细请求{code:2043,poxiaoId:poxiaoId,billid:"8888"}
 #define MSGCODE_FRIEND_GAME_BILL_DETAIL_RESPONSE  2044//获取账单明细回复{code:2044,poxiaoId:poxiaoId,detail:[{nickname:"张三",score:"1000"},{nickname:"李四",score:"2000"},{nickname:"王五",score:"-1000"},{nickname:"赵六",score:"-1100"}]}
-
+#define MSGCODE_FRIEND_GAME_RESULT_NOTIFY  2045// 好友邀请结果通知{code:2045,poxiaoId:"123",pId:"456",result:1} result 为1是好友不在线 2是好友在游戏中，邀请成功不发送次通知
 
 
 

@@ -176,6 +176,7 @@ struct LastGameData
     int loard;
     int kb;
     int hf;
+    int turn;
     MahjongRoom roomType;
     std::string rest;
     std::string hand;

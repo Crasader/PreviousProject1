@@ -1089,6 +1089,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
     const rapidjson::Value &isprivate = _mDoc["isprivate"];
     const rapidjson::Value &kb = _mDoc["kb"];
     const rapidjson::Value &hf = _mDoc["hf"];
+    const rapidjson::Value &turn = _mDoc["turn"];
     GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     //设置是否是私人房间
     std::string roomType = isprivate.GetString();
@@ -1098,6 +1099,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
     lastGameData.loard = loard.GetInt();
     lastGameData.kb = kb.GetInt();
     lastGameData.hf = hf.GetInt();
+    lastGameData.turn = turn.GetInt();
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;
