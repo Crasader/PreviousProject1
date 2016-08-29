@@ -44,6 +44,7 @@ bool MahjongView::init(){
 void MahjongView::onEnter(){
     Layer::onEnter();
     scheduleUpdate();
+    addCoustomListener();
 }
 
 void MahjongView::onExit()
@@ -72,9 +73,9 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_FRIEND_ROOM_RESP_ROOM);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_REPLACE_LOGIN_LOBBY);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFrinedRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
 }
 
 void MahjongView::initData(){
@@ -1205,19 +1206,21 @@ void MahjongView::addHeroGangRespListener(){
 }
 
 void MahjongView::addFriendInviteMeListener(){
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM, [=](EventCustom* event){
+    friendOpenRoomListener=Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM, [=](EventCustom* event){
         FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
         HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",[=](Ref* ref){
             FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterFriendRoomCommand(data.pid));
-            removeFromParent();});
+            auto item = (MenuItemImage*)ref;
+            item->getParent()->getParent()->removeFromParent();
+        });
         addChild(invite,4);
     });
 }
 
 
 void MahjongView::addEnterFriendRoomListener(){
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP_ROOM, [=](EventCustom* event){
+    enterFrinedRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP_ROOM, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
@@ -1329,7 +1332,7 @@ void MahjongView::addCoustomListener(){
     this->addPlayerRemoveListener();
     this->addPlayerResumeListener();
     //登录地址变更
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
+    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
         HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
             exit(0);
         });

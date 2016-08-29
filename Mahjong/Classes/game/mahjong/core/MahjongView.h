@@ -95,6 +95,9 @@ private:
     EventListenerCustom* playerRemoveListener;
     EventListenerCustom* playerOffLineListener;
     EventListenerCustom* playerResumeListener;
+    EventListenerCustom* enterFrinedRoomListener;
+    EventListenerCustom* friendOpenRoomListener;
+    EventListenerCustom* playerReplaceLoginListener;
 
 	void addCoustomListener();
 	void addOthersReadyListener();
