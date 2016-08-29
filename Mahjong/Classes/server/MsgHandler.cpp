@@ -446,6 +446,10 @@ void MsgHandler::distribute(int code, std::string msg){
             gameContinueResp(msg);
             break;
         }
+        case MSGCODE_OTHER_REPLACE:{
+            otherClientReplace(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2350,5 +2354,9 @@ void MsgHandler::gameContinueResp(std::string msg){
         resp.rsid = rsid.GetString();
     }
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
+    postNotifyMessage(MSG_HERO_CONTINUE_RESP, "");
+}
+
+void MsgHandler::otherClientReplace(std::string msg){
     postNotifyMessage(MSG_HERO_CONTINUE_RESP, "");
 }

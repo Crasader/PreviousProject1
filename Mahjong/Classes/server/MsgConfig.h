@@ -287,6 +287,7 @@
 #define MSG_PLAYER_FEED_BACK_RESP "msg_player_feed_back_resp"
 #define MSG_PLAYER_RESUME_GAME "msg_player_resume_game"
 #define MSG_PLAYER_ROOM_CHAT_SHOW "msg_player_room_chat_show"
+#define MSG_PLAYER_REPLACE_LOGIN "msg_player_replace_login"
 
 #define GET_JJJ_RESPONSE_REMOVE_LOADING "get_jjj_response_remove_loading"
 #define UPDATE_JJJ_COUNT_RESP "update_jjj_count_resp"
