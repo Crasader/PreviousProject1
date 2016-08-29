@@ -1,5 +1,0 @@
-INDEX VERSION 1.127+D:\ProjectCocos\CardGame\CrazyMahjong\.metadata\.plugins\org.eclipse.jdt.core
-349040446.index
-3543523484.index
-4263466730.index
-4039064728.index
