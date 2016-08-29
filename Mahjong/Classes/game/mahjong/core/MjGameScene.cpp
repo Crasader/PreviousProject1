@@ -15,7 +15,8 @@ bool MjGameScene::init(){
 
 void MjGameScene::onEnter(){
     Scene::onEnter();
-    auto enterFrinedRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+    
+    enterFrinedRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
@@ -24,6 +25,7 @@ void MjGameScene::onEnter(){
             }
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             MahjongView* mjView = MahjongView::create();
+            mjView->setTag(100);
             addChild(mjView);
         }
         else if(result == "2"){
@@ -36,5 +38,6 @@ void MjGameScene::onEnter(){
 
 void MjGameScene::onExit(){
     Scene::onExit();
+    
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFrinedRoomListener);
 }
