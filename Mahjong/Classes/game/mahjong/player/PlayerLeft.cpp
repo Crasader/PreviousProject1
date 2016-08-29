@@ -168,6 +168,8 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
     if (data.flag == 2){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
+        playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
+        playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
     }
     else{
         if(data.flag == 0){
