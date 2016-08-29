@@ -6,15 +6,13 @@
 //
 //
 
-#include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
-#include "game/mahjong/shop/ChargeGold.hpp"
+#include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "payment/android/CallAndroidMethod.h"
-#include "game/utils/GameConfig.h"
 
-GoldNotEnoughDialog* GoldNotEnoughDialog::create(int type){
-    GoldNotEnoughDialog* ret = new GoldNotEnoughDialog();
-    if(ret &&ret->init(type)){
+DiamondNotEnoughDialog* DiamondNotEnoughDialog::create(){
+    DiamondNotEnoughDialog* ret = new DiamondNotEnoughDialog();
+    if(ret &&ret->init()){
         ret->autorelease();
         return ret;
     }else{
@@ -24,11 +22,10 @@ GoldNotEnoughDialog* GoldNotEnoughDialog::create(int type){
     }
 }
 
-bool GoldNotEnoughDialog::init(int type){
+bool DiamondNotEnoughDialog::init(){
     if(!Layer::init()){
         return false;
     }
-    setRoomType(type);
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu0 = Menu::create(item1, NULL);
@@ -47,24 +44,18 @@ bool GoldNotEnoughDialog::init(int type){
     addChild(bg_2);
     
     auto content = Sprite::create();
-    if (type == ROOM_1){
-        content->setTexture("shop/charge/gold_less_1w.png");
-    }else if(type == ROOM_2){
-        content->setTexture("shop/charge/gold_less_15w.png");    }
-    else if(type == ROOM_3){
-        content->setTexture("shop/charge/gold_less_128w.png");
-    }
+    content->setTexture("shop/charge/diamond_less_2.png");
     content->setPosition(640,365);
     addChild(content);
     
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
-                                       CC_CALLBACK_0(GoldNotEnoughDialog::closeView, this));
+                                       CC_CALLBACK_0(DiamondNotEnoughDialog::closeView, this));
     auto closeMenu = Menu::create(close, NULL);
     closeMenu->setPosition(905, 535);
     this->addChild(closeMenu);
     
     auto confirm = MenuItemImage::create("shop/charge/charge_btn_1.png", "shop/charge/charge_btn_2.png",
-                                         CC_CALLBACK_0(GoldNotEnoughDialog::chargeGold, this));
+                                         CC_CALLBACK_0(DiamondNotEnoughDialog::chargeDiamond, this));
     auto confirmMenu = Menu::create(confirm, NULL);
     confirmMenu->setPosition(640, 220);
     addChild(confirmMenu);
@@ -72,30 +63,10 @@ bool GoldNotEnoughDialog::init(int type){
     return true;
 }
 
-void GoldNotEnoughDialog::closeView(){
+void DiamondNotEnoughDialog::closeView(){
     removeFromParent();
 }
 
 
-void GoldNotEnoughDialog::chargeGold(){
-    if(UserData::getInstance()->getDiamond() >= getMinGoldEnterRoom(getRoomType())/1000){
-        ChargeGold* gold = ChargeGold::create();
-        getParent()-> addChild(gold,4);
-        removeFromParent();
-    }else{
-        CallAndroidMethod::getInstance()->requestEvent(1);
-    }
-}
-
-int GoldNotEnoughDialog::getMinGoldEnterRoom(int type){
-    if (type == ROOM_1){
-        return ENTER_ROOM_1_GOLD;
-    }else if(type == ROOM_2){
-        return ENTER_ROOM_2_GOLD;
-
-    }else if(type == ROOM_3){
-        return ENTER_ROOM_3_GOLD;
-    }else {
-        return 0;
-    }
-}
+void DiamondNotEnoughDialog::chargeDiamond(){
+     CallAndroidMethod::getInstance()->requestEvent(1);}

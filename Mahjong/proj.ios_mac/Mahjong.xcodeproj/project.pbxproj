@@ -163,6 +163,8 @@
 		D23EFCD01D10F695002A48A5 /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D2435FA41CC73525000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
+		D2484EB61D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */; };
+		D2484EB71D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -500,6 +502,8 @@
 		D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePicker.cpp; sourceTree = "<group>"; };
 		D23EFCCE1D10F695002A48A5 /* ImagePicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePicker.hpp; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
+		D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiamondNotEnoughDialog.cpp; sourceTree = "<group>"; };
+		D2484EB51D7464430027F40D /* DiamondNotEnoughDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiamondNotEnoughDialog.hpp; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -880,11 +884,12 @@
 		D22EEF1D1D66AAF000BF1CCB /* shop */ = {
 			isa = PBXGroup;
 			children = (
-				D2BD08BF1D66DA8700ADC31E /* relieve */,
 				D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */,
 				D22EEF1F1D66AAF000BF1CCB /* ChargeDiamond.hpp */,
 				D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */,
 				D22EEF211D66AAF000BF1CCB /* ChargeGold.hpp */,
+				D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */,
+				D2484EB51D7464430027F40D /* DiamondNotEnoughDialog.hpp */,
 				D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */,
 				D22EEF231D66AAF000BF1CCB /* ExchangeItem.hpp */,
 				D22EEF241D66AAF000BF1CCB /* ExchangePropCell.cpp */,
@@ -899,6 +904,7 @@
 				D22EEF311D66AAF000BF1CCB /* LequanExchangeRecord.hpp */,
 				D22EEF321D66AAF000BF1CCB /* LequanShop.cpp */,
 				D22EEF331D66AAF000BF1CCB /* LequanShop.hpp */,
+				D2BD08BF1D66DA8700ADC31E /* relieve */,
 				D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */,
 				D22EEF391D66AAF000BF1CCB /* ShopHintDialog.hpp */,
 			);
@@ -1588,6 +1594,7 @@
 				D22EEF7F1D66CFC800BF1CCB /* FriendInvite.cpp in Sources */,
 				D257FD7A1D6C2E2400B8C596 /* IOSiAP.mm in Sources */,
 				D22EEFC71D66D14D00BF1CCB /* DailyWelfare.cpp in Sources */,
+				D2484EB61D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF851D66CFC800BF1CCB /* InviteCell.cpp in Sources */,
 				D22EEFDD1D66D14D00BF1CCB /* UserSetting.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
@@ -1692,6 +1699,7 @@
 				D22EEFC01D66D14D00BF1CCB /* DailySign.cpp in Sources */,
 				D22EEF601D66CEB600BF1CCB /* FaHongbao.cpp in Sources */,
 				D22EEFCE1D66D14D00BF1CCB /* GenderDialog.cpp in Sources */,
+				D2484EB71D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
 				D28A4A1E1D056B4700741FD0 /* ResultLayer.cpp in Sources */,
