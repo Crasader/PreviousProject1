@@ -9,9 +9,9 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 
-HintDialog* HintDialog::create(std::string msg){
+HintDialog* HintDialog::create(std::string msg,const ccMenuCallback& callback){
     HintDialog* ret = new HintDialog();
-    if(ret &&ret->init(msg,true)){
+    if(ret &&ret->init(msg,callback)){
         ret->autorelease();
         return ret;
     }else{
@@ -21,30 +21,15 @@ HintDialog* HintDialog::create(std::string msg){
     }
 }
 
-
-HintDialog* HintDialog::create(std::string msg,bool sendBroadCast){
-
-    HintDialog* ret = new HintDialog();
-    if(ret &&ret->init(msg,sendBroadCast)){
-        ret->autorelease();
-        return ret;
-    }else{
-        
-        CC_SAFE_DELETE(ret);
-        return NULL;
-    }
-}
-
-bool HintDialog::init(std::string msg,bool sendBroadCast){
+bool HintDialog::init(std::string msg,const ccMenuCallback& callback){
     if(!Layer::init()){
         return false;
     }
+
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
-    
-    setSendBroadCast(sendBroadCast);
     
     auto dialogBg = Sprite::create("common/dialog_bg_small.png");
     dialogBg->setPosition(640, 360);
@@ -63,27 +48,31 @@ bool HintDialog::init(std::string msg,bool sendBroadCast){
     text->setPosition(640, 360);
     addChild(text);
     
+    
+    
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
-                                       CC_CALLBACK_0(HintDialog::closeView, this));
+                                       callback);
+    if(callback == NULL){
+        close->setCallback([=](Ref* ref){
+            removeFromParent();
+        });
+    }
     auto closeMenu = Menu::create(close, NULL);
+    
+    
     closeMenu->setPosition(860, 490);
     this->addChild(closeMenu);
     
     auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",
-                                         CC_CALLBACK_0(HintDialog::closeView, this));
+                                         callback);
+    if(callback == NULL){
+        confirm->setCallback([=](Ref* ref){
+            removeFromParent();
+        });
+    }
     auto confirmMenu = Menu::create(confirm, NULL);
     confirmMenu->setPosition(640, 240);
     addChild(confirmMenu);
     
     return true;
-}
-
-
-void HintDialog::closeView(){
-    if(getSendBroadCast()){
-        EventCustom ev(CLOSE_HINT_DIALOG);
-        _eventDispatcher-> dispatchEvent(&ev);
-    }else{
-        removeFromParent();
-    }
 }

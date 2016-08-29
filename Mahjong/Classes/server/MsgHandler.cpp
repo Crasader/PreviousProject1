@@ -2358,5 +2358,7 @@ void MsgHandler::gameContinueResp(std::string msg){
 }
 
 void MsgHandler::otherClientReplace(std::string msg){
-    postNotifyMessage(MSG_HERO_CONTINUE_RESP, "");
+    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN_ROOM, "");
+    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN_LOBBY, "");
+    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN_RESULT,"");
 }

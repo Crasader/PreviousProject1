@@ -25,16 +25,16 @@ void FindPassword::onEnter(){
     findPasswordListener = EventListenerCustom::create(MSG_PLAYER_FIND_PASSWORD_RESP, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         if(result == "1"){
-            HintDialog* dia = HintDialog::create("密码会通过短信发送到绑定手机",false);
+            HintDialog* dia = HintDialog::create("密码会通过短信发送到绑定手机",NULL);
             addChild(dia,3);
         }else if(result == "2"){
-            HintDialog* dia = HintDialog::create("账号未绑定手机",false);
+            HintDialog* dia = HintDialog::create("账号未绑定手机",NULL);
             addChild(dia,3);
             if(NULL != getChildByTag(962)){
                 ((Menu*)getChildByTag(962))->setEnabled(false);
             }
         }else{
-            HintDialog* dia = HintDialog::create("账号和绑定手机不匹配",false);
+            HintDialog* dia = HintDialog::create("账号和绑定手机不匹配",NULL);
             addChild(dia,3);
             if(NULL != getChildByTag(962)){
                 ((Menu*)getChildByTag(962))->setEnabled(false);
@@ -152,10 +152,10 @@ void FindPassword::findPassword(){
         }
     }else{
         if(acc == ""){
-            HintDialog* dia = HintDialog::create("请输入账号",false);
+            HintDialog* dia = HintDialog::create("请输入账号",NULL);
             addChild(dia,3);
         }else if(phone == ""){
-            HintDialog* dia = HintDialog::create("请输入手机号",false);
+            HintDialog* dia = HintDialog::create("请输入手机号",NULL);
             addChild(dia,3);
         }
      

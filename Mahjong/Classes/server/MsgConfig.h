@@ -287,10 +287,16 @@
 #define MSG_PLAYER_FEED_BACK_RESP "msg_player_feed_back_resp"
 #define MSG_PLAYER_RESUME_GAME "msg_player_resume_game"
 #define MSG_PLAYER_ROOM_CHAT_SHOW "msg_player_room_chat_show"
-#define MSG_PLAYER_REPLACE_LOGIN "msg_player_replace_login"
+
 
 #define GET_JJJ_RESPONSE_REMOVE_LOADING "get_jjj_response_remove_loading"
 #define UPDATE_JJJ_COUNT_RESP "update_jjj_count_resp"
 #define UPDATE_DICE_KAOBAO_STATE "update_dice_kaibao_dtate"
 #define CLIENT_LOST_CONNECT "client_lost_connect"
+#define FRIEND_IS_PLAYING_GAME "friend_is_playing_game" //好友在游戏中
+
+//游戏有多个场景,需要分开发送消息
+#define MSG_PLAYER_REPLACE_LOGIN_ROOM "msg_player_replace_login"//在其他的机子上登录(发送给大厅场景)
+#define MSG_PLAYER_REPLACE_LOGIN_LOBBY "msg_player_replace_login"//在其他的机子上登录(发送给游戏场景)
+#define MSG_PLAYER_REPLACE_LOGIN_RESULT "msg_player_replace_result"//在其他的机子上登录(发送给结算场景)
 #endif

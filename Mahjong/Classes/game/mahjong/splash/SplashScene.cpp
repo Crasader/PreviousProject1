@@ -274,7 +274,7 @@ void  SplashScene::addCustomEventListener(){
         }
         else{
             removeLoading();
-            HintDialog* hint = HintDialog::create("用户名或者密码错误",false);
+            HintDialog* hint = HintDialog::create("用户名或者密码错误",NULL);
             addChild(hint,6);
         }
     });
@@ -307,7 +307,7 @@ void  SplashScene::addCustomEventListener(){
             LoginMannger::getInstance()->addMemoryNickname(UserData::getInstance()->getUserName().c_str(), UserData::getInstance()->getPassword().c_str());
             
         }else{
-            HintDialog* hint = HintDialog::create("注册失败",false);
+            HintDialog* hint = HintDialog::create("注册失败",NULL);
             addChild(hint,6);
         }
     });

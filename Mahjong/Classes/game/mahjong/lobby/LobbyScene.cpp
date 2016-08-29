@@ -1,6 +1,5 @@
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/bill/BillInfo.h"
-#include "game/mahjong/dialog/prompt/PromptDialog.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/daily/DailyEvent.h"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
@@ -27,8 +26,6 @@ bool LobbyScene::init()
     drawSceneTop();
     drawSceneMid();
     drawSceneBot();
-    //add touch listener
-    addEventListener();
     showLobbyAnim();
     return true;
 }
@@ -38,9 +35,9 @@ void LobbyScene::onEnter(){
     Scene::onEnter();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-    updateHeroInfo();
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
-    addCustomEventListener();
+    updateHeroInfo();
+    addEventListener();
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
 }
 
@@ -56,7 +53,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_CONNECT_AGAIN);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_JJJ);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_BZJJJ);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_REPLACE_LOGIN_LOBBY);
 }
 
 void LobbyScene::signUpdate(float dt){
@@ -384,160 +381,6 @@ void LobbyScene::removeLoading(){
     }
 }
 
-void LobbyScene::addCustomEventListener(){
-    //进入房间回复
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
-        
-        removeLoading();
-        
-        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
-            
-            for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
-                if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                    addChild(gold,4);
-                }
-            }
-        }
-        else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
-            if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
-                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
-                addChild(dia,4);
-            }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
-                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
-                addChild(dia,4);
-            }
-        }else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "5"){
-            GoldRelieve* goldRelieve = GoldRelieve::create();
-            goldRelieve->setRelieveNum(atoi(GAMEDATA::getInstance()->getEnterRoomResp().jjj_count.c_str())-atoi(GAMEDATA::getInstance()->getEnterRoomResp().jjj_used.c_str()));
-            addChild(goldRelieve,3);
-        }
-    });
-    
-    //进入好友房间回复
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP_LOBBY, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        removeLoading();
-        if (result == "1"){
-            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        } else if(result == "2")
-        {
-            PromptDialog* invite = PromptDialog::create();
-            invite->setTextInfo(1);
-            addChild(invite,4);
-        }
-        else if(result == "3")
-        {
-            ChargeDiamond* charge = ChargeDiamond::create();
-            addChild(charge,3);
-        }
-    });
-    
-    
-    //好友开房
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
-        if(resp.result == 1){
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }else if(resp.result == 2){
-            ChargeDiamond* charge = ChargeDiamond::create();
-            addChild(charge,3);
-        }
-        
-    });
-    
-    
-    //好友开房通知
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY, [=](EventCustom* event){
-        PromptDialog* invite = PromptDialog::create();
-        invite->setTextInfo(0);
-        addChild(invite,4);
-    });
-    
-    
-    //刷新自己的信息
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
-        updateHeroInfo();
-    });
-    
-    
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_INFO_RESP, [=](EventCustom* event){
-        updateHeroInfo();
-    });
-    
-    
-    //断线续玩
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setIsRecover(true);
-        Director::getInstance()->replaceScene(MjGameScene::create());
-    });
-    
-    
-    //救济经领取
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
-        WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
-        if(gold.result == "1"){
-            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
-            addChild(util,5);
-            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+atoi(gold.gold.c_str()));
-            updateHeroInfo();
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_JJJ_COUNT_RESP);
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
-        }else {
-            HintDialog* hint = HintDialog::create("救济金领取失败",false);
-            addChild(hint,5);
-        }
-    });
-    
-    //绑钻救济金领取
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
-        WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
-        if(gold.result == "1"){
-            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
-            addChild(util,5);
-            UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+atoi(gold.bangzuan.c_str()));
-            updateHeroInfo();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
-        }else {
-            HintDialog* hint = HintDialog::create("绑钻救济金领取失败",false);
-            addChild(hint,5);
-        }
-    });
-    
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
-        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
-              HintDialog* hint = HintDialog::create("网络出现问题啦",false);
-              addChild(hint,5);
-        });
-    });
-}
-
-
-void LobbyScene::addEventListener(){
-    auto listener = EventListenerKeyboard::create();
-    listener->onKeyReleased = [=](EventKeyboard::KeyCode code, Event * e){
-        switch (code)
-        {
-            case cocos2d::EventKeyboard::KeyCode::KEY_NONE:
-                break;
-            case cocos2d::EventKeyboard::KeyCode::KEY_BACK:
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLobbyQuitCommand());
-                Director::getInstance()->end();
-                break;
-                
-            default:
-                break;
-        }
-    };
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
 
 
 
@@ -729,6 +572,163 @@ void LobbyScene:: scrollLightSpot(float dt){
 }
 
 
+void LobbyScene::addEventListener(){
+    //进入房间回复
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
+        removeLoading();
+        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
+            
+            for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
+                if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                    addChild(gold,4);
+                }
+            }
+        }
+        else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
+            if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
+                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
+                addChild(dia,4);
+            }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
+                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
+                addChild(dia,4);
+            }
+        }else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "5"){
+            GoldRelieve* goldRelieve = GoldRelieve::create();
+            goldRelieve->setRelieveNum(atoi(GAMEDATA::getInstance()->getEnterRoomResp().jjj_count.c_str())-atoi(GAMEDATA::getInstance()->getEnterRoomResp().jjj_used.c_str()));
+            addChild(goldRelieve,3);
+        }
+    });
+    
+    //进入好友房间回复
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP_LOBBY, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        removeLoading();
+        if (result == "1"){
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        } else if(result == "2")
+        {
+            HintDialog* invite = HintDialog::create("房间已经坐满",NULL);
+            addChild(invite,4);
+        }
+        else if(result == "3")
+        {
+            ChargeDiamond* charge = ChargeDiamond::create();
+            addChild(charge,3);
+        }
+    });
+    
+    
+    //好友开房
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else if(resp.result == 2){
+            ChargeDiamond* charge = ChargeDiamond::create();
+            addChild(charge,3);
+        }
+        
+    });
+    
+    
+    //好友开房通知
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY, [=](EventCustom* event){
+        FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
+        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",NULL);
+        addChild(invite,4);
+    });
+    
+    
+    //刷新自己的信息
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
+        updateHeroInfo();
+    });
+    
+    //刷新自己信息
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_INFO_RESP, [=](EventCustom* event){
+        updateHeroInfo();
+    });
+    
+    
+    //断线续玩
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setIsRecover(true);
+        Director::getInstance()->replaceScene(MjGameScene::create());
+    });
+    
+    
+    //救济经领取
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
+        WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
+        if(gold.result == "1"){
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+            addChild(util,5);
+            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+atoi(gold.gold.c_str()));
+            updateHeroInfo();
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_JJJ_COUNT_RESP);
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
+        }else {
+            HintDialog* hint = HintDialog::create("救济金领取失败",NULL);
+            addChild(hint,5);
+        }
+    });
+    
+    //绑钻救济金领取
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
+        WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
+        if(gold.result == "1"){
+            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
+            addChild(util,5);
+            UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+atoi(gold.bangzuan.c_str()));
+            updateHeroInfo();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
+        }else {
+            HintDialog* hint = HintDialog::create("绑钻救济金领取失败",NULL);
+            addChild(hint,5);
+        }
+    });
+    
+    //网络连接
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
+        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
+            HintDialog* hint = HintDialog::create("网络出现问题啦",NULL);
+            addChild(hint,5);
+            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
+        });
+    });
+    
+    //登录地址变更
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
+        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",NULL);
+        addChild(hin,5);
+    });
+    
+    //点击事件
+    auto listener = EventListenerKeyboard::create();
+    listener->onKeyReleased = [=](EventKeyboard::KeyCode code, Event * e){
+        switch (code)
+        {
+            case cocos2d::EventKeyboard::KeyCode::KEY_NONE:
+                break;
+            case cocos2d::EventKeyboard::KeyCode::KEY_BACK:
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLobbyQuitCommand());
+                Director::getInstance()->end();
+                break;
+                
+            default:
+                break;
+        }
+    };
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
 
 
 

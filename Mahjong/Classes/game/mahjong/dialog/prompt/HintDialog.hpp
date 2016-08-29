@@ -17,11 +17,7 @@ USING_NS_CC;
 
 class HintDialog : public Layer{
 public:
-    static HintDialog* create(std::string msg);
-    static HintDialog* create(std::string msg,bool sendBroadCast);
-    virtual bool init(std::string msg,bool sendBroadCast);
-private:
-    void closeView();
-    CC_SYNTHESIZE(bool, sendBroadCast, SendBroadCast)
+    static HintDialog* create(std::string msg,const ccMenuCallback& callback);
+    bool init(std::string msg,const ccMenuCallback& callback);
 };
 #endif /* HintDialog_hpp */

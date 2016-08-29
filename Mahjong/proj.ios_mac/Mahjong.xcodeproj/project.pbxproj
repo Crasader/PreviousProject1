@@ -258,8 +258,6 @@
 		D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7C91CCDF0F300A20896 /* Orientation.cpp */; };
 		D2B1A8831CCDF0F400A20896 /* BaseDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7CD1CCDF0F300A20896 /* BaseDialog.cpp */; };
 		D2B1A8841CCDF0F400A20896 /* BaseDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7CD1CCDF0F300A20896 /* BaseDialog.cpp */; };
-		D2B1A8B51CCDF0F400A20896 /* PromptDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */; };
-		D2B1A8B61CCDF0F400A20896 /* PromptDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */; };
 		D2B1A8D11CCDF0F400A20896 /* Jong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A82B1CCDF0F300A20896 /* Jong.cpp */; };
 		D2B1A8D21CCDF0F400A20896 /* Jong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A82B1CCDF0F300A20896 /* Jong.cpp */; };
 		D2B1A8D31CCDF0F400A20896 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A82E1CCDF0F300A20896 /* LobbyScene.cpp */; };
@@ -576,8 +574,6 @@
 		D2B1A7CA1CCDF0F300A20896 /* Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Orientation.h; sourceTree = "<group>"; };
 		D2B1A7CD1CCDF0F300A20896 /* BaseDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseDialog.cpp; sourceTree = "<group>"; };
 		D2B1A7CE1CCDF0F300A20896 /* BaseDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDialog.h; sourceTree = "<group>"; };
-		D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PromptDialog.cpp; sourceTree = "<group>"; };
-		D2B1A80B1CCDF0F300A20896 /* PromptDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromptDialog.h; sourceTree = "<group>"; };
 		D2B1A82B1CCDF0F300A20896 /* Jong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Jong.cpp; sourceTree = "<group>"; };
 		D2B1A82C1CCDF0F300A20896 /* Jong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jong.h; sourceTree = "<group>"; };
 		D2B1A82E1CCDF0F300A20896 /* LobbyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LobbyScene.cpp; sourceTree = "<group>"; };
@@ -1270,8 +1266,6 @@
 		D2B1A8091CCDF0F300A20896 /* prompt */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1A80A1CCDF0F300A20896 /* PromptDialog.cpp */,
-				D2B1A80B1CCDF0F300A20896 /* PromptDialog.h */,
 				D28A4A3A1D065B4D00741FD0 /* HintDialog.cpp */,
 				D28A4A3B1D065B4D00741FD0 /* HintDialog.hpp */,
 			);
@@ -1651,7 +1645,6 @@
 				D22EEF5F1D66CEB600BF1CCB /* FaHongbao.cpp in Sources */,
 				D22EEFC11D66D14D00BF1CCB /* DayCell.cpp in Sources */,
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
-				D2B1A8B51CCDF0F400A20896 /* PromptDialog.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2B1A8D31CCDF0F400A20896 /* LobbyScene.cpp in Sources */,
@@ -1734,7 +1727,6 @@
 				D226FD311D05292400324097 /* LoadResource.cpp in Sources */,
 				D22EEF7A1D66CFC800BF1CCB /* BillDetailInfo.cpp in Sources */,
 				D2B1A8DE1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
-				D2B1A8B61CCDF0F400A20896 /* PromptDialog.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D2BD08C31D66DAA400ADC31E /* GoldRelieve.cpp in Sources */,
 				D28A4A2F1D056B7A00741FD0 /* Audio.cpp in Sources */,

@@ -1,7 +1,6 @@
 #include "game/mahjong/anim/DealJongAnim.h"
 #include "game/mahjong/core/MahjongView.h"
 #include "game/mahjong/core/widget/Orientation.h"
-#include "game/mahjong/dialog/prompt/PromptDialog.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/result/ResultLayer.h"
 #include "game/mahjong/state/GameData.h"
@@ -14,6 +13,7 @@
 #include "game/mahjong/result/ResultScene.hpp"
 #include "game/mahjong/anim/LiuJuAnim.hpp"
 #include "game/mahjong/anim/OutFogAnim.hpp"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 
 
@@ -1229,13 +1229,11 @@ void MahjongView::addHeroGangRespListener(){
     
 }
 
-
-
 void MahjongView::addFriendInviteMeListener(){
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM, [=](EventCustom* event){
-        PromptDialog* invite = PromptDialog::create();
-        invite->setTextInfo(0);
-        addChild(invite, 4);
+        FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
+        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",NULL);
+        addChild(invite,4);
     });
 }
 
@@ -1249,8 +1247,7 @@ void MahjongView::addEnterFriendRoomListener(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
         else if(result == "2"){
-            PromptDialog* invite = PromptDialog::create();
-            invite->setTextInfo(1);
+            HintDialog* invite = HintDialog::create("房间已坐满",NULL);
             addChild(invite,4);
         }
     });

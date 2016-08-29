@@ -225,10 +225,10 @@ void FriendAddView::addCustomEventlistener(){
         }
         if (result == "1"){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-            HintDialog* hint = HintDialog::create("添加好友成功",false);
+            HintDialog* hint = HintDialog::create("添加好友成功",NULL);
             addChild(hint);
         }else{
-            HintDialog* hint = HintDialog::create("添加好友失败",false);
+            HintDialog* hint = HintDialog::create("添加好友失败",NULL);
             addChild(hint);
         }
 

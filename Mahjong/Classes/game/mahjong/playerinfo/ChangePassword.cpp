@@ -26,10 +26,16 @@ void ChangePassword::onEnter(){
             if(newPassword != ""){
                 UserData::getInstance()->setPassword(newPassword);
             }
-            HintDialog* hin = HintDialog::create("密码修改成功");
+            HintDialog* hin = HintDialog::create("密码修改成功",[=](Ref* ref){
+                EventCustom ev(CLOSE_HINT_DIALOG);
+                _eventDispatcher-> dispatchEvent(&ev);
+            });
             addChild(hin);
         }else{
-            HintDialog* hin2 = HintDialog::create("密码修改失败");
+            HintDialog* hin2 = HintDialog::create("密码修改失败",[=](Ref* ref){
+                EventCustom ev(CLOSE_HINT_DIALOG);
+                _eventDispatcher-> dispatchEvent(&ev);
+            });
             addChild(hin2);
         }
 	});
