@@ -28,10 +28,16 @@ void BoundPhone::onEnter(){
             HintDialog* dia = HintDialog::create("绑定手机成功",[=](Ref* ref){
                 EventCustom ev(CLOSE_HINT_DIALOG);
                 _eventDispatcher-> dispatchEvent(&ev);
+            },[=](Ref* ref){
+                EventCustom ev(CLOSE_HINT_DIALOG);
+                _eventDispatcher-> dispatchEvent(&ev);
             });
             addChild(dia);
         }else{
             HintDialog* dia = HintDialog::create("绑定手机失败",[=](Ref* ref){
+                EventCustom ev(CLOSE_HINT_DIALOG);
+                _eventDispatcher-> dispatchEvent(&ev);
+            },[=](Ref* ref){
                 EventCustom ev(CLOSE_HINT_DIALOG);
                 _eventDispatcher-> dispatchEvent(&ev);
             });

@@ -7,6 +7,7 @@
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
 #include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/shop/ChargeGold.hpp"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/utils/SeatIdUtil.h"
 #include "game/utils/StringUtil.h"
 #include "game/utils/Chinese.h"
@@ -59,11 +60,20 @@ void ResultLayer::onEnter(){
         
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
+    
+    //登录地址变更
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
+        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
+            exit(0);
+        });
+        addChild(hin,5);
+    });
 }
 
 void ResultLayer::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_REPLACE_LOGIN_LOBBY);
 }
 
 void ResultLayer::initData(){

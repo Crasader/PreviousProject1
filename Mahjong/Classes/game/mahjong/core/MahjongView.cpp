@@ -41,6 +41,42 @@ bool MahjongView::init(){
     return true;
 }
 
+void MahjongView::onEnter(){
+    Layer::onEnter();
+    scheduleUpdate();
+}
+
+void MahjongView::onExit()
+{
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(replaceListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dealJongsListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(turnListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(otherListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(gameResultListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerCpgListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersPengListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersGangListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersChiListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(tingNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(tingRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipCancelListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroChiRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_FRIEND_ROOM_RESP_ROOM);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM);
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_REPLACE_LOGIN_LOBBY);
+}
+
 void MahjongView::initData(){
     playerHero = NULL;
     playerLeft = NULL;
@@ -169,40 +205,7 @@ void MahjongView::addPlayer2Room(){
     }
 }
 
-void MahjongView::onEnter(){
-    Layer::onEnter();
-    scheduleUpdate();
-}
 
-void MahjongView::onExit()
-{
-    Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(replaceListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dealJongsListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(turnListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(otherListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(gameResultListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerCpgListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(othersPengListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(othersGangListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(othersChiListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(tingNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(tingRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipCancelListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroChiRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_FRIEND_ROOM_RESP_ROOM);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM);
-}
 
 
 
@@ -588,34 +591,6 @@ PlayerBase* MahjongView::getPlayerBySeatId(int sid){
     else{
         return playerHero;
     }
-}
-
-
-void MahjongView::addCoustomListener(){
-    this->addPlayerListener();
-    this->addOthersReadyListener();
-    this->addDealJongListener();
-    this->addCoustomReplaceFlower();
-    this->addPlayerTurnListener();
-    this->addJongPlayedListener();
-    this->addHeroCpgListener();
-    this->addGameResultListener();
-    this->addOthersChiListener();
-    this->addOthersPengListener();
-    this->addOthersGangListener();
-    this->addPlayerTingNotifyListener();
-    this->addHeroTingNotifyListener();
-    this->addHeroTingRespListener();
-    this->addTrusteeShipRespListener();
-    this->addTrusteeShipNotifyListener();
-    this->addTrusteeShipCancelListener();
-    this->addHeroChiRespListener();
-    this->addHeroPengRespListener();
-    this->addHeroGangRespListener();
-    this->addFriendInviteMeListener();
-    this->addEnterFriendRoomListener();
-    this->addPlayerRemoveListener();
-    this->addPlayerResumeListener();
 }
 
 
@@ -1232,7 +1207,10 @@ void MahjongView::addHeroGangRespListener(){
 void MahjongView::addFriendInviteMeListener(){
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM, [=](EventCustom* event){
         FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
-        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",NULL);
+        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",[=](Ref* ref){
+            FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterFriendRoomCommand(data.pid));
+            removeFromParent();});
         addChild(invite,4);
     });
 }
@@ -1324,4 +1302,38 @@ void MahjongView::addPlayerResumeListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
 }
 
+
+void MahjongView::addCoustomListener(){
+    this->addPlayerListener();
+    this->addOthersReadyListener();
+    this->addDealJongListener();
+    this->addCoustomReplaceFlower();
+    this->addPlayerTurnListener();
+    this->addJongPlayedListener();
+    this->addHeroCpgListener();
+    this->addGameResultListener();
+    this->addOthersChiListener();
+    this->addOthersPengListener();
+    this->addOthersGangListener();
+    this->addPlayerTingNotifyListener();
+    this->addHeroTingNotifyListener();
+    this->addHeroTingRespListener();
+    this->addTrusteeShipRespListener();
+    this->addTrusteeShipNotifyListener();
+    this->addTrusteeShipCancelListener();
+    this->addHeroChiRespListener();
+    this->addHeroPengRespListener();
+    this->addHeroGangRespListener();
+    this->addFriendInviteMeListener();
+    this->addEnterFriendRoomListener();
+    this->addPlayerRemoveListener();
+    this->addPlayerResumeListener();
+    //登录地址变更
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
+        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
+            exit(0);
+        });
+        addChild(hin,5);
+    });
+}
 

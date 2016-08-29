@@ -9,9 +9,9 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 
-HintDialog* HintDialog::create(std::string msg,const ccMenuCallback& callback){
+HintDialog* HintDialog::create(std::string msg,const ccMenuCallback& callback1,const ccMenuCallback& callback2){
     HintDialog* ret = new HintDialog();
-    if(ret &&ret->init(msg,callback)){
+    if(ret &&ret->init(msg,callback1,callback2)){
         ret->autorelease();
         return ret;
     }else{
@@ -21,7 +21,7 @@ HintDialog* HintDialog::create(std::string msg,const ccMenuCallback& callback){
     }
 }
 
-bool HintDialog::init(std::string msg,const ccMenuCallback& callback){
+bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMenuCallback& callback2){
     if(!Layer::init()){
         return false;
     }
@@ -51,8 +51,8 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback){
     
     
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
-                                       callback);
-    if(callback == NULL){
+                                       callback2);
+    if(callback2 == NULL){
         close->setCallback([=](Ref* ref){
             removeFromParent();
         });
@@ -64,8 +64,8 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback){
     this->addChild(closeMenu);
     
     auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",
-                                         callback);
-    if(callback == NULL){
+                                         callback1);
+    if(callback1 == NULL){
         confirm->setCallback([=](Ref* ref){
             removeFromParent();
         });

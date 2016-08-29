@@ -29,10 +29,16 @@ void ChangePassword::onEnter(){
             HintDialog* hin = HintDialog::create("密码修改成功",[=](Ref* ref){
                 EventCustom ev(CLOSE_HINT_DIALOG);
                 _eventDispatcher-> dispatchEvent(&ev);
+            },[=](Ref* ref){
+                EventCustom ev(CLOSE_HINT_DIALOG);
+                _eventDispatcher-> dispatchEvent(&ev);
             });
             addChild(hin);
         }else{
             HintDialog* hin2 = HintDialog::create("密码修改失败",[=](Ref* ref){
+                EventCustom ev(CLOSE_HINT_DIALOG);
+                _eventDispatcher-> dispatchEvent(&ev);
+            },[=](Ref* ref){
                 EventCustom ev(CLOSE_HINT_DIALOG);
                 _eventDispatcher-> dispatchEvent(&ev);
             });

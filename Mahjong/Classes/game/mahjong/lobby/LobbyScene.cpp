@@ -640,7 +640,9 @@ void LobbyScene::addEventListener(){
     //好友开房通知
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY, [=](EventCustom* event){
         FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
-        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",NULL);
+        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",[=](Ref* ref){FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterFriendRoomCommand(data.pid));
+            removeFromParent();});
         addChild(invite,4);
     });
     
@@ -707,7 +709,9 @@ void LobbyScene::addEventListener(){
     
     //登录地址变更
     Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
-        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",NULL);
+        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
+            exit(0);
+        });
         addChild(hin,5);
     });
     

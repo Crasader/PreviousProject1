@@ -29,7 +29,6 @@ public:
 	void startGame(Ref* psend);
     void updateHeroInfo();
     CREATE_FUNC(LobbyScene);
-
 private:
     
 	Label* nickName;
