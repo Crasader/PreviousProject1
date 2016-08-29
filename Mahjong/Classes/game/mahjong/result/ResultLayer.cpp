@@ -62,7 +62,7 @@ void ResultLayer::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
     
     //登录地址变更
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
+    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
         HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
             exit(0);
         });
@@ -73,7 +73,7 @@ void ResultLayer::onEnter(){
 void ResultLayer::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_REPLACE_LOGIN_LOBBY);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
 }
 
 void ResultLayer::initData(){

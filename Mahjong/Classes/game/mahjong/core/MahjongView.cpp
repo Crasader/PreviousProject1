@@ -1206,7 +1206,7 @@ void MahjongView::addHeroGangRespListener(){
 }
 
 void MahjongView::addFriendInviteMeListener(){
-    friendOpenRoomListener=Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM, [=](EventCustom* event){
+    friendOpenRoomListener=Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
         FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
         HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",[=](Ref* ref){
             FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
@@ -1220,7 +1220,7 @@ void MahjongView::addFriendInviteMeListener(){
 
 
 void MahjongView::addEnterFriendRoomListener(){
-    enterFrinedRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP_ROOM, [=](EventCustom* event){
+    enterFrinedRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
@@ -1332,7 +1332,7 @@ void MahjongView::addCoustomListener(){
     this->addPlayerRemoveListener();
     this->addPlayerResumeListener();
     //登录地址变更
-    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
+    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
         HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
             exit(0);
         });

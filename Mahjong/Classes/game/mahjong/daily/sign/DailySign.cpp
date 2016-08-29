@@ -260,14 +260,13 @@ void DailySign::closeView(){
 void DailySign::confirmSign(Ref* ref){
     MenuItemImage* tem  = (MenuItemImage*)ref;
     tem->setEnabled(false);
-     for(int i=0;i<=atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str());i++){
+     for(int i=0;i<atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str());i++){
         Sprite* sp = (Sprite*)getChildByTag(200+i);
         DayCell* cell = (DayCell*)sp->getChildByTag(300+i);
         cell->runAction(Sequence::create(CallFunc::create([=](){
             cell->startAnimate();
         }),NULL));
     }
-
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSignCommand());
 }
 

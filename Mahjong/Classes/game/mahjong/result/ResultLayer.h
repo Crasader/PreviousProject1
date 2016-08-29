@@ -17,6 +17,7 @@ private:
 	int timeToatal;//自动再来一局的时间
 	Menu* resultMenu;
     EventListenerCustom* continueAgainLisetner;
+    EventListenerCustom* playerReplaceLoginListener;
     
 	void initView();
 	void initData();

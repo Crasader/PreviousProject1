@@ -1450,8 +1450,7 @@ void MsgHandler::friendOpenRoomNotify(std::string msg){
     data.nickname = nickname.GetString();
     data.pid = pId.GetString();
     GAMEDATA::getInstance()->setFriendOpenRoomNotify(data);
-    postNotifyMessage(MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM, "");
-    postNotifyMessage(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY, "");
+    postNotifyMessage(MSG_FRIEND_OPEN_ROOM_NOTIFY, "");
 }
 
 
@@ -1498,8 +1497,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
             }
         }
     }
-    postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP_LOBBY, StringUtil::itos(result.GetInt()));
-    postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP_ROOM, StringUtil::itos(result.GetInt()));
+    postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP, StringUtil::itos(result.GetInt()));
 }
 
 
@@ -2358,7 +2356,5 @@ void MsgHandler::gameContinueResp(std::string msg){
 }
 
 void MsgHandler::otherClientReplace(std::string msg){
-    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN_ROOM, "");
-    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN_LOBBY, "");
-    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN_RESULT,"");
+    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN, "");
 }

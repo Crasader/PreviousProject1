@@ -44,16 +44,17 @@ void LobbyScene::onEnter(){
 
 void LobbyScene::onExit(){
     Scene::onExit();
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_ROOM_RESP);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_FRIEND_ROOM_RESP_LOBBY);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_RESP);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_UPDATE_HERO_INFO);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_INFO_RESP);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_CONNECT_AGAIN);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_JJJ);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_BZJJJ);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_REPLACE_LOGIN_LOBBY);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(friendInviteListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(updateHeroInfoListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroInfoListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyConncetAgainListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(jjjPrideListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(bzjjjPrideListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(intnetListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
 }
 
 void LobbyScene::signUpdate(float dt){
@@ -574,7 +575,7 @@ void LobbyScene:: scrollLightSpot(float dt){
 
 void LobbyScene::addEventListener(){
     //进入房间回复
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
+    enterRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
         removeLoading();
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
@@ -603,7 +604,7 @@ void LobbyScene::addEventListener(){
     });
     
     //进入好友房间回复
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP_LOBBY, [=](EventCustom* event){
+   enterFriendRoomListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         removeLoading();
@@ -624,7 +625,7 @@ void LobbyScene::addEventListener(){
     
     
     //好友开房
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
+    openFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
@@ -638,7 +639,7 @@ void LobbyScene::addEventListener(){
     
     
     //好友开房通知
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY, [=](EventCustom* event){
+    friendInviteListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
         FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
         HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",[=](Ref* ref){
             FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
@@ -651,25 +652,25 @@ void LobbyScene::addEventListener(){
     
     
     //刷新自己的信息
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
+    updateHeroInfoListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
         updateHeroInfo();
     });
     
     //刷新自己信息
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_INFO_RESP, [=](EventCustom* event){
+   heroInfoListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_INFO_RESP, [=](EventCustom* event){
         updateHeroInfo();
     });
     
     
     //断线续玩
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+   lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
     
     
     //救济经领取
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
+    jjjPrideListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
         WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
         if(gold.result == "1"){
@@ -686,7 +687,7 @@ void LobbyScene::addEventListener(){
     });
     
     //绑钻救济金领取
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
+   bzjjjPrideListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
         WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
         if(gold.result == "1"){
@@ -702,7 +703,7 @@ void LobbyScene::addEventListener(){
     });
     
     //网络连接
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
+    intnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
         Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
             HintDialog* hint = HintDialog::create("网络出现问题啦",NULL);
             addChild(hint,5);
@@ -711,7 +712,7 @@ void LobbyScene::addEventListener(){
     });
     
     //登录地址变更
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN_LOBBY, [=](EventCustom* event){
+    loginReplaceListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
         HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
             exit(0);
         });

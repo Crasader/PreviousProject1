@@ -36,6 +36,18 @@ private:
 	LabelAtlas* diamondNum;
 	LabelAtlas* lequanNum;
 	LabelAtlas* lockDiamondNum;
+    
+    EventListenerCustom* enterRoomListener;
+    EventListenerCustom* enterFriendRoomListener;
+    EventListenerCustom* openFriendRoomListener;
+    EventListenerCustom* friendInviteListener;
+    EventListenerCustom* updateHeroInfoListener;
+    EventListenerCustom* heroInfoListener;
+    EventListenerCustom* lobbyConncetAgainListener;
+    EventListenerCustom* jjjPrideListener;
+    EventListenerCustom* bzjjjPrideListener;
+    EventListenerCustom* intnetListener;
+    EventListenerCustom* loginReplaceListener;
 
 	void initView();
 	void drawSceneMid();

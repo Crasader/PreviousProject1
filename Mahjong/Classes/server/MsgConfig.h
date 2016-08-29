@@ -207,8 +207,7 @@
 #define MSG_LOGIN_RESP  "msg_login_resp"
 #define MSG_ROOM_LIST_RESP "msg_room_list_resp"
 #define MSG_ENTER_ROOM_RESP "msg_enter_room_resp"
-#define MSG_ENTER_FRIEND_ROOM_RESP_LOBBY "msg_enter_friend_room_resp_lobby"
-#define MSG_ENTER_FRIEND_ROOM_RESP_ROOM "msg_enter_friend_room_resp_room"
+#define MSG_ENTER_FRIEND_ROOM_RESP "msg_enter_friend_room_resp"
 #define MSG_PLAYER_ADD_NOTIFY "msg_player_add_notify"
 #define MSG_GAME_START_NOTIFY "msg_game_start_notify"
 #define MSG_READY_RESP "msg_ready_resp"
@@ -243,8 +242,7 @@
 #define MSG_DELETE_FRIEND_RESP "msg_delete_friend_resp"
 #define MSG_ADD_FRIEND_NOTIFY "msg_add_friend_notify"
 #define MSG_FRIEND_OPEN_ROOM_RESP "msg_friend_open_room_resp"
-#define MSG_FRIEND_OPEN_ROOM_NOTIFY_LOBBY "msg_friend_open_room_notify_lobby"
-#define MSG_FRIEND_OPEN_ROOM_NOTIFY_ROOM "msg_friend_open_room_notify_room"
+#define MSG_FRIEND_OPEN_ROOM_NOTIFY "msg_friend_open_room_notify"
 #define MSG_FRIEND_ENTER_ROOM_RESP "msg_friend_enter_room_resp"
 #define MSG_PLAYER_CHAT_NOTIFY "msg_player_chat_notify"
 #define MSG_PLAYER_CONNECT_AGAIN "msg_player_connect_again"
@@ -294,9 +292,5 @@
 #define UPDATE_DICE_KAOBAO_STATE "update_dice_kaibao_dtate"
 #define CLIENT_LOST_CONNECT "client_lost_connect"
 #define FRIEND_IS_PLAYING_GAME "friend_is_playing_game" //好友在游戏中
-
-//游戏有多个场景,需要分开发送消息
-#define MSG_PLAYER_REPLACE_LOGIN_ROOM "msg_player_replace_login"//在其他的机子上登录(发送给大厅场景)
-#define MSG_PLAYER_REPLACE_LOGIN_LOBBY "msg_player_replace_login"//在其他的机子上登录(发送给游戏场景)
-#define MSG_PLAYER_REPLACE_LOGIN_RESULT "msg_player_replace_result"//在其他的机子上登录(发送给结算场景)
+#define MSG_PLAYER_REPLACE_LOGIN "msg_player_replace_login"//在其他的机子上登录
 #endif
