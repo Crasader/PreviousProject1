@@ -172,7 +172,6 @@ void MahjongView::addPlayer2Room(){
 void MahjongView::onEnter(){
     Layer::onEnter();
     scheduleUpdate();
-    addCoustomListener();
 }
 
 void MahjongView::onExit()

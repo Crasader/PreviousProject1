@@ -45,20 +45,6 @@ void LobbyScene::onEnter(){
 }
 
 
-void LobbyScene::signUpdate(float dt){
-    DailySignData data = GAMEDATA::getInstance()->getDailySignData();
-    if (data.result == "1"){
-        unschedule(schedule_selector(LobbyScene::signUpdate));
-        if(NULL == getChildByTag(6667)){
-            DailyEvent* day = DailyEvent::create();
-            day->setTag(6667);
-            day->showDailyEvent(DailyType::sign);
-            addChild(day,3);
-        }
-    }
-}
-
-
 void LobbyScene::onExit(){
     Scene::onExit();
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_ENTER_ROOM_RESP);
@@ -71,6 +57,19 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_JJJ);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_WELFARE_BZJJJ);
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
+}
+
+void LobbyScene::signUpdate(float dt){
+    DailySignData data = GAMEDATA::getInstance()->getDailySignData();
+    if (data.result == "1"){
+        unschedule(schedule_selector(LobbyScene::signUpdate));
+        if(NULL == getChildByTag(6667)){
+            DailyEvent* day = DailyEvent::create();
+            day->setTag(6667);
+            day->showDailyEvent(DailyType::sign);
+            addChild(day,3);
+        }
+    }
 }
 
 void LobbyScene::updateHeroInfo(){
