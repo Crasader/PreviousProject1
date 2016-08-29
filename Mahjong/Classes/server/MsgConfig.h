@@ -208,7 +208,6 @@
 #define MSG_ROOM_LIST_RESP "msg_room_list_resp"
 #define MSG_ENTER_ROOM_RESP "msg_enter_room_resp"
 #define MSG_ENTER_FRIEND_ROOM_RESP "msg_enter_friend_room_resp"
-#define MSG_PLAYER_ADD_NOTIFY "msg_player_add_notify"
 #define MSG_GAME_START_NOTIFY "msg_game_start_notify"
 #define MSG_READY_RESP "msg_ready_resp"
 #define MSG_READY_NOTIFY "msg_ready_notify"

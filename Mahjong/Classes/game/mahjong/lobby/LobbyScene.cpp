@@ -9,6 +9,7 @@
 #include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/shop/LequanShop.hpp"
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
+#include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
 #include "game/mahjong/shop/relieve/GoldRelieve.hpp"
 #include "game/mahjong/share/Redwallet.h"
 #include "game/utils/ParticleUtil.hpp"
@@ -618,21 +619,20 @@ void LobbyScene::addEventListener(){
         }
         else if(result == "3")
         {
-            ChargeDiamond* charge = ChargeDiamond::create();
-            addChild(charge,3);
-        }
+            DiamondNotEnoughDialog* dialog = DiamondNotEnoughDialog::create();
+            addChild(dialog,4);        }
     });
     
     
     //好友开房
     openFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+            FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
-            ChargeDiamond* charge = ChargeDiamond::create();
-            addChild(charge,3);
+            DiamondNotEnoughDialog* dialog = DiamondNotEnoughDialog::create();
+            addChild(dialog,4);
         }
         
     });

@@ -73,7 +73,6 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFrinedRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
 }
@@ -167,7 +166,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerHero->drawReady(playerInfo->getIsReady());
             playerHero->setIsReady(playerInfo->getIsReady());
             playerHero->setIsAllowPlay(false);
-            this->addChild(playerHero, 2);
+            addChild(playerHero, 2);
         }
     }
     else if (type == ClientSeatId::left){
@@ -175,7 +174,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerLeft = PlayerLeft::create();
             playerLeft->initPlayer(playerInfo);
             playerLeft->setIsReady(playerInfo->getIsReady());
-            this->addChild(playerLeft,1);
+            addChild(playerLeft,1);
         }
     }
     else if (type == ClientSeatId::right){
@@ -183,7 +182,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerRight = PlayerRight::create();
             playerRight->initPlayer(playerInfo);
             playerRight->setIsReady(playerInfo->getIsReady());
-            this->addChild(playerRight,1);
+            addChild(playerRight,1);
         }
     }
     else if (type == ClientSeatId::opposite){
@@ -191,7 +190,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerOpposite = PlayerOpposite::create();
             playerOpposite->initPlayer(playerInfo);
             playerOpposite->setIsReady(playerInfo->getIsReady());
-            this->addChild(playerOpposite,1);
+            addChild(playerOpposite,1);
         }
     }
 }
@@ -592,15 +591,6 @@ PlayerBase* MahjongView::getPlayerBySeatId(int sid){
     else{
         return playerHero;
     }
-}
-
-
-
-void MahjongView::addPlayerListener(){
-    addPlayersListener = EventListenerCustom::create(MSG_PLAYER_ADD_NOTIFY, [=](EventCustom* event){
-        addPlayer2Room();
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addPlayersListener, 1);
 }
 
 
@@ -1219,21 +1209,6 @@ void MahjongView::addFriendInviteMeListener(){
 }
 
 
-void MahjongView::addEnterFriendRoomListener(){
-    enterFrinedRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        if (result == "1"){
-            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }
-        else if(result == "2"){
-            HintDialog* invite = HintDialog::create("房间已坐满",NULL);
-            addChild(invite,4);
-        }
-    });
-}
-
 void MahjongView::addPlayerRemoveListener(){
     playerRemoveListener = EventListenerCustom::create(MSG_PLAYER_REMOVE, [=](EventCustom* event){
         if(!GAMEDATA::getInstance()->getIsPlaying()){
@@ -1307,7 +1282,6 @@ void MahjongView::addPlayerResumeListener(){
 
 
 void MahjongView::addCoustomListener(){
-    this->addPlayerListener();
     this->addOthersReadyListener();
     this->addDealJongListener();
     this->addCoustomReplaceFlower();
@@ -1328,7 +1302,6 @@ void MahjongView::addCoustomListener(){
     this->addHeroPengRespListener();
     this->addHeroGangRespListener();
     this->addFriendInviteMeListener();
-    this->addEnterFriendRoomListener();
     this->addPlayerRemoveListener();
     this->addPlayerResumeListener();
     //登录地址变更

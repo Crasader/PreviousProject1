@@ -81,7 +81,8 @@ void FirstChargeDialog::showFirstCharge(){
     diamond->setPosition(400,400);
     addChild(diamond);
     
-    auto zsNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",GAMEDATA::getInstance()->getFirstChargeData().diamond)->_string,"shop/prop_num.png",21,28,'0');
+    auto zsNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",100)->_string,"shop/prop_num.png",21,28,'0');
+    zsNum->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().diamond));
     zsNum->setPosition(400,325);
     zsNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     addChild(zsNum);
@@ -102,7 +103,8 @@ void FirstChargeDialog::showFirstCharge(){
     goldIcon->setPosition(645,400);
     addChild(goldIcon);
     
-    auto goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",GAMEDATA::getInstance()->getFirstChargeData().gold)->_string,"shop/prop_num.png",21,28,'0');
+    auto goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",50000)->_string,"shop/prop_num.png",21,28,'0');
+    goldNum->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().gold));
     goldNum->setPosition(645,325);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     addChild(goldNum);

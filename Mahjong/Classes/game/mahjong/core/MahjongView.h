@@ -95,13 +95,11 @@ private:
     EventListenerCustom* playerRemoveListener;
     EventListenerCustom* playerOffLineListener;
     EventListenerCustom* playerResumeListener;
-    EventListenerCustom* enterFrinedRoomListener;
     EventListenerCustom* friendOpenRoomListener;
     EventListenerCustom* playerReplaceLoginListener;
 
 	void addCoustomListener();
 	void addOthersReadyListener();
-	void addPlayerListener();
 	void addDealJongListener();
 	void addCoustomReplaceFlower();
 	void addPlayerTurnListener();
@@ -122,7 +120,6 @@ private:
 	void addTrusteeShipCancelListener();
 	void addLostConnectListener();
 	void addFriendInviteMeListener();
-	void addEnterFriendRoomListener();
     void addPlayerRemoveListener();
     void addPlayerOffLineListener();
     void addPlayerResumeListener();
