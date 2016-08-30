@@ -13,6 +13,7 @@ bool MahjongActivities::init(){
         return false;
     }
     initView();
+    showActiviyContent();
     return true;
 }
 
@@ -43,30 +44,46 @@ void MahjongActivities::initView(){
     //页标签
     auto act_tab_image_a_1 = MenuItemImage::create("activities/act_tab_btn_1.png", "activities/act_tab_btn_1.png");
     auto act_tab_image_a_2 = MenuItemImage::create("activities/act_tab_btn_2.png", "activities/act_tab_btn_2.png");
-    auto act_tab_1 = MenuItemToggle::createWithCallback(CC_CALLBACK_1(MahjongActivities::showActiviyContent, this), act_tab_image_a_1, act_tab_image_a_2, NULL);
-    act_tab_1->setSelectedIndex(1);
+    act_tab_1 = MenuItemToggle::createWithCallback(CC_CALLBACK_0(MahjongActivities::showActiviyContent, this), act_tab_image_a_1, act_tab_image_a_2, NULL);
     
     auto act_tab_image_b_1 = MenuItemImage::create("activities/act_tab_btn_1.png", "activities/act_tab_btn_1.png");
     auto act_tab_image_b_2 = MenuItemImage::create("activities/act_tab_btn_2.png", "activities/act_tab_btn_2.png");
-    auto act_tab_2 = MenuItemToggle::createWithCallback(CC_CALLBACK_1(MahjongActivities::showActivityRank, this),
-                                                        act_tab_image_b_1, act_tab_image_b_2, NULL);
+    act_tab_2 = MenuItemToggle::createWithCallback(CC_CALLBACK_0(MahjongActivities::showActivityRank, this),
+                                                   act_tab_image_b_1, act_tab_image_b_2, NULL);
     
     auto act_tab_image_c_1 = MenuItemImage::create("activities/act_tab_btn_1.png", "activities/act_tab_btn_1.png");
     auto act_tab_image_c_2 = MenuItemImage::create("activities/act_tab_btn_2.png", "activities/act_tab_btn_2.png");
-    auto act_tab_3 = MenuItemToggle::createWithCallback(CC_CALLBACK_1(MahjongActivities::showActivityPride, this), act_tab_image_c_1, act_tab_image_c_2, NULL);
+    act_tab_3 = MenuItemToggle::createWithCallback(CC_CALLBACK_0(MahjongActivities::showActivityPride, this), act_tab_image_c_1, act_tab_image_c_2, NULL);
     
     auto act_tab_image_d_1 = MenuItemImage::create("activities/act_tab_btn_1.png", "activities/act_tab_btn_1.png");
     auto act_tab_image_d_2 = MenuItemImage::create("activities/act_tab_btn_2.png", "activities/act_tab_btn_2.png");
-    auto act_tab_4 = MenuItemToggle::createWithCallback(CC_CALLBACK_1(MahjongActivities::showActivityRule, this),
-                                                        act_tab_image_d_1, act_tab_image_d_2, NULL);
+    act_tab_4 = MenuItemToggle::createWithCallback(CC_CALLBACK_0(MahjongActivities::showActivityRule, this),
+                                                   act_tab_image_d_1, act_tab_image_d_2, NULL);
     
     auto tabmenu = Menu::create(act_tab_1, act_tab_2, act_tab_3, act_tab_4, NULL);
     tabmenu->alignItemsHorizontallyWithPadding(7);
     tabmenu->setPosition(620, 534);
-    addChild(tabmenu,1);
+    addChild(tabmenu);
     
-//    auto 
+     tabLabel_1 = Sprite::create();
+    tabLabel_1->setPosition(320, 534);
+    tabLabel_1->setTag(100);
+    addChild(tabLabel_1);
     
+     tabLabel_2 = Sprite::create();
+    tabLabel_2->setPosition(530, 534);
+    tabLabel_2->setTag(101);
+    addChild(tabLabel_2);
+    
+     tabLabel_3 = Sprite::create();
+    tabLabel_3->setPosition(720, 534);
+    tabLabel_3->setTag(102);
+    addChild(tabLabel_3);
+    
+     tabLabel_4 = Sprite::create();
+    tabLabel_4->setPosition(920, 534);
+    tabLabel_4->setTag(103);
+    addChild(tabLabel_4);
 }
 
 void MahjongActivities::onEnter(){
@@ -85,22 +102,47 @@ void MahjongActivities::closeView(){
 }
 
 
-void MahjongActivities::showActiviyContent(Ref* ref){
-    
+void MahjongActivities::showActiviyContent(){
+    act_tab_1->setSelectedIndex(1);
+    act_tab_2->setSelectedIndex(0);
+    act_tab_3->setSelectedIndex(0);
+    act_tab_4->setSelectedIndex(0);
+    tabLabel_1->setTexture("activities/btn_text_a_2.png");
+    tabLabel_2->setTexture("activities/btn_text_b_1.png");
+    tabLabel_3->setTexture("activities/btn_text_c_1.png");
+    tabLabel_4->setTexture("activities/btn_text_d_1.png");
 }
 
 
-void MahjongActivities::showActivityRank(Ref* ref){
-    
-    
+void MahjongActivities::showActivityRank(){
+    act_tab_1->setSelectedIndex(0);
+    act_tab_2->setSelectedIndex(1);
+    act_tab_3->setSelectedIndex(0);
+    act_tab_4->setSelectedIndex(0);
+    tabLabel_1->setTexture("activities/btn_text_a_1.png");
+    tabLabel_2->setTexture("activities/btn_text_b_2.png");
+    tabLabel_3->setTexture("activities/btn_text_c_1.png");
+    tabLabel_4->setTexture("activities/btn_text_d_1.png");
 }
 
-void MahjongActivities::showActivityPride(Ref* ref){
-    
-    
+void MahjongActivities::showActivityPride(){
+    act_tab_1->setSelectedIndex(0);
+    act_tab_2->setSelectedIndex(0);
+    act_tab_3->setSelectedIndex(1);
+    act_tab_4->setSelectedIndex(0);
+    tabLabel_1->setTexture("activities/btn_text_a_1.png");
+    tabLabel_2->setTexture("activities/btn_text_b_1.png");
+    tabLabel_3->setTexture("activities/btn_text_c_2.png");
+    tabLabel_4->setTexture("activities/btn_text_d_1.png");
 }
 
-void MahjongActivities::showActivityRule(Ref* ref){
-    
-    
+void MahjongActivities::showActivityRule(){
+    act_tab_1->setSelectedIndex(0);
+    act_tab_2->setSelectedIndex(0);
+    act_tab_3->setSelectedIndex(0);
+    act_tab_4->setSelectedIndex(1);
+    tabLabel_1->setTexture("activities/btn_text_a_1.png");
+    tabLabel_2->setTexture("activities/btn_text_b_1.png");
+    tabLabel_3->setTexture("activities/btn_text_c_1.png");
+    tabLabel_4->setTexture("activities/btn_text_d_2.png");
 }

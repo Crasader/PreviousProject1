@@ -18,11 +18,19 @@ public:
     void onExit() override;
     CREATE_FUNC(MahjongActivities);
 private:
+    MenuItemToggle* act_tab_1;
+    MenuItemToggle* act_tab_2;
+    MenuItemToggle* act_tab_3;
+    MenuItemToggle* act_tab_4;
+    Sprite* tabLabel_1;
+    Sprite* tabLabel_2;
+    Sprite* tabLabel_3;
+    Sprite* tabLabel_4;
     void initView();
     void closeView();
-    void showActiviyContent(Ref* ref);
-    void showActivityRank(Ref* ref);
-    void showActivityPride(Ref* ref);
-    void showActivityRule(Ref* ref);
+    void showActiviyContent();
+    void showActivityRank();
+    void showActivityPride();
+    void showActivityRule();
 };
 #endif /* MahjongActivities_hpp */
