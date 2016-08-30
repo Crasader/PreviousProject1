@@ -91,5 +91,6 @@ private:
     void gameResumeResp(std::string msg);
     void gameContinueResp(std::string msg);
     void otherClientReplace(std::string msg);
+    void inviteOthersResp(std::string msg);
 };
 #endif

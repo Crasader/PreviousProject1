@@ -450,6 +450,10 @@ void MsgHandler::distribute(int code, std::string msg){
             otherClientReplace(msg);
             break;
         }
+        case MSGCODE_FRIEND_GAME_RESULT_NOTIFY:{
+            inviteOthersResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2357,4 +2361,8 @@ void MsgHandler::gameContinueResp(std::string msg){
 
 void MsgHandler::otherClientReplace(std::string msg){
     postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN, "");
+}
+
+void MsgHandler::inviteOthersResp(std::string msg){
+    //TODO
 }

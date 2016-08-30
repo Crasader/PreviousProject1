@@ -107,25 +107,28 @@ void BillDetailInfo::tableCellTouched(TableView* table, TableViewCell* cell)
 
 Size BillDetailInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
 {
-    return Size(650, 40);
+    return Size(650, 42);
 }
 
 TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
 {
-    auto string = String::createWithFormat("%ld", idx);
-    TableViewCell *cell = table->dequeueCell();
+    auto string = StringUtils::format("%ld", idx);
     BillInfoDetailAll detailAll = GAMEDATA::getInstance()->getBillInfoDetailAll();
     BillInfoDetail detail = detailAll.detail.at(idx);
+    std::vector<BillContent> conBill = sortBillInfo(detail.detail);
+    
+    TableViewCell *cell = table->dequeueCell();
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
-        Label* panId = Label::create(cocos2d::String::createWithFormat("%ld",idx+1)->_string,"arial",20);
+        Label* panId = Label::createWithSystemFont(StringUtils::format("%ld",idx+1),"arial",20);
         panId->setTag(99);
         panId->setColor(Color3B(38,158,228));
         panId->setAnchorPoint(Point::ANCHOR_MIDDLE);
         panId->setPosition(15,15);
         cell->addChild(panId);
-        std::vector<BillContent> conBill = sortBillInfo(detail.detail);
+        
+        
         for(int i=0;i<conBill.size();i++){
             std::string imageName ="bill/yellow_num.png";
             int score =atoi(conBill.at(i).score.c_str());
@@ -139,12 +142,12 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             playerNum->setPosition(Vec2(145+i*160, 15));
             cell->addChild(playerNum);
         }
+        
     }else{
         
         if(NULL != getChildByTag(99)){
-          ((Label*)getChildByTag(99))-> setString(cocos2d::String::createWithFormat("%ld",idx+1)->_string);
+          ((Label*)getChildByTag(99))-> setString(StringUtils::format("%ld",idx+1));
         }
-        std::vector<BillContent> conBill = sortBillInfo(detail.detail);
         for(int i=0;i<conBill.size();i++){
             if(NULL !=getChildByTag(100+i)){
                 std::string imageName ="bill/yellow_num.png";

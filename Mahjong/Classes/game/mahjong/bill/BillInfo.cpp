@@ -105,7 +105,6 @@ Size BillInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
 TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
 {
     auto string = StringUtils::format("%ld", idx);
-    
     BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
     
     BillInfoData data = info.bills.at(idx);
