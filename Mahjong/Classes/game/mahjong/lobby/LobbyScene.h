@@ -48,6 +48,7 @@ private:
     EventListenerCustom* bzjjjPrideListener;
     EventListenerCustom* intnetListener;
     EventListenerCustom* loginReplaceListener;
+    EventListenerCustom* inviteReplaceListener;
 
 	void initView();
 	void drawSceneMid();

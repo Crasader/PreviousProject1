@@ -2364,5 +2364,16 @@ void MsgHandler::otherClientReplace(std::string msg){
 }
 
 void MsgHandler::inviteOthersResp(std::string msg){
-    //TODO
+    // 好友邀请结果通知{code:2045,poxiaoId:"123",pId:"456",result:1,nickname:""} result 为1是好友不在线 2是好友在游戏中，邀请成功不发送次通知
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    InviteRespData resp;
+    const rapidjson::Value &result = _mDoc["result"];
+    resp.result = result.GetString();
+    const rapidjson::Value &nickname = _mDoc["nickname"];
+    resp.nickname = nickname.GetString();
+    GAMEDATA::getInstance()->setInviteRespData(resp);
+    postNotifyMessage(FRIEND_IS_PLAYING_GAME, "");
 }

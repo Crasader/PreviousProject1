@@ -75,6 +75,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
 }
 
 void MahjongView::initData(){
@@ -1310,6 +1311,18 @@ void MahjongView::addCoustomListener(){
             exit(0);
         });
         addChild(hin,5);
+    });
+    
+    inviteReplaceListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(FRIEND_IS_PLAYING_GAME, [=](EventCustom* event){
+        InviteRespData inv = GAMEDATA::getInstance()->getInviteRespData();
+        if(inv.result == "1"){
+            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s不在线",inv.nickname.c_str()),NULL);
+            addChild(hin,5);
+        }else if(inv.result == "2"){
+            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s正在游戏",inv.nickname.c_str()),NULL);
+            addChild(hin,5);
+        }
+        
     });
 }
 

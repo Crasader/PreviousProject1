@@ -459,4 +459,9 @@ struct FriendChatData{
 struct FriendChatMsgList{
     std::vector<FriendChatData> friendMsgList;
 };
+
+struct InviteRespData{
+    std::string nickname;
+    std::string result;
+};
 #endif
