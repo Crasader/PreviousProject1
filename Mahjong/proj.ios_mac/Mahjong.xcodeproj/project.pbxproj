@@ -239,6 +239,8 @@
 		D28A4A411D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A3E1D06B19E00741FD0 /* EnterRoomDialog.cpp */; };
 		D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */; };
 		D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */; };
+		D291B58E1D75264900B05026 /* MahjongActivities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D291B58C1D75264900B05026 /* MahjongActivities.cpp */; };
+		D291B58F1D75264900B05026 /* MahjongActivities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D291B58C1D75264900B05026 /* MahjongActivities.cpp */; };
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
 		D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
 		D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
@@ -557,6 +559,8 @@
 		D28A4A3F1D06B19E00741FD0 /* EnterRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnterRoomDialog.hpp; sourceTree = "<group>"; };
 		D28B6ADF1CF3E0A30033C9DE /* LiuJuAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiuJuAnim.cpp; sourceTree = "<group>"; };
 		D28B6AE01CF3E0A30033C9DE /* LiuJuAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LiuJuAnim.hpp; sourceTree = "<group>"; };
+		D291B58C1D75264900B05026 /* MahjongActivities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MahjongActivities.cpp; sourceTree = "<group>"; };
+		D291B58D1D75264900B05026 /* MahjongActivities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MahjongActivities.hpp; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuaAnim.cpp; sourceTree = "<group>"; };
 		D2A175271CE0562A00CEDAE4 /* HuaAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuaAnim.hpp; sourceTree = "<group>"; };
@@ -1140,6 +1144,15 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		D291B58B1D75262600B05026 /* activities */ = {
+			isa = PBXGroup;
+			children = (
+				D291B58C1D75264900B05026 /* MahjongActivities.cpp */,
+				D291B58D1D75264900B05026 /* MahjongActivities.hpp */,
+			);
+			path = activities;
+			sourceTree = "<group>";
+		};
 		D2B1A7B11CCDF0F300A20896 /* game */ = {
 			isa = PBXGroup;
 			children = (
@@ -1162,6 +1175,7 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D291B58B1D75262600B05026 /* activities */,
 				D2B1A7B61CCDF0F300A20896 /* anim */,
 				D22EEF671D66CFC800BF1CCB /* bill */,
 				D2B1A7BF1CCDF0F300A20896 /* chat */,
@@ -1647,6 +1661,7 @@
 				D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
 				D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
 				D257FD781D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
+				D291B58E1D75264900B05026 /* MahjongActivities.cpp in Sources */,
 				D22EEF4E1D66AAF000BF1CCB /* LequanShop.cpp in Sources */,
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				D22EEF5F1D66CEB600BF1CCB /* FaHongbao.cpp in Sources */,
@@ -1744,6 +1759,7 @@
 				D22EEFBC1D66D14D00BF1CCB /* DailyPride.cpp in Sources */,
 				D22EEFBA1D66D14D00BF1CCB /* DailyEvent.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
+				D291B58F1D75264900B05026 /* MahjongActivities.cpp in Sources */,
 				D2B1A87E1CCDF0F400A20896 /* GuiLayer.cpp in Sources */,
 				D2B1A8D41CCDF0F400A20896 /* LobbyScene.cpp in Sources */,
 				D22EEF861D66CFC800BF1CCB /* InviteCell.cpp in Sources */,

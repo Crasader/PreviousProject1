@@ -15,7 +15,6 @@ bool MjGameScene::init(){
 
 void MjGameScene::onEnter(){
     Scene::onEnter();
-    
     enterFrinedRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
