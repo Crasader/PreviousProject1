@@ -165,6 +165,7 @@ void ResultLayer::showWinAnim(){
             for (int i = 0; i < players.size(); i++){
                 if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()) == ClientSeatId::hero){
                     players.at(i)->setDiamond(resData.diamond);
+                    players.at(i)->setLockDiamond(resData.bangzuan);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
                     players.at(i)->setScore(resData.jifen+players.at(i)->getScore());
@@ -175,6 +176,7 @@ void ResultLayer::showWinAnim(){
             for (int i = 0; i < players.size(); i++){
                 if (players.at(i)->getSeatId() == resData.seatId){
                     players.at(i)->setDiamond(resData.diamond);
+                    players.at(i)->setLockDiamond(resData.bangzuan);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
                     players.at(i)->setScore(resData.jifen+players.at(i)->getScore());
@@ -325,6 +327,7 @@ void ResultLayer::showLoseAnim(){
                     players.at(i)->setDiamond(resData.diamond);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
+                    players.at(i)->setLockDiamond(resData.bangzuan);
                     players.at(i)->setScore( players.at(i)->getScore()+resData.jifen);
                 }
             }
@@ -339,6 +342,7 @@ void ResultLayer::showLoseAnim(){
                     players.at(i)->setDiamond(resData.diamond);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
+                    players.at(i)->setLockDiamond(resData.bangzuan);
                     players.at(i)->setScore(players.at(i)->getScore()+resData.jifen);
                 }
             }
@@ -365,9 +369,9 @@ void ResultLayer::showLoseAnim(){
             GAMEDATA::getInstance()->setIsGotoLobby(false);
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }else{
-           resultMenu->setVisible(true);
+            resultMenu->setVisible(true);
         }
-
+        
         schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
     }, 0, 0, 3.0f,"delayshowbtn");
     drawPokerPad(maxData.showPoker,maxData.huType,maxData.hua);
@@ -455,7 +459,7 @@ void ResultLayer::showHeroPropInfo(){
         goldNum->setPosition((1280-width)/2+goldIcon->getBoundingBox().size.width/2, 505);
         lequanIcon->setPosition((1280-width)/2+goldIcon->getBoundingBox().size.width+goldNum->getBoundingBox().size.width, 535);
         lequanNum->setPosition((1280-width)/2+goldIcon->getBoundingBox().size.width+goldNum->getBoundingBox().size.width
-                                + lequanIcon->getBoundingBox().size.width/2, 505);
+                               + lequanIcon->getBoundingBox().size.width/2, 505);
     }else{
         goldNum->setPosition(600, 505);
         goldIcon->setPosition(530, 535);
