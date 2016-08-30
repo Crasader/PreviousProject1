@@ -498,6 +498,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     huaIndex = 0;
     std::vector<std::string> replace = StringUtil::split(data.replace, ",");
     Jong* jong = Jong::create();
+    jong->setVisible(false);
     addChild(jong);
     if (data.replace != "" && replace.size() > 0){
         schedule([=](float dt){
