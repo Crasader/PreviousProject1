@@ -145,18 +145,18 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         
     }else{
         
-        if(NULL != getChildByTag(99)){
-          ((Label*)getChildByTag(99))-> setString(StringUtils::format("%ld",idx+1));
+        if(NULL != cell->getChildByTag(99)){
+          ((Label*)(cell->getChildByTag(99)))-> setString(StringUtils::format("%ld",idx+1));
         }
         for(int i=0;i<conBill.size();i++){
-            if(NULL !=getChildByTag(100+i)){
+            if(NULL != cell->getChildByTag(100+i)){
                 std::string imageName ="bill/yellow_num.png";
                 int score =atoi(conBill.at(i).score.c_str());
                 if(score<0){
                     imageName="bill/purper_num.png";
                 }
                 std::string myScore =  ":"+StringUtil::itos(abs(score));
-                ((Label*)getChildByTag(100+i)) -> setString(myScore);
+                ((Label*)cell->getChildByTag(100+i)) -> setString(myScore);
             }
         }
     }
