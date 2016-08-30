@@ -65,25 +65,47 @@ void MahjongActivities::initView(){
     tabmenu->setPosition(620, 534);
     addChild(tabmenu);
     
-     tabLabel_1 = Sprite::create();
+    tabLabel_1 = Sprite::create();
     tabLabel_1->setPosition(320, 534);
     tabLabel_1->setTag(100);
     addChild(tabLabel_1);
     
-     tabLabel_2 = Sprite::create();
+    tabLabel_2 = Sprite::create();
     tabLabel_2->setPosition(530, 534);
     tabLabel_2->setTag(101);
     addChild(tabLabel_2);
     
-     tabLabel_3 = Sprite::create();
+    tabLabel_3 = Sprite::create();
     tabLabel_3->setPosition(720, 534);
     tabLabel_3->setTag(102);
     addChild(tabLabel_3);
     
-     tabLabel_4 = Sprite::create();
+    tabLabel_4 = Sprite::create();
     tabLabel_4->setPosition(920, 534);
     tabLabel_4->setTag(103);
     addChild(tabLabel_4);
+    
+    act_layer_1 = Layer::create();
+    act_layer_1->setVisible(act_layer_1);
+    auto content_1 = Sprite::create("activities/act_conten_1.jpg");
+    content_1->setPosition(640,290);
+    act_layer_1->addChild(content_1);
+    addChild(act_layer_1);
+    
+    act_layer_2 = Layer::create();
+    act_layer_2->setVisible(act_layer_2);
+    auto content_2 = Sprite::create("activities/act_conten_2.jpg");
+    content_2->setPosition(640,290);
+    act_layer_2->addChild(content_2);
+    addChild(act_layer_2);
+    
+    act_layer_3 = Layer::create();
+    act_layer_3->setVisible(act_layer_3);
+    addChild(act_layer_3);
+    
+    act_layer_4 = Layer::create();
+    act_layer_4->setVisible(act_layer_4);
+    addChild(act_layer_4);
 }
 
 void MahjongActivities::onEnter(){
@@ -111,6 +133,10 @@ void MahjongActivities::showActiviyContent(){
     tabLabel_2->setTexture("activities/btn_text_b_1.png");
     tabLabel_3->setTexture("activities/btn_text_c_1.png");
     tabLabel_4->setTexture("activities/btn_text_d_1.png");
+    act_layer_1->setVisible(true);
+    act_layer_2->setVisible(false);
+    act_layer_3->setVisible(false);
+    act_layer_4->setVisible(false);
 }
 
 
@@ -123,6 +149,10 @@ void MahjongActivities::showActivityRank(){
     tabLabel_2->setTexture("activities/btn_text_b_2.png");
     tabLabel_3->setTexture("activities/btn_text_c_1.png");
     tabLabel_4->setTexture("activities/btn_text_d_1.png");
+    act_layer_1->setVisible(false);
+    act_layer_2->setVisible(true);
+    act_layer_3->setVisible(false);
+    act_layer_4->setVisible(false);
 }
 
 void MahjongActivities::showActivityPride(){
@@ -134,6 +164,10 @@ void MahjongActivities::showActivityPride(){
     tabLabel_2->setTexture("activities/btn_text_b_1.png");
     tabLabel_3->setTexture("activities/btn_text_c_2.png");
     tabLabel_4->setTexture("activities/btn_text_d_1.png");
+    act_layer_1->setVisible(false);
+    act_layer_2->setVisible(false);
+    act_layer_3->setVisible(true);
+    act_layer_4->setVisible(false);
 }
 
 void MahjongActivities::showActivityRule(){
@@ -145,4 +179,8 @@ void MahjongActivities::showActivityRule(){
     tabLabel_2->setTexture("activities/btn_text_b_1.png");
     tabLabel_3->setTexture("activities/btn_text_c_1.png");
     tabLabel_4->setTexture("activities/btn_text_d_2.png");
+    act_layer_1->setVisible(false);
+    act_layer_2->setVisible(false);
+    act_layer_3->setVisible(false);
+    act_layer_4->setVisible(true);
 }

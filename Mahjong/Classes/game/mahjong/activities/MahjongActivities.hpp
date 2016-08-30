@@ -26,6 +26,10 @@ private:
     Sprite* tabLabel_2;
     Sprite* tabLabel_3;
     Sprite* tabLabel_4;
+    Layer* act_layer_1;
+    Layer* act_layer_2;
+    Layer* act_layer_3;
+    Layer* act_layer_4;
     void initView();
     void closeView();
     void showActiviyContent();
