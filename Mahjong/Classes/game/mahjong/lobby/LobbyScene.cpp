@@ -4,6 +4,7 @@
 #include "game/mahjong/daily/DailyEvent.h"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/playerinfo/HeroInfoEdit.h"
+#include "game/mahjong/activities/MahjongActivities.hpp"
 #include "game/mahjong/shop/FirstChageDialog.hpp"
 #include "game/mahjong/shop/ChargeGold.hpp"
 #include "game/mahjong/shop/ChargeDiamond.hpp"
@@ -336,12 +337,13 @@ void LobbyScene::showPlayerBill(){
 void LobbyScene::showGameSetting(){
     Audio::getInstance()->playSoundClick();
     UserSetting* setting = UserSetting::create();
-    this->addChild(setting,3);
+    addChild(setting,3);
 }
 
 void LobbyScene::showHotActivity(){
     Audio::getInstance()->playSoundClick();
-    //TODO
+    MahjongActivities* act = MahjongActivities::create();
+    addChild(act,3);
 }
 
 void LobbyScene::showHeroInfo(){
