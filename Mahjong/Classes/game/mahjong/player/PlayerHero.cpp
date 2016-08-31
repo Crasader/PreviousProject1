@@ -497,10 +497,10 @@ void PlayerHero::replaceFlower(){
 void PlayerHero::playerTurnReplace(PlayerTurnData data){
     huaIndex = 0;
     std::vector<std::string> replace = StringUtil::split(data.replace, ",");
-    Jong* jong = Jong::create();
-    jong->setVisible(false);
-    addChild(jong);
     if (data.replace != "" && replace.size() > 0){
+        Jong* jong = Jong::create();
+        jong->setVisible(false);
+        addChild(jong);
         schedule([=](float dt){
             std::vector<Jong*> needReplace;
             needReplace.clear();
@@ -514,6 +514,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             huaIndex++;
         }, 0.8f, replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
+            jong->setVisible(true);
             jong->showJong(herohand, data.poker);
             playerHandJongs.pushBack(jong);
             jong->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
