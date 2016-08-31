@@ -25,7 +25,7 @@ bool DailyWelfare::init(){
 void DailyWelfare::onEnter(){
     Layer::onEnter();
     
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(GET_JJJ_RESPONSE_REMOVE_LOADING,[=](EventCustom* event){
+    JJJRespListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(GET_JJJ_RESPONSE_REMOVE_LOADING,[=](EventCustom* event){
         if(NULL != getChildByTag(666)){
             getChildByTag(666)->removeFromParent();
         }
@@ -36,7 +36,7 @@ void DailyWelfare::onEnter(){
         if(NULL != getChildByTag(666)){
             getChildByTag(666)->removeFromParent();
         }
-        //TODO
+         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(WXRespListener, 1);
     
@@ -45,7 +45,7 @@ void DailyWelfare::onEnter(){
         if(NULL != getChildByTag(666)){
             getChildByTag(666)->removeFromParent();
         }
-        //TODO
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(SJRespListener, 1);
     
@@ -56,7 +56,7 @@ void DailyWelfare::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(WXRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(SJRespListener);
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(GET_JJJ_RESPONSE_REMOVE_LOADING);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(JJJRespListener);
 }
 
 void DailyWelfare::showDailyWelfareLayer(){

@@ -13,6 +13,7 @@ public :
 private:
     EventListenerCustom* WXRespListener;
     EventListenerCustom* SJRespListener;
+    EventListenerCustom* JJJRespListener;
 	void showDailyWelfareLayer();
 	void recievePride(Ref* ref);
 
