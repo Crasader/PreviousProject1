@@ -9,6 +9,8 @@ USING_NS_CC_EXT;
 class BillDetailInfo :public Layer, public TableViewDelegate, public TableViewDataSource{
 public:
 	virtual bool init();
+    void onEnter() override;
+    void onExit() override;
 
 	virtual void tableCellTouched(TableView* table, TableViewCell* cell);
 
@@ -27,6 +29,7 @@ public:
 	CREATE_FUNC(BillDetailInfo);
 private:
 	TableView* tableView;
+    EventListenerCustom* detailBillListener;
 	void closeView();
 	void updateBillDetail();
     std::vector<BillContent> sortBillInfo(std::vector<BillContent> content);

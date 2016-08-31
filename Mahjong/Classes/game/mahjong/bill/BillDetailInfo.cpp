@@ -4,6 +4,7 @@
 #include "game/utils/Chinese.h"
 #include "game/loading/Loading.h"
 #include "userdata/UserData.h"
+#include "server/NetworkManage.h"
 
 bool BillDetailInfo::init()
 {
@@ -88,7 +89,7 @@ bool BillDetailInfo::init()
     tableView->setPosition(300, 185);
     tableView->setDelegate(this);
     tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-    this->addChild(tableView);
+    addChild(tableView);
     tableView->reloadData();
     
     if(GAMEDATA::getInstance()->getBillInfoDetailAll().needInit){
@@ -99,6 +100,20 @@ bool BillDetailInfo::init()
     return true;
 }
 
+void BillDetailInfo::onEnter(){
+    Layer::onEnter();
+    //显示账单详情
+    detailBillListener = EventListenerCustom::create(MSG_PLAYER_BILL_DETAIL, [=](EventCustom* event){
+        updateBillDetail();
+    });
+    _eventDispatcher->addEventListenerWithFixedPriority(detailBillListener, 1);
+}
+
+
+void BillDetailInfo::onExit(){
+    Layer::onExit();
+    _eventDispatcher->removeEventListener(detailBillListener);
+}
 
 void BillDetailInfo::tableCellTouched(TableView* table, TableViewCell* cell)
 {
@@ -113,6 +128,7 @@ Size BillDetailInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
 TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
 {
     auto string = StringUtils::format("%ld", idx);
+    
     BillInfoDetailAll detailAll = GAMEDATA::getInstance()->getBillInfoDetailAll();
     BillInfoDetail detail = detailAll.detail.at(idx);
     std::vector<BillContent> conBill = sortBillInfo(detail.detail);

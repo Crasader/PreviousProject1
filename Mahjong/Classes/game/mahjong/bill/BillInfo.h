@@ -34,7 +34,6 @@ public:
 	CREATE_FUNC(BillInfo);
     CC_SYNTHESIZE(bool, isPrivatebill, IsPrivateBill);
 private:
-    EventListenerCustom* detailBillListener;
     EventListenerCustom* playerBillListener;
     TableView* tableView ;
 	void showDetailInfo(Ref* ref);

@@ -65,21 +65,11 @@ void BillInfo::onEnter(){
         updateBillInfo();
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerBillListener, 1);
-    //显示账单详情
-    detailBillListener = EventListenerCustom::create(MSG_PLAYER_BILL_DETAIL, [=](EventCustom* event){
-        BillDetailInfo* detail =BillDetailInfo::create();
-        if(getIsPrivateBill()){
-            detail->setPrivatePostion();
-        }
-        addChild(detail);
-    });
-    _eventDispatcher->addEventListenerWithFixedPriority(detailBillListener, 1);
 }
 
 void BillInfo::onExit(){
     Layer::onExit();
     _eventDispatcher->removeEventListener(playerBillListener);
-    _eventDispatcher->removeEventListener(detailBillListener);
 }
 
 
@@ -95,6 +85,11 @@ void BillInfo::tableCellTouched(TableView* table, TableViewCell* cell)
             GAMEDATA::getInstance()->setBillInfoData(info.bills.at(i));
         }
     }
+    BillDetailInfo* detail =BillDetailInfo::create();
+    if(getIsPrivateBill()){
+        detail->setPrivatePostion();
+    }
+    addChild(detail);
 }
 
 Size BillInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
