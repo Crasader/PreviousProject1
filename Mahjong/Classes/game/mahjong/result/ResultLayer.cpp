@@ -53,11 +53,7 @@ void ResultLayer::onEnter(){
                 EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
                 addChild(dia,30);
             }
-        }else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "4"){
-            ChargeDiamond* charge = ChargeDiamond::create();
-            addChild(charge,30);
         }
-        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
     

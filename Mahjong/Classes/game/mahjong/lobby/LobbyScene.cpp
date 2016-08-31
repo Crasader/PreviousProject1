@@ -72,6 +72,11 @@ void LobbyScene::signUpdate(float dt){
             addChild(day,3);
         }
     }
+    if(GAMEDATA::getInstance()->getNeedShowDiamondNotEnough()){
+        DiamondNotEnoughDialog* charge = DiamondNotEnoughDialog::create();
+        addChild(charge,30);
+        GAMEDATA::getInstance()->setNeedShowDiamondNotEnough(false);
+    }
 }
 
 void LobbyScene::updateHeroInfo(){

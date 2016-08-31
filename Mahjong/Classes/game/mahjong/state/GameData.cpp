@@ -19,6 +19,7 @@ void GAMEDATA::init(){
     setContinueAgain(false);
     setIsResume(false);
     setIsGotoLobby(false);
+    setNeedShowDiamondNotEnough(false);
     setHuangfan("0");
     setKaibao("0");
 }
