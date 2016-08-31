@@ -99,15 +99,24 @@ bool PlayerInfoCell::init(GameResultData data){
     this->addChild(goldNum, 20);
     
     LabelAtlas* diamondNum = LabelAtlas::create("","result/result_num.png", 9, 13, '0');
-    if (data.diamonddelta < 0){
-        diamondNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.diamonddelta))->_string);
-    }
-    else{
-        diamondNum->setString(cocos2d::String::createWithFormat(":%d", data.diamonddelta)->_string);
+    if(data.diamonddelta == 0){
+        if (data.bangzuandelta < 0){
+            diamondNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.bangzuandelta))->_string);
+        }
+        else{
+            diamondNum->setString(cocos2d::String::createWithFormat(":%d", data.bangzuandelta)->_string);
+        }
+    }else{
+        if (data.diamonddelta < 0){
+            diamondNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.diamonddelta))->_string);
+        }
+        else{
+            diamondNum->setString(cocos2d::String::createWithFormat(":%d", data.diamonddelta)->_string);
+        }
     }
     diamondNum->setPosition(-10, -65);
     diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    this->addChild(diamondNum, 20);
+    addChild(diamondNum, 20);
     
     LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d", data.lequandelta)->_string,
                                                "result/result_num.png", 9, 13, '0');

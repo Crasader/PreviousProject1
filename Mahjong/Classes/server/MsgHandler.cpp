@@ -1432,12 +1432,17 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     FriendOpenRoomRespData data;
     const rapidjson::Value &result = _mDoc["result"];
-    const rapidjson::Value &seatId = _mDoc["seatId"];
-    const rapidjson::Value &jifen = _mDoc["jifen"];
     data.result = result.GetInt();
-    data.seatId = seatId.GetInt();
-    UserData::getInstance()->setScore(jifen.GetInt());
-    GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
+    
+    if(_mDoc.HasMember("jifen")){
+        const rapidjson::Value &jifen = _mDoc["jifen"];
+        UserData::getInstance()->setScore(jifen.GetInt());
+    }
+    if(_mDoc.HasMember("seatId")){
+        const rapidjson::Value &seatId = _mDoc["seatId"];
+        data.seatId = seatId.GetInt();
+        GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
+    }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, "");
 }
