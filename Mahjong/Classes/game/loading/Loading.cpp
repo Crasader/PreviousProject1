@@ -54,6 +54,7 @@ bool Loading::init(Point pos,bool touchAble){
 	auto bg = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
 	this->addChild(bg, 20);
 	craeteAnimate(pos);
+    schedule(schedule_selector(Loading::update), 1.0f, CC_REPEAT_FOREVER, 0);
 	return true;
 }
 
@@ -75,9 +76,23 @@ void Loading::craeteAnimate(Point pos){
 	this->addChild(parentSprite);
 	auto repeatForever = RepeatForever::create(action);
 	parentSprite->runAction(repeatForever);
+   
+
 }
 
-
+void Loading::update(float dt){
+    connectOutTime--;
+    if(connectOutTime<0){
+        connectOutTime = 100000;
+        Label* leb = Label::createWithSystemFont("请求超时", "arial", 30);
+        leb->setColor(Color3B(66,149,250));
+        leb->setPosition(640,320);
+        addChild(leb);
+        schedule([=](float dt){
+            setVisible(false);
+        }, 0, 0, 2.0f,"rotk");
+    }
+}
 
 bool Loading::onTouchBegan(Touch *touch, Event  *event){
 	return true;

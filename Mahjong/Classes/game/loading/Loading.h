@@ -10,6 +10,8 @@ public:
     static Loading* create(Point pos,bool touchAble);
     virtual bool init(Point pos,bool touchAble);
 private:
+    void update(float dt);
+    int connectOutTime = 10;
 	void craeteAnimate(Point pos);
 	bool onTouchBegan(Touch *touch, Event  *event);
 }; 
