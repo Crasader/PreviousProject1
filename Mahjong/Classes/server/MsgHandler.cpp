@@ -2371,7 +2371,7 @@ void MsgHandler::inviteOthersResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     InviteRespData resp;
     const rapidjson::Value &result = _mDoc["result"];
-    resp.result = result.GetString();
+    resp.result = StringUtils::format("%d",result.GetInt());
     const rapidjson::Value &nickname = _mDoc["nickname"];
     resp.nickname = nickname.GetString();
     GAMEDATA::getInstance()->setInviteRespData(resp);

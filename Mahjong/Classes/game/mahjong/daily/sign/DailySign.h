@@ -11,7 +11,6 @@ public:
     void updateData();
 	CREATE_FUNC(DailySign);
 private:
-    EventListenerCustom* signListener;
 	EventListenerCustom* todaySignListener;
 	void drawLayer();
 	void closeView();

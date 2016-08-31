@@ -18,10 +18,6 @@ bool DailySign::init(){
 
 void DailySign::onEnter(){
     Layer::onEnter();
-    signListener  = EventListenerCustom::create(MSG_PLAYER_DAILY_SIGN, [=](EventCustom* event){
-        //TODO
-    });
-    _eventDispatcher->addEventListenerWithFixedPriority(signListener, 1);
     
     todaySignListener = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
@@ -87,7 +83,6 @@ void DailySign::onEnter(){
 void DailySign::onExit(){
     Layer::onExit();
     _eventDispatcher->removeEventListener(todaySignListener);
-    _eventDispatcher->removeEventListener(signListener);
     
 }
 
