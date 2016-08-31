@@ -171,6 +171,8 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
                 if(score<0){
                     imageName="bill/purper_num.png";
                 }
+                Texture2D *texture = Director::getInstance()->getTextureCache()->addImage(imageName);
+                ((LabelAtlas*)cell->getChildByTag(100+i)) ->setTexture(texture);
                 std::string myScore =  ":"+StringUtil::itos(abs(score));
                 ((LabelAtlas*)cell->getChildByTag(100+i)) -> setString(myScore);
             }
