@@ -38,7 +38,6 @@ void LobbyScene::onEnter(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
-    updateHeroInfo();
     addEventListener();
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
 }
@@ -327,9 +326,14 @@ void LobbyScene::showAddFriend(){
 void LobbyScene::showOpenRoom(){
     Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-    FriendRoom* friendroom = FriendRoom::create();
-    friendroom->setTag(525);
-    this->addChild(friendroom,3);
+    if(UserData::getInstance()->getDiamond()+UserData::getInstance()->getLockDiamond()<2){
+        DiamondNotEnoughDialog* charge = DiamondNotEnoughDialog::create();
+        addChild(charge,30);
+    }else{
+        FriendRoom* friendroom = FriendRoom::create();
+        friendroom->setTag(525);
+        this->addChild(friendroom,3);
+    }
 }
 
 void LobbyScene::showPlayerBill(){
