@@ -128,11 +128,10 @@ Size BillDetailInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
 TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
 {
     auto string = StringUtils::format("%ld", idx);
-    
     BillInfoDetailAll detailAll = GAMEDATA::getInstance()->getBillInfoDetailAll();
     BillInfoDetail detail = detailAll.detail.at(idx);
     std::vector<BillContent> conBill = sortBillInfo(detail.detail);
-    
+//    log("FFFFFFFFFFFFFFFFF %s",conBill.at(0).score.c_str());
     TableViewCell *cell = table->dequeueCell();
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
@@ -144,7 +143,7 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         panId->setPosition(15,15);
         cell->addChild(panId);
         
-        
+//        log("GGGGGGGGGGGGGGGGG %s",conBill.at(0).score.c_str());
         for(int i=0;i<conBill.size();i++){
             std::string imageName ="bill/yellow_num.png";
             int score =atoi(conBill.at(i).score.c_str());
@@ -164,6 +163,7 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         if(NULL != cell->getChildByTag(99)){
           ((Label*)(cell->getChildByTag(99)))-> setString(StringUtils::format("%ld",idx+1));
         }
+//        log("HHHHHHHHHHHHHHHHHHHH %s",conBill.at(0).score.c_str());
         for(int i=0;i<conBill.size();i++){
             if(NULL != cell->getChildByTag(100+i)){
                 std::string imageName ="bill/yellow_num.png";
@@ -172,9 +172,10 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
                     imageName="bill/purper_num.png";
                 }
                 std::string myScore =  ":"+StringUtil::itos(abs(score));
-                ((Label*)cell->getChildByTag(100+i)) -> setString(myScore);
+                ((LabelAtlas*)cell->getChildByTag(100+i)) -> setString(myScore);
             }
         }
+        
     }
     return cell;
 }
