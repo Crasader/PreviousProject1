@@ -15,11 +15,12 @@ USING_NS_CC;
 
 class DayCell :public Sprite{
 public:
-    static DayCell* create(int propType);
-    virtual bool init(int propType);
+    static DayCell* create();
+    virtual bool init();
     void setDayState(int type);
     void startAnimate();
     void showPropResult(PrideData data);
+    void showPropResult2(PrideData data);
 private:
     void update(float dt);
     int half;

@@ -18,6 +18,5 @@ private:
 	void drawDayBgAndTitle();
 	std::string getImageNameById(int id,bool normal);
     void showLightAnim(Sprite* sprite);
-    void showDialogAnim();
 };
 #endif

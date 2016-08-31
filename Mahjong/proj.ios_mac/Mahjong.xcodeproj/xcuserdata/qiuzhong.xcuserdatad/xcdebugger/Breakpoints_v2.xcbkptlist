@@ -3391,11 +3391,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/daily/sign/DailySign.cpp"
-            timestampString = "494302394.050168"
+            timestampString = "494308237.22394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "DailySign::onEnter()"
             landmarkType = "5">
          </BreakpointContent>

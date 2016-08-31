@@ -20,7 +20,6 @@ void DailySign::onEnter(){
     Layer::onEnter();
     
     todaySignListener = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
         int gold =0;
         int diamond =0;
         int lequan =0;
@@ -144,7 +143,7 @@ void DailySign::drawDayBgAndTitle(){
         clipper->setAlphaThreshold(0);//设置绘制底板的Alpha值为0
         this->addChild(clipper);//4
             
-        DayCell* cell = DayCell::create(1);//被裁剪的内容
+        DayCell* cell = DayCell::create();//被裁剪的内容
         cell->setTag(300+i);
         if(i<=index){
             if(data.result == "1"){
@@ -265,12 +264,10 @@ void DailySign::confirmSign(Ref* ref){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSignCommand());
 }
 
-void DailySign::showDialogAnim(){
-
-
-}
-
 void DailySign::updateData(){
-    
-    
+    for(int i=0;i<=atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str());i++){
+        Sprite* sp = (Sprite*)getChildByTag(200+i);
+        DayCell* cell = (DayCell*)sp->getChildByTag(300+i);
+        cell->showPropResult2(GAMEDATA::getInstance()->getDailySignData().pride.at(i));
+    }
 }

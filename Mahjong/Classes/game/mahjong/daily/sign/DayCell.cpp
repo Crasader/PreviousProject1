@@ -9,9 +9,9 @@
 #include "game/mahjong/daily/sign/DayCell.hpp"
 
 
-DayCell* DayCell::create(int propType){
+DayCell* DayCell::create(){
     DayCell* cell = new DayCell();
-    if(cell&& cell->init(propType)){
+    if(cell&& cell->init()){
         cell->autorelease();
         return cell;
     }
@@ -20,7 +20,7 @@ DayCell* DayCell::create(int propType){
 }
 
 
-bool DayCell::init(int propType){
+bool DayCell::init(){
     if(!Sprite::init()){
         return false;
     }
@@ -51,6 +51,7 @@ bool DayCell::init(int propType){
     content->setTag(105);
     addChild(content);
     content->setTexture("daily/sign/uknow_pride.png");
+    
     Sprite* state = Sprite::create();
     state->setPosition(0,-95);
     state->setTag(106);
@@ -82,7 +83,7 @@ void DayCell::startAnimate(){
         Sprite* sp = (Sprite*)getChildByTag(100+i);
         sp->setVisible(false);
     }
-    //
+
     Sprite* content1 =Sprite::create("daily/sign/prop_list2.png");
     content1->setTag(601);
     content1->setPosition(0,75-150*1);
@@ -135,7 +136,35 @@ void DayCell::showPropResult(PrideData data){
     addChild(state);
 }
 
-
+void DayCell::showPropResult2(PrideData data){
+    for(int i=1;i<7;i++){
+        Sprite* sp = (Sprite*)getChildByTag(100+i);
+        sp->setVisible(false);
+    }
+    int m_curindex;
+    if(data.type == PrideType::gold){
+        m_curindex=0;
+    }else if(data.type == PrideType::lequan){
+        m_curindex=1;
+    }else if(data.type == PrideType::lockDiammond){
+        m_curindex=2;
+    }else if(data.type == PrideType::diamond){
+        m_curindex=3;
+    }
+    float posY = 75 - m_curindex * 150;
+    posY = ((int)posY) % 905;
+    Sprite* content1 =Sprite::create("daily/sign/prop_list2.png");
+    content1->setPositionY(posY);
+    addChild(content1);
+    Sprite* state = Sprite::create("daily/sign/yi_ling_qu.png");
+    state->setPosition(0,-95);
+    addChild(state);
+     //道具数量
+    LabelAtlas* label = LabelAtlas::create(cocos2d::String::createWithFormat("%d",data.number)->_string,"daily/sign/pride_num.png",16,24,'0');
+    label->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    label->setPosition(0,-45);
+    addChild(label);
+}
 
 void DayCell::update(float dt){
     
