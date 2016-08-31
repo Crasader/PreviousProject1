@@ -1099,7 +1099,7 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 jong->setScale(0.75f);
                 jong->showJong(herocpg, atoi(gang.at(i).gang.c_str()));
                 if (j == 3){
-                    jong->setPosition(Point(getCpgPostionX() + 47*2, 55));
+                    jong->setPosition(Point(getCpgPostionX() + 47, 55));
                 }
                 else{
                     jong->setPosition(Point(getCpgPostionX() + 47*j, 45));
@@ -1118,7 +1118,7 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
         for(int j=0;j<4;j++){
             Jong* jong = Jong::create();
             jong->setScale(0.75f);
-            jong->showJong(herodeal, atoi(angang.c_str()));
+            jong->showJong(herodeal,-1);
             if (j == 3){
                 jong->setPosition(Point(getCpgPostionX() + 47*2, 55));
             }
