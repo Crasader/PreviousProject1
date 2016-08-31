@@ -304,7 +304,6 @@ void LobbyScene::showRedWallet(){
 
 void LobbyScene::showDayTask(){
     Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());
     DailyEvent* day = DailyEvent::create();
     day->showDailyEvent(DailyType::task);
     addChild(day,3);

@@ -48,11 +48,10 @@ void DailyEvent::onExit(){
 }
 
 void DailyEvent::showDailyEvent(DailyType type){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());//任务
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyPrideCommand());//抽奖
     
+    if(type == DailyType::task){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailyTaskCommand());//任务
+    }
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
