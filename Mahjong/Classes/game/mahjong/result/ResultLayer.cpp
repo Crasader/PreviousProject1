@@ -158,16 +158,6 @@ void ResultLayer::showWinAnim(){
             UserData::getInstance()->setLockDiamond(resData.bangzuan);
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
-            //            vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-            //            for (int i = 0; i < players.size(); i++){
-            //                if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()) == ClientSeatId::hero){
-            //                    players.at(i)->setDiamond(resData.diamond);
-            //                    players.at(i)->setLockDiamond(resData.bangzuan);
-            //                    players.at(i)->setGold(resData.gold);
-            //                    players.at(i)->setTicket(resData.lequan);
-            //                    players.at(i)->setScore(resData.jifen+players.at(i)->getScore());
-            //                }
-            //            }
         }else{
             vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
             for (int i = 0; i < players.size(); i++){
@@ -321,16 +311,6 @@ void ResultLayer::showLoseAnim(){
             UserData::getInstance()->setLockDiamond(resData.bangzuan);
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
-            //            vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-            //            for (int i = 0; i < players.size(); i++){
-            //                if (SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()) == ClientSeatId::hero){
-            //                    players.at(i)->setDiamond(resData.diamond);
-            //                    players.at(i)->setGold(resData.gold);
-            //                    players.at(i)->setTicket(resData.lequan);
-            //                    players.at(i)->setLockDiamond(resData.bangzuan);
-            //                    players.at(i)->setScore( players.at(i)->getScore()+resData.jifen);
-            //                }
-            //            }
             if(GAMEDATA::getInstance()->getIsLiuJu()){
                 GAMEDATA::getInstance()->setIsLiuJu(false);
                 maxData = resData;
