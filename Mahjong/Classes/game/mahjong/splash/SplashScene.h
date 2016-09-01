@@ -38,6 +38,7 @@ private:
 	EventListenerCustom* reConnectAgain;
     EventListenerCustom* registerRespListener;
     EventListenerCustom* dropListListener;
+    EventListenerCustom* heroFirstPoke;
 	Sprite* username_text;
 	Sprite* password_text;
 	void addTocuhListener();

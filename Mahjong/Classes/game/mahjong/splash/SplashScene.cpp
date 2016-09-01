@@ -3,13 +3,14 @@
 #include "game/mahjong/result/ResultLayer.h"
 #include "game/mahjong/splash/register/UserRegister.h"
 #include "game/mahjong/splash/register/FindPassword.h"
-#include "server/NetworkManage.h"
-#include "game/loading/Loading.h"
 #include "game/mahjong/splash/LoadResource.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
 #include "game/mahjong/splash/dropdownlist/LoginMannger.h"
 #include "game/utils/Audio.h"
+#include "game/utils/SeatIdUtil.h"
+#include "server/NetworkManage.h"
+#include "game/loading/Loading.h"
 
 
 
@@ -46,6 +47,7 @@ void SplashScene::onExit(){
     _eventDispatcher->removeEventListener(roomRespListener);
     _eventDispatcher->removeEventListener(reConnectAgain);
     _eventDispatcher->removeEventListener(dropListListener);
+    _eventDispatcher->removeEventListener(heroFirstPoke);
 }
 
 
@@ -318,6 +320,16 @@ void  SplashScene::addCustomEventListener(){
         setChangeNickName(GAMEDATA::getInstance()->getLoginAccPwd().account,GAMEDATA::getInstance()->getLoginAccPwd().password);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dropListListener, 1);
+    
+    //断线续玩第一张牌
+    heroFirstPoke = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
+        
+        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
+        if (seatId == ClientSeatId::hero){
+            GAMEDATA::getInstance()->setNeedRemovePoker(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+        }
+        
+    });
 }
 
 void SplashScene::addTocuhListener(){

@@ -153,6 +153,11 @@ void MahjongView::update(float dt){
         addPlayer2Room();
         GAMEDATA::getInstance()->setNeedAddPlayer(false);
     }
+    if(GAMEDATA::getInstance()->getNeedAddPlayer()>0){
+        playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+        playerHero->stopTimeClockAnim();
+        GAMEDATA::getInstance()->setNeedAddPlayer(-1);
+    }
 }
 
 

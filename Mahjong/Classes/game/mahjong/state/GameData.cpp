@@ -19,7 +19,8 @@ void GAMEDATA::init(){
     setContinueAgain(false);
     setIsResume(false);
     setIsGotoLobby(false);
-    setShowDialogType(-1);;
+    setShowDialogType(-1);
+    setNeedRemovePoker(-1);
     setHuangfan("0");
     setKaibao("0");
 }
