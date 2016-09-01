@@ -71,10 +71,30 @@ void LobbyScene::signUpdate(float dt){
             addChild(day,3);
         }
     }
-    if(GAMEDATA::getInstance()->getNeedShowDiamondNotEnough()){
+    
+    if(GAMEDATA::getInstance()->getShowDialogType() == 2){
+        for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
+            if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+                GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                addChild(gold,30);
+            }
+        }
+        GAMEDATA::getInstance()->setShowDialogType(-1);
+    }
+    else if(GAMEDATA::getInstance()->getShowDialogType() == 3){
+        if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
+            EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
+            addChild(dia,30);
+        }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
+            EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
+            addChild(dia,30);
+        }
+        GAMEDATA::getInstance()->setShowDialogType(-1);
+    }
+    else if(GAMEDATA::getInstance()->getShowDialogType() == 4){
         DiamondNotEnoughDialog* charge = DiamondNotEnoughDialog::create();
         addChild(charge,30);
-        GAMEDATA::getInstance()->setNeedShowDiamondNotEnough(false);
+        GAMEDATA::getInstance()->setShowDialogType(-1);
     }
 }
 

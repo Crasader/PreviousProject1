@@ -2356,14 +2356,13 @@ void MsgHandler::gameContinueResp(std::string msg){
     EnterRoomResp resp;
     const rapidjson::Value &result = _mDoc["result"];
     resp.result = StringUtil::itos(result.GetInt());
-    if(resp.result == "4"){
-        GAMEDATA::getInstance()->setNeedShowDiamondNotEnough(true);
-    }
+    
     if(_mDoc.HasMember("rsid")){
         const rapidjson::Value &rsid = _mDoc["rsid"];
         resp.rsid = rsid.GetString();
     }
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
+    GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
     postNotifyMessage(MSG_HERO_CONTINUE_RESP, "");
 }
 

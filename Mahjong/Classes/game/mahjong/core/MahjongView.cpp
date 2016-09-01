@@ -457,6 +457,16 @@ void MahjongView::recoverGame(){
     showOriention();
     ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
     GAMEDATA::getInstance()->setIsPlaying(true);
+    int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
+    if(playturn == ClientSeatId::hero){
+        playerHero->startTimeClockAnim();
+    }else if(playturn == ClientSeatId::left){
+        playerLeft->startTimeClockAnim();
+    }else if(playturn == ClientSeatId::opposite){
+        playerOpposite->startTimeClockAnim();
+    }else if(playturn == ClientSeatId::right){
+        playerRight->startTimeClockAnim();
+    }
 }
 
 void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo){

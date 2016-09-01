@@ -34,25 +34,9 @@ void ResultLayer::onEnter(){
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "0"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }else if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
+            //返回正常可以继续游戏
             GAMEDATA::getInstance()->setContinueAgain(true);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        } else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "2"){
-            
-            for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
-                if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                    addChild(gold,30);
-                }
-            }
-        }
-        else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "3"){
-            if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
-                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
-                addChild(dia,30);
-            }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
-                EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
-                addChild(dia,30);
-            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
