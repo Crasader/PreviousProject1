@@ -49,6 +49,7 @@ private:
     EventListenerCustom* intnetListener;
     EventListenerCustom* loginReplaceListener;
     EventListenerCustom* inviteReplaceListener;
+    EventListenerCustom* friendChatListener;
 
 	void initView();
 	void drawSceneMid();

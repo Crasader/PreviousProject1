@@ -57,7 +57,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(intnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
-    
+    Director::getInstance()->getEventDispatcher()->removeEventListener(friendChatListener);
 }
 
 void LobbyScene::signUpdate(float dt){
@@ -742,6 +742,11 @@ void LobbyScene::addEventListener(){
             addChild(hin,5);
         }
         
+    });
+    
+    
+    friendChatListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
     });
     
     
