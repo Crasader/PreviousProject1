@@ -2037,11 +2037,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "494334616.697422"
+            timestampString = "494387054.891677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "525"
-            endingLineNumber = "525"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "ResultLayer::clickContinu()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2703,11 +2703,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "494334616.697422"
+            timestampString = "494387054.891677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
             landmarkName = "ResultLayer::updateTime(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2719,11 +2719,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "494334616.697422"
+            timestampString = "494387054.891677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "526"
-            endingLineNumber = "526"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
             landmarkName = "ResultLayer::clickContinu()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3558,6 +3558,54 @@
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/chat/FaceChatLayer.cpp"
+            timestampString = "494388001.128288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "FaceChatLayer::faceSelected(Ref* ref)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/chat/ChatDialog.cpp"
+            timestampString = "494388547.672498"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "ChatDialog::sendFaceId(int id)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/chat/ChatDialog.cpp"
+            timestampString = "494389307.283917"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "ChatDialog::sendFaceId(int id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

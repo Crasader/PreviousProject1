@@ -265,9 +265,13 @@ void DailySign::confirmSign(Ref* ref){
 }
 
 void DailySign::updateData(){
-    for(int i=0;i<=atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str());i++){
-        Sprite* sp = (Sprite*)getChildByTag(200+i);
-        DayCell* cell = (DayCell*)sp->getChildByTag(300+i);
-        cell->showPropResult2(GAMEDATA::getInstance()->getDailySignData().pride.at(i));
+    if(GAMEDATA::getInstance()->getDailySignData().result == "2"){
+        for(int i=0;i<=atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str());i++){
+            Sprite* sp = (Sprite*)getChildByTag(200+i);
+            DayCell* cell = (DayCell*)sp->getChildByTag(300+i);
+            if(GAMEDATA::getInstance()->getDailySignData().pride.size() >= atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str())){
+                cell->showPropResult2(GAMEDATA::getInstance()->getDailySignData().pride.at(i));
+            }
+        }
     }
 }
