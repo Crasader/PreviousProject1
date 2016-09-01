@@ -37,7 +37,7 @@ void PlayerBase::initData(){
 
 void PlayerBase::onEnter(){
     Layer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
+    roomChatListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
         if(playerInfo->getSeatId() == GAMEDATA::getInstance()->getHeroSeatId()){
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
             chatShowLayer->removeAllChildren();//清空界面
@@ -89,7 +89,7 @@ void PlayerBase::onEnter(){
 
 void PlayerBase::onExit(){
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_CHAT_NOTIFY);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
 }
 
 
