@@ -20,6 +20,9 @@ void DailySign::onEnter(){
     Layer::onEnter();
     
     todaySignListener = EventListenerCustom::create(MSG_PLAYER_TODAY_SIGN, [=](EventCustom* event){
+        DailySignData data = GAMEDATA::getInstance()->getDailySignData();
+        data.result ="2";
+        GAMEDATA::getInstance()->setDailySignData(data);
         int gold =0;
         int diamond =0;
         int lequan =0;
@@ -65,7 +68,7 @@ void DailySign::onEnter(){
                     ParticleUtil* util = ParticleUtil::create(MyParticleType::three);
                     getParent()->addChild(util,5);
                 }
-         }), NULL));
+            }), NULL));
         }
         schedule([=](float dt){
             UserData::getInstance()->setGold(UserData::getInstance()->getGold()+gold);
@@ -73,7 +76,7 @@ void DailySign::onEnter(){
             UserData::getInstance()->setTicket(UserData::getInstance()->getTicket()+lequan);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
         },0,0,3.0f,"helledoubi");
-      
+        
     });
     _eventDispatcher->addEventListenerWithFixedPriority(todaySignListener, 1);
 }
@@ -142,7 +145,7 @@ void DailySign::drawDayBgAndTitle(){
         clipper->setTag(200+i);
         clipper->setAlphaThreshold(0);//设置绘制底板的Alpha值为0
         this->addChild(clipper);//4
-            
+        
         DayCell* cell = DayCell::create();//被裁剪的内容
         cell->setTag(300+i);
         if(i<=index){
@@ -156,7 +159,7 @@ void DailySign::drawDayBgAndTitle(){
         }
         clipper->addChild(cell);//5
         clipper->setPosition(260+i*126, 340);
-
+        
     }
 }
 
@@ -254,7 +257,7 @@ void DailySign::closeView(){
 void DailySign::confirmSign(Ref* ref){
     MenuItemImage* tem  = (MenuItemImage*)ref;
     tem->setEnabled(false);
-     for(int i=0;i<=atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str());i++){
+    for(int i=0;i<=atoi(GAMEDATA::getInstance()->getDailySignData().day.c_str());i++){
         Sprite* sp = (Sprite*)getChildByTag(200+i);
         DayCell* cell = (DayCell*)sp->getChildByTag(300+i);
         cell->runAction(Sequence::create(CallFunc::create([=](){
