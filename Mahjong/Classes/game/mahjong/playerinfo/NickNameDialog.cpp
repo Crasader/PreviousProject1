@@ -23,6 +23,9 @@ void NickNameDialog::onEnter(){
 	changeNicknameListener = EventListenerCustom::create(MSG_CHANGE_NICKNAME_RESP, [=](EventCustom* event){
 		char* buf = static_cast<char*>(event->getUserData());
 		std::string result = buf;
+        if(NULL != getChildByTag(199)){
+            getChildByTag(199)->removeFromParent();
+        }
 		if (result == "1"){
 			std::string nickname = _editName->getText();
 			UserData::getInstance()->setNickName(nickname);
@@ -103,8 +106,9 @@ void NickNameDialog::clearInput(){
 void NickNameDialog::changeNickName(){
 	std::string nickName = _editName->getText();
 		if (nickName != ""){
-			Loading* Loading = Loading::create();
-			addChild(Loading);
+			Loading* loading = Loading::create();
+            loading->setTag(199);
+			addChild(loading);
 			NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChangeNickNameCommand(nickName));
 		}
 }
