@@ -207,7 +207,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1225"
             endingLineNumber = "1225"
-            landmarkName = "MahjongView::addFriendInviteMeListener()"
+            landmarkName = "MahjongView::addHeroGangRespListener()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -239,7 +239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "871"
             endingLineNumber = "871"
-            landmarkName = "MahjongView::showHuPaiXing(std::string paixing)"
+            landmarkName = "MahjongView::addGameResultListener()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -255,7 +255,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "894"
             endingLineNumber = "894"
-            landmarkName = "MahjongView::showHuPaiXing(std::string paixing)"
+            landmarkName = "MahjongView::addGameResultListener()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1770,7 +1770,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1080"
             endingLineNumber = "1080"
-            landmarkName = "MahjongView::addPlayerTingNotifyListener()"
+            landmarkName = "MahjongView::addOthersPengListener()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2281,7 +2281,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "913"
-            endingLineNumber = "913">
+            endingLineNumber = "913"
+            landmarkName = "MahjongView::showHuPaiXing(std::string paixing)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2438,7 +2440,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1112"
             endingLineNumber = "1112"
-            landmarkName = "MahjongView::addTrusteeShipNotifyListener()"
+            landmarkName = "MahjongView::addPlayerTingNotifyListener()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -2836,7 +2838,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1217"
             endingLineNumber = "1217"
-            landmarkName = "MahjongView::addFriendInviteMeListener()"
+            landmarkName = "MahjongView::addHeroPengRespListener()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2852,7 +2854,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1216"
             endingLineNumber = "1216"
-            landmarkName = "MahjongView::addFriendInviteMeListener()"
+            landmarkName = "MahjongView::addHeroPengRespListener()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -3092,7 +3094,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1230"
             endingLineNumber = "1230"
-            landmarkName = "MahjongView::addPlayerRemoveListener()"
+            landmarkName = "MahjongView::addHeroGangRespListener()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -3156,7 +3158,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1222"
             endingLineNumber = "1222"
-            landmarkName = "MahjongView::addFriendInviteMeListener()"
+            landmarkName = "MahjongView::addHeroPengRespListener()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
