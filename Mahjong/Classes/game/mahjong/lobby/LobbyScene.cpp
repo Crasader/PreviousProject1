@@ -35,11 +35,15 @@ bool LobbyScene::init()
 
 void LobbyScene::onEnter(){
     Scene::onEnter();
+    addEventListener();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
-    addEventListener();
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
+    schedule([=](float dt){
+        updateHeroInfo();
+    }, 1.0, 5, 0,"updatePlayerInfo");
+    
 }
 
 
@@ -50,7 +54,6 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(friendInviteListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(updateHeroInfoListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroInfoListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyConncetAgainListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(jjjPrideListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(bzjjjPrideListener);
@@ -685,11 +688,6 @@ void LobbyScene::addEventListener(){
     
     //刷新自己的信息
     updateHeroInfoListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
-        updateHeroInfo();
-    });
-    
-    //刷新自己信息
-    heroInfoListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_INFO_RESP, [=](EventCustom* event){
         updateHeroInfo();
     });
     

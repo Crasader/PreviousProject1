@@ -42,7 +42,6 @@ private:
     EventListenerCustom* openFriendRoomListener;
     EventListenerCustom* friendInviteListener;
     EventListenerCustom* updateHeroInfoListener;
-    EventListenerCustom* heroInfoListener;
     EventListenerCustom* lobbyConncetAgainListener;
     EventListenerCustom* jjjPrideListener;
     EventListenerCustom* bzjjjPrideListener;
