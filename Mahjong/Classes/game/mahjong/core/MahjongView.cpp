@@ -14,6 +14,7 @@
 #include "game/mahjong/anim/LiuJuAnim.hpp"
 #include "game/mahjong/anim/OutFogAnim.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "server/SocketDataManage.h"
 
 
 
@@ -640,6 +641,7 @@ void MahjongView::addOthersReadyListener(){
 
 void MahjongView::addCoustomReplaceFlower() {
     replaceListener = EventListenerCustom::create(MSG_GAME_REPLACE_FLOWER, [=](EventCustom* event){
+        SocketDataManage::getInstance()->pauseMsg();
         if(!GAMEDATA::getInstance()->getIsResume()){
             ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
             ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
@@ -662,10 +664,11 @@ void MahjongView::addCoustomReplaceFlower() {
                     playerOpposite->replaceHandHua(oppositeplayed);
                 }
             }
-            
         }
         int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
+        SocketDataManage::getInstance()->resumeMsg();
         if (bankId == ClientSeatId::hero){
+            
             playerHero->startTimeClockAnim();
         }
         else if (bankId == ClientSeatId::left){
@@ -684,6 +687,7 @@ void MahjongView::addCoustomReplaceFlower() {
 void MahjongView::addDealJongListener(){
     dealJongsListener = EventListenerCustom::create(MSG_GAME_START_NOTIFY, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsPlaying(true);
+        SocketDataManage::getInstance()->pauseMsg();
         playerHero->setIsReady(false);
         if(NULL != playerRight)
             playerRight->setIsReady(false);
@@ -706,6 +710,7 @@ void MahjongView::dealJongFinish(){
     playerRight->drawHandJong();
     playerOpposite->drawHandJong();
     playerLeft->drawHandJong();
+    SocketDataManage::getInstance()->resumeMsg();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getStartHuaCommand());
 }
 

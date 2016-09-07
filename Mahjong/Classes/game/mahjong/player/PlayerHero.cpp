@@ -5,6 +5,7 @@
 #include "server/CommandManage.h"
 #include "server/MsgConfig.h"
 #include "game/mahjong/anim/HuaAnim.hpp"
+#include "server/SocketDataManage.h"
 
 
 bool PlayerHero::init() {
@@ -177,6 +178,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
 
 
 void PlayerHero::drawPlayerHero() {
+   
     std::vector<std::string> strvce = GAMEDATA::getInstance()->getHeroJongs();
     for (int t = 0; t < strvce.size(); t++) {
         if (t < -1){

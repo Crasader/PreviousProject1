@@ -9,10 +9,13 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 	void pushMsg(std::string msg);
+    void pauseMsg();
+    void resumeMsg();
 private:
 	static SocketDataManage* instance;
 	CREATE_FUNC(SocketDataManage);
 	std::mutex m_mutex;
-	std::vector<std::string> m_msgList;
+    bool allowSend;
+	std::queue<std::string> m_msgList;
 };
 #endif

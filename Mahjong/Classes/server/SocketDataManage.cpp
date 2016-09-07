@@ -1,5 +1,6 @@
-#include "server/MsgHandler.h"
 #include "server/SocketDataManage.h"
+#include "server/MsgHandler.h"
+
 
 SocketDataManage* SocketDataManage::instance = nullptr;
 
@@ -12,21 +13,32 @@ SocketDataManage* SocketDataManage::getInstance(){
 }
 
 bool SocketDataManage::init(){
+    allowSend = true;
 	Director::getInstance()->getScheduler()->schedule(schedule_selector(SocketDataManage::update), this, 0.108f, false);
 	return true;
 }
 
 void SocketDataManage::update(float dt){
 	m_mutex.lock();
-	for (auto value : m_msgList){
-		MsgHandler::getInstance()->handleMsg(value);
-	}
-	m_msgList.clear();
+    if(allowSend){
+        if(!m_msgList.empty()){
+            MsgHandler::getInstance()->handleMsg(m_msgList.front());
+            m_msgList.pop();
+        }
+    }
 	m_mutex.unlock();
 }
 
 void SocketDataManage::pushMsg(std::string msg){
 	m_mutex.lock();
-	m_msgList.push_back(msg);
+	m_msgList.push(msg);
 	m_mutex.unlock();
+}
+
+void SocketDataManage::pauseMsg(){
+    allowSend= false;
+}
+
+void SocketDataManage::resumeMsg(){
+    allowSend = true;
 }

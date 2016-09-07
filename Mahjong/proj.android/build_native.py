@@ -19,9 +19,9 @@ def build(build_mode):
     app_android_root = os.path.join(current_dir, "../")
 		
     if build_mode is None:
-    	  build_mode = 'debug'
+    	  build_mode = 'release'
     elif build_mode != 'release':
-        build_mode = 'debug'
+        build_mode = 'release'
     COCOS_CONSOLE_ROOT='/Applications/Cocos/Cocos2d-x/cocos2d-x-3.10/tools/cocos2d-console/bin'
     command = '%s/cocos compile -p android -s %s -m %s' % (COCOS_CONSOLE_ROOT,app_android_root, build_mode) 
     if os.system(command) != 0:

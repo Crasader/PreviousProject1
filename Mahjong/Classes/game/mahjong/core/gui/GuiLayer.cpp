@@ -10,6 +10,7 @@
 #include "game/utils/SeatIdUtil.h"
 #include "server/MsgHandler.h"
 #include "server/NetworkManage.h"
+#include "server/SocketDataManage.h"
 #include "userdata/UserData.h"
 
 
@@ -117,6 +118,7 @@ void GuiLayer::soundButtonClick(){
 }
 
 void GuiLayer::chatButtonClick(){
+//    SocketDataManage::getInstance()->resumeMsg();
     auto gameChat = ChatDialog::create("");
     gameChat->setTag(1001);
     addChild(gameChat,2);
