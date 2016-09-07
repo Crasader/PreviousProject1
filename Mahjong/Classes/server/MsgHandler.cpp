@@ -1517,6 +1517,7 @@ void MsgHandler::playerChatNotify(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     ChatData chatData;
+    chatData.isRead = false;
     if (_mDoc.HasMember("content")){
         const rapidjson::Value &content = _mDoc["content"];
         chatData.content = content.GetString();

@@ -102,11 +102,15 @@ void ChatDialog::showChatList(std::string poxiaoId){
     }else{
         chatPid = poxiaoId;
         FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
-        for(auto msg : list.friendMsgList){
-            if(msg.poxiaoId == poxiaoId){
-                msgList = msg.msgList;
+        for(int j=0;j<list.friendMsgList.size();j++){
+            if(list.friendMsgList.at(j).poxiaoId == poxiaoId){
+                msgList = list.friendMsgList.at(j).msgList;
+                for(int i = 0;i<list.friendMsgList.at(j).msgList.size();i++){
+                    list.friendMsgList.at(j).msgList.at(i).isRead = true;
+                }
             }
         }
+        GAMEDATA::getInstance()->setFriendChatMsgList(list);
     }
     if(msgList.size()==0){
         return;
@@ -229,6 +233,7 @@ void ChatDialog:: showChatInfo(ChatData data){
 }
 
 void ChatDialog::closeView(){
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("update_friend_list_view");
     removeFromParent();
 }
 

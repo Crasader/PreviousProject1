@@ -445,6 +445,7 @@ struct ChatData{
     std::string nickname;
     std::string content;
     std::string poxiaoId;
+    bool isRead;
 };
 
 struct RoomChatMsgList{

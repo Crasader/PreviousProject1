@@ -21,6 +21,7 @@ public:
     
 private:
     EventListenerCustom* friendLsitListener;
+    EventListenerCustom* updateLsitListener;
 	TableView* tableView;
 	void addConfirm();
 	void chatFriend(Ref* ref);
