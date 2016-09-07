@@ -1533,10 +1533,18 @@ void MsgHandler::playerChatNotify(std::string msg){
         const rapidjson::Value &flag = _mDoc["flag"];
         if(flag.GetInt() == 0){
             FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
+            bool findChatRecord = false;
             for(auto var : list.friendMsgList){
                 if(chatData.poxiaoId == var.poxiaoId){
                     var.msgList.push_back(chatData);
+                    findChatRecord = true;
                 }
+            }
+            if(!findChatRecord){
+                FriendChatData data;
+                data.poxiaoId = chatData.poxiaoId;
+                data.msgList.push_back(chatData);
+                list.friendMsgList.push_back(data);
             }
             GAMEDATA::getInstance()->setFriendChatMsgList(list);
         }else{
@@ -1544,6 +1552,22 @@ void MsgHandler::playerChatNotify(std::string msg){
             list.msgList.push_back(chatData);
             GAMEDATA::getInstance()->setRoomChatMsgList(list);
         }
+    }else{
+        FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
+        bool findChatRecord = false;
+        for(auto var : list.friendMsgList){
+            if(chatData.poxiaoId == var.poxiaoId){
+                var.msgList.push_back(chatData);
+                findChatRecord = true;
+            }
+        }
+        if(!findChatRecord){
+            FriendChatData data;
+            data.poxiaoId = chatData.poxiaoId;
+            data.msgList.push_back(chatData);
+            list.friendMsgList.push_back(data);
+        }
+        GAMEDATA::getInstance()->setFriendChatMsgList(list);
     }
     
     GAMEDATA::getInstance()->setChatData(chatData);
