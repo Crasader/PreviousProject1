@@ -60,6 +60,7 @@ public:
     void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);//断线后吃碰杠牌恢复
     void recoverHand(std::string hand);//断线后手牌恢复
     void hideHandJongs();//隐藏玩家的手牌
+    void playSoundHuPai(int type);
     Jong* getCurrentJong();
     
     CC_SYNTHESIZE(Player*, playerInfo, PlayerInfo);

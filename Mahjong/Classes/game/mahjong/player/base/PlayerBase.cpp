@@ -545,3 +545,7 @@ Point PlayerBase::getVec2BySeatId(int seatId){
         return Vec2(150,200);
     }
 }
+
+void PlayerBase::playSoundHuPai(int type){
+    Audio::getInstance()->playSoundHu(type, getPlayerInfo()->getGender());
+}
