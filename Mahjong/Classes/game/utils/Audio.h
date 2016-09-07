@@ -9,8 +9,37 @@ public:
     void init();
     void playBGM();
     void pauseBGM();
-    void playMahjong(int type,int gender);
+    void playMahjong(int type,int gender);//报牌
+    void playSoundChi(int type,int gender);//吃
+    void playSoundPeng(int gender);//碰
+    void playSoundGang(int gender);//杠
+    void playSoundHu(int type,int gender);//胡牌语音
+    void playSoundHuaChi(int gender);//花痴
+    void playSoundTing(int gender);//听
+    void playSoundSlow(int gender);//出牌慢
+    void playSoundXiaGeng(int gender);//下家跟牌
+    void playSoundGengShang(int gender);//跟上家牌
+    void playSoundWaitChi(int gender);//等吃
+    void playSoundWaitPeng(int gender);//等碰
+    void playSoundChi3(int gender);//吃3手
+    void playSoundChong(int gender);//冲牌
+    void playSoundLiuJu(int gender);//流句
+    void playSoundTouzi();//骰子
+    void playSoundFapai();//发牌
+    void playSoundClosePage();//关闭页面
+    void playSoundClick();//点击按钮
+    void playSoundHuMusic(int type);//胡牌音效
     
+    void setBGMValue(float value);//设置音效
+    void setEffectValue(float value);
+    
+    CC_SYNTHESIZE(bool, hasTingPlayer, HasTingPlayer);//是否有玩家听牌(音效相关的状态)
+    
+private:
+    
+    static Audio* m_instance;
+    CC_SYNTHESIZE(bool, isFirstDong, IsFirstDong);
+    CC_SYNTHESIZE(int, bgmId, BgmId);
     void playSoundWan1(int gender);
     void playSoundWan2(int gender);
     void playSoundWan3(int gender);
@@ -45,37 +74,6 @@ public:
     void playSoundWest(int gender);
     void playSoundNorth(int gender);
     void playSoundSouth(int gender);
-    
-    void playSoundChi(int type,int gender);
-    void playSoundPeng(int gender);
-    void playSoundGang(int gender);
-    void playSoundHua(int gender);
-    void playSoundHuaChi(int gender);
-    void playSoundTing(int gender);
-    void playSoundSlow(int gender);
-    void playSoundXiaGeng(int gender);
-    void playSoundGengShang(int gender);
-    void playSoundWaitChi(int gender);
-    void playSoundWaitPeng(int gender);
-    void playSoundChi3(int gender);
-    void playSoundChong(int gender);
-    void playSoundLiuJu(int gender);
-    void playSoundTouzi();
-    void playSoundFapai();
-    
-    void playSoundClick();
-    void playSoundHu(int type);
-    
-    
-    void setBGMValue(float value);
-    void setEffectValue(float value);
-    
-    CC_SYNTHESIZE(bool, hasTingPlayer, HasTingPlayer);//是否有玩家听牌(音效相关的状态)
-    
-private:
-    static Audio* m_instance;
-    CC_SYNTHESIZE(bool, isFirstDong, IsFirstDong);
-    CC_SYNTHESIZE(int, bgmId, BgmId);
 
 };
 #endif
