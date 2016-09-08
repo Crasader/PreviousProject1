@@ -24,15 +24,16 @@ const char*  CallAndroidMethod::getJniPath()
 
 
 
-void CallAndroidMethod::requestEvent(int eventId){
+void CallAndroidMethod::requestEvent(std::string poxiaoId,std::string payId){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 		JniMethodInfo methodInfo;
 		auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
-		bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"requestEvent","(I)V");
-		jint pay_point = eventId;
+		bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"requestEvent","(Ljava/lang/String;Ljava/lang/String;)V");
+        jstring poxiao_id = JniHelper::getEnv()->NewStringUTF(poxiaoId.c_str());
+		jstring pay_point = JniHelper::getEnv()->NewStringUTF(payId.c_str());;
 		if(isHave){
 			jobject jobj;
-			JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,pay_point);
+			JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,poxiao_id,pay_point);
 		}
 #endif	
 }

@@ -83,7 +83,7 @@ void GoldNotEnoughDialog::chargeGold(){
         getParent()-> addChild(gold,4);
         removeFromParent();
     }else{
-        CallAndroidMethod::getInstance()->requestEvent(1);
+        CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"1");
     }
 }
 

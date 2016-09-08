@@ -72,7 +72,7 @@ void TaskCell::recievePride(Ref* ref){
 
 void TaskCell::charge(){
     //触发事件
-    CallAndroidMethod::getInstance()->requestEvent(1);
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"1");
 }
 
 void TaskCell::drawTaskFinishStateById(TASKID taskId){

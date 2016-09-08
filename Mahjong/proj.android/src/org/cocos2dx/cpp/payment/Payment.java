@@ -20,23 +20,9 @@ public class Payment {
 		TbuWxPay.getInstance().initOnFirstActivity(activity);
 	}
 
-	public static void requestEvent(int eventId) {
-		// 通过josn获取事件
-		final TbuEvent event = TbuAndroidTools.getTbuEventById(activity, eventId);
-		if (null != event) {
-			if (event.getEventState()) {
-				// 匹配相应的计费点
-				final PayPoint payPoint = TbuAndroidTools.getPayPointById(activity, event.getPayId());
-
-				TbuWxPay.getInstance().Pay(getDateFormat(), AppInfo.getTbuId(), String.valueOf(payPoint.getType()),
-						payPoint.getName(), String.valueOf(payPoint.getMoney()));
-//				JniPayCallbackHelper.eventCallBack(eventId, 1, null, null);
-			} else {
-				Debug.i("Payment->requestEvent:事件点处于关闭状态");
-			}
-		} else {
-			Debug.i("Payment->requestEvent:无法找到事件点:"+eventId);
-		}
+	public static void requestEvent(String poxiaoId,String payPoint) {
+		Debug.e("requestEvent start wx pay ...");
+		TbuWxPay.getInstance().Pay(poxiaoId,payPoint);
 	}
 	
 	//获取系统时间

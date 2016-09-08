@@ -419,7 +419,7 @@ void Audio::playSoundWan4(int gender){
 }
 
 void Audio::playSoundWan5(int gender){
-    int soundId = rand()%3+1;
+    int soundId = rand()%2+1;
     if(gender == 1){
         std::string soundName = StringUtils::format("audio/male/5wan_%d.ogg",soundId);
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());

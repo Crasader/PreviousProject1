@@ -140,5 +140,5 @@ void ChargeDiamond::closeView(){
 }
 
 void ChargeDiamond::chargeButtonClick(Ref* ref){
-    CallAndroidMethod::getInstance()->requestEvent(1);
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"1");
 }

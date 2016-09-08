@@ -1535,9 +1535,9 @@ void MsgHandler::playerChatNotify(std::string msg){
         if(flag.GetInt() == 0){
             FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
             bool findChatRecord = false;
-            for(auto var : list.friendMsgList){
-                if(chatData.poxiaoId == var.poxiaoId){
-                    var.msgList.push_back(chatData);
+            for(int i=0;i<list.friendMsgList.size();i++){
+                if(chatData.poxiaoId == list.friendMsgList.at(i).poxiaoId){
+                    list.friendMsgList.at(i).msgList.push_back(chatData);
                     findChatRecord = true;
                 }
             }
@@ -1556,9 +1556,9 @@ void MsgHandler::playerChatNotify(std::string msg){
     }else{
         FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
         bool findChatRecord = false;
-        for(auto var : list.friendMsgList){
-            if(chatData.poxiaoId == var.poxiaoId){
-                var.msgList.push_back(chatData);
+        for(int i=0;i<list.friendMsgList.size();i++){
+            if(chatData.poxiaoId == list.friendMsgList.at(i).poxiaoId){
+                list.friendMsgList.at(i).msgList.push_back(chatData);
                 findChatRecord = true;
             }
         }
