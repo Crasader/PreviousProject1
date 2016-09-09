@@ -29,8 +29,6 @@ package org.cocos2dx.cpp;
 import org.cocos2dx.cpp.payment.Payment;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
-import com.tbu.wx.pay.TbuWxPay;
-
 import android.os.Bundle;
 import android.view.WindowManager;
 

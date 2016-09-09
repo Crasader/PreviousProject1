@@ -14,6 +14,7 @@
 #include "game/mahjong/shop/relieve/GoldRelieve.hpp"
 #include "game/mahjong/share/Redwallet.h"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
+#include "payment/android/CallAndroidMethod.h"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
 #include "game/utils/Audio.h"
@@ -378,9 +379,10 @@ void LobbyScene::showGameSetting(){
 }
 
 void LobbyScene::showHotActivity(){
-    Audio::getInstance()->playSoundClick();
-    MahjongActivities* act = MahjongActivities::create();
-    addChild(act,3);
+//    Audio::getInstance()->playSoundClick();
+//    MahjongActivities* act = MahjongActivities::create();
+//    addChild(act,3);
+    CallAndroidMethod::getInstance()->shareToWeChat("www.baidu.com","食戟之灵","参见药王",false);
 }
 
 void LobbyScene::showHeroInfo(){

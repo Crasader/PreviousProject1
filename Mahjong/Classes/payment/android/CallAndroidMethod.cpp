@@ -52,3 +52,20 @@ void CallAndroidMethod::queryEventResult(){
     }
 #endif
 }
+
+
+void CallAndroidMethod::shareToWeChat(std::string url,string title,string content,bool friends){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"shareToWeChat","(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V");
+    jstring share_url = JniHelper::getEnv()->NewStringUTF(url.c_str());
+    jstring share_title = JniHelper::getEnv()->NewStringUTF(title.c_str());
+    jstring share_content = JniHelper::getEnv()->NewStringUTF(content.c_str());
+    jboolean share_friends = friends;
+    if(isHave){
+        jobject jobj;
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url,share_title,share_content,friends);
+    }
+#endif
+}

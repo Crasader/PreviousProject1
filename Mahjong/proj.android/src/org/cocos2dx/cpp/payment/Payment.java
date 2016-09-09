@@ -6,7 +6,7 @@ import java.util.Date;
 import com.tbu.androidtools.Debug;
 import com.tbu.wx.http.callback.QueryCallBack;
 import com.tbu.wx.http.callback.WxPayCallBack;
-import com.tbu.wx.pay.TbuWxPay;
+import com.tbu.wx.pay.TbuWxUtil;
 
 import android.app.Activity;
 
@@ -19,7 +19,7 @@ public class Payment {
 	
 	public static void init(Activity activity) {
 		Payment.activity = activity;
-		TbuWxPay.getInstance().initOnFirstActivity(Payment.activity);
+		TbuWxUtil.getInstance().initOnFirstActivity(Payment.activity);
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class Payment {
 	 */
 	public static void requestEvent(final String poxiaoId,final String payPoint) {
 		Debug.i("Payment start requestEvent ...");
-		TbuWxPay.getInstance().Pay(poxiaoId,payPoint,new WxPayCallBack() {		
+		TbuWxUtil.getInstance().Pay(poxiaoId,payPoint,new WxPayCallBack() {		
 			@Override
 			public void wxPayCallback(String orderId) {
 				pxOrderId = orderId;
@@ -45,7 +45,7 @@ public class Payment {
 	public static void queryPayResult() {
 		Debug.i("Payment start queryPayResult ...");
 		if(null != pxOrderId){
-			TbuWxPay.getInstance().queryOrder(pxOrderId,new QueryCallBack() {	
+			TbuWxUtil.getInstance().queryOrder(pxOrderId,new QueryCallBack() {	
 				@Override
 				public void queryCallback(boolean result) {
 					if(result){
@@ -57,6 +57,11 @@ public class Payment {
 			});
 		}
 	}
+	
+	public static void shareToWeChat(String webpageUrl,String title,String description,boolean friends){
+		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description, friends);
+	}
+	
 	//获取系统时间
 	public static String getDateFormat() {
 		SimpleDateFormat date = (SimpleDateFormat) SimpleDateFormat.getDateTimeInstance();
