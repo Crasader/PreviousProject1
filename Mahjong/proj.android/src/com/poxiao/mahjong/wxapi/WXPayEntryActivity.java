@@ -1,11 +1,11 @@
-package org.cocos2dx.cpp.payment.wxapi;
+package com.poxiao.mahjong.wxapi;
 
-import com.tbu.androidtools.Debug;
+import org.cocos2dx.cpp.payment.Payment;
+
 import com.tbu.wx.util.WxAppInfo;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
-import com.tencent.mm.sdk.modelpay.PayResp;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
@@ -39,10 +39,13 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 	@Override
 	public void onResp(BaseResp resp) {
 		if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
-			PayResp payResp = (PayResp) resp;
-			Debug.e("wx pay result");
+			// PayResp payResp = (PayResp) resp;
 			if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
-				//  TODO 支付成功
+				if (Payment.queryPayResult()) {
+					// TODO 支付成功
+				} else {
+					// TODO 支付失败
+				}
 			} else {
 				// TODO 支付失败
 			}
