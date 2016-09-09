@@ -7,6 +7,7 @@
 //
 
 #include "game/mahjong/shop/ShopHintDialog.hpp"
+#include "server/MsgConfig.h"
 
 bool ShopHintDialog::init(){
     if(!Layer::init()){
@@ -54,5 +55,6 @@ void ShopHintDialog::showImage(std::string image){
 }
 
 void ShopHintDialog::confirm(){
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
     removeFromParent();
 }

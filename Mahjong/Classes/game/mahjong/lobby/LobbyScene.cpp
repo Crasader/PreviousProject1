@@ -382,7 +382,7 @@ void LobbyScene::showHotActivity(){
 //    Audio::getInstance()->playSoundClick();
 //    MahjongActivities* act = MahjongActivities::create();
 //    addChild(act,3);
-    CallAndroidMethod::getInstance()->shareToWeChat("www.baidu.com","食戟之灵","参见药王",false);
+    CallAndroidMethod::getInstance()->shareToWeChat("http://183.129.206.54:1111/majiang.html","食戟之灵","参见药王",false);
 }
 
 void LobbyScene::showHeroInfo(){
@@ -786,10 +786,8 @@ void LobbyScene::addEventListener(){
         std::string result = static_cast<char*>(event->getUserData());
         ShopHintDialog* da = ShopHintDialog::create();
         if(result == "1"){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
             da->showText("充值成功");
-//            ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
-//            addChild(par,20);
-            updateHeroInfo();
         }else{
             da->showText("充值失败");
         }
