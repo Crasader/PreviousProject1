@@ -49,7 +49,9 @@ private:
     EventListenerCustom* loginReplaceListener;
     EventListenerCustom* inviteReplaceListener;
     EventListenerCustom* friendChatListener;
-
+    EventListenerCustom* payDialogListener;
+    EventListenerCustom* payResultListener;
+    
 	void initView();
 	void drawSceneMid();
 	void drawSceneTop();

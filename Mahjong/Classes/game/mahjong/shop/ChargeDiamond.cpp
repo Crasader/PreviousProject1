@@ -116,6 +116,7 @@ void ChargeDiamond::showChargeDialog(){
         
         
         auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(ChargeDiamond::chargeButtonClick, this));
+        btnImage->setTag(i+2);
         auto myMenu = Menu::create(btnImage,NULL);
         myMenu->setPosition(285+175*i,225);
         addChild(myMenu);
@@ -140,5 +141,6 @@ void ChargeDiamond::closeView(){
 }
 
 void ChargeDiamond::chargeButtonClick(Ref* ref){
-        CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"1");
+    MenuItemImage* temp = (MenuItemImage*) ref;
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),StringUtils::format("%d",temp->getTag()));//从2开始
 }

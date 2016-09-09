@@ -9,6 +9,7 @@
 #include "game/mahjong/shop/relieve/GoldRelieve.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
+#include "payment/android/CallAndroidMethod.h"
 
 bool GoldRelieve::init(){
     if(!Layer::init()){
@@ -128,8 +129,7 @@ void GoldRelieve::closeView(){
 }
 
 void GoldRelieve::chargeGold(){
-    //TODO
-    
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "7");
 }
 
 void GoldRelieve::getRelieve(){

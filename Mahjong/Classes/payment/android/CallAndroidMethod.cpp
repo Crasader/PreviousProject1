@@ -1,5 +1,6 @@
 #include "payment/android/CallAndroidMethod.h"
 #include"payment/android/MahjongPayHandler.h"
+#include "game/mahjong/state/GameData.h"
 #include "json/document.h"
 #include "json/stringbuffer.h"
 #include "json/writer.h"
@@ -25,6 +26,8 @@ const char*  CallAndroidMethod::getJniPath()
 
 
 void CallAndroidMethod::requestEvent(std::string poxiaoId,std::string payId){
+    GAMEDATA::getInstance()->setIsInPay(true);
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("mahjong_start_pay");
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 		JniMethodInfo methodInfo;
 		auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");

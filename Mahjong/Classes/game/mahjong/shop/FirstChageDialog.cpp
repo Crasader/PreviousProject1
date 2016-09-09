@@ -10,6 +10,7 @@
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"
+#include "payment/android/CallAndroidMethod.h"
 
 bool FirstChargeDialog::init(){
 
@@ -139,8 +140,8 @@ void FirstChargeDialog:: closeView(){
 }
 
 void FirstChargeDialog:: charge(){
-
-
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "1");
+    removeFromParent();
 }
 
 

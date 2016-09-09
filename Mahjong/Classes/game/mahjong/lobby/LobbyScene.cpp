@@ -13,9 +13,11 @@
 #include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
 #include "game/mahjong/shop/relieve/GoldRelieve.hpp"
 #include "game/mahjong/share/Redwallet.h"
+#include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
 #include "game/utils/Audio.h"
+
 
 bool LobbyScene::init()
 {
@@ -61,6 +63,8 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(friendChatListener);
+     Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
 }
 
 void LobbyScene::signUpdate(float dt){
@@ -767,6 +771,29 @@ void LobbyScene::addEventListener(){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
     });
     
+    payDialogListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener("mahjong_start_pay", [=](EventCustom* event){
+        Loading* loa = Loading::create();
+        loa->setTag(4843);
+        addChild(loa,20);
+    });
+
+    payResultListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener("mahjong_pay_result", [=](EventCustom* event){
+        if(NULL != getChildByTag(4843)){
+            getChildByTag(4843)->removeFromParent();
+        }
+        std::string result = static_cast<char*>(event->getUserData());
+        ShopHintDialog* da = ShopHintDialog::create();
+        if(result == "1"){
+            da->showText("充值成功");
+//            ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
+//            addChild(par,20);
+            updateHeroInfo();
+        }else{
+            da->showText("充值失败");
+        }
+        addChild(da,20);
+    });
+
     
     //点击事件
     auto listener = EventListenerKeyboard::create();
@@ -785,6 +812,8 @@ void LobbyScene::addEventListener(){
         }
     };
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    
 }
 
 

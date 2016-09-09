@@ -69,4 +69,6 @@ void DiamondNotEnoughDialog::closeView(){
 
 
 void DiamondNotEnoughDialog::chargeDiamond(){
-    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"1");}
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"11");
+}
+
