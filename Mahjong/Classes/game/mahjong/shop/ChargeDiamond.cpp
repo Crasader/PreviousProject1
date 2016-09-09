@@ -16,9 +16,9 @@
 
 
 bool ChargeDiamond::init(){
-
-    if(!Layer::init()){
     
+    if(!Layer::init()){
+        
         return false;
     }
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDiamondChangeListCommand());
@@ -49,9 +49,9 @@ bool ChargeDiamond::init(){
     }else{
         showChargeDialog();
     }
-
+    
     return true;
-
+    
 }
 
 
@@ -71,7 +71,7 @@ void ChargeDiamond::onExit(){
 }
 
 void ChargeDiamond::showChargeDialog(){
-     DiamondChangeList list = GAMEDATA::getInstance()->getDiamondChangeList();
+    DiamondChangeList list = GAMEDATA::getInstance()->getDiamondChangeList();
     for(int i=0;i<list.list.size();i++){
         auto propBg =  Sprite::create("shop/prop_bg.png");
         propBg->setPosition(285+175*i,345);
@@ -88,7 +88,7 @@ void ChargeDiamond::showChargeDialog(){
             diamond->setTexture("shop/diamond_icon_1.png");
         }else{
             diamond->setTexture("shop/diamond_icon_3.png");
-
+            
         }
         diamond->setPosition(285+175*i,370);
         this->addChild(diamond);
@@ -128,17 +128,17 @@ void ChargeDiamond::showChargeDialog(){
         auto yuan = Sprite::create("shop/font_yuan.png");
         yuan->setPosition(325+175*i,225);
         addChild(yuan);
-
+        
         
     }
-
+    
 }
 
 void ChargeDiamond::closeView(){
     removeFromParent();
-
+    
 }
 
 void ChargeDiamond::chargeButtonClick(Ref* ref){
-    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"1");
+        CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"1");
 }

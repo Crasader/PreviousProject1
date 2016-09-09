@@ -19,6 +19,7 @@ void GAMEDATA::init(){
     setContinueAgain(false);
     setIsResume(false);
     setIsGotoLobby(false);
+    setIsInPay(false);
     setShowDialogType(-1);
     setNeedRemovePoker(-1);
     setHuangfan("0");

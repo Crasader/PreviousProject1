@@ -87,7 +87,8 @@ public:
     CC_SYNTHESIZE(bool, needAddPlayer,NeedAddPlayer);
     CC_SYNTHESIZE(bool, isLiuJu, IsLiuJu);
     CC_SYNTHESIZE(bool, isResume, IsResume);
-    CC_SYNTHESIZE(bool, isGotoLobby, IsGotoLobby)
+    CC_SYNTHESIZE(bool, isGotoLobby, IsGotoLobby);
+    CC_SYNTHESIZE(bool, isInPay, IsInPay);
     CC_SYNTHESIZE(int, showDialogType, ShowDialogType);
     CC_SYNTHESIZE(int, needRemovePoker, NeedRemovePoker);
     CC_SYNTHESIZE(string, dice, Dice);

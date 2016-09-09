@@ -11,11 +11,15 @@ MahjongPayHandler* MahjongPayHandler::getInstance()
 	return _instance;
 }
 
-void MahjongPayHandler::dealEventCallBack(int eventId, int result,int propIds[], int propNums[]){
+void MahjongPayHandler::dealEventCallBack(int eventId, int result){
 	
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) 
-//	log("dealEventSuccess eventId=%d", eventId);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    if(result == 1){
+        log("dealEventCallBack SUCCESS");
+    }else{
+        log("dealEventCallBack FAIL");
+    }
+    
 #endif
-//	log("dealEventSuccess eventId=" + eventId);
-    log("pay pay pay pay pay");
+    log("dealEventCallBack dealEventCallBack dealEventCallBack");
 }

@@ -1,5 +1,6 @@
 package com.poxiao.mahjong.wxapi;
 
+import org.cocos2dx.cpp.payment.JniPayCallbackHelper;
 import org.cocos2dx.cpp.payment.Payment;
 
 import com.tbu.wx.util.WxAppInfo;
@@ -41,13 +42,9 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 		if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
 			// PayResp payResp = (PayResp) resp;
 			if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
-				if (Payment.queryPayResult()) {
-					// TODO 支付成功
-				} else {
-					// TODO 支付失败
-				}
+				Payment.queryPayResult();
 			} else {
-				// TODO 支付失败
+				JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId) , 0);
 			}
 		}
 		WXPayEntryActivity.this.finish();

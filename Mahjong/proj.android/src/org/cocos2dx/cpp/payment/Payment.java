@@ -12,8 +12,10 @@ import android.app.Activity;
 
 public class Payment {
 
+	public static String eventId = null;//计费点编号
 	private static Activity activity;
     private static String pxOrderId = null;//支付订单
+    
 	
 	public static void init(Activity activity) {
 		Payment.activity = activity;
@@ -25,12 +27,13 @@ public class Payment {
 	 * @param poxiaoId
 	 * @param payPoint
 	 */
-	public static void requestEvent(String poxiaoId,String payPoint) {
-		Debug.e("Payment start requestEvent ...");
+	public static void requestEvent(final String poxiaoId,final String payPoint) {
+		Debug.i("Payment start requestEvent ...");
 		TbuWxPay.getInstance().Pay(poxiaoId,payPoint,new WxPayCallBack() {		
 			@Override
 			public void wxPayCallback(String orderId) {
 				pxOrderId = orderId;
+				eventId = payPoint;
 				Debug.e("破晓支付的订单编号:"+pxOrderId);
 			}
 		});
@@ -39,17 +42,20 @@ public class Payment {
 	/**
 	 * 微信支付结果查询
 	 */
-	public static boolean queryPayResult() {
-		Debug.e("Payment start queryPayResult ...");
+	public static void queryPayResult() {
+		Debug.i("Payment start queryPayResult ...");
 		if(null != pxOrderId){
 			TbuWxPay.getInstance().queryOrder(pxOrderId,new QueryCallBack() {	
 				@Override
-				public boolean queryCallback(boolean result) {
-					return result;
+				public void queryCallback(boolean result) {
+					if(result){
+						JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId) , 1);
+					}else{
+						JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId) , 0);
+					}
 				}
 			});
 		}
-		return false;
 	}
 	//获取系统时间
 	public static String getDateFormat() {

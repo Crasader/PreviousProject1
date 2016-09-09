@@ -10,7 +10,7 @@ class CallAndroidMethod{
 public:
 	static CallAndroidMethod* getInstance();
 	void requestEvent(std::string poxiaoId,std::string payId);
-	void dealEventCallBack(int requestId, bool isOpen, bool payResult, int propIds[], int propNums[], int count);
+    void queryEventResult();
 	const char* getJniPath();
 private:
 	std::string _jniPath;

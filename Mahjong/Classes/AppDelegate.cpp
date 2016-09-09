@@ -1,6 +1,8 @@
 #include "AppDelegate.h"
 #include "audio/include/AudioEngine.h"
 #include "game/mahjong/splash/LoadResource.hpp"
+#include "game/mahjong/state/GameData.h"
+#include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
 
 USING_NS_CC;
@@ -86,7 +88,12 @@ void AppDelegate::applicationWillEnterForeground() {
     }else{
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
     }
+    if(GAMEDATA::getInstance()->getIsInPay()){
+        CallAndroidMethod::getInstance()->queryEventResult();
+        GAMEDATA::getInstance()->setIsInPay(false);
+    }
 #else
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
 #endif
+   
 }
