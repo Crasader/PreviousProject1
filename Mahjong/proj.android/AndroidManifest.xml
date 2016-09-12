@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.poxiao.mahjong.wxapi.WXPayEntryActivity"
+            android:name="com.poxiao.mahjong.wxapi.WXEntryActivity"
             android:exported="true"
             android:launchMode="singleTop" />
 

@@ -11,6 +11,7 @@ public:
 	static CallAndroidMethod* getInstance();
 	void requestEvent(std::string poxiaoId,std::string payId);
     void queryEventResult();
+    void weChatLogin();
     void shareToWeChat(std::string url,std::string title,std::string content,bool friends);
 	const char* getJniPath();
 private:

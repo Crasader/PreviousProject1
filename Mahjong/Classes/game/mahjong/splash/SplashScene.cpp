@@ -7,6 +7,7 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
 #include "game/mahjong/splash/dropdownlist/LoginMannger.h"
+#include "payment/android/CallAndroidMethod.h"
 #include "game/utils/Audio.h"
 #include "game/utils/SeatIdUtil.h"
 #include "server/NetworkManage.h"
@@ -221,25 +222,10 @@ void SplashScene::loginByPass(){
 }
 
 void SplashScene::loginByVisitor(){
-    //std::string userName = _editName->getText();
-    //std::string password = _editPwd->getText();
-    //if (UserData::getInstance()->getUserName() != "unknow"&&UserData::getInstance()->getPassword() != "unknow"){
-    //	if (userName == ""&&password == ""){
-    //		NetworkManage::getInstance()->sendMsg(
-    //			JsonManage::getInstance()->getLoginCommmand(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-    //	}
-    //	else{
-    //		NetworkManage::getInstance()->sendMsg(
-    //			JsonManage::getInstance()->getLoginCommmand(userName, password));
-    //	}
-    //showLoading();
-    //}
-    //else{
-    //	NetworkManage::getInstance()->sendMsg(JsonManage::getInstance()->getVisitorLoginCommand());
-    //}
     Audio::getInstance()->playSoundClick();
     showLoading();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVisitorLoginCommand());
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVisitorLoginCommand());
+    CallAndroidMethod::getInstance()->weChatLogin();
 }
 
 

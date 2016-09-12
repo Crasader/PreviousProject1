@@ -73,6 +73,7 @@ public:
     std::string getOnResumeCommand();
     std::string getContinueGameCommand();
     std::string getPlayerChatMsgCommand(std::string msg,std::string pid);
+    std::string getThirdLoginCommand(std::string openid);
 private:
 	CommandManage();
 	static CommandManage* _instance;

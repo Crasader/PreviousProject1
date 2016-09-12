@@ -576,6 +576,15 @@ std::string CommandManage::getPlayerChatMsgCommand(std::string msg,std::string p
     return commandString(keyValue);
 }
 
+std::string CommandManage::getThirdLoginCommand(std::string openid){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_THIRED_LOGIN_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("type", "1"));
+    keyValue.insert(map<string, string>::value_type("openid", openid));
+    return commandString(keyValue);
+
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
 	rapidjson::Document document;
 	rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

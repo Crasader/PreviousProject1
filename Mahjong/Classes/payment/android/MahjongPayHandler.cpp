@@ -1,6 +1,7 @@
 #include "payment/android/MahjongPayHandler.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
 
 static MahjongPayHandler* _instance = nullptr;
 MahjongPayHandler* MahjongPayHandler::getInstance()
@@ -23,4 +24,9 @@ void MahjongPayHandler::dealEventCallBack(int eventId, int result){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     
 #endif
+}
+
+
+void MahjongPayHandler::loginThirdPlatform(std::string openid){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(openid));
 }

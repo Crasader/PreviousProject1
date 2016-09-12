@@ -25,3 +25,11 @@ Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_eventCallBack(JNIEnv* env, jc
 //		carr1 = env->GetIntArrayElements(propNums, false);
 		MahjongPayHandler::getInstance()->dealEventCallBack(eventId,result);
 	}
+
+extern "C" JNIEXPORT void JNICALL
+Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loginThirdPlatform(JNIEnv* env, jclass jcl,jstring openid)
+	{
+	  char*   newOPenId;
+	  newOPenId   =   (char*)env->GetStringUTFChars(openid,0);
+	  MahjongPayHandler::getInstance()->loginThirdPlatform(newOPenId);
+	}

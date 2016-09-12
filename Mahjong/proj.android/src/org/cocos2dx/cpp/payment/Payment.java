@@ -5,16 +5,19 @@ import java.util.Date;
 
 import com.tbu.androidtools.Debug;
 import com.tbu.wx.http.callback.QueryCallBack;
+import com.tbu.wx.http.callback.TokenCallBack;
 import com.tbu.wx.http.callback.WxPayCallBack;
-import com.tbu.wx.pay.TbuWxUtil;
+import com.tbu.wx.wechat.TbuWxUtil;
 
 import android.app.Activity;
 
 public class Payment {
 
 	public static String eventId = null;//计费点编号
+	private static String weChatState = null;//微信用于保持请求和回调的状态，授权请求后原样带回给第三方
 	private static Activity activity;
     private static String pxOrderId = null;//支付订单
+    private static final String POXIAOSIGN ="poxiaosign";
     
 	
 	public static void init(Activity activity) {
@@ -58,9 +61,36 @@ public class Payment {
 		}
 	}
 	
+	/**
+	 * 微信分享
+	 * @param webpageUrl
+	 * @param title
+	 * @param description
+	 * @param friends
+	 */
 	public static void shareToWeChat(String webpageUrl,String title,String description,boolean friends){
 		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description, friends);
 	}
+	
+	/**
+	 * 发起微信登录
+	 */
+	public static void weChatLogin(){
+		TbuWxUtil.getInstance().getWechatCode(getWeChatState());
+	}
+	
+	public static void getWechatToken(String code,final TokenCallBack tcallback){
+		TbuWxUtil.getInstance().getWechatToken(code,new  TokenCallBack() {
+			@Override
+			public void callBack(String token) {
+				tcallback.callBack(token);
+			}
+		});
+	}
+	
+
+	
+	
 	
 	//获取系统时间
 	public static String getDateFormat() {
@@ -68,4 +98,14 @@ public class Payment {
 		date.applyLocalizedPattern("yyyyMMddHHmmssSSS");
 		return date.format(new Date());
 	}
+
+	public static String getWeChatState() {
+		if(null == weChatState){
+			weChatState = POXIAOSIGN+getDateFormat();
+		}
+//		Debug.e("weChatState = "+weChatState);
+		return weChatState;
+	}
+	
+	
 }
