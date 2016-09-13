@@ -224,7 +224,6 @@ void SplashScene::loginByPass(){
 void SplashScene::loginByVisitor(){
     Audio::getInstance()->playSoundClick();
     showLoading();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVisitorLoginCommand());
     CallAndroidMethod::getInstance()->weChatLogin();
 }
 

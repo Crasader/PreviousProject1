@@ -28,5 +28,10 @@ void MahjongPayHandler::dealEventCallBack(int eventId, int result){
 
 
 void MahjongPayHandler::loginThirdPlatform(std::string openid){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(openid));
+    if("" == openid){
+        //登录错误的提示
+    }else{
+        
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(openid));
+    }
 }

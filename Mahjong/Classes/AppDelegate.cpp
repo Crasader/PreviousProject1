@@ -86,7 +86,9 @@ void AppDelegate::applicationWillEnterForeground() {
     if(resumeIndex == 0){
         resumeIndex++;
     }else{
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
+        if("" != CommandManage::getInstance()->getOnResumeCommand()){
+          NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
+        }
     }
     if(GAMEDATA::getInstance()->getIsInPay()){
         CallAndroidMethod::getInstance()->queryEventResult();

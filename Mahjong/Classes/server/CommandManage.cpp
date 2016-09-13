@@ -555,8 +555,10 @@ std::string CommandManage::getFeedBackCommand(std::string msg){
 
 std::string CommandManage::getOnResumeCommand(){
     std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_BACK_RESUME_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    if("" != UserData::getInstance()->getPoxiaoId() && "unknow" != UserData::getInstance()->getPoxiaoId()){
+        keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_BACK_RESUME_REQUEST)));
+        keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    }
     return commandString(keyValue);
 }
 
@@ -580,7 +582,7 @@ std::string CommandManage::getThirdLoginCommand(std::string openid){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_THIRED_LOGIN_REQUEST)));
     keyValue.insert(map<string, string>::value_type("type", "1"));
-    keyValue.insert(map<string, string>::value_type("openid", openid));
+    keyValue.insert(map<string, string>::value_type("open_id", openid));
     return commandString(keyValue);
 
 }

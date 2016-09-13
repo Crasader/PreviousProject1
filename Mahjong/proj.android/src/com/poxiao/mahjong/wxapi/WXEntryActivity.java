@@ -2,11 +2,9 @@ package com.poxiao.mahjong.wxapi;
 
 import org.cocos2dx.cpp.payment.JniPayCallbackHelper;
 import org.cocos2dx.cpp.payment.Payment;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.tbu.androidtools.Debug;
-import com.tbu.wx.http.callback.TokenCallBack;
+import com.tbu.wx.http.callback.WechatLoginCallBack;
 import com.tbu.wx.util.WxAppInfo;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
@@ -52,35 +50,27 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 				JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId), 0);
 			}
 		} else if (ConstantsAPI.COMMAND_SENDAUTH == resp.getType()) {
-			 
-			 SendAuth.Resp authresp = (SendAuth.Resp)resp;
-			 if(BaseResp.ErrCode.ERR_OK == authresp.errCode){
-				if(Payment.getWeChatState().equals(authresp.state)){
-					Payment.getWechatToken(authresp.code,new TokenCallBack() {
+
+			SendAuth.Resp authresp = (SendAuth.Resp) resp;
+			if (BaseResp.ErrCode.ERR_OK == authresp.errCode) {
+				if (Payment.getWeChatState().equals(authresp.state)) {
+					Payment.getWechatToken(authresp.code, new WechatLoginCallBack() {
 						@Override
-						public void callBack(String msg) {
-							Debug.e("wechat return msg = "+ msg);
-							try {
-								JSONObject obj = new JSONObject(msg);	
-								String openid = obj.getString("openid");
-								Debug.e("we chat openid = "+openid);
-								JniPayCallbackHelper.loginThirdPlatform(openid);
-							} catch (JSONException e) {
-								e.printStackTrace();
-							}
+						public void callBack(String openid) {
+							JniPayCallbackHelper.loginThirdPlatform(openid);
 						}
 					});
-				}else{
+				} else {
 					Debug.e("错误的微信请求参数state");
 				}
-				 
-			 }else if(BaseResp.ErrCode.ERR_AUTH_DENIED == authresp.errCode){
-				 //用户拒绝授权
-				 
-			 }else if(BaseResp.ErrCode.ERR_USER_CANCEL == authresp.errCode){
-				 //用户取消
-				 
-			 }
+
+			} else if (BaseResp.ErrCode.ERR_AUTH_DENIED == authresp.errCode) {
+				// 用户拒绝授权
+
+			} else if (BaseResp.ErrCode.ERR_USER_CANCEL == authresp.errCode) {
+				// 用户取消
+
+			}
 		} else if (ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX == resp.getType()) {
 
 		}
