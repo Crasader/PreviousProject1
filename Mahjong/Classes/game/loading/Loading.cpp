@@ -77,7 +77,6 @@ void Loading::craeteAnimate(Point pos){
 	auto repeatForever = RepeatForever::create(action);
 	parentSprite->runAction(repeatForever);
    
-
 }
 
 void Loading::update(float dt){
@@ -89,7 +88,7 @@ void Loading::update(float dt){
         leb->setPosition(640,320);
         addChild(leb);
         schedule([=](float dt){
-            setVisible(false);
+            removeFromParent();
         }, 0, 0, 2.0f,"rotk");
     }
 }
