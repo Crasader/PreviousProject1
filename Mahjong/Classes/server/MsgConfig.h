@@ -277,7 +277,6 @@
 #define MSG_PLAYER_LEQUAN_EXCHANGE "msg_player_lequan_exchange"
 #define MSG_PLAYER_LEQUAN_EXCHANGE_RECORD "msg_player_lequan_exchange_record"
 #define MSG_HERO_CONTINUE_RESP "msg_hero_continue_resp"
-#define MSG_PLAYER_INFO_RESP "msg_player_info_resp"
 #define MSG_PLAYER_FIND_PASSWORD_RESP "msg_player_find_password_resp"
 #define MSG_PLAYER_OFF_LINE_NOTIFY "msg_player_off_line_notify"
 #define MSG_PLAYER_CHANGE_HEAD_RESP "msg_player_change_head_resp"

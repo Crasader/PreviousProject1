@@ -2233,7 +2233,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         const rapidjson::Value &jifen = _mDoc["jifen"];
         UserData::getInstance()->setScore(jifen.GetInt());
     }
-//    postNotifyMessage(MSG_PLAYER_INFO_RESP, "");
+    postNotifyMessage(MSG_UPDATE_HERO_INFO, "");
 }
 
 void MsgHandler::getFindPasswordResp(std::string msg){
