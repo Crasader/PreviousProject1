@@ -232,24 +232,24 @@ void Audio::playSoundGang(int gender){
 void Audio::playSoundHu(int type,int gender){
     if(gender==1){
         if(type ==0){
-            AudioEngine::play2d("audio/male/zi_mo_1.ogg",false,UserData::getInstance()->getSoundValue());
+            AudioEngine::play2d("audio/male/zi_mo_1.ogg",false,UserData::getInstance()->getSoundValue()*1.5);
         }else if(type ==1){
-            AudioEngine::play2d("audio/male/gang_kai_1.ogg",false,UserData::getInstance()->getSoundValue());
+            AudioEngine::play2d("audio/male/gang_kai_1.ogg",false,UserData::getInstance()->getSoundValue()*1.5);
         }else if(type ==2){
-            AudioEngine::play2d("audio/male/qiang_gang_1.ogg",false,UserData::getInstance()->getSoundValue());
+            AudioEngine::play2d("audio/male/qiang_gang_1.ogg",false,UserData::getInstance()->getSoundValue()*1.5);
         }else {
-            AudioEngine::play2d("audio/male/hu_pai_1.ogg",false,UserData::getInstance()->getSoundValue());
+            AudioEngine::play2d("audio/male/hu_pai_1.ogg",false,UserData::getInstance()->getSoundValue()*1.5);
         }
     }
     else{
         if(type ==0){
-            AudioEngine::play2d("audio/famale/zi_mo_1.ogg",false,UserData::getInstance()->getSoundValue());
+            AudioEngine::play2d("audio/famale/zi_mo_1.ogg",false,UserData::getInstance()->getSoundValue()*1.5);
         }else if(type ==1){
-            AudioEngine::play2d("audio/famale/gang_kai_1.ogg",false,UserData::getInstance()->getSoundValue());
+            AudioEngine::play2d("audio/famale/gang_kai_1.ogg",false,UserData::getInstance()->getSoundValue()*1.5);
         }else if(type ==2){
-            AudioEngine::play2d("audio/famale/qiang_gang_1.ogg",false,UserData::getInstance()->getSoundValue());
+            AudioEngine::play2d("audio/famale/qiang_gang_1.ogg",false,UserData::getInstance()->getSoundValue()*1.5);
         }else {
-            AudioEngine::play2d("audio/famale/hu_pai_1.ogg",false,UserData::getInstance()->getSoundValue());
+            AudioEngine::play2d("audio/famale/hu_pai_1.ogg",false,UserData::getInstance()->getSoundValue()*1.5);
         }
     }
 }
