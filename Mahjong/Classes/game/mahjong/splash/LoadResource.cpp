@@ -24,8 +24,18 @@ bool LoadResource::init(){
     
         return false;
     }
-    showLayer();
+//    showLayer();
+    showHealthLayer();
     return true;
+}
+
+void LoadResource::showHealthLayer(){
+    auto health = Sprite::create("mainlogin/health.png");
+    health->setPosition(720,360);
+    addChild(health);
+    health->runAction(Sequence::create(DelayTime::create(2.0f),CallFunc::create([=](){
+        Director::getInstance()->replaceScene(TransitionFade::create(1.5f, SplashScene::createScene()));
+    }),NULL));
 }
 
 void LoadResource::showLayer(){

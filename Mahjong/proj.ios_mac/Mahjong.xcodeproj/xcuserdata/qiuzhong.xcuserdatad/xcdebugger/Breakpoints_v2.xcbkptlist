@@ -2133,11 +2133,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/splash/LoadResource.cpp"
-            timestampString = "488874262.335478"
+            timestampString = "495430176.198812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "LoadResource::showLayer()"
             landmarkType = "5">
          </BreakpointContent>

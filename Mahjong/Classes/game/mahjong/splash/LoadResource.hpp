@@ -20,6 +20,7 @@ public:
     static cocos2d::Scene* createScene();
     CREATE_FUNC(LoadResource);
 private:
+    void showHealthLayer();
     void showLayer();
 };
 #endif /* LoadResource_hpp */
