@@ -731,9 +731,9 @@ void Audio::playSoundNorth(int gender){
 
 void Audio::playSoundHuMusic(int type){
     if(type == 0){
-        AudioEngine::play2d("audio/hu_pai.mp3",false,UserData::getInstance()->getSoundValue());
+        AudioEngine::play2d("audio/hu_pai.mp3",false,UserData::getInstance()->getSoundValue()*0.6f);
     }else{
-        AudioEngine::play2d("audio/zimo_gangkai.wav",false,UserData::getInstance()->getSoundValue());
+        AudioEngine::play2d("audio/zimo_gangkai.wav",false,UserData::getInstance()->getSoundValue()*0.6f);
     }
 }
 
