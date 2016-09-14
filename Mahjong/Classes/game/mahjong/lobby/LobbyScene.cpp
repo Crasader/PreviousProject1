@@ -379,10 +379,9 @@ void LobbyScene::showGameSetting(){
 }
 
 void LobbyScene::showHotActivity(){
-//    Audio::getInstance()->playSoundClick();
-//    MahjongActivities* act = MahjongActivities::create();
-//    addChild(act,3);
-    CallAndroidMethod::getInstance()->shareToWeChat("http://183.129.206.54:1111/majiang.html","食戟之灵","参见药王",false);
+    Audio::getInstance()->playSoundClick();
+    MahjongActivities* act = MahjongActivities::create();
+    addChild(act,3);
 }
 
 void LobbyScene::showHeroInfo(){
