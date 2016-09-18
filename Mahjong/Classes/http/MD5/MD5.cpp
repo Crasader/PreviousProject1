@@ -7,7 +7,9 @@
 //
 
 #include "http/MD5/MD5.hpp"
-#include "stdafx.h"
+#ifdef WIN32
+#include "stdAfx.h"
+#endif
 
 using namespace std;
 

@@ -59,7 +59,9 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 				if (Payment.getWeChatState().equals(authresp.state)) {
 					Payment.getWechatToken(authresp.code, new WechatLoginCallBack() {
 						@Override
-						public void callBack(String openid) {
+						public void callBack(String openid,String image) {
+							Debug.i("微信登录游戏...");
+							JniPayCallbackHelper.loadImageByURL(image);
 							JniPayCallbackHelper.loginThirdPlatform(openid);
 						}
 					});

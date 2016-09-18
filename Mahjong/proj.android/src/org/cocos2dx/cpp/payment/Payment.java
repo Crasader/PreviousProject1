@@ -109,8 +109,8 @@ public class Payment {
 	public static void getWechatToken(String code, final WechatLoginCallBack tcallback) {
 		TbuWxUtil.getInstance().getWechatToken(code, new WechatLoginCallBack() {
 			@Override
-			public void callBack(String token) {
-				tcallback.callBack(token);
+			public void callBack(String token,String image) {
+				tcallback.callBack(token,image);
 			}
 		});
 	}

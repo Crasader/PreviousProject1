@@ -31,13 +31,17 @@ void MahjongPayHandler::dealEventCallBack(int eventId, int result){
 void MahjongPayHandler::loginThirdPlatform(std::string openid){
     if("" == openid){
         //登录错误的提示
+        log("mahjong game openid is null");
     }else{
-        
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(openid));
+        std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,UserData::getInstance()->getPicture());
+        if(msg != ""){
+            NetworkManage::getInstance()->sendMsg(msg);
+        }
     }
 }
 
 
 void MahjongPayHandler::loadImageByURL(std::string url){
+    UserData::getInstance()->setPicture(url);
     UrlImageMannger::getInstance()->loadImgByUrl(url);
 }
