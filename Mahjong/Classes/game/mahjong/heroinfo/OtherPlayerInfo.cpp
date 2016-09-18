@@ -8,6 +8,7 @@
 
 #include "game/mahjong/heroinfo/OtherPlayerInfo.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/utils/Chinese.h"
 #include "game/utils/SeatIdUtil.h"
@@ -78,18 +79,7 @@ bool OtherPlayerInfo::init(Player* player){
     addChild(dialogBg);
     
     
-    auto headBg = Sprite::create();
-    if(player->getPicture() == "1"){
-        headBg->setTexture("gameview/head_image_1.png");
-    }else if(player->getPicture() == "2"){
-        headBg->setTexture("gameview/head_image_2.png");
-    }else if(player->getPicture() == "3"){
-        headBg->setTexture("gameview/head_image_3.png");
-    }else if(player->getPicture() == "4"){
-        headBg->setTexture("gameview/head_image_4.png");
-    }else{
-        log("服务器下发的头像图片不存在");
-    }
+    auto headBg = HeadImage::createByImage(player->getPicture(), Size(90,90));
     headBg->setPosition(70,160);
     headBg->setScale(0.6f);
     dialogBg->addChild(headBg);
