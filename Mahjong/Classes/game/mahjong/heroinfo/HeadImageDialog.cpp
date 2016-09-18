@@ -1,5 +1,5 @@
-#include "game/mahjong/playerinfo/HeadImageDialog.h"
-#include "game/mahjong/playerinfo/UserInfo.h"
+#include "game/mahjong/heroinfo/HeadImageDialog.h"
+#include "game/mahjong/heroinfo/UserInfo.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 

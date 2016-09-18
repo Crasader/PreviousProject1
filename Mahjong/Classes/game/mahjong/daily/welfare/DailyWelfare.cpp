@@ -1,6 +1,6 @@
 #include "game/mahjong/daily/welfare/DailyWelfare.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
-#include "game/mahjong/playerinfo/HeroInfoEdit.h"
+#include "game/mahjong/heroinfo/HeroInfoEdit.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"

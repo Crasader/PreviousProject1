@@ -1,9 +1,9 @@
 #pragma once
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "game/mahjong/playerinfo/UserInfo.h"
-#include "game/mahjong/playerinfo/BoundPhone.h"
-#include "game/mahjong/playerinfo/ChangePassword.h"
+#include "game/mahjong/heroinfo/UserInfo.h"
+#include "game/mahjong/heroinfo/BoundPhone.h"
+#include "game/mahjong/heroinfo/ChangePassword.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 

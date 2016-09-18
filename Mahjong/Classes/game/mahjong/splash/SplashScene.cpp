@@ -12,7 +12,6 @@
 #include "game/utils/SeatIdUtil.h"
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
-#include "http/image/UrlImageMannger.h"
 
 
 

@@ -1,6 +1,5 @@
-#include "game/mahjong/playerinfo/GenderDialog.h"
-#include "game/mahjong/playerinfo/UserInfo.h"
-#include "game/mahjong/playerinfo/UserInfo.h"
+#include "game/mahjong/heroinfo/GenderDialog.h"
+#include "game/mahjong/heroinfo/UserInfo.h"
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"

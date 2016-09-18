@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/playerinfo/OtherPlayerInfo.hpp"
+#include "game/mahjong/heroinfo/OtherPlayerInfo.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/utils/Chinese.h"

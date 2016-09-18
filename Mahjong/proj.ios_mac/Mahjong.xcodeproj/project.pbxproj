@@ -129,22 +129,6 @@
 		D22EEFC61D66D14D00BF1CCB /* TaskCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF991D66D14D00BF1CCB /* TaskCell.cpp */; };
 		D22EEFC71D66D14D00BF1CCB /* DailyWelfare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF9C1D66D14D00BF1CCB /* DailyWelfare.cpp */; };
 		D22EEFC81D66D14D00BF1CCB /* DailyWelfare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF9C1D66D14D00BF1CCB /* DailyWelfare.cpp */; };
-		D22EEFC91D66D14D00BF1CCB /* BoundPhone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF9F1D66D14D00BF1CCB /* BoundPhone.cpp */; };
-		D22EEFCA1D66D14D00BF1CCB /* BoundPhone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF9F1D66D14D00BF1CCB /* BoundPhone.cpp */; };
-		D22EEFCB1D66D14D00BF1CCB /* ChangePassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA11D66D14D00BF1CCB /* ChangePassword.cpp */; };
-		D22EEFCC1D66D14D00BF1CCB /* ChangePassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA11D66D14D00BF1CCB /* ChangePassword.cpp */; };
-		D22EEFCD1D66D14D00BF1CCB /* GenderDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA31D66D14D00BF1CCB /* GenderDialog.cpp */; };
-		D22EEFCE1D66D14D00BF1CCB /* GenderDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA31D66D14D00BF1CCB /* GenderDialog.cpp */; };
-		D22EEFCF1D66D14D00BF1CCB /* HeadImageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA51D66D14D00BF1CCB /* HeadImageDialog.cpp */; };
-		D22EEFD01D66D14D00BF1CCB /* HeadImageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA51D66D14D00BF1CCB /* HeadImageDialog.cpp */; };
-		D22EEFD11D66D14D00BF1CCB /* HeroInfoEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA71D66D14D00BF1CCB /* HeroInfoEdit.cpp */; };
-		D22EEFD21D66D14D00BF1CCB /* HeroInfoEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA71D66D14D00BF1CCB /* HeroInfoEdit.cpp */; };
-		D22EEFD31D66D14D00BF1CCB /* NickNameDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA91D66D14D00BF1CCB /* NickNameDialog.cpp */; };
-		D22EEFD41D66D14D00BF1CCB /* NickNameDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFA91D66D14D00BF1CCB /* NickNameDialog.cpp */; };
-		D22EEFD51D66D14D00BF1CCB /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFAB1D66D14D00BF1CCB /* OtherPlayerInfo.cpp */; };
-		D22EEFD61D66D14D00BF1CCB /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFAB1D66D14D00BF1CCB /* OtherPlayerInfo.cpp */; };
-		D22EEFD71D66D14D00BF1CCB /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFAD1D66D14D00BF1CCB /* UserInfo.cpp */; };
-		D22EEFD81D66D14D00BF1CCB /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFAD1D66D14D00BF1CCB /* UserInfo.cpp */; };
 		D22EEFD91D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB01D66D14D00BF1CCB /* GameFeedDialog.cpp */; };
 		D22EEFDA1D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB01D66D14D00BF1CCB /* GameFeedDialog.cpp */; };
 		D22EEFDB1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB21D66D14D00BF1CCB /* GameRuleDialog.cpp */; };
@@ -310,6 +294,22 @@
 		D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
 		D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
 		D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
+		D2F05F5B1D8E7500006E5A4C /* BoundPhone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F4B1D8E7500006E5A4C /* BoundPhone.cpp */; };
+		D2F05F5C1D8E7500006E5A4C /* BoundPhone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F4B1D8E7500006E5A4C /* BoundPhone.cpp */; };
+		D2F05F5D1D8E7500006E5A4C /* ChangePassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F4D1D8E7500006E5A4C /* ChangePassword.cpp */; };
+		D2F05F5E1D8E7500006E5A4C /* ChangePassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F4D1D8E7500006E5A4C /* ChangePassword.cpp */; };
+		D2F05F5F1D8E7500006E5A4C /* GenderDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F4F1D8E7500006E5A4C /* GenderDialog.cpp */; };
+		D2F05F601D8E7500006E5A4C /* GenderDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F4F1D8E7500006E5A4C /* GenderDialog.cpp */; };
+		D2F05F611D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F511D8E7500006E5A4C /* HeadImageDialog.cpp */; };
+		D2F05F621D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F511D8E7500006E5A4C /* HeadImageDialog.cpp */; };
+		D2F05F631D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F531D8E7500006E5A4C /* HeroInfoEdit.cpp */; };
+		D2F05F641D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F531D8E7500006E5A4C /* HeroInfoEdit.cpp */; };
+		D2F05F651D8E7500006E5A4C /* NickNameDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F551D8E7500006E5A4C /* NickNameDialog.cpp */; };
+		D2F05F661D8E7500006E5A4C /* NickNameDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F551D8E7500006E5A4C /* NickNameDialog.cpp */; };
+		D2F05F671D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */; };
+		D2F05F681D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */; };
+		D2F05F691D8E7500006E5A4C /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F591D8E7500006E5A4C /* UserInfo.cpp */; };
+		D2F05F6A1D8E7500006E5A4C /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F591D8E7500006E5A4C /* UserInfo.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -476,22 +476,6 @@
 		D22EEF9A1D66D14D00BF1CCB /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		D22EEF9C1D66D14D00BF1CCB /* DailyWelfare.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyWelfare.cpp; sourceTree = "<group>"; };
 		D22EEF9D1D66D14D00BF1CCB /* DailyWelfare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyWelfare.h; sourceTree = "<group>"; };
-		D22EEF9F1D66D14D00BF1CCB /* BoundPhone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundPhone.cpp; sourceTree = "<group>"; };
-		D22EEFA01D66D14D00BF1CCB /* BoundPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundPhone.h; sourceTree = "<group>"; };
-		D22EEFA11D66D14D00BF1CCB /* ChangePassword.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChangePassword.cpp; sourceTree = "<group>"; };
-		D22EEFA21D66D14D00BF1CCB /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
-		D22EEFA31D66D14D00BF1CCB /* GenderDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GenderDialog.cpp; sourceTree = "<group>"; };
-		D22EEFA41D66D14D00BF1CCB /* GenderDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderDialog.h; sourceTree = "<group>"; };
-		D22EEFA51D66D14D00BF1CCB /* HeadImageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeadImageDialog.cpp; sourceTree = "<group>"; };
-		D22EEFA61D66D14D00BF1CCB /* HeadImageDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadImageDialog.h; sourceTree = "<group>"; };
-		D22EEFA71D66D14D00BF1CCB /* HeroInfoEdit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroInfoEdit.cpp; sourceTree = "<group>"; };
-		D22EEFA81D66D14D00BF1CCB /* HeroInfoEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroInfoEdit.h; sourceTree = "<group>"; };
-		D22EEFA91D66D14D00BF1CCB /* NickNameDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NickNameDialog.cpp; sourceTree = "<group>"; };
-		D22EEFAA1D66D14D00BF1CCB /* NickNameDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameDialog.h; sourceTree = "<group>"; };
-		D22EEFAB1D66D14D00BF1CCB /* OtherPlayerInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OtherPlayerInfo.cpp; sourceTree = "<group>"; };
-		D22EEFAC1D66D14D00BF1CCB /* OtherPlayerInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OtherPlayerInfo.hpp; sourceTree = "<group>"; };
-		D22EEFAD1D66D14D00BF1CCB /* UserInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserInfo.cpp; sourceTree = "<group>"; };
-		D22EEFAE1D66D14D00BF1CCB /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		D22EEFB01D66D14D00BF1CCB /* GameFeedDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameFeedDialog.cpp; sourceTree = "<group>"; };
 		D22EEFB11D66D14D00BF1CCB /* GameFeedDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameFeedDialog.hpp; sourceTree = "<group>"; };
 		D22EEFB21D66D14D00BF1CCB /* GameRuleDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameRuleDialog.cpp; sourceTree = "<group>"; };
@@ -635,6 +619,22 @@
 		D2F05F2C1D8E2B22006E5A4C /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
 		D2F05F461D8E360B006E5A4C /* MD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MD5.cpp; sourceTree = "<group>"; };
 		D2F05F471D8E360B006E5A4C /* MD5.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MD5.hpp; sourceTree = "<group>"; };
+		D2F05F4B1D8E7500006E5A4C /* BoundPhone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoundPhone.cpp; sourceTree = "<group>"; };
+		D2F05F4C1D8E7500006E5A4C /* BoundPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundPhone.h; sourceTree = "<group>"; };
+		D2F05F4D1D8E7500006E5A4C /* ChangePassword.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChangePassword.cpp; sourceTree = "<group>"; };
+		D2F05F4E1D8E7500006E5A4C /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
+		D2F05F4F1D8E7500006E5A4C /* GenderDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GenderDialog.cpp; sourceTree = "<group>"; };
+		D2F05F501D8E7500006E5A4C /* GenderDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderDialog.h; sourceTree = "<group>"; };
+		D2F05F511D8E7500006E5A4C /* HeadImageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeadImageDialog.cpp; sourceTree = "<group>"; };
+		D2F05F521D8E7500006E5A4C /* HeadImageDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadImageDialog.h; sourceTree = "<group>"; };
+		D2F05F531D8E7500006E5A4C /* HeroInfoEdit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroInfoEdit.cpp; sourceTree = "<group>"; };
+		D2F05F541D8E7500006E5A4C /* HeroInfoEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroInfoEdit.h; sourceTree = "<group>"; };
+		D2F05F551D8E7500006E5A4C /* NickNameDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NickNameDialog.cpp; sourceTree = "<group>"; };
+		D2F05F561D8E7500006E5A4C /* NickNameDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameDialog.h; sourceTree = "<group>"; };
+		D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OtherPlayerInfo.cpp; sourceTree = "<group>"; };
+		D2F05F581D8E7500006E5A4C /* OtherPlayerInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OtherPlayerInfo.hpp; sourceTree = "<group>"; };
+		D2F05F591D8E7500006E5A4C /* UserInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserInfo.cpp; sourceTree = "<group>"; };
+		D2F05F5A1D8E7500006E5A4C /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1022,29 +1022,6 @@
 			path = welfare;
 			sourceTree = "<group>";
 		};
-		D22EEF9E1D66D14D00BF1CCB /* playerinfo */ = {
-			isa = PBXGroup;
-			children = (
-				D22EEF9F1D66D14D00BF1CCB /* BoundPhone.cpp */,
-				D22EEFA01D66D14D00BF1CCB /* BoundPhone.h */,
-				D22EEFA11D66D14D00BF1CCB /* ChangePassword.cpp */,
-				D22EEFA21D66D14D00BF1CCB /* ChangePassword.h */,
-				D22EEFA31D66D14D00BF1CCB /* GenderDialog.cpp */,
-				D22EEFA41D66D14D00BF1CCB /* GenderDialog.h */,
-				D22EEFA51D66D14D00BF1CCB /* HeadImageDialog.cpp */,
-				D22EEFA61D66D14D00BF1CCB /* HeadImageDialog.h */,
-				D22EEFA71D66D14D00BF1CCB /* HeroInfoEdit.cpp */,
-				D22EEFA81D66D14D00BF1CCB /* HeroInfoEdit.h */,
-				D22EEFA91D66D14D00BF1CCB /* NickNameDialog.cpp */,
-				D22EEFAA1D66D14D00BF1CCB /* NickNameDialog.h */,
-				D22EEFAB1D66D14D00BF1CCB /* OtherPlayerInfo.cpp */,
-				D22EEFAC1D66D14D00BF1CCB /* OtherPlayerInfo.hpp */,
-				D22EEFAD1D66D14D00BF1CCB /* UserInfo.cpp */,
-				D22EEFAE1D66D14D00BF1CCB /* UserInfo.h */,
-			);
-			path = playerinfo;
-			sourceTree = "<group>";
-		};
 		D22EEFAF1D66D14D00BF1CCB /* setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -1173,6 +1150,7 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D2F05F4A1D8E7500006E5A4C /* heroinfo */,
 				D291B58B1D75262600B05026 /* activities */,
 				D2B1A7B61CCDF0F300A20896 /* anim */,
 				D22EEF671D66CFC800BF1CCB /* bill */,
@@ -1184,7 +1162,6 @@
 				D2B1A82A1CCDF0F300A20896 /* jong */,
 				D2B1A82D1CCDF0F300A20896 /* lobby */,
 				D2B1A8321CCDF0F300A20896 /* player */,
-				D22EEF9E1D66D14D00BF1CCB /* playerinfo */,
 				D28A4A141D056B4700741FD0 /* result */,
 				D22EEFAF1D66D14D00BF1CCB /* setting */,
 				D22EEF561D66CEB600BF1CCB /* share */,
@@ -1423,6 +1400,29 @@
 			path = MD5;
 			sourceTree = "<group>";
 		};
+		D2F05F4A1D8E7500006E5A4C /* heroinfo */ = {
+			isa = PBXGroup;
+			children = (
+				D2F05F4B1D8E7500006E5A4C /* BoundPhone.cpp */,
+				D2F05F4C1D8E7500006E5A4C /* BoundPhone.h */,
+				D2F05F4D1D8E7500006E5A4C /* ChangePassword.cpp */,
+				D2F05F4E1D8E7500006E5A4C /* ChangePassword.h */,
+				D2F05F4F1D8E7500006E5A4C /* GenderDialog.cpp */,
+				D2F05F501D8E7500006E5A4C /* GenderDialog.h */,
+				D2F05F511D8E7500006E5A4C /* HeadImageDialog.cpp */,
+				D2F05F521D8E7500006E5A4C /* HeadImageDialog.h */,
+				D2F05F531D8E7500006E5A4C /* HeroInfoEdit.cpp */,
+				D2F05F541D8E7500006E5A4C /* HeroInfoEdit.h */,
+				D2F05F551D8E7500006E5A4C /* NickNameDialog.cpp */,
+				D2F05F561D8E7500006E5A4C /* NickNameDialog.h */,
+				D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */,
+				D2F05F581D8E7500006E5A4C /* OtherPlayerInfo.hpp */,
+				D2F05F591D8E7500006E5A4C /* UserInfo.cpp */,
+				D2F05F5A1D8E7500006E5A4C /* UserInfo.h */,
+			);
+			path = heroinfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1632,11 +1632,12 @@
 				D22EEF851D66CFC800BF1CCB /* InviteCell.cpp in Sources */,
 				D22EEFDD1D66D14D00BF1CCB /* UserSetting.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
-				D22EEFD51D66D14D00BF1CCB /* OtherPlayerInfo.cpp in Sources */,
+				D2F05F671D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */,
 				D2B1A9031CCDF0F400A20896 /* stdafx.cpp in Sources */,
-				D22EEFD71D66D14D00BF1CCB /* UserInfo.cpp in Sources */,
+				D2F05F691D8E7500006E5A4C /* UserInfo.cpp in Sources */,
 				D22EEFBD1D66D14D00BF1CCB /* PrideCell.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
+				D2F05F5F1D8E7500006E5A4C /* GenderDialog.cpp in Sources */,
 				D22EEF7D1D66CFC800BF1CCB /* FriendAddView.cpp in Sources */,
 				D2B1A8811CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D22EEF4A1D66AAF000BF1CCB /* Huode.cpp in Sources */,
@@ -1646,7 +1647,7 @@
 				D22EEF791D66CFC800BF1CCB /* BillDetailInfo.cpp in Sources */,
 				D2B1A8D71CCDF0F400A20896 /* PlayerBase.cpp in Sources */,
 				D2B1A8771CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
-				D22EEFCD1D66D14D00BF1CCB /* GenderDialog.cpp in Sources */,
+				D2F05F5D1D8E7500006E5A4C /* ChangePassword.cpp in Sources */,
 				D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */,
 				D2B1A8FF1CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8831CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
@@ -1664,20 +1665,21 @@
 				D2B1A8E51CCDF0F400A20896 /* GameData.cpp in Sources */,
 				D2B1A8D11CCDF0F400A20896 /* Jong.cpp in Sources */,
 				D226FD301D05292400324097 /* LoadResource.cpp in Sources */,
+				D2F05F611D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */,
+				D2F05F5B1D8E7500006E5A4C /* BoundPhone.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
-				D22EEFD31D66D14D00BF1CCB /* NickNameDialog.cpp in Sources */,
 				D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D22EEF651D66CEB600BF1CCB /* Redwallet.cpp in Sources */,
 				D22EEF831D66CFC800BF1CCB /* FriendRoom.cpp in Sources */,
 				D22EEFBB1D66D14D00BF1CCB /* DailyPride.cpp in Sources */,
 				D28A4A1D1D056B4700741FD0 /* ResultLayer.cpp in Sources */,
-				D22EEFCF1D66D14D00BF1CCB /* HeadImageDialog.cpp in Sources */,
 				D2CF763E1D62AC690035B870 /* FaceChatLayer.cpp in Sources */,
 				D22912441D128367005C7167 /* LoginMannger.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				D2B1A8D91CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D28A4A1F1D056B4700741FD0 /* ResultScene.cpp in Sources */,
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
+				D2F05F631D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */,
 				D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
 				D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
 				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
@@ -1697,25 +1699,23 @@
 				D22EEF3A1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */,
 				D22EEFB91D66D14D00BF1CCB /* DailyEvent.cpp in Sources */,
 				D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
+				D2F05F651D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
 				D22EEFD91D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
 				D22EEF3E1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */,
 				D22EEFC51D66D14D00BF1CCB /* TaskCell.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D28A4A2E1D056B7A00741FD0 /* Audio.cpp in Sources */,
 				D2B1A8E11CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
-				D22EEFCB1D66D14D00BF1CCB /* ChangePassword.cpp in Sources */,
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D2B1A8DF1CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D22EEF631D66CEB600BF1CCB /* LingHongbao.cpp in Sources */,
 				D2B1A8711CCDF0F400A20896 /* Loading.cpp in Sources */,
-				D22EEFC91D66D14D00BF1CCB /* BoundPhone.cpp in Sources */,
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D22EEF401D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
 				D22912421D128367005C7167 /* DropDownListBox.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D2B1A87F1CCDF0F400A20896 /* MahjongView.cpp in Sources */,
-				D22EEFD11D66D14D00BF1CCB /* HeroInfoEdit.cpp in Sources */,
 				D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D2B1A8DB1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D28A4A401D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
@@ -1730,17 +1730,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
+				D2F05F661D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
+				D2F05F5C1D8E7500006E5A4C /* BoundPhone.cpp in Sources */,
 				D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
-				D22EEFCA1D66D14D00BF1CCB /* BoundPhone.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D22EEFC01D66D14D00BF1CCB /* DailySign.cpp in Sources */,
 				D22EEF601D66CEB600BF1CCB /* FaHongbao.cpp in Sources */,
-				D22EEFCE1D66D14D00BF1CCB /* GenderDialog.cpp in Sources */,
 				D2484EB71D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
 				D28A4A1E1D056B4700741FD0 /* ResultLayer.cpp in Sources */,
-				D22EEFD61D66D14D00BF1CCB /* OtherPlayerInfo.cpp in Sources */,
 				D28A4A201D056B4700741FD0 /* ResultScene.cpp in Sources */,
 				D2B1A9001CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8D21CCDF0F400A20896 /* Jong.cpp in Sources */,
@@ -1748,6 +1747,7 @@
 				D22EEFE01D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D2B1A8DC1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,
+				D2F05F601D8E7500006E5A4C /* GenderDialog.cpp in Sources */,
 				D22EEF3B1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */,
 				D2B1A8DA1CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
@@ -1759,8 +1759,8 @@
 				D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */,
 				D22EEFDE1D66D14D00BF1CCB /* UserSetting.cpp in Sources */,
 				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
+				D2F05F5E1D8E7500006E5A4C /* ChangePassword.cpp in Sources */,
 				D22EEF411D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
-				D22EEFD01D66D14D00BF1CCB /* HeadImageDialog.cpp in Sources */,
 				D22EEFC41D66D14D00BF1CCB /* DailyTask.cpp in Sources */,
 				D2B1A8841CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
 				D22EEF471D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */,
@@ -1774,7 +1774,9 @@
 				D2B1A8DE1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D2BD08C31D66DAA400ADC31E /* GoldRelieve.cpp in Sources */,
+				D2F05F641D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */,
 				D28A4A2F1D056B7A00741FD0 /* Audio.cpp in Sources */,
+				D2F05F621D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */,
 				D22EEF801D66CFC800BF1CCB /* FriendInvite.cpp in Sources */,
 				D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D22912431D128367005C7167 /* DropDownListBox.cpp in Sources */,
@@ -1785,10 +1787,9 @@
 				D2B1A87E1CCDF0F400A20896 /* GuiLayer.cpp in Sources */,
 				D2B1A8D41CCDF0F400A20896 /* LobbyScene.cpp in Sources */,
 				D22EEF861D66CFC800BF1CCB /* InviteCell.cpp in Sources */,
-				D22EEFCC1D66D14D00BF1CCB /* ChangePassword.cpp in Sources */,
 				D28A4A1C1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */,
-				D22EEFD41D66D14D00BF1CCB /* NickNameDialog.cpp in Sources */,
+				D2F05F6A1D8E7500006E5A4C /* UserInfo.cpp in Sources */,
 				D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */,
 				D2CF764A1D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
 				D22EEF3D1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */,
@@ -1797,7 +1798,6 @@
 				D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
 				D229123B1D128103005C7167 /* UserRegister.cpp in Sources */,
 				D2B1A8E01CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
-				D22EEFD81D66D14D00BF1CCB /* UserInfo.cpp in Sources */,
 				D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D21D81DB1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
@@ -1815,12 +1815,12 @@
 				D22EEF641D66CEB600BF1CCB /* LingHongbao.cpp in Sources */,
 				D2CF763B1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */,
 				D22EEFDC1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */,
+				D2F05F681D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */,
 				D22EEF7E1D66CFC800BF1CCB /* FriendAddView.cpp in Sources */,
 				D28A4A351D056B7A00741FD0 /* StringUtil.cpp in Sources */,
 				D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
-				D22EEFD21D66D14D00BF1CCB /* HeroInfoEdit.cpp in Sources */,
 				D22EEFDA1D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
 				D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
 				D2B1A8721CCDF0F400A20896 /* Loading.cpp in Sources */,

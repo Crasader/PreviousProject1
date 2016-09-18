@@ -1,6 +1,6 @@
 #include "game/mahjong/player/base/PlayerBase.h"
 #include "game/mahjong/anim/PlayerCpgAnim.hpp"
-#include "game/mahjong/playerinfo/OtherPlayerInfo.hpp"
+#include "game/mahjong/heroinfo/OtherPlayerInfo.hpp"
 #include "game/mahjong/anim/HuaAnim.hpp"
 #include "game/mahjong/chat/PlayerChatManage.hpp"
 #include "server/NetworkManage.h"

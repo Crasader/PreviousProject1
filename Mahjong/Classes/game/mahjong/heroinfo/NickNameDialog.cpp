@@ -1,5 +1,5 @@
-#include "game/mahjong/playerinfo/NickNameDialog.h"
-#include "game/mahjong/playerinfo/UserInfo.h"
+#include "game/mahjong/heroinfo/NickNameDialog.h"
+#include "game/mahjong/heroinfo/UserInfo.h"
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"

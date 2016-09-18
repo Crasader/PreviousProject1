@@ -3,7 +3,7 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/daily/DailyEvent.h"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
-#include "game/mahjong/playerinfo/HeroInfoEdit.h"
+#include "game/mahjong/heroinfo/HeroInfoEdit.h"
 #include "game/mahjong/activities/MahjongActivities.hpp"
 #include "game/mahjong/shop/FirstChageDialog.hpp"
 #include "game/mahjong/shop/ChargeGold.hpp"
