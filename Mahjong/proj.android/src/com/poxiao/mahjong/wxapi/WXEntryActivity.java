@@ -6,6 +6,7 @@ import org.cocos2dx.cpp.payment.Payment;
 import com.tbu.androidtools.Debug;
 import com.tbu.wx.http.callback.WechatLoginCallBack;
 import com.tbu.wx.util.WxAppInfo;
+import com.tbu.wx.wechat.TbuWxUtil;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;

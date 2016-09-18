@@ -5,7 +5,7 @@
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/utils/Chinese.h"
 #include "userdata/UserData.h"
-#include "image/UrlImageMannger.h"
+#include "http/image/UrlImageMannger.h"
 
 bool UserInfo::init(){
     if (!Layer::init()){

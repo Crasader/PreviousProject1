@@ -12,6 +12,7 @@
 #include "game/utils/SeatIdUtil.h"
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
+#include "http/image/UrlImageMannger.h"
 
 
 
@@ -200,6 +201,7 @@ void SplashScene::drawLonginScene(){
     auto findPwdMenu = Menu::create(findPwdBtn, NULL);
     findPwdMenu->setPosition(1080, 94);
     this->addChild(findPwdMenu);
+    
 }
 
 

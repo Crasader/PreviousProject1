@@ -6,7 +6,7 @@
 ////
 ////
 //
-//#include "ImagePicker.hpp"
+//#include "http/image/ImagePicker.hpp"
 //
 //
 //#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)

@@ -78,7 +78,6 @@ public class Payment {
 	 */
 	public static void weChatLogin() {
 		if (!TbuWxUtil.getInstance().getWechatCode(getWeChatState())) {
-			Debug.i("wechat open id = "+ TbuWxUtil.getInstance().getWeChatOpenId());
 			JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId());
 		}
 	}

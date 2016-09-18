@@ -157,10 +157,6 @@
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
-		D23EFCCB1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */; };
-		D23EFCCC1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */; };
-		D23EFCCF1D10F695002A48A5 /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */; };
-		D23EFCD01D10F695002A48A5 /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D2435FA41CC73525000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D2484EB61D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */; };
@@ -308,6 +304,12 @@
 		D2CF763F1D62AC690035B870 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */; };
 		D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */; };
 		D2CF764A1D6581EE0035B870 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */; };
+		D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */; };
+		D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */; };
+		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
+		D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
+		D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
+		D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -501,10 +503,6 @@
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
-		D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
-		D23EFCCA1D10F54D002A48A5 /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
-		D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePicker.cpp; sourceTree = "<group>"; };
-		D23EFCCE1D10F695002A48A5 /* ImagePicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePicker.hpp; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
 		D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiamondNotEnoughDialog.cpp; sourceTree = "<group>"; };
 		D2484EB51D7464430027F40D /* DiamondNotEnoughDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiamondNotEnoughDialog.hpp; sourceTree = "<group>"; };
@@ -631,6 +629,12 @@
 		D2CF763D1D62AC690035B870 /* FaceChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaceChatLayer.hpp; sourceTree = "<group>"; };
 		D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerChatManage.cpp; sourceTree = "<group>"; };
 		D2CF76481D6581EE0035B870 /* PlayerChatManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerChatManage.hpp; sourceTree = "<group>"; };
+		D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePicker.cpp; sourceTree = "<group>"; };
+		D2F05F2A1D8E2B22006E5A4C /* ImagePicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePicker.hpp; sourceTree = "<group>"; };
+		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
+		D2F05F2C1D8E2B22006E5A4C /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
+		D2F05F461D8E360B006E5A4C /* MD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MD5.cpp; sourceTree = "<group>"; };
+		D2F05F471D8E360B006E5A4C /* MD5.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MD5.hpp; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -797,7 +801,6 @@
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
 				D2B1A7B11CCDF0F300A20896 /* game */,
 				D28A4A0A1D0565C200741FD0 /* http */,
-				D23EFCC81D10F54D002A48A5 /* image */,
 				D257FD6D1D6C2E2400B8C596 /* payment */,
 				D2B1A85A1CCDF0F300A20896 /* server */,
 				D2B1A8641CCDF0F300A20896 /* socket */,
@@ -1064,17 +1067,6 @@
 			path = trusteeship;
 			sourceTree = "<group>";
 		};
-		D23EFCC81D10F54D002A48A5 /* image */ = {
-			isa = PBXGroup;
-			children = (
-				D23EFCC91D10F54D002A48A5 /* UrlImageMannger.cpp */,
-				D23EFCCA1D10F54D002A48A5 /* UrlImageMannger.h */,
-				D23EFCCD1D10F695002A48A5 /* ImagePicker.cpp */,
-				D23EFCCE1D10F695002A48A5 /* ImagePicker.hpp */,
-			);
-			path = image;
-			sourceTree = "<group>";
-		};
 		D257FD6D1D6C2E2400B8C596 /* payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1107,6 +1099,8 @@
 		D28A4A0A1D0565C200741FD0 /* http */ = {
 			isa = PBXGroup;
 			children = (
+				D2F05F451D8E35FF006E5A4C /* MD5 */,
+				D2F05F281D8E2B22006E5A4C /* image */,
 				D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */,
 				D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */,
 				D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */,
@@ -1409,6 +1403,26 @@
 			path = relieve;
 			sourceTree = "<group>";
 		};
+		D2F05F281D8E2B22006E5A4C /* image */ = {
+			isa = PBXGroup;
+			children = (
+				D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */,
+				D2F05F2A1D8E2B22006E5A4C /* ImagePicker.hpp */,
+				D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */,
+				D2F05F2C1D8E2B22006E5A4C /* UrlImageMannger.h */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		D2F05F451D8E35FF006E5A4C /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				D2F05F461D8E360B006E5A4C /* MD5.cpp */,
+				D2F05F471D8E360B006E5A4C /* MD5.hpp */,
+			);
+			path = MD5;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1666,6 +1680,7 @@
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
 				D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
+				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D257FD781D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D291B58E1D75264900B05026 /* MahjongActivities.cpp in Sources */,
 				D22EEF4E1D66AAF000BF1CCB /* LequanShop.cpp in Sources */,
@@ -1675,6 +1690,7 @@
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D2B1A8D31CCDF0F400A20896 /* LobbyScene.cpp in Sources */,
 				D28A4A1B1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A301D056B7A00741FD0 /* Chinese.cpp in Sources */,
@@ -1684,7 +1700,6 @@
 				D22EEFD91D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
 				D22EEF3E1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */,
 				D22EEFC51D66D14D00BF1CCB /* TaskCell.cpp in Sources */,
-				D23EFCCF1D10F695002A48A5 /* ImagePicker.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D28A4A2E1D056B7A00741FD0 /* Audio.cpp in Sources */,
 				D2B1A8E11CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
@@ -1698,7 +1713,7 @@
 				D22EEF401D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
 				D22912421D128367005C7167 /* DropDownListBox.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
-				D23EFCCB1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */,
+				D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D2B1A87F1CCDF0F400A20896 /* MahjongView.cpp in Sources */,
 				D22EEFD11D66D14D00BF1CCB /* HeroInfoEdit.cpp in Sources */,
 				D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
@@ -1715,6 +1730,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
+				D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D22EEFCA1D66D14D00BF1CCB /* BoundPhone.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D22EEFC01D66D14D00BF1CCB /* DailySign.cpp in Sources */,
@@ -1738,11 +1754,11 @@
 				D22EEF4B1D66AAF000BF1CCB /* Huode.cpp in Sources */,
 				D22EEF661D66CEB600BF1CCB /* Redwallet.cpp in Sources */,
 				D22EEFC21D66D14D00BF1CCB /* DayCell.cpp in Sources */,
-				D23EFCCC1D10F54D002A48A5 /* UrlImageMannger.cpp in Sources */,
 				D2B1A87A1CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
 				D28A4A3D1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */,
 				D22EEFDE1D66D14D00BF1CCB /* UserSetting.cpp in Sources */,
+				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D22EEF411D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
 				D22EEFD01D66D14D00BF1CCB /* HeadImageDialog.cpp in Sources */,
 				D22EEFC41D66D14D00BF1CCB /* DailyTask.cpp in Sources */,
@@ -1803,6 +1819,7 @@
 				D28A4A351D056B7A00741FD0 /* StringUtil.cpp in Sources */,
 				D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
+				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D22EEFD21D66D14D00BF1CCB /* HeroInfoEdit.cpp in Sources */,
 				D22EEFDA1D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
 				D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
@@ -1818,7 +1835,6 @@
 				D22EEF7C1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				D22EEF841D66CFC800BF1CCB /* FriendRoom.cpp in Sources */,
 				D257FD7B1D6C2E2400B8C596 /* IOSiAP.mm in Sources */,
-				D23EFCD01D10F695002A48A5 /* ImagePicker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
