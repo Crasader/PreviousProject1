@@ -13,11 +13,11 @@ using namespace cocos2d;
 class UrlImageMannger{
 public:
 	static UrlImageMannger* getInstance();
-	void loadImgByUrl(std::string url);
+	std::string loadImgByUrl(std::string url);
     void uploadImage2Server(CallFunc* callBack);//上传图片到七牛的服务器
-    std::string getImgNameByUrl(std::string url);
 private:
 	UrlImageMannger();
 	static UrlImageMannger* _instance;
+    std::string getImgNameByUrl(std::string url);
 };
 

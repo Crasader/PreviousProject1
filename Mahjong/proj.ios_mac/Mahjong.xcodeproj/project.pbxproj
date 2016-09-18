@@ -310,6 +310,8 @@
 		D2F05F681D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */; };
 		D2F05F691D8E7500006E5A4C /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F591D8E7500006E5A4C /* UserInfo.cpp */; };
 		D2F05F6A1D8E7500006E5A4C /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F591D8E7500006E5A4C /* UserInfo.cpp */; };
+		D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */; };
+		D2F05F6F1D8E7605006E5A4C /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -635,6 +637,8 @@
 		D2F05F581D8E7500006E5A4C /* OtherPlayerInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OtherPlayerInfo.hpp; sourceTree = "<group>"; };
 		D2F05F591D8E7500006E5A4C /* UserInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserInfo.cpp; sourceTree = "<group>"; };
 		D2F05F5A1D8E7500006E5A4C /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeadImage.cpp; sourceTree = "<group>"; };
+		D2F05F6D1D8E7605006E5A4C /* HeadImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeadImage.hpp; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1150,6 +1154,7 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D2F05F6B1D8E75F6006E5A4C /* widget */,
 				D2F05F4A1D8E7500006E5A4C /* heroinfo */,
 				D291B58B1D75262600B05026 /* activities */,
 				D2B1A7B61CCDF0F300A20896 /* anim */,
@@ -1421,6 +1426,15 @@
 				D2F05F5A1D8E7500006E5A4C /* UserInfo.h */,
 			);
 			path = heroinfo;
+			sourceTree = "<group>";
+		};
+		D2F05F6B1D8E75F6006E5A4C /* widget */ = {
+			isa = PBXGroup;
+			children = (
+				D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */,
+				D2F05F6D1D8E7605006E5A4C /* HeadImage.hpp */,
+			);
+			path = widget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1712,6 +1726,7 @@
 				D2B1A8711CCDF0F400A20896 /* Loading.cpp in Sources */,
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D22EEF401D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
+				D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
 				D22912421D128367005C7167 /* DropDownListBox.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
@@ -1808,6 +1823,7 @@
 				D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D22EEF821D66CFC800BF1CCB /* FriendListView.cpp in Sources */,
+				D2F05F6F1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D22EEF621D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */,
 				D22EEF881D66CFC800BF1CCB /* SearchResult.cpp in Sources */,

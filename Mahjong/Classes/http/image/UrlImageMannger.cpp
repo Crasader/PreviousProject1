@@ -23,23 +23,28 @@ UrlImageMannger* UrlImageMannger::getInstance(){
     return _instance;
 }
 
-void UrlImageMannger::loadImgByUrl(std::string url)
+std::string UrlImageMannger::loadImgByUrl(std::string url)
 {
     std::string path = getImgNameByUrl(url);
-//    if (FileUtils::getInstance()->isFileExist(path))
-//    {
-//        return;
-//    }
-//    EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
-//        std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
-//        std::string buff(buffer->begin(), buffer->end());
-//        FILE *fp = fopen(path.c_str(), "wb+");
-//        fwrite(buff.c_str(), 1, buffer->size(), fp);
-//        fclose(fp);
-//        Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
-//    });
-//    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
+    if (FileUtils::getInstance()->isFileExist(path))
+    {
+        return path;
+    }
+    EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
+        std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
+        std::string buff(buffer->begin(), buffer->end());
+        FILE *fp = fopen(path.c_str(), "wb+");
+        fwrite(buff.c_str(), 1, buffer->size(), fp);
+        fclose(fp);
+        Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
+}
+
+
+void UrlImageMannger::uploadImage2Server(CallFunc* callBack){
+    //TODO 调用七牛SDK(android或者ios)
 }
 
 std::string UrlImageMannger::getImgNameByUrl(std::string url)
@@ -51,7 +56,3 @@ std::string UrlImageMannger::getImgNameByUrl(std::string url)
     return temp;
 }
 
-
-void UrlImageMannger::uploadImage2Server(CallFunc* callBack){
-    //TODO 调用七牛SDK(android或者ios)
-}

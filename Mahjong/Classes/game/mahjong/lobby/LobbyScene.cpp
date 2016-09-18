@@ -18,6 +18,7 @@
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
 #include "game/utils/Audio.h"
+#include "game/mahjong/widget/HeadImage.hpp"
 
 
 bool LobbyScene::init()
@@ -64,7 +65,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(friendChatListener);
-     Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
 }
 
@@ -107,19 +108,7 @@ void LobbyScene::signUpdate(float dt){
 }
 
 void LobbyScene::updateHeroInfo(){
-    
-    if(UserData::getInstance()->getPicture() == "1"){
-        ((Sprite*)getChildByTag(962))->setTexture("gameview/head_image_1.png");
-    }else if(UserData::getInstance()->getPicture() == "2"){
-        ((Sprite*)getChildByTag(962))->setTexture("gameview/head_image_2.png");
-    }else if(UserData::getInstance()->getPicture() == "3"){
-        ((Sprite*)getChildByTag(962))->setTexture("gameview/head_image_3.png");
-    }else if(UserData::getInstance()->getPicture() == "4"){
-        ((Sprite*)getChildByTag(962))->setTexture("gameview/head_image_4.png");
-    }else{
-        //TODO
-        log("服务器下发的头像图片不存在");
-    }
+    ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
     goldNum ->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string);
     diamondNum->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string);
@@ -164,19 +153,7 @@ void LobbyScene::drawSceneTop(){
     head_bg->setPosition(61, 660);
     this->addChild(head_bg);
     
-    auto image = Sprite::create();
-    if(UserData::getInstance()->getPicture() == "1"){
-        image->setTexture("gameview/head_image_1.png");
-    }else if(UserData::getInstance()->getPicture() == "2"){
-        image->setTexture("gameview/head_image_2.png");
-    }else if(UserData::getInstance()->getPicture() == "3"){
-        image->setTexture("gameview/head_image_3.png");
-    }else if(UserData::getInstance()->getPicture() == "4"){
-        image->setTexture("gameview/head_image_4.png");
-    }else{
-        //TODO
-        log("服务器下发的头像图片不存在");
-    }
+    auto image = HeadImage::create(Size(90,90));
     image->setTag(962);
     image->setPosition(61, 660);
     addChild(image);
@@ -306,7 +283,7 @@ void LobbyScene::drawSceneBot(){
     auto btn_1 = MenuItemImage::create("mjlobby/friend_btn_1.png", "mjlobby/friend_btn_2.png", CC_CALLBACK_0(LobbyScene::showAddFriend, this));
     auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_3 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
-//    auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
+    //    auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
     auto btn_5 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
     auto gameMenu = Menu::create(btn_1, btn_2,btn_3, btn_5, NULL);
     gameMenu->alignItemsHorizontallyWithPadding(75);
@@ -777,7 +754,7 @@ void LobbyScene::addEventListener(){
         loa->setTag(4843);
         addChild(loa,20);
     });
-
+    
     payResultListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener("mahjong_pay_result", [=](EventCustom* event){
         if(NULL != getChildByTag(4843)){
             getChildByTag(4843)->removeFromParent();
@@ -792,7 +769,7 @@ void LobbyScene::addEventListener(){
         }
         addChild(da,20);
     });
-
+    
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

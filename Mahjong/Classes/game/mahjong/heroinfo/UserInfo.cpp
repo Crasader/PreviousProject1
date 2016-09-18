@@ -5,7 +5,8 @@
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/utils/Chinese.h"
 #include "userdata/UserData.h"
-#include "http/image/UrlImageMannger.h"
+#include "game/mahjong/widget/HeadImage.hpp"
+
 
 bool UserInfo::init(){
     if (!Layer::init()){
@@ -35,23 +36,9 @@ void UserInfo::showUserInfo(){
     headBg->setPosition(415,350);
     addChild(headBg);
     
-    auto headImage =  Sprite::create();
+    auto headImage =  HeadImage::create(Size(170,170));
     headImage->setTag(1000);
     headImage->setPosition(415,380);
-    headImage->setScale(1.9f);
-    if(UserData::getInstance()->getPicture() == "1"){
-        headImage->setTexture("gameview/head_image_1.png");
-    }else if(UserData::getInstance()->getPicture() == "2"){
-        headImage->setTexture("gameview/head_image_2.png");
-    }else if(UserData::getInstance()->getPicture() == "3"){
-        headImage->setTexture("gameview/head_image_3.png");
-    }else if(UserData::getInstance()->getPicture() == "4"){
-        headImage->setTexture("gameview/head_image_4.png");
-    }else{
-        //TODO
-        log("服务器下发的头像图片不存在");
-    }
-
     addChild(headImage);
     
     auto itemImage = MenuItemImage::create("playerinfo/head_iamge_edit_1.png","playerinfo/head_iamge_edit_2.png",
@@ -207,16 +194,5 @@ void UserInfo::updateGender(){
 }
 
 void UserInfo::updateHeadImage(){
-    if(UserData::getInstance()->getPicture() == "1"){
-        ((Sprite*)getChildByTag(1000))->setTexture("gameview/head_image_1.png");
-    }else if(UserData::getInstance()->getPicture() == "2"){
-        ((Sprite*)getChildByTag(1000))->setTexture("gameview/head_image_2.png");
-    }else if(UserData::getInstance()->getPicture() == "3"){
-        ((Sprite*)getChildByTag(1000))->setTexture("gameview/head_image_3.png");
-    }else if(UserData::getInstance()->getPicture() == "4"){
-        ((Sprite*)getChildByTag(1000))->setTexture("gameview/head_image_4.png");
-    }else{
-        //TODO
-        log("服务器下发的头像图片不存在");
-    }
+   ((HeadImage*)getChildByTag(1000))->updateImage();
 }
