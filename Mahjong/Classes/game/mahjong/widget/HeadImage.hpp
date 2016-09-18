@@ -17,8 +17,10 @@ class HeadImage : public Sprite{
 
 public:
     static HeadImage* create(Size size);
-    bool init(Size size);
+    static HeadImage* createByImage(std::string image,Size size);
+    bool init(std::string image,Size size);
     void updateImage();
+    void updateImageByName(std::string image);
 private:
     Size headSize;
 };

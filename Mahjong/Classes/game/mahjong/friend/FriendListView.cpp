@@ -3,6 +3,7 @@
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/chat/ChatDialog.hpp"
+#include "game/mahjong/widget/HeadImage.hpp"
 #include "server/NetworkManage.h"
 
 bool FriendListView::init()
@@ -101,20 +102,8 @@ TableViewCell* FriendListView::tableCellAtIndex(TableView *table, ssize_t idx)
         sprite->setPosition(Vec2(0, 0));
         cell->addChild(sprite);
         
-        Sprite* head = Sprite::create();
+        HeadImage* head = HeadImage::createByImage(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic,Size(90,90));
         head->setTag(500);
-        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "1"){
-            head->setTexture("gameview/head_image_1.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "2"){
-            head->setTexture("gameview/head_image_2.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "3"){
-            head->setTexture("gameview/head_image_3.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "4"){
-            head->setTexture("gameview/head_image_4.png");
-        }else{
-            log("服务器下发的头像图片不存在");
-            head->setTexture("gameview/head_image_1.png");
-        }
         head->setAnchorPoint(Vec2::ZERO);
         head->setPosition(Vec2(21, 21));
         cell->addChild(head);
@@ -206,19 +195,8 @@ TableViewCell* FriendListView::tableCellAtIndex(TableView *table, ssize_t idx)
         
     }
     else{
-        auto sprite2 = (Sprite*)cell->getChildByTag(500);
-        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "1"){
-            sprite2->setTexture("gameview/head_image_1.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "2"){
-            sprite2->setTexture("gameview/head_image_2.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "3"){
-            sprite2->setTexture("gameview/head_image_3.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "4"){
-            sprite2->setTexture("gameview/head_image_4.png");
-        }else{
-            log("服务器下发的头像图片不存在");
-            sprite2->setTexture("gameview/head_image_1.png");
-        }
+        auto sprite2 = (HeadImage*)cell->getChildByTag(500);
+        sprite2->updateImageByName(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic.c_str());
         
         auto label = (Label*)cell->getChildByTag(801);
         label->setString(GAMEDATA::getInstance()->getFriendList().friends.at(idx).nickname);

@@ -3,6 +3,7 @@
 #include "game/mahjong/heroinfo/OtherPlayerInfo.hpp"
 #include "game/mahjong/anim/HuaAnim.hpp"
 #include "game/mahjong/chat/PlayerChatManage.hpp"
+#include "game/mahjong/widget/HeadImage.hpp"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "ui/UIImageView.h"
@@ -107,11 +108,15 @@ void PlayerBase::initPlayer(Player* playerInfo){
     nickName->setPosition(getPostionBySeat(clientSeatId).x, getPostionBySeat(clientSeatId).y + 55);
     this->addChild(nickName);
     
-    auto image = MenuItemImage::create(getHeadImageName(playerInfo->getPicture()),getHeadImageName(playerInfo->getPicture()),
-                                       CC_CALLBACK_0(PlayerBase::showPlayerInfo, this));
+    
+    HeadImage* headImage = HeadImage::create(Size(90,90));
+    headImage->setPosition(getPostionBySeat(clientSeatId));
+    addChild(headImage);
+    auto image = MenuItem::create(CC_CALLBACK_0(PlayerBase::showPlayerInfo, this));
     headimage = Menu::create(image,NULL);
+    image->setContentSize(headImage->getContentSize());
     headimage->setPosition(getPostionBySeat(clientSeatId));
-    this->addChild(headimage);
+    addChild(headimage);
     
     auto diamond = Sprite::create();
     diamond->setPosition(getPostionBySeat(clientSeatId).x - 28, getPostionBySeat(clientSeatId).y - 55);
@@ -488,22 +493,7 @@ Point PlayerBase::getPostionBySeat(int seatId){
     }
 }
 
-std::string PlayerBase::getHeadImageName(std::string id){
-    std::string imageName = "gameview/head_image_1.png";
-    if (id == "1"){
-        imageName = "gameview/head_image_1.png";
-    }
-    else if (id == "2"){
-        imageName = "gameview/head_image_2.png";
-    }
-    else if (id == "3"){
-        imageName = "gameview/head_image_3.png";
-    }
-    else if (id == "4"){
-        imageName = "gameview/head_image_4.png";
-    }
-    return imageName;
-}
+
 
 void PlayerBase::hideHandJongs(){
     for(int i=0;i<playerHandJongs.size();i++){

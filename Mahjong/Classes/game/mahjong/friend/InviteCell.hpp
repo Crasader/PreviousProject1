@@ -10,15 +10,15 @@
 #define InviteCell_hpp
 
 #include <stdio.h>
-
 #include "cocos2d.h"
+#include "game/mahjong/widget/HeadImage.hpp"
 
 USING_NS_CC;
 
 class InviteCell : public Sprite{
     public :
-        static InviteCell* create(std::string filepath,std::string name);
-        bool init(std::string filepath,std::string name);
+        static InviteCell* create(HeadImage* headImgae,std::string name);
+        bool init(HeadImage* headImgae,std::string name);
     
 };
 

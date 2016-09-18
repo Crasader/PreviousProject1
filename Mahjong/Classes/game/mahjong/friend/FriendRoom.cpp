@@ -1,6 +1,7 @@
 #include "game/mahjong/friend/FriendRoom.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "server/NetworkManage.h"
+#include "game/mahjong/widget/HeadImage.hpp"
 
 
 bool FriendRoom::init()
@@ -46,7 +47,7 @@ bool FriendRoom::init()
     openBtn->setPosition(883,470);
     addChild(openBtn);
     
-    InviteCell* hero  = InviteCell::create("gameview/head_image_1.png", UserData::getInstance()->getNickName());
+    InviteCell* hero  = InviteCell::create(HeadImage::create(Size(90,90)), UserData::getInstance()->getNickName());
     hero->setPosition(348,488);
     addChild(hero);
     
@@ -104,20 +105,8 @@ void FriendRoom::tableCellTouched(TableView* table, TableViewCell* cell)
     
     if (cell->getChildByTag(520)->isVisible()){
         inviteFriends.push_back(info);
-        std::string imageName;
-        if(info.pic == "1"){
-            imageName= "gameview/head_image_1.png";
-        }else if(info.pic == "2"){
-            imageName = "gameview/head_image_2.png";
-        }else if(info.pic == "3"){
-            imageName = "gameview/head_image_3.png";
-        }else if(info.pic == "4"){
-            imageName = "gameview/head_image_4.png";
-        }else{
-            log("服务器下发的头像图片不存在");
-            imageName= "gameview/head_image_1.png";
-        }
-        InviteCell* sprite  = InviteCell::create(imageName, info.nickname);
+        HeadImage* headImgae = HeadImage::createByImage(info.image, Size(90,90));
+        InviteCell* sprite  = InviteCell::create(headImgae, info.nickname);
         sprite->setName(info.poxiaoId);
         addChild(sprite);
         for(int i=0;i<3;i++){
@@ -163,19 +152,7 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->autorelease();
         cell->setName(GAMEDATA::getInstance()->getFriendList().friends.at(idx).poxiaoId);
         
-        Sprite* head = Sprite::create();
-        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "1"){
-            head->setTexture("gameview/head_image_1.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "2"){
-            head->setTexture("gameview/head_image_2.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "3"){
-            head->setTexture("gameview/head_image_3.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "4"){
-            head->setTexture("gameview/head_image_4.png");
-        }else{
-            log("服务器下发的头像图片不存在");
-            head->setTexture("gameview/head_image_1.png");
-        }
+        HeadImage* head = HeadImage::createByImage(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic,Size(90,90));
         head->setTag(500);
         head->setAnchorPoint(Vec2::ZERO);
         head->setScale(0.6f);
@@ -214,19 +191,9 @@ TableViewCell* FriendRoom::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->addChild(select);
     }else{
         cell->setName(GAMEDATA::getInstance()->getFriendList().friends.at(idx).poxiaoId);
-        auto sprite1 = (Sprite*)cell->getChildByTag(500);
-        if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "1"){
-            sprite1->setTexture("gameview/head_image_1.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "2"){
-            sprite1->setTexture("gameview/head_image_2.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "3"){
-            sprite1->setTexture("gameview/head_image_3.png");
-        }else if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic == "4"){
-            sprite1->setTexture("gameview/head_image_4.png");
-        }else{
-            log("服务器下发的头像图片不存在");
-            sprite1->setTexture("gameview/head_image_1.png");
-        }
+        auto sprite1 = (HeadImage*)cell->getChildByTag(500);
+        sprite1->updateImageByName(GAMEDATA::getInstance()->getFriendList().friends.at(idx).pic);
+        
         ((Label*)cell->getChildByTag(501))->setString(GAMEDATA::getInstance()->getFriendList().friends.at(idx).nickname);
         if(GAMEDATA::getInstance()->getFriendList().friends.at(idx).isOnLine){
             ((Sprite*)cell->getChildByTag(502))->setTexture("friend/online_icon.png");

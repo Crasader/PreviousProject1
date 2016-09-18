@@ -9,9 +9,9 @@
 #include "game/mahjong/friend/InviteCell.hpp"
 
 
-InviteCell* InviteCell::create(std::string filepath,std::string name){
+InviteCell* InviteCell::create(HeadImage* headImgae,std::string name){
     InviteCell* cell = new InviteCell();
-    if(cell&& cell->init(filepath, name)){
+    if(cell&& cell->init(headImgae, name)){
         cell->autorelease();
         return cell;
     }else{
@@ -22,12 +22,11 @@ InviteCell* InviteCell::create(std::string filepath,std::string name){
 
 
 
-bool InviteCell::init(std::string filepath,std::string name){
+bool InviteCell::init(HeadImage* headImgae,std::string name){
     if(!Sprite::init()){
         return false;
     }
-    auto head = Sprite::create(filepath);
-    addChild(head);
+    addChild(headImgae);
     Label* nickName = Label::create(name,"arial",20);
     addChild(nickName);
     return true;
