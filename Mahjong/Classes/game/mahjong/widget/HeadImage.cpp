@@ -22,7 +22,6 @@ HeadImage* HeadImage::create(cocos2d::Size size){
 }
 
 bool HeadImage::init(cocos2d::Size size){
-    UserData::getInstance()->setPicture("http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0");
     headSize = size;
     initWithFile("gameview/head_image_1.png");
     updateImage();

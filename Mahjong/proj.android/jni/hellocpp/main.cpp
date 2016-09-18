@@ -33,3 +33,13 @@ Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loginThirdPlatform(JNIEnv* en
 	  newOPenId   =   (char*)env->GetStringUTFChars(openid,0);
 	  MahjongPayHandler::getInstance()->loginThirdPlatform(newOPenId);
 	}
+
+
+
+extern "C" JNIEXPORT void JNICALL
+Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loadImageByURL(JNIEnv* env, jclass jcl,jstring url)
+	{
+	  char*   newUrl;
+	  newUrl   =   (char*)env->GetStringUTFChars(url,0);
+	  MahjongPayHandler::getInstance()->loadImageByURL(newUrl);
+	}

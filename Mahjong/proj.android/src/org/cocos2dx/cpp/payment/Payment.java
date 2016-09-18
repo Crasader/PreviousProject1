@@ -49,8 +49,15 @@ public class Payment {
 		Debug.i("Payment start queryPayResult ...");
 		if (null != pxOrderId) {
 			TbuWxUtil.getInstance().queryOrder(pxOrderId, new QueryCallBack() {
+
 				@Override
-				public void queryCallback(boolean result) {
+				public void queryCallBackMsg(String msg) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void queryCallBackResult(boolean result) {
 					if (result) {
 						JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId), 1);
 					} else {
@@ -77,13 +84,18 @@ public class Payment {
 	 * 发起微信登录
 	 */
 	public static void weChatLogin() {
-		TbuWxUtil.getInstance().getWechatCode(getWeChatState(),new QueryCallBack() {	
+		TbuWxUtil.getInstance().getWechatCode(getWeChatState(),new QueryCallBack() {
 			@Override
-			public void queryCallback(boolean result) {
+			public void queryCallBackMsg(String url) {
+				JniPayCallbackHelper.loadImageByURL(url);
+			}
+			@Override
+			public void queryCallBackResult(boolean result) {
 				if (!result) {
 					JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId());
 				}
-			}
+			}	
+		
 		});
 		
 	}

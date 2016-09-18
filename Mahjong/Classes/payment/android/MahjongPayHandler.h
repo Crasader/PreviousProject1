@@ -9,6 +9,7 @@ public:
 	~MahjongPayHandler() {};
 	void dealEventCallBack(int eventId, int result);
     void loginThirdPlatform(std::string openid);
+    void loadImageByURL(std::string url);
 	static MahjongPayHandler* getInstance();
 private:
 	void doPayEvent1(int result);

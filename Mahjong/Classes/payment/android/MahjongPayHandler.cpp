@@ -2,6 +2,7 @@
 #include "payment/android/CallAndroidMethod.h"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
+#include "http/image/UrlImageMannger.h"
 
 static MahjongPayHandler* _instance = nullptr;
 MahjongPayHandler* MahjongPayHandler::getInstance()
@@ -34,4 +35,9 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid){
         
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(openid));
     }
+}
+
+
+void MahjongPayHandler::loadImageByURL(std::string url){
+    UrlImageMannger::getInstance()->loadImgByUrl(url);
 }
