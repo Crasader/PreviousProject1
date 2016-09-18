@@ -77,9 +77,15 @@ public class Payment {
 	 * 发起微信登录
 	 */
 	public static void weChatLogin() {
-		if (!TbuWxUtil.getInstance().getWechatCode(getWeChatState())) {
-			JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId());
-		}
+		TbuWxUtil.getInstance().getWechatCode(getWeChatState(),new QueryCallBack() {	
+			@Override
+			public void queryCallback(boolean result) {
+				if (!result) {
+					JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId());
+				}
+			}
+		});
+		
 	}
 
 	/**
