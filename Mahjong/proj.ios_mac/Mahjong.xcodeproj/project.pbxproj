@@ -187,7 +187,6 @@
 		D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD6F1D6C2E2400B8C596 /* CallAndroidMethod.cpp */; };
 		D257FD781D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */; };
 		D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */; };
-		D257FD7A1D6C2E2400B8C596 /* RechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D257FD751D6C2E2400B8C596 /* RechargeVC.m */; };
 		D25DEE371CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE381CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE411CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
@@ -311,6 +310,7 @@
 		D2F05F6A1D8E7500006E5A4C /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F591D8E7500006E5A4C /* UserInfo.cpp */; };
 		D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */; };
 		D2F05F6F1D8E7605006E5A4C /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */; };
+		D2F05F741D8FB9AD006E5A4C /* IOSIAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F731D8FB9AD006E5A4C /* IOSIAP.mm */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -514,8 +514,6 @@
 		D257FD701D6C2E2400B8C596 /* CallAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallAndroidMethod.h; sourceTree = "<group>"; };
 		D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MahjongPayHandler.cpp; sourceTree = "<group>"; };
 		D257FD721D6C2E2400B8C596 /* MahjongPayHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MahjongPayHandler.h; sourceTree = "<group>"; };
-		D257FD741D6C2E2400B8C596 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
-		D257FD751D6C2E2400B8C596 /* RechargeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeVC.m; sourceTree = "<group>"; };
 		D25DEE361CC0F56A007D428A /* bill */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bill; sourceTree = "<group>"; };
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
@@ -639,6 +637,8 @@
 		D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeadImage.cpp; sourceTree = "<group>"; };
 		D2F05F6D1D8E7605006E5A4C /* HeadImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeadImage.hpp; sourceTree = "<group>"; };
 		D2F05F701D8F8C4F006E5A4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D2F05F721D8FB9AD006E5A4C /* IOSIAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSIAP.h; sourceTree = "<group>"; };
+		D2F05F731D8FB9AD006E5A4C /* IOSIAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSIAP.mm; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1072,8 +1072,8 @@
 		D257FD731D6C2E2400B8C596 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				D257FD741D6C2E2400B8C596 /* RechargeVC.h */,
-				D257FD751D6C2E2400B8C596 /* RechargeVC.m */,
+				D2F05F721D8FB9AD006E5A4C /* IOSIAP.h */,
+				D2F05F731D8FB9AD006E5A4C /* IOSIAP.mm */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -1641,7 +1641,6 @@
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D22EEF4C1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */,
 				D22EEF7F1D66CFC800BF1CCB /* FriendInvite.cpp in Sources */,
-				D257FD7A1D6C2E2400B8C596 /* RechargeVC.m in Sources */,
 				D22EEFC71D66D14D00BF1CCB /* DailyWelfare.cpp in Sources */,
 				D2484EB61D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF851D66CFC800BF1CCB /* InviteCell.cpp in Sources */,
@@ -1686,6 +1685,7 @@
 				D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D22EEF651D66CEB600BF1CCB /* Redwallet.cpp in Sources */,
 				D22EEF831D66CFC800BF1CCB /* FriendRoom.cpp in Sources */,
+				D2F05F741D8FB9AD006E5A4C /* IOSIAP.mm in Sources */,
 				D22EEFBB1D66D14D00BF1CCB /* DailyPride.cpp in Sources */,
 				D28A4A1D1D056B4700741FD0 /* ResultLayer.cpp in Sources */,
 				D2CF763E1D62AC690035B870 /* FaceChatLayer.cpp in Sources */,
