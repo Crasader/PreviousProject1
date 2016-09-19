@@ -58,6 +58,7 @@
     //        default:
     //            break;
     //    }
+    product=[[NSArray alloc] initWithObjects:@"com.poxiao.mahjong_paypoint_01",nil];
     NSSet *nsset = [NSSet setWithArray:product];
     SKProductsRequest *request=[[SKProductsRequest alloc] initWithProductIdentifiers: nsset];
     request.delegate=self;
@@ -102,6 +103,7 @@
     //        default:
     //            break;
     //    }
+    payment  = [SKPayment paymentWithProductIdentifier:@"com.poxiao.mahjong_paypoint_01"];    //支付5898
     NSLog(@"---------发送购买请求------------");
     [[SKPaymentQueue defaultQueue] addPayment:payment];
     
