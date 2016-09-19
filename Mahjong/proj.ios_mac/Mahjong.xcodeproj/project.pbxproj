@@ -311,6 +311,7 @@
 		D2F05F6A1D8E7500006E5A4C /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F591D8E7500006E5A4C /* UserInfo.cpp */; };
 		D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */; };
 		D2F05F6F1D8E7605006E5A4C /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */; };
+		D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -639,6 +640,8 @@
 		D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeadImage.cpp; sourceTree = "<group>"; };
 		D2F05F6D1D8E7605006E5A4C /* HeadImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeadImage.hpp; sourceTree = "<group>"; };
 		D2F05F701D8F8C4F006E5A4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSBridge.mm; sourceTree = "<group>"; };
+		D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSBridge.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1074,6 +1077,8 @@
 			children = (
 				D257FD741D6C2E2400B8C596 /* RechargeVC.h */,
 				D257FD751D6C2E2400B8C596 /* RechargeVC.m */,
+				D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */,
+				D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -1633,6 +1638,7 @@
 				D22EEF611D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */,
 				D22912381D128103005C7167 /* FindPassword.cpp in Sources */,
 				D229123A1D128103005C7167 /* UserRegister.cpp in Sources */,
+				D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */,
 				D257FD761D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D22EEFC31D66D14D00BF1CCB /* DailyTask.cpp in Sources */,

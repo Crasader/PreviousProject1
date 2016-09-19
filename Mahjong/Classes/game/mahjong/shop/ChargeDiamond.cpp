@@ -13,6 +13,7 @@
 #include "server/NetworkManage.h"
 #include "game/utils/StringUtil.h"
 #include "payment/android/CallAndroidMethod.h"
+#include "payment/ios/IOSBridge.h"
 
 
 bool ChargeDiamond::init(){
@@ -145,4 +146,8 @@ void ChargeDiamond::chargeButtonClick(Ref* ref){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),StringUtils::format("%d",temp->getTag()));//从2开始
 #endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    IOSBridge::getInstance()->doPayEvent(1);
+#endif
+    
 }
