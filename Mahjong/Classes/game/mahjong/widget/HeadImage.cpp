@@ -28,7 +28,7 @@ HeadImage* HeadImage::createByImage(std::string image,Size size){
 bool HeadImage::init(std::string image,cocos2d::Size size){
     headSize = size;
     initWithFile("gameview/head_image_1.png");
-    updateImage();
+    updateImageByName(image);
     return true;
 }
 

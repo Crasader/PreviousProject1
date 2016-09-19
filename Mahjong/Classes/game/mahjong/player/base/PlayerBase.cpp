@@ -109,7 +109,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     this->addChild(nickName);
     
     
-    HeadImage* headImage = HeadImage::create(Size(90,90));
+    HeadImage* headImage = HeadImage::createByImage(playerInfo->getPicture(),Size(90,90));
     headImage->setPosition(getPostionBySeat(clientSeatId));
     addChild(headImage);
     auto image = MenuItem::create(CC_CALLBACK_0(PlayerBase::showPlayerInfo, this));
