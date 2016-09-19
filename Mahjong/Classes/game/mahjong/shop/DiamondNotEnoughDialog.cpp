@@ -69,6 +69,8 @@ void DiamondNotEnoughDialog::closeView(){
 
 
 void DiamondNotEnoughDialog::chargeDiamond(){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"11");
+#endif
 }
 

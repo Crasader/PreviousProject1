@@ -129,7 +129,9 @@ void GoldRelieve::closeView(){
 }
 
 void GoldRelieve::chargeGold(){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "7");
+#endif
 }
 
 void GoldRelieve::getRelieve(){

@@ -84,12 +84,18 @@ void GoldNotEnoughDialog::chargeGold(){
         removeFromParent();
     }else{
         if (getRoomType() == ROOM_1){
-             CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"8");
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+            CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "8");
+#endif
         }else if(getRoomType() == ROOM_2){
-             CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"9");
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+            CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "9");
+#endif        
         }
         else if(getRoomType() == ROOM_3){
-             CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"10");
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+            CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "10");
+#endif
         }
     }
 }

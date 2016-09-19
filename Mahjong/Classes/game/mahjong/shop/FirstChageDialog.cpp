@@ -140,7 +140,9 @@ void FirstChargeDialog:: closeView(){
 }
 
 void FirstChargeDialog:: charge(){
-    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "1");
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+   CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "1");
+#endif
     removeFromParent();
 }
 

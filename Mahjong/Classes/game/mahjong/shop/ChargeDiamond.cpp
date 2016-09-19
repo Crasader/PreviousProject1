@@ -142,5 +142,7 @@ void ChargeDiamond::closeView(){
 
 void ChargeDiamond::chargeButtonClick(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*) ref;
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),StringUtils::format("%d",temp->getTag()));//从2开始
+#endif
 }

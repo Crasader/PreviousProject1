@@ -1,12 +1,5 @@
 #import "RechargeVC.h"
 
-//在内购项目中创的商品单号
-#define ProductID_IAP0p20 @"Nada.JPYF01"//20
-#define ProductID_IAP1p100 @"Nada.JPYF02" //100
-#define ProductID_IAP4p600 @"Nada.JPYF03" //600
-#define ProductID_IAP9p1000 @"Nada.JPYF04" //1000
-#define ProductID_IAP24p6000 @"Nada.JPYF05" //6000
-
 @interface RechargeVC ()
 
 @end
@@ -18,7 +11,7 @@
     [super viewDidLoad];
     
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-    [self buy:IAP0p20];
+    //    [self buy:IAP0p20];
     
 }
 
@@ -45,26 +38,26 @@
 {
     NSLog(@"---------请求对应的产品信息------------");
     NSArray *product = nil;
-    switch (buyType) {
-        case IAP0p20:
-            product=[[NSArray alloc] initWithObjects:ProductID_IAP0p20,nil];
-            break;
-        case IAP1p100:
-            product=[[NSArray alloc] initWithObjects:ProductID_IAP1p100,nil];
-            break;
-        case IAP4p600:
-            product=[[NSArray alloc] initWithObjects:ProductID_IAP4p600,nil];
-            break;
-        case IAP9p1000:
-            product=[[NSArray alloc] initWithObjects:ProductID_IAP9p1000,nil];
-            break;
-        case IAP24p6000:
-            product=[[NSArray alloc] initWithObjects:ProductID_IAP24p6000,nil];
-            break;
-            
-        default:
-            break;
-    }
+    //    switch (buyType) {
+    //        case IAP0p20:
+    //            product=[[NSArray alloc] initWithObjects:ProductID_IAP0p20,nil];
+    //            break;
+    //        case IAP1p100:
+    //            product=[[NSArray alloc] initWithObjects:ProductID_IAP1p100,nil];
+    //            break;
+    //        case IAP4p600:
+    //            product=[[NSArray alloc] initWithObjects:ProductID_IAP4p600,nil];
+    //            break;
+    //        case IAP9p1000:
+    //            product=[[NSArray alloc] initWithObjects:ProductID_IAP9p1000,nil];
+    //            break;
+    //        case IAP24p6000:
+    //            product=[[NSArray alloc] initWithObjects:ProductID_IAP24p6000,nil];
+    //            break;
+    //
+    //        default:
+    //            break;
+    //    }
     NSSet *nsset = [NSSet setWithArray:product];
     SKProductsRequest *request=[[SKProductsRequest alloc] initWithProductIdentifiers: nsset];
     request.delegate=self;
@@ -90,25 +83,25 @@
         NSLog(@"Product id: %@" , product.productIdentifier);
     }
     SKPayment *payment = nil;
-    switch (buyType) {
-        case IAP0p20:
-            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP0p20];    //支付25
-            break;
-        case IAP1p100:
-            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP1p100];    //支付108
-            break;
-        case IAP4p600:
-            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP4p600];    //支付618
-            break;
-        case IAP9p1000:
-            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP9p1000];    //支付1048
-            break;
-        case IAP24p6000:
-            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP24p6000];    //支付5898
-            break;
-        default:
-            break;
-    }
+    //    switch (buyType) {
+    //        case IAP0p20:
+    //            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP0p20];    //支付25
+    //            break;
+    //        case IAP1p100:
+    //            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP1p100];    //支付108
+    //            break;
+    //        case IAP4p600:
+    //            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP4p600];    //支付618
+    //            break;
+    //        case IAP9p1000:
+    //            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP9p1000];    //支付1048
+    //            break;
+    //        case IAP24p6000:
+    //            payment  = [SKPayment paymentWithProductIdentifier:ProductID_IAP24p6000];    //支付5898
+    //            break;
+    //        default:
+    //            break;
+    //    }
     NSLog(@"---------发送购买请求------------");
     [[SKPaymentQueue defaultQueue] addPayment:payment];
     
