@@ -7,10 +7,14 @@
 //
 
 #include "payment/ios/IOSBridge.h"
+#include "json/document.h"
+#include "json/rapidjson.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "payment/ios/RechargeVC.h"
 #endif
+
+#define RETURN_IF(cond)           if((cond)) return
 
 IOSBridge* IOSBridge::_instance = 0;
 
@@ -64,10 +68,21 @@ void IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *respons
     }
     std::string msg(buffer->begin(),buffer->end());;
     log("onHttpRequestCompleted response = %s",msg.c_str());
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    if(result.GetInt() == 0){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    //iOS代码
-    RechargeVC *re = [[RechargeVC alloc] init];
-    [re buy:1];
+        const rapidjson::Value &ios = _mDoc["ios"];
+        NSString* productId=[NSString stringWithFormat:@"%s",ios.GetString()];
+        //iOS代码
+        RechargeVC *re = [[RechargeVC alloc] init];
+        [re buy:productId];
 #endif
+    }else{
+        //TODO
+    }
 }
 

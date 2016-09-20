@@ -4,14 +4,14 @@
 @interface RechargeVC : UIViewController <SKPaymentTransactionObserver,SKProductsRequestDelegate >
 
 {
-    int buyType;
+    NSString *buyType;
 }
 
 -(void) requestProUpgradeProductData;
 
 -(void) RequestProductData;
 
--(void) buy:(int)type;
+-(void) buy:(NSString *)type;
 
 -(void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 
