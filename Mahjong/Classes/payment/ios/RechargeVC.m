@@ -11,7 +11,6 @@
     [super viewDidLoad];
     
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-    //    [self buy:IAP0p20];
     
 }
 

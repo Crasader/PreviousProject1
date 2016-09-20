@@ -10,7 +10,12 @@
 #define IOSBridge_hpp
 
 #include "cocos2d.h"
+#include "network/HttpClient.h"
+
+#define TBU_ID "201617"
+
 using namespace cocos2d;
+using namespace network;
 
 class IOSBridge{
 public:
@@ -20,5 +25,7 @@ private:
     IOSBridge();
     static IOSBridge* _instance;
     void init();
+    void getProductId(std::string payId);
+    void onHttpRequestCompleted(HttpClient *sender, HttpResponse *response);
 };
 #endif /* IOSBridge_hpp */
