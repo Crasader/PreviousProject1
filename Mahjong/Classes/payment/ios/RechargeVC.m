@@ -6,7 +6,7 @@
 
 @implementation RechargeVC
 
-- (void)viewDidLoad {
+-(void) viewDidLoad {
     
     [super viewDidLoad];
     
@@ -14,12 +14,12 @@
     
 }
 
-- (void)viewDidUnload {
+-(void) viewDidUnload {
     [super viewDidUnload];
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
 
--(void)buy:(NSString*)type orderId:(NSString *)myOrderId
+-(void) buy:(NSString*)type orderId:(NSString *)myOrderId
 {
     buyType = type;
     orderId = myOrderId;
@@ -33,16 +33,12 @@
     else
     {
         NSLog(@"不允许程序内付费购买");
-        UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:@"您的手机没有打开程序内付费购买"
-                                                           delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
-        
+        UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的手机没有打开程序内付费购买" delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
         [alerView show];
-        
     }
 }
 
--(void)RequestProductData
+-(void) RequestProductData
 {
     NSLog(@"---------请求对应的产品信息------------");
     NSArray *product =[[NSArray alloc] initWithObjects:buyType,nil];
@@ -52,7 +48,7 @@
     [request start];
 }
 
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
+-(void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
     
     NSLog(@"-----------收到产品反馈信息--------------");
     NSArray *myProduct = response.products;
@@ -74,11 +70,15 @@
 
 -(void) requestDidFinish:(SKRequest *)request
 {
-    NSLog(@"----------反馈信息结束--------------");
+    NSLog(@"-----商品信息请求结束------");
     
 }
 
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions//交易结果
+-(void) request:(SKRequest *)request didFailWithError:(NSError *)error {
+    NSLog(@"商品信息请求错误:%@", error);
+}
+
+-(void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions//交易结果
 {
     NSLog(@"-----updatedTransactions--------");
     for (SKPaymentTransaction *transaction in transactions)
@@ -95,10 +95,7 @@
             case SKPaymentTransactionStateFailed://交易失败
             { [self failedTransaction:transaction];
                 NSLog(@"-----交易失败 --------");
-                UIAlertView *alerView2 =  [[UIAlertView alloc] initWithTitle:@"提示"
-                                                                     message:@"购买失败，请重新尝试购买"
-                                                                    delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
-                
+                UIAlertView *alerView2 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"购买失败，请重新尝试购买" delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
                 [alerView2 show];
                 
             }break;
@@ -124,7 +121,7 @@
 }
 
 
-- (void)checkReceiptIsValid{
+-(void) checkReceiptIsValid{
     NSLog(@"-------checkReceiptIsValid----");
     //创建URL对象
     NSString *urlStr = @"http://183.129.206.54:1111/pay!iosOrderVerify.action?order_id=11111&receipt=weqewqewqeqew";
@@ -140,10 +137,11 @@
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *str = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",str);
 }
 
 
-- (void) completeTransaction: (SKPaymentTransaction *)transaction
+-(void) completeTransaction: (SKPaymentTransaction *)transaction
 
 {
     NSLog(@"-----completeTransaction--------");
@@ -166,8 +164,8 @@
 }
 
 
-- (void) failedTransaction: (SKPaymentTransaction *)transaction{
-    NSLog(@"失败");
+-(void) failedTransaction: (SKPaymentTransaction *)transaction{
+    NSLog(@"-----failedTransaction-----");
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
         
@@ -177,23 +175,24 @@
 }
 
 
-- (void) restoreTransaction: (SKPaymentTransaction *)transaction
+-(void) restoreTransaction: (SKPaymentTransaction *)transaction
 {
     NSLog(@" 交易恢复处理");
     
 }
 
--(void)recordTransaction:(NSString *)product{
+-(void) recordTransaction:(NSString *)product{
     NSLog(@"-----记录交易--------");
 }
 
 
--(void)provideContent:(NSString *)product{
+-(void) provideContent:(NSString *)product{
     NSLog(@"-----下载--------");
 }
 
--(void)dealloc
+-(void) dealloc
 {
+    [super dealloc];
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];//解除监听
 }
 
