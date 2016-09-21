@@ -5,19 +5,22 @@
 
 {
     NSString *buyType;
+    NSString *orderId;
 }
 
 -(void) requestProUpgradeProductData;
 
 -(void) RequestProductData;
 
--(void) buy:(NSString *)type;
+-(void) buy:(NSString *)type orderId:(NSString *)myOrderId;
 
 -(void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 
 -(void) PurchasedTransaction: (SKPaymentTransaction *)transaction;
 
 -(void) completeTransaction: (SKPaymentTransaction *)transaction;
+
+-(void) checkReceiptIsValid;
 
 -(void) failedTransaction: (SKPaymentTransaction *)transaction;
 

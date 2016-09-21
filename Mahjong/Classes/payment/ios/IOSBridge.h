@@ -20,12 +20,12 @@ using namespace network;
 class IOSBridge{
 public:
     static IOSBridge* getInstance();
-    void doPayEvent(int payId);
+    void doPayEvent(std::string poxiaoId,int payId);
 private:
     IOSBridge();
     static IOSBridge* _instance;
     void init();
-    void getProductId(std::string payId);
+    void getProductId(std::string poxiaoId,std::string payId);
     void onHttpRequestCompleted(HttpClient *sender, HttpResponse *response);
 };
 #endif /* IOSBridge_hpp */

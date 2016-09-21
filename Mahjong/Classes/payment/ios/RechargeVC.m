@@ -14,12 +14,16 @@
     
 }
 
--(void)buy:(NSString*)type
+-(void)buy:(NSString*)type orderId:(NSString *)myOrderId
 {
     buyType = type;
+    orderId = myOrderId;
     if ([SKPaymentQueue canMakePayments]) {
-        [self RequestProductData];
         NSLog(@"允许程序内付费购买");
+        //        [self RequestProductData];//向IOS服务器发送请求,获取商品信息
+        NSLog(@"---------发送购买请求------------");
+        SKPayment *payment = [SKPayment paymentWithProductIdentifier:buyType];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
     }
     else
     {
@@ -62,7 +66,7 @@
         NSLog(@"Product id: %@" , product.productIdentifier);
     }
     SKPayment *payment = [SKPayment paymentWithProductIdentifier:buyType];
-    NSLog(@"---------发送购买请求------------");
+     NSLog(@"---------发送购买请求------------");
     [[SKPaymentQueue defaultQueue] addPayment:payment];
     
 }
@@ -107,15 +111,18 @@
     {
         switch (transaction.transactionState)
         {
-            case SKPaymentTransactionStatePurchased:{//交易完成
+            case SKPaymentTransactionStatePurchased:{
+                //交易完成,向服务器进行验证
+                //self.receipt = [GTMBase64 stringByEncodingData:[NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]]];
+                [self checkReceiptIsValid];//把self.receipt发送到服务器验证是否有效
                 [self completeTransaction:transaction];
                 NSLog(@"-----交易完成 --------");
                 
-                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@""
-                                                                    message:@"购买成功"
-                                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
-                
-                [alerView show];
+                //                UIAlertView *alerView =  [[UIAlertView alloc] initWithTitle:@""
+                //                                                                    message:@"购买成功"
+                //                                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
+                //
+                //                [alerView show];
                 
             } break;
             case SKPaymentTransactionStateFailed://交易失败
@@ -161,6 +168,24 @@
     
 }
 
+- (void)checkReceiptIsValid{
+    //创建URL对象
+    NSString *urlStr = @"http://183.129.206.54:1111/pay!iosOrderVerify.action?order_id=11111&receipt=weqewqewqeqew";
+    NSURL *url = [[NSURL alloc] initWithString:urlStr];
+    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    /*其中缓存协议是个枚举类型包含：
+     NSURLRequestUseProtocolCachePolicy（基础策略）
+     NSURLRequestReloadIgnoringLocalCacheData（忽略本地缓存）
+     NSURLRequestReturnCacheDataElseLoad（首先使用缓存，如果没有本地缓存，才从原地址下载）
+     NSURLRequestReturnCacheDataDontLoad（使用本地缓存，从不下载，如果本地没有缓存，则请求失败，此策略多用于离线操作）
+     NSURLRequestReloadIgnoringLocalAndRemoteCacheData（无视任何缓存策略，无论是本地的还是远程的，总是从原地址重新下载）
+     NSURLRequestReloadRevalidatingCacheData（如果本地缓存是有效的则不下载，其他任何情况都从原地址重新下载）*/
+    //第三步，连接服务器
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *str = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",str);
+}
+
 //记录交易
 -(void)recordTransaction:(NSString *)product{
     NSLog(@"-----记录交易--------");
@@ -202,6 +227,8 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
 }
+
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     switch([(NSHTTPURLResponse *)response statusCode]) {

@@ -3874,11 +3874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/IOSBridge.mm"
-            timestampString = "496059998.56719"
+            timestampString = "496122834.805817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *response)"
             landmarkType = "5">
          </BreakpointContent>
