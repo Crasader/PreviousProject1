@@ -147,7 +147,7 @@ void ChargeDiamond::chargeButtonClick(Ref* ref){
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),StringUtils::format("%d",temp->getTag()));//从2开始
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),1);
+    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),2);
 #endif
     
 }

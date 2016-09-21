@@ -8,27 +8,23 @@
     NSString *orderId;
 }
 
--(void) requestProUpgradeProductData;
+-(void) buy:(NSString *)type orderId:(NSString *)myOrderId;
 
 -(void) RequestProductData;
 
--(void) buy:(NSString *)type orderId:(NSString *)myOrderId;
-
 -(void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
-
--(void) PurchasedTransaction: (SKPaymentTransaction *)transaction;
-
--(void) completeTransaction: (SKPaymentTransaction *)transaction;
 
 -(void) checkReceiptIsValid;
 
+-(void) completeTransaction: (SKPaymentTransaction *)transaction;
+
 -(void) failedTransaction: (SKPaymentTransaction *)transaction;
 
--(void) paymentQueueRestoreCompletedTransactionsFinished: (SKPaymentTransaction *)transaction;
+-(void) restoreTransaction: (SKPaymentTransaction *)transaction;
 
 -(void) paymentQueue:(SKPaymentQueue *) paymentQueue restoreCompletedTransactionsFailedWithError:(NSError *)error;
 
--(void) restoreTransaction: (SKPaymentTransaction *)transaction;
+-(void) paymentQueueRestoreCompletedTransactionsFinished: (SKPaymentTransaction *)transaction;
 
 -(void) provideContent:(NSString *)product;
 
