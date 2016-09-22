@@ -3,13 +3,10 @@
 //代理
 @interface RechargeVC : NSObject<SKPaymentTransactionObserver,SKProductsRequestDelegate >
 
-{
-    NSString *buyType;
-    NSString *poxiaoOrderId;
-    
-}
 
--(void) buy:(NSString *)type orderId:(NSString *)myOrderId;
++(instancetype) shareInstance;  
+
+-(void) buy:(NSString*)myOrderId productId:(NSString*) myProductId;
 
 -(void) RequestProductData;
 

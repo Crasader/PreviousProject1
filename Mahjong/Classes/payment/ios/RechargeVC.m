@@ -1,27 +1,55 @@
 #import "payment/ios/RechargeVC.h"
 
-@interface RechargeVC ()
-
-@end
-
 @implementation RechargeVC
 
-static bool hasAddObersver = NO;
+static RechargeVC* _instance = nil;
 
--(void) buy:(NSString*)type orderId:(NSString*)myOrderId
+bool hasAddObersver = NO;
+
+NSString *iosProductId;
+
+NSString *poxiaoOrderId;
+
+
++(instancetype) shareInstance
 {
-    buyType = type;
-    poxiaoOrderId = myOrderId;
-    if (!hasAddObersver) {
-        hasAddObersver = YES;
-        // 监听购买结果
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    @synchronized(self)
+    {
+        static dispatch_once_t onceToken ;
+        dispatch_once(&onceToken, ^{
+            _instance = [[super allocWithZone:NULL] init] ;
+            
+        }) ;
     }
+    return _instance ;
+}
+
++(id) allocWithZone:(struct _NSZone *)zone
+{
+    return [RechargeVC shareInstance] ;
+}
+
+-(id) copyWithZone:(struct _NSZone *)zone
+{
+    return [RechargeVC shareInstance] ;
+}
+
+-(void) buy:(NSString*)myOrderId productId:(NSString*) myProductId
+{
     if ([SKPaymentQueue canMakePayments]) {
         NSLog(@"允许程序内付费购买");
-        //      [self RequestProductData];//向IOS服务器发送请求,获取商品信息
+        //向IOS服务器发送请求,获取商品信息
+        //[self RequestProductData];
+        iosProductId = myProductId;
+        poxiaoOrderId = myOrderId;
+        //注册监听事件
+        if (!hasAddObersver) {
+            hasAddObersver = YES;
+            // 监听购买结果
+            [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        }
         NSLog(@"---发送购买请求---");
-        SKPayment *payment = [SKPayment paymentWithProductIdentifier:buyType];
+        SKPayment *payment = [SKPayment paymentWithProductIdentifier:iosProductId];
         [[SKPaymentQueue defaultQueue] addPayment:payment];
     }
     else
@@ -35,7 +63,7 @@ static bool hasAddObersver = NO;
 -(void) RequestProductData
 {
     NSLog(@"---请求对应的产品信息---");
-    NSArray *product =[[NSArray alloc] initWithObjects:buyType,nil];
+    NSArray *product =[[NSArray alloc] initWithObjects:iosProductId,nil];
     NSSet *nsset = [NSSet setWithArray:product];
     SKProductsRequest *request=[[SKProductsRequest alloc] initWithProductIdentifiers: nsset];
     request.delegate=self;
@@ -57,7 +85,7 @@ static bool hasAddObersver = NO;
         NSLog(@"Product id: %@" , product.productIdentifier);
     }
     NSLog(@"---发送购买请求---");
-    SKPayment * payment = [SKPayment paymentWithProductIdentifier:buyType];
+    SKPayment * payment = [SKPayment paymentWithProductIdentifier:iosProductId];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
 
@@ -116,15 +144,18 @@ static bool hasAddObersver = NO;
     NSURL *url = [NSURL URLWithString:@"http://183.129.206.54:1111/pay!iosOrderVerify.action"];
     //第二步，创建请求
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-    NSString *post = [NSString stringWithFormat:@"{order_id:%@,receipt:%@}",myOrderId,myReceipt];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    //    NSString *post = [NSString stringWithFormat:@"{order_id:%@,receipt:%@}",myOrderId,myReceipt];
+    //    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    NSDictionary *tmp = [[NSDictionary alloc] initWithObjectsAndKeys:myOrderId, @"order_id",myReceipt, @"receipt",nil];
+    NSError *error;
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:tmp options:0 error:&error];
     [request setHTTPMethod:@"POST"];//设置请求方式为POST，默认为GET
     [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-//    NSLog(@"received = %@",result);
+    NSLog(@"received = %@",result);
 }
 
 
@@ -134,9 +165,8 @@ static bool hasAddObersver = NO;
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     NSData *data = [NSData dataWithContentsOfFile:[[[NSBundle mainBundle] appStoreReceiptURL] path]];
     NSString *myReceipt = [data base64EncodedStringWithOptions:0];
-    NSLog(@"buyType = %@",buyType);
-    NSLog(@"poxiaoOrderId = %@",poxiaoOrderId);
-//    [self checkReceiptIsValid:poxiaoOrderId receipt:myReceipt];//receipt发送到服务器验证是否有效
+    //    [self addDicToPayAry:dic]; 存到本地
+    [self checkReceiptIsValid:poxiaoOrderId receipt:myReceipt];//receipt发送到服务器验证是否有效
     
 }
 
