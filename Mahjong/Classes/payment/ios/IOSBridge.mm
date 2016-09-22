@@ -76,12 +76,12 @@ void IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *respons
     if(result.GetInt() == 0){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         const rapidjson::Value &ios = _mDoc["ios"];
-        const rapidjson::Value &pxOrderId = _mDoc["orderId"];
-        NSString* productId=[NSString stringWithFormat:@"%s",ios.GetString()];
-         NSString* orderId=[NSString stringWithFormat:@"%s",pxOrderId.GetString()];
+        const rapidjson::Value &myOrderId = _mDoc["orderId"];
+        NSString* productId = [NSString stringWithFormat:@"%s",ios.GetString()];
+        NSString* pxorderId = [NSString stringWithFormat:@"%s",myOrderId.GetString()];
         //iOS代码
         RechargeVC* rechargeVC = [[RechargeVC alloc] init];
-        [rechargeVC buy:productId orderId:orderId];
+        [rechargeVC buy:productId orderId:pxorderId];
 #endif
     }else{
         //TODO

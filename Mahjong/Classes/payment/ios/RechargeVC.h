@@ -5,7 +5,8 @@
 
 {
     NSString *buyType;
-    NSString *orderId;
+    NSString *poxiaoOrderId;
+    
 }
 
 -(void) buy:(NSString *)type orderId:(NSString *)myOrderId;
@@ -14,7 +15,7 @@
 
 -(void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 
--(void) checkReceiptIsValid;
+-(void) checkReceiptIsValid:(NSString *) myOrderId receipt:(NSString *)myReceipt;
 
 -(void) completeTransaction: (SKPaymentTransaction *)transaction;
 
