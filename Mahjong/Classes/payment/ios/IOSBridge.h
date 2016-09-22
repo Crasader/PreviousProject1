@@ -9,6 +9,7 @@
 #ifndef IOSBridge_hpp
 #define IOSBridge_hpp
 
+
 #include "cocos2d.h"
 #include "network/HttpClient.h"
 

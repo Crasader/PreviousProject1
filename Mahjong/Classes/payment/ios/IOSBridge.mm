@@ -80,8 +80,8 @@ void IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *respons
         NSString* productId=[NSString stringWithFormat:@"%s",ios.GetString()];
          NSString* orderId=[NSString stringWithFormat:@"%s",pxOrderId.GetString()];
         //iOS代码
-        RechargeVC *re = [[RechargeVC alloc] init];
-        [re buy:productId orderId:orderId];
+        RechargeVC* rechargeVC = [[RechargeVC alloc] init];
+        [rechargeVC buy:productId orderId:orderId];
 #endif
     }else{
         //TODO

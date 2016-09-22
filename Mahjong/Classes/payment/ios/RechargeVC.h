@@ -1,7 +1,7 @@
 #import <StoreKit/StoreKit.h>
 
 //代理
-@interface RechargeVC : UIViewController <SKPaymentTransactionObserver,SKProductsRequestDelegate >
+@interface RechargeVC : NSObject<SKPaymentTransactionObserver,SKProductsRequestDelegate >
 
 {
     NSString *buyType;
