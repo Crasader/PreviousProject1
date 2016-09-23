@@ -44,7 +44,7 @@ sqlite3 *poxiaoDB = nil;
     if ([SKPaymentQueue canMakePayments]) {
         NSLog(@"允许程序内付费购买");
         //向IOS服务器发送请求,获取商品信息
-        //[self RequestProductData];
+        //        [self RequestProductData];
         iosProductId = myProductId;
         poxiaoOrderId = myOrderId;
         poxiaoId = myPoxiaoId;
@@ -181,6 +181,8 @@ sqlite3 *poxiaoDB = nil;
 
 -(void) failedTransaction: (SKPaymentTransaction *)transaction{
     NSLog(@"---failedTransaction---");
+    NSString *rssiString = [NSString stringWithFormat:@"%d", transaction.error.code];
+    NSLog(@"errorcode = %@",rssiString);
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
         
@@ -234,7 +236,7 @@ sqlite3 *poxiaoDB = nil;
 -(void) insertRecordToDB{
     NSLog(@"插入一条数据！");
     NSString *inSQL = [NSString stringWithFormat:@"INSERT INTO 't_person' ('%@', '%@', '%@') VALUES ('%@', '%@', '%@')",
-                      @"poxiaoId", @"productId", @"orderId", poxiaoId, iosProductId, poxiaoOrderId];
+                       @"poxiaoId", @"productId", @"orderId", poxiaoId, iosProductId, poxiaoOrderId];
     char *errmsg = NULL;
     const char * sql =[inSQL UTF8String];
     sqlite3_exec(poxiaoDB, sql, NULL, NULL, &errmsg);

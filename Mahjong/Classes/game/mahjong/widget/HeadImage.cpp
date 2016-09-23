@@ -52,7 +52,10 @@ void HeadImage::updateImageByName(std::string image){
             setScale(headSize.width/getContentSize().width,headSize.height/getContentSize().height);
         }
     }else{
-        if(image == "1"){
+        if(image == ""){
+         setTexture("gameview/head_image_1.png");
+        }
+        else if(image == "1"){
             setTexture("gameview/head_image_1.png");
         }else if(image == "2"){
             setTexture("gameview/head_image_2.png");
