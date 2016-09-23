@@ -186,6 +186,8 @@ NSString *poxiaoOrderId;
 -(void) restoreTransaction: (SKPaymentTransaction *)transaction
 {
     NSLog(@"---交易恢复处理---");
+    UIAlertView *alerView2 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已经购买过该商品了" delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
+    [alerView2 show];
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
