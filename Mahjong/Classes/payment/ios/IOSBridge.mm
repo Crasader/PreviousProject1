@@ -77,14 +77,17 @@ void IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *respons
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         const rapidjson::Value &ios = _mDoc["ios"];
         const rapidjson::Value &myOrderId = _mDoc["orderId"];
+        const rapidjson::Value &mypoxiaoId = _mDoc["poxiao_id"];
          //iOS代码
         NSString* pxProductId = [[NSString alloc] initWithFormat:@"%s",ios.GetString()];
         NSString* pxOrderId = [[NSString alloc] initWithFormat:@"%s",myOrderId.GetString()];
+        NSString* poXiaoId = [[NSString alloc] initWithFormat:@"%s",mypoxiaoId.GetString()];
         RechargeVC* rechargeVC = [RechargeVC shareInstance] ;
-        [rechargeVC buy:pxOrderId productId:pxProductId];
+        [rechargeVC buy:pxOrderId productId:pxProductId poxiaoId:poXiaoId];
 #endif
     }else{
-        //TODO
+        UIAlertView *alerView2 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你今天购买次数过多" delegate:nil cancelButtonTitle:NSLocalizedString(@"关闭",nil) otherButtonTitles:nil];
+        [alerView2 show];
     }
 }
 

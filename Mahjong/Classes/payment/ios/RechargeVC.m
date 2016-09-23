@@ -1,4 +1,5 @@
 #import "payment/ios/RechargeVC.h"
+# import "sqlite3.h"
 
 @implementation RechargeVC
 
@@ -6,9 +7,13 @@ static RechargeVC* _instance = nil;
 
 bool hasAddObersver = NO;
 
-NSString *iosProductId;
+NSString *iosProductId = nil;
 
-NSString *poxiaoOrderId;
+NSString *poxiaoOrderId = nil;
+
+NSString *poxiaoId = nil;
+
+sqlite3 *poxiaoDB = nil;
 
 
 +(instancetype) shareInstance
@@ -34,7 +39,7 @@ NSString *poxiaoOrderId;
     return [RechargeVC shareInstance] ;
 }
 
--(void) buy:(NSString*)myOrderId productId:(NSString*) myProductId
+-(void) buy:(NSString*)myOrderId productId:(NSString*) myProductId poxiaoId:(NSString*) myPoxiaoId
 {
     if ([SKPaymentQueue canMakePayments]) {
         NSLog(@"允许程序内付费购买");
@@ -42,11 +47,13 @@ NSString *poxiaoOrderId;
         //[self RequestProductData];
         iosProductId = myProductId;
         poxiaoOrderId = myOrderId;
+        poxiaoId = myPoxiaoId;
         //注册监听事件
         if (!hasAddObersver) {
             hasAddObersver = YES;
             // 监听购买结果
             [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+            [self openDatabase];
         }
         NSLog(@"---发送购买请求---");
         SKPayment *payment = [SKPayment paymentWithProductIdentifier:iosProductId];
@@ -156,6 +163,7 @@ NSString *poxiaoOrderId;
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
     NSLog(@"received = %@",result);
+    [self deleteRecordFromDB:poxiaoOrderId];
 }
 
 
@@ -165,7 +173,7 @@ NSString *poxiaoOrderId;
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     NSData *data = [NSData dataWithContentsOfFile:[[[NSBundle mainBundle] appStoreReceiptURL] path]];
     NSString *myReceipt = [data base64EncodedStringWithOptions:0];
-    //    [self addDicToPayAry:dic]; 存到本地
+    [self insertRecordToDB]; //存到本地
     [self checkReceiptIsValid:poxiaoOrderId receipt:myReceipt];//receipt发送到服务器验证是否有效
     
 }
@@ -200,10 +208,53 @@ NSString *poxiaoOrderId;
     NSLog(@"-----下载--------");
 }
 
+/**
+ *  打开数据库并创建一个表
+ */
+- (void)openDatabase {
+    //1.设置文件名
+    NSString *filename = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"poxiao_user_info.db"];
+    //2.打开数据库文件，如果没有会自动创建一个文件
+    NSInteger result = sqlite3_open(filename.UTF8String, &poxiaoDB);
+    if (result == SQLITE_OK) {
+        NSLog(@"打开数据库成功！");
+        //3.创建一个数据库表
+        char *errmsg = NULL;
+        sqlite3_exec(poxiaoDB, "CREATE TABLE IF NOT EXISTS t_person(id integer primary key autoincrement, poxiaoId text, productId text, orderId text)", NULL, NULL, &errmsg);
+        if (errmsg) {
+            NSLog(@"错误：%s", errmsg);
+        } else {
+            NSLog(@"创表成功！");
+        }
+        
+    } else {
+        NSLog(@"打开数据库失败！");
+    }}
+
+-(void) insertRecordToDB{
+    NSLog(@"插入一条数据！");
+    NSString *inSQL = [NSString stringWithFormat:@"INSERT INTO 't_person' ('%@', '%@', '%@') VALUES ('%@', '%@', '%@')",
+                      @"poxiaoId", @"productId", @"orderId", poxiaoId, iosProductId, poxiaoOrderId];
+    char *errmsg = NULL;
+    const char * sql =[inSQL UTF8String];
+    sqlite3_exec(poxiaoDB, sql, NULL, NULL, &errmsg);
+}
+
+-(void) deleteRecordFromDB:(int) recordId{
+    NSLog(@"删除一条数据！");
+    NSString *deleteSqlStr = [NSString stringWithFormat:@"DELETE FROM 't_person' WHERE  orderId= %@",poxiaoOrderId];
+    char *errmsg = NULL;
+    const char * sql =[deleteSqlStr UTF8String];
+    sqlite3_exec(poxiaoDB, sql, NULL, NULL, &errmsg);
+}
+
+
+
 -(void) dealloc
 {
     [super dealloc];
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];//解除监听
+    sqlite3_close(poxiaoDB);
 }
 
 @end

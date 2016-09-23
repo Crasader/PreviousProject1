@@ -6,7 +6,7 @@
 
 +(instancetype) shareInstance;  
 
--(void) buy:(NSString*)myOrderId productId:(NSString*) myProductId;
+-(void) buy:(NSString*)myOrderId productId:(NSString*) myProductId poxiaoId:(NSString*) myPoxiaoId;
 
 -(void) RequestProductData;
 
@@ -27,5 +27,11 @@
 -(void) provideContent:(NSString *)product;
 
 -(void) recordTransaction:(NSString *)product;
+
+-(void) openDatabase;
+
+-(void) deleteRecordFromDB:(int) recordId;
+
+-(void) insertRecordToDB;
 
 @end
