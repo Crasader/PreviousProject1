@@ -24,8 +24,12 @@ bool LoadResource::init(){
     
         return false;
     }
-//    showLayer();
     showHealthLayer();
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+     showHealthLayer();
+  #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    showLayer();
+#endif
     return true;
 }
 
