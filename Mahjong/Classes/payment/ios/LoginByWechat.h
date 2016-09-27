@@ -5,12 +5,15 @@
 //  Created by qiuzhong on 16/9/26.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 #import "payment/ios/wechat/WXApi.h"
-#import "payment/ios/WXApiManager.h"
 
-@interface LoginByWechat : UIViewController<WXApiManagerDelegate>
+#define AppID       @"wx650e2a97e8b7b265"
+
+@interface LoginByWechat : NSObject<WXApiDelegate>
+
++ (instancetype)sharedManager;
 
 - (BOOL)sendAuthRequestScope;
 

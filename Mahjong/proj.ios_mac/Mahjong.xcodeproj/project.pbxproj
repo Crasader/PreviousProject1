@@ -222,8 +222,8 @@
 		D291B58F1D75264900B05026 /* MahjongActivities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D291B58C1D75264900B05026 /* MahjongActivities.cpp */; };
 		D291B5911D755C6800B05026 /* activities in Resources */ = {isa = PBXBuildFile; fileRef = D291B5901D755C6800B05026 /* activities */; };
 		D291B5921D755C6800B05026 /* activities in Resources */ = {isa = PBXBuildFile; fileRef = D291B5901D755C6800B05026 /* activities */; };
-		D294FE0F1D990B2B005FB8A2 /* LoginByWechat.m in Sources */ = {isa = PBXBuildFile; fileRef = D294FE0E1D990B2B005FB8A2 /* LoginByWechat.m */; };
-		D294FE151D9A0905005FB8A2 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D294FE141D9A0905005FB8A2 /* WXApiManager.m */; };
+		D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */ = {isa = PBXBuildFile; fileRef = D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */; };
+		D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */; };
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
 		D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
 		D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
@@ -555,9 +555,9 @@
 		D291B58D1D75264900B05026 /* MahjongActivities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MahjongActivities.hpp; sourceTree = "<group>"; };
 		D291B5901D755C6800B05026 /* activities */ = {isa = PBXFileReference; lastKnownFileType = folder; path = activities; sourceTree = "<group>"; };
 		D294FE0D1D990B2B005FB8A2 /* LoginByWechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginByWechat.h; sourceTree = "<group>"; };
-		D294FE0E1D990B2B005FB8A2 /* LoginByWechat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginByWechat.m; sourceTree = "<group>"; };
-		D294FE131D9A0905005FB8A2 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiManager.h; path = wechat/WXApiManager.h; sourceTree = "<group>"; };
-		D294FE141D9A0905005FB8A2 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXApiManager.m; path = wechat/WXApiManager.m; sourceTree = "<group>"; };
+		D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginByWechat.mm; sourceTree = "<group>"; };
+		D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WxLoginHandler.cpp; sourceTree = "<group>"; };
+		D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WxLoginHandler.hpp; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuaAnim.cpp; sourceTree = "<group>"; };
 		D2A175271CE0562A00CEDAE4 /* HuaAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuaAnim.hpp; sourceTree = "<group>"; };
@@ -1101,15 +1101,15 @@
 		D257FD731D6C2E2400B8C596 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				D2C3FA511D9906FF00CFC80E /* wechat */,
-				D257FD741D6C2E2400B8C596 /* RechargeVC.h */,
-				D294FE131D9A0905005FB8A2 /* WXApiManager.h */,
-				D294FE141D9A0905005FB8A2 /* WXApiManager.m */,
-				D257FD751D6C2E2400B8C596 /* RechargeVC.m */,
-				D294FE0D1D990B2B005FB8A2 /* LoginByWechat.h */,
-				D294FE0E1D990B2B005FB8A2 /* LoginByWechat.m */,
-				D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */,
 				D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */,
+				D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */,
+				D294FE0D1D990B2B005FB8A2 /* LoginByWechat.h */,
+				D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */,
+				D257FD741D6C2E2400B8C596 /* RechargeVC.h */,
+				D257FD751D6C2E2400B8C596 /* RechargeVC.m */,
+				D2C3FA511D9906FF00CFC80E /* wechat */,
+				D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */,
+				D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.hpp */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -1710,13 +1710,14 @@
 				D22EEF791D66CFC800BF1CCB /* BillDetailInfo.cpp in Sources */,
 				D2B1A8D71CCDF0F400A20896 /* PlayerBase.cpp in Sources */,
 				D2B1A8771CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
-				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.m in Sources */,
+				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */,
 				D2F05F5D1D8E7500006E5A4C /* ChangePassword.cpp in Sources */,
 				D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */,
 				D2B1A8FF1CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8831CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D22EEF3C1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */,
+				D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */,
 				D2B1A8731CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
 				D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */,
 				D28A4A341D056B7A00741FD0 /* StringUtil.cpp in Sources */,
@@ -1753,7 +1754,6 @@
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				D22EEF5F1D66CEB600BF1CCB /* FaHongbao.cpp in Sources */,
 				D22EEFC11D66D14D00BF1CCB /* DayCell.cpp in Sources */,
-				D294FE151D9A0905005FB8A2 /* WXApiManager.m in Sources */,
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

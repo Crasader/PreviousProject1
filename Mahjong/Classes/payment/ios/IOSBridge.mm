@@ -6,12 +6,13 @@
 //
 //
 
-#include "payment/ios/IOSBridge.h"
-#include "json/document.h"
-#include "json/rapidjson.h"
+#import "payment/ios/IOSBridge.h"
+#import "json/document.h"
+#import "json/rapidjson.h"
+
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#include "payment/ios/RechargeVC.h"
+#import "payment/ios/RechargeVC.h"
 #import "payment/ios/LoginByWechat.h"
 #endif
 

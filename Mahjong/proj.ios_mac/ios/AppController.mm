@@ -29,10 +29,8 @@
 #import "RootViewController.h"
 
 #import "payment/ios/wechat/WXApi.h"
-#import "payment/ios/WXApiManager.h"
+#import "payment/ios/LoginByWechat.h"
 
-#define AppID       @"wx650e2a97e8b7b265"
-#define AppSecret   @"e2f6dc42be9109c3b816c2ec8cf71a43"
 
 @implementation AppController
 
@@ -99,11 +97,11 @@ static AppDelegate s_sharedApplication;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+    return  [WXApi handleOpenURL:url delegate:[LoginByWechat sharedManager]];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+    return [WXApi handleOpenURL:url delegate:[LoginByWechat sharedManager]];
 }
 
 
