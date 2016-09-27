@@ -13,6 +13,9 @@
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#include "payment/ios/IOSBridge.h"
+#endif
 
 
 Scene* SplashScene::createScene()
@@ -225,7 +228,12 @@ void SplashScene::loginByPass(){
 void SplashScene::loginByVisitor(){
     Audio::getInstance()->playSoundClick();
     showLoading();
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    IOSBridge::getInstance()->doWechatLogin();
+# elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->weChatLogin();
+#endif
 }
 
 

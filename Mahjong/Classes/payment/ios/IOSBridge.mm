@@ -12,6 +12,7 @@
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "payment/ios/RechargeVC.h"
+#import "payment/ios/LoginByWechat.h"
 #endif
 
 #define RETURN_IF(cond)           if((cond)) return
@@ -40,6 +41,11 @@ void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
 #endif
 }
 
+
+void IOSBridge::doWechatLogin(){
+     LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+    [loginByWechat sendAuthRequestScope];
+}
 
 void IOSBridge::getProductId(std::string poxiaoId,std::string payId){
     HttpRequest* request = new HttpRequest();

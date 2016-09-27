@@ -28,6 +28,12 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 
+#import "payment/ios/wechat/WXApi.h"
+#import "payment/ios/WXApiManager.h"
+
+#define AppID       @"wx650e2a97e8b7b265"
+#define AppSecret   @"e2f6dc42be9109c3b816c2ec8cf71a43"
+
 @implementation AppController
 
 #pragma mark -
@@ -85,8 +91,19 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     app->run();
+    
+    // 向微信注册
+    [WXApi registerApp:AppID];
 
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
 
 
