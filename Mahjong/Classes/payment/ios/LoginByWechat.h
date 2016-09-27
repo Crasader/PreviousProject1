@@ -17,4 +17,8 @@
 
 - (BOOL)sendAuthRequestScope;
 
+- (void)sendLoginMsg2Server:(NSString*) code;
+
+- (BOOL)checkTokenOutTime;
+
 @end

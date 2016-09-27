@@ -54,6 +54,9 @@ public:
     
     float getSoundValue();
     void setSoundValue(float value);
+    
+    std::string getWxOpenId();
+    void setWxOpenId(std::string openId);
 private:
 	UserData();
 	static UserData* _instance;	

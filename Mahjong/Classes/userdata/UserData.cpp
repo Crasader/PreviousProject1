@@ -147,3 +147,11 @@ void UserData::setSoundValue(float value){
 }
 
 
+std::string UserData::getWxOpenId(){
+    return UserDefault::getInstance()->getStringForKey("wchat_openid", "unknow");
+}
+
+void UserData::setWxOpenId(std::string openId){
+    UserDefault::getInstance()->setStringForKey("wchat_openid", openId);
+}
+
