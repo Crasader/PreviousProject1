@@ -131,6 +131,15 @@
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_REQUEST  1056// 乐券商城兑换记录请求{code:1056,poxiaoId:poxiaoId}
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_RESPONSE  1057// 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
 
+#define MSGCODE_LEQUAN_KING_RECORD_REQUEST  1058// 乐券王记录请求{code:1058,poxiaoId:poxiaoId}
+#define MSGCODE_LEQUAN_KING_RECORD_RESPONSE  1059;// 乐券王记录回复{code:1059,poxiaoId:poxiaoId,list:[{rid:"11111",id:"1",status:"1"},{rid:"2222",id:"2",status:"2"}]} //-1 未兑换 0兑换中 1已兑换
+
+#define MSGCODE_LEQUAN_KING_EXCHANGE_REQUEST  1060//乐券王兑换请求{code:1060,poxiaoId:poxiaoId,rid:"111"}
+#define MSGCODE_LEQUAN_KING_EXCHANGE_RESPONSE  1061// 乐券王兑换回复{code:1061,poxiaoId:poxiaoId,result:"1"} 1成功0失败
+
+#define MSGCODE_LEQUAN_KING_ORDER_REQUEST  1062// 乐券王榜单请求{code:1060,poxiaoId:poxiaoId}
+#define MSGCODE_LEQUAN_KING_ORDER_RESPONSE  1063// 乐券王榜单回复{code:1061,poxiaoId:poxiaoId,day:[{"lequan":961288,"nickname":"果果04"},{"lequan":103006,"nickname":"果果05"},{"lequan":72796,"nickname":"果果01"}],week:{"nickname":"果果04","lequan":961288}} //-1 未兑换 0兑换中 1已兑换
+
 #define MSGCODE_GAME_CHART_REQUEST  1993//游戏内聊天请求{code:1993,poxiaoId:"123",content:"哈哈",pId:"11111"}
 #define MSGCODE_GAME_CHART_NOTIFY 1994// 游戏内聊天通知{code:1994,poxiaoId:"456",nickname:"",content:"哈哈"}
 
