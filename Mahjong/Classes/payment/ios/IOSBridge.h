@@ -23,6 +23,7 @@ public:
     static IOSBridge* getInstance();
     void doPayEvent(std::string poxiaoId,int payId);
     void doWechatLogin();
+    void doWechatShare(std::string title,std::string content);
 private:
     IOSBridge();
     static IOSBridge* _instance;

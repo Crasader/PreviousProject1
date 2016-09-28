@@ -167,27 +167,31 @@ static NSString *kAuthState = @"heisdoubi";
 }
 
 //微信分享
-- (void) wechatShare{
-
+- (void) wechatShare:(NSString*) contentTile ContentDescription:(NSString*) contentDescription{
+    NSString *kAppContentExInfo = @"<xml>extend info</xml>";
+    NSString *kAppContnetExURL = @"http://weixin.qq.com";
+    NSString *kAppMessageExt = @"这是第三方带的测试字段";
+    NSString *kAppMessageAction = @"<action>dotaliTest</action>";
+    
+    Byte* pBuffer = (Byte *)malloc(1024 * 100);
+    memset(pBuffer, 0, 1024 * 100);
+    NSData* data = [NSData dataWithBytes:pBuffer length:1024 * 100];
+    free(pBuffer);
     WXAppExtendObject *ext = [WXAppExtendObject object];
-//    ext.extInfo = info;
-//    ext.url = url;
-//    ext.fileData = data;
-    
-//    WXMediaMessage *message = [WXMediaMessage messageWithTitle:title
-//                                                   Description:description
-//                                                        Object:ext
-//                                                    MessageExt:messageExt
-//                                                 MessageAction:action
-//                                                    ThumbImage:thumbImage
-//                                                      MediaTag:nil];
-    
-//    SendMessageToWXReq* req = [SendMessageToWXReq requestWithText:nil
-//                                                   OrMediaMessage:message
-//                                                            bText:NO
-//                                                          InScene:scene];
-
-
+    ext.extInfo = kAppContentExInfo;
+    ext.url = kAppContnetExURL;
+    ext.fileData = data;
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = contentTile;
+    message.description = contentDescription;
+    message.mediaObject = ext;
+    message.messageExt = kAppMessageExt;
+    message.messageAction = kAppMessageAction;
+    message.mediaTagName = nil;
+    [message setThumbImage:nil];
+    SendMessageToWXReq *req = [[[SendMessageToWXReq alloc] init] autorelease];
+    req.message = message;
+    [WXApi sendReq:req];
 }
 
 #pragma mark - WXApiDelegate

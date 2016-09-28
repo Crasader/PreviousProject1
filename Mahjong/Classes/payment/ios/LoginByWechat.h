@@ -21,6 +21,6 @@
 
 - (BOOL)checkTokenOutTime;
 
-- (void) wechatShare;
+- (void) wechatShare:(NSString*) contentTile ContentDescription:(NSString*) contentDescription;
 
 @end

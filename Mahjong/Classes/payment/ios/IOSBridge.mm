@@ -44,8 +44,16 @@ void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
 
 
 void IOSBridge::doWechatLogin(){
-     LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+    LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
     [loginByWechat sendAuthRequestScope];
+    //    [loginByWechat wechatShare:@"红包口令" ContentDescription:@"123456789"];
+}
+
+void IOSBridge::doWechatShare(std::string title,std::string content){
+    LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+    NSString* wxTitle = [[NSString alloc] initWithFormat:@"%s",title.c_str()];
+    NSString* wxContent = [[NSString alloc] initWithFormat:@"%s",content.c_str()];
+    [loginByWechat wechatShare:wxTitle ContentDescription:wxContent];
 }
 
 void IOSBridge::getProductId(std::string poxiaoId,std::string payId){
@@ -85,7 +93,7 @@ void IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *respons
         const rapidjson::Value &ios = _mDoc["ios"];
         const rapidjson::Value &myOrderId = _mDoc["orderId"];
         const rapidjson::Value &mypoxiaoId = _mDoc["poxiao_id"];
-         //iOS代码
+        //iOS代码
         NSString* pxProductId = [[NSString alloc] initWithFormat:@"%s",ios.GetString()];
         NSString* pxOrderId = [[NSString alloc] initWithFormat:@"%s",myOrderId.GetString()];
         NSString* poXiaoId = [[NSString alloc] initWithFormat:@"%s",mypoxiaoId.GetString()];
