@@ -21,4 +21,6 @@
 
 - (BOOL)checkTokenOutTime;
 
+- (void) wechatShare;
+
 @end

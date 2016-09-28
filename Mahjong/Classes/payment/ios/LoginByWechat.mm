@@ -166,6 +166,30 @@ static NSString *kAuthState = @"heisdoubi";
     return false;
 }
 
+//微信分享
+- (void) wechatShare{
+
+    WXAppExtendObject *ext = [WXAppExtendObject object];
+//    ext.extInfo = info;
+//    ext.url = url;
+//    ext.fileData = data;
+    
+//    WXMediaMessage *message = [WXMediaMessage messageWithTitle:title
+//                                                   Description:description
+//                                                        Object:ext
+//                                                    MessageExt:messageExt
+//                                                 MessageAction:action
+//                                                    ThumbImage:thumbImage
+//                                                      MediaTag:nil];
+    
+//    SendMessageToWXReq* req = [SendMessageToWXReq requestWithText:nil
+//                                                   OrMediaMessage:message
+//                                                            bText:NO
+//                                                          InScene:scene];
+
+
+}
+
 #pragma mark - WXApiDelegate
 - (void)onResp:(BaseResp *)resp {
     if ([resp isKindOfClass:[SendAuthResp class]]) {
