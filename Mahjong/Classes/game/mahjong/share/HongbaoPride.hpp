@@ -22,6 +22,8 @@ public:
 private:
     void showHongbaoPride();
     void closeView();
+    void doFaHongBaoPerson();
+    void doFaHongBaoFriend();
     
 };
 #endif /* HongbaoPride_hpp */

@@ -16,6 +16,11 @@
 static NSString *kAuthScope = @"snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact";
 static NSString *kAuthState = @"heisdoubi";
 
+static NSString *kAppContentExInfo = @"<xml>extend info</xml>";
+static NSString *kAppContnetExURL = @"http://weixin.qq.com";
+static NSString *kAppMessageExt = @"这是第三方带的测试字段";
+static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
+
 
 #pragma mark - LifeCycle
 
@@ -168,10 +173,6 @@ static NSString *kAuthState = @"heisdoubi";
 
 //微信分享
 - (void) wechatShareApp:(NSString*) contentTile ContentDescription:(NSString*) contentDescription{
-    NSString *kAppContentExInfo = @"<xml>extend info</xml>";
-    NSString *kAppContnetExURL = @"http://weixin.qq.com";
-    NSString *kAppMessageExt = @"这是第三方带的测试字段";
-    NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     
     Byte* pBuffer = (Byte *)malloc(1024 * 100);
     memset(pBuffer, 0, 1024 * 100);
@@ -181,6 +182,23 @@ static NSString *kAuthState = @"heisdoubi";
     ext.extInfo = kAppContentExInfo;
     ext.url = kAppContnetExURL;
     ext.fileData = data;
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = contentTile;
+    message.description = contentDescription;
+    message.mediaObject = ext;
+    message.messageExt = kAppMessageExt;
+    message.messageAction = kAppMessageAction;
+    message.mediaTagName = nil;
+    [message setThumbImage:nil];
+    SendMessageToWXReq *req = [[[SendMessageToWXReq alloc] init] autorelease];
+    req.message = message;
+    [WXApi sendReq:req];
+}
+
+- (void) wechatShareWeb:(NSString*) url ContentTile:(NSString*) contentTile ContentDescription:(NSString*) contentDescription{
+    WXWebpageObject *ext = [WXWebpageObject object];
+    ext.webpageUrl = url;
+    
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = contentTile;
     message.description = contentDescription;

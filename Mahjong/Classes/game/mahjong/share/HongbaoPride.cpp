@@ -9,6 +9,10 @@
 #include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/state/GameData.h"
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#import "payment/ios/IOSBridge.h"
+#endif
+
 bool HongbaoPride::init(){
     if(!Layer::init()){
         
@@ -69,7 +73,7 @@ void HongbaoPride::showHongbaoPride(){
     wxIcon1->setPosition(480,350);
     addChild(wxIcon1);
     
-    auto btnImage = MenuItemImage::create("shop/fahongbao_btn_1.png","shop/fahongbao_btn_2.png");
+    auto btnImage = MenuItemImage::create("shop/fahongbao_btn_1.png","shop/fahongbao_btn_2.png",CC_CALLBACK_0(HongbaoPride::doFaHongBaoPerson, this));
     auto menu1= Menu::create(btnImage,NULL);
     menu1->setPosition(480,210);
     addChild(menu1);
@@ -91,17 +95,30 @@ void HongbaoPride::showHongbaoPride(){
     wxIcon2->setPosition(810,350);
     addChild(wxIcon2);
     
-    auto btnImage2 = MenuItemImage::create("shop/fahongbao_btn_1.png","shop/fahongbao_btn_2.png");
+    auto btnImage2 = MenuItemImage::create("shop/fahongbao_btn_1.png","shop/fahongbao_btn_2.png",CC_CALLBACK_0(HongbaoPride::doFaHongBaoFriend, this));
     auto menu2= Menu::create(btnImage2,NULL);
     menu2->setPosition(810,210);
     addChild(menu2);
-    
-
-    
 }
-
 
 
 void  HongbaoPride::closeView(){
     removeFromParent();
+}
+
+void HongbaoPride::doFaHongBaoPerson(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    log("HGHJGJHGJHGJFGHFHGGHGKHLKJLKJ");
+    IOSBridge::getInstance()->doWechatShareWeb("http://183.129.206.54:1111/hongbao.jsp?hbcode=12345","share", "测试内容");
+#endif
+}
+
+void HongbaoPride:: doFaHongBaoFriend(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    IOSBridge::getInstance()->doWechatShareWeb("http://183.129.206.54:1111/hongbao.jsp?hbcode=12345","share", "测试内容");
+#endif
 }

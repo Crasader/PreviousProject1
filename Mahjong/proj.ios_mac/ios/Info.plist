@@ -70,6 +70,16 @@
 				<string>wx650e2a97e8b7b265</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.poxiao.mahjong</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>poxiaoMahjong</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>

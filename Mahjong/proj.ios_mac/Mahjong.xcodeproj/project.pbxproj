@@ -89,8 +89,6 @@
 		D22EEF4F1D66AAF000BF1CCB /* LequanShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF321D66AAF000BF1CCB /* LequanShop.cpp */; };
 		D22EEF541D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */; };
 		D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */; };
-		D22EEF5F1D66CEB600BF1CCB /* FaHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF571D66CEB600BF1CCB /* FaHongbao.cpp */; };
-		D22EEF601D66CEB600BF1CCB /* FaHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF571D66CEB600BF1CCB /* FaHongbao.cpp */; };
 		D22EEF611D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF591D66CEB600BF1CCB /* HongbaoPride.cpp */; };
 		D22EEF621D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF591D66CEB600BF1CCB /* HongbaoPride.cpp */; };
 		D22EEF631D66CEB600BF1CCB /* LingHongbao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF5B1D66CEB600BF1CCB /* LingHongbao.cpp */; };
@@ -444,8 +442,6 @@
 		D22EEF331D66AAF000BF1CCB /* LequanShop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanShop.hpp; sourceTree = "<group>"; };
 		D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopHintDialog.cpp; sourceTree = "<group>"; };
 		D22EEF391D66AAF000BF1CCB /* ShopHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShopHintDialog.hpp; sourceTree = "<group>"; };
-		D22EEF571D66CEB600BF1CCB /* FaHongbao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaHongbao.cpp; sourceTree = "<group>"; };
-		D22EEF581D66CEB600BF1CCB /* FaHongbao.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaHongbao.hpp; sourceTree = "<group>"; };
 		D22EEF591D66CEB600BF1CCB /* HongbaoPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongbaoPride.cpp; sourceTree = "<group>"; };
 		D22EEF5A1D66CEB600BF1CCB /* HongbaoPride.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongbaoPride.hpp; sourceTree = "<group>"; };
 		D22EEF5B1D66CEB600BF1CCB /* LingHongbao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LingHongbao.cpp; sourceTree = "<group>"; };
@@ -959,8 +955,6 @@
 		D22EEF561D66CEB600BF1CCB /* share */ = {
 			isa = PBXGroup;
 			children = (
-				D22EEF571D66CEB600BF1CCB /* FaHongbao.cpp */,
-				D22EEF581D66CEB600BF1CCB /* FaHongbao.hpp */,
 				D22EEF591D66CEB600BF1CCB /* HongbaoPride.cpp */,
 				D22EEF5A1D66CEB600BF1CCB /* HongbaoPride.hpp */,
 				D22EEF5B1D66CEB600BF1CCB /* LingHongbao.cpp */,
@@ -1752,7 +1746,6 @@
 				D291B58E1D75264900B05026 /* MahjongActivities.cpp in Sources */,
 				D22EEF4E1D66AAF000BF1CCB /* LequanShop.cpp in Sources */,
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
-				D22EEF5F1D66CEB600BF1CCB /* FaHongbao.cpp in Sources */,
 				D22EEFC11D66D14D00BF1CCB /* DayCell.cpp in Sources */,
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
@@ -1801,7 +1794,6 @@
 				D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D22EEFC01D66D14D00BF1CCB /* DailySign.cpp in Sources */,
-				D22EEF601D66CEB600BF1CCB /* FaHongbao.cpp in Sources */,
 				D2484EB71D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,

@@ -49,11 +49,21 @@ void IOSBridge::doWechatLogin(){
     //    [loginByWechat wechatShare:@"红包口令" ContentDescription:@"123456789"];
 }
 
-void IOSBridge::doWechatShare(std::string title,std::string content){
-    LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content){
+    NSString* wxUrl = [[NSString alloc] initWithFormat:@"%s",url.c_str()];
     NSString* wxTitle = [[NSString alloc] initWithFormat:@"%s",title.c_str()];
     NSString* wxContent = [[NSString alloc] initWithFormat:@"%s",content.c_str()];
-    [loginByWechat wechatShare:wxTitle ContentDescription:wxContent];
+    LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+    [loginByWechat wechatShareWeb:wxUrl ContentTile:wxTitle ContentDescription:wxContent];
+
+}
+
+
+void IOSBridge::doWechatShareApp(std::string title,std::string content){
+    NSString* wxTitle = [[NSString alloc] initWithFormat:@"%s",title.c_str()];
+    NSString* wxContent = [[NSString alloc] initWithFormat:@"%s",content.c_str()];
+    LoginByWechat* loginByWechat = [LoginByWechat alloc];
+    [loginByWechat wechatShareApp:wxTitle ContentDescription:wxContent];
 }
 
 void IOSBridge::getProductId(std::string poxiaoId,std::string payId){
