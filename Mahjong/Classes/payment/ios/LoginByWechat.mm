@@ -167,7 +167,7 @@ static NSString *kAuthState = @"heisdoubi";
 }
 
 //微信分享
-- (void) wechatShare:(NSString*) contentTile ContentDescription:(NSString*) contentDescription{
+- (void) wechatShareApp:(NSString*) contentTile ContentDescription:(NSString*) contentDescription{
     NSString *kAppContentExInfo = @"<xml>extend info</xml>";
     NSString *kAppContnetExURL = @"http://weixin.qq.com";
     NSString *kAppMessageExt = @"这是第三方带的测试字段";

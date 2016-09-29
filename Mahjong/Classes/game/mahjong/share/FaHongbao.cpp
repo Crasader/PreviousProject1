@@ -91,3 +91,7 @@ void FaHongbao::showFaHongbao(){
 void  FaHongbao::closeView(){
     removeFromParent();
 }
+
+void FaHongbao::doFaHongBao(){
+
+}

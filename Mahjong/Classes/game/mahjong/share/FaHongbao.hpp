@@ -22,6 +22,7 @@ public:
 private:
     void showFaHongbao();
     void closeView();
+    void doFaHongBao();
 
 };
 #endif /* FaHongbao_hpp */
