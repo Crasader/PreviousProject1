@@ -1,8 +1,10 @@
 package org.cocos2dx.cpp.payment;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.poxiao.mahjong.R;
 import com.tbu.androidtools.Debug;
 import com.tbu.wx.http.callback.QueryCallBack;
 import com.tbu.wx.http.callback.WechatLoginCallBack;
@@ -10,6 +12,10 @@ import com.tbu.wx.http.callback.WxPayCallBack;
 import com.tbu.wx.wechat.TbuWxUtil;
 
 import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 
 public class Payment {
 
@@ -77,7 +83,18 @@ public class Payment {
 	 * @param friends
 	 */
 	public static void shareToWeChat(String webpageUrl, String title, String description, boolean friends) {
-		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description, friends);
+//		Bitmap bmp=BitmapFactory.decodeResource(Payment.activity.getResources(), R.drawable.send_music_thumb);
+//		ByteArrayOutputStream output = new ByteArrayOutputStream();
+//		bmp.compress(CompressFormat.PNG, 100, output);
+//		bmp.recycle();
+//		byte[] result = output.toByteArray();
+//		try {
+//			output.close();
+//		} catch (Exception e) {
+//			Debug.e("shareToWeChat image error");
+//		}
+//		Debug.e("shareToWeChat image error ==="+result.length);
+		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description,null, friends);
 	}
 
 	/**

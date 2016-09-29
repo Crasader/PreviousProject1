@@ -2,6 +2,16 @@
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "server/NetworkManage.h"
 
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#import "payment/ios/IOSBridge.h"
+#endif
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "payment/android/CallAndroidMethod.h"
+#endif
+
+
 bool FriendInvite::init()
 {
     if (!Layer::init())
@@ -194,9 +204,11 @@ void FriendInvite::addConfirm(){
 
 
 void FriendInvite::inviteWxFriend(){
-    
-    //TODO
-    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareToWeChat("http://183.129.206.54:1111/majiang.html","房间开好，就等侬了！", "",false);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    IOSBridge::getInstance()->doWechatShareWeb("http://183.129.206.54:1111/majiang.html","房间开好，就等侬了！", "");
+#endif
 }
 
 

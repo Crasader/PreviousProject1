@@ -9,8 +9,13 @@
 #include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/state/GameData.h"
 
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #import "payment/ios/IOSBridge.h"
+#endif
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "payment/android/CallAndroidMethod.h"
 #endif
 
 bool HongbaoPride::init(){
@@ -34,7 +39,7 @@ void HongbaoPride::showHongbaoPride(){
     auto  dialogBg = Sprite::create("shop/shop_bg_2.png");
     dialogBg->setPosition(640, 360);
     this->addChild(dialogBg);
-
+    
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(HongbaoPride::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
@@ -108,16 +113,20 @@ void  HongbaoPride::closeView(){
 
 void HongbaoPride::doFaHongBaoPerson(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    
+    std::string url = StringUtils::format("http://183.129.206.54:1111/hongbao.jsp?hbcode=%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    CallAndroidMethod::getInstance()->shareToWeChat(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包",false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doWechatShareWeb("http://183.129.206.54:1111/hongbao.jsp?hbcode=12345","来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包");
+    std::string url = StringUtils::format("http://183.129.206.54:1111/hongbao.jsp?hbcode=%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    IOSBridge::getInstance()->doWechatShareWeb(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包");
 #endif
 }
 
 void HongbaoPride:: doFaHongBaoFriend(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    
+    std::string url = StringUtils::format("http://183.129.206.54:1111/hongbao.jsp?hbcode=%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    CallAndroidMethod::getInstance()->shareToWeChat(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包",true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doWechatShareWeb("http://183.129.206.54:1111/hongbao.jsp?hbcode=12345","share", "测试内容");
+    std::string url = StringUtils::format("http://183.129.206.54:1111/hongbao.jsp?hbcode=%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    IOSBridge::getInstance()->doWechatShareWeb(url,"share", "测试内容");
 #endif
 }

@@ -4,6 +4,7 @@
 #include "game/mahjong/widget/HeadImage.hpp"
 
 
+
 bool FriendRoom::init()
 {
     if (!Layer::init())
