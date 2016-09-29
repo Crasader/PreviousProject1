@@ -222,6 +222,8 @@
 		D291B5921D755C6800B05026 /* activities in Resources */ = {isa = PBXBuildFile; fileRef = D291B5901D755C6800B05026 /* activities */; };
 		D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */ = {isa = PBXBuildFile; fileRef = D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */; };
 		D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */; };
+		D294FE1F1D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
+		D294FE201D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
 		D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
 		D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
@@ -554,6 +556,7 @@
 		D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginByWechat.mm; sourceTree = "<group>"; };
 		D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WxLoginHandler.cpp; sourceTree = "<group>"; };
 		D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WxLoginHandler.hpp; sourceTree = "<group>"; };
+		D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuaAnim.cpp; sourceTree = "<group>"; };
 		D2A175271CE0562A00CEDAE4 /* HuaAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuaAnim.hpp; sourceTree = "<group>"; };
@@ -794,6 +797,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */,
 				D291B5901D755C6800B05026 /* activities */,
 				D2BD08C41D66E76900ADC31E /* relieve */,
 				D2435FA21CC73524000BC4F4 /* signanim */,
@@ -1586,6 +1590,7 @@
 			files = (
 				D253296C1CC0D33600DDAD97 /* loading in Resources */,
 				D25329621CC0D33600DDAD97 /* friend in Resources */,
+				D294FE1F1D9CFBE1005FB8A2 /* Icon-180.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -1659,6 +1664,7 @@
 				D25329631CC0D33600DDAD97 /* friend in Resources */,
 				D25329691CC0D33600DDAD97 /* headportrait in Resources */,
 				D25DEE421CC4AE78007D428A /* shop in Resources */,
+				D294FE201D9CFBE1005FB8A2 /* Icon-180.png in Resources */,
 				D25329751CC0D33600DDAD97 /* playerinfo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

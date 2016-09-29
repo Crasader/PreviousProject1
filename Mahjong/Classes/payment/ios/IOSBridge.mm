@@ -51,8 +51,8 @@ void IOSBridge::doWechatLogin(){
 
 void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content){
     NSString* wxUrl = [[NSString alloc] initWithFormat:@"%s",url.c_str()];
-    NSString* wxTitle = [[NSString alloc] initWithFormat:@"%s",title.c_str()];
-    NSString* wxContent = [[NSString alloc] initWithFormat:@"%s",content.c_str()];
+    NSString *wxTitle= [[NSString alloc] initWithCString:title.c_str() encoding:NSUTF8StringEncoding];
+    NSString* wxContent = [[NSString alloc] initWithCString:content.c_str() encoding:NSUTF8StringEncoding];
     LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
     [loginByWechat wechatShareWeb:wxUrl ContentTile:wxTitle ContentDescription:wxContent];
 

@@ -110,8 +110,7 @@ void HongbaoPride::doFaHongBaoPerson(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    log("HGHJGJHGJHGJFGHFHGGHGKHLKJLKJ");
-    IOSBridge::getInstance()->doWechatShareWeb("http://183.129.206.54:1111/hongbao.jsp?hbcode=12345","share", "测试内容");
+    IOSBridge::getInstance()->doWechatShareWeb("http://183.129.206.54:1111/hongbao.jsp?hbcode=12345","来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包");
 #endif
 }
 
