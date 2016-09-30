@@ -34,6 +34,7 @@ void LingHongbao::onEnter(){
         if(data.result == "1"){
             HintDialog* dia = HintDialog::create("红包领取成功", NULL);
             addChild(dia);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
         }else{
             HintDialog* dia = HintDialog::create("红包已经被抢完了", NULL);
             addChild(dia);
