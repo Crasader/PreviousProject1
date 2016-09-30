@@ -48,7 +48,8 @@ void HeadImage::updateImageByName(std::string image){
             setTexture("gameview/head_image_4.png");
         }else{
             std::string path = UrlImageMannger::getInstance()->loadImgByUrl(UserData::getInstance()->getPicture());
-            setTexture(path);
+            if(path != "")
+                setTexture(path);
             setScale(headSize.width/getContentSize().width,headSize.height/getContentSize().height);
         }
     }else{
@@ -65,7 +66,8 @@ void HeadImage::updateImageByName(std::string image){
             setTexture("gameview/head_image_4.png");
         }else{
             std::string path = UrlImageMannger::getInstance()->loadImgByUrl(image);
-            setTexture(path);
+            if(path != "")
+                setTexture(path);
             setScale(headSize.width/getContentSize().width,headSize.height/getContentSize().height);
         }
         

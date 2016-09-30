@@ -10,6 +10,7 @@
 #include "server/NetworkManage.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 bool LingHongbao::init(){
     if(!Layer::init()){
@@ -29,7 +30,14 @@ void LingHongbao::onEnter(){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
         }
-        //TODO 动画
+        ReciveRedWallet data = GAMEDATA::getInstance()->getReciveRedWallet();
+        if(data.result == "1"){
+            HintDialog* dia = HintDialog::create("红包领取成功", NULL);
+            addChild(dia);
+        }else{
+            HintDialog* dia = HintDialog::create("红包已经被抢完了", NULL);
+            addChild(dia);
+        }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(redWalletReciveListener, 1);
 }

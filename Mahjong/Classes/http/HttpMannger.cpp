@@ -68,5 +68,4 @@ void HttpMannger::onHttpRequestCompletedForSendImage(HttpClient *sender, HttpRes
 //        break;
 //    }
     long statusCode = response->getResponseCode();
-    log("KKKKKKKKKKKK = %d",(int)statusCode);
 }

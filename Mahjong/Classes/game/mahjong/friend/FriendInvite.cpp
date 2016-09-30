@@ -1,6 +1,7 @@
 #include "game/mahjong/friend/FriendInvite.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "server/NetworkManage.h"
+#include "game/utils/GameConfig.h"
 
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -205,9 +206,9 @@ void FriendInvite::addConfirm(){
 
 void FriendInvite::inviteWxFriend(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat("http://183.129.206.54:1111/majiang.html","房间开好，就等侬了！", "",false);
+    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", "",false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doWechatShareWeb("http://183.129.206.54:1111/majiang.html","房间开好，就等侬了！", "");
+    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", "");
 #endif
 }
 

@@ -2881,13 +2881,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/friend/FriendInvite.cpp"
-            timestampString = "493738148.232551"
+            timestampString = "496894556.662708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "FriendInvite::onTouchEnded(Touch *touch, Event *event)"
-            landmarkType = "5">
+            startingLineNumber = "219"
+            endingLineNumber = "219">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2897,28 +2895,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/friend/FriendInvite.cpp"
-            timestampString = "493738148.232551"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "FriendInvite::onTouchBegan(Touch *touch, Event *event)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/game/mahjong/friend/FriendInvite.cpp"
-            timestampString = "493738148.232551"
+            timestampString = "496894556.662708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
             endingLineNumber = "212"
-            landmarkName = "FriendInvite::onTouchBegan(Touch *touch, Event *event)"
+            landmarkName = "FriendInvite::inviteWxFriend()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/friend/FriendInvite.cpp"
+            timestampString = "496894556.662708"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "FriendInvite::inviteWxFriend()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3858,7 +3856,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/http/image/UrlImageMannger.cpp"
-            timestampString = "495860316.505893"
+            timestampString = "496895221.439339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -3970,11 +3968,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "496807740.493321"
+            timestampString = "496893667.504415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-sendLoginMsg2Server:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3986,7 +3984,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "496807740.493321"
+            timestampString = "496893667.504415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"

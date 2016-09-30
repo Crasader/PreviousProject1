@@ -98,6 +98,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
                 NSObject *headimgurl = [results objectForKey:@"headimgurl"];
                 NSString *headimgurlstr = [NSString stringWithFormat:@"%@", headimgurl];
                 UserData::getInstance()->setWxOpenId(std::string([openidstr UTF8String]));
+                UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
                 WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]));
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");

@@ -40,6 +40,7 @@ std::string UrlImageMannger::loadImgByUrl(std::string url)
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
+    return "";
 }
 
 

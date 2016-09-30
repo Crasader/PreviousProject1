@@ -14,4 +14,6 @@
 #define ENTER_ROOM_3_GOLD 1200000// 进入第3个房间需要的最低金币
 #define DIAMOND_TO_GOLD_RATE 10//钻石兑换金币的比例
 
+#define WECHAT_SHARE_HONGBAO_URL "http://wyhl.5278-mobi.com:1111/hongbao.jsp"
+#define WECHAT_SHARE_FRIEND_URL "http://wyhl.5278-mobi.com:1111/majiang.html"
 #endif /* GameConfig_h */

@@ -8,6 +8,7 @@
 
 #include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/state/GameData.h"
+#include "game/utils/GameConfig.h"
 
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -113,20 +114,20 @@ void  HongbaoPride::closeView(){
 
 void HongbaoPride::doFaHongBaoPerson(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string url = StringUtils::format("http://183.129.206.54:1111/hongbao.jsp?hbcode=%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
     CallAndroidMethod::getInstance()->shareToWeChat(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包",false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    std::string url = StringUtils::format("http://183.129.206.54:1111/hongbao.jsp?hbcode=%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
     IOSBridge::getInstance()->doWechatShareWeb(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包");
 #endif
 }
 
 void HongbaoPride:: doFaHongBaoFriend(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string url = StringUtils::format("http://183.129.206.54:1111/hongbao.jsp?hbcode=%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
     CallAndroidMethod::getInstance()->shareToWeChat(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包",true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    std::string url = StringUtils::format("http://183.129.206.54:1111/hongbao.jsp?hbcode=%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
     IOSBridge::getInstance()->doWechatShareWeb(url,"share", "测试内容");
 #endif
 }
