@@ -588,6 +588,29 @@ std::string CommandManage::getThirdLoginCommand(std::string openid,std::string h
 
 }
 
+std::string CommandManage::getActivityRankCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_ORDER_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getActivityPrideListCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_RECORD_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getActivityPrideCommand(std::string rid){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_EXCHANGE_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("rid", rid));
+    return commandString(keyValue);
+
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
 	rapidjson::Document document;
 	rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

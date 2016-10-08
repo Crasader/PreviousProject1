@@ -454,6 +454,18 @@ void MsgHandler::distribute(int code, std::string msg){
             inviteOthersResp(msg);
             break;
         }
+        case MSGCODE_LEQUAN_KING_RECORD_RESPONSE:{
+             handleActivityPrideListResp(msg);
+            break;
+        }
+        case MSGCODE_LEQUAN_KING_EXCHANGE_RESPONSE:{
+            handleActivityPrideResp(msg);
+            break;
+        }
+        case MSGCODE_LEQUAN_KING_ORDER_RESPONSE:{
+            handleActivityRankResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2407,4 +2419,32 @@ void MsgHandler::inviteOthersResp(std::string msg){
     resp.nickname = nickname.GetString();
     GAMEDATA::getInstance()->setInviteRespData(resp);
     postNotifyMessage(FRIEND_IS_PLAYING_GAME, "");
+}
+
+void MsgHandler::handleActivityRankResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+//    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_ACTIVITY_RANK_INFO, "");
+
+}
+
+void MsgHandler::handleActivityPrideListResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    //    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_ACTIVITY_PRIDE_LIST_INFO, "");
+}
+
+void MsgHandler::handleActivityPrideResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    //    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_ACTIVITY_PRIDE_INFO, "");
 }

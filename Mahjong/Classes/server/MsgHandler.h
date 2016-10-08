@@ -92,5 +92,8 @@ private:
     void gameContinueResp(std::string msg);
     void otherClientReplace(std::string msg);
     void inviteOthersResp(std::string msg);
+    void handleActivityRankResp(std::string msg);
+    void handleActivityPrideListResp(std::string msg);
+    void handleActivityPrideResp(std::string msg);
 };
 #endif

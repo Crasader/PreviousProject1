@@ -74,6 +74,9 @@ public:
     std::string getContinueGameCommand();
     std::string getPlayerChatMsgCommand(std::string msg,std::string pid);
     std::string getThirdLoginCommand(std::string openid,std::string head);
+    std::string getActivityRankCommand();
+    std::string getActivityPrideListCommand();
+    std::string getActivityPrideCommand(std::string rid);
 private:
 	CommandManage();
 	static CommandManage* _instance;

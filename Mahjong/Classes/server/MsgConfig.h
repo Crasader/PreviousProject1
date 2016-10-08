@@ -132,7 +132,7 @@
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_RESPONSE  1057// 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
 
 #define MSGCODE_LEQUAN_KING_RECORD_REQUEST  1058// 乐券王记录请求{code:1058,poxiaoId:poxiaoId}
-#define MSGCODE_LEQUAN_KING_RECORD_RESPONSE  1059;// 乐券王记录回复{code:1059,poxiaoId:poxiaoId,list:[{rid:"11111",id:"1",status:"1"},{rid:"2222",id:"2",status:"2"}]} //-1 未兑换 0兑换中 1已兑换
+#define MSGCODE_LEQUAN_KING_RECORD_RESPONSE  1059// 乐券王记录回复{code:1059,poxiaoId:poxiaoId,list:[{rid:"11111",id:"1",status:"1"},{rid:"2222",id:"2",status:"2"}]} //-1 未兑换 0兑换中 1已兑换
 
 #define MSGCODE_LEQUAN_KING_EXCHANGE_REQUEST  1060//乐券王兑换请求{code:1060,poxiaoId:poxiaoId,rid:"111"}
 #define MSGCODE_LEQUAN_KING_EXCHANGE_RESPONSE  1061// 乐券王兑换回复{code:1061,poxiaoId:poxiaoId,result:"1"} 1成功0失败
@@ -292,7 +292,9 @@
 #define MSG_PLAYER_FEED_BACK_RESP "msg_player_feed_back_resp"
 #define MSG_PLAYER_RESUME_GAME "msg_player_resume_game"
 #define MSG_PLAYER_ROOM_CHAT_SHOW "msg_player_room_chat_show"
-
+#define MSG_ACTIVITY_RANK_INFO "MSG_ACTIVITY_RANK_INFO"
+#define MSG_ACTIVITY_PRIDE_LIST_INFO "MSG_ACTIVITY_PRIDE_LIST_INFO"
+#define MSG_ACTIVITY_PRIDE_INFO "MSG_ACTIVITY_PRIDE_INFO"
 
 #define GET_JJJ_RESPONSE_REMOVE_LOADING "get_jjj_response_remove_loading"
 #define UPDATE_JJJ_COUNT_RESP "update_jjj_count_resp"
