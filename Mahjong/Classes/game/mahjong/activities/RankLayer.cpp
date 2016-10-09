@@ -7,11 +7,11 @@
 //
 
 #include "game/mahjong/activities/RankLayer.hpp"
- bool RankLayer::init(){
+bool RankLayer::init(){
     if(!Layer::init()){
         return false;
     }
-     drawLayerUi();
+    drawLayerUi();
     return true;
 }
 
@@ -24,7 +24,7 @@ void RankLayer::onExit(){
 }
 
 void RankLayer::drawLayerUi(){
-
+    
     auto content_2 = Sprite::create("activities/act_conten_2.jpg");
     content_2->setPosition(640,290);
     addChild(content_2);

@@ -139,6 +139,10 @@
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D235D8F11DAA6B3000DDA131 /* RankLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D235D8EF1DAA6B3000DDA131 /* RankLayer.cpp */; };
 		D235D8F21DAA6B3000DDA131 /* RankLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D235D8EF1DAA6B3000DDA131 /* RankLayer.cpp */; };
+		D235D8F51DAA6EB300DDA131 /* PrideLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D235D8F31DAA6EB300DDA131 /* PrideLayer.cpp */; };
+		D235D8F61DAA6EB300DDA131 /* PrideLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D235D8F31DAA6EB300DDA131 /* PrideLayer.cpp */; };
+		D235D8FA1DAA700F00DDA131 /* LequanLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D235D8F81DAA700F00DDA131 /* LequanLayer.cpp */; };
+		D235D8FB1DAA700F00DDA131 /* LequanLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D235D8F81DAA700F00DDA131 /* LequanLayer.cpp */; };
 		D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
@@ -495,6 +499,10 @@
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D235D8EF1DAA6B3000DDA131 /* RankLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RankLayer.cpp; sourceTree = "<group>"; };
 		D235D8F01DAA6B3000DDA131 /* RankLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RankLayer.hpp; sourceTree = "<group>"; };
+		D235D8F31DAA6EB300DDA131 /* PrideLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrideLayer.cpp; sourceTree = "<group>"; };
+		D235D8F41DAA6EB300DDA131 /* PrideLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PrideLayer.hpp; sourceTree = "<group>"; };
+		D235D8F81DAA700F00DDA131 /* LequanLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanLayer.cpp; sourceTree = "<group>"; };
+		D235D8F91DAA700F00DDA131 /* LequanLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanLayer.hpp; sourceTree = "<group>"; };
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
@@ -1169,6 +1177,10 @@
 				D291B58D1D75264900B05026 /* MahjongActivities.hpp */,
 				D235D8EF1DAA6B3000DDA131 /* RankLayer.cpp */,
 				D235D8F01DAA6B3000DDA131 /* RankLayer.hpp */,
+				D235D8F31DAA6EB300DDA131 /* PrideLayer.cpp */,
+				D235D8F41DAA6EB300DDA131 /* PrideLayer.hpp */,
+				D235D8F81DAA700F00DDA131 /* LequanLayer.cpp */,
+				D235D8F91DAA700F00DDA131 /* LequanLayer.hpp */,
 			);
 			path = activities;
 			sourceTree = "<group>";
@@ -1689,6 +1701,7 @@
 				D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */,
 				D257FD761D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
+				D235D8FA1DAA700F00DDA131 /* LequanLayer.cpp in Sources */,
 				D22EEFC31D66D14D00BF1CCB /* DailyTask.cpp in Sources */,
 				D22EEFDB1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */,
 				D22EEF811D66CFC800BF1CCB /* FriendListView.cpp in Sources */,
@@ -1730,6 +1743,7 @@
 				D28A4A321D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
 				D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
 				D2CF763A1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */,
+				D235D8F51DAA6EB300DDA131 /* PrideLayer.cpp in Sources */,
 				D2BD08C21D66DAA400ADC31E /* GoldRelieve.cpp in Sources */,
 				D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
@@ -1880,6 +1894,7 @@
 				D28A4A371D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D22EEF821D66CFC800BF1CCB /* FriendListView.cpp in Sources */,
+				D235D8F61DAA6EB300DDA131 /* PrideLayer.cpp in Sources */,
 				D2F05F6F1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D22EEF621D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */,
@@ -1891,6 +1906,7 @@
 				D2F05F681D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */,
 				D22EEF7E1D66CFC800BF1CCB /* FriendAddView.cpp in Sources */,
 				D28A4A351D056B7A00741FD0 /* StringUtil.cpp in Sources */,
+				D235D8FB1DAA700F00DDA131 /* LequanLayer.cpp in Sources */,
 				D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,

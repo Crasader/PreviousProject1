@@ -8,6 +8,8 @@
 
 #include "game/mahjong/activities/MahjongActivities.hpp"
 #include "game/mahjong/activities/RankLayer.hpp"
+#include "game/mahjong/activities/PrideLayer.hpp"
+#include "game/mahjong/activities/LequanLayer.hpp"
 #include "server/NetworkManage.h"
 
 bool MahjongActivities::init(){
@@ -100,11 +102,11 @@ void MahjongActivities::initView(){
     act_layer_2->setVisible(act_layer_2);
     addChild(act_layer_2);
     
-    act_layer_3 = Layer::create();
+    act_layer_3 = PrideLayer::create();
     act_layer_3->setVisible(act_layer_3);
     addChild(act_layer_3);
     
-    act_layer_4 = Layer::create();
+    act_layer_4 = LequanLayer::create();
     act_layer_4->setVisible(act_layer_4);
     addChild(act_layer_4);
 }
