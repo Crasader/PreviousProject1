@@ -173,7 +173,7 @@ void Redwallet::drawDialog(){
     lequanNum2->setScale(0.9f);
     addChild(lequanNum2);
     
-    auto lequanText2 = Sprite::create("shop/gold_text.png");
+    auto lequanText2 = Sprite::create("shop/lequan_text.png");
     lequanText2->setPosition(690,335);
     addChild(lequanText2);
     
@@ -184,7 +184,7 @@ void Redwallet::drawDialog(){
     diamondNum2->setScale(0.9f);
     addChild(diamondNum2);
     
-    auto diamondText2 = Sprite::create("shop/gold_text.png");
+    auto diamondText2 = Sprite::create("shop/bangzhuan_text.png");
     diamondText2->setPosition(690,295);
     addChild(diamondText2);
     

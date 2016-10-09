@@ -128,6 +128,6 @@ void HongbaoPride:: doFaHongBaoFriend(){
     CallAndroidMethod::getInstance()->shareToWeChat(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包",true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
-    IOSBridge::getInstance()->doWechatShareWeb(url,"share", "测试内容");
+    IOSBridge::getInstance()->doWechatShareWeb(url, "来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包");
 #endif
 }
