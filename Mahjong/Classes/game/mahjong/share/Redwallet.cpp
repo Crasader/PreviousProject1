@@ -4,6 +4,7 @@
 #include "server/NetworkManage.h"
 #include "game/loading/Loading.h"
 #include "game/mahjong/state/GameData.h"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 
 bool Redwallet::init(){
     if (!Layer::init()){
@@ -58,7 +59,15 @@ void Redwallet::onEnter(){
         if(NULL != getChildByTag(1006)){
             getChildByTag(1006)->removeFromParent();
         }
-        
+        std::string result =  static_cast<char*>(event->getUserData());
+        if(result =="1"){
+            HintDialog* dia = HintDialog::create("奖励领取成功", NULL);
+            addChild(dia);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
+        }else{
+            HintDialog* dia = HintDialog::create("奖励领取失败", NULL);
+            addChild(dia);
+        }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(redWalletPushListener, 1);
 }
