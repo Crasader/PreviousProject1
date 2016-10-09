@@ -455,7 +455,7 @@ void MsgHandler::distribute(int code, std::string msg){
             break;
         }
         case MSGCODE_LEQUAN_KING_RECORD_RESPONSE:{
-             handleActivityPrideListResp(msg);
+            handleActivityPrideListResp(msg);
             break;
         }
         case MSGCODE_LEQUAN_KING_EXCHANGE_RESPONSE:{
@@ -2422,13 +2422,28 @@ void MsgHandler::inviteOthersResp(std::string msg){
 }
 
 void MsgHandler::handleActivityRankResp(std::string msg){
+    //{code:1061,poxiaoId:poxiaoId,day:[{"lequan":961288,"nickname":"果果04"},{"lequan":103006,"nickname":"果果05"},{"lequan":72796,"nickname":"果果01"}],week:{"nickname":"果果04","lequan":961288}}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-//    const rapidjson::Value &result = _mDoc["result"];
+    const rapidjson::Value &day = _mDoc["day"];
+    ActivityRankList rankList;
+    for (int i=0; i<day.Capacity(); i++) {
+        const rapidjson::Value &person = day[i];
+        ActivityRank rank;
+        rank.nickname =person["nickname"].GetString();
+        rank.lequan =person["lequan"].GetString();
+        rankList.rank.push_back(rank);
+    }
+    const rapidjson::Value &week = _mDoc["week"];
+    if(week.HasMember("nickname"))
+        rankList.weekName = week["nickname"].GetString();
+    if(week.HasMember("lequan"))
+        rankList.weekLequan = week["lequan"].GetString();
+    GAMEDATA::getInstance()->setActivityRankList(rankList);
     postNotifyMessage(MSG_ACTIVITY_RANK_INFO, "");
-
+    
 }
 
 void MsgHandler::handleActivityPrideListResp(std::string msg){

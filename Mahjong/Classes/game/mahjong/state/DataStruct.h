@@ -465,4 +465,15 @@ struct InviteRespData{
     std::string nickname;
     std::string result;
 };
+
+struct ActivityRank{
+    std::string nickname;
+    std::string lequan;
+};
+
+struct ActivityRankList{
+    std::vector<ActivityRank> rank;
+    std::string weekName;
+    std::string weekLequan;
+};
 #endif

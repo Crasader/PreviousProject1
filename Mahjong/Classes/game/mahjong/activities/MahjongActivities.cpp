@@ -7,6 +7,7 @@
 //
 
 #include "game/mahjong/activities/MahjongActivities.hpp"
+#include "game/mahjong/activities/RankLayer.hpp"
 #include "server/NetworkManage.h"
 
 bool MahjongActivities::init(){
@@ -95,11 +96,8 @@ void MahjongActivities::initView(){
     act_layer_1->addChild(content_1);
     addChild(act_layer_1);
     
-    act_layer_2 = Layer::create();
+    act_layer_2 = RankLayer::create();
     act_layer_2->setVisible(act_layer_2);
-    auto content_2 = Sprite::create("activities/act_conten_2.jpg");
-    content_2->setPosition(640,290);
-    act_layer_2->addChild(content_2);
     addChild(act_layer_2);
     
     act_layer_3 = Layer::create();

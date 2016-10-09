@@ -67,6 +67,7 @@ public:
     CC_SYNTHESIZE(LeChangeRecord, leChangeRecord, LeChangeRecord);
     CC_SYNTHESIZE(GameResumeData, gameResumeData, GameResumeData);
     CC_SYNTHESIZE(InviteRespData, inviteRespData, InviteRespData);
+    CC_SYNTHESIZE(ActivityRankList, activityRankList, ActivityRankList);
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
