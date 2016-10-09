@@ -206,9 +206,9 @@ void FriendInvite::addConfirm(){
 
 void FriendInvite::inviteWxFriend(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", "",false);
+    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", "来来来，房间开好了，麻将搓起来，手慢位置就要没了。",false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", "");
+    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", "来来来，房间开好了，麻将搓起来，手慢位置就要没了。");
 #endif
 }
 
