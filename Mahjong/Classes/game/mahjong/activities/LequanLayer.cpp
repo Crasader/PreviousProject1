@@ -45,12 +45,12 @@ void LequanLayer::drawLayerUi(){
     addChild(icon1);
     
     auto textinfo1 = Sprite::create("activities/text_sign.png");
-    textinfo1->setPosition(360,220);
+    textinfo1->setPosition(360,240);
     addChild(textinfo1);
     
     auto btnImage1 = MenuItemImage::create("activities/go_sign_1.png","activities/go_sign_2.png",CC_CALLBACK_0(LequanLayer::doFunction1,this));
     Menu* mymenu1 = Menu::create(btnImage1,NULL);
-    mymenu1->setPosition(350,170);
+    mymenu1->setPosition(360,160);
     addChild(mymenu1);
 
     
@@ -73,12 +73,12 @@ void LequanLayer::drawLayerUi(){
     addChild(icon2);
     
     auto textinfo2 = Sprite::create("activities/text_task.png");
-    textinfo2->setPosition(650,220);
+    textinfo2->setPosition(650,240);
     addChild(textinfo2);
     
     auto btnImage2 = MenuItemImage::create("activities/check_task_1.png","activities/check_task_2.png",CC_CALLBACK_0(LequanLayer::doFunction2,this));
     Menu* mymenu2 = Menu::create(btnImage2,NULL);
-    mymenu2->setPosition(350,170);
+    mymenu2->setPosition(650,160);
     addChild(mymenu2);
 
     
@@ -101,13 +101,13 @@ void LequanLayer::drawLayerUi(){
     addChild(icon3);
     
     auto textinfo3 = Sprite::create("activities/text_lequan.png");
-    textinfo3->setPosition(930,220);
+    textinfo3->setPosition(930,240);
     addChild(textinfo3);
     
     
     auto btnImage3 = MenuItemImage::create("activities/go_game_1.png","activities/go_game_2.png",CC_CALLBACK_0(LequanLayer::doFunction3,this));
     Menu* mymenu3 = Menu::create(btnImage3,NULL);
-    mymenu3->setPosition(350,170);
+    mymenu3->setPosition(930,160);
     addChild(mymenu3);
 
 }
