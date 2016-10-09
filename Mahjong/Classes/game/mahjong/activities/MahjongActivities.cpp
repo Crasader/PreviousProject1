@@ -7,11 +7,14 @@
 //
 
 #include "game/mahjong/activities/MahjongActivities.hpp"
+#include "server/NetworkManage.h"
 
 bool MahjongActivities::init(){
     if(!Layer::init()){
         return false;
     }
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->get);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getActivityRankCommand());
     initView();
     showActiviyContent();
     return true;

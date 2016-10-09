@@ -35,7 +35,24 @@ void LingHongbao::onEnter(){
             HintDialog* dia = HintDialog::create("红包领取成功", NULL);
             addChild(dia);
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
-        }else{
+        }else if(data.result == "0"){
+            HintDialog* dia = HintDialog::create("推广活动已经结束了", NULL);
+            addChild(dia);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
+        }else if(data.result == "2"){
+            HintDialog* dia = HintDialog::create("红包已经被抢完了", NULL);
+            addChild(dia);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
+        }else if(data.result == "3"){
+            HintDialog* dia = HintDialog::create("你已经领取过红包了", NULL);
+            addChild(dia);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
+        }else if(data.result == "4"){
+            HintDialog* dia = HintDialog::create("不能领取自己发的红包", NULL);
+            addChild(dia);
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
+        }
+        else{
             HintDialog* dia = HintDialog::create("红包已经被抢完了", NULL);
             addChild(dia);
         }
