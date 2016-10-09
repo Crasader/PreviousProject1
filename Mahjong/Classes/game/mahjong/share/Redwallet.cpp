@@ -220,9 +220,9 @@ void Redwallet::drawDialog(){
     this->addChild(tableView);
     tableView->reloadData();
     
-    auto text3 = Sprite::create("shop/every_one_text.png");
-    text3->setPosition(930,250);
-    addChild(text3);
+//    auto text3 = Sprite::create("shop/every_one_text.png");
+//    text3->setPosition(930,250);
+//    addChild(text3);
     
     auto btnImage3 = MenuItemImage::create("shop/linqujiangquan_1.png","shop/linqujiangquan_2.png");
     Menu* mymenu3 = Menu::create(btnImage3,NULL);
@@ -255,8 +255,8 @@ TableViewCell* Redwallet::tableCellAtIndex(TableView *table, ssize_t idx)
         head->setPosition(Vec2(25, 5));
         cell->addChild(head);
         
-        auto label = Label::createWithSystemFont(GAMEDATA::getInstance()->getRedWalletRespData().friends.at(idx).nickname, "arial", 30);
-        label->setColor(Color3B(69,131,172));
+        auto label = Label::createWithSystemFont(GAMEDATA::getInstance()->getRedWalletRespData().friends.at(idx).nickname, "arial", 24);
+        label->setColor(Color3B::WHITE);
         label->setAnchorPoint(Vec2::ZERO);
         label->setPosition(Vec2(125, 65));
         cell->addChild(label);
