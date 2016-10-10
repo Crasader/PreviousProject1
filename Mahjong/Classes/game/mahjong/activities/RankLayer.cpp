@@ -8,6 +8,7 @@
 
 #include "game/mahjong/activities/RankLayer.hpp"
 #include "game/mahjong/state/GameData.h"
+#include "server/NetworkManage.h"
 
 bool RankLayer::init(){
     if(!Layer::init()){
@@ -18,11 +19,20 @@ bool RankLayer::init(){
 }
 
 void RankLayer::onEnter(){
+    
     Layer::onEnter();
+    rankListListener = EventListenerCustom::create(MSG_ACTIVITY_RANK_INFO, [=](EventCustom* event){
+        ((Label*)getChildByTag(1001))->setString(GAMEDATA::getInstance()->getActivityRankList().weekName);
+        ((Label*)getChildByTag(1002))->setString(GAMEDATA::getInstance()->getActivityRankList().weekLequan);
+        tableView->reloadData();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(rankListListener, 1);
+    
 }
 
 void RankLayer::onExit(){
     Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(rankListListener);
 }
 
 void RankLayer::drawLayerUi(){
@@ -33,11 +43,13 @@ void RankLayer::drawLayerUi(){
     
     auto weekName = Label::createWithSystemFont("", "arial", 24);
     weekName->setColor(Color3B::BLACK);
+    weekName->setTag(1001);
     weekName->setPosition(600,450);
     addChild(weekName);
     
     auto weekLequan = Label::createWithSystemFont("", "arial", 24);
     weekLequan->setColor(Color3B::BLACK);
+    weekLequan->setTag(1002);
     weekLequan->setPosition(950,450);
     addChild(weekLequan);
     
@@ -68,6 +80,7 @@ Size RankLayer::tableCellSizeForIndex(TableView *table, ssize_t idx){
 TableViewCell* RankLayer::tableCellAtIndex(TableView *table, ssize_t idx){
     
     TableViewCell *cell = table->dequeueCell();
+    ActivityRankList ranklist = GAMEDATA::getInstance()->getActivityRankList();
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
@@ -78,14 +91,14 @@ TableViewCell* RankLayer::tableCellAtIndex(TableView *table, ssize_t idx){
         paiming->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         cell->addChild(paiming);
         
-        auto nickname =  Label::createWithSystemFont(StringUtils::format("%s",""),"arial",30);
+        auto nickname =  Label::createWithSystemFont(StringUtils::format("%s",ranklist.rank.at(idx).nickname.c_str()),"arial",30);
         nickname->setTag(102);
         nickname->setPosition(190,0);
         nickname->setColor(Color3B(219,185,71));
         nickname->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
         cell->addChild(nickname);
         
-        auto lequan =  Label::createWithSystemFont(StringUtils::format("%s",""),"arial",30);
+        auto lequan =  Label::createWithSystemFont(StringUtils::format("%s",ranklist.rank.at(idx).lequan.c_str()),"arial",30);
         lequan->setTag(103);
         lequan->setPosition(400,0);
         lequan->setColor(Color3B(219,185,71));
@@ -97,10 +110,10 @@ TableViewCell* RankLayer::tableCellAtIndex(TableView *table, ssize_t idx){
             ((Label*)cell->getChildByTag(101))->setString(StringUtils::format("%d",idx+1));
         }
         if(cell->getChildByTag(102) != NULL){
-             ((Label*)cell->getChildByTag(102))->setString(StringUtils::format("%s",""));
+            ((Label*)cell->getChildByTag(102))->setString(StringUtils::format("%s",ranklist.rank.at(idx).nickname.c_str()));
         }
         if(cell->getChildByTag(103) != NULL){
-             ((Label*)cell->getChildByTag(103))->setString(StringUtils::format("%s",""));
+            ((Label*)cell->getChildByTag(103))->setString(StringUtils::format("%s",ranklist.rank.at(idx).lequan.c_str()));
         }
     }
     return cell;
@@ -108,6 +121,5 @@ TableViewCell* RankLayer::tableCellAtIndex(TableView *table, ssize_t idx){
 
 
 ssize_t RankLayer::numberOfCellsInTableView(TableView *table){
-//    return 3;
     return GAMEDATA::getInstance()->getActivityRankList().rank.size();
 }

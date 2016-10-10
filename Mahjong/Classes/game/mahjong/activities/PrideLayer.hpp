@@ -19,6 +19,8 @@ public:
     void onExit() override;
     CREATE_FUNC(PrideLayer);
 private:
+    EventListenerCustom* prideListListener;
+    EventListenerCustom* prideListener;
     void drawLayerUi();
 };
 

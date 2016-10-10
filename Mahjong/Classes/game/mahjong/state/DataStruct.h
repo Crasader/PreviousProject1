@@ -481,4 +481,15 @@ struct ActivityTime{
     std::string start;
     std::string end;
 };
+
+struct ActivityPride{
+    int rid;
+    std::string pid;
+    std::string status;
+    std::string name;
+};
+
+struct ActivityPrideList{
+    std::vector<ActivityPride> prideList;
+};
 #endif

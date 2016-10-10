@@ -134,7 +134,7 @@
 #define MSGCODE_LEQUAN_KING_RECORD_REQUEST  1058// 乐券王记录请求{code:1058,poxiaoId:poxiaoId}
 #define MSGCODE_LEQUAN_KING_RECORD_RESPONSE  1059// 乐券王记录回复{code:1059,poxiaoId:poxiaoId,list:[{rid:"11111",id:"1",status:"1"},{rid:"2222",id:"2",status:"2"}]} //-1 未兑换 0兑换中 1已兑换
 
-#define MSGCODE_LEQUAN_KING_EXCHANGE_REQUEST  1060//乐券王兑换请求{code:1060,poxiaoId:poxiaoId,rid:"111"}
+#define MSGCODE_LEQUAN_KING_EXCHANGE_REQUEST  1060//乐券王兑换请求{code:1060,poxiaoId:poxiaoId,rid:"111",phone:"123"}
 #define MSGCODE_LEQUAN_KING_EXCHANGE_RESPONSE  1061// 乐券王兑换回复{code:1061,poxiaoId:poxiaoId,result:"1"} 1成功0失败
 
 #define MSGCODE_LEQUAN_KING_ORDER_REQUEST  1062// 乐券王榜单请求{code:1060,poxiaoId:poxiaoId}

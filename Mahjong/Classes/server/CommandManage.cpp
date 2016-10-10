@@ -602,10 +602,11 @@ std::string CommandManage::getActivityPrideListCommand(){
     return commandString(keyValue);
 }
 
-std::string CommandManage::getActivityPrideCommand(std::string rid){
+std::string CommandManage::getActivityPrideCommand(std::string rid,std::string phone){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_EXCHANGE_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("phone", phone));
     keyValue.insert(map<string, string>::value_type("rid", rid));
     return commandString(keyValue);
 

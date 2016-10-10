@@ -18,6 +18,7 @@ public:
     void onExit() override;
     CREATE_FUNC(MahjongActivities);
 private:
+    EventListenerCustom* timeListener;
     MenuItemToggle* act_tab_1;
     MenuItemToggle* act_tab_2;
     MenuItemToggle* act_tab_3;

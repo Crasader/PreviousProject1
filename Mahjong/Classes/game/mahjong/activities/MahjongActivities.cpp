@@ -10,14 +10,13 @@
 #include "game/mahjong/activities/RankLayer.hpp"
 #include "game/mahjong/activities/PrideLayer.hpp"
 #include "game/mahjong/activities/LequanLayer.hpp"
+#include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 
 bool MahjongActivities::init(){
     if(!Layer::init()){
         return false;
     }
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->get);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getActivityRankCommand());
     initView();
     showActiviyContent();
     return true;
@@ -92,10 +91,16 @@ void MahjongActivities::initView(){
     addChild(tabLabel_4);
     
     act_layer_1 = Layer::create();
+    act_layer_1->setTag(2009);
     act_layer_1->setVisible(act_layer_1);
     auto content_1 = Sprite::create("activities/act_conten_1.jpg");
     content_1->setPosition(640,290);
     act_layer_1->addChild(content_1);
+    auto time = Label::createWithSystemFont("", "arial", 20);
+    time->setColor(Color3B(231,198,87));
+    time->setPosition(985,448 );
+    time->setTag(1009);
+    act_layer_1->addChild(time);
     addChild(act_layer_1);
     
     act_layer_2 = RankLayer::create();
@@ -113,12 +118,19 @@ void MahjongActivities::initView(){
 
 void MahjongActivities::onEnter(){
     Layer::onEnter();
-    
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getActivityTimeCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getActivityRankCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getActivityPrideListCommand());
+    timeListener = EventListenerCustom::create(MSG_ACTIVITY_TIME_INFO, [=](EventCustom* event){
+        ((Label*)(((Layer*)getChildByTag(2009))->getChildByTag(1009)))->setString(StringUtils::format("%s-%s",GAMEDATA::getInstance()->getActivityTime().start.c_str(),GAMEDATA::getInstance()->getActivityTime().end.c_str()));
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(timeListener, 1);
 }
 
 
 void MahjongActivities::onExit(){
     Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(timeListener);
 }
 
 

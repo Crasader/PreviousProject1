@@ -69,6 +69,8 @@ public:
     CC_SYNTHESIZE(InviteRespData, inviteRespData, InviteRespData);
     CC_SYNTHESIZE(ActivityRankList, activityRankList, ActivityRankList);
     CC_SYNTHESIZE(ActivityTime, activityTime, ActivityTime);
+    CC_SYNTHESIZE(ActivityPrideList, activityPrideList, ActivityPrideList);
+    
     
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);

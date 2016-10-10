@@ -467,7 +467,7 @@ void MsgHandler::distribute(int code, std::string msg){
             break;
         }
         case MSGCODE_LEQUAN_KING_TIME_RESPONSE:{
-            
+            handleActivityTimeResp(msg);
             break;
         }
         default:
@@ -2451,12 +2451,23 @@ void MsgHandler::handleActivityRankResp(std::string msg){
 }
 
 void MsgHandler::handleActivityPrideListResp(std::string msg){
-//    {code:1059,poxiaoId:poxiaoId,list:[{rid:"11111",id:"1",status:"1"},{rid:"2222",id:"2",status:"2"}]}
+    //    {code:1059,poxiaoId:poxiaoId,list:[{rid:"11111",id:"1",status:"1"},{rid:"2222",id:"2",status:"2"}]}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //    const rapidjson::Value &result = _mDoc["result"];
+    const rapidjson::Value &list = _mDoc["list"];
+    ActivityPrideList prideList;
+    for (int i=0; i<list.Capacity(); i++) {
+        const rapidjson::Value &good = list[i];
+        ActivityPride pride;
+        pride.rid = good["rid"].GetInt();
+        pride.pid = good["id"].GetString();
+        pride.status = good["status"].GetString();
+        pride.name = good["name"].GetString();
+        prideList.prideList.push_back(pride);
+    }
+    GAMEDATA::getInstance()->setActivityPrideList(prideList);
     postNotifyMessage(MSG_ACTIVITY_PRIDE_LIST_INFO, "");
 }
 

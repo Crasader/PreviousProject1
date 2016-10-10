@@ -7,6 +7,8 @@
 //
 
 #include "game/mahjong/activities/LequanLayer.hpp"
+#include "game/mahjong/daily/DailyEvent.h"
+
 
 
 bool LequanLayer::init(){
@@ -36,12 +38,14 @@ void LequanLayer::drawLayerUi(){
     title1->setPosition(360,440);
     addChild(title1);
     
-    auto light1 = Sprite::create("daily/sign/pride_light.png");
-    light1->setPosition(360,360);
+    auto light1 = Sprite::create("shop/prop_light.png");
+    light1->setScale(0.8f);
+    light1->setPosition(360,345);
     addChild(light1);
     
     auto icon1 = Sprite::create("common/lequan_icon.png");
     icon1->setPosition(360,360);
+    icon1->setScale(2.5f);
     addChild(icon1);
     
     auto textinfo1 = Sprite::create("activities/text_sign.png");
@@ -64,12 +68,14 @@ void LequanLayer::drawLayerUi(){
     title2->setPosition(650,440);
     addChild(title2);
     
-    auto light2 = Sprite::create("daily/sign/pride_light.png");
-    light2->setPosition(650,360);
+    auto light2 = Sprite::create("shop/prop_light.png");
+    light2->setPosition(650,345);
+    light2->setScale(0.8f);
     addChild(light2);
     
     auto icon2 = Sprite::create("common/lequan_icon.png");
     icon2->setPosition(650,360);
+    icon2->setScale(2.5f);
     addChild(icon2);
     
     auto textinfo2 = Sprite::create("activities/text_task.png");
@@ -92,12 +98,14 @@ void LequanLayer::drawLayerUi(){
     title3->setPosition(930,440);
     addChild(title3);
     
-    auto light3 = Sprite::create("daily/sign/pride_light.png");
-    light3->setPosition(930,360);
+    auto light3 = Sprite::create("shop/prop_light.png");
+    light3->setPosition(930,345);
+    light3->setScale(0.8f);
     addChild(light3);
     
     auto icon3 = Sprite::create("common/lequan_icon.png");
     icon3->setPosition(930,360);
+    icon3->setScale(2.5f);
     addChild(icon3);
     
     auto textinfo3 = Sprite::create("activities/text_lequan.png");
@@ -115,16 +123,21 @@ void LequanLayer::drawLayerUi(){
 
 
 void LequanLayer::doFunction1(){
-
-
+    DailyEvent* day = DailyEvent::create();
+    day->showDailyEvent(DailyType::sign);
+    getParent()->getParent()-> addChild(day,3);
+    getParent()-> removeFromParent();
 }
 
 
 void LequanLayer::doFunction2(){
-
+    DailyEvent* day = DailyEvent::create();
+    day->showDailyEvent(DailyType::task);
+    getParent()->getParent()-> addChild(day,3);
+    getParent()->removeFromParent();
 }
 
 
 void LequanLayer::doFunction3(){
-
+    removeFromParent();
 }

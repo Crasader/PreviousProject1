@@ -27,6 +27,7 @@ public:
     virtual void scrollViewDidZoom(cocos2d::extension::ScrollView* view) {}
     CREATE_FUNC(RankLayer);
 private:
+    EventListenerCustom* rankListListener;
     TableView* tableView;
     void drawLayerUi();
 };

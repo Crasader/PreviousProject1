@@ -76,7 +76,7 @@ public:
     std::string getThirdLoginCommand(std::string openid,std::string head);
     std::string getActivityRankCommand();
     std::string getActivityPrideListCommand();
-    std::string getActivityPrideCommand(std::string rid);
+    std::string getActivityPrideCommand(std::string rid,std::string phone);
     std::string getActivityTimeCommand();
 private:
 	CommandManage();
