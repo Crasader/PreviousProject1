@@ -7,6 +7,7 @@
 //
 
 #include "game/mahjong/result/PlayerInfoCell.hpp"
+#include "game/mahjong/widget/HeadImage.hpp"
 #include "userdata/UserData.h"
 
 
@@ -38,20 +39,7 @@ bool PlayerInfoCell::init(GameResultData data){
             bgImageName = "result/player_result_2.png";
         }
     }
-    auto headImage = Sprite::create();
-    if(data.pic == "1"){
-        headImage->setTexture("gameview/head_image_1.png");
-    }else if(data.pic == "2"){
-        headImage->setTexture("gameview/head_image_2.png");
-    }else if(data.pic == "3"){
-        headImage->setTexture("gameview/head_image_3.png");
-    }else if(data.pic == "4"){
-        headImage->setTexture("gameview/head_image_4.png");
-    }else{
-        //TODO
-        log("服务器下发的头像图片不存在");
-    }
-
+    auto headImage = HeadImage::createByImage(data.pic,Size(90,90));
     headImage->setPosition(0, 50);
     addChild(headImage, 21);
     
