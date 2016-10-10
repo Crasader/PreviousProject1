@@ -95,5 +95,6 @@ private:
     void handleActivityRankResp(std::string msg);
     void handleActivityPrideListResp(std::string msg);
     void handleActivityPrideResp(std::string msg);
+    void handleActivityTimeResp(std::string msg);
 };
 #endif

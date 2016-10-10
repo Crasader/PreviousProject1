@@ -466,6 +466,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleActivityRankResp(msg);
             break;
         }
+        case MSGCODE_LEQUAN_KING_TIME_RESPONSE:{
+            
+            break;
+        }
         default:
             break;
     }
@@ -2447,6 +2451,7 @@ void MsgHandler::handleActivityRankResp(std::string msg){
 }
 
 void MsgHandler::handleActivityPrideListResp(std::string msg){
+//    {code:1059,poxiaoId:poxiaoId,list:[{rid:"11111",id:"1",status:"1"},{rid:"2222",id:"2",status:"2"}]}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -2460,6 +2465,20 @@ void MsgHandler::handleActivityPrideResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //    const rapidjson::Value &result = _mDoc["result"];
-    postNotifyMessage(MSG_ACTIVITY_PRIDE_INFO, "");
+    const rapidjson::Value &result = _mDoc["result"];
+    postNotifyMessage(MSG_ACTIVITY_PRIDE_INFO,result.GetString());
+}
+
+void MsgHandler::handleActivityTimeResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &start = _mDoc["start"];
+    const rapidjson::Value &end = _mDoc["end"];
+    ActivityTime time;
+    time.start = start.GetString();
+    time.end = end.GetString();
+    GAMEDATA::getInstance()->setActivityTime(time);
+    postNotifyMessage(MSG_ACTIVITY_TIME_INFO, "");
 }

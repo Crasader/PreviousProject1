@@ -476,4 +476,9 @@ struct ActivityRankList{
     std::string weekName;
     std::string weekLequan;
 };
+
+struct ActivityTime{
+    std::string start;
+    std::string end;
+};
 #endif

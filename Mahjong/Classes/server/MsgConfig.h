@@ -140,6 +140,10 @@
 #define MSGCODE_LEQUAN_KING_ORDER_REQUEST  1062// 乐券王榜单请求{code:1060,poxiaoId:poxiaoId}
 #define MSGCODE_LEQUAN_KING_ORDER_RESPONSE  1063// 乐券王榜单回复{code:1061,poxiaoId:poxiaoId,day:[{"lequan":961288,"nickname":"果果04"},{"lequan":103006,"nickname":"果果05"},{"lequan":72796,"nickname":"果果01"}],week:{"nickname":"果果04","lequan":961288}} //-1 未兑换 0兑换中 1已兑换
 
+#define MSGCODE_LEQUAN_KING_TIME_REQUEST  1064//乐券王时间请求{code:1064,poxiaoId:poxiaoId}
+#define MSGCODE_LEQUAN_KING_TIME_RESPONSE  1065// 乐券王时间回复{code:1065,poxiaoId:poxiaoId,start:"10.1",end:"10.20"}
+
+
 #define MSGCODE_GAME_CHART_REQUEST  1993//游戏内聊天请求{code:1993,poxiaoId:"123",content:"哈哈",pId:"11111"}
 #define MSGCODE_GAME_CHART_NOTIFY 1994// 游戏内聊天通知{code:1994,poxiaoId:"456",nickname:"",content:"哈哈"}
 
@@ -295,6 +299,7 @@
 #define MSG_ACTIVITY_RANK_INFO "MSG_ACTIVITY_RANK_INFO"
 #define MSG_ACTIVITY_PRIDE_LIST_INFO "MSG_ACTIVITY_PRIDE_LIST_INFO"
 #define MSG_ACTIVITY_PRIDE_INFO "MSG_ACTIVITY_PRIDE_INFO"
+#define MSG_ACTIVITY_TIME_INFO "MSG_ACTIVITY_TIME_INFO"
 
 #define GET_JJJ_RESPONSE_REMOVE_LOADING "get_jjj_response_remove_loading"
 #define UPDATE_JJJ_COUNT_RESP "update_jjj_count_resp"

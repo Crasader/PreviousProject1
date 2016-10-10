@@ -68,6 +68,8 @@ public:
     CC_SYNTHESIZE(GameResumeData, gameResumeData, GameResumeData);
     CC_SYNTHESIZE(InviteRespData, inviteRespData, InviteRespData);
     CC_SYNTHESIZE(ActivityRankList, activityRankList, ActivityRankList);
+    CC_SYNTHESIZE(ActivityTime, activityTime, ActivityTime);
+    
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);

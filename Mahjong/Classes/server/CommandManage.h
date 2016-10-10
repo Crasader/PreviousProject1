@@ -77,6 +77,7 @@ public:
     std::string getActivityRankCommand();
     std::string getActivityPrideListCommand();
     std::string getActivityPrideCommand(std::string rid);
+    std::string getActivityTimeCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;
