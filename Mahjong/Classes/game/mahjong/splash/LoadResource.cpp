@@ -27,9 +27,11 @@ bool LoadResource::init(){
     showHealthLayer();
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
      showHealthLayer();
-  #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#endif
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     showLayer();
 #endif
+
     return true;
 }
 
@@ -84,7 +86,7 @@ void LoadResource::showLayer(){
     auto load = Sprite::create();
     addChild(load);
     load->runAction(Sequence::create(CallFunc::create([=](){
-        Audio::getInstance()->playBGM();
+//        Audio::getInstance()->playBGM();
     }), NULL));
     auto loadProgerss = ProgressTimer::create(Sprite::create("mainlogin/loading_pro_1.png"));
     loadProgerss->setPosition(640,60);

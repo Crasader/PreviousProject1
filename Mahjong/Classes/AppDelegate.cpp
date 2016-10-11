@@ -4,6 +4,7 @@
 #include "game/mahjong/state/GameData.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
+#include "game/utils/Audio.h"
 
 USING_NS_CC;
 using namespace experimental;
@@ -66,6 +67,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // run
     director->runWithScene(scene);
     
+    Audio::getInstance()->playBGM();
     return true;
 }
 
