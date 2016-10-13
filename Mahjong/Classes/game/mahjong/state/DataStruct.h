@@ -187,7 +187,8 @@ struct RoomData{
     int roomId;
     int maxGold;
     int minGold;
-
+    int base;
+    int hua;
 };
 
 struct RoomListData

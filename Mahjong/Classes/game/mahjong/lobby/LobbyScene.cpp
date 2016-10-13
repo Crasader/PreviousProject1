@@ -249,6 +249,33 @@ void LobbyScene::drawSceneMid(){
         if (roomList.rooms.at(i).roomId == ROOM_1){
             gameMenu->addChild(room1);
             room1->setTag(ROOM_1);
+            auto room1_di =  Sprite::create("mjlobby/font_di.png");
+            room1_di->setPosition(500, 160);
+            addChild(room1_di,3);
+            auto room1_hua =  Sprite::create("mjlobby/font_hua.png");
+            room1_hua->setPosition(585, 160);
+            addChild(room1_hua,3);
+            auto diNumber = Sprite::create();
+            diNumber->setPosition(490, 160);
+            diNumber->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+            addChild(diNumber,3);
+            auto huaNumber = Sprite::create();
+            huaNumber->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+            huaNumber->setPosition(575, 160);
+            addChild(huaNumber,3);
+            if(roomList.rooms.at(i).base == 500){
+                diNumber->setTexture("mjlobby/500.png");
+                huaNumber->setTexture("mjlobby/500.png");
+            }else if(roomList.rooms.at(i).base == 1000){
+                diNumber->setTexture("mjlobby/1000.png");
+                huaNumber->setTexture("mjlobby/1000.png");
+            }else if(roomList.rooms.at(i).base == 1500){
+                diNumber->setTexture("mjlobby/1500.png");
+                huaNumber->setTexture("mjlobby/1500.png");
+            }else if(roomList.rooms.at(i).base == 2000){
+                diNumber->setTexture("mjlobby/2000.png");
+                huaNumber->setTexture("mjlobby/2000.png");
+            }
         }
         else if (roomList.rooms.at(i).roomId == ROOM_2){
             gameMenu->addChild(room2);
@@ -262,7 +289,6 @@ void LobbyScene::drawSceneMid(){
     gameMenu->alignItemsHorizontallyWithPadding(20);
     gameMenu->setPosition(790, 342);
     this->addChild(gameMenu,2);
-    
 }
 
 void LobbyScene::drawSceneBot(){

@@ -502,6 +502,8 @@ void MsgHandler::roomListResp(std::string msg){
         data.roomId = temp["rsid"].GetInt();
         data.maxGold = temp["max"].GetInt();
         data.minGold = temp["min"].GetInt();
+        data.base = temp["base"].GetInt();
+        data.hua = temp["hua"].GetInt();
         roomlist.rooms.push_back(data);
     }
     GAMEDATA::getInstance()->setRoomList(roomlist);
