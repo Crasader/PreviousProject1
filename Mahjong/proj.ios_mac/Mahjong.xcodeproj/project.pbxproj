@@ -117,16 +117,6 @@
 		D22EEFBC1D66D14D00BF1CCB /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF8D1D66D14D00BF1CCB /* DailyPride.cpp */; };
 		D22EEFBD1D66D14D00BF1CCB /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF8F1D66D14D00BF1CCB /* PrideCell.cpp */; };
 		D22EEFBE1D66D14D00BF1CCB /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF8F1D66D14D00BF1CCB /* PrideCell.cpp */; };
-		D22EEFBF1D66D14D00BF1CCB /* DailySign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF921D66D14D00BF1CCB /* DailySign.cpp */; };
-		D22EEFC01D66D14D00BF1CCB /* DailySign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF921D66D14D00BF1CCB /* DailySign.cpp */; };
-		D22EEFC11D66D14D00BF1CCB /* DayCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF941D66D14D00BF1CCB /* DayCell.cpp */; };
-		D22EEFC21D66D14D00BF1CCB /* DayCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF941D66D14D00BF1CCB /* DayCell.cpp */; };
-		D22EEFC31D66D14D00BF1CCB /* DailyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF971D66D14D00BF1CCB /* DailyTask.cpp */; };
-		D22EEFC41D66D14D00BF1CCB /* DailyTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF971D66D14D00BF1CCB /* DailyTask.cpp */; };
-		D22EEFC51D66D14D00BF1CCB /* TaskCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF991D66D14D00BF1CCB /* TaskCell.cpp */; };
-		D22EEFC61D66D14D00BF1CCB /* TaskCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF991D66D14D00BF1CCB /* TaskCell.cpp */; };
-		D22EEFC71D66D14D00BF1CCB /* DailyWelfare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF9C1D66D14D00BF1CCB /* DailyWelfare.cpp */; };
-		D22EEFC81D66D14D00BF1CCB /* DailyWelfare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF9C1D66D14D00BF1CCB /* DailyWelfare.cpp */; };
 		D22EEFD91D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB01D66D14D00BF1CCB /* GameFeedDialog.cpp */; };
 		D22EEFDA1D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB01D66D14D00BF1CCB /* GameFeedDialog.cpp */; };
 		D22EEFDB1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB21D66D14D00BF1CCB /* GameRuleDialog.cpp */; };
@@ -486,16 +476,6 @@
 		D22EEF8E1D66D14D00BF1CCB /* DailyPride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyPride.h; sourceTree = "<group>"; };
 		D22EEF8F1D66D14D00BF1CCB /* PrideCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrideCell.cpp; sourceTree = "<group>"; };
 		D22EEF901D66D14D00BF1CCB /* PrideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrideCell.h; sourceTree = "<group>"; };
-		D22EEF921D66D14D00BF1CCB /* DailySign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailySign.cpp; sourceTree = "<group>"; };
-		D22EEF931D66D14D00BF1CCB /* DailySign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySign.h; sourceTree = "<group>"; };
-		D22EEF941D66D14D00BF1CCB /* DayCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DayCell.cpp; sourceTree = "<group>"; };
-		D22EEF951D66D14D00BF1CCB /* DayCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DayCell.hpp; sourceTree = "<group>"; };
-		D22EEF971D66D14D00BF1CCB /* DailyTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyTask.cpp; sourceTree = "<group>"; };
-		D22EEF981D66D14D00BF1CCB /* DailyTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyTask.h; sourceTree = "<group>"; };
-		D22EEF991D66D14D00BF1CCB /* TaskCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskCell.cpp; sourceTree = "<group>"; };
-		D22EEF9A1D66D14D00BF1CCB /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
-		D22EEF9C1D66D14D00BF1CCB /* DailyWelfare.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyWelfare.cpp; sourceTree = "<group>"; };
-		D22EEF9D1D66D14D00BF1CCB /* DailyWelfare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyWelfare.h; sourceTree = "<group>"; };
 		D22EEFB01D66D14D00BF1CCB /* GameFeedDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameFeedDialog.cpp; sourceTree = "<group>"; };
 		D22EEFB11D66D14D00BF1CCB /* GameFeedDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameFeedDialog.hpp; sourceTree = "<group>"; };
 		D22EEFB21D66D14D00BF1CCB /* GameRuleDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameRuleDialog.cpp; sourceTree = "<group>"; };
@@ -1035,9 +1015,6 @@
 				D22EEF8A1D66D14D00BF1CCB /* DailyEvent.cpp */,
 				D22EEF8B1D66D14D00BF1CCB /* DailyEvent.h */,
 				D22EEF8C1D66D14D00BF1CCB /* pride */,
-				D22EEF911D66D14D00BF1CCB /* sign */,
-				D22EEF961D66D14D00BF1CCB /* task */,
-				D22EEF9B1D66D14D00BF1CCB /* welfare */,
 			);
 			path = daily;
 			sourceTree = "<group>";
@@ -1051,37 +1028,6 @@
 				D22EEF901D66D14D00BF1CCB /* PrideCell.h */,
 			);
 			path = pride;
-			sourceTree = "<group>";
-		};
-		D22EEF911D66D14D00BF1CCB /* sign */ = {
-			isa = PBXGroup;
-			children = (
-				D22EEF921D66D14D00BF1CCB /* DailySign.cpp */,
-				D22EEF931D66D14D00BF1CCB /* DailySign.h */,
-				D22EEF941D66D14D00BF1CCB /* DayCell.cpp */,
-				D22EEF951D66D14D00BF1CCB /* DayCell.hpp */,
-			);
-			path = sign;
-			sourceTree = "<group>";
-		};
-		D22EEF961D66D14D00BF1CCB /* task */ = {
-			isa = PBXGroup;
-			children = (
-				D22EEF971D66D14D00BF1CCB /* DailyTask.cpp */,
-				D22EEF981D66D14D00BF1CCB /* DailyTask.h */,
-				D22EEF991D66D14D00BF1CCB /* TaskCell.cpp */,
-				D22EEF9A1D66D14D00BF1CCB /* TaskCell.h */,
-			);
-			path = task;
-			sourceTree = "<group>";
-		};
-		D22EEF9B1D66D14D00BF1CCB /* welfare */ = {
-			isa = PBXGroup;
-			children = (
-				D22EEF9C1D66D14D00BF1CCB /* DailyWelfare.cpp */,
-				D22EEF9D1D66D14D00BF1CCB /* DailyWelfare.h */,
-			);
-			path = welfare;
 			sourceTree = "<group>";
 		};
 		D22EEFAF1D66D14D00BF1CCB /* setting */ = {
@@ -1718,7 +1664,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D22EEFBF1D66D14D00BF1CCB /* DailySign.cpp in Sources */,
 				D22EEF611D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */,
 				D22912381D128103005C7167 /* FindPassword.cpp in Sources */,
 				D229123A1D128103005C7167 /* UserRegister.cpp in Sources */,
@@ -1726,14 +1671,12 @@
 				D257FD761D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
 				D235D8FA1DAA700F00DDA131 /* LequanLayer.cpp in Sources */,
-				D22EEFC31D66D14D00BF1CCB /* DailyTask.cpp in Sources */,
 				D22EEFDB1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */,
 				D22EEF811D66CFC800BF1CCB /* FriendListView.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D22EEF4C1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */,
 				D22EEF7F1D66CFC800BF1CCB /* FriendInvite.cpp in Sources */,
 				D257FD7A1D6C2E2400B8C596 /* RechargeVC.m in Sources */,
-				D22EEFC71D66D14D00BF1CCB /* DailyWelfare.cpp in Sources */,
 				D2484EB61D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF851D66CFC800BF1CCB /* InviteCell.cpp in Sources */,
 				D22EEFDD1D66D14D00BF1CCB /* UserSetting.cpp in Sources */,
@@ -1799,7 +1742,6 @@
 				D291B58E1D75264900B05026 /* MahjongActivities.cpp in Sources */,
 				D22EEF4E1D66AAF000BF1CCB /* LequanShop.cpp in Sources */,
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
-				D22EEFC11D66D14D00BF1CCB /* DayCell.cpp in Sources */,
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -1813,7 +1755,6 @@
 				D2F05F651D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
 				D22EEFD91D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
 				D22EEF3E1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */,
-				D22EEFC51D66D14D00BF1CCB /* TaskCell.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D28A4A2E1D056B7A00741FD0 /* Audio.cpp in Sources */,
 				D2B1A8E11CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
@@ -1847,7 +1788,6 @@
 				D2F05F5C1D8E7500006E5A4C /* BoundPhone.cpp in Sources */,
 				D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
-				D22EEFC01D66D14D00BF1CCB /* DailySign.cpp in Sources */,
 				D2484EB71D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
@@ -1855,7 +1795,6 @@
 				D28A4A201D056B4700741FD0 /* ResultScene.cpp in Sources */,
 				D2B1A9001CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8D21CCDF0F400A20896 /* Jong.cpp in Sources */,
-				D22EEFC61D66D14D00BF1CCB /* TaskCell.cpp in Sources */,
 				D22EEFE01D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D2B1A8DC1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,
@@ -1866,7 +1805,6 @@
 				D281E5851DAB89F700D3E44E /* ActivityExchange.cpp in Sources */,
 				D22EEF4B1D66AAF000BF1CCB /* Huode.cpp in Sources */,
 				D22EEF661D66CEB600BF1CCB /* Redwallet.cpp in Sources */,
-				D22EEFC21D66D14D00BF1CCB /* DayCell.cpp in Sources */,
 				D2B1A87A1CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
 				D28A4A3D1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */,
@@ -1875,7 +1813,6 @@
 				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D2F05F5E1D8E7500006E5A4C /* ChangePassword.cpp in Sources */,
 				D22EEF411D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
-				D22EEFC41D66D14D00BF1CCB /* DailyTask.cpp in Sources */,
 				D2B1A8841CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
 				D22EEF471D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */,
 				D22EEFBE1D66D14D00BF1CCB /* PrideCell.cpp in Sources */,
@@ -1950,7 +1887,6 @@
 				D22912451D128367005C7167 /* LoginMannger.cpp in Sources */,
 				D22912391D128103005C7167 /* FindPassword.cpp in Sources */,
 				D28A4A411D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
-				D22EEFC81D66D14D00BF1CCB /* DailyWelfare.cpp in Sources */,
 				D22EEF7C1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				D22EEF841D66CFC800BF1CCB /* FriendRoom.cpp in Sources */,
 			);
