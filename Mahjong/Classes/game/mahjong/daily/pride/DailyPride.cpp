@@ -65,6 +65,11 @@ void DailyPride::onExit(){
 
 
 void DailyPride::showDailyPrideLayer(){
+    
+    auto bigtitle = Sprite::create("daily/every_day_pride.png");
+    bigtitle->setPosition(640,650);
+    addChild(bigtitle);
+    
     auto text_bg = Sprite::create("daily/pride/text_info_bg.png");
     text_bg->setPosition(850, 370);
     addChild(text_bg);

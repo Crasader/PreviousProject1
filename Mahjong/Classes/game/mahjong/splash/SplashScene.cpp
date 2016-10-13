@@ -32,6 +32,8 @@ bool SplashScene::init()
     {
         return false;
     }
+    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+
     //draw scene
     drawLonginScene();
     //add event listener
@@ -372,7 +374,7 @@ void SplashScene::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 }
 
 void SplashScene::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
-    
+   
 }
 
 void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){

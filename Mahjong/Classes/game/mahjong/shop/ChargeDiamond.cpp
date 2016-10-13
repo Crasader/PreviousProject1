@@ -75,6 +75,7 @@ void ChargeDiamond::showChargeDialog(){
     DiamondChangeList list = GAMEDATA::getInstance()->getDiamondChangeList();
     for(int i=0;i<list.list.size();i++){
         auto propBg =  Sprite::create("shop/prop_bg.png");
+        propBg->setScale(0.8f);
         propBg->setPosition(285+175*i,345);
         addChild(propBg);
         

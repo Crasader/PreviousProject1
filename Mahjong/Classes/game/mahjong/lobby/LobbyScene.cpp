@@ -70,16 +70,16 @@ void LobbyScene::onExit(){
 }
 
 void LobbyScene::signUpdate(float dt){
-    DailySignData data = GAMEDATA::getInstance()->getDailySignData();
-    if (data.result == "1"){
-        unschedule(schedule_selector(LobbyScene::signUpdate));
-        if(NULL == getChildByTag(6667)){
-            DailyEvent* day = DailyEvent::create();
-            day->setTag(6667);
-            day->showDailyEvent(DailyType::sign);
-            addChild(day,3);
-        }
-    }
+//    DailySignData data = GAMEDATA::getInstance()->getDailySignData();
+//    if (data.result == "1"){
+//        unschedule(schedule_selector(LobbyScene::signUpdate));
+//        if(NULL == getChildByTag(6667)){
+//            DailyEvent* day = DailyEvent::create();
+//            day->setTag(6667);
+//            day->showDailyEvent(DailyType::sign);
+//            addChild(day,3);
+//        }
+//    }
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
         for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
@@ -314,7 +314,7 @@ void LobbyScene::showRedWallet(){
 void LobbyScene::showDayTask(){
     Audio::getInstance()->playSoundClick();
     DailyEvent* day = DailyEvent::create();
-    day->showDailyEvent(DailyType::task);
+    day->showDailyEvent(DailyType::pride);
     addChild(day,3);
 }
 
