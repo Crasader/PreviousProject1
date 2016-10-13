@@ -32,7 +32,6 @@ bool SplashScene::init()
     {
         return false;
     }
-    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
 
     //draw scene
     drawLonginScene();

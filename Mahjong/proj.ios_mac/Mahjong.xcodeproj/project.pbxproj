@@ -202,6 +202,8 @@
 		D281E5851DAB89F700D3E44E /* ActivityExchange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5821DAB89F700D3E44E /* ActivityExchange.cpp */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
+		D281E5AA1DAF214D00D3E44E /* DiamondItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */; };
+		D281E5AB1DAF214D00D3E44E /* DiamondItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */; };
 		D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
@@ -546,6 +548,8 @@
 		D281E5821DAB89F700D3E44E /* ActivityExchange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActivityExchange.cpp; sourceTree = "<group>"; };
 		D281E5831DAB89F700D3E44E /* ActivityExchange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ActivityExchange.hpp; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
+		D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiamondItem.cpp; sourceTree = "<group>"; };
+		D281E5A91DAF214D00D3E44E /* DiamondItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiamondItem.hpp; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
 		D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientUtill.h; sourceTree = "<group>"; };
 		D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMannger.cpp; sourceTree = "<group>"; };
@@ -976,6 +980,8 @@
 				D2BD08BF1D66DA8700ADC31E /* relieve */,
 				D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */,
 				D22EEF391D66AAF000BF1CCB /* ShopHintDialog.hpp */,
+				D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */,
+				D281E5A91DAF214D00D3E44E /* DiamondItem.hpp */,
 			);
 			path = shop;
 			sourceTree = "<group>";
@@ -1771,6 +1777,7 @@
 				D226FD301D05292400324097 /* LoadResource.cpp in Sources */,
 				D2F05F611D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */,
 				D2F05F5B1D8E7500006E5A4C /* BoundPhone.cpp in Sources */,
+				D281E5AA1DAF214D00D3E44E /* DiamondItem.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D22EEF651D66CEB600BF1CCB /* Redwallet.cpp in Sources */,
@@ -1888,6 +1895,7 @@
 				D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D22912431D128367005C7167 /* DropDownListBox.cpp in Sources */,
 				D22EEFBC1D66D14D00BF1CCB /* DailyPride.cpp in Sources */,
+				D281E5AB1DAF214D00D3E44E /* DiamondItem.cpp in Sources */,
 				D22EEFBA1D66D14D00BF1CCB /* DailyEvent.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D291B58F1D75264900B05026 /* MahjongActivities.cpp in Sources */,

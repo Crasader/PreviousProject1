@@ -8,6 +8,7 @@
 
 #include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
+#include "game/mahjong/shop/DiamondItem.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"
@@ -32,6 +33,7 @@ bool ChargeDiamond::init(){
     
     auto dialog_bg = Sprite::create("shop/charge_bg.png");
     dialog_bg->setPosition(640,360);
+    dialog_bg->setScaleX(0.8f);
     addChild(dialog_bg);
     
     auto title = Sprite::create("shop/charge_title.png");
@@ -40,7 +42,7 @@ bool ChargeDiamond::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChargeDiamond::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1050, 550);
+    closeMenu->setPosition(960, 550);
     addChild(closeMenu);
     
     if(!GAMEDATA::getInstance()->getDiamondChangeList().needInit){
@@ -74,81 +76,13 @@ void ChargeDiamond::onExit(){
 void ChargeDiamond::showChargeDialog(){
     DiamondChangeList list = GAMEDATA::getInstance()->getDiamondChangeList();
     for(int i=0;i<list.list.size();i++){
-        auto propBg =  Sprite::create("shop/prop_bg.png");
-        propBg->setScale(0.8f);
-        propBg->setPosition(285+175*i,345);
-        addChild(propBg);
-        
-        auto light = Sprite::create("shop/diamond_bg.png");
-        light->setPosition(285+175*i,370);
-        addChild(light);
-        
-        auto diamond = Sprite::create();
-        if(i==0){
-            diamond->setTexture("shop/diamond_icon_2.png");
-        }else if(i==1||i==2){
-            diamond->setTexture("shop/diamond_icon_1.png");
-        }else{
-            diamond->setTexture("shop/diamond_icon_3.png");
-            
-        }
-        diamond->setPosition(285+175*i,370);
-        this->addChild(diamond);
-        
-        auto piao = Sprite::create();
-        piao->setPosition(285+175*i,280);
-        addChild(piao);
-        if(i==0){
-            piao->setTexture("shop/purple_piaodai.png");
-        }else if(i==1||i==2){
-            piao->setTexture("shop/red_piaodai.png");
-        }else{
-            piao->setTexture("shop/yellow_piaodai.png");
-            
-        }
-        
-        LabelAtlas* diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",list.list.at(i).diamond)->_string,"shop/prop_num.png",21,28,'0');
-        diamondNum->setPosition(290+175*i,291);
-        diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        addChild(diamondNum);
-        
-        auto zhuan = Sprite::create("shop/font_diamond.png");
-        zhuan->setPosition(320+175*i,291);
-        addChild(zhuan);
-        
-        
-        auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(ChargeDiamond::chargeButtonClick, this));
-        btnImage->setTag(i+2);
-        auto myMenu = Menu::create(btnImage,NULL);
-        myMenu->setPosition(285+175*i,225);
-        addChild(myMenu);
-        
-        LabelAtlas* money = LabelAtlas::create(cocos2d::String::createWithFormat("%d",list.list.at(i).money/100)->_string,"shop/prop_num.png",21,28,'0');
-        money->setPosition(300+175*i,230);
-        money->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        addChild(money);
-        
-        auto yuan = Sprite::create("shop/font_yuan.png");
-        yuan->setPosition(325+175*i,225);
-        addChild(yuan);
-        
-        
+        DiamondItem* item = DiamondItem::create(list.list.at(i).money, list.list.at(i).diamond);
+        item->setPosition(415+220*i,345);
+        addChild(item);
     }
-    
 }
 
 void ChargeDiamond::closeView(){
     removeFromParent();
-    
-}
-
-void ChargeDiamond::chargeButtonClick(Ref* ref){
-    MenuItemImage* temp = (MenuItemImage*) ref;
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),StringUtils::format("%d",temp->getTag()));//从2开始
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),2);
-#endif
     
 }

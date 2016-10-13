@@ -96,12 +96,12 @@ void UserInfo::showUserInfo(){
     playerGender = Sprite::create(gen);
     playerGender->setPosition(755,260);
     addChild(playerGender);
-    auto editBtn2 = MenuItemImage::create("playerinfo/edit_btn_1.png", "playerinfo/edit_btn_2.png",
-                                          CC_CALLBACK_1(UserInfo::menuBtnClick, this));
-    editBtn2->setTag(1);
-    Menu* menu2 = Menu::create(editBtn2, NULL);
-    menu2->setPosition(935, 260);
-    addChild(menu2);
+//    auto editBtn2 = MenuItemImage::create("playerinfo/edit_btn_1.png", "playerinfo/edit_btn_2.png",
+//                                          CC_CALLBACK_1(UserInfo::menuBtnClick, this));
+//    editBtn2->setTag(1);
+//    Menu* menu2 = Menu::create(editBtn2, NULL);
+//    menu2->setPosition(935, 260);
+//    addChild(menu2);
     
     //diamond
     auto diamond_bg = Sprite::create("common/room_info_bg.png");

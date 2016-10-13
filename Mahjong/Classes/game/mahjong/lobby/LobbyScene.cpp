@@ -70,16 +70,6 @@ void LobbyScene::onExit(){
 }
 
 void LobbyScene::signUpdate(float dt){
-//    DailySignData data = GAMEDATA::getInstance()->getDailySignData();
-//    if (data.result == "1"){
-//        unschedule(schedule_selector(LobbyScene::signUpdate));
-//        if(NULL == getChildByTag(6667)){
-//            DailyEvent* day = DailyEvent::create();
-//            day->setTag(6667);
-//            day->showDailyEvent(DailyType::sign);
-//            addChild(day,3);
-//        }
-//    }
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
         for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
@@ -283,9 +273,9 @@ void LobbyScene::drawSceneBot(){
     auto btn_1 = MenuItemImage::create("mjlobby/friend_btn_1.png", "mjlobby/friend_btn_2.png", CC_CALLBACK_0(LobbyScene::showAddFriend, this));
     auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_3 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
-        auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
+//        auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
     auto btn_5 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
-    auto gameMenu = Menu::create(btn_1, btn_2,btn_3,btn_4, btn_5, NULL);
+    auto gameMenu = Menu::create(btn_1, btn_2,btn_3, btn_5, NULL);
     gameMenu->alignItemsHorizontallyWithPadding(75);
     gameMenu->setPosition(785, 43);
     addChild(gameMenu);

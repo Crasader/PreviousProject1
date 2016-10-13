@@ -23,7 +23,6 @@ public :
 private:
     void showChargeDialog();
     void closeView();
-    void chargeButtonClick(Ref* ref);
 
 };
 #endif /* ChargeDiamond_hpp */
