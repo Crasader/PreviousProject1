@@ -31,17 +31,20 @@ bool LequanShop::init(){
 //    all_bg->setPosition(640, 360);
 //    addChild(all_bg);
     
-    auto dialog_bg = Sprite::create("shop/shop_bg.png");
+//    auto dialog_bg = Sprite::create("shop/shop_bg.png");
+//    dialog_bg->setPosition(640,360);
+//    addChild(dialog_bg);
+    auto dialog_bg = Sprite::create("shop/charge_bg.png");
     dialog_bg->setPosition(640,360);
     addChild(dialog_bg);
     
     auto title = Sprite::create("shop/title_shop.png");
-    title->setPosition(654,660);
+    title->setPosition(654,600);
     addChild(title);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(LequanShop::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1050, 610);
+    closeMenu->setPosition(1050, 550);
     addChild(closeMenu);
     
     if(GAMEDATA::getInstance()->getLequanChangeList().list.size()==0){
@@ -98,28 +101,28 @@ void LequanShop::onExit(){
 void LequanShop::showLequanShop(){
     
     auto btnBg = Sprite::create("shop/record_btn_bg.png");
-    btnBg->setPosition(640,570);
+    btnBg->setPosition(640,510);
     addChild(btnBg);
     
     auto recordImage = MenuItemImage::create("shop/exchange_record_1.png","shop/exchange_record_1.png",CC_CALLBACK_0(LequanShop::showRecord, this));
     recordImage->setScale(0.7f);
     auto recordMenu = Menu::create(recordImage, NULL);
-    recordMenu->setPosition(272,572);
+    recordMenu->setPosition(272,512);
     addChild(recordMenu);
     
     auto lequanIcon = Sprite::create("shop/lequan_icon.png");
-    lequanIcon->setPosition(385,572);
+    lequanIcon->setPosition(385,512);
     addChild(lequanIcon);
     
     LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getTicket())->_string,"shop/prop_num.png",21,28,'0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setTag(962);
-    lequanNum->setPosition(416,572);
+    lequanNum->setPosition(416,512);
     addChild(lequanNum);
     
     for(int i=0;i<GAMEDATA::getInstance()->getLequanChangeList().list.size();i++){
         ExchangePropCell* cell = ExchangePropCell::create(atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propId.c_str()), atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propPrice.c_str()),GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propName);
-        cell->setPosition(312+(i%4)*220,435-(i/4)*230);
+        cell->setPosition(312+(i%4)*220,315);
         addChild(cell);
     }
 }
