@@ -235,7 +235,7 @@ void LobbyScene::drawSceneMid(){
                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
-    auto giftMenu = Menu::create(first_chaege, red_wallet, NULL);
+    auto giftMenu = Menu::create(red_wallet, first_chaege, NULL);
     giftMenu->alignItemsHorizontallyWithPadding(10);
     giftMenu->setPosition(120, 542);
     this->addChild(giftMenu);
