@@ -101,6 +101,7 @@ bool DiamondItem::init(int price, int diamondNum){
 }
 
 void DiamondItem::confirmCharge(Ref* ref){
+    MenuItemImage* temp = (MenuItemImage*) ref;
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),StringUtils::format("%d",temp->getTag()));//从2开始
 #endif

@@ -225,7 +225,7 @@ struct RemovePlayerData{
 struct FriendOpenRoomRespData{
     int seatId;
     int result;
-    int prid;
+    std::string prid;
 };
 
 struct FriendOpenRoomNotifyData{

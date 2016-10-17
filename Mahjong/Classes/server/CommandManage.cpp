@@ -622,9 +622,9 @@ std::string CommandManage::getActivityTimeCommand(){
 
 std::string CommandManage::getEnterRoomByIdCommand(std::string roomid){
     std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_TIME_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_JOIN_GAME_FJH_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    keyValue.insert(map<string, string>::value_type("prid", roomid));
+    keyValue.insert(map<string, string>::value_type("prId", roomid));
     return commandString(keyValue);
 }
 

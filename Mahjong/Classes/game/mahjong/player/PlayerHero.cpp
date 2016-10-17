@@ -6,7 +6,16 @@
 #include "server/MsgConfig.h"
 #include "game/mahjong/anim/HuaAnim.hpp"
 #include "server/SocketDataManage.h"
+#include "game/utils/GameConfig.h"
 
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#import "payment/ios/IOSBridge.h"
+#endif
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "payment/android/CallAndroidMethod.h"
+#endif
 
 bool PlayerHero::init() {
     if (!PlayerBase::init()) {
@@ -270,8 +279,11 @@ void PlayerHero::readyGo(){
 }
 
 void PlayerHero::inviteWechatFriend(){
-    //TODO
-    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！",StringUtils::format("房间号:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),false);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", StringUtils::format("房间号:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()));
+#endif
 }
 
 
