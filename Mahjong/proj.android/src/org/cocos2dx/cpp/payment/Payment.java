@@ -57,7 +57,7 @@ public class Payment {
 			TbuWxUtil.getInstance().queryOrder(pxOrderId, new QueryCallBack() {
 
 				@Override
-				public void queryCallBackMsg(String msg) {
+				public void queryCallBackMsg(String msg,String sex) {
 					// TODO Auto-generated method stub
 					
 				}
@@ -103,15 +103,15 @@ public class Payment {
 	public static void weChatLogin() {
 		TbuWxUtil.getInstance().getWechatCode(getWeChatState(),new QueryCallBack() {
 			@Override
-			public void queryCallBackMsg(String url) {
-				JniPayCallbackHelper.loadImageByURL(url);
+			public void queryCallBackMsg(String url,String sex) {
+				JniPayCallbackHelper.loadImageByURL(url,sex);
 			}
 			@Override
 			public void queryCallBackResult(boolean result) {
 				if (!result) {
 					JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId());
 				}
-			}	
+			}
 		
 		});
 		
@@ -126,8 +126,8 @@ public class Payment {
 	public static void getWechatToken(String code, final WechatLoginCallBack tcallback) {
 		TbuWxUtil.getInstance().getWechatToken(code, new WechatLoginCallBack() {
 			@Override
-			public void callBack(String token,String image) {
-				tcallback.callBack(token,image);
+			public void callBack(String token,String image,String sex) {
+				tcallback.callBack(token,image,sex);
 			}
 		});
 	}
