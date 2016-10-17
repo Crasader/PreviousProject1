@@ -41,8 +41,11 @@ private:
     EventListenerCustom* heroFirstPoke;
 	Sprite* username_text;
 	Sprite* password_text;
+    Menu* loginMenu;
 	void addTocuhListener();
 	void drawLonginScene();
+    void showSplashAnim();
+    void scrollLightSpot(float dt);
 	void addCustomEventListener();
 	void showUserRegister();
 	void findbackPwd();

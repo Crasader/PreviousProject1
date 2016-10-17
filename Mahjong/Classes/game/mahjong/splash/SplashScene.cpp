@@ -32,9 +32,10 @@ bool SplashScene::init()
     {
         return false;
     }
-
+    
     //draw scene
     drawLonginScene();
+    showSplashAnim();
     //add event listener
     addTocuhListener();
     return true;
@@ -58,152 +59,21 @@ void SplashScene::onExit(){
 
 void SplashScene::drawLonginScene(){
     //add game bg to layer
-    Sprite* splash_bg = Sprite::create("mainlogin/splah_bg_.png");
+    Sprite* splash_bg = Sprite::create("mainlogin/splah_bg_.jpg");
     splash_bg->setPosition(640,360);
     this->addChild(splash_bg, -1);
     
-    auto lightOne = Sprite::create("mainlogin/splash_light_1.png");
-    lightOne->setPosition(640,360);
-    addChild(lightOne);
-    lightOne->runAction(Repeat::create(Sequence::create(FadeTo::create(1.0f, 150),FadeTo::create(1.0f, 0), NULL), CC_REPEAT_FOREVER));
+    auto girl = Sprite::create("mainlogin/login_girl.png");
+    girl->setPosition(480,320);
+    addChild(girl);
     
-    auto lightTwo = Sprite::create("mainlogin/splash_light_2.png");
-    lightTwo->setPosition(640,360);
-    addChild(lightTwo);
-    lightTwo->runAction(Repeat::create(Sequence::create(DelayTime::create(1.0f),FadeTo::create(1.0f, 150),FadeTo::create(1.0f, 0), NULL), CC_REPEAT_FOREVER));
+    auto feipai = Sprite::create("mainlogin/feipai.png");
+    feipai->setPosition(490,400);
+    addChild(feipai);
     
-    auto gameTitle = Sprite::create("mainlogin/splah_title.png");
-    gameTitle->setPosition(875, 630);
-    this->addChild(gameTitle);
-    
-    
-    auto girlSprite = Sprite::create("mainlogin/girl_image.png");
-    girlSprite->setPosition(220,360);
-    addChild(girlSprite);
-    //眨眼动画
-    auto levelMidEye = Sprite::create();
-    levelMidEye->setPosition(220,360);
-    addChild(levelMidEye,2);
-    levelMidEye->runAction(Repeat::create(Sequence::create(
-                                                           CallFunc::create([=](){
-        levelMidEye->setTexture("mainlogin/splash_eye_1.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelMidEye->setTexture("mainlogin/splash_eye_2.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelMidEye->setTexture("mainlogin/splash_eye_1.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelMidEye->setTexture("");
-    }),
-                                                           DelayTime::create(96.0/24),
-                                                           NULL), CC_REPEAT_FOREVER));
-    
-    auto shanghai = Sprite::create("mainlogin/splash_logo.png");
-    shanghai->setPosition(420,120);
-    addChild(shanghai);
-    
-    auto logoText = Sprite::create();
-    logoText->setPosition(420, 120);
-    addChild(logoText);
-    auto animation2 = Animation::create();
-    for( int j=1;j<5;j++)
-    {
-        std::string imageName = cocos2d::String::createWithFormat("mainlogin/splash_logo_%d.png",j)->_string;
-        animation2->addSpriteFrameWithFile(imageName);
-    }
-    // should last 1 seconds. And there are 24 frames.
-    animation2->setDelayPerUnit(3.0f / 24.0f);
-    animation2->setRestoreOriginalFrame(true);
-    auto action2 = Animate::create(animation2);
-    logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(48.0/24), NULL), CC_REPEAT_FOREVER), NULL));
-    
-    
-    auto accountBg = Sprite::create("mainlogin/username_box.png");
-    accountBg->setPosition(955, 475);
-    addChild(accountBg);
-    
-    
-    _editName = EditBox::create(Size(400, 81), Scale9Sprite::create());
-    _editName->setPosition(Point(1010, 475));
-    _editName->setFont("arial", 30);
-    _editName->setTag(606);
-    if (UserData::getInstance()->getPassword() != "unknow"){
-        _editName->setText(UserData::getInstance()->getUserName().c_str());
-    }
-    _editName->setInputMode(EditBox::InputMode::SINGLE_LINE);
-    _editName->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
-    _editName->setDelegate(this);
-    addChild(_editName,1);
-    
-    DropDownList* drop = DropDownList::create(Sprite::create(), Size(450,240),"splashCallBack");
-    drop->setPosition(Point(508, 200));
-    drop->setTouchAbleRect(_editName->getBoundingBox());
-    addChild(drop,5);
-    
-    auto accountIcon = Sprite::create("mainlogin/password_box.png");
-    accountIcon->setPosition(955, 350);
-    this->addChild(accountIcon);
-    
-    _editPwd = EditBox::create(Size(400, 81), Scale9Sprite::create());
-    _editPwd->setPosition(Point(1010, 352));
-    _editPwd->setTag(607);
-    _editPwd->setFont("arial", 30);
-    if (UserData::getInstance()->getPassword() != "unknow"){
-        _editPwd->setText(UserData::getInstance()->getPassword().c_str());
-    }
-    _editPwd->setInputFlag(EditBox::InputFlag::PASSWORD);
-    _editPwd->setInputMode(EditBox::InputMode::SINGLE_LINE);
-    _editPwd->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
-    _editPwd->setDelegate(this);
-    addChild(_editPwd,1);
-    
-    username_text = Sprite::create("mainlogin/username_text.png");
-    username_text->setPosition(920, 475);
-    addChild(username_text);
-    password_text = Sprite::create("mainlogin/password_text.png");
-    password_text->setPosition(920, 352);
-    addChild(password_text);
-    
-    if (UserData::getInstance()->getUserName() != "unknow"&&UserData::getInstance()->getPassword() != "unknow"){
-        password_text->setVisible(false);
-        username_text->setVisible(false);
-    }
-    
-    auto loginBtn = MenuItemImage::create("mainlogin/login_confirm.png", "mainlogin/login_confirm.png",
-                                          CC_CALLBACK_0(SplashScene::loginByPass, this));
-    auto visitorBtn = MenuItemImage::create("mainlogin/visitor_login_btn.png", "mainlogin/visitor_login_btn.png",
-                                            CC_CALLBACK_0(SplashScene::loginByVisitor, this));
-    auto loginMenu = Menu::create(loginBtn, visitorBtn, NULL);
-    loginMenu->alignItemsHorizontallyWithPadding(5);
-    loginMenu->setPosition(960, 228);
-    this->addChild(loginMenu);
-    
-    auto confirmLight = Sprite::create("mainlogin/confirm_btn_light.png");
-    confirmLight->setPosition(855,228);
-    addChild(confirmLight);
-    confirmLight->setOpacity(0);
-    confirmLight->runAction(Repeat::create(Sequence::create(FadeTo::create(1.0f, 255),FadeTo::create(1.0f, 0), NULL), CC_REPEAT_FOREVER));
-    
-    auto bottom = Sprite::create("mainlogin/bottom_bg.png");
-    bottom->setPosition(960, 94);
-    addChild(bottom);
-    
-    auto registerBtn = MenuItemImage::create("mainlogin/register_btn.png", "mainlogin/register_btn.png",
-                                             CC_CALLBACK_0(SplashScene::showUserRegister, this));
-    auto registerMenu = Menu::create(registerBtn, NULL);
-    registerMenu->setPosition(840, 94);
-    this->addChild(registerMenu);
-    
-    auto findPwdBtn = MenuItemImage::create("mainlogin/find_pwd_btn.png", "mainlogin/find_pwd_btn.png",
-                                            CC_CALLBACK_0(SplashScene::findbackPwd, this));
-    auto findPwdMenu = Menu::create(findPwdBtn, NULL);
-    findPwdMenu->setPosition(1080, 94);
-    this->addChild(findPwdMenu);
+    auto desk = Sprite::create("mainlogin/login_desk.png");
+    desk->setPosition(640,205);
+    addChild(desk);
     
 }
 
@@ -373,7 +243,7 @@ void SplashScene::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
 }
 
 void SplashScene::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
-   
+    
 }
 
 void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
@@ -383,4 +253,188 @@ void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const
 
 void SplashScene::editBoxReturn(cocos2d::extension::EditBox* editBox){
     
+}
+
+
+void SplashScene::showSplashAnim(){
+    
+    auto gameTitle = Sprite::create("mjlobby/game_icon.png");
+    gameTitle->setPosition(1070, 640);
+    this->addChild(gameTitle);
+    //眨眼动画
+    auto levelMidEye = Sprite::create();
+    levelMidEye->setPosition(480,320);
+    addChild(levelMidEye,3);
+    auto yepoint = Sprite::create("mainlogin/yellow_point.png");
+    yepoint->setVisible(false);
+    yepoint->setPosition(420,540);
+    addChild(yepoint);
+    levelMidEye->runAction(Repeat::create(Sequence::create(
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/loading_eye_1.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/loading_eye_2.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/loading_eye_1.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/loading_eye_1.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/loading_eye_2.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("mainlogin/loading_eye_1.png");
+    }),
+                                                           DelayTime::create(2.0/24),
+                                                           CallFunc::create([=](){
+        levelMidEye->setTexture("");
+    }),
+                                                           CallFunc::create([=](){
+        yepoint->setVisible(true);
+        yepoint->setScale(0.1f);
+        yepoint->setOpacity(70);
+        yepoint->runAction(Sequence::create(Spawn::create(FadeTo::create(4.0/24, 200),ScaleTo::create(4.0/24, 1.2f),RotateTo::create(6.0f/24, 144), NULL),CallFunc::create([=](){yepoint->setRotation(144);}), RotateTo::create(6.0f/24, 216),Spawn::create(FadeTo::create(4.0/24, 70),ScaleTo::create(4.0/24, 0.5f), NULL),CallFunc::create([=](){yepoint->setVisible(false);yepoint->setRotation(0);}), NULL));
+    }),
+                                                           DelayTime::create(96.0/24),
+                                                           NULL), CC_REPEAT_FOREVER));
+    
+    
+    //logo光效
+    auto logoLight = Sprite::create();
+    logoLight->setPosition(1070, 645);
+    addChild(logoLight);
+    auto animation = Animation::create();
+    for( int i=1;i<4;i++)
+    {
+        std::string imageName = cocos2d::String::createWithFormat("mjlobby/lobby_logo_light_%d.png",i)->_string;
+        animation->addSpriteFrameWithFile(imageName);
+    }
+    // should last 1 seconds. And there are 24 frames.
+    animation->setDelayPerUnit(4.0f/ 24.0f);
+    animation->setRestoreOriginalFrame(true);
+    auto action = Animate::create(animation);
+    logoLight->runAction(Sequence::create(Repeat::create(Sequence::create(action,DelayTime::create(12.0f/24), NULL), CC_REPEAT_FOREVER), NULL));
+    
+    //文字光效
+    auto logoText = Sprite::create();
+    logoText->setPosition(1070, 645);
+    addChild(logoText);
+    auto animation2 = Animation::create();
+    for( int j=1;j<5;j++)
+    {
+        std::string imageName = cocos2d::String::createWithFormat("mjlobby/lobby_logo_text_%d.png",j)->_string;
+        animation2->addSpriteFrameWithFile(imageName);
+    }
+    // should last 1 seconds. And there are 24 frames.
+    animation2->setDelayPerUnit(3.0f / 24.0f);
+    animation2->setRestoreOriginalFrame(true);
+    auto action2 = Animate::create(animation2);
+    logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(24.0/24), NULL), CC_REPEAT_FOREVER), NULL));
+    
+    //光效
+    auto lobbyLight_1 = Sprite::create("mjlobby/lobby_light_1.png");
+    lobbyLight_1->setPosition(640, 360);
+    addChild(lobbyLight_1);
+    lobbyLight_1->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    auto lobbyLight_2 = Sprite::create("mjlobby/lobby_light_2.png");
+    lobbyLight_2->setPosition(640, 360);
+    addChild(lobbyLight_2);
+    lobbyLight_2->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    auto lobbyLight_3 = Sprite::create("mjlobby/lobby_light_3.png");
+    lobbyLight_3->setPosition(640, 360);
+    addChild(lobbyLight_3);
+    lobbyLight_3->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    //光斑
+    auto lightSpot1 = Sprite::create("mjlobby/light_spot.png");
+    lightSpot1->setPosition(640,360);
+    lightSpot1->setTag(602);
+    addChild(lightSpot1);
+    auto lightSpot = Sprite::create("mjlobby/light_spot.png");
+    lightSpot->setPosition(-640,360);
+    lightSpot1->setTag(603);
+    addChild(lightSpot);
+    schedule(schedule_selector(SplashScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
+    
+    //按钮光效
+    auto btnlight = Sprite::create("mainlogin/login_btn_light.png");
+    btnlight->setPosition(640,111);
+    addChild(btnlight,5);
+    btnlight->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 30),FadeTo::create(1.0f, 200),DelayTime::create(3.0f), NULL), CC_REPEAT_FOREVER),NULL));
+    auto btnpoint = Sprite::create("mainlogin/yellow_point.png");
+    btnpoint->setPosition(495,160);
+    addChild(btnpoint,7);
+    btnpoint->setVisible(false);
+    btnpoint->runAction(Repeat::create(Sequence::create(CallFunc::create([=](){
+        btnpoint->setScale(0.1f);
+        btnpoint->setOpacity(70);
+        btnpoint->setVisible(true);
+    }), Spawn::create(FadeTo::create(4.0/24, 200),ScaleTo::create(4.0/24, 1.2f),RotateTo::create(6.0f/24, 144), NULL),
+                                                        CallFunc::create([=](){yepoint->setRotation(144);}),
+                                                        RotateTo::create(6.0f/24, 216),
+                                                        Spawn::create(FadeTo::create(4.0/24, 70),ScaleTo::create(4.0/24, 0.5f), NULL),
+                                                        CallFunc::create([=](){yepoint->setVisible(false);yepoint->setRotation(0);}),DelayTime::create(96.0/24), NULL), CC_REPEAT_FOREVER));
+    
+    
+    auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
+                                            CC_CALLBACK_0(SplashScene::loginByVisitor, this));
+    loginMenu = Menu::create(visitorBtn, NULL);
+    loginMenu->setPosition(0, 0);
+    
+    //获取尺寸大小
+    Size clipSize = loginMenu->getContentSize();
+    
+    //[3].创建底板的发光图片 : spark
+    Sprite* spark = Sprite::create("mainlogin/shua_light.png");
+    spark->setRotation(80);
+    spark->setPosition(-clipSize.width+20, 15);
+    
+    //[4].创建裁剪节点 : clippingNode
+    ClippingNode* clippingNode = ClippingNode::create();
+    clippingNode->setPosition(640,88);
+    addChild(clippingNode,10);
+    
+    clippingNode->setAlphaThreshold(0.05f); //设置alpha闸值
+    clippingNode->setContentSize(clipSize); //设置尺寸大小
+    
+    clippingNode->setStencil(loginMenu);   //设置模板stencil
+    clippingNode->addChild(loginMenu, 1);  //先添加标题,会完全显示出来,因为跟模板一样大小
+    spark->setScale(0.70);
+    clippingNode->addChild(spark,2);       //会被裁减
+    
+    //[5].左右移动spark
+    MoveTo* moveAction = MoveTo::create(5.0f, Vec2(clipSize.width-20, 15));
+    spark->runAction(RepeatForever::create(Sequence::create(moveAction,CallFunc::create([=](){
+        spark->setPosition(-clipSize.width, 15);
+    }), NULL)));
+}
+
+void SplashScene :: scrollLightSpot(float dt){
+    if(NULL!=getChildByTag(602)){
+        if(getChildByTag(602)->getPositionX()>1920){
+            getChildByTag(602)->setPosition(-640,360);
+        }else{
+            getChildByTag(602)->setPosition(getChildByTag(602)->getPosition().x+1,getChildByTag(602)->getPosition().y);
+        }
+    }
+    if(NULL!=getChildByTag(603)){
+        if(getChildByTag(603)->getPositionX()>1920){
+            getChildByTag(603)->setPosition(-640,360);
+        }
+        getChildByTag(603)->setPosition(getChildByTag(603)->getPosition().x+1,getChildByTag(603)->getPosition().y);
+    }
 }

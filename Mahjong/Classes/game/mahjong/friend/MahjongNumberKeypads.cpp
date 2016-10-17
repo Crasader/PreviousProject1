@@ -7,6 +7,7 @@
 //
 
 #include "game/mahjong/friend/MahjongNumberKeypads.hpp"
+#include "server/NetworkManage.h"
 
 
 bool MahjongNumberKeypads::init(){
@@ -56,7 +57,8 @@ void MahjongNumberKeypads::clickNumber(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*) ref;
     int index = temp->getTag();
     if(index == 11){
-        //ok
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(numberShow->getString()));
+        removeFromParent();
     }else if(index == 10){
         //delete
         enterRoomNumber = enterRoomNumber.substr(0,enterRoomNumber.size()-1);
