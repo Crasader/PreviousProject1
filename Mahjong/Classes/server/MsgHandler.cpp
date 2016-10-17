@@ -1461,6 +1461,10 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         data.seatId = seatId.GetInt();
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     }
+    if(_mDoc.HasMember("prid")){
+        const rapidjson::Value &prid = _mDoc["prid"];
+        data.prid = prid.GetInt();
+    }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, "");
 }
