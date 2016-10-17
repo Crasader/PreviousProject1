@@ -2,8 +2,6 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "game/mahjong/heroinfo/UserInfo.h"
-#include "game/mahjong/heroinfo/BoundPhone.h"
-#include "game/mahjong/heroinfo/ChangePassword.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -15,19 +13,7 @@ public:
     void onExit() override;
 private:
     EventListenerCustom* closeDialogListener;
-	Sprite* heroInfo;
-	Sprite* boundPhone;
-	Sprite* editPassword;
-	MenuItemToggle* heroInfoImage;
-	MenuItemToggle* boundPhoneImage;
-	MenuItemToggle* editPasswordImage;
 	UserInfo* userInfoLayer;
-	BoundPhone* boundPhoneLayer;
-	ChangePassword* changePasswordLayer;
-	void clickTabBtn(Ref* ref);
     void drawHeroInfoEdit(int type);
     void closeView();
-    void showTabelLayer1();
-    void showTabelLayer2();
-    void showTabelLayer3();
 };

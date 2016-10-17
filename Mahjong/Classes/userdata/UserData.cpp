@@ -155,3 +155,11 @@ void UserData::setWxOpenId(std::string openId){
     UserDefault::getInstance()->setStringForKey("wchat_openid", openId);
 }
 
+std::string UserData::getMarkId(){
+    return UserDefault::getInstance()->getStringForKey("mark_id", "unknow");
+}
+
+void UserData::setMarkId(std::string markid){
+    UserDefault::getInstance()->setStringForKey("mark_id", markid);
+}
+

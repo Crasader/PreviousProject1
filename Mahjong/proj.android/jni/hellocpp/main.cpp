@@ -43,5 +43,5 @@ Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loadImageByURL(JNIEnv* env, j
 	  newUrl   =   (char*)env->GetStringUTFChars(url,0);
 	  char*   newSex;
 	  newSex   =   (char*)env->GetStringUTFChars(sex,0);
-	  MahjongPayHandler::getInstance()->loadImageByURL(newUrl,sex);
+	  MahjongPayHandler::getInstance()->loadImageByURL(newUrl,newSex);
 	}

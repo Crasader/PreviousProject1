@@ -682,6 +682,10 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &password = _mDoc["password"];
             UserData::getInstance()->setPassword(password.GetString());
         }
+        if (_mDoc.HasMember("umark")){
+            const rapidjson::Value &umark = _mDoc["umark"];
+            UserData::getInstance()->setMarkId(umark.GetString());
+        }
         postNotifyMessage(MSG_LOGIN_RESP, LOGIN_SUCCESS);
     }
     else{

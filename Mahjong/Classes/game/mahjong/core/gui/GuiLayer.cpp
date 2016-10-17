@@ -1,7 +1,6 @@
 #include "game/mahjong/core/gui/GuiLayer.h"
 #include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
-#include "game/mahjong/friend/FriendInvite.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/core/widget/QuitRoomDialog.hpp"
@@ -15,6 +14,13 @@
 
 
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#import "payment/ios/IOSBridge.h"
+#endif
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "payment/android/CallAndroidMethod.h"
+#endif
 
 bool GuiLayer::init(){
     if (!Layer::init()){
@@ -204,8 +210,10 @@ void GuiLayer::drawPlayerInvite(){
 }
 
 void GuiLayer::invitePlayer(Ref* ref){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-    FriendInvite* invite = FriendInvite::create();
-    addChild(invite,100);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！",StringUtils::format("房间号:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),false);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", StringUtils::format("房间号:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()));
+#endif
 }
 

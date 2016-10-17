@@ -51,16 +51,6 @@ void HongbaoPride::showHongbaoPride(){
     title->setPosition(640,610);
     addChild(title);
     
-//    
-//    auto kouling = Sprite::create("shop/hongbaokoulin.png");
-//    kouling->setPosition(570,520);
-//    addChild(kouling);
-//    
-//    auto koulingText = Label::create(cocos2d::String::createWithFormat("%s",GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str())->_string,"arial",30);
-//    koulingText->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-//    koulingText->setColor(Color3B::YELLOW);
-//    koulingText->setPosition(670,520);
-//    addChild(koulingText);
     
     auto hongbaoBg1 = Sprite::create("shop/red_box.png");
     hongbaoBg1->setPosition(480,320);

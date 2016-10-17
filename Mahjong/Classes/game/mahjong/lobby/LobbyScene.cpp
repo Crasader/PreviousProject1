@@ -12,7 +12,7 @@
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
 #include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
 #include "game/mahjong/shop/relieve/GoldRelieve.hpp"
-#include "game/mahjong/share/Redwallet.h"
+#include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "game/utils/ParticleUtil.hpp"
@@ -296,13 +296,11 @@ void LobbyScene::drawSceneBot(){
     bot_bg->setPosition(821,48);
     addChild(bot_bg);
     
-    auto btn_1 = MenuItemImage::create("mjlobby/friend_btn_1.png", "mjlobby/friend_btn_2.png", CC_CALLBACK_0(LobbyScene::showAddFriend, this));
     auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_3 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
-    //        auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
     auto btn_5 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
-    auto gameMenu = Menu::create(btn_1, btn_2,btn_3, btn_5, NULL);
-    gameMenu->alignItemsHorizontallyWithPadding(75);
+    auto gameMenu = Menu::create(btn_2,btn_3, btn_5, NULL);
+    gameMenu->alignItemsHorizontallyWithPadding(105);
     gameMenu->setPosition(785, 43);
     addChild(gameMenu);
     auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
@@ -323,8 +321,8 @@ void LobbyScene::showFirstCharge(){
 void LobbyScene::showRedWallet(){
     Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSendRedWalletCommand());
-    Redwallet* wallet = Redwallet::create();
-    this->addChild(wallet,3);
+    HongbaoPride* wallet = HongbaoPride::create();
+    addChild(wallet,3);
 }
 
 void LobbyScene::showDayTask(){

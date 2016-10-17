@@ -1,11 +1,10 @@
 #include "game/mahjong/heroinfo/UserInfo.h"
 #include "game/mahjong/heroinfo/NickNameDialog.h"
 #include "game/mahjong/heroinfo/HeadImageDialog.h"
-#include "game/mahjong/heroinfo/GenderDialog.h"
+#include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/utils/Chinese.h"
 #include "userdata/UserData.h"
-#include "game/mahjong/widget/HeadImage.hpp"
 
 
 bool UserInfo::init(){
@@ -33,137 +32,127 @@ void UserInfo::onExit(){
 
 void UserInfo::showUserInfo(){
     auto headBg = Sprite::create("playerinfo/head_bg.png");
-    headBg->setPosition(415,350);
+    headBg->setPosition(415,365);
     addChild(headBg);
     
     auto headImage =  HeadImage::create(Size(170,170));
     headImage->setTag(1000);
-    headImage->setPosition(415,380);
+    headImage->setPosition(415,395);
     addChild(headImage);
     
     auto itemImage = MenuItemImage::create("playerinfo/head_iamge_edit_1.png","playerinfo/head_iamge_edit_2.png",
                                            CC_CALLBACK_0(UserInfo::editHeadImage,this));
     Menu* myMenu = Menu::create(itemImage,NULL);
-    myMenu->setPosition(415,253);
+    myMenu->setPosition(415,268);
     addChild(myMenu);
     
     auto input_bg_1 = Scale9Sprite::create("common/input_box_bg.png");
     input_bg_1->setContentSize(Size(430,81));
-    input_bg_1->setPosition(760, 445);
+    input_bg_1->setPosition(760, 460);
     addChild(input_bg_1);
     auto zhanghao = Sprite::create("playerinfo/account_text.png");
-    zhanghao->setPosition(620,445);
+    zhanghao->setPosition(620,460);
     addChild(zhanghao);
-    Label* accountLabel = Label::create(UserData::getInstance()->getUserName(), "arial", 30);
+    Label* accountLabel = Label::create(UserData::getInstance()->getMarkId(), "arial", 30);
     accountLabel->setColor(Color3B(93,172,221));
     accountLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    accountLabel->setPosition(680, 445);
+    accountLabel->setPosition(680, 460);
     addChild(accountLabel);
     Sprite* account_icon = Sprite::create("playerinfo/account_iocn.png");
-    account_icon->setPosition(935, 445);
+    account_icon->setPosition(935, 460);
     addChild(account_icon);
     
     
     auto input_bg_2 = Scale9Sprite::create("common/input_box_bg.png");
     input_bg_2->setContentSize(Size(430, 81));
-    input_bg_2->setPosition(760, 350);
+    input_bg_2->setPosition(760, 365);
     addChild(input_bg_2);
     auto nicheng = Sprite::create("playerinfo/nickname_text.png");
-    nicheng->setPosition(620, 350);
+    nicheng->setPosition(620, 365);
     addChild(nicheng);
     nickNameLabel = Label::create(UserData::getInstance()->getNickName(), "arial", 30);
     nickNameLabel->setColor(Color3B(93, 172, 221));
     nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    nickNameLabel->setPosition(680, 350);
+    nickNameLabel->setPosition(680, 365);
     addChild(nickNameLabel);
     auto editBtn1 = MenuItemImage::create("playerinfo/edit_btn_1.png", "playerinfo/edit_btn_2.png",
                                           CC_CALLBACK_1(UserInfo::menuBtnClick,this));
     editBtn1->setTag(0);
     changeNickName = Menu::create(editBtn1, NULL);
-    changeNickName->setPosition(935, 350);
+    changeNickName->setPosition(935, 365);
     addChild(changeNickName);
     if (UserData::getInstance()->isChangeName()){
         changeNickName->setVisible(false);
     }
     auto input_bg_3 = Scale9Sprite::create("common/input_box_bg.png");
     input_bg_3->setContentSize(Size(430, 81));
-    input_bg_3->setPosition(760, 260);
+    input_bg_3->setPosition(760, 275);
     addChild(input_bg_3);
     auto gender = Sprite::create("playerinfo/gender_text.png");
-    gender->setPosition(620, 260);
+    gender->setPosition(620, 275);
     addChild(gender);
     std::string gen = UserData::getInstance()->getGender() == 0 ? "playerinfo/female.png" : "playerinfo/male.png";
     playerGender = Sprite::create(gen);
-    playerGender->setPosition(755,260);
+    playerGender->setPosition(755,275);
     addChild(playerGender);
-//    auto editBtn2 = MenuItemImage::create("playerinfo/edit_btn_1.png", "playerinfo/edit_btn_2.png",
-//                                          CC_CALLBACK_1(UserInfo::menuBtnClick, this));
-//    editBtn2->setTag(1);
-//    Menu* menu2 = Menu::create(editBtn2, NULL);
-//    menu2->setPosition(935, 260);
-//    addChild(menu2);
     
     //diamond
     auto diamond_bg = Sprite::create("common/room_info_bg.png");
-    diamond_bg->setPosition(410, 165);
+    diamond_bg->setPosition(410, 180);
     addChild(diamond_bg);
     auto diamond_icon = Sprite::create("common/diamond_icon.png");
-    diamond_icon->setPosition(355, 160);
+    diamond_icon->setPosition(355, 175);
     addChild(diamond_icon);
     auto diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string,
                                          "playerinfo/player_info_num.png", 13, 19, '0');
     diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    diamondNum->setPosition(380, 165);
+    diamondNum->setPosition(380, 180);
     addChild(diamondNum);
     
     //lock diamond
     auto lock_diamond_bg = Scale9Sprite::create("common/room_info_bg.png");
     lock_diamond_bg->setContentSize(Size(120, 47));
-    lock_diamond_bg->setPosition(560, 165);
+    lock_diamond_bg->setPosition(560, 180);
     this->addChild(lock_diamond_bg);
     auto lock_diamond_icon = Sprite::create("common/lock_diamond_icon.png");
-    lock_diamond_icon->setPosition(525, 160);
+    lock_diamond_icon->setPosition(525, 175);
     addChild(lock_diamond_icon);
     auto lockDiamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getLockDiamond())->_string,
                                              "playerinfo/player_info_num.png", 13, 19, '0');
     lockDiamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lockDiamondNum->setPosition(550, 165);
+    lockDiamondNum->setPosition(550, 180);
     addChild(lockDiamondNum);
     
     //gold
     auto gold_bg = Sprite::create("common/room_info_bg.png");
-    gold_bg->setPosition(715, 165);
+    gold_bg->setPosition(715, 180);
     addChild(gold_bg);
     auto gold_icon = Sprite::create("common/gold_icon.png");
-    gold_icon->setPosition(660, 165);
+    gold_icon->setPosition(660, 180);
     addChild(gold_icon);
     auto goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string,
                                       "playerinfo/player_info_num.png", 13, 19, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    goldNum->setPosition(685, 165);
+    goldNum->setPosition(685, 180);
     addChild(goldNum);
     
     //lequan
     auto lequan_bg = Sprite::create("common/room_info_bg.png");
-    lequan_bg->setPosition(900, 165);
+    lequan_bg->setPosition(900, 180);
     this->addChild(lequan_bg);
     auto lequan_icon = Sprite::create("common/lequan_icon.png");
-    lequan_icon->setPosition(845, 165);
+    lequan_icon->setPosition(845, 180);
     this->addChild(lequan_icon);
     auto lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getTicket())->_string,
                                         "playerinfo/player_info_num.png", 13, 19, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum->setPosition(870, 165);
+    lequanNum->setPosition(870, 180);
     this->addChild(lequanNum);
 }
 
 void UserInfo::editHeadImage(){
     HeadImageDialog* headImageDialog = HeadImageDialog::create();
     addChild(headImageDialog);
-    //    UrlImageMannger::getInstance()->uploadImage2Server(CallFunc::create([=](){
-    //
-    //
-    //    }));
 }
 
 
@@ -171,10 +160,6 @@ void UserInfo::menuBtnClick(Ref* ref){
     MenuItemImage* image = (MenuItemImage*) ref;
     if (image->getTag() == 0){
         NickNameDialog* dialog = NickNameDialog::create();
-        addChild(dialog);
-    }if (image->getTag() == 1){
-        GenderDialog* dialog = GenderDialog::create();
-        dialog->setTag(123);
         addChild(dialog);
     }
 }

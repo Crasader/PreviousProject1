@@ -58,6 +58,9 @@ public:
     std::string getWxOpenId();
     void setWxOpenId(std::string openId);
     
+    std::string getMarkId();
+    void setMarkId(std::string markid);
+    
 private:
 	UserData();
 	static UserData* _instance;	
