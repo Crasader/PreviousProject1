@@ -26,6 +26,7 @@ public:
     bool onTouchBegan(Touch *touch, Event  *event) override;
     void onTouchMoved(Touch *touch, Event  *event) override;
     void onTouchEnded(Touch *touch, Event  *event) override;
+    void setIsReady(bool b);
     void drawPlayerHero();
     void drawReady(bool b);
     void sortHandJongs(int posx,bool isTurn);

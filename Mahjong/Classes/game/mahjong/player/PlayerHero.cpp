@@ -55,6 +55,13 @@ void PlayerHero::removeLastJong(){
     playerPlayedJongs.popBack();
 }
 
+void PlayerHero::setIsReady(bool b){
+    PlayerBase::setIsReady( b);
+    if(NULL != getChildByTag(9998)){
+        getChildByTag(9998)->setVisible(b);
+    }
+}
+
 bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
     if (!this->getIsAllowTouch() || GAMEDATA::getInstance()->getIsTingState()){
         return false;
@@ -263,6 +270,7 @@ void PlayerHero::drawReady(bool ready){
             MenuItemImage* inviteImage = MenuItemImage::create("gameview/invite_friend_1.png", "gameview/invite_friend_2.png", CC_CALLBACK_0(PlayerHero::inviteWechatFriend, this));
             auto invite = Menu::create(inviteImage, NULL);
             invite->setPosition(Point(640, 160));
+            invite->setTag(9998);
             this->addChild(invite);
         }
         this->setIsReady(true);
