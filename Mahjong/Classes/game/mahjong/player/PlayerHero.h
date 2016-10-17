@@ -74,6 +74,7 @@ private:
     void resetHandJongsY(Jong* jong);
     void arrangeHandJongs();
     void readyGo();
+    void inviteWechatFriend();
     void sendTingRequest(int poker);
     void sendPokerRequest(int poker);
     void playedPokerAuto(bool send);

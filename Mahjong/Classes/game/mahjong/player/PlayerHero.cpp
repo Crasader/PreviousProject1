@@ -100,7 +100,7 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
         virtualJong->setOpacity(255);
         playPokerByHand(virtualJong);
         arrangeHandJongs();
-
+        
     }
     if (isAllowPlay) {
         if (doubleClickJong == NULL){
@@ -178,7 +178,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
 
 
 void PlayerHero::drawPlayerHero() {
-   
+    
     std::vector<std::string> strvce = GAMEDATA::getInstance()->getHeroJongs();
     for (int t = 0; t < strvce.size(); t++) {
         if (t < -1){
@@ -250,6 +250,12 @@ void PlayerHero::drawReady(bool ready){
         if (NULL != getChildByTag(888)){
             getChildByTag(888)->setVisible(false);
         }
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            MenuItemImage* inviteImage = MenuItemImage::create("gameview/invite_friend_1.png", "gameview/invite_friend_2.png", CC_CALLBACK_0(PlayerHero::inviteWechatFriend, this));
+            auto invite = Menu::create(inviteImage, NULL);
+            invite->setPosition(Point(640, 160));
+            this->addChild(invite);
+        }
         this->setIsReady(true);
     }
 }
@@ -263,7 +269,10 @@ void PlayerHero::readyGo(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
 }
 
-
+void PlayerHero::inviteWechatFriend(){
+    //TODO
+    
+}
 
 
 void PlayerHero::sendPokerRequest(int poker){

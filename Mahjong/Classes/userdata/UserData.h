@@ -57,6 +57,7 @@ public:
     
     std::string getWxOpenId();
     void setWxOpenId(std::string openId);
+    
 private:
 	UserData();
 	static UserData* _instance;	

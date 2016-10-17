@@ -118,7 +118,11 @@ void MahjongView::startGameFirst(){
     Player* info = new Player();
     info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
     info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
-    info->setIsReady(false);
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        info->setIsReady(true);
+    }else{
+        info->setIsReady(false);
+    }
     info->setGold(UserData::getInstance()->getGold());
     info->setDiamond(UserData::getInstance()->getDiamond());
     info->setLockDiamond(UserData::getInstance()->getLockDiamond());
@@ -130,7 +134,7 @@ void MahjongView::startGameFirst(){
 }
 
 void MahjongView::startGameAgain(){
-
+    
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
     for (int i = 0; i < players.size(); i++){
         if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
@@ -148,7 +152,7 @@ void MahjongView::startGameAgain(){
     schedule([=](float dt){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
     }, 0, 0, 1.0f,"continueGame");
-    }
+}
 
 void MahjongView::update(float dt){
     if (GAMEDATA::getInstance()->getNeedAddPlayer()){
@@ -455,7 +459,7 @@ void MahjongView::recoverGame(){
         info->setScore(player.jifen);
         info->setTicket(player.lequan);
         info->setLockDiamond(player.bangzuan);
-        info->setPoxiaoId(player.poxiaoId); 
+        info->setPoxiaoId(player.poxiaoId);
         GAMEDATA::getInstance()->addPlayersInfo(info);
         recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
     }
@@ -1099,7 +1103,7 @@ void MahjongView::addOthersGangListener(){
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
-           hideTingGangControllPad();
+            hideTingGangControllPad();
             playerRight->drawPlayerGang(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
@@ -1242,10 +1246,10 @@ void MahjongView::addHeroGangRespListener(){
                 playerHero->drawHeroGang(resp, cpg, playerRight);
             }
             else if (clientSeatId == ClientSeatId::opposite){
-               playerHero->drawHeroGang(resp, cpg, playerOpposite);
+                playerHero->drawHeroGang(resp, cpg, playerOpposite);
             }
             else{
-               playerHero->drawHeroGang(resp, cpg, playerLeft);
+                playerHero->drawHeroGang(resp, cpg, playerLeft);
             }
         }
     });
