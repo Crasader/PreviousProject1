@@ -97,8 +97,6 @@
 		D22EEF7C1D66CFC800BF1CCB /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF6A1D66CFC800BF1CCB /* BillInfo.cpp */; };
 		D22EEF7D1D66CFC800BF1CCB /* FriendAddView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF6D1D66CFC800BF1CCB /* FriendAddView.cpp */; };
 		D22EEF7E1D66CFC800BF1CCB /* FriendAddView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF6D1D66CFC800BF1CCB /* FriendAddView.cpp */; };
-		D22EEF7F1D66CFC800BF1CCB /* FriendInvite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF6F1D66CFC800BF1CCB /* FriendInvite.cpp */; };
-		D22EEF801D66CFC800BF1CCB /* FriendInvite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF6F1D66CFC800BF1CCB /* FriendInvite.cpp */; };
 		D22EEF811D66CFC800BF1CCB /* FriendListView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF711D66CFC800BF1CCB /* FriendListView.cpp */; };
 		D22EEF821D66CFC800BF1CCB /* FriendListView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF711D66CFC800BF1CCB /* FriendListView.cpp */; };
 		D22EEF831D66CFC800BF1CCB /* FriendRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF731D66CFC800BF1CCB /* FriendRoom.cpp */; };
@@ -448,8 +446,6 @@
 		D22EEF6B1D66CFC800BF1CCB /* BillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillInfo.h; sourceTree = "<group>"; };
 		D22EEF6D1D66CFC800BF1CCB /* FriendAddView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FriendAddView.cpp; sourceTree = "<group>"; };
 		D22EEF6E1D66CFC800BF1CCB /* FriendAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendAddView.h; sourceTree = "<group>"; };
-		D22EEF6F1D66CFC800BF1CCB /* FriendInvite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FriendInvite.cpp; sourceTree = "<group>"; };
-		D22EEF701D66CFC800BF1CCB /* FriendInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendInvite.h; sourceTree = "<group>"; };
 		D22EEF711D66CFC800BF1CCB /* FriendListView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FriendListView.cpp; sourceTree = "<group>"; };
 		D22EEF721D66CFC800BF1CCB /* FriendListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListView.h; sourceTree = "<group>"; };
 		D22EEF731D66CFC800BF1CCB /* FriendRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FriendRoom.cpp; sourceTree = "<group>"; };
@@ -975,8 +971,6 @@
 			children = (
 				D22EEF6D1D66CFC800BF1CCB /* FriendAddView.cpp */,
 				D22EEF6E1D66CFC800BF1CCB /* FriendAddView.h */,
-				D22EEF6F1D66CFC800BF1CCB /* FriendInvite.cpp */,
-				D22EEF701D66CFC800BF1CCB /* FriendInvite.h */,
 				D22EEF711D66CFC800BF1CCB /* FriendListView.cpp */,
 				D22EEF721D66CFC800BF1CCB /* FriendListView.h */,
 				D22EEF731D66CFC800BF1CCB /* FriendRoom.cpp */,
@@ -1651,7 +1645,6 @@
 				D22EEF811D66CFC800BF1CCB /* FriendListView.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D22EEF4C1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */,
-				D22EEF7F1D66CFC800BF1CCB /* FriendInvite.cpp in Sources */,
 				D257FD7A1D6C2E2400B8C596 /* RechargeVC.m in Sources */,
 				D2484EB61D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF851D66CFC800BF1CCB /* InviteCell.cpp in Sources */,
@@ -1796,7 +1789,6 @@
 				D2F05F641D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */,
 				D28A4A2F1D056B7A00741FD0 /* Audio.cpp in Sources */,
 				D2F05F621D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */,
-				D22EEF801D66CFC800BF1CCB /* FriendInvite.cpp in Sources */,
 				D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D22912431D128367005C7167 /* DropDownListBox.cpp in Sources */,
 				D22EEFBC1D66D14D00BF1CCB /* DailyPride.cpp in Sources */,

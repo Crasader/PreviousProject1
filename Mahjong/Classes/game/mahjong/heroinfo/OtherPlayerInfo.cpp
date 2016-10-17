@@ -91,20 +91,10 @@ bool OtherPlayerInfo::init(Player* player){
     nickNameLabel->setPosition(130, 190);
     dialogBg->addChild(nickNameLabel);
     
-    MenuItemImage* addImage = MenuItemImage::create("playerinfo/add_friend_btn_1.png","playerinfo/add_friend_btn_2.png",CC_CALLBACK_1(OtherPlayerInfo::addFriend, this));
-    addImage->setScale(0.6f);
-    Menu* myMenu = Menu::create(addImage,NULL);
-    myMenu->setPosition(180, 150);
-    dialogBg->addChild(myMenu);
-    for(auto var : GAMEDATA::getInstance()->getFriendList().friends){
-        if(var.poxiaoId == player->getPoxiaoId()){
-            addImage->setVisible(false);
-        }
-    }
     
     std::string gen = player->getGender() == 0 ? "playerinfo/female.png" : "playerinfo/male.png";
     playerGender = Sprite::create(gen);
-    playerGender->setPosition(120, 120);
+    playerGender->setPosition(140, 140);
     playerGender->setScale(0.6f);
     dialogBg->addChild(playerGender);
 

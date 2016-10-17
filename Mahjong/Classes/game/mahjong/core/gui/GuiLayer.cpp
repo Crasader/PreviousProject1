@@ -45,11 +45,11 @@ void GuiLayer::onExit(){
 };
 
 void GuiLayer::initView(){
-//    auto soundButton = MenuItemImage::create("gameview/chat_sound_1.png", "gameview/chat_sound_2.png",
-//                                             CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
-//    auto soundMenu = Menu::create(soundButton,NULL);
-//    soundMenu->setPosition(65,45);
-//    addChild(soundMenu);
+    //    auto soundButton = MenuItemImage::create("gameview/chat_sound_1.png", "gameview/chat_sound_2.png",
+    //                                             CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
+    //    auto soundMenu = Menu::create(soundButton,NULL);
+    //    soundMenu->setPosition(65,45);
+    //    addChild(soundMenu);
     
     auto chatButton = MenuItemImage::create("gameview/chat_btn_1.png", "gameview/chat_btn_2.png",
                                             CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
@@ -66,23 +66,51 @@ void GuiLayer::initView(){
     quit->setPosition(Point(55, 670));
     this->addChild(quit);
     
-    auto kaibaoBg = Sprite::create("gameview/kai_bao_bg.png");
-    kaibaoBg->setPosition(1215,625);
-    this->addChild(kaibaoBg);
-    auto kaibao = Sprite::create("gameview/kai_bao.png");
-    kaibao->setPosition(1193,644);
-    this->addChild(kaibao);
-    kaibaoNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getKaibao(),"gameview/hua_num.png",17,24,'0');
-    kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    kaibaoNum->setPosition(1220,644);
-    addChild(kaibaoNum);
-    auto huangfan = Sprite::create("gameview/hua_fan.png");
-    huangfan->setPosition(1193, 614);
-    this->addChild(huangfan);
-    haungNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getHuangfan(), "gameview/hua_num.png", 17, 24, '0');
-    haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    haungNum->setPosition(1220, 614);
-    addChild(haungNum);
+    if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        
+        auto kaibaoBg = Sprite::create("gameview/room_id.png");
+        kaibaoBg->setPosition(1210,645);
+        this->addChild(kaibaoBg);
+        
+        auto openRoomId = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"gameview/hua_num.png",17,24,'0');
+        openRoomId->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        openRoomId->setScale(0.8f);
+        openRoomId->setPosition(1210,675);
+        addChild(openRoomId);
+        
+        kaibaoNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getKaibao(),"gameview/hua_num.png",17,24,'0');
+        kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        kaibaoNum->setScale(0.8f);
+        kaibaoNum->setPosition(1210,648);
+        addChild(kaibaoNum);
+        
+        haungNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getHuangfan(), "gameview/hua_num.png", 17, 24, '0');
+        haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        haungNum->setScale(0.8f);
+        haungNum->setPosition(1210, 618);
+        addChild(haungNum);
+    }
+    else{
+        auto kaibaoBg = Sprite::create("gameview/kai_bao_bg.png");
+        kaibaoBg->setPosition(1215,625);
+        this->addChild(kaibaoBg);
+        auto kaibao = Sprite::create("gameview/kai_bao.png");
+        kaibao->setPosition(1193,644);
+        this->addChild(kaibao);
+        kaibaoNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getKaibao(),"gameview/hua_num.png",17,24,'0');
+        kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        kaibaoNum->setPosition(1220,644);
+        addChild(kaibaoNum);
+        auto huangfan = Sprite::create("gameview/hua_fan.png");
+        huangfan->setPosition(1193, 614);
+        this->addChild(huangfan);
+        haungNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getHuangfan(), "gameview/hua_num.png", 17, 24, '0');
+        haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        haungNum->setPosition(1220, 614);
+        addChild(haungNum);
+    }
+    
+    
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         
@@ -95,36 +123,36 @@ void GuiLayer::initView(){
         billMenu->setPosition(Point(1225, 180));
         addChild(billMenu);
     }
-
+    
 }
 
 void GuiLayer::soundButtonClick(){
-//        vector<GameResultData> gameResults;
-//        for (int i = 0; i < 4; i++){
-//            GameResultData resultData;
-//            resultData.result = 3;
-//            resultData.gold = 100;
-//            resultData.diamond = 100;
-//            resultData.jifen =10;
-//            resultData.lequan = 10;
-//            resultData.golddelta = 200000;
-//            resultData.diamonddelta =2;
-//            resultData.jifendelta = 2;
-//            resultData.lequandelta = 2000;
-//            resultData.seatId = i+1;
-//            resultData.hua = 3;
-//            resultData.showPoker = "1,2,3,4,5,5,5,5";
-//            resultData.huType = "1";
-//            resultData.nickName = "abc";
-//            gameResults.push_back(resultData);
-//        }
-//        GAMEDATA::getInstance()->setGameResults(gameResults);
-//        EventCustom event(MSG_GAME_RESULT);
-//        _eventDispatcher->dispatchEvent(&event);
+    //        vector<GameResultData> gameResults;
+    //        for (int i = 0; i < 4; i++){
+    //            GameResultData resultData;
+    //            resultData.result = 3;
+    //            resultData.gold = 100;
+    //            resultData.diamond = 100;
+    //            resultData.jifen =10;
+    //            resultData.lequan = 10;
+    //            resultData.golddelta = 200000;
+    //            resultData.diamonddelta =2;
+    //            resultData.jifendelta = 2;
+    //            resultData.lequandelta = 2000;
+    //            resultData.seatId = i+1;
+    //            resultData.hua = 3;
+    //            resultData.showPoker = "1,2,3,4,5,5,5,5";
+    //            resultData.huType = "1";
+    //            resultData.nickName = "abc";
+    //            gameResults.push_back(resultData);
+    //        }
+    //        GAMEDATA::getInstance()->setGameResults(gameResults);
+    //        EventCustom event(MSG_GAME_RESULT);
+    //        _eventDispatcher->dispatchEvent(&event);
 }
 
 void GuiLayer::chatButtonClick(){
-//    SocketDataManage::getInstance()->resumeMsg();
+    //    SocketDataManage::getInstance()->resumeMsg();
     auto gameChat = ChatDialog::create("");
     gameChat->setTag(1001);
     addChild(gameChat,2);
