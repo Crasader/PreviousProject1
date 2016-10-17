@@ -41,7 +41,12 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid){
 }
 
 
-void MahjongPayHandler::loadImageByURL(std::string url){
+void MahjongPayHandler::loadImageByURL(std::string url,std::string sex){
     UserData::getInstance()->setPicture(url);
+    if(sex == "0"){
+        UserData::getInstance()->setPicture("1");
+    }else{
+        UserData::getInstance()->setPicture("0");
+    }
     UrlImageMannger::getInstance()->loadImgByUrl(url);
 }

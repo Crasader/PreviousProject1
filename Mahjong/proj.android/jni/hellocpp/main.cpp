@@ -37,9 +37,11 @@ Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loginThirdPlatform(JNIEnv* en
 
 
 extern "C" JNIEXPORT void JNICALL
-Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loadImageByURL(JNIEnv* env, jclass jcl,jstring url)
+Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loadImageByURL(JNIEnv* env, jclass jcl,jstring url,jstring sex)
 	{
 	  char*   newUrl;
 	  newUrl   =   (char*)env->GetStringUTFChars(url,0);
-	  MahjongPayHandler::getInstance()->loadImageByURL(newUrl);
+	  char*   newSex;
+	  newSex   =   (char*)env->GetStringUTFChars(sex,0);
+	  MahjongPayHandler::getInstance()->loadImageByURL(newUrl,sex);
 	}
