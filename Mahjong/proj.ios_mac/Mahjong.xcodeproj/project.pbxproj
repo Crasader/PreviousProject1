@@ -194,6 +194,8 @@
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5AA1DAF214D00D3E44E /* DiamondItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */; };
 		D281E5AB1DAF214D00D3E44E /* DiamondItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */; };
+		D281E5C21DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5C01DB4652800D3E44E /* MahjongNumberKeypads.cpp */; };
+		D281E5C31DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5C01DB4652800D3E44E /* MahjongNumberKeypads.cpp */; };
 		D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
@@ -530,6 +532,8 @@
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiamondItem.cpp; sourceTree = "<group>"; };
 		D281E5A91DAF214D00D3E44E /* DiamondItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiamondItem.hpp; sourceTree = "<group>"; };
+		D281E5C01DB4652800D3E44E /* MahjongNumberKeypads.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MahjongNumberKeypads.cpp; sourceTree = "<group>"; };
+		D281E5C11DB4652800D3E44E /* MahjongNumberKeypads.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MahjongNumberKeypads.hpp; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
 		D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientUtill.h; sourceTree = "<group>"; };
 		D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMannger.cpp; sourceTree = "<group>"; };
@@ -1005,6 +1009,8 @@
 				D22EEF761D66CFC800BF1CCB /* InviteCell.hpp */,
 				D22EEF771D66CFC800BF1CCB /* SearchResult.cpp */,
 				D22EEF781D66CFC800BF1CCB /* SearchResult.h */,
+				D281E5C01DB4652800D3E44E /* MahjongNumberKeypads.cpp */,
+				D281E5C11DB4652800D3E44E /* MahjongNumberKeypads.hpp */,
 			);
 			path = friend;
 			sourceTree = "<group>";
@@ -1768,6 +1774,7 @@
 				D22912421D128367005C7167 /* DropDownListBox.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
+				D281E5C21DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */,
 				D2B1A87F1CCDF0F400A20896 /* MahjongView.cpp in Sources */,
 				D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D2B1A8DB1CCDF0F400A20896 /* Player.cpp in Sources */,
@@ -1886,6 +1893,7 @@
 				D28A4A331D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
 				D22912451D128367005C7167 /* LoginMannger.cpp in Sources */,
 				D22912391D128103005C7167 /* FindPassword.cpp in Sources */,
+				D281E5C31DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */,
 				D28A4A411D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
 				D22EEF7C1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				D22EEF841D66CFC800BF1CCB /* FriendRoom.cpp in Sources */,
