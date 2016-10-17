@@ -11,7 +11,7 @@
 #include "http/image/UrlImageMannger.h"
 
 HeadImage* HeadImage::create(cocos2d::Size size){
-    return createByImage("null",size);
+    return createByImage("unknow",size);
 }
 
 HeadImage* HeadImage::createByImage(std::string image,Size size){
@@ -33,11 +33,11 @@ bool HeadImage::init(std::string image,cocos2d::Size size){
 }
 
 void HeadImage::updateImage(){
-    this->updateImageByName("null");
+    this->updateImageByName("unknow");
 }
 
 void HeadImage::updateImageByName(std::string image){
-    if(image == "null"){
+    if(image == "unknow"){
         if(UserData::getInstance()->getPicture() == "1"){
             setTexture("gameview/head_image_1.png");
         }else if(UserData::getInstance()->getPicture() == "2"){
@@ -64,7 +64,10 @@ void HeadImage::updateImageByName(std::string image){
             setTexture("gameview/head_image_3.png");
         }else if(image == "4"){
             setTexture("gameview/head_image_4.png");
-        }else{
+        }else if(image == "null"){
+            setTexture("gameview/head_image_1.png");
+        }
+        else{
             std::string path = UrlImageMannger::getInstance()->loadImgByUrl(image);
             if(path != "")
                 setTexture(path);
