@@ -5,6 +5,7 @@ import org.cocos2dx.cpp.payment.Payment;
 
 import com.tbu.androidtools.Debug;
 import com.tbu.wx.http.callback.WechatLoginCallBack;
+import com.tbu.wx.http.data.WxUserInfo;
 import com.tbu.wx.util.WxAppInfo;
 import com.tbu.wx.wechat.TbuWxUtil;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
@@ -39,13 +40,13 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 
 	@Override
 	public void onReq(BaseReq req) {
-		//TODO
+		// TODO
 	}
 
 	@Override
 	public void onResp(BaseResp resp) {
-		Debug.e("resp.errCode = "+resp.errCode);
-		Debug.e("resp.errStr = "+resp.errStr);
+		Debug.e("resp.errCode = " + resp.errCode);
+		Debug.e("resp.errStr = " + resp.errStr);
 		if (ConstantsAPI.COMMAND_PAY_BY_WX == resp.getType()) {
 			if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
 				Payment.queryPayResult();
@@ -58,11 +59,13 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 			if (BaseResp.ErrCode.ERR_OK == authresp.errCode) {
 				if (Payment.getWeChatState().equals(authresp.state)) {
 					Payment.getWechatToken(authresp.code, new WechatLoginCallBack() {
+
 						@Override
-						public void callBack(String openid,String image,String sex) {
+						public void callBack(WxUserInfo info) {
 							Debug.i("微信登录游戏...");
-							JniPayCallbackHelper.loadImageByURL(image,sex);
-							JniPayCallbackHelper.loginThirdPlatform(openid);
+							JniPayCallbackHelper.loginThirdPlatform(info.getOpenId(), info.getHeadImage(),
+									info.getSex(), info.getNickName());
+
 						}
 					});
 				} else {

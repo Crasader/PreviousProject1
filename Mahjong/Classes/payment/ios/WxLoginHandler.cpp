@@ -30,13 +30,13 @@ WxLoginHandler* WxLoginHandler::getInstance(){
     return _instance;
 }
 
-void WxLoginHandler::doGameLogin(std::string openid,std::string pic){
+void WxLoginHandler::doGameLogin(std::string openid,std::string pic,std::string sex,std::string nickname){
     //发送登录请求到游戏服务器
     if("" == openid){
         //登录错误的提示
         log("mahjong game openid is null");
     }else{
-        std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,pic);
+        std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,pic,sex,nickname);
         if(msg != ""){
             NetworkManage::getInstance()->sendMsg(msg);
         }

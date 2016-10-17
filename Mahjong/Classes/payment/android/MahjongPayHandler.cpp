@@ -5,48 +5,46 @@
 #include "http/image/UrlImageMannger.h"
 
 static MahjongPayHandler* _instance = nullptr;
-MahjongPayHandler* MahjongPayHandler::getInstance()
-{
-	if (!_instance)
-	{
+MahjongPayHandler* MahjongPayHandler::getInstance() {
+	if (!_instance) {
 		_instance = new MahjongPayHandler();
 	}
 	return _instance;
 }
 
-void MahjongPayHandler::dealEventCallBack(int eventId, int result){
-    Director::getInstance()->getScheduler()->performFunctionInCocosThread([=](){
-        GAMEDATA::getInstance()->setIsInPay(false);
-        std::string res = StringUtils::format("%d",result);
-        char* buf = const_cast<char*>(res.c_str());
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("mahjong_pay_result",buf);
-        log("dealEventCallBack dealEventCallBack dealEventCallBack");
-    });
+void MahjongPayHandler::dealEventCallBack(int eventId, int result) {
+	Director::getInstance()->getScheduler()->performFunctionInCocosThread(
+			[=]() {
+				GAMEDATA::getInstance()->setIsInPay(false);
+				std::string res = StringUtils::format("%d",result);
+				char* buf = const_cast<char*>(res.c_str());
+				Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("mahjong_pay_result",buf);
+				log("dealEventCallBack dealEventCallBack dealEventCallBack");
+			});
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    
+
 #endif
 }
 
-
-void MahjongPayHandler::loginThirdPlatform(std::string openid){
-    if("" == openid){
-        //登录错误的提示
-        log("mahjong game openid is null");
-    }else{
-        std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,UserData::getInstance()->getPicture());
-        if(msg != ""){
-            NetworkManage::getInstance()->sendMsg(msg);
-        }
-    }
+void MahjongPayHandler::loginThirdPlatform(std::string openid, std::string url,
+		std::string sex, std::string nickname) {
+	if ("" == openid) {
+		//登录错误的提示
+		log("mahjong game openid is null");
+	} else {
+		UserData::getInstance()->setPicture(url);
+		UserData::getInstance()->setNickName(nickname);
+		if (sex == "0") {
+			UserData::getInstance()->setGender(0);
+		} else {
+			UserData::getInstance()->setGender(1);
+		}
+		UrlImageMannger::getInstance()->loadImgByUrl(url);
+		std::string msg = CommandManage::getInstance()->getThirdLoginCommand(
+				openid, url,sex,nickname);
+		if (msg != "") {
+			NetworkManage::getInstance()->sendMsg(msg);
+		}
+	}
 }
 
-
-void MahjongPayHandler::loadImageByURL(std::string url,std::string sex){
-    UserData::getInstance()->setPicture(url);
-    if(sex == "0"){
-        UserData::getInstance()->setPicture("1");
-    }else{
-        UserData::getInstance()->setPicture("0");
-    }
-    UrlImageMannger::getInstance()->loadImgByUrl(url);
-}

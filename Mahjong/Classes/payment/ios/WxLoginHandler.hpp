@@ -15,7 +15,7 @@ using namespace cocos2d;
 class WxLoginHandler{
 public:
     static WxLoginHandler* getInstance();
-    void doGameLogin(std::string openid,std::string msg);
+    void doGameLogin(std::string openid,std::string pic,std::string sex,std::string nickname);
 private:
     WxLoginHandler();
     static WxLoginHandler* _instance;

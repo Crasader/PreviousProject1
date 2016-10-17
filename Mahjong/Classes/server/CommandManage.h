@@ -73,7 +73,7 @@ public:
     std::string getOnResumeCommand();
     std::string getContinueGameCommand();
     std::string getPlayerChatMsgCommand(std::string msg,std::string pid);
-    std::string getThirdLoginCommand(std::string openid,std::string head);
+    std::string getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname);
     std::string getActivityRankCommand();
     std::string getActivityPrideListCommand();
     std::string getActivityPrideCommand(std::string rid,std::string phone);

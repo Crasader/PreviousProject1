@@ -9,6 +9,7 @@ import com.tbu.androidtools.Debug;
 import com.tbu.wx.http.callback.QueryCallBack;
 import com.tbu.wx.http.callback.WechatLoginCallBack;
 import com.tbu.wx.http.callback.WxPayCallBack;
+import com.tbu.wx.http.data.WxUserInfo;
 import com.tbu.wx.wechat.TbuWxUtil;
 
 import android.app.Activity;
@@ -57,14 +58,8 @@ public class Payment {
 			TbuWxUtil.getInstance().queryOrder(pxOrderId, new QueryCallBack() {
 
 				@Override
-				public void queryCallBackMsg(String msg,String sex) {
-					// TODO Auto-generated method stub
-					
-				}
-
-				@Override
-				public void queryCallBackResult(boolean result) {
-					if (result) {
+				public void queryCallBackMsg(WxUserInfo info) {
+					if (info.isResult()) {
 						JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId), 1);
 					} else {
 						JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId), 0);
@@ -83,38 +78,37 @@ public class Payment {
 	 * @param friends
 	 */
 	public static void shareToWeChat(String webpageUrl, String title, String description, boolean friends) {
-//		Bitmap bmp=BitmapFactory.decodeResource(Payment.activity.getResources(), R.drawable.send_music_thumb);
-//		ByteArrayOutputStream output = new ByteArrayOutputStream();
-//		bmp.compress(CompressFormat.PNG, 100, output);
-//		bmp.recycle();
-//		byte[] result = output.toByteArray();
-//		try {
-//			output.close();
-//		} catch (Exception e) {
-//			Debug.e("shareToWeChat image error");
-//		}
-//		Debug.e("shareToWeChat image error ==="+result.length);
-		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description,null, friends);
+		// Bitmap
+		// bmp=BitmapFactory.decodeResource(Payment.activity.getResources(),
+		// R.drawable.send_music_thumb);
+		// ByteArrayOutputStream output = new ByteArrayOutputStream();
+		// bmp.compress(CompressFormat.PNG, 100, output);
+		// bmp.recycle();
+		// byte[] result = output.toByteArray();
+		// try {
+		// output.close();
+		// } catch (Exception e) {
+		// Debug.e("shareToWeChat image error");
+		// }
+		// Debug.e("shareToWeChat image error ==="+result.length);
+		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description, null, friends);
 	}
 
 	/**
 	 * 发起微信登录
 	 */
 	public static void weChatLogin() {
-		TbuWxUtil.getInstance().getWechatCode(getWeChatState(),new QueryCallBack() {
+		TbuWxUtil.getInstance().getWechatCode(getWeChatState(), new QueryCallBack() {
 			@Override
-			public void queryCallBackMsg(String url,String sex) {
-				JniPayCallbackHelper.loadImageByURL(url,sex);
-			}
-			@Override
-			public void queryCallBackResult(boolean result) {
-				if (!result) {
-					JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId());
+			public void queryCallBackMsg(WxUserInfo info) {
+				if (!info.isResult()) {
+					JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId(),
+							info.getHeadImage(), info.getSex(), info.getNickName());
 				}
 			}
-		
+
 		});
-		
+
 	}
 
 	/**
@@ -125,9 +119,11 @@ public class Payment {
 	 */
 	public static void getWechatToken(String code, final WechatLoginCallBack tcallback) {
 		TbuWxUtil.getInstance().getWechatToken(code, new WechatLoginCallBack() {
+
 			@Override
-			public void callBack(String token,String image,String sex) {
-				tcallback.callBack(token,image,sex);
+			public void callBack(WxUserInfo info) {
+				tcallback.callBack(info);
+
 			}
 		});
 	}

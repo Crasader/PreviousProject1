@@ -50,7 +50,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     }else{
         BOOL result = [self checkTokenOutTime];
         if(result){
-            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getPicture());
+            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getPicture(),UserData::getInstance()->getGender(),UserData::getInstance()->getNickName());
             return true;
         }else{
             SendAuthReq* req    =[[SendAuthReq alloc]init];
@@ -99,6 +99,8 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
                 NSString *headimgurlstr = [NSString stringWithFormat:@"%@", headimgurl];
                 NSObject *sex = [results objectForKey:@"sex"];
                 NSString *sexStr = [NSString stringWithFormat:@"%@", sex];
+                NSObject *nickname = [results objectForKey:@"nickname"];
+                NSString *nicknameStr = [NSString stringWithFormat:@"%@", sex];
                 NSString *man = @"0";
                 if(sexStr == man){
                     UserData::getInstance()->setGender(1);
@@ -107,7 +109,9 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
                 }
                 UserData::getInstance()->setWxOpenId(std::string([openidstr UTF8String]));
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
-                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]));
+                UserData::getInstance()->setGender(atoi(std::string([sexStr UTF8String]).c_str()));
+                UserData::getInstance()->setNickName(std::string([nickname UTF8String]));
+                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]),std::string([sexStr UTF8String]),std::string([nickname UTF8String]));
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");
                 [self sendAuthRequestScope];
