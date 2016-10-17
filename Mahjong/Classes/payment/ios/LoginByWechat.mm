@@ -97,6 +97,14 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
                 NSString *openidstr = [NSString stringWithFormat:@"%@", openid];
                 NSObject *headimgurl = [results objectForKey:@"headimgurl"];
                 NSString *headimgurlstr = [NSString stringWithFormat:@"%@", headimgurl];
+                NSObject *sex = [results objectForKey:@"sex"];
+                NSString *sexStr = [NSString stringWithFormat:@"%@", sex];
+                NSString *man = @"0";
+                if(sexStr == man){
+                    UserData::getInstance()->setGender(1);
+                }else{
+                    UserData::getInstance()->setGender(0);
+                }
                 UserData::getInstance()->setWxOpenId(std::string([openidstr UTF8String]));
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
                 WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]));
@@ -153,6 +161,14 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
                 NSObject *head = [results objectForKey:@"head"];
                 NSString *headstr = [NSString stringWithFormat:@"%@", head];
                 UserData::getInstance()->setPicture(std::string([headstr UTF8String]));
+                NSObject *sex = [results objectForKey:@"sex"];
+                NSString *sexStr = [NSString stringWithFormat:@"%@", sex];
+                NSString *man = @"0";
+                if(sexStr == man){
+                    UserData::getInstance()->setGender(1);
+                }else{
+                    UserData::getInstance()->setGender(0);
+                }
                 return true;
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");
