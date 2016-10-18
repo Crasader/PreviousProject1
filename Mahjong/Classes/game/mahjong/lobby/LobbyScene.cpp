@@ -294,15 +294,15 @@ void LobbyScene::drawSceneMid(){
 
 void LobbyScene::drawSceneBot(){
     auto bot_bg = Sprite::create("mjlobby/lobby_bottom_bg.png");
-    bot_bg->setPosition(821,48);
+    bot_bg->setPosition(955,48);
     addChild(bot_bg);
     
     auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_3 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
     auto btn_5 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
     auto gameMenu = Menu::create(btn_2,btn_3, btn_5, NULL);
-    gameMenu->alignItemsHorizontallyWithPadding(105);
-    gameMenu->setPosition(785, 43);
+    gameMenu->alignItemsHorizontallyWithPadding(80);
+    gameMenu->setPosition(900, 43);
     addChild(gameMenu);
     auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
     auto openMenu = Menu::create(openRoom,NULL);

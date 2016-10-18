@@ -53,7 +53,7 @@ void LoadResource::showLayer(){
     dragon->setPosition(640,360);
     addChild(dragon);
 
-    auto mahjong = Sprite::create("mainlogin/loading_mahjong.png");
+    auto mahjong = Sprite::create("mainlogin/feipai.png");
     mahjong->setPosition(640,360);
     addChild(mahjong);
     
