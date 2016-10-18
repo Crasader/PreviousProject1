@@ -653,6 +653,10 @@ void LobbyScene::addEventListener(){
         {
             DiamondNotEnoughDialog* dialog = DiamondNotEnoughDialog::create();
             addChild(dialog,4);        }
+        else if(result == "4"){
+                HintDialog* invite = HintDialog::create("房间号错误",NULL);
+                addChild(invite,4);
+            }
     });
     
     
@@ -787,9 +791,9 @@ void LobbyScene::addEventListener(){
     
     //刷新头像
     imageUpdateListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_PLAYER_WECHAT_IMAGE, [=](EventCustom* event){
-           ((HeadImage*)getChildByTag(962))->updateImage();
+        ((HeadImage*)getChildByTag(962))->updateImage();
     });
-
+    
     
     
     //点击事件

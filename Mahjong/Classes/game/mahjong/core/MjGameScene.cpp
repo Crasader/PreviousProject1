@@ -30,6 +30,9 @@ void MjGameScene::onEnter(){
         else if(result == "2"){
             HintDialog* invite = HintDialog::create("房间已坐满",NULL);
             addChild(invite,4);
+        }  else if(result == "4"){
+            HintDialog* invite = HintDialog::create("房间号错误",NULL);
+            addChild(invite,4);
         }
     });
 }

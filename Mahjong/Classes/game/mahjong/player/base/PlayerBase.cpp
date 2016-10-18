@@ -112,7 +112,6 @@ void PlayerBase::initPlayer(Player* playerInfo){
     nickName->setPosition(getPostionBySeat(clientSeatId).x, getPostionBySeat(clientSeatId).y + 55);
     this->addChild(nickName);
     
-    
     HeadImage* headImage = HeadImage::createByImage(playerInfo->getPicture(),Size(90,90));
     headImage->setPosition(getPostionBySeat(clientSeatId));
     headImage->setTag(9876);
@@ -547,6 +546,6 @@ void PlayerBase::playSoundHuPai(int type){
 
 void PlayerBase::updatePlayerHeadImage(){
     if(NULL != getChildByTag(9876)){
-        ((HeadImage*)getChildByTag(9876))->updateImage();
+        ((HeadImage*)getChildByTag(9876))->updateImageByName(playerInfo->getPicture());
     }
 }

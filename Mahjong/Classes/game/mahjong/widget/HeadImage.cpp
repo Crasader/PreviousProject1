@@ -28,7 +28,11 @@ HeadImage* HeadImage::createByImage(std::string image,Size size){
 
 bool HeadImage::init(std::string image,cocos2d::Size size){
     headSize = size;
-    initWithFile("gameview/head_image_1.png");
+    if(UserData::getInstance()->getGender() == 0){
+        initWithFile("gameview/head_image_1.png");
+    }else{
+        initWithFile("gameview/head_image_3.png");
+    }
     updateImageByName(image);
     return true;
 }
@@ -72,9 +76,9 @@ void HeadImage::updateImageByName(std::string image){
         else{
             std::string path = UrlImageMannger::getInstance()->loadImgByUrl(image);
             if(path == IAMGE_LOADING){
-                setTexture(path);
-            }else{
                 showImageBySex();
+            }else{
+                setTexture(path);
             }
             setScale(headSize.width/getContentSize().width,headSize.height/getContentSize().height);
         }
