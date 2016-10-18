@@ -99,14 +99,16 @@ void SplashScene::loginByPass(){
 void SplashScene::loginByVisitor(){
     Audio::getInstance()->playSoundClick();
     showLoading();
-    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLoginCommmand("kiki05", "kiki158958"));
+#endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     IOSBridge::getInstance()->doWechatLogin();
-# elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->weChatLogin();
 #endif
-//    NetworkManage::getInstance()->sendMsg(
-//                                          CommandManage::getInstance()->getLoginCommmand("kiki05", "kiki158958"));
+    
 }
 
 
