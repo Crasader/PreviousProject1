@@ -1500,6 +1500,10 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
         GAMEDATA::getInstance()->clearPlayersInfo();
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
+        const rapidjson::Value &prid = _mDoc["prId"];
+        FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        data.prid =prid.GetString();
+        GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
         if (_mDoc.HasMember("other")){
             const rapidjson::Value &pArr = _mDoc["other"];
             for (int i = 0; i < pArr.Capacity(); ++i){
