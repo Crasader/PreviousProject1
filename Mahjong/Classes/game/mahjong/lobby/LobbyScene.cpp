@@ -67,6 +67,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(friendChatListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(imageUpdateListener);
 }
 
 void LobbyScene::signUpdate(float dt){
@@ -783,6 +784,12 @@ void LobbyScene::addEventListener(){
         }
         addChild(da,20);
     });
+    
+    //刷新头像
+    imageUpdateListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_PLAYER_WECHAT_IMAGE, [=](EventCustom* event){
+           ((HeadImage*)getChildByTag(962))->updateImage();
+    });
+
     
     
     //点击事件

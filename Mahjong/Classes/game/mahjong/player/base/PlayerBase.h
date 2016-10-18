@@ -61,6 +61,7 @@ public:
     void recoverHand(std::string hand);//断线后手牌恢复
     void hideHandJongs();//隐藏玩家的手牌
     void playSoundHuPai(int type);
+    void updatePlayerHeadImage();
     Jong* getCurrentJong();
     
     CC_SYNTHESIZE(Player*, playerInfo, PlayerInfo);
@@ -80,6 +81,7 @@ private:
     int mCDTime;
     std::vector<Jong*> needReplace;//需要替换的花牌
     EventListenerCustom* roomChatListener;
+    EventListenerCustom* wechatImageListener; 
     Sprite* tingTitle;
     Sprite* playerHua;
     Menu* headimage;

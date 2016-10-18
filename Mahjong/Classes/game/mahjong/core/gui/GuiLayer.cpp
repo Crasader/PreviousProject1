@@ -69,42 +69,46 @@ void GuiLayer::initView(){
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         
+//        auto kaibaoBg0 = Sprite::create("gameview/room_id_bg.png");
+//        kaibaoBg0->setPosition(1180,645);
+//        addChild(kaibaoBg0);
+        
         auto kaibaoBg = Sprite::create("gameview/room_id.png");
-        kaibaoBg->setPosition(1210,645);
-        this->addChild(kaibaoBg);
+        kaibaoBg->setPosition(1180,645);
+        addChild(kaibaoBg);
         
         auto openRoomId = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"gameview/hua_num.png",17,24,'0');
         openRoomId->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         openRoomId->setScale(0.8f);
-        openRoomId->setPosition(1210,675);
+        openRoomId->setPosition(1180,675);
         addChild(openRoomId);
         
         kaibaoNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getKaibao(),"gameview/hua_num.png",17,24,'0');
         kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         kaibaoNum->setScale(0.8f);
-        kaibaoNum->setPosition(1210,648);
+        kaibaoNum->setPosition(1180,648);
         addChild(kaibaoNum);
         
         haungNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getHuangfan(), "gameview/hua_num.png", 17, 24, '0');
         haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         haungNum->setScale(0.8f);
-        haungNum->setPosition(1210, 618);
+        haungNum->setPosition(1180, 618);
         addChild(haungNum);
     }
     else{
-        auto kaibaoBg = Sprite::create("gameview/kai_bao_bg.png");
-        kaibaoBg->setPosition(1215,625);
-        this->addChild(kaibaoBg);
+//        auto kaibaoBg = Sprite::create("gameview/kai_bao_bg.png");
+//        kaibaoBg->setPosition(1215,625);
+//        addChild(kaibaoBg);
         auto kaibao = Sprite::create("gameview/kai_bao.png");
         kaibao->setPosition(1193,644);
-        this->addChild(kaibao);
+        addChild(kaibao);
         kaibaoNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getKaibao(),"gameview/hua_num.png",17,24,'0');
         kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         kaibaoNum->setPosition(1220,644);
         addChild(kaibaoNum);
         auto huangfan = Sprite::create("gameview/hua_fan.png");
         huangfan->setPosition(1193, 614);
-        this->addChild(huangfan);
+        addChild(huangfan);
         haungNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getHuangfan(), "gameview/hua_num.png", 17, 24, '0');
         haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         haungNum->setPosition(1220, 614);

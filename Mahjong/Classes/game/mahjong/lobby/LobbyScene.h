@@ -51,6 +51,7 @@ private:
     EventListenerCustom* friendChatListener;
     EventListenerCustom* payDialogListener;
     EventListenerCustom* payResultListener;
+    EventListenerCustom* imageUpdateListener;
     
 	void initView();
 	void drawSceneMid();

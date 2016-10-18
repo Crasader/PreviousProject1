@@ -1,7 +1,8 @@
 #include "http/image/UrlImageMannger.h"
 #include "http/HttpMannger.h"
-#include "server/CommandManage.h"
+#include "server/NetworkManage.h"
 #include "http/MD5/MD5.hpp"
+#include "game/utils/GameConfig.h"
 
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
@@ -36,13 +37,14 @@ std::string UrlImageMannger::loadImgByUrl(std::string url)
         FILE *fp = fopen(path.c_str(), "wb+");
         fwrite(buff.c_str(), 1, buffer->size(), fp);
         fclose(fp);
-        //发送刷新头像的请求
-        
+        //发送刷新头像的事件
+        EventCustom imageEvent(MSG_UPDATE_PLAYER_WECHAT_IMAGE);
+        Director::getInstance()->getEventDispatcher()->dispatchEvent(&imageEvent);
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
-    return "";
+    return IAMGE_LOADING;
 }
 
 

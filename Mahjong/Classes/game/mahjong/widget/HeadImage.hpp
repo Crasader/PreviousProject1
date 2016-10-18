@@ -21,6 +21,7 @@ public:
     bool init(std::string image,Size size);
     void updateImage();
     void updateImageByName(std::string image);
+    void showImageBySex();
 private:
     Size headSize;
 };

@@ -86,11 +86,15 @@ void PlayerBase::onEnter(){
             
         }
     });
+    wechatImageListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_PLAYER_WECHAT_IMAGE, [=](EventCustom* event){
+        updatePlayerHeadImage();
+    });
 }
 
 void PlayerBase::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(wechatImageListener);
 }
 
 
@@ -111,6 +115,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     
     HeadImage* headImage = HeadImage::createByImage(playerInfo->getPicture(),Size(90,90));
     headImage->setPosition(getPostionBySeat(clientSeatId));
+    headImage->setTag(9876);
     addChild(headImage);
     auto image = MenuItem::create(CC_CALLBACK_0(PlayerBase::showPlayerInfo, this));
     headimage = Menu::create(image,NULL);
@@ -538,4 +543,10 @@ Point PlayerBase::getVec2BySeatId(int seatId){
 
 void PlayerBase::playSoundHuPai(int type){
     Audio::getInstance()->playSoundHu(type, getPlayerInfo()->getGender());
+}
+
+void PlayerBase::updatePlayerHeadImage(){
+    if(NULL != getChildByTag(9876)){
+        ((HeadImage*)getChildByTag(9876))->updateImage();
+    }
 }
