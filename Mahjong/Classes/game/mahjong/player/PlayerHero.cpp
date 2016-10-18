@@ -288,9 +288,9 @@ void PlayerHero::readyGo(){
 
 void PlayerHero::inviteWechatFriend(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！",StringUtils::format("房间号:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),false);
+    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),SHARE_TEXT_3,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", StringUtils::format("房间号:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()));
+    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),SHARE_TEXT_3);
 #endif
 }
 

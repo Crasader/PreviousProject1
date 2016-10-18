@@ -18,4 +18,7 @@
 #define WECHAT_SHARE_FRIEND_URL "http://wyhl.5278-mobi.com:1111/majiang.html"
 
 #define IAMGE_LOADING "image_loading"
+#define SHARE_TEXT_1 "敲麻好兑话费,是朋友才告诉侬格"
+#define SHARE_TEXT_2 "敲麻赢了乐券可以换话费,阿拉一道赚话费去!"
+#define SHARE_TEXT_3 "来来来,房间开好了,麻将搓起来!"
 #endif /* GameConfig_h */

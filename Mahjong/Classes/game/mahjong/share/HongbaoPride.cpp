@@ -105,19 +105,19 @@ void  HongbaoPride::closeView(){
 void HongbaoPride::doFaHongBaoPerson(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
-    CallAndroidMethod::getInstance()->shareToWeChat(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包",false);
+    CallAndroidMethod::getInstance()->shareToWeChat(url,SHARE_TEXT_1, SHARE_TEXT_2,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
-    IOSBridge::getInstance()->doWechatShareWeb(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包");
+    IOSBridge::getInstance()->doWechatShareWeb(url,SHARE_TEXT_1, SHARE_TEXT_2);
 #endif
 }
 
 void HongbaoPride:: doFaHongBaoFriend(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
      std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
-    CallAndroidMethod::getInstance()->shareToWeChat(url,"来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包",true);
+    CallAndroidMethod::getInstance()->shareToWeChat(url,SHARE_TEXT_1, SHARE_TEXT_2,true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
-    IOSBridge::getInstance()->doWechatShareWeb(url, "来来来！敲麻发红包了", "20花敲麻，帮好朋友一道开房间搓麻将，点我领红包");
+    IOSBridge::getInstance()->doWechatShareWeb(url, SHARE_TEXT_1, SHARE_TEXT_2);
 #endif
 }
