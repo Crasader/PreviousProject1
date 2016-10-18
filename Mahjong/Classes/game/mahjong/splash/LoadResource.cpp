@@ -45,7 +45,7 @@ void LoadResource::showHealthLayer(){
 }
 
 void LoadResource::showLayer(){
-    auto loadBg = Sprite::create("mainlogin/splah_bg_.png");
+    auto loadBg = Sprite::create("mainlogin/splah_bg_.jpg");
     loadBg->setPosition(640,360);
     addChild(loadBg);
     

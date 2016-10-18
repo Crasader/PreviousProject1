@@ -9,6 +9,7 @@
 #include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "payment/android/CallAndroidMethod.h"
+#include "payment/ios/IOSBridge.h"
 
 DiamondNotEnoughDialog* DiamondNotEnoughDialog::create(){
     DiamondNotEnoughDialog* ret = new DiamondNotEnoughDialog();

@@ -50,7 +50,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     }else{
         BOOL result = [self checkTokenOutTime];
         if(result){
-            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getPicture(),UserData::getInstance()->getGender(),UserData::getInstance()->getNickName());
+            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName());
             return true;
         }else{
             SendAuthReq* req    =[[SendAuthReq alloc]init];
