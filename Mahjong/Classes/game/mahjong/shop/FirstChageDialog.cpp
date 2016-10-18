@@ -11,6 +11,7 @@
 #include "game/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
+#include "payment/ios/IOSBridge.h"
 
 bool FirstChargeDialog::init(){
 
@@ -142,6 +143,9 @@ void FirstChargeDialog:: closeView(){
 void FirstChargeDialog:: charge(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "1");
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),1);
 #endif
     removeFromParent();
 }

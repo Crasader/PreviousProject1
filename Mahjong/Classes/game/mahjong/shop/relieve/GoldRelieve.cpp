@@ -10,6 +10,7 @@
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
+#include "payment/ios/IOSBridge.h"
 
 bool GoldRelieve::init(){
     if(!Layer::init()){
@@ -130,7 +131,10 @@ void GoldRelieve::closeView(){
 
 void GoldRelieve::chargeGold(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "7");
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "5");
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),5);
 #endif
 }
 
