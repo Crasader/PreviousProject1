@@ -609,6 +609,7 @@ void MsgHandler::enterRoomResp(std::string msg){
                 auto ifready = temp["ifready"].GetInt();
                 auto nickname = temp["nickname"].GetString();
                 auto poxiaoId = temp["poxiaoId"].GetString();
+                auto lockdiamond = temp["bangzuan"].GetInt();
                 auto pic = temp["pic"].GetString();
                 Player* info = new Player();
                 info->setPoxiaoId(poxiaoId);
@@ -617,6 +618,7 @@ void MsgHandler::enterRoomResp(std::string msg){
                 info->setIsReady(ifready == 0 ? false : true);
                 info->setGold(gold);
                 info->setDiamond(diamond);
+                info->setLockDiamond(lockdiamond);
                 info->setScore(jifen);
                 info->setGender(gender);
                 info->setNickname(nickname);

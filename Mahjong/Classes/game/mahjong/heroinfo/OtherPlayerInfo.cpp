@@ -81,7 +81,6 @@ bool OtherPlayerInfo::init(Player* player){
     
     auto headBg = HeadImage::createByImage(player->getPicture(), Size(90,90));
     headBg->setPosition(70,160);
-    headBg->setScale(0.6f);
     dialogBg->addChild(headBg);
     
 
@@ -106,7 +105,7 @@ bool OtherPlayerInfo::init(Player* player){
     auto diamond_icon = Sprite::create("gameview/other_player_diamond.png");
     diamond_icon->setPosition(50, 75);
     dialogBg->addChild(diamond_icon);
-    auto diamondNum = Label::create(cocos2d::String::createWithFormat("%d", player->getDiamond())->_string,"arial",20);
+    auto diamondNum = Label::createWithSystemFont(StringUtils::format("%d", player->getDiamond()),"arial",20);
     diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     diamondNum->setColor(Color3B(87, 195, 186));
     diamondNum->setPosition(75, 80);
@@ -119,7 +118,7 @@ bool OtherPlayerInfo::init(Player* player){
     auto lock_diamond_icon = Sprite::create("gameview/other_player_lockdiamond.png");
     lock_diamond_icon->setPosition(50, 35);
     dialogBg->addChild(lock_diamond_icon);
-    auto lockDiamondNum = Label::create(cocos2d::String::createWithFormat("%d", player->getLockDiamond())->_string,
+    auto lockDiamondNum = Label::createWithSystemFont(StringUtils::format("%d", player->getLockDiamond()),
                                              "arial",20);
     lockDiamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lockDiamondNum->setColor(Color3B(87, 195, 186));
@@ -132,7 +131,7 @@ bool OtherPlayerInfo::init(Player* player){
     auto gold_icon = Sprite::create("gameview/other_player_gold.png");
     gold_icon->setPosition(180, 75);
     dialogBg->addChild(gold_icon);
-    auto goldNum = Label::create(cocos2d::String::createWithFormat("%d", player->getGold())->_string,"arial",20);
+    auto goldNum = Label::createWithSystemFont(StringUtils::format("%d", player->getGold()),"arial",20);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     goldNum->setColor(Color3B(87, 195, 186));
     goldNum->setPosition(205, 80);
