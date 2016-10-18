@@ -16,4 +16,6 @@
 
 #define WECHAT_SHARE_HONGBAO_URL "http://wyhl.5278-mobi.com:1111/hongbao.jsp"
 #define WECHAT_SHARE_FRIEND_URL "http://wyhl.5278-mobi.com:1111/majiang.html"
+
+#define IAMGE_LOADING "image_loading"
 #endif /* GameConfig_h */

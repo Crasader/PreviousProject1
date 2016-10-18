@@ -36,6 +36,8 @@ std::string UrlImageMannger::loadImgByUrl(std::string url)
         FILE *fp = fopen(path.c_str(), "wb+");
         fwrite(buff.c_str(), 1, buffer->size(), fp);
         fclose(fp);
+        //发送刷新头像的请求
+        
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
