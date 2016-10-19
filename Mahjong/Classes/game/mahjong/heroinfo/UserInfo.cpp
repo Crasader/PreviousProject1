@@ -4,6 +4,7 @@
 #include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/splash/SplashScene.h"
+#include "payment/android/CallAndroidMethod.h"
 #include "game/utils/Chinese.h"
 #include "userdata/UserData.h"
 
@@ -189,5 +190,6 @@ void UserInfo::updateHeadImage(){
 }
 
 void UserInfo::cleanAccountRercord(){
+    CallAndroidMethod::getInstance()->clearWechatOpenId();
     Director::getInstance()->replaceScene(TransitionFade::create(1, SplashScene::createScene()));
 }

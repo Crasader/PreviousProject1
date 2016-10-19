@@ -4048,11 +4048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/heroinfo/UserInfo.cpp"
-            timestampString = "498559421.587194"
+            timestampString = "498563052.42837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "UserInfo::cleanAccountRercord()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4064,11 +4064,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/heroinfo/UserInfo.cpp"
-            timestampString = "498559432.066018"
+            timestampString = "498563052.42837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "UserInfo::cleanAccountRercord()"
             landmarkType = "5">
          </BreakpointContent>

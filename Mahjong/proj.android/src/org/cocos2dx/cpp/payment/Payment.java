@@ -106,6 +106,10 @@ public class Payment {
 		});
 
 	}
+	
+	public static void clearWechatOpenId(){
+		TbuWxUtil.getInstance().clearOpenId();
+	}
 
 	/**
 	 * 获取微信的token

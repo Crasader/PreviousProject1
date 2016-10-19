@@ -12,6 +12,7 @@ public:
 	void requestEvent(std::string poxiaoId,std::string payId);
     void queryEventResult();
     void weChatLogin();
+    void clearWechatOpenId();
     void shareToWeChat(std::string url,std::string title,std::string content,bool friends);
 	const char* getJniPath();
 private:
