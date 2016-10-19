@@ -58,8 +58,8 @@ void HeadImage::updateImageByName(std::string image){
             }else{
                 setTexture(path);
             }
-            setScale(headSize.width/getContentSize().width,headSize.height/getContentSize().height);
         }
+         setScale(headSize.width/getContentSize().width,headSize.height/getContentSize().height);
     }else{
         
         if(image == "1"){
@@ -79,10 +79,10 @@ void HeadImage::updateImageByName(std::string image){
                 showImageBySex();
             }else{
                 setTexture(path);
+                
             }
-            setScale(headSize.width/getContentSize().width,headSize.height/getContentSize().height);
         }
-        
+        setScale(headSize.width/getContentSize().width,headSize.height/getContentSize().height);
     }
 }
 

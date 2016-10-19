@@ -116,9 +116,10 @@ void PlayerBase::initPlayer(Player* playerInfo){
     headImage->setPosition(getPostionBySeat(clientSeatId));
     headImage->setTag(9876);
     addChild(headImage);
+    
     auto image = MenuItem::create(CC_CALLBACK_0(PlayerBase::showPlayerInfo, this));
     headimage = Menu::create(image,NULL);
-    image->setContentSize(headImage->getContentSize());
+    image->setContentSize(Size(90,90));
     headimage->setPosition(getPostionBySeat(clientSeatId));
     addChild(headimage);
     

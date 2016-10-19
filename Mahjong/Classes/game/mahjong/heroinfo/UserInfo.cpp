@@ -37,7 +37,7 @@ void UserInfo::showUserInfo(){
     headBg->setPosition(415,405);
     addChild(headBg);
     
-    auto headImage =  HeadImage::create(Size(170,170));
+    auto headImage =  HeadImage::create(Size(180,180));
     headImage->setTag(1000);
     headImage->setPosition(415,435);
     addChild(headImage);
