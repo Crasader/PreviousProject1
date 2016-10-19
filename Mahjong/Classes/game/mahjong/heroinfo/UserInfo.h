@@ -21,4 +21,5 @@ private:
     void showUserInfo();
     void editHeadImage();
     void menuBtnClick(Ref* ref);
+    void cleanAccountRercord();
 };

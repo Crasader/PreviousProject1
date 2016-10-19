@@ -39,6 +39,7 @@ private:
 	void showDetailInfo(Ref* ref);
 	void closeView();
     void showKongBill();
+    void screenShot();
     std::vector<BillContent> sortBillInfo(std::vector<BillContent> content);
 };
 #endif

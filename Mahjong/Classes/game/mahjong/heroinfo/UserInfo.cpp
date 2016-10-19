@@ -3,6 +3,7 @@
 #include "game/mahjong/heroinfo/HeadImageDialog.h"
 #include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
+#include "game/mahjong/splash/SplashScene.h"
 #include "game/utils/Chinese.h"
 #include "userdata/UserData.h"
 
@@ -32,122 +33,127 @@ void UserInfo::onExit(){
 
 void UserInfo::showUserInfo(){
     auto headBg = Sprite::create("playerinfo/head_bg.png");
-    headBg->setPosition(415,365);
+    headBg->setPosition(415,405);
     addChild(headBg);
     
     auto headImage =  HeadImage::create(Size(170,170));
     headImage->setTag(1000);
-    headImage->setPosition(415,395);
+    headImage->setPosition(415,435);
     addChild(headImage);
     
     auto itemImage = MenuItemImage::create("playerinfo/head_iamge_edit_1.png","playerinfo/head_iamge_edit_2.png",
                                            CC_CALLBACK_0(UserInfo::editHeadImage,this));
     Menu* myMenu = Menu::create(itemImage,NULL);
-    myMenu->setPosition(415,268);
+    myMenu->setPosition(415,308);
     addChild(myMenu);
     
     auto input_bg_1 = Scale9Sprite::create("common/input_box_bg.png");
     input_bg_1->setContentSize(Size(430,81));
-    input_bg_1->setPosition(760, 460);
+    input_bg_1->setPosition(760, 500);
     addChild(input_bg_1);
     auto zhanghao = Sprite::create("playerinfo/account_text.png");
-    zhanghao->setPosition(620,460);
+    zhanghao->setPosition(620,500);
     addChild(zhanghao);
     Label* accountLabel = Label::create(UserData::getInstance()->getMarkId(), "arial", 30);
     accountLabel->setColor(Color3B(93,172,221));
     accountLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    accountLabel->setPosition(680, 460);
+    accountLabel->setPosition(680, 500);
     addChild(accountLabel);
     Sprite* account_icon = Sprite::create("playerinfo/account_iocn.png");
-    account_icon->setPosition(935, 460);
+    account_icon->setPosition(935, 500);
     addChild(account_icon);
     
     
     auto input_bg_2 = Scale9Sprite::create("common/input_box_bg.png");
     input_bg_2->setContentSize(Size(430, 81));
-    input_bg_2->setPosition(760, 365);
+    input_bg_2->setPosition(760, 405);
     addChild(input_bg_2);
     auto nicheng = Sprite::create("playerinfo/nickname_text.png");
-    nicheng->setPosition(620, 365);
+    nicheng->setPosition(620, 405);
     addChild(nicheng);
     nickNameLabel = Label::create(UserData::getInstance()->getNickName(), "arial", 30);
     nickNameLabel->setColor(Color3B(93, 172, 221));
     nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    nickNameLabel->setPosition(680, 365);
+    nickNameLabel->setPosition(680, 405);
     addChild(nickNameLabel);
     auto editBtn1 = MenuItemImage::create("playerinfo/edit_btn_1.png", "playerinfo/edit_btn_2.png",
                                           CC_CALLBACK_1(UserInfo::menuBtnClick,this));
     editBtn1->setTag(0);
     changeNickName = Menu::create(editBtn1, NULL);
-    changeNickName->setPosition(935, 365);
+    changeNickName->setPosition(935, 405);
     addChild(changeNickName);
     if (UserData::getInstance()->isChangeName()){
         changeNickName->setVisible(false);
     }
     auto input_bg_3 = Scale9Sprite::create("common/input_box_bg.png");
     input_bg_3->setContentSize(Size(430, 81));
-    input_bg_3->setPosition(760, 275);
+    input_bg_3->setPosition(760, 315);
     addChild(input_bg_3);
     auto gender = Sprite::create("playerinfo/gender_text.png");
-    gender->setPosition(620, 275);
+    gender->setPosition(620, 315);
     addChild(gender);
     std::string gen = UserData::getInstance()->getGender() == 0 ? "playerinfo/female.png" : "playerinfo/male.png";
     playerGender = Sprite::create(gen);
-    playerGender->setPosition(755,275);
+    playerGender->setPosition(755,315);
     addChild(playerGender);
     
     //diamond
     auto diamond_bg = Sprite::create("common/room_info_bg.png");
-    diamond_bg->setPosition(410, 180);
+    diamond_bg->setPosition(410, 230);
     addChild(diamond_bg);
     auto diamond_icon = Sprite::create("common/diamond_icon.png");
-    diamond_icon->setPosition(355, 175);
+    diamond_icon->setPosition(355, 225);
     addChild(diamond_icon);
     auto diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string,
                                          "playerinfo/player_info_num.png", 13, 19, '0');
     diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    diamondNum->setPosition(380, 180);
+    diamondNum->setPosition(380, 230);
     addChild(diamondNum);
     
     //lock diamond
     auto lock_diamond_bg = Scale9Sprite::create("common/room_info_bg.png");
     lock_diamond_bg->setContentSize(Size(120, 47));
-    lock_diamond_bg->setPosition(560, 180);
+    lock_diamond_bg->setPosition(560, 230);
     this->addChild(lock_diamond_bg);
     auto lock_diamond_icon = Sprite::create("common/lock_diamond_icon.png");
-    lock_diamond_icon->setPosition(525, 175);
+    lock_diamond_icon->setPosition(525, 225);
     addChild(lock_diamond_icon);
     auto lockDiamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getLockDiamond())->_string,
                                              "playerinfo/player_info_num.png", 13, 19, '0');
     lockDiamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lockDiamondNum->setPosition(550, 180);
+    lockDiamondNum->setPosition(550, 230);
     addChild(lockDiamondNum);
     
     //gold
     auto gold_bg = Sprite::create("common/room_info_bg.png");
-    gold_bg->setPosition(715, 180);
+    gold_bg->setPosition(715, 230);
     addChild(gold_bg);
     auto gold_icon = Sprite::create("common/gold_icon.png");
-    gold_icon->setPosition(660, 180);
+    gold_icon->setPosition(660, 230);
     addChild(gold_icon);
     auto goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string,
                                       "playerinfo/player_info_num.png", 13, 19, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    goldNum->setPosition(685, 180);
+    goldNum->setPosition(685, 230);
     addChild(goldNum);
     
     //lequan
     auto lequan_bg = Sprite::create("common/room_info_bg.png");
-    lequan_bg->setPosition(900, 180);
+    lequan_bg->setPosition(900, 230);
     this->addChild(lequan_bg);
     auto lequan_icon = Sprite::create("common/lequan_icon.png");
-    lequan_icon->setPosition(845, 180);
+    lequan_icon->setPosition(845, 230);
     this->addChild(lequan_icon);
     auto lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getTicket())->_string,
                                         "playerinfo/player_info_num.png", 13, 19, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum->setPosition(870, 180);
+    lequanNum->setPosition(870, 230);
     this->addChild(lequanNum);
+    
+    auto accountquit = MenuItemImage::create("playerinfo/quit_account_1.png","playerinfo/quit_account_2.png",CC_CALLBACK_0(UserInfo::cleanAccountRercord, this));
+    auto qutiMenu = Menu::create(accountquit,NULL);
+    qutiMenu->setPosition(640,160);
+    addChild(qutiMenu);
 }
 
 void UserInfo::editHeadImage(){
@@ -180,4 +186,8 @@ void UserInfo::updateGender(){
 
 void UserInfo::updateHeadImage(){
    ((HeadImage*)getChildByTag(1000))->updateImage();
+}
+
+void UserInfo::cleanAccountRercord(){
+    Director::getInstance()->replaceScene(TransitionFade::create(1, SplashScene::createScene()));
 }

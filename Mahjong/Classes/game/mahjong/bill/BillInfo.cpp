@@ -48,10 +48,10 @@ bool BillInfo::init()
     this->addChild(tableView);
     tableView->reloadData();
     
-    auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::closeView, this));
+    auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::screenShot, this));
     auto shareBtn = Menu::create(xuanyao,NULL);
     shareBtn->setTag(2016);
-    shareBtn->setPosition(600,360);
+    shareBtn->setPosition(360,625);
     addChild(shareBtn);
     
     if(GAMEDATA::getInstance()->getBillInfoAll().needInit){
@@ -59,7 +59,7 @@ bool BillInfo::init()
         load->setTag(1000);
         addChild(load);
     }else{
-        shareBtn->setVisible(false);
+//        shareBtn->setVisible(false);
         showKongBill();
     }
     return true;
@@ -240,4 +240,18 @@ void BillInfo::setShowPosition(){
     getChildByTag(103)->setPositionX(890);
     getChildByTag(104)->setPositionX(890);
     getChildByTag(105)->setPositionX(525);
+}
+
+
+void BillInfo::screenShot(){
+    Size winSize = Director::getInstance()->getWinSize();
+    
+    //创建RenderTexture，纹理图片大小为窗口大小winSize
+    RenderTexture* screen = RenderTexture::create(winSize.width, winSize.height);
+    //屏幕截图
+    screen->begin();            //开始抓屏
+    this->getParent()->visit(); //遍历当前场景Scene的所有子节点信息，画入screen中
+    screen->end();              //结束抓屏
+    //保存截图
+    screen->saveToFile("ScreenShot.png", Image::Format::PNG); //保存为PNG格式
 }
