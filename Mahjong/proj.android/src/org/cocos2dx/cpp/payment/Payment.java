@@ -1,10 +1,8 @@
 package org.cocos2dx.cpp.payment;
 
-import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.poxiao.mahjong.R;
 import com.tbu.androidtools.Debug;
 import com.tbu.wx.http.callback.QueryCallBack;
 import com.tbu.wx.http.callback.WechatLoginCallBack;
@@ -13,10 +11,6 @@ import com.tbu.wx.http.data.WxUserInfo;
 import com.tbu.wx.wechat.TbuWxUtil;
 
 import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
 
 public class Payment {
 
