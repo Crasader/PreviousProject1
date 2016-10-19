@@ -48,11 +48,18 @@ bool BillInfo::init()
     this->addChild(tableView);
     tableView->reloadData();
     
+    auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::closeView, this));
+    auto shareBtn = Menu::create(xuanyao,NULL);
+    shareBtn->setTag(2016);
+    shareBtn->setPosition(600,360);
+    addChild(shareBtn);
+    
     if(GAMEDATA::getInstance()->getBillInfoAll().needInit){
         Loading* load =Loading::create(true);
         load->setTag(1000);
         addChild(load);
     }else{
+        shareBtn->setVisible(false);
         showKongBill();
     }
     return true;
@@ -209,6 +216,9 @@ void BillInfo::showKongBill(){
     }else{
         if(NULL != getChildByTag(1001)){
             getChildByTag(1001)->removeFromParent();
+        }
+        if(NULL != getChildByTag(2016)){
+            getChildByTag(2016)->setVisible(true);
         }
     }
 }

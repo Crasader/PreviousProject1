@@ -49,9 +49,9 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 		Debug.e("resp.errStr = " + resp.errStr);
 		if (ConstantsAPI.COMMAND_PAY_BY_WX == resp.getType()) {
 			if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
-				Payment.queryPayResult();
+				Payment.queryPayResult();//查单
 			} else {
-				JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId), 0);
+				JniPayCallbackHelper.eventCallBack(Integer.valueOf(Payment.eventId), 0);//返回失败
 			}
 		} else if (ConstantsAPI.COMMAND_SENDAUTH == resp.getType()) {
 

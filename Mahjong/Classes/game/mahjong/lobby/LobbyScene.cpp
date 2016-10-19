@@ -237,13 +237,13 @@ void LobbyScene::drawSceneMid(){
     
     auto red_wallet = MenuItemImage::create("mjlobby/red_wallet_1.png", "mjlobby/red_wallet_2.png",
                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
-    auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
+     first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
-    first_chaege->setTag(1314);
     if(UserData::getInstance()->isFirstCharge()){
         first_chaege->setVisible(false);
     }
     auto giftMenu = Menu::create(red_wallet, first_chaege, NULL);
+    giftMenu->setTag(1313);
     giftMenu->alignItemsHorizontallyWithPadding(10);
     giftMenu->setPosition(120, 542);
     this->addChild(giftMenu);
@@ -803,8 +803,7 @@ void LobbyScene::addEventListener(){
     });
     
     firstChargeListenr =  Director::getInstance()->getEventDispatcher()->addCustomEventListener("hide_first_charge_btn", [=](EventCustom* event){
-        if(NULL != getChildByTag(1314))
-            (getChildByTag(1314))->setVisible(false);
+            first_chaege->setVisible(false);
     });
     
     

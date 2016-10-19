@@ -19,7 +19,7 @@ void MahjongPayHandler::dealEventCallBack(int eventId, int result) {
 				std::string res = StringUtils::format("%d",result);
 				char* buf = const_cast<char*>(res.c_str());
 				Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("mahjong_pay_result",buf);
-                if(eventId == 1){
+                if(eventId == 1 && result == 1){
                     Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("hide_first_charge_btn");
                 }
 			});
