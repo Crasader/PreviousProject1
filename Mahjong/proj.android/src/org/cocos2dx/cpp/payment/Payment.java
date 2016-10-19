@@ -86,6 +86,7 @@ public class Payment {
 		// }
 		// Debug.e("shareToWeChat image error ==="+result.length);
 		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description, null, friends);
+//		TbuWxUtil.getInstance().shareAppData(title, description, null, friends);
 	}
 
 	/**
