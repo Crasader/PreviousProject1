@@ -108,7 +108,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     head_bg->setPosition(getPostionBySeat(clientSeatId));
     this->addChild(head_bg);
     
-    nickName = Label::create(playerInfo->getNickname(), "Arial", 12);
+    nickName = Label::createWithSystemFont(playerInfo->getNickname(), "Arial", 12);
     nickName->setPosition(getPostionBySeat(clientSeatId).x, getPostionBySeat(clientSeatId).y + 55);
     this->addChild(nickName);
     
@@ -126,7 +126,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     auto diamond = Sprite::create();
     diamond->setPosition(getPostionBySeat(clientSeatId).x - 28, getPostionBySeat(clientSeatId).y - 55);
     this->addChild(diamond);
-    diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", 0)->_string,
+    diamondNum = LabelAtlas::create(StringUtils::format("%d", 0),
                                     "result/result_num.png", 9, 13, '0');
     diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 16, getPostionBySeat(clientSeatId).y - 55);
@@ -134,16 +134,16 @@ void PlayerBase::initPlayer(Player* playerInfo){
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
         if(playerInfo->getLockDiamond()>0){
             diamond->setTexture("gameview/other_player_lockdiamond.png");
-            diamondNum->setString(cocos2d::String::createWithFormat("%d",playerInfo->getLockDiamond())->_string);
+            diamondNum->setString(StringUtils::format("%d",playerInfo->getLockDiamond()));
         }else{
             diamond->setTexture("gameview/other_player_diamond.png");
-            diamondNum->setString(cocos2d::String::createWithFormat("%d",playerInfo->getDiamond())->_string);
+            diamondNum->setString(StringUtils::format("%d",playerInfo->getDiamond()));
         }
         diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 8, getPostionBySeat(clientSeatId).y - 55);
     }
     else {
         diamond->setTexture("gameview/gold_small.png");
-        diamondNum->setString(cocos2d::String::createWithFormat("%d", playerInfo->getGold())->_string);
+        diamondNum->setString(StringUtils::format("%d", playerInfo->getGold()));
     }
     
     
@@ -173,7 +173,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     mProgressTimer->setPosition(getPostionBySeat(clientSeatId));
     this->addChild(mProgressTimer, 100);
     
-    timeClock = LabelAtlas::create(cocos2d::String::createWithFormat("%d", mCDTime)->_string, "headportrait/time_clock_num.png", 19, 25, '0');
+    timeClock = LabelAtlas::create(StringUtils::format("%d", mCDTime), "headportrait/time_clock_num.png", 19, 25, '0');
     timeClock->setAnchorPoint(Point::ANCHOR_MIDDLE);
     timeClock->setPosition(getPostionBySeat(clientSeatId));
     this->addChild(timeClock, 101);
