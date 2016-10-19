@@ -965,11 +965,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "498462938.895123"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
             landmarkName = "LobbyScene::showLobbyAnim()"
             landmarkType = "5">
             <Locations>
@@ -2865,11 +2865,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "495876569.872578"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "LobbyScene::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2975,11 +2975,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "495876569.872578"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "LobbyScene::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3135,11 +3135,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "498462938.895123"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "612"
-            endingLineNumber = "612"
+            startingLineNumber = "616"
+            endingLineNumber = "616"
             landmarkName = "LobbyScene::addEventListener()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3151,11 +3151,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "498462938.895123"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "641"
-            endingLineNumber = "641"
+            startingLineNumber = "645"
+            endingLineNumber = "645"
             landmarkName = "LobbyScene::addEventListener()"
             landmarkType = "5">
             <Locations>
@@ -3199,11 +3199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "495876569.872578"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "LobbyScene::onExit()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3220,7 +3220,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "712"
             endingLineNumber = "712"
-            landmarkName = "MsgHandler::addPalyer(std::string msg)"
+            landmarkName = "MsgHandler::readyStateResp(std::string msg)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3456,11 +3456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "498462938.895123"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "LobbyScene::signUpdate(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3472,11 +3472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "498462938.895123"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "LobbyScene::signUpdate(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3568,11 +3568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "495876569.872578"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "LobbyScene::onEnter()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3584,11 +3584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "495876569.872578"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "LobbyScene::onEnter()"
             landmarkType = "5">
          </BreakpointContent>
@@ -4016,11 +4016,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "498462938.895123"
+            timestampString = "498551525.107481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "LobbyScene::drawSceneMid()"
             landmarkType = "5">
          </BreakpointContent>

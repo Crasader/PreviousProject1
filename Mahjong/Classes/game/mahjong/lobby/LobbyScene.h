@@ -52,6 +52,7 @@ private:
     EventListenerCustom* payDialogListener;
     EventListenerCustom* payResultListener;
     EventListenerCustom* imageUpdateListener;
+    EventListenerCustom* firstChargeListenr;
     
 	void initView();
 	void drawSceneMid();

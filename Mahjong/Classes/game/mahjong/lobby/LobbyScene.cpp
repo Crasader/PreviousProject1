@@ -14,11 +14,12 @@
 #include "game/mahjong/shop/relieve/GoldRelieve.hpp"
 #include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
+#include "game/mahjong/widget/HeadImage.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
 #include "game/utils/Audio.h"
-#include "game/mahjong/widget/HeadImage.hpp"
+
 
 
 bool LobbyScene::init()
@@ -68,6 +69,8 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(imageUpdateListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(firstChargeListenr);
+    
 }
 
 void LobbyScene::signUpdate(float dt){
@@ -236,6 +239,10 @@ void LobbyScene::drawSceneMid(){
                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
+    first_chaege->setTag(1314);
+    if(UserData::getInstance()->isFirstCharge()){
+        first_chaege->setVisible(false);
+    }
     auto giftMenu = Menu::create(red_wallet, first_chaege, NULL);
     giftMenu->alignItemsHorizontallyWithPadding(10);
     giftMenu->setPosition(120, 542);
@@ -654,9 +661,9 @@ void LobbyScene::addEventListener(){
             DiamondNotEnoughDialog* dialog = DiamondNotEnoughDialog::create();
             addChild(dialog,4);        }
         else if(result == "4"){
-                HintDialog* invite = HintDialog::create("房间号错误",NULL);
-                addChild(invite,4);
-            }
+            HintDialog* invite = HintDialog::create("房间号错误",NULL);
+            addChild(invite,4);
+        }
     });
     
     
@@ -791,9 +798,14 @@ void LobbyScene::addEventListener(){
     
     //刷新头像
     imageUpdateListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_PLAYER_WECHAT_IMAGE, [=](EventCustom* event){
-        ((HeadImage*)getChildByTag(962))->updateImage();
+        if(NULL != getChildByTag(962))
+            ((HeadImage*)getChildByTag(962))->updateImage();
     });
     
+    firstChargeListenr =  Director::getInstance()->getEventDispatcher()->addCustomEventListener("hide_first_charge_btn", [=](EventCustom* event){
+        if(NULL != getChildByTag(1314))
+            (getChildByTag(1314))->setVisible(false);
+    });
     
     
     //点击事件
