@@ -50,6 +50,7 @@ std::string UrlImageMannger::loadImgByUrl(std::string url)
 
 void UrlImageMannger::uploadImage2Server(CallFunc* callBack){
     //TODO 调用七牛SDK(android或者ios)
+    
 }
 
 std::string UrlImageMannger::getImgNameByUrl(std::string url)

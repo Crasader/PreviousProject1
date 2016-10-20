@@ -245,16 +245,9 @@ void BillInfo::setShowPosition(){
 
 
 void BillInfo::screenShot(){
-    Size winSize = Director::getInstance()->getWinSize();
-    
-    //创建RenderTexture，纹理图片大小为窗口大小winSize
-    RenderTexture* screen = RenderTexture::create(winSize.width, winSize.height);
-    //屏幕截图
-    screen->begin();            //开始抓屏
-    visit(); //遍历当前场景Scene的所有子节点信息，画入screen中
-    screen->end();              //结束抓屏
-    //保存截图
-    screen->saveToFile("mahjong_screen_shot.png", Image::Format::PNG); //保存为PNG格式
+    std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(NULL ,path);
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->shareImageToWeChat("mahjong_screen_shot.png", false);
 #endif

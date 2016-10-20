@@ -11,6 +11,7 @@ import com.tbu.wx.http.data.WxUserInfo;
 import com.tbu.wx.wechat.TbuWxUtil;
 
 import android.app.Activity;
+import android.os.Environment;
 
 public class Payment {
 
@@ -122,6 +123,15 @@ public class Payment {
 
 			}
 		});
+	}
+	/**
+	 * 获取sd卡路径
+	 * @return
+	 */
+	private static final String SDCARD_ROOT = Environment.getExternalStorageDirectory().getAbsolutePath();
+	public static String getSdCardDir(){
+		Debug.e("KKKKKKKKKKKKKKK");
+		return  SDCARD_ROOT;
 	}
 
 	// 获取系统时间
