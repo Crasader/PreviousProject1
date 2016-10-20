@@ -1,5 +1,6 @@
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/bill/BillDetailInfo.h"
+#include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "game/utils/StringUtil.h"
@@ -59,7 +60,7 @@ bool BillInfo::init()
         load->setTag(1000);
         addChild(load);
     }else{
-//        shareBtn->setVisible(false);
+        //        shareBtn->setVisible(false);
         showKongBill();
     }
     return true;
@@ -189,8 +190,8 @@ ssize_t BillInfo::numberOfCellsInTableView(TableView *table)
 
 
 void BillInfo::showDetailInfo(Ref* ref){
-//    MenuItemImage* image = (MenuItemImage*)ref;
-//    BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
+    //    MenuItemImage* image = (MenuItemImage*)ref;
+    //    BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
 }
 
 void BillInfo::closeView(){
@@ -234,7 +235,7 @@ std::vector<BillContent> BillInfo::sortBillInfo(std::vector<BillContent> content
 
 void BillInfo::setShowPosition(){
     setIsPrivateBill(true);
-//    getChildByTag(100)->setVisible(false);
+    //    getChildByTag(100)->setVisible(false);
     getChildByTag(101)->setPositionX(890);
     getChildByTag(102)->setPositionX(1230);
     getChildByTag(103)->setPositionX(890);
@@ -250,8 +251,11 @@ void BillInfo::screenShot(){
     RenderTexture* screen = RenderTexture::create(winSize.width, winSize.height);
     //屏幕截图
     screen->begin();            //开始抓屏
-    this->getParent()->visit(); //遍历当前场景Scene的所有子节点信息，画入screen中
+    visit(); //遍历当前场景Scene的所有子节点信息，画入screen中
     screen->end();              //结束抓屏
     //保存截图
-    screen->saveToFile("ScreenShot.png", Image::Format::PNG); //保存为PNG格式
+    screen->saveToFile("mahjong_screen_shot.png", Image::Format::PNG); //保存为PNG格式
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareImageToWeChat("mahjong_screen_shot.png", false);
+#endif
 }

@@ -72,21 +72,16 @@ public class Payment {
 	 * @param friends
 	 */
 	public static void shareToWeChat(String webpageUrl, String title, String description, boolean friends) {
-		// Bitmap
-		// bmp=BitmapFactory.decodeResource(Payment.activity.getResources(),
-		// R.drawable.send_music_thumb);
-		// ByteArrayOutputStream output = new ByteArrayOutputStream();
-		// bmp.compress(CompressFormat.PNG, 100, output);
-		// bmp.recycle();
-		// byte[] result = output.toByteArray();
-		// try {
-		// output.close();
-		// } catch (Exception e) {
-		// Debug.e("shareToWeChat image error");
-		// }
-		// Debug.e("shareToWeChat image error ==="+result.length);
 		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description, null, friends);
-//		TbuWxUtil.getInstance().shareAppData(title, description, null, friends);
+	}
+	
+	/**
+	 * 图片分享
+	 * @param imagePath
+	 * @param friends
+	 */
+	public  static void shareImageToWeChat(String imagePath,boolean friends){
+		TbuWxUtil.getInstance().shareImage(imagePath, friends);
 	}
 
 	/**

@@ -70,6 +70,20 @@ void CallAndroidMethod::shareToWeChat(std::string url,string title,string conten
 #endif
 }
 
+void CallAndroidMethod::shareImageToWeChat(std::string imagePath,bool friends){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"shareImageToWeChat","(Ljava/lang/String;Z)V");
+    jstring share_url = JniHelper::getEnv()->NewStringUTF(imagePath.c_str());
+    jboolean share_friends = friends;
+    if(isHave){
+        jobject jobj;
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url,friends);
+    }
+#endif
+}
+
 void CallAndroidMethod::weChatLogin(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     JniMethodInfo methodInfo;

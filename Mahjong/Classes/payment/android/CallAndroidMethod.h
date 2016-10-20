@@ -14,6 +14,7 @@ public:
     void weChatLogin();
     void clearWechatOpenId();
     void shareToWeChat(std::string url,std::string title,std::string content,bool friends);
+    void shareImageToWeChat(std::string imagePath,bool friends);
 	const char* getJniPath();
 private:
 	std::string _jniPath;
