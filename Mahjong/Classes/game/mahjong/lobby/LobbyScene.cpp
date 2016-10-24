@@ -101,13 +101,13 @@ void LobbyScene::signUpdate(float dt){
     }
 }
 
+//刷新显示的用户信息
 void LobbyScene::updateHeroInfo(){
     ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
     goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
     fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getDiamond()));
     lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
-    lockDiamondNum->setString(StringUtils::format("%d", UserData::getInstance()->getLockDiamond()));
 }
 
 void LobbyScene::initView(){
@@ -141,11 +141,11 @@ void LobbyScene::startGame(Ref* psend){
 void LobbyScene::drawSceneTop(){
     auto topbg = Sprite::create("mjlobby/lobby_top_bg.png");
     topbg->setPosition(430, 680);
-    this->addChild(topbg);
+    addChild(topbg);
     
     auto head_bg = Sprite::create("mjlobby/head_image_bg.png");
     head_bg->setPosition(61, 660);
-    this->addChild(head_bg);
+    addChild(head_bg);
     
     auto image = HeadImage::create(Size(90,90));
     image->setTag(962);
@@ -156,7 +156,7 @@ void LobbyScene::drawSceneTop(){
     head->setContentSize(Size(90,90));
     auto headmenu = Menu::create(head, NULL);
     headmenu->setPosition(61, 660);
-    this->addChild(headmenu);
+    addChild(headmenu);
     
     nickName = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 20);
     nickName->setPosition(125, 628);
@@ -198,35 +198,21 @@ void LobbyScene::drawSceneTop(){
     chargDiamond->setPosition(457, 682);
     addChild(chargDiamond);
     
-    //lock diamond
-    auto lock_diamond_bg = Scale9Sprite::create("mjlobby/room_info_bg.png");
-    lock_diamond_bg->setContentSize(Size(108,47));
-    lock_diamond_bg->setPosition(540, 685);
-    this->addChild(lock_diamond_bg);
-    auto lock_diamond_icon = Sprite::create("mjlobby/lock_diamond_icon.png");
-    lock_diamond_icon->setPosition(510, 680);
-    addChild(lock_diamond_icon);
-    lockDiamondNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getLockDiamond()),
-                                        "mjlobby/room_info_num.png", 10, 15, '0');
-    lockDiamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lockDiamondNum->setPosition(557, 685);
-    addChild(lockDiamondNum);
-    
     //lequan
     auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
-    lequan_bg->setPosition(690, 685);
+    lequan_bg->setPosition(580, 685);
     this->addChild(lequan_bg);
     auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
-    lequan_icon->setPosition(632, 685);
+    lequan_icon->setPosition(522, 685);
     this->addChild(lequan_icon);
     lequanNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getTicket()),
                                    "mjlobby/room_info_num.png", 10, 15, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequanNum->setPosition(692, 685);
+    lequanNum->setPosition(582, 685);
     this->addChild(lequanNum);
     auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
     auto chargLequan = Menu::create(lequan_btn, NULL);
-    chargLequan->setPosition(756, 685);
+    chargLequan->setPosition(646, 685);
     addChild(chargLequan);
 }
 

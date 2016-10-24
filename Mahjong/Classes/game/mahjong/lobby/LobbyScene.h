@@ -35,7 +35,6 @@ private:
 	LabelAtlas* goldNum;
 	LabelAtlas* fangkaNum;
 	LabelAtlas* lequanNum;
-	LabelAtlas* lockDiamondNum;
     MenuItemImage* first_chaege;
     
     EventListenerCustom* enterRoomListener;
