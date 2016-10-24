@@ -75,21 +75,16 @@ void FirstChargeDialog::showFirstCharge(){
     bg_2->setPosition(645,390);
     addChild(bg_2);
     
-    auto diamondBG = Sprite::create("shop/diamond_bg.png");
+    auto diamondBG = Sprite::create("shop/gold_bg_light.png");
     diamondBG->setPosition(400,400);
     addChild(diamondBG);
     
-    auto diamond = Sprite::create("shop/diamond_icon_1.png");
+    auto diamond = Sprite::create("shop/fangka_image.png");
     diamond->setPosition(400,400);
     addChild(diamond);
     
-    auto zsNum = LabelAtlas::create(StringUtils::format("%d",100),"shop/prop_num.png",21,28,'0');
-    zsNum->setPosition(400,325);
-    zsNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    addChild(zsNum);
-    
-    auto zuanshi = Sprite::create("shop/font_diamond.png");
-    zuanshi->setPosition(430,325);
+    auto zuanshi = Sprite::create("shop/fangka_2.png");
+    zuanshi->setPosition(400,325);
     addChild(zuanshi);
     
     auto plus1= Sprite::create("shop/plus.png");

@@ -130,7 +130,6 @@ public class Payment {
 	 */
 	private static final String SDCARD_ROOT = Environment.getExternalStorageDirectory().getAbsolutePath();
 	public static String getSdCardDir(){
-		Debug.e("KKKKKKKKKKKKKKK");
 		return  SDCARD_ROOT;
 	}
 
