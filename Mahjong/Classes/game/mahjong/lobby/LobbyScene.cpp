@@ -15,6 +15,7 @@
 #include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/widget/HeadImage.hpp"
+#include "game/mahjong/friend/MahjongNumberKeypads.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
@@ -262,7 +263,7 @@ void LobbyScene::drawSceneBot(){
     gameMenu->alignItemsHorizontallyWithPadding(80);
     gameMenu->setPosition(900, 43);
     addChild(gameMenu);
-    auto openRoom = MenuItemImage::create("mjlobby/gold_room_btn_1.png", "mjlobby/gold_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
+    auto openRoom = MenuItemImage::create("mjlobby/gold_room_btn_1.png", "mjlobby/gold_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showGoldRoomPad, this));
     auto openMenu = Menu::create(openRoom,NULL);
     openMenu->setPosition(1203,67);
     addChild(openMenu);
@@ -299,19 +300,6 @@ void LobbyScene::showAddFriend(){
     friendAdd->setTag(524);
     addChild(friendAdd,3);
     
-}
-
-void LobbyScene::showOpenRoom(){
-    Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-    if(UserData::getInstance()->getDiamond()+UserData::getInstance()->getLockDiamond()<2){
-        DiamondNotEnoughDialog* charge = DiamondNotEnoughDialog::create();
-        addChild(charge,30);
-    }else{
-        FriendRoom* friendroom = FriendRoom::create();
-        friendroom->setTag(525);
-        this->addChild(friendroom,3);
-    }
 }
 
 void LobbyScene::showPlayerBill(){
@@ -679,7 +667,13 @@ void LobbyScene:: openRoom(){
 
 
 void LobbyScene::joinRoom(){
-    //TODO
+    MahjongNumberKeypads* keypads = MahjongNumberKeypads::create();
+    addChild(keypads);
+}
+
+
+void LobbyScene::showGoldRoomPad(){
+
 }
 
 

@@ -58,6 +58,9 @@ private:
 	void drawSceneMid();
 	void drawSceneTop();
 	void drawSceneBot();
+    void openRoom();
+    void joinRoom();
+    void showGoldRoomPad();
     void chargeGold();
     void chargeDiamond();
     void exchangeLequan();
@@ -65,7 +68,6 @@ private:
 	void showRedWallet();
 	void showDayTask();
 	void showAddFriend();
-	void showOpenRoom();
 	void showPlayerBill();
 	void showGameSetting();
 	void showHotActivity();
@@ -76,8 +78,6 @@ private:
 	void addEventListener();
     void scrollLightSpot(float dt);
     void signUpdate(float dt);
-    //改版加入的内容
-    void openRoom();
-    void joinRoom();
+
 };
 #endif
