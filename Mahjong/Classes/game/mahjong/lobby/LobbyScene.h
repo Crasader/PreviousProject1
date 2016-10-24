@@ -23,7 +23,7 @@ class LobbyScene : public cocos2d::Scene
 {
 public:
 
-    virtual bool init();
+    virtual bool init() override;
 	virtual void onEnter() override;
 	virtual void onExit() override;
 	void startGame(Ref* psend);
@@ -33,7 +33,7 @@ private:
     
 	Label* nickName;
 	LabelAtlas* goldNum;
-	LabelAtlas* diamondNum;
+	LabelAtlas* fangkaNum;
 	LabelAtlas* lequanNum;
 	LabelAtlas* lockDiamondNum;
     MenuItemImage* first_chaege;
@@ -77,5 +77,8 @@ private:
 	void addEventListener();
     void scrollLightSpot(float dt);
     void signUpdate(float dt);
+    //改版加入的内容
+    void openRoom();
+    void joinRoom();
 };
 #endif

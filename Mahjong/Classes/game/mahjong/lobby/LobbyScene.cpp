@@ -104,10 +104,10 @@ void LobbyScene::signUpdate(float dt){
 void LobbyScene::updateHeroInfo(){
     ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
-    goldNum ->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string);
-    diamondNum->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string);
-    lequanNum->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getTicket())->_string);
-    lockDiamondNum->setString(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getLockDiamond())->_string);
+    goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
+    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getDiamond()));
+    lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
+    lockDiamondNum->setString(StringUtils::format("%d", UserData::getInstance()->getLockDiamond()));
 }
 
 void LobbyScene::initView(){
@@ -158,7 +158,7 @@ void LobbyScene::drawSceneTop(){
     headmenu->setPosition(61, 660);
     this->addChild(headmenu);
     
-    nickName = Label::create(UserData::getInstance()->getNickName(), "arial", 20);
+    nickName = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 20);
     nickName->setPosition(125, 628);
     nickName->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickName->setAlignment(TextHAlignment::LEFT);
@@ -171,7 +171,7 @@ void LobbyScene::drawSceneTop(){
     auto gold_icon = Sprite::create("mjlobby/gold_icon.png");
     gold_icon->setPosition(150, 685);
     addChild(gold_icon);
-    goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string,
+    goldNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getGold()),
                                  "mjlobby/room_info_num.png", 10, 15, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     goldNum->setPosition(212, 685);
@@ -181,18 +181,18 @@ void LobbyScene::drawSceneTop(){
     chargGold->setPosition(274, 685);
     addChild(chargGold);
     
-    //diamond
-    auto diamond_bg = Sprite::create("mjlobby/room_info_bg.png");
-    diamond_bg->setPosition(390, 685);
-    addChild(diamond_bg);
-    auto diamond_icon = Sprite::create("mjlobby/diamond_icon.png");
-    diamond_icon->setPosition(329, 680);
-    addChild(diamond_icon);
-    diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string,
+    //fangka
+    auto fangka_bg = Sprite::create("mjlobby/room_info_bg.png");
+    fangka_bg->setPosition(390, 685);
+    addChild(fangka_bg);
+    auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
+    fangka_icon->setPosition(335, 680);
+    addChild(fangka_icon);
+    fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getDiamond()),
                                     "mjlobby/room_info_num.png", 10, 15, '0');
-    diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    diamondNum->setPosition(392, 685);
-    addChild(diamondNum);
+    fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    fangkaNum->setPosition(392, 685);
+    addChild(fangkaNum);
     auto diamond_btn = MenuItemImage::create("mjlobby/charge_btn_1.png", "mjlobby/charge_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeDiamond, this));
     auto chargDiamond = Menu::create(diamond_btn, NULL);
     chargDiamond->setPosition(457, 682);
@@ -206,7 +206,7 @@ void LobbyScene::drawSceneTop(){
     auto lock_diamond_icon = Sprite::create("mjlobby/lock_diamond_icon.png");
     lock_diamond_icon->setPosition(510, 680);
     addChild(lock_diamond_icon);
-    lockDiamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getLockDiamond())->_string,
+    lockDiamondNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getLockDiamond()),
                                         "mjlobby/room_info_num.png", 10, 15, '0');
     lockDiamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     lockDiamondNum->setPosition(557, 685);
@@ -219,7 +219,7 @@ void LobbyScene::drawSceneTop(){
     auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
     lequan_icon->setPosition(632, 685);
     this->addChild(lequan_icon);
-    lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getTicket())->_string,
+    lequanNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getTicket()),
                                    "mjlobby/room_info_num.png", 10, 15, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     lequanNum->setPosition(692, 685);
@@ -237,8 +237,8 @@ void LobbyScene::drawSceneMid(){
     
     auto red_wallet = MenuItemImage::create("mjlobby/red_wallet_1.png", "mjlobby/red_wallet_2.png",
                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
-     first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
-                                              CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
+    first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
+                                         CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
     if(UserData::getInstance()->isFirstCharge()){
         first_chaege->setVisible(false);
     }
@@ -246,57 +246,21 @@ void LobbyScene::drawSceneMid(){
     giftMenu->setTag(1313);
     giftMenu->alignItemsHorizontallyWithPadding(10);
     giftMenu->setPosition(120, 542);
-    this->addChild(giftMenu);
+    addChild(giftMenu);
+    //房间按钮
+    auto openRoom = Sprite::create("mjlobby/open_room_image.png");
+    openRoom->setPosition(390,400);
+    addChild(openRoom);
+    auto joinRooom = Sprite::create("mjlobby/join_room_image.png");
+    joinRooom->setPosition(880,400);
+    addChild(joinRooom);
+    auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
+    auto joinBtn = MenuItemImage::create("mjlobby/join_room_btn_img_1.png", "mjlobby/join_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
+    auto roomMenu = Menu::create(openBtn,joinBtn,NULL);
+    roomMenu->alignItemsHorizontallyWithPadding(180);
+    roomMenu->setPosition(640,230);
+    addChild(roomMenu);
     
-    auto room1 = MenuItemImage::create("mjlobby/room_level_1.png", "mjlobby/room_level_1.png", CC_CALLBACK_1(LobbyScene::startGame, this));
-    auto room2 = MenuItemImage::create("mjlobby/room_level_2.png", "mjlobby/room_level_2.png", CC_CALLBACK_1(LobbyScene::startGame, this));
-    auto room3 = MenuItemImage::create("mjlobby/room_level_3.png", "mjlobby/room_level_3.png", CC_CALLBACK_1(LobbyScene::startGame, this));
-    auto gameMenu = Menu::create();
-    RoomListData roomList = GAMEDATA::getInstance()->getRoomList();
-    for (int i = 0; i < roomList.rooms.size(); i++){
-        if (roomList.rooms.at(i).roomId == ROOM_1){
-            gameMenu->addChild(room1);
-            room1->setTag(ROOM_1);
-            auto room1_di =  Sprite::create("mjlobby/font_di.png");
-            room1_di->setPosition(500, 160);
-            addChild(room1_di,3);
-            auto room1_hua =  Sprite::create("mjlobby/font_hua.png");
-            room1_hua->setPosition(585, 160);
-            addChild(room1_hua,3);
-            auto diNumber = Sprite::create();
-            diNumber->setPosition(490, 160);
-            diNumber->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-            addChild(diNumber,3);
-            auto huaNumber = Sprite::create();
-            huaNumber->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-            huaNumber->setPosition(575, 160);
-            addChild(huaNumber,3);
-            if(roomList.rooms.at(i).base == 500){
-                diNumber->setTexture("mjlobby/500.png");
-                huaNumber->setTexture("mjlobby/500.png");
-            }else if(roomList.rooms.at(i).base == 1000){
-                diNumber->setTexture("mjlobby/1000.png");
-                huaNumber->setTexture("mjlobby/1000.png");
-            }else if(roomList.rooms.at(i).base == 1500){
-                diNumber->setTexture("mjlobby/1500.png");
-                huaNumber->setTexture("mjlobby/1500.png");
-            }else if(roomList.rooms.at(i).base == 2000){
-                diNumber->setTexture("mjlobby/2000.png");
-                huaNumber->setTexture("mjlobby/2000.png");
-            }
-        }
-        else if (roomList.rooms.at(i).roomId == ROOM_2){
-            gameMenu->addChild(room2);
-            room2->setTag(ROOM_2);
-        }
-        else if (roomList.rooms.at(i).roomId == ROOM_3){
-            gameMenu->addChild(room3);
-            room3->setTag(ROOM_3);
-        }
-    }
-    gameMenu->alignItemsHorizontallyWithPadding(20);
-    gameMenu->setPosition(790, 342);
-    this->addChild(gameMenu,2);
 }
 
 void LobbyScene::drawSceneBot(){
@@ -304,14 +268,15 @@ void LobbyScene::drawSceneBot(){
     bot_bg->setPosition(955,48);
     addChild(bot_bg);
     
-    auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
+//    auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_3 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
+     auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
     auto btn_5 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
-    auto gameMenu = Menu::create(btn_2,btn_3, btn_5, NULL);
+    auto gameMenu = Menu::create(btn_3,btn_4, btn_5, NULL);
     gameMenu->alignItemsHorizontallyWithPadding(80);
     gameMenu->setPosition(900, 43);
     addChild(gameMenu);
-    auto openRoom = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
+    auto openRoom = MenuItemImage::create("mjlobby/gold_room_btn_1.png", "mjlobby/gold_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showOpenRoom, this));
     auto openMenu = Menu::create(openRoom,NULL);
     openMenu->setPosition(1203,67);
     addChild(openMenu);
@@ -426,112 +391,6 @@ void LobbyScene::removeLoading(){
 
 
 void LobbyScene::showLobbyAnim(){
-    //中级房间眨眼
-    auto levelMidEye = Sprite::create();
-    levelMidEye->setPosition(790,342);
-    addChild(levelMidEye,2);
-    levelMidEye->runAction(Repeat::create(Sequence::create(
-                                                           CallFunc::create([=](){
-        levelMidEye->setTexture("mjlobby/level_2_eye_1.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelMidEye->setTexture("mjlobby/level_2_eye_2.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelMidEye->setTexture("mjlobby/level_2_eye_1.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelMidEye->setTexture("");
-    }),
-                                                           DelayTime::create(96.0/24),
-                                                           NULL), CC_REPEAT_FOREVER));
-    
-    
-    //高级房间眨眼
-    auto levelHighEye = Sprite::create();
-    levelHighEye->setPosition(1084,342);
-    addChild(levelHighEye,2);
-    levelHighEye->runAction(Repeat::create(Sequence::create(DelayTime::create(20.0/24),
-                                                            CallFunc::create([=](){
-        levelHighEye->setTexture("mjlobby/level_3_eye_1.png");
-    }),
-                                                            DelayTime::create(2.0/24),
-                                                            CallFunc::create([=](){
-        levelHighEye->setTexture("mjlobby/level_3_eye_2.png");
-    }),
-                                                            DelayTime::create(2.0/24),
-                                                            CallFunc::create([=](){
-        levelHighEye->setTexture("mjlobby/level_3_eye_1.png");
-    }),
-                                                            DelayTime::create(2.0/24),
-                                                            CallFunc::create([=](){
-        levelHighEye->setTexture("");
-    }),
-                                                            DelayTime::create(76.0/24),
-                                                            NULL), CC_REPEAT_FOREVER));
-    
-    //初级房间眨眼
-    auto levelLowEye = Sprite::create();
-    levelLowEye->setPosition(496,342);
-    addChild(levelLowEye,2);
-    levelLowEye->runAction(Repeat::create(Sequence::create(
-                                                           DelayTime::create(40.0/24),
-                                                           CallFunc::create([=](){
-        levelLowEye->setTexture("mjlobby/level_1_eye_1.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelLowEye->setTexture("mjlobby/level_1_eye_2.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelLowEye->setTexture("mjlobby/level_1_eye_1.png");
-    }),
-                                                           DelayTime::create(2.0/24),
-                                                           CallFunc::create([=](){
-        levelLowEye->setTexture("");
-    }),
-                                                           DelayTime::create(56.0/24),
-                                                           NULL), CC_REPEAT_FOREVER));
-    //中级房光效
-    auto midLight1 = Sprite::create("mjlobby/mid_light.png");
-    midLight1->setVisible(false);
-    addChild(midLight1,2);
-    midLight1->runAction(Repeat::create(Sequence::create(DelayTime::create(10.0/24), CallFunc::create([=](){
-        midLight1->setPosition(800,190);
-        midLight1->setVisible(true);
-    }), MoveTo::create(20.0/24, Point(800,500)),CallFunc::create([=](){
-        midLight1->setVisible(false);
-    }), DelayTime::create(66.0/24),NULL), CC_REPEAT_FOREVER));
-    
-    auto midLight2 = Sprite::create("mjlobby/mid_light.png");
-    addChild(midLight2,2);
-    midLight2->runAction(Repeat::create(Sequence::create(DelayTime::create(18.0/24), CallFunc::create([=](){
-        midLight2->setPosition(800,190);
-        midLight2->setVisible(true);
-    }), MoveTo::create(20.0/24, Point(800,500)),CallFunc::create([=](){
-        midLight2->setVisible(false);
-    }),DelayTime::create(58.0/24),NULL), CC_REPEAT_FOREVER));
-    
-    auto midLight3 = Sprite::create("mjlobby/mid_light.png");
-    addChild(midLight3,2);
-    midLight3->runAction(Repeat::create(Sequence::create(DelayTime::create(26.0/24), CallFunc::create([=](){
-        midLight3->setPosition(800,190);
-        midLight3->setVisible(true);
-    }), MoveTo::create(20.0/24, Point(800,500)),CallFunc::create([=](){
-        midLight3->setVisible(false);
-    }),DelayTime::create(50.0/24),NULL), CC_REPEAT_FOREVER));
-    
-    auto midLight4 = Sprite::create("mjlobby/mid_light_yellow.png");
-    midLight4->setPosition(790,342);
-    midLight4->setOpacity(0);
-    addChild(midLight4,2);
-    midLight4->runAction(Repeat::create(Sequence::create(DelayTime::create(10.0/24),FadeTo::create(36.0/24, 255),CallFunc::create([=](){
-        midLight4->setOpacity(0);
-    }),DelayTime::create(50.0/24), NULL),CC_REPEAT_FOREVER));
     
     //logo光效
     auto logoLight = Sprite::create();
@@ -540,7 +399,7 @@ void LobbyScene::showLobbyAnim(){
     auto animation = Animation::create();
     for( int i=1;i<4;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("mjlobby/lobby_logo_light_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("mjlobby/lobby_logo_light_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.
@@ -556,7 +415,7 @@ void LobbyScene::showLobbyAnim(){
     auto animation2 = Animation::create();
     for( int j=1;j<5;j++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("mjlobby/lobby_logo_text_%d.png",j)->_string;
+        std::string imageName = StringUtils::format("mjlobby/lobby_logo_text_%d.png",j);
         animation2->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.
@@ -803,7 +662,7 @@ void LobbyScene::addEventListener(){
     });
     
     firstChargeListenr =  Director::getInstance()->getEventDispatcher()->addCustomEventListener("hide_first_charge_btn", [=](EventCustom* event){
-            first_chaege->setVisible(false);
+        first_chaege->setVisible(false);
     });
     
     
@@ -826,6 +685,15 @@ void LobbyScene::addEventListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     
+}
+
+void LobbyScene:: openRoom(){
+    //TODO
+}
+
+
+void LobbyScene::joinRoom(){
+    //TODO
 }
 
 
