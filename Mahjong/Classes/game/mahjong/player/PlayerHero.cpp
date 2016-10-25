@@ -471,8 +471,7 @@ void PlayerHero::addTouchListener() {
     touchListener->onTouchBegan = CC_CALLBACK_2(PlayerHero::onTouchBegan, this);
     touchListener->onTouchMoved = CC_CALLBACK_2(PlayerHero::onTouchMoved, this);
     touchListener->onTouchEnded = CC_CALLBACK_2(PlayerHero::onTouchEnded, this);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener,
-                                                             this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener,this);
 }
 
 void PlayerHero::replaceFlower(){

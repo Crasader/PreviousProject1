@@ -1,4 +1,5 @@
 #include "game/mahjong/lobby/LobbyScene.h"
+#include "game/mahjong/lobby/GoldRoomPlate.hpp"
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/daily/DailyEvent.h"
@@ -673,7 +674,8 @@ void LobbyScene::joinRoom(){
 
 
 void LobbyScene::showGoldRoomPad(){
-
+    GoldRoomPlate* plate = GoldRoomPlate::create();
+    addChild(plate,2);
 }
 
 
