@@ -1,10 +1,10 @@
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/lobby/GoldRoomPlate.hpp"
+#include "game/mahjong/lobby/EnterRoomDialog.hpp"
+#include "game/mahjong/heroinfo/HeroInfoEdit.h"
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/daily/DailyEvent.h"
-#include "game/mahjong/lobby/EnterRoomDialog.hpp"
-#include "game/mahjong/heroinfo/HeroInfoEdit.h"
 #include "game/mahjong/activities/MahjongActivities.hpp"
 #include "game/mahjong/shop/FirstChageDialog.hpp"
 #include "game/mahjong/shop/ChargeGold.hpp"
@@ -17,6 +17,7 @@
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/friend/MahjongNumberKeypads.hpp"
+#include "game/mahjong/friend/FriendRoom.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
@@ -120,23 +121,6 @@ void LobbyScene::initView(){
     addChild(lobby_bg, -1);
 }
 
-void LobbyScene::startGame(Ref* psend){
-    MenuItemImage* item = (MenuItemImage*)psend;
-    GAMEDATA::getInstance()->setCurrentSelectRoomId(item->getTag());
-    if (item->getTag() == ROOM_1){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtil::itos(ROOM_1)));
-        showLoading();
-    }
-    else if (item->getTag() == ROOM_2){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_2)));
-        showLoading();
-    }
-    else if (item->getTag() == ROOM_3){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1", StringUtil::itos(ROOM_3)));
-        showLoading();
-    }
-    
-}
 
 
 //draw scene top view
@@ -663,7 +647,8 @@ void LobbyScene::addEventListener(){
 }
 
 void LobbyScene:: openRoom(){
-    //TODO
+    FriendRoom* friendroom = FriendRoom::create();
+    addChild(friendroom);
 }
 
 

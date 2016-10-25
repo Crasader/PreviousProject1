@@ -23,7 +23,6 @@ public:
     virtual bool init() override;
 	virtual void onEnter() override;
 	virtual void onExit() override;
-	void startGame(Ref* psend);
     void updateHeroInfo();
     CREATE_FUNC(LobbyScene);
 private:

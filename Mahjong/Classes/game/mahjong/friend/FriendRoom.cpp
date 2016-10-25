@@ -1,8 +1,6 @@
 #include "game/mahjong/friend/FriendRoom.h"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "server/NetworkManage.h"
-#include "game/mahjong/widget/HeadImage.hpp"
-#include "game/mahjong/friend/MahjongNumberKeypads.hpp"
 
 
 
@@ -17,30 +15,28 @@ bool FriendRoom::init()
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg);
     
-    auto dialog_bg = Sprite::create("shop/shop_bg.png");
-    dialog_bg->setScale(0.9f);
+    auto dialog_bg = Sprite::create("shop/gold_not_enough.png");
     dialog_bg->setPosition(640,350);
     addChild(dialog_bg);
     
-    auto  dialogBg = Sprite::create("friend/friend_room_bg.jpg");
-    dialogBg->setPosition(640, 330);
-    this->addChild(dialogBg);
     
     auto roomTitle = Sprite::create("friend/friend_room_title.png");
-    roomTitle->setPosition(640,610);
+    roomTitle->setPosition(640,570);
     addChild(roomTitle);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(FriendRoom::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1000, 570);
+    closeMenu->setPosition(910, 525);
     addChild(closeMenu);
     
-    auto openImage = MenuItemImage::create("friend/open_room_btn_1.png","friend/open_room_btn_2.png",CC_CALLBACK_0(FriendRoom::openRoom, this));
-    auto enterImage = MenuItemImage::create("friend/enter_room_btn_1.png","friend/enter_room_btn_2.png",CC_CALLBACK_0(FriendRoom::enterRoom, this));
-    Menu* openBtn = Menu::create(openImage,enterImage,NULL);
-    openBtn->alignItemsVerticallyWithPadding(20);
-    openBtn->setPosition(730,300);
-    addChild(openBtn);
+    auto xuanze = Sprite::create("friend/xuan_ze_ju_shu.png");
+    xuanze->setPosition(640,400);
+    addChild(xuanze);
+    
+    
+    auto roomInfo = Sprite::create("friend/qiaoma_hua_di.png");
+    roomInfo->setPosition(640,270);
+    addChild(roomInfo);
     
     return true;
 }
@@ -58,13 +54,11 @@ void FriendRoom::onExit(){
 }
 
 void FriendRoom::openRoom(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(""));
-    this->removeFromParent();
+
 }
 
 void FriendRoom:: enterRoom(){
-    MahjongNumberKeypads* keypads = MahjongNumberKeypads::create();
-    addChild(keypads);
+
 }
 
 
