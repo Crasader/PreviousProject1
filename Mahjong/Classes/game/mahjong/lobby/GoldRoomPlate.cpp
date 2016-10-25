@@ -7,6 +7,7 @@
 //
 
 #include "game/mahjong/lobby/GoldRoomPlate.hpp"
+#include "server/NetworkManage.h"
 
 
 bool GoldRoomPlate::init(){
@@ -54,18 +55,18 @@ void GoldRoomPlate::onTouchEnded(Touch *touch, Event  *event){
 }
 
 void GoldRoomPlate::openRoomOne(){
-    
-    
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_1)));
+//    showLoading();
 }
 
 
 void GoldRoomPlate::openRoomTwo(){
-    
-    
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_2)));
+//    showLoading();
 }
 
 
 void GoldRoomPlate::openRoomThree(){
-    
-    
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_3)));
+//    showLoading();
 }

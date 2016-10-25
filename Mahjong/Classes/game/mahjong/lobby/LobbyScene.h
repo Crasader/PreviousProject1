@@ -15,9 +15,6 @@
 
 USING_NS_CC;
 
-#define ROOM_1 1001
-#define ROOM_2 1002
-#define ROOM_3 1003
 
 class LobbyScene : public cocos2d::Scene
 {
