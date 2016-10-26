@@ -18,6 +18,7 @@
 #include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/friend/MahjongNumberKeypads.hpp"
 #include "game/mahjong/friend/FriendRoom.h"
+#include "game/mahjong/shop/ChargeFangka.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
@@ -646,8 +647,13 @@ void LobbyScene::addEventListener(){
 }
 
 void LobbyScene:: openRoom(){
-    FriendRoom* friendroom = FriendRoom::create();
-    addChild(friendroom);
+    if(UserData::getInstance()->getFangkaNum()>0){
+        FriendRoom* friendroom = FriendRoom::create();
+        addChild(friendroom);
+    }else{     
+        ChargeFangka* cha = ChargeFangka::create();
+        addChild(cha);
+    }
 }
 
 

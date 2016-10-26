@@ -1,10 +1,8 @@
 #ifndef __FRIEND_ROOM_H__
 #define __FRIEND_ROOM_H__
-#include "cocos2d.h"
-#include "cocos-ext.h"
 
+#include "cocos2d.h"
 USING_NS_CC;
-USING_NS_CC_EXT;
 
 class FriendRoom :public Layer{
 public:

@@ -8,7 +8,16 @@
 
 #ifndef ChargeFangka_hpp
 #define ChargeFangka_hpp
+#include "cocos2d.h"
+USING_NS_CC;
 
-#include <stdio.h>
+class ChargeFangka :public Layer{
+public:
+    virtual bool init();
+    CREATE_FUNC(ChargeFangka);
+private:
+    void closeView();
+    void confirmCharge();
+};
 
 #endif /* ChargeFangka_hpp */
