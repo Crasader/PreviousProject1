@@ -17,6 +17,8 @@
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/friend/MahjongNumberKeypads.hpp"
+ #include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
+#include "game/mahjong/friend/dialog/RoomFullDialog.hpp"
 #include "game/mahjong/friend/FriendRoom.h"
 #include "game/mahjong/shop/ChargeFangka.hpp"
 #include "payment/android/CallAndroidMethod.h"
@@ -471,16 +473,16 @@ void LobbyScene::addEventListener(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(result == "2")
         {
-            HintDialog* invite = HintDialog::create("房间已经坐满",NULL);
-            addChild(invite,4);
+            RoomFullDialog* doo = RoomFullDialog::create();
+            addChild(doo);
         }
         else if(result == "3")
         {
             DiamondNotEnoughDialog* dialog = DiamondNotEnoughDialog::create();
             addChild(dialog,4);        }
         else if(result == "4"){
-            HintDialog* invite = HintDialog::create("房间号错误",NULL);
-            addChild(invite,4);
+            RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
+            addChild(idd,4);
         }
     });
     
