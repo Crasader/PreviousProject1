@@ -45,7 +45,6 @@ void LobbyScene::onEnter(){
     Scene::onEnter();
     addEventListener();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
     schedule([=](float dt){
@@ -109,7 +108,7 @@ void LobbyScene::updateHeroInfo(){
     ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
     goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
-    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getDiamond()));
+    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
     lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
 }
 
@@ -174,7 +173,7 @@ void LobbyScene::drawSceneTop(){
     auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
     fangka_icon->setPosition(335, 680);
     addChild(fangka_icon);
-    fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getDiamond()),
+    fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),
                                     "mjlobby/room_info_num.png", 10, 15, '0');
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     fangkaNum->setPosition(392, 685);

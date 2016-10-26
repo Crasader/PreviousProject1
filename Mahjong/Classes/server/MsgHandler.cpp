@@ -650,10 +650,8 @@ void MsgHandler::loginResp(std::string msg){
         UserData::getInstance()->setNickName(nickname.GetString());
         const rapidjson::Value &gold = _mDoc["gold"];
         UserData::getInstance()->setGold(gold.GetInt());
-        const rapidjson::Value &diamond = _mDoc["diamond"];
-        UserData::getInstance()->setDiamond(diamond.GetInt());
-        const rapidjson::Value &lockdiamond = _mDoc["bangzuan"];
-        UserData::getInstance()->setLockDiamond(lockdiamond.GetInt());
+        const rapidjson::Value &fangka = _mDoc["fangka"];
+        UserData::getInstance()->setFangkaNum(fangka.GetInt());
         const rapidjson::Value &gender = _mDoc["gender"];
         UserData::getInstance()->setGender(gender.GetInt());
         const rapidjson::Value &lequan = _mDoc["lequan"];
@@ -2249,14 +2247,11 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         const rapidjson::Value &lequan = _mDoc["lequan"];
         UserData::getInstance()->setTicket(lequan.GetInt());
     }
-    if(_mDoc.HasMember("bangzuan")){
-        const rapidjson::Value &bangzuan = _mDoc["bangzuan"];
-        UserData::getInstance()->setLockDiamond(bangzuan.GetInt());
+    if(_mDoc.HasMember("fangka")){
+        const rapidjson::Value &fangka = _mDoc["fangka"];
+        UserData::getInstance()->setFangkaNum(fangka.GetInt());
     }
-    if(_mDoc.HasMember("diamond")){
-        const rapidjson::Value &diamond = _mDoc["diamond"];
-        UserData::getInstance()->setDiamond(diamond.GetInt());
-    }
+
     if(_mDoc.HasMember("gold")){
         const rapidjson::Value &gold = _mDoc["gold"];
         UserData::getInstance()->setGold(gold.GetInt());

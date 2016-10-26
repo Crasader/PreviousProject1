@@ -306,11 +306,12 @@ std::string CommandManage::getChangeHeadCommand(std::string pic){
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getOpenRoomCommand(std::string pids){
+std::string CommandManage::getOpenRoomCommand(std::string ftype){
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_GAME_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("pId", pids));
+	keyValue.insert(map<string, string>::value_type("pId", ""));
+    keyValue.insert(map<string, string>::value_type("ftype", ftype));
 	return commandString(keyValue);
 }
 

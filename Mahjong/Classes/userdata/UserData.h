@@ -12,6 +12,9 @@ public:
 
 	int getGold();
 	void setGold(int gold);
+    
+    int getFangkaNum();
+    void setFangkaNum(int num);
 
 	int getDiamond();
 	void setDiamond(int num);

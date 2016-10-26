@@ -20,7 +20,7 @@ bool FriendRoom::init()
     addChild(dialog_bg);
     
     
-    auto roomTitle = Sprite::create("friend/friend_room_title.png");
+    auto roomTitle = Sprite::create("friend/open_room_title.png");
     roomTitle->setPosition(640,570);
     addChild(roomTitle);
     
@@ -34,9 +34,49 @@ bool FriendRoom::init()
     addChild(xuanze);
     
     
+    auto fangka8 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka8, this));
+    auto fangka8Menu = Menu::create(fangka8,NULL);
+    fangka8Menu->setPosition(520,420);
+    addChild(fangka8Menu);
+    
+    auto select8 = Sprite::create("friend/icon_right.png");
+    select8->setTag(1024);
+    select8->setPosition(520,420);
+    select8->setVisible(true);
+    addChild(select8);
+    
+    auto kaiju8 = Sprite::create("friend/8_ju.png");
+    kaiju8->setPosition(680,420);
+    addChild(kaiju8);
+
+    
+    auto fangka16 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png","friend/select_box_gray.png",CC_CALLBACK_0(FriendRoom::selectFangka16, this));
+    auto fangka16Menu = Menu::create(fangka16,NULL);
+    fangka16Menu->setPosition(520,360);
+    addChild(fangka16Menu);
+    
+    auto select16 = Sprite::create("friend/icon_right.png");
+    select16->setTag(1025);
+    select16->setPosition(520,360);
+    select16->setVisible(false);
+    addChild(select16);
+    
+    auto kaiju16 = Sprite::create("friend/16_ju.png");
+    kaiju16->setPosition(680,360);
+    addChild(kaiju16);
+    
+    if(UserData::getInstance()->getFangkaNum()<2){
+        fangka16->setEnabled(false);
+        kaiju16->setTexture("friend/16_ju_hui.png");
+    }
     auto roomInfo = Sprite::create("friend/qiaoma_hua_di.png");
     roomInfo->setPosition(640,270);
     addChild(roomInfo);
+    
+    auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(FriendRoom::openRoom, this));
+    auto openMenu = Menu::create(openBtn,NULL);
+    openMenu->setPosition(640,190);
+    addChild(openMenu);
     
     return true;
 }
@@ -54,14 +94,38 @@ void FriendRoom::onExit(){
 }
 
 void FriendRoom::openRoom(){
-
+    if(NULL != getChildByTag(1024)){
+        if(getChildByTag(1024)->isVisible()){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand("1"));
+        }
+    }
+    if(NULL != getChildByTag(1025)){
+        if(getChildByTag(1025)->isVisible()){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand("2"));
+        }
+    }
 }
 
-void FriendRoom:: enterRoom(){
-
-}
 
 
 void FriendRoom::closeView(){
-    this->removeFromParent();
+    removeFromParent();
+}
+
+void FriendRoom::selectFangka8(){
+    if(NULL != getChildByTag(1024)){
+        getChildByTag(1024)->setVisible(true);
+    }
+    if(NULL != getChildByTag(1025)){
+        getChildByTag(1025)->setVisible(false);
+    }
+}
+
+void FriendRoom::selectFangka16(){
+    if(NULL != getChildByTag(1024)){
+        getChildByTag(1024)->setVisible(false);
+    }
+    if(NULL != getChildByTag(1025)){
+        getChildByTag(1025)->setVisible(true);
+    }
 }

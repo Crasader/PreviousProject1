@@ -14,7 +14,8 @@ public:
     CREATE_FUNC(FriendRoom);
 private:
     void openRoom();
-    void enterRoom();
     void closeView();
+    void selectFangka8();
+    void selectFangka16();
 };
 #endif
