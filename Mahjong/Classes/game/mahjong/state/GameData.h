@@ -56,7 +56,7 @@ public:
     CC_SYNTHESIZE(BoundPhoneData, boundPhoneData, BoundPhoneData);
     CC_SYNTHESIZE(FirstChargeData, firstChargeData, FirstChargeData);
     CC_SYNTHESIZE(GoldChangeList, goldChangeList, GoldChangeList);
-    CC_SYNTHESIZE(DiamondChangeList, diamondChangeList, DiamondChangeList);
+    CC_SYNTHESIZE(FangkaChargeList, fangkaChargeList, FangkaChargeList);
     CC_SYNTHESIZE(LequanChangeList, lequanChangeList, LequanChangeList);
     CC_SYNTHESIZE(LequanChangeResult, lequanChangeResult, LequanChangeResult);
     CC_SYNTHESIZE(RedWalletRespData, redWalletRespData, RedWalletRespData);

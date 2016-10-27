@@ -2165,7 +2165,7 @@ void MsgHandler::diamondChangeListResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &list = _mDoc["list"];
-    DiamondChangeList data;
+    FangkaChargeList data;
     data.needInit = true;
     for(int i=0;i<list.Capacity();i++){
         const rapidjson::Value &temp = list[i];
@@ -2174,7 +2174,7 @@ void MsgHandler::diamondChangeListResp(std::string msg){
         change.fangka = atoi(temp["fangka"].GetString());
         data.list.push_back(change);
     }
-    GAMEDATA::getInstance()->setDiamondChangeList(data);
+    GAMEDATA::getInstance()->setFangkaChargeList(data);
     postNotifyMessage(MSG_PLAYER_GOLD_CHANGE_LIST, "");
     
 }

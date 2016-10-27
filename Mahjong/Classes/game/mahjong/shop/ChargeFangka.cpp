@@ -45,7 +45,7 @@ bool ChargeFangka::init(){
     closeMenu->setPosition(960, 550);
     addChild(closeMenu);
     
-    if(!GAMEDATA::getInstance()->getDiamondChangeList().needInit){
+    if(!GAMEDATA::getInstance()->getFangkaChargeList().needInit){
         Loading* lod = Loading::create(true);
         lod->setTag(1000);
         addChild(lod);
@@ -74,7 +74,7 @@ void ChargeFangka::onExit(){
 }
 
 void ChargeFangka::showChargeDialog(){
-    DiamondChangeList list = GAMEDATA::getInstance()->getDiamondChangeList();
+    FangkaChargeList list = GAMEDATA::getInstance()->getFangkaChargeList();
     for(int i=0;i<list.list.size();i++){
         DiamondItem* item = DiamondItem::create(list.list.at(i).money, list.list.at(i).fangka);
         item->setPosition(415+220*i,345);

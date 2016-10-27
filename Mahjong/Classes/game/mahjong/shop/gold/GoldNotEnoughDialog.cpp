@@ -6,10 +6,10 @@
 //
 //
 
-#include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
+#include "game/mahjong/shop/gold/GoldNotEnoughDialog.hpp"
 #include "game/mahjong/lobby/GoldRoomPlate.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
-#include "game/mahjong/shop/ChargeGold.hpp"
+#include "game/mahjong/shop/gold/ChargeGold.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
 #include "game/utils/GameConfig.h"

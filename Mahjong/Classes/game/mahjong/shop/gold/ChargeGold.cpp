@@ -6,14 +6,14 @@
 //
 //
 
-#include "game/mahjong/shop/ChargeGold.hpp"
+#include "game/mahjong/shop/gold/ChargeGold.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/state/GameData.h"
-#include "game/loading/Loading.h"
-#include "server/NetworkManage.h"
-#include "game/utils/StringUtil.h"
 #include "game/mahjong/lobby/LobbyScene.h"
+#include "game/loading/Loading.h"
+#include "game/utils/StringUtil.h"
 #include "game/utils/ParticleUtil.hpp"
+#include "server/NetworkManage.h"
 
 bool ChargeGold::init(){
     if(!Layer::init()){
@@ -38,7 +38,7 @@ bool ChargeGold::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChargeGold::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1130, 550);
+    closeMenu->setPosition(1140, 550);
     addChild(closeMenu);
     
     if(!GAMEDATA::getInstance()->getGoldChangeList().needInit){

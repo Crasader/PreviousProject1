@@ -9,7 +9,6 @@
 #ifndef GoldNotEnoughDialog_hpp
 #define GoldNotEnoughDialog_hpp
 
-#include <stdio.h>
 #include "cocos2d.h"
 USING_NS_CC;
 

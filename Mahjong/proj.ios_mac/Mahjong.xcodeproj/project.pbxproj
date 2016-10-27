@@ -71,16 +71,12 @@
 		D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D22EEF3A1D66AAF000BF1CCB /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF1E1D66AAF000BF1CCB /* ChargeFangka.cpp */; };
 		D22EEF3B1D66AAF000BF1CCB /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF1E1D66AAF000BF1CCB /* ChargeFangka.cpp */; };
-		D22EEF3C1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */; };
-		D22EEF3D1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */; };
 		D22EEF3E1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */; };
 		D22EEF3F1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */; };
 		D22EEF401D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF241D66AAF000BF1CCB /* ExchangePropCell.cpp */; };
 		D22EEF411D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF241D66AAF000BF1CCB /* ExchangePropCell.cpp */; };
 		D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
 		D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
-		D22EEF461D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2A1D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp */; };
-		D22EEF471D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2A1D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp */; };
 		D22EEF4A1D66AAF000BF1CCB /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */; };
 		D22EEF4B1D66AAF000BF1CCB /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */; };
 		D22EEF4C1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF301D66AAF000BF1CCB /* LequanExchangeRecord.cpp */; };
@@ -198,6 +194,10 @@
 		D281E5DE1DC05D2300D3E44E /* RoomFullDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5DB1DC05D2300D3E44E /* RoomFullDialog.cpp */; };
 		D281E5E11DC05D4400D3E44E /* RoomIdErrorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5DF1DC05D4400D3E44E /* RoomIdErrorDialog.cpp */; };
 		D281E5E21DC05D4400D3E44E /* RoomIdErrorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5DF1DC05D4400D3E44E /* RoomIdErrorDialog.cpp */; };
+		D281E5E81DC196F400D3E44E /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5E41DC196F400D3E44E /* ChargeGold.cpp */; };
+		D281E5E91DC196F400D3E44E /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5E41DC196F400D3E44E /* ChargeGold.cpp */; };
+		D281E5EA1DC196F400D3E44E /* GoldNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5E61DC196F400D3E44E /* GoldNotEnoughDialog.cpp */; };
+		D281E5EB1DC196F400D3E44E /* GoldNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5E61DC196F400D3E44E /* GoldNotEnoughDialog.cpp */; };
 		D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
@@ -428,16 +428,12 @@
 		D22EEF1C1D66A97400BF1CCB /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		D22EEF1E1D66AAF000BF1CCB /* ChargeFangka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeFangka.cpp; sourceTree = "<group>"; };
 		D22EEF1F1D66AAF000BF1CCB /* ChargeFangka.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeFangka.hpp; sourceTree = "<group>"; };
-		D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeGold.cpp; sourceTree = "<group>"; };
-		D22EEF211D66AAF000BF1CCB /* ChargeGold.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeGold.hpp; sourceTree = "<group>"; };
 		D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeItem.cpp; sourceTree = "<group>"; };
 		D22EEF231D66AAF000BF1CCB /* ExchangeItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeItem.hpp; sourceTree = "<group>"; };
 		D22EEF241D66AAF000BF1CCB /* ExchangePropCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangePropCell.cpp; sourceTree = "<group>"; };
 		D22EEF251D66AAF000BF1CCB /* ExchangePropCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangePropCell.hpp; sourceTree = "<group>"; };
 		D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirstChageDialog.cpp; sourceTree = "<group>"; };
 		D22EEF291D66AAF000BF1CCB /* FirstChageDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FirstChageDialog.hpp; sourceTree = "<group>"; };
-		D22EEF2A1D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldNotEnoughDialog.cpp; sourceTree = "<group>"; };
-		D22EEF2B1D66AAF000BF1CCB /* GoldNotEnoughDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldNotEnoughDialog.hpp; sourceTree = "<group>"; };
 		D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Huode.cpp; sourceTree = "<group>"; };
 		D22EEF2F1D66AAF000BF1CCB /* Huode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Huode.hpp; sourceTree = "<group>"; };
 		D22EEF301D66AAF000BF1CCB /* LequanExchangeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanExchangeRecord.cpp; sourceTree = "<group>"; };
@@ -532,6 +528,10 @@
 		D281E5DC1DC05D2300D3E44E /* RoomFullDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RoomFullDialog.hpp; sourceTree = "<group>"; };
 		D281E5DF1DC05D4400D3E44E /* RoomIdErrorDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomIdErrorDialog.cpp; sourceTree = "<group>"; };
 		D281E5E01DC05D4400D3E44E /* RoomIdErrorDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RoomIdErrorDialog.hpp; sourceTree = "<group>"; };
+		D281E5E41DC196F400D3E44E /* ChargeGold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeGold.cpp; sourceTree = "<group>"; };
+		D281E5E51DC196F400D3E44E /* ChargeGold.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeGold.hpp; sourceTree = "<group>"; };
+		D281E5E61DC196F400D3E44E /* GoldNotEnoughDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldNotEnoughDialog.cpp; sourceTree = "<group>"; };
+		D281E5E71DC196F400D3E44E /* GoldNotEnoughDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldNotEnoughDialog.hpp; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
 		D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientUtill.h; sourceTree = "<group>"; };
 		D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMannger.cpp; sourceTree = "<group>"; };
@@ -933,10 +933,9 @@
 		D22EEF1D1D66AAF000BF1CCB /* shop */ = {
 			isa = PBXGroup;
 			children = (
+				D281E5E31DC1969D00D3E44E /* gold */,
 				D22EEF1E1D66AAF000BF1CCB /* ChargeFangka.cpp */,
 				D22EEF1F1D66AAF000BF1CCB /* ChargeFangka.hpp */,
-				D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */,
-				D22EEF211D66AAF000BF1CCB /* ChargeGold.hpp */,
 				D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */,
 				D2484EB51D7464430027F40D /* DiamondNotEnoughDialog.hpp */,
 				D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */,
@@ -945,8 +944,6 @@
 				D22EEF251D66AAF000BF1CCB /* ExchangePropCell.hpp */,
 				D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */,
 				D22EEF291D66AAF000BF1CCB /* FirstChageDialog.hpp */,
-				D22EEF2A1D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp */,
-				D22EEF2B1D66AAF000BF1CCB /* GoldNotEnoughDialog.hpp */,
 				D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */,
 				D22EEF2F1D66AAF000BF1CCB /* Huode.hpp */,
 				D22EEF301D66AAF000BF1CCB /* LequanExchangeRecord.cpp */,
@@ -1092,6 +1089,17 @@
 				D281E5E01DC05D4400D3E44E /* RoomIdErrorDialog.hpp */,
 			);
 			path = dialog;
+			sourceTree = "<group>";
+		};
+		D281E5E31DC1969D00D3E44E /* gold */ = {
+			isa = PBXGroup;
+			children = (
+				D281E5E41DC196F400D3E44E /* ChargeGold.cpp */,
+				D281E5E51DC196F400D3E44E /* ChargeGold.hpp */,
+				D281E5E61DC196F400D3E44E /* GoldNotEnoughDialog.cpp */,
+				D281E5E71DC196F400D3E44E /* GoldNotEnoughDialog.hpp */,
+			);
+			path = gold;
 			sourceTree = "<group>";
 		};
 		D28A4A0A1D0565C200741FD0 /* http */ = {
@@ -1702,7 +1710,6 @@
 				D2B1A8FF1CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8831CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
-				D22EEF3C1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */,
 				D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */,
 				D2B1A8731CCDF0F400A20896 /* DealJongAnim.cpp in Sources */,
 				D226FD2C1D051DBA00324097 /* SplashScene.cpp in Sources */,
@@ -1750,7 +1757,9 @@
 				D28A4A1B1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A301D056B7A00741FD0 /* Chinese.cpp in Sources */,
 				D22EEF3A1D66AAF000BF1CCB /* ChargeFangka.cpp in Sources */,
+				D281E5E81DC196F400D3E44E /* ChargeGold.cpp in Sources */,
 				D22EEFB91D66D14D00BF1CCB /* DailyEvent.cpp in Sources */,
+				D281E5EA1DC196F400D3E44E /* GoldNotEnoughDialog.cpp in Sources */,
 				D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
 				D2F05F651D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
 				D22EEFD91D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
@@ -1773,7 +1782,6 @@
 				D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D2B1A8DB1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D28A4A401D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
-				D22EEF461D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */,
 				D22EEF541D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D22EEF871D66CFC800BF1CCB /* SearchResult.cpp in Sources */,
 				D281E5841DAB89F700D3E44E /* ActivityExchange.cpp in Sources */,
@@ -1813,12 +1821,12 @@
 				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D22EEF411D66AAF000BF1CCB /* ExchangePropCell.cpp in Sources */,
 				D2B1A8841CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
-				D22EEF471D66AAF000BF1CCB /* GoldNotEnoughDialog.cpp in Sources */,
 				D22EEFBE1D66D14D00BF1CCB /* PrideCell.cpp in Sources */,
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D22EEF4D1D66AAF000BF1CCB /* LequanExchangeRecord.cpp in Sources */,
 				D22EEF4F1D66AAF000BF1CCB /* LequanShop.cpp in Sources */,
+				D281E5EB1DC196F400D3E44E /* GoldNotEnoughDialog.cpp in Sources */,
 				D226FD311D05292400324097 /* LoadResource.cpp in Sources */,
 				D22EEF7A1D66CFC800BF1CCB /* BillDetailInfo.cpp in Sources */,
 				D2B1A8DE1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
@@ -1842,7 +1850,6 @@
 				D2F05F6A1D8E7500006E5A4C /* UserInfo.cpp in Sources */,
 				D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */,
 				D2CF764A1D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
-				D22EEF3D1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */,
 				D28A4A311D056B7A00741FD0 /* Chinese.cpp in Sources */,
 				D2B1A8E21CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
 				D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
@@ -1873,6 +1880,7 @@
 				D235D8FB1DAA700F00DDA131 /* LequanLayer.cpp in Sources */,
 				D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
+				D281E5E91DC196F400D3E44E /* ChargeGold.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D281E5D81DC0510300D3E44E /* FangkaNotEnoughDialog.cpp in Sources */,
 				D22EEFDA1D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,

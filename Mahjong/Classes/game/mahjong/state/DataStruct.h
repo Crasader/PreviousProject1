@@ -360,7 +360,7 @@ struct FangkaCharge{
     int fangka;
 };
 
-struct DiamondChangeList{
+struct FangkaChargeList{
     bool needInit;
     vector<FangkaCharge> list;
 };
