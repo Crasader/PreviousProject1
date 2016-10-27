@@ -83,7 +83,7 @@ bool OtherPlayerInfo::init(Player* player){
     headBg->setPosition(70,160);
     dialogBg->addChild(headBg);
     
-
+    
     nickNameLabel = Label::create(player->getNickname(), "arial", 20);
     nickNameLabel->setColor(Color3B(87, 195, 186));
     nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
@@ -96,34 +96,22 @@ bool OtherPlayerInfo::init(Player* player){
     playerGender->setPosition(140, 140);
     playerGender->setScale(0.6f);
     dialogBg->addChild(playerGender);
-
     
-    //diamond
-    auto diamond_bg = Sprite::create("gameview/other_player_num_bg.png");
-    diamond_bg->setPosition(90, 80);
-    dialogBg->addChild(diamond_bg);
-    auto diamond_icon = Sprite::create("gameview/other_player_diamond.png");
-    diamond_icon->setPosition(50, 75);
-    dialogBg->addChild(diamond_icon);
-    auto diamondNum = Label::createWithSystemFont(StringUtils::format("%d", player->getDiamond()),"arial",20);
-    diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    diamondNum->setColor(Color3B(87, 195, 186));
-    diamondNum->setPosition(75, 80);
-    dialogBg->addChild(diamondNum);
     
-//    //lock diamond
-    auto lock_diamond_bg = Sprite::create("gameview/other_player_num_bg.png");
-    lock_diamond_bg->setPosition(90, 40);
-    dialogBg->addChild(lock_diamond_bg);
-    auto lock_diamond_icon = Sprite::create("gameview/other_player_lockdiamond.png");
-    lock_diamond_icon->setPosition(50, 35);
-    dialogBg->addChild(lock_diamond_icon);
-    auto lockDiamondNum = Label::createWithSystemFont(StringUtils::format("%d", player->getLockDiamond()),
-                                             "arial",20);
-    lockDiamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lockDiamondNum->setColor(Color3B(87, 195, 186));
-    lockDiamondNum->setPosition(75, 40);
-    dialogBg->addChild(lockDiamondNum);
+    //fangka
+    auto fangka_bg = Sprite::create("gameview/other_player_num_bg.png");
+    fangka_bg->setPosition(90, 80);
+    dialogBg->addChild(fangka_bg);
+    auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
+    fangka_icon->setPosition(50, 75);
+    fangka_icon->setScale(0.7f);
+    dialogBg->addChild(fangka_icon);
+    auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%d", player->getLockDiamond()),
+                                                 "arial",20);
+    fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    fangkaNum->setColor(Color3B(87, 195, 186));
+    fangkaNum->setPosition(75, 80);
+    dialogBg->addChild(fangkaNum);
     //gold
     auto gold_bg = Sprite::create("gameview/other_player_num_bg.png");
     gold_bg->setPosition(220, 80);
@@ -138,17 +126,17 @@ bool OtherPlayerInfo::init(Player* player){
     dialogBg->addChild(goldNum);
     //lequan
     auto lequan_bg = Sprite::create("gameview/other_player_num_bg.png");
-    lequan_bg->setPosition(220, 40);
+    lequan_bg->setPosition(90, 40);
     dialogBg->addChild(lequan_bg);
     auto lequan_icon = Sprite::create("gameview/other_player_lequan.png");
-    lequan_icon->setPosition(180, 35);
+    lequan_icon->setPosition(50, 35);
     dialogBg->addChild(lequan_icon);
     auto lequanNum = Label::create(cocos2d::String::createWithFormat("%d", player->getTicket())->_string,"arial",20);
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setColor(Color3B(87, 195, 186));
-    lequanNum->setPosition(205, 40);
+    lequanNum->setPosition(75, 40);
     dialogBg->addChild(lequanNum);
-
+    
     return true;
 }
 
