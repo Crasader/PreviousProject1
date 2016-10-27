@@ -12,7 +12,6 @@
 #include "game/mahjong/shop/LequanShop.hpp"
 #include "game/mahjong/shop/gold/GoldNotEnoughDialog.hpp"
 #include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
-#include "game/mahjong/shop/relieve/GoldRelieve.hpp"
 #include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/widget/HeadImage.hpp"
@@ -457,9 +456,7 @@ void LobbyScene::addEventListener(){
                 addChild(dia,4);
             }
         }else if(GAMEDATA::getInstance()->getEnterRoomResp().result == "5"){
-            GoldRelieve* goldRelieve = GoldRelieve::create();
-            goldRelieve->setRelieveNum(atoi(GAMEDATA::getInstance()->getEnterRoomResp().jjj_count.c_str())-atoi(GAMEDATA::getInstance()->getEnterRoomResp().jjj_used.c_str()));
-            addChild(goldRelieve,3);
+            //金币救济金暂时取消了
         }
     });
     

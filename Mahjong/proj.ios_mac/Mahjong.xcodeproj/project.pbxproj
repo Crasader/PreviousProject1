@@ -285,8 +285,6 @@
 		D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8681CCDF0F300A20896 /* stdafx.cpp */; };
 		D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
-		D2BD08C21D66DAA400ADC31E /* GoldRelieve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD08C01D66DAA400ADC31E /* GoldRelieve.cpp */; };
-		D2BD08C31D66DAA400ADC31E /* GoldRelieve.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD08C01D66DAA400ADC31E /* GoldRelieve.cpp */; };
 		D2BD08C51D66E76900ADC31E /* relieve in Resources */ = {isa = PBXBuildFile; fileRef = D2BD08C41D66E76900ADC31E /* relieve */; };
 		D2BD08C61D66E76900ADC31E /* relieve in Resources */ = {isa = PBXBuildFile; fileRef = D2BD08C41D66E76900ADC31E /* relieve */; };
 		D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */; };
@@ -622,8 +620,6 @@
 		D2B1A86B1CCDF0F300A20896 /* tchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tchar.h; sourceTree = "<group>"; };
 		D2B1A86D1CCDF0F400A20896 /* UserData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserData.cpp; sourceTree = "<group>"; };
 		D2B1A86E1CCDF0F400A20896 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
-		D2BD08C01D66DAA400ADC31E /* GoldRelieve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRelieve.cpp; sourceTree = "<group>"; };
-		D2BD08C11D66DAA400ADC31E /* GoldRelieve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldRelieve.hpp; sourceTree = "<group>"; };
 		D2BD08C41D66E76900ADC31E /* relieve */ = {isa = PBXFileReference; lastKnownFileType = folder; path = relieve; sourceTree = "<group>"; };
 		D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MjGameScene.cpp; sourceTree = "<group>"; };
 		D2BDE3AB1CEB10E100754AC0 /* MjGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MjGameScene.h; sourceTree = "<group>"; };
@@ -950,7 +946,6 @@
 				D22EEF311D66AAF000BF1CCB /* LequanExchangeRecord.hpp */,
 				D22EEF321D66AAF000BF1CCB /* LequanShop.cpp */,
 				D22EEF331D66AAF000BF1CCB /* LequanShop.hpp */,
-				D2BD08BF1D66DA8700ADC31E /* relieve */,
 				D22EEF381D66AAF000BF1CCB /* ShopHintDialog.cpp */,
 				D22EEF391D66AAF000BF1CCB /* ShopHintDialog.hpp */,
 				D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */,
@@ -1413,15 +1408,6 @@
 			path = userdata;
 			sourceTree = "<group>";
 		};
-		D2BD08BF1D66DA8700ADC31E /* relieve */ = {
-			isa = PBXGroup;
-			children = (
-				D2BD08C01D66DAA400ADC31E /* GoldRelieve.cpp */,
-				D2BD08C11D66DAA400ADC31E /* GoldRelieve.hpp */,
-			);
-			path = relieve;
-			sourceTree = "<group>";
-		};
 		D2C3FA511D9906FF00CFC80E /* wechat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1718,7 +1704,6 @@
 				D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */,
 				D2CF763A1D62A68C0035B870 /* QuickChatLayer.cpp in Sources */,
 				D235D8F51DAA6EB300DDA131 /* PrideLayer.cpp in Sources */,
-				D2BD08C21D66DAA400ADC31E /* GoldRelieve.cpp in Sources */,
 				D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D281E5D71DC0510300D3E44E /* FangkaNotEnoughDialog.cpp in Sources */,
 				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
@@ -1831,7 +1816,6 @@
 				D22EEF7A1D66CFC800BF1CCB /* BillDetailInfo.cpp in Sources */,
 				D2B1A8DE1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
-				D2BD08C31D66DAA400ADC31E /* GoldRelieve.cpp in Sources */,
 				D2F05F641D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */,
 				D28A4A2F1D056B7A00741FD0 /* Audio.cpp in Sources */,
 				D2F05F621D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */,
