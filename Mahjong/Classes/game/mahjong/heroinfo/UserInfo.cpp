@@ -98,57 +98,44 @@ void UserInfo::showUserInfo(){
     playerGender->setPosition(755,315);
     addChild(playerGender);
     
-    //diamond
-    auto diamond_bg = Sprite::create("common/room_info_bg.png");
-    diamond_bg->setPosition(410, 230);
-    addChild(diamond_bg);
-    auto diamond_icon = Sprite::create("common/diamond_icon.png");
-    diamond_icon->setPosition(355, 225);
-    addChild(diamond_icon);
-    auto diamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getDiamond())->_string,
-                                         "playerinfo/player_info_num.png", 13, 19, '0');
-    diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    diamondNum->setPosition(380, 230);
-    addChild(diamondNum);
     
-    //lock diamond
-    auto lock_diamond_bg = Scale9Sprite::create("common/room_info_bg.png");
-    lock_diamond_bg->setContentSize(Size(120, 47));
-    lock_diamond_bg->setPosition(560, 230);
-    this->addChild(lock_diamond_bg);
-    auto lock_diamond_icon = Sprite::create("common/lock_diamond_icon.png");
-    lock_diamond_icon->setPosition(525, 225);
-    addChild(lock_diamond_icon);
-    auto lockDiamondNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getLockDiamond())->_string,
-                                             "playerinfo/player_info_num.png", 13, 19, '0');
-    lockDiamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lockDiamondNum->setPosition(550, 230);
-    addChild(lockDiamondNum);
+    //fangka
+    auto fangka_bg = Sprite::create("common/room_info_bg.png");
+    fangka_bg->setPosition(400, 230);
+    addChild(fangka_bg);
+    auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
+    fangka_icon->setPosition(345, 225);
+    addChild(fangka_icon);
+    auto fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),
+                                         "playerinfo/player_info_num.png", 13, 19, '0');
+    fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    fangkaNum->setPosition(370, 230);
+    addChild(fangkaNum);
     
     //gold
     auto gold_bg = Sprite::create("common/room_info_bg.png");
-    gold_bg->setPosition(715, 230);
+    gold_bg->setPosition(615, 230);
     addChild(gold_bg);
     auto gold_icon = Sprite::create("common/gold_icon.png");
-    gold_icon->setPosition(660, 230);
+    gold_icon->setPosition(560, 230);
     addChild(gold_icon);
     auto goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string,
                                       "playerinfo/player_info_num.png", 13, 19, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    goldNum->setPosition(685, 230);
+    goldNum->setPosition(585, 230);
     addChild(goldNum);
     
     //lequan
     auto lequan_bg = Sprite::create("common/room_info_bg.png");
-    lequan_bg->setPosition(900, 230);
+    lequan_bg->setPosition(850, 230);
     this->addChild(lequan_bg);
     auto lequan_icon = Sprite::create("common/lequan_icon.png");
-    lequan_icon->setPosition(845, 230);
+    lequan_icon->setPosition(795, 230);
     this->addChild(lequan_icon);
     auto lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getTicket())->_string,
                                         "playerinfo/player_info_num.png", 13, 19, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum->setPosition(870, 230);
+    lequanNum->setPosition(820, 230);
     this->addChild(lequanNum);
     
     auto accountquit = MenuItemImage::create("playerinfo/quit_account_1.png","playerinfo/quit_account_2.png",CC_CALLBACK_0(UserInfo::cleanAccountRercord, this));
