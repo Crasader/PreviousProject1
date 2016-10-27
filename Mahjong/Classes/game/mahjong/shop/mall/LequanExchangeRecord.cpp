@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/shop/LequanExchangeRecord.hpp"
+#include "game/mahjong/shop/mall/LequanExchangeRecord.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 

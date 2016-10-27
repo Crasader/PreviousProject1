@@ -6,8 +6,8 @@
 //
 //
 
-#include "game/mahjong/shop/ExchangePropCell.hpp"
-#include "game/mahjong/shop/ExchangeItem.hpp"
+#include "game/mahjong/shop/mall/ExchangePropCell.hpp"
+#include "game/mahjong/shop/mall/ExchangeItem.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "userdata/UserData.h"
 

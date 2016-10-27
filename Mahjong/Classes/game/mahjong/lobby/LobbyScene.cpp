@@ -10,14 +10,14 @@
 #include "game/mahjong/shop/gold/ChargeGold.hpp"
 #include "game/mahjong/shop/fangka/ChargeFangka.hpp"
 #include "game/mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
-#include "game/mahjong/shop/LequanShop.hpp"
+#include "game/mahjong/shop/mall/LequanShop.hpp"
 #include "game/mahjong/shop/gold/GoldNotEnoughDialog.hpp"
 #include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
 #include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/friend/MahjongNumberKeypads.hpp"
- #include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
+#include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
 #include "game/mahjong/friend/dialog/RoomFullDialog.hpp"
 #include "game/mahjong/friend/FriendRoom.h"
 #include "payment/android/CallAndroidMethod.h"
@@ -176,7 +176,7 @@ void LobbyScene::drawSceneTop(){
     fangka_icon->setPosition(335, 680);
     addChild(fangka_icon);
     fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),
-                                    "mjlobby/room_info_num.png", 10, 15, '0');
+                                   "mjlobby/room_info_num.png", 10, 15, '0');
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     fangkaNum->setPosition(392, 685);
     addChild(fangkaNum);
@@ -241,11 +241,10 @@ void LobbyScene::drawSceneBot(){
     bot_bg->setPosition(955,48);
     addChild(bot_bg);
     
-//    auto btn_2 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
-    auto btn_3 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
-     auto btn_4 = MenuItemImage::create("mjlobby/activity_btn_1.png", "mjlobby/activity_btn_2.png", CC_CALLBACK_0(LobbyScene::showHotActivity, this));
-    auto btn_5 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
-    auto gameMenu = Menu::create(btn_3,btn_4, btn_5, NULL);
+    auto btn_2 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
+    auto btn_3 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
+    auto btn_4 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
+    auto gameMenu = Menu::create(btn_2,btn_3, btn_4, NULL);
     gameMenu->alignItemsHorizontallyWithPadding(80);
     gameMenu->setPosition(900, 43);
     addChild(gameMenu);
@@ -649,7 +648,7 @@ void LobbyScene:: openRoom(){
     if(UserData::getInstance()->getFangkaNum()>0){
         FriendRoom* friendroom = FriendRoom::create();
         addChild(friendroom);
-    }else{     
+    }else{
         ChargeFangka* cha = ChargeFangka::create();
         addChild(cha);
     }
