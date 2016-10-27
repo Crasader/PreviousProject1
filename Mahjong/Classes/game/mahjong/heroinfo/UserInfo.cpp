@@ -119,7 +119,7 @@ void UserInfo::showUserInfo(){
     auto gold_icon = Sprite::create("common/gold_icon.png");
     gold_icon->setPosition(560, 230);
     addChild(gold_icon);
-    auto goldNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getGold())->_string,
+    auto goldNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getGold()),
                                       "playerinfo/player_info_num.png", 13, 19, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     goldNum->setPosition(585, 230);
@@ -132,7 +132,7 @@ void UserInfo::showUserInfo(){
     auto lequan_icon = Sprite::create("common/lequan_icon.png");
     lequan_icon->setPosition(795, 230);
     this->addChild(lequan_icon);
-    auto lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d", UserData::getInstance()->getTicket())->_string,
+    auto lequanNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getTicket()),
                                         "playerinfo/player_info_num.png", 13, 19, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setPosition(820, 230);
