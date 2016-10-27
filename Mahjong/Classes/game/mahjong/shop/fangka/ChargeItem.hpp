@@ -6,16 +6,16 @@
 //
 //
 
-#ifndef DiamondItem_hpp
-#define DiamondItem_hpp
+#ifndef ChargeItem_hpp
+#define ChargeItem_hpp
 
 #include "cocos2d.h"
 USING_NS_CC;
 
-class DiamondItem:public Sprite{
+class ChargeItem:public Sprite{
     
 public:
-    static DiamondItem* create(int price,int diamond);
+    static ChargeItem* create(int price,int diamond);
     virtual bool init(int price,int diamond);
 private:
     void confirmCharge(Ref* ref);

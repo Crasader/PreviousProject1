@@ -6,16 +6,16 @@
 //
 //
 
-#include "game/mahjong/shop/fangka/DiamondItem.hpp"
+#include "game/mahjong/shop/fangka/ChargeItem.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
 
 #define DIAMOND_NUM_1 50
 #define DIAMOND_NUM_2 500
 
-DiamondItem* DiamondItem::create(int price, int diamondNum){
+ChargeItem* ChargeItem::create(int price, int diamondNum){
     
-    DiamondItem* ret = new DiamondItem();
+    ChargeItem* ret = new ChargeItem();
     if(ret &&ret->init(price, diamondNum)){
         
         ret->autorelease();
@@ -27,7 +27,7 @@ DiamondItem* DiamondItem::create(int price, int diamondNum){
     }
 }
 
-bool DiamondItem::init(int price, int diamondNum){
+bool ChargeItem::init(int price, int diamondNum){
     if(!Sprite::init()){
         return false;
     }
@@ -73,7 +73,7 @@ bool DiamondItem::init(int price, int diamondNum){
     diamondNumAtl->setPosition(-width/2,-55);
     zhuan->setPosition(width/2,-55);
     
-    auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(DiamondItem::confirmCharge, this));
+    auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(ChargeItem::confirmCharge, this));
     if(diamondNum==DIAMOND_NUM_1){
         btnImage->setTag(2);
     }else if(diamondNum==DIAMOND_NUM_2){
@@ -100,7 +100,7 @@ bool DiamondItem::init(int price, int diamondNum){
     return true;
 }
 
-void DiamondItem::confirmCharge(Ref* ref){
+void ChargeItem::confirmCharge(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*) ref;
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),StringUtils::format("%d",temp->getTag()));//从2开始

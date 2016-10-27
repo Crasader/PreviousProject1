@@ -8,7 +8,7 @@
 
 #include "game/mahjong/shop/fangka/ChargeFangka.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
-#include "game/mahjong/shop/fangka/DiamondItem.hpp"
+#include "game/mahjong/shop/fangka/ChargeItem.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
 #include "game/utils/StringUtil.h"
@@ -76,7 +76,7 @@ void ChargeFangka::onExit(){
 void ChargeFangka::showChargeDialog(){
     FangkaChargeList list = GAMEDATA::getInstance()->getFangkaChargeList();
     for(int i=0;i<list.list.size();i++){
-        DiamondItem* item = DiamondItem::create(list.list.at(i).money, list.list.at(i).fangka);
+        ChargeItem* item = ChargeItem::create(list.list.at(i).money, list.list.at(i).fangka);
         item->setPosition(415+220*i,345);
         addChild(item);
     }
