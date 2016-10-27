@@ -31,18 +31,17 @@ bool ChargeFangka::init(){
     this->addChild(menu1);
     
     
-    auto dialog_bg = Sprite::create("shop/charge_bg.png");
+    auto dialog_bg = Sprite::create("shop/gold_not_enough.png");
     dialog_bg->setPosition(640,360);
-    dialog_bg->setScaleX(0.8f);
     addChild(dialog_bg);
     
     auto title = Sprite::create("shop/charge_title.png");
-    title->setPosition(654,560);
+    title->setPosition(640,560);
     addChild(title);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChargeFangka::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(960, 550);
+    closeMenu->setPosition(910, 540);
     addChild(closeMenu);
     
     if(!GAMEDATA::getInstance()->getFangkaChargeList().needInit){
@@ -77,7 +76,7 @@ void ChargeFangka::showChargeDialog(){
     FangkaChargeList list = GAMEDATA::getInstance()->getFangkaChargeList();
     for(int i=0;i<list.list.size();i++){
         ChargeItem* item = ChargeItem::create(list.list.at(i).money, list.list.at(i).fangka);
-        item->setPosition(415+220*i,345);
+        item->setPosition(515+230*i,345);
         addChild(item);
     }
 }

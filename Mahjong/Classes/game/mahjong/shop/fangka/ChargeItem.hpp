@@ -15,12 +15,12 @@ USING_NS_CC;
 class ChargeItem:public Sprite{
     
 public:
-    static ChargeItem* create(int price,int diamond);
-    virtual bool init(int price,int diamond);
+    static ChargeItem* create(int price,int fangakNum);
+    virtual bool init(int price,int fangakNum);
 private:
     void confirmCharge(Ref* ref);
     CC_SYNTHESIZE(int, price, Price);
-    CC_SYNTHESIZE(int, diamondNum, DiamondNum);
+    CC_SYNTHESIZE(int, fangakNum, fangakNum);
 };
 
 #endif /* DiamondItem_hpp */
