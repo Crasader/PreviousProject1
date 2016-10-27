@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/shop/FangkaNotEnoughDialog.hpp"
+#include "game/mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
 #include "server/NetworkManage.h"

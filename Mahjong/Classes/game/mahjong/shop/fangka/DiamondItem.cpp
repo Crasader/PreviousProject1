@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/shop/DiamondItem.hpp"
+#include "game/mahjong/shop/fangka/DiamondItem.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
 

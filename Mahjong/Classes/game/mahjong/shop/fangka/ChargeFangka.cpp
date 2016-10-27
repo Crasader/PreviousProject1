@@ -6,15 +6,15 @@
 //
 //
 
-#include "game/mahjong/shop/ChargeFangka.hpp"
+#include "game/mahjong/shop/fangka/ChargeFangka.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
-#include "game/mahjong/shop/DiamondItem.hpp"
+#include "game/mahjong/shop/fangka/DiamondItem.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/loading/Loading.h"
-#include "server/NetworkManage.h"
 #include "game/utils/StringUtil.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
+#include "server/NetworkManage.h"
 
 
 bool ChargeFangka::init(){
