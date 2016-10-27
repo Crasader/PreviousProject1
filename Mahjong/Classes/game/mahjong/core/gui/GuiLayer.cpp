@@ -1,5 +1,4 @@
 #include "game/mahjong/core/gui/GuiLayer.h"
-#include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/bill/BillInfo.h"

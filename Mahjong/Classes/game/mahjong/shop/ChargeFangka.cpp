@@ -1,70 +1,88 @@
 //
-//  ChargeFangka.cpp
+//  ChargeDiamond.cpp
 //  Mahjong
 //
-//  Created by qiuzhong on 16/10/26.
+//  Created by qiuzhong on 16/4/18.
 //
 //
 
 #include "game/mahjong/shop/ChargeFangka.hpp"
+#include "game/mahjong/shop/ShopHintDialog.hpp"
+#include "game/mahjong/shop/DiamondItem.hpp"
+#include "game/mahjong/state/GameData.h"
+#include "game/loading/Loading.h"
+#include "server/NetworkManage.h"
+#include "game/utils/StringUtil.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
-#include "server/NetworkManage.h"
-
 
 
 bool ChargeFangka::init(){
+    
     if(!Layer::init()){
+        
         return false;
     }
-    MenuItem* item = MenuItem::create();
-    item->setContentSize(Size(1280, 720));
-    Menu* bg = Menu::create(item, NULL);
-    this->addChild(bg);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDiamondChangeListCommand());
     
-    auto dialog_bg = Sprite::create("shop/gold_not_enough.png");
-    dialog_bg->setPosition(640,350);
+    MenuItem* item1 = MenuItem::create();
+    item1->setContentSize(Size(1280, 720));
+    Menu* menu1 = Menu::create(item1, NULL);
+    this->addChild(menu1);
+    
+    
+    auto dialog_bg = Sprite::create("shop/charge_bg.png");
+    dialog_bg->setPosition(640,360);
+    dialog_bg->setScaleX(0.8f);
     addChild(dialog_bg);
     
-    
-    auto roomTitle = Sprite::create("shop/buy_fangka.png");
-    roomTitle->setPosition(640,570);
-    addChild(roomTitle);
+    auto title = Sprite::create("shop/charge_title.png");
+    title->setPosition(654,560);
+    addChild(title);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChargeFangka::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(910, 525);
+    closeMenu->setPosition(960, 550);
     addChild(closeMenu);
     
+    if(!GAMEDATA::getInstance()->getDiamondChangeList().needInit){
+        Loading* lod = Loading::create(true);
+        lod->setTag(1000);
+        addChild(lod);
+    }else{
+        showChargeDialog();
+    }
     
-    auto bg_2 = Sprite::create("shop/first_charge_bg_2.png");
-    bg_2->setPosition(645,375);
-    addChild(bg_2);
-    
-    
-    auto chargeImage = Sprite::create("shop/fa_ka_bu_zhu.png");
-    chargeImage->setPosition(640,360);
-    addChild(chargeImage);
-    
-    auto image = MenuItemImage::create("shop/charge_btn_1.png","shop/charge_btn_2.png",
-                                       CC_CALLBACK_0(ChargeFangka::confirmCharge, this));
-    Menu* menu = Menu::create(image,NULL);
-    menu->setPosition(640,210);
-    addChild(menu);
-
     return true;
+    
+}
+
+
+void ChargeFangka::onEnter(){
+    Layer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_GOLD_CHANGE_LIST, [=](EventCustom* event){
+        if(NULL != getChildByTag(1000)){
+            getChildByTag(1000)->removeFromParent();
+        }
+        showChargeDialog();
+    });
+}
+
+void ChargeFangka::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_GOLD_CHANGE_LIST);
+}
+
+void ChargeFangka::showChargeDialog(){
+    DiamondChangeList list = GAMEDATA::getInstance()->getDiamondChangeList();
+    for(int i=0;i<list.list.size();i++){
+        DiamondItem* item = DiamondItem::create(list.list.at(i).money, list.list.at(i).diamond);
+        item->setPosition(415+220*i,345);
+        addChild(item);
+    }
 }
 
 void ChargeFangka::closeView(){
     removeFromParent();
-}
-
-
-void ChargeFangka::confirmCharge(){
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"2");
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),2);
-#endif
+    
 }

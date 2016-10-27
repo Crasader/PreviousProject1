@@ -8,7 +8,7 @@
 #include "game/mahjong/activities/MahjongActivities.hpp"
 #include "game/mahjong/shop/FirstChageDialog.hpp"
 #include "game/mahjong/shop/ChargeGold.hpp"
-#include "game/mahjong/shop/ChargeDiamond.hpp"
+#include "game/mahjong/shop/ChargeFangka.hpp"
 #include "game/mahjong/shop/LequanShop.hpp"
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
 #include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
@@ -20,7 +20,7 @@
  #include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
 #include "game/mahjong/friend/dialog/RoomFullDialog.hpp"
 #include "game/mahjong/friend/FriendRoom.h"
-#include "game/mahjong/shop/ChargeFangka.hpp"
+#include "game/mahjong/shop/FangkaNotEnoughDialog.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
@@ -181,7 +181,7 @@ void LobbyScene::drawSceneTop(){
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     fangkaNum->setPosition(392, 685);
     addChild(fangkaNum);
-    auto diamond_btn = MenuItemImage::create("mjlobby/charge_btn_1.png", "mjlobby/charge_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeDiamond, this));
+    auto diamond_btn = MenuItemImage::create("mjlobby/charge_btn_1.png", "mjlobby/charge_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeFangka, this));
     auto chargDiamond = Menu::create(diamond_btn, NULL);
     chargDiamond->setPosition(457, 682);
     addChild(chargDiamond);
@@ -321,10 +321,10 @@ void LobbyScene::chargeGold(){
     addChild(gold,3);
 }
 
-void LobbyScene::chargeDiamond(){
+void LobbyScene::chargeFangka(){
     Audio::getInstance()->playSoundClick();
-    ChargeDiamond* charge = ChargeDiamond::create();
-    this->addChild(charge,3);
+    ChargeFangka* charge = ChargeFangka::create();
+    addChild(charge,3);
 }
 
 void LobbyScene::exchangeLequan(){

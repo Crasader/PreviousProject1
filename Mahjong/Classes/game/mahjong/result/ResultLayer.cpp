@@ -5,7 +5,6 @@
 #include "game/mahjong/core/MahjongView.h"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/shop/GoldNotEnoughDialog.hpp"
-#include "game/mahjong/shop/ChargeDiamond.hpp"
 #include "game/mahjong/shop/ChargeGold.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/utils/SeatIdUtil.h"

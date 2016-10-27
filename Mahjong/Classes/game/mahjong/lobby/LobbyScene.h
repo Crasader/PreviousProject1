@@ -58,7 +58,7 @@ private:
     void joinRoom();
     void showGoldRoomPad();
     void chargeGold();
-    void chargeDiamond();
+    void chargeFangka();
     void exchangeLequan();
 	void showFirstCharge();
 	void showRedWallet();

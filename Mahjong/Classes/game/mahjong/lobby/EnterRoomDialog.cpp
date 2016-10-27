@@ -7,7 +7,7 @@
 //
 
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
-#include "game/mahjong/shop/ChargeDiamond.hpp"
+#include "game/mahjong/shop/ChargeGold.hpp"
 #include "server/NetworkManage.h"
 
 
@@ -73,9 +73,8 @@ void EnterRoomDialog::closeView(){
 
 void EnterRoomDialog::confirm(){
     if(getDialogType() == EnterRoomDialogType::goldNotEnough){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDiamondChangeListCommand());
-        ChargeDiamond* charge = ChargeDiamond::create();
-        getParent()->addChild(charge,3);
+        ChargeGold* gold = ChargeGold::create();
+        addChild(gold);
     }
     removeFromParent();
 }

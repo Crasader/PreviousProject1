@@ -69,8 +69,8 @@
 		D22912451D128367005C7167 /* LoginMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912401D128367005C7167 /* LoginMannger.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
-		D22EEF3A1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */; };
-		D22EEF3B1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */; };
+		D22EEF3A1D66AAF000BF1CCB /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF1E1D66AAF000BF1CCB /* ChargeFangka.cpp */; };
+		D22EEF3B1D66AAF000BF1CCB /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF1E1D66AAF000BF1CCB /* ChargeFangka.cpp */; };
 		D22EEF3C1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */; };
 		D22EEF3D1D66AAF000BF1CCB /* ChargeGold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */; };
 		D22EEF3E1D66AAF000BF1CCB /* ExchangeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */; };
@@ -192,8 +192,8 @@
 		D281E5C31DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5C01DB4652800D3E44E /* MahjongNumberKeypads.cpp */; };
 		D281E5D31DBED34100D3E44E /* GoldRoomPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5D11DBED34100D3E44E /* GoldRoomPlate.cpp */; };
 		D281E5D41DBED34100D3E44E /* GoldRoomPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5D11DBED34100D3E44E /* GoldRoomPlate.cpp */; };
-		D281E5D71DC0510300D3E44E /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5D51DC0510300D3E44E /* ChargeFangka.cpp */; };
-		D281E5D81DC0510300D3E44E /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5D51DC0510300D3E44E /* ChargeFangka.cpp */; };
+		D281E5D71DC0510300D3E44E /* FangkaNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5D51DC0510300D3E44E /* FangkaNotEnoughDialog.cpp */; };
+		D281E5D81DC0510300D3E44E /* FangkaNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5D51DC0510300D3E44E /* FangkaNotEnoughDialog.cpp */; };
 		D281E5DD1DC05D2300D3E44E /* RoomFullDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5DB1DC05D2300D3E44E /* RoomFullDialog.cpp */; };
 		D281E5DE1DC05D2300D3E44E /* RoomFullDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5DB1DC05D2300D3E44E /* RoomFullDialog.cpp */; };
 		D281E5E11DC05D4400D3E44E /* RoomIdErrorDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5DF1DC05D4400D3E44E /* RoomIdErrorDialog.cpp */; };
@@ -426,8 +426,8 @@
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
 		D22912481D12C583005C7167 /* CommandManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandManage.h; sourceTree = "<group>"; };
 		D22EEF1C1D66A97400BF1CCB /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
-		D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeDiamond.cpp; sourceTree = "<group>"; };
-		D22EEF1F1D66AAF000BF1CCB /* ChargeDiamond.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeDiamond.hpp; sourceTree = "<group>"; };
+		D22EEF1E1D66AAF000BF1CCB /* ChargeFangka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeFangka.cpp; sourceTree = "<group>"; };
+		D22EEF1F1D66AAF000BF1CCB /* ChargeFangka.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeFangka.hpp; sourceTree = "<group>"; };
 		D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeGold.cpp; sourceTree = "<group>"; };
 		D22EEF211D66AAF000BF1CCB /* ChargeGold.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeGold.hpp; sourceTree = "<group>"; };
 		D22EEF221D66AAF000BF1CCB /* ExchangeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeItem.cpp; sourceTree = "<group>"; };
@@ -526,8 +526,8 @@
 		D281E5C11DB4652800D3E44E /* MahjongNumberKeypads.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MahjongNumberKeypads.hpp; sourceTree = "<group>"; };
 		D281E5D11DBED34100D3E44E /* GoldRoomPlate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRoomPlate.cpp; sourceTree = "<group>"; };
 		D281E5D21DBED34100D3E44E /* GoldRoomPlate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldRoomPlate.hpp; sourceTree = "<group>"; };
-		D281E5D51DC0510300D3E44E /* ChargeFangka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeFangka.cpp; sourceTree = "<group>"; };
-		D281E5D61DC0510300D3E44E /* ChargeFangka.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeFangka.hpp; sourceTree = "<group>"; };
+		D281E5D51DC0510300D3E44E /* FangkaNotEnoughDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FangkaNotEnoughDialog.cpp; sourceTree = "<group>"; };
+		D281E5D61DC0510300D3E44E /* FangkaNotEnoughDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FangkaNotEnoughDialog.hpp; sourceTree = "<group>"; };
 		D281E5DB1DC05D2300D3E44E /* RoomFullDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomFullDialog.cpp; sourceTree = "<group>"; };
 		D281E5DC1DC05D2300D3E44E /* RoomFullDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RoomFullDialog.hpp; sourceTree = "<group>"; };
 		D281E5DF1DC05D4400D3E44E /* RoomIdErrorDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomIdErrorDialog.cpp; sourceTree = "<group>"; };
@@ -933,8 +933,8 @@
 		D22EEF1D1D66AAF000BF1CCB /* shop */ = {
 			isa = PBXGroup;
 			children = (
-				D22EEF1E1D66AAF000BF1CCB /* ChargeDiamond.cpp */,
-				D22EEF1F1D66AAF000BF1CCB /* ChargeDiamond.hpp */,
+				D22EEF1E1D66AAF000BF1CCB /* ChargeFangka.cpp */,
+				D22EEF1F1D66AAF000BF1CCB /* ChargeFangka.hpp */,
 				D22EEF201D66AAF000BF1CCB /* ChargeGold.cpp */,
 				D22EEF211D66AAF000BF1CCB /* ChargeGold.hpp */,
 				D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */,
@@ -958,8 +958,8 @@
 				D22EEF391D66AAF000BF1CCB /* ShopHintDialog.hpp */,
 				D281E5A81DAF214D00D3E44E /* DiamondItem.cpp */,
 				D281E5A91DAF214D00D3E44E /* DiamondItem.hpp */,
-				D281E5D51DC0510300D3E44E /* ChargeFangka.cpp */,
-				D281E5D61DC0510300D3E44E /* ChargeFangka.hpp */,
+				D281E5D51DC0510300D3E44E /* FangkaNotEnoughDialog.cpp */,
+				D281E5D61DC0510300D3E44E /* FangkaNotEnoughDialog.hpp */,
 			);
 			path = shop;
 			sourceTree = "<group>";
@@ -1713,7 +1713,7 @@
 				D235D8F51DAA6EB300DDA131 /* PrideLayer.cpp in Sources */,
 				D2BD08C21D66DAA400ADC31E /* GoldRelieve.cpp in Sources */,
 				D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
-				D281E5D71DC0510300D3E44E /* ChargeFangka.cpp in Sources */,
+				D281E5D71DC0510300D3E44E /* FangkaNotEnoughDialog.cpp in Sources */,
 				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
 				D2B1A8E51CCDF0F400A20896 /* GameData.cpp in Sources */,
 				D2B1A8D11CCDF0F400A20896 /* Jong.cpp in Sources */,
@@ -1749,7 +1749,7 @@
 				D2B1A8D31CCDF0F400A20896 /* LobbyScene.cpp in Sources */,
 				D28A4A1B1D056B4700741FD0 /* PlayerInfoCell.cpp in Sources */,
 				D28A4A301D056B7A00741FD0 /* Chinese.cpp in Sources */,
-				D22EEF3A1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */,
+				D22EEF3A1D66AAF000BF1CCB /* ChargeFangka.cpp in Sources */,
 				D22EEFB91D66D14D00BF1CCB /* DailyEvent.cpp in Sources */,
 				D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
 				D2F05F651D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
@@ -1798,7 +1798,7 @@
 				D22EEFE01D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D2B1A8DC1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,
-				D22EEF3B1D66AAF000BF1CCB /* ChargeDiamond.cpp in Sources */,
+				D22EEF3B1D66AAF000BF1CCB /* ChargeFangka.cpp in Sources */,
 				D2B1A8DA1CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D281E5851DAB89F700D3E44E /* ActivityExchange.cpp in Sources */,
@@ -1874,7 +1874,7 @@
 				D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
-				D281E5D81DC0510300D3E44E /* ChargeFangka.cpp in Sources */,
+				D281E5D81DC0510300D3E44E /* FangkaNotEnoughDialog.cpp in Sources */,
 				D22EEFDA1D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
 				D281E5811DAB810A00D3E44E /* PropCell.cpp in Sources */,
 				D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
