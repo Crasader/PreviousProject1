@@ -123,27 +123,22 @@ void PlayerBase::initPlayer(Player* playerInfo){
     headimage->setPosition(getPostionBySeat(clientSeatId));
     addChild(headimage);
     
-    auto diamond = Sprite::create();
-    diamond->setPosition(getPostionBySeat(clientSeatId).x - 28, getPostionBySeat(clientSeatId).y - 55);
-    this->addChild(diamond);
-    diamondNum = LabelAtlas::create(StringUtils::format("%d", 0),
+    auto money = Sprite::create();
+    money->setPosition(getPostionBySeat(clientSeatId).x - 28, getPostionBySeat(clientSeatId).y - 55);
+    addChild(money);
+    moneyNumber = LabelAtlas::create(StringUtils::format("%d", 0),
                                     "result/result_num.png", 9, 13, '0');
-    diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 16, getPostionBySeat(clientSeatId).y - 55);
-    addChild(diamondNum);
+    moneyNumber->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    moneyNumber->setPosition(getPostionBySeat(clientSeatId).x - 16, getPostionBySeat(clientSeatId).y - 55);
+    addChild(moneyNumber);
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
-        if(playerInfo->getLockDiamond()>0){
-            diamond->setTexture("gameview/other_player_lockdiamond.png");
-            diamondNum->setString(StringUtils::format("%d",playerInfo->getLockDiamond()));
-        }else{
-            diamond->setTexture("gameview/other_player_diamond.png");
-            diamondNum->setString(StringUtils::format("%d",playerInfo->getDiamond()));
-        }
-        diamondNum->setPosition(getPostionBySeat(clientSeatId).x - 8, getPostionBySeat(clientSeatId).y - 55);
+        money->setTexture("gameview/score_small.png");
+        moneyNumber->setString(StringUtils::format("%d",playerInfo->getScore()));
+        moneyNumber->setPosition(getPostionBySeat(clientSeatId).x - 8, getPostionBySeat(clientSeatId).y - 55);
     }
     else {
-        diamond->setTexture("gameview/gold_small.png");
-        diamondNum->setString(StringUtils::format("%d", playerInfo->getGold()));
+        money->setTexture("gameview/gold_small.png");
+        moneyNumber->setString(StringUtils::format("%d", playerInfo->getGold()));
     }
     
     
@@ -342,7 +337,7 @@ void PlayerBase::showPlayerInfo(){
 }
 
 void PlayerBase::updatePlayerInfo(int num){
-    diamondNum->setString(cocos2d::String::createWithFormat("%d", num)->_string);
+    moneyNumber->setString(StringUtils::format("%d", num));
 }
 
 
@@ -356,7 +351,7 @@ void PlayerBase::showPlayerHua(int num){
     Point pos = getHuaNumPos(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), playerInfo->getSeatId()));
     playerHua->setPosition(pos);
     playerHuaCount->setPosition(pos.x + 30, pos.y);
-    playerHuaCount->setString(cocos2d::String::createWithFormat(":%d",num)->_string);
+    playerHuaCount->setString(StringUtils::format(":%d",num));
     playerHuaCount->setScale(2.0f);
     playerHuaCount->setOpacity(77);
     playerHuaCount->runAction(Sequence::create(Spawn::create(FadeTo::create(4.0/24, 255),ScaleTo::create(4.0f/24, 1.0f), NULL), NULL));
@@ -367,7 +362,7 @@ void PlayerBase::showPlayerHua(int num){
 
 
 void PlayerBase::startTimeClockAnim(){
-    timeClock->setString(cocos2d::String::createWithFormat("%d", 20)->_string);
+    timeClock->setString(StringUtils::format("%d", 20));
     this->setTag(-1);
     mCDTime = 20;
     mProgressTimer->setVisible(true);
@@ -381,7 +376,7 @@ void PlayerBase::startTimeClockAnim(){
 }
 
 void PlayerBase::startTimeClockAnim(int time, int type){
-    timeClock->setString(cocos2d::String::createWithFormat("%d", time)->_string);
+    timeClock->setString(StringUtils::format("%d", time));
     this->setTag(type);
     mCDTime = time;
     mProgressTimer->setVisible(true);
@@ -424,7 +419,7 @@ void PlayerBase::playerCpgAnim(CpgType cpgType, ClientSeatId type){
 void PlayerBase::updateTime(float dt){
     mCDTime--;
     if (mCDTime > 0){
-        timeClock->setString(cocos2d::String::createWithFormat("%d", mCDTime)->_string);
+        timeClock->setString(StringUtils::format("%d", mCDTime));
     }
     else{
         timeClock->setVisible(false);

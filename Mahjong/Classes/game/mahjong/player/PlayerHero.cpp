@@ -34,7 +34,7 @@ void PlayerHero::initData() {
     playerHandJongs.clear();
     playedIcon = Sprite::create("gameview/arrows.png");
     playedIcon->setVisible(false);
-    this->addChild(playedIcon, 666);
+    addChild(playedIcon, 666);
     setCpgPostionX(JONG_POS_START_X);
 }
 

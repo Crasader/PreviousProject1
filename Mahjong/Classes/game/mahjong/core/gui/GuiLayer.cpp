@@ -45,11 +45,6 @@ void GuiLayer::onExit(){
 };
 
 void GuiLayer::initView(){
-    //    auto soundButton = MenuItemImage::create("gameview/chat_sound_1.png", "gameview/chat_sound_2.png",
-    //                                             CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
-    //    auto soundMenu = Menu::create(soundButton,NULL);
-    //    soundMenu->setPosition(65,45);
-    //    addChild(soundMenu);
     
     auto chatButton = MenuItemImage::create("gameview/chat_btn_1.png", "gameview/chat_btn_2.png",
                                             CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
@@ -67,10 +62,6 @@ void GuiLayer::initView(){
     this->addChild(quit);
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        
-//        auto kaibaoBg0 = Sprite::create("gameview/room_id_bg.png");
-//        kaibaoBg0->setPosition(1180,645);
-//        addChild(kaibaoBg0);
         
         auto kaibaoBg = Sprite::create("gameview/room_id.png");
         kaibaoBg->setPosition(1180,645);
@@ -93,11 +84,14 @@ void GuiLayer::initView(){
         haungNum->setScale(0.8f);
         haungNum->setPosition(1180, 618);
         addChild(haungNum);
+        //局数
+        Label* jushu = Label::createWithSystemFont("8/8", "arial", 25);
+        jushu->setColor(Color3B(234,195,90));
+        jushu->setPosition(995,150);
+        addChild(jushu);
+        
     }
     else{
-//        auto kaibaoBg = Sprite::create("gameview/kai_bao_bg.png");
-//        kaibaoBg->setPosition(1215,625);
-//        addChild(kaibaoBg);
         auto kaibao = Sprite::create("gameview/kai_bao.png");
         kaibao->setPosition(1193,644);
         addChild(kaibao);

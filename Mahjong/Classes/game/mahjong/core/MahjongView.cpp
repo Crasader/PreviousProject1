@@ -937,7 +937,7 @@ void MahjongView::showHuPaiXing(std::string paixing){
     
     vector<string> pais = StringUtil::split(paixing, ",");
     for(int i =0; i<pais.size();i++){
-        auto xing = Sprite::create(cocos2d::String::createWithFormat("result/paixing_%d.png",atoi(pais.at(i).c_str()))->_string);
+        auto xing = Sprite::create(StringUtils::format("result/paixing_%d.png",atoi(pais.at(i).c_str())));
         addChild(xing,999);
         xing->setOpacity(77);
         xing->setScale(3.0f);
