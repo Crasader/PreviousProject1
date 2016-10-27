@@ -2133,6 +2133,7 @@ void MsgHandler::goldChangeListResp(std::string msg){
         GoldChange change;
         change.gold = atoi(temp["gold"].GetString());
         change.diamond = atoi(temp["diamond"].GetString());
+        change.fangka = atoi(temp["fangka"].GetString());
         data.list.push_back(change);
     }
     GAMEDATA::getInstance()->setGoldChangeList(data);

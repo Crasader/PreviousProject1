@@ -347,6 +347,7 @@ struct FirstChargeData{
 struct GoldChange{
     int gold;
     int diamond;
+    int fangka;
 };
 
 struct GoldChangeList{

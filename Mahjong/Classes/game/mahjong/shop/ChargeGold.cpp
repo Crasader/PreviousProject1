@@ -38,7 +38,7 @@ bool ChargeGold::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChargeGold::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1050, 550);
+    closeMenu->setPosition(1130, 550);
     addChild(closeMenu);
     
     if(!GAMEDATA::getInstance()->getGoldChangeList().needInit){
@@ -163,7 +163,7 @@ void ChargeGold::showChargeGold(){
         yuan->setPosition(205+176*i,225);
         addChild(yuan);
         
-        LabelAtlas* money=LabelAtlas::create(StringUtils::format("%d",list.list.at(i).diamond),"shop/prop_num.png",21,28,'0');
+        LabelAtlas* money=LabelAtlas::create(StringUtils::format("%d",list.list.at(i).fangka),"shop/prop_num.png",21,28,'0');
         money->setPosition(220+176*i,230);
         money->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(money);
