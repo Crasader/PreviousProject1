@@ -160,13 +160,21 @@ void ChargeGold::showChargeGold(){
         
         
         auto yuan = Sprite::create("mjitem/fangka_icon.png");
-        yuan->setPosition(205+176*i,225);
+        yuan->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         addChild(yuan);
         
-        LabelAtlas* money=LabelAtlas::create(StringUtils::format("%d",list.list.at(i).fangka),"shop/prop_num.png",21,28,'0');
-        money->setPosition(220+176*i,230);
+        auto chen = Sprite::create("shop/cheng_hao.png");
+        chen->setPosition(Point::ANCHOR_MIDDLE_LEFT);
+        addChild(chen);
+        
+        LabelAtlas* money=LabelAtlas::create(StringUtils::format("%d",list.list.at(i).fangka),"shop/button_num.png",26,32,'0');
+        
         money->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(money);
         
+        int width = yuan->getContentSize().width+chen->getContentSize().width+money->getContentSize().width;
+        yuan->setPosition(205+176*i-width/2,222);
+        chen->setPosition(210+176*i-width/2+yuan->getContentSize().width,227);
+        money->setPosition(192+176*i+width/2,227);
     }
 }
