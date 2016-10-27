@@ -355,14 +355,14 @@ struct GoldChangeList{
     vector<GoldChange> list;
 };
 
-struct DiamondChange{
+struct FangkaCharge{
     int money;
-    int diamond;
+    int fangka;
 };
 
 struct DiamondChangeList{
     bool needInit;
-    vector<DiamondChange> list;
+    vector<FangkaCharge> list;
 };
 
 struct LequanChange{

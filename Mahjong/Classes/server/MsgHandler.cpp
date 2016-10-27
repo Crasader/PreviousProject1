@@ -2169,9 +2169,9 @@ void MsgHandler::diamondChangeListResp(std::string msg){
     data.needInit = true;
     for(int i=0;i<list.Capacity();i++){
         const rapidjson::Value &temp = list[i];
-        DiamondChange change;
+        FangkaCharge change;
         change.money = atoi(temp["money"].GetString());
-        change.diamond = atoi(temp["diamond"].GetString());
+        change.fangka = atoi(temp["fangka"].GetString());
         data.list.push_back(change);
     }
     GAMEDATA::getInstance()->setDiamondChangeList(data);

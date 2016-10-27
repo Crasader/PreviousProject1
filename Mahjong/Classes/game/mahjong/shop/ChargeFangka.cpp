@@ -76,7 +76,7 @@ void ChargeFangka::onExit(){
 void ChargeFangka::showChargeDialog(){
     DiamondChangeList list = GAMEDATA::getInstance()->getDiamondChangeList();
     for(int i=0;i<list.list.size();i++){
-        DiamondItem* item = DiamondItem::create(list.list.at(i).money, list.list.at(i).diamond);
+        DiamondItem* item = DiamondItem::create(list.list.at(i).money, list.list.at(i).fangka);
         item->setPosition(415+220*i,345);
         addChild(item);
     }
