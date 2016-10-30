@@ -96,12 +96,12 @@ void FriendRoom::onExit(){
 void FriendRoom::openRoom(){
     if(NULL != getChildByTag(1024)){
         if(getChildByTag(1024)->isVisible()){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand("1"));
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand("1","0"));
         }
     }
     if(NULL != getChildByTag(1025)){
         if(getChildByTag(1025)->isVisible()){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand("2"));
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand("2","1"));
         }
     }
 }
