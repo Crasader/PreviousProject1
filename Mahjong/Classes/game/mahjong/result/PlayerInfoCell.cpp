@@ -25,29 +25,15 @@ bool PlayerInfoCell::init(GameResultData data){
     if(!Sprite::init()){
         return false;
     }
-    std::string bgImageName;
-    if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
-        if(data.result==1||data.result==3){
-            bgImageName = "result/player_result_4.png";
-        }else{
-            bgImageName = "result/player_result_3.png";
-        }
-    }else{
-        if(data.result==1||data.result==3){
-            bgImageName = "result/player_result_1.png";
-        }else{
-            bgImageName = "result/player_result_2.png";
-        }
-    }
     auto headImage = HeadImage::createByImage(data.pic,Size(90,90));
-    headImage->setPosition(0, 50);
+    headImage->setPosition(0, 30);
     addChild(headImage, 21);
     
     Sprite* title = Sprite::create();
     title->setPosition(0, 0);
     this->addChild(title, 21);
     
-    Sprite* bg = Sprite::create(bgImageName);
+    Sprite* bg = Sprite::create();
     bg->setTag(101);
     bg->setPosition(0, 0);
     this->addChild(bg, 20);
@@ -62,55 +48,62 @@ bool PlayerInfoCell::init(GameResultData data){
         mytitle->setTexture("result/dian_pao.png");
     }
     
-    Label* nickname = Label::create(data.nickName.c_str(), "Arial", 16);
-    nickname->setPosition(0, -10);
+    Label* nickname = Label::createWithSystemFont(data.nickName.c_str(), "Arial", 16);
+    nickname->setPosition(0, -30);
     this->addChild(nickname, 20);
+
     
-    LabelAtlas* goldNum = LabelAtlas::create("0", "result/result_num.png", 9, 13, '0');
-    if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
+    if(GAMEDATA::getInstance()->getMahjongRoomType()!=MahjongRoom::privateRoom){
+        if(data.result==1||data.result==3){
+            bg->setTexture("result/player_result_4.png");
+        }else{
+            bg->setTexture("result/player_result_3.png");
+        }
+        LabelAtlas* jifeng = LabelAtlas::create("","result/result_num.png", 9, 13, '0');
         if (data.jifendelta < 0){
-            goldNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.jifendelta))->_string);
+            jifeng->setString(StringUtils::format(";%d", abs(data.jifendelta)));
         }
         else{
-            goldNum->setString(cocos2d::String::createWithFormat(":%d", data.jifendelta)->_string);
+            jifeng->setString(StringUtils::format(":%d", data.jifendelta));
         }
+        jifeng->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        jifeng->setPosition(10, -66);
+        this->addChild(jifeng, 20);
     }else{
-        if (data.golddelta < 0){
-            goldNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.golddelta))->_string);
+        if(data.result==1||data.result==3){
+              bg->setTexture("result/player_result_1.png");
+        }else{
+             bg->setTexture("result/player_result_2.png");
         }
-        else{
-            goldNum->setString(cocos2d::String::createWithFormat(":%d", data.golddelta)->_string);
+        LabelAtlas* goldNum = LabelAtlas::create("0", "result/result_num.png", 9, 13, '0');
+        if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
+            if (data.jifendelta < 0){
+                goldNum->setString(StringUtils::format(";%d", abs(data.jifendelta)));
+            }
+            else{
+                goldNum->setString(StringUtils::format(":%d", data.jifendelta));
+            }
+        }else{
+            if (data.golddelta < 0){
+                goldNum->setString(StringUtils::format(";%d", abs(data.golddelta)));
+            }
+            else{
+                goldNum->setString(StringUtils::format(":%d", data.golddelta));
+            }
         }
+        goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        goldNum->setPosition(10, -56);
+        this->addChild(goldNum, 20);
+        
+        
+        LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format(":%d", data.lequandelta),
+                                                   "result/result_num.png", 9, 13, '0');
+        lequanNum->setPosition(10, -87);
+        lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        this->addChild(lequanNum, 20);
+
     }
-    goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    goldNum->setPosition(-10, -40);
-    this->addChild(goldNum, 20);
     
-    LabelAtlas* diamondNum = LabelAtlas::create("","result/result_num.png", 9, 13, '0');
-    if(data.diamonddelta == 0){
-        if (data.bangzuandelta < 0){
-            diamondNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.bangzuandelta))->_string);
-        }
-        else{
-            diamondNum->setString(cocos2d::String::createWithFormat(":%d", data.bangzuandelta)->_string);
-        }
-    }else{
-        if (data.diamonddelta < 0){
-            diamondNum->setString(cocos2d::String::createWithFormat(";%d", abs(data.diamonddelta))->_string);
-        }
-        else{
-            diamondNum->setString(cocos2d::String::createWithFormat(":%d", data.diamonddelta)->_string);
-        }
-    }
-    diamondNum->setPosition(-10, -65);
-    diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    addChild(diamondNum, 20);
-    
-    LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d", data.lequandelta)->_string,
-                                               "result/result_num.png", 9, 13, '0');
-    lequanNum->setPosition(-10, -90);
-    lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    this->addChild(lequanNum, 20);
     
     return true;
 }

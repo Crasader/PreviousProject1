@@ -47,7 +47,7 @@ void GuiLayer::onExit(){
 void GuiLayer::initView(){
     
     auto chatButton = MenuItemImage::create("gameview/chat_btn_1.png", "gameview/chat_btn_2.png",
-                                            CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
+                                            CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
     auto settingButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
                                                CC_CALLBACK_0(GuiLayer::settingButtonClick, this));
     Menu* myMenu = Menu::create(chatButton, settingButton, NULL);
@@ -84,11 +84,6 @@ void GuiLayer::initView(){
         haungNum->setScale(0.8f);
         haungNum->setPosition(1180, 618);
         addChild(haungNum);
-        //局数
-        Label* jushu = Label::createWithSystemFont("8/8", "arial", 25);
-        jushu->setColor(Color3B(234,195,90));
-        jushu->setPosition(995,150);
-        addChild(jushu);
         
     }
     else{
@@ -125,28 +120,28 @@ void GuiLayer::initView(){
 }
 
 void GuiLayer::soundButtonClick(){
-    //        vector<GameResultData> gameResults;
-    //        for (int i = 0; i < 4; i++){
-    //            GameResultData resultData;
-    //            resultData.result = 3;
-    //            resultData.gold = 100;
-    //            resultData.diamond = 100;
-    //            resultData.jifen =10;
-    //            resultData.lequan = 10;
-    //            resultData.golddelta = 200000;
-    //            resultData.diamonddelta =2;
-    //            resultData.jifendelta = 2;
-    //            resultData.lequandelta = 2000;
-    //            resultData.seatId = i+1;
-    //            resultData.hua = 3;
-    //            resultData.showPoker = "1,2,3,4,5,5,5,5";
-    //            resultData.huType = "1";
-    //            resultData.nickName = "abc";
-    //            gameResults.push_back(resultData);
-    //        }
-    //        GAMEDATA::getInstance()->setGameResults(gameResults);
-    //        EventCustom event(MSG_GAME_RESULT);
-    //        _eventDispatcher->dispatchEvent(&event);
+            vector<GameResultData> gameResults;
+            for (int i = 0; i < 4; i++){
+                GameResultData resultData;
+                resultData.result = 3;
+                resultData.gold = 100;
+                resultData.diamond = 100;
+                resultData.jifen =10;
+                resultData.lequan = 10;
+                resultData.golddelta = 200000;
+                resultData.diamonddelta =2;
+                resultData.jifendelta = 2;
+                resultData.lequandelta = 2000;
+                resultData.seatId = i+1;
+                resultData.hua = 3;
+                resultData.showPoker = "1,2,3,4,5,5,5,5";
+                resultData.huType = "1";
+                resultData.nickName = "abc";
+                gameResults.push_back(resultData);
+            }
+            GAMEDATA::getInstance()->setGameResults(gameResults);
+            EventCustom event(MSG_GAME_RESULT);
+            _eventDispatcher->dispatchEvent(&event);
 }
 
 void GuiLayer::chatButtonClick(){

@@ -35,9 +35,13 @@ bool ChargeItem::init(int price, int fangakNum){
     propBg->setPosition(0,0);
     addChild(propBg);
     
-    auto light = Sprite::create("shop/diamond_bg.png");
+    auto light = Sprite::create("shop/gold_bg_light.png");
     light->setPosition(0,25);
     addChild(light);
+    
+    auto icon_fk = Sprite::create("shop/fangka_image.png");
+    icon_fk->setPosition(0,25);
+    addChild(icon_fk);
     
     auto diamond = Sprite::create();
     if(fangakNum==FANGKA_NUM_1){
@@ -45,8 +49,8 @@ bool ChargeItem::init(int price, int fangakNum){
     }else if(fangakNum==FANGKA_NUM_2){
         diamond->setTexture("shop/fangka_num_10.png");
     }
-    diamond->setPosition(0,25);
-    this->addChild(diamond);
+    diamond->setPosition(0,-52);
+    this->addChild(diamond,2);
     
     auto piao = Sprite::create();
     piao->setPosition(0,-65);
@@ -56,17 +60,6 @@ bool ChargeItem::init(int price, int fangakNum){
     }else if(fangakNum==FANGKA_NUM_2){
         piao->setTexture("shop/red_piaodai.png");
     }
-    
-    LabelAtlas* diamondNumAtl = LabelAtlas::create(StringUtils::format("%d",fangakNum),"shop/prop_num.png",21,28,'0');
-    diamondNumAtl->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    addChild(diamondNumAtl);
-    auto zhuan = Sprite::create("shop/font_diamond.png");
-    zhuan->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    addChild(zhuan);
-    
-    int width = diamondNumAtl->getContentSize().width + zhuan->getContentSize().width;
-    diamondNumAtl->setPosition(-width/2,-55);
-    zhuan->setPosition(width/2,-55);
     
     auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(ChargeItem::confirmCharge, this));
     if(fangakNum==FANGKA_NUM_1){
