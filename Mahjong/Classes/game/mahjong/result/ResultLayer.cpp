@@ -200,49 +200,70 @@ void ResultLayer::showWinAnim(){
         
     }),NULL));
     
-    auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_2.png",CC_CALLBACK_0(ResultLayer::clickQuit, this));
-    auto quitMenu = Menu::create(quitImage, NULL);
-    quitMenu->setPosition(440, 170);
-    this->addChild(quitMenu, 20);
-    quitMenu->setVisible(false);
-    quitImage->setOpacity(77);
-    quitImage->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
-        quitMenu->setVisible(true);
-    }),FadeTo::create(3.0/24, 255), NULL));
+    if(GAMEDATA::getInstance()->getMahjongRoomType() != MahjongRoom::privateRoom){
+        MenuItemImage* continu = MenuItemImage::create("result/start_game_btn_1.png", "result/start_game_btn_2.png",
+                                                       CC_CALLBACK_0(ResultLayer::clickContinu, this));
+        auto continuMenu = Menu::create(continu, NULL);
+        continuMenu->setPosition(640, 170);
+        addChild(continuMenu, 20);
+        continuMenu->setVisible(false);
+        continu->setOpacity(77);
+        continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+            if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                GAMEDATA::getInstance()->setIsGotoLobby(false);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            }else{
+                continuMenu->setVisible(true);
+            }
+            schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+        }),FadeTo::create(3.0/24, 255), NULL));
+        
+    }else{
+        auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_2.png",CC_CALLBACK_0(ResultLayer::clickQuit, this));
+        auto quitMenu = Menu::create(quitImage, NULL);
+        quitMenu->setPosition(440, 170);
+        this->addChild(quitMenu, 20);
+        quitMenu->setVisible(false);
+        quitImage->setOpacity(77);
+        quitImage->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+            quitMenu->setVisible(true);
+        }),FadeTo::create(3.0/24, 255), NULL));
+        
+        MenuItemImage* continu = MenuItemImage::create("result/continue_btn_1.png", "result/continue_btn_2.png",
+                                                       CC_CALLBACK_0(ResultLayer::clickContinu, this));
+        auto continuMenu = Menu::create(continu, NULL);
+        continuMenu->setPosition(840, 170);
+        addChild(continuMenu, 20);
+        continuMenu->setVisible(false);
+        continu->setOpacity(77);
+        continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+            if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                GAMEDATA::getInstance()->setIsGotoLobby(false);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            }else{
+                continuMenu->setVisible(true);
+            }
+            schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+        }),FadeTo::create(3.0/24, 255),CallFunc::create([=](){
+            ClippingNode* cliper = ClippingNode::create();
+            Sprite* stencil =  Sprite::create("result/continue_btn_1.png");
+            Sprite* spark = Sprite::create("result/btn_light.png");
+            spark->setPosition(stencil->getContentSize().width,0);
+            cliper->setAlphaThreshold(0);
+            cliper->setInverted(false);//设置底板可见
+            cliper->setStencil(stencil);
+            cliper->addChild(spark);
+            this->addChild(cliper,30);
+            cliper->setPosition(840, 170);
+            spark->runAction(RepeatForever::create(Sequence::create(CallFunc::create([=](){
+                spark->setPosition(128,0);
+                spark->setVisible(true);
+            }),MoveTo::create(20.0f/24,Point(-100,0)),CallFunc::create([=](){
+                spark->setVisible(false);
+            }),DelayTime::create(20.0f/24), NULL)));
+        }), NULL));
+    }
     
-    MenuItemImage* continu = MenuItemImage::create("result/continue_btn_1.png", "result/continue_btn_2.png",
-                                                   CC_CALLBACK_0(ResultLayer::clickContinu, this));
-    auto continuMenu = Menu::create(continu, NULL);
-    continuMenu->setPosition(840, 170);
-    addChild(continuMenu, 20);
-    continuMenu->setVisible(false);
-    continu->setOpacity(77);
-    continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
-        if(GAMEDATA::getInstance()->getIsGotoLobby()){
-            GAMEDATA::getInstance()->setIsGotoLobby(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        }else{
-            continuMenu->setVisible(true);
-        }
-        schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
-    }),FadeTo::create(3.0/24, 255),CallFunc::create([=](){
-        ClippingNode* cliper = ClippingNode::create();
-        Sprite* stencil =  Sprite::create("result/continue_btn_1.png");
-        Sprite* spark = Sprite::create("result/btn_light.png");
-        spark->setPosition(stencil->getContentSize().width,0);
-        cliper->setAlphaThreshold(0);
-        cliper->setInverted(false);//设置底板可见
-        cliper->setStencil(stencil);
-        cliper->addChild(spark);
-        this->addChild(cliper,30);
-        cliper->setPosition(840, 170);
-        spark->runAction(RepeatForever::create(Sequence::create(CallFunc::create([=](){
-            spark->setPosition(128,0);
-            spark->setVisible(true);
-        }),MoveTo::create(20.0f/24,Point(-100,0)),CallFunc::create([=](){
-            spark->setVisible(false);
-        }),DelayTime::create(20.0f/24), NULL)));
-    }), NULL));
     
     Sprite* pokers = Sprite::create();
     addChild(pokers);
@@ -336,27 +357,49 @@ void ResultLayer::showLoseAnim(){
     addChild(hcell);
     hcell->setPosition(410,360);
     
-    
-    MenuItemImage* quit = MenuItemImage::create("result/quit_btn_1.png", "result/quit_btn_2.png",
-                                                CC_CALLBACK_0(ResultLayer::clickQuit, this));
-    MenuItemImage* continu = MenuItemImage::create("result/continue_btn_1.png", "result/continue_btn_2.png",
-                                                   CC_CALLBACK_0(ResultLayer::clickContinu, this));
-    resultMenu = Menu::create(quit, continu, NULL);
-    resultMenu->setPosition(640, 170);
-    resultMenu->alignItemsHorizontallyWithPadding(60);
-    addChild(resultMenu, 20);
-    resultMenu->setVisible(false);
-    schedule([=](float dt){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         
-        if(GAMEDATA::getInstance()->getIsGotoLobby()){
-            GAMEDATA::getInstance()->setIsGotoLobby(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        }else{
-            resultMenu->setVisible(true);
-        }
+        MenuItemImage* continu = MenuItemImage::create("result/start_game_btn_1.png", "result/start_game_btn_2.png",
+                                                       CC_CALLBACK_0(ResultLayer::clickContinu, this));
+        auto continuMenu = Menu::create(continu, NULL);
+        continuMenu->setPosition(640, 170);
+        addChild(continuMenu, 20);
+        continuMenu->setVisible(false);
+        continu->setOpacity(77);
+        continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+            if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                GAMEDATA::getInstance()->setIsGotoLobby(false);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            }else{
+                continuMenu->setVisible(true);
+            }
+            schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+        }),FadeTo::create(3.0/24, 255), NULL));
         
-        schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
-    }, 0, 0, 3.0f,"delayshowbtn");
+    }else{
+        MenuItemImage* quit = MenuItemImage::create("result/quit_btn_1.png", "result/quit_btn_2.png",
+                                                    CC_CALLBACK_0(ResultLayer::clickQuit, this));
+        MenuItemImage* continu = MenuItemImage::create("result/continue_btn_1.png", "result/continue_btn_2.png",
+                                                       CC_CALLBACK_0(ResultLayer::clickContinu, this));
+        resultMenu = Menu::create(quit, continu, NULL);
+        resultMenu->setPosition(640, 170);
+        resultMenu->alignItemsHorizontallyWithPadding(60);
+        addChild(resultMenu, 20);
+        resultMenu->setVisible(false);
+        schedule([=](float dt){
+            
+            if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                GAMEDATA::getInstance()->setIsGotoLobby(false);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            }else{
+                resultMenu->setVisible(true);
+            }
+            
+            schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+        }, 0, 0, 3.0f,"delayshowbtn");
+        
+        
+    }
     drawPokerPad(maxData.showPoker,maxData.huType,maxData.hua);
 }
 

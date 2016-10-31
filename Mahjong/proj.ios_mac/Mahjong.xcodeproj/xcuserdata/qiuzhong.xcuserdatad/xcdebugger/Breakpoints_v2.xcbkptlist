@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "499225470.482706"
+            timestampString = "499599098.724737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "ResultLayer::showLoseAnim()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1973,11 +1973,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "499225470.482706"
+            timestampString = "499599098.724737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "ResultLayer::clickContinu()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2609,11 +2609,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "499225470.482706"
+            timestampString = "499599098.724737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "524"
+            endingLineNumber = "524"
             landmarkName = "ResultLayer::updateTime(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2625,11 +2625,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/ResultLayer.cpp"
-            timestampString = "499225470.482706"
+            timestampString = "499599098.724737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "ResultLayer::clickContinu()"
             landmarkType = "5">
          </BreakpointContent>
