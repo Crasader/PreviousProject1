@@ -8,6 +8,9 @@
 #include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
 #include "game/mahjong/splash/dropdownlist/LoginMannger.h"
 #include "payment/android/CallAndroidMethod.h"
+#include "game/mahjong/friend/dialog/RoomFullDialog.hpp"
+#include "game/mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
+#include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
 #include "game/utils/Audio.h"
 #include "game/utils/SeatIdUtil.h"
 #include "server/NetworkManage.h"
@@ -100,7 +103,7 @@ void SplashScene::loginByVisitor(){
     Audio::getInstance()->playSoundClick();
     showLoading();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLoginCommmand("kiki05", "kiki158958"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwnO4yCaBasG7qJedNbiGuG0", "http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","泥沙爬虫"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     IOSBridge::getInstance()->doWechatLogin();
@@ -196,6 +199,46 @@ void  SplashScene::addCustomEventListener(){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
         if (seatId == ClientSeatId::hero){
             GAMEDATA::getInstance()->setNeedRemovePoker(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+        }
+        
+    });
+    
+    //进入好友房间回复
+    reEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            NetworkManage::getInstance()->heartbeat();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        } else if(result == "2")
+        {
+            RoomFullDialog* doo = RoomFullDialog::create();
+            addChild(doo);
+        }
+        else if(result == "3")
+        {
+            FangkaNotEnoughDialog* dialog = FangkaNotEnoughDialog::create();
+            addChild(dialog,4);
+        }
+        else if(result == "4"){
+            RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
+            addChild(idd,4);
+        }
+    });
+
+    
+    reOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            NetworkManage::getInstance()->heartbeat();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else if(resp.result == 2){
+            FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
+            addChild(dia,4);
         }
         
     });

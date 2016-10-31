@@ -1483,6 +1483,38 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         const rapidjson::Value &prid = _mDoc["prId"];
         data.prid = prid.GetString();
     }
+    
+    if (_mDoc.HasMember("other")){
+        const rapidjson::Value &pArr = _mDoc["other"];
+        for (int i = 0; i < pArr.Capacity(); ++i){
+            const rapidjson::Value &temp = pArr[i];
+            auto seatId = temp["seatId"].GetInt();
+            auto gold = temp["gold"].GetInt();
+            auto diamond = temp["diamond"].GetInt();
+            auto lockdiamond = temp["bangzuan"].GetInt();
+            auto jifen = temp["jifen"].GetInt();
+            auto lequan = temp["lequan"].GetInt();
+            auto gender = temp["gender"].GetInt();
+            auto ifready = temp["ifready"].GetInt();
+            auto nickname = temp["nickname"].GetString();
+            auto poxiaoId = temp["poxiaoId"].GetString();
+            auto pic = temp["pic"].GetString();
+            Player* info = new Player();
+            info->setPoxiaoId(poxiaoId);
+            info->setSeatId(seatId);
+            info->setBanker(false);
+            info->setIsReady(ifready == 0 ? false : true);
+            info->setGold(gold);
+            info->setDiamond(diamond);
+            info->setLockDiamond(lockdiamond);
+            info->setTicket(lequan);
+            info->setScore(jifen);
+            info->setGender(gender);
+            info->setNickname(nickname);
+            info->setPicture(pic);
+            GAMEDATA::getInstance()->addPlayersInfo(info);
+        }
+    }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, "");
 }
@@ -1515,10 +1547,9 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
          FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
-        if (_mDoc.HasMember("prid")){
+        if (_mDoc.HasMember("prId")){
             const rapidjson::Value &prid = _mDoc["prId"];
             data.prid =prid.GetString();
-
         }
         if (_mDoc.HasMember("prjushu")){
             const rapidjson::Value &prjushu = _mDoc["prjushu"];
