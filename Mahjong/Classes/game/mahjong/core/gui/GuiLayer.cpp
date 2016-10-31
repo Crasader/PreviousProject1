@@ -47,7 +47,7 @@ void GuiLayer::onExit(){
 void GuiLayer::initView(){
     
     auto chatButton = MenuItemImage::create("gameview/chat_btn_1.png", "gameview/chat_btn_2.png",
-                                            CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
+                                            CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
     auto settingButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
                                                CC_CALLBACK_0(GuiLayer::settingButtonClick, this));
     Menu* myMenu = Menu::create(chatButton, settingButton, NULL);
