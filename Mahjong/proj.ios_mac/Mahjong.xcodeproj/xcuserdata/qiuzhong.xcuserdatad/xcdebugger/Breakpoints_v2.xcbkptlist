@@ -2879,11 +2879,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "499575025.657464"
+            timestampString = "499605769.088232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1551"
-            endingLineNumber = "1551"
+            startingLineNumber = "1558"
+            endingLineNumber = "1558"
             landmarkName = "MsgHandler::friendEnterRoomResp(std::string msg)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3584,11 +3584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "499575025.657464"
+            timestampString = "499605769.088232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1575"
-            endingLineNumber = "1575"
+            startingLineNumber = "1582"
+            endingLineNumber = "1582"
             landmarkName = "MsgHandler::playerChatNotify(std::string msg)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3600,11 +3600,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "499575025.657464"
+            timestampString = "499605769.088232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1576"
-            endingLineNumber = "1576"
+            startingLineNumber = "1583"
+            endingLineNumber = "1583"
             landmarkName = "MsgHandler::playerChatNotify(std::string msg)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3696,11 +3696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "499575025.657464"
+            timestampString = "499605769.088232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2276"
-            endingLineNumber = "2276"
+            startingLineNumber = "2283"
+            endingLineNumber = "2283"
             landmarkName = "MsgHandler::getPlayerInfoResp(std::string msg)"
             landmarkType = "5">
          </BreakpointContent>

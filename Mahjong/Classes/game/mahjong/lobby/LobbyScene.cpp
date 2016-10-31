@@ -490,8 +490,8 @@ void LobbyScene::addEventListener(){
         if(resp.result == 1){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
-            DiamondNotEnoughDialog* dialog = DiamondNotEnoughDialog::create();
-            addChild(dialog,4);
+            FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
+            addChild(dia,4);
         }
         
     });
