@@ -200,7 +200,7 @@ void ResultLayer::showWinAnim(){
         
     }),NULL));
     
-    if(GAMEDATA::getInstance()->getMahjongRoomType() != MahjongRoom::privateRoom){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
       
         if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount == "8"&&GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "8"){
             
