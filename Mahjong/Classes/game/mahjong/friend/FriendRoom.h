@@ -15,5 +15,7 @@ private:
     void closeView();
     void selectFangka8();
     void selectFangka16();
+    void selectWulezi();
+    void selectLezi();
 };
 #endif
