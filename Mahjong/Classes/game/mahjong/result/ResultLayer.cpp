@@ -201,23 +201,73 @@ void ResultLayer::showWinAnim(){
     }),NULL));
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() != MahjongRoom::privateRoom){
-        MenuItemImage* continu = MenuItemImage::create("result/start_game_btn_1.png", "result/start_game_btn_2.png",
-                                                       CC_CALLBACK_0(ResultLayer::clickContinu, this));
-        auto continuMenu = Menu::create(continu, NULL);
-        continuMenu->setPosition(640, 170);
-        addChild(continuMenu, 20);
-        continuMenu->setVisible(false);
-        continu->setOpacity(77);
-        continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
-            if(GAMEDATA::getInstance()->getIsGotoLobby()){
-                GAMEDATA::getInstance()->setIsGotoLobby(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            }else{
-                continuMenu->setVisible(true);
-            }
-            schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
-        }),FadeTo::create(3.0/24, 255), NULL));
-        
+      
+        if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount == "8"&&GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "8"){
+            
+            auto biaoji = Sprite::create("result/game_over_8.png");
+            biaoji->setPosition(840, 170);
+            biaoji->setVisible(false);
+            addChild(biaoji);
+            MenuItemImage* continu = MenuItemImage::create("result/go_lobby_btn_1.png", "result/go_lobby_btn_2.png",
+                                                           CC_CALLBACK_0(ResultLayer::clickQuit, this));
+            auto continuMenu = Menu::create(continu, NULL);
+            continuMenu->setPosition(640, 170);
+            addChild(continuMenu, 20);
+            continuMenu->setVisible(false);
+            continu->setOpacity(77);
+            continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+                if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                    GAMEDATA::getInstance()->setIsGotoLobby(false);
+                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                }else{
+                    continuMenu->setVisible(true);
+                     biaoji->setVisible(true);
+                }
+                schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+            }),FadeTo::create(3.0/24, 255), NULL));
+        }else if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount == "16"){
+            auto biaoji = Sprite::create("result/game_over_16.png");
+            biaoji->setPosition(840, 170);
+            biaoji->setVisible(false);
+            addChild(biaoji);
+
+            MenuItemImage* continu = MenuItemImage::create("result/go_lobby_btn_1.png", "result/go_lobby_btn_2.png",
+                                                           CC_CALLBACK_0(ResultLayer::clickQuit, this));
+            auto continuMenu = Menu::create(continu, NULL);
+            continuMenu->setPosition(640, 170);
+            addChild(continuMenu, 20);
+            continuMenu->setVisible(false);
+            continu->setOpacity(77);
+            continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+                if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                    GAMEDATA::getInstance()->setIsGotoLobby(false);
+                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                }else{
+                    continuMenu->setVisible(true);
+                    biaoji->setVisible(true);
+                }
+                schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+            }),FadeTo::create(3.0/24, 255), NULL));
+            
+            
+        }else{
+            MenuItemImage* continu = MenuItemImage::create("result/start_game_btn_1.png", "result/start_game_btn_2.png",
+                                                           CC_CALLBACK_0(ResultLayer::clickContinu, this));
+            auto continuMenu = Menu::create(continu, NULL);
+            continuMenu->setPosition(640, 170);
+            addChild(continuMenu, 20);
+            continuMenu->setVisible(false);
+            continu->setOpacity(77);
+            continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+                if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                    GAMEDATA::getInstance()->setIsGotoLobby(false);
+                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                }else{
+                    continuMenu->setVisible(true);
+                }
+                schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+            }),FadeTo::create(3.0/24, 255), NULL));
+        }
     }else{
         auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_2.png",CC_CALLBACK_0(ResultLayer::clickQuit, this));
         auto quitMenu = Menu::create(quitImage, NULL);
@@ -358,24 +408,70 @@ void ResultLayer::showLoseAnim(){
     hcell->setPosition(410,360);
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount == "8"&&GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "8"){
+            auto biaoji = Sprite::create("result/game_over_8.png");
+            biaoji->setPosition(840, 170);
+            biaoji->setVisible(false);
+            addChild(biaoji);
+            MenuItemImage* continu = MenuItemImage::create("result/go_lobby_btn_1.png", "result/go_lobby_btn_2.png",
+                                                           CC_CALLBACK_0(ResultLayer::clickQuit, this));
+            auto continuMenu = Menu::create(continu, NULL);
+            continuMenu->setPosition(640, 170);
+            addChild(continuMenu, 20);
+            continuMenu->setVisible(false);
+            continu->setOpacity(77);
+            continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+                if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                    GAMEDATA::getInstance()->setIsGotoLobby(false);
+                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                }else{
+                    continuMenu->setVisible(true);
+                    biaoji->setVisible(true);
+                }
+                schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+            }),FadeTo::create(3.0/24, 255), NULL));
+        }else if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount == "16"){
+            auto biaoji = Sprite::create("result/game_over_8.png");
+            biaoji->setPosition(840, 170);
+            biaoji->setVisible(false);
+            addChild(biaoji);
+            MenuItemImage* continu = MenuItemImage::create("result/go_lobby_btn_1.png", "result/go_lobby_btn_2.png",
+                                                           CC_CALLBACK_0(ResultLayer::clickQuit, this));
+            auto continuMenu = Menu::create(continu, NULL);
+            continuMenu->setPosition(640, 170);
+            addChild(continuMenu, 20);
+            continuMenu->setVisible(false);
+            continu->setOpacity(77);
+            continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+                if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                    GAMEDATA::getInstance()->setIsGotoLobby(false);
+                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                }else{
+                    continuMenu->setVisible(true);
+                    biaoji->setVisible(true);
+                }
+                schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+            }),FadeTo::create(3.0/24, 255), NULL));
         
-        MenuItemImage* continu = MenuItemImage::create("result/start_game_btn_1.png", "result/start_game_btn_2.png",
-                                                       CC_CALLBACK_0(ResultLayer::clickContinu, this));
-        auto continuMenu = Menu::create(continu, NULL);
-        continuMenu->setPosition(640, 170);
-        addChild(continuMenu, 20);
-        continuMenu->setVisible(false);
-        continu->setOpacity(77);
-        continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
-            if(GAMEDATA::getInstance()->getIsGotoLobby()){
-                GAMEDATA::getInstance()->setIsGotoLobby(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            }else{
-                continuMenu->setVisible(true);
-            }
-            schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
-        }),FadeTo::create(3.0/24, 255), NULL));
         
+        }else{
+            MenuItemImage* continu = MenuItemImage::create("result/start_game_btn_1.png", "result/start_game_btn_2.png",
+                                                           CC_CALLBACK_0(ResultLayer::clickContinu, this));
+            auto continuMenu = Menu::create(continu, NULL);
+            continuMenu->setPosition(640, 170);
+            addChild(continuMenu, 20);
+            continuMenu->setVisible(false);
+            continu->setOpacity(77);
+            continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
+                if(GAMEDATA::getInstance()->getIsGotoLobby()){
+                    GAMEDATA::getInstance()->setIsGotoLobby(false);
+                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                }else{
+                    continuMenu->setVisible(true);
+                }
+                schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+            }),FadeTo::create(3.0/24, 255), NULL));
+        }
     }else{
         MenuItemImage* quit = MenuItemImage::create("result/quit_btn_1.png", "result/quit_btn_2.png",
                                                     CC_CALLBACK_0(ResultLayer::clickQuit, this));
