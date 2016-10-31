@@ -14,7 +14,8 @@ public:
 private:
     void showGameHelp();
     void feedBack();
+    void dissolveRoom();
 	void drawDialog() override;
-    void slideCallback(Object *sender, Control::EventType controlEvent);
+    void slideCallback(Ref *sender, Control::EventType controlEvent);
 };
 #endif

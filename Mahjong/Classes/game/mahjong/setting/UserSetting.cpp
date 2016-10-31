@@ -17,10 +17,6 @@ void UserSetting::drawDialog(){
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
     
-//    auto all_bg = Sprite::create("common/all_bg.jpg");
-//    all_bg->setPosition(640, 360);
-//    addChild(all_bg);
-    
     
     auto  dialogBg = Sprite::create("common/dialog_bg.png");
     dialogBg->setPosition(640, 360);
@@ -79,15 +75,20 @@ void UserSetting::drawDialog(){
                                            CC_CALLBACK_0(UserSetting::feedBack, this));
     
     Menu* myMneu = Menu::create(helpImage,feedImage,NULL);
-    myMneu->setPosition(650,185);
+    myMneu->setPosition(600,185);
     myMneu->alignItemsHorizontallyWithPadding(20);
     addChild(myMneu);
-
+    
+    
+    auto dissolve = MenuItemImage::create("setting/dissolve_room_1.png","setting/dissolve_room_2.png",CC_CALLBACK_0(UserSetting::dissolveRoom, this));
+    auto dissolveMenu = Menu::create(dissolve,NULL);
+    dissolveMenu->setPosition(930,185);
+    addChild(dissolveMenu);
 }
 
 
 
-void UserSetting::slideCallback(Object *sender, Control::EventType controlEvent)
+void UserSetting::slideCallback(Ref *sender, Control::EventType controlEvent)
 {
     auto slide_control = (ControlSlider*)sender;//通过回调参数sender 获得ControlSlider
     int current_value = slide_control->getValue();//获取slide当前的值
@@ -111,4 +112,8 @@ void UserSetting::showGameHelp(){
 void UserSetting::feedBack(){
     GameFeedDialog* feed = GameFeedDialog::create();
     addChild(feed);
+}
+
+void UserSetting::dissolveRoom(){
+
 }
