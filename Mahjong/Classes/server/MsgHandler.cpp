@@ -776,6 +776,11 @@ void MsgHandler::getHeroJongs(std::string msg){
     GAMEDATA::getInstance()->setDice(_mDoc["dice"].GetString());
     GAMEDATA::getInstance()->setKaibao(_mDoc["kb"].GetString());
     GAMEDATA::getInstance()->setHuangfan(_mDoc["hf"].GetString());
+    FriendOpenRoomRespData opendata = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+    const rapidjson::Value &prjucount = _mDoc["prjucount"];
+    opendata.prjucount = StringUtils::format("%d",prjucount.GetInt());
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
+
     postNotifyMessage(MSG_GAME_START_NOTIFY, "");
     PlayerTurnData playerTurnData;
     playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
@@ -1185,6 +1190,12 @@ void MsgHandler::playerConnectAgain(std::string msg){
         lastGameData.players.push_back(data);
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
+    FriendOpenRoomRespData opendata;
+    const rapidjson::Value &prjushu = _mDoc["prjushu"];
+    opendata.prjushu = prjushu.GetString();
+    const rapidjson::Value &prjucount = _mDoc["prjucount"];
+    opendata.prjucount = prjucount.GetString();
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
     postNotifyMessage(MSG_PLAYER_CONNECT_AGAIN, StringUtil::itos(seatId.GetInt()));
 }
 
@@ -1455,7 +1466,8 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     FriendOpenRoomRespData data;
     const rapidjson::Value &result = _mDoc["result"];
     data.result = result.GetInt();
-    
+    const rapidjson::Value &prjushu = _mDoc["prjushu"];
+    data.prjushu = prjushu.GetString();
     if(_mDoc.HasMember("jifen")){
         const rapidjson::Value &jifen = _mDoc["jifen"];
         UserData::getInstance()->setScore(jifen.GetInt());
@@ -1501,8 +1513,10 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
         const rapidjson::Value &prid = _mDoc["prId"];
+        const rapidjson::Value &prjushu = _mDoc["prjushu"];
         FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         data.prid =prid.GetString();
+        data.prjushu = prjushu.GetString();
         GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
         if (_mDoc.HasMember("other")){
             const rapidjson::Value &pArr = _mDoc["other"];

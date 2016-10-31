@@ -833,6 +833,7 @@
 			children = (
 				D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */,
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
+				D2B1A7B51CCDF0F300A20896 /* mahjong */,
 				D2B1A7B11CCDF0F300A20896 /* game */,
 				D28A4A0A1D0565C200741FD0 /* http */,
 				D257FD6D1D6C2E2400B8C596 /* payment */,
@@ -1183,7 +1184,6 @@
 			children = (
 				D28A4A211D056B7A00741FD0 /* utils */,
 				D2B1A7B21CCDF0F300A20896 /* loading */,
-				D2B1A7B51CCDF0F300A20896 /* mahjong */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -1221,7 +1221,8 @@
 				D2B1A8441CCDF0F300A20896 /* state */,
 				D22EEFB61D66D14D00BF1CCB /* trusteeship */,
 			);
-			path = mahjong;
+			name = mahjong;
+			path = game/mahjong;
 			sourceTree = "<group>";
 		};
 		D2B1A7B61CCDF0F300A20896 /* anim */ = {

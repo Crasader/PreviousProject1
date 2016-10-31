@@ -336,11 +336,23 @@ void DealJongAnim::drawPaidui(int num){
     shyu->setOpacity(77);
     shyu->runAction(FadeTo::create(6.0/24,255));
     addChild(shyu);
-    auto alt = LabelAtlas::create(cocos2d::String::createWithFormat("%d",num)->_string,"gameview/hua_num.png",17,24,'0');
+    auto alt = LabelAtlas::create(StringUtils::format("%d",num),"gameview/hua_num.png",17,24,'0');
     alt->setAnchorPoint(Point::ANCHOR_MIDDLE);
     alt->setPosition(997,200);
     alt->setOpacity(77);
     alt->runAction(FadeTo::create(6.0/24,255));
     alt->setTag(911);
     addChild(alt);
+    
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        Label* jushu = Label::createWithSystemFont(StringUtils::format("%s/%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()), "arial", 25);
+        jushu->setColor(Color3B(234,195,90));
+        jushu->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+        jushu->setPosition(990,160);
+        addChild(jushu);
+        
+        auto ju = Sprite::create("gameview/private_jushu.png");
+        ju->setPosition(1005,160);
+        addChild(ju);
+    }
 }

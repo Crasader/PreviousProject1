@@ -225,6 +225,8 @@ struct RemovePlayerData{
 struct FriendOpenRoomRespData{
     int seatId;
     int result;
+    std::string prjushu;
+    std::string prjucount;
     std::string prid;
 };
 
