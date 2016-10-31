@@ -365,7 +365,7 @@ void Audio::playSoundLiuJu(int gender){
 
 
 void Audio::playSoundTouzi(){
-    AudioEngine::play2d("audio/tou_zi.wav",false,UserData::getInstance()->getSoundValue());
+    AudioEngine::play2d("audio/tou_zi.mp3",false,UserData::getInstance()->getSoundValue());
 }
 
 void Audio::playSoundFapai(){
@@ -733,7 +733,7 @@ void Audio::playSoundHuMusic(int type){
     if(type == 0){
         AudioEngine::play2d("audio/hu_pai.mp3",false,UserData::getInstance()->getSoundValue()*0.6f);
     }else{
-        AudioEngine::play2d("audio/zimo_gangkai.wav",false,UserData::getInstance()->getSoundValue()*0.6f);
+        AudioEngine::play2d("audio/zimo_gangkai.mp3",false,UserData::getInstance()->getSoundValue()*0.6f);
     }
 }
 

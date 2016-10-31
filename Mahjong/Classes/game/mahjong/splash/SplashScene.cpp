@@ -57,6 +57,8 @@ void SplashScene::onExit(){
     _eventDispatcher->removeEventListener(reConnectAgain);
     _eventDispatcher->removeEventListener(dropListListener);
     _eventDispatcher->removeEventListener(heroFirstPoke);
+    _eventDispatcher->removeEventListener(reEnterFriendRoomListener);
+    _eventDispatcher->removeEventListener(reOpenFriendRoomListener);
 }
 
 
