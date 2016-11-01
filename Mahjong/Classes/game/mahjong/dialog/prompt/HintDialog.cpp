@@ -43,7 +43,7 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMe
     thishiBg->setPosition(640, 375);
     addChild(thishiBg);
     
-    Label* text = Label::create(msg, "Arial", 30);
+    Label* text = Label::createWithSystemFont(msg, "Arial", 30);
     text->setColor(Color3B(38,158,228));
     text->setPosition(640, 360);
     addChild(text);

@@ -237,6 +237,7 @@ void  SplashScene::addCustomEventListener(){
         if(resp.result == 1){
             NetworkManage::getInstance()->heartbeat();
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
             FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
