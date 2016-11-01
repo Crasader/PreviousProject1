@@ -464,6 +464,7 @@ void LobbyScene::addEventListener(){
         std::string result = buf;
         removeLoading();
         if (result == "1"){
+             GAMEDATA::getInstance()->clearPlayersInfo();
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(result == "2")

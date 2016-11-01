@@ -27,7 +27,7 @@ private:
 	void drawPlayerInvite();
     void showPlayerBill();
 	void invitePlayer(Ref* ref);
-    
+    void dissovleRoom();
 	
 };
 #endif

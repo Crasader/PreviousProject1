@@ -79,6 +79,7 @@ public:
     std::string getActivityPrideCommand(std::string rid,std::string phone);
     std::string getActivityTimeCommand();
     std::string getEnterRoomByIdCommand(std::string roomid);
+    std::string getDissolveRoomCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

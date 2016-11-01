@@ -780,7 +780,7 @@ void MsgHandler::getHeroJongs(std::string msg){
     const rapidjson::Value &prjucount = _mDoc["prjucount"];
     opendata.prjucount = StringUtils::format("%d",prjucount.GetInt());
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
-
+    
     postNotifyMessage(MSG_GAME_START_NOTIFY, "");
     PlayerTurnData playerTurnData;
     playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
@@ -1456,6 +1456,22 @@ void MsgHandler::friendAddNotify(std::string msg){
     postNotifyMessage(MSG_ADD_FRIEND_NOTIFY, nickname.GetString());
 }
 
+
+void MsgHandler::friendOpenRoomNotify(std::string msg){
+    // {code:2037,poxiaoId:"123",nickname:"aaa",pId:"456"}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &nickname = _mDoc["nickname"];
+    const rapidjson::Value &pId = _mDoc["pId"];
+    FriendOpenRoomNotifyData data;
+    data.nickname = nickname.GetString();
+    data.pid = pId.GetString();
+    GAMEDATA::getInstance()->setFriendOpenRoomNotify(data);
+    postNotifyMessage(MSG_FRIEND_OPEN_ROOM_NOTIFY, "");
+}
+
 void MsgHandler::friendOpenRoomResp(std::string msg){
     //    GAMEDATA::getInstance()->clearPlayersInfo();
     //{code:2038,poxiaoId:poxiaoId,result:"0",seatId:1}
@@ -1464,11 +1480,18 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     FriendOpenRoomRespData data;
-    const rapidjson::Value &result = _mDoc["result"];
-    data.result = result.GetInt();
+    
     if(_mDoc.HasMember("prjushu")){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
         data.prjushu = prjushu.GetString();
+    }
+    if(_mDoc.HasMember("prjucount")){
+        const rapidjson::Value &prjucount = _mDoc["prjucount"];
+        data.prjucount = prjucount.GetString();
+    }
+    if(_mDoc.HasMember("prId")){
+        const rapidjson::Value &prid = _mDoc["prId"];
+        data.prid = prid.GetString();
     }
     if(_mDoc.HasMember("jifen")){
         const rapidjson::Value &jifen = _mDoc["jifen"];
@@ -1479,10 +1502,9 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         data.seatId = seatId.GetInt();
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     }
-    if(_mDoc.HasMember("prId")){
-        const rapidjson::Value &prid = _mDoc["prId"];
-        data.prid = prid.GetString();
-    }
+    const rapidjson::Value &result = _mDoc["result"];
+    data.result = result.GetInt();
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     
     if (_mDoc.HasMember("other")){
         const rapidjson::Value &pArr = _mDoc["other"];
@@ -1515,23 +1537,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
             GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
-    GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, "");
-}
-
-void MsgHandler::friendOpenRoomNotify(std::string msg){
-    // {code:2037,poxiaoId:"123",nickname:"aaa",pId:"456"}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &nickname = _mDoc["nickname"];
-    const rapidjson::Value &pId = _mDoc["pId"];
-    FriendOpenRoomNotifyData data;
-    data.nickname = nickname.GetString();
-    data.pid = pId.GetString();
-    GAMEDATA::getInstance()->setFriendOpenRoomNotify(data);
-    postNotifyMessage(MSG_FRIEND_OPEN_ROOM_NOTIFY, "");
 }
 
 
@@ -1542,50 +1548,53 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
-    if (result.GetInt() == 1){
-        GAMEDATA::getInstance()->clearPlayersInfo();
+    FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+    if(_mDoc.HasMember("seatId")){
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
-         FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
-        if (_mDoc.HasMember("prId")){
-            const rapidjson::Value &prid = _mDoc["prId"];
-            data.prid =prid.GetString();
-        }
-        if (_mDoc.HasMember("prjushu")){
-            const rapidjson::Value &prjushu = _mDoc["prjushu"];
-            data.prjushu = prjushu.GetString();
-        }
-        GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
-        if (_mDoc.HasMember("other")){
-            const rapidjson::Value &pArr = _mDoc["other"];
-            for (int i = 0; i < pArr.Capacity(); ++i){
-                const rapidjson::Value &temp = pArr[i];
-                auto seatId = temp["seatId"].GetInt();
-                auto gold = temp["gold"].GetInt();
-                auto diamond = temp["diamond"].GetInt();
-                auto lockdiamond = temp["bangzuan"].GetInt();
-                auto jifen = temp["jifen"].GetInt();
-                auto lequan = temp["lequan"].GetInt();
-                auto gender = temp["gender"].GetInt();
-                auto ifready = temp["ifready"].GetInt();
-                auto nickname = temp["nickname"].GetString();
-                auto poxiaoId = temp["poxiaoId"].GetString();
-                auto pic = temp["pic"].GetString();
-                Player* info = new Player();
-                info->setPoxiaoId(poxiaoId);
-                info->setSeatId(seatId);
-                info->setBanker(false);
-                info->setIsReady(ifready == 0 ? false : true);
-                info->setGold(gold);
-                info->setDiamond(diamond);
-                info->setLockDiamond(lockdiamond);
-                info->setTicket(lequan);
-                info->setScore(jifen);
-                info->setGender(gender);
-                info->setNickname(nickname);
-                info->setPicture(pic);
-                GAMEDATA::getInstance()->addPlayersInfo(info);
-            }
+    }
+    if (_mDoc.HasMember("prId")){
+        const rapidjson::Value &prid = _mDoc["prId"];
+        data.prid =prid.GetString();
+    }
+    if (_mDoc.HasMember("prjushu")){
+        const rapidjson::Value &prjushu = _mDoc["prjushu"];
+        data.prjushu = prjushu.GetString();
+    }
+    if(_mDoc.HasMember("prjucount")){
+        const rapidjson::Value &prjucount = _mDoc["prjucount"];
+        data.prjucount = prjucount.GetString();
+    }
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
+    if (_mDoc.HasMember("other")){
+        const rapidjson::Value &pArr = _mDoc["other"];
+        for (int i = 0; i < pArr.Capacity(); ++i){
+            const rapidjson::Value &temp = pArr[i];
+            auto seatId = temp["seatId"].GetInt();
+            auto gold = temp["gold"].GetInt();
+            auto diamond = temp["diamond"].GetInt();
+            auto lockdiamond = temp["bangzuan"].GetInt();
+            auto jifen = temp["jifen"].GetInt();
+            auto lequan = temp["lequan"].GetInt();
+            auto gender = temp["gender"].GetInt();
+            auto ifready = temp["ifready"].GetInt();
+            auto nickname = temp["nickname"].GetString();
+            auto poxiaoId = temp["poxiaoId"].GetString();
+            auto pic = temp["pic"].GetString();
+            Player* info = new Player();
+            info->setPoxiaoId(poxiaoId);
+            info->setSeatId(seatId);
+            info->setBanker(false);
+            info->setIsReady(ifready == 0 ? false : true);
+            info->setGold(gold);
+            info->setDiamond(diamond);
+            info->setLockDiamond(lockdiamond);
+            info->setTicket(lequan);
+            info->setScore(jifen);
+            info->setGender(gender);
+            info->setNickname(nickname);
+            info->setPicture(pic);
+            GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
     postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP, StringUtil::itos(result.GetInt()));
@@ -2304,7 +2313,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         const rapidjson::Value &fangka = _mDoc["fangka"];
         UserData::getInstance()->setFangkaNum(fangka.GetInt());
     }
-
+    
     if(_mDoc.HasMember("gold")){
         const rapidjson::Value &gold = _mDoc["gold"];
         UserData::getInstance()->setGold(gold.GetInt());

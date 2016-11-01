@@ -62,7 +62,7 @@ void GuiLayer::initView(){
     this->addChild(quit);
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        
+        //私人房间
         auto kaibaoBg = Sprite::create("gameview/room_id.png");
         kaibaoBg->setPosition(1180,645);
         addChild(kaibaoBg);
@@ -84,6 +84,14 @@ void GuiLayer::initView(){
         haungNum->setScale(0.8f);
         haungNum->setPosition(1180, 618);
         addChild(haungNum);
+        
+        //解散牌局按钮
+        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())<=1){
+            auto dissolveRoom = MenuItemImage::create("gameview/dissovle_room_btn_1.png","gameview/dissovle_room_btn_2.png",CC_CALLBACK_0(GuiLayer::dissovleRoom, this));
+            auto disMenu = Menu::create(dissolveRoom,NULL);
+            disMenu->setPosition(1140,100);
+            addChild(disMenu);
+        }
         
     }
     else{
@@ -119,33 +127,33 @@ void GuiLayer::initView(){
     
 }
 
+//测试方法
 void GuiLayer::soundButtonClick(){
-            vector<GameResultData> gameResults;
-            for (int i = 0; i < 4; i++){
-                GameResultData resultData;
-                resultData.result = 3;
-                resultData.gold = 100;
-                resultData.diamond = 100;
-                resultData.jifen =10;
-                resultData.lequan = 10;
-                resultData.golddelta = 200000;
-                resultData.diamonddelta =2;
-                resultData.jifendelta = 2;
-                resultData.lequandelta = 2000;
-                resultData.seatId = i+1;
-                resultData.hua = 3;
-                resultData.showPoker = "1,2,3,4,5,5,5,5";
-                resultData.huType = "1";
-                resultData.nickName = "abc";
-                gameResults.push_back(resultData);
-            }
-            GAMEDATA::getInstance()->setGameResults(gameResults);
-            EventCustom event(MSG_GAME_RESULT);
-            _eventDispatcher->dispatchEvent(&event);
+    vector<GameResultData> gameResults;
+    for (int i = 0; i < 4; i++){
+        GameResultData resultData;
+        resultData.result = 3;
+        resultData.gold = 100;
+        resultData.diamond = 100;
+        resultData.jifen =10;
+        resultData.lequan = 10;
+        resultData.golddelta = 200000;
+        resultData.diamonddelta =2;
+        resultData.jifendelta = 2;
+        resultData.lequandelta = 2000;
+        resultData.seatId = i+1;
+        resultData.hua = 3;
+        resultData.showPoker = "1,2,3,4,5,5,5,5";
+        resultData.huType = "1";
+        resultData.nickName = "abc";
+        gameResults.push_back(resultData);
+    }
+    GAMEDATA::getInstance()->setGameResults(gameResults);
+    EventCustom event(MSG_GAME_RESULT);
+    _eventDispatcher->dispatchEvent(&event);
 }
 
 void GuiLayer::chatButtonClick(){
-    //    SocketDataManage::getInstance()->resumeMsg();
     auto gameChat = ChatDialog::create("");
     gameChat->setTag(1001);
     addChild(gameChat,2);
@@ -231,10 +239,10 @@ void GuiLayer::drawPlayerInvite(){
 }
 
 void GuiLayer::invitePlayer(Ref* ref){
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！",StringUtils::format("房间号:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),false);
-//#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,"房间开好，就等侬了！", StringUtils::format("房间号:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()));
-//#endif
+    //TODO
 }
 
+
+void GuiLayer::dissovleRoom(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
+}

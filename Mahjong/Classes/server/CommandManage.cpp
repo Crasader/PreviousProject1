@@ -633,6 +633,14 @@ std::string CommandManage::getEnterRoomByIdCommand(std::string roomid){
     return commandString(keyValue);
 }
 
+
+std::string CommandManage::getDissolveRoomCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_DISMISS_FZ_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
 	rapidjson::Document document;
 	rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

@@ -22,6 +22,7 @@ void MjGameScene::onEnter(){
             if(NULL!= getChildByTag(100)){
                 getChildByTag(100)->removeFromParent();
             }
+             GAMEDATA::getInstance()->clearPlayersInfo();
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             MahjongView* mjView = MahjongView::create();
             mjView->setTag(100);
