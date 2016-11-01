@@ -117,8 +117,6 @@
 		D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D2435FA41CC73525000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
-		D2484EB61D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */; };
-		D2484EB71D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -470,8 +468,6 @@
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
-		D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DiamondNotEnoughDialog.cpp; sourceTree = "<group>"; };
-		D2484EB51D7464430027F40D /* DiamondNotEnoughDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiamondNotEnoughDialog.hpp; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -932,8 +928,6 @@
 				D281E5F91DC19EF500D3E44E /* mall */,
 				D281E5EC1DC1992500D3E44E /* fangka */,
 				D281E5E31DC1969D00D3E44E /* gold */,
-				D2484EB41D7464430027F40D /* DiamondNotEnoughDialog.cpp */,
-				D2484EB51D7464430027F40D /* DiamondNotEnoughDialog.hpp */,
 				D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */,
 				D22EEF291D66AAF000BF1CCB /* FirstChageDialog.hpp */,
 				D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */,
@@ -1688,7 +1682,6 @@
 				D22EEF811D66CFC800BF1CCB /* FriendListView.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D257FD7A1D6C2E2400B8C596 /* RechargeVC.m in Sources */,
-				D2484EB61D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF851D66CFC800BF1CCB /* InviteCell.cpp in Sources */,
 				D22EEFDD1D66D14D00BF1CCB /* UserSetting.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
@@ -1797,7 +1790,6 @@
 				D2F05F661D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
 				D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
-				D2484EB71D7464430027F40D /* DiamondNotEnoughDialog.cpp in Sources */,
 				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
 				D28A4A1E1D056B4700741FD0 /* ResultLayer.cpp in Sources */,

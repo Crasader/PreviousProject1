@@ -12,7 +12,6 @@
 #include "game/mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "game/mahjong/shop/mall/LequanShop.hpp"
 #include "game/mahjong/shop/gold/GoldNotEnoughDialog.hpp"
-#include "game/mahjong/shop/DiamondNotEnoughDialog.hpp"
 #include "game/mahjong/share/HongbaoPride.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/widget/HeadImage.hpp"
@@ -99,7 +98,7 @@ void LobbyScene::signUpdate(float dt){
         GAMEDATA::getInstance()->setShowDialogType(-1);
     }
     else if(GAMEDATA::getInstance()->getShowDialogType() == 4){
-        DiamondNotEnoughDialog* charge = DiamondNotEnoughDialog::create();
+        FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
         addChild(charge,30);
         GAMEDATA::getInstance()->setShowDialogType(-1);
     }
@@ -474,7 +473,7 @@ void LobbyScene::addEventListener(){
         }
         else if(result == "3")
         {
-            DiamondNotEnoughDialog* dialog = DiamondNotEnoughDialog::create();
+            FangkaNotEnoughDialog* dialog = FangkaNotEnoughDialog::create();
             addChild(dialog,4);        }
         else if(result == "4"){
             RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
