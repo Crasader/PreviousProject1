@@ -8,7 +8,6 @@
 #include "game/utils/SeatIdUtil.h"
 #include "server/MsgHandler.h"
 #include "server/NetworkManage.h"
-#include "server/SocketDataManage.h"
 #include "userdata/UserData.h"
 #include "game/utils/GameConfig.h"
 

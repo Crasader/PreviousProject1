@@ -470,6 +470,18 @@ void MsgHandler::distribute(int code, std::string msg){
             handleActivityTimeResp(msg);
             break;
         }
+        case MSGCODE_FRIEND_DISMISS_NOTIFY:{
+            //2047
+            break;
+        }
+        case MSGCODE_FRIEND_DISMISS_AGREE_NOTIFY:{
+            //2049
+            break;
+        }
+        case MSGCODE_FRIEND_DISMISS_AGREE_RESULT_NOTIFY:{
+            //2051
+            break;
+        }
         default:
             break;
     }

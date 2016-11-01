@@ -80,6 +80,8 @@ public:
     std::string getActivityTimeCommand();
     std::string getEnterRoomByIdCommand(std::string roomid);
     std::string getDissolveRoomCommand();
+    std::string getDissolveRoomRequestCommand();
+    std::string getDissolveRoomNotify(std::string agree);
 private:
 	CommandManage();
 	static CommandManage* _instance;

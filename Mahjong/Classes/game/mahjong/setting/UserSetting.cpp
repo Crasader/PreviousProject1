@@ -1,14 +1,16 @@
 #include "game/mahjong/setting/UserSetting.h"
 #include "game/mahjong/setting/GameFeedDialog.hpp"
 #include "game/mahjong/setting/GameRuleDialog.hpp"
+#include "game/mahjong/state/GameData.h"
 #include "game/utils/Audio.h"
 #include "userdata/UserData.h"
+#include "server/NetworkManage.h"
 
 bool UserSetting::init(){
-	if (!BaseDialog::init()){
-		return false;
-	}
-	return true;
+    if (!BaseDialog::init()){
+        return false;
+    }
+    return true;
 }
 
 void UserSetting::drawDialog(){
@@ -33,7 +35,7 @@ void UserSetting::drawDialog(){
     auto titleIcon = Sprite::create("setting/settting_title.png");
     titleIcon->setPosition(640, 615);
     addChild(titleIcon);
-
+    
     auto musicBg = Sprite::create("setting/setting_bg.png");
     musicBg->setPosition(640,380);
     addChild(musicBg);
@@ -51,7 +53,7 @@ void UserSetting::drawDialog(){
     slide_control->addTargetWithActionForControlEvents(this,cccontrol_selector(UserSetting::slideCallback),Control::EventType::VALUE_CHANGED);//设置拖动回调
     slide_control->setPosition(720,440);
     addChild(slide_control);
-
+    
     
     
     auto musicText = Sprite::create("setting/music.png");
@@ -60,7 +62,7 @@ void UserSetting::drawDialog(){
     
     
     ControlSlider* slide_control2 = ControlSlider::create("setting/progress_1.png", "setting/progress_2.png",
-                                                    "setting/slide_btn_1.png");
+                                                          "setting/slide_btn_1.png");
     slide_control2->setMinimumValue(0.0f);//设置最小值
     slide_control2->setMaximumValue(100.0f);//设置最大值
     slide_control2->setValue(UserData::getInstance()->getMusicValue()*100);//设置初始值
@@ -79,11 +81,14 @@ void UserSetting::drawDialog(){
     myMneu->alignItemsHorizontallyWithPadding(20);
     addChild(myMneu);
     
-    
-    auto dissolve = MenuItemImage::create("setting/dissolve_room_1.png","setting/dissolve_room_2.png",CC_CALLBACK_0(UserSetting::dissolveRoom, this));
-    auto dissolveMenu = Menu::create(dissolve,NULL);
-    dissolveMenu->setPosition(930,185);
-    addChild(dissolveMenu);
+    if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>1){
+            auto dissolve = MenuItemImage::create("setting/dissolve_room_1.png","setting/dissolve_room_2.png",CC_CALLBACK_0(UserSetting::dissolveRoom, this));
+            auto dissolveMenu = Menu::create(dissolve,NULL);
+            dissolveMenu->setPosition(930,185);
+            addChild(dissolveMenu);
+        }
+    }
 }
 
 
@@ -115,5 +120,5 @@ void UserSetting::feedBack(){
 }
 
 void UserSetting::dissolveRoom(){
-
+     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomRequestCommand());
 }
