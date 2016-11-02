@@ -49,6 +49,8 @@ private:
     EventListenerCustom* payResultListener;
     EventListenerCustom* imageUpdateListener;
     EventListenerCustom* firstChargeListenr;
+    EventListenerCustom* openRoomAskListener;
+    EventListenerCustom* enterRoomAskListener;
     
 	void initView();
 	void drawSceneMid();

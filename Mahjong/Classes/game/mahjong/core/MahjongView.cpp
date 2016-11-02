@@ -700,6 +700,7 @@ void MahjongView::addDealJongListener(){
         if(NULL != playerLeft)
             playerLeft->setIsReady(false);
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+        guiLayer->hideDissovleBtn();
         vector<string> dd =StringUtil::split(GAMEDATA::getInstance()->getDice(), ",") ;
         DealJongAnim* anim = DealJongAnim::create();
         anim->setTag(1000);

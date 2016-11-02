@@ -85,11 +85,13 @@ void GuiLayer::initView(){
         addChild(haungNum);
         
         //解散牌局按钮
-        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())<=1){
+        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())<=1 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId()){
             auto dissolveRoom = MenuItemImage::create("gameview/dissovle_room_btn_1.png","gameview/dissovle_room_btn_2.png",CC_CALLBACK_0(GuiLayer::dissovleRoom, this));
             auto disMenu = Menu::create(dissolveRoom,NULL);
             disMenu->setPosition(1140,100);
+            disMenu->setTag(9999);
             addChild(disMenu);
+            
         }
         
     }
@@ -244,4 +246,11 @@ void GuiLayer::invitePlayer(Ref* ref){
 
 void GuiLayer::dissovleRoom(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
+}
+
+
+void GuiLayer::hideDissovleBtn(){
+    if(NULL != getChildByTag(9999)){
+        getChildByTag(9999)->setVisible(false);
+    }
 }

@@ -73,6 +73,8 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(imageUpdateListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(firstChargeListenr);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(openRoomAskListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomAskListener);
     
 }
 
@@ -464,7 +466,7 @@ void LobbyScene::addEventListener(){
         std::string result = buf;
         removeLoading();
         if (result == "1"){
-             GAMEDATA::getInstance()->clearPlayersInfo();
+            GAMEDATA::getInstance()->clearPlayersInfo();
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(result == "2")
@@ -623,6 +625,21 @@ void LobbyScene::addEventListener(){
         first_chaege->setVisible(false);
     });
     
+    openRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_OPEN_ROOM, [=](EventCustom* event){
+        if(UserData::getInstance()->getFangkaNum()>0){
+            FriendRoom* friendroom = FriendRoom::create();
+            addChild(friendroom);
+        }else{
+            ChargeFangka* cha = ChargeFangka::create();
+            addChild(cha);
+        }
+    });
+    
+    enterRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_ENTER_ROOM, [=](EventCustom* event){
+        MahjongNumberKeypads* keypads = MahjongNumberKeypads::create();
+        addChild(keypads);
+    });
+    
     
     //点击事件
     auto listener = EventListenerKeyboard::create();
@@ -646,19 +663,12 @@ void LobbyScene::addEventListener(){
 }
 
 void LobbyScene:: openRoom(){
-    if(UserData::getInstance()->getFangkaNum()>0){
-        FriendRoom* friendroom = FriendRoom::create();
-        addChild(friendroom);
-    }else{
-        ChargeFangka* cha = ChargeFangka::create();
-        addChild(cha);
-    }
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomRequestCommand());
 }
 
 
 void LobbyScene::joinRoom(){
-    MahjongNumberKeypads* keypads = MahjongNumberKeypads::create();
-    addChild(keypads);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
 }
 
 

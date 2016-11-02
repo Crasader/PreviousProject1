@@ -81,7 +81,9 @@ public:
     std::string getEnterRoomByIdCommand(std::string roomid);
     std::string getDissolveRoomCommand();
     std::string getDissolveRoomRequestCommand();
-    std::string getDissolveRoomNotify(std::string agree);
+    std::string getDissolveRoomSelectCommand(std::string agree);
+    std::string getOpenRoomRequestCommand();
+    std::string getEnterRoomRequestCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

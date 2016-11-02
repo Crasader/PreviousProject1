@@ -482,6 +482,14 @@ void MsgHandler::distribute(int code, std::string msg){
             //2051
             break;
         }
+        case MSGCODE_FANG_RESPONSE:{
+            openRoomEnquireResp(msg);
+            break;
+        }
+        case MSGCODE_FANG1_RESPONSE:{
+            enterRoomEnquireResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2578,3 +2586,20 @@ void MsgHandler::handleActivityTimeResp(std::string msg){
     GAMEDATA::getInstance()->setActivityTime(time);
     postNotifyMessage(MSG_ACTIVITY_TIME_INFO, "");
 }
+
+void MsgHandler::openRoomEnquireResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    postNotifyMessage(MSG_LOBBY_ASK_OPEN_ROOM, "");
+}
+
+void MsgHandler::enterRoomEnquireResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    postNotifyMessage(MSG_LOBBY_ASK_ENTER_ROOM, "");
+}
+

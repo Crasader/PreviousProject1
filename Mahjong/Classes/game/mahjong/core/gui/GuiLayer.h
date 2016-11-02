@@ -11,6 +11,7 @@ public:
 	void updateData();
 	void hideInvitePlayer(int clientId);
     void showInvitePlayer(int clientId);
+    void hideDissovleBtn();
 	CC_SYNTHESIZE(bool, showChat,ShowChat);
 	CREATE_FUNC(GuiLayer);
 private:
@@ -28,6 +29,6 @@ private:
     void showPlayerBill();
 	void invitePlayer(Ref* ref);
     void dissovleRoom();
-	
+    
 };
 #endif

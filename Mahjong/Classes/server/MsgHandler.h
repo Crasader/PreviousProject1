@@ -96,5 +96,7 @@ private:
     void handleActivityPrideListResp(std::string msg);
     void handleActivityPrideResp(std::string msg);
     void handleActivityTimeResp(std::string msg);
+    void openRoomEnquireResp(std::string msg);
+    void enterRoomEnquireResp(std::string msg);
 };
 #endif

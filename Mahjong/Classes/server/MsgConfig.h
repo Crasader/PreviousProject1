@@ -215,7 +215,11 @@
 #define MSGCODE_FRIEND_DISMISS_AGREE_NOTIFY  2049// 私人房间是否同意解散通知{code:2049,poxiaoId:"123"}
 #define MSGCODE_FRIEND_DISMISS_AGREE_REQUEST  2050//私人房间是否同意解散请求{code:2050,poxiaoId:poxiaoId,agree:0} 0为不同意 1为同意
 #define MSGCODE_FRIEND_DISMISS_AGREE_RESULT_NOTIFY  2051//私人房间是否同意解散通知{code:2051,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同意 1为同意,pId为谁同意了或则不同意了
- #define MSGCODE_FRIEND_DISMISS_FZ_REQUEST  2052//私人房间房主解散请求{code:2052,poxiaoId:poxiaoId}
+#define MSGCODE_FRIEND_DISMISS_FZ_REQUEST  2052//私人房间房主解散请求{code:2052,poxiaoId:poxiaoId}
+#define MSGCODE_FANG_REQUEST  2053//开房进房前请求{code:2053,poxiaoId:poxiaoId}
+#define MSGCODE_FANG_RESPONSE  2054//开房进房前回复{code:2054,poxiaoId:poxiaoId}
+#define MSGCODE_FANG1_REQUEST  2055//开房进房前请求{code:2055,poxiaoId:poxiaoId}
+#define MSGCODE_FANG1_RESPONSE  2056//开房进房前回复{code:2056,poxiaoId:poxiaoId}
 
 #define LOGIN_SUCCESS "login_success"
 #define LOGIN_FAIL "login_fail"
@@ -303,6 +307,8 @@
 #define MSG_ACTIVITY_PRIDE_LIST_INFO "MSG_ACTIVITY_PRIDE_LIST_INFO"
 #define MSG_ACTIVITY_PRIDE_INFO "MSG_ACTIVITY_PRIDE_INFO"
 #define MSG_ACTIVITY_TIME_INFO "MSG_ACTIVITY_TIME_INFO"
+#define MSG_LOBBY_ASK_OPEN_ROOM "MSG_LOBBY_ASK_OPEN_ROOM"
+#define MSG_LOBBY_ASK_ENTER_ROOM "MSG_LOBBY_ASK_ENTER_ROOM"
 
 #define GET_JJJ_RESPONSE_REMOVE_LOADING "get_jjj_response_remove_loading"
 #define UPDATE_JJJ_COUNT_RESP "update_jjj_count_resp"

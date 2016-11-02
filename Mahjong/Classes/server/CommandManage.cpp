@@ -648,11 +648,25 @@ std::string CommandManage::getDissolveRoomRequestCommand(){
     return commandString(keyValue);
 }
 
-std::string CommandManage::getDissolveRoomNotify(std::string agree){
+std::string CommandManage::getDissolveRoomSelectCommand(std::string agree){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_DISMISS_AGREE_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("poxiaoId",agree));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getOpenRoomRequestCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FANG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getEnterRoomRequestCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FANG1_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     return commandString(keyValue);
 }
 
