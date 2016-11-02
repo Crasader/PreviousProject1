@@ -652,7 +652,7 @@ std::string CommandManage::getDissolveRoomNotify(std::string agree){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_DISMISS_AGREE_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", StringUtils::format("%d",agree) ));
+    keyValue.insert(map<string, string>::value_type("poxiaoId",agree));
     return commandString(keyValue);
 }
 
