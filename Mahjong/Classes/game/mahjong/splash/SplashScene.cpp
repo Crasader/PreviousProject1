@@ -217,16 +217,16 @@ void  SplashScene::addCustomEventListener(){
         } else if(result == "2")
         {
             RoomFullDialog* doo = RoomFullDialog::create();
-            addChild(doo);
+            addChild(doo,100);
         }
         else if(result == "3")
         {
             FangkaNotEnoughDialog* dialog = FangkaNotEnoughDialog::create();
-            addChild(dialog,4);
+            addChild(dialog,100);
         }
         else if(result == "4"){
             RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
-            addChild(idd,4);
+            addChild(idd,100);
         }
     });
 
@@ -241,7 +241,7 @@ void  SplashScene::addCustomEventListener(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
             FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
-            addChild(dia,4);
+            addChild(dia,100);
         }
         
     });

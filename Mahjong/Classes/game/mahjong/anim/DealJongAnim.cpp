@@ -348,11 +348,11 @@ void DealJongAnim::drawPaidui(int num){
         Label* jushu = Label::createWithSystemFont(StringUtils::format("%s/%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()), "arial", 25);
         jushu->setColor(Color3B(234,195,90));
         jushu->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        jushu->setPosition(990,160);
+        jushu->setPosition(990,170);
         addChild(jushu);
         
         auto ju = Sprite::create("gameview/private_jushu.png");
-        ju->setPosition(1005,160);
+        ju->setPosition(1005,170);
         addChild(ju);
     }
 }

@@ -1138,6 +1138,25 @@ void MsgHandler::playerConnectAgain(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    
+    FriendOpenRoomRespData opdata;
+    if(_mDoc.HasMember("prjushu")){
+        const rapidjson::Value &prjushu = _mDoc["prjushu"];
+        opdata.prjushu = prjushu.GetString();
+    }
+    if(_mDoc.HasMember("prId")){
+        const rapidjson::Value &prId = _mDoc["prId"];
+        opdata.prid = prId.GetString();
+    }
+    if(_mDoc.HasMember("fzId")){
+        const rapidjson::Value &fzId = _mDoc["fzId"];
+        GAMEDATA::getInstance()->setFangZhuId(fzId.GetString());
+    }
+    if(_mDoc.HasMember("prjucount")){
+        const rapidjson::Value &prjucount = _mDoc["prjucount"];
+        opdata.prjucount = prjucount.GetString();
+    }
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &rest = _mDoc["rest"];
     const rapidjson::Value &loard = _mDoc["lord"];
@@ -1210,12 +1229,6 @@ void MsgHandler::playerConnectAgain(std::string msg){
         lastGameData.players.push_back(data);
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
-    FriendOpenRoomRespData opendata;
-    const rapidjson::Value &prjushu = _mDoc["prjushu"];
-    opendata.prjushu = prjushu.GetString();
-    const rapidjson::Value &prjucount = _mDoc["prjucount"];
-    opendata.prjucount = prjucount.GetString();
-    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
     postNotifyMessage(MSG_PLAYER_CONNECT_AGAIN, StringUtil::itos(seatId.GetInt()));
 }
 
@@ -1505,8 +1518,8 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
         data.prjushu = prjushu.GetString();
     }
-    if(_mDoc.HasMember("prjucount")){
-        const rapidjson::Value &prjucount = _mDoc["prjucount"];
+    if(_mDoc.HasMember("prJucount")){
+        const rapidjson::Value &prjucount = _mDoc["prJucount"];
         data.prjucount = prjucount.GetString();
     }
     if(_mDoc.HasMember("prId")){
@@ -1585,6 +1598,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
         data.prjucount = prjucount.GetString();
     }
+    GAMEDATA::getInstance()->clearPlayersInfo();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     if (_mDoc.HasMember("other")){
         const rapidjson::Value &pArr = _mDoc["other"];

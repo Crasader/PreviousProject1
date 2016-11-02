@@ -66,6 +66,7 @@ void GuiLayer::initView(){
         kaibaoBg->setPosition(1180,645);
         addChild(kaibaoBg);
         
+        log("AAAAAAAAAAAAAAAAAAAAA %s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str());
         auto openRoomId = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"gameview/hua_num.png",17,24,'0');
         openRoomId->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         openRoomId->setScale(0.8f);
@@ -85,7 +86,7 @@ void GuiLayer::initView(){
         addChild(haungNum);
         
         //解散牌局按钮
-        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())<=1 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId()){
+        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())<=1 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
             auto dissolveRoom = MenuItemImage::create("gameview/dissovle_room_btn_1.png","gameview/dissovle_room_btn_2.png",CC_CALLBACK_0(GuiLayer::dissovleRoom, this));
             auto disMenu = Menu::create(dissolveRoom,NULL);
             disMenu->setPosition(1140,100);

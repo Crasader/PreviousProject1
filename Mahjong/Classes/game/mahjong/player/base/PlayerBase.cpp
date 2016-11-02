@@ -133,7 +133,11 @@ void PlayerBase::initPlayer(Player* playerInfo){
     addChild(moneyNumber);
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
         money->setTexture("gameview/score_small.png");
-        moneyNumber->setString(StringUtils::format("%d",playerInfo->getScore()));
+        if(playerInfo->getScore()<0){
+            moneyNumber->setString(StringUtils::format(";%d",abs(playerInfo->getScore())));
+        }else{
+            moneyNumber->setString(StringUtils::format("%d",playerInfo->getScore()));
+        }
         moneyNumber->setPosition(getPostionBySeat(clientSeatId).x - 8, getPostionBySeat(clientSeatId).y - 55);
     }
     else {
