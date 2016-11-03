@@ -41,20 +41,46 @@ bool BillDetailInfo::init()
     
     BillInfoData data = GAMEDATA::getInstance()->getBillInfoData();
     
-    Label* date = Label::create(data.date,"Arial",22);
-    date->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    Label* date = Label::createWithSystemFont(data.date,"Arial",22);
+    date->setAnchorPoint(Vec2::ZERO);
     date->setColor(Color3B(21,50,91));
-    date->setPosition(640,585);
+    date->setPosition(400,575);
     addChild(date);
     
-    Label* panshu = Label::create(ChineseWord("panshu"),"arial",20);
+    Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
+    fanghao->setColor(Color3B(21,50,91));
+    fanghao->setAnchorPoint(Vec2::ZERO);
+    fanghao->setPosition(Vec2(600,575));
+    addChild(fanghao);
+    
+    
+    Label* prID = Label::createWithSystemFont(data.prid,"Arial",22);
+    prID->setColor(Color3B(21,50,91));
+    prID->setAnchorPoint(Vec2::ZERO);
+    prID->setPosition(Vec2(650, 575));
+    addChild(prID);
+    
+    Label* ju = Label::createWithSystemFont("局数:","Arial",22);
+    ju->setColor(Color3B(21,50,91));
+    ju->setAnchorPoint(Vec2::ZERO);
+    ju->setPosition(Vec2(750, 575));
+    addChild(ju);
+    
+    Label* jushu = Label::createWithSystemFont(data.atype == "0" ? "8": "16","Arial",22);
+    jushu->setColor(Color3B(21,50,91));
+    jushu->setAnchorPoint(Vec2::ZERO);
+    jushu->setPosition(Vec2(800, 575));
+    addChild(jushu);
+
+    
+    Label* panshu = Label::createWithSystemFont(ChineseWord("panshu"),"arial",20);
     panshu->setColor(Color3B(38,158,228));
     panshu->setPosition(330,535);
     addChild(panshu);
     
     std::vector<BillContent> conBill = sortBillInfo(data.content);
     for(int i=0;i<conBill.size();i++){
-        Label* player1 = Label::create(conBill.at(i).nickName,"arial",20);
+        Label* player1 = Label::createWithSystemFont(conBill.at(i).nickName,"arial",20);
         player1->setPosition(460+160*i,535);
         if(conBill.at(i).nickName == UserData::getInstance()->getNickName()){
             player1->setColor(Color3B(91,220,168));
@@ -65,7 +91,7 @@ bool BillDetailInfo::init()
         addChild(player1);
     }
     
-    Label* heji = Label::create(ChineseWord("heji"),"arial",20);
+    Label* heji = Label::createWithSystemFont(ChineseWord("heji"),"arial",20);
     heji->setColor(Color3B(38,158,228));
     heji->setPosition(330,157);
     addChild(heji);
@@ -131,7 +157,6 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
     BillInfoDetailAll detailAll = GAMEDATA::getInstance()->getBillInfoDetailAll();
     BillInfoDetail detail = detailAll.detail.at(idx);
     std::vector<BillContent> conBill = sortBillInfo(detail.detail);
-//    log("FFFFFFFFFFFFFFFFF %s",conBill.at(0).score.c_str());
     TableViewCell *cell = table->dequeueCell();
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
@@ -142,8 +167,6 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         panId->setAnchorPoint(Point::ANCHOR_MIDDLE);
         panId->setPosition(15,15);
         cell->addChild(panId);
-        
-//        log("GGGGGGGGGGGGGGGGG %s",conBill.at(0).score.c_str());
         for(int i=0;i<conBill.size();i++){
             std::string imageName ="bill/yellow_num.png";
             int score =atoi(conBill.at(i).score.c_str());
@@ -163,7 +186,6 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         if(NULL != cell->getChildByTag(99)){
           ((Label*)(cell->getChildByTag(99)))-> setString(StringUtils::format("%ld",idx+1));
         }
-//        log("HHHHHHHHHHHHHHHHHHHH %s",conBill.at(0).score.c_str());
         for(int i=0;i<conBill.size();i++){
             if(NULL != cell->getChildByTag(100+i)){
                 std::string imageName ="bill/yellow_num.png";

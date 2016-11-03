@@ -1811,6 +1811,8 @@ void MsgHandler::billResp(std::string msg){
             data.content.clear();
             data.billId = temp["billid"].GetString();
             data.date = temp["date"].GetString();
+            data.prid = temp["prId"].GetString();
+            data.atype = temp["atype"].GetString();
             if (temp.HasMember("content")){
                 BillContent con;
                 const rapidjson::Value &content = temp["content"];

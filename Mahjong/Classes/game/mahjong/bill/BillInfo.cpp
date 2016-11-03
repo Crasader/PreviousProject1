@@ -127,6 +127,33 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         date->setPosition(Vec2(18, 115));
         cell->addChild(date);
         
+        Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
+        fanghao->setColor(Color3B(21,50,91));
+        fanghao->setAnchorPoint(Vec2::ZERO);
+        fanghao->setPosition(Vec2(240, 115));
+        cell->addChild(fanghao);
+        
+        
+        Label* prID = Label::createWithSystemFont(data.prid,"Arial",22);
+        prID->setTag(400);
+        prID->setColor(Color3B(21,50,91));
+        prID->setAnchorPoint(Vec2::ZERO);
+        prID->setPosition(Vec2(290, 115));
+        cell->addChild(prID);
+        
+        Label* ju = Label::createWithSystemFont("局数:","Arial",22);
+        ju->setColor(Color3B(21,50,91));
+        ju->setAnchorPoint(Vec2::ZERO);
+        ju->setPosition(Vec2(400, 115));
+        cell->addChild(ju);
+        
+        Label* jushu = Label::createWithSystemFont(data.atype == "0" ? "8": "16","Arial",22);
+        jushu->setTag(401);
+        jushu->setColor(Color3B(21,50,91));
+        jushu->setAnchorPoint(Vec2::ZERO);
+        jushu->setPosition(Vec2(450, 115));
+        cell->addChild(jushu);
+        
         std::vector<BillContent> conBill = sortBillInfo(data.content);
         for (int i = 0; i < conBill.size(); i++){
             Label* name = Label::createWithSystemFont(conBill.at(i).nickName, "Arial", 24);
@@ -162,6 +189,8 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->setName(data.billId);
     }else{
         ((Label*)cell->getChildByTag(100))->setString(data.date);
+        ((Label*)cell->getChildByTag(400))->setString(data.prid);
+        ((Label*)cell->getChildByTag(401))->setString(data.atype == "0" ? "8": "16");
         std::vector<BillContent> conBill = sortBillInfo(data.content);
         for (int i = 0; i < conBill.size(); i++){
             ((Label*)cell->getChildByTag(200+i))->setString(conBill.at(i).nickName);

@@ -244,6 +244,8 @@ struct BillContent{
 struct BillInfoData{
     std::string date;
     std::string billId;
+    std::string prid;
+    std::string atype;
     std::vector<BillContent> content;
 };
 
