@@ -60,7 +60,6 @@ bool BillInfo::init()
         load->setTag(1000);
         addChild(load);
     }else{
-        //        shareBtn->setVisible(false);
         showKongBill();
     }
     return true;
@@ -235,12 +234,14 @@ std::vector<BillContent> BillInfo::sortBillInfo(std::vector<BillContent> content
 
 void BillInfo::setShowPosition(){
     setIsPrivateBill(true);
-    //    getChildByTag(100)->setVisible(false);
     getChildByTag(101)->setPositionX(890);
     getChildByTag(102)->setPositionX(1230);
     getChildByTag(103)->setPositionX(890);
     getChildByTag(104)->setPositionX(890);
     getChildByTag(105)->setPositionX(525);
+    getChildByTag(2016)->setPositionX(605);
+    if(NULL != getChildByTag(1001))
+        getChildByTag(1001)->setPositionX(900);
 }
 
 
