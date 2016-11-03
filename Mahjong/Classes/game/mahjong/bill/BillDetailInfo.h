@@ -33,5 +33,7 @@ private:
 	void closeView();
 	void updateBillDetail();
     std::vector<BillContent> sortBillInfo(std::vector<BillContent> content);
+    void shareBill();
+    void goBack();
 };
 #endif

@@ -1,5 +1,6 @@
 #include "game/mahjong/bill/BillDetailInfo.h"
 #include "game/mahjong/state/GameData.h"
+#include "payment/android/CallAndroidMethod.h"
 #include "game/utils/StringUtil.h"
 #include "game/utils/Chinese.h"
 #include "game/loading/Loading.h"
@@ -118,11 +119,23 @@ bool BillDetailInfo::init()
     addChild(tableView);
     tableView->reloadData();
     
+    MenuItemImage* share = MenuItemImage::create("bill/share_bill_1.png", "bill/share_bill_2.png",
+                                                   CC_CALLBACK_0(BillDetailInfo::shareBill, this));
+    MenuItemImage* goback = MenuItemImage::create("bill/return_btn_1.png", "bill/return_btn_2.png",
+                                                 CC_CALLBACK_0(BillDetailInfo::goBack, this));
+    auto billMenu = Menu::create(share,goback, NULL);
+    billMenu->alignItemsHorizontallyWithPadding(10);
+    billMenu->setPosition(640, 100);
+    addChild(billMenu, 20);
+
+    
     if(GAMEDATA::getInstance()->getBillInfoDetailAll().needInit){
         Loading* load =Loading::create(true);
         load->setTag(1000);
         addChild(load);
     }
+    
+    
     return true;
 }
 
@@ -235,4 +248,18 @@ std::vector<BillContent> BillDetailInfo::sortBillInfo(std::vector<BillContent> c
         }
     }
     return content;
+}
+
+void BillDetailInfo::shareBill(){
+    std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(NULL ,path);
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareImageToWeChat("mahjong_screen_shot.png", false);
+#endif
+}
+
+
+void BillDetailInfo::goBack(){
+    removeFromParent();
 }
