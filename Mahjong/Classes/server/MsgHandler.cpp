@@ -8,6 +8,7 @@
 #include "game/mahjong/state/GAMEDATA.h"
 #include "game/utils/SeatIdUtil.h"
 #include "game/utils/StringUtil.h"
+#include "server/NetworkManage.h"
 
 #define RETURN_IF(cond)           if((cond)) return
 
@@ -23,8 +24,8 @@ MsgHandler* MsgHandler::getInstance(){
 }
 
 MsgHandler::MsgHandler(){
-    //TODO
-    
+    connectTime = 0;
+    scheduleUpdate();
 }
 
 void MsgHandler::handleMsg(std::string msg){
@@ -35,13 +36,30 @@ void MsgHandler::handleMsg(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &code = _mDoc["code"];
     if (code.IsInt()) {
-        distribute(code.GetInt(), msg);
+        if(code == 2){
+            connectTime = 0;
+        }
+        if(checkTimeOut()){
+            NetworkManage::getInstance()->reConnnect();
+        }else{
+            distribute(code.GetInt(), msg);
+        }
     }
     else{
         log("msg from server is error");
     }
 }
 
+bool MsgHandler::checkTimeOut(){
+    if(connectTime>15){
+        return true;
+    }
+    return false;
+}
+
+void MsgHandler::updata(float dt){
+    connectTime += dt;
+}
 
 void MsgHandler::distribute(int code, std::string msg){
     switch (code)

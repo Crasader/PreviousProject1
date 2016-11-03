@@ -4,6 +4,10 @@
 NetworkManage* NetworkManage::_instance = NULL;
 std::string NetworkManage::allReciveInfo;
 
+//                const char* ip = "172.23.1.251";
+const char* ip = "183.129.206.54";
+const int port = 9999;
+
 NetworkManage* NetworkManage::getInstance() {
     if (NULL == _instance) {
         _instance = new NetworkManage();
@@ -20,9 +24,7 @@ void NetworkManage::connectServer() {
         // ODSocket socket;
         socket.Init();
         socket.Create(AF_INET, SOCK_STREAM, 0);
-//                const char* ip = "172.23.1.251";
-        const char* ip = "183.129.206.54";
-        int port = 9999;
+
         bool result = socket.Connect(ip, port);
         int retryTimes = 0;
         while (result == false && retryTimes < 3) {
@@ -36,7 +38,7 @@ void NetworkManage::connectServer() {
 #endif
         }
         if (result) {
-            //            socket.Bind(port);
+            socket.Bind(port);
             log("connect to server success!");
             std::thread recvThread = std::thread(&NetworkManage::receiveData,
                                                  this);
@@ -57,14 +59,19 @@ void NetworkManage::sendMsg(std::string code) {
     int sendResult = socket.Send(code.c_str(), getMsgLength(code));
     if (sendResult < 0) {
         log("scoket connect again ...(^_^)");
-        //connectServer();
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CLIENT_LOST_CONNECT);
+        reConnnect();
     }
 }
 
 void NetworkManage::heartbeat() {
     std::thread recvThread = std::thread(&NetworkManage::sendHeartBeat, this);
     recvThread.detach();
+}
+
+void NetworkManage::reConnnect(){
+    log("scoket reConnnect ...(^_^)");
+    socket.Close();
+    connectServer();
 }
 
 void NetworkManage::sendHeartBeat() {

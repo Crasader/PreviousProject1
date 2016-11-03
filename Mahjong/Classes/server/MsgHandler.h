@@ -11,6 +11,9 @@ public:
 private:
 	static MsgHandler* _instance;
 	MsgHandler();
+    float connectTime;
+    bool checkTimeOut();
+    void updata(float dt);
 	void postNotifyMessage(std::string event_name, std::string msg);
 	void distribute(int code, std::string msg);
     void readyStateResp(std::string msg);

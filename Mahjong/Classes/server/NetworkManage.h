@@ -12,6 +12,7 @@ USING_NS_CC;
 class NetworkManage : public Node{
 public:
 	static NetworkManage* getInstance();
+    void reConnnect();
 	void heartbeat();
 	void sendMsg(std::string code);
 private:
