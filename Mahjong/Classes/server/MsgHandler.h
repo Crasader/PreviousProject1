@@ -98,5 +98,6 @@ private:
     void handleActivityTimeResp(std::string msg);
     void openRoomEnquireResp(std::string msg);
     void enterRoomEnquireResp(std::string msg);
+    void handleDissovleRoomNotify(std::string msg);
 };
 #endif

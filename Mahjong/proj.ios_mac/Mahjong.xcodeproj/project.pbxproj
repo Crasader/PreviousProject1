@@ -117,6 +117,8 @@
 		D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D2435FA41CC73525000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
+		D252FF5D1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FF5B1DCB1FD3007060DB /* DissovleRoomDialog.cpp */; };
+		D252FF5E1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FF5B1DCB1FD3007060DB /* DissovleRoomDialog.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -468,6 +470,8 @@
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
 		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
+		D252FF5B1DCB1FD3007060DB /* DissovleRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DissovleRoomDialog.cpp; sourceTree = "<group>"; };
+		D252FF5C1DCB1FD3007060DB /* DissovleRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DissovleRoomDialog.hpp; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -1060,6 +1064,8 @@
 		D281E5DA1DC05D0600D3E44E /* dialog */ = {
 			isa = PBXGroup;
 			children = (
+				D252FF5B1DCB1FD3007060DB /* DissovleRoomDialog.cpp */,
+				D252FF5C1DCB1FD3007060DB /* DissovleRoomDialog.hpp */,
 				D281E5DB1DC05D2300D3E44E /* RoomFullDialog.cpp */,
 				D281E5DC1DC05D2300D3E44E /* RoomFullDialog.hpp */,
 				D281E5DF1DC05D4400D3E44E /* RoomIdErrorDialog.cpp */,
@@ -1744,6 +1750,7 @@
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
+				D252FF5D1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D281E6081DC19EF500D3E44E /* LequanShop.cpp in Sources */,
@@ -1796,6 +1803,7 @@
 				D28A4A201D056B4700741FD0 /* ResultScene.cpp in Sources */,
 				D2B1A9001CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8D21CCDF0F400A20896 /* Jong.cpp in Sources */,
+				D252FF5E1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */,
 				D22EEFE01D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D2B1A8DC1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,

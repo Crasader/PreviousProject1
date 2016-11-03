@@ -98,6 +98,7 @@ private:
     EventListenerCustom* friendOpenRoomListener;
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* inviteReplaceListener;
+    EventListenerCustom* dissovelRoomNotifyListener;
     
 	void addCoustomListener();
 	void addOthersReadyListener();

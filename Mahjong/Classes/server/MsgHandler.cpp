@@ -475,7 +475,7 @@ void MsgHandler::distribute(int code, std::string msg){
             break;
         }
         case MSGCODE_FRIEND_DISMISS_AGREE_NOTIFY:{
-            //2049
+            handleDissovleRoomNotify(msg);
             break;
         }
         case MSGCODE_FRIEND_DISMISS_AGREE_RESULT_NOTIFY:{
@@ -2631,3 +2631,11 @@ void MsgHandler::enterRoomEnquireResp(std::string msg){
     postNotifyMessage(MSG_LOBBY_ASK_ENTER_ROOM, "");
 }
 
+
+void MsgHandler::handleDissovleRoomNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, "");
+}

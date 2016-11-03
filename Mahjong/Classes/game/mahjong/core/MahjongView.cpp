@@ -1391,5 +1391,14 @@ void MahjongView::addCoustomListener(){
         }
         
     });
+    
+    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
+        //        HintDialog* hin = HintDialog::create("",[=](Ref* ref){
+        //            exit(0);
+        //        });
+        //        addChild(hin,5);
+        //TODO
+    });
+    
 }
 

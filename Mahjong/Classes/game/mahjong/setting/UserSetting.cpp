@@ -82,7 +82,7 @@ void UserSetting::drawDialog(){
     addChild(myMneu);
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>1){
+        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>=1){
             auto dissolve = MenuItemImage::create("setting/dissolve_room_1.png","setting/dissolve_room_2.png",CC_CALLBACK_0(UserSetting::dissolveRoom, this));
             auto dissolveMenu = Menu::create(dissolve,NULL);
             dissolveMenu->setPosition(930,185);
