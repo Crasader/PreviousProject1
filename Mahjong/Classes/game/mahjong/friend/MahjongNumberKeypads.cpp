@@ -18,8 +18,14 @@ bool MahjongNumberKeypads::init(){
     enterRoomNumber="";
     
     auto numbg = Sprite::create("friend/numberkeypads_bg.png");
+    numbg->setTag(962);
     numbg->setPosition(640,350);
     addChild(numbg);
+    
+    auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(MahjongNumberKeypads::closeView, this));
+    auto closeMenu = Menu::create(closeImage, NULL);
+    closeMenu->setPosition(970, 560);
+    addChild(closeMenu);
     
     numberShow = Label::createWithSystemFont("", "arial", 50);
     numberShow->setAnchorPoint(Point::ANCHOR_MIDDLE);
@@ -49,7 +55,11 @@ bool MahjongNumberKeypads::init(){
         }
         
     }
-    
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->onTouchBegan = CC_CALLBACK_2(MahjongNumberKeypads::onTouchBegan, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(MahjongNumberKeypads::onTouchEnded, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener,this);
+
     return true;
 }
 
@@ -66,5 +76,21 @@ void MahjongNumberKeypads::clickNumber(Ref* ref){
     }else{
         enterRoomNumber = enterRoomNumber+ StringUtils::format("%d",(index+1)%10);
         numberShow->setString(enterRoomNumber);
+    }
+}
+
+void MahjongNumberKeypads::closeView(){
+    removeFromParent();
+}
+
+bool MahjongNumberKeypads::onTouchBegan(Touch *touch, Event  *event){
+    return true;
+}
+
+void MahjongNumberKeypads::onTouchEnded(Touch *touch, Event  *event){
+    if(NULL != getChildByTag(962)){
+        if(!((Sprite*)getChildByTag(962))->getBoundingBox().containsPoint(touch->getLocation())){
+            removeFromParent();
+        }
     }
 }
