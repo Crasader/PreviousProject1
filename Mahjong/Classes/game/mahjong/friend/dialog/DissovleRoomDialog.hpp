@@ -16,8 +16,8 @@ USING_NS_CC;
 
 class DissovleRoomDialog : public Layer{
 public:
-    static DissovleRoomDialog* create();
     bool init();
+    CREATE_FUNC(DissovleRoomDialog);
 private:
     void agree();
     void disAgree();

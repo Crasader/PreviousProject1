@@ -479,7 +479,7 @@ void MsgHandler::distribute(int code, std::string msg){
             break;
         }
         case MSGCODE_FRIEND_DISMISS_AGREE_RESULT_NOTIFY:{
-            //2051
+            handleDissovleRoomSelectedNotify(msg);
             break;
         }
         case MSGCODE_FANG_RESPONSE:{
@@ -2638,4 +2638,19 @@ void MsgHandler::handleDissovleRoomNotify(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, "");
+}
+
+void MsgHandler::handleDissovleRoomSelectedNotify(std::string msg){
+//私人房间是否同意解散通知{code:2051,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    DissolveData data;
+    const rapidjson::Value &pId = _mDoc["pId"];
+    data.pid = pId.GetString();
+    const rapidjson::Value &agree = _mDoc["agree"];
+    data.agree = agree.GetString();
+    GAMEDATA::getInstance()->setDissolveData(data);
+    postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, "");
 }

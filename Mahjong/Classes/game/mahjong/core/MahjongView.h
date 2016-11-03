@@ -99,6 +99,7 @@ private:
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* inviteReplaceListener;
     EventListenerCustom* dissovelRoomNotifyListener;
+    EventListenerCustom* dissovelRoomSelectNotifyListener;
     
 	void addCoustomListener();
 	void addOthersReadyListener();

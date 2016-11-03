@@ -500,4 +500,9 @@ struct ActivityPride{
 struct ActivityPrideList{
     std::vector<ActivityPride> prideList;
 };
+
+struct DissolveData{
+    std::string pid;
+    std::string agree;
+};
 #endif

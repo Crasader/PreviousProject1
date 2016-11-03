@@ -14,6 +14,7 @@
 #include "game/mahjong/anim/LiuJuAnim.hpp"
 #include "game/mahjong/anim/OutFogAnim.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "game/mahjong/friend/dialog/DissovleRoomDialog.hpp"
 #include "server/SocketDataManage.h"
 
 
@@ -77,6 +78,8 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
 }
 
 void MahjongView::initData(){
@@ -1393,12 +1396,26 @@ void MahjongView::addCoustomListener(){
     });
     
     dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-        //        HintDialog* hin = HintDialog::create("",[=](Ref* ref){
-        //            exit(0);
-        //        });
-        //        addChild(hin,5);
-        //TODO
+        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+        addChild(dis,1000);
     });
     
+    dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
+        DissolveData data = GAMEDATA::getInstance()->getDissolveData();
+        std::string  name ="";
+        for(auto var :GAMEDATA::getInstance()->getPlayersInfo()){
+            if(data.pid == var->getPoxiaoId()){
+                name =var->getNickname();
+            }
+        }
+        if(data.agree == "0"){
+            HintDialog* dia = HintDialog::create(StringUtils::format("%s不同意解散房间",name.c_str()), NULL);
+            addChild(dia,5);
+        }else{
+            HintDialog* dia = HintDialog::create(StringUtils::format("%s同意解散房间",name.c_str()), NULL);
+            addChild(dia,5);
+        }
+    });
+
 }
 

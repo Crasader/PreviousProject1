@@ -99,5 +99,6 @@ private:
     void openRoomEnquireResp(std::string msg);
     void enterRoomEnquireResp(std::string msg);
     void handleDissovleRoomNotify(std::string msg);
+    void handleDissovleRoomSelectedNotify(std::string msg);
 };
 #endif
