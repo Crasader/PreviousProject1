@@ -27,7 +27,6 @@ private:
     Sprite* playerGender;
     EventListenerCustom* addFriendRespListener2;
     void closeView();
-    void addFriend(Ref* ref);
     CC_SYNTHESIZE(Player*, player, Player);
 
 };

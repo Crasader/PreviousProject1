@@ -55,6 +55,7 @@ enum MahjongState{
 struct EnterRoomResp{
     std::string result;
     std::string rsid;
+    std::string kb;
     std::string jjj_count;
     std::string jjj_used;
 };

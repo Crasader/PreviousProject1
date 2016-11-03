@@ -73,8 +73,7 @@ bool OtherPlayerInfo::init(Player* player){
     }else if(cSeatId == ClientSeatId::right){
         dialogBg->setPosition(1015, 455);
     }else{
-        removeFromParent();
-        return true;
+        dialogBg->setPosition(275, 220);
     }
     addChild(dialogBg);
     
@@ -141,13 +140,5 @@ bool OtherPlayerInfo::init(Player* player){
 }
 
 void OtherPlayerInfo::closeView(){
-    
     removeFromParent();
-}
-
-
-void OtherPlayerInfo::addFriend(Ref* ref){
-    MenuItemImage* temp = (MenuItemImage*)ref;
-    temp->setVisible(false);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getAddFriendCommand(getPlayer()->getPoxiaoId(),getPlayer()->getNickname()));
 }

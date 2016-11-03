@@ -143,7 +143,11 @@ void MahjongView::startGameAgain(){
         }
     }
     showOriention();
-    GAMEDATA::getInstance()->setKaibao("0");
+    if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
+        GAMEDATA::getInstance()->setKaibao("1");
+    }else{
+        GAMEDATA::getInstance()->setKaibao("0");
+    }
     GAMEDATA::getInstance()->setHuangfan("0");
     guiLayer->updateData();
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());

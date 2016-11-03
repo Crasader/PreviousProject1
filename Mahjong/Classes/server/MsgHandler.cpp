@@ -2516,6 +2516,10 @@ void MsgHandler::gameContinueResp(std::string msg){
         const rapidjson::Value &rsid = _mDoc["rsid"];
         resp.rsid = rsid.GetString();
     }
+    if(_mDoc.HasMember("kb")){
+        const rapidjson::Value &kb = _mDoc["kb"];
+        resp.kb = kb.GetString();
+    }
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
     GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
     postNotifyMessage(MSG_HERO_CONTINUE_RESP, "");
