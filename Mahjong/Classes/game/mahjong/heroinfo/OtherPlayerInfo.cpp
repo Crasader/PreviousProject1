@@ -84,7 +84,7 @@ bool OtherPlayerInfo::init(Player* player){
     dialogBg->addChild(headBg);
     
     
-    nickNameLabel = Label::create(player->getNickname(), "arial", 20);
+    nickNameLabel = Label::createWithSystemFont(player->getNickname(), "arial", 20);
     nickNameLabel->setColor(Color3B(87, 195, 186));
     nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickNameLabel->setPosition(130, 190);
@@ -106,7 +106,7 @@ bool OtherPlayerInfo::init(Player* player){
     fangka_icon->setPosition(50, 75);
     fangka_icon->setScale(0.7f);
     dialogBg->addChild(fangka_icon);
-    auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%d", player->getLockDiamond()),
+    auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%d", player->getFangka()),
                                                  "arial",20);
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     fangkaNum->setColor(Color3B(87, 195, 186));
@@ -131,7 +131,7 @@ bool OtherPlayerInfo::init(Player* player){
     auto lequan_icon = Sprite::create("gameview/other_player_lequan.png");
     lequan_icon->setPosition(50, 35);
     dialogBg->addChild(lequan_icon);
-    auto lequanNum = Label::create(cocos2d::String::createWithFormat("%d", player->getTicket())->_string,"arial",20);
+    auto lequanNum = Label::createWithSystemFont(StringUtils::format("%d", player->getTicket()),"arial",20);
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setColor(Color3B(87, 195, 186));
     lequanNum->setPosition(75, 40);

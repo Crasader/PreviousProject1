@@ -66,7 +66,6 @@ void GuiLayer::initView(){
         kaibaoBg->setPosition(1180,645);
         addChild(kaibaoBg);
         
-        log("AAAAAAAAAAAAAAAAAAAAA %s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str());
         auto openRoomId = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"gameview/hua_num.png",17,24,'0');
         openRoomId->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         openRoomId->setScale(0.8f);

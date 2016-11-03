@@ -630,6 +630,7 @@ void MsgHandler::enterRoomResp(std::string msg){
                 auto nickname = temp["nickname"].GetString();
                 auto poxiaoId = temp["poxiaoId"].GetString();
                 auto lockdiamond = temp["bangzuan"].GetInt();
+                auto fangka = temp["fangka"].GetInt();
                 auto pic = temp["pic"].GetString();
                 Player* info = new Player();
                 info->setPoxiaoId(poxiaoId);
@@ -639,6 +640,7 @@ void MsgHandler::enterRoomResp(std::string msg){
                 info->setGold(gold);
                 info->setDiamond(diamond);
                 info->setLockDiamond(lockdiamond);
+                info->setFangka(fangka);
                 info->setScore(jifen);
                 info->setGender(gender);
                 info->setNickname(nickname);
@@ -746,6 +748,7 @@ void MsgHandler::addPalyer(std::string msg){
     const rapidjson::Value &ifready = _mDoc["ifready"];
     const rapidjson::Value &pId = _mDoc["pId"];
     const rapidjson::Value &pic = _mDoc["pic"];
+    const rapidjson::Value &fangka = _mDoc["fangka"];
     Player* info = new Player();
     info->setSeatId(seatId.GetInt());
     if (seatId.GetInt() == 1){
@@ -765,6 +768,7 @@ void MsgHandler::addPalyer(std::string msg){
     info->setTicket(lequan.GetInt());
     info->setPicture(pic.GetString());
     info->setIsReady(ifready.GetInt() == 0 ? false : true);
+    info->setFangka(fangka.GetInt());
     GAMEDATA::getInstance()->addPlayersInfo(info);
     GAMEDATA::getInstance()->setNeedAddPlayer(true);//解决场景跳转会有消息丢失的问题
 }
@@ -1554,6 +1558,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
             auto nickname = temp["nickname"].GetString();
             auto poxiaoId = temp["poxiaoId"].GetString();
             auto pic = temp["pic"].GetString();
+            auto fangka = temp["fangka"].GetInt();
             Player* info = new Player();
             info->setPoxiaoId(poxiaoId);
             info->setSeatId(seatId);
@@ -1567,6 +1572,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
             info->setGender(gender);
             info->setNickname(nickname);
             info->setPicture(pic);
+            info->setFangka(fangka);
             GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
@@ -1615,6 +1621,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
             auto nickname = temp["nickname"].GetString();
             auto poxiaoId = temp["poxiaoId"].GetString();
             auto pic = temp["pic"].GetString();
+            auto fangka = temp["fangka"].GetInt();
             Player* info = new Player();
             info->setPoxiaoId(poxiaoId);
             info->setSeatId(seatId);
@@ -1628,6 +1635,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
             info->setGender(gender);
             info->setNickname(nickname);
             info->setPicture(pic);
+            info->setFangka(fangka);
             GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
