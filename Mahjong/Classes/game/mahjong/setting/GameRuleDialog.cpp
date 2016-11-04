@@ -79,12 +79,13 @@ std::vector<std::string> GameRuleDialog::getGameRules(){
     rules.push_back("勒子封顶值:按照1分底1分花算,勒子峰顶值20分");
     rules.push_back("底分+花分=输赢分数");
     rules.push_back("翻数算法:");
+    rules.push_back("门清勒子");
+    rules.push_back("清碰勒子");
+    rules.push_back("混碰勒子");
     rules.push_back("大吊车*2");
-    rules.push_back("门清*2");
     rules.push_back("杠开*2");
     rules.push_back("碰碰胡*2");
     rules.push_back("混一色*2");
-    rules.push_back("混碰勒子");
     rules.push_back("以上翻数最多翻到勒子,勒子是20,那最大值就是20");
     rules.push_back("清碰2个勒子，勒子20,最大值就是40");
     rules.push_back("开宝*2");

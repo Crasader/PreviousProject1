@@ -100,6 +100,7 @@ private:
     EventListenerCustom* inviteReplaceListener;
     EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
+    EventListenerCustom* lobbyConncetAgainListener;
     
 	void addCoustomListener();
 	void addOthersReadyListener();

@@ -1416,6 +1416,17 @@ void MahjongView::addCoustomListener(){
             addChild(dia,5);
         }
     });
+    
+    //断线续玩
+    lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+        //游戏进入托管状态
+//        trusteeship->setVisible(true);
+//        GAMEDATA::getInstance()->setIsTrusteeship(true);
+        //重新绘制玩家的牌和话
+        GAMEDATA::getInstance()->setIsRecover(true);
+        Director::getInstance()->replaceScene(MjGameScene::create());
+        
+    });
 
 }
 
