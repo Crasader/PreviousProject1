@@ -49,6 +49,8 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D20536621DCC9A5400DD5F7F /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20536601DCC9A5400DD5F7F /* TextHintDialog.cpp */; };
+		D20536631DCC9A5400DD5F7F /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20536601DCC9A5400DD5F7F /* TextHintDialog.cpp */; };
 		D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C390F1CFD7446006F6C9E /* QuitRoomDialog.cpp */; };
 		D20C39121CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C390F1CFD7446006F6C9E /* QuitRoomDialog.cpp */; };
 		D20C391E1CFEC2E7006F6C9E /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */; };
@@ -403,6 +405,8 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D20536601DCC9A5400DD5F7F /* TextHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextHintDialog.cpp; sourceTree = "<group>"; };
+		D20536611DCC9A5400DD5F7F /* TextHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextHintDialog.hpp; sourceTree = "<group>"; };
 		D20C390F1CFD7446006F6C9E /* QuitRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuitRoomDialog.cpp; sourceTree = "<group>"; };
 		D20C39101CFD7446006F6C9E /* QuitRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuitRoomDialog.hpp; sourceTree = "<group>"; };
 		D20C391C1CFEC2E7006F6C9E /* OutFogAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutFogAnim.cpp; sourceTree = "<group>"; };
@@ -1064,6 +1068,8 @@
 		D281E5DA1DC05D0600D3E44E /* dialog */ = {
 			isa = PBXGroup;
 			children = (
+				D20536601DCC9A5400DD5F7F /* TextHintDialog.cpp */,
+				D20536611DCC9A5400DD5F7F /* TextHintDialog.hpp */,
 				D252FF5B1DCB1FD3007060DB /* DissovleRoomDialog.cpp */,
 				D252FF5C1DCB1FD3007060DB /* DissovleRoomDialog.hpp */,
 				D281E5DB1DC05D2300D3E44E /* RoomFullDialog.cpp */,
@@ -1749,6 +1755,7 @@
 				D291B58E1D75264900B05026 /* MahjongActivities.cpp in Sources */,
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
+				D20536621DCC9A5400DD5F7F /* TextHintDialog.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				D252FF5D1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -1797,6 +1804,7 @@
 				D2F05F661D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
 				D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
+				D20536631DCC9A5400DD5F7F /* TextHintDialog.cpp in Sources */,
 				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
 				D28A4A1E1D056B4700741FD0 /* ResultLayer.cpp in Sources */,

@@ -15,6 +15,7 @@
 #include "game/mahjong/anim/OutFogAnim.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/friend/dialog/DissovleRoomDialog.hpp"
+#include "game/mahjong/friend/dialog/TextHintDialog.hpp"
 #include "server/SocketDataManage.h"
 
 
@@ -1415,11 +1416,11 @@ void MahjongView::addCoustomListener(){
             }
         }
         if(data.agree == "0"){
-            HintDialog* dia = HintDialog::create(StringUtils::format("%s不同意解散房间",name.c_str()), NULL);
-            addChild(dia,5);
+            TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s不同意解散房间",name.c_str()));
+            addChild(dia,50);
         }else{
-            HintDialog* dia = HintDialog::create(StringUtils::format("%s同意解散房间",name.c_str()), NULL);
-            addChild(dia,5);
+            TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s同意解散房间",name.c_str()));
+            addChild(dia,50);
         }
     });
     
