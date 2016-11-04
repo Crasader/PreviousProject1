@@ -152,14 +152,14 @@ Jong* PlayerHero::getTouchJong(Touch *touch){
 }
 
 void PlayerHero::update(float dt){
-    if(GAMEDATA::getInstance()->getNeedRemovePoker()>0){
-        for(auto var : playerHandJongs){
-            if(var->getJongType() == GAMEDATA::getInstance()->getNeedRemovePoker()){
-                playPokerByHand(var);
-                GAMEDATA::getInstance()->setNeedRemovePoker(0);
-            }
-        }
-    }
+//    if(GAMEDATA::getInstance()->getNeedRemovePoker()>0){
+//        for(auto var : playerHandJongs){
+//            if(var->getJongType() == GAMEDATA::getInstance()->getNeedRemovePoker()){
+//                playPokerByHand(var);
+//                GAMEDATA::getInstance()->setNeedRemovePoker(0);
+//            }
+//        }
+//    }
 }
 
 
