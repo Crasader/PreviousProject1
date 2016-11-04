@@ -36,7 +36,7 @@ bool Trusteeship::onTouchBegan(Touch *touch, Event  *event){
 	if (this->isVisible()){
         schedule([=](float dt){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCancelCommand());
-        }, 0, 0, 0.5f,"delayCancelT");
+        }, 0, 0, 0.75f,"delayCancelT");
 		return true;
 	}
 	return false;
