@@ -148,7 +148,7 @@ void ResultLayer::showWinAnim(){
                     players.at(i)->setLockDiamond(resData.bangzuan);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
-                    players.at(i)->setScore(resData.jifen+players.at(i)->getScore());
+                    players.at(i)->setScore(resData.jifen);
                 }
             }
         }else{
@@ -159,7 +159,7 @@ void ResultLayer::showWinAnim(){
                     players.at(i)->setLockDiamond(resData.bangzuan);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
-                    players.at(i)->setScore(resData.jifen+players.at(i)->getScore());
+                    players.at(i)->setScore(resData.jifen);
                     
                 }
             }
@@ -386,7 +386,7 @@ void ResultLayer::showLoseAnim(){
                     players.at(i)->setLockDiamond(resData.bangzuan);
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
-                    players.at(i)->setScore(resData.jifen+players.at(i)->getScore());
+                    players.at(i)->setScore(resData.jifen);
                 }
             }
         }else{
@@ -397,7 +397,7 @@ void ResultLayer::showLoseAnim(){
                     players.at(i)->setGold(resData.gold);
                     players.at(i)->setTicket(resData.lequan);
                     players.at(i)->setLockDiamond(resData.bangzuan);
-                    players.at(i)->setScore(players.at(i)->getScore()+resData.jifen);
+                    players.at(i)->setScore(resData.jifen);
                 }
             }
         }
@@ -518,20 +518,20 @@ void ResultLayer::showHeroPropInfo(){
     
     LabelAtlas* goldNum;
     if(getheroData().result == 1 || getheroData().result == 3){
-        goldNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom?getheroData().jifendelta:getheroData().golddelta)->_string, "result/big_num_win.png", 52, 64, '0');
+        goldNum = LabelAtlas::create(StringUtils::format(":%d",GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom?getheroData().jifendelta:getheroData().golddelta), "result/big_num_win.png", 52, 64, '0');
     }else{
         goldNum = LabelAtlas::create("0","result/big_num_lose.png", 52, 64, '0');
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             if(getheroData().jifendelta<0){
-                goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().jifendelta))->_string);
+                goldNum->setString(StringUtils::format(":%d", abs(getheroData().jifendelta)));
             }else{
-                goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().jifendelta))->_string);
+                goldNum->setString(StringUtils::format("%d", abs(getheroData().jifendelta)));
             }
         }else{
             if(getheroData().golddelta<0){
-                goldNum->setString(cocos2d::String::createWithFormat(":%d", abs(getheroData().golddelta))->_string);
+                goldNum->setString(StringUtils::format(":%d", abs(getheroData().golddelta)));
             }else{
-                goldNum->setString(cocos2d::String::createWithFormat("%d", abs(getheroData().golddelta))->_string);
+                goldNum->setString(StringUtils::format("%d", abs(getheroData().golddelta)));
             }
         }
         
@@ -564,7 +564,7 @@ void ResultLayer::showHeroPropInfo(){
             addChild(par);
         }
     }
-    LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d",getheroData().lequandelta )->_string, "result/big_num_win.png", 52, 64, '0');
+    LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format(":%d",getheroData().lequandelta), "result/big_num_win.png", 52, 64, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     lequanNum->setVisible(false);
     if(getheroData().lequandelta>0){
@@ -619,14 +619,14 @@ void ResultLayer::drawPokerPad(std::string pokers, std::string hutype, int hua){
 
 
 void ResultLayer::drawHuType(std::string hutype){
-    Label* huType = Label::create(hutype, "Arial", 16);
+    Label* huType = Label::createWithSystemFont(hutype, "Arial", 16);
     this->addChild(huType, 22);
     huType->setPosition(575, 90);
 }
 
 void ResultLayer::drawHuaNum(int hua){
     auto huaSprite = Sprite::create("gameview/flower.png");
-    auto huaNum = LabelAtlas::create(cocos2d::String::createWithFormat(":%d", hua)->_string,
+    auto huaNum = LabelAtlas::create(StringUtils::format(":%d", hua),
                                      "gameview/hua_num.png", 17, 24, '0');
     huaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     huaSprite->setPosition(460, 90);
@@ -661,7 +661,7 @@ void ResultLayer::showCaidaiAnim(Sprite* sprite){
     auto animation = Animation::create();
     for( int i=1;i<16;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("result/caidai_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("result/caidai_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.

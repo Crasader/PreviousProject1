@@ -2648,8 +2648,10 @@ void MsgHandler::handleDissovleRoomSelectedNotify(std::string msg){
     DissolveData data;
     const rapidjson::Value &pId = _mDoc["pId"];
     data.pid = pId.GetString();
-    const rapidjson::Value &agree = _mDoc["agree"];
-    data.agree = agree.GetString();
+    if(_mDoc.HasMember("agree")){
+        const rapidjson::Value &agree = _mDoc["agree"];
+        data.agree = agree.GetString();
+    }
     GAMEDATA::getInstance()->setDissolveData(data);
     postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, "");
 }

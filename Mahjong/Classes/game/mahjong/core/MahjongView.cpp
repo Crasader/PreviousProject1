@@ -1396,8 +1396,10 @@ void MahjongView::addCoustomListener(){
     });
     
     dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        addChild(dis,1000);
+        if(GAMEDATA::getInstance()->getFangZhuId() != UserData::getInstance()->getPoxiaoId()){
+            DissovleRoomDialog* dis = DissovleRoomDialog::create();
+            addChild(dis,1000);
+        }
     });
     
     dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
