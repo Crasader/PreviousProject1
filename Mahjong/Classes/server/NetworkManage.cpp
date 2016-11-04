@@ -38,7 +38,7 @@ void NetworkManage::connectServer() {
 #endif
         }
         if (result) {
-//            socket.Bind(port);
+            socket.Bind(port);
             log("connect to server success!");
             std::thread recvThread = std::thread(&NetworkManage::receiveData,
                                                  this);
@@ -59,6 +59,8 @@ void NetworkManage::sendMsg(std::string code) {
     int sendResult = socket.Send(code.c_str(), getMsgLength(code));
     if (sendResult < 0) {
         log("scoket connect again ...(^_^)");
+        socket.Close();
+        connectServer();
     }
 }
 
@@ -67,18 +69,12 @@ void NetworkManage::heartbeat() {
     recvThread.detach();
 }
 
-void NetworkManage::reConnnect(){
-    log("scoket reConnnect ...(^_^)");
-    socket.Close();
-    connectServer();
-}
-
 void NetworkManage::sendHeartBeat() {
     while (true) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-        Sleep(5000);
+        Sleep(3000);
 #else
-        sleep(5);
+        sleep(3);
 #endif
         sendMsg(CommandManage::getInstance()->getHeartCommmand());
     }
