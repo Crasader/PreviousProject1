@@ -153,6 +153,7 @@ struct PlayerGameData{
     int diamond;
     int jifen;
     int bangzuan;
+    int fangka;
     int gender;
     int lequan;
     int hua;

@@ -468,6 +468,7 @@ void MahjongView::recoverGame(){
         info->setTicket(player.lequan);
         info->setLockDiamond(player.bangzuan);
         info->setPoxiaoId(player.poxiaoId);
+        info->setFangka(player.fangka);
         GAMEDATA::getInstance()->addPlayersInfo(info);
         recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
     }

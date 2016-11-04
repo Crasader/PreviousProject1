@@ -201,7 +201,7 @@ void ResultLayer::showWinAnim(){
     }),NULL));
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-      
+        
         if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount == "8"&&GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "8"){
             
             auto biaoji = Sprite::create("result/game_over_8.png");
@@ -221,7 +221,7 @@ void ResultLayer::showWinAnim(){
                     Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
                 }else{
                     continuMenu->setVisible(true);
-                     biaoji->setVisible(true);
+                    biaoji->setVisible(true);
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
@@ -230,7 +230,7 @@ void ResultLayer::showWinAnim(){
             biaoji->setPosition(840, 170);
             biaoji->setVisible(false);
             addChild(biaoji);
-
+            
             MenuItemImage* continu = MenuItemImage::create("result/go_lobby_btn_1.png", "result/go_lobby_btn_2.png",
                                                            CC_CALLBACK_0(ResultLayer::clickQuit, this));
             auto continuMenu = Menu::create(continu, NULL);
@@ -452,8 +452,8 @@ void ResultLayer::showLoseAnim(){
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
-        
-        
+            
+            
         }else{
             MenuItemImage* continu = MenuItemImage::create("result/start_game_btn_1.png", "result/start_game_btn_2.png",
                                                            CC_CALLBACK_0(ResultLayer::clickContinu, this));
@@ -554,14 +554,18 @@ void ResultLayer::showHeroPropInfo(){
             lequanIcon->setVisible(true);
         }),Spawn::create(ScaleTo::create(3.0/24,1.0f),FadeTo::create(5.0/24,180), NULL),NULL));
         if(getheroData().result == 1 || getheroData().result == 3){
-            auto par = ParticleUtil::create(MyParticleType::goldAndLequan);
-            addChild(par);
+            if(GAMEDATA::getInstance()->getMahjongRoomType()!= MahjongRoom::privateRoom){
+                auto par = ParticleUtil::create(MyParticleType::goldAndLequan);
+                addChild(par);
+            }
         }
     }else{
         lequanIcon->setVisible(false);
         if(getheroData().result == 1 || getheroData().result == 3){
-            auto par = ParticleUtil::create(MyParticleType::goldOnly);
-            addChild(par);
+            if(GAMEDATA::getInstance()->getMahjongRoomType()!= MahjongRoom::privateRoom){
+                auto par = ParticleUtil::create(MyParticleType::goldOnly);
+                addChild(par);
+            }
         }
     }
     LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format(":%d",getheroData().lequandelta), "result/big_num_win.png", 52, 64, '0');

@@ -121,4 +121,5 @@ void UserSetting::feedBack(){
 
 void UserSetting::dissolveRoom(){
      NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomRequestCommand());
+     removeFromParent();
 }

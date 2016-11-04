@@ -67,10 +67,12 @@ bool DissovleRoomDialog::init(){
 
 void DissovleRoomDialog::agree(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("1"));
+    removeFromParent();
 }
 
 void DissovleRoomDialog::disAgree(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
+    removeFromParent();
 }
 
 void DissovleRoomDialog::closeView(){
