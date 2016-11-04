@@ -38,7 +38,7 @@ void NetworkManage::connectServer() {
 #endif
         }
         if (result) {
-            socket.Bind(port);
+//            socket.Bind(port);
             log("connect to server success!");
             std::thread recvThread = std::thread(&NetworkManage::receiveData,
                                                  this);
@@ -59,7 +59,6 @@ void NetworkManage::sendMsg(std::string code) {
     int sendResult = socket.Send(code.c_str(), getMsgLength(code));
     if (sendResult < 0) {
         log("scoket connect again ...(^_^)");
-        reConnnect();
     }
 }
 

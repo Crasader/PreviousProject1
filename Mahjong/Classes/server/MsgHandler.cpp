@@ -39,11 +39,7 @@ void MsgHandler::handleMsg(std::string msg){
         if(code == 2){
             connectTime = 0;
         }
-        if(checkTimeOut()){
-            NetworkManage::getInstance()->reConnnect();
-        }else{
-            distribute(code.GetInt(), msg);
-        }
+        distribute(code.GetInt(), msg);
     }
     else{
         log("msg from server is error");
@@ -51,7 +47,7 @@ void MsgHandler::handleMsg(std::string msg){
 }
 
 bool MsgHandler::checkTimeOut(){
-    if(connectTime>15){
+    if(connectTime>12){
         return true;
     }
     return false;
@@ -59,6 +55,9 @@ bool MsgHandler::checkTimeOut(){
 
 void MsgHandler::updata(float dt){
     connectTime += dt;
+    if(checkTimeOut()){
+        NetworkManage::getInstance()->reConnnect();
+    }
 }
 
 void MsgHandler::distribute(int code, std::string msg){
@@ -2659,7 +2658,7 @@ void MsgHandler::handleDissovleRoomNotify(std::string msg){
 }
 
 void MsgHandler::handleDissovleRoomSelectedNotify(std::string msg){
-//私人房间是否同意解散通知{code:2051,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同
+    //私人房间是否同意解散通知{code:2051,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
