@@ -52,7 +52,6 @@ void GoldRoomPlate::onTouchEnded(Touch *touch, Event  *event){
             removeFromParent();
         }
     }
-    
 }
 
 void GoldRoomPlate::openRoomOne(){

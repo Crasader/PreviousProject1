@@ -1413,6 +1413,7 @@ void MsgHandler::removePlayerNotify(std::string msg){
         log("hero is out room");
         GAMEDATA::getInstance()->clearPlayersInfo();
         GAMEDATA::getInstance()->setIsGotoLobby(true);
+        GAMEDATA::getInstance()->setFangZhuId("");
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, "");

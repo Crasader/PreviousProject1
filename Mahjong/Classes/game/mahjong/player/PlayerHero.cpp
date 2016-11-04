@@ -212,7 +212,6 @@ void PlayerHero::playPokerByHand(Jong* jong){
 
 
 void PlayerHero::drawPlayerHero() {
-    
     std::vector<std::string> strvce = GAMEDATA::getInstance()->getHeroJongs();
     for (int t = 0; t < strvce.size(); t++) {
         if (t < -1){
