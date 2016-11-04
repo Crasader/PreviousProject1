@@ -927,7 +927,7 @@ void MahjongView::addGameResultListener(){
             },0,0,72.0f/24,"go2Result");
         }else{
             clearRoomPlayer();
-            Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::create()));
+            Director::getInstance()->replaceScene(TransitionFade::create(0.8f, LobbyScene::create()));
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
