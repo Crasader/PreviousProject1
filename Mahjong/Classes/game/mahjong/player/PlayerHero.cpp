@@ -283,7 +283,7 @@ void PlayerHero::drawReady(bool ready){
         if (NULL != getChildByTag(888)){
             getChildByTag(888)->setVisible(false);
         }
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>=1){
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>=1 && !GAMEDATA::getInstance()->getIsPlaying()){
             MenuItemImage* inviteImage = MenuItemImage::create("gameview/invite_friend_1.png", "gameview/invite_friend_2.png", CC_CALLBACK_0(PlayerHero::inviteWechatFriend, this));
             auto invite = Menu::create(inviteImage, NULL);
             invite->setPosition(Point(640, 160));
