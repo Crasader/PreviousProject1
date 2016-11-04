@@ -821,108 +821,114 @@ void MahjongView::addHeroCpgListener(){
 void MahjongView::addGameResultListener(){
     GAMEDATA::getInstance()->setIsResume(false);
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
-        trusteeship->setVisible(false);
-        GAMEDATA::getInstance()->setIsTrusteeship(false);
-        //播放动画
-        //step检测胡牌类型
-        int seatId1 = -1;
-        std::vector<int> seatId2;
-        int seatId3 =-1;
-        seatId2.clear();
-        bool zimoState = false;
-        bool gangkaiState = false;
-        bool qianggangState = false;
-        bool isliuju = true;
-        vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
-        for (GameResultData data: results) {
-            if(data.result==1){
-                //自摸
-                seatId1 =   SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                zimoState=true;
-                isliuju =false;
-            }else if(data.result==2){
-                //点炮
-                seatId1 = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                isliuju =false;
-            }else if(data.result==3){
-                //普通赢
-                isliuju =false;
-                if(data.huType=="3"){
-                    gangkaiState = true;
-                    seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                }else if(data.huType=="12"){
-                    qianggangState = true;
-                    seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                }else{
-                    seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId));
+        string flag = static_cast<char*>(event->getUserData());
+        if(flag == "1"){
+            trusteeship->setVisible(false);
+            GAMEDATA::getInstance()->setIsTrusteeship(false);
+            //播放动画
+            //step检测胡牌类型
+            int seatId1 = -1;
+            std::vector<int> seatId2;
+            int seatId3 =-1;
+            seatId2.clear();
+            bool zimoState = false;
+            bool gangkaiState = false;
+            bool qianggangState = false;
+            bool isliuju = true;
+            vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
+            for (GameResultData data: results) {
+                if(data.result==1){
+                    //自摸
+                    seatId1 =   SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                    zimoState=true;
+                    isliuju =false;
+                }else if(data.result==2){
+                    //点炮
+                    seatId1 = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                    isliuju =false;
+                }else if(data.result==3){
+                    //普通赢
+                    isliuju =false;
+                    if(data.huType=="3"){
+                        gangkaiState = true;
+                        seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                    }else if(data.huType=="12"){
+                        qianggangState = true;
+                        seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                    }else{
+                        seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId));
+                    }
                 }
             }
-        }
-        if(zimoState){
-            Audio::getInstance()->playSoundHuMusic(1);
-            if(seatId1 == ClientSeatId::left){
-                playerLeft->playSoundHuPai(0);
-            }else if(seatId1 == ClientSeatId::opposite){
-                playerOpposite->playSoundHuPai(0);
-            }else if(seatId1 == ClientSeatId::right){
-                playerRight->playSoundHuPai(0);
-            }else {
-                playerHero->playSoundHuPai(0);
+            if(zimoState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(0);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(0);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(0);
+                }else {
+                    playerHero->playSoundHuPai(0);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::zimoHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else if(gangkaiState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(1);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(1);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(1);
+                }else {
+                    playerHero->playSoundHuPai(1);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::gangkaiHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else if(qianggangState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(2);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(2);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(2);
+                }else {
+                    playerHero->playSoundHuPai(2);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::qianggangHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
             }
-            HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::zimoHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-            addChild(hupai,999);
-        }else if(gangkaiState){
-            Audio::getInstance()->playSoundHuMusic(1);
-            if(seatId1 == ClientSeatId::left){
-                playerLeft->playSoundHuPai(1);
-            }else if(seatId1 == ClientSeatId::opposite){
-                playerOpposite->playSoundHuPai(1);
-            }else if(seatId1 == ClientSeatId::right){
-                playerRight->playSoundHuPai(1);
-            }else {
-                playerHero->playSoundHuPai(1);
+            else if(!isliuju){
+                //判断胡牌的类型
+                Audio::getInstance()->playSoundHuMusic(0);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(3);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(3);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(3);
+                }else {
+                    playerHero->playSoundHuPai(3);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::putongHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else{
+                //流局动画
+                Audio::getInstance()->playSoundLiuJu(UserData::getInstance()->getGender());
+                LiuJuAnim* liuju = LiuJuAnim::create();
+                addChild(liuju,3);
+                GAMEDATA::getInstance()->setIsLiuJu(true);
             }
-            HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::gangkaiHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-            addChild(hupai,999);
-        }else if(qianggangState){
-            Audio::getInstance()->playSoundHuMusic(1);
-            if(seatId1 == ClientSeatId::left){
-                playerLeft->playSoundHuPai(2);
-            }else if(seatId1 == ClientSeatId::opposite){
-                playerOpposite->playSoundHuPai(2);
-            }else if(seatId1 == ClientSeatId::right){
-                playerRight->playSoundHuPai(2);
-            }else {
-                playerHero->playSoundHuPai(2);
-            }
-            HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::qianggangHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-            addChild(hupai,999);
-        }
-        else if(!isliuju){
-            //判断胡牌的类型
-            Audio::getInstance()->playSoundHuMusic(0);
-            if(seatId1 == ClientSeatId::left){
-                playerLeft->playSoundHuPai(3);
-            }else if(seatId1 == ClientSeatId::opposite){
-                playerOpposite->playSoundHuPai(3);
-            }else if(seatId1 == ClientSeatId::right){
-                playerRight->playSoundHuPai(3);
-            }else {
-                playerHero->playSoundHuPai(3);
-            }
-            HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::putongHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-            addChild(hupai,999);
+            schedule([=](float dt){
+                clearRoomPlayer();
+                Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::create()));
+            },0,0,72.0f/24,"go2Result");
         }else{
-            //流局动画
-            Audio::getInstance()->playSoundLiuJu(UserData::getInstance()->getGender());
-            LiuJuAnim* liuju = LiuJuAnim::create();
-            addChild(liuju,3);
-            GAMEDATA::getInstance()->setIsLiuJu(true);
-        }
-        schedule([=](float dt){
             clearRoomPlayer();
             Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::create()));
-        },0,0,72.0f/24,"go2Result");
+        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
 }

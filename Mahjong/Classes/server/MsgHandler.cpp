@@ -1066,6 +1066,7 @@ void MsgHandler::gameResultNotify(std::string msg){
     }else{
         GAMEDATA::getInstance()->setDiaopao("");
     }
+    const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];
     vector<GameResultData> gameResults;
     for (int i = 0; i < finish.Capacity(); ++i){
@@ -1125,7 +1126,7 @@ void MsgHandler::gameResultNotify(std::string msg){
         gameResults.push_back(resultData);
     }
     GAMEDATA::getInstance()->setGameResults(gameResults);
-    postNotifyMessage(MSG_GAME_RESULT, "");
+    postNotifyMessage(MSG_GAME_RESULT, flag.GetString());
 }
 
 
