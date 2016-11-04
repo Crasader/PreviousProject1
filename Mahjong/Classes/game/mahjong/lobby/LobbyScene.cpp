@@ -229,6 +229,12 @@ void LobbyScene::drawSceneMid(){
     joinRooom->setPosition(880,400);
     addChild(joinRooom);
     auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
+    if(GAMEDATA::getInstance()->getFangZhuId() == UserData::getInstance()->getPoxiaoId()){
+        Sprite* frame = Sprite::create("mjlobby/go_to_friend_room_1.png");
+        openBtn->setNormalImage(frame);
+        Sprite* frame2 = Sprite::create("mjlobby/go_to_friend_room_2.png");
+        openBtn->setSelectedImage(frame2);
+    }
     auto joinBtn = MenuItemImage::create("mjlobby/join_room_btn_img_1.png", "mjlobby/join_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
     auto roomMenu = Menu::create(openBtn,joinBtn,NULL);
     roomMenu->alignItemsHorizontallyWithPadding(180);
