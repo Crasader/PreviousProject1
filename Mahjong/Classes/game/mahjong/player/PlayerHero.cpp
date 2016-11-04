@@ -22,6 +22,7 @@ bool PlayerHero::init() {
         return false;
     }
     initData();
+    scheduleUpdate();
     return true;
 }
 
@@ -149,6 +150,19 @@ Jong* PlayerHero::getTouchJong(Touch *touch){
     }
     return NULL;
 }
+
+void PlayerHero::update(float dt){
+    if(GAMEDATA::getInstance()->getNeedRemovePoker()>0){
+        for(auto var : playerHandJongs){
+            if(var->getJongType() == GAMEDATA::getInstance()->getNeedRemovePoker()){
+                playPokerByHand(var);
+                GAMEDATA::getInstance()->setNeedRemovePoker(0);
+            }
+        }
+    }
+}
+
+
 
 
 void PlayerHero::playPokerByHand(Jong* jong){

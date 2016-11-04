@@ -853,6 +853,12 @@ void MsgHandler::showOtherPlayedJong(std::string msg){
     otherPlayedJong.seatId = seatId.GetInt();
     otherPlayedJong.poker = atoi(poker.GetString());
     GAMEDATA::getInstance()->setOtherPlayJong(otherPlayedJong);
+    if(!GAMEDATA::getInstance()->getIsInGameScene()){
+        int mySeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), otherPlayedJong.seatId);
+        if (mySeatId == ClientSeatId::hero){
+            GAMEDATA::getInstance()->setNeedRemovePoker(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+        }
+    }
     postNotifyMessage(MSG_OTHER_PALYER_JONG, "");
 }
 

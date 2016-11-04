@@ -49,6 +49,10 @@ void MahjongView::onEnter(){
     addCoustomListener();
 }
 
+void MahjongView::onEnterTransitionDidFinish(){
+    GAMEDATA::getInstance()->setIsInGameScene(true);
+}
+
 void MahjongView::onExit()
 {
     Layer::onExit();

@@ -56,7 +56,6 @@ void SplashScene::onExit(){
     _eventDispatcher->removeEventListener(roomRespListener);
     _eventDispatcher->removeEventListener(reConnectAgain);
     _eventDispatcher->removeEventListener(dropListListener);
-    _eventDispatcher->removeEventListener(heroFirstPoke);
     _eventDispatcher->removeEventListener(reEnterFriendRoomListener);
     _eventDispatcher->removeEventListener(reOpenFriendRoomListener);
 }
@@ -194,16 +193,6 @@ void  SplashScene::addCustomEventListener(){
         setChangeNickName(GAMEDATA::getInstance()->getLoginAccPwd().account,GAMEDATA::getInstance()->getLoginAccPwd().password);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dropListListener, 1);
-    
-    //断线续玩第一张牌
-    heroFirstPoke = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
-        
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
-        if (seatId == ClientSeatId::hero){
-            GAMEDATA::getInstance()->setNeedRemovePoker(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-        }
-        
-    });
     
     //进入好友房间回复
     reEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){

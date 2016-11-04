@@ -38,7 +38,6 @@ private:
 	EventListenerCustom* reConnectAgain;
     EventListenerCustom* registerRespListener;
     EventListenerCustom* dropListListener;
-    EventListenerCustom* heroFirstPoke;
     EventListenerCustom* reEnterFriendRoomListener;
     EventListenerCustom* reOpenFriendRoomListener;
 	Sprite* username_text;
