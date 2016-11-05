@@ -2467,6 +2467,10 @@ void MsgHandler::gameResumeResp(std::string msg){
     resume.kb = kb.GetInt();
     const rapidjson::Value &hf = _mDoc["hf"];
     resume.hf = hf.GetInt();
+    if(_mDoc.HasMember("turn")){
+        const rapidjson::Value &turn = _mDoc["turn"];
+        resume.turn = turn.GetInt();
+    }
     const rapidjson::Value &all = _mDoc["all"];
     for(int i=0;i<all.Capacity();i++){
         PlayerResumeData data;

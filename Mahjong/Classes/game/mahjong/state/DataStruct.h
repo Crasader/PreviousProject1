@@ -446,6 +446,7 @@ struct GameResumeData
 {
     int kb;
     int hf;
+    int turn;
     std::string rest;
     std::vector <PlayerResumeData> players;
 };
