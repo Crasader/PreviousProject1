@@ -97,7 +97,7 @@ public:
     CC_SYNTHESIZE(bool, isInGameScene, IsInGameScene);
     CC_SYNTHESIZE(int, showDialogType, ShowDialogType);
     CC_SYNTHESIZE(int, heartCount, HeartCount);//心跳计数
-//    CC_SYNTHESIZE(int, needRemovePoker, NeedRemovePoker);
+    CC_SYNTHESIZE(bool, waitNetwork, WaitNetwork);//网络状态
     
     CC_SYNTHESIZE(string, dice, Dice);
     CC_SYNTHESIZE(string, kaibao, Kaibao);

@@ -62,6 +62,7 @@ void NetworkManage::sendMsg(std::string code) {
         log("scoket connect again ...(^_^)");
         socket.Close();
         connectServer();
+        _eventDispatcher->dispatchCustomEvent(CLIENT_LOST_CONNECT, NULL);
     }
 }
 

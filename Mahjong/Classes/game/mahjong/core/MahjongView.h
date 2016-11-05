@@ -102,6 +102,7 @@ private:
     EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
     EventListenerCustom* lobbyConncetAgainListener;
+    EventListenerCustom* viewIntnetListener;
     
 	void addCoustomListener();
 	void addOthersReadyListener();

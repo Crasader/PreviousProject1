@@ -21,6 +21,7 @@ void GAMEDATA::init(){
     setIsGotoLobby(false);
     setIsInPay(false);
     setIsInGameScene(false);
+    setWaitNetwork(false);
     setShowDialogType(-1);
     setHeartCount(0);
     setHuangfan("0");

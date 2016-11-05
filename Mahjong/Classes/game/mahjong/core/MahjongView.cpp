@@ -86,6 +86,8 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
+    
 }
 
 void MahjongView::initData(){
@@ -178,9 +180,12 @@ void MahjongView::update(float dt){
         GAMEDATA::getInstance()->setNeedAddPlayer(-1);
     }
     if(GAMEDATA::getInstance()->getHeartCount()>5){
-        HintDialog* dia = HintDialog::create("断线重连中....", nullptr);
-        addChild(dia,100);
-        GAMEDATA::getInstance()->setHeartCount(-100000);
+        if(!GAMEDATA::getInstance()->getWaitNetwork()){
+            HintDialog* dia = HintDialog::create("断线重连中....", nullptr);
+            addChild(dia,100);
+            GAMEDATA::getInstance()->setHeartCount(-100000);
+            GAMEDATA::getInstance()->setWaitNetwork(true);
+        }
     }
 }
 
@@ -1441,6 +1446,15 @@ void MahjongView::addCoustomListener(){
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
         
+    });
+    
+    //网络连接
+    viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
+        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
+            HintDialog* hint = HintDialog::create("网络出现问题啦",NULL);
+            addChild(hint,5);
+            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
+        });
     });
 
 }
