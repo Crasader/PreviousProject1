@@ -564,10 +564,6 @@ void MahjongView::resumePlayerUI(PlayerResumeData data,int type){
         playerHero->recoverHand(data.hand);
         playerHero->recoverPlayed(data.outhand);
         playerHero->recoverHua(data.hua);
-        if(data.tru == 1){
-            trusteeship->setVisible(true);
-            GAMEDATA::getInstance()->setIsTrusteeship(true);
-        }
     }
     else if (type == ClientSeatId::left){
         playerLeft->setPlayerTingState(data.status == 1?true:false);
@@ -1325,14 +1321,14 @@ void MahjongView::addPlayerOffLineListener(){
         string buf = static_cast<char*>(event->getUserData());
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
         for (int i = 0; i < players.size(); i++){
-            if(players.at(i)->getPoxiaoId() ==  buf){
+            if(players.at(i)->getSeatId() ==  atoi(buf.c_str())){
                 int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId());
                 if(seatId == ClientSeatId::left){
-                    playerLeft->setPlayerTingState(true);
+                    playerLeft->setIsOffLine(true);
                 }else if(seatId == ClientSeatId::opposite){
-                    playerOpposite->setPlayerTingState(true);
+                    playerOpposite->setIsOffLine(true);
                 }else if(seatId == ClientSeatId::right){
-                    playerRight->setPlayerTingState(true);
+                    playerRight->setIsOffLine(true);
                 }
             }
         }

@@ -2399,9 +2399,9 @@ void MsgHandler::getPlayerOffLineNotify(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("poxiaoId")){
-        const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
-        postNotifyMessage(MSG_PLAYER_OFF_LINE_NOTIFY, poxiaoId.GetString());
+    if(_mDoc.HasMember("seatId")){
+        const rapidjson::Value &seatId = _mDoc["seatId"];
+        postNotifyMessage(MSG_PLAYER_OFF_LINE_NOTIFY, seatId.GetString());
     }
 }
 

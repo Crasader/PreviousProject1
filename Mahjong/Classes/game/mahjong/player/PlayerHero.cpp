@@ -1191,8 +1191,12 @@ void PlayerHero::recoverHand(std::string hand){
     {
         Jong* jong = Jong::create();
         jong->showJong(herohand, atoi(hands.at(i).c_str()));
-        jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i, JONG_POS_Y));
-        this->addChild(jong);
+        if(GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()&&i==hands.size()-1){
+            jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i+8, JONG_POS_Y));
+        }else{
+            jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i, JONG_POS_Y));
+        }
+        addChild(jong);
         playerHandJongs.pushBack(jong);
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
