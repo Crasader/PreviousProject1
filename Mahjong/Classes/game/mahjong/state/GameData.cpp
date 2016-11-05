@@ -22,7 +22,7 @@ void GAMEDATA::init(){
     setIsInPay(false);
     setIsInGameScene(false);
     setShowDialogType(-1);
-    setNeedRemovePoker(-1);
+    setHeartCount(0);
     setHuangfan("0");
     setKaibao("0");
 }

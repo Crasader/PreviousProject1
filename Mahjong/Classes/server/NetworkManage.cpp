@@ -1,5 +1,6 @@
 #include "server/NetworkManage.h"
 #include "server/SocketDataManage.h"
+#include "game/mahjong/state/GameData.h"
 
 NetworkManage* NetworkManage::_instance = NULL;
 std::string NetworkManage::allReciveInfo;
@@ -77,6 +78,7 @@ void NetworkManage::sendHeartBeat() {
         sleep(3);
 #endif
         sendMsg(CommandManage::getInstance()->getHeartCommmand());
+        GAMEDATA::getInstance()->setHeartCount(GAMEDATA::getInstance()->getHeartCount()+1);
     }
     
 }

@@ -177,6 +177,11 @@ void MahjongView::update(float dt){
         playerHero->stopTimeClockAnim();
         GAMEDATA::getInstance()->setNeedAddPlayer(-1);
     }
+    if(GAMEDATA::getInstance()->getHeartCount()>5){
+        HintDialog* dia = HintDialog::create("断线重连中....", nullptr);
+        addChild(dia,100);
+        GAMEDATA::getInstance()->setHeartCount(-100000);
+    }
 }
 
 
@@ -481,6 +486,7 @@ void MahjongView::recoverGame(){
     //重新设置庄的位置
     showOriention();
     ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+    ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
     GAMEDATA::getInstance()->setIsPlaying(true);
     int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
     if(playturn == ClientSeatId::hero){
@@ -1352,6 +1358,7 @@ void MahjongView::addPlayerResumeListener(){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
         }
+        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
         showGamePaidui(atoi(data.rest.c_str()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);

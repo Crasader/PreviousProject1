@@ -36,6 +36,10 @@ void MsgHandler::handleMsg(std::string msg){
     const rapidjson::Value &code = _mDoc["code"];
     if (code.IsInt()) {
         distribute(code.GetInt(), msg);
+        if(code == 2){
+            //心跳回复
+            GAMEDATA::getInstance()->setHeartCount(0);
+        }
     }
     else{
         log("msg from server is error");
