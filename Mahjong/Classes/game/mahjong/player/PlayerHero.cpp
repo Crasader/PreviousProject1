@@ -226,16 +226,15 @@ void PlayerHero::drawPlayerHero() {
         
     }
     for (int i = 0; i < playerHandJongs.size(); i++) {
-        
-        if (i == MAX_JONG_NUM - 1||i == MAX_JONG_NUM){
+        if (i == MAX_JONG_NUM - 1){
             playerHandJongs.at(i)->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
-            currentJong = playerHandJongs.at(i);
         }
         else{
             playerHandJongs.at(i)->setPosition(Point(JONG_POS_START_X + JONG_WIDTH * i, JONG_POS_Y));
         }
         this->addChild(playerHandJongs.at(i));
     }
+    currentJong = playerHandJongs.at(playerHandJongs.size()-1);
 }
 
 
@@ -673,17 +672,17 @@ void PlayerHero::removePlayedIcon(){
 
 void PlayerHero::doEventTimeOverUi(){
     ((MahjongView*)getParent())->hideTingGangControllPad();
-    setIsAllowPlay(false);
+//    setIsAllowPlay(false);
 }
 
 void PlayerHero::doEventTimeOver(int type){
     //type 负值正常打牌超时
     if (type < 0){
-        setIsAllowPlay(false);
-        auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
+//        setIsAllowPlay(false);
+//        auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
 //            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
-        }), NULL);
-        runAction(sequence);
+//        }), NULL);
+//        runAction(sequence);
     }
     //type 吃碰杠倒计时
     else if (type == 1){
@@ -1196,4 +1195,5 @@ void PlayerHero::recoverHand(std::string hand){
         this->addChild(jong);
         playerHandJongs.pushBack(jong);
     }
+    currentJong = playerHandJongs.at(playerHandJongs.size()-1);
 }
