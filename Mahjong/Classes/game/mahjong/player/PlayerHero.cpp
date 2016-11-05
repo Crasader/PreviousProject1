@@ -121,7 +121,6 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
         virtualJong->setOpacity(255);
         playPokerByHand(virtualJong);
         arrangeHandJongs();
-        
     }
     if (isAllowPlay) {
         if (doubleClickJong == NULL){
@@ -228,7 +227,7 @@ void PlayerHero::drawPlayerHero() {
     }
     for (int i = 0; i < playerHandJongs.size(); i++) {
         
-        if (i == MAX_JONG_NUM - 1){
+        if (i == MAX_JONG_NUM - 1||i == MAX_JONG_NUM){
             playerHandJongs.at(i)->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
             currentJong = playerHandJongs.at(i);
         }
@@ -682,7 +681,7 @@ void PlayerHero::doEventTimeOver(int type){
     if (type < 0){
         setIsAllowPlay(false);
         auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
+//            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
         }), NULL);
         runAction(sequence);
     }

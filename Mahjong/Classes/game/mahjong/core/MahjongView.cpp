@@ -485,6 +485,7 @@ void MahjongView::recoverGame(){
     int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
     if(playturn == ClientSeatId::hero){
         playerHero->startTimeClockAnim();
+        playerHero->setIsAllowPlay(true);
     }else if(playturn == ClientSeatId::left){
         playerLeft->startTimeClockAnim();
     }else if(playturn == ClientSeatId::opposite){
@@ -506,10 +507,6 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerHero->recoverHand(data.hand);
             playerHero->recoverPlayed(data.outhand);
             playerHero->recoverHua(data.hua);
-            if(data.tru == 1){
-                trusteeship->setVisible(true);
-                GAMEDATA::getInstance()->setIsTrusteeship(true);
-            }
         }
     }
     else if (type == ClientSeatId::left){
