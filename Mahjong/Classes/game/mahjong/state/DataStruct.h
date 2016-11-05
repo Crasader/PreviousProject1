@@ -56,6 +56,7 @@ struct EnterRoomResp{
     std::string result;
     std::string rsid;
     std::string kb;
+    std::string huangfan;
     std::string jjj_count;
     std::string jjj_used;
 };
@@ -227,6 +228,8 @@ struct RemovePlayerData{
 struct FriendOpenRoomRespData{
     int seatId;
     int result;
+    std::string kb;
+    std::string huangfan;
     std::string prjushu;
     std::string prjucount;
     std::string prid;

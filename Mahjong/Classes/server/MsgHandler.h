@@ -100,5 +100,6 @@ private:
     void enterRoomEnquireResp(std::string msg);
     void handleDissovleRoomNotify(std::string msg);
     void handleDissovleRoomSelectedNotify(std::string msg);
+    void handleQuitGameViewResp(std::string msg);
 };
 #endif

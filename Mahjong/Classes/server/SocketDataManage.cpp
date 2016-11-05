@@ -36,9 +36,9 @@ void SocketDataManage::pushMsg(std::string msg){
 }
 
 void SocketDataManage::pauseMsg(){
-    allowSend= false;
+//    allowSend= false;
 }
 
 void SocketDataManage::resumeMsg(){
-    allowSend = true;
+//    allowSend = true;
 }

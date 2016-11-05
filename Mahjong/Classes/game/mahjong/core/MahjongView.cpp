@@ -123,8 +123,16 @@ void MahjongView::loadView(){
 
 void MahjongView::startGameFirst(){
     showOriention();
-    GAMEDATA::getInstance()->setKaibao("0");
-    GAMEDATA::getInstance()->setHuangfan("0");
+    if(GAMEDATA::getInstance()->getFriendOpenRoomResp().kb == "1"){
+        GAMEDATA::getInstance()->setKaibao("1");
+    }else{
+        GAMEDATA::getInstance()->setKaibao("0");
+    }
+    if(GAMEDATA::getInstance()->getFriendOpenRoomResp().huangfan == "1"){
+        GAMEDATA::getInstance()->setHuangfan("1");
+    }else{
+        GAMEDATA::getInstance()->setHuangfan("0");
+    }
     guiLayer->updateData();
     Player* info = new Player();
     info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
@@ -158,7 +166,11 @@ void MahjongView::startGameAgain(){
     }else{
         GAMEDATA::getInstance()->setKaibao("0");
     }
-    GAMEDATA::getInstance()->setHuangfan("0");
+    if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
+        GAMEDATA::getInstance()->setHuangfan("1");
+    }else{
+        GAMEDATA::getInstance()->setHuangfan("0");
+    }
     guiLayer->updateData();
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
     ((Orientation*)getChildByTag(123))->resetBank();
@@ -1414,10 +1426,8 @@ void MahjongView::addCoustomListener(){
     });
     
     dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-        if(GAMEDATA::getInstance()->getFangZhuId() != UserData::getInstance()->getPoxiaoId()){
-            DissovleRoomDialog* dis = DissovleRoomDialog::create();
-            addChild(dis,1000);
-        }
+        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+        addChild(dis,1000);
     });
     
     dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
@@ -1440,8 +1450,8 @@ void MahjongView::addCoustomListener(){
     //断线续玩
     lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         //游戏进入托管状态
-//        trusteeship->setVisible(true);
-//        GAMEDATA::getInstance()->setIsTrusteeship(true);
+        //        trusteeship->setVisible(true);
+        //        GAMEDATA::getInstance()->setIsTrusteeship(true);
         //重新绘制玩家的牌和话
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
@@ -1456,6 +1466,6 @@ void MahjongView::addCoustomListener(){
             Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
         });
     });
-
+    
 }
 

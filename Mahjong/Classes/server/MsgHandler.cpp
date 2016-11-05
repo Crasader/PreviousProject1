@@ -494,6 +494,10 @@ void MsgHandler::distribute(int code, std::string msg){
             enterRoomEnquireResp(msg);
             break;
         }
+        case MSGCODE_MAJIANG_OUT_RESPONSE:{
+            handleQuitGameViewResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -1531,7 +1535,14 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     FriendOpenRoomRespData data;
-    
+    if(_mDoc.HasMember("kb")){
+        const rapidjson::Value &kb = _mDoc["kb"];
+        data.kb = kb.GetString();
+    }
+    if(_mDoc.HasMember("huangfan")){
+        const rapidjson::Value &huangfan = _mDoc["huangfan"];
+        data.huangfan = huangfan.GetString();
+    }
     if(_mDoc.HasMember("prjushu")){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
         data.prjushu = prjushu.GetString();
@@ -1602,6 +1613,10 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
     FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+    if(_mDoc.HasMember("kb")){
+        const rapidjson::Value &kb = _mDoc["kb"];
+        data.kb = kb.GetString();
+    }
     if(_mDoc.HasMember("seatId")){
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
@@ -2540,6 +2555,10 @@ void MsgHandler::gameContinueResp(std::string msg){
         const rapidjson::Value &kb = _mDoc["kb"];
         resp.kb = kb.GetString();
     }
+    if(_mDoc.HasMember("huangfan")){
+        const rapidjson::Value &huangfan = _mDoc["huangfan"];
+        resp.huangfan = huangfan.GetString();
+    }
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
     GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
     postNotifyMessage(MSG_HERO_CONTINUE_RESP, "");
@@ -2673,4 +2692,16 @@ void MsgHandler::handleDissovleRoomSelectedNotify(std::string msg){
     }
     GAMEDATA::getInstance()->setDissolveData(data);
     postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, "");
+}
+
+
+void MsgHandler::handleQuitGameViewResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("prjucount")){
+        const rapidjson::Value &prjucount = _mDoc["prjucount"];
+        GAMEDATA::getInstance()->setPrivateGameNum(prjucount.GetString());
+    }
 }

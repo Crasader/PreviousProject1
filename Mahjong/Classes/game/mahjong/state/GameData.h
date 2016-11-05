@@ -98,7 +98,7 @@ public:
     CC_SYNTHESIZE(int, showDialogType, ShowDialogType);
     CC_SYNTHESIZE(int, heartCount, HeartCount);//心跳计数
     CC_SYNTHESIZE(bool, waitNetwork, WaitNetwork);//网络状态
-    
+    CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, dice, Dice);
     CC_SYNTHESIZE(string, kaibao, Kaibao);
     CC_SYNTHESIZE(string, huangfan, Huangfan);
