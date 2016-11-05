@@ -218,10 +218,11 @@ void ResultLayer::showWinAnim(){
             continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
                 if(GAMEDATA::getInstance()->getIsGotoLobby()){
                     GAMEDATA::getInstance()->setIsGotoLobby(false);
-                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                    //                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
                 }else{
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
+                    GAMEDATA::getInstance()->setPrivateGameNum("0");
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
@@ -241,10 +242,11 @@ void ResultLayer::showWinAnim(){
             continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
                 if(GAMEDATA::getInstance()->getIsGotoLobby()){
                     GAMEDATA::getInstance()->setIsGotoLobby(false);
-                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                    //                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
                 }else{
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
+                    GAMEDATA::getInstance()->setPrivateGameNum("0");
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
@@ -261,7 +263,7 @@ void ResultLayer::showWinAnim(){
             continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
                 if(GAMEDATA::getInstance()->getIsGotoLobby()){
                     GAMEDATA::getInstance()->setIsGotoLobby(false);
-                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                    //                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
                 }else{
                     continuMenu->setVisible(true);
                 }
@@ -289,7 +291,7 @@ void ResultLayer::showWinAnim(){
         continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
             if(GAMEDATA::getInstance()->getIsGotoLobby()){
                 GAMEDATA::getInstance()->setIsGotoLobby(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                //                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             }else{
                 continuMenu->setVisible(true);
             }
@@ -423,10 +425,11 @@ void ResultLayer::showLoseAnim(){
             continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
                 if(GAMEDATA::getInstance()->getIsGotoLobby()){
                     GAMEDATA::getInstance()->setIsGotoLobby(false);
-                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                    //                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
                 }else{
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
+                    GAMEDATA::getInstance()->setPrivateGameNum("0");
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
@@ -445,10 +448,11 @@ void ResultLayer::showLoseAnim(){
             continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
                 if(GAMEDATA::getInstance()->getIsGotoLobby()){
                     GAMEDATA::getInstance()->setIsGotoLobby(false);
-                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                    //                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
                 }else{
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
+                    GAMEDATA::getInstance()->setPrivateGameNum("0");
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
@@ -465,7 +469,7 @@ void ResultLayer::showLoseAnim(){
             continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
                 if(GAMEDATA::getInstance()->getIsGotoLobby()){
                     GAMEDATA::getInstance()->setIsGotoLobby(false);
-                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                    //                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
                 }else{
                     continuMenu->setVisible(true);
                 }
@@ -486,7 +490,7 @@ void ResultLayer::showLoseAnim(){
             
             if(GAMEDATA::getInstance()->getIsGotoLobby()){
                 GAMEDATA::getInstance()->setIsGotoLobby(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                //                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             }else{
                 resultMenu->setVisible(true);
             }
