@@ -811,6 +811,7 @@ void MsgHandler::getHeroJongs(std::string msg){
     FriendOpenRoomRespData opendata = GAMEDATA::getInstance()->getFriendOpenRoomResp();
     const rapidjson::Value &prjucount = _mDoc["prjucount"];
     opendata.prjucount = StringUtils::format("%d",prjucount.GetInt());
+    GAMEDATA::getInstance()->setPrivateGameNum(opendata.prjucount);
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
     
     postNotifyMessage(MSG_GAME_START_NOTIFY, "");
