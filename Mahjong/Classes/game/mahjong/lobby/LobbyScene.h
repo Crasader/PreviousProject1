@@ -5,7 +5,7 @@
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "game/utils/StringUtil.h"
-#include "game/loading/Loading.h"
+#include "game/mahjong/loading/Loading.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/core/MjGameScene.h"
 #include "game/mahjong/setting/UserSetting.h"

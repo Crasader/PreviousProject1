@@ -11,9 +11,9 @@
 #include "game/mahjong/shop/mall/LequanExchangeRecord.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/state/GameData.h"
-#include "game/loading/Loading.h"
-#include "server/NetworkManage.h"
+#include "game/mahjong/loading/Loading.h"
 #include "game/utils/StringUtil.h"
+#include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 
 

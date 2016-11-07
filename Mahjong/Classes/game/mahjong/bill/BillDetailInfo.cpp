@@ -3,7 +3,7 @@
 #include "payment/android/CallAndroidMethod.h"
 #include "game/utils/StringUtil.h"
 #include "game/utils/Chinese.h"
-#include "game/loading/Loading.h"
+#include "game/mahjong/loading/Loading.h"
 #include "userdata/UserData.h"
 #include "server/NetworkManage.h"
 

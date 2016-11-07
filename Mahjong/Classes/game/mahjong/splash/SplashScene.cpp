@@ -7,14 +7,15 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
 #include "game/mahjong/splash/dropdownlist/LoginMannger.h"
-#include "payment/android/CallAndroidMethod.h"
 #include "game/mahjong/friend/dialog/RoomFullDialog.hpp"
 #include "game/mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
-#include "game/utils/Audio.h"
+#include "game/mahjong/loading/Loading.h"
 #include "game/utils/SeatIdUtil.h"
+#include "game/utils/Audio.h"
+#include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
-#include "game/loading/Loading.h"
+
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "payment/ios/IOSBridge.h"

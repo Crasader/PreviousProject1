@@ -1,11 +1,11 @@
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/bill/BillDetailInfo.h"
+#include "game/mahjong/loading/Loading.h"
+#include "game/utils/StringUtil.h"
+#include "game/utils/Chinese.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
-#include "game/utils/StringUtil.h"
-#include "game/loading/Loading.h"
-#include "game/utils/Chinese.h"
 
 bool BillInfo::init()
 {

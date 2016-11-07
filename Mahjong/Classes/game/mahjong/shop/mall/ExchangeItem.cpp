@@ -9,7 +9,7 @@
 #include "game/mahjong/shop/mall/ExchangeItem.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/state/GameData.h"
-#include "game/loading/Loading.h"
+#include "game/mahjong/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "game/utils/StringUtil.h"
 

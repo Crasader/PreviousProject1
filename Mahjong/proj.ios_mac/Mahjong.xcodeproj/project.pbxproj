@@ -239,8 +239,6 @@
 		D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
 		D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */; };
 		D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */; };
-		D2B1A8711CCDF0F400A20896 /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B31CCDF0F300A20896 /* Loading.cpp */; };
-		D2B1A8721CCDF0F400A20896 /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B31CCDF0F300A20896 /* Loading.cpp */; };
 		D2B1A8731CCDF0F400A20896 /* DealJongAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B71CCDF0F300A20896 /* DealJongAnim.cpp */; };
 		D2B1A8741CCDF0F400A20896 /* DealJongAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7B71CCDF0F300A20896 /* DealJongAnim.cpp */; };
 		D2B1A8771CCDF0F400A20896 /* HupaiAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7BB1CCDF0F300A20896 /* HupaiAnim.cpp */; };
@@ -301,6 +299,8 @@
 		D2CF763F1D62AC690035B870 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */; };
 		D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */; };
 		D2CF764A1D6581EE0035B870 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */; };
+		D2EF93C61DD050A000360BCF /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2EF93C41DD050A000360BCF /* Loading.cpp */; };
+		D2EF93C71DD050A000360BCF /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2EF93C41DD050A000360BCF /* Loading.cpp */; };
 		D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */; };
 		D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -573,8 +573,6 @@
 		D2A175271CE0562A00CEDAE4 /* HuaAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuaAnim.hpp; sourceTree = "<group>"; };
 		D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D2B1A7B31CCDF0F300A20896 /* Loading.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loading.cpp; sourceTree = "<group>"; };
-		D2B1A7B41CCDF0F300A20896 /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		D2B1A7B71CCDF0F300A20896 /* DealJongAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DealJongAnim.cpp; sourceTree = "<group>"; };
 		D2B1A7B81CCDF0F300A20896 /* DealJongAnim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealJongAnim.h; sourceTree = "<group>"; };
 		D2B1A7BB1CCDF0F300A20896 /* HupaiAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HupaiAnim.cpp; sourceTree = "<group>"; };
@@ -641,6 +639,8 @@
 		D2CF763D1D62AC690035B870 /* FaceChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaceChatLayer.hpp; sourceTree = "<group>"; };
 		D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerChatManage.cpp; sourceTree = "<group>"; };
 		D2CF76481D6581EE0035B870 /* PlayerChatManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerChatManage.hpp; sourceTree = "<group>"; };
+		D2EF93C41DD050A000360BCF /* Loading.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loading.cpp; sourceTree = "<group>"; };
+		D2EF93C51DD050A000360BCF /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePicker.cpp; sourceTree = "<group>"; };
 		D2F05F2A1D8E2B22006E5A4C /* ImagePicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePicker.hpp; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1189,23 +1189,14 @@
 			children = (
 				D2B1A7B51CCDF0F300A20896 /* mahjong */,
 				D28A4A211D056B7A00741FD0 /* utils */,
-				D2B1A7B21CCDF0F300A20896 /* loading */,
 			);
 			path = game;
-			sourceTree = "<group>";
-		};
-		D2B1A7B21CCDF0F300A20896 /* loading */ = {
-			isa = PBXGroup;
-			children = (
-				D2B1A7B31CCDF0F300A20896 /* Loading.cpp */,
-				D2B1A7B41CCDF0F300A20896 /* Loading.h */,
-			);
-			path = loading;
 			sourceTree = "<group>";
 		};
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D2EF93C31DD050A000360BCF /* loading */,
 				D2F05F6B1D8E75F6006E5A4C /* widget */,
 				D2F05F4A1D8E7500006E5A4C /* heroinfo */,
 				D291B58B1D75262600B05026 /* activities */,
@@ -1439,6 +1430,15 @@
 				D2C3FA551D9906FF00CFC80E /* WXApiObject.h */,
 			);
 			path = wechat;
+			sourceTree = "<group>";
+		};
+		D2EF93C31DD050A000360BCF /* loading */ = {
+			isa = PBXGroup;
+			children = (
+				D2EF93C41DD050A000360BCF /* Loading.cpp */,
+				D2EF93C51DD050A000360BCF /* Loading.h */,
+			);
+			path = loading;
 			sourceTree = "<group>";
 		};
 		D2F05F281D8E2B22006E5A4C /* image */ = {
@@ -1778,7 +1778,6 @@
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D281E5F51DC1992500D3E44E /* ChargeItem.cpp in Sources */,
 				D2B1A8DF1CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
-				D2B1A8711CCDF0F400A20896 /* Loading.cpp in Sources */,
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
 				D22912421D128367005C7167 /* DropDownListBox.cpp in Sources */,
@@ -1793,6 +1792,7 @@
 				D22EEF541D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D22EEF871D66CFC800BF1CCB /* SearchResult.cpp in Sources */,
 				D281E5841DAB89F700D3E44E /* ActivityExchange.cpp in Sources */,
+				D2EF93C61DD050A000360BCF /* Loading.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1874,6 +1874,7 @@
 				D235D8F61DAA6EB300DDA131 /* PrideLayer.cpp in Sources */,
 				D2F05F6F1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
+				D2EF93C71DD050A000360BCF /* Loading.cpp in Sources */,
 				D281E5D41DBED34100D3E44E /* GoldRoomPlate.cpp in Sources */,
 				D22EEF621D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */,
 				D22EEF881D66CFC800BF1CCB /* SearchResult.cpp in Sources */,
@@ -1892,7 +1893,6 @@
 				D22EEFDA1D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
 				D281E5811DAB810A00D3E44E /* PropCell.cpp in Sources */,
 				D28B6AE21CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
-				D2B1A8721CCDF0F400A20896 /* Loading.cpp in Sources */,
 				D2B1A8D81CCDF0F400A20896 /* PlayerBase.cpp in Sources */,
 				D2CF763F1D62AC690035B870 /* FaceChatLayer.cpp in Sources */,
 				D281E6031DC19EF500D3E44E /* ExchangeItem.cpp in Sources */,

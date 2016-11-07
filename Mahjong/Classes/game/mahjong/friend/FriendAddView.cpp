@@ -1,6 +1,6 @@
 #include "game/mahjong/friend/FriendAddView.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
-#include "game/loading/Loading.h"
+#include "game/mahjong/loading/Loading.h"
 #include "server/NetworkManage.h"
 
 

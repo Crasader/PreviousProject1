@@ -10,7 +10,7 @@
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/lobby/LobbyScene.h"
-#include "game/loading/Loading.h"
+#include "game/mahjong/loading/Loading.h"
 #include "game/utils/StringUtil.h"
 #include "game/utils/ParticleUtil.hpp"
 #include "server/NetworkManage.h"
