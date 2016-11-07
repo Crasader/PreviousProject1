@@ -228,7 +228,7 @@ void SplashScene::showSplashAnim(){
     
     auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
                                             CC_CALLBACK_0(SplashScene::loginByWechat, this));
-    loginMenu = Menu::create(visitorBtn, NULL);
+    auto loginMenu = Menu::create(visitorBtn, NULL);
     loginMenu->setPosition(0, 0);
     
     //获取尺寸大小

@@ -11,7 +11,7 @@ class SplashScene : public cocos2d::Layer
 {
 public:
     static cocos2d::Scene* createScene();
-    virtual bool init();
+    virtual bool init() override;
 	virtual void onEnter() override;
 	virtual void onExit() override;
 	CREATE_FUNC(SplashScene);
@@ -23,13 +23,12 @@ private:
 	EventListenerCustom* reConnectAgain;
     EventListenerCustom* reEnterFriendRoomListener;
     EventListenerCustom* reOpenFriendRoomListener;
-    Menu* loginMenu;
+
     void loginByWechat();
 	void addTocuhListener();
 	void drawLonginScene();
     void showSplashAnim();
     void scrollLightSpot(float dt);
-	void addCustomEventListener();
 	void showLoading();
 	void removeLoading();
 };

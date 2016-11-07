@@ -17,7 +17,7 @@ USING_NS_CC;
 
 class GoldRoomPlate : public Layer{
 public:
-    virtual bool init();
+    virtual bool init() override;
     bool onTouchBegan(Touch *touch, Event  *event) override;
     void onTouchEnded(Touch *touch, Event  *event) override;
     CREATE_FUNC(GoldRoomPlate);
