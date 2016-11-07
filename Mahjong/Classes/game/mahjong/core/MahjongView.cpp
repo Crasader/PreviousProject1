@@ -1167,7 +1167,7 @@ void MahjongView::addPlayerTingNotifyListener(){
 void MahjongView::addHeroTingNotifyListener(){
     tingNotifyListener = EventListenerCustom::create(MSG_HERO_TING_GANG, [=](EventCustom* event){
         if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-            this->showTingGangControllPad();
+            showTingGangControllPad();
             playerHero->startTimeClockAnim(5, 2);
         }
     });
