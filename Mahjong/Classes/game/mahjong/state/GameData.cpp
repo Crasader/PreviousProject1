@@ -24,6 +24,7 @@ void GAMEDATA::init(){
     setWaitNetwork(false);
     setShowDialogType(-1);
     setHeartCount(0);
+    setScore(0);
     setHuangfan("0");
     setKaibao("0");
 }

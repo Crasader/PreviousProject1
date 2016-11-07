@@ -96,6 +96,7 @@ public:
     CC_SYNTHESIZE(bool, isInPay, IsInPay);
     CC_SYNTHESIZE(bool, isInGameScene, IsInGameScene);
     CC_SYNTHESIZE(int, showDialogType, ShowDialogType);
+    CC_SYNTHESIZE(int, score, Score);
     CC_SYNTHESIZE(int, heartCount, HeartCount);//心跳计数
     CC_SYNTHESIZE(bool, waitNetwork, WaitNetwork);//网络状态
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数

@@ -60,13 +60,6 @@ void UserData::setLockDiamond(int num){
     UserDefault::getInstance()->setIntegerForKey("user_lock_diamond", num);
 }
 
-int UserData::getScore(){
-    return UserDefault::getInstance()->getIntegerForKey("user_score", 0);
-}
-
-void UserData::setScore(int score){
-    UserDefault::getInstance()->setIntegerForKey("user_score", score);
-}
 
 int UserData::getTicket(){
     return UserDefault::getInstance()->getIntegerForKey("user_ticket", 0);

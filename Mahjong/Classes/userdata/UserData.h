@@ -22,9 +22,6 @@ public:
     int getLockDiamond();
     void setLockDiamond(int num);
 
-	int getScore();
-	void setScore(int score);
-
 	int getTicket();
 	void setTicket(int num);
 

@@ -1565,7 +1565,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     }
     if(_mDoc.HasMember("jifen")){
         const rapidjson::Value &jifen = _mDoc["jifen"];
-        UserData::getInstance()->setScore(jifen.GetInt());
+        GAMEDATA::getInstance()->setScore(jifen.GetInt());
     }
     if(_mDoc.HasMember("seatId")){
         const rapidjson::Value &seatId = _mDoc["seatId"];
@@ -2401,7 +2401,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
     }
     if(_mDoc.HasMember("jifen")){
         const rapidjson::Value &jifen = _mDoc["jifen"];
-        UserData::getInstance()->setScore(jifen.GetInt());
+        GAMEDATA::getInstance()->setScore(jifen.GetInt());
     }
     postNotifyMessage(MSG_UPDATE_HERO_INFO, "");
 }

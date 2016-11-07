@@ -1781,11 +1781,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/state/GameData.cpp"
-            timestampString = "500028012.429814"
+            timestampString = "500209373.717357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "GAMEDATA::sortFriendList(FriendListData data)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3088,11 +3088,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "500193742.371086"
+            timestampString = "500209099.745418"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "LobbyScene::signUpdate(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3104,11 +3104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "500193742.371086"
+            timestampString = "500209099.745418"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "LobbyScene::signUpdate(float dt)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3350,22 +3350,6 @@
             startingLineNumber = "69"
             endingLineNumber = "69"
             landmarkName = "FriendListView::onEnter()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "500204905.442404"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2404"
-            endingLineNumber = "2404"
-            landmarkName = "MsgHandler::getPlayerInfoResp(std::string msg)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3680,11 +3664,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "500193742.371086"
+            timestampString = "500209099.745418"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "LobbyScene::drawSceneMid()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3830,6 +3814,22 @@
             startingLineNumber = "1169"
             endingLineNumber = "1169"
             landmarkName = "MahjongView::addHeroTingNotifyListener()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/server/MsgHandler.cpp"
+            timestampString = "500208848.060213"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1568"
+            endingLineNumber = "1568"
+            landmarkName = "MsgHandler::friendOpenRoomResp(std::string msg)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

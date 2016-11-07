@@ -143,11 +143,11 @@ void MahjongView::startGameFirst(){
     }
     info->setTicket(UserData::getInstance()->getTicket());
     info->setGold(UserData::getInstance()->getGold());
-    info->setScore(UserData::getInstance()->getScore());
     info->setGender(UserData::getInstance()->getGender());
     info->setNickname(UserData::getInstance()->getNickName());
     info->setPicture(UserData::getInstance()->getPicture());
     info->setFangka(UserData::getInstance()->getFangkaNum());
+    info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
 }
 
