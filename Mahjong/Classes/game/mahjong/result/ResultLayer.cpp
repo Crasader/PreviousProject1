@@ -221,10 +221,12 @@ void ResultLayer::showWinAnim(){
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }else{
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
@@ -247,10 +249,12 @@ void ResultLayer::showWinAnim(){
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }else{
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
@@ -434,10 +438,12 @@ void ResultLayer::showLoseAnim(){
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }else{
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
@@ -459,10 +465,12 @@ void ResultLayer::showLoseAnim(){
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }else{
                     continuMenu->setVisible(true);
                     biaoji->setVisible(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }
                 schedule(schedule_selector(ResultLayer::updateTime), 1.0f, kRepeatForever, 0);
             }),FadeTo::create(3.0/24, 255), NULL));
