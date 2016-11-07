@@ -1,15 +1,13 @@
 //
 //  LoadResource.hpp
 //  Mahjong
-//
+//  虚拟的资源加载界面,进度条的加载速度是固定的
 //  Created by qiuzhong on 16/6/6.
 //
 //
 
 #ifndef LoadResource_hpp
 #define LoadResource_hpp
-
-#include <stdio.h>
 
 #include "cocos2d.h"
 USING_NS_CC;
@@ -21,6 +19,6 @@ public:
     CREATE_FUNC(LoadResource);
 private:
     void showHealthLayer();
-    void showLayer();
+    void showNormalLayer();
 };
 #endif /* LoadResource_hpp */

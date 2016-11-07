@@ -61,14 +61,6 @@
 		D226FD2D1D051DBA00324097 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD281D051DBA00324097 /* SplashScene.cpp */; };
 		D226FD301D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
 		D226FD311D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
-		D22912381D128103005C7167 /* FindPassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912341D128103005C7167 /* FindPassword.cpp */; };
-		D22912391D128103005C7167 /* FindPassword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912341D128103005C7167 /* FindPassword.cpp */; };
-		D229123A1D128103005C7167 /* UserRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912361D128103005C7167 /* UserRegister.cpp */; };
-		D229123B1D128103005C7167 /* UserRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912361D128103005C7167 /* UserRegister.cpp */; };
-		D22912421D128367005C7167 /* DropDownListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D229123E1D128367005C7167 /* DropDownListBox.cpp */; };
-		D22912431D128367005C7167 /* DropDownListBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D229123E1D128367005C7167 /* DropDownListBox.cpp */; };
-		D22912441D128367005C7167 /* LoginMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912401D128367005C7167 /* LoginMannger.cpp */; };
-		D22912451D128367005C7167 /* LoginMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912401D128367005C7167 /* LoginMannger.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
@@ -417,14 +409,6 @@
 		D226FD291D051DBA00324097 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		D226FD2E1D05292400324097 /* LoadResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadResource.cpp; sourceTree = "<group>"; };
 		D226FD2F1D05292400324097 /* LoadResource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadResource.hpp; sourceTree = "<group>"; };
-		D22912341D128103005C7167 /* FindPassword.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FindPassword.cpp; sourceTree = "<group>"; };
-		D22912351D128103005C7167 /* FindPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPassword.h; sourceTree = "<group>"; };
-		D22912361D128103005C7167 /* UserRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserRegister.cpp; sourceTree = "<group>"; };
-		D22912371D128103005C7167 /* UserRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegister.h; sourceTree = "<group>"; };
-		D229123E1D128367005C7167 /* DropDownListBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DropDownListBox.cpp; sourceTree = "<group>"; };
-		D229123F1D128367005C7167 /* DropDownListBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownListBox.h; sourceTree = "<group>"; };
-		D22912401D128367005C7167 /* LoginMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoginMannger.cpp; sourceTree = "<group>"; };
-		D22912411D128367005C7167 /* LoginMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginMannger.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
 		D22912481D12C583005C7167 /* CommandManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandManage.h; sourceTree = "<group>"; };
 		D22EEF1C1D66A97400BF1CCB /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
@@ -898,36 +882,12 @@
 		D226FD251D051DBA00324097 /* splash */ = {
 			isa = PBXGroup;
 			children = (
-				D229123D1D128367005C7167 /* dropdownlist */,
-				D22912331D128103005C7167 /* register */,
 				D226FD281D051DBA00324097 /* SplashScene.cpp */,
 				D226FD291D051DBA00324097 /* SplashScene.h */,
 				D226FD2E1D05292400324097 /* LoadResource.cpp */,
 				D226FD2F1D05292400324097 /* LoadResource.hpp */,
 			);
 			path = splash;
-			sourceTree = "<group>";
-		};
-		D22912331D128103005C7167 /* register */ = {
-			isa = PBXGroup;
-			children = (
-				D22912341D128103005C7167 /* FindPassword.cpp */,
-				D22912351D128103005C7167 /* FindPassword.h */,
-				D22912361D128103005C7167 /* UserRegister.cpp */,
-				D22912371D128103005C7167 /* UserRegister.h */,
-			);
-			path = register;
-			sourceTree = "<group>";
-		};
-		D229123D1D128367005C7167 /* dropdownlist */ = {
-			isa = PBXGroup;
-			children = (
-				D229123E1D128367005C7167 /* DropDownListBox.cpp */,
-				D229123F1D128367005C7167 /* DropDownListBox.h */,
-				D22912401D128367005C7167 /* LoginMannger.cpp */,
-				D22912411D128367005C7167 /* LoginMannger.h */,
-			);
-			path = dropdownlist;
 			sourceTree = "<group>";
 		};
 		D22EEF1D1D66AAF000BF1CCB /* shop */ = {
@@ -1683,8 +1643,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D22EEF611D66CEB600BF1CCB /* HongbaoPride.cpp in Sources */,
-				D22912381D128103005C7167 /* FindPassword.cpp in Sources */,
-				D229123A1D128103005C7167 /* UserRegister.cpp in Sources */,
 				D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */,
 				D257FD761D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D28A4A361D056B7A00741FD0 /* Toast.cpp in Sources */,
@@ -1740,7 +1698,6 @@
 				D22EEFBB1D66D14D00BF1CCB /* DailyPride.cpp in Sources */,
 				D28A4A1D1D056B4700741FD0 /* ResultLayer.cpp in Sources */,
 				D2CF763E1D62AC690035B870 /* FaceChatLayer.cpp in Sources */,
-				D22912441D128367005C7167 /* LoginMannger.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				D2B1A8D91CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
 				D28A4A1F1D056B4700741FD0 /* ResultScene.cpp in Sources */,
@@ -1780,7 +1737,6 @@
 				D2B1A8DF1CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
-				D22912421D128367005C7167 /* DropDownListBox.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D281E5C21DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */,
@@ -1843,7 +1799,6 @@
 				D28A4A2F1D056B7A00741FD0 /* Audio.cpp in Sources */,
 				D2F05F621D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */,
 				D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */,
-				D22912431D128367005C7167 /* DropDownListBox.cpp in Sources */,
 				D22EEFBC1D66D14D00BF1CCB /* DailyPride.cpp in Sources */,
 				D22EEFBA1D66D14D00BF1CCB /* DailyEvent.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
@@ -1860,7 +1815,6 @@
 				D28A4A311D056B7A00741FD0 /* Chinese.cpp in Sources */,
 				D2B1A8E21CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
 				D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
-				D229123B1D128103005C7167 /* UserRegister.cpp in Sources */,
 				D2B1A8E01CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D21D81DB1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
@@ -1899,8 +1853,6 @@
 				D281E6071DC19EF500D3E44E /* LequanExchangeRecord.cpp in Sources */,
 				D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D28A4A331D056B7A00741FD0 /* SeatIdUtil.cpp in Sources */,
-				D22912451D128367005C7167 /* LoginMannger.cpp in Sources */,
-				D22912391D128103005C7167 /* FindPassword.cpp in Sources */,
 				D281E5C31DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */,
 				D28A4A411D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
 				D22EEF7C1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,

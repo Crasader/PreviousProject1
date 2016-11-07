@@ -1,25 +1,17 @@
 #include "game/mahjong/splash/SplashScene.h"
-#include "game/mahjong/lobby/LobbyScene.h"
-#include "game/mahjong/result/ResultLayer.h"
-#include "game/mahjong/splash/register/UserRegister.h"
-#include "game/mahjong/splash/register/FindPassword.h"
-#include "game/mahjong/splash/LoadResource.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
-#include "game/mahjong/splash/dropdownlist/DropDownListBox.h"
-#include "game/mahjong/splash/dropdownlist/LoginMannger.h"
 #include "game/mahjong/friend/dialog/RoomFullDialog.hpp"
-#include "game/mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
 #include "game/mahjong/loading/Loading.h"
+#include "game/mahjong/lobby/LobbyScene.h"
+#include "game/mahjong/result/ResultLayer.h"
+#include "game/mahjong/splash/LoadResource.hpp"
+#include "game/mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "game/utils/SeatIdUtil.h"
 #include "game/utils/Audio.h"
-#include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
-
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
-#endif
 
 
 Scene* SplashScene::createScene()
@@ -36,7 +28,6 @@ bool SplashScene::init()
     {
         return false;
     }
-    
     //draw scene
     drawLonginScene();
     showSplashAnim();
@@ -45,21 +36,7 @@ bool SplashScene::init()
     return true;
 }
 
-void SplashScene::onEnter(){
-    Layer::onEnter();
-    addCustomEventListener();
-}
 
-
-void SplashScene::onExit(){
-    Layer::onExit();
-    _eventDispatcher->removeEventListener(loginRespListener);
-    _eventDispatcher->removeEventListener(roomRespListener);
-    _eventDispatcher->removeEventListener(reConnectAgain);
-    _eventDispatcher->removeEventListener(dropListListener);
-    _eventDispatcher->removeEventListener(reEnterFriendRoomListener);
-    _eventDispatcher->removeEventListener(reOpenFriendRoomListener);
-}
 
 
 void SplashScene::drawLonginScene(){
@@ -83,25 +60,7 @@ void SplashScene::drawLonginScene(){
 }
 
 
-void SplashScene::loginByPass(){
-    Audio::getInstance()->playSoundClick();
-    std::string userName = _editName->getText();
-    std::string password = _editPwd->getText();
-    if (userName == ""&&password == ""){
-        if (UserData::getInstance()->getUserName() != "unknow"&&UserData::getInstance()->getPassword() != "unknow"){
-            NetworkManage::getInstance()->sendMsg(
-                                                  CommandManage::getInstance()->getLoginCommmand(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-            showLoading();
-        }
-    }
-    else{
-        NetworkManage::getInstance()->sendMsg(
-                                              CommandManage::getInstance()->getLoginCommmand(userName, password));
-        showLoading();
-    }
-}
-
-void SplashScene::loginByVisitor(){
+void SplashScene::loginByWechat(){
     Audio::getInstance()->playSoundClick();
     showLoading();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
@@ -117,148 +76,11 @@ void SplashScene::loginByVisitor(){
 }
 
 
-void SplashScene::setChangeNickName(std::string name,std::string pwd){
-    username_text->setVisible(false);
-    _editName->setText(name.c_str());
-    _editPwd->setText(pwd.c_str());
-}
-
-void SplashScene::showUserRegister(){
-    Audio::getInstance()->playSoundClick();
-    UserRegister* layer = UserRegister::create();
-    this->addChild(layer,6);
-}
-
-
-void SplashScene::findbackPwd(){
-    Audio::getInstance()->playSoundClick();
-    FindPassword* pass = FindPassword::create();
-    this->addChild(pass,6);
-}
-
-
-void  SplashScene::addCustomEventListener(){
-    loginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        
-        if (result == LOGIN_SUCCESS){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));//房间列表
-            NetworkManage::getInstance()->heartbeat();//心跳
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
-            LoginMannger::getInstance()->addMemoryNickname(UserData::getInstance()->getUserName().c_str(), UserData::getInstance()->getPassword().c_str());
-        }
-        else{
-            removeLoading();
-            HintDialog* hint = HintDialog::create("用户名或者密码错误",NULL);
-            addChild(hint,6);
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(loginRespListener, 1);
-    
-    //获取房间列表
-    roomRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
-        removeLoading();
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomRespListener, 1);
-    
-    //断线续玩
-    reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
-        NetworkManage::getInstance()->heartbeat();
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-        GAMEDATA::getInstance()->setIsRecover(true);
-        Director::getInstance()->replaceScene(MjGameScene::create());
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(reConnectAgain, 1);
-    
-    //注册结果返回
-    registerRespListener = EventListenerCustom::create(MSG_PLAYER_REGISTER_RESP, [=](EventCustom* event){
-        std::string result = static_cast<char*>(event->getUserData());
-        if(result == "1"){
-            username_text->setVisible(false);
-            password_text->setVisible(false);
-            _editName->setText(UserData::getInstance()->getUserName().c_str());
-            _editPwd->setText(UserData::getInstance()->getPassword().c_str());
-            LoginMannger::getInstance()->addMemoryNickname(UserData::getInstance()->getUserName().c_str(), UserData::getInstance()->getPassword().c_str());
-            
-        }else{
-            HintDialog* hint = HintDialog::create("注册失败",NULL);
-            addChild(hint,6);
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(registerRespListener, 1);
-    
-    //用户名下拉列表
-    dropListListener = EventListenerCustom::create("splashCallBack", [=](EventCustom* event){
-        setChangeNickName(GAMEDATA::getInstance()->getLoginAccPwd().account,GAMEDATA::getInstance()->getLoginAccPwd().password);
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dropListListener, 1);
-    
-    //进入好友房间回复
-    reEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        if (result == "1"){
-            NetworkManage::getInstance()->heartbeat();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        } else if(result == "2")
-        {
-            RoomFullDialog* doo = RoomFullDialog::create();
-            addChild(doo,100);
-        }
-        else if(result == "3")
-        {
-            FangkaNotEnoughDialog* dialog = FangkaNotEnoughDialog::create();
-            addChild(dialog,100);
-        }
-        else if(result == "4"){
-            RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
-            addChild(idd,100);
-        }
-    });
-
-    
-    reOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
-        if(resp.result == 1){
-            NetworkManage::getInstance()->heartbeat();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }else if(resp.result == 2){
-            FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
-            addChild(dia,100);
-        }
-        
-    });
-}
-
-void SplashScene::addTocuhListener(){
-    auto listener = EventListenerKeyboard::create();
-    listener->onKeyReleased = [=](EventKeyboard::KeyCode code, Event * e){
-        switch (code)
-        {
-            case cocos2d::EventKeyboard::KeyCode::KEY_NONE:
-                break;
-            case cocos2d::EventKeyboard::KeyCode::KEY_BACK:
-                Director::getInstance()->end();
-                break;
-                
-            default:
-                break;
-        }
-    };
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
 
 void SplashScene::showLoading(){
     Loading* loadLayer = Loading::create();
     loadLayer->setTag(1000);
-    this->addChild(loadLayer);
+    addChild(loadLayer);
 }
 
 
@@ -267,32 +89,6 @@ void SplashScene::removeLoading(){
     if(NULL != getChildByTag(1000)){
         getChildByTag(1000)->removeFromParent();
     }
-}
-
-
-
-void SplashScene::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
-    if (editBox->getTag() == 606){
-        username_text->setVisible(false);
-        _editName->setText("");
-    }
-    if (editBox->getTag() == 607){
-        password_text->setVisible(false);
-        _editPwd->setText("");
-    }
-}
-
-void SplashScene::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
-    
-}
-
-void SplashScene::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
-    
-    
-}
-
-void SplashScene::editBoxReturn(cocos2d::extension::EditBox* editBox){
-    
 }
 
 
@@ -358,7 +154,7 @@ void SplashScene::showSplashAnim(){
     auto animation = Animation::create();
     for( int i=1;i<4;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("mjlobby/lobby_logo_light_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("mjlobby/lobby_logo_light_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.
@@ -374,7 +170,7 @@ void SplashScene::showSplashAnim(){
     auto animation2 = Animation::create();
     for( int j=1;j<5;j++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("mjlobby/lobby_logo_text_%d.png",j)->_string;
+        std::string imageName = StringUtils::format("mjlobby/lobby_logo_text_%d.png",j);
         animation2->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.
@@ -431,7 +227,7 @@ void SplashScene::showSplashAnim(){
     
     
     auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
-                                            CC_CALLBACK_0(SplashScene::loginByVisitor, this));
+                                            CC_CALLBACK_0(SplashScene::loginByWechat, this));
     loginMenu = Menu::create(visitorBtn, NULL);
     loginMenu->setPosition(0, 0);
     
@@ -477,4 +273,111 @@ void SplashScene :: scrollLightSpot(float dt){
         }
         getChildByTag(603)->setPosition(getChildByTag(603)->getPosition().x+1,getChildByTag(603)->getPosition().y);
     }
+}
+
+
+void SplashScene::addTocuhListener(){
+    auto listener = EventListenerKeyboard::create();
+    listener->onKeyReleased = [=](EventKeyboard::KeyCode code, Event * e){
+        switch (code)
+        {
+            case cocos2d::EventKeyboard::KeyCode::KEY_NONE:
+                break;
+            case cocos2d::EventKeyboard::KeyCode::KEY_BACK:
+                Director::getInstance()->end();
+                break;
+                
+            default:
+                break;
+        }
+    };
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void SplashScene::onEnter(){
+    Layer::onEnter();
+    loginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        
+        if (result == LOGIN_SUCCESS){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));//房间列表
+            NetworkManage::getInstance()->heartbeat();//心跳
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDailySignCommand());//签到
+        }
+        else{
+            removeLoading();
+            HintDialog* hint = HintDialog::create("用户名或者密码错误",NULL);
+            addChild(hint,6);
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(loginRespListener, 1);
+    
+    //获取房间列表
+    roomRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
+        removeLoading();
+        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomRespListener, 1);
+    
+    //断线续玩
+    reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+        NetworkManage::getInstance()->heartbeat();
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+        GAMEDATA::getInstance()->setIsRecover(true);
+        Director::getInstance()->replaceScene(MjGameScene::create());
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(reConnectAgain, 1);
+    
+    
+    //进入好友房间回复
+    reEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            NetworkManage::getInstance()->heartbeat();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        } else if(result == "2")
+        {
+            RoomFullDialog* doo = RoomFullDialog::create();
+            addChild(doo,100);
+        }
+        else if(result == "3")
+        {
+            FangkaNotEnoughDialog* dialog = FangkaNotEnoughDialog::create();
+            addChild(dialog,100);
+        }
+        else if(result == "4"){
+            RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
+            addChild(idd,100);
+        }
+    });
+    
+    
+    reOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            NetworkManage::getInstance()->heartbeat();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
+            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else if(resp.result == 2){
+            FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
+            addChild(dia,100);
+        }
+        
+    });
+}
+
+
+void SplashScene::onExit(){
+    Layer::onExit();
+    _eventDispatcher->removeEventListener(loginRespListener);
+    _eventDispatcher->removeEventListener(roomRespListener);
+    _eventDispatcher->removeEventListener(reConnectAgain);
+    _eventDispatcher->removeEventListener(reEnterFriendRoomListener);
+    _eventDispatcher->removeEventListener(reOpenFriendRoomListener);
 }

@@ -7,49 +7,29 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-class SplashScene : public cocos2d::Layer,public EditBoxDelegate
+class SplashScene : public cocos2d::Layer
 {
 public:
-	EditBox* _editName;
-	EditBox* _editPwd;
     static cocos2d::Scene* createScene();
     virtual bool init();
 	virtual void onEnter() override;
 	virtual void onExit() override;
-
-	void loginByPass();
-	void loginByVisitor();
-    void setChangeNickName(std::string name,std::string pwd);
-
-	virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
-
-	virtual void editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox);
-
-	virtual void editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text);
-
-	virtual void editBoxReturn(cocos2d::extension::EditBox* editBox);
-
 	CREATE_FUNC(SplashScene);
 
 private:
-		
+    
 	EventListenerCustom* loginRespListener;
 	EventListenerCustom* roomRespListener;
 	EventListenerCustom* reConnectAgain;
-    EventListenerCustom* registerRespListener;
-    EventListenerCustom* dropListListener;
     EventListenerCustom* reEnterFriendRoomListener;
     EventListenerCustom* reOpenFriendRoomListener;
-	Sprite* username_text;
-	Sprite* password_text;
     Menu* loginMenu;
+    void loginByWechat();
 	void addTocuhListener();
 	void drawLonginScene();
     void showSplashAnim();
     void scrollLightSpot(float dt);
 	void addCustomEventListener();
-	void showUserRegister();
-	void findbackPwd();
 	void showLoading();
 	void removeLoading();
 };

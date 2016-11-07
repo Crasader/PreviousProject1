@@ -29,7 +29,7 @@ bool LoadResource::init(){
      showHealthLayer();
 #endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    showLayer();
+    showNormalLayer();
 #endif
 
     return true;
@@ -44,7 +44,7 @@ void LoadResource::showHealthLayer(){
     }),NULL));
 }
 
-void LoadResource::showLayer(){
+void LoadResource::showNormalLayer(){
     auto loadBg = Sprite::create("mainlogin/splah_bg_.jpg");
     loadBg->setPosition(640,360);
     addChild(loadBg);
@@ -74,7 +74,7 @@ void LoadResource::showLayer(){
         }else{
             index = i;
         }
-        loadText->setTexture(cocos2d::String::createWithFormat("mainlogin/loading_text_%d.png",index)->_string);
+        loadText->setTexture(StringUtils::format("mainlogin/loading_text_%d.png",index));
         loadText->setPosition(120+i*45,130);
         addChild(loadText);
     }
@@ -83,11 +83,6 @@ void LoadResource::showLayer(){
     loadProBg->setPosition(640,60);
     addChild(loadProBg);
     
-    auto load = Sprite::create();
-    addChild(load);
-    load->runAction(Sequence::create(CallFunc::create([=](){
-//        Audio::getInstance()->playBGM();
-    }), NULL));
     auto loadProgerss = ProgressTimer::create(Sprite::create("mainlogin/loading_pro_1.png"));
     loadProgerss->setPosition(640,60);
      addChild(loadProgerss,1);
@@ -99,3 +94,4 @@ void LoadResource::showLayer(){
         Director::getInstance()->replaceScene(SplashScene::createScene());
     }),NULL));
 }
+
