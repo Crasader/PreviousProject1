@@ -1426,6 +1426,7 @@ void MsgHandler::removePlayerNotify(std::string msg){
         GAMEDATA::getInstance()->clearPlayersInfo();
         GAMEDATA::getInstance()->setIsGotoLobby(true);
         GAMEDATA::getInstance()->setFangZhuId("");
+        GAMEDATA::getInstance()->setPrivateGameNum("0");
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, "");

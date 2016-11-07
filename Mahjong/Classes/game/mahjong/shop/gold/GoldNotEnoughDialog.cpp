@@ -80,7 +80,7 @@ void GoldNotEnoughDialog::closeView(){
 
 
 void GoldNotEnoughDialog::chargeGold(){
-    if(UserData::getInstance()->getDiamond() >= getMinGoldEnterRoom(getRoomType())/1000){
+    if(UserData::getInstance()->getFangkaNum() >= getMinGoldEnterRoom(getRoomType())/40000){
         ChargeGold* gold = ChargeGold::create();
         getParent()-> addChild(gold,4);
         removeFromParent();
