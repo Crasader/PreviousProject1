@@ -73,8 +73,8 @@ void ChargeGold::onEnter(){
             da->showText("充值成功");
             ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
             addChild(par,2);
-            EventCustom ev(MSG_UPDATE_HERO_INFO);
-            _eventDispatcher->dispatchEvent(&ev);
+            //刷新用户信息
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
         }else{
             da->showText("充值失败");
         }
