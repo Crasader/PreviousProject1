@@ -701,7 +701,6 @@ void MahjongView::addCoustomReplaceFlower() {
         int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
         SocketDataManage::getInstance()->resumeMsg();
         if (bankId == ClientSeatId::hero){
-            
             playerHero->startTimeClockAnim();
         }
         else if (bankId == ClientSeatId::left){

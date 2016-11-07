@@ -479,7 +479,7 @@ void ResultLayer::showLoseAnim(){
             continu->runAction(Sequence::create(DelayTime::create(3.0f),CallFunc::create([=](){
                 if(GAMEDATA::getInstance()->getIsGotoLobby()){
                     GAMEDATA::getInstance()->setIsGotoLobby(false);
-                    //                    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                    continuMenu->setVisible(true);
                 }else{
                     continuMenu->setVisible(true);
                 }
@@ -500,7 +500,7 @@ void ResultLayer::showLoseAnim(){
             
             if(GAMEDATA::getInstance()->getIsGotoLobby()){
                 GAMEDATA::getInstance()->setIsGotoLobby(false);
-                //                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                resultMenu->setVisible(true);
             }else{
                 resultMenu->setVisible(true);
             }

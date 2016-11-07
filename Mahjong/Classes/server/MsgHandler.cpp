@@ -826,11 +826,9 @@ void MsgHandler::replaceFlower(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
-    
+    ReplaceJongVec  replaceVec;
     const rapidjson::Value &hua = _mDoc["hua"];
     const rapidjson::Value &rest = _mDoc["rest"];
-    ReplaceJongVec  replaceVec;
     replaceVec.rest =rest.GetString();
     for (int i = 0; i < hua.Capacity(); i++){
         const rapidjson::Value &player = hua[i];
@@ -848,6 +846,15 @@ void MsgHandler::replaceFlower(std::string msg){
     }
     GAMEDATA::getInstance()->setReplaceJongVec(replaceVec);
     postNotifyMessage(MSG_GAME_REPLACE_FLOWER, "");
+    if(_mDoc.HasMember("angang")){
+        PlayerCpgtData tingData;
+        const rapidjson::Value &angang = _mDoc["angang"];
+        tingData.gang = angang.GetString();
+        tingData.flag = 1;
+        tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+        postNotifyMessage(MSG_HERO_TING_GANG, "");
+    }
 }
 
 void MsgHandler::showOtherPlayedJong(std::string msg){
@@ -863,12 +870,12 @@ void MsgHandler::showOtherPlayedJong(std::string msg){
     otherPlayedJong.seatId = seatId.GetInt();
     otherPlayedJong.poker = atoi(poker.GetString());
     GAMEDATA::getInstance()->setOtherPlayJong(otherPlayedJong);
-//    if(!GAMEDATA::getInstance()->getIsInGameScene()){
-//        int mySeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), otherPlayedJong.seatId);
-//        if (mySeatId == ClientSeatId::hero){
-//            GAMEDATA::getInstance()->setNeedRemovePoker(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-//        }
-//    }
+    //    if(!GAMEDATA::getInstance()->getIsInGameScene()){
+    //        int mySeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), otherPlayedJong.seatId);
+    //        if (mySeatId == ClientSeatId::hero){
+    //            GAMEDATA::getInstance()->setNeedRemovePoker(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+    //        }
+    //    }
     postNotifyMessage(MSG_OTHER_PALYER_JONG, "");
 }
 
