@@ -57,10 +57,10 @@ void PlayerHero::removeLastJong(){
 }
 
 void PlayerHero::setIsReady(bool b){
-    PlayerBase::setIsReady( b);
+    PlayerBase::setIsReady(b);
     if(NULL != getChildByTag(9998)){
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>0){
-          getChildByTag(9998)->setVisible(false);
+            getChildByTag(9998)->setVisible(false);
         }else{
             getChildByTag(9998)->setVisible(b);
         }
@@ -281,14 +281,14 @@ void PlayerHero::drawReady(bool ready){
         if (NULL != getChildByTag(888)){
             getChildByTag(888)->setVisible(false);
         }
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>0 && !GAMEDATA::getInstance()->getIsPlaying()){
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && !GAMEDATA::getInstance()->getIsPlaying()){
             MenuItemImage* inviteImage = MenuItemImage::create("gameview/invite_friend_1.png", "gameview/invite_friend_2.png", CC_CALLBACK_0(PlayerHero::inviteWechatFriend, this));
             auto invite = Menu::create(inviteImage, NULL);
             invite->setPosition(Point(640, 160));
             invite->setTag(9998);
-            this->addChild(invite);
+            addChild(invite);
         }
-        this->setIsReady(true);
+        setIsReady(true);
     }
 }
 
@@ -297,7 +297,7 @@ void PlayerHero::readyGo(){
     if (NULL != getChildByTag(888)){
         getChildByTag(888)->setVisible(false);
     }
-    this->setIsReady(true);
+    setIsReady(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
 }
 
@@ -559,6 +559,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             huaIndex++;
         }, 0.8f, replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
+            sortHandJongs(getHandPosX(), true);
             jong->setVisible(true);
             jong->showJong(herohand, data.poker);
             playerHandJongs.pushBack(jong);
@@ -569,6 +570,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         
     }
     else{
+        sortHandJongs(getHandPosX(), true);
         Jong* jong = Jong::create();
         jong->showJong(herohand, data.poker);
         playerHandJongs.pushBack(jong);
