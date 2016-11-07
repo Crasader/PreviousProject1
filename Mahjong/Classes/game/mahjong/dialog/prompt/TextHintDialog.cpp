@@ -6,7 +6,7 @@
 //
 //
 
-#include "game/mahjong/friend/dialog/TextHintDialog.hpp"
+#include "game/mahjong/dialog/prompt/TextHintDialog.hpp"
 
 
 TextHintDialog* TextHintDialog::create(std::string msg){

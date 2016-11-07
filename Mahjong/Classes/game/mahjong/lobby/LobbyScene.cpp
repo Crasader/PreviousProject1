@@ -4,6 +4,7 @@
 #include "game/mahjong/heroinfo/HeroInfoEdit.h"
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
+#include "game/mahjong/dialog/prompt/TextHintDialog.hpp"
 #include "game/mahjong/daily/DailyEvent.h"
 #include "game/mahjong/activities/MahjongActivities.hpp"
 #include "game/mahjong/shop/FirstChageDialog.hpp"
@@ -540,7 +541,7 @@ void LobbyScene::addEventListener(){
     //网络连接
     intnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
         Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
-            HintDialog* hint = HintDialog::create("网络出现问题啦",NULL);
+            TextHintDialog* hint = TextHintDialog::create("网络出现问题啦");
             addChild(hint,5);
             Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
         });

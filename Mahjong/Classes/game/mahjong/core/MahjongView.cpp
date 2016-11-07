@@ -15,7 +15,7 @@
 #include "game/mahjong/anim/OutFogAnim.hpp"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/friend/dialog/DissovleRoomDialog.hpp"
-#include "game/mahjong/friend/dialog/TextHintDialog.hpp"
+#include "game/mahjong/dialog/prompt/TextHintDialog.hpp"
 #include "server/SocketDataManage.h"
 
 
@@ -1460,7 +1460,7 @@ void MahjongView::addCoustomListener(){
     //网络连接
     viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
         Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
-            HintDialog* hint = HintDialog::create("网络出现问题啦",NULL);
+            TextHintDialog* hint = TextHintDialog::create("网络出现问题啦");
             addChild(hint,5);
             Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
         });
