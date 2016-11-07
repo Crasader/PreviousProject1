@@ -41,43 +41,6 @@ bool LobbyScene::init()
     return true;
 }
 
-
-void LobbyScene::onEnter(){
-    Scene::onEnter();
-    addEventListener();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
-    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
-    schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
-    schedule([=](float dt){
-        updateHeroInfo();
-    }, 1.0, 5, 0,"updatePlayerInfo");
-    
-}
-
-
-void LobbyScene::onExit(){
-    Scene::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(friendInviteListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(updateHeroInfoListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyConncetAgainListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(jjjPrideListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(bzjjjPrideListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(intnetListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(friendChatListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(imageUpdateListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(firstChargeListenr);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(openRoomAskListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomAskListener);
-    
-}
-
 void LobbyScene::signUpdate(float dt){
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
@@ -262,6 +225,88 @@ void LobbyScene::drawSceneBot(){
     
 }
 
+void LobbyScene::showLobbyAnim(){
+    
+    //logo光效
+    auto logoLight = Sprite::create();
+    logoLight->setPosition(1070, 645);
+    addChild(logoLight);
+    auto animation = Animation::create();
+    for( int i=1;i<4;i++)
+    {
+        std::string imageName = StringUtils::format("mjlobby/lobby_logo_light_%d.png",i);
+        animation->addSpriteFrameWithFile(imageName);
+    }
+    // should last 1 seconds. And there are 24 frames.
+    animation->setDelayPerUnit(4.0f/ 24.0f);
+    animation->setRestoreOriginalFrame(true);
+    auto action = Animate::create(animation);
+    logoLight->runAction(Sequence::create(Repeat::create(Sequence::create(action,DelayTime::create(12.0f/24), NULL), CC_REPEAT_FOREVER), NULL));
+    
+    //文字光效
+    auto logoText = Sprite::create();
+    logoText->setPosition(1070, 645);
+    addChild(logoText);
+    auto animation2 = Animation::create();
+    for( int j=1;j<5;j++)
+    {
+        std::string imageName = StringUtils::format("mjlobby/lobby_logo_text_%d.png",j);
+        animation2->addSpriteFrameWithFile(imageName);
+    }
+    // should last 1 seconds. And there are 24 frames.
+    animation2->setDelayPerUnit(3.0f / 24.0f);
+    animation2->setRestoreOriginalFrame(true);
+    auto action2 = Animate::create(animation2);
+    logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(24.0/24), NULL), CC_REPEAT_FOREVER), NULL));
+    
+    //光效
+    auto lobbyLight_1 = Sprite::create("mjlobby/lobby_light_1.png");
+    lobbyLight_1->setPosition(640, 360);
+    addChild(lobbyLight_1);
+    lobbyLight_1->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    auto lobbyLight_2 = Sprite::create("mjlobby/lobby_light_2.png");
+    lobbyLight_2->setPosition(640, 360);
+    addChild(lobbyLight_2);
+    lobbyLight_2->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    auto lobbyLight_3 = Sprite::create("mjlobby/lobby_light_3.png");
+    lobbyLight_3->setPosition(640, 360);
+    addChild(lobbyLight_3);
+    lobbyLight_3->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
+    
+    //光斑
+    auto lightSpot1 = Sprite::create("mjlobby/light_spot.png");
+    lightSpot1->setPosition(640,360);
+    lightSpot1->setTag(602);
+    addChild(lightSpot1);
+    auto lightSpot = Sprite::create("mjlobby/light_spot.png");
+    lightSpot->setPosition(-640,360);
+    lightSpot1->setTag(603);
+    addChild(lightSpot);
+    schedule(schedule_selector(LobbyScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
+    
+    
+}
+
+
+void LobbyScene:: scrollLightSpot(float dt){
+    if(NULL!=getChildByTag(602)){
+        if(getChildByTag(602)->getPositionX()>1920){
+            getChildByTag(602)->setPosition(-640,360);
+        }else{
+            getChildByTag(602)->setPosition(getChildByTag(602)->getPosition().x+1,getChildByTag(602)->getPosition().y);
+        }
+    }
+    if(NULL!=getChildByTag(603)){
+        if(getChildByTag(603)->getPositionX()>1920){
+            getChildByTag(603)->setPosition(-640,360);
+        }
+        getChildByTag(603)->setPosition(getChildByTag(603)->getPosition().x+1,getChildByTag(603)->getPosition().y);
+    }
+}
+
+
 void LobbyScene::showFirstCharge(){
     Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFirstChargeInfoCommand());
@@ -353,90 +398,52 @@ void LobbyScene::removeLoading(){
     }
 }
 
-
-
-
-void LobbyScene::showLobbyAnim(){
-    
-    //logo光效
-    auto logoLight = Sprite::create();
-    logoLight->setPosition(1070, 645);
-    addChild(logoLight);
-    auto animation = Animation::create();
-    for( int i=1;i<4;i++)
-    {
-        std::string imageName = StringUtils::format("mjlobby/lobby_logo_light_%d.png",i);
-        animation->addSpriteFrameWithFile(imageName);
-    }
-    // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(4.0f/ 24.0f);
-    animation->setRestoreOriginalFrame(true);
-    auto action = Animate::create(animation);
-    logoLight->runAction(Sequence::create(Repeat::create(Sequence::create(action,DelayTime::create(12.0f/24), NULL), CC_REPEAT_FOREVER), NULL));
-    
-    //文字光效
-    auto logoText = Sprite::create();
-    logoText->setPosition(1070, 645);
-    addChild(logoText);
-    auto animation2 = Animation::create();
-    for( int j=1;j<5;j++)
-    {
-        std::string imageName = StringUtils::format("mjlobby/lobby_logo_text_%d.png",j);
-        animation2->addSpriteFrameWithFile(imageName);
-    }
-    // should last 1 seconds. And there are 24 frames.
-    animation2->setDelayPerUnit(3.0f / 24.0f);
-    animation2->setRestoreOriginalFrame(true);
-    auto action2 = Animate::create(animation2);
-    logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(24.0/24), NULL), CC_REPEAT_FOREVER), NULL));
-    
-    //光效
-    auto lobbyLight_1 = Sprite::create("mjlobby/lobby_light_1.png");
-    lobbyLight_1->setPosition(640, 360);
-    addChild(lobbyLight_1);
-    lobbyLight_1->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    
-    auto lobbyLight_2 = Sprite::create("mjlobby/lobby_light_2.png");
-    lobbyLight_2->setPosition(640, 360);
-    addChild(lobbyLight_2);
-    lobbyLight_2->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    
-    auto lobbyLight_3 = Sprite::create("mjlobby/lobby_light_3.png");
-    lobbyLight_3->setPosition(640, 360);
-    addChild(lobbyLight_3);
-    lobbyLight_3->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    
-    //光斑
-    auto lightSpot1 = Sprite::create("mjlobby/light_spot.png");
-    lightSpot1->setPosition(640,360);
-    lightSpot1->setTag(602);
-    addChild(lightSpot1);
-    auto lightSpot = Sprite::create("mjlobby/light_spot.png");
-    lightSpot->setPosition(-640,360);
-    lightSpot1->setTag(603);
-    addChild(lightSpot);
-    schedule(schedule_selector(LobbyScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
-    
-    
+void LobbyScene:: openRoom(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomRequestCommand());
 }
 
 
-void LobbyScene:: scrollLightSpot(float dt){
-    if(NULL!=getChildByTag(602)){
-        if(getChildByTag(602)->getPositionX()>1920){
-            getChildByTag(602)->setPosition(-640,360);
-        }else{
-            getChildByTag(602)->setPosition(getChildByTag(602)->getPosition().x+1,getChildByTag(602)->getPosition().y);
-        }
-    }
-    if(NULL!=getChildByTag(603)){
-        if(getChildByTag(603)->getPositionX()>1920){
-            getChildByTag(603)->setPosition(-640,360);
-        }
-        getChildByTag(603)->setPosition(getChildByTag(603)->getPosition().x+1,getChildByTag(603)->getPosition().y);
-    }
+void LobbyScene::joinRoom(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
 }
 
+
+void LobbyScene::showGoldRoomPad(){
+    GoldRoomPlate* plate = GoldRoomPlate::create();
+    addChild(plate,2);
+}
+
+void LobbyScene::onEnter(){
+    Scene::onEnter();
+    addEventListener();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
+    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
+    schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
+    schedule([=](float dt){
+        updateHeroInfo();
+    }, 1.0, 5, 0,"updatePlayerInfo");
+    
+}
+
+void LobbyScene::onExit(){
+    Scene::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(friendInviteListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(updateHeroInfoListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyConncetAgainListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(intnetListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(friendChatListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(imageUpdateListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(firstChargeListenr);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(openRoomAskListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomAskListener);
+}
 
 void LobbyScene::addEventListener(){
     //进入房间回复
@@ -530,40 +537,6 @@ void LobbyScene::addEventListener(){
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
     
-    
-    //救济经领取
-    jjjPrideListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_JJJ, [=](EventCustom* event){
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
-        WelfareGold gold = GAMEDATA::getInstance()->getWelfareGold();
-        if(gold.result == "1"){
-            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
-            addChild(util,5);
-            UserData::getInstance()->setGold(UserData::getInstance()->getGold()+atoi(gold.gold.c_str()));
-            updateHeroInfo();
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_JJJ_COUNT_RESP);
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
-        }else {
-            HintDialog* hint = HintDialog::create("救济金领取失败",NULL);
-            addChild(hint,5);
-        }
-    });
-    
-    //绑钻救济金领取
-    bzjjjPrideListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_WELFARE_BZJJJ, [=](EventCustom* event){
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GET_JJJ_RESPONSE_REMOVE_LOADING);
-        WelfareBZ gold = GAMEDATA::getInstance()->getWelfareBZ();
-        if(gold.result == "1"){
-            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
-            addChild(util,5);
-            UserData::getInstance()->setLockDiamond(UserData::getInstance()->getLockDiamond()+atoi(gold.bangzuan.c_str()));
-            updateHeroInfo();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWelfareCommand());//福利
-        }else {
-            HintDialog* hint = HintDialog::create("绑钻救济金领取失败",NULL);
-            addChild(hint,5);
-        }
-    });
-    
     //网络连接
     intnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
         Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
@@ -594,17 +567,19 @@ void LobbyScene::addEventListener(){
         
     });
     
-    
+    //好友聊天
     friendChatListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
     });
     
+    //启动支付
     payDialogListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener("mahjong_start_pay", [=](EventCustom* event){
         Loading* loa = Loading::create();
         loa->setTag(4843);
         addChild(loa,20);
     });
     
+    //支付结果
     payResultListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener("mahjong_pay_result", [=](EventCustom* event){
         if(NULL != getChildByTag(4843)){
             getChildByTag(4843)->removeFromParent();
@@ -626,10 +601,12 @@ void LobbyScene::addEventListener(){
             ((HeadImage*)getChildByTag(962))->updateImage();
     });
     
+    //首冲礼包
     firstChargeListenr =  Director::getInstance()->getEventDispatcher()->addCustomEventListener("hide_first_charge_btn", [=](EventCustom* event){
         first_chaege->setVisible(false);
     });
     
+    //开房询问
     openRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_OPEN_ROOM, [=](EventCustom* event){
         if(UserData::getInstance()->getFangkaNum()>0){
             FriendRoom* friendroom = FriendRoom::create();
@@ -640,6 +617,7 @@ void LobbyScene::addEventListener(){
         }
     });
     
+    //进入房间询问
     enterRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_ENTER_ROOM, [=](EventCustom* event){
         MahjongNumberKeypads* keypads = MahjongNumberKeypads::create();
         addChild(keypads);
@@ -663,23 +641,6 @@ void LobbyScene::addEventListener(){
         }
     };
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    
-    
-}
-
-void LobbyScene:: openRoom(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomRequestCommand());
-}
-
-
-void LobbyScene::joinRoom(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
-}
-
-
-void LobbyScene::showGoldRoomPad(){
-    GoldRoomPlate* plate = GoldRoomPlate::create();
-    addChild(plate,2);
 }
 
 

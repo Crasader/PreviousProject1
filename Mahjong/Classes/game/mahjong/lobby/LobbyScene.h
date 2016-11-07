@@ -1,9 +1,7 @@
 #ifndef __LOBBY_SCENE_H__
 #define __LOBBY_SCENE_H__
+
 #include "cocos2d.h"
-#include "userdata/UserData.h"
-#include "server/NetworkManage.h"
-#include "server/CommandManage.h"
 #include "game/utils/StringUtil.h"
 #include "game/mahjong/loading/Loading.h"
 #include "game/mahjong/state/GameData.h"
@@ -12,9 +10,11 @@
 #include "game/mahjong/friend/FriendListView.h"
 #include "game/mahjong/friend/FriendRoom.h"
 #include "game/mahjong/bill/BillInfo.h"
+#include "server/NetworkManage.h"
+#include "server/CommandManage.h"
+#include "userdata/UserData.h"
 
 USING_NS_CC;
-
 
 class LobbyScene : public cocos2d::Scene
 {
@@ -23,7 +23,6 @@ public:
     virtual bool init() override;
 	virtual void onEnter() override;
 	virtual void onExit() override;
-    void updateHeroInfo();
     CREATE_FUNC(LobbyScene);
 private:
     
@@ -39,8 +38,6 @@ private:
     EventListenerCustom* friendInviteListener;
     EventListenerCustom* updateHeroInfoListener;
     EventListenerCustom* lobbyConncetAgainListener;
-    EventListenerCustom* jjjPrideListener;
-    EventListenerCustom* bzjjjPrideListener;
     EventListenerCustom* intnetListener;
     EventListenerCustom* loginReplaceListener;
     EventListenerCustom* inviteReplaceListener;
@@ -76,6 +73,7 @@ private:
 	void addEventListener();
     void scrollLightSpot(float dt);
     void signUpdate(float dt);
+    void updateHeroInfo();
 
 };
 #endif
