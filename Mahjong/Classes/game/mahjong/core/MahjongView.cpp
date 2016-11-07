@@ -943,8 +943,9 @@ void MahjongView::addGameResultListener(){
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::create()));
             },0,0,72.0f/24,"go2Result");
         }else{
-            clearRoomPlayer();
             GAMEDATA::getInstance()->setFangZhuId("");
+            GAMEDATA::getInstance()->setPrivateGameNum("0");
+            clearRoomPlayer();
             Director::getInstance()->replaceScene(TransitionFade::create(0.8f, LobbyScene::create()));
         }
     });
