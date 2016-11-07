@@ -1159,26 +1159,30 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             setCpgPostionX(getCpgPostionX()+170);
         }
     }
-    if(angang != ""){
+    if(angang.size()>0){
         PlayerCpgRecord record;
         record.type = CpgType::angang;
-        for(int j=0;j<4;j++){
-            Jong* jong = Jong::create();
-            jong->setScale(0.75f);
-            jong->showJong(herodeal,-1);
-            if (j == 3){
-                jong->setPosition(Point(getCpgPostionX() + 47*2, 55));
+        std::vector<std::string> gangpai = StringUtil::split(angang, ",");
+        for(auto var : gangpai){
+            for(int j=0;j<4;j++){
+                Jong* jong = Jong::create();
+                jong->setScale(0.75f);
+                if (j == 3){
+                    jong->showJong(herocpg,atoi(var.c_str()));
+                    jong->setPosition(Point(getCpgPostionX() + 47, 55));
+                }
+                else{
+                    jong->showJong(herodeal,-1);
+                    jong->setPosition(Point(getCpgPostionX() + 47*j, 45));
+                }
+                
+                this->addChild(jong,10);
+                record.pokersRecord.pushBack(jong);
             }
-            else{
-                jong->setPosition(Point(getCpgPostionX() + 47*j, 45));
-            }
-            
-            this->addChild(jong,10);
-            record.pokersRecord.pushBack(jong);
+            playerCpgRecords.push_back(record);
+            setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+            setCpgPostionX(getCpgPostionX()+170);
         }
-        playerCpgRecords.push_back(record);
-        setHandPosX(getHandPosX() + JONG_WIDTH * 3);
-        setCpgPostionX(getCpgPostionX()+170);
     }
 }
 

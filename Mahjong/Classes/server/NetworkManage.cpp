@@ -5,8 +5,8 @@
 NetworkManage* NetworkManage::_instance = NULL;
 std::string NetworkManage::allReciveInfo;
 
-//                const char* ip = "172.23.1.251";
-const char* ip = "183.129.206.54";
+const char* ip = "172.23.1.251";
+//const char* ip = "183.129.206.54";
 const int port = 9999;
 
 NetworkManage* NetworkManage::getInstance() {
@@ -25,7 +25,7 @@ void NetworkManage::connectServer() {
         // ODSocket socket;
         socket.Init();
         socket.Create(AF_INET, SOCK_STREAM, 0);
-
+        
         bool result = socket.Connect(ip, port);
         int retryTimes = 0;
         while (result == false && retryTimes < 3) {

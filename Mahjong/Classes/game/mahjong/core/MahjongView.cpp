@@ -52,7 +52,6 @@ void MahjongView::onEnter(){
 
 void MahjongView::onEnterTransitionDidFinish(){
     GAMEDATA::getInstance()->setIsInGameScene(true);
-    SocketDataManage::getInstance()->resumeMsg();
 }
 
 void MahjongView::onExit()

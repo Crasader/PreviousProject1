@@ -1250,7 +1250,6 @@ void MsgHandler::playerConnectAgain(std::string msg){
         lastGameData.players.push_back(data);
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
-    SocketDataManage::getInstance()->pauseMsg();
     postNotifyMessage(MSG_PLAYER_CONNECT_AGAIN, StringUtil::itos(seatId.GetInt()));
 }
 
