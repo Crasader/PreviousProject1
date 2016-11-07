@@ -22,7 +22,6 @@ bool PlayerHero::init() {
         return false;
     }
     initData();
-    scheduleUpdate();
     return true;
 }
 
@@ -148,17 +147,6 @@ Jong* PlayerHero::getTouchJong(Touch *touch){
         }
     }
     return NULL;
-}
-
-void PlayerHero::update(float dt){
-//    if(GAMEDATA::getInstance()->getNeedRemovePoker()>0){
-//        for(auto var : playerHandJongs){
-//            if(var->getJongType() == GAMEDATA::getInstance()->getNeedRemovePoker()){
-//                playPokerByHand(var);
-//                GAMEDATA::getInstance()->setNeedRemovePoker(0);
-//            }
-//        }
-//    }
 }
 
 
@@ -559,26 +547,24 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             huaIndex++;
         }, 0.8f, replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
-            sortHandJongs(getHandPosX(), true);
             jong->setVisible(true);
             jong->showJong(herohand, data.poker);
             playerHandJongs.pushBack(jong);
-            jong->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
+            sortHandJongs(getHandPosX(), true);
             currentJong = jong;
             isAllowPlay = true;
         }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
         
     }
     else{
-        sortHandJongs(getHandPosX(), true);
         Jong* jong = Jong::create();
         jong->showJong(herohand, data.poker);
-        playerHandJongs.pushBack(jong);
-        jong->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
+        addChild(jong);
         currentJong = jong;
-        this->addChild(jong);
+        playerHandJongs.pushBack(jong);
+        sortHandJongs(getHandPosX(), true);
         if (!(GAMEDATA::getInstance()->getIsTingState() || GAMEDATA::getInstance()->getIsTrusteeship())){
-            this->isAllowPlay = true;
+            isAllowPlay = true;
         }
     }
     doubleClickJong = NULL;

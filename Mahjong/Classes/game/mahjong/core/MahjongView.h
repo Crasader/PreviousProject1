@@ -21,7 +21,7 @@ public:
 	CREATE_FUNC(MahjongView);
 	virtual void onEnter() override;
 	virtual void onExit() override;
-    void onEnterTransitionDidFinish();
+    void onEnterTransitionDidFinish() override;
 	void showTingGangControllPad();
 	void hideTingGangControllPad();
 	void showGuiLayer();

@@ -84,6 +84,5 @@ private:
     Point getHeroPlayedJongsPos(int index);
     Vector<Jong*>  upsetJongs(Vector<Jong*> jongs);
     Jong* getTouchJong(Touch *touch);
-    void update(float dt);
 };
 #endif
