@@ -34,6 +34,8 @@ bool LobbyScene::init()
     {
         return false;
     }
+    isButtonCilckable = true;
+    clickTime =0;
     initView();
     //add sprite to scene
     drawSceneTop();
@@ -43,7 +45,16 @@ bool LobbyScene::init()
     return true;
 }
 
+bool LobbyScene::checkCilckabale(){
+    return isButtonCilckable;
+}
+
 void LobbyScene::signUpdate(float dt){
+    
+    clickTime += dt;
+    if(clickTime>3){
+        isButtonCilckable = true;
+    }
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
         for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
@@ -407,12 +418,20 @@ void LobbyScene::removeLoading(){
 }
 
 void LobbyScene:: openRoom(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomRequestCommand());
+    if(checkCilckabale()){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomRequestCommand());
+        isButtonCilckable = false;
+        clickTime = 0;
+    }
 }
 
 
 void LobbyScene::joinRoom(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
+    if(checkCilckabale()){
+         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
+        isButtonCilckable = false;
+        clickTime = 0;
+    }
 }
 
 

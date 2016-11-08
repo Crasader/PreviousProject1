@@ -685,9 +685,7 @@ void PlayerHero::doEventTimeOver(int type){
     //type 吃碰杠倒计时
     else if (type == 1){
         ((MahjongView*)getParent())->hideTingGangControllPad();
-        if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
-                                       GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
-           ClientSeatId::hero){
+        if(GAMEDATA::getInstance()->getPlayerTurn().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
             startTimeClockAnim();
             setIsAllowPlay(true);
         }

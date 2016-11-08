@@ -51,7 +51,8 @@ private:
     EventListenerCustom* enterRoomAskListener;
     EventListenerCustom* scrollTetxListener;
     
-    
+    bool isButtonCilckable;
+    float clickTime;
 	void initView();
 	void drawSceneMid();
 	void drawSceneTop();
@@ -77,6 +78,6 @@ private:
     void scrollLightSpot(float dt);
     void signUpdate(float dt);
     void updateHeroInfo();
-
+    bool checkCilckabale();
 };
 #endif

@@ -1377,6 +1377,18 @@ void MahjongView::addPlayerResumeListener(){
         }
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
         showGamePaidui(atoi(data.rest.c_str()));
+        GAMEDATA::getInstance()->setIsPlaying(true);
+        int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
+        if(playturn == ClientSeatId::hero){
+            playerHero->startTimeClockAnim();
+            playerHero->setIsAllowPlay(true);
+        }else if(playturn == ClientSeatId::left){
+            playerLeft->startTimeClockAnim();
+        }else if(playturn == ClientSeatId::opposite){
+            playerOpposite->startTimeClockAnim();
+        }else if(playturn == ClientSeatId::right){
+            playerRight->startTimeClockAnim();
+        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
 }
