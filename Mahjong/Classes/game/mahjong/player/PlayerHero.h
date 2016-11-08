@@ -30,6 +30,7 @@ public:
     void drawPlayerHero();
     void drawReady(bool b);
     void sortHandJongs(int posx,bool isTurn);
+    void settleHandJongs(int pos);
     void replaceFlower();
     void playerTurnReplace(PlayerTurnData data);
     //玩家吃碰杠

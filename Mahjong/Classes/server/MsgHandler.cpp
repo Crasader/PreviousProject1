@@ -811,7 +811,8 @@ void MsgHandler::getHeroJongs(std::string msg){
     FriendOpenRoomRespData opendata = GAMEDATA::getInstance()->getFriendOpenRoomResp();
     const rapidjson::Value &prjucount = _mDoc["prjucount"];
     opendata.prjucount = StringUtils::format("%d",prjucount.GetInt());
-    GAMEDATA::getInstance()->setPrivateGameNum(opendata.prjucount);
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom)
+        GAMEDATA::getInstance()->setPrivateGameNum(opendata.prjucount);
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
     
     postNotifyMessage(MSG_GAME_START_NOTIFY, "");
@@ -1652,6 +1653,10 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     if(_mDoc.HasMember("prjucount")){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
         data.prjucount = prjucount.GetString();
+    }
+    if(_mDoc.HasMember("jifen")){
+        const rapidjson::Value &myjifen = _mDoc["jifen"];
+        GAMEDATA::getInstance()->setScore(myjifen.GetInt());
     }
     GAMEDATA::getInstance()->clearPlayersInfo();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
@@ -2722,6 +2727,7 @@ void MsgHandler::handleQuitGameViewResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     if(_mDoc.HasMember("prjucount")){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
-        GAMEDATA::getInstance()->setPrivateGameNum(prjucount.GetString());
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom)
+            GAMEDATA::getInstance()->setPrivateGameNum(prjucount.GetString());
     }
 }

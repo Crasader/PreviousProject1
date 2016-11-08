@@ -193,6 +193,8 @@ void LobbyScene::drawSceneMid(){
     joinRooom->setPosition(880,400);
     addChild(joinRooom);
     auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
+    log("aaaaaaaaaaaaaaaaaa %d",atoi(GAMEDATA::getInstance()->getPrivateGameNum().c_str()));
+    log("aaaaaaaaaaaaaaaaaa %s",GAMEDATA::getInstance()->getFangZhuId().c_str());
     if(atoi(GAMEDATA::getInstance()->getPrivateGameNum().c_str())>0||GAMEDATA::getInstance()->getFangZhuId() == UserData::getInstance()->getPoxiaoId()){
         Sprite* frame = Sprite::create("mjlobby/go_to_friend_room_1.png");
         openBtn->setNormalImage(frame);

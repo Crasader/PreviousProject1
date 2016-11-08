@@ -320,7 +320,17 @@ float PlayerHero::distance(Point pos1, Point pos2) {
     return sqrt(pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2));
 }
 
-
+void PlayerHero::settleHandJongs(int posx){
+    int size = playerHandJongs.size();
+    for (int k = 0; k < size; k++){
+        if (posx + JONG_WIDTH * k>1120){
+            playerHandJongs.at(k)->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
+        }
+        else{
+            playerHandJongs.at(k)->setPosition(Point(posx + JONG_WIDTH * k, JONG_POS_Y));
+        }
+    }
+}
 
 void PlayerHero::sortHandJongs(int posx, bool isTurn){
     int size = playerHandJongs.size();
@@ -550,7 +560,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             jong->setVisible(true);
             jong->showJong(herohand, data.poker);
             playerHandJongs.pushBack(jong);
-            sortHandJongs(getHandPosX(), true);
+            settleHandJongs(getHandPosX());
             currentJong = jong;
             isAllowPlay = true;
         }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
@@ -562,7 +572,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         addChild(jong);
         currentJong = jong;
         playerHandJongs.pushBack(jong);
-        sortHandJongs(getHandPosX(), true);
+        settleHandJongs(getHandPosX());
         if (!(GAMEDATA::getInstance()->getIsTingState() || GAMEDATA::getInstance()->getIsTrusteeship())){
             isAllowPlay = true;
         }
