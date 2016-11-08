@@ -498,6 +498,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleQuitGameViewResp(msg);
             break;
         }
+        case MSGCODE_MARQUEE_RESPONSE:{
+            handleScrollTextResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -1147,7 +1151,6 @@ void MsgHandler::playerTingNotify(std::string msg){
 
 void MsgHandler::playerConnectAgain(std::string msg){
     //  {code:2031,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,hua:"1",chi:[{chi:"1,2,3",poker:"3"},{chi:"11,12,13",poker:"13"}],peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",status:1}]} status1为听牌
-    SocketDataManage::getInstance()->pauseMsg();
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -2714,5 +2717,16 @@ void MsgHandler::handleQuitGameViewResp(std::string msg){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom)
             GAMEDATA::getInstance()->setPrivateGameNum(prjucount.GetString());
+    }
+}
+
+void MsgHandler::handleScrollTextResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("content")){
+         const rapidjson::Value &content = _mDoc["content"];
+         postNotifyMessage(MSG_SCROLL_TEXT, content.GetString());
     }
 }

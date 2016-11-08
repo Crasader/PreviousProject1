@@ -84,6 +84,7 @@ public:
     std::string getDissolveRoomSelectCommand(std::string agree);
     std::string getOpenRoomRequestCommand();
     std::string getEnterRoomRequestCommand();
+    std::string getScrollTextCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

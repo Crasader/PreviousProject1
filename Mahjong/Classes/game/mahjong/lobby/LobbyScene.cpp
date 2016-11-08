@@ -19,6 +19,7 @@
 #include "game/mahjong/friend/MahjongNumberKeypads.hpp"
 #include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
 #include "game/mahjong/friend/dialog/RoomFullDialog.hpp"
+#include "game/mahjong/widget/ScrollTextEx.h"
 #include "game/mahjong/friend/FriendRoom.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "game/utils/ParticleUtil.hpp"
@@ -193,8 +194,6 @@ void LobbyScene::drawSceneMid(){
     joinRooom->setPosition(880,400);
     addChild(joinRooom);
     auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
-    log("aaaaaaaaaaaaaaaaaa %d",atoi(GAMEDATA::getInstance()->getPrivateGameNum().c_str()));
-    log("aaaaaaaaaaaaaaaaaa %s",GAMEDATA::getInstance()->getFangZhuId().c_str());
     if(atoi(GAMEDATA::getInstance()->getPrivateGameNum().c_str())>0||GAMEDATA::getInstance()->getFangZhuId() == UserData::getInstance()->getPoxiaoId()){
         Sprite* frame = Sprite::create("mjlobby/go_to_friend_room_1.png");
         openBtn->setNormalImage(frame);
@@ -207,6 +206,12 @@ void LobbyScene::drawSceneMid(){
     roomMenu->setPosition(640,230);
     addChild(roomMenu);
     
+    //跑马灯
+    ScrollTextEx* scroll = ScrollTextEx::create();
+    scroll->setAutoScroll(true);
+    scroll->setTag(9980);
+    scroll->setPosition(600,600);
+    addChild(scroll,2);
 }
 
 void LobbyScene::drawSceneBot(){
@@ -428,6 +433,10 @@ void LobbyScene::onEnter(){
     
 }
 
+void LobbyScene::onEnterTransitionDidFinish(){
+  NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+}
+
 void LobbyScene::onExit(){
     Scene::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomListener);
@@ -446,6 +455,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(firstChargeListenr);
     Director::getInstance()->getEventDispatcher()->removeEventListener(openRoomAskListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomAskListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
 }
 
 void LobbyScene::addEventListener(){
@@ -626,6 +636,14 @@ void LobbyScene::addEventListener(){
         addChild(keypads);
     });
     
+    
+    scrollTetxListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_SCROLL_TEXT, [=](EventCustom* event){
+        std::string msg = static_cast<char*>(event->getUserData());
+        if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
+            ((ScrollTextEx*)getChildByTag(9980))->setScrollStr(msg);
+        }
+    });
+
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

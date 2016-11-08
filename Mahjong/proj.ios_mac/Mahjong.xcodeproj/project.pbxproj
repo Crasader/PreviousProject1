@@ -289,6 +289,8 @@
 		D2CF763F1D62AC690035B870 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF763C1D62AC690035B870 /* FaceChatLayer.cpp */; };
 		D2CF76491D6581EE0035B870 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */; };
 		D2CF764A1D6581EE0035B870 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */; };
+		D2D25EA21DD1D26F00138CBE /* ScrollTextEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2D25EA01DD1D26F00138CBE /* ScrollTextEx.cpp */; };
+		D2D25EA31DD1D26F00138CBE /* ScrollTextEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2D25EA01DD1D26F00138CBE /* ScrollTextEx.cpp */; };
 		D2EF93C61DD050A000360BCF /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2EF93C41DD050A000360BCF /* Loading.cpp */; };
 		D2EF93C71DD050A000360BCF /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2EF93C41DD050A000360BCF /* Loading.cpp */; };
 		D2EF93CA1DD0862B00360BCF /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2EF93C81DD0862B00360BCF /* TextHintDialog.cpp */; };
@@ -621,6 +623,8 @@
 		D2CF763D1D62AC690035B870 /* FaceChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaceChatLayer.hpp; sourceTree = "<group>"; };
 		D2CF76471D6581EE0035B870 /* PlayerChatManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerChatManage.cpp; sourceTree = "<group>"; };
 		D2CF76481D6581EE0035B870 /* PlayerChatManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerChatManage.hpp; sourceTree = "<group>"; };
+		D2D25EA01DD1D26F00138CBE /* ScrollTextEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollTextEx.cpp; sourceTree = "<group>"; };
+		D2D25EA11DD1D26F00138CBE /* ScrollTextEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextEx.h; sourceTree = "<group>"; };
 		D2EF93C41DD050A000360BCF /* Loading.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loading.cpp; sourceTree = "<group>"; };
 		D2EF93C51DD050A000360BCF /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		D2EF93C81DD0862B00360BCF /* TextHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextHintDialog.cpp; sourceTree = "<group>"; };
@@ -1442,6 +1446,8 @@
 			isa = PBXGroup;
 			children = (
 				D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */,
+				D2D25EA01DD1D26F00138CBE /* ScrollTextEx.cpp */,
+				D2D25EA11DD1D26F00138CBE /* ScrollTextEx.h */,
 				D2F05F6D1D8E7605006E5A4C /* HeadImage.hpp */,
 			);
 			path = widget;
@@ -1704,6 +1710,7 @@
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2F05F631D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */,
 				D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
+				D2D25EA21DD1D26F00138CBE /* ScrollTextEx.cpp in Sources */,
 				D28B6AE11CF3E0A30033C9DE /* LiuJuAnim.cpp in Sources */,
 				D281E5E11DC05D4400D3E44E /* RoomIdErrorDialog.cpp in Sources */,
 				D235D8F11DAA6B3000DDA131 /* RankLayer.cpp in Sources */,
@@ -1788,6 +1795,7 @@
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D281E5F41DC1992500D3E44E /* ChargeFangka.cpp in Sources */,
+				D2D25EA31DD1D26F00138CBE /* ScrollTextEx.cpp in Sources */,
 				D281E5EB1DC196F400D3E44E /* GoldNotEnoughDialog.cpp in Sources */,
 				D226FD311D05292400324097 /* LoadResource.cpp in Sources */,
 				D22EEF7A1D66CFC800BF1CCB /* BillDetailInfo.cpp in Sources */,

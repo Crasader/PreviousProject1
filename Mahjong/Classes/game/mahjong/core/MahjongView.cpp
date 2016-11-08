@@ -16,6 +16,7 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/friend/dialog/DissovleRoomDialog.hpp"
 #include "game/mahjong/dialog/prompt/TextHintDialog.hpp"
+#include "game/mahjong/widget/ScrollTextEx.h"
 #include "server/SocketDataManage.h"
 
 
@@ -52,7 +53,6 @@ void MahjongView::onEnter(){
 
 void MahjongView::onEnterTransitionDidFinish(){
     GAMEDATA::getInstance()->setIsInGameScene(true);
-    SocketDataManage::getInstance()->resumeMsg();
 }
 
 void MahjongView::onExit()
@@ -105,19 +105,19 @@ void MahjongView::loadView(){
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Sprite* view_bg = Sprite::create("gameview/game_bg.jpg");
     view_bg->setPosition(visibleSize.width / 2, visibleSize.height / 2);
-    this->addChild(view_bg, -1);
+    addChild(view_bg, -1);
     controllPad = Menu::create();
     controllPad->setAnchorPoint(Point(1, 0));
     controllPad->setVisible(false);
-    this->addChild(controllPad, 10);
+    addChild(controllPad, 10);
     guiLayer = GuiLayer::create();
     addChild(guiLayer, 150);
     choiceMenu = Sprite::create();
     choiceMenu->setAnchorPoint(Point(0, 0));
     choiceMenu->setPosition(Point(0, 0));
-    this->addChild(choiceMenu, 100);
+    addChild(choiceMenu, 100);
     trusteeship = Trusteeship::create();
-    this->addChild(trusteeship, 160);
+    addChild(trusteeship, 160);
     trusteeship->setVisible(false);
 }
 

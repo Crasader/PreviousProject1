@@ -101,5 +101,6 @@ private:
     void handleDissovleRoomNotify(std::string msg);
     void handleDissovleRoomSelectedNotify(std::string msg);
     void handleQuitGameViewResp(std::string msg);
+    void handleScrollTextResp(std::string msg);
 };
 #endif
