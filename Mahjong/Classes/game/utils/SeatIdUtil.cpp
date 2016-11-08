@@ -1,6 +1,10 @@
 #include "game/utils/SeatIdUtil.h"
 
 int SeatIdUtil::getClientSeatId(int heroId, int seatId){
+    
+    if(seatId == 0){
+        return 0;
+    }
     if(heroId == seatId){
         return 1;
     }
