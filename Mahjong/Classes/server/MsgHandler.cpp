@@ -1094,35 +1094,20 @@ void MsgHandler::gameResultNotify(std::string msg){
         if (temp.HasMember("gold")){
             resultData.gold = temp["gold"].GetInt();
         }
-        if (temp.HasMember("diamond")){
-            resultData.diamond = temp["diamond"].GetInt();
-        }
-        if (temp.HasMember("diamonddelta")){
-            resultData.diamonddelta = temp["diamonddelta"].GetInt();
-        }
-        else{
-            resultData.diamonddelta = 0;
+        if (temp.HasMember("golddelta")){
+            resultData.golddelta = temp["golddelta"].GetInt();
         }
         if (temp.HasMember("jifen")){
             resultData.jifen = temp["jifen"].GetInt();
         }
-        if (temp.HasMember("lequan")){
-            resultData.lequan = temp["lequan"].GetInt();
-        }
-        if (temp.HasMember("golddelta")){
-            resultData.golddelta = temp["golddelta"].GetInt();
-        }
         if (temp.HasMember("jifendelta")){
             resultData.jifendelta = temp["jifendelta"].GetInt();
         }
+        if (temp.HasMember("lequan")){
+            resultData.lequan = temp["lequan"].GetInt();
+        }
         if (temp.HasMember("lequandelta")){
             resultData.lequandelta = temp["lequandelta"].GetInt();
-        }
-        if (temp.HasMember("bangzuan")){
-            resultData.bangzuan = temp["bangzuan"].GetInt();
-        }
-        if (temp.HasMember("bangzuandelta")){
-            resultData.bangzuandelta = temp["bangzuandelta"].GetInt();
         }
         if(temp.HasMember("pic")){
             resultData.pic = temp["pic"].GetString();

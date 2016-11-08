@@ -100,8 +100,6 @@ void PlayerBase::onExit(){
 
 void PlayerBase::initPlayer(Player* playerInfo){
     setPlayerInfo(playerInfo);
-    
-    
     int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), playerInfo->getSeatId());
     
     auto head_bg = Sprite::create("gameview/head_image_bg.png");
