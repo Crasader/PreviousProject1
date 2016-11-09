@@ -17,6 +17,14 @@ public:
     virtual bool init();
     CREATE_FUNC(WanJiaQunLayer);
 private:
+    MenuItemToggle* qunToggle;
+    MenuItemToggle* fangkaToggle;
+    Sprite* wanjia;
+    Sprite* daili;
+    Sprite* image;
+    Sprite* content;
     void closeView();
+    void showWanJiaQun(Ref* ref);
+    void showFangkaDai(Ref* ref);
 };
 #endif /* WanJiaQunLayer_hpp */

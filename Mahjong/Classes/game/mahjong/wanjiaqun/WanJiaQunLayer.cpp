@@ -30,11 +30,75 @@ bool WanJiaQunLayer::init(){
     auto titleIcon = Sprite::create("wanjiaqun/wj_title.png");
     titleIcon->setPosition(640, 590);
     addChild(titleIcon);
-
+    
+    auto tabbg = Sprite::create("wanjiaqun/tab_bg.png");
+    tabbg->setScaleX(0.52f);
+    tabbg->setPosition(480,500);
+    addChild(tabbg);
+    
+    auto qun_normal = MenuItemImage::create("wanjiaqun/tab_btn_1.png", "wanjiaqun/tab_btn_1.png");
+    auto qun_selected = MenuItemImage::create("wanjiaqun/tab_btn_2.png", "wanjiaqun/tab_btn_2.png");
+    qunToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(WanJiaQunLayer::showWanJiaQun, this), qun_normal, qun_selected, NULL);
+    
+    auto fangka_normal = MenuItemImage::create("wanjiaqun/tab_btn_1.png", "wanjiaqun/tab_btn_1.png");
+    auto fangka_selected = MenuItemImage::create("wanjiaqun/tab_btn_2.png", "wanjiaqun/tab_btn_2.png");
+    fangkaToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(WanJiaQunLayer::showFangkaDai, this), fangka_normal, fangka_selected, NULL);
+    
+    auto menu = Menu::create(qunToggle, fangkaToggle, NULL);
+    menu->alignItemsHorizontallyWithPadding(0);
+    menu->setPosition(480, 500);
+    addChild(menu,1);
+    
+    wanjia =  Sprite::create("wanjiaqun/wj_text_1.png");
+    wanjia->setPosition(390, 500);
+    addChild(wanjia,2);
+    
+    daili =  Sprite::create("wanjiaqun/daili_text_2.png");
+    daili->setPosition(570, 500);
+    addChild(daili,2);
+    
+    qunToggle->setSelectedIndex(0);
+    fangkaToggle->setSelectedIndex(1);
+    
+    auto bigbg = Sprite::create("wanjiaqun/wj_big_box_bg.png");
+    bigbg->setPosition(640,310);
+    addChild(bigbg);
+    
+    auto mabg = Sprite::create("wanjiaqun/ma_bg.png");
+    mabg->setPosition(440,310);
+    addChild(mabg);
+    
+    image =  Sprite::create();
+    image->setContentSize(Size(168,168));
+    image->setPosition(440,310);
+    addChild(image);
+    
+    content= Sprite::create("wanjiaqun/wj_qun_text.png");
+    content->setPosition(740,310);
+    addChild(content);
+    
     return true;
 }
 
 
 void WanJiaQunLayer::closeView(){
     removeFromParent();
+}
+
+void WanJiaQunLayer::showWanJiaQun(Ref* ref){
+    qunToggle->setSelectedIndex(0);
+    fangkaToggle->setSelectedIndex(1);
+    wanjia->setTexture("wanjiaqun/wj_text_1.png");
+    daili->setTexture("wanjiaqun/daili_text_2.png");
+    content->setTexture("wanjiaqun/wj_qun_text.png");
+}
+
+
+void WanJiaQunLayer::showFangkaDai(Ref* ref){
+    qunToggle->setSelectedIndex(1);
+    fangkaToggle->setSelectedIndex(0);
+    wanjia->setTexture("wanjiaqun/wj_text_2.png");
+    daili->setTexture("wanjiaqun/daili_text_1.png");
+    content->setTexture("wanjiaqun/wj_qun_text.png");
+    content->setTexture("wanjiaqun/daili_text.png");
 }
