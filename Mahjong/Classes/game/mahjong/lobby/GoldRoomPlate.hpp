@@ -22,9 +22,13 @@ public:
     void onTouchEnded(Touch *touch, Event  *event) override;
     CREATE_FUNC(GoldRoomPlate);
 private:
+    bool isButtonCilckable;
+    float clickTime;
     void openRoomOne();
     void openRoomTwo();
     void openRoomThree();
+    bool checkCilckabale();
+    void update(float dt);
 
 };
 #endif /* GoldRoomPlate_hpp */

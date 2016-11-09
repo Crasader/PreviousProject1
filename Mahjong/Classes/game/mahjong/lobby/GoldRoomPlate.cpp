@@ -34,12 +34,18 @@ bool GoldRoomPlate::init(){
     roomSelect->setPosition(1110,320);
     roomSelect->alignItemsVerticallyWithPadding(2);
     addChild(roomSelect);
+    scheduleUpdate();
     
     return true;
 }
 
 
-
+void GoldRoomPlate::update(float dt){
+    clickTime += dt;
+    if(clickTime>3){
+        isButtonCilckable = true;
+    }
+}
 
 bool GoldRoomPlate::onTouchBegan(Touch *touch, Event  *event){
     return true;
@@ -55,18 +61,34 @@ void GoldRoomPlate::onTouchEnded(Touch *touch, Event  *event){
 }
 
 void GoldRoomPlate::openRoomOne(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_1)));
-    GAMEDATA::getInstance()->setCurrentSelectRoomId(ROOM_1);
+    if(checkCilckabale()){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_1)));
+        GAMEDATA::getInstance()->setCurrentSelectRoomId(ROOM_1);
+        isButtonCilckable = false;
+        clickTime = 0;
+    }
 }
 
 
 void GoldRoomPlate::openRoomTwo(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_2)));
-    GAMEDATA::getInstance()->setCurrentSelectRoomId(ROOM_2);
+    if(checkCilckabale()){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_2)));
+        GAMEDATA::getInstance()->setCurrentSelectRoomId(ROOM_2);
+        isButtonCilckable = false;
+        clickTime = 0;
+    }
 }
 
 
 void GoldRoomPlate::openRoomThree(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_3)));
-    GAMEDATA::getInstance()->setCurrentSelectRoomId(ROOM_3);
+    if(checkCilckabale()){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",ROOM_3)));
+        GAMEDATA::getInstance()->setCurrentSelectRoomId(ROOM_3);
+        isButtonCilckable = false;
+        clickTime = 0;
+    }
+}
+
+bool GoldRoomPlate::checkCilckabale(){
+    return isButtonCilckable;
 }
