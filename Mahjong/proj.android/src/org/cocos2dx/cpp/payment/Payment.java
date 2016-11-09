@@ -82,6 +82,7 @@ public class Payment {
 	 * @param friends
 	 */
 	public  static void shareImageToWeChat(String imagePath,boolean friends){
+		Debug.e("shareImageToWeChat 分享图片给微信好友");
 		TbuWxUtil.getInstance().shareImage(imagePath, friends);
 	}
 

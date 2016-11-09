@@ -190,6 +190,8 @@
 		D281E6071DC19EF500D3E44E /* LequanExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E5FE1DC19EF500D3E44E /* LequanExchangeRecord.cpp */; };
 		D281E6081DC19EF500D3E44E /* LequanShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E6001DC19EF500D3E44E /* LequanShop.cpp */; };
 		D281E6091DC19EF500D3E44E /* LequanShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281E6001DC19EF500D3E44E /* LequanShop.cpp */; };
+		D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
+		D286A53F1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
 		D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
@@ -314,6 +316,8 @@
 		D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */; };
 		D2F05F6F1D8E7605006E5A4C /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */; };
 		D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */; };
+		D2FBB5721DD30BB30044E2D5 /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FBB5701DD30BB30044E2D5 /* WanJiaQunLayer.cpp */; };
+		D2FBB5731DD30BB30044E2D5 /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FBB5701DD30BB30044E2D5 /* WanJiaQunLayer.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -518,6 +522,7 @@
 		D281E5FF1DC19EF500D3E44E /* LequanExchangeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanExchangeRecord.hpp; sourceTree = "<group>"; };
 		D281E6001DC19EF500D3E44E /* LequanShop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LequanShop.cpp; sourceTree = "<group>"; };
 		D281E6011DC19EF500D3E44E /* LequanShop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanShop.hpp; sourceTree = "<group>"; };
+		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
 		D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientUtill.h; sourceTree = "<group>"; };
 		D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMannger.cpp; sourceTree = "<group>"; };
@@ -650,6 +655,8 @@
 		D2F05F701D8F8C4F006E5A4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSBridge.mm; sourceTree = "<group>"; };
 		D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSBridge.h; sourceTree = "<group>"; };
+		D2FBB5701DD30BB30044E2D5 /* WanJiaQunLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WanJiaQunLayer.cpp; sourceTree = "<group>"; };
+		D2FBB5711DD30BB30044E2D5 /* WanJiaQunLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WanJiaQunLayer.hpp; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -788,6 +795,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D286A53D1DD30E46001369C1 /* wanjiaqun */,
 				D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */,
 				D281E5A01DACF35600D3E44E /* audio */,
 				D291B5901D755C6800B05026 /* activities */,
@@ -1158,6 +1166,7 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D2FBB56F1DD30B890044E2D5 /* wanjiaqun */,
 				D2EF93C31DD050A000360BCF /* loading */,
 				D2F05F6B1D8E75F6006E5A4C /* widget */,
 				D2F05F4A1D8E7500006E5A4C /* heroinfo */,
@@ -1453,6 +1462,15 @@
 			path = widget;
 			sourceTree = "<group>";
 		};
+		D2FBB56F1DD30B890044E2D5 /* wanjiaqun */ = {
+			isa = PBXGroup;
+			children = (
+				D2FBB5701DD30BB30044E2D5 /* WanJiaQunLayer.cpp */,
+				D2FBB5711DD30BB30044E2D5 /* WanJiaQunLayer.hpp */,
+			);
+			path = wanjiaqun;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1603,6 +1621,7 @@
 				D2BD08C51D66E76900ADC31E /* relieve in Resources */,
 				D253297C1CC0D33600DDAD97 /* trusteeship in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1633,6 +1652,7 @@
 				D25329611CC0D33600DDAD97 /* fonts in Resources */,
 				D25329731CC0D33600DDAD97 /* mjlobby in Resources */,
 				D25329631CC0D33600DDAD97 /* friend in Resources */,
+				D286A53F1DD30E46001369C1 /* wanjiaqun in Resources */,
 				D281E5A21DACF35600D3E44E /* audio in Resources */,
 				D25329691CC0D33600DDAD97 /* headportrait in Resources */,
 				D25DEE421CC4AE78007D428A /* shop in Resources */,
@@ -1741,6 +1761,7 @@
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D281E5F51DC1992500D3E44E /* ChargeItem.cpp in Sources */,
 				D2B1A8DF1CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
+				D2FBB5721DD30BB30044E2D5 /* WanJiaQunLayer.cpp in Sources */,
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
@@ -1821,6 +1842,7 @@
 				D281E6091DC19EF500D3E44E /* LequanShop.cpp in Sources */,
 				D28A4A311D056B7A00741FD0 /* Chinese.cpp in Sources */,
 				D2B1A8E21CCDF0F400A20896 /* PlayerRight.cpp in Sources */,
+				D2FBB5731DD30BB30044E2D5 /* WanJiaQunLayer.cpp in Sources */,
 				D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */,
 				D2B1A8E01CCDF0F400A20896 /* PlayerOpposite.cpp in Sources */,
 				D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
