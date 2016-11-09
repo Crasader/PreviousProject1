@@ -51,7 +51,7 @@ std::string UrlImageMannger::loadImgByUrl(std::string url)
 
 std::string UrlImageMannger::downloadQunImgByUrl(std::string url){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string path =StringUtils::format("%s/%s",CallAndroidMethod::getInstance()->getSdCardDir().c_str(),url.c_str());
+    std::string path =StringUtils::format("%s/wanjiaquan.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     if (FileUtils::getInstance()->isFileExist(path))
     {
         return path;
@@ -62,7 +62,7 @@ std::string UrlImageMannger::downloadQunImgByUrl(std::string url){
         FILE *fp = fopen(path.c_str(), "wb+");
         fwrite(buff.c_str(), 1, buffer->size(), fp);
         fclose(fp);
-        UserData::getInstance()->getWanJiaQunVersion(GAMEDATA::getInstance()->getWanJiaQunVer());
+        UserData::getInstance()->setWanJiaQunVersion(GAMEDATA::getInstance()->getWanJiaQunVer());
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
@@ -73,7 +73,7 @@ std::string UrlImageMannger::downloadQunImgByUrl(std::string url){
 
 std::string UrlImageMannger::downloadDailiImgByUrl(std::string url){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string path =StringUtils::format("%s/%s",CallAndroidMethod::getInstance()->getSdCardDir().c_str(),url.c_str());
+    std::string path =StringUtils::format("%s/dailiqun.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     if (FileUtils::getInstance()->isFileExist(path))
     {
         return path;
@@ -84,7 +84,7 @@ std::string UrlImageMannger::downloadDailiImgByUrl(std::string url){
         FILE *fp = fopen(path.c_str(), "wb+");
         fwrite(buff.c_str(), 1, buffer->size(), fp);
         fclose(fp);
-        UserData::getInstance()->getDailiQunVersion(GAMEDATA::getInstance()->getDailiQunVer());
+        UserData::getInstance()->setDailiQunVersion(GAMEDATA::getInstance()->getDailiQunVer());
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);

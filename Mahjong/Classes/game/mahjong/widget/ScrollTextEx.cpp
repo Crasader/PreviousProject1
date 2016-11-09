@@ -41,7 +41,7 @@ void ScrollTextEx::setScrollStrs(std::vector<std::string> strs)
 }
 
 void ScrollTextEx::setpMaskString(std::string string) {
-    _mLable = Label::createWithSystemFont(string, "Arial", 16);
+    _mLable = Label::createWithSystemFont(string, "Arial", 18);
 }
 
 bool ScrollTextEx::initClipper(cocos2d::Sprite* pMask,
