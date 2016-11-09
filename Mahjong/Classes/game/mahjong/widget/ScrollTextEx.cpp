@@ -82,11 +82,11 @@ void ScrollTextEx::update(float delta) {
         return;
     }
     float speed = 0.7f;
-    float currentX = _mLable->getPositionX();
+//    float currentX = _mLable->getPositionX();
     float contentX = getContentSize().width * (-1.0f);
     float lableX = _mLable->getContentSize().width * (-1.0f);
     if (_autoScroll) {
-        if (_mLable->getPositionX() >= (lableX + contentX / 2+ 60)){
+        if (_mLable->getPositionX() >= (lableX + contentX / 2)){
             _mLable->setPositionX(_mLable->getPositionX() -speed);
         }
         else {

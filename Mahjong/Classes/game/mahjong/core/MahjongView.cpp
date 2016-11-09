@@ -51,44 +51,6 @@ void MahjongView::onEnter(){
     addCoustomListener();
 }
 
-void MahjongView::onEnterTransitionDidFinish(){
-    GAMEDATA::getInstance()->setIsInGameScene(true);
-}
-
-void MahjongView::onExit()
-{
-    Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(replaceListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dealJongsListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(turnListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(otherListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(gameResultListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerCpgListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(othersPengListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(othersGangListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(othersChiListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(tingNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(tingRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipCancelListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroChiRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
-    
-}
 
 void MahjongView::initData(){
     playerHero = NULL;
@@ -119,6 +81,12 @@ void MahjongView::loadView(){
     trusteeship = Trusteeship::create();
     addChild(trusteeship, 160);
     trusteeship->setVisible(false);
+    //跑马灯
+    ScrollTextEx* scroll = ScrollTextEx::create();
+    scroll->setAutoScroll(true);
+    scroll->setTag(9980);
+    scroll->setPosition(600,600);
+    addChild(scroll,2);
 }
 
 void MahjongView::startGameFirst(){
@@ -1079,6 +1047,143 @@ void MahjongView::showHandPokerOver(int seatId){
     
 }
 
+
+void MahjongView::onEnterTransitionDidFinish(){
+    GAMEDATA::getInstance()->setIsInGameScene(true);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+}
+
+void MahjongView::onExit()
+{
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(replaceListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dealJongsListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(turnListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(otherListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(gameResultListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerCpgListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersPengListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersGangListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(othersChiListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(tingNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(tingRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipCancelListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroChiRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
+}
+
+
+
+void MahjongView::addCoustomListener(){
+    addOthersReadyListener();
+    addDealJongListener();
+    addCoustomReplaceFlower();
+    addPlayerTurnListener();
+    addJongPlayedListener();
+    addHeroCpgListener();
+    addGameResultListener();
+    addOthersChiListener();
+    addOthersPengListener();
+    addOthersGangListener();
+    addPlayerTingNotifyListener();
+    addHeroTingNotifyListener();
+    addHeroTingRespListener();
+    addTrusteeShipRespListener();
+    addTrusteeShipNotifyListener();
+    addTrusteeShipCancelListener();
+    addHeroChiRespListener();
+    addHeroPengRespListener();
+    addHeroGangRespListener();
+    addFriendInviteMeListener();
+    addPlayerRemoveListener();
+    addPlayerResumeListener();
+    //登录地址变更
+    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
+        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
+            exit(0);
+        });
+        addChild(hin,5);
+    });
+    
+    inviteReplaceListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(FRIEND_IS_PLAYING_GAME, [=](EventCustom* event){
+        InviteRespData inv = GAMEDATA::getInstance()->getInviteRespData();
+        if(inv.result == "1"){
+            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s不在线",inv.nickname.c_str()),NULL);
+            addChild(hin,5);
+        }else if(inv.result == "2"){
+            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s正在游戏",inv.nickname.c_str()),NULL);
+            addChild(hin,5);
+        }
+        
+    });
+    
+    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
+        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+        addChild(dis,1000);
+    });
+    
+    dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
+        DissolveData data = GAMEDATA::getInstance()->getDissolveData();
+        std::string  name ="";
+        for(auto var :GAMEDATA::getInstance()->getPlayersInfo()){
+            if(data.pid == var->getPoxiaoId()){
+                name =var->getNickname();
+            }
+        }
+        if(data.agree == "0"){
+            TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s不同意解散房间",name.c_str()));
+            addChild(dia,50);
+        }else{
+            TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s同意解散房间",name.c_str()));
+            addChild(dia,50);
+        }
+    });
+    
+    //断线续玩
+    lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+        //游戏进入托管状态
+        //        trusteeship->setVisible(true);
+        //        GAMEDATA::getInstance()->setIsTrusteeship(true);
+        //重新绘制玩家的牌和话
+        GAMEDATA::getInstance()->setIsRecover(true);
+        Director::getInstance()->replaceScene(MjGameScene::create());
+        
+    });
+    
+    //网络连接
+    viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
+        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
+            TextHintDialog* hint = TextHintDialog::create("网络出现问题啦");
+            addChild(hint,5);
+            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
+        });
+    });
+    
+    scrollTetxListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_SCROLL_TEXT, [=](EventCustom* event){
+        std::string msg = static_cast<char*>(event->getUserData());
+        if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
+            ((ScrollTextEx*)getChildByTag(9980))->setScrollStr(msg);
+        }
+    });
+    
+}
+
 void MahjongView::addOthersChiListener(){
     othersChiListener = EventListenerCustom::create(MSG_OTHER_PLAYER_CHI, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
@@ -1392,92 +1497,3 @@ void MahjongView::addPlayerResumeListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
 }
-
-
-void MahjongView::addCoustomListener(){
-    this->addOthersReadyListener();
-    this->addDealJongListener();
-    this->addCoustomReplaceFlower();
-    this->addPlayerTurnListener();
-    this->addJongPlayedListener();
-    this->addHeroCpgListener();
-    this->addGameResultListener();
-    this->addOthersChiListener();
-    this->addOthersPengListener();
-    this->addOthersGangListener();
-    this->addPlayerTingNotifyListener();
-    this->addHeroTingNotifyListener();
-    this->addHeroTingRespListener();
-    this->addTrusteeShipRespListener();
-    this->addTrusteeShipNotifyListener();
-    this->addTrusteeShipCancelListener();
-    this->addHeroChiRespListener();
-    this->addHeroPengRespListener();
-    this->addHeroGangRespListener();
-    this->addFriendInviteMeListener();
-    this->addPlayerRemoveListener();
-    this->addPlayerResumeListener();
-    //登录地址变更
-    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
-        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
-            exit(0);
-        });
-        addChild(hin,5);
-    });
-    
-    inviteReplaceListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(FRIEND_IS_PLAYING_GAME, [=](EventCustom* event){
-        InviteRespData inv = GAMEDATA::getInstance()->getInviteRespData();
-        if(inv.result == "1"){
-            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s不在线",inv.nickname.c_str()),NULL);
-            addChild(hin,5);
-        }else if(inv.result == "2"){
-            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s正在游戏",inv.nickname.c_str()),NULL);
-            addChild(hin,5);
-        }
-        
-    });
-    
-    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        addChild(dis,1000);
-    });
-    
-    dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
-        DissolveData data = GAMEDATA::getInstance()->getDissolveData();
-        std::string  name ="";
-        for(auto var :GAMEDATA::getInstance()->getPlayersInfo()){
-            if(data.pid == var->getPoxiaoId()){
-                name =var->getNickname();
-            }
-        }
-        if(data.agree == "0"){
-            TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s不同意解散房间",name.c_str()));
-            addChild(dia,50);
-        }else{
-            TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s同意解散房间",name.c_str()));
-            addChild(dia,50);
-        }
-    });
-    
-    //断线续玩
-    lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
-        //游戏进入托管状态
-        //        trusteeship->setVisible(true);
-        //        GAMEDATA::getInstance()->setIsTrusteeship(true);
-        //重新绘制玩家的牌和话
-        GAMEDATA::getInstance()->setIsRecover(true);
-        Director::getInstance()->replaceScene(MjGameScene::create());
-        
-    });
-    
-    //网络连接
-    viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
-        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
-            TextHintDialog* hint = TextHintDialog::create("网络出现问题啦");
-            addChild(hint,5);
-            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
-        });
-    });
-    
-}
-

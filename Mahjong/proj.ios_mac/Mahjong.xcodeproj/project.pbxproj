@@ -1446,9 +1446,9 @@
 			isa = PBXGroup;
 			children = (
 				D2F05F6C1D8E7605006E5A4C /* HeadImage.cpp */,
+				D2F05F6D1D8E7605006E5A4C /* HeadImage.hpp */,
 				D2D25EA01DD1D26F00138CBE /* ScrollTextEx.cpp */,
 				D2D25EA11DD1D26F00138CBE /* ScrollTextEx.h */,
-				D2F05F6D1D8E7605006E5A4C /* HeadImage.hpp */,
 			);
 			path = widget;
 			sourceTree = "<group>";
