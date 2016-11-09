@@ -61,6 +61,12 @@ public:
     std::string getMarkId();
     void setMarkId(std::string markid);
     
+    int getWanJiaQunVersion();
+    void setWanJiaQunVersion(int ver);
+    
+    int getDailiQunVersion();
+    void setDailiQunVersion(int ver);
+    
 private:
 	UserData();
 	static UserData* _instance;	

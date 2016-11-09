@@ -26,6 +26,7 @@
 #include "game/utils/ParticleUtil.hpp"
 #include "game/utils/GameConfig.h"
 #include "game/utils/Audio.h"
+#include "http/image/UrlImageMannger.h"
 
 
 
@@ -461,6 +462,7 @@ void LobbyScene::onEnter(){
 
 void LobbyScene::onEnterTransitionDidFinish(){
   NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+  NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
 }
 
 void LobbyScene::onExit(){
@@ -482,6 +484,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(openRoomAskListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomAskListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(wanjiaqunListener);
 }
 
 void LobbyScene::addEventListener(){
@@ -667,6 +670,15 @@ void LobbyScene::addEventListener(){
         std::string msg = static_cast<char*>(event->getUserData());
         if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
             ((ScrollTextEx*)getChildByTag(9980))->setScrollStr(msg);
+        }
+    });
+
+    wanjiaqunListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_WEI_XIN_QUN, [=](EventCustom* event){
+        if(GAMEDATA::getInstance()->getWanJiaQunVer()>UserData::getInstance()->getWanJiaQunVersion()){
+            UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL);
+        }
+        if(GAMEDATA::getInstance()->getDailiQunVer()>UserData::getInstance()->getDailiQunVersion()){
+             UrlImageMannger::getInstance()->downloadDailiImgByUrl(WECHAT_DAI_LI_QUN_URL);
         }
     });
 

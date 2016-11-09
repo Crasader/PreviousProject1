@@ -166,3 +166,19 @@ void UserData::setMarkId(std::string markid){
     UserDefault::getInstance()->setStringForKey("mark_id", markid);
 }
 
+int UserData::getWanJiaQunVersion(){
+     return UserDefault::getInstance()->getIntegerForKey("wan_jia_qun_version", 0);
+}
+
+void UserData::setWanJiaQunVersion(int ver){
+ UserDefault::getInstance()->setIntegerForKey("wan_jia_qun_version", ver);
+}
+
+int UserData::getDailiQunVersion(){
+ return UserDefault::getInstance()->getIntegerForKey("daili_qun_version", 0);
+}
+
+void UserData::setDailiQunVersion(int ver){
+UserDefault::getInstance()->setIntegerForKey("daili_qun_version", ver);
+}
+

@@ -678,6 +678,13 @@ std::string CommandManage::getScrollTextCommand(){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getWanJiaQunCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_QUNEWM_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
 	rapidjson::Document document;
 	rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

@@ -275,10 +275,10 @@ void BillInfo::setShowPosition(){
 
 
 void BillInfo::screenShot(){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     log("screenShot path = %s",path.c_str());
     utils::captureScreen(NULL ,path);
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->shareImageToWeChat("mahjong_screen_shot.png", false);
 #endif
 }

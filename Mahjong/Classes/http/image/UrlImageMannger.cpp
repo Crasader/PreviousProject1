@@ -3,6 +3,8 @@
 #include "server/NetworkManage.h"
 #include "http/MD5/MD5.hpp"
 #include "game/utils/GameConfig.h"
+#include "game/mahjong/state/GameData.h"
+#include "payment/android/CallAndroidMethod.h"
 
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
@@ -47,6 +49,49 @@ std::string UrlImageMannger::loadImgByUrl(std::string url)
     return IAMGE_LOADING;
 }
 
+std::string UrlImageMannger::downloadQunImgByUrl(std::string url){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    std::string path =StringUtils::format("%s/%s",CallAndroidMethod::getInstance()->getSdCardDir().c_str(),url.c_str());
+    if (FileUtils::getInstance()->isFileExist(path))
+    {
+        return path;
+    }
+    EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
+        std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
+        std::string buff(buffer->begin(), buffer->end());
+        FILE *fp = fopen(path.c_str(), "wb+");
+        fwrite(buff.c_str(), 1, buffer->size(), fp);
+        fclose(fp);
+        UserData::getInstance()->getWanJiaQunVersion(GAMEDATA::getInstance()->getWanJiaQunVer());
+        Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
+    HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
+    return IAMGE_LOADING;
+#endif
+}
+
+std::string UrlImageMannger::downloadDailiImgByUrl(std::string url){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    std::string path =StringUtils::format("%s/%s",CallAndroidMethod::getInstance()->getSdCardDir().c_str(),url.c_str());
+    if (FileUtils::getInstance()->isFileExist(path))
+    {
+        return path;
+    }
+    EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
+        std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
+        std::string buff(buffer->begin(), buffer->end());
+        FILE *fp = fopen(path.c_str(), "wb+");
+        fwrite(buff.c_str(), 1, buffer->size(), fp);
+        fclose(fp);
+        UserData::getInstance()->getDailiQunVersion(GAMEDATA::getInstance()->getDailiQunVer());
+        Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
+    HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
+    return IAMGE_LOADING;
+#endif
+}
 
 void UrlImageMannger::uploadImage2Server(CallFunc* callBack){
     //TODO 调用七牛SDK(android或者ios)

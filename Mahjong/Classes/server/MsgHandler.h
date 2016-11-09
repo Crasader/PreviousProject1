@@ -102,5 +102,6 @@ private:
     void handleDissovleRoomSelectedNotify(std::string msg);
     void handleQuitGameViewResp(std::string msg);
     void handleScrollTextResp(std::string msg);
+    void handleWanJiaQunResp(std::string msg);
 };
 #endif

@@ -7,6 +7,8 @@
 //
 
 #include "game/mahjong/wanjiaqun/WanJiaQunLayer.hpp"
+#include "game/utils/GameConfig.h"
+#include "http/image/UrlImageMannger.h"
 
 bool WanJiaQunLayer::init(){
     if(!Layer::init()){
@@ -57,8 +59,7 @@ bool WanJiaQunLayer::init(){
     daili->setPosition(570, 500);
     addChild(daili,2);
     
-    qunToggle->setSelectedIndex(0);
-    fangkaToggle->setSelectedIndex(1);
+
     
     auto bigbg = Sprite::create("wanjiaqun/wj_big_box_bg.png");
     bigbg->setPosition(640,310);
@@ -77,6 +78,11 @@ bool WanJiaQunLayer::init(){
     content->setPosition(740,310);
     addChild(content);
     
+    qunToggle->setSelectedIndex(0);
+    fangkaToggle->setSelectedIndex(1);
+    std::string path = UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL);
+    image->setTexture(path);
+    
     return true;
 }
 
@@ -91,6 +97,8 @@ void WanJiaQunLayer::showWanJiaQun(Ref* ref){
     wanjia->setTexture("wanjiaqun/wj_text_1.png");
     daili->setTexture("wanjiaqun/daili_text_2.png");
     content->setTexture("wanjiaqun/wj_qun_text.png");
+    std::string path = UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL);
+    image->setTexture(path);
 }
 
 
@@ -101,4 +109,6 @@ void WanJiaQunLayer::showFangkaDai(Ref* ref){
     daili->setTexture("wanjiaqun/daili_text_1.png");
     content->setTexture("wanjiaqun/wj_qun_text.png");
     content->setTexture("wanjiaqun/daili_text.png");
+    std::string path = UrlImageMannger::getInstance()->downloadDailiImgByUrl(WECHAT_DAI_LI_QUN_URL);
+    image->setTexture(path);
 }

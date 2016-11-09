@@ -5,6 +5,9 @@
 #define MSGCODE_HEARTBEAT  1
 #define MSGCODE_HEARTBEAT_RETURN  2
 
+#define MSGCODE_QUNEWM_REQUEST  5//玩家群二维码版本号请求 {code:5,poxiaoId:"123"}
+#define MSGCODE_QUNEWM_RESPONSE  6// 玩家群二维码版本号回复 {code:6,version:"1",desc:"33"}
+
 #define MSGCODE_ACCOUNTREPEAT_REQUEST  98// 判断用户名重复请求 {code:98,username:"abc"}
 #define MSGCODE_ACCOUNTREPEAT_RESPONSE  99// 判断用户名重复回复 {code:99,result:"1"} result为1是可以注册  0为不可以注册
 #define MSGCODE_REGISTER_MOBILE_YZM  100// 客户端手机验证码{code:100,mobile:13989877777}
@@ -313,7 +316,7 @@
 #define MSG_DISSOVLE_ROOM_SELECTED_NOTIFY "MSG_DISSOVLE_ROOM_SELECTED_NOTIFY"
 #define MSG_QUIR_GAME_VIEW_RESP "MSG_QUIR_GAME_VIEW_RESP"
 #define MSG_SCROLL_TEXT "MSG_SCROLL_TEXT"
-
+#define MSG_WAN_JIA_WEI_XIN_QUN "MSG_WAN_JIA_WEI_XIN_QUN"
 #define GET_JJJ_RESPONSE_REMOVE_LOADING "get_jjj_response_remove_loading"
 #define UPDATE_JJJ_COUNT_RESP "update_jjj_count_resp"
 #define UPDATE_DICE_KAOBAO_STATE "update_dice_kaibao_dtate"
