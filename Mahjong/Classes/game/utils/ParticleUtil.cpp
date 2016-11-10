@@ -27,8 +27,8 @@ bool ParticleUtil::init(MyParticleType type)
     }
     if(type == MyParticleType::goldOnly){
         showGoldExplosion();
-    }else if(type == MyParticleType::diamondOnly){
-        showDiamondExplosion();
+    }else if(type == MyParticleType::fangkaOnly){
+        showFangkaExplosion();
     }else if(type == MyParticleType::lequanOnly){
          showLequanExplosion();
     }else if(type == MyParticleType::goldAndLequan){
@@ -81,9 +81,9 @@ void ParticleUtil::showLequanExplosion(){
     addChild(effect);
 }
 
-void ParticleUtil::showDiamondExplosion(){
+void ParticleUtil::showFangkaExplosion(){
     ParticleExplosion* effect = ParticleExplosion::create();
-    effect->setTexture(Director::getInstance()->getTextureCache()->addImage("mjitem/diamond.png"));
+    effect->setTexture(Director::getInstance()->getTextureCache()->addImage("mjitem/fangka_icon.png"));
     effect->setTotalParticles(1000);
     effect->setStartColor(Color4F(255, 255, 255, 255));
     effect->setStartColorVar(Color4F(0, 0, 0, 0));

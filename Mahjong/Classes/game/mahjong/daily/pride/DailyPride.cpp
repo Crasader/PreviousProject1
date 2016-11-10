@@ -26,11 +26,13 @@ void DailyPride::onEnter(){
     _eventDispatcher->addEventListenerWithFixedPriority(prideCallBackListener1, 1);
     
     prideCallBackListener2 = EventListenerCustom::create(MSG_PLAYER_TODAY_PRIDE, [=](EventCustom* event){
-        if(GAMEDATA::getInstance()->getDailyPrideData().result == "-1"){
+        if(GAMEDATA::getInstance()->getTodayPrideData().result == "2"){
             HintDialog* hit = HintDialog::create("正在游戏中,无法抽奖", nullptr);
             addChild(hit,10);
         }else{
             schedule([=](float dt){
+                //刷新用户信息
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
                 m_turnBg->stopAllActions();
                 DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
                 data.count = StringUtils::format("%d",atoi(data.count.c_str()-1));
@@ -43,8 +45,8 @@ void DailyPride::onEnter(){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
                             getParent()->addChild(util,5);
                         }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::fangka){
-//                            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
-//                            getParent()->addChild(util,5);
+                            ParticleUtil* util = ParticleUtil::create(MyParticleType::fangkaOnly);
+                            getParent()->addChild(util,5);
                         }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
                             getParent()->addChild(util,5);
@@ -52,11 +54,8 @@ void DailyPride::onEnter(){
                         if(NULL != getChildByTag(1000)){
                             ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(GAMEDATA::getInstance()->getTodayPrideData().rest));
                         }
-                        //刷新用户信息
-                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
                     }
                 }
-                
             },0.0f,0,2.0f,"m_turnBg");
         }
     });

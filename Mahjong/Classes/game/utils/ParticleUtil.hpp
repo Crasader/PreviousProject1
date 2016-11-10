@@ -15,7 +15,7 @@ USING_NS_CC;
 
 enum MyParticleType{
     goldOnly,
-    diamondOnly,
+    fangkaOnly,
     lequanOnly,
     goldAndLequan,
     goldAndDianmond,
@@ -30,7 +30,7 @@ public:
 private:
     void showLequanExplosion();
     void showGoldExplosion();
-    void showDiamondExplosion();
+    void showFangkaExplosion();
     void showGoldAndLequanExplosion();
     void showGoldAndDiamondExplosion();
     void showLequnaAndDiamondExplosion();
