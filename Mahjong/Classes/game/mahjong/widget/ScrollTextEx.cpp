@@ -7,7 +7,10 @@ bool ScrollTextEx::init() {
     bool ret = true;
     if (Node::init()) {
         pMask = Sprite::create("gameview/sroll_bg.png");
+        auto test = Sprite::create("gameview/sroll_bg.png");
+        test->setPosition(0,21);
         _mLable = Label::createWithSystemFont("", "Arial", 24);
+        _mLable->addChild(test);
         _mLable->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
         _mLable->setColor(Color3B::YELLOW);
         IF_RETURN_FALSE(!initClipper(pMask, _mLable));

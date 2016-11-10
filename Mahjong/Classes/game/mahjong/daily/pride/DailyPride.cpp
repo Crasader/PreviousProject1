@@ -26,32 +26,39 @@ void DailyPride::onEnter(){
     _eventDispatcher->addEventListenerWithFixedPriority(prideCallBackListener1, 1);
     
     prideCallBackListener2 = EventListenerCustom::create(MSG_PLAYER_TODAY_PRIDE, [=](EventCustom* event){
-        schedule([=](float dt){
-            m_turnBg->stopAllActions();
-            DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
-            for (int i = 0; i < data.prides.size(); i++){
-                if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTodayPrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTodayPrideData().pride.number){
-                    m_turnBg->setRotation(-90+45*i);
-                    startMenu->setEnabled(true);
-                    if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::gold){
-                        ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
-                        getParent()->addChild(util,5);
-                    }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::diamond){
-                        ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
-                        getParent()->addChild(util,5);
-                    }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
-                        ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
-                        getParent()->addChild(util,5);
+        if(GAMEDATA::getInstance()->getDailyPrideData().result == "-1"){
+            HintDialog* hit = HintDialog::create("正在游戏中,无法抽奖", nullptr);
+            addChild(hit,10);
+        }else{
+            schedule([=](float dt){
+                m_turnBg->stopAllActions();
+                DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
+                data.count = StringUtils::format("%d",atoi(data.count.c_str()-1));
+                GAMEDATA::getInstance()->setDailyPrideData(data);
+                for (int i = 0; i < data.prides.size(); i++){
+                    if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTodayPrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTodayPrideData().pride.number){
+                        m_turnBg->setRotation(-90+45*i);
+                        startMenu->setEnabled(true);
+                        if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::gold){
+                            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
+                            getParent()->addChild(util,5);
+                        }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::diamond){
+                            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
+                            getParent()->addChild(util,5);
+                        }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
+                            ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
+                            getParent()->addChild(util,5);
+                        }
+                        if(NULL != getChildByTag(1000)){
+                            ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(GAMEDATA::getInstance()->getTodayPrideData().rest));
+                        }
+                        //刷新用户信息
+                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
                     }
-                    if(NULL != getChildByTag(1000)){
-                        ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(GAMEDATA::getInstance()->getTodayPrideData().rest));
-                    }
-                    //刷新用户信息
-                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
                 }
-            }
-            
-        },0.0f,0,2.0f,"m_turnBg");
+                
+            },0.0f,0,2.0f,"m_turnBg");
+        }
     });
     _eventDispatcher->addEventListenerWithFixedPriority(prideCallBackListener2, 1);
 }

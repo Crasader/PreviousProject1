@@ -15,7 +15,8 @@ bool GoldRoomPlate::init(){
     if(!Layer::init()){
         return false;
     }
-    
+    clickTime = 0;
+    isButtonCilckable = true;
     //添加点击事件
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->onTouchBegan = CC_CALLBACK_2(GoldRoomPlate::onTouchBegan, this);
@@ -42,7 +43,7 @@ bool GoldRoomPlate::init(){
 
 void GoldRoomPlate::update(float dt){
     clickTime += dt;
-    if(clickTime>3){
+    if(clickTime>2){
         isButtonCilckable = true;
     }
 }
