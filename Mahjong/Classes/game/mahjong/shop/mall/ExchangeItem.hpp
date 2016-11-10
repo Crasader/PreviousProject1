@@ -8,8 +8,6 @@
 
 #ifndef ExchangeItem_hpp
 #define ExchangeItem_hpp
-
-#include <stdio.h>
 #include "cocos2d.h"
 #include "cocos-ext.h"
 USING_NS_CC;

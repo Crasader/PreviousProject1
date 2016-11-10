@@ -13,7 +13,7 @@ enum PrideType{
     gold,
     lequan,
    	lockDiammond,
-    diamond
+    fangka
 };
 
 enum CpgType

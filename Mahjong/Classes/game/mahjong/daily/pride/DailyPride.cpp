@@ -42,9 +42,9 @@ void DailyPride::onEnter(){
                         if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::gold){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
                             getParent()->addChild(util,5);
-                        }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::diamond){
-                            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
-                            getParent()->addChild(util,5);
+                        }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::fangka){
+//                            ParticleUtil* util = ParticleUtil::create(MyParticleType::diamondOnly);
+//                            getParent()->addChild(util,5);
                         }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
                             getParent()->addChild(util,5);

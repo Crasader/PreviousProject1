@@ -1,6 +1,6 @@
 #pragma once
 #include "cocos2d.h"
-
+#include "game/mahjong/widget/ScrollCell.hpp"
 USING_NS_CC;
 
 class ScrollTextEx : public cocos2d::Node {
@@ -12,8 +12,8 @@ CC_CONSTRUCTOR_ACCESS:
     virtual ~ScrollTextEx();
     virtual bool init();
     virtual bool initWithDatas(cocos2d::Sprite* pMask,
-                               cocos2d::Label* pMoveChild);
-    bool initClipper(cocos2d::Sprite* pMask, cocos2d::Label* pMoveChild);
+                               ScrollCell* pMoveChild);
+    bool initClipper(cocos2d::Sprite* pMask, ScrollCell* pMoveChild);
     void update(float delta);
     void setpMaskString(std::string string);
     long getCurrentTime();
@@ -22,7 +22,7 @@ public:
     void setScrollStr(std::string str);
     void setAutoScroll(bool isScroll, bool byWidth = false);
 private:
-    cocos2d::Label* _mLable;
+    ScrollCell* pMoved;
     cocos2d::Sprite* pMask;
     cocos2d::Vector<Node*> _mNodes;
     bool _autoScroll;

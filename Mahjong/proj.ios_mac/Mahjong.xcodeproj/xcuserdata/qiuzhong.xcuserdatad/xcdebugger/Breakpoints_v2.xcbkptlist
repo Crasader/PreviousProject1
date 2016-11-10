@@ -3648,11 +3648,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/widget/ScrollTextEx.cpp"
-            timestampString = "500383879.708478"
+            timestampString = "500442663.747102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "ScrollTextEx::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
@@ -3664,28 +3664,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/widget/ScrollTextEx.cpp"
-            timestampString = "500383879.708478"
+            timestampString = "500442663.747102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "ScrollTextEx::update(float delta)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/game/mahjong/widget/ScrollTextEx.cpp"
-            timestampString = "500383879.708478"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "ScrollTextEx::initClipper(cocos2d::Sprite* pMask, cocos2d::Label* pMoveChild)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "ScrollTextEx::initClipper(cocos2d::Sprite* pMask, ScrollCell* pMoveChild)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3760,7 +3744,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/widget/ScrollTextEx.cpp"
-            timestampString = "500383879.708478"
+            timestampString = "500441238.955627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "10"
@@ -3776,12 +3760,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/widget/ScrollTextEx.cpp"
-            timestampString = "500383790.427766"
+            timestampString = "500449673.301878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9"
-            endingLineNumber = "9"
-            landmarkName = "ScrollTextEx::init()"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "ScrollTextEx::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/widget/ScrollTextEx.cpp"
+            timestampString = "500449673.301878"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "ScrollTextEx::update(float delta)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -249,7 +249,6 @@ void SplashScene::showSplashAnim(){
     
     clippingNode->setAlphaThreshold(0.05f); //设置alpha闸值
     clippingNode->setContentSize(clipSize); //设置尺寸大小
-    
     clippingNode->setStencil(loginMenu);   //设置模板stencil
     clippingNode->addChild(loginMenu, 1);  //先添加标题,会完全显示出来,因为跟模板一样大小
     spark->setScale(0.70);

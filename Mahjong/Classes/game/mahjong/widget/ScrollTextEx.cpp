@@ -6,14 +6,13 @@
 bool ScrollTextEx::init() {
     bool ret = true;
     if (Node::init()) {
+        m_strs.clear();
         pMask = Sprite::create("gameview/sroll_bg.png");
-        auto test = Sprite::create("gameview/sroll_bg.png");
-        test->setPosition(0,21);
-        _mLable = Label::createWithSystemFont("", "Arial", 24);
-        _mLable->addChild(test);
-        _mLable->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-        _mLable->setColor(Color3B::YELLOW);
-        IF_RETURN_FALSE(!initClipper(pMask, _mLable));
+        pMask->setOpacity(0);
+        pMoved = ScrollCell::create("");
+        pMoved->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        pMoved->setPosition(0,0);
+        IF_RETURN_FALSE(!initClipper(pMask, pMoved));
         scheduleUpdate();
         return ret;
     }
@@ -44,11 +43,11 @@ void ScrollTextEx::setScrollStrs(std::vector<std::string> strs)
 }
 
 void ScrollTextEx::setpMaskString(std::string string) {
-    _mLable = Label::createWithSystemFont(string, "Arial", 18);
+    pMoved = ScrollCell::create(string);
 }
 
 bool ScrollTextEx::initClipper(cocos2d::Sprite* pMask,
-                               cocos2d::Label* pMoveChild) {
+                               ScrollCell* pMoveChild) {
     auto clipper = ClippingNode::create();
     IF_RETURN_FALSE(!clipper);
     IF_RETURN_FALSE(!pMask);
@@ -59,7 +58,9 @@ bool ScrollTextEx::initClipper(cocos2d::Sprite* pMask,
     _clipperStencil->retain();
     clipper->setAlphaThreshold(0.1f);
     clipper->setStencil(_clipperStencil);
+    clipper->setInverted(false);
     clipper->addChild(pMask);
+    
     clipper->addChild(pMoveChild, 1);
     addChild(clipper);
     
@@ -67,7 +68,7 @@ bool ScrollTextEx::initClipper(cocos2d::Sprite* pMask,
         IF_RETURN_FALSE(!child);
         clipper->addChild(child);
     }
-    this->setContentSize(pMask->getContentSize());
+    setContentSize(pMask->getContentSize());
     return true;
 }
 
@@ -81,24 +82,23 @@ ScrollTextEx::~ScrollTextEx() {
 
 
 void ScrollTextEx::update(float delta) {
-    if (!_mLable) {
+    if (!pMoved) {
         return;
     }
     float speed = 0.7f;
-//    float currentX = _mLable->getPositionX();
     float contentX = getContentSize().width * (-1.0f);
-    float lableX = _mLable->getContentSize().width * (-1.0f);
+    float lableX = pMoved->getContentSize().width * (-1.0f);
     if (_autoScroll) {
-        if (_mLable->getPositionX() >= (lableX + contentX / 2)){
-            _mLable->setPositionX(_mLable->getPositionX() -speed);
+        if (pMoved->getPositionX() >= (lableX + contentX / 2)){
+            pMoved->setPositionX(pMoved->getPositionX() -speed);
         }
         else {
             if (m_strs.size()>0)
             {
                 auto str = m_strs.front();
                 m_strs.pop_front();
-                _mLable->setString(str);
-                _mLable->setPositionX(-contentX / 2 );
+                pMoved->setString(str);
+                pMoved->setPositionX(-contentX / 2 );
             }
             else
             {
@@ -108,7 +108,7 @@ void ScrollTextEx::update(float delta) {
         }
         
     } else {
-        _mLable->setPositionX(contentX / 2);
+        pMoved->setPositionX(contentX / 2);
     }
 }
 
@@ -117,18 +117,18 @@ void ScrollTextEx::setAutoScroll(bool isScroll, bool byWidth/*=false*/) {
         _autoScroll = isScroll;
     } else {
         _autoScroll =
-        _mLable->getContentSize().width > getContentSize().width ?
+        pMoved->getContentSize().width > getContentSize().width ?
         true : false;
     }
 }
 bool ScrollTextEx::initWithDatas(cocos2d::Sprite* pMask,
-                                 cocos2d::Label* pMoveChild) {
+                                 ScrollCell* pMoveChild) {
     bool ret = false;
     if (Node::init()) {
         IF_RETURN_FALSE(!pMask);
-        _mLable = pMoveChild;
-        _mLable->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-        initClipper(pMask, _mLable);
+        pMoved = pMoveChild;
+        pMoved->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
+        initClipper(pMask, pMoved);
         scheduleUpdate();
         return true;
     }

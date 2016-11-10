@@ -227,6 +227,8 @@
 		D294FE1F1D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
 		D294FE201D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
+		D29EC4761DD421DE00AC25D1 /* ScrollCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29EC4741DD421DD00AC25D1 /* ScrollCell.cpp */; };
+		D29EC4771DD421DE00AC25D1 /* ScrollCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29EC4741DD421DD00AC25D1 /* ScrollCell.cpp */; };
 		D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
 		D2A175291CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */; };
 		D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */; };
@@ -558,6 +560,8 @@
 		D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WxLoginHandler.hpp; sourceTree = "<group>"; };
 		D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		D29EC4741DD421DD00AC25D1 /* ScrollCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollCell.cpp; sourceTree = "<group>"; };
+		D29EC4751DD421DE00AC25D1 /* ScrollCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScrollCell.hpp; sourceTree = "<group>"; };
 		D2A175261CE0562A00CEDAE4 /* HuaAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuaAnim.cpp; sourceTree = "<group>"; };
 		D2A175271CE0562A00CEDAE4 /* HuaAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuaAnim.hpp; sourceTree = "<group>"; };
 		D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -1458,6 +1462,8 @@
 				D2F05F6D1D8E7605006E5A4C /* HeadImage.hpp */,
 				D2D25EA01DD1D26F00138CBE /* ScrollTextEx.cpp */,
 				D2D25EA11DD1D26F00138CBE /* ScrollTextEx.h */,
+				D29EC4741DD421DD00AC25D1 /* ScrollCell.cpp */,
+				D29EC4751DD421DE00AC25D1 /* ScrollCell.hpp */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -1740,6 +1746,7 @@
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
 				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
+				D29EC4761DD421DE00AC25D1 /* ScrollCell.cpp in Sources */,
 				D252FF5D1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
@@ -1814,6 +1821,7 @@
 				D2B1A8841CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
 				D22EEFBE1D66D14D00BF1CCB /* PrideCell.cpp in Sources */,
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
+				D29EC4771DD421DE00AC25D1 /* ScrollCell.cpp in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D281E5F41DC1992500D3E44E /* ChargeFangka.cpp in Sources */,
 				D2D25EA31DD1D26F00138CBE /* ScrollTextEx.cpp in Sources */,

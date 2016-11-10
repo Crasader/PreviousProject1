@@ -2145,9 +2145,9 @@ void MsgHandler::dailyPrideResp(std::string msg){
                 info.type = PrideType::lockDiammond;
                 info.number = temp["bangzuan"].GetInt();
             }
-            if (temp.HasMember("diamond")){
-                info.type = PrideType::diamond;
-                info.number = temp["diamond"].GetInt();
+            if (temp.HasMember("fangka")){
+                info.type = PrideType::fangka;
+                info.number = temp["fangka"].GetInt();
             }
             data.prides.push_back(info);
         }
@@ -2185,9 +2185,9 @@ void MsgHandler::todayPrideResp(std::string msg){
             info.type = PrideType::lockDiammond;
             info.number = temp["bangzuan"].GetInt();
         }
-        if (temp.HasMember("diamond")){
-            info.type = PrideType::diamond;
-            info.number = temp["diamond"].GetInt();
+        if (temp.HasMember("fangka")){
+            info.type = PrideType::fangka;
+            info.number = temp["fangka"].GetInt();
         }
         data.pride = info;
     }
