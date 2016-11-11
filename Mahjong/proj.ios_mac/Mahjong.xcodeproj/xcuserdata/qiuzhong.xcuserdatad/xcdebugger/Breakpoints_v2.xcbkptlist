@@ -1909,11 +1909,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/splash/LoadResource.cpp"
-            timestampString = "500538208.689222"
+            timestampString = "500546401.510392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "LoadResource::showNormalLayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3796,9 +3796,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "824"
-            endingLineNumber = "824"
-            landmarkName = "Audio::prepare()"
-            landmarkType = "5">
+            endingLineNumber = "824">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
