@@ -29,6 +29,7 @@ void DailyPride::onEnter(){
         if(GAMEDATA::getInstance()->getTodayPrideData().result == "2"){
             HintDialog* hit = HintDialog::create("正在游戏中,无法抽奖", nullptr);
             addChild(hit,10);
+            m_turnBg->stopAllActions();
         }else{
             schedule([=](float dt){
                 //刷新用户信息
