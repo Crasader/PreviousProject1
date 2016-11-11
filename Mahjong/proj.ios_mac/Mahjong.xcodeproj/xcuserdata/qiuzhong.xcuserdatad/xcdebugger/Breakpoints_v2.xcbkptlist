@@ -1909,11 +1909,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/splash/LoadResource.cpp"
-            timestampString = "500192836.04411"
+            timestampString = "500538208.689222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "LoadResource::showNormalLayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -3782,6 +3782,22 @@
             startingLineNumber = "90"
             endingLineNumber = "90"
             landmarkName = "ScrollTextEx::update(float delta)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/utils/Audio.cpp"
+            timestampString = "500539555.327329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "824"
+            endingLineNumber = "824"
+            landmarkName = "Audio::prepare()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

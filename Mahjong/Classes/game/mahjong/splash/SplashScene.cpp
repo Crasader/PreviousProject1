@@ -37,7 +37,10 @@ bool SplashScene::init()
 }
 
 
+void SplashScene::onEnterTransitionDidFinish(){
 
+    Audio::getInstance()->playBGM();
+}
 
 void SplashScene::drawLonginScene(){
     isCliked =  false;

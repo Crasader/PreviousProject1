@@ -83,6 +83,8 @@ void LoadResource::showNormalLayer(){
     loadProBg->setPosition(640,60);
     addChild(loadProBg);
     
+    Audio::getInstance()->prepare();
+    
     auto loadProgerss = ProgressTimer::create(Sprite::create("mainlogin/loading_pro_1.png"));
     loadProgerss->setPosition(640,60);
      addChild(loadProgerss,1);

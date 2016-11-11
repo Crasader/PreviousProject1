@@ -67,7 +67,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // run
     director->runWithScene(scene);
     
-    Audio::getInstance()->playBGM();
     return true;
 }
 

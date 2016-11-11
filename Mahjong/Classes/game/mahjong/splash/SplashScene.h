@@ -14,6 +14,7 @@ public:
     virtual bool init() override;
 	virtual void onEnter() override;
 	virtual void onExit() override;
+    void onEnterTransitionDidFinish() override;
 	CREATE_FUNC(SplashScene);
 
 private:
