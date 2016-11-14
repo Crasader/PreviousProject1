@@ -72,12 +72,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
-    Director::getInstance()->stopAnimation();
     log("applicationDidEnterBackground");
+    Director::getInstance()->stopAnimation();
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
+    log("applicationWillEnterForeground");
     Director::getInstance()->startAnimation();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     if(resumeIndex == 0){
