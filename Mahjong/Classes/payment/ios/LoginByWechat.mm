@@ -29,6 +29,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     static LoginByWechat *instance;
     dispatch_once(&onceToken, ^{
         instance = [[LoginByWechat alloc] init];
+        [WXApi registerApp:AppID withDescription:@"上海麻将"];
     });
     return instance;
 }
@@ -234,6 +235,73 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     req.scene = inScene;
     [WXApi sendReq:req];
 }
+
+-(void) payWeChat:(NSString*) poxiaoId PayPoint:(NSString*) payPoint{
+    NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!generateOrd.action?charge_type=1&tbu_id=201617&pay_platform=apple&game_version=1&hsman=ios&hstype=ios&imei=123456789&imsi=46000&channel_id=apple&request_pay_amount=1&poxiao_id=%@&pay_point=%@",poxiaoId,payPoint];
+    NSLog(@"url:%@",urlString);
+    //解析服务端返回json数据
+    NSError *error;
+    //加载一个NSURL对象
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    //第三步，连接服务器
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
+    NSLog(@"received = %@",result);
+    //解析返回的json数据
+    NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
+    if(NSClassFromString(@"NSJSONSerialization"))
+    {
+        NSError *error = nil;
+        id object = [NSJSONSerialization
+                     JSONObjectWithData:returnedData
+                     options:0
+                     error:&error];
+        
+        if(error) {
+            NSLog(@"json 格式有错误");
+        }
+        if([object isKindOfClass:[NSDictionary class]])
+        {
+            //            {"px_order_id":"20161114161214909637","result":0,"wx_nonce_str":"99lyJIYOnSzCd0IK","wx_order_id":"20161114161214909637","wx_prepayid":"wx20161114161301433b454cd80759588001","wx_sign":"8407A0FCA44D345963B5F6B514AC7117","wx_timestamp":1479111134000}
+            
+            NSDictionary *results = object;
+            NSObject *myresult = [results objectForKey:@"result"];
+            NSString *resultstr = [NSString stringWithFormat:@"%@", myresult];
+            if(strcmp(std::string([resultstr UTF8String]).c_str(),"0") == 0){
+                //                NSObject *px_order_id = [results objectForKey:@"px_order_id"];
+                //                NSString *pxOrderId = [NSString stringWithFormat:@"%@", px_order_id];
+                //                NSObject *wx_order_id = [results objectForKey:@"wx_order_id"];
+                //                NSString *wxOrderId = [NSString stringWithFormat:@"%@", wx_order_id];
+                NSObject *wx_nonce_str = [results objectForKey:@"wx_nonce_str"];
+                NSString *wxNonceStr = [NSString stringWithFormat:@"%@", wx_nonce_str];
+                NSObject *wx_prepayid = [results objectForKey:@"wx_prepayid"];
+                NSString *wxPrepayid = [NSString stringWithFormat:@"%@", wx_prepayid];
+                NSObject *wx_sign = [results objectForKey:@"wx_sign"];
+                NSString *wxSign = [NSString stringWithFormat:@"%@", wx_sign];
+                NSObject *wx_timestamp = [results objectForKey:@"wx_timestamp"];
+                int wxTimestamp = [(NSNumber*)wx_timestamp intValue];
+                //调起微信支付
+                PayReq* req             = [[[PayReq alloc] init]autorelease];
+                req.partnerId           = @"1380518102";
+                req.prepayId            = wxPrepayid;
+                req.nonceStr            = wxNonceStr;
+                req.timeStamp           = wxTimestamp;
+                req.package             = @"Sign=WXPay";
+                req.sign                = wxSign;
+                [WXApi sendReq:req];
+            }
+        }
+        else
+        {
+            NSLog(@"数据格式有错误");
+        }
+    }
+    else
+    {
+        NSLog(@"系统版本过低");
+    }
+}
+
 
 #pragma mark - WXApiDelegate
 - (void)onResp:(BaseResp *)resp {

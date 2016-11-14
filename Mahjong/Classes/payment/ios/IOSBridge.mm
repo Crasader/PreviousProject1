@@ -34,7 +34,11 @@ IOSBridge* IOSBridge::getInstance(){
 void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     //获取商品的编号
-    getProductId(poxiaoId,StringUtils::format("%d",payId));
+    //    getProductId(poxiaoId,StringUtils::format("%d",payId));
+    NSString* pyid = [[NSString alloc] initWithFormat:@"%s",poxiaoId.c_str()];
+    NSString *poid=  [[NSString alloc] initWithFormat:@"%d",payId];
+    LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+    [loginByWechat payWeChat:pyid PayPoint:poid];
 #endif
 }
 
@@ -51,7 +55,7 @@ void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string c
     NSString* wxContent = [[NSString alloc] initWithCString:content.c_str() encoding:NSUTF8StringEncoding];
     LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
     [loginByWechat wechatShareWeb:wxUrl ContentTile:wxTitle ContentDescription:wxContent Scene:scene];
-
+    
 }
 
 
