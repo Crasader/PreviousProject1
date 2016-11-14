@@ -6,7 +6,6 @@
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/dialog/prompt/TextHintDialog.hpp"
 #include "game/mahjong/daily/DailyEvent.h"
-#include "game/mahjong/activities/MahjongActivities.hpp"
 #include "game/mahjong/shop/FirstChageDialog.hpp"
 #include "game/mahjong/shop/gold/ChargeGold.hpp"
 #include "game/mahjong/shop/fangka/ChargeFangka.hpp"
@@ -382,8 +381,6 @@ void LobbyScene::showGameSetting(){
 
 void LobbyScene::showHotActivity(){
     Audio::getInstance()->playSoundClick();
-    MahjongActivities* act = MahjongActivities::create();
-    addChild(act,3);
 }
 
 void LobbyScene::showHeroInfo(){
