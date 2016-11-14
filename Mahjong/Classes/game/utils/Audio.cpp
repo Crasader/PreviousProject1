@@ -19,7 +19,7 @@ void Audio::init(){
 }
 
 void Audio::playBGM(){
-    int id = AudioEngine::play2d("audio/mahjong_bgm.wav",true,UserData::getInstance()->getMusicValue());
+    int id = AudioEngine::play2d("audio/mahjong_bgm.mp3",true,UserData::getInstance()->getMusicValue());
     setBgmId(id);
 }
 
@@ -41,6 +41,30 @@ void Audio::setEffectValue(float value)
     UserData::getInstance()->setSoundValue(value);
 }
 
+void Audio::playSoundTouzi(){
+    AudioEngine::play2d("audio/tou_zi.mp3",false,UserData::getInstance()->getSoundValue());
+}
+
+void Audio::playSoundFapai(){
+    AudioEngine::play2d("audio/snd_getdun.mp3",false,UserData::getInstance()->getSoundValue());
+}
+
+
+void Audio::playSoundHuMusic(int type){
+    if(type == 0){
+        AudioEngine::play2d("audio/hu_pai.mp3",false,UserData::getInstance()->getSoundValue()*0.6f);
+    }else{
+        AudioEngine::play2d("audio/zimo_gangkai.mp3",false,UserData::getInstance()->getSoundValue()*0.6f);
+    }
+}
+
+void Audio::playSoundClick(){
+    AudioEngine::play2d("audio/dian_ji_an_niu.mp3",false,UserData::getInstance()->getSoundValue());
+}
+
+void Audio::playSoundClosePage(){
+    AudioEngine::play2d("audio/guan_bi_ye_mian.mp3",false,UserData::getInstance()->getSoundValue());
+}
 
 void Audio::playMahjong(int type,int gender){
     switch (type) {
@@ -364,13 +388,7 @@ void Audio::playSoundLiuJu(int gender){
 }
 
 
-void Audio::playSoundTouzi(){
-    AudioEngine::play2d("audio/tou_zi.wav",false,UserData::getInstance()->getSoundValue());
-}
 
-void Audio::playSoundFapai(){
-    AudioEngine::play2d("audio/snd_getdun.wav",false,UserData::getInstance()->getSoundValue());
-}
 
 void Audio::playSoundWan1(int gender){
     int soundId = rand()%3+1;
@@ -727,22 +745,6 @@ void Audio::playSoundNorth(int gender){
         std::string soundName = StringUtils::format("audio/famale/beifeng_%d.wav",soundId);
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }
-}
-
-void Audio::playSoundHuMusic(int type){
-    if(type == 0){
-        AudioEngine::play2d("audio/hu_pai.wav",false,UserData::getInstance()->getSoundValue()*0.6f);
-    }else{
-        AudioEngine::play2d("audio/zimo_gangkai.wav",false,UserData::getInstance()->getSoundValue()*0.6f);
-    }
-}
-
-void Audio::playSoundClick(){
-    AudioEngine::play2d("audio/dian_ji_an_niu.wav",false,UserData::getInstance()->getSoundValue());
-}
-
-void Audio::playSoundClosePage(){
-    AudioEngine::play2d("audio/guan_bi_ye_mian.wav",false,UserData::getInstance()->getSoundValue());
 }
 
 
