@@ -101,8 +101,6 @@
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
 		D239A5571D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
-		D2435FA31CC73524000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
-		D2435FA41CC73525000BC4F4 /* signanim in Resources */ = {isa = PBXBuildFile; fileRef = D2435FA21CC73524000BC4F4 /* signanim */; };
 		D252FF5D1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FF5B1DCB1FD3007060DB /* DissovleRoomDialog.cpp */; };
 		D252FF5E1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FF5B1DCB1FD3007060DB /* DissovleRoomDialog.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
@@ -135,8 +133,6 @@
 		D25329731CC0D33600DDAD97 /* mjlobby in Resources */ = {isa = PBXBuildFile; fileRef = D253294E1CC0D33600DDAD97 /* mjlobby */; };
 		D25329741CC0D33600DDAD97 /* playerinfo in Resources */ = {isa = PBXBuildFile; fileRef = D253294F1CC0D33600DDAD97 /* playerinfo */; };
 		D25329751CC0D33600DDAD97 /* playerinfo in Resources */ = {isa = PBXBuildFile; fileRef = D253294F1CC0D33600DDAD97 /* playerinfo */; };
-		D25329761CC0D33600DDAD97 /* register in Resources */ = {isa = PBXBuildFile; fileRef = D25329501CC0D33600DDAD97 /* register */; };
-		D25329771CC0D33600DDAD97 /* register in Resources */ = {isa = PBXBuildFile; fileRef = D25329501CC0D33600DDAD97 /* register */; };
 		D25329781CC0D33600DDAD97 /* res in Resources */ = {isa = PBXBuildFile; fileRef = D25329511CC0D33600DDAD97 /* res */; };
 		D25329791CC0D33600DDAD97 /* res in Resources */ = {isa = PBXBuildFile; fileRef = D25329511CC0D33600DDAD97 /* res */; };
 		D253297A1CC0D33600DDAD97 /* result in Resources */ = {isa = PBXBuildFile; fileRef = D25329521CC0D33600DDAD97 /* result */; };
@@ -265,8 +261,6 @@
 		D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8681CCDF0F300A20896 /* stdafx.cpp */; };
 		D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
-		D2BD08C51D66E76900ADC31E /* relieve in Resources */ = {isa = PBXBuildFile; fileRef = D2BD08C41D66E76900ADC31E /* relieve */; };
-		D2BD08C61D66E76900ADC31E /* relieve in Resources */ = {isa = PBXBuildFile; fileRef = D2BD08C41D66E76900ADC31E /* relieve */; };
 		D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */; };
 		D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */; };
 		D2C3FA561D9906FF00CFC80E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */; };
@@ -443,7 +437,6 @@
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
-		D2435FA21CC73524000BC4F4 /* signanim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = signanim; sourceTree = "<group>"; };
 		D252FF5B1DCB1FD3007060DB /* DissovleRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DissovleRoomDialog.cpp; sourceTree = "<group>"; };
 		D252FF5C1DCB1FD3007060DB /* DissovleRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DissovleRoomDialog.hpp; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
@@ -461,7 +454,6 @@
 		D253294D1CC0D33600DDAD97 /* mjitem */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mjitem; sourceTree = "<group>"; };
 		D253294E1CC0D33600DDAD97 /* mjlobby */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mjlobby; sourceTree = "<group>"; };
 		D253294F1CC0D33600DDAD97 /* playerinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = playerinfo; sourceTree = "<group>"; };
-		D25329501CC0D33600DDAD97 /* register */ = {isa = PBXFileReference; lastKnownFileType = folder; path = register; sourceTree = "<group>"; };
 		D25329511CC0D33600DDAD97 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		D25329521CC0D33600DDAD97 /* result */ = {isa = PBXFileReference; lastKnownFileType = folder; path = result; sourceTree = "<group>"; };
 		D25329531CC0D33600DDAD97 /* trusteeship */ = {isa = PBXFileReference; lastKnownFileType = folder; path = trusteeship; sourceTree = "<group>"; };
@@ -588,7 +580,6 @@
 		D2B1A86B1CCDF0F300A20896 /* tchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tchar.h; sourceTree = "<group>"; };
 		D2B1A86D1CCDF0F400A20896 /* UserData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserData.cpp; sourceTree = "<group>"; };
 		D2B1A86E1CCDF0F400A20896 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
-		D2BD08C41D66E76900ADC31E /* relieve */ = {isa = PBXFileReference; lastKnownFileType = folder; path = relieve; sourceTree = "<group>"; };
 		D2BDE3AA1CEB10E100754AC0 /* MjGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MjGameScene.cpp; sourceTree = "<group>"; };
 		D2BDE3AB1CEB10E100754AC0 /* MjGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MjGameScene.h; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
@@ -775,8 +766,6 @@
 				D286A53D1DD30E46001369C1 /* wanjiaqun */,
 				D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */,
 				D281E5A01DACF35600D3E44E /* audio */,
-				D2BD08C41D66E76900ADC31E /* relieve */,
-				D2435FA21CC73524000BC4F4 /* signanim */,
 				D22F1C171CC5CB67007270B2 /* setting */,
 				D25DEE401CC4AE78007D428A /* shop */,
 				D25DEE361CC0F56A007D428A /* bill */,
@@ -795,7 +784,6 @@
 				D253294D1CC0D33600DDAD97 /* mjitem */,
 				D253294E1CC0D33600DDAD97 /* mjlobby */,
 				D253294F1CC0D33600DDAD97 /* playerinfo */,
-				D25329501CC0D33600DDAD97 /* register */,
 				D25329511CC0D33600DDAD97 /* res */,
 				D25329521CC0D33600DDAD97 /* result */,
 				D25329531CC0D33600DDAD97 /* trusteeship */,
@@ -1540,7 +1528,6 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
-				D25329761CC0D33600DDAD97 /* register in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				D25329661CC0D33600DDAD97 /* gameview in Resources */,
 				D253296E1CC0D33600DDAD97 /* mainlogin in Resources */,
@@ -1570,12 +1557,10 @@
 				D25329561CC0D33600DDAD97 /* chat in Resources */,
 				D25DEE371CC0F56A007D428A /* bill in Resources */,
 				D22F1C181CC5CB67007270B2 /* setting in Resources */,
-				D2435FA31CC73524000BC4F4 /* signanim in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				D25329701CC0D33600DDAD97 /* mjitem in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				D25329781CC0D33600DDAD97 /* res in Resources */,
-				D2BD08C51D66E76900ADC31E /* relieve in Resources */,
 				D253297C1CC0D33600DDAD97 /* trusteeship in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */,
@@ -1597,11 +1582,8 @@
 				D25329591CC0D33600DDAD97 /* ChineseWords.plist in Resources */,
 				D253297D1CC0D33600DDAD97 /* trusteeship in Resources */,
 				D253296F1CC0D33600DDAD97 /* mainlogin in Resources */,
-				D25329771CC0D33600DDAD97 /* register in Resources */,
 				D25329671CC0D33600DDAD97 /* gameview in Resources */,
-				D2BD08C61D66E76900ADC31E /* relieve in Resources */,
 				D253296B1CC0D33600DDAD97 /* jong in Resources */,
-				D2435FA41CC73525000BC4F4 /* signanim in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				D25329791CC0D33600DDAD97 /* res in Resources */,
 				D25329711CC0D33600DDAD97 /* mjitem in Resources */,
