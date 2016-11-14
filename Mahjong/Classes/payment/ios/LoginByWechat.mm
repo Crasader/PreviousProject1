@@ -21,6 +21,8 @@ static NSString *kAppContnetExURL = @"http://weixin.qq.com";
 static NSString *kAppMessageExt = @"这是第三方带的测试字段";
 static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
 
+NSString * poxiaoOrderId = nil;
+
 
 #pragma mark - LifeCycle
 
@@ -262,14 +264,13 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
         }
         if([object isKindOfClass:[NSDictionary class]])
         {
-            //            {"px_order_id":"20161114161214909637","result":0,"wx_nonce_str":"99lyJIYOnSzCd0IK","wx_order_id":"20161114161214909637","wx_prepayid":"wx20161114161301433b454cd80759588001","wx_sign":"8407A0FCA44D345963B5F6B514AC7117","wx_timestamp":1479111134000}
             
             NSDictionary *results = object;
             NSObject *myresult = [results objectForKey:@"result"];
             NSString *resultstr = [NSString stringWithFormat:@"%@", myresult];
             if(strcmp(std::string([resultstr UTF8String]).c_str(),"0") == 0){
-                //                NSObject *px_order_id = [results objectForKey:@"px_order_id"];
-                //                NSString *pxOrderId = [NSString stringWithFormat:@"%@", px_order_id];
+                NSObject *px_order_id = [results objectForKey:@"px_order_id"];
+                poxiaoOrderId = [NSString stringWithFormat:@"%@", px_order_id];
                 //                NSObject *wx_order_id = [results objectForKey:@"wx_order_id"];
                 //                NSString *wxOrderId = [NSString stringWithFormat:@"%@", wx_order_id];
                 NSObject *wx_nonce_str = [results objectForKey:@"wx_nonce_str"];
@@ -303,12 +304,78 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
 }
 
 
+- (BOOL) queryPayResult{
+    NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!findOrd.action?order_id=%@",poxiaoOrderId];
+    NSLog(@"url:%@",urlString);
+    //解析服务端返回json数据
+    NSError *error;
+    //加载一个NSURL对象
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    //第三步，连接服务器
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
+    NSLog(@"received = %@",result);
+    //解析返回的json数据
+    NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
+    if(NSClassFromString(@"NSJSONSerialization"))
+    {
+        NSError *error = nil;
+        id object = [NSJSONSerialization
+                     JSONObjectWithData:returnedData
+                     options:0
+                     error:&error];
+        
+        if(error) {
+            NSLog(@"json 格式有错误");
+        }
+        if([object isKindOfClass:[NSDictionary class]])
+        {
+            
+            NSDictionary *results = object;
+            NSObject *myresult = [results objectForKey:@"result"];
+            NSString *resultstr = [NSString stringWithFormat:@"%@", myresult];
+            if(strcmp(std::string([resultstr UTF8String]).c_str(),"0") == 1){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else
+        {
+            NSLog(@"数据格式有错误");
+        }
+    }
+    else
+    {
+        NSLog(@"系统版本过低");
+    }
+}
+
 #pragma mark - WXApiDelegate
 - (void)onResp:(BaseResp *)resp {
     if ([resp isKindOfClass:[SendAuthResp class]]) {
         SendAuthResp *authResp = (SendAuthResp *)resp;
         //发送请求到服务端
         [self sendLoginMsg2Server:authResp.code];
+    }
+    if ([resp isKindOfClass:[PayResp class]]){
+        PayResp*response=(PayResp*)resp;
+        switch(response.errCode){
+            case WXSuccess:
+                //服务器端查询支付通知或查询API返回的结果再提示成功
+            {
+                NSLog(@"支付成功");
+                LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+                BOOL result = [loginByWechat queryPayResult];
+                if(result){
+                    WxLoginHandler::getInstance()->updatePlayerInfo();
+                }
+                break;
+            }
+            default:
+                NSLog(@"支付失败，retcode=%d",resp.errCode);
+                break;
+        }
     }
 }
 

@@ -42,3 +42,7 @@ void WxLoginHandler::doGameLogin(std::string openid,std::string pic,std::string 
         }
     }
 }
+
+void WxLoginHandler::updatePlayerInfo(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
+}
