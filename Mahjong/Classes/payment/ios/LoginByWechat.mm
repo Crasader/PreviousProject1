@@ -216,7 +216,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     [WXApi sendReq:req];
 }
 
-- (void) wechatShareWeb:(NSString*) url ContentTile:(NSString*) contentTile ContentDescription:(NSString*) contentDescription{
+- (void) wechatShareWeb:(NSString*) url ContentTile:(NSString*) contentTile ContentDescription:(NSString*) contentDescription Scene:(int) inScene{
     WXWebpageObject *ext = [WXWebpageObject object];
     ext.webpageUrl = url;
     
@@ -231,6 +231,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     [message setThumbImage:thumbImage];
     SendMessageToWXReq *req = [[[SendMessageToWXReq alloc] init] autorelease];
     req.message = message;
+    req.scene = inScene;
     [WXApi sendReq:req];
 }
 

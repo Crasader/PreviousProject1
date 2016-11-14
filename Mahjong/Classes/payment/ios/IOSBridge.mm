@@ -9,12 +9,8 @@
 #import "payment/ios/IOSBridge.h"
 #import "json/document.h"
 #import "json/rapidjson.h"
-
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #import "payment/ios/RechargeVC.h"
 #import "payment/ios/LoginByWechat.h"
-#endif
 
 #define RETURN_IF(cond)           if((cond)) return
 
@@ -49,12 +45,12 @@ void IOSBridge::doWechatLogin(){
     //    [loginByWechat wechatShare:@"红包口令" ContentDescription:@"123456789"];
 }
 
-void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content){
+void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content,int scene){
     NSString* wxUrl = [[NSString alloc] initWithFormat:@"%s",url.c_str()];
     NSString *wxTitle= [[NSString alloc] initWithCString:title.c_str() encoding:NSUTF8StringEncoding];
     NSString* wxContent = [[NSString alloc] initWithCString:content.c_str() encoding:NSUTF8StringEncoding];
     LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
-    [loginByWechat wechatShareWeb:wxUrl ContentTile:wxTitle ContentDescription:wxContent];
+    [loginByWechat wechatShareWeb:wxUrl ContentTile:wxTitle ContentDescription:wxContent Scene:scene];
 
 }
 

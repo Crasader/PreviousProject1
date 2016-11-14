@@ -23,6 +23,6 @@
 
 - (void) wechatShareApp:(NSString*) contentTile ContentDescription:(NSString*) contentDescription;
 
-- (void) wechatShareWeb:(NSString*) url ContentTile:(NSString*) contentTile ContentDescription:(NSString*) contentDescription;
+- (void) wechatShareWeb:(NSString*) url ContentTile:(NSString*) contentTile ContentDescription:(NSString*) contentDescription Scene:(int) inScene;
 
 @end

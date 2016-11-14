@@ -48,7 +48,7 @@
             startingLineNumber = "847"
             endingLineNumber = "847"
             landmarkName = "PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -176,7 +176,7 @@
             startingLineNumber = "881"
             endingLineNumber = "881"
             landmarkName = "PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -382,7 +382,7 @@
             startingLineNumber = "1183"
             endingLineNumber = "1183"
             landmarkName = "PlayerHero::recoverHand(std::string hand)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -414,7 +414,7 @@
             startingLineNumber = "1059"
             endingLineNumber = "1059"
             landmarkName = "PlayerHero::recoverPlayed(std::string played)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -430,7 +430,7 @@
             startingLineNumber = "1067"
             endingLineNumber = "1067"
             landmarkName = "PlayerHero::recoverPlayed(std::string played)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -446,7 +446,7 @@
             startingLineNumber = "306"
             endingLineNumber = "306"
             landmarkName = "PlayerHero::getHeroPlayedJongsPos(int index)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -619,7 +619,7 @@
             startingLineNumber = "1134"
             endingLineNumber = "1134"
             landmarkName = "PlayerHero::recoverCpg(vector&lt;PlayerChiData&gt; chi,vector&lt;PlayerPengData&gt; peng,vector&lt;PlayerGangData&gt; gang,std::string angang)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -635,7 +635,7 @@
             startingLineNumber = "1110"
             endingLineNumber = "1110"
             landmarkName = "PlayerHero::recoverCpg(vector&lt;PlayerChiData&gt; chi,vector&lt;PlayerPengData&gt; peng,vector&lt;PlayerGangData&gt; gang,std::string angang)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -651,7 +651,7 @@
             startingLineNumber = "1111"
             endingLineNumber = "1111"
             landmarkName = "PlayerHero::recoverCpg(vector&lt;PlayerChiData&gt; chi,vector&lt;PlayerPengData&gt; peng,vector&lt;PlayerGangData&gt; gang,std::string angang)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -667,7 +667,7 @@
             startingLineNumber = "1129"
             endingLineNumber = "1129"
             landmarkName = "PlayerHero::recoverCpg(vector&lt;PlayerChiData&gt; chi,vector&lt;PlayerPengData&gt; peng,vector&lt;PlayerGangData&gt; gang,std::string angang)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -683,7 +683,7 @@
             startingLineNumber = "1077"
             endingLineNumber = "1077"
             landmarkName = "PlayerHero::recoverCpg(vector&lt;PlayerChiData&gt; chi,vector&lt;PlayerPengData&gt; peng,vector&lt;PlayerGangData&gt; gang,std::string angang)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1387,7 +1387,7 @@
             startingLineNumber = "692"
             endingLineNumber = "692"
             landmarkName = "PlayerHero::doEventTimeOver(int type)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1403,7 +1403,7 @@
             startingLineNumber = "676"
             endingLineNumber = "676"
             landmarkName = "PlayerHero::doEventTimeOver(int type)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1419,7 +1419,7 @@
             startingLineNumber = "688"
             endingLineNumber = "688"
             landmarkName = "PlayerHero::doEventTimeOver(int type)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1803,7 +1803,7 @@
             startingLineNumber = "288"
             endingLineNumber = "288"
             landmarkName = "PlayerHero::readyGo()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1819,7 +1819,7 @@
             startingLineNumber = "289"
             endingLineNumber = "289"
             landmarkName = "PlayerHero::readyGo()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2011,7 +2011,7 @@
             startingLineNumber = "625"
             endingLineNumber = "625"
             landmarkName = "PlayerHero::playedPokerAuto(bool send)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2041,7 +2041,7 @@
             startingLineNumber = "156"
             endingLineNumber = "156"
             landmarkName = "PlayerHero::playPokerByHand(Jong* jong)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2057,7 +2057,7 @@
             startingLineNumber = "649"
             endingLineNumber = "649"
             landmarkName = "PlayerHero::playedPokerAuto(bool send)"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2105,7 +2105,7 @@
             startingLineNumber = "647"
             endingLineNumber = "647"
             landmarkName = "PlayerHero::playedPokerAuto(bool send)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2121,7 +2121,7 @@
             startingLineNumber = "646"
             endingLineNumber = "646"
             landmarkName = "PlayerHero::playedPokerAuto(bool send)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2295,7 +2295,7 @@
             startingLineNumber = "671"
             endingLineNumber = "671"
             landmarkName = "PlayerHero::doEventTimeOverUi()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2327,7 +2327,7 @@
             startingLineNumber = "890"
             endingLineNumber = "890"
             landmarkName = "PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2757,7 +2757,7 @@
             startingLineNumber = "540"
             endingLineNumber = "540"
             landmarkName = "PlayerHero::playerTurnReplace(PlayerTurnData data)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2773,7 +2773,7 @@
             startingLineNumber = "490"
             endingLineNumber = "490"
             landmarkName = "PlayerHero::replaceFlower()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3232,13 +3232,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/IOSBridge.mm"
-            timestampString = "496826225.648728"
+            timestampString = "500798413.3079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *response)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3254,7 +3254,7 @@
             startingLineNumber = "185"
             endingLineNumber = "185"
             landmarkName = "-failedTransaction:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3334,7 +3334,7 @@
             startingLineNumber = "112"
             endingLineNumber = "112"
             landmarkName = "-sendLoginMsg2Server:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3350,7 +3350,7 @@
             startingLineNumber = "108"
             endingLineNumber = "108"
             landmarkName = "-sendLoginMsg2Server:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3494,7 +3494,7 @@
             startingLineNumber = "272"
             endingLineNumber = "272"
             landmarkName = "PlayerHero::drawReady(bool ready)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3510,7 +3510,7 @@
             startingLineNumber = "279"
             endingLineNumber = "279"
             landmarkName = "PlayerHero::drawReady(bool ready)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3526,7 +3526,7 @@
             startingLineNumber = "62"
             endingLineNumber = "62"
             landmarkName = "PlayerHero::setIsReady(bool b)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3542,7 +3542,7 @@
             startingLineNumber = "276"
             endingLineNumber = "276"
             landmarkName = "PlayerHero::drawReady(bool ready)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3558,7 +3558,7 @@
             startingLineNumber = "271"
             endingLineNumber = "271"
             landmarkName = "PlayerHero::drawReady(bool ready)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3797,6 +3797,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "826"
             endingLineNumber = "826">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/payment/ios/LoginByWechat.h"
+            timestampString = "500796396.672755"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "-wechatShareApp:ContentDescription:"
+            landmarkType = "6">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
