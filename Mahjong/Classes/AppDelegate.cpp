@@ -74,15 +74,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
     log("applicationDidEnterBackground");
-    // if you use SimpleAudioEngine, it must be pause
-//    AudioEngine::pauseAll();
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
-    // if you use SimpleAudioEngine, it must resume here
-//    AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     if(resumeIndex == 0){
         resumeIndex++;
