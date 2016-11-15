@@ -67,6 +67,7 @@ public:
     int getDailiQunVersion();
     void setDailiQunVersion(int ver);
     
+    CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();
 	static UserData* _instance;	

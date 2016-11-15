@@ -9,6 +9,8 @@
 
 #import "payment/ios/wechat/WXApi.h"
 
+#import "cocos2d.h"
+
 #define AppID       @"wx650e2a97e8b7b265"
 
 @interface LoginByWechat : NSObject<WXApiDelegate>

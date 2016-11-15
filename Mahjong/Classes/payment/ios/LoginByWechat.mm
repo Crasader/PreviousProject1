@@ -10,6 +10,7 @@
 #include "payment/ios/WxLoginHandler.hpp"
 #include "userdata/UserData.h"
 
+
 @implementation LoginByWechat
 
 
@@ -21,7 +22,7 @@ static NSString *kAppContnetExURL = @"http://weixin.qq.com";
 static NSString *kAppMessageExt = @"这是第三方带的测试字段";
 static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
 
-static NSString * poxiaoOrderId = nil;
+//static NSString * poxiaoOrderId = @"";
 
 
 #pragma mark - LifeCycle
@@ -270,7 +271,8 @@ static NSString * poxiaoOrderId = nil;
             NSString *resultstr = [NSString stringWithFormat:@"%@", myresult];
             if(strcmp(std::string([resultstr UTF8String]).c_str(),"0") == 0){
                 NSObject *px_order_id = [results objectForKey:@"px_order_id"];
-                poxiaoOrderId = [NSString stringWithFormat:@"%@", px_order_id];
+                NSString* poxiaoOrderId = [NSString stringWithFormat:@"%@", px_order_id];
+                UserData::getInstance()->setPoxiaoOrderID(std::string([poxiaoOrderId UTF8String]));
                 NSLog(@"poxiaoOrderId == %@",poxiaoOrderId);
                 //                NSObject *wx_order_id = [results objectForKey:@"wx_order_id"];
                 //                NSString *wxOrderId = [NSString stringWithFormat:@"%@", wx_order_id];
@@ -306,8 +308,8 @@ static NSString * poxiaoOrderId = nil;
 
 
 - (BOOL) queryPayResult{
-    NSLog(@"poxiaoOrderId == %@",poxiaoOrderId);
-    NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!findOrd.action?order_id=%@",poxiaoOrderId];
+//    NSLog(@"poxiaoOrderId == %@",poxiaoOrderId);
+    NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!findOrd.action?order_id=%s",UserData::getInstance()->getPoxiaoOrderID().c_str()];
     NSLog(@"url:%@",urlString);
     //解析服务端返回json数据
     NSError *error;
@@ -370,7 +372,9 @@ static NSString * poxiaoOrderId = nil;
                 LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
                 BOOL result = [loginByWechat queryPayResult];
                 if(result){
-                    WxLoginHandler::getInstance()->updatePlayerInfo();
+                    WxLoginHandler::getInstance()->updatePlayerInfo("1");
+                }else{
+                    WxLoginHandler::getInstance()->updatePlayerInfo("0");
                 }
                 break;
             }

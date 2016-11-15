@@ -16,7 +16,7 @@ class WxLoginHandler{
 public:
     static WxLoginHandler* getInstance();
     void doGameLogin(std::string openid,std::string pic,std::string sex,std::string nickname);
-    void updatePlayerInfo();
+    void updatePlayerInfo(std::string result);
 private:
     WxLoginHandler();
     static WxLoginHandler* _instance;
