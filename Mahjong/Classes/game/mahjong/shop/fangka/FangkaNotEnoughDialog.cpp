@@ -65,6 +65,6 @@ void FangkaNotEnoughDialog::confirmCharge(){
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"7");
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),2);
+    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),7);
 #endif
 }
