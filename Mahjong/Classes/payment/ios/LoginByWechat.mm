@@ -21,7 +21,7 @@ static NSString *kAppContnetExURL = @"http://weixin.qq.com";
 static NSString *kAppMessageExt = @"这是第三方带的测试字段";
 static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
 
-NSString * poxiaoOrderId = nil;
+static NSString * poxiaoOrderId = nil;
 
 
 #pragma mark - LifeCycle
