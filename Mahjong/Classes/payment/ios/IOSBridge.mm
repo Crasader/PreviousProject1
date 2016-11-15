@@ -37,14 +37,14 @@ void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
     //    getProductId(poxiaoId,StringUtils::format("%d",payId));
     NSString* pyid = [[NSString alloc] initWithFormat:@"%s",poxiaoId.c_str()];
     NSString *poid=  [[NSString alloc] initWithFormat:@"%d",payId];
-    LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
     [loginByWechat payWeChat:pyid PayPoint:poid];
 #endif
 }
 
 
 void IOSBridge::doWechatLogin(){
-    LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
     [loginByWechat sendAuthRequestScope];
     //    [loginByWechat wechatShare:@"红包口令" ContentDescription:@"123456789"];
 }
@@ -53,7 +53,7 @@ void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string c
     NSString* wxUrl = [[NSString alloc] initWithFormat:@"%s",url.c_str()];
     NSString *wxTitle= [[NSString alloc] initWithCString:title.c_str() encoding:NSUTF8StringEncoding];
     NSString* wxContent = [[NSString alloc] initWithCString:content.c_str() encoding:NSUTF8StringEncoding];
-    LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
     [loginByWechat wechatShareWeb:wxUrl ContentTile:wxTitle ContentDescription:wxContent Scene:scene];
     
 }
@@ -62,7 +62,7 @@ void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string c
 void IOSBridge::doWechatShareApp(std::string title,std::string content){
     NSString* wxTitle = [[NSString alloc] initWithFormat:@"%s",title.c_str()];
     NSString* wxContent = [[NSString alloc] initWithFormat:@"%s",content.c_str()];
-    LoginByWechat* loginByWechat = [LoginByWechat alloc];
+    LoginByWechat* loginByWechat = [LoginByWechat sharedManager];
     [loginByWechat wechatShareApp:wxTitle ContentDescription:wxContent];
 }
 

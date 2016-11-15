@@ -271,6 +271,7 @@ static NSString * poxiaoOrderId = nil;
             if(strcmp(std::string([resultstr UTF8String]).c_str(),"0") == 0){
                 NSObject *px_order_id = [results objectForKey:@"px_order_id"];
                 poxiaoOrderId = [NSString stringWithFormat:@"%@", px_order_id];
+                NSLog(@"poxiaoOrderId == %@",poxiaoOrderId);
                 //                NSObject *wx_order_id = [results objectForKey:@"wx_order_id"];
                 //                NSString *wxOrderId = [NSString stringWithFormat:@"%@", wx_order_id];
                 NSObject *wx_nonce_str = [results objectForKey:@"wx_nonce_str"];
@@ -305,6 +306,7 @@ static NSString * poxiaoOrderId = nil;
 
 
 - (BOOL) queryPayResult{
+    NSLog(@"poxiaoOrderId == %@",poxiaoOrderId);
     NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!findOrd.action?order_id=%@",poxiaoOrderId];
     NSLog(@"url:%@",urlString);
     //解析服务端返回json数据
@@ -365,7 +367,7 @@ static NSString * poxiaoOrderId = nil;
                 //服务器端查询支付通知或查询API返回的结果再提示成功
             {
                 NSLog(@"支付成功");
-                LoginByWechat* loginByWechat = [LoginByWechat alloc] ;
+                LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
                 BOOL result = [loginByWechat queryPayResult];
                 if(result){
                     WxLoginHandler::getInstance()->updatePlayerInfo();
