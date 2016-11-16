@@ -6,6 +6,7 @@
 #include "game/mahjong/loading/Loading.h"
 #include "userdata/UserData.h"
 #include "server/NetworkManage.h"
+#import "payment/ios/IOSBridge.h"
 
 bool BillDetailInfo::init()
 {
@@ -251,11 +252,17 @@ std::vector<BillContent> BillDetailInfo::sortBillInfo(std::vector<BillContent> c
 }
 
 void BillDetailInfo::shareBill(){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     log("screenShot path = %s",path.c_str());
     utils::captureScreen(NULL ,path);
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->shareImageToWeChat("mahjong_screen_shot.png", false);
+#endif
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(NULL ,path);
+    IOSBridge::getInstance()->doWechatShareImg(path, 0);
 #endif
 }
 
