@@ -1909,13 +1909,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/splash/LoadResource.cpp"
-            timestampString = "500546401.510392"
+            timestampString = "500975096.887706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "LoadResource::showNormalLayer()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2783,11 +2783,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/bill/BillDetailInfo.cpp"
-            timestampString = "499847385.948659"
+            timestampString = "500970187.863381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2815,11 +2815,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/bill/BillDetailInfo.cpp"
-            timestampString = "499847385.948659"
+            timestampString = "500970187.863381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2832,11 +2832,11 @@
             condition = "idx=10"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/bill/BillDetailInfo.cpp"
-            timestampString = "499847385.948659"
+            timestampString = "500970187.863381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2848,11 +2848,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/bill/BillDetailInfo.cpp"
-            timestampString = "499847385.948659"
+            timestampString = "500970187.863381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2912,11 +2912,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/bill/BillDetailInfo.cpp"
-            timestampString = "499847385.948659"
+            timestampString = "500970187.863381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3328,11 +3328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "500872012.335323"
+            timestampString = "500974305.400085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-sendLoginMsg2Server:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3344,11 +3344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "500872012.335323"
+            timestampString = "500974305.400085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-sendLoginMsg2Server:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3822,11 +3822,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "500969935.998655"
+            timestampString = "500974305.400085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "-payWeChat:PayPoint:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3838,11 +3838,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "500969935.998655"
+            timestampString = "500974305.400085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-payWeChat:PayPoint:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3854,11 +3854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "500969935.998655"
+            timestampString = "500974305.400085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
             landmarkName = "-onResp:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3870,12 +3870,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "500969935.998655"
+            timestampString = "500974305.400085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
             landmarkName = "-onResp:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ios/AppController.mm"
+            timestampString = "500974276.77542"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/bill/BillInfo.cpp"
+            timestampString = "500974483.206891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "BillInfo::screenShot()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/game/mahjong/bill/BillInfo.cpp"
+            timestampString = "500974483.865111"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "BillInfo::screenShot()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

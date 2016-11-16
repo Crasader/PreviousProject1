@@ -32,7 +32,6 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     static LoginByWechat *instance;
     dispatch_once(&onceToken, ^{
         instance = [[LoginByWechat alloc] init];
-        [WXApi registerApp:AppID withDescription:@"上海麻将"];
     });
     return instance;
 }

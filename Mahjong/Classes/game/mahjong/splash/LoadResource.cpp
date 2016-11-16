@@ -9,6 +9,8 @@
 #include "game/mahjong/splash/LoadResource.hpp"
 #include "game/mahjong/splash/SplashScene.h"
 #include "game/utils/Audio.h"
+#import "payment/ios/IOSBridge.h"
+#include "payment/android/CallAndroidMethod.h"
 
 Scene* LoadResource::createScene()
 {
@@ -25,11 +27,18 @@ bool LoadResource::init(){
         return false;
     }
     showHealthLayer();
+
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-     showHealthLayer();
+    showHealthLayer();
+    std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(NULL ,path);
 #endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     showNormalLayer();
+    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(NULL ,path);
 #endif
 
     return true;

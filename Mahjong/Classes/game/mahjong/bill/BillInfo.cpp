@@ -3,10 +3,10 @@
 #include "game/mahjong/loading/Loading.h"
 #include "game/utils/StringUtil.h"
 #include "game/utils/Chinese.h"
-#include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #import "payment/ios/IOSBridge.h"
+#include "payment/android/CallAndroidMethod.h"
 
 bool BillInfo::init()
 {
