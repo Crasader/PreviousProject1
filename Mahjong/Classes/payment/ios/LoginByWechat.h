@@ -27,6 +27,8 @@
 
 - (void) wechatShareWeb:(NSString*) url ContentTile:(NSString*) contentTile ContentDescription:(NSString*) contentDescription Scene:(int) inScene;
 
+- (void) wechatShareImg:(NSData*) imageData  Scene:(int) inScene;
+
 - (void) payWeChat: (NSString*) poxiaoId PayPoint:(NSString*) payPoint;
 
 - (BOOL) queryPayResult;

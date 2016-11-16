@@ -6,6 +6,7 @@
 #include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
+#import "payment/ios/IOSBridge.h"
 
 bool BillInfo::init()
 {
@@ -280,5 +281,11 @@ void BillInfo::screenShot(){
     log("screenShot path = %s",path.c_str());
     utils::captureScreen(NULL ,path);
     CallAndroidMethod::getInstance()->shareImageToWeChat("mahjong_screen_shot.png", false);
+#endif
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(NULL ,path);
+    IOSBridge::getInstance()->doWechatShareImg(path, 0);
 #endif
 }

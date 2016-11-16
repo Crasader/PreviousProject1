@@ -239,6 +239,34 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     [WXApi sendReq:req];
 }
 
+
+- (void) wechatShareImg:(NSData*) imageData Scene:(int) inScene{
+    WXImageObject *ext = [WXImageObject object];
+    ext.imageData = imageData;
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = nil;
+    message.description = nil;
+    message.mediaObject = ext;
+    message.messageExt = kAppMessageExt;
+    message.messageAction = kAppMessageAction;
+    message.mediaTagName = nil;
+    NSData *newImageData = imageData;
+    // 压缩图片data大小
+    newImageData = UIImageJPEGRepresentation([UIImage imageWithData:newImageData scale:0.1], 0.1f);
+    UIImage *image = [UIImage imageWithData:newImageData];
+    
+    // 压缩图片分辨率(因为data压缩到一定程度后，如果图片分辨率不缩小的话还是不行)
+    CGSize newSize = CGSizeMake(200, 200);
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    [message setThumbImage:newImage];
+    SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init] autorelease];
+    req.message = message;
+    req.scene = inScene;
+    [WXApi sendReq:req];
+}
+
 -(void) payWeChat:(NSString*) poxiaoId PayPoint:(NSString*) payPoint{
     NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!generateOrd.action?charge_type=1&tbu_id=201617&pay_platform=apple&game_version=1&hsman=ios&hstype=ios&imei=123456789&imsi=46000&channel_id=apple&request_pay_amount=1&poxiao_id=%@&pay_point=%@",poxiaoId,payPoint];
     NSLog(@"url:%@",urlString);
@@ -308,7 +336,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
 
 
 - (BOOL) queryPayResult{
-//    NSLog(@"poxiaoOrderId == %@",poxiaoOrderId);
+    //    NSLog(@"poxiaoOrderId == %@",poxiaoOrderId);
     NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!findOrd.action?order_id=%s",UserData::getInstance()->getPoxiaoOrderID().c_str()];
     NSLog(@"url:%@",urlString);
     //解析服务端返回json数据

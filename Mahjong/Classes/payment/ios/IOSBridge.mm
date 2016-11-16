@@ -66,6 +66,15 @@ void IOSBridge::doWechatShareApp(std::string title,std::string content){
     [loginByWechat wechatShareApp:wxTitle ContentDescription:wxContent];
 }
 
+void IOSBridge::doWechatShareImg(std::string filepath,int scene){
+    NSString *filePath=[NSString stringWithFormat:@"%s",filepath.c_str()];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
+    NSData *imageData = [NSData dataWithContentsOfFile:filePath];
+    LoginByWechat* loginByWechat = [LoginByWechat sharedManager];
+    [loginByWechat wechatShareImg:imageData Scene:scene];
+}
+
+
 void IOSBridge::getProductId(std::string poxiaoId,std::string payId){
     HttpRequest* request = new HttpRequest();
     request->setRequestType(HttpRequest::Type::GET);
