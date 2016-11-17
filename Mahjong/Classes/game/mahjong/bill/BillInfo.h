@@ -41,5 +41,6 @@ private:
     void showKongBill();
     void screenShot();
     std::vector<BillContent> sortBillInfo(std::vector<BillContent> content);
+    void afterCaptured(bool succeed, const std::string &outputFile);
 };
 #endif
