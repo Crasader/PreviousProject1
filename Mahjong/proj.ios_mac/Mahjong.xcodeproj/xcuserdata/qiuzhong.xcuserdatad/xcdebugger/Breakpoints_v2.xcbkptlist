@@ -1435,7 +1435,7 @@
             startingLineNumber = "1028"
             endingLineNumber = "1028"
             landmarkName = "MsgHandler::nextPlayer(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1483,7 +1483,7 @@
             startingLineNumber = "682"
             endingLineNumber = "682"
             landmarkName = "MsgHandler::loginResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1499,7 +1499,7 @@
             startingLineNumber = "683"
             endingLineNumber = "683"
             landmarkName = "MsgHandler::loginResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1515,7 +1515,7 @@
             startingLineNumber = "1032"
             endingLineNumber = "1032"
             landmarkName = "MsgHandler::nextPlayer(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1563,7 +1563,7 @@
             startingLineNumber = "1030"
             endingLineNumber = "1030"
             landmarkName = "MsgHandler::nextPlayer(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1659,7 +1659,7 @@
             startingLineNumber = "876"
             endingLineNumber = "876"
             landmarkName = "MsgHandler::showOtherPlayedJong(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1675,7 +1675,7 @@
             startingLineNumber = "875"
             endingLineNumber = "875"
             landmarkName = "MsgHandler::showOtherPlayedJong(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1963,7 +1963,7 @@
             startingLineNumber = "586"
             endingLineNumber = "586"
             landmarkName = "MsgHandler::registerAccountResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2169,7 +2169,7 @@
             startingLineNumber = "1440"
             endingLineNumber = "1440"
             landmarkName = "MsgHandler::friendListResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2185,7 +2185,7 @@
             startingLineNumber = "1438"
             endingLineNumber = "1438"
             landmarkName = "MsgHandler::friendListResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2533,7 +2533,7 @@
             startingLineNumber = "1697"
             endingLineNumber = "1697"
             landmarkName = "MsgHandler::playerChatNotify(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2549,7 +2549,7 @@
             startingLineNumber = "1442"
             endingLineNumber = "1442"
             landmarkName = "MsgHandler::friendListResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2629,7 +2629,7 @@
             startingLineNumber = "1447"
             endingLineNumber = "1447"
             landmarkName = "MsgHandler::friendListResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2645,7 +2645,7 @@
             startingLineNumber = "747"
             endingLineNumber = "747"
             landmarkName = "MsgHandler::readyStateResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3046,7 +3046,7 @@
             startingLineNumber = "1720"
             endingLineNumber = "1720"
             landmarkName = "MsgHandler::playerChatNotify(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3062,7 +3062,7 @@
             startingLineNumber = "1721"
             endingLineNumber = "1721"
             landmarkName = "MsgHandler::playerChatNotify(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3414,7 +3414,7 @@
             startingLineNumber = "1197"
             endingLineNumber = "1197"
             landmarkName = "MsgHandler::playerConnectAgain(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3574,7 +3574,7 @@
             startingLineNumber = "864"
             endingLineNumber = "864"
             landmarkName = "MsgHandler::replaceFlower(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3590,7 +3590,7 @@
             startingLineNumber = "1583"
             endingLineNumber = "1583"
             landmarkName = "MsgHandler::friendOpenRoomResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3622,7 +3622,7 @@
             startingLineNumber = "1662"
             endingLineNumber = "1662"
             landmarkName = "MsgHandler::friendEnterRoomResp(std::string msg)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3718,7 +3718,7 @@
             startingLineNumber = "13"
             endingLineNumber = "13"
             landmarkName = "WanJiaQunLayer::init()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
