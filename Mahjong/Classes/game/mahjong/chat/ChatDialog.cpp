@@ -212,8 +212,8 @@ void ChatDialog:: showChatInfo(ChatData data){
         }
     }
     customItem->addChild(text,1);
-    auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(20, 0, 6, 38));
-    bob->setContentSize(Size(text->getContentSize().width+20, 65));
+    auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
+    bob->setContentSize(Size(text->getContentSize().width+20, 70));
     customItem->addChild(bob);
     
     if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){

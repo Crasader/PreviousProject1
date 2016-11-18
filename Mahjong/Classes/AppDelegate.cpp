@@ -74,7 +74,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 void AppDelegate::applicationDidEnterBackground() {
     log("applicationDidEnterBackground");
     Director::getInstance()->stopAnimation();
-//    GAMEDATA::getIns
+    GAMEDATA::getInstance()->setNeedShowLayer(true);
 }
 
 // this function will be called when the app is active again
@@ -93,10 +93,9 @@ void AppDelegate::applicationWillEnterForeground() {
         CallAndroidMethod::getInstance()->queryEventResult();
         GAMEDATA::getInstance()->setIsInPay(false);
     }
-    GAMEDATA::getInstance()->NeedShowLayer(true);
 #else
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-    GAMEDATA::getInstance()->setNeedShowLayer(true);
+   
 #endif
    
 }

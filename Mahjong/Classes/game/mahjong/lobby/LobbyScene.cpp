@@ -473,7 +473,6 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(intnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(friendChatListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(imageUpdateListener);
@@ -606,10 +605,6 @@ void LobbyScene::addEventListener(){
         
     });
     
-    //好友聊天
-    friendChatListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
-    });
     
     //启动支付
     payDialogListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener("mahjong_start_pay", [=](EventCustom* event){

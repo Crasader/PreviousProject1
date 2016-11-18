@@ -50,7 +50,7 @@ void PlayerBase::onEnter(){
             text->setAnchorPoint(Point::ANCHOR_MIDDLE);
             for(auto var : msgs){
                 if(!PlayerChatManage::getInstance()->isFaceImage(var)){
-                    RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
+                    RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 24);
                     text->pushBackElement(element1);
                     text->formatText();
                 }else{
@@ -67,22 +67,24 @@ void PlayerBase::onEnter(){
             }
             text->setPosition(getVec2BySeatId(seatId));
             chatShowLayer->addChild(text,1);
-            auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 31, 38), Rect(20, 0, 6, 38));
-            bob->setContentSize(Size(text->getContentSize().width+10, 65));
+            auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
+            bob->setContentSize(Size(text->getContentSize().width+20, 70));
             bob->setPosition(getVec2BySeatId(seatId));
             chatShowLayer->addChild(bob);
             if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left
                || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::hero){
                 text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+                text->setPosition(Point(text->getPosition().x+10,text->getPosition().y+10));
                 bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             }else{
                 text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+                text->setPosition(Point(text->getPosition().x-10,text->getPosition().y+10));
                 bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
                 bob->setFlippedX(true);
             }
             schedule([=](float dt){
                 chatShowLayer->removeAllChildren();
-            },0,0,3.0,"removebob");
+            },0,0,4.0,"removebob");
             
         }
     });

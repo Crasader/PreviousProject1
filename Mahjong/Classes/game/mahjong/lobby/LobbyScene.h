@@ -42,7 +42,6 @@ private:
     EventListenerCustom* intnetListener;
     EventListenerCustom* loginReplaceListener;
     EventListenerCustom* inviteReplaceListener;
-    EventListenerCustom* friendChatListener;
     EventListenerCustom* payDialogListener;
     EventListenerCustom* payResultListener;
     EventListenerCustom* imageUpdateListener;
