@@ -86,7 +86,7 @@ void SplashScene::loginByWechat(){
 void SplashScene::showLoading(){
     Loading* loadLayer = Loading::create();
     loadLayer->setTag(1000);
-    addChild(loadLayer);
+    addChild(loadLayer,200);
 }
 
 

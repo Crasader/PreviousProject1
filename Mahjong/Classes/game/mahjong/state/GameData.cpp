@@ -21,6 +21,7 @@ void GAMEDATA::init(){
     setIsInPay(false);
     setIsInGameScene(false);
     setWaitNetwork(false);
+    setNeedShowLayer(false);
     setShowDialogType(-1);
     setHeartCount(0);
     setScore(0);

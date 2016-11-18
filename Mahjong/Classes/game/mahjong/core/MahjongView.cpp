@@ -167,6 +167,14 @@ void MahjongView::update(float dt){
             GAMEDATA::getInstance()->setWaitNetwork(true);
         }
     }
+    if(GAMEDATA::getInstance()->getNeedShowLayer()){
+        GAMEDATA::getInstance()->setNeedShowLayer(false);
+        if(GAMEDATA::getInstance()->getIsPlaying()){
+            Loading* load = Loading::create();
+            load->setTag(2009);
+            addChild(load,100);
+        }
+    }
 }
 
 
@@ -1418,7 +1426,6 @@ void MahjongView::addPlayerOffLineListener(){
 
 void MahjongView::addPlayerResumeListener(){
     playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
-//        GAMEDATA::getInstance()->setIsResume(true);
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
     });

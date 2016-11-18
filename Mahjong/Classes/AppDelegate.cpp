@@ -93,8 +93,10 @@ void AppDelegate::applicationWillEnterForeground() {
         CallAndroidMethod::getInstance()->queryEventResult();
         GAMEDATA::getInstance()->setIsInPay(false);
     }
+    GAMEDATA::getInstance()->NeedShowLayer(true);
 #else
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
+    GAMEDATA::getInstance()->setNeedShowLayer(true);
 #endif
    
 }

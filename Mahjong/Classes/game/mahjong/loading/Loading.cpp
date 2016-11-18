@@ -50,9 +50,8 @@ bool Loading::init(Point pos,bool touchAble){
 	touchListener->onTouchBegan = CC_CALLBACK_2(Loading::onTouchBegan, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener,
 		this);
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	auto bg = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
-	this->addChild(bg, 20);
+	auto bg = LayerColor::create(Color4B(0, 0, 0, 80), 1280, 720);
+	addChild(bg, 20);
 	craeteAnimate(pos);
     schedule(schedule_selector(Loading::update), 1.0f, CC_REPEAT_FOREVER, 0);
 	return true;

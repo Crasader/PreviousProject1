@@ -324,4 +324,5 @@
 #define FRIEND_IS_PLAYING_GAME "friend_is_playing_game" //好友在游戏中
 #define MSG_PLAYER_REPLACE_LOGIN "msg_player_replace_login"//在其他的机子上登录
 #define MSG_UPDATE_PLAYER_WECHAT_IMAGE "MSG_UPDATE_PLAYER_WECHAT_IMAGE"
+#define MSG_GAME_SHOW_LAYER "MSG_GAME_SHOW_LAYER"
 #endif
