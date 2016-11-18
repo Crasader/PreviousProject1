@@ -3327,38 +3327,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "500974305.400085"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-sendLoginMsg2Server:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "500974305.400085"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-sendLoginMsg2Server:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/activities/PrideLayer.hpp"
             timestampString = "497708751.534768"
             startingColumnNumber = "9223372036854775807"
@@ -3382,7 +3350,7 @@
             startingLineNumber = "181"
             endingLineNumber = "181"
             landmarkName = "UserInfo::cleanAccountRercord()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3398,7 +3366,7 @@
             startingLineNumber = "182"
             endingLineNumber = "182"
             landmarkName = "UserInfo::cleanAccountRercord()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3822,11 +3790,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "501039821.401102"
+            timestampString = "501127140.05907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "-payWeChat:PayPoint:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3838,11 +3806,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "501039821.401102"
+            timestampString = "501127140.05907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-payWeChat:PayPoint:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3854,11 +3822,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "501039821.401102"
+            timestampString = "501127140.05907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
             landmarkName = "-onResp:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3870,11 +3838,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/LoginByWechat.mm"
-            timestampString = "501039821.401102"
+            timestampString = "501127140.05907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
             landmarkName = "-onResp:"
             landmarkType = "7">
          </BreakpointContent>

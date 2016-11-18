@@ -103,18 +103,19 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
                 NSObject *sex = [results objectForKey:@"sex"];
                 NSString *sexStr = [NSString stringWithFormat:@"%@", sex];
                 NSObject *nickname = [results objectForKey:@"nickname"];
-                NSString *nicknameStr = [NSString stringWithFormat:@"%@", sex];
-                NSString *man = @"0";
-                if(sexStr == man){
-                    UserData::getInstance()->setGender(1);
-                }else{
+                NSString *nicknameStr = [NSString stringWithFormat:@"%@", nickname];
+                NSString *woman = @"0";
+                NSLog(@"wechat sex log = %@",sexStr);
+                if([sexStr isEqualToString:woman]){
                     UserData::getInstance()->setGender(0);
+                }else{
+                    UserData::getInstance()->setGender(1);
                 }
                 UserData::getInstance()->setWxOpenId(std::string([openidstr UTF8String]));
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
                 UserData::getInstance()->setGender(atoi(std::string([sexStr UTF8String]).c_str()));
-                UserData::getInstance()->setNickName(std::string([nickname UTF8String]));
-                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]),std::string([sexStr UTF8String]),std::string([nickname UTF8String]));
+                UserData::getInstance()->setNickName(std::string([nicknameStr UTF8String]));
+                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]),std::string([sexStr UTF8String]),std::string([nicknameStr UTF8String]));
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");
                 [self sendAuthRequestScope];
