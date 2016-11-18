@@ -17,7 +17,6 @@ void GAMEDATA::init(){
 	setIsRecover(false);
 	setNeedAddPlayer(false);
     setContinueAgain(false);
-    setIsResume(false);
     setIsGotoLobby(false);
     setIsInPay(false);
     setIsInGameScene(false);

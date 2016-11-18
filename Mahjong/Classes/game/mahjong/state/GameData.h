@@ -91,7 +91,7 @@ public:
     CC_SYNTHESIZE(bool, isRecover, IsRecover);
     CC_SYNTHESIZE(bool, needAddPlayer,NeedAddPlayer);
     CC_SYNTHESIZE(bool, isLiuJu, IsLiuJu);
-    CC_SYNTHESIZE(bool, isResume, IsResume);
+//    CC_SYNTHESIZE(bool, isResume, IsResume);
     CC_SYNTHESIZE(bool, isGotoLobby, IsGotoLobby);
     CC_SYNTHESIZE(bool, isInPay, IsInPay);
     CC_SYNTHESIZE(bool, isInGameScene, IsInGameScene);

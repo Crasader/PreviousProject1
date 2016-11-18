@@ -613,45 +613,27 @@ void MahjongView::addOthersReadyListener(){
 
 void MahjongView::addCoustomReplaceFlower() {
     replaceListener = EventListenerCustom::create(MSG_GAME_REPLACE_FLOWER, [=](EventCustom* event){
-        SocketDataManage::getInstance()->pauseMsg();
-        if(!GAMEDATA::getInstance()->getIsResume()){
-            ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
-            ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
-            for (int i = 0; i < vec.times.size(); i++){
-                int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
-                if (seatId == ClientSeatId::hero){
-                    playerHero->setReplacePoker(vec.times.at(i));
-                    playerHero->replaceFlower();
-                }
-                else if (seatId == ClientSeatId::left){
-                    playerLeft->setReplacePoker(vec.times.at(i));
-                    playerLeft->replaceHandHua(leftplayed);
-                }
-                else if (seatId == ClientSeatId::right){
-                    playerRight->setReplacePoker(vec.times.at(i));
-                    playerRight->replaceHandHua(rightplayed);
-                }
-                else if (seatId == ClientSeatId::opposite){
-                    playerOpposite->setReplacePoker(vec.times.at(i));
-                    playerOpposite->replaceHandHua(oppositeplayed);
-                }
+        ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
+        ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
+        for (int i = 0; i < vec.times.size(); i++){
+            int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
+            if (seatId == ClientSeatId::hero){
+                playerHero->setReplacePoker(vec.times.at(i));
+                playerHero->replaceFlower();
             }
-        }
-        int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
-        SocketDataManage::getInstance()->resumeMsg();
-        if (bankId == ClientSeatId::hero){
-            playerHero->startTimeClockAnim();
-        }
-        else if (bankId == ClientSeatId::left){
-            playerLeft->startTimeClockAnim();
-        }
-        else if (bankId == ClientSeatId::right){
-            playerRight->startTimeClockAnim();
-        }
-        else if (bankId == ClientSeatId::opposite){
-            playerOpposite->startTimeClockAnim();
-        }
-    });
+            else if (seatId == ClientSeatId::left){
+                playerLeft->setReplacePoker(vec.times.at(i));
+                playerLeft->replaceHandHua(leftplayed);
+            }
+            else if (seatId == ClientSeatId::right){
+                playerRight->setReplacePoker(vec.times.at(i));
+                playerRight->replaceHandHua(rightplayed);
+            }
+            else if (seatId == ClientSeatId::opposite){
+                playerOpposite->setReplacePoker(vec.times.at(i));
+                playerOpposite->replaceHandHua(oppositeplayed);
+            }
+        }    });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(replaceListener, 1);
 }
 
@@ -773,7 +755,6 @@ void MahjongView::addHeroCpgListener(){
 }
 
 void MahjongView::addGameResultListener(){
-    GAMEDATA::getInstance()->setIsResume(false);
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
         string flag = static_cast<char*>(event->getUserData());
         if(flag == "1"){
@@ -1437,7 +1418,7 @@ void MahjongView::addPlayerOffLineListener(){
 
 void MahjongView::addPlayerResumeListener(){
     playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setIsResume(true);
+//        GAMEDATA::getInstance()->setIsResume(true);
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
     });
