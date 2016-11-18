@@ -440,6 +440,7 @@ struct PlayerResumeData{
     std::string angang;
     std::string outhand;
     std::string hand;
+    std::string lastpoker;
     vector<PlayerChiData> chiData;
     vector<PlayerPengData> pengData;
     vector<PlayerGangData> gangData;

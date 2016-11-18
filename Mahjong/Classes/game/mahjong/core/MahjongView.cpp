@@ -495,7 +495,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerHero->setPlayerTingState(data.status == 1?true:false);
             addChild(playerHero, 2);
             playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerHero->recoverHand(data.hand);
+            playerHero->recoverHand(data.hand,"");
             playerHero->recoverPlayed(data.outhand);
             playerHero->recoverHua(data.hua);
         }
@@ -550,11 +550,16 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
 void MahjongView::resumePlayerUI(PlayerResumeData data,int type){
     if (type == ClientSeatId::hero){
         playerHero->setIsAllowPlay(false);
+        GameResumeData  redata =  GAMEDATA::getInstance()->getGameResumeData();
         playerHero->setPlayerTingState(data.status == 1?true:false);
         playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-        playerHero->recoverHand(data.hand);
         playerHero->recoverPlayed(data.outhand);
         playerHero->recoverHua(data.hua);
+        if(redata.turn == GAMEDATA::getInstance()->getHeroSeatId()){
+            playerHero->recoverHand(data.hand,data.lastpoker);
+        }else{
+            playerHero->recoverHand(data.hand,"");
+        }
     }
     else if (type == ClientSeatId::left){
         playerLeft->setPlayerTingState(data.status == 1?true:false);
@@ -1484,10 +1489,8 @@ void MahjongView::addPlayerResumeListener(){
         showGamePaidui(atoi(data.rest.c_str()));
         GAMEDATA::getInstance()->setIsPlaying(true);
         int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
-        if(playturn == ClientSeatId::hero){
-            playerHero->startTimeClockAnim();
-            playerHero->setIsAllowPlay(true);
-        }else if(playturn == ClientSeatId::left){
+        
+        if(playturn == ClientSeatId::left){
             playerLeft->startTimeClockAnim();
         }else if(playturn == ClientSeatId::opposite){
             playerOpposite->startTimeClockAnim();

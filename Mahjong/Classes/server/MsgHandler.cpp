@@ -2507,6 +2507,7 @@ void MsgHandler::gameResumeResp(std::string msg){
         const rapidjson::Value &turn = _mDoc["turn"];
         resume.turn = turn.GetInt();
     }
+
     const rapidjson::Value &all = _mDoc["all"];
     for(int i=0;i<all.Capacity();i++){
         PlayerResumeData data;
@@ -2516,6 +2517,10 @@ void MsgHandler::gameResumeResp(std::string msg){
         data.seatId =  temp["seatId"].GetInt();
         data.tru = temp["tru"].GetInt();
         data.isOnline = temp["isonline"].GetInt();
+        if(_mDoc.HasMember("lastpoker")){
+            const rapidjson::Value &lastpoker = _mDoc["lastpoker"];
+            data.lastpoker = lastpoker.GetString();
+        }
         if(temp.HasMember("chi")){
             const rapidjson::Value &chi = temp["chi"];
             for(int j = 0; j < chi.Capacity(); ++j){

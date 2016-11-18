@@ -47,7 +47,7 @@ public:
     void recoverHua(int hua);
     void recoverPlayed(std::string played);
     void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
-    void recoverHand(std::string hand);
+    void recoverHand(std::string hand,std::string lastpoker);
     void updateHandJongs(std::string jongs);
     
     Vector<Jong*> getSelfHandJongs();

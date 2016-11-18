@@ -74,6 +74,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 void AppDelegate::applicationDidEnterBackground() {
     log("applicationDidEnterBackground");
     Director::getInstance()->stopAnimation();
+//    GAMEDATA::getIns
 }
 
 // this function will be called when the app is active again

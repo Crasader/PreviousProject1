@@ -670,17 +670,17 @@ void PlayerHero::removePlayedIcon(){
 
 void PlayerHero::doEventTimeOverUi(){
     ((MahjongView*)getParent())->hideTingGangControllPad();
-//    setIsAllowPlay(false);
+    //    setIsAllowPlay(false);
 }
 
 void PlayerHero::doEventTimeOver(int type){
     //type 负值正常打牌超时
     if (type < 0){
-//        setIsAllowPlay(false);
-//        auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
-//            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
-//        }), NULL);
-//        runAction(sequence);
+        //        setIsAllowPlay(false);
+        //        auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
+        //            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
+        //        }), NULL);
+        //        runAction(sequence);
     }
     //type 吃碰杠倒计时
     else if (type == 1){
@@ -1180,18 +1180,25 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
     }
 }
 
-void PlayerHero::recoverHand(std::string hand){
+void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
     
     for(auto var:playerHandJongs){
         var->removeFromParent();
     }
     playerHandJongs.clear();
     vector<std::string>  hands = StringUtil::split(hand, ",");
+    if(lastpoker !=""){
+        for(int a=0;a<hands.size();a++){
+            if(lastpoker == hands.at(a)){
+                swap(hands.at(a), hands.at(hands.size()-1));
+            }
+        }
+    }
     for (int i = 0; i < hands.size(); i++)
     {
         Jong* jong = Jong::create();
         jong->showJong(herohand, atoi(hands.at(i).c_str()));
-        if((GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()||GAMEDATA::getInstance()->getGameResumeData().turn ==GAMEDATA::getInstance()->getHeroSeatId())&&i==hands.size()-1){
+        if((GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()||GAMEDATA::getInstance()->getGameResumeData().turn ==GAMEDATA::getInstance()->getHeroSeatId())&&getHandPosX() + JONG_WIDTH * i>1120){
             jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i+8, JONG_POS_Y));
         }else{
             jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i, JONG_POS_Y));
@@ -1200,4 +1207,8 @@ void PlayerHero::recoverHand(std::string hand){
         playerHandJongs.pushBack(jong);
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
+    if(lastpoker !=""){
+        setIsAllowPlay(true);
+        startTimeClockAnim();
+    }
 }
