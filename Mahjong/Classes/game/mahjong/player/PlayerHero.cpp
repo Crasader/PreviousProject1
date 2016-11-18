@@ -1198,7 +1198,7 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
     {
         Jong* jong = Jong::create();
         jong->showJong(herohand, atoi(hands.at(i).c_str()));
-        if((GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()||GAMEDATA::getInstance()->getGameResumeData().turn ==GAMEDATA::getInstance()->getHeroSeatId())&&getHandPosX() + JONG_WIDTH * i>1120){
+        if(GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()&&getHandPosX() + JONG_WIDTH * i>1120){
             jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i+8, JONG_POS_Y));
         }else{
             jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i, JONG_POS_Y));

@@ -495,7 +495,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerHero->setPlayerTingState(data.status == 1?true:false);
             addChild(playerHero, 2);
             playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerHero->recoverHand(data.hand,"");
+            playerHero->recoverHand(data.hand,data.lastpoker);
             playerHero->recoverPlayed(data.outhand);
             playerHero->recoverHua(data.hua);
         }
@@ -547,42 +547,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
     }
 }
 
-void MahjongView::resumePlayerUI(PlayerResumeData data,int type){
-    if (type == ClientSeatId::hero){
-        playerHero->setIsAllowPlay(false);
-        GameResumeData  redata =  GAMEDATA::getInstance()->getGameResumeData();
-        playerHero->setPlayerTingState(data.status == 1?true:false);
-        playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-        playerHero->recoverPlayed(data.outhand);
-        playerHero->recoverHua(data.hua);
-        if(redata.turn == GAMEDATA::getInstance()->getHeroSeatId()){
-            playerHero->recoverHand(data.hand,data.lastpoker);
-        }else{
-            playerHero->recoverHand(data.hand,"");
-        }
-    }
-    else if (type == ClientSeatId::left){
-        playerLeft->setPlayerTingState(data.status == 1?true:false);
-        playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-        playerLeft->recoverHand(data.hand);
-        playerLeft->recoverPlayed(data.outhand);
-        playerLeft->recoverHua(data.hua);
-    }
-    else if (type == ClientSeatId::right){
-        playerRight->setPlayerTingState(data.status == 1?true:false);
-        playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-        playerRight->recoverHand(data.hand);
-        playerRight->recoverPlayed(data.outhand);
-        playerRight->recoverHua(data.hua);
-    }
-    else if (type == ClientSeatId::opposite){
-        playerOpposite->setPlayerTingState(data.status == 1?true:false);
-        playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-        playerOpposite->recoverHand(data.hand);
-        playerOpposite->recoverPlayed(data.outhand);
-        playerOpposite->recoverHua(data.hua);
-    }
-}
+
 
 //显示玩家的方向和庄
 void MahjongView::showOriention(){
@@ -1472,31 +1437,9 @@ void MahjongView::addPlayerOffLineListener(){
 
 void MahjongView::addPlayerResumeListener(){
     playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
-        string buf = static_cast<char*>(event->getUserData());
-        GameResumeData  data =  GAMEDATA::getInstance()->getGameResumeData();
         GAMEDATA::getInstance()->setIsResume(true);
-        //重新绘制手牌和花
-        for (int i = 0; i < data.players.size(); i++)
-        {
-            PlayerResumeData player = data.players.at(i);
-            resumePlayerUI(player, SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId));
-        }
-        //设置牌数
-        if(NULL != getChildByTag(1000)){
-            getChildByTag(1000)->removeFromParent();
-        }
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
-        showGamePaidui(atoi(data.rest.c_str()));
-        GAMEDATA::getInstance()->setIsPlaying(true);
-        int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
-        
-        if(playturn == ClientSeatId::left){
-            playerLeft->startTimeClockAnim();
-        }else if(playturn == ClientSeatId::opposite){
-            playerOpposite->startTimeClockAnim();
-        }else if(playturn == ClientSeatId::right){
-            playerRight->startTimeClockAnim();
-        }
+        GAMEDATA::getInstance()->setIsRecover(true);
+        Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
 }

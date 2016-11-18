@@ -65,7 +65,7 @@ public:
     CC_SYNTHESIZE(MahjongRoom, mahjongRoomType, MahjongRoomType);
     CC_SYNTHESIZE(MahjongState, mahjongState, MahjongState);
     CC_SYNTHESIZE(LeChangeRecord, leChangeRecord, LeChangeRecord);
-    CC_SYNTHESIZE(GameResumeData, gameResumeData, GameResumeData);
+//    CC_SYNTHESIZE(GameResumeData, gameResumeData, GameResumeData);
     CC_SYNTHESIZE(InviteRespData, inviteRespData, InviteRespData);
     CC_SYNTHESIZE(ActivityRankList, activityRankList, ActivityRankList);
     CC_SYNTHESIZE(ActivityTime, activityTime, ActivityTime);

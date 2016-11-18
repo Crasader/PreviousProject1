@@ -68,7 +68,6 @@ private:
     void showOriention();
     void showGamePaidui(int num);
     void showHuPaiXing(std::string paixing);
-    void resumePlayerUI(PlayerResumeData data,int type);
 	PlayerBase* getPlayerBySeatId(int sid);
 
 
