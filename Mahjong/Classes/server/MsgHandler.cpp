@@ -2371,6 +2371,7 @@ void MsgHandler::lequanChangeListResp(std::string msg){
         change.propPrice = temp["goodsPrice"].GetString();
         change.propName = temp["goodsName"].GetString();
         change.propType = temp["goodsType"].GetString();
+        change.url = temp["url"].GetString();
         data.list.push_back(change);
     }
     GAMEDATA::getInstance()->setLequanChangeList(data);
