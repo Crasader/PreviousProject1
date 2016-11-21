@@ -609,12 +609,11 @@ void Audio::playSoundTiao1(int gender){
 }
 
 void Audio::playSoundTiao2(int gender){
-    int soundId = rand()%2+1;
     if(gender==1){
-        std::string soundName = StringUtils::format("audio/male/2tiao_%d.wav",soundId);
+        std::string soundName = StringUtils::format("audio/male/2tiao_1.wav");
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }else{
-        std::string soundName = StringUtils::format("audio/famale/2tiao_%d.wav",soundId);
+        std::string soundName = StringUtils::format("audio/famale/2tiao_1.wav");
         AudioEngine::play2d(soundName.c_str(),false,UserData::getInstance()->getSoundValue());
     }
 }

@@ -47,16 +47,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     Size visibleSize = Director::getInstance()->getVisibleSize();
-    if (visibleSize.width / visibleSize.height > 1280.0 / 720.0){
-        glview->setDesignResolutionSize(1280, 720, ResolutionPolicy::EXACT_FIT);
-    }
-    else{
-        glview->setDesignResolutionSize(1280, 720, ResolutionPolicy::EXACT_FIT);
-    }
+    glview->setDesignResolutionSize(1280, 720, ResolutionPolicy::SHOW_ALL);
 #endif
     
     // turn on display FPS
-//    director->setDisplayStats(true);
+    //    director->setDisplayStats(true);
     
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
@@ -86,7 +81,7 @@ void AppDelegate::applicationWillEnterForeground() {
         resumeIndex++;
     }else{
         if("" != CommandManage::getInstance()->getOnResumeCommand()){
-          NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
         }
     }
     if(GAMEDATA::getInstance()->getIsInPay()){
@@ -95,7 +90,7 @@ void AppDelegate::applicationWillEnterForeground() {
     }
 #else
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-   
+    
 #endif
-   
+    
 }

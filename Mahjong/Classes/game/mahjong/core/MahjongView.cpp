@@ -290,7 +290,7 @@ void MahjongView::showTingGangControllPad(){
     controllPad->setVisible(true);
     playerHero->setIsAllowTouch(false);
     playerHero->setIsAllowPlay(true);
-    playerHero->startTimeClockAnim(5, 2);
+    playerHero->startTimeClockAnim(8, 2);
 }
 
 void MahjongView::hideTingGangControllPad(){
@@ -337,7 +337,7 @@ void MahjongView::showHeroChiUi(){
             choice->setPosition(0, 0);
             choiceMenu->addChild(choice);
         }
-        playerHero->startTimeClockAnim(5, 1);
+        playerHero->startTimeClockAnim(8, 1);
     }
     else{
         //choiceMenu = NULL;
@@ -756,7 +756,7 @@ void MahjongView::addHeroCpgListener(){
     
     playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
         drawCpgControllPad();
-        playerHero->startTimeClockAnim(5, 1);
+        playerHero->startTimeClockAnim(8, 1);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
     
@@ -1231,7 +1231,7 @@ void MahjongView::addHeroTingNotifyListener(){
     tingNotifyListener = EventListenerCustom::create(MSG_HERO_TING_GANG, [=](EventCustom* event){
         if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
             showTingGangControllPad();
-            playerHero->startTimeClockAnim(5, 2);
+            playerHero->startTimeClockAnim(8, 2);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingNotifyListener, 1);
