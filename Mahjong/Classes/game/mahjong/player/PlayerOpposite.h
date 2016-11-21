@@ -7,12 +7,12 @@ USING_NS_CC;
 class PlayerOpposite : public PlayerBase{
 
 public:
-	virtual bool init();
-	void drawHandJong();
-	void drawPlayedJong(int ctype);
-	void removeLastJong();
+	virtual bool init() override;
+	void removeLastJong() override;
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;
+    void drawHandJong();
+    void drawPlayedJong(int ctype);
 	void drawOppositePlayerTurn();
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase);

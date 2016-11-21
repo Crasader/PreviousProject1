@@ -7,7 +7,7 @@ USING_NS_CC;
 class PlayerLeft : public PlayerBase{
 
 public:
-	virtual bool init();
+	virtual bool init() override;
     void drawHandJong();
     void drawPlayedJong(int ctype);
 	void removeLastJong() override;

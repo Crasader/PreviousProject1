@@ -43,7 +43,8 @@ Rect Jong::getJongBoundingBox(){
 
 
 float Jong::getScaleByType(int bType){
-    if (bType == leftplayed || bType == oppositeplayed || bType == rightplayed || bType == heroplayed){
+    if (bType == leftplayed || bType == oppositeplayed || bType == rightplayed
+        || bType == heroplayed || bType == oppositeangang){
         return 0.4f;
     }
     else if (bType == herocpg){
@@ -144,6 +145,9 @@ std::string Jong::getBackgroundImage(int btype){
             break;
         case oppositedeal:
             imageName = "jong/middle_6.png";
+            break;
+        case oppositeangang:
+            imageName = "jong/small_6.png";
             break;
         case lefthand:
             imageName = "jong/middle_1.png";

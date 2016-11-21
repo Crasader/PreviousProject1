@@ -91,7 +91,7 @@ struct PlayerCpgtData
 {
     int seatId;
     int sId;
-    int flag;
+    int flag;//0明杠，1暗杠，2碰杠
     std::string ting;
     std::string poker;
     std::vector<std::string> chi;

@@ -29,6 +29,7 @@ enum JongViewType{
     oppositehand,
     oppositeplayed,
     oppositedeal,
+    oppositeangang,
     
     playedshow,
     herocpg2

@@ -166,25 +166,21 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
 
 void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
-    if (data.flag == 2){
+    if(data.flag == 1){
+        for (int j = 0; j < 4; j++){
+            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
+        }
+    }else if (data.flag == 2){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
         playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
         playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
     }
     else{
-        if(data.flag == 0){
-            for (int j = 0; j < 3; j++)
-            {
-                playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
-                playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
-            }
-        }else if(data.flag == 1){
-            for (int j = 0; j < 4; j++)
-            {
-                playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
-                playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
-            }
-
+        for (int j = 0; j < 3; j++)
+        {
+            playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
         }
     }
     std::vector<std::string> gang = StringUtil::split(data.gang, ",");
@@ -212,12 +208,13 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
         }
         for (int i = 0; i < gang.size(); i++){
             Jong* jong = Jong::create();
-            jong->setScale(0.8f);
             if (data.flag == 1){
                 jong->showJong(leftdeal, -1);
+                jong->setScale(0.7f);
             }
             else{
                 jong->showJong(leftplayed, atoi(gang.at(i).c_str()));
+                jong->setScale(0.8f);
             }
             if (i == 3){
                 jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x + 2, getCpgShowPostion(playerCpgRecords.size()).y - 16);
@@ -228,7 +225,7 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             this->addChild(jong, 10);
             record.pokersRecord.pushBack(jong);
         }
-        this->playerCpgRecords.push_back(record);
+        playerCpgRecords.push_back(record);
     }
 }
 

@@ -49,7 +49,9 @@ void GuiLayer::initView(){
                                             CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
     auto settingButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
                                                CC_CALLBACK_0(GuiLayer::settingButtonClick, this));
-    Menu* myMenu = Menu::create(chatButton, settingButton, NULL);
+    auto testButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
+                                            CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
+    Menu* myMenu = Menu::create(chatButton, settingButton,testButton, NULL);
     myMenu->setPosition(1225,300);
     myMenu->alignItemsVerticallyWithPadding(10);
     this->addChild(myMenu);
@@ -130,28 +132,37 @@ void GuiLayer::initView(){
 
 //测试方法
 void GuiLayer::soundButtonClick(){
-    vector<GameResultData> gameResults;
-    for (int i = 0; i < 4; i++){
-        GameResultData resultData;
-        resultData.result = 3;
-        resultData.gold = 100;
-        resultData.diamond = 100;
-        resultData.jifen =10;
-        resultData.lequan = 10;
-        resultData.golddelta = 200000;
-        resultData.diamonddelta =2;
-        resultData.jifendelta = 2;
-        resultData.lequandelta = 2000;
-        resultData.seatId = i+1;
-        resultData.hua = 3;
-        resultData.showPoker = "1,2,3,4,5,5,5,5";
-        resultData.huType = "1";
-        resultData.nickName = "abc";
-        gameResults.push_back(resultData);
-    }
-    GAMEDATA::getInstance()->setGameResults(gameResults);
-    EventCustom event(MSG_GAME_RESULT);
+    PlayerCpgtData cpg;
+    cpg.flag = 0;
+    cpg.poker = 2;
+    cpg.seatId = 4;
+    cpg.gang = "1,1,1";
+    cpg.sId = 2;
+    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
+    EventCustom event(MSG_OTHER_PLAYER_GANG);
     _eventDispatcher->dispatchEvent(&event);
+    //    vector<GameResultData> gameResults;
+    //    for (int i = 0; i < 4; i++){
+    //        GameResultData resultData;
+    //        resultData.result = 3;
+    //        resultData.gold = 100;
+    //        resultData.diamond = 100;
+    //        resultData.jifen =10;
+    //        resultData.lequan = 10;
+    //        resultData.golddelta = 200000;
+    //        resultData.diamonddelta =2;
+    //        resultData.jifendelta = 2;
+    //        resultData.lequandelta = 2000;
+    //        resultData.seatId = i+1;
+    //        resultData.hua = 3;
+    //        resultData.showPoker = "1,2,3,4,5,5,5,5";
+    //        resultData.huType = "1";
+    //        resultData.nickName = "abc";
+    //        gameResults.push_back(resultData);
+    //    }
+    //    GAMEDATA::getInstance()->setGameResults(gameResults);
+    //    EventCustom event(MSG_GAME_RESULT);
+    //    _eventDispatcher->dispatchEvent(&event);
 }
 
 void GuiLayer::chatButtonClick(){

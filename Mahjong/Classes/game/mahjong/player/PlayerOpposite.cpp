@@ -23,7 +23,7 @@ void PlayerOpposite::drawHandJong(){
 
 
 void PlayerOpposite::showCurrentPlayedJongIcon(bool isShow){
-    biaoji->setPosition(getPlayedJongPos(playerPlayedJongs.size() - 1).x, getPlayedJongPos(playerPlayedJongs.size() - 1).y + 20);
+    biaoji->setPosition(getPlayedJongPos(playerPlayedJongs.size() - 1).x,getPlayedJongPos(playerPlayedJongs.size() - 1).y + 20);
     biaoji->setVisible(isShow);
 }
 
@@ -36,10 +36,10 @@ void PlayerOpposite::drawOppositePlayerTurn(){
     Jong* jong = Jong::create();
     jong->setTag(111);
     jong->showJong(oppositehand, -1);
-    jong->setPosition(Point(OPPOSITE_POS_X - 40, OPPOSITE_POS_Y + 20));
-    this->addChild(jong);
+    jong->setPosition(Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y + 20));
+    addChild(jong);
     playerHandJongs.pushBack(jong);
-    MoveTo* move = MoveTo::create(0.2f, Point(OPPOSITE_POS_X - 40, OPPOSITE_POS_Y));
+    MoveTo* move = MoveTo::create(0.2f, Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y));
     ActionInterval* dou = EaseBackInOut::create(move);
     jong->runAction(dou);
 }
@@ -48,7 +48,7 @@ void PlayerOpposite::drawPlayedJong(int ctype){
     Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(oppositeplayed, ctype);
-    lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 31, OPPOSITE_POS_Y));
+    lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y));
     playerPlayedJongs.pushBack(lastPlayedJong);
     if (playerPlayedJongs.size() / 10 == 0){
         addChild(lastPlayedJong, 3);
@@ -59,12 +59,12 @@ void PlayerOpposite::drawPlayedJong(int ctype){
     else{
         addChild(lastPlayedJong, 1);
     }
-    Point startPoint = Point(OPPOSITE_POS_X - 31, OPPOSITE_POS_Y);
+    Point startPoint = Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y);
     Point endPoint = getPlayedJongPos(playerPlayedJongs.size() - 1);
     ccBezierConfig bezier;
     bezier.controlPoint_1 = startPoint;
     bezier.controlPoint_2 = Point(startPoint.x + (endPoint.x - startPoint.x) * 0.5,
-                                  startPoint.y + (endPoint.y - startPoint.x)*0.5);
+                                  startPoint.y + (endPoint.y - startPoint.y)*0.5);
     bezier.endPosition = endPoint;
     BezierTo *actionMove = BezierTo::create(0.5f, bezier);
     CallFunc* callback = CallFunc::create([=](){
@@ -74,7 +74,8 @@ void PlayerOpposite::drawPlayedJong(int ctype){
     Sequence* sequence = Sequence::create(Spawn::create(actionMove,CallFunc::create([=](){
         if(NULL!=getChildByTag(111)){
             playerHandJongs.eraseObject((Jong*)getChildByTag(111));
-            getChildByTag(111)->removeFromParent();}
+            getChildByTag(111)->removeFromParent();
+        }
         if(getStateCpg()){
             playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
@@ -163,16 +164,20 @@ void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)
 
 void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
-    if (data.flag == 2){
+    if(data.flag == 1){
+        for (int j = 0; j < 4; j++){
+            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
+        }
+    }else if (data.flag == 2){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
         playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
         playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
     }
     else{
-        int size = playerHandJongs.size();
-        for (int j = 1; j <= 3; j++){
-            playerHandJongs.at(size - j)->removeFromParent();
-            playerHandJongs.eraseObject(playerHandJongs.at(size - j));
+        for (int j = 0; j < 3; j++){
+            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
         }
     }
     std::vector<std::string> gang = StringUtil::split(data.gang, ",");
@@ -200,19 +205,19 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
         for (int i = 0; i < gang.size(); i++){
             Jong* jong = Jong::create();
             if (data.flag == 1){
-                jong->showJong(oppositedeal, -1);
+                jong->showJong(oppositeangang, -1);
             }
             else{
                 jong->showJong(oppositeplayed, atoi(gang.at(i).c_str()));
             }
             if (i == 3){
-                jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - 35, getCpgShowPostion(playerCpgRecords.size()).y - 2));
-                this->addChild(jong, 10);
+                jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - 35, getCpgShowPostion(playerCpgRecords.size()).y - 5));
+                addChild(jong, 10);
             }
             else{
                 jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - 35 * i, getCpgShowPostion(playerCpgRecords.size()).y));
                 record.pokersRecord.pushBack(jong);
-                this->addChild(jong, 5);
+                addChild(jong, 5);
             }
         }
         playerCpgRecords.push_back(record);
@@ -325,7 +330,7 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
             record.type = CpgType::gang;
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
-                jong->showJong(oppositedeal, -1);
+                jong->showJong(oppositeangang, -1);
                 if (i == 3){
                     jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - 35, getCpgShowPostion(playerCpgRecords.size()).y - 2));
                     this->addChild(jong, 10);

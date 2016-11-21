@@ -163,7 +163,12 @@ void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
 
 void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
-    if (data.flag == 2){
+    if(data.flag == 1){
+        for (int j = 0; j < 4; j++){
+            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
+        }
+    }else if (data.flag == 2){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
         playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
         playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
@@ -200,6 +205,7 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             Jong* jong = Jong::create();
             if (data.flag == 1){
                 jong->showJong(rightdeal, -1);
+                jong->setScale(0.86f);
             }
             else{
                 jong->showJong(rightplayed, atoi(gang.at(i).c_str()));
@@ -305,6 +311,7 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
                 jong->showJong(rightdeal, -1);
+                jong->setScale(0.86f);
                 if (i == 3){
                     record.pokersRecord.pushBack(jong);
                     jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x-2, getCpgShowPostion(playerCpgRecords.size()).y +  28));

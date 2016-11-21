@@ -8,13 +8,13 @@ class PlayerRight : public PlayerBase{
 
 public:
 
-	virtual bool init();
+	virtual bool init() override;
 	void drawHandJong();
 	void drawPlayedJong(int ctype);
 	void drawRightPlayerTurn();
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;
-	void removeLastJong();
+	void removeLastJong() override;
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
