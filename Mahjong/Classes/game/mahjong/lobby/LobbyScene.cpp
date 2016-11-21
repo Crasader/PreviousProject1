@@ -127,7 +127,13 @@ void LobbyScene::drawSceneTop(){
     nickName->setPosition(125, 628);
     nickName->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickName->setAlignment(TextHAlignment::LEFT);
-    this->addChild(nickName);
+    addChild(nickName);
+    
+    auto markid = Label::createWithSystemFont(StringUtils::format("ID号:%s",UserData::getInstance()->getMarkId().c_str()), "arial", 20);
+    markid->setPosition(225, 628);
+    markid->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    markid->setAlignment(TextHAlignment::LEFT);
+    addChild(markid);
     
     //gold
     auto gold_bg = Sprite::create("mjlobby/room_info_bg.png");

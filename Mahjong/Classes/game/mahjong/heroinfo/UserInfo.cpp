@@ -48,14 +48,14 @@ void UserInfo::showUserInfo(){
     myMenu->setPosition(415,308);
     addChild(myMenu);
     
-    auto input_bg_1 = Scale9Sprite::create("common/input_box_bg.png");
+    auto input_bg_1 = ui::Scale9Sprite::create("common/input_box_bg.png");
     input_bg_1->setContentSize(Size(430,81));
     input_bg_1->setPosition(760, 500);
     addChild(input_bg_1);
     auto zhanghao = Sprite::create("playerinfo/account_text.png");
     zhanghao->setPosition(620,500);
     addChild(zhanghao);
-    Label* accountLabel = Label::create(UserData::getInstance()->getMarkId(), "arial", 30);
+    Label* accountLabel = Label::createWithSystemFont(UserData::getInstance()->getMarkId(), "arial", 30);
     accountLabel->setColor(Color3B(93,172,221));
     accountLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     accountLabel->setPosition(680, 500);
@@ -65,28 +65,20 @@ void UserInfo::showUserInfo(){
     addChild(account_icon);
     
     
-    auto input_bg_2 = Scale9Sprite::create("common/input_box_bg.png");
+    auto input_bg_2 = ui::Scale9Sprite::create("common/input_box_bg.png");
     input_bg_2->setContentSize(Size(430, 81));
     input_bg_2->setPosition(760, 405);
     addChild(input_bg_2);
     auto nicheng = Sprite::create("playerinfo/nickname_text.png");
     nicheng->setPosition(620, 405);
     addChild(nicheng);
-    nickNameLabel = Label::create(UserData::getInstance()->getNickName(), "arial", 30);
+    nickNameLabel = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 30);
     nickNameLabel->setColor(Color3B(93, 172, 221));
     nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickNameLabel->setPosition(680, 405);
     addChild(nickNameLabel);
-    auto editBtn1 = MenuItemImage::create("playerinfo/edit_btn_1.png", "playerinfo/edit_btn_2.png",
-                                          CC_CALLBACK_1(UserInfo::menuBtnClick,this));
-    editBtn1->setTag(0);
-    changeNickName = Menu::create(editBtn1, NULL);
-    changeNickName->setPosition(935, 405);
-    addChild(changeNickName);
-    if (UserData::getInstance()->isChangeName()){
-        changeNickName->setVisible(false);
-    }
-    auto input_bg_3 = Scale9Sprite::create("common/input_box_bg.png");
+
+    auto input_bg_3 = ui::Scale9Sprite::create("common/input_box_bg.png");
     input_bg_3->setContentSize(Size(430, 81));
     input_bg_3->setPosition(760, 315);
     addChild(input_bg_3);
@@ -107,7 +99,7 @@ void UserInfo::showUserInfo(){
     fangka_icon->setPosition(345, 225);
     addChild(fangka_icon);
     auto fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),
-                                         "playerinfo/player_info_num.png", 13, 19, '0');
+                                        "playerinfo/player_info_num.png", 13, 19, '0');
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     fangkaNum->setPosition(370, 230);
     addChild(fangkaNum);
@@ -173,7 +165,7 @@ void UserInfo::updateGender(){
 }
 
 void UserInfo::updateHeadImage(){
-   ((HeadImage*)getChildByTag(1000))->updateImage();
+    ((HeadImage*)getChildByTag(1000))->updateImage();
 }
 
 void UserInfo::cleanAccountRercord(){
