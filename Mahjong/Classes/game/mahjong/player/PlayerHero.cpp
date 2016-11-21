@@ -17,6 +17,7 @@
 #include "payment/android/CallAndroidMethod.h"
 #endif
 
+
 bool PlayerHero::init() {
     if (!PlayerBase::init()) {
         return false;
@@ -35,6 +36,9 @@ void PlayerHero::initData() {
     playedIcon = Sprite::create("gameview/arrows.png");
     playedIcon->setVisible(false);
     addChild(playedIcon, 666);
+    jongSeclectIcon = Sprite::create("gameview/poker_select.png");
+    jongSeclectIcon->setVisible(false);
+    addChild(jongSeclectIcon,10);
     setCpgPostionX(JONG_POS_START_X);
 }
 
@@ -66,11 +70,23 @@ void PlayerHero::setIsReady(bool b){
     }
 }
 
+void PlayerHero::showJongSelectIcon(Point pos){
+    jongSeclectIcon->setVisible(true);
+    jongSeclectIcon->setPosition(pos);
+}
+
+void PlayerHero::hideJongSelectIcon(){
+    jongSeclectIcon->setVisible(false);
+}
+
 bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
     if (!this->getIsAllowTouch() || GAMEDATA::getInstance()->getIsTingState()){
         return false;
     }
     selectJong = getTouchJong(touch);
+    if(NULL != selectJong){
+        showJongSelectIcon(selectJong->getPosition());
+    }
     if(NULL != virtualJong){
         virtualJong->removeFromParent();
         virtualJong = NULL;
@@ -93,7 +109,7 @@ void PlayerHero::onTouchMoved(Touch *touch, Event *event) {
                 virtualJong->setOpacity(100);
                 virtualJong->setCascadeColorEnabled(true);
                 virtualJong->setCascadeOpacityEnabled(true);
-                this->addChild(virtualJong);
+                addChild(virtualJong);
             }
             if (virtualJong != NULL)
                 virtualJong->setPosition(touch->getLocation());
@@ -107,6 +123,7 @@ void PlayerHero::onTouchMoved(Touch *touch, Event *event) {
             else{
                 selectJong->setPosition(selectJong->getPositionX(), JONG_POS_Y);
             }
+            showJongSelectIcon(selectJong->getPosition());
         }
         if (virtualJong != NULL){
             virtualJong->removeFromParent();
@@ -130,11 +147,14 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
                 Jong* jong = Jong::create();
                 jong->setPosition(doubleClickJong->getPosition());
                 jong->showJong(herohand, doubleClickJong->getJongType());
-                this->addChild(jong);
+                addChild(jong);
                 playPokerByHand(jong);
                 selectJong = doubleClickJong;
                 arrangeHandJongs();
                 doubleClickJong = NULL;
+            }else{
+                doubleClickJong = getTouchJong(touch);
+                showJongSelectIcon(doubleClickJong->getPosition());
             }
         }
     }
@@ -156,6 +176,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
     if(NULL != virtualJong){
         virtualJong = NULL;
     }
+    hideJongSelectIcon();
     stopTimeClockAnim();
     PlayerBase::showPlayedJong(jong->getJongType());
     Point startPoint = jong->getPosition();
@@ -220,7 +241,7 @@ void PlayerHero::drawPlayerHero() {
         else{
             playerHandJongs.at(i)->setPosition(Point(JONG_POS_START_X + JONG_WIDTH * i, JONG_POS_Y));
         }
-        this->addChild(playerHandJongs.at(i));
+        addChild(playerHandJongs.at(i));
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
 }
@@ -256,6 +277,7 @@ void PlayerHero::resetHandJongsY(Jong* jong) {
             playerHandJongs.at(i)->setPosition(
                                                Point(playerHandJongs.at(i)->getPositionX(), JONG_POS_Y));
     }
+    jongSeclectIcon->setPositionY(playerHandJongs.at(0)->getPositionY());
 }
 
 void PlayerHero::drawReady(bool ready){
@@ -288,6 +310,7 @@ void PlayerHero::readyGo(){
     setIsReady(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
 }
+
 
 void PlayerHero::inviteWechatFriend(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
@@ -573,7 +596,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         currentJong = jong;
         playerHandJongs.pushBack(jong);
         settleHandJongs(getHandPosX());
-        if (!(GAMEDATA::getInstance()->getIsTingState() || GAMEDATA::getInstance()->getIsTrusteeship())){
+        if (!(GAMEDATA::getInstance()->getIsTingState())){
             isAllowPlay = true;
         }
     }
@@ -674,16 +697,8 @@ void PlayerHero::doEventTimeOverUi(){
 }
 
 void PlayerHero::doEventTimeOver(int type){
-    //type 负值正常打牌超时
-    if (type < 0){
-        //        setIsAllowPlay(false);
-        //        auto sequence = Sequence::create(DelayTime::create(1.0f), CallFunc::create([=](){
-        //            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTrusteeshipCommand());
-        //        }), NULL);
-        //        runAction(sequence);
-    }
     //type 吃碰杠倒计时
-    else if (type == 1){
+    if (type == 1){
         ((MahjongView*)getParent())->hideTingGangControllPad();
         if(GAMEDATA::getInstance()->getPlayerTurn().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
             startTimeClockAnim();
