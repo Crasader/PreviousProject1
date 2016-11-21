@@ -1092,6 +1092,9 @@ void MsgHandler::gameResultNotify(std::string msg){
     }else{
         GAMEDATA::getInstance()->setDiaopao("");
     }
+    if(_mDoc.HasMember("lezi")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lezi"].GetString());
+    }
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];
     vector<GameResultData> gameResults;
@@ -2345,6 +2348,7 @@ void MsgHandler::lequanChangeListResp(std::string msg){
         change.propId = temp["goodsId"].GetString();
         change.propPrice = temp["goodsPrice"].GetString();
         change.propName = temp["goodsName"].GetString();
+        change.propType = temp["goodsType"].GetString();
         data.list.push_back(change);
     }
     GAMEDATA::getInstance()->setLequanChangeList(data);

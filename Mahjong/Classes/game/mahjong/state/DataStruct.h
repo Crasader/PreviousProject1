@@ -379,6 +379,7 @@ struct LequanChange{
     std::string propId;
     std::string propPrice;
     std::string propName;
+    std::string propType;
 };
 
 struct LequanChangeList{

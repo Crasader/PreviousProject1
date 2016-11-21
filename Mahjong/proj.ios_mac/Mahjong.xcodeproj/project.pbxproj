@@ -144,6 +144,8 @@
 		D257FD781D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */; };
 		D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */; };
 		D257FD7A1D6C2E2400B8C596 /* RechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D257FD751D6C2E2400B8C596 /* RechargeVC.m */; };
+		D25841941DE3022900AAB98D /* PublicResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25841921DE3022900AAB98D /* PublicResultLayer.cpp */; };
+		D25841951DE3022900AAB98D /* PublicResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25841921DE3022900AAB98D /* PublicResultLayer.cpp */; };
 		D25DEE371CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE381CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE411CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
@@ -463,6 +465,8 @@
 		D257FD721D6C2E2400B8C596 /* MahjongPayHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MahjongPayHandler.h; sourceTree = "<group>"; };
 		D257FD741D6C2E2400B8C596 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
 		D257FD751D6C2E2400B8C596 /* RechargeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeVC.m; sourceTree = "<group>"; };
+		D25841921DE3022900AAB98D /* PublicResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PublicResultLayer.cpp; sourceTree = "<group>"; };
+		D25841931DE3022900AAB98D /* PublicResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PublicResultLayer.hpp; sourceTree = "<group>"; };
 		D25DEE361CC0F56A007D428A /* bill */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bill; sourceTree = "<group>"; };
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
@@ -1075,6 +1079,8 @@
 				D28A4A181D056B4700741FD0 /* ResultLayer.h */,
 				D28A4A191D056B4700741FD0 /* ResultScene.cpp */,
 				D28A4A1A1D056B4700741FD0 /* ResultScene.hpp */,
+				D25841921DE3022900AAB98D /* PublicResultLayer.cpp */,
+				D25841931DE3022900AAB98D /* PublicResultLayer.hpp */,
 			);
 			path = result;
 			sourceTree = "<group>";
@@ -1654,6 +1660,7 @@
 				D226FD301D05292400324097 /* LoadResource.cpp in Sources */,
 				D2F05F611D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
+				D25841941DE3022900AAB98D /* PublicResultLayer.cpp in Sources */,
 				D281E5DD1DC05D2300D3E44E /* RoomFullDialog.cpp in Sources */,
 				D28A4A3C1D065B4D00741FD0 /* HintDialog.cpp in Sources */,
 				D22EEF831D66CFC800BF1CCB /* FriendRoom.cpp in Sources */,
@@ -1798,6 +1805,7 @@
 				D281E6051DC19EF500D3E44E /* ExchangePropCell.cpp in Sources */,
 				D22EEFDC1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */,
 				D2F05F681D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */,
+				D25841951DE3022900AAB98D /* PublicResultLayer.cpp in Sources */,
 				D22EEF7E1D66CFC800BF1CCB /* FriendAddView.cpp in Sources */,
 				D28A4A351D056B7A00741FD0 /* StringUtil.cpp in Sources */,
 				D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */,

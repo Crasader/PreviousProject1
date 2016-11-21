@@ -25,15 +25,8 @@ bool LequanShop::init(){
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
-    this->addChild(menu1);
+    addChild(menu1);
     
-//    auto all_bg = Sprite::create("common/all_bg.jpg");
-//    all_bg->setPosition(640, 360);
-//    addChild(all_bg);
-    
-//    auto dialog_bg = Sprite::create("shop/shop_bg.png");
-//    dialog_bg->setPosition(640,360);
-//    addChild(dialog_bg);
     auto dialog_bg = Sprite::create("shop/charge_bg.png");
     dialog_bg->setPosition(640,360);
     addChild(dialog_bg);
