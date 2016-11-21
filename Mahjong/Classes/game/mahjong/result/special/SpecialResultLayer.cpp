@@ -22,6 +22,8 @@
 #include "game/utils/ParticleUtil.hpp"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
+#include "payment/android/CallAndroidMethod.h"
+#import "payment/ios/IOSBridge.h"
 
 bool SpecialResultLayer::init(){
     if(!Layer::init()){
@@ -83,12 +85,12 @@ void SpecialResultLayer::shareResult(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     log("screenShot path = %s",path.c_str());
-    utils::captureScreen(CC_CALLBACK_2(BillDetailInfo::afterCaptured, this) ,path);
+    utils::captureScreen(CC_CALLBACK_2(SpecialResultLayer::afterCaptured, this) ,path);
 #endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
     log("screenShot path = %s",path.c_str());
-    utils::captureScreen(CC_CALLBACK_2(BillDetailInfo::afterCaptured, this) ,path);
+    utils::captureScreen(CC_CALLBACK_2(SpecialResultLayer::afterCaptured, this) ,path);
 #endif
 }
 

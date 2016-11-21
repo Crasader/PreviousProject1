@@ -36,8 +36,6 @@ void DailyPride::onEnter(){
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
                 m_turnBg->stopAllActions();
                 DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
-                data.count = StringUtils::format("%d",atoi(data.count.c_str()-1));
-                GAMEDATA::getInstance()->setDailyPrideData(data);
                 for (int i = 0; i < data.prides.size(); i++){
                     if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTodayPrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTodayPrideData().pride.number){
                         m_turnBg->setRotation(-90+45*i);
@@ -57,6 +55,8 @@ void DailyPride::onEnter(){
                         }
                     }
                 }
+                data.count = StringUtils::format("%d",atoi(data.count.c_str()-1));
+                GAMEDATA::getInstance()->setDailyPrideData(data);
             },0.0f,0,2.0f,"m_turnBg");
         }
     });
