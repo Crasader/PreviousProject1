@@ -114,10 +114,16 @@ struct GameResultData
     int bangzuan;
     int bangzuandelta;
     int hua;
+    std::string win;
+    std::string lost;
+    std::string even;
+    std::string fan;
+    std::string umark;
     std::string pic;
     std::string nickName;
     std::string huType;
     std::string showPoker;
+    std::string poxiaoId;
 };
 
 struct PlayerCpgRecord

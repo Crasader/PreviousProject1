@@ -2,7 +2,6 @@
 #include "game/mahjong/core/MahjongView.h"
 #include "game/mahjong/core/widget/Orientation.h"
 #include "game/mahjong/lobby/LobbyScene.h"
-#include "game/mahjong/result/ResultLayer.h"
 #include "game/mahjong/state/GameData.h"
 #include "game/utils/SeatIdUtil.h"
 #include "game/utils/StringUtil.h"
@@ -765,7 +764,7 @@ void MahjongView::addHeroCpgListener(){
 void MahjongView::addGameResultListener(){
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
         string flag = static_cast<char*>(event->getUserData());
-        if(flag == "1"){
+        if(flag == "1"||flag == "2"){
             trusteeship->setVisible(false);
             GAMEDATA::getInstance()->setIsTrusteeship(false);
             //播放动画
@@ -866,7 +865,11 @@ void MahjongView::addGameResultListener(){
             }
             schedule([=](float dt){
                 clearRoomPlayer();
-                Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::create()));
+                if(flag == "2"){
+                    Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::createScene(1)));
+                }else{
+                    Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::createScene(0)));
+                }
             },0,0,72.0f/24,"go2Result");
         }else{
             GAMEDATA::getInstance()->setFangZhuId("");

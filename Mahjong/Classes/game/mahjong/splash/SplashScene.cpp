@@ -4,7 +4,6 @@
 #include "game/mahjong/friend/dialog/RoomIdErrorDialog.hpp"
 #include "game/mahjong/loading/Loading.h"
 #include "game/mahjong/lobby/LobbyScene.h"
-#include "game/mahjong/result/ResultLayer.h"
 #include "game/mahjong/splash/LoadResource.hpp"
 #include "game/mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "game/utils/SeatIdUtil.h"

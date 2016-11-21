@@ -1095,6 +1095,13 @@ void MsgHandler::gameResultNotify(std::string msg){
     if(_mDoc.HasMember("lezi")){
         GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lezi"].GetString());
     }
+    if(_mDoc.HasMember("fzId")){
+        GAMEDATA::getInstance()->setFangZhuId(_mDoc["fzId"].GetString());
+    }
+    
+    if(_mDoc.HasMember("prjucount")){
+        GAMEDATA::getInstance()->setPrivateRoomType(_mDoc["prjucount"].GetString());
+    }
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];
     vector<GameResultData> gameResults;
@@ -1134,8 +1141,23 @@ void MsgHandler::gameResultNotify(std::string msg){
         else{
             resultData.huType = "";
         }
+        if (temp.HasMember("umark")){
+            resultData.umark = temp["umark"].GetString();
+        }
+        if (temp.HasMember("fan")){
+            resultData.fan = temp["fan"].GetString();
+        }
         if (temp.HasMember("nickname")){
             resultData.nickName = temp["nickname"].GetString();
+        }
+        if (temp.HasMember("lost")){
+            resultData.lost = temp["lost"].GetString();
+        }
+        if (temp.HasMember("win")){
+            resultData.win = temp["win"].GetString();
+        }
+        if (temp.HasMember("even")){
+            resultData.even = temp["even"].GetString();
         }
         gameResults.push_back(resultData);
     }

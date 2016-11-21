@@ -14,8 +14,13 @@
 USING_NS_CC;
 class ResultScene:public Scene{
 public:
-    virtual bool init();
-    CREATE_FUNC(ResultScene);
+    virtual bool init() override;
+    virtual void onEnter() override;
+    virtual void onExit() override;
+    static cocos2d::Scene* createScene(int type);
+private:
+    EventListenerCustom* continueAgainLisetner;
+    EventListenerCustom* playerReplaceLoginListener;
 };
 
 #endif /* ResultScene_hpp */

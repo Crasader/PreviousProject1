@@ -6,8 +6,6 @@
 #include "server/NetworkManage.h"
 #include "game/utils/Audio.h"
 
-#include "game/mahjong/result/ResultScene.hpp"
-
 USING_NS_CC;
 using namespace experimental;
 
@@ -59,8 +57,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
     
     // create a scene. it's an autorelease object
-//    auto scene = LoadResource::createScene();
-    auto scene = ResultScene::create();
+    auto scene = LoadResource::createScene();
 
     // run
     director->runWithScene(scene);
