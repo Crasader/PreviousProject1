@@ -154,7 +154,8 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
                 doubleClickJong = NULL;
             }else{
                 doubleClickJong = getTouchJong(touch);
-                showJongSelectIcon(doubleClickJong->getPosition());
+                if(NULL != doubleClickJong)
+                    showJongSelectIcon(doubleClickJong->getPosition());
             }
         }
     }
@@ -277,7 +278,8 @@ void PlayerHero::resetHandJongsY(Jong* jong) {
             playerHandJongs.at(i)->setPosition(
                                                Point(playerHandJongs.at(i)->getPositionX(), JONG_POS_Y));
     }
-    jongSeclectIcon->setPositionY(playerHandJongs.at(0)->getPositionY());
+    if(NULL != jongSeclectIcon &&playerHandJongs.size()>0)
+        jongSeclectIcon->setPositionY(playerHandJongs.at(0)->getPositionY());
 }
 
 void PlayerHero::drawReady(bool ready){

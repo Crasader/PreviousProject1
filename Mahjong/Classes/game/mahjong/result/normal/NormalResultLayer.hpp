@@ -14,8 +14,12 @@ USING_NS_CC;
 class NormalResultLayer :public  Layer{
 public:
     virtual bool init() override;
+    virtual void onEnter() override;
+    virtual void onExit() override;
     CREATE_FUNC(NormalResultLayer);
 private:
+    EventListenerCustom* continueAgainLisetner;
+    EventListenerCustom* playerReplaceLoginListener;
     int timeToatal;//自动再来一局的时间
     void showGameResult();
     void showRoomInfo();

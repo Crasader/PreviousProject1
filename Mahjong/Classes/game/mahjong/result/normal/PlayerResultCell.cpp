@@ -132,10 +132,15 @@ bool PlayerResultCell::init(GameResultData data){
             addChild(jong, 35 - i);
         }
         if(data.result == 2){
-            auto chuchong = Sprite::create("gameview/font_hu.png");//出冲标志图不对
-            chuchong->setScale(0.4f);
+//            auto chuchong = Sprite::create("gameview/font_hu.png");//出冲标志图不对
+//            chuchong->setScale(0.4f);
+//            chuchong->setPosition(500,0);
+//            addChild(chuchong);
+            auto chuchong = Label::createWithSystemFont(StringUtils::format("%s","出冲"),"Arial",24);
+            chuchong->setAnchorPoint(Point::ANCHOR_MIDDLE);
             chuchong->setPosition(500,0);
             addChild(chuchong);
+
         }
     }
     

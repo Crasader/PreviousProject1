@@ -175,3 +175,32 @@ void NormalResultLayer::updateTime(float dt){
         }
     }
 }
+
+void NormalResultLayer::onEnter(){
+    Layer::onEnter();
+    continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_CONTINUE_RESP, [=](EventCustom* event){
+        std::string result  = static_cast<char*>(event->getUserData());
+        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "0"){
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        }else if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
+            //返回正常可以继续游戏
+            GAMEDATA::getInstance()->setContinueAgain(true);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
+    
+    //登录地址变更
+    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
+        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
+            exit(0);
+        });
+        addChild(hin,5);
+    });
+}
+
+void NormalResultLayer::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
+}

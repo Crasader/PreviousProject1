@@ -11,7 +11,7 @@
 #include "game/mahjong/result/special/SpecialResultLayer.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/jong/Jong.h"
-#include"game/mahjong/core/MjGameScene.h"
+#include "game/mahjong/core/MjGameScene.h"
 #include "game/mahjong/core/MahjongView.h"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/shop/gold/GoldNotEnoughDialog.hpp"
@@ -43,37 +43,10 @@ bool ResultScene::init(){
     if (!Scene::init()){
         return false;
     }
-       return true;
+    return true;
 }
 
-void ResultScene::onEnter(){
-    Scene::onEnter();
-    continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_CONTINUE_RESP, [=](EventCustom* event){
-        std::string result  = static_cast<char*>(event->getUserData());
-        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "0"){
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        }else if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
-            //返回正常可以继续游戏
-            GAMEDATA::getInstance()->setContinueAgain(true);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
-    
-    //登录地址变更
-    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
-        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
-            exit(0);
-        });
-        addChild(hin,5);
-    });
-}
 
-void ResultScene::onExit(){
-    Scene::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-}
 
 
 void ResultScene::initTestData(){
