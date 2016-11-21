@@ -32,6 +32,7 @@ bool NormalResultLayer::init(){
     showRoomInfo();
     showPlayerResluts();
     showLayerBtn();
+    updateplayerData();
     return true;
 }
 
@@ -46,13 +47,13 @@ void NormalResultLayer::showGameResult(){
             if(data.result == 0){
                 resultTitle->setTexture("result/public_da_jiang_you.png");
             }else if(data.result == 1){
-                 resultTitle->setTexture("result/public_zimo.png");
+                resultTitle->setTexture("result/public_zimo.png");
             }else if(data.result == 2){
-                 resultTitle->setTexture("result/public_chuchong.png");
+                resultTitle->setTexture("result/public_chuchong.png");
             }else if(data.result == 3){
-                 resultTitle->setTexture("result/public_hupai.png");
+                resultTitle->setTexture("result/public_hupai.png");
             }else if(data.result == 4){
-                 resultTitle->setTexture("result/public_shu.png");
+                resultTitle->setTexture("result/public_shu.png");
             }
         }
     }
@@ -68,7 +69,7 @@ void NormalResultLayer::showRoomInfo(){
             //有乐子
             lezi->setTexture("result/public_40_lezi.png");
         }else{
-             lezi->setTexture("result/public_wu_lezi.png");
+            lezi->setTexture("result/public_wu_lezi.png");
         }
         if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "16"){
             jucount->setTexture("result/16ju_bg.png");
@@ -98,7 +99,7 @@ void NormalResultLayer::showPlayerResluts(){
 }
 
 void NormalResultLayer::showLayerBtn(){
-
+    
     auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
                                            CC_CALLBACK_0(NormalResultLayer::shareResult, this));
     auto feedImage = MenuItemImage::create("result/continue_btn_1.png","result/continue_btn_2.png",
@@ -111,6 +112,22 @@ void NormalResultLayer::showLayerBtn(){
     
     schedule(schedule_selector(NormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
 }
+
+void NormalResultLayer::updateplayerData(){
+    for(GameResultData resData : GAMEDATA::getInstance()->getGameResults()){
+        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+        for (int i = 0; i < players.size(); i++){
+            if (players.at(i)->getSeatId() == resData.seatId){
+                players.at(i)->setDiamond(resData.diamond);
+                players.at(i)->setLockDiamond(resData.bangzuan);
+                players.at(i)->setGold(resData.gold);
+                players.at(i)->setTicket(resData.lequan);
+                players.at(i)->setScore(resData.jifen);
+            }
+        }
+    }
+}
+
 
 void NormalResultLayer::shareResult(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

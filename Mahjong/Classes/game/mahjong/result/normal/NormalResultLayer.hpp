@@ -25,6 +25,6 @@ private:
     void continueGame();
     void updateTime(float dt);
     void afterCaptured(bool succeed, const std::string &outputFile);
-    void createTestData();
+    void updateplayerData();
 };
 #endif /* PublicResultLayer_hpp */
