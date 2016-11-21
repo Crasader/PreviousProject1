@@ -683,10 +683,14 @@ void LobbyScene::addEventListener(){
             case cocos2d::EventKeyboard::KeyCode::KEY_NONE:
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_BACK:
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLobbyQuitCommand());
-                Director::getInstance()->end();
+            {
+                HintDialog* hit = HintDialog::create("确定要离开游戏吗？",[=](Ref* ref){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLobbyQuitCommand());
+                    Director::getInstance()->end();
+                });
+                addChild(hit,100);
                 break;
-                
+            }
             default:
                 break;
         }
