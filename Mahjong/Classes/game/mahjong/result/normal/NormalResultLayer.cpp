@@ -28,6 +28,9 @@ bool NormalResultLayer::init(){
         return false;
     }
     timeToatal = 25;
+    auto reslut_bg = Sprite::create("result/result_bg.jpg");
+    reslut_bg->setPosition(640, 360);
+    addChild(reslut_bg,-1);
     showGameResult();//结算界面标题
     showRoomInfo();
     showPlayerResluts();

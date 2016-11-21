@@ -21,6 +21,7 @@ public:
 private:
     EventListenerCustom* continueAgainLisetner;
     EventListenerCustom* playerReplaceLoginListener;
+    void initTestData();
 };
 
 #endif /* ResultScene_hpp */

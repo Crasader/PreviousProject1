@@ -26,36 +26,6 @@
 
 Scene* ResultScene::createScene(int type)
 {
-    //test--------------------------------------
-    vector<GameResultData> gameResults;
-    for (int i = 0; i < 4; i++){
-        GameResultData resultData;
-        resultData.result = 2;
-        resultData.gold = 100;
-        resultData.diamond = 100;
-        resultData.jifen =10;
-        resultData.lequan = 10;
-        resultData.golddelta = 200000;
-        resultData.diamonddelta =2;
-        resultData.jifendelta = 2;
-        resultData.lequandelta = 2000;
-        resultData.seatId = i+1;
-        resultData.hua = 3;
-        resultData.showPoker = "1,2,3,4,5,5,5,5";
-        resultData.huType = "1";
-        resultData.nickName = "这里是装电视台";
-        gameResults.push_back(resultData);
-    }
-    GAMEDATA::getInstance()->setGameResults(gameResults);
-    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-    GAMEDATA::getInstance()->setHeroSeatId(1);
-    GAMEDATA::getInstance()->setPrivateLezi("0");
-    GAMEDATA::getInstance()->setCurrentBank(1);
-    FriendOpenRoomRespData opendata;
-    opendata.prjushu ="8";
-    opendata.prjucount ="2";
-    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
-    //-----------------------------------------
     
     auto scene = Scene::create();
     if(type == 0){
@@ -105,3 +75,36 @@ void ResultScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
 }
 
+
+void ResultScene::initTestData(){
+    //test--------------------------------------
+    vector<GameResultData> gameResults;
+    for (int i = 0; i < 4; i++){
+        GameResultData resultData;
+        resultData.result = 2;
+        resultData.gold = 100;
+        resultData.diamond = 100;
+        resultData.jifen =10;
+        resultData.lequan = 10;
+        resultData.golddelta = 200000;
+        resultData.diamonddelta =2;
+        resultData.jifendelta = 2;
+        resultData.lequandelta = 2000;
+        resultData.seatId = i+1;
+        resultData.hua = 3;
+        resultData.showPoker = "1,2,3,4,5,5,5,5";
+        resultData.huType = "1";
+        resultData.nickName = "这里是装电视台";
+        gameResults.push_back(resultData);
+    }
+    GAMEDATA::getInstance()->setGameResults(gameResults);
+    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+    GAMEDATA::getInstance()->setHeroSeatId(1);
+    GAMEDATA::getInstance()->setPrivateLezi("0");
+    GAMEDATA::getInstance()->setCurrentBank(1);
+    FriendOpenRoomRespData opendata;
+    opendata.prjushu ="8";
+    opendata.prjucount ="2";
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
+    //----------------------------------------
+}
