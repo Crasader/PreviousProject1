@@ -1159,6 +1159,9 @@ void MsgHandler::gameResultNotify(std::string msg){
         if (temp.HasMember("even")){
             resultData.even = temp["even"].GetString();
         }
+        if (temp.HasMember("poxiaoId")){
+            resultData.poxiaoId = temp["poxiaoId"].GetString();
+        }
         gameResults.push_back(resultData);
     }
     GAMEDATA::getInstance()->setGameResults(gameResults);

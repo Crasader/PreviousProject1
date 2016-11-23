@@ -201,9 +201,13 @@ void LobbyScene::drawSceneMid(){
     }
     auto giftMenu = Menu::create(red_wallet, first_chaege, NULL);
     giftMenu->setTag(1313);
-    giftMenu->alignItemsHorizontallyWithPadding(10);
-    giftMenu->setPosition(120, 542);
+    giftMenu->alignItemsHorizontallyWithPadding(15);
+    giftMenu->setPosition(130, 542);
     addChild(giftMenu);
+    //感叹号
+    auto ganTanhao = Sprite::create("mjlobby/gantanhao.png");
+    ganTanhao->setPosition(230,565);
+    addChild(ganTanhao);
     //房间按钮
     auto openRoom = Sprite::create("mjlobby/open_room_image.png");
     openRoom->setPosition(390,400);

@@ -30,11 +30,8 @@ bool BillDetailInfo::init()
     closeMenu->setPosition(980, 655);
     addChild(closeMenu);
     
-    auto paodai = Sprite::create("common/piaodai_zi.png");
-    paodai->setPosition(640, 660);
-    this->addChild(paodai);
     auto icon = Sprite::create("bill/bill_deetial_title.png");
-    icon->setPosition(640, 680);
+    icon->setPosition(640, 668);
     addChild(icon);
     
     auto bg3 = Sprite::create("bill/detail_bg.png");

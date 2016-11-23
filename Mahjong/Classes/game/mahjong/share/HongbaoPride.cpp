@@ -50,20 +50,13 @@ void HongbaoPride::showHongbaoPride(){
     hongbaoBg1->setPosition(480,320);
     hongbaoBg1->setScaleY(0.7);
     addChild(hongbaoBg1);
-    
-    auto piaodai1 = Sprite::create("shop/lvse_piaodai.png");
-    piaodai1->setPosition(480,450);
-    addChild(piaodai1);
-    
-    auto title1 = Sprite::create("shop/wxhy_text.png");
-    title1->setPosition(480,470);
-    addChild(title1);
+
     
     auto wxIcon1 = Sprite::create("shop/wx_icon.png");
-    wxIcon1->setPosition(480,350);
+    wxIcon1->setPosition(480,360);
     addChild(wxIcon1);
     
-    auto btnImage = MenuItemImage::create("shop/fahongbao_btn_1.png","shop/fahongbao_btn_2.png",CC_CALLBACK_0(HongbaoPride::doFaHongBaoPerson, this));
+    auto btnImage = MenuItemImage::create("shop/send_to_friend_1.png","shop/send_to_friend_2.png",CC_CALLBACK_0(HongbaoPride::doFaHongBaoPerson, this));
     auto menu1= Menu::create(btnImage,NULL);
     menu1->setPosition(480,210);
     addChild(menu1);
@@ -73,19 +66,12 @@ void HongbaoPride::showHongbaoPride(){
     hongbaoBg2->setScaleY(0.7);
     addChild(hongbaoBg2);
     
-    auto piaodai2 = Sprite::create("shop/lvse_piaodai.png");
-    piaodai2->setPosition(810,450);
-    addChild(piaodai2);
-    
-    auto title2 = Sprite::create("shop/pyq_text.png");
-    title2->setPosition(810,470);
-    addChild(title2);
     
     auto wxIcon2 = Sprite::create("shop/pyq_icon.png");
-    wxIcon2->setPosition(810,350);
+    wxIcon2->setPosition(810,360);
     addChild(wxIcon2);
     
-    auto btnImage2 = MenuItemImage::create("shop/fahongbao_btn_1.png","shop/fahongbao_btn_2.png",CC_CALLBACK_0(HongbaoPride::doFaHongBaoFriend, this));
+    auto btnImage2 = MenuItemImage::create("shop/send_to_quan_1.png","shop/send_to_quan_2.png",CC_CALLBACK_0(HongbaoPride::doFaHongBaoFriend, this));
     auto menu2= Menu::create(btnImage2,NULL);
     menu2->setPosition(810,210);
     addChild(menu2);
