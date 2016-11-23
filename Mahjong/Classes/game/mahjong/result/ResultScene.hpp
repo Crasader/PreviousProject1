@@ -17,7 +17,7 @@ public:
     virtual bool init() override;
     static cocos2d::Scene* createScene(int type);
 private:
-    void initTestData();
+    static void initTestData();
 };
 
 #endif /* ResultScene_hpp */

@@ -28,6 +28,7 @@ Scene* ResultScene::createScene(int type)
 {
     
     auto scene = Scene::create();
+     initTestData();
     if(type == 0){
         NormalResultLayer* layer = NormalResultLayer::create();
         scene->addChild(layer);
@@ -54,7 +55,7 @@ void ResultScene::initTestData(){
     vector<GameResultData> gameResults;
     for (int i = 0; i < 4; i++){
         GameResultData resultData;
-        resultData.result = 2;
+        resultData.result = 1;
         resultData.gold = 100;
         resultData.diamond = 100;
         resultData.jifen =10;

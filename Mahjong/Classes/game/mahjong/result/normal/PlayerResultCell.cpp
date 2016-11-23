@@ -61,7 +61,7 @@ bool PlayerResultCell::init(GameResultData data){
         addChild(bank);
     }
     
-    auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/fan_num.png", 17, 26, '0');
+    auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 40, 64, '0');
     resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     resultNum->setPosition(360,0);
     addChild(resultNum);
@@ -70,11 +70,12 @@ bool PlayerResultCell::init(GameResultData data){
         spritebg->setTexture("result/jie_suan_lan_suc.png");
         nickName->setColor(Color3B(230,215,30));
         idNumber->setColor(Color3B(230,215,30));
-        //        resultNum->setTexture(<#cocos2d::Texture2D *texture#>);
+        Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_win_num.png");
+        resultNum->setTexture(texture);
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            resultNum->setString(StringUtils::format("%d",data.jifendelta));
+            resultNum->setString(StringUtils::format(":%d",data.jifendelta));
         }else{
-            resultNum->setString(StringUtils::format("%d",data.golddelta));
+            resultNum->setString(StringUtils::format(":%d",data.golddelta));
         }
         auto hua = Label::createWithSystemFont(StringUtils::format("花X%d",data.hua),"Arial",24);
         hua->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
@@ -118,11 +119,12 @@ bool PlayerResultCell::init(GameResultData data){
         
     }else{
         spritebg->setTexture("result/jie_suan_lan_fai.png");
-        //        resultNum->setTexture(<#cocos2d::Texture2D *texture#>);
+        Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_lose_num.png");
+        resultNum->setTexture(texture);
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            resultNum->setString(StringUtils::format("%d",data.jifendelta));
+            resultNum->setString(StringUtils::format(":%d",data.jifendelta));
         }else{
-            resultNum->setString(StringUtils::format("%d",data.golddelta));
+            resultNum->setString(StringUtils::format(":%d",data.golddelta));
         }
         std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
         for (int i = 0; i < showPokers.size(); i++){
@@ -132,15 +134,9 @@ bool PlayerResultCell::init(GameResultData data){
             addChild(jong, 35 - i);
         }
         if(data.result == 2){
-//            auto chuchong = Sprite::create("gameview/font_hu.png");//出冲标志图不对
-//            chuchong->setScale(0.4f);
-//            chuchong->setPosition(500,0);
-//            addChild(chuchong);
-            auto chuchong = Label::createWithSystemFont(StringUtils::format("%s","出冲"),"Arial",24);
-            chuchong->setAnchorPoint(Point::ANCHOR_MIDDLE);
+            auto chuchong = Sprite::create("result/chuchong.png");
             chuchong->setPosition(500,0);
             addChild(chuchong);
-
         }
     }
     

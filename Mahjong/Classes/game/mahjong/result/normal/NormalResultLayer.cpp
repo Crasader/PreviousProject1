@@ -8,9 +8,10 @@
 
 #include "game/mahjong/result/normal/NormalResultLayer.hpp"
 #include "game/mahjong/result/normal/PlayerResultCell.hpp"
+#include "game/mahjong/lobby/GoldRoomPlate.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/jong/Jong.h"
-#include"game/mahjong/core/MjGameScene.h"
+#include "game/mahjong/core/MjGameScene.h"
 #include "game/mahjong/core/MahjongView.h"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
 #include "game/mahjong/shop/gold/GoldNotEnoughDialog.hpp"
@@ -56,7 +57,12 @@ void NormalResultLayer::showGameResult(){
             }else if(data.result == 2){
                 resultTitle->setTexture("result/public_chuchong.png");
             }else if(data.result == 3){
-                resultTitle->setTexture("result/public_hupai.png");
+                //检查是否含有杠开的胡牌类型
+                if(data.huType.find("3")){
+                    resultTitle->setTexture("result/game_result_gangkai.png");
+                }else{
+                    resultTitle->setTexture("result/public_hupai.png");
+                }
             }else if(data.result == 4){
                 resultTitle->setTexture("result/public_shu.png");
             }
@@ -91,6 +97,16 @@ void NormalResultLayer::showRoomInfo(){
         jucount->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         juNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         juNum->setPosition(jucount->getPositionX()+45,jucount->getPositionY());
+    }else{
+        auto xioahao = Sprite::create("result/mei_ju_xiao_hao_4000.png");
+        xioahao->setPosition(640,560);
+        addChild(xioahao);
+        //TODO 无法判定当前房间的金币类型
+        //        if(GAMEDATA::getInstance()->setCurrentSelectRoomId() == ROOM_1){
+        //            xioahao->setTexture("result/mei_ju_xiao_hao_2000.png");
+        //        }else{
+        //            xioahao->setTexture("result/mei_ju_xiao_hao_4000.png");
+        //        }
     }
 }
 

@@ -62,7 +62,7 @@ bool GameResultCell::init(GameResultData data){
     even->setPosition(80,-58);
     addChild(even,15);
     
-    auto resultNum = LabelAtlas::create("0", "result/fan_num.png", 17, 26, '0');
+    auto resultNum = LabelAtlas::create("0", "result/game_result_win_num.png", 40, 64, '0');
     resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     resultNum->setPosition(0,-120);
     addChild(resultNum,20);
@@ -75,12 +75,14 @@ bool GameResultCell::init(GameResultData data){
     
     if(data.jifen>0){
         bg->setTexture("result/win_game_bg.png");
-        //        resultNum->setTexture(<#cocos2d::Texture2D *texture#>);
-        resultNum->setString(StringUtils::format("%d",data.jifen));
+        Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_win_num.png");
+        resultNum->setTexture(texture);
+        resultNum->setString(StringUtils::format(":%d",data.jifen));
     }else{
         bg->setTexture("result/lose_game_bg.png");
-        //        resultNum->setTexture(<#cocos2d::Texture2D *texture#>);
-        resultNum->setString(StringUtils::format("%d",data.jifen));
+        Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_lose_num.png");
+        resultNum->setTexture(texture);
+        resultNum->setString(StringUtils::format(":%d",data.jifen));
     }
     return true;
 }
