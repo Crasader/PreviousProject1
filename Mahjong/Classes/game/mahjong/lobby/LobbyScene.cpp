@@ -354,6 +354,7 @@ void LobbyScene::showRedWallet(){
 }
 
 void LobbyScene::showWanJiaQun(){
+    Audio::getInstance()->playSoundClick();
     WanJiaQunLayer* wanjia = WanJiaQunLayer::create();
     addChild(wanjia,5);
 }
