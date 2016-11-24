@@ -35,12 +35,12 @@ bool PlayerResultCell::init(GameResultData data){
     headImage->setPosition(-420, 0);
     addChild(headImage, 10);
     
-    auto nickName = Label::createWithSystemFont(data.nickName,"Arial",24);
+    auto nickName = Label::createWithSystemFont(data.nickName,"Arial",20);
     nickName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     nickName->setPosition(-350,15);
     addChild(nickName);
     
-    auto idNumber = Label::createWithSystemFont(StringUtils::format("ID:%s",data.umark.c_str()),"Arial",24);
+    auto idNumber = Label::createWithSystemFont(StringUtils::format("ID:%s",data.umark.c_str()),"Arial",20);
     idNumber->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     idNumber->setPosition(-150,15);
     addChild(idNumber);
@@ -77,7 +77,12 @@ bool PlayerResultCell::init(GameResultData data){
         }else{
             resultNum->setString(StringUtils::format(":%d",data.golddelta));
         }
-        auto hua = Label::createWithSystemFont(StringUtils::format("花X%d",data.hua),"Arial",24);
+        
+        auto huaIcon = Sprite::create("gameview/flower.png");
+        huaIcon->setScale(0.7f);
+        huaIcon->setPosition(-18, 28);
+        addChild(huaIcon);
+        auto hua = Label::createWithSystemFont(StringUtils::format("X%d",data.hua),"Arial",20);
         hua->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         hua->setColor(Color3B(230,215,30));
         hua->setPosition(0,15);
@@ -89,7 +94,7 @@ bool PlayerResultCell::init(GameResultData data){
             for (int i = 0; i < hutypeInfo.size(); i++){
                 hu += ChineseWord(hutypeInfo.at(i).c_str());
             }
-            auto hutype = Label::createWithSystemFont(StringUtils::format("%s",hu.c_str()),"Arial",24);
+            auto hutype = Label::createWithSystemFont(StringUtils::format("%s",hu.c_str()),"Arial",20);
             hutype->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
             hutype->setColor(Color3B(230,215,30));
             hutype->setPosition(100,15);
