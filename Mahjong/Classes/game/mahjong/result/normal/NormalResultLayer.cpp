@@ -98,7 +98,7 @@ void NormalResultLayer::showRoomInfo(){
         juNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         juNum->setPosition(jucount->getPositionX()+45,jucount->getPositionY());
     }else{
-        auto xioahao = Sprite::create("result/mei_ju_xiao_hao_4000.png");
+        auto xioahao = Sprite::create();
         xioahao->setPosition(640,560);
         addChild(xioahao);
         if(GAMEDATA::getInstance()->getFee() == "2000"){
@@ -122,14 +122,25 @@ void NormalResultLayer::showPlayerResluts(){
 
 void NormalResultLayer::showLayerBtn(){
     
+    auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));
+    
     auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
                                            CC_CALLBACK_0(NormalResultLayer::shareResult, this));
     auto feedImage = MenuItemImage::create("result/continue_btn_1.png","result/continue_btn_2.png",
                                            CC_CALLBACK_0(NormalResultLayer::continueGame, this));
     
-    Menu* myMneu = Menu::create(helpImage,feedImage,NULL);
+    Menu* myMneu = Menu::create();
+    if(GAMEDATA::getInstance()->getMahjongRoomType() ==  MahjongRoom::privateRoom){
+        myMneu->addChild(quitImage);
+    }
+    myMneu->addChild(helpImage);
+    myMneu->addChild(feedImage);
+    if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
+        myMneu->alignItemsHorizontallyWithPadding(60);
+    }else{
+        myMneu->alignItemsHorizontallyWithPadding(100);
+    }
     myMneu->setPosition(640,60);
-    myMneu->alignItemsHorizontallyWithPadding(160);
     addChild(myMneu);
     
     schedule(schedule_selector(NormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
@@ -148,6 +159,11 @@ void NormalResultLayer::updateplayerData(){
             }
         }
     }
+}
+
+void NormalResultLayer::gotoLobby(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
 }
 
 

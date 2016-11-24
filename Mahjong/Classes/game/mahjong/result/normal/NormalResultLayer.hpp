@@ -27,6 +27,7 @@ private:
     void showLayerBtn();
     void shareResult();
     void continueGame();
+    void gotoLobby();
     void updateTime(float dt);
     void afterCaptured(bool succeed, const std::string &outputFile);
     void updateplayerData();

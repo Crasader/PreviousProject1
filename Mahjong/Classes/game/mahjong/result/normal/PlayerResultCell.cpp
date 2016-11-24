@@ -42,7 +42,7 @@ bool PlayerResultCell::init(GameResultData data){
     
     auto idNumber = Label::createWithSystemFont(StringUtils::format("ID:%s",data.umark.c_str()),"Arial",20);
     idNumber->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-    idNumber->setPosition(-150,15);
+    idNumber->setPosition(-180,15);
     addChild(idNumber);
     
     if(data.lz == "0"){
@@ -74,8 +74,8 @@ bool PlayerResultCell::init(GameResultData data){
     }
     
     auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 40, 64, '0');
-    resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    resultNum->setPosition(360,0);
+    resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    resultNum->setPosition(450,0);
     addChild(resultNum);
     
     if(data.result == 1||data.result == 3){
@@ -109,7 +109,7 @@ bool PlayerResultCell::init(GameResultData data){
             auto hutype = Label::createWithSystemFont(StringUtils::format("%s",hu.c_str()),"Arial",20);
             hutype->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
             hutype->setColor(Color3B(230,215,30));
-            hutype->setPosition(100,15);
+            hutype->setPosition(60,15);
             addChild(hutype);
         }
         //胡的玩家需要单独排序
