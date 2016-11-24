@@ -61,6 +61,10 @@ void NoticeDialog::closeView(){
 
 void NoticeDialog::setContentImage(std::string fileName){
     std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(fileName);
-    if(path != IAMGE_LOADING)
+    if(path != IAMGE_LOADING){
         content->setTexture(path);
+        schedule([=](float dt){
+            removeFromParent();
+        }, 0, 0, 4.0f,"dismiss");
+    }
 }

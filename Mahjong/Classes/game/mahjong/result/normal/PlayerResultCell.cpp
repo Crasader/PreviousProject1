@@ -115,11 +115,20 @@ bool PlayerResultCell::init(GameResultData data){
         }
         //胡的玩家需要单独排序
         std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
-        for (int a = 0; a < showPokers.size(); a++){
-            if(GAMEDATA::getInstance()->getDiaopao() == showPokers.at(a)){
-                swap(showPokers.at(a), showPokers.at(showPokers.size()-1));
+        vector<std::string>::iterator itor;
+        for(itor=showPokers.begin();itor!=showPokers.end();)
+        {
+            if(GAMEDATA::getInstance()->getDiaopao()==*itor)
+            {
+                itor=showPokers.erase(itor);
+            }
+            else
+            {
+                itor++;
             }
         }
+        showPokers.push_back(GAMEDATA::getInstance()->getDiaopao());
+
         for (int i = 0; i < showPokers.size(); i++){
             Jong* jong = Jong::create();
             jong->showJong(heroplayed, atoi(showPokers.at(i).c_str()));
@@ -157,7 +166,7 @@ bool PlayerResultCell::init(GameResultData data){
             addChild(chuchong);
         }
     }
-    if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() != MahjongRoom::privateRoom){
         
         auto goldIcon =  Sprite::create("mjlobby/gold_icon.png");
         goldIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);

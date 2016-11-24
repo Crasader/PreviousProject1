@@ -193,22 +193,28 @@ void LobbyScene::drawSceneMid(){
     gameTitle->setPosition(1070, 640);
     this->addChild(gameTitle);
     
-    auto red_wallet = MenuItemImage::create("mjlobby/red_wallet_1.png", "mjlobby/red_wallet_2.png",
-                                            CC_CALLBACK_0(LobbyScene::showRedWallet, this));
+    auto sharefriend = MenuItemImage::create("mjlobby/red_wallet_1.png", "mjlobby/red_wallet_2.png",
+                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
+    auto shareMenu = Menu::create(sharefriend, NULL);
+    shareMenu->alignItemsHorizontallyWithPadding(15);
+    shareMenu->setPosition(90, 542);
+    addChild(shareMenu);
+    
     first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                          CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
     if(UserData::getInstance()->isFirstCharge()){
         first_chaege->setVisible(false);
     }
-    auto giftMenu = Menu::create(red_wallet, first_chaege, NULL);
-    giftMenu->setTag(1313);
-    giftMenu->alignItemsHorizontallyWithPadding(15);
-    giftMenu->setPosition(130, 542);
-    addChild(giftMenu);
+    auto firstMenu = Menu::create(first_chaege, NULL);
+    firstMenu->alignItemsHorizontallyWithPadding(15);
+    firstMenu->setPosition(200, 542);
+    addChild(firstMenu);
+    firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(200, 562)),MoveTo::create(0.6f,Point(200, 542)),NULL), CC_REPEAT_FOREVER));
     //感叹号
     auto ganTanhao = Sprite::create("mjlobby/gantanhao.png");
     ganTanhao->setPosition(230,565);
     addChild(ganTanhao);
+    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(230, 585)),MoveTo::create(0.6f,Point(230, 565)),NULL), CC_REPEAT_FOREVER));
     //房间按钮
     auto openRoom = Sprite::create("mjlobby/open_room_image.png");
     openRoom->setPosition(390,400);
@@ -258,7 +264,6 @@ void LobbyScene::drawSceneBot(){
 }
 
 void LobbyScene::showLobbyAnim(){
-    
     //logo光效
     auto logoLight = Sprite::create();
     logoLight->setPosition(1070, 645);
@@ -274,7 +279,6 @@ void LobbyScene::showLobbyAnim(){
     animation->setRestoreOriginalFrame(true);
     auto action = Animate::create(animation);
     logoLight->runAction(Sequence::create(Repeat::create(Sequence::create(action,DelayTime::create(12.0f/24), NULL), CC_REPEAT_FOREVER), NULL));
-    
     //文字光效
     auto logoText = Sprite::create();
     logoText->setPosition(1070, 645);
@@ -494,6 +498,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomAskListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(wanjiaqunListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(noticeUrlLitener);
 }
 
 void LobbyScene::addEventListener(){
@@ -689,9 +694,12 @@ void LobbyScene::addEventListener(){
     
     //游戏公告
     noticeUrlLitener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_GONG_GAO, [=](EventCustom* event){
-        NoticeDialog* nod = NoticeDialog::create();
-        nod->setContentImage(GAMEDATA::getInstance()->getNoticeUrl());
-        addChild(nod,100);
+        if(!GAMEDATA::getInstance()->getHaveShowNotice()){
+            NoticeDialog* nod = NoticeDialog::create();
+            nod->setContentImage(GAMEDATA::getInstance()->getNoticeUrl());
+            addChild(nod,100);
+            GAMEDATA::getInstance()->setHaveShowNotice(true);
+        }
     });
     
     //点击事件

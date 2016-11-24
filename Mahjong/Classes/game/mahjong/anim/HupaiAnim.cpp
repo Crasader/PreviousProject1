@@ -37,7 +37,7 @@ bool HupaiAnim::init(MahjongHuType hutype,int jongType,int seatId1,std::vector<i
             showHuAnim(hutype,seatId1);
         }, 0, 0, 0.5f,"helle");
     }
-
+    
     return true;
 }
 
@@ -54,41 +54,41 @@ void HupaiAnim::showPokersLight(int seatId){
     Sprite* guangXiao2 = Sprite::create("result/hupai_light.png");
     addChild(guangXiao2);
     guangXiao2->setOpacity(77);
-   
+    
     
     float scaleX;
-
+    
     if(seatId == ClientSeatId::opposite){
-         pos1 = Point(300,600);
-         pos2 = Point(900,600);
-         scaleX = 3.0;
+        pos1 = Point(300,600);
+        pos2 = Point(900,600);
+        scaleX = 3.0;
     }else if(seatId == ClientSeatId::left){
         pos1 = Point(200,600);
         pos2 = Point(200,200);
         guangXiao1->setRotation(90);
         guangXiao2->setRotation(90);
-         scaleX = 2.0;
+        scaleX = 2.0;
     }else if(seatId == ClientSeatId::right){
         pos1 = Point(1100,600);
         pos2 = Point(1100,200);
         guangXiao1->setRotation(90);
         guangXiao2->setRotation(90);
-         scaleX = 2.0;
+        scaleX = 2.0;
     }else{
         pos1 = Point(200,100);
         pos2 = Point(1000,100);
         scaleX = 3.0;
     }
-   
-      guangXiao1->setPosition(pos1);
-       guangXiao1->runAction(Sequence::create(Spawn::create(ScaleTo::create(5.0/24, scaleX,1.2f),MoveTo::create(5.0/24, pos2),
+    
+    guangXiao1->setPosition(pos1);
+    guangXiao1->runAction(Sequence::create(Spawn::create(ScaleTo::create(5.0/24, scaleX,1.2f),MoveTo::create(5.0/24, pos2),
                                                          FadeTo::create(5.0/24, 200),NULL),
                                            Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0), NULL),
                                            NULL));
     
-   guangXiao2->setPosition(pos2);
+    guangXiao2->setPosition(pos2);
     guangXiao2->runAction(Sequence::create(Spawn::create(ScaleTo::create(5.0/24,scaleX,1.2f),MoveTo::create(5.0/24, pos1), FadeTo::create(5.0/24, 200),NULL),
-    Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0),NULL),NULL));
+                                           Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0),NULL),NULL));
 }
 
 
@@ -104,11 +104,11 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     auto spec = Sprite::create();
     spec->setPosition(getPosbySeat(seatid));
     addChild(spec);
-
+    
     auto sequ0 =Sequence::create(DelayTime::create(5.0f/24),CallFunc::create([=](){
         bgLight->setVisible(true);
     }), Spawn::create(ScaleTo::create(2.0f/24,2.0f),FadeTo::create(2.0f/24,255), NULL), ScaleTo::create(2.0/24, 0.8f), ScaleTo::create(2.0/24, 1.0f),Repeat::create(Sequence::create(CallFunc::create([=](){
-               showBgLight(spec);
+        showBgLight(spec);
     }),DelayTime::create(6.0f/24), NULL), 20),NULL);
     bgLight->runAction(sequ0);
     
@@ -149,25 +149,30 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     
     if(hutype == MahjongHuType::gangkaiHu){
         auto gang = Sprite::create("gameview/gang_kai.png");
-        gang->setPosition(getPosbySeat(seatid));
+        gang->setPosition(getPosbySeat(seatid).x+15,getPosbySeat(seatid).y);
         addChild(gang);
         gang->setVisible(false);
-        gang->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        gang->runAction(Sequence::create(DelayTime::create(2.0/24),CallFunc::create([=](){
+            gang->setVisible(true);
+        }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             ((MahjongView*)getParent())->showHandPokerOver(seatid);
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
         
         auto kai = Sprite::create("gameview/gang_kai2.png");
-        kai->setPosition(getPosbySeat(seatid));
+        kai->setPosition(getPosbySeat(seatid).x-15,getPosbySeat(seatid).y);
         addChild(kai);
         kai->setVisible(false);
-        kai->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        kai->runAction(Sequence::create(DelayTime::create(5.0/24),CallFunc::create([=](){
+            kai->setVisible(true);
+        }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             ((MahjongView*)getParent())->showHandPokerOver(seatid);
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        
     }else if(hutype == MahjongHuType::qianggangHu){
         auto gang = Sprite::create("gameview/qg_font_qiang.png");
-        gang->setPosition(getPosbySeat(seatid));
+        gang->setPosition(getPosbySeat(seatid).x+20,getPosbySeat(seatid).y);
         addChild(gang);
         gang->setVisible(false);
         gang->runAction(Sequence::create(DelayTime::create(2.0/24),CallFunc::create([=](){
@@ -178,7 +183,7 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
         
         auto kai = Sprite::create("gameview/qg_font_gang.png");
-        kai->setPosition(getPosbySeat(seatid));
+        kai->setPosition(getPosbySeat(seatid).x-20,getPosbySeat(seatid).y);
         addChild(kai);
         kai->setVisible(false);
         kai->runAction(Sequence::create(DelayTime::create(5.0/24),CallFunc::create([=](){
@@ -232,9 +237,9 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     auto remove = Sprite::create();
     addChild(remove);
     remove->runAction(Sequence::create(DelayTime::create(60.0/24),CallFunc::create([=](){
-               this->removeFromParent();
+        this->removeFromParent();
     }), NULL));
-
+    
     
 }
 
@@ -271,7 +276,6 @@ Point HupaiAnim :: getPosbySeat(int seatId){
     }else if(seatId == ClientSeatId::opposite){
         return Point(640,550);
     }else {
-        
         return Point(640,220);
     }
 }

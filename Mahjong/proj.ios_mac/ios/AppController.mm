@@ -92,7 +92,7 @@ static AppDelegate s_sharedApplication;
     
     // 向微信注册
     [WXApi registerApp:AppID];
-
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES ] ;
     return YES;
 }
 

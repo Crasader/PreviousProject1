@@ -41,6 +41,8 @@ bool MahjongView::init(){
         }
         addPlayer2Room();
     }
+    TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s不同意解散房间","ssss"));
+    addChild(dia,50);
     return true;
 }
 
@@ -776,32 +778,41 @@ void MahjongView::addGameResultListener(){
             bool zimoState = false;
             bool gangkaiState = false;
             bool qianggangState = false;
-            bool isliuju = false;
+            bool isliuju = true;
             vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
             for (GameResultData data: results) {
                 if(data.result==1){
-                    if(data.huType.find("3")){
-                        //杠开
-                        seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                        gangkaiState = true;
-                    }else{
-                        //自摸
+                    bool find = true;
+                    vector<std::string> hu = StringUtil::split(data.huType, ",");
+                    for(auto var:hu){
+                        if(var == "3"){
+                            seatId1 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                            gangkaiState = true;
+                            find = false;
+                        }
+                    }
+                    //自摸
+                    if(find){
                         seatId1 =   SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
                         zimoState=true;
                     }
+                    isliuju = false;
                 }else if(data.result==2){
                     //点炮
+                    isliuju = false;
                     seatId1 = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
                 }else if(data.result==3){
                     //普通赢
-                    if(data.huType.find("12")){
-                        qianggangState = true;
-                        seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                    }else{
-                        seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.seatId));
+                    isliuju = false;
+                    vector<std::string> hu = StringUtil::split(data.huType, ",");
+                    for(auto var:hu){
+                        if(var == "12"){
+                            qianggangState = true;
+                            seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                            break;
+                        }
                     }
-                }else{
-                    isliuju = true;
+                    seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.seatId));
                 }
             }
             if(zimoState){
@@ -1431,7 +1442,7 @@ void MahjongView::addPlayerOffLineListener(){
 void MahjongView::addPlayerResumeListener(){
     playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsRecover(true);
-        Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
+        Director::getInstance()->replaceScene(MjGameScene::create());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
 }

@@ -13,6 +13,7 @@
 #include "game/mahjong/chat/FaceChatLayer.hpp"
 #include "game/utils/StringUtil.h"
 #include "game/mahjong/chat/PlayerChatManage.hpp"
+#include "game/mahjong/widget/HeadImage.hpp"
 
 ChatDialog* ChatDialog::create(std::string poxiaoId){
     ChatDialog* cell = new ChatDialog();
@@ -142,56 +143,7 @@ void ChatDialog:: showChatInfo(ChatData data){
     customItem->setLayoutType(Layout::Type::ABSOLUTE);
     customItem->setContentSize(Size(720,100));
     //显示聊天的头像
-    Sprite* iamge = Sprite::create();
-    if(chatPid == ""){
-        for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
-            if(data.poxiaoId == player->getPoxiaoId()){
-                if(player->getPicture() == "1"){
-                    iamge->setTexture("gameview/head_image_1.png");
-                }else if(player->getPicture() == "2"){
-                    iamge->setTexture("gameview/head_image_2.png");
-                }else if(player->getPicture() == "3"){
-                    iamge->setTexture("gameview/head_image_3.png");
-                }else if(player->getPicture() == "4"){
-                    iamge->setTexture("gameview/head_image_4.png");
-                }else{
-                    log("服务器下发的头像图片不存在");
-                    iamge->setTexture("gameview/head_image_1.png");
-                }
-            }
-        }
-    }else{
-        for(auto player : GAMEDATA::getInstance()->getFriendList().friends){
-            if(data.poxiaoId == player.poxiaoId){
-                if(player.pic == "1"){
-                    iamge->setTexture("gameview/head_image_1.png");
-                }else if(player.pic== "2"){
-                    iamge->setTexture("gameview/head_image_2.png");
-                }else if(player.pic == "3"){
-                    iamge->setTexture("gameview/head_image_3.png");
-                }else if(player.pic == "4"){
-                    iamge->setTexture("gameview/head_image_4.png");
-                }else{
-                    log("服务器下发的头像图片不存在");
-                    iamge->setTexture("gameview/head_image_1.png");
-                }
-            }
-        }
-        if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
-            if(UserData::getInstance()->getPicture() == "1"){
-                iamge->setTexture("gameview/head_image_1.png");
-            }else if(UserData::getInstance()->getPicture()== "2"){
-                iamge->setTexture("gameview/head_image_2.png");
-            }else if(UserData::getInstance()->getPicture() == "3"){
-                iamge->setTexture("gameview/head_image_3.png");
-            }else if(UserData::getInstance()->getPicture() == "4"){
-                iamge->setTexture("gameview/head_image_4.png");
-            }else{
-                log("服务器下发的头像图片不存在");
-                iamge->setTexture("gameview/head_image_1.png");
-            }
-        }
-    }
+    HeadImage* iamge = HeadImage::create(Size(70,70));
     customItem->addChild(iamge);
     listView->pushBackCustomItem(customItem);
     listView->jumpToBottom();

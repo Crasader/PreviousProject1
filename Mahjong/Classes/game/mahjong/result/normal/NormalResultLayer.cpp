@@ -53,11 +53,14 @@ void NormalResultLayer::showGameResult(){
             if(data.result == 0){
                 resultTitle->setTexture("result/public_da_jiang_you.png");
             }else if(data.result == 1){
-                if(data.huType.find("3")){
-                    resultTitle->setTexture("result/game_result_gangkai.png");
-                }else{
-                   resultTitle->setTexture("result/public_zimo.png"); 
+                vector<std::string> hu = StringUtil::split(data.huType, ",");
+                for(auto var:hu){
+                    if(var == "3"){
+                        resultTitle->setTexture("result/game_result_gangkai.png");
+                        return;
+                    }
                 }
+                resultTitle->setTexture("result/public_zimo.png");
             }else if(data.result == 2){
                 resultTitle->setTexture("result/public_chuchong.png");
             }else if(data.result == 3){
@@ -130,7 +133,7 @@ void NormalResultLayer::showLayerBtn(){
                                            CC_CALLBACK_0(NormalResultLayer::continueGame, this));
     
     Menu* myMneu = Menu::create();
-    if(GAMEDATA::getInstance()->getMahjongRoomType() ==  MahjongRoom::privateRoom){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
         myMneu->addChild(quitImage);
     }
     myMneu->addChild(helpImage);

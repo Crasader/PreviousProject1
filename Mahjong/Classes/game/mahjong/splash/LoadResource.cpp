@@ -27,7 +27,6 @@ bool LoadResource::init(){
         return false;
     }
     showHealthLayer();
-
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     showHealthLayer();
     std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
@@ -46,7 +45,7 @@ bool LoadResource::init(){
 
 void LoadResource::showHealthLayer(){
     auto health = Sprite::create("mainlogin/health.png");
-    health->setPosition(720,300);
+    health->setPosition(640,360);
     addChild(health);
     health->runAction(Sequence::create(DelayTime::create(2.0f),CallFunc::create([=](){
         Director::getInstance()->replaceScene(TransitionFade::create(1.5f, SplashScene::createScene()));

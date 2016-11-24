@@ -23,6 +23,7 @@ void GAMEDATA::init(){
     setWaitNetwork(false);
     setNeedShowLayer(false);
     setShowDialogType(-1);
+    setHaveShowNotice(false);
     setHeartCount(0);
     setScore(0);
     setHuangfan("0");

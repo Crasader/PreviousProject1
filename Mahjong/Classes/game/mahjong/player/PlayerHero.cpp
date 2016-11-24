@@ -36,9 +36,9 @@ void PlayerHero::initData() {
     playedIcon = Sprite::create("gameview/arrows.png");
     playedIcon->setVisible(false);
     addChild(playedIcon, 666);
-//    jongSeclectIcon = Sprite::create("gameview/poker_select.png");
-//    jongSeclectIcon->setVisible(false);
-//    addChild(jongSeclectIcon,10);
+    //    jongSeclectIcon = Sprite::create("gameview/poker_select.png");
+    //    jongSeclectIcon->setVisible(false);
+    //    addChild(jongSeclectIcon,10);
     setCpgPostionX(JONG_POS_START_X);
 }
 
@@ -155,7 +155,7 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
             }else{
                 doubleClickJong = getTouchJong(touch);
                 if(NULL != doubleClickJong)
-                     updateSelectedInfo(doubleClickJong);
+                    updateSelectedInfo(doubleClickJong);
             }
         }
     }
@@ -168,10 +168,10 @@ void PlayerHero::updateSelectedInfo(Jong* jong){
             var->setJongSelectIcon(true);
         }else{
             var->setJongSelectIcon(false);
-
+            
         }
     }
-
+    
 }
 
 Jong* PlayerHero::getTouchJong(Touch *touch){
@@ -264,11 +264,19 @@ void PlayerHero::drawPlayerHero() {
 void PlayerHero::updateHandJongs(std::string jongs,bool hu){
     vector<std::string> pokers = StringUtil::split(jongs, ",");
     if(hu){
-        for (int a = 0; a < pokers.size(); a++){
-            if(GAMEDATA::getInstance()->getDiaopao() == pokers.at(a)){
-                swap(pokers.at(a), pokers.at(pokers.size()-1));
+        vector<std::string>::iterator itor;
+        for(itor=pokers.begin();itor!=pokers.end();)
+        {
+            if(GAMEDATA::getInstance()->getDiaopao()==*itor)
+            {
+                itor=pokers.erase(itor);
             }
+            else  
+            {  
+                itor++;  
+            }  
         }
+        pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
     }
     for (int i = 0; i < pokers.size(); i++)
     {
@@ -279,7 +287,6 @@ void PlayerHero::updateHandJongs(std::string jongs,bool hu){
         }else{
             jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i, JONG_POS_Y));
         }
-        
         addChild(jong);
     }
     
@@ -303,8 +310,8 @@ void PlayerHero::resetHandJongsY(Jong* jong) {
             playerHandJongs.at(i)->setPosition(
                                                Point(playerHandJongs.at(i)->getPositionX(), JONG_POS_Y));
     }
-//    if(NULL != jongSeclectIcon &&playerHandJongs.size()>0)
-//        jongSeclectIcon->setPositionY(playerHandJongs.at(0)->getPositionY());
+    //    if(NULL != jongSeclectIcon &&playerHandJongs.size()>0)
+    //        jongSeclectIcon->setPositionY(playerHandJongs.at(0)->getPositionY());
 }
 
 void PlayerHero::drawReady(bool ready){

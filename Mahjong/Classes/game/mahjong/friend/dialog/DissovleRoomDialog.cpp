@@ -50,12 +50,14 @@ bool DissovleRoomDialog::init(){
     auto confirm = MenuItemImage::create("friend/agree_btn_1.png", "friend/agree_btn_2.png",
                                          CC_CALLBACK_0(DissovleRoomDialog::agree, this));
     auto disagree = MenuItemImage::create("friend/dis_agree_btn_1.png", "friend/dis_agree_btn_2.png",
-                                          CC_CALLBACK_0(DissovleRoomDialog::agree, this));
+                                          CC_CALLBACK_0(DissovleRoomDialog::disAgree, this));
     auto confirmMenu = Menu::create(confirm,disagree, NULL);
     confirmMenu->alignItemsHorizontallyWithPadding(5);
     confirmMenu->setPosition(640, 240);
     addChild(confirmMenu);
-    
+    schedule([=](float dt){
+        closeView();
+    }, 0, 0,60,"paopaotang");
     return true;
 }
 
