@@ -75,7 +75,7 @@ bool PlayerResultCell::init(GameResultData data){
     
     auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 40, 64, '0');
     resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    resultNum->setPosition(450,0);
+    resultNum->setPosition(450,-5);
     addChild(resultNum);
     
     if(data.result == 1||data.result == 3){
@@ -104,7 +104,11 @@ bool PlayerResultCell::init(GameResultData data){
             std::vector<std::string> hutypeInfo = StringUtil::split(data.huType, ",");
             std::string hu = "";
             for (int i = 0; i < hutypeInfo.size(); i++){
-                hu += ChineseWord(hutypeInfo.at(i).c_str());
+                if(i!=0){
+                    hu += ","+ChineseWord(hutypeInfo.at(i).c_str());
+                }else{
+                    hu += ChineseWord(hutypeInfo.at(i).c_str());
+                }
             }
             auto hutype = Label::createWithSystemFont(StringUtils::format("%s",hu.c_str()),"Arial",20);
             hutype->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);

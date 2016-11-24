@@ -53,16 +53,16 @@ void NormalResultLayer::showGameResult(){
             if(data.result == 0){
                 resultTitle->setTexture("result/public_da_jiang_you.png");
             }else if(data.result == 1){
-                resultTitle->setTexture("result/public_zimo.png");
+                if(data.huType.find("3")){
+                    resultTitle->setTexture("result/game_result_gangkai.png");
+                }else{
+                   resultTitle->setTexture("result/public_zimo.png"); 
+                }
             }else if(data.result == 2){
                 resultTitle->setTexture("result/public_chuchong.png");
             }else if(data.result == 3){
                 //检查是否含有杠开的胡牌类型
-                if(data.huType.find("3")){
-                    resultTitle->setTexture("result/game_result_gangkai.png");
-                }else{
-                    resultTitle->setTexture("result/public_hupai.png");
-                }
+                resultTitle->setTexture("result/public_hupai.png");
             }else if(data.result == 4){
                 resultTitle->setTexture("result/public_shu.png");
             }

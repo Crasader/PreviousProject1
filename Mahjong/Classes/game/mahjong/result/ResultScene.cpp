@@ -26,7 +26,7 @@
 
 Scene* ResultScene::createScene(int type)
 {
-    //     initTestData();
+//    initTestData();
     auto scene = Scene::create();
     if(type == 0){
         NormalResultLayer* layer = NormalResultLayer::create();
@@ -54,7 +54,7 @@ void ResultScene::initTestData(){
     vector<GameResultData> gameResults;
     for (int i = 0; i < 4; i++){
         GameResultData resultData;
-        resultData.result = 2;
+        resultData.result = 1;
         resultData.gold = 100;
         resultData.diamond = 100;
         resultData.jifen =10;
@@ -67,7 +67,7 @@ void ResultScene::initTestData(){
         resultData.umark ="100010000";
         resultData.hua = 3;
         resultData.showPoker = "1,2,3,4,5,5,5,5";
-        resultData.huType = "1";
+        resultData.huType = "1,2,3";
         resultData.nickName = "这里是装电视台";
         gameResults.push_back(resultData);
     }

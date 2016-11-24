@@ -776,30 +776,32 @@ void MahjongView::addGameResultListener(){
             bool zimoState = false;
             bool gangkaiState = false;
             bool qianggangState = false;
-            bool isliuju = true;
+            bool isliuju = false;
             vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
             for (GameResultData data: results) {
                 if(data.result==1){
-                    //自摸
-                    seatId1 =   SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                    zimoState=true;
-                    isliuju =false;
+                    if(data.huType.find("3")){
+                        //杠开
+                        seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                        gangkaiState = true;
+                    }else{
+                        //自摸
+                        seatId1 =   SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                        zimoState=true;
+                    }
                 }else if(data.result==2){
                     //点炮
                     seatId1 = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                    isliuju =false;
                 }else if(data.result==3){
                     //普通赢
-                    isliuju =false;
-                    if(data.huType=="3"){
-                        gangkaiState = true;
-                        seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                    }else if(data.huType=="12"){
+                    if(data.huType.find("12")){
                         qianggangState = true;
                         seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
                     }else{
-                        seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId));
+                        seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.seatId));
                     }
+                }else{
+                    isliuju = true;
                 }
             }
             if(zimoState){
