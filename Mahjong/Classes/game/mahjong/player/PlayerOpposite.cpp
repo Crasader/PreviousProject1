@@ -230,14 +230,26 @@ void PlayerOpposite::recoverHua(int hua){
 }
 
 
-void PlayerOpposite::updateHandJongs(std::string jongs){
+void PlayerOpposite::updateHandJongs(std::string jongs,bool hu){
     vector<std::string> pokers = StringUtil::split(jongs, ",");
+    if(hu){
+        for (int a = 0; a < pokers.size(); a++){
+            if(GAMEDATA::getInstance()->getDiaopao() == pokers.at(a)){
+                swap(pokers.at(a), pokers.at(pokers.size()-1));
+            }
+        }
+    }
+
     for (int i = 0; i < pokers.size(); i++)
     {
         Jong* jong = Jong::create();
         jong->showJong(oppositeplayed, atoi(pokers.at(i).c_str()));
-        jong->setPosition(Point(OPPOSITE_POS_X + 32 * i, OPPOSITE_POS_Y));
-        this->addChild(jong);
+        if(hu&&i==pokers.size()-1){
+            jong->setPosition(Point(OPPOSITE_POS_X + 32 * i+8, OPPOSITE_POS_Y));
+        }else{
+            jong->setPosition(Point(OPPOSITE_POS_X + 32 * i, OPPOSITE_POS_Y));
+        }
+        addChild(jong);
     }
     
 }

@@ -959,51 +959,51 @@ void MahjongView::showHandPokerOver(int seatId){
     //翻牌
     if(seatId == ClientSeatId::left){
         playerLeft->hideHandJongs();
-        playerLeft->updateHandJongs(leftJongs);
+        playerLeft->updateHandJongs(leftJongs,true);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs);
+            playerRight->updateHandJongs(rightJongs,false);
             playerOpposite->hideHandJongs();
-            playerOpposite->updateHandJongs(oppositeJongs);
+            playerOpposite->updateHandJongs(oppositeJongs,false);
             playerHero->hideHandJongs();
-            playerHero->updateHandJongs(heroJongs);
+            playerHero->updateHandJongs(heroJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");
     }else if(seatId == ClientSeatId::opposite){
         playerOpposite->hideHandJongs();
-        playerOpposite->updateHandJongs(oppositeJongs);
+        playerOpposite->updateHandJongs(oppositeJongs,true);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs);
+            playerRight->updateHandJongs(rightJongs,false);
             playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs);
+            playerLeft->updateHandJongs(leftJongs,false);
             playerHero->hideHandJongs();
-            playerHero->updateHandJongs(heroJongs);
+            playerHero->updateHandJongs(heroJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");
     }else if(seatId == ClientSeatId::right){
         playerRight->hideHandJongs();
-        playerRight->updateHandJongs(rightJongs);
+        playerRight->updateHandJongs(rightJongs,true);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerOpposite->hideHandJongs();
-            playerOpposite->updateHandJongs(oppositeJongs);
+            playerOpposite->updateHandJongs(oppositeJongs,false);
             playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs);
+            playerLeft->updateHandJongs(leftJongs,false);
             playerHero->hideHandJongs();
-            playerHero->updateHandJongs(heroJongs);
+            playerHero->updateHandJongs(heroJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");
     }else{
         playerHero->hideHandJongs();
-        playerHero->updateHandJongs(heroJongs);
+        playerHero->updateHandJongs(heroJongs,true);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerOpposite->hideHandJongs();
-            playerOpposite->updateHandJongs(oppositeJongs);
+            playerOpposite->updateHandJongs(oppositeJongs,false);
             playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs);
+            playerRight->updateHandJongs(rightJongs,false);
             playerHero->hideHandJongs();
-            playerHero->updateHandJongs(heroJongs);
+            playerHero->updateHandJongs(heroJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");
     }
     

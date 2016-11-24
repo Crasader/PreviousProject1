@@ -1139,10 +1139,6 @@
 		D2B1A7B51CCDF0F300A20896 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
-				D2FBB56F1DD30B890044E2D5 /* wanjiaqun */,
-				D2EF93C31DD050A000360BCF /* loading */,
-				D2F05F6B1D8E75F6006E5A4C /* widget */,
-				D2F05F4A1D8E7500006E5A4C /* heroinfo */,
 				D2B1A7B61CCDF0F300A20896 /* anim */,
 				D22EEF671D66CFC800BF1CCB /* bill */,
 				D2B1A7BF1CCDF0F300A20896 /* chat */,
@@ -1150,7 +1146,9 @@
 				D22EEF891D66D14D00BF1CCB /* daily */,
 				D2B1A7CB1CCDF0F300A20896 /* dialog */,
 				D22EEF6C1D66CFC800BF1CCB /* friend */,
+				D2F05F4A1D8E7500006E5A4C /* heroinfo */,
 				D2B1A82A1CCDF0F300A20896 /* jong */,
+				D2EF93C31DD050A000360BCF /* loading */,
 				D2B1A82D1CCDF0F300A20896 /* lobby */,
 				D2B1A8321CCDF0F300A20896 /* player */,
 				D28A4A141D056B4700741FD0 /* result */,
@@ -1160,6 +1158,8 @@
 				D226FD251D051DBA00324097 /* splash */,
 				D2B1A8441CCDF0F300A20896 /* state */,
 				D22EEFB61D66D14D00BF1CCB /* trusteeship */,
+				D2FBB56F1DD30B890044E2D5 /* wanjiaqun */,
+				D2F05F6B1D8E75F6006E5A4C /* widget */,
 			);
 			path = mahjong;
 			sourceTree = "<group>";

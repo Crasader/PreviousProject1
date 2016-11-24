@@ -23,7 +23,7 @@ public:
 	void recoverPlayed(std::string played);
 	void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
 	void recoverHand(std::string hand);
-    void updateHandJongs(std::string jongs);
+    void updateHandJongs(std::string jongs,bool hu);
 	CREATE_FUNC(PlayerRight);
 
 private:

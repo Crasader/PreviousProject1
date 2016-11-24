@@ -348,13 +348,25 @@ void PlayerLeft::recoverHand(std::string hand){
     }
 }
 
-void PlayerLeft::updateHandJongs(std::string jongs){
+void PlayerLeft::updateHandJongs(std::string jongs,bool hu){
     vector<std::string> pokers = StringUtil::split(jongs, ",");
+    if(hu){
+        for (int a = 0; a < pokers.size(); a++){
+            if(GAMEDATA::getInstance()->getDiaopao() == pokers.at(a)){
+                swap(pokers.at(a), pokers.at(pokers.size()-1));
+            }
+        }
+    }
+
     for (int i = 0; i < pokers.size(); i++)
     {
         Jong* jong = Jong::create();
         jong->showJong(leftplayed, atoi(pokers.at(i).c_str()));
-        jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i));
+        if(hu&&i==pokers.size()-1){
+             jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i+8));
+        }else{
+             jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i));
+        }
         playerHandJongs.pushBack(jong);
         this->addChild(jong,60-i);
         

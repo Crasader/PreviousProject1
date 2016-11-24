@@ -339,19 +339,30 @@ void PlayerRight::recoverHand(std::string hand){
         Jong* jong = Jong::create();
         jong->showJong(righthand, -1);
         jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 35 * i));
-        this->addChild(jong, 2);
+        addChild(jong, 2);
         playerHandJongs.pushBack(jong);
     }
 }
 
-void PlayerRight::updateHandJongs(std::string jongs){
+void PlayerRight::updateHandJongs(std::string jongs,bool hu){
     vector<std::string> pokers = StringUtil::split(jongs, ",");
+    if(hu){
+        for (int a = 0; a < pokers.size(); a++){
+            if(GAMEDATA::getInstance()->getDiaopao() == pokers.at(a)){
+                swap(pokers.at(a), pokers.at(pokers.size()-1));
+            }
+        }
+    }
     for (int i = 0; i < pokers.size(); i++)
     {
         Jong* jong = Jong::create();
         jong->showJong(rightplayed, atoi(pokers.at(i).c_str()));
-        jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i));
-        this->addChild(jong, 2);
+        if(hu&&i==pokers.size()-1){
+            jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i-8));
+        }else{
+            jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i));
+        }
+        addChild(jong, 2);
     }
     
 }
