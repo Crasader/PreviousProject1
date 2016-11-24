@@ -1,5 +1,6 @@
 #include "game/mahjong/jong/Jong.h"
 
+
 bool Jong::init(){
     if (!Node::init()){
         return false;
@@ -8,6 +9,9 @@ bool Jong::init(){
     addChild(background);
     contentSprite = Sprite::create();
     addChild(contentSprite);
+    selcetedIcon = Sprite::create("gameview/poker_select.png");
+    selcetedIcon->setVisible(false);
+    addChild(selcetedIcon);
     return true;
 }
 
@@ -39,6 +43,10 @@ Rect Jong::getJongBoundingBox(){
                      contentSprite->getBoundingBox().size.height);
     }
     return rect;
+}
+
+void Jong::setJongSelectIcon(bool show){
+    selcetedIcon->setVisible(show);
 }
 
 

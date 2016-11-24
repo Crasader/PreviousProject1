@@ -70,7 +70,7 @@ private:
     Jong* selectJong;
     Jong* virtualJong;
     Jong* doubleClickJong;
-    Sprite* jongSeclectIcon;
+//    Sprite* jongSeclectIcon;
     
     void initData();
     void addTouchListener();
@@ -82,8 +82,7 @@ private:
     void sendPokerRequest(int poker);
     void playedPokerAuto(bool send);
     void playPokerByHand(Jong* jong);
-    void showJongSelectIcon(Point pos);
-    void hideJongSelectIcon();
+    void updateSelectedInfo(Jong* jong);
     float distance(Point pos1, Point pos2);
     Point getHeroPlayedJongsPos(int index);
     Vector<Jong*>  upsetJongs(Vector<Jong*> jongs);

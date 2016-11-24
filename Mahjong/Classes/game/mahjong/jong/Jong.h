@@ -42,11 +42,13 @@ public:
 	Rect getJongBoundingBox();
 	static std::string getContextImage(int btype);
     std::string getJongName(int type);
+    void setJongSelectIcon(bool show);
  	CC_SYNTHESIZE(int, jongType, JongType);
 	CREATE_FUNC(Jong);
 private:
 	Sprite* background;
 	Sprite* contentSprite;
+    Sprite* selcetedIcon;
 	float getScaleByType(int bType);
 	void setFlipByType(Sprite* sprite,int bType);
 	float getRotationByType(int bType);

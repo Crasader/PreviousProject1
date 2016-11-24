@@ -36,9 +36,9 @@ void PlayerHero::initData() {
     playedIcon = Sprite::create("gameview/arrows.png");
     playedIcon->setVisible(false);
     addChild(playedIcon, 666);
-    jongSeclectIcon = Sprite::create("gameview/poker_select.png");
-    jongSeclectIcon->setVisible(false);
-    addChild(jongSeclectIcon,10);
+//    jongSeclectIcon = Sprite::create("gameview/poker_select.png");
+//    jongSeclectIcon->setVisible(false);
+//    addChild(jongSeclectIcon,10);
     setCpgPostionX(JONG_POS_START_X);
 }
 
@@ -70,14 +70,14 @@ void PlayerHero::setIsReady(bool b){
     }
 }
 
-void PlayerHero::showJongSelectIcon(Point pos){
-    jongSeclectIcon->setVisible(true);
-    jongSeclectIcon->setPosition(pos);
-}
+//void PlayerHero::showJongSelectIcon(Point pos){
+//    jongSeclectIcon->setVisible(true);
+//    jongSeclectIcon->setPosition(pos);
+//}
 
-void PlayerHero::hideJongSelectIcon(){
-    jongSeclectIcon->setVisible(false);
-}
+//void PlayerHero::hideJongSelectIcon(){
+//    jongSeclectIcon->setVisible(false);
+//}
 
 bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
     if (!this->getIsAllowTouch() || GAMEDATA::getInstance()->getIsTingState()){
@@ -85,7 +85,7 @@ bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
     }
     selectJong = getTouchJong(touch);
     if(NULL != selectJong){
-        showJongSelectIcon(selectJong->getPosition());
+        updateSelectedInfo(selectJong);
     }
     if(NULL != virtualJong){
         virtualJong->removeFromParent();
@@ -123,7 +123,7 @@ void PlayerHero::onTouchMoved(Touch *touch, Event *event) {
             else{
                 selectJong->setPosition(selectJong->getPositionX(), JONG_POS_Y);
             }
-            showJongSelectIcon(selectJong->getPosition());
+            updateSelectedInfo(selectJong);
         }
         if (virtualJong != NULL){
             virtualJong->removeFromParent();
@@ -155,10 +155,23 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
             }else{
                 doubleClickJong = getTouchJong(touch);
                 if(NULL != doubleClickJong)
-                    showJongSelectIcon(doubleClickJong->getPosition());
+                     updateSelectedInfo(doubleClickJong);
             }
         }
     }
+}
+
+
+void PlayerHero::updateSelectedInfo(Jong* jong){
+    for(auto var :playerHandJongs){
+        if(jong == var){
+            var->setJongSelectIcon(true);
+        }else{
+            var->setJongSelectIcon(false);
+
+        }
+    }
+
 }
 
 Jong* PlayerHero::getTouchJong(Touch *touch){
@@ -177,7 +190,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
     if(NULL != virtualJong){
         virtualJong = NULL;
     }
-    hideJongSelectIcon();
+    updateSelectedInfo(NULL);
     stopTimeClockAnim();
     PlayerBase::showPlayedJong(jong->getJongType());
     Point startPoint = jong->getPosition();
@@ -290,8 +303,8 @@ void PlayerHero::resetHandJongsY(Jong* jong) {
             playerHandJongs.at(i)->setPosition(
                                                Point(playerHandJongs.at(i)->getPositionX(), JONG_POS_Y));
     }
-    if(NULL != jongSeclectIcon &&playerHandJongs.size()>0)
-        jongSeclectIcon->setPositionY(playerHandJongs.at(0)->getPositionY());
+//    if(NULL != jongSeclectIcon &&playerHandJongs.size()>0)
+//        jongSeclectIcon->setPositionY(playerHandJongs.at(0)->getPositionY());
 }
 
 void PlayerHero::drawReady(bool ready){
@@ -770,6 +783,7 @@ void PlayerHero::actionQi(){
 
 
 void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
+    updateSelectedInfo(NULL);
     if (cpgResp.result == 1 || cpgResp.result == 2){
         PlayerBase::showPlayerChi(chipai.at(0)+","+chipai.at(1), playerBase);
         Vector<Jong*> chiVector;
@@ -839,6 +853,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
 
 void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
     Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
+    updateSelectedInfo(NULL);
     std::vector<string> pengpai = StringUtil::split(cpg.peng, ",");
     Vector<Jong*> pengVector;
     for (int i = 0; i < pengpai.size(); i++){
@@ -925,6 +940,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
 
 void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
+    updateSelectedInfo(NULL);
     if(cpg.flag == 0){
         std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
         Vector<Jong*> gangVector;
