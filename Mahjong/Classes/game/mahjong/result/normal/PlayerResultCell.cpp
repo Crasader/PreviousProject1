@@ -190,9 +190,14 @@ bool PlayerResultCell::init(GameResultData data){
             
         }
     }else{
+        auto jifenIcon =  Sprite::create("mjitem/jifen_icon.png");
+        jifenIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        jifenIcon->setPosition(230,-10);
+        addChild(jifenIcon);
+
         resultNum->setScale(1.0f);
         resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        resultNum->setPosition(270,-10);
+        resultNum->setPosition(300,-10);
     }
     
     return true;
