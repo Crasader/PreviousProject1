@@ -56,7 +56,7 @@ bool DissovleRoomDialog::init(){
     confirmMenu->setPosition(640, 240);
     addChild(confirmMenu);
     schedule([=](float dt){
-        closeView();
+        agree();
     }, 0, 0,60,"paopaotang");
     return true;
 }

@@ -41,8 +41,6 @@ bool MahjongView::init(){
         }
         addPlayer2Room();
     }
-    TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s不同意解散房间","ssss"));
-    addChild(dia,50);
     return true;
 }
 

@@ -33,11 +33,11 @@ bool TextHintDialog::init(std::string msg){
     
     auto dialogBg = Sprite::create("common/dialog_bg_small.png");
     dialogBg->setPosition(640, 360);
-    this->addChild(dialogBg);
+    addChild(dialogBg);
     
     auto title = Sprite::create("common/tishi_icon.png");
     title->setPosition(640, 500);
-    this->addChild(title);
+    addChild(title);
     
     auto thishiBg = Sprite::create("common/thishi_bg.png");
     thishiBg->setPosition(640, 375);

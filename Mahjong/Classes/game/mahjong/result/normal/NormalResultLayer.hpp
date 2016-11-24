@@ -9,6 +9,7 @@
 #ifndef NormalResultLayer_hpp
 #define NormalResultLayer_hpp
 #include "cocos2d.h"
+#include "game/mahjong/state/GameData.h"
 USING_NS_CC;
 
 class NormalResultLayer :public  Layer{
@@ -30,6 +31,7 @@ private:
     void gotoLobby();
     void updateTime(float dt);
     void afterCaptured(bool succeed, const std::string &outputFile);
-    void updateplayerData();
+    void updatePlayerData();
+    void showPrideAnim(GameResultData data);
 };
 #endif /* PublicResultLayer_hpp */

@@ -25,6 +25,8 @@
 #include "server/CommandManage.h"
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
+#include "game/utils/ParticleUtil.hpp"
+
 
 bool NormalResultLayer::init(){
     if(!Layer::init()){
@@ -38,7 +40,7 @@ bool NormalResultLayer::init(){
     showRoomInfo();
     showPlayerResluts();
     showLayerBtn();
-    updateplayerData();
+    updatePlayerData();
     return true;
 }
 
@@ -61,11 +63,13 @@ void NormalResultLayer::showGameResult(){
                     }
                 }
                 resultTitle->setTexture("result/public_zimo.png");
+                showPrideAnim(data);
             }else if(data.result == 2){
                 resultTitle->setTexture("result/public_chuchong.png");
             }else if(data.result == 3){
                 //检查是否含有杠开的胡牌类型
                 resultTitle->setTexture("result/public_hupai.png");
+                showPrideAnim(data);
             }else if(data.result == 4){
                 resultTitle->setTexture("result/public_shu.png");
             }
@@ -149,7 +153,7 @@ void NormalResultLayer::showLayerBtn(){
     schedule(schedule_selector(NormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
 }
 
-void NormalResultLayer::updateplayerData(){
+void NormalResultLayer::updatePlayerData(){
     for(GameResultData resData : GAMEDATA::getInstance()->getGameResults()){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
         for (int i = 0; i < players.size(); i++){
@@ -167,6 +171,18 @@ void NormalResultLayer::updateplayerData(){
 void NormalResultLayer::gotoLobby(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
     Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+}
+
+void NormalResultLayer::showPrideAnim(GameResultData data){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() != MahjongRoom::privateRoom){
+        if(data.golddelta>0&&data.lequandelta>0){
+            ParticleUtil* par = ParticleUtil::create(MyParticleType::goldAndLequan);
+            addChild(par,5);
+        }else{
+            ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
+            addChild(par,5);
+        }
+    }
 }
 
 

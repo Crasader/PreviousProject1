@@ -235,10 +235,16 @@ void BillInfo::updateBillInfo(){
 
 void BillInfo::showKongBill(){
     if(GAMEDATA::getInstance()->getBillInfoAll().bills.size()==0){
-        Label* lalala = Label::createWithSystemFont(ChineseWord("kongzhangdan"),"arial",20);
-        lalala -> setTag(1001);
-        lalala->setPosition(640,360);
-        addChild(lalala);
+        if(getChildByTag(1001)==NULL){
+            Label* lalala = Label::createWithSystemFont(ChineseWord("kongzhangdan"),"arial",20);
+            lalala -> setTag(1001);
+            if(getIsPrivateBill()){
+                lalala->setPosition(900,360);
+            }else{
+                lalala->setPosition(640,360);
+            }
+            addChild(lalala);
+        }
     }else{
         if(NULL != getChildByTag(1001)){
             getChildByTag(1001)->removeFromParent();
@@ -262,7 +268,6 @@ void BillInfo::setShowPosition(){
     setIsPrivateBill(true);
     getChildByTag(101)->setPositionX(890);
     getChildByTag(102)->setPositionX(1230);
-    getChildByTag(103)->setPositionX(890);
     getChildByTag(104)->setPositionX(890);
     getChildByTag(105)->setPositionX(525);
     getChildByTag(2016)->setPositionX(605);
