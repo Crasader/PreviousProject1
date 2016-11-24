@@ -18,7 +18,9 @@ class DissovleRoomDialog : public Layer{
 public:
     bool init();
     CREATE_FUNC(DissovleRoomDialog);
+    void setNickName(std::string msg);
 private:
+    Label* nickNameText;
     void agree();
     void disAgree();
     void closeView();

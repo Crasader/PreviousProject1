@@ -241,7 +241,7 @@ void LobbyScene::drawSceneBot(){
     bot_bg->setPosition(955,48);
     addChild(bot_bg);
     
-     auto btn_1 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
+    auto btn_1 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
     auto btn_2 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
     auto btn_3 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_4 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
@@ -444,7 +444,7 @@ void LobbyScene:: openRoom(){
 
 void LobbyScene::joinRoom(){
     if(checkCilckabale()){
-         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
         isButtonCilckable = false;
         clickTime = 0;
     }
@@ -469,8 +469,9 @@ void LobbyScene::onEnter(){
 }
 
 void LobbyScene::onEnterTransitionDidFinish(){
-  NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
-  NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
 }
 
 void LobbyScene::onExit(){
@@ -675,16 +676,16 @@ void LobbyScene::addEventListener(){
             ((ScrollTextEx*)getChildByTag(9980))->setScrollStr(msg);
         }
     });
-
+    
     wanjiaqunListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_WEI_XIN_QUN, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getWanJiaQunVer()>UserData::getInstance()->getWanJiaQunVersion()){
             UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL);
         }
         if(GAMEDATA::getInstance()->getDailiQunVer()>UserData::getInstance()->getDailiQunVersion()){
-             UrlImageMannger::getInstance()->downloadDailiImgByUrl(WECHAT_DAI_LI_QUN_URL);
+            UrlImageMannger::getInstance()->downloadDailiImgByUrl(WECHAT_DAI_LI_QUN_URL);
         }
     });
-
+    
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

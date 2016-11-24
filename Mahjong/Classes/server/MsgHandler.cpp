@@ -506,6 +506,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleWanJiaQunResp(msg);
             break;
         }
+        case MSGCODE_GONGGAO_RESPONSE:{
+            handleNoticeResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2781,7 +2785,11 @@ void MsgHandler::handleDissovleRoomNotify(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, "");
+    if(_mDoc.HasMember("nickName")){
+        const rapidjson::Value &nickName = _mDoc["nickName"];
+        std::string name = nickName.GetString();
+        postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, name);
+    }
 }
 
 void MsgHandler::handleDissovleRoomSelectedNotify(std::string msg){
@@ -2848,7 +2856,21 @@ void MsgHandler::handleWanJiaQunResp(std::string msg){
     postNotifyMessage(MSG_WAN_JIA_WEI_XIN_QUN, "");
 }
 
-
+void MsgHandler::handleNoticeResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+//    if(_mDoc.HasMember("ver1")){
+//        const rapidjson::Value &ver1 = _mDoc["ver1"];
+//        GAMEDATA::getInstance()->setWanJiaQunVer(atoi(ver1.GetString()));
+//    }
+//    if(_mDoc.HasMember("ver2")){
+//        const rapidjson::Value &ver2 = _mDoc["ver2"];
+//        GAMEDATA::getInstance()->setDailiQunVer(atoi(ver2.GetString()));
+//    }
+    postNotifyMessage(MSG_WAN_JIA_GONG_GAO, "");
+}
 
 
 

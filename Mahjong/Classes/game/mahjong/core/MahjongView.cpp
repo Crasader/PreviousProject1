@@ -1097,6 +1097,8 @@ void MahjongView::addCoustomListener(){
     
     dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
+        std::string name = static_cast<char*>(event->getUserData());
+        dis->setNickName(name);
         addChild(dis,1000);
     });
     
@@ -1119,9 +1121,6 @@ void MahjongView::addCoustomListener(){
     
     //断线续玩
     lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
-        //游戏进入托管状态
-        //        trusteeship->setVisible(true);
-        //        GAMEDATA::getInstance()->setIsTrusteeship(true);
         //重新绘制玩家的牌和话
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());

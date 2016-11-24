@@ -86,6 +86,7 @@ public:
     std::string getEnterRoomRequestCommand();
     std::string getScrollTextCommand();
     std::string getWanJiaQunCommand();
+    std::string getNoticeCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

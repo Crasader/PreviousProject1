@@ -33,16 +33,10 @@ bool DissovleRoomDialog::init(){
     thishiBg->setPosition(640, 375);
     addChild(thishiBg);
     
-    std::string  name ="";
-    for(auto var :GAMEDATA::getInstance()->getPlayersInfo()){
-        if(GAMEDATA::getInstance()->getFangZhuId() == var->getPoxiaoId()){
-            name =var->getNickname();
-        }
-    }
-    Label* text = Label::createWithSystemFont(StringUtils::format("房主%s申请解散房间",name.c_str()), "Arial", 30);
-    text->setColor(Color3B(38,158,228));
-    text->setPosition(640, 360);
-    addChild(text);
+    nickNameText = Label::createWithSystemFont("", "Arial", 30);
+    nickNameText->setColor(Color3B(38,158,228));
+    nickNameText->setPosition(640, 360);
+    addChild(nickNameText);
     
     
     
@@ -63,6 +57,10 @@ bool DissovleRoomDialog::init(){
     addChild(confirmMenu);
     
     return true;
+}
+
+void DissovleRoomDialog::setNickName(std::string msg){
+    nickNameText->setString(StringUtils::format("%s申请解散房间",msg.c_str()));
 }
 
 void DissovleRoomDialog::agree(){

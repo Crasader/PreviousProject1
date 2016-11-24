@@ -103,5 +103,6 @@ private:
     void handleQuitGameViewResp(std::string msg);
     void handleScrollTextResp(std::string msg);
     void handleWanJiaQunResp(std::string msg);
+    void handleNoticeResp(std::string msg);
 };
 #endif
