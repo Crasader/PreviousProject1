@@ -41,7 +41,7 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid, std::string url,
 		} else {
 			UserData::getInstance()->setGender(1);
 		}
-		UrlImageMannger::getInstance()->loadImgByUrl(url);
+		UrlImageMannger::getInstance()->loadHeadImgByUrl(url);
 		std::string msg = CommandManage::getInstance()->getThirdLoginCommand(
 				openid, url,sex,nickname);
 		if (msg != "") {

@@ -52,7 +52,7 @@ void HeadImage::updateImageByName(std::string image){
         }else if(UserData::getInstance()->getPicture() == "4"){
             setTexture("gameview/head_image_4.png");
         }else{
-            std::string path = UrlImageMannger::getInstance()->loadImgByUrl(UserData::getInstance()->getPicture());
+            std::string path = UrlImageMannger::getInstance()->loadHeadImgByUrl(UserData::getInstance()->getPicture());
             if(path == IAMGE_LOADING){
                 showImageBySex();
             }else{
@@ -74,7 +74,7 @@ void HeadImage::updateImageByName(std::string image){
             showImageBySex();
         }
         else{
-            std::string path = UrlImageMannger::getInstance()->loadImgByUrl(image);
+            std::string path = UrlImageMannger::getInstance()->loadHeadImgByUrl(image);
             if(path == IAMGE_LOADING){
                 showImageBySex();
             }else{

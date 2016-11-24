@@ -74,5 +74,6 @@ void DissovleRoomDialog::disAgree(){
 }
 
 void DissovleRoomDialog::closeView(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
     removeFromParent();
 }

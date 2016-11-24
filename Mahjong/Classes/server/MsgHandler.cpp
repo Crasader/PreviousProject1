@@ -2861,14 +2861,10 @@ void MsgHandler::handleNoticeResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-//    if(_mDoc.HasMember("ver1")){
-//        const rapidjson::Value &ver1 = _mDoc["ver1"];
-//        GAMEDATA::getInstance()->setWanJiaQunVer(atoi(ver1.GetString()));
-//    }
-//    if(_mDoc.HasMember("ver2")){
-//        const rapidjson::Value &ver2 = _mDoc["ver2"];
-//        GAMEDATA::getInstance()->setDailiQunVer(atoi(ver2.GetString()));
-//    }
+    if(_mDoc.HasMember("content")){
+        const rapidjson::Value &content = _mDoc["content"];
+        GAMEDATA::getInstance()->setNoticeUrl(content.GetString());
+    }
     postNotifyMessage(MSG_WAN_JIA_GONG_GAO, "");
 }
 

@@ -111,6 +111,7 @@ public:
     CC_SYNTHESIZE(string, privateRoomType, PrivateRoomType);
     CC_SYNTHESIZE(string, fee, Fee);
     CC_SYNTHESIZE(string, privateLezi, PrivateLezi);
+    CC_SYNTHESIZE(string, noticeUrl, NoticeUrl);
     CC_SYNTHESIZE(ChatData, chatData, ChatData);
     CC_SYNTHESIZE(RoomChatMsgList, roomChatMsgList, RoomChatMsgList);
     CC_SYNTHESIZE(FriendChatMsgList, friendChatMsgList, FriendChatMsgList);

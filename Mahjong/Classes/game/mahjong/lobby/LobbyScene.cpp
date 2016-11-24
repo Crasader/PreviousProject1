@@ -1,6 +1,7 @@
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/lobby/GoldRoomPlate.hpp"
 #include "game/mahjong/lobby/EnterRoomDialog.hpp"
+#include "game/mahjong/lobby/notice/NoticeDialog.hpp"
 #include "game/mahjong/heroinfo/HeroInfoEdit.h"
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/dialog/prompt/HintDialog.hpp"
@@ -686,6 +687,12 @@ void LobbyScene::addEventListener(){
         }
     });
     
+    //游戏公告
+    noticeUrlLitener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_GONG_GAO, [=](EventCustom* event){
+        NoticeDialog* nod = NoticeDialog::create();
+        nod->setContentImage(GAMEDATA::getInstance()->getNoticeUrl());
+        addChild(nod,100);
+    });
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

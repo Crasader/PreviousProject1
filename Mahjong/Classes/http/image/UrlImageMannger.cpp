@@ -26,7 +26,7 @@ UrlImageMannger* UrlImageMannger::getInstance(){
     return _instance;
 }
 
-std::string UrlImageMannger::loadImgByUrl(std::string url)
+std::string UrlImageMannger::loadHeadImgByUrl(std::string url)
 {
     std::string path = getImgNameByUrl(url);
     if (FileUtils::getInstance()->isFileExist(path))
@@ -41,6 +41,28 @@ std::string UrlImageMannger::loadImgByUrl(std::string url)
         fclose(fp);
         //发送刷新头像的事件
         EventCustom imageEvent(MSG_UPDATE_PLAYER_WECHAT_IMAGE);
+        Director::getInstance()->getEventDispatcher()->dispatchEvent(&imageEvent);
+        Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
+    HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
+    return IAMGE_LOADING;
+}
+
+std::string UrlImageMannger::loadNoticeImgByUrl(std::string url){
+    std::string path = getImgNameByUrl(url);
+    if (FileUtils::getInstance()->isFileExist(path))
+    {
+        return path;
+    }
+    EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
+        std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
+        std::string buff(buffer->begin(), buffer->end());
+        FILE *fp = fopen(path.c_str(), "wb+");
+        fwrite(buff.c_str(), 1, buffer->size(), fp);
+        fclose(fp);
+        //发送刷新头像的事件
+        EventCustom imageEvent(MSG_WAN_JIA_GONG_GAO_SHOW_DIALOG);
         Director::getInstance()->getEventDispatcher()->dispatchEvent(&imageEvent);
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });

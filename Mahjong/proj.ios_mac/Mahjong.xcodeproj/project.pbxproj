@@ -152,6 +152,8 @@
 		D25841AC1DE3328C00AAB98D /* SpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25841A71DE3328C00AAB98D /* SpecialResultLayer.cpp */; };
 		D25841AD1DE3328C00AAB98D /* GameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25841A91DE3328C00AAB98D /* GameResultCell.cpp */; };
 		D25841AE1DE3328C00AAB98D /* GameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25841A91DE3328C00AAB98D /* GameResultCell.cpp */; };
+		D25841B21DE6DCCD00AAB98D /* NoticeDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25841B01DE6DCCD00AAB98D /* NoticeDialog.cpp */; };
+		D25841B31DE6DCCD00AAB98D /* NoticeDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25841B01DE6DCCD00AAB98D /* NoticeDialog.cpp */; };
 		D25DEE371CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE381CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE411CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
@@ -475,6 +477,8 @@
 		D25841A81DE3328C00AAB98D /* SpecialResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpecialResultLayer.hpp; sourceTree = "<group>"; };
 		D25841A91DE3328C00AAB98D /* GameResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameResultCell.cpp; sourceTree = "<group>"; };
 		D25841AA1DE3328C00AAB98D /* GameResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameResultCell.hpp; sourceTree = "<group>"; };
+		D25841B01DE6DCCD00AAB98D /* NoticeDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoticeDialog.cpp; sourceTree = "<group>"; };
+		D25841B11DE6DCCD00AAB98D /* NoticeDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NoticeDialog.hpp; sourceTree = "<group>"; };
 		D25DEE361CC0F56A007D428A /* bill */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bill; sourceTree = "<group>"; };
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
@@ -1031,6 +1035,15 @@
 			path = special;
 			sourceTree = "<group>";
 		};
+		D25841AF1DE6DCBB00AAB98D /* notice */ = {
+			isa = PBXGroup;
+			children = (
+				D25841B01DE6DCCD00AAB98D /* NoticeDialog.cpp */,
+				D25841B11DE6DCCD00AAB98D /* NoticeDialog.hpp */,
+			);
+			path = notice;
+			sourceTree = "<group>";
+		};
 		D281E5DA1DC05D0600D3E44E /* dialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -1272,6 +1285,7 @@
 		D2B1A82D1CCDF0F300A20896 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D25841AF1DE6DCBB00AAB98D /* notice */,
 				D28A4A3E1D06B19E00741FD0 /* EnterRoomDialog.cpp */,
 				D28A4A3F1D06B19E00741FD0 /* EnterRoomDialog.hpp */,
 				D2B1A82E1CCDF0F300A20896 /* LobbyScene.cpp */,
@@ -1733,6 +1747,7 @@
 				D281E5D31DBED34100D3E44E /* GoldRoomPlate.cpp in Sources */,
 				D2B1A87F1CCDF0F400A20896 /* MahjongView.cpp in Sources */,
 				D2BDE3AC1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
+				D25841B21DE6DCCD00AAB98D /* NoticeDialog.cpp in Sources */,
 				D2B1A8DB1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D28A4A401D06B19E00741FD0 /* EnterRoomDialog.cpp in Sources */,
 				D2EF93CA1DD0862B00360BCF /* TextHintDialog.cpp in Sources */,
@@ -1787,6 +1802,7 @@
 				D2F05F641D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */,
 				D281E5F81DC1992500D3E44E /* FangkaNotEnoughDialog.cpp in Sources */,
 				D28A4A2F1D056B7A00741FD0 /* Audio.cpp in Sources */,
+				D25841B31DE6DCCD00AAB98D /* NoticeDialog.cpp in Sources */,
 				D2F05F621D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */,
 				D2B1A8821CCDF0F400A20896 /* Orientation.cpp in Sources */,
 				D22EEFBC1D66D14D00BF1CCB /* DailyPride.cpp in Sources */,

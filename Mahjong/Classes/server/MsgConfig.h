@@ -318,6 +318,7 @@
 #define MSG_SCROLL_TEXT "MSG_SCROLL_TEXT"
 #define MSG_WAN_JIA_WEI_XIN_QUN "MSG_WAN_JIA_WEI_XIN_QUN"
 #define MSG_WAN_JIA_GONG_GAO "MSG_WAN_JIA_GONG_GAO"
+#define MSG_WAN_JIA_GONG_GAO_SHOW_DIALOG "MSG_WAN_JIA_GONG_GAO_SHOW_DIALOG"
 #define GET_JJJ_RESPONSE_REMOVE_LOADING "get_jjj_response_remove_loading"
 #define UPDATE_JJJ_COUNT_RESP "update_jjj_count_resp"
 #define UPDATE_DICE_KAOBAO_STATE "update_dice_kaibao_dtate"

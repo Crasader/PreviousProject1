@@ -50,6 +50,7 @@ private:
     EventListenerCustom* enterRoomAskListener;
     EventListenerCustom* scrollTetxListener;
     EventListenerCustom* wanjiaqunListener;
+    EventListenerCustom* noticeUrlLitener;
     
     bool isButtonCilckable;
     float clickTime;
