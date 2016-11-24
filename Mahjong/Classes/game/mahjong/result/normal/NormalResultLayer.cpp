@@ -46,7 +46,7 @@ void NormalResultLayer::showGameResult(){
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
     for (GameResultData data: results) {
         if(data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-            //result0为平,1为自摸,2为放炮 3胡牌  4输
+            //result0为平,1为自摸,2为放炮 3胡牌 4输
             auto resultTitle = Sprite::create();
             resultTitle->setPosition(640,625);
             addChild(resultTitle);

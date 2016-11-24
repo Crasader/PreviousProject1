@@ -82,7 +82,7 @@ bool GameResultCell::init(GameResultData data){
         bg->setTexture("result/lose_game_bg.png");
         Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_lose_num.png");
         resultNum->setTexture(texture);
-        resultNum->setString(StringUtils::format(":%d",data.jifen));
+        resultNum->setString(StringUtils::format(":%d",abs(data.jifen)));
     }
     return true;
 }

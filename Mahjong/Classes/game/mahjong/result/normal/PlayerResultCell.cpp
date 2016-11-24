@@ -32,50 +32,47 @@ bool PlayerResultCell::init(GameResultData data){
     
     
     auto headImage = HeadImage::createByImage(data.pic,Size(90,90));
-    headImage->setPosition(-420, 0);
+    headImage->setPosition(-440, 0);
     addChild(headImage, 10);
     
     auto nickName = Label::createWithSystemFont(data.nickName,"Arial",20);
     nickName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-    nickName->setPosition(-350,15);
+    nickName->setPosition(-375,15);
     addChild(nickName);
     
     auto idNumber = Label::createWithSystemFont(StringUtils::format("ID:%s",data.umark.c_str()),"Arial",20);
     idNumber->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-    idNumber->setPosition(-180,15);
+    idNumber->setPosition(-200,15);
     addChild(idNumber);
     
     if(data.lz == "0"){
         auto fanNum = LabelAtlas::create(StringUtils::format("%s",data.fan.c_str()), "result/fan_num.png", 17, 26, '0');
         fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        fanNum->setPosition(220,0);
+        fanNum->setPosition(170,-15);
         addChild(fanNum);
-        
         auto fanText = Sprite::create("result/fan_text.png");
-        fanText->setPosition(240,0);
+        fanText->setPosition(190,-15);
         addChild(fanText);
     }else if(data.lz == "1"){
         auto lezi = Sprite::create("result/1beilezi.png");
-        lezi->setPosition(240,0);
+        lezi->setPosition(190,-15);
         addChild(lezi);
     }else if(data.lz == "2"){
         auto lezi = Sprite::create("result/2beilezi.png");
-        lezi->setPosition(240,0);
+        lezi->setPosition(190,-15);
         addChild(lezi);
     }else if(data.lz == "4"){
         auto lezi = Sprite::create("result/4beilezi.png");
-        lezi->setPosition(240,0);
+        lezi->setPosition(190,-15);
         addChild(lezi);
     }
     if(GAMEDATA::getInstance()->getCurrentBank() ==  data.seatId){
         auto bank = Sprite::create("result/zhaung.png");
-        bank->setPosition(-500,0);
+        bank->setPosition(-520,0);
         addChild(bank);
     }
     
     auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 40, 64, '0');
-    resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    resultNum->setPosition(450,-5);
     addChild(resultNum);
     
     if(data.result == 1||data.result == 3){
@@ -127,15 +124,15 @@ bool PlayerResultCell::init(GameResultData data){
             Jong* jong = Jong::create();
             jong->showJong(heroplayed, atoi(showPokers.at(i).c_str()));
             if(i == showPokers.size()-1){
-                jong->setPosition(-330+i * 35+10, -20);
+                jong->setPosition(-350+i * 35+10, -20);
             }else{
-                jong->setPosition(-330+i * 35, -20);
+                jong->setPosition(-350+i * 35, -20);
             }
             addChild(jong, 35 - i);
         }
         auto chuchong = Sprite::create("gameview/font_hu.png");
         chuchong->setScale(0.4f);
-        chuchong->setPosition(500,0);
+        chuchong->setPosition(550,-10);
         addChild(chuchong);
         
     }else{
@@ -143,24 +140,51 @@ bool PlayerResultCell::init(GameResultData data){
         Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_lose_num.png");
         resultNum->setTexture(texture);
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            resultNum->setString(StringUtils::format(":%d",data.jifendelta));
+            resultNum->setString(StringUtils::format(":%d",abs(data.jifendelta)));
         }else{
-            resultNum->setString(StringUtils::format(":%d",data.golddelta));
+            resultNum->setString(StringUtils::format(":%d",abs(data.golddelta)));
         }
         std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
         for (int i = 0; i < showPokers.size(); i++){
             Jong* jong = Jong::create();
             jong->showJong(heroplayed, atoi(showPokers.at(i).c_str()));
-            jong->setPosition(-330+i * 35, -20);
+            jong->setPosition(-350+i * 35, -20);
             addChild(jong, 35 - i);
         }
         if(data.result == 2){
             auto chuchong = Sprite::create("result/chuchong.png");
-            chuchong->setPosition(500,0);
+            chuchong->setPosition(550,-10);
             addChild(chuchong);
         }
     }
-    
+    if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
+        
+        auto goldIcon =  Sprite::create("mjlobby/gold_icon.png");
+        goldIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        goldIcon->setPosition(240,-10);
+        addChild(goldIcon);
+        resultNum->setPosition(300,-10);
+        resultNum->setScale(0.7f);
+        resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        if(data.lequandelta>0){
+            goldIcon->setPositionY(20);
+            resultNum->setPositionY(20);
+            auto lequanIcon =  Sprite::create("mjlobby/lequan_icon.png");
+            lequanIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            lequanIcon->setPosition(240,-25);
+            addChild(lequanIcon);
+            auto lequanNum = LabelAtlas::create(StringUtils::format(":%d",data.lequandelta), "result/game_result_win_num.png", 40, 64, '0');
+            lequanNum->setScale(0.7f);
+            lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            lequanNum->setPosition(300,-25);
+            addChild(lequanNum);
+            
+        }
+    }else{
+        resultNum->setScale(1.0f);
+        resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        resultNum->setPosition(270,-10);
+    }
     
     return true;
 }

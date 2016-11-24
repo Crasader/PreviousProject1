@@ -54,7 +54,7 @@ void ResultScene::initTestData(){
     vector<GameResultData> gameResults;
     for (int i = 0; i < 4; i++){
         GameResultData resultData;
-        resultData.result = 1;
+        resultData.result = 2;
         resultData.gold = 100;
         resultData.diamond = 100;
         resultData.jifen =10;
@@ -62,11 +62,13 @@ void ResultScene::initTestData(){
         resultData.golddelta = 200000;
         resultData.diamonddelta =2;
         resultData.jifendelta = 4000000;
-        resultData.lequandelta = 2000;
+        resultData.lequandelta = 222220;
         resultData.seatId = i+1;
         resultData.umark ="100010000";
         resultData.hua = 3;
-        resultData.showPoker = "1,2,3,4,5,5,5,5";
+        resultData.lz = "2";
+        resultData.fan = "10";
+        resultData.showPoker = "1,2,3,4,5,6,7,8,9,10,11,12,13,14";
         resultData.huType = "1,2,3";
         resultData.nickName = "这里是装电视台";
         gameResults.push_back(resultData);
