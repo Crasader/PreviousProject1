@@ -28,7 +28,7 @@ Scene* ResultScene::createScene(int type)
 {
     
     auto scene = Scene::create();
-     initTestData();
+//     initTestData();
     if(type == 0){
         NormalResultLayer* layer = NormalResultLayer::create();
         scene->addChild(layer);
