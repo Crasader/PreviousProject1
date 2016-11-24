@@ -12,6 +12,7 @@ public:
     void drawPlayedJong(int ctype);
 	void removeLastJong() override;
     void showCurrentPlayedJongIcon(bool isShow) override;
+    void doEventTimeOver(int type) override;
 	void drawLeftPlayerTurn();
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);

@@ -357,19 +357,27 @@ void PlayerLeft::updateHandJongs(std::string jongs,bool hu){
             }
         }
     }
-
+    
     for (int i = 0; i < pokers.size(); i++)
     {
         Jong* jong = Jong::create();
         jong->showJong(leftplayed, atoi(pokers.at(i).c_str()));
         if(hu&&i==pokers.size()-1){
-             jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i+8));
+            jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i+8));
         }else{
-             jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i));
+            jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i));
         }
         playerHandJongs.pushBack(jong);
         this->addChild(jong,60-i);
         
     }
     
+}
+
+void PlayerLeft::doEventTimeOver(int type){
+    if (type == -1){
+        schedule([=](float dt){
+            setIsOffLine(false);
+        }, 0, 0, 8.0f, "xiaoxiao");
+    }
 }

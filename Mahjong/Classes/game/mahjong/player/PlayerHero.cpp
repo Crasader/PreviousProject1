@@ -36,9 +36,6 @@ void PlayerHero::initData() {
     playedIcon = Sprite::create("gameview/arrows.png");
     playedIcon->setVisible(false);
     addChild(playedIcon, 666);
-    //    jongSeclectIcon = Sprite::create("gameview/poker_select.png");
-    //    jongSeclectIcon->setVisible(false);
-    //    addChild(jongSeclectIcon,10);
     setCpgPostionX(JONG_POS_START_X);
 }
 

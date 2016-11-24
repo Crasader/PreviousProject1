@@ -482,6 +482,7 @@ void MahjongView::recoverGame(){
     GAMEDATA::getInstance()->setIsPlaying(true);
     int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
     if(playturn == ClientSeatId::hero){
+        log("KKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHH");
         playerHero->startTimeClockAnim();
         playerHero->setIsAllowPlay(true);
     }else if(playturn == ClientSeatId::left){

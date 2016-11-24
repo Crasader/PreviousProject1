@@ -375,3 +375,11 @@ void PlayerOpposite::recoverHand(std::string hand){
         playerHandJongs.pushBack(jong);
     }
 }
+
+void PlayerOpposite::doEventTimeOver(int type){
+    if (type == -1){
+        schedule([=](float dt){
+            setIsOffLine(false);
+        }, 0, 0, 8.0f, "xiaoxiao");
+    }
+}

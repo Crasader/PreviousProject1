@@ -11,6 +11,7 @@ public:
 	void removeLastJong() override;
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;
+    void doEventTimeOver(int type) override;
     void drawHandJong();
     void drawPlayedJong(int ctype);
 	void drawOppositePlayerTurn();
