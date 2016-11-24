@@ -101,12 +101,13 @@ void NormalResultLayer::showRoomInfo(){
         auto xioahao = Sprite::create("result/mei_ju_xiao_hao_4000.png");
         xioahao->setPosition(640,560);
         addChild(xioahao);
-        //TODO 无法判定当前房间的金币类型
-        //        if(GAMEDATA::getInstance()->setCurrentSelectRoomId() == ROOM_1){
-        //            xioahao->setTexture("result/mei_ju_xiao_hao_2000.png");
-        //        }else{
-        //            xioahao->setTexture("result/mei_ju_xiao_hao_4000.png");
-        //        }
+        if(GAMEDATA::getInstance()->getFee() == "2000"){
+            xioahao->setTexture("result/mei_ju_xiao_hao_2000.png");
+        }else if(GAMEDATA::getInstance()->getFee() == "4000"){
+            xioahao->setTexture("result/mei_ju_xiao_hao_4000.png");
+        }else{
+            xioahao->setTexture("result/mei_ju_xiao_hao_2w.png");
+        }
     }
 }
 

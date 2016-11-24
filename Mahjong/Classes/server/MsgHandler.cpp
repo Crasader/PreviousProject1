@@ -1102,6 +1102,9 @@ void MsgHandler::gameResultNotify(std::string msg){
     if(_mDoc.HasMember("prjucount")){
         GAMEDATA::getInstance()->setPrivateRoomType(_mDoc["prjucount"].GetString());
     }
+    if(_mDoc.HasMember("fee")){
+        GAMEDATA::getInstance()->setFee(_mDoc["fee"].GetString());
+    }
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];
     vector<GameResultData> gameResults;
@@ -1159,12 +1162,27 @@ void MsgHandler::gameResultNotify(std::string msg){
         if (temp.HasMember("even")){
             resultData.even = temp["even"].GetString();
         }
+        if (temp.HasMember("lz")){
+            resultData.lz = temp["lz"].GetString();
+        }
         if (temp.HasMember("poxiaoId")){
             resultData.poxiaoId = temp["poxiaoId"].GetString();
         }
         gameResults.push_back(resultData);
     }
-    GAMEDATA::getInstance()->setGameResults(gameResults);
+    //对GameResult进行一次排序
+    vector<GameResultData> rankGameResults;
+    for(int i= 0;i<gameResults.size();i++){
+        if(gameResults.at(i).seatId ==  GAMEDATA::getInstance()->getHeroSeatId()){
+            for(int j=i;j<gameResults.size();j++){
+                rankGameResults.push_back(gameResults.at(j));
+            }
+            for(int k=0;k<i;k++){
+                rankGameResults.push_back(gameResults.at(k));
+            }
+        }
+    }
+    GAMEDATA::getInstance()->setGameResults(rankGameResults);
     postNotifyMessage(MSG_GAME_RESULT, flag.GetString());
 }
 

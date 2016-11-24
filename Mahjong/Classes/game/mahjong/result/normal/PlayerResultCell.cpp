@@ -45,16 +45,28 @@ bool PlayerResultCell::init(GameResultData data){
     idNumber->setPosition(-150,15);
     addChild(idNumber);
     
-    
-    auto fanNum = LabelAtlas::create(StringUtils::format("%s",data.fan.c_str()), "result/fan_num.png", 17, 26, '0');
-    fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fanNum->setPosition(220,0);
-    addChild(fanNum);
-    
-    auto fanText = Sprite::create("result/fan_text.png");
-    fanText->setPosition(240,0);
-    addChild(fanText);
-    
+    if(data.lz == "0"){
+        auto fanNum = LabelAtlas::create(StringUtils::format("%s",data.fan.c_str()), "result/fan_num.png", 17, 26, '0');
+        fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+        fanNum->setPosition(220,0);
+        addChild(fanNum);
+        
+        auto fanText = Sprite::create("result/fan_text.png");
+        fanText->setPosition(240,0);
+        addChild(fanText);
+    }else if(data.lz == "1"){
+        auto lezi = Sprite::create("result/1beilezi.png");
+        lezi->setPosition(240,0);
+        addChild(lezi);
+    }else if(data.lz == "2"){
+        auto lezi = Sprite::create("result/2beilezi.png");
+        lezi->setPosition(240,0);
+        addChild(lezi);
+    }else if(data.lz == "4"){
+        auto lezi = Sprite::create("result/4beilezi.png");
+        lezi->setPosition(240,0);
+        addChild(lezi);
+    }
     if(GAMEDATA::getInstance()->getCurrentBank() ==  data.seatId){
         auto bank = Sprite::create("result/zhaung.png");
         bank->setPosition(-500,0);

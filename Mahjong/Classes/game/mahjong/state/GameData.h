@@ -109,6 +109,7 @@ public:
     CC_SYNTHESIZE(string, diaopao, Diaopao);
     CC_SYNTHESIZE(string, fangZhuId, FangZhuId);
     CC_SYNTHESIZE(string, privateRoomType, PrivateRoomType);
+    CC_SYNTHESIZE(string, fee, Fee);
     CC_SYNTHESIZE(string, privateLezi, PrivateLezi);
     CC_SYNTHESIZE(ChatData, chatData, ChatData);
     CC_SYNTHESIZE(RoomChatMsgList, roomChatMsgList, RoomChatMsgList);
