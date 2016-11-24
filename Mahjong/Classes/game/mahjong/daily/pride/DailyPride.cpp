@@ -55,7 +55,7 @@ void DailyPride::onEnter(){
                         }
                     }
                 }
-                data.count = StringUtils::format("%d",atoi(data.count.c_str()-1));
+                data.count = StringUtils::format("%d",atoi(data.count.c_str())-1);
                 GAMEDATA::getInstance()->setDailyPrideData(data);
             },0.0f,0,2.0f,"m_turnBg");
         }
@@ -72,7 +72,6 @@ void DailyPride::onExit(){
 
 
 void DailyPride::showDailyPrideLayer(){
-    
     auto bigtitle = Sprite::create("daily/every_day_pride.png");
     bigtitle->setPosition(640,650);
     addChild(bigtitle);
