@@ -924,7 +924,7 @@ void MahjongView::showHuPaiXing(std::string paixing){
         addChild(xing,999);
         xing->setOpacity(77);
         xing->setScale(3.0f);
-        xing->setPosition(640 - 60*(pais.size()-1)+i*120,posY);
+        xing->setPosition(640 - 80*(pais.size()-1)+i*160,posY);
         xing->runAction(Sequence::create(DelayTime::create(i*(5.0f/24)),Spawn::create(ScaleTo::create(3.0/24, 0.8f),FadeTo::create(3.0f/24, 255), NULL),ScaleTo::create(2.0/24, 1.0f), NULL));
     }
     //光效动画
