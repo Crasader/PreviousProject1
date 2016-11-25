@@ -84,7 +84,7 @@ std::string UrlImageMannger::loadShopImgByUrl(std::string url){
         fwrite(buff.c_str(), 1, buffer->size(), fp);
         fclose(fp);
         //发送商城图片已下载完成
-        EventCustom imageEvent(MSG_UPDATE_SHOP_PROP_IMAG);
+        EventCustom imageEvent(StringUtils::format("MSG_UPDATE_SHOP_PROP_IMAG_%s",url.c_str()));
         Director::getInstance()->getEventDispatcher()->dispatchEvent(&imageEvent);
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });

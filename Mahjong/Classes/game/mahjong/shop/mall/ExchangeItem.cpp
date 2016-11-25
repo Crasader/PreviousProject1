@@ -14,9 +14,9 @@
 #include "game/utils/StringUtil.h"
 
 
-ExchangeItem* ExchangeItem::create(int propId,std::string propName){
+ExchangeItem* ExchangeItem::create(int propId,std::string propName,std::string proptype){
     ExchangeItem* ret = new ExchangeItem();
-    if(ret && ret->init(propId, propName)){
+    if(ret && ret->init(propId, propName,proptype)){
         ret->autorelease();
         return ret;
     }else{
@@ -25,7 +25,7 @@ ExchangeItem* ExchangeItem::create(int propId,std::string propName){
     }
 }
 
-bool ExchangeItem::init(int propId,std::string propName){
+bool ExchangeItem::init(int propId,std::string propName,std::string proptype){
     if(!Layer::init()){
         return false;
     }
@@ -49,10 +49,10 @@ bool ExchangeItem::init(int propId,std::string propName){
     closeMenu->setPosition(980, 580);
     addChild(closeMenu);
     
-    if(propId<20){
-        showVirtualItem(propId,propName);
-    }else{
+    if(proptype == "3"){
         showRealItem(propId,propName);
+    }else{
+        showVirtualItem(propId,propName);
     }
     return  true;
 }

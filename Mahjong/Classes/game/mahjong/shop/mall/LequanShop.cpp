@@ -114,7 +114,7 @@ void LequanShop::showLequanShop(){
     addChild(lequanNum);
     
     for(int i=0;i<GAMEDATA::getInstance()->getLequanChangeList().list.size();i++){
-        ExchangePropCell* cell = ExchangePropCell::create(atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propId.c_str()), atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propPrice.c_str()),GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propName,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).url);
+        ExchangePropCell* cell = ExchangePropCell::create(atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propId.c_str()), atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propPrice.c_str()),GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propName,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).url,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propType);
         cell->setPosition(312+(i%4)*220,315);
         addChild(cell);
     }

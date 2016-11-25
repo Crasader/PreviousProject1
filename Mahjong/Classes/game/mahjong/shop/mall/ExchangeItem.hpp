@@ -15,8 +15,8 @@ USING_NS_CC_EXT;
 
 class ExchangeItem : public Layer, public ui::EditBoxDelegate{
 public:
-    static ExchangeItem* create(int propId,std::string propName);
-    virtual bool init(int propId,std::string propName);
+    static ExchangeItem* create(int propId,std::string propName,std::string proptype);
+    virtual bool init(int propId,std::string propName,std::string proptype);
 private:
     
     
