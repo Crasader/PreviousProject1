@@ -13,7 +13,7 @@ public:
     static const int JONG_POS_START_X = 180;
     static const int NEW_JONG_POS_X = 1200;
     static const int JONG_POS_Y = 70;
-    static const int JONG_SEL_POS_Y = 120;
+    static const int JONG_SEL_POS_Y = 105;
     static const int JONG_WIDTH = 78;
     
     virtual bool init() override;
@@ -70,7 +70,6 @@ private:
     Jong* selectJong;
     Jong* virtualJong;
     Jong* doubleClickJong;
-//    Sprite* jongSeclectIcon;
     
     void initData();
     void addTouchListener();

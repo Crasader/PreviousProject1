@@ -67,15 +67,6 @@ void PlayerHero::setIsReady(bool b){
     }
 }
 
-//void PlayerHero::showJongSelectIcon(Point pos){
-//    jongSeclectIcon->setVisible(true);
-//    jongSeclectIcon->setPosition(pos);
-//}
-
-//void PlayerHero::hideJongSelectIcon(){
-//    jongSeclectIcon->setVisible(false);
-//}
-
 bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
     if (!this->getIsAllowTouch() || GAMEDATA::getInstance()->getIsTingState()){
         return false;
@@ -268,10 +259,10 @@ void PlayerHero::updateHandJongs(std::string jongs,bool hu){
             {
                 itor=pokers.erase(itor);
             }
-            else  
-            {  
-                itor++;  
-            }  
+            else
+            {
+                itor++;
+            }
         }
         pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
     }
@@ -1236,11 +1227,22 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
     }
     playerHandJongs.clear();
     vector<std::string>  hands = StringUtil::split(hand, ",");
-    if(lastpoker !=""){
-        for(int a=0;a<hands.size();a++){
-            if(lastpoker == hands.at(a)){
-                swap(hands.at(a), hands.at(hands.size()-1));
+    if(GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()){
+        vector<std::string>::iterator itor;
+        if(lastpoker !=""){
+            for(itor=hands.begin();itor!=hands.end();)
+            {
+                if(lastpoker==*itor)
+                {
+                    itor=hands.erase(itor);
+                    break;
+                }
+                else
+                {
+                    itor++;
+                }
             }
+            hands.push_back(lastpoker);
         }
     }
     for (int i = 0; i < hands.size(); i++)
@@ -1249,6 +1251,8 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
         jong->showJong(herohand, atoi(hands.at(i).c_str()));
         if(GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()&&getHandPosX() + JONG_WIDTH * i>1120){
             jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i+8, JONG_POS_Y));
+            setIsAllowPlay(true);
+            startTimeClockAnim();
         }else{
             jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i, JONG_POS_Y));
         }
@@ -1256,8 +1260,4 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
         playerHandJongs.pushBack(jong);
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
-    if(lastpoker !=""){
-        setIsAllowPlay(true);
-        startTimeClockAnim();
-    }
 }

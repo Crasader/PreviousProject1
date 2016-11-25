@@ -482,7 +482,6 @@ void MahjongView::recoverGame(){
     GAMEDATA::getInstance()->setIsPlaying(true);
     int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
     if(playturn == ClientSeatId::hero){
-        log("KKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHH");
         playerHero->startTimeClockAnim();
         playerHero->setIsAllowPlay(true);
     }else if(playturn == ClientSeatId::left){
@@ -684,7 +683,7 @@ void MahjongView::addPlayerTurnListener(){
         if (seatId == ClientSeatId::hero){
             playerHero->hideCurrentBigJong();
             playerHero->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
-            if (!GAMEDATA::getInstance()->getIsTrusteeship() || !GAMEDATA::getInstance()->getIsTingState()){
+            if (!GAMEDATA::getInstance()->getIsTingState()){
                 playerHero->startTimeClockAnim();
             }
         }
@@ -885,7 +884,7 @@ void MahjongView::addGameResultListener(){
                 }else{
                     Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::createScene(0)));
                 }
-            },0,0,72.0f/24,"go2Result");
+            },0,0,5.0f,"go2Result");
         }else{
             GAMEDATA::getInstance()->setFangZhuId("");
             GAMEDATA::getInstance()->setPrivateGameNum("0");
@@ -1017,8 +1016,8 @@ void MahjongView::showHandPokerOver(int seatId){
             playerOpposite->updateHandJongs(oppositeJongs,false);
             playerRight->hideHandJongs();
             playerRight->updateHandJongs(rightJongs,false);
-            playerHero->hideHandJongs();
-            playerHero->updateHandJongs(heroJongs,false);
+            playerLeft->hideHandJongs();
+            playerLeft->updateHandJongs(heroJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");
     }
     
