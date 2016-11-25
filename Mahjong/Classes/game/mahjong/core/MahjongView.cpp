@@ -1009,7 +1009,11 @@ void MahjongView::showHandPokerOver(int seatId){
         }, 0, 0, 15.0f/24,"fanpai");
     }else{
         playerHero->hideHandJongs();
-        playerHero->updateHandJongs(heroJongs,true);
+        if(GAMEDATA::getInstance()->getIsLiuJu()){
+            playerHero->updateHandJongs(heroJongs,false);
+        }else{
+            playerHero->updateHandJongs(heroJongs,true);
+        }
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerOpposite->hideHandJongs();
