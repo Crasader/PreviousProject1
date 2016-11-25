@@ -22,16 +22,17 @@ bool FaceChatLayer::init(){
     
     auto faceChatBg = Sprite::create("chat/chat_text_box.png");
     faceChatBg->setTag(1001);
+    faceChatBg->setScaleX(1.1f);
     faceChatBg->setPosition(Vec2(830,245));
     addChild(faceChatBg);
     
     auto faceMenu = Menu::create();
     for (int i = 0; i < 23; i++){
-        std::string image_name = cocos2d::String::createWithFormat("chat/face_%d.png",i+1)->_string;
+        std::string image_name = StringUtils::format("chat/face_%d.png",i+1);
         MenuItemImage* face = MenuItemImage::create(image_name, image_name, CC_CALLBACK_1(FaceChatLayer::faceSelected,this));
         faceMenu->addChild(face);
         face->setTag(i+1);
-        face->setPosition(705 + 50 * (i%6), 320-i/6*50);
+        face->setPosition(690 + 56 * (i%6), 335-i/6*60);
     }
     faceMenu->setPosition(0,0);
     addChild(faceMenu);
