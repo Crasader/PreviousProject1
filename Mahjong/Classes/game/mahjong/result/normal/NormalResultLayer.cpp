@@ -8,6 +8,7 @@
 
 #include "game/mahjong/result/normal/NormalResultLayer.hpp"
 #include "game/mahjong/result/normal/PlayerResultCell.hpp"
+#include "game/mahjong/result/ResultScene.hpp"
 #include "game/mahjong/lobby/GoldRoomPlate.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
 #include "game/mahjong/jong/Jong.h"
@@ -128,29 +129,35 @@ void NormalResultLayer::showPlayerResluts(){
 }
 
 void NormalResultLayer::showLayerBtn(){
-    
-    auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));
-    
-    auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
-                                           CC_CALLBACK_0(NormalResultLayer::shareResult, this));
-    auto feedImage = MenuItemImage::create("result/continue_btn_1.png","result/continue_btn_2.png",
-                                           CC_CALLBACK_0(NormalResultLayer::continueGame, this));
-    
-    Menu* myMneu = Menu::create();
-    if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
-        myMneu->addChild(quitImage);
-    }
-    myMneu->addChild(helpImage);
-    myMneu->addChild(feedImage);
-    if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
-        myMneu->alignItemsHorizontallyWithPadding(60);
+    if(GAMEDATA::getInstance()->getNeedShowLastResult()){
+        GAMEDATA::getInstance()->setNeedShowLastResult(false);
+        schedule([=](float dt){
+            Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(1)));
+        }, 0, 0, 5,"KillBill");
     }else{
-        myMneu->alignItemsHorizontallyWithPadding(100);
+        auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));
+        
+        auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
+                                               CC_CALLBACK_0(NormalResultLayer::shareResult, this));
+        auto feedImage = MenuItemImage::create("result/continue_btn_1.png","result/continue_btn_2.png",
+                                               CC_CALLBACK_0(NormalResultLayer::continueGame, this));
+        
+        Menu* myMneu = Menu::create();
+        if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
+            myMneu->addChild(quitImage);
+        }
+        myMneu->addChild(helpImage);
+        myMneu->addChild(feedImage);
+        if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
+            myMneu->alignItemsHorizontallyWithPadding(60);
+        }else{
+            myMneu->alignItemsHorizontallyWithPadding(100);
+        }
+        myMneu->setPosition(640,60);
+        addChild(myMneu);
+        
+        schedule(schedule_selector(NormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
     }
-    myMneu->setPosition(640,60);
-    addChild(myMneu);
-    
-    schedule(schedule_selector(NormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
 }
 
 void NormalResultLayer::updatePlayerData(){

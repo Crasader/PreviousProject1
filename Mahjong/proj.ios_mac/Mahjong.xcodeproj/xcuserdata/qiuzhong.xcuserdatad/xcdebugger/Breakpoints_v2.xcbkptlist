@@ -1747,11 +1747,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/state/GameData.cpp"
-            timestampString = "501682460.817617"
+            timestampString = "501751806.645121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "GAMEDATA::sortFriendList(FriendListData data)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1987,11 +1987,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "501751036.885228"
+            timestampString = "501751806.645121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "918"
-            endingLineNumber = "918"
+            startingLineNumber = "919"
+            endingLineNumber = "919"
             landmarkName = "MahjongView::showHuPaiXing(std::string paixing)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4042,11 +4042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/result/normal/NormalResultLayer.cpp"
-            timestampString = "501688315.549665"
+            timestampString = "501751806.645121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "NormalResultLayer::showRoomInfo()"
             landmarkType = "7">
          </BreakpointContent>

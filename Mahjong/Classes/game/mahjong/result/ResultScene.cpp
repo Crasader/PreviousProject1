@@ -26,7 +26,7 @@
 
 Scene* ResultScene::createScene(int type)
 {
-//    initTestData();
+    initTestData();
     auto scene = Scene::create();
     if(type == 0){
         NormalResultLayer* layer = NormalResultLayer::create();
@@ -78,6 +78,7 @@ void ResultScene::initTestData(){
     GAMEDATA::getInstance()->setHeroSeatId(1);
     GAMEDATA::getInstance()->setPrivateLezi("0");
     GAMEDATA::getInstance()->setCurrentBank(1);
+    GAMEDATA::getInstance()->setNeedShowLastResult(true);
     FriendOpenRoomRespData opendata;
     opendata.prjushu ="8";
     opendata.prjucount ="2";

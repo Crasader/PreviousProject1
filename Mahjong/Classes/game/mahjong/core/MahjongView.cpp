@@ -895,10 +895,11 @@ void MahjongView::addGameResultListener(){
             schedule([=](float dt){
                 clearRoomPlayer();
                 if(flag == "2"){
-                    Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::createScene(1)));
+                    GAMEDATA::getInstance()->setNeedShowLastResult(true);
                 }else{
-                    Director::getInstance()->replaceScene(TransitionFade::create(0.8f, ResultScene::createScene(0)));
+                    GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }
+                Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(0)));
             },0,0,5.0f,"go2Result");
         }else{
             GAMEDATA::getInstance()->setFangZhuId("");
