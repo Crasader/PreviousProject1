@@ -297,7 +297,7 @@ void MahjongView::hideTingGangControllPad(){
     choiceMenu->setVisible(false);
     schedule([=](float dt){
         controllPad->removeAllChildrenWithCleanup(true);
-    }, 0, 0, 1.0f,"dalayRemovepad");
+    }, 0, 0, 0.2f,"dalayRemovepad");
 }
 
 void MahjongView::showGuiLayer(){
@@ -755,8 +755,10 @@ void MahjongView::addJongPlayedListener(){
 void MahjongView::addHeroCpgListener(){
     
     playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
-        drawCpgControllPad();
-        playerHero->startTimeClockAnim(8, 1);
+        schedule([=](float dt){
+            drawCpgControllPad();
+            playerHero->startTimeClockAnim(8, 1);
+        },0,0,0.5f,"nonohuang");
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
     

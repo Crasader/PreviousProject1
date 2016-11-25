@@ -433,7 +433,7 @@ void PlayerBase::updateTime(float dt){
             doEventTimeOverUi();
         }
         if (mCDTime <=-1){
-            mCDTime = 1000000;
+            log("HHHHHHHHHHHHHHHHHH %d ",mCDTime);
             doEventTimeOver(this->getTag());
             unschedule(schedule_selector(PlayerBase::updateTime));
         }

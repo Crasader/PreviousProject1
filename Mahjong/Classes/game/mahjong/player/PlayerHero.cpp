@@ -715,7 +715,6 @@ void PlayerHero::removePlayedIcon(){
 
 void PlayerHero::doEventTimeOverUi(){
     ((MahjongView*)getParent())->hideTingGangControllPad();
-    //    setIsAllowPlay(false);
 }
 
 void PlayerHero::doEventTimeOver(int type){
