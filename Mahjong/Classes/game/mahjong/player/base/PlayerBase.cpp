@@ -423,7 +423,6 @@ void PlayerBase::playerCpgAnim(CpgType cpgType, ClientSeatId type){
 
 void PlayerBase::updateTime(float dt){
     mCDTime--;
-    log("AAAAAAAAAAA mCDTime = %d",mCDTime);
     if (mCDTime > 0){
         timeClock->setString(StringUtils::format("%d", mCDTime));
     }
@@ -433,7 +432,6 @@ void PlayerBase::updateTime(float dt){
             doEventTimeOverUi();
         }
         if (mCDTime <=-1){
-            log("HHHHHHHHHHHHHHHHHH %d ",mCDTime);
             doEventTimeOver(this->getTag());
             unschedule(schedule_selector(PlayerBase::updateTime));
         }
