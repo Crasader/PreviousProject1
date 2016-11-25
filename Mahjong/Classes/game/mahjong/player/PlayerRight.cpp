@@ -96,7 +96,7 @@ Point PlayerRight::getPlayedJongPos(int count){
 
 void PlayerRight::showCurrentPlayedJongIcon(bool isShow){
     biaoji->setVisible(isShow);
-    biaoji->setPosition(getPlayedJongPos(playerPlayedJongs.size() - 1).x, getPlayedJongPos(playerPlayedJongs.size() - 1).y + 20);
+    biaoji->setPosition(getPlayedJongPos(playerPlayedJongs.size() - 1).x, getPlayedJongPos(playerPlayedJongs.size()-1).y + 20);
 }
 
 Point PlayerRight::getCpgShowPostion(int index){
