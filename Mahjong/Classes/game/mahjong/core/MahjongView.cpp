@@ -640,7 +640,22 @@ void MahjongView::addCoustomReplaceFlower() {
                 playerOpposite->setReplacePoker(vec.times.at(i));
                 playerOpposite->replaceHandHua(oppositeplayed);
             }
-        }    });
+        }
+        for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
+            if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
+                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
+                if(clientId == ClientSeatId::left){
+                    playerLeft->startTimeClockAnim();
+                }else if(clientId == ClientSeatId::opposite){
+                    playerOpposite->startTimeClockAnim();
+                }else if(clientId == ClientSeatId::right){
+                    playerRight->startTimeClockAnim();
+                }else if(clientId == ClientSeatId::hero){
+                    playerHero->startTimeClockAnim();
+                }
+            }
+        }
+    });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(replaceListener, 1);
 }
 
