@@ -104,8 +104,10 @@ Point PlayerRight::getCpgShowPostion(int index){
 }
 
 void PlayerRight::removeLastJong(){
-    playerPlayedJongs.at(playerPlayedJongs.size() - 1)->removeFromParent();
-    playerPlayedJongs.popBack();
+    if(playerPlayedJongs.size()>0){
+        playerPlayedJongs.at(playerPlayedJongs.size() - 1)->removeFromParent();
+        playerPlayedJongs.popBack();
+    }
     biaoji->setVisible(false);
 }
 

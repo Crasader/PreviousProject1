@@ -105,8 +105,10 @@ Point PlayerOpposite::getPlayedJongPos(int count){
 
 
 void PlayerOpposite::removeLastJong(){
-    playerPlayedJongs.at(playerPlayedJongs.size() - 1)->removeFromParent();
-    playerPlayedJongs.popBack();
+    if(playerPlayedJongs.size()>0){
+        playerPlayedJongs.at(playerPlayedJongs.size() - 1)->removeFromParent();
+        playerPlayedJongs.popBack();
+    }
     biaoji->setVisible(false);
 }
 
@@ -137,7 +139,7 @@ void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
 
 
 void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
-     PlayerBase::showPlayerPeng(data, playerBase);
+    PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
@@ -248,7 +250,7 @@ void PlayerOpposite::updateHandJongs(std::string jongs,bool hu){
         }
         pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
     }
-
+    
     for (int i = 0; i < pokers.size(); i++)
     {
         Jong* jong = Jong::create();
@@ -339,7 +341,7 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
                     record.pokersRecord.pushBack(jong);
                     this->addChild(jong, 5);
                 }
-
+                
                 record.pokersRecord.pushBack(jong);
             }
             playerCpgRecords.push_back(record);

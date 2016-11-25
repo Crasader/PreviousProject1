@@ -1987,11 +1987,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/core/MahjongView.cpp"
-            timestampString = "501766059.062626"
+            timestampString = "501768338.968579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "906"
-            endingLineNumber = "906"
+            startingLineNumber = "907"
+            endingLineNumber = "907"
             landmarkName = "MahjongView::showHuPaiXing(std::string paixing)"
             landmarkType = "7">
          </BreakpointContent>
