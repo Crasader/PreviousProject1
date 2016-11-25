@@ -380,6 +380,7 @@ void PlayerBase::startTimeClockAnim(){
 }
 
 void PlayerBase::startTimeClockAnim(int time, int type){
+    log("KKKKKKKKKKKK time = %d || type = %d",time,type);
     timeClock->setString(StringUtils::format("%d", time));
     this->setTag(type);
     mCDTime = time;
@@ -397,7 +398,7 @@ void PlayerBase::startTimeClockAnim(int time, int type){
 void  PlayerBase::stopTimeClockAnim(){
     mProgressTimer->setVisible(false);
     timeClock->setVisible(false);
-    mCDTime = 1000000;
+    mCDTime = 1000000000;
     unschedule(schedule_selector(PlayerBase::updateTime));
 }
 
@@ -422,6 +423,7 @@ void PlayerBase::playerCpgAnim(CpgType cpgType, ClientSeatId type){
 
 void PlayerBase::updateTime(float dt){
     mCDTime--;
+    log("AAAAAAAAAAA mCDTime = %d",mCDTime);
     if (mCDTime > 0){
         timeClock->setString(StringUtils::format("%d", mCDTime));
     }
@@ -433,6 +435,7 @@ void PlayerBase::updateTime(float dt){
         if (mCDTime <=-1){
             mCDTime = 1000000;
             doEventTimeOver(this->getTag());
+            unschedule(schedule_selector(PlayerBase::updateTime));
         }
     }
 }

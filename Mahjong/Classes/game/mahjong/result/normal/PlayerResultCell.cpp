@@ -121,6 +121,7 @@ bool PlayerResultCell::init(GameResultData data){
             if(GAMEDATA::getInstance()->getDiaopao()==*itor)
             {
                 itor=showPokers.erase(itor);
+                break;
             }
             else
             {

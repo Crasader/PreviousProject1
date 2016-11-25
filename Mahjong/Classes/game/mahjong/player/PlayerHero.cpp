@@ -564,7 +564,7 @@ void PlayerHero::replaceFlower(){
                         }
                     }
                 }
-                HuaAnim* huaAnim = HuaAnim::create(needReplace, ClientSeatId::hero,CallFunc::create([=](){
+                HuaAnim* huaAnim = HuaAnim::create(needReplace, GAMEDATA::getInstance()->getHeroSeatId(),CallFunc::create([=](){
                     setHuaNum(getHuaNum()+needReplace.size());
                     showPlayerHua(getHuaNum());
                 }));
