@@ -71,7 +71,7 @@ void SplashScene::loginByWechat(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
         //oTIvfwqK9YwoAi1dANUQjhlhOAZ4
         //oTIvfwnO4yCaBasG7qJedNbiGuG0
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwqK9YwoAi1dANUQjhlhOAZ4", "http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","泥沙爬虫"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwnO4yCaBasG7qJedNbiGuG0", "http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","泥沙爬虫"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         IOSBridge::getInstance()->doWechatLogin();

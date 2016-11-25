@@ -118,10 +118,16 @@ bool OtherPlayerInfo::init(Player* player){
     auto gold_icon = Sprite::create("gameview/other_player_gold.png");
     gold_icon->setPosition(180, 75);
     dialogBg->addChild(gold_icon);
-    auto goldNum = Label::createWithSystemFont(StringUtils::format("%d", player->getGold()),"arial",20);
+    std::string gold_num = StringUtils::format("%d", player->getGold());
+    if(player->getGold()>9999999){
+        gold_num = StringUtils::format("%d万", player->getGold()/10000);
+    }else if(player->getGold()>99999999){
+         gold_num = StringUtils::format("%d亿", player->getGold()/100000000);
+    }
+    auto goldNum = Label::createWithSystemFont(gold_num,"arial",20);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     goldNum->setColor(Color3B(87, 195, 186));
-    goldNum->setPosition(205, 80);
+    goldNum->setPosition(198, 80);
     dialogBg->addChild(goldNum);
     //lequan
     auto lequan_bg = Sprite::create("gameview/other_player_num_bg.png");
