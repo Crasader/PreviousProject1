@@ -52,8 +52,10 @@ void PlayerHero::onExit()
 
 void PlayerHero::removeLastJong(){
     biaoji->setVisible(false);
-    playerPlayedJongs.at(playerPlayedJongs.size() - 1)->removeFromParent();
-    playerPlayedJongs.popBack();
+    if(playerPlayedJongs.size()>0){
+        playerPlayedJongs.at(playerPlayedJongs.size() - 1)->removeFromParent();
+        playerPlayedJongs.popBack();
+    }
 }
 
 void PlayerHero::setIsReady(bool b){
