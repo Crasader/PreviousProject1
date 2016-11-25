@@ -43,7 +43,7 @@ bool ChatDialog::init(std::string poxiaoId){
     closeMenu->setPosition(980, 660);
     addChild(closeMenu);
     
-    auto inputText = Scale9Sprite::create("mainlogin/bottom_bg.png");
+    auto inputText = ui::Scale9Sprite::create("mainlogin/bottom_bg.png");
     inputText->setContentSize(Size(720,500));
     inputText->setPosition(640,375);
     addChild(inputText);
@@ -57,12 +57,12 @@ bool ChatDialog::init(std::string poxiaoId){
     listView->setPosition(Point(640,375));
     addChild(listView);
     
-    auto inputBg =  Scale9Sprite::create("mainlogin/bottom_bg.png");
+    auto inputBg =  ui::Scale9Sprite::create("mainlogin/bottom_bg.png");
     inputBg->setContentSize(Size(720,81));
     inputBg->setPosition(Point(640,85));
     addChild(inputBg);
     
-    auto inputField =  Scale9Sprite::create("mainlogin/bottom_bg.png");
+    auto inputField =  ui::Scale9Sprite::create("mainlogin/bottom_bg.png");
     inputField->setContentSize(Size(560,71));
     inputField->setPosition(Point(565,85));
     addChild(inputField);
@@ -82,7 +82,7 @@ bool ChatDialog::init(std::string poxiaoId){
     sendBtn->setPosition(942,85);
     addChild(sendBtn);
     
-    EditBox* field = EditBox::create(Size(500,71), Scale9Sprite::create());
+    ui::EditBox* field = ui::EditBox::create(Size(500,71), ui::Scale9Sprite::create());
     field->setTag(1001);
     field->setPosition(Point(545,85));
     addChild(field);
@@ -143,11 +143,15 @@ void ChatDialog:: showChatInfo(ChatData data){
     customItem->setLayoutType(Layout::Type::ABSOLUTE);
     customItem->setContentSize(Size(720,100));
     //显示聊天的头像
-    HeadImage* iamge = HeadImage::create(Size(70,70));
+    HeadImage* iamge;
+    for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
+        if(data.poxiaoId == player->getPoxiaoId()){
+            iamge = HeadImage::createByImage(player->getPicture(),Size(70,70));
+        }
+    }
     customItem->addChild(iamge);
     listView->pushBackCustomItem(customItem);
     listView->jumpToBottom();
-    
     std::string content = data.content;
     vector<std::string> msgs = PlayerChatManage::getInstance()->splitContentByFace(content);
     RichText* text = RichText ::create();
@@ -164,7 +168,7 @@ void ChatDialog:: showChatInfo(ChatData data){
         }
     }
     customItem->addChild(text,1);
-    auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
+    auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
     bob->setContentSize(Size(text->getContentSize().width+20, 70));
     customItem->addChild(bob);
     

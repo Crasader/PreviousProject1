@@ -2383,11 +2383,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/chat/ChatDialog.cpp"
-            timestampString = "501682927.340433"
+            timestampString = "501746216.549246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "ChatDialog:: showChatInfo(ChatData data)"
             landmarkType = "7">
             <Locations>
@@ -2932,7 +2932,7 @@
             startingLineNumber = "59"
             endingLineNumber = "59"
             landmarkName = "FaceChatLayer::faceSelected(Ref* ref)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2942,11 +2942,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/chat/ChatDialog.cpp"
-            timestampString = "501682927.340433"
+            timestampString = "501746216.549246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "ChatDialog::sendFaceId(int id)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2958,11 +2958,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/chat/ChatDialog.cpp"
-            timestampString = "501682927.340433"
+            timestampString = "501746216.549246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "ChatDialog::sendFaceId(int id)"
             landmarkType = "7">
          </BreakpointContent>
