@@ -30,7 +30,6 @@ bool MahjongView::init(){
     if (GAMEDATA::getInstance()->getIsRecover()){
         recoverGame();
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
-        GAMEDATA::getInstance()->setIsRecover(false);
     }
     else{
         if(GAMEDATA::getInstance()->getContinueAgain()){
@@ -475,22 +474,6 @@ void MahjongView::recoverGame(){
         recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
     }
     showGamePaidui(atoi(data.rest.c_str()));
-    //重新设置庄的位置
-    showOriention();
-    ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-    ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
-    GAMEDATA::getInstance()->setIsPlaying(true);
-    int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
-    if(playturn == ClientSeatId::hero){
-        playerHero->startTimeClockAnim();
-        playerHero->setIsAllowPlay(true);
-    }else if(playturn == ClientSeatId::left){
-        playerLeft->startTimeClockAnim();
-    }else if(playturn == ClientSeatId::opposite){
-        playerOpposite->startTimeClockAnim();
-    }else if(playturn == ClientSeatId::right){
-        playerRight->startTimeClockAnim();
-    }
 }
 
 void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo){
@@ -1045,6 +1028,26 @@ void MahjongView::showHandPokerOver(int seatId){
 
 
 void MahjongView::onEnterTransitionDidFinish(){
+    if (GAMEDATA::getInstance()->getIsRecover()){
+        //重新设置庄的位置
+        LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
+        showOriention();
+        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
+        GAMEDATA::getInstance()->setIsPlaying(true);
+        int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
+        if(playturn == ClientSeatId::hero){
+            playerHero->startTimeClockAnim();
+            playerHero->setIsAllowPlay(true);
+        }else if(playturn == ClientSeatId::left){
+            playerLeft->startTimeClockAnim();
+        }else if(playturn == ClientSeatId::opposite){
+            playerOpposite->startTimeClockAnim();
+        }else if(playturn == ClientSeatId::right){
+            playerRight->startTimeClockAnim();
+        }
+        GAMEDATA::getInstance()->setIsRecover(false);
+    }
     GAMEDATA::getInstance()->setIsInGameScene(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
 }
