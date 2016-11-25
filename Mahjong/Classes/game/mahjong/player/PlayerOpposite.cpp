@@ -233,11 +233,20 @@ void PlayerOpposite::recoverHua(int hua){
 void PlayerOpposite::updateHandJongs(std::string jongs,bool hu){
     vector<std::string> pokers = StringUtil::split(jongs, ",");
     if(hu){
-        for (int a = 0; a < pokers.size(); a++){
-            if(GAMEDATA::getInstance()->getDiaopao() == pokers.at(a)){
-                swap(pokers.at(a), pokers.at(pokers.size()-1));
+        vector<std::string>::iterator itor;
+        for(itor=pokers.begin();itor!=pokers.end();)
+        {
+            if(GAMEDATA::getInstance()->getDiaopao()==*itor)
+            {
+                itor=pokers.erase(itor);
+                break;
+            }
+            else
+            {
+                itor++;
             }
         }
+        pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
     }
 
     for (int i = 0; i < pokers.size(); i++)

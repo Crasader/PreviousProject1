@@ -121,8 +121,6 @@ bool OtherPlayerInfo::init(Player* player){
     std::string gold_num = StringUtils::format("%d", player->getGold());
     if(player->getGold()>9999999){
         gold_num = StringUtils::format("%d万", player->getGold()/10000);
-    }else if(player->getGold()>99999999){
-         gold_num = StringUtils::format("%d亿", player->getGold()/100000000);
     }
     auto goldNum = Label::createWithSystemFont(gold_num,"arial",20);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);

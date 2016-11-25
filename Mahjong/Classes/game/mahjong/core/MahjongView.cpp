@@ -881,6 +881,8 @@ void MahjongView::addGameResultListener(){
                 clearRoomPlayer();
                 if(flag == "2"){
                     GAMEDATA::getInstance()->setNeedShowLastResult(true);
+                    GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->setFangZhuId("");
                 }else{
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }

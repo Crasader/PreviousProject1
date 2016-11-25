@@ -258,6 +258,7 @@ void PlayerHero::updateHandJongs(std::string jongs,bool hu){
             if(GAMEDATA::getInstance()->getDiaopao()==*itor)
             {
                 itor=pokers.erase(itor);
+                break;
             }
             else
             {
