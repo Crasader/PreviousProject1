@@ -13,19 +13,19 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-class ExchangeItem : public Layer, public EditBoxDelegate{
+class ExchangeItem : public Layer, public ui::EditBoxDelegate{
 public:
     static ExchangeItem* create(int propId,std::string propName);
     virtual bool init(int propId,std::string propName);
 private:
     
     
-    EditBox* _lianXiRen;
-    EditBox* _shouJiHao;
-    EditBox* _xiangXiDiZhi;
+    ui::EditBox* _lianXiRen;
+    ui::EditBox* _shouJiHao;
+    ui::EditBox* _xiangXiDiZhi;
     
-    EditBox* _newPhoneNumber;
-    EditBox* _confirmPhoneNumber;
+    ui::EditBox* _newPhoneNumber;
+    ui::EditBox* _confirmPhoneNumber;
     
     CC_SYNTHESIZE(int , itemPropId, ItemPropId);
     CC_SYNTHESIZE(bool, isVirtual, IsVirtual);
@@ -35,12 +35,12 @@ private:
     void confirm(Ref* ref);
     void closeView();
 
-    virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
+    virtual void editBoxEditingDidBegin(ui::EditBox* editBox);
     
-    virtual void editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox);
+    virtual void editBoxEditingDidEnd(ui::EditBox* editBox);
     
-    virtual void editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text);
+    virtual void editBoxTextChanged(ui::EditBox* editBox, const std::string& text);
     
-    virtual void editBoxReturn(cocos2d::extension::EditBox* editBox);
+    virtual void editBoxReturn(ui::EditBox* editBox);
 };
 #endif /* ExchangeItem_hpp */

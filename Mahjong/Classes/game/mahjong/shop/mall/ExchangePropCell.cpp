@@ -10,12 +10,14 @@
 #include "game/mahjong/shop/mall/ExchangeItem.hpp"
 #include "game/mahjong/shop/ShopHintDialog.hpp"
 #include "userdata/UserData.h"
+#include "http/image/UrlImageMannger.h"
+#include "game/utils/GameConfig.h"
 
 
-ExchangePropCell* ExchangePropCell::create(int propId,int lequanNum,std::string propName){
+ExchangePropCell* ExchangePropCell::create(int propId,int lequanNum,std::string propName,std::string url){
     
     ExchangePropCell* ret = new ExchangePropCell();
-    if(ret &&ret->init(propId, lequanNum,propName)){
+    if(ret &&ret->init(propId, lequanNum,propName,url)){
         
         ret->autorelease();
         return ret;
@@ -26,7 +28,7 @@ ExchangePropCell* ExchangePropCell::create(int propId,int lequanNum,std::string 
     }
 }
 
-bool ExchangePropCell::init(int propId,int lequanNum,std::string propName){
+bool ExchangePropCell::init(int propId,int lequanNum,std::string propName,std::string url){
     if(!Sprite::init()){
         return false;
     }
@@ -39,7 +41,11 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName){
     light->setPosition(0,15);
     addChild(light);
     
-    auto cell = Sprite::create(getImageNameById(propId));
+    auto cell = Sprite::create();
+    std::string filepath = UrlImageMannger::getInstance()->loadHeadImgByUrl(url);
+    if(IAMGE_LOADING != filepath){
+        cell->setTexture(filepath);
+    }
     cell->setPosition(0,42);
     addChild(cell);
     
@@ -91,23 +97,4 @@ void ExchangePropCell::confirmChange(Ref* ref){
         dia->showImage("shop/lequanbugou.png");
         getParent()->addChild(dia,2);
     }
-}
-
-std::string ExchangePropCell::getImageNameById(int id){
-    //后期可以做成从网络获取数据,目前在客户端写死
-    switch (id) {
-        case 2:
-            return "shop/huafei_30.png";
-        case 3:
-            return "shop/huafei_50.png";
-        case 4:
-            return "shop/huafei_100.png";
-        case 11:
-            return "shop/liuliang_50.png";
-        case 21:
-            return "shop/ipones_6s.png";
-        default:
-            return "shop/huafei_30.png";
-    }
-    
 }

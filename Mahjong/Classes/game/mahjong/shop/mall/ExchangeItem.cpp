@@ -64,7 +64,7 @@ void ExchangeItem::showRealItem(int propId,std::string propName){
     textInfo->setPosition(610,530);
     addChild(textInfo);
     
-    auto labe = Label::create(propName,"arial",30);
+    auto labe = Label::createWithSystemFont(propName,"arial",30);
     labe->setAnchorPoint(Point::ANCHOR_MIDDLE);
     labe->setPosition(540,530);
     addChild(labe);
@@ -75,10 +75,10 @@ void ExchangeItem::showRealItem(int propId,std::string propName){
     auto input_bg_1 = Sprite::create("shop/shuru_box_2.png");
     input_bg_1->setPosition(720, 465);
     addChild(input_bg_1);
-    _lianXiRen = EditBox::create(Size(220, 81), Scale9Sprite::create());
+    _lianXiRen = ui::EditBox::create(Size(220, 81), ui::Scale9Sprite::create());
     _lianXiRen->setPosition(Point(635, 465));
     _lianXiRen->setInputMode(cocos2d::ui::EditBox::InputMode::PHONE_NUMBER);
-    _lianXiRen->setReturnType(EditBox::KeyboardReturnType::DONE);
+    _lianXiRen->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _lianXiRen->setTag(11);
     _lianXiRen->setFont("arial", 24);
     _lianXiRen->setDelegate(this);
@@ -90,10 +90,10 @@ void ExchangeItem::showRealItem(int propId,std::string propName){
     auto input_bg_2 = Sprite::create("shop/shuru_box_2.png");
     input_bg_2->setPosition(720, 380);
     addChild(input_bg_2);
-    _shouJiHao = EditBox::create(Size(230, 81), Scale9Sprite::create());
+    _shouJiHao = ui::EditBox::create(Size(230, 81), ui::Scale9Sprite::create());
     _shouJiHao->setPosition(Point(635, 380));
     _shouJiHao->setInputMode(cocos2d::ui::EditBox::InputMode::PHONE_NUMBER);
-    _shouJiHao->setReturnType(EditBox::KeyboardReturnType::DONE);
+    _shouJiHao->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _shouJiHao->setTag(12);
     _shouJiHao->setFont("arial", 24);
     _shouJiHao->setDelegate(this);
@@ -112,9 +112,9 @@ void ExchangeItem::showRealItem(int propId,std::string propName){
     auto input_bg_3 = Sprite::create("shop/shuru_box_2.png");
     input_bg_3->setPosition(720, 295);
     addChild(input_bg_3);
-    _xiangXiDiZhi = EditBox::create(Size(230, 81), Scale9Sprite::create());
+    _xiangXiDiZhi = ui::EditBox::create(Size(230, 81), ui::Scale9Sprite::create());
     _xiangXiDiZhi->setPosition(Point(635, 295));
-    _xiangXiDiZhi->setReturnType(EditBox::KeyboardReturnType::DONE);
+    _xiangXiDiZhi->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _xiangXiDiZhi->setTag(13);
     _xiangXiDiZhi->setFont("arial", 24);
     _xiangXiDiZhi->setDelegate(this);
@@ -139,7 +139,7 @@ void ExchangeItem::showVirtualItem(int propId,std::string propName){
     textInfo->setPosition(610,530);
     addChild(textInfo);
     
-    auto labe = Label::create(propName,"arial",30);
+    auto labe = Label::createWithSystemFont(propName,"arial",30);
     labe->setAnchorPoint(Point::ANCHOR_MIDDLE);
     labe->setPosition(540,530);
     addChild(labe);
@@ -151,10 +151,10 @@ void ExchangeItem::showVirtualItem(int propId,std::string propName){
     auto input_bg_1 = Sprite::create("shop/shuru_box_2.png");
     input_bg_1->setPosition(720, 415);
     addChild(input_bg_1);
-    _newPhoneNumber = EditBox::create(Size(220, 81), Scale9Sprite::create());
+    _newPhoneNumber = ui::EditBox::create(Size(220, 81), ui::Scale9Sprite::create());
     _newPhoneNumber->setPosition(Point(635, 415));
-    _newPhoneNumber->setInputMode(cocos2d::ui::EditBox::InputMode::PHONE_NUMBER);
-    _newPhoneNumber->setReturnType(EditBox::KeyboardReturnType::DONE);
+    _newPhoneNumber->setInputMode(ui::EditBox::InputMode::PHONE_NUMBER);
+    _newPhoneNumber->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _newPhoneNumber->setTag(0);
     _newPhoneNumber->setFont("arial", 24);
     _newPhoneNumber->setDelegate(this);
@@ -181,10 +181,10 @@ void ExchangeItem::showVirtualItem(int propId,std::string propName){
     auto input_bg_2 = Sprite::create("shop/shuru_box_2.png");
     input_bg_2->setPosition(720, 305);
     addChild(input_bg_2);
-    _confirmPhoneNumber = EditBox::create(Size(230, 81), Scale9Sprite::create());
+    _confirmPhoneNumber = ui::EditBox::create(Size(230, 81), ui::Scale9Sprite::create());
     _confirmPhoneNumber->setPosition(Point(635, 305));
-    _confirmPhoneNumber->setInputMode(cocos2d::ui::EditBox::InputMode::PHONE_NUMBER);
-    _confirmPhoneNumber->setReturnType(EditBox::KeyboardReturnType::DONE);
+    _confirmPhoneNumber->setInputMode(ui::EditBox::InputMode::PHONE_NUMBER);
+    _confirmPhoneNumber->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _confirmPhoneNumber->setTag(1);
     _confirmPhoneNumber->setFont("arial", 24);
     _confirmPhoneNumber->setDelegate(this);
@@ -232,12 +232,12 @@ void ExchangeItem::closeView(){
     removeFromParent();
 }
 
-void ExchangeItem::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
+void ExchangeItem::editBoxEditingDidBegin(ui::EditBox* editBox){
     
     
 }
 
-void ExchangeItem::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
+void ExchangeItem::editBoxEditingDidEnd(ui::EditBox* editBox){
     if (editBox->getTag() == 0){
         if (!StringUtil::checkPhone(editBox->getText())){
             if(NULL != getChildByTag(1001)){
@@ -278,12 +278,12 @@ void ExchangeItem::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
     
 }
 
-void ExchangeItem::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
+void ExchangeItem::editBoxTextChanged(ui::EditBox* editBox, const std::string& text){
     
     
 }
 
-void ExchangeItem::editBoxReturn(cocos2d::extension::EditBox* editBox){
+void ExchangeItem::editBoxReturn(ui::EditBox* editBox){
     
     
 }

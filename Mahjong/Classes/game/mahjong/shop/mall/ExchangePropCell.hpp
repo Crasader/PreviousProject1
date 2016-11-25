@@ -16,8 +16,8 @@ USING_NS_CC;
 class ExchangePropCell:public Sprite{
 
 public:
-    static ExchangePropCell* create(int propId,int lequanNum,std::string propName);
-    virtual bool init(int propId,int lequanNum,std::string propName);
+    static ExchangePropCell* create(int propId,int lequanNum,std::string propName,std::string url);
+    virtual bool init(int propId,int lequanNum,std::string propName,std::string url);
 private:
     std::string getImageNameById(int id);
     void confirmChange(Ref* ref);

@@ -72,7 +72,7 @@ void LequanShop::onEnter(){
             addChild(shop);
             UserData::getInstance()->setTicket(GAMEDATA::getInstance()->getLequanChangeResult().lequan);
             if(NULL != getChildByTag(962)){
-                ((LabelAtlas*)getChildByTag(962))->setString(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getTicket())->_string);
+                ((LabelAtlas*)getChildByTag(962))->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
             }
             EventCustom ev(MSG_UPDATE_HERO_INFO);
             _eventDispatcher->dispatchEvent(&ev);
@@ -107,14 +107,14 @@ void LequanShop::showLequanShop(){
     lequanIcon->setPosition(385,512);
     addChild(lequanIcon);
     
-    LabelAtlas* lequanNum = LabelAtlas::create(cocos2d::String::createWithFormat("%d",UserData::getInstance()->getTicket())->_string,"shop/prop_num.png",21,28,'0');
+    LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format("%d",UserData::getInstance()->getTicket()),"shop/prop_num.png",21,28,'0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setTag(962);
     lequanNum->setPosition(416,512);
     addChild(lequanNum);
     
     for(int i=0;i<GAMEDATA::getInstance()->getLequanChangeList().list.size();i++){
-        ExchangePropCell* cell = ExchangePropCell::create(atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propId.c_str()), atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propPrice.c_str()),GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propName);
+        ExchangePropCell* cell = ExchangePropCell::create(atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propId.c_str()), atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propPrice.c_str()),GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propName,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).url);
         cell->setPosition(312+(i%4)*220,315);
         addChild(cell);
     }

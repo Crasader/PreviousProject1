@@ -15,6 +15,7 @@ public:
 	static UrlImageMannger* getInstance();
 	std::string loadHeadImgByUrl(std::string url);//下载头像图片
     std::string loadNoticeImgByUrl(std::string url);//下载推广图片
+    std::string loadShopImgByUrl(std::string url);//下载商城图片
     void uploadImage2Server(CallFunc* callBack);//上传图片到七牛的服务器
     std::string downloadQunImgByUrl(std::string url);//下载图片到SD卡
     std::string downloadDailiImgByUrl(std::string url);//下载图片到SD卡
