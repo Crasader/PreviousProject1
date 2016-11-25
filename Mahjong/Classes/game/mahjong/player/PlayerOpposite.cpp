@@ -194,7 +194,7 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
                 if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data.poker.c_str())){
                     Jong* jong = Jong::create();
                     jong->showJong(oppositeplayed, atoi(data.poker.c_str()));
-                    jong->setPosition(playerCpgRecords.at(i).pokersRecord.at(1)->getPosition());
+                    jong->setPosition(playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().x,playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().y-5);
                     addChild(jong, 30);
                 }
             }
