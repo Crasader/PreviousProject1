@@ -109,7 +109,6 @@ void SpecialResultLayer::afterCaptured(bool succeed, const std::string &outputFi
 }
 
 void SpecialResultLayer::gotoLobby(){
-    GAMEDATA::getInstance()->clearPlayersInfo();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
     Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
 }

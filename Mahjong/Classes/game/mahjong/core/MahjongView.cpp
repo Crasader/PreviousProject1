@@ -883,6 +883,7 @@ void MahjongView::addGameResultListener(){
                     GAMEDATA::getInstance()->setNeedShowLastResult(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
                     GAMEDATA::getInstance()->setFangZhuId("");
+                    GAMEDATA::getInstance()->clearPlayersInfo();
                 }else{
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }
