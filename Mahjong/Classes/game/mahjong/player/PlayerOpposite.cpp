@@ -379,7 +379,7 @@ void PlayerOpposite::recoverHand(std::string hand){
 void PlayerOpposite::doEventTimeOver(int type){
     if (type == -1){
         schedule([=](float dt){
-            setIsOffLine(false);
-        }, 0, 0, 8.0f, "xiaoxiao");
+            setIsOffLine(true);
+        }, 0, 0, 7.0f, "xiaoxiao");
     }
 }

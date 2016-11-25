@@ -154,7 +154,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     auto offLineIcon = Sprite::create("trusteeship/offline_icon.png");
     offLineIcon->setTag(1002);
     offLineIcon->setVisible(false);
-    offLineIcon->setPosition(getPostionBySeat(clientSeatId).x+40,getPostionBySeat(clientSeatId).y-45);
+    offLineIcon->setPosition(getPostionBySeat(clientSeatId).x+22,getPostionBySeat(clientSeatId).y-32);
     this->addChild(offLineIcon);
     
     auto trueeIcon = Sprite::create("trusteeship/trustee_icon.png");

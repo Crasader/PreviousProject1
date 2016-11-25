@@ -24,7 +24,6 @@ private:
 	EventListenerCustom* reConnectAgain;
     EventListenerCustom* reEnterFriendRoomListener;
     EventListenerCustom* reOpenFriendRoomListener;
-    bool isCliked;
     void loginByWechat();
 	void addTocuhListener();
 	void drawLonginScene();

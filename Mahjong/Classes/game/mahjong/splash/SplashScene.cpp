@@ -42,7 +42,6 @@ void SplashScene::onEnterTransitionDidFinish(){
 }
 
 void SplashScene::drawLonginScene(){
-    isCliked =  false;
     //add game bg to layer
     Sprite* splash_bg = Sprite::create("mainlogin/splah_bg_.jpg");
     splash_bg->setPosition(640,360);
@@ -64,14 +63,12 @@ void SplashScene::drawLonginScene(){
 
 
 void SplashScene::loginByWechat(){
-    if(!isCliked){
-        isCliked = true;
         Audio::getInstance()->playSoundClick();
         showLoading();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
         //oTIvfwqK9YwoAi1dANUQjhlhOAZ4
         //oTIvfwnO4yCaBasG7qJedNbiGuG0
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwnO4yCaBasG7qJedNbiGuG0", "http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","泥沙爬虫"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwqK9YwoAi1dANUQjhlhOAZ4", "http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","泥沙爬虫"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         IOSBridge::getInstance()->doWechatLogin();
@@ -79,7 +76,6 @@ void SplashScene::loginByWechat(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
         CallAndroidMethod::getInstance()->weChatLogin();
 #endif
-    }
 }
 
 
@@ -305,7 +301,7 @@ void SplashScene::onEnter(){
     loginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
-        isCliked = false;
+        
         if (result == LOGIN_SUCCESS){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));//房间列表
             NetworkManage::getInstance()->heartbeat();//心跳
