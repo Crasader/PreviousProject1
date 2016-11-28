@@ -29,6 +29,7 @@ private:
     void showPlayerBill();
 	void invitePlayer(Ref* ref);
     void dissovleRoom();
+    void update(float dt);
     
 };
 #endif

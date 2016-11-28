@@ -49,8 +49,8 @@ void GuiLayer::initView(){
                                             CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
     auto settingButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
                                                CC_CALLBACK_0(GuiLayer::settingButtonClick, this));
-//    auto testButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
-//                                            CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
+    //    auto testButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
+    //                                            CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
     Menu* myMenu = Menu::create(chatButton, settingButton, NULL);
     myMenu->setPosition(1225,300);
     myMenu->alignItemsVerticallyWithPadding(10);
@@ -59,8 +59,13 @@ void GuiLayer::initView(){
     auto quitBut = MenuItemImage::create("gameview/go_back_1.png", "gameview/go_back_2.png",
                                          CC_CALLBACK_0(GuiLayer::quitButtonClick, this));
     Menu* quit = Menu::create(quitBut, NULL);
+    quit->setTag(1212);
     quit->setPosition(Point(55, 670));
     this->addChild(quit);
+    
+    if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
+        quit->setVisible(false);
+    }
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         //私人房间
@@ -127,7 +132,7 @@ void GuiLayer::initView(){
         billMenu->setPosition(Point(1225, 180));
         addChild(billMenu);
     }
-    
+    scheduleUpdate();
 }
 
 //测试方法
@@ -279,5 +284,14 @@ void GuiLayer::dissovleRoom(){
 void GuiLayer::hideDissovleBtn(){
     if(NULL != getChildByTag(9999)){
         getChildByTag(9999)->setVisible(false);
+    }
+}
+
+void GuiLayer::update(float dt){
+    if(getChildByTag(1212)!=NULL){
+        if(GAMEDATA::getInstance()->getIsPlaying()){
+            if(!getChildByTag(1212)->isVisible())
+                getChildByTag(1212)->setVisible(true);
+        }
     }
 }
