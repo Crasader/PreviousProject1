@@ -84,14 +84,7 @@ void LobbyScene::signUpdate(float dt){
     }
 }
 
-//刷新显示的用户信息
-void LobbyScene::updateHeroInfo(){
-    ((HeadImage*)getChildByTag(962))->updateImage();
-    nickName->setString(UserData::getInstance()->getNickName());
-    goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
-    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
-    lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
-}
+
 
 void LobbyScene::initView(){
     //add game bg to layer
@@ -138,53 +131,53 @@ void LobbyScene::drawSceneTop(){
     
     //gold
     auto gold_bg = Sprite::create("mjlobby/room_info_bg.png");
-    gold_bg->setPosition(212, 685);
+    gold_bg->setPosition(232, 685);
     addChild(gold_bg);
     auto gold_icon = Sprite::create("mjlobby/gold_icon.png");
-    gold_icon->setPosition(150, 685);
+    gold_icon->setPosition(166, 685);
     addChild(gold_icon);
-    goldNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getGold()),
+    goldNum = LabelAtlas::create(StringUtils::format("%d",UserData::getInstance()->getGold()),
                                  "mjlobby/room_info_num.png", 10, 15, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    goldNum->setPosition(212, 685);
+    goldNum->setPosition(232, 685);
     addChild(goldNum);
     auto gold_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeGold, this));
     auto chargGold = Menu::create(gold_btn, NULL);
-    chargGold->setPosition(274, 685);
+    chargGold->setPosition(298, 685);
     addChild(chargGold);
     
     //fangka
     auto fangka_bg = Sprite::create("mjlobby/room_info_bg.png");
-    fangka_bg->setPosition(390, 685);
+    fangka_bg->setPosition(420, 685);
     addChild(fangka_bg);
     auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
-    fangka_icon->setPosition(335, 680);
+    fangka_icon->setPosition(365, 680);
     addChild(fangka_icon);
     fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),
                                    "mjlobby/room_info_num.png", 10, 15, '0');
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    fangkaNum->setPosition(392, 685);
+    fangkaNum->setPosition(422, 685);
     addChild(fangkaNum);
     auto diamond_btn = MenuItemImage::create("mjlobby/charge_btn_1.png", "mjlobby/charge_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeFangka, this));
     auto chargDiamond = Menu::create(diamond_btn, NULL);
-    chargDiamond->setPosition(457, 682);
+    chargDiamond->setPosition(487, 682);
     addChild(chargDiamond);
     
     //lequan
     auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
-    lequan_bg->setPosition(580, 685);
+    lequan_bg->setPosition(610, 685);
     this->addChild(lequan_bg);
     auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
-    lequan_icon->setPosition(522, 685);
+    lequan_icon->setPosition(552, 685);
     this->addChild(lequan_icon);
     lequanNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getTicket()),
                                    "mjlobby/room_info_num.png", 10, 15, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequanNum->setPosition(582, 685);
+    lequanNum->setPosition(614, 685);
     this->addChild(lequanNum);
     auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
     auto chargLequan = Menu::create(lequan_btn, NULL);
-    chargLequan->setPosition(646, 685);
+    chargLequan->setPosition(676, 685);
     addChild(chargLequan);
 }
 
@@ -261,6 +254,15 @@ void LobbyScene::drawSceneBot(){
     openMenu->setPosition(1203,67);
     addChild(openMenu);
     
+}
+
+//刷新显示的用户信息
+void LobbyScene::updateHeroInfo(){
+    ((HeadImage*)getChildByTag(962))->updateImage();
+    nickName->setString(UserData::getInstance()->getNickName());
+    goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
+    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
+    lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
 }
 
 void LobbyScene::showLobbyAnim(){
@@ -675,7 +677,7 @@ void LobbyScene::addEventListener(){
         addChild(keypads);
     });
     
-    
+    //跑马灯
     scrollTetxListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_SCROLL_TEXT, [=](EventCustom* event){
         std::string msg = static_cast<char*>(event->getUserData());
         if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
@@ -683,6 +685,7 @@ void LobbyScene::addEventListener(){
         }
     });
     
+    //玩家群
     wanjiaqunListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_WEI_XIN_QUN, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getWanJiaQunVer()>UserData::getInstance()->getWanJiaQunVersion()){
             UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL);
