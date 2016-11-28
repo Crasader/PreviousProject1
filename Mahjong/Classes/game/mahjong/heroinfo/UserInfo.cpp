@@ -101,20 +101,20 @@ void UserInfo::showUserInfo(){
     auto fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),
                                         "playerinfo/player_info_num.png", 13, 19, '0');
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fangkaNum->setPosition(370, 230);
+    fangkaNum->setPosition(400, 230);
     addChild(fangkaNum);
     
     //gold
     auto gold_bg = Sprite::create("common/room_info_bg.png");
-    gold_bg->setPosition(615, 230);
+    gold_bg->setPosition(625, 230);
     addChild(gold_bg);
     auto gold_icon = Sprite::create("common/gold_icon.png");
-    gold_icon->setPosition(560, 230);
+    gold_icon->setPosition(555, 230);
     addChild(gold_icon);
     auto goldNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getGold()),
                                       "playerinfo/player_info_num.png", 13, 19, '0');
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    goldNum->setPosition(585, 230);
+    goldNum->setPosition(594, 230);
     addChild(goldNum);
     
     //lequan
@@ -127,7 +127,7 @@ void UserInfo::showUserInfo(){
     auto lequanNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getTicket()),
                                         "playerinfo/player_info_num.png", 13, 19, '0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum->setPosition(820, 230);
+    lequanNum->setPosition(824, 230);
     this->addChild(lequanNum);
     
     auto accountquit = MenuItemImage::create("playerinfo/quit_account_1.png","playerinfo/quit_account_2.png",CC_CALLBACK_0(UserInfo::cleanAccountRercord, this));
