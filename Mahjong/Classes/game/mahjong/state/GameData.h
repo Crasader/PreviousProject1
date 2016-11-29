@@ -104,6 +104,7 @@ public:
     CC_SYNTHESIZE(bool, needShowLayer, NeedShowLayer);
     CC_SYNTHESIZE(bool, haveShowNotice, HaveShowNotice);//是否展示过推广
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
+    CC_SYNTHESIZE(string, ip, IP);//玩家IP
     CC_SYNTHESIZE(string, dice, Dice);
     CC_SYNTHESIZE(string, kaibao, Kaibao);
     CC_SYNTHESIZE(string, huangfan, Huangfan);

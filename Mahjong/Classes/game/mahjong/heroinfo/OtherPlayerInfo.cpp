@@ -83,7 +83,7 @@ bool OtherPlayerInfo::init(Player* player){
     dialogBg->addChild(headBg);
     
     
-    nickNameLabel = Label::createWithSystemFont(player->getNickname(), "arial", 20);
+    auto nickNameLabel = Label::createWithSystemFont(player->getNickname(), "arial", 20);
     nickNameLabel->setColor(Color3B(87, 195, 186));
     nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickNameLabel->setPosition(130, 190);
@@ -91,11 +91,23 @@ bool OtherPlayerInfo::init(Player* player){
     
     
     std::string gen = player->getGender() == 0 ? "playerinfo/female.png" : "playerinfo/male.png";
-    playerGender = Sprite::create(gen);
-    playerGender->setPosition(140, 140);
+    auto playerGender = Sprite::create(gen);
+    playerGender->setPosition(nickNameLabel->getPositionX()+nickNameLabel->getContentSize().width+15, 192);
     playerGender->setScale(0.6f);
     dialogBg->addChild(playerGender);
     
+    
+    auto playerID= Label::createWithSystemFont(StringUtils::format("ID:%s",player->getUmark().c_str()), "arial", 20);
+    playerID->setColor(Color3B(87, 195, 186));
+    playerID->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    playerID->setPosition(130, 160);
+    dialogBg->addChild(playerID);
+    
+    auto playerIP= Label::createWithSystemFont(StringUtils::format("IP:%s",player->getIP().c_str()), "arial", 20);
+    playerIP->setColor(Color3B(87, 195, 186));
+    playerIP->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    playerIP->setPosition(130, 130);
+    dialogBg->addChild(playerIP);
     
     //fangka
     auto fangka_bg = Sprite::create("gameview/other_player_num_bg.png");

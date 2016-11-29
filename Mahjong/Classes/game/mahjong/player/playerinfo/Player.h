@@ -21,8 +21,10 @@ public:
 	CC_SYNTHESIZE(bool, isReady, IsReady);
 	CC_SYNTHESIZE(bool, banker, Banker);
 	CC_SYNTHESIZE(string, poxiaoId, PoxiaoId);
+    CC_SYNTHESIZE(string, umark, Umark);
 	CC_SYNTHESIZE(string, nickName, Nickname);
 	CC_SYNTHESIZE(string, pic, Picture);
+    CC_SYNTHESIZE(string, ip, IP);
 	CC_SYNTHESIZE(Point, pos, Position);
 };
 #endif

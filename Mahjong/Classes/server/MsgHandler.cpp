@@ -664,6 +664,10 @@ void MsgHandler::enterRoomResp(std::string msg){
                 info->setScore(jifen);
                 info->setGender(gender);
                 info->setNickname(nickname);
+                if(temp.HasMember("ip")){
+                    auto ip = temp["ip"].GetString();
+                    info->setIP(ip);
+                }
                 info->setTicket(lequan);
                 info->setPicture(pic);
                 GAMEDATA::getInstance()->addPlayersInfo(info);
@@ -728,6 +732,10 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &umark = _mDoc["umark"];
             UserData::getInstance()->setMarkId(umark.GetString());
         }
+        if(_mDoc.HasMember("ip")){
+            const rapidjson::Value &ip = _mDoc["ip"];
+            GAMEDATA::getInstance()->setIP(ip.GetString());
+        }
         postNotifyMessage(MSG_LOGIN_RESP, LOGIN_SUCCESS);
     }
     else{
@@ -769,6 +777,7 @@ void MsgHandler::addPalyer(std::string msg){
     const rapidjson::Value &pId = _mDoc["pId"];
     const rapidjson::Value &pic = _mDoc["pic"];
     const rapidjson::Value &fangka = _mDoc["fangka"];
+    
     Player* info = new Player();
     info->setSeatId(seatId.GetInt());
     if (seatId.GetInt() == 1){
@@ -789,6 +798,10 @@ void MsgHandler::addPalyer(std::string msg){
     info->setPicture(pic.GetString());
     info->setIsReady(ifready.GetInt() == 0 ? false : true);
     info->setFangka(fangka.GetInt());
+    if(_mDoc.HasMember("ip")){
+        const rapidjson::Value &ip = _mDoc["ip"];
+        info->setIP(ip.GetString());
+    }
     GAMEDATA::getInstance()->addPlayersInfo(info);
     GAMEDATA::getInstance()->setNeedAddPlayer(true);//解决场景跳转会有消息丢失的问题
 }
@@ -2463,6 +2476,11 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
     if(_mDoc.HasMember("jifen")){
         const rapidjson::Value &jifen = _mDoc["jifen"];
         GAMEDATA::getInstance()->setScore(jifen.GetInt());
+    }
+    
+    if(_mDoc.HasMember("ip")){
+        const rapidjson::Value &ip = _mDoc["ip"];
+        GAMEDATA::getInstance()->setIP(ip.GetString());
     }
     postNotifyMessage(MSG_UPDATE_HERO_INFO, "");
 }
