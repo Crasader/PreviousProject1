@@ -3,6 +3,7 @@
 #include "game/mahjong/state/GameData.h"
 #include "game/mahjong/bill/BillInfo.h"
 #include "game/mahjong/core/widget/QuitRoomDialog.hpp"
+#include "game/mahjong/dialog/prompt/HintDialog.hpp"
 #include "game/mahjong/chat/ChatDialog.hpp"
 #include "game/utils/Audio.h"
 #include "game/utils/SeatIdUtil.h"
@@ -204,9 +205,17 @@ void GuiLayer::settingButtonClick(){
 void GuiLayer::quitButtonClick(){
     Audio::getInstance()->playSoundClick();
     if(!GAMEDATA::getInstance()->getIsPlaying()){
-        GAMEDATA::getInstance()->clearPlayersInfo();
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
+            HintDialog* dia = HintDialog::create("返回大厅,如需解散房间,请按解散房间按钮", [=](Ref* ref){
+                GAMEDATA::getInstance()->clearPlayersInfo();
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            });
+            addChild(dia);
+        }else{
+            GAMEDATA::getInstance()->clearPlayersInfo();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        }
     }else{
         QuitRoomDialog* dialog = QuitRoomDialog::create();
         addChild(dialog);
@@ -280,7 +289,11 @@ void GuiLayer::invitePlayer(Ref* ref){
 
 
 void GuiLayer::dissovleRoom(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
+    HintDialog* dia = HintDialog::create("游戏未开始前解散房间不扣除房卡,是否解散?", [=](Ref* ref){
+        GAMEDATA::getInstance()->clearPlayersInfo();
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
+    });
+    addChild(dia);
 }
 
 
@@ -292,9 +305,9 @@ void GuiLayer::hideDissovleBtn(){
 
 void GuiLayer::update(float dt){
     if(getChildByTag(1212)!=NULL){
-        if(GAMEDATA::getInstance()->getIsPlaying()){
+        if(GAMEDATA::getInstance()->getIsPlaying()&&GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             if(!getChildByTag(1212)->isVisible())
-                getChildByTag(1212)->setVisible(true);
+                getChildByTag(1212)->setVisible(false);
         }
     }
 }

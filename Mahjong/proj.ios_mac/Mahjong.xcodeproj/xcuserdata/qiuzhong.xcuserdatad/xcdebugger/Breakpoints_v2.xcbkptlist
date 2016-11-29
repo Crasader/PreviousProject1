@@ -2605,11 +2605,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/game/mahjong/dialog/prompt/HintDialog.cpp"
-            timestampString = "494149758.85837"
+            timestampString = "502104708.815315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "HintDialog::init(std::string msg,const ccMenuCallback&amp; callback1,const ccMenuCallback&amp; callback2)"
             landmarkType = "7">
          </BreakpointContent>
