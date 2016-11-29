@@ -802,6 +802,10 @@ void MsgHandler::addPalyer(std::string msg){
         const rapidjson::Value &ip = _mDoc["ip"];
         info->setIP(ip.GetString());
     }
+    if(_mDoc.HasMember("umark")){
+        const rapidjson::Value &umark = _mDoc["umark"];
+        info->setUmark(umark.GetString());
+    }
     GAMEDATA::getInstance()->addPlayersInfo(info);
     GAMEDATA::getInstance()->setNeedAddPlayer(true);//解决场景跳转会有消息丢失的问题
 }
@@ -1314,6 +1318,14 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.nickname =temp["nickname"].GetString();
         data.pic =temp["pic"].GetString();
         data.gender = temp["gender"].GetInt();
+        if(_mDoc.HasMember("ip")){
+            const rapidjson::Value &ip = _mDoc["ip"];
+            data.ip = _mDoc["ip"].GetString();
+        }
+        if(_mDoc.HasMember("umark")){
+            const rapidjson::Value &umark = _mDoc["umark"];
+            data.umark = _mDoc["ip"].GetString();
+        }
         lastGameData.players.push_back(data);
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
@@ -2661,6 +2673,14 @@ void MsgHandler::gameResumeResp(std::string msg){
         data.nickname =temp["nickname"].GetString();
         data.pic =temp["pic"].GetString();
         data.gender = temp["gender"].GetInt();
+        if(_mDoc.HasMember("ip")){
+            const rapidjson::Value &ip = _mDoc["ip"];
+            data.ip = _mDoc["ip"].GetString();
+        }
+        if(_mDoc.HasMember("umark")){
+            const rapidjson::Value &umark = _mDoc["umark"];
+            data.umark = _mDoc["ip"].GetString();
+        }
         lastGameData.players.push_back(data);
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);

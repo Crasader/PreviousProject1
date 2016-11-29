@@ -1229,24 +1229,6 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
     }
     playerHandJongs.clear();
     vector<std::string>  hands = StringUtil::split(hand, ",");
-    if(GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()){
-        vector<std::string>::iterator itor;
-        if(lastpoker !=""){
-            for(itor=hands.begin();itor!=hands.end();)
-            {
-                if(lastpoker==*itor)
-                {
-                    itor=hands.erase(itor);
-                    break;
-                }
-                else
-                {
-                    itor++;
-                }
-            }
-            hands.push_back(lastpoker);
-        }
-    }
     for (int i = 0; i < hands.size(); i++)
     {
         Jong* jong = Jong::create();

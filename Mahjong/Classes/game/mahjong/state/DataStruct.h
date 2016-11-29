@@ -178,7 +178,9 @@ struct PlayerGameData{
     std::string hand;
     std::string lastpoker;
     std::string pic;
-    string poxiaoId;
+    std::string poxiaoId;
+    std::string umark;
+    std::string ip;
 };
 
 struct LastGameData

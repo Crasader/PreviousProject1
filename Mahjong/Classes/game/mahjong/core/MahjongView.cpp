@@ -114,6 +114,8 @@ void MahjongView::startGameFirst(){
     info->setNickname(UserData::getInstance()->getNickName());
     info->setPicture(UserData::getInstance()->getPicture());
     info->setFangka(UserData::getInstance()->getFangkaNum());
+    info->setIP(GAMEDATA::getInstance()->getIP());
+    info->setUmark(UserData::getInstance()->getMarkId());
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
 }
@@ -470,6 +472,8 @@ void MahjongView::recoverGame(){
         info->setLockDiamond(player.bangzuan);
         info->setPoxiaoId(player.poxiaoId);
         info->setFangka(player.fangka);
+        info->setIP(player.ip);
+        info->setUmark(player.umark);
         GAMEDATA::getInstance()->addPlayersInfo(info);
         recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
     }
