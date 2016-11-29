@@ -377,15 +377,6 @@ void LobbyScene::showDayTask(){
 }
 
 
-void LobbyScene::showAddFriend(){
-    Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-    FriendListView* friendAdd = FriendListView::create();
-    friendAdd->setTag(524);
-    addChild(friendAdd,3);
-    
-}
-
 void LobbyScene::showPlayerBill(){
     Audio::getInstance()->playSoundClick();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());

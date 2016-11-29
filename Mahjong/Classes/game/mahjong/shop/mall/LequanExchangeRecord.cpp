@@ -99,7 +99,7 @@ Size LequanExchangeRecord::tableCellSizeForIndex(TableView *table, ssize_t idx){
 }
 
 TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t idx){
-    auto string = String::createWithFormat("%ld", idx);
+    auto string = StringUtils::format("%ld", idx);
     TableViewCell *cell = table->dequeueCell();
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
@@ -114,13 +114,13 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         content->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         cell->addChild(content);
         
-        auto propName = Label::create(getPropName(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId),"Arial",20);
+        auto propName = Label::createWithSystemFont(getPropName(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId),"Arial",20);
         propName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         propName->setTag(101);
         propName->setPosition(200,80);
         cell->addChild(propName);
         
-        auto propConfuse = Label::create("消耗"+getPropConsume(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId)+"乐券","Arial",20);
+        auto propConfuse = Label::createWithSystemFont("消耗"+getPropConsume(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId)+"乐券","Arial",20);
         propConfuse->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         propConfuse->setTag(102);
         propConfuse->setPosition(200,50);
@@ -132,7 +132,7 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         stateImage->setTag(103);
         stateImage->setPosition(550,50);
         cell->addChild(stateImage);
-        if(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).state == "1"){
+        if(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).state == "0"){
             stateImage->setTexture("shop/duihuanzhong.png");
         }else{
             stateImage->setTexture("shop/yiduihuan.png");

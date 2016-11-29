@@ -47,7 +47,7 @@ bool ParticleUtil::init(MyParticleType type)
 void ParticleUtil::showGoldExplosion(){
     ParticleExplosion* effect = ParticleExplosion::create();
     effect->setTexture(Director::getInstance()->getTextureCache()->addImage("result/gold_1.png"));
-    effect->setTotalParticles(1000);
+    effect->setTotalParticles(2000);
     effect->setStartColor(Color4F(255, 255, 255, 255));
     effect->setStartColorVar(Color4F(0, 0, 0, 0));
     effect->setEndColor(Color4F(255, 255, 255, 255));

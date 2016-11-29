@@ -68,7 +68,6 @@ private:
 	void showRedWallet();
     void showWanJiaQun();
 	void showDayTask();
-	void showAddFriend();
 	void showPlayerBill();
 	void showGameSetting();
 	void showHotActivity();
