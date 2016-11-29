@@ -49,10 +49,10 @@ void GuiLayer::initView(){
                                             CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
     auto settingButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
                                                CC_CALLBACK_0(GuiLayer::settingButtonClick, this));
-    //    auto testButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
-    //                                            CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
+    //        auto testButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
+    //                                                CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
     Menu* myMenu = Menu::create(chatButton, settingButton, NULL);
-    myMenu->setPosition(1225,300);
+    myMenu->setPosition(1225,285);
     myMenu->alignItemsVerticallyWithPadding(10);
     this->addChild(myMenu);
     
@@ -70,12 +70,10 @@ void GuiLayer::initView(){
         if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
             auto dissolveRoom = MenuItemImage::create("gameview/dissovle_room_btn_1.png","gameview/dissovle_room_btn_2.png",CC_CALLBACK_0(GuiLayer::dissovleRoom, this));
             auto disMenu = Menu::create(dissolveRoom,NULL);
-            disMenu->setPosition(1140,100);
+            disMenu->setPosition(1140,85);
             disMenu->setTag(9999);
             addChild(disMenu);
         }
-    }
-    if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         
         if(!GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()){
             drawPlayerInvite();
@@ -83,8 +81,9 @@ void GuiLayer::initView(){
         auto bill = MenuItemImage::create("gameview/bill_btn_1.png", "gameview/bill_btn_2.png",
                                           CC_CALLBACK_0(GuiLayer::showPlayerBill, this));
         Menu* billMenu = Menu::create(bill, NULL);
-        billMenu->setPosition(Point(1225, 180));
+        billMenu->setPosition(Point(1225, 165));
         addChild(billMenu);
+
     }
     scheduleUpdate();
 }
@@ -99,7 +98,7 @@ void GuiLayer::drawGameInfo(){
     
     auto kaibao = Sprite::create("gameview/kai_bao.png");
     addChild(kaibao);
-
+    
     kaibaoNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getKaibao(),"Arial",25);
     kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     kaibaoNum->setColor(Color3B(233,209,112));
@@ -136,7 +135,7 @@ void GuiLayer::drawGameInfo(){
         huangfan->setPosition(1170, 650);
         haungNum->setPosition(1210, 648);
     }
-
+    
 }
 
 //测试方法

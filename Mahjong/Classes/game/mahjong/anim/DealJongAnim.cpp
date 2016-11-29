@@ -332,11 +332,11 @@ void DealJongAnim::drawPaidui(int num){
         addChild(jon,2);
     }
     auto shyu = Sprite::create("gameview/shenyu.png");
-    shyu->setPosition(957,200);
+    shyu->setPosition(957,198);
     shyu->setOpacity(77);
     shyu->runAction(FadeTo::create(6.0/24,255));
     addChild(shyu);
-    auto alt = LabelAtlas::create(StringUtils::format("%d",num),"gameview/hua_num.png",17,24,'0');
+    auto alt = LabelAtlas::create(StringUtils::format("%d",num),"gameview/ju_shu_num.png",20,30,'0');
     alt->setAnchorPoint(Point::ANCHOR_MIDDLE);
     alt->setPosition(997,200);
     alt->setOpacity(77);
@@ -345,7 +345,7 @@ void DealJongAnim::drawPaidui(int num){
     addChild(alt);
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        Label* jushu = Label::createWithSystemFont(StringUtils::format("%s/%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()), "arial", 25);
+        LabelAtlas* jushu = LabelAtlas::create(StringUtils::format("%s:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()), "ju_shu_num.png",20,30,'0');
         jushu->setColor(Color3B(234,195,90));
         jushu->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         jushu->setPosition(990,170);

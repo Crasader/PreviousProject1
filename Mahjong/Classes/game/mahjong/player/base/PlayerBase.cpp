@@ -128,6 +128,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     addChild(money);
     moneyNumber = Label::createWithSystemFont(StringUtils::format("%d", 0),"Arial",24);
     moneyNumber->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    moneyNumber->setColor(Color3B(242,227,75));
     addChild(moneyNumber);
     
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
@@ -186,7 +187,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     
     playerHua = Sprite::create("gameview/flower.png");
     addChild(playerHua);
-    playerHuaCount = LabelAtlas::create("0","gameview/hua_num.png",17,24,'0');
+    playerHuaCount = LabelAtlas::create("0","gameview/hua_num.png",25,36,'0');
     playerHuaCount->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(playerHuaCount);
     
@@ -460,16 +461,16 @@ Point PlayerBase::getBigJongPos(int type){
 
 Point PlayerBase::getHuaNumPos(int seatId){
     if (seatId == ClientSeatId::hero){
-        return Vec2(288,185);
+        return Vec2(278,175);
     }
     else if (seatId == ClientSeatId::left){
-        return Vec2(45,545);
+        return Vec2(45,555);
     }
     else if (seatId == ClientSeatId::opposite){
         return Vec2(800,615);
     }
     else if (seatId == ClientSeatId::right){
-        return Vec2(1200,545);
+        return Vec2(1175,555);
     }
     else{
         log("PlayerBase getHuaNumPos 传入参数有误");
@@ -482,7 +483,7 @@ Point PlayerBase::getPostionBySeat(int seatId){
         return Vec2(80, 157);
     }
     else if (seatId == ClientSeatId::right){
-        return Vec2(1200, 465);
+        return Vec2(1200, 455);
     }
     else if (seatId == ClientSeatId::opposite){
         return Vec2(955, 632);
