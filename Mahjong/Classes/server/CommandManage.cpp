@@ -556,6 +556,16 @@ std::string CommandManage::getFeedBackCommand(std::string msg){
     return commandString(keyValue);
 }
 
+
+std::string CommandManage::getOutResumeCommand(){
+    std::map<std::string, std::string> keyValue;
+    if("" != UserData::getInstance()->getPoxiaoId() && "unknow" != UserData::getInstance()->getPoxiaoId()){
+        keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_BACK_OUT_REQUEST)));
+        keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    }
+    return commandString(keyValue);
+}
+
 std::string CommandManage::getOnResumeCommand(){
     std::map<std::string, std::string> keyValue;
     if("" != UserData::getInstance()->getPoxiaoId() && "unknow" != UserData::getInstance()->getPoxiaoId()){

@@ -69,6 +69,7 @@ void AppDelegate::applicationDidEnterBackground() {
     log("applicationDidEnterBackground");
     Director::getInstance()->stopAnimation();
     GAMEDATA::getInstance()->setNeedShowLayer(true);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOutResumeCommand());
 }
 
 // this function will be called when the app is active again

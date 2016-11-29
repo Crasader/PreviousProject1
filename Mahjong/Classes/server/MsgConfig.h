@@ -146,6 +146,7 @@
 #define MSGCODE_LEQUAN_KING_TIME_REQUEST  1064//乐券王时间请求{code:1064,poxiaoId:poxiaoId}
 #define MSGCODE_LEQUAN_KING_TIME_RESPONSE  1065// 乐券王时间回复{code:1065,poxiaoId:poxiaoId,start:"10.1",end:"10.20"}
 
+#define MSGCODE_MAJIANG_BACK_OUT_REQUEST 1992//后台切出请求{code:1992,poxiaoId:poxiaoId}
 
 #define MSGCODE_GAME_CHART_REQUEST  1993//游戏内聊天请求{code:1993,poxiaoId:"123",content:"哈哈",pId:"11111"}
 #define MSGCODE_GAME_CHART_NOTIFY 1994// 游戏内聊天通知{code:1994,poxiaoId:"456",nickname:"",content:"哈哈"}

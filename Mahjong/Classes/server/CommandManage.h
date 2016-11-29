@@ -70,6 +70,7 @@ public:
     std::string getPlayerInfoCommand();
     std::string getLequanChangeRecordCommand();
     std::string getFeedBackCommand(std::string msg);
+    std::string getOutResumeCommand();
     std::string getOnResumeCommand();
     std::string getContinueGameCommand();
     std::string getPlayerChatMsgCommand(std::string msg,std::string pid);
