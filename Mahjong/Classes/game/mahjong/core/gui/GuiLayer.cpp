@@ -63,34 +63,9 @@ void GuiLayer::initView(){
     quit->setPosition(Point(55, 670));
     this->addChild(quit);
     
-    if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
-        quit->setVisible(false);
-    }
+    drawGameInfo();
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        //私人房间
-        auto kaibaoBg = Sprite::create("gameview/room_id.png");
-        kaibaoBg->setPosition(1180,645);
-        addChild(kaibaoBg);
-        
-        auto openRoomId = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"gameview/hua_num.png",17,24,'0');
-        openRoomId->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        openRoomId->setScale(0.8f);
-        openRoomId->setPosition(1180,675);
-        addChild(openRoomId);
-        
-        kaibaoNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getKaibao(),"gameview/hua_num.png",17,24,'0');
-        kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        kaibaoNum->setScale(0.8f);
-        kaibaoNum->setPosition(1180,648);
-        addChild(kaibaoNum);
-        
-        haungNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getHuangfan(), "gameview/hua_num.png", 17, 24, '0');
-        haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        haungNum->setScale(0.8f);
-        haungNum->setPosition(1180, 618);
-        addChild(haungNum);
-        
         //解散牌局按钮
         if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
             auto dissolveRoom = MenuItemImage::create("gameview/dissovle_room_btn_1.png","gameview/dissovle_room_btn_2.png",CC_CALLBACK_0(GuiLayer::dissovleRoom, this));
@@ -98,29 +73,8 @@ void GuiLayer::initView(){
             disMenu->setPosition(1140,100);
             disMenu->setTag(9999);
             addChild(disMenu);
-            
         }
-        
     }
-    else{
-        auto kaibao = Sprite::create("gameview/kai_bao.png");
-        kaibao->setPosition(1193,644);
-        addChild(kaibao);
-        kaibaoNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getKaibao(),"gameview/hua_num.png",17,24,'0');
-        kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        kaibaoNum->setPosition(1220,644);
-        addChild(kaibaoNum);
-        auto huangfan = Sprite::create("gameview/hua_fan.png");
-        huangfan->setPosition(1193, 614);
-        addChild(huangfan);
-        haungNum = LabelAtlas::create(":"+GAMEDATA::getInstance()->getHuangfan(), "gameview/hua_num.png", 17, 24, '0');
-        haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        haungNum->setPosition(1220, 614);
-        addChild(haungNum);
-    }
-    
-    
-    
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         
         if(!GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()){
@@ -133,6 +87,56 @@ void GuiLayer::initView(){
         addChild(billMenu);
     }
     scheduleUpdate();
+}
+
+
+void GuiLayer::drawGameInfo(){
+    
+    auto roomInfoBg = Sprite::create("gameview/room_id_bg.png");
+    roomInfoBg->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
+    roomInfoBg->setPosition(1275,710);
+    addChild(roomInfoBg);
+    
+    auto kaibao = Sprite::create("gameview/kai_bao.png");
+    addChild(kaibao);
+
+    kaibaoNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getKaibao(),"Arial",25);
+    kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    kaibaoNum->setColor(Color3B(233,209,112));
+    addChild(kaibaoNum);
+    
+    auto huangfan = Sprite::create("gameview/huang_fan.png");
+    addChild(huangfan);
+    
+    haungNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getHuangfan(), "Arial",25);
+    haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    haungNum->setColor(Color3B(233,209,112));
+    addChild(haungNum);
+    
+    if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        //私人房间
+        auto roomId = Sprite::create("gameview/fang_hao.png");
+        addChild(roomId);
+        
+        auto roomIdNum = Label::createWithSystemFont(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"Arial",25);
+        roomIdNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        roomIdNum->setColor(Color3B(233,209,112));
+        addChild(roomIdNum);
+        
+        roomId->setPosition(1160,680);
+        roomIdNum->setPosition(1185,678);
+        kaibao->setPosition(1160,640);
+        kaibaoNum->setPosition(1200,638);
+        huangfan->setPosition(1160, 610);
+        haungNum->setPosition(1200, 608);
+    }else{
+        roomInfoBg->setScale(0.95, 0.68);
+        kaibao->setPosition(1170,680);
+        kaibaoNum->setPosition(1210,678);
+        huangfan->setPosition(1170, 650);
+        haungNum->setPosition(1210, 648);
+    }
+
 }
 
 //测试方法
@@ -212,8 +216,8 @@ void GuiLayer::quitButtonClick(){
 
 
 void GuiLayer::updateData(){
-    kaibaoNum->setString(":"+GAMEDATA::getInstance()->getKaibao());
-    haungNum->setString(":"+GAMEDATA::getInstance()->getHuangfan());
+    kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
+    haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
 }
 
 void GuiLayer::hideInvitePlayer(int clientId){

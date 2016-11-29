@@ -15,12 +15,13 @@ public:
 	CC_SYNTHESIZE(bool, showChat,ShowChat);
 	CREATE_FUNC(GuiLayer);
 private:
-	LabelAtlas* kaibaoNum;
-	LabelAtlas* haungNum;
+	Label* kaibaoNum;
+	Label* haungNum;
 	Menu* leftPlayerInvite;
 	Menu* rightPlayerInvite;
 	Menu* oppositePlayerInvite;
 	void initView();
+    void drawGameInfo();//开宝，荒翻,房号
 	void soundButtonClick();
 	void chatButtonClick();
 	void settingButtonClick();
