@@ -15,18 +15,19 @@ bool FriendRoom::init()
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg);
     
-    auto dialog_bg = Sprite::create("shop/gold_not_enough.png");
+    auto dialog_bg = Sprite::create("shop/first_chage_bg.png");
+    dialog_bg->setScale(0.9f, 0.85f);
     dialog_bg->setPosition(640,350);
     addChild(dialog_bg);
     
     
     auto roomTitle = Sprite::create("friend/open_room_title.png");
-    roomTitle->setPosition(640,570);
+    roomTitle->setPosition(640,575);
     addChild(roomTitle);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(FriendRoom::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(910, 525);
+    closeMenu->setPosition(940, 530);
     addChild(closeMenu);
     
     
@@ -41,17 +42,18 @@ bool FriendRoom::init()
     
     auto fangka8 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka8, this));
     auto fangka8Menu = Menu::create(fangka8,NULL);
-    fangka8Menu->setPosition(410,365);
+    fangka8Menu->setPosition(370,365);
     addChild(fangka8Menu);
     
     auto select8 = Sprite::create("friend/icon_right.png");
     select8->setTag(1024);
-    select8->setPosition(410,365);
+    select8->setPosition(370,365);
     select8->setVisible(true);
     addChild(select8);
     
     auto kaiju8 = Sprite::create("friend/8_ju.png");
-    kaiju8->setPosition(520,365);
+    kaiju8->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    kaiju8->setPosition(400,365);
     addChild(kaiju8);
     
     
@@ -67,7 +69,8 @@ bool FriendRoom::init()
     addChild(select16);
     
     auto kaiju16 = Sprite::create("friend/16_ju.png");
-    kaiju16->setPosition(742,365);
+    kaiju16->setPosition(660,365);
+    kaiju16->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(kaiju16);
     
     if(UserData::getInstance()->getFangkaNum()<2){
@@ -78,17 +81,18 @@ bool FriendRoom::init()
     
     auto leziwu = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectWulezi, this));
     auto leziwuMenu = Menu::create(leziwu,NULL);
-    leziwuMenu->setPosition(410,305);
+    leziwuMenu->setPosition(370,305);
     addChild(leziwuMenu);
     
     auto leziwuImg = Sprite::create("friend/icon_right.png");
     leziwuImg->setTag(2024);
-    leziwuImg->setPosition(410,305);
+    leziwuImg->setPosition(370,305);
     leziwuImg->setVisible(true);
     addChild(leziwuImg);
     
     auto leziwuInfo = Sprite::create("friend/wu_le_zi.png");
-    leziwuInfo->setPosition(520,305);
+    leziwuInfo->setPosition(400,305);
+    leziwuInfo->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(leziwuInfo);
     
     
@@ -104,7 +108,8 @@ bool FriendRoom::init()
     addChild(lezi40Img);
     
     auto lezi40Info = Sprite::create("friend/40_le_zi.png");
-    lezi40Info->setPosition(780,305);
+    lezi40Info->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    lezi40Info->setPosition(660,305);
     addChild(lezi40Info);
     
     if(UserData::getInstance()->getFangkaNum()<2){
