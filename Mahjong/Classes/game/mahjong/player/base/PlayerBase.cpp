@@ -67,7 +67,7 @@ void PlayerBase::onEnter(){
             }
             text->setPosition(getVec2BySeatId(seatId));
             chatShowLayer->addChild(text,1);
-            auto bob = Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
+            auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
             bob->setContentSize(Size(text->getContentSize().width+20, 70));
             bob->setPosition(getVec2BySeatId(seatId));
             chatShowLayer->addChild(bob);
@@ -108,8 +108,8 @@ void PlayerBase::initPlayer(Player* playerInfo){
     head_bg->setPosition(getPostionBySeat(clientSeatId));
     this->addChild(head_bg);
     
-    nickName = Label::createWithSystemFont(playerInfo->getNickname(), "Arial", 12);
-    nickName->setPosition(getPostionBySeat(clientSeatId).x, getPostionBySeat(clientSeatId).y + 55);
+    nickName = Label::createWithSystemFont(playerInfo->getNickname(), "Arial", 19);
+    nickName->setPosition(getPostionBySeat(clientSeatId).x, getPostionBySeat(clientSeatId).y + 65);
     this->addChild(nickName);
     
     HeadImage* headImage = HeadImage::createByImage(playerInfo->getPicture(),Size(90,90));
@@ -124,13 +124,12 @@ void PlayerBase::initPlayer(Player* playerInfo){
     addChild(headimage);
     
     auto money = Sprite::create();
-    money->setPosition(getPostionBySeat(clientSeatId).x - 28, getPostionBySeat(clientSeatId).y - 55);
+    money->setScale(1.25f);
     addChild(money);
-    moneyNumber = LabelAtlas::create(StringUtils::format("%d", 0),
-                                    "result/result_num.png", 9, 13, '0');
+    moneyNumber = Label::createWithSystemFont(StringUtils::format("%d", 0),"Arial",24);
     moneyNumber->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    moneyNumber->setPosition(getPostionBySeat(clientSeatId).x - 16, getPostionBySeat(clientSeatId).y - 55);
     addChild(moneyNumber);
+    
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
         money->setTexture("gameview/score_small.png");
         if(playerInfo->getScore()<0){
@@ -138,13 +137,13 @@ void PlayerBase::initPlayer(Player* playerInfo){
         }else{
             moneyNumber->setString(StringUtils::format("%d",playerInfo->getScore()));
         }
-        moneyNumber->setPosition(getPostionBySeat(clientSeatId).x - 8, getPostionBySeat(clientSeatId).y - 55);
     }
     else {
         money->setTexture("gameview/gold_small.png");
         moneyNumber->setString(StringUtils::format("%d", playerInfo->getGold()));
     }
-    
+    money->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width)/2, getPostionBySeat(clientSeatId).y - 62);
+    moneyNumber->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width-money->getContentSize().width)/2, getPostionBySeat(clientSeatId).y - 62);
     
     auto readyTitle = Sprite::create("gameview/ready_title.png");
     readyTitle->setTag(1001);
@@ -380,7 +379,6 @@ void PlayerBase::startTimeClockAnim(){
 }
 
 void PlayerBase::startTimeClockAnim(int time, int type){
-    log("KKKKKKKKKKKK time = %d || type = %d",time,type);
     timeClock->setString(StringUtils::format("%d", time));
     this->setTag(type);
     mCDTime = time;
@@ -481,16 +479,16 @@ Point PlayerBase::getHuaNumPos(int seatId){
 
 Point PlayerBase::getPostionBySeat(int seatId){
     if (seatId == ClientSeatId::hero){
-        return Vec2(70, 157);
+        return Vec2(80, 157);
     }
     else if (seatId == ClientSeatId::right){
-        return Vec2(1213, 455);
+        return Vec2(1200, 465);
     }
     else if (seatId == ClientSeatId::opposite){
-        return Vec2(945, 642);
+        return Vec2(955, 632);
     }
     else if (seatId == ClientSeatId::left){
-        return Vec2(70, 455);
+        return Vec2(80, 455);
     }
     else{
         log("PlayerBase getPostionBySeat 传入参数有误");

@@ -10,8 +10,9 @@ class PlayerHero : public PlayerBase
 {
 public:
     static const int MAX_JONG_NUM = 14;
-    static const int JONG_POS_START_X = 180;
-    static const int NEW_JONG_POS_X = 1200;
+    static const int JONG_POS_START_X = 190;
+    static const int JONG_POS_13_X = 1130;//最后一张摸到的牌的位置
+    static const int NEW_JONG_POS_X = 1220;
     static const int JONG_POS_Y = 70;
     static const int JONG_SEL_POS_Y = 105;
     static const int JONG_WIDTH = 78;
@@ -30,7 +31,7 @@ public:
     void drawPlayerHero();
     void drawReady(bool b);
     void sortHandJongs(int posx,bool isTurn);
-    void settleHandJongs(int pos);
+    void settleHandJongs(int pos);//手牌整理
     void replaceFlower();
     void playerTurnReplace(PlayerTurnData data);
     //玩家吃碰杠

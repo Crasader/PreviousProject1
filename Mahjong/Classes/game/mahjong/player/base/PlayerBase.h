@@ -86,7 +86,7 @@ private:
     Sprite* playerHua;
     Menu* headimage;
     Label* nickName;
-    LabelAtlas* moneyNumber;
+    Label* moneyNumber;
     LabelAtlas* timeClock;
     LabelAtlas* playerHuaCount;
     ProgressTimer* mProgressTimer;

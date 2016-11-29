@@ -371,7 +371,7 @@ float PlayerHero::distance(Point pos1, Point pos2) {
 void PlayerHero::settleHandJongs(int posx){
     int size = playerHandJongs.size();
     for (int k = 0; k < size; k++){
-        if (posx + JONG_WIDTH * k>1120){
+        if (posx + JONG_WIDTH * k>JONG_POS_13_X){
             playerHandJongs.at(k)->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
         }
         else{
@@ -390,7 +390,7 @@ void PlayerHero::sortHandJongs(int posx, bool isTurn){
         }
     }
     for (int k = 0; k < size; k++){
-        if (posx + JONG_WIDTH * k>1120){
+        if (posx + JONG_WIDTH * k>JONG_POS_13_X){
             playerHandJongs.at(k)->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
         }
         else{
@@ -1251,8 +1251,8 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
     {
         Jong* jong = Jong::create();
         jong->showJong(herohand, atoi(hands.at(i).c_str()));
-        if(GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()&&getHandPosX() + JONG_WIDTH * i>1120){
-            jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i+8, JONG_POS_Y));
+        if(GAMEDATA::getInstance()->getLastGameDataBackup().turn ==GAMEDATA::getInstance()->getHeroSeatId()&&getHandPosX() + JONG_WIDTH * i>JONG_POS_13_X){
+            jong->setPosition(Point(getHandPosX() + JONG_WIDTH * i+10, JONG_POS_Y));
             setIsAllowPlay(true);
             startTimeClockAnim();
         }else{
