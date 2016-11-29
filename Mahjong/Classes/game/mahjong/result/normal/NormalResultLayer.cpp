@@ -141,7 +141,12 @@ void NormalResultLayer::showLayerBtn(){
                                                CC_CALLBACK_0(NormalResultLayer::shareResult, this));
         auto feedImage = MenuItemImage::create("result/continue_btn_1.png","result/continue_btn_2.png",
                                                CC_CALLBACK_0(NormalResultLayer::continueGame, this));
-        
+        if(GAMEDATA::getInstance()->getMahjongRoomType() ==  MahjongRoom::privateRoom){
+            auto iamge1 = Sprite::create("result/start_game_btn_1.png");
+            feedImage->setNormalImage(iamge1);
+            auto iamge2 = Sprite::create("result/start_game_btn_2.png");
+            feedImage->setSelectedImage(iamge2);
+        }
         Menu* myMneu = Menu::create();
         if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
             myMneu->addChild(quitImage);
