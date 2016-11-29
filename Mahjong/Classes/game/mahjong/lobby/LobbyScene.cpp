@@ -117,67 +117,70 @@ void LobbyScene::drawSceneTop(){
     headmenu->setPosition(61, 660);
     addChild(headmenu);
     
-    nickName = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 20);
+    nickName = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 24);
     nickName->setPosition(125, 628);
     nickName->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickName->setAlignment(TextHAlignment::LEFT);
     addChild(nickName);
     
-    auto markid = Label::createWithSystemFont(StringUtils::format("ID号:%s",UserData::getInstance()->getMarkId().c_str()), "arial", 20);
+    auto markid = Label::createWithSystemFont(StringUtils::format("ID号:%s",UserData::getInstance()->getMarkId().c_str()), "arial", 24);
     markid->setPosition(nickName->getPositionX()+nickName->getContentSize().width+30, 628);
     markid->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     markid->setAlignment(TextHAlignment::LEFT);
     addChild(markid);
     
-    //gold
-    auto gold_bg = Sprite::create("mjlobby/room_info_bg.png");
-    gold_bg->setPosition(232, 685);
-    addChild(gold_bg);
-    auto gold_icon = Sprite::create("mjlobby/gold_icon.png");
-    gold_icon->setPosition(166, 685);
-    addChild(gold_icon);
-    goldNum = LabelAtlas::create(StringUtils::format("%d",UserData::getInstance()->getGold()),
-                                 "mjlobby/room_info_num.png", 10, 15, '0');
-    goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    goldNum->setPosition(232, 685);
-    addChild(goldNum);
-    auto gold_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeGold, this));
-    auto chargGold = Menu::create(gold_btn, NULL);
-    chargGold->setPosition(298, 685);
-    addChild(chargGold);
-    
     //fangka
     auto fangka_bg = Sprite::create("mjlobby/room_info_bg.png");
-    fangka_bg->setPosition(420, 685);
+    fangka_bg->setPosition(235, 685);
     addChild(fangka_bg);
     auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
-    fangka_icon->setPosition(365, 680);
+    fangka_icon->setPosition(157, 680);
     addChild(fangka_icon);
-    fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),
-                                   "mjlobby/room_info_num.png", 10, 15, '0');
+    fangkaNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),"Arial",24);
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    fangkaNum->setPosition(422, 685);
+    fangkaNum->setColor(Color3B(242,227,75));
+    fangkaNum->setPosition(232, 685);
     addChild(fangkaNum);
     auto diamond_btn = MenuItemImage::create("mjlobby/charge_btn_1.png", "mjlobby/charge_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeFangka, this));
     auto chargDiamond = Menu::create(diamond_btn, NULL);
-    chargDiamond->setPosition(487, 682);
+    chargDiamond->setPosition(315, 682);
     addChild(chargDiamond);
+
+    
+    //gold
+    auto gold_bg = Sprite::create("mjlobby/room_info_bg.png");
+    gold_bg->setPosition(462, 685);
+    addChild(gold_bg);
+    auto gold_icon = Sprite::create("mjlobby/gold_icon.png");
+    gold_icon->setPosition(380, 685);
+    addChild(gold_icon);
+    goldNum = Label::createWithSystemFont(StringUtils::format("%d",UserData::getInstance()->getGold()),"Arial",24);
+    goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    goldNum->setColor(Color3B(242,227,75));
+    goldNum->setPosition(462, 685);
+    addChild(goldNum);
+    auto gold_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeGold, this));
+    auto chargGold = Menu::create(gold_btn, NULL);
+    chargGold->setPosition(543, 685);
+    addChild(chargGold);
+    
     
     //lequan
     auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
-    lequan_bg->setPosition(610, 685);
+    lequan_bg->setPosition(690, 685);
     this->addChild(lequan_bg);
     auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
-    lequan_icon->setPosition(552, 685);
+    lequan_icon->setPosition(610, 685);
     this->addChild(lequan_icon);
-    lequanNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getTicket()),
-                                   "mjlobby/room_info_num.png", 10, 15, '0');
+    lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
+                                   "Arial",24);
+    lequanNum->setColor(Color3B(242,227,75));
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequanNum->setPosition(614, 685);
+    lequanNum->setPosition(690, 685);
     this->addChild(lequanNum);
     auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
     auto chargLequan = Menu::create(lequan_btn, NULL);
-    chargLequan->setPosition(676, 685);
+    chargLequan->setPosition(770, 685);
     addChild(chargLequan);
 }
 
@@ -260,9 +263,9 @@ void LobbyScene::drawSceneBot(){
 void LobbyScene::updateHeroInfo(){
     ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
-    goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
-    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
-    lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
+//    goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
+//    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
+//    lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
 }
 
 void LobbyScene::showLobbyAnim(){

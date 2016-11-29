@@ -28,9 +28,9 @@ public:
 private:
     
 	Label* nickName;
-	LabelAtlas* goldNum;
-	LabelAtlas* fangkaNum;
-	LabelAtlas* lequanNum;
+	Label* goldNum;
+	Label* fangkaNum;
+	Label* lequanNum;
     MenuItemImage* first_chaege;
     
     EventListenerCustom* enterRoomListener;
