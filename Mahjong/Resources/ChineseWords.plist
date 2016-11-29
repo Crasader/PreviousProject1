@@ -27,6 +27,10 @@
 		<string>垃圾胡</string>
 		<key>12</key>
 		<string>抢杠</string>
+		<key>13</key>
+		<string>一炮双响</string>
+		<key>14</key>
+		<string>一炮三响</string>
 		<key>male</key>
 		<string>男</string>
 		<key>female</key>
