@@ -36,68 +36,6 @@ void PlayerBase::initData(){
 }
 
 
-void PlayerBase::onEnter(){
-    Layer::onEnter();
-    roomChatListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
-        if(playerInfo->getSeatId() == GAMEDATA::getInstance()->getHeroSeatId()){
-            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
-            chatShowLayer->removeAllChildren();//清空界面
-            ChatData data = GAMEDATA::getInstance()->getChatData();
-            std::string content = data.content;
-            vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
-            
-            RichText* text = RichText ::create();
-            text->setAnchorPoint(Point::ANCHOR_MIDDLE);
-            for(auto var : msgs){
-                if(!PlayerChatManage::getInstance()->isFaceImage(var)){
-                    RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 24);
-                    text->pushBackElement(element1);
-                    text->formatText();
-                }else{
-                    RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
-                    text->pushBackElement(element2);
-                    text->formatText();
-                }
-            }
-            int seatId = GAMEDATA::getInstance()->getHeroSeatId();
-            for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
-                if(play->getPoxiaoId() == data.poxiaoId){
-                    seatId = play->getSeatId();
-                }
-            }
-            text->setPosition(getVec2BySeatId(seatId));
-            chatShowLayer->addChild(text,1);
-            auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
-            bob->setContentSize(Size(text->getContentSize().width+20, 70));
-            bob->setPosition(getVec2BySeatId(seatId));
-            chatShowLayer->addChild(bob);
-            if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left
-               || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::hero){
-                text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-                text->setPosition(Point(text->getPosition().x+10,text->getPosition().y+10));
-                bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            }else{
-                text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-                text->setPosition(Point(text->getPosition().x-10,text->getPosition().y+10));
-                bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-                bob->setFlippedX(true);
-            }
-            schedule([=](float dt){
-                chatShowLayer->removeAllChildren();
-            },0,0,4.0,"removebob");
-            
-        }
-    });
-    wechatImageListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_PLAYER_WECHAT_IMAGE, [=](EventCustom* event){
-        updatePlayerHeadImage();
-    });
-}
-
-void PlayerBase::onExit(){
-    Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(wechatImageListener);
-}
 
 
 void PlayerBase::initPlayer(Player* playerInfo){
@@ -148,7 +86,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     
     auto readyTitle = Sprite::create("gameview/ready_title.png");
     readyTitle->setTag(1001);
-    readyTitle->setPosition(getPostionBySeat(clientSeatId));
+    readyTitle->setPosition(getReadyPosBySeat(clientSeatId));
     this->addChild(readyTitle);
     
     auto offLineIcon = Sprite::create("trusteeship/offline_icon.png");
@@ -164,7 +102,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     this->addChild(trueeIcon);
     
     tingTitle = Sprite::create("gameview/ting_icon.png");
-    tingTitle->setPosition(getPostionBySeat(clientSeatId).x + 40, getPostionBySeat(clientSeatId).y + 50);
+    tingTitle->setPosition(getPostionBySeat(clientSeatId).x + 50, getPostionBySeat(clientSeatId).y + 60);
     this->addChild(tingTitle,101);
     
     Sprite* progressSprite = Sprite::create("gameview/time_clock_bg.png");
@@ -497,6 +435,24 @@ Point PlayerBase::getPostionBySeat(int seatId){
     }
 }
 
+Point PlayerBase::getReadyPosBySeat(int seatId){
+    if (seatId == ClientSeatId::hero){
+        return Vec2(175, 95);
+    }
+    else if (seatId == ClientSeatId::right){
+        return Vec2(1110, 395);
+    }
+    else if (seatId == ClientSeatId::opposite){
+        return Vec2(870, 570);
+    }
+    else if (seatId == ClientSeatId::left){
+        return Vec2(175, 395);
+    }
+    else{
+        return Vec2(0, 0);
+    }
+}
+
 
 
 void PlayerBase::hideHandJongs(){
@@ -549,3 +505,68 @@ void PlayerBase::updatePlayerHeadImage(){
         ((HeadImage*)getChildByTag(9876))->updateImageByName(playerInfo->getPicture());
     }
 }
+
+
+void PlayerBase::onEnter(){
+    Layer::onEnter();
+    roomChatListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
+        if(playerInfo->getSeatId() == GAMEDATA::getInstance()->getHeroSeatId()){
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
+            chatShowLayer->removeAllChildren();//清空界面
+            ChatData data = GAMEDATA::getInstance()->getChatData();
+            std::string content = data.content;
+            vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
+            
+            RichText* text = RichText ::create();
+            text->setAnchorPoint(Point::ANCHOR_MIDDLE);
+            for(auto var : msgs){
+                if(!PlayerChatManage::getInstance()->isFaceImage(var)){
+                    RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 24);
+                    text->pushBackElement(element1);
+                    text->formatText();
+                }else{
+                    RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
+                    text->pushBackElement(element2);
+                    text->formatText();
+                }
+            }
+            int seatId = GAMEDATA::getInstance()->getHeroSeatId();
+            for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
+                if(play->getPoxiaoId() == data.poxiaoId){
+                    seatId = play->getSeatId();
+                }
+            }
+            text->setPosition(getVec2BySeatId(seatId));
+            chatShowLayer->addChild(text,1);
+            auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
+            bob->setContentSize(Size(text->getContentSize().width+20, 70));
+            bob->setPosition(getVec2BySeatId(seatId));
+            chatShowLayer->addChild(bob);
+            if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left
+               || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::hero){
+                text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+                text->setPosition(Point(text->getPosition().x+10,text->getPosition().y+10));
+                bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            }else{
+                text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+                text->setPosition(Point(text->getPosition().x-10,text->getPosition().y+10));
+                bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+                bob->setFlippedX(true);
+            }
+            schedule([=](float dt){
+                chatShowLayer->removeAllChildren();
+            },0,0,4.0,"removebob");
+            
+        }
+    });
+    wechatImageListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_PLAYER_WECHAT_IMAGE, [=](EventCustom* event){
+        updatePlayerHeadImage();
+    });
+}
+
+void PlayerBase::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(wechatImageListener);
+}
+

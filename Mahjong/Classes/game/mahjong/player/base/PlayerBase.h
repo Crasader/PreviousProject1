@@ -94,6 +94,7 @@ private:
     void initData();
     void updateTime(float dt);
     Point getPostionBySeat(int seatId);
+    Point getReadyPosBySeat(int seatId);
     Point getBigJongPos(int type);
     Point getHuaNumPos(int type);
     Point getVec2BySeatId(int seatId);
