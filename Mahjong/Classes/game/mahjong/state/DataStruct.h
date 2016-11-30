@@ -187,6 +187,7 @@ struct LastGameData
 {
     int result;
     int seatId;
+    int pre;
     int loard;
     int kb;
     int hf;

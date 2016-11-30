@@ -1072,7 +1072,7 @@ void MahjongView::onEnterTransitionDidFinish(){
             ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
             ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
             GAMEDATA::getInstance()->setIsPlaying(true);
-            int lastplayerSeat = SeatIdUtil::getServerPreSeatId(data.turn);
+            int lastplayerSeat = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.pre);
             if(lastplayerSeat == ClientSeatId::hero){
                 playerHero->showCurrentPlayedJongIcon(true);
             }else if(lastplayerSeat == ClientSeatId::left){

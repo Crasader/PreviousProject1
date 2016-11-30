@@ -29,7 +29,7 @@ void NetworkManage::connectServer() {
         bool result = socket.Connect(ip, port);
         int retryTimes = 0;
         while (result == false && retryTimes < 3) {
-            log("retry connecting...");
+            log("尝试重新连接...");
             result = socket.Connect(ip, port);
             retryTimes++;
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_WIN32)
@@ -39,19 +39,19 @@ void NetworkManage::connectServer() {
 #endif
         }
         if (result) {
-            socket.Bind(port);
-            log("connect to server success!");
+//            socket.Bind(port);
+            log("成功连接到服务端,开启心跳");
             std::thread recvThread = std::thread(&NetworkManage::receiveData,
                                                  this);
             recvThread.detach();
         }
         else {
-            log("can not connect to server result = %d", result);
+            log("连接服务端失败 = %d", result);
             return;
         }
     }
     catch (char* str) {
-        log("connect server error");
+        log("Socket 连接出错");
     }
 }
 
@@ -59,7 +59,7 @@ void NetworkManage::sendMsg(std::string code) {
     log("send command = %s", code.c_str());
     int sendResult = socket.Send(code.c_str(), getMsgLength(code));
     if (sendResult < 0) {
-        log("scoket connect again ...(^_^)");
+        log("无法向服务端发送消息");
         socket.Close();
         connectServer();
         _eventDispatcher->dispatchCustomEvent(CLIENT_LOST_CONNECT, NULL);
@@ -108,11 +108,11 @@ void NetworkManage::receiveData() {
             }
         }
         if (result <= 0) {
-            log("client lost connect to server");
+            log("已经与服务端失去连接");
             break;
         }
     }
-    log("client socket close");
+    log("socket 连接关闭");
     socket.Close();
 }
 

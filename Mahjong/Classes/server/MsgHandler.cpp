@@ -1267,6 +1267,10 @@ void MsgHandler::playerConnectAgain(std::string msg){
     lastGameData.kb = kb.GetInt();
     lastGameData.hf = hf.GetInt();
     lastGameData.turn = turn.GetInt();
+    if(_mDoc.HasMember("pre")){
+        const rapidjson::Value &pre = _mDoc["pre"];
+        lastGameData.pre = pre.GetInt();
+    }
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;
@@ -2590,8 +2594,6 @@ void MsgHandler::gameResumeResp(std::string msg){
         opdata.prjucount = prjucount.GetString();
     }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
-    const rapidjson::Value &seatId = _mDoc["seatId"];
-    GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     //设置是否是私人房间
     const rapidjson::Value &isprivate = _mDoc["isprivate"];
     std::string roomType = isprivate.GetString();
@@ -2599,7 +2601,13 @@ void MsgHandler::gameResumeResp(std::string msg){
     LastGameData lastGameData;
     const rapidjson::Value &result = _mDoc["result"];
     lastGameData.result = result.GetInt();
+    const rapidjson::Value &seatId = _mDoc["seatId"];
     lastGameData.seatId = seatId.GetInt();
+    GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
+    if(_mDoc.HasMember("pre")){
+        const rapidjson::Value &pre = _mDoc["pre"];
+        lastGameData.pre = pre.GetInt();
+    }
     if(_mDoc.HasMember("rest")){
         const rapidjson::Value &rest = _mDoc["rest"];
         lastGameData.rest = rest.GetString();
