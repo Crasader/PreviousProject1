@@ -17,7 +17,7 @@ class MahjongView : public cocos2d::Layer
 {
 public:
     
-	virtual bool init();		
+	virtual bool init() override;		
 	CREATE_FUNC(MahjongView);
 	virtual void onEnter() override;
 	virtual void onExit() override;
@@ -45,7 +45,7 @@ private:
     PlayerOpposite* playerOpposite;
 
 
-	void update(float dt);
+	void update(float dt) override;
 	void initData();
 	void loadView();
 	void addPlayer2Room();
@@ -97,7 +97,6 @@ private:
     EventListenerCustom* playerResumeListener;
     EventListenerCustom* friendOpenRoomListener;
     EventListenerCustom* playerReplaceLoginListener;
-    EventListenerCustom* inviteReplaceListener;
     EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
     EventListenerCustom* lobbyConncetAgainListener;

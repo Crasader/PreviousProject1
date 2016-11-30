@@ -17,6 +17,7 @@
 #include "game/mahjong/dialog/prompt/TextHintDialog.hpp"
 #include "game/mahjong/widget/ScrollTextEx.h"
 #include "server/SocketDataManage.h"
+#include "game/mahjong/dialog/toast/InfoToast.hpp"
 
 
 
@@ -85,6 +86,9 @@ void MahjongView::loadView(){
     scroll->setTag(9980);
     scroll->setPosition(600,600);
     addChild(scroll,2);
+    //Toast 消息
+    InfoToast* tao = InfoToast::getInstance();
+    addChild(tao,50);
 }
 
 void MahjongView::startGameFirst(){
@@ -1089,7 +1093,6 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
@@ -1129,17 +1132,6 @@ void MahjongView::addCoustomListener(){
         addChild(hin,5);
     });
     
-    inviteReplaceListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(FRIEND_IS_PLAYING_GAME, [=](EventCustom* event){
-        InviteRespData inv = GAMEDATA::getInstance()->getInviteRespData();
-        if(inv.result == "1"){
-            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s不在线",inv.nickname.c_str()),NULL);
-            addChild(hin,5);
-        }else if(inv.result == "2"){
-            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s正在游戏",inv.nickname.c_str()),NULL);
-            addChild(hin,5);
-        }
-        
-    });
     
     dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
@@ -1157,11 +1149,11 @@ void MahjongView::addCoustomListener(){
             }
         }
         if(data.agree == "0"){
-            TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s不同意解散房间",name.c_str()));
-            addChild(dia,50);
+            InfoToast* tao = InfoToast::getInstance();
+            tao->addToast(StringUtils::format("%s不同意解散房间",name.c_str()));
         }else{
-            TextHintDialog* dia = TextHintDialog::create(StringUtils::format("%s同意解散房间",name.c_str()));
-            addChild(dia,50);
+            InfoToast* tao = InfoToast::getInstance();
+            tao->addToast(StringUtils::format("%s同意解散房间",name.c_str()));
         }
     });
     

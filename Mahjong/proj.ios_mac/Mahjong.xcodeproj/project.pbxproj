@@ -61,6 +61,10 @@
 		D226FD311D05292400324097 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D226FD2E1D05292400324097 /* LoadResource.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
+		D22A7E981DEE684C00CC6CE2 /* InfoToast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22A7E961DEE684C00CC6CE2 /* InfoToast.cpp */; };
+		D22A7E991DEE684C00CC6CE2 /* InfoToast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22A7E961DEE684C00CC6CE2 /* InfoToast.cpp */; };
+		D22A7E9C1DEE6A3000CC6CE2 /* ToastCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22A7E9A1DEE6A3000CC6CE2 /* ToastCell.cpp */; };
+		D22A7E9D1DEE6A3000CC6CE2 /* ToastCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22A7E9A1DEE6A3000CC6CE2 /* ToastCell.cpp */; };
 		D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
 		D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
 		D22EEF4A1D66AAF000BF1CCB /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */; };
@@ -403,6 +407,10 @@
 		D226FD2F1D05292400324097 /* LoadResource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadResource.hpp; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
 		D22912481D12C583005C7167 /* CommandManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandManage.h; sourceTree = "<group>"; };
+		D22A7E961DEE684C00CC6CE2 /* InfoToast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfoToast.cpp; sourceTree = "<group>"; };
+		D22A7E971DEE684C00CC6CE2 /* InfoToast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InfoToast.hpp; sourceTree = "<group>"; };
+		D22A7E9A1DEE6A3000CC6CE2 /* ToastCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToastCell.cpp; sourceTree = "<group>"; };
+		D22A7E9B1DEE6A3000CC6CE2 /* ToastCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToastCell.hpp; sourceTree = "<group>"; };
 		D22EEF1C1D66A97400BF1CCB /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirstChageDialog.cpp; sourceTree = "<group>"; };
 		D22EEF291D66AAF000BF1CCB /* FirstChageDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FirstChageDialog.hpp; sourceTree = "<group>"; };
@@ -878,6 +886,17 @@
 			path = splash;
 			sourceTree = "<group>";
 		};
+		D22A7E951DEE682E00CC6CE2 /* toast */ = {
+			isa = PBXGroup;
+			children = (
+				D22A7E961DEE684C00CC6CE2 /* InfoToast.cpp */,
+				D22A7E971DEE684C00CC6CE2 /* InfoToast.hpp */,
+				D22A7E9A1DEE6A3000CC6CE2 /* ToastCell.cpp */,
+				D22A7E9B1DEE6A3000CC6CE2 /* ToastCell.hpp */,
+			);
+			path = toast;
+			sourceTree = "<group>";
+		};
 		D22EEF1D1D66AAF000BF1CCB /* shop */ = {
 			isa = PBXGroup;
 			children = (
@@ -1247,6 +1266,7 @@
 		D2B1A7CB1CCDF0F300A20896 /* dialog */ = {
 			isa = PBXGroup;
 			children = (
+				D22A7E951DEE682E00CC6CE2 /* toast */,
 				D2B1A7CC1CCDF0F300A20896 /* base */,
 				D2B1A8091CCDF0F300A20896 /* prompt */,
 			);
@@ -1680,6 +1700,7 @@
 				D2B1A8D71CCDF0F400A20896 /* PlayerBase.cpp in Sources */,
 				D2B1A8771CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
 				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */,
+				D22A7E9C1DEE6A3000CC6CE2 /* ToastCell.cpp in Sources */,
 				D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */,
 				D2B1A8FF1CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8831CCDF0F400A20896 /* BaseDialog.cpp in Sources */,
@@ -1742,6 +1763,7 @@
 				D2A175281CE0562A00CEDAE4 /* HuaAnim.cpp in Sources */,
 				D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
+				D22A7E981DEE684C00CC6CE2 /* InfoToast.cpp in Sources */,
 				D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D281E5C21DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */,
 				D281E5D31DBED34100D3E44E /* GoldRoomPlate.cpp in Sources */,
@@ -1766,6 +1788,7 @@
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D2F05F661D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
 				D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
+				D22A7E991DEE684C00CC6CE2 /* InfoToast.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
 				D2B1A8781CCDF0F400A20896 /* HupaiAnim.cpp in Sources */,
@@ -1780,6 +1803,7 @@
 				D281E5F61DC1992500D3E44E /* ChargeItem.cpp in Sources */,
 				D2BDE3AD1CEB10E100754AC0 /* MjGameScene.cpp in Sources */,
 				D22EEF4B1D66AAF000BF1CCB /* Huode.cpp in Sources */,
+				D22A7E9D1DEE6A3000CC6CE2 /* ToastCell.cpp in Sources */,
 				D281E5DE1DC05D2300D3E44E /* RoomFullDialog.cpp in Sources */,
 				D2B1A87A1CCDF0F400A20896 /* PlayerCpgAnim.cpp in Sources */,
 				D281E5E21DC05D4400D3E44E /* RoomIdErrorDialog.cpp in Sources */,
