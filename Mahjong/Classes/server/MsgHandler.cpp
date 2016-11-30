@@ -1321,11 +1321,11 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.gender = temp["gender"].GetInt();
         if(_mDoc.HasMember("ip")){
             const rapidjson::Value &ip = _mDoc["ip"];
-            data.ip = _mDoc["ip"].GetString();
+            data.ip = ip.GetString();
         }
         if(_mDoc.HasMember("umark")){
             const rapidjson::Value &umark = _mDoc["umark"];
-            data.umark = _mDoc["ip"].GetString();
+            data.umark = umark.GetString();
         }
         lastGameData.players.push_back(data);
     }
@@ -1649,6 +1649,10 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         data.seatId = seatId.GetInt();
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     }
+    if(_mDoc.HasMember("ip")){
+        const rapidjson::Value &ip = _mDoc["ip"];
+        GAMEDATA::getInstance()->setIP(ip.GetString());
+    }
     const rapidjson::Value &result = _mDoc["result"];
     data.result = result.GetInt();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
@@ -1657,32 +1661,24 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         const rapidjson::Value &pArr = _mDoc["other"];
         for (int i = 0; i < pArr.Capacity(); ++i){
             const rapidjson::Value &temp = pArr[i];
-            auto seatId = temp["seatId"].GetInt();
-            auto gold = temp["gold"].GetInt();
-            auto diamond = temp["diamond"].GetInt();
-            auto lockdiamond = temp["bangzuan"].GetInt();
-            auto jifen = temp["jifen"].GetInt();
-            auto lequan = temp["lequan"].GetInt();
-            auto gender = temp["gender"].GetInt();
-            auto ifready = temp["ifready"].GetInt();
-            auto nickname = temp["nickname"].GetString();
-            auto poxiaoId = temp["poxiaoId"].GetString();
-            auto pic = temp["pic"].GetString();
-            auto fangka = temp["fangka"].GetInt();
             Player* info = new Player();
-            info->setPoxiaoId(poxiaoId);
-            info->setSeatId(seatId);
+            info->setPoxiaoId(temp["poxiaoId"].GetString());
+            info->setSeatId(temp["seatId"].GetInt());
             info->setBanker(false);
-            info->setIsReady(ifready == 0 ? false : true);
-            info->setGold(gold);
-            info->setDiamond(diamond);
-            info->setLockDiamond(lockdiamond);
-            info->setTicket(lequan);
-            info->setScore(jifen);
-            info->setGender(gender);
-            info->setNickname(nickname);
-            info->setPicture(pic);
-            info->setFangka(fangka);
+            info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
+            info->setGold(temp["gold"].GetInt());
+            info->setTicket(temp["lequan"].GetInt());
+            info->setScore(temp["jifen"].GetInt());
+            info->setGender(temp["gender"].GetInt());
+            info->setNickname(temp["nickname"].GetString());
+            info->setPicture(temp["pic"].GetString());
+            info->setFangka(temp["fangka"].GetInt());
+            if(temp.HasMember("ip")){
+                info->setIP(temp["ip"].GetString());
+            }
+            if(temp.HasMember("umark")){
+                info->setUmark(temp["umark"].GetString());
+            }
             GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
@@ -1732,32 +1728,25 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
         const rapidjson::Value &pArr = _mDoc["other"];
         for (int i = 0; i < pArr.Capacity(); ++i){
             const rapidjson::Value &temp = pArr[i];
-            auto seatId = temp["seatId"].GetInt();
-            auto gold = temp["gold"].GetInt();
-            auto diamond = temp["diamond"].GetInt();
-            auto lockdiamond = temp["bangzuan"].GetInt();
-            auto jifen = temp["jifen"].GetInt();
-            auto lequan = temp["lequan"].GetInt();
-            auto gender = temp["gender"].GetInt();
-            auto ifready = temp["ifready"].GetInt();
-            auto nickname = temp["nickname"].GetString();
-            auto poxiaoId = temp["poxiaoId"].GetString();
-            auto pic = temp["pic"].GetString();
-            auto fangka = temp["fangka"].GetInt();
             Player* info = new Player();
-            info->setPoxiaoId(poxiaoId);
-            info->setSeatId(seatId);
+            info->setPoxiaoId(temp["poxiaoId"].GetString());
+            info->setSeatId(temp["seatId"].GetInt());
             info->setBanker(false);
-            info->setIsReady(ifready == 0 ? false : true);
-            info->setGold(gold);
-            info->setDiamond(diamond);
-            info->setLockDiamond(lockdiamond);
-            info->setTicket(lequan);
-            info->setScore(jifen);
-            info->setGender(gender);
-            info->setNickname(nickname);
-            info->setPicture(pic);
-            info->setFangka(fangka);
+            info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
+            info->setGold(temp["gold"].GetInt());
+            info->setTicket(temp["lequan"].GetInt());
+            info->setScore(temp["jifen"].GetInt());
+            info->setGender(temp["gender"].GetInt());
+            info->setNickname(temp["nickname"].GetString());
+            info->setPicture(temp["pic"].GetString());
+            info->setFangka(temp["fangka"].GetInt());
+            if(temp.HasMember("ip")){
+                info->setIP(temp["ip"].GetString());
+            }
+            if(temp.HasMember("umark")){
+                info->setUmark(temp["umark"].GetString());
+            }
+            
             GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
@@ -2650,7 +2639,7 @@ void MsgHandler::gameResumeResp(std::string msg){
             data.lequan = temp["lequan"].GetInt();
             data.fangka = temp["fangka"].GetInt();
             data.hua = temp["hua"].GetInt();
-//            data.tru = temp["tru"].GetInt();
+            //            data.tru = temp["tru"].GetInt();
             if(temp.HasMember("isOnline"))
                 data.isOnline = temp["isonline"].GetInt();
             if(temp.HasMember("lastpoker")){
