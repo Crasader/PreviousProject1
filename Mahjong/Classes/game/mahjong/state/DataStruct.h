@@ -185,6 +185,7 @@ struct PlayerGameData{
 
 struct LastGameData
 {
+    int result;
     int seatId;
     int loard;
     int kb;

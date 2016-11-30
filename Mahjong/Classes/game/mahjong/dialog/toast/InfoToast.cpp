@@ -8,13 +8,16 @@
 
 #include "game/mahjong/dialog/toast/InfoToast.hpp"
 
-InfoToast* InfoToast::_instance = NULL;
 
-InfoToast* InfoToast::getInstance(){
-    if (_instance == 0){
-        _instance = new InfoToast();
+InfoToast* InfoToast::create(){
+    InfoToast* toast = new InfoToast();
+    if(toast&& toast->init()){
+        toast->autorelease();
+        return toast;
+    }else{
+        CC_SAFE_DELETE(toast);
+        return nullptr;
     }
-    return _instance;
 }
 
 
@@ -28,16 +31,4 @@ void InfoToast::addToast(std::string msg){
         addChild(cell);
         cells.push_back(cell);
     }, 0, 0, 0.32f,"toastdelay");
-}
-
-
-InfoToast::InfoToast(){
-    
-    
-}
-
-
-InfoToast::~InfoToast(){
-    
-    
 }

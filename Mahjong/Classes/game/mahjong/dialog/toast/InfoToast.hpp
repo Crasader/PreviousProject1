@@ -14,12 +14,9 @@ USING_NS_CC;
 
 class InfoToast : public Layer{
 public:
-    static InfoToast* getInstance();
+    static InfoToast* create();
     void addToast(std::string msg);
 private:
-    static InfoToast* _instance;
     std::vector<ToastCell*> cells;
-    InfoToast();
-    ~InfoToast();
 };
 #endif /* InfoTaost_hpp */

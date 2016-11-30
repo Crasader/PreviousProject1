@@ -10,6 +10,7 @@
 #include "game/mahjong/player/PlayerHero.h"
 #include "game/mahjong/player/playerinfo/Player.h"
 #include "game/mahjong/trusteeship/Trusteeship.h"
+#include "game/mahjong/dialog/toast/InfoToast.hpp"
 #include "userdata/UserData.h"
 USING_NS_CC;
 
@@ -38,6 +39,7 @@ private:
 	Sprite* choiceMenu;
     Menu* controllPad;
 	Trusteeship* trusteeship;
+    InfoToast* tao;
 	GuiLayer* guiLayer;
     PlayerHero* playerHero;
     PlayerLeft* playerLeft;
@@ -63,7 +65,7 @@ private:
 	void setCurrentJongVisible(int seatId);
 	void playerTingAnim(int seatId);
 	void clearRoomPlayer();
-	void recoverGame();
+	void recoverGame();//恢复游戏场景
 	void recoverPlayer(PlayerGameData data,int type, Player* playerInfo);
     void showOriention();
     void showGamePaidui(int num);

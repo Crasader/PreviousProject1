@@ -76,7 +76,7 @@ void GuiLayer::initView(){
             addChild(disMenu);
         }
         
-        if(!GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()){
+        if(!GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()||GAMEDATA::getInstance()->getLastGameDataBackup().result == 0){
             drawPlayerInvite();
         }
         auto bill = MenuItemImage::create("gameview/bill_btn_1.png", "gameview/bill_btn_2.png",

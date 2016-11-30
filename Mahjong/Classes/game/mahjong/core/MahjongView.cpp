@@ -17,7 +17,7 @@
 #include "game/mahjong/dialog/prompt/TextHintDialog.hpp"
 #include "game/mahjong/widget/ScrollTextEx.h"
 #include "server/SocketDataManage.h"
-#include "game/mahjong/dialog/toast/InfoToast.hpp"
+
 
 
 
@@ -87,12 +87,12 @@ void MahjongView::loadView(){
     scroll->setPosition(600,600);
     addChild(scroll,2);
     //Toast 消息
-    InfoToast* tao = InfoToast::getInstance();
+    tao = InfoToast::create();
     addChild(tao,50);
+    showOriention();
 }
 
 void MahjongView::startGameFirst(){
-    showOriention();
     if(GAMEDATA::getInstance()->getFriendOpenRoomResp().kb == "1"){
         GAMEDATA::getInstance()->setKaibao("1");
     }else{
@@ -132,7 +132,6 @@ void MahjongView::startGameAgain(){
             players.at(i)->setIsReady(true);
         }
     }
-    showOriention();
     if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
         GAMEDATA::getInstance()->setKaibao("1");
     }else{
@@ -456,32 +455,55 @@ void MahjongView::clearRoomPlayer(){
 
 void MahjongView::recoverGame(){
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
-    GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
-    GAMEDATA::getInstance()->setCurrentBank(data.loard);
-    GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
-    GAMEDATA::getInstance()->setKaibao(StringUtil::itos(data.kb));
-    guiLayer->updateData();
-    for (int i = 0; i < data.players.size(); i++)
-    {
-        PlayerGameData player = data.players.at(i);
-        Player* info = new Player();
-        info->setSeatId(player.seatId);
-        info->setGold(player.gold);
-        info->setDiamond(player.diamond);
-        info->setNickname(player.nickname);
-        info->setPicture(player.pic);
-        info->setGender(player.gender);
-        info->setScore(player.jifen);
-        info->setTicket(player.lequan);
-        info->setLockDiamond(player.bangzuan);
-        info->setPoxiaoId(player.poxiaoId);
-        info->setFangka(player.fangka);
-        info->setIP(player.ip);
-        info->setUmark(player.umark);
-        GAMEDATA::getInstance()->addPlayersInfo(info);
-        recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
+    if(data.result == 1){
+        GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
+        GAMEDATA::getInstance()->setCurrentBank(data.loard);
+        GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
+        GAMEDATA::getInstance()->setKaibao(StringUtil::itos(data.kb));
+        guiLayer->updateData();
+        for (int i = 0; i < data.players.size(); i++)
+        {
+            PlayerGameData player = data.players.at(i);
+            Player* info = new Player();
+            info->setSeatId(player.seatId);
+            info->setGold(player.gold);
+            info->setDiamond(player.diamond);
+            info->setNickname(player.nickname);
+            info->setPicture(player.pic);
+            info->setGender(player.gender);
+            info->setScore(player.jifen);
+            info->setTicket(player.lequan);
+            info->setLockDiamond(player.bangzuan);
+            info->setPoxiaoId(player.poxiaoId);
+            info->setFangka(player.fangka);
+            info->setIP(player.ip);
+            info->setUmark(player.umark);
+            GAMEDATA::getInstance()->addPlayersInfo(info);
+            recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
+        }
+        showGamePaidui(atoi(data.rest.c_str()));
+    }else{
+        for (int i = 0; i < data.players.size(); i++)
+        {
+            PlayerGameData player = data.players.at(i);
+            Player* info = new Player();
+            info->setSeatId(player.seatId);
+            info->setGold(player.gold);
+            info->setDiamond(player.diamond);
+            info->setNickname(player.nickname);
+            info->setPicture(player.pic);
+            info->setGender(player.gender);
+            info->setScore(player.jifen);
+            info->setTicket(player.lequan);
+            info->setLockDiamond(player.bangzuan);
+            info->setPoxiaoId(player.poxiaoId);
+            info->setFangka(player.fangka);
+            info->setIP(player.ip);
+            info->setUmark(player.umark);
+            GAMEDATA::getInstance()->addPlayersInfo(info);
+        }
+        addPlayer2Room();
     }
-    showGamePaidui(atoi(data.rest.c_str()));
 }
 
 void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInfo){
@@ -864,7 +886,7 @@ void MahjongView::addGameResultListener(){
                     addChild(hupai,999);
                 }
             }
-        if(!isliuju){
+            if(!isliuju){
                 //判断胡牌的类型
                 Audio::getInstance()->playSoundHuMusic(0);
                 if(seatId1 == ClientSeatId::left){
@@ -1044,31 +1066,32 @@ void MahjongView::onEnterTransitionDidFinish(){
     if (GAMEDATA::getInstance()->getIsRecover()){
         //重新设置庄的位置
         LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
-        showOriention();
-        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
-        GAMEDATA::getInstance()->setIsPlaying(true);
-        int lastplayerSeat = SeatIdUtil::getServerPreSeatId(data.turn);
-        if(lastplayerSeat == ClientSeatId::hero){
-            playerHero->showCurrentPlayedJongIcon(true);
-        }else if(lastplayerSeat == ClientSeatId::left){
-            playerLeft->showCurrentPlayedJongIcon(true);
-        }else if(lastplayerSeat == ClientSeatId::opposite){
-            playerOpposite->showCurrentPlayedJongIcon(true);
-        }else if(lastplayerSeat == ClientSeatId::right){
-            playerRight->showCurrentPlayedJongIcon(true);
-        }
-
-        int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
-        if(playturn == ClientSeatId::hero){
-            playerHero->startTimeClockAnim();
-            playerHero->setIsAllowPlay(true);
-        }else if(playturn == ClientSeatId::left){
-            playerLeft->startTimeClockAnim();
-        }else if(playturn == ClientSeatId::opposite){
-            playerOpposite->startTimeClockAnim();
-        }else if(playturn == ClientSeatId::right){
-            playerRight->startTimeClockAnim();
+        if(data.result == 1){
+            ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+            ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
+            GAMEDATA::getInstance()->setIsPlaying(true);
+            int lastplayerSeat = SeatIdUtil::getServerPreSeatId(data.turn);
+            if(lastplayerSeat == ClientSeatId::hero){
+                playerHero->showCurrentPlayedJongIcon(true);
+            }else if(lastplayerSeat == ClientSeatId::left){
+                playerLeft->showCurrentPlayedJongIcon(true);
+            }else if(lastplayerSeat == ClientSeatId::opposite){
+                playerOpposite->showCurrentPlayedJongIcon(true);
+            }else if(lastplayerSeat == ClientSeatId::right){
+                playerRight->showCurrentPlayedJongIcon(true);
+            }
+            
+            int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
+            if(playturn == ClientSeatId::hero){
+                playerHero->startTimeClockAnim();
+                playerHero->setIsAllowPlay(true);
+            }else if(playturn == ClientSeatId::left){
+                playerLeft->startTimeClockAnim();
+            }else if(playturn == ClientSeatId::opposite){
+                playerOpposite->startTimeClockAnim();
+            }else if(playturn == ClientSeatId::right){
+                playerRight->startTimeClockAnim();
+            }
         }
         GAMEDATA::getInstance()->setIsRecover(false);
     }
@@ -1160,10 +1183,8 @@ void MahjongView::addCoustomListener(){
             }
         }
         if(data.agree == "0"){
-            InfoToast* tao = InfoToast::getInstance();
             tao->addToast(StringUtils::format("%s不同意解散房间",name.c_str()));
         }else{
-            InfoToast* tao = InfoToast::getInstance();
             tao->addToast(StringUtils::format("%s同意解散房间",name.c_str()));
         }
     });

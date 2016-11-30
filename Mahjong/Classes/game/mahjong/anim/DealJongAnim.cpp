@@ -345,14 +345,14 @@ void DealJongAnim::drawPaidui(int num){
     addChild(alt);
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        LabelAtlas* jushu = LabelAtlas::create(StringUtils::format("%s:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()), "ju_shu_num.png",20,30,'0');
+        LabelAtlas* jushu = LabelAtlas::create(StringUtils::format("%s:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()), "gameview/ju_shu_num.png",20,30,'0');
         jushu->setColor(Color3B(234,195,90));
         jushu->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        jushu->setPosition(990,170);
+        jushu->setPosition(990,165);
         addChild(jushu);
         
         auto ju = Sprite::create("gameview/private_jushu.png");
-        ju->setPosition(1005,170);
+        ju->setPosition(1005,160);
         addChild(ju);
     }
 }

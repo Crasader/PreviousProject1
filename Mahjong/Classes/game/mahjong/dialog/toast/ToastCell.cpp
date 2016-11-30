@@ -34,6 +34,8 @@ bool ToastCell::init(std::string msg){
     showMsg->setAnchorPoint(Point::ANCHOR_MIDDLE);
     showMsg->setPosition(0,0);
     addChild(showMsg);
-    
+    schedule([=](float dt){
+        removeFromParent();
+    }, 0, 0,3, "removeToast");
     return true;
 }
