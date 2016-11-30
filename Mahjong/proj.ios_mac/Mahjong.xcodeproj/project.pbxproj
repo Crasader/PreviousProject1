@@ -65,6 +65,7 @@
 		D22A7E991DEE684C00CC6CE2 /* InfoToast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22A7E961DEE684C00CC6CE2 /* InfoToast.cpp */; };
 		D22A7E9C1DEE6A3000CC6CE2 /* ToastCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22A7E9A1DEE6A3000CC6CE2 /* ToastCell.cpp */; };
 		D22A7E9D1DEE6A3000CC6CE2 /* ToastCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22A7E9A1DEE6A3000CC6CE2 /* ToastCell.cpp */; };
+		D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */; };
 		D22EEF441D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
 		D22EEF451D66AAF000BF1CCB /* FirstChageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */; };
 		D22EEF4A1D66AAF000BF1CCB /* Huode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEF2E1D66AAF000BF1CCB /* Huode.cpp */; };
@@ -411,6 +412,8 @@
 		D22A7E971DEE684C00CC6CE2 /* InfoToast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InfoToast.hpp; sourceTree = "<group>"; };
 		D22A7E9A1DEE6A3000CC6CE2 /* ToastCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToastCell.cpp; sourceTree = "<group>"; };
 		D22A7E9B1DEE6A3000CC6CE2 /* ToastCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToastCell.hpp; sourceTree = "<group>"; };
+		D22A7EA21DEECD2500CC6CE2 /* StatusBarTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarTool.h; sourceTree = "<group>"; };
+		D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarTool.m; sourceTree = "<group>"; };
 		D22EEF1C1D66A97400BF1CCB /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		D22EEF281D66AAF000BF1CCB /* FirstChageDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FirstChageDialog.cpp; sourceTree = "<group>"; };
 		D22EEF291D66AAF000BF1CCB /* FirstChageDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FirstChageDialog.hpp; sourceTree = "<group>"; };
@@ -1019,6 +1022,8 @@
 		D257FD731D6C2E2400B8C596 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D22A7EA21DEECD2500CC6CE2 /* StatusBarTool.h */,
+				D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */,
 				D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */,
 				D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */,
 				D294FE0D1D990B2B005FB8A2 /* LoginByWechat.h */,
@@ -1778,6 +1783,7 @@
 				D25841AB1DE3328C00AAB98D /* SpecialResultLayer.cpp in Sources */,
 				D22EEF871D66CFC800BF1CCB /* SearchResult.cpp in Sources */,
 				D2EF93C61DD050A000360BCF /* Loading.cpp in Sources */,
+				D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

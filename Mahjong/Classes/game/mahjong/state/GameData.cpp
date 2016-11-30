@@ -38,23 +38,6 @@ GAMEDATA* GAMEDATA::getInstance(){
 	return _instance;
 }
 
-void GAMEDATA::setSoundState(bool state) {
-	UserDefault::getInstance()->setBoolForKey("soundState", state);
-}
-
-bool GAMEDATA::getSoundState() {
-	return UserDefault::getInstance()->getBoolForKey("soundState", true);
-}
-
-void GAMEDATA::setMusicState(bool state) {
-	UserDefault::getInstance()->setBoolForKey("musicState", state);
-}
-
-bool GAMEDATA::getMusicState() {
-	return UserDefault::getInstance()->getBoolForKey("musicState", true);
-}
-
-
 void GAMEDATA::addPlayersInfo(Player* player){
 	m_mutex.lock();
 	playerVector.push_back(player);

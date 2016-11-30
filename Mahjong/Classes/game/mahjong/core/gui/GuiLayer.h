@@ -5,7 +5,7 @@ USING_NS_CC;
 
 class GuiLayer:public Layer{
 public:
-	virtual bool init();
+	virtual bool init() override;
     void onEnter() override;
     void onExit() override;
 	void updateData();
@@ -22,6 +22,7 @@ private:
 	Menu* oppositePlayerInvite;
 	void initView();
     void drawGameInfo();//开宝，荒翻,房号
+    void drawGuiButton();//设置,账单,聊天
 	void soundButtonClick();
 	void chatButtonClick();
 	void settingButtonClick();
@@ -30,7 +31,7 @@ private:
     void showPlayerBill();
 	void invitePlayer(Ref* ref);
     void dissovleRoom();
-    void update(float dt);
+    void update(float dt) override;
     
 };
 #endif

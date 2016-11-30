@@ -233,7 +233,6 @@ std::string CommandManage::getBoundPhoneCommand(std::string phone, std::string v
 
 std::string CommandManage::getTrusteeshipCommand(){
 	//{ code:2028, poxiaoId : poxiaoId }
-    log("aaaaaaaaaaaaaaaaaaadddddd");
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_TRUSTEESHIP_REQUEST)));
 	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));

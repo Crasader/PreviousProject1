@@ -12,8 +12,6 @@
 #include "userdata/UserData.h"
 #include "game/utils/GameConfig.h"
 
-
-
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #import "payment/ios/IOSBridge.h"
 #endif
@@ -31,27 +29,18 @@ bool GuiLayer::init(){
 }
 
 
-void GuiLayer::onEnter(){
-    Layer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(UPDATE_DICE_KAOBAO_STATE, [=](EventCustom* event){
-        updateData();
-    });
-};
-
-
-void GuiLayer::onExit(){
-    Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(UPDATE_DICE_KAOBAO_STATE);
-};
-
 void GuiLayer::initView(){
-    
+    drawGuiButton();//设置,账单,聊天，解散房间，退出
+    drawGameInfo(); //开宝，荒番，房间号的绘制
+    scheduleUpdate();
+}
+
+
+void GuiLayer::drawGuiButton(){
     auto chatButton = MenuItemImage::create("gameview/chat_btn_1.png", "gameview/chat_btn_2.png",
                                             CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
     auto settingButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
                                                CC_CALLBACK_0(GuiLayer::settingButtonClick, this));
-    //        auto testButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
-    //                                                CC_CALLBACK_0(GuiLayer::soundButtonClick, this));
     Menu* myMenu = Menu::create(chatButton, settingButton, NULL);
     myMenu->setPosition(1225,285);
     myMenu->alignItemsVerticallyWithPadding(10);
@@ -63,8 +52,6 @@ void GuiLayer::initView(){
     quit->setTag(1212);
     quit->setPosition(Point(55, 670));
     this->addChild(quit);
-    
-    drawGameInfo();
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         //解散牌局按钮
@@ -84,11 +71,9 @@ void GuiLayer::initView(){
         Menu* billMenu = Menu::create(bill, NULL);
         billMenu->setPosition(Point(1225, 165));
         addChild(billMenu);
-
+        
     }
-    scheduleUpdate();
 }
-
 
 void GuiLayer::drawGameInfo(){
     
@@ -138,6 +123,8 @@ void GuiLayer::drawGameInfo(){
     }
     
 }
+
+
 
 //测试方法
 void GuiLayer::soundButtonClick(){
@@ -211,10 +198,17 @@ void GuiLayer::quitButtonClick(){
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
             addChild(dia);
+        }else if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            HintDialog* dia = HintDialog::create("是否退出当前房间?", [=](Ref* ref){
+                GAMEDATA::getInstance()->clearPlayersInfo();
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            });
+            addChild(dia);
         }else{
             GAMEDATA::getInstance()->clearPlayersInfo();
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            
         }
     }else{
         QuitRoomDialog* dialog = QuitRoomDialog::create();
@@ -230,26 +224,32 @@ void GuiLayer::updateData(){
 
 void GuiLayer::hideInvitePlayer(int clientId){
     if (clientId == ClientSeatId::left){
-        leftPlayerInvite->setVisible(false);
+        if(NULL != leftPlayerInvite)
+            leftPlayerInvite->setVisible(false);
     }
     else if (clientId == ClientSeatId::right){
-        rightPlayerInvite->setVisible(false);
+        if(NULL != rightPlayerInvite)
+            rightPlayerInvite->setVisible(false);
     }
     else if (clientId == ClientSeatId::opposite){
-        oppositePlayerInvite->setVisible(false);
+        if(NULL != oppositePlayerInvite)
+            oppositePlayerInvite->setVisible(false);
     }
 }
 
 
 void GuiLayer::showInvitePlayer(int clientId){
     if (clientId == ClientSeatId::left){
-        leftPlayerInvite->setVisible(true);
+        if(NULL != leftPlayerInvite)
+            leftPlayerInvite->setVisible(true);
     }
     else if (clientId == ClientSeatId::right){
-        rightPlayerInvite->setVisible(true);
+        if(NULL != rightPlayerInvite)
+            rightPlayerInvite->setVisible(true);
     }
     else if (clientId == ClientSeatId::opposite){
-        oppositePlayerInvite->setVisible(true);
+        if(NULL != oppositePlayerInvite)
+            oppositePlayerInvite->setVisible(true);
     }
 }
 
@@ -306,8 +306,22 @@ void GuiLayer::hideDissovleBtn(){
 void GuiLayer::update(float dt){
     if(getChildByTag(1212)!=NULL){
         if(GAMEDATA::getInstance()->getIsPlaying()&&GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            if(!getChildByTag(1212)->isVisible())
+            if(getChildByTag(1212)->isVisible())
                 getChildByTag(1212)->setVisible(false);
         }
     }
 }
+
+
+void GuiLayer::onEnter(){
+    Layer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(UPDATE_DICE_KAOBAO_STATE, [=](EventCustom* event){
+        updateData();
+    });
+};
+
+
+void GuiLayer::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(UPDATE_DICE_KAOBAO_STATE);
+};

@@ -32,7 +32,7 @@ bool NoticeDialog::init(){
     
     auto menu =Menu::create(close,NULL);
     menu->setPosition(1050,610);
-    addChild(menu);
+    addChild(menu,1);
     
     content = Sprite::create();
     content->setPosition(640,360);
@@ -50,7 +50,7 @@ void NoticeDialog::onEnter(){
 
 void NoticeDialog::onExit(){
     Layer::onExit();
-    
+    Director::getInstance()->getEventDispatcher()->removeEventListener(updateContentImg);
 }
 
 

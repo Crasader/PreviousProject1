@@ -134,7 +134,7 @@ void UserData::setChangeName(bool change){
 
 
 float UserData::getMusicValue(){
-    return UserDefault::getInstance()->getFloatForKey("music_value", 0);
+    return UserDefault::getInstance()->getFloatForKey("music_value", 50);
 }
 
 void UserData::setMusicValue(float value){
@@ -142,7 +142,7 @@ void UserData::setMusicValue(float value){
 }
 
 float UserData::getSoundValue(){
-    return UserDefault::getInstance()->getFloatForKey("sound_value", 0);
+    return UserDefault::getInstance()->getFloatForKey("sound_value", 50);
 }
 
 void UserData::setSoundValue(float value){

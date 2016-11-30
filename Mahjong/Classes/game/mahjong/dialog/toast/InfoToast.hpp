@@ -16,6 +16,7 @@ class InfoToast : public Layer{
 public:
     static InfoToast* create();
     void addToast(std::string msg);
+    bool init();
 private:
     std::vector<ToastCell*> cells;
 };

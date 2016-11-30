@@ -10,10 +10,6 @@ USING_NS_CC;
 class GAMEDATA{
 public:
     static GAMEDATA* getInstance();
-    void setSoundState(bool state);
-    bool getSoundState();
-    void setMusicState(bool state);
-    bool getMusicState();
     
     vector<Player*> getPlayersInfo();
     void addPlayersInfo(Player* players);
@@ -65,7 +61,6 @@ public:
     CC_SYNTHESIZE(MahjongRoom, mahjongRoomType, MahjongRoomType);
     CC_SYNTHESIZE(MahjongState, mahjongState, MahjongState);
     CC_SYNTHESIZE(LeChangeRecord, leChangeRecord, LeChangeRecord);
-//    CC_SYNTHESIZE(GameResumeData, gameResumeData, GameResumeData);
     CC_SYNTHESIZE(InviteRespData, inviteRespData, InviteRespData);
     CC_SYNTHESIZE(ActivityRankList, activityRankList, ActivityRankList);
     CC_SYNTHESIZE(ActivityTime, activityTime, ActivityTime);

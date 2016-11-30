@@ -1259,6 +1259,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
     //设置是否是私人房间
     std::string roomType = isprivate.GetString();
     GAMEDATA::getInstance()->setMahjongRoomType(roomType == "1" ? (MahjongRoom::privateRoom):(MahjongRoom::publicRoom));LastGameData lastGameData;
+    lastGameData.result = 1;//游戏中
     lastGameData.seatId = seatId.GetInt();
     lastGameData.rest = rest.GetString();
     lastGameData.loard = loard.GetInt();
