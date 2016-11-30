@@ -32,6 +32,7 @@ bool GuiLayer::init(){
 void GuiLayer::initView(){
     drawGuiButton();//设置,账单,聊天，解散房间，退出
     drawGameInfo(); //开宝，荒番，房间号的绘制
+//    drawTestButton();
     scheduleUpdate();
 }
 
@@ -126,56 +127,7 @@ void GuiLayer::drawGameInfo(){
 
 
 
-//测试方法
-void GuiLayer::soundButtonClick(){
-    //    PlayerCpgtData cpg;
-    //    cpg.flag = 0;
-    //    cpg.poker = 2;
-    //    cpg.seatId = 4;
-    //    cpg.gang = "1,1,1";
-    //    cpg.sId = 2;
-    //    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
-    //    EventCustom event(MSG_OTHER_PLAYER_GANG);
-    //    _eventDispatcher->dispatchEvent(&event);
-    vector<GameResultData> gameResults;
-    for (int i = 0; i < 4; i++){
-        GameResultData resultData;
-        if(i == 0){
-            resultData.result = 3;
-        }else{
-            resultData.result = 0;
-        }
-        resultData.gold = 100;
-        resultData.diamond = 100;
-        resultData.jifen =10;
-        resultData.lequan = 10;
-        resultData.golddelta = 200000;
-        resultData.diamonddelta =2;
-        resultData.jifendelta = 4000000;
-        resultData.lequandelta = 222220;
-        resultData.seatId = i+1;
-        resultData.umark ="100010000";
-        resultData.hua = 3;
-        resultData.lz = "2";
-        resultData.fan = "10";
-        resultData.showPoker = "1,2,3,4,5,6,7,8,9,10,11,12,13,14";
-        resultData.huType = "12";
-        resultData.nickName = StringUtils::format("这里是装电视台%d",i+1);
-        gameResults.push_back(resultData);
-    }
-    GAMEDATA::getInstance()->setDiaopao("8");
-    GAMEDATA::getInstance()->setGameResults(gameResults);
-    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-    GAMEDATA::getInstance()->setHeroSeatId(1);
-    GAMEDATA::getInstance()->setPrivateLezi("0");
-    GAMEDATA::getInstance()->setCurrentBank(1);
-    FriendOpenRoomRespData opendata;
-    opendata.prjushu ="8";
-    opendata.prjucount ="2";
-    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
-    char* buf = const_cast<char*>("2");
-    _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
-}
+
 
 void GuiLayer::chatButtonClick(){
     auto gameChat = ChatDialog::create("");
@@ -201,6 +153,7 @@ void GuiLayer::quitButtonClick(){
         }else if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             HintDialog* dia = HintDialog::create("是否退出当前房间?", [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
             addChild(dia);
@@ -325,3 +278,69 @@ void GuiLayer::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(UPDATE_DICE_KAOBAO_STATE);
 };
+
+
+void GuiLayer::drawTestButton(){
+    auto testIamge = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
+                                               CC_CALLBACK_0(GuiLayer::testButtonClick, this));
+    Menu* testMenu = Menu::create(testIamge, NULL);
+    testMenu->setPosition(640,380);
+    addChild(testMenu);
+
+}
+
+//测试方法
+void GuiLayer::testButtonClick(){
+    //    PlayerCpgtData cpg;
+    //    cpg.flag = 0;
+    //    cpg.poker = 2;
+    //    cpg.seatId = 4;
+    //    cpg.gang = "1,1,1";
+    //    cpg.sId = 2;
+    //    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
+    //    EventCustom event(MSG_OTHER_PLAYER_GANG);
+    //    _eventDispatcher->dispatchEvent(&event);
+    vector<GameResultData> gameResults;
+    for (int i = 0; i < 4; i++){
+        GameResultData resultData;
+        if(i == 0){
+            resultData.result = 3;
+        }else if(i==1){
+            resultData.result = 3;
+        }
+        else if(i==2){
+            resultData.result = 2;
+        }else{
+            resultData.result = 0;
+        }
+        resultData.gold = 100;
+        resultData.diamond = 100;
+        resultData.jifen =10;
+        resultData.lequan = 10;
+        resultData.golddelta = 200000;
+        resultData.diamonddelta =2;
+        resultData.jifendelta = 4000000;
+        resultData.lequandelta = 222220;
+        resultData.seatId = i+1;
+        resultData.umark ="100010000";
+        resultData.hua = 3;
+        resultData.lz = "2";
+        resultData.fan = "10";
+        resultData.showPoker = "1,2,3,4,5,6,7,8,9,10,11,12,13,14";
+        resultData.huType = "3,13,7";
+        resultData.nickName = StringUtils::format("这里是装电视台%d",i+1);
+        gameResults.push_back(resultData);
+    }
+    GAMEDATA::getInstance()->setDiaopao("8");
+    GAMEDATA::getInstance()->setGameResults(gameResults);
+    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+    GAMEDATA::getInstance()->setHeroSeatId(1);
+    GAMEDATA::getInstance()->setPrivateLezi("0");
+    GAMEDATA::getInstance()->setCurrentBank(1);
+    FriendOpenRoomRespData opendata;
+    opendata.prjushu ="8";
+    opendata.prjucount ="2";
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
+    char* buf = const_cast<char*>("2");
+    _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
+}

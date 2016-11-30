@@ -23,7 +23,6 @@ private:
 	void initView();
     void drawGameInfo();//开宝，荒翻,房号
     void drawGuiButton();//设置,账单,聊天
-	void soundButtonClick();
 	void chatButtonClick();
 	void settingButtonClick();
 	void quitButtonClick();
@@ -32,6 +31,8 @@ private:
 	void invitePlayer(Ref* ref);
     void dissovleRoom();
     void update(float dt) override;
+    void drawTestButton();
+    void testButtonClick();
     
 };
 #endif

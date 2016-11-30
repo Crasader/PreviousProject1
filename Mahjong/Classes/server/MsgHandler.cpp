@@ -475,7 +475,7 @@ void MsgHandler::distribute(int code, std::string msg){
             break;
         }
         case MSGCODE_FRIEND_DISMISS_NOTIFY:{
-            //2047
+            hanleFangzhuDismissRoom(msg);
             break;
         }
         case MSGCODE_FRIEND_DISMISS_AGREE_NOTIFY:{
@@ -2840,6 +2840,14 @@ void MsgHandler::handleDissovleRoomNotify(std::string msg){
         std::string name = nickName.GetString();
         postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, name);
     }
+}
+
+void MsgHandler::hanleFangzhuDismissRoom(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    GAMEDATA::getInstance()->setShowFangZhuDismiss(true);
 }
 
 void MsgHandler::handleDissovleRoomSelectedNotify(std::string msg){

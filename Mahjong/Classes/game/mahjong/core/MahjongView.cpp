@@ -845,48 +845,47 @@ void MahjongView::addGameResultListener(){
                     }
                     seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.seatId));
                 }
-                if(zimoState){
-                    Audio::getInstance()->playSoundHuMusic(1);
-                    if(seatId1 == ClientSeatId::left){
-                        playerLeft->playSoundHuPai(0);
-                    }else if(seatId1 == ClientSeatId::opposite){
-                        playerOpposite->playSoundHuPai(0);
-                    }else if(seatId1 == ClientSeatId::right){
-                        playerRight->playSoundHuPai(0);
-                    }else {
-                        playerHero->playSoundHuPai(0);
-                    }
-                    HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::zimoHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-                    addChild(hupai,999);
-                }else if(gangkaiState){
-                    Audio::getInstance()->playSoundHuMusic(1);
-                    if(seatId1 == ClientSeatId::left){
-                        playerLeft->playSoundHuPai(1);
-                    }else if(seatId1 == ClientSeatId::opposite){
-                        playerOpposite->playSoundHuPai(1);
-                    }else if(seatId1 == ClientSeatId::right){
-                        playerRight->playSoundHuPai(1);
-                    }else {
-                        playerHero->playSoundHuPai(1);
-                    }
-                    HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::gangkaiHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-                    addChild(hupai,999);
-                }else if(qianggangState){
-                    Audio::getInstance()->playSoundHuMusic(1);
-                    if(seatId1 == ClientSeatId::left){
-                        playerLeft->playSoundHuPai(2);
-                    }else if(seatId1 == ClientSeatId::opposite){
-                        playerOpposite->playSoundHuPai(2);
-                    }else if(seatId1 == ClientSeatId::right){
-                        playerRight->playSoundHuPai(2);
-                    }else {
-                        playerHero->playSoundHuPai(2);
-                    }
-                    HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::qianggangHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-                    addChild(hupai,999);
-                }
             }
-            if(!isliuju){
+            if(zimoState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(0);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(0);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(0);
+                }else {
+                    playerHero->playSoundHuPai(0);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::zimoHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else if(gangkaiState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(1);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(1);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(1);
+                }else {
+                    playerHero->playSoundHuPai(1);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::gangkaiHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else if(qianggangState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(2);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(2);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(2);
+                }else {
+                    playerHero->playSoundHuPai(2);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::qianggangHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else  if(!isliuju){
                 //判断胡牌的类型
                 Audio::getInstance()->playSoundHuMusic(0);
                 if(seatId1 == ClientSeatId::left){
@@ -951,13 +950,15 @@ void MahjongView::showHuPaiXing(std::string paixing){
     paixinBg->setOpacity(77);
     paixinBg->runAction(Sequence::create(FadeTo::create(3.0/24, 255), NULL));
     
+    
     vector<string> pais = StringUtil::split(paixing, ",");
+    sort(pais.begin(), pais.end());
     for(int i =0; i<pais.size();i++){
         auto xing = Sprite::create(StringUtils::format("result/paixing_%d.png",atoi(pais.at(i).c_str())));
         addChild(xing,999);
         xing->setOpacity(77);
         xing->setScale(3.0f);
-        xing->setPosition(640 - 80*(pais.size()-1)+i*160,posY);
+        xing->setPosition(640 - 95*(pais.size()-1)+i*190,posY);
         xing->runAction(Sequence::create(DelayTime::create(i*(5.0f/24)),Spawn::create(ScaleTo::create(3.0/24, 0.8f),FadeTo::create(3.0f/24, 255), NULL),ScaleTo::create(2.0/24, 1.0f), NULL));
     }
     //光效动画

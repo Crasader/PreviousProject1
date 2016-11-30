@@ -72,7 +72,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
         money->setTexture("gameview/score_small.png");
         if(playerInfo->getScore()<0){
-            moneyNumber->setString(StringUtils::format(";%d",abs(playerInfo->getScore())));
+            moneyNumber->setString(StringUtils::format("-%d",abs(playerInfo->getScore())));
         }else{
             moneyNumber->setString(StringUtils::format("%d",playerInfo->getScore()));
         }

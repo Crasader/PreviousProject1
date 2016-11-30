@@ -25,7 +25,7 @@ public:
     Vector<Jong*> playerPlayedJongs;//玩家出的牌
     vector<PlayerCpgRecord>  playerCpgRecords;//玩家吃碰杠记录
     
-    virtual bool init();
+    virtual bool init() override;
     virtual void removeLastJong(){};
     virtual void doEventTimeOverUi(){};
     virtual void doEventTimeOver(int type){};

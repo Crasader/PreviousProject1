@@ -473,6 +473,11 @@ void LobbyScene::onEnterTransitionDidFinish(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
+    if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
+        HintDialog* hint  = HintDialog::create("房主已经解散了房间", nullptr);
+        addChild(hint,50);
+        GAMEDATA::getInstance()->setShowFangZhuDismiss(false);
+    }
 }
 
 void LobbyScene::onExit(){

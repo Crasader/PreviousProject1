@@ -104,5 +104,6 @@ private:
     void handleScrollTextResp(std::string msg);
     void handleWanJiaQunResp(std::string msg);
     void handleNoticeResp(std::string msg);
+    void hanleFangzhuDismissRoom(std::string msg);
 };
 #endif

@@ -99,6 +99,7 @@ bool PlayerResultCell::init(GameResultData data){
         
         if (data.huType != ""){
             std::vector<std::string> hutypeInfo = StringUtil::split(data.huType, ",");
+            sort(hutypeInfo.begin(), hutypeInfo.end());
             std::string hu = "";
             for (int i = 0; i < hutypeInfo.size(); i++){
                 if(i!=0){

@@ -66,6 +66,9 @@ public:
     CC_SYNTHESIZE(ActivityTime, activityTime, ActivityTime);
     CC_SYNTHESIZE(ActivityPrideList, activityPrideList, ActivityPrideList);
     CC_SYNTHESIZE(DissolveData, dissolveData, DissolveData);
+    CC_SYNTHESIZE(ChatData, chatData, ChatData);
+    CC_SYNTHESIZE(RoomChatMsgList, roomChatMsgList, RoomChatMsgList);
+    CC_SYNTHESIZE(FriendChatMsgList, friendChatMsgList, FriendChatMsgList);
     
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
@@ -98,6 +101,7 @@ public:
     CC_SYNTHESIZE(bool, waitNetwork, WaitNetwork);//网络状态
     CC_SYNTHESIZE(bool, needShowLayer, NeedShowLayer);
     CC_SYNTHESIZE(bool, haveShowNotice, HaveShowNotice);//是否展示过推广
+    CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, ip, IP);//玩家IP
     CC_SYNTHESIZE(string, dice, Dice);
@@ -109,9 +113,8 @@ public:
     CC_SYNTHESIZE(string, fee, Fee);
     CC_SYNTHESIZE(string, privateLezi, PrivateLezi);
     CC_SYNTHESIZE(string, noticeUrl, NoticeUrl);
-    CC_SYNTHESIZE(ChatData, chatData, ChatData);
-    CC_SYNTHESIZE(RoomChatMsgList, roomChatMsgList, RoomChatMsgList);
-    CC_SYNTHESIZE(FriendChatMsgList, friendChatMsgList, FriendChatMsgList);
+    
+
     
     
 private:

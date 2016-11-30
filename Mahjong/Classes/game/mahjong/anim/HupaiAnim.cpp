@@ -28,9 +28,12 @@ bool HupaiAnim::init(MahjongHuType hutype,int jongType,int seatId1,std::vector<i
     if(seatId2.size()>0){
         for(int i=0;i<seatId2.size();i++){
             showDianpaoAnim(seatId1,seatId2.at(i),jongType);
-            schedule([=](float dt){
+            auto act = Sprite::create();
+            addChild(act);
+            act->runAction(Sequence::create(DelayTime::create(0.5f),CallFunc::create([=](){
                 showHuAnim(hutype,seatId2.at(i));
-            }, 0, 0, 0.5f,"helle233");
+            }), NULL));
+            
         }
     }else{
         schedule([=](float dt){
