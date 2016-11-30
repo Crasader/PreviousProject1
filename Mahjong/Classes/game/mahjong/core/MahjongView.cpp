@@ -454,6 +454,7 @@ void MahjongView::clearRoomPlayer(){
 }
 
 void MahjongView::recoverGame(){
+    GAMEDATA::getInstance()->clearPlayersInfo();
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     if(data.result == 1){
         GAMEDATA::getInstance()->setHeroSeatId(data.seatId);

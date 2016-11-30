@@ -32,7 +32,7 @@ bool GuiLayer::init(){
 void GuiLayer::initView(){
     drawGuiButton();//设置,账单,聊天，解散房间，退出
     drawGameInfo(); //开宝，荒番，房间号的绘制
-//    drawTestButton();
+    //    drawTestButton();
     scheduleUpdate();
 }
 
@@ -282,11 +282,11 @@ void GuiLayer::onExit(){
 
 void GuiLayer::drawTestButton(){
     auto testIamge = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
-                                               CC_CALLBACK_0(GuiLayer::testButtonClick, this));
+                                           CC_CALLBACK_0(GuiLayer::testButtonClick, this));
     Menu* testMenu = Menu::create(testIamge, NULL);
     testMenu->setPosition(640,380);
     addChild(testMenu);
-
+    
 }
 
 //测试方法

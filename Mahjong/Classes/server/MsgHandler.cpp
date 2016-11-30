@@ -1258,7 +1258,8 @@ void MsgHandler::playerConnectAgain(std::string msg){
     GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     //设置是否是私人房间
     std::string roomType = isprivate.GetString();
-    GAMEDATA::getInstance()->setMahjongRoomType(roomType == "1" ? (MahjongRoom::privateRoom):(MahjongRoom::publicRoom));LastGameData lastGameData;
+    GAMEDATA::getInstance()->setMahjongRoomType(roomType == "1" ? (MahjongRoom::privateRoom):(MahjongRoom::publicRoom));
+    LastGameData lastGameData;
     lastGameData.result = 1;//游戏中
     lastGameData.seatId = seatId.GetInt();
     lastGameData.rest = rest.GetString();
@@ -1319,13 +1320,11 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.nickname =temp["nickname"].GetString();
         data.pic =temp["pic"].GetString();
         data.gender = temp["gender"].GetInt();
-        if(_mDoc.HasMember("ip")){
-            const rapidjson::Value &ip = _mDoc["ip"];
-            data.ip = ip.GetString();
+        if(temp.HasMember("ip")){
+            data.ip = temp["ip"].GetString();
         }
-        if(_mDoc.HasMember("umark")){
-            const rapidjson::Value &umark = _mDoc["umark"];
-            data.umark = umark.GetString();
+        if(temp.HasMember("umark")){
+            data.umark = temp["umark"].GetString();
         }
         lastGameData.players.push_back(data);
     }
@@ -2639,8 +2638,7 @@ void MsgHandler::gameResumeResp(std::string msg){
             data.lequan = temp["lequan"].GetInt();
             data.fangka = temp["fangka"].GetInt();
             data.hua = temp["hua"].GetInt();
-            //            data.tru = temp["tru"].GetInt();
-            if(temp.HasMember("isOnline"))
+            if(temp.HasMember("isonline"))
                 data.isOnline = temp["isonline"].GetInt();
             if(temp.HasMember("lastpoker")){
                 data.lastpoker = temp["lastpoker"].GetString();
@@ -2684,13 +2682,11 @@ void MsgHandler::gameResumeResp(std::string msg){
             data.nickname =temp["nickname"].GetString();
             data.pic =temp["pic"].GetString();
             data.gender = temp["gender"].GetInt();
-            if(_mDoc.HasMember("ip")){
-                const rapidjson::Value &ip = _mDoc["ip"];
-                data.ip = ip.GetString();
+            if(temp.HasMember("ip")){
+                data.ip = temp["ip"].GetString();
             }
-            if(_mDoc.HasMember("umark")){
-                const rapidjson::Value &umark = _mDoc["umark"];
-                data.umark = umark.GetString();
+            if(temp.HasMember("umark")){
+                data.umark = temp["umark"].GetString();
             }
             lastGameData.players.push_back(data);
         }
