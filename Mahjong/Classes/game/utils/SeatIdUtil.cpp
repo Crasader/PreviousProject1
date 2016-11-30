@@ -31,3 +31,8 @@ int SeatIdUtil::getClientSeatId(int heroId, int seatId){
 	}
 
 }
+
+
+int SeatIdUtil::getServerPreSeatId(int current){
+    return (current-1)==0?4:(current-1);
+}

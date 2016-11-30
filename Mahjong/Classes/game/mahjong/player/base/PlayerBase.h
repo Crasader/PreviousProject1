@@ -59,6 +59,7 @@ public:
     void recoverPlayed(std::string played);//断线后打出的牌恢复
     void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);//断线后吃碰杠牌恢复
     void recoverHand(std::string hand);//断线后手牌恢复
+    void recoverLastPlayJong();//场上最后一张牌
     void hideHandJongs();//隐藏玩家的手牌
     void playSoundHuPai(int type);
     void updatePlayerHeadImage();

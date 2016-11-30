@@ -483,6 +483,10 @@ void PlayerBase::recoverHand(std::string hand){
     //
 }
 
+void PlayerBase::recoverLastPlayJong(){
+
+}
+
 Point PlayerBase::getVec2BySeatId(int seatId){
     int seatID = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId);
     if(seatID == ClientSeatId::left){
