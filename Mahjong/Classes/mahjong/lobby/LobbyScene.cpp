@@ -263,9 +263,9 @@ void LobbyScene::drawSceneBot(){
 void LobbyScene::updateHeroInfo(){
     ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
-//    goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
-//    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
-//    lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
+    goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
+    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
+    lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
 }
 
 void LobbyScene::showLobbyAnim(){
