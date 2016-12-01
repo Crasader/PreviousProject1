@@ -284,11 +284,13 @@ void PlayerHero::updateHandJongs(std::string jongs,bool hu){
 }
 
 void PlayerHero::showCurrentPlayedJongIcon(bool isShow){
-    biaoji->setPosition(playerPlayedJongs.at(playerPlayedJongs.size() - 1)->getPosition().x,
-                        playerPlayedJongs.at(playerPlayedJongs.size() - 1)->getPosition().y + 20);
-    biaoji->setVisible(false);
-    playedIcon->setPosition(biaoji->getPosition());
-    playedIcon->setVisible(true);
+    if(playerPlayedJongs.size()>0){
+        biaoji->setPosition(playerPlayedJongs.at(playerPlayedJongs.size() - 1)->getPosition().x,
+                            playerPlayedJongs.at(playerPlayedJongs.size() - 1)->getPosition().y + 20);
+        biaoji->setVisible(false);
+        playedIcon->setPosition(biaoji->getPosition());
+        playedIcon->setVisible(true);
+    }
 }
 
 Vector<Jong*> PlayerHero::getSelfHandJongs(){
