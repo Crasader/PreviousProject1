@@ -1,10 +1,10 @@
 #include "AppDelegate.h"
 #include "audio/include/AudioEngine.h"
-#include "game/mahjong/splash/LoadResource.hpp"
-#include "game/mahjong/state/GameData.h"
+#include "mahjong/splash/LoadResource.hpp"
+#include "mahjong/state/GameData.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
-#include "game/utils/Audio.h"
+#include "mahjong/utils/Audio.h"
 
 USING_NS_CC;
 using namespace experimental;

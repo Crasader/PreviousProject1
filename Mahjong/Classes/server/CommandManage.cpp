@@ -5,8 +5,8 @@
 #include "json/prettywriter.h"  
 #include "json/filestream.h"
 #include "userdata/UserData.h"
-#include "game/mahjong/state/GAMEDATA.h"
-#include "game/utils/StringUtil.h"
+#include "mahjong/state/GAMEDATA.h"
+#include "mahjong/utils/StringUtil.h"
 #include "server/MsgConfig.h"
 
 CommandManage* CommandManage::_instance = 0;

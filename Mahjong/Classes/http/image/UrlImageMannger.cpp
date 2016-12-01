@@ -2,8 +2,8 @@
 #include "http/HttpMannger.h"
 #include "server/NetworkManage.h"
 #include "http/MD5/MD5.hpp"
-#include "game/utils/GameConfig.h"
-#include "game/mahjong/state/GameData.h"
+#include "mahjong/utils/GameConfig.h"
+#include "mahjong/state/GameData.h"
 #include "payment/android/CallAndroidMethod.h"
 
 

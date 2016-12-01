@@ -4,10 +4,10 @@
 #include "server/MsgConfig.h"
 #include "userdata/UserData.h"
 #include "userdata/UserData.h"
-#include "game/mahjong/state/GameData.h"
-#include "game/mahjong/state/GAMEDATA.h"
-#include "game/utils/SeatIdUtil.h"
-#include "game/utils/StringUtil.h"
+#include "mahjong/state/GameData.h"
+#include "mahjong/state/GAMEDATA.h"
+#include "mahjong/utils/SeatIdUtil.h"
+#include "mahjong/utils/StringUtil.h"
 #include "server/SocketDataManage.h"
 
 #define RETURN_IF(cond)           if((cond)) return

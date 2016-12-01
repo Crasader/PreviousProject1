@@ -7,7 +7,7 @@
 //
 
 #include "payment/ios/WxLoginHandler.hpp"
-#include "game/mahjong/state/GameData.h"
+#include "mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "http/image/UrlImageMannger.h"
 #include "userdata/UserData.h"
