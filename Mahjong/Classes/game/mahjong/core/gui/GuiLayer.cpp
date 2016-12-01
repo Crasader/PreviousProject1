@@ -130,8 +130,7 @@ void GuiLayer::drawGameInfo(){
 
 
 void GuiLayer::chatButtonClick(){
-    auto gameChat = ChatDialog::create("");
-    gameChat->setTag(1001);
+    auto gameChat = ChatDialog::create();
     addChild(gameChat,2);
 }
 

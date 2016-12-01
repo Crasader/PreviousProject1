@@ -995,6 +995,10 @@ void MsgHandler::playerConnectAgain(std::string msg){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
     }
+    if(_mDoc.HasMember("umark")){
+        const rapidjson::Value &umark = _mDoc["umark"];
+        UserData::getInstance()->setMarkId(umark.GetString());
+    }
     FriendOpenRoomRespData opdata;
     if(_mDoc.HasMember("prjushu")){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
@@ -1231,6 +1235,10 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     if(_mDoc.HasMember("poxiaoId")){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
+    }
+    if(_mDoc.HasMember("umark")){
+        const rapidjson::Value &umark = _mDoc["umark"];
+        UserData::getInstance()->setMarkId(umark.GetString());
     }
     FriendOpenRoomRespData data;
     if(_mDoc.HasMember("kb")){

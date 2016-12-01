@@ -21,8 +21,8 @@ using namespace cocos2d::ui;
 
 class ChatDialog : public Layer{
 public:
-    virtual bool init(std::string poxiaoId);
-    static ChatDialog* create(std::string poxiaoId);
+    virtual bool init();
+    static ChatDialog* create();
     void onEnter() override;
     void onExit() override;
     void sendFaceId(int id);
@@ -32,7 +32,7 @@ private:
     ListView* listView;
     EventListenerCustom* roomChatListener;
     void closeView();
-    void showChatList(std::string poxiaoId);
+    void showChatList();
     void showChatInfo(ChatData data);
     void showQuickChatList();
     void showFaceList();

@@ -15,9 +15,9 @@
 #include "game/mahjong/chat/PlayerChatManage.hpp"
 #include "game/mahjong/widget/HeadImage.hpp"
 
-ChatDialog* ChatDialog::create(std::string poxiaoId){
+ChatDialog* ChatDialog::create(){
     ChatDialog* cell = new ChatDialog();
-    if(cell&& cell->init(poxiaoId)){
+    if(cell&& cell->init()){
         cell->autorelease();
         return cell;
     }
@@ -25,7 +25,7 @@ ChatDialog* ChatDialog::create(std::string poxiaoId){
     return NULL;
 }
 
-bool ChatDialog::init(std::string poxiaoId){
+bool ChatDialog::init(){
     if(!Layer::init()){
         return false;
     }
@@ -87,32 +87,17 @@ bool ChatDialog::init(std::string poxiaoId){
     field->setPosition(Point(545,85));
     addChild(field);
     
-    showChatList(poxiaoId);
-    
+    showChatList();//显示聊天列表
+
     return true;
 }
 
 
 
-void ChatDialog::showChatList(std::string poxiaoId){
+void ChatDialog::showChatList(){
     std::vector<ChatData> msgList;
-    if(poxiaoId == "" || poxiaoId.size()<10){
-        chatPid = "";
-        RoomChatMsgList list = GAMEDATA::getInstance()->getRoomChatMsgList();
-        msgList = list.msgList;
-    }else{
-        chatPid = poxiaoId;
-        FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
-        for(int j=0;j<list.friendMsgList.size();j++){
-            if(list.friendMsgList.at(j).poxiaoId == poxiaoId){
-                msgList = list.friendMsgList.at(j).msgList;
-                for(int i = 0;i<list.friendMsgList.at(j).msgList.size();i++){
-                    list.friendMsgList.at(j).msgList.at(i).isRead = true;
-                }
-            }
-        }
-        GAMEDATA::getInstance()->setFriendChatMsgList(list);
-    }
+    RoomChatMsgList list = GAMEDATA::getInstance()->getRoomChatMsgList();
+    msgList = list.msgList;
     if(msgList.size()==0){
         return;
     }
