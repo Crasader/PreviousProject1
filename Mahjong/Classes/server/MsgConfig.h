@@ -187,11 +187,6 @@
 #define MSG_PLAYER_GOLD_CHANGE_LIST "msg_player_gold_change_list"
 #define MSG_PLAYER_GOLD_CHANGE_RESP "msg_player_gold_change_resp"
 #define MSG_PLAYER_LEQUAN_CHANGE_LIST "msg_player_lequan_change_list"
-
-
-
-
-
 #define MSG_UPDATE_HERO_INFO "msg_update_hero_info"
 #define MSG_UPDATE_HEAD_IMAGE "msg_update_head_image"
 #define MSG_PLAYER_LEQUAN_EXCHANGE "msg_player_lequan_exchange"
@@ -202,9 +197,6 @@
 #define MSG_PLAYER_FEED_BACK_RESP "msg_player_feed_back_resp"
 #define MSG_PLAYER_RESUME_GAME "msg_player_resume_game"
 #define MSG_PLAYER_ROOM_CHAT_SHOW "msg_player_room_chat_show"
-
-
-
 #define MSG_LOBBY_ASK_OPEN_ROOM "MSG_LOBBY_ASK_OPEN_ROOM"
 #define MSG_LOBBY_ASK_ENTER_ROOM "MSG_LOBBY_ASK_ENTER_ROOM"
 #define MSG_DISSOVLE_ROOM_NOTIFY "MSG_DISSOVLE_ROOM_NOTIFY"

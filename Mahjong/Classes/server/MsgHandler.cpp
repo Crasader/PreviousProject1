@@ -266,7 +266,6 @@ void MsgHandler::distribute(int code, std::string msg){
             getPlayerInfoResp(msg);
             break;
         }
-            
         case MSGCODE_DX_NOTIFY:{
             getPlayerOffLineNotify(msg);
             break;
@@ -1801,7 +1800,7 @@ void MsgHandler::getFeedBackResp(std::string msg){
 }
 
 void MsgHandler::gameResumeResp(std::string msg){
-    //1998
+    //1998后台切回
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());

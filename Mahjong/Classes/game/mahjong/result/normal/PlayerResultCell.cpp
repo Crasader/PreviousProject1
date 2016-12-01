@@ -99,13 +99,17 @@ bool PlayerResultCell::init(GameResultData data){
         
         if (data.huType != ""){
             std::vector<std::string> hutypeInfo = StringUtil::split(data.huType, ",");
-            sort(hutypeInfo.begin(), hutypeInfo.end());
+            std::vector<int> hutemp;
+            for(auto var:hutypeInfo){
+                hutemp.push_back(atoi(var.c_str()));
+            }
+            sort(hutemp.begin(), hutemp.end());
             std::string hu = "";
-            for (int i = hutypeInfo.size()-1; i >=0; i--){
-                if(i != hutypeInfo.size()-1){
-                    hu += ","+ChineseWord(hutypeInfo.at(i).c_str());
+            for (int i = (int)hutemp.size()-1; i >=0; i--){
+                if(i != hutemp.size()-1){
+                    hu += ","+ChineseWord(StringUtils::format("%d",hutemp.at(i)).c_str());
                 }else{
-                    hu += ChineseWord(hutypeInfo.at(i).c_str());
+                    hu += ChineseWord(StringUtils::format("%d",hutemp.at(i)).c_str());
                 }
             }
             auto hutype = Label::createWithSystemFont(StringUtils::format("%s",hu.c_str()),"Arial",20);
