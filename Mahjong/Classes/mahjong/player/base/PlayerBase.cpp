@@ -72,17 +72,17 @@ void PlayerBase::initPlayer(Player* playerInfo){
     if (GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
         money->setTexture("gameview/score_small.png");
         if(playerInfo->getScore()<0){
-            moneyNumber->setString(StringUtils::format(" —%d",abs(playerInfo->getScore())));
+            moneyNumber->setString(StringUtils::format("-%d",abs(playerInfo->getScore())));
         }else{
-            moneyNumber->setString(StringUtils::format(" %d",playerInfo->getScore()));
+            moneyNumber->setString(StringUtils::format("%d",playerInfo->getScore()));
         }
     }
     else {
         money->setTexture("gameview/gold_small.png");
-        moneyNumber->setString(StringUtils::format(" %d", playerInfo->getGold()));
+        moneyNumber->setString(StringUtils::format("%d", playerInfo->getGold()));
     }
     money->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width)/2, getPostionBySeat(clientSeatId).y - 62);
-    moneyNumber->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width-money->getContentSize().width)/2, getPostionBySeat(clientSeatId).y - 62);
+    moneyNumber->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width-money->getContentSize().width)/2+5, getPostionBySeat(clientSeatId).y - 62);
     
     auto readyTitle = Sprite::create("gameview/ready_title.png");
     readyTitle->setTag(1001);
