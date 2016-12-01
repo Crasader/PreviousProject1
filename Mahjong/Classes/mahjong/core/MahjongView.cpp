@@ -673,7 +673,6 @@ void MahjongView::addCoustomReplaceFlower() {
 void MahjongView::addDealJongListener(){
     dealJongsListener = EventListenerCustom::create(MSG_GAME_START_NOTIFY, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsPlaying(true);
-        SocketDataManage::getInstance()->pauseMsg();
         playerHero->setIsReady(false);
         if(NULL != playerRight)
             playerRight->setIsReady(false);

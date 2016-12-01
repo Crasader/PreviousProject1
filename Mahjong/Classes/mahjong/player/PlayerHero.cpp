@@ -538,6 +538,7 @@ void PlayerHero::addTouchListener() {
 }
 
 void PlayerHero::replaceFlower(){
+    log("执行杠花流程");
     isAllowPlay = false;
     ReplaceJong rejong = getReplacePoker();
     if (rejong.poker.size() == 0){

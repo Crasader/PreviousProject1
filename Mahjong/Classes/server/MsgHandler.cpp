@@ -589,6 +589,7 @@ void MsgHandler::showOtherReady(std::string msg){
 
 void MsgHandler::getHeroJongs(std::string msg){
     //{code:2002, poxiaoId : poxiaoId, start : 1, poker : 1, 2, 4, 5, 6}
+    SocketDataManage::getInstance()->pauseMsg();
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());

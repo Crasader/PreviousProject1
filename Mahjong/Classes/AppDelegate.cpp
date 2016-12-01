@@ -71,7 +71,7 @@ void AppDelegate::applicationDidEnterBackground() {
     GAMEDATA::getInstance()->setNeedShowLayer(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOutResumeCommand());
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    AudioEngine::resumeAll();
+    AudioEngine::pauseAll();
 #endif
 }
 
@@ -91,7 +91,7 @@ void AppDelegate::applicationWillEnterForeground() {
         CallAndroidMethod::getInstance()->queryEventResult();
         GAMEDATA::getInstance()->setIsInPay(false);
     }
-    AudioEngine::pauseAll();
+    AudioEngine::resumeAll();
 #else
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
     
