@@ -952,12 +952,12 @@ void MahjongView::showHuPaiXing(std::string paixing){
     }
     sort(hutemp.begin(), hutemp.end());
     
-    for(int i =(int)hutemp.size()-1; i>=0;i--){
+    for(int i =((int)hutemp.size()-1); i>=0;i--){
         auto xing = Sprite::create(StringUtils::format("result/paixing_%d.png",atoi(pais.at(i).c_str())));
         addChild(xing,999);
         xing->setOpacity(77);
         xing->setScale(3.0f);
-        xing->setPosition(640 - 100*hutemp.size()+(hutemp.size()-i)*200,posY);
+        xing->setPosition(640 - 100*(hutemp.size()-1)+(hutemp.size()-1-i)*200,posY);
         xing->runAction(Sequence::create(DelayTime::create(i*(5.0f/24)),Spawn::create(ScaleTo::create(3.0/24, 0.8f),FadeTo::create(3.0f/24, 255), NULL),ScaleTo::create(2.0/24, 1.0f), NULL));
     }
     //光效动画

@@ -81,8 +81,8 @@ void PlayerBase::initPlayer(Player* playerInfo){
         money->setTexture("gameview/gold_small.png");
         moneyNumber->setString(StringUtils::format("%d", playerInfo->getGold()));
     }
-    money->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width)/2, getPostionBySeat(clientSeatId).y - 62);
-    moneyNumber->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width-money->getContentSize().width)/2+5, getPostionBySeat(clientSeatId).y - 62);
+    money->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width)/2-10, getPostionBySeat(clientSeatId).y - 62);
+    moneyNumber->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width-money->getContentSize().width)/2, getPostionBySeat(clientSeatId).y - 62);
     
     auto readyTitle = Sprite::create("gameview/ready_title.png");
     readyTitle->setTag(1001);
