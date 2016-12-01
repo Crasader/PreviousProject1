@@ -168,6 +168,7 @@ struct PlayerGameData{
     int status;
     int tru;
     int isOnline;
+    int ifready;
     vector<PlayerChiData> chiData;
     vector<PlayerPengData> pengData;
     vector<PlayerGangData> gangData;

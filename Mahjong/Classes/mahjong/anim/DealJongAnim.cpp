@@ -40,13 +40,13 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2){
         showDiceAnim(base);
     }),DelayTime::create(11.0f/24),CallFunc::create([=](){
         base->setVisible(false);
-        auto diec1 = Sprite::create(cocos2d::String::createWithFormat("gameview/dice_%d.png",dian1)->_string);
+        auto diec1 = Sprite::create(StringUtils::format("gameview/dice_%d.png",dian1));
         diec1->setPosition(640,320);
         diec1->setTag(200);
         addChild(diec1);
         diec1->setScale(0.6f);
         diec1->runAction(Sequence::create(ScaleTo::create(1.0/24*3,1.0f),ScaleTo::create(1.0/24*2,0.8f), NULL));
-        auto diec2 = Sprite::create(cocos2d::String::createWithFormat("gameview/dice_%d.png",dian2)->_string);
+        auto diec2 = Sprite::create(StringUtils::format("gameview/dice_%d.png",dian2));
         diec2->setPosition(740,335);
         addChild(diec2);
         diec2->setScale(0.6f);

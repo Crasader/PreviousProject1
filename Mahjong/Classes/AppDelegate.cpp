@@ -70,6 +70,9 @@ void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
     GAMEDATA::getInstance()->setNeedShowLayer(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOutResumeCommand());
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    AudioEngine::resumeAll();
+#endif
 }
 
 // this function will be called when the app is active again
@@ -88,6 +91,7 @@ void AppDelegate::applicationWillEnterForeground() {
         CallAndroidMethod::getInstance()->queryEventResult();
         GAMEDATA::getInstance()->setIsInPay(false);
     }
+    AudioEngine::pauseAll();
 #else
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
     

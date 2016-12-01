@@ -33,6 +33,7 @@ bool MahjongView::init(){
     }
     else{
         if(GAMEDATA::getInstance()->getContinueAgain()){
+            log("再来一局");
             startGameAgain();
             GAMEDATA::getInstance()->setContinueAgain(false);
         }else{
@@ -172,7 +173,7 @@ void MahjongView::update(float dt){
         tao->addToast("网络连接断开啦,努力重新连接中...");
         schedule([=](float dt){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-        }, 0, 0, 3.0f, "oahayou");
+        }, 0, 0, 3.5f, "oahayou");
         GAMEDATA::getInstance()->setSendReconnect(false);
     }
 }
@@ -475,6 +476,7 @@ void MahjongView::recoverGame(){
             info->setPoxiaoId(player.poxiaoId);
             info->setFangka(player.fangka);
             info->setIP(player.ip);
+            info->setIsReady(true);
             info->setUmark(player.umark);
             GAMEDATA::getInstance()->addPlayersInfo(info);
             recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
@@ -496,6 +498,7 @@ void MahjongView::recoverGame(){
             info->setLockDiamond(player.bangzuan);
             info->setPoxiaoId(player.poxiaoId);
             info->setFangka(player.fangka);
+            info->setIsReady(player.ifready==0?false:true);
             info->setIP(player.ip);
             info->setUmark(player.umark);
             GAMEDATA::getInstance()->addPlayersInfo(info);

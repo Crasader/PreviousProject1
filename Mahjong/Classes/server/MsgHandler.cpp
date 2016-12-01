@@ -1056,6 +1056,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.fangka = temp["fangka"].GetInt();
         data.hua = temp["hua"].GetInt();
         data.tru = temp["tru"].GetInt();
+        data.ifready = 1;
         data.isOnline = temp["isonline"].GetInt();
         if(temp.HasMember("chi")){
             const rapidjson::Value &chi = temp["chi"];
@@ -1889,6 +1890,8 @@ void MsgHandler::gameResumeResp(std::string msg){
             data.lequan = temp["lequan"].GetInt();
             data.fangka = temp["fangka"].GetInt();
             data.hua = temp["hua"].GetInt();
+            if(temp.HasMember("ifready"))
+                data.ifready = temp["ifready"].GetInt();
             if(temp.HasMember("isonline"))
                 data.isOnline = temp["isonline"].GetInt();
             if(temp.HasMember("lastpoker")){
