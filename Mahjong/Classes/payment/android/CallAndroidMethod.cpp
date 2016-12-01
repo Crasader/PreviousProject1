@@ -1,5 +1,5 @@
 #include "payment/android/CallAndroidMethod.h"
-#include"payment/android/MahjongPayHandler.h"
+#include "payment/android/MahjongPayHandler.h"
 #include "mahjong/state/GameData.h"
 #include "json/document.h"
 #include "json/stringbuffer.h"

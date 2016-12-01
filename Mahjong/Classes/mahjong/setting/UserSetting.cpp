@@ -2,7 +2,7 @@
 #include "mahjong/setting/GameFeedDialog.hpp"
 #include "mahjong/setting/GameRuleDialog.hpp"
 #include "mahjong/state/GameData.h"
-#include "mahjong/utils/Audio.h"
+#include "mahjong/audio/Audio.h"
 #include "userdata/UserData.h"
 #include "server/NetworkManage.h"
 

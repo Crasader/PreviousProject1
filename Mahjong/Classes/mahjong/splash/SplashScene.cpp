@@ -7,7 +7,7 @@
 #include "mahjong/splash/LoadResource.hpp"
 #include "mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "mahjong/utils/SeatIdUtil.h"
-#include "mahjong/utils/Audio.h"
+#include "mahjong/audio/Audio.h"
 #include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"

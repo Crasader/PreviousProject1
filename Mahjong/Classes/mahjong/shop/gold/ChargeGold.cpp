@@ -12,7 +12,7 @@
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/loading/Loading.h"
 #include "mahjong/utils/StringUtil.h"
-#include "mahjong/utils/ParticleUtil.hpp"
+#include "mahjong/widget/ParticleUtil.hpp"
 #include "server/NetworkManage.h"
 
 bool ChargeGold::init(){

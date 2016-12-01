@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/utils/ParticleUtil.hpp"
+#include "mahjong/widget/ParticleUtil.hpp"
 
 ParticleUtil* ParticleUtil::create(MyParticleType type){
     ParticleUtil* ret = new ParticleUtil();

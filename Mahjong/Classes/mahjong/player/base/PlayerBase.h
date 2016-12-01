@@ -6,7 +6,7 @@
 #include "mahjong/state/GameData.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/utils/SeatIdUtil.h"
-#include "mahjong/utils/Audio.h"
+#include "mahjong/audio/Audio.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;

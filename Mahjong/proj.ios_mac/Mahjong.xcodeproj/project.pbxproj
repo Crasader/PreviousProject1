@@ -239,18 +239,12 @@
 		D26779341DF00698003CE73F /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267788D1DF00697003CE73F /* SplashScene.cpp */; };
 		D26779351DF00698003CE73F /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778911DF00697003CE73F /* GameData.cpp */; };
 		D26779361DF00698003CE73F /* GameData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778911DF00697003CE73F /* GameData.cpp */; };
-		D26779371DF00698003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778941DF00697003CE73F /* Audio.cpp */; };
-		D26779381DF00698003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778941DF00697003CE73F /* Audio.cpp */; };
 		D26779391DF00698003CE73F /* Chinese.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778961DF00697003CE73F /* Chinese.cpp */; };
 		D267793A1DF00698003CE73F /* Chinese.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778961DF00697003CE73F /* Chinese.cpp */; };
-		D267793B1DF00698003CE73F /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778991DF00697003CE73F /* ParticleUtil.cpp */; };
-		D267793C1DF00698003CE73F /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778991DF00697003CE73F /* ParticleUtil.cpp */; };
 		D267793D1DF00698003CE73F /* SeatIdUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267789B1DF00697003CE73F /* SeatIdUtil.cpp */; };
 		D267793E1DF00698003CE73F /* SeatIdUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267789B1DF00697003CE73F /* SeatIdUtil.cpp */; };
 		D267793F1DF00698003CE73F /* StringUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267789D1DF00697003CE73F /* StringUtil.cpp */; };
 		D26779401DF00698003CE73F /* StringUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267789D1DF00697003CE73F /* StringUtil.cpp */; };
-		D26779411DF00698003CE73F /* Toast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267789F1DF00697003CE73F /* Toast.cpp */; };
-		D26779421DF00698003CE73F /* Toast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267789F1DF00697003CE73F /* Toast.cpp */; };
 		D26779431DF00698003CE73F /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A21DF00697003CE73F /* WanJiaQunLayer.cpp */; };
 		D26779441DF00698003CE73F /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A21DF00697003CE73F /* WanJiaQunLayer.cpp */; };
 		D26779451DF00698003CE73F /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A51DF00697003CE73F /* HeadImage.cpp */; };
@@ -259,6 +253,10 @@
 		D26779481DF00698003CE73F /* ScrollCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A71DF00697003CE73F /* ScrollCell.cpp */; };
 		D26779491DF00698003CE73F /* ScrollTextEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A91DF00697003CE73F /* ScrollTextEx.cpp */; };
 		D267794A1DF00698003CE73F /* ScrollTextEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A91DF00697003CE73F /* ScrollTextEx.cpp */; };
+		D267794E1DF012E2003CE73F /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267794C1DF012E2003CE73F /* ParticleUtil.cpp */; };
+		D267794F1DF012E2003CE73F /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267794C1DF012E2003CE73F /* ParticleUtil.cpp */; };
+		D26779531DF01349003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26779511DF01349003CE73F /* Audio.cpp */; };
+		D26779541DF01349003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26779511DF01349003CE73F /* Audio.cpp */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
@@ -554,19 +552,13 @@
 		D26778901DF00697003CE73F /* DataStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStruct.h; sourceTree = "<group>"; };
 		D26778911DF00697003CE73F /* GameData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameData.cpp; sourceTree = "<group>"; };
 		D26778921DF00697003CE73F /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
-		D26778941DF00697003CE73F /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
-		D26778951DF00697003CE73F /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		D26778961DF00697003CE73F /* Chinese.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chinese.cpp; sourceTree = "<group>"; };
 		D26778971DF00697003CE73F /* Chinese.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chinese.h; sourceTree = "<group>"; };
 		D26778981DF00697003CE73F /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
-		D26778991DF00697003CE73F /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
-		D267789A1DF00697003CE73F /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
 		D267789B1DF00697003CE73F /* SeatIdUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SeatIdUtil.cpp; sourceTree = "<group>"; };
 		D267789C1DF00697003CE73F /* SeatIdUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatIdUtil.h; sourceTree = "<group>"; };
 		D267789D1DF00697003CE73F /* StringUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringUtil.cpp; sourceTree = "<group>"; };
 		D267789E1DF00697003CE73F /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
-		D267789F1DF00697003CE73F /* Toast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toast.cpp; sourceTree = "<group>"; };
-		D26778A01DF00697003CE73F /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
 		D26778A21DF00697003CE73F /* WanJiaQunLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WanJiaQunLayer.cpp; sourceTree = "<group>"; };
 		D26778A31DF00697003CE73F /* WanJiaQunLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WanJiaQunLayer.hpp; sourceTree = "<group>"; };
 		D26778A51DF00697003CE73F /* HeadImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeadImage.cpp; sourceTree = "<group>"; };
@@ -575,6 +567,10 @@
 		D26778A81DF00697003CE73F /* ScrollCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScrollCell.hpp; sourceTree = "<group>"; };
 		D26778A91DF00697003CE73F /* ScrollTextEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollTextEx.cpp; sourceTree = "<group>"; };
 		D26778AA1DF00697003CE73F /* ScrollTextEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextEx.h; sourceTree = "<group>"; };
+		D267794C1DF012E2003CE73F /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
+		D267794D1DF012E2003CE73F /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
+		D26779511DF01349003CE73F /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
+		D26779521DF01349003CE73F /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
@@ -891,6 +887,7 @@
 		D26777E41DF00697003CE73F /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D26779501DF01349003CE73F /* audio */,
 				D26777E51DF00697003CE73F /* anim */,
 				D26777F21DF00697003CE73F /* bill */,
 				D26777F71DF00697003CE73F /* chat */,
@@ -1306,19 +1303,13 @@
 		D26778931DF00697003CE73F /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				D26778941DF00697003CE73F /* Audio.cpp */,
-				D26778951DF00697003CE73F /* Audio.h */,
 				D26778961DF00697003CE73F /* Chinese.cpp */,
 				D26778971DF00697003CE73F /* Chinese.h */,
 				D26778981DF00697003CE73F /* GameConfig.h */,
-				D26778991DF00697003CE73F /* ParticleUtil.cpp */,
-				D267789A1DF00697003CE73F /* ParticleUtil.hpp */,
 				D267789B1DF00697003CE73F /* SeatIdUtil.cpp */,
 				D267789C1DF00697003CE73F /* SeatIdUtil.h */,
 				D267789D1DF00697003CE73F /* StringUtil.cpp */,
 				D267789E1DF00697003CE73F /* StringUtil.h */,
-				D267789F1DF00697003CE73F /* Toast.cpp */,
-				D26778A01DF00697003CE73F /* Toast.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1335,6 +1326,8 @@
 		D26778A41DF00697003CE73F /* widget */ = {
 			isa = PBXGroup;
 			children = (
+				D267794C1DF012E2003CE73F /* ParticleUtil.cpp */,
+				D267794D1DF012E2003CE73F /* ParticleUtil.hpp */,
 				D26778A51DF00697003CE73F /* HeadImage.cpp */,
 				D26778A61DF00697003CE73F /* HeadImage.hpp */,
 				D26778A71DF00697003CE73F /* ScrollCell.cpp */,
@@ -1343,6 +1336,15 @@
 				D26778AA1DF00697003CE73F /* ScrollTextEx.h */,
 			);
 			path = widget;
+			sourceTree = "<group>";
+		};
+		D26779501DF01349003CE73F /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				D26779511DF01349003CE73F /* Audio.cpp */,
+				D26779521DF01349003CE73F /* Audio.h */,
+			);
+			path = audio;
 			sourceTree = "<group>";
 		};
 		D28A4A0A1D0565C200741FD0 /* http */ = {
@@ -1618,7 +1620,6 @@
 			files = (
 				D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */,
 				D26778C91DF00697003CE73F /* Orientation.cpp in Sources */,
-				D26779371DF00698003CE73F /* Audio.cpp in Sources */,
 				D257FD761D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D26778AB1DF00697003CE73F /* DealJongAnim.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
@@ -1636,7 +1637,6 @@
 				D26778B51DF00697003CE73F /* PlayerCpgAnim.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D26779271DF00698003CE73F /* ExchangeItem.cpp in Sources */,
-				D267793B1DF00698003CE73F /* ParticleUtil.cpp in Sources */,
 				D267793F1DF00698003CE73F /* StringUtil.cpp in Sources */,
 				D26778D31DF00697003CE73F /* BaseDialog.cpp in Sources */,
 				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */,
@@ -1667,6 +1667,7 @@
 				D26778AF1DF00697003CE73F /* HupaiAnim.cpp in Sources */,
 				D26778DB1DF00697003CE73F /* ToastCell.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
+				D267794E1DF012E2003CE73F /* ParticleUtil.cpp in Sources */,
 				D267791F1DF00698003CE73F /* FirstChageDialog.cpp in Sources */,
 				D26778D51DF00697003CE73F /* HintDialog.cpp in Sources */,
 				D26778FF1DF00698003CE73F /* Player.cpp in Sources */,
@@ -1678,7 +1679,6 @@
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D26778C31DF00697003CE73F /* GuiLayer.cpp in Sources */,
 				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
-				D26779411DF00698003CE73F /* Toast.cpp in Sources */,
 				D26779391DF00698003CE73F /* Chinese.cpp in Sources */,
 				D26779431DF00698003CE73F /* WanJiaQunLayer.cpp in Sources */,
 				D26779131DF00698003CE73F /* GameRuleDialog.cpp in Sources */,
@@ -1716,6 +1716,7 @@
 				D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */,
 				D26778AD1DF00697003CE73F /* HuaAnim.cpp in Sources */,
 				D26778C51DF00697003CE73F /* MahjongView.cpp in Sources */,
+				D26779531DF01349003CE73F /* Audio.cpp in Sources */,
 				D26779151DF00698003CE73F /* UserSetting.cpp in Sources */,
 				D26778F31DF00698003CE73F /* EnterRoomDialog.cpp in Sources */,
 				D26779111DF00698003CE73F /* GameFeedDialog.cpp in Sources */,
@@ -1727,7 +1728,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D267791C1DF00698003CE73F /* ChargeItem.cpp in Sources */,
-				D26779421DF00698003CE73F /* Toast.cpp in Sources */,
 				D26778EE1DF00698003CE73F /* UserInfo.cpp in Sources */,
 				D26779121DF00698003CE73F /* GameFeedDialog.cpp in Sources */,
 				D26778BE1DF00697003CE73F /* FaceChatLayer.cpp in Sources */,
@@ -1747,11 +1747,11 @@
 				D26779061DF00698003CE73F /* PlayerRight.cpp in Sources */,
 				D26779201DF00698003CE73F /* FirstChageDialog.cpp in Sources */,
 				D26779181DF00698003CE73F /* HongbaoPride.cpp in Sources */,
-				D26779381DF00698003CE73F /* Audio.cpp in Sources */,
 				D26778F41DF00698003CE73F /* EnterRoomDialog.cpp in Sources */,
 				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,
 				D26778E61DF00698003CE73F /* MahjongNumberKeypads.cpp in Sources */,
 				D26778B21DF00697003CE73F /* LiuJuAnim.cpp in Sources */,
+				D26779541DF01349003CE73F /* Audio.cpp in Sources */,
 				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D26779321DF00698003CE73F /* LoadResource.cpp in Sources */,
 				D26779401DF00698003CE73F /* StringUtil.cpp in Sources */,
@@ -1775,6 +1775,7 @@
 				D26779101DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
 				D26779481DF00698003CE73F /* ScrollCell.cpp in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
+				D267794F1DF012E2003CE73F /* ParticleUtil.cpp in Sources */,
 				D26778BC1DF00697003CE73F /* ChatDialog.cpp in Sources */,
 				D267794A1DF00698003CE73F /* ScrollTextEx.cpp in Sources */,
 				D267792E1DF00698003CE73F /* LequanShop.cpp in Sources */,
@@ -1786,7 +1787,6 @@
 				D26778D01DF00697003CE73F /* DailyPride.cpp in Sources */,
 				D26778B81DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
-				D267793C1DF00698003CE73F /* ParticleUtil.cpp in Sources */,
 				D26779441DF00698003CE73F /* WanJiaQunLayer.cpp in Sources */,
 				D26778C61DF00697003CE73F /* MahjongView.cpp in Sources */,
 				D26779021DF00698003CE73F /* PlayerLeft.cpp in Sources */,

@@ -19,7 +19,7 @@
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/utils/Chinese.h"
-#include "mahjong/utils/ParticleUtil.hpp"
+#include "mahjong/widget/ParticleUtil.hpp"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "payment/android/CallAndroidMethod.h"

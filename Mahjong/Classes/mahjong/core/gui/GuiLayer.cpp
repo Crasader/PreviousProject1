@@ -5,7 +5,7 @@
 #include "mahjong/core/widget/QuitRoomDialog.hpp"
 #include "mahjong/dialog/prompt/HintDialog.hpp"
 #include "mahjong/chat/ChatDialog.hpp"
-#include "mahjong/utils/Audio.h"
+#include "mahjong/audio/Audio.h"
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/utils/GameConfig.h"
 #include "server/MsgHandler.h"

@@ -4,7 +4,7 @@
 #include "mahjong/state/GameData.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
-#include "mahjong/utils/Audio.h"
+#include "mahjong/audio/Audio.h"
 
 USING_NS_CC;
 using namespace experimental;
