@@ -170,7 +170,7 @@ void MahjongView::update(float dt){
     }
     
     if(GAMEDATA::getInstance()->getSendReconnect()){
-        tao->addToast("网络重新连接中...");
+        tao->addToast("网络连接断开啦,努力重新连接中...");
         schedule([=](float dt){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
         }, 0, 0, 3.0f, "oahayou");

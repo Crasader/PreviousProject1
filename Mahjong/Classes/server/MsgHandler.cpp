@@ -1825,6 +1825,8 @@ void MsgHandler::gameResumeResp(std::string msg){
     if(_mDoc.HasMember("prjucount")){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
         opdata.prjucount = prjucount.GetString();
+    }else{
+        opdata.prjucount = "0";
     }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
     //设置是否是私人房间
