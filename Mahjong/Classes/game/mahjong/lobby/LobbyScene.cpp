@@ -594,14 +594,6 @@ void LobbyScene::addEventListener(){
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
     
-    //网络连接
-    intnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
-        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
-            TextHintDialog* hint = TextHintDialog::create("网络出现问题啦");
-            addChild(hint,5);
-            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
-        });
-    });
     
     //登录地址变更
     loginReplaceListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){

@@ -44,6 +44,9 @@ void NetworkManage::connectServer() {
             std::thread recvThread = std::thread(&NetworkManage::receiveData,
                                                  this);
             recvThread.detach();
+            if(GAMEDATA::getInstance()->getWaitNetwork()){
+                GAMEDATA::getInstance()->setSendReconnect(true);
+            }
         }
         else {
             log("连接服务端失败 = %d", result);
@@ -61,8 +64,9 @@ void NetworkManage::sendMsg(std::string code) {
     if (sendResult < 0) {
         log("无法向服务端发送消息");
         socket.Close();
+        log("重新连接网络");
+        GAMEDATA::getInstance()->setWaitNetwork(true);
         connectServer();
-        _eventDispatcher->dispatchCustomEvent(CLIENT_LOST_CONNECT, NULL);
     }
 }
 
@@ -79,7 +83,6 @@ void NetworkManage::sendHeartBeat() {
         sleep(3);
 #endif
         sendMsg(CommandManage::getInstance()->getHeartCommmand());
-        GAMEDATA::getInstance()->setHeartCount(GAMEDATA::getInstance()->getHeartCount()+1);
     }
     
 }

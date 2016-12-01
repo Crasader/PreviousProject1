@@ -23,8 +23,6 @@ public:
     void onExit() override;
     static OtherPlayerInfo* create(Player* player);
 private:
-
-    EventListenerCustom* addFriendRespListener2;
     void closeView();
     CC_SYNTHESIZE(Player*, player, Player);
 

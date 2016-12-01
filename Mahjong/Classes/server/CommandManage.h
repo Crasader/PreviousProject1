@@ -31,11 +31,6 @@ public:
 	std::string getTrusteeshipCommand();
 	std::string getTrusteeshipCancelCommand();
 	std::string getQuitRoomCommand();
-	std::string getFriendListCommand();
-	std::string getSearchFriendCommand(std::string name);
-	std::string getAddFriendCommand(std::string poxiaoId,std::string nickname);
-    std::string getAddFriendQuickCommand(std::string key);
-	std::string getDeleteFriendCommand(std::string poxiaoId);
 	std::string getChangeHeadCommand(std::string pic);
 	std::string getOpenRoomCommand(std::string ftype,std::string iflezi);
 	std::string getEnterFriendRoomCommand(std::string pid);

@@ -254,49 +254,8 @@ std::string CommandManage::getQuitRoomCommand(){
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getFriendListCommand(){
-	// {code:126,poxiaoId:"456"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_GET_FRIEND_LIST_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
 
-std::string CommandManage::getSearchFriendCommand(std::string name){
-	//{code:121, poxiaoId : "123", key : "∫√∞°"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_SEARCH_FRIEND_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("key", name));
-	return commandString(keyValue);
-}
 
-std::string CommandManage::getAddFriendCommand(std::string poxiaoId,std::string nickname){
-	//{code:123,poxiaoId:"123",pId:"456"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_ADD_FRIEND_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("pId", poxiaoId));
-    keyValue.insert(map<string, string>::value_type("nickname", nickname));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getAddFriendQuickCommand(std::string key){
-    // 快速互加好友请求{code:144,poxiaoId:poxiaoId,key:"1234"}
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_QUICK_ADD_FRIEND_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    keyValue.insert(map<string, string>::value_type("key", key));
-    return commandString(keyValue);
-}
-
-std::string CommandManage::getDeleteFriendCommand(std::string poxiaoId){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_DEL_FRIEND_LIST_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("pId", poxiaoId));
-	return commandString(keyValue);
-}
 
 std::string CommandManage::getChangeHeadCommand(std::string pic){
 	std::map<std::string, std::string> keyValue;

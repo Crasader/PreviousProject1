@@ -32,15 +32,6 @@
 #define MSGCODE_REGISTER_RESPONSE  119//注册回复 {code:119,poxiaoId:poxiaoId,username:"avc",password:"123",result:1,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',level:"滚地龙"}1成功 2 用户名已存在 3验证码错误  4其他错误
 
 #define MSGCODE_QUIT_REQUEST 120//退出请求 {code:120,poxiaoId:poxiaoId}
-#define MSGCODE_SEARCH_FRIEND_REQUEST  121// 搜索好友请求{code:121,poxiaoId:"123",key:"好啊"}
-#define MSGCODE_SEARCH_FRIEND_RESPONSE  122// 搜索好友回复{code:122,poxiaoId:"123",friends:[{poxiaoId:"456",nickname:"红太阳"},{poxiaoId:"789",nickname:"蓝月亮"}]}
-#define MSGCODE_ADD_FRIEND_REQUEST  123// 添加好友请求{code:123,poxiaoId:"123",pId:"456"}
-#define MSGCODE_ADD_FRIEND_RESPONSE  124// 添加好友回复{code:124,poxiaoId:"123",result:1} result0为失败 1为成功 2为好友上限已达到
-#define MSGCODE_ADD_FRIEND_NOTIFY  125// 添加好友通知{code:125,poxiaoId:"456",nickname:"另一个玩家"}
-#define MSGCODE_GET_FRIEND_LIST_REQUEST  126// 获取好友列表请求{code:126,poxiaoId:"456"}
-#define MSGCODE_GET_FRIEND_LIST_RESPONSE  127// 获取好友列表回复{code:127,poxiaoId:"456",friends:[{poxiaoId:"456",nickname:"红太阳"},{poxiaoId:"789",nickname:"蓝月亮"}}
-#define MSGCODE_DEL_FRIEND_LIST_REQUEST  128// 删除好友请求{code:128,poxiaoId:"456",pId:"11"}
-#define MSGCODE_DEL_FRIEND_LIST_RESPONSE  129// 删除好友回复{code:129,poxiaoId:"456"}
 
 #define MSGCODE_HONGBAO_REQUEST  131// 红包获取请求{code:131,poxiaoId:"456"}
 #define MSGCODE_HONGBAO_RESPONSE  132//红包获取回复{code:132,poxiaoId:"456",hbcode:"12345689",lequan:"12",gold:"0",diamond:"0",count:"1",lequan2:"12",gold2:"0",diamond2:"0",list:[{pId:"11",nickname:"好啊",status:"1"},{pId:"21",nickname:"我是谁",status:"0"}]}
@@ -259,11 +250,6 @@
 #define MSG_HERO_PENG_RESP "msg_hero_peng_resp"
 #define MSG_HERO_GANG_RESP "msg_hero_gang_resp"
 #define MSG_PLAYER_REMOVE "msg_player_remove"
-#define MSG_HERO_FRIEND_LIST "msg_hero_friend_list"
-#define MSG_SEARCH_FRIEND_RESULT "msg_search_friend_result"
-#define MSG_ADD_FRIEND_RESP "msg_add_friend_resp"
-#define MSG_DELETE_FRIEND_RESP "msg_delete_friend_resp"
-#define MSG_ADD_FRIEND_NOTIFY "msg_add_friend_notify"
 #define MSG_FRIEND_OPEN_ROOM_RESP "msg_friend_open_room_resp"
 #define MSG_FRIEND_OPEN_ROOM_NOTIFY "msg_friend_open_room_notify"
 #define MSG_FRIEND_ENTER_ROOM_RESP "msg_friend_enter_room_resp"
@@ -325,7 +311,6 @@
 #define GET_JJJ_RESPONSE_REMOVE_LOADING "get_jjj_response_remove_loading"
 #define UPDATE_JJJ_COUNT_RESP "update_jjj_count_resp"
 #define UPDATE_DICE_KAOBAO_STATE "update_dice_kaibao_dtate"
-#define CLIENT_LOST_CONNECT "client_lost_connect"
 #define FRIEND_IS_PLAYING_GAME "friend_is_playing_game" //好友在游戏中
 #define MSG_PLAYER_REPLACE_LOGIN "msg_player_replace_login"//在其他的机子上登录
 #define MSG_UPDATE_PLAYER_WECHAT_IMAGE "MSG_UPDATE_PLAYER_WECHAT_IMAGE"

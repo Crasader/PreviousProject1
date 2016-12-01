@@ -44,11 +44,6 @@ private:
 	void heroGangResp(std::string msg);
 	void heroPengResp(std::string msg);
 	void removePlayerNotify(std::string msg);
-	void friendListResp(std::string msg);
-	void friendSearchResp(std::string msg);
-	void friendAddResp(std::string msg);
-	void friendDeleteResp(std::string msg);
-	void friendAddNotify(std::string msg);
 	void friendOpenRoomResp(std::string msg);
 	void friendOpenRoomNotify(std::string msg);
 	void friendEnterRoomResp(std::string msg);

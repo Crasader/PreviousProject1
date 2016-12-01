@@ -49,6 +49,6 @@ bool TextHintDialog::init(std::string msg){
     addChild(text);
     schedule([=](float dt){
         removeFromParent();
-    }, 0, 0, 2.0f,"sug");
+    }, 0, 0, 2.5f,"sug");
     return true;
 }

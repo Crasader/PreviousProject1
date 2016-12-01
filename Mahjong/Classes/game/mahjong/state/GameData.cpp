@@ -21,12 +21,12 @@ void GAMEDATA::init(){
     setIsInPay(false);
     setIsInGameScene(false);
     setWaitNetwork(false);
+    setSendReconnect(false);
     setNeedShowLayer(false);
     setShowDialogType(-1);
     setHaveShowNotice(false);
     setNeedShowLastResult(false);
     setShowFangZhuDismiss(false);
-    setHeartCount(0);
     setScore(0);
     setHuangfan("0");
     setKaibao("0");

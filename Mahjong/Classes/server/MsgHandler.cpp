@@ -36,10 +36,6 @@ void MsgHandler::handleMsg(std::string msg){
     const rapidjson::Value &code = _mDoc["code"];
     if (code.IsInt()) {
         distribute(code.GetInt(), msg);
-        if(code == 2){
-            //心跳回复
-            GAMEDATA::getInstance()->setHeartCount(0);
-        }
     }
     else{
         log("msg from server is error");
@@ -239,36 +235,6 @@ void MsgHandler::distribute(int code, std::string msg){
             log(" *** gang resp *** ");
             heroGangResp(msg);
             
-            break;
-        }
-        case MSGCODE_GET_FRIEND_LIST_RESPONSE:
-        {
-            log(" *** friend list resp *** ");
-            friendListResp(msg);
-            break;
-        }
-        case MSGCODE_SEARCH_FRIEND_RESPONSE:
-        {
-            log(" *** friend search resp *** ");
-            friendSearchResp(msg);
-            break;
-        }
-        case MSGCODE_ADD_FRIEND_RESPONSE:
-        {
-            log(" *** friend add resp *** ");
-            friendAddResp(msg);
-            break;
-        }
-        case MSGCODE_DEL_FRIEND_LIST_RESPONSE:
-        {
-            log(" *** friend enter room  resp *** ");
-            friendDeleteResp(msg);
-            break;
-        }
-        case MSGCODE_ADD_FRIEND_NOTIFY:
-        {
-            log(" *** friend add notify *** ");
-            friendAddNotify(msg);
             break;
         }
         case MSGCODE_FRIEND_GAME_RESPONSE:
@@ -1514,86 +1480,6 @@ void MsgHandler::removePlayerNotify(std::string msg){
     postNotifyMessage(MSG_PLAYER_REMOVE, "");
 }
 
-void MsgHandler::friendListResp(std::string msg){
-    //{code:127,poxiaoId:"456",friends:[{poxiaoId:"456",nickname:"",pic:"sss"},
-    //{poxiaoId:"789",nickname:"",pic:"sss"}}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if (_mDoc.HasMember("friends")){
-        const rapidjson::Value &friends = _mDoc["friends"];
-        FriendListData lists;
-        for (int i = 0; i < friends.Capacity(); ++i){
-            const rapidjson::Value &temp = friends[i];
-            FriendInfo info;
-            info.image = temp["pic"].GetString();
-            info.poxiaoId = temp["poxiaoId"].GetString();
-            info.nickname = temp["nickname"].GetString();
-            std::string online = temp["isonline"].GetString();
-            info.isOnLine = (online == "0" ? false : true);
-            info.gold =temp["gold"].GetInt();
-            info.pic =temp["pic"].GetString();
-            info.diamond =temp["daimond"].GetInt();
-            info.lockDiamond =temp["bangzuan"].GetInt();
-            info.lequan =temp["lequan"].GetInt();
-            lists.friends.push_back(info);
-        }
-        
-        GAMEDATA::getInstance()->setFriendList(GAMEDATA::getInstance()->sortFriendList(lists));
-    }
-    postNotifyMessage(MSG_HERO_FRIEND_LIST, "");
-}
-
-void MsgHandler::friendSearchResp(std::string msg){
-    //{code:122, poxiaoId : "123", friends : [{poxiaoId:"456", nickname : "",pic:"jj"},
-    //{ poxiaoId:"789", nickname : "",pic:"jj" }]}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if (_mDoc.HasMember("friends")){
-        const rapidjson::Value &friends = _mDoc["friends"];
-        FriendSearchData lists;
-        for (int i = 0; i < friends.Capacity(); ++i){
-            const rapidjson::Value &temp = friends[i];
-            FriendInfo info;
-            info.image = temp["pic"].GetString();
-            info.poxiaoId = temp["poxiaoId"].GetString();
-            info.nickname = temp["nickname"].GetString();
-            lists.friends.push_back(info);
-        }
-        GAMEDATA::getInstance()->setFriendSearch(lists);
-    }
-    postNotifyMessage(MSG_SEARCH_FRIEND_RESULT, "");
-}
-
-void MsgHandler::friendAddResp(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    postNotifyMessage(MSG_ADD_FRIEND_RESP, StringUtil::itos(result.GetInt()));
-    
-}
-
-void MsgHandler::friendDeleteResp(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    postNotifyMessage(MSG_DELETE_FRIEND_RESP, "");
-}
-
-void MsgHandler::friendAddNotify(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &nickname = _mDoc["nickname"];
-    postNotifyMessage(MSG_ADD_FRIEND_NOTIFY, nickname.GetString());
-}
 
 
 void MsgHandler::friendOpenRoomNotify(std::string msg){

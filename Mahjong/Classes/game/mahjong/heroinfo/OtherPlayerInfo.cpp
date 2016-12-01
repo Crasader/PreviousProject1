@@ -32,24 +32,10 @@ OtherPlayerInfo* OtherPlayerInfo::create(Player* player){
 
 void OtherPlayerInfo::onEnter(){
     Layer::onEnter();
-    addFriendRespListener2 = EventListenerCustom::create(MSG_ADD_FRIEND_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        if (result == "1"){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
-            HintDialog* hint = HintDialog::create("添加好友成功",NULL);
-            addChild(hint);
-        }else{
-            HintDialog* hint = HintDialog::create("添加好友失败",NULL);
-            addChild(hint);
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addFriendRespListener2, 1);
 }
 
 void OtherPlayerInfo::onExit(){
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(addFriendRespListener2);
 }
 
 

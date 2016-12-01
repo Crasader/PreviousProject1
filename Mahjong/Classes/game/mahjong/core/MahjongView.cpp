@@ -162,14 +162,7 @@ void MahjongView::update(float dt){
         playerHero->stopTimeClockAnim();
         GAMEDATA::getInstance()->setNeedAddPlayer(-1);
     }
-    if(GAMEDATA::getInstance()->getHeartCount()>5){
-        if(!GAMEDATA::getInstance()->getWaitNetwork()){
-            HintDialog* dia = HintDialog::create("断线重连中....", nullptr);
-            addChild(dia,100);
-            GAMEDATA::getInstance()->setHeartCount(-100000);
-            GAMEDATA::getInstance()->setWaitNetwork(true);
-        }
-    }
+
     if(GAMEDATA::getInstance()->getNeedShowLayer()){
         GAMEDATA::getInstance()->setNeedShowLayer(false);
         if(GAMEDATA::getInstance()->getIsPlaying()){
@@ -177,6 +170,14 @@ void MahjongView::update(float dt){
             load->setTag(2009);
             addChild(load,100);
         }
+    }
+    
+    if(GAMEDATA::getInstance()->getSendReconnect()){
+        tao->addToast("网络重新连接中...");
+        schedule([=](float dt){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
+        }, 0, 0, 3.0f, "oahayou");
+        GAMEDATA::getInstance()->setSendReconnect(false);
     }
 }
 
@@ -954,12 +955,13 @@ void MahjongView::showHuPaiXing(std::string paixing){
     
     vector<string> pais = StringUtil::split(paixing, ",");
     sort(pais.begin(), pais.end());
-    for(int i =0; i<pais.size();i++){
+    
+    for(int i =pais.size()-1; i>=0;i--){
         auto xing = Sprite::create(StringUtils::format("result/paixing_%d.png",atoi(pais.at(i).c_str())));
         addChild(xing,999);
         xing->setOpacity(77);
         xing->setScale(3.0f);
-        xing->setPosition(640 - 95*(pais.size()-1)+i*190,posY);
+        xing->setPosition(640 - 95*(pais.size()-1)+(pais.size()-i)*190,posY);
         xing->runAction(Sequence::create(DelayTime::create(i*(5.0f/24)),Spawn::create(ScaleTo::create(3.0/24, 0.8f),FadeTo::create(3.0f/24, 255), NULL),ScaleTo::create(2.0/24, 1.0f), NULL));
     }
     //光效动画
@@ -1200,13 +1202,13 @@ void MahjongView::addCoustomListener(){
     });
     
     //网络连接
-    viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
-        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
-            TextHintDialog* hint = TextHintDialog::create("网络出现问题啦");
-            addChild(hint,5);
-            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
-        });
-    });
+//    viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
+//        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
+//            tao->addToast("网络出现问题,重新连接中...");
+//            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
+//            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
+//        });
+//    });
     
     scrollTetxListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_SCROLL_TEXT, [=](EventCustom* event){
         std::string msg = static_cast<char*>(event->getUserData());

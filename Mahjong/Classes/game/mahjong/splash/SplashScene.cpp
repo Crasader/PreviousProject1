@@ -324,7 +324,6 @@ void SplashScene::onEnter(){
     //断线续玩
     reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         NetworkManage::getInstance()->heartbeat();
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
@@ -337,7 +336,6 @@ void SplashScene::onEnter(){
         std::string result = buf;
         if (result == "1"){
             NetworkManage::getInstance()->heartbeat();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(result == "2")
@@ -347,10 +345,12 @@ void SplashScene::onEnter(){
         }
         else if(result == "3")
         {
+            removeLoading();
             FangkaNotEnoughDialog* dialog = FangkaNotEnoughDialog::create();
             addChild(dialog,100);
         }
         else if(result == "4"){
+            removeLoading();
             RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
             addChild(idd,100);
         }
@@ -362,7 +362,6 @@ void SplashScene::onEnter(){
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
             NetworkManage::getInstance()->heartbeat();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFriendListCommand());
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){

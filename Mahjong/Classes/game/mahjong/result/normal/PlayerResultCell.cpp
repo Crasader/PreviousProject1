@@ -101,8 +101,8 @@ bool PlayerResultCell::init(GameResultData data){
             std::vector<std::string> hutypeInfo = StringUtil::split(data.huType, ",");
             sort(hutypeInfo.begin(), hutypeInfo.end());
             std::string hu = "";
-            for (int i = 0; i < hutypeInfo.size(); i++){
-                if(i!=0){
+            for (int i = hutypeInfo.size()-1; i >=0; i--){
+                if(i != hutypeInfo.size()-1){
                     hu += ","+ChineseWord(hutypeInfo.at(i).c_str());
                 }else{
                     hu += ChineseWord(hutypeInfo.at(i).c_str());
