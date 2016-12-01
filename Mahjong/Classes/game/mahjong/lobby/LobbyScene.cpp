@@ -358,7 +358,6 @@ void LobbyScene::showFirstCharge(){
 
 void LobbyScene::showRedWallet(){
     Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getSendRedWalletCommand());
     HongbaoPride* wallet = HongbaoPride::create();
     addChild(wallet,3);
 }

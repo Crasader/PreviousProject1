@@ -95,12 +95,6 @@ void PlayerBase::initPlayer(Player* playerInfo){
     offLineIcon->setPosition(getPostionBySeat(clientSeatId).x+22,getPostionBySeat(clientSeatId).y-32);
     this->addChild(offLineIcon);
     
-    auto trueeIcon = Sprite::create("trusteeship/trustee_icon.png");
-    trueeIcon->setTag(1003);
-    trueeIcon->setVisible(false);
-    trueeIcon->setPosition(getPostionBySeat(clientSeatId).x+40,getPostionBySeat(clientSeatId).y-45);
-    this->addChild(trueeIcon);
-    
     tingTitle = Sprite::create("gameview/ting_icon.png");
     tingTitle->setPosition(getPostionBySeat(clientSeatId).x + 50, getPostionBySeat(clientSeatId).y + 60);
     this->addChild(tingTitle,101);
@@ -267,11 +261,6 @@ void PlayerBase::setIsOffLine(bool b){
     }
 }
 
-void PlayerBase::setIsTrustee(bool b){
-    if(NULL != getChildByTag(1003)){
-        getChildByTag(1003)->setVisible(b);
-    }
-}
 
 void PlayerBase::showPlayerInfo(){
     OtherPlayerInfo* dialog = OtherPlayerInfo::create(getPlayerInfo());

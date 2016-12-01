@@ -9,7 +9,6 @@
 #include "game/mahjong/player/PlayerOpposite.h"
 #include "game/mahjong/player/PlayerHero.h"
 #include "game/mahjong/player/playerinfo/Player.h"
-#include "game/mahjong/trusteeship/Trusteeship.h"
 #include "game/mahjong/dialog/toast/InfoToast.hpp"
 #include "userdata/UserData.h"
 USING_NS_CC;
@@ -38,7 +37,6 @@ private:
 	std::string  selectedChi;
 	Sprite* choiceMenu;
     Menu* controllPad;
-	Trusteeship* trusteeship;
     InfoToast* tao;
 	GuiLayer* guiLayer;
     PlayerHero* playerHero;
@@ -122,9 +120,6 @@ private:
 	void addPlayerTingNotifyListener();
 	void addHeroTingNotifyListener();
 	void addHeroTingRespListener();
-	void addTrusteeShipRespListener();
-	void addTrusteeShipNotifyListener();
-	void addTrusteeShipCancelListener();
 	void addLostConnectListener();
 	void addFriendInviteMeListener();
     void addPlayerRemoveListener();

@@ -20,7 +20,7 @@ bool ChargeGold::init(){
         
         return false;
     }
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGoldChangeListCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGoldChargeListCommand());
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);

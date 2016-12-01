@@ -23,7 +23,7 @@ bool ChargeFangka::init(){
         
         return false;
     }
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDiamondChangeListCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFangkaChargeListCommand());
     
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));

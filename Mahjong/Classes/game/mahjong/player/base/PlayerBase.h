@@ -48,7 +48,6 @@ public:
     void hideCurrentBigJong();
     void setIsReady(bool b);//准备状态
     void setIsOffLine(bool b);//是否断线
-    void setIsTrustee(bool b);//是否托管
     void showPlayerInfo();//显示玩家信息
     void startTimeClockAnim();
     void startTimeClockAnim(int time, int type);

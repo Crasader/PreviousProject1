@@ -1,5 +1,4 @@
 #include "game/mahjong/heroinfo/UserInfo.h"
-#include "game/mahjong/heroinfo/NickNameDialog.h"
 #include "game/mahjong/heroinfo/HeadImageDialog.h"
 #include "game/mahjong/widget/HeadImage.hpp"
 #include "game/mahjong/lobby/LobbyScene.h"
@@ -139,15 +138,6 @@ void UserInfo::showUserInfo(){
 void UserInfo::editHeadImage(){
     HeadImageDialog* headImageDialog = HeadImageDialog::create();
     addChild(headImageDialog);
-}
-
-
-void UserInfo::menuBtnClick(Ref* ref){
-    MenuItemImage* image = (MenuItemImage*) ref;
-    if (image->getTag() == 0){
-        NickNameDialog* dialog = NickNameDialog::create();
-        addChild(dialog);
-    }
 }
 
 void UserInfo::updateNickname(){

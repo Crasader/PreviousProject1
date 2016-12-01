@@ -20,6 +20,5 @@ private:
     Menu* changeNickName;
     void showUserInfo();
     void editHeadImage();
-    void menuBtnClick(Ref* ref);
     void cleanAccountRercord();
 };

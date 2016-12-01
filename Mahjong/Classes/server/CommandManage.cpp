@@ -34,13 +34,6 @@ std::string CommandManage::getHeartCommmand(){
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getLoginCommmand(std::string username, std::string password){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOGIN_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("username", username));
-	keyValue.insert(map<string, string>::value_type("password", password));
-	return commandString(keyValue);
-}
 
 std::string CommandManage::getGiveUpCpgCommmand(){
 	//{code:2008, poxiaoId : poxiaoId, seatId : seatId}
@@ -130,13 +123,6 @@ std::string CommandManage::getTingCommand(int poker){
 }
 
 
-std::string CommandManage::getVisitorLoginCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOGIN_GUEST_REQUEST)));
-	return commandString(keyValue);
-}
-
-
 std::string CommandManage::getRoomListCommand(std::string gameId){
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_GET_ROOMSTYLE_LIST_REQUEST)));
@@ -156,60 +142,6 @@ std::string CommandManage::getEnterRoomCommand(std::string gameId, std::string r
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getRegisterCommand(std::string account, std::string password){
-	// {code:101,mobile:13989877777,yzm:56789,username:abc,password:678aaa}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_REGISTER_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("password", password));
-	keyValue.insert(map<string, string>::value_type("username", account));
-	//keyValue.insert(map<string, string>::value_type("yzm", verify));
-	//keyValue.insert(map<string, string>::value_type("mobile", phone));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getFindPassword(std::string account,std::string phone){
-    // 找回密码请求{code:148,account:"真心常在",mobile:"131111111"}
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FIND_PASSWORD_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("account", account));
-    keyValue.insert(map<string, string>::value_type("mobile", phone));
-    return commandString(keyValue);
-}
-
-std::string CommandManage::getVerifyCommand(std::string phone){
-	//{code:100,mobile:13989877777}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_REGISTER_MOBILE_YZM)));
-	keyValue.insert(map<string, string>::value_type("mobile", phone));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getChangeNickNameCommand(std::string nickname){
-	// {code:109,nickname:"π˛π˛"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_NICKNAME_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("nickname", nickname));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getChangeAccountCommand(std::string account){
-	//{code:111,poxiaoId:poxiaoId,account:"aaa"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_ACCOUNT_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("account", account));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getChangePasswordCommand(std::string password){
-	// {code:115,password:"123"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_PASSWORD_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("password", password));
-	return commandString(keyValue);
-}
 
 std::string CommandManage::getChangeGenderCommand(std::string gender){
 	//{code:117,poxiaoId:"123",gender:"1"}
@@ -220,32 +152,6 @@ std::string CommandManage::getChangeGenderCommand(std::string gender){
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getBoundPhoneCommand(std::string phone, std::string verify){
-	//{code:113,poxiaoId:poxiaoId,mobile:"13122221111",yzm:"33"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_PHONE_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("mobile", phone));
-	keyValue.insert(map<string, string>::value_type("yzm", verify));
-	return commandString(keyValue);
-}
-
-
-std::string CommandManage::getTrusteeshipCommand(){
-	//{ code:2028, poxiaoId : poxiaoId }
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_TRUSTEESHIP_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getTrusteeshipCancelCommand(){
-	//{ code:2029, poxiaoId : poxiaoId }
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_CANCEL_TRUSTEESHIP_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
 
 std::string CommandManage::getQuitRoomCommand(){
 	std::map<std::string, std::string> keyValue;
@@ -283,29 +189,6 @@ std::string CommandManage::getEnterFriendRoomCommand(std::string pid){
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getSendRedWalletCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HONGBAO_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getReciveRedWalletCommand(std::string hbcode){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HONGBAO_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    keyValue.insert(map<string, string>::value_type("hbcode", hbcode));
-	return commandString(keyValue);
-}
-
-
-std::string CommandManage::getRedWalletPushCommand(){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HONGBAO_GETED_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    return commandString(keyValue);
-}
-
 
 std::string CommandManage::getBillCommand(){
 	std::map<std::string, std::string> keyValue;
@@ -331,64 +214,6 @@ std::string CommandManage::getLobbyQuitCommand(){
 }
 
 
-
-
-std::string CommandManage::getTaskMQ3Command(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MQ3_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-
-std::string CommandManage::getTaskPPH3Command(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_PPH3_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-std::string CommandManage::getTaskLZ4Command(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEZI4_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getTaskExtraCommand(){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_ALLTASK_GET_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    return commandString(keyValue);
-}
-
-std::string CommandManage::getDailyTaskCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_TASK_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-std::string CommandManage::getWelfareCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FULI_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getDailySignCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_SIGN_CONTENT_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getSignCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_SIGN_ON_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-
 std::string CommandManage::getDailyPrideCommand(){
 	std::map<std::string, std::string> keyValue;
 	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOTTERY_REQUEST)));
@@ -403,40 +228,6 @@ std::string CommandManage::getTodayPrideCommand(){
 	return commandString(keyValue);
 }
 
-std::string CommandManage::getWelfareJJJ(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_JJJ_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getWelfareBZJJJ(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_BZJJJ_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getWelfareMobile(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_BDPHONE_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getWelfareWx(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_BDWEIXIN_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
-}
-
-std::string CommandManage::getAccountCheckCommand(std::string usrname){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_ACCOUNTREPEAT_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("username", usrname));
-	return commandString(keyValue);
-}
 
 std::string CommandManage::getStartHuaCommand(){
     std::map<std::string, std::string> keyValue;
@@ -452,7 +243,7 @@ std::string CommandManage::getFirstChargeInfoCommand(){
     return commandString(keyValue);
 }
 
-std::string CommandManage::getGoldChangeListCommand(){
+std::string CommandManage::getGoldChargeListCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_EXCHANGE_LIST_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -467,7 +258,7 @@ std::string CommandManage::getGoldChangeCommand(std::string diamond){
     return commandString(keyValue);
 }
 
-std::string CommandManage::getDiamondChangeListCommand(){
+std::string CommandManage::getFangkaChargeListCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CHARGE_LIST_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -561,36 +352,6 @@ std::string CommandManage::getThirdLoginCommand(std::string openid,std::string h
 
 }
 
-std::string CommandManage::getActivityRankCommand(){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_ORDER_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    return commandString(keyValue);
-}
-
-std::string CommandManage::getActivityPrideListCommand(){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_RECORD_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    return commandString(keyValue);
-}
-
-std::string CommandManage::getActivityPrideCommand(std::string rid,std::string phone){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_EXCHANGE_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    keyValue.insert(map<string, string>::value_type("phone", phone));
-    keyValue.insert(map<string, string>::value_type("rid", rid));
-    return commandString(keyValue);
-
-}
-
-std::string CommandManage::getActivityTimeCommand(){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LEQUAN_KING_TIME_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    return commandString(keyValue);
-}
 
 
 std::string CommandManage::getEnterRoomByIdCommand(std::string roomid){

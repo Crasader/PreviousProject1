@@ -92,8 +92,6 @@
 		D22EEFDC1D66D14D00BF1CCB /* GameRuleDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB21D66D14D00BF1CCB /* GameRuleDialog.cpp */; };
 		D22EEFDD1D66D14D00BF1CCB /* UserSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB41D66D14D00BF1CCB /* UserSetting.cpp */; };
 		D22EEFDE1D66D14D00BF1CCB /* UserSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB41D66D14D00BF1CCB /* UserSetting.cpp */; };
-		D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB71D66D14D00BF1CCB /* Trusteeship.cpp */; };
-		D22EEFE01D66D14D00BF1CCB /* Trusteeship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22EEFB71D66D14D00BF1CCB /* Trusteeship.cpp */; };
 		D22F1C181CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D239A5561D0EC5B1009DB640 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */; };
@@ -282,8 +280,6 @@
 		D2EF93C71DD050A000360BCF /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2EF93C41DD050A000360BCF /* Loading.cpp */; };
 		D2EF93CA1DD0862B00360BCF /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2EF93C81DD0862B00360BCF /* TextHintDialog.cpp */; };
 		D2EF93CB1DD0862B00360BCF /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2EF93C81DD0862B00360BCF /* TextHintDialog.cpp */; };
-		D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */; };
-		D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
 		D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
 		D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
@@ -292,8 +288,6 @@
 		D2F05F621D8E7500006E5A4C /* HeadImageDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F511D8E7500006E5A4C /* HeadImageDialog.cpp */; };
 		D2F05F631D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F531D8E7500006E5A4C /* HeroInfoEdit.cpp */; };
 		D2F05F641D8E7500006E5A4C /* HeroInfoEdit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F531D8E7500006E5A4C /* HeroInfoEdit.cpp */; };
-		D2F05F651D8E7500006E5A4C /* NickNameDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F551D8E7500006E5A4C /* NickNameDialog.cpp */; };
-		D2F05F661D8E7500006E5A4C /* NickNameDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F551D8E7500006E5A4C /* NickNameDialog.cpp */; };
 		D2F05F671D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */; };
 		D2F05F681D8E7500006E5A4C /* OtherPlayerInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */; };
 		D2F05F691D8E7500006E5A4C /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F591D8E7500006E5A4C /* UserInfo.cpp */; };
@@ -433,8 +427,6 @@
 		D22EEFB31D66D14D00BF1CCB /* GameRuleDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameRuleDialog.hpp; sourceTree = "<group>"; };
 		D22EEFB41D66D14D00BF1CCB /* UserSetting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserSetting.cpp; sourceTree = "<group>"; };
 		D22EEFB51D66D14D00BF1CCB /* UserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetting.h; sourceTree = "<group>"; };
-		D22EEFB71D66D14D00BF1CCB /* Trusteeship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trusteeship.cpp; sourceTree = "<group>"; };
-		D22EEFB81D66D14D00BF1CCB /* Trusteeship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trusteeship.h; sourceTree = "<group>"; };
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D239A5541D0EC5B1009DB640 /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
 		D239A5551D0EC5B1009DB640 /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
@@ -609,8 +601,6 @@
 		D2EF93C51DD050A000360BCF /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		D2EF93C81DD0862B00360BCF /* TextHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextHintDialog.cpp; sourceTree = "<group>"; };
 		D2EF93C91DD0862B00360BCF /* TextHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextHintDialog.hpp; sourceTree = "<group>"; };
-		D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePicker.cpp; sourceTree = "<group>"; };
-		D2F05F2A1D8E2B22006E5A4C /* ImagePicker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ImagePicker.hpp; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
 		D2F05F2C1D8E2B22006E5A4C /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
 		D2F05F461D8E360B006E5A4C /* MD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MD5.cpp; sourceTree = "<group>"; };
@@ -619,8 +609,6 @@
 		D2F05F521D8E7500006E5A4C /* HeadImageDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadImageDialog.h; sourceTree = "<group>"; };
 		D2F05F531D8E7500006E5A4C /* HeroInfoEdit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroInfoEdit.cpp; sourceTree = "<group>"; };
 		D2F05F541D8E7500006E5A4C /* HeroInfoEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroInfoEdit.h; sourceTree = "<group>"; };
-		D2F05F551D8E7500006E5A4C /* NickNameDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NickNameDialog.cpp; sourceTree = "<group>"; };
-		D2F05F561D8E7500006E5A4C /* NickNameDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameDialog.h; sourceTree = "<group>"; };
 		D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OtherPlayerInfo.cpp; sourceTree = "<group>"; };
 		D2F05F581D8E7500006E5A4C /* OtherPlayerInfo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OtherPlayerInfo.hpp; sourceTree = "<group>"; };
 		D2F05F591D8E7500006E5A4C /* UserInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserInfo.cpp; sourceTree = "<group>"; };
@@ -966,15 +954,6 @@
 			path = setting;
 			sourceTree = "<group>";
 		};
-		D22EEFB61D66D14D00BF1CCB /* trusteeship */ = {
-			isa = PBXGroup;
-			children = (
-				D22EEFB71D66D14D00BF1CCB /* Trusteeship.cpp */,
-				D22EEFB81D66D14D00BF1CCB /* Trusteeship.h */,
-			);
-			path = trusteeship;
-			sourceTree = "<group>";
-		};
 		D257FD6D1D6C2E2400B8C596 /* payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1170,7 +1149,6 @@
 				D22EEF1D1D66AAF000BF1CCB /* shop */,
 				D226FD251D051DBA00324097 /* splash */,
 				D2B1A8441CCDF0F300A20896 /* state */,
-				D22EEFB61D66D14D00BF1CCB /* trusteeship */,
 				D2FBB56F1DD30B890044E2D5 /* wanjiaqun */,
 				D2F05F6B1D8E75F6006E5A4C /* widget */,
 			);
@@ -1404,8 +1382,6 @@
 		D2F05F281D8E2B22006E5A4C /* image */ = {
 			isa = PBXGroup;
 			children = (
-				D2F05F291D8E2B22006E5A4C /* ImagePicker.cpp */,
-				D2F05F2A1D8E2B22006E5A4C /* ImagePicker.hpp */,
 				D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */,
 				D2F05F2C1D8E2B22006E5A4C /* UrlImageMannger.h */,
 			);
@@ -1428,8 +1404,6 @@
 				D2F05F521D8E7500006E5A4C /* HeadImageDialog.h */,
 				D2F05F531D8E7500006E5A4C /* HeroInfoEdit.cpp */,
 				D2F05F541D8E7500006E5A4C /* HeroInfoEdit.h */,
-				D2F05F551D8E7500006E5A4C /* NickNameDialog.cpp */,
-				D2F05F561D8E7500006E5A4C /* NickNameDialog.h */,
 				D2F05F571D8E7500006E5A4C /* OtherPlayerInfo.cpp */,
 				D2F05F581D8E7500006E5A4C /* OtherPlayerInfo.hpp */,
 				D2F05F591D8E7500006E5A4C /* UserInfo.cpp */,
@@ -1714,7 +1688,6 @@
 				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D257FD781D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D2B1A8DD1CCDF0F400A20896 /* PlayerLeft.cpp in Sources */,
-				D22EEFDF1D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D22EEF7B1D66CFC800BF1CCB /* BillInfo.cpp in Sources */,
 				D29EC4761DD421DE00AC25D1 /* ScrollCell.cpp in Sources */,
 				D252FF5D1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */,
@@ -1729,7 +1702,6 @@
 				D22EEFB91D66D14D00BF1CCB /* DailyEvent.cpp in Sources */,
 				D281E5EA1DC196F400D3E44E /* GoldNotEnoughDialog.cpp in Sources */,
 				D21D81DA1D5C191500560DC5 /* ChatDialog.cpp in Sources */,
-				D2F05F651D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
 				D22EEFD91D66D14D00BF1CCB /* GameFeedDialog.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D28A4A2E1D056B7A00741FD0 /* Audio.cpp in Sources */,
@@ -1742,7 +1714,6 @@
 				D2F05F6E1D8E7605006E5A4C /* HeadImage.cpp in Sources */,
 				D20C39111CFD7446006F6C9E /* QuitRoomDialog.cpp in Sources */,
 				D22A7E981DEE684C00CC6CE2 /* InfoToast.cpp in Sources */,
-				D2F05F2D1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D281E5C21DB4652800D3E44E /* MahjongNumberKeypads.cpp in Sources */,
 				D281E5D31DBED34100D3E44E /* GoldRoomPlate.cpp in Sources */,
 				D2B1A87F1CCDF0F400A20896 /* MahjongView.cpp in Sources */,
@@ -1764,8 +1735,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
-				D2F05F661D8E7500006E5A4C /* NickNameDialog.cpp in Sources */,
-				D2F05F2E1D8E2B22006E5A4C /* ImagePicker.cpp in Sources */,
 				D22A7E991DEE684C00CC6CE2 /* InfoToast.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D22EEF551D66AAF000BF1CCB /* ShopHintDialog.cpp in Sources */,
@@ -1774,7 +1743,6 @@
 				D2B1A9001CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D2B1A8D21CCDF0F400A20896 /* Jong.cpp in Sources */,
 				D252FF5E1DCB1FD3007060DB /* DissovleRoomDialog.cpp in Sources */,
-				D22EEFE01D66D14D00BF1CCB /* Trusteeship.cpp in Sources */,
 				D2B1A8DC1CCDF0F400A20896 /* Player.cpp in Sources */,
 				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,
 				D2B1A8DA1CCDF0F400A20896 /* PlayerHero.cpp in Sources */,
