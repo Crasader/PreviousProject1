@@ -126,6 +126,11 @@ void MahjongView::startGameAgain(){
     
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
     for (int i = 0; i < players.size(); i++){
+        for(auto var:GAMEDATA::getInstance()->getEnterRoomResp().playerReadys){
+            if(var.poxiaoId == players.at(i)->getPoxiaoId()){
+                players.at(i)->setIsReady(var.ifready ==1?true:false);
+            }
+        }
         if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
             players.at(i)->setIsReady(true);
         }

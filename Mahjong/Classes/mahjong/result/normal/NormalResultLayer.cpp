@@ -225,6 +225,12 @@ void NormalResultLayer::afterCaptured(bool succeed, const std::string &outputFil
 }
 
 void NormalResultLayer::continueGame(){
+    vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+    for (int i = 0; i < players.size(); i++){
+        if(players.at(i)->getSeatId() != GAMEDATA::getInstance()->getHeroSeatId()){
+            players.at(i)->setIsReady(false);
+        }
+    }
     schedule([=](float dt){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getContinueGameCommand());
     }, 0.0f, 0.0f, 1.0f,"delayGame");

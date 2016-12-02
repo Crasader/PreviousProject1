@@ -52,6 +52,12 @@ enum MahjongState{
     continueAgain//断线续玩
 };
 
+struct PlayerReady{
+    int ifready;
+    int seatId;
+    std::string poxiaoId;
+};
+
 struct EnterRoomResp{
     std::string result;
     std::string rsid;
@@ -59,6 +65,7 @@ struct EnterRoomResp{
     std::string huangfan;
     std::string jjj_count;
     std::string jjj_used;
+    std::vector<PlayerReady> playerReadys;
 };
 
 struct ReplaceJong

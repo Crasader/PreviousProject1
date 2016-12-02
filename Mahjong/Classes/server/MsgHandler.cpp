@@ -1973,6 +1973,23 @@ void MsgHandler::gameContinueResp(std::string msg){
         const rapidjson::Value &huangfan = _mDoc["huangfan"];
         resp.huangfan = huangfan.GetString();
     }
+    if(_mDoc.HasMember("all")){
+        const rapidjson::Value &all = _mDoc["all"];
+        for (int i = 0; i < all.Capacity(); ++i){
+            const rapidjson::Value &temp = all[i];
+            PlayerReady ready;
+            if(temp.HasMember("ifready")){
+                ready.ifready = temp["ifready"].GetInt();
+            }
+            if(temp.HasMember("poxiaoId")){
+                ready.poxiaoId = temp["poxiaoId"].GetString();
+            }
+            if(temp.HasMember("seatId")){
+                ready.seatId = temp["seatId"].GetInt();
+            }
+            resp.playerReadys.push_back(ready);
+        }
+    }
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
     GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
     postNotifyMessage(MSG_HERO_CONTINUE_RESP, "");
