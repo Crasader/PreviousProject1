@@ -35,18 +35,18 @@ Scene* ResultScene::createScene(int type)
         SpecialResultLayer* layer = SpecialResultLayer::create();
         scene->addChild(layer);
     }
+    
     return scene;
 }
 
 
 bool ResultScene::init(){
     if (!Scene::init()){
+        scheduleUpdate();
         return false;
     }
     return true;
 }
-
-
 
 
 void ResultScene::initTestData(){

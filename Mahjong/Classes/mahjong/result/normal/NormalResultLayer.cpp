@@ -234,6 +234,18 @@ void NormalResultLayer::continueGame(){
     schedule([=](float dt){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getContinueGameCommand());
     }, 0.0f, 0.0f, 1.0f,"delayGame");
+    
+    schedule([=](float dt){
+        HintDialog* hin = HintDialog::create("网络重新连接失败,请重新进入游戏！",[](Ref* ref){
+            GAMEDATA::getInstance()->clearPlayersInfo();
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        },[](Ref* ref){
+            GAMEDATA::getInstance()->clearPlayersInfo();
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        });
+        addChild(hin,300);
+    }, 0.0f, 0.0f, 15.0f,"delayGame2");
+
 }
 
 
