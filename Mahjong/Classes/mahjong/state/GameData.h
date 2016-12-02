@@ -102,6 +102,7 @@ public:
     CC_SYNTHESIZE(bool, haveShowNotice, HaveShowNotice);//是否展示过推广
     CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间
     CC_SYNTHESIZE(bool, sendReconnect, SendReconnect);
+    CC_SYNTHESIZE(bool, isFinishReplace, IsFinishReplace);//是否完成了换花，2次换花bug处理
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, ip, IP);//玩家IP
     CC_SYNTHESIZE(string, dice, Dice);

@@ -27,6 +27,7 @@ void GAMEDATA::init(){
     setHaveShowNotice(false);
     setNeedShowLastResult(false);
     setShowFangZhuDismiss(false);
+    setIsFinishReplace(false);
     setScore(0);
     setHuangfan("0");
     setKaibao("0");

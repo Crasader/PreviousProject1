@@ -59,6 +59,7 @@ void MahjongView::initData(){
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setIsLiuJu(false);
     GAMEDATA::getInstance()->setIsGotoLobby(false);
+    GAMEDATA::getInstance()->setIsFinishReplace(false);
     Audio::getInstance()->setHasTingPlayer(false);
 }
 
@@ -159,7 +160,7 @@ void MahjongView::update(float dt){
         playerHero->stopTimeClockAnim();
         GAMEDATA::getInstance()->setNeedAddPlayer(-1);
     }
-
+    
     if(GAMEDATA::getInstance()->getNeedShowLayer()){
         GAMEDATA::getInstance()->setNeedShowLayer(false);
         if(GAMEDATA::getInstance()->getIsPlaying()){
@@ -455,6 +456,7 @@ void MahjongView::recoverGame(){
     GAMEDATA::getInstance()->clearPlayersInfo();
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     if(data.result == 1){
+        GAMEDATA::getInstance()->setIsFinishReplace(true);
         GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
         GAMEDATA::getInstance()->setCurrentBank(data.loard);
         GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
@@ -631,40 +633,44 @@ void MahjongView::addOthersReadyListener(){
 
 void MahjongView::addCoustomReplaceFlower() {
     replaceListener = EventListenerCustom::create(MSG_GAME_REPLACE_FLOWER, [=](EventCustom* event){
-        ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
-        ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
-        for (int i = 0; i < vec.times.size(); i++){
-            int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
-            if (seatId == ClientSeatId::hero){
-                playerHero->setReplacePoker(vec.times.at(i));
-                playerHero->replaceFlower();
-            }
-            else if (seatId == ClientSeatId::left){
-                playerLeft->setReplacePoker(vec.times.at(i));
-                playerLeft->replaceHandHua(leftplayed);
-            }
-            else if (seatId == ClientSeatId::right){
-                playerRight->setReplacePoker(vec.times.at(i));
-                playerRight->replaceHandHua(rightplayed);
-            }
-            else if (seatId == ClientSeatId::opposite){
-                playerOpposite->setReplacePoker(vec.times.at(i));
-                playerOpposite->replaceHandHua(oppositeplayed);
-            }
-        }
-        for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
-            if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
-                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
-                if(clientId == ClientSeatId::left){
-                    playerLeft->startTimeClockAnim();
-                }else if(clientId == ClientSeatId::opposite){
-                    playerOpposite->startTimeClockAnim();
-                }else if(clientId == ClientSeatId::right){
-                    playerRight->startTimeClockAnim();
-                }else if(clientId == ClientSeatId::hero){
-                    playerHero->startTimeClockAnim();
+        
+        if(!GAMEDATA::getInstance()->getIsFinishReplace()){
+            ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
+            ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
+            for (int i = 0; i < vec.times.size(); i++){
+                int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
+                if (seatId == ClientSeatId::hero){
+                    playerHero->setReplacePoker(vec.times.at(i));
+                    playerHero->replaceFlower();
+                }
+                else if (seatId == ClientSeatId::left){
+                    playerLeft->setReplacePoker(vec.times.at(i));
+                    playerLeft->replaceHandHua(leftplayed);
+                }
+                else if (seatId == ClientSeatId::right){
+                    playerRight->setReplacePoker(vec.times.at(i));
+                    playerRight->replaceHandHua(rightplayed);
+                }
+                else if (seatId == ClientSeatId::opposite){
+                    playerOpposite->setReplacePoker(vec.times.at(i));
+                    playerOpposite->replaceHandHua(oppositeplayed);
                 }
             }
+            for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
+                if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
+                    int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
+                    if(clientId == ClientSeatId::left){
+                        playerLeft->startTimeClockAnim();
+                    }else if(clientId == ClientSeatId::opposite){
+                        playerOpposite->startTimeClockAnim();
+                    }else if(clientId == ClientSeatId::right){
+                        playerRight->startTimeClockAnim();
+                    }else if(clientId == ClientSeatId::hero){
+                        playerHero->startTimeClockAnim();
+                    }
+                }
+            }
+            GAMEDATA::getInstance()->setIsFinishReplace(true);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(replaceListener, 1);
@@ -1197,13 +1203,13 @@ void MahjongView::addCoustomListener(){
     });
     
     //网络连接
-//    viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
-//        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
-//            tao->addToast("网络出现问题,重新连接中...");
-//            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-//            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
-//        });
-//    });
+    //    viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
+    //        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
+    //            tao->addToast("网络出现问题,重新连接中...");
+    //            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
+    //            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
+    //        });
+    //    });
     
     scrollTetxListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_SCROLL_TEXT, [=](EventCustom* event){
         std::string msg = static_cast<char*>(event->getUserData());

@@ -146,6 +146,7 @@ void GuiLayer::quitButtonClick(){
         if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
             HintDialog* dia = HintDialog::create("返回大厅,如需解散房间,请按解散房间按钮", [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
+                GAMEDATA::getInstance()->setIsPlaying(false);
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
             addChild(dia);
