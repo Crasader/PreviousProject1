@@ -194,6 +194,26 @@ void MahjongView::update(float dt){
             addChild(hin,300);
         }
     }
+    
+    if(!GAMEDATA::getInstance()->getIsPlaying()){
+        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+        for (int i = 0; i < players.size(); i++){
+            int seat_id = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId() );
+            if(seat_id == ClientSeatId::left){
+                if(NULL != playerLeft){
+                    playerLeft->setIsReady(players.at(i)->getIsReady());
+                }
+            }else if(seat_id == ClientSeatId::right){
+                if(NULL != playerRight){
+                    playerRight->setIsReady(players.at(i)->getIsReady());
+                }
+            }else if(seat_id == ClientSeatId::opposite){
+                if(NULL != playerOpposite){
+                    playerOpposite->setIsReady(players.at(i)->getIsReady());
+                }
+            }
+        }
+    }
 }
 
 
@@ -470,8 +490,12 @@ void MahjongView::clearRoomPlayer(){
 }
 
 void MahjongView::recoverGame(){
-    if(getChildByTag(2000)!=NULL)
+    if(getChildByTag(2000)!=NULL){
+        countTime = 0;
         getChildByTag(2000)->removeFromParent();
+        GAMEDATA::getInstance()->setStartCountTime(false);
+    }
+    
     GAMEDATA::getInstance()->clearPlayersInfo();
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     if(data.result == 1){

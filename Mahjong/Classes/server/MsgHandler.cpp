@@ -584,6 +584,12 @@ void MsgHandler::showOtherReady(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
+    vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+    for (int i = 0; i < players.size(); i++){
+        if(players.at(i)->getSeatId() == seatId.GetInt() ){
+            players.at(i)->setIsReady(true);
+        }
+    }
     postNotifyMessage(MSG_READY_NOTIFY, StringUtil::itos(seatId.GetInt()));
 }
 
