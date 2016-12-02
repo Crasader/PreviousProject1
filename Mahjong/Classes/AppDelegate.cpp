@@ -68,7 +68,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 void AppDelegate::applicationDidEnterBackground() {
     log("applicationDidEnterBackground");
     Director::getInstance()->stopAnimation();
-    GAMEDATA::getInstance()->setNeedShowLayer(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOutResumeCommand());
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     AudioEngine::pauseAll();

@@ -12,6 +12,7 @@
 #include "mahjong/anim/OutFogAnim.hpp"
 #include "mahjong/dialog/prompt/HintDialog.hpp"
 #include "mahjong/friend/dialog/DissovleRoomDialog.hpp"
+#include "mahjong/dialog/network/LostNetwork.hpp"
 #include "mahjong/dialog/prompt/TextHintDialog.hpp"
 #include "mahjong/widget/ScrollTextEx.h"
 #include "server/SocketDataManage.h"
@@ -52,6 +53,7 @@ void MahjongView::onEnter(){
 
 
 void MahjongView::initData(){
+    countTime = 0;
     playerHero = NULL;
     playerLeft = NULL;
     playerRight = NULL;
@@ -166,21 +168,31 @@ void MahjongView::update(float dt){
         GAMEDATA::getInstance()->setNeedAddPlayer(-1);
     }
     
-    if(GAMEDATA::getInstance()->getNeedShowLayer()){
-        GAMEDATA::getInstance()->setNeedShowLayer(false);
-        if(GAMEDATA::getInstance()->getIsPlaying()){
-            Loading* load = Loading::create();
-            load->setTag(2009);
-            addChild(load,100);
-        }
-    }
     
     if(GAMEDATA::getInstance()->getSendReconnect()){
-        tao->addToast("网络连接断开啦,努力重新连接中...");
+        LostNetwork* net = LostNetwork::create();
+        net->setTag(2000);
+        addChild(net,200);
         schedule([=](float dt){
+            GAMEDATA::getInstance()->setStartCountTime(true);
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-        }, 0, 0, 3.5f, "oahayou");
+        }, 0, 0, 3.0f, "oahayou");
         GAMEDATA::getInstance()->setSendReconnect(false);
+    }
+    
+    if(GAMEDATA::getInstance()->getStartCountTime()){
+        countTime+=dt;
+        if(countTime>15){
+            GAMEDATA::getInstance()->setStartCountTime(false);
+            HintDialog* hin = HintDialog::create("网络重新连接失败,请重新进入游戏！",[](Ref* ref){
+                 GAMEDATA::getInstance()->clearPlayersInfo();
+                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            },[](Ref* ref){
+                GAMEDATA::getInstance()->clearPlayersInfo();
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            });
+            addChild(hin,300);
+        }
     }
 }
 
@@ -458,6 +470,8 @@ void MahjongView::clearRoomPlayer(){
 }
 
 void MahjongView::recoverGame(){
+    if(getChildByTag(2000)!=NULL)
+        getChildByTag(2000)->removeFromParent();
     GAMEDATA::getInstance()->clearPlayersInfo();
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     if(data.result == 1){

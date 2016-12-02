@@ -22,12 +22,12 @@ void GAMEDATA::init(){
     setIsInGameScene(false);
     setWaitNetwork(false);
     setSendReconnect(false);
-    setNeedShowLayer(false);
     setShowDialogType(-1);
     setHaveShowNotice(false);
     setNeedShowLastResult(false);
     setShowFangZhuDismiss(false);
     setIsFinishReplace(false);
+    setStartCountTime(false);
     setScore(0);
     setHuangfan("0");
     setKaibao("0");
@@ -43,7 +43,7 @@ GAMEDATA* GAMEDATA::getInstance(){
 void GAMEDATA::addPlayersInfo(Player* player){
 	m_mutex.lock();
 	playerVector.push_back(player);
-    log("add player room  %d",playerVector.size());
+    log("add player room  %d",(int)playerVector.size());
 	m_mutex.unlock();
 }
 

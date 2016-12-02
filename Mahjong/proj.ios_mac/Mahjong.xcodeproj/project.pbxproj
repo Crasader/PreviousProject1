@@ -257,6 +257,8 @@
 		D267794F1DF012E2003CE73F /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267794C1DF012E2003CE73F /* ParticleUtil.cpp */; };
 		D26779531DF01349003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26779511DF01349003CE73F /* Audio.cpp */; };
 		D26779541DF01349003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26779511DF01349003CE73F /* Audio.cpp */; };
+		D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
+		D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
@@ -571,6 +573,8 @@
 		D267794D1DF012E2003CE73F /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
 		D26779511DF01349003CE73F /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
 		D26779521DF01349003CE73F /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
+		D267795A1DF1614F003CE73F /* LostNetwork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork.cpp; sourceTree = "<group>"; };
+		D267795B1DF1614F003CE73F /* LostNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork.hpp; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
@@ -1015,6 +1019,7 @@
 		D26778151DF00697003CE73F /* dialog */ = {
 			isa = PBXGroup;
 			children = (
+				D26779591DF16136003CE73F /* network */,
 				D26778161DF00697003CE73F /* base */,
 				D26778191DF00697003CE73F /* prompt */,
 				D267781E1DF00697003CE73F /* toast */,
@@ -1347,6 +1352,15 @@
 			path = audio;
 			sourceTree = "<group>";
 		};
+		D26779591DF16136003CE73F /* network */ = {
+			isa = PBXGroup;
+			children = (
+				D267795A1DF1614F003CE73F /* LostNetwork.cpp */,
+				D267795B1DF1614F003CE73F /* LostNetwork.hpp */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
 		D28A4A0A1D0565C200741FD0 /* http */ = {
 			isa = PBXGroup;
 			children = (
@@ -1650,6 +1664,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */,
+				D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
 				D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */,
 				D26779211DF00698003CE73F /* ChargeGold.cpp in Sources */,
 				D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
@@ -1735,6 +1750,7 @@
 				D26779081DF00698003CE73F /* NormalResultLayer.cpp in Sources */,
 				D267790E1DF00698003CE73F /* GameResultCell.cpp in Sources */,
 				D26778B61DF00697003CE73F /* PlayerCpgAnim.cpp in Sources */,
+				D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
 				D26778D61DF00697003CE73F /* HintDialog.cpp in Sources */,
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D26778C01DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
