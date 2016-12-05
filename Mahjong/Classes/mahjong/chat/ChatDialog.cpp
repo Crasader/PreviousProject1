@@ -88,23 +88,20 @@ bool ChatDialog::init(){
     addChild(field);
     
     showChatList();//显示聊天列表
-
+    
     return true;
 }
 
 
 
 void ChatDialog::showChatList(){
-    std::vector<ChatData> msgList;
     RoomChatMsgList list = GAMEDATA::getInstance()->getRoomChatMsgList();
-    msgList = list.msgList;
-    if(msgList.size()==0){
+    if(list.msgList.size()==0){
         return;
     }
-    for(int i = 0;i<msgList.size();i++){
-        showChatInfo(msgList.at(i));
+    for(int i = 0;i<list.msgList.size();i++){
+        showChatInfo(list.msgList.at(i));
     }
-    
 }
 
 
@@ -138,43 +135,45 @@ void ChatDialog:: showChatInfo(ChatData data){
     listView->pushBackCustomItem(customItem);
     listView->jumpToBottom();
     std::string content = data.content;
-    vector<std::string> msgs = PlayerChatManage::getInstance()->splitContentByFace(content);
-    RichText* text = RichText ::create();
-    text->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    for(auto var : msgs){
-        if(!PlayerChatManage::getInstance()->isFaceImage(var)){
-            RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
-            text->pushBackElement(element1);
-            text->formatText();
-        }else{
-            RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
-            text->pushBackElement(element2);
-            text->formatText();
+    if(content.size()>0){
+        vector<std::string> msgs = PlayerChatManage::getInstance()->splitContentByFace(content);
+        RichText* text = RichText ::create();
+        text->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        for(auto var : msgs){
+            if(!PlayerChatManage::getInstance()->isFaceImage(var)){
+                RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
+                text->pushBackElement(element1);
+                text->formatText();
+            }else{
+                RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
+                text->pushBackElement(element2);
+                text->formatText();
+            }
         }
-    }
-    customItem->addChild(text,1);
-    auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
-    bob->setContentSize(Size(text->getContentSize().width+20, 70));
-    customItem->addChild(bob);
-    
-    if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
-        iamge->setPosition(Point(645,30));
-        text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        text->setPosition(Point(580,40));
-        bob->setFlippedX(true);
-        bob->setPosition(Point(585,30));
-    }else{
-        iamge->setPosition(Point(80,30));
-        text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        text->setPosition(Point(140,40));
-        bob->setPosition(Point(135,30));
+        customItem->addChild(text,1);
+        auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
+        bob->setContentSize(Size(text->getContentSize().width+20, 70));
+        customItem->addChild(bob);
+        
+        if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
+            iamge->setPosition(Point(645,30));
+            text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            text->setPosition(Point(580,40));
+            bob->setFlippedX(true);
+            bob->setPosition(Point(585,30));
+        }else{
+            iamge->setPosition(Point(80,30));
+            text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            text->setPosition(Point(140,40));
+            bob->setPosition(Point(135,30));
+        }
+        
     }
 }
 
 void ChatDialog::closeView(){
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("update_friend_list_view");
     removeFromParent();
 }
 
@@ -204,7 +203,7 @@ void ChatDialog:: sendMessage(){
 void ChatDialog::sendFaceId(int id){
     if(NULL != getChildByTag(1001)){
         std::string msg = ((cocos2d::ui::EditBox*)getChildByTag(1001))->getText();
-        std::string neeMsg = msg+ StringUtils::format("[face%d]",id);
+        std::string neeMsg = StringUtils::format("%s[face%d]",msg.c_str(),id);
         ((cocos2d::ui::EditBox*)getChildByTag(1001))->setText(neeMsg.c_str());
     }
     
