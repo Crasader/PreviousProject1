@@ -1107,7 +1107,7 @@ void MahjongView::showHandPokerOver(int seatId){
             playerRight->hideHandJongs();
             playerRight->updateHandJongs(rightJongs,false);
             playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(heroJongs,false);
+            playerLeft->updateHandJongs(leftJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");
     }
     
