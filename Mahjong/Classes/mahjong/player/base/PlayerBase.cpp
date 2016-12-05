@@ -147,7 +147,7 @@ void PlayerBase::replaceHandHua(JongViewType tpye){
             needReplace.push_back(jon);
         }
     }
-    if(needReplace.size()>0){
+    if((int)needReplace.size()>=0){
         HuaAnim* huaAnim = HuaAnim::create(needReplace,getPlayerInfo()->getSeatId(),CallFunc::create([=](){
             setHuaNum(getHuaNum()+needReplace.size());
             showPlayerHua(getHuaNum());

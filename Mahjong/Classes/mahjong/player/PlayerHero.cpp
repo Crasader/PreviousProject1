@@ -547,6 +547,7 @@ void PlayerHero::replaceFlower(){
         if (bankId == ClientSeatId::hero){
             isAllowPlay = true;
         }
+        showPlayerHua(getHuaNum());
     }else{
         //有花的情况
         huaIndex = 0;
