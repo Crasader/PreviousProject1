@@ -229,13 +229,6 @@ std::string CommandManage::getTodayPrideCommand(){
 }
 
 
-std::string CommandManage::getStartHuaCommand(){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_FIRSTHUA_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    return commandString(keyValue);
-}
-
 std::string CommandManage::getFirstChargeInfoCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FIRST_CHARGE_GET_REQUEST)));

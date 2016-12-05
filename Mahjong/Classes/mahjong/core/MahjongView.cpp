@@ -61,7 +61,7 @@ void MahjongView::initData(){
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setIsLiuJu(false);
     GAMEDATA::getInstance()->setIsGotoLobby(false);
-    GAMEDATA::getInstance()->setIsFinishReplace(false);
+    GAMEDATA::getInstance()->setStartPaiAngang(false);
     Audio::getInstance()->setHasTingPlayer(false);
 }
 
@@ -499,7 +499,6 @@ void MahjongView::recoverGame(){
     GAMEDATA::getInstance()->clearPlayersInfo();
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     if(data.result == 1){
-        GAMEDATA::getInstance()->setIsFinishReplace(true);
         GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
         GAMEDATA::getInstance()->setCurrentBank(data.loard);
         GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
@@ -646,6 +645,59 @@ PlayerBase* MahjongView::getPlayerBySeatId(int sid){
     }
 }
 
+void MahjongView::firstReplaceFlower() {
+        ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
+        ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
+        for (int i = 0; i < vec.times.size(); i++){
+            int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
+            if (seatId == ClientSeatId::hero){
+                playerHero->setReplacePoker(vec.times.at(i));
+                playerHero->replaceFlower();
+            }
+            else if (seatId == ClientSeatId::left){
+                playerLeft->setReplacePoker(vec.times.at(i));
+                playerLeft->replaceHandHua(leftplayed);
+            }
+            else if (seatId == ClientSeatId::right){
+                playerRight->setReplacePoker(vec.times.at(i));
+                playerRight->replaceHandHua(rightplayed);
+            }
+            else if (seatId == ClientSeatId::opposite){
+                playerOpposite->setReplacePoker(vec.times.at(i));
+                playerOpposite->replaceHandHua(oppositeplayed);
+            }
+        }
+        for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
+            if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
+                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
+                if(clientId == ClientSeatId::left){
+                    playerLeft->startTimeClockAnim();
+                }else if(clientId == ClientSeatId::opposite){
+                    playerOpposite->startTimeClockAnim();
+                }else if(clientId == ClientSeatId::right){
+                    playerRight->startTimeClockAnim();
+                }else if(clientId == ClientSeatId::hero){
+                    if(GAMEDATA::getInstance()->getStartPaiAngang()){
+                        if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+                            showTingGangControllPad();
+                            playerHero->startTimeClockAnim(9, 2);
+                        }
+                    }else{
+                        playerHero->startTimeClockAnim();
+                    }
+                }
+            }
+        }
+}
+
+void MahjongView::dealJongFinish(){
+    playerHero->drawPlayerHero();
+    playerRight->drawHandJong();
+    playerOpposite->drawHandJong();
+    playerLeft->drawHandJong();
+    firstReplaceFlower();
+}
+
 
 void MahjongView::addOthersReadyListener(){
     addOtherReadyListener = EventListenerCustom::create(MSG_READY_NOTIFY, [=](EventCustom* event){
@@ -674,50 +726,6 @@ void MahjongView::addOthersReadyListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
 }
 
-void MahjongView::addCoustomReplaceFlower() {
-    replaceListener = EventListenerCustom::create(MSG_GAME_REPLACE_FLOWER, [=](EventCustom* event){
-        
-        if(!GAMEDATA::getInstance()->getIsFinishReplace()){
-            ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
-            ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
-            for (int i = 0; i < vec.times.size(); i++){
-                int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
-                if (seatId == ClientSeatId::hero){
-                    playerHero->setReplacePoker(vec.times.at(i));
-                    playerHero->replaceFlower();
-                }
-                else if (seatId == ClientSeatId::left){
-                    playerLeft->setReplacePoker(vec.times.at(i));
-                    playerLeft->replaceHandHua(leftplayed);
-                }
-                else if (seatId == ClientSeatId::right){
-                    playerRight->setReplacePoker(vec.times.at(i));
-                    playerRight->replaceHandHua(rightplayed);
-                }
-                else if (seatId == ClientSeatId::opposite){
-                    playerOpposite->setReplacePoker(vec.times.at(i));
-                    playerOpposite->replaceHandHua(oppositeplayed);
-                }
-            }
-            for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
-                if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
-                    int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
-                    if(clientId == ClientSeatId::left){
-                        playerLeft->startTimeClockAnim();
-                    }else if(clientId == ClientSeatId::opposite){
-                        playerOpposite->startTimeClockAnim();
-                    }else if(clientId == ClientSeatId::right){
-                        playerRight->startTimeClockAnim();
-                    }else if(clientId == ClientSeatId::hero){
-                        playerHero->startTimeClockAnim();
-                    }
-                }
-            }
-            GAMEDATA::getInstance()->setIsFinishReplace(true);
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(replaceListener, 1);
-}
 
 void MahjongView::addDealJongListener(){
     dealJongsListener = EventListenerCustom::create(MSG_GAME_START_NOTIFY, [=](EventCustom* event){
@@ -740,14 +748,7 @@ void MahjongView::addDealJongListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dealJongsListener, 1);
 }
 
-void MahjongView::dealJongFinish(){
-    playerHero->drawPlayerHero();
-    playerRight->drawHandJong();
-    playerOpposite->drawHandJong();
-    playerLeft->drawHandJong();
-    SocketDataManage::getInstance()->resumeMsg();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getStartHuaCommand());
-}
+
 
 void MahjongView::addPlayerTurnListener(){
     turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
@@ -1156,7 +1157,6 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(replaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dealJongsListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(turnListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(otherListener);
@@ -1189,7 +1189,6 @@ void MahjongView::onExit()
 void MahjongView::addCoustomListener(){
     addOthersReadyListener();
     addDealJongListener();
-    addCoustomReplaceFlower();
     addPlayerTurnListener();
     addJongPlayedListener();
     addHeroCpgListener();

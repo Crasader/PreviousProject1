@@ -104,12 +104,6 @@ void MsgHandler::distribute(int code, std::string msg){
             removePlayerNotify(msg);
             break;
         }
-        case MSGCODE_MAJIANG_CLEARHUA_NOTIFY:
-        {
-            log(" *** start huan hua *** ");
-            replaceFlower(msg);
-            break;
-        }
         case MSGCODE_MAJIANG_DISPATCH_NOTIFY:
         {
             log(" *** other player pai *** ");
@@ -595,9 +589,6 @@ void MsgHandler::showOtherReady(std::string msg){
 
 void MsgHandler::getHeroJongs(std::string msg){
     //{code:2002, poxiaoId : poxiaoId, start : 1, poker : 1, 2, 4, 5, 6}
-    if(GAMEDATA::getInstance()->getIsPlaying()){
-        SocketDataManage::getInstance()->pauseMsg();
-    }
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -617,19 +608,9 @@ void MsgHandler::getHeroJongs(std::string msg){
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom)
         GAMEDATA::getInstance()->setPrivateGameNum(opendata.prjucount);
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
-    
-    postNotifyMessage(MSG_GAME_START_NOTIFY, "");
     PlayerTurnData playerTurnData;
     playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
     GAMEDATA::getInstance()->setPlayerTurn(playerTurnData);
-}
-
-void MsgHandler::replaceFlower(std::string msg){
-    //{code:2003,poxiaoId:poxiaoId,poker:[{poker:1,2,replace:3,4},{poker:4,replace:5}]}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     ReplaceJongVec  replaceVec;
     const rapidjson::Value &hua = _mDoc["hua"];
     const rapidjson::Value &rest = _mDoc["rest"];
@@ -649,7 +630,7 @@ void MsgHandler::replaceFlower(std::string msg){
         replaceVec.times.push_back(replacePoker);
     }
     GAMEDATA::getInstance()->setReplaceJongVec(replaceVec);
-    postNotifyMessage(MSG_GAME_REPLACE_FLOWER, "");
+    //如果手牌中有暗杠
     if(_mDoc.HasMember("angang")){
         PlayerCpgtData tingData;
         const rapidjson::Value &angang = _mDoc["angang"];
@@ -657,9 +638,11 @@ void MsgHandler::replaceFlower(std::string msg){
         tingData.flag = 1;
         tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
         GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        postNotifyMessage(MSG_HERO_TING_GANG, "");
+        GAMEDATA::getInstance()->setStartPaiAngang(true);
     }
+    postNotifyMessage(MSG_GAME_START_NOTIFY, "");
 }
+
 
 void MsgHandler::showOtherPlayedJong(std::string msg){
     //{"code":2005,"poker":"28","poxiaoId":"e8fec2c3-47ba-4063-ad07-6b7c014c4dca","seatId":3}

@@ -42,9 +42,9 @@ void PlayerBase::initPlayer(Player* playerInfo){
     setPlayerInfo(playerInfo);
     int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), playerInfo->getSeatId());
     
-    auto head_bg = Sprite::create("gameview/head_image_bg.png");
-    head_bg->setPosition(getPostionBySeat(clientSeatId));
-    this->addChild(head_bg);
+//    auto head_bg = Sprite::create("gameview/head_image_bg.png");
+//    head_bg->setPosition(getPostionBySeat(clientSeatId));
+//    this->addChild(head_bg);
     
     nickName = Label::createWithSystemFont(playerInfo->getNickname(), "Arial", 19);
     nickName->setPosition(getPostionBySeat(clientSeatId).x, getPostionBySeat(clientSeatId).y + 65);

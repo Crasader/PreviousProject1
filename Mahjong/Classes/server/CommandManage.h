@@ -28,7 +28,6 @@ public:
 	std::string getLobbyQuitCommand();//退出大厅
 	std::string getDailyPrideCommand();//抽奖情况
 	std::string getTodayPrideCommand();//当次抽奖
-    std::string getStartHuaCommand();//发牌结束,开始换花
     std::string getFirstChargeInfoCommand();//首冲
     std::string getGoldChargeListCommand();//金币充值列表
     std::string getGoldChangeCommand(std::string fangka);//金币兑换列表

@@ -69,13 +69,13 @@ private:
     void showOriention();
     void showGamePaidui(int num);
     void showHuPaiXing(std::string paixing);
+    void firstReplaceFlower();//首次杠花
 	PlayerBase* getPlayerBySeatId(int sid);
 
 
 	EventListenerCustom* addOtherReadyListener;
 	EventListenerCustom* loginRespListener;
 	EventListenerCustom* addPlayersListener;
-	EventListenerCustom* replaceListener;
 	EventListenerCustom* dealJongsListener;
 	EventListenerCustom* turnListener;
 	EventListenerCustom* otherListener;
@@ -106,8 +106,7 @@ private:
     
 	void addCoustomListener();
 	void addOthersReadyListener();
-	void addDealJongListener();
-	void addCoustomReplaceFlower();
+    void addDealJongListener();
 	void addPlayerTurnListener();
 	void addJongPlayedListener();
 	void addHeroCpgListener();//自己吃碰杠通知

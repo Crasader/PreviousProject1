@@ -20,7 +20,6 @@ private:
 	void addPalyer(std::string msg);
 	void showOtherReady(std::string msg);
 	void getHeroJongs(std::string msg);
-	void replaceFlower(std::string msg);
 	void nextPlayer(std::string msg);
 	void showOtherPlayedJong(std::string msg);
 	void showCpgNotify(std::string msg);
