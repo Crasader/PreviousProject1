@@ -242,6 +242,7 @@ void NormalResultLayer::continueGame(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         },[](Ref* ref){
             GAMEDATA::getInstance()->clearPlayersInfo();
+            GAMEDATA::getInstance()->setSendReconnect(false);
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         });
         addChild(hin,300);

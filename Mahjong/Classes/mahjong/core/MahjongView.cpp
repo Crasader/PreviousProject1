@@ -167,8 +167,6 @@ void MahjongView::update(float dt){
         playerHero->stopTimeClockAnim();
         GAMEDATA::getInstance()->setNeedAddPlayer(-1);
     }
-    
-    
     if(GAMEDATA::getInstance()->getSendReconnect()){
         LostNetwork* net = LostNetwork::create();
         net->setTag(2000);
@@ -193,6 +191,8 @@ void MahjongView::update(float dt){
             });
             addChild(hin,300);
         }
+    }else{
+        countTime = 0;
     }
     
     if(!GAMEDATA::getInstance()->getIsPlaying()){
@@ -491,11 +491,11 @@ void MahjongView::clearRoomPlayer(){
 
 void MahjongView::recoverGame(){
     if(getChildByTag(2000)!=NULL){
-        countTime = 0;
         getChildByTag(2000)->removeFromParent();
-        GAMEDATA::getInstance()->setStartCountTime(false);
     }
-    
+    countTime = 0;
+    GAMEDATA::getInstance()->setStartCountTime(false);
+    //重绘制场景
     GAMEDATA::getInstance()->clearPlayersInfo();
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
     if(data.result == 1){
