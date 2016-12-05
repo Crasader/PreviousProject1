@@ -238,6 +238,7 @@ void NormalResultLayer::continueGame(){
     schedule([=](float dt){
         HintDialog* hin = HintDialog::create("网络重新连接失败,请重新进入游戏！",[](Ref* ref){
             GAMEDATA::getInstance()->clearPlayersInfo();
+            GAMEDATA::getInstance()->setSendReconnect(false);
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         },[](Ref* ref){
             GAMEDATA::getInstance()->clearPlayersInfo();
