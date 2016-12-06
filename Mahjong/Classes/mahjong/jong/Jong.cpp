@@ -16,13 +16,10 @@ bool Jong::init(){
 }
 
 void Jong::showJong(int bType, int cType){
-    /*SpriteFrame* bgframe = SpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(getBackgroundImage(bType));*/
     background->setTexture(getBackgroundImage(bType));
     setFlipByType(background, bType);
     if (cType > 0){
         this->setJongType(cType);
-        //SpriteFrame* bgframe = SpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(getContextImage(cType));
-        //contentSprite->setDisplayFrame(bgframe);
         contentSprite->setTexture(getContextImage(cType));
         contentSprite->setRotation(getRotationByType(bType));
         contentSprite->setScale(getScaleByType(bType));
