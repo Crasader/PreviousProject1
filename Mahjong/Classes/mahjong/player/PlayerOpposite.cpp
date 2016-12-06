@@ -233,36 +233,37 @@ void PlayerOpposite::recoverHua(int hua){
 
 
 void PlayerOpposite::updateHandJongs(std::string jongs,bool hu){
-    vector<std::string> pokers = StringUtil::split(jongs, ",");
-    if(hu){
-        vector<std::string>::iterator itor;
-        for(itor=pokers.begin();itor!=pokers.end();)
+    if(jongs.size()>0){
+        vector<std::string> pokers = StringUtil::split(jongs, ",");
+        if(hu){
+            vector<std::string>::iterator itor;
+            for(itor=pokers.begin();itor!=pokers.end();)
+            {
+                if(GAMEDATA::getInstance()->getDiaopao()==*itor)
+                {
+                    itor=pokers.erase(itor);
+                    break;
+                }
+                else
+                {
+                    itor++;
+                }
+            }
+            pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
+        }
+        
+        for (int i = 0; i < pokers.size(); i++)
         {
-            if(GAMEDATA::getInstance()->getDiaopao()==*itor)
-            {
-                itor=pokers.erase(itor);
-                break;
+            Jong* jong = Jong::create();
+            jong->showJong(oppositeplayed, atoi(pokers.at(i).c_str()));
+            if(hu&&i==pokers.size()-1){
+                jong->setPosition(Point(OPPOSITE_POS_X + 32 * i+8, OPPOSITE_POS_Y));
+            }else{
+                jong->setPosition(Point(OPPOSITE_POS_X + 32 * i, OPPOSITE_POS_Y));
             }
-            else
-            {
-                itor++;
-            }
+            addChild(jong);
         }
-        pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
     }
-    
-    for (int i = 0; i < pokers.size(); i++)
-    {
-        Jong* jong = Jong::create();
-        jong->showJong(oppositeplayed, atoi(pokers.at(i).c_str()));
-        if(hu&&i==pokers.size()-1){
-            jong->setPosition(Point(OPPOSITE_POS_X + 32 * i+8, OPPOSITE_POS_Y));
-        }else{
-            jong->setPosition(Point(OPPOSITE_POS_X + 32 * i, OPPOSITE_POS_Y));
-        }
-        addChild(jong);
-    }
-    
 }
 
 void PlayerOpposite::recoverPlayed(std::string played){

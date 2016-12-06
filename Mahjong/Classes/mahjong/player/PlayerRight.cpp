@@ -347,35 +347,36 @@ void PlayerRight::recoverHand(std::string hand){
 }
 
 void PlayerRight::updateHandJongs(std::string jongs,bool hu){
-    vector<std::string> pokers = StringUtil::split(jongs, ",");
-    if(hu){
-        vector<std::string>::iterator itor;
-        for(itor=pokers.begin();itor!=pokers.end();)
+    if(jongs.size()>0){
+        vector<std::string> pokers = StringUtil::split(jongs, ",");
+        if(hu){
+            vector<std::string>::iterator itor;
+            for(itor=pokers.begin();itor!=pokers.end();)
+            {
+                if(GAMEDATA::getInstance()->getDiaopao()==*itor)
+                {
+                    itor=pokers.erase(itor);
+                    break;
+                }
+                else
+                {
+                    itor++;
+                }
+            }
+            pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
+        }
+        for (int i = 0; i < pokers.size(); i++)
         {
-            if(GAMEDATA::getInstance()->getDiaopao()==*itor)
-            {
-                itor=pokers.erase(itor);
-                break;
+            Jong* jong = Jong::create();
+            jong->showJong(rightplayed, atoi(pokers.at(i).c_str()));
+            if(hu&&i==pokers.size()-1){
+                jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i-8));
+            }else{
+                jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i));
             }
-            else
-            {
-                itor++;
-            }
+            addChild(jong, 2);
         }
-        pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
     }
-    for (int i = 0; i < pokers.size(); i++)
-    {
-        Jong* jong = Jong::create();
-        jong->showJong(rightplayed, atoi(pokers.at(i).c_str()));
-        if(hu&&i==pokers.size()-1){
-            jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i-8));
-        }else{
-            jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i));
-        }
-        addChild(jong, 2);
-    }
-    
 }
 
 

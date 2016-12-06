@@ -29,7 +29,7 @@ public:
     void startGameFirst();
 	void removeHeroPlayedIcon();
     void dealJongFinish();
-    void showHandPokerOver(int seatId);
+    void showHandPokerOver(int seatId);//翻牌
     
 private:
 	std::mutex m_mutex;

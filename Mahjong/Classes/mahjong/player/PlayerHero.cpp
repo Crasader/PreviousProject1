@@ -252,35 +252,36 @@ void PlayerHero::drawPlayerHero() {
 
 
 void PlayerHero::updateHandJongs(std::string jongs,bool hu){
-    vector<std::string> pokers = StringUtil::split(jongs, ",");
-    if(hu){
-        vector<std::string>::iterator itor;
-        for(itor=pokers.begin();itor!=pokers.end();)
+    if(jongs.size()>0){
+        vector<std::string> pokers = StringUtil::split(jongs, ",");
+        if(hu){
+            vector<std::string>::iterator itor;
+            for(itor=pokers.begin();itor!=pokers.end();)
+            {
+                if(GAMEDATA::getInstance()->getDiaopao()==*itor)
+                {
+                    itor=pokers.erase(itor);
+                    break;
+                }
+                else
+                {
+                    itor++;
+                }
+            }
+            pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
+        }
+        for (int i = 0; i < pokers.size(); i++)
         {
-            if(GAMEDATA::getInstance()->getDiaopao()==*itor)
-            {
-                itor=pokers.erase(itor);
-                break;
+            Jong* jong = Jong::create();
+            jong->showJong(herocpg, atoi(pokers.at(i).c_str()));
+            if(hu&&i==pokers.size()-1){
+                jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i+10, JONG_POS_Y));
+            }else{
+                jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i, JONG_POS_Y));
             }
-            else
-            {
-                itor++;
-            }
+            addChild(jong);
         }
-        pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
     }
-    for (int i = 0; i < pokers.size(); i++)
-    {
-        Jong* jong = Jong::create();
-        jong->showJong(herocpg, atoi(pokers.at(i).c_str()));
-        if(hu&&i==pokers.size()-1){
-            jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i+10, JONG_POS_Y));
-        }else{
-            jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i, JONG_POS_Y));
-        }
-        addChild(jong);
-    }
-    
 }
 
 void PlayerHero::showCurrentPlayedJongIcon(bool isShow){

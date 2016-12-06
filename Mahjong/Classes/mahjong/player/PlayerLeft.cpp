@@ -351,38 +351,39 @@ void PlayerLeft::recoverHand(std::string hand){
 }
 
 void PlayerLeft::updateHandJongs(std::string jongs,bool hu){
-    vector<std::string> pokers = StringUtil::split(jongs, ",");
-    if(hu){
-        vector<std::string>::iterator itor;
-        for(itor=pokers.begin();itor!=pokers.end();)
-        {
-            if(GAMEDATA::getInstance()->getDiaopao()==*itor)
+    if(jongs.size()>0){
+        vector<std::string> pokers = StringUtil::split(jongs, ",");
+        if(hu){
+            vector<std::string>::iterator itor;
+            for(itor=pokers.begin();itor!=pokers.end();)
             {
-                itor=pokers.erase(itor);
-                break;
+                if(GAMEDATA::getInstance()->getDiaopao()==*itor)
+                {
+                    itor=pokers.erase(itor);
+                    break;
+                }
+                else
+                {
+                    itor++;
+                }
             }
-            else
-            {
-                itor++;
-            }
+            pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
         }
-        pokers.push_back(GAMEDATA::getInstance()->getDiaopao());
-    }
-    
-    for (int i = 0; i < pokers.size(); i++)
-    {
-        Jong* jong = Jong::create();
-        jong->showJong(leftplayed, atoi(pokers.at(i).c_str()));
-        if(hu&&i==pokers.size()-1){
-            jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i+8));
-        }else{
-            jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i));
-        }
-        playerHandJongs.pushBack(jong);
-        this->addChild(jong,60-i);
         
+        for (int i = 0; i < pokers.size(); i++)
+        {
+            Jong* jong = Jong::create();
+            jong->showJong(leftplayed, atoi(pokers.at(i).c_str()));
+            if(hu&&i==pokers.size()-1){
+                jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i+8));
+            }else{
+                jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i));
+            }
+            playerHandJongs.pushBack(jong);
+            this->addChild(jong,60-i);
+            
+        }
     }
-    
 }
 
 void PlayerLeft::doEventTimeOver(int type){

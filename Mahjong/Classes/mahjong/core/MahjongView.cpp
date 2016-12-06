@@ -183,8 +183,8 @@ void MahjongView::update(float dt){
         if(countTime>15){
             GAMEDATA::getInstance()->setStartCountTime(false);
             HintDialog* hin = HintDialog::create("网络重新连接失败,请重新进入游戏！",[](Ref* ref){
-                 GAMEDATA::getInstance()->clearPlayersInfo();
-                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+                GAMEDATA::getInstance()->clearPlayersInfo();
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             },[](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
@@ -646,48 +646,48 @@ PlayerBase* MahjongView::getPlayerBySeatId(int sid){
 }
 
 void MahjongView::firstReplaceFlower() {
-        ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
-        ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
-        for (int i = 0; i < vec.times.size(); i++){
-            int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
-            if (seatId == ClientSeatId::hero){
-                playerHero->setReplacePoker(vec.times.at(i));
-                playerHero->replaceFlower();
-            }
-            else if (seatId == ClientSeatId::left){
-                playerLeft->setReplacePoker(vec.times.at(i));
-                playerLeft->replaceHandHua(leftplayed);
-            }
-            else if (seatId == ClientSeatId::right){
-                playerRight->setReplacePoker(vec.times.at(i));
-                playerRight->replaceHandHua(rightplayed);
-            }
-            else if (seatId == ClientSeatId::opposite){
-                playerOpposite->setReplacePoker(vec.times.at(i));
-                playerOpposite->replaceHandHua(oppositeplayed);
-            }
+    ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
+    ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
+    for (int i = 0; i < vec.times.size(); i++){
+        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
+        if (seatId == ClientSeatId::hero){
+            playerHero->setReplacePoker(vec.times.at(i));
+            playerHero->replaceFlower();
         }
-        for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
-            if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
-                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
-                if(clientId == ClientSeatId::left){
-                    playerLeft->startTimeClockAnim();
-                }else if(clientId == ClientSeatId::opposite){
-                    playerOpposite->startTimeClockAnim();
-                }else if(clientId == ClientSeatId::right){
-                    playerRight->startTimeClockAnim();
-                }else if(clientId == ClientSeatId::hero){
-                    if(GAMEDATA::getInstance()->getStartPaiAngang()){
-                        if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-                            showTingGangControllPad();
-                            playerHero->startTimeClockAnim(9, 2);
-                        }
-                    }else{
-                        playerHero->startTimeClockAnim();
+        else if (seatId == ClientSeatId::left){
+            playerLeft->setReplacePoker(vec.times.at(i));
+            playerLeft->replaceHandHua(leftplayed);
+        }
+        else if (seatId == ClientSeatId::right){
+            playerRight->setReplacePoker(vec.times.at(i));
+            playerRight->replaceHandHua(rightplayed);
+        }
+        else if (seatId == ClientSeatId::opposite){
+            playerOpposite->setReplacePoker(vec.times.at(i));
+            playerOpposite->replaceHandHua(oppositeplayed);
+        }
+    }
+    for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
+        if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
+            int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
+            if(clientId == ClientSeatId::left){
+                playerLeft->startTimeClockAnim();
+            }else if(clientId == ClientSeatId::opposite){
+                playerOpposite->startTimeClockAnim();
+            }else if(clientId == ClientSeatId::right){
+                playerRight->startTimeClockAnim();
+            }else if(clientId == ClientSeatId::hero){
+                if(GAMEDATA::getInstance()->getStartPaiAngang()){
+                    if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+                        showTingGangControllPad();
+                        playerHero->startTimeClockAnim(9, 2);
                     }
+                }else{
+                    playerHero->startTimeClockAnim();
                 }
             }
         }
+    }
 }
 
 void MahjongView::dealJongFinish(){
@@ -1026,10 +1026,10 @@ void MahjongView::showHuPaiXing(std::string paixing){
 
 void MahjongView::showHandPokerOver(int seatId){
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
-    string leftJongs;
-    string rightJongs;
-    string oppositeJongs;
-    string heroJongs;
+    string leftJongs="";
+    string rightJongs="";
+    string oppositeJongs="";
+    string heroJongs="";
     int max =0;
     string maxHuType="";
     for (GameResultData data: results) {
