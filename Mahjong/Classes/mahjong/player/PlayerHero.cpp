@@ -687,7 +687,7 @@ void PlayerHero::playedPokerAuto(bool send){
     playerHandJongs.eraseObject(spJong);
     Audio::getInstance()->playMahjong(spJong->getJongType(),UserData::getInstance()->getGender());//音效
     Point startPoint = spJong->getPosition();
-    Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
+    Point endPoint = getHeroPlayedJongsPos((int)playerPlayedJongs.size());
     float sx = startPoint.x;
     float sy = startPoint.y;
     float ex = endPoint.x;
