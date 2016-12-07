@@ -545,6 +545,7 @@ void PlayerHero::replaceFlower(){
             isAllowPlay = true;
         }
         showPlayerHua(getHuaNum());
+//        SocketDataManage::getInstance()->resumeMsg();
     }else{
         //有花的情况
         huaIndex = 0;
@@ -577,6 +578,7 @@ void PlayerHero::replaceFlower(){
         }, 0.8f, (int)rejong.poker.size()-1, 0,"huahuahua");
         
         schedule([=](float dt){
+//            SocketDataManage::getInstance()->resumeMsg();
             int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
             if (bankId == ClientSeatId::hero){
                 isAllowPlay = true;

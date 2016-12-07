@@ -158,6 +158,8 @@ void MahjongView::startGameAgain(){
 }
 
 void MahjongView::update(float dt){
+    
+    
     if (GAMEDATA::getInstance()->getNeedAddPlayer()){
         addPlayer2Room();
         GAMEDATA::getInstance()->setNeedAddPlayer(false);
@@ -166,6 +168,11 @@ void MahjongView::update(float dt){
         playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
         playerHero->stopTimeClockAnim();
         GAMEDATA::getInstance()->setNeedAddPlayer(-1);
+    }
+    
+    if(GAMEDATA::getInstance()->getStartFaPai()){
+        dealJongStart();
+        GAMEDATA::getInstance()->setStartFaPai(false);
     }
     if(GAMEDATA::getInstance()->getSendReconnect()){
         LostNetwork* net = LostNetwork::create();
@@ -699,6 +706,27 @@ void MahjongView::dealJongFinish(){
 }
 
 
+
+void MahjongView::dealJongStart(){
+    GAMEDATA::getInstance()->setIsPlaying(true);
+    playerHero->setIsReady(false);
+    if(NULL != playerRight)
+        playerRight->setIsReady(false);
+    if(NULL != playerOpposite)
+        playerOpposite->setIsReady(false);
+    if(NULL != playerLeft)
+        playerLeft->setIsReady(false);
+    ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+    guiLayer->hideDissovleBtn();
+    vector<string> dd =StringUtil::split(GAMEDATA::getInstance()->getDice(), ",") ;
+    DealJongAnim* anim = DealJongAnim::create();
+    anim->setTag(1000);
+    anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dd.at(0).c_str()),atoi(dd.at(1).c_str()));
+    addChild(anim);
+
+}
+
+
 void MahjongView::addOthersReadyListener(){
     addOtherReadyListener = EventListenerCustom::create(MSG_READY_NOTIFY, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
@@ -724,28 +752,6 @@ void MahjongView::addOthersReadyListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
-}
-
-
-void MahjongView::addDealJongListener(){
-    dealJongsListener = EventListenerCustom::create(MSG_GAME_START_NOTIFY, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setIsPlaying(true);
-        playerHero->setIsReady(false);
-        if(NULL != playerRight)
-            playerRight->setIsReady(false);
-        if(NULL != playerOpposite)
-            playerOpposite->setIsReady(false);
-        if(NULL != playerLeft)
-            playerLeft->setIsReady(false);
-        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-        guiLayer->hideDissovleBtn();
-        vector<string> dd =StringUtil::split(GAMEDATA::getInstance()->getDice(), ",") ;
-        DealJongAnim* anim = DealJongAnim::create();
-        anim->setTag(1000);
-        anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dd.at(0).c_str()),atoi(dd.at(1).c_str()));
-        addChild(anim);
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dealJongsListener, 1);
 }
 
 
@@ -1188,7 +1194,6 @@ void MahjongView::onExit()
 
 void MahjongView::addCoustomListener(){
     addOthersReadyListener();
-    addDealJongListener();
     addPlayerTurnListener();
     addJongPlayedListener();
     addHeroCpgListener();

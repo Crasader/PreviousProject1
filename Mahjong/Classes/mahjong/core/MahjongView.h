@@ -70,6 +70,7 @@ private:
     void showGamePaidui(int num);
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower();//首次杠花
+    void dealJongStart();
 	PlayerBase* getPlayerBySeatId(int sid);
 
 
@@ -105,8 +106,7 @@ private:
     EventListenerCustom* scrollTetxListener;
     
 	void addCoustomListener();
-	void addOthersReadyListener();
-    void addDealJongListener();
+    void addOthersReadyListener();
 	void addPlayerTurnListener();
 	void addJongPlayedListener();
 	void addHeroCpgListener();//自己吃碰杠通知
