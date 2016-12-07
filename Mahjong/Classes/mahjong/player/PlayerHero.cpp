@@ -304,8 +304,6 @@ void PlayerHero::resetHandJongsY(Jong* jong) {
             playerHandJongs.at(i)->setPosition(
                                                Point(playerHandJongs.at(i)->getPositionX(), JONG_POS_Y));
     }
-    //    if(NULL != jongSeclectIcon &&playerHandJongs.size()>0)
-    //        jongSeclectIcon->setPositionY(playerHandJongs.at(0)->getPositionY());
 }
 
 void PlayerHero::drawReady(bool ready){
@@ -681,8 +679,13 @@ void PlayerHero::playedPokerAuto(bool send){
     }
     selectJong = NULL;
     resetHandJongsY(NULL);
-    Jong* spJong = playerHandJongs.at(playerHandJongs.size() - 1);
-    playerHandJongs.eraseObject(spJong);
+    Jong* lastJong = playerHandJongs.at(playerHandJongs.size() - 1);
+    Jong* spJong = Jong::create();
+    spJong->showJong(lastJong->getJongType(), herohand);
+    spJong->setPosition(lastJong->getPosition());
+    addChild(spJong);
+    lastJong->removeFromParent();
+    playerHandJongs.eraseObject(lastJong);
     Audio::getInstance()->playMahjong(spJong->getJongType(),UserData::getInstance()->getGender());//音效
     Point startPoint = spJong->getPosition();
     Point endPoint = getHeroPlayedJongsPos((int)playerPlayedJongs.size());
