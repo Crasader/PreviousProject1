@@ -184,7 +184,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
     stopTimeClockAnim();
     PlayerBase::showPlayedJong(jong->getJongType());
     Point startPoint = jong->getPosition();
-    Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
+    Point endPoint = getHeroPlayedJongsPos((int)playerPlayedJongs.size());
     float sx = startPoint.x;
     float sy = startPoint.y;
     float ex = endPoint.x;
@@ -372,7 +372,7 @@ float PlayerHero::distance(Point pos1, Point pos2) {
 }
 
 void PlayerHero::settleHandJongs(int posx){
-    int size = playerHandJongs.size();
+    int size = (int)playerHandJongs.size();
     for (int k = 0; k < size; k++){
         if (posx + JONG_WIDTH * k>JONG_POS_13_X){
             playerHandJongs.at(k)->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
@@ -384,7 +384,7 @@ void PlayerHero::settleHandJongs(int posx){
 }
 
 void PlayerHero::sortHandJongs(int posx, bool isTurn){
-    int size = playerHandJongs.size();
+    int size = (int)playerHandJongs.size();
     for (int i = 0; i < size - 1; i++) {
         for (int j = size - 1; j > i; j--) {
             if (playerHandJongs.at(j)->getJongType() < playerHandJongs.at(j - 1)->getJongType()) {
@@ -408,9 +408,8 @@ void PlayerHero::sortHandJongs(int posx, bool isTurn){
 
 Vector<Jong*> PlayerHero::upsetJongs(Vector<Jong*> jongs) {
     Vector<Jong*> newJongs;
-    int size = jongs.size();
-    for (int i = 0; i < size; i++) {
-        int current = rand() % jongs.size();
+    for (int i = 0; i < (int)jongs.size(); i++) {
+        int current = rand() % ((int)jongs.size());
         newJongs.pushBack(jongs.at(current));
         jongs.erase(current);
     }
@@ -419,9 +418,8 @@ Vector<Jong*> PlayerHero::upsetJongs(Vector<Jong*> jongs) {
 
 
 Vector<Jong*>  PlayerHero::sortJongs(Vector<Jong*> jongs){
-    int size = jongs.size();
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = size - 1; j > i; j--) {
+    for (int i = 0; i < (int)jongs.size() - 1; i++) {
+        for (int j = (int)jongs.size() - 1; j > i; j--) {
             if (jongs.at(j)->getJongType() < jongs.at(j - 1)->getJongType()) {
                 jongs.swap(jongs.at(j), jongs.at(j - 1));
             }
@@ -573,12 +571,12 @@ void PlayerHero::replaceFlower(){
                     }
                 }
                 HuaAnim* huaAnim = HuaAnim::create(needReplace, GAMEDATA::getInstance()->getHeroSeatId(),CallFunc::create([=](){
-                    setHuaNum(getHuaNum()+needReplace.size());
+                    setHuaNum(getHuaNum()+(int)needReplace.size());
                     showPlayerHua(getHuaNum());
                 }));
                 addChild(huaAnim,100);
             }
-        }, 0.8f, rejong.poker.size()-1, 0,"huahuahua");
+        }, 0.8f, (int)rejong.poker.size()-1, 0,"huahuahua");
         
         schedule([=](float dt){
             int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
@@ -603,12 +601,12 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             jong->showJong(herohand, atoi(replace.at(huaIndex).c_str()));
             needReplace.push_back(jong);
             HuaAnim* huaAnim = HuaAnim::create(needReplace, GAMEDATA::getInstance()->getHeroSeatId(),CallFunc::create([=](){
-                setHuaNum(getHuaNum()+needReplace.size());
+                setHuaNum(getHuaNum()+(int)needReplace.size());
                 showPlayerHua(getHuaNum());
             }));
             addChild(huaAnim,100);
             huaIndex++;
-        }, 0.8f, replace.size()-1, 0,"hua2poker");
+        }, 0.8f, (int)replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
             jong->setVisible(true);
             jong->showJong(herohand, data.poker);
@@ -641,12 +639,12 @@ void PlayerHero:: drawPlayedJong(int type){
         virtualJong = NULL;
     }
     resetHandJongsY(NULL);
-    for(int i=playerHandJongs.size()-1;i>=0;i--){
+    for(int i=(int)playerHandJongs.size()-1;i>=0;i--){
         if(playerHandJongs.at(i)->getJongType()==type){
             Jong* spJong = playerHandJongs.at(i);
             playerHandJongs.eraseObject(spJong);//从手牌队列中移除
             Point startPoint = spJong->getPosition();
-            Point endPoint = getHeroPlayedJongsPos(playerPlayedJongs.size());
+            Point endPoint = getHeroPlayedJongsPos((int)playerPlayedJongs.size());
             float sx = startPoint.x;
             float sy = startPoint.y;
             float ex = endPoint.x;
@@ -1113,7 +1111,7 @@ void PlayerHero::recoverPlayed(std::string played){
         Jong* jong = Jong::create();
         jong->showJong(heroplayed, atoi(playeds.at(i).c_str()));
         jong->setScale(1.0f);
-        jong->setPosition(getHeroPlayedJongsPos(playerPlayedJongs.size()));
+        jong->setPosition(getHeroPlayedJongsPos((int)playerPlayedJongs.size()));
         addChild(jong);
         playerPlayedJongs.pushBack(jong);
     }
