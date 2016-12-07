@@ -58,7 +58,7 @@ void PlayerCpgAnim::showLight(Sprite* sprite){
     auto animation = Animation::create();
     for( int i=1;i<7;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("gameview/cpg_light_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("gameview/cpg_light_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.
@@ -90,12 +90,11 @@ std::string PlayerCpgAnim::getImageNameByType(CpgType type){
     if(type == CpgType::chi){
         imageName= "gameview/chi.png";
     }else if(type==CpgType::peng){
-    imageName= "gameview/peng.png";
+        imageName= "gameview/peng.png";
     }else if(type==CpgType::gang||type==CpgType::angang||type==CpgType::penggang){
-    imageName= "gameview/gang.png";
-    
+        imageName= "gameview/gang.png";
     }else if(type ==CpgType::ting){
-    imageName= "gameview/mj_ting.png";
+        imageName= "gameview/mj_ting.png";
     }
     return imageName;
 }

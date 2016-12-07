@@ -7,9 +7,13 @@
 //
 
 #import "payment/ios/LoginByWechat.h"
-#include "payment/ios/WxLoginHandler.hpp"
+#import "payment/ios/WxLoginHandler.h"
 #include "userdata/UserData.h"
+#import "payment/ios/WXApiManager.h"
 
+@interface LoginByWechat ()<UITextViewDelegate,WXApiDelegate>
+
+@end
 
 @implementation LoginByWechat
 
@@ -42,13 +46,22 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
 
 #pragma mark - View Lifecycle
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
 - (BOOL)sendAuthRequestScope{
     if (UserData::getInstance()->getWxOpenId() == "unknow") {
         SendAuthReq* req    =[[SendAuthReq alloc]init];
-        req.scope           = kAuthScope;
+        //        req.scope           = kAuthScope;
+        req.scope           =@"snsapi_userinfo";
         req.state           = kAuthState;
         //第三方向微信终端发送一个SendAuthReq消息结构
-        return [WXApi sendReq:req];
+        return [WXApi sendAuthReq:req viewController:self delegate:[WXApiManager sharedManager]];
         
     }else{
         BOOL result = [self checkTokenOutTime];
@@ -60,7 +73,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
             req.scope           = kAuthScope;
             req.state           = kAuthState;
             //第三方向微信终端发送一个SendAuthReq消息结构
-            return [WXApi sendReq:req];
+            return [WXApi sendAuthReq:req viewController:self delegate:[WXApiManager sharedManager]];
         }
     }
 }
@@ -270,7 +283,6 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!generateOrd.action?charge_type=1&tbu_id=201617&pay_platform=apple&game_version=1&hsman=ios&hstype=ios&imei=123456789&imsi=46000&channel_id=apple&request_pay_amount=1&poxiao_id=%@&pay_point=%@",poxiaoId,payPoint];
     NSLog(@"url:%@",urlString);
     //解析服务端返回json数据
-    NSError *error;
     //加载一个NSURL对象
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     //第三步，连接服务器
@@ -339,7 +351,6 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     NSString* urlString= [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!findOrd.action?order_id=%s",UserData::getInstance()->getPoxiaoOrderID().c_str()];
     NSLog(@"url:%@",urlString);
     //解析服务端返回json数据
-    NSError *error;
     //加载一个NSURL对象
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     //第三步，连接服务器
@@ -380,40 +391,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
     {
         NSLog(@"系统版本过低");
     }
-}
-
-#pragma mark - WXApiDelegate
-- (void)onResp:(BaseResp *)resp {
-    if ([resp isKindOfClass:[SendAuthResp class]]) {
-        SendAuthResp *authResp = (SendAuthResp *)resp;
-        //发送请求到服务端
-        [self sendLoginMsg2Server:authResp.code];
-    }
-    if ([resp isKindOfClass:[PayResp class]]){
-        PayResp*response=(PayResp*)resp;
-        switch(response.errCode){
-            case WXSuccess:
-                //服务器端查询支付通知或查询API返回的结果再提示成功
-            {
-                NSLog(@"支付成功");
-                LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
-                BOOL result = [loginByWechat queryPayResult];
-                if(result){
-                    WxLoginHandler::getInstance()->updatePlayerInfo("1");
-                }else{
-                    WxLoginHandler::getInstance()->updatePlayerInfo("0");
-                }
-                break;
-            }
-            default:
-                NSLog(@"支付失败，retcode=%d",resp.errCode);
-                break;
-        }
-    }
-}
-
-- (void)onReq:(BaseReq *)req {
-    
+    return false;
 }
 
 @end

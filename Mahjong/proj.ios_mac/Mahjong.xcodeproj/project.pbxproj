@@ -259,6 +259,7 @@
 		D26779541DF01349003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26779511DF01349003CE73F /* Audio.cpp */; };
 		D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
+		D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27399681DF7BAC7008439C9 /* WXApiManager.mm */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
@@ -577,6 +578,8 @@
 		D26779521DF01349003CE73F /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		D267795A1DF1614F003CE73F /* LostNetwork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork.cpp; sourceTree = "<group>"; };
 		D267795B1DF1614F003CE73F /* LostNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork.hpp; sourceTree = "<group>"; };
+		D27399671DF7BAC7008439C9 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		D27399681DF7BAC7008439C9 /* WXApiManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXApiManager.mm; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
@@ -586,7 +589,7 @@
 		D294FE0D1D990B2B005FB8A2 /* LoginByWechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginByWechat.h; sourceTree = "<group>"; };
 		D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginByWechat.mm; sourceTree = "<group>"; };
 		D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WxLoginHandler.cpp; sourceTree = "<group>"; };
-		D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WxLoginHandler.hpp; sourceTree = "<group>"; };
+		D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WxLoginHandler.h; sourceTree = "<group>"; };
 		D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -879,6 +882,8 @@
 		D257FD731D6C2E2400B8C596 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D27399671DF7BAC7008439C9 /* WXApiManager.h */,
+				D27399681DF7BAC7008439C9 /* WXApiManager.mm */,
 				D22A7EA21DEECD2500CC6CE2 /* StatusBarTool.h */,
 				D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */,
 				D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */,
@@ -889,7 +894,7 @@
 				D257FD751D6C2E2400B8C596 /* RechargeVC.m */,
 				D2C3FA511D9906FF00CFC80E /* wechat */,
 				D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */,
-				D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.hpp */,
+				D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.h */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -1692,6 +1697,7 @@
 				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
 				D26778BF1DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
 				D26778B71DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
+				D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */,
 				D26778DD1DF00697003CE73F /* DissovleRoomDialog.cpp in Sources */,
 				D26778AF1DF00697003CE73F /* HupaiAnim.cpp in Sources */,
 				D26778DB1DF00697003CE73F /* ToastCell.cpp in Sources */,

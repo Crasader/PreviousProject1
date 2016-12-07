@@ -631,15 +631,21 @@ void MsgHandler::getHeroJongs(std::string msg){
     }
     GAMEDATA::getInstance()->setReplaceJongVec(replaceVec);
     //如果手牌中有暗杠
+    PlayerCpgtData tingData;
     if(_mDoc.HasMember("angang")){
-        PlayerCpgtData tingData;
         const rapidjson::Value &angang = _mDoc["angang"];
         tingData.gang = angang.GetString();
         tingData.flag = 1;
         tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
-        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
         GAMEDATA::getInstance()->setStartPaiAngang(true);
     }
+    if(_mDoc.HasMember("ting")){
+        const rapidjson::Value &ting = _mDoc["ting"];
+        tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+        tingData.ting = ting.GetString();
+        GAMEDATA::getInstance()->setStartPaiAngang(true);
+    }
+    GAMEDATA::getInstance()->setPlayerCpgt(tingData);
     postNotifyMessage(MSG_GAME_START_NOTIFY, "");
 }
 

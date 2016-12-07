@@ -45,8 +45,11 @@ void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
 
 void IOSBridge::doWechatLogin(){
     LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
+    
     [loginByWechat sendAuthRequestScope];
-    //    [loginByWechat wechatShare:@"红包口令" ContentDescription:@"123456789"];
+//    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
+//   RespForWeChatViewController* controller = [[RespForWeChatViewController alloc]autorelease];
+//    [self presentViewController:loginByWechat animated:YES completion:nil];
 }
 
 void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content,int scene){
