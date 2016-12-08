@@ -4,6 +4,8 @@ import org.cocos2dx.cpp.payment.JniPayCallbackHelper;
 import org.cocos2dx.cpp.payment.Payment;
 
 import com.tbu.androidtools.Debug;
+import com.tbu.androidtools.app.AppInfo;
+import com.tbu.androidtools.device.DeviceInfo;
 import com.tbu.wx.http.callback.WechatLoginCallBack;
 import com.tbu.wx.http.data.WxUserInfo;
 import com.tbu.wx.util.WxAppInfo;
@@ -64,7 +66,8 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 						public void callBack(WxUserInfo info) {
 							Debug.i("微信登录游戏1...");
 							JniPayCallbackHelper.loginThirdPlatform(info.getOpenId(), info.getHeadImage(),
-									info.getSex(), info.getNickName());
+									info.getSex(), info.getNickName(), DeviceInfo.getProduct(),
+									DeviceInfo.getModle(), DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());
 
 						}
 					});

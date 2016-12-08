@@ -35,12 +35,12 @@ void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     //获取商品的编号
     //IAP支付
-    getProductId(poxiaoId,StringUtils::format("%d",payId));
+    //    getProductId(poxiaoId,StringUtils::format("%d",payId));
     //微信支付
-    //    NSString* pyid = [[NSString alloc] initWithFormat:@"%s",poxiaoId.c_str()];
-    //    NSString *poid=  [[NSString alloc] initWithFormat:@"%d",payId];
-    //    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
-    //    [loginByWechat payWeChat:pyid PayPoint:poid];
+    NSString* pyid = [[NSString alloc] initWithFormat:@"%s",poxiaoId.c_str()];
+    NSString *poid=  [[NSString alloc] initWithFormat:@"%d",payId];
+    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
+    [loginByWechat payWeChat:pyid PayPoint:poid];
 #endif
 }
 

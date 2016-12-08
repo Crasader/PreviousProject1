@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.tbu.androidtools.Debug;
+import com.tbu.androidtools.app.AppInfo;
+import com.tbu.androidtools.device.DeviceInfo;
 import com.tbu.wx.http.callback.QueryCallBack;
 import com.tbu.wx.http.callback.WechatLoginCallBack;
 import com.tbu.wx.http.callback.WxPayCallBack;
@@ -75,13 +77,14 @@ public class Payment {
 	public static void shareToWeChat(String webpageUrl, String title, String description, boolean friends) {
 		TbuWxUtil.getInstance().shareWebPage(webpageUrl, title, description, null, friends);
 	}
-	
+
 	/**
 	 * 图片分享
+	 * 
 	 * @param imagePath
 	 * @param friends
 	 */
-	public  static void shareImageToWeChat(String imagePath,boolean friends){
+	public static void shareImageToWeChat(String imagePath, boolean friends) {
 		Debug.e("shareImageToWeChat 分享图片给微信好友");
 		TbuWxUtil.getInstance().shareImage(imagePath, friends);
 	}
@@ -97,15 +100,16 @@ public class Payment {
 				if (!info.isResult()) {
 					Debug.i("微信登录游戏...");
 					JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId(),
-							info.getHeadImage(), info.getSex(), info.getNickName());
+							info.getHeadImage(), info.getSex(), info.getNickName(), DeviceInfo.getProduct(),
+							DeviceInfo.getModle(), DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());
 				}
 			}
 
 		});
 
 	}
-	
-	public static void clearWechatOpenId(){
+
+	public static void clearWechatOpenId() {
 		TbuWxUtil.getInstance().clearOpenId();
 	}
 
@@ -125,13 +129,16 @@ public class Payment {
 			}
 		});
 	}
+
 	/**
 	 * 获取sd卡路径
+	 * 
 	 * @return
 	 */
 	private static final String SDCARD_ROOT = Environment.getExternalStorageDirectory().getAbsolutePath();
-	public static String getSdCardDir(){
-		return  SDCARD_ROOT;
+
+	public static String getSdCardDir() {
+		return SDCARD_ROOT;
 	}
 
 	// 获取系统时间
