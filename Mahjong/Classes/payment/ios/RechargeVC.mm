@@ -166,7 +166,7 @@ sqlite3 *poxiaoDB = nil;
     NSLog(@"received = %@",result);
     //刷新用户信息
     WxLoginHandler::getInstance()->updatePlayerInfo("IAP");
-    [self deleteRecordFromDB:(int)poxiaoOrderId];
+    [self deleteRecordFromDB:[poxiaoOrderId intValue]];
 }
 
 
