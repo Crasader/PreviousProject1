@@ -333,7 +333,8 @@ std::string CommandManage::getPlayerChatMsgCommand(std::string msg,std::string p
     return commandString(keyValue);
 }
 
-std::string CommandManage::getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname){
+std::string CommandManage::getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1){
+//    第三方登录请求{code:999,open_id:123,type:1,hsman:厂商,hstype:机型,imsi:imsi,imei:imei} typ为1表示微信
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_THIRED_LOGIN_REQUEST)));
     keyValue.insert(map<string, string>::value_type("type", "1"));
@@ -341,6 +342,11 @@ std::string CommandManage::getThirdLoginCommand(std::string openid,std::string h
     keyValue.insert(map<string, string>::value_type("head", head));
     keyValue.insert(map<string, string>::value_type("sex", sex));
     keyValue.insert(map<string, string>::value_type("nickname", nickname));
+    keyValue.insert(map<string, string>::value_type("ver1", hsman));
+    keyValue.insert(map<string, string>::value_type("hsman", hstype));
+    keyValue.insert(map<string, string>::value_type("hstype", imsi));
+    keyValue.insert(map<string, string>::value_type("imsi", imei));
+    keyValue.insert(map<string, string>::value_type("imei", ver1));
     return commandString(keyValue);
 
 }

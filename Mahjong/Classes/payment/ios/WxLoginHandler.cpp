@@ -36,7 +36,7 @@ void WxLoginHandler::doGameLogin(std::string openid,std::string pic,std::string 
         //登录错误的提示
         log("mahjong game openid is null");
     }else{
-        std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,pic,sex,nickname);
+        std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,pic,sex,nickname,"Apple","iphone","11111111111","11111111111","1.0.0");
         if(msg != ""){
             NetworkManage::getInstance()->sendMsg(msg);
         }

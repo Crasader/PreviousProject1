@@ -69,7 +69,7 @@ void SplashScene::loginByWechat(){
         //oTIvfwqK9YwoAi1dANUQjhlhOAZ4
         //oTIvfwnO4yCaBasG7qJedNbiGuG0
         //oTIvfwqiQATud13d_KcSq0AiuIP4
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwqiQATud13d_KcSq0AiuIP4", "http://wyhl.5278-mobi.com:1111/iphone.png","1","金将军"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwqiQATud13d_KcSq0AiuIP4", "http://wyhl.5278-mobi.com:1111/iphone.png","1","金将军","MAC","MAC","11111111111","11111111111","1.0.0"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         IOSBridge::getInstance()->doWechatLogin();

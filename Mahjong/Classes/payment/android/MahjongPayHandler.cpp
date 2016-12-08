@@ -29,7 +29,7 @@ void MahjongPayHandler::dealEventCallBack(int eventId, int result) {
 }
 
 void MahjongPayHandler::loginThirdPlatform(std::string openid, std::string url,
-		std::string sex, std::string nickname) {
+		std::string sex, std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1) {
 	if ("" == openid) {
 		//登录错误的提示
 		log("mahjong game openid is null");
@@ -43,7 +43,7 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid, std::string url,
 		}
 		UrlImageMannger::getInstance()->loadHeadImgByUrl(url);
 		std::string msg = CommandManage::getInstance()->getThirdLoginCommand(
-				openid, url,sex,nickname);
+				openid, url,sex,nickname,hsman,hstype,imsi,imei,ver1);
 		if (msg != "") {
 			NetworkManage::getInstance()->sendMsg(msg);
 		}

@@ -34,22 +34,20 @@ IOSBridge* IOSBridge::getInstance(){
 void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     //获取商品的编号
-    //    getProductId(poxiaoId,StringUtils::format("%d",payId));
-    NSString* pyid = [[NSString alloc] initWithFormat:@"%s",poxiaoId.c_str()];
-    NSString *poid=  [[NSString alloc] initWithFormat:@"%d",payId];
-    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
-    [loginByWechat payWeChat:pyid PayPoint:poid];
+    //IAP支付
+    getProductId(poxiaoId,StringUtils::format("%d",payId));
+    //微信支付
+    //    NSString* pyid = [[NSString alloc] initWithFormat:@"%s",poxiaoId.c_str()];
+    //    NSString *poid=  [[NSString alloc] initWithFormat:@"%d",payId];
+    //    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
+    //    [loginByWechat payWeChat:pyid PayPoint:poid];
 #endif
 }
 
 
 void IOSBridge::doWechatLogin(){
     LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
-    
     [loginByWechat sendAuthRequestScope];
-//    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
-//   RespForWeChatViewController* controller = [[RespForWeChatViewController alloc]autorelease];
-//    [self presentViewController:loginByWechat animated:YES completion:nil];
 }
 
 void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content,int scene){
@@ -71,7 +69,6 @@ void IOSBridge::doWechatShareApp(std::string title,std::string content){
 
 void IOSBridge::doWechatShareImg(std::string filepath,int scene){
     NSString *filePath=[NSString stringWithFormat:@"%s",filepath.c_str()];
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res1" ofType:@"jpg"];
     NSData *imageData = [NSData dataWithContentsOfFile:filePath];
     LoginByWechat* loginByWechat = [LoginByWechat sharedManager];
     [loginByWechat wechatShareImg:imageData Scene:scene];
