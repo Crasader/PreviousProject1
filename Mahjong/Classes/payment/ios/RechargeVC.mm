@@ -1,5 +1,6 @@
 #import "payment/ios/RechargeVC.h"
-# import "sqlite3.h"
+#import "sqlite3.h"
+#import "payment/ios/WxLoginHandler.h"
 
 @implementation RechargeVC
 
@@ -163,7 +164,9 @@ sqlite3 *poxiaoDB = nil;
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
     NSLog(@"received = %@",result);
-    [self deleteRecordFromDB:poxiaoOrderId];
+    //刷新用户信息
+    WxLoginHandler::getInstance()->updatePlayerInfo("IAP");
+    [self deleteRecordFromDB:(int)poxiaoOrderId];
 }
 
 
@@ -243,7 +246,7 @@ sqlite3 *poxiaoDB = nil;
 }
 
 -(void) deleteRecordFromDB:(int) recordId{
-    NSLog(@"删除一条数据！");
+    NSLog(@"删除一条数据！%d",recordId);
     NSString *deleteSqlStr = [NSString stringWithFormat:@"DELETE FROM 't_person' WHERE  orderId= %@",poxiaoOrderId];
     char *errmsg = NULL;
     const char * sql =[deleteSqlStr UTF8String];

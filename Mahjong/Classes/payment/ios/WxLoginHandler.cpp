@@ -44,7 +44,9 @@ void WxLoginHandler::doGameLogin(std::string openid,std::string pic,std::string 
 }
 
 void WxLoginHandler::updatePlayerInfo(std::string result){
-    char* buf = const_cast<char*>(result.c_str());
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("mahjong_pay_result",buf);
+    if(result != "IAP"){
+        char* buf = const_cast<char*>(result.c_str());
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("mahjong_pay_result",buf);
+    }
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
 }
