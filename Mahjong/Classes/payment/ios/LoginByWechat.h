@@ -31,4 +31,6 @@
 - (void) payWeChat: (NSString*) poxiaoId PayPoint:(NSString*) payPoint;
 
 - (BOOL) queryPayResult;
+
++ (NSString*) getDeviceString;
 @end

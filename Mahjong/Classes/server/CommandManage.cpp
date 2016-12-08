@@ -342,11 +342,11 @@ std::string CommandManage::getThirdLoginCommand(std::string openid,std::string h
     keyValue.insert(map<string, string>::value_type("head", head));
     keyValue.insert(map<string, string>::value_type("sex", sex));
     keyValue.insert(map<string, string>::value_type("nickname", nickname));
-    keyValue.insert(map<string, string>::value_type("ver1", hsman));
-    keyValue.insert(map<string, string>::value_type("hsman", hstype));
-    keyValue.insert(map<string, string>::value_type("hstype", imsi));
-    keyValue.insert(map<string, string>::value_type("imsi", imei));
-    keyValue.insert(map<string, string>::value_type("imei", ver1));
+    keyValue.insert(map<string, string>::value_type("ver1", ver1));
+    keyValue.insert(map<string, string>::value_type("hsman", hsman));
+    keyValue.insert(map<string, string>::value_type("hstype", hstype));
+    keyValue.insert(map<string, string>::value_type("imsi", imsi));
+    keyValue.insert(map<string, string>::value_type("imei", imei));
     return commandString(keyValue);
 
 }
