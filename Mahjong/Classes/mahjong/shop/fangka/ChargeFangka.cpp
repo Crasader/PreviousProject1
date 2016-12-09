@@ -44,14 +44,9 @@ bool ChargeFangka::init(){
     closeMenu->setPosition(910, 540);
     addChild(closeMenu);
     
-    if(!GAMEDATA::getInstance()->getFangkaChargeList().needInit){
-        Loading* lod = Loading::create(true);
-        lod->setTag(1000);
-        addChild(lod);
-    }else{
-        showChargeDialog();
-    }
-    
+    Loading* lod = Loading::create(true);
+    lod->setTag(1000);
+    addChild(lod);
     return true;
     
 }
@@ -75,7 +70,7 @@ void ChargeFangka::onExit(){
 void ChargeFangka::showChargeDialog(){
     FangkaChargeList list = GAMEDATA::getInstance()->getFangkaChargeList();
     for(int i=0;i<list.list.size();i++){
-        ChargeItem* item = ChargeItem::create(list.list.at(i).money, list.list.at(i).fangka);
+        ChargeItem* item = ChargeItem::create(list.list.at(i).money, list.list.at(i).fangka,list.list.at(i).payId);
         item->setPosition(515+230*i,345);
         addChild(item);
     }

@@ -10,14 +10,12 @@
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
 
-#define FANGKA_NUM_1 1
-#define FANGKA_NUM_2 10
+#define FANGKA_NUM 5
 
-ChargeItem* ChargeItem::create(int price, int fangakNum){
+ChargeItem* ChargeItem::create(int price,int fangakNum,int payId){
     
     ChargeItem* ret = new ChargeItem();
-    if(ret &&ret->init(price, fangakNum)){
-        
+    if(ret &&ret->init(price,fangakNum,payId)){
         ret->autorelease();
         return ret;
     }else{
@@ -27,7 +25,7 @@ ChargeItem* ChargeItem::create(int price, int fangakNum){
     }
 }
 
-bool ChargeItem::init(int price, int fangakNum){
+bool ChargeItem::init(int price, int fangakNum,int payId){
     if(!Sprite::init()){
         return false;
     }
@@ -44,9 +42,8 @@ bool ChargeItem::init(int price, int fangakNum){
     addChild(icon_fk);
     
     auto diamond = Sprite::create();
-    if(fangakNum==FANGKA_NUM_1){
-        diamond->setTexture("shop/fangka_num_1.png");
-    }else if(fangakNum==FANGKA_NUM_2){
+     diamond->setTexture("shop/fangka_num_1.png");
+    if(fangakNum>=FANGKA_NUM){
         diamond->setTexture("shop/fangka_num_10.png");
     }
     diamond->setPosition(0,-52);
@@ -55,23 +52,18 @@ bool ChargeItem::init(int price, int fangakNum){
     auto piao = Sprite::create();
     piao->setPosition(0,-65);
     addChild(piao);
-    if(fangakNum==FANGKA_NUM_1){
-        piao->setTexture("shop/purple_piaodai.png");
-    }else if(fangakNum==FANGKA_NUM_2){
+     piao->setTexture("shop/purple_piaodai.png");
+    if(fangakNum>=FANGKA_NUM){
         piao->setTexture("shop/red_piaodai.png");
     }
     
     auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(ChargeItem::confirmCharge, this));
-    if(fangakNum==FANGKA_NUM_1){
-        btnImage->setTag(2);
-    }else if(fangakNum==FANGKA_NUM_2){
-        btnImage->setTag(3);
-    }
+    btnImage->setTag(payId);
     auto myMenu = Menu::create(btnImage,NULL);
     myMenu->setPosition(0,-118);
     addChild(myMenu);
     
-    LabelAtlas* money = LabelAtlas::create(StringUtils::format("%d",price/100),"shop/charge_btn_num.png",26,32,'0');
+    LabelAtlas* money = LabelAtlas::create(StringUtils::format("%d",price),"shop/charge_btn_num.png",26,32,'0');
     money->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(money);
     
@@ -83,7 +75,7 @@ bool ChargeItem::init(int price, int fangakNum){
     money->setPosition(-width2/2,-115);
     yuan->setPosition(width2/2,-115);
     
-    if(fangakNum==FANGKA_NUM_2){
+    if(fangakNum>FANGKA_NUM){
         auto discount = Sprite::create("shop/discount_96.png");
         discount->setPosition(70,110);
         addChild(discount);

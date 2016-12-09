@@ -368,9 +368,8 @@ struct BoundPhoneData{
 struct FirstChargeData{
     bool needInit;
     int gold;
-    int diamond;
-    int lequan;
-    int lockDiamond;
+    int money;
+    int fangka;
 };
 
 struct GoldChange{
@@ -387,6 +386,7 @@ struct GoldChangeList{
 struct FangkaCharge{
     int money;
     int fangka;
+    int payId;
 };
 
 struct FangkaChargeList{

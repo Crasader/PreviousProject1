@@ -68,5 +68,6 @@ private:
     void handleWanJiaQunResp(std::string msg);
     void handleNoticeResp(std::string msg);
     void hanleFangzhuDismissRoom(std::string msg);
+    void handleGamePayType(std::string msg);
 };
 #endif

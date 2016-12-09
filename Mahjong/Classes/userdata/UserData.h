@@ -67,6 +67,9 @@ public:
     int getDailiQunVersion();
     void setDailiQunVersion(int ver);
     
+    bool isWeixinPayOpen();
+    void setWeixinPayOpen(bool open);
+    
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();

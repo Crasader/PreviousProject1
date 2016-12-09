@@ -2800,11 +2800,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/IOSBridge.mm"
-            timestampString = "502855377.693557"
+            timestampString = "502960155.058232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *response)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3580,11 +3580,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/payment/ios/IOSBridge.mm"
-            timestampString = "502855377.693557"
+            timestampString = "502960155.058232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "IOSBridge::doWechatLogin()"
             landmarkType = "7">
          </BreakpointContent>

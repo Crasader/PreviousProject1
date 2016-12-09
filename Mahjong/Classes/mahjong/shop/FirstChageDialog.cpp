@@ -14,7 +14,7 @@
 #include "payment/ios/IOSBridge.h"
 
 bool FirstChargeDialog::init(){
-
+    
     if(!Layer::init()){
         return false;
     }
@@ -37,20 +37,17 @@ bool FirstChargeDialog::init(){
     auto closeMenu = Menu::create(closeImage, NULL);
     closeMenu->setPosition(980, 580);
     addChild(closeMenu);
-
-    if(!GAMEDATA::getInstance()->getFirstChargeData().needInit){
-        Loading* lod = Loading::create(true);
-        lod->setTag(1000);
-        addChild(lod);
-        
-    }else{
-        showFirstCharge();
-    }
+    
+    Loading* lod = Loading::create(true);
+    lod->setTag(1000);
+    addChild(lod);
+    
     return true;
 }
 
 void FirstChargeDialog::onEnter(){
     Layer::onEnter();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFirstChargeInfoCommand());
     firstChargeInfo = EventListenerCustom::create(MSG_PLAYER_FIRST_CHARGE, [=](EventCustom* event){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
@@ -61,11 +58,16 @@ void FirstChargeDialog::onEnter(){
 }
 
 void FirstChargeDialog::onExit(){
-     Layer::onExit();
+    Layer::onExit();
     _eventDispatcher->removeEventListener(firstChargeInfo);
 }
 
 void FirstChargeDialog::showFirstCharge(){
+    
+    LabelAtlas* firNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().money), "shop/first_charge_num.png", 24, 37, '0');
+    firNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    firNum->setPosition(570,520);
+    addChild(firNum);
     
     auto tenyuan = Sprite::create("shop/first_charge_10yuan.png");
     tenyuan->setPosition(635,520);
@@ -83,6 +85,11 @@ void FirstChargeDialog::showFirstCharge(){
     diamond->setPosition(400,400);
     addChild(diamond);
     
+    LabelAtlas* fangNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().fangka), "result/fan_num.png", 17, 26, '0');
+    fangNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fangNum->setPosition(360,325);
+    addChild(fangNum);
+    
     auto zuanshi = Sprite::create("shop/fangka_2.png");
     zuanshi->setPosition(400,325);
     addChild(zuanshi);
@@ -99,7 +106,7 @@ void FirstChargeDialog::showFirstCharge(){
     goldIcon->setPosition(645,400);
     addChild(goldIcon);
     
-    auto goldNum = LabelAtlas::create(StringUtils::format("%d",50000),"shop/prop_num.png",21,28,'0');
+    auto goldNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().gold),"shop/prop_num.png",21,28,'0');
     goldNum->setPosition(645,325);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     addChild(goldNum);
@@ -129,13 +136,12 @@ void FirstChargeDialog::showFirstCharge(){
 }
 
 void FirstChargeDialog:: closeView(){
-
     removeFromParent();
 }
 
 void FirstChargeDialog:: charge(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-   CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "1");
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "1");
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),1);

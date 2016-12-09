@@ -329,6 +329,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleNoticeResp(msg);
             break;
         }
+        case MSGCODE_APPLE_SWITCH_RESPONE:{
+            handleGamePayType(msg);
+            break;
+        }
         default:
             break;
     }
@@ -1597,17 +1601,25 @@ void MsgHandler::todayPrideResp(std::string msg){
 
 
 void MsgHandler::firstChargeInfoResp(std::string msg){
-    // 首次充值获取回复{code:1053,poxiaoId:poxiaoId,gold:"123",diamond:"456"}
+    // 首次充值获取回复{code:1053,poxiaoId:poxiaoId,gold:"123",fangka:"456",money:"10"}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &gold = _mDoc["gold"];
-    const rapidjson::Value &diamond = _mDoc["diamond"];
     FirstChargeData data;
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        data.gold = atoi(gold.GetString());
+    }
+    if(_mDoc.HasMember("fangka")){
+        const rapidjson::Value &fangka = _mDoc["fangka"];
+        data.fangka = atoi(fangka.GetString());
+    }
+    if(_mDoc.HasMember("money")){
+        const rapidjson::Value &money = _mDoc["money"];
+        data.money = atoi(money.GetString());
+    }
     data.needInit = false;
-    data.gold = atoi(gold.GetString());
-    data.diamond = atoi(diamond.GetString());
     GAMEDATA::getInstance()->setFirstChargeData(data);
     postNotifyMessage(MSG_PLAYER_FIRST_CHARGE, "");
 }
@@ -1665,6 +1677,7 @@ void MsgHandler::diamondChangeListResp(std::string msg){
         FangkaCharge change;
         change.money = atoi(temp["money"].GetString());
         change.fangka = atoi(temp["fangka"].GetString());
+        change.payId = atoi(temp["id"].GetString());
         data.list.push_back(change);
     }
     GAMEDATA::getInstance()->setFangkaChargeList(data);
@@ -2125,5 +2138,16 @@ void MsgHandler::handleNoticeResp(std::string msg){
     postNotifyMessage(MSG_WAN_JIA_GONG_GAO, "");
 }
 
+
+void MsgHandler::handleGamePayType(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("result")){
+        const rapidjson::Value &result = _mDoc["result"];
+        UserData::getInstance()->setWeixinPayOpen(result == "1"?true:false);
+    }
+}
 
 

@@ -138,7 +138,7 @@ float UserData::getMusicValue(){
 }
 
 void UserData::setMusicValue(float value){
-     UserDefault::getInstance()->setFloatForKey("music_value", value);
+    UserDefault::getInstance()->setFloatForKey("music_value", value);
 }
 
 float UserData::getSoundValue(){
@@ -146,7 +146,7 @@ float UserData::getSoundValue(){
 }
 
 void UserData::setSoundValue(float value){
-     UserDefault::getInstance()->setFloatForKey("sound_value", value);
+    UserDefault::getInstance()->setFloatForKey("sound_value", value);
 }
 
 
@@ -167,18 +167,26 @@ void UserData::setMarkId(std::string markid){
 }
 
 int UserData::getWanJiaQunVersion(){
-     return UserDefault::getInstance()->getIntegerForKey("wan_jia_qun_version", 0);
+    return UserDefault::getInstance()->getIntegerForKey("wan_jia_qun_version", 0);
 }
 
 void UserData::setWanJiaQunVersion(int ver){
- UserDefault::getInstance()->setIntegerForKey("wan_jia_qun_version", ver);
+    UserDefault::getInstance()->setIntegerForKey("wan_jia_qun_version", ver);
 }
 
 int UserData::getDailiQunVersion(){
- return UserDefault::getInstance()->getIntegerForKey("daili_qun_version", 0);
+    return UserDefault::getInstance()->getIntegerForKey("daili_qun_version", 0);
 }
 
 void UserData::setDailiQunVersion(int ver){
-UserDefault::getInstance()->setIntegerForKey("daili_qun_version", ver);
+    UserDefault::getInstance()->setIntegerForKey("daili_qun_version", ver);
+}
+
+bool UserData::isWeixinPayOpen(){
+    return UserDefault::getInstance()->getBoolForKey("weixin_pay_state",false);
+}
+
+void UserData::setWeixinPayOpen(bool open){
+    UserDefault::getInstance()->setBoolForKey("weixin_pay_state",open);
 }
 

@@ -2,7 +2,7 @@
 #include "json/document.h"
 #include "json/rapidjson.h"
 #include "json/stringbuffer.h"
-#include "json/prettywriter.h"  
+#include "json/prettywriter.h"
 #include "json/filestream.h"
 #include "userdata/UserData.h"
 #include "mahjong/state/GAMEDATA.h"
@@ -14,218 +14,218 @@ CommandManage* CommandManage::_instance = 0;
 
 
 CommandManage* CommandManage::getInstance(){
-
-	if (_instance == 0){
-		_instance = new CommandManage();
-	}
-	return _instance;
-
+    
+    if (_instance == 0){
+        _instance = new CommandManage();
+    }
+    return _instance;
+    
 }
 
 
 CommandManage::CommandManage(){
-	//私有构造
+    //私有构造
 }
 
 std::string CommandManage::getHeartCommmand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HEARTBEAT)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HEARTBEAT)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getGiveUpCpgCommmand(){
-	//{code:2008, poxiaoId : poxiaoId, seatId : seatId}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_NO_CHI_PENG_GANG_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
-	keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
-	return commandString(keyValue);
+    //{code:2008, poxiaoId : poxiaoId, seatId : seatId}
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_NO_CHI_PENG_GANG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getReadyCommmand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_READY_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_READY_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    return commandString(keyValue);
 }
 
 std::string CommandManage::getPlayPokerCommmand(int poker){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_DISPATCH_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
-	keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
-	keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_DISPATCH_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
+    return commandString(keyValue);
 }
 
 std::string CommandManage::getChiCommand(std::string chi, int poker){
-	//{code:2007, poxiaoId : poxiaoId, seatId : seatId, chi : "1,2", poker : poker}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_CHI_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
-	keyValue.insert(map<string, string>::value_type("chi", chi));
-	keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
-	keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
-	return commandString(keyValue);
+    //{code:2007, poxiaoId : poxiaoId, seatId : seatId, chi : "1,2", poker : poker}
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_CHI_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
+    keyValue.insert(map<string, string>::value_type("chi", chi));
+    keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    return commandString(keyValue);
 }
 
 std::string CommandManage::getPengCommand(std::string peng, int poker){
-	//{code:2007, poxiaoId : poxiaoId, seatId : seatId, chi : "1,2", poker : poker}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_PENG_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
-	keyValue.insert(map<string, string>::value_type("peng", peng));
-	keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
-	keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
-	return commandString(keyValue);
+    //{code:2007, poxiaoId : poxiaoId, seatId : seatId, chi : "1,2", poker : poker}
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_PENG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
+    keyValue.insert(map<string, string>::value_type("peng", peng));
+    keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getGangCommand(std::string gang, int poker, int flag){
-	//{code:2007, poxiaoId : poxiaoId, seatId : seatId, chi : "1,2", poker : poker}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_GANG_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
-	keyValue.insert(map<string, string>::value_type("gang", gang));
-	keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
-	keyValue.insert(map<string, string>::value_type("flag", StringUtil::itos(flag)));
-	keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
-	return commandString(keyValue);
+    //{code:2007, poxiaoId : poxiaoId, seatId : seatId, chi : "1,2", poker : poker}
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_GANG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
+    keyValue.insert(map<string, string>::value_type("gang", gang));
+    keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
+    keyValue.insert(map<string, string>::value_type("flag", StringUtil::itos(flag)));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getGiveUpTingCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_NO_TING_GANG_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
-	keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_NO_TING_GANG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    return commandString(keyValue);
 }
 
 std::string CommandManage::getTingCommand(int poker){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_TING_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
-	keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
-	keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_TING_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
+    keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(poker)));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getRoomListCommand(std::string gameId){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_GET_ROOMSTYLE_LIST_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("gameid", gameId));
-	return commandString(keyValue);
-
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_GET_ROOMSTYLE_LIST_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("gameid", gameId));
+    return commandString(keyValue);
+    
 }
 
 std::string CommandManage::getEnterRoomCommand(std::string gameId, std::string roomId){
-	//code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_INTO_ROOMSTYLE_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("gameid", gameId));
-	keyValue.insert(map<string, string>::value_type("rsid", roomId));
-	return commandString(keyValue);
+    //code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_INTO_ROOMSTYLE_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("gameid", gameId));
+    keyValue.insert(map<string, string>::value_type("rsid", roomId));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getChangeGenderCommand(std::string gender){
-	//{code:117,poxiaoId:"123",gender:"1"}
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_GENDER_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("gender", gender));
-	return commandString(keyValue);
+    //{code:117,poxiaoId:"123",gender:"1"}
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_GENDER_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("gender", gender));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getQuitRoomCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_OUT_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_OUT_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
 }
 
 
 
 
 std::string CommandManage::getChangeHeadCommand(std::string pic){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_PIC_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MODIFY_PIC_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("pic", pic));
-	return commandString(keyValue);
+    return commandString(keyValue);
 }
 
 std::string CommandManage::getOpenRoomCommand(std::string ftype,std::string iflezi){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_GAME_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("pId", ""));
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_GAME_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("pId", ""));
     keyValue.insert(map<string, string>::value_type("iflezi", iflezi));
     keyValue.insert(map<string, string>::value_type("ftype", ftype));
-	return commandString(keyValue);
+    return commandString(keyValue);
 }
 
 std::string CommandManage::getEnterFriendRoomCommand(std::string pid){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_JOIN_GAME_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("pId", pid));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_JOIN_GAME_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("pId", pid));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getBillCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_GAME_BILL_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_GAME_BILL_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
 }
 
 std::string CommandManage::getBillDetailCommand(std::string billId){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_GAME_BILL_DETAIL_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	keyValue.insert(map<string, string>::value_type("billid", billId));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_GAME_BILL_DETAIL_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("billid", billId));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getLobbyQuitCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_QUIT_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_QUIT_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
 }
 
 
 std::string CommandManage::getDailyPrideCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOTTERY_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOTTERY_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
 }
 
 std::string CommandManage::getTodayPrideCommand(){
-	std::map<std::string, std::string> keyValue;
-	keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOTTERY_GET_REQUEST)));
-	keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-	return commandString(keyValue);
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOTTERY_GET_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
 }
 
 
@@ -233,6 +233,11 @@ std::string CommandManage::getFirstChargeInfoCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FIRST_CHARGE_GET_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+    keyValue.insert(map<string, string>::value_type("plat", "1"));
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    keyValue.insert(map<string, string>::value_type("plat", "0"));
+#endif
     return commandString(keyValue);
 }
 
@@ -255,6 +260,11 @@ std::string CommandManage::getFangkaChargeListCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CHARGE_LIST_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+    keyValue.insert(map<string, string>::value_type("plat", "1"));
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    keyValue.insert(map<string, string>::value_type("plat", "0"));
+#endif
     return commandString(keyValue);
 }
 
@@ -334,7 +344,7 @@ std::string CommandManage::getPlayerChatMsgCommand(std::string msg,std::string p
 }
 
 std::string CommandManage::getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1){
-//    第三方登录请求{code:999,open_id:123,type:1,hsman:厂商,hstype:机型,imsi:imsi,imei:imei} typ为1表示微信
+    //    第三方登录请求{code:999,open_id:123,type:1,hsman:厂商,hstype:机型,imsi:imsi,imei:imei} typ为1表示微信
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_THIRED_LOGIN_REQUEST)));
     keyValue.insert(map<string, string>::value_type("type", "1"));
@@ -348,7 +358,7 @@ std::string CommandManage::getThirdLoginCommand(std::string openid,std::string h
     keyValue.insert(map<string, string>::value_type("imsi", imsi));
     keyValue.insert(map<string, string>::value_type("imei", imei));
     return commandString(keyValue);
-
+    
 }
 
 
@@ -420,21 +430,29 @@ std::string CommandManage::getNoticeCommand(){
     return commandString(keyValue);
 }
 
+
+std::string CommandManage::getGamePayType(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_APPLE_SWITCH_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
-	rapidjson::Document document;
-	rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
-	rapidjson::Value root(rapidjson::kObjectType);
-	map<string, string>::iterator it;
-	for (it = keyValue.begin(); it != keyValue.end(); ++it){
-		rapidjson::Value info(rapidjson::kStringType);
-		std::string myValue(it->second);
-		info.SetString(myValue.c_str(), myValue.size(), allocator);
-		root.AddMember(rapidjson::Value(it->first.c_str(), allocator), info, allocator);
-	}
-	rapidjson::StringBuffer buffer;
-	rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-	root.Accept(writer);
-	std::string result = buffer.GetString();
-	return result;
+    rapidjson::Document document;
+    rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
+    rapidjson::Value root(rapidjson::kObjectType);
+    map<string, string>::iterator it;
+    for (it = keyValue.begin(); it != keyValue.end(); ++it){
+        rapidjson::Value info(rapidjson::kStringType);
+        std::string myValue(it->second);
+        info.SetString(myValue.c_str(), myValue.size(), allocator);
+        root.AddMember(rapidjson::Value(it->first.c_str(), allocator), info, allocator);
+    }
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    root.Accept(writer);
+    std::string result = buffer.GetString();
+    return result;
 }
 

@@ -51,6 +51,7 @@ public:
     std::string getScrollTextCommand();//跑马灯
     std::string getWanJiaQunCommand();//玩家群
     std::string getNoticeCommand();//公告
+    std::string getGamePayType();//获取支付方式
 private:
 	CommandManage();
 	static CommandManage* _instance;

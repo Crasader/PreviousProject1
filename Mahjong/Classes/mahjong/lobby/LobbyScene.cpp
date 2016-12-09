@@ -350,7 +350,6 @@ void LobbyScene:: scrollLightSpot(float dt){
 
 void LobbyScene::showFirstCharge(){
     Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFirstChargeInfoCommand());
     //首冲
     FirstChargeDialog* firCharge = FirstChargeDialog::create();
     addChild(firCharge,3);
