@@ -99,7 +99,8 @@ void LobbyScene::initView(){
 //draw scene top view
 void LobbyScene::drawSceneTop(){
     auto topbg = Sprite::create("mjlobby/lobby_top_bg.png");
-    topbg->setPosition(430, 680);
+    topbg->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    topbg->setPosition(0, 680);
     addChild(topbg);
     
     auto head_bg = Sprite::create("mjlobby/head_image_bg.png");
@@ -164,7 +165,6 @@ void LobbyScene::drawSceneTop(){
     chargGold->setPosition(543, 685);
     addChild(chargGold);
     
-    
     //lequan
     auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
     lequan_bg->setPosition(690, 685);
@@ -178,10 +178,14 @@ void LobbyScene::drawSceneTop(){
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     lequanNum->setPosition(690, 685);
     this->addChild(lequanNum);
-    auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
-    auto chargLequan = Menu::create(lequan_btn, NULL);
-    chargLequan->setPosition(770, 685);
-    addChild(chargLequan);
+    
+    if(UserData::getInstance()->isWeixinPayOpen()){
+
+        auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
+        auto chargLequan = Menu::create(lequan_btn, NULL);
+        chargLequan->setPosition(770, 685);
+        addChild(chargLequan);
+    }
 }
 
 void LobbyScene::drawSceneMid(){
@@ -265,7 +269,8 @@ void LobbyScene::updateHeroInfo(){
     nickName->setString(UserData::getInstance()->getNickName());
     goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
     fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
-    lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
+    if(NULL != lequanNum)
+        lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
 }
 
 void LobbyScene::showLobbyAnim(){
