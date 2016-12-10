@@ -63,7 +63,7 @@ bool ChargeItem::init(int price, int fangakNum,int payId){
     myMenu->setPosition(0,-118);
     addChild(myMenu);
     
-    LabelAtlas* money = LabelAtlas::create(StringUtils::format("%d",price),"shop/charge_btn_num.png",26,32,'0');
+    LabelAtlas* money = LabelAtlas::create(StringUtils::format("%d",price/100),"shop/charge_btn_num.png",26,32,'0');
     money->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(money);
     
