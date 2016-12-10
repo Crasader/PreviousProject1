@@ -71,6 +71,14 @@ void ChargeFangka::onExit(){
 
 void ChargeFangka::showChargeDialog(){
     FangkaChargeList list = GAMEDATA::getInstance()->getFangkaChargeList();
+    //按价格排序
+    if(list.list.size()>0){
+        for(int i=0; i<list.list.size()-1;i++){
+            if(list.list.at(i).money>list.list.at(i+1).money){
+                swap(list.list.at(i), list.list.at(i+1));
+            }
+        }
+    }
     if(NULL != getChildByTag(1025)){
         int width2 = (list.list.size()-2)*140;
         getChildByTag(1025)->setPosition(getChildByTag(1025)->getPosition().x+width2/2,getChildByTag(1025)->getPosition().y);

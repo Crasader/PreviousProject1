@@ -41,13 +41,15 @@ bool ChargeItem::init(int price, int fangakNum,int payId){
     icon_fk->setPosition(0,25);
     addChild(icon_fk);
     
-    auto diamond = Sprite::create();
-     diamond->setTexture("shop/fangka_num_1.png");
-    if(fangakNum>=FANGKA_NUM){
-        diamond->setTexture("shop/fangka_num_10.png");
-    }
-    diamond->setPosition(0,-52);
-    this->addChild(diamond,2);
+    
+    LabelAtlas* fangkaNum = LabelAtlas::create(StringUtils::format("%d",fangakNum),"result/fan_num.png",17,26,'0');
+    fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fangkaNum->setPosition(-32,-52);
+    addChild(fangkaNum,2);
+    auto fangkatext = Sprite::create();
+    fangkatext->setTexture("shop/fangka_num_text.png");
+    fangkatext->setPosition(22,-52);
+    this->addChild(fangkatext,2);
     
     auto piao = Sprite::create();
     piao->setPosition(0,-65);

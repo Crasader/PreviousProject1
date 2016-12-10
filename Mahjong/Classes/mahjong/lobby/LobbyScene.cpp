@@ -145,7 +145,7 @@ void LobbyScene::drawSceneTop(){
     auto chargDiamond = Menu::create(diamond_btn, NULL);
     chargDiamond->setPosition(315, 682);
     addChild(chargDiamond);
-
+    
     
     //gold
     auto gold_bg = Sprite::create("mjlobby/room_info_bg.png");
@@ -173,7 +173,7 @@ void LobbyScene::drawSceneTop(){
     lequan_icon->setPosition(610, 685);
     this->addChild(lequan_icon);
     lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
-                                   "Arial",24);
+                                            "Arial",24);
     lequanNum->setColor(Color3B(242,227,75));
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     lequanNum->setPosition(690, 685);
@@ -655,8 +655,10 @@ void LobbyScene::addEventListener(){
             FriendRoom* friendroom = FriendRoom::create();
             addChild(friendroom);
         }else{
-            ChargeFangka* cha = ChargeFangka::create();
-            addChild(cha);
+            //            ChargeFangka* cha = ChargeFangka::create();
+            //            addChild(cha);
+            FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
+            addChild(dia,4);
         }
     });
     
