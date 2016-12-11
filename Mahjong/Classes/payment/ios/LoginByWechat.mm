@@ -30,6 +30,7 @@ static NSString *kAppMessageAction = @"<action>dotaliTest</action>";
 static NSString *GAME_VERSION = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 static NSString *IMEI_IMSI= @"11111111111";
 static NSString *HSMAN= @"APPLE";
+static NSString *DEVICESTRING= @"iphone";
 
 
 #pragma mark - LifeCycle
@@ -70,7 +71,7 @@ static NSString *HSMAN= @"APPLE";
         BOOL result = [self checkTokenOutTime];
         if(result){
             NSString* deviceString = [LoginByWechat getDeviceString];
-            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([deviceString UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
+            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
             return true;
         }else{
             SendAuthReq* req    =[[SendAuthReq alloc]init];
@@ -397,42 +398,6 @@ static NSString *HSMAN= @"APPLE";
         NSLog(@"系统版本过低");
     }
     return false;
-}
-
-+(NSString*) getDeviceString{
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    if ([deviceString isEqualToString:@"iPhone1,1"]) return @"iPhone 1";
-    if ([deviceString isEqualToString:@"iPhone1,2"]) return @"iPhone 3";
-    if ([deviceString isEqualToString:@"iPhone2,1"]) return @"iPhone 3GS";
-    if ([deviceString isEqualToString:@"iPhone3,1"]) return @"iPhone 4";
-    if ([deviceString isEqualToString:@"iPhone3,2"]) return @"iPhone 4";
-    if ([deviceString isEqualToString:@"iPhone3,3"]) return @"iPhone 4";
-    if ([deviceString isEqualToString:@"iPhone4,1"]) return @"iPhone 4s";
-    if ([deviceString isEqualToString:@"iPhone5,1"]) return @"iPhone 5";
-    if ([deviceString isEqualToString:@"iPhone5,2"]) return @"iPhone 5";
-    if ([deviceString isEqualToString:@"iPhone5,3"]) return @"iPhone 5C";
-    if ([deviceString isEqualToString:@"iPhone5,4"]) return @"iPhone 5C";
-    if ([deviceString isEqualToString:@"iPhone6,1"]) return @"iPhone 5S";
-    if ([deviceString isEqualToString:@"iPhone6,2"]) return @"iPhone 5S";
-    if ([deviceString isEqualToString:@"iPhone7,1"]) return @"iPhone 6 Plus";
-    if ([deviceString isEqualToString:@"iPhone7,2"]) return @"iPhone 6";
-    if ([deviceString isEqualToString:@"iPhone8,1"]) return @"iPhone 6S";
-    if ([deviceString isEqualToString:@"iPhone8,2"]) return @"iPhone 6S Plus";
-    if ([deviceString isEqualToString:@"iPhone8,4"]) return @"iPhone SE";
-    if ([deviceString isEqualToString:@"iPhone3,2"])    return @"Verizon iPhone 4";
-    if ([deviceString isEqualToString:@"iPod1,1"])      return @"iPod Touch 1G";
-    if ([deviceString isEqualToString:@"iPod2,1"])      return @"iPod Touch 2G";
-    if ([deviceString isEqualToString:@"iPod3,1"])      return @"iPod Touch 3G";
-    if ([deviceString isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
-    if ([deviceString isEqualToString:@"iPad1,1"])      return @"iPad";
-    if ([deviceString isEqualToString:@"iPad2,1"])      return @"iPad 2 (WiFi)";
-    if ([deviceString isEqualToString:@"iPad2,2"])      return @"iPad 2 (GSM)";
-    if ([deviceString isEqualToString:@"iPad2,3"])      return @"iPad 2 (CDMA)";
-    if ([deviceString isEqualToString:@"i386"])         return @"Simulator";
-    if ([deviceString isEqualToString:@"x86_64"])       return @"Simulator";
-    return deviceString;
 }
 
 @end
