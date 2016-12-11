@@ -74,18 +74,19 @@ static AppDelegate s_sharedApplication;
     [WXApi registerApp:AppID];
     BOOL result = [WXApi isWXAppInstalled];
     if(!result){
+        //未安装微信的用户启动第三方登录
         NSLog(@"未安装微信");
-        UINavigationController* navigationController = [[UINavigationController alloc] init];
-        LoginByWechat* wechat = [LoginByWechat sharedManager];
-        [navigationController pushViewController:wechat animated:NO];
-        [navigationController setNavigationBarHidden:true];
-        [navigationController pushViewController:_viewController animated:YES];
-        // Set RootViewController to window
-        if ( [[UIDevice currentDevice].systemVersion floatValue] >= 6.0)
-        {
-            // use this method on ios6
-            [window setRootViewController:navigationController];
-        }
+        //        UINavigationController* navigationController = [[UINavigationController alloc] init];
+        //        LoginByWechat* wechat = [LoginByWechat sharedManager];
+        //        [navigationController pushViewController:wechat animated:NO];
+        //        [navigationController setNavigationBarHidden:true];
+        //        [navigationController pushViewController:_viewController animated:YES];
+        //        // Set RootViewController to window
+        //        if ( [[UIDevice currentDevice].systemVersion floatValue] >= 6.0)
+        //        {
+        //            // use this method on ios6
+        //            [window setRootViewController:navigationController];
+        //        }
     }else{
         NSLog(@"已安装微信");
         // Set RootViewController to window

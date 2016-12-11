@@ -165,26 +165,29 @@ void LobbyScene::drawSceneTop(){
     chargGold->setPosition(543, 685);
     addChild(chargGold);
     
-    //lequan
-    auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
-    lequan_bg->setPosition(690, 685);
-    this->addChild(lequan_bg);
-    auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
-    lequan_icon->setPosition(610, 685);
-    this->addChild(lequan_icon);
-    lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
-                                            "Arial",24);
-    lequanNum->setColor(Color3B(242,227,75));
-    lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequanNum->setPosition(690, 685);
-    this->addChild(lequanNum);
-    
     if(UserData::getInstance()->isWeixinPayOpen()){
-
+        //lequan
+        auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
+        lequan_bg->setPosition(690, 685);
+        this->addChild(lequan_bg);
+        auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
+        lequan_icon->setPosition(610, 685);
+        this->addChild(lequan_icon);
+        lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
+                                                "Arial",24);
+        lequanNum->setColor(Color3B(242,227,75));
+        lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        lequanNum->setPosition(690, 685);
+        this->addChild(lequanNum);
+        
+        
+        
         auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
         auto chargLequan = Menu::create(lequan_btn, NULL);
         chargLequan->setPosition(770, 685);
         addChild(chargLequan);
+    }else{
+        topbg->setScaleX(0.75f);
     }
 }
 
