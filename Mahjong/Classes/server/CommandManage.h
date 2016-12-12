@@ -53,6 +53,7 @@ public:
     std::string getNoticeCommand();//公告
     std::string getGamePayType();//获取支付方式
     std::string getVistorLogin();//游客登录
+    std::string getVistorLoginAgain(std::string username,std::string password);
 private:
 	CommandManage();
 	static CommandManage* _instance;

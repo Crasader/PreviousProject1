@@ -452,6 +452,16 @@ std::string CommandManage::getVistorLogin(){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getVistorLoginAgain(std::string username,std::string password){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOGIN_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("hsman", "APPLE"));
+    keyValue.insert(map<string, string>::value_type("hstype", "IOS_VISITOR"));
+    keyValue.insert(map<string, string>::value_type("username", username));
+    keyValue.insert(map<string, string>::value_type("password", password));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

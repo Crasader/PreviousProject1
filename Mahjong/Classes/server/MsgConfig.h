@@ -39,6 +39,7 @@
 #define MSGCODE_THIRED_LOGIN_REQUEST  999//第三方登录请求{code:999,open_id:123,type:1,hsman:厂商,hstype:机型,imsi:imsi,imei:imei} typ为1表示微信
 #define MSGCODE_INTO_ROOMSTYLE_REQUEST  1000 //进入房间请求{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 #define MSGCODE_INTO_ROOMSTYLE_RESPONSE 1001 //进入房间回复{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]} result1为成功 2为金币低于下限 3为金币高于上线 4为其他错误
+#define  MSGCODE_LOGIN_REQUEST  1003//{code:1003,username:username,password:password,hsman:厂商,hstype:机型,imsi:imsi,imei:imei}
 #define MSGCODE_LOGIN_RESPONSE  1005// 服务端到客户端登陆回复{code:1005,result:0,poxiaoId:poxiaoId,username:"avc",password:"123",result:1,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0,moblie:"1111"}result1成功 2 用户名已存在 3验证码错误  4其他错误   gender性别0女1男 ifready准备0未准备1准备
 #define MSGCODE_READY_REQUEST  1006// 客户端到服务端准备请求{code:1006,poxiaoId:poxiaoId}
 #define MSGCODE_READY_RESPONSE  1007// 服务端到客户端准备回复{code:1007,poxiaoId:poxiaoId,result:0}

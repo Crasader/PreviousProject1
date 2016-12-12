@@ -80,7 +80,15 @@ void SplashScene::loginByWechat(){
 }
 
 void SplashScene::loginByVisitor(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLogin());
+    if (UserData::getInstance()->getUserName() == "unknow"&&UserData::getInstance()->getPassword() == "unknow"){
+        showLoading();
+    	NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLogin());
+    }
+    else{
+        showLoading();
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+    }
+    
 }
 
 
