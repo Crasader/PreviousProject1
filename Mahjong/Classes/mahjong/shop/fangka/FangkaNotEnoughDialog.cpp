@@ -42,9 +42,28 @@ bool FangkaNotEnoughDialog::init(){
     addChild(bg_2);
     
     
-    auto chargeImage = Sprite::create("shop/fa_ka_bu_zhu.png");
-    chargeImage->setPosition(640,360);
+    auto chargeImage = Sprite::create("shop/charge/fangka_buzhu.png");
+    chargeImage->setPosition(640,380);
     addChild(chargeImage);
+    
+    auto fangka = Sprite::create("mjitem/fangka_icon.png");
+    fangka->setPosition(540,320);
+    addChild(fangka);
+    
+    auto fangkanum = LabelAtlas::create(StringUtils::format(":%d",1),"shop/charge/charge_num.png",21,30,'0');
+    fangkanum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    fangkanum->setPosition(600,325);
+    addChild(fangkanum);
+    
+    auto xuyaunnum = LabelAtlas::create(StringUtils::format("%d",6),"shop/charge/charge_num.png",21,30,'0');
+    xuyaunnum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    xuyaunnum->setScale(0.8f);
+    xuyaunnum->setPosition(690,320);
+    addChild(xuyaunnum);
+    
+    auto xuyuan = Sprite::create("shop/charge/xu_yuan.png");
+    xuyuan->setPosition(680,320);
+    addChild(xuyuan);
     
     auto image = MenuItemImage::create("shop/charge_btn_1.png","shop/charge_btn_2.png",
                                        CC_CALLBACK_0(FangkaNotEnoughDialog::confirmCharge, this));

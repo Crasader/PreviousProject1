@@ -403,6 +403,11 @@ std::string CommandManage::getOpenRoomRequestCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FANG_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+    keyValue.insert(map<string, string>::value_type("plat", "1"));
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    keyValue.insert(map<string, string>::value_type("plat", "0"));
+#endif
     return commandString(keyValue);
 }
 

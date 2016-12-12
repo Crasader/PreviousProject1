@@ -97,5 +97,4 @@ void ChargeFangka::showChargeDialog(){
 
 void ChargeFangka::closeView(){
     removeFromParent();
-    
 }
