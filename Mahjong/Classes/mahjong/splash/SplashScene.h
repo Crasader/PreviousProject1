@@ -25,6 +25,7 @@ private:
     EventListenerCustom* reEnterFriendRoomListener;
     EventListenerCustom* reOpenFriendRoomListener;
     void loginByWechat();
+    void loginByVisitor();
 	void addTocuhListener();
 	void drawLonginScene();
     void showSplashAnim();

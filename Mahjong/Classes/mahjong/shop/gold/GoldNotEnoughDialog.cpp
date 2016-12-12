@@ -49,15 +49,34 @@ bool GoldNotEnoughDialog::init(int type){
     addChild(bg_2);
     
     auto content = Sprite::create();
-    if (type == ROOM_1){
-        content->setTexture("shop/charge/gold_less_1w.png");
-    }else if(type == ROOM_2){
-        content->setTexture("shop/charge/gold_less_15w.png");    }
-    else if(type == ROOM_3){
-        content->setTexture("shop/charge/gold_less_128w.png");
-    }
-    content->setPosition(640,365);
+    content->setTexture("shop/charge/jinbibuzhu.png");
+    content->setPosition(640,400);
     addChild(content);
+    auto goldNum0 = LabelAtlas::create(StringUtils::format("%d",atoi(GAMEDATA::getInstance()->getEnterRoomResp().min.c_str())/10000),"shop/charge/charge_num.png",21,30,'0');
+    goldNum0->setScale(0.8f);
+    goldNum0->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    goldNum0->setPosition(560,375);
+    addChild(goldNum0);
+    
+    auto goldNum1 = LabelAtlas::create(StringUtils::format(":%s",GAMEDATA::getInstance()->getEnterRoomResp().gold.c_str()),"shop/charge/charge_num.png",21,30,'0');
+    goldNum1->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    goldNum1->setPosition(690,320);
+    addChild(goldNum1);
+    
+    auto goldIcon = Sprite::create("shop/charge/jingbi_icon.png");
+    goldIcon->setPosition(goldNum1->getPositionX()-goldNum1->getContentSize().width,315);
+    goldIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    addChild(goldIcon);
+    
+    
+    auto xuyan = Sprite::create("shop/charge/xu_yuan.png");
+    xuyan->setPosition(750,320);
+    addChild(xuyan);
+    auto money = LabelAtlas::create(StringUtils::format("%d",atoi(GAMEDATA::getInstance()->getEnterRoomResp().money.c_str())/100),"shop/charge/charge_num.png",21,30,'0');
+    money->setPosition(760,320);
+    money->setScale(0.65f);
+    money->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    addChild(money);
     
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        CC_CALLBACK_0(GoldNotEnoughDialog::closeView, this));
@@ -95,7 +114,7 @@ void GoldNotEnoughDialog::chargeGold(){
         }else if(getRoomType() == ROOM_2){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
             CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "5");
-#endif 
+#endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
             IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),5);
 #endif
@@ -116,7 +135,7 @@ int GoldNotEnoughDialog::getMinGoldEnterRoom(int type){
         return ENTER_ROOM_1_GOLD;
     }else if(type == ROOM_2){
         return ENTER_ROOM_2_GOLD;
-
+        
     }else if(type == ROOM_3){
         return ENTER_ROOM_3_GOLD;
     }else {

@@ -139,6 +139,11 @@ std::string CommandManage::getEnterRoomCommand(std::string gameId, std::string r
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("gameid", gameId));
     keyValue.insert(map<string, string>::value_type("rsid", roomId));
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+    keyValue.insert(map<string, string>::value_type("plat", "1"));
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    keyValue.insert(map<string, string>::value_type("plat", "0"));
+#endif
     return commandString(keyValue);
 }
 
@@ -435,6 +440,15 @@ std::string CommandManage::getGamePayType(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_APPLE_SWITCH_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+
+std::string CommandManage::getVistorLogin(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOGIN_GUEST_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("hsman", "APPLE"));
+    keyValue.insert(map<string, string>::value_type("hstype", "IOS_VISITOR"));
     return commandString(keyValue);
 }
 

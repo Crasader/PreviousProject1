@@ -389,10 +389,21 @@ void MsgHandler::enterRoomResp(std::string msg){
         const rapidjson::Value &rsid = _mDoc["rsid"];
         resp.rsid = rsid.GetString();
     }
-    if(_mDoc.HasMember("jjj")){
-        const rapidjson::Value &jjj = _mDoc["jjj"];
-        resp.jjj_count = jjj["count"].GetString();
-        resp.jjj_used = jjj["used"].GetString();
+    if(_mDoc.HasMember("money")){
+        const rapidjson::Value &money = _mDoc["money"];
+        resp.money = money.GetString();
+    }
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        resp.gold = gold.GetString();
+    }
+    if(_mDoc.HasMember("id")){
+        const rapidjson::Value &payid = _mDoc["id"];
+        resp.payid = payid.GetString();
+    }
+    if(_mDoc.HasMember("min")){
+        const rapidjson::Value &min = _mDoc["min"];
+        resp.min = min.GetString();
     }
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
     GAMEDATA::getInstance()->clearPlayersInfo();

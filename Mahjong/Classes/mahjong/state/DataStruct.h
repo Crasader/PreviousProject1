@@ -63,8 +63,10 @@ struct EnterRoomResp{
     std::string rsid;
     std::string kb;
     std::string huangfan;
-    std::string jjj_count;
-    std::string jjj_used;
+    std::string money;
+    std::string gold;
+    std::string payid;
+    std::string min;
     std::vector<PlayerReady> playerReadys;
 };
 

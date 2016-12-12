@@ -52,6 +52,7 @@ public:
     std::string getWanJiaQunCommand();//玩家群
     std::string getNoticeCommand();//公告
     std::string getGamePayType();//获取支付方式
+    std::string getVistorLogin();//游客登录
 private:
 	CommandManage();
 	static CommandManage* _instance;

@@ -54,6 +54,12 @@ void IOSBridge::doWechatLogin(){
     [loginByWechat sendAuthRequestScope];
 }
 
+bool IOSBridge::isWenxinInstalled(){
+    LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
+    bool result = [loginByWechat isWenxinInstalled];
+    return result;
+}
+
 void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content,int scene){
     NSString* wxUrl = [[NSString alloc] initWithFormat:@"%s",url.c_str()];
     NSString *wxTitle= [[NSString alloc] initWithCString:title.c_str() encoding:NSUTF8StringEncoding];

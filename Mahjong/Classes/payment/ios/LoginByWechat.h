@@ -16,6 +16,8 @@
 
 + (instancetype)sharedManager;
 
+- (BOOL)isWenxinInstalled;
+
 - (BOOL)sendAuthRequestScope;
 
 - (void)sendLoginMsg2Server:(NSString*) code;

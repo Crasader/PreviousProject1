@@ -10,7 +10,7 @@
 #include "mahjong/audio/Audio.h"
 #include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
-#include "payment/ios/IOSBridge.h"
+#import "payment/ios/IOSBridge.h"
 
 
 Scene* SplashScene::createScene()
@@ -37,7 +37,7 @@ bool SplashScene::init()
 
 
 void SplashScene::onEnterTransitionDidFinish(){
-
+    
     Audio::getInstance()->playBGM();
 }
 
@@ -63,20 +63,24 @@ void SplashScene::drawLonginScene(){
 
 
 void SplashScene::loginByWechat(){
-        Audio::getInstance()->playSoundClick();
-        showLoading();
+    Audio::getInstance()->playSoundClick();
+    showLoading();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-        //oTIvfwqK9YwoAi1dANUQjhlhOAZ4
-        //oTIvfwnO4yCaBasG7qJedNbiGuG0
-        //oTIvfwqiQATud13d_KcSq0AiuIP4
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwqiQATud13d_KcSq0AiuIP4", "http://wyhl.5278-mobi.com:1111/iphone.png","1","金将军","MAC","MAC","11111111111","11111111111","1.0.0"));
+    //oTIvfwqK9YwoAi1dANUQjhlhOAZ4
+    //oTIvfwnO4yCaBasG7qJedNbiGuG0
+    //oTIvfwqiQATud13d_KcSq0AiuIP4
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwnO4yCaBasG7qJedNbiGuG0", "http://wyhl.5278-mobi.com:1111/iphone.png","1","金将军","MAC","MAC","11111111111","11111111111","1.0.0"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        IOSBridge::getInstance()->doWechatLogin();
+    IOSBridge::getInstance()->doWechatLogin();
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        CallAndroidMethod::getInstance()->weChatLogin();
+    CallAndroidMethod::getInstance()->weChatLogin();
 #endif
+}
+
+void SplashScene::loginByVisitor(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLogin());
 }
 
 
@@ -210,6 +214,67 @@ void SplashScene::showSplashAnim(){
     addChild(lightSpot);
     schedule(schedule_selector(SplashScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
     
+    
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    if(IOSBridge::getInstance()->isWenxinInstalled()){
+        
+        //按钮光效
+        auto btnlight = Sprite::create("mainlogin/login_btn_light.png");
+        btnlight->setPosition(640,111);
+        addChild(btnlight,5);
+        btnlight->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 30),FadeTo::create(1.0f, 200),DelayTime::create(3.0f), NULL), CC_REPEAT_FOREVER),NULL));
+        auto btnpoint = Sprite::create("mainlogin/yellow_point.png");
+        btnpoint->setPosition(495,160);
+        addChild(btnpoint,7);
+        btnpoint->setVisible(false);
+        btnpoint->runAction(Repeat::create(Sequence::create(CallFunc::create([=](){
+            btnpoint->setScale(0.1f);
+            btnpoint->setOpacity(70);
+            btnpoint->setVisible(true);
+        }), Spawn::create(FadeTo::create(4.0/24, 200),ScaleTo::create(4.0/24, 1.2f),RotateTo::create(6.0f/24, 144), NULL),
+                                                            CallFunc::create([=](){yepoint->setRotation(144);}),
+                                                            RotateTo::create(6.0f/24, 216),
+                                                            Spawn::create(FadeTo::create(4.0/24, 70),ScaleTo::create(4.0/24, 0.5f), NULL),
+                                                            CallFunc::create([=](){yepoint->setVisible(false);yepoint->setRotation(0);}),DelayTime::create(96.0/24), NULL), CC_REPEAT_FOREVER));
+        
+        auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
+                                                CC_CALLBACK_0(SplashScene::loginByWechat, this));
+        auto loginMenu = Menu::create(visitorBtn, NULL);
+        loginMenu->setPosition(0, 0);
+        //获取尺寸大小
+        Size clipSize = loginMenu->getContentSize();
+        
+        //[3].创建底板的发光图片 : spark
+        Sprite* spark = Sprite::create("mainlogin/shua_light.png");
+        spark->setRotation(80);
+        spark->setPosition(-clipSize.width+20, 15);
+        
+        //[4].创建裁剪节点 : clippingNode
+        ClippingNode* clippingNode = ClippingNode::create();
+        clippingNode->setPosition(640,88);
+        addChild(clippingNode,10);
+        
+        clippingNode->setAlphaThreshold(0.05f); //设置alpha闸值
+        clippingNode->setContentSize(clipSize); //设置尺寸大小
+        clippingNode->setStencil(loginMenu);   //设置模板stencil
+        clippingNode->addChild(loginMenu, 1);  //先添加标题,会完全显示出来,因为跟模板一样大小
+        spark->setScale(0.70);
+        clippingNode->addChild(spark,2);       //会被裁减
+        
+        //[5].左右移动spark
+        MoveTo* moveAction = MoveTo::create(5.0f, Vec2(clipSize.width-20, 15));
+        spark->runAction(RepeatForever::create(Sequence::create(moveAction,CallFunc::create([=](){
+            spark->setPosition(-clipSize.width, 15);
+        }), NULL)));
+    }else{
+        auto visitorBtn = MenuItemImage::create("mainlogin/visitor_login_btn.png", "mainlogin/visitor_login_btn.png",
+                                                CC_CALLBACK_0(SplashScene::loginByVisitor, this));
+        auto loginMenu = Menu::create(visitorBtn, NULL);
+        loginMenu->setPosition(640, 100);
+        addChild(loginMenu);
+    }
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID||CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    
     //按钮光效
     auto btnlight = Sprite::create("mainlogin/login_btn_light.png");
     btnlight->setPosition(640,111);
@@ -229,12 +294,10 @@ void SplashScene::showSplashAnim(){
                                                         Spawn::create(FadeTo::create(4.0/24, 70),ScaleTo::create(4.0/24, 0.5f), NULL),
                                                         CallFunc::create([=](){yepoint->setVisible(false);yepoint->setRotation(0);}),DelayTime::create(96.0/24), NULL), CC_REPEAT_FOREVER));
     
-    
     auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
                                             CC_CALLBACK_0(SplashScene::loginByWechat, this));
     auto loginMenu = Menu::create(visitorBtn, NULL);
     loginMenu->setPosition(0, 0);
-    
     //获取尺寸大小
     Size clipSize = loginMenu->getContentSize();
     
@@ -260,6 +323,7 @@ void SplashScene::showSplashAnim(){
     spark->runAction(RepeatForever::create(Sequence::create(moveAction,CallFunc::create([=](){
         spark->setPosition(-clipSize.width, 15);
     }), NULL)));
+#endif
 }
 
 void SplashScene :: scrollLightSpot(float dt){

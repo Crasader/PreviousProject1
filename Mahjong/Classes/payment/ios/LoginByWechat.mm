@@ -58,6 +58,10 @@ static NSString *DEVICESTRING= @"iphone";
     [super viewDidAppear:animated];
 }
 
+- (BOOL)isWenxinInstalled{
+    return [WXApi isWXAppInstalled];
+}
+
 - (BOOL)sendAuthRequestScope{
     if (UserData::getInstance()->getWxOpenId() == "unknow") {
         SendAuthReq* req    =[[SendAuthReq alloc]init];

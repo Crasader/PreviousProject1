@@ -14,6 +14,7 @@
 #define MSGCODE_CHART_NOTIFY  105// 聊天通知{code:105,poxiaoId:"123",content:"哈哈"}
 #define MSGCODE_GET_ROOMSTYLE_LIST_REQUEST  106//获取房间列表请求{code:106,poxiaoId:poxiaoId,gameid:1} 麻将游戏id为1
 #define MSGCODE_GET_ROOMSTYLE_LIST_RESPONSE  107//返回房间列表回复{code:107,poxiaoId:poxiaoId,roomstyle:[{rsid:"1111",rsname:"初级场",min:123,max:456},{rsid:"1112",rsname:"中级场",min:123,max:456}]} -1为无上下限
+#define MSGCODE_LOGIN_GUEST_REQUEST  108// 游客登陆请求{code:108,hsman:厂商,hstype:机型,imsi:imsi,imei:imei}
 #define MSGCODE_MODIFY_GENDER_REQUEST  117// 修改性别请求{code:117,poxiaoId:"123",gender:"1"}
 #define MSGCODE_MODIFY_GENDER_RESPONSE  118// 修改性别请求{code:118,result:"1"} 1成功 其他 失败
 #define MSGCODE_QUIT_REQUEST 120//退出请求 {code:120,poxiaoId:poxiaoId}
