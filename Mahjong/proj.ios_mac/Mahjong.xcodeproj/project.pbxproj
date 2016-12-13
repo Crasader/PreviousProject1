@@ -260,6 +260,10 @@
 		D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27399681DF7BAC7008439C9 /* WXApiManager.mm */; };
+		D278ADAB1DFFBF5E00C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADA81DFFBF5E00C90B25 /* GCDAsyncSocket.m */; };
+		D278ADAC1DFFBF5E00C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADA81DFFBF5E00C90B25 /* GCDAsyncSocket.m */; };
+		D278ADAD1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADAA1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m */; };
+		D278ADAE1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADAA1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
@@ -281,12 +285,6 @@
 		D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8601CCDF0F300A20896 /* NetworkManage.cpp */; };
 		D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */; };
 		D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */; };
-		D2B1A8FF1CCDF0F400A20896 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8651CCDF0F300A20896 /* ODSocket.cpp */; };
-		D2B1A9001CCDF0F400A20896 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8651CCDF0F300A20896 /* ODSocket.cpp */; };
-		D2B1A9011CCDF0F400A20896 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8671CCDF0F300A20896 /* README.md */; };
-		D2B1A9021CCDF0F400A20896 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8671CCDF0F300A20896 /* README.md */; };
-		D2B1A9031CCDF0F400A20896 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8681CCDF0F300A20896 /* stdafx.cpp */; };
-		D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8681CCDF0F300A20896 /* stdafx.cpp */; };
 		D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2C3FA561D9906FF00CFC80E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */; };
@@ -580,6 +578,10 @@
 		D267795B1DF1614F003CE73F /* LostNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork.hpp; sourceTree = "<group>"; };
 		D27399671DF7BAC7008439C9 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
 		D27399681DF7BAC7008439C9 /* WXApiManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXApiManager.mm; sourceTree = "<group>"; };
+		D278ADA71DFFBF5E00C90B25 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		D278ADA81DFFBF5E00C90B25 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		D278ADA91DFFBF5E00C90B25 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		D278ADAA1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
@@ -601,13 +603,6 @@
 		D2B1A8611CCDF0F300A20896 /* NetworkManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
 		D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketDataManage.cpp; sourceTree = "<group>"; };
 		D2B1A8631CCDF0F300A20896 /* SocketDataManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketDataManage.h; sourceTree = "<group>"; };
-		D2B1A8651CCDF0F300A20896 /* ODSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocket.cpp; sourceTree = "<group>"; };
-		D2B1A8661CCDF0F300A20896 /* ODSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODSocket.h; sourceTree = "<group>"; };
-		D2B1A8671CCDF0F300A20896 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D2B1A8681CCDF0F300A20896 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
-		D2B1A8691CCDF0F300A20896 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
-		D2B1A86A1CCDF0F300A20896 /* targetver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = targetver.h; sourceTree = "<group>"; };
-		D2B1A86B1CCDF0F300A20896 /* tchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tchar.h; sourceTree = "<group>"; };
 		D2B1A86D1CCDF0F400A20896 /* UserData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserData.cpp; sourceTree = "<group>"; };
 		D2B1A86E1CCDF0F400A20896 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
@@ -1372,6 +1367,17 @@
 			path = network;
 			sourceTree = "<group>";
 		};
+		D278ADA61DFFBF5E00C90B25 /* cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				D278ADA71DFFBF5E00C90B25 /* GCDAsyncSocket.h */,
+				D278ADA81DFFBF5E00C90B25 /* GCDAsyncSocket.m */,
+				D278ADA91DFFBF5E00C90B25 /* GCDAsyncUdpSocket.h */,
+				D278ADAA1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m */,
+			);
+			path = cocoa;
+			sourceTree = "<group>";
+		};
 		D28A4A0A1D0565C200741FD0 /* http */ = {
 			isa = PBXGroup;
 			children = (
@@ -1404,13 +1410,7 @@
 		D2B1A8641CCDF0F300A20896 /* socket */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1A8651CCDF0F300A20896 /* ODSocket.cpp */,
-				D2B1A8661CCDF0F300A20896 /* ODSocket.h */,
-				D2B1A8671CCDF0F300A20896 /* README.md */,
-				D2B1A8681CCDF0F300A20896 /* stdafx.cpp */,
-				D2B1A8691CCDF0F300A20896 /* stdafx.h */,
-				D2B1A86A1CCDF0F300A20896 /* targetver.h */,
-				D2B1A86B1CCDF0F300A20896 /* tchar.h */,
+				D278ADA61DFFBF5E00C90B25 /* cocoa */,
 			);
 			path = socket;
 			sourceTree = "<group>";
@@ -1666,20 +1666,19 @@
 				D26779451DF00698003CE73F /* HeadImage.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D26779231DF00698003CE73F /* GoldNotEnoughDialog.cpp in Sources */,
-				D2B1A9031CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D26778B51DF00697003CE73F /* PlayerCpgAnim.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D26779271DF00698003CE73F /* ExchangeItem.cpp in Sources */,
 				D267793F1DF00698003CE73F /* StringUtil.cpp in Sources */,
 				D26778D31DF00697003CE73F /* BaseDialog.cpp in Sources */,
 				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */,
+				D278ADAD1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D26778EB1DF00698003CE73F /* OtherPlayerInfo.cpp in Sources */,
 				D267793D1DF00698003CE73F /* SeatIdUtil.cpp in Sources */,
 				D26778CB1DF00697003CE73F /* QuitRoomDialog.cpp in Sources */,
 				D26779351DF00698003CE73F /* GameData.cpp in Sources */,
 				D26778FD1DF00698003CE73F /* PlayerHero.cpp in Sources */,
 				D26779171DF00698003CE73F /* HongbaoPride.cpp in Sources */,
-				D2B1A8FF1CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */,
@@ -1694,7 +1693,6 @@
 				D26778BB1DF00697003CE73F /* ChatDialog.cpp in Sources */,
 				D26779471DF00698003CE73F /* ScrollCell.cpp in Sources */,
 				D26779071DF00698003CE73F /* NormalResultLayer.cpp in Sources */,
-				D2B1A9011CCDF0F400A20896 /* README.md in Sources */,
 				D26778BF1DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
 				D26778B71DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
 				D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */,
@@ -1744,6 +1742,7 @@
 				D26779491DF00698003CE73F /* ScrollTextEx.cpp in Sources */,
 				D26778B11DF00697003CE73F /* LiuJuAnim.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
+				D278ADAB1DFFBF5E00C90B25 /* GCDAsyncSocket.m in Sources */,
 				D267792F1DF00698003CE73F /* ShopHintDialog.cpp in Sources */,
 				D26778C11DF00697003CE73F /* QuickChatLayer.cpp in Sources */,
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
@@ -1773,18 +1772,17 @@
 				D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
 				D26778D61DF00697003CE73F /* HintDialog.cpp in Sources */,
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
+				D278ADAE1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D26778C01DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
 				D26778F01DF00698003CE73F /* Jong.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D26778C81DF00697003CE73F /* MjGameScene.cpp in Sources */,
-				D2B1A9001CCDF0F400A20896 /* ODSocket.cpp in Sources */,
 				D26778EC1DF00698003CE73F /* OtherPlayerInfo.cpp in Sources */,
 				D26778F81DF00698003CE73F /* LobbyScene.cpp in Sources */,
 				D26779061DF00698003CE73F /* PlayerRight.cpp in Sources */,
 				D26779201DF00698003CE73F /* FirstChageDialog.cpp in Sources */,
 				D26779181DF00698003CE73F /* HongbaoPride.cpp in Sources */,
 				D26778F41DF00698003CE73F /* EnterRoomDialog.cpp in Sources */,
-				D2B1A9021CCDF0F400A20896 /* README.md in Sources */,
 				D26778E61DF00698003CE73F /* MahjongNumberKeypads.cpp in Sources */,
 				D26778B21DF00697003CE73F /* LiuJuAnim.cpp in Sources */,
 				D26779541DF01349003CE73F /* Audio.cpp in Sources */,
@@ -1810,6 +1808,7 @@
 				D267792C1DF00698003CE73F /* LequanExchangeRecord.cpp in Sources */,
 				D26779101DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
 				D26779481DF00698003CE73F /* ScrollCell.cpp in Sources */,
+				D278ADAC1DFFBF5E00C90B25 /* GCDAsyncSocket.m in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D267794F1DF012E2003CE73F /* ParticleUtil.cpp in Sources */,
 				D26778BC1DF00697003CE73F /* ChatDialog.cpp in Sources */,
@@ -1854,7 +1853,6 @@
 				D267792A1DF00698003CE73F /* ExchangePropCell.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D26779281DF00698003CE73F /* ExchangeItem.cpp in Sources */,
-				D2B1A9041CCDF0F400A20896 /* stdafx.cpp in Sources */,
 				D26778E21DF00698003CE73F /* RoomIdErrorDialog.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D26779241DF00698003CE73F /* GoldNotEnoughDialog.cpp in Sources */,
