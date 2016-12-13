@@ -260,10 +260,16 @@
 		D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27399681DF7BAC7008439C9 /* WXApiManager.mm */; };
-		D278ADAB1DFFBF5E00C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADA81DFFBF5E00C90B25 /* GCDAsyncSocket.m */; };
-		D278ADAC1DFFBF5E00C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADA81DFFBF5E00C90B25 /* GCDAsyncSocket.m */; };
-		D278ADAD1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADAA1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m */; };
-		D278ADAE1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADAA1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m */; };
+		D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; };
+		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; };
+		D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; };
+		D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; };
+		D278ADC01DFFC23400C90B25 /* CocoaSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */; };
+		D278ADC11DFFC23400C90B25 /* CocoaSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */; };
+		D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */; };
+		D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */; };
+		D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */; };
+		D278ADCE1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
@@ -578,10 +584,16 @@
 		D267795B1DF1614F003CE73F /* LostNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork.hpp; sourceTree = "<group>"; };
 		D27399671DF7BAC7008439C9 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
 		D27399681DF7BAC7008439C9 /* WXApiManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXApiManager.mm; sourceTree = "<group>"; };
-		D278ADA71DFFBF5E00C90B25 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		D278ADA81DFFBF5E00C90B25 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		D278ADA91DFFBF5E00C90B25 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
-		D278ADAA1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		D278ADB61DFFC23400C90B25 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		D278ADB81DFFC23400C90B25 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		D278ADBA1DFFC23400C90B25 /* CocoaSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSocket.h; sourceTree = "<group>"; };
+		D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSocket.m; sourceTree = "<group>"; };
+		D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSocketManage.cpp; sourceTree = "<group>"; };
+		D278ADC41DFFCBCF00C90B25 /* GameSocketManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSocketManage.hpp; sourceTree = "<group>"; };
+		D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaSocketManage.mm; sourceTree = "<group>"; };
+		D278ADCC1DFFCF5800C90B25 /* CocoaSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSocketManage.h; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
@@ -1367,13 +1379,32 @@
 			path = network;
 			sourceTree = "<group>";
 		};
-		D278ADA61DFFBF5E00C90B25 /* cocoa */ = {
+		D278ADB31DFFC23400C90B25 /* android */ = {
 			isa = PBXGroup;
 			children = (
-				D278ADA71DFFBF5E00C90B25 /* GCDAsyncSocket.h */,
-				D278ADA81DFFBF5E00C90B25 /* GCDAsyncSocket.m */,
-				D278ADA91DFFBF5E00C90B25 /* GCDAsyncUdpSocket.h */,
-				D278ADAA1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m */,
+			);
+			path = android;
+			sourceTree = "<group>";
+		};
+		D278ADB41DFFC23400C90B25 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				D278ADB51DFFC23400C90B25 /* cocoa */,
+				D278ADBA1DFFC23400C90B25 /* CocoaSocket.h */,
+				D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */,
+				D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */,
+				D278ADCC1DFFCF5800C90B25 /* CocoaSocketManage.h */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		D278ADB51DFFC23400C90B25 /* cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				D278ADB61DFFC23400C90B25 /* GCDAsyncSocket.h */,
+				D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */,
+				D278ADB81DFFC23400C90B25 /* GCDAsyncUdpSocket.h */,
+				D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */,
 			);
 			path = cocoa;
 			sourceTree = "<group>";
@@ -1410,7 +1441,10 @@
 		D2B1A8641CCDF0F300A20896 /* socket */ = {
 			isa = PBXGroup;
 			children = (
-				D278ADA61DFFBF5E00C90B25 /* cocoa */,
+				D278ADB31DFFC23400C90B25 /* android */,
+				D278ADB41DFFC23400C90B25 /* ios */,
+				D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */,
+				D278ADC41DFFCBCF00C90B25 /* GameSocketManage.hpp */,
 			);
 			path = socket;
 			sourceTree = "<group>";
@@ -1659,6 +1693,7 @@
 				D26778DF1DF00697003CE73F /* RoomFullDialog.cpp in Sources */,
 				D26778E51DF00698003CE73F /* MahjongNumberKeypads.cpp in Sources */,
 				D257FD7A1D6C2E2400B8C596 /* RechargeVC.mm in Sources */,
+				D278ADC01DFFC23400C90B25 /* CocoaSocket.m in Sources */,
 				D267790F1DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
 				D26779011DF00698003CE73F /* PlayerLeft.cpp in Sources */,
 				D26778E91DF00698003CE73F /* HeroInfoEdit.cpp in Sources */,
@@ -1672,7 +1707,6 @@
 				D267793F1DF00698003CE73F /* StringUtil.cpp in Sources */,
 				D26778D31DF00697003CE73F /* BaseDialog.cpp in Sources */,
 				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */,
-				D278ADAD1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D26778EB1DF00698003CE73F /* OtherPlayerInfo.cpp in Sources */,
 				D267793D1DF00698003CE73F /* SeatIdUtil.cpp in Sources */,
 				D26778CB1DF00697003CE73F /* QuitRoomDialog.cpp in Sources */,
@@ -1683,6 +1717,7 @@
 				D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */,
 				D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
+				D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */,
 				D26779211DF00698003CE73F /* ChargeGold.cpp in Sources */,
 				D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
@@ -1731,6 +1766,7 @@
 				D26778F51DF00698003CE73F /* GoldRoomPlate.cpp in Sources */,
 				D26778CD1DF00697003CE73F /* DailyEvent.cpp in Sources */,
 				D26778D11DF00697003CE73F /* PrideCell.cpp in Sources */,
+				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D26778E11DF00697003CE73F /* RoomIdErrorDialog.cpp in Sources */,
 				D267792D1DF00698003CE73F /* LequanShop.cpp in Sources */,
 				D26779311DF00698003CE73F /* LoadResource.cpp in Sources */,
@@ -1742,12 +1778,13 @@
 				D26779491DF00698003CE73F /* ScrollTextEx.cpp in Sources */,
 				D26778B11DF00697003CE73F /* LiuJuAnim.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
-				D278ADAB1DFFBF5E00C90B25 /* GCDAsyncSocket.m in Sources */,
 				D267792F1DF00698003CE73F /* ShopHintDialog.cpp in Sources */,
 				D26778C11DF00697003CE73F /* QuickChatLayer.cpp in Sources */,
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
+				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D267790D1DF00698003CE73F /* GameResultCell.cpp in Sources */,
 				D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */,
+				D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
 				D26778AD1DF00697003CE73F /* HuaAnim.cpp in Sources */,
 				D26778C51DF00697003CE73F /* MahjongView.cpp in Sources */,
 				D26779531DF01349003CE73F /* Audio.cpp in Sources */,
@@ -1762,6 +1799,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D267791C1DF00698003CE73F /* ChargeItem.cpp in Sources */,
+				D278ADC11DFFC23400C90B25 /* CocoaSocket.m in Sources */,
 				D26778EE1DF00698003CE73F /* UserInfo.cpp in Sources */,
 				D26779121DF00698003CE73F /* GameFeedDialog.cpp in Sources */,
 				D26778BE1DF00697003CE73F /* FaceChatLayer.cpp in Sources */,
@@ -1772,7 +1810,6 @@
 				D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
 				D26778D61DF00697003CE73F /* HintDialog.cpp in Sources */,
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
-				D278ADAE1DFFBF5E00C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D26778C01DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
 				D26778F01DF00698003CE73F /* Jong.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
@@ -1794,8 +1831,10 @@
 				D26778D21DF00697003CE73F /* PrideCell.cpp in Sources */,
 				D26778FA1DF00698003CE73F /* NoticeDialog.cpp in Sources */,
 				D26779361DF00698003CE73F /* GameData.cpp in Sources */,
+				D278ADCE1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
 				D26778CE1DF00697003CE73F /* DailyEvent.cpp in Sources */,
 				D26779001DF00698003CE73F /* Player.cpp in Sources */,
+				D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D267791E1DF00698003CE73F /* FangkaNotEnoughDialog.cpp in Sources */,
 				D26778E81DF00698003CE73F /* HeadImageDialog.cpp in Sources */,
 				D26778B41DF00697003CE73F /* OutFogAnim.cpp in Sources */,
@@ -1808,7 +1847,6 @@
 				D267792C1DF00698003CE73F /* LequanExchangeRecord.cpp in Sources */,
 				D26779101DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
 				D26779481DF00698003CE73F /* ScrollCell.cpp in Sources */,
-				D278ADAC1DFFBF5E00C90B25 /* GCDAsyncSocket.m in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D267794F1DF012E2003CE73F /* ParticleUtil.cpp in Sources */,
 				D26778BC1DF00697003CE73F /* ChatDialog.cpp in Sources */,
@@ -1820,6 +1858,7 @@
 				D26778AC1DF00697003CE73F /* DealJongAnim.cpp in Sources */,
 				D267791A1DF00698003CE73F /* ChargeFangka.cpp in Sources */,
 				D26778D01DF00697003CE73F /* DailyPride.cpp in Sources */,
+				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D26778B81DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D26779441DF00698003CE73F /* WanJiaQunLayer.cpp in Sources */,
@@ -1855,6 +1894,7 @@
 				D26779281DF00698003CE73F /* ExchangeItem.cpp in Sources */,
 				D26778E21DF00698003CE73F /* RoomIdErrorDialog.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
+				D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D26779241DF00698003CE73F /* GoldNotEnoughDialog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

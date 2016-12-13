@@ -2,7 +2,6 @@
 #define __NETWORK_MANAGE_H__
 #include "cocos2d.h"
 #include <thread>
-#include "socket/ODSocket.h"
 #include "server/MsgConfig.h"
 #include "server/CommandManage.h"
 
@@ -18,7 +17,6 @@ private:
 	NetworkManage();
 	static std::string allReciveInfo;
 	static NetworkManage* _instance;
-	ODSocket socket;
 	void sendHeartBeat();
 	void receiveData();
 	void connectServer();
