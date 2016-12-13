@@ -663,8 +663,6 @@ void LobbyScene::addEventListener(){
             FriendRoom* friendroom = FriendRoom::create();
             addChild(friendroom);
         }else{
-            //            ChargeFangka* cha = ChargeFangka::create();
-            //            addChild(cha);
             FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
             addChild(dia,4);
         }
