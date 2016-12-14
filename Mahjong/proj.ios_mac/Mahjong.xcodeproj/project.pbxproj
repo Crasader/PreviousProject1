@@ -260,10 +260,10 @@
 		D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27399681DF7BAC7008439C9 /* WXApiManager.mm */; };
-		D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; };
-		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; };
-		D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; };
-		D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; };
+		D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADC01DFFC23400C90B25 /* CocoaSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */; };
 		D278ADC11DFFC23400C90B25 /* CocoaSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */; };
 		D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */; };
@@ -1919,11 +1919,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = BNQSYUZH5R;
 				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1964,11 +1967,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = BNQSYUZH5R;
 				ENABLE_BITCODE = NO;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;

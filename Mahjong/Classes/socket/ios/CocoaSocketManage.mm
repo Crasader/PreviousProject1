@@ -11,11 +11,6 @@
 
 CocoaSocketManage* CocoaSocketManage::_instance = NULL;
 
-CocoaSocketManage::CocoaSocketManage(){
-    
-}
-
-
 CocoaSocketManage* CocoaSocketManage::getInstance(){
     if (_instance == NULL){
         _instance = new CocoaSocketManage();
@@ -23,9 +18,25 @@ CocoaSocketManage* CocoaSocketManage::getInstance(){
     return _instance;
 }
 
-void CocoaSocketManage::connectSocket(){
+CocoaSocketManage::CocoaSocketManage(){
+    
+}
+
+void CocoaSocketManage::connectSocket(std::string host, int port){
     CocoaSocket *socket = [CocoaSocket sharedSocket];
-    socket.port = 9999; // 端口
-    socket.socketHost = @"183.129.206.54"; //IP
+    socket.port = port; // 端口
+    socket.socketHost = [NSString stringWithUTF8String:host.c_str()];; //IP
     [socket startConnectSocket];
 }
+
+
+void CocoaSocketManage::sendScoketData(std::string msg){
+    CocoaSocket *socket = [CocoaSocket sharedSocket];
+    [socket socketWriteData:[NSString stringWithUTF8String:msg.c_str()]];
+}
+
+std::string CocoaSocketManage::receiveScoketData(){
+
+    return "";
+}
+

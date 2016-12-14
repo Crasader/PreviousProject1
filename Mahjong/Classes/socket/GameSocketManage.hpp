@@ -13,6 +13,8 @@ class GameSocketManage{
 public:
     static GameSocketManage* getInstance();
     void socketConnect();
+    void sendScoketData(std::string msg);
+    std::string receiveScoketData();
 private:
     GameSocketManage();
     static GameSocketManage* _instance;

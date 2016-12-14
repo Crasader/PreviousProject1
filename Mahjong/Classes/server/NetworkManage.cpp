@@ -6,9 +6,6 @@
 NetworkManage* NetworkManage::_instance = NULL;
 std::string NetworkManage::allReciveInfo;
 
-//const char* ip = "172.23.1.251";
-const char* ip = "183.129.206.54";
-const int port = 9999;
 
 NetworkManage* NetworkManage::getInstance() {
     if (NULL == _instance) {

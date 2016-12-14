@@ -12,7 +12,9 @@
 class CocoaSocketManage{
 public:
     static CocoaSocketManage* getInstance();
-    void connectSocket();
+    void connectSocket(std::string host, int port);
+    void sendScoketData(std::string msg);
+    std::string receiveScoketData();
 private:
     CocoaSocketManage();
     static CocoaSocketManage* _instance;

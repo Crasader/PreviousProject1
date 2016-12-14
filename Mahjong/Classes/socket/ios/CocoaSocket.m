@@ -9,6 +9,10 @@
 #import "socket/ios/CocoaSocket.h"
 #import "socket/ios/cocoa/GCDAsyncSocket.h"
 
+static const NSInteger maxReconnection_times = 3;//最大重连次数设置为3.
+static const NSInteger kBeatLimit = 3;//心跳丢失最大次数
+static const NSInteger socket_timeout = 10;//心跳丢失最大次数
+
 @interface CocoaSocket ()<GCDAsyncSocketDelegate>
 @property (nonatomic, strong) GCDAsyncSocket *asyncSocket;
 @end
@@ -35,21 +39,132 @@
  看情况写队列
  */
 - (instancetype)init {
-    if (self = [super init]) {
-        _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+    
+    self = [super init];
+    if (!self) {
+        return nil;
     }
+    self.connectStatus = -1;
     return self;
 }
 
+//创建连接
 - (void)startConnectSocket {
+    if (self.connectStatus != -1) {
+        NSLog(@"Socket Connect: YES");
+        return;
+    }
     
+    self.connectStatus = 0;
+    
+    _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
     NSError *error = nil;
-    [_asyncSocket acceptOnPort:self.port error:&error];
-    
+    [_asyncSocket connectToHost:self.socketHost onPort:self.port error:&error];
+    [_asyncSocket setIPv4PreferredOverIPv6:true];
     if (!error) {
         NSLog(@"服务开启成功");
     } else {
+        self.connectStatus = -1;
         NSLog(@"服务开启失败 %@", error);
+    }
+}
+
+//发送心跳
+- (void)socketDidConnectBeginSendBeat:(NSString *)beatBody {
+    NSLog(@"GCDAsyncSocket--->socketDidConnectBeginSendBeat");
+    self.connectStatus = 1;
+    self.reconnectionCount = 0;
+    if (!self.beatTimer) {
+        self.beatTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                                          target:self
+                                                        selector:@selector(sendBeat:)
+                                                        userInfo:beatBody
+                                                         repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:self.beatTimer forMode:NSRunLoopCommonModes];
+    }
+}
+
+//连接断开代理
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err;
+{
+    self.connectStatus = -1;
+    if (self.reconnectionCount >= 0 && self.reconnectionCount <= kBeatLimit) {
+        NSTimeInterval time = pow(2, self.reconnectionCount);
+        if (!self.reconnectTimer) {
+            self.reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:time
+                                                                   target:self
+                                                                 selector:@selector(reconnection:)
+                                                                 userInfo:nil
+                                                                  repeats:NO];
+            [[NSRunLoop mainRunLoop] addTimer:self.reconnectTimer forMode:NSRunLoopCommonModes];
+        }
+        self.reconnectionCount++;
+    } else {
+        [self.reconnectTimer invalidate];
+        self.reconnectTimer = nil;
+        self.reconnectionCount = 0;
+    }
+}
+
+//连接成功代理
+- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
+{
+    NSLog(@"GCDAsyncSocket--->didConnectToHost");
+}
+
+//发送数据代理
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
+{
+    NSLog(@"GCDAsyncSocket--->didWriteDataWithTag");
+}
+
+//接收数据代理
+-(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+    NSLog(@"GCDAsyncSocket--->didReadData");
+}
+
+
+- (void)socketWriteData:(NSString *)data {
+    NSData *requestData = [data dataUsingEncoding:NSUTF8StringEncoding];
+    [_asyncSocket writeData:requestData withTimeout:-1 tag:0];
+    [self socketBeginReadData];
+}
+
+- (void)socketBeginReadData {
+    [_asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:socket_timeout maxLength:0 tag:0];
+}
+
+- (void)disconnectSocket {
+    self.reconnectionCount = -1;
+    [_asyncSocket disconnect];
+    
+    [self.beatTimer invalidate];
+    self.beatTimer = nil;
+}
+
+#pragma mark - public method
+- (void)resetBeatCount {
+    self.beatCount = 0;
+}
+
+#pragma mark - private method
+- (void)sendBeat:(NSTimer *)timer {
+    if (self.beatCount >= kBeatLimit) {
+        [self disconnectSocket];
+        return;
+    } else {
+        self.beatCount++;
+    }
+    if (timer != nil) {
+        [self socketWriteData:timer.userInfo];
+    }
+}
+
+- (void)reconnection:(NSTimer *)timer {
+    NSError *error = nil;
+    if (![_asyncSocket connectToHost:self.socketHost onPort:self.port withTimeout:socket_timeout error:&error]) {
+        self.connectStatus = -1;
     }
 }
 
