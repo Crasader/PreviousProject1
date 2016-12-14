@@ -34,6 +34,7 @@
 - (void)socketDidConnectBeginSendBeat:(nonnull NSString *)beatBody;
 
 
+
 /**
  *  向服务器发送数据
  *

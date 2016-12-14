@@ -1494,6 +1494,7 @@ void MahjongView::addPlayerOffLineListener(){
 
 void MahjongView::addPlayerResumeListener(){
     playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
+        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });

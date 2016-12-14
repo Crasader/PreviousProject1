@@ -11,7 +11,7 @@
 #import "socket/ios/CocoaSocketManage.h"
 
 static const NSInteger maxReconnection_times = 3;//最大重连次数设置为3.
-static const NSInteger kBeatLimit = 3000;//心跳丢失最大次数
+static const NSInteger kBeatLimit = 3;//心跳丢失最大次数
 static const NSInteger socket_timeout = 10;//超时时间
 
 @interface CocoaSocket ()<GCDAsyncSocketDelegate>
@@ -85,11 +85,14 @@ static const NSInteger socket_timeout = 10;//超时时间
     }
 }
 
+
 //连接断开代理
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err;
 {
     self.connectStatus = -1;
-    if (self.reconnectionCount >= 0 && self.reconnectionCount <= kBeatLimit) {
+    NSLog(@"GCDAsyncSocket--->socketDidDisconnect");
+    self.reconnectionCount = 0;
+    if (self.reconnectionCount >= 0 && self.reconnectionCount <= maxReconnection_times) {
         NSTimeInterval time = pow(2, self.reconnectionCount);
         if (!self.reconnectTimer) {
             self.reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:time
@@ -100,7 +103,7 @@ static const NSInteger socket_timeout = 10;//超时时间
             [[NSRunLoop mainRunLoop] addTimer:self.reconnectTimer forMode:NSRunLoopCommonModes];
         }
         self.reconnectionCount++;
-    } else {
+    }else {
         [self.reconnectTimer invalidate];
         self.reconnectTimer = nil;
         self.reconnectionCount = 0;
@@ -125,8 +128,9 @@ static const NSInteger socket_timeout = 10;//超时时间
 {
     //    NSLog(@"GCDAsyncSocket--->didReadData");
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
-    //    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"+PX" withString:@""];
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
+//    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"PX+" withString:@""];
+//    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"+PX" withString:@""];
     NSLog(@"receive = %@",jsonString);
     if(jsonString != nil){
         CocoaSocketManage::getInstance()->receiveScoketData([jsonString UTF8String]);
@@ -145,7 +149,7 @@ static const NSInteger socket_timeout = 10;//超时时间
 }
 
 - (void)socketBeginReadData {
-//    [_asyncSocket readDataWithTimeout:-1 tag:0];
+    //    [_asyncSocket readDataWithTimeout:-1 tag:0];
     [_asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:1]; //读到回车换行符才触发
     
 }
@@ -164,6 +168,8 @@ static const NSInteger socket_timeout = 10;//超时时间
 }
 
 #pragma mark - private method
+
+
 - (void)sendBeat:(NSTimer *)timer {
     if (self.beatCount >= kBeatLimit) {
         [self disconnectSocket];
@@ -177,6 +183,7 @@ static const NSInteger socket_timeout = 10;//超时时间
 }
 
 - (void)reconnection:(NSTimer *)timer {
+    NSLog(@"重新连接");
     NSError *error = nil;
     if (![_asyncSocket connectToHost:self.socketHost onPort:self.port withTimeout:socket_timeout error:&error]) {
         self.connectStatus = -1;

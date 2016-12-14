@@ -14,11 +14,14 @@ NetworkManage* NetworkManage::getInstance() {
 
 NetworkManage::NetworkManage() {
     GameSocketManage::getInstance()->socketConnect();
-    GameSocketManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
 }
 
 void NetworkManage::sendMsg(std::string code) {
     GameSocketManage::getInstance()->sendScoketData(code);
+}
+
+void NetworkManage::startSocketBeat(std::string msg){
+    GameSocketManage::getInstance()->startSocketBeat(msg);
 }
 
 void NetworkManage::receiveMsg(std::string msg){

@@ -374,8 +374,8 @@ void SplashScene::onEnter(){
     loginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
-        
         if (result == LOGIN_SUCCESS){
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));//房间列表
         }
         else{
@@ -406,6 +406,7 @@ void SplashScene::onEnter(){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(result == "2")
@@ -431,6 +432,7 @@ void SplashScene::onEnter(){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){

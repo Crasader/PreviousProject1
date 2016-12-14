@@ -11,6 +11,7 @@ USING_NS_CC;
 class NetworkManage : public Node{
 public:
 	static NetworkManage* getInstance();
+    void startSocketBeat(std::string msg);
 	void sendMsg(std::string code);
     void receiveMsg(std::string msg);
 private:

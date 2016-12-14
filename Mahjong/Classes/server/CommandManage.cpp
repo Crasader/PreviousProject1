@@ -362,6 +362,7 @@ std::string CommandManage::getThirdLoginCommand(std::string openid,std::string h
     keyValue.insert(map<string, string>::value_type("hstype", hstype));
     keyValue.insert(map<string, string>::value_type("imsi", imsi));
     keyValue.insert(map<string, string>::value_type("imei", imei));
+    keyValue.insert(map<string, string>::value_type("fff", "1"));
     return commandString(keyValue);
     
 }
@@ -454,6 +455,7 @@ std::string CommandManage::getVistorLogin(){
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_LOGIN_GUEST_REQUEST)));
     keyValue.insert(map<string, string>::value_type("hsman", "APPLE"));
     keyValue.insert(map<string, string>::value_type("hstype", "IOS_VISITOR"));
+    keyValue.insert(map<string, string>::value_type("fff", "1"));
     return commandString(keyValue);
 }
 
@@ -464,6 +466,7 @@ std::string CommandManage::getVistorLoginAgain(std::string username,std::string 
     keyValue.insert(map<string, string>::value_type("hstype", "IOS_VISITOR"));
     keyValue.insert(map<string, string>::value_type("username", username));
     keyValue.insert(map<string, string>::value_type("password", password));
+    keyValue.insert(map<string, string>::value_type("fff", "1"));
     return commandString(keyValue);
 }
 
