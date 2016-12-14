@@ -8,9 +8,10 @@
 
 #include "socket/GameSocketManage.hpp"
 #import "socket/ios/CocoaSocketManage.h"
+#include "server/NetworkManage.h"
 
-//const char* ip = "172.23.1.251";
-const char* ip = "183.129.206.54";
+const char* ip = "172.23.1.251";
+//const char* ip = "183.129.206.54";
 const int port = 9999;
 
 GameSocketManage* GameSocketManage::_instance = NULL;
@@ -24,7 +25,7 @@ GameSocketManage* GameSocketManage::getInstance(){
 }
 
 GameSocketManage::GameSocketManage(){
-
+    
 }
 
 void GameSocketManage::socketConnect(){
@@ -36,18 +37,26 @@ void GameSocketManage::socketConnect(){
 #endif
 }
 
+void GameSocketManage::startSocketBeat(std::string msg){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    CocoaSocketManage::getInstance()->startScoketBeat(msg);
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    
+#endif
+}
+
 void GameSocketManage::sendScoketData(std::string msg){
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     CocoaSocketManage::getInstance()->sendScoketData(msg);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     
 #endif
-
+    
 }
-std::string GameSocketManage::receiveScoketData(){
+void GameSocketManage::receiveScoketData(std::string msg){
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-    return CocoaSocketManage::getInstance()->receiveScoketData();
+    NetworkManage::getInstance()->receiveMsg(msg);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    return ""
+//    return "";
 #endif
 }

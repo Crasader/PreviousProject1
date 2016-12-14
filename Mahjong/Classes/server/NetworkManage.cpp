@@ -4,8 +4,6 @@
 #include "socket/GameSocketManage.hpp"
 
 NetworkManage* NetworkManage::_instance = NULL;
-std::string NetworkManage::allReciveInfo;
-
 
 NetworkManage* NetworkManage::getInstance() {
     if (NULL == _instance) {
@@ -15,30 +13,14 @@ NetworkManage* NetworkManage::getInstance() {
 }
 
 NetworkManage::NetworkManage() {
-    connectServer();
-}
-
-void NetworkManage::connectServer() {
     GameSocketManage::getInstance()->socketConnect();
+    GameSocketManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
 }
 
 void NetworkManage::sendMsg(std::string code) {
-   
+    GameSocketManage::getInstance()->sendScoketData(code);
 }
 
-void NetworkManage::heartbeat() {
-    std::thread recvThread = std::thread(&NetworkManage::sendHeartBeat, this);
-    recvThread.detach();
-}
-
-void NetworkManage::sendHeartBeat() {
-    
-}
-
-void NetworkManage::receiveData() {
-    
-}
-
-int NetworkManage::getMsgLength(std::string str) {
-    return str.length();
+void NetworkManage::receiveMsg(std::string msg){
+    SocketDataManage::getInstance()->pushMsg(msg);
 }

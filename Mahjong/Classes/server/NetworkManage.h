@@ -11,16 +11,10 @@ USING_NS_CC;
 class NetworkManage : public Node{
 public:
 	static NetworkManage* getInstance();
-	void heartbeat();
 	void sendMsg(std::string code);
+    void receiveMsg(std::string msg);
 private:
 	NetworkManage();
-	static std::string allReciveInfo;
 	static NetworkManage* _instance;
-	void sendHeartBeat();
-	void receiveData();
-	void connectServer();
-	int getMsgLength(std::string);
-	void parserJson();
 };
 #endif

@@ -8,10 +8,11 @@
 
 #import "socket/ios/CocoaSocket.h"
 #import "socket/ios/cocoa/GCDAsyncSocket.h"
+#import "socket/ios/CocoaSocketManage.h"
 
 static const NSInteger maxReconnection_times = 3;//最大重连次数设置为3.
-static const NSInteger kBeatLimit = 3;//心跳丢失最大次数
-static const NSInteger socket_timeout = 10;//心跳丢失最大次数
+static const NSInteger kBeatLimit = 3000;//心跳丢失最大次数
+static const NSInteger socket_timeout = 10;//超时时间
 
 @interface CocoaSocket ()<GCDAsyncSocketDelegate>
 @property (nonatomic, strong) GCDAsyncSocket *asyncSocket;
@@ -71,7 +72,7 @@ static const NSInteger socket_timeout = 10;//心跳丢失最大次数
 
 //发送心跳
 - (void)socketDidConnectBeginSendBeat:(NSString *)beatBody {
-    NSLog(@"GCDAsyncSocket--->socketDidConnectBeginSendBeat");
+    //    NSLog(@"GCDAsyncSocket--->socketDidConnectBeginSendBeat");
     self.connectStatus = 1;
     self.reconnectionCount = 0;
     if (!self.beatTimer) {
@@ -109,30 +110,44 @@ static const NSInteger socket_timeout = 10;//心跳丢失最大次数
 //连接成功代理
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
-    NSLog(@"GCDAsyncSocket--->didConnectToHost");
+    //    NSLog(@"GCDAsyncSocket--->didConnectToHost");
+    [self socketBeginReadData];
 }
 
 //发送数据代理
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-    NSLog(@"GCDAsyncSocket--->didWriteDataWithTag");
+    //    NSLog(@"GCDAsyncSocket--->didWriteDataWithTag");
 }
 
 //接收数据代理
 -(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-    NSLog(@"GCDAsyncSocket--->didReadData");
+    //    NSLog(@"GCDAsyncSocket--->didReadData");
+    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
+    //    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"+PX" withString:@""];
+    NSLog(@"receive = %@",jsonString);
+    if(jsonString != nil){
+        CocoaSocketManage::getInstance()->receiveScoketData([jsonString UTF8String]);
+    }else{
+        NSLog(@"didReadData error");
+    }
+    [self socketBeginReadData];
 }
 
 
 - (void)socketWriteData:(NSString *)data {
+    NSLog(@"send = %@",data);
     NSData *requestData = [data dataUsingEncoding:NSUTF8StringEncoding];
     [_asyncSocket writeData:requestData withTimeout:-1 tag:0];
     [self socketBeginReadData];
 }
 
 - (void)socketBeginReadData {
-    [_asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:socket_timeout maxLength:0 tag:0];
+//    [_asyncSocket readDataWithTimeout:-1 tag:0];
+    [_asyncSocket readDataToData:[GCDAsyncSocket CRLFData] withTimeout:-1 tag:1]; //读到回车换行符才触发
+    
 }
 
 - (void)disconnectSocket {

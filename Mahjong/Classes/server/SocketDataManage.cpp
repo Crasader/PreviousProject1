@@ -20,10 +20,6 @@ bool SocketDataManage::init(){
 void SocketDataManage::update(float dt){
     m_mutex.lock();
     if(!m_msgList.empty()){
-//        if (!Director::getInstance()->getEventDispatcher()->isEnabled())
-//        {
-//            return;
-//        }
         MsgHandler::getInstance()->handleMsg(m_msgList.front());
         m_msgList.pop();
     }

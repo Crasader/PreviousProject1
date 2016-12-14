@@ -69,7 +69,7 @@ void SplashScene::loginByWechat(){
     //oTIvfwqK9YwoAi1dANUQjhlhOAZ4
     //oTIvfwnO4yCaBasG7qJedNbiGuG0
     //oTIvfwqiQATud13d_KcSq0AiuIP4
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwnO4yCaBasG7qJedNbiGuG0", "http://wyhl.5278-mobi.com:1111/iphone.png","1","金将军","MAC","MAC","11111111111","11111111111","1.0.0"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwm1C14AtD2bnuoQrXtGWzhY", "http://wyhl.5278-mobi.com:1111/iphone.png","1","金将军","MAC","MAC","11111111111","11111111111","1.0.0"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     IOSBridge::getInstance()->doWechatLogin();
@@ -377,7 +377,6 @@ void SplashScene::onEnter(){
         
         if (result == LOGIN_SUCCESS){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));//房间列表
-            NetworkManage::getInstance()->heartbeat();//心跳
         }
         else{
             removeLoading();
@@ -396,7 +395,6 @@ void SplashScene::onEnter(){
     
     //断线续玩
     reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
-        NetworkManage::getInstance()->heartbeat();
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
@@ -408,7 +406,6 @@ void SplashScene::onEnter(){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
-            NetworkManage::getInstance()->heartbeat();
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(result == "2")
@@ -434,7 +431,6 @@ void SplashScene::onEnter(){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
-            NetworkManage::getInstance()->heartbeat();
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){

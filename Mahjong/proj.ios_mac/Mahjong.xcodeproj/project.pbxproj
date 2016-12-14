@@ -264,8 +264,8 @@
 		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		D278ADC01DFFC23400C90B25 /* CocoaSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */; };
-		D278ADC11DFFC23400C90B25 /* CocoaSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */; };
+		D278ADC01DFFC23400C90B25 /* CocoaSocket.mm in Sources */ = {isa = PBXBuildFile; fileRef = D278ADBB1DFFC23400C90B25 /* CocoaSocket.mm */; };
+		D278ADC11DFFC23400C90B25 /* CocoaSocket.mm in Sources */ = {isa = PBXBuildFile; fileRef = D278ADBB1DFFC23400C90B25 /* CocoaSocket.mm */; };
 		D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */; };
 		D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */; };
 		D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */; };
@@ -283,12 +283,12 @@
 		D294FE1F1D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
 		D294FE201D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
+		D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
+		D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
 		D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */; };
 		D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */; };
 		D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A85E1CCDF0F300A20896 /* MsgHandler.cpp */; };
 		D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A85E1CCDF0F300A20896 /* MsgHandler.cpp */; };
-		D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8601CCDF0F300A20896 /* NetworkManage.cpp */; };
-		D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8601CCDF0F300A20896 /* NetworkManage.cpp */; };
 		D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */; };
 		D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */; };
 		D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
@@ -589,7 +589,7 @@
 		D278ADB81DFFC23400C90B25 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		D278ADBA1DFFC23400C90B25 /* CocoaSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSocket.h; sourceTree = "<group>"; };
-		D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSocket.m; sourceTree = "<group>"; };
+		D278ADBB1DFFC23400C90B25 /* CocoaSocket.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaSocket.mm; sourceTree = "<group>"; };
 		D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSocketManage.cpp; sourceTree = "<group>"; };
 		D278ADC41DFFCBCF00C90B25 /* GameSocketManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSocketManage.hpp; sourceTree = "<group>"; };
 		D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaSocketManage.mm; sourceTree = "<group>"; };
@@ -606,13 +606,13 @@
 		D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WxLoginHandler.h; sourceTree = "<group>"; };
 		D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManage.cpp; sourceTree = "<group>"; };
+		D2A86CE71E01286C00B67F86 /* NetworkManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
 		D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D2B1A85D1CCDF0F300A20896 /* MsgConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgConfig.h; sourceTree = "<group>"; };
 		D2B1A85E1CCDF0F300A20896 /* MsgHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MsgHandler.cpp; sourceTree = "<group>"; };
 		D2B1A85F1CCDF0F300A20896 /* MsgHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgHandler.h; sourceTree = "<group>"; };
-		D2B1A8601CCDF0F300A20896 /* NetworkManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManage.cpp; sourceTree = "<group>"; };
-		D2B1A8611CCDF0F300A20896 /* NetworkManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
 		D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketDataManage.cpp; sourceTree = "<group>"; };
 		D2B1A8631CCDF0F300A20896 /* SocketDataManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketDataManage.h; sourceTree = "<group>"; };
 		D2B1A86D1CCDF0F400A20896 /* UserData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserData.cpp; sourceTree = "<group>"; };
@@ -1391,7 +1391,7 @@
 			children = (
 				D278ADB51DFFC23400C90B25 /* cocoa */,
 				D278ADBA1DFFC23400C90B25 /* CocoaSocket.h */,
-				D278ADBB1DFFC23400C90B25 /* CocoaSocket.m */,
+				D278ADBB1DFFC23400C90B25 /* CocoaSocket.mm */,
 				D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */,
 				D278ADCC1DFFCF5800C90B25 /* CocoaSocketManage.h */,
 			);
@@ -1425,13 +1425,13 @@
 		D2B1A85A1CCDF0F300A20896 /* server */ = {
 			isa = PBXGroup;
 			children = (
+				D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */,
+				D2A86CE71E01286C00B67F86 /* NetworkManage.h */,
 				D22912471D12C583005C7167 /* CommandManage.cpp */,
 				D22912481D12C583005C7167 /* CommandManage.h */,
 				D2B1A85D1CCDF0F300A20896 /* MsgConfig.h */,
 				D2B1A85F1CCDF0F300A20896 /* MsgHandler.h */,
 				D2B1A85E1CCDF0F300A20896 /* MsgHandler.cpp */,
-				D2B1A8601CCDF0F300A20896 /* NetworkManage.cpp */,
-				D2B1A8611CCDF0F300A20896 /* NetworkManage.h */,
 				D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */,
 				D2B1A8631CCDF0F300A20896 /* SocketDataManage.h */,
 			);
@@ -1693,7 +1693,7 @@
 				D26778DF1DF00697003CE73F /* RoomFullDialog.cpp in Sources */,
 				D26778E51DF00698003CE73F /* MahjongNumberKeypads.cpp in Sources */,
 				D257FD7A1D6C2E2400B8C596 /* RechargeVC.mm in Sources */,
-				D278ADC01DFFC23400C90B25 /* CocoaSocket.m in Sources */,
+				D278ADC01DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
 				D267790F1DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
 				D26779011DF00698003CE73F /* PlayerLeft.cpp in Sources */,
 				D26778E91DF00698003CE73F /* HeroInfoEdit.cpp in Sources */,
@@ -1720,7 +1720,6 @@
 				D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */,
 				D26779211DF00698003CE73F /* ChargeGold.cpp in Sources */,
-				D2B1A8FB1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D26778ED1DF00698003CE73F /* UserInfo.cpp in Sources */,
 				D26778F71DF00698003CE73F /* LobbyScene.cpp in Sources */,
 				D26778E71DF00698003CE73F /* HeadImageDialog.cpp in Sources */,
@@ -1759,6 +1758,7 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D267791B1DF00698003CE73F /* ChargeItem.cpp in Sources */,
 				D267790B1DF00698003CE73F /* ResultScene.cpp in Sources */,
+				D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D26779251DF00698003CE73F /* Huode.cpp in Sources */,
 				D26778F91DF00698003CE73F /* NoticeDialog.cpp in Sources */,
 				D26778EF1DF00698003CE73F /* Jong.cpp in Sources */,
@@ -1799,7 +1799,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D267791C1DF00698003CE73F /* ChargeItem.cpp in Sources */,
-				D278ADC11DFFC23400C90B25 /* CocoaSocket.m in Sources */,
+				D278ADC11DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
 				D26778EE1DF00698003CE73F /* UserInfo.cpp in Sources */,
 				D26779121DF00698003CE73F /* GameFeedDialog.cpp in Sources */,
 				D26778BE1DF00697003CE73F /* FaceChatLayer.cpp in Sources */,
@@ -1843,6 +1843,7 @@
 				D26778F21DF00698003CE73F /* Loading.cpp in Sources */,
 				D26778D81DF00697003CE73F /* TextHintDialog.cpp in Sources */,
 				D26779041DF00698003CE73F /* PlayerOpposite.cpp in Sources */,
+				D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D26778CA1DF00697003CE73F /* Orientation.cpp in Sources */,
 				D267792C1DF00698003CE73F /* LequanExchangeRecord.cpp in Sources */,
 				D26779101DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
@@ -1887,7 +1888,6 @@
 				D26778F61DF00698003CE73F /* GoldRoomPlate.cpp in Sources */,
 				D26778E01DF00697003CE73F /* RoomFullDialog.cpp in Sources */,
 				D26778CC1DF00697003CE73F /* QuitRoomDialog.cpp in Sources */,
-				D2B1A8FC1CCDF0F400A20896 /* NetworkManage.cpp in Sources */,
 				D26778BA1DF00697003CE73F /* BillInfo.cpp in Sources */,
 				D267792A1DF00698003CE73F /* ExchangePropCell.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
