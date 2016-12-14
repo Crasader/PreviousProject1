@@ -47,3 +47,8 @@ void CocoaSocketManage::receiveScoketData(std::string msg){
     GameSocketManage::getInstance()->receiveScoketData(msg);
 }
 
+void CocoaSocketManage::resetBeatCount(){
+    CocoaSocket *socket = [CocoaSocket sharedSocket];
+    [socket resetBeatCount];
+}
+

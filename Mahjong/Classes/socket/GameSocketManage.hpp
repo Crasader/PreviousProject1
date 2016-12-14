@@ -16,6 +16,7 @@ public:
     void startSocketBeat(std::string msg);
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);
+    void resetBeatCount();
 private:
     GameSocketManage();
     static GameSocketManage* _instance;

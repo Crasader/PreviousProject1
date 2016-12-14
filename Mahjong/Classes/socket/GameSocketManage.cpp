@@ -60,3 +60,11 @@ void GameSocketManage::receiveScoketData(std::string msg){
 //    return "";
 #endif
 }
+
+void GameSocketManage::resetBeatCount(){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    CocoaSocketManage::getInstance()->resetBeatCount();
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    //    return "";
+#endif
+}

@@ -9,6 +9,7 @@
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/utils/StringUtil.h"
 #include "server/SocketDataManage.h"
+#include "server/NetworkManage.h"
 
 #define RETURN_IF(cond)           if((cond)) return
 
@@ -46,6 +47,10 @@ void MsgHandler::handleMsg(std::string msg){
 void MsgHandler::distribute(int code, std::string msg){
     switch (code)
     {
+        case MSGCODE_HEARTBEAT_RETURN:{
+            NetworkManage::getInstance()->resetBeatCount();
+            break;
+        }
         case MSGCODE_GET_ROOMSTYLE_LIST_RESPONSE:
         {
             log(" *** room list resp *** ");
@@ -604,7 +609,7 @@ void MsgHandler::showOtherReady(std::string msg){
 
 void MsgHandler::getHeroJongs(std::string msg){
     //{code:2002, poxiaoId : poxiaoId, start : 1, poker : 1, 2, 4, 5, 6}
-//    SocketDataManage::getInstance()->pauseMsg();
+    //    SocketDataManage::getInstance()->pauseMsg();
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -663,7 +668,7 @@ void MsgHandler::getHeroJongs(std::string msg){
     }
     GAMEDATA::getInstance()->setPlayerCpgt(tingData);
     GAMEDATA::getInstance()->setStartFaPai(true);
-//    postNotifyMessage(MSG_GAME_START_NOTIFY, "");
+    //    postNotifyMessage(MSG_GAME_START_NOTIFY, "");
 }
 
 

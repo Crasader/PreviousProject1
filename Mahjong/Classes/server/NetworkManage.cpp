@@ -27,3 +27,7 @@ void NetworkManage::startSocketBeat(std::string msg){
 void NetworkManage::receiveMsg(std::string msg){
     SocketDataManage::getInstance()->pushMsg(msg);
 }
+
+void NetworkManage::resetBeatCount(){
+    GameSocketManage::getInstance()->resetBeatCount();
+}

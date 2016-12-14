@@ -91,23 +91,24 @@ static const NSInteger socket_timeout = 10;//超时时间
 {
     self.connectStatus = -1;
     NSLog(@"GCDAsyncSocket--->socketDidDisconnect");
-    self.reconnectionCount = 0;
-    if (self.reconnectionCount >= 0 && self.reconnectionCount <= maxReconnection_times) {
-        NSTimeInterval time = pow(2, self.reconnectionCount);
-        if (!self.reconnectTimer) {
-            self.reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:time
-                                                                   target:self
-                                                                 selector:@selector(reconnection:)
-                                                                 userInfo:nil
-                                                                  repeats:NO];
-            [[NSRunLoop mainRunLoop] addTimer:self.reconnectTimer forMode:NSRunLoopCommonModes];
-        }
-        self.reconnectionCount++;
-    }else {
-        [self.reconnectTimer invalidate];
-        self.reconnectTimer = nil;
-        self.reconnectionCount = 0;
-    }
+//    [self startConnectSocket];
+//    self.reconnectionCount = 0;
+//    if (self.reconnectionCount >= 0 && self.reconnectionCount <= maxReconnection_times) {
+//        NSTimeInterval time = pow(2, self.reconnectionCount);
+//        if (!self.reconnectTimer) {
+//            self.reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:time
+//                                                                   target:self
+//                                                                 selector:@selector(reconnection:)
+//                                                                 userInfo:nil
+//                                                                  repeats:NO];
+//            [[NSRunLoop mainRunLoop] addTimer:self.reconnectTimer forMode:NSRunLoopCommonModes];
+//        }
+//        self.reconnectionCount++;
+//    }else {
+//        [self.reconnectTimer invalidate];
+//        self.reconnectTimer = nil;
+//        self.reconnectionCount = 0;
+//    }
 }
 
 //连接成功代理
@@ -129,8 +130,8 @@ static const NSInteger socket_timeout = 10;//超时时间
     //    NSLog(@"GCDAsyncSocket--->didReadData");
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
-//    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"PX+" withString:@""];
-//    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"+PX" withString:@""];
+    //    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"PX+" withString:@""];
+    //    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"+PX" withString:@""];
     NSLog(@"receive = %@",jsonString);
     if(jsonString != nil){
         CocoaSocketManage::getInstance()->receiveScoketData([jsonString UTF8String]);

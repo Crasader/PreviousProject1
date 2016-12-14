@@ -16,6 +16,7 @@ public:
     void startScoketBeat(std::string msg);
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);
+    void resetBeatCount();
 private:
     CocoaSocketManage();
     static CocoaSocketManage* _instance;

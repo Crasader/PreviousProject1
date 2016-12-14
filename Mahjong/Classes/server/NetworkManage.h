@@ -14,6 +14,7 @@ public:
     void startSocketBeat(std::string msg);
 	void sendMsg(std::string code);
     void receiveMsg(std::string msg);
+     void resetBeatCount();
 private:
 	NetworkManage();
 	static NetworkManage* _instance;
