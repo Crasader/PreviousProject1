@@ -46,7 +46,7 @@ void PlayerLeft::drawPlayedJong(int ctype){
     addChild(lastPlayedJong);
     playerPlayedJongs.pushBack(lastPlayedJong);
     Point startPoint = Point(LEFT_POS_X, LEFT_POS_Y - 35);
-    Point endPoint = getPlayedJongPos(playerPlayedJongs.size() - 1);
+    Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
     ccBezierConfig bezier;
     bezier.controlPoint_1 = startPoint;
     bezier.controlPoint_2 = Point(startPoint.x + (endPoint.x - startPoint.x) * 0.5,
@@ -93,7 +93,7 @@ Point PlayerLeft::getPlayedJongPos(int count){
 
 
 void PlayerLeft::showCurrentPlayedJongIcon(bool isShow){
-    biaoji->setPosition(getPlayedJongPos(playerPlayedJongs.size() - 1).x, getPlayedJongPos(playerPlayedJongs.size() - 1).y + 20);
+    biaoji->setPosition(getPlayedJongPos((int)playerPlayedJongs.size() - 1).x, getPlayedJongPos((int)playerPlayedJongs.size() - 1).y + 20);
     biaoji->setVisible(isShow);
 }
 
@@ -132,7 +132,7 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
         Jong* jong = Jong::create();
         jong->setScale(0.8f);
         jong->showJong(leftplayed, atoi(chi.at(i).c_str()));
-        jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * i);
+        jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i);
         this->addChild(jong,10);
         record.pokersRecord.pushBack(jong);
     }
@@ -159,7 +159,7 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
         Jong* jong = Jong::create();
         jong->setScale(0.8f);
         jong->showJong(leftplayed, atoi(peng.at(i).c_str()));
-        jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * i);
+        jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i);
         this->addChild(jong, 10);
         record.pokersRecord.pushBack(jong);
     }
@@ -208,21 +208,21 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
         if (data.flag == 0){
             playerBase->removeLastJong();
         }
-        for (int i = 0; i < gang.size(); i++){
+        for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
             if (data.flag == 1){
                 jong->showJong(leftdeal, -1);
                 jong->setScale(0.7f);
             }
             else{
-                jong->showJong(leftplayed, atoi(gang.at(i).c_str()));
+                jong->showJong(leftplayed, atoi(gang.at(0).c_str()));
                 jong->setScale(0.8f);
             }
             if (i == 3){
-                jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x + 2, getCpgShowPostion(playerCpgRecords.size()).y - 16);
+                jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
             }
             else{
-                jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * i);
+                jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i);
             }
             this->addChild(jong, 10);
             record.pokersRecord.pushBack(jong);
@@ -247,7 +247,7 @@ void PlayerLeft::recoverPlayed(std::string played){
     for (int i = 0; i < playeds.size(); i++){
         Jong* lastPlayedJong = Jong::create();
         lastPlayedJong->showJong(leftplayed, atoi(playeds.at(i).c_str()));
-        lastPlayedJong->setPosition(getPlayedJongPos(playerPlayedJongs.size()));
+        lastPlayedJong->setPosition(getPlayedJongPos((int)playerPlayedJongs.size()));
         this->addChild(lastPlayedJong);
         playerPlayedJongs.pushBack(lastPlayedJong);
     }
@@ -270,7 +270,7 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 Jong* jong = Jong::create();
                 jong->setScale(0.8f);
                 jong->showJong(leftplayed, atoi(chiPoker.at(j).c_str()));
-                jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * j);
+                jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * j);
                 this->addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
             }
@@ -285,7 +285,7 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 Jong* jong = Jong::create();
                 jong->setScale(0.8f);
                 jong->showJong(leftplayed, atoi(peng.at(i).peng.c_str()));
-                jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * j);
+                jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * j);
                 this->addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
             }
@@ -301,10 +301,10 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 jong->setScale(0.8f);
                 jong->showJong(leftplayed, atoi(gang.at(i).gang.c_str()));
                 if (j == 3){
-                    jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x + 2, getCpgShowPostion(playerCpgRecords.size()).y - 16);
+                    jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
                 }
                 else{
-                    jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * j);
+                    jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * j);
                 }
                 this->addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
@@ -320,10 +320,10 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             jong->setScale(0.8f);
             jong->showJong(leftdeal, -1);
             if (j == 3){
-                jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x + 2, getCpgShowPostion(playerCpgRecords.size()).y - 16);
+                jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
             }
             else{
-                jong->setPosition(getCpgShowPostion(playerCpgRecords.size()).x, getCpgShowPostion(playerCpgRecords.size()).y - 22 * j);
+                jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * j);
             }
             
             this->addChild(jong,10);

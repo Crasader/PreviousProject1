@@ -74,7 +74,6 @@ static NSString *DEVICESTRING= @"iphone";
     }else{
         BOOL result = [self checkTokenOutTime];
         if(result){
-            NSString* deviceString = [LoginByWechat getDeviceString];
             WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
             return true;
         }else{
@@ -137,8 +136,7 @@ static NSString *DEVICESTRING= @"iphone";
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
                 UserData::getInstance()->setGender(atoi(std::string([sexStr UTF8String]).c_str()));
                 UserData::getInstance()->setNickName(std::string([nicknameStr UTF8String]));
-                NSString* deviceString = [LoginByWechat getDeviceString];
-                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]),std::string([sexStr UTF8String]),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([deviceString UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
+                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]),std::string([sexStr UTF8String]),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");
                 [self sendAuthRequestScope];

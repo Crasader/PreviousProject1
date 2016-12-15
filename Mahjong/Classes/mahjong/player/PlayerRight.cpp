@@ -203,14 +203,14 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
         if (data.flag == 0){
             playerBase->removeLastJong();
         }
-        for (int i = 0; i < gang.size(); i++){
+        for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
             if (data.flag == 1){
                 jong->showJong(rightdeal, -1);
                 jong->setScale(0.86f);
             }
             else{
-                jong->showJong(rightplayed, atoi(gang.at(i).c_str()));
+                jong->showJong(rightplayed, atoi(gang.at(0).c_str()));
             }
             if (i == 3){
                 record.pokersRecord.pushBack(jong);

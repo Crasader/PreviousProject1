@@ -59,9 +59,6 @@ void LobbyScene::signUpdate(float dt){
     }
     
     if(GAMEDATA::getInstance()->getWaitNetwork()){
-        LostNetwork* net = LostNetwork::create();
-        net->setTag(2000);
-        addChild(net,200);
         schedule([=](float dt){
             NetworkManage::getInstance()->reConnectSocket();
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());

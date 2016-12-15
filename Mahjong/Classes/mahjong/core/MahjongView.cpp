@@ -164,7 +164,11 @@ void MahjongView::update(float dt){
         schedule([=](float dt){
             NetworkManage::getInstance()->reConnectSocket();
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1","1001"));
+            if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+            }else{
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), "APPLE", "iphone", "11111111111", "11111111111", "2"));
+            }
         }, 0, 0, 4.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
@@ -703,7 +707,7 @@ void MahjongView::dealJongStart(){
     anim->setTag(1000);
     anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dd.at(0).c_str()),atoi(dd.at(1).c_str()));
     addChild(anim);
-
+    
 }
 
 
@@ -1168,6 +1172,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
 }
 
 
@@ -1229,15 +1234,6 @@ void MahjongView::addCoustomListener(){
         
     });
     
-    //网络连接
-    //    viewIntnetListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(CLIENT_LOST_CONNECT, [=](EventCustom* event){
-    //        Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&,this]{
-    //            tao->addToast("网络出现问题,重新连接中...");
-    //            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-    //            Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(CLIENT_LOST_CONNECT);
-    //        });
-    //    });
-    
     scrollTetxListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_SCROLL_TEXT, [=](EventCustom* event){
         std::string msg = static_cast<char*>(event->getUserData());
         if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
@@ -1245,6 +1241,15 @@ void MahjongView::addCoustomListener(){
         }
     });
     
+    //好友房间游戏未开始重新连接
+    coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }
+    });
 }
 
 void MahjongView::addOthersChiListener(){

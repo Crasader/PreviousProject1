@@ -204,20 +204,20 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
         if (data.flag == 0){
             playerBase->removeLastJong();
         }
-        for (int i = 0; i < gang.size(); i++){
+        for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
             if (data.flag == 1){
                 jong->showJong(oppositeangang, -1);
             }
             else{
-                jong->showJong(oppositeplayed, atoi(gang.at(i).c_str()));
+                jong->showJong(oppositeplayed, atoi(gang.at(0).c_str()));
             }
             if (i == 3){
-                jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - 35, getCpgShowPostion(playerCpgRecords.size()).y - 5));
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 35, getCpgShowPostion((int)playerCpgRecords.size()).y - 5));
                 addChild(jong, 10);
             }
             else{
-                jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - 35 * i, getCpgShowPostion(playerCpgRecords.size()).y));
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 35 * i, getCpgShowPostion((int)playerCpgRecords.size()).y));
                 record.pokersRecord.pushBack(jong);
                 addChild(jong, 5);
             }

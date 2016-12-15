@@ -103,6 +103,7 @@ private:
     EventListenerCustom* lobbyConncetAgainListener;
     EventListenerCustom* viewIntnetListener;
     EventListenerCustom* scrollTetxListener;
+    EventListenerCustom* coreOpenFriendRoomListener;
     
 	void addCoustomListener();
     void addOthersReadyListener();

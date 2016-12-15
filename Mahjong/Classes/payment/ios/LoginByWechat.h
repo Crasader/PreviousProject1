@@ -34,5 +34,4 @@
 
 - (BOOL) queryPayResult;
 
-+ (NSString*) getDeviceString;
 @end
