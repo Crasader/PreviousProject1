@@ -3676,11 +3676,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/LobbyScene.cpp"
-            timestampString = "503153093.577173"
+            timestampString = "503478264.811882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "571"
-            endingLineNumber = "571"
+            startingLineNumber = "582"
+            endingLineNumber = "582"
             landmarkName = "LobbyScene::addEventListener()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3872,6 +3872,22 @@
             startingLineNumber = "172"
             endingLineNumber = "172"
             landmarkName = "-sendBeat:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/socket/ios/cocoa/GCDAsyncSocket.m"
+            timestampString = "503478605.906311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8080"
+            endingLineNumber = "8080"
+            landmarkName = "+lookupHost:port:error:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

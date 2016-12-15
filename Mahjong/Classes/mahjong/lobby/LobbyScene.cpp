@@ -65,7 +65,6 @@ void LobbyScene::signUpdate(float dt){
         schedule([=](float dt){
             NetworkManage::getInstance()->reConnectSocket();
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1","1001"));
         }, 0, 0, 4.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }

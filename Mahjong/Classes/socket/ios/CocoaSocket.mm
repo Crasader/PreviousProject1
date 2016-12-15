@@ -61,7 +61,7 @@ static const NSInteger socket_timeout = 15;//超时时间
     _asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
     NSError *error = nil;
     [_asyncSocket connectToHost:self.socketHost onPort:self.port error:&error];
-    [_asyncSocket setIPv4PreferredOverIPv6:true];
+    [_asyncSocket setIPv4PreferredOverIPv6:false];
     if (!error) {
         NSLog(@"服务开启成功");
     } else {
