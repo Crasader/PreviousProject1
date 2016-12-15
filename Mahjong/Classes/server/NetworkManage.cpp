@@ -31,3 +31,11 @@ void NetworkManage::receiveMsg(std::string msg){
 void NetworkManage::resetBeatCount(){
     GameSocketManage::getInstance()->resetBeatCount();
 }
+
+void NetworkManage::disConnectSocket(){
+    GAMEDATA::getInstance()->setWaitNetwork(true);
+}
+
+void NetworkManage::reConnectSocket(){
+    GameSocketManage::getInstance()->socketConnect();
+}

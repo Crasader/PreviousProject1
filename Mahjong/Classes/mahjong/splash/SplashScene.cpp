@@ -69,7 +69,7 @@ void SplashScene::loginByWechat(){
     //oTIvfwqK9YwoAi1dANUQjhlhOAZ4
     //oTIvfwnO4yCaBasG7qJedNbiGuG0
     //oTIvfwqiQATud13d_KcSq0AiuIP4
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwm1C14AtD2bnuoQrXtGWzhY", "http://wyhl.5278-mobi.com:1111/iphone.png","1","金将军","MAC","MAC","11111111111","11111111111","1.0.0"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwnO4yCaBasG7qJedNbiGuG0", "http://wyhl.5278-mobi.com:1111/iphone.png","1","金将军","MAC","MAC","11111111111","11111111111","1.0.0"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     IOSBridge::getInstance()->doWechatLogin();
@@ -396,6 +396,7 @@ void SplashScene::onEnter(){
     //断线续玩
     reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsRecover(true);
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHeartCommmand());
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(reConnectAgain, 1);

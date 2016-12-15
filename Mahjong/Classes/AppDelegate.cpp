@@ -93,7 +93,6 @@ void AppDelegate::applicationWillEnterForeground() {
     AudioEngine::resumeAll();
 #else
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-    
 #endif
     
 }

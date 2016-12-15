@@ -12,6 +12,7 @@
 
 const char* ip = "172.23.1.251";
 //const char* ip = "183.129.206.54";
+//const char* ip = "127.0.0.1";
 const int port = 9999;
 
 GameSocketManage* GameSocketManage::_instance = NULL;
@@ -64,6 +65,14 @@ void GameSocketManage::receiveScoketData(std::string msg){
 void GameSocketManage::resetBeatCount(){
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     CocoaSocketManage::getInstance()->resetBeatCount();
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    //    return "";
+#endif
+}
+
+void GameSocketManage::disConnectSocket(){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    NetworkManage::getInstance()->disConnectSocket();
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     //    return "";
 #endif

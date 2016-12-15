@@ -10,13 +10,15 @@ USING_NS_CC;
 
 class NetworkManage : public Node{
 public:
-	static NetworkManage* getInstance();
+    static NetworkManage* getInstance();
     void startSocketBeat(std::string msg);
-	void sendMsg(std::string code);
+    void sendMsg(std::string code);
     void receiveMsg(std::string msg);
-     void resetBeatCount();
+    void resetBeatCount();
+    void disConnectSocket();
+    void reConnectSocket();
 private:
-	NetworkManage();
-	static NetworkManage* _instance;
+    NetworkManage();
+    static NetworkManage* _instance;
 };
 #endif

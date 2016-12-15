@@ -52,3 +52,7 @@ void CocoaSocketManage::resetBeatCount(){
     [socket resetBeatCount];
 }
 
+void CocoaSocketManage::disConnectSocket(){
+    GameSocketManage::getInstance()->disConnectSocket();
+}
+

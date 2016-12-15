@@ -158,7 +158,14 @@ void MahjongView::startGameAgain(){
 }
 
 void MahjongView::update(float dt){
-    
+    if(GAMEDATA::getInstance()->getWaitNetwork()){
+        schedule([=](float dt){
+            NetworkManage::getInstance()->reConnectSocket();
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1","1001"));
+        }, 0, 0, 5.0f, "socket_reconnect");
+        GAMEDATA::getInstance()->setWaitNetwork(false);
+    }
     
     if (GAMEDATA::getInstance()->getNeedAddPlayer()){
         addPlayer2Room();
