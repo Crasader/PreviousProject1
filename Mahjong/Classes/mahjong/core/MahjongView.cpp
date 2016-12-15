@@ -53,7 +53,6 @@ void MahjongView::onEnter(){
 
 
 void MahjongView::initData(){
-    countTime = 0;
     playerHero = NULL;
     playerLeft = NULL;
     playerRight = NULL;
@@ -159,11 +158,14 @@ void MahjongView::startGameAgain(){
 
 void MahjongView::update(float dt){
     if(GAMEDATA::getInstance()->getWaitNetwork()){
+        LostNetwork* net = LostNetwork::create();
+        net->setTag(2000);
+        addChild(net,200);
         schedule([=](float dt){
             NetworkManage::getInstance()->reConnectSocket();
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1","1001"));
-        }, 0, 0, 5.0f, "socket_reconnect");
+        }, 0, 0, 4.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
     
@@ -180,33 +182,6 @@ void MahjongView::update(float dt){
     if(GAMEDATA::getInstance()->getStartFaPai()){
         dealJongStart();
         GAMEDATA::getInstance()->setStartFaPai(false);
-    }
-    if(GAMEDATA::getInstance()->getSendReconnect()){
-        LostNetwork* net = LostNetwork::create();
-        net->setTag(2000);
-        addChild(net,200);
-        schedule([=](float dt){
-            GAMEDATA::getInstance()->setStartCountTime(true);
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-        }, 0, 0, 3.0f, "oahayou");
-        GAMEDATA::getInstance()->setSendReconnect(false);
-    }
-    
-    if(GAMEDATA::getInstance()->getStartCountTime()){
-        countTime+=dt;
-        if(countTime>15){
-            GAMEDATA::getInstance()->setStartCountTime(false);
-            HintDialog* hin = HintDialog::create("网络重新连接失败,请重新进入游戏！",[](Ref* ref){
-                GAMEDATA::getInstance()->clearPlayersInfo();
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            },[](Ref* ref){
-                GAMEDATA::getInstance()->clearPlayersInfo();
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            });
-            addChild(hin,300);
-        }
-    }else{
-        countTime = 0;
     }
     
     if(!GAMEDATA::getInstance()->getIsPlaying()){
@@ -507,8 +482,6 @@ void MahjongView::recoverGame(){
     if(getChildByTag(2000)!=NULL){
         getChildByTag(2000)->removeFromParent();
     }
-    countTime = 0;
-    GAMEDATA::getInstance()->setStartCountTime(false);
     //重绘制场景
     GAMEDATA::getInstance()->clearPlayersInfo();
     LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();

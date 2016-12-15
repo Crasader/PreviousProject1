@@ -21,11 +21,9 @@ void GAMEDATA::init(){
     setIsInPay(false);
     setIsInGameScene(false);
     setWaitNetwork(false);
-    setSendReconnect(false);
     setHaveShowNotice(false);
     setNeedShowLastResult(false);
     setShowFangZhuDismiss(false);
-    setStartCountTime(false);
     setStartPaiAngang(false);
     setStartFaPai(false);
     setShowDialogType(-1);

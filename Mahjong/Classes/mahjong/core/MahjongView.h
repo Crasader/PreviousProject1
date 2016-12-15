@@ -34,7 +34,6 @@ public:
 private:
 	std::mutex m_mutex;
 	int currentReadyPlayer;
-    float countTime;
 	std::string  selectedChi;
 	Sprite* choiceMenu;
     Menu* controllPad;

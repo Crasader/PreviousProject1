@@ -26,6 +26,7 @@
 #include "server/CommandManage.h"
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
+#include "mahjong/dialog/network/LostNetwork.hpp"
 
 
 bool NormalResultLayer::init(){
@@ -234,20 +235,6 @@ void NormalResultLayer::continueGame(){
     schedule([=](float dt){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getContinueGameCommand());
     }, 0.0f, 0.0f, 1.0f,"delayGame");
-    
-    schedule([=](float dt){
-        HintDialog* hin = HintDialog::create("网络重新连接失败,请重新进入游戏！",[](Ref* ref){
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            GAMEDATA::getInstance()->setSendReconnect(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        },[](Ref* ref){
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            GAMEDATA::getInstance()->setSendReconnect(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        });
-        addChild(hin,300);
-    }, 0.0f, 0.0f, 15.0f,"delayGame2");
-
 }
 
 
@@ -258,6 +245,17 @@ void NormalResultLayer::updateTime(float dt){
             continueGame();
             timeToatal = 10000000000;//填一个极大值
         }
+    }
+    if(GAMEDATA::getInstance()->getWaitNetwork()){
+        LostNetwork* net = LostNetwork::create();
+        net->setTag(2000);
+        addChild(net,200);
+        schedule([=](float dt){
+            NetworkManage::getInstance()->reConnectSocket();
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1","1001"));
+        }, 0, 0, 4.0f, "socket_reconnect");
+        GAMEDATA::getInstance()->setWaitNetwork(false);
     }
 }
 

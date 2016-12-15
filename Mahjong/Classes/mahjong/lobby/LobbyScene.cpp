@@ -27,7 +27,7 @@
 #include "mahjong/widget/ParticleUtil.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
-
+#include "mahjong/dialog/network/LostNetwork.hpp"
 
 
 bool LobbyScene::init()
@@ -56,6 +56,18 @@ void LobbyScene::signUpdate(float dt){
     clickTime += dt;
     if(clickTime>3){
         isButtonCilckable = true;
+    }
+    
+    if(GAMEDATA::getInstance()->getWaitNetwork()){
+        LostNetwork* net = LostNetwork::create();
+        net->setTag(2000);
+        addChild(net,200);
+        schedule([=](float dt){
+            NetworkManage::getInstance()->reConnectSocket();
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1","1001"));
+        }, 0, 0, 4.0f, "socket_reconnect");
+        GAMEDATA::getInstance()->setWaitNetwork(false);
     }
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
