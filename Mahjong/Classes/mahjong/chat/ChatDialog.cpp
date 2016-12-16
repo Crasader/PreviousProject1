@@ -126,10 +126,15 @@ void ChatDialog:: showChatInfo(ChatData data){
     customItem->setContentSize(Size(720,100));
     //显示聊天的头像
     HeadImage* iamge;
+    bool find = false;
     for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
         if(data.poxiaoId == player->getPoxiaoId()){
             iamge = HeadImage::createByImage(player->getPicture(),Size(70,70));
+            find = true;
         }
+    }
+    if(!find){
+        iamge = HeadImage::createByImage("unknow",Size(70,70));
     }
     customItem->addChild(iamge);
     listView->pushBackCustomItem(customItem);
