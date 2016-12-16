@@ -545,7 +545,7 @@ void PlayerHero::replaceFlower(){
             isAllowPlay = true;
         }
         showPlayerHua(getHuaNum());
-//        SocketDataManage::getInstance()->resumeMsg();
+        //        SocketDataManage::getInstance()->resumeMsg();
     }else{
         //有花的情况
         huaIndex = 0;
@@ -578,7 +578,7 @@ void PlayerHero::replaceFlower(){
         }, 0.8f, (int)rejong.poker.size()-1, 0,"huahuahua");
         
         schedule([=](float dt){
-//            SocketDataManage::getInstance()->resumeMsg();
+            //            SocketDataManage::getInstance()->resumeMsg();
             int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
             if (bankId == ClientSeatId::hero){
                 isAllowPlay = true;
@@ -595,6 +595,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         Jong* jong = Jong::create();
         jong->setVisible(false);
         addChild(jong);
+        GAMEDATA::getInstance()->setInReplaceHua(0.8f*replace.size()+0.1f);
         schedule([=](float dt){
             std::vector<Jong*> needReplace;
             needReplace.clear();
@@ -614,10 +615,12 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             settleHandJongs(getHandPosX());
             currentJong = jong;
             isAllowPlay = true;
+            GAMEDATA::getInstance()->setInReplaceHua(false);
         }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
         
     }
     else{
+        GAMEDATA::getInstance()->setInReplaceHua(0);
         Jong* jong = Jong::create();
         jong->showJong(herohand, data.poker);
         addChild(jong);
@@ -673,7 +676,7 @@ void PlayerHero:: drawPlayedJong(int type){
     
 }
 
-void PlayerHero::playedPokerAuto(bool send){
+void PlayerHero::playedPokerAuto(){
     if (virtualJong != NULL){
         virtualJong->setVisible(false);
         virtualJong->removeFromParent();
@@ -703,9 +706,7 @@ void PlayerHero::playedPokerAuto(bool send){
     BezierTo *actionMove = BezierTo::create(0.5f, bezier);
     ScaleTo* scale = ScaleTo::create(0.5f, 0.45f);
     Sequence* seq = Sequence::create(Spawn::create(actionMove, scale, NULL), CallFunc::create([=](){
-        if (send){
-            sendPokerRequest(spJong->getJongType());
-        }
+        sendPokerRequest(spJong->getJongType());
         spJong->showJong(heroplayed, spJong->getJongType());
         spJong->setScale(1.0f);
         playerPlayedJongs.pushBack(spJong);
@@ -741,8 +742,8 @@ void PlayerHero::doEventTimeOver(int type){
     //听牌倒计时
     else if (type == 2){
         if (GAMEDATA::getInstance()->getIsTingProcess()){
-            playedPokerAuto(true);
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
+            playedPokerAuto();
             GAMEDATA::getInstance()->setIsTingProcess(false);
         }
         else{

@@ -685,12 +685,6 @@ void MsgHandler::showOtherPlayedJong(std::string msg){
     otherPlayedJong.seatId = seatId.GetInt();
     otherPlayedJong.poker = atoi(poker.GetString());
     GAMEDATA::getInstance()->setOtherPlayJong(otherPlayedJong);
-    //    if(!GAMEDATA::getInstance()->getIsInGameScene()){
-    //        int mySeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), otherPlayedJong.seatId);
-    //        if (mySeatId == ClientSeatId::hero){
-    //            GAMEDATA::getInstance()->setNeedRemovePoker(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-    //        }
-    //    }
     postNotifyMessage(MSG_OTHER_PALYER_JONG, "");
 }
 
@@ -836,7 +830,7 @@ void MsgHandler::nextPlayer(std::string msg){
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
         GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        int times = (playerTurnData.replace == ""? 0: StringUtil::split(playerTurnData.replace, ",").size());
+        int times = (playerTurnData.replace == ""? 0: (int)(StringUtil::split(playerTurnData.replace, ",").size()));
         
         Director::getInstance()->getScheduler()->schedule([=](float dt){
             postNotifyMessage(MSG_HERO_TING_GANG, "");

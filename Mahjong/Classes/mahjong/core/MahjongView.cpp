@@ -805,13 +805,15 @@ void MahjongView::addJongPlayedListener(){
             }
         }
         else{
-            playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-            playerHero->stopTimeClockAnim();
-            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
-            }
+            schedule([=](float dt){
+                playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+                playerHero->stopTimeClockAnim();
+                if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
+                    Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
+                }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
+                    Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
+                }
+            },0,0,GAMEDATA::getInstance()->getInReplaceHua(),"delay_playpoker");
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
@@ -1253,7 +1255,7 @@ void MahjongView::addCoustomListener(){
     });
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-       Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
 }
