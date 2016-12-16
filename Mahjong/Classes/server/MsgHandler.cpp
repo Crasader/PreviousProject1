@@ -2156,8 +2156,9 @@ void MsgHandler::handleGamePayType(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     if(_mDoc.HasMember("result")){
         const rapidjson::Value &result = _mDoc["result"];
-        UserData::getInstance()->setWeixinPayOpen(result == "1"?true:false);
+        UserData::getInstance()->setWeixinPayOpen(result.GetInt() == 0 ?true:false);
     }
+    postNotifyMessage(MSG_UPDATE_LEQUAN_SHANG_CHEN_SHOW, "");
 }
 
 

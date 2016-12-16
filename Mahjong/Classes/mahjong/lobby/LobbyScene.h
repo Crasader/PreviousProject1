@@ -50,6 +50,7 @@ private:
     EventListenerCustom* scrollTetxListener;
     EventListenerCustom* wanjiaqunListener;
     EventListenerCustom* noticeUrlLitener;
+    EventListenerCustom* upateLequanShopLitener;
     
     bool isButtonCilckable;
     float clickTime;

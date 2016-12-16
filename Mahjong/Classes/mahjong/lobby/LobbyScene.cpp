@@ -173,30 +173,33 @@ void LobbyScene::drawSceneTop(){
     chargGold->setPosition(543, 685);
     addChild(chargGold);
     
-    if(UserData::getInstance()->isWeixinPayOpen()){
-        //lequan
-        auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
-        lequan_bg->setPosition(690, 685);
-        this->addChild(lequan_bg);
-        auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
-        lequan_icon->setPosition(610, 685);
-        this->addChild(lequan_icon);
-        lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
-                                                "Arial",24);
-        lequanNum->setColor(Color3B(242,227,75));
-        lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        lequanNum->setPosition(690, 685);
-        this->addChild(lequanNum);
-        
-        
-        
-        auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
-        auto chargLequan = Menu::create(lequan_btn, NULL);
-        chargLequan->setPosition(770, 685);
-        addChild(chargLequan);
-    }else{
-        topbg->setScaleX(0.75f);
-    }
+    
+    //lequan
+    auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
+    lequan_bg->setTag(901);
+    lequan_bg->setPosition(690, 685);
+    addChild(lequan_bg);
+    auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
+    lequan_icon->setTag(902);
+    lequan_icon->setPosition(610, 685);
+    addChild(lequan_icon);
+    lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
+                                            "Arial",24);
+    lequanNum->setColor(Color3B(242,227,75));
+    lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    lequanNum->setPosition(690, 685);
+    addChild(lequanNum);
+    
+    auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
+    auto chargLequan = Menu::create(lequan_btn, NULL);
+    chargLequan->setTag(903);
+    chargLequan->setPosition(770, 685);
+    addChild(chargLequan);
+    lequan_bg->setVisible(false);
+    lequan_icon->setVisible(false);
+    lequanNum->setVisible(false);
+    chargLequan->setVisible(false);
+    
 }
 
 void LobbyScene::drawSceneMid(){
@@ -212,8 +215,8 @@ void LobbyScene::drawSceneMid(){
     addChild(shareMenu);
     
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
-                                         CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
-  
+                                              CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
+    
     firstMenu = Menu::create(first_chaege, NULL);
     firstMenu->alignItemsHorizontallyWithPadding(15);
     firstMenu->setPosition(200, 542);
@@ -476,7 +479,6 @@ void LobbyScene::showGoldRoomPad(){
 void LobbyScene::onEnter(){
     Scene::onEnter();
     addEventListener();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::publicRoom);
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
     schedule([=](float dt){
@@ -489,6 +491,8 @@ void LobbyScene::onEnterTransitionDidFinish(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
         HintDialog* hint  = HintDialog::create("房主已经解散了房间", nullptr);
         addChild(hint,50);
@@ -516,6 +520,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(wanjiaqunListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(noticeUrlLitener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(upateLequanShopLitener);
 }
 
 void LobbyScene::addEventListener(){
@@ -710,6 +715,17 @@ void LobbyScene::addEventListener(){
             addChild(nod,100);
             GAMEDATA::getInstance()->setHaveShowNotice(true);
         }
+    });
+    
+    upateLequanShopLitener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_LEQUAN_SHANG_CHEN_SHOW, [=](EventCustom* event){
+        if(NULL != getChildByTag(901))
+            getChildByTag(901)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != getChildByTag(902))
+            getChildByTag(902)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != getChildByTag(903))
+            getChildByTag(903)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != lequanNum)
+            lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
     });
     
     //点击事件
