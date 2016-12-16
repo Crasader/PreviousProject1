@@ -9,9 +9,9 @@
 #include "mahjong/utils/StringUtil.h"
 #include "server/MsgConfig.h"
 
+#define PAY_PLAT_VALUE "1" //支付版本号
+
 CommandManage* CommandManage::_instance = 0;
-
-
 
 CommandManage* CommandManage::getInstance(){
     
@@ -140,9 +140,7 @@ std::string CommandManage::getEnterRoomCommand(std::string gameId, std::string r
     keyValue.insert(map<string, string>::value_type("gameid", gameId));
     keyValue.insert(map<string, string>::value_type("rsid", roomId));
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-    keyValue.insert(map<string, string>::value_type("plat", "1"));
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    keyValue.insert(map<string, string>::value_type("plat", "0"));
+    keyValue.insert(map<string, string>::value_type("plat", PAY_PLAT_VALUE));
 #endif
     return commandString(keyValue);
 }
@@ -239,9 +237,7 @@ std::string CommandManage::getFirstChargeInfoCommand(){
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FIRST_CHARGE_GET_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-    keyValue.insert(map<string, string>::value_type("plat", "1"));
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    keyValue.insert(map<string, string>::value_type("plat", "0"));
+    keyValue.insert(map<string, string>::value_type("plat", PAY_PLAT_VALUE));
 #endif
     return commandString(keyValue);
 }
@@ -266,9 +262,7 @@ std::string CommandManage::getFangkaChargeListCommand(){
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CHARGE_LIST_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-    keyValue.insert(map<string, string>::value_type("plat", "1"));
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    keyValue.insert(map<string, string>::value_type("plat", "0"));
+    keyValue.insert(map<string, string>::value_type("plat", PAY_PLAT_VALUE));
 #endif
     return commandString(keyValue);
 }
@@ -405,9 +399,7 @@ std::string CommandManage::getOpenRoomRequestCommand(){
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FANG_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-    keyValue.insert(map<string, string>::value_type("plat", "1"));
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    keyValue.insert(map<string, string>::value_type("plat", "0"));
+    keyValue.insert(map<string, string>::value_type("plat", PAY_PLAT_VALUE));
 #endif
     return commandString(keyValue);
 }
@@ -446,6 +438,7 @@ std::string CommandManage::getGamePayType(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_APPLE_SWITCH_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("plat", PAY_PLAT_VALUE));
     return commandString(keyValue);
 }
 

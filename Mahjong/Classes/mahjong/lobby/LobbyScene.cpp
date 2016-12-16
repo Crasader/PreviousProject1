@@ -581,7 +581,6 @@ void LobbyScene::addEventListener(){
             FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
             addChild(dia,4);
         }
-        
     });
     
     
