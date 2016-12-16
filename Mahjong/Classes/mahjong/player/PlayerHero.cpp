@@ -1220,7 +1220,6 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                     jong->showJong(herodeal,-1);
                     jong->setPosition(Point(getCpgPostionX() + 47*j, 45));
                 }
-                
                 this->addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
             }

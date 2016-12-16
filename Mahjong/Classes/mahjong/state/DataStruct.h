@@ -139,7 +139,9 @@ struct GameResultData
 struct PlayerCpgRecord
 {
     int pengDir;//碰牌方向
-    int type;
+    int type;//吃碰杠类型
+    int gangValue;//杠的值
+    bool anGangFan = false;
     Vector<Jong*> pokersRecord;
 };
 

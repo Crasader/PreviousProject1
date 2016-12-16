@@ -42,6 +42,7 @@ public:
     void showPlayerChi(string chiPoker, PlayerBase* playerBase);//玩家吃牌
     void showPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);//玩家碰牌
     void showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);//玩家杠牌
+    void updateAnGangUi();
     void showPlayerHua(int num);//显示玩家花数
     void setPlayerTingState(bool b);//设置玩家的听牌状态
     void showCurrentBigJong(int cType);
@@ -62,6 +63,7 @@ public:
     void hideHandJongs();//隐藏玩家的手牌
     void playSoundHuPai(int type);
     void updatePlayerHeadImage();
+    bool checkMengQing();//判断玩家手牌是否还是门清
     Jong* getCurrentJong();
     
     CC_SYNTHESIZE(Player*, playerInfo, PlayerInfo);
@@ -73,7 +75,6 @@ public:
     CC_SYNTHESIZE(int, pokerNumber, PokerNumber);//打牌数量
     CC_SYNTHESIZE(int, lastPoker, LastPoker);//最近一次出牌
     CC_SYNTHESIZE(bool, isPlayHuaChi, IsPlayHuaChi);//花痴音效
-    CC_SYNTHESIZE(bool, isMengQing, IsMengQing);
     CREATE_FUNC(PlayerBase);
     
 private:

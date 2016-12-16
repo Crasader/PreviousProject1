@@ -135,6 +135,7 @@ void PlayerRight::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
         record.pokersRecord.pushBack(jong);
     }
     this->playerCpgRecords.push_back(record);
+    updateAnGangUi();
 }
 
 
@@ -161,6 +162,7 @@ void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
         record.pokersRecord.pushBack(jong);
     }
     playerCpgRecords.push_back(record);
+    updateAnGangUi();
 }
 
 void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
@@ -185,7 +187,12 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     gang.push_back(data.poker);
     sort(gang.begin(), gang.end());
     PlayerCpgRecord record;
-    record.type = CpgType::gang;
+    if(data.flag ==1){
+        record.type = CpgType::angang;
+    }else{
+        record.type = CpgType::gang;
+    }
+    record.gangValue = atoi(gang.at(0).c_str());
     if (data.flag == 2){
         for (int i = 0; i < this->playerCpgRecords.size(); i++)
         {
@@ -206,8 +213,13 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
         for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
             if (data.flag == 1){
-                jong->showJong(rightdeal, -1);
-                jong->setScale(0.86f);
+                if(i==3&&!checkMengQing()){
+                    jong->showJong(rightplayed, atoi(gang.at(0).c_str()));
+                    record.anGangFan = true;
+                }else{
+                    jong->showJong(rightdeal, -1);
+                    jong->setScale(0.86f);
+                }
             }
             else{
                 jong->showJong(rightplayed, atoi(gang.at(0).c_str()));
@@ -223,6 +235,20 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             }
         }
         playerCpgRecords.push_back(record);
+    }
+    updateAnGangUi();
+}
+
+
+void PlayerRight::updateAnGangUi(){
+    if(!checkMengQing()){
+        for(auto var : playerCpgRecords){
+            if(var.type == CpgType::angang&&!var.anGangFan){
+                Jong* laPoker = var.pokersRecord.at(var.pokersRecord.size()-1);
+                laPoker->showJong(rightplayed, var.gangValue);
+                var.anGangFan = true;
+            }
+        }
     }
 }
 
@@ -307,13 +333,21 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
         }
     }
     if(angang != ""){
-        for(int i=0;i<gang.size();i++){
+         vector<std::string> anganglist  = StringUtil::split(angang, ",");
+        for(int i=0;i<anganglist.size();i++){
             PlayerCpgRecord record;
-            record.type = CpgType::gang;
+            record.type = CpgType::angang;
+            record.gangValue = atoi(anganglist.at(0).c_str());
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
-                jong->showJong(rightdeal, -1);
-                jong->setScale(0.86f);
+                if(j==3&&!checkMengQing()){
+                    jong->showJong(rightplayed, atoi(anganglist.at(0).c_str()));
+                    record.anGangFan = true;
+                }else{
+                    jong->showJong(rightdeal, -1);
+                    jong->setScale(0.86f);
+                }
+                
                 if (i == 3){
                     record.pokersRecord.pushBack(jong);
                     jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-2, getCpgShowPostion((int)playerCpgRecords.size()).y +  28));
@@ -328,6 +362,7 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
             playerCpgRecords.push_back(record);
         }
     }
+    updateAnGangUi();
 }
 
 void PlayerRight::recoverHand(std::string hand){

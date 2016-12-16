@@ -19,6 +19,7 @@ public:
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase);
 	void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
+     void updateAnGangUi();
 	Point getPlayedJongPos(int count);//
 	void recoverHua(int hua);
 	void recoverPlayed(std::string played);

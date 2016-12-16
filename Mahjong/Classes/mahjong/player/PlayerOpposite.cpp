@@ -135,6 +135,7 @@ void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
         record.pokersRecord.pushBack(jong);
     }
     this->playerCpgRecords.push_back(record);
+    updateAnGangUi();
 }
 
 
@@ -161,6 +162,7 @@ void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)
         record.pokersRecord.pushBack(jong);
     }
     this->playerCpgRecords.push_back(record);
+    updateAnGangUi();
 }
 
 
@@ -186,7 +188,12 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
     gang.push_back(data.poker);
     sort(gang.begin(), gang.end());
     PlayerCpgRecord record;
-    record.type = CpgType::gang;
+    if(data.flag ==1){
+        record.type = CpgType::angang;
+    }else{
+        record.type = CpgType::gang;
+    }
+    record.gangValue = atoi(gang.at(0).c_str());
     if (data.flag == 2){
         for (int i = 0; i < playerCpgRecords.size(); i++)
         {
@@ -207,7 +214,12 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
         for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
             if (data.flag == 1){
-                jong->showJong(oppositeangang, -1);
+                if(i==3&&!checkMengQing()){
+                    record.anGangFan = true;
+                    jong->showJong(oppositeplayed, atoi(gang.at(0).c_str()));
+                }else{
+                    jong->showJong(oppositeangang, -1);
+                }
             }
             else{
                 jong->showJong(oppositeplayed, atoi(gang.at(0).c_str()));
@@ -224,6 +236,22 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
         }
         playerCpgRecords.push_back(record);
     }
+    updateAnGangUi();
+}
+
+
+void PlayerOpposite::updateAnGangUi(){
+    if(!checkMengQing()){
+        for(auto var : playerCpgRecords){
+            if(var.type == CpgType::angang&&!var.anGangFan){
+                Jong* laPoker = var.pokersRecord.at(var.pokersRecord.size()-1);
+                laPoker->showJong(rightplayed, var.gangValue);
+                var.anGangFan = true;
+            }
+        }
+        
+    }
+    
 }
 
 void PlayerOpposite::recoverHua(int hua){
@@ -349,12 +377,20 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
         }
     }
     if(angang != ""){
-        for(int i=0;i<gang.size();i++){
+        vector<std::string> anganglist  = StringUtil::split(angang, ",");
+        for(int i=0;i<anganglist.size();i++){
             PlayerCpgRecord record;
-            record.type = CpgType::gang;
+            record.type = CpgType::angang;
+            record.gangValue = atoi(anganglist.at(0).c_str());
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
-                jong->showJong(oppositeangang, -1);
+                if(j==3&&!checkMengQing()){
+                    jong->showJong(oppositeplayed, atoi(anganglist.at(0).c_str()));
+                    record.anGangFan = true;
+                }else{
+                    jong->showJong(oppositeangang, -1);
+                }
+                
                 if (i == 3){
                     jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - 35, getCpgShowPostion(playerCpgRecords.size()).y - 2));
                     this->addChild(jong, 10);
@@ -370,6 +406,7 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
             playerCpgRecords.push_back(record);
         }
     }
+    updateAnGangUi();
 }
 
 void PlayerOpposite::recoverHand(std::string hand){
