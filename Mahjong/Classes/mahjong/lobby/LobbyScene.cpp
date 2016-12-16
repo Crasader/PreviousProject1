@@ -211,21 +211,23 @@ void LobbyScene::drawSceneMid(){
     shareMenu->setPosition(90, 542);
     addChild(shareMenu);
     
-    first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
+    auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                          CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
-    if(UserData::getInstance()->isFirstCharge()){
-        first_chaege->setVisible(false);
-    }
-    auto firstMenu = Menu::create(first_chaege, NULL);
+  
+    firstMenu = Menu::create(first_chaege, NULL);
     firstMenu->alignItemsHorizontallyWithPadding(15);
     firstMenu->setPosition(200, 542);
     addChild(firstMenu);
     firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(200, 562)),MoveTo::create(0.6f,Point(200, 542)),NULL), CC_REPEAT_FOREVER));
     //感叹号
-    auto ganTanhao = Sprite::create("mjlobby/gantanhao.png");
+    ganTanhao = Sprite::create("mjlobby/gantanhao.png");
     ganTanhao->setPosition(230,565);
     addChild(ganTanhao);
     ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(230, 585)),MoveTo::create(0.6f,Point(230, 565)),NULL), CC_REPEAT_FOREVER));
+    if(UserData::getInstance()->isFirstCharge()){
+        firstMenu->setVisible(false);
+        ganTanhao->setVisible(false);
+    }
     //房间按钮
     auto openRoom = Sprite::create("mjlobby/open_room_image.png");
     openRoom->setPosition(390,400);
@@ -662,7 +664,8 @@ void LobbyScene::addEventListener(){
     
     //首冲礼包
     firstChargeListenr =  Director::getInstance()->getEventDispatcher()->addCustomEventListener("hide_first_charge_btn", [=](EventCustom* event){
-        first_chaege->setVisible(false);
+        firstMenu->setVisible(false);
+        ganTanhao->setVisible(false);
     });
     
     //开房询问

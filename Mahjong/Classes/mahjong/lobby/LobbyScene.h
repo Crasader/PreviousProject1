@@ -29,7 +29,8 @@ private:
 	Label* goldNum;
 	Label* fangkaNum;
 	Label* lequanNum;
-    MenuItemImage* first_chaege;
+    Menu* firstMenu;
+    Sprite* ganTanhao;
     
     EventListenerCustom* enterRoomListener;
     EventListenerCustom* enterFriendRoomListener;
