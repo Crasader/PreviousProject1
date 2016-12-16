@@ -10,8 +10,8 @@
 #import "socket/ios/CocoaSocketManage.h"
 #include "server/NetworkManage.h"
 
-const char* ip = "172.23.1.251";
-//const char* ip = "183.129.206.54";
+//const char* ip = "172.23.1.251";
+const char* ip = "183.129.206.54";
 const int port = 9999;
 
 GameSocketManage* GameSocketManage::_instance = NULL;

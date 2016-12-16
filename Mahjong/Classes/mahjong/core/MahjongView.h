@@ -104,6 +104,7 @@ private:
     EventListenerCustom* viewIntnetListener;
     EventListenerCustom* scrollTetxListener;
     EventListenerCustom* coreOpenFriendRoomListener;
+    EventListenerCustom* coreLoginRespListener;
     
 	void addCoustomListener();
     void addOthersReadyListener();

@@ -1173,6 +1173,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
 }
 
 
@@ -1250,6 +1251,11 @@ void MahjongView::addCoustomListener(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
     });
+    
+    coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+       Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
 }
 
 void MahjongView::addOthersChiListener(){
