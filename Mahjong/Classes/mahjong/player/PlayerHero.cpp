@@ -236,7 +236,6 @@ void PlayerHero::drawPlayerHero() {
             jong->showJong(herohand, atoi(strvce.at(t).c_str()));
             playerHandJongs.pushBack(jong);
         }
-        
     }
     for (int i = 0; i < playerHandJongs.size(); i++) {
         if (i == MAX_JONG_NUM - 1){
@@ -595,7 +594,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         Jong* jong = Jong::create();
         jong->setVisible(false);
         addChild(jong);
-        GAMEDATA::getInstance()->setInReplaceHua(0.8f*replace.size()+0.1f);
+        GAMEDATA::getInstance()->setInReplaceHua(0.8f*replace.size()+0.5f);
         schedule([=](float dt){
             std::vector<Jong*> needReplace;
             needReplace.clear();

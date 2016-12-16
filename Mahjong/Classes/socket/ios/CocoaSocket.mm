@@ -110,6 +110,7 @@ static const NSInteger socket_timeout = 15;//超时时间
     //目前无法解决NSTimer后台定时器的问题,将连接断开的消息发回给cocos2d-x
     [self.beatTimer invalidate];
     self.beatTimer = nil;
+    self.beatCount = 0;
     [_asyncSocket setDelegate:nil];
     CocoaSocketManage::getInstance()->disConnectSocket();
 }

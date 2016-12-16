@@ -34,7 +34,7 @@ bool ChatDialog::init(){
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg);
     
-    auto  dialogBg = Sprite::create("friend/dialog_bg.png");
+    auto  dialogBg = Sprite::create("chat/chat_big_bg.png");
     dialogBg->setPosition(640, 360);
     this->addChild(dialogBg);
     
@@ -151,7 +151,7 @@ void ChatDialog:: showChatInfo(ChatData data){
             }
         }
         customItem->addChild(text,1);
-        auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 68, 70), Rect(40, 0, 6, 0));
+        auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 66, 66), Rect(40, 0, 10, 0));
         bob->setContentSize(Size(text->getContentSize().width+20, 70));
         customItem->addChild(bob);
         
