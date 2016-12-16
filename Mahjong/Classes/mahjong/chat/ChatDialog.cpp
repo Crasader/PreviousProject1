@@ -151,7 +151,7 @@ void ChatDialog:: showChatInfo(ChatData data){
             }
         }
         customItem->addChild(text,1);
-        auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 66, 66), Rect(40, 0, 10, 0));
+        auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 66, 66), Rect(37, 0, 10, 0));
         bob->setContentSize(Size(text->getContentSize().width+20, 70));
         customItem->addChild(bob);
         
