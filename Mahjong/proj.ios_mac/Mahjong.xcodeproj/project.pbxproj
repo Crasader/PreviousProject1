@@ -303,6 +303,7 @@
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
 		D2C3FA5A1D9909AE00CFC80E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */; };
 		D2C3FA5C1D9909EC00CFC80E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */; };
+		D2C669CA1E078E880011143E /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2C669C91E078E880011143E /* Images-2.xcassets */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -639,6 +640,7 @@
 		D2C3FA571D99081100CFC80E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
+		D2C669C91E078E880011143E /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "Mahjong-mobile/Images-2.xcassets"; sourceTree = SOURCE_ROOT; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -787,6 +789,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2C669C91E078E880011143E /* Images-2.xcassets */,
 				D286A53D1DD30E46001369C1 /* wanjiaqun */,
 				D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */,
 				D281E5A01DACF35600D3E44E /* audio */,
@@ -1635,6 +1638,7 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				D2C669CA1E078E880011143E /* Images-2.xcassets in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				D25329661CC0D33600DDAD97 /* gameview in Resources */,
@@ -1955,6 +1959,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2003,6 +2008,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
