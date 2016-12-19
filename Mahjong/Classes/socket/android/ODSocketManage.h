@@ -10,17 +10,20 @@ USING_NS_CC;
 class ODSocketManage : public Node{
 public:
 	static ODSocketManage* getInstance();
-	void heartbeat();
-	void sendMsg(std::string code);
+    void connectSocket(std::string host, int port);
+    void startScoketBeat(std::string msg);
+    void sendScoketData(std::string msg);
+    void receiveScoketData(std::string msg);
+    void resetBeatCount();
+    void disConnectSocket();
 private:
 	ODSocketManage();
 	static std::string allReciveInfo;
+    static std::string heartMsg;
 	static ODSocketManage* _instance;
 	ODSocket socket;
-	void sendHeartBeat();
+    void sendHeartBeat();
 	void receiveData();
-	void connectServer();
 	int getMsgLength(std::string);
-	void parserJson();
 };
 #endif

@@ -1,8 +1,9 @@
 #include "socket/android/ODSocketManage.h"
-
+#include "socket/GameSocketManage.hpp"
 
 ODSocketManage* ODSocketManage::_instance = NULL;
 std::string ODSocketManage::allReciveInfo;
+std::string ODSocketManage::heartMsg;
 
 ODSocketManage* ODSocketManage::getInstance() {
     if (NULL == _instance) {
@@ -12,67 +13,84 @@ ODSocketManage* ODSocketManage::getInstance() {
 }
 
 ODSocketManage::ODSocketManage() {
-    connectServer();
+    // TODO
 }
 
-void ODSocketManage::connectServer() {
-//    try {
-//        // ODSocket socket;
-//        socket.Init();
-//        socket.Create(AF_INET, SOCK_STREAM, 0);
-//        
-//        bool result = socket.Connect(ip, port);
-//        int retryTimes = 0;
-//        while (result == false && retryTimes < 3) {
-//            log("尝试重新连接...");
-//            result = socket.Connect(ip, port);
-//            retryTimes++;
-//#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_WIN32)
-//            Sleep(1000);
-//#else
-//            sleep(1);
-//#endif
-//        }
-//        if (result) {
-//            log("成功连接到服务端,开启心跳");
-//            std::thread recvThread = std::thread(&ODSocketManage::receiveData,
-//                                                 this);
-//            recvThread.detach();
-//        }
-//        else {
-//            log("连接服务端失败 = %d", result);
-//            return;
-//        }
-//    }
-//    catch (char* str) {
-//        log("Socket 连接出错");
-//    }
+
+void ODSocketManage::connectSocket(std::string host, int port){
+    try {
+        // ODSocket socket;
+        socket.Init();
+        socket.Create(AF_INET, SOCK_STREAM, 0);
+        
+        bool result = socket.Connect(host.c_str(), port);
+        int retryTimes = 0;
+        while (result == false && retryTimes < 3) {
+            log("尝试重新连接...");
+            result = socket.Connect(host.c_str(), port);
+            retryTimes++;
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_WIN32)
+            Sleep(1000);
+#else
+            sleep(1);
+#endif
+        }
+        if (result) {
+            log("成功连接到服务端,开启数据接收");
+            std::thread recvThread = std::thread(&ODSocketManage::receiveData,
+                                                 this);
+            recvThread.detach();
+        }
+        else {
+            log("连接服务端失败 = %d", result);
+            return;
+        }
+    }
+    catch (char* str) {
+        log("Socket 连接出错");
+    }
 }
 
-void ODSocketManage::sendMsg(std::string code) {
-    log("send command = %s", code.c_str());
-//    int sendResult = socket.Send(code.c_str(), getMsgLength(code));
-//    if (sendResult < 0) {
-//        log("无法向服务端发送消息");
-//        socket.Close();
-//        log("重新连接网络");
-//        connectServer();
-//    }
-}
 
-void ODSocketManage::heartbeat() {
+void ODSocketManage::startScoketBeat(std::string msg){
+    heartMsg = msg;
     std::thread recvThread = std::thread(&ODSocketManage::sendHeartBeat, this);
     recvThread.detach();
 }
 
+
+void ODSocketManage::sendScoketData(std::string msg){
+    log("send command = %s", msg.c_str());
+    int sendResult = socket.Send(msg.c_str(), getMsgLength(msg));
+    if (sendResult < 0) {
+        log("无法向服务端发送消息");
+        socket.Close();
+        log("重新连接网络");
+        disConnectSocket();
+    }
+}
+
+void ODSocketManage::receiveScoketData(std::string msg){
+    GameSocketManage::getInstance()->receiveScoketData(msg);
+}
+
+void ODSocketManage::resetBeatCount(){
+    
+}
+
+void ODSocketManage::disConnectSocket(){
+    GameSocketManage::getInstance()->disConnectSocket();
+}
+
+
 void ODSocketManage::sendHeartBeat() {
     while (true) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-        Sleep(3000);
+        Sleep(5000);
 #else
-        sleep(3);
+        sleep(5);
 #endif
-//        sendMsg(CommandManage::getInstance()->getHeartCommmand());
+        sendScoketData(heartMsg);
     }
 }
 
@@ -91,7 +109,7 @@ void ODSocketManage::receiveData() {
                 allReciveInfo = allReciveInfo.substr(pos2 + 3, allReciveInfo.size());
                 if (msg.size() > 0 ) {
                     log("server msg = %s", msg.c_str());
-//                    SocketDataManage::getInstance()->pushMsg(msg);
+                    receiveScoketData(msg);
                 }
             }
             else {
