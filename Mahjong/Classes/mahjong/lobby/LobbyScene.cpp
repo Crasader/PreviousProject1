@@ -36,8 +36,6 @@ bool LobbyScene::init()
     {
         return false;
     }
-    isButtonCilckable = true;
-    clickTime =0;
     initView();
     //add sprite to scene
     drawSceneTop();
@@ -47,16 +45,8 @@ bool LobbyScene::init()
     return true;
 }
 
-bool LobbyScene::checkCilckabale(){
-    return isButtonCilckable;
-}
 
 void LobbyScene::signUpdate(float dt){
-    
-    clickTime += dt;
-    if(clickTime>3){
-        isButtonCilckable = true;
-    }
     
     if(GAMEDATA::getInstance()->getWaitNetwork()){
         schedule([=](float dt){
@@ -458,20 +448,17 @@ void LobbyScene::removeLoading(){
 }
 
 void LobbyScene:: openRoom(){
-    if(checkCilckabale()){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomRequestCommand());
-        isButtonCilckable = false;
-        clickTime = 0;
-    }
+    EventCustom imageEvent(MSG_LOBBY_SHOW_LOADING_LAYER);
+    Director::getInstance()->getEventDispatcher()->dispatchEvent(&imageEvent);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomRequestCommand());
+    
 }
 
 
 void LobbyScene::joinRoom(){
-    if(checkCilckabale()){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
-        isButtonCilckable = false;
-        clickTime = 0;
-    }
+    EventCustom imageEvent(MSG_LOBBY_SHOW_LOADING_LAYER);
+    Director::getInstance()->getEventDispatcher()->dispatchEvent(&imageEvent);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomRequestCommand());
 }
 
 
@@ -681,6 +668,7 @@ void LobbyScene::addEventListener(){
     
     //开房询问
     openRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_OPEN_ROOM, [=](EventCustom* event){
+        removeLoading();
         if(UserData::getInstance()->getFangkaNum()>0){
             FriendRoom* friendroom = FriendRoom::create();
             addChild(friendroom);
@@ -692,6 +680,7 @@ void LobbyScene::addEventListener(){
     
     //进入房间询问
     enterRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_ENTER_ROOM, [=](EventCustom* event){
+        removeLoading();
         MahjongNumberKeypads* keypads = MahjongNumberKeypads::create();
         addChild(keypads);
     });
@@ -738,7 +727,7 @@ void LobbyScene::addEventListener(){
     showLoobyLoadingLayer = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_SHOW_LOADING_LAYER, [=](EventCustom* event){
         showLoading();
     });
-
+    
     
     //点击事件
     auto listener = EventListenerKeyboard::create();
