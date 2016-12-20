@@ -577,7 +577,6 @@ void PlayerHero::replaceFlower(){
         }, 0.8f, (int)rejong.poker.size()-1, 0,"huahuahua");
         
         schedule([=](float dt){
-            //            SocketDataManage::getInstance()->resumeMsg();
             int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
             if (bankId == ClientSeatId::hero){
                 isAllowPlay = true;
@@ -591,13 +590,18 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     huaIndex = 0;
     std::vector<std::string> replace = StringUtil::split(data.replace, ",");
     if (data.replace != "" && replace.size() > 0){
-        Jong* jong = Jong::create();
-        jong->setVisible(false);
-        addChild(jong);
+        Jong* turnJong = Jong::create();
+        turnJong->setVisible(false);
+        turnJong->showJong(herohand, data.poker);
+        addChild(turnJong);
+        playerHandJongs.pushBack(turnJong);
         schedule([=](float dt){
             std::vector<Jong*> needReplace;
             needReplace.clear();
+            Jong* jong = Jong::create();
             jong->showJong(herohand, atoi(replace.at(huaIndex).c_str()));
+            jong->setVisible(false);
+            addChild(jong);
             needReplace.push_back(jong);
             HuaAnim* huaAnim = HuaAnim::create(needReplace, GAMEDATA::getInstance()->getHeroSeatId(),CallFunc::create([=](){
                 setHuaNum(getHuaNum()+(int)needReplace.size());
@@ -607,11 +611,9 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             huaIndex++;
         }, 0.8f, (int)replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
-            jong->setVisible(true);
-            jong->showJong(herohand, data.poker);
-            playerHandJongs.pushBack(jong);
+            turnJong->setVisible(true);
             settleHandJongs(getHandPosX());
-            currentJong = jong;
+            currentJong = turnJong;
             isAllowPlay = true;
         }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
         GAMEDATA::getInstance()->setInReplaceHua(0.8f*replace.size()+0.8f);
@@ -645,6 +647,7 @@ void PlayerHero:: drawPlayedJong(int type){
             spJong->showJong(herohand, playerHandJongs.at(i)->getJongType());
             spJong->setPosition(playerHandJongs.at(i)->getPosition());
             addChild(spJong);
+            playerHandJongs.at(i)->removeFromParent();
             playerHandJongs.eraseObject(playerHandJongs.at(i));//从手牌队列中移除
             Point startPoint = spJong->getPosition();
             Point endPoint = getHeroPlayedJongsPos((int)playerPlayedJongs.size());

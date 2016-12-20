@@ -136,7 +136,6 @@ void PlayerBase::replaceHandHua(JongViewType tpye){
     ReplaceJong rejong = getReplacePoker();
     std::vector<Jong*> needReplace;
     for (int i = 0; i < rejong.poker.size(); i++){
-        
         std::vector<std::string> pokerV = StringUtil::split(rejong.poker.at(i), ",");
         for (int j = 0; j < pokerV.size(); j++){
             Jong* jon = Jong::create();
