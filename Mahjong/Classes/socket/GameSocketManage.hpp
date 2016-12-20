@@ -8,6 +8,8 @@
 
 #ifndef GameSocketManage_hpp
 #define GameSocketManage_hpp
+#include "cocos2d.h"
+USING_NS_CC;
 
 class GameSocketManage{
 public:

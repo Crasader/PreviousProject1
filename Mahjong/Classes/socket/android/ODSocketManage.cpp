@@ -2,8 +2,9 @@
 #include "socket/GameSocketManage.hpp"
 
 ODSocketManage* ODSocketManage::_instance = NULL;
-std::string ODSocketManage::allReciveInfo;
-std::string ODSocketManage::heartMsg;
+std::string ODSocketManage::allReciveInfo ="";
+std::string ODSocketManage::heartMsg="";
+int ODSocketManage::beatCount=0;
 
 ODSocketManage* ODSocketManage::getInstance() {
     if (NULL == _instance) {
@@ -17,7 +18,7 @@ ODSocketManage::ODSocketManage() {
 }
 
 
-void ODSocketManage::connectSocket(std::string host, int port){
+void ODSocketManage::connectSocket(std::string host,int port){
     try {
         // ODSocket socket;
         socket.Init();
@@ -75,7 +76,7 @@ void ODSocketManage::receiveScoketData(std::string msg){
 }
 
 void ODSocketManage::resetBeatCount(){
-    
+    beatCount =0;
 }
 
 void ODSocketManage::disConnectSocket(){
@@ -90,26 +91,31 @@ void ODSocketManage::sendHeartBeat() {
 #else
         sleep(5);
 #endif
+        if (beatCount >= kBeatLimit) {
+            disConnectSocket();
+            return;
+        } else {
+            beatCount++;
+        }
         sendScoketData(heartMsg);
     }
 }
 
 void ODSocketManage::receiveData() {
     while (true) {
-        char data[3 * 1024] = "";
+        char data[4*1024] = "";
         int result = socket.Recv(data, sizeof(data), 0);
         allReciveInfo += data;
         while (allReciveInfo.size() > 0) {
-            const char* mark1 = "PX+";
-            const char* mark2 = "+PX";
+            const char* mark1 = "\r\n";
             long pos1 = allReciveInfo.find(mark1);
-            long pos2 = allReciveInfo.find(mark2);
-            if (pos1 >= 0 && pos2 >= 0) {
-                std::string msg = allReciveInfo.substr(pos1 + 3, pos2 - 3);
-                allReciveInfo = allReciveInfo.substr(pos2 + 3, allReciveInfo.size());
+            
+            if (pos1 >= 0) {
+                std::string msg = allReciveInfo.substr(0, pos1);
+                allReciveInfo = allReciveInfo.substr(pos1+1, allReciveInfo.size());
                 if (msg.size() > 0 ) {
                     log("server msg = %s", msg.c_str());
-                    receiveScoketData(msg);
+                    receiveScoketData(msg.c_str());
                 }
             }
             else {
