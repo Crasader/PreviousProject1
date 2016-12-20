@@ -48,15 +48,33 @@ bool GoldNotEnoughDialog::init(int type){
     bg_2->setPosition(645,375);
     addChild(bg_2);
     
-    auto content = Sprite::create();
-    content->setTexture("shop/charge/jinbibuzhu.png");
-    content->setPosition(640,400);
-    addChild(content);
-    auto goldNum0 = LabelAtlas::create(StringUtils::format("%d",atoi(GAMEDATA::getInstance()->getEnterRoomResp().min.c_str())/10000),"shop/charge/charge_num.png",21,30,'0');
+    
+    int goldShowNum =atoi(GAMEDATA::getInstance()->getEnterRoomResp().min.c_str());
+    
+    auto goldNum0 = LabelAtlas::create(StringUtils::format("%d",goldShowNum>1000000?goldShowNum/10000:goldShowNum),"shop/charge/charge_num.png",21,30,'0');
     goldNum0->setScale(0.8f);
     goldNum0->setAnchorPoint(Point::ANCHOR_MIDDLE);
     goldNum0->setPosition(560,375);
     addChild(goldNum0);
+    if(goldShowNum>1000000){
+        auto content = Sprite::create();
+        content->setTexture("shop/charge/jinbibuzhu.png");
+        content->setPosition(640,400);
+        addChild(content);
+    }else{
+        auto content_1 = Sprite::create();
+        content_1->setTexture("shop/charge/jinbibuzhu_1.png");
+        content_1->setPosition(640,420);
+        addChild(content_1);
+        auto content_2 = Sprite::create();
+        content_2->setTexture("shop/charge/jinbibuzhu_2.png");
+        content_2->setPosition(470,375);
+        addChild(content_2);
+        auto content_3 = Sprite::create();
+        content_3->setTexture("shop/charge/jinbibuzhu_3.png");
+        content_3->setPosition(720,375);
+        addChild(content_3);
+    }
     
     auto goldNum1 = LabelAtlas::create(StringUtils::format(":%s",GAMEDATA::getInstance()->getEnterRoomResp().gold.c_str()),"shop/charge/charge_num.png",21,30,'0');
     goldNum1->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);

@@ -51,6 +51,16 @@ void SpecialResultLayer::showGameReslut(){
     infoBg->setPosition(640, 340);
     addChild(infoBg);
     
+    auto fanghao = Sprite::create("result/fang_jian_hao.png");
+    fanghao->setPosition(940,570);
+    addChild(fanghao,1);
+    
+    auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
+    fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    fanghaoNum->setPosition(980,570);
+    addChild(fanghaoNum);
+
+    
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
     for (int i=0; i<results.size();i++) {
         GameResultCell* cell = GameResultCell::create(results.at(i));

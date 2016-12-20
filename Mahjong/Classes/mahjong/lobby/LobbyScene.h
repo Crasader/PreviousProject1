@@ -35,12 +35,10 @@ private:
     EventListenerCustom* enterRoomListener;
     EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* openFriendRoomListener;
-    EventListenerCustom* friendInviteListener;
     EventListenerCustom* updateHeroInfoListener;
     EventListenerCustom* lobbyConncetAgainListener;
     EventListenerCustom* intnetListener;
     EventListenerCustom* loginReplaceListener;
-    EventListenerCustom* inviteReplaceListener;
     EventListenerCustom* payDialogListener;
     EventListenerCustom* payResultListener;
     EventListenerCustom* imageUpdateListener;

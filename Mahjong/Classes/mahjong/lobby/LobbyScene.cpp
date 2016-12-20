@@ -497,12 +497,10 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(friendInviteListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(updateHeroInfoListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyConncetAgainListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(intnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(inviteReplaceListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(imageUpdateListener);
@@ -582,20 +580,6 @@ void LobbyScene::addEventListener(){
         }
     });
     
-    
-    //好友开房通知
-    friendInviteListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
-        FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
-        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",[=](Ref* ref){
-            FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterFriendRoomCommand(data.pid));
-            auto item = (MenuItemImage*)ref;
-            item->getParent()->getParent()->removeFromParent();
-        });
-        addChild(invite,4);
-    });
-    
-    
     //刷新自己的信息
     updateHeroInfoListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
         updateHeroInfo();
@@ -615,19 +599,6 @@ void LobbyScene::addEventListener(){
             exit(0);
         });
         addChild(hin,5);
-    });
-    
-    //好友邀请回复
-    inviteReplaceListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(FRIEND_IS_PLAYING_GAME, [=](EventCustom* event){
-        InviteRespData inv = GAMEDATA::getInstance()->getInviteRespData();
-        if(inv.result == "1"){
-            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s不在线",inv.nickname.c_str()),NULL);
-            addChild(hin,5);
-        }else if(inv.result == "2"){
-            HintDialog* hin = HintDialog::create(StringUtils::format("你的好友%s正在游戏",inv.nickname.c_str()),NULL);
-            addChild(hin,5);
-        }
-        
     });
     
     
