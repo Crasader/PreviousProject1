@@ -135,7 +135,6 @@ void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
         record.pokersRecord.pushBack(jong);
     }
     this->playerCpgRecords.push_back(record);
-    updateAnGangUi();
 }
 
 
@@ -162,7 +161,6 @@ void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)
         record.pokersRecord.pushBack(jong);
     }
     this->playerCpgRecords.push_back(record);
-    updateAnGangUi();
 }
 
 
@@ -214,7 +212,7 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
         for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
             if (data.flag == 1){
-                if(i==3&&!checkMengQing()){
+                if(i==3){
                     record.anGangFan = true;
                     jong->showJong(oppositeplayed, atoi(gang.at(0).c_str()));
                 }else{
@@ -236,22 +234,6 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
         }
         playerCpgRecords.push_back(record);
     }
-    updateAnGangUi();
-}
-
-
-void PlayerOpposite::updateAnGangUi(){
-    if(!checkMengQing()){
-        for(auto var : playerCpgRecords){
-            if(var.type == CpgType::angang&&!var.anGangFan){
-                Jong* laPoker = var.pokersRecord.at(var.pokersRecord.size()-1);
-                laPoker->showJong(rightplayed, var.gangValue);
-                var.anGangFan = true;
-            }
-        }
-        
-    }
-    
 }
 
 void PlayerOpposite::recoverHua(int hua){
@@ -384,7 +366,7 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
             record.gangValue = atoi(anganglist.at(0).c_str());
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
-                if(j==3&&!checkMengQing()){
+                if(j==3){
                     jong->showJong(oppositeplayed, atoi(anganglist.at(0).c_str()));
                     record.anGangFan = true;
                 }else{
@@ -406,7 +388,6 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
             playerCpgRecords.push_back(record);
         }
     }
-    updateAnGangUi();
 }
 
 void PlayerOpposite::recoverHand(std::string hand){

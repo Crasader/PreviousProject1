@@ -229,13 +229,6 @@ void PlayerBase::showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(getPlayerInfo()->getGender());
 }
 
-void PlayerBase::updateAnGangUi(){
-//    for(auto var : playerCpgRecords){
-//        if(var.type == CpgType::angang&&!var.anGangFan){
-//            for(var);
-//        }
-//    }
-}
 
 
 void PlayerBase::showCurrentBigJong(int cType){
@@ -502,15 +495,6 @@ void PlayerBase::updatePlayerHeadImage(){
     if(NULL != getChildByTag(9876)){
         ((HeadImage*)getChildByTag(9876))->updateImageByName(playerInfo->getPicture());
     }
-}
-
-bool PlayerBase::checkMengQing(){
-    for(auto var: playerCpgRecords){
-        if(var.type == CpgType::chi||var.type == CpgType::peng||var.type == CpgType::gang){
-            return false;
-        }
-    }
-    return true;
 }
 
 

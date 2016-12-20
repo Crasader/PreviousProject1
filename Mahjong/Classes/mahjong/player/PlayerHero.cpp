@@ -594,7 +594,6 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         Jong* jong = Jong::create();
         jong->setVisible(false);
         addChild(jong);
-        GAMEDATA::getInstance()->setInReplaceHua(0.8f*replace.size()+0.5f);
         schedule([=](float dt){
             std::vector<Jong*> needReplace;
             needReplace.clear();
@@ -614,12 +613,11 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             settleHandJongs(getHandPosX());
             currentJong = jong;
             isAllowPlay = true;
-            GAMEDATA::getInstance()->setInReplaceHua(false);
         }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
-        
+        GAMEDATA::getInstance()->setInReplaceHua(0.8f*replace.size()+0.8f);
     }
     else{
-        GAMEDATA::getInstance()->setInReplaceHua(0);
+        GAMEDATA::getInstance()->setInReplaceHua(0.8f);
         Jong* jong = Jong::create();
         jong->showJong(herohand, data.poker);
         addChild(jong);
@@ -643,8 +641,11 @@ void PlayerHero:: drawPlayedJong(int type){
     resetHandJongsY(NULL);
     for(int i=(int)playerHandJongs.size()-1;i>=0;i--){
         if(playerHandJongs.at(i)->getJongType()==type){
-            Jong* spJong = playerHandJongs.at(i);
-            playerHandJongs.eraseObject(spJong);//从手牌队列中移除
+            Jong* spJong = Jong::create();
+            spJong->showJong(herohand, playerHandJongs.at(i)->getJongType());
+            spJong->setPosition(playerHandJongs.at(i)->getPosition());
+            addChild(spJong);
+            playerHandJongs.eraseObject(playerHandJongs.at(i));//从手牌队列中移除
             Point startPoint = spJong->getPosition();
             Point endPoint = getHeroPlayedJongsPos((int)playerPlayedJongs.size());
             float sx = startPoint.x;
