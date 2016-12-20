@@ -9,7 +9,7 @@
 #include "mahjong/utils/StringUtil.h"
 #include "server/MsgConfig.h"
 
-#define PAY_PLAT_VALUE "1" //支付版本号
+#define PAY_PLAT_VALUE "1" //ios支付版本
 
 CommandManage* CommandManage::_instance = 0;
 
@@ -438,7 +438,9 @@ std::string CommandManage::getGamePayType(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_APPLE_SWITCH_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     keyValue.insert(map<string, string>::value_type("plat", PAY_PLAT_VALUE));
+#endif
     return commandString(keyValue);
 }
 
