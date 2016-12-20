@@ -154,7 +154,6 @@
 #define MSG_ROOM_LIST_RESP "msg_room_list_resp"
 #define MSG_ENTER_ROOM_RESP "msg_enter_room_resp"
 #define MSG_ENTER_FRIEND_ROOM_RESP "msg_enter_friend_room_resp"
-//#define MSG_GAME_START_NOTIFY "msg_game_start_notify"
 #define MSG_READY_RESP "msg_ready_resp"
 #define MSG_READY_NOTIFY "msg_ready_notify"
 #define MSG_OTHER_PALYER_JONG "msg_other_palyer_jong"
@@ -216,4 +215,5 @@
 #define MSG_PLAYER_REPLACE_LOGIN "msg_player_replace_login"//在其他的机子上登录
 #define MSG_UPDATE_PLAYER_WECHAT_IMAGE "MSG_UPDATE_PLAYER_WECHAT_IMAGE"
 #define MSG_GAME_SHOW_LAYER "MSG_GAME_SHOW_LAYER"
+#define MSG_LOBBY_SHOW_LOADING_LAYER "MSG_LOBBY_SHOW_LOADING_LAYER"
 #endif

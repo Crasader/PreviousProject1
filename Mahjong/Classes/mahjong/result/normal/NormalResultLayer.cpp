@@ -9,7 +9,7 @@
 #include "mahjong/result/normal/NormalResultLayer.hpp"
 #include "mahjong/result/normal/PlayerResultCell.hpp"
 #include "mahjong/result/ResultScene.hpp"
-#include "mahjong/lobby/GoldRoomPlate.hpp"
+#include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/jong/Jong.h"
 #include "mahjong/core/MjGameScene.h"

@@ -1,5 +1,5 @@
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/lobby/GoldRoomPlate.hpp"
+#include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
 #include "mahjong/lobby/EnterRoomDialog.hpp"
 #include "mahjong/lobby/notice/NoticeDialog.hpp"
 #include "mahjong/heroinfo/HeroInfoEdit.h"
@@ -211,7 +211,7 @@ void LobbyScene::drawSceneMid(){
                                              CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto shareMenu = Menu::create(sharefriend, NULL);
     shareMenu->alignItemsHorizontallyWithPadding(15);
-    shareMenu->setPosition(90, 542);
+    shareMenu->setPosition(90, 552);
     addChild(shareMenu);
     
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
@@ -219,24 +219,24 @@ void LobbyScene::drawSceneMid(){
     
     firstMenu = Menu::create(first_chaege, NULL);
     firstMenu->alignItemsHorizontallyWithPadding(15);
-    firstMenu->setPosition(200, 542);
+    firstMenu->setPosition(200, 552);
     addChild(firstMenu);
     firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(200, 562)),MoveTo::create(0.6f,Point(200, 542)),NULL), CC_REPEAT_FOREVER));
     //感叹号
     ganTanhao = Sprite::create("mjlobby/gantanhao.png");
-    ganTanhao->setPosition(230,565);
+    ganTanhao->setPosition(230,575);
     addChild(ganTanhao);
-    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(230, 585)),MoveTo::create(0.6f,Point(230, 565)),NULL), CC_REPEAT_FOREVER));
+    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(230, 590)),MoveTo::create(0.6f,Point(230, 570)),NULL), CC_REPEAT_FOREVER));
     if(UserData::getInstance()->isFirstCharge()){
         firstMenu->setVisible(false);
         ganTanhao->setVisible(false);
     }
     //房间按钮
     auto openRoom = Sprite::create("mjlobby/open_room_image.png");
-    openRoom->setPosition(390,400);
+    openRoom->setPosition(260,360);
     addChild(openRoom);
     auto joinRooom = Sprite::create("mjlobby/join_room_image.png");
-    joinRooom->setPosition(880,400);
+    joinRooom->setPosition(700,360);
     addChild(joinRooom);
     auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
     if(atoi(GAMEDATA::getInstance()->getPrivateGameNum().c_str())>0||GAMEDATA::getInstance()->getFangZhuId() == UserData::getInstance()->getPoxiaoId()){
@@ -247,8 +247,8 @@ void LobbyScene::drawSceneMid(){
     }
     auto joinBtn = MenuItemImage::create("mjlobby/join_room_btn_img_1.png", "mjlobby/join_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
     auto roomMenu = Menu::create(openBtn,joinBtn,NULL);
-    roomMenu->alignItemsHorizontallyWithPadding(180);
-    roomMenu->setPosition(640,230);
+    roomMenu->alignItemsHorizontallyWithPadding(130);
+    roomMenu->setPosition(485,190);
     addChild(roomMenu);
     
     //跑马灯
@@ -257,6 +257,10 @@ void LobbyScene::drawSceneMid(){
     scroll->setTag(9980);
     scroll->setPosition(600,600);
     addChild(scroll,2);
+    
+    GoldRoomPlate* plate = GoldRoomPlate::create();
+    plate->setTag(1298);
+    addChild(plate,2);
 }
 
 void LobbyScene::drawSceneBot(){
@@ -442,7 +446,7 @@ void LobbyScene::exchangeLequan(){
 void LobbyScene::showLoading(){
     Loading* loadLayer = Loading::create();
     loadLayer->setTag(1000);
-    this->addChild(loadLayer,3);
+    addChild(loadLayer,3);
 }
 
 
@@ -472,8 +476,9 @@ void LobbyScene::joinRoom(){
 
 
 void LobbyScene::showGoldRoomPad(){
-    GoldRoomPlate* plate = GoldRoomPlate::create();
-    addChild(plate,2);
+    if(NULL != getChildByTag(1298)){
+        getChildByTag(1298)->setVisible(!getChildByTag(1298)->isVisible());
+    }
 }
 
 void LobbyScene::onEnter(){
@@ -521,6 +526,8 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(wanjiaqunListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(noticeUrlLitener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(upateLequanShopLitener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(showLoobyLoadingLayer);
+    
 }
 
 void LobbyScene::addEventListener(){
@@ -727,6 +734,11 @@ void LobbyScene::addEventListener(){
         if(NULL != lequanNum)
             lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
     });
+    
+    showLoobyLoadingLayer = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_SHOW_LOADING_LAYER, [=](EventCustom* event){
+        showLoading();
+    });
+
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

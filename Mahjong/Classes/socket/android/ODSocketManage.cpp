@@ -62,12 +62,14 @@ void ODSocketManage::startScoketBeat(std::string msg){
 
 void ODSocketManage::sendScoketData(std::string msg){
     log("send command = %s", msg.c_str());
-    int sendResult = socket.Send(msg.c_str(), getMsgLength(msg));
-    if (sendResult < 0) {
-        log("无法向服务端发送消息");
-        socket.Close();
-        log("重新连接网络");
-        disConnectSocket();
+    if(msg.size()>2){
+        int sendResult = socket.Send(msg.c_str(), getMsgLength(msg));
+        if (sendResult < 0) {
+            log("无法向服务端发送消息");
+            socket.Close();
+            log("重新连接网络");
+            disConnectSocket();
+        }
     }
 }
 

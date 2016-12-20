@@ -179,8 +179,6 @@
 		D26778F21DF00698003CE73F /* Loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267783C1DF00697003CE73F /* Loading.cpp */; };
 		D26778F31DF00698003CE73F /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267783F1DF00697003CE73F /* EnterRoomDialog.cpp */; };
 		D26778F41DF00698003CE73F /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267783F1DF00697003CE73F /* EnterRoomDialog.cpp */; };
-		D26778F51DF00698003CE73F /* GoldRoomPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778411DF00697003CE73F /* GoldRoomPlate.cpp */; };
-		D26778F61DF00698003CE73F /* GoldRoomPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778411DF00697003CE73F /* GoldRoomPlate.cpp */; };
 		D26778F71DF00698003CE73F /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778431DF00697003CE73F /* LobbyScene.cpp */; };
 		D26778F81DF00698003CE73F /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778431DF00697003CE73F /* LobbyScene.cpp */; };
 		D26778F91DF00698003CE73F /* NoticeDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778461DF00697003CE73F /* NoticeDialog.cpp */; };
@@ -311,6 +309,10 @@
 		D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
 		D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */; };
 		D2FB85211E07B9F700257EE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2FB85201E07B9F700257EE1 /* Images.xcassets */; };
+		D2FB85251E0924AF00257EE1 /* GoldRoomPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FB85231E0924AF00257EE1 /* GoldRoomPlate.cpp */; };
+		D2FB85261E0924AF00257EE1 /* GoldRoomPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FB85231E0924AF00257EE1 /* GoldRoomPlate.cpp */; };
+		D2FB852A1E09254900257EE1 /* GoldRoomButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FB85281E09254900257EE1 /* GoldRoomButton.cpp */; };
+		D2FB852B1E09254900257EE1 /* GoldRoomButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FB85281E09254900257EE1 /* GoldRoomButton.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -509,8 +511,6 @@
 		D267783D1DF00697003CE73F /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		D267783F1DF00697003CE73F /* EnterRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnterRoomDialog.cpp; sourceTree = "<group>"; };
 		D26778401DF00697003CE73F /* EnterRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnterRoomDialog.hpp; sourceTree = "<group>"; };
-		D26778411DF00697003CE73F /* GoldRoomPlate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRoomPlate.cpp; sourceTree = "<group>"; };
-		D26778421DF00697003CE73F /* GoldRoomPlate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldRoomPlate.hpp; sourceTree = "<group>"; };
 		D26778431DF00697003CE73F /* LobbyScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LobbyScene.cpp; sourceTree = "<group>"; };
 		D26778441DF00697003CE73F /* LobbyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyScene.h; sourceTree = "<group>"; };
 		D26778461DF00697003CE73F /* NoticeDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoticeDialog.cpp; sourceTree = "<group>"; };
@@ -650,6 +650,10 @@
 		D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSBridge.mm; sourceTree = "<group>"; };
 		D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSBridge.h; sourceTree = "<group>"; };
 		D2FB85201E07B9F700257EE1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Mahjong-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		D2FB85231E0924AF00257EE1 /* GoldRoomPlate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRoomPlate.cpp; sourceTree = "<group>"; };
+		D2FB85241E0924AF00257EE1 /* GoldRoomPlate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldRoomPlate.hpp; sourceTree = "<group>"; };
+		D2FB85281E09254900257EE1 /* GoldRoomButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRoomButton.cpp; sourceTree = "<group>"; };
+		D2FB85291E09254900257EE1 /* GoldRoomButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldRoomButton.hpp; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1177,10 +1181,9 @@
 		D267783E1DF00697003CE73F /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D2FB85221E09243000257EE1 /* goldroom */,
 				D267783F1DF00697003CE73F /* EnterRoomDialog.cpp */,
 				D26778401DF00697003CE73F /* EnterRoomDialog.hpp */,
-				D26778411DF00697003CE73F /* GoldRoomPlate.cpp */,
-				D26778421DF00697003CE73F /* GoldRoomPlate.hpp */,
 				D26778431DF00697003CE73F /* LobbyScene.cpp */,
 				D26778441DF00697003CE73F /* LobbyScene.h */,
 				D26778451DF00697003CE73F /* notice */,
@@ -1520,6 +1523,17 @@
 			path = MD5;
 			sourceTree = "<group>";
 		};
+		D2FB85221E09243000257EE1 /* goldroom */ = {
+			isa = PBXGroup;
+			children = (
+				D2FB85231E0924AF00257EE1 /* GoldRoomPlate.cpp */,
+				D2FB85241E0924AF00257EE1 /* GoldRoomPlate.hpp */,
+				D2FB85281E09254900257EE1 /* GoldRoomButton.cpp */,
+				D2FB85291E09254900257EE1 /* GoldRoomButton.hpp */,
+			);
+			path = goldroom;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1761,6 +1775,7 @@
 				D26778E71DF00698003CE73F /* HeadImageDialog.cpp in Sources */,
 				D26778B91DF00697003CE73F /* BillInfo.cpp in Sources */,
 				D26778BB1DF00697003CE73F /* ChatDialog.cpp in Sources */,
+				D2FB85251E0924AF00257EE1 /* GoldRoomPlate.cpp in Sources */,
 				D26779471DF00698003CE73F /* ScrollCell.cpp in Sources */,
 				D26779071DF00698003CE73F /* NormalResultLayer.cpp in Sources */,
 				D26778BF1DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
@@ -1799,7 +1814,6 @@
 				D26778F91DF00698003CE73F /* NoticeDialog.cpp in Sources */,
 				D26778EF1DF00698003CE73F /* Jong.cpp in Sources */,
 				D26778CF1DF00697003CE73F /* DailyPride.cpp in Sources */,
-				D26778F51DF00698003CE73F /* GoldRoomPlate.cpp in Sources */,
 				D26778CD1DF00697003CE73F /* DailyEvent.cpp in Sources */,
 				D223FAF61E07784E00270969 /* stdafx.cpp in Sources */,
 				D26778D11DF00697003CE73F /* PrideCell.cpp in Sources */,
@@ -1819,6 +1833,7 @@
 				D26778C11DF00697003CE73F /* QuickChatLayer.cpp in Sources */,
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
+				D2FB852A1E09254900257EE1 /* GoldRoomButton.cpp in Sources */,
 				D267790D1DF00698003CE73F /* GameResultCell.cpp in Sources */,
 				D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */,
 				D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
@@ -1917,15 +1932,16 @@
 				D26779461DF00698003CE73F /* HeadImage.cpp in Sources */,
 				D26779261DF00698003CE73F /* Huode.cpp in Sources */,
 				D26779141DF00698003CE73F /* GameRuleDialog.cpp in Sources */,
+				D2FB85261E0924AF00257EE1 /* GoldRoomPlate.cpp in Sources */,
 				D26778DE1DF00697003CE73F /* DissovleRoomDialog.cpp in Sources */,
 				D267790A1DF00698003CE73F /* PlayerResultCell.cpp in Sources */,
 				D26778C41DF00697003CE73F /* GuiLayer.cpp in Sources */,
+				D2FB852B1E09254900257EE1 /* GoldRoomButton.cpp in Sources */,
 				D26778B01DF00697003CE73F /* HupaiAnim.cpp in Sources */,
 				D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D26778E41DF00698003CE73F /* FriendRoom.cpp in Sources */,
 				D26779341DF00698003CE73F /* SplashScene.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
-				D26778F61DF00698003CE73F /* GoldRoomPlate.cpp in Sources */,
 				D26778E01DF00697003CE73F /* RoomFullDialog.cpp in Sources */,
 				D26778CC1DF00697003CE73F /* QuitRoomDialog.cpp in Sources */,
 				D26778BA1DF00697003CE73F /* BillInfo.cpp in Sources */,

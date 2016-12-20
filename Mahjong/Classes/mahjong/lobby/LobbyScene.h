@@ -51,6 +51,7 @@ private:
     EventListenerCustom* wanjiaqunListener;
     EventListenerCustom* noticeUrlLitener;
     EventListenerCustom* upateLequanShopLitener;
+    EventListenerCustom* showLoobyLoadingLayer;
     
     bool isButtonCilckable;
     float clickTime;

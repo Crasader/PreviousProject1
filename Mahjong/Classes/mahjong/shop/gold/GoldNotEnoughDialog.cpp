@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/shop/gold/GoldNotEnoughDialog.hpp"
-#include "mahjong/lobby/GoldRoomPlate.hpp"
+#include "mahjong/lobby/goldroom/GoldRoomButton.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/shop/gold/ChargeGold.hpp"
 #include "mahjong/utils/GameConfig.h"

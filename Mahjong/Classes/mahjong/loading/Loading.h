@@ -11,7 +11,7 @@ public:
     virtual bool init(Point pos,bool touchAble);
 private:
     void update(float dt);
-    int connectOutTime = 10;
+    int connectOutTime = 8;
 	void craeteAnimate(Point pos);
 	bool onTouchBegan(Touch *touch, Event  *event);
 }; 
