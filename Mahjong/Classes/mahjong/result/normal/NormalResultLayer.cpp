@@ -80,6 +80,14 @@ void NormalResultLayer::showGameResult(){
 
 void NormalResultLayer::showRoomInfo(){
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        auto fanghao = Sprite::create("result/fang_jian_hao.png");
+        fanghao->setPosition(900,560);
+        addChild(fanghao,1);
+        
+        auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
+        fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        fanghaoNum->setPosition(940,560);
+        addChild(fanghaoNum);
         auto lezi = Sprite::create();
         addChild(lezi);
         auto jucount = Sprite::create();
@@ -106,16 +114,13 @@ void NormalResultLayer::showRoomInfo(){
         juNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         juNum->setPosition(jucount->getPositionX()+45,jucount->getPositionY());
     }else{
-        auto xioahao = Sprite::create();
+        auto xioahao = Sprite::create("result/mei_ju_xiao_hao.png");
         xioahao->setPosition(640,560);
         addChild(xioahao);
-        if(GAMEDATA::getInstance()->getFee() == "2000"){
-            xioahao->setTexture("result/mei_ju_xiao_hao_2000.png");
-        }else if(GAMEDATA::getInstance()->getFee() == "4000"){
-            xioahao->setTexture("result/mei_ju_xiao_hao_4000.png");
-        }else{
-            xioahao->setTexture("result/mei_ju_xiao_hao_2w.png");
-        }
+        auto fee = LabelAtlas::create(GAMEDATA::getInstance()->getFee(),"result/ju_num.png",16,22,'0');
+        fee->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        fee->setPosition(665,560);
+        addChild(fee,1);
     }
 }
 
