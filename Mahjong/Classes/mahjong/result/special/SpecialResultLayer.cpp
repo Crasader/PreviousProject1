@@ -67,6 +67,8 @@ void SpecialResultLayer::showGameReslut(){
         cell->setPosition(250+260*i,340);
         addChild(cell);
     }
+    //大结算的时候获取玩家信息
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
 }
 
 void SpecialResultLayer::showLayerBtn(){

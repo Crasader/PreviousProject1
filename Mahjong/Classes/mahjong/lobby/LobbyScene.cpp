@@ -475,16 +475,16 @@ void LobbyScene::onEnter(){
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
     schedule([=](float dt){
         updateHeroInfo();
-    }, 0.5f, CC_REPEAT_FOREVER, 0,"updatePlayerInfo");
+    }, 0.4f, CC_REPEAT_FOREVER, 0,"updatePlayerInfo");
     
 }
 
 void LobbyScene::onEnterTransitionDidFinish(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
         HintDialog* hint  = HintDialog::create("房主已经解散了房间", nullptr);
         addChild(hint,50);
