@@ -71,7 +71,7 @@ void UserInfo::showUserInfo(){
     auto nicheng = Sprite::create("playerinfo/nickname_text.png");
     nicheng->setPosition(620, 405);
     addChild(nicheng);
-    nickNameLabel = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 30);
+    auto nickNameLabel = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 30);
     nickNameLabel->setColor(Color3B(93, 172, 221));
     nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickNameLabel->setPosition(680, 405);
@@ -140,14 +140,6 @@ void UserInfo::editHeadImage(){
     addChild(headImageDialog);
 }
 
-void UserInfo::updateNickname(){
-    nickNameLabel->setString(UserData::getInstance()->getNickName());
-    EventCustom ev(MSG_UPDATE_HERO_INFO);
-    _eventDispatcher->dispatchEvent(&ev);
-    if (UserData::getInstance()->isChangeName()){
-        changeNickName->setVisible(false);
-    }
-}
 
 void UserInfo::updateGender(){
     std::string gen = UserData::getInstance()->getGender() == 0 ? "playerinfo/female.png" : "playerinfo/male.png";
