@@ -845,7 +845,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         runAction(mySe);
         //吃完后触发听牌
         if (cpgResp.result == 2 && cpgResp.ting != ""){
-            PlayerCpgtData tingData;
+            PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
             tingData.ting = cpgResp.ting;
             GAMEDATA::getInstance()->setPlayerCpgt(tingData);
             ((MahjongView*)getParent())->showTingGangControllPad();
@@ -937,7 +937,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     runAction(mySe);
     
     if (resp.result == 2 && resp.ting != ""){
-        PlayerCpgtData tingData;
+        PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
         tingData.ting = resp.ting;
         GAMEDATA::getInstance()->setPlayerCpgt(tingData);
         ((MahjongView*)getParent())->showTingGangControllPad();

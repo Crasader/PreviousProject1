@@ -755,12 +755,11 @@ void MsgHandler::showOtherPengNotify(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &pengPoker = _mDoc["peng"];
     const rapidjson::Value &sId = _mDoc["sId"];
-    PlayerCpgtData cpg;
+    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     cpg.poker = poker.GetString();
     cpg.seatId = seatId.GetInt();
     cpg.peng = pengPoker.GetString();
