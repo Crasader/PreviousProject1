@@ -3692,11 +3692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/splash/SplashScene.cpp"
-            timestampString = "504171399.477498"
+            timestampString = "504173124.025503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "SplashScene::loginByVisitor()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3708,11 +3708,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/splash/SplashScene.cpp"
-            timestampString = "504171399.477498"
+            timestampString = "504173124.025503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "SplashScene::loginByVisitor()"
             landmarkType = "7">
          </BreakpointContent>

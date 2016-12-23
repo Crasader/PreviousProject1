@@ -21,7 +21,7 @@ public:
 private:
     EventListenerCustom* continueAgainLisetner;
     EventListenerCustom* playerReplaceLoginListener;
-    int timeToatal;//自动再来一局的时间
+
     void showGameResult();
     void showRoomInfo();
     void showPlayerResluts();

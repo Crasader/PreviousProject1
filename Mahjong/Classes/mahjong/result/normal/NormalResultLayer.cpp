@@ -33,7 +33,6 @@ bool NormalResultLayer::init(){
     if(!Layer::init()){
         return false;
     }
-    timeToatal = 25;
     auto reslut_bg = Sprite::create("result/result_bg.jpg");
     reslut_bg->setPosition(640, 360);
     addChild(reslut_bg,-1);
@@ -244,13 +243,6 @@ void NormalResultLayer::continueGame(){
 
 
 void NormalResultLayer::updateTime(float dt){
-    if (isVisible()){
-        timeToatal--;
-        if (timeToatal <= 0){
-            continueGame();
-            timeToatal = 10000000000;//填一个极大值
-        }
-    }
     if(GAMEDATA::getInstance()->getWaitNetwork()){
         schedule([=](float dt){
             NetworkManage::getInstance()->reConnectSocket();
