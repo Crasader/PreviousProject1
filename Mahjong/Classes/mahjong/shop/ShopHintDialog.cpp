@@ -41,7 +41,7 @@ void ShopHintDialog::showDialog(){
 }
 
 void ShopHintDialog::showText(std::string msg){
-    auto label = Label::create(msg,"arial",30);
+    auto label = Label::createWithSystemFont(msg,"arial",30);
     label->setPosition(640,380);
     label->setTag(666);
     addChild(label);
@@ -55,6 +55,5 @@ void ShopHintDialog::showImage(std::string image){
 }
 
 void ShopHintDialog::confirm(){
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_UPDATE_HERO_INFO);
     removeFromParent();
 }

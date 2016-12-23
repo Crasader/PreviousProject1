@@ -1764,7 +1764,6 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         const rapidjson::Value &ip = _mDoc["ip"];
         GAMEDATA::getInstance()->setIP(ip.GetString());
     }
-    postNotifyMessage(MSG_UPDATE_HERO_INFO, "");
 }
 
 

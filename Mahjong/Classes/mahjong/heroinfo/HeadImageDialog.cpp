@@ -20,8 +20,6 @@ void HeadImageDialog::onEnter(){
         if (result == "1"){
             EventCustom ev0(MSG_UPDATE_HEAD_IMAGE);
             _eventDispatcher->dispatchEvent(&ev0);
-            EventCustom ev1(MSG_UPDATE_HERO_INFO);
-            _eventDispatcher->dispatchEvent(&ev1);
         }
         removeFromParent();
     });

@@ -74,8 +74,6 @@ void LequanShop::onEnter(){
             if(NULL != getChildByTag(962)){
                 ((LabelAtlas*)getChildByTag(962))->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
             }
-            EventCustom ev(MSG_UPDATE_HERO_INFO);
-            _eventDispatcher->dispatchEvent(&ev);
         }else{
             ShopHintDialog* shop = ShopHintDialog::create();
             shop->showText("兑换失败");

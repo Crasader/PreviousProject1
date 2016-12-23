@@ -475,7 +475,7 @@ void LobbyScene::onEnter(){
     schedule(schedule_selector(LobbyScene::signUpdate), 0, CC_REPEAT_FOREVER, 0.2f);
     schedule([=](float dt){
         updateHeroInfo();
-    }, 1.0, 5, 0,"updatePlayerInfo");
+    }, 0.5f, CC_REPEAT_FOREVER, 0,"updatePlayerInfo");
     
 }
 
@@ -497,7 +497,6 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(updateHeroInfoListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyConncetAgainListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(intnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginReplaceListener);
@@ -578,11 +577,6 @@ void LobbyScene::addEventListener(){
             FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
             addChild(dia,4);
         }
-    });
-    
-    //刷新自己的信息
-    updateHeroInfoListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_UPDATE_HERO_INFO, [=](EventCustom* event){
-        updateHeroInfo();
     });
     
     

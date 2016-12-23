@@ -186,7 +186,6 @@
 #define MSG_PLAYER_GOLD_CHANGE_LIST "msg_player_gold_change_list"
 #define MSG_PLAYER_GOLD_CHANGE_RESP "msg_player_gold_change_resp"
 #define MSG_PLAYER_LEQUAN_CHANGE_LIST "msg_player_lequan_change_list"
-#define MSG_UPDATE_HERO_INFO "msg_update_hero_info"
 #define MSG_UPDATE_HEAD_IMAGE "msg_update_head_image"
 #define MSG_PLAYER_LEQUAN_EXCHANGE "msg_player_lequan_exchange"
 #define MSG_PLAYER_LEQUAN_EXCHANGE_RECORD "msg_player_lequan_exchange_record"
