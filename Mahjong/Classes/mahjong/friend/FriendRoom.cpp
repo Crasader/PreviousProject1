@@ -112,12 +112,6 @@ bool FriendRoom::init()
     lezi40Info->setPosition(660,305);
     addChild(lezi40Info);
     
-    if(UserData::getInstance()->getFangkaNum()<2){
-        fangka16->setEnabled(false);
-        kaiju16->setTexture("friend/16_ju_hui.png");
-    }
-    
-    
     auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(FriendRoom::openRoom, this));
     auto openMenu = Menu::create(openBtn,NULL);
     openMenu->setPosition(640,190);
