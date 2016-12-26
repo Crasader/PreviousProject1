@@ -18,15 +18,13 @@ public:
     static Sprite* currentBigJongBg;//打出的牌展示背景
     static Jong* currentBigJong;//打出的牌放大展示牌
     static set<int> playedPokers;//全部玩家打出过的牌
-    
     int huaIndex;//换花计数
-    
     Vector<Jong*> playerHandJongs;//玩家手牌
     Vector<Jong*> playerPlayedJongs;//玩家出的牌
     vector<PlayerCpgRecord>  playerCpgRecords;//玩家吃碰杠记录
     
     virtual bool init() override;
-    virtual void removeLastJong(){};
+    virtual void removeLastJong(){};// 移除最后一张牌
     virtual void doEventTimeOverUi(){};
     virtual void doEventTimeOver(int type){};
     virtual void showCurrentPlayedJongIcon(bool isShow){};
