@@ -13,46 +13,57 @@ enum JongEnum
 };
 
 enum JongViewType{
-    herohand,
-    herocpg,
-    heroplayed,
-    herodeal,
+    herohand,//玩家手牌
+    heroplayed,//玩家打出的牌
+    herodeal,//玩家发牌
+    heroangang,//玩家暗杠
+    herocpgportrait,//吃碰杠纵向
+    herocpglandscape,//吃碰杠横向
     
     lefthand,
     leftplayed,
     leftdeal,
+    leftangang,
+    leftcpgportrait,
+    leftcpglandscape,
     
     righthand,
     rightplayed,
     rightdeal,
+    rightangang,
+    rightcpgportrait,
+    rightcpglandscape,
     
     oppositehand,
     oppositeplayed,
     oppositedeal,
     oppositeangang,
+    oppositecpgportrait,
+    oppositecpglandscape,
     
-    playedshow,
-    herocpg2
+    playedshow//大牌显示
+    
 };
 
 class Jong :public Node{
 public:
+    static std::string getContextImage(int ctype);//获取内容图片
 	virtual bool init();
-	void showJong(int bType,int cType);
-	Rect getJongBoundingBox();
-	static std::string getContextImage(int btype);
-    std::string getJongName(int type);
-    void setJongSelectIcon(bool show);
+	void showJong(int bType,int cType);//显示牌
+	Rect getJongBoundingBox();//获取牌的区域
+    std::string getJongName(int type);//获取牌的名字
+    void setJongSelectIcon(bool show);//旋转框
  	CC_SYNTHESIZE(int, jongType, JongType);
 	CREATE_FUNC(Jong);
 private:
 	Sprite* background;
 	Sprite* contentSprite;
     Sprite* selcetedIcon;
-	float getScaleByType(int bType);
-	void setFlipByType(Sprite* sprite,int bType);
-	float getRotationByType(int bType);
-	Point getContentPosition(int bType,Point bpos);
-	std::string getBackgroundImage(int btype);
+	float getContentScaleByType(int bType);//内容缩放比例
+    float getBackgroundScaleByType(int bType);//背景缩放比例
+	void setFlipByType(Sprite* sprite,int bType);//水平翻转
+	float getRotationByType(int bType);//旋转
+	Point getContentPosition(int bType,Point bpos);//内容的坐标
+	std::string getBackgroundImage(int btype);//获取背景图片
 };
 #endif

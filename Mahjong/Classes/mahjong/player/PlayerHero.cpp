@@ -272,7 +272,7 @@ void PlayerHero::updateHandJongs(std::string jongs,bool hu){
         for (int i = 0; i < pokers.size(); i++)
         {
             Jong* jong = Jong::create();
-            jong->showJong(herocpg, atoi(pokers.at(i).c_str()));
+            jong->showJong(herocpgportrait, atoi(pokers.at(i).c_str()));
             if(hu&&i==pokers.size()-1){
                 jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i+10, JONG_POS_Y));
             }else{
@@ -727,12 +727,8 @@ void PlayerHero::removePlayedIcon(){
     playedIcon->setVisible(false);
 }
 
-
-void PlayerHero::doEventTimeOverUi(){
-    ((MahjongView*)getParent())->hideTingGangControllPad();
-}
-
 void PlayerHero::doEventTimeOver(int type){
+    ((MahjongView*)getParent())->hideTingGangControllPad();
     //type 吃碰杠倒计时
     if (type == 1){
         ((MahjongView*)getParent())->hideTingGangControllPad();
@@ -798,7 +794,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         Vector<Jong*> chiVector;
         //根据吃牌的位置显示,显示吃牌堆得形状
         Jong* jon = Jong::create();
-        jon->showJong(herocpg2, playerBase->getCurrentJong()->getJongType());
+        jon->showJong(herocpglandscape, playerBase->getCurrentJong()->getJongType());
         jon->setPosition(playerBase->getCurrentJong()->getPosition());
         this->addChild(jon, 3);
         chiVector.pushBack(jon);
@@ -806,7 +802,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         for (int i = 0; i < chipai.size(); i++){
             for (int j = 0; j < getSelfHandJongs().size(); j++){
                 if (atoi(chipai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
-                    getSelfHandJongs().at(j)->showJong(herocpg, getSelfHandJongs().at(j)->getJongType());
+                    getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
                     chiVector.pushBack(getSelfHandJongs().at(j));
                     eraseHeroJong(getSelfHandJongs().at(j));
                     break;
@@ -868,7 +864,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     for (int i = 0; i < pengpai.size(); i++){
         for (int j = 0; j < getSelfHandJongs().size(); j++){
             if (atoi(pengpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
-                getSelfHandJongs().at(j)->showJong(herocpg, getSelfHandJongs().at(j)->getJongType());
+                getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
                 getSelfHandJongs().at(j)->setLocalZOrder(2);
                 pengVector.pushBack(getSelfHandJongs().at(j));
                 eraseHeroJong(getSelfHandJongs().at(j));
@@ -877,7 +873,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         }
     }
     Jong* jon = Jong::create();
-    jon->showJong(herocpg2, playerBase->getCurrentJong()->getJongType());
+    jon->showJong(herocpglandscape, playerBase->getCurrentJong()->getJongType());
     jon->setPosition(playerBase->getCurrentJong()->getPosition());
     this->addChild(jon, 1);
     //判断被碰牌玩家的位置
@@ -956,7 +952,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         for (int i = 0; i < gangpai.size(); i++){
             for (int j = 0; j < getSelfHandJongs().size(); j++){
                 if (atoi(gangpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
-                    getSelfHandJongs().at(j)->showJong(herocpg, getSelfHandJongs().at(j)->getJongType());
+                    getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
                     gangVector.pushBack(getSelfHandJongs().at(j));
                     eraseHeroJong(getSelfHandJongs().at(j));
                     break;
@@ -964,7 +960,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             }
         }
         Jong* jon = Jong::create();
-        jon->showJong(herocpg, playerBase->getCurrentJong()->getJongType());
+        jon->showJong(herocpgportrait, playerBase->getCurrentJong()->getJongType());
         jon->setPosition(playerBase->getCurrentJong()->getPosition());
         this->addChild(jon, 5);
         gangVector.pushBack(jon);
@@ -1027,7 +1023,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
                     if (atoi(gangpai.at(0).c_str()) == playerCpgRecords.at(i).pokersRecord.at(0)->getJongType()){
                         playerCpgRecords.at(i).type = penggang;
                         playerCpgRecords.at(i).pokersRecord.pushBack(gangVector);
-                        gangVector.at(0)->showJong(herocpg, gangVector.at(0)->getJongType());
+                        gangVector.at(0)->showJong(herocpgportrait, gangVector.at(0)->getJongType());
                         Point pos;
                         if(playerCpgRecords.at(i).pengDir ==0){
                             pos = playerCpgRecords.at(i).pokersRecord.at(1)->getPosition();
@@ -1062,7 +1058,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             this->playerCpgRecords.push_back(record);
             CallFunc* action1 = CallFunc::create([=](){
                 for (int m = 0; m < gangVector.size(); m++){
-                    gangVector.at(m)->showJong(herocpg, gangVector.at(m)->getJongType());
+                    gangVector.at(m)->showJong(herocpgportrait, gangVector.at(m)->getJongType());
                     MoveTo* mv = MoveTo::create(0.2f, Point(400 + 28 * m, 150));
                     ScaleTo* scale = ScaleTo::create(0.2f, 0.6f);
                     Spawn* sp = Spawn::create(mv, scale, NULL);
@@ -1151,7 +1147,7 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             for (int j = 0; j < chiPoker.size();j++){
                 Jong* jong = Jong::create();
                 jong->setScale(0.75f);
-                jong->showJong(j==0?herocpg2:herocpg, atoi(chiPoker.at(j).c_str()));
+                jong->showJong(j==0?herocpglandscape:herocpgportrait, atoi(chiPoker.at(j).c_str()));
                 jong->setPosition(Point(getCpgPostionX() + (j==0? 0:(5+48 * j)), j==0?35:45));
                 this->addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
@@ -1168,7 +1164,7 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             for(int j=0;j<3;j++){
                 Jong* jong = Jong::create();
                 jong->setScale(0.75f);
-                jong->showJong(j==0?herocpg2:herocpg, atoi(peng.at(i).peng.c_str()));
+                jong->showJong(j==0?herocpglandscape:herocpgportrait, atoi(peng.at(i).peng.c_str()));
                 int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(peng.at(i).peId.c_str()));
                 if(seatId == ClientSeatId::left){
                     jong->setPosition(Point(getCpgPostionX() + (j==0? 0:(5+48 * j)), j==0?35:45));
@@ -1192,7 +1188,7 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
                 jong->setScale(0.75f);
-                jong->showJong(herocpg, atoi(gang.at(i).gang.c_str()));
+                jong->showJong(herocpgportrait, atoi(gang.at(i).gang.c_str()));
                 if (j == 3){
                     jong->setPosition(Point(getCpgPostionX() + 47, 55));
                 }
@@ -1216,7 +1212,7 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 Jong* jong = Jong::create();
                 jong->setScale(0.75f);
                 if (j == 3){
-                    jong->showJong(herocpg,atoi(var.c_str()));
+                    jong->showJong(herocpgportrait,atoi(var.c_str()));
                     jong->setPosition(Point(getCpgPostionX() + 47, 55));
                 }
                 else{

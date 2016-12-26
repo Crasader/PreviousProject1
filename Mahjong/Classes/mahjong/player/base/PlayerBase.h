@@ -24,15 +24,12 @@ public:
     vector<PlayerCpgRecord>  playerCpgRecords;//玩家吃碰杠记录
     
     virtual bool init() override;
-    virtual void removeLastJong(){};// 移除最后一张牌
-    virtual void doEventTimeOverUi(){};
-    virtual void doEventTimeOver(int type){};
-    virtual void showCurrentPlayedJongIcon(bool isShow){};
-    virtual void JongShowdown(vector<int> jongs){};
-    virtual Point getCpgShowPostion(int index){ return Point(0, 0); };
-    
     void onEnter() override;
     void onExit() override;
+    virtual void removeLastJong(){};// 移除最后一张牌
+    virtual void doEventTimeOver(int type){};
+    virtual void showCurrentPlayedJongIcon(bool isShow){};
+    virtual Point getCpgShowPostion(int index){ return Point(0, 0); };
     void initPlayer(Player* playerInfo);//初始化玩家UI
     void replaceHandHua(JongViewType tpye);//玩家手牌换花
     void replaceTurnHua(PlayerTurnData data);//摸牌换花
@@ -61,16 +58,15 @@ public:
     void playSoundHuPai(int type);
     void updatePlayerHeadImage();
     Jong* getCurrentJong();
-    
     CC_SYNTHESIZE(Player*, playerInfo, PlayerInfo);
     CC_SYNTHESIZE(ReplaceJong, replacePoker, ReplacePoker);
-    CC_SYNTHESIZE(int, clientSeat, ClientSeat);
+    CC_SYNTHESIZE(int,clientSeat,ClientSeat);
     CC_SYNTHESIZE(int,huaNum,HuaNum);
-    CC_SYNTHESIZE(bool, stateCpg, StateCpg);//吃碰杠状态
-    CC_SYNTHESIZE(int, chiNumber, ChiNumber);//吃的数量
-    CC_SYNTHESIZE(int, pokerNumber, PokerNumber);//打牌数量
-    CC_SYNTHESIZE(int, lastPoker, LastPoker);//最近一次出牌
-    CC_SYNTHESIZE(bool, isPlayHuaChi, IsPlayHuaChi);//花痴音效
+    CC_SYNTHESIZE(bool,stateCpg,StateCpg);//吃碰杠状态
+    CC_SYNTHESIZE(int,chiNumber,ChiNumber);//吃的数量
+    CC_SYNTHESIZE(int,pokerNumber,PokerNumber);//打牌数量
+    CC_SYNTHESIZE(int,lastPoker,LastPoker);//最近一次出牌
+    CC_SYNTHESIZE(bool,isPlayHuaChi,IsPlayHuaChi);//花痴音效
     CREATE_FUNC(PlayerBase);
     
 private:

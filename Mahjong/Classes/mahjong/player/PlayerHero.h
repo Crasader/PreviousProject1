@@ -22,7 +22,6 @@ public:
     virtual void onExit() override;
     void removeLastJong() override;
     void doEventTimeOver(int type) override;
-    void doEventTimeOverUi() override;
     void showCurrentPlayedJongIcon(bool isShow) override;
     bool onTouchBegan(Touch *touch, Event  *event) override;
     void onTouchMoved(Touch *touch, Event  *event) override;

@@ -17,12 +17,14 @@ bool Jong::init(){
 
 void Jong::showJong(int bType, int cType){
     background->setTexture(getBackgroundImage(bType));
+    background->setRotation(getBackgroundScaleByType(bType));
     setFlipByType(background, bType);
+    //根据给定的牌的内容来显示
     if (cType > 0){
-        this->setJongType(cType);
+        setJongType(cType);
         contentSprite->setTexture(getContextImage(cType));
         contentSprite->setRotation(getRotationByType(bType));
-        contentSprite->setScale(getScaleByType(bType));
+        contentSprite->setScale(getContentScaleByType(bType));
         contentSprite->setPosition(getContentPosition(bType, background->getPosition()));
         contentSprite->setVisible(true);
     }
@@ -47,21 +49,30 @@ void Jong::setJongSelectIcon(bool show){
 }
 
 
-float Jong::getScaleByType(int bType){
+float Jong::getContentScaleByType(int bType){
     if (bType == leftplayed || bType == oppositeplayed || bType == rightplayed
         || bType == heroplayed || bType == oppositeangang){
         return 0.4f;
+    }else if(bType ==leftcpgportrait||bType == leftcpglandscape){
+        return 0.32f;
     }
-    else if (bType == herocpg){
+    else if (bType == herocpgportrait){
         return 0.7f;
     }
-    else if (bType == herocpg2){
+    else if (bType == herocpglandscape){
         return 0.8f;
     }
     else{
         return 1.0f;
     }
-    
+}
+
+float Jong::getBackgroundScaleByType(int bType){
+    if (bType == leftcpgportrait || bType == leftcpglandscape){
+        return 0.64f;
+    }else{
+        return 1.0f;
+    }
 }
 
 
@@ -72,13 +83,13 @@ void Jong::setFlipByType(Sprite* sprite, int bType){
 }
 
 float Jong::getRotationByType(int bType){
-    if (bType == leftplayed){
+    if (bType == leftplayed || bType == leftcpglandscape){
         return 90;
     }
     else if (bType == oppositeplayed){
         return 180;
     }
-    else if (bType == rightplayed||bType==herocpg2){
+    else if (bType == rightplayed||bType==herocpglandscape){
         return 270;
     }
     else{
@@ -100,14 +111,17 @@ Point Jong::getContentPosition(int bType, Point bpos){
     else if (bType == heroplayed){
         return Point(bpos.x, bpos.y + 5);
     }
-    else if (bType == herocpg){
+    else if (bType == herocpgportrait){
         return Point(bpos.x, bpos.y + 15);
     }
     else if (bType == playedshow){
         return Point(bpos.x, bpos.y-10);
     }
-    else if (bType == herocpg2){
+    else if (bType == herocpglandscape){
         return Point(bpos.x, bpos.y+15);
+    }
+    else if (bType == leftcpglandscape){
+        return Point(bpos.x, bpos.y+5);
     }
     else {
         return Point(bpos.x, bpos.y - 10);
@@ -121,11 +135,15 @@ std::string Jong::getBackgroundImage(int btype){
     std::string imageName;
     switch (btype)
     {
+            //玩家自己
         case herohand:
             imageName = "jong/big_1.png";
             break;
-        case herocpg:
+        case herocpgportrait:
             imageName = "jong/big_2.png";
+            break;
+        case herocpglandscape:
+            imageName = "jong/big_4.png";
             break;
         case heroplayed:
             imageName = "jong/small_2.png";
@@ -133,6 +151,7 @@ std::string Jong::getBackgroundImage(int btype){
         case herodeal:
             imageName = "jong/big_3.png";
             break;
+            //右边的玩家
         case righthand:
             imageName = "jong/middle_1.png";
             break;
@@ -142,6 +161,16 @@ std::string Jong::getBackgroundImage(int btype){
         case rightdeal:
             imageName = "jong/middle_5.png";
             break;
+        case rightangang:
+            imageName= "jong/small_5.png";
+            break;
+        case rightcpgportrait:
+            imageName= "jong/small_2.png";
+            break;
+        case rightcpglandscape:
+            imageName="jong/small_4.png";
+            break;
+            //对面的玩家
         case oppositehand:
             imageName = "jong/middle_3.png";
             break;
@@ -154,6 +183,13 @@ std::string Jong::getBackgroundImage(int btype){
         case oppositeangang:
             imageName = "jong/small_6.png";
             break;
+        case oppositecpgportrait:
+            imageName= "jong/small_2.png";
+            break;
+        case oppositecpglandscape:
+            imageName="jong/small_4.png";
+            break;
+            //左边的玩家
         case lefthand:
             imageName = "jong/middle_1.png";
             break;
@@ -163,11 +199,18 @@ std::string Jong::getBackgroundImage(int btype){
         case leftdeal:
             imageName = "jong/middle_5.png";
             break;
+        case leftangang:
+            imageName= "jong/small_5.png";
+            break;
+        case leftcpgportrait:
+            imageName= "jong/small_2.png";
+            break;
+        case leftcpglandscape:
+            imageName="jong/small_4.png";
+            break;
+        //大牌显示
         case playedshow:
             imageName = "jong/big_1.png";
-            break;
-        case herocpg2:
-            imageName = "jong/big_4.png";
             break;
         default:
             break;
@@ -398,7 +441,7 @@ std::string Jong::getJongName(int type){
             return "H9";
         case lan:
             return "H@";
-      
-
+        default:
+            return "E@";
     }
 }

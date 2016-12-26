@@ -351,10 +351,7 @@ void PlayerBase::updateTime(float dt){
     }
     else{
         timeClock->setVisible(false);
-        if(mCDTime == 0){
-            doEventTimeOverUi();
-        }
-        if (mCDTime <=-1){
+        if (mCDTime <=0){
             doEventTimeOver(this->getTag());
             unschedule(schedule_selector(PlayerBase::updateTime));
         }

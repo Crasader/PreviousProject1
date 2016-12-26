@@ -130,10 +130,9 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
     playerBase->removeLastJong();
     for (int i = 0; i < chi.size(); i++){
         Jong* jong = Jong::create();
-        jong->setScale(0.8f);
-        jong->showJong(leftplayed, atoi(chi.at(i).c_str()));
+        jong->showJong(leftcpglandscape, atoi(chi.at(i).c_str()));
         jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i);
-        this->addChild(jong,10);
+        addChild(jong,10);
         record.pokersRecord.pushBack(jong);
     }
     playerCpgRecords.push_back(record);
