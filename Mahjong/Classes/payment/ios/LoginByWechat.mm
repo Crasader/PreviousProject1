@@ -125,7 +125,7 @@ static NSString *DEVICESTRING= @"iphone";
                 NSString *sexStr = [NSString stringWithFormat:@"%@", sex];
                 NSObject *nickname = [results objectForKey:@"nickname"];
                 NSString *nicknameStr = [NSString stringWithFormat:@"%@", nickname];
-                NSString *woman = @"0";
+                NSString *woman = @"2";
                 NSLog(@"wechat sex log = %@",sexStr);
                 if([sexStr isEqualToString:woman]){
                     UserData::getInstance()->setGender(0);
@@ -136,7 +136,7 @@ static NSString *DEVICESTRING= @"iphone";
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
                 UserData::getInstance()->setGender(atoi(std::string([sexStr UTF8String]).c_str()));
                 UserData::getInstance()->setNickName(std::string([nicknameStr UTF8String]));
-                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]),std::string([sexStr UTF8String]),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
+                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]),StringUtils::format("%d",UserData::getInstance()->getGender()),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");
                 [self sendAuthRequestScope];
@@ -192,11 +192,11 @@ static NSString *DEVICESTRING= @"iphone";
                 UserData::getInstance()->setPicture(std::string([headstr UTF8String]));
                 NSObject *sex = [results objectForKey:@"sex"];
                 NSString *sexStr = [NSString stringWithFormat:@"%@", sex];
-                NSString *man = @"0";
-                if(sexStr == man){
-                    UserData::getInstance()->setGender(1);
-                }else{
+                NSString *woman = @"2";
+                if(sexStr == woman){
                     UserData::getInstance()->setGender(0);
+                }else{
+                    UserData::getInstance()->setGender(1);
                 }
                 return true;
             }else{

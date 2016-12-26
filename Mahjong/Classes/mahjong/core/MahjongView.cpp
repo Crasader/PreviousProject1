@@ -805,7 +805,9 @@ void MahjongView::addJongPlayedListener(){
             }
         }
         else{
+            log("听牌后玩家系统出牌");
             schedule([=](float dt){
+                log("系统提玩家出的牌是: %d",GAMEDATA::getInstance()->getOtherPlayJong().poker);
                 playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
                 playerHero->stopTimeClockAnim();
                 if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
@@ -813,7 +815,7 @@ void MahjongView::addJongPlayedListener(){
                 }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
                     Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
                 }
-            },0,0,GAMEDATA::getInstance()->getInReplaceHua(),"delay_playpoker");
+            },0,0,0,"delay_playpoker");
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
