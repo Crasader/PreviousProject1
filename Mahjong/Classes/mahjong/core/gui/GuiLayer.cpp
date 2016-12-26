@@ -295,7 +295,7 @@ void GuiLayer::testButtonClick(){
         cpg.chi.push_back("1,2");
         cpg.flag = 1;
         cpg.poker = "3";
-        cpg.seatId = 4;
+        cpg.seatId = 2;
         cpg.gang = "1,1,1";
         cpg.sId = 2;
         GAMEDATA::getInstance()->setPlayerCpgt(cpg);

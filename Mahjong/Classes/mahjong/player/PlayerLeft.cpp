@@ -99,7 +99,7 @@ void PlayerLeft::showCurrentPlayedJongIcon(bool isShow){
 
 
 Point PlayerLeft::getCpgShowPostion(int index){
-    return Point(170, 690 - index * 75);
+    return Point(170, 690 - index * 80);
 }
 
 void PlayerLeft::removeLastJong(){
@@ -122,16 +122,19 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
         playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
         playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
     }
-    std::vector<std::string> chi = StringUtil::split(data.chi.at(0), ",");
-    chi.push_back(data.poker);
-    sort(chi.begin(), chi.end());
+    Jong* jongland = Jong::create();
+    jongland->showJong(leftcpgportrait, atoi(data.poker.c_str()));
+    jongland->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-5,getCpgShowPostion((int)playerCpgRecords.size()).y);
+    addChild(jongland,10);
     PlayerCpgRecord record;
+    record.pokersRecord.pushBack(jongland);
+    std::vector<std::string> chi = StringUtil::split(data.chi.at(0), ",");
     record.type = CpgType::chi;
     playerBase->removeLastJong();
     for (int i = 0; i < chi.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(leftcpglandscape, atoi(chi.at(i).c_str()));
-        jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i);
+        jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i-25);
         addChild(jong,10);
         record.pokersRecord.pushBack(jong);
     }
