@@ -222,12 +222,14 @@ void LobbyScene::drawSceneMid(){
         ganTanhao->setVisible(false);
     }
     //房间按钮
-    auto openRoom = Sprite::create("mjlobby/open_room_image.png");
-    openRoom->setPosition(260,360);
-    addChild(openRoom);
-    auto joinRooom = Sprite::create("mjlobby/join_room_image.png");
-    joinRooom->setPosition(700,360);
-    addChild(joinRooom);
+    auto openRoom = MenuItemImage::create("mjlobby/open_room_image.png","mjlobby/open_room_image.png",CC_CALLBACK_0(LobbyScene::openRoom, this));
+    auto opmneu = Menu::create(openRoom,NULL);
+    opmneu->setPosition(260,360);
+    addChild(opmneu);
+    auto joinRooom = MenuItemImage::create("mjlobby/join_room_image.png","mjlobby/join_room_image.png",CC_CALLBACK_0(LobbyScene::joinRoom, this));
+    auto joimenu = Menu::create(joinRooom,NULL);
+    joimenu->setPosition(700,360);
+    addChild(joimenu);
     auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
     if(atoi(GAMEDATA::getInstance()->getPrivateGameNum().c_str())>0||GAMEDATA::getInstance()->getFangZhuId() == UserData::getInstance()->getPoxiaoId()){
         Sprite* frame = Sprite::create("mjlobby/go_to_friend_room_1.png");
