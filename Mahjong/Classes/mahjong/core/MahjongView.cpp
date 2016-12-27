@@ -947,6 +947,53 @@ void MahjongView::addGameResultListener(){
                 GAMEDATA::getInstance()->setIsLiuJu(true);
             }
             schedule([=](float dt){
+                PlayerCpgRecShow showRec;
+                CpgPokerRec pokerRecL;
+                pokerRecL.clientseatid =  ClientSeatId::left;
+                for(auto left:playerLeft->playerCpgRecords){
+                    std::vector<int> p;
+                    for(auto pokers : left.pokersRecord){
+                        p.push_back(pokers->getJongType());
+                    }
+                    pokerRecL.cpg.push_back(p);
+                }
+                showRec.playercpg.push_back(pokerRecL);
+                
+                CpgPokerRec pokerRecO;
+                pokerRecO.clientseatid =  ClientSeatId::opposite;
+                for(auto oppsite:playerOpposite->playerCpgRecords){
+                    std::vector<int> p1;
+                    for(auto pokers : oppsite.pokersRecord){
+                        p1.push_back(pokers->getJongType());
+                    }
+                    pokerRecO.cpg.push_back(p1);
+                }
+                showRec.playercpg.push_back(pokerRecO);
+
+                CpgPokerRec pokerRecR;
+                pokerRecR.clientseatid =  ClientSeatId::right;
+                for(auto right:playerRight->playerCpgRecords){
+                    std::vector<int> p2;
+                    for(auto pokers : right.pokersRecord){
+                        p2.push_back(pokers->getJongType());
+                    }
+                    pokerRecR.cpg.push_back(p2);
+                }
+                showRec.playercpg.push_back(pokerRecR);
+
+                CpgPokerRec pokerRecH;
+                pokerRecH.clientseatid =  ClientSeatId::hero;
+                for(auto hero:playerHero->playerCpgRecords){
+                    std::vector<int> p3;
+                    for(auto pokers : hero.pokersRecord){
+                        p3.push_back(pokers->getJongType());
+                    }
+                    pokerRecH.cpg.push_back(p3);
+                }
+                showRec.playercpg.push_back(pokerRecH);
+                
+                GAMEDATA::getInstance()->setPlayerCpgRecShow(showRec);
+
                 clearRoomPlayer();
                 if(flag == "2"){
                     GAMEDATA::getInstance()->setNeedShowLastResult(true);
@@ -959,9 +1006,10 @@ void MahjongView::addGameResultListener(){
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(0)));
             },0,0,5.0f,"go2Result");
         }else{
+            clearRoomPlayer();
             GAMEDATA::getInstance()->setFangZhuId("");
             GAMEDATA::getInstance()->setPrivateGameNum("0");
-            clearRoomPlayer();
+            GAMEDATA::getInstance()->clearPlayersInfo();
             Director::getInstance()->replaceScene(TransitionFade::create(0.8f, LobbyScene::create()));
         }
     });

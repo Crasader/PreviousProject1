@@ -537,4 +537,13 @@ struct DissolveData{
     std::string pid;
     std::string agree;
 };
+
+struct CpgPokerRec{
+    int clientseatid;
+    std::vector<std::vector<int>> cpg;
+};
+
+struct PlayerCpgRecShow{
+    std::vector<CpgPokerRec> playercpg;
+};
 #endif

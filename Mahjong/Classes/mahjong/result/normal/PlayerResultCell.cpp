@@ -10,6 +10,7 @@
 #include "mahjong/widget/HeadImage.hpp"
 #include "mahjong/utils/Chinese.h"
 #include "mahjong/utils/StringUtil.h"
+#include "mahjong/utils/SeatIdUtil.h"
 #include "userdata/UserData.h"
 
 PlayerResultCell* PlayerResultCell::create(GameResultData data){
@@ -75,7 +76,10 @@ bool PlayerResultCell::init(GameResultData data){
     auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 40, 64, '0');
     addChild(resultNum);
     
+    std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
+    bool win = false;
     if(data.result == 1||data.result == 3){
+        win = true;
         spritebg->setTexture("result/jie_suan_lan_suc.png");
         nickName->setColor(Color3B(230,215,30));
         idNumber->setColor(Color3B(230,215,30));
@@ -119,7 +123,6 @@ bool PlayerResultCell::init(GameResultData data){
             addChild(hutype);
         }
         //胡的玩家需要单独排序
-        std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
         vector<std::string>::iterator itor;
         for(itor=showPokers.begin();itor!=showPokers.end();)
         {
@@ -134,23 +137,13 @@ bool PlayerResultCell::init(GameResultData data){
             }
         }
         showPokers.push_back(GAMEDATA::getInstance()->getDiaopao());
-
-        for (int i = 0; i < showPokers.size(); i++){
-            Jong* jong = Jong::create();
-            jong->showJong(heroplayed, atoi(showPokers.at(i).c_str()));
-            if(i == showPokers.size()-1){
-                jong->setPosition(-350+i * 35+10, -20);
-            }else{
-                jong->setPosition(-350+i * 35, -20);
-            }
-            addChild(jong, 35 - i);
-        }
         auto chuchong = Sprite::create("gameview/font_hu.png");
         chuchong->setScale(0.4f);
         chuchong->setPosition(550,-10);
         addChild(chuchong);
         
     }else{
+        win = false;
         spritebg->setTexture("result/jie_suan_lan_fai.png");
         Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_lose_num.png");
         resultNum->setTexture(texture);
@@ -159,17 +152,44 @@ bool PlayerResultCell::init(GameResultData data){
         }else{
             resultNum->setString(StringUtils::format(":%d",abs(data.golddelta)));
         }
-        std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
-        for (int i = 0; i < showPokers.size(); i++){
-            Jong* jong = Jong::create();
-            jong->showJong(heroplayed, atoi(showPokers.at(i).c_str()));
-            jong->setPosition(-350+i * 35, -20);
-            addChild(jong, 35 - i);
-        }
         if(data.result == 2){
             auto chuchong = Sprite::create("result/chuchong.png");
             chuchong->setPosition(550,-10);
             addChild(chuchong);
+        }
+    }
+    //在展示的牌前加上吃碰杠的显示
+    std::vector<std::vector<std::string>> finalShowPoker;
+    PlayerCpgRecShow recShow = GAMEDATA::getInstance()->getPlayerCpgRecShow();
+    int clientId =  SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+    for(auto var:recShow.playercpg){
+        if(var.clientseatid == clientId){
+            for(auto pokers: var.cpg){
+                std::vector<std::string> playerShowPoker;
+                for(int i=0; i<pokers.size();i++){
+                    playerShowPoker.push_back(StringUtils::format("%d",pokers.at(i)));
+                }
+                finalShowPoker.push_back(playerShowPoker);
+            }
+        }
+    }
+    finalShowPoker.push_back(showPokers);
+    int pokerNum =0;
+    for(int i=0;i<finalShowPoker.size();i++){
+        for (int j = 0; j < finalShowPoker.at(i).size(); j++){
+            Jong* jong = Jong::create();
+            jong->showJong(heroplayed, atoi(finalShowPoker.at(i).at(j).c_str()));
+            if(i == finalShowPoker.size()-1){
+                if(j == finalShowPoker.at(i).size()-1&&win){
+                    jong->setPosition(-350+pokerNum * 33+22+4*i, -20);
+                }else{
+                    jong->setPosition(-350+pokerNum * 33+4*i+14, -20);
+                }
+            }else{
+                jong->setPosition(-350+pokerNum * 33+3*i, -20);
+            }
+            addChild(jong, 35 - i);
+            pokerNum++;
         }
     }
     if(GAMEDATA::getInstance()->getMahjongRoomType() != MahjongRoom::privateRoom){
@@ -200,7 +220,7 @@ bool PlayerResultCell::init(GameResultData data){
         jifenIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         jifenIcon->setPosition(230,-10);
         addChild(jifenIcon);
-
+        
         resultNum->setScale(1.0f);
         resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         resultNum->setPosition(300,-10);

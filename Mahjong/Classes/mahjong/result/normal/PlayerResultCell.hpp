@@ -16,7 +16,6 @@ class PlayerResultCell : public Sprite{
 public:
     static PlayerResultCell* create(GameResultData data);
     virtual bool init(GameResultData data);
-    
 };
 
 #endif /* PlayerResultCell_hpp */
