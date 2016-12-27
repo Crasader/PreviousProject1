@@ -8,7 +8,10 @@ bool PlayerRight::init(){
         
         return false;
     }
-    
+    playerCpgRecords.clear();
+    playerHandJongs.clear();
+    playerPlayedJongs.clear();
+    setClientSeat(ClientSeatId::right);
     return true;
 }
 

@@ -10,6 +10,7 @@ bool PlayerLeft::init(){
     playerCpgRecords.clear();
     playerHandJongs.clear();
     playerPlayedJongs.clear();
+    setClientSeat(ClientSeatId::left);
     return true;
 }
 
@@ -99,7 +100,7 @@ void PlayerLeft::showCurrentPlayedJongIcon(bool isShow){
 
 
 Point PlayerLeft::getCpgShowPostion(int index){
-    return Point(170, 690 - index * 80);
+    return Point(170, 690 - index * 78);
 }
 
 void PlayerLeft::removeLastJong(){
@@ -134,7 +135,7 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
     for (int i = 0; i < chi.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(leftcpglandscape, atoi(chi.at(i).c_str()));
-        jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i-25);
+        jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i-24);
         addChild(jong,10);
         record.pokersRecord.pushBack(jong);
     }

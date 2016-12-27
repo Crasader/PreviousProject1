@@ -6,6 +6,10 @@ bool PlayerOpposite::init(){
     if (!PlayerBase::init()){
         return false;
     }
+    playerCpgRecords.clear();
+    playerHandJongs.clear();
+    playerPlayedJongs.clear();
+    setClientSeat(ClientSeatId::opposite);
     return true;
 }
 
