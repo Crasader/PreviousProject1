@@ -103,7 +103,8 @@ float Jong::getRotationByType(int bType){
     if (bType == leftplayed || bType == leftcpglandscape|| bType == oppositecpglandscape){
         return 90;
     }
-    else if (bType == oppositeplayed||bType ==rightcpgportrait){
+    else if (bType == oppositeplayed||bType == oppositecpgportrait
+             ||bType ==rightcpgportrait){
         return 180;
     }
     else if (bType == rightplayed||bType==herocpglandscape

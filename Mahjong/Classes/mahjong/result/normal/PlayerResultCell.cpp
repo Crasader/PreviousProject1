@@ -186,7 +186,7 @@ bool PlayerResultCell::init(GameResultData data){
                     jong->setPosition(-350+pokerNum * 33+4*i+14, -20);
                 }
             }else{
-                jong->setPosition(-350+pokerNum * 33+3*i, -20);
+                jong->setPosition(-350+pokerNum * 33+4*i, -20);
             }
             addChild(jong, 35 - i);
             pokerNum++;

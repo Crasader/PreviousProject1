@@ -293,12 +293,18 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             PlayerCpgRecord record;
             record.type = CpgType::chi;
             vector<std::string> chiPoker  = StringUtil::split(chi.at(i).chi, ",");
+            for(int m=0;m<chiPoker.size();m++){
+                if(m != 0){
+                    if(chiPoker.at(m)==chi.at(i).poker){
+                        swap(chiPoker.at(m), chiPoker.at(0));
+                    }
+                }
+            }
             for (int j = 0; j < chiPoker.size();j++){
                 Jong* jong = Jong::create();
-                jong->setScale(0.8f);
-                jong->showJong(leftplayed, atoi(chiPoker.at(j).c_str()));
-                jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * j);
-                this->addChild(jong,10);
+                jong->showJong(j==0?leftcpgportrait:leftcpglandscape, atoi(chiPoker.at(j).c_str()));
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x- (j==0? 4:0), getCpgShowPostion((int)playerCpgRecords.size()).y- (j==0? 0:(21 * j+3))));
+                addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
             }
             playerCpgRecords.push_back(record);
@@ -310,10 +316,20 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
             record.type = CpgType::peng;
             for(int j=0;j<3;j++){
                 Jong* jong = Jong::create();
-                jong->setScale(0.8f);
-                jong->showJong(leftplayed, atoi(peng.at(i).peng.c_str()));
-                jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * j);
-                this->addChild(jong,10);
+                jong->setLocalZOrder(10);
+                jong->showJong(j==0?leftcpgportrait:leftcpglandscape, atoi(peng.at(i).peng.c_str()));
+                int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(peng.at(i).peId.c_str()));
+                if(seatId == ClientSeatId::opposite){
+                    jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-(j==0?4:0),getCpgShowPostion((int)playerCpgRecords.size()).y-(j==0? 0:(21 * j+3))));
+                    
+                }else if(seatId == ClientSeatId::right){
+                    jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x+(j==0?30:0),getCpgShowPostion((int)playerCpgRecords.size()).y-(j==0?18:(21 * (j-1)+10))));
+                }else {
+                    jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-(j==0?4:0),getCpgShowPostion((int)playerCpgRecords.size()).y-(j==0?45:(21 * (j-1)))));
+                    if(j==0)
+                        jong->setLocalZOrder(12);
+                }
+                addChild(jong);
                 record.pokersRecord.pushBack(jong);
             }
             playerCpgRecords.push_back(record);
