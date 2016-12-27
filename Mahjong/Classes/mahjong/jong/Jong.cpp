@@ -50,12 +50,16 @@ void Jong::setJongSelectIcon(bool show){
 
 
 float Jong::getContentScaleByType(int bType){
-    if (bType == leftplayed || bType == oppositeplayed || bType == rightplayed
-        || bType == heroplayed || bType == oppositeangang){
+    if (bType == leftplayed|| bType == leftangang
+        || bType == oppositeplayed || bType == oppositeangang
+        || bType == rightplayed||bType == rightangang
+        || bType == heroplayed ){
         return 0.4f;
     }else if(bType ==leftcpgportrait){
         return 0.32f;
-    }else if(bType == leftcpglandscape||bType ==oppositecpgportrait){
+    }else if(bType == leftcpglandscape
+             ||bType ==oppositecpgportrait
+             ||bType == rightangang){
         return 0.29f;
     }
     else if(bType == oppositecpglandscape
@@ -76,9 +80,11 @@ float Jong::getContentScaleByType(int bType){
 float Jong::getBackgroundScaleByType(int bType){
     if (bType == leftcpgportrait || bType == leftcpglandscape){
         return 0.76f;
-    }else if(bType == oppositecpgportrait){
+    }else if(bType == oppositecpgportrait|| bType == oppositeangang
+             ||bType == leftangang){
         return 0.8f;
-    }else if(bType == oppositecpglandscape||bType ==rightcpgportrait||bType == rightcpglandscape){
+    }else if(bType == oppositecpglandscape
+             ||bType ==rightcpgportrait||bType == rightcpglandscape||bType == rightangang){
         return 0.7f;
     }
     else{

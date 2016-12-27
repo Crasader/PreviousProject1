@@ -32,7 +32,7 @@ bool GuiLayer::init(){
 void GuiLayer::initView(){
     drawGuiButton();//设置,账单,聊天，解散房间，退出
     drawGameInfo(); //开宝，荒番，房间号的绘制
-    drawTestButton();
+//    drawTestButton();
     scheduleUpdate();
 }
 
@@ -295,15 +295,15 @@ void GuiLayer::testButtonClick(){
     cpg.chi.push_back("1,2");
     cpg.peng ="3,3";
     cpg.flag = 1;
-    cpg.poker = "3";
-    cpg.seatId = 4;
+    cpg.poker = "1";
+    cpg.seatId = 2;
     cpg.gang = "1,1,1";
-    cpg.sId = 2;
+    cpg.sId = 3;
     GAMEDATA::getInstance()->setPlayerCpgt(cpg);
-    EventCustom event(MSG_OTHER_PLAYER_PENG);
+    EventCustom event(MSG_OTHER_PLAYER_GANG);
     _eventDispatcher->dispatchEvent(&event);
-    //    EventCustom event2(MSG_OTHER_PLAYER_CHI);
-    //    _eventDispatcher->dispatchEvent(&event2);
+//        EventCustom event2(MSG_OTHER_PLAYER_CHI);
+//        _eventDispatcher->dispatchEvent(&event2);
     //    vector<GameResultData> gameResults;
     //    for (int i = 0; i < 4; i++){
     //        GameResultData resultData;

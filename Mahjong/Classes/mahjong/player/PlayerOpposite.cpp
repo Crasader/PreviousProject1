@@ -223,7 +223,7 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
             if (playerCpgRecords.at(i).type == CpgType::peng){
                 if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data.poker.c_str())){
                     Jong* jong = Jong::create();
-                    jong->showJong(oppositeplayed, atoi(data.poker.c_str()));
+                    jong->showJong(oppositecpgportrait, atoi(data.poker.c_str()));
                     jong->setPosition(playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().x,playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().y-5);
                     addChild(jong, 30);
                 }
@@ -239,20 +239,20 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
             if (data.flag == 1){
                 if(i==3){
                     record.anGangFan = true;
-                    jong->showJong(oppositeplayed, atoi(gang.at(0).c_str()));
+                    jong->showJong(oppositecpgportrait, atoi(gang.at(0).c_str()));
                 }else{
                     jong->showJong(oppositeangang, -1);
                 }
             }
             else{
-                jong->showJong(oppositeplayed, atoi(gang.at(0).c_str()));
+                jong->showJong(oppositecpgportrait, atoi(gang.at(0).c_str()));
             }
             if (i == 3){
-                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 35, getCpgShowPostion((int)playerCpgRecords.size()).y - 5));
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 27, getCpgShowPostion((int)playerCpgRecords.size()).y - 4));
                 addChild(jong, 10);
             }
             else{
-                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 35 * i, getCpgShowPostion((int)playerCpgRecords.size()).y));
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 27 * i, getCpgShowPostion((int)playerCpgRecords.size()).y));
                 record.pokersRecord.pushBack(jong);
                 addChild(jong, 5);
             }

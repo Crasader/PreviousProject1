@@ -219,7 +219,7 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             if (playerCpgRecords.at(i).type == CpgType::peng){
                 if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data.poker.c_str())){
                     Jong* jong = Jong::create();
-                    jong->showJong(rightplayed, atoi(data.poker.c_str()));
+                    jong->showJong(rightcpglandscape, atoi(data.poker.c_str()));
                     jong->setPosition(playerCpgRecords.at(i).pokersRecord.at(1)->getPosition());
                     this->addChild(jong, 30);
                 }
@@ -234,23 +234,22 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             Jong* jong = Jong::create();
             if (data.flag == 1){
                 if(i==3){
-                    jong->showJong(rightplayed, atoi(gang.at(0).c_str()));
+                    jong->showJong(rightcpglandscape, atoi(gang.at(0).c_str()));
                     record.anGangFan = true;
                 }else{
-                    jong->showJong(rightdeal, -1);
-                    jong->setScale(0.86f);
+                    jong->showJong(rightangang, -1);
                 }
             }
             else{
-                jong->showJong(rightplayed, atoi(gang.at(0).c_str()));
+                jong->showJong(rightcpglandscape, atoi(gang.at(0).c_str()));
             }
             if (i == 3){
                 record.pokersRecord.pushBack(jong);
-                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-2, getCpgShowPostion((int)playerCpgRecords.size()).y +  28));
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-2, getCpgShowPostion((int)playerCpgRecords.size()).y +  21));
                 this->addChild(jong, 30);
             }
             else{
-                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * 28));
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * 21));
                 addChild(jong, 30 - (int)playerCpgRecords.size()*3-i);
             }
         }

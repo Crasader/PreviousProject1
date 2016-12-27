@@ -220,8 +220,7 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             if (playerCpgRecords.at(i).type == CpgType::peng){
                 if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data.poker.c_str())){
                     Jong* jong = Jong::create();
-                    jong->setScale(0.8f);
-                    jong->showJong(leftplayed, atoi(data.poker.c_str()));
+                    jong->showJong(leftcpglandscape, atoi(data.poker.c_str()));
                     jong->setPosition(playerCpgRecords.at(i).pokersRecord.at(1)->getPosition());
                     this->addChild(jong, 10);
                 }
@@ -236,18 +235,14 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             Jong* jong = Jong::create();
             if (data.flag == 1){
                 if(i==3){
-                    
-                    jong->showJong(leftplayed, atoi(gang.at(0).c_str()));
-                    jong->setScale(0.8f);
+                    jong->showJong(leftcpglandscape, atoi(gang.at(0).c_str()));
                     record.anGangFan = true;
                 }else{
-                    jong->showJong(leftdeal, -1);
-                    jong->setScale(0.7f);
+                    jong->showJong(leftangang, -1);
                 }
             }
             else{
-                jong->showJong(leftplayed, atoi(gang.at(0).c_str()));
-                jong->setScale(0.8f);
+                jong->showJong(leftcpglandscape, atoi(gang.at(0).c_str()));
             }
             if (i == 3){
                 jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
