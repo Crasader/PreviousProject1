@@ -621,7 +621,7 @@ void MahjongView::showGamePaidui(int num){
 
 PlayerBase* MahjongView::getPlayerBySeatId(int sid){
     int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), sid);
-    this->setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
+    setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
     if (seatId == ClientSeatId::left){
         return playerLeft;
     }

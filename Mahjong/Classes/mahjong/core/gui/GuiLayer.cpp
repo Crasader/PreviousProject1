@@ -291,57 +291,60 @@ void GuiLayer::drawTestButton(){
 
 //测试方法
 void GuiLayer::testButtonClick(){
-        PlayerCpgtData cpg;
-        cpg.chi.push_back("1,2");
-        cpg.flag = 1;
-        cpg.poker = "3";
-        cpg.seatId = 2;
-        cpg.gang = "1,1,1";
-        cpg.sId = 2;
-        GAMEDATA::getInstance()->setPlayerCpgt(cpg);
-        EventCustom event(MSG_OTHER_PLAYER_CHI);
-        _eventDispatcher->dispatchEvent(&event);
-//    vector<GameResultData> gameResults;
-//    for (int i = 0; i < 4; i++){
-//        GameResultData resultData;
-//        if(i == 0){
-//            resultData.result = 3;
-//        }else if(i==1){
-//            resultData.result = 3;
-//        }
-//        else if(i==2){
-//            resultData.result = 2;
-//        }else{
-//            resultData.result = 0;
-//        }
-//        resultData.gold = 100;
-//        resultData.diamond = 100;
-//        resultData.jifen =10;
-//        resultData.lequan = 10;
-//        resultData.golddelta = 200000;
-//        resultData.diamonddelta =2;
-//        resultData.jifendelta = 4000000;
-//        resultData.lequandelta = 222220;
-//        resultData.seatId = i+1;
-//        resultData.umark ="100010000";
-//        resultData.hua = 3;
-//        resultData.lz = "2";
-//        resultData.fan = "10";
-//        resultData.showPoker = "1,2,3,4,5,6,7,8,9,10,11,12,13,14";
-//        resultData.huType = "3,4,13";
-//        resultData.nickName = StringUtils::format("这里是装电视台%d",i+1);
-//        gameResults.push_back(resultData);
-//    }
-//    GAMEDATA::getInstance()->setDiaopao("8");
-//    GAMEDATA::getInstance()->setGameResults(gameResults);
-//    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-//    GAMEDATA::getInstance()->setHeroSeatId(1);
-//    GAMEDATA::getInstance()->setPrivateLezi("0");
-//    GAMEDATA::getInstance()->setCurrentBank(1);
-//    FriendOpenRoomRespData opendata;
-//    opendata.prjushu ="8";
-//    opendata.prjucount ="2";
-//    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
-//    char* buf = const_cast<char*>("2");
-//    _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
+    PlayerCpgtData cpg;
+    cpg.chi.push_back("1,2");
+    cpg.peng ="3,3";
+    cpg.flag = 1;
+    cpg.poker = "3";
+    cpg.seatId = 4;
+    cpg.gang = "1,1,1";
+    cpg.sId = 3;
+    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
+    EventCustom event(MSG_OTHER_PLAYER_PENG);
+    _eventDispatcher->dispatchEvent(&event);
+    //    EventCustom event2(MSG_OTHER_PLAYER_CHI);
+    //    _eventDispatcher->dispatchEvent(&event2);
+    //    vector<GameResultData> gameResults;
+    //    for (int i = 0; i < 4; i++){
+    //        GameResultData resultData;
+    //        if(i == 0){
+    //            resultData.result = 3;
+    //        }else if(i==1){
+    //            resultData.result = 3;
+    //        }
+    //        else if(i==2){
+    //            resultData.result = 2;
+    //        }else{
+    //            resultData.result = 0;
+    //        }
+    //        resultData.gold = 100;
+    //        resultData.diamond = 100;
+    //        resultData.jifen =10;
+    //        resultData.lequan = 10;
+    //        resultData.golddelta = 200000;
+    //        resultData.diamonddelta =2;
+    //        resultData.jifendelta = 4000000;
+    //        resultData.lequandelta = 222220;
+    //        resultData.seatId = i+1;
+    //        resultData.umark ="100010000";
+    //        resultData.hua = 3;
+    //        resultData.lz = "2";
+    //        resultData.fan = "10";
+    //        resultData.showPoker = "1,2,3,4,5,6,7,8,9,10,11,12,13,14";
+    //        resultData.huType = "3,4,13";
+    //        resultData.nickName = StringUtils::format("这里是装电视台%d",i+1);
+    //        gameResults.push_back(resultData);
+    //    }
+    //    GAMEDATA::getInstance()->setDiaopao("8");
+    //    GAMEDATA::getInstance()->setGameResults(gameResults);
+    //    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+    //    GAMEDATA::getInstance()->setHeroSeatId(1);
+    //    GAMEDATA::getInstance()->setPrivateLezi("0");
+    //    GAMEDATA::getInstance()->setCurrentBank(1);
+    //    FriendOpenRoomRespData opendata;
+    //    opendata.prjushu ="8";
+    //    opendata.prjucount ="2";
+    //    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
+    //    char* buf = const_cast<char*>("2");
+    //    _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
 }
