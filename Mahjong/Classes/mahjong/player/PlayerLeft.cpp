@@ -426,16 +426,17 @@ void PlayerLeft::updateHandJongs(std::string jongs,bool hu){
         
         for (int i = 0; i < pokers.size(); i++)
         {
-            Jong* jong = Jong::create();
-            jong->showJong(leftplayed, atoi(pokers.at(i).c_str()));
-            if(hu&&i==pokers.size()-1){
-                jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i+8));
-            }else{
-                jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i));
+            if(pokers.at(i) != ""){
+                Jong* jong = Jong::create();
+                jong->showJong(leftplayed, atoi(pokers.at(i).c_str()));
+                if(hu&&i==pokers.size()-1){
+                    jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i+8));
+                }else{
+                    jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 30 * i));
+                }
+                playerHandJongs.pushBack(jong);
+                addChild(jong,60-i);
             }
-            playerHandJongs.pushBack(jong);
-            this->addChild(jong,60-i);
-            
         }
     }
 }

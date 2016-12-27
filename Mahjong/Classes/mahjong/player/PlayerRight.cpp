@@ -320,13 +320,13 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
                 jong->showJong(j==0?rightcpgportrait:rightcpglandscape, atoi(peng.at(i).peng.c_str()));
                 int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(peng.at(i).peId.c_str()));
                 if(seatId == ClientSeatId::opposite){
-                     jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x+(j==0?4:0),getCpgShowPostion((int)playerCpgRecords.size()).y+(j==0?45:(21 * (j-1)))));
+                    jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x+(j==0?4:0),getCpgShowPostion((int)playerCpgRecords.size()).y+(j==0?45:(21 * (j-1)))));
                     if(j==0)
                         jong->setLocalZOrder(30 - (int)playerCpgRecords.size()*3-j-2);
                 }else if(seatId == ClientSeatId::left){
                     jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-(j==0?28:0),getCpgShowPostion((int)playerCpgRecords.size()).y+(j==0?18:(21 * (j-1)+10))));
                 }else {
-                   jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x+(j==0?4:0),getCpgShowPostion((int)playerCpgRecords.size()).y+(j==0? 0:(21 * j+3))));
+                    jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x+(j==0?4:0),getCpgShowPostion((int)playerCpgRecords.size()).y+(j==0? 0:(21 * j+3))));
                 }
                 addChild(jong);
                 record.pokersRecord.pushBack(jong);
@@ -355,7 +355,7 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
         }
     }
     if(angang != ""){
-         vector<std::string> anganglist  = StringUtil::split(angang, ",");
+        vector<std::string> anganglist  = StringUtil::split(angang, ",");
         for(int i=0;i<anganglist.size();i++){
             PlayerCpgRecord record;
             record.type = CpgType::angang;
@@ -423,14 +423,16 @@ void PlayerRight::updateHandJongs(std::string jongs,bool hu){
         }
         for (int i = 0; i < pokers.size(); i++)
         {
-            Jong* jong = Jong::create();
-            jong->showJong(rightplayed, atoi(pokers.at(i).c_str()));
-            if(hu&&i==pokers.size()-1){
-                jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i-8));
-            }else{
-                jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i));
+            if(pokers.at(i) != ""){
+                Jong* jong = Jong::create();
+                jong->showJong(rightplayed, atoi(pokers.at(i).c_str()));
+                if(hu&&i==pokers.size()-1){
+                    jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i-8));
+                }else{
+                    jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 30 * i));
+                }
+                addChild(jong, 2);
             }
-            addChild(jong, 2);
         }
     }
 }

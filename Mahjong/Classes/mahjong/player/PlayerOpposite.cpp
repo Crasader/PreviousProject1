@@ -176,7 +176,7 @@ void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)
     }
     addChild(jongpeng);
     record.pokersRecord.pushBack(jongpeng);
-
+    
     std::vector<std::string> peng = StringUtil::split(data.peng, ",");
     for (int i = 0; i < peng.size(); i++){
         Jong* jong = Jong::create();
@@ -289,14 +289,16 @@ void PlayerOpposite::updateHandJongs(std::string jongs,bool hu){
         
         for (int i = 0; i < pokers.size(); i++)
         {
-            Jong* jong = Jong::create();
-            jong->showJong(oppositeplayed, atoi(pokers.at(i).c_str()));
-            if(hu&&i==pokers.size()-1){
-                jong->setPosition(Point(OPPOSITE_POS_X + 32 * i+8, OPPOSITE_POS_Y));
-            }else{
-                jong->setPosition(Point(OPPOSITE_POS_X + 32 * i, OPPOSITE_POS_Y));
+            if(pokers.at(i) != ""){
+                Jong* jong = Jong::create();
+                jong->showJong(oppositeplayed, atoi(pokers.at(i).c_str()));
+                if(hu&&i==pokers.size()-1){
+                    jong->setPosition(Point(OPPOSITE_POS_X + 32 * i+8, OPPOSITE_POS_Y));
+                }else{
+                    jong->setPosition(Point(OPPOSITE_POS_X + 32 * i, OPPOSITE_POS_Y));
+                }
+                addChild(jong);
             }
-            addChild(jong);
         }
     }
 }
@@ -364,9 +366,9 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
                 jong->showJong(j==0?oppositecpglandscape:oppositecpgportrait, atoi(peng.at(i).peng.c_str()));
                 int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(peng.at(i).peId.c_str()));
                 if(seatId == ClientSeatId::left){
-                   jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x- (j==0? 56:(27 *(j-1))), getCpgShowPostion((int)playerCpgRecords.size()).y+ (j==0? 6:0)));
+                    jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x- (j==0? 56:(27 *(j-1))), getCpgShowPostion((int)playerCpgRecords.size()).y+ (j==0? 6:0)));
                 }else if(seatId == ClientSeatId::right){
-                   jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x- (j==0? 0:(27 * j+2)), getCpgShowPostion((int)playerCpgRecords.size()).y+ (j==0? 6:0)));
+                    jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x- (j==0? 0:(27 * j+2)), getCpgShowPostion((int)playerCpgRecords.size()).y+ (j==0? 6:0)));
                 }else {
                     jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x- (j==0? 25:(27 * (j-1)+12)), getCpgShowPostion((int)playerCpgRecords.size()).y- (j==0? 27:0)));
                     if(j==0)

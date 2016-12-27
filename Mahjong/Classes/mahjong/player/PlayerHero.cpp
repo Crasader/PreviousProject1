@@ -271,14 +271,16 @@ void PlayerHero::updateHandJongs(std::string jongs,bool hu){
         }
         for (int i = 0; i < pokers.size(); i++)
         {
-            Jong* jong = Jong::create();
-            jong->showJong(herocpgportrait, atoi(pokers.at(i).c_str()));
-            if(hu&&i==pokers.size()-1){
-                jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i+10, JONG_POS_Y));
-            }else{
-                jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i, JONG_POS_Y));
+            if(pokers.at(i) != ""){
+                Jong* jong = Jong::create();
+                jong->showJong(herocpgportrait, atoi(pokers.at(i).c_str()));
+                if(hu&&i==pokers.size()-1){
+                    jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i+10, JONG_POS_Y));
+                }else{
+                    jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i, JONG_POS_Y));
+                }
+                addChild(jong);
             }
-            addChild(jong);
         }
     }
 }
