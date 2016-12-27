@@ -103,7 +103,7 @@ void PlayerRight::showCurrentPlayedJongIcon(bool isShow){
 }
 
 Point PlayerRight::getCpgShowPostion(int index){
-    return Point(1100,175 + index * 75);
+    return Point(1105,175 + index * 75);
 }
 
 void PlayerRight::removeLastJong(){
@@ -153,16 +153,32 @@ void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
         playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
         playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
     }
-    std::vector<std::string> peng = StringUtil::split(data.peng, ",");
-    peng.push_back(data.poker);
-    sort(peng.begin(), peng.end());
+    playerBase->removeLastJong();
     PlayerCpgRecord record;
     record.type = CpgType::peng;
-    playerBase->removeLastJong();
+    Jong* jongpeng = Jong::create();
+    jongpeng->showJong(rightcpgportrait, atoi(data.poker.c_str()));
+    int offsetY = 0;
+    if(playerBase->getClientSeat() == ClientSeatId::opposite){
+        offsetY = 0;
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x+4, getCpgShowPostion((int)playerCpgRecords.size()).y+45);
+        jongpeng->setLocalZOrder(30 - (int)playerCpgRecords.size()*3-2);
+    }else if(playerBase->getClientSeat() == ClientSeatId::left){
+        offsetY = 12;
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-27, getCpgShowPostion((int)playerCpgRecords.size()).y+20);
+        jongpeng->setLocalZOrder(30 - (int)playerCpgRecords.size()*3);
+    }else{
+        offsetY = 25;
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x+4, getCpgShowPostion((int)playerCpgRecords.size()).y);
+        jongpeng->setLocalZOrder(30 - (int)playerCpgRecords.size()*3+1);
+    }
+    addChild(jongpeng);
+    record.pokersRecord.pushBack(jongpeng);
+    std::vector<std::string> peng = StringUtil::split(data.peng, ",");
     for (int i = 0; i < peng.size(); i++){
         Jong* jong = Jong::create();
-        jong->showJong(rightplayed, atoi(peng.at(i).c_str()));
-        jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * 28));
+        jong->showJong(rightcpglandscape, atoi(peng.at(i).c_str()));
+        jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * 21+offsetY));
         addChild(jong, 30 - (int)playerCpgRecords.size()*3-i);
         record.pokersRecord.pushBack(jong);
     }
