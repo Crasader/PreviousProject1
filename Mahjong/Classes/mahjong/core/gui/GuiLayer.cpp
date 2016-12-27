@@ -298,7 +298,7 @@ void GuiLayer::testButtonClick(){
     cpg.poker = "3";
     cpg.seatId = 4;
     cpg.gang = "1,1,1";
-    cpg.sId = 3;
+    cpg.sId = 2;
     GAMEDATA::getInstance()->setPlayerCpgt(cpg);
     EventCustom event(MSG_OTHER_PLAYER_PENG);
     _eventDispatcher->dispatchEvent(&event);

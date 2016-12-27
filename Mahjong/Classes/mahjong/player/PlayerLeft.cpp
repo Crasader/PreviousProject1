@@ -100,7 +100,7 @@ void PlayerLeft::showCurrentPlayedJongIcon(bool isShow){
 
 
 Point PlayerLeft::getCpgShowPostion(int index){
-    return Point(170, 690 - index * 78);
+    return Point(170, 690 - index * 82);
 }
 
 void PlayerLeft::removeLastJong(){
@@ -161,18 +161,23 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     if(playerBase->getClientSeat() == ClientSeatId::opposite){
         offsetY = 25;
         jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-4, getCpgShowPostion((int)playerCpgRecords.size()).y);
+        jongpeng->setLocalZOrder(10);
     }else if(playerBase->getClientSeat() == ClientSeatId::right){
-        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y);
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x+30, getCpgShowPostion((int)playerCpgRecords.size()).y-21);
+        offsetY = 12;
+        jongpeng->setLocalZOrder(10);
     }else{
-        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y);
+        offsetY = 0;
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-4, getCpgShowPostion((int)playerCpgRecords.size()).y-45);
+        jongpeng->setLocalZOrder(12);
     }
-    addChild(jongpeng, 10);
+    addChild(jongpeng);
     record.pokersRecord.pushBack(jongpeng);
     std::vector<std::string> peng = StringUtil::split(data.peng, ",");
     for (int i = 0; i < peng.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(leftcpglandscape, atoi(peng.at(i).c_str()));
-        jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 22 * i-offsetY);
+        jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - 21 * i-offsetY);
         addChild(jong, 10);
         record.pokersRecord.pushBack(jong);
     }
