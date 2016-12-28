@@ -49,6 +49,8 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D212D5341E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
+		D212D5351E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
 		D223FAF21E07784E00270969 /* ODSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* ODSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* ODSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* ODSocketManage.cpp */; };
 		D223FAF41E07784E00270969 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAEC1E07784E00270969 /* ODSocket.cpp */; };
@@ -398,6 +400,8 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D212D5321E13A89900C29C00 /* LostNetwork2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork2.cpp; sourceTree = "<group>"; };
+		D212D5331E13A89900C29C00 /* LostNetwork2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork2.hpp; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* ODSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* ODSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODSocketManage.h; sourceTree = "<group>"; };
 		D223FAEC1E07784E00270969 /* ODSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocket.cpp; sourceTree = "<group>"; };
@@ -1416,6 +1420,8 @@
 		D26779591DF16136003CE73F /* network */ = {
 			isa = PBXGroup;
 			children = (
+				D212D5321E13A89900C29C00 /* LostNetwork2.cpp */,
+				D212D5331E13A89900C29C00 /* LostNetwork2.hpp */,
 				D267795A1DF1614F003CE73F /* LostNetwork.cpp */,
 				D267795B1DF1614F003CE73F /* LostNetwork.hpp */,
 			);
@@ -1792,6 +1798,7 @@
 				D26779291DF00698003CE73F /* ExchangePropCell.cpp in Sources */,
 				D26778C71DF00697003CE73F /* MjGameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				D212D5341E13A89900C29C00 /* LostNetwork2.cpp in Sources */,
 				D26778FB1DF00698003CE73F /* PlayerBase.cpp in Sources */,
 				D26779031DF00698003CE73F /* PlayerOpposite.cpp in Sources */,
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
@@ -1943,6 +1950,7 @@
 				D26779341DF00698003CE73F /* SplashScene.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D26778E01DF00697003CE73F /* RoomFullDialog.cpp in Sources */,
+				D212D5351E13A89900C29C00 /* LostNetwork2.cpp in Sources */,
 				D26778CC1DF00697003CE73F /* QuitRoomDialog.cpp in Sources */,
 				D26778BA1DF00697003CE73F /* BillInfo.cpp in Sources */,
 				D267792A1DF00698003CE73F /* ExchangePropCell.cpp in Sources */,

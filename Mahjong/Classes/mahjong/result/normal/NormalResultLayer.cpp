@@ -26,7 +26,7 @@
 #include "server/CommandManage.h"
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
-#include "mahjong/dialog/network/LostNetwork.hpp"
+#include "mahjong/dialog/network/LostNetwork2.hpp"
 
 
 bool NormalResultLayer::init(){
@@ -244,7 +244,7 @@ void NormalResultLayer::continueGame(){
 
 void NormalResultLayer::updateTime(float dt){
     if(GAMEDATA::getInstance()->getWaitNetwork()){
-        LostNetwork* net = LostNetwork::create();
+        LostNetwork2* net = LostNetwork2::create();
         net->setTag(2000);
         addChild(net,200);
         schedule([=](float dt){

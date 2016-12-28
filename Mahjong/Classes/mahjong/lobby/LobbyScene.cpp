@@ -27,7 +27,7 @@
 #include "mahjong/widget/ParticleUtil.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
-#include "mahjong/dialog/network/LostNetwork.hpp"
+#include "mahjong/dialog/network/LostNetwork2.hpp"
 
 
 bool LobbyScene::init()
@@ -48,7 +48,7 @@ bool LobbyScene::init()
 
 void LobbyScene::signUpdate(float dt){
     if(GAMEDATA::getInstance()->getWaitNetwork()){
-        LostNetwork* net = LostNetwork::create();
+        LostNetwork2* net = LostNetwork2::create();
         net->setTag(2000);
         addChild(net,200);
         schedule([=](float dt){

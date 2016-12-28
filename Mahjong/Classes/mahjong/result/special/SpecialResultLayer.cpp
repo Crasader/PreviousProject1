@@ -16,7 +16,7 @@
 #include "mahjong/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/shop/gold/ChargeGold.hpp"
 #include "mahjong/dialog/prompt/HintDialog.hpp"
-#include "mahjong/dialog/network/LostNetwork.hpp"
+#include "mahjong/dialog/network/LostNetwork2.hpp"
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/utils/Chinese.h"
@@ -129,7 +129,7 @@ void SpecialResultLayer::gotoLobby(){
 
 void SpecialResultLayer::update(float dt){
     if(GAMEDATA::getInstance()->getWaitNetwork()){
-        LostNetwork* net = LostNetwork::create();
+        LostNetwork2* net = LostNetwork2::create();
         net->setTag(2000);
         addChild(net,200);
         schedule([=](float dt){
