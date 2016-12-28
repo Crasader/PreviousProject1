@@ -13,7 +13,7 @@ public:
     void drawPaidui(int num);
 private:
     Layer* paishuLayer;//剩余牌堆图层
-	int rounds;
+	int rounds; 
     int index =0;
     int currentSeadId =ClientSeatId::left;
 	Point heroStarPos;

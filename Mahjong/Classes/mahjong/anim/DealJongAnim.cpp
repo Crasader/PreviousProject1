@@ -129,7 +129,7 @@ Sprite* DealJongAnim::createJong4(int seatId){
         if(seatId== ClientSeatId::left||seatId== ClientSeatId::right){
             jong->showJong(JongViewType::leftdeal, -1);
             jong->setPosition(0,32*i);
-            jong->setZOrder(4-i);
+            jong->setLocalZOrder(4-i);
             
         }else if(seatId == ClientSeatId::opposite){
             jong->showJong(JongViewType::oppositedeal, -1);
