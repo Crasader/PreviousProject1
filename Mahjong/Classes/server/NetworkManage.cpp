@@ -36,6 +36,6 @@ void NetworkManage::disConnectSocket(){
     GAMEDATA::getInstance()->setWaitNetwork(true);
 }
 
-void NetworkManage::reConnectSocket(){
-    GameSocketManage::getInstance()->socketConnect();
+bool NetworkManage::reConnectSocket(){
+   return  GameSocketManage::getInstance()->socketConnect();
 }

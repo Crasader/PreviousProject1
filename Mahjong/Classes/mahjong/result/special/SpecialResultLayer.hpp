@@ -22,6 +22,7 @@ private:
     void shareResult();
     void gotoLobby();
     void afterCaptured(bool succeed, const std::string &outputFile);
+    void update(float dt);
 
 };
 #endif /* PublicResultLayer_hpp */

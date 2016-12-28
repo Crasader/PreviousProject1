@@ -13,7 +13,7 @@ public:
     void receiveMsg(std::string msg);
     void resetBeatCount();
     void disConnectSocket();
-    void reConnectSocket();
+    bool reConnectSocket();
 private:
     NetworkManage();
     static NetworkManage* _instance;

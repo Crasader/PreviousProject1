@@ -14,7 +14,7 @@ USING_NS_CC;
 class GameSocketManage{
 public:
     static GameSocketManage* getInstance();
-    void socketConnect();
+    bool socketConnect();
     void startSocketBeat(std::string msg);
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);

@@ -12,7 +12,7 @@
 class CocoaSocketManage{
 public:
     static CocoaSocketManage* getInstance();
-    void connectSocket(std::string host, int port);
+    bool connectSocket(std::string host, int port);
     void startScoketBeat(std::string msg);
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);

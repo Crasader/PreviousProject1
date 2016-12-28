@@ -29,12 +29,12 @@ GameSocketManage::GameSocketManage(){
     
 }
 
-void GameSocketManage::socketConnect(){
+bool GameSocketManage::socketConnect(){
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-    CocoaSocketManage::getInstance()->connectSocket(ip,port);
+   return  CocoaSocketManage::getInstance()->connectSocket(ip,port);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    ODSocketManage::getInstance()->connectSocket(ip,port);
+    return ODSocketManage::getInstance()->connectSocket(ip,port);
 #endif
 }
 

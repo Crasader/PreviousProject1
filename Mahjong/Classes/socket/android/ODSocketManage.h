@@ -10,7 +10,7 @@ USING_NS_CC;
 class ODSocketManage : public Node{
 public:
 	static ODSocketManage* getInstance();
-    void connectSocket(std::string host, int port);
+    bool connectSocket(std::string host, int port);
     void startScoketBeat(std::string msg);
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);

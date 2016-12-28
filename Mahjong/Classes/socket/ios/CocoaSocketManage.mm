@@ -23,11 +23,11 @@ CocoaSocketManage::CocoaSocketManage(){
     
 }
 
-void CocoaSocketManage::connectSocket(std::string host, int port){
+bool CocoaSocketManage::connectSocket(std::string host, int port){
     CocoaSocket *socket = [CocoaSocket sharedSocket];
     socket.port = port; // 端口
     socket.socketHost = [NSString stringWithUTF8String:host.c_str()]; //IP
-    [socket startConnectSocket];
+    return [socket startConnectSocket];
 }
 
 /**

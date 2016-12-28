@@ -47,12 +47,21 @@ bool LobbyScene::init()
 
 
 void LobbyScene::signUpdate(float dt){
-    
     if(GAMEDATA::getInstance()->getWaitNetwork()){
+        LostNetwork* net = LostNetwork::create();
+        net->setTag(2000);
+        addChild(net,200);
         schedule([=](float dt){
-            NetworkManage::getInstance()->reConnectSocket();
-            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-        }, 0, 0, 4.0f, "socket_reconnect");
+            if(NetworkManage::getInstance()->reConnectSocket()){
+                log("重新连接成功");
+                net->removeFromParent();
+                NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            }else{
+                net->removeFromParent();
+                HintDialog* dia = HintDialog::create("无法连接网络,请检查当前网络环境", NULL);
+                addChild(dia,1000);
+            }
+        }, 0, 0, 2.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
     
@@ -594,7 +603,7 @@ void LobbyScene::addEventListener(){
         HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
             exit(0);
         });
-        addChild(hin,5);
+        addChild(hin,500);
     });
     
     

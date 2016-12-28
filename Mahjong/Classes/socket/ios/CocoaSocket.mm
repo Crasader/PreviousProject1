@@ -50,10 +50,10 @@ static const NSInteger socket_timeout = 15;//超时时间
 }
 
 //创建连接
-- (void)startConnectSocket {
+- (bool)startConnectSocket {
     if (self.connectStatus != -1) {
         NSLog(@"Socket Connect: YES");
-        return;
+        return true;
     }
     
     self.connectStatus = 0;
@@ -64,9 +64,11 @@ static const NSInteger socket_timeout = 15;//超时时间
     [_asyncSocket setIPv4PreferredOverIPv6:false];
     if (!error) {
         NSLog(@"服务开启成功");
+        return true;
     } else {
         self.connectStatus = -1;
         NSLog(@"服务开启失败 %@", error);
+        return false;
     }
 }
 

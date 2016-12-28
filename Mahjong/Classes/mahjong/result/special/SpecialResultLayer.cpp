@@ -16,6 +16,7 @@
 #include "mahjong/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/shop/gold/ChargeGold.hpp"
 #include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/dialog/network/LostNetwork.hpp"
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/utils/Chinese.h"
@@ -35,6 +36,7 @@ bool SpecialResultLayer::init(){
     showResultTitle();//结算界面标题
     showGameReslut();
     showLayerBtn();
+    scheduleUpdate();
     return true;
 }
 
@@ -123,4 +125,25 @@ void SpecialResultLayer::afterCaptured(bool succeed, const std::string &outputFi
 void SpecialResultLayer::gotoLobby(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
     Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+}
+
+void SpecialResultLayer::update(float dt){
+    if(GAMEDATA::getInstance()->getWaitNetwork()){
+        LostNetwork* net = LostNetwork::create();
+        net->setTag(2000);
+        addChild(net,200);
+        schedule([=](float dt){
+            if(NetworkManage::getInstance()->reConnectSocket()){
+                log("重新连接成功");
+                net->removeFromParent();
+                NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            }else{
+                net->removeFromParent();
+                HintDialog* dia = HintDialog::create("无法连接网络,请检查当前网络环境", NULL);
+                addChild(dia,1000);
+            }
+        }, 0, 0, 2.0f, "socket_reconnect");
+        GAMEDATA::getInstance()->setWaitNetwork(false);
+    }
+
 }

@@ -27,7 +27,7 @@
 /**
  *  socket 创建socket连接
  */
-- (void)startConnectSocket;
+- (bool)startConnectSocket;
 /**
  *  socket 连接成功后发送心跳的操作
  */

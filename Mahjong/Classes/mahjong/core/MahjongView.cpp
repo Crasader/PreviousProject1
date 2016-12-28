@@ -1226,6 +1226,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playerOffLineListener);
 }
 
 
@@ -1248,6 +1249,7 @@ void MahjongView::addCoustomListener(){
     addFriendInviteMeListener();
     addPlayerRemoveListener();
     addPlayerResumeListener();
+    addPlayerOffLineListener();
     //登录地址变更
     playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
         HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){

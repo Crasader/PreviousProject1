@@ -18,7 +18,7 @@ ODSocketManage::ODSocketManage() {
 }
 
 
-void ODSocketManage::connectSocket(std::string host,int port){
+bool ODSocketManage::connectSocket(std::string host,int port){
     try {
         // ODSocket socket;
         socket.Init();
@@ -41,14 +41,16 @@ void ODSocketManage::connectSocket(std::string host,int port){
             std::thread recvThread = std::thread(&ODSocketManage::receiveData,
                                                  this);
             recvThread.detach();
+            return true;
         }
         else {
             log("连接服务端失败 = %d", result);
-            return;
+            return false;
         }
     }
     catch (char* str) {
         log("Socket 连接出错");
+        return false;
     }
 }
 
@@ -111,7 +113,6 @@ void ODSocketManage::receiveData() {
         while (allReciveInfo.size() > 0) {
             const char* mark1 = "\r\n";
             long pos1 = allReciveInfo.find(mark1);
-            
             if (pos1 >= 0) {
                 std::string msg = allReciveInfo.substr(0, pos1);
                 allReciveInfo = allReciveInfo.substr(pos1+1, allReciveInfo.size());
@@ -121,7 +122,6 @@ void ODSocketManage::receiveData() {
                 }
             }
             else {
-                log("receiveData break");
                 break;
             }
         }
