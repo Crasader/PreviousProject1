@@ -1982,6 +1982,22 @@ void MsgHandler::gameContinueResp(std::string msg){
         const rapidjson::Value &rsid = _mDoc["rsid"];
         resp.rsid = rsid.GetString();
     }
+    if(_mDoc.HasMember("money")){
+        const rapidjson::Value &money = _mDoc["money"];
+        resp.money = money.GetString();
+    }
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        resp.gold = gold.GetString();
+    }
+    if(_mDoc.HasMember("id")){
+        const rapidjson::Value &payid = _mDoc["id"];
+        resp.payid = payid.GetString();
+    }
+    if(_mDoc.HasMember("min")){
+        const rapidjson::Value &min = _mDoc["min"];
+        resp.min = min.GetString();
+    }
     if(_mDoc.HasMember("kb")){
         const rapidjson::Value &kb = _mDoc["kb"];
         resp.kb = kb.GetString();

@@ -256,12 +256,12 @@ void NormalResultLayer::onEnter(){
     Layer::onEnter();
     continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_CONTINUE_RESP, [=](EventCustom* event){
         std::string result  = static_cast<char*>(event->getUserData());
-        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "0"){
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        }else if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
+        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
             //返回正常可以继续游戏
             GAMEDATA::getInstance()->setContinueAgain(true);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else{
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
