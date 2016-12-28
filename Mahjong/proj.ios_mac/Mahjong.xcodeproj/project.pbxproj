@@ -51,6 +51,8 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D212D5341E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
 		D212D5351E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
+		D212D5391E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
+		D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
 		D223FAF21E07784E00270969 /* ODSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* ODSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* ODSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* ODSocketManage.cpp */; };
 		D223FAF41E07784E00270969 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAEC1E07784E00270969 /* ODSocket.cpp */; };
@@ -402,6 +404,8 @@
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D212D5321E13A89900C29C00 /* LostNetwork2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork2.cpp; sourceTree = "<group>"; };
 		D212D5331E13A89900C29C00 /* LostNetwork2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork2.hpp; sourceTree = "<group>"; };
+		D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatteryInfo.cpp; sourceTree = "<group>"; };
+		D212D5381E13BB5F00C29C00 /* BatteryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatteryInfo.h; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* ODSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* ODSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODSocketManage.h; sourceTree = "<group>"; };
 		D223FAEC1E07784E00270969 /* ODSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocket.cpp; sourceTree = "<group>"; };
@@ -890,6 +894,15 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		D212D5361E13BB5F00C29C00 /* batteryInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */,
+				D212D5381E13BB5F00C29C00 /* BatteryInfo.h */,
+			);
+			path = batteryInfo;
+			sourceTree = "<group>";
 		};
 		D223FAE81E07784E00270969 /* android */ = {
 			isa = PBXGroup;
@@ -1397,6 +1410,7 @@
 			isa = PBXGroup;
 			children = (
 				D267794C1DF012E2003CE73F /* ParticleUtil.cpp */,
+				D212D5361E13BB5F00C29C00 /* batteryInfo */,
 				D267794D1DF012E2003CE73F /* ParticleUtil.hpp */,
 				D26778A51DF00697003CE73F /* HeadImage.cpp */,
 				D26778A61DF00697003CE73F /* HeadImage.hpp */,
@@ -1826,6 +1840,7 @@
 				D26778D11DF00697003CE73F /* PrideCell.cpp in Sources */,
 				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D26778E11DF00697003CE73F /* RoomIdErrorDialog.cpp in Sources */,
+				D212D5391E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */,
 				D267792D1DF00698003CE73F /* LequanShop.cpp in Sources */,
 				D26779311DF00698003CE73F /* LoadResource.cpp in Sources */,
 				D26779051DF00698003CE73F /* PlayerRight.cpp in Sources */,
@@ -1872,6 +1887,7 @@
 				D26778C01DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
 				D26778F01DF00698003CE73F /* Jong.cpp in Sources */,
 				D223FAF71E07784E00270969 /* stdafx.cpp in Sources */,
+				D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D26778C81DF00697003CE73F /* MjGameScene.cpp in Sources */,
 				D26778EC1DF00698003CE73F /* OtherPlayerInfo.cpp in Sources */,
