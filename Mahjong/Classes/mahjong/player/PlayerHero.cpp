@@ -613,23 +613,29 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             huaIndex++;
         }, 0.8f, (int)replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
+            if(data.hastinggang){
+                EventCustom tingEvent(MSG_HERO_TING_GANG);
+                Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
+            }
             turnJong->setVisible(true);
             settleHandJongs(getHandPosX());
             currentJong = turnJong;
-            isAllowPlay = true;
+            setIsAllowPlay(true);
         }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
-        GAMEDATA::getInstance()->setInReplaceHua(0.8f*replace.size()+0.8f);
     }
     else{
-        GAMEDATA::getInstance()->setInReplaceHua(0.8f);
         Jong* jong = Jong::create();
         jong->showJong(herohand, data.poker);
         addChild(jong);
         currentJong = jong;
         playerHandJongs.pushBack(jong);
         settleHandJongs(getHandPosX());
+        if(data.hastinggang){
+            EventCustom tingEvent(MSG_HERO_TING_GANG);
+            Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
+        }
         if (!(GAMEDATA::getInstance()->getIsTingState())){
-            isAllowPlay = true;
+            setIsAllowPlay(true);
         }
     }
     doubleClickJong = NULL;
@@ -681,45 +687,6 @@ void PlayerHero:: drawPlayedJong(int type){
     
 }
 
-void PlayerHero::playedPokerAuto(){
-    if (virtualJong != NULL){
-        virtualJong->setVisible(false);
-        virtualJong->removeFromParent();
-        virtualJong = NULL;
-    }
-    selectJong = NULL;
-    resetHandJongsY(NULL);
-    Jong* lastJong = playerHandJongs.at(playerHandJongs.size() - 1);
-    Jong* spJong = Jong::create();
-    spJong->showJong(lastJong->getJongType(), herohand);
-    spJong->setPosition(lastJong->getPosition());
-    addChild(spJong);
-    lastJong->removeFromParent();
-    playerHandJongs.eraseObject(lastJong);
-    Audio::getInstance()->playMahjong(spJong->getJongType(),UserData::getInstance()->getGender());//音效
-    Point startPoint = spJong->getPosition();
-    Point endPoint = getHeroPlayedJongsPos((int)playerPlayedJongs.size());
-    float sx = startPoint.x;
-    float sy = startPoint.y;
-    float ex = endPoint.x;
-    float ey = endPoint.y;
-    ccBezierConfig bezier;
-    bezier.controlPoint_1 = Point(sx, sy);
-    bezier.controlPoint_2 = Point(sx + (ex - sx) * 0.5,
-                                  sy + (ey - sy) * 0.5 + 200);
-    bezier.endPosition = Point(endPoint.x , endPoint.y );
-    BezierTo *actionMove = BezierTo::create(0.5f, bezier);
-    ScaleTo* scale = ScaleTo::create(0.5f, 0.45f);
-    Sequence* seq = Sequence::create(Spawn::create(actionMove, scale, NULL), CallFunc::create([=](){
-        sendPokerRequest(spJong->getJongType());
-        spJong->showJong(heroplayed, spJong->getJongType());
-        spJong->setScale(1.0f);
-        playerPlayedJongs.pushBack(spJong);
-        stopTimeClockAnim();
-        isAllowPlay = false;
-    }), NULL);
-    spJong->runAction(seq);
-}
 
 void PlayerHero::eraseHeroJong(Jong* jong){
     this->playerHandJongs.eraseObject(jong);
@@ -741,28 +708,25 @@ void PlayerHero::doEventTimeOver(int type){
     }
     //听牌倒计时
     else if (type == 2){
-        if (GAMEDATA::getInstance()->getIsTingProcess()){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
-            playedPokerAuto();
-            GAMEDATA::getInstance()->setIsTingProcess(false);
-        }
-        else{
+        //是否听牌选择界面倒计时结束
+        if (!GAMEDATA::getInstance()->getIsTingProcess()){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
             setIsAllowTouch(true);
             setIsAllowPlay(true);
+            if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
+                                           GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
+               ClientSeatId::hero){
+                startTimeClockAnim();
+                setIsAllowPlay(true);
+            }
         }
-        if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
-                                       GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
-           ClientSeatId::hero){
-            startTimeClockAnim();
-            setIsAllowPlay(true);
-        }
+        
     }
 }
 
 
 void PlayerHero::actionTing(){
-    this->setIsAllowTouch(true);
+    setIsAllowTouch(true);
     GAMEDATA::getInstance()->setIsTingProcess(true);
     PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
     std::vector<string> tingpai = StringUtil::split(tingData.ting, ",");
@@ -842,6 +806,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         runAction(mySe);
         //吃完后触发听牌
         if (cpgResp.result == 2 && cpgResp.ting != ""){
+            log("吃听的牌: %s",cpgResp.ting.c_str());
             PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
             tingData.ting = cpgResp.ting;
             GAMEDATA::getInstance()->setPlayerCpgt(tingData);

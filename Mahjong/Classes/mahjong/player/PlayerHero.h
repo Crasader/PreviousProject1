@@ -79,7 +79,6 @@ private:
     void inviteWechatFriend();
     void sendTingRequest(int poker);
     void sendPokerRequest(int poker);
-    void playedPokerAuto();
     void playPokerByHand(Jong* jong);
     void updateSelectedInfo(Jong* jong);
     float distance(Point pos1, Point pos2);

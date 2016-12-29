@@ -109,6 +109,13 @@ void MsgHandler::distribute(int code, std::string msg){
             removePlayerNotify(msg);
             break;
         }
+        case MSGCODE_MAJIANG_POKER_NOTIFY:
+        {
+            log(" *** next player turn *** ");
+            nextPlayer(msg);
+            break;
+        }
+            
         case MSGCODE_MAJIANG_DISPATCH_NOTIFY:
         {
             log(" *** other player pai *** ");
@@ -139,12 +146,7 @@ void MsgHandler::distribute(int code, std::string msg){
             showOtherGangNotify(msg);
             break;
         }
-        case MSGCODE_MAJIANG_POKER_NOTIFY:
-        {
-            log(" *** next player turn *** ");
-            nextPlayer(msg);
-            break;
-        }
+
         case MSGCODE_MAJIANG_TING_GANG_NOTIFY:
         {
             log(" *** hero ting pai notify *** ");
@@ -740,7 +742,7 @@ void MsgHandler::showOtherChiNotify(std::string msg){
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &chi = _mDoc["chi"];
     const rapidjson::Value &sId = _mDoc["sId"];
-    PlayerCpgtData cpg;
+    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     cpg.poker = poker.GetString();
     cpg.seatId = seatId.GetInt();
     cpg.chi.push_back(chi.GetString());
@@ -808,8 +810,6 @@ void MsgHandler::nextPlayer(std::string msg){
     }
     const rapidjson::Value &rest = _mDoc["rest"];
     playerTurnData.rest = rest.GetString();
-    GAMEDATA::getInstance()->setPlayerTurn(playerTurnData);
-    postNotifyMessage(MSG_PLAYER_TURN_WHO, "");
     
     PlayerCpgtData tingData;
     tingData.seatId = _mDoc["seatId"].GetInt();
@@ -829,12 +829,11 @@ void MsgHandler::nextPlayer(std::string msg){
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
         GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        int times = (playerTurnData.replace == ""? 0: (int)(StringUtil::split(playerTurnData.replace, ",").size()));
-        
-        Director::getInstance()->getScheduler()->schedule([=](float dt){
-            postNotifyMessage(MSG_HERO_TING_GANG, "");
-        }, this, 0,0,0.82*times, false,"FirstBlood");
+        playerTurnData.hastinggang = true;
     }
+    GAMEDATA::getInstance()->setPlayerTurn(playerTurnData);
+    postNotifyMessage(MSG_PLAYER_TURN_WHO, "");
+    
 }
 
 

@@ -94,6 +94,7 @@ struct PlayerTurnData
     int poker;
     std::string rest;
     std::string replace;
+    bool hastinggang = false;
 };
 
 struct PlayerCpgtData

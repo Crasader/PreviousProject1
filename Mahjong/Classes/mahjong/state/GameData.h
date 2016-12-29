@@ -102,7 +102,6 @@ public:
     CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间
     CC_SYNTHESIZE(bool, startPaiAngang, StartPaiAngang);
     CC_SYNTHESIZE(bool, startFaPai, StartFaPai);//是否开始发牌
-    CC_SYNTHESIZE(float, inReplaceHua, InReplaceHua);//换花过程的时间
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, ip, IP);//玩家IP
     CC_SYNTHESIZE(string, dice, Dice);
