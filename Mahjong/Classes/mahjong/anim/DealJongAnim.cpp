@@ -114,7 +114,7 @@ Sprite* DealJongAnim::createJong4(){
     paidui->setAnchorPoint(Point(0, 0));
     for (int h = 0; h < 4; h++){
         Jong* jong = Jong::create();
-        jong->showJong(JongViewType::herodeal, -1);
+        jong->showJong(JongViewType::herodeal, -1,false);
         jong->setPosition(getPosByDirection(ClientSeatId::hero, h));
         paidui->addChild(jong);
     }
@@ -127,15 +127,15 @@ Sprite* DealJongAnim::createJong4(int seatId){
     for(int i=0;i<4;i++){
         Jong* jong = Jong::create();
         if(seatId== ClientSeatId::left||seatId== ClientSeatId::right){
-            jong->showJong(JongViewType::leftdeal, -1);
+            jong->showJong(JongViewType::leftdeal, -1,false);
             jong->setPosition(0,32*i);
             jong->setLocalZOrder(4-i);
             
         }else if(seatId == ClientSeatId::opposite){
-            jong->showJong(JongViewType::oppositedeal, -1);
+            jong->showJong(JongViewType::oppositedeal, -1,false);
             jong->setPosition(0+42*i,0);
         }else{
-            jong->showJong(JongViewType::herodeal, -1);
+            jong->showJong(JongViewType::herodeal, -1,false);
             jong->setPosition(0+62*i,0);
         }
         paidui->addChild(jong);
@@ -317,7 +317,7 @@ Point DealJongAnim::getPaiduiPos(int seatId,int round){
 void DealJongAnim::drawPaidui(int num){
     for(int i=0;i<4;i++){
         Jong* jon = Jong::create();
-        jon->showJong(oppositedeal,-1);
+        jon->showJong(oppositedeal,-1,false);
         jon->setPosition(915+i*42,240);
         addChild(jon);
         jon->setOpacity(77);
@@ -325,7 +325,7 @@ void DealJongAnim::drawPaidui(int num){
     }
     for(int j=0;j<3;j++){
         Jong* jon = Jong::create();
-        jon->showJong(oppositedeal,-1);
+        jon->showJong(oppositedeal,-1,false);
         jon->setPosition(957+j*42,250);
         jon->setOpacity(77);
         jon->runAction(FadeTo::create(6.0/24,255));

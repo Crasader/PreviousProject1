@@ -782,8 +782,8 @@ void MahjongView::addJongPlayedListener(){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
         if (seatId == ClientSeatId::left){
             playerLeft->setIsOffLine(false);
-            playerLeft->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerLeft->stopTimeClockAnim();
+            playerLeft->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
@@ -792,8 +792,8 @@ void MahjongView::addJongPlayedListener(){
         }
         else if (seatId == ClientSeatId::right){
             playerRight->setIsOffLine(false);
-            playerRight->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerRight->stopTimeClockAnim();
+            playerRight->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
@@ -802,8 +802,8 @@ void MahjongView::addJongPlayedListener(){
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setIsOffLine(false);
-            playerOpposite->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             playerOpposite->stopTimeClockAnim();
+            playerOpposite->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
@@ -814,8 +814,8 @@ void MahjongView::addJongPlayedListener(){
             log("听牌后玩家系统出牌");
             schedule([=](float dt){
                 log("系统提玩家出的牌是: %d",GAMEDATA::getInstance()->getOtherPlayJong().poker);
-                playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
                 playerHero->stopTimeClockAnim();
+                playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
                 if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
                     Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
                 }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){

@@ -321,7 +321,7 @@ void PlayerBase::startTimeClockAnim(int time, int type){
 void  PlayerBase::stopTimeClockAnim(){
     mProgressTimer->setVisible(false);
     timeClock->setVisible(false);
-    mCDTime = 1000000000;
+    mCDTime = 9876543210;
     unschedule(schedule_selector(PlayerBase::updateTime));
 }
 

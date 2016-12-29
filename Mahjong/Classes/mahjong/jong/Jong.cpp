@@ -15,12 +15,12 @@ bool Jong::init(){
     return true;
 }
 
-void Jong::showJong(int bType, int cType){
+void Jong::showJong(int bType, int cType,bool show){
     background->setTexture(getBackgroundImage(bType));
     background->setScale(getBackgroundScaleByType(bType));
     setFlipByType(background, bType);
     //根据给定的牌的内容来显示
-    if (cType > 0){
+    if (show){
         setJongType(cType);
         contentSprite->setTexture(getContextImage(cType));
         contentSprite->setRotation(getRotationByType(bType));

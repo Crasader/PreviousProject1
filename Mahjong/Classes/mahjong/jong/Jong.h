@@ -49,7 +49,7 @@ class Jong :public Node{
 public:
     static std::string getContextImage(int ctype);//获取内容图片
 	virtual bool init();
-	void showJong(int bType,int cType);//显示牌
+	void showJong(int bType,int cType,bool show = true);//显示牌
 	Rect getJongBoundingBox();//获取牌的区域
     std::string getJongName(int type);//获取牌的名字
     void setJongSelectIcon(bool show);//旋转框

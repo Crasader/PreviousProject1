@@ -1056,7 +1056,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             PlayerCpgRecord record;
             record.type = CpgType::angang;
             record.pokersRecord = gangVector;
-            this->playerCpgRecords.push_back(record);
+            playerCpgRecords.push_back(record);
             CallFunc* action1 = CallFunc::create([=](){
                 for (int m = 0; m < gangVector.size(); m++){
                     gangVector.at(m)->showJong(herocpgportrait, gangVector.at(m)->getJongType());
@@ -1089,7 +1089,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             });
             CallFunc* action3 = CallFunc::create([=](){
                 for (int k = 0; k < gangVector.size() - 1; k++){
-                    gangVector.at(k)->showJong(herodeal, -1);
+                    gangVector.at(k)->showJong(herodeal, gangVector.at(k)->getJongType(),false);
                     gangVector.at(k)->setScale(0.8);
                 }
             });
@@ -1217,7 +1217,7 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                     jong->setPosition(Point(getCpgPostionX() + 47, 55));
                 }
                 else{
-                    jong->showJong(herodeal,-1);
+                    jong->showJong(herodeal,atoi(var.c_str()),false);
                     jong->setPosition(Point(getCpgPostionX() + 47*j, 45));
                 }
                 this->addChild(jong,10);

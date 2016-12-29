@@ -18,7 +18,7 @@ void PlayerOpposite::drawHandJong(){
     for (int i = 0; i < this->jongNum; i++)
     {
         Jong* jong = Jong::create();
-        jong->showJong(oppositehand, -1);
+        jong->showJong(oppositehand, -1,false);
         jong->setPosition(Point(OPPOSITE_POS_X + 43 * i, OPPOSITE_POS_Y));
         this->addChild(jong);
         playerHandJongs.pushBack(jong);
@@ -39,7 +39,7 @@ Point PlayerOpposite::getCpgShowPostion(int index){
 void PlayerOpposite::drawOppositePlayerTurn(){
     Jong* jong = Jong::create();
     jong->setTag(111);
-    jong->showJong(oppositehand, -1);
+    jong->showJong(oppositehand, -1,false);
     jong->setPosition(Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y + 20));
     addChild(jong);
     playerHandJongs.pushBack(jong);
@@ -241,7 +241,7 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
                     record.anGangFan = true;
                     jong->showJong(oppositecpgportrait, atoi(gang.at(0).c_str()));
                 }else{
-                    jong->showJong(oppositeangang, -1);
+                    jong->showJong(oppositeangang, atoi(gang.at(0).c_str()),false);
                 }
             }
             else{
@@ -414,7 +414,7 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
                     jong->showJong(oppositeplayed, atoi(anganglist.at(0).c_str()));
                     record.anGangFan = true;
                 }else{
-                    jong->showJong(oppositeangang, -1);
+                    jong->showJong(oppositeangang, atoi(anganglist.at(0).c_str()),false);
                 }
                 
                 if (i == 3){
@@ -443,7 +443,7 @@ void PlayerOpposite::recoverHand(std::string hand){
     for (int i = 0; i < hands.size(); i++)
     {
         Jong* jong = Jong::create();
-        jong->showJong(oppositehand, -1);
+        jong->showJong(oppositehand, -1,false);
         jong->setPosition(Point(OPPOSITE_POS_X + 43 * i, OPPOSITE_POS_Y));
         this->addChild(jong);
         playerHandJongs.pushBack(jong);
