@@ -15,6 +15,7 @@
 #include "mahjong/dialog/network/LostNetwork.hpp"
 #include "mahjong/dialog/prompt/TextHintDialog.hpp"
 #include "mahjong/widget/ScrollTextEx.h"
+#include "mahjong/widget/batteryinfo/BatteryInfo.h"
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 
@@ -89,6 +90,10 @@ void MahjongView::loadView(){
     tao = InfoToast::create();
     addChild(tao,50);
     showOriention();
+    //battery
+    BatteryInfo* bat = BatteryInfo::create();
+    bat->setPosition(300,500);
+    addChild(bat);
 }
 
 void MahjongView::startGameFirst(){
@@ -329,6 +334,7 @@ void MahjongView::hideTingGangControllPad(){
     controllPad->setVisible(false);
     choiceMenu->removeAllChildren();
     choiceMenu->setVisible(false);
+    playerHero->stopTimeClockAnim();//玩家停止倒计时
     schedule([=](float dt){
         controllPad->removeAllChildrenWithCleanup(true);
     }, 0, 0, 0.2f,"dalayRemovepad");

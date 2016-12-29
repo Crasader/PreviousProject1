@@ -5,27 +5,27 @@ bool BatteryInfo::init() {
 	Node::init();
 
 	auto _vSize = Director::getInstance()->getVisibleSize();
-	auto difvec2 = _vSize / 2;
-	Sprite* timerBg = Sprite::create("mjlobby/batteryInfo/timerBg.png");
+//	auto difvec2 = _vSize / 2;
+	Sprite* timerBg = Sprite::create("batteryInfo/timerBg.png");
 	timerBg->setPosition(_vSize.width - 54, 57);
 	addChild(timerBg);
 	
-	timerLabel = Label::createWithCharMap("mjlobby/batteryInfo/timerNumber.png", 14, 19, '0');
+	timerLabel = Label::createWithCharMap("batteryInfo/timerNumber.png", 14, 19, '0');
 	timerLabel->setString("11:59");
 	timerLabel->setPosition(Vec2(timerBg->getContentSize().width / 2, timerBg->getContentSize().height / 2));  //24
 	timerBg->addChild(timerLabel);
 	
-	Sprite* batteryInfoBg = Sprite::create("mjlobby/batteryInfo/batterInfoBg.png");
+	Sprite* batteryInfoBg = Sprite::create("batteryInfo/batterInfoBg.png");
 	batteryInfoBg->setPosition(_vSize.width - 140, 58);
 	addChild(batteryInfoBg);
 
-	batteryItem = Sprite::create("mjlobby/batteryInfo/batteryItem.png");
-	batteryItem->setAnchorPoint(ccp(0, 0));
+	batteryItem = Sprite::create("batteryInfo/batteryItem.png");
+	batteryItem->setAnchorPoint(Vec2(0, 0));
 	batteryItem->setPosition(4, 4);
 	batteryItem->setScaleX(10);
 	batteryInfoBg->addChild(batteryItem);
 	
-	wifiInfo = Sprite::create("mjlobby/batteryInfo/wifi4.png");
+	wifiInfo = Sprite::create("batteryInfo/wifi4.png");
 	wifiInfo->setPosition(_vSize.width - 200, 60);
 	addChild(wifiInfo);
 

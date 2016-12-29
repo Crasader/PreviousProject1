@@ -733,7 +733,6 @@ void PlayerHero::doEventTimeOver(int type){
     ((MahjongView*)getParent())->hideTingGangControllPad();
     //type 吃碰杠倒计时
     if (type == 1){
-        ((MahjongView*)getParent())->hideTingGangControllPad();
         if(GAMEDATA::getInstance()->getPlayerTurn().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
             startTimeClockAnim();
             setIsAllowPlay(true);
@@ -748,7 +747,6 @@ void PlayerHero::doEventTimeOver(int type){
             GAMEDATA::getInstance()->setIsTingProcess(false);
         }
         else{
-            ((MahjongView*)getParent())->hideTingGangControllPad();
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
             setIsAllowTouch(true);
             setIsAllowPlay(true);

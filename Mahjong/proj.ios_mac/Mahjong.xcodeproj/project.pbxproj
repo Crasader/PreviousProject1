@@ -53,6 +53,8 @@
 		D212D5351E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
 		D212D5391E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
 		D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
+		D212D53C1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
+		D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
 		D223FAF21E07784E00270969 /* ODSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* ODSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* ODSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* ODSocketManage.cpp */; };
 		D223FAF41E07784E00270969 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAEC1E07784E00270969 /* ODSocket.cpp */; };
@@ -406,6 +408,7 @@
 		D212D5331E13A89900C29C00 /* LostNetwork2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork2.hpp; sourceTree = "<group>"; };
 		D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatteryInfo.cpp; sourceTree = "<group>"; };
 		D212D5381E13BB5F00C29C00 /* BatteryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatteryInfo.h; sourceTree = "<group>"; };
+		D212D53B1E14A0BA00C29C00 /* batteryInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = batteryInfo; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* ODSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* ODSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODSocketManage.h; sourceTree = "<group>"; };
 		D223FAEC1E07784E00270969 /* ODSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocket.cpp; sourceTree = "<group>"; };
@@ -801,6 +804,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D212D53B1E14A0BA00C29C00 /* batteryInfo */,
 				D2FB85201E07B9F700257EE1 /* Images.xcassets */,
 				D286A53D1DD30E46001369C1 /* wanjiaqun */,
 				D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */,
@@ -1409,8 +1413,8 @@
 		D26778A41DF00697003CE73F /* widget */ = {
 			isa = PBXGroup;
 			children = (
-				D267794C1DF012E2003CE73F /* ParticleUtil.cpp */,
 				D212D5361E13BB5F00C29C00 /* batteryInfo */,
+				D267794C1DF012E2003CE73F /* ParticleUtil.cpp */,
 				D267794D1DF012E2003CE73F /* ParticleUtil.hpp */,
 				D26778A51DF00697003CE73F /* HeadImage.cpp */,
 				D26778A61DF00697003CE73F /* HeadImage.hpp */,
@@ -1682,6 +1686,7 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				D25329741CC0D33600DDAD97 /* playerinfo in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				D212D53C1E14A0BA00C29C00 /* batteryInfo in Resources */,
 				D25329581CC0D33600DDAD97 /* ChineseWords.plist in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				D25329721CC0D33600DDAD97 /* mjlobby in Resources */,
@@ -1733,6 +1738,7 @@
 				D253296B1CC0D33600DDAD97 /* jong in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				D25329791CC0D33600DDAD97 /* res in Resources */,
+				D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */,
 				D25329711CC0D33600DDAD97 /* mjitem in Resources */,
 				D25329611CC0D33600DDAD97 /* fonts in Resources */,
 				D25329731CC0D33600DDAD97 /* mjlobby in Resources */,
