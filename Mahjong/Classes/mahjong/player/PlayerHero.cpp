@@ -766,6 +766,7 @@ void PlayerHero::actionTing(){
     GAMEDATA::getInstance()->setIsTingProcess(true);
     PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
     std::vector<string> tingpai = StringUtil::split(tingData.ting, ",");
+    log("提示玩家可以听的牌:%s",tingData.ting.c_str());
     for (int i = 0; i < tingpai.size(); i++){
         for (int j = 0; j < playerHandJongs.size(); j++){
             if (atoi(tingpai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
