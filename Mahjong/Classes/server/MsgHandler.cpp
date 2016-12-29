@@ -1070,6 +1070,9 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.tru = temp["tru"].GetInt();
         data.ifready = 1;
         data.isOnline = temp["isonline"].GetInt();
+        if(data.seatId == GAMEDATA::getInstance()->getHeroSeatId()&&data.status== 1){
+            GAMEDATA::getInstance()->setIsTingState(true);
+        }
         if(temp.HasMember("chi")){
             const rapidjson::Value &chi = temp["chi"];
             for(int j = 0; j < chi.Capacity(); ++j){

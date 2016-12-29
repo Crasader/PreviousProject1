@@ -616,6 +616,10 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             if(data.hastinggang){
                 EventCustom tingEvent(MSG_HERO_TING_GANG);
                 Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
+            }else{
+                if(GAMEDATA::getInstance()->getIsTingState()){
+                    ((MahjongView*)getParent())->heroPlayPokerAuto(data.poker);
+                }
             }
             turnJong->setVisible(true);
             settleHandJongs(getHandPosX());
@@ -627,12 +631,16 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         Jong* jong = Jong::create();
         jong->showJong(herohand, data.poker);
         addChild(jong);
-        currentJong = jong;
         playerHandJongs.pushBack(jong);
+        currentJong = jong;
         settleHandJongs(getHandPosX());
         if(data.hastinggang){
             EventCustom tingEvent(MSG_HERO_TING_GANG);
             Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
+        }else{
+            if(GAMEDATA::getInstance()->getIsTingState()){
+                ((MahjongView*)getParent())->heroPlayPokerAuto(data.poker);
+            }
         }
         if (!(GAMEDATA::getInstance()->getIsTingState())){
             setIsAllowPlay(true);
@@ -649,8 +657,10 @@ void PlayerHero:: drawPlayedJong(int type){
         virtualJong = NULL;
     }
     resetHandJongsY(NULL);
+    bool find = false;
     for(int i=(int)playerHandJongs.size()-1;i>=0;i--){
         if(playerHandJongs.at(i)->getJongType()==type){
+            find = true;
             Jong* spJong = Jong::create();
             spJong->showJong(herohand, playerHandJongs.at(i)->getJongType());
             spJong->setPosition(playerHandJongs.at(i)->getPosition());
@@ -684,7 +694,11 @@ void PlayerHero:: drawPlayedJong(int type){
             break;
         }
     }
-    
+    if(find){
+        log("手牌中有这张牌 == %d",type);
+    }else{
+        log("手牌中并没有这张牌== %d",type);
+    }
 }
 
 

@@ -24,6 +24,7 @@ public:
     void onEnterTransitionDidFinish() override;
 	void showTingGangControllPad();
 	void hideTingGangControllPad();
+    void heroPlayPokerAuto(int poker);
 	void showGuiLayer();
 	void startGameAgain();
     void startGameFirst();
