@@ -91,9 +91,9 @@ void MahjongView::loadView(){
     addChild(tao,50);
     showOriention();
     //battery
-    BatteryInfo* bat = BatteryInfo::create();
-    bat->setPosition(300,500);
-    addChild(bat);
+    //    BatteryInfo* bat = BatteryInfo::create();
+    //    bat->setPosition(300,500);
+    //    addChild(bat);
 }
 
 void MahjongView::startGameFirst(){
@@ -975,7 +975,7 @@ void MahjongView::addGameResultListener(){
                     pokerRecO.cpg.push_back(p1);
                 }
                 showRec.playercpg.push_back(pokerRecO);
-
+                
                 CpgPokerRec pokerRecR;
                 pokerRecR.clientseatid =  ClientSeatId::right;
                 for(auto right:playerRight->playerCpgRecords){
@@ -986,7 +986,7 @@ void MahjongView::addGameResultListener(){
                     pokerRecR.cpg.push_back(p2);
                 }
                 showRec.playercpg.push_back(pokerRecR);
-
+                
                 CpgPokerRec pokerRecH;
                 pokerRecH.clientseatid =  ClientSeatId::hero;
                 for(auto hero:playerHero->playerCpgRecords){
@@ -999,7 +999,7 @@ void MahjongView::addGameResultListener(){
                 showRec.playercpg.push_back(pokerRecH);
                 
                 GAMEDATA::getInstance()->setPlayerCpgRecShow(showRec);
-
+                
                 clearRoomPlayer();
                 if(flag == "2"){
                     GAMEDATA::getInstance()->setNeedShowLastResult(true);
