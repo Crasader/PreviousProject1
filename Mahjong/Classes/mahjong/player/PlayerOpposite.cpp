@@ -226,6 +226,7 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
                     jong->showJong(oppositecpgportrait, atoi(data.poker.c_str()));
                     jong->setPosition(getCpgShowPostion(i).x-OPPOSITE_POKER_WIDTH-2,getCpgShowPostion(i).y-3);
                     addChild(jong, 35);
+                    record.pokersRecord.pushBack(jong);
                 }
             }
         }
