@@ -388,7 +388,7 @@ Point PlayerBase::getHuaNumPos(int seatId){
         return Vec2(45,555);
     }
     else if (seatId == ClientSeatId::opposite){
-        return Vec2(800,615);
+        return Vec2(800,605);
     }
     else if (seatId == ClientSeatId::right){
         return Vec2(1175,555);
