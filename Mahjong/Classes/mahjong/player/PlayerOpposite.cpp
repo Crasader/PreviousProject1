@@ -417,7 +417,7 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
                     jong->showJong(oppositeangang, atoi(anganglist.at(0).c_str()),false);
                 }
                 
-                if (i == 3){
+                if (j == 3){
                     jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - OPPOSITE_POKER_WIDTH, getCpgShowPostion(playerCpgRecords.size()).y - 2));
                     this->addChild(jong, 10);
                 }

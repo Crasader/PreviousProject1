@@ -369,7 +369,7 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
                     jong->showJong(rightangang, atoi(anganglist.at(0).c_str()),false);
                 }
                 
-                if (i == 3){
+                if (j == 3){
                     record.pokersRecord.pushBack(jong);
                     jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-2, getCpgShowPostion((int)playerCpgRecords.size()).y +  RIGHT_POKER_WIDTH));
                     addChild(jong, 30);
