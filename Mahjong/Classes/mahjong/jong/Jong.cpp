@@ -54,7 +54,7 @@ float Jong::getContentScaleByType(int bType){
         || bType == oppositeplayed || bType == oppositeangang||bType ==oppositecpgportrait||bType == oppositecpglandscape
         || bType == rightplayed||bType == rightangang||bType == rightangang||bType ==rightcpgportrait||bType == rightcpglandscape
         || bType == heroplayed ){
-        return 0.42f;
+        return 0.41f;
     }
     else if (bType == herocpgportrait){
         return 0.7f;
