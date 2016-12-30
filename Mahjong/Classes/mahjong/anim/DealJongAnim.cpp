@@ -318,7 +318,7 @@ void DealJongAnim::drawPaidui(int num){
     for(int i=0;i<4;i++){
         Jong* jon = Jong::create();
         jon->showJong(oppositedeal,-1,false);
-        jon->setPosition(915+i*42,240);
+        jon->setPosition(885+i*42,240);
         addChild(jon);
         jon->setOpacity(77);
         jon->runAction(FadeTo::create(6.0/24,255));
@@ -326,7 +326,7 @@ void DealJongAnim::drawPaidui(int num){
     for(int j=0;j<3;j++){
         Jong* jon = Jong::create();
         jon->showJong(oppositedeal,-1,false);
-        jon->setPosition(957+j*42,250);
+        jon->setPosition(927+j*42,250);
         jon->setOpacity(77);
         jon->runAction(FadeTo::create(6.0/24,255));
         addChild(jon,2);

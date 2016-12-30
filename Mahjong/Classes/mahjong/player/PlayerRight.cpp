@@ -103,7 +103,7 @@ void PlayerRight::showCurrentPlayedJongIcon(bool isShow){
 }
 
 Point PlayerRight::getCpgShowPostion(int index){
-    return Point(1105,175 + index * 75);
+    return Point(1105,180 + index * 110);
 }
 
 void PlayerRight::removeLastJong(){
@@ -136,7 +136,7 @@ void PlayerRight::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
     for (int i = 0; i < chi.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(rightcpglandscape, atoi(chi.at(i).c_str()));
-        jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * 22+24));
+        jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * RIGHT_POKER_WIDTH+33));
         addChild(jong, 30 - (int)playerCpgRecords.size()*3-i-1);
         record.pokersRecord.pushBack(jong);
     }
@@ -161,14 +161,14 @@ void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     int offsetY = 0;
     if(playerBase->getClientSeat() == ClientSeatId::opposite){
         offsetY = 0;
-        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x+4, getCpgShowPostion((int)playerCpgRecords.size()).y+45);
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x+4, getCpgShowPostion((int)playerCpgRecords.size()).y+60);
         jongpeng->setLocalZOrder(30 - (int)playerCpgRecords.size()*3-2);
     }else if(playerBase->getClientSeat() == ClientSeatId::left){
-        offsetY = 12;
-        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-27, getCpgShowPostion((int)playerCpgRecords.size()).y+20);
+        offsetY = 17;
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-39, getCpgShowPostion((int)playerCpgRecords.size()).y+34);
         jongpeng->setLocalZOrder(30 - (int)playerCpgRecords.size()*3);
     }else{
-        offsetY = 25;
+        offsetY = 33;
         jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x+4, getCpgShowPostion((int)playerCpgRecords.size()).y);
         jongpeng->setLocalZOrder(30 - (int)playerCpgRecords.size()*3+1);
     }
@@ -178,7 +178,7 @@ void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     for (int i = 0; i < peng.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(rightcpglandscape, atoi(peng.at(i).c_str()));
-        jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * 21+offsetY));
+        jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * RIGHT_POKER_WIDTH+offsetY));
         addChild(jong, 30 - (int)playerCpgRecords.size()*3-i);
         record.pokersRecord.pushBack(jong);
     }
@@ -220,8 +220,8 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
                 if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data.poker.c_str())){
                     Jong* jong = Jong::create();
                     jong->showJong(rightcpglandscape, atoi(data.poker.c_str()));
-                    jong->setPosition(playerCpgRecords.at(i).pokersRecord.at(1)->getPosition());
-                    addChild(jong, 30);
+                    jong->setPosition(getCpgShowPostion(i).x-4,getCpgShowPostion(i).y+34);
+                    addChild(jong, 35);
                 }
             }
         }
@@ -245,11 +245,11 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             }
             if (i == 3){
                 record.pokersRecord.pushBack(jong);
-                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-2, getCpgShowPostion((int)playerCpgRecords.size()).y +  21));
-                this->addChild(jong, 30);
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-3, getCpgShowPostion((int)playerCpgRecords.size()).y +  34));
+                addChild(jong, 30);
             }
             else{
-                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * 21));
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * RIGHT_POKER_WIDTH));
                 addChild(jong, 30 - (int)playerCpgRecords.size()*3-i);
             }
         }
