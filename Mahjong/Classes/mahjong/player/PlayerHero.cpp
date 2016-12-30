@@ -620,10 +620,6 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             if(data.hastinggang){
                 EventCustom tingEvent(MSG_HERO_TING_GANG);
                 Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
-            }else{
-                if(GAMEDATA::getInstance()->getIsTingState()){
-                    ((MahjongView*)getParent())->heroPlayPokerAuto(data.poker);
-                }
             }
         }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
     }
@@ -637,10 +633,6 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         if(data.hastinggang){
             EventCustom tingEvent(MSG_HERO_TING_GANG);
             Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
-        }else{
-            if(GAMEDATA::getInstance()->getIsTingState()){
-                ((MahjongView*)getParent())->heroPlayPokerAuto(data.poker);
-            }
         }
         if (!(GAMEDATA::getInstance()->getIsTingState())){
             setIsAllowPlay(true);

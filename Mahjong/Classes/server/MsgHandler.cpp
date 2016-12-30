@@ -816,6 +816,10 @@ void MsgHandler::nextPlayer(std::string msg){
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &ting = _mDoc["ting"];
         tingData.ting = ting.GetString();
+        //为了解决吃听不起牌的bug加的这3行代码
+        HeroCpgRespData heroTingData;
+        heroTingData.ting = ting.GetString();
+        GAMEDATA::getInstance()->setHeroCpgResp(heroTingData);
     }
     if (_mDoc.HasMember("angang")){
         const rapidjson::Value &angang = _mDoc["angang"];
