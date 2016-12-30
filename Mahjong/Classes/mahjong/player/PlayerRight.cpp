@@ -339,7 +339,7 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
             record.type = CpgType::gang;
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
-                jong->showJong(rightplayed, atoi(gang.at(i).gang.c_str()));
+                jong->showJong(rightcpglandscape, atoi(gang.at(i).gang.c_str()));
                 if (j == 3){
                     record.pokersRecord.pushBack(jong);
                     jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-2, getCpgShowPostion((int)playerCpgRecords.size()).y +  28));
@@ -363,21 +363,20 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
             for(int j=0;j<4;j++){
                 Jong* jong = Jong::create();
                 if(j==3){
-                    jong->showJong(rightplayed, atoi(anganglist.at(0).c_str()));
+                    jong->showJong(rightcpglandscape, atoi(anganglist.at(0).c_str()));
                     record.anGangFan = true;
                 }else{
-                    jong->showJong(rightdeal, atoi(anganglist.at(0).c_str()),false);
-                    jong->setScale(0.86f);
+                    jong->showJong(rightangang, atoi(anganglist.at(0).c_str()),false);
                 }
                 
                 if (i == 3){
                     record.pokersRecord.pushBack(jong);
                     jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-2, getCpgShowPostion((int)playerCpgRecords.size()).y +  28));
-                    this->addChild(jong, 30);
+                    addChild(jong, 30);
                 }
                 else{
                     jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y + i * 28));
-                    this->addChild(jong, 30 - (int)playerCpgRecords.size()*3-j);
+                    addChild(jong, 30 - (int)playerCpgRecords.size()*3-j);
                 }
                 record.pokersRecord.pushBack(jong);
             }

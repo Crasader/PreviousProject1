@@ -91,6 +91,7 @@
 
 #define MSGCODE_MAJIANG_DISPATCH_REQUEST  2004// 出牌请求{code:2004,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
 #define MSGCODE_MAJIANG_DISPATCH_NOTIFY  2005// 出牌通知{code:2005,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
+
 #define MSGCODE_MAJIANG_PLAYER_CPG_NOTIFY  2006//玩家吃碰杠通知{code:2006,poxiaoId:poxiaoId,seatId:seatId,poker:1,chi:[{chi:2,3},{chi:3,4}],peng:"1,2,3",gang:"1,1,1,1"}
 
 #define MSGCODE_MAJIANG_CHI_REQUEST  2007// 确认吃牌请求{code:2007,poxiaoId:poxiaoId,seatId:seatId,chi:"1,2",poker:poker}

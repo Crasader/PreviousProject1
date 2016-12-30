@@ -742,7 +742,7 @@ void MsgHandler::showOtherChiNotify(std::string msg){
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &chi = _mDoc["chi"];
     const rapidjson::Value &sId = _mDoc["sId"];
-    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+    PlayerCpgtData cpg;
     cpg.poker = poker.GetString();
     cpg.seatId = seatId.GetInt();
     cpg.chi.push_back(chi.GetString());
@@ -761,7 +761,7 @@ void MsgHandler::showOtherPengNotify(std::string msg){
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &pengPoker = _mDoc["peng"];
     const rapidjson::Value &sId = _mDoc["sId"];
-    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+    PlayerCpgtData cpg;
     cpg.poker = poker.GetString();
     cpg.seatId = seatId.GetInt();
     cpg.peng = pengPoker.GetString();

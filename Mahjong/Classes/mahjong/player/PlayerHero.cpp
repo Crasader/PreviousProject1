@@ -613,6 +613,10 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             huaIndex++;
         }, 0.8f, (int)replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
+            turnJong->setVisible(true);
+            settleHandJongs(getHandPosX());
+            currentJong = turnJong;
+            setIsAllowPlay(true);
             if(data.hastinggang){
                 EventCustom tingEvent(MSG_HERO_TING_GANG);
                 Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
@@ -621,10 +625,6 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
                     ((MahjongView*)getParent())->heroPlayPokerAuto(data.poker);
                 }
             }
-            turnJong->setVisible(true);
-            settleHandJongs(getHandPosX());
-            currentJong = turnJong;
-            setIsAllowPlay(true);
         }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
     }
     else{
@@ -742,7 +742,7 @@ void PlayerHero::doEventTimeOver(int type){
 void PlayerHero::actionTing(){
     setIsAllowTouch(true);
     GAMEDATA::getInstance()->setIsTingProcess(true);
-    PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
+    HeroCpgRespData tingData = GAMEDATA::getInstance()->getHeroCpgResp();
     std::vector<string> tingpai = StringUtil::split(tingData.ting, ",");
     log("提示玩家可以听的牌:%s",tingData.ting.c_str());
     for (int i = 0; i < tingpai.size(); i++){
@@ -821,7 +821,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         //吃完后触发听牌
         if (cpgResp.result == 2 && cpgResp.ting != ""){
             log("吃听的牌: %s",cpgResp.ting.c_str());
-            PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
+            PlayerCpgtData tingData;
             tingData.ting = cpgResp.ting;
             GAMEDATA::getInstance()->setPlayerCpgt(tingData);
             ((MahjongView*)getParent())->showTingGangControllPad();
@@ -913,7 +913,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     runAction(mySe);
     
     if (resp.result == 2 && resp.ting != ""){
-        PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
+        PlayerCpgtData tingData;
         tingData.ting = resp.ting;
         GAMEDATA::getInstance()->setPlayerCpgt(tingData);
         ((MahjongView*)getParent())->showTingGangControllPad();

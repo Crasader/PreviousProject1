@@ -19,9 +19,9 @@ void Jong::showJong(int bType, int cType,bool show){
     background->setTexture(getBackgroundImage(bType));
     background->setScale(getBackgroundScaleByType(bType));
     setFlipByType(background, bType);
+    setJongType(cType);
     //根据给定的牌的内容来显示
     if (show){
-        setJongType(cType);
         contentSprite->setTexture(getContextImage(cType));
         contentSprite->setRotation(getRotationByType(bType));
         contentSprite->setScale(getContentScaleByType(bType));

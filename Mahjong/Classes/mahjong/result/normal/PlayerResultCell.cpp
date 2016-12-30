@@ -169,6 +169,7 @@ bool PlayerResultCell::init(GameResultData data){
                 for(int i=0; i<pokers.size();i++){
                     playerShowPoker.push_back(StringUtils::format("%d",pokers.at(i)));
                 }
+                sort(playerShowPoker.begin(), playerShowPoker.end());
                 finalShowPoker.push_back(playerShowPoker);
             }
         }
