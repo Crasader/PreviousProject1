@@ -91,7 +91,8 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2){
         drawPaidui(91);
     }), DelayTime::create(6.0f/24), CallFunc::create([=](){
         paishuLayer->removeFromParent();
-        ((MahjongView*)getParent())->dealJongFinish();
+        if(NULL != ((MahjongView*)getParent()))
+            ((MahjongView*)getParent())->dealJongFinish();
     }), NULL));
 }
 

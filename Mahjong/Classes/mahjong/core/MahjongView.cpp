@@ -688,11 +688,16 @@ void MahjongView::firstReplaceFlower() {
 }
 
 void MahjongView::dealJongFinish(){
-    playerHero->drawPlayerHero();
-    playerRight->drawHandJong();
-    playerOpposite->drawHandJong();
-    playerLeft->drawHandJong();
-    firstReplaceFlower();
+    if(NULL != playerHero)
+        playerHero->drawPlayerHero();
+    if(NULL != playerRight)
+        playerRight->drawHandJong();
+    if(NULL != playerOpposite)
+        playerOpposite->drawHandJong();
+    if(NULL != playerLeft)
+        playerLeft->drawHandJong();
+    if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
+        firstReplaceFlower();
 }
 
 
@@ -725,7 +730,7 @@ void MahjongView::heroPlayPokerAuto(int poker){
     }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
         Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
     }
-
+    
 }
 
 
