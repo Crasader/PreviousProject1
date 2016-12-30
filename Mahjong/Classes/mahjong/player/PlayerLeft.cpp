@@ -223,7 +223,8 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
                     jong->showJong(leftcpglandscape, atoi(data.poker.c_str()));
                     jong->setPosition(getCpgShowPostion(i).x+4,getCpgShowPostion(i).y-20);
                     addChild(jong, (int)playerCpgRecords.size()*4);
-                    record.pokersRecord.pushBack(jong);
+                    playerCpgRecords.at(i).type = CpgType::penggang;
+                    playerCpgRecords.at(i).pokersRecord.pushBack(jong);
                 }
             }
         }
