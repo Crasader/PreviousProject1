@@ -54,18 +54,31 @@ bool PlayerResultCell::init(GameResultData data){
         auto fanText = Sprite::create("result/fan_text.png");
         fanText->setPosition(190,-15);
         addChild(fanText);
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            fanNum->setPosition(190,-15);
+            fanText->setPosition(210,-15);
+        }
     }else if(data.lz == "1"){
         auto lezi = Sprite::create("result/1beilezi.png");
         lezi->setPosition(190,-15);
         addChild(lezi);
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            lezi->setPosition(210,-15);
+        }
     }else if(data.lz == "2"){
         auto lezi = Sprite::create("result/2beilezi.png");
         lezi->setPosition(190,-15);
         addChild(lezi);
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            lezi->setPosition(210,-15);
+        }
     }else if(data.lz == "4"){
         auto lezi = Sprite::create("result/4beilezi.png");
         lezi->setPosition(190,-15);
         addChild(lezi);
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            lezi->setPosition(210,-15);
+        }
     }
     if(GAMEDATA::getInstance()->getCurrentBank() ==  data.seatId){
         auto bank = Sprite::create("result/zhaung.png");
@@ -217,14 +230,16 @@ bool PlayerResultCell::init(GameResultData data){
             
         }
     }else{
+        
+        
         auto jifenIcon =  Sprite::create("mjitem/jifen_icon.png");
         jifenIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        jifenIcon->setPosition(230,-10);
+        jifenIcon->setPosition(250,-10);
         addChild(jifenIcon);
         
         resultNum->setScale(1.0f);
         resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        resultNum->setPosition(300,-10);
+        resultNum->setPosition(320,-10);
     }
     
     return true;

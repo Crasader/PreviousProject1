@@ -375,7 +375,6 @@ void PlayerLeft::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 else{
                     jong->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y - LEFT_POKER_WIDTH * j);
                 }
-                
                 addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
                 
