@@ -29,6 +29,7 @@ public:
 private:
     static const int LEFT_POS_X = 170;
     static const int LEFT_POS_Y = 250;
+    static const int LEFT_POKER_WIDTH = 27;
     Point getHuaJongPos(int number);
 };
 #endif 
