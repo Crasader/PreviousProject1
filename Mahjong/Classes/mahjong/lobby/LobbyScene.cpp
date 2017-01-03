@@ -144,7 +144,7 @@ void LobbyScene::drawSceneTop(){
     auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
     fangka_icon->setPosition(157, 680);
     addChild(fangka_icon);
-    fangkaNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),"Arial",24);
+    fangkaNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getFangkaNum()),"Arial",24);
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     fangkaNum->setColor(Color3B(242,227,75));
     fangkaNum->setPosition(232, 685);
@@ -289,7 +289,7 @@ void LobbyScene::updateHeroInfo(){
     ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
     goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
-    fangkaNum->setString(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()));
+    fangkaNum->setString(StringUtils::format("%0.1f", UserData::getInstance()->getFangkaNum()));
     if(NULL != lequanNum)
         lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
 }

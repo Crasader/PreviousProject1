@@ -103,7 +103,7 @@ bool OtherPlayerInfo::init(Player* player){
     fangka_icon->setPosition(50, 75);
     fangka_icon->setScale(0.7f);
     dialogBg->addChild(fangka_icon);
-    auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%d", player->getFangka()),
+    auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%0.1f", player->getFangka()),
                                                  "arial",20);
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     fangkaNum->setColor(Color3B(87, 195, 186));

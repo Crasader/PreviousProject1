@@ -35,13 +35,13 @@ void UserData::setGold(int gold){
 }
 
 
-int UserData::getFangkaNum(){
-    return UserDefault::getInstance()->getIntegerForKey("user_fangka", 0);
+float UserData::getFangkaNum(){
+    return UserDefault::getInstance()->getFloatForKey("user_fangka", 0);
 }
 
 
-void UserData::setFangkaNum(int num){
-    UserDefault::getInstance()->setIntegerForKey("user_fangka", num);
+void UserData::setFangkaNum(float num){
+    UserDefault::getInstance()->setFloatForKey("user_fangka", num);
 }
 
 int UserData::getDiamond(){

@@ -478,7 +478,7 @@ void MsgHandler::loginResp(std::string msg){
         const rapidjson::Value &gold = _mDoc["gold"];
         UserData::getInstance()->setGold(gold.GetInt());
         const rapidjson::Value &fangka = _mDoc["fangka"];
-        UserData::getInstance()->setFangkaNum(fangka.GetInt());
+        UserData::getInstance()->setFangkaNum(fangka.GetDouble());
         const rapidjson::Value &gender = _mDoc["gender"];
         UserData::getInstance()->setGender(gender.GetInt());
         const rapidjson::Value &lequan = _mDoc["lequan"];
@@ -578,7 +578,7 @@ void MsgHandler::addPalyer(std::string msg){
     info->setTicket(lequan.GetInt());
     info->setPicture(pic.GetString());
     info->setIsReady(ifready.GetInt() == 0 ? false : true);
-    info->setFangka(fangka.GetInt());
+    info->setFangka(fangka.GetDouble());
     if(_mDoc.HasMember("ip")){
         const rapidjson::Value &ip = _mDoc["ip"];
         info->setIP(ip.GetString());
@@ -1336,7 +1336,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
             info->setGender(temp["gender"].GetInt());
             info->setNickname(temp["nickname"].GetString());
             info->setPicture(temp["pic"].GetString());
-            info->setFangka(temp["fangka"].GetInt());
+            info->setFangka(temp["fangka"].GetDouble());
             if(temp.HasMember("ip")){
                 info->setIP(temp["ip"].GetString());
             }
@@ -1785,7 +1785,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
     }
     if(_mDoc.HasMember("fangka")){
         const rapidjson::Value &fangka = _mDoc["fangka"];
-        UserData::getInstance()->setFangkaNum(fangka.GetInt());
+        UserData::getInstance()->setFangkaNum(fangka.GetDouble());
     }
     
     if(_mDoc.HasMember("gold")){

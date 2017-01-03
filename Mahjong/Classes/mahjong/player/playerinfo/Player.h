@@ -13,7 +13,7 @@ public:
 	CC_SYNTHESIZE(int, gold, Gold);
 	CC_SYNTHESIZE(int, diamond, Diamond);
 	CC_SYNTHESIZE(int, lockDiamond, LockDiamond);
-    CC_SYNTHESIZE(int, fangka, Fangka);
+    CC_SYNTHESIZE(float, fangka, Fangka);
 	CC_SYNTHESIZE(int, ticket, Ticket);
 	CC_SYNTHESIZE(int, seatId, SeatId);
 	CC_SYNTHESIZE(int, score, Score);
