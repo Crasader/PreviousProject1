@@ -1084,7 +1084,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
         data.lequan = temp["lequan"].GetInt();
         data.diamond = temp["diamond"].GetInt();
         data.lequan = temp["lequan"].GetInt();
-        data.fangka = temp["fangka"].GetInt();
+        data.fangka = temp["fangka"].GetDouble();
         data.hua = temp["hua"].GetInt();
         data.tru = temp["tru"].GetInt();
         data.ifready = 1;
@@ -1598,7 +1598,7 @@ void MsgHandler::dailyPrideResp(std::string msg){
             }
             if (temp.HasMember("fangka")){
                 info.type = PrideType::fangka;
-                info.number = temp["fangka"].GetInt();
+                info.number = temp["fangka"].GetDouble();
             }
             data.prides.push_back(info);
         }
@@ -1638,7 +1638,7 @@ void MsgHandler::todayPrideResp(std::string msg){
         }
         if (temp.HasMember("fangka")){
             info.type = PrideType::fangka;
-            info.number = temp["fangka"].GetInt();
+            info.number = temp["fangka"].GetDouble();
         }
         data.pride = info;
     }
@@ -1956,7 +1956,7 @@ void MsgHandler::gameResumeResp(std::string msg){
             data.lequan = temp["lequan"].GetInt();
             data.diamond = temp["diamond"].GetInt();
             data.lequan = temp["lequan"].GetInt();
-            data.fangka = temp["fangka"].GetInt();
+            data.fangka = temp["fangka"].GetDouble();
             data.hua = temp["hua"].GetInt();
             if(temp.HasMember("ifready"))
                 data.ifready = temp["ifready"].GetInt();
