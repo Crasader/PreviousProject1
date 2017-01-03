@@ -431,7 +431,7 @@ void MsgHandler::enterRoomResp(std::string msg){
                 auto nickname = temp["nickname"].GetString();
                 auto poxiaoId = temp["poxiaoId"].GetString();
                 auto lockdiamond = temp["bangzuan"].GetInt();
-                auto fangka = temp["fangka"].GetInt();
+                auto fangka = temp["fangka"].GetDouble();
                 auto pic = temp["pic"].GetString();
                 Player* info = new Player();
                 info->setPoxiaoId(poxiaoId);
@@ -1412,7 +1412,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
             info->setGender(temp["gender"].GetInt());
             info->setNickname(temp["nickname"].GetString());
             info->setPicture(temp["pic"].GetString());
-            info->setFangka(temp["fangka"].GetInt());
+            info->setFangka(temp["fangka"].GetDouble());
             if(temp.HasMember("ip")){
                 info->setIP(temp["ip"].GetString());
             }
