@@ -6,7 +6,7 @@ USING_NS_CC;
 
 class FriendRoom :public Layer{
 public:
-    virtual bool init();
+    virtual bool init() override;
     virtual void onEnter() override;
     virtual void onExit() override;
     CREATE_FUNC(FriendRoom);
@@ -14,8 +14,10 @@ private:
     void openRoom();
     void closeView();
     void selectFangka8();
-    void selectFangka16();
+    void selectFangka4();
     void selectWulezi();
     void selectLezi();
+    void selectWukaibao();
+    void select2mo3chong();
 };
 #endif

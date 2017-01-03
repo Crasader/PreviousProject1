@@ -88,8 +88,8 @@ void SpecialResultLayer::showLayerBtn(){
     auto info = Sprite::create();
     info->setPosition(1050,40);
     addChild(info);
-    if(GAMEDATA::getInstance()->getPrivateRoomType() == "16"){
-        info->setTexture("result/game_over_16.png");
+    if(GAMEDATA::getInstance()->getPrivateRoomType() == "4"){
+        info->setTexture("result/game_over_4.png");
     }else{
         info->setTexture("result/game_over_8.png");
     }

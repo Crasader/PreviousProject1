@@ -897,6 +897,12 @@ void MsgHandler::gameResultNotify(std::string msg){
     if(_mDoc.HasMember("lezi")){
         GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lezi"].GetString());
     }
+    if(_mDoc.HasMember("ifkb")){
+        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+    }
+    if(_mDoc.HasMember("ifemsc")){
+        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+    }
     if(_mDoc.HasMember("fzId")){
         GAMEDATA::getInstance()->setFangZhuId(_mDoc["fzId"].GetString());
     }
@@ -1031,6 +1037,15 @@ void MsgHandler::playerConnectAgain(std::string msg){
     if(_mDoc.HasMember("prjucount")){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
         opdata.prjucount = prjucount.GetString();
+    }
+    if(_mDoc.HasMember("ifkb")){
+        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+    }
+    if(_mDoc.HasMember("ifemsc")){
+        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+    }
+    if(_mDoc.HasMember("iflezi")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
     }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
     const rapidjson::Value &seatId = _mDoc["seatId"];
@@ -1337,6 +1352,15 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
     }
     const rapidjson::Value &result = _mDoc["result"];
+    if(_mDoc.HasMember("ifkb")){
+        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+    }
+    if(_mDoc.HasMember("ifemsc")){
+        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+    }
+    if(_mDoc.HasMember("iflezi")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+    }
     FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
     if(_mDoc.HasMember("kb")){
         const rapidjson::Value &kb = _mDoc["kb"];
@@ -1843,6 +1867,15 @@ void MsgHandler::gameResumeResp(std::string msg){
     if(_mDoc.HasMember("poxiaoId")){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
+    }
+    if(_mDoc.HasMember("ifkb")){
+        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+    }
+    if(_mDoc.HasMember("ifemsc")){
+        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+    }
+    if(_mDoc.HasMember("iflezi")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
     }
     FriendOpenRoomRespData opdata;
     if(_mDoc.HasMember("prjushu")){

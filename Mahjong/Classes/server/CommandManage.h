@@ -21,7 +21,7 @@ public:
 	std::string getQuitRoomCommand();//退出房间
 	std::string getChangeHeadCommand(std::string pic);//更换头像
     std::string getChangeGenderCommand(std::string gender);//更换性别
-	std::string getOpenRoomCommand(std::string ftype,std::string iflezi);//开设房间
+	std::string getOpenRoomCommand(std::string ftype,std::string iflezi,std::string ifkb,std::string ifemsc);//开设房间
 	std::string getEnterFriendRoomCommand(std::string pid);//进入私人房间
 	std::string getBillCommand();//账单
 	std::string getBillDetailCommand(std::string billId);//账单明细

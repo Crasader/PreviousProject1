@@ -112,6 +112,8 @@ public:
     CC_SYNTHESIZE(string, privateRoomType, PrivateRoomType);
     CC_SYNTHESIZE(string, fee, Fee);
     CC_SYNTHESIZE(string, privateLezi, PrivateLezi);
+    CC_SYNTHESIZE(string, privateKaibao, PrivateKaibao);
+    CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
     CC_SYNTHESIZE(string, noticeUrl, NoticeUrl);
     
 
