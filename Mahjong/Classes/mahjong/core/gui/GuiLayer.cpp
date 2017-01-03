@@ -32,7 +32,7 @@ bool GuiLayer::init(){
 void GuiLayer::initView(){
     drawGuiButton();//设置,账单,聊天，解散房间，退出
     drawGameInfo(); //开宝，荒番，房间号的绘制
-    drawTestButton();
+//    drawTestButton();
     scheduleUpdate();
 }
 
@@ -115,6 +115,7 @@ void GuiLayer::drawGameInfo(){
         kaibaoNum->setPosition(1200,638);
         huangfan->setPosition(1160, 610);
         haungNum->setPosition(1200, 608);
+        
     }else{
         roomInfoBg->setScale(0.95, 0.68);
         kaibao->setPosition(1170,680);
@@ -122,7 +123,6 @@ void GuiLayer::drawGameInfo(){
         huangfan->setPosition(1170, 650);
         haungNum->setPosition(1210, 648);
     }
-    
 }
 
 

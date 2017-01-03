@@ -94,6 +94,35 @@ void MahjongView::loadView(){
     //    BatteryInfo* bat = BatteryInfo::create();
     //    bat->setPosition(300,500);
     //    addChild(bat);
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
+        wukaibao->setVisible(false);
+        addChild(wukaibao);
+        if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
+            wukaibao->setVisible(true);
+        }
+        auto lezi = Sprite::create();
+        addChild(lezi);
+        if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
+            //有乐子
+            lezi->setTexture("gameview/40_lezi.png");
+        }else{
+            lezi->setTexture("gameview/wu_lezi.png");
+        }
+        auto emsc =  Sprite::create("gameview/2mo3chong.png");
+        emsc->setVisible(false);
+        addChild(emsc);
+        if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
+            emsc->setVisible(true);
+        }
+        int wid = lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
+        wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
+        wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
+        lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
+        emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    }
 }
 
 void MahjongView::startGameFirst(){
