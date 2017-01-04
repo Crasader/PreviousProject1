@@ -57,7 +57,9 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2){
             spr->setPosition(640,500);
             addChild(spr);
             if(dian1==dian2||(dian1==1&&dian2==4)||(dian1==4&&dian2==1)){
-                showKaibaoAnim(spr);
+                if(GAMEDATA::getInstance()->getPrivateKaibao() == "1"){
+                    showKaibaoAnim(spr);
+                }
             }
         }), NULL));
     }),DelayTime::create(24.0f/24),CallFunc::create([=](){
