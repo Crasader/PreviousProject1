@@ -17,7 +17,9 @@ NetworkManage::NetworkManage() {
 }
 
 void NetworkManage::sendMsg(std::string code) {
-    GameSocketManage::getInstance()->sendScoketData(code);
+    if(code.size()>0||code != ""){
+        GameSocketManage::getInstance()->sendScoketData(code);
+    }
 }
 
 void NetworkManage::startSocketBeat(std::string msg){
