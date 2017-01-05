@@ -148,6 +148,7 @@ struct PlayerCpgRecord
 
 struct HeroCpgRespData{
     int result;
+    std::string forbit;
     std::string ting;
 };
 

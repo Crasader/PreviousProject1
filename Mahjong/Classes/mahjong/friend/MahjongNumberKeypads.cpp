@@ -69,7 +69,10 @@ void MahjongNumberKeypads::clickNumber(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*) ref;
     int index = temp->getTag();
     if(index == 11){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(numberShow->getString()));
+        std::string num = numberShow->getString();
+        if(num.size() == 6){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(num));
+        }
         removeFromParent();
     }else if(index == 10){
         //delete

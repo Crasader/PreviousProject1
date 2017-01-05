@@ -74,8 +74,10 @@ bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
         return false;
     }
     selectJong = getTouchJong(touch);
-    if(NULL != selectJong){
+    if(NULL != selectJong&&!selectJong->getIsProtected()){
         updateSelectedInfo(selectJong);
+    }else{
+        selectJong = NULL;
     }
     if(NULL != virtualJong){
         virtualJong->removeFromParent();
@@ -88,6 +90,9 @@ bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
 void PlayerHero::onTouchMoved(Touch *touch, Event *event) {
     if (virtualJong == NULL){
         selectJong = getTouchJong(touch);
+        if(NULL == selectJong||selectJong->getIsProtected()){
+            selectJong = NULL;
+        }
         resetHandJongsY(selectJong);
     }
     if (touch->getLocation().y >= JONG_SEL_POS_Y){
@@ -113,7 +118,11 @@ void PlayerHero::onTouchMoved(Touch *touch, Event *event) {
             else{
                 selectJong->setPosition(selectJong->getPositionX(), JONG_POS_Y);
             }
-            updateSelectedInfo(selectJong);
+            if(!selectJong->getIsProtected()){
+                updateSelectedInfo(selectJong);
+            }else{
+                selectJong = NULL;
+            }
         }
         if (virtualJong != NULL){
             virtualJong->removeFromParent();
@@ -131,6 +140,10 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
     if (isAllowPlay) {
         if (doubleClickJong == NULL){
             doubleClickJong = getTouchJong(touch);
+            //保护中的牌，无法选中
+            if(doubleClickJong!=NULL&&doubleClickJong->getIsProtected()){
+                doubleClickJong = NULL;
+            }
         }
         else{
             if (doubleClickJong == getTouchJong(touch)){
@@ -155,13 +168,11 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
 void PlayerHero::updateSelectedInfo(Jong* jong){
     for(auto var :playerHandJongs){
         if(jong == var){
-            var->setJongSelectIcon(true);
+             var->setJongSelectIcon(true);
         }else{
-            var->setJongSelectIcon(false);
-            
+             var->setJongSelectIcon(false);
         }
     }
-    
 }
 
 Jong* PlayerHero::getTouchJong(Touch *touch){
@@ -216,6 +227,9 @@ void PlayerHero::playPokerByHand(Jong* jong){
     });
     CallFunc* callback2 = CallFunc::create([=](){
         showCurrentPlayedJongIcon(true);
+        for(auto var:getSelfHandJongs()){
+            var->showBackShadow(false);
+        }
     });
     
     Sequence* seq = Sequence::create(spa, callback, callback2, NULL);
@@ -810,6 +824,13 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         });
         Sequence* mySe = Sequence::create(callFuc0, delay, callFuc1, NULL);
         runAction(mySe);
+        
+        //屏蔽不允许出的牌
+        for(auto var:getSelfHandJongs()){
+            if(var->getJongType() == atoi(cpgResp.forbit.c_str())){
+                var->showBackShadow(true);
+            }
+        }
         //吃完后触发听牌
         if (cpgResp.result == 2 && cpgResp.ting != ""){
             log("吃听的牌: %s",cpgResp.ting.c_str());

@@ -1175,6 +1175,10 @@ void MsgHandler::heroChiResp(std::string msg){
     else{
         cpgRespData.ting = "";
     }
+    if (_mDoc.HasMember("forbit")){
+        const rapidjson::Value &forbit = _mDoc["forbit"];
+        cpgRespData.forbit = forbit.GetString();
+    }
     GAMEDATA::getInstance()->setHeroCpgResp(cpgRespData);
     postNotifyMessage(MSG_HERO_CHI_RESP, "");
 }

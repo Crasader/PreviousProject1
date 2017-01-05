@@ -12,6 +12,10 @@ bool Jong::init(){
     selcetedIcon = Sprite::create("gameview/poker_select.png");
     selcetedIcon->setVisible(false);
     addChild(selcetedIcon);
+    protectedIcon = Sprite::create("gameview/poker_protected.png");
+    protectedIcon->setVisible(false);
+    addChild(protectedIcon);
+    setIsProtected(false);
     return true;
 }
 
@@ -46,6 +50,12 @@ Rect Jong::getJongBoundingBox(){
 
 void Jong::setJongSelectIcon(bool show){
     selcetedIcon->setVisible(show);
+}
+
+
+void Jong::showBackShadow(bool show){
+    protectedIcon->setVisible(show);
+    setIsProtected(show);
 }
 
 
