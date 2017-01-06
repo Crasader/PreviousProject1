@@ -56,6 +56,7 @@ bool ODSocketManage::connectSocket(std::string host,int port){
 
 
 void ODSocketManage::startScoketBeat(std::string msg){
+    log("开启心跳");
     heartMsg = msg;
     std::thread recvThread = std::thread(&ODSocketManage::sendHeartBeat, this);
     recvThread.detach();
