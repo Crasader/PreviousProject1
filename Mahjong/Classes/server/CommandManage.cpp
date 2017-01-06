@@ -9,7 +9,7 @@
 #include "mahjong/utils/StringUtil.h"
 #include "server/MsgConfig.h"
 
-#define PAY_PLAT_VALUE "1" //ios支付版本
+#define PAY_PLAT_VALUE "2" //ios支付版本
 
 CommandManage* CommandManage::_instance = 0;
 
