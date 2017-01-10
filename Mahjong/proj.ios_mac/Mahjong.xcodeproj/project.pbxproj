@@ -55,12 +55,8 @@
 		D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
 		D212D53C1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
 		D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
-		D223FAF21E07784E00270969 /* ODSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* ODSocketManage.cpp */; };
-		D223FAF31E07784E00270969 /* ODSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* ODSocketManage.cpp */; };
-		D223FAF41E07784E00270969 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAEC1E07784E00270969 /* ODSocket.cpp */; };
-		D223FAF51E07784E00270969 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAEC1E07784E00270969 /* ODSocket.cpp */; };
-		D223FAF61E07784E00270969 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAEE1E07784E00270969 /* stdafx.cpp */; };
-		D223FAF71E07784E00270969 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAEE1E07784E00270969 /* stdafx.cpp */; };
+		D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
+		D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */; };
@@ -409,14 +405,8 @@
 		D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatteryInfo.cpp; sourceTree = "<group>"; };
 		D212D5381E13BB5F00C29C00 /* BatteryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatteryInfo.h; sourceTree = "<group>"; };
 		D212D53B1E14A0BA00C29C00 /* batteryInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = batteryInfo; sourceTree = "<group>"; };
-		D223FAE91E07784E00270969 /* ODSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocketManage.cpp; sourceTree = "<group>"; };
-		D223FAEA1E07784E00270969 /* ODSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODSocketManage.h; sourceTree = "<group>"; };
-		D223FAEC1E07784E00270969 /* ODSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ODSocket.cpp; sourceTree = "<group>"; };
-		D223FAED1E07784E00270969 /* ODSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODSocket.h; sourceTree = "<group>"; };
-		D223FAEE1E07784E00270969 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
-		D223FAEF1E07784E00270969 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
-		D223FAF01E07784E00270969 /* targetver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = targetver.h; sourceTree = "<group>"; };
-		D223FAF11E07784E00270969 /* tchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tchar.h; sourceTree = "<group>"; };
+		D223FAE91E07784E00270969 /* PxSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PxSocketManage.cpp; sourceTree = "<group>"; };
+		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
 		D22912481D12C583005C7167 /* CommandManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandManage.h; sourceTree = "<group>"; };
 		D22A7EA21DEECD2500CC6CE2 /* StatusBarTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarTool.h; sourceTree = "<group>"; };
@@ -911,24 +901,10 @@
 		D223FAE81E07784E00270969 /* android */ = {
 			isa = PBXGroup;
 			children = (
-				D223FAE91E07784E00270969 /* ODSocketManage.cpp */,
-				D223FAEA1E07784E00270969 /* ODSocketManage.h */,
-				D223FAEB1E07784E00270969 /* ODSocket */,
+				D223FAE91E07784E00270969 /* PxSocketManage.cpp */,
+				D223FAEA1E07784E00270969 /* PxSocketManage.h */,
 			);
 			path = android;
-			sourceTree = "<group>";
-		};
-		D223FAEB1E07784E00270969 /* ODSocket */ = {
-			isa = PBXGroup;
-			children = (
-				D223FAEC1E07784E00270969 /* ODSocket.cpp */,
-				D223FAED1E07784E00270969 /* ODSocket.h */,
-				D223FAEE1E07784E00270969 /* stdafx.cpp */,
-				D223FAEF1E07784E00270969 /* stdafx.h */,
-				D223FAF01E07784E00270969 /* targetver.h */,
-				D223FAF11E07784E00270969 /* tchar.h */,
-			);
-			path = ODSocket;
 			sourceTree = "<group>";
 		};
 		D257FD6D1D6C2E2400B8C596 /* payment */ = {
@@ -1777,7 +1753,7 @@
 				D26779231DF00698003CE73F /* GoldNotEnoughDialog.cpp in Sources */,
 				D26778B51DF00697003CE73F /* PlayerCpgAnim.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
-				D223FAF21E07784E00270969 /* ODSocketManage.cpp in Sources */,
+				D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D26779271DF00698003CE73F /* ExchangeItem.cpp in Sources */,
 				D267793F1DF00698003CE73F /* StringUtil.cpp in Sources */,
 				D26778D31DF00697003CE73F /* BaseDialog.cpp in Sources */,
@@ -1788,7 +1764,6 @@
 				D26779351DF00698003CE73F /* GameData.cpp in Sources */,
 				D26778FD1DF00698003CE73F /* PlayerHero.cpp in Sources */,
 				D26779171DF00698003CE73F /* HongbaoPride.cpp in Sources */,
-				D223FAF41E07784E00270969 /* ODSocket.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */,
@@ -1842,7 +1817,6 @@
 				D26778EF1DF00698003CE73F /* Jong.cpp in Sources */,
 				D26778CF1DF00697003CE73F /* DailyPride.cpp in Sources */,
 				D26778CD1DF00697003CE73F /* DailyEvent.cpp in Sources */,
-				D223FAF61E07784E00270969 /* stdafx.cpp in Sources */,
 				D26778D11DF00697003CE73F /* PrideCell.cpp in Sources */,
 				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D26778E11DF00697003CE73F /* RoomIdErrorDialog.cpp in Sources */,
@@ -1892,12 +1866,10 @@
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D26778C01DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
 				D26778F01DF00698003CE73F /* Jong.cpp in Sources */,
-				D223FAF71E07784E00270969 /* stdafx.cpp in Sources */,
 				D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D26778C81DF00697003CE73F /* MjGameScene.cpp in Sources */,
 				D26778EC1DF00698003CE73F /* OtherPlayerInfo.cpp in Sources */,
-				D223FAF51E07784E00270969 /* ODSocket.cpp in Sources */,
 				D26778F81DF00698003CE73F /* LobbyScene.cpp in Sources */,
 				D26779061DF00698003CE73F /* PlayerRight.cpp in Sources */,
 				D26779201DF00698003CE73F /* FirstChageDialog.cpp in Sources */,
@@ -1923,7 +1895,7 @@
 				D26778B41DF00697003CE73F /* OutFogAnim.cpp in Sources */,
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D26778D41DF00697003CE73F /* BaseDialog.cpp in Sources */,
-				D223FAF31E07784E00270969 /* ODSocketManage.cpp in Sources */,
+				D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D26778F21DF00698003CE73F /* Loading.cpp in Sources */,
 				D26778D81DF00697003CE73F /* TextHintDialog.cpp in Sources */,
 				D26779041DF00698003CE73F /* PlayerOpposite.cpp in Sources */,
