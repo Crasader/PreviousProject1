@@ -1,43 +1,45 @@
 #include "socket/android/PxSocketManage.h"
 #include "socket/GameSocketManage.hpp"
+#include "socket/android/native/CallAndroidSocket.hpp"
 
-ODSocketManage* ODSocketManage::_instance = NULL;
+PxSocketManage* PxSocketManage::_instance = NULL;
 
-ODSocketManage* ODSocketManage::getInstance() {
+PxSocketManage* PxSocketManage::getInstance() {
     if (NULL == _instance) {
-        _instance = new ODSocketManage();
+        _instance = new PxSocketManage();
     }
     return _instance;
 }
 
-ODSocketManage::ODSocketManage() {
+PxSocketManage::PxSocketManage() {
     // TODO
 }
 
 
-bool ODSocketManage::connectSocket(std::string host,int port){
-
+bool PxSocketManage::connectSocket(std::string host,int port){
+    CallAndroidSocket::getInstance()->connectSocket(host, StringUtils::format("%d",port));
     return false;
 }
 
 
-void ODSocketManage::startScoketBeat(std::string msg){
+void PxSocketManage::startScoketBeat(std::string msg){
     log("开启心跳");
 }
 
 
-void ODSocketManage::sendScoketData(std::string msg){
-    log("send command = %s", msg.c_str());
+void PxSocketManage::sendScoketData(std::string msg){
+    if(msg.size()>2)
+        CallAndroidSocket::getInstance()->sendDataSever(msg);
 }
 
-void ODSocketManage::receiveScoketData(std::string msg){
+void PxSocketManage::receiveScoketData(std::string msg){
     GameSocketManage::getInstance()->receiveScoketData(msg);
 }
 
-void ODSocketManage::resetBeatCount(){
+void PxSocketManage::resetBeatCount(){
     beatCount =0;
 }
 
-void ODSocketManage::disConnectSocket(){
+void PxSocketManage::disConnectSocket(){
     
 }

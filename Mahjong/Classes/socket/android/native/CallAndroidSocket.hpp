@@ -16,7 +16,8 @@ using namespace cocos2d;
 class CallAndroidSocket{
 public:
     static CallAndroidSocket* getInstance();
-    void requestEvent(std::string poxiaoId,std::string payId);
+    bool connectSocket(std::string host,std::string prot);
+    void sendDataSever(std::string data);
 private:
     std::string _jniPath;
     const char* getSocketJniPath();

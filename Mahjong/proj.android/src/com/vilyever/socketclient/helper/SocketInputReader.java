@@ -88,7 +88,7 @@ public class SocketInputReader extends Reader {
             }
 
             try {
-                ArrayList<Byte> list = new ArrayList<>();
+                ArrayList<Byte> list = new ArrayList<Byte>();
                 int c;
 
                 int matchIndex = 0;

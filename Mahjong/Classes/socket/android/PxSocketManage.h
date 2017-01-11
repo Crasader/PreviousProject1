@@ -5,9 +5,9 @@
 USING_NS_CC;
 
 
-class ODSocketManage : public Node{
+class PxSocketManage : public Node{
 public:
-	static ODSocketManage* getInstance();
+	static PxSocketManage* getInstance();
     bool connectSocket(std::string host, int port);
     void startScoketBeat(std::string msg);
     void sendScoketData(std::string msg);
@@ -15,8 +15,8 @@ public:
     void resetBeatCount();
     void disConnectSocket();
 private:
-	ODSocketManage();
+	PxSocketManage();
     int beatCount;
-	static ODSocketManage* _instance;
+	static PxSocketManage* _instance;
 };
 #endif

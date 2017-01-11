@@ -22,7 +22,7 @@ public class PxSocketClient {
 	private static PxSocketClient instance;
 
 	public static PxSocketClient getInstance() {
-		if (null != instance) {
+		if (null == instance) {
 			instance = new PxSocketClient();
 		}
 		return instance;
@@ -31,29 +31,19 @@ public class PxSocketClient {
 	/* Constructors */
 	private PxSocketClient() {
 		// 私有构造
-	}
-
-	private SocketClient localSocketClient;
-
-	/* Public Methods */
-	public void connect() {
 		if (localSocketClient == null) {
 			localSocketClient = new SocketClient();
-			// 设置远程连接端口
-			localSocketClient.getAddress().setRemoteIP("183.129.206.54"); // 远程端IP地址
-			localSocketClient.getAddress().setRemotePort("9999"); // 远程端端口号
-			localSocketClient.getAddress().setConnectionTimeout(15 * 1000); // 连接超时时长，单位毫秒
 			// 设置编码格式
 			localSocketClient.setCharsetName(CharsetUtil.UTF_8); // 设置编码为UTF-8
 			// 设置自动发送的心跳包信息
 			setupConstantHeartBeat(localSocketClient);
 			setupReadByLengthForSender(localSocketClient);
 			setupReadByLengthForReceiver(localSocketClient);
-
+			//客户端代理
 			localSocketClient.registerSocketClientDelegate(new SocketClientDelegate() {
 				@Override
 				public void onConnected(SocketClient client) {
-					Log.e("onConnected", "SocketClient: onConnected");
+					Log.e("AndroidSocket", "SocketClient: onConnected");
 
 					if (client.getSocketPacketHelper().getReadStrategy() == SocketPacketHelper.ReadStrategy.Manually) {
 						client.readDataToLength(CharsetUtil.stringToData("Server accepted", CharsetUtil.UTF_8).length);
@@ -62,7 +52,7 @@ public class PxSocketClient {
 
 				@Override
 				public void onDisconnected(final SocketClient client) {
-					Log.e("onDisconnected", "SocketClient: onDisconnected");
+					Log.e("AndroidSocket", "SocketClient: onDisconnected");
 
 					new AsyncTask<Void, Void, Void>() {
 						@Override
@@ -88,7 +78,7 @@ public class PxSocketClient {
 
 				@Override
 				public void onResponse(final SocketClient client, @NonNull SocketResponsePacket responsePacket) {
-					Log.e("onResponse",
+					Log.e("AndroidSocket",
 							"SocketClient: onResponse: " + responsePacket.hashCode() + " 【"
 									+ responsePacket.getMessage() + "】 " + " isHeartBeat: "
 									+ responsePacket.isHeartBeat() + " " + Arrays.toString(responsePacket.getData()));
@@ -125,54 +115,73 @@ public class PxSocketClient {
 					}.execute();
 				}
 			});
+			//发送代理
 			this.localSocketClient.registerSocketClientSendingDelegate(new SocketClientSendingDelegate() {
 
 				@Override
 				public void onSendPacketBegin(SocketClient client, SocketPacket packet) {
-					Log.e("onSend", "SocketClient: onSendPacketBegin: " + packet.hashCode() + "   "
+					Log.e("AndroidSocket", "SocketClient: onSendPacketBegin: " + packet.hashCode() + "   "
 							+ Arrays.toString(packet.getData()));
 				}
 
 				@Override
 				public void onSendPacketCancel(SocketClient client, SocketPacket packet) {
-					Log.e("onSend", "SocketClient: onSendPacketCancel: " + packet.hashCode());
+					Log.e("AndroidSocket", "SocketClient: onSendPacketCancel: " + packet.hashCode());
 				}
 
 				@Override
 				public void onSendingPacketInProgress(SocketClient client, SocketPacket packet, float progress,
 						int sendedLength) {
-					Log.e("onSend", "SocketClient: onSendingPacketInProgress: " + packet.hashCode() + " : "
-							+ progress + " : " + sendedLength);
+//					Log.e("AndroidSocket", "SocketClient: onSendingPacketInProgress: " + packet.hashCode() + " : "
+//							+ progress + " : " + sendedLength);
 				}
 
 				@Override
 				public void onSendPacketEnd(SocketClient client, SocketPacket packet) {
-					Log.e("onSend", "SocketClient: onSendPacketEnd: " + packet.hashCode());
+					Log.e("AndroidSocket", "SocketClient: onSendPacketEnd: " + packet.hashCode());
 				}
 			});
+			//接收代理
 			this.localSocketClient.registerSocketClientReceiveDelegate(new SocketClientReceivingDelegate() {
 				@Override
 				public void onReceivePacketBegin(SocketClient client, SocketResponsePacket packet) {
-					Log.e("onReceive", "SocketClient: onReceivePacketBegin: " + packet.hashCode());
+					Log.e("AndroidSocket", "SocketClient: onReceivePacketBegin: " + packet.hashCode());
 				}
 
 				@Override
 				public void onReceivePacketEnd(SocketClient client, SocketResponsePacket packet) {
-					Log.e("onReceive", "SocketClient: onReceivePacketEnd: " + packet.hashCode());
+					Log.e("AndroidSocket", "SocketClient: onReceivePacketEnd: " + packet.hashCode());
 				}
 
 				@Override
 				public void onReceivePacketCancel(SocketClient client, SocketResponsePacket packet) {
-					Log.e("onReceive", "SocketClient: onReceivePacketCancel: " + packet.hashCode());
+					Log.e("AndroidSocket", "SocketClient: onReceivePacketCancel: " + packet.hashCode());
 				}
 
 				@Override
 				public void onReceivingPacketInProgress(SocketClient client, SocketResponsePacket packet,
 						float progress, int receivedLength) {
-					Log.e("onReceive", "SocketClient: onReceivingPacketInProgress: " + packet.hashCode() + " : "
+					Log.e("AndroidSocket", "SocketClient: onReceivingPacketInProgress: " + packet.hashCode() + " : "
 							+ progress + " : " + receivedLength);
 				}
 			});
+		}
+	}
+
+	private SocketClient localSocketClient = null;
+
+	/* Public Methods */
+	public void connect(String ip,String port) {
+		// 设置远程连接端口
+		localSocketClient.getAddress().setRemoteIP(ip); // 远程端IP地址
+		localSocketClient.getAddress().setRemotePort(port); // 远程端端口号
+		localSocketClient.getAddress().setConnectionTimeout(15 * 1000); // 连接超时时长，单位毫秒
+		localSocketClient.connect();
+	}
+	
+	public void sendDataSever(String msg){
+		if (localSocketClient != null) {
+			localSocketClient.sendString(msg);
 		}
 	}
 	
@@ -180,15 +189,13 @@ public class PxSocketClient {
         /**
          * 设置自动发送的心跳包信息
          */
-    	//TODO 修改自动发送的心跳内容
-        socketClient.getHeartBeatHelper().setDefaultSendData(CharsetUtil.stringToData("HeartBeat", CharsetUtil.UTF_8));
-
+        socketClient.getHeartBeatHelper().setDefaultSendData(CharsetUtil.stringToData("{\"code\":\"1\",\"poxiaoId\":\"201611180934568305x0\"}", CharsetUtil.UTF_8));
         /**
          * 设置远程端发送到本地的心跳包信息内容，用于判断接收到的数据包是否是心跳包
          * 通过{@link SocketResponsePacket#isHeartBeat()} 查看数据包是否是心跳包
          */
-        socketClient.getHeartBeatHelper().setDefaultReceiveData(CharsetUtil.stringToData("HeartBeat", CharsetUtil.UTF_8));
-        socketClient.getHeartBeatHelper().setHeartBeatInterval(10 * 1000); // 设置自动发送心跳包的间隔时长，单位毫秒
+        socketClient.getHeartBeatHelper().setDefaultReceiveData(CharsetUtil.stringToData("{\"code\":\"2\",\"poxiaoId\":\"201611180934568305x0\"}", CharsetUtil.UTF_8));
+        socketClient.getHeartBeatHelper().setHeartBeatInterval(5 * 1000); // 设置自动发送心跳包的间隔时长，单位毫秒
         socketClient.getHeartBeatHelper().setSendHeartBeatEnabled(true); // 设置允许自动发送心跳包，此值默认为false
     }
 	
@@ -225,24 +232,6 @@ public class PxSocketClient {
 	        });
 
 	        /**
-	         * 根据连接双方协议设置自动发送的包头数据
-	         * 每次发送数据包（包括心跳包）都会在发送包内容前自动发送此包头
-	         *
-	         * 若无需包头可删除此行
-	         */
-	        socketClient.getSocketPacketHelper().setSendHeaderData(CharsetUtil.stringToData("SocketClient:", CharsetUtil.UTF_8));
-
-	        /**
-	         * 根据连接双方协议设置自动发送的包尾数据
-	         * 每次发送数据包（包括心跳包）都会在发送包内容后自动发送此包尾
-	         *
-	         * 若无需包尾可删除此行
-	         * 注意：
-	         * 使用{@link com.vilyever.socketclient.helper.SocketPacketHelper.ReadStrategy.AutoReadByLength}时不依赖包尾读取数据
-	         */
-	        socketClient.getSocketPacketHelper().setSendTrailerData(new byte[]{0x13, 0x10});
-
-	        /**
 	         * 设置分段发送数据长度
 	         * 即在发送指定长度后通过 {@link SocketClientSendingDelegate#onSendingPacketInProgress(SocketClient, SocketPacket, float, int)}回调当前发送进度
 	         * 注意：回调过于频繁可能导致设置UI过于频繁从而导致主线程卡顿
@@ -267,7 +256,7 @@ public class PxSocketClient {
 	        /**
 	         * 设置读取策略为自动读取指定长度
 	         */
-	        socketClient.getSocketPacketHelper().setReadStrategy(SocketPacketHelper.ReadStrategy.AutoReadByLength);
+	        socketClient.getSocketPacketHelper().setReadStrategy(SocketPacketHelper.ReadStrategy.AutoReadToTrailer);
 
 	        /**
 	         * 设置包长度转换器
@@ -299,29 +288,12 @@ public class PxSocketClient {
 	        });
 
 	        /**
-	         * 根据连接双方协议设置的包头数据
-	         * 每次接收数据包（包括心跳包）都会先接收此包头
-	         *
-	         * 若无需包头可删除此行
-	         */
-	        socketClient.getSocketPacketHelper().setReceiveHeaderData(CharsetUtil.stringToData("SocketClient:", CharsetUtil.UTF_8));
-
-	        /**
-	         * 根据连接双方协议设置的包尾数据
-	         *
-	         * 若无需包尾可删除此行
-	         * 注意：
-	         * 使用{@link com.vilyever.socketclient.helper.SocketPacketHelper.ReadStrategy.AutoReadByLength}时不依赖包尾读取数据
-	         */
-	        socketClient.getSocketPacketHelper().setReceiveTrailerData(new byte[]{0x13, 0x10});
-
-	        /**
 	         * 设置接收超时时长
 	         * 在指定时长内没有数据到达本地自动断开
 	         *
 	         * 若无需限制接收时长可删除此二行
 	         */
-	        socketClient.getSocketPacketHelper().setReceiveTimeout(120 * 1000); // 设置接收超时时长，单位毫秒
+	        socketClient.getSocketPacketHelper().setReceiveTimeout(30 * 1000); // 设置接收超时时长，单位毫秒
 	        socketClient.getSocketPacketHelper().setReceiveTimeoutEnabled(true); // 设置允许使用接收超时时长，此值默认为false
 	    }
 

@@ -11,12 +11,11 @@
 #include "json/document.h"
 #include "json/stringbuffer.h"
 #include "json/writer.h"
-#define JAVA_SRC getJniPath()
 
 CallAndroidSocket* CallAndroidSocket::_instance = 0;
 
 CallAndroidSocket::CallAndroidSocket(){
-    _jniPath = "org/cocos2dx/cpp/payment";
+    _jniPath = "org/cocos2dx/cpp/network";
 }
 CallAndroidSocket* CallAndroidSocket::getInstance(){
     if(_instance == 0){
@@ -30,18 +29,30 @@ const char*  CallAndroidSocket::getSocketJniPath()
     return _jniPath.c_str();
 }
 
-void CallAndroidSocket::requestEvent(std::string poxiaoId,std::string payId){
-    GAMEDATA::getInstance()->setIsInPay(true);
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("mahjong_start_pay");
+bool CallAndroidSocket::connectSocket(std::string host,std::string port){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     JniMethodInfo methodInfo;
-    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
-    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"requestEvent","(Ljava/lang/String;Ljava/lang/String;)V");
-    jstring poxiao_id = JniHelper::getEnv()->NewStringUTF(poxiaoId.c_str());
-    jstring pay_point = JniHelper::getEnv()->NewStringUTF(payId.c_str());;
+    auto path  = String::createWithFormat("%s%s",getSocketJniPath(),"/AndroidSocketJni");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"connectSocket","(Ljava/lang/String;Ljava/lang/String;)V");
+    jstring hostIP = JniHelper::getEnv()->NewStringUTF(host.c_str());
+    jstring socketport = JniHelper::getEnv()->NewStringUTF(port.c_str());;
     if(isHave){
         jobject jobj;
-        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,poxiao_id,pay_point);
+        return JniHelper::getEnv()->CallStaticBooleanMethod(methodInfo.classID,methodInfo.methodID,hostIP,socketport);
+    }
+#endif
+    return false;
+}
+
+void CallAndroidSocket::sendDataSever(std::string data){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path  = String::createWithFormat("%s%s",getSocketJniPath(),"/AndroidSocketJni");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"sendDataSever","(Ljava/lang/String;)V");
+    jstring msg = JniHelper::getEnv()->NewStringUTF(data.c_str());
+    if(isHave){
+        jobject jobj;
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,msg);
     }
 #endif
 }
