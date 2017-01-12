@@ -3998,7 +3998,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2225"
-            endingLineNumber = "2225">
+            endingLineNumber = "2225"
+            landmarkName = "MsgHandler::handleGamePayType(std::string msg)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

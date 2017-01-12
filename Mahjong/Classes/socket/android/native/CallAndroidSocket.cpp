@@ -38,10 +38,10 @@ bool CallAndroidSocket::connectSocket(std::string host,std::string port){
     jstring socketport = JniHelper::getEnv()->NewStringUTF(port.c_str());;
     if(isHave){
         jobject jobj;
-        return JniHelper::getEnv()->CallStaticBooleanMethod(methodInfo.classID,methodInfo.methodID,hostIP,socketport);
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,hostIP,socketport);
     }
 #endif
-    return false;
+    return true;
 }
 
 void CallAndroidSocket::sendDataSever(std::string data){

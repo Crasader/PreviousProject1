@@ -17,8 +17,7 @@ PxSocketManage::PxSocketManage() {
 
 
 bool PxSocketManage::connectSocket(std::string host,int port){
-    CallAndroidSocket::getInstance()->connectSocket(host, StringUtils::format("%d",port));
-    return false;
+   return CallAndroidSocket::getInstance()->connectSocket(host, StringUtils::format("%d",port));
 }
 
 
