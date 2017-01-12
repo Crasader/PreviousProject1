@@ -5,6 +5,7 @@
 #include <android/log.h>
 #include "../../../Classes/payment/android/CallAndroidMethod.h"
 #include "../../../Classes/payment/android/MahjongPayHandler.h"
+#include "../../../Classes/socket/android/native/SocketDataBack.h"
 
 #define  LOG_TAG    "main"
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
@@ -57,3 +58,10 @@ Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loginThirdPlatform(JNIEnv* en
 	MahjongPayHandler::getInstance()->loginThirdPlatform(newOPenId,newUrl,newSex,newNickName,newHsman,newHstype,newImsi,newImei,newVersion);
 }
 
+extern "C" JNIEXPORT void JNICALL
+Java_org_cocos2dx_cpp_network_JniSocketCallback_dataRecieve(JNIEnv* env, jclass jcl, jstring data)
+{
+	char* msg;
+	msg = (char*)env->GetStringUTFChars(data,0);
+	SocketDataBack::getInstance()->dealDataCallBack(msg);
+}

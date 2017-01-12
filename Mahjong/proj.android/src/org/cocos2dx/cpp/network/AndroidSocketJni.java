@@ -5,7 +5,7 @@ import android.util.Log;
 public class AndroidSocketJni {
 	// 连接服务器
 	public static void connectSocket(String ip, String port) {
-		Log.e("AndroidSocket", "Socket连接服务器");
+		Log.i("AndroidSocket", "Socket连接服务器");
 		PxSocketClient.getInstance().connect(ip, port);
 	}
 
@@ -13,7 +13,8 @@ public class AndroidSocketJni {
 		PxSocketClient.getInstance().sendDataSever(msg);
 	}
 	
-	public static void startHeartBeat(String sendHeart,String recieveHeart){	
+	public static void startHeartBeat(String sendHeart,String recieveHeart){
+		Log.i("AndroidSocket", "Socket心跳开启");
 		PxSocketClient.getInstance().startHeartBeat(sendHeart, recieveHeart);
 	}
 }

@@ -6,6 +6,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.tbu.androidtools.Debug;
+
 /**
  * SocketInputReader
  * AndroidSocketClient <com.vilyever.socketclient.util>
@@ -117,7 +119,6 @@ public class SocketInputReader extends Reader {
                 for (int i = 0; i < resultLength; i++) {
                     result[i] = iterator.next();
                 }
-
                 return result;
             }
             catch (IOException e) {

@@ -470,7 +470,6 @@ void MsgHandler::loginResp(std::string msg){
     
     const rapidjson::Value &result = _mDoc["result"];
     if (result.GetInt() == 1){
-        
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
         const rapidjson::Value &nickname = _mDoc["nickname"];

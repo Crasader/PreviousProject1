@@ -290,6 +290,8 @@
 		D294FE201D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
 		D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D299F8C91E25BFDC00D10B0D /* CallAndroidSocket.cpp */; };
 		D299F8CC1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D299F8C91E25BFDC00D10B0D /* CallAndroidSocket.cpp */; };
+		D299F8D81E27640000D10B0D /* SocketDataBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D299F8D61E27640000D10B0D /* SocketDataBack.cpp */; };
+		D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D299F8D61E27640000D10B0D /* SocketDataBack.cpp */; };
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
 		D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
 		D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
@@ -625,6 +627,8 @@
 		D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		D299F8C91E25BFDC00D10B0D /* CallAndroidSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallAndroidSocket.cpp; sourceTree = "<group>"; };
 		D299F8CA1E25BFDC00D10B0D /* CallAndroidSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CallAndroidSocket.hpp; sourceTree = "<group>"; };
+		D299F8D61E27640000D10B0D /* SocketDataBack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketDataBack.cpp; sourceTree = "<group>"; };
+		D299F8D71E27640000D10B0D /* SocketDataBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketDataBack.h; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManage.cpp; sourceTree = "<group>"; };
 		D2A86CE71E01286C00B67F86 /* NetworkManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
@@ -1468,6 +1472,8 @@
 			children = (
 				D299F8C91E25BFDC00D10B0D /* CallAndroidSocket.cpp */,
 				D299F8CA1E25BFDC00D10B0D /* CallAndroidSocket.hpp */,
+				D299F8D61E27640000D10B0D /* SocketDataBack.cpp */,
+				D299F8D71E27640000D10B0D /* SocketDataBack.h */,
 			);
 			path = native;
 			sourceTree = "<group>";
@@ -1820,6 +1826,7 @@
 				D267792B1DF00698003CE73F /* LequanExchangeRecord.cpp in Sources */,
 				D26778E31DF00698003CE73F /* FriendRoom.cpp in Sources */,
 				D267791D1DF00698003CE73F /* FangkaNotEnoughDialog.cpp in Sources */,
+				D299F8D81E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D26778BD1DF00697003CE73F /* FaceChatLayer.cpp in Sources */,
 				D26778B31DF00697003CE73F /* OutFogAnim.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -1930,6 +1937,7 @@
 				D26778AC1DF00697003CE73F /* DealJongAnim.cpp in Sources */,
 				D267791A1DF00698003CE73F /* ChargeFangka.cpp in Sources */,
 				D26778D01DF00697003CE73F /* DailyPride.cpp in Sources */,
+				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D26778B81DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,

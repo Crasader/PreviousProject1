@@ -36,9 +36,10 @@ public class PxSocketClient {
 
 	public void sendDataSever(String msg) {
 		if (localSocketClient != null) {
-			Log.e("AndroidSocket", "向服务端发送数据:" + msg);
+			Log.i("AndroidSocket", "向服务端发送数据:" + msg);
 			localSocketClient.sendData(CharsetUtil.stringToData(msg, CharsetUtil.UTF_8));
-			localSocketClient.readDataToData(CharsetUtil.stringToData("\r\n", CharsetUtil.UTF_8), true);
+
+//			localSocketClient.readDataToData(CharsetUtil.stringToData("\r\n", CharsetUtil.UTF_8), true);
 		}
 	}
 	
@@ -50,7 +51,8 @@ public class PxSocketClient {
 		if (localSocketClient == null) {
 			localSocketClient = new SocketClient();
 			// 设置读取规则
-			localSocketClient.getSocketPacketHelper().setReadStrategy(SocketPacketHelper.ReadStrategy.Manually);
+			localSocketClient.getSocketPacketHelper().setReadStrategy(SocketPacketHelper.ReadStrategy.AutoReadToTrailer);
+			localSocketClient.getSocketPacketHelper().setReceiveTrailerData(CharsetUtil.stringToData("\r\n", CharsetUtil.UTF_8));
 			// 设置远程连接端口
 			localSocketClient.getAddress().setRemoteIP(ip); // 远程端IP地址
 			localSocketClient.getAddress().setRemotePort(port); // 远程端端口号
@@ -63,12 +65,12 @@ public class PxSocketClient {
 			localSocketClient.registerSocketClientDelegate(new SocketClientDelegate() {
 				@Override
 				public void onConnected(SocketClient client) {
-					Log.e("AndroidSocket", "PxSocketClient: onConnected");
+					Log.i("AndroidSocket", "PxSocketClient: onConnected");
 				}
 
 				@Override
 				public void onDisconnected(final SocketClient client) {
-					Log.e("AndroidSocket", "PxSocketClient: onDisconnected");
+					Log.i("AndroidSocket", "PxSocketClient: onDisconnected");
 					new AsyncTask<Void, Void, Void>() {
 						@Override
 						protected Void doInBackground(Void... params) {
@@ -93,39 +95,40 @@ public class PxSocketClient {
 
 				@Override
 				public void onResponse(final SocketClient client, @NonNull SocketResponsePacket responsePacket) {
-					Log.e("AndroidSocket","PxSocketClient: onResponse: " + responsePacket.getMessage());
-					
+					Log.i("AndroidSocket","PxSocketClient: onResponse: " + responsePacket.getMessage());
+					if(null!=responsePacket.getMessage())
+						JniSocketCallback.dataRecieve(responsePacket.getMessage());
 					if (responsePacket.isHeartBeat()) {
 						return;
 					}
-					new AsyncTask<Void, Void, Void>() {
-						@Override
-						protected Void doInBackground(Void... params) {
-							try {
-								Thread.sleep(3 * 1000);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-
-							client.sendString("client on " + System.currentTimeMillis());
-
-							try {
-								Thread.sleep(3 * 1000);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-
-							client.disconnect();
-
-							return null;
-						}
-
-						@Override
-						protected void onPostExecute(Void aVoid) {
-							super.onPostExecute(aVoid);
-
-						}
-					}.execute();
+//					new AsyncTask<Void, Void, Void>() {
+//						@Override
+//						protected Void doInBackground(Void... params) {
+//							try {
+//								Thread.sleep(3 * 1000);
+//							} catch (InterruptedException e) {
+//								e.printStackTrace();
+//							}
+//
+//							client.sendString("client on " + System.currentTimeMillis());
+//
+//							try {
+//								Thread.sleep(3 * 1000);
+//							} catch (InterruptedException e) {
+//								e.printStackTrace();
+//							}
+//							Log.e("AndroidSocket", "Socket连接断开 005");
+//							client.disconnect();
+//
+//							return null;
+//						}
+//
+//						@Override
+//						protected void onPostExecute(Void aVoid) {
+//							super.onPostExecute(aVoid);
+//
+//						}
+//					}.execute();
 				}
 			});
 		}
@@ -145,7 +148,7 @@ public class PxSocketClient {
 		socketClient.getHeartBeatHelper()
 				.setDefaultReceiveData(CharsetUtil.stringToData(heartBeatRecive, CharsetUtil.UTF_8));
 		socketClient.getHeartBeatHelper().setHeartBeatInterval(5 * 1000); // 设置自动发送心跳包的间隔时长，单位毫秒
-		socketClient.getHeartBeatHelper().setSendHeartBeatEnabled(true); // 设置允许自动发送心跳包，此值默认为false
+		socketClient.getHeartBeatHelper().setSendHeartBeatEnabled(false); // 设置允许自动发送心跳包，此值默认为false
 	}
 
 }

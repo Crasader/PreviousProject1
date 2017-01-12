@@ -45,6 +45,7 @@ bool CallAndroidSocket::connectSocket(std::string host,std::string port){
 }
 
 void CallAndroidSocket::sendDataSever(std::string data){
+    log("send data = %s",data.c_str());
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     JniMethodInfo methodInfo;
     auto path  = String::createWithFormat("%s%s",getSocketJniPath(),"/AndroidSocketJni");
