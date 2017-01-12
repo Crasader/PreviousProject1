@@ -55,7 +55,7 @@ void LobbyScene::signUpdate(float dt){
             if(NetworkManage::getInstance()->reConnectSocket()){
                 log("重新连接成功");
                 net->removeFromParent();
-                NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+                NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand(),CommandManage::getInstance()->getHeartRespCommmand());
             }else{
                 net->removeFromParent();
                 HintDialog* dia = HintDialog::create("无法连接网络,请检查当前网络环境", NULL);

@@ -34,6 +34,13 @@ std::string CommandManage::getHeartCommmand(){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getHeartRespCommmand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HEARTBEAT_RETURN)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 
 std::string CommandManage::getGiveUpCpgCommmand(){
     //{code:2008, poxiaoId : poxiaoId, seatId : seatId}

@@ -197,11 +197,11 @@ void MahjongView::update(float dt){
         addChild(net,200);
         schedule([=](float dt){
             NetworkManage::getInstance()->reConnectSocket();
-            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand(),CommandManage::getInstance()->getHeartRespCommmand());
             if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
             }else{
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), "APPLE", "iphone", "11111111111", "11111111111", "2"));
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), "APPLE", "iphone", "11111111111", "11111111111", "0"));
             }
         }, 0, 0, 4.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
@@ -1583,7 +1583,7 @@ void MahjongView::addPlayerOffLineListener(){
 
 void MahjongView::addPlayerResumeListener(){
     playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
-        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand(),CommandManage::getInstance()->getHeartRespCommmand());
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });

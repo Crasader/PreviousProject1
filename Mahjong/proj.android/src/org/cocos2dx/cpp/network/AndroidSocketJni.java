@@ -10,7 +10,10 @@ public class AndroidSocketJni {
 	}
 
 	public static void sendDataSever(String msg) {
-		Log.e("AndroidSocket", "向服务端发送数据:" + msg);
 		PxSocketClient.getInstance().sendDataSever(msg);
+	}
+	
+	public static void startHeartBeat(String sendHeart,String recieveHeart){	
+		PxSocketClient.getInstance().startHeartBeat(sendHeart, recieveHeart);
 	}
 }

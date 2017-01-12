@@ -60,7 +60,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = LoadResource::createScene();
     // run
     director->runWithScene(scene);
-    
     return true;
 }
 

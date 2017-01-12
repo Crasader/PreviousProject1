@@ -47,6 +47,7 @@ void LoadResource::showHealthLayer(){
     auto health = Sprite::create("mainlogin/health.png");
     health->setPosition(640,360);
     addChild(health);
+    NetworkManage::getInstance();//android 提前初始化连接
     health->runAction(Sequence::create(DelayTime::create(2.0f),CallFunc::create([=](){
         Director::getInstance()->replaceScene(TransitionFade::create(1.5f, SplashScene::createScene()));
     }),NULL));

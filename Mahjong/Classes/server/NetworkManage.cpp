@@ -22,8 +22,8 @@ void NetworkManage::sendMsg(std::string code) {
     }
 }
 
-void NetworkManage::startSocketBeat(std::string msg){
-    GameSocketManage::getInstance()->startSocketBeat(msg);
+void NetworkManage::startSocketBeat(std::string send,std::string recieve){
+    GameSocketManage::getInstance()->startSocketBeat(send,recieve);
 }
 
 void NetworkManage::receiveMsg(std::string msg){

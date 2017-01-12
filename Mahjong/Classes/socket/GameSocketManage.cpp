@@ -12,11 +12,11 @@
 #include "server/NetworkManage.h"
 
 
-const char* ip = "183.129.206.54";//线网服务器地址
+//const char* ip = "183.129.206.54";//线网服务器地址
 //const int port = 9999;//端口号
-const int port = 8080;//测试端口号
-//const char* ip = "172.23.1.251";//测试地址
-//const int port = 9999;//端口号
+//const int port = 8080;//测试端口号
+const char* ip = "172.23.1.251";//测试地址
+const int port = 9999;//端口号
 
 
 GameSocketManage* GameSocketManage::_instance = NULL;
@@ -42,11 +42,11 @@ bool GameSocketManage::socketConnect(){
 #endif
 }
 
-void GameSocketManage::startSocketBeat(std::string msg){
+void GameSocketManage::startSocketBeat(std::string send,std::string recieve){
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-    CocoaSocketManage::getInstance()->startScoketBeat(msg);
+    CocoaSocketManage::getInstance()->startScoketBeat(send);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    PxSocketManage::getInstance()->startScoketBeat(msg);
+    PxSocketManage::getInstance()->startScoketBeat(send,recieve);
 #endif
 }
 

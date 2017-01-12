@@ -9,7 +9,7 @@ class PxSocketManage : public Node{
 public:
 	static PxSocketManage* getInstance();
     bool connectSocket(std::string host, int port);
-    void startScoketBeat(std::string msg);
+    void startScoketBeat(std::string send,std::string recieve);
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);
     void resetBeatCount();

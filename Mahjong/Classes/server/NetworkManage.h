@@ -8,7 +8,7 @@ USING_NS_CC;
 class NetworkManage : public Node{
 public:
     static NetworkManage* getInstance();
-    void startSocketBeat(std::string msg);
+    void startSocketBeat(std::string send,std::string recieve);
     void sendMsg(std::string code);
     void receiveMsg(std::string msg);
     void resetBeatCount();

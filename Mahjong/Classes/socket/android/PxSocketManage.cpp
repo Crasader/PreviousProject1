@@ -17,12 +17,13 @@ PxSocketManage::PxSocketManage() {
 
 
 bool PxSocketManage::connectSocket(std::string host,int port){
+   beatCount =0;
    return CallAndroidSocket::getInstance()->connectSocket(host, StringUtils::format("%d",port));
 }
 
 
-void PxSocketManage::startScoketBeat(std::string msg){
-    log("开启心跳");
+void PxSocketManage::startScoketBeat(std::string send,std::string recieve){
+    CallAndroidSocket::getInstance()->startHeatBeat(send, recieve);
 }
 
 

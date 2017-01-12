@@ -8,6 +8,7 @@ class CommandManage{
 public:
 	static CommandManage* getInstance();
 	std::string getHeartCommmand();//心跳
+    std::string getHeartRespCommmand();//心跳回复
 	std::string getGiveUpCpgCommmand();//放弃吃碰杠
 	std::string getReadyCommmand();//准备
 	std::string getPlayPokerCommmand(int poker);//打牌

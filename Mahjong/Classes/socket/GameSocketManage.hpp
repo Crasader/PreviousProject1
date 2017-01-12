@@ -15,7 +15,7 @@ class GameSocketManage{
 public:
     static GameSocketManage* getInstance();
     bool socketConnect();
-    void startSocketBeat(std::string msg);
+    void startSocketBeat(std::string send,std::string recieve);
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);
     void resetBeatCount();
