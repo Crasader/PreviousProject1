@@ -134,7 +134,8 @@ public class PxSocketClient {
 	}
 
 	private void setupConstantHeartBeat(SocketClient socketClient, String heartBeatSend, String heartBeatRecive) {
-		Log.e("AndroidSocket", "PxSocketClient: setupConstantHeartBeat");
+		Log.e("AndroidSocket", "PxSocketClient: setupConstantHeartBeat ="+heartBeatSend);
+		Log.e("AndroidSocket", "PxSocketClient: setupConstantHeartBeat ="+heartBeatRecive);
 		/**
 		 * 设置自动发送的心跳包信息
 		 */
@@ -147,7 +148,7 @@ public class PxSocketClient {
 		socketClient.getHeartBeatHelper()
 				.setDefaultReceiveData(CharsetUtil.stringToData(heartBeatRecive, CharsetUtil.UTF_8));
 		socketClient.getHeartBeatHelper().setHeartBeatInterval(5 * 1000); // 设置自动发送心跳包的间隔时长，单位毫秒
-		socketClient.getHeartBeatHelper().setSendHeartBeatEnabled(false); // 设置允许自动发送心跳包，此值默认为false
+		socketClient.getHeartBeatHelper().setSendHeartBeatEnabled(true); // 设置允许自动发送心跳包，此值默认为false
 	}
 
 }

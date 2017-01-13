@@ -993,7 +993,7 @@ public class SocketClient {
 		if (!isConnected()) {
 			return;
 		}
-
+		Log.e("AndroidSocket", "Socket __i__sendHeartBeat");
 		long currentTime = System.currentTimeMillis();
 
 		if (getSocketConfigure().getHeartBeatHelper().isSendHeartBeatEnabled()) {
