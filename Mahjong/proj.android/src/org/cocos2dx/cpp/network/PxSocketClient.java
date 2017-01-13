@@ -38,8 +38,6 @@ public class PxSocketClient {
 		if (localSocketClient != null) {
 			Log.i("AndroidSocket", "向服务端发送数据:" + msg);
 			localSocketClient.sendData(CharsetUtil.stringToData(msg, CharsetUtil.UTF_8));
-
-//			localSocketClient.readDataToData(CharsetUtil.stringToData("\r\n", CharsetUtil.UTF_8), true);
 		}
 	}
 	
@@ -136,6 +134,7 @@ public class PxSocketClient {
 	}
 
 	private void setupConstantHeartBeat(SocketClient socketClient, String heartBeatSend, String heartBeatRecive) {
+		Log.e("AndroidSocket", "PxSocketClient: setupConstantHeartBeat");
 		/**
 		 * 设置自动发送的心跳包信息
 		 */
