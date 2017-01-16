@@ -12,9 +12,4 @@ public class AndroidSocketJni {
 	public static void sendDataSever(String msg) {
 		PxSocketClient.getInstance().sendDataSever(msg);
 	}
-	
-	public static void startHeartBeat(String sendHeart,String recieveHeart){
-		Log.i("AndroidSocket", "Socket心跳开启");
-		PxSocketClient.getInstance().startHeartBeat(sendHeart, recieveHeart);
-	}
 }

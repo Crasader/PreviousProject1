@@ -2,6 +2,8 @@ package com.vilyever.socketclient.helper;
 
 import java.util.Arrays;
 
+import android.util.Log;
+
 /**
  * SocketHeartBeatHelper
  * Created by vilyever on 2016/5/19.
@@ -45,6 +47,8 @@ public class SocketHeartBeatHelper {
         }
 
         if (getDefaultReceiveData() != null) {
+        	Log.e("AndroidSocket", "isReceiveHeartBeatPacket = "+getDefaultReceiveData().length);
+        	Log.e("AndroidSocket", "isReceiveHeartBeatPacket = "+packet.getData().length);
             return packet.isDataEqual(getDefaultReceiveData());
         }
 

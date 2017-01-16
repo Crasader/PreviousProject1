@@ -55,7 +55,6 @@ public class SocketClient {
 
 		getAddress().checkValidation();
 		getSocketPacketHelper().checkValidation();
-
 		getSocketConfigure().setCharsetName(getCharsetName()).setAddress(getAddress())
 				.setHeartBeatHelper(getHeartBeatHelper()).setSocketPacketHelper(getSocketPacketHelper());
 		setState(State.Connecting);
@@ -424,7 +423,7 @@ public class SocketClient {
 		this.socketConfigure = socketConfigure;
 		return this;
 	}
-
+	
 	protected SocketConfigure getSocketConfigure() {
 		if (this.socketConfigure == null) {
 			this.socketConfigure = new SocketConfigure();
@@ -767,7 +766,6 @@ public class SocketClient {
 			getUiHandler().post(new Runnable() {
 				@Override
 				public void run() {
-					Log.e("AndroidSocket", "Socket连接断开 001");
 					self.__i__onDisconnected();
 				}
 			});
@@ -993,9 +991,7 @@ public class SocketClient {
 		if (!isConnected()) {
 			return;
 		}
-		Log.e("AndroidSocket", "Socket __i__sendHeartBeat");
 		long currentTime = System.currentTimeMillis();
-
 		if (getSocketConfigure().getHeartBeatHelper().isSendHeartBeatEnabled()) {
 			if (currentTime - getLastSendHeartBeatMessageTime() >= getSocketConfigure().getHeartBeatHelper()
 					.getHeartBeatInterval()) {
@@ -1007,7 +1003,6 @@ public class SocketClient {
 		if (getSocketConfigure().getSocketPacketHelper().isReceiveTimeoutEnabled()) {
 			if (currentTime - getLastReceiveMessageTime() >= getSocketConfigure().getSocketPacketHelper()
 					.getReceiveTimeout()) {
-				Log.e("AndroidSocket", "Socket连接断开 003");
 				disconnect();
 			}
 		}
@@ -1016,7 +1011,6 @@ public class SocketClient {
 				&& getLastSendMessageTime() != NoSendingTime) {
 			if (currentTime - getLastSendMessageTime() >= getSocketConfigure().getSocketPacketHelper()
 					.getSendTimeout()) {
-				Log.e("AndroidSocket", "Socket连接断开 004");
 				disconnect();
 			}
 		}
@@ -1057,7 +1051,6 @@ public class SocketClient {
 				self.__i__onConnected();
 			} catch (IOException e) {
 				e.printStackTrace();
-				Log.e("AndroidSocket", "Socket连接断开 006");
 				self.disconnect();
 			}
 		}
@@ -1123,7 +1116,6 @@ public class SocketClient {
 			}
 
 			self.setDisconnectionThread(null);
-			Log.e("AndroidSocket", "Socket连接断开 002");
 			self.__i__onDisconnected();
 		}
 	}
@@ -1369,7 +1361,7 @@ public class SocketClient {
 					} else if (self.getSocketConfigure().getSocketPacketHelper()
 							.getReadStrategy() == SocketPacketHelper.ReadStrategy.AutoReadToTrailer) {
 						if (trailerDataLength > 0) {
-							byte[] data = self.getSocketInputReader().readToData(trailerData, false);
+							byte[] data = self.getSocketInputReader().readToData(trailerData, true);
 							self.setLastReceiveMessageTime(System.currentTimeMillis());
 							packet.setData(data);
 							packet.setTrailerData(trailerData);
@@ -1382,7 +1374,6 @@ public class SocketClient {
 
 					packet.setHeartBeat(
 							self.getSocketConfigure().getHeartBeatHelper().isReceiveHeartBeatPacket(packet));
-
 					if (self.getSocketConfigure().getCharsetName() != null) {
 						packet.buildStringWithCharsetName(self.getSocketConfigure().getCharsetName());
 					}
@@ -1392,7 +1383,7 @@ public class SocketClient {
 					self.setReceivingResponsePacket(null);
 				}
 			} catch (Exception e) {
-				Log.e("AndroidSocket", "Socket连接断开 007");
+				Log.e("AndroidSocket", "Socket连接断开 000");
 				self.disconnect();
 
 				if (self.getReceivingResponsePacket() != null) {

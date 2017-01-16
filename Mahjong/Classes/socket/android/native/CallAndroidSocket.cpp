@@ -57,17 +57,3 @@ void CallAndroidSocket::sendDataSever(std::string data){
     }
 #endif
 }
-
-void CallAndroidSocket::startHeatBeat(std::string send,std::string recieve){
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo methodInfo;
-    auto path  = String::createWithFormat("%s%s",getSocketJniPath(),"/AndroidSocketJni");
-    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"startHeartBeat","(Ljava/lang/String;Ljava/lang/String;)V");
-    jstring hostIP = JniHelper::getEnv()->NewStringUTF(send.c_str());
-    jstring socketport = JniHelper::getEnv()->NewStringUTF(recieve.c_str());;
-    if(isHave){
-        jobject jobj;
-        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,hostIP,socketport);
-    }
-#endif
-}

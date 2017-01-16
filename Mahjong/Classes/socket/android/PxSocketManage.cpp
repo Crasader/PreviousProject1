@@ -23,7 +23,7 @@ bool PxSocketManage::connectSocket(std::string host,int port){
 
 
 void PxSocketManage::startScoketBeat(std::string send,std::string recieve){
-    CallAndroidSocket::getInstance()->startHeatBeat(send, recieve);
+   // TODO 
 }
 
 

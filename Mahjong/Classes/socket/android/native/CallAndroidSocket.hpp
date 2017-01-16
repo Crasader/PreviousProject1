@@ -18,7 +18,6 @@ public:
     static CallAndroidSocket* getInstance();
     bool connectSocket(std::string host,std::string prot);
     void sendDataSever(std::string data);
-    void startHeatBeat(std::string send,std::string recieve);
 private:
     std::string _jniPath;
     const char* getSocketJniPath();
