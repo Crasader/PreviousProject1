@@ -80,7 +80,6 @@ public class PxSocketClient {
 								e.printStackTrace();
 							}
 							disConnectSocket();
-//							client.connect();
 							return null;
 						}
 
