@@ -42,11 +42,11 @@ bool GameSocketManage::socketConnect(){
 #endif
 }
 
-void GameSocketManage::startSocketBeat(std::string send,std::string recieve){
+void GameSocketManage::startSocketBeat(std::string send){
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     CocoaSocketManage::getInstance()->startScoketBeat(send);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    PxSocketManage::getInstance()->startScoketBeat(send,recieve);
+    PxSocketManage::getInstance()->startScoketBeat(send);
 #endif
 }
 

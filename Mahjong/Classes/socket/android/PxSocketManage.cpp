@@ -4,6 +4,8 @@
 
 PxSocketManage* PxSocketManage::_instance = NULL;
 
+std::string PxSocketManage::heartMsg = "";
+
 PxSocketManage* PxSocketManage::getInstance() {
     if (NULL == _instance) {
         _instance = new PxSocketManage();
@@ -22,10 +24,15 @@ bool PxSocketManage::connectSocket(std::string host,int port){
 }
 
 
-void PxSocketManage::startScoketBeat(std::string send,std::string recieve){
-   // TODO 
+void PxSocketManage::startScoketBeat(std::string msg){
+    heartMsg = msg;
+    std::thread recvThread = std::thread(&PxSocketManage::sendHeartBeat, this);
+    recvThread.detach();
 }
 
+void PxSocketManage::sendHeartBeat(){
+    sendScoketData(heartMsg);
+}
 
 void PxSocketManage::sendScoketData(std::string msg){
     if(msg.size()>2)

@@ -9,7 +9,7 @@ class PxSocketManage : public Node{
 public:
 	static PxSocketManage* getInstance();
     bool connectSocket(std::string host, int port);
-    void startScoketBeat(std::string send,std::string recieve);
+    void startScoketBeat(std::string send);
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);
     void resetBeatCount();
@@ -17,6 +17,9 @@ public:
 private:
 	PxSocketManage();
     int beatCount;
+    static std::string heartMsg;
+    const int kBeatLimit = 3;
+    void sendHeartBeat();
 	static PxSocketManage* _instance;
 };
 #endif

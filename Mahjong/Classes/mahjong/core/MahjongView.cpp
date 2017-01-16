@@ -197,7 +197,7 @@ void MahjongView::update(float dt){
         addChild(net,200);
         schedule([=](float dt){
             NetworkManage::getInstance()->reConnectSocket();
-            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand(),CommandManage::getInstance()->getHeartRespCommmand());
+             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
             }else{
@@ -1583,7 +1583,7 @@ void MahjongView::addPlayerOffLineListener(){
 
 void MahjongView::addPlayerResumeListener(){
     playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
-        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand(),CommandManage::getInstance()->getHeartRespCommmand());
+        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         GAMEDATA::getInstance()->setIsRecover(true);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
