@@ -42,7 +42,7 @@ public:
     void actionQi();
     void eraseHeroJong(Jong* jong);
     void removePlayedIcon();
-    void drawPlayedJong(int type);
+    void drawPlayedJong(int type);//绘制出牌动作
     
     void recoverHua(int hua);
     void recoverPlayed(std::string played);

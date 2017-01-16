@@ -20,10 +20,6 @@ void cocos_android_app_init(JNIEnv* env) {
 extern "C" JNIEXPORT void JNICALL
 Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_eventCallBack(JNIEnv* env, jclass jcl, jint eventId,jint result)
 {
-//		jint *carr;
-//		carr = env->GetIntArrayElements(propIds, false);
-//		jint *carr1;
-//		carr1 = env->GetIntArrayElements(propNums, false);
 	MahjongPayHandler::getInstance()->dealEventCallBack(eventId,result);
 }
 
@@ -64,6 +60,8 @@ Java_org_cocos2dx_cpp_network_JniSocketCallback_dataRecieve(JNIEnv* env, jclass 
 	char* msg;
 	msg = (char*)env->GetStringUTFChars(data,0);
 	SocketDataBack::getInstance()->dealDataCallBack(msg);
+	if(NULL != data&&NULL != msg)
+		env->ReleaseStringUTFChars(data, msg);
 }
 
 extern "C" JNIEXPORT void JNICALL

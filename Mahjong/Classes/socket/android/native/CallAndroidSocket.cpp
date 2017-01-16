@@ -39,6 +39,8 @@ bool CallAndroidSocket::connectSocket(std::string host,std::string port){
     if(isHave){
         jobject jobj;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,hostIP,socketport);
+        JniHelper::getEnv()->DeleteLocalRef(hostIP);
+        JniHelper::getEnv()->DeleteLocalRef(socketport);
     }
 #endif
     return true;
@@ -54,6 +56,7 @@ void CallAndroidSocket::sendDataSever(std::string data){
     if(isHave){
         jobject jobj;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,msg);
+        JniHelper::getEnv()->DeleteLocalRef(msg);
     }
 #endif
 }
