@@ -2,6 +2,8 @@
 #define __ODSocketManage_H__
 
 #include "cocos2d.h"
+#include <thread>
+#include <unistd.h>
 USING_NS_CC;
 
 

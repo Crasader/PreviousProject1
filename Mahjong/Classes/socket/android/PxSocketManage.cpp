@@ -31,7 +31,21 @@ void PxSocketManage::startScoketBeat(std::string msg){
 }
 
 void PxSocketManage::sendHeartBeat(){
-    sendScoketData(heartMsg);
+    while (true) {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+        Sleep(5000);
+#else
+        sleep(5);
+#endif
+        if (beatCount >= kBeatLimit) {
+            log("心跳超限,断开连接");
+            disConnectSocket();
+            return;
+        } else {
+            beatCount++;
+        }
+        sendScoketData(heartMsg);
+    }
 }
 
 void PxSocketManage::sendScoketData(std::string msg){
