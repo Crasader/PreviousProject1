@@ -1361,7 +1361,7 @@ public class SocketClient {
 					} else if (self.getSocketConfigure().getSocketPacketHelper()
 							.getReadStrategy() == SocketPacketHelper.ReadStrategy.AutoReadToTrailer) {
 						if (trailerDataLength > 0) {
-							byte[] data = self.getSocketInputReader().readToData(trailerData, true);
+							byte[] data = self.getSocketInputReader().readToData(trailerData,false);
 							self.setLastReceiveMessageTime(System.currentTimeMillis());
 							packet.setData(data);
 							packet.setTrailerData(trailerData);
@@ -1383,7 +1383,6 @@ public class SocketClient {
 					self.setReceivingResponsePacket(null);
 				}
 			} catch (Exception e) {
-				Log.e("AndroidSocket", "Socket连接断开 000");
 				self.disconnect();
 
 				if (self.getReceivingResponsePacket() != null) {

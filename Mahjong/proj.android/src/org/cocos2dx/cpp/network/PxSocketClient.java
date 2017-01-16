@@ -94,36 +94,6 @@ public class PxSocketClient {
 					Log.i("AndroidSocket","PxSocketClient: onResponse: " + responsePacket.getMessage());
 					if(null!=responsePacket.getMessage())
 						JniSocketCallback.dataRecieve(responsePacket.getMessage());
-					if (responsePacket.isHeartBeat()) {
-						return;
-					}
-					new AsyncTask<Void, Void, Void>() {
-						@Override
-						protected Void doInBackground(Void... params) {
-							try {
-								Thread.sleep(3 * 1000);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-
-							client.sendString("client on " + System.currentTimeMillis());
-
-							try {
-								Thread.sleep(3 * 1000);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-							client.disconnect();
-
-							return null;
-						}
-
-						@Override
-						protected void onPostExecute(Void aVoid) {
-							super.onPostExecute(aVoid);
-
-						}
-					}.execute();
 				}
 			});
 		}
