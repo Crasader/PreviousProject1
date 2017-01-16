@@ -15,7 +15,6 @@ public:
     void sendScoketData(std::string msg);
     void receiveScoketData(std::string msg);
     void resetBeatCount();
-    void disConnectSocket();
 private:
 	PxSocketManage();
     int beatCount;

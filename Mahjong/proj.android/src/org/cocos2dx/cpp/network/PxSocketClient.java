@@ -40,7 +40,11 @@ public class PxSocketClient {
 			localSocketClient.sendData(CharsetUtil.stringToData(msg, CharsetUtil.UTF_8));
 		}
 	}
-
+	
+	public void  disConnectSocket(){
+		JniSocketCallback.onDisconnected();
+	}
+	
 	private SocketClient getLocalSocketClient(String ip, String port) {
 		if (localSocketClient == null) {
 			localSocketClient = new SocketClient();
@@ -71,13 +75,12 @@ public class PxSocketClient {
 						@Override
 						protected Void doInBackground(Void... params) {
 							try {
-								Thread.sleep(3 * 1000);
+								Thread.sleep(2 * 1000);
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
-
-							client.connect();
-
+							disConnectSocket();
+//							client.connect();
 							return null;
 						}
 

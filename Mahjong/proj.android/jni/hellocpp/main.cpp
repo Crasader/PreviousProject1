@@ -65,3 +65,9 @@ Java_org_cocos2dx_cpp_network_JniSocketCallback_dataRecieve(JNIEnv* env, jclass 
 	msg = (char*)env->GetStringUTFChars(data,0);
 	SocketDataBack::getInstance()->dealDataCallBack(msg);
 }
+
+extern "C" JNIEXPORT void JNICALL
+Java_org_cocos2dx_cpp_network_JniSocketCallback_onDisconnected(JNIEnv* env, jclass jcl)
+{
+	SocketDataBack::getInstance()->onDisconnected();
+}

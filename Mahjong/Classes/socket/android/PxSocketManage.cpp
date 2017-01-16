@@ -39,7 +39,7 @@ void PxSocketManage::sendHeartBeat(){
 #endif
         if (beatCount >= kBeatLimit) {
             log("心跳超限,断开连接");
-            disConnectSocket();
+            GameSocketManage::getInstance()->disConnectSocket();
             return;
         } else {
             beatCount++;
@@ -59,8 +59,4 @@ void PxSocketManage::receiveScoketData(std::string msg){
 
 void PxSocketManage::resetBeatCount(){
     beatCount =0;
-}
-
-void PxSocketManage::disConnectSocket(){
-    
 }

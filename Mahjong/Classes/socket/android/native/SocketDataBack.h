@@ -18,6 +18,7 @@ class SocketDataBack{
 public:
     static SocketDataBack* getInstance();
     void dealDataCallBack(std::string data);
+    void onDisconnected();
 private:
     SocketDataBack();
     static SocketDataBack* _instance;
