@@ -108,7 +108,7 @@ bool BillDetailInfo::init()
         addChild(playNum);
     }
     
-    tableView = TableView::create(this, Size(650, 360));
+    tableView = TableView::create(this, Size(800, 360));
     tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView->setDirection(ScrollView::Direction::VERTICAL);
     tableView->setPosition(255, 175);
@@ -191,6 +191,14 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             playerNum->setPosition(Vec2(130+i*150, 30));
             cell->addChild(playerNum);
         }
+        MenuItemImage* fengxiang = MenuItemImage::create("bill/fengxiang_1.png", "bill/fengxiang_2.png",
+                                                     CC_CALLBACK_0(BillDetailInfo::shareBill, this));
+        MenuItemImage* fupan = MenuItemImage::create("bill/fupan_1.png", "bill/fupan_2.png",
+                                                      CC_CALLBACK_0(BillDetailInfo::goBack, this));
+        auto fupanMenu = Menu::create(fengxiang,fupan, NULL);
+        fupanMenu->alignItemsHorizontallyWithPadding(0);
+        fupanMenu->setPosition(725, 30);
+        cell->addChild(fupanMenu, 20);
         
     }else{
         
@@ -246,6 +254,16 @@ std::vector<BillContent> BillDetailInfo::sortBillInfo(std::vector<BillContent> c
         }
     }
     return content;
+}
+
+
+void BillDetailInfo::shareFupan(){
+
+}
+
+
+void BillDetailInfo::showFupan(){
+
 }
 
 void BillDetailInfo::shareBill(){
