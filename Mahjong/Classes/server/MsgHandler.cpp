@@ -1556,6 +1556,9 @@ void MsgHandler::billDetailResp(std::string msg){
                     data.detail.push_back(con);
                 }
             }
+            if(temp0.HasMember("recordId")){
+                data.recordId = StringUtils::format("%d",temp0["recordId"].GetInt());
+            }
             detailAll.detail.push_back(data);
         }
         GAMEDATA::getInstance()->setBillInfoDetailAll(detailAll);

@@ -288,6 +288,7 @@ struct BillInfoAll{
 struct BillInfoDetail
 {
     std::vector<BillContent> detail;
+    std::string recordId;
 };
 
 struct BillInfoDetailAll

@@ -192,10 +192,12 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             cell->addChild(playerNum);
         }
         MenuItemImage* fengxiang = MenuItemImage::create("bill/fengxiang_1.png", "bill/fengxiang_2.png",
-                                                     CC_CALLBACK_0(BillDetailInfo::shareBill, this));
+                                                     CC_CALLBACK_1(BillDetailInfo::shareFupan, this));
         MenuItemImage* fupan = MenuItemImage::create("bill/fupan_1.png", "bill/fupan_2.png",
-                                                      CC_CALLBACK_0(BillDetailInfo::goBack, this));
+                                                      CC_CALLBACK_1(BillDetailInfo::showFupan, this));
         auto fupanMenu = Menu::create(fengxiang,fupan, NULL);
+        fupanMenu->setTag(1001);
+        fupanMenu->setName(detail.recordId);
         fupanMenu->alignItemsHorizontallyWithPadding(0);
         fupanMenu->setPosition(725, 30);
         cell->addChild(fupanMenu, 20);
@@ -204,6 +206,9 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         
         if(NULL != cell->getChildByTag(99)){
             ((Label*)(cell->getChildByTag(99)))-> setString(StringUtils::format("%ld",idx+1));
+        }
+        if(NULL != cell->getChildByTag(1001)){
+            ((Menu*)(cell->getChildByTag(1001)))-> setName(detail.recordId);
         }
         for(int i=0;i<conBill.size();i++){
             if(NULL != cell->getChildByTag(100+i)){
@@ -257,13 +262,16 @@ std::vector<BillContent> BillDetailInfo::sortBillInfo(std::vector<BillContent> c
 }
 
 
-void BillDetailInfo::shareFupan(){
-
+void BillDetailInfo::shareFupan(Ref* ref){
+    MenuItemImage* temp = (MenuItemImage*)ref;
+    log("KKKKKKKK=== %s",temp->getParent()->getName().c_str());
 }
 
 
-void BillDetailInfo::showFupan(){
-
+void BillDetailInfo::showFupan(Ref* ref){
+    MenuItemImage* temp = (MenuItemImage*)ref;
+    log("KKKKKKKK=== %s",temp->getParent()->getName().c_str());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFupanInfo(temp->getParent()->getName().c_str()));
 }
 
 void BillDetailInfo::shareBill(){
