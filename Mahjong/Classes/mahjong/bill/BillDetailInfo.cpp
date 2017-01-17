@@ -21,13 +21,13 @@ bool BillDetailInfo::init()
     this->addChild(bg);
     
     
-    auto  dialogBg = Sprite::create("friend/dialog_bg.png");
+    auto  dialogBg = Sprite::create("bill/bill_all_bg.png");
     dialogBg->setPosition(640, 360);
     this->addChild(dialogBg);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(BillDetailInfo::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 655);
+    closeMenu->setPosition(1040, 660);
     addChild(closeMenu);
     
     auto icon = Sprite::create("bill/bill_deetial_title.png");
@@ -35,52 +35,52 @@ bool BillDetailInfo::init()
     addChild(icon);
     
     auto bg3 = Sprite::create("bill/detail_bg.png");
-    bg3->setPosition(640, 335);
+    bg3->setPosition(640, 370);
     this->addChild(bg3);
     
     BillInfoData data = GAMEDATA::getInstance()->getBillInfoData();
     
     Label* date = Label::createWithSystemFont(data.date,"Arial",22);
     date->setAnchorPoint(Vec2::ZERO);
-    date->setColor(Color3B(21,50,91));
-    date->setPosition(400,575);
+    date->setColor(Color3B(93,182,215));
+    date->setPosition(400,585);
     addChild(date);
     
     Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
-    fanghao->setColor(Color3B(21,50,91));
+    fanghao->setColor(Color3B(93,182,215));
     fanghao->setAnchorPoint(Vec2::ZERO);
-    fanghao->setPosition(Vec2(600,575));
+    fanghao->setPosition(Vec2(600,585));
     addChild(fanghao);
     
     
     Label* prID = Label::createWithSystemFont(data.prid,"Arial",22);
-    prID->setColor(Color3B(21,50,91));
+    prID->setColor(Color3B(93,182,215));
     prID->setAnchorPoint(Vec2::ZERO);
-    prID->setPosition(Vec2(650, 575));
+    prID->setPosition(Vec2(650, 585));
     addChild(prID);
     
     Label* ju = Label::createWithSystemFont("局数:","Arial",22);
-    ju->setColor(Color3B(21,50,91));
+    ju->setColor(Color3B(93,182,215));
     ju->setAnchorPoint(Vec2::ZERO);
-    ju->setPosition(Vec2(750, 575));
+    ju->setPosition(Vec2(750, 585));
     addChild(ju);
     
-    Label* jushu = Label::createWithSystemFont(data.atype == "0" ? "8": "16","Arial",22);
-    jushu->setColor(Color3B(21,50,91));
+    Label* jushu = Label::createWithSystemFont(data.atype == "0" ? "8": "4","Arial",22);
+    jushu->setColor(Color3B(93,182,215));
     jushu->setAnchorPoint(Vec2::ZERO);
-    jushu->setPosition(Vec2(800, 575));
+    jushu->setPosition(Vec2(800, 585));
     addChild(jushu);
     
     
     Label* panshu = Label::createWithSystemFont(ChineseWord("panshu"),"arial",20);
     panshu->setColor(Color3B(38,158,228));
-    panshu->setPosition(330,535);
+    panshu->setPosition(270,560);
     addChild(panshu);
     
     std::vector<BillContent> conBill = sortBillInfo(data.content);
     for(int i=0;i<conBill.size();i++){
         Label* player1 = Label::createWithSystemFont(conBill.at(i).nickName,"arial",20);
-        player1->setPosition(460+160*i,535);
+        player1->setPosition(385+150*i,560);
         if(conBill.at(i).nickName == UserData::getInstance()->getNickName()){
             player1->setColor(Color3B(91,220,168));
         }else{
@@ -108,10 +108,10 @@ bool BillDetailInfo::init()
         addChild(playNum);
     }
     
-    tableView = TableView::create(this, Size(680, 320));
+    tableView = TableView::create(this, Size(650, 360));
     tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView->setDirection(ScrollView::Direction::VERTICAL);
-    tableView->setPosition(300, 185);
+    tableView->setPosition(255, 175);
     tableView->setDelegate(this);
     tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
     addChild(tableView);
@@ -122,8 +122,8 @@ bool BillDetailInfo::init()
     MenuItemImage* goback = MenuItemImage::create("bill/return_btn_1.png", "bill/return_btn_2.png",
                                                   CC_CALLBACK_0(BillDetailInfo::goBack, this));
     auto billMenu = Menu::create(share,goback, NULL);
-    billMenu->alignItemsHorizontallyWithPadding(10);
-    billMenu->setPosition(640, 100);
+    billMenu->alignItemsHorizontallyWithPadding(50);
+    billMenu->setPosition(640, 80);
     addChild(billMenu, 20);
     
     
@@ -159,7 +159,7 @@ void BillDetailInfo::tableCellTouched(TableView* table, TableViewCell* cell)
 
 Size BillDetailInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
 {
-    return Size(650, 42);
+    return Size(600, 60);
 }
 
 TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
@@ -172,11 +172,11 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
-        Label* panId = Label::createWithSystemFont(StringUtils::format("%ld",idx+1),"arial",20);
+        Label* panId = Label::createWithSystemFont(StringUtils::format("%ld",idx+1),"arial",28);
         panId->setTag(99);
         panId->setColor(Color3B(38,158,228));
         panId->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        panId->setPosition(15,15);
+        panId->setPosition(15,30);
         cell->addChild(panId);
         for(int i=0;i<conBill.size();i++){
             std::string imageName ="bill/yellow_num.png";
@@ -188,7 +188,7 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             LabelAtlas* playerNum = LabelAtlas::create(myScore,imageName,20,30,'0');
             playerNum->setTag(100+i);
             playerNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-            playerNum->setPosition(Vec2(145+i*160, 15));
+            playerNum->setPosition(Vec2(130+i*150, 30));
             cell->addChild(playerNum);
         }
         

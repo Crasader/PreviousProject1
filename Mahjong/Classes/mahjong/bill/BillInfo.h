@@ -40,6 +40,7 @@ private:
 	void closeView();
     void showKongBill();
     void screenShot();
+    void checkFupan();
     std::vector<BillContent> sortBillInfo(std::vector<BillContent> content);
     void afterCaptured(bool succeed, const std::string &outputFile);
 };
