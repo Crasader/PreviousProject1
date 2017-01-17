@@ -35,6 +35,8 @@ private:
     std::vector<BillContent> sortBillInfo(std::vector<BillContent> content);
     void shareBill();
     void goBack();
+    void shareFupan();
+    void showFupan();
     void afterCaptured(bool succeed, const std::string &outputFile);
 };
 #endif

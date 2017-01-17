@@ -92,7 +92,7 @@ bool BillDetailInfo::init()
     
     Label* heji = Label::createWithSystemFont(ChineseWord("heji"),"arial",20);
     heji->setColor(Color3B(38,158,228));
-    heji->setPosition(330,157);
+    heji->setPosition(270,150);
     addChild(heji);
     
     for(int i=0;i<4;i++){
@@ -104,7 +104,7 @@ bool BillDetailInfo::init()
         std::string myScore =  ":"+StringUtil::itos(abs(score));
         LabelAtlas* playNum = LabelAtlas::create(myScore,imageName,20,30,'0');
         playNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        playNum->setPosition(Vec2(455+i*150, 158));
+        playNum->setPosition(Vec2(385+i*150, 150));
         addChild(playNum);
     }
     

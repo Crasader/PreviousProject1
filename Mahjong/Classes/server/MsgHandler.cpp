@@ -1544,14 +1544,17 @@ void MsgHandler::billDetailResp(std::string msg){
         detailAll.needInit = false;
         const rapidjson::Value &detail = _mDoc["detail"];
         for (int i = 0; i < detail.Capacity(); i++){
-            const rapidjson::Value &temp = detail[i];
+            const rapidjson::Value &temp0 = detail[i];
             BillInfoDetail data;
-            for (int j = 0; j < temp.Capacity(); j++){
-                BillContent con;
-                const rapidjson::Value &tempInfo = temp[j];
-                con.nickName = tempInfo["nickname"].GetString();
-                con.score = tempInfo["score"].GetString();
-                data.detail.push_back(con);
+            if(temp0.HasMember("bill")){
+                const rapidjson::Value &temp1 = temp0["bill"];
+                for (int j = 0; j < temp1.Capacity(); j++){
+                    BillContent con;
+                    const rapidjson::Value &tempInfo = temp1[j];
+                    con.nickName = tempInfo["nickname"].GetString();
+                    con.score = tempInfo["score"].GetString();
+                    data.detail.push_back(con);
+                }
             }
             detailAll.detail.push_back(data);
         }
