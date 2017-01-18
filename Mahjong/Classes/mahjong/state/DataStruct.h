@@ -549,4 +549,8 @@ struct CpgPokerRec{
 struct PlayerCpgRecShow{
     std::vector<CpgPokerRec> playercpg;
 };
+
+struct PlayBackInfo{
+    std::vector<string> playBackInfo;
+};
 #endif

@@ -70,6 +70,8 @@ public:
     CC_SYNTHESIZE(RoomChatMsgList, roomChatMsgList, RoomChatMsgList);
     CC_SYNTHESIZE(FriendChatMsgList, friendChatMsgList, FriendChatMsgList);
     CC_SYNTHESIZE(PlayerCpgRecShow, playerCpgRecShow, PlayerCpgRecShow);
+    CC_SYNTHESIZE(PlayBackInfo, PlaybackInfo, PlaybackInfo);
+    
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);

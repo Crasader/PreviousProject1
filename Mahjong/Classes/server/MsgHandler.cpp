@@ -340,6 +340,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleGamePayType(msg);
             break;
         }
+        case MSGCODE_PLAY_BACK_RESPONE:{
+            handleFupanInfo(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2227,6 +2231,23 @@ void MsgHandler::handleGamePayType(std::string msg){
     if(_mDoc.HasMember("result")){
         const rapidjson::Value &result = _mDoc["result"];
         UserData::getInstance()->setWeixinPayOpen(result.GetInt() == 0 ?true:false);
+    }
+    postNotifyMessage(MSG_UPDATE_LEQUAN_SHANG_CHEN_SHOW, "");
+}
+
+void MsgHandler::handleFupanInfo(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("playback")){
+        const rapidjson::Value &playback = _mDoc["playback"];
+        PlayBackInfo info;
+        for(int i=0;i<playback.Capacity();i++){
+            const rapidjson::Value &temp = playback[i];
+            info.playBackInfo.push_back(temp.GetString());
+        }
+        GAMEDATA::getInstance()->setPlaybackInfo(info);
     }
     postNotifyMessage(MSG_UPDATE_LEQUAN_SHANG_CHEN_SHOW, "");
 }
