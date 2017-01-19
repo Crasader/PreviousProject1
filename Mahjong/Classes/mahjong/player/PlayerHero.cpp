@@ -713,7 +713,8 @@ void PlayerHero::eraseHeroJong(Jong* jong){
 }
 
 void PlayerHero::removePlayedIcon(){
-    playedIcon->setVisible(false);
+//    if(NULL!= playedIcon)
+//        playedIcon->setVisible(false);
 }
 
 void PlayerHero::doEventTimeOver(int type){

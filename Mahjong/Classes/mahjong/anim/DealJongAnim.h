@@ -9,8 +9,6 @@ public:
 	virtual bool init();
 	CREATE_FUNC(DealJongAnim);
 	void showDealJong(int seatId, int dian1, int dian2);
-    void updateRest(std::string num);
-    void drawPaidui(int num);
 private:
     Layer* paishuLayer;//剩余牌堆图层
 	int rounds; 

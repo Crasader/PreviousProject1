@@ -31,6 +31,7 @@ public:
 	void removeHeroPlayedIcon();
     void dealJongFinish();
     void showHandPokerOver(int seatId);//翻牌
+    void showPaiduiNum(int num);
     
 private:
 	std::mutex m_mutex;
@@ -67,7 +68,6 @@ private:
 	void recoverGame();//恢复游戏场景
 	void recoverPlayer(PlayerGameData data,int type, Player* playerInfo);
     void showOriention();
-    void showGamePaidui(int num);
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower();//首次杠花
     void dealJongStart();
@@ -77,7 +77,6 @@ private:
 	EventListenerCustom* addOtherReadyListener;
 	EventListenerCustom* loginRespListener;
 	EventListenerCustom* addPlayersListener;
-	EventListenerCustom* dealJongsListener;
 	EventListenerCustom* turnListener;
 	EventListenerCustom* otherListener;
 	EventListenerCustom* playerCpgListener;

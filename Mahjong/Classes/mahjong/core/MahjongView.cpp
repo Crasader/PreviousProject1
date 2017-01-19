@@ -1,6 +1,7 @@
 #include "mahjong/anim/DealJongAnim.h"
 #include "mahjong/core/MahjongView.h"
 #include "mahjong/core/widget/Orientation.h"
+#include "mahjong/core/widget/CardStack.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/state/GameData.h"
 #include "mahjong/utils/SeatIdUtil.h"
@@ -92,10 +93,10 @@ void MahjongView::loadView(){
     tao = InfoToast::create();
     addChild(tao,50);
     showOriention();
-    //battery
-    //    BatteryInfo* bat = BatteryInfo::create();
-    //    bat->setPosition(300,500);
-    //    addChild(bat);
+    CardStack* stack = CardStack::create();
+    stack->setTag(1129);
+    stack->setVisible(false);
+    addChild(stack);
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
         wukaibao->setVisible(false);
@@ -553,7 +554,7 @@ void MahjongView::recoverGame(){
             GAMEDATA::getInstance()->addPlayersInfo(info);
             recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
         }
-        showGamePaidui(atoi(data.rest.c_str()));
+        showPaiduiNum(atoi(data.rest.c_str()));
     }else{
         for (int i = 0; i < data.players.size(); i++)
         {
@@ -648,13 +649,6 @@ void MahjongView::showOriention(){
 }
 
 
-void MahjongView::showGamePaidui(int num){
-    DealJongAnim* del = DealJongAnim::create();
-    addChild(del);
-    del->setTag(1000);
-    del->drawPaidui(num);
-}
-
 
 PlayerBase* MahjongView::getPlayerBySeatId(int sid){
     int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), sid);
@@ -675,7 +669,7 @@ PlayerBase* MahjongView::getPlayerBySeatId(int sid){
 
 void MahjongView::firstReplaceFlower() {
     ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
-    ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
+    showPaiduiNum(atoi(vec.rest.c_str()));
     for (int i = 0; i < vec.times.size(); i++){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
         if (seatId == ClientSeatId::hero){
@@ -715,6 +709,13 @@ void MahjongView::firstReplaceFlower() {
                 }
             }
         }
+    }
+}
+
+void MahjongView::showPaiduiNum(int num){
+    if(NULL != getChildByTag(1129)){
+        ((CardStack*)getChildByTag(1129))->setVisible(true);
+        ((CardStack*)getChildByTag(1129))->setShowNum(num);
     }
 }
 
@@ -790,7 +791,7 @@ void MahjongView::addPlayerTurnListener(){
     turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
-        ((DealJongAnim*)getChildByTag(1000))->updateRest(GAMEDATA::getInstance()->getPlayerTurn().rest);
+        showPaiduiNum(atoi(GAMEDATA::getInstance()->getPlayerTurn().rest.c_str()));
         if (seatId == ClientSeatId::hero){
             playerHero->hideCurrentBigJong();
             playerHero->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
@@ -1243,7 +1244,6 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dealJongsListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(turnListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(otherListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(gameResultListener);

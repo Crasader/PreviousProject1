@@ -1,6 +1,7 @@
 #include "mahjong/core/fupan/ReviewGame.h"
 #include "mahjong/anim/DealJongAnim.h"
 #include "mahjong/core/widget/Orientation.h"
+#include "mahjong/core/widget/CardStack.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/state/GameData.h"
 #include "mahjong/utils/SeatIdUtil.h"
@@ -76,6 +77,10 @@ void ReviewGame::loadView(){
     tao = InfoToast::create();
     addChild(tao,50);
     showOriention();
+    CardStack* stack = CardStack::create();
+    stack->setTag(1129);
+    stack->setVisible(false);
+    addChild(stack);
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
         wukaibao->setVisible(false);
@@ -174,60 +179,15 @@ void ReviewGame::startGameAgain(){
 
 void ReviewGame::update(float dt){
     interval += dt;
-    if(GAMEDATA::getInstance()->getIsFuPan()&&interval>5){
+    if(GAMEDATA::getInstance()->getIsFuPan()&&interval>2){
         NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
         interval = 0;
         fupanStep++;
-    }
-    if(GAMEDATA::getInstance()->getWaitNetwork()){
-        LostNetwork* net = LostNetwork::create();
-        net->setTag(2000);
-        addChild(net,200);
-        schedule([=](float dt){
-            NetworkManage::getInstance()->reConnectSocket();
-             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-            if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-            }else{
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), "APPLE", "iphone", "11111111111", "11111111111", "0"));
-            }
-        }, 0, 0, 4.0f, "socket_reconnect");
-        GAMEDATA::getInstance()->setWaitNetwork(false);
-    }
-    
-    if (GAMEDATA::getInstance()->getNeedAddPlayer()){
-        addPlayer2Room();
-        GAMEDATA::getInstance()->setNeedAddPlayer(false);
-    }
-    if(GAMEDATA::getInstance()->getNeedAddPlayer()>0){
-        playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-        playerHero->stopTimeClockAnim();
-        GAMEDATA::getInstance()->setNeedAddPlayer(-1);
     }
     
     if(GAMEDATA::getInstance()->getStartFaPai()){
         dealJongStart();
         GAMEDATA::getInstance()->setStartFaPai(false);
-    }
-    
-    if(!GAMEDATA::getInstance()->getIsPlaying()){
-        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-        for (int i = 0; i < players.size(); i++){
-            int seat_id = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId() );
-            if(seat_id == ClientSeatId::left){
-                if(NULL != playerLeft){
-                    playerLeft->setIsReady(players.at(i)->getIsReady());
-                }
-            }else if(seat_id == ClientSeatId::right){
-                if(NULL != playerRight){
-                    playerRight->setIsReady(players.at(i)->getIsReady());
-                }
-            }else if(seat_id == ClientSeatId::opposite){
-                if(NULL != playerOpposite){
-                    playerOpposite->setIsReady(players.at(i)->getIsReady());
-                }
-            }
-        }
     }
 }
 
@@ -519,7 +479,7 @@ void ReviewGame::showGamePaidui(int num){
     DealJongAnim* del = DealJongAnim::create();
     addChild(del);
     del->setTag(1000);
-    del->drawPaidui(num);
+    //    del->drawPaidui(num);
 }
 
 
@@ -542,7 +502,7 @@ PlayerBase* ReviewGame::getPlayerBySeatId(int sid){
 
 void ReviewGame::firstReplaceFlower() {
     ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
-    ((DealJongAnim*)getChildByTag(1000))->updateRest(vec.rest);
+    showPaiduiNum(atoi(vec.rest.c_str()));
     for (int i = 0; i < vec.times.size(); i++){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
         if (seatId == ClientSeatId::hero){
@@ -612,52 +572,25 @@ void ReviewGame::dealJongStart(){
     ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
     guiLayer->hideDissovleBtn();
     vector<string> dd =StringUtil::split(GAMEDATA::getInstance()->getDice(), ",") ;
-    DealJongAnim* anim = DealJongAnim::create();
-    anim->setTag(1000);
-    anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dd.at(0).c_str()),atoi(dd.at(1).c_str()));
-    addChild(anim);
-    
-}
-
-void ReviewGame::heroPlayPokerAuto(int poker){
+    dealJongFinish();
     
 }
 
 
-void ReviewGame::addOthersReadyListener(){
-    addOtherReadyListener = EventListenerCustom::create(MSG_READY_NOTIFY, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        currentReadyPlayer = atoi(buf);
-        int type = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), currentReadyPlayer);
-        if (type == ClientSeatId::left){
-            if(NULL != playerLeft){
-                playerLeft->setIsReady(true);
-            }
-        }
-        else if (type == ClientSeatId::right){
-            if(NULL != playerRight){
-                playerRight->setIsReady(true);
-            }
-        }
-        else if (type == ClientSeatId::opposite){
-            if(NULL != playerOpposite){
-                playerOpposite->setIsReady(true);
-            }
-        }
-        else{
-            playerHero->drawReady(false);
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
-}
 
+void ReviewGame::showPaiduiNum(int num){
+    if(NULL != getChildByTag(1129)){
+        ((CardStack*)getChildByTag(1129))->setVisible(true);
+        ((CardStack*)getChildByTag(1129))->setShowNum(num);
+    }
+}
 
 
 void ReviewGame::addPlayerTurnListener(){
     turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
-        ((DealJongAnim*)getChildByTag(1000))->updateRest(GAMEDATA::getInstance()->getPlayerTurn().rest);
+        showPaiduiNum(atoi(GAMEDATA::getInstance()->getPlayerTurn().rest.c_str()));
         if (seatId == ClientSeatId::hero){
             playerHero->hideCurrentBigJong();
             playerHero->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
@@ -717,16 +650,13 @@ void ReviewGame::addJongPlayedListener(){
                 Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
             }
         }else if(seatId == ClientSeatId::hero){
-            schedule([=](float dt){
-                log("听牌后,系统提玩家出的牌是: %d",GAMEDATA::getInstance()->getOtherPlayJong().poker);
-                playerHero->stopTimeClockAnim();
-                playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-                if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
-                    Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-                }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
-                    Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
-                }
-            },0,0,0.8f,"delay_play_poker_auto");
+            playerHero->stopTimeClockAnim();
+            playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
+            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
@@ -1107,9 +1037,6 @@ void ReviewGame::onEnterTransitionDidFinish(){
 void ReviewGame::onExit()
 {
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dealJongsListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(turnListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(otherListener);
@@ -1134,14 +1061,13 @@ void ReviewGame::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
-     Director::getInstance()->getEventDispatcher()->removeEventListener(fupanPlayerInfoListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(fupanPlayerInfoListener);
     
 }
 
 
 
 void ReviewGame::addCoustomListener(){
-    addOthersReadyListener();
     addPlayerTurnListener();
     addJongPlayedListener();
     addHeroCpgListener();
@@ -1220,7 +1146,7 @@ void ReviewGame::addCoustomListener(){
         FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();
         for (int i = 0; i < data.players.size(); i++)
         {
-           
+            
             PlayerGameData player = data.players.at(i);
             Player* info = new Player();
             info->setSeatId(player.seatId);
@@ -1240,7 +1166,7 @@ void ReviewGame::addCoustomListener(){
             GAMEDATA::getInstance()->addPlayersInfo(info);
             addPlayer2Room();
         }
-
+        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fupanPlayerInfoListener, 1);
 }

@@ -309,6 +309,8 @@
 		D2C3FA5C1D9909EC00CFC80E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */; };
 		D2DD423C1E3095D70036A694 /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD423A1E3095D70036A694 /* ReviewGame.cpp */; };
 		D2DD423D1E3095D70036A694 /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD423A1E3095D70036A694 /* ReviewGame.cpp */; };
+		D2DD42401E30A4E70036A694 /* CardStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD423E1E30A4E70036A694 /* CardStack.cpp */; };
+		D2DD42411E30A4E70036A694 /* CardStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD423E1E30A4E70036A694 /* CardStack.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -653,6 +655,8 @@
 		D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		D2DD423A1E3095D70036A694 /* ReviewGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewGame.cpp; sourceTree = "<group>"; };
 		D2DD423B1E3095D70036A694 /* ReviewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewGame.h; sourceTree = "<group>"; };
+		D2DD423E1E30A4E70036A694 /* CardStack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CardStack.cpp; sourceTree = "<group>"; };
+		D2DD423F1E30A4E70036A694 /* CardStack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CardStack.hpp; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1064,6 +1068,8 @@
 				D267780A1DF00697003CE73F /* Orientation.h */,
 				D267780B1DF00697003CE73F /* QuitRoomDialog.cpp */,
 				D267780C1DF00697003CE73F /* QuitRoomDialog.hpp */,
+				D2DD423E1E30A4E70036A694 /* CardStack.cpp */,
+				D2DD423F1E30A4E70036A694 /* CardStack.hpp */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -1847,6 +1853,7 @@
 				D267791B1DF00698003CE73F /* ChargeItem.cpp in Sources */,
 				D267790B1DF00698003CE73F /* ResultScene.cpp in Sources */,
 				D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */,
+				D2DD42401E30A4E70036A694 /* CardStack.cpp in Sources */,
 				D26779251DF00698003CE73F /* Huode.cpp in Sources */,
 				D26778F91DF00698003CE73F /* NoticeDialog.cpp in Sources */,
 				D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
@@ -1919,6 +1926,7 @@
 				D26779321DF00698003CE73F /* LoadResource.cpp in Sources */,
 				D26779401DF00698003CE73F /* StringUtil.cpp in Sources */,
 				D267793E1DF00698003CE73F /* SeatIdUtil.cpp in Sources */,
+				D2DD42411E30A4E70036A694 /* CardStack.cpp in Sources */,
 				D26778DC1DF00697003CE73F /* ToastCell.cpp in Sources */,
 				D26778D21DF00697003CE73F /* PrideCell.cpp in Sources */,
 				D26778FA1DF00698003CE73F /* NoticeDialog.cpp in Sources */,
