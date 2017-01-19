@@ -29,7 +29,6 @@ public:
 	void startGameAgain();
     void startGameFirst();
 	void removeHeroPlayedIcon();
-    void dealJongFinish();
     void showHandPokerOver(int seatId);//翻牌
     void showPaiduiNum(int num);
     
@@ -71,7 +70,7 @@ private:
     void showGamePaidui(int num);
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower();//首次杠花
-    void dealJongStart();
+    void recoverPlayer(PlayerGameData data, int type, Player* playerInfo);
     
 	PlayerBase* getPlayerBySeatId(int sid);
 
@@ -95,9 +94,7 @@ private:
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
-    EventListenerCustom* lobbyConncetAgainListener;
     EventListenerCustom* viewIntnetListener;
-    EventListenerCustom* scrollTetxListener;
     EventListenerCustom* coreOpenFriendRoomListener;
     EventListenerCustom* coreLoginRespListener;
     EventListenerCustom* fupanPlayerInfoListener;

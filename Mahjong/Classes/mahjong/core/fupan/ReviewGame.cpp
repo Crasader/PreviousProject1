@@ -184,11 +184,7 @@ void ReviewGame::update(float dt){
         interval = 0;
         fupanStep++;
     }
-    
-    if(GAMEDATA::getInstance()->getStartFaPai()){
-        dealJongStart();
-        GAMEDATA::getInstance()->setStartFaPai(false);
-    }
+
 }
 
 
@@ -475,13 +471,6 @@ void ReviewGame::showOriention(){
 }
 
 
-void ReviewGame::showGamePaidui(int num){
-    DealJongAnim* del = DealJongAnim::create();
-    addChild(del);
-    del->setTag(1000);
-    //    del->drawPaidui(num);
-}
-
 
 PlayerBase* ReviewGame::getPlayerBySeatId(int sid){
     int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), sid);
@@ -545,36 +534,6 @@ void ReviewGame::firstReplaceFlower() {
     }
 }
 
-void ReviewGame::dealJongFinish(){
-    if(NULL != playerHero)
-        playerHero->drawPlayerHero();
-    if(NULL != playerRight)
-        playerRight->drawHandJong();
-    if(NULL != playerOpposite)
-        playerOpposite->drawHandJong();
-    if(NULL != playerLeft)
-        playerLeft->drawHandJong();
-    if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
-        firstReplaceFlower();
-}
-
-
-
-void ReviewGame::dealJongStart(){
-    GAMEDATA::getInstance()->setIsPlaying(true);
-    playerHero->setIsReady(false);
-    if(NULL != playerRight)
-        playerRight->setIsReady(false);
-    if(NULL != playerOpposite)
-        playerOpposite->setIsReady(false);
-    if(NULL != playerLeft)
-        playerLeft->setIsReady(false);
-    ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-    guiLayer->hideDissovleBtn();
-    vector<string> dd =StringUtil::split(GAMEDATA::getInstance()->getDice(), ",") ;
-    dealJongFinish();
-    
-}
 
 
 
@@ -996,6 +955,65 @@ void ReviewGame::showHandPokerOver(int seatId){
     
 }
 
+void ReviewGame::recoverPlayer(PlayerGameData data, int type, Player* playerInfo){
+    if (type == ClientSeatId::hero){
+        if (playerHero == NULL){
+            playerHero = PlayerHero::create();
+            playerHero->initPlayer(playerInfo);
+            playerHero->setIsAllowPlay(false);
+            playerHero->setPlayerTingState(data.status == 1?true:false);
+            addChild(playerHero, 2);
+            playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerHero->recoverHand(data.hand,data.lastpoker);
+            playerHero->recoverPlayed(data.outhand);
+            playerHero->recoverHua(data.hua);
+        }
+    }
+    else if (type == ClientSeatId::left){
+        if (playerLeft == NULL){
+            playerLeft = PlayerLeft::create();
+            playerLeft->initPlayer(playerInfo);
+            playerLeft->setPlayerTingState(data.status == 1?true:false);
+            playerLeft->setIsOffLine(data.isOnline == 0?true:false);
+            addChild(playerLeft);
+            playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerLeft->recoverHand(data.hand);
+            playerLeft->recoverPlayed(data.outhand);
+            playerLeft->recoverHua(data.hua);
+            
+        }
+    }
+    else if (type == ClientSeatId::right){
+        if (playerRight == NULL){
+            playerRight = PlayerRight::create();
+            playerRight->initPlayer(playerInfo);
+            playerRight->setPlayerTingState(data.status == 1?true:false);
+            playerRight->setIsOffLine(data.isOnline == 0?true:false);
+            addChild(playerRight);
+            playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerRight->recoverHand(data.hand);
+            playerRight->recoverPlayed(data.outhand);
+            playerRight->recoverHua(data.hua);
+            
+        }
+    }
+    else if (type == ClientSeatId::opposite){
+        if (playerOpposite == NULL){
+            playerOpposite = PlayerOpposite::create();
+            playerOpposite->initPlayer(playerInfo);
+            playerOpposite->setPlayerTingState(data.status == 1?true:false);
+            playerOpposite->setIsOffLine(data.isOnline == 0?true:false);
+            addChild(playerOpposite);
+            playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerOpposite->recoverHand(data.hand);
+            playerOpposite->recoverPlayed(data.outhand);
+            playerOpposite->recoverHua(data.hua);
+            
+        }
+    }
+}
+
+
 
 void ReviewGame::onEnterTransitionDidFinish(){
     if (GAMEDATA::getInstance()->getIsRecover()){
@@ -1058,7 +1076,6 @@ void ReviewGame::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(fupanPlayerInfoListener);
@@ -1112,20 +1129,6 @@ void ReviewGame::addCoustomListener(){
         }
     });
     
-    //断线续玩
-    lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
-        //重新绘制玩家的牌和话
-        GAMEDATA::getInstance()->setIsRecover(true);
-        Director::getInstance()->replaceScene(MjGameScene::create());
-        
-    });
-    
-    scrollTetxListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_SCROLL_TEXT, [=](EventCustom* event){
-        std::string msg = static_cast<char*>(event->getUserData());
-        if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
-            ((ScrollTextEx*)getChildByTag(9980))->setScrollStr(msg);
-        }
-    });
     
     //好友房间游戏未开始重新连接
     coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
@@ -1144,6 +1147,7 @@ void ReviewGame::addCoustomListener(){
     
     fupanPlayerInfoListener = EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
         FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();
+        
         for (int i = 0; i < data.players.size(); i++)
         {
             
@@ -1164,9 +1168,9 @@ void ReviewGame::addCoustomListener(){
             info->setIsReady(true);
             info->setUmark(player.umark);
             GAMEDATA::getInstance()->addPlayersInfo(info);
-            addPlayer2Room();
+            recoverPlayer(player,SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId),info);
         }
-        
+        showPaiduiNum(91);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fupanPlayerInfoListener, 1);
 }

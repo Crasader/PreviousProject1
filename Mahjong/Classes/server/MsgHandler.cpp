@@ -1565,7 +1565,7 @@ void MsgHandler::billDetailResp(std::string msg){
                 }
             }
             if(temp0.HasMember("recordId")){
-                data.recordId = StringUtils::format("%d",temp0["recordId"].GetInt());
+                data.recordId = temp0["recordId"].GetString();
             }
             detailAll.detail.push_back(data);
         }
@@ -2244,17 +2244,23 @@ void MsgHandler::handleFupanInfo(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+     PlayBackInfo info;
     if(_mDoc.HasMember("playback")){
         const rapidjson::Value &playback = _mDoc["playback"];
-        PlayBackInfo info;
+       
         for(int i=0;i<playback.Capacity();i++){
             const rapidjson::Value &temp = playback[i];
             if(temp.HasMember("key")){
                 info.playBackInfo.push_back(temp["key"].GetString());
             }
         }
-        GAMEDATA::getInstance()->setPlaybackInfo(info);
+       
     }
+    if(_mDoc.HasMember("who")){
+        const rapidjson::Value &who = _mDoc["who"];
+        info.heroid =who.GetString();
+    }
+    GAMEDATA::getInstance()->setPlaybackInfo(info);
     postNotifyMessage(MSG_GAME_FU_PAN_NOTIFY, "");
 }
 
@@ -2269,17 +2275,21 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         PlayerGameData  data;
         const rapidjson::Value &temp = all[i];
         data.poxiaoId = temp["poxiaoId"].GetString();
-        data.nickname = temp["nickname"].GetString();
         data.seatId = temp["seatId"].GetInt();
+        if(data.poxiaoId ==  GAMEDATA::getInstance()->getPlaybackInfo().heroid){
+            GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
+        }
+        data.nickname = temp["nickname"].GetString();
         data.gold = temp["golden"].GetInt();
         data.jifen = temp["jifen"].GetInt();
         data.lequan = temp["lequan"].GetInt();
         data.fangka = temp["fangka"].GetDouble();
         data.pic = temp["pic"].GetString();
         data.ip = temp["ip"].GetString();
-        data.hua = 0;
+        data.hua = temp["hua"].GetInt();
         data.status = 0;
-        data.ifready = 1;
+        data.ifready = 0;
+        data.hand = temp["poker"].GetString();
         fupan.players.push_back(data);
     }
     GAMEDATA::getInstance()->setFupanGameData(fupan);

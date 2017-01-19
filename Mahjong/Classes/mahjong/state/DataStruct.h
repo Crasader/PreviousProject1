@@ -554,6 +554,7 @@ struct PlayerCpgRecShow{
 
 
 struct PlayBackInfo{
+    std::string heroid;
     std::vector<string> playBackInfo;
 };
 
