@@ -66,8 +66,6 @@ private:
 	void setCurrentJongVisible(int seatId);
 	void playerTingAnim(int seatId);
 	void clearRoomPlayer();
-	void recoverGame();//恢复游戏场景
-	void recoverPlayer(PlayerGameData data,int type, Player* playerInfo);
     void showOriention();
     void showGamePaidui(int num);
     void showHuPaiXing(std::string paixing);

@@ -76,10 +76,6 @@ void ReviewGame::loadView(){
     tao = InfoToast::create();
     addChild(tao,50);
     showOriention();
-    //battery
-    //    BatteryInfo* bat = BatteryInfo::create();
-    //    bat->setPosition(300,500);
-    //    addChild(bat);
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
         wukaibao->setVisible(false);
@@ -508,125 +504,6 @@ void ReviewGame::clearRoomPlayer(){
     }
     guiLayer->setVisible(false);
 }
-
-void ReviewGame::recoverGame(){
-    if(getChildByTag(2000)!=NULL){
-        getChildByTag(2000)->removeFromParent();
-    }
-    //重绘制场景
-    GAMEDATA::getInstance()->clearPlayersInfo();
-    LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
-    if(data.result == 1){
-        GAMEDATA::getInstance()->setHeroSeatId(data.seatId);
-        GAMEDATA::getInstance()->setCurrentBank(data.loard);
-        GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
-        GAMEDATA::getInstance()->setKaibao(StringUtil::itos(data.kb));
-        guiLayer->updateData();
-        for (int i = 0; i < data.players.size(); i++)
-        {
-            PlayerGameData player = data.players.at(i);
-            Player* info = new Player();
-            info->setSeatId(player.seatId);
-            info->setGold(player.gold);
-            info->setDiamond(player.diamond);
-            info->setNickname(player.nickname);
-            info->setPicture(player.pic);
-            info->setGender(player.gender);
-            info->setScore(player.jifen);
-            info->setTicket(player.lequan);
-            info->setLockDiamond(player.bangzuan);
-            info->setPoxiaoId(player.poxiaoId);
-            info->setFangka(player.fangka);
-            info->setIP(player.ip);
-            info->setIsReady(true);
-            info->setUmark(player.umark);
-            GAMEDATA::getInstance()->addPlayersInfo(info);
-            recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
-        }
-        showGamePaidui(atoi(data.rest.c_str()));
-    }else{
-        for (int i = 0; i < data.players.size(); i++)
-        {
-            PlayerGameData player = data.players.at(i);
-            Player* info = new Player();
-            info->setSeatId(player.seatId);
-            info->setGold(player.gold);
-            info->setDiamond(player.diamond);
-            info->setNickname(player.nickname);
-            info->setPicture(player.pic);
-            info->setGender(player.gender);
-            info->setScore(player.jifen);
-            info->setTicket(player.lequan);
-            info->setLockDiamond(player.bangzuan);
-            info->setPoxiaoId(player.poxiaoId);
-            info->setFangka(player.fangka);
-            info->setIsReady(player.ifready==0?false:true);
-            info->setIP(player.ip);
-            info->setUmark(player.umark);
-            GAMEDATA::getInstance()->addPlayersInfo(info);
-        }
-        addPlayer2Room();
-    }
-}
-
-void ReviewGame::recoverPlayer(PlayerGameData data, int type, Player* playerInfo){
-    if (type == ClientSeatId::hero){
-        if (playerHero == NULL){
-            playerHero = PlayerHero::create();
-            playerHero->initPlayer(playerInfo);
-            playerHero->setIsAllowPlay(false);
-            playerHero->setPlayerTingState(data.status == 1?true:false);
-            addChild(playerHero, 2);
-            playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerHero->recoverHand(data.hand,data.lastpoker);
-            playerHero->recoverPlayed(data.outhand);
-            playerHero->recoverHua(data.hua);
-        }
-    }
-    else if (type == ClientSeatId::left){
-        if (playerLeft == NULL){
-            playerLeft = PlayerLeft::create();
-            playerLeft->initPlayer(playerInfo);
-            playerLeft->setPlayerTingState(data.status == 1?true:false);
-            playerLeft->setIsOffLine(data.isOnline == 0?true:false);
-            addChild(playerLeft);
-            playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerLeft->recoverHand(data.hand);
-            playerLeft->recoverPlayed(data.outhand);
-            playerLeft->recoverHua(data.hua);
-            
-        }
-    }
-    else if (type == ClientSeatId::right){
-        if (playerRight == NULL){
-            playerRight = PlayerRight::create();
-            playerRight->initPlayer(playerInfo);
-            playerRight->setPlayerTingState(data.status == 1?true:false);
-            playerRight->setIsOffLine(data.isOnline == 0?true:false);
-            addChild(playerRight);
-            playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerRight->recoverHand(data.hand);
-            playerRight->recoverPlayed(data.outhand);
-            playerRight->recoverHua(data.hua);
-            
-        }
-    }
-    else if (type == ClientSeatId::opposite){
-        if (playerOpposite == NULL){
-            playerOpposite = PlayerOpposite::create();
-            playerOpposite->initPlayer(playerInfo);
-            playerOpposite->setPlayerTingState(data.status == 1?true:false);
-            playerOpposite->setIsOffLine(data.isOnline == 0?true:false);
-            addChild(playerOpposite);
-            playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerOpposite->recoverHand(data.hand);
-            playerOpposite->recoverPlayed(data.outhand);
-            playerOpposite->recoverHua(data.hua);
-            
-        }
-    }
-}
-
 
 
 //显示玩家的方向和庄

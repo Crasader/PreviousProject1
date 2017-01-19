@@ -1290,7 +1290,6 @@ void MahjongView::addCoustomListener(){
     addHeroChiRespListener();
     addHeroPengRespListener();
     addHeroGangRespListener();
-    addFriendInviteMeListener();
     addPlayerRemoveListener();
     addPlayerResumeListener();
     addPlayerOffLineListener();

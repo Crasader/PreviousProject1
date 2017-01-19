@@ -122,7 +122,6 @@ private:
 	void addHeroTingNotifyListener();
 	void addHeroTingRespListener();
 	void addLostConnectListener();
-	void addFriendInviteMeListener();
     void addPlayerRemoveListener();
     void addPlayerOffLineListener();
     void addPlayerResumeListener();
