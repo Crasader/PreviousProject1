@@ -49,6 +49,7 @@ private:
     EventListenerCustom* noticeUrlLitener;
     EventListenerCustom* upateLequanShopLitener;
     EventListenerCustom* showLoobyLoadingLayer;
+    EventListenerCustom* gameFupanListener;
     
 	void initView();
 	void drawSceneMid();

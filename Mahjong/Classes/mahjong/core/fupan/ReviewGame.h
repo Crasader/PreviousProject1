@@ -1,5 +1,5 @@
-#ifndef __MAHJONG_VIEW__
-#define __MAHJONG_VIEW__
+#ifndef __Review__Game_
+#define __Review__Game__
 #include "cocos2d.h"
 #include "mahjong/core/gui/GuiLayer.h"
 #include "mahjong/jong/Jong.h"
@@ -13,12 +13,12 @@
 #include "userdata/UserData.h"
 USING_NS_CC;
 
-class MahjongView : public cocos2d::Layer
+class ReviewGame : public cocos2d::Layer
 {
 public:
     
 	virtual bool init() override;		
-	CREATE_FUNC(MahjongView);
+	CREATE_FUNC(ReviewGame);
 	virtual void onEnter() override;
 	virtual void onExit() override;
     void onEnterTransitionDidFinish() override;

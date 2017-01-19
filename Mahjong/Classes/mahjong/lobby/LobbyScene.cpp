@@ -522,7 +522,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(noticeUrlLitener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(upateLequanShopLitener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(showLoobyLoadingLayer);
-    
+    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFupanListener);
 }
 
 void LobbyScene::addEventListener(){
@@ -703,7 +703,12 @@ void LobbyScene::addEventListener(){
     showLoobyLoadingLayer = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_SHOW_LOADING_LAYER, [=](EventCustom* event){
         showLoading();
     });
-    
+    //游戏复盘
+    gameFupanListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GAME_FU_PAN_NOTIFY, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setIsFuPan(true);
+        Director::getInstance()->replaceScene(MjGameScene::create());
+    });
+
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

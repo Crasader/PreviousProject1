@@ -307,6 +307,8 @@
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
 		D2C3FA5A1D9909AE00CFC80E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */; };
 		D2C3FA5C1D9909EC00CFC80E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */; };
+		D2DD423C1E3095D70036A694 /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD423A1E3095D70036A694 /* ReviewGame.cpp */; };
+		D2DD423D1E3095D70036A694 /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD423A1E3095D70036A694 /* ReviewGame.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -649,6 +651,8 @@
 		D2C3FA571D99081100CFC80E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
+		D2DD423A1E3095D70036A694 /* ReviewGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewGame.cpp; sourceTree = "<group>"; };
+		D2DD423B1E3095D70036A694 /* ReviewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewGame.h; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1033,6 +1037,7 @@
 		D26778001DF00697003CE73F /* core */ = {
 			isa = PBXGroup;
 			children = (
+				D2DD42391E30959E0036A694 /* fupan */,
 				D26778011DF00697003CE73F /* gui */,
 				D26778041DF00697003CE73F /* MahjongView.cpp */,
 				D26778051DF00697003CE73F /* MahjongView.h */,
@@ -1525,6 +1530,15 @@
 			path = wechat;
 			sourceTree = "<group>";
 		};
+		D2DD42391E30959E0036A694 /* fupan */ = {
+			isa = PBXGroup;
+			children = (
+				D2DD423A1E3095D70036A694 /* ReviewGame.cpp */,
+				D2DD423B1E3095D70036A694 /* ReviewGame.h */,
+			);
+			path = fupan;
+			sourceTree = "<group>";
+		};
 		D2F05F281D8E2B22006E5A4C /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -1867,6 +1881,7 @@
 				D26779151DF00698003CE73F /* UserSetting.cpp in Sources */,
 				D26778F31DF00698003CE73F /* EnterRoomDialog.cpp in Sources */,
 				D26779111DF00698003CE73F /* GameFeedDialog.cpp in Sources */,
+				D2DD423C1E3095D70036A694 /* ReviewGame.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1936,6 +1951,7 @@
 				D26778FE1DF00698003CE73F /* PlayerHero.cpp in Sources */,
 				D26778AC1DF00697003CE73F /* DealJongAnim.cpp in Sources */,
 				D267791A1DF00698003CE73F /* ChargeFangka.cpp in Sources */,
+				D2DD423D1E3095D70036A694 /* ReviewGame.cpp in Sources */,
 				D26778D01DF00697003CE73F /* DailyPride.cpp in Sources */,
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,

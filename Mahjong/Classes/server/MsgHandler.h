@@ -70,5 +70,6 @@ private:
     void hanleFangzhuDismissRoom(std::string msg);
     void handleGamePayType(std::string msg);
     void handleFupanInfo(std::string msg);
+    void handleFupanPlayerInfo(std::string msg);
 };
 #endif

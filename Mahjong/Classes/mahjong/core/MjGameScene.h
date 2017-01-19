@@ -8,7 +8,5 @@ public:
     void onEnter() override;
     void onExit() override;
 	CREATE_FUNC(MjGameScene);
-private:
-    EventListenerCustom* enterFrinedRoomListener;
 };
 #endif

@@ -146,7 +146,7 @@ void MsgHandler::distribute(int code, std::string msg){
             showOtherGangNotify(msg);
             break;
         }
-
+            
         case MSGCODE_MAJIANG_TING_GANG_NOTIFY:
         {
             log(" *** hero ting pai notify *** ");
@@ -342,6 +342,10 @@ void MsgHandler::distribute(int code, std::string msg){
         }
         case MSGCODE_PLAY_BACK_RESPONE:{
             handleFupanInfo(msg);
+            break;
+        }
+        case MSGCODE_FUPAN_PLAYER_NOTIFY:{
+            handleFupanPlayerInfo(msg);
             break;
         }
         default:
@@ -2245,11 +2249,41 @@ void MsgHandler::handleFupanInfo(std::string msg){
         PlayBackInfo info;
         for(int i=0;i<playback.Capacity();i++){
             const rapidjson::Value &temp = playback[i];
-            info.playBackInfo.push_back(temp.GetString());
+            if(temp.HasMember("key")){
+                info.playBackInfo.push_back(temp["key"].GetString());
+            }
         }
         GAMEDATA::getInstance()->setPlaybackInfo(info);
     }
-    postNotifyMessage(MSG_UPDATE_LEQUAN_SHANG_CHEN_SHOW, "");
+    postNotifyMessage(MSG_GAME_FU_PAN_NOTIFY, "");
+}
+
+void MsgHandler::handleFupanPlayerInfo(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    FupanGameData fupan;
+    const rapidjson::Value &all = _mDoc["all"];
+    for (int i = 0; i < all.Capacity(); ++i){
+        PlayerGameData  data;
+        const rapidjson::Value &temp = all[i];
+        data.poxiaoId = temp["poxiaoId"].GetString();
+        data.nickname = temp["nickname"].GetString();
+        data.seatId = temp["seatId"].GetInt();
+        data.gold = temp["golden"].GetInt();
+        data.jifen = temp["jifen"].GetInt();
+        data.lequan = temp["lequan"].GetInt();
+        data.fangka = temp["fangka"].GetDouble();
+        data.pic = temp["pic"].GetString();
+        data.ip = temp["ip"].GetString();
+        data.hua = 0;
+        data.status = 0;
+        data.ifready = 1;
+        fupan.players.push_back(data);
+    }
+    GAMEDATA::getInstance()->setFupanGameData(fupan);
+    postNotifyMessage(MSG_GAME_FU_PAN_PLAYER_NOTIFY, "");
 }
 
 

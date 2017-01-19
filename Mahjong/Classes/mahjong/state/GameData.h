@@ -71,7 +71,7 @@ public:
     CC_SYNTHESIZE(FriendChatMsgList, friendChatMsgList, FriendChatMsgList);
     CC_SYNTHESIZE(PlayerCpgRecShow, playerCpgRecShow, PlayerCpgRecShow);
     CC_SYNTHESIZE(PlayBackInfo, PlaybackInfo, PlaybackInfo);
-    
+    CC_SYNTHESIZE(FupanGameData, fupanGameData, FupanGameData);
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
@@ -104,6 +104,7 @@ public:
     CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间
     CC_SYNTHESIZE(bool, startPaiAngang, StartPaiAngang);
     CC_SYNTHESIZE(bool, startFaPai, StartFaPai);//是否开始发牌
+    CC_SYNTHESIZE(bool, isFuPan, IsFuPan);//是否开始发牌
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, ip, IP);//玩家IP
     CC_SYNTHESIZE(string, dice, Dice);
