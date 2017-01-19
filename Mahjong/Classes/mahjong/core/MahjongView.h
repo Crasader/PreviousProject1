@@ -35,8 +35,6 @@ public:
 private:
 	std::mutex m_mutex;
 	int currentReadyPlayer;
-    float interval =0;
-    int fupanStep = 0;
 	std::string  selectedChi;
 	Sprite* choiceMenu;
     Menu* controllPad;
@@ -99,7 +97,6 @@ private:
     EventListenerCustom* playerRemoveListener;
     EventListenerCustom* playerOffLineListener;
     EventListenerCustom* playerResumeListener;
-    EventListenerCustom* friendOpenRoomListener;
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
@@ -108,7 +105,6 @@ private:
     EventListenerCustom* scrollTetxListener;
     EventListenerCustom* coreOpenFriendRoomListener;
     EventListenerCustom* coreLoginRespListener;
-    EventListenerCustom* fupanPlayerInfoListener;
 
 	void addCoustomListener();
     void addOthersReadyListener();

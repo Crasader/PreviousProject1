@@ -29,22 +29,6 @@ bool ReviewGame::init(){
     }
     initData();
     loadView();
-    if (GAMEDATA::getInstance()->getIsRecover()){
-        recoverGame();
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
-    }
-    else if(GAMEDATA::getInstance()->getIsFuPan()){
-        
-    
-    }else{
-        if(GAMEDATA::getInstance()->getContinueAgain()){
-            startGameAgain();
-            GAMEDATA::getInstance()->setContinueAgain(false);
-        }else{
-            startGameFirst();
-        }
-        addPlayer2Room();
-    }
     return true;
 }
 
@@ -1266,9 +1250,6 @@ void ReviewGame::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
@@ -1276,7 +1257,6 @@ void ReviewGame::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerOffLineListener);
      Director::getInstance()->getEventDispatcher()->removeEventListener(fupanPlayerInfoListener);
     
 }
@@ -1298,10 +1278,6 @@ void ReviewGame::addCoustomListener(){
     addHeroChiRespListener();
     addHeroPengRespListener();
     addHeroGangRespListener();
-    addFriendInviteMeListener();
-    addPlayerRemoveListener();
-    addPlayerResumeListener();
-    addPlayerOffLineListener();
     //登录地址变更
     playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
         HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
@@ -1552,78 +1528,4 @@ void ReviewGame::addHeroGangRespListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
-}
-
-void ReviewGame::addFriendInviteMeListener(){
-    friendOpenRoomListener=Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
-        FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
-        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",[=](Ref* ref){
-            FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterFriendRoomCommand(data.pid));
-            auto item = (MenuItemImage*)ref;
-            item->getParent()->getParent()->removeFromParent();
-        });
-        addChild(invite,4);
-    });
-}
-
-
-void ReviewGame::addPlayerRemoveListener(){
-    playerRemoveListener = EventListenerCustom::create(MSG_PLAYER_REMOVE, [=](EventCustom* event){
-        if(!GAMEDATA::getInstance()->getIsPlaying()){
-            if(playerLeft !=NULL&&playerLeft->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
-                playerLeft->removeFromParent();
-                playerLeft =NULL;
-                OutFogAnim* out1 = OutFogAnim::create(Point(70, 455));
-                addChild(out1);
-            }else if(playerRight !=NULL&&playerRight->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
-                playerRight->removeFromParent();
-                playerRight =NULL;
-                OutFogAnim* out2 = OutFogAnim::create(Point(1213, 455));
-                addChild(out2);
-            }else if(playerOpposite !=NULL&&playerOpposite->getPlayerInfo()->getPoxiaoId()==GAMEDATA::getInstance()->getRemovePlayer().pid){
-                playerOpposite->removeFromParent();
-                playerOpposite =NULL;
-                OutFogAnim* out3 = OutFogAnim::create(Point(945, 642));
-                addChild(out3);
-            }else if(GAMEDATA::getInstance()->getRemovePlayer().pid == UserData::getInstance()->getPoxiaoId()){
-                Director::getInstance()->replaceScene(LobbyScene::create());
-            }
-            if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-                guiLayer->showInvitePlayer(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getRemovePlayer().setaId));
-            }
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerRemoveListener, 1);
-    
-}
-
-void ReviewGame::addPlayerOffLineListener(){
-    playerOffLineListener = EventListenerCustom::create(MSG_PLAYER_OFF_LINE_NOTIFY, [=](EventCustom* event){
-        string buf = static_cast<char*>(event->getUserData());
-        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-        for (int i = 0; i < players.size(); i++){
-            if(players.at(i)->getSeatId() ==  atoi(buf.c_str())){
-                int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId());
-                if(seatId == ClientSeatId::left){
-                    playerLeft->setIsOffLine(true);
-                }else if(seatId == ClientSeatId::opposite){
-                    playerOpposite->setIsOffLine(true);
-                }else if(seatId == ClientSeatId::right){
-                    playerRight->setIsOffLine(true);
-                }
-            }
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerOffLineListener, 1);
-}
-
-
-void ReviewGame::addPlayerResumeListener(){
-    playerResumeListener = EventListenerCustom::create(MSG_PLAYER_RESUME_GAME, [=](EventCustom* event){
-        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-        GAMEDATA::getInstance()->setIsRecover(true);
-        Director::getInstance()->replaceScene(MjGameScene::create());
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
 }

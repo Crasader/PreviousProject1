@@ -96,10 +96,6 @@ private:
 	EventListenerCustom* heroChiRespListener;
 	EventListenerCustom* heroPengRespListener;
 	EventListenerCustom* heroGangRespListener;
-    EventListenerCustom* playerRemoveListener;
-    EventListenerCustom* playerOffLineListener;
-    EventListenerCustom* playerResumeListener;
-    EventListenerCustom* friendOpenRoomListener;
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
@@ -125,10 +121,5 @@ private:
 	void addPlayerTingNotifyListener();
 	void addHeroTingNotifyListener();
 	void addHeroTingRespListener();
-	void addLostConnectListener();
-	void addFriendInviteMeListener();
-    void addPlayerRemoveListener();
-    void addPlayerOffLineListener();
-    void addPlayerResumeListener();
 };
 #endif

@@ -193,12 +193,6 @@ void MahjongView::startGameAgain(){
 }
 
 void MahjongView::update(float dt){
-    interval += dt;
-    if(GAMEDATA::getInstance()->getIsFuPan()&&interval>5){
-        NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
-        interval = 0;
-        fupanStep++;
-    }
     if(GAMEDATA::getInstance()->getWaitNetwork()){
         LostNetwork* net = LostNetwork::create();
         net->setTag(2000);
@@ -1268,7 +1262,6 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(friendOpenRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
@@ -1277,7 +1270,6 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerOffLineListener);
-     Director::getInstance()->getEventDispatcher()->removeEventListener(fupanPlayerInfoListener);
     
 }
 
@@ -1363,33 +1355,6 @@ void MahjongView::addCoustomListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
     
-    fupanPlayerInfoListener = EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
-        FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();
-        for (int i = 0; i < data.players.size(); i++)
-        {
-           
-            PlayerGameData player = data.players.at(i);
-            Player* info = new Player();
-            info->setSeatId(player.seatId);
-            info->setGold(player.gold);
-            info->setDiamond(player.diamond);
-            info->setNickname(player.nickname);
-            info->setPicture(player.pic);
-            info->setGender(player.gender);
-            info->setScore(player.jifen);
-            info->setTicket(player.lequan);
-            info->setLockDiamond(player.bangzuan);
-            info->setPoxiaoId(player.poxiaoId);
-            info->setFangka(player.fangka);
-            info->setIP(player.ip);
-            info->setIsReady(true);
-            info->setUmark(player.umark);
-            GAMEDATA::getInstance()->addPlayersInfo(info);
-            addPlayer2Room();
-        }
-
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fupanPlayerInfoListener, 1);
 }
 
 void MahjongView::addOthersChiListener(){
@@ -1552,19 +1517,6 @@ void MahjongView::addHeroGangRespListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
-}
-
-void MahjongView::addFriendInviteMeListener(){
-    friendOpenRoomListener=Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_NOTIFY, [=](EventCustom* event){
-        FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
-        HintDialog* invite = HintDialog::create("好友"+data.nickname+"邀请你一起打牌",[=](Ref* ref){
-            FriendOpenRoomNotifyData data = GAMEDATA::getInstance()->getFriendOpenRoomNotify();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterFriendRoomCommand(data.pid));
-            auto item = (MenuItemImage*)ref;
-            item->getParent()->getParent()->removeFromParent();
-        });
-        addChild(invite,4);
-    });
 }
 
 
