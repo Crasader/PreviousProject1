@@ -337,6 +337,153 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
     }
 }
 
+void PlayerOpposite::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBase){
+    PlayerBase::showPlayerChi(data.chi.at(0), playerBase);
+    setStateCpg(true);
+    ((MahjongView*)getParent())->removeHeroPlayedIcon();
+    for (int j = 0; j < 2; j++){
+        playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
+        playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
+    }
+    Jong* jongland = Jong::create();
+    jongland->showJong(oppositecpglandscape, atoi(data.poker.c_str()));
+    jongland->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x,getCpgShowPostion((int)playerCpgRecords.size()).y+6);
+    addChild(jongland,10);
+    PlayerCpgRecord record;
+    record.pokersRecord.pushBack(jongland);
+    record.type = CpgType::chi;
+    playerBase->removeLastJong();
+    std::vector<std::string> chi = StringUtil::split(data.chi.at(0), ",");
+    for (int i = 0; i < chi.size(); i++){
+        Jong* jong = Jong::create();
+        jong->showJong(oppositecpgportrait, atoi(chi.at(i).c_str()));
+        jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - OPPOSITE_POKER_WIDTH * i-39, getCpgShowPostion(playerCpgRecords.size()).y));
+        addChild(jong, 30 - playerCpgRecords.size());
+        record.pokersRecord.pushBack(jong);
+    }
+    playerCpgRecords.push_back(record);
+}
+
+
+void PlayerOpposite::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase){
+    PlayerBase::showPlayerPeng(data, playerBase);
+    setStateCpg(true);
+    Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
+    ((MahjongView*)getParent())->removeHeroPlayedIcon();
+    for (int j = 0; j < 2; j++){
+        playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
+        playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
+    }
+    playerBase->removeLastJong();
+    PlayerCpgRecord record;
+    record.type = CpgType::peng;
+    Jong* jongpeng = Jong::create();
+    jongpeng->showJong(oppositecpglandscape, atoi(data.poker.c_str()));
+    int offsetX = 0;
+    if(playerBase->getClientSeat() == ClientSeatId::right){
+        offsetX = 38;
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x, getCpgShowPostion((int)playerCpgRecords.size()).y+5);
+        jongpeng->setLocalZOrder(30 - playerCpgRecords.size());
+    }else if(playerBase->getClientSeat() == ClientSeatId::left){
+        offsetX = 0;
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-73, getCpgShowPostion((int)playerCpgRecords.size()).y+5);
+        jongpeng->setLocalZOrder(30 - playerCpgRecords.size());
+    }else{
+        offsetX = 17;
+        jongpeng->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-34, getCpgShowPostion((int)playerCpgRecords.size()).y-34);
+        
+        jongpeng->setLocalZOrder(30 - playerCpgRecords.size()+1);
+    }
+    addChild(jongpeng);
+    record.pokersRecord.pushBack(jongpeng);
+    
+    std::vector<std::string> peng = StringUtil::split(data.peng, ",");
+    for (int i = 0; i < peng.size(); i++){
+        Jong* jong = Jong::create();
+        jong->showJong(oppositecpgportrait, atoi(peng.at(i).c_str()));
+        jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - OPPOSITE_POKER_WIDTH * i-offsetX, getCpgShowPostion(playerCpgRecords.size()).y));
+        addChild(jong, 30 - playerCpgRecords.size());
+        record.pokersRecord.pushBack(jong);
+    }
+    playerCpgRecords.push_back(record);
+}
+
+
+void PlayerOpposite::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase){
+    PlayerBase::showPlayerGang(data,playerBase);
+    if(data.flag == 1){
+        for (int j = 0; j < 4; j++){
+            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
+        }
+    }else if (data.flag == 2){
+        ((MahjongView*)getParent())->removeHeroPlayedIcon();
+        playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
+        playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
+    }
+    else{
+        for (int j = 0; j < 3; j++){
+            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
+        }
+    }
+    std::vector<std::string> gang = StringUtil::split(data.gang, ",");
+    gang.push_back(data.poker);
+    sort(gang.begin(), gang.end());
+    PlayerCpgRecord record;
+    if(data.flag ==1){
+        record.type = CpgType::angang;
+    }else{
+        record.type = CpgType::gang;
+    }
+    record.gangValue = atoi(gang.at(0).c_str());
+    if (data.flag == 2){
+        for (int i = 0; i < playerCpgRecords.size(); i++)
+        {
+            if (playerCpgRecords.at(i).type == CpgType::peng){
+                if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data.poker.c_str())){
+                    Jong* jong = Jong::create();
+                    jong->showJong(oppositecpgportrait, atoi(data.poker.c_str()));
+                    jong->setPosition(getCpgShowPostion(i).x-OPPOSITE_POKER_WIDTH-2,getCpgShowPostion(i).y-3);
+                    addChild(jong, 35);
+                    playerCpgRecords.at(i).type = CpgType::penggang;
+                    playerCpgRecords.at(i).pokersRecord.pushBack(jong);
+                }
+            }
+        }
+    }
+    else{
+        if (data.flag == 0){
+            playerBase->removeLastJong();
+        }
+        for (int i = 0; i < 4; i++){
+            Jong* jong = Jong::create();
+            if (data.flag == 1){
+                if(i==3){
+                    record.anGangFan = true;
+                    jong->showJong(oppositecpgportrait, atoi(gang.at(0).c_str()));
+                }else{
+                    jong->showJong(oppositeangang, atoi(gang.at(0).c_str()),false);
+                }
+            }
+            else{
+                jong->showJong(oppositecpgportrait, atoi(gang.at(0).c_str()));
+            }
+            if (i == 3){
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 34, getCpgShowPostion((int)playerCpgRecords.size()).y - 2));
+                addChild(jong, 10);
+            }
+            else{
+                jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - OPPOSITE_POKER_WIDTH * i, getCpgShowPostion((int)playerCpgRecords.size()).y));
+                addChild(jong, 5);
+            }
+            record.pokersRecord.pushBack(jong);
+        }
+        playerCpgRecords.push_back(record);
+    }
+}
+
+
 void PlayerOpposite::recoverHua(int hua){
     setHuaNum(hua);
     showPlayerHua(getHuaNum());
