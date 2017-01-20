@@ -715,7 +715,7 @@ void PlayerHero::eraseHeroJong(Jong* jong){
 
 void PlayerHero::removePlayedIcon(){
     if(NULL!= playedIcon){
-        //        playedIcon->setVisible(false);
+            playedIcon->setVisible(false);
     }
 }
 

@@ -27,7 +27,6 @@ public:
     void heroPlayPokerAuto(int poker);
     void showGuiLayer();
 	void removeHeroPlayedIcon();
-    void showHandPokerOver(int seatId);//翻牌
     void showPaiduiNum(int num);
     
 private:

@@ -50,6 +50,7 @@ void ReviewGame::initData(){
     GAMEDATA::getInstance()->setIsGotoLobby(false);
     GAMEDATA::getInstance()->setStartPaiAngang(false);
     Audio::getInstance()->setHasTingPlayer(false);
+    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
 }
 
 void ReviewGame::loadView(){
@@ -695,96 +696,6 @@ void ReviewGame::showHuPaiXing(std::string paixing){
     addChild(guangXiao1,999);
     guangXiao1->runAction(Sequence::create(DelayTime::create(12.0f/24),Spawn::create(ScaleTo::create(5.0/24, 2.0f,1.2f),MoveTo::create(5.0/24, pos2),FadeTo::create(5.0/24, 200),NULL),Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0), NULL),NULL));
     
-    
-}
-
-void ReviewGame::showHandPokerOver(int seatId){
-    vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
-    string leftJongs="";
-    string rightJongs="";
-    string oppositeJongs="";
-    string heroJongs="";
-    int max =0;
-    string maxHuType="";
-    for (GameResultData data: results) {
-        int seat = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-        if(seat == ClientSeatId::left){
-            leftJongs =data.showPoker;
-        }else if(seat == ClientSeatId::opposite){
-            oppositeJongs =data.showPoker;
-        }else if(seat == ClientSeatId::right){
-            rightJongs =data.showPoker;
-        }else{
-            heroJongs =data.showPoker;
-        }
-        //获取一炮多响情况下胡的最大的数据
-        if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
-            if(data.jifendelta >= max){
-                maxHuType = data.huType;
-                max = data.jifendelta;
-            }
-        }else{
-            if(data.golddelta >= max){
-                maxHuType = data.huType;
-                max =data.golddelta;
-            }
-        }
-    }
-    //翻牌
-
-    if(seatId == ClientSeatId::left){
-        playerLeft->hideHandJongs();
-        playerLeft->updateHandJongs(leftJongs,true);
-        showHuPaiXing(maxHuType);
-        schedule([=](float dt){
-            playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs,false);
-            playerOpposite->hideHandJongs();
-            playerOpposite->updateHandJongs(oppositeJongs,false);
-            playerHero->hideHandJongs();
-            playerHero->updateHandJongs(heroJongs,false);
-        }, 0, 0, 15.0f/24,"fanpai");
-    }else if(seatId == ClientSeatId::opposite){
-        playerOpposite->hideHandJongs();
-        playerOpposite->updateHandJongs(oppositeJongs,true);
-        showHuPaiXing(maxHuType);
-        schedule([=](float dt){
-            playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs,false);
-            playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs,false);
-            playerHero->hideHandJongs();
-            playerHero->updateHandJongs(heroJongs,false);
-        }, 0, 0, 15.0f/24,"fanpai");
-    }else if(seatId == ClientSeatId::right){
-        playerRight->hideHandJongs();
-        playerRight->updateHandJongs(rightJongs,true);
-        showHuPaiXing(maxHuType);
-        schedule([=](float dt){
-            playerOpposite->hideHandJongs();
-            playerOpposite->updateHandJongs(oppositeJongs,false);
-            playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs,false);
-            playerHero->hideHandJongs();
-            playerHero->updateHandJongs(heroJongs,false);
-        }, 0, 0, 15.0f/24,"fanpai");
-    }else{
-        playerHero->hideHandJongs();
-        if(GAMEDATA::getInstance()->getIsLiuJu()){
-            playerHero->updateHandJongs(heroJongs,false);
-        }else{
-            playerHero->updateHandJongs(heroJongs,true);
-        }
-        showHuPaiXing(maxHuType);
-        schedule([=](float dt){
-            playerOpposite->hideHandJongs();
-            playerOpposite->updateHandJongs(oppositeJongs,false);
-            playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs,false);
-            playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs,false);
-        }, 0, 0, 15.0f/24,"fanpai");
-    }
     
 }
 
