@@ -454,7 +454,7 @@ void ReviewGame::addJongPlayedListener(){
         if (seatId == ClientSeatId::left){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
-            playerLeft->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            playerLeft->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
@@ -464,7 +464,7 @@ void ReviewGame::addJongPlayedListener(){
         else if (seatId == ClientSeatId::right){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
-            playerRight->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            playerRight->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
@@ -474,7 +474,7 @@ void ReviewGame::addJongPlayedListener(){
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
-            playerOpposite->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            playerOpposite->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){

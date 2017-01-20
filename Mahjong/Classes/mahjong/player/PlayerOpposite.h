@@ -14,6 +14,8 @@ public:
     void doEventTimeOver(int type) override;
     void drawHandJong();
     void drawPlayedJong(int ctype);
+    void drawPlayedJongMingpai(int ctype);
+    void settleJongMingpai();
 	void drawOppositePlayerTurn();
     void drawOppositePlayerTurnMingpai(int jong);
 	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);

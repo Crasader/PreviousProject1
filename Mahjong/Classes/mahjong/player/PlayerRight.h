@@ -11,8 +11,10 @@ public:
 	virtual bool init() override;
 	void drawHandJong();
 	void drawPlayedJong(int ctype);
+    void drawPlayedJongMingpai(int ctype);
 	void drawRightPlayerTurn();
     void drawRightPlayerTurnMingpai(int jong);
+    void settleJongMingpai();
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;
     void doEventTimeOver(int type) override;

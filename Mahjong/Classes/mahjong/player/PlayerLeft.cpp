@@ -82,6 +82,61 @@ void PlayerLeft::drawPlayedJong(int ctype){
     showCurrentBigJong(ctype);
 }
 
+void PlayerLeft::drawPlayedJongMingpai(int ctype){
+    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
+    //移除手牌
+    for(auto var : playerHandJongs){
+        if(var->getJongType()== ctype){
+            var->removeFromParent();
+            playerHandJongs.eraseObject(var);
+            break;
+        }
+    }
+    Jong* lastPlayedJong = Jong::create();
+    lastPlayedJong->showJong(leftplayed, ctype);
+    lastPlayedJong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 35));
+    addChild(lastPlayedJong);
+    playerPlayedJongs.pushBack(lastPlayedJong);
+    Point startPoint = Point(LEFT_POS_X, LEFT_POS_Y - 35);
+    Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
+    ccBezierConfig bezier;
+    bezier.controlPoint_1 = startPoint;
+    bezier.controlPoint_2 = Point(startPoint.x + (endPoint.x - startPoint.x) * 0.5,
+                                  startPoint.y + (endPoint.y - startPoint.x)*0.5);
+    bezier.endPosition = endPoint;
+    BezierTo *actionMove = BezierTo::create(0.5f, bezier);
+    CallFunc* callback = CallFunc::create([=](){
+        ((MahjongView*)getParent())->removeHeroPlayedIcon();
+        showCurrentPlayedJongIcon(true);
+    });
+    Sequence* sequence = Sequence::create(Spawn::create(actionMove,CallFunc::create([=](){
+        settleJongMingpai();
+        if(getStateCpg()){
+            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
+            setStateCpg(false);
+        }
+    }), NULL) ,callback, NULL);
+    lastPlayedJong->runAction(sequence);
+    showCurrentBigJong(ctype);
+}
+
+void PlayerLeft::settleJongMingpai(){
+    int size = (int)playerHandJongs.size();
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = size - 1; j > i; j--) {
+            if (playerHandJongs.at(j)->getJongType() < playerHandJongs.at(j - 1)->getJongType()) {
+                playerHandJongs.swap(playerHandJongs.at(j), playerHandJongs.at(j - 1));
+            }
+        }
+    }
+    for (int i=0;i<playerHandJongs.size();i++)
+    {
+        playerHandJongs.at(i)->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 35 * i));
+        playerHandJongs.at(i)->setLocalZOrder(30-i);
+    }
+}
+
 
 Point PlayerLeft::getHuaJongPos(int number){
     return Point(180, 440 - 22 * number);
