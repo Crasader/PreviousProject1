@@ -47,6 +47,7 @@ bool CardStack::init(){
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         LabelAtlas* jushu = LabelAtlas::create(StringUtils::format("%s:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()), "gameview/ju_shu_num.png",20,30,'0');
         jushu->setColor(Color3B(234,195,90));
+        jushu->setTag(6510);
         jushu->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         jushu->setPosition(990,165);
         addChild(jushu);
@@ -63,4 +64,10 @@ void CardStack::setShowNum(int  num){
     if(NULL != getChildByTag(911)){
         ((LabelAtlas*)getChildByTag(911)) ->setString(StringUtils::format("%d",num));
     }
+    if(NULL != getChildByTag(6510)){
+       
+        ((LabelAtlas*)getChildByTag(6510)) ->setString(StringUtils::format("%s:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()));
+    }
+
 }
+

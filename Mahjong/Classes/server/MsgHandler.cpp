@@ -2244,17 +2244,17 @@ void MsgHandler::handleFupanInfo(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-     PlayBackInfo info;
+    PlayBackInfo info;
     if(_mDoc.HasMember("playback")){
         const rapidjson::Value &playback = _mDoc["playback"];
-       
+        
         for(int i=0;i<playback.Capacity();i++){
             const rapidjson::Value &temp = playback[i];
             if(temp.HasMember("key")){
                 info.playBackInfo.push_back(temp["key"].GetString());
             }
         }
-       
+        
     }
     if(_mDoc.HasMember("who")){
         const rapidjson::Value &who = _mDoc["who"];
@@ -2270,6 +2270,25 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     FupanGameData fupan;
+    FriendOpenRoomRespData data;
+    if(_mDoc.HasMember("fanghao")){
+        
+        data.prid = _mDoc["fanghao"].GetString();
+    }
+    if(_mDoc.HasMember("prjucount")){
+        data.prjucount = StringUtils::format("%d",_mDoc["prjucount"].GetInt());
+    }
+    if(_mDoc.HasMember("prjushu")){
+        data.prjushu = StringUtils::format("%d",_mDoc["prjushu"].GetInt());
+    }
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
+//             log("AAAAA = %s",StringUtils::format("%s:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()).c_str());
+    if(_mDoc.HasMember("hf")){
+        GAMEDATA::getInstance()->setHuangfan(StringUtils::format("%d",_mDoc["hf"].GetInt()));
+    }
+    if(_mDoc.HasMember("kb")){
+        GAMEDATA::getInstance()->setKaibao(StringUtils::format("%d",_mDoc["kb"].GetInt()));
+    }
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;
@@ -2287,7 +2306,7 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         data.pic = temp["pic"].GetString();
         data.ip = temp["ip"].GetString();
         data.hua = temp["hua"].GetInt();
-        data.status = 0;
+        data.status = 2;
         data.ifready = 0;
         data.hand = temp["poker"].GetString();
         fupan.players.push_back(data);
