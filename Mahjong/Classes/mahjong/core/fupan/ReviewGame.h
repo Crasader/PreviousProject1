@@ -49,7 +49,6 @@ private:
 	void update(float dt) override;
 	void initData();
 	void loadView();
-	void updatePlayerView(int type,Player* info);
 	void addTouchListener();
 	void drawCpgControllPad();
 	void showHeroChiUi();
@@ -66,7 +65,6 @@ private:
     void showOriention();
     void showGamePaidui(int num);
     void showHuPaiXing(std::string paixing);
-    void firstReplaceFlower();//首次杠花
     void createPlayer(PlayerGameData data, int type, Player* playerInfo);
     
 	PlayerBase* getPlayerBySeatId(int sid);

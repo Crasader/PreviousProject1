@@ -112,8 +112,6 @@ void PlayerLeft::drawPlayedJongMingpai(int ctype){
     Sequence* sequence = Sequence::create(Spawn::create(actionMove,CallFunc::create([=](){
         settleJongMingpai();
         if(getStateCpg()){
-            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
-            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
             setStateCpg(false);
         }
     }), NULL) ,callback, NULL);
@@ -267,7 +265,6 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
         }
     }
-    
     std::vector<std::string> gang = StringUtil::split(data.gang, ",");
     gang.push_back(data.poker);
     sort(gang.begin(), gang.end());
@@ -327,11 +324,17 @@ void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBas
     PlayerBase::showPlayerChi(data.chi.at(0), playerBase);
     setStateCpg(true);
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
-    for (int j = 0; j < 2; j++)
-    {
-        playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
-        playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
+    std::vector<string> chipai =  StringUtil::split(data.chi.at(0), ",");
+    for (int i = 0; i < chipai.size(); i++){
+        for (int j = 0; j < playerHandJongs.size(); j++){
+            if (atoi(chipai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
+                playerHandJongs.at(j)->showJong(herocpgportrait, playerHandJongs.at(j)->getJongType());
+                playerHandJongs.eraseObject(playerHandJongs.at(j));
+                break;
+            }
+        }
     }
+    settleJongMingpai();
     Jong* jongland = Jong::create();
     jongland->showJong(leftcpgportrait, atoi(data.poker.c_str()));
     jongland->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-5,getCpgShowPostion((int)playerCpgRecords.size()).y);
@@ -356,11 +359,17 @@ void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBa
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
     ((MahjongView*)getParent())->removeHeroPlayedIcon();
-    for (int j = 0; j < 2; j++)
-    {
-        playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
-        playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
+    std::vector<string> chipai =  StringUtil::split(data.peng, ",");
+    for (int i = 0; i < 2; i++){
+        for (int j = 0; j < playerHandJongs.size(); j++){
+            if (atoi(chipai.at(0).c_str()) == playerHandJongs.at(j)->getJongType()){
+                playerHandJongs.at(j)->removeFromParent();
+                playerHandJongs.eraseObject(playerHandJongs.at(j));
+                break;
+            }
+        }
     }
+    settleJongMingpai();
     playerBase->removeLastJong();
     PlayerCpgRecord record;
     record.type = CpgType::peng;
@@ -395,24 +404,16 @@ void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBa
 
 void PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
-    if(data.flag == 1){
-        for (int j = 0; j < 4; j++){
-            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
-            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
-        }
-    }else if (data.flag == 2){
-        ((MahjongView*)getParent())->removeHeroPlayedIcon();
-        playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
-        playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
-    }
-    else{
-        for (int j = 0; j < 3; j++)
-        {
-            playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
-            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
+
+    std::vector<string> chipai =  StringUtil::split(data.gang, ",");
+    for (int j = 0; j < playerHandJongs.size(); j++){
+        if (atoi(chipai.at(0).c_str()) == playerHandJongs.at(j)->getJongType()){
+            playerHandJongs.at(j)->showJong(herocpgportrait, playerHandJongs.at(j)->getJongType());
+            playerHandJongs.eraseObject(playerHandJongs.at(j));
+            break;
         }
     }
-    
+    settleJongMingpai();
     std::vector<std::string> gang = StringUtil::split(data.gang, ",");
     gang.push_back(data.poker);
     sort(gang.begin(), gang.end());
