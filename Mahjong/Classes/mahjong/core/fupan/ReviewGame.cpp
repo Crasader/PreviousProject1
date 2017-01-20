@@ -106,12 +106,34 @@ void ReviewGame::loadView(){
     lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
     emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    
+    MenuItem* item1 = MenuItem::create();
+    item1->setContentSize(Size(1280, 720));
+    Menu* menu1 = Menu::create(item1, NULL);
+    addChild(menu1,800);
+    
 }
 
 
+void ReviewGame::controlDown(){
+    if(fupanStep>0)
+        fupanStep --;
+}
+void ReviewGame::controlPause(){
+
+}
+void ReviewGame::controlUp(){
+    fupanStep++;
+    if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size())
+        NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
+}
+void ReviewGame::controlBack(){
+    Director::getInstance()->replaceScene(LobbyScene::create());
+}
+
 void ReviewGame::update(float dt){
     interval += dt;
-    if(GAMEDATA::getInstance()->getIsFuPan()&&interval>2){
+    if(GAMEDATA::getInstance()->getIsFuPan()&&interval>1.5f){
         if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size())
             NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
         interval = 0;
@@ -822,6 +844,18 @@ void ReviewGame::addCoustomListener(){
 
         showPaiduiNum(91);
         guiLayer->updateData();
+        auto controlbg = Sprite::create("fupan/bg.png");
+        controlbg->setPosition(640,220);
+        addChild(controlbg,100);
+        
+        MenuItemImage* image1 = MenuItemImage::create("fupan/down_1.png", "fupan/down_2.png",CC_CALLBACK_0(ReviewGame::controlDown, this));
+        MenuItemImage* image2 = MenuItemImage::create("fupan/pause_1.png", "fupan/pause_2.png",CC_CALLBACK_0(ReviewGame::controlPause, this));
+        MenuItemImage* image3 = MenuItemImage::create("fupan/up_1.png", "fupan/up_2.png",CC_CALLBACK_0(ReviewGame::controlUp, this));
+        MenuItemImage* image4 = MenuItemImage::create("fupan/back_1.png", "fupan/back_2.png",CC_CALLBACK_0(ReviewGame::controlBack, this));
+        auto menucontrol = Menu::create(image1,image2,image3,image4,NULL);
+        menucontrol->alignItemsHorizontallyWithPadding(50);
+        menucontrol->setPosition(640,220);
+        addChild(menucontrol,900);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fupanPlayerInfoListener, 1);
 }

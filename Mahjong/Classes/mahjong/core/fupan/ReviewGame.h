@@ -104,5 +104,10 @@ private:
 	void addPlayerTingNotifyListener();
 	void addHeroTingNotifyListener();
 	void addHeroTingRespListener();
+    
+    void controlDown();
+    void controlPause();
+    void controlUp();
+    void controlBack();
 };
 #endif
