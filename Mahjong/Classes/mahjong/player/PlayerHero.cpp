@@ -168,9 +168,9 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
 void PlayerHero::updateSelectedInfo(Jong* jong){
     for(auto var :playerHandJongs){
         if(jong == var){
-             var->setJongSelectIcon(true);
+            var->setJongSelectIcon(true);
         }else{
-             var->setJongSelectIcon(false);
+            var->setJongSelectIcon(false);
         }
     }
 }
@@ -291,7 +291,8 @@ void PlayerHero::updateHandJongs(std::string jongs,bool hu){
                 if(hu&&i==pokers.size()-1){
                     jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i+10, JONG_POS_Y));
                 }else{
-                    jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i, JONG_POS_Y));
+                    if(playerHandJongs.size()>0)
+                        jong->setPosition(Point(playerHandJongs.at(0)->getPosition().x + 60 * i, JONG_POS_Y));
                 }
                 addChild(jong);
             }
@@ -713,8 +714,9 @@ void PlayerHero::eraseHeroJong(Jong* jong){
 }
 
 void PlayerHero::removePlayedIcon(){
-//    if(NULL!= playedIcon)
-//        playedIcon->setVisible(false);
+    if(NULL!= playedIcon){
+        //        playedIcon->setVisible(false);
+    }
 }
 
 void PlayerHero::doEventTimeOver(int type){

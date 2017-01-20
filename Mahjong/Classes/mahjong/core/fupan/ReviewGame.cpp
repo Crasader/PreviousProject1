@@ -180,7 +180,8 @@ void ReviewGame::startGameAgain(){
 void ReviewGame::update(float dt){
     interval += dt;
     if(GAMEDATA::getInstance()->getIsFuPan()&&interval>2){
-        NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
+        if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size())
+            NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
         interval = 0;
         fupanStep++;
     }
@@ -899,6 +900,7 @@ void ReviewGame::showHandPokerOver(int seatId){
         }
     }
     //翻牌
+
     if(seatId == ClientSeatId::left){
         playerLeft->hideHandJongs();
         playerLeft->updateHandJongs(leftJongs,true);
@@ -1194,6 +1196,12 @@ void ReviewGame::addOthersChiListener(){
             playerOpposite->drawPlayerChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerOpposite->playerCpgAnim(CpgType::chi, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
+        }else if (seatId == ClientSeatId::hero){
+            hideTingGangControllPad();
+            HeroCpgRespData heroTingData;
+            playerHero->drawHeroPeng(heroTingData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
+            playerHero->startTimeClockAnim();
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersChiListener, 1);
@@ -1221,6 +1229,13 @@ void ReviewGame::addOthersPengListener(){
             playerOpposite->drawPlayerPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
+        } else if (seatId == ClientSeatId::hero){
+            hideTingGangControllPad();
+            HeroCpgRespData heroCpgData;
+            heroCpgData.result = 1;
+            playerHero->drawHeroPeng(heroCpgData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
+            playerHero->startTimeClockAnim();
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
@@ -1245,6 +1260,12 @@ void ReviewGame::addOthersGangListener(){
             hideTingGangControllPad();
             playerOpposite->drawPlayerGang(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
+        }else if (seatId == ClientSeatId::hero){
+            hideTingGangControllPad();
+            HeroCpgRespData heroTingData;
+            playerHero->drawHeroPeng(heroTingData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
+            playerHero->startTimeClockAnim();
         }
         
     });

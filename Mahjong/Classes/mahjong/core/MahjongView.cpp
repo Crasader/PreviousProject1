@@ -304,7 +304,7 @@ void MahjongView::addPlayer2Room(){
 
 void MahjongView::drawCpgControllPad(){
     controllPad->removeAllChildrenWithCleanup(true);
-    auto qi =MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoCpgQi,this));
+    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoCpgQi,this));
     qi->setPosition(Point(0, 0));
     controllPad->addChild(qi);
     MenuItemImage* chi = nullptr;
