@@ -34,6 +34,7 @@ private:
 	int currentReadyPlayer;
     float interval =0;
     int fupanStep = 0;
+    bool playing = true;
 	std::string  selectedChi;
 	Sprite* choiceMenu;
     Menu* controllPad;

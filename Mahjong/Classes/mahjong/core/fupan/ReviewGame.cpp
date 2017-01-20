@@ -41,6 +41,7 @@ void ReviewGame::onEnter(){
 
 
 void ReviewGame::initData(){
+    playing = true;
     playerHero = NULL;
     playerLeft = NULL;
     playerRight = NULL;
@@ -120,7 +121,20 @@ void ReviewGame::controlDown(){
         fupanStep --;
 }
 void ReviewGame::controlPause(){
-
+    playing= !playing;
+    if(NULL == getChildByTag(1088)||NULL == (getChildByTag(1088)->getChildByTag(1087)))
+        return;
+    if(playing){
+         auto iamge001 = Sprite::create("fupan/pause_1.png");
+        ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setNormalImage(iamge001);
+        auto iamge002 = Sprite::create("fupan/pause_2.png");
+        ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setSelectedImage(iamge002);
+    }else{
+        auto iamge001 = Sprite::create("fupan/play_1.png");
+        ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setNormalImage(iamge001);
+        auto iamge002 = Sprite::create("fupan/play_2.png");
+        ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setSelectedImage(iamge002);
+    }
 }
 void ReviewGame::controlUp(){
     fupanStep++;
@@ -133,13 +147,12 @@ void ReviewGame::controlBack(){
 
 void ReviewGame::update(float dt){
     interval += dt;
-    if(GAMEDATA::getInstance()->getIsFuPan()&&interval>1.5f){
+    if(GAMEDATA::getInstance()->getIsFuPan()&&interval>1.5f&&playing){
         if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size())
             NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
         interval = 0;
         fupanStep++;
     }
-
 }
 
 
@@ -821,7 +834,6 @@ void ReviewGame::addCoustomListener(){
         
         for (int i = 0; i < data.players.size(); i++)
         {
-            
             PlayerGameData player = data.players.at(i);
             Player* info = new Player();
             info->setSeatId(player.seatId);
@@ -850,11 +862,13 @@ void ReviewGame::addCoustomListener(){
         
         MenuItemImage* image1 = MenuItemImage::create("fupan/down_1.png", "fupan/down_2.png",CC_CALLBACK_0(ReviewGame::controlDown, this));
         MenuItemImage* image2 = MenuItemImage::create("fupan/pause_1.png", "fupan/pause_2.png",CC_CALLBACK_0(ReviewGame::controlPause, this));
+        image2->setTag(1087);
         MenuItemImage* image3 = MenuItemImage::create("fupan/up_1.png", "fupan/up_2.png",CC_CALLBACK_0(ReviewGame::controlUp, this));
         MenuItemImage* image4 = MenuItemImage::create("fupan/back_1.png", "fupan/back_2.png",CC_CALLBACK_0(ReviewGame::controlBack, this));
         auto menucontrol = Menu::create(image1,image2,image3,image4,NULL);
         menucontrol->alignItemsHorizontallyWithPadding(50);
         menucontrol->setPosition(640,220);
+        menucontrol->setTag(1088);
         addChild(menucontrol,900);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fupanPlayerInfoListener, 1);
