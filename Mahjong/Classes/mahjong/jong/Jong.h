@@ -21,6 +21,7 @@ enum JongViewType{
     herocpglandscape,//吃碰杠横向
     
     lefthand,
+    leftmingpai,
     leftplayed,
     leftdeal,
     leftangang,
@@ -28,6 +29,7 @@ enum JongViewType{
     leftcpglandscape,
     
     righthand,
+    rightmingpai,
     rightplayed,
     rightdeal,
     rightangang,
@@ -35,6 +37,7 @@ enum JongViewType{
     rightcpglandscape,
     
     oppositehand,
+    oppositemingpai,
     oppositeplayed,
     oppositedeal,
     oppositeangang,

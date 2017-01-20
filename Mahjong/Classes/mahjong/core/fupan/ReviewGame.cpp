@@ -67,115 +67,45 @@ void ReviewGame::loadView(){
     choiceMenu->setAnchorPoint(Point(0, 0));
     choiceMenu->setPosition(Point(0, 0));
     addChild(choiceMenu, 100);
-    //跑马灯
-    ScrollTextEx* scroll = ScrollTextEx::create();
-    scroll->setAutoScroll(true);
-    scroll->setTag(9980);
-    scroll->setPosition(600,600);
-    addChild(scroll,2);
     //Toast 消息
     tao = InfoToast::create();
     addChild(tao,50);
     showOriention();
+    //牌堆
     CardStack* stack = CardStack::create();
     stack->setTag(1129);
     stack->setVisible(false);
     addChild(stack);
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
-        wukaibao->setVisible(false);
-        addChild(wukaibao);
-        if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
-            wukaibao->setVisible(true);
-        }
-        auto lezi = Sprite::create();
-        addChild(lezi);
-        if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
-            //有乐子
-            lezi->setTexture("gameview/40_lezi.png");
-        }else{
-            lezi->setTexture("gameview/wu_lezi.png");
-        }
-        auto emsc =  Sprite::create("gameview/2mo3chong.png");
-        emsc->setVisible(false);
-        addChild(emsc);
-        if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
-            emsc->setVisible(true);
-        }
-        int wid = lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
-        wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
-        wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
-        lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
-        emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    //复盘功能只存在于私人房间
+    auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
+    wukaibao->setVisible(false);
+    addChild(wukaibao);
+    if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
+        wukaibao->setVisible(true);
     }
+    auto lezi = Sprite::create();
+    addChild(lezi);
+    if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
+        //有乐子
+        lezi->setTexture("gameview/40_lezi.png");
+    }else{
+        lezi->setTexture("gameview/wu_lezi.png");
+    }
+    auto emsc =  Sprite::create("gameview/2mo3chong.png");
+    emsc->setVisible(false);
+    addChild(emsc);
+    if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
+        emsc->setVisible(true);
+    }
+    int wid = lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
+    wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
+    wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
+    lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
+    emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
 }
 
-void ReviewGame::startGameFirst(){
-    if(GAMEDATA::getInstance()->getFriendOpenRoomResp().kb == "1"){
-        GAMEDATA::getInstance()->setKaibao("1");
-    }else{
-        GAMEDATA::getInstance()->setKaibao("0");
-    }
-    if(GAMEDATA::getInstance()->getFriendOpenRoomResp().huangfan == "1"){
-        GAMEDATA::getInstance()->setHuangfan("1");
-    }else{
-        GAMEDATA::getInstance()->setHuangfan("0");
-    }
-    guiLayer->updateData();
-    Player* info = new Player();
-    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
-    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        info->setIsReady(true);
-    }else{
-        info->setIsReady(false);
-    }
-    info->setTicket(UserData::getInstance()->getTicket());
-    info->setGold(UserData::getInstance()->getGold());
-    info->setGender(UserData::getInstance()->getGender());
-    info->setNickname(UserData::getInstance()->getNickName());
-    info->setPicture(UserData::getInstance()->getPicture());
-    info->setFangka(UserData::getInstance()->getFangkaNum());
-    info->setIP(GAMEDATA::getInstance()->getIP());
-    info->setUmark(UserData::getInstance()->getMarkId());
-    info->setScore(GAMEDATA::getInstance()->getScore());
-    GAMEDATA::getInstance()->addPlayersInfo(info);
-}
-
-void ReviewGame::startGameAgain(){
-    
-    vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-    for (int i = 0; i < players.size(); i++){
-        for(auto var:GAMEDATA::getInstance()->getEnterRoomResp().playerReadys){
-            if(var.poxiaoId == players.at(i)->getPoxiaoId()){
-                players.at(i)->setIsReady(var.ifready ==1?true:false);
-            }
-        }
-        if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
-            players.at(i)->setIsReady(true);
-        }
-    }
-    if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
-        GAMEDATA::getInstance()->setKaibao("1");
-    }else{
-        GAMEDATA::getInstance()->setKaibao("0");
-    }
-    if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
-        GAMEDATA::getInstance()->setHuangfan("1");
-    }else{
-        GAMEDATA::getInstance()->setHuangfan("0");
-    }
-    guiLayer->updateData();
-    ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
-    ((Orientation*)getChildByTag(123))->resetBank();
-    GAMEDATA::getInstance()->setIsTingProcess(false);
-    GAMEDATA::getInstance()->setIsTingState(false);
-    schedule([=](float dt){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
-    }, 0, 0, 1.0f,"continueGame");
-}
 
 void ReviewGame::update(float dt){
     interval += dt;
@@ -228,21 +158,6 @@ void ReviewGame::updatePlayerView(int type, Player* playerInfo){
         }
     }
 }
-
-
-
-
-void ReviewGame::addPlayer2Room(){
-    vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-    for (int i = 0; i < players.size(); i++){
-        updatePlayerView(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()), players.at(i));
-    }
-}
-
-
-
-
-
 
 void ReviewGame::drawCpgControllPad(){
     controllPad->removeAllChildrenWithCleanup(true);
@@ -487,51 +402,6 @@ PlayerBase* ReviewGame::getPlayerBySeatId(int sid){
     }
     else{
         return playerHero;
-    }
-}
-
-void ReviewGame::firstReplaceFlower() {
-    ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
-    showPaiduiNum(atoi(vec.rest.c_str()));
-    for (int i = 0; i < vec.times.size(); i++){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
-        if (seatId == ClientSeatId::hero){
-            playerHero->setReplacePoker(vec.times.at(i));
-            playerHero->replaceFlower();
-        }
-        else if (seatId == ClientSeatId::left){
-            playerLeft->setReplacePoker(vec.times.at(i));
-            playerLeft->replaceHandHua(leftplayed);
-        }
-        else if (seatId == ClientSeatId::right){
-            playerRight->setReplacePoker(vec.times.at(i));
-            playerRight->replaceHandHua(rightplayed);
-        }
-        else if (seatId == ClientSeatId::opposite){
-            playerOpposite->setReplacePoker(vec.times.at(i));
-            playerOpposite->replaceHandHua(oppositeplayed);
-        }
-    }
-    for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
-        if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
-            int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
-            if(clientId == ClientSeatId::left){
-                playerLeft->startTimeClockAnim();
-            }else if(clientId == ClientSeatId::opposite){
-                playerOpposite->startTimeClockAnim();
-            }else if(clientId == ClientSeatId::right){
-                playerRight->startTimeClockAnim();
-            }else if(clientId == ClientSeatId::hero){
-                if(GAMEDATA::getInstance()->getStartPaiAngang()){
-                    if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-                        showTingGangControllPad();
-                        playerHero->startTimeClockAnim(9, 2);
-                    }
-                }else{
-                    playerHero->startTimeClockAnim();
-                }
-            }
-        }
     }
 }
 
@@ -957,7 +827,7 @@ void ReviewGame::showHandPokerOver(int seatId){
     
 }
 
-void ReviewGame::recoverPlayer(PlayerGameData data, int type, Player* playerInfo){
+void ReviewGame::createPlayer(PlayerGameData data, int type, Player* playerInfo){
     if (type == ClientSeatId::hero){
         if (playerHero == NULL){
             playerHero = PlayerHero::create();
@@ -979,7 +849,7 @@ void ReviewGame::recoverPlayer(PlayerGameData data, int type, Player* playerInfo
             playerLeft->setIsOffLine(data.isOnline == 0?true:false);
             addChild(playerLeft);
             playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerLeft->recoverHand(data.hand);
+            playerLeft->drawMingPai(data.hand);
             playerLeft->recoverPlayed(data.outhand);
             playerLeft->recoverHua(data.hua);
             
@@ -993,7 +863,7 @@ void ReviewGame::recoverPlayer(PlayerGameData data, int type, Player* playerInfo
             playerRight->setIsOffLine(data.isOnline == 0?true:false);
             addChild(playerRight);
             playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerRight->recoverHand(data.hand);
+            playerRight->drawMingPai(data.hand);
             playerRight->recoverPlayed(data.outhand);
             playerRight->recoverHua(data.hua);
             
@@ -1007,7 +877,7 @@ void ReviewGame::recoverPlayer(PlayerGameData data, int type, Player* playerInfo
             playerOpposite->setIsOffLine(data.isOnline == 0?true:false);
             addChild(playerOpposite);
             playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerOpposite->recoverHand(data.hand);
+            playerOpposite->drawMingPai(data.hand);
             playerOpposite->recoverPlayed(data.outhand);
             playerOpposite->recoverHua(data.hua);
             
@@ -1074,9 +944,6 @@ void ReviewGame::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
@@ -1100,37 +967,6 @@ void ReviewGame::addCoustomListener(){
     addHeroChiRespListener();
     addHeroPengRespListener();
     addHeroGangRespListener();
-    //登录地址变更
-    playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
-        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
-            exit(0);
-        });
-        addChild(hin,5);
-    });
-    
-    
-    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        std::string name = static_cast<char*>(event->getUserData());
-        dis->setNickName(name);
-        addChild(dis,1000);
-    });
-    
-    dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
-        DissolveData data = GAMEDATA::getInstance()->getDissolveData();
-        std::string  name ="";
-        for(auto var :GAMEDATA::getInstance()->getPlayersInfo()){
-            if(data.pid == var->getPoxiaoId()){
-                name =var->getNickname();
-            }
-        }
-        if(data.agree == "0"){
-            tao->addToast(StringUtils::format("%s不同意解散房间",name.c_str()));
-        }else{
-            tao->addToast(StringUtils::format("%s同意解散房间",name.c_str()));
-        }
-    });
-    
     
     //好友房间游戏未开始重新连接
     coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
@@ -1170,7 +1006,7 @@ void ReviewGame::addCoustomListener(){
             info->setIsReady(true);
             info->setUmark(player.umark);
             GAMEDATA::getInstance()->addPlayersInfo(info);
-            recoverPlayer(player,SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId),info);
+            createPlayer(player,SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId),info);
         }
         showPaiduiNum(91);
     });

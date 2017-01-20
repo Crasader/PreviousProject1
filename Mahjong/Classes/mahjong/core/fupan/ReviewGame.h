@@ -25,9 +25,7 @@ public:
 	void showTingGangControllPad();
 	void hideTingGangControllPad();
     void heroPlayPokerAuto(int poker);
-	void showGuiLayer();
-	void startGameAgain();
-    void startGameFirst();
+    void showGuiLayer();
 	void removeHeroPlayedIcon();
     void showHandPokerOver(int seatId);//翻牌
     void showPaiduiNum(int num);
@@ -51,7 +49,6 @@ private:
 	void update(float dt) override;
 	void initData();
 	void loadView();
-	void addPlayer2Room();
 	void updatePlayerView(int type,Player* info);
 	void addTouchListener();
 	void drawCpgControllPad();
@@ -70,7 +67,7 @@ private:
     void showGamePaidui(int num);
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower();//首次杠花
-    void recoverPlayer(PlayerGameData data, int type, Player* playerInfo);
+    void createPlayer(PlayerGameData data, int type, Player* playerInfo);
     
 	PlayerBase* getPlayerBySeatId(int sid);
 
@@ -91,9 +88,6 @@ private:
 	EventListenerCustom* heroChiRespListener;
 	EventListenerCustom* heroPengRespListener;
 	EventListenerCustom* heroGangRespListener;
-    EventListenerCustom* playerReplaceLoginListener;
-    EventListenerCustom* dissovelRoomNotifyListener;
-    EventListenerCustom* dissovelRoomSelectNotifyListener;
     EventListenerCustom* viewIntnetListener;
     EventListenerCustom* coreOpenFriendRoomListener;
     EventListenerCustom* coreLoginRespListener;

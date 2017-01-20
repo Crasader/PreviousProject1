@@ -21,6 +21,7 @@ public:
     void recoverPlayed(std::string played);
     void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
     void recoverHand(std::string hand);
+    void drawMingPai(std::string hand);
     void updateHandJongs(std::string jongs,bool hu);
     Point getCpgShowPostion(int index) override;
     Point getPlayedJongPos(int count);

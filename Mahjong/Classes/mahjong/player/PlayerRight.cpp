@@ -403,6 +403,22 @@ void PlayerRight::recoverHand(std::string hand){
     }
 }
 
+void PlayerRight::drawMingPai(std::string hand){
+    for(auto var:playerHandJongs){
+        var->removeFromParent();
+    }
+    playerHandJongs.clear();
+    vector<std::string>  hands = StringUtil::split(hand, ",");
+    for (int i = 0; i < hands.size(); i++)
+    {
+        Jong* jong = Jong::create();
+        jong->showJong(rightmingpai, atoi(hands.at(i).c_str()),true);
+        jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 35 * i));
+        addChild(jong);
+        playerHandJongs.pushBack(jong);
+    }
+}
+
 void PlayerRight::updateHandJongs(std::string jongs,bool hu){
     if(jongs.size()>0){
         vector<std::string> pokers = StringUtil::split(jongs, ",");

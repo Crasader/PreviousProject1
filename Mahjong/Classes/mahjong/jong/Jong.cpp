@@ -60,9 +60,9 @@ void Jong::showBackShadow(bool show){
 
 
 float Jong::getContentScaleByType(int bType){
-    if (bType == leftplayed|| bType == leftangang||bType ==leftcpgportrait||bType == leftcpglandscape
+    if (bType == leftplayed|| bType == leftangang||bType ==leftcpgportrait||bType == leftcpglandscape||bType == leftmingpai
         || bType == oppositeplayed || bType == oppositeangang||bType ==oppositecpgportrait||bType == oppositecpglandscape
-        || bType == rightplayed||bType == rightangang||bType == rightangang||bType ==rightcpgportrait||bType == rightcpglandscape
+        || bType == rightplayed||bType == rightangang||bType == rightangang||bType ==rightcpgportrait||bType == rightcpglandscape||bType ==rightmingpai||bType ==oppositemingpai
         || bType == heroplayed ){
         return 0.41f;
     }
@@ -89,15 +89,15 @@ void Jong::setFlipByType(Sprite* sprite, int bType){
 }
 
 float Jong::getRotationByType(int bType){
-    if (bType == leftplayed || bType == leftcpglandscape|| bType == oppositecpglandscape){
+    if (bType == leftplayed || bType == leftcpglandscape|| bType == oppositecpglandscape||bType == leftmingpai){
         return 90;
     }
     else if (bType == oppositeplayed||bType == oppositecpgportrait
-             ||bType ==rightcpgportrait){
+             ||bType ==rightcpgportrait|bType ==oppositemingpai){
         return 180;
     }
     else if (bType == rightplayed||bType==herocpglandscape
-             ||bType == rightcpglandscape){
+             ||bType == rightcpglandscape||bType ==rightmingpai){
         return 270;
     }
     else{
@@ -141,6 +141,13 @@ Point Jong::getContentPosition(int bType, Point bpos){
     }else if(bType ==rightcpglandscape){
         return Point(bpos.x, bpos.y+5);
     }
+    else if(bType ==leftmingpai){
+        return Point(bpos.x, bpos.y+10);
+    }else if (bType ==rightmingpai){
+        return Point(bpos.x, bpos.y+10);
+    }else if (bType ==oppositemingpai){
+        return Point(bpos.x, bpos.y+10);
+    }
     else {
         return Point(bpos.x, bpos.y - 10);
     }
@@ -173,6 +180,9 @@ std::string Jong::getBackgroundImage(int btype){
         case righthand:
             imageName = "jong/middle_1.png";
             break;
+        case rightmingpai:
+            imageName = "jong/middle_4.png";
+            break;
         case rightplayed:
             imageName = "jong/small_4.png";
             break;
@@ -192,6 +202,9 @@ std::string Jong::getBackgroundImage(int btype){
         case oppositehand:
             imageName = "jong/middle_3.png";
             break;
+        case oppositemingpai:
+            imageName = "jong/middle_2.png";
+            break;
         case oppositeplayed:
             imageName = "jong/small_2.png";
             break;
@@ -210,6 +223,9 @@ std::string Jong::getBackgroundImage(int btype){
             //左边的玩家
         case lefthand:
             imageName = "jong/middle_1.png";
+            break;
+        case leftmingpai:
+            imageName = "jong/middle_4.png";
             break;
         case leftplayed:
             imageName = "jong/small_4.png";

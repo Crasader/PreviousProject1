@@ -443,7 +443,23 @@ void PlayerOpposite::recoverHand(std::string hand){
         Jong* jong = Jong::create();
         jong->showJong(oppositehand, -1,false);
         jong->setPosition(Point(OPPOSITE_POS_X + 43 * i, OPPOSITE_POS_Y));
-        this->addChild(jong);
+        addChild(jong);
+        playerHandJongs.pushBack(jong);
+    }
+}
+
+void PlayerOpposite::drawMingPai(std::string hand){
+    for(auto var:playerHandJongs){
+        var->removeFromParent();
+    }
+    playerHandJongs.clear();
+    vector<std::string>  hands = StringUtil::split(hand, ",");
+    for (int i = 0; i < hands.size(); i++)
+    {
+        Jong* jong = Jong::create();
+        jong->showJong(oppositemingpai, atoi(hands.at(i).c_str()),true);
+        jong->setPosition(Point(OPPOSITE_POS_X + 43 * i, OPPOSITE_POS_Y));
+        addChild(jong);
         playerHandJongs.pushBack(jong);
     }
 }
