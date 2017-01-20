@@ -39,6 +39,15 @@ void PlayerLeft::drawLeftPlayerTurn(){
     jong->runAction(dou);
 }
 
+void PlayerLeft::drawLeftPlayerTurnMingpai(int jongtype){
+    Jong* jong = Jong::create();
+    jong->setTag(111);
+    jong->showJong(leftmingpai, jongtype,true);
+    jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 32));
+    addChild(jong,61);
+    playerHandJongs.pushBack(jong);
+}
+
 void PlayerLeft::drawPlayedJong(int ctype){
     Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     Jong* lastPlayedJong = Jong::create();

@@ -12,6 +12,7 @@ public:
 	void drawHandJong();
 	void drawPlayedJong(int ctype);
 	void drawRightPlayerTurn();
+    void drawRightPlayerTurnMingpai(int jong);
 	void showCurrentPlayedJongIcon(bool isShow) override;
 	Point getCpgShowPostion(int index) override;
     void doEventTimeOver(int type) override;

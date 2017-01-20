@@ -33,11 +33,20 @@ void PlayerRight::drawRightPlayerTurn(){
     jong->setTag(111);
     jong->showJong(righthand, -1,false);
     jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y + 45));
-    this->addChild(jong, 1);
+    addChild(jong, 1);
     playerHandJongs.pushBack(jong);
     MoveTo* move = MoveTo::create(0.2f, Point(RIGHT_POS_X, RIGHT_POS_Y + 35));
     ActionInterval* dou = EaseBackInOut::create(move);
     jong->runAction(dou);
+}
+
+void PlayerRight::drawRightPlayerTurnMingpai(int jongtype){
+    Jong* jong = Jong::create();
+    jong->setTag(111);
+    jong->showJong(rightmingpai, jongtype,true);
+    jong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y + 45));
+    addChild(jong, -1);
+    playerHandJongs.pushBack(jong);
 }
 
 void PlayerRight::drawPlayedJong(int ctype){

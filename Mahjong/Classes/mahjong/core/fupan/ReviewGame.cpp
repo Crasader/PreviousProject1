@@ -429,18 +429,19 @@ void ReviewGame::addPlayerTurnListener(){
             }
         }
         else if (seatId == ClientSeatId::left){
-            playerLeft->drawLeftPlayerTurn();
             playerLeft->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerLeft->drawLeftPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->drawRightPlayerTurn();
+           
             playerRight->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerRight->drawRightPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawOppositePlayerTurn();
             playerOpposite->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerOpposite->drawOppositePlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
             playerOpposite->startTimeClockAnim();
         }
     });
