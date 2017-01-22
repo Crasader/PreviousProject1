@@ -142,6 +142,8 @@ void ReviewGame::controlUp(){
         NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
 }
 void ReviewGame::controlBack(){
+     GAMEDATA::getInstance()->setIsFuPan(false);
+    GAMEDATA::getInstance()->clearPlayersInfo();
     Director::getInstance()->replaceScene(LobbyScene::create());
 }
 
