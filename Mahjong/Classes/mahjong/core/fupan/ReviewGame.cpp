@@ -117,15 +117,14 @@ void ReviewGame::loadView(){
 
 
 void ReviewGame::controlDown(){
-    if(fupanStep>0)
-        fupanStep --;
+    //TODO
 }
 void ReviewGame::controlPause(){
     playing= !playing;
     if(NULL == getChildByTag(1088)||NULL == (getChildByTag(1088)->getChildByTag(1087)))
         return;
     if(playing){
-         auto iamge001 = Sprite::create("fupan/pause_1.png");
+        auto iamge001 = Sprite::create("fupan/pause_1.png");
         ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setNormalImage(iamge001);
         auto iamge002 = Sprite::create("fupan/pause_2.png");
         ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setSelectedImage(iamge002);
@@ -137,24 +136,27 @@ void ReviewGame::controlPause(){
     }
 }
 void ReviewGame::controlUp(){
-    fupanStep++;
-    if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size())
-        NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
+    interval+=9;
 }
 void ReviewGame::controlBack(){
-     GAMEDATA::getInstance()->setIsFuPan(false);
+    GAMEDATA::getInstance()->setIsFuPan(false);
     GAMEDATA::getInstance()->clearPlayersInfo();
     Director::getInstance()->replaceScene(LobbyScene::create());
 }
 
 void ReviewGame::update(float dt){
     interval += dt;
-    if(GAMEDATA::getInstance()->getIsFuPan()&&interval>1.5f&&playing){
-        if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size())
-            NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
-        interval = 0;
-        fupanStep++;
+    if(playing){
+        if(interval>1.5){
+            if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size())
+                NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
+            interval = interval-1.5;
+            fupanStep++;
+        }
+    }else{
+        interval=0;
     }
+
 }
 
 
@@ -433,7 +435,7 @@ void ReviewGame::addPlayerTurnListener(){
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-           
+            
             playerRight->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
             playerRight->drawRightPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
             playerRight->startTimeClockAnim();
@@ -855,7 +857,7 @@ void ReviewGame::addCoustomListener(){
             GAMEDATA::getInstance()->addPlayersInfo(info);
             createPlayer(player,SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId),info);
         }
-
+        
         showPaiduiNum(91);
         guiLayer->updateData();
         auto controlbg = Sprite::create("fupan/bg.png");
