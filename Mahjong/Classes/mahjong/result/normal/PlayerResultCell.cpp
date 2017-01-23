@@ -180,7 +180,10 @@ bool PlayerResultCell::init(GameResultData data){
             for(auto pokers: var.cpg){
                 std::vector<std::string> playerShowPoker;
                 for(int i=0; i<pokers.size();i++){
-                    playerShowPoker.push_back(StringUtils::format("%d",pokers.at(i)));
+                    //强行限制杠牌会画出5张牌的情况
+                    if(i<4){
+                        playerShowPoker.push_back(StringUtils::format("%d",pokers.at(i)));
+                    }
                 }
                 sort(playerShowPoker.begin(), playerShowPoker.end());
                 finalShowPoker.push_back(playerShowPoker);
