@@ -417,216 +417,6 @@ void ReviewGame::showPaiduiNum(int num){
 }
 
 
-void ReviewGame::addPlayerTurnListener(){
-    turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
-        showPaiduiNum(atoi(GAMEDATA::getInstance()->getPlayerTurn().rest.c_str()));
-        if (seatId == ClientSeatId::hero){
-            playerHero->hideCurrentBigJong();
-            playerHero->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
-            if (!GAMEDATA::getInstance()->getIsTingState()){
-                playerHero->startTimeClockAnim();
-            }
-        }
-        else if (seatId == ClientSeatId::left){
-            playerLeft->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
-            playerLeft->drawLeftPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
-            playerLeft->startTimeClockAnim();
-        }
-        else if (seatId == ClientSeatId::right){
-            
-            playerRight->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
-            playerRight->drawRightPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
-            playerRight->startTimeClockAnim();
-        }
-        else if (seatId == ClientSeatId::opposite){
-            playerOpposite->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
-            playerOpposite->drawOppositePlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
-            playerOpposite->startTimeClockAnim();
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);
-}
-
-void ReviewGame::addJongPlayedListener(){
-    otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
-        if (seatId == ClientSeatId::left){
-            playerLeft->setIsOffLine(false);
-            playerLeft->stopTimeClockAnim();
-            playerLeft->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
-            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
-            }
-        }
-        else if (seatId == ClientSeatId::right){
-            playerRight->setIsOffLine(false);
-            playerRight->stopTimeClockAnim();
-            playerRight->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
-            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
-            }
-        }
-        else if (seatId == ClientSeatId::opposite){
-            playerOpposite->setIsOffLine(false);
-            playerOpposite->stopTimeClockAnim();
-            playerOpposite->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
-            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
-            }
-        }else if(seatId == ClientSeatId::hero){
-            playerHero->stopTimeClockAnim();
-            playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
-            }
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
-}
-
-
-
-void ReviewGame::addHeroCpgListener(){
-    
-    playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
-        schedule([=](float dt){
-            drawCpgControllPad();
-            playerHero->startTimeClockAnim(9, 1);
-        },0,0,0.5f,"nonohuang");
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
-    
-}
-
-void ReviewGame::addGameResultListener(){
-    gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
-        string flag = static_cast<char*>(event->getUserData());
-        if(flag == "1"||flag == "2"){
-            GAMEDATA::getInstance()->setIsTrusteeship(false);
-            //播放动画
-            //step检测胡牌类型
-            int seatId1 = -1;
-            std::vector<int> seatId2;
-            int seatId3 =-1;
-            seatId2.clear();
-            bool zimoState = false;
-            bool gangkaiState = false;
-            bool qianggangState = false;
-            bool isliuju = true;
-            vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
-            for (GameResultData data: results) {
-                if(data.result==1){
-                    bool find = true;
-                    vector<std::string> hu = StringUtil::split(data.huType, ",");
-                    for(auto var:hu){
-                        if(var == "3"){
-                            seatId1 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                            gangkaiState = true;
-                            find = false;
-                        }
-                    }
-                    //自摸
-                    if(find){
-                        seatId1 =   SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                        zimoState=true;
-                    }
-                    isliuju = false;
-                }else if(data.result==2){
-                    //点炮
-                    isliuju = false;
-                    seatId1 = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                }else if(data.result==3){
-                    //普通赢
-                    isliuju = false;
-                    vector<std::string> hu = StringUtil::split(data.huType, ",");
-                    for(auto var:hu){
-                        if(var == "12"){
-                            qianggangState = true;
-                            seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-                            break;
-                        }
-                    }
-                    seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.seatId));
-                }
-            }
-            if(zimoState){
-                Audio::getInstance()->playSoundHuMusic(1);
-                if(seatId1 == ClientSeatId::left){
-                    playerLeft->playSoundHuPai(0);
-                }else if(seatId1 == ClientSeatId::opposite){
-                    playerOpposite->playSoundHuPai(0);
-                }else if(seatId1 == ClientSeatId::right){
-                    playerRight->playSoundHuPai(0);
-                }else {
-                    playerHero->playSoundHuPai(0);
-                }
-                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::zimoHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-                addChild(hupai,999);
-            }else if(gangkaiState){
-                Audio::getInstance()->playSoundHuMusic(1);
-                if(seatId1 == ClientSeatId::left){
-                    playerLeft->playSoundHuPai(1);
-                }else if(seatId1 == ClientSeatId::opposite){
-                    playerOpposite->playSoundHuPai(1);
-                }else if(seatId1 == ClientSeatId::right){
-                    playerRight->playSoundHuPai(1);
-                }else {
-                    playerHero->playSoundHuPai(1);
-                }
-                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::gangkaiHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-                addChild(hupai,999);
-            }else if(qianggangState){
-                Audio::getInstance()->playSoundHuMusic(1);
-                if(seatId1 == ClientSeatId::left){
-                    playerLeft->playSoundHuPai(2);
-                }else if(seatId1 == ClientSeatId::opposite){
-                    playerOpposite->playSoundHuPai(2);
-                }else if(seatId1 == ClientSeatId::right){
-                    playerRight->playSoundHuPai(2);
-                }else {
-                    playerHero->playSoundHuPai(2);
-                }
-                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::qianggangHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-                addChild(hupai,999);
-            }else  if(!isliuju){
-                //判断胡牌的类型
-                Audio::getInstance()->playSoundHuMusic(0);
-                if(seatId1 == ClientSeatId::left){
-                    playerLeft->playSoundHuPai(3);
-                }else if(seatId1 == ClientSeatId::opposite){
-                    playerOpposite->playSoundHuPai(3);
-                }else if(seatId1 == ClientSeatId::right){
-                    playerRight->playSoundHuPai(3);
-                }else {
-                    playerHero->playSoundHuPai(3);
-                }
-                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::putongHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
-                addChild(hupai,999);
-            }else{
-                //流局动画
-                Audio::getInstance()->playSoundLiuJu(UserData::getInstance()->getGender());
-                LiuJuAnim* liuju = LiuJuAnim::create();
-                addChild(liuju,3);
-                GAMEDATA::getInstance()->setIsLiuJu(true);
-            }
-        }
-        GAMEDATA::getInstance()->setPrivateGameNum("0");
-        GAMEDATA::getInstance()->setFangZhuId("");
-        GAMEDATA::getInstance()->clearPlayersInfo();
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
-}
-
 void ReviewGame::showHuPaiXing(std::string paixing){
     if(paixing==""){
         return;
@@ -804,19 +594,19 @@ void ReviewGame::onExit()
 
 
 void ReviewGame::addCoustomListener(){
-    addPlayerTurnListener();
-    addJongPlayedListener();
-    addHeroCpgListener();
-    addGameResultListener();
-    addOthersChiListener();
-    addOthersPengListener();
-    addOthersGangListener();
-    addPlayerTingNotifyListener();
-    addHeroTingNotifyListener();
-    addHeroTingRespListener();
-    addHeroChiRespListener();
-    addHeroPengRespListener();
-    addHeroGangRespListener();
+//    addPlayerTurnListener();
+//    addJongPlayedListener();
+//    addHeroCpgListener();
+//    addGameResultListener();
+//    addOthersChiListener();
+//    addOthersPengListener();
+//    addOthersGangListener();
+//    addPlayerTingNotifyListener();
+//    addHeroTingNotifyListener();
+//    addHeroTingRespListener();
+//    addHeroChiRespListener();
+//    addHeroPengRespListener();
+//    addHeroGangRespListener();
     
     //好友房间游戏未开始重新连接
     coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
@@ -876,9 +666,81 @@ void ReviewGame::addCoustomListener(){
         addChild(menucontrol,900);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fupanPlayerInfoListener, 1);
-}
-
-void ReviewGame::addOthersChiListener(){
+    
+    
+    turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
+        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
+        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
+        showPaiduiNum(atoi(GAMEDATA::getInstance()->getPlayerTurn().rest.c_str()));
+        if (seatId == ClientSeatId::hero){
+            playerHero->hideCurrentBigJong();
+            playerHero->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
+            if (!GAMEDATA::getInstance()->getIsTingState()){
+                playerHero->startTimeClockAnim();
+            }
+        }
+        else if (seatId == ClientSeatId::left){
+            playerLeft->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerLeft->drawLeftPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
+            playerLeft->startTimeClockAnim();
+        }
+        else if (seatId == ClientSeatId::right){
+            
+            playerRight->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerRight->drawRightPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
+            playerRight->startTimeClockAnim();
+        }
+        else if (seatId == ClientSeatId::opposite){
+            playerOpposite->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerOpposite->drawOppositePlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
+            playerOpposite->startTimeClockAnim();
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);
+    
+    otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
+        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
+        if (seatId == ClientSeatId::left){
+            playerLeft->setIsOffLine(false);
+            playerLeft->stopTimeClockAnim();
+            playerLeft->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
+            }
+        }
+        else if (seatId == ClientSeatId::right){
+            playerRight->setIsOffLine(false);
+            playerRight->stopTimeClockAnim();
+            playerRight->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
+            }
+        }
+        else if (seatId == ClientSeatId::opposite){
+            playerOpposite->setIsOffLine(false);
+            playerOpposite->stopTimeClockAnim();
+            playerOpposite->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
+            }
+        }else if(seatId == ClientSeatId::hero){
+            playerHero->stopTimeClockAnim();
+            playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
+            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
+            }
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
+    
     othersChiListener = EventListenerCustom::create(MSG_OTHER_PLAYER_CHI, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
         setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
@@ -906,9 +768,7 @@ void ReviewGame::addOthersChiListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersChiListener, 1);
-}
-
-void ReviewGame::addOthersPengListener(){
+    
     othersPengListener = EventListenerCustom::create(MSG_OTHER_PLAYER_PENG, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
         setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
@@ -940,9 +800,7 @@ void ReviewGame::addOthersPengListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
-}
-
-void ReviewGame::addOthersGangListener(){
+    
     othersGangListener = EventListenerCustom::create(MSG_OTHER_PLAYER_GANG, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
         setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
@@ -971,17 +829,13 @@ void ReviewGame::addOthersGangListener(){
         
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersGangListener, 1);
-}
-
-void ReviewGame::addPlayerTingNotifyListener(){
+    
     playerTingNotifyListener = EventListenerCustom::create(MSG_PLAYER_TING_NOTIFY, [=](EventCustom* event){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentTingSeatId());
         playerTingAnim(seatId);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerTingNotifyListener, 1);
-}
-
-void ReviewGame::addHeroTingNotifyListener(){
+    
     tingNotifyListener = EventListenerCustom::create(MSG_HERO_TING_GANG, [=](EventCustom* event){
         if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
             showTingGangControllPad();
@@ -989,8 +843,7 @@ void ReviewGame::addHeroTingNotifyListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingNotifyListener, 1);
-}
-void ReviewGame::addHeroTingRespListener(){
+    
     tingRespListener = EventListenerCustom::create(MSG_PLAYER_TING_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         if (atoi(buf) == 1){
@@ -998,10 +851,7 @@ void ReviewGame::addHeroTingRespListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingRespListener, 1);
-}
 
-
-void ReviewGame::addHeroChiRespListener(){
     heroChiRespListener = EventListenerCustom::create(MSG_HERO_CHI_RESP, [=](EventCustom* event){
         playerHero->hideCurrentBigJong();
         std::vector<string> chipai = StringUtil::split(selectedChi, ",");
@@ -1009,9 +859,6 @@ void ReviewGame::addHeroChiRespListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroChiRespListener, 1);
     
-}
-
-void ReviewGame::addHeroPengRespListener(){
     heroPengRespListener = EventListenerCustom::create(MSG_HERO_PENG_RESP, [=](EventCustom* event){
         PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
         HeroCpgRespData resp = GAMEDATA::getInstance()->getHeroCpgResp();
@@ -1031,9 +878,6 @@ void ReviewGame::addHeroPengRespListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
     
-}
-
-void ReviewGame::addHeroGangRespListener(){
     heroGangRespListener = EventListenerCustom::create(MSG_HERO_GANG_RESP, [=](EventCustom* event){
         PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
         HeroCpgRespData resp = GAMEDATA::getInstance()->getHeroCpgResp();
@@ -1057,4 +901,130 @@ void ReviewGame::addHeroGangRespListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
+    playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
+        schedule([=](float dt){
+            drawCpgControllPad();
+            playerHero->startTimeClockAnim(9, 1);
+        },0,0,0.5f,"nonohuang");
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
+
+    gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
+        string flag = static_cast<char*>(event->getUserData());
+        if(flag == "1"||flag == "2"){
+            GAMEDATA::getInstance()->setIsTrusteeship(false);
+            //播放动画
+            //step检测胡牌类型
+            int seatId1 = -1;
+            std::vector<int> seatId2;
+            int seatId3 =-1;
+            seatId2.clear();
+            bool zimoState = false;
+            bool gangkaiState = false;
+            bool qianggangState = false;
+            bool isliuju = true;
+            vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
+            for (GameResultData data: results) {
+                if(data.result==1){
+                    bool find = true;
+                    vector<std::string> hu = StringUtil::split(data.huType, ",");
+                    for(auto var:hu){
+                        if(var == "3"){
+                            seatId1 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                            gangkaiState = true;
+                            find = false;
+                        }
+                    }
+                    //自摸
+                    if(find){
+                        seatId1 =   SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                        zimoState=true;
+                    }
+                    isliuju = false;
+                }else if(data.result==2){
+                    //点炮
+                    isliuju = false;
+                    seatId1 = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                }else if(data.result==3){
+                    //普通赢
+                    isliuju = false;
+                    vector<std::string> hu = StringUtil::split(data.huType, ",");
+                    for(auto var:hu){
+                        if(var == "12"){
+                            qianggangState = true;
+                            seatId3 =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+                            break;
+                        }
+                    }
+                    seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.seatId));
+                }
+            }
+            if(zimoState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(0);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(0);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(0);
+                }else {
+                    playerHero->playSoundHuPai(0);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::zimoHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else if(gangkaiState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(1);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(1);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(1);
+                }else {
+                    playerHero->playSoundHuPai(1);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::gangkaiHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else if(qianggangState){
+                Audio::getInstance()->playSoundHuMusic(1);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(2);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(2);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(2);
+                }else {
+                    playerHero->playSoundHuPai(2);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::qianggangHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else  if(!isliuju){
+                //判断胡牌的类型
+                Audio::getInstance()->playSoundHuMusic(0);
+                if(seatId1 == ClientSeatId::left){
+                    playerLeft->playSoundHuPai(3);
+                }else if(seatId1 == ClientSeatId::opposite){
+                    playerOpposite->playSoundHuPai(3);
+                }else if(seatId1 == ClientSeatId::right){
+                    playerRight->playSoundHuPai(3);
+                }else {
+                    playerHero->playSoundHuPai(3);
+                }
+                HupaiAnim* hupai = HupaiAnim::create(MahjongHuType::putongHu,atoi(GAMEDATA::getInstance()->getDiaopao().c_str()),seatId1,seatId2);
+                addChild(hupai,999);
+            }else{
+                //流局动画
+                Audio::getInstance()->playSoundLiuJu(UserData::getInstance()->getGender());
+                LiuJuAnim* liuju = LiuJuAnim::create();
+                addChild(liuju,3);
+                GAMEDATA::getInstance()->setIsLiuJu(true);
+            }
+        }
+        GAMEDATA::getInstance()->setPrivateGameNum("0");
+        GAMEDATA::getInstance()->setFangZhuId("");
+        GAMEDATA::getInstance()->clearPlayersInfo();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
+    
 }
+

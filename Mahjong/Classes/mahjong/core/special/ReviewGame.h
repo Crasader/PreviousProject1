@@ -1,5 +1,5 @@
-#ifndef __Review__Game_
-#define __Review__Game__
+#ifndef _REVIEW_MAHJONG_GAME_H_
+#define _REVIEW_MAHJONG_GAME_H_
 #include "cocos2d.h"
 #include "mahjong/core/gui/GuiLayer.h"
 #include "mahjong/jong/Jong.h"
@@ -92,19 +92,6 @@ private:
     EventListenerCustom* fupanPlayerInfoListener;
 
 	void addCoustomListener();
-	void addPlayerTurnListener();
-	void addJongPlayedListener();
-	void addHeroCpgListener();//自己吃碰杠通知
-    void addHeroChiRespListener();//自己吃回复
-    void addHeroPengRespListener();//自己碰回复
-    void addHeroGangRespListener();//自己杠回复
-	void addGameResultListener();//胡牌结算
-	void addOthersChiListener();//其余玩家吃牌
-	void addOthersPengListener();//其余玩家碰牌
-	void addOthersGangListener();//其余玩家杠牌
-	void addPlayerTingNotifyListener();
-	void addHeroTingNotifyListener();
-	void addHeroTingRespListener();
     
     void controlDown();
     void controlPause();

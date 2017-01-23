@@ -1045,11 +1045,11 @@
 		D26778001DF00697003CE73F /* core */ = {
 			isa = PBXGroup;
 			children = (
-				D29E85B61E359CC200AFACEE /* normal */,
-				D29E85AC1E359C3700AFACEE /* special */,
-				D26778011DF00697003CE73F /* gui */,
 				D26778061DF00697003CE73F /* MjGameScene.cpp */,
 				D26778071DF00697003CE73F /* MjGameScene.h */,
+				D26778011DF00697003CE73F /* gui */,
+				D29E85B61E359CC200AFACEE /* normal */,
+				D29E85AC1E359C3700AFACEE /* special */,
 				D26778081DF00697003CE73F /* widget */,
 			);
 			path = core;
