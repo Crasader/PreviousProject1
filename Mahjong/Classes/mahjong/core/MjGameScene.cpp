@@ -1,5 +1,5 @@
 #include"mahjong/core/MjGameScene.h"
-#include"mahjong/core/MahjongView.h"
+#include"mahjong/core/normal/MahjongView.h"
 #include "mahjong/core/special/ReviewGame.h"
 
 bool MjGameScene::init(){

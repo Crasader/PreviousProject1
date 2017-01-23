@@ -1,5 +1,5 @@
 #include "mahjong/player/PlayerHero.h"
-#include "mahjong/core/MahjongView.h"
+#include "mahjong/core/normal/MahjongView.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/anim/HuaAnim.hpp"
 #include "mahjong/utils/GameConfig.h"

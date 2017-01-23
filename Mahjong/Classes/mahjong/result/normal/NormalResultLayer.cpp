@@ -13,7 +13,7 @@
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/jong/Jong.h"
 #include "mahjong/core/MjGameScene.h"
-#include "mahjong/core/MahjongView.h"
+#include "mahjong/core/normal/MahjongView.h"
 #include "mahjong/lobby/EnterRoomDialog.hpp"
 #include "mahjong/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/shop/gold/ChargeGold.hpp"

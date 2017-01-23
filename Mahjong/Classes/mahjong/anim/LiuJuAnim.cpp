@@ -8,7 +8,7 @@
 
 #include "mahjong/anim/LiuJuAnim.hpp"
 #include "mahjong/utils/SeatIdUtil.h"
-#include "mahjong/core/MahjongView.h"
+#include "mahjong/core/normal/MahjongView.h"
 
 bool LiuJuAnim::init(){
     if(!Layer::init()){
