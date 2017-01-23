@@ -1,4 +1,4 @@
-#include "mahjong/core/fupan/ReviewGame.h"
+#include "mahjong/core/special/ReviewGame.h"
 #include "mahjong/anim/DealJongAnim.h"
 #include "mahjong/core/widget/Orientation.h"
 #include "mahjong/core/widget/CardStack.hpp"

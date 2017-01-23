@@ -1,7 +1,7 @@
 #include "mahjong/player/PlayerRight.h"
 #include "mahjong/core/MahjongView.h"
 #include "mahjong/anim/HuaAnim.hpp"
-#include "mahjong/core/fupan/ReviewGame.h"
+#include "mahjong/core/special/ReviewGame.h"
 
 
 bool PlayerRight::init(){
