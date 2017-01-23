@@ -701,3 +701,9 @@ void PlayerRight::doEventTimeOver(int type){
         }, 0, 0, 7.0f, "xiaoxiao");
     }
 }
+
+void PlayerRight::updateMingpai(){
+    for(int i=0;i< playerHandJongs.size();i++){
+         playerHandJongs.at(i)->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 35 * i));
+    }
+}

@@ -44,6 +44,7 @@ public:
     void removePlayedIcon();
     void drawPlayedJong(int type);//绘制出牌动作
     
+    
     void recoverHua(int hua);
     void recoverPlayed(std::string played);
     void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
@@ -52,6 +53,7 @@ public:
     
     Vector<Jong*> getSelfHandJongs();
     Vector<Jong*>  sortJongs(Vector<Jong*> jongs);
+    void updateMingpai();
     
     CC_SYNTHESIZE(bool, isAllowPlay, IsAllowPlay);
     CC_SYNTHESIZE(bool, isAllowTouch, IsAllowTouch);

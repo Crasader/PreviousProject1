@@ -562,4 +562,16 @@ struct FupanGameData
 {
     std::vector <PlayerGameData> players;
 };
+
+struct PlayerMingpai{
+    int seatId;
+    Vector<Jong*> playerHandJongs;//玩家手牌
+    Vector<Jong*> playerPlayedJongs;
+    std::vector<PlayerCpgRecord>  playerCpgRecords;//玩家吃碰杠记录
+};
+
+struct PlayMingpaiRecord{
+    vector<PlayerMingpai> record;//4个玩家的牌
+    int step;
+};
 #endif

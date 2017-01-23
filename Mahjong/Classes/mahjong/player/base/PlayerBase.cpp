@@ -132,6 +132,8 @@ void PlayerBase::initPlayer(Player* playerInfo){
 }
 
 
+
+
 void PlayerBase::replaceHandHua(JongViewType tpye){
     ReplaceJong rejong = getReplacePoker();
     std::vector<Jong*> needReplace;
@@ -145,7 +147,7 @@ void PlayerBase::replaceHandHua(JongViewType tpye){
     }
     if((int)needReplace.size()>=0){
         HuaAnim* huaAnim = HuaAnim::create(needReplace,getPlayerInfo()->getSeatId(),CallFunc::create([=](){
-            setHuaNum(getHuaNum()+needReplace.size());
+            setHuaNum(getHuaNum()+(int)needReplace.size());
             showPlayerHua(getHuaNum());
         }));
         addChild(huaAnim,100);
@@ -167,12 +169,12 @@ void PlayerBase::replaceTurnHua(PlayerTurnData data){
             jon->showJong(leftplayed,atoi(replace.at(huaIndex).c_str()));
             needReplace.push_back(jon);
             HuaAnim* huaAnim = HuaAnim::create(needReplace, getPlayerInfo()->getSeatId(),CallFunc::create([=](){
-                setHuaNum(getHuaNum()+needReplace.size());
+                setHuaNum(getHuaNum()+(int)needReplace.size());
                 showPlayerHua(getHuaNum());
             }));
             addChild(huaAnim,100);
             huaIndex++;
-        }), DelayTime::create(1.0f),NULL),replace.size()));
+        }), DelayTime::create(1.0f),NULL),(int)replace.size()));
     }
     
 }
@@ -492,6 +494,8 @@ void PlayerBase::updatePlayerHeadImage(){
         ((HeadImage*)getChildByTag(9876))->updateImageByName(playerInfo->getPicture());
     }
 }
+
+
 
 
 void PlayerBase::onEnter(){

@@ -1248,3 +1248,14 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
 }
+
+void PlayerHero::updateMingpai(){
+    for (int i = 0; i < playerHandJongs.size(); i++) {
+        if (i == MAX_JONG_NUM - 1){
+            playerHandJongs.at(i)->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
+        }
+        else{
+            playerHandJongs.at(i)->setPosition(Point(JONG_POS_START_X + JONG_WIDTH * i, JONG_POS_Y));
+        }
+    }
+}

@@ -3,7 +3,6 @@
 #include "mahjong/core/widget/Orientation.h"
 #include "mahjong/core/widget/CardStack.hpp"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/state/GameData.h"
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/anim/HupaiAnim.hpp"
@@ -117,7 +116,20 @@ void ReviewGame::loadView(){
 
 
 void ReviewGame::controlDown(){
-    //TODO
+    fupanStep--;
+    myPlayMingpaiRecord.pop_back();
+    PlayMingpaiRecord record = myPlayMingpaiRecord.at(myPlayMingpaiRecord.size()-1);
+    for(auto var:record.record){
+        if(var.seatId==ClientSeatId::left){
+            playerLeft->updateMingpai();
+        }else if(var.seatId==ClientSeatId::opposite){
+            playerOpposite->updateMingpai();
+        }else if(var.seatId==ClientSeatId::right){
+            playerRight->updateMingpai();
+        }else if(var.seatId==ClientSeatId::hero){
+            playerHero->updateMingpai();
+        }
+    }
 }
 void ReviewGame::controlPause(){
     playing= !playing;
@@ -594,19 +606,6 @@ void ReviewGame::onExit()
 
 
 void ReviewGame::addCoustomListener(){
-//    addPlayerTurnListener();
-//    addJongPlayedListener();
-//    addHeroCpgListener();
-//    addGameResultListener();
-//    addOthersChiListener();
-//    addOthersPengListener();
-//    addOthersGangListener();
-//    addPlayerTingNotifyListener();
-//    addHeroTingNotifyListener();
-//    addHeroTingRespListener();
-//    addHeroChiRespListener();
-//    addHeroPengRespListener();
-//    addHeroGangRespListener();
     
     //好友房间游戏未开始重新连接
     coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
@@ -699,7 +698,38 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);
     
     otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
+        PlayMingpaiRecord record;
+        record.step = fupanStep;
+        PlayerMingpai leftpai;
+        leftpai.seatId = ClientSeatId::left;
+        leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
+        leftpai.playerHandJongs = playerLeft->playerHandJongs;
+        leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
+        record.record.push_back(leftpai);
+        PlayerMingpai oppsitepai;
+        oppsitepai.seatId = ClientSeatId::opposite;
+        oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
+        oppsitepai.playerHandJongs = playerOpposite->playerHandJongs;
+        oppsitepai.playerPlayedJongs =playerOpposite->playerPlayedJongs;
+        record.record.push_back(oppsitepai);
+        PlayerMingpai rightpai;
+        rightpai.seatId = ClientSeatId::right;
+        rightpai.playerCpgRecords = playerRight->playerCpgRecords;
+        rightpai.playerHandJongs = playerRight->playerHandJongs;
+        rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
+        record.record.push_back(rightpai);
+        PlayerMingpai heropai;
+        heropai.seatId = ClientSeatId::hero;
+        heropai.playerCpgRecords = playerHero->playerCpgRecords;
+        heropai.playerHandJongs = playerHero->playerHandJongs;
+        heropai.playerPlayedJongs =playerHero->playerPlayedJongs;
+        record.record.push_back(heropai);
+        myPlayMingpaiRecord.push_back(record);
+        
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
+        
+        //记录玩家的手牌
+        
         if (seatId == ClientSeatId::left){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();

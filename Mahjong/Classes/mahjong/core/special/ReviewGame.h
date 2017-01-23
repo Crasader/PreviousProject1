@@ -10,6 +10,7 @@
 #include "mahjong/player/PlayerHero.h"
 #include "mahjong/player/playerinfo/Player.h"
 #include "mahjong/dialog/toast/InfoToast.hpp"
+#include "mahjong/state/GameData.h"
 #include "userdata/UserData.h"
 USING_NS_CC;
 
@@ -44,6 +45,7 @@ private:
     PlayerLeft* playerLeft;
     PlayerRight* playerRight;
     PlayerOpposite* playerOpposite;
+    std::vector<PlayMingpaiRecord> myPlayMingpaiRecord;
 
 
 	void update(float dt) override;

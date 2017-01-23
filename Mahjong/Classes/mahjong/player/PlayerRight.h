@@ -31,6 +31,7 @@ public:
 	void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
 	void recoverHand(std::string hand);
     void drawMingPai(std::string hand);
+    void updateMingpai();
     void updateHandJongs(std::string jongs,bool hu);
 	CREATE_FUNC(PlayerRight);
 

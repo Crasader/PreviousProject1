@@ -727,3 +727,9 @@ void PlayerOpposite::doEventTimeOver(int type){
         }, 0, 0, 7.0f, "xiaoxiao");
     }
 }
+
+void PlayerOpposite::updateMingpai(){
+    for(int i=0;i< playerHandJongs.size();i++){
+        playerHandJongs.at(i)->setPosition(Point(OPPOSITE_POS_X + 43 * i, OPPOSITE_POS_Y));
+    }
+}

@@ -88,6 +88,7 @@ void PlayerLeft::drawPlayedJong(int ctype){
 }
 
 void PlayerLeft::drawPlayedJongMingpai(int ctype){
+    
     Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     //移除手牌
     for(auto var : playerHandJongs){
@@ -700,5 +701,12 @@ void PlayerLeft::doEventTimeOver(int type){
         schedule([=](float dt){
             setIsOffLine(true);
         }, 0, 0, 7.0f, "xiaoxiao");
+    }
+}
+
+
+void PlayerLeft::updateMingpai(){
+    for(int i=0;i< playerHandJongs.size();i++){
+         playerHandJongs.at(i)->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 35 * i));
     }
 }
