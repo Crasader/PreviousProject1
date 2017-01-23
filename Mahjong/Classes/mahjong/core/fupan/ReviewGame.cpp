@@ -136,7 +136,7 @@ void ReviewGame::controlPause(){
     }
 }
 void ReviewGame::controlUp(){
-    interval+=9;
+    interval+=3.0;
 }
 void ReviewGame::controlBack(){
     GAMEDATA::getInstance()->setIsFuPan(false);
