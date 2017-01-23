@@ -762,7 +762,9 @@ void ReviewGame::addCoustomListener(){
         }else if (seatId == ClientSeatId::hero){
             hideTingGangControllPad();
             HeroCpgRespData heroTingData;
-            playerHero->drawHeroPeng(heroTingData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+            heroTingData.result =1;
+            std::vector<string> chipai = StringUtil::split(GAMEDATA::getInstance()->getPlayerCpgt().chi.at(0), ",");
+            playerHero->drawHeroChi(heroTingData,chipai, getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerHero->startTimeClockAnim();
         }
