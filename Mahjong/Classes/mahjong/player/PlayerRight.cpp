@@ -75,7 +75,10 @@ void PlayerRight::drawPlayedJong(int ctype){
         showCurrentPlayedJongIcon(true);
     });
     Sequence* sequence = Sequence::create(Spawn::create(actionMove,CallFunc::create([=](){
-        settleJongMingpai();
+        if(NULL!=getChildByTag(111)){
+            playerHandJongs.eraseObject((Jong*)getChildByTag(111));
+            getChildByTag(111)->removeFromParent();
+        }
         if(getStateCpg()){
             playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));

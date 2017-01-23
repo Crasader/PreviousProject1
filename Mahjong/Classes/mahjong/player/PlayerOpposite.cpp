@@ -74,7 +74,7 @@ void PlayerOpposite::drawPlayedJong(int ctype){
         addChild(lastPlayedJong, 1);
     }
     Point startPoint = Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y);
-    Point endPoint = getPlayedJongPos(playerPlayedJongs.size() - 1);
+    Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
     ccBezierConfig bezier;
     bezier.controlPoint_1 = startPoint;
     bezier.controlPoint_2 = Point(startPoint.x + (endPoint.x - startPoint.x) * 0.5,
@@ -130,7 +130,7 @@ void PlayerOpposite::drawPlayedJongMingpai(int ctype){
         addChild(lastPlayedJong, 1);
     }
     Point startPoint = Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y);
-    Point endPoint = getPlayedJongPos(playerPlayedJongs.size() - 1);
+    Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
     ccBezierConfig bezier;
     bezier.controlPoint_1 = startPoint;
     bezier.controlPoint_2 = Point(startPoint.x + (endPoint.x - startPoint.x) * 0.5,
