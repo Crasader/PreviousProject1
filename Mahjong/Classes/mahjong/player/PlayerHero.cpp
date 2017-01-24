@@ -1274,6 +1274,7 @@ void PlayerHero::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myP
         }
     }
     playerHandJongs = myPlayerHandJongs;
+    setCpgPostionX(myPlayerCpgRecords.size()*170+JONG_POS_START_X);
     setHandPosX(myPlayerCpgRecords.size()*JONG_WIDTH*3+JONG_POS_START_X);
     for (int i = 0; i < playerHandJongs.size(); i++) {
         playerHandJongs.at(i)->removeFromParent();
