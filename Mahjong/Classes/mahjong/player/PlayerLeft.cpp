@@ -706,7 +706,14 @@ void PlayerLeft::doEventTimeOver(int type){
 
 
 void PlayerLeft::updateMingpai(){
-    for(int i=0;i< playerHandJongs.size();i++){
-         playerHandJongs.at(i)->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 35 * i));
+    for(int i=0; i< playerHandJongs.size();i++){
+        playerHandJongs.at(i)->removeFromParent();
+        addChild(playerHandJongs.at(i),60-i);
+        playerHandJongs.at(i)->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 35 * i));
+    }
+    for(int j=0; j< playerPlayedJongs.size();j++){
+        playerPlayedJongs.at(j)->removeFromParent();
+        addChild(playerPlayedJongs.at(j));
+        playerPlayedJongs.at(j)->setPosition(getPlayedJongPos(j));
     }
 }

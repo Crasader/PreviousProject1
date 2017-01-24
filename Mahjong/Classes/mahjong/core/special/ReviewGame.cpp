@@ -116,17 +116,30 @@ void ReviewGame::loadView(){
 
 
 void ReviewGame::controlDown(){
-    fupanStep--;
+    playing =false;
+    fupanStep -= 2;
     myPlayMingpaiRecord.pop_back();
     PlayMingpaiRecord record = myPlayMingpaiRecord.at(myPlayMingpaiRecord.size()-1);
     for(auto var:record.record){
         if(var.seatId==ClientSeatId::left){
+            playerLeft->playerHandJongs = var.playerHandJongs;
+            playerLeft->playerPlayedJongs = var.playerPlayedJongs;
+            playerLeft->playerCpgRecords = var.playerCpgRecords;
             playerLeft->updateMingpai();
         }else if(var.seatId==ClientSeatId::opposite){
+            playerOpposite->playerHandJongs = var.playerHandJongs;
+            playerOpposite->playerPlayedJongs = var.playerPlayedJongs;
+            playerOpposite->playerCpgRecords = var.playerCpgRecords;
             playerOpposite->updateMingpai();
         }else if(var.seatId==ClientSeatId::right){
+            playerRight->playerHandJongs = var.playerHandJongs;
+            playerRight->playerPlayedJongs = var.playerPlayedJongs;
+            playerRight->playerCpgRecords = var.playerCpgRecords;
             playerRight->updateMingpai();
         }else if(var.seatId==ClientSeatId::hero){
+            playerHero->playerHandJongs = var.playerHandJongs;
+            playerHero->playerPlayedJongs = var.playerPlayedJongs;
+            playerHero->playerCpgRecords = var.playerCpgRecords;
             playerHero->updateMingpai();
         }
     }
@@ -698,33 +711,6 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);
     
     otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
-        PlayMingpaiRecord record;
-        record.step = fupanStep;
-        PlayerMingpai leftpai;
-        leftpai.seatId = ClientSeatId::left;
-        leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
-        leftpai.playerHandJongs = playerLeft->playerHandJongs;
-        leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
-        record.record.push_back(leftpai);
-        PlayerMingpai oppsitepai;
-        oppsitepai.seatId = ClientSeatId::opposite;
-        oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
-        oppsitepai.playerHandJongs = playerOpposite->playerHandJongs;
-        oppsitepai.playerPlayedJongs =playerOpposite->playerPlayedJongs;
-        record.record.push_back(oppsitepai);
-        PlayerMingpai rightpai;
-        rightpai.seatId = ClientSeatId::right;
-        rightpai.playerCpgRecords = playerRight->playerCpgRecords;
-        rightpai.playerHandJongs = playerRight->playerHandJongs;
-        rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
-        record.record.push_back(rightpai);
-        PlayerMingpai heropai;
-        heropai.seatId = ClientSeatId::hero;
-        heropai.playerCpgRecords = playerHero->playerCpgRecords;
-        heropai.playerHandJongs = playerHero->playerHandJongs;
-        heropai.playerPlayedJongs =playerHero->playerPlayedJongs;
-        record.record.push_back(heropai);
-        myPlayMingpaiRecord.push_back(record);
         
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getOtherPlayJong().seatId);
         
@@ -768,6 +754,33 @@ void ReviewGame::addCoustomListener(){
                 Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
             }
         }
+        PlayMingpaiRecord record;
+        record.step = fupanStep;
+        PlayerMingpai leftpai;
+        leftpai.seatId = ClientSeatId::left;
+        leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
+        leftpai.playerHandJongs = playerLeft->playerHandJongs;
+        leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
+        record.record.push_back(leftpai);
+        PlayerMingpai oppsitepai;
+        oppsitepai.seatId = ClientSeatId::opposite;
+        oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
+        oppsitepai.playerHandJongs = playerOpposite->playerHandJongs;
+        oppsitepai.playerPlayedJongs =playerOpposite->playerPlayedJongs;
+        record.record.push_back(oppsitepai);
+        PlayerMingpai rightpai;
+        rightpai.seatId = ClientSeatId::right;
+        rightpai.playerCpgRecords = playerRight->playerCpgRecords;
+        rightpai.playerHandJongs = playerRight->playerHandJongs;
+        rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
+        record.record.push_back(rightpai);
+        PlayerMingpai heropai;
+        heropai.seatId = ClientSeatId::hero;
+        heropai.playerCpgRecords = playerHero->playerCpgRecords;
+        heropai.playerHandJongs = playerHero->playerHandJongs;
+        heropai.playerPlayedJongs =playerHero->playerPlayedJongs;
+        record.record.push_back(heropai);
+        myPlayMingpaiRecord.push_back(record);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
     

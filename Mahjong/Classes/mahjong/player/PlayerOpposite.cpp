@@ -730,6 +730,8 @@ void PlayerOpposite::doEventTimeOver(int type){
 
 void PlayerOpposite::updateMingpai(){
     for(int i=0;i< playerHandJongs.size();i++){
+        playerHandJongs.at(i)->removeFromParent();
+        addChild(playerHandJongs.at(i),30-i);
         playerHandJongs.at(i)->setPosition(Point(OPPOSITE_POS_X + 43 * i, OPPOSITE_POS_Y));
     }
 }
