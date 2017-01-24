@@ -53,7 +53,7 @@ public:
     
     Vector<Jong*> getSelfHandJongs();
     Vector<Jong*>  sortJongs(Vector<Jong*> jongs);
-    void updateMingpai();
+    void updateMingpai(Vector<Jong*> playerHandJongs,Vector<Jong*> playerPlayedJongs,std::vector<PlayerCpgRecord> playerCpgRecords);
     
     CC_SYNTHESIZE(bool, isAllowPlay, IsAllowPlay);
     CC_SYNTHESIZE(bool, isAllowTouch, IsAllowTouch);

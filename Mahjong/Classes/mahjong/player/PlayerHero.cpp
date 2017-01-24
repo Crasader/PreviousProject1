@@ -1249,13 +1249,44 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
 }
 
-void PlayerHero::updateMingpai(){
-    for (int i = 0; i < playerHandJongs.size(); i++) {
-        if (i == MAX_JONG_NUM - 1){
-            playerHandJongs.at(i)->setPosition(Point(NEW_JONG_POS_X, JONG_POS_Y));
-        }
-        else{
-            playerHandJongs.at(i)->setPosition(Point(JONG_POS_START_X + JONG_WIDTH * i, JONG_POS_Y));
+void PlayerHero::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){
+
+    
+    for(int j=0; j< playerPlayedJongs.size();j++){
+        playerPlayedJongs.at(j)->removeFromParent();
+    }
+    playerPlayedJongs = myPlayerPlayedJongs;
+    for(int a = 0;a<myPlayerPlayedJongs.size();a++){
+        addChild(myPlayerPlayedJongs.at(a));
+        myPlayerPlayedJongs.at(a)->setPosition(getHeroPlayedJongsPos(a));
+    }
+    for(int b = 0;b<playerCpgRecords.size();b++){
+        for(int c=0;c<playerCpgRecords.at(b).pokersRecord.size();c++){
+            playerCpgRecords.at(b).pokersRecord.at(c)->removeFromParent();
         }
     }
+    playerCpgRecords.clear();
+    playerCpgRecords = myPlayerCpgRecords;
+    for(int e = 0;e<myPlayerCpgRecords.size();e++){
+        for(int f=0;f<myPlayerCpgRecords.at(e).pokersRecord.size();f++){
+            myPlayerCpgRecords.at(e).pokersRecord.at(f)->removeFromParent();
+            addChild(myPlayerCpgRecords.at(e).pokersRecord.at(f));
+        }
+    }
+    playerHandJongs = myPlayerHandJongs;
+    setHandPosX(myPlayerCpgRecords.size()*JONG_WIDTH*3+JONG_POS_START_X);
+    for (int i = 0; i < playerHandJongs.size(); i++) {
+        playerHandJongs.at(i)->removeFromParent();
+        playerHandJongs.at(i)->showJong(herohand, playerHandJongs.at(i)->getJongType());
+        playerHandJongs.at(i)->setScale(1.0f);
+        addChild(playerHandJongs.at(i));
+        if (i == MAX_JONG_NUM - 1){
+            playerHandJongs.at(i)->setPosition(Point(getHandPosX(), JONG_POS_Y));
+        }
+        else{
+            playerHandJongs.at(i)->setPosition(Point(getHandPosX() + JONG_WIDTH * i, JONG_POS_Y));
+        }
+    }
+    showCurrentPlayedJongIcon(false);
+    hideCurrentBigJong();
 }

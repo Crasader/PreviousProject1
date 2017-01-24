@@ -30,7 +30,7 @@ public:
 	void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
 	void recoverHand(std::string hand);
     void drawMingPai(std::string hand);
-    void updateMingpai();
+    void updateMingpai(Vector<Jong*> playerHandJongs,Vector<Jong*> playerPlayedJongs,std::vector<PlayerCpgRecord> playerCpgRecords);
     void updateHandJongs(std::string jongs,bool hu);
 	CREATE_FUNC(PlayerOpposite);
 

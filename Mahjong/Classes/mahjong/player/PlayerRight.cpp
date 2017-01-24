@@ -702,10 +702,32 @@ void PlayerRight::doEventTimeOver(int type){
     }
 }
 
-void PlayerRight::updateMingpai(){
+void PlayerRight::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){
     for(int i=0;i< playerHandJongs.size();i++){
         playerHandJongs.at(i)->removeFromParent();
         addChild(playerHandJongs.at(i),i);
          playerHandJongs.at(i)->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 35 * i));
     }
+    for(int j=0; j< playerPlayedJongs.size();j++){
+        playerPlayedJongs.at(j)->removeFromParent();
+    }
+    playerPlayedJongs = myPlayerPlayedJongs;
+    for(int a = 0;a<myPlayerPlayedJongs.size();a++){
+        addChild(myPlayerPlayedJongs.at(a));
+        myPlayerPlayedJongs.at(a)->setPosition(getPlayedJongPos(a));
+    }
+    for(int b = 0;b<playerCpgRecords.size();b++){
+        for(int c=0;c<playerCpgRecords.at(b).pokersRecord.size();c++){
+            playerCpgRecords.at(b).pokersRecord.at(c)->removeFromParent();
+        }
+    }
+    playerCpgRecords = myPlayerCpgRecords;
+    for(int e = 0;e<myPlayerCpgRecords.size();e++){
+        for(int f=0;f<myPlayerCpgRecords.at(e).pokersRecord.size();f++){
+            myPlayerCpgRecords.at(e).pokersRecord.at(f)->removeFromParent();
+            addChild(myPlayerCpgRecords.at(e).pokersRecord.at(f));
+        }
+    }
+    showCurrentPlayedJongIcon(false);
+    hideCurrentBigJong();
 }

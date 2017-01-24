@@ -116,31 +116,20 @@ void ReviewGame::loadView(){
 
 
 void ReviewGame::controlDown(){
-    playing =false;
     fupanStep -= 2;
-    myPlayMingpaiRecord.pop_back();
-    PlayMingpaiRecord record = myPlayMingpaiRecord.at(myPlayMingpaiRecord.size()-1);
-    for(auto var:record.record){
-        if(var.seatId==ClientSeatId::left){
-            playerLeft->playerHandJongs = var.playerHandJongs;
-            playerLeft->playerPlayedJongs = var.playerPlayedJongs;
-            playerLeft->playerCpgRecords = var.playerCpgRecords;
-            playerLeft->updateMingpai();
-        }else if(var.seatId==ClientSeatId::opposite){
-            playerOpposite->playerHandJongs = var.playerHandJongs;
-            playerOpposite->playerPlayedJongs = var.playerPlayedJongs;
-            playerOpposite->playerCpgRecords = var.playerCpgRecords;
-            playerOpposite->updateMingpai();
-        }else if(var.seatId==ClientSeatId::right){
-            playerRight->playerHandJongs = var.playerHandJongs;
-            playerRight->playerPlayedJongs = var.playerPlayedJongs;
-            playerRight->playerCpgRecords = var.playerCpgRecords;
-            playerRight->updateMingpai();
-        }else if(var.seatId==ClientSeatId::hero){
-            playerHero->playerHandJongs = var.playerHandJongs;
-            playerHero->playerPlayedJongs = var.playerPlayedJongs;
-            playerHero->playerCpgRecords = var.playerCpgRecords;
-            playerHero->updateMingpai();
+    if(fupanStep>=0){
+        myPlayMingpaiRecord.pop_back();
+        PlayMingpaiRecord record = myPlayMingpaiRecord.at(myPlayMingpaiRecord.size()-1);
+        for(auto var:record.record){
+            if(var.seatId==ClientSeatId::left){
+                playerLeft->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
+            }else if(var.seatId==ClientSeatId::opposite){
+                playerOpposite->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
+            }else if(var.seatId==ClientSeatId::right){
+                playerRight->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
+            }else if(var.seatId==ClientSeatId::hero){
+                playerHero->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
+            }
         }
     }
 }
