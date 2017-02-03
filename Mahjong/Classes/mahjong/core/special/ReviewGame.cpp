@@ -118,7 +118,7 @@ void ReviewGame::loadView(){
 
 
 void ReviewGame::controlDown(){
-    
+    playing = false;
     if(myPlayMingpaiRecord.size()>1){
         fupanStep -= 2;
         myPlayMingpaiRecord.pop_back();
