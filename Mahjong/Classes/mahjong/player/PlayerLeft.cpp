@@ -687,9 +687,11 @@ void PlayerLeft::doEventTimeOver(int type){
 
 
 void PlayerLeft::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){
-    playerHandJongs = myPlayerHandJongs;
     for(int i=0; i< playerHandJongs.size();i++){
         playerHandJongs.at(i)->removeFromParent();
+    }
+    playerHandJongs = myPlayerHandJongs;
+    for(int i=0; i< playerHandJongs.size();i++){
         addChild(playerHandJongs.at(i),60-i);
         playerHandJongs.at(i)->setPosition(Point(LEFT_POS_X, LEFT_POS_Y + 35 * i));
     }

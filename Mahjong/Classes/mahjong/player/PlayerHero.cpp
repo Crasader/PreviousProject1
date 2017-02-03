@@ -304,9 +304,9 @@ void PlayerHero::showCurrentPlayedJongIcon(bool isShow){
     if(playerPlayedJongs.size()>0){
         biaoji->setPosition(playerPlayedJongs.at(playerPlayedJongs.size() - 1)->getPosition().x,
                             playerPlayedJongs.at(playerPlayedJongs.size() - 1)->getPosition().y + 20);
-        biaoji->setVisible(false);
+        biaoji->setVisible(isShow);
         playedIcon->setPosition(biaoji->getPosition());
-        playedIcon->setVisible(true);
+        playedIcon->setVisible(isShow);
     }
 }
 

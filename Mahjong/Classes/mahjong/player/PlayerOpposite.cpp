@@ -710,6 +710,9 @@ void PlayerOpposite::doEventTimeOver(int type){
 void PlayerOpposite::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){
     for(int i=0;i< playerHandJongs.size();i++){
         playerHandJongs.at(i)->removeFromParent();
+    }
+    playerHandJongs = myPlayerHandJongs;
+    for(int i=0;i< playerHandJongs.size();i++){
         addChild(playerHandJongs.at(i),30-i);
         playerHandJongs.at(i)->setPosition(Point(OPPOSITE_POS_X + 43 * i, OPPOSITE_POS_Y));
     }

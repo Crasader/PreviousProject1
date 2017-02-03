@@ -686,9 +686,13 @@ void PlayerRight::doEventTimeOver(int type){
 void PlayerRight::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){
     for(int i=0;i< playerHandJongs.size();i++){
         playerHandJongs.at(i)->removeFromParent();
-        addChild(playerHandJongs.at(i),i);
-         playerHandJongs.at(i)->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 35 * i));
     }
+    playerHandJongs = myPlayerHandJongs;
+    for(int i=0;i< playerHandJongs.size();i++){
+        addChild(playerHandJongs.at(i),i);
+        playerHandJongs.at(i)->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y - 35 * i));
+    }
+
     for(int j=0; j< playerPlayedJongs.size();j++){
         playerPlayedJongs.at(j)->removeFromParent();
     }
