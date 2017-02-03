@@ -18,6 +18,8 @@
 #include "mahjong/widget/batteryinfo/BatteryInfo.h"
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
+#include "json/document.h"
+#include "json/rapidjson.h"
 
 
 
@@ -171,7 +173,24 @@ void ReviewGame::update(float dt){
     }else{
         interval=0;
     }
+}
 
+void ReviewGame::handlePlayBackData(){
+    //已打牌为界限,拆分圈
+    PlayBackInfo backInfo =  GAMEDATA::getInstance()->getPlaybackInfo();
+    for(int i=0; i<backInfo.playBackInfo.size();i++){
+        std::string msg = backInfo.playBackInfo.at(i);
+        rapidjson::Document _mDoc;
+        if(NULL == msg.c_str() || !msg.compare(""))
+            return;
+        _mDoc.Parse<0>(msg.c_str());
+        if(_mDoc.HasParseError() || !_mDoc.IsObject())
+            return;
+        const rapidjson::Value &code = _mDoc["code"];
+        if (code.IsInt() && code.GetInt() == 2005) {
+            
+        }
+    }
 }
 
 
@@ -886,7 +905,7 @@ void ReviewGame::addCoustomListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingRespListener, 1);
-
+    
     heroChiRespListener = EventListenerCustom::create(MSG_HERO_CHI_RESP, [=](EventCustom* event){
         playerHero->hideCurrentBigJong();
         std::vector<string> chipai = StringUtil::split(selectedChi, ",");
@@ -943,7 +962,7 @@ void ReviewGame::addCoustomListener(){
         },0,0,0.5f,"nonohuang");
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
-
+    
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
         string flag = static_cast<char*>(event->getUserData());
         if(flag == "1"||flag == "2"){

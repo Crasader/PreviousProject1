@@ -2282,7 +2282,6 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         data.prjushu = StringUtils::format("%d",_mDoc["prjushu"].GetInt());
     }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
-//             log("AAAAA = %s",StringUtils::format("%s:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()).c_str());
     if(_mDoc.HasMember("hf")){
         GAMEDATA::getInstance()->setHuangfan(StringUtils::format("%d",_mDoc["hf"].GetInt()));
     }

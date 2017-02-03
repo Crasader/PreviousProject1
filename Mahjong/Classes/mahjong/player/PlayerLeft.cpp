@@ -354,7 +354,7 @@ void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBas
     for (int i = 0; i < chipai.size(); i++){
         for (int j = 0; j < playerHandJongs.size(); j++){
             if (atoi(chipai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
-                playerHandJongs.at(j)->showJong(herocpgportrait, playerHandJongs.at(j)->getJongType());
+                playerHandJongs.at(j)->removeFromParent();
                 playerHandJongs.eraseObject(playerHandJongs.at(j));
                 break;
             }
@@ -438,9 +438,9 @@ void PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBa
     std::vector<string> chipai =  StringUtil::split(data.gang, ",");
     for (int j = 0; j < playerHandJongs.size(); j++){
         if (atoi(chipai.at(0).c_str()) == playerHandJongs.at(j)->getJongType()){
-            playerHandJongs.at(j)->showJong(herocpgportrait, playerHandJongs.at(j)->getJongType());
+            playerHandJongs.at(j)->removeFromParent();
             playerHandJongs.eraseObject(playerHandJongs.at(j));
-            break;
+            j--;
         }
     }
     settleJongMingpai();

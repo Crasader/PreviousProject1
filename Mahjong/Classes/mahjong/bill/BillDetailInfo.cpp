@@ -264,13 +264,11 @@ std::vector<BillContent> BillDetailInfo::sortBillInfo(std::vector<BillContent> c
 
 void BillDetailInfo::shareFupan(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
-    log("KKKKKKKK=== %s",temp->getParent()->getName().c_str());
 }
 
 
 void BillDetailInfo::showFupan(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
-    log("KKKKKKKK=== %s",temp->getParent()->getName().c_str());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getFupanInfo(temp->getParent()->getName().c_str()));
 }
 

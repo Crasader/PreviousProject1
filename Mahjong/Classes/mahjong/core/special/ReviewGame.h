@@ -99,5 +99,6 @@ private:
     void controlPause();
     void controlUp();
     void controlBack();
+    void handlePlayBackData();
 };
 #endif

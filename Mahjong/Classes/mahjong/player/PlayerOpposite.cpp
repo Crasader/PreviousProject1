@@ -458,7 +458,7 @@ void PlayerOpposite::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* play
         if (atoi(chipai.at(0).c_str()) == playerHandJongs.at(j)->getJongType()){
             playerHandJongs.at(j)->removeFromParent();
             playerHandJongs.eraseObject(playerHandJongs.at(j));
-            break;
+            j--;
         }
     }
     settleJongMingpai();
