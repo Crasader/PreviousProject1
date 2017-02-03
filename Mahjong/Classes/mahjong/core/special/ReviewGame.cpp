@@ -756,7 +756,7 @@ void ReviewGame::addCoustomListener(){
             }
         }else if(seatId == ClientSeatId::hero){
             playerHero->stopTimeClockAnim();
-            playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
+            playerHero->drawPlayedJongMingpai(GAMEDATA::getInstance()->getOtherPlayJong().poker);
             if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
             }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){

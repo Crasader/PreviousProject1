@@ -60,6 +60,8 @@ public:
     CC_SYNTHESIZE(float, handPosX, HandPosX);
     CC_SYNTHESIZE(int, cpgPostionX, CpgPostionX);
     
+    void drawPlayedJongMingpai(int type);
+    
     CREATE_FUNC(PlayerHero);
     
 private:

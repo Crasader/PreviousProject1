@@ -708,6 +708,40 @@ void PlayerHero:: drawPlayedJong(int type){
     }
 }
 
+void PlayerHero::drawPlayedJongMingpai(int type){
+    PlayerBase::showPlayedJong(type);
+    if (virtualJong != NULL){
+        virtualJong->setVisible(false);
+        virtualJong->removeFromParent();
+        virtualJong = NULL;
+    }
+    resetHandJongsY(NULL);
+    bool find = false;
+    for(int i=(int)playerHandJongs.size()-1;i>=0;i--){
+        if(playerHandJongs.at(i)->getJongType()==type){
+            find = true;
+            Jong* spJong = Jong::create();
+            spJong->showJong(herohand, playerHandJongs.at(i)->getJongType());
+            spJong->setPosition(playerHandJongs.at(i)->getPosition());
+            addChild(spJong);
+            playerHandJongs.at(i)->removeFromParent();
+            playerHandJongs.eraseObject(playerHandJongs.at(i));//从手牌队列中移除
+            Point endPoint = getHeroPlayedJongsPos((int)playerPlayedJongs.size());
+            spJong->showJong(heroplayed, spJong->getJongType());
+            spJong->setPosition(endPoint);
+            playerPlayedJongs.pushBack(spJong);
+            isAllowPlay = false;
+            sortHandJongs(getHandPosX(), false);
+            break;
+        }
+    }
+    if(find){
+        log("手牌中有这张牌 == %d",type);
+    }else{
+        log("手牌中并没有这张牌== %d",type);
+    }
+}
+
 
 void PlayerHero::eraseHeroJong(Jong* jong){
     this->playerHandJongs.eraseObject(jong);
