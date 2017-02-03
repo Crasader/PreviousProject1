@@ -103,31 +103,12 @@ void PlayerRight::drawPlayedJongMingpai(int ctype){
     lastPlayedJong->showJong(rightplayed, ctype);
     lastPlayedJong->setPosition(Point(RIGHT_POS_X, RIGHT_POS_Y + 35));
     int tar = playerPlayedJongs.size() % 7;
-    this->addChild(lastPlayedJong, 7 - tar);
+    addChild(lastPlayedJong, 7 - tar);
     playerPlayedJongs.pushBack(lastPlayedJong);
-    Point startPoint = Point(RIGHT_POS_X, RIGHT_POS_Y + 35);
     Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
-    ccBezierConfig bezier;
-    bezier.controlPoint_1 = startPoint;
-    bezier.controlPoint_2 = Point(startPoint.x + (endPoint.x - startPoint.x) * 0.5,
-                                  startPoint.y + (endPoint.y - startPoint.x)*0.5);
-    bezier.endPosition = endPoint;
-    BezierTo *actionMove = BezierTo::create(0.5f, bezier);
-    CallFunc* callback = CallFunc::create([=](){
-        if(GAMEDATA::getInstance()->getIsFuPan()){
-            ((ReviewGame*)getParent())->removeHeroPlayedIcon();
-        }else{
-            ((MahjongView*)getParent())->removeHeroPlayedIcon();
-        }
-        showCurrentPlayedJongIcon(true);
-    });
-    settleJongMingpai();
-    if(getStateCpg()){
-        setStateCpg(false);
-    }
-    Sequence* sequence = Sequence::create(actionMove, callback, NULL);
-    lastPlayedJong->runAction(sequence);
+    lastPlayedJong->setPosition(endPoint);
     showCurrentBigJong(ctype);
+    settleJongMingpai();
 }
 
 void PlayerRight::settleJongMingpai(){

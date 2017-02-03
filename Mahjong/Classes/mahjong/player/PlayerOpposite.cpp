@@ -129,31 +129,10 @@ void PlayerOpposite::drawPlayedJongMingpai(int ctype){
     else{
         addChild(lastPlayedJong, 1);
     }
-    Point startPoint = Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y);
     Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
-    ccBezierConfig bezier;
-    bezier.controlPoint_1 = startPoint;
-    bezier.controlPoint_2 = Point(startPoint.x + (endPoint.x - startPoint.x) * 0.5,
-                                  startPoint.y + (endPoint.y - startPoint.y)*0.5);
-    bezier.endPosition = endPoint;
-    BezierTo *actionMove = BezierTo::create(0.5f, bezier);
-    CallFunc* callback = CallFunc::create([=](){
-        if(GAMEDATA::getInstance()->getIsFuPan()){
-            ((ReviewGame*)getParent())->removeHeroPlayedIcon();
-        }else{
-            ((MahjongView*)getParent())->removeHeroPlayedIcon();
-        }
-
-        showCurrentPlayedJongIcon(true);
-    });
-    Sequence* sequence = Sequence::create(Spawn::create(actionMove,CallFunc::create([=](){
-        settleJongMingpai();
-        if(getStateCpg()){
-            setStateCpg(false);
-        }
-    }), NULL) ,callback, NULL);
-    lastPlayedJong->runAction(sequence);
+    lastPlayedJong->setPosition(endPoint);
     showCurrentBigJong(ctype);
+    settleJongMingpai();
 }
 
 
