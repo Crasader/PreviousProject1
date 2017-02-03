@@ -118,7 +118,7 @@ void ReviewGame::loadView(){
 
 
 void ReviewGame::controlDown(){
-    playing = false;
+    interval =0;
     playerHero->showCurrentPlayedJongIcon(false);
     if(myPlayMingpaiRecord.size()>1){
         fupanStep -= 2;
@@ -418,7 +418,7 @@ void ReviewGame::clearRoomPlayer(){
 void ReviewGame::showOriention(){
     Orientation* ori = Orientation::create();
     ori->setTag(123);
-    ori->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
+
     addChild(ori);
 }
 
@@ -563,26 +563,6 @@ void ReviewGame::createPlayer(PlayerGameData data, int type, Player* playerInfo)
 
 
 void ReviewGame::onEnterTransitionDidFinish(){
-    if (GAMEDATA::getInstance()->getIsRecover()){
-        //重新设置庄的位置
-        LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
-        if(data.result == 1){
-            ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-            ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),data.turn);
-            GAMEDATA::getInstance()->setIsPlaying(true);
-            int lastplayerSeat = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.pre);
-            if(lastplayerSeat == ClientSeatId::hero){
-                playerHero->showCurrentPlayedJongIcon(true);
-            }else if(lastplayerSeat == ClientSeatId::left){
-                playerLeft->showCurrentPlayedJongIcon(true);
-            }else if(lastplayerSeat == ClientSeatId::opposite){
-                playerOpposite->showCurrentPlayedJongIcon(true);
-            }else if(lastplayerSeat == ClientSeatId::right){
-                playerRight->showCurrentPlayedJongIcon(true);
-            }
-        }
-        GAMEDATA::getInstance()->setIsRecover(false);
-    }
     GAMEDATA::getInstance()->setIsInGameScene(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
 }
@@ -634,8 +614,9 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
     
     fupanPlayerInfoListener = EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
+        ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
+        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();
-        
         for (int i = 0; i < data.players.size(); i++)
         {
             PlayerGameData player = data.players.at(i);
