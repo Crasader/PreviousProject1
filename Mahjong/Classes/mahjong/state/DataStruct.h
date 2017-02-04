@@ -565,6 +565,7 @@ struct FupanGameData
 
 struct PlayerMingpai{
     int seatId;
+    int hua;
     Vector<Jong*> playerHandJongs;//玩家手牌
     Vector<Jong*> playerPlayedJongs;
     std::vector<PlayerCpgRecord>  playerCpgRecords;//玩家吃碰杠记录
