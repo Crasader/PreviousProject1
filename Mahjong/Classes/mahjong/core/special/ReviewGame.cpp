@@ -791,7 +791,7 @@ void ReviewGame::addCoustomListener(){
             HeroCpgRespData heroTingData;
             heroTingData.result =1;
             std::vector<string> chipai = StringUtil::split(GAMEDATA::getInstance()->getPlayerCpgt().chi.at(0), ",");
-            playerHero->drawHeroChiMingpai(heroTingData,chipai, getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+            playerHero->drawHeroChiMingpai(heroTingData,chipai,getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             
         }

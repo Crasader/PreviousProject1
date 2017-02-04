@@ -7,6 +7,7 @@
 #include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
+#include "mahjong/utils/GameConfig.h"
 
 bool BillDetailInfo::init()
 {
@@ -264,6 +265,14 @@ std::vector<BillContent> BillDetailInfo::sortBillInfo(std::vector<BillContent> c
 
 void BillDetailInfo::shareFupan(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
+    std::string fupanid = temp->getParent()->getName();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    CallAndroidMethod::getInstance()->shareToWeChat(url,SHARE_TEXT_1,StringUtils::format("复盘码:%s",fupanid.c_str()) ,false);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
+    IOSBridge::getInstance()->doWechatShareWeb(url,SHARE_TEXT_1, StringUtils::format("复盘码:%s",fupanid.c_str()),0);
+#endif
 }
 
 
