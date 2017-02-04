@@ -4,6 +4,7 @@
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/utils/Chinese.h"
 #include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/bill/fpdialog/FupanDialog.hpp"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "payment/android/CallAndroidMethod.h"
@@ -280,7 +281,8 @@ void BillInfo::setShowPosition(){
 
 
 void BillInfo::checkFupan(){
-
+    FupanDialog* da = FupanDialog::create();
+    addChild(da,10);
 }
 
 void BillInfo::screenShot(){
