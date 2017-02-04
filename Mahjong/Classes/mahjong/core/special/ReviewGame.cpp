@@ -674,19 +674,19 @@ void ReviewGame::addCoustomListener(){
         showPaiduiNum(atoi(GAMEDATA::getInstance()->getPlayerTurn().rest.c_str()));
         if (seatId == ClientSeatId::hero){
             playerHero->hideCurrentBigJong();
-            playerHero->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
+            playerHero->playerTurnReplaceMingpai(GAMEDATA::getInstance()->getPlayerTurn());
         }
         else if (seatId == ClientSeatId::left){
-            playerLeft->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerLeft->replaceTurnHuaMingpai(GAMEDATA::getInstance()->getPlayerTurn());
             playerLeft->drawLeftPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
         }
         else if (seatId == ClientSeatId::right){
             
-            playerRight->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerRight->replaceTurnHuaMingpai(GAMEDATA::getInstance()->getPlayerTurn());
             playerRight->drawRightPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerOpposite->replaceTurnHuaMingpai(GAMEDATA::getInstance()->getPlayerTurn());
             playerOpposite->drawOppositePlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
         }
     });
@@ -791,7 +791,7 @@ void ReviewGame::addCoustomListener(){
             HeroCpgRespData heroTingData;
             heroTingData.result =1;
             std::vector<string> chipai = StringUtil::split(GAMEDATA::getInstance()->getPlayerCpgt().chi.at(0), ",");
-            playerHero->drawHeroChi(heroTingData,chipai, getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+            playerHero->drawHeroChiMingpai(heroTingData,chipai, getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             
         }
@@ -823,7 +823,7 @@ void ReviewGame::addCoustomListener(){
             hideTingGangControllPad();
             HeroCpgRespData heroCpgData;
             heroCpgData.result = 1;
-            playerHero->drawHeroPeng(heroCpgData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+            playerHero->drawHeroPengMingpai(heroCpgData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             
         }
@@ -851,7 +851,7 @@ void ReviewGame::addCoustomListener(){
         }else if (seatId == ClientSeatId::hero){
             hideTingGangControllPad();
             HeroCpgRespData heroTingData;
-            playerHero->drawHeroPeng(heroTingData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+            playerHero->drawHeroGangMingpai(heroTingData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             
         }

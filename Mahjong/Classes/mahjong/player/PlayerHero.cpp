@@ -656,6 +656,26 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     doubleClickJong = NULL;
 }
 
+void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
+    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+    Jong* jong = Jong::create();
+    jong->showJong(herohand, data.poker);
+    addChild(jong);
+    setHuaNum(getHuaNum()+(int)replace.size());
+    showPlayerHua(getHuaNum());
+    playerHandJongs.pushBack(jong);
+    currentJong = jong;
+    settleHandJongs(getHandPosX());
+    if(data.hastinggang){
+        EventCustom tingEvent(MSG_HERO_TING_GANG);
+        Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
+    }
+    if (!(GAMEDATA::getInstance()->getIsTingState())){
+        setIsAllowPlay(true);
+    }
+    doubleClickJong = NULL;
+}
+
 void PlayerHero:: drawPlayedJong(int type){
     PlayerBase::showPlayedJong(type);
     if (virtualJong != NULL){
@@ -1126,7 +1146,254 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             this->runAction(mySe);
         }
         setIsAllowTouch(true);
+    }
+}
+
+void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
+    updateSelectedInfo(NULL);
+    if (cpgResp.result == 1 || cpgResp.result == 2){
+        PlayerBase::showPlayerChi(chipai.at(0)+","+chipai.at(1), playerBase);
+        Vector<Jong*> chiVector;
+        //根据吃牌的位置显示,显示吃牌堆得形状
+        Jong* jon = Jong::create();
+        jon->showJong(herocpglandscape, playerBase->getCurrentJong()->getJongType());
+        jon->setPosition(playerBase->getCurrentJong()->getPosition());
+        addChild(jon, 3);
+        chiVector.pushBack(jon);
         
+        for (int i = 0; i < chipai.size(); i++){
+            for (int j = 0; j < getSelfHandJongs().size(); j++){
+                if (atoi(chipai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+                    getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
+                    chiVector.pushBack(getSelfHandJongs().at(j));
+                    eraseHeroJong(getSelfHandJongs().at(j));
+                    break;
+                }
+            }
+        }
+        
+        playerBase->removeLastJong();
+        
+        setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+        sortHandJongs(getHandPosX(), true);
+
+        PlayerCpgRecord record;
+        record.type = CpgType::chi;
+        record.pokersRecord = chiVector;
+        playerCpgRecords.push_back(record);
+        for (int k = 0; k < chiVector.size(); k++){
+            chiVector.at(k)->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            Point mv = Point(getCpgPostionX() + (k==0? 0:(5+48 * k)), k==0?35:45);
+            chiVector.at(k)->setScale(0.75f);
+            chiVector.at(k)->setPosition(mv);
+        }
+        setCpgPostionX(getCpgPostionX()+170);
+        
+        //屏蔽不允许出的牌
+        for(auto var:getSelfHandJongs()){
+            if(var->getJongType() == atoi(cpgResp.forbit.c_str())){
+                var->showBackShadow(true);
+            }
+        }
+        //吃完后触发听牌
+        if (cpgResp.result == 2 && cpgResp.ting != ""){
+            log("吃听的牌: %s",cpgResp.ting.c_str());
+            PlayerCpgtData tingData;
+            tingData.ting = cpgResp.ting;
+            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+            ((MahjongView*)getParent())->showTingGangControllPad();
+        }else{
+            setIsAllowPlay(true);
+        }
+    }
+    else{
+        stopTimeClockAnim();
+    }
+}
+
+
+void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
+
+    Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
+    updateSelectedInfo(NULL);
+    std::vector<string> pengpai = StringUtil::split(cpg.peng, ",");
+    Vector<Jong*> pengVector;
+    for (int i = 0; i < pengpai.size(); i++){
+        for (int j = 0; j < getSelfHandJongs().size(); j++){
+            if (atoi(pengpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+                getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
+                getSelfHandJongs().at(j)->setLocalZOrder(2);
+                pengVector.pushBack(getSelfHandJongs().at(j));
+                eraseHeroJong(getSelfHandJongs().at(j));
+                break;
+            }
+        }
+    }
+    Jong* jon = Jong::create();
+    jon->showJong(herocpglandscape, playerBase->getCurrentJong()->getJongType());
+    jon->setPosition(playerBase->getCurrentJong()->getPosition());
+    this->addChild(jon, 1);
+    //判断被碰牌玩家的位置
+    pengVector.insert(0, jon);
+    PlayerCpgRecord record;
+    record.type = CpgType::peng;
+    record.pokersRecord = pengVector;
+    if(playerBase->getClientSeat()==ClientSeatId::left){
+        record.pengDir = 0;
+    }else if(playerBase->getClientSeat()==ClientSeatId::opposite){
+        record.pengDir = 1;
+    }else{
+        record.pengDir = 2;
+    }
+    playerCpgRecords.push_back(record);
+    playerBase->removeLastJong();
+    setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+    sortHandJongs(getHandPosX(), true);
+    for (int k = 0; k < pengVector.size(); k++){
+        Point mv;
+        if(playerBase->getClientSeat()==ClientSeatId::left){
+            mv = Point(getCpgPostionX() + (k==0? 0:(5+48 * k)), k==0?35:45);
+        }else if(playerBase->getClientSeat()==ClientSeatId::opposite){
+            mv = Point(getCpgPostionX() + (k==0? 32:(-48+48 * k)), k==0?90:45);
+        }else{
+            mv = Point(getCpgPostionX()+ (k==0? 105:(5+48 * (k-1))), k==0?35:45);
+        }
+        pengVector.at(k)->setScale(0.75);
+        pengVector.at(k)->setPosition(mv);
+    }
+    if(playerBase->getClientSeat()==ClientSeatId::opposite){
+        setCpgPostionX(getCpgPostionX()+115);
+    }else{
+        setCpgPostionX(getCpgPostionX()+170);
+    }
+    
+    if (resp.result == 2 && resp.ting != ""){
+        PlayerCpgtData tingData;
+        tingData.ting = resp.ting;
+        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+        ((MahjongView*)getParent())->showTingGangControllPad();
+    }else{
+        setIsAllowPlay(true);
+        startTimeClockAnim();
+    }
+}
+
+void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
+    Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
+    updateSelectedInfo(NULL);
+    if(cpg.flag == 0){
+        std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
+        Vector<Jong*> gangVector;
+        for (int i = 0; i < gangpai.size(); i++){
+            for (int j = 0; j < getSelfHandJongs().size(); j++){
+                if (atoi(gangpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+                    getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
+                    gangVector.pushBack(getSelfHandJongs().at(j));
+                    eraseHeroJong(getSelfHandJongs().at(j));
+                    break;
+                }
+            }
+        }
+        Jong* jon = Jong::create();
+        jon->showJong(herocpgportrait, playerBase->getCurrentJong()->getJongType());
+        jon->setPosition(playerBase->getCurrentJong()->getPosition());
+        this->addChild(jon, 5);
+        gangVector.pushBack(jon);
+        PlayerCpgRecord record;
+        record.type = CpgType::gang;
+        record.pokersRecord = gangVector;
+        playerCpgRecords.push_back(record);
+        setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+        sortHandJongs(getHandPosX(), true);
+        
+        CallFunc* action2 = CallFunc::create([=](){
+
+        });
+        for (int k = 0; k < gangVector.size(); k++){
+            if (k != 3){
+                gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47 * k, 45));
+                gangVector.at(k)->setScale( 0.75f);
+            }
+            else{
+                gangVector.at(k)->setLocalZOrder(4);
+                gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47, 55));
+                gangVector.at(k)->setScale( 0.75f);
+            }
+        }
+        setCpgPostionX(getCpgPostionX()+170);
+        
+        if (resp.result == 2 && resp.ting != ""){
+            PlayerCpgtData tingData;
+            tingData.ting = resp.ting;
+            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+            ((MahjongView*)getParent())->showTingGangControllPad();
+        }
+        
+    }else{
+        std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
+        Vector<Jong*> gangVector;
+        if (cpg.flag == 2){
+            for(int j=0; j<playerHandJongs.size();j++){
+                if(playerHandJongs.at(j)->getJongType() == atoi(gangpai.at(0).c_str())){
+                    gangVector.pushBack(playerHandJongs.at(j));
+                    eraseHeroJong(playerHandJongs.at(j));
+                }
+            }
+            for (int i = 0; i < this->playerCpgRecords.size(); i++){
+                if (playerCpgRecords.at(i).type == CpgType::peng){
+                    if (atoi(gangpai.at(0).c_str()) == playerCpgRecords.at(i).pokersRecord.at(0)->getJongType()){
+                        playerCpgRecords.at(i).type = penggang;
+                        playerCpgRecords.at(i).pokersRecord.pushBack(gangVector);
+                        gangVector.at(0)->showJong(herocpgportrait, gangVector.at(0)->getJongType());
+                        Point pos;
+                        if(playerCpgRecords.at(i).pengDir ==0){
+                            pos = playerCpgRecords.at(i).pokersRecord.at(1)->getPosition();
+                        }else if(playerCpgRecords.at(i).pengDir ==0){
+                            pos = Point((playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().x+playerCpgRecords.at(i).pokersRecord.at(2)->getPosition().x)/2,playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().y);
+                        }else{
+                            pos = playerCpgRecords.at(i).pokersRecord.at(2)->getPosition();
+                        }
+                        gangVector.at(0)->setLocalZOrder(4);
+                        gangVector.at(0)->setPosition(Point(pos.x, pos.y + 10));
+                        gangVector.at(0)->setScale(0.75f);
+                        sortHandJongs(getHandPosX(), false);
+                    }
+                }
+            }
+        }
+        else{
+            for (int j = 0; j < getSelfHandJongs().size(); j++){
+                if (atoi(gangpai.at(0).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+                    gangVector.pushBack(getSelfHandJongs().at(j));
+                }
+            }
+            for (int i = 0; i < gangVector.size(); i++){
+                eraseHeroJong(gangVector.at(i));
+            }
+            PlayerCpgRecord record;
+            record.type = CpgType::angang;
+            record.pokersRecord = gangVector;
+            playerCpgRecords.push_back(record);
+            setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+            sortHandJongs(getHandPosX(), true);
+            for (int k = 0; k < gangVector.size(); k++){
+                if (k != 3){
+                    gangVector.at(k)->setPosition(Point(getCpgPostionX()+ 47 * k, 45));
+                    gangVector.at(k)->setScale(0.75f);
+                }
+                else{
+                    gangVector.at(k)->setLocalZOrder(4);
+                    gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47, 55));
+                    gangVector.at(k)->setScale(0.75f);
+                }
+            }
+            setCpgPostionX(getCpgPostionX()+170);
+            for (int k = 0; k < gangVector.size() - 1; k++){
+                gangVector.at(k)->showJong(herodeal, gangVector.at(k)->getJongType(),false);
+                gangVector.at(k)->setScale(0.8);
+            }
+        }
+        setIsAllowTouch(true);
     }
 }
 

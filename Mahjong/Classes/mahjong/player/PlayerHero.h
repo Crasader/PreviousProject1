@@ -53,7 +53,7 @@ public:
     
     Vector<Jong*> getSelfHandJongs();
     Vector<Jong*>  sortJongs(Vector<Jong*> jongs);
-    void updateMingpai(Vector<Jong*> playerHandJongs,Vector<Jong*> playerPlayedJongs,std::vector<PlayerCpgRecord> playerCpgRecords);
+    
     
     CC_SYNTHESIZE(bool, isAllowPlay, IsAllowPlay);
     CC_SYNTHESIZE(bool, isAllowTouch, IsAllowTouch);
@@ -61,6 +61,11 @@ public:
     CC_SYNTHESIZE(int, cpgPostionX, CpgPostionX);
     
     void drawPlayedJongMingpai(int type);
+    void playerTurnReplaceMingpai(PlayerTurnData data);
+    void updateMingpai(Vector<Jong*> playerHandJongs,Vector<Jong*> playerPlayedJongs,std::vector<PlayerCpgRecord> playerCpgRecords);
+    void drawHeroChiMingpai(HeroCpgRespData resp, std::vector<string> chipai, PlayerBase* playerBase);
+    void drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
+    void drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
     
     CREATE_FUNC(PlayerHero);
     

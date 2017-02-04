@@ -179,6 +179,15 @@ void PlayerBase::replaceTurnHua(PlayerTurnData data){
     
 }
 
+void PlayerBase::replaceTurnHuaMingpai(PlayerTurnData data){
+    if(data.replace==""){
+        return;
+    }
+    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+    setHuaNum(getHuaNum()+(int)replace.size());
+    showPlayerHua(getHuaNum());
+}
+
 void PlayerBase::showPlayedJong(int ctype){
     playedPokers.insert(ctype);
     setLastPoker(ctype);

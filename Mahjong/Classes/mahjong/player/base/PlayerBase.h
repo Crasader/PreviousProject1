@@ -67,6 +67,8 @@ public:
     CC_SYNTHESIZE(int,pokerNumber,PokerNumber);//打牌数量
     CC_SYNTHESIZE(int,lastPoker,LastPoker);//最近一次出牌
     CC_SYNTHESIZE(bool,isPlayHuaChi,IsPlayHuaChi);//花痴音效
+    
+    void replaceTurnHuaMingpai(PlayerTurnData data);
     CREATE_FUNC(PlayerBase);
     
 private:
