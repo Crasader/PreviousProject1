@@ -127,15 +127,19 @@ void ReviewGame::controlDown(){
         for(auto var:record.record){
             if(var.seatId==ClientSeatId::left){
                 playerLeft->setHuaNum(var.hua);
+                playerLeft->showPlayerHua(var.hua);
                 playerLeft->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }else if(var.seatId==ClientSeatId::opposite){
                 playerOpposite->setHuaNum(var.hua);
+                playerOpposite->showPlayerHua(var.hua);
                 playerOpposite->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }else if(var.seatId==ClientSeatId::right){
                 playerRight->setHuaNum(var.hua);
+                playerRight->showPlayerHua(var.hua);
                 playerRight->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }else if(var.seatId==ClientSeatId::hero){
                 playerHero->setHuaNum(var.hua);
+                playerHero->showPlayerHua(var.hua);
                 playerHero->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }
         }
