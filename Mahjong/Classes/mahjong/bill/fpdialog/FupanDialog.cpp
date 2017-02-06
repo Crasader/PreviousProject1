@@ -30,7 +30,7 @@ bool FupanDialog::init(){
     input_bg->setPosition(640, 340);
     addChild(input_bg);
     
-    auto _editName = ui::EditBox::create(Size(437, 81), ui::Scale9Sprite::create());
+    auto _editName = ui::EditBox::create(Size(437, 81), cocos2d::ui::Scale9Sprite::create());
     _editName->setPosition(Point(640, 340));
     _editName->setTag(0);
     _editName->setFont("arial", 24);
@@ -55,21 +55,21 @@ void FupanDialog::closeView(){
     removeFromParent();
 }
 
-void FupanDialog::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox){
+void FupanDialog::editBoxEditingDidBegin(cocos2d::ui::EditBox* editBox){
 
     
 }
 
-void FupanDialog::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox){
+void FupanDialog::editBoxEditingDidEnd(cocos2d::ui::EditBox* editBox){
     
 }
 
-void FupanDialog::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text){
+void FupanDialog::editBoxTextChanged(cocos2d::ui::EditBox* editBox, const std::string& text){
     
     
 }
 
-void FupanDialog::editBoxReturn(cocos2d::extension::EditBox* editBox){
+void FupanDialog::editBoxReturn(cocos2d::ui::EditBox* editBox){
     
     
 }
