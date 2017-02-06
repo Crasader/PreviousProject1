@@ -30,7 +30,7 @@ bool FupanDialog::init(){
     input_bg->setPosition(640, 340);
     addChild(input_bg);
     
-    auto _editName = ui::EditBox::create(Size(437, 81), Scale9Sprite::create());
+    auto _editName = ui::EditBox::create(Size(437, 81), ui::Scale9Sprite::create());
     _editName->setPosition(Point(640, 340));
     _editName->setTag(0);
     _editName->setFont("arial", 24);
