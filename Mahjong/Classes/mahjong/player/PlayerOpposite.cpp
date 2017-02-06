@@ -385,8 +385,8 @@ void PlayerOpposite::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* play
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }
     std::vector<string> chipai =  StringUtil::split(data.peng, ",");
-    for (int i = 0; i < chipai.size(); i++){
-        for (int j = 0; j < 2; j++){
+    for (int i = 0; i < 2; i++){
+        for (int j = 0; j < playerHandJongs.size(); j++){
             if (atoi(chipai.at(0).c_str()) == playerHandJongs.at(j)->getJongType()){
                 playerHandJongs.at(j)->removeFromParent();
                 playerHandJongs.eraseObject(playerHandJongs.at(j));
