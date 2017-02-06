@@ -32,6 +32,7 @@ public:
     void dealJongFinish();
     void showHandPokerOver(int seatId);//翻牌
     void showPaiduiNum(int num);
+    void checkPlayerIpRepetition();
     
 private:
 	std::mutex m_mutex;
@@ -45,6 +46,7 @@ private:
     PlayerLeft* playerLeft;
     PlayerRight* playerRight;
     PlayerOpposite* playerOpposite;
+    bool showRepeatDialog = false;
 
 
 	void update(float dt) override;

@@ -61,6 +61,7 @@ void MahjongView::initData(){
     playerLeft = NULL;
     playerRight = NULL;
     playerOpposite = NULL;
+    showRepeatDialog = false;
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setIsLiuJu(false);
     GAMEDATA::getInstance()->setIsGotoLobby(false);
@@ -292,14 +293,27 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
 
 void MahjongView::addPlayer2Room(){
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+    checkPlayerIpRepetition();
     for (int i = 0; i < players.size(); i++){
         updatePlayerView(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()), players.at(i));
     }
 }
 
-
-
-
+void MahjongView::checkPlayerIpRepetition(){
+    vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+    for(int i=0;i<players.size();i++){
+        for(int j=i+1;j<players.size();j++){
+            if(players.at(i)->getIP()==players.at(j)->getIP()){
+                //发现有相同的IP,发出通知
+                if(!showRepeatDialog){
+                    HintDialog* hint3 = HintDialog::create(StringUtils::format("%s和%sIP相同",players.at(i)->getNickname().c_str(),players.at(j)->getNickname().c_str()),nullptr);
+                    addChild(hint3,100);
+                    showRepeatDialog = true;
+                }
+            }
+        }
+    }
+}
 
 
 void MahjongView::drawCpgControllPad(){
