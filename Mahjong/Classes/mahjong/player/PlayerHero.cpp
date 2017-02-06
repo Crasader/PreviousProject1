@@ -355,10 +355,23 @@ void PlayerHero::readyGo(){
 
 
 void PlayerHero::inviteWechatFriend(){
+    std::string roomtype = "房间类型:";
+    if(GAMEDATA::getInstance()->getPrivateKaibao()=="0"){
+        roomtype += "无开宝";
+    }
+    if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
+        roomtype += "无勒子";
+    }else{
+        roomtype += "勒子";
+    }
+    if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
+        roomtype += "二模三冲";
+    }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),SHARE_TEXT_3,false);
+    
+    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),SHARE_TEXT_3,0);
+    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,0);
 #endif
 }
 
