@@ -2245,6 +2245,9 @@ void MsgHandler::handleFupanInfo(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     PlayBackInfo info;
+    if(_mDoc.HasMember("result")){
+        info.result =_mDoc["result"].GetInt();
+    }
     if(_mDoc.HasMember("playback")){
         const rapidjson::Value &playback = _mDoc["playback"];
         

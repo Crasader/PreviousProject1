@@ -705,8 +705,10 @@ void LobbyScene::addEventListener(){
     });
     //游戏复盘
     gameFupanListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GAME_FU_PAN_NOTIFY, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setIsFuPan(true);
-        Director::getInstance()->replaceScene(MjGameScene::create());
+        if(GAMEDATA::getInstance()->getPlaybackInfo().result == 1){
+            GAMEDATA::getInstance()->setIsFuPan(true);
+            Director::getInstance()->replaceScene(MjGameScene::create());
+        }
     });
 
     

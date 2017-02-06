@@ -19,6 +19,8 @@ USING_NS_CC_EXT;
 class FupanDialog : public Layer, public EditBoxDelegate{
 public:
     bool init();
+    void onEnter() override;
+    void onExit() override;
     CREATE_FUNC(FupanDialog);
     virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);
     virtual void editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox);
@@ -26,5 +28,8 @@ public:
     virtual void editBoxReturn(cocos2d::extension::EditBox* editBox);
 private:
     void closeView();
+    EventListenerCustom*  gameFupanListener;
+    ui::EditBox* _editName;
+    Label* hintLabel;
 };
 #endif /* FupanDialog_hpp */

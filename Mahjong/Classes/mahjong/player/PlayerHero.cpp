@@ -355,17 +355,20 @@ void PlayerHero::readyGo(){
 
 
 void PlayerHero::inviteWechatFriend(){
-    std::string roomtype = "房间类型:";
+    std::string roomtype = "房间类型:局数";
+    roomtype += GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu;
     if(GAMEDATA::getInstance()->getPrivateKaibao()=="0"){
-        roomtype += "无开宝";
+        roomtype += ",无开宝";
+    }else{
+        roomtype += ",开宝";
     }
     if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
-        roomtype += "无勒子";
+        roomtype += ",无勒子";
     }else{
-        roomtype += "40勒子";
+        roomtype += ",40勒子";
     }
     if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
-        roomtype += "二模三冲";
+        roomtype += ",二模三冲";
     }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     
