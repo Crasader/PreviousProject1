@@ -362,7 +362,7 @@ void PlayerHero::inviteWechatFriend(){
     if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
         roomtype += "无勒子";
     }else{
-        roomtype += "勒子";
+        roomtype += "40勒子";
     }
     if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
         roomtype += "二模三冲";
