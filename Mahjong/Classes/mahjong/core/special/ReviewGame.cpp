@@ -47,6 +47,8 @@ void ReviewGame::initData(){
     playerLeft = NULL;
     playerRight = NULL;
     playerOpposite = NULL;
+    fupanStep = 0;
+    currentMaxStep = 0;
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setIsLiuJu(false);
     GAMEDATA::getInstance()->setIsGotoLobby(false);
