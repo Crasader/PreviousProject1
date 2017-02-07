@@ -1567,8 +1567,6 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
 }
 
 void PlayerHero::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){
-
-    
     for(int j=0; j< playerPlayedJongs.size();j++){
         playerPlayedJongs.at(j)->removeFromParent();
     }
@@ -1590,11 +1588,14 @@ void PlayerHero::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myP
             addChild(myPlayerCpgRecords.at(e).pokersRecord.at(f));
         }
     }
-    playerHandJongs = myPlayerHandJongs;
-    setCpgPostionX(myPlayerCpgRecords.size()*170+JONG_POS_START_X);
+    
+    setCpgPostionX((int)myPlayerCpgRecords.size()*170+JONG_POS_START_X);
     setHandPosX(myPlayerCpgRecords.size()*JONG_WIDTH*3+JONG_POS_START_X);
+    for(int k=0; k< playerHandJongs.size();k++){
+        playerHandJongs.at(k)->removeFromParent();
+    }
+    playerHandJongs = myPlayerHandJongs;
     for (int i = 0; i < playerHandJongs.size(); i++) {
-        playerHandJongs.at(i)->removeFromParent();
         playerHandJongs.at(i)->showJong(herohand, playerHandJongs.at(i)->getJongType());
         playerHandJongs.at(i)->setScale(1.0f);
         addChild(playerHandJongs.at(i));
