@@ -367,7 +367,7 @@ void PlayerOpposite::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playe
     for (int i = 0; i < chi.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(oppositecpgportrait, atoi(chi.at(i).c_str()));
-        jong->setPosition(Point(getCpgShowPostion(playerCpgRecords.size()).x - OPPOSITE_POKER_WIDTH * i-39, getCpgShowPostion((int)playerCpgRecords.size()).y));
+        jong->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - OPPOSITE_POKER_WIDTH * i-39, getCpgShowPostion((int)playerCpgRecords.size()).y));
         addChild(jong, 30 - (int)playerCpgRecords.size());
         record.pokersRecord.pushBack(jong);
     }

@@ -792,7 +792,7 @@ void ReviewGame::addCoustomListener(){
             heroTingData.result =1;
             std::vector<string> chipai = StringUtil::split(GAMEDATA::getInstance()->getPlayerCpgt().chi.at(0), ",");
             playerHero->drawHeroChiMingpai(heroTingData,chipai,getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
+            playerHero->playerCpgAnim(CpgType::chi, ClientSeatId::hero);
             
         }
     });
@@ -824,7 +824,7 @@ void ReviewGame::addCoustomListener(){
             HeroCpgRespData heroCpgData;
             heroCpgData.result = 1;
             playerHero->drawHeroPengMingpai(heroCpgData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
+            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
             
         }
     });
@@ -852,7 +852,7 @@ void ReviewGame::addCoustomListener(){
             hideTingGangControllPad();
             HeroCpgRespData heroTingData;
             playerHero->drawHeroGangMingpai(heroTingData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
+            playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
             
         }
         
