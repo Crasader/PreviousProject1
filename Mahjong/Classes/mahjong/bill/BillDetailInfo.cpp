@@ -196,7 +196,11 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
                                                      CC_CALLBACK_1(BillDetailInfo::shareFupan, this));
         MenuItemImage* fupan = MenuItemImage::create("bill/fupan_1.png", "bill/fupan_2.png",
                                                       CC_CALLBACK_1(BillDetailInfo::showFupan, this));
-        auto fupanMenu = Menu::create(fengxiang,fupan, NULL);
+        auto fupanMenu = Menu::create();
+        fupanMenu->addChild(fengxiang);
+        if(!getIsPrivateBill()){
+            fupanMenu->addChild(fupan);
+        }
         fupanMenu->setTag(1001);
         fupanMenu->setName(detail.recordId);
         fupanMenu->alignItemsHorizontallyWithPadding(0);
@@ -250,6 +254,7 @@ void BillDetailInfo::updateBillDetail(){
 
 
 void BillDetailInfo::setPrivatePostion(){
+    
 //    setPosition(250,0);
 }
 

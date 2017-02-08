@@ -682,10 +682,10 @@ void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
     playerHandJongs.pushBack(jong);
     currentJong = jong;
     settleHandJongs(getHandPosX());
-    if(data.hastinggang){
-        EventCustom tingEvent(MSG_HERO_TING_GANG);
-        Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
-    }
+//    if(data.hastinggang){
+//        EventCustom tingEvent(MSG_HERO_TING_GANG);
+//        Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
+//    }
     if (!(GAMEDATA::getInstance()->getIsTingState())){
         setIsAllowPlay(true);
     }

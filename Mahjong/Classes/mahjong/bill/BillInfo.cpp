@@ -94,7 +94,7 @@ void BillInfo::tableCellTouched(TableView* table, TableViewCell* cell)
     }
     BillDetailInfo* detail =BillDetailInfo::create();
     if(getIsPrivateBill()){
-        detail->setPrivatePostion();
+        detail->setIsPrivateBill(true);
     }
     addChild(detail);
 }

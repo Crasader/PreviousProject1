@@ -126,6 +126,8 @@ void ReviewGame::controlDown(){
         image3->setEnabled(true);
         fupanStep -= 2;
         fupanStep  = fupanStep%2 == 0?fupanStep:(fupanStep-1);
+        if(fupanStep/2>=myPlayMingpaiRecord.size())
+            fupanStep = ((int)myPlayMingpaiRecord.size()-1)*2;
         PlayMingpaiRecord record = myPlayMingpaiRecord.at(fupanStep/2);
         for(auto var:record.record){
             if(var.seatId==ClientSeatId::left){

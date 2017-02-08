@@ -25,7 +25,8 @@ public:
     virtual void scrollViewDidZoom(cocos2d::extension::ScrollView* view) {};
     
     void setPrivatePostion();
-
+        CC_SYNTHESIZE(bool, isPrivatebill, IsPrivateBill);
+    
 	CREATE_FUNC(BillDetailInfo);
 private:
 	TableView* tableView;

@@ -201,13 +201,13 @@ void MahjongView::update(float dt){
         addChild(net,200);
         schedule([=](float dt){
             NetworkManage::getInstance()->reConnectSocket();
-             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
             }else{
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), "APPLE", "iphone", "11111111111", "11111111111", "0"));
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), "", "", "", "", ""));
             }
-        }, 0, 0, 4.0f, "socket_reconnect");
+        }, 0, 0, 6.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
     
