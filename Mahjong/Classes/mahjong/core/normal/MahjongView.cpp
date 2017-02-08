@@ -293,7 +293,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
 
 void MahjongView::addPlayer2Room(){
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-    checkPlayerIpRepetition();
+//    checkPlayerIpRepetition();
     for (int i = 0; i < players.size(); i++){
         updatePlayerView(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()), players.at(i));
     }
