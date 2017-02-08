@@ -47,6 +47,9 @@ private:
     PlayerRight* playerRight;
     PlayerOpposite* playerOpposite;
     std::vector<PlayMingpaiRecord> myPlayMingpaiRecord;
+    
+    MenuItemImage* image1;
+    MenuItemImage* image3;
 
 
 	void update(float dt) override;

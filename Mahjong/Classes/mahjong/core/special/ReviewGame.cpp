@@ -123,6 +123,7 @@ void ReviewGame::controlDown(){
     interval =0;
     playerHero->showCurrentPlayedJongIcon(false);
     if(fupanStep>=2 && myPlayMingpaiRecord.size()>0){
+        image3->setEnabled(true);
         fupanStep -= 2;
         fupanStep  = fupanStep%2 == 0?fupanStep:(fupanStep-1);
         PlayMingpaiRecord record = myPlayMingpaiRecord.at(fupanStep/2);
@@ -149,6 +150,8 @@ void ReviewGame::controlDown(){
                 playerHero->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }
         }
+    }else{
+        image1->setEnabled(false);
     }
 }
 
@@ -169,7 +172,13 @@ void ReviewGame::controlPause(){
     }
 }
 void ReviewGame::controlUp(){
-    interval+=3.0;
+    if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size()){
+        image1->setEnabled(true);
+        interval+=3.0;
+    }else{
+        image3 ->setEnabled(false);
+    }
+    
 }
 void ReviewGame::controlBack(){
     GAMEDATA::getInstance()->setIsFuPan(false);
@@ -700,10 +709,10 @@ void ReviewGame::addCoustomListener(){
         record.record.push_back(heropai);
         myPlayMingpaiRecord.push_back(record);
         
-        MenuItemImage* image1 = MenuItemImage::create("fupan/down_1.png", "fupan/down_2.png",CC_CALLBACK_0(ReviewGame::controlDown, this));
-        MenuItemImage* image2 = MenuItemImage::create("fupan/pause_1.png", "fupan/pause_2.png",CC_CALLBACK_0(ReviewGame::controlPause, this));
+        image1= MenuItemImage::create("fupan/down_1.png", "fupan/down_2.png","fupan/down_3.png",CC_CALLBACK_0(ReviewGame::controlDown, this));
+        auto image2 = MenuItemImage::create("fupan/pause_1.png", "fupan/pause_2.png",CC_CALLBACK_0(ReviewGame::controlPause, this));
         image2->setTag(1087);
-        MenuItemImage* image3 = MenuItemImage::create("fupan/up_1.png", "fupan/up_2.png",CC_CALLBACK_0(ReviewGame::controlUp, this));
+         image3 = MenuItemImage::create("fupan/up_1.png", "fupan/up_2.png","fupan/up_3.png",CC_CALLBACK_0(ReviewGame::controlUp, this));
         MenuItemImage* image4 = MenuItemImage::create("fupan/back_1.png", "fupan/back_2.png",CC_CALLBACK_0(ReviewGame::controlBack, this));
         auto menucontrol = Menu::create(image1,image2,image3,image4,NULL);
         menucontrol->alignItemsHorizontallyWithPadding(50);
