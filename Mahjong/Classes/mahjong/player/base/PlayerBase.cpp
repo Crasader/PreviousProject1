@@ -347,6 +347,13 @@ void PlayerBase::setPlayerTingState(bool b){
     tingTitle->setVisible(b);
 }
 
+bool PlayerBase::getPlayerTingState(){
+    if(NULL != tingTitle)
+        return  tingTitle->isVisible();
+    else
+        return false;
+}
+
 void PlayerBase::playerCpgAnim(CpgType cpgType, ClientSeatId type){
     hideCurrentBigJong();
     PlayerCpgAnim* anim = PlayerCpgAnim::create(cpgType, type);
@@ -478,7 +485,7 @@ void PlayerBase::recoverHand(std::string hand){
 }
 
 void PlayerBase::recoverLastPlayJong(){
-
+    
 }
 
 Point PlayerBase::getVec2BySeatId(int seatId){

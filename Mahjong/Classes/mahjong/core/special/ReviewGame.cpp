@@ -130,18 +130,22 @@ void ReviewGame::controlDown(){
             if(var.seatId==ClientSeatId::left){
                 playerLeft->setHuaNum(var.hua);
                 playerLeft->showPlayerHua(var.hua);
+                playerLeft->setPlayerTingState(var.isTing);
                 playerLeft->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }else if(var.seatId==ClientSeatId::opposite){
                 playerOpposite->setHuaNum(var.hua);
                 playerOpposite->showPlayerHua(var.hua);
+                playerOpposite->setPlayerTingState(var.isTing);
                 playerOpposite->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }else if(var.seatId==ClientSeatId::right){
                 playerRight->setHuaNum(var.hua);
                 playerRight->showPlayerHua(var.hua);
+                playerRight->setPlayerTingState(var.isTing);
                 playerRight->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }else if(var.seatId==ClientSeatId::hero){
                 playerHero->setHuaNum(var.hua);
                 playerHero->showPlayerHua(var.hua);
+                playerHero->setPlayerTingState(var.isTing);
                 playerHero->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
             }
         }
@@ -668,6 +672,7 @@ void ReviewGame::addCoustomListener(){
         leftpai.playerHandJongs = playerLeft->playerHandJongs;
         leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
         leftpai.hua = playerLeft->getHuaNum();
+        leftpai.isTing =  false;
         record.record.push_back(leftpai);
         PlayerMingpai oppsitepai;
         oppsitepai.seatId = ClientSeatId::opposite;
@@ -675,6 +680,7 @@ void ReviewGame::addCoustomListener(){
         oppsitepai.playerHandJongs = playerOpposite->playerHandJongs;
         oppsitepai.playerPlayedJongs =playerOpposite->playerPlayedJongs;
         oppsitepai.hua = playerOpposite->getHuaNum();
+        oppsitepai.isTing =  false;
         record.record.push_back(oppsitepai);
         PlayerMingpai rightpai;
         rightpai.seatId = ClientSeatId::right;
@@ -682,6 +688,7 @@ void ReviewGame::addCoustomListener(){
         rightpai.playerHandJongs = playerRight->playerHandJongs;
         rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
         rightpai.hua = playerRight->getHuaNum();
+        rightpai.isTing =  false;
         record.record.push_back(rightpai);
         PlayerMingpai heropai;
         heropai.seatId = ClientSeatId::hero;
@@ -689,6 +696,7 @@ void ReviewGame::addCoustomListener(){
         heropai.playerHandJongs = playerHero->playerHandJongs;
         heropai.playerPlayedJongs =playerHero->playerPlayedJongs;
         heropai.hua = playerHero->getHuaNum();
+        heropai.isTing =  false;
         record.record.push_back(heropai);
         myPlayMingpaiRecord.push_back(record);
         
@@ -782,6 +790,7 @@ void ReviewGame::addCoustomListener(){
             leftpai.playerHandJongs = playerLeft->playerHandJongs;
             leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
             leftpai.hua = playerLeft->getHuaNum();
+            leftpai.isTing =  playerLeft->getPlayerTingState();
             record.record.push_back(leftpai);
             PlayerMingpai oppsitepai;
             oppsitepai.seatId = ClientSeatId::opposite;
@@ -789,6 +798,7 @@ void ReviewGame::addCoustomListener(){
             oppsitepai.playerHandJongs = playerOpposite->playerHandJongs;
             oppsitepai.playerPlayedJongs =playerOpposite->playerPlayedJongs;
             oppsitepai.hua = playerOpposite->getHuaNum();
+            oppsitepai.isTing =  playerOpposite->getPlayerTingState();
             record.record.push_back(oppsitepai);
             PlayerMingpai rightpai;
             rightpai.seatId = ClientSeatId::right;
@@ -796,6 +806,7 @@ void ReviewGame::addCoustomListener(){
             rightpai.playerHandJongs = playerRight->playerHandJongs;
             rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
             rightpai.hua = playerRight->getHuaNum();
+            rightpai.isTing =  playerRight->getPlayerTingState();
             record.record.push_back(rightpai);
             PlayerMingpai heropai;
             heropai.seatId = ClientSeatId::hero;
@@ -803,6 +814,7 @@ void ReviewGame::addCoustomListener(){
             heropai.playerHandJongs = playerHero->playerHandJongs;
             heropai.playerPlayedJongs =playerHero->playerPlayedJongs;
             heropai.hua = playerHero->getHuaNum();
+            heropai.isTing =   playerHero->getPlayerTingState();
             record.record.push_back(heropai);
             myPlayMingpaiRecord.push_back(record);
         }

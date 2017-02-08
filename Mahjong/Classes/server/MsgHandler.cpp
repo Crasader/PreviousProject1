@@ -2306,7 +2306,7 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         data.lequan = temp["lequan"].GetInt();
         data.fangka = temp["fangka"].GetDouble();
         data.pic = temp["pic"].GetString();
-        data.ip = temp["ip"].GetString();
+//        data.ip = temp["ip"].GetString();
         data.hua = temp["hua"].GetInt();
         data.status = 2;
         data.ifready = 0;

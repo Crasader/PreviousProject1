@@ -565,6 +565,7 @@ struct FupanGameData
 };
 
 struct PlayerMingpai{
+    bool  isTing = false;
     int seatId;
     int hua;
     Vector<Jong*> playerHandJongs;//玩家手牌
