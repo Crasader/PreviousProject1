@@ -97,8 +97,8 @@ void UserInfo::showUserInfo(){
     auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
     fangka_icon->setPosition(355, 225);
     addChild(fangka_icon);
-    auto fangkaNum = LabelAtlas::create(StringUtils::format("%d", UserData::getInstance()->getFangkaNum()),
-                                        "playerinfo/player_info_num.png", 13, 19, '0');
+    auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getFangkaNum()),"Arial",26);
+    fangkaNum->setColor(Color3B(69,131,175));
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     fangkaNum->setPosition(420, 230);
     addChild(fangkaNum);
