@@ -690,11 +690,12 @@ void MsgHandler::showOtherPlayedJong(std::string msg){
     //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
-    OtherPlayedJong otherPlayedJong;
-    otherPlayedJong.seatId = seatId.GetInt();
-    otherPlayedJong.poker = atoi(poker.GetString());
-    GAMEDATA::getInstance()->setOtherPlayJong(otherPlayedJong);
-    postNotifyMessage(MSG_OTHER_PALYER_JONG, "");
+//    OtherPlayedJong otherPlayedJong;
+//    otherPlayedJong.seatId = seatId.GetInt();
+//    otherPlayedJong.poker = atoi(poker.GetString());
+//    GAMEDATA::getInstance()->setOtherPlayJong(otherPlayedJong);
+    std::string resultMsg = StringUtils::format("%d,%s",seatId.GetInt(),poker.GetString());
+    postNotifyMessage(MSG_OTHER_PALYER_JONG, resultMsg);
 }
 
 
