@@ -844,9 +844,9 @@ void MahjongView::addJongPlayedListener(){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
             playerLeft->drawPlayedJong(poker);
-            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
+            if(poker == playerOpposite->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
-            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
+            }else if(poker == playerHero->getLastPoker()){
                 Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
             }
         }
@@ -854,9 +854,9 @@ void MahjongView::addJongPlayedListener(){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
             playerRight->drawPlayedJong(poker);
-            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerHero->getLastPoker()){
+            if(poker == playerHero->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
-            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerOpposite->getLastPoker()){
+            }else if(poker == playerOpposite->getLastPoker()){
                 Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
             }
         }
@@ -864,22 +864,22 @@ void MahjongView::addJongPlayedListener(){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
             playerOpposite->drawPlayedJong(poker);
-            if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
+            if(poker == playerRight->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
-            }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
+            }else if(poker == playerLeft->getLastPoker()){
                 Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
             }
         }else if(seatId == ClientSeatId::hero){
             schedule([=](float dt){
-                log("听牌后,系统提玩家出的牌是: %d",GAMEDATA::getInstance()->getOtherPlayJong().poker);
+                log("听牌后,系统提玩家出的牌是: %d",poker);
                 playerHero->stopTimeClockAnim();
                 playerHero->drawPlayedJong(poker);
-                if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerLeft->getLastPoker()){
+                if(poker == playerLeft->getLastPoker()){
                     Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-                }else if(GAMEDATA::getInstance()->getOtherPlayJong().poker == playerRight->getLastPoker()){
+                }else if(poker == playerRight->getLastPoker()){
                     Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
                 }
-            },0,0,0.8f,"delay_play_poker_auto");
+            },0,0,0.6f,"delay_play_poker_auto");
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
