@@ -642,7 +642,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             }));
             addChild(huaAnim,100);
             huaIndex++;
-        }, 0.8f, (int)replace.size()-1, 0,"hua2poker");
+        }, 0.6f, (int)replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
             turnJong->setVisible(true);
             settleHandJongs(getHandPosX());
@@ -652,7 +652,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
                 EventCustom tingEvent(MSG_HERO_TING_GANG);
                 Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
             }
-        }, 0, 0, 0.8f*replace.size(),"hua2pokerdelay");
+        }, 0, 0, 0.6f*replace.size(),"hua2pokerdelay");
     }
     else{
         Jong* jong = Jong::create();
