@@ -781,7 +781,7 @@ void PlayerHero::drawPlayedJongMingpai(int type){
 
 
 void PlayerHero::eraseHeroJong(Jong* jong){
-    this->playerHandJongs.eraseObject(jong);
+    playerHandJongs.eraseObject(jong);
 }
 
 void PlayerHero::removePlayedIcon(){
@@ -791,31 +791,30 @@ void PlayerHero::removePlayedIcon(){
 }
 
 void PlayerHero::doEventTimeOver(int type){
-    ((MahjongView*)getParent())->hideTingGangControllPad();
-    //type 吃碰杠倒计时
-    if (type == 1){
-        if(GAMEDATA::getInstance()->getPlayerTurn().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-            startTimeClockAnim();
-            setIsAllowPlay(true);
-        }
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
-    }
-    //听牌倒计时
-    else if (type == 2){
-        //是否听牌选择界面倒计时结束
-        if (!GAMEDATA::getInstance()->getIsTingProcess()){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
-            setIsAllowTouch(true);
-            setIsAllowPlay(true);
-            if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
-                                           GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
-               ClientSeatId::hero){
-                startTimeClockAnim();
-                setIsAllowPlay(true);
-            }
-        }
-        
-    }
+//    ((MahjongView*)getParent())->hideTingGangControllPad();
+//    //type 吃碰杠倒计时
+//    if (type == 1){
+//        if(GAMEDATA::getInstance()->getPlayerTurn().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+//            startTimeClockAnim();
+//            setIsAllowPlay(true);
+//        }
+//        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
+//    }
+//    //听牌倒计时
+//    else if (type == 2){
+//        //是否听牌选择界面倒计时结束
+//        if (!GAMEDATA::getInstance()->getIsTingProcess()){
+//            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
+//            setIsAllowTouch(true);
+//            setIsAllowPlay(true);
+//            if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
+//                                           GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
+//               ClientSeatId::hero){
+//                startTimeClockAnim();
+//                setIsAllowPlay(true);
+//            }
+//        }
+//    }
 }
 
 
@@ -1031,7 +1030,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         Jong* jon = Jong::create();
         jon->showJong(herocpgportrait, playerBase->getCurrentJong()->getJongType());
         jon->setPosition(playerBase->getCurrentJong()->getPosition());
-        this->addChild(jon, 5);
+        addChild(jon, 5);
         gangVector.pushBack(jon);
         PlayerCpgRecord record;
         record.type = CpgType::gang;
@@ -1106,7 +1105,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
                         Spawn* spawn = Spawn::create(mv, sc, NULL);
                         gangVector.at(0)->setLocalZOrder(4);
                         gangVector.at(0)->runAction(Sequence::create(spawn, CallFunc::create([=](){
-                            this->sortHandJongs(this->getHandPosX(), false);
+                            sortHandJongs(getHandPosX(), false);
                         }), NULL) );
                     }
                 }
