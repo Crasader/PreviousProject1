@@ -575,7 +575,6 @@ void MsgHandler::addPalyer(std::string msg){
         info->setBanker(false);
     }
     info->setPoxiaoId(pId.GetString());
-    info->setIsReady(false);
     info->setGold(gold.GetInt());
     info->setDiamond(diamond.GetInt());
     info->setLockDiamond(lockdiamond.GetInt());
@@ -585,6 +584,7 @@ void MsgHandler::addPalyer(std::string msg){
     info->setTicket(lequan.GetInt());
     info->setPicture(pic.GetString());
     info->setIsReady(ifready.GetInt() == 0 ? false : true);
+    info->setIsReady(false);
     info->setFangka(fangka.GetDouble());
     if(_mDoc.HasMember("ip")){
         const rapidjson::Value &ip = _mDoc["ip"];
