@@ -53,7 +53,7 @@ void GuiLayer::drawGuiButton(){
                                          CC_CALLBACK_0(GuiLayer::quitButtonClick, this));
     Menu* quit = Menu::create(quitBut, NULL);
     quit->setTag(1212);
-    quit->setPosition(Point(55, 670));
+    quit->setPosition(Point(55, 650));
     this->addChild(quit);
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){

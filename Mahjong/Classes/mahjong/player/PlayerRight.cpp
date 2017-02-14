@@ -358,7 +358,6 @@ void PlayerRight::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBa
     playerCpgRecords.push_back(record);
 }
 
-
 void PlayerRight::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);

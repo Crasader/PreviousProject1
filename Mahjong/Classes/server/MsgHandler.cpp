@@ -1331,6 +1331,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     }
     const rapidjson::Value &result = _mDoc["result"];
     data.result = result.GetInt();
+    GAMEDATA::getInstance()->setIsReady(false);
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     
     if (_mDoc.HasMember("other")){
@@ -1342,6 +1343,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
             info->setSeatId(temp["seatId"].GetInt());
             info->setBanker(false);
             info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
+            
             info->setGold(temp["gold"].GetInt());
             info->setTicket(temp["lequan"].GetInt());
             info->setScore(temp["jifen"].GetInt());

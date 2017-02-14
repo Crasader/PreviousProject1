@@ -33,10 +33,6 @@ bool MahjongView::init(){
     if (GAMEDATA::getInstance()->getIsRecover()){
         recoverGame();
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
-    }
-    else if(GAMEDATA::getInstance()->getIsFuPan()){
-        
-    
     }else{
         if(GAMEDATA::getInstance()->getContinueAgain()){
             startGameAgain();
@@ -98,6 +94,10 @@ void MahjongView::loadView(){
     stack->setTag(1129);
     stack->setVisible(false);
     addChild(stack);
+    //时间,电量
+    BatteryInfo* battery = BatteryInfo::create();
+    battery->setPosition(0,0);
+    addChild(battery,100);
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
         wukaibao->setVisible(false);
@@ -144,11 +144,7 @@ void MahjongView::startGameFirst(){
     Player* info = new Player();
     info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
     info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        info->setIsReady(true);
-    }else{
-        info->setIsReady(false);
-    }
+    info->setIsReady(GAMEDATA::getInstance()->getIsReady());
     info->setTicket(UserData::getInstance()->getTicket());
     info->setGold(UserData::getInstance()->getGold());
     info->setGender(UserData::getInstance()->getGender());
@@ -222,6 +218,7 @@ void MahjongView::update(float dt){
     }
     
     if(GAMEDATA::getInstance()->getStartFaPai()){
+        playerHero->hideInviteButton();
         dealJongStart();
         GAMEDATA::getInstance()->setStartFaPai(false);
     }

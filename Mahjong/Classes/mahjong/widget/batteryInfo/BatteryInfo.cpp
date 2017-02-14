@@ -5,28 +5,28 @@ bool BatteryInfo::init() {
 	Node::init();
 
 	auto _vSize = Director::getInstance()->getVisibleSize();
-//	auto difvec2 = _vSize / 2;
-	Sprite* timerBg = Sprite::create("batteryInfo/timerBg.png");
-	timerBg->setPosition(_vSize.width - 54, 57);
+    
+    Sprite* batteryInfoBg = Sprite::create("batteryInfo/batterInfoBg.png");
+    batteryInfoBg->setPosition(30, _vSize.height-18);
+    addChild(batteryInfoBg);
+    
+    batteryItem = Sprite::create("batteryInfo/batteryItem.png");
+    batteryItem->setAnchorPoint(Vec2(0, 0));
+    batteryItem->setPosition(8, 8);
+    batteryInfoBg->addChild(batteryItem);
+    
+    Sprite* timerBg = Sprite::create("batteryInfo/timerBg.png");
+	timerBg->setPosition(90, _vSize.height-18);
 	addChild(timerBg);
 	
-	timerLabel = Label::createWithCharMap("batteryInfo/timerNumber.png", 14, 19, '0');
-	timerLabel->setString("11:59");
+	timerLabel = Label::createWithSystemFont("12:00","Arial",25);
+    timerLabel->setColor(Color3B(171,186,183));
 	timerLabel->setPosition(Vec2(timerBg->getContentSize().width / 2, timerBg->getContentSize().height / 2));  //24
 	timerBg->addChild(timerLabel);
 	
-	Sprite* batteryInfoBg = Sprite::create("batteryInfo/batterInfoBg.png");
-	batteryInfoBg->setPosition(_vSize.width - 140, 58);
-	addChild(batteryInfoBg);
-
-	batteryItem = Sprite::create("batteryInfo/batteryItem.png");
-	batteryItem->setAnchorPoint(Vec2(0, 0));
-	batteryItem->setPosition(4, 4);
-	batteryItem->setScaleX(10);
-	batteryInfoBg->addChild(batteryItem);
-	
 	wifiInfo = Sprite::create("batteryInfo/wifi4.png");
-	wifiInfo->setPosition(_vSize.width - 200, 60);
+	wifiInfo->setPosition(150, _vSize.height-20);
+    wifiInfo->setVisible(false);
 	addChild(wifiInfo);
 
 
@@ -54,8 +54,8 @@ std::string gettime()
 
 	// Format: 2015-08-19 17:51:36
 	char buffer[128] = { 0 };
-	sprintf(buffer, "%02d:%02d:%02d",
-		ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
+	sprintf(buffer, "%02d:%02d",
+		ptm->tm_hour, ptm->tm_min);
 
 	return std::string(buffer);
 }
@@ -77,15 +77,15 @@ void BatteryInfo::updateInfo(float delta)
 	case 1:
 	{
 
-		auto path = String::createWithFormat("mjlobby/batteryInfo/wifi%d.png", netLevel > 4 ? 4 : netLevel);
-		wifiInfo->setTexture(path->getCString());
+		auto path = StringUtils::format("mjlobby/batteryInfo/wifi%d.png", netLevel > 4 ? 4 : netLevel);
+		wifiInfo->setTexture(path.c_str());
 	}
 	
 		break;
 	case 2:
 	{
-		auto path = String::createWithFormat("mjlobby/batteryInfo/signial%d.png", netLevel > 4 ? 4 : netLevel);
-		wifiInfo->setTexture(path->getCString());
+		auto path = StringUtils::format("mjlobby/batteryInfo/signial%d.png", netLevel > 4 ? 4 : netLevel);
+		wifiInfo->setTexture(path.c_str());
 	}
 		break;
 	default:
