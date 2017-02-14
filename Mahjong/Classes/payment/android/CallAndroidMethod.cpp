@@ -127,3 +127,19 @@ std::string CallAndroidMethod::getSdCardDir(){
 #endif
     return "";
 }
+
+float CallAndroidMethod::getBatteryPersent(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//    JniMethodInfo methodInfo;
+//    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
+//    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"getSdCardDir","()Ljava/lang/String;");
+//    if(isHave){
+//       	jstring str = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
+//        methodInfo.env->DeleteLocalRef(methodInfo.classID);
+//        CCString *ret = new CCString(JniHelper::jstring2string(str).c_str());
+//        ret->autorelease();
+//        methodInfo.env->DeleteLocalRef(str);
+//        return ret->getCString();
+//    }
+#endif
+}

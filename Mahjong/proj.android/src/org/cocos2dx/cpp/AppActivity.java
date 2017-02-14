@@ -29,16 +29,52 @@ package org.cocos2dx.cpp;
 import org.cocos2dx.cpp.payment.Payment;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.WindowManager;
 
 public class AppActivity extends Cocos2dxActivity {
-
+	IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+	BatteryReceiver  batteryReceiver = new BatteryReceiver();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		Payment.init(this);
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		registerReceiver(batteryReceiver, intentFilter);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		unregisterReceiver(batteryReceiver);
+	}
+	
+	class BatteryReceiver extends BroadcastReceiver{
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			//判断它是否是为电量变化的Broadcast Action
+			if(Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())){
+				//获取当前电量
+				int level = intent.getIntExtra("level", 0);
+				//电量的总刻度
+				int scale = intent.getIntExtra("scale", 100);
+				//把它转成百分比
+			}
+		}
+		
 	}
 }

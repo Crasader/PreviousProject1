@@ -64,32 +64,32 @@ std::string gettime()
 void BatteryInfo::updateInfo(float delta)
 {
 	timerLabel->setString(gettime());
-
-//	batteryItem->setScaleX(CallAndroidMethod::getInstance()->getBatteryPersent()/100.0f* (40.0f/2));
+	batteryItem->setScaleX(CallAndroidMethod::getInstance()->getBatteryPersent()/100.0f* (40.0f/2));
+#
 	
-	int  netType, netLevel;
+//	int  netType, netLevel;
 //	CallAndroidMethod::getInstance()->getNetInfo(netType, netLevel);
-	switch (netType)
-	{
-	case -1:
-		wifiInfo->setTexture("batteryInfo/signial1.png");
-		break;
-	case 1:
-	{
-
-		auto path = StringUtils::format("mjlobby/batteryInfo/wifi%d.png", netLevel > 4 ? 4 : netLevel);
-		wifiInfo->setTexture(path.c_str());
-	}
-	
-		break;
-	case 2:
-	{
-		auto path = StringUtils::format("mjlobby/batteryInfo/signial%d.png", netLevel > 4 ? 4 : netLevel);
-		wifiInfo->setTexture(path.c_str());
-	}
-		break;
-	default:
-		break;
-	}
+//	switch (netType)
+//	{
+//	case -1:
+//		wifiInfo->setTexture("batteryInfo/signial1.png");
+//		break;
+//	case 1:
+//	{
+//
+//		auto path = StringUtils::format("mjlobby/batteryInfo/wifi%d.png", netLevel > 4 ? 4 : netLevel);
+//		wifiInfo->setTexture(path.c_str());
+//	}
+//	
+//		break;
+//	case 2:
+//	{
+//		auto path = StringUtils::format("mjlobby/batteryInfo/signial%d.png", netLevel > 4 ? 4 : netLevel);
+//		wifiInfo->setTexture(path.c_str());
+//	}
+//		break;
+//	default:
+//		break;
+//	}
 
 }
