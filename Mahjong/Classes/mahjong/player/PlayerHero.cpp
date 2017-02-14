@@ -845,6 +845,8 @@ void PlayerHero::sendTingRequest(int poker){
 void PlayerHero::actionQi(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
     setIsAllowTouch(true);
+    resetHandJongsY(NULL);
+    GAMEDATA::getInstance()->setIsTingProcess(false);
 }
 
 

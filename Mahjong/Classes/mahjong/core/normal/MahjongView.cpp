@@ -464,6 +464,11 @@ void MahjongView::heroDoTing(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
     playerHero->actionTing();
+    controllPad->removeAllChildrenWithCleanup(true);
+    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
+    qi->setPosition(Point(0, 0));
+    controllPad->addChild(qi);
+    controllPad->setVisible(true);
 }
 void MahjongView::heroDoTingQi(){
     playerHero->stopTimeClockAnim();
