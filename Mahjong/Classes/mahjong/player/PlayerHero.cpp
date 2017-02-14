@@ -658,12 +658,14 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         }, 0, 0, 0.6f*replace.size(),"hua2pokerdelay");
     }
     else{
-        Jong* jong = Jong::create();
-        jong->showJong(herohand, data.poker);
-        addChild(jong);
-        playerHandJongs.pushBack(jong);
-        currentJong = jong;
-        settleHandJongs(getHandPosX());
+        if(data.poker>0){
+            Jong* jong = Jong::create();
+            jong->showJong(herohand, data.poker);
+            addChild(jong);
+            playerHandJongs.pushBack(jong);
+            currentJong = jong;
+            settleHandJongs(getHandPosX());
+        }
         if(data.hastinggang){
             EventCustom tingEvent(MSG_HERO_TING_GANG);
             Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
@@ -685,10 +687,6 @@ void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
     playerHandJongs.pushBack(jong);
     currentJong = jong;
     settleHandJongs(getHandPosX());
-//    if(data.hastinggang){
-//        EventCustom tingEvent(MSG_HERO_TING_GANG);
-//        Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
-//    }
     if (!(GAMEDATA::getInstance()->getIsTingState())){
         setIsAllowPlay(true);
     }
