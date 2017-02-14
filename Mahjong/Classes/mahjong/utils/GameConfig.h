@@ -21,7 +21,7 @@
 #define WECHAT_DAI_LI_QUN_URL "http://183.129.206.54:1112/dlewm.png"
 
 #define IAMGE_LOADING "image_loading"
-#define SHARE_TEXT_1 "敲麻好兑话费,是朋友才告诉侬格"
-#define SHARE_TEXT_2 "敲麻赢了乐券可以换话费,阿拉一道赚话费去!"
+#define SHARE_TEXT_1 "小白相上海敲麻——最正宗的上海麻将，有无勒子，2摸3冲随意选择"
+#define SHARE_TEXT_2 "最方便的手机麻将馆，简单好玩，随时组局，赶紧试试，玩金币房还可以用乐券换话费，是模子才告诉侬格！点击即可下载!"
 #define SHARE_TEXT_3 "来来来,房间开好了,麻将搓起来!"
 #endif /* GameConfig_h */
