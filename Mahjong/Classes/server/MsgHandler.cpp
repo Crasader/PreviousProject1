@@ -348,6 +348,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleFupanPlayerInfo(msg);
             break;
         }
+        case MSGCODE_FANGZHU_OUT:{
+            fangZhuLeaveRoom(msg);
+            break;
+        }
         default:
             break;
     }
@@ -1331,7 +1335,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     }
     const rapidjson::Value &result = _mDoc["result"];
     data.result = result.GetInt();
-    GAMEDATA::getInstance()->setIsReady(false);
+//    GAMEDATA::getInstance()->setIsReady(false);
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     
     if (_mDoc.HasMember("other")){
@@ -2320,4 +2324,15 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
     postNotifyMessage(MSG_GAME_FU_PAN_PLAYER_NOTIFY, "");
 }
 
+
+void MsgHandler::fangZhuLeaveRoom(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("seatId")){
+        const rapidjson::Value &result = _mDoc["seatId"];
+        postNotifyMessage(MSG_GAME_FANG_ZHU_LEAVE,StringUtils::format("%d",result.GetInt()));
+    }
+}
 

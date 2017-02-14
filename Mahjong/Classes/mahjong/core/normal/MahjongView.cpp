@@ -144,7 +144,7 @@ void MahjongView::startGameFirst(){
     Player* info = new Player();
     info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
     info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
-    info->setIsReady(GAMEDATA::getInstance()->getIsReady());
+    info->setIsReady(false);
     info->setTicket(UserData::getInstance()->getTicket());
     info->setGold(UserData::getInstance()->getGold());
     info->setGender(UserData::getInstance()->getGender());
@@ -1291,6 +1291,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerOffLineListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(fangZhuLeaveListener);
     
 }
 
@@ -1374,6 +1375,20 @@ void MahjongView::addCoustomListener(){
         Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
+    
+    fangZhuLeaveListener = EventListenerCustom::create(MSG_GAME_FANG_ZHU_LEAVE, [=](EventCustom* event){
+        std::string msg = static_cast<char*>(event->getUserData());
+//        int seat_id = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(msg.c_str()));
+        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+        for (auto var: players) {
+            if(var->getSeatId() == atoi(msg.c_str())){
+                var->setIsReady(false);
+            }
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
+
+    
     
 }
 

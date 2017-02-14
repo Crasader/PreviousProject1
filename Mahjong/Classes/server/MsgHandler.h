@@ -71,5 +71,6 @@ private:
     void handleGamePayType(std::string msg);
     void handleFupanInfo(std::string msg);
     void handleFupanPlayerInfo(std::string msg);
+    void fangZhuLeaveRoom(std::string msg);
 };
 #endif

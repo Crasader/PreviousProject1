@@ -150,6 +150,7 @@
 #define MSGCODE_FANG_RESPONSE  2054//开房进房前回复{code:2054,poxiaoId:poxiaoId}
 #define MSGCODE_FANG1_REQUEST  2055//开房进房前请求{code:2055,poxiaoId:poxiaoId}
 #define MSGCODE_FANG1_RESPONSE  2056//开房进房前回复{code:2056,poxiaoId:poxiaoId}
+#define MSGCODE_FANGZHU_OUT  2057//开房进房前回复{code:2057,poxiaoId:poxiaoId,seatId:1}
 
 #define MSGCODE_FUPAN_PLAYER_NOTIFY  10000//复盘玩家数据
 
@@ -223,4 +224,5 @@
 #define MSG_LOBBY_SHOW_LOADING_LAYER "MSG_LOBBY_SHOW_LOADING_LAYER"
 #define MSG_GAME_FU_PAN_NOTIFY "MSG_GAME_FU_PAN_NOTIFY"
 #define MSG_GAME_FU_PAN_PLAYER_NOTIFY "MSG_GAME_FU_PAN_PLAYER_NOTIFY"
+#define MSG_GAME_FANG_ZHU_LEAVE "MSG_GAME_FANG_ZHU_LEAVE"
 #endif

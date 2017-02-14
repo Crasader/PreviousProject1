@@ -150,6 +150,7 @@ void GuiLayer::quitButtonClick(){
             HintDialog* dia = HintDialog::create("返回大厅,如需解散房间,请按解散房间按钮", [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
                 GAMEDATA::getInstance()->setIsPlaying(false);
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
             addChild(dia);

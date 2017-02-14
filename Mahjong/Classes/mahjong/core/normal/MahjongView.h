@@ -106,7 +106,8 @@ private:
     EventListenerCustom* scrollTetxListener;
     EventListenerCustom* coreOpenFriendRoomListener;
     EventListenerCustom* coreLoginRespListener;
-
+    EventListenerCustom* fangZhuLeaveListener;
+    
 	void addCoustomListener();
     void addOthersReadyListener();
 	void addPlayerTurnListener();

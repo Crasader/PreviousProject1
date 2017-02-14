@@ -218,6 +218,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
         }
         else if (GAMEDATA::getInstance()->getIsTingProcess()){
             sendTingRequest(jong->getJongType());
+            ((MahjongView*)getParent())->hideTingGangControllPad();
             GAMEDATA::getInstance()->setIsTingProcess(false);
         }
         jong->showJong(heroplayed, jong->getJongType());
@@ -352,7 +353,7 @@ void PlayerHero::readyGo(){
         getChildByTag(888)->setVisible(false);
     }
     setIsReady(true);
-    GAMEDATA::getInstance()->setIsReady(true);
+//    GAMEDATA::getInstance()->setIsReady(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
 }
 
