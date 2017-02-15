@@ -19,10 +19,8 @@ public:
 private:
     MenuItemToggle* qunToggle;
     MenuItemToggle* fangkaToggle;
-    Sprite* wanjia;
-    Sprite* daili;
-    Sprite* image;
-    Sprite* content;
+    Sprite* fenxiang;
+    Sprite* lingqu;
     void closeView();
     void showWanJiaQun(Ref* ref);
     void showFangkaDai(Ref* ref);

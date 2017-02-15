@@ -33,57 +33,33 @@ bool ShareToFriendLayer::init(){
     titleIcon->setPosition(640, 660);
     addChild(titleIcon);
     
-    auto tabbg = Sprite::create("wanjiaqun/tab_bg.png");
-    tabbg->setScaleX(0.52f);
-    tabbg->setPosition(480,500);
+    auto tabbg = Sprite::create("share/ye_qian_bg.png");
+    tabbg->setPosition(420,560);
     addChild(tabbg);
     
-    auto qun_normal = MenuItemImage::create("wanjiaqun/tab_btn_1.png", "wanjiaqun/tab_btn_1.png");
-    auto qun_selected = MenuItemImage::create("wanjiaqun/tab_btn_2.png", "wanjiaqun/tab_btn_2.png");
+    auto qun_normal = MenuItemImage::create("share/ye_qian_btn_1.png", "share/ye_qian_btn_1.png");
+    auto qun_selected = MenuItemImage::create("share/ye_qian_btn_2.png", "share/ye_qian_btn_2.png");
     qunToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(ShareToFriendLayer::showWanJiaQun, this), qun_normal, qun_selected, NULL);
     
-    auto fangka_normal = MenuItemImage::create("wanjiaqun/tab_btn_1.png", "wanjiaqun/tab_btn_1.png");
-    auto fangka_selected = MenuItemImage::create("wanjiaqun/tab_btn_2.png", "wanjiaqun/tab_btn_2.png");
+    auto fangka_normal = MenuItemImage::create("share/ye_qian_btn_1.png", "share/ye_qian_btn_1.png");
+    auto fangka_selected = MenuItemImage::create("share/ye_qian_btn_2.png", "share/ye_qian_btn_2.png");
     fangkaToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(ShareToFriendLayer::showFangkaDai, this), fangka_normal, fangka_selected, NULL);
     
     auto menu = Menu::create(qunToggle, fangkaToggle, NULL);
     menu->alignItemsHorizontallyWithPadding(0);
-    menu->setPosition(480, 500);
+    menu->setPosition(420,560);
     addChild(menu,1);
     
-    wanjia =  Sprite::create("wanjiaqun/wj_text_1.png");
-    wanjia->setPosition(390, 500);
-    addChild(wanjia,2);
+    fenxiang =  Sprite::create("share/fen_xiang_text_1.png");
+    fenxiang->setPosition(310, 560);
+    addChild(fenxiang,2);
     
-    daili =  Sprite::create("wanjiaqun/daili_text_2.png");
-    daili->setPosition(570, 500);
-    addChild(daili,2);
-    
-
-    
-    auto bigbg = Sprite::create("wanjiaqun/wj_big_box_bg.png");
-    bigbg->setPosition(640,310);
-    addChild(bigbg);
-    
-    auto mabg = Sprite::create("wanjiaqun/ma_bg.png");
-    mabg->setPosition(440,310);
-    addChild(mabg);
-    
-    image =  Sprite::create();
-    image->setContentSize(Size(168,168));
-    image->setPosition(440,310);
-    addChild(image);
-    
-    content= Sprite::create("wanjiaqun/wj_qun_text.png");
-    content->setPosition(740,310);
-    addChild(content);
+    lingqu =  Sprite::create("share/ke_lin_qu_text_1.png");
+    lingqu->setPosition(520, 560);
+    addChild(lingqu,2);
     
     qunToggle->setSelectedIndex(0);
     fangkaToggle->setSelectedIndex(1);
-    std::string path = UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL);
-    if(path != IAMGE_LOADING){
-        image->setTexture(path);
-    }
     return true;
 }
 
@@ -95,26 +71,16 @@ void ShareToFriendLayer::closeView(){
 void ShareToFriendLayer::showWanJiaQun(Ref* ref){
     qunToggle->setSelectedIndex(0);
     fangkaToggle->setSelectedIndex(1);
-    wanjia->setTexture("wanjiaqun/wj_text_1.png");
-    daili->setTexture("wanjiaqun/daili_text_2.png");
-    content->setTexture("wanjiaqun/wj_qun_text.png");
-    std::string path = UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL);
-    if(path != IAMGE_LOADING){
-        image->setTexture(path);
-    }
+    fenxiang->setTexture("share/fen_xiang_text_1.png");
+    lingqu->setTexture("share/ke_lin_qu_text_2.png");
 }
 
 
 void ShareToFriendLayer::showFangkaDai(Ref* ref){
     qunToggle->setSelectedIndex(1);
     fangkaToggle->setSelectedIndex(0);
-    wanjia->setTexture("wanjiaqun/wj_text_2.png");
-    daili->setTexture("wanjiaqun/daili_text_1.png");
-    content->setTexture("wanjiaqun/wj_qun_text.png");
-    content->setTexture("wanjiaqun/daili_text.png");
-    std::string path = UrlImageMannger::getInstance()->downloadDailiImgByUrl(WECHAT_DAI_LI_QUN_URL);
-    if(path != IAMGE_LOADING){
-        image->setTexture(path);
-    }
+    fenxiang->setTexture("share/fen_xiang_text_2.png");
+    lingqu->setTexture("share/ke_lin_qu_text_1.png");
+
 }
 
