@@ -64,8 +64,8 @@ std::string gettime()
 void BatteryInfo::updateInfo(float delta)
 {
 	timerLabel->setString(gettime());
-	batteryItem->setScaleX(CallAndroidMethod::getInstance()->getBatteryPersent()/100.0f* (40.0f/2));
-#
+	batteryItem->setScaleX(atoi(CallAndroidMethod::getInstance()->getBatteryPersent().c_str())/100.0f);
+//#
 	
 //	int  netType, netLevel;
 //	CallAndroidMethod::getInstance()->getNetInfo(netType, netLevel);

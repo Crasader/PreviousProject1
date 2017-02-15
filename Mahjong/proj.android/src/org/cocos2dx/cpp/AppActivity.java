@@ -29,6 +29,8 @@ package org.cocos2dx.cpp;
 import org.cocos2dx.cpp.payment.Payment;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import com.tbu.androidtools.Debug;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,6 +41,7 @@ import android.view.WindowManager;
 public class AppActivity extends Cocos2dxActivity {
 	IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 	BatteryReceiver  batteryReceiver = new BatteryReceiver();
+	private static int batteryPer =100; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,8 +76,13 @@ public class AppActivity extends Cocos2dxActivity {
 				//电量的总刻度
 				int scale = intent.getIntExtra("scale", 100);
 				//把它转成百分比
+				batteryPer = (level*100)/scale;
 			}
 		}
-		
+	}
+	
+	public static String getBatteryPersent(){
+//		Debug.e("batteryPer = "+batteryPer);
+		return String.valueOf(batteryPer) ;
 	}
 }
