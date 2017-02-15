@@ -466,7 +466,8 @@ void MahjongView::heroDoTing(){
     playerHero->actionTing();
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
-    qi->setPosition(Point(0, 0));
+    qi->setPosition(Point(0, 50));
+    qi->setScale(0.8f);
     controllPad->addChild(qi);
     controllPad->setVisible(true);
 }
