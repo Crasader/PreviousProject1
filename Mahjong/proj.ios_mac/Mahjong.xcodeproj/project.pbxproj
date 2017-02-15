@@ -213,8 +213,6 @@
 		D26779141DF00698003CE73F /* GameRuleDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778671DF00697003CE73F /* GameRuleDialog.cpp */; };
 		D26779151DF00698003CE73F /* UserSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778691DF00697003CE73F /* UserSetting.cpp */; };
 		D26779161DF00698003CE73F /* UserSetting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778691DF00697003CE73F /* UserSetting.cpp */; };
-		D26779171DF00698003CE73F /* HongbaoPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267786C1DF00697003CE73F /* HongbaoPride.cpp */; };
-		D26779181DF00698003CE73F /* HongbaoPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267786C1DF00697003CE73F /* HongbaoPride.cpp */; };
 		D26779191DF00698003CE73F /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778701DF00697003CE73F /* ChargeFangka.cpp */; };
 		D267791A1DF00698003CE73F /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778701DF00697003CE73F /* ChargeFangka.cpp */; };
 		D267791B1DF00698003CE73F /* ChargeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778721DF00697003CE73F /* ChargeItem.cpp */; };
@@ -276,6 +274,10 @@
 		D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D278ADC31DFFCBCF00C90B25 /* GameSocketManage.cpp */; };
 		D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */; };
 		D278ADCE1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */; };
+		D281A3901E5442C8007FF30E /* share in Resources */ = {isa = PBXBuildFile; fileRef = D281A38F1E5442C8007FF30E /* share */; };
+		D281A3911E5442C8007FF30E /* share in Resources */ = {isa = PBXBuildFile; fileRef = D281A38F1E5442C8007FF30E /* share */; };
+		D281A3941E5449BD007FF30E /* ShareToFriendLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281A3921E5449BD007FF30E /* ShareToFriendLayer.cpp */; };
+		D281A3951E5449BD007FF30E /* ShareToFriendLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D281A3921E5449BD007FF30E /* ShareToFriendLayer.cpp */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
@@ -556,8 +558,6 @@
 		D26778681DF00697003CE73F /* GameRuleDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameRuleDialog.hpp; sourceTree = "<group>"; };
 		D26778691DF00697003CE73F /* UserSetting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserSetting.cpp; sourceTree = "<group>"; };
 		D267786A1DF00697003CE73F /* UserSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSetting.h; sourceTree = "<group>"; };
-		D267786C1DF00697003CE73F /* HongbaoPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongbaoPride.cpp; sourceTree = "<group>"; };
-		D267786D1DF00697003CE73F /* HongbaoPride.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongbaoPride.hpp; sourceTree = "<group>"; };
 		D26778701DF00697003CE73F /* ChargeFangka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeFangka.cpp; sourceTree = "<group>"; };
 		D26778711DF00697003CE73F /* ChargeFangka.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChargeFangka.hpp; sourceTree = "<group>"; };
 		D26778721DF00697003CE73F /* ChargeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeItem.cpp; sourceTree = "<group>"; };
@@ -622,6 +622,9 @@
 		D278ADC41DFFCBCF00C90B25 /* GameSocketManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameSocketManage.hpp; sourceTree = "<group>"; };
 		D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaSocketManage.mm; sourceTree = "<group>"; };
 		D278ADCC1DFFCF5800C90B25 /* CocoaSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSocketManage.h; sourceTree = "<group>"; };
+		D281A38F1E5442C8007FF30E /* share */ = {isa = PBXFileReference; lastKnownFileType = folder; path = share; sourceTree = "<group>"; };
+		D281A3921E5449BD007FF30E /* ShareToFriendLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareToFriendLayer.cpp; sourceTree = "<group>"; };
+		D281A3931E5449BD007FF30E /* ShareToFriendLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareToFriendLayer.hpp; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
@@ -817,6 +820,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D281A38F1E5442C8007FF30E /* share */,
 				D29E85981E320EB100AFACEE /* fupan */,
 				D212D53B1E14A0BA00C29C00 /* batteryInfo */,
 				D2FB85201E07B9F700257EE1 /* Images.xcassets */,
@@ -1318,8 +1322,8 @@
 		D267786B1DF00697003CE73F /* share */ = {
 			isa = PBXGroup;
 			children = (
-				D267786C1DF00697003CE73F /* HongbaoPride.cpp */,
-				D267786D1DF00697003CE73F /* HongbaoPride.hpp */,
+				D281A3921E5449BD007FF30E /* ShareToFriendLayer.cpp */,
+				D281A3931E5449BD007FF30E /* ShareToFriendLayer.hpp */,
 			);
 			path = share;
 			sourceTree = "<group>";
@@ -1754,6 +1758,7 @@
 				D2FB85211E07B9F700257EE1 /* Images.xcassets in Resources */,
 				D25329701CC0D33600DDAD97 /* mjitem in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				D281A3901E5442C8007FF30E /* share in Resources */,
 				D25329781CC0D33600DDAD97 /* res in Resources */,
 				D253297C1CC0D33600DDAD97 /* trusteeship in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
@@ -1784,6 +1789,7 @@
 				D25329791CC0D33600DDAD97 /* res in Resources */,
 				D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */,
 				D25329711CC0D33600DDAD97 /* mjitem in Resources */,
+				D281A3911E5442C8007FF30E /* share in Resources */,
 				D25329611CC0D33600DDAD97 /* fonts in Resources */,
 				D25329731CC0D33600DDAD97 /* mjlobby in Resources */,
 				D25329631CC0D33600DDAD97 /* friend in Resources */,
@@ -1831,7 +1837,6 @@
 				D26778CB1DF00697003CE73F /* QuitRoomDialog.cpp in Sources */,
 				D26779351DF00698003CE73F /* GameData.cpp in Sources */,
 				D26778FD1DF00698003CE73F /* PlayerHero.cpp in Sources */,
-				D26779171DF00698003CE73F /* HongbaoPride.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */,
@@ -1917,6 +1922,7 @@
 				D26779151DF00698003CE73F /* UserSetting.cpp in Sources */,
 				D29E85B91E359CC200AFACEE /* MahjongView.cpp in Sources */,
 				D26778F31DF00698003CE73F /* EnterRoomDialog.cpp in Sources */,
+				D281A3941E5449BD007FF30E /* ShareToFriendLayer.cpp in Sources */,
 				D26779111DF00698003CE73F /* GameFeedDialog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1946,11 +1952,11 @@
 				D26778F81DF00698003CE73F /* LobbyScene.cpp in Sources */,
 				D26779061DF00698003CE73F /* PlayerRight.cpp in Sources */,
 				D26779201DF00698003CE73F /* FirstChageDialog.cpp in Sources */,
-				D26779181DF00698003CE73F /* HongbaoPride.cpp in Sources */,
 				D26778F41DF00698003CE73F /* EnterRoomDialog.cpp in Sources */,
 				D26778E61DF00698003CE73F /* MahjongNumberKeypads.cpp in Sources */,
 				D26778B21DF00697003CE73F /* LiuJuAnim.cpp in Sources */,
 				D29E85BA1E359CC200AFACEE /* MahjongView.cpp in Sources */,
+				D281A3951E5449BD007FF30E /* ShareToFriendLayer.cpp in Sources */,
 				D26779541DF01349003CE73F /* Audio.cpp in Sources */,
 				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D26779321DF00698003CE73F /* LoadResource.cpp in Sources */,

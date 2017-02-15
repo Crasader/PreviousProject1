@@ -13,7 +13,7 @@
 #include "mahjong/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "mahjong/shop/mall/LequanShop.hpp"
 #include "mahjong/shop/gold/GoldNotEnoughDialog.hpp"
-#include "mahjong/share/HongbaoPride.hpp"
+#include "mahjong/share/ShareToFriendLayer.hpp"
 #include "mahjong/shop/ShopHintDialog.hpp"
 #include "mahjong/widget/HeadImage.hpp"
 #include "mahjong/friend/MahjongNumberKeypads.hpp"
@@ -383,7 +383,7 @@ void LobbyScene::showFirstCharge(){
 
 void LobbyScene::showRedWallet(){
     Audio::getInstance()->playSoundClick();
-    HongbaoPride* wallet = HongbaoPride::create();
+    ShareToFriendLayer* wallet = ShareToFriendLayer::create();
     addChild(wallet,3);
 }
 
