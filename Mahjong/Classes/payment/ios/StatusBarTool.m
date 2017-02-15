@@ -6,7 +6,7 @@
 //
 //
 
-#import "StatusBarTool.h"
+#import "payment/ios/StatusBarTool.h"
 
 @implementation StatusBarTool
 

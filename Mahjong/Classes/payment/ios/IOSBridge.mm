@@ -7,6 +7,7 @@
 //
 
 #import "payment/ios/IOSBridge.h"
+#import "payment/ios/StatusBarTool.h"
 #import "json/document.h"
 #import "json/rapidjson.h"
 #import "payment/ios/RechargeVC.h"
@@ -58,6 +59,21 @@ bool IOSBridge::isWenxinInstalled(){
     LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
     bool result = [loginByWechat isWenxinInstalled];
     return result;
+}
+
+std::string IOSBridge::getBatteryPersent(){
+    NSArray *infoArray = [[[[UIApplication sharedApplication] valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"] subviews];
+    
+    for (id info in infoArray)
+    {
+        if ([info isKindOfClass:NSClassFromString(@"UIStatusBarBatteryPercentItemView")])
+        {
+            NSString *percentString = [info valueForKeyPath:@"percentString"];
+            NSLog(@"电量为：%@",percentString);
+            return std::string([percentString UTF8String]).c_str();
+        }
+    }
+    return "100";
 }
 
 void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content,int scene){

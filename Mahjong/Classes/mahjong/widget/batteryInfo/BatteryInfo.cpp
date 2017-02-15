@@ -1,5 +1,6 @@
 #include "mahjong/widget/batteryinfo/BatteryInfo.h"
 #include "payment/android/CallAndroidMethod.h"
+#import "payment/ios/IOSBridge.h"
 
 bool BatteryInfo::init() {
 	Node::init();
@@ -30,7 +31,7 @@ bool BatteryInfo::init() {
 	addChild(wifiInfo);
 
 
-	schedule(schedule_selector(BatteryInfo::updateInfo), 1.0f, CC_REPEAT_FOREVER, 0);
+	schedule(schedule_selector(BatteryInfo::updateInfo), 2.0f, CC_REPEAT_FOREVER, 0);
 	return true;
 }
 
@@ -64,9 +65,15 @@ std::string gettime()
 void BatteryInfo::updateInfo(float delta)
 {
 	timerLabel->setString(gettime());
+    
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 	batteryItem->setScaleX(atoi(CallAndroidMethod::getInstance()->getBatteryPersent().c_str())/100.0f);
-//#
-	
+#endif
+
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    batteryItem->setScaleX(atoi(IOSBridge::getInstance()->getBatteryPersent().c_str())/100.0f);
+#endif
+    
 //	int  netType, netLevel;
 //	CallAndroidMethod::getInstance()->getNetInfo(netType, netLevel);
 //	switch (netType)
