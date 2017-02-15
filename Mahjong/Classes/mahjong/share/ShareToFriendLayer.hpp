@@ -24,5 +24,7 @@ private:
     void closeView();
     void showWanJiaQun(Ref* ref);
     void showFangkaDai(Ref* ref);
+    void doFaHongBaoPerson();
+    void doFaHongBaoFriend();
 };
 #endif /* WanJiaQunLayer_hpp */
