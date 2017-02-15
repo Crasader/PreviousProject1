@@ -21,6 +21,8 @@ private:
     MenuItemToggle* fangkaToggle;
     Sprite* fenxiang;
     Sprite* lingqu;
+    Layer* shareLayer;
+    Layer* recordLayer;
     void closeView();
     void showWanJiaQun(Ref* ref);
     void showFangkaDai(Ref* ref);

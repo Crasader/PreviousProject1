@@ -63,62 +63,65 @@ bool ShareToFriendLayer::init(){
     qunToggle->setSelectedIndex(0);
     fangkaToggle->setSelectedIndex(1);
     
+    shareLayer =  Layer::create();
+    addChild(shareLayer);
+    
     //3个展示框
     auto box1 = Sprite::create("share/share_box_bg.png");
     box1->setPosition(Point(360,360));
-    addChild(box1);
+    shareLayer->addChild(box1);
     
     auto boxTitle1 = Sprite::create("share/box_title_1.png");
     boxTitle1->setPosition(Point(360,480));
-    addChild(boxTitle1);
+    shareLayer->addChild(boxTitle1);
     
     auto boxText1 = Sprite::create("share/box_text_1.png");
     boxText1->setPosition(Point(360,435));
-    addChild(boxText1);
+    shareLayer->addChild(boxText1);
     
     auto boxImage1 = Sprite::create("share/box_image_1.png");
     boxImage1->setPosition(Point(360,330));
-    addChild(boxImage1);
+    shareLayer->addChild(boxImage1);
     
     auto box2 = Sprite::create("share/share_box_bg.png");
     box2->setPosition(Point(640,360));
-    addChild(box2);
+    shareLayer->addChild(box2);
     
     auto boxTitle2 = Sprite::create("share/box_title_2.png");
     boxTitle2->setPosition(Point(640,480));
-    addChild(boxTitle2);
+    shareLayer->addChild(boxTitle2);
     
     auto boxText2 = Sprite::create("share/box_text_2.png");
     boxText2->setPosition(Point(640,435));
-    addChild(boxText2);
+    shareLayer->addChild(boxText2);
     
     auto boxImage2 = Sprite::create("share/box_image_2.png");
     boxImage2->setPosition(Point(640,330));
-    addChild(boxImage2);
+    shareLayer->addChild(boxImage2);
     
     auto box3 = Sprite::create("share/share_box_bg.png");
     box3->setPosition(Point(920,360));
-    addChild(box3);
+    shareLayer->addChild(box3);
     
     auto boxTitle3 = Sprite::create("share/box_title_3.png");
     boxTitle3->setPosition(Point(920,480));
-    addChild(boxTitle3);
+    shareLayer->addChild(boxTitle3);
     
     auto boxText3 = Sprite::create("share/box_text_3.png");
     boxText3->setPosition(Point(920,435));
-    addChild(boxText3);
+    shareLayer->addChild(boxText3);
     
     auto boxImage3 = Sprite::create("share/box_image_3.png");
     boxImage3->setPosition(Point(920,330));
-    addChild(boxImage3);
+    shareLayer->addChild(boxImage3);
     
     auto boxText4 = Sprite::create("share/box_text_huode.png");
     boxText4->setPosition(Point(920,250));
-    addChild(boxText4);
+    shareLayer->addChild(boxText4);
     
     auto shareText = Sprite::create("share/share_text.png");
     shareText->setPosition(Point(640,190));
-    addChild(shareText);
+    shareLayer->addChild(shareText);
     
     auto shareImage = MenuItemImage::create("share/share_btn_1.png","share/share_btn_2.png",
                                            CC_CALLBACK_0(ShareToFriendLayer::doFaHongBaoPerson, this));
@@ -128,7 +131,70 @@ bool ShareToFriendLayer::init(){
     Menu* myMneu = Menu::create(shareImage,friendImage,NULL);
     myMneu->setPosition(640,125);
     myMneu->alignItemsHorizontallyWithPadding(50);
-    addChild(myMneu);
+    shareLayer->addChild(myMneu);
+    
+    recordLayer =  Layer::create();
+    recordLayer->setVisible(false);
+    addChild(recordLayer);
+    
+    auto linQuBox = Sprite::create("share/lin_qu_box_bg.png");
+    linQuBox->setPosition(640,410);
+    recordLayer->addChild(linQuBox);
+    
+    auto linquText1 = Sprite::create("share/lin_qu_text_1.png");
+    linquText1->setPosition(640,485);
+    recordLayer->addChild(linquText1);
+    
+    auto diamondBG = Sprite::create("shop/gold_bg_light.png");
+    diamondBG->setPosition(400,400);
+    recordLayer->addChild(diamondBG);
+    
+    auto diamond = Sprite::create("shop/fangka_image.png");
+    diamond->setPosition(400,400);
+    recordLayer->addChild(diamond);
+    
+    LabelAtlas* fangNum = LabelAtlas::create(StringUtils::format("%d",0), "result/fan_num.png", 17, 26, '0');
+    fangNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fangNum->setPosition(360,335);
+    recordLayer->addChild(fangNum);
+    
+    auto zuanshi = Sprite::create("shop/fangka_2.png");
+    zuanshi->setPosition(400,335);
+    recordLayer->addChild(zuanshi);
+    
+    auto plus1= Sprite::create("shop/plus.png");
+    plus1->setPosition(510,400);
+    recordLayer->addChild(plus1);
+    
+    auto goldBg = Sprite::create("shop/gold_bg_light.png");
+    goldBg->setPosition(645,400);
+    recordLayer->addChild(goldBg);
+    
+    auto goldIcon = Sprite::create("shop/gold_icon_1.png");
+    goldIcon->setPosition(645,400);
+    recordLayer->addChild(goldIcon);
+    
+    auto goldNum = LabelAtlas::create(StringUtils::format("%d",0),"shop/prop_num.png",21,28,'0');
+    goldNum->setPosition(645,335);
+    goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    recordLayer->addChild(goldNum);
+
+    
+    auto recordBox = Sprite::create("share/record_box_bg.png");
+    recordBox->setPosition(640,220);
+    recordLayer->addChild(recordBox);
+    
+    auto linquText2 = Sprite::create("share/lin_qu_text_2.png");
+    linquText2->setPosition(640,255);
+    recordLayer->addChild(linquText2);
+    
+    auto content1 = Sprite::create("share/box2_content_1.png");
+    content1->setPosition(640,130);
+    recordLayer->addChild(content1);
+    
+    auto content2 = Sprite::create("share/box2_content_2.png");
+    content2->setPosition(640,200);
+    recordLayer->addChild(content2);
     
     return true;
 }
@@ -141,6 +207,8 @@ void ShareToFriendLayer::closeView(){
 void ShareToFriendLayer::showWanJiaQun(Ref* ref){
     qunToggle->setSelectedIndex(0);
     fangkaToggle->setSelectedIndex(1);
+    shareLayer->setVisible(true);
+    recordLayer->setVisible(false);
     fenxiang->setTexture("share/fen_xiang_text_1.png");
     lingqu->setTexture("share/ke_lin_qu_text_2.png");
 }
@@ -149,6 +217,8 @@ void ShareToFriendLayer::showWanJiaQun(Ref* ref){
 void ShareToFriendLayer::showFangkaDai(Ref* ref){
     qunToggle->setSelectedIndex(1);
     fangkaToggle->setSelectedIndex(0);
+    shareLayer->setVisible(false);
+    recordLayer->setVisible(true);
     fenxiang->setTexture("share/fen_xiang_text_2.png");
     lingqu->setTexture("share/ke_lin_qu_text_1.png");
 }
