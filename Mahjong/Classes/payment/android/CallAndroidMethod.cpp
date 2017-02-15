@@ -32,10 +32,10 @@ void CallAndroidMethod::requestEvent(std::string poxiaoId,std::string payId){
 		JniMethodInfo methodInfo;
 		auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
 		bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"requestEvent","(Ljava/lang/String;Ljava/lang/String;)V");
-        jstring poxiao_id = JniHelper::getEnv()->NewStringUTF(poxiaoId.c_str());
-		jstring pay_point = JniHelper::getEnv()->NewStringUTF(payId.c_str());;
 		if(isHave){
-			jobject jobj;
+//			jobject jobj;
+            jstring poxiao_id = JniHelper::getEnv()->NewStringUTF(poxiaoId.c_str());
+            jstring pay_point = JniHelper::getEnv()->NewStringUTF(payId.c_str());;
 			JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,poxiao_id,pay_point);
 		}
 #endif	
@@ -47,7 +47,7 @@ void CallAndroidMethod::queryEventResult(){
     auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"queryPayResult","()V");
     if(isHave){
-        jobject jobj;
+//        jobject jobj;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
     }
 #endif
@@ -59,12 +59,12 @@ void CallAndroidMethod::shareToWeChat(std::string url,string title,string conten
     JniMethodInfo methodInfo;
     auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"shareToWeChat","(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V");
-    jstring share_url = JniHelper::getEnv()->NewStringUTF(url.c_str());
-    jstring share_title = JniHelper::getEnv()->NewStringUTF(title.c_str());
-    jstring share_content = JniHelper::getEnv()->NewStringUTF(content.c_str());
-    jboolean share_friends = friends;
     if(isHave){
-        jobject jobj;
+//        jobject jobj;
+        jstring share_url = JniHelper::getEnv()->NewStringUTF(url.c_str());
+        jstring share_title = JniHelper::getEnv()->NewStringUTF(title.c_str());
+        jstring share_content = JniHelper::getEnv()->NewStringUTF(content.c_str());
+        jboolean share_friends = friends;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url,share_title,share_content,friends);
     }
 #endif
@@ -75,10 +75,10 @@ void CallAndroidMethod::shareImageToWeChat(std::string imagePath,bool friends){
     JniMethodInfo methodInfo;
     auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"shareImageToWeChat","(Ljava/lang/String;Z)V");
-    jstring share_url = JniHelper::getEnv()->NewStringUTF(imagePath.c_str());
-    jboolean share_friends = friends;
     if(isHave){
-        jobject jobj;
+//        jobject jobj;
+        jstring share_url = JniHelper::getEnv()->NewStringUTF(imagePath.c_str());
+        jboolean share_friends = friends;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url,friends);
     }
 #endif
@@ -90,7 +90,7 @@ void CallAndroidMethod::weChatLogin(){
     auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"weChatLogin","()V");
     if(isHave){
-        jobject jobj;
+//        jobject jobj;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
     }
 #endif
@@ -102,7 +102,7 @@ void CallAndroidMethod::clearWechatOpenId(){
     auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"clearWechatOpenId","()V");
     if(isHave){
-        jobject jobj;
+//        jobject jobj;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
     }
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -117,11 +117,11 @@ std::string CallAndroidMethod::getSdCardDir(){
     auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"getSdCardDir","()Ljava/lang/String;");
     if(isHave){
-       	jstring str = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
-        methodInfo.env->DeleteLocalRef(methodInfo.classID);
+       	jstring str = (jstring)JniHelper::getEnv()->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
+        JniHelper::getEnv()->DeleteLocalRef(methodInfo.classID);
         CCString *ret = new CCString(JniHelper::jstring2string(str).c_str());
         ret->autorelease();
-        methodInfo.env->DeleteLocalRef(str);
+        JniHelper::getEnv()->DeleteLocalRef(str);
         return ret->getCString();
     }
 #endif
@@ -134,11 +134,11 @@ std::string CallAndroidMethod::getBatteryPersent(){
     auto path  = String::createWithFormat("%s%s","org/cocos2dx/cpp","/AppActivity");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"getBatteryPersent","()Ljava/lang/String;");
     if(isHave){
-       	jstring str = (jstring)methodInfo.env->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
-        methodInfo.env->DeleteLocalRef(methodInfo.classID);
+       	jstring str = (jstring)JniHelper::getEnv()->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
+        JniHelper::getEnv()->DeleteLocalRef(methodInfo.classID);
         CCString *ret = new CCString(JniHelper::jstring2string(str).c_str());
         ret->autorelease();
-        methodInfo.env->DeleteLocalRef(str);
+        JniHelper::getEnv()->DeleteLocalRef(str);
         return ret->getCString();
     }
 #endif

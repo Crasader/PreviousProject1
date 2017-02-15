@@ -34,10 +34,10 @@ bool CallAndroidSocket::connectSocket(std::string host,std::string port){
     JniMethodInfo methodInfo;
     auto path  = String::createWithFormat("%s%s",getSocketJniPath(),"/AndroidSocketJni");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"connectSocket","(Ljava/lang/String;Ljava/lang/String;)V");
-    jstring hostIP = JniHelper::getEnv()->NewStringUTF(host.c_str());
-    jstring socketport = JniHelper::getEnv()->NewStringUTF(port.c_str());;
     if(isHave){
-        jobject jobj;
+//        jobject jobj;
+        jstring hostIP = JniHelper::getEnv()->NewStringUTF(host.c_str());
+        jstring socketport = JniHelper::getEnv()->NewStringUTF(port.c_str());;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,hostIP,socketport);
         JniHelper::getEnv()->DeleteLocalRef(hostIP);
         JniHelper::getEnv()->DeleteLocalRef(socketport);
@@ -52,9 +52,9 @@ void CallAndroidSocket::sendDataSever(std::string data){
     JniMethodInfo methodInfo;
     auto path  = String::createWithFormat("%s%s",getSocketJniPath(),"/AndroidSocketJni");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"sendDataSever","(Ljava/lang/String;)V");
-    jstring msg = JniHelper::getEnv()->NewStringUTF(data.c_str());
     if(isHave){
-        jobject jobj;
+        jstring msg = JniHelper::getEnv()->NewStringUTF(data.c_str());
+//        jobject jobj;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,msg);
         JniHelper::getEnv()->DeleteLocalRef(msg);
     }
