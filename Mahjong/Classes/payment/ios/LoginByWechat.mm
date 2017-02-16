@@ -159,7 +159,7 @@ static NSString *DEVICESTRING= @"iphone";
 - (BOOL)checkTokenOutTime{
     //第一步，创建URL
     NSString *openidstr = [NSString stringWithFormat:@"%s", UserData::getInstance()->getWxOpenId().c_str()];
-    NSString *urlstring = [NSString stringWithFormat:@"http://183.129.206.54:1111/pay!getIfExpire.action?openId=%@",openidstr];
+    NSString *urlstring = [NSString stringWithFormat:@"http://183.129.206.54:1111/login!getIfExpire.action?openId=%@",openidstr];
     NSURL *url = [NSURL URLWithString:urlstring];
     //第二步，创建请求
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];

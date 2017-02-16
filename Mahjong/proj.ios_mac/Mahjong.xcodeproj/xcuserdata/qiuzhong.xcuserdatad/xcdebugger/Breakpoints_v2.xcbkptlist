@@ -4250,11 +4250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/result/normal/NormalResultLayer.cpp"
-            timestampString = "505115658.901272"
+            timestampString = "508847996.761215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "NormalResultLayer::onEnter()"
             landmarkType = "7">
          </BreakpointContent>

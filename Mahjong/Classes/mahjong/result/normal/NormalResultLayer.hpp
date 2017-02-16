@@ -21,6 +21,7 @@ public:
 private:
     EventListenerCustom* continueAgainLisetner;
     EventListenerCustom* playerReplaceLoginListener;
+    EventListenerCustom* dissovelRoomNotifyListener;
 
     void showGameResult();
     void showRoomInfo();

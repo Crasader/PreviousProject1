@@ -27,6 +27,7 @@
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
 #include "mahjong/dialog/network/LostNetwork2.hpp"
+#include "mahjong/friend/dialog/DissovleRoomDialog.hpp"
 
 
 bool NormalResultLayer::init(){
@@ -301,10 +302,18 @@ void NormalResultLayer::onEnter(){
         });
         addChild(hin,5);
     });
+    
+    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
+        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+        std::string name = static_cast<char*>(event->getUserData());
+        dis->setNickName(name);
+        addChild(dis,1000);
+    });
 }
 
 void NormalResultLayer::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
+     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
 }
