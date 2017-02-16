@@ -47,7 +47,7 @@ private:
     PlayerRight* playerRight;
     PlayerOpposite* playerOpposite;
     bool showRepeatDialog = false;
-
+    bool showDissolveDialog = false;
 
 	void update(float dt) override;
 	void initData();

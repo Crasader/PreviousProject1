@@ -2145,7 +2145,9 @@ void MsgHandler::handleDissovleRoomNotify(std::string msg){
     if(_mDoc.HasMember("nickName")){
         const rapidjson::Value &nickName = _mDoc["nickName"];
         std::string name = nickName.GetString();
-        postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, name);
+//        postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, name);
+        GAMEDATA::getInstance()->setDissolveName(name);
+        GAMEDATA::getInstance()->setIsSelected(false);
     }
 }
 

@@ -66,16 +66,19 @@ void DissovleRoomDialog::setNickName(std::string msg){
 }
 
 void DissovleRoomDialog::agree(){
+    GAMEDATA::getInstance()->setIsSelected(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("1"));
     removeFromParent();
 }
 
 void DissovleRoomDialog::disAgree(){
+    GAMEDATA::getInstance()->setIsSelected(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
     removeFromParent();
 }
 
 void DissovleRoomDialog::closeView(){
+    GAMEDATA::getInstance()->setIsSelected(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
     removeFromParent();
 }

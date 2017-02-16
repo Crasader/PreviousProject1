@@ -279,6 +279,14 @@ void NormalResultLayer::updateTime(float dt){
         }, 0, 0, 2.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
+    
+    if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
+        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+        std::string name = GAMEDATA::getInstance()->getDissolveName();
+        dis->setNickName(name);
+        addChild(dis,1000);
+        showDissolveDialog = true;
+    }
 }
 
 void NormalResultLayer::onEnter(){

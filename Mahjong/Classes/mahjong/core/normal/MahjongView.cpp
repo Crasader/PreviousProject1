@@ -213,10 +213,12 @@ void MahjongView::update(float dt){
         GAMEDATA::getInstance()->setNeedAddPlayer(false);
     }
     
-    if(GAMEDATA::getInstance()->getNeedAddPlayer()>0){
-//        playerHero->drawPlayedJong(GAMEDATA::getInstance()->getOtherPlayJong().poker);
-        playerHero->stopTimeClockAnim();
-        GAMEDATA::getInstance()->setNeedAddPlayer(-1);
+    if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
+        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+        std::string name = GAMEDATA::getInstance()->getDissolveName();
+        dis->setNickName(name);
+        addChild(dis,1000);
+        showDissolveDialog = true;
     }
     
     if(GAMEDATA::getInstance()->getStartFaPai()){
@@ -292,7 +294,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
 
 void MahjongView::addPlayer2Room(){
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-//    checkPlayerIpRepetition();
+    //    checkPlayerIpRepetition();
     for (int i = 0; i < players.size(); i++){
         updatePlayerView(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()), players.at(i));
     }
@@ -842,7 +844,7 @@ void MahjongView::addJongPlayedListener(){
         int seat = atoi(res.at(0).c_str());
         int poker =atoi(res.at(1).c_str());
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seat);
-       
+        
         if (seatId == ClientSeatId::left){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
@@ -1285,7 +1287,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
+    //    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
@@ -1325,12 +1327,12 @@ void MahjongView::addCoustomListener(){
     });
     
     
-    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        std::string name = static_cast<char*>(event->getUserData());
-        dis->setNickName(name);
-        addChild(dis,1000);
-    });
+    //    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
+    //        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+    //        std::string name = static_cast<char*>(event->getUserData());
+    //        dis->setNickName(name);
+    //        addChild(dis,1000);
+    //    });
     
     dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
         DissolveData data = GAMEDATA::getInstance()->getDissolveData();
@@ -1379,7 +1381,7 @@ void MahjongView::addCoustomListener(){
     
     fangZhuLeaveListener = EventListenerCustom::create(MSG_GAME_FANG_ZHU_LEAVE, [=](EventCustom* event){
         std::string msg = static_cast<char*>(event->getUserData());
-//        int seat_id = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(msg.c_str()));
+        //        int seat_id = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(msg.c_str()));
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
         for (auto var: players) {
             if(var->getSeatId() == atoi(msg.c_str())){
@@ -1388,7 +1390,7 @@ void MahjongView::addCoustomListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
-
+    
     
     
 }

@@ -27,7 +27,7 @@ void GAMEDATA::init(){
     setStartPaiAngang(false);
     setStartFaPai(false);
     setIsFuPan(false);
-//    setIsReady(false);
+    setIsSelected(true);
     setShowDialogType(-1);
     setScore(0);
     setHuangfan("0");

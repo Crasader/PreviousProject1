@@ -79,7 +79,7 @@ public:
     CC_SYNTHESIZE(int, currentSelectRoomId, CurrentSelectRoomId);
     CC_SYNTHESIZE(int, playRoomID, PlayRoomID);
     CC_SYNTHESIZE(int, reliveNumber, ReliveNumber);
-//    CC_SYNTHESIZE(bool, isReady, IsReady);
+    CC_SYNTHESIZE(bool, isSelected, IsSelected);
     CC_SYNTHESIZE(bool, continueAgain, ContinueAgain);
     CC_SYNTHESIZE(bool, isPlaying, IsPlaying);
     CC_SYNTHESIZE(bool, updatePlayer, UpdatePlayer);
@@ -119,7 +119,7 @@ public:
     CC_SYNTHESIZE(string, privateKaibao, PrivateKaibao);
     CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
     CC_SYNTHESIZE(string, noticeUrl, NoticeUrl);
-    
+    CC_SYNTHESIZE(string, dissolveName, DissolveName);
 
     
     
