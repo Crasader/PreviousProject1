@@ -72,6 +72,7 @@ void MahjongView::loadView(){
     addChild(view_bg, -1);
     controllPad = Menu::create();
     controllPad->setAnchorPoint(Point(1, 0));
+    controllPad->setPosition(Point(1100, 190));
     controllPad->setVisible(false);
     addChild(controllPad, 10);
     guiLayer = GuiLayer::create();
@@ -340,7 +341,6 @@ void MahjongView::drawCpgControllPad(){
         gang->setPosition(Point(-buttonCount * 160, 0));
         controllPad->addChild(gang);
     }
-    controllPad->setPosition(Point(1100, 160));
     controllPad->setVisible(true);
 }
 
@@ -366,7 +366,6 @@ void MahjongView::showTingGangControllPad(){
         controllPad->addChild(penggang);
         buttonCount++;
     }
-    controllPad->setPosition(Point(1100, 160));
     controllPad->setVisible(true);
     playerHero->setIsAllowTouch(false);
     playerHero->setIsAllowPlay(true);
