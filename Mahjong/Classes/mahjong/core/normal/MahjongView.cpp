@@ -204,7 +204,7 @@ void MahjongView::update(float dt){
             }else{
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), "", "", "", "", ""));
             }
-        }, 0, 0, 6.0f, "socket_reconnect");
+        }, 0, 0, 4.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
     
