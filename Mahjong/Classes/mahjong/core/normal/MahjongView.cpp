@@ -53,6 +53,14 @@ void MahjongView::onEnter(){
 
 
 void MahjongView::initData(){
+    if(NULL != playerLeft)
+        playerLeft->removeFromParent();
+    if(NULL != playerRight)
+        playerRight->removeFromParent();
+    if(NULL != playerOpposite)
+        playerOpposite->removeFromParent();
+    if(NULL != playerHero)
+        playerHero->removeFromParent();
     playerHero = NULL;
     playerLeft = NULL;
     playerRight = NULL;
@@ -390,7 +398,8 @@ void MahjongView::showGuiLayer(){
 }
 
 void MahjongView::removeHeroPlayedIcon(){
-    playerHero->removePlayedIcon();
+    if(NULL != playerHero)
+        playerHero->removePlayedIcon();
 }
 
 
@@ -1295,6 +1304,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerOffLineListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(fangZhuLeaveListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     
 }
 
@@ -1368,11 +1378,35 @@ void MahjongView::addCoustomListener(){
     coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        for(auto var: GAMEDATA::getInstance()->getPlayersInfo()){
+            if(var->getPoxiaoId() == UserData::getInstance()->getPoxiaoId()){
+                var->setIsReady(false);
+            }
+        }
         if(resp.result == 1){
-            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            schedule([=](float dt){
+                GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
+                Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            }, 0, 0, 3.0f,"continueGame223");
         }
     });
+    
+    enterFriendRoomListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        for(auto var: GAMEDATA::getInstance()->getPlayersInfo()){
+            if(var->getPoxiaoId() == UserData::getInstance()->getPoxiaoId()){
+                var->setIsReady(false);
+            }
+        }
+        if (result == "1"){
+            schedule([=](float dt){
+                GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            }, 0, 0, 3.0f,"continueGame223");
+        }
+    });
+
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));

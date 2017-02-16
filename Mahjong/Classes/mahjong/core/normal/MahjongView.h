@@ -105,6 +105,7 @@ private:
     EventListenerCustom* viewIntnetListener;
     EventListenerCustom* scrollTetxListener;
     EventListenerCustom* coreOpenFriendRoomListener;
+    EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* coreLoginRespListener;
     EventListenerCustom* fangZhuLeaveListener;
     

@@ -269,8 +269,13 @@ void NormalResultLayer::updateTime(float dt){
         schedule([=](float dt){
             if(NetworkManage::getInstance()->reConnectSocket()){
                 log("重新连接成功");
-                net->removeFromParent();
+                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                }else{
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                }
                 NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+                net->removeFromParent();
             }else{
                 net->removeFromParent();
                 HintDialog* dia = HintDialog::create("无法连接网络,请检查当前网络环境", NULL);
