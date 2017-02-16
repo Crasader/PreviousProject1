@@ -81,9 +81,7 @@ void AppDelegate::applicationWillEnterForeground() {
     if(resumeIndex == 0){
         resumeIndex++;
     }else{
-        if("" != CommandManage::getInstance()->getOnResumeCommand()){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
-        }
+         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
     }
     if(GAMEDATA::getInstance()->getIsInPay()){
         CallAndroidMethod::getInstance()->queryEventResult();
@@ -91,7 +89,7 @@ void AppDelegate::applicationWillEnterForeground() {
     }
     AudioEngine::resumeAll();
 #else
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOnResumeCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
 #endif
     
 }

@@ -283,10 +283,10 @@ void MsgHandler::distribute(int code, std::string msg){
             getFeedBackResp(msg);
             break;
         }
-        case MSGCODE_MAJIANG_BACK_RESUME_RESPONSE:{
-            gameResumeResp(msg);
-            break;
-        }
+//        case MSGCODE_MAJIANG_BACK_RESUME_RESPONSE:{
+//            gameResumeResp(msg);
+//            break;
+//        }
         case  MSGCODE_MAJIANG_AGAIN_RESPONSE:{
             gameContinueResp(msg);
             break;
@@ -1891,155 +1891,155 @@ void MsgHandler::getFeedBackResp(std::string msg){
     postNotifyMessage(MSG_PLAYER_FEED_BACK_RESP, result.GetString());
 }
 
-void MsgHandler::gameResumeResp(std::string msg){
-    //1998后台切回
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("poxiaoId")){
-        const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
-        UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
-    }
-    if(_mDoc.HasMember("ifkb")){
-        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
-    }
-    if(_mDoc.HasMember("ifemsc")){
-        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
-    }
-    if(_mDoc.HasMember("iflezi")){
-        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
-    }
-    FriendOpenRoomRespData opdata;
-    if(_mDoc.HasMember("prjushu")){
-        const rapidjson::Value &prjushu = _mDoc["prjushu"];
-        opdata.prjushu = prjushu.GetString();
-    }
-    if(_mDoc.HasMember("prId")){
-        const rapidjson::Value &prId = _mDoc["prId"];
-        opdata.prid = prId.GetString();
-    }
-    if(_mDoc.HasMember("fzId")){
-        const rapidjson::Value &fzId = _mDoc["fzId"];
-        GAMEDATA::getInstance()->setFangZhuId(fzId.GetString());
-    }
-    if(_mDoc.HasMember("prjucount")){
-        const rapidjson::Value &prjucount = _mDoc["prjucount"];
-        opdata.prjucount = prjucount.GetString();
-    }else{
-        opdata.prjucount = "0";
-    }
-    GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
-    //设置是否是私人房间
-    const rapidjson::Value &isprivate = _mDoc["isprivate"];
-    std::string roomType = isprivate.GetString();
-    GAMEDATA::getInstance()->setMahjongRoomType(roomType == "1" ? (MahjongRoom::privateRoom):(MahjongRoom::publicRoom));
-    LastGameData lastGameData;
-    const rapidjson::Value &result = _mDoc["result"];
-    lastGameData.result = result.GetInt();
-    const rapidjson::Value &seatId = _mDoc["seatId"];
-    lastGameData.seatId = seatId.GetInt();
-    GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
-    if(_mDoc.HasMember("pre")){
-        const rapidjson::Value &pre = _mDoc["pre"];
-        lastGameData.pre = pre.GetInt();
-    }
-    if(_mDoc.HasMember("rest")){
-        const rapidjson::Value &rest = _mDoc["rest"];
-        lastGameData.rest = rest.GetString();
-    }
-    if(_mDoc.HasMember("lord")){
-        const rapidjson::Value &loard = _mDoc["lord"];
-        lastGameData.loard = loard.GetInt();
-    }
-    if(_mDoc.HasMember("kb")){
-        const rapidjson::Value &kb = _mDoc["kb"];
-        lastGameData.kb = kb.GetInt();
-    }
-    if(_mDoc.HasMember("hf")){
-        const rapidjson::Value &hf = _mDoc["hf"];
-        lastGameData.hf = hf.GetInt();
-    }
-    if(_mDoc.HasMember("turn")){
-        const rapidjson::Value &turn = _mDoc["turn"];
-        lastGameData.turn = turn.GetInt();
-    }
-    
-    if(_mDoc.HasMember("all")){
-        const rapidjson::Value &all = _mDoc["all"];
-        for (int i = 0; i < all.Capacity(); ++i){
-            PlayerGameData  data;
-            const rapidjson::Value &temp = all[i];
-            data.poxiaoId = temp["poxiaoId"].GetString();
-            data.seatId = temp["seatId"].GetInt();
-            if(temp.HasMember("status"))
-                data.status = temp["status"].GetInt();
-            data.gold = temp["gold"].GetInt();
-            data.jifen = temp["jifen"].GetInt();
-            data.bangzuan = temp["bangzuan"].GetInt();
-            data.lequan = temp["lequan"].GetInt();
-            data.diamond = temp["diamond"].GetInt();
-            data.lequan = temp["lequan"].GetInt();
-            data.fangka = temp["fangka"].GetDouble();
-            data.hua = temp["hua"].GetInt();
-            if(temp.HasMember("ifready"))
-                data.ifready = temp["ifready"].GetInt();
-            if(temp.HasMember("isonline"))
-                data.isOnline = temp["isonline"].GetInt();
-            if(temp.HasMember("lastpoker")){
-                data.lastpoker = temp["lastpoker"].GetString();
-            }
-            if(temp.HasMember("chi")){
-                const rapidjson::Value &chi = temp["chi"];
-                for(int j = 0; j < chi.Capacity(); ++j){
-                    const rapidjson::Value &temp2 = chi[j];
-                    PlayerChiData chiDa;
-                    chiDa.chi = temp2["chi"].GetString();
-                    chiDa.poker = temp2["poker"].GetString();
-                    data.chiData.push_back(chiDa);
-                }
-            }
-            if(temp.HasMember("peng")){
-                const rapidjson::Value &peng = temp["peng"];
-                for(int j = 0; j < peng.Capacity(); ++j){
-                    const rapidjson::Value &temp3 = peng[j];
-                    PlayerPengData pengDa;
-                    pengDa.peng = temp3["peng"].GetString();
-                    pengDa.peId = temp3["peId"].GetString();
-                    data.pengData.push_back(pengDa);
-                }
-            }
-            if(temp.HasMember("gang")){
-                const rapidjson::Value &gang = temp["gang"];
-                for(int j = 0; j < gang.Capacity(); ++j){
-                    const rapidjson::Value &temp4 = gang[j];
-                    PlayerGangData pengDa;
-                    pengDa.gang = temp4["gang"].GetString();
-                    pengDa.gaId = temp4["gaId"].GetString();
-                    data.gangData.push_back(pengDa);
-                }
-            }
-            if(temp.HasMember("angang"))
-                data.angang = temp["angang"].GetString();
-            if(temp.HasMember("hand"))
-                data.hand = temp["hand"].GetString();
-            if(temp.HasMember("out"))
-                data.outhand = temp["out"].GetString();
-            data.nickname =temp["nickname"].GetString();
-            data.pic =temp["pic"].GetString();
-            data.gender = temp["gender"].GetInt();
-            if(temp.HasMember("ip")){
-                data.ip = temp["ip"].GetString();
-            }
-            if(temp.HasMember("umark")){
-                data.umark = temp["umark"].GetString();
-            }
-            lastGameData.players.push_back(data);
-        }
-    }
-    GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
-    postNotifyMessage(MSG_PLAYER_RESUME_GAME, "");
-}
+//void MsgHandler::gameResumeResp(std::string msg){
+//    //1998后台切回
+//    rapidjson::Document _mDoc;
+//    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+//    _mDoc.Parse<0>(msg.c_str());
+//    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+//    if(_mDoc.HasMember("poxiaoId")){
+//        const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
+//        UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
+//    }
+//    if(_mDoc.HasMember("ifkb")){
+//        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+//    }
+//    if(_mDoc.HasMember("ifemsc")){
+//        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+//    }
+//    if(_mDoc.HasMember("iflezi")){
+//        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+//    }
+//    FriendOpenRoomRespData opdata;
+//    if(_mDoc.HasMember("prjushu")){
+//        const rapidjson::Value &prjushu = _mDoc["prjushu"];
+//        opdata.prjushu = prjushu.GetString();
+//    }
+//    if(_mDoc.HasMember("prId")){
+//        const rapidjson::Value &prId = _mDoc["prId"];
+//        opdata.prid = prId.GetString();
+//    }
+//    if(_mDoc.HasMember("fzId")){
+//        const rapidjson::Value &fzId = _mDoc["fzId"];
+//        GAMEDATA::getInstance()->setFangZhuId(fzId.GetString());
+//    }
+//    if(_mDoc.HasMember("prjucount")){
+//        const rapidjson::Value &prjucount = _mDoc["prjucount"];
+//        opdata.prjucount = prjucount.GetString();
+//    }else{
+//        opdata.prjucount = "0";
+//    }
+//    GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
+//    //设置是否是私人房间
+//    const rapidjson::Value &isprivate = _mDoc["isprivate"];
+//    std::string roomType = isprivate.GetString();
+//    GAMEDATA::getInstance()->setMahjongRoomType(roomType == "1" ? (MahjongRoom::privateRoom):(MahjongRoom::publicRoom));
+//    LastGameData lastGameData;
+//    const rapidjson::Value &result = _mDoc["result"];
+//    lastGameData.result = result.GetInt();
+//    const rapidjson::Value &seatId = _mDoc["seatId"];
+//    lastGameData.seatId = seatId.GetInt();
+//    GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
+//    if(_mDoc.HasMember("pre")){
+//        const rapidjson::Value &pre = _mDoc["pre"];
+//        lastGameData.pre = pre.GetInt();
+//    }
+//    if(_mDoc.HasMember("rest")){
+//        const rapidjson::Value &rest = _mDoc["rest"];
+//        lastGameData.rest = rest.GetString();
+//    }
+//    if(_mDoc.HasMember("lord")){
+//        const rapidjson::Value &loard = _mDoc["lord"];
+//        lastGameData.loard = loard.GetInt();
+//    }
+//    if(_mDoc.HasMember("kb")){
+//        const rapidjson::Value &kb = _mDoc["kb"];
+//        lastGameData.kb = kb.GetInt();
+//    }
+//    if(_mDoc.HasMember("hf")){
+//        const rapidjson::Value &hf = _mDoc["hf"];
+//        lastGameData.hf = hf.GetInt();
+//    }
+//    if(_mDoc.HasMember("turn")){
+//        const rapidjson::Value &turn = _mDoc["turn"];
+//        lastGameData.turn = turn.GetInt();
+//    }
+//    
+//    if(_mDoc.HasMember("all")){
+//        const rapidjson::Value &all = _mDoc["all"];
+//        for (int i = 0; i < all.Capacity(); ++i){
+//            PlayerGameData  data;
+//            const rapidjson::Value &temp = all[i];
+//            data.poxiaoId = temp["poxiaoId"].GetString();
+//            data.seatId = temp["seatId"].GetInt();
+//            if(temp.HasMember("status"))
+//                data.status = temp["status"].GetInt();
+//            data.gold = temp["gold"].GetInt();
+//            data.jifen = temp["jifen"].GetInt();
+//            data.bangzuan = temp["bangzuan"].GetInt();
+//            data.lequan = temp["lequan"].GetInt();
+//            data.diamond = temp["diamond"].GetInt();
+//            data.lequan = temp["lequan"].GetInt();
+//            data.fangka = temp["fangka"].GetDouble();
+//            data.hua = temp["hua"].GetInt();
+//            if(temp.HasMember("ifready"))
+//                data.ifready = temp["ifready"].GetInt();
+//            if(temp.HasMember("isonline"))
+//                data.isOnline = temp["isonline"].GetInt();
+//            if(temp.HasMember("lastpoker")){
+//                data.lastpoker = temp["lastpoker"].GetString();
+//            }
+//            if(temp.HasMember("chi")){
+//                const rapidjson::Value &chi = temp["chi"];
+//                for(int j = 0; j < chi.Capacity(); ++j){
+//                    const rapidjson::Value &temp2 = chi[j];
+//                    PlayerChiData chiDa;
+//                    chiDa.chi = temp2["chi"].GetString();
+//                    chiDa.poker = temp2["poker"].GetString();
+//                    data.chiData.push_back(chiDa);
+//                }
+//            }
+//            if(temp.HasMember("peng")){
+//                const rapidjson::Value &peng = temp["peng"];
+//                for(int j = 0; j < peng.Capacity(); ++j){
+//                    const rapidjson::Value &temp3 = peng[j];
+//                    PlayerPengData pengDa;
+//                    pengDa.peng = temp3["peng"].GetString();
+//                    pengDa.peId = temp3["peId"].GetString();
+//                    data.pengData.push_back(pengDa);
+//                }
+//            }
+//            if(temp.HasMember("gang")){
+//                const rapidjson::Value &gang = temp["gang"];
+//                for(int j = 0; j < gang.Capacity(); ++j){
+//                    const rapidjson::Value &temp4 = gang[j];
+//                    PlayerGangData pengDa;
+//                    pengDa.gang = temp4["gang"].GetString();
+//                    pengDa.gaId = temp4["gaId"].GetString();
+//                    data.gangData.push_back(pengDa);
+//                }
+//            }
+//            if(temp.HasMember("angang"))
+//                data.angang = temp["angang"].GetString();
+//            if(temp.HasMember("hand"))
+//                data.hand = temp["hand"].GetString();
+//            if(temp.HasMember("out"))
+//                data.outhand = temp["out"].GetString();
+//            data.nickname =temp["nickname"].GetString();
+//            data.pic =temp["pic"].GetString();
+//            data.gender = temp["gender"].GetInt();
+//            if(temp.HasMember("ip")){
+//                data.ip = temp["ip"].GetString();
+//            }
+//            if(temp.HasMember("umark")){
+//                data.umark = temp["umark"].GetString();
+//            }
+//            lastGameData.players.push_back(data);
+//        }
+//    }
+//    GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
+//    postNotifyMessage(MSG_PLAYER_RESUME_GAME, "");
+//}
 
 void MsgHandler::gameContinueResp(std::string msg){
     rapidjson::Document _mDoc;

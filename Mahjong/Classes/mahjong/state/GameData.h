@@ -121,9 +121,11 @@ public:
     CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
     CC_SYNTHESIZE(string, noticeUrl, NoticeUrl);
     CC_SYNTHESIZE(string, dissolveName, DissolveName);
-
-    
-    
+    CC_SYNTHESIZE(string, hsman, Hsman);
+    CC_SYNTHESIZE(string, hstype, Hstype);
+    CC_SYNTHESIZE(string, imsi, Imsi);
+    CC_SYNTHESIZE(string, imei, Imei);
+    CC_SYNTHESIZE(string, appVer, AppVer);
 private:
     GAMEDATA();
     void init();

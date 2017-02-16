@@ -4303,7 +4303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
             endingLineNumber = "362"
-            landmarkName = "CommandManage::getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1)"
+            landmarkName = "CommandManage::getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1,bool tag)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

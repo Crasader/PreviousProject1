@@ -42,6 +42,12 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid, std::string url,
 			UserData::getInstance()->setGender(1);
 		}
 		UrlImageMannger::getInstance()->loadHeadImgByUrl(url);
+        GAMEDATA::getInstance()->setHsman(hsman);
+        GAMEDATA::getInstance()->setHstype(hstype);
+        GAMEDATA::getInstance()->setImsi(imsi);
+        GAMEDATA::getInstance()->setImei(imei);
+        GAMEDATA::getInstance()->setAppVer(ver1);
+        UserData::getInstance()->setWxOpenId(openid);
 		std::string msg = CommandManage::getInstance()->getThirdLoginCommand(
 				openid, url,sex,nickname,hsman,hstype,imsi,imei,ver1);
 		if (msg != "") {

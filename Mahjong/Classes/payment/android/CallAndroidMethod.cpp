@@ -98,6 +98,7 @@ void CallAndroidMethod::weChatLogin(){
 
 void CallAndroidMethod::clearWechatOpenId(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    UserData::getInstance()->setWxOpenId("unknow");
     JniMethodInfo methodInfo;
     auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"clearWechatOpenId","()V");

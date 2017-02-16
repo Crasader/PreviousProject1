@@ -39,10 +39,10 @@ public:
     std::string getLequanChangeRecordCommand();//乐券兑换记录
     std::string getFeedBackCommand(std::string msg);//反馈
     std::string getOutResumeCommand();//切到后台
-    std::string getOnResumeCommand();//切回游戏
+//    std::string getOnResumeCommand();//切回游戏
     std::string getContinueGameCommand();//再来一局
     std::string getPlayerChatMsgCommand(std::string msg,std::string pid);//聊天
-    std::string getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1);//第三方登录
+    std::string getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1,bool tag = false);//第三方登录
     std::string getEnterRoomByIdCommand(std::string roomid);//加入房间
     std::string getDissolveRoomCommand();//房主解散房间
     std::string getDissolveRoomRequestCommand();//设置界面解散
