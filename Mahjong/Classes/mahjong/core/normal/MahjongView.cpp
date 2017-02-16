@@ -213,12 +213,12 @@ void MahjongView::update(float dt){
         GAMEDATA::getInstance()->setNeedAddPlayer(false);
     }
     
-    if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
+    if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
         std::string name = GAMEDATA::getInstance()->getDissolveName();
         dis->setNickName(name);
         addChild(dis,1000);
-        showDissolveDialog = true;
+        GAMEDATA::getInstance()->setShowDissolveDialog(true);
     }
     
     if(GAMEDATA::getInstance()->getStartFaPai()){
