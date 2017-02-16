@@ -25,7 +25,7 @@ public:
     FriendListData sortFriendList(FriendListData data);
     //服务端返回数据结构体
     CC_SYNTHESIZE(EnterRoomResp, enterRoomResp, EnterRoomResp);
-    CC_SYNTHESIZE(OtherPlayedJong, otherPlayJong, OtherPlayJong);
+//    CC_SYNTHESIZE(OtherPlayedJong, otherPlayJong, OtherPlayJong);
     CC_SYNTHESIZE(PlayerCpgtData, playerCpgtData, PlayerCpgt);
     CC_SYNTHESIZE(PlayerTurnData, playerTurnData, PlayerTurn);
     CC_SYNTHESIZE(LastGameData, lastGameData, LastGameDataBackup);
