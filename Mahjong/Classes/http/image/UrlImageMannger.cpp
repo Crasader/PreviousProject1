@@ -93,12 +93,14 @@ std::string UrlImageMannger::loadShopImgByUrl(std::string url){
     return IAMGE_LOADING;
 }
 
-std::string UrlImageMannger::downloadQunImgByUrl(std::string url){
+std::string UrlImageMannger::downloadQunImgByUrl(std::string url,bool recover){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string path =StringUtils::format("%s/wanjiaquan.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
-    if (FileUtils::getInstance()->isFileExist(path))
-    {
-        return path;
+    if(!recover){
+        if (FileUtils::getInstance()->isFileExist(path))
+        {
+            return path;
+        }
     }
     EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
         std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
@@ -116,9 +118,11 @@ std::string UrlImageMannger::downloadQunImgByUrl(std::string url){
     
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string path =getImgNameByUrl(url);
-    if (FileUtils::getInstance()->isFileExist(path))
-    {
-        return path;
+    if(!recover){
+        if (FileUtils::getInstance()->isFileExist(path))
+        {
+            return path;
+        }
     }
     EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
         std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
@@ -135,14 +139,16 @@ std::string UrlImageMannger::downloadQunImgByUrl(std::string url){
 #endif
 }
 
-std::string UrlImageMannger::downloadDailiImgByUrl(std::string url){
+std::string UrlImageMannger::downloadDailiImgByUrl(std::string url,bool recover ){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string path =StringUtils::format("%s/dailiqun.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
-    if (FileUtils::getInstance()->isFileExist(path))
-    {
-        return path;
+    if(!recover){
+        if (FileUtils::getInstance()->isFileExist(path))
+        {
+            return path;
+        }
     }
-    EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
+    EventListenerCustom* _listener3 = EventListenerCustom::create(url, [=](EventCustom* event){
         std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
         std::string buff(buffer->begin(), buffer->end());
         FILE *fp = fopen(path.c_str(), "wb+");
@@ -151,17 +157,19 @@ std::string UrlImageMannger::downloadDailiImgByUrl(std::string url){
         UserData::getInstance()->setDailiQunVersion(GAMEDATA::getInstance()->getDailiQunVer());
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener3, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
     return IAMGE_LOADING;
 #endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string path =getImgNameByUrl(url);
-    if (FileUtils::getInstance()->isFileExist(path))
-    {
-        return path;
+    if(!recover){
+        if (FileUtils::getInstance()->isFileExist(path))
+        {
+            return path;
+        }
     }
-    EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
+    EventListenerCustom* _listener3 = EventListenerCustom::create(url, [=](EventCustom* event){
         std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
         std::string buff(buffer->begin(), buffer->end());
         FILE *fp = fopen(path.c_str(), "wb+");
@@ -170,7 +178,7 @@ std::string UrlImageMannger::downloadDailiImgByUrl(std::string url){
         UserData::getInstance()->setDailiQunVersion(GAMEDATA::getInstance()->getDailiQunVer());
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener3, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
     return IAMGE_LOADING;
 #endif
