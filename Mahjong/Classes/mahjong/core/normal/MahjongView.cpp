@@ -142,20 +142,20 @@ void MahjongView::startGameFirst(){
         GAMEDATA::getInstance()->setHuangfan("0");
     }
     guiLayer->updateData();
-    Player* info = new Player();
-    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
-    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
-    info->setIsReady(false);
-    info->setTicket(UserData::getInstance()->getTicket());
-    info->setGold(UserData::getInstance()->getGold());
-    info->setGender(UserData::getInstance()->getGender());
-    info->setNickname(UserData::getInstance()->getNickName());
-    info->setPicture(UserData::getInstance()->getPicture());
-    info->setFangka(UserData::getInstance()->getFangkaNum());
-    info->setIP(GAMEDATA::getInstance()->getIP());
-    info->setUmark(UserData::getInstance()->getMarkId());
-    info->setScore(GAMEDATA::getInstance()->getScore());
-    GAMEDATA::getInstance()->addPlayersInfo(info);
+//    Player* info = new Player();
+//    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
+//    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
+//    info->setIsReady(false);
+//    info->setTicket(UserData::getInstance()->getTicket());
+//    info->setGold(UserData::getInstance()->getGold());
+//    info->setGender(UserData::getInstance()->getGender());
+//    info->setNickname(UserData::getInstance()->getNickName());
+//    info->setPicture(UserData::getInstance()->getPicture());
+//    info->setFangka(UserData::getInstance()->getFangkaNum());
+//    info->setIP(GAMEDATA::getInstance()->getIP());
+//    info->setUmark(UserData::getInstance()->getMarkId());
+//    info->setScore(GAMEDATA::getInstance()->getScore());
+//    GAMEDATA::getInstance()->addPlayersInfo(info);
 }
 
 void MahjongView::startGameAgain(){

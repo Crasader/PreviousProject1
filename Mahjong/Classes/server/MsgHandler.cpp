@@ -467,6 +467,20 @@ void MsgHandler::enterRoomResp(std::string msg){
             }
         }
     }
+    Player* info = new Player();
+    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
+    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
+    info->setIsReady(false);
+    info->setTicket(UserData::getInstance()->getTicket());
+    info->setGold(UserData::getInstance()->getGold());
+    info->setGender(UserData::getInstance()->getGender());
+    info->setNickname(UserData::getInstance()->getNickName());
+    info->setPicture(UserData::getInstance()->getPicture());
+    info->setFangka(UserData::getInstance()->getFangkaNum());
+    info->setIP(GAMEDATA::getInstance()->getIP());
+    info->setUmark(UserData::getInstance()->getMarkId());
+    info->setScore(GAMEDATA::getInstance()->getScore());
+    GAMEDATA::getInstance()->addPlayersInfo(info);
     postNotifyMessage(MSG_ENTER_ROOM_RESP, "");
 }
 
@@ -1363,6 +1377,20 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
             GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
+    Player* info = new Player();
+    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
+    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
+    info->setIsReady(false);
+    info->setTicket(UserData::getInstance()->getTicket());
+    info->setGold(UserData::getInstance()->getGold());
+    info->setGender(UserData::getInstance()->getGender());
+    info->setNickname(UserData::getInstance()->getNickName());
+    info->setPicture(UserData::getInstance()->getPicture());
+    info->setFangka(UserData::getInstance()->getFangkaNum());
+    info->setIP(GAMEDATA::getInstance()->getIP());
+    info->setUmark(UserData::getInstance()->getMarkId());
+    info->setScore(GAMEDATA::getInstance()->getScore());
+    GAMEDATA::getInstance()->addPlayersInfo(info);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, "");
 }
 
@@ -1440,6 +1468,20 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
             GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
+    Player* info = new Player();
+    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
+    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
+    info->setIsReady(false);
+    info->setTicket(UserData::getInstance()->getTicket());
+    info->setGold(UserData::getInstance()->getGold());
+    info->setGender(UserData::getInstance()->getGender());
+    info->setNickname(UserData::getInstance()->getNickName());
+    info->setPicture(UserData::getInstance()->getPicture());
+    info->setFangka(UserData::getInstance()->getFangkaNum());
+    info->setIP(GAMEDATA::getInstance()->getIP());
+    info->setUmark(UserData::getInstance()->getMarkId());
+    info->setScore(GAMEDATA::getInstance()->getScore());
+    GAMEDATA::getInstance()->addPlayersInfo(info);
     postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP, StringUtil::itos(result.GetInt()));
 }
 
