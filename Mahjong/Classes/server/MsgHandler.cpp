@@ -1335,8 +1335,8 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     }
     const rapidjson::Value &result = _mDoc["result"];
     data.result = result.GetInt();
+    GAMEDATA::getInstance()->clearPlayersInfo();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
-    
     if (_mDoc.HasMember("other")){
         const rapidjson::Value &pArr = _mDoc["other"];
         for (int i = 0; i < pArr.Capacity(); ++i){

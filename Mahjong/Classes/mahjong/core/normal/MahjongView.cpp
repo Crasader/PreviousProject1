@@ -53,14 +53,6 @@ void MahjongView::onEnter(){
 
 
 void MahjongView::initData(){
-    if(NULL != playerLeft)
-        playerLeft->removeFromParent();
-    if(NULL != playerRight)
-        playerRight->removeFromParent();
-    if(NULL != playerOpposite)
-        playerOpposite->removeFromParent();
-    if(NULL != playerHero)
-        playerHero->removeFromParent();
     playerHero = NULL;
     playerLeft = NULL;
     playerRight = NULL;
@@ -1082,7 +1074,7 @@ void MahjongView::addGameResultListener(){
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(0)));
-            },0,0,5.0f,"go2Result");
+            },0,0,5.5f,"go2Result");
         }else{
             clearRoomPlayer();
             GAMEDATA::getInstance()->setFangZhuId("");
@@ -1386,8 +1378,8 @@ void MahjongView::addCoustomListener(){
         if(resp.result == 1){
             schedule([=](float dt){
                 GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
-                Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-            }, 0, 0, 3.0f,"continueGame223");
+                Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
+            }, 0, 0, 2.0f,"continueGame223");
         }
     });
     
@@ -1402,8 +1394,8 @@ void MahjongView::addCoustomListener(){
         if (result == "1"){
             schedule([=](float dt){
                 GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-            }, 0, 0, 3.0f,"continueGame223");
+                Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
+            }, 0, 0, 2.0f,"continueGame223");
         }
     });
 
