@@ -135,6 +135,7 @@ static NSString *DEVICESTRING= @"iphone";
                     UserData::getInstance()->setGender(1);
                 }
                 UserData::getInstance()->setWxOpenId(std::string([openidstr UTF8String]));
+                UserData::getInstance()->setWxUnionid(std::string([unionidstr UTF8String]));
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
                 UserData::getInstance()->setNickName(std::string([nicknameStr UTF8String]));
                 WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([unionidstr UTF8String]),std::string([headimgurlstr UTF8String]),StringUtils::format("%d",UserData::getInstance()->getGender()),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
@@ -193,6 +194,9 @@ static NSString *DEVICESTRING= @"iphone";
                 UserData::getInstance()->setPicture(std::string([headstr UTF8String]));
                 NSObject *sex = [results objectForKey:@"sex"];
                 NSString *sexStr = [NSString stringWithFormat:@"%@", sex];
+                NSObject *unionid = [results objectForKey:@"unionid"];
+                NSString *unionidstr = [NSString stringWithFormat:@"%@", unionid];
+                UserData::getInstance()->setWxUnionid(std::string([unionidstr UTF8String]));
                 NSString *woman = @"2";
                 if([sexStr isEqualToString:woman]){
                     UserData::getInstance()->setGender(0);

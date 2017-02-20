@@ -360,6 +360,7 @@ std::string CommandManage::getThirdLoginCommand(std::string openid,std::string u
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_THIRED_LOGIN_REQUEST)));
     keyValue.insert(map<string, string>::value_type("type", "1"));
     keyValue.insert(map<string, string>::value_type("open_id", openid));
+     keyValue.insert(map<string, string>::value_type("unionid", unionid));
     keyValue.insert(map<string, string>::value_type("head", head));
     keyValue.insert(map<string, string>::value_type("sex", sex));
     keyValue.insert(map<string, string>::value_type("nickname", nickname));
