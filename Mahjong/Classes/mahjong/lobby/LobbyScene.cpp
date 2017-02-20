@@ -717,6 +717,20 @@ void LobbyScene::addEventListener(){
         }
     });
 
+    gameFupanListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GET_TUI_GUANG_PRIDE, [=](EventCustom* event){
+        std::string buf = static_cast<char*>(event->getUserData());
+        ShopHintDialog* da = ShopHintDialog::create();
+        if(buf == "1"){
+            da->showText("领取成功");
+            ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
+            addChild(par,10);
+            //刷新用户信息
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
+        }else{
+            da->showText("领取失败");
+        }
+        addChild(da,10);
+    });
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

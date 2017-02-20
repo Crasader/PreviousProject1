@@ -41,7 +41,6 @@ bool MahjongView::init(){
         }
         addPlayer2Room();
     }
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     return true;
 }
 
@@ -1261,6 +1260,7 @@ void MahjongView::onEnterTransitionDidFinish(){
     }
     GAMEDATA::getInstance()->setIsInGameScene(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
 }
 
 void MahjongView::onExit()

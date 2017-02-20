@@ -356,6 +356,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleTuiGuangInfo(msg);
             break;
         }
+        case MSGCODE_SPREAD_NEWUSER_REWARD_RESPNOSE:{
+            handleTuiGuangPrideInfo(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2441,6 +2445,6 @@ void MsgHandler::handleTuiGuangPrideInfo(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
-    
+    postNotifyMessage(MSG_GET_TUI_GUANG_PRIDE,StringUtils::format("%d",result.GetInt()));
 }
 

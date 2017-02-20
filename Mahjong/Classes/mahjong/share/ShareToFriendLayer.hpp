@@ -28,5 +28,7 @@ private:
     void showFangkaDai(Ref* ref);
     void doFaHongBaoPerson();
     void doFaHongBaoFriend();
+    void updateUi(float dt);
+    void getTuiGuangPride();
 };
 #endif /* WanJiaQunLayer_hpp */

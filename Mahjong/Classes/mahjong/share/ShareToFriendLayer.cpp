@@ -11,6 +11,7 @@
 #include "mahjong/state/GameData.h"
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
+#include "server/NetworkManage.h"
 
 bool ShareToFriendLayer::init(){
     if(!Layer::init()){
@@ -119,9 +120,25 @@ bool ShareToFriendLayer::init(){
     boxText4->setPosition(Point(920,250));
     shareLayer->addChild(boxText4);
     
+    Label* fangNum1 = Label::createWithSystemFont("0", "Arial", 20);
+    fangNum1->setTag(1001);
+    fangNum1->setColor(Color3B(220,180,60));
+    fangNum1->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    fangNum1->setPosition(870,250);
+    shareLayer->addChild(fangNum1);
+    
+    Label* goldNum1 = Label::createWithSystemFont("0", "Arial", 20);
+    goldNum1->setTag(1002);
+    goldNum1->setColor(Color3B(220,180,60));
+    goldNum1->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    goldNum1->setPosition(972,250);
+    shareLayer->addChild(goldNum1);
+    
     auto shareText = Sprite::create("share/share_text.png");
     shareText->setPosition(Point(640,190));
     shareLayer->addChild(shareText);
+    
+    
     
     auto shareImage = MenuItemImage::create("share/share_btn_1.png","share/share_btn_2.png",
                                            CC_CALLBACK_0(ShareToFriendLayer::doFaHongBaoPerson, this));
@@ -154,12 +171,14 @@ bool ShareToFriendLayer::init(){
     recordLayer->addChild(diamond);
     
     LabelAtlas* fangNum = LabelAtlas::create(StringUtils::format("%d",0), "result/fan_num.png", 17, 26, '0');
+    fangNum->setTag(2001);
     fangNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fangNum->setPosition(360,335);
+    fangNum->setPosition(370,335);
     recordLayer->addChild(fangNum);
+
     
     auto zuanshi = Sprite::create("shop/fangka_2.png");
-    zuanshi->setPosition(400,335);
+    zuanshi->setPosition(410,335);
     recordLayer->addChild(zuanshi);
     
     auto plus1= Sprite::create("shop/plus.png");
@@ -175,9 +194,14 @@ bool ShareToFriendLayer::init(){
     recordLayer->addChild(goldIcon);
     
     auto goldNum = LabelAtlas::create(StringUtils::format("%d",0),"shop/prop_num.png",21,28,'0');
-    goldNum->setPosition(645,335);
+    goldNum->setTag(2002);
+    goldNum->setPosition(675,335);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     recordLayer->addChild(goldNum);
+    
+    auto jinbi = Sprite::create("shop/gold_text.png");
+    jinbi->setPosition(715,335);
+    recordLayer->addChild(jinbi);
 
     
     auto recordBox = Sprite::create("share/record_box_bg.png");
@@ -195,6 +219,28 @@ bool ShareToFriendLayer::init(){
     auto content2 = Sprite::create("share/box2_content_2.png");
     content2->setPosition(640,200);
     recordLayer->addChild(content2);
+    
+    auto fangkaNum2 = LabelAtlas::create(StringUtils::format("%d",0),"shop/prop_num.png",21,28,'0');
+    fangkaNum2->setTag(3001);
+    fangkaNum2->setPosition(520,200);
+    fangkaNum2->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    recordLayer->addChild(fangkaNum2);
+    
+    auto goldNum2 = LabelAtlas::create(StringUtils::format("%d",0),"shop/prop_num.png",21,28,'0');
+    goldNum2->setTag(3002);
+    goldNum2->setPosition(780,200);
+    goldNum2->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    recordLayer->addChild(goldNum2);
+    
+    auto getmypirde = MenuItemImage::create("share/linqu_btn_1.png","share/linqu_btn_2.png",
+                                            CC_CALLBACK_0(ShareToFriendLayer::getTuiGuangPride, this));
+    
+    Menu* myPrideMneu = Menu::create(getmypirde,NULL);
+    myPrideMneu->setPosition(900,410);
+    recordLayer->addChild(myPrideMneu);
+
+    
+    schedule(schedule_selector(ShareToFriendLayer::updateUi), 1, CC_REPEAT_FOREVER, 0);
     
     return true;
 }
@@ -241,4 +287,35 @@ void ShareToFriendLayer:: doFaHongBaoFriend(){
     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
     IOSBridge::getInstance()->doWechatShareWeb(url, SHARE_TEXT_1, SHARE_TEXT_2,1);
 #endif
+}
+
+void ShareToFriendLayer::getTuiGuangPride(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTuiGuangPrideCommand());
+}
+
+void ShareToFriendLayer::updateUi(float dt){
+    if(shareLayer->isVisible()){
+        if(NULL!=shareLayer->getChildByTag(1001)){
+            ((Label*)shareLayer->getChildByTag(1001))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTuiGuangReward().fangka));
+        }
+        if(NULL!=shareLayer->getChildByTag(1002)){
+            ((Label*)shareLayer->getChildByTag(1002))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTuiGuangReward().gold/10000));
+        }
+    }
+    if(recordLayer->isVisible()){
+        if(NULL!=recordLayer->getChildByTag(2001)){
+            ((LabelAtlas*)recordLayer->getChildByTag(2001))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTuiGuangPride().fangka));
+        }
+        if(NULL!=recordLayer->getChildByTag(2002)){
+            ((LabelAtlas*)recordLayer->getChildByTag(2002))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTuiGuangPride().gold));
+        }
+        if(NULL!=recordLayer->getChildByTag(3001)){
+            ((LabelAtlas*)recordLayer->getChildByTag(3001))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTuiGuangRecord().fangka));
+        }
+        if(NULL!=recordLayer->getChildByTag(3002)){
+            ((LabelAtlas*)recordLayer->getChildByTag(3002))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTuiGuangRecord().gold));
+        }
+
+    }
+
 }
