@@ -72,5 +72,7 @@ private:
     void handleFupanInfo(std::string msg);
     void handleFupanPlayerInfo(std::string msg);
     void fangZhuLeaveRoom(std::string msg);
+    void handleTuiGuangInfo(std::string msg);
+    void handleTuiGuangPrideInfo(std::string msg);
 };
 #endif

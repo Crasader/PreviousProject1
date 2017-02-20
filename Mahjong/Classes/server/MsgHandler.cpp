@@ -2379,3 +2379,27 @@ void MsgHandler::fangZhuLeaveRoom(std::string msg){
     }
 }
 
+void MsgHandler::handleTuiGuangInfo(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("seatId")){
+        const rapidjson::Value &result = _mDoc["seatId"];
+//        postNotifyMessage(MSG_GAME_FANG_ZHU_LEAVE,StringUtils::format("%d",result.GetInt()));
+    }
+}
+
+
+void MsgHandler::handleTuiGuangPrideInfo(std::string msg){
+
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("seatId")){
+        const rapidjson::Value &result = _mDoc["seatId"];
+//        postNotifyMessage(MSG_GAME_FANG_ZHU_LEAVE,StringUtils::format("%d",result.GetInt()));
+    }
+}
+
