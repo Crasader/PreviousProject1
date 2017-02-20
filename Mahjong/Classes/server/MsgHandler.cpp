@@ -2391,15 +2391,44 @@ void MsgHandler::handleTuiGuangInfo(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
     if(result.GetInt() != 0){
-//        GAMEDATA::getInstance()->
         if(_mDoc.HasMember("reward")){
-        
+            const rapidjson::Value &reward = _mDoc["reward"];
+            TuiGuangReward myReward;
+            if(reward.HasMember("gold")){
+                const rapidjson::Value &gold = reward["gold"];
+                myReward.gold = gold.GetInt();
+            }
+            if(reward.HasMember("fangka")){
+                const rapidjson::Value &fangka = reward["fangka"];
+                myReward.fangka = fangka.GetInt();
+            }
+            GAMEDATA::getInstance()->setTuiGuangReward(myReward);
         }
         if(_mDoc.HasMember("havegot")){
-            
+            const rapidjson::Value &havegot = _mDoc["havegot"];
+            TuiGuangRecord myReward;
+            if(havegot.HasMember("gold")){
+                const rapidjson::Value &gold = havegot["gold"];
+                myReward.gold = gold.GetInt();
+            }
+            if(havegot.HasMember("fangka")){
+                const rapidjson::Value &fangka = havegot["fangka"];
+                myReward.fangka = fangka.GetInt();
+            }
+            GAMEDATA::getInstance()->setTuiGuangRecord(myReward);
         }
         if(_mDoc.HasMember("willget")){
-            
+            const rapidjson::Value &willget = _mDoc["willget"];
+            TuiGuangPride myReward;
+            if(willget.HasMember("gold")){
+                const rapidjson::Value &gold = willget["gold"];
+                myReward.gold = gold.GetInt();
+            }
+            if(willget.HasMember("fangka")){
+                const rapidjson::Value &fangka = willget["fangka"];
+                myReward.fangka = fangka.GetInt();
+            }
+            GAMEDATA::getInstance()->setTuiGuangPride(myReward);
         }
     }
 }
@@ -2411,9 +2440,7 @@ void MsgHandler::handleTuiGuangPrideInfo(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("seatId")){
-        const rapidjson::Value &result = _mDoc["seatId"];
-//        postNotifyMessage(MSG_GAME_FANG_ZHU_LEAVE,StringUtils::format("%d",result.GetInt()));
-    }
+    const rapidjson::Value &result = _mDoc["result"];
+    
 }
 

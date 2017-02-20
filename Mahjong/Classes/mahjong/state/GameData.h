@@ -72,6 +72,9 @@ public:
     CC_SYNTHESIZE(PlayerCpgRecShow, playerCpgRecShow, PlayerCpgRecShow);
     CC_SYNTHESIZE(PlayBackInfo, PlaybackInfo, PlaybackInfo);
     CC_SYNTHESIZE(FupanGameData, fupanGameData, FupanGameData);
+    CC_SYNTHESIZE(TuiGuangReward, tuiGuangReward, TuiGuangReward);
+    CC_SYNTHESIZE(TuiGuangPride, tuiGuangPride, TuiGuangPride);
+    CC_SYNTHESIZE(TuiGuangRecord, tuiGuangRecord, TuiGuangRecord);
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
