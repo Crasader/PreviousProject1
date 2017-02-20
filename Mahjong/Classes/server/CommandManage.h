@@ -56,6 +56,8 @@ public:
     std::string getVistorLogin();//游客登录
     std::string getVistorLoginAgain(std::string username,std::string password);
     std::string getFupanInfo(std::string recordId);
+    std::string getTuiGuangCommand();
+    std::string getTuiGuangPrideCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;
