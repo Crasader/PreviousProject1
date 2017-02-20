@@ -55,6 +55,36 @@
     <Filter Include="src\socket\ios\cocoa">
       <UniqueIdentifier>{87de4eb4-dc32-40ca-a6b1-b2994ae5abb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\mahjong\audio">
+      <UniqueIdentifier>{8ca416a7-3ea7-4ed9-af4f-f4890c0523e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\anim">
+      <UniqueIdentifier>{b56d96fd-9ce1-46bf-8db0-39c53e8aaa1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\bill">
+      <UniqueIdentifier>{7c21ef48-deec-47e1-9d0d-4d988dfedb91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\bill\fpdialog">
+      <UniqueIdentifier>{7302f5b5-532b-408a-bbdb-0136933a9cc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\chat">
+      <UniqueIdentifier>{f62cc84e-b1e2-43ed-af5f-955eff191d99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\core">
+      <UniqueIdentifier>{150e9d8d-f240-494f-bbae-446743c52d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\core\gui">
+      <UniqueIdentifier>{5d04d436-3215-4e59-9b3e-17a3670412d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\core\normal">
+      <UniqueIdentifier>{3990e36c-83f6-4f3e-a3cc-9d5f572526c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\core\special">
+      <UniqueIdentifier>{5626da74-03f5-41f1-aab4-7290855d927e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\core\widget">
+      <UniqueIdentifier>{d3151835-057d-462b-9060-4e0c22487517}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -107,6 +137,69 @@
     </ClCompile>
     <ClCompile Include="..\Classes\socket\android\native\SocketDataBack.cpp">
       <Filter>src\socket\android\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\audio\Audio.cpp">
+      <Filter>src\mahjong\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\anim\DealJongAnim.cpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\anim\HuaAnim.cpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\anim\HupaiAnim.cpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\anim\LiuJuAnim.cpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\anim\OutFogAnim.cpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\anim\PlayerCpgAnim.cpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\bill\BillDetailInfo.cpp">
+      <Filter>src\mahjong\bill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\bill\BillInfo.cpp">
+      <Filter>src\mahjong\bill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\bill\fpdialog\FupanDialog.cpp">
+      <Filter>src\mahjong\bill\fpdialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\chat\ChatDialog.cpp">
+      <Filter>src\mahjong\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\chat\FaceChatLayer.cpp">
+      <Filter>src\mahjong\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\chat\PlayerChatManage.cpp">
+      <Filter>src\mahjong\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\chat\QuickChatLayer.cpp">
+      <Filter>src\mahjong\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\core\MjGameScene.cpp">
+      <Filter>src\mahjong\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\core\gui\GuiLayer.cpp">
+      <Filter>src\mahjong\core\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\core\widget\CardStack.cpp">
+      <Filter>src\mahjong\core\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\core\widget\Orientation.cpp">
+      <Filter>src\mahjong\core\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\core\widget\QuitRoomDialog.cpp">
+      <Filter>src\mahjong\core\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\core\special\ReviewGame.cpp">
+      <Filter>src\mahjong\core\special</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\core\normal\MahjongView.cpp">
+      <Filter>src\mahjong\core\normal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +292,69 @@
     </ClInclude>
     <ClInclude Include="..\Classes\socket\ios\cocoa\GCDAsyncUdpSocket.h">
       <Filter>src\socket\ios\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\audio\Audio.h">
+      <Filter>src\mahjong\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\anim\DealJongAnim.h">
+      <Filter>src\mahjong\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\anim\HuaAnim.hpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\anim\HupaiAnim.hpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\anim\LiuJuAnim.hpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\anim\OutFogAnim.hpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\anim\PlayerCpgAnim.hpp">
+      <Filter>src\mahjong\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\bill\BillDetailInfo.h">
+      <Filter>src\mahjong\bill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\bill\BillInfo.h">
+      <Filter>src\mahjong\bill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\bill\fpdialog\FupanDialog.hpp">
+      <Filter>src\mahjong\bill\fpdialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\chat\ChatDialog.hpp">
+      <Filter>src\mahjong\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\chat\FaceChatLayer.hpp">
+      <Filter>src\mahjong\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\chat\PlayerChatManage.hpp">
+      <Filter>src\mahjong\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\chat\QuickChatLayer.hpp">
+      <Filter>src\mahjong\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\core\MjGameScene.h">
+      <Filter>src\mahjong\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\core\gui\GuiLayer.h">
+      <Filter>src\mahjong\core\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\core\widget\CardStack.hpp">
+      <Filter>src\mahjong\core\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\core\widget\Orientation.h">
+      <Filter>src\mahjong\core\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\core\widget\QuitRoomDialog.hpp">
+      <Filter>src\mahjong\core\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\core\special\ReviewGame.h">
+      <Filter>src\mahjong\core\special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\core\normal\MahjongView.h">
+      <Filter>src\mahjong\core\normal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
