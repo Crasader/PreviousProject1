@@ -9,6 +9,7 @@ public:
 	virtual bool init();
 	virtual void update(float dt);
 	void pushMsg(std::string msg);
+    void cleanMsg();
 private:
 	static SocketDataManage* instance;
 	CREATE_FUNC(SocketDataManage);

@@ -31,6 +31,7 @@ public class PxSocketClient {
 
 	/* Public Methods */
 	public void connect(String ip, String port) {
+		localSocketClient = null;
 		getLocalSocketClient(ip, port).connect();
 	}
 

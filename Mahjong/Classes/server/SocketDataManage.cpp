@@ -32,3 +32,11 @@ void SocketDataManage::pushMsg(std::string msg){
     m_msgList.push(msg);
     m_mutex.unlock();
 }
+
+void SocketDataManage::cleanMsg(){
+    m_mutex.lock();
+    while (!m_msgList.empty()) {
+        m_msgList.pop();
+    }
+    m_mutex.unlock();
+}

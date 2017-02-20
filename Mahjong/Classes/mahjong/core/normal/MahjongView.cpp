@@ -32,7 +32,6 @@ bool MahjongView::init(){
     loadView();
     if (GAMEDATA::getInstance()->getIsRecover()){
         recoverGame();
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     }else{
         if(GAMEDATA::getInstance()->getContinueAgain()){
             startGameAgain();
@@ -42,6 +41,7 @@ bool MahjongView::init(){
         }
         addPlayer2Room();
     }
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     return true;
 }
 

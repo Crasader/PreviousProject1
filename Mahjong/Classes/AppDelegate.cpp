@@ -5,6 +5,7 @@
 #include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
 #include "mahjong/audio/Audio.h"
+#include "server/SocketDataManage.h"
 
 USING_NS_CC;
 using namespace experimental;
@@ -77,6 +78,8 @@ void AppDelegate::applicationDidEnterBackground() {
 void AppDelegate::applicationWillEnterForeground() {
     log("applicationWillEnterForeground");
     Director::getInstance()->startAnimation();
+    //
+    SocketDataManage::getInstance()->cleanMsg();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     if(resumeIndex == 0){
         resumeIndex++;
