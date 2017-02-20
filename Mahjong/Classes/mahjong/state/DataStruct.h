@@ -577,4 +577,19 @@ struct PlayMingpaiRecord{
     vector<PlayerMingpai> record;//4个玩家的牌
     int step;
 };
+
+struct TuiGuangReward{
+    int gold;
+    int fangka;
+};
+
+struct TuiGuangPride{
+    int gold;
+    int fangka;
+};
+
+struct TuiGuangRecord{
+    int gold;
+    int fangka;
+};
 #endif

@@ -352,6 +352,10 @@ void MsgHandler::distribute(int code, std::string msg){
             fangZhuLeaveRoom(msg);
             break;
         }
+        case MSGCODE_SPREAD_NEWUSER_RESPONSE:{
+            handleTuiGuangInfo(msg);
+            break;
+        }
         default:
             break;
     }
@@ -2380,13 +2384,23 @@ void MsgHandler::fangZhuLeaveRoom(std::string msg){
 }
 
 void MsgHandler::handleTuiGuangInfo(std::string msg){
+    // 获取推广回复{code:162,poxiaoId:poxiaoId,reward:[{gold:50000},{fangka:1}],result:1,havegot:[{gold:50000},{fangka:1},{people:1}],willget:[{gold:50000},{fangka:1},{people:1}]}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("seatId")){
-        const rapidjson::Value &result = _mDoc["seatId"];
-//        postNotifyMessage(MSG_GAME_FANG_ZHU_LEAVE,StringUtils::format("%d",result.GetInt()));
+    const rapidjson::Value &result = _mDoc["result"];
+    if(result.GetInt() != 0){
+//        GAMEDATA::getInstance()->
+        if(_mDoc.HasMember("reward")){
+        
+        }
+        if(_mDoc.HasMember("havegot")){
+            
+        }
+        if(_mDoc.HasMember("willget")){
+            
+        }
     }
 }
 
