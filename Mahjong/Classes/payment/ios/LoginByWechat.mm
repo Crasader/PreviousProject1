@@ -74,7 +74,7 @@ static NSString *DEVICESTRING= @"iphone";
     }else{
         BOOL result = [self checkTokenOutTime];
         if(result){
-            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
+            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
             return true;
         }else{
             SendAuthReq* req    =[[SendAuthReq alloc]init];
@@ -119,6 +119,8 @@ static NSString *DEVICESTRING= @"iphone";
             if(strcmp(std::string([resultstr UTF8String]).c_str(),"0") == 0){
                 NSObject *openid = [results objectForKey:@"openid"];
                 NSString *openidstr = [NSString stringWithFormat:@"%@", openid];
+                NSObject *unionid = [results objectForKey:@"unionid"];
+                NSString *unionidstr = [NSString stringWithFormat:@"%@", unionid];
                 NSObject *headimgurl = [results objectForKey:@"headimgurl"];
                 NSString *headimgurlstr = [NSString stringWithFormat:@"%@", headimgurl];
                 NSObject *sex = [results objectForKey:@"sex"];
@@ -135,7 +137,7 @@ static NSString *DEVICESTRING= @"iphone";
                 UserData::getInstance()->setWxOpenId(std::string([openidstr UTF8String]));
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
                 UserData::getInstance()->setNickName(std::string([nicknameStr UTF8String]));
-                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([headimgurlstr UTF8String]),StringUtils::format("%d",UserData::getInstance()->getGender()),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
+                WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([unionidstr UTF8String]),std::string([headimgurlstr UTF8String]),StringUtils::format("%d",UserData::getInstance()->getGender()),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");
                 [self sendAuthRequestScope];

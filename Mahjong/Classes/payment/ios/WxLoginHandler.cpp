@@ -30,7 +30,7 @@ WxLoginHandler* WxLoginHandler::getInstance(){
     return _instance;
 }
 
-void WxLoginHandler::doGameLogin(std::string openid,std::string pic,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1){
+void WxLoginHandler::doGameLogin(std::string openid,std::string unionid,std::string pic,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1){
     //发送登录请求到游戏服务器
     if("" == openid){
         //登录错误的提示
@@ -41,7 +41,7 @@ void WxLoginHandler::doGameLogin(std::string openid,std::string pic,std::string 
         GAMEDATA::getInstance()->setImsi(imsi);
         GAMEDATA::getInstance()->setImei(imei);
         GAMEDATA::getInstance()->setAppVer(ver1);
-        std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,pic,sex,nickname,hsman,hstype,imsi,imei,ver1);
+        std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,unionid,pic,sex,nickname,hsman,hstype,imsi,imei,ver1);
         if(msg != ""){
             NetworkManage::getInstance()->sendMsg(msg);
         }
