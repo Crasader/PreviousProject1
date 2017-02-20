@@ -58,6 +58,9 @@ public:
     std::string getWxOpenId();
     void setWxOpenId(std::string openId);
     
+    std::string getWxUnionid();
+    void setWxUnionid(std::string unionid);
+    
     std::string getMarkId();
     void setMarkId(std::string markid);
     

@@ -65,7 +65,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 						@Override
 						public void callBack(WxUserInfo info) {
 							Debug.i("微信登录游戏1...");
-							JniPayCallbackHelper.loginThirdPlatform(info.getOpenId(), info.getHeadImage(),
+							JniPayCallbackHelper.loginThirdPlatform(info.getOpenId(),info.getUnionid(),info.getHeadImage(),
 									info.getSex(), info.getNickName(), DeviceInfo.getProduct(),
 									DeviceInfo.getModle(), DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());
 

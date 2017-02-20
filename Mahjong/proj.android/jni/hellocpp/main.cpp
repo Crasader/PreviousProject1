@@ -24,10 +24,12 @@ Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_eventCallBack(JNIEnv* env, jc
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loginThirdPlatform(JNIEnv* env, jclass jcl,jstring openid,jstring url,jstring sex,jstring nickname,jstring hsman,jstring hstype,jstring imsi,jstring imei,jstring version)
+Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loginThirdPlatform(JNIEnv* env, jclass jcl,jstring openid,jstring unionid,jstring url,jstring sex,jstring nickname,jstring hsman,jstring hstype,jstring imsi,jstring imei,jstring version)
 {
 	char* newOPenId;
 	newOPenId = (char*)env->GetStringUTFChars(openid,0);
+	char* newUnionid;
+	newUnionid = (char*)env->GetStringUTFChars(unionid,0);
 	char* newUrl;
 	newUrl = (char*)env->GetStringUTFChars(url,0);
 	char* newSex;
@@ -51,7 +53,7 @@ Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_loginThirdPlatform(JNIEnv* en
 	char* newVersion;
 	newVersion = (char*)env->GetStringUTFChars(version,0);
 
-	MahjongPayHandler::getInstance()->loginThirdPlatform(newOPenId,newUrl,newSex,newNickName,newHsman,newHstype,newImsi,newImei,newVersion);
+	MahjongPayHandler::getInstance()->loginThirdPlatform(newOPenId,newUnionid,newUrl,newSex,newNickName,newHsman,newHstype,newImsi,newImei,newVersion);
 }
 
 extern "C" JNIEXPORT void JNICALL

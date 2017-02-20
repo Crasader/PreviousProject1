@@ -106,10 +106,7 @@ void CallAndroidMethod::clearWechatOpenId(){
 //        jobject jobj;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
     }
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        UserData::getInstance()->setWxOpenId("unknow");
 #endif
-
 }
 
 std::string CallAndroidMethod::getSdCardDir(){

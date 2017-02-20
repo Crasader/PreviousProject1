@@ -158,6 +158,13 @@ void UserData::setWxOpenId(std::string openId){
     UserDefault::getInstance()->setStringForKey("wchat_openid", openId);
 }
 
+std::string UserData::getWxUnionid(){
+    return UserDefault::getInstance()->getStringForKey("wchat_unionid", "unknow");
+}
+void UserData::setWxUnionid(std::string unionid){
+    UserDefault::getInstance()->setStringForKey("wchat_unionid", unionid);
+}
+
 std::string UserData::getMarkId(){
     return UserDefault::getInstance()->getStringForKey("mark_id", "unknow");
 }

@@ -4106,11 +4106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/heroinfo/UserInfo.cpp"
-            timestampString = "504427228.050349"
+            timestampString = "509254408.516623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "UserInfo::cleanAccountRercord()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4303,7 +4303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
             endingLineNumber = "362"
-            landmarkName = "CommandManage::getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1,bool tag)"
+            landmarkName = "CommandManage::getThirdLoginCommand(std::string openid,std::string unionid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1,bool tag)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

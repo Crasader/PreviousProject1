@@ -354,7 +354,7 @@ std::string CommandManage::getPlayerChatMsgCommand(std::string msg,std::string p
     return commandString(keyValue);
 }
 
-std::string CommandManage::getThirdLoginCommand(std::string openid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1,bool tag){
+std::string CommandManage::getThirdLoginCommand(std::string openid,std::string unionid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1,bool tag){
     //    第三方登录请求{code:999,open_id:123,type:1,hsman:厂商,hstype:机型,imsi:imsi,imei:imei} typ为1表示微信
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_THIRED_LOGIN_REQUEST)));

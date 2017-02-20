@@ -28,7 +28,7 @@ void MahjongPayHandler::dealEventCallBack(int eventId, int result) {
 #endif
 }
 
-void MahjongPayHandler::loginThirdPlatform(std::string openid, std::string url,
+void MahjongPayHandler::loginThirdPlatform(std::string openid,std::string unionid, std::string url,
 		std::string sex, std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1) {
 	if ("" == openid) {
 		//登录错误的提示
@@ -48,8 +48,9 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid, std::string url,
         GAMEDATA::getInstance()->setImei(imei);
         GAMEDATA::getInstance()->setAppVer(ver1);
         UserData::getInstance()->setWxOpenId(openid);
+        UserData::getInstance()->setWxUnionid(unionid);
 		std::string msg = CommandManage::getInstance()->getThirdLoginCommand(
-				openid, url,sex,nickname,hsman,hstype,imsi,imei,ver1);
+				openid,unionid, url,sex,nickname,hsman,hstype,imsi,imei,ver1);
 		if (msg != "") {
 			NetworkManage::getInstance()->sendMsg(msg);
 		}
