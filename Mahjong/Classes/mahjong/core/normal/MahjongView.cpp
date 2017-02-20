@@ -204,7 +204,7 @@ void MahjongView::update(float dt){
             }else{
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
             }
-        }, 0, 0, 4.0f, "socket_reconnect");
+        }, 0, 0, 2.0f, "socket_reconnect");
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
     
@@ -1074,7 +1074,7 @@ void MahjongView::addGameResultListener(){
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(0)));
-            },0,0,5.5f,"go2Result");
+            },0,0,6.0f,"go2Result");
         }else{
             clearRoomPlayer();
             GAMEDATA::getInstance()->setFangZhuId("");
