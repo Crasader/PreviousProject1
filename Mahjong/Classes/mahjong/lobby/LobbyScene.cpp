@@ -725,6 +725,7 @@ void LobbyScene::addEventListener(){
             ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
             addChild(par,10);
             //刷新用户信息
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTuiGuangCommand());
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
         }else{
             da->showText("领取失败");

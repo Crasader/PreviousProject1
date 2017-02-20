@@ -195,12 +195,12 @@ bool ShareToFriendLayer::init(){
     
     auto goldNum = LabelAtlas::create(StringUtils::format("%d",0),"shop/prop_num.png",21,28,'0');
     goldNum->setTag(2002);
-    goldNum->setPosition(675,335);
+    goldNum->setPosition(665,335);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     recordLayer->addChild(goldNum);
     
     auto jinbi = Sprite::create("shop/gold_text.png");
-    jinbi->setPosition(715,335);
+    jinbi->setPosition(705,335);
     recordLayer->addChild(jinbi);
 
     
