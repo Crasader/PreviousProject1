@@ -12,7 +12,6 @@
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
 #include "server/NetworkManage.h"
-#include "userdata/UserData.h"
 
 bool ShareToFriendLayer::init(){
     if(!Layer::init()){
@@ -272,20 +271,28 @@ void ShareToFriendLayer::showFangkaDai(Ref* ref){
 
 void ShareToFriendLayer::doFaHongBaoPerson(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string url = StringUtils::format("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state=%s&connect_redirect=1#wechat_redirect",UserData::getInstance()->getPoxiaoId());
+    std::string url0 = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state=";
+    std::string  url1 ="&connect_redirect=1#wechat_redirect";
+    std::string url = StringUtils::format("%s%s%s",url0.c_str(),UserData::getInstance()->getPoxiaoId().c_str(),url1.c_str());
     CallAndroidMethod::getInstance()->shareToWeChat(url,SHARE_TEXT_1, SHARE_TEXT_2,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-   std::string url = StringUtils::format("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state=%s&connect_redirect=1#wechat_redirect",UserData::getInstance()->getPoxiaoId());
+    std::string url0 = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state=";
+    std::string  url1 ="&connect_redirect=1#wechat_redirect";
+    std::string url = StringUtils::format("%s%s%s",url0.c_str(),UserData::getInstance()->getPoxiaoId().c_str(),url1.c_str());
     IOSBridge::getInstance()->doWechatShareWeb(url,SHARE_TEXT_1, SHARE_TEXT_2,0);
 #endif
 }
 
 void ShareToFriendLayer:: doFaHongBaoFriend(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string url = StringUtils::format("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state=%s&connect_redirect=1#wechat_redirect",UserData::getInstance()->getPoxiaoId());
+    std::string url0 = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state=";
+    std::string  url1 ="&connect_redirect=1#wechat_redirect";
+    std::string url = StringUtils::format("%s%s%s",url0.c_str(),UserData::getInstance()->getPoxiaoId().c_str(),url1.c_str());
     CallAndroidMethod::getInstance()->shareToWeChat(url,SHARE_TEXT_1, SHARE_TEXT_2,true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-   std::string url = StringUtils::format("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state=%s&connect_redirect=1#wechat_redirect",UserData::getInstance()->getPoxiaoId());
+    std::string url0 = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state=";
+    std::string  url1 ="&connect_redirect=1#wechat_redirect";
+    std::string url = StringUtils::format("%s%s%s",url0.c_str(),UserData::getInstance()->getPoxiaoId().c_str(),url1.c_str());
     IOSBridge::getInstance()->doWechatShareWeb(url, SHARE_TEXT_1, SHARE_TEXT_2,1);
 #endif
 }

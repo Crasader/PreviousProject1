@@ -5288,11 +5288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/share/ShareToFriendLayer.cpp"
-            timestampString = "509283406.832937"
+            timestampString = "509334893.242285"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "ShareToFriendLayer::updateUi(float dt)"
             landmarkType = "7">
          </BreakpointContent>
