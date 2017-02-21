@@ -130,6 +130,9 @@ void MahjongView::loadView(){
 }
 
 void MahjongView::startGameFirst(){
+    if(getChildByTag(2000)!=NULL){
+        getChildByTag(2000)->removeFromParent();
+    }
     if(GAMEDATA::getInstance()->getFriendOpenRoomResp().kb == "1"){
         GAMEDATA::getInstance()->setKaibao("1");
     }else{
@@ -158,7 +161,9 @@ void MahjongView::startGameFirst(){
 }
 
 void MahjongView::startGameAgain(){
-    
+    if(getChildByTag(2000)!=NULL){
+        getChildByTag(2000)->removeFromParent();
+    }
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
     for (int i = 0; i < players.size(); i++){
         for(auto var:GAMEDATA::getInstance()->getEnterRoomResp().playerReadys){
