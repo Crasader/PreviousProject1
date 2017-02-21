@@ -31,7 +31,7 @@ bool BatteryInfo::init() {
 	addChild(wifiInfo);
 
 
-	schedule(schedule_selector(BatteryInfo::updateInfo), 2.0f, CC_REPEAT_FOREVER, 0);
+	schedule(schedule_selector(BatteryInfo::updateInfo), 10.0f, CC_REPEAT_FOREVER, 0);
 	return true;
 }
 
