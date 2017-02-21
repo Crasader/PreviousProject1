@@ -17,7 +17,7 @@ const char* ip = "183.129.206.54";//线网服务器地址
 const int port = 8080;//测试端口号
 //const char* ip = "172.23.1.25";//测试地址
 //const int port = 9999;//端口号
-
+json 格式有错误1
 
 GameSocketManage* GameSocketManage::_instance = NULL;
 
