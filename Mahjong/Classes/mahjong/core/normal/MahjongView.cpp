@@ -216,7 +216,19 @@ void MahjongView::update(float dt){
         addPlayer2Room();
         GAMEDATA::getInstance()->setNeedAddPlayer(false);
     }
-    
+    if(GAMEDATA::getInstance()->getIsGotoLobby()){
+        GAMEDATA::getInstance()->setIsGotoLobby(false);
+        HintDialog* dialog = HintDialog::create("房间已经解散或游戏已经结束!", [=](Ref* ref){
+            GAMEDATA::getInstance()->clearPlayersInfo();
+            GAMEDATA::getInstance()->setIsPlaying(false);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        },[=](Ref* ref){
+            GAMEDATA::getInstance()->clearPlayersInfo();
+            GAMEDATA::getInstance()->setIsPlaying(false);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        });
+        addChild(dialog,5);
+    }
     if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
         std::string name = GAMEDATA::getInstance()->getDissolveName();
@@ -1265,7 +1277,6 @@ void MahjongView::onEnterTransitionDidFinish(){
     }
     GAMEDATA::getInstance()->setIsInGameScene(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
 }
 
 void MahjongView::onExit()

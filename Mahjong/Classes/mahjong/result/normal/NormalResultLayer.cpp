@@ -322,11 +322,17 @@ void NormalResultLayer::onEnter(){
         dis->setNickName(name);
         addChild(dis,1000);
     });
+    
+    myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(myCoreLoginRespListener, 1);
 }
 
 void NormalResultLayer::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
 }

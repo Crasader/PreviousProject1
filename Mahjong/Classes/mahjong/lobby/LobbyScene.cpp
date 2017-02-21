@@ -498,7 +498,7 @@ void LobbyScene::onEnterTransitionDidFinish(){
     
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
-   
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
@@ -715,7 +715,7 @@ void LobbyScene::addEventListener(){
             Director::getInstance()->replaceScene(MjGameScene::create());
         }
     });
-
+    
     gameFupanListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GET_TUI_GUANG_PRIDE, [=](EventCustom* event){
         std::string buf = static_cast<char*>(event->getUserData());
         ShopHintDialog* da = ShopHintDialog::create();

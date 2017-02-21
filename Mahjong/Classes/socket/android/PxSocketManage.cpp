@@ -26,27 +26,20 @@ bool PxSocketManage::connectSocket(std::string host,int port){
 
 void PxSocketManage::startScoketBeat(std::string msg){
     heartMsg = msg;
-    std::thread recvThread = std::thread(&PxSocketManage::sendHeartBeat, this);
-    recvThread.detach();
+    Director::getInstance()->getScheduler()->schedule(schedule_selector(PxSocketManage::sendHeartBeat), this, 5.0f,CC_REPEAT_FOREVER, 0, false);
 }
 
-void PxSocketManage::sendHeartBeat(){
-    while (true) {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-        Sleep(5000);
-#else
-        sleep(5);
-#endif
-        if (beatCount >= kBeatLimit) {
-            log("心跳超限,断开连接");
-            beatCount =0;
-            GameSocketManage::getInstance()->disConnectSocket();
-            return;
-        } else {
-            beatCount++;
-        }
-        sendScoketData(heartMsg);
+void PxSocketManage::sendHeartBeat(float dt){
+    if (beatCount >= kBeatLimit) {
+        log("心跳超限,断开连接");
+        beatCount =0;
+        GameSocketManage::getInstance()->disConnectSocket();
+        Director::getInstance()->getScheduler()->unschedule(schedule_selector(PxSocketManage::sendHeartBeat), this);
+        return;
+    } else {
+        beatCount++;
     }
+    sendScoketData(heartMsg);
 }
 
 void PxSocketManage::sendScoketData(std::string msg){

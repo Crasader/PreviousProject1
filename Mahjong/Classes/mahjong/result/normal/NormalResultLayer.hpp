@@ -22,6 +22,7 @@ private:
     EventListenerCustom* continueAgainLisetner;
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* dissovelRoomNotifyListener;
+    EventListenerCustom* myCoreLoginRespListener;
     bool showDissolveDialog = false;
     void showGameResult();
     void showRoomInfo();

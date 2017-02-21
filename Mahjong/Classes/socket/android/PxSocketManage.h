@@ -20,7 +20,7 @@ private:
     int beatCount;
     static std::string heartMsg;
     const int kBeatLimit = 3;
-    void sendHeartBeat();
+    void sendHeartBeat(float dt);
 	static PxSocketManage* _instance;
 };
 #endif
