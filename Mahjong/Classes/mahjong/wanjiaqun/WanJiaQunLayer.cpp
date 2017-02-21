@@ -56,10 +56,22 @@ bool WanJiaQunLayer::init(){
     wanjia->setPosition(390, 500);
     addChild(wanjia,2);
     
+    wanJiaLabel = Label::createWithSystemFont("", "Arial", 30);
+    wanJiaLabel->setColor(Color3B(93,172,221));
+    wanJiaLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    wanJiaLabel->setPosition(710, 265);
+    addChild(wanJiaLabel,2);
+    
     daili =  Sprite::create("wanjiaqun/daili_text_2.png");
     daili->setPosition(570, 500);
     addChild(daili,2);
     
+    daiLiLanel = Label::createWithSystemFont("", "Arial", 30);
+    daiLiLanel->setColor(Color3B(93,172,221));
+    daiLiLanel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    daiLiLanel->setPosition(725, 285);
+    daiLiLanel->setVisible(false);
+    addChild(daiLiLanel,2);
 
     
     auto bigbg = Sprite::create("wanjiaqun/wj_big_box_bg.png");
@@ -99,6 +111,9 @@ void WanJiaQunLayer::showWanJiaQun(Ref* ref){
     wanjia->setTexture("wanjiaqun/wj_text_1.png");
     daili->setTexture("wanjiaqun/daili_text_2.png");
     content->setTexture("wanjiaqun/wj_qun_text.png");
+    wanJiaLabel->setVisible(true);
+    daiLiLanel->setVisible(false);
+    wanJiaLabel->setString(GAMEDATA::getInstance()->getWanJiaQun());
     std::string path = UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL,false);
     if(path != IAMGE_LOADING){
         image->setTexture(path);
@@ -113,6 +128,9 @@ void WanJiaQunLayer::showFangkaDai(Ref* ref){
     daili->setTexture("wanjiaqun/daili_text_1.png");
     content->setTexture("wanjiaqun/wj_qun_text.png");
     content->setTexture("wanjiaqun/daili_text.png");
+    wanJiaLabel->setVisible(false);
+    daiLiLanel->setVisible(true);
+    daiLiLanel->setString(GAMEDATA::getInstance()->getDaiLiQun());
     std::string path = UrlImageMannger::getInstance()->downloadDailiImgByUrl(WECHAT_DAI_LI_QUN_URL,false);
     if(path != IAMGE_LOADING){
         image->setTexture(path);

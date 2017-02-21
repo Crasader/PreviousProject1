@@ -21,6 +21,8 @@ private:
     MenuItemToggle* fangkaToggle;
     Sprite* wanjia;
     Sprite* daili;
+    Label* wanJiaLabel;
+    Label* daiLiLanel;
     Sprite* image;
     Sprite* content;
     void closeView();

@@ -496,12 +496,12 @@ void LobbyScene::onEnter(){
 }
 
 void LobbyScene::onEnterTransitionDidFinish(){
+    
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
+   
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTuiGuangCommand());
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
         HintDialog* hint  = HintDialog::create("房主已经解散了房间", nullptr);
         addChild(hint,50);

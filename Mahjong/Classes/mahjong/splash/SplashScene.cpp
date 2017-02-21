@@ -39,6 +39,22 @@ bool SplashScene::init()
 void SplashScene::onEnterTransitionDidFinish(){
     
     Audio::getInstance()->playBGM();
+    TuiGuangReward myReward;
+    myReward.fangka =0;
+    myReward.gold=0;
+    GAMEDATA::getInstance()->setTuiGuangReward(myReward);
+    TuiGuangPride myPride;
+    myPride.fangka =0;
+    myPride.gold=0;
+    GAMEDATA::getInstance()->setTuiGuangPride(myPride);
+    TuiGuangRecord myRecord;
+    myRecord.fangka =0;
+    myRecord.gold=0;
+    GAMEDATA::getInstance()->setTuiGuangRecord(myRecord);
+    GAMEDATA::getInstance()->setWanJiaQun("");
+    GAMEDATA::getInstance()->setDaiLiQun("");
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTuiGuangCommand());
 }
 
 void SplashScene::drawLonginScene(){

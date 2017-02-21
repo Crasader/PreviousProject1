@@ -283,10 +283,10 @@ void MsgHandler::distribute(int code, std::string msg){
             getFeedBackResp(msg);
             break;
         }
-//        case MSGCODE_MAJIANG_BACK_RESUME_RESPONSE:{
-//            gameResumeResp(msg);
-//            break;
-//        }
+            //        case MSGCODE_MAJIANG_BACK_RESUME_RESPONSE:{
+            //            gameResumeResp(msg);
+            //            break;
+            //        }
         case  MSGCODE_MAJIANG_AGAIN_RESPONSE:{
             gameContinueResp(msg);
             break;
@@ -716,10 +716,10 @@ void MsgHandler::showOtherPlayedJong(std::string msg){
     //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
-//    OtherPlayedJong otherPlayedJong;
-//    otherPlayedJong.seatId = seatId.GetInt();
-//    otherPlayedJong.poker = atoi(poker.GetString());
-//    GAMEDATA::getInstance()->setOtherPlayJong(otherPlayedJong);
+    //    OtherPlayedJong otherPlayedJong;
+    //    otherPlayedJong.seatId = seatId.GetInt();
+    //    otherPlayedJong.poker = atoi(poker.GetString());
+    //    GAMEDATA::getInstance()->setOtherPlayJong(otherPlayedJong);
     std::string resultMsg = StringUtils::format("%d,%s",seatId.GetInt(),poker.GetString());
     postNotifyMessage(MSG_OTHER_PALYER_JONG, resultMsg);
 }
@@ -2013,7 +2013,7 @@ void MsgHandler::getFeedBackResp(std::string msg){
 //        const rapidjson::Value &turn = _mDoc["turn"];
 //        lastGameData.turn = turn.GetInt();
 //    }
-//    
+//
 //    if(_mDoc.HasMember("all")){
 //        const rapidjson::Value &all = _mDoc["all"];
 //        for (int i = 0; i < all.Capacity(); ++i){
@@ -2194,7 +2194,7 @@ void MsgHandler::handleDissovleRoomNotify(std::string msg){
     if(_mDoc.HasMember("nickName")){
         const rapidjson::Value &nickName = _mDoc["nickName"];
         std::string name = nickName.GetString();
-//        postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, name);
+        //        postNotifyMessage(MSG_DISSOVLE_ROOM_NOTIFY, name);
         GAMEDATA::getInstance()->setDissolveName(name);
         GAMEDATA::getInstance()->setIsSelected(false);
     }
@@ -2263,12 +2263,14 @@ void MsgHandler::handleWanJiaQunResp(std::string msg){
         const rapidjson::Value &ver2 = _mDoc["ver2"];
         GAMEDATA::getInstance()->setDailiQunVer(atoi(ver2.GetString()));
     }
-    //    if(_mDoc.HasMember("desc1")){
-    //        const rapidjson::Value &desc1 = _mDoc["desc1"];
-    //    }
-    //    if(_mDoc.HasMember("desc2")){
-    //        const rapidjson::Value &desc2 = _mDoc["desc2"];
-    //    }
+    if(_mDoc.HasMember("desc1")){
+        const rapidjson::Value &desc1 = _mDoc["desc1"];
+        GAMEDATA::getInstance()->setWanJiaQun(desc1.GetString());
+    }
+    if(_mDoc.HasMember("desc2")){
+        const rapidjson::Value &desc2 = _mDoc["desc2"];
+        GAMEDATA::getInstance()->setDaiLiQun(desc2.GetString());
+    }
     postNotifyMessage(MSG_WAN_JIA_WEI_XIN_QUN, "");
 }
 
@@ -2364,7 +2366,7 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         data.lequan = temp["lequan"].GetInt();
         data.fangka = temp["fangka"].GetDouble();
         data.pic = temp["pic"].GetString();
-//        data.ip = temp["ip"].GetString();
+        //        data.ip = temp["ip"].GetString();
         data.hua = temp["hua"].GetInt();
         data.status = 2;
         data.ifready = 0;
@@ -2439,7 +2441,7 @@ void MsgHandler::handleTuiGuangInfo(std::string msg){
 
 
 void MsgHandler::handleTuiGuangPrideInfo(std::string msg){
-
+    
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
