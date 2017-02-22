@@ -8,8 +8,9 @@
 #include "mahjong/state/GAMEDATA.h"
 #include "mahjong/utils/StringUtil.h"
 #include "server/MsgConfig.h"
+#include "mahjong/utils/GameConfig.h"
 
-#define PAY_PLAT_VALUE "4" //ios支付版本
+
 
 CommandManage* CommandManage::_instance = 0;
 

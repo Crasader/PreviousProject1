@@ -679,11 +679,13 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
 }
 
 void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
-    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+    if(data.replace != ""){
+        std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+        setHuaNum(getHuaNum()+(int)replace.size());
+    }
     Jong* jong = Jong::create();
     jong->showJong(herohand, data.poker);
     addChild(jong);
-    setHuaNum(getHuaNum()+(int)replace.size());
     showPlayerHua(getHuaNum());
     playerHandJongs.pushBack(jong);
     currentJong = jong;

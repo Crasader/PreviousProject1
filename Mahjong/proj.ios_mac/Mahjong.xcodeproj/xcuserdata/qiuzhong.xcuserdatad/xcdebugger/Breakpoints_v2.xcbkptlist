@@ -4298,11 +4298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/CommandManage.cpp"
-            timestampString = "509261291.72749"
+            timestampString = "509444964.303287"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
             landmarkName = "CommandManage::getThirdLoginCommand(std::string openid,std::string unionid,std::string head,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1,bool tag)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4522,11 +4522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/player/PlayerHero.cpp"
-            timestampString = "508772365.449052"
+            timestampString = "509438492.470938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "791"
-            endingLineNumber = "791"
+            startingLineNumber = "793"
+            endingLineNumber = "793"
             landmarkName = "PlayerHero::removePlayedIcon()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4698,11 +4698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/player/PlayerHero.cpp"
-            timestampString = "508772365.449052"
+            timestampString = "509438492.470938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "853"
-            endingLineNumber = "853"
+            startingLineNumber = "855"
+            endingLineNumber = "855"
             landmarkName = "PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector&lt;string&gt; chipai, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4968,11 +4968,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/player/PlayerHero.cpp"
-            timestampString = "508772365.449052"
+            timestampString = "509438492.470938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1573"
-            endingLineNumber = "1573"
+            startingLineNumber = "1575"
+            endingLineNumber = "1575"
             landmarkName = "PlayerHero::updateMingpai(Vector&lt;Jong*&gt; myPlayerHandJongs,Vector&lt;Jong*&gt; myPlayerPlayedJongs,std::vector&lt;PlayerCpgRecord&gt; myPlayerCpgRecords)"
             landmarkType = "7">
          </BreakpointContent>
