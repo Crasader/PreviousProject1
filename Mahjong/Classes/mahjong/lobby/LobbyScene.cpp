@@ -72,8 +72,18 @@ void LobbyScene::signUpdate(float dt){
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
         for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
             if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+                if(UserData::getInstance()->isWeixinPayOpen()){
+                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                    addChild(gold,30);
+                }else{
+                    HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
+                    addChild(hint,100);
+                }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
                 GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
                 addChild(gold,30);
+#endif
             }
         }
         GAMEDATA::getInstance()->setShowDialogType(-1);
@@ -561,8 +571,19 @@ void LobbyScene::addEventListener(){
             
             for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
                 if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+               
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+                    if(UserData::getInstance()->isWeixinPayOpen()){
+                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                        addChild(gold,4);
+                    }else{
+                        HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
+                        addChild(hint,100);
+                    }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
                     GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
                     addChild(gold,4);
+#endif
                 }
             }
         }

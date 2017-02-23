@@ -218,16 +218,18 @@ void MahjongView::update(float dt){
     }
     if(GAMEDATA::getInstance()->getIsGotoLobby()){
         GAMEDATA::getInstance()->setIsGotoLobby(false);
-        HintDialog* dialog = HintDialog::create("房间已经解散或游戏已经结束!", [=](Ref* ref){
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            GAMEDATA::getInstance()->setIsPlaying(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        },[=](Ref* ref){
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            GAMEDATA::getInstance()->setIsPlaying(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        });
-        addChild(dialog,5);
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            HintDialog* dialog = HintDialog::create("房间已经解散或游戏已经结束!", [=](Ref* ref){
+                GAMEDATA::getInstance()->clearPlayersInfo();
+                GAMEDATA::getInstance()->setIsPlaying(false);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            },[=](Ref* ref){
+                GAMEDATA::getInstance()->clearPlayersInfo();
+                GAMEDATA::getInstance()->setIsPlaying(false);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            });
+            addChild(dialog,5);
+        }
     }
     if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
@@ -1420,7 +1422,6 @@ void MahjongView::addCoustomListener(){
         Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
-    
     fangZhuLeaveListener = EventListenerCustom::create(MSG_GAME_FANG_ZHU_LEAVE, [=](EventCustom* event){
         std::string msg = static_cast<char*>(event->getUserData());
         //        int seat_id = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(msg.c_str()));
