@@ -434,8 +434,18 @@ void SplashScene::onEnter(){
         else if(result == "3")
         {
             removeLoading();
-            FangkaNotEnoughDialog* dialog = FangkaNotEnoughDialog::create();
-            addChild(dialog,100);
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,100);
+            }else{
+                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                addChild(hint,100);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,100);
+#endif
         }
         else if(result == "4"){
             removeLoading();
@@ -453,8 +463,18 @@ void SplashScene::onEnter(){
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
-            FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
-            addChild(dia,100);
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,100);
+            }else{
+                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                addChild(hint,100);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,100);
+#endif
         }
         
     });

@@ -89,9 +89,20 @@ void LobbyScene::signUpdate(float dt){
         GAMEDATA::getInstance()->setShowDialogType(-1);
     }
     else if(GAMEDATA::getInstance()->getShowDialogType() == 4){
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+        if(UserData::getInstance()->isWeixinPayOpen()){
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,30);
+            GAMEDATA::getInstance()->setShowDialogType(-1);
+        }else{
+            HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+            addChild(hint,3);
+        }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
         FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
         addChild(charge,30);
         GAMEDATA::getInstance()->setShowDialogType(-1);
+#endif
     }
 }
 
@@ -583,8 +594,20 @@ void LobbyScene::addEventListener(){
         }
         else if(result == "3")
         {
-            FangkaNotEnoughDialog* dialog = FangkaNotEnoughDialog::create();
-            addChild(dialog,4);        }
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,4);
+                GAMEDATA::getInstance()->setShowDialogType(-1);
+            }else{
+                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                addChild(hint,4);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,4);
+#endif
+        }
         else if(result == "4"){
             RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
             addChild(idd,4);
@@ -600,8 +623,19 @@ void LobbyScene::addEventListener(){
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
-            FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
-            addChild(dia,4);
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,4);
+                GAMEDATA::getInstance()->setShowDialogType(-1);
+            }else{
+                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                addChild(hint,4);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,4);
+#endif
         }
     });
     
@@ -664,8 +698,18 @@ void LobbyScene::addEventListener(){
             FriendRoom* friendroom = FriendRoom::create();
             addChild(friendroom);
         }else{
-            FangkaNotEnoughDialog* dia =FangkaNotEnoughDialog::create();
-            addChild(dia,4);
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,4);
+            }else{
+                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                addChild(hint,4);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,4);
+#endif
         }
     });
     
