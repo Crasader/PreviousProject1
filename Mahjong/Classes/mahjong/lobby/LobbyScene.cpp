@@ -437,8 +437,18 @@ void LobbyScene::chargeGold(){
 
 void LobbyScene::chargeFangka(){
     Audio::getInstance()->playSoundClick();
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+    if(UserData::getInstance()->isWeixinPayOpen()){
+        ChargeFangka* charge = ChargeFangka::create();
+        addChild(charge,3);
+    }else{
+        HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+        addChild(hint,3);
+    }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
     ChargeFangka* charge = ChargeFangka::create();
     addChild(charge,3);
+#endif
 }
 
 void LobbyScene::exchangeLequan(){
