@@ -283,10 +283,6 @@ void MsgHandler::distribute(int code, std::string msg){
             getFeedBackResp(msg);
             break;
         }
-            //        case MSGCODE_MAJIANG_BACK_RESUME_RESPONSE:{
-            //            gameResumeResp(msg);
-            //            break;
-            //        }
         case  MSGCODE_MAJIANG_AGAIN_RESPONSE:{
             gameContinueResp(msg);
             break;
