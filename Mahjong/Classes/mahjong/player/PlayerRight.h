@@ -16,9 +16,9 @@ public:
 	Point getCpgShowPostion(int index) override;
     void doEventTimeOver(int type) override;
 	void removeLastJong() override;
-	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
-	void drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase);
-	void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
+	void drawPlayerChi(PlayerCpgtData* data, PlayerBase* playerBase);
+	void drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase);
+	void drawPlayerGang(PlayerCpgtData* data, PlayerBase* playerBase);
 	Point getPlayedJongPos(int count);//
 	void recoverHua(int hua);
 	void recoverPlayed(std::string played);
@@ -29,9 +29,9 @@ public:
     void drawMingPai(std::string hand);
     void settleJongMingpai();
     void drawRightPlayerTurnMingpai(int jong);
-    void drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase);
-    void drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBase);
-    void drawPlayerMingpaiPeng(PlayerCpgtData data,PlayerBase* playerBase);
+    void drawPlayerMingpaiGang(PlayerCpgtData* data, PlayerBase* playerBase);
+    void drawPlayerMingpaiChi(PlayerCpgtData* data, PlayerBase* playerBase);
+    void drawPlayerMingpaiPeng(PlayerCpgtData* data,PlayerBase* playerBase);
     void updateMingpai(Vector<Jong*> playerHandJongs,Vector<Jong*> playerPlayedJongs,std::vector<PlayerCpgRecord> playerCpgRecords);
     void drawPlayedJongMingpai(int ctype);
     

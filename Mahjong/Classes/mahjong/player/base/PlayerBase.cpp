@@ -231,11 +231,11 @@ void PlayerBase::showPlayerChi(string chiPoker, PlayerBase* playerBase){
     setChiNumber(getChiNumber()+1);
 }
 
-void PlayerBase::showPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
+void PlayerBase::showPlayerPeng(PlayerCpgtData* data,PlayerBase* playerBase){
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
 }
 
-void PlayerBase::showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
+void PlayerBase::showPlayerGang(PlayerCpgtData* data, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(getPlayerInfo()->getGender());
 }
 

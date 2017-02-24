@@ -167,8 +167,8 @@ void PlayerLeft::removeLastJong(){
 
 
 
-void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
-    PlayerBase::showPlayerChi(data.chi.at(0), playerBase);
+void PlayerLeft::drawPlayerChi(PlayerCpgtData* data, PlayerBase* playerBase){
+    PlayerBase::showPlayerChi(data->chi.at(0), playerBase);
     setStateCpg(true);
     if(GAMEDATA::getInstance()->getIsFuPan()){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
@@ -181,12 +181,12 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
         playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
     }
     Jong* jongland = Jong::create();
-    jongland->showJong(leftcpgportrait, atoi(data.poker.c_str()));
+    jongland->showJong(leftcpgportrait, atoi(data->poker.c_str()));
     jongland->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-5,getCpgShowPostion((int)playerCpgRecords.size()).y);
     addChild(jongland,(int)playerCpgRecords.size()*4);
     PlayerCpgRecord record;
     record.pokersRecord.pushBack(jongland);
-    std::vector<std::string> chi = StringUtil::split(data.chi.at(0), ",");
+    std::vector<std::string> chi = StringUtil::split(data->chi.at(0), ",");
     record.type = CpgType::chi;
     playerBase->removeLastJong();
     for (int i = 0; i < chi.size(); i++){
@@ -199,7 +199,7 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
     playerCpgRecords.push_back(record);
 }
 
-void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
+void PlayerLeft::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase){
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
@@ -217,7 +217,7 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerCpgRecord record;
     record.type = CpgType::peng;
     Jong* jongpeng = Jong::create();
-    jongpeng->showJong(leftcpgportrait, atoi(data.poker.c_str()));
+    jongpeng->showJong(leftcpgportrait, atoi(data->poker.c_str()));
     int offsetY = 0;
     if(playerBase->getClientSeat() == ClientSeatId::opposite){
         offsetY = 32;
@@ -234,7 +234,7 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     }
     addChild(jongpeng);
     record.pokersRecord.pushBack(jongpeng);
-    std::vector<std::string> peng = StringUtil::split(data.peng, ",");
+    std::vector<std::string> peng = StringUtil::split(data->peng, ",");
     for (int i = 0; i < peng.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(leftcpglandscape, atoi(peng.at(i).c_str()));
@@ -245,14 +245,14 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     playerCpgRecords.push_back(record);
 }
 
-void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
+void PlayerLeft::drawPlayerGang(PlayerCpgtData* data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
-    if(data.flag == 1){
+    if(data->flag == 1){
         for (int j = 0; j < 4; j++){
             playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
         }
-    }else if (data.flag == 2){
+    }else if (data->flag == 2){
         if(GAMEDATA::getInstance()->getIsFuPan()){
             ((ReviewGame*)getParent())->removeHeroPlayedIcon();
         }else{
@@ -268,23 +268,23 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
         }
     }
-    std::vector<std::string> gang = StringUtil::split(data.gang, ",");
-    gang.push_back(data.poker);
+    std::vector<std::string> gang = StringUtil::split(data->gang, ",");
+    gang.push_back(data->poker);
     sort(gang.begin(), gang.end());
     PlayerCpgRecord record;
-    if(data.flag ==1){
+    if(data->flag ==1){
         record.type = CpgType::angang;
     }else{
         record.type = CpgType::gang;
     }
     record.gangValue = atoi(gang.at(0).c_str());
-    if (data.flag == 2){
+    if (data->flag == 2){
         for (int i = 0; i < playerCpgRecords.size(); i++)
         {
             if (playerCpgRecords.at(i).type == CpgType::peng){
-                if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data.poker.c_str())){
+                if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data->poker.c_str())){
                     Jong* jong = Jong::create();
-                    jong->showJong(leftcpglandscape, atoi(data.poker.c_str()));
+                    jong->showJong(leftcpglandscape, atoi(data->poker.c_str()));
                     jong->setPosition(getCpgShowPostion(i).x+4,getCpgShowPostion(i).y-20);
                     addChild(jong, (int)playerCpgRecords.size()*4);
                     playerCpgRecords.at(i).type = CpgType::penggang;
@@ -294,12 +294,12 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
         }
     }
     else{
-        if (data.flag == 0){
+        if (data->flag == 0){
             playerBase->removeLastJong();
         }
         for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
-            if (data.flag == 1){
+            if (data->flag == 1){
                 if(i==3){
                     jong->showJong(leftcpglandscape, atoi(gang.at(0).c_str()));
                     record.anGangFan = true;
@@ -323,15 +323,15 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     }
 }
 
-void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBase){
-    PlayerBase::showPlayerChi(data.chi.at(0), playerBase);
+void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData* data, PlayerBase* playerBase){
+    PlayerBase::showPlayerChi(data->chi.at(0), playerBase);
     setStateCpg(true);
     if(GAMEDATA::getInstance()->getIsFuPan()){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
     }else{
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }
-    std::vector<string> chipai =  StringUtil::split(data.chi.at(0), ",");
+    std::vector<string> chipai =  StringUtil::split(data->chi.at(0), ",");
     for (int i = 0; i < chipai.size(); i++){
         for (int j = 0; j < playerHandJongs.size(); j++){
             if (atoi(chipai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
@@ -343,12 +343,12 @@ void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBas
     }
     settleJongMingpai();
     Jong* jongland = Jong::create();
-    jongland->showJong(leftcpgportrait, atoi(data.poker.c_str()));
+    jongland->showJong(leftcpgportrait, atoi(data->poker.c_str()));
     jongland->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x-5,getCpgShowPostion((int)playerCpgRecords.size()).y);
     addChild(jongland,(int)playerCpgRecords.size()*4);
     PlayerCpgRecord record;
     record.pokersRecord.pushBack(jongland);
-    std::vector<std::string> chi = StringUtil::split(data.chi.at(0), ",");
+    std::vector<std::string> chi = StringUtil::split(data->chi.at(0), ",");
     record.type = CpgType::chi;
     playerBase->removeLastJong();
     for (int i = 0; i < chi.size(); i++){
@@ -361,7 +361,7 @@ void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBas
     playerCpgRecords.push_back(record);
 }
 
-void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase){
+void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData* data, PlayerBase* playerBase){
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
@@ -370,7 +370,7 @@ void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBa
     }else{
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }
-    std::vector<string> chipai =  StringUtil::split(data.peng, ",");
+    std::vector<string> chipai =  StringUtil::split(data->peng, ",");
     for (int i = 0; i < 2; i++){
         for (int j = 0; j < playerHandJongs.size(); j++){
             if (atoi(chipai.at(0).c_str()) == playerHandJongs.at(j)->getJongType()){
@@ -385,7 +385,7 @@ void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBa
     PlayerCpgRecord record;
     record.type = CpgType::peng;
     Jong* jongpeng = Jong::create();
-    jongpeng->showJong(leftcpgportrait, atoi(data.poker.c_str()));
+    jongpeng->showJong(leftcpgportrait, atoi(data->poker.c_str()));
     int offsetY = 0;
     if(playerBase->getClientSeat() == ClientSeatId::opposite){
         offsetY = 32;
@@ -402,7 +402,7 @@ void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBa
     }
     addChild(jongpeng);
     record.pokersRecord.pushBack(jongpeng);
-    std::vector<std::string> peng = StringUtil::split(data.peng, ",");
+    std::vector<std::string> peng = StringUtil::split(data->peng, ",");
     for (int i = 0; i < peng.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(leftcpglandscape, atoi(peng.at(i).c_str()));
@@ -413,10 +413,10 @@ void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBa
     playerCpgRecords.push_back(record);
 }
 
-void PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase){
+void PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData* data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
 
-    std::vector<string> chipai =  StringUtil::split(data.gang, ",");
+    std::vector<string> chipai =  StringUtil::split(data->gang, ",");
     for (int j = 0; j < playerHandJongs.size(); j++){
         if (atoi(chipai.at(0).c_str()) == playerHandJongs.at(j)->getJongType()){
             playerHandJongs.at(j)->removeFromParent();
@@ -425,23 +425,23 @@ void PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBa
         }
     }
     settleJongMingpai();
-    std::vector<std::string> gang = StringUtil::split(data.gang, ",");
-    gang.push_back(data.poker);
+    std::vector<std::string> gang = StringUtil::split(data->gang, ",");
+    gang.push_back(data->poker);
     sort(gang.begin(), gang.end());
     PlayerCpgRecord record;
-    if(data.flag ==1){
+    if(data->flag ==1){
         record.type = CpgType::angang;
     }else{
         record.type = CpgType::gang;
     }
     record.gangValue = atoi(gang.at(0).c_str());
-    if (data.flag == 2){
+    if (data->flag == 2){
         for (int i = 0; i < playerCpgRecords.size(); i++)
         {
             if (playerCpgRecords.at(i).type == CpgType::peng){
-                if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data.poker.c_str())){
+                if (playerCpgRecords.at(i).pokersRecord.at(0)->getJongType() == atoi(data->poker.c_str())){
                     Jong* jong = Jong::create();
-                    jong->showJong(leftcpglandscape, atoi(data.poker.c_str()));
+                    jong->showJong(leftcpglandscape, atoi(data->poker.c_str()));
                     jong->setPosition(getCpgShowPostion(i).x+4,getCpgShowPostion(i).y-20);
                     addChild(jong, (int)playerCpgRecords.size()*4);
                     playerCpgRecords.at(i).type = CpgType::penggang;
@@ -451,12 +451,12 @@ void PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBa
         }
     }
     else{
-        if (data.flag == 0){
+        if (data->flag == 0){
             playerBase->removeLastJong();
         }
         for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
-            if (data.flag == 1){
+            if (data->flag == 1){
                 if(i==3){
                     jong->showJong(leftcpglandscape, atoi(gang.at(0).c_str()));
                     record.anGangFan = true;

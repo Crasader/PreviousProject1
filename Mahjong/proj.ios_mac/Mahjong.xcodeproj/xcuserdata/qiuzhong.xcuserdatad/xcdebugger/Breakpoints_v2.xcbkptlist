@@ -3994,11 +3994,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "509599423.853679"
+            timestampString = "509611772.400065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2297"
-            endingLineNumber = "2297"
+            startingLineNumber = "2289"
+            endingLineNumber = "2289"
             landmarkName = "MsgHandler::handleGamePayType(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4175,7 +4175,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
             endingLineNumber = "223"
-            landmarkName = "PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4191,7 +4191,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
             endingLineNumber = "222"
-            landmarkName = "PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4207,7 +4207,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
             endingLineNumber = "237"
-            landmarkName = "PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerOpposite::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4223,7 +4223,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
             endingLineNumber = "232"
-            landmarkName = "PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerOpposite::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4506,11 +4506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "509599423.853679"
+            timestampString = "509611772.400065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "785"
-            endingLineNumber = "785">
+            startingLineNumber = "778"
+            endingLineNumber = "778">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4668,9 +4668,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "888"
-            endingLineNumber = "888"
-            landmarkName = "ReviewGame::addCoustomListener()"
-            landmarkType = "7">
+            endingLineNumber = "888">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4684,9 +4682,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "891"
-            endingLineNumber = "891"
-            landmarkName = "ReviewGame::addCoustomListener()"
-            landmarkType = "7">
+            endingLineNumber = "891">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4731,7 +4727,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
             endingLineNumber = "416"
-            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4747,7 +4743,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "427"
             endingLineNumber = "427"
-            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4763,7 +4759,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "422"
             endingLineNumber = "422"
-            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4778,9 +4774,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "786"
-            endingLineNumber = "786"
-            landmarkName = "ReviewGame::addCoustomListener()"
-            landmarkType = "7">
+            endingLineNumber = "786">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4794,9 +4788,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "846"
-            endingLineNumber = "846"
-            landmarkName = "ReviewGame::addCoustomListener()"
-            landmarkType = "7">
+            endingLineNumber = "846">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4810,9 +4802,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "863"
-            endingLineNumber = "863"
-            landmarkName = "ReviewGame::addCoustomListener()"
-            landmarkType = "7">
+            endingLineNumber = "863">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4826,9 +4816,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "ReviewGame::controlDown()"
-            landmarkType = "7">
+            endingLineNumber = "148">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4842,9 +4830,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "449"
-            endingLineNumber = "449"
-            landmarkName = "ReviewGame::showOriention()"
-            landmarkType = "7">
+            endingLineNumber = "449">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4907,7 +4893,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "381"
             endingLineNumber = "381"
-            landmarkName = "PlayerOpposite::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerOpposite::drawPlayerMingpaiPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4922,9 +4908,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "860"
-            endingLineNumber = "860"
-            landmarkName = "ReviewGame::addCoustomListener()"
-            landmarkType = "7">
+            endingLineNumber = "860">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4938,9 +4922,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "ReviewGame::controlDown()"
-            landmarkType = "7">
+            endingLineNumber = "127">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4954,9 +4936,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "ReviewGame::controlDown()"
-            landmarkType = "7">
+            endingLineNumber = "124">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4986,9 +4966,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "ReviewGame::controlUp()"
-            landmarkType = "7">
+            endingLineNumber = "181">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5142,11 +5120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "509599423.853679"
+            timestampString = "509611772.400065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "827"
-            endingLineNumber = "827"
+            startingLineNumber = "819"
+            endingLineNumber = "819"
             landmarkName = "MsgHandler::nextPlayer(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>

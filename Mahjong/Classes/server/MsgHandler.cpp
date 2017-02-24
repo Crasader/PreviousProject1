@@ -380,7 +380,7 @@ void MsgHandler::roomListResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &roomstyle = _mDoc["roomstyle"];
-    RoomListData roomlist;
+    RoomListData* roomlist = new RoomListData();
     for (int i = 0; i < roomstyle.Capacity(); ++i){
         RoomData data;
         const rapidjson::Value &temp = roomstyle[i];
@@ -389,10 +389,10 @@ void MsgHandler::roomListResp(std::string msg){
         data.minGold = temp["min"].GetInt();
         data.base = temp["base"].GetInt();
         data.hua = temp["hua"].GetInt();
-        roomlist.rooms.push_back(data);
+        roomlist->rooms.push_back(data);
     }
-    GAMEDATA::getInstance()->setRoomList(roomlist);
-    postNotifyMessage(MSG_ROOM_LIST_RESP, LOGIN_SUCCESS);
+    postNotifyMessage2(MSG_ROOM_LIST_RESP, roomlist);
+    CC_SAFE_DELETE(roomlist);
 }
 
 
@@ -682,23 +682,22 @@ void MsgHandler::getHeroJongs(std::string msg){
     }
     GAMEDATA::getInstance()->setReplaceJongVec(replaceVec);
     //如果手牌中有暗杠
-    PlayerCpgtData tingData;
+    PlayerCpgtData* tingData = new PlayerCpgtData();
     if(_mDoc.HasMember("angang")){
         const rapidjson::Value &angang = _mDoc["angang"];
-        tingData.gang = angang.GetString();
-        tingData.flag = 1;
-        tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+        tingData->gang = angang.GetString();
+        tingData->flag = 1;
+        tingData->seatId = GAMEDATA::getInstance()->getHeroSeatId();
         GAMEDATA::getInstance()->setStartPaiAngang(true);
     }
     if(_mDoc.HasMember("ting")){
         const rapidjson::Value &ting = _mDoc["ting"];
-        tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
-        tingData.ting = ting.GetString();
+        tingData->seatId = GAMEDATA::getInstance()->getHeroSeatId();
+        tingData->ting = ting.GetString();
         GAMEDATA::getInstance()->setStartPaiAngang(true);
     }
-    GAMEDATA::getInstance()->setPlayerCpgt(tingData);
     GAMEDATA::getInstance()->setStartFaPai(true);
-    //    postNotifyMessage(MSG_GAME_START_NOTIFY, "");
+//        postNotifyMessage(MSG_GAME_START_NOTIFY, "");
 }
 
 
@@ -751,7 +750,6 @@ void MsgHandler::showCpgNotify(std::string msg){
         cpg.gang = "";
     }
     sort(cpg.chi.begin(), cpg.chi.end());
-    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
     postNotifyMessage(MSG_PLAYER_CPG, "");
 }
 
@@ -788,12 +786,11 @@ void MsgHandler::showOtherPengNotify(std::string msg){
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &pengPoker = _mDoc["peng"];
     const rapidjson::Value &sId = _mDoc["sId"];
-    GameCpgData* data = new GameCpgData();
-    PlayerCpgtData cpg;
-    cpg.poker = poker.GetString();
-    cpg.seatId = seatId.GetInt();
-    cpg.peng = pengPoker.GetString();
-    cpg.sId = sId.GetInt();
+    PlayerCpgtData* data = new PlayerCpgtData();
+    data->poker = poker.GetString();
+    data->seatId = seatId.GetInt();
+    data->peng = pengPoker.GetString();
+    data->sId = sId.GetInt();
     postNotifyMessage2(MSG_OTHER_PLAYER_PENG, data);
     CC_SAFE_DELETE(data);
 }
@@ -815,7 +812,7 @@ void MsgHandler::showOtherGangNotify(std::string msg){
     cpg.seatId = seatId.GetInt();
     cpg.gang = gang.GetString();
     cpg.sId = sId.GetInt();
-    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
+//    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
     postNotifyMessage(MSG_OTHER_PLAYER_GANG, "");
 }
 
@@ -860,7 +857,7 @@ void MsgHandler::nextPlayer(std::string msg){
         tingData.flag = 2;
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
-        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+//        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
         playerTurnData.hastinggang = true;
     }
     GAMEDATA::getInstance()->setPlayerTurn(playerTurnData);
@@ -893,7 +890,7 @@ void MsgHandler::heroTingMsg(std::string msg){
         tingData.gang = penggang.GetString();
         tingData.flag = 2;
     }
-    GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+//    GAMEDATA::getInstance()->setPlayerCpgt(tingData);
     postNotifyMessage(MSG_HERO_TING_GANG, "");
 }
 

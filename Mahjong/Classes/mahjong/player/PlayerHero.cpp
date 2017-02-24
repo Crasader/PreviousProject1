@@ -914,7 +914,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
             log("吃听的牌: %s",cpgResp.ting.c_str());
             PlayerCpgtData tingData;
             tingData.ting = cpgResp.ting;
-            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+//            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
             ((MahjongView*)getParent())->showTingGangControllPad();
         }else{
             setIsAllowPlay(true);
@@ -1006,7 +1006,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     if (resp.result == 2 && resp.ting != ""){
         PlayerCpgtData tingData;
         tingData.ting = resp.ting;
-        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+//        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
         ((MahjongView*)getParent())->showTingGangControllPad();
     }else{
         setIsAllowPlay(true);
@@ -1075,7 +1075,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         if (resp.result == 2 && resp.ting != ""){
             PlayerCpgtData tingData;
             tingData.ting = resp.ting;
-            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+//            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
             ((MahjongView*)getParent())->showTingGangControllPad();
         }
         
@@ -1221,7 +1221,7 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
             log("吃听的牌: %s",cpgResp.ting.c_str());
             PlayerCpgtData tingData;
             tingData.ting = cpgResp.ting;
-            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+//            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
             ((MahjongView*)getParent())->showTingGangControllPad();
         }else{
             setIsAllowPlay(true);
@@ -1291,7 +1291,7 @@ void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, P
     if (resp.result == 2 && resp.ting != ""){
         PlayerCpgtData tingData;
         tingData.ting = resp.ting;
-        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+//        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
         ((MahjongView*)getParent())->showTingGangControllPad();
     }else{
         setIsAllowPlay(true);
@@ -1346,7 +1346,7 @@ void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, P
         if (resp.result == 2 && resp.ting != ""){
             PlayerCpgtData tingData;
             tingData.ting = resp.ting;
-            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
+//            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
             ((MahjongView*)getParent())->showTingGangControllPad();
         }
         

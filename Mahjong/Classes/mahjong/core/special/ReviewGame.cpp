@@ -232,25 +232,25 @@ void ReviewGame::drawCpgControllPad(){
     MenuItemImage* chi = nullptr;
     MenuItemImage* peng = nullptr;
     MenuItemImage* gang = nullptr;
-    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     int buttonCount = 1;
-    if (cpg.chi.size() > 0){
-        chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_0(ReviewGame::showHeroChiUi, this));
-        chi->setPosition(Point(-buttonCount * 160, 0));
-        controllPad->addChild(chi);
-        buttonCount++;
-    }
-    if (cpg.peng != ""){
-        peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_0(ReviewGame::heroDoPeng, this));
-        peng->setPosition(Point(-buttonCount * 160, 0));
-        controllPad->addChild(peng);
-        buttonCount++;
-    }
-    if (cpg.gang != ""){
-        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_0(ReviewGame::heroDoGang, this));
-        gang->setPosition(Point(-buttonCount * 160, 0));
-        controllPad->addChild(gang);
-    }
+//    if (cpg.chi.size() > 0){
+//        chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_0(ReviewGame::showHeroChiUi, this));
+//        chi->setPosition(Point(-buttonCount * 160, 0));
+//        controllPad->addChild(chi);
+//        buttonCount++;
+//    }
+//    if (cpg.peng != ""){
+//        peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_0(ReviewGame::heroDoPeng, this));
+//        peng->setPosition(Point(-buttonCount * 160, 0));
+//        controllPad->addChild(peng);
+//        buttonCount++;
+//    }
+//    if (cpg.gang != ""){
+//        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_0(ReviewGame::heroDoGang, this));
+//        gang->setPosition(Point(-buttonCount * 160, 0));
+//        controllPad->addChild(gang);
+//    }
     controllPad->setPosition(Point(1100, 160));
     controllPad->setVisible(true);
 }
@@ -264,19 +264,19 @@ void ReviewGame::showTingGangControllPad(){
     MenuItemImage* ting = nullptr;
     MenuItemImage* penggang = nullptr;
     int buttonCount = 1;
-    PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
-    if (tingData.ting != ""){
-        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(ReviewGame::heroDoTing, this));
-        ting->setPosition(Point(-buttonCount * 140, 0));
-        controllPad->addChild(ting);
-        buttonCount++;
-    }
-    if (tingData.gang != ""){
-        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_0(ReviewGame::heroDoPengGangAndAGang, this));
-        penggang->setPosition(Point(-buttonCount * 140, 0));
-        controllPad->addChild(penggang);
-        buttonCount++;
-    }
+//    PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
+//    if (tingData.ting != ""){
+//        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(ReviewGame::heroDoTing, this));
+//        ting->setPosition(Point(-buttonCount * 140, 0));
+//        controllPad->addChild(ting);
+//        buttonCount++;
+//    }
+//    if (tingData.gang != ""){
+//        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_0(ReviewGame::heroDoPengGangAndAGang, this));
+//        penggang->setPosition(Point(-buttonCount * 140, 0));
+//        controllPad->addChild(penggang);
+//        buttonCount++;
+//    }
     controllPad->setPosition(Point(1100, 160));
     controllPad->setVisible(true);
     playerHero->setIsAllowTouch(false);
@@ -305,38 +305,38 @@ void ReviewGame::removeHeroPlayedIcon(){
 
 void ReviewGame::showHeroChiUi(){
     controllPad->setVisible(false);
-    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     //吃牌排序
-    if (cpg.chi.size() > 1){
-        for (int i = 0; i < cpg.chi.size(); i++){
-            std::vector<string> pai = StringUtil::split(cpg.chi.at(cpg.chi.size()-1-i), ",");
-            pai.push_back(cpg.poker);
-            sort(pai.begin(), pai.end());
-            auto choice = Menu::create();
-            choice->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-            for (int j = 0; j < pai.size(); j++){
-                Sprite* chibg = Sprite::create("jong/middle_2.png");
-                chibg->setPosition(1000 + j * 40 - i * 130, 150);
-                choiceMenu->setVisible(true);
-                choiceMenu->addChild(chibg);
-                std::string imageName = Jong::getContextImage(atoi(pai.at(j).c_str()));
-                MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(ReviewGame::heroDoChi, this));
-                imageItem->setTag(i);
-                imageItem->setPosition(1000 + j * 40 - i * 130, 160);
-                imageItem->setScale(0.5f);
-                choice->addChild(imageItem);
-            }
-            choice->setPosition(0, 0);
-            choiceMenu->addChild(choice);
-        }
-        
-    }
-    else{
-        //choiceMenu = NULL;
-        MenuItemImage* imageItem = MenuItemImage::create();
-        imageItem->setTag(0);
-        heroDoChi(imageItem);
-    }
+//    if (cpg.chi.size() > 1){
+//        for (int i = 0; i < cpg.chi.size(); i++){
+//            std::vector<string> pai = StringUtil::split(cpg.chi.at(cpg.chi.size()-1-i), ",");
+//            pai.push_back(cpg.poker);
+//            sort(pai.begin(), pai.end());
+//            auto choice = Menu::create();
+//            choice->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+//            for (int j = 0; j < pai.size(); j++){
+//                Sprite* chibg = Sprite::create("jong/middle_2.png");
+//                chibg->setPosition(1000 + j * 40 - i * 130, 150);
+//                choiceMenu->setVisible(true);
+//                choiceMenu->addChild(chibg);
+//                std::string imageName = Jong::getContextImage(atoi(pai.at(j).c_str()));
+//                MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(ReviewGame::heroDoChi, this));
+//                imageItem->setTag(i);
+//                imageItem->setPosition(1000 + j * 40 - i * 130, 160);
+//                imageItem->setScale(0.5f);
+//                choice->addChild(imageItem);
+//            }
+//            choice->setPosition(0, 0);
+//            choiceMenu->addChild(choice);
+//        }
+//        
+//    }
+//    else{
+//        //choiceMenu = NULL;
+//        MenuItemImage* imageItem = MenuItemImage::create();
+//        imageItem->setTag(0);
+//        heroDoChi(imageItem);
+//    }
 }
 
 void ReviewGame::heroDoChi(Ref* psend){
@@ -344,25 +344,25 @@ void ReviewGame::heroDoChi(Ref* psend){
         choiceMenu->setVisible(false);
         choiceMenu->removeAllChildren();
     }
-    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-    MenuItemImage* item = (MenuItemImage*)psend;
-    selectedChi = cpg.chi.at(cpg.chi.size()-1-item->getTag());
-    playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg.poker.c_str())));
+//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+//    MenuItemImage* item = (MenuItemImage*)psend;
+//    selectedChi = cpg.chi.at(cpg.chi.size()-1-item->getTag());
+//    playerHero->stopTimeClockAnim();
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg.poker.c_str())));
 }
 
 void ReviewGame::heroDoPeng(){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg.peng, atoi(cpg.poker.c_str())));
+//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg.peng, atoi(cpg.poker.c_str())));
 }
 
 void ReviewGame::heroDoGang(){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg.gang, atoi(cpg.poker.c_str()), cpg.flag));
+//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg.gang, atoi(cpg.poker.c_str()), cpg.flag));
 }
 
 void ReviewGame::heroDoCpgQi(){
@@ -386,9 +386,9 @@ void ReviewGame::heroDoTingQi(){
 void ReviewGame::heroDoPengGangAndAGang(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
-    PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
-    std::vector<string> gangpai = StringUtil::split(tingData.gang, ",");
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData.gang, atoi(gangpai.at(0).c_str()), tingData.flag));
+//    PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
+//    std::vector<string> gangpai = StringUtil::split(tingData.gang, ",");
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData.gang, atoi(gangpai.at(0).c_str()), tingData.flag));
 }
 
 void ReviewGame::setCurrentJongVisible(int seatId){
@@ -455,7 +455,7 @@ void ReviewGame::showOriention(){
 
 PlayerBase* ReviewGame::getPlayerBySeatId(int sid){
     int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), sid);
-    setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
+//    setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
     if (seatId == ClientSeatId::left){
         return playerLeft;
     }
@@ -836,91 +836,91 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
     
     othersChiListener = EventListenerCustom::create(MSG_OTHER_PLAYER_CHI, [=](EventCustom* event){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
-        setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
-        if (seatId == ClientSeatId::left){
-            playerLeft->drawPlayerMingpaiChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerLeft->playerCpgAnim(CpgType::chi, ClientSeatId::left);
-        }
-        else if (seatId == ClientSeatId::right){
-            playerRight->drawPlayerMingpaiChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerRight->playerCpgAnim(CpgType::chi, ClientSeatId::right);
-            
-        }
-        else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawPlayerMingpaiChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerOpposite->playerCpgAnim(CpgType::chi, ClientSeatId::opposite);
-            
-        }else if (seatId == ClientSeatId::hero){
-            hideTingGangControllPad();
-            HeroCpgRespData heroTingData;
-            heroTingData.result =1;
-            std::vector<string> chipai = StringUtil::split(GAMEDATA::getInstance()->getPlayerCpgt().chi.at(0), ",");
-            playerHero->drawHeroChiMingpai(heroTingData,chipai,getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerHero->playerCpgAnim(CpgType::chi, ClientSeatId::hero);
-            
-        }
+//        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
+//        setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
+//        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
+//        if (seatId == ClientSeatId::left){
+//            playerLeft->drawPlayerMingpaiChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerLeft->playerCpgAnim(CpgType::chi, ClientSeatId::left);
+//        }
+//        else if (seatId == ClientSeatId::right){
+//            playerRight->drawPlayerMingpaiChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerRight->playerCpgAnim(CpgType::chi, ClientSeatId::right);
+//            
+//        }
+//        else if (seatId == ClientSeatId::opposite){
+//            playerOpposite->drawPlayerMingpaiChi(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerOpposite->playerCpgAnim(CpgType::chi, ClientSeatId::opposite);
+//            
+//        }else if (seatId == ClientSeatId::hero){
+//            hideTingGangControllPad();
+//            HeroCpgRespData heroTingData;
+//            heroTingData.result =1;
+//            std::vector<string> chipai = StringUtil::split(GAMEDATA::getInstance()->getPlayerCpgt().chi.at(0), ",");
+//            playerHero->drawHeroChiMingpai(heroTingData,chipai,getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerHero->playerCpgAnim(CpgType::chi, ClientSeatId::hero);
+//            
+//        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersChiListener, 1);
     
     othersPengListener = EventListenerCustom::create(MSG_OTHER_PLAYER_PENG, [=](EventCustom* event){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
-        setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
-        if (seatId == ClientSeatId::left){
-            hideTingGangControllPad();
-            playerLeft->drawPlayerMingpaiPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
-            
-        }
-        else if (seatId == ClientSeatId::right){
-            hideTingGangControllPad();
-            playerRight->drawPlayerMingpaiPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
-            
-        }
-        else if (seatId == ClientSeatId::opposite){
-            hideTingGangControllPad();
-            playerOpposite->drawPlayerMingpaiPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
-            
-        } else if (seatId == ClientSeatId::hero){
-            hideTingGangControllPad();
-            HeroCpgRespData heroCpgData;
-            heroCpgData.result = 1;
-            playerHero->drawHeroPengMingpai(heroCpgData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
-            
-        }
+//        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
+//        setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
+//        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
+//        if (seatId == ClientSeatId::left){
+//            hideTingGangControllPad();
+//            playerLeft->drawPlayerMingpaiPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
+//            
+//        }
+//        else if (seatId == ClientSeatId::right){
+//            hideTingGangControllPad();
+//            playerRight->drawPlayerMingpaiPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
+//            
+//        }
+//        else if (seatId == ClientSeatId::opposite){
+//            hideTingGangControllPad();
+//            playerOpposite->drawPlayerMingpaiPeng(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
+//            
+//        } else if (seatId == ClientSeatId::hero){
+//            hideTingGangControllPad();
+//            HeroCpgRespData heroCpgData;
+//            heroCpgData.result = 1;
+//            playerHero->drawHeroPengMingpai(heroCpgData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
+//            
+//        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
     
     othersGangListener = EventListenerCustom::create(MSG_OTHER_PLAYER_GANG, [=](EventCustom* event){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
-        setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
-        if (seatId == ClientSeatId::left){
-            hideTingGangControllPad();
-            playerLeft->drawPlayerMingpaiGang(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
-        }
-        else if (seatId == ClientSeatId::right){
-            hideTingGangControllPad();
-            playerRight->drawPlayerMingpaiGang(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
-        }
-        else if (seatId == ClientSeatId::opposite){
-            hideTingGangControllPad();
-            playerOpposite->drawPlayerMingpaiGang(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
-        }else if (seatId == ClientSeatId::hero){
-            hideTingGangControllPad();
-            HeroCpgRespData heroTingData;
-            playerHero->drawHeroGangMingpai(heroTingData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
-            playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
-            
-        }
+//        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
+//        setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
+//        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerCpgt().seatId);
+//        if (seatId == ClientSeatId::left){
+//            hideTingGangControllPad();
+//            playerLeft->drawPlayerMingpaiGang(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
+//        }
+//        else if (seatId == ClientSeatId::right){
+//            hideTingGangControllPad();
+//            playerRight->drawPlayerMingpaiGang(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
+//        }
+//        else if (seatId == ClientSeatId::opposite){
+//            hideTingGangControllPad();
+//            playerOpposite->drawPlayerMingpaiGang(GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
+//        }else if (seatId == ClientSeatId::hero){
+//            hideTingGangControllPad();
+//            HeroCpgRespData heroTingData;
+//            playerHero->drawHeroGangMingpai(heroTingData,GAMEDATA::getInstance()->getPlayerCpgt(), getPlayerBySeatId(GAMEDATA::getInstance()->getPlayerCpgt().sId));
+//            playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
+//            
+//        }
         
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersGangListener, 1);
@@ -932,10 +932,10 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerTingNotifyListener, 1);
     
     tingNotifyListener = EventListenerCustom::create(MSG_HERO_TING_GANG, [=](EventCustom* event){
-        if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-            showTingGangControllPad();
-            
-        }
+//        if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+//            showTingGangControllPad();
+//            
+//        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingNotifyListener, 1);
     
@@ -955,44 +955,44 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroChiRespListener, 1);
     
     heroPengRespListener = EventListenerCustom::create(MSG_HERO_PENG_RESP, [=](EventCustom* event){
-        PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-        HeroCpgRespData resp = GAMEDATA::getInstance()->getHeroCpgResp();
-        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), cpg.sId);
-        playerHero->hideCurrentBigJong();
-        if(resp.result == 1||resp.result == 2){
-            if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroPeng(resp, cpg, playerRight);
-            }
-            else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroPeng(resp, cpg, playerOpposite);
-            }
-            else{
-                playerHero->drawHeroPeng(resp, cpg, playerLeft);
-            }
-        }
+//        PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+//        HeroCpgRespData resp = GAMEDATA::getInstance()->getHeroCpgResp();
+//        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), cpg.sId);
+//        playerHero->hideCurrentBigJong();
+//        if(resp.result == 1||resp.result == 2){
+//            if (clientSeatId == ClientSeatId::right){
+//                playerHero->drawHeroPeng(resp, cpg, playerRight);
+//            }
+//            else if (clientSeatId == ClientSeatId::opposite){
+//                playerHero->drawHeroPeng(resp, cpg, playerOpposite);
+//            }
+//            else{
+//                playerHero->drawHeroPeng(resp, cpg, playerLeft);
+//            }
+//        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
     
     heroGangRespListener = EventListenerCustom::create(MSG_HERO_GANG_RESP, [=](EventCustom* event){
-        PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-        HeroCpgRespData resp = GAMEDATA::getInstance()->getHeroCpgResp();
-        playerHero->hideCurrentBigJong();
-        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), cpg.sId);
-        if (resp.result == 0){
-            playerHero->stopTimeClockAnim();
-        }
-        else{
-            
-            if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroGang(resp, cpg, playerRight);
-            }
-            else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroGang(resp, cpg, playerOpposite);
-            }
-            else{
-                playerHero->drawHeroGang(resp, cpg, playerLeft);
-            }
-        }
+//        PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
+//        HeroCpgRespData resp = GAMEDATA::getInstance()->getHeroCpgResp();
+//        playerHero->hideCurrentBigJong();
+//        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), cpg.sId);
+//        if (resp.result == 0){
+//            playerHero->stopTimeClockAnim();
+//        }
+//        else{
+//            
+//            if (clientSeatId == ClientSeatId::right){
+//                playerHero->drawHeroGang(resp, cpg, playerRight);
+//            }
+//            else if (clientSeatId == ClientSeatId::opposite){
+//                playerHero->drawHeroGang(resp, cpg, playerOpposite);
+//            }
+//            else{
+//                playerHero->drawHeroGang(resp, cpg, playerLeft);
+//            }
+//        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     

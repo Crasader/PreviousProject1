@@ -306,7 +306,7 @@ void GuiLayer::testButtonClick(){
         cpg.seatId = 1;
         cpg.gang = "1,1,1";
         cpg.sId = 3;
-        GAMEDATA::getInstance()->setPlayerCpgt(cpg);
+//        GAMEDATA::getInstance()->setPlayerCpgt(cpg);
         EventCustom event(MSG_OTHER_PLAYER_PENG);
         _eventDispatcher->dispatchEvent(&event);
 //            EventCustom event2(MSG_OTHER_PLAYER_CHI);
