@@ -391,23 +391,19 @@ void SplashScene::onEnter(){
     loginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
+        removeLoading();
         if (result == LOGIN_SUCCESS){
-            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));//房间列表
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }
         else{
-            removeLoading();
+            
             HintDialog* hint = HintDialog::create("用户名或者密码错误",NULL);
             addChild(hint,6);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(loginRespListener, 1);
     
-    //获取房间列表
-    roomRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
-        removeLoading();
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomRespListener, 1);
     
     //断线续玩
     reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
@@ -483,9 +479,8 @@ void SplashScene::onEnter(){
 
 void SplashScene::onExit(){
     Layer::onExit();
-    _eventDispatcher->removeEventListener(loginRespListener);
-    _eventDispatcher->removeEventListener(roomRespListener);
-    _eventDispatcher->removeEventListener(reConnectAgain);
-    _eventDispatcher->removeEventListener(reEnterFriendRoomListener);
-    _eventDispatcher->removeEventListener(reOpenFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(reConnectAgain);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(reEnterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(reOpenFriendRoomListener);
 }

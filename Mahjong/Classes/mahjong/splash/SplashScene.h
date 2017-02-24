@@ -20,7 +20,6 @@ public:
 private:
     
 	EventListenerCustom* loginRespListener;
-	EventListenerCustom* roomRespListener;
 	EventListenerCustom* reConnectAgain;
     EventListenerCustom* reEnterFriendRoomListener;
     EventListenerCustom* reOpenFriendRoomListener;

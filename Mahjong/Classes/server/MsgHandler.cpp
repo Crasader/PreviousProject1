@@ -371,14 +371,37 @@ void MsgHandler::postNotifyMessage2(std::string event_name, void* msg){
 }
 
 
-
-void MsgHandler::roomListResp(std::string msg){
-    //{code:107, poxiaoId : poxiaoId, roomstyle : [{rsid:"1111", rsname : "≥ıº∂≥°"}, { rsid:"1112", rsname : "÷–º∂≥°" }]}
+ // 玩家群二维码版本号回复 {code:6,ver1:"1",desc1:"33",ver2:"2",desc2:"33"}
+void MsgHandler::handleWanJiaQunResp(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
+    if(_mDoc.HasMember("ver1")){
+        const rapidjson::Value &ver1 = _mDoc["ver1"];
+        GAMEDATA::getInstance()->setWanJiaQunVer(atoi(ver1.GetString()));
+    }
+    if(_mDoc.HasMember("ver2")){
+        const rapidjson::Value &ver2 = _mDoc["ver2"];
+        GAMEDATA::getInstance()->setDailiQunVer(atoi(ver2.GetString()));
+    }
+    if(_mDoc.HasMember("desc1")){
+        const rapidjson::Value &desc1 = _mDoc["desc1"];
+        GAMEDATA::getInstance()->setWanJiaQun(desc1.GetString());
+    }
+    if(_mDoc.HasMember("desc2")){
+        const rapidjson::Value &desc2 = _mDoc["desc2"];
+        GAMEDATA::getInstance()->setDaiLiQun(desc2.GetString());
+    }
+    postNotifyMessage(MSG_WAN_JIA_WEI_XIN_QUN, "");
+}
+
+//{code:107, poxiaoId : poxiaoId, roomstyle : [{rsid:"1111", rsname : "ddd"}, { rsid:"1112", rsname : "dddd" }]}
+void MsgHandler::roomListResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &roomstyle = _mDoc["roomstyle"];
     RoomListData* roomlist = new RoomListData();
     for (int i = 0; i < roomstyle.Capacity(); ++i){
@@ -391,7 +414,7 @@ void MsgHandler::roomListResp(std::string msg){
         data.hua = temp["hua"].GetInt();
         roomlist->rooms.push_back(data);
     }
-    postNotifyMessage2(MSG_ROOM_LIST_RESP, roomlist);
+    postNotifyMessage2(MSG_ROOM_LIST_RESP,roomlist);
     CC_SAFE_DELETE(roomlist);
 }
 
@@ -2240,30 +2263,7 @@ void MsgHandler::handleScrollTextResp(std::string msg){
     }
 }
 
-void MsgHandler::handleWanJiaQunResp(std::string msg){
-    // 玩家群二维码版本号回复 {code:6,ver1:"1",desc1:"33",ver2:"2",desc2:"33"}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("ver1")){
-        const rapidjson::Value &ver1 = _mDoc["ver1"];
-        GAMEDATA::getInstance()->setWanJiaQunVer(atoi(ver1.GetString()));
-    }
-    if(_mDoc.HasMember("ver2")){
-        const rapidjson::Value &ver2 = _mDoc["ver2"];
-        GAMEDATA::getInstance()->setDailiQunVer(atoi(ver2.GetString()));
-    }
-    if(_mDoc.HasMember("desc1")){
-        const rapidjson::Value &desc1 = _mDoc["desc1"];
-        GAMEDATA::getInstance()->setWanJiaQun(desc1.GetString());
-    }
-    if(_mDoc.HasMember("desc2")){
-        const rapidjson::Value &desc2 = _mDoc["desc2"];
-        GAMEDATA::getInstance()->setDaiLiQun(desc2.GetString());
-    }
-    postNotifyMessage(MSG_WAN_JIA_WEI_XIN_QUN, "");
-}
+
 
 void MsgHandler::handleNoticeResp(std::string msg){
     rapidjson::Document _mDoc;

@@ -284,9 +284,6 @@ void LobbyScene::drawSceneMid(){
     scroll->setPosition(600,600);
     addChild(scroll,2);
     
-    GoldRoomPlate* plate = GoldRoomPlate::create();
-    plate->setTag(1298);
-    addChild(plate,2);
 }
 
 void LobbyScene::drawSceneBot(){
@@ -526,10 +523,9 @@ void LobbyScene::onEnter(){
 }
 
 void LobbyScene::onEnterTransitionDidFinish(){
-    
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
@@ -559,6 +555,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(upateLequanShopLitener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(showLoobyLoadingLayer);
     Director::getInstance()->getEventDispatcher()->removeEventListener(gameFupanListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(roomListRespListener);
 }
 
 void LobbyScene::addEventListener(){
@@ -806,6 +803,19 @@ void LobbyScene::addEventListener(){
         }
         addChild(da,10);
     });
+    
+    
+    //获取房间列表
+    roomListRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
+        RoomListData* data = static_cast<RoomListData*>(event->getUserData());
+        if(data->rooms.size()>0 && getChildByTag(1298)==NULL){
+            GoldRoomPlate* plate = GoldRoomPlate::create(data);
+            plate->setTag(1298);
+            addChild(plate,2);
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomListRespListener, 1);
+
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

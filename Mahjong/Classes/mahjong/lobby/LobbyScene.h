@@ -50,6 +50,7 @@ private:
     EventListenerCustom* upateLequanShopLitener;
     EventListenerCustom* showLoobyLoadingLayer;
     EventListenerCustom* gameFupanListener;
+    EventListenerCustom* roomListRespListener;
     
 	void initView();
 	void drawSceneMid();
