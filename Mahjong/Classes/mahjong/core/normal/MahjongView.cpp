@@ -165,26 +165,26 @@ void MahjongView::startGameAgain(){
         getChildByTag(2000)->removeFromParent();
     }
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-    for (int i = 0; i < players.size(); i++){
-        for(auto var:GAMEDATA::getInstance()->getEnterRoomResp().playerReadys){
-            if(var.poxiaoId == players.at(i)->getPoxiaoId()){
-                players.at(i)->setIsReady(var.ifready ==1?true:false);
-            }
-        }
-        if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
-            players.at(i)->setIsReady(true);
-        }
-    }
-    if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
-        GAMEDATA::getInstance()->setKaibao("1");
-    }else{
-        GAMEDATA::getInstance()->setKaibao("0");
-    }
-    if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
-        GAMEDATA::getInstance()->setHuangfan("1");
-    }else{
-        GAMEDATA::getInstance()->setHuangfan("0");
-    }
+//    for (int i = 0; i < players.size(); i++){
+//        for(auto var:GAMEDATA::getInstance()->getEnterRoomResp().playerReadys){
+//            if(var.poxiaoId == players.at(i)->getPoxiaoId()){
+//                players.at(i)->setIsReady(var.ifready ==1?true:false);
+//            }
+//        }
+//        if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
+//            players.at(i)->setIsReady(true);
+//        }
+//    }
+//    if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
+//        GAMEDATA::getInstance()->setKaibao("1");
+//    }else{
+//        GAMEDATA::getInstance()->setKaibao("0");
+//    }
+//    if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
+//        GAMEDATA::getInstance()->setHuangfan("1");
+//    }else{
+//        GAMEDATA::getInstance()->setHuangfan("0");
+//    }
     guiLayer->updateData();
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
     ((Orientation*)getChildByTag(123))->resetBank();

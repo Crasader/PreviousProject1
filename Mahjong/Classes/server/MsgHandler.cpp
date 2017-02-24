@@ -426,32 +426,31 @@ void MsgHandler::enterRoomResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
-    EnterRoomResp resp;
+    GAMEDATA::getInstance()->clearPlayersInfo();//清除全部的玩家数据
+    EnterRoomResp* resp = new EnterRoomResp();
     const rapidjson::Value &result = _mDoc["result"];
-    resp.result = StringUtil::itos(result.GetInt());
+    resp->result = StringUtil::itos(result.GetInt());
     if(_mDoc.HasMember("rsid")){
         const rapidjson::Value &rsid = _mDoc["rsid"];
-        resp.rsid = rsid.GetString();
+        resp->rsid = rsid.GetString();
     }
     if(_mDoc.HasMember("money")){
         const rapidjson::Value &money = _mDoc["money"];
-        resp.money = money.GetString();
+        resp->money = money.GetString();
     }
     if(_mDoc.HasMember("gold")){
         const rapidjson::Value &gold = _mDoc["gold"];
-        resp.gold = gold.GetString();
+        resp->gold = gold.GetString();
     }
     if(_mDoc.HasMember("id")){
         const rapidjson::Value &payid = _mDoc["id"];
-        resp.payid = payid.GetString();
+        resp->payid = payid.GetString();
     }
     if(_mDoc.HasMember("min")){
         const rapidjson::Value &min = _mDoc["min"];
-        resp.min = min.GetString();
+        resp->min = min.GetString();
     }
-    GAMEDATA::getInstance()->setEnterRoomResp(resp);
-    GAMEDATA::getInstance()->clearPlayersInfo();
+    //进入房间成功才会有其他玩家的数据
     if (result.GetInt() == 1){
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
@@ -493,6 +492,7 @@ void MsgHandler::enterRoomResp(std::string msg){
             }
         }
     }
+    //构造自己的数据添加到玩家列表中
     Player* info = new Player();
     info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
     info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
@@ -507,7 +507,9 @@ void MsgHandler::enterRoomResp(std::string msg){
     info->setUmark(UserData::getInstance()->getMarkId());
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
-    postNotifyMessage(MSG_ENTER_ROOM_RESP, "");
+    
+    postNotifyMessage2(MSG_ENTER_ROOM_RESP, resp);
+    CC_SAFE_DELETE(resp);
 }
 
 void MsgHandler::loginResp(std::string msg){
@@ -2158,7 +2160,7 @@ void MsgHandler::gameContinueResp(std::string msg){
             resp.playerReadys.push_back(ready);
         }
     }
-    GAMEDATA::getInstance()->setEnterRoomResp(resp);
+//    GAMEDATA::getInstance()->setEnterRoomResp(resp);
     GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
     postNotifyMessage(MSG_HERO_CONTINUE_RESP, "");
 }
