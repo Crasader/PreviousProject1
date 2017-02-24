@@ -699,8 +699,7 @@ PlayerBase* MahjongView::getPlayerBySeatId(int sid){
     }
 }
 
-void MahjongView::firstReplaceFlower() {
-    ReplaceJongVec vec = GAMEDATA::getInstance()->getReplaceJongVec();
+void MahjongView::firstReplaceFlower(ReplaceJongVec vec) {
     showPaiduiNum(atoi(vec.rest.c_str()));
     for (int i = 0; i < vec.times.size(); i++){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
@@ -751,7 +750,7 @@ void MahjongView::showPaiduiNum(int num){
     }
 }
 
-void MahjongView::dealJongFinish(){
+void MahjongView::dealJongFinish(ReplaceJongVec vec){
     if(NULL != playerHero)
         playerHero->drawPlayerHero();
     if(NULL != playerRight)
@@ -761,7 +760,7 @@ void MahjongView::dealJongFinish(){
     if(NULL != playerLeft)
         playerLeft->drawHandJong();
     if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
-        firstReplaceFlower();
+        firstReplaceFlower(vec);
 }
 
 
@@ -1432,7 +1431,7 @@ void MahjongView::addCoustomListener(){
         vector<string> dice2 =StringUtil::split(msgData->dice, ",") ;
         DealJongAnim* anim = DealJongAnim::create();
         anim->setTag(1000);
-        anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()));
+        anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),msgData->mjReplaceVec);
         addChild(anim);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);

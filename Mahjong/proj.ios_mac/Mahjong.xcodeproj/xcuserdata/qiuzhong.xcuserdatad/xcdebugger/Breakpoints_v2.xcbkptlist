@@ -5046,11 +5046,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509623293.262046"
+            timestampString = "509626229.269419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1404"
-            endingLineNumber = "1404"
+            startingLineNumber = "1403"
+            endingLineNumber = "1403"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5062,27 +5062,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509623293.262046"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1402"
-            endingLineNumber = "1402"
-            landmarkName = "MahjongView::addCoustomListener()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509623293.262046"
+            timestampString = "509626229.269419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1401"
             endingLineNumber = "1401"
+            landmarkName = "MahjongView::addCoustomListener()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
+            timestampString = "509626229.269419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1400"
+            endingLineNumber = "1400"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5158,11 +5158,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509623293.262046"
+            timestampString = "509626229.269419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1382"
-            endingLineNumber = "1382"
+            startingLineNumber = "1381"
+            endingLineNumber = "1381"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
             <Locations>
@@ -5206,11 +5206,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509623293.262046"
+            timestampString = "509626229.269419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1381"
-            endingLineNumber = "1381"
+            startingLineNumber = "1380"
+            endingLineNumber = "1380"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
          </BreakpointContent>

@@ -2,13 +2,15 @@
 #define __DEAL_JONG_ANIM__
 #include "cocos2d.h"
 #include "mahjong/utils/SeatIdUtil.h"
+#include "mahjong/state/DataStruct.h"
+
 USING_NS_CC;
 
 class DealJongAnim :public Layer{
 public:
 	virtual bool init();
 	CREATE_FUNC(DealJongAnim);
-	void showDealJong(int seatId, int dian1, int dian2);
+	void showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec vec);
 private:
     Layer* paishuLayer;//剩余牌堆图层
 	int rounds; 

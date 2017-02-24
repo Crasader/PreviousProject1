@@ -14,7 +14,7 @@ bool DealJongAnim::init(){
     return true;
 }
 
-void DealJongAnim::showDealJong(int seatId, int dian1, int dian2){
+void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec vec){
     //step 1 播放发牌动画
     Sprite* fapa = Sprite::create();
     fapa->setPosition(640,360);
@@ -95,7 +95,7 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2){
     }), DelayTime::create(6.0f/24), CallFunc::create([=](){
         paishuLayer->removeFromParent();
         if(NULL != ((MahjongView*)getParent()))
-            ((MahjongView*)getParent())->dealJongFinish();
+            ((MahjongView*)getParent())->dealJongFinish(vec);
     }), NULL));
 }
 

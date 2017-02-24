@@ -679,7 +679,7 @@ void MsgHandler::getHeroJongs(std::string msg){
         }
         replaceVec.times.push_back(replacePoker);
     }
-    faPaiData->mjReplaceVec =replaceVec;
+    faPaiData->mjReplaceVec = replaceVec;
     PlayerCpgtData tingData;
     if(_mDoc.HasMember("angang")){
         const rapidjson::Value &angang = _mDoc["angang"];
