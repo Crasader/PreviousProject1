@@ -178,7 +178,7 @@ void GuiLayer::updateData(){
     kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
     haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
     if(NULL != getChildByTag(1088)){
-        ((Label*)getChildByTag(1088))->setString(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
+        ((Label*)getChildByTag(1088))->setString("sss");
     }
 }
 

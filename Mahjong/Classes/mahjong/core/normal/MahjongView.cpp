@@ -60,7 +60,6 @@ void MahjongView::initData(){
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setIsLiuJu(false);
     GAMEDATA::getInstance()->setIsGotoLobby(false);
-    GAMEDATA::getInstance()->setStartPaiAngang(false);
     Audio::getInstance()->setHasTingPlayer(false);
 }
 
@@ -143,7 +142,7 @@ void MahjongView::startGameFirst(){
     }else{
         GAMEDATA::getInstance()->setHuangfan("0");
     }
-    guiLayer->updateData();
+//    guiLayer->updateData();
 //    Player* info = new Player();
 //    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
 //    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
@@ -185,7 +184,7 @@ void MahjongView::startGameAgain(){
 //    }else{
 //        GAMEDATA::getInstance()->setHuangfan("0");
 //    }
-    guiLayer->updateData();
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
@@ -239,11 +238,6 @@ void MahjongView::update(float dt){
         GAMEDATA::getInstance()->setShowDissolveDialog(true);
     }
     
-    if(GAMEDATA::getInstance()->getStartFaPai()){
-        playerHero->hideInviteButton();
-        dealJongStart();
-        GAMEDATA::getInstance()->setStartFaPai(false);
-    }
     
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
@@ -570,7 +564,7 @@ void MahjongView::recoverGame(){
         GAMEDATA::getInstance()->setCurrentBank(data.loard);
         GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
         GAMEDATA::getInstance()->setKaibao(StringUtil::itos(data.kb));
-        guiLayer->updateData();
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
         for (int i = 0; i < data.players.size(); i++)
         {
             PlayerGameData player = data.players.at(i);
@@ -737,14 +731,14 @@ void MahjongView::firstReplaceFlower() {
             }else if(clientId == ClientSeatId::right){
                 playerRight->startTimeClockAnim();
             }else if(clientId == ClientSeatId::hero){
-                if(GAMEDATA::getInstance()->getStartPaiAngang()){
-//                    if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-//                        showTingGangControllPad();
-//                        playerHero->startTimeClockAnim(9, 2);
-//                    }
-                }else{
-                    playerHero->startTimeClockAnim();
-                }
+//                if(GAMEDATA::getInstance()->getStartPaiAngang()){
+////                    if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+////                        showTingGangControllPad();
+////                        playerHero->startTimeClockAnim(9, 2);
+////                    }
+//                }else{
+//                    playerHero->startTimeClockAnim();
+//                }
             }
         }
     }
@@ -770,26 +764,6 @@ void MahjongView::dealJongFinish(){
         firstReplaceFlower();
 }
 
-
-
-void MahjongView::dealJongStart(){
-    GAMEDATA::getInstance()->setIsPlaying(true);
-    playerHero->setIsReady(false);
-    if(NULL != playerRight)
-        playerRight->setIsReady(false);
-    if(NULL != playerOpposite)
-        playerOpposite->setIsReady(false);
-    if(NULL != playerLeft)
-        playerLeft->setIsReady(false);
-    ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-    guiLayer->hideDissovleBtn();
-    vector<string> dd =StringUtil::split(GAMEDATA::getInstance()->getDice(), ",") ;
-    DealJongAnim* anim = DealJongAnim::create();
-    anim->setTag(1000);
-    anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dd.at(0).c_str()),atoi(dd.at(1).c_str()));
-    addChild(anim);
-    
-}
 
 void MahjongView::heroPlayPokerAuto(int poker){
     
@@ -1284,6 +1258,7 @@ void MahjongView::onEnterTransitionDidFinish(){
 void MahjongView::onExit()
 {
     Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
@@ -1434,7 +1409,33 @@ void MahjongView::addCoustomListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
-    
+    gameFaPaiListener = EventListenerCustom::create(MSG_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
+        MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
+        playerHero->hideInviteButton();//隐藏玩家的邀请按钮
+        guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
+        GAMEDATA::getInstance()->setIsPlaying(true);//游戏状态改为游戏中
+        if(NULL != playerHero){
+            playerHero->setIsReady(false);//关闭准备的显示
+            std::vector<std::string> strvce = StringUtil::split(msgData->heroPokers, ",");
+            GAMEDATA::getInstance()->setHeroJongs(strvce);
+        }
+        if(NULL != playerRight)
+            playerRight->setIsReady(false);
+        if(NULL != playerOpposite)
+            playerOpposite->setIsReady(false);
+        if(NULL != playerLeft)
+            playerLeft->setIsReady(false);
+        GAMEDATA::getInstance()->setKaibao(msgData->kaibao);
+        GAMEDATA::getInstance()->setHuangfan(msgData->huangfan);
+        GAMEDATA::getInstance()->setCurrentBank(msgData->start);
+        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+        vector<string> dice2 =StringUtil::split(msgData->dice, ",") ;
+        DealJongAnim* anim = DealJongAnim::create();
+        anim->setTag(1000);
+        anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()));
+        addChild(anim);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
     
 }
 

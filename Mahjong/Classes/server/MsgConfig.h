@@ -161,7 +161,6 @@
 #define MSGCODE_FUPAN_PLAYER_NOTIFY  10000//复盘玩家数据
 
 #define LOGIN_SUCCESS "login_success"
-#define LOGIN_FAIL "login_fail"
 #define MSG_VISITOR_LOGIN_RESP  "msg_visitor_login_resp"
 #define MSG_LOGIN_RESP  "msg_login_resp"
 #define MSG_ROOM_LIST_RESP "msg_room_list_resp"
@@ -170,6 +169,7 @@
 #define MSG_READY_RESP "msg_ready_resp"
 #define MSG_READY_NOTIFY "msg_ready_notify"
 #define MSG_OTHER_PALYER_JONG "msg_other_palyer_jong"
+#define MSG_GAME_START_FAPAI_NOTIFY "MSG_GAME_START_FAPAI_NOTIFY"
 #define MSG_PLAYER_TURN_WHO "msg_player_turn_who"
 #define MSG_PLAYER_CPG "msg_player_cpg"
 #define MSG_OTHER_PLAYER_CHI "msg_other_player_chi"

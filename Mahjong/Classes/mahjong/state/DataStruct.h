@@ -592,4 +592,17 @@ struct TuiGuangRecord{
     int gold;
     int fangka;
 };
+
+struct MahjongFaPaiData{
+    int start;
+    int prjucount;
+    std::string heroPokers;
+    std::string kaibao;
+    std::string huangfan;
+    std::string dice;
+    std::string ting;
+    std::string gang;
+    ReplaceJongVec  mjReplaceVec;
+    PlayerCpgtData mjTingData;
+};
 #endif

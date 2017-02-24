@@ -106,15 +106,15 @@ public:
     CC_SYNTHESIZE(bool, waitNetwork, WaitNetwork);//网络状态
     CC_SYNTHESIZE(bool, haveShowNotice, HaveShowNotice);//是否展示过推广
     CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间
-    CC_SYNTHESIZE(bool, startPaiAngang, StartPaiAngang);
-    CC_SYNTHESIZE(bool, startFaPai, StartFaPai);//是否开始发牌
+//    CC_SYNTHESIZE(bool, startPaiAngang, StartPaiAngang);
+//    CC_SYNTHESIZE(bool, startFaPai, StartFaPai);//是否开始发牌
     CC_SYNTHESIZE(bool, isFuPan, IsFuPan);//是否开始发牌
     CC_SYNTHESIZE(bool, showDissolveDialog, ShowDissolveDialog);
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, wanJiaQun, WanJiaQun);//私人房间游戏局数
     CC_SYNTHESIZE(string, daiLiQun, DaiLiQun);//私人房间游戏局数
     CC_SYNTHESIZE(string, ip, IP);//玩家IP
-    CC_SYNTHESIZE(string, dice, Dice);
+//    CC_SYNTHESIZE(string, dice, Dice);
     CC_SYNTHESIZE(string, kaibao, Kaibao);
     CC_SYNTHESIZE(string, huangfan, Huangfan);
     CC_SYNTHESIZE(string, diaopao, Diaopao);

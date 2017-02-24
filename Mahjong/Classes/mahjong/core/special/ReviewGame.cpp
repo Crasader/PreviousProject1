@@ -52,7 +52,7 @@ void ReviewGame::initData(){
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setIsLiuJu(false);
     GAMEDATA::getInstance()->setIsGotoLobby(false);
-    GAMEDATA::getInstance()->setStartPaiAngang(false);
+//    GAMEDATA::getInstance()->setStartPaiAngang(false);
     Audio::getInstance()->setHasTingPlayer(false);
     GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
     
@@ -669,7 +669,7 @@ void ReviewGame::addCoustomListener(){
         }
         
         showPaiduiNum(91);
-        guiLayer->updateData();
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
         auto controlbg = Sprite::create("fupan/bg.png");
         controlbg->setPosition(640,220);
         addChild(controlbg,100);

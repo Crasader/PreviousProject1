@@ -8,7 +8,6 @@ public:
 	virtual bool init() override;
     void onEnter() override;
     void onExit() override;
-	void updateData();
 	void hideInvitePlayer(int clientId);
     void showInvitePlayer(int clientId);
     void hideDissovleBtn();
@@ -31,7 +30,7 @@ private:
 	void invitePlayer(Ref* ref);
     void dissovleRoom();
     void update(float dt) override;
-    
+    void updateData();
     void drawTestButton();
     void testButtonClick();
     

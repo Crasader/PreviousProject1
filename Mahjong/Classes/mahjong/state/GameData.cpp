@@ -24,8 +24,6 @@ void GAMEDATA::init(){
     setHaveShowNotice(false);
     setNeedShowLastResult(false);
     setShowFangZhuDismiss(false);
-    setStartPaiAngang(false);
-    setStartFaPai(false);
     setIsFuPan(false);
     setIsSelected(true);
     setShowDissolveDialog(false);

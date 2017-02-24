@@ -72,10 +72,10 @@ private:
     void showOriention();
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower();//首次杠花
-    void dealJongStart();
 	PlayerBase* getPlayerBySeatId(int sid);
 
 
+    EventListenerCustom* gameFaPaiListener;
 	EventListenerCustom* addOtherReadyListener;
 	EventListenerCustom* loginRespListener;
 	EventListenerCustom* addPlayersListener;
