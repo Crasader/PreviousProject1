@@ -362,14 +362,13 @@ void MsgHandler::distribute(int code, std::string msg){
 }
 
 void MsgHandler::postNotifyMessage(std::string event_name, std::string msg){
-    //char* buf = new char[msg.size()];
-    //strcpy(buf, msg.c_str());
     char* buf = const_cast<char*>(msg.c_str());
-    //EventCustom event(event_name);
-    //event.setUserData(buf);
     _eventDispatcher->dispatchCustomEvent(event_name, buf);
 }
 
+void MsgHandler::postNotifyMessage2(std::string event_name, void* msg){
+    _eventDispatcher->dispatchCustomEvent(event_name, msg);
+}
 
 
 
@@ -712,10 +711,6 @@ void MsgHandler::showOtherPlayedJong(std::string msg){
     //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
-    //    OtherPlayedJong otherPlayedJong;
-    //    otherPlayedJong.seatId = seatId.GetInt();
-    //    otherPlayedJong.poker = atoi(poker.GetString());
-    //    GAMEDATA::getInstance()->setOtherPlayJong(otherPlayedJong);
     std::string resultMsg = StringUtils::format("%d,%s",seatId.GetInt(),poker.GetString());
     postNotifyMessage(MSG_OTHER_PALYER_JONG, resultMsg);
 }
@@ -772,13 +767,15 @@ void MsgHandler::showOtherChiNotify(std::string msg){
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &chi = _mDoc["chi"];
     const rapidjson::Value &sId = _mDoc["sId"];
-    PlayerCpgtData cpg;
-    cpg.poker = poker.GetString();
-    cpg.seatId = seatId.GetInt();
-    cpg.chi.push_back(chi.GetString());
-    cpg.sId = sId.GetInt();
-    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
-    postNotifyMessage(MSG_OTHER_PLAYER_CHI, "");
+//    GameCpgData* data = new GameCpgData();
+    PlayerCpgtData* cpg = new PlayerCpgtData();
+    cpg->poker = poker.GetString();
+    cpg->seatId = seatId.GetInt();
+    cpg->chi.push_back(chi.GetString());
+    cpg->sId = sId.GetInt();
+//    data->data = cpg;
+    postNotifyMessage2(MSG_OTHER_PLAYER_CHI, cpg);
+    CC_SAFE_DELETE(cpg);
 }
 
 void MsgHandler::showOtherPengNotify(std::string msg){
@@ -791,13 +788,14 @@ void MsgHandler::showOtherPengNotify(std::string msg){
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &pengPoker = _mDoc["peng"];
     const rapidjson::Value &sId = _mDoc["sId"];
+    GameCpgData* data = new GameCpgData();
     PlayerCpgtData cpg;
     cpg.poker = poker.GetString();
     cpg.seatId = seatId.GetInt();
     cpg.peng = pengPoker.GetString();
     cpg.sId = sId.GetInt();
-    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
-    postNotifyMessage(MSG_OTHER_PLAYER_PENG, "");
+    postNotifyMessage2(MSG_OTHER_PLAYER_PENG, data);
+    CC_SAFE_DELETE(data);
 }
 
 void MsgHandler::showOtherGangNotify(std::string msg){

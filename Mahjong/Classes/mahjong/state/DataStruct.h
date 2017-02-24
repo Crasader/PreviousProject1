@@ -184,9 +184,9 @@ struct PlayerGameData{
     int tru;
     int isOnline;
     int ifready;
-    vector<PlayerChiData> chiData;
-    vector<PlayerPengData> pengData;
-    vector<PlayerGangData> gangData;
+    std::vector<PlayerChiData> chiData;
+    std::vector<PlayerPengData> pengData;
+    std::vector<PlayerGangData> gangData;
     std::string angang;
     std::string outhand;
     std::string nickname;
@@ -344,33 +344,33 @@ struct WelfareData{
 
 
 struct WelfareBZ{
-    string result;
-    string bangzuan;
+    std::string result;
+    std::string bangzuan;
 };
 
 struct WelfareGold{
-    string result;
-    string gold;
+    std::string result;
+    std::string gold;
 };
 
 
 struct DailyPrideData{
-    string needGold;
-    string result;
-    string count;
-    string max;
-    vector<PrideData> prides;
+    std::string needGold;
+    std::string result;
+    std::string count;
+    std::string max;
+    std::vector<PrideData> prides;
 };
 
 struct TodayPrideData{
-    string result;
+    std::string result;
     PrideData pride;
     int rest;
 };
 
 struct BoundPhoneData{
     int result;
-    string phoneNum;
+    std::string phoneNum;
 };
 
 
@@ -389,7 +389,7 @@ struct GoldChange{
 
 struct GoldChangeList{
     bool needInit;
-    vector<GoldChange> list;
+    std::vector<GoldChange> list;
 };
 
 struct FangkaCharge{
@@ -400,7 +400,7 @@ struct FangkaCharge{
 
 struct FangkaChargeList{
     bool needInit;
-    vector<FangkaCharge> list;
+    std::vector<FangkaCharge> list;
 };
 
 struct LequanChange{
@@ -413,7 +413,7 @@ struct LequanChange{
 
 struct LequanChangeList{
     bool needInit;
-    vector<LequanChange> list;
+    std::vector<LequanChange> list;
 };
 
 struct LequanChangeResult{
@@ -437,7 +437,7 @@ struct RedWalletRespData{
     std::string lequan2;
     std::string gold2;
     std::string diamond2;
-    vector<RedShareFriend> friends;
+    std::vector<RedShareFriend> friends;
 };
 
 struct ReciveRedWallet{
@@ -472,9 +472,9 @@ struct PlayerResumeData{
     std::string outhand;
     std::string hand;
     std::string lastpoker;
-    vector<PlayerChiData> chiData;
-    vector<PlayerPengData> pengData;
-    vector<PlayerGangData> gangData;
+    std::vector<PlayerChiData> chiData;
+    std::vector<PlayerPengData> pengData;
+    std::vector<PlayerGangData> gangData;
 };
 
 struct GameResumeData
@@ -556,7 +556,7 @@ struct PlayerCpgRecShow{
 struct PlayBackInfo{
     int result;
     std::string heroid;
-    std::vector<string> playBackInfo;
+    std::vector<std::string> playBackInfo;
 };
 
 struct FupanGameData
@@ -574,7 +574,7 @@ struct PlayerMingpai{
 };
 
 struct PlayMingpaiRecord{
-    vector<PlayerMingpai> record;//4个玩家的牌
+    std::vector<PlayerMingpai> record;//4个玩家的牌
     int step;
 };
 

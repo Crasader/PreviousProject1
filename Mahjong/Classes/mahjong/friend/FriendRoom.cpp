@@ -162,7 +162,7 @@ void FriendRoom::onExit(){
 }
 
 void FriendRoom::openRoom(){
-    std::string ftype = "1";//1表示8局，2表示4局
+    std::string ftype = "1";//1表示8局，2表示4局，3表示16局
     std::string iflezi = "0";//0表示没有，1表示有
     std::string ifkb = "1";//0表示没有，1表示有
     std::string ifemsc = "0";//0表示没有，1表示有

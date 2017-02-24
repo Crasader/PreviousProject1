@@ -875,8 +875,8 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         
         playerBase->removeLastJong();
         for (int k = 0; k < chiVector.size(); k++){
-            MoveTo* mv = MoveTo::create(0.2f, Point(580 + (k==0?0:3+38 * k), 195));
-            ScaleTo* scale = ScaleTo::create(0.2f, 0.6f);
+            MoveTo* mv = MoveTo::create(0.15f, Point(580 + (k==0?0:3+38 * k), 195));
+            ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
             Spawn* sp = Spawn::create(mv, scale, NULL);
             chiVector.at(k)->setLocalZOrder(5);
             chiVector.at(k)->runAction(sp);
@@ -885,7 +885,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
             this->setHandPosX(this->getHandPosX() + JONG_WIDTH * 3);
             this->sortHandJongs(this->getHandPosX(), true);
         });
-        DelayTime* delay = DelayTime::create(0.5f);
+        DelayTime* delay = DelayTime::create(0.25f);
         PlayerCpgRecord record;
         record.type = CpgType::chi;
         record.pokersRecord = chiVector;
@@ -893,8 +893,8 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         CallFunc* callFuc1 = CallFunc::create([=](){
             for (int k = 0; k < chiVector.size(); k++){
                 chiVector.at(k)->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-                MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX() + (k==0? 0:(5+48 * k)), k==0?35:45));
-                ScaleTo* scale = ScaleTo::create(0.2f, 0.75f);
+                MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + (k==0? 0:(5+48 * k)), k==0?35:45));
+                ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
                 Spawn* sp = Spawn::create(mv, scale, NULL);
                 chiVector.at(k)->runAction(sp);
             }
@@ -965,32 +965,32 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         for (int m = 0; m < pengVector.size(); m++){
             MoveTo* mv;
             if(playerBase->getClientSeat()==ClientSeatId::left){
-                mv= MoveTo::create(0.2f, Point(580 + (m==0?0:3+38 * m), 195));
+                mv= MoveTo::create(0.15f, Point(580 + (m==0?0:3+38 * m), 195));
                 
             }else if(playerBase->getClientSeat()==ClientSeatId::opposite){
-                mv= MoveTo::create(0.2f, Point(580 + (m==0?20:3+38 * (m-1)), 195+(m==0?40:0)));
+                mv= MoveTo::create(0.15f, Point(580 + (m==0?20:3+38 * (m-1)), 195+(m==0?40:0)));
             }else{
-                mv= MoveTo::create(0.2f, Point(580 + (m==0?80:3+38 * (m-1)), 195));
+                mv= MoveTo::create(0.15f, Point(580 + (m==0?80:3+38 * (m-1)), 195));
             }
-            ScaleTo* scale = ScaleTo::create(0.2f, 0.6f);
+            ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
             Spawn* sp = Spawn::create(mv, scale, NULL);
             pengVector.at(m)->runAction(sp);
         }
         setHandPosX(getHandPosX() + JONG_WIDTH * 3);
         sortHandJongs(getHandPosX(), true);
     });
-    DelayTime* delay = DelayTime::create(0.4f);
+    DelayTime* delay = DelayTime::create(0.25f);
     CallFunc* action2 = CallFunc::create([=](){
         for (int k = 0; k < pengVector.size(); k++){
             MoveTo* mv;
             if(playerBase->getClientSeat()==ClientSeatId::left){
-                mv = MoveTo::create(0.2f, Point(getCpgPostionX() + (k==0? 0:(5+48 * k)), k==0?35:45));
+                mv = MoveTo::create(0.15f, Point(getCpgPostionX() + (k==0? 0:(5+48 * k)), k==0?35:45));
             }else if(playerBase->getClientSeat()==ClientSeatId::opposite){
-                mv = MoveTo::create(0.2f, Point(getCpgPostionX() + (k==0? 32:(-48+48 * k)), k==0?90:45));
+                mv = MoveTo::create(0.15f, Point(getCpgPostionX() + (k==0? 32:(-48+48 * k)), k==0?90:45));
             }else{
-                mv = MoveTo::create(0.2f, Point(getCpgPostionX()+ (k==0? 105:(5+48 * (k-1))), k==0?35:45));
+                mv = MoveTo::create(0.15f, Point(getCpgPostionX()+ (k==0? 105:(5+48 * (k-1))), k==0?35:45));
             }
-            ScaleTo* scale = ScaleTo::create(0.2f, 0.75f);
+            ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
             Spawn* sp = Spawn::create(mv, scale, NULL);
             pengVector.at(k)->runAction(sp);
         }
@@ -1042,26 +1042,26 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         CallFunc* action1 = CallFunc::create([=](){
             playerBase->removeLastJong();
             for (int m = 0; m < gangVector.size(); m++){
-                MoveTo* mv = MoveTo::create(0.2f, Point(400 + 28 * m, 150));
-                ScaleTo* scale = ScaleTo::create(0.2f, 0.6f);
+                MoveTo* mv = MoveTo::create(0.15f, Point(400 + 28 * m, 150));
+                ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
                 Spawn* sp = Spawn::create(mv, scale, NULL);
                 gangVector.at(m)->runAction(sp);
             }
             setHandPosX(getHandPosX() + JONG_WIDTH * 3);
             sortHandJongs(getHandPosX(), true);
         });
-        DelayTime* delay = DelayTime::create(0.4f);
+        DelayTime* delay = DelayTime::create(0.25f);
         CallFunc* action2 = CallFunc::create([=](){
             for (int k = 0; k < gangVector.size(); k++){
                 if (k != 3){
-                    MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX() + 47 * k, 45));
-                    ScaleTo* scale = ScaleTo::create(0.2f, 0.75f);
+                    MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47 * k, 45));
+                    ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
                     Spawn* sp = Spawn::create(mv, scale, NULL);
                     gangVector.at(k)->runAction(sp);
                 }
                 else{
-                    MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX() + 47, 55));
-                    ScaleTo* scale = ScaleTo::create(0.2f, 0.75f);
+                    MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47, 55));
+                    ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
                     Spawn* sp = Spawn::create(mv, scale, NULL);
                     gangVector.at(k)->setLocalZOrder(4);
                     gangVector.at(k)->runAction(sp);
@@ -1103,8 +1103,8 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
                         }else{
                             pos = playerCpgRecords.at(i).pokersRecord.at(2)->getPosition();
                         }
-                        MoveTo* mv = MoveTo::create(0.3f, Point(pos.x, pos.y + 10));
-                        ScaleTo* sc = ScaleTo::create(0.3f, 0.75f);
+                        MoveTo* mv = MoveTo::create(0.2f, Point(pos.x, pos.y + 10));
+                        ScaleTo* sc = ScaleTo::create(0.2f, 0.75f);
                         Spawn* spawn = Spawn::create(mv, sc, NULL);
                         gangVector.at(0)->setLocalZOrder(4);
                         gangVector.at(0)->runAction(Sequence::create(spawn, CallFunc::create([=](){
@@ -1130,26 +1130,26 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             CallFunc* action1 = CallFunc::create([=](){
                 for (int m = 0; m < gangVector.size(); m++){
                     gangVector.at(m)->showJong(herocpgportrait, gangVector.at(m)->getJongType());
-                    MoveTo* mv = MoveTo::create(0.2f, Point(400 + 28 * m, 150));
-                    ScaleTo* scale = ScaleTo::create(0.2f, 0.6f);
+                    MoveTo* mv = MoveTo::create(0.15f, Point(400 + 28 * m, 150));
+                    ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
                     Spawn* sp = Spawn::create(mv, scale, NULL);
                     gangVector.at(m)->runAction(sp);
                 }
                 this->setHandPosX(this->getHandPosX() + JONG_WIDTH * 3);
                 this->sortHandJongs(this->getHandPosX(), true);
             });
-            DelayTime* delay = DelayTime::create(0.3f);
+            DelayTime* delay = DelayTime::create(0.25f);
             CallFunc* action2 = CallFunc::create([=](){
                 for (int k = 0; k < gangVector.size(); k++){
                     if (k != 3){
-                        MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX()+ 47 * k, 45));
-                        ScaleTo* scale = ScaleTo::create(0.2f, 0.75f);
+                        MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX()+ 47 * k, 45));
+                        ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
                         Spawn* sp = Spawn::create(mv, scale, NULL);
                         gangVector.at(k)->runAction(sp);
                     }
                     else{
-                        MoveTo* mv = MoveTo::create(0.2f, Point(getCpgPostionX() + 47, 55));
-                        ScaleTo* scale = ScaleTo::create(0.2f, 0.75f);
+                        MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47, 55));
+                        ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
                         Spawn* sp = Spawn::create(mv, scale, NULL);
                         gangVector.at(k)->runAction(sp);
                         gangVector.at(k)->setLocalZOrder(4);
