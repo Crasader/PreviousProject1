@@ -78,7 +78,7 @@ public:
     //游戏状态
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
-    CC_SYNTHESIZE(int, currentTingSeatId, CurrentTingSeatId);
+//    CC_SYNTHESIZE(int, currentTingSeatId, CurrentTingSeatId);
     CC_SYNTHESIZE(int, currentSelectRoomId, CurrentSelectRoomId);
     CC_SYNTHESIZE(int, playRoomID, PlayRoomID);
     CC_SYNTHESIZE(int, reliveNumber, ReliveNumber);

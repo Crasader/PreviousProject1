@@ -417,6 +417,25 @@ void MsgHandler::roomListResp(std::string msg){
     CC_SAFE_DELETE(roomlist);
 }
 
+// {code:118,result:"1"}
+void MsgHandler::changeGenderResp(std::string msg){
+    
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    if(_mDoc.HasMember("gender")){
+        const rapidjson::Value &gender = _mDoc["gender"];
+        UserData::getInstance()->setGender(gender.GetInt());
+    }
+    if(_mDoc.HasMember("pic")){
+        const rapidjson::Value &pic = _mDoc["pic"];
+        UserData::getInstance()->setPicture(pic.GetString());
+    }
+    postNotifyMessage(MSG_CHANGE_GENDER_RESP, StringUtil::itos(result.GetInt()));
+}
+
 //{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,
 //other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]}
 void MsgHandler::enterRoomResp(std::string msg){
@@ -849,37 +868,35 @@ void MsgHandler::nextPlayer(std::string msg){
     CC_SAFE_DELETE(playerTurnData);
 }
 
-
+//{ code:2020, poxiaoId : poxiaoId, seatId : seatId, ting : "1,2,3", angang : "1,1,1,1", penggang : "1" }
 void MsgHandler::heroTingMsg(std::string msg){
-    //MSGCODE_MAJIANG_TING_GANG_NOTIFY
-    //{ code:2020, poxiaoId : poxiaoId, seatId : seatId, ting : "1,2,3", angang : "1,1,1,1", penggang : "1" }
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &seatId = _mDoc["seatId"];
-    PlayerCpgtData tingData;
-    tingData.seatId = seatId.GetInt();
+    PlayerCpgtData* tingData = new PlayerCpgtData();
+    tingData->seatId = seatId.GetInt();
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &ting = _mDoc["ting"];
-        tingData.ting = ting.GetString();
+        tingData->ting = ting.GetString();
     }
     if (_mDoc.HasMember("angang")){
         const rapidjson::Value &angang = _mDoc["angang"];
-        tingData.gang = angang.GetString();
-        tingData.flag = 1;
+        tingData->gang = angang.GetString();
+        tingData->flag = 1;
     }
     if (_mDoc.HasMember("penggang")){
         const rapidjson::Value &penggang = _mDoc["penggang"];
-        tingData.gang = penggang.GetString();
-        tingData.flag = 2;
+        tingData->gang = penggang.GetString();
+        tingData->flag = 2;
     }
-    //    GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-    postNotifyMessage(MSG_HERO_TING_GANG, "");
+    postNotifyMessage2(MSG_HERO_TING_GANG, tingData);
+    CC_SAFE_DELETE(tingData);
 }
 
+ //{code:2023,poxiaoId:poxiaoId,seatId:seatId,result:1}
 void MsgHandler::playerTingResp(std::string msg){
-    //{code:2023,poxiaoId:poxiaoId,seatId:seatId,result:1}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -888,13 +905,13 @@ void MsgHandler::playerTingResp(std::string msg){
     postNotifyMessage(MSG_PLAYER_TING_RESP, StringUtil::itos(result.GetInt()));
 }
 
+//{code:2024,poxiaoId:poxiaoId,
+//finish:[{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,
+//golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0},
+//{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,
+//golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0}]}
 void MsgHandler::gameResultNotify(std::string msg){
-    //{code:2024,poxiaoId:poxiaoId,
-    //finish:[{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,
-    //golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0},
-    //{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,
-    //golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0}]}
-    rapidjson::Document _mDoc;
+      rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
@@ -1003,16 +1020,17 @@ void MsgHandler::gameResultNotify(std::string msg){
     postNotifyMessage(MSG_GAME_RESULT, flag.GetString());
 }
 
-
+ //{code:2025,poxiaoId:poxiaoId,seatId:seatId}
 void MsgHandler::playerTingNotify(std::string msg){
-    //{code:2025,poxiaoId:poxiaoId,seatId:seatId}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &seatId = _mDoc["seatId"];
-    GAMEDATA::getInstance()->setCurrentTingSeatId(seatId.GetInt());
-    postNotifyMessage(MSG_PLAYER_TING_NOTIFY, "");
+    std::string seat = StringUtils::format("%d",seatId.GetInt());
+    char* buf = const_cast<char*>(seat.c_str());
+    postNotifyMessage2(MSG_PLAYER_TING_NOTIFY, buf);
+    CC_SAFE_DELETE(buf);
 }
 
 
@@ -1150,23 +1168,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
 }
 
 
-void MsgHandler::changeGenderResp(std::string msg){
-    // {code:118,result:"1"}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    if(_mDoc.HasMember("gender")){
-        const rapidjson::Value &gender = _mDoc["gender"];
-        UserData::getInstance()->setGender(gender.GetInt());
-    }
-    if(_mDoc.HasMember("pic")){
-        const rapidjson::Value &pic = _mDoc["pic"];
-        UserData::getInstance()->setPicture(pic.GetString());
-    }
-    postNotifyMessage(MSG_CHANGE_GENDER_RESP, StringUtil::itos(result.GetInt()));
-}
+
 
 void MsgHandler::heroChiResp(std::string msg){
     // {code:2009,poxiaoId:poxiaoId,seatId:seatId,result:1,ting:"1,2,3"}

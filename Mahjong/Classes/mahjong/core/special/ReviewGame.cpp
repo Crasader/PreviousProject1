@@ -928,16 +928,17 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersGangListener, 1);
     
     playerTingNotifyListener = EventListenerCustom::create(MSG_PLAYER_TING_NOTIFY, [=](EventCustom* event){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentTingSeatId());
+        std::string currentSeatId = static_cast<char*>(event->getUserData());
+        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(currentSeatId.c_str()));
         playerTingAnim(seatId);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerTingNotifyListener, 1);
     
     tingNotifyListener = EventListenerCustom::create(MSG_HERO_TING_GANG, [=](EventCustom* event){
-//        if (GAMEDATA::getInstance()->getPlayerCpgt().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-//            showTingGangControllPad();
-//            
-//        }
+        PlayerCpgtData* cpgtData = static_cast<PlayerCpgtData*>(cpgtData);
+        if (cpgtData->seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+            showTingGangControllPad();
+        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingNotifyListener, 1);
     
