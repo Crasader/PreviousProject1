@@ -30,7 +30,7 @@ public:
 //    CC_SYNTHESIZE(PlayerTurnData, playerTurnData, PlayerTurn);
     CC_SYNTHESIZE(LastGameData, lastGameData, LastGameDataBackup);
 //    CC_SYNTHESIZE(RoomListData, roomListData, RoomList);
-    CC_SYNTHESIZE(HeroCpgRespData, heroCpgRespData, HeroCpgResp);
+//    CC_SYNTHESIZE(HeroCpgRespData, heroCpgRespData, HeroCpgResp);
     CC_SYNTHESIZE(FriendListData, friendListData, FriendList);
     CC_SYNTHESIZE(FriendSearchData, friendSearchData, FriendSearch);
     CC_SYNTHESIZE(FriendInfo, friendInfo, FriendInfoData);

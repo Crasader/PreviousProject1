@@ -415,6 +415,9 @@ void MahjongView::showHeroChiUi(Ref* ref){
     //吃牌排序
     if (newData->chi[0] != "" && newData->chi[1] != ""){
         for (int i = 0; i < 3; i++){
+            if(newData->chi[i] == ""){
+                continue;
+            }
             std::vector<string> pai = StringUtil::split(newData->chi[i], ",");
             pai.push_back(newData->poker);
             sort(pai.begin(), pai.end());
@@ -439,7 +442,6 @@ void MahjongView::showHeroChiUi(Ref* ref){
         playerHero->startTimeClockAnim(9, 1);
     }
     else{
-        //choiceMenu = NULL;
         MenuItemImage* imageItem = MenuItemImage::create();
         imageItem->setTag(0);
         imageItem->setUserData(newData);
@@ -452,17 +454,19 @@ void MahjongView::heroDoChi(Ref* psend){
         choiceMenu->setVisible(false);
         choiceMenu->removeAllChildren();
     }
-    PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)psend)->getUserData());
     MenuItemImage* item = (MenuItemImage*)psend;
-//    selectedChi = cpg->chi.at(cpg->chi.size()-1-item->getTag());
-//    playerHero->stopTimeClockAnim();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg->poker.c_str())));
+    PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(item->getUserData());
+    selectedChi = cpg->chi[item->getTag()];
+    log("AAAAAAAAAAAAAAAA = %d",item->getTag());
+    playerHero->stopTimeClockAnim();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg->poker.c_str())));
 }
 
 void MahjongView::heroDoPeng(Ref* psend){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
     PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)psend)->getUserData());
+    myCpgtData = cpg;
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg->peng, atoi(cpg->poker.c_str())));
 }
 
@@ -1555,7 +1559,8 @@ void MahjongView::addHeroChiRespListener(){
     heroChiRespListener = EventListenerCustom::create(MSG_HERO_CHI_RESP, [=](EventCustom* event){
         playerHero->hideCurrentBigJong();
         std::vector<string> chipai = StringUtil::split(selectedChi, ",");
-        playerHero->drawHeroChi(GAMEDATA::getInstance()->getHeroCpgResp(), chipai, playerLeft);
+        HeroCpgRespData* heroData = static_cast<HeroCpgRespData*>(event->getUserData());
+        playerHero->drawHeroChi(heroData, chipai, playerLeft);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroChiRespListener, 1);
     
@@ -1563,21 +1568,20 @@ void MahjongView::addHeroChiRespListener(){
 
 void MahjongView::addHeroPengRespListener(){
     heroPengRespListener = EventListenerCustom::create(MSG_HERO_PENG_RESP, [=](EventCustom* event){
-//        PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-//        HeroCpgRespData resp = GAMEDATA::getInstance()->getHeroCpgResp();
-//        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), cpg.sId);
-//        playerHero->hideCurrentBigJong();
-//        if(resp.result == 1||resp.result == 2){
-//            if (clientSeatId == ClientSeatId::right){
-//                playerHero->drawHeroPeng(resp, cpg, playerRight);
-//            }
-//            else if (clientSeatId == ClientSeatId::opposite){
-//                playerHero->drawHeroPeng(resp, cpg, playerOpposite);
-//            }
-//            else{
-//                playerHero->drawHeroPeng(resp, cpg, playerLeft);
-//            }
-//        }
+        HeroCpgRespData* cpgRespData  = static_cast<HeroCpgRespData*>(event->getUserData());
+        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), myCpgtData->sId);
+        playerHero->hideCurrentBigJong();
+        if(cpgRespData->result == 1||cpgRespData->result == 2){
+            if (clientSeatId == ClientSeatId::right){
+                playerHero->drawHeroPeng(cpgRespData, myCpgtData, playerRight);
+            }
+            else if (clientSeatId == ClientSeatId::opposite){
+                playerHero->drawHeroPeng(cpgRespData, myCpgtData, playerOpposite);
+            }
+            else{
+                playerHero->drawHeroPeng(cpgRespData, myCpgtData, playerLeft);
+            }
+        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
     

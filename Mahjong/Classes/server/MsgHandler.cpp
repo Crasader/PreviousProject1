@@ -663,6 +663,30 @@ void MsgHandler::showOtherReady(std::string msg){
     postNotifyMessage(MSG_READY_NOTIFY, StringUtil::itos(seatId.GetInt()));
 }
 
+void MsgHandler::removePlayerNotify(std::string msg){
+    //{code:2001, poxiaoId : poxiaoId, seatId : seatId}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &seatId = _mDoc["seatId"];
+    const rapidjson::Value &pId = _mDoc["pId"];
+    RemovePlayerData data;
+    data.pid = pId.GetString();
+    data.setaId = seatId.GetInt();
+    if(data.pid != UserData::getInstance()->getPoxiaoId()){
+        GAMEDATA::getInstance()->erasePlayersInfo(data.pid);
+    }else{
+        log("hero is out room");
+        GAMEDATA::getInstance()->clearPlayersInfo();
+        GAMEDATA::getInstance()->setIsGotoLobby(true);
+        GAMEDATA::getInstance()->setFangZhuId("");
+        GAMEDATA::getInstance()->setPrivateGameNum("0");
+    }
+    GAMEDATA::getInstance()->setRemovePlayer(data);
+    postNotifyMessage(MSG_PLAYER_REMOVE, "");
+}
+
 //{code:2002, poxiaoId : poxiaoId, start : 1, poker : 1, 2, 4, 5, 6}
 void MsgHandler::getHeroJongs(std::string msg){
     rapidjson::Document _mDoc;
@@ -741,7 +765,7 @@ void MsgHandler::showCpgNotify(std::string msg){
     cpgData->sId = seatId.GetInt();
     if (_mDoc.HasMember("chi")){
         const rapidjson::Value &chi = _mDoc["chi"];
-        for (int i = 0; i < chi.Capacity(); ++i){
+        for (int i = 0; i < chi.Capacity(); i++){
             const rapidjson::Value &temp = chi[i];
             cpgData->chi[i] = temp["chi"].GetString();
         }
@@ -757,6 +781,31 @@ void MsgHandler::showCpgNotify(std::string msg){
     }
     postNotifyMessage2(MSG_PLAYER_CPG, cpgData);
     CC_SAFE_DELETE(cpgData);
+}
+
+
+// {code:2009,poxiaoId:poxiaoId,seatId:seatId,result:1,ting:"1,2,3"}
+void MsgHandler::heroChiResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    HeroCpgRespData* cpgRespData =  new HeroCpgRespData();
+    const rapidjson::Value &result = _mDoc["result"];
+    cpgRespData->result = result.GetInt();
+    if (_mDoc.HasMember("ting")){
+        const rapidjson::Value &ting = _mDoc["ting"];
+        cpgRespData->ting = ting.GetString();
+    }
+    else{
+        cpgRespData->ting = "";
+    }
+    if (_mDoc.HasMember("forbit")){
+        const rapidjson::Value &forbit = _mDoc["forbit"];
+        cpgRespData->forbit = forbit.GetString();
+    }
+    postNotifyMessage2(MSG_HERO_CHI_RESP, cpgRespData);
+    CC_SAFE_DELETE(cpgRespData);
 }
 
  // {code:2010,poxiaoId:poxiaoId,seatId:seatId,chi:"1,2",poker:poker}
@@ -778,6 +827,25 @@ void MsgHandler::showOtherChiNotify(std::string msg){
     CC_SAFE_DELETE(cpgData);
 }
 
+//{code:2013,poxiaoId:poxiaoId,seatId:seatId,result:1}
+void MsgHandler::heroPengResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    HeroCpgRespData* cpgRespData = new HeroCpgRespData();
+    const rapidjson::Value &result = _mDoc["result"];
+    cpgRespData->result = result.GetInt();
+    if (_mDoc.HasMember("ting")){
+        const rapidjson::Value &result = _mDoc["ting"];
+        cpgRespData->ting = result.GetString();
+    }
+    postNotifyMessage2(MSG_HERO_PENG_RESP, cpgRespData);
+    CC_SAFE_DELETE(cpgRespData);
+}
+
+
+
 //{"code":2014,"peng":"25,25","poker":"25","poxiaoId":"cac1681d-28e2-4b1e-b0d3-b47c249b8979","sId":0,"seatId":3}
 void MsgHandler::showOtherPengNotify(std::string msg){
     rapidjson::Document _mDoc;
@@ -796,6 +864,27 @@ void MsgHandler::showOtherPengNotify(std::string msg){
     postNotifyMessage2(MSG_OTHER_PLAYER_PENG, data);
     CC_SAFE_DELETE(data);
 }
+
+void MsgHandler::heroGangResp(std::string msg){
+    // {code:2017,poxiaoId:poxiaoId,seatId:seatId,result:1}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    HeroCpgRespData cpgRespData;
+    const rapidjson::Value &result = _mDoc["result"];
+    cpgRespData.result = result.GetInt();
+    if (_mDoc.HasMember("ting")){
+        const rapidjson::Value &result = _mDoc["ting"];
+        cpgRespData.ting = result.GetString();
+    }
+    else{
+        cpgRespData.ting = "";
+    }
+//    GAMEDATA::getInstance()->setHeroCpgResp(cpgRespData);
+    postNotifyMessage(MSG_HERO_GANG_RESP, "");
+}
+
 
 //{"code":2018,"flag":"1","gang":"18,18,18","poker":18,"poxiaoId":"9cbc6365-5be4-4c33-bc9e-a00c17ac4697","sId":0,"seatId":3}
 void MsgHandler::showOtherGangNotify(std::string msg){
@@ -844,10 +933,6 @@ void MsgHandler::nextPlayer(std::string msg){
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &ting = _mDoc["ting"];
         tingData.ting = ting.GetString();
-        //为了解决吃听不起牌的bug加的这3行代码
-        HeroCpgRespData heroTingData;
-        heroTingData.ting = ting.GetString();
-        GAMEDATA::getInstance()->setHeroCpgResp(heroTingData);
     }
     if (_mDoc.HasMember("angang")){
         const rapidjson::Value &angang = _mDoc["angang"];
@@ -1163,97 +1248,6 @@ void MsgHandler::playerConnectAgain(std::string msg){
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
     postNotifyMessage(MSG_PLAYER_CONNECT_AGAIN, StringUtil::itos(seatId.GetInt()));
-}
-
-
-
-
-void MsgHandler::heroChiResp(std::string msg){
-    // {code:2009,poxiaoId:poxiaoId,seatId:seatId,result:1,ting:"1,2,3"}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    HeroCpgRespData cpgRespData;
-    const rapidjson::Value &result = _mDoc["result"];
-    cpgRespData.result = result.GetInt();
-    if (_mDoc.HasMember("ting")){
-        const rapidjson::Value &ting = _mDoc["ting"];
-        cpgRespData.ting = ting.GetString();
-    }
-    else{
-        cpgRespData.ting = "";
-    }
-    if (_mDoc.HasMember("forbit")){
-        const rapidjson::Value &forbit = _mDoc["forbit"];
-        cpgRespData.forbit = forbit.GetString();
-    }
-    GAMEDATA::getInstance()->setHeroCpgResp(cpgRespData);
-    postNotifyMessage(MSG_HERO_CHI_RESP, "");
-}
-
-void MsgHandler::heroPengResp(std::string msg){
-    //{code:2013,poxiaoId:poxiaoId,seatId:seatId,result:1}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    HeroCpgRespData cpgRespData;
-    const rapidjson::Value &result = _mDoc["result"];
-    cpgRespData.result = result.GetInt();
-    if (_mDoc.HasMember("ting")){
-        const rapidjson::Value &result = _mDoc["ting"];
-        cpgRespData.ting = result.GetString();
-    }
-    else{
-        cpgRespData.ting = "";
-    }
-    GAMEDATA::getInstance()->setHeroCpgResp(cpgRespData);
-    postNotifyMessage(MSG_HERO_PENG_RESP, "");
-}
-
-void MsgHandler::heroGangResp(std::string msg){
-    // {code:2017,poxiaoId:poxiaoId,seatId:seatId,result:1}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    HeroCpgRespData cpgRespData;
-    const rapidjson::Value &result = _mDoc["result"];
-    cpgRespData.result = result.GetInt();
-    if (_mDoc.HasMember("ting")){
-        const rapidjson::Value &result = _mDoc["ting"];
-        cpgRespData.ting = result.GetString();
-    }
-    else{
-        cpgRespData.ting = "";
-    }
-    GAMEDATA::getInstance()->setHeroCpgResp(cpgRespData);
-    postNotifyMessage(MSG_HERO_GANG_RESP, "");
-}
-
-void MsgHandler::removePlayerNotify(std::string msg){
-    //{code:2001, poxiaoId : poxiaoId, seatId : seatId}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &seatId = _mDoc["seatId"];
-    const rapidjson::Value &pId = _mDoc["pId"];
-    RemovePlayerData data;
-    data.pid = pId.GetString();
-    data.setaId = seatId.GetInt();
-    if(data.pid != UserData::getInstance()->getPoxiaoId()){
-        GAMEDATA::getInstance()->erasePlayersInfo(data.pid);
-    }else{
-        log("hero is out room");
-        GAMEDATA::getInstance()->clearPlayersInfo();
-        GAMEDATA::getInstance()->setIsGotoLobby(true);
-        GAMEDATA::getInstance()->setFangZhuId("");
-        GAMEDATA::getInstance()->setPrivateGameNum("0");
-    }
-    GAMEDATA::getInstance()->setRemovePlayer(data);
-    postNotifyMessage(MSG_PLAYER_REMOVE, "");
 }
 
 

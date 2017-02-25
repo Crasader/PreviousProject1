@@ -824,16 +824,16 @@ void PlayerHero::doEventTimeOver(int type){
 void PlayerHero::actionTing(){
     setIsAllowTouch(true);
     GAMEDATA::getInstance()->setIsTingProcess(true);
-    HeroCpgRespData tingData = GAMEDATA::getInstance()->getHeroCpgResp();
-    std::vector<string> tingpai = StringUtil::split(tingData.ting, ",");
-    log("提示玩家可以听的牌:%s",tingData.ting.c_str());
-    for (int i = 0; i < tingpai.size(); i++){
-        for (int j = 0; j < playerHandJongs.size(); j++){
-            if (atoi(tingpai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
-                playerHandJongs.at(j)->setPosition(playerHandJongs.at(j)->getPosition().x, playerHandJongs.at(j)->getPosition().y + 40);
-            }
-        }
-    }
+//    HeroCpgRespData tingData = GAMEDATA::getInstance()->getHeroCpgResp();
+//    std::vector<string> tingpai = StringUtil::split(tingData.ting, ",");
+//    log("提示玩家可以听的牌:%s",tingData.ting.c_str());
+//    for (int i = 0; i < tingpai.size(); i++){
+//        for (int j = 0; j < playerHandJongs.size(); j++){
+//            if (atoi(tingpai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
+//                playerHandJongs.at(j)->setPosition(playerHandJongs.at(j)->getPosition().x, playerHandJongs.at(j)->getPosition().y + 40);
+//            }
+//        }
+//    }
     startTimeClockAnim(20, 2);
 }
 
@@ -850,9 +850,9 @@ void PlayerHero::actionQi(){
 }
 
 
-void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
+void PlayerHero::drawHeroChi(HeroCpgRespData* cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
     updateSelectedInfo(NULL);
-    if (cpgResp.result == 1 || cpgResp.result == 2){
+    if (cpgResp->result == 1 || cpgResp->result == 2){
         PlayerBase::showPlayerChi(chipai.at(0)+","+chipai.at(1), playerBase);
         Vector<Jong*> chiVector;
         //根据吃牌的位置显示,显示吃牌堆得形状
@@ -905,15 +905,15 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         
         //屏蔽不允许出的牌
         for(auto var:getSelfHandJongs()){
-            if(var->getJongType() == atoi(cpgResp.forbit.c_str())){
+            if(var->getJongType() == atoi(cpgResp->forbit.c_str())){
                 var->showBackShadow(true);
             }
         }
         //吃完后触发听牌
-        if (cpgResp.result == 2 && cpgResp.ting != ""){
-            log("吃听的牌: %s",cpgResp.ting.c_str());
+        if (cpgResp->result == 2 && cpgResp->ting != ""){
+            log("吃听的牌: %s",cpgResp->ting.c_str());
             PlayerCpgtData tingData;
-            tingData.ting = cpgResp.ting;
+            tingData.ting = cpgResp->ting;
 //            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
 //            ((MahjongView*)getParent())->showTingGangControllPad();
         }else{
@@ -927,10 +927,10 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
 }
 
 
-void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
+void PlayerHero::drawHeroPeng(HeroCpgRespData* resp, PlayerCpgtData* cpg, PlayerBase* playerBase){
     Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
-    std::vector<string> pengpai = StringUtil::split(cpg.peng, ",");
+    std::vector<string> pengpai = StringUtil::split(cpg->peng, ",");
     Vector<Jong*> pengVector;
     for (int i = 0; i < pengpai.size(); i++){
         for (int j = 0; j < getSelfHandJongs().size(); j++){
@@ -1003,9 +1003,9 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     Sequence* mySe = Sequence::create(action1, delay, action2, NULL);
     runAction(mySe);
     
-    if (resp.result == 2 && resp.ting != ""){
+    if (resp->result == 2 && resp->ting != ""){
         PlayerCpgtData tingData;
-        tingData.ting = resp.ting;
+        tingData.ting = resp->ting;
 //        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
 //        ((MahjongView*)getParent())->showTingGangControllPad();
     }else{
@@ -1014,11 +1014,11 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     }
 }
 
-void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
+void PlayerHero::drawHeroGang(HeroCpgRespData* resp, PlayerCpgtData* cpg, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
-    if(cpg.flag == 0){
-        std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
+    if(cpg->flag == 0){
+        std::vector<string> gangpai = StringUtil::split(cpg->gang, ",");
         Vector<Jong*> gangVector;
         for (int i = 0; i < gangpai.size(); i++){
             for (int j = 0; j < getSelfHandJongs().size(); j++){
@@ -1072,17 +1072,17 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         auto spriteAnim = Sprite::create();
         addChild(spriteAnim);
         spriteAnim->runAction(Sequence::create(action1, delay, action2, NULL));
-        if (resp.result == 2 && resp.ting != ""){
+        if (resp->result == 2 && resp->ting != ""){
             PlayerCpgtData tingData;
-            tingData.ting = resp.ting;
+            tingData.ting = resp->ting;
 //            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
 //            ((MahjongView*)getParent())->showTingGangControllPad();
         }
         
     }else{
-        std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
+        std::vector<string> gangpai = StringUtil::split(cpg->gang, ",");
         Vector<Jong*> gangVector;
-        if (cpg.flag == 2){
+        if (cpg->flag == 2){
             for(int j=0; j<playerHandJongs.size();j++){
                 if(playerHandJongs.at(j)->getJongType() == atoi(gangpai.at(0).c_str())){
                     gangVector.pushBack(playerHandJongs.at(j));

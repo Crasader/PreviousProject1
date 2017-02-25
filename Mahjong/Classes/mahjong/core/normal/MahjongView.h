@@ -10,6 +10,7 @@
 #include "mahjong/player/PlayerHero.h"
 #include "mahjong/player/playerinfo/Player.h"
 #include "mahjong/dialog/toast/InfoToast.hpp"
+#include "mahjong/state/DataStruct.h"
 #include "userdata/UserData.h"
 USING_NS_CC;
 
@@ -38,6 +39,7 @@ private:
 	std::mutex m_mutex;
 	int currentReadyPlayer;
 	std::string  selectedChi;
+    PlayerCpgtData*  myCpgtData = new PlayerCpgtData();
 	Sprite* choiceMenu;
     Menu* controllPad;
     InfoToast* tao;
