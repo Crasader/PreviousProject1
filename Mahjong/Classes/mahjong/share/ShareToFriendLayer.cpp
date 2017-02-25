@@ -240,6 +240,19 @@ bool ShareToFriendLayer::init(){
     myPrideMneu->setTag(8878);
     recordLayer->addChild(myPrideMneu);
     
+    if(NULL != recordLayer->getChildByTag(8878)){
+        if(NULL !=recordLayer->getChildByTag(8878)){
+            Menu* temp =(Menu*)recordLayer->getChildByTag(8878);
+            if(NULL != temp->getChildByTag(8876)){
+                if(GAMEDATA::getInstance()->getTuiGuangRecord().gold == 0 && GAMEDATA::getInstance()->getTuiGuangRecord().fangka ==0){
+                    ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(false);
+                }else{
+                    ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(true);
+                }
+            }
+        }
+    }
+
     
     schedule(schedule_selector(ShareToFriendLayer::updateUi), 1, CC_REPEAT_FOREVER, 0);
     
@@ -324,15 +337,20 @@ void ShareToFriendLayer::updateUi(float dt){
         if(NULL!=recordLayer->getChildByTag(3002)){
             ((LabelAtlas*)recordLayer->getChildByTag(3002))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTuiGuangRecord().gold));
         }
-        if(GAMEDATA::getInstance()->getTuiGuangRecord().gold == 0 && GAMEDATA::getInstance()->getTuiGuangRecord().fangka ==0){
+        
             if(NULL != recordLayer->getChildByTag(8878)){
                 if(NULL !=recordLayer->getChildByTag(8878)){
                     Menu* temp =(Menu*)recordLayer->getChildByTag(8878);
-                    if(NULL != temp->getChildByTag(8876))
-                        ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(false);
+                    if(NULL != temp->getChildByTag(8876)){
+                        if(GAMEDATA::getInstance()->getTuiGuangRecord().gold == 0 && GAMEDATA::getInstance()->getTuiGuangRecord().fangka ==0){
+                            ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(false);
+                        }else{
+                            ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(true);
+                        }
+                    }
                 }
             }
-        }
+        
         
     }
     
