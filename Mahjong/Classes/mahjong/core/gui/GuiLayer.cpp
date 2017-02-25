@@ -298,14 +298,14 @@ void GuiLayer::drawTestButton(){
 
 //测试方法
 void GuiLayer::testButtonClick(){
-        PlayerCpgtData cpg;
-        cpg.chi.push_back("1,2");
-        cpg.peng ="3,3";
-        cpg.flag = 1;
-        cpg.poker = "1";
-        cpg.seatId = 1;
-        cpg.gang = "1,1,1";
-        cpg.sId = 3;
+//        PlayerCpgtData cpg;
+//        cpg.chi.push_back("1,2");
+//        cpg.peng ="3,3";
+//        cpg.flag = 1;
+//        cpg.poker = "1";
+//        cpg.seatId = 1;
+//        cpg.gang = "1,1,1";
+//        cpg.sId = 3;
 //        GAMEDATA::getInstance()->setPlayerCpgt(cpg);
         EventCustom event(MSG_OTHER_PLAYER_PENG);
         _eventDispatcher->dispatchEvent(&event);

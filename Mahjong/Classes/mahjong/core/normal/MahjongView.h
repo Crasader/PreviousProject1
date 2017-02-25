@@ -55,10 +55,10 @@ private:
 	void updatePlayerView(int type,Player* info);
 	void addTouchListener();
 	void drawCpgControllPad(PlayerCpgtData* cpg);
-	void showHeroChiUi();
+	void showHeroChiUi(Ref* ref);
 	void heroDoChi(Ref* psend);
-	void heroDoPeng();
-	void heroDoGang();
+	void heroDoPeng(Ref* psend);
+	void heroDoGang(Ref* psend);
 	void heroDoCpgQi();
 	void heroDoTing();
 	void heroDoTingQi();

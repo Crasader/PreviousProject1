@@ -329,7 +329,7 @@ void MahjongView::checkPlayerIpRepetition(){
 }
 
 
-void MahjongView::drawCpgControllPad(PlayerCpgtData* cpgData){
+void MahjongView::drawCpgControllPad(PlayerCpgtData* newData){
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoCpgQi,this));
     qi->setPosition(Point(0, 0));
@@ -338,21 +338,25 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData* cpgData){
     MenuItemImage* peng = nullptr;
     MenuItemImage* gang = nullptr;
     int buttonCount = 1;
-    if (cpgData->chi.size() > 0){
-        chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_0(MahjongView::showHeroChiUi, this));
+    if (newData->chi[0] != ""){
+
+        chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_1(MahjongView::showHeroChiUi, this));
         chi->setPosition(Point(-buttonCount * 160, 0));
+        chi->setUserData(newData);
         controllPad->addChild(chi);
         buttonCount++;
     }
-    if (cpgData->peng != ""){
-        peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_0(MahjongView::heroDoPeng, this));
+    if (newData->peng != ""){
+        peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_1(MahjongView::heroDoPeng, this));
         peng->setPosition(Point(-buttonCount * 160, 0));
+        peng->setUserData(newData);
         controllPad->addChild(peng);
         buttonCount++;
     }
-    if (cpgData->gang != ""){
-        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_0(MahjongView::heroDoGang, this));
+    if (newData->gang != ""){
+        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(MahjongView::heroDoGang, this));
         gang->setPosition(Point(-buttonCount * 160, 0));
+        gang->setUserData(newData);
         controllPad->addChild(gang);
     }
     controllPad->setVisible(true);
@@ -405,40 +409,42 @@ void MahjongView::removeHeroPlayedIcon(){
 }
 
 
-void MahjongView::showHeroChiUi(){
+void MahjongView::showHeroChiUi(Ref* ref){
     controllPad->setVisible(false);
-//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-//    //吃牌排序
-//    if (cpg.chi.size() > 1){
-//        for (int i = 0; i < cpg.chi.size(); i++){
-//            std::vector<string> pai = StringUtil::split(cpg.chi.at(cpg.chi.size()-1-i), ",");
-//            pai.push_back(cpg.poker);
-//            sort(pai.begin(), pai.end());
-//            auto choice = Menu::create();
-//            choice->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-//            for (int j = 0; j < pai.size(); j++){
-//                Sprite* chibg = Sprite::create("jong/middle_2.png");
-//                chibg->setPosition(1000 + j * 40 - i * 130, 150);
-//                choiceMenu->setVisible(true);
-//                choiceMenu->addChild(chibg);
-//                std::string imageName = Jong::getContextImage(atoi(pai.at(j).c_str()));
-//                MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(MahjongView::heroDoChi, this));
-//                imageItem->setTag(i);
-//                imageItem->setPosition(1000 + j * 40 - i * 130, 160);
-//                imageItem->setScale(0.5f);
-//                choice->addChild(imageItem);
-//            }
-//            choice->setPosition(0, 0);
-//            choiceMenu->addChild(choice);
-//        }
-//        playerHero->startTimeClockAnim(9, 1);
-//    }
-//    else{
-//        //choiceMenu = NULL;
-//        MenuItemImage* imageItem = MenuItemImage::create();
-//        imageItem->setTag(0);
-//        heroDoChi(imageItem);
-//    }
+    PlayerCpgtData* newData = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
+    //吃牌排序
+    if (newData->chi[0] != "" && newData->chi[1] != ""){
+        for (int i = 0; i < 3; i++){
+            std::vector<string> pai = StringUtil::split(newData->chi[i], ",");
+            pai.push_back(newData->poker);
+            sort(pai.begin(), pai.end());
+            auto choice = Menu::create();
+            choice->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+            for (int j = 0; j < pai.size(); j++){
+                Sprite* chibg = Sprite::create("jong/middle_2.png");
+                chibg->setPosition(1000 + j * 40 - i * 130, 150);
+                choiceMenu->setVisible(true);
+                choiceMenu->addChild(chibg);
+                std::string imageName = Jong::getContextImage(atoi(pai.at(j).c_str()));
+                MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(MahjongView::heroDoChi, this));
+                imageItem->setTag(i);
+                imageItem->setPosition(1000 + j * 40 - i * 130, 160);
+                imageItem->setUserData(newData);
+                imageItem->setScale(0.5f);
+                choice->addChild(imageItem);
+            }
+            choice->setPosition(0, 0);
+            choiceMenu->addChild(choice);
+        }
+        playerHero->startTimeClockAnim(9, 1);
+    }
+    else{
+        //choiceMenu = NULL;
+        MenuItemImage* imageItem = MenuItemImage::create();
+        imageItem->setTag(0);
+        imageItem->setUserData(newData);
+        heroDoChi(imageItem);
+    }
 }
 
 void MahjongView::heroDoChi(Ref* psend){
@@ -446,25 +452,25 @@ void MahjongView::heroDoChi(Ref* psend){
         choiceMenu->setVisible(false);
         choiceMenu->removeAllChildren();
     }
-//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-//    MenuItemImage* item = (MenuItemImage*)psend;
-//    selectedChi = cpg.chi.at(cpg.chi.size()-1-item->getTag());
+    PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)psend)->getUserData());
+    MenuItemImage* item = (MenuItemImage*)psend;
+//    selectedChi = cpg->chi.at(cpg->chi.size()-1-item->getTag());
 //    playerHero->stopTimeClockAnim();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg.poker.c_str())));
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg->poker.c_str())));
 }
 
-void MahjongView::heroDoPeng(){
+void MahjongView::heroDoPeng(Ref* psend){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg.peng, atoi(cpg.poker.c_str())));
+    PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)psend)->getUserData());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg->peng, atoi(cpg->poker.c_str())));
 }
 
-void MahjongView::heroDoGang(){
+void MahjongView::heroDoGang(Ref* psend){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg.gang, atoi(cpg.poker.c_str()), cpg.flag));
+    PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)psend)->getUserData());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg->gang, atoi(cpg->poker.c_str()), cpg->flag));
 }
 
 void MahjongView::heroDoCpgQi(){

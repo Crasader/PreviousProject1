@@ -168,7 +168,7 @@ void PlayerLeft::removeLastJong(){
 
 
 void PlayerLeft::drawPlayerChi(PlayerCpgtData* data, PlayerBase* playerBase){
-    PlayerBase::showPlayerChi(data->chi.at(0), playerBase);
+    PlayerBase::showPlayerChi(data->chi[0], playerBase);
     setStateCpg(true);
     if(GAMEDATA::getInstance()->getIsFuPan()){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
@@ -186,7 +186,7 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData* data, PlayerBase* playerBase){
     addChild(jongland,(int)playerCpgRecords.size()*4);
     PlayerCpgRecord record;
     record.pokersRecord.pushBack(jongland);
-    std::vector<std::string> chi = StringUtil::split(data->chi.at(0), ",");
+    std::vector<std::string> chi = StringUtil::split(data->chi[0], ",");
     record.type = CpgType::chi;
     playerBase->removeLastJong();
     for (int i = 0; i < chi.size(); i++){
@@ -324,14 +324,14 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData* data, PlayerBase* playerBase){
 }
 
 void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData* data, PlayerBase* playerBase){
-    PlayerBase::showPlayerChi(data->chi.at(0), playerBase);
+    PlayerBase::showPlayerChi(data->chi[0], playerBase);
     setStateCpg(true);
     if(GAMEDATA::getInstance()->getIsFuPan()){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
     }else{
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }
-    std::vector<string> chipai =  StringUtil::split(data->chi.at(0), ",");
+    std::vector<string> chipai =  StringUtil::split(data->chi[0], ",");
     for (int i = 0; i < chipai.size(); i++){
         for (int j = 0; j < playerHandJongs.size(); j++){
             if (atoi(chipai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
@@ -348,7 +348,7 @@ void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData* data, PlayerBase* playerBa
     addChild(jongland,(int)playerCpgRecords.size()*4);
     PlayerCpgRecord record;
     record.pokersRecord.pushBack(jongland);
-    std::vector<std::string> chi = StringUtil::split(data->chi.at(0), ",");
+    std::vector<std::string> chi = StringUtil::split(data->chi[0], ",");
     record.type = CpgType::chi;
     playerBase->removeLastJong();
     for (int i = 0; i < chi.size(); i++){

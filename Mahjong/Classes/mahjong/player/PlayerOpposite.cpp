@@ -179,7 +179,7 @@ void PlayerOpposite::removeLastJong(){
 
 
 void PlayerOpposite::drawPlayerChi(PlayerCpgtData* data, PlayerBase* playerBase){
-    PlayerBase::showPlayerChi(data->chi.at(0), playerBase);
+    PlayerBase::showPlayerChi(data->chi[0], playerBase);
     setStateCpg(true);
     if(GAMEDATA::getInstance()->getIsFuPan()){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
@@ -198,7 +198,7 @@ void PlayerOpposite::drawPlayerChi(PlayerCpgtData* data, PlayerBase* playerBase)
     record.pokersRecord.pushBack(jongland);
     record.type = CpgType::chi;
     playerBase->removeLastJong();
-    std::vector<std::string> chi = StringUtil::split(data->chi.at(0), ",");
+    std::vector<std::string> chi = StringUtil::split(data->chi[0], ",");
     for (int i = 0; i < chi.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(oppositecpgportrait, atoi(chi.at(i).c_str()));
@@ -337,14 +337,14 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData* data, PlayerBase* playerBase
 }
 
 void PlayerOpposite::drawPlayerMingpaiChi(PlayerCpgtData* data, PlayerBase* playerBase){
-    PlayerBase::showPlayerChi(data->chi.at(0), playerBase);
+    PlayerBase::showPlayerChi(data->chi[0], playerBase);
     setStateCpg(true);
     if(GAMEDATA::getInstance()->getIsFuPan()){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
     }else{
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }
-    std::vector<string> chipai =  StringUtil::split(data->chi.at(0), ",");
+    std::vector<string> chipai =  StringUtil::split(data->chi[0], ",");
     for (int i = 0; i < chipai.size(); i++){
         for (int j = 0; j < playerHandJongs.size(); j++){
             if (atoi(chipai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
@@ -363,7 +363,7 @@ void PlayerOpposite::drawPlayerMingpaiChi(PlayerCpgtData* data, PlayerBase* play
     record.pokersRecord.pushBack(jongland);
     record.type = CpgType::chi;
     playerBase->removeLastJong();
-    std::vector<std::string> chi = StringUtil::split(data->chi.at(0), ",");
+    std::vector<std::string> chi = StringUtil::split(data->chi[0], ",");
     for (int i = 0; i < chi.size(); i++){
         Jong* jong = Jong::create();
         jong->showJong(oppositecpgportrait, atoi(chi.at(i).c_str()));

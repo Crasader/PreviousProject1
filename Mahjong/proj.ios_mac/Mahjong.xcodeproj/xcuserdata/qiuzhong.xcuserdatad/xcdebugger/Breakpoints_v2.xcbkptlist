@@ -3994,11 +3994,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "509687347.244925"
+            timestampString = "509700612.552431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2301"
-            endingLineNumber = "2301"
+            startingLineNumber = "2299"
+            endingLineNumber = "2299"
             landmarkName = "MsgHandler::handleFupanPlayerInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4175,7 +4175,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
             endingLineNumber = "223"
-            landmarkName = "PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4191,7 +4191,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
             endingLineNumber = "222"
-            landmarkName = "PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4207,7 +4207,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
             endingLineNumber = "237"
-            landmarkName = "PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerOpposite::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4223,7 +4223,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "232"
             endingLineNumber = "232"
-            landmarkName = "PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerOpposite::drawPlayerPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4506,11 +4506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "509687347.244925"
+            timestampString = "509700612.552431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "807"
-            endingLineNumber = "807"
+            startingLineNumber = "806"
+            endingLineNumber = "806"
             landmarkName = "MsgHandler::showOtherGangNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4733,7 +4733,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
             endingLineNumber = "416"
-            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4749,7 +4749,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "427"
             endingLineNumber = "427"
-            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4765,7 +4765,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "422"
             endingLineNumber = "422"
-            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4861,7 +4861,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "361"
             endingLineNumber = "361"
-            landmarkName = "PlayerRight::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerRight::drawPlayerMingpaiPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4877,7 +4877,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
             endingLineNumber = "362"
-            landmarkName = "PlayerRight::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerRight::drawPlayerMingpaiPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4893,7 +4893,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "363"
             endingLineNumber = "363"
-            landmarkName = "PlayerRight::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerRight::drawPlayerMingpaiPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4909,7 +4909,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "381"
             endingLineNumber = "381"
-            landmarkName = "PlayerOpposite::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerOpposite::drawPlayerMingpaiPeng(PlayerCpgtData* data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5048,11 +5048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509685925.889894"
+            timestampString = "509699616.431394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1430"
-            endingLineNumber = "1430"
+            startingLineNumber = "1437"
+            endingLineNumber = "1437"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5064,11 +5064,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509685925.889894"
+            timestampString = "509699616.431394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1428"
-            endingLineNumber = "1428"
+            startingLineNumber = "1435"
+            endingLineNumber = "1435"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5080,11 +5080,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509685925.889894"
+            timestampString = "509699616.431394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1427"
-            endingLineNumber = "1427"
+            startingLineNumber = "1434"
+            endingLineNumber = "1434"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5144,11 +5144,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "509687347.244925"
+            timestampString = "509700612.552431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "849"
-            endingLineNumber = "849"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
             landmarkName = "MsgHandler::nextPlayer(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5160,11 +5160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509685925.889894"
+            timestampString = "509699616.431394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1408"
-            endingLineNumber = "1408"
+            startingLineNumber = "1415"
+            endingLineNumber = "1415"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
             <Locations>
@@ -5208,11 +5208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "509685925.889894"
+            timestampString = "509699616.431394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1407"
-            endingLineNumber = "1407"
+            startingLineNumber = "1414"
+            endingLineNumber = "1414"
             landmarkName = "MahjongView::addCoustomListener()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5310,6 +5310,54 @@
             startingLineNumber = "462"
             endingLineNumber = "462"
             landmarkName = "LobbyScene::chargeFangka()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
+            timestampString = "509699945.388723"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "896"
+            endingLineNumber = "896"
+            landmarkName = "MahjongView::addHeroCpgListener()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
+            timestampString = "509700031.784564"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
+            landmarkName = "MahjongView::showHeroChiUi(Ref* ref)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
+            timestampString = "509700810.080874"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
+            landmarkName = "MahjongView::drawCpgControllPad(PlayerCpgtData* newData)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

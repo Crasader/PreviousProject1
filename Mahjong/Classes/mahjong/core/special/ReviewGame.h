@@ -59,8 +59,8 @@ private:
 	void drawCpgControllPad();
 	void showHeroChiUi();
 	void heroDoChi(Ref* psend);
-	void heroDoPeng();
-	void heroDoGang();
+	void heroDoPeng(Ref* ref);
+	void heroDoGang(Ref* ref);
 	void heroDoCpgQi();
 	void heroDoTing();
 	void heroDoTingQi();

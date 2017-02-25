@@ -743,9 +743,8 @@ void MsgHandler::showCpgNotify(std::string msg){
         const rapidjson::Value &chi = _mDoc["chi"];
         for (int i = 0; i < chi.Capacity(); ++i){
             const rapidjson::Value &temp = chi[i];
-            cpgData->chi.push_back(temp["chi"].GetString());
+            cpgData->chi[i] = temp["chi"].GetString();
         }
-        sort(cpgData->chi.begin(), cpgData->chi.end());
     }
     if (_mDoc.HasMember("peng")){
         const rapidjson::Value &peng = _mDoc["peng"];
@@ -773,7 +772,7 @@ void MsgHandler::showOtherChiNotify(std::string msg){
     PlayerCpgtData* cpgData = new PlayerCpgtData();
     cpgData->poker = poker.GetString();
     cpgData->seatId = seatId.GetInt();
-    cpgData->chi.push_back(chi.GetString());
+    cpgData->chi[0] = chi.GetString();
     cpgData->sId = sId.GetInt();
     postNotifyMessage2(MSG_OTHER_PLAYER_CHI, cpgData);
     CC_SAFE_DELETE(cpgData);
@@ -1030,7 +1029,6 @@ void MsgHandler::playerTingNotify(std::string msg){
     std::string seat = StringUtils::format("%d",seatId.GetInt());
     char* buf = const_cast<char*>(seat.c_str());
     postNotifyMessage2(MSG_PLAYER_TING_NOTIFY, buf);
-    CC_SAFE_DELETE(buf);
 }
 
 

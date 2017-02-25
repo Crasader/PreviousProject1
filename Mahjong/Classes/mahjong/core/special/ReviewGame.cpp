@@ -351,18 +351,18 @@ void ReviewGame::heroDoChi(Ref* psend){
 //    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg.poker.c_str())));
 }
 
-void ReviewGame::heroDoPeng(){
+void ReviewGame::heroDoPeng(Ref* ref){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg.peng, atoi(cpg.poker.c_str())));
+    PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
+   NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg->peng, atoi(cpg->poker.c_str())));
 }
 
-void ReviewGame::heroDoGang(){
+void ReviewGame::heroDoGang(Ref* ref){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg.gang, atoi(cpg.poker.c_str()), cpg.flag));
+    PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg->gang, atoi(cpg->poker.c_str()), cpg->flag));
 }
 
 void ReviewGame::heroDoCpgQi(){
@@ -1000,10 +1000,9 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
     playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
-        schedule([=](float dt){
-            drawCpgControllPad();
-            
-        },0,0,0.5f,"nonohuang");
+        PlayerCpgtData* cpgData = new PlayerCpgtData();
+        cpgData = static_cast<PlayerCpgtData*>(event->getUserData());
+//        drawCpgControllPad(cpgData);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
     
