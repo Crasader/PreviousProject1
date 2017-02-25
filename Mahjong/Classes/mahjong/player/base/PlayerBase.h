@@ -32,7 +32,7 @@ public:
     virtual Point getCpgShowPostion(int index){ return Point(0, 0); };
     void initPlayer(Player* playerInfo);//初始化玩家UI
     void replaceHandHua(JongViewType tpye);//玩家手牌换花
-    void replaceTurnHua(PlayerTurnData data);//摸牌换花
+    void replaceTurnHua(PlayerTurnData* data);//摸牌换花
     void showPlayedJong(int ctype);//玩家打牌
     void showPlayerChi(string chiPoker, PlayerBase* playerBase);//玩家吃牌
     void showPlayerPeng(PlayerCpgtData* data,PlayerBase* playerBase);//玩家碰牌
@@ -69,7 +69,7 @@ public:
     CC_SYNTHESIZE(int,lastPoker,LastPoker);//最近一次出牌
     CC_SYNTHESIZE(bool,isPlayHuaChi,IsPlayHuaChi);//花痴音效
     
-    void replaceTurnHuaMingpai(PlayerTurnData data);
+    void replaceTurnHuaMingpai(PlayerTurnData* data);
     CREATE_FUNC(PlayerBase);
     
 private:

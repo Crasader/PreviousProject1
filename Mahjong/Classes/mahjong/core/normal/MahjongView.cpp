@@ -798,29 +798,30 @@ void MahjongView::addOthersReadyListener(){
 
 void MahjongView::addPlayerTurnListener(){
     turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
-        showPaiduiNum(atoi(GAMEDATA::getInstance()->getPlayerTurn().rest.c_str()));
+        PlayerTurnData* turnData = static_cast<PlayerTurnData*>(event->getUserData());
+        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), turnData->seatId);
+        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), turnData->seatId);
+        showPaiduiNum(atoi(turnData->rest.c_str()));
         if (seatId == ClientSeatId::hero){
             playerHero->hideCurrentBigJong();
-            playerHero->playerTurnReplace(GAMEDATA::getInstance()->getPlayerTurn());
+            playerHero->playerTurnReplace(turnData);
             if (!GAMEDATA::getInstance()->getIsTingState()){
                 playerHero->startTimeClockAnim();
             }
         }
         else if (seatId == ClientSeatId::left){
             playerLeft->drawLeftPlayerTurn();
-            playerLeft->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerLeft->replaceTurnHua(turnData);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             playerRight->drawRightPlayerTurn();
-            playerRight->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerRight->replaceTurnHua(turnData);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->drawOppositePlayerTurn();
-            playerOpposite->replaceTurnHua(GAMEDATA::getInstance()->getPlayerTurn());
+            playerOpposite->replaceTurnHua(turnData);
             playerOpposite->startTimeClockAnim();
         }
     });

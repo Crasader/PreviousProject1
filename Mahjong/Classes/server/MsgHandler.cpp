@@ -800,25 +800,26 @@ void MsgHandler::showOtherGangNotify(std::string msg){
     CC_SAFE_DELETE(cpgData);
 }
 
+
+ //{code:2019,poxiaoId:poxiaoId,seatId:seatId,poker:{poker:1,hua:32,33}}
 void MsgHandler::nextPlayer(std::string msg){
-    //{code:2019,poxiaoId:poxiaoId,seatId:seatId,poker:{poker:1,hua:32,33}}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    PlayerTurnData playerTurnData;
-    playerTurnData.seatId = _mDoc["seatId"].GetInt();
+    PlayerTurnData* playerTurnData = new PlayerTurnData();
+    playerTurnData->seatId = _mDoc["seatId"].GetInt();
     if (_mDoc.HasMember("poker")){
         const rapidjson::Value &poker = _mDoc["poker"];
         const rapidjson::Value &finalPoker = poker["poker"];
-        playerTurnData.poker = finalPoker.GetInt();
+        playerTurnData->poker = finalPoker.GetInt();
         if (poker.HasMember("hua")){
             const rapidjson::Value &hua = poker["hua"];
-            playerTurnData.replace = hua.GetString();
+            playerTurnData->replace = hua.GetString();
         }
     }
     const rapidjson::Value &rest = _mDoc["rest"];
-    playerTurnData.rest = rest.GetString();
+    playerTurnData->rest = rest.GetString();
     
     PlayerCpgtData tingData;
     tingData.seatId = _mDoc["seatId"].GetInt();
@@ -841,12 +842,11 @@ void MsgHandler::nextPlayer(std::string msg){
         tingData.flag = 2;
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
-        //        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        playerTurnData.hastinggang = true;
+        playerTurnData->hastinggang = true;
+        playerTurnData->cpgData = tingData;
     }
-    GAMEDATA::getInstance()->setPlayerTurn(playerTurnData);
-    postNotifyMessage(MSG_PLAYER_TURN_WHO, "");
-    
+    postNotifyMessage2(MSG_PLAYER_TURN_WHO, playerTurnData);
+    CC_SAFE_DELETE(playerTurnData);
 }
 
 

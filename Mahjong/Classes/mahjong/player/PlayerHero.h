@@ -33,7 +33,7 @@ public:
     void sortHandJongs(int posx,bool isTurn);
     void settleHandJongs(int pos);//手牌整理
     void replaceFlower();
-    void playerTurnReplace(PlayerTurnData data);
+    void playerTurnReplace(PlayerTurnData* data);
     //玩家吃碰杠
     void drawHeroChi(HeroCpgRespData resp, std::vector<string> chipai, PlayerBase* playerBase);
     void drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
@@ -62,7 +62,7 @@ public:
     CC_SYNTHESIZE(int, cpgPostionX, CpgPostionX);
     
     void drawPlayedJongMingpai(int type);
-    void playerTurnReplaceMingpai(PlayerTurnData data);
+    void playerTurnReplaceMingpai(PlayerTurnData* data);
     void updateMingpai(Vector<Jong*> playerHandJongs,Vector<Jong*> playerPlayedJongs,std::vector<PlayerCpgRecord> playerCpgRecords);
     void drawHeroChiMingpai(HeroCpgRespData resp, std::vector<string> chipai, PlayerBase* playerBase);
     void drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData* data, PlayerBase* playerBase);

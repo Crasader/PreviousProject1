@@ -154,11 +154,11 @@ void PlayerBase::replaceHandHua(JongViewType tpye){
     }
 }
 
-void PlayerBase::replaceTurnHua(PlayerTurnData data){
-    if(data.replace==""){
+void PlayerBase::replaceTurnHua(PlayerTurnData* data){
+    if(data->replace==""){
         return;
     }
-    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+    std::vector<std::string> replace = StringUtil::split(data->replace, ",");
     if(replace.size()>0){
         huaIndex=0;
         Sprite* spr = Sprite::create();
@@ -179,11 +179,11 @@ void PlayerBase::replaceTurnHua(PlayerTurnData data){
     
 }
 
-void PlayerBase::replaceTurnHuaMingpai(PlayerTurnData data){
-    if(data.replace==""){
+void PlayerBase::replaceTurnHuaMingpai(PlayerTurnData* data){
+    if(data->replace==""){
         return;
     }
-    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+    std::vector<std::string> replace = StringUtil::split(data->replace, ",");
     setHuaNum(getHuaNum()+(int)replace.size());
     showPlayerHua(getHuaNum());
 }

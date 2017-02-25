@@ -726,25 +726,26 @@ void ReviewGame::addCoustomListener(){
     
     
     turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getPlayerTurn().seatId);
-        showPaiduiNum(atoi(GAMEDATA::getInstance()->getPlayerTurn().rest.c_str()));
+        PlayerTurnData* data = static_cast<PlayerTurnData*>(event->getUserData());
+        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data->seatId);
+        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), data->seatId);
+        showPaiduiNum(atoi(data->rest.c_str()));
         if (seatId == ClientSeatId::hero){
             playerHero->hideCurrentBigJong();
-            playerHero->playerTurnReplaceMingpai(GAMEDATA::getInstance()->getPlayerTurn());
+            playerHero->playerTurnReplaceMingpai(data);
         }
         else if (seatId == ClientSeatId::left){
-            playerLeft->replaceTurnHuaMingpai(GAMEDATA::getInstance()->getPlayerTurn());
-            playerLeft->drawLeftPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
+            playerLeft->replaceTurnHuaMingpai(data);
+            playerLeft->drawLeftPlayerTurnMingpai(data->poker);
         }
         else if (seatId == ClientSeatId::right){
             
-            playerRight->replaceTurnHuaMingpai(GAMEDATA::getInstance()->getPlayerTurn());
-            playerRight->drawRightPlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
+            playerRight->replaceTurnHuaMingpai(data);
+            playerRight->drawRightPlayerTurnMingpai(data->poker);
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->replaceTurnHuaMingpai(GAMEDATA::getInstance()->getPlayerTurn());
-            playerOpposite->drawOppositePlayerTurnMingpai(GAMEDATA::getInstance()->getPlayerTurn().poker);
+            playerOpposite->replaceTurnHuaMingpai(data);
+            playerOpposite->drawOppositePlayerTurnMingpai(data->poker);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);

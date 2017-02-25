@@ -90,15 +90,6 @@ struct OtherPlayedJong
     int seatId;
 };
 
-struct PlayerTurnData
-{
-    int seatId;
-    int poker;
-    std::string rest;
-    std::string replace;
-    bool hastinggang = false;
-};
-
 struct PlayerCpgtData
 {
     int seatId;
@@ -110,6 +101,17 @@ struct PlayerCpgtData
     std::string peng;
     std::string gang;
 };
+
+struct PlayerTurnData
+{
+    int seatId;
+    int poker;
+    std::string rest;
+    std::string replace;
+    bool hastinggang = false;
+    PlayerCpgtData cpgData;
+};
+
 
 struct GameResultData
 {

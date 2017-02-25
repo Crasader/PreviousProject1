@@ -623,13 +623,13 @@ void PlayerHero::replaceFlower(){
     }
 }
 
-void PlayerHero::playerTurnReplace(PlayerTurnData data){
+void PlayerHero::playerTurnReplace(PlayerTurnData* data){
     huaIndex = 0;
-    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
-    if (data.replace != "" && replace.size() > 0){
+    std::vector<std::string> replace = StringUtil::split(data->replace, ",");
+    if (data->replace != "" && replace.size() > 0){
         Jong* turnJong = Jong::create();
         turnJong->setVisible(false);
-        turnJong->showJong(herohand, data.poker);
+        turnJong->showJong(herohand, data->poker);
         addChild(turnJong);
         playerHandJongs.pushBack(turnJong);
         schedule([=](float dt){
@@ -652,22 +652,22 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             settleHandJongs(getHandPosX());
             currentJong = turnJong;
             setIsAllowPlay(true);
-            if(data.hastinggang){
+            if(data->hastinggang){
                 EventCustom tingEvent(MSG_HERO_TING_GANG);
                 Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
             }
         }, 0, 0, 0.6f*replace.size(),"hua2pokerdelay");
     }
     else{
-        if(data.poker>0){
+        if(data->poker>0){
             Jong* jong = Jong::create();
-            jong->showJong(herohand, data.poker);
+            jong->showJong(herohand, data->poker);
             addChild(jong);
             playerHandJongs.pushBack(jong);
             currentJong = jong;
             settleHandJongs(getHandPosX());
         }
-        if(data.hastinggang){
+        if(data->hastinggang){
             EventCustom tingEvent(MSG_HERO_TING_GANG);
             Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
         }
@@ -678,13 +678,13 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     doubleClickJong = NULL;
 }
 
-void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
-    if(data.replace != ""){
-        std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData* data){
+    if(data->replace != ""){
+        std::vector<std::string> replace = StringUtil::split(data->replace, ",");
         setHuaNum(getHuaNum()+(int)replace.size());
     }
     Jong* jong = Jong::create();
-    jong->showJong(herohand, data.poker);
+    jong->showJong(herohand, data->poker);
     addChild(jong);
     showPlayerHua(getHuaNum());
     playerHandJongs.pushBack(jong);
