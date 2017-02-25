@@ -391,6 +391,72 @@ void MsgHandler::handleWanJiaQunResp(std::string msg){
     postNotifyMessage(MSG_WAN_JIA_WEI_XIN_QUN, NULL);
 }
 
+//{code:105,poxiaoId:"123",content:"abc",seatId:1}
+void MsgHandler::playerChatNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    ChatData chatData;
+    chatData.isRead = false;
+    if (_mDoc.HasMember("content")){
+        const rapidjson::Value &content = _mDoc["content"];
+        chatData.content = content.GetString();
+    }
+    if (_mDoc.HasMember("fId")){
+        const rapidjson::Value &fId = _mDoc["fId"];
+        chatData.poxiaoId = fId.GetString();
+    }
+    if (_mDoc.HasMember("nickname")){
+        const rapidjson::Value &nickname = _mDoc["nickname"];
+        chatData.nickname = nickname.GetString();
+    }
+    if (_mDoc.HasMember("flag")){
+        const rapidjson::Value &flag = _mDoc["flag"];
+        if(flag.GetInt() == 0){
+            FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
+            bool findChatRecord = false;
+            for(int i=0;i<list.friendMsgList.size();i++){
+                if(chatData.poxiaoId == list.friendMsgList.at(i).poxiaoId){
+                    list.friendMsgList.at(i).msgList.push_back(chatData);
+                    findChatRecord = true;
+                }
+            }
+            if(!findChatRecord){
+                FriendChatData data;
+                data.poxiaoId = chatData.poxiaoId;
+                data.msgList.push_back(chatData);
+                list.friendMsgList.push_back(data);
+            }
+            GAMEDATA::getInstance()->setFriendChatMsgList(list);
+        }else{
+            RoomChatMsgList list = GAMEDATA::getInstance()->getRoomChatMsgList();
+            list.msgList.push_back(chatData);
+            GAMEDATA::getInstance()->setRoomChatMsgList(list);
+        }
+    }else{
+        FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
+        bool findChatRecord = false;
+        for(int i=0;i<list.friendMsgList.size();i++){
+            if(chatData.poxiaoId == list.friendMsgList.at(i).poxiaoId){
+                list.friendMsgList.at(i).msgList.push_back(chatData);
+                findChatRecord = true;
+            }
+        }
+        if(!findChatRecord){
+            FriendChatData data;
+            data.poxiaoId = chatData.poxiaoId;
+            data.msgList.push_back(chatData);
+            list.friendMsgList.push_back(data);
+        }
+        GAMEDATA::getInstance()->setFriendChatMsgList(list);
+    }
+    
+    GAMEDATA::getInstance()->setChatData(chatData);
+    postNotifyMessage(MSG_PLAYER_CHAT_NOTIFY, NULL);
+}
+
+
 //{code:107, poxiaoId : poxiaoId, roomstyle : [{rsid:"1111", rsname : "ddd"}, { rsid:"1112", rsname : "dddd" }]}
 void MsgHandler::roomListResp(std::string msg){
     rapidjson::Document _mDoc;
@@ -432,6 +498,177 @@ void MsgHandler::changeGenderResp(std::string msg){
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
     postNotifyMessage(MSG_CHANGE_GENDER_RESP, buf);
 }
+
+// 获取公告回复{code:141,poxiaoId:poxiaoId,content:"11111111"}
+void MsgHandler::handleNoticeResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("content")){
+        const rapidjson::Value &content = _mDoc["content"];
+        GAMEDATA::getInstance()->setNoticeUrl(content.GetString());
+    }
+    postNotifyMessage(MSG_WAN_JIA_GONG_GAO, NULL);
+}
+
+// 获取走马灯回复{code:143,poxiaoId:poxiaoId,content:"11111111"}
+void MsgHandler::handleScrollTextResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("content")){
+        const rapidjson::Value &content = _mDoc["content"];
+        char* buf = const_cast<char*>(content.GetString());
+        postNotifyMessage(MSG_SCROLL_TEXT, buf);
+    }
+}
+void MsgHandler::getPlayerInfoResp(std::string msg){
+    //{code:150,poxiaoId:poxiaoId,lequan:11,bangzuan:22,diamond:33,gold:55,jifen:0}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("lequan")){
+        const rapidjson::Value &lequan = _mDoc["lequan"];
+        UserData::getInstance()->setTicket(lequan.GetInt());
+    }
+    if(_mDoc.HasMember("fangka")){
+        const rapidjson::Value &fangka = _mDoc["fangka"];
+        UserData::getInstance()->setFangkaNum(fangka.GetDouble());
+    }
+    
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        UserData::getInstance()->setGold(gold.GetInt());
+    }
+    if(_mDoc.HasMember("jifen")){
+        const rapidjson::Value &jifen = _mDoc["jifen"];
+        GAMEDATA::getInstance()->setScore(jifen.GetInt());
+    }
+    
+    if(_mDoc.HasMember("ip")){
+        const rapidjson::Value &ip = _mDoc["ip"];
+        GAMEDATA::getInstance()->setIP(ip.GetString());
+    }
+}
+
+
+
+
+void MsgHandler::getHeadImageChangeResp(std::string msg){
+    // 修改图片回复{code:153,result:"1",gender:1} 1成功 其他 失败
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    if(_mDoc.HasMember("gender")){
+        const rapidjson::Value &gender = _mDoc["gender"];
+        UserData::getInstance()->setGender(gender.GetInt());
+    }
+    if(_mDoc.HasMember("pic")){
+        const rapidjson::Value &pic = _mDoc["pic"];
+        UserData::getInstance()->setPicture(pic.GetString());
+    }
+    char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
+    postNotifyMessage(MSG_PLAYER_CHANGE_HEAD_RESP,buf);
+}
+
+// 用户反馈回复{code:155,poxiaoId:poxiaoId,result:"1"} 1成功 0 5分钟内发送一次
+void MsgHandler::getFeedBackResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    char* buf = const_cast<char*>(result.GetString());
+    postNotifyMessage(MSG_PLAYER_FEED_BACK_RESP, buf);
+}
+
+// 用户在别的设备上登陆{code:156,poxiaoId:poxiaoId}
+void MsgHandler::otherClientReplace(std::string msg){
+    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN, NULL);
+}
+
+
+
+// 苹果开关回复{code:158,poxiaoId:poxiaoId,result:0} 0关1开
+void MsgHandler::handleGamePayType(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("result")){
+        const rapidjson::Value &result = _mDoc["result"];
+        UserData::getInstance()->setWeixinPayOpen(result.GetInt() == 0 ?true:false);
+    }
+    postNotifyMessage(MSG_UPDATE_LEQUAN_SHANG_CHEN_SHOW, NULL);
+}
+
+// 领取推广奖励回复{code:164,poxiaoId:poxiaoId,result:0}
+void MsgHandler::handleTuiGuangPrideInfo(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
+    postNotifyMessage(MSG_GET_TUI_GUANG_PRIDE,buf);
+}
+
+//获取推广回复{code:162,poxiaoId:poxiaoId,reward:[{gold:50000},{fangka:1}],result:1,havegot:[{gold:50000},{fangka:1},{people:1}],willget:[{gold:50000},{fangka:1},{people:1}]}
+void MsgHandler::handleTuiGuangInfo(std::string msg){
+    
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    if(result.GetInt() != 0){
+        if(_mDoc.HasMember("reward")){
+            const rapidjson::Value &reward = _mDoc["reward"];
+            TuiGuangReward myReward;
+            if(reward.HasMember("gold")){
+                const rapidjson::Value &gold = reward["gold"];
+                myReward.gold = gold.GetInt();
+            }
+            if(reward.HasMember("fangka")){
+                const rapidjson::Value &fangka = reward["fangka"];
+                myReward.fangka = fangka.GetInt();
+            }
+            GAMEDATA::getInstance()->setTuiGuangReward(myReward);
+        }
+        if(_mDoc.HasMember("havegot")){
+            const rapidjson::Value &havegot = _mDoc["havegot"];
+            TuiGuangRecord myReward;
+            if(havegot.HasMember("gold")){
+                const rapidjson::Value &gold = havegot["gold"];
+                myReward.gold = gold.GetInt();
+            }
+            if(havegot.HasMember("fangka")){
+                const rapidjson::Value &fangka = havegot["fangka"];
+                myReward.fangka = fangka.GetInt();
+            }
+            GAMEDATA::getInstance()->setTuiGuangRecord(myReward);
+        }
+        if(_mDoc.HasMember("willget")){
+            const rapidjson::Value &willget = _mDoc["willget"];
+            TuiGuangPride myReward;
+            if(willget.HasMember("gold")){
+                const rapidjson::Value &gold = willget["gold"];
+                myReward.gold = gold.GetInt();
+            }
+            if(willget.HasMember("fangka")){
+                const rapidjson::Value &fangka = willget["fangka"];
+                myReward.fangka = fangka.GetInt();
+            }
+            GAMEDATA::getInstance()->setTuiGuangPride(myReward);
+        }
+    }
+}
+
 
 //{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,
 //other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]}
@@ -662,6 +899,323 @@ void MsgHandler::showOtherReady(std::string msg){
     postNotifyMessage(MSG_READY_NOTIFY, buf);
 }
 
+void MsgHandler::getPlayerOffLineNotify(std::string msg){
+    // 服务端到客户端掉线通知{code:1010,poxiaoId:poxiaoId}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("seatId")){
+        const rapidjson::Value &seatId = _mDoc["seatId"];
+        char* buf = const_cast<char*>(seatId.GetString());
+        postNotifyMessage(MSG_PLAYER_OFF_LINE_NOTIFY, buf);
+    }
+}
+
+void MsgHandler::dailyPrideResp(std::string msg){
+    // 金币抽奖情况获取回复{code:1023,poxiaoId:poxiaoId,result:"1",gold:"50000",
+    //prize:[{gold:30000},{lequan:300},{lequan:800},{lequan:100},{bangzuan:80},{bangzuan:50},{bangzuan:20},{gold:60000},{diamond:11}],
+    //count:"1",max:"5"} result1为可以参加，0为不可参加 ，count为可以抽奖几次，max为最多能抽奖几次，prize奖品里面数值为整数
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    DailyPrideData data;
+    if (_mDoc.HasMember("result")){
+        data.result = _mDoc["result"].GetString();
+    }
+    if (_mDoc.HasMember("gold")){
+        data.needGold = _mDoc["gold"].GetString();
+    }
+    if (_mDoc.HasMember("count")){
+        data.count = _mDoc["count"].GetString();
+    }
+    if (_mDoc.HasMember("max")){
+        data.max = _mDoc["max"].GetString();
+    }
+    if (_mDoc.HasMember("prize")){
+        const rapidjson::Value &prize = _mDoc["prize"];
+        for (int i = 0; i < prize.Capacity(); i++){
+            PrideData info;
+            const rapidjson::Value &temp = prize[i];
+            if (temp.HasMember("gold")){
+                info.type = PrideType::gold;
+                info.number = temp["gold"].GetInt();
+            }
+            if (temp.HasMember("lequan")){
+                info.type = PrideType::lequan;
+                info.number = temp["lequan"].GetInt();
+            }
+            if (temp.HasMember("bangzuan")){
+                info.type = PrideType::lockDiammond;
+                info.number = temp["bangzuan"].GetInt();
+            }
+            if (temp.HasMember("fangka")){
+                info.type = PrideType::fangka;
+                info.number = temp["fangka"].GetDouble();
+            }
+            data.prides.push_back(info);
+        }
+    }
+    GAMEDATA::getInstance()->setDailyPrideData(data);
+    postNotifyMessage(MSG_PLAYER_DAILY_PRIDE, NULL);
+}
+
+void MsgHandler::todayPrideResp(std::string msg){
+    // 金币抽奖奖励领取回复{code:1025,poxiaoId:poxiaoId,result:"1",prize:{gold:10}}
+    //1为成功 0失败,prize为抽到的奖品，奖品里面数值为整数
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    TodayPrideData  data;
+    if (_mDoc.HasMember("result")){
+        data.result = _mDoc["result"].GetString();
+    }
+    if (_mDoc.HasMember("rest")){
+        data.rest = _mDoc["rest"].GetInt();
+    }
+    if (_mDoc.HasMember("prize")){
+        PrideData info;
+        const rapidjson::Value &temp = _mDoc["prize"];
+        if (temp.HasMember("gold")){
+            info.type = PrideType::gold;
+            info.number = temp["gold"].GetInt();
+        }
+        if (temp.HasMember("lequan")){
+            info.type = PrideType::lequan;
+            info.number = temp["lequan"].GetInt();
+        }
+        if (temp.HasMember("bangzuan")){
+            info.type = PrideType::lockDiammond;
+            info.number = temp["bangzuan"].GetInt();
+        }
+        if (temp.HasMember("fangka")){
+            info.type = PrideType::fangka;
+            info.number = temp["fangka"].GetDouble();
+        }
+        data.pride = info;
+    }
+    GAMEDATA::getInstance()->setTodayPrideData(data);
+    postNotifyMessage(MSG_PLAYER_TODAY_PRIDE, NULL);
+}
+
+
+
+void MsgHandler::lequanChangeListResp(std::string msg){
+    // 乐券商城回复{code:1041,poxiaoId:poxiaoId,mall:[{goodsId:"1",goodsName:"手机",goodsPrice:"100"},{goodsId:"2",goodsName:"流量",goodsPrice:"1000"}]}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &mall = _mDoc["mall"];
+    LequanChangeList data;
+    data.needInit = true;
+    for(int i=0;i<mall.Capacity();i++){
+        const rapidjson::Value &temp = mall[i];
+        LequanChange change;
+        change.propId = temp["goodsId"].GetString();
+        change.propPrice = temp["goodsPrice"].GetString();
+        change.propName = temp["goodsName"].GetString();
+        change.propType = temp["goodsType"].GetString();
+        change.url = temp["url"].GetString();
+        data.list.push_back(change);
+    }
+    GAMEDATA::getInstance()->setLequanChangeList(data);
+    postNotifyMessage(MSG_PLAYER_LEQUAN_CHANGE_LIST, NULL);
+    
+}
+
+
+// 乐券商城兑换回复{code:1043,poxiaoId:poxiaoId,result:"1"} 1成功0失败
+void MsgHandler::getLequanExchangeResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    LequanChangeResult myResult;
+    myResult.result = result.GetString();
+    if(_mDoc.HasMember("lequan")){
+        const rapidjson::Value &lequan = _mDoc["lequan"];
+        myResult.lequan = lequan.GetInt();
+    }
+    GAMEDATA::getInstance()->setLequanChangeResult(myResult);
+    postNotifyMessage(MSG_PLAYER_LEQUAN_EXCHANGE, NULL);
+}
+
+
+
+
+
+void MsgHandler::diamondChangeListResp(std::string msg){
+    //充值列表回复{code:1045,poxiaoId:poxiaoId,list:[{id:"1",money:"1000",diamond:"100"},{id:"2",money:"2000",diamond:"200"}]}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &list = _mDoc["list"];
+    FangkaChargeList data;
+    data.needInit = true;
+    for(int i=0;i<list.Capacity();i++){
+        const rapidjson::Value &temp = list[i];
+        FangkaCharge change;
+        change.money = atoi(temp["money"].GetString());
+        change.fangka = atoi(temp["fangka"].GetString());
+        change.payId = atoi(temp["id"].GetString());
+        data.list.push_back(change);
+    }
+    GAMEDATA::getInstance()->setFangkaChargeList(data);
+    postNotifyMessage(MSG_PLAYER_GOLD_CHANGE_LIST, NULL);
+    
+}
+
+void MsgHandler::goldChangeListResp(std::string msg){
+    // 兑换列表回复{code:1049,poxiaoId:poxiaoId,list:[{id:"1",gold:"1000",diamond:"100"},{id:"2",gold:"2000",diamond:"200"}]}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &list = _mDoc["list"];
+    GoldChangeList data;
+    data.needInit = true;
+    for(int i=0;i<list.Capacity();i++){
+        const rapidjson::Value &temp = list[i];
+        GoldChange change;
+        change.gold = atoi(temp["gold"].GetString());
+        change.diamond = atoi(temp["diamond"].GetString());
+        change.fangka = atoi(temp["fangka"].GetString());
+        data.list.push_back(change);
+    }
+    GAMEDATA::getInstance()->setGoldChangeList(data);
+    postNotifyMessage(MSG_PLAYER_GOLD_CHANGE_LIST, NULL);
+}
+
+void MsgHandler:: goldChangeResp(std::string msg){
+    // 兑换回复{code:1051,poxiaoId:poxiaoId,result:"1"} 1成功0失败
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        UserData::getInstance()->setGold(gold.GetInt());
+    }
+    if(_mDoc.HasMember("diamond")){
+        const rapidjson::Value &diamond = _mDoc["diamond"];
+        UserData::getInstance()->setDiamond(diamond.GetInt());
+    }
+    char* buf = const_cast<char*>(result.GetString());
+    postNotifyMessage(MSG_PLAYER_GOLD_CHANGE_RESP, buf);
+}
+
+void MsgHandler::firstChargeInfoResp(std::string msg){
+    // 首次充值获取回复{code:1053,poxiaoId:poxiaoId,gold:"123",fangka:"456",money:"10"}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    FirstChargeData data;
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        data.gold = atoi(gold.GetString());
+    }
+    if(_mDoc.HasMember("fangka")){
+        const rapidjson::Value &fangka = _mDoc["fangka"];
+        data.fangka = atoi(fangka.GetString());
+    }
+    if(_mDoc.HasMember("money")){
+        const rapidjson::Value &money = _mDoc["money"];
+        data.money = atoi(money.GetString());
+    }
+    data.needInit = false;
+    GAMEDATA::getInstance()->setFirstChargeData(data);
+    postNotifyMessage(MSG_PLAYER_FIRST_CHARGE, NULL);
+}
+
+void MsgHandler::getLequanChangeRecordResp(std::string msg){
+    // 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    LeChangeRecord records;
+    if(_mDoc.HasMember("list")){
+        const rapidjson::Value &list = _mDoc["list"];
+        for(int i=0;i<list.Capacity();i++){
+            LeRecord rec;
+            const rapidjson::Value &temp = list[i];
+            rec.propId =temp["id"].GetString();
+            rec.state = temp["status"].GetString();
+            records.records.push_back(rec);
+        }
+    }
+    GAMEDATA::getInstance()->setLeChangeRecord(records);
+    postNotifyMessage(MSG_PLAYER_LEQUAN_EXCHANGE_RECORD, NULL);
+}
+
+//再来一局回复{code:1996,poxiaoId:poxiaoId,result:1,rsid:1000}1为成功 2为金币小于下限 3为金币高于上限rsid为跳转房间
+void MsgHandler::gameContinueResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    EnterRoomResp resp;
+    const rapidjson::Value &result = _mDoc["result"];
+    resp.result = StringUtil::itos(result.GetInt());
+    
+    if(_mDoc.HasMember("rsid")){
+        const rapidjson::Value &rsid = _mDoc["rsid"];
+        resp.rsid = rsid.GetString();
+    }
+    if(_mDoc.HasMember("money")){
+        const rapidjson::Value &money = _mDoc["money"];
+        resp.money = money.GetString();
+    }
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        resp.gold = gold.GetString();
+    }
+    if(_mDoc.HasMember("id")){
+        const rapidjson::Value &payid = _mDoc["id"];
+        resp.payid = payid.GetString();
+    }
+    if(_mDoc.HasMember("min")){
+        const rapidjson::Value &min = _mDoc["min"];
+        resp.min = min.GetString();
+    }
+    if(_mDoc.HasMember("kb")){
+        const rapidjson::Value &kb = _mDoc["kb"];
+        resp.kb = kb.GetString();
+    }
+    if(_mDoc.HasMember("huangfan")){
+        const rapidjson::Value &huangfan = _mDoc["huangfan"];
+        resp.huangfan = huangfan.GetString();
+    }
+    if(_mDoc.HasMember("all")){
+        const rapidjson::Value &all = _mDoc["all"];
+        for (int i = 0; i < all.Capacity(); ++i){
+            const rapidjson::Value &temp = all[i];
+            PlayerReady ready;
+            if(temp.HasMember("ifready")){
+                ready.ifready = temp["ifready"].GetInt();
+            }
+            if(temp.HasMember("poxiaoId")){
+                ready.poxiaoId = temp["poxiaoId"].GetString();
+            }
+            if(temp.HasMember("seatId")){
+                ready.seatId = temp["seatId"].GetInt();
+            }
+            resp.playerReadys.push_back(ready);
+        }
+    }
+    GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
+    postNotifyMessage(MSG_HERO_CONTINUE_RESP, NULL);
+}
+
+
+
 void MsgHandler::removePlayerNotify(std::string msg){
     //{code:2001, poxiaoId : poxiaoId, seatId : seatId}
     rapidjson::Document _mDoc;
@@ -739,7 +1293,7 @@ void MsgHandler::getHeroJongs(std::string msg){
     CC_SAFE_DELETE(faPaiData);
 }
 
- //{"code":2005,"poker":"28","poxiaoId":"e8fec2c3-47ba-4063-ad07-6b7c014c4dca","seatId":3}
+//{"code":2005,"poker":"28","poxiaoId":"e8fec2c3-47ba-4063-ad07-6b7c014c4dca","seatId":3}
 void MsgHandler::showOtherPlayedJong(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -808,7 +1362,7 @@ void MsgHandler::heroChiResp(std::string msg){
     CC_SAFE_DELETE(cpgRespData);
 }
 
- // {code:2010,poxiaoId:poxiaoId,seatId:seatId,chi:"1,2",poker:poker}
+// {code:2010,poxiaoId:poxiaoId,seatId:seatId,chi:"1,2",poker:poker}
 void MsgHandler::showOtherChiNotify(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -908,7 +1462,7 @@ void MsgHandler::showOtherGangNotify(std::string msg){
 }
 
 
- //{code:2019,poxiaoId:poxiaoId,seatId:seatId,poker:{poker:1,hua:32,33}}
+//{code:2019,poxiaoId:poxiaoId,seatId:seatId,poker:{poker:1,hua:32,33}}
 void MsgHandler::nextPlayer(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -979,7 +1533,7 @@ void MsgHandler::heroTingMsg(std::string msg){
     CC_SAFE_DELETE(tingData);
 }
 
- //{code:2023,poxiaoId:poxiaoId,seatId:seatId,result:1}
+//{code:2023,poxiaoId:poxiaoId,seatId:seatId,result:1}
 void MsgHandler::playerTingResp(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -996,7 +1550,7 @@ void MsgHandler::playerTingResp(std::string msg){
 //{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,
 //golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0}]}
 void MsgHandler::gameResultNotify(std::string msg){
-      rapidjson::Document _mDoc;
+    rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
@@ -1106,7 +1660,7 @@ void MsgHandler::gameResultNotify(std::string msg){
     postNotifyMessage(MSG_GAME_RESULT, buf);
 }
 
- //{code:2025,poxiaoId:poxiaoId,seatId:seatId}
+//{code:2025,poxiaoId:poxiaoId,seatId:seatId}
 void MsgHandler::playerTingNotify(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -1116,6 +1670,19 @@ void MsgHandler::playerTingNotify(std::string msg){
     std::string seat = StringUtils::format("%d",seatId.GetInt());
     char* buf = const_cast<char*>(seat.c_str());
     postNotifyMessage(MSG_PLAYER_TING_NOTIFY, buf);
+}
+
+// 退出游戏回复{code:2027,poxiaoId:poxiaoId,seatId:seatId,result:1}
+void MsgHandler::handleQuitGameViewResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("prjucount")){
+        const rapidjson::Value &prjucount = _mDoc["prjucount"];
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom)
+            GAMEDATA::getInstance()->setPrivateGameNum(prjucount.GetString());
+    }
 }
 
 
@@ -1467,72 +2034,6 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
 }
 
 
-void MsgHandler::playerChatNotify(std::string msg){
-    //{code:105,poxiaoId:"123",content:"abc",seatId:1}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    ChatData chatData;
-    chatData.isRead = false;
-    if (_mDoc.HasMember("content")){
-        const rapidjson::Value &content = _mDoc["content"];
-        chatData.content = content.GetString();
-    }
-    if (_mDoc.HasMember("fId")){
-        const rapidjson::Value &fId = _mDoc["fId"];
-        chatData.poxiaoId = fId.GetString();
-    }
-    if (_mDoc.HasMember("nickname")){
-        const rapidjson::Value &nickname = _mDoc["nickname"];
-        chatData.nickname = nickname.GetString();
-    }
-    if (_mDoc.HasMember("flag")){
-        const rapidjson::Value &flag = _mDoc["flag"];
-        if(flag.GetInt() == 0){
-            FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
-            bool findChatRecord = false;
-            for(int i=0;i<list.friendMsgList.size();i++){
-                if(chatData.poxiaoId == list.friendMsgList.at(i).poxiaoId){
-                    list.friendMsgList.at(i).msgList.push_back(chatData);
-                    findChatRecord = true;
-                }
-            }
-            if(!findChatRecord){
-                FriendChatData data;
-                data.poxiaoId = chatData.poxiaoId;
-                data.msgList.push_back(chatData);
-                list.friendMsgList.push_back(data);
-            }
-            GAMEDATA::getInstance()->setFriendChatMsgList(list);
-        }else{
-            RoomChatMsgList list = GAMEDATA::getInstance()->getRoomChatMsgList();
-            list.msgList.push_back(chatData);
-            GAMEDATA::getInstance()->setRoomChatMsgList(list);
-        }
-    }else{
-        FriendChatMsgList list = GAMEDATA::getInstance()->getFriendChatMsgList();
-        bool findChatRecord = false;
-        for(int i=0;i<list.friendMsgList.size();i++){
-            if(chatData.poxiaoId == list.friendMsgList.at(i).poxiaoId){
-                list.friendMsgList.at(i).msgList.push_back(chatData);
-                findChatRecord = true;
-            }
-        }
-        if(!findChatRecord){
-            FriendChatData data;
-            data.poxiaoId = chatData.poxiaoId;
-            data.msgList.push_back(chatData);
-            list.friendMsgList.push_back(data);
-        }
-        GAMEDATA::getInstance()->setFriendChatMsgList(list);
-    }
-    
-    GAMEDATA::getInstance()->setChatData(chatData);
-    postNotifyMessage(MSG_PLAYER_CHAT_NOTIFY, NULL);
-}
-
-
 
 void MsgHandler::billResp(std::string msg){
     //    获取账单回复{code:2042,poxiaoId:poxiaoId,bill:[{date:"2015-06-06 15:15",count:"10",billid:"8888888888",content:[{nickname:"张三",score:"1000"},{nickname:"李四",score:"2000"},{nickname:"王五",score:"1000"},{nickname:"赵六",score:"1100"}]}]}
@@ -1604,382 +2105,6 @@ void MsgHandler::billDetailResp(std::string msg){
 }
 
 
-void MsgHandler::dailyPrideResp(std::string msg){
-    // 金币抽奖情况获取回复{code:1023,poxiaoId:poxiaoId,result:"1",gold:"50000",
-    //prize:[{gold:30000},{lequan:300},{lequan:800},{lequan:100},{bangzuan:80},{bangzuan:50},{bangzuan:20},{gold:60000},{diamond:11}],
-    //count:"1",max:"5"} result1为可以参加，0为不可参加 ，count为可以抽奖几次，max为最多能抽奖几次，prize奖品里面数值为整数
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    DailyPrideData data;
-    if (_mDoc.HasMember("result")){
-        data.result = _mDoc["result"].GetString();
-    }
-    if (_mDoc.HasMember("gold")){
-        data.needGold = _mDoc["gold"].GetString();
-    }
-    if (_mDoc.HasMember("count")){
-        data.count = _mDoc["count"].GetString();
-    }
-    if (_mDoc.HasMember("max")){
-        data.max = _mDoc["max"].GetString();
-    }
-    if (_mDoc.HasMember("prize")){
-        const rapidjson::Value &prize = _mDoc["prize"];
-        for (int i = 0; i < prize.Capacity(); i++){
-            PrideData info;
-            const rapidjson::Value &temp = prize[i];
-            if (temp.HasMember("gold")){
-                info.type = PrideType::gold;
-                info.number = temp["gold"].GetInt();
-            }
-            if (temp.HasMember("lequan")){
-                info.type = PrideType::lequan;
-                info.number = temp["lequan"].GetInt();
-            }
-            if (temp.HasMember("bangzuan")){
-                info.type = PrideType::lockDiammond;
-                info.number = temp["bangzuan"].GetInt();
-            }
-            if (temp.HasMember("fangka")){
-                info.type = PrideType::fangka;
-                info.number = temp["fangka"].GetDouble();
-            }
-            data.prides.push_back(info);
-        }
-    }
-    GAMEDATA::getInstance()->setDailyPrideData(data);
-    postNotifyMessage(MSG_PLAYER_DAILY_PRIDE, NULL);
-}
-
-void MsgHandler::todayPrideResp(std::string msg){
-    // 金币抽奖奖励领取回复{code:1025,poxiaoId:poxiaoId,result:"1",prize:{gold:10}}
-    //1为成功 0失败,prize为抽到的奖品，奖品里面数值为整数
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    TodayPrideData  data;
-    if (_mDoc.HasMember("result")){
-        data.result = _mDoc["result"].GetString();
-    }
-    if (_mDoc.HasMember("rest")){
-        data.rest = _mDoc["rest"].GetInt();
-    }
-    if (_mDoc.HasMember("prize")){
-        PrideData info;
-        const rapidjson::Value &temp = _mDoc["prize"];
-        if (temp.HasMember("gold")){
-            info.type = PrideType::gold;
-            info.number = temp["gold"].GetInt();
-        }
-        if (temp.HasMember("lequan")){
-            info.type = PrideType::lequan;
-            info.number = temp["lequan"].GetInt();
-        }
-        if (temp.HasMember("bangzuan")){
-            info.type = PrideType::lockDiammond;
-            info.number = temp["bangzuan"].GetInt();
-        }
-        if (temp.HasMember("fangka")){
-            info.type = PrideType::fangka;
-            info.number = temp["fangka"].GetDouble();
-        }
-        data.pride = info;
-    }
-    GAMEDATA::getInstance()->setTodayPrideData(data);
-    postNotifyMessage(MSG_PLAYER_TODAY_PRIDE, NULL);
-}
-
-
-void MsgHandler::firstChargeInfoResp(std::string msg){
-    // 首次充值获取回复{code:1053,poxiaoId:poxiaoId,gold:"123",fangka:"456",money:"10"}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    FirstChargeData data;
-    if(_mDoc.HasMember("gold")){
-        const rapidjson::Value &gold = _mDoc["gold"];
-        data.gold = atoi(gold.GetString());
-    }
-    if(_mDoc.HasMember("fangka")){
-        const rapidjson::Value &fangka = _mDoc["fangka"];
-        data.fangka = atoi(fangka.GetString());
-    }
-    if(_mDoc.HasMember("money")){
-        const rapidjson::Value &money = _mDoc["money"];
-        data.money = atoi(money.GetString());
-    }
-    data.needInit = false;
-    GAMEDATA::getInstance()->setFirstChargeData(data);
-    postNotifyMessage(MSG_PLAYER_FIRST_CHARGE, NULL);
-}
-
-void MsgHandler::goldChangeListResp(std::string msg){
-    // 兑换列表回复{code:1049,poxiaoId:poxiaoId,list:[{id:"1",gold:"1000",diamond:"100"},{id:"2",gold:"2000",diamond:"200"}]}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &list = _mDoc["list"];
-    GoldChangeList data;
-    data.needInit = true;
-    for(int i=0;i<list.Capacity();i++){
-        const rapidjson::Value &temp = list[i];
-        GoldChange change;
-        change.gold = atoi(temp["gold"].GetString());
-        change.diamond = atoi(temp["diamond"].GetString());
-        change.fangka = atoi(temp["fangka"].GetString());
-        data.list.push_back(change);
-    }
-    GAMEDATA::getInstance()->setGoldChangeList(data);
-    postNotifyMessage(MSG_PLAYER_GOLD_CHANGE_LIST, NULL);
-}
-
-void MsgHandler:: goldChangeResp(std::string msg){
-    // 兑换回复{code:1051,poxiaoId:poxiaoId,result:"1"} 1成功0失败
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    if(_mDoc.HasMember("gold")){
-        const rapidjson::Value &gold = _mDoc["gold"];
-        UserData::getInstance()->setGold(gold.GetInt());
-    }
-    if(_mDoc.HasMember("diamond")){
-        const rapidjson::Value &diamond = _mDoc["diamond"];
-        UserData::getInstance()->setDiamond(diamond.GetInt());
-    }
-    char* buf = const_cast<char*>(result.GetString());
-    postNotifyMessage(MSG_PLAYER_GOLD_CHANGE_RESP, buf);
-}
-
-void MsgHandler::diamondChangeListResp(std::string msg){
-    //充值列表回复{code:1045,poxiaoId:poxiaoId,list:[{id:"1",money:"1000",diamond:"100"},{id:"2",money:"2000",diamond:"200"}]}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &list = _mDoc["list"];
-    FangkaChargeList data;
-    data.needInit = true;
-    for(int i=0;i<list.Capacity();i++){
-        const rapidjson::Value &temp = list[i];
-        FangkaCharge change;
-        change.money = atoi(temp["money"].GetString());
-        change.fangka = atoi(temp["fangka"].GetString());
-        change.payId = atoi(temp["id"].GetString());
-        data.list.push_back(change);
-    }
-    GAMEDATA::getInstance()->setFangkaChargeList(data);
-    postNotifyMessage(MSG_PLAYER_GOLD_CHANGE_LIST, NULL);
-    
-}
-
-void MsgHandler::lequanChangeListResp(std::string msg){
-    // 乐券商城回复{code:1041,poxiaoId:poxiaoId,mall:[{goodsId:"1",goodsName:"手机",goodsPrice:"100"},{goodsId:"2",goodsName:"流量",goodsPrice:"1000"}]}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &mall = _mDoc["mall"];
-    LequanChangeList data;
-    data.needInit = true;
-    for(int i=0;i<mall.Capacity();i++){
-        const rapidjson::Value &temp = mall[i];
-        LequanChange change;
-        change.propId = temp["goodsId"].GetString();
-        change.propPrice = temp["goodsPrice"].GetString();
-        change.propName = temp["goodsName"].GetString();
-        change.propType = temp["goodsType"].GetString();
-        change.url = temp["url"].GetString();
-        data.list.push_back(change);
-    }
-    GAMEDATA::getInstance()->setLequanChangeList(data);
-    postNotifyMessage(MSG_PLAYER_LEQUAN_CHANGE_LIST, NULL);
-    
-}
-
-
-void MsgHandler::getLequanExchangeResp(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    LequanChangeResult myResult;
-    myResult.result = result.GetString();
-    if(_mDoc.HasMember("lequan")){
-        const rapidjson::Value &lequan = _mDoc["lequan"];
-        myResult.lequan = lequan.GetInt();
-    }
-    GAMEDATA::getInstance()->setLequanChangeResult(myResult);
-    postNotifyMessage(MSG_PLAYER_LEQUAN_EXCHANGE, NULL);
-}
-
-void MsgHandler::getPlayerInfoResp(std::string msg){
-    //{code:150,poxiaoId:poxiaoId,lequan:11,bangzuan:22,diamond:33,gold:55,jifen:0}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("lequan")){
-        const rapidjson::Value &lequan = _mDoc["lequan"];
-        UserData::getInstance()->setTicket(lequan.GetInt());
-    }
-    if(_mDoc.HasMember("fangka")){
-        const rapidjson::Value &fangka = _mDoc["fangka"];
-        UserData::getInstance()->setFangkaNum(fangka.GetDouble());
-    }
-    
-    if(_mDoc.HasMember("gold")){
-        const rapidjson::Value &gold = _mDoc["gold"];
-        UserData::getInstance()->setGold(gold.GetInt());
-    }
-    if(_mDoc.HasMember("jifen")){
-        const rapidjson::Value &jifen = _mDoc["jifen"];
-        GAMEDATA::getInstance()->setScore(jifen.GetInt());
-    }
-    
-    if(_mDoc.HasMember("ip")){
-        const rapidjson::Value &ip = _mDoc["ip"];
-        GAMEDATA::getInstance()->setIP(ip.GetString());
-    }
-}
-
-
-
-void MsgHandler::getPlayerOffLineNotify(std::string msg){
-    // 服务端到客户端掉线通知{code:1010,poxiaoId:poxiaoId}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("seatId")){
-        const rapidjson::Value &seatId = _mDoc["seatId"];
-        char* buf = const_cast<char*>(seatId.GetString());
-        postNotifyMessage(MSG_PLAYER_OFF_LINE_NOTIFY, buf);
-    }
-}
-
-void MsgHandler::getLequanChangeRecordResp(std::string msg){
-    // 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    LeChangeRecord records;
-    if(_mDoc.HasMember("list")){
-        const rapidjson::Value &list = _mDoc["list"];
-        for(int i=0;i<list.Capacity();i++){
-            LeRecord rec;
-            const rapidjson::Value &temp = list[i];
-            rec.propId =temp["id"].GetString();
-            rec.state = temp["status"].GetString();
-            records.records.push_back(rec);
-        }
-    }
-    GAMEDATA::getInstance()->setLeChangeRecord(records);
-    postNotifyMessage(MSG_PLAYER_LEQUAN_EXCHANGE_RECORD, NULL);
-}
-
-
-void MsgHandler::getHeadImageChangeResp(std::string msg){
-    // 修改图片回复{code:153,result:"1",gender:1} 1成功 其他 失败
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    if(_mDoc.HasMember("gender")){
-        const rapidjson::Value &gender = _mDoc["gender"];
-        UserData::getInstance()->setGender(gender.GetInt());
-    }
-    if(_mDoc.HasMember("pic")){
-        const rapidjson::Value &pic = _mDoc["pic"];
-        UserData::getInstance()->setPicture(pic.GetString());
-    }
-    char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
-    postNotifyMessage(MSG_PLAYER_CHANGE_HEAD_RESP,buf);
-}
-
-
-void MsgHandler::getFeedBackResp(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    char* buf = const_cast<char*>(result.GetString());
-    postNotifyMessage(MSG_PLAYER_FEED_BACK_RESP, buf);
-}
-
-
-
-void MsgHandler::gameContinueResp(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    EnterRoomResp resp;
-    const rapidjson::Value &result = _mDoc["result"];
-    resp.result = StringUtil::itos(result.GetInt());
-    
-    if(_mDoc.HasMember("rsid")){
-        const rapidjson::Value &rsid = _mDoc["rsid"];
-        resp.rsid = rsid.GetString();
-    }
-    if(_mDoc.HasMember("money")){
-        const rapidjson::Value &money = _mDoc["money"];
-        resp.money = money.GetString();
-    }
-    if(_mDoc.HasMember("gold")){
-        const rapidjson::Value &gold = _mDoc["gold"];
-        resp.gold = gold.GetString();
-    }
-    if(_mDoc.HasMember("id")){
-        const rapidjson::Value &payid = _mDoc["id"];
-        resp.payid = payid.GetString();
-    }
-    if(_mDoc.HasMember("min")){
-        const rapidjson::Value &min = _mDoc["min"];
-        resp.min = min.GetString();
-    }
-    if(_mDoc.HasMember("kb")){
-        const rapidjson::Value &kb = _mDoc["kb"];
-        resp.kb = kb.GetString();
-    }
-    if(_mDoc.HasMember("huangfan")){
-        const rapidjson::Value &huangfan = _mDoc["huangfan"];
-        resp.huangfan = huangfan.GetString();
-    }
-    if(_mDoc.HasMember("all")){
-        const rapidjson::Value &all = _mDoc["all"];
-        for (int i = 0; i < all.Capacity(); ++i){
-            const rapidjson::Value &temp = all[i];
-            PlayerReady ready;
-            if(temp.HasMember("ifready")){
-                ready.ifready = temp["ifready"].GetInt();
-            }
-            if(temp.HasMember("poxiaoId")){
-                ready.poxiaoId = temp["poxiaoId"].GetString();
-            }
-            if(temp.HasMember("seatId")){
-                ready.seatId = temp["seatId"].GetInt();
-            }
-            resp.playerReadys.push_back(ready);
-        }
-    }
-    GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
-    postNotifyMessage(MSG_HERO_CONTINUE_RESP, NULL);
-}
-
-void MsgHandler::otherClientReplace(std::string msg){
-    postNotifyMessage(MSG_PLAYER_REPLACE_LOGIN, NULL);
-}
 
 void MsgHandler::inviteOthersResp(std::string msg){
     // 好友邀请结果通知{code:2045,poxiaoId:"123",pId:"456",result:1,nickname:""} result 为1是好友不在线 2是好友在游戏中，邀请成功不发送次通知
@@ -1996,24 +2121,18 @@ void MsgHandler::inviteOthersResp(std::string msg){
     postNotifyMessage(FRIEND_IS_PLAYING_GAME, NULL);
 }
 
-
-void MsgHandler::openRoomEnquireResp(std::string msg){
+// 私人房间可以解散通知{code:2047,poxiaoId:"123"}
+void MsgHandler::hanleFangzhuDismissRoom(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    postNotifyMessage(MSG_LOBBY_ASK_OPEN_ROOM, NULL);
-}
-
-void MsgHandler::enterRoomEnquireResp(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    postNotifyMessage(MSG_LOBBY_ASK_ENTER_ROOM, NULL);
+    GAMEDATA::getInstance()->setShowFangZhuDismiss(true);
 }
 
 
+
+// 私人房间是否同意解散通知{code:2049,poxiaoId:"123"}
 void MsgHandler::handleDissovleRoomNotify(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -2027,13 +2146,6 @@ void MsgHandler::handleDissovleRoomNotify(std::string msg){
     }
 }
 
-void MsgHandler::hanleFangzhuDismissRoom(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    GAMEDATA::getInstance()->setShowFangZhuDismiss(true);
-}
 
 void MsgHandler::handleDissovleRoomSelectedNotify(std::string msg){
     //私人房间是否同意解散通知{code:2051,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同
@@ -2052,58 +2164,43 @@ void MsgHandler::handleDissovleRoomSelectedNotify(std::string msg){
     postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, NULL);
 }
 
-
-void MsgHandler::handleQuitGameViewResp(std::string msg){
+//开房进房前回复{code:2054,poxiaoId:poxiaoId}
+void MsgHandler::openRoomEnquireResp(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("prjucount")){
-        const rapidjson::Value &prjucount = _mDoc["prjucount"];
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom)
-            GAMEDATA::getInstance()->setPrivateGameNum(prjucount.GetString());
-    }
+    postNotifyMessage(MSG_LOBBY_ASK_OPEN_ROOM, NULL);
 }
 
-void MsgHandler::handleScrollTextResp(std::string msg){
+//开房进房前回复{code:2056,poxiaoId:poxiaoId}
+void MsgHandler::enterRoomEnquireResp(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("content")){
-        const rapidjson::Value &content = _mDoc["content"];
-        char* buf = const_cast<char*>(content.GetString());
-        postNotifyMessage(MSG_SCROLL_TEXT, buf);
-    }
+    postNotifyMessage(MSG_LOBBY_ASK_ENTER_ROOM, NULL);
 }
 
 
 
-void MsgHandler::handleNoticeResp(std::string msg){
+
+
+
+//开房进房前回复{code:2057,poxiaoId:poxiaoId,seatId:1}
+void MsgHandler::fangZhuLeaveRoom(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("content")){
-        const rapidjson::Value &content = _mDoc["content"];
-        GAMEDATA::getInstance()->setNoticeUrl(content.GetString());
+    if(_mDoc.HasMember("seatId")){
+        const rapidjson::Value &result = _mDoc["seatId"];
+        char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
+        postNotifyMessage(MSG_GAME_FANG_ZHU_LEAVE,buf);
     }
-    postNotifyMessage(MSG_WAN_JIA_GONG_GAO, NULL);
 }
 
-
-void MsgHandler::handleGamePayType(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("result")){
-        const rapidjson::Value &result = _mDoc["result"];
-        UserData::getInstance()->setWeixinPayOpen(result.GetInt() == 0 ?true:false);
-    }
-    postNotifyMessage(MSG_UPDATE_LEQUAN_SHANG_CHEN_SHOW, NULL);
-}
-
+//复盘玩家数据code:10000
 void MsgHandler::handleFupanInfo(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -2131,6 +2228,7 @@ void MsgHandler::handleFupanInfo(std::string msg){
     GAMEDATA::getInstance()->setPlaybackInfo(info);
     postNotifyMessage(MSG_GAME_FU_PAN_NOTIFY, NULL);
 }
+
 
 void MsgHandler::handleFupanPlayerInfo(std::string msg){
     rapidjson::Document _mDoc;
@@ -2183,77 +2281,5 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
 }
 
 
-void MsgHandler::fangZhuLeaveRoom(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("seatId")){
-        const rapidjson::Value &result = _mDoc["seatId"];
-        char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
-        postNotifyMessage(MSG_GAME_FANG_ZHU_LEAVE,buf);
-    }
-}
 
-void MsgHandler::handleTuiGuangInfo(std::string msg){
-    // 获取推广回复{code:162,poxiaoId:poxiaoId,reward:[{gold:50000},{fangka:1}],result:1,havegot:[{gold:50000},{fangka:1},{people:1}],willget:[{gold:50000},{fangka:1},{people:1}]}
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    if(result.GetInt() != 0){
-        if(_mDoc.HasMember("reward")){
-            const rapidjson::Value &reward = _mDoc["reward"];
-            TuiGuangReward myReward;
-            if(reward.HasMember("gold")){
-                const rapidjson::Value &gold = reward["gold"];
-                myReward.gold = gold.GetInt();
-            }
-            if(reward.HasMember("fangka")){
-                const rapidjson::Value &fangka = reward["fangka"];
-                myReward.fangka = fangka.GetInt();
-            }
-            GAMEDATA::getInstance()->setTuiGuangReward(myReward);
-        }
-        if(_mDoc.HasMember("havegot")){
-            const rapidjson::Value &havegot = _mDoc["havegot"];
-            TuiGuangRecord myReward;
-            if(havegot.HasMember("gold")){
-                const rapidjson::Value &gold = havegot["gold"];
-                myReward.gold = gold.GetInt();
-            }
-            if(havegot.HasMember("fangka")){
-                const rapidjson::Value &fangka = havegot["fangka"];
-                myReward.fangka = fangka.GetInt();
-            }
-            GAMEDATA::getInstance()->setTuiGuangRecord(myReward);
-        }
-        if(_mDoc.HasMember("willget")){
-            const rapidjson::Value &willget = _mDoc["willget"];
-            TuiGuangPride myReward;
-            if(willget.HasMember("gold")){
-                const rapidjson::Value &gold = willget["gold"];
-                myReward.gold = gold.GetInt();
-            }
-            if(willget.HasMember("fangka")){
-                const rapidjson::Value &fangka = willget["fangka"];
-                myReward.fangka = fangka.GetInt();
-            }
-            GAMEDATA::getInstance()->setTuiGuangPride(myReward);
-        }
-    }
-}
-
-
-void MsgHandler::handleTuiGuangPrideInfo(std::string msg){
-    
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
-    postNotifyMessage(MSG_GET_TUI_GUANG_PRIDE,buf);
-}
 
