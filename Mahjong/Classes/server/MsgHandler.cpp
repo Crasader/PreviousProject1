@@ -697,84 +697,71 @@ void MsgHandler::getHeroJongs(std::string msg){
     CC_SAFE_DELETE(faPaiData);
 }
 
-
+ //{"code":2005,"poker":"28","poxiaoId":"e8fec2c3-47ba-4063-ad07-6b7c014c4dca","seatId":3}
 void MsgHandler::showOtherPlayedJong(std::string msg){
-    //{"code":2005,"poker":"28","poxiaoId":"e8fec2c3-47ba-4063-ad07-6b7c014c4dca","seatId":3}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
     std::string resultMsg = StringUtils::format("%d,%s",seatId.GetInt(),poker.GetString());
     postNotifyMessage(MSG_OTHER_PALYER_JONG, resultMsg);
 }
 
-
+//{code:2006,poxiaoId:poxiaoId,seatId:seatId,poker:1,chi:[{chi:1,2,3},{chi:2,3,4}],peng:"1,2,3",gang:"1,1,1,1"}
 void MsgHandler::showCpgNotify(std::string msg){
-    //{code:2006,poxiaoId:poxiaoId,seatId:seatId,poker:1,chi:[{chi:1,2,3},{chi:2,3,4}],peng:"1,2,3",gang:"1,1,1,1"}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["sId"];
-    PlayerCpgtData cpg;
-    cpg.poker = poker.GetString();
-    cpg.sId = seatId.GetInt();
+    PlayerCpgtData* cpgData = new PlayerCpgtData();
+    cpgData->poker = poker.GetString();
+    cpgData->sId = seatId.GetInt();
     if (_mDoc.HasMember("chi")){
         const rapidjson::Value &chi = _mDoc["chi"];
         for (int i = 0; i < chi.Capacity(); ++i){
             const rapidjson::Value &temp = chi[i];
-            cpg.chi.push_back(temp["chi"].GetString());
+            cpgData->chi.push_back(temp["chi"].GetString());
         }
+        sort(cpgData->chi.begin(), cpgData->chi.end());
     }
     if (_mDoc.HasMember("peng")){
         const rapidjson::Value &peng = _mDoc["peng"];
-        cpg.peng = peng.GetString();
-    }
-    else{
-        cpg.peng = "";
+        cpgData->peng = peng.GetString();
     }
     if (_mDoc.HasMember("gang")){
         const rapidjson::Value &gang = _mDoc["gang"];
-        cpg.gang = gang.GetString();
-        cpg.flag = 0;
+        cpgData->gang = gang.GetString();
+        cpgData->flag = 0;
     }
-    else{
-        cpg.gang = "";
-    }
-    sort(cpg.chi.begin(), cpg.chi.end());
-    postNotifyMessage(MSG_PLAYER_CPG, "");
+    postNotifyMessage2(MSG_PLAYER_CPG, cpgData);
+    CC_SAFE_DELETE(cpgData);
 }
 
-
+ // {code:2010,poxiaoId:poxiaoId,seatId:seatId,chi:"1,2",poker:poker}
 void MsgHandler::showOtherChiNotify(std::string msg){
-    // {code:2010,poxiaoId:poxiaoId,seatId:seatId,chi:"1,2",poker:poker}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
     const rapidjson::Value &chi = _mDoc["chi"];
     const rapidjson::Value &sId = _mDoc["sId"];
-    //    GameCpgData* data = new GameCpgData();
-    PlayerCpgtData* cpg = new PlayerCpgtData();
-    cpg->poker = poker.GetString();
-    cpg->seatId = seatId.GetInt();
-    cpg->chi.push_back(chi.GetString());
-    cpg->sId = sId.GetInt();
-    //    data->data = cpg;
-    postNotifyMessage2(MSG_OTHER_PLAYER_CHI, cpg);
-    CC_SAFE_DELETE(cpg);
+    PlayerCpgtData* cpgData = new PlayerCpgtData();
+    cpgData->poker = poker.GetString();
+    cpgData->seatId = seatId.GetInt();
+    cpgData->chi.push_back(chi.GetString());
+    cpgData->sId = sId.GetInt();
+    postNotifyMessage2(MSG_OTHER_PLAYER_CHI, cpgData);
+    CC_SAFE_DELETE(cpgData);
 }
 
+//{"code":2014,"peng":"25,25","poker":"25","poxiaoId":"cac1681d-28e2-4b1e-b0d3-b47c249b8979","sId":0,"seatId":3}
 void MsgHandler::showOtherPengNotify(std::string msg){
-    //{"code":2014,"peng":"25,25","poker":"25","poxiaoId":"cac1681d-28e2-4b1e-b0d3-b47c249b8979","sId":0,"seatId":3}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -792,8 +779,8 @@ void MsgHandler::showOtherPengNotify(std::string msg){
     CC_SAFE_DELETE(data);
 }
 
+//{"code":2018,"flag":"1","gang":"18,18,18","poker":18,"poxiaoId":"9cbc6365-5be4-4c33-bc9e-a00c17ac4697","sId":0,"seatId":3}
 void MsgHandler::showOtherGangNotify(std::string msg){
-    //  {"code":2018,"flag":"1","gang":"18,18,18","poker":18,"poxiaoId":"9cbc6365-5be4-4c33-bc9e-a00c17ac4697","sId":0,"seatId":3}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -803,14 +790,14 @@ void MsgHandler::showOtherGangNotify(std::string msg){
     const rapidjson::Value &gang = _mDoc["gang"];
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &sId = _mDoc["sId"];
-    PlayerCpgtData cpg;
-    cpg.flag = atoi(flag.GetString());
-    cpg.poker = poker.GetString();
-    cpg.seatId = seatId.GetInt();
-    cpg.gang = gang.GetString();
-    cpg.sId = sId.GetInt();
-    //    GAMEDATA::getInstance()->setPlayerCpgt(cpg);
-    postNotifyMessage(MSG_OTHER_PLAYER_GANG, "");
+    PlayerCpgtData* cpgData = new PlayerCpgtData();
+    cpgData->flag = atoi(flag.GetString());
+    cpgData->poker = poker.GetString();
+    cpgData->seatId = seatId.GetInt();
+    cpgData->gang = gang.GetString();
+    cpgData->sId = sId.GetInt();
+    postNotifyMessage2(MSG_OTHER_PLAYER_GANG, cpgData);
+    CC_SAFE_DELETE(cpgData);
 }
 
 void MsgHandler::nextPlayer(std::string msg){

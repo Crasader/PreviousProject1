@@ -915,7 +915,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
             PlayerCpgtData tingData;
             tingData.ting = cpgResp.ting;
 //            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-            ((MahjongView*)getParent())->showTingGangControllPad();
+//            ((MahjongView*)getParent())->showTingGangControllPad();
         }else{
             setIsAllowPlay(true);
             startTimeClockAnim();
@@ -1007,7 +1007,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         PlayerCpgtData tingData;
         tingData.ting = resp.ting;
 //        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        ((MahjongView*)getParent())->showTingGangControllPad();
+//        ((MahjongView*)getParent())->showTingGangControllPad();
     }else{
         setIsAllowPlay(true);
         startTimeClockAnim();
@@ -1076,7 +1076,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
             PlayerCpgtData tingData;
             tingData.ting = resp.ting;
 //            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-            ((MahjongView*)getParent())->showTingGangControllPad();
+//            ((MahjongView*)getParent())->showTingGangControllPad();
         }
         
     }else{
@@ -1222,7 +1222,7 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
             PlayerCpgtData tingData;
             tingData.ting = cpgResp.ting;
 //            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-            ((MahjongView*)getParent())->showTingGangControllPad();
+//            ((MahjongView*)getParent())->showTingGangControllPad();
         }else{
             setIsAllowPlay(true);
         }
@@ -1233,11 +1233,11 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
 }
 
 
-void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
+void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData* cpg, PlayerBase* playerBase){
 
     Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
-    std::vector<string> pengpai = StringUtil::split(cpg.peng, ",");
+    std::vector<string> pengpai = StringUtil::split(cpg->peng, ",");
     Vector<Jong*> pengVector;
     for (int i = 0; i < pengpai.size(); i++){
         for (int j = 0; j < getSelfHandJongs().size(); j++){
@@ -1292,18 +1292,18 @@ void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, P
         PlayerCpgtData tingData;
         tingData.ting = resp.ting;
 //        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-        ((MahjongView*)getParent())->showTingGangControllPad();
+//        ((MahjongView*)getParent())->showTingGangControllPad();
     }else{
         setIsAllowPlay(true);
         startTimeClockAnim();
     }
 }
 
-void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
+void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData* cpg, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
-    if(cpg.flag == 0){
-        std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
+    if(cpg->flag == 0){
+        std::vector<string> gangpai = StringUtil::split(cpg->gang, ",");
         Vector<Jong*> gangVector;
         for (int i = 0; i < gangpai.size(); i++){
             for (int j = 0; j < getSelfHandJongs().size(); j++){
@@ -1347,13 +1347,13 @@ void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, P
             PlayerCpgtData tingData;
             tingData.ting = resp.ting;
 //            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-            ((MahjongView*)getParent())->showTingGangControllPad();
+//            ((MahjongView*)getParent())->showTingGangControllPad();
         }
         
     }else{
-        std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
+        std::vector<string> gangpai = StringUtil::split(cpg->gang, ",");
         Vector<Jong*> gangVector;
-        if (cpg.flag == 2){
+        if (cpg->flag == 2){
             for(int j=0; j<playerHandJongs.size();j++){
                 if(playerHandJongs.at(j)->getJongType() == atoi(gangpai.at(0).c_str())){
                     gangVector.pushBack(playerHandJongs.at(j));

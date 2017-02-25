@@ -22,7 +22,7 @@ public:
 	virtual void onEnter() override;
 	virtual void onExit() override;
     void onEnterTransitionDidFinish() override;
-	void showTingGangControllPad();
+	void showTingGangControllPad(PlayerCpgtData* cpg);
 	void hideTingGangControllPad();
     void heroPlayPokerAuto(int poker);
 	void showGuiLayer();
@@ -47,7 +47,6 @@ private:
     PlayerRight* playerRight;
     PlayerOpposite* playerOpposite;
     bool showRepeatDialog = false;
-//    bool showDissolveDialog = false;
 
 	void update(float dt) override;
 	void initData();
@@ -55,7 +54,7 @@ private:
 	void addPlayer2Room();
 	void updatePlayerView(int type,Player* info);
 	void addTouchListener();
-	void drawCpgControllPad();
+	void drawCpgControllPad(PlayerCpgtData* cpg);
 	void showHeroChiUi();
 	void heroDoChi(Ref* psend);
 	void heroDoPeng();

@@ -55,7 +55,6 @@ private:
     void getLequanChangeRecordResp(std::string msg);
     void getHeadImageChangeResp(std::string msg);
     void getFeedBackResp(std::string msg);
-//    void gameResumeResp(std::string msg);
     void gameContinueResp(std::string msg);
     void otherClientReplace(std::string msg);
     void inviteOthersResp(std::string msg);

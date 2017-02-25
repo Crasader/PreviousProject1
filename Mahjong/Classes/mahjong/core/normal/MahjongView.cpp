@@ -329,7 +329,7 @@ void MahjongView::checkPlayerIpRepetition(){
 }
 
 
-void MahjongView::drawCpgControllPad(){
+void MahjongView::drawCpgControllPad(PlayerCpgtData* cpgData){
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoCpgQi,this));
     qi->setPosition(Point(0, 0));
@@ -337,29 +337,28 @@ void MahjongView::drawCpgControllPad(){
     MenuItemImage* chi = nullptr;
     MenuItemImage* peng = nullptr;
     MenuItemImage* gang = nullptr;
-//    PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
     int buttonCount = 1;
-//    if (cpg.chi.size() > 0){
-//        chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_0(MahjongView::showHeroChiUi, this));
-//        chi->setPosition(Point(-buttonCount * 160, 0));
-//        controllPad->addChild(chi);
-//        buttonCount++;
-//    }
-//    if (cpg.peng != ""){
-//        peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_0(MahjongView::heroDoPeng, this));
-//        peng->setPosition(Point(-buttonCount * 160, 0));
-//        controllPad->addChild(peng);
-//        buttonCount++;
-//    }
-//    if (cpg.gang != ""){
-//        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_0(MahjongView::heroDoGang, this));
-//        gang->setPosition(Point(-buttonCount * 160, 0));
-//        controllPad->addChild(gang);
-//    }
+    if (cpgData->chi.size() > 0){
+        chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_0(MahjongView::showHeroChiUi, this));
+        chi->setPosition(Point(-buttonCount * 160, 0));
+        controllPad->addChild(chi);
+        buttonCount++;
+    }
+    if (cpgData->peng != ""){
+        peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_0(MahjongView::heroDoPeng, this));
+        peng->setPosition(Point(-buttonCount * 160, 0));
+        controllPad->addChild(peng);
+        buttonCount++;
+    }
+    if (cpgData->gang != ""){
+        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_0(MahjongView::heroDoGang, this));
+        gang->setPosition(Point(-buttonCount * 160, 0));
+        controllPad->addChild(gang);
+    }
     controllPad->setVisible(true);
 }
 
-void MahjongView::showTingGangControllPad(){
+void MahjongView::showTingGangControllPad(PlayerCpgtData* cpg){
     playerHero->stopTimeClockAnim();
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
@@ -368,7 +367,6 @@ void MahjongView::showTingGangControllPad(){
     MenuItemImage* ting = nullptr;
     MenuItemImage* penggang = nullptr;
     int buttonCount = 1;
-//    PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
 //    if (tingData.ting != ""){
 //        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
 //        ting->setPosition(Point(-buttonCount * 140, 0));
@@ -887,10 +885,9 @@ void MahjongView::addJongPlayedListener(){
 void MahjongView::addHeroCpgListener(){
     
     playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
-        schedule([=](float dt){
-            drawCpgControllPad();
-            playerHero->startTimeClockAnim(9, 1);
-        },0,0,0.5f,"nonohuang");
+        PlayerCpgtData* cpgData = static_cast<PlayerCpgtData*>(event->getUserData());
+        drawCpgControllPad(cpgData);
+        playerHero->startTimeClockAnim(9, 1);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
     
