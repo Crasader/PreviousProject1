@@ -207,8 +207,8 @@ void PlayerHero::playPokerByHand(Jong* jong){
     bezier.controlPoint_2 = Point(sx + (ex - sx) * 0.5,
                                   sy + (ey - sy) * 0.5 + 200);
     bezier.endPosition = Point(endPoint.x, endPoint.y );
-    BezierTo *actionMove = BezierTo::create(0.5f, bezier);
-    ScaleTo* scale = ScaleTo::create(0.5f, 0.45f);
+    BezierTo *actionMove = BezierTo::create(0.3f, bezier);
+    ScaleTo* scale = ScaleTo::create(0.3f, 0.45f);
     Spawn* spa = Spawn::create(actionMove, scale, NULL);
     CallFunc* callback = CallFunc::create([=](){
         if (!GAMEDATA::getInstance()->getIsTingState()
