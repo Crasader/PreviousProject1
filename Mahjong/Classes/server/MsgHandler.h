@@ -11,8 +11,7 @@ public:
 private:
 	static MsgHandler* _instance;
 	MsgHandler();
-	void postNotifyMessage(std::string event_name, std::string msg);
-    void postNotifyMessage2(std::string event_name, void* msg);
+    void postNotifyMessage(std::string event_name, void* msg);
 	void distribute(int code, std::string msg);
 	void roomListResp(std::string msg);
 	void enterRoomResp(std::string msg);
