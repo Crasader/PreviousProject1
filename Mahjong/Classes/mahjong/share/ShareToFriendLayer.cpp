@@ -141,9 +141,9 @@ bool ShareToFriendLayer::init(){
     
     
     auto shareImage = MenuItemImage::create("share/share_btn_1.png","share/share_btn_2.png",
-                                           CC_CALLBACK_0(ShareToFriendLayer::doFaHongBaoPerson, this));
+                                            CC_CALLBACK_0(ShareToFriendLayer::doFaHongBaoPerson, this));
     auto friendImage = MenuItemImage::create("share/friend_btn_1.png","share/friend_btn_2.png",
-                                           CC_CALLBACK_0(ShareToFriendLayer::doFaHongBaoFriend, this));
+                                             CC_CALLBACK_0(ShareToFriendLayer::doFaHongBaoFriend, this));
     
     Menu* myMneu = Menu::create(shareImage,friendImage,NULL);
     myMneu->setPosition(640,125);
@@ -175,7 +175,7 @@ bool ShareToFriendLayer::init(){
     fangNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     fangNum->setPosition(370,335);
     recordLayer->addChild(fangNum);
-
+    
     
     auto zuanshi = Sprite::create("shop/fangka_2.png");
     zuanshi->setPosition(410,335);
@@ -202,7 +202,7 @@ bool ShareToFriendLayer::init(){
     auto jinbi = Sprite::create("shop/gold_text.png");
     jinbi->setPosition(705,335);
     recordLayer->addChild(jinbi);
-
+    
     
     auto recordBox = Sprite::create("share/record_box_bg.png");
     recordBox->setPosition(640,220);
@@ -232,13 +232,14 @@ bool ShareToFriendLayer::init(){
     goldNum2->setAnchorPoint(Point::ANCHOR_MIDDLE);
     recordLayer->addChild(goldNum2);
     
-    auto getmypirde = MenuItemImage::create("share/linqu_btn_1.png","share/linqu_btn_2.png",
+    auto getmypirde = MenuItemImage::create("share/linqu_btn_1.png","share/linqu_btn_2.png","share/linqu_btn_3.png",
                                             CC_CALLBACK_0(ShareToFriendLayer::getTuiGuangPride, this));
-    
+    getmypirde->setTag(8876);
     Menu* myPrideMneu = Menu::create(getmypirde,NULL);
     myPrideMneu->setPosition(900,410);
+    myPrideMneu->setTag(8878);
     recordLayer->addChild(myPrideMneu);
-
+    
     
     schedule(schedule_selector(ShareToFriendLayer::updateUi), 1, CC_REPEAT_FOREVER, 0);
     
@@ -323,7 +324,16 @@ void ShareToFriendLayer::updateUi(float dt){
         if(NULL!=recordLayer->getChildByTag(3002)){
             ((LabelAtlas*)recordLayer->getChildByTag(3002))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTuiGuangRecord().gold));
         }
-
+        if(GAMEDATA::getInstance()->getTuiGuangRecord().gold == 0 && GAMEDATA::getInstance()->getTuiGuangRecord().fangka ==0){
+            if(NULL != recordLayer->getChildByTag(8878)){
+                if(NULL !=recordLayer->getChildByTag(8878)){
+                    Menu* temp =(Menu*)recordLayer->getChildByTag(8878);
+                    if(NULL != temp->getChildByTag(8876))
+                        ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(false);
+                }
+            }
+        }
+        
     }
-
+    
 }
