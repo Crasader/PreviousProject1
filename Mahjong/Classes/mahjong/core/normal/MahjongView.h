@@ -30,7 +30,7 @@ public:
 	void startGameAgain();
     void startGameFirst();
 	void removeHeroPlayedIcon();
-    void dealJongFinish(ReplaceJongVec vec);
+    void dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data);
     void showHandPokerOver(int seatId);//翻牌
     void showPaiduiNum(int num);
     void checkPlayerIpRepetition();
@@ -72,7 +72,7 @@ private:
 	void recoverPlayer(PlayerGameData data,int type, Player* playerInfo);
     void showOriention();
     void showHuPaiXing(std::string paixing);
-    void firstReplaceFlower(ReplaceJongVec vec);//首次杠花
+    void firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data);//首次杠花
 	PlayerBase* getPlayerBySeatId(int sid);
 
 

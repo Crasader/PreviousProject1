@@ -10,7 +10,7 @@ class DealJongAnim :public Layer{
 public:
 	virtual bool init();
 	CREATE_FUNC(DealJongAnim);
-	void showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec vec);
+	void showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec vec,PlayerCpgtData cpgtData);
 private:
     Layer* paishuLayer;//剩余牌堆图层
 	int rounds; 
