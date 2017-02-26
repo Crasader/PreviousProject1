@@ -903,17 +903,17 @@ void ReviewGame::addCoustomListener(){
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), data->seatId);
         if (seatId == ClientSeatId::left){
             hideTingGangControllPad();
-            playerLeft->drawPlayerMingpaiGang(data, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiGang(*data, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
             hideTingGangControllPad();
-            playerRight->drawPlayerMingpaiGang(data, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiGang(*data, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
         else if (seatId == ClientSeatId::opposite){
             hideTingGangControllPad();
-            playerOpposite->drawPlayerMingpaiGang(data, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiGang(*data, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
         }else if (seatId == ClientSeatId::hero){
             hideTingGangControllPad();

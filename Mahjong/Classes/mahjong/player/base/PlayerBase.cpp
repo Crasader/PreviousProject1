@@ -154,11 +154,11 @@ void PlayerBase::replaceHandHua(JongViewType tpye){
     }
 }
 
-void PlayerBase::replaceTurnHua(PlayerTurnData* data){
-    if(data->replace==""){
+void PlayerBase::replaceTurnHua(PlayerTurnData data){
+    if(data.replace==""){
         return;
     }
-    std::vector<std::string> replace = StringUtil::split(data->replace, ",");
+    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
     if(replace.size()>0){
         huaIndex=0;
         Sprite* spr = Sprite::create();
@@ -231,11 +231,11 @@ void PlayerBase::showPlayerChi(string chiPoker, PlayerBase* playerBase){
     setChiNumber(getChiNumber()+1);
 }
 
-void PlayerBase::showPlayerPeng(PlayerCpgtData* data,PlayerBase* playerBase){
+void PlayerBase::showPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
 }
 
-void PlayerBase::showPlayerGang(PlayerCpgtData* data, PlayerBase* playerBase){
+void PlayerBase::showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(getPlayerInfo()->getGender());
 }
 

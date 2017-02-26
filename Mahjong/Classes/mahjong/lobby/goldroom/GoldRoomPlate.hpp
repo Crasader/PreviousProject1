@@ -15,8 +15,8 @@ USING_NS_CC;
 
 class GoldRoomPlate : public Layer{
 public:
-    static GoldRoomPlate* create(RoomListData* data);
-    virtual bool init(RoomListData* data);
+    static GoldRoomPlate* create(RoomListData data);
+    virtual bool init(RoomListData data);
     bool onTouchBegan(Touch *touch, Event  *event) override;
     void onTouchEnded(Touch *touch, Event  *event) override;
 

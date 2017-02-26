@@ -568,24 +568,23 @@ void LobbyScene::addEventListener(){
         if (respData->result == "1"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(respData->result == "2"){
-            
-//            for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
-//                if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-//               
-//#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-//                    if(UserData::getInstance()->isWeixinPayOpen()){
-//                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-//                        addChild(gold,4);
-//                    }else{
-//                        HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
-//                        addChild(hint,100);
-//                    }
-//#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-//                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-//                    addChild(gold,4);
-//#endif
-//                }
-//            }
+            for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
+                if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+               
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+                    if(UserData::getInstance()->isWeixinPayOpen()){
+                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                        addChild(gold,4);
+                    }else{
+                        HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
+                        addChild(hint,100);
+                    }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                    addChild(gold,4);
+#endif
+                }
+            }
         }
         else if(respData->result == "3"){
             if(atoi(respData->rsid.c_str()) == ROOM_2){
@@ -810,7 +809,8 @@ void LobbyScene::addEventListener(){
     roomListRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
         RoomListData* data = static_cast<RoomListData*>(event->getUserData());
         if(data->rooms.size()>0 && getChildByTag(1298)==NULL){
-            GoldRoomPlate* plate = GoldRoomPlate::create(data);
+            GAMEDATA::getInstance()->setRoomList(*data);
+            GoldRoomPlate* plate = GoldRoomPlate::create(*data);
             plate->setTag(1298);
             addChild(plate,2);
         }

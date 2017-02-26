@@ -32,11 +32,11 @@ public:
     virtual Point getCpgShowPostion(int index){ return Point(0, 0); };
     void initPlayer(Player* playerInfo);//初始化玩家UI
     void replaceHandHua(JongViewType tpye);//玩家手牌换花
-    void replaceTurnHua(PlayerTurnData* data);//摸牌换花
+    void replaceTurnHua(PlayerTurnData data);//摸牌换花
     void showPlayedJong(int ctype);//玩家打牌
     void showPlayerChi(string chiPoker, PlayerBase* playerBase);//玩家吃牌
-    void showPlayerPeng(PlayerCpgtData* data,PlayerBase* playerBase);//玩家碰牌
-    void showPlayerGang(PlayerCpgtData* data, PlayerBase* playerBase);//玩家杠牌
+    void showPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);//玩家碰牌
+    void showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);//玩家杠牌
     void showPlayerHua(int num);//显示玩家花数
     void setPlayerTingState(bool b);//设置玩家的听牌状态
      bool getPlayerTingState();

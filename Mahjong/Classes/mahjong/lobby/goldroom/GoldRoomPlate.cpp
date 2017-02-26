@@ -10,7 +10,7 @@
 #include "mahjong/state/GameData.h"
 
 
-GoldRoomPlate* GoldRoomPlate::create(RoomListData* data){
+GoldRoomPlate* GoldRoomPlate::create(RoomListData data){
     GoldRoomPlate* cell = new GoldRoomPlate();
     if(cell && cell->init(data)){
         cell -> autorelease();
@@ -21,7 +21,7 @@ GoldRoomPlate* GoldRoomPlate::create(RoomListData* data){
 }
 
 
-bool GoldRoomPlate::init(RoomListData* data){
+bool GoldRoomPlate::init(RoomListData data){
     if(!Layer::init()){
         return false;
     }
@@ -32,9 +32,9 @@ bool GoldRoomPlate::init(RoomListData* data){
     touchListener->onTouchEnded = CC_CALLBACK_2(GoldRoomPlate::onTouchEnded, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
     //绘制界面
-    for(int i=(int)(data->rooms.size()-1);i>=0;i--){
-        GoldRoomButton* button = GoldRoomButton::create(data->rooms.at(i).roomId, data->rooms.at(i).hua, data->rooms.at(i).base);
-        button->setPosition(1110,220+((int)data->rooms.size()-1-i)*120);
+    for(int i=(int)(data.rooms.size()-1);i>=0;i--){
+        GoldRoomButton* button = GoldRoomButton::create(data.rooms.at(i).roomId, data.rooms.at(i).hua, data.rooms.at(i).base);
+        button->setPosition(1110,220+((int)data.rooms.size()-1-i)*120);
         addChild(button);
     
     }
