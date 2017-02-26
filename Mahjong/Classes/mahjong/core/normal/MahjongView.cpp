@@ -323,12 +323,17 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData* newData){
     MenuItemImage* gang = nullptr;
     int buttonCount = 1;
     if (newData->chi[0] != ""){
-
+        PlayerCpgtData* chiData = new PlayerCpgtData();
+        chiData->poker = newData->poker;
+        for(int i = 0; i < 3;i++){
+            chiData->chi[i] = newData->chi[i];
+        }
         chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_1(MahjongView::showHeroChiUi, this));
         chi->setPosition(Point(-buttonCount * 160, 0));
-        chi->setUserData(newData);
+        chi->setUserData(chiData);
         controllPad->addChild(chi);
         buttonCount++;
+        CC_SAFE_DELETE(chiData);
     }
     if (newData->peng != ""){
         peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_1(MahjongView::heroDoPeng, this));
@@ -398,13 +403,18 @@ void MahjongView::showHeroChiUi(Ref* ref){
     controllPad->setVisible(false);
     PlayerCpgtData* newData = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
     //吃牌排序
-    if (newData->chi[0] != "" && newData->chi[1] != ""){
+    PlayerCpgtData* chiData = new PlayerCpgtData();
+    chiData->poker = newData->poker;
+    for(int i = 0; i < 3;i++){
+        chiData->chi[i] = newData->chi[i];
+    }
+    if (chiData->chi[0] != "" && chiData->chi[1] != ""){
         for (int i = 0; i < 3; i++){
-            if(newData->chi[i] == ""){
+            if(chiData->chi[i] == ""){
                 continue;
             }
-            std::vector<string> pai = StringUtil::split(newData->chi[i], ",");
-            pai.push_back(newData->poker);
+            std::vector<string> pai = StringUtil::split(chiData->chi[i], ",");
+            pai.push_back(chiData->poker);
             sort(pai.begin(), pai.end());
             auto choice = Menu::create();
             choice->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
@@ -417,7 +427,7 @@ void MahjongView::showHeroChiUi(Ref* ref){
                 MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(MahjongView::heroDoChi, this));
                 imageItem->setTag(i);
                 imageItem->setPosition(1000 + j * 40 - i * 130, 160);
-                imageItem->setUserData(newData);
+                imageItem->setUserData(chiData);
                 imageItem->setScale(0.5f);
                 choice->addChild(imageItem);
             }
@@ -429,9 +439,10 @@ void MahjongView::showHeroChiUi(Ref* ref){
     else{
         MenuItemImage* imageItem = MenuItemImage::create();
         imageItem->setTag(0);
-        imageItem->setUserData(newData);
+        imageItem->setUserData(chiData);
         heroDoChi(imageItem);
     }
+    CC_SAFE_DELETE(chiData);
 }
 
 void MahjongView::heroDoChi(Ref* psend){
