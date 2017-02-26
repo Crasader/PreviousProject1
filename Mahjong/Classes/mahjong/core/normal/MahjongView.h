@@ -39,7 +39,8 @@ private:
 	std::mutex m_mutex;
 	int currentReadyPlayer;
 	std::string  selectedChi;
-    PlayerCpgtData  heroCpgtData;
+    PlayerCpgtData  shmjPlayerCpgtData;
+    HeroCpgRespData shmjHeroCpgtData;
 	Sprite* choiceMenu;
     Menu* controllPad;
     InfoToast* tao;

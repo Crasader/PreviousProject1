@@ -39,7 +39,7 @@ public:
     void drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
     void drawHeroGang(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
     
-    void actionTing();
+    void actionTing(HeroCpgRespData ht);
     void actionQi();
     void eraseHeroJong(Jong* jong);
     void removePlayedIcon();

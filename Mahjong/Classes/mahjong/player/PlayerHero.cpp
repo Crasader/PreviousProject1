@@ -669,6 +669,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         }
         if(data.hastinggang){
             EventCustom tingEvent(MSG_HERO_TING_GANG);
+            tingEvent.setUserData(&data.cpgData);
             Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
         }
         if (!(GAMEDATA::getInstance()->getIsTingState())){
@@ -794,46 +795,22 @@ void PlayerHero::removePlayedIcon(){
 }
 
 void PlayerHero::doEventTimeOver(int type){
-//    ((MahjongView*)getParent())->hideTingGangControllPad();
-//    //type 吃碰杠倒计时
-//    if (type == 1){
-//        if(GAMEDATA::getInstance()->getPlayerTurn().seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-//            startTimeClockAnim();
-//            setIsAllowPlay(true);
-//        }
-//        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
-//    }
-//    //听牌倒计时
-//    else if (type == 2){
-//        //是否听牌选择界面倒计时结束
-//        if (!GAMEDATA::getInstance()->getIsTingProcess()){
-//            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
-//            setIsAllowTouch(true);
-//            setIsAllowPlay(true);
-//            if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),
-//                                           GAMEDATA::getInstance()->getPlayerTurn().seatId)  ==
-//               ClientSeatId::hero){
-//                startTimeClockAnim();
-//                setIsAllowPlay(true);
-//            }
-//        }
-//    }
+//TODO
 }
 
 
-void PlayerHero::actionTing(){
+void PlayerHero::actionTing(HeroCpgRespData tingData){
     setIsAllowTouch(true);
     GAMEDATA::getInstance()->setIsTingProcess(true);
-//    HeroCpgRespData tingData = GAMEDATA::getInstance()->getHeroCpgResp();
-//    std::vector<string> tingpai = StringUtil::split(tingData.ting, ",");
-//    log("提示玩家可以听的牌:%s",tingData.ting.c_str());
-//    for (int i = 0; i < tingpai.size(); i++){
-//        for (int j = 0; j < playerHandJongs.size(); j++){
-//            if (atoi(tingpai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
-//                playerHandJongs.at(j)->setPosition(playerHandJongs.at(j)->getPosition().x, playerHandJongs.at(j)->getPosition().y + 40);
-//            }
-//        }
-//    }
+    std::vector<string> tingpai = StringUtil::split(tingData.ting, ",");
+    log("提示玩家可以听的牌:%s",tingData.ting.c_str());
+    for (int i = 0; i < tingpai.size(); i++){
+        for (int j = 0; j < playerHandJongs.size(); j++){
+            if (atoi(tingpai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
+                playerHandJongs.at(j)->setPosition(playerHandJongs.at(j)->getPosition().x, playerHandJongs.at(j)->getPosition().y + 40);
+            }
+        }
+    }
     startTimeClockAnim(20, 2);
 }
 
