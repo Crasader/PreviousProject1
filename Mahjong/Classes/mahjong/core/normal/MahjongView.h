@@ -39,7 +39,7 @@ private:
 	std::mutex m_mutex;
 	int currentReadyPlayer;
 	std::string  selectedChi;
-    PlayerCpgtData*  myCpgtData = new PlayerCpgtData();
+    PlayerCpgtData  heroCpgtData;
 	Sprite* choiceMenu;
     Menu* controllPad;
     InfoToast* tao;
@@ -56,7 +56,7 @@ private:
 	void addPlayer2Room();
 	void updatePlayerView(int type,Player* info);
 	void addTouchListener();
-	void drawCpgControllPad(PlayerCpgtData* cpg);
+	void drawCpgControllPad(PlayerCpgtData cpg);
 	void showHeroChiUi(Ref* ref);
 	void heroDoChi(Ref* psend);
 	void heroDoPeng(Ref* psend);

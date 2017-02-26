@@ -102,6 +102,10 @@ struct PlayerCpgtData
     std::string gang;
 };
 
+struct ShmjCpgtData{
+    PlayerCpgtData cpgt;
+};
+
 struct PlayerTurnData
 {
     int seatId;

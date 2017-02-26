@@ -36,8 +36,8 @@ public:
     void playerTurnReplace(PlayerTurnData* data);
     //玩家吃碰杠
     void drawHeroChi(HeroCpgRespData* resp, std::vector<string> chipai, PlayerBase* playerBase);
-    void drawHeroPeng(HeroCpgRespData* resp, PlayerCpgtData* data, PlayerBase* playerBase);
-    void drawHeroGang(HeroCpgRespData* resp, PlayerCpgtData* data, PlayerBase* playerBase);
+    void drawHeroPeng(HeroCpgRespData* resp, PlayerCpgtData data, PlayerBase* playerBase);
+    void drawHeroGang(HeroCpgRespData* resp, PlayerCpgtData data, PlayerBase* playerBase);
     
     void actionTing();
     void actionQi();

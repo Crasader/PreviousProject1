@@ -1313,27 +1313,29 @@ void MsgHandler::showCpgNotify(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["sId"];
-    PlayerCpgtData* cpgData = new PlayerCpgtData();
-    cpgData->poker = poker.GetString();
-    cpgData->sId = seatId.GetInt();
+    ShmjCpgtData* myCpgData = new ShmjCpgtData();
+    PlayerCpgtData cpgData;
+    cpgData.poker = poker.GetString();
+    cpgData.sId = seatId.GetInt();
     if (_mDoc.HasMember("chi")){
         const rapidjson::Value &chi = _mDoc["chi"];
         for (int i = 0; i < chi.Capacity(); i++){
             const rapidjson::Value &temp = chi[i];
-            cpgData->chi[i] = temp["chi"].GetString();
+            cpgData.chi[i] = temp["chi"].GetString();
         }
     }
     if (_mDoc.HasMember("peng")){
         const rapidjson::Value &peng = _mDoc["peng"];
-        cpgData->peng = peng.GetString();
+        cpgData.peng = peng.GetString();
     }
     if (_mDoc.HasMember("gang")){
         const rapidjson::Value &gang = _mDoc["gang"];
-        cpgData->gang = gang.GetString();
-        cpgData->flag = 0;
+        cpgData.gang = gang.GetString();
+        cpgData.flag = 0;
     }
-    postNotifyMessage(MSG_PLAYER_CPG, cpgData);
-    CC_SAFE_DELETE(cpgData);
+    myCpgData->cpgt = cpgData;
+    postNotifyMessage(MSG_PLAYER_CPG,&cpgData);
+    CC_SAFE_DELETE(myCpgData);
 }
 
 
