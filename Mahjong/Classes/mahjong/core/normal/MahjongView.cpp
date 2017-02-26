@@ -313,7 +313,17 @@ void MahjongView::checkPlayerIpRepetition(){
 }
 
 
-void MahjongView::drawCpgControllPad(PlayerCpgtData* newData){
+void MahjongView::drawCpgControllPad(PlayerCpgtData* oldData){
+    PlayerCpgtData* newData = new PlayerCpgtData();
+    newData->poker = oldData->poker;
+    for(int i = 0; i < 3;i++){
+        newData->chi[i] = oldData->chi[i];
+    }
+    newData->sId = oldData->sId;
+    newData->peng = oldData->peng;
+    newData->seatId = oldData->seatId;
+    newData->flag = oldData->flag;
+    newData->gang = oldData->gang;
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoCpgQi,this));
     qi->setPosition(Point(0, 0));
@@ -323,17 +333,12 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData* newData){
     MenuItemImage* gang = nullptr;
     int buttonCount = 1;
     if (newData->chi[0] != ""){
-        PlayerCpgtData* chiData = new PlayerCpgtData();
-        chiData->poker = newData->poker;
-        for(int i = 0; i < 3;i++){
-            chiData->chi[i] = newData->chi[i];
-        }
         chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_1(MahjongView::showHeroChiUi, this));
         chi->setPosition(Point(-buttonCount * 160, 0));
-        chi->setUserData(chiData);
+        chi->setUserData(newData);
         controllPad->addChild(chi);
         buttonCount++;
-        CC_SAFE_DELETE(chiData);
+        
     }
     if (newData->peng != ""){
         peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_1(MahjongView::heroDoPeng, this));
@@ -349,6 +354,7 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData* newData){
         controllPad->addChild(gang);
     }
     controllPad->setVisible(true);
+    CC_SAFE_DELETE(newData);
 }
 
 void MahjongView::showTingGangControllPad(PlayerCpgtData* tingData){
