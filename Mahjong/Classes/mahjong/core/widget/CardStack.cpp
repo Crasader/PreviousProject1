@@ -65,8 +65,8 @@ void CardStack::setShowNum(int  num){
         ((LabelAtlas*)getChildByTag(911)) ->setString(StringUtils::format("%d",num));
     }
     if(NULL != getChildByTag(6510)){
-       
-        ((LabelAtlas*)getChildByTag(6510)) ->setString(StringUtils::format("%s:%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu.c_str()));
+        FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        ((LabelAtlas*)getChildByTag(6510)) ->setString(StringUtils::format("%s:%s",data.prjucount.c_str(),data.prjushu.c_str()));
     }
 
 }

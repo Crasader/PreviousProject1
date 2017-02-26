@@ -100,7 +100,6 @@ private:
     EventListenerCustom* playerOffLineListener;
     EventListenerCustom* playerResumeListener;
     EventListenerCustom* playerReplaceLoginListener;
-    EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
     EventListenerCustom* lobbyConncetAgainListener;
     EventListenerCustom* viewIntnetListener;

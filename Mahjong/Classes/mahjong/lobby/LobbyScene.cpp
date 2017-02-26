@@ -86,17 +86,17 @@ void LobbyScene::signUpdate(float dt){
 //#endif
 //            }
 //        }
-//        GAMEDATA::getInstance()->setShowDialogType(-1);
+        GAMEDATA::getInstance()->setShowDialogType(-1);
     }
     else if(GAMEDATA::getInstance()->getShowDialogType() == 3){
-//        if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
-//            EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
-//            addChild(dia,30);
-//        }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
-//            EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
-//            addChild(dia,30);
-//        }
-//        GAMEDATA::getInstance()->setShowDialogType(-1);
+        if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_2){
+            EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
+            addChild(dia,30);
+        }else if(atoi(GAMEDATA::getInstance()->getEnterRoomResp().rsid.c_str()) == ROOM_3){
+            EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve2);
+            addChild(dia,30);
+        }
+        GAMEDATA::getInstance()->setShowDialogType(-1);
     }
     else if(GAMEDATA::getInstance()->getShowDialogType() == 4){
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)

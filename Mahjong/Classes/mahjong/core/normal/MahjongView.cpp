@@ -1289,7 +1289,6 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
@@ -1329,13 +1328,6 @@ void MahjongView::addCoustomListener(){
         addChild(hin,5);
     });
     
-    
-        dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-            DissovleRoomDialog* dis = DissovleRoomDialog::create();
-            std::string name = static_cast<char*>(event->getUserData());
-            dis->setNickName(name);
-            addChild(dis,1000);
-        });
     
     dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
         DissolveData data = GAMEDATA::getInstance()->getDissolveData();
@@ -1436,6 +1428,9 @@ void MahjongView::addCoustomListener(){
         GAMEDATA::getInstance()->setKaibao(msgData->kaibao);
         GAMEDATA::getInstance()->setHuangfan(msgData->huangfan);
         GAMEDATA::getInstance()->setCurrentBank(msgData->start);
+        FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        data.prjucount = StringUtils::format("%d",msgData->prjucount);
+        GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         vector<string> dice2 =StringUtil::split(msgData->dice, ",") ;
         DealJongAnim* anim = DealJongAnim::create();
