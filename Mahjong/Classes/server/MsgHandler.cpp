@@ -884,7 +884,6 @@ void MsgHandler::showOtherReady(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    //	const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
     const rapidjson::Value &seatId = _mDoc["seatId"];
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
     for (int i = 0; i < players.size(); i++){
@@ -1489,8 +1488,8 @@ void MsgHandler::nextPlayer(std::string msg){
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
         playerTurnData.hastinggang = true;
-        playerTurnData.cpgData = tingData;
     }
+    playerTurnData.cpgData = tingData;
     postNotifyMessage(MSG_PLAYER_TURN_WHO, &playerTurnData);
 }
 

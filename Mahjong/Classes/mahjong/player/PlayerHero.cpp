@@ -626,6 +626,7 @@ void PlayerHero::replaceFlower(){
 void PlayerHero::playerTurnReplace(PlayerTurnData data){
     huaIndex = 0;
     std::vector<std::string> replace = StringUtil::split(data.replace, ",");
+    PlayerCpgtData cpgData = data.cpgData;
     if (data.replace != "" && replace.size() > 0){
         Jong* turnJong = Jong::create();
         turnJong->setVisible(false);
@@ -653,8 +654,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             currentJong = turnJong;
             setIsAllowPlay(true);
             if(data.hastinggang){
-                EventCustom tingEvent(MSG_HERO_TING_GANG);
-                Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
+                 ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
             }
         }, 0, 0, 0.6f*replace.size(),"hua2pokerdelay");
     }
@@ -668,9 +668,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             settleHandJongs(getHandPosX());
         }
         if(data.hastinggang){
-            EventCustom tingEvent(MSG_HERO_TING_GANG);
-            tingEvent.setUserData(&data.cpgData);
-            Director::getInstance()->getEventDispatcher()->dispatchEvent(&tingEvent);
+            ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
         }
         if (!(GAMEDATA::getInstance()->getIsTingState())){
             setIsAllowPlay(true);
@@ -1195,8 +1193,7 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
             log("吃听的牌: %s",cpgResp.ting.c_str());
             PlayerCpgtData tingData;
             tingData.ting = cpgResp.ting;
-//            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-//            ((MahjongView*)getParent())->showTingGangControllPad();
+            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
         }else{
             setIsAllowPlay(true);
         }
@@ -1265,8 +1262,7 @@ void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData* cpg, 
     if (resp.result == 2 && resp.ting != ""){
         PlayerCpgtData tingData;
         tingData.ting = resp.ting;
-//        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-//        ((MahjongView*)getParent())->showTingGangControllPad();
+        ((MahjongView*)getParent())->showTingGangControllPad(tingData);
     }else{
         setIsAllowPlay(true);
         startTimeClockAnim();

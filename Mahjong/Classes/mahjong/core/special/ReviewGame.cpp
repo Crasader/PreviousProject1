@@ -374,7 +374,7 @@ void ReviewGame::heroDoCpgQi(){
 void ReviewGame::heroDoTing(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
-    playerHero->actionTing();
+    playerHero->actionTing(shmjHeroCpgtData);
 }
 void ReviewGame::heroDoTingQi(){
     playerHero->stopTimeClockAnim();

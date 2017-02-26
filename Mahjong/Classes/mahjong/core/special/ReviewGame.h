@@ -47,6 +47,8 @@ private:
     PlayerRight* playerRight;
     PlayerOpposite* playerOpposite;
     std::vector<PlayMingpaiRecord> myPlayMingpaiRecord;
+    PlayerCpgtData  shmjPlayerCpgtData;
+    HeroCpgRespData shmjHeroCpgtData;
     
     MenuItemImage* image1;
     MenuItemImage* image3;

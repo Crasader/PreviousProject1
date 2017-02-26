@@ -83,6 +83,7 @@ void GoldRoomButton::openGoldRoom(Ref* ref){
     EventCustom imageEvent(MSG_LOBBY_SHOW_LOADING_LAYER);
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&imageEvent);
     MenuItemImage* temp  = (MenuItemImage*) ref;
+    log("openGoldRoom openGoldRoom openGoldRoom openGoldRoom openGoldRoom ");
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",temp->getTag())));
     GAMEDATA::getInstance()->setCurrentSelectRoomId(temp->getTag());
 }
