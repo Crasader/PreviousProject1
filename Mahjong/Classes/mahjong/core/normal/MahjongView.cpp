@@ -344,7 +344,7 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData newData){
     controllPad->setVisible(true);
 }
 
-void MahjongView::showTingGangControllPad(PlayerCpgtData* tingData){
+void MahjongView::showTingGangControllPad(PlayerCpgtData tingData){
     playerHero->stopTimeClockAnim();
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
@@ -353,15 +353,14 @@ void MahjongView::showTingGangControllPad(PlayerCpgtData* tingData){
     MenuItemImage* ting = nullptr;
     MenuItemImage* penggang = nullptr;
     int buttonCount = 1;
-    if (tingData->ting != ""){
+    if (tingData.ting != ""){
         ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
         ting->setPosition(Point(-buttonCount * 140, 0));
         controllPad->addChild(ting);
         buttonCount++;
     }
-    if (tingData->gang != ""){
+    if (tingData.gang != ""){
         penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(MahjongView::heroDoPengGangAndAGang, this));
-        penggang->setUserData(tingData);
         penggang->setPosition(Point(-buttonCount * 140, 0));
         controllPad->addChild(penggang);
         buttonCount++;
@@ -714,7 +713,7 @@ void MahjongView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
             }else if(clientId == ClientSeatId::hero){
                 if(data.gang != ""){
                     if (data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-                        showTingGangControllPad(&data);
+                        showTingGangControllPad(data);
                         playerHero->startTimeClockAnim(9, 2);
                     }
                 }else{
@@ -1507,7 +1506,7 @@ void MahjongView::addHeroTingNotifyListener(){
     tingNotifyListener = EventListenerCustom::create(MSG_HERO_TING_GANG, [=](EventCustom* event){
         PlayerCpgtData* cpgtData = static_cast<PlayerCpgtData*>(cpgtData);
         if (cpgtData->seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-            showTingGangControllPad(cpgtData);
+            showTingGangControllPad(*cpgtData);
             playerHero->startTimeClockAnim(9, 2);
         }
     });

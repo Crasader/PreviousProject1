@@ -23,7 +23,7 @@ public:
 	virtual void onEnter() override;
 	virtual void onExit() override;
     void onEnterTransitionDidFinish() override;
-	void showTingGangControllPad(PlayerCpgtData* cpg);
+	void showTingGangControllPad(PlayerCpgtData cpg);
 	void hideTingGangControllPad();
     void heroPlayPokerAuto(int poker);
 	void showGuiLayer();

@@ -914,8 +914,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
             log("吃听的牌: %s",cpgResp.ting.c_str());
             PlayerCpgtData tingData;
             tingData.ting = cpgResp.ting;
-//            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-//            ((MahjongView*)getParent())->showTingGangControllPad();
+            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
         }else{
             setIsAllowPlay(true);
             startTimeClockAnim();
@@ -1006,8 +1005,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     if (resp.result == 2 && resp.ting != ""){
         PlayerCpgtData tingData;
         tingData.ting = resp.ting;
-//        GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-//        ((MahjongView*)getParent())->showTingGangControllPad();
+        ((MahjongView*)getParent())->showTingGangControllPad(tingData);
     }else{
         setIsAllowPlay(true);
         startTimeClockAnim();
@@ -1075,8 +1073,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
         if (resp.result == 2 && resp.ting != ""){
             PlayerCpgtData tingData;
             tingData.ting = resp.ting;
-//            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-//            ((MahjongView*)getParent())->showTingGangControllPad();
+            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
         }
         
     }else{
@@ -1346,8 +1343,7 @@ void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData* cpg, 
         if (resp.result == 2 && resp.ting != ""){
             PlayerCpgtData tingData;
             tingData.ting = resp.ting;
-//            GAMEDATA::getInstance()->setPlayerCpgt(tingData);
-//            ((MahjongView*)getParent())->showTingGangControllPad();
+            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
         }
         
     }else{
