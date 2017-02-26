@@ -64,7 +64,7 @@ private:
 	void heroDoCpgQi();
 	void heroDoTing();
 	void heroDoTingQi();
-	void heroDoPengGangAndAGang();
+	void heroDoPengGangAndAGang(Ref* ref);
 	void setCurrentJongVisible(int seatId);
 	void playerTingAnim(int seatId);
 	void clearRoomPlayer();

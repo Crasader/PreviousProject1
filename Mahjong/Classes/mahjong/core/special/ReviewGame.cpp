@@ -383,12 +383,12 @@ void ReviewGame::heroDoTingQi(){
     
 }
 
-void ReviewGame::heroDoPengGangAndAGang(){
+void ReviewGame::heroDoPengGangAndAGang(Ref* ref){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
-//    PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
-//    std::vector<string> gangpai = StringUtil::split(tingData.gang, ",");
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData.gang, atoi(gangpai.at(0).c_str()), tingData.flag));
+    PlayerCpgtData* tingData = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
+    std::vector<string> gangpai = StringUtil::split(tingData->gang, ",");
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData->gang, atoi(gangpai.at(0).c_str()), tingData->flag));
 }
 
 void ReviewGame::setCurrentJongVisible(int seatId){
@@ -455,7 +455,6 @@ void ReviewGame::showOriention(){
 
 PlayerBase* ReviewGame::getPlayerBySeatId(int sid){
     int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), sid);
-//    setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
     if (seatId == ClientSeatId::left){
         return playerLeft;
     }

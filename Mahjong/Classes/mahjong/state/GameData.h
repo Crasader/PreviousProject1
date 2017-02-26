@@ -24,7 +24,7 @@ public:
     
     FriendListData sortFriendList(FriendListData data);
     //服务端返回数据结构体
-//    CC_SYNTHESIZE(EnterRoomResp, enterRoomResp, EnterRoomResp);
+    CC_SYNTHESIZE(EnterRoomResp, enterRoomResp, EnterRoomResp);
 //    CC_SYNTHESIZE(OtherPlayedJong, otherPlayJong, OtherPlayJong);
 //    CC_SYNTHESIZE(PlayerCpgtData, playerCpgtData, PlayerCpgt);
 //    CC_SYNTHESIZE(PlayerTurnData, playerTurnData, PlayerTurn);
@@ -114,7 +114,6 @@ public:
     CC_SYNTHESIZE(string, wanJiaQun, WanJiaQun);//私人房间游戏局数
     CC_SYNTHESIZE(string, daiLiQun, DaiLiQun);//私人房间游戏局数
     CC_SYNTHESIZE(string, ip, IP);//玩家IP
-//    CC_SYNTHESIZE(string, dice, Dice);
     CC_SYNTHESIZE(string, kaibao, Kaibao);
     CC_SYNTHESIZE(string, huangfan, Huangfan);
     CC_SYNTHESIZE(string, diaopao, Diaopao);

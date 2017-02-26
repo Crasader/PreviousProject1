@@ -391,7 +391,7 @@ void MsgHandler::handleWanJiaQunResp(std::string msg){
     postNotifyMessage(MSG_WAN_JIA_WEI_XIN_QUN, NULL);
 }
 
-//{code:105,poxiaoId:"123",content:"abc",seatId:1}
+//{code:105,poxiaoId:"adv",content:"abc",seatId:1}
 void MsgHandler::playerChatNotify(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -670,8 +670,7 @@ void MsgHandler::handleTuiGuangInfo(std::string msg){
 }
 
 
-//{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,
-//other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]}
+//{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]}
 void MsgHandler::enterRoomResp(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -898,9 +897,8 @@ void MsgHandler::showOtherReady(std::string msg){
     char* buf = const_cast<char*>(StringUtil::itos(seatId.GetInt()).c_str());
     postNotifyMessage(MSG_READY_NOTIFY, buf);
 }
-
+//服务端到客户端掉线通知{code:1010,poxiaoId:poxiaoId}
 void MsgHandler::getPlayerOffLineNotify(std::string msg){
-    // 服务端到客户端掉线通知{code:1010,poxiaoId:poxiaoId}
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -1211,6 +1209,7 @@ void MsgHandler::gameContinueResp(std::string msg){
         }
     }
     GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
+    GAMEDATA::getInstance()->setEnterRoomResp(resp);
     postNotifyMessage(MSG_HERO_CONTINUE_RESP, NULL);
 }
 
@@ -2183,10 +2182,6 @@ void MsgHandler::enterRoomEnquireResp(std::string msg){
 }
 
 
-
-
-
-
 //开房进房前回复{code:2057,poxiaoId:poxiaoId,seatId:1}
 void MsgHandler::fangZhuLeaveRoom(std::string msg){
     rapidjson::Document _mDoc;
@@ -2229,7 +2224,7 @@ void MsgHandler::handleFupanInfo(std::string msg){
     postNotifyMessage(MSG_GAME_FU_PAN_NOTIFY, NULL);
 }
 
-
+//复盘发牌
 void MsgHandler::handleFupanPlayerInfo(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -2269,7 +2264,6 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         data.lequan = temp["lequan"].GetInt();
         data.fangka = temp["fangka"].GetDouble();
         data.pic = temp["pic"].GetString();
-        //        data.ip = temp["ip"].GetString();
         data.hua = temp["hua"].GetInt();
         data.status = 2;
         data.ifready = 0;

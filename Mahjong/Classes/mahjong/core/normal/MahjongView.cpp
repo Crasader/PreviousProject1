@@ -142,21 +142,6 @@ void MahjongView::startGameFirst(){
     }else{
         GAMEDATA::getInstance()->setHuangfan("0");
     }
-//    guiLayer->updateData();
-//    Player* info = new Player();
-//    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
-//    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
-//    info->setIsReady(false);
-//    info->setTicket(UserData::getInstance()->getTicket());
-//    info->setGold(UserData::getInstance()->getGold());
-//    info->setGender(UserData::getInstance()->getGender());
-//    info->setNickname(UserData::getInstance()->getNickName());
-//    info->setPicture(UserData::getInstance()->getPicture());
-//    info->setFangka(UserData::getInstance()->getFangkaNum());
-//    info->setIP(GAMEDATA::getInstance()->getIP());
-//    info->setUmark(UserData::getInstance()->getMarkId());
-//    info->setScore(GAMEDATA::getInstance()->getScore());
-//    GAMEDATA::getInstance()->addPlayersInfo(info);
 }
 
 void MahjongView::startGameAgain(){
@@ -164,27 +149,27 @@ void MahjongView::startGameAgain(){
         getChildByTag(2000)->removeFromParent();
     }
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-//    for (int i = 0; i < players.size(); i++){
-//        for(auto var:GAMEDATA::getInstance()->getEnterRoomResp().playerReadys){
-//            if(var.poxiaoId == players.at(i)->getPoxiaoId()){
-//                players.at(i)->setIsReady(var.ifready ==1?true:false);
-//            }
-//        }
-//        if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
-//            players.at(i)->setIsReady(true);
-//        }
-//    }
-//    if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
-//        GAMEDATA::getInstance()->setKaibao("1");
-//    }else{
-//        GAMEDATA::getInstance()->setKaibao("0");
-//    }
-//    if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
-//        GAMEDATA::getInstance()->setHuangfan("1");
-//    }else{
-//        GAMEDATA::getInstance()->setHuangfan("0");
-//    }
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
+    for (int i = 0; i < players.size(); i++){
+        for(auto var:GAMEDATA::getInstance()->getEnterRoomResp().playerReadys){
+            if(var.poxiaoId == players.at(i)->getPoxiaoId()){
+                players.at(i)->setIsReady(var.ifready ==1?true:false);
+            }
+        }
+        if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
+            players.at(i)->setIsReady(true);
+        }
+    }
+    if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
+        GAMEDATA::getInstance()->setKaibao("1");
+    }else{
+        GAMEDATA::getInstance()->setKaibao("0");
+    }
+    if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
+        GAMEDATA::getInstance()->setHuangfan("1");
+    }else{
+        GAMEDATA::getInstance()->setHuangfan("0");
+    }
+    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);//刷新开宝信息
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
@@ -237,7 +222,6 @@ void MahjongView::update(float dt){
         addChild(dis,1000);
         GAMEDATA::getInstance()->setShowDissolveDialog(true);
     }
-    
     
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
@@ -362,7 +346,7 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData* newData){
     controllPad->setVisible(true);
 }
 
-void MahjongView::showTingGangControllPad(PlayerCpgtData* cpg){
+void MahjongView::showTingGangControllPad(PlayerCpgtData* tingData){
     playerHero->stopTimeClockAnim();
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
@@ -371,18 +355,19 @@ void MahjongView::showTingGangControllPad(PlayerCpgtData* cpg){
     MenuItemImage* ting = nullptr;
     MenuItemImage* penggang = nullptr;
     int buttonCount = 1;
-//    if (tingData.ting != ""){
-//        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
-//        ting->setPosition(Point(-buttonCount * 140, 0));
-//        controllPad->addChild(ting);
-//        buttonCount++;
-//    }
-//    if (tingData.gang != ""){
-//        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_0(MahjongView::heroDoPengGangAndAGang, this));
-//        penggang->setPosition(Point(-buttonCount * 140, 0));
-//        controllPad->addChild(penggang);
-//        buttonCount++;
-//    }
+    if (tingData->ting != ""){
+        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
+        ting->setPosition(Point(-buttonCount * 140, 0));
+        controllPad->addChild(ting);
+        buttonCount++;
+    }
+    if (tingData->gang != ""){
+        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(MahjongView::heroDoPengGangAndAGang, this));
+        penggang->setUserData(tingData);
+        penggang->setPosition(Point(-buttonCount * 140, 0));
+        controllPad->addChild(penggang);
+        buttonCount++;
+    }
     controllPad->setVisible(true);
     playerHero->setIsAllowTouch(false);
     playerHero->setIsAllowPlay(true);
@@ -457,7 +442,6 @@ void MahjongView::heroDoChi(Ref* psend){
     MenuItemImage* item = (MenuItemImage*)psend;
     PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(item->getUserData());
     selectedChi = cpg->chi[item->getTag()];
-    log("AAAAAAAAAAAAAAAA = %d",item->getTag());
     playerHero->stopTimeClockAnim();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(cpg->poker.c_str())));
 }
@@ -501,12 +485,12 @@ void MahjongView::heroDoTingQi(){
     playerHero->startTimeClockAnim();
 }
 
-void MahjongView::heroDoPengGangAndAGang(){
+void MahjongView::heroDoPengGangAndAGang(Ref* ref){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
-//    PlayerCpgtData tingData = GAMEDATA::getInstance()->getPlayerCpgt();
-//    std::vector<string> gangpai = StringUtil::split(tingData.gang, ",");
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData.gang, atoi(gangpai.at(0).c_str()), tingData.flag));
+    PlayerCpgtData* tingData = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
+    std::vector<string> gangpai = StringUtil::split(tingData->gang, ",");
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData->gang, atoi(gangpai.at(0).c_str()), tingData->flag));
 }
 
 void MahjongView::setCurrentJongVisible(int seatId){
@@ -692,7 +676,6 @@ void MahjongView::showOriention(){
 
 PlayerBase* MahjongView::getPlayerBySeatId(int sid){
     int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), sid);
-//    setCurrentJongVisible(GAMEDATA::getInstance()->getPlayerCpgt().sId);
     if (seatId == ClientSeatId::left){
         return playerLeft;
     }
@@ -1288,7 +1271,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-    //    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
@@ -1329,12 +1312,12 @@ void MahjongView::addCoustomListener(){
     });
     
     
-    //    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-    //        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-    //        std::string name = static_cast<char*>(event->getUserData());
-    //        dis->setNickName(name);
-    //        addChild(dis,1000);
-    //    });
+        dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
+            DissovleRoomDialog* dis = DissovleRoomDialog::create();
+            std::string name = static_cast<char*>(event->getUserData());
+            dis->setNickName(name);
+            addChild(dis,1000);
+        });
     
     dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
         DissolveData data = GAMEDATA::getInstance()->getDissolveData();
@@ -1589,25 +1572,24 @@ void MahjongView::addHeroPengRespListener(){
 
 void MahjongView::addHeroGangRespListener(){
     heroGangRespListener = EventListenerCustom::create(MSG_HERO_GANG_RESP, [=](EventCustom* event){
-//        PlayerCpgtData cpg = GAMEDATA::getInstance()->getPlayerCpgt();
-//        HeroCpgRespData resp = GAMEDATA::getInstance()->getHeroCpgResp();
-//        playerHero->hideCurrentBigJong();
-//        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), cpg.sId);
-//        if (resp.result == 0){
-//            playerHero->stopTimeClockAnim();
-//        }
-//        else{
-//            
-//            if (clientSeatId == ClientSeatId::right){
-//                playerHero->drawHeroGang(resp, cpg, playerRight);
-//            }
-//            else if (clientSeatId == ClientSeatId::opposite){
-//                playerHero->drawHeroGang(resp, cpg, playerOpposite);
-//            }
-//            else{
-//                playerHero->drawHeroGang(resp, cpg, playerLeft);
-//            }
-//        }
+        HeroCpgRespData* resp = static_cast<HeroCpgRespData*>(event->getUserData());
+        playerHero->hideCurrentBigJong();
+        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), myCpgtData->sId);
+        if (resp->result == 0){
+            playerHero->stopTimeClockAnim();
+        }
+        else{
+            
+            if (clientSeatId == ClientSeatId::right){
+                playerHero->drawHeroGang(resp, myCpgtData, playerRight);
+            }
+            else if (clientSeatId == ClientSeatId::opposite){
+                playerHero->drawHeroGang(resp, myCpgtData, playerOpposite);
+            }
+            else{
+                playerHero->drawHeroGang(resp, myCpgtData, playerLeft);
+            }
+        }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
