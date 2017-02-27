@@ -807,9 +807,10 @@ void LobbyScene::addEventListener(){
     //获取房间列表
     roomListRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
         RoomListData* data = static_cast<RoomListData*>(event->getUserData());
-        if(data->rooms.size()>0 && getChildByTag(1298)==NULL){
-            GAMEDATA::getInstance()->setRoomList(*data);
-            GoldRoomPlate* plate = GoldRoomPlate::create(*data);
+        RoomListData newData = *data;
+        if(data->rooms.size()>0 && getChildByTag(1298) == NULL){
+            GAMEDATA::getInstance()->setRoomList(newData);
+            GoldRoomPlate* plate = GoldRoomPlate::create(newData);
             plate->setTag(1298);
             addChild(plate,2);
         }
