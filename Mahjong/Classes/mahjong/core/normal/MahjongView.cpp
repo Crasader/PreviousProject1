@@ -397,6 +397,16 @@ void MahjongView::showHeroChiUi(Ref* ref){
     controllPad->setVisible(false);
     //吃牌排序
     if (shmjPlayerCpgtData.chi[0] != "" && shmjPlayerCpgtData.chi[1] != ""){
+        //对吃牌的大小进行排序
+        for (int j = 2; j > 0; j--) {
+            for (int k = 0; k < j; k++) {
+                if (shmjPlayerCpgtData.chi[k] < shmjPlayerCpgtData.chi[k + 1]) {
+                    auto temp = shmjPlayerCpgtData.chi[k];
+                    shmjPlayerCpgtData.chi[k] = shmjPlayerCpgtData.chi[k + 1];
+                    shmjPlayerCpgtData.chi[k + 1] = temp;
+                }
+            }
+        }
         for (int i = 0; i < 3; i++){
             if(shmjPlayerCpgtData.chi[i] == ""){
                 continue;
@@ -869,7 +879,8 @@ void MahjongView::addHeroCpgListener(){
     
     playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
         PlayerCpgtData* cpgData = static_cast<PlayerCpgtData*>(event->getUserData());
-        drawCpgControllPad(*cpgData);
+        PlayerCpgtData mewCpgData = *cpgData;
+        drawCpgControllPad(mewCpgData);
         playerHero->startTimeClockAnim(9, 1);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
@@ -1572,13 +1583,13 @@ void MahjongView::addHeroGangRespListener(){
         else{
             
             if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroGang(*resp, shmjPlayerCpgtData, playerRight);
+                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerRight);
             }
             else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroGang(*resp, shmjPlayerCpgtData, playerOpposite);
+                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerOpposite);
             }
             else{
-                playerHero->drawHeroGang(*resp, shmjPlayerCpgtData, playerLeft);
+                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerLeft);
             }
         }
     });
