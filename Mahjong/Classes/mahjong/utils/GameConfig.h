@@ -9,7 +9,7 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "5" //ios支付版本
+#define PAY_PLAT_VALUE "4" //ios支付版本
 
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币
 #define ENTER_ROOM_2_GOLD 150000// 进入第2个房间需要的最低金币

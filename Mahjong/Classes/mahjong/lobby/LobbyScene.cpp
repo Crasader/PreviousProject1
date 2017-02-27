@@ -564,29 +564,28 @@ void LobbyScene::addEventListener(){
         removeLoading();
         
         EnterRoomResp* respData = static_cast<EnterRoomResp*>(event->getUserData());
-        
-        if (respData->result == "1"){
+        EnterRoomResp newRespData = *respData;
+        if (newRespData.result == "1"){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        } else if(respData->result == "2"){
+        } else if(newRespData.result == "2"){
             for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
                 if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-               
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
                     if(UserData::getInstance()->isWeixinPayOpen()){
-                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(newRespData,GAMEDATA::getInstance()->getCurrentSelectRoomId());
                         addChild(gold,4);
                     }else{
                         HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
                         addChild(hint,100);
                     }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
+                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(newRespData,GAMEDATA::getInstance()->getCurrentSelectRoomId());
                     addChild(gold,4);
 #endif
                 }
             }
         }
-        else if(respData->result == "3"){
+        else if(newRespData.result == "3"){
             if(atoi(respData->rsid.c_str()) == ROOM_2){
                 EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);
                 addChild(dia,4);
@@ -621,7 +620,7 @@ void LobbyScene::addEventListener(){
                 HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
                 addChild(hint,4);
             }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
             FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
             addChild(charge,4);
 #endif
@@ -650,7 +649,7 @@ void LobbyScene::addEventListener(){
                 HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
                 addChild(hint,4);
             }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
             FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
             addChild(charge,4);
 #endif
@@ -724,7 +723,7 @@ void LobbyScene::addEventListener(){
                 HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
                 addChild(hint,4);
             }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
             FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
             addChild(charge,4);
 #endif

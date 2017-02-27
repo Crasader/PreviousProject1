@@ -10,12 +10,13 @@
 #define GoldNotEnoughDialog_hpp
 
 #include "cocos2d.h"
+#include "mahjong/state/GameData.h"
 USING_NS_CC;
 
 class GoldNotEnoughDialog : public Layer{
 public:
-    static GoldNotEnoughDialog* create(int type);
-    virtual bool init(int type);
+    static GoldNotEnoughDialog* create( EnterRoomResp newRespData,int type);
+    virtual bool init( EnterRoomResp newRespData,int type);
 private:
     void closeView();
     void chargeGold();
