@@ -1393,8 +1393,6 @@ void MahjongView::addCoustomListener(){
     
     gameFaPaiListener = EventListenerCustom::create(MSG_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
-        playerHero->hideInviteButton();//隐藏玩家的邀请按钮
-        guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
         GAMEDATA::getInstance()->setIsPlaying(true);//游戏状态改为游戏中
         if(NULL != playerHero){
             playerHero->setIsReady(false);//关闭准备的显示
@@ -1407,6 +1405,8 @@ void MahjongView::addCoustomListener(){
             playerOpposite->setIsReady(false);
         if(NULL != playerLeft)
             playerLeft->setIsReady(false);
+        playerHero->hideInviteButton();//隐藏玩家的邀请按钮
+        guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
         GAMEDATA::getInstance()->setKaibao(msgData->kaibao);
         GAMEDATA::getInstance()->setHuangfan(msgData->huangfan);
         GAMEDATA::getInstance()->setCurrentBank(msgData->start);
