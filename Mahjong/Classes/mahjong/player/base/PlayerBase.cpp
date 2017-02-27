@@ -179,11 +179,11 @@ void PlayerBase::replaceTurnHua(PlayerTurnData data){
     
 }
 
-void PlayerBase::replaceTurnHuaMingpai(PlayerTurnData* data){
-    if(data->replace==""){
+void PlayerBase::replaceTurnHuaMingpai(PlayerTurnData data){
+    if(data.replace==""){
         return;
     }
-    std::vector<std::string> replace = StringUtil::split(data->replace, ",");
+    std::vector<std::string> replace = StringUtil::split(data.replace, ",");
     setHuaNum(getHuaNum()+(int)replace.size());
     showPlayerHua(getHuaNum());
 }

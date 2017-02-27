@@ -23,7 +23,7 @@ public:
 	virtual void onEnter() override;
 	virtual void onExit() override;
     void onEnterTransitionDidFinish() override;
-	void showTingGangControllPad();
+	void showTingGangControllPad(PlayerCpgtData tingData);
 	void hideTingGangControllPad();
     void heroPlayPokerAuto(int poker);
     void showGuiLayer();
@@ -58,8 +58,8 @@ private:
 	void initData();
 	void loadView();
 	void addTouchListener();
-	void drawCpgControllPad();
-	void showHeroChiUi();
+	void drawCpgControllPad(PlayerCpgtData newData);
+	void showHeroChiUi(Ref* ref);
 	void heroDoChi(Ref* psend);
 	void heroDoPeng(Ref* ref);
 	void heroDoGang(Ref* ref);
@@ -105,6 +105,5 @@ private:
     void controlPause();
     void controlUp();
     void controlBack();
-    void handlePlayBackData();
 };
 #endif

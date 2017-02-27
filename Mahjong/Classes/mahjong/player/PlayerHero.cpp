@@ -675,13 +675,13 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     doubleClickJong = NULL;
 }
 
-void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData* data){
-    if(data->replace != ""){
-        std::vector<std::string> replace = StringUtil::split(data->replace, ",");
+void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
+    if(data.replace != ""){
+        std::vector<std::string> replace = StringUtil::split(data.replace, ",");
         setHuaNum(getHuaNum()+(int)replace.size());
     }
     Jong* jong = Jong::create();
-    jong->showJong(herohand, data->poker);
+    jong->showJong(herohand, data.poker);
     addChild(jong);
     showPlayerHua(getHuaNum());
     playerHandJongs.pushBack(jong);
@@ -1203,11 +1203,11 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
 }
 
 
-void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData* cpg, PlayerBase* playerBase){
+void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
 
     Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
-    std::vector<string> pengpai = StringUtil::split(cpg->peng, ",");
+    std::vector<string> pengpai = StringUtil::split(cpg.peng, ",");
     Vector<Jong*> pengVector;
     for (int i = 0; i < pengpai.size(); i++){
         for (int j = 0; j < getSelfHandJongs().size(); j++){
@@ -1268,11 +1268,11 @@ void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData* cpg, 
     }
 }
 
-void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData* cpg, PlayerBase* playerBase){
+void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
-    if(cpg->flag == 0){
-        std::vector<string> gangpai = StringUtil::split(cpg->gang, ",");
+    if(cpg.flag == 0){
+        std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
         Vector<Jong*> gangVector;
         for (int i = 0; i < gangpai.size(); i++){
             for (int j = 0; j < getSelfHandJongs().size(); j++){
@@ -1315,9 +1315,9 @@ void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData* cpg, 
         }
         
     }else{
-        std::vector<string> gangpai = StringUtil::split(cpg->gang, ",");
+        std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
         Vector<Jong*> gangVector;
-        if (cpg->flag == 2){
+        if (cpg.flag == 2){
             for(int j=0; j<playerHandJongs.size();j++){
                 if(playerHandJongs.at(j)->getJongType() == atoi(gangpai.at(0).c_str())){
                     gangVector.pushBack(playerHandJongs.at(j));
