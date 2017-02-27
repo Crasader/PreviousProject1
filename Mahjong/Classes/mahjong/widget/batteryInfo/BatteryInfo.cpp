@@ -73,30 +73,5 @@ void BatteryInfo::updateInfo(float delta)
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     batteryItem->setScaleX(atoi(IOSBridge::getInstance()->getBatteryPersent().c_str())/100.0f);
 #endif
-    
-//	int  netType, netLevel;
-//	CallAndroidMethod::getInstance()->getNetInfo(netType, netLevel);
-//	switch (netType)
-//	{
-//	case -1:
-//		wifiInfo->setTexture("batteryInfo/signial1.png");
-//		break;
-//	case 1:
-//	{
-//
-//		auto path = StringUtils::format("mjlobby/batteryInfo/wifi%d.png", netLevel > 4 ? 4 : netLevel);
-//		wifiInfo->setTexture(path.c_str());
-//	}
-//	
-//		break;
-//	case 2:
-//	{
-//		auto path = StringUtils::format("mjlobby/batteryInfo/signial%d.png", netLevel > 4 ? 4 : netLevel);
-//		wifiInfo->setTexture(path.c_str());
-//	}
-//		break;
-//	default:
-//		break;
-//	}
 
 }
