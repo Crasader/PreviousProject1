@@ -556,7 +556,7 @@ void PlayerHero::arrangeHandJongs() {
         sortHandJongs(getHandPosX(), true);
     });
     auto sequence = Sequence::create(delay, callback, NULL);
-    this->runAction(sequence);
+    runAction(sequence);
 }
 
 
@@ -989,6 +989,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
     Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
     if(cpg.flag == 0){
+        //明杠
         std::vector<string> gangpai = StringUtil::split(cpg.gang, ",");
         Vector<Jong*> gangVector;
         for (int i = 0; i < gangpai.size(); i++){
@@ -1105,8 +1106,8 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
                     Spawn* sp = Spawn::create(mv, scale, NULL);
                     gangVector.at(m)->runAction(sp);
                 }
-                this->setHandPosX(this->getHandPosX() + JONG_WIDTH * 3);
-                this->sortHandJongs(this->getHandPosX(), true);
+                setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+                sortHandJongs(getHandPosX(), true);
             });
             DelayTime* delay = DelayTime::create(0.25f);
             CallFunc* action2 = CallFunc::create([=](){
@@ -1134,7 +1135,7 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerCpgtData cpg, PlayerBa
                 }
             });
             Sequence* mySe = Sequence::create(action1, delay, action2, delay, action3, NULL);
-            this->runAction(mySe);
+            runAction(mySe);
         }
         setIsAllowTouch(true);
     }

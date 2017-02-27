@@ -4527,7 +4527,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "793"
             endingLineNumber = "793"
-            landmarkName = "PlayerHero::removePlayedIcon()"
+            landmarkName = "PlayerHero::doEventTimeOver(int type)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4968,11 +4968,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/player/PlayerHero.cpp"
-            timestampString = "509438492.470938"
+            timestampString = "509876590.146309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1575"
-            endingLineNumber = "1575"
+            startingLineNumber = "1576"
+            endingLineNumber = "1576"
             landmarkName = "PlayerHero::updateMingpai(Vector&lt;Jong*&gt; myPlayerHandJongs,Vector&lt;Jong*&gt; myPlayerPlayedJongs,std::vector&lt;PlayerCpgRecord&gt; myPlayerCpgRecords)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5053,7 +5053,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1429"
             endingLineNumber = "1429"
-            landmarkName = "MahjongView::addCoustomListener()"
+            landmarkName = "MahjongView::addOthersChiListener()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5068,9 +5068,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1427"
-            endingLineNumber = "1427"
-            landmarkName = "MahjongView::addCoustomListener()"
-            landmarkType = "7">
+            endingLineNumber = "1427">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
