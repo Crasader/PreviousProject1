@@ -1373,7 +1373,7 @@ void MahjongView::addCoustomListener(){
             }, 0, 0, 2.0f,"continueGame223");
         }
     });
-
+    
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
@@ -1392,6 +1392,8 @@ void MahjongView::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
     gameFaPaiListener = EventListenerCustom::create(MSG_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
+        if(GAMEDATA::getInstance()->getIsPlaying())
+            return;
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
         GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
