@@ -37,13 +37,13 @@ bool GameFeedDialog::init(){
     addChild(icon);
 
     
-    auto input_bg = Scale9Sprite::create("common/input_box_bg.png");
+    auto input_bg = ui::Scale9Sprite::create("common/input_box_bg.png");
     input_bg->setContentSize(Size(700,300));
     input_bg->setPosition(640, 390);
     addChild(input_bg);
     
-    auto _editName = EditBox::create(Size(680, 300), Scale9Sprite::create());
-    _editName->setPosition(Point(660, 460));
+    auto _editName = ui::EditBox::create(Size(680, 200), ui::Scale9Sprite::create());
+    _editName->setPosition(Point(660, 400));
     _editName->setTag(0);
     _editName->setFont("arial", 24);
     _editName->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);

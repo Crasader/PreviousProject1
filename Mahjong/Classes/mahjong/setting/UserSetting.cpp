@@ -110,13 +110,13 @@ void UserSetting::slideCallback(Ref *sender, Control::EventType controlEvent)
 
 void UserSetting::showGameHelp(){
     GameRuleDialog* rule = GameRuleDialog::create();
-    addChild(rule);
+    addChild(rule,2);
 }
 
 
 void UserSetting::feedBack(){
     GameFeedDialog* feed = GameFeedDialog::create();
-    addChild(feed);
+    addChild(feed,2);
 }
 
 void UserSetting::dissolveRoom(){
