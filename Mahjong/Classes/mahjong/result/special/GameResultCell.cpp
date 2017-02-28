@@ -67,7 +67,7 @@ bool GameResultCell::init(GameResultData data){
     resultNum->setPosition(0,-120);
     addChild(resultNum,20);
     
-    if(data.poxiaoId == GAMEDATA::getInstance()->getFangZhuId()){
+    if(data.poxiaoId == GAMEDATA::getInstance()->getResultFangzhuId()){
         auto title = Sprite::create("result/fangzhu_title.png");
         title->setPosition(-70,130);
         addChild(title,30);

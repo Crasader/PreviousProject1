@@ -173,6 +173,7 @@ static const NSInteger socket_timeout = 15;//超时时间
 
 - (void)sendBeat:(NSTimer *)timer {
     if (self.beatCount >= kBeatLimit) {
+        self.beatCount=0;
         [self disconnectSocket];
         return;
     } else {

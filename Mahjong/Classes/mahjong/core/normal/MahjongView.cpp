@@ -1048,9 +1048,10 @@ void MahjongView::addGameResultListener(){
                 
                 clearRoomPlayer();
                 if(flag == "2"){
+                    GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
+                    GAMEDATA::getInstance()->setFangZhuId("");
                     GAMEDATA::getInstance()->setNeedShowLastResult(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
-                    GAMEDATA::getInstance()->setFangZhuId("");
                     GAMEDATA::getInstance()->clearPlayersInfo();
                 }else{
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
@@ -1059,6 +1060,7 @@ void MahjongView::addGameResultListener(){
             },0,0,6.0f,"go2Result");
         }else{
             clearRoomPlayer();
+            GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
             GAMEDATA::getInstance()->setFangZhuId("");
             GAMEDATA::getInstance()->setPrivateGameNum("0");
             GAMEDATA::getInstance()->clearPlayersInfo();
