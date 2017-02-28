@@ -636,6 +636,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             needReplace.clear();
             Jong* jong = Jong::create();
             jong->showJong(herohand, atoi(replace.at(huaIndex).c_str()));
+            jong->setPosition(1130,70);
             jong->setVisible(false);
             addChild(jong);
             needReplace.push_back(jong);
