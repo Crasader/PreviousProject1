@@ -1,4 +1,4 @@
-#include "mahjong/widget/ScrollTextEx.h"
+#include "ScrollTextEx.h"
 
 #define IF_RETURN(cont,p) if ((cont)){return (p);}
 #define IF_RETURN_FALSE(cont) IF_RETURN(cont,false)
@@ -9,9 +9,16 @@ bool ScrollTextEx::init() {
         m_strs.clear();
         pMask = Sprite::create("gameview/sroll_bg.png");
         pMask->setOpacity(0);
-        pMoved = ScrollCell::create("");
+
+	
+        pMoved = Label::create("","arial",24);
         pMoved->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        pMoved->setColor(Color3B::YELLOW);
         pMoved->setPosition(0,0);
+
+		pFrame = LayerColor::create(Color4B(76,70,90,150), pMoved->getContentSize().width, pMoved->getContentSize().height);
+		pFrame->setAnchorPoint(Point::ANCHOR_MIDDLE);
+		pMoved->addChild(pFrame,-1);
         IF_RETURN_FALSE(!initClipper(pMask, pMoved));
         scheduleUpdate();
         return ret;
@@ -24,30 +31,19 @@ void ScrollTextEx::setScrollStr(std::string str)
     {
         m_strs.push_back(str);
     }
-    
+		
 }
 void ScrollTextEx::setScrollStrs(std::vector<std::string> strs)
 {
-    auto vec = strs;
-    if (vec.size()<=0)
-    {
-        return;
-    }
-    std::string str1;
-    for (auto var : vec)
+	for (auto var : strs)
     {
         setScrollStr(var);
         
     }
-    
-}
-
-void ScrollTextEx::setpMaskString(std::string string) {
-    pMoved = ScrollCell::create(string);
 }
 
 bool ScrollTextEx::initClipper(cocos2d::Sprite* pMask,
-                               ScrollCell* pMoveChild) {
+                               Label* pMoveChild) {
     auto clipper = ClippingNode::create();
     IF_RETURN_FALSE(!clipper);
     IF_RETURN_FALSE(!pMask);
@@ -64,10 +60,7 @@ bool ScrollTextEx::initClipper(cocos2d::Sprite* pMask,
     clipper->addChild(pMoveChild, 1);
     addChild(clipper);
     
-    for (auto child : _mNodes) {
-        IF_RETURN_FALSE(!child);
-        clipper->addChild(child);
-    }
+  
     setContentSize(pMask->getContentSize());
     return true;
 }
@@ -80,38 +73,50 @@ ScrollTextEx::~ScrollTextEx() {
     //	CC_SAFE_RELEASE(_mLable);
 }
 
-
+#define  contentX getContentSize().width * (-1.2f)
 void ScrollTextEx::update(float delta) {
     if (!pMoved) {
         return;
     }
-    float speed = 0.7f;
-    float contentX = getContentSize().width * (-1.0f);
+    float speed = 1.0f;
+    
     float lableX = pMoved->getContentSize().width * (-1.0f);
     if (_autoScroll) {
-        if (pMoved->getPositionX() >= (lableX + contentX / 2)){
+        if (pMoved->getPositionX() >= (lableX + contentX)){
             pMoved->setPositionX(pMoved->getPositionX() -speed);
         }
         else {
             if (m_strs.size()>0)
             {
-                auto str = m_strs.front();
-                m_strs.pop_front();
-                pMoved->setString(str);
-                pMoved->setPositionX(-contentX / 2 );
+				auto str = m_strs.front();
+				m_strs.pop_front();
+				loadNewStr(str);
+			
             }
             else
             {
-                /*removeFromParentAndCleanup(1);*/
+				pMoved->setVisible(false);
             }
             
         }
         
     } else {
-        pMoved->setPositionX(contentX / 2);
+        pMoved->setPositionX(-contentX);
+
     }
 }
+void ScrollTextEx::loadNewStr(std::string str)
+{
+	log("loadNewStr");
 
+	pMoved->setString(str);
+	pMoved->setPositionX(-contentX);
+	pMoved->setVisible(true);
+
+	pFrame->changeWidthAndHeight(pMoved->getContentSize().width, pMoved->getContentSize().height);
+
+	setVisible(true);
+}
 void ScrollTextEx::setAutoScroll(bool isScroll, bool byWidth/*=false*/) {
     if (!byWidth) {
         _autoScroll = isScroll;
@@ -121,16 +126,4 @@ void ScrollTextEx::setAutoScroll(bool isScroll, bool byWidth/*=false*/) {
         true : false;
     }
 }
-bool ScrollTextEx::initWithDatas(cocos2d::Sprite* pMask,
-                                 ScrollCell* pMoveChild) {
-    bool ret = false;
-    if (Node::init()) {
-        IF_RETURN_FALSE(!pMask);
-        pMoved = pMoveChild;
-        pMoved->setAnchorPoint(Vec2::ANCHOR_MIDDLE_LEFT);
-        initClipper(pMask, pMoved);
-        scheduleUpdate();
-        return true;
-    }
-    return ret;
-}
+

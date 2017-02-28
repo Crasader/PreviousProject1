@@ -722,7 +722,7 @@ void MahjongView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
             }else if(clientId == ClientSeatId::right){
                 playerRight->startTimeClockAnim();
             }else if(clientId == ClientSeatId::hero){
-                if(data.gang != ""){
+                if(data.gang != ""||data.ting!=""){
                     if (data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
                         showTingGangControllPad(data);
                         playerHero->startTimeClockAnim(9, 2);

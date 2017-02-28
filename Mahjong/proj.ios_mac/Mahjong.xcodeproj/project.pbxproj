@@ -255,8 +255,6 @@
 		D26779441DF00698003CE73F /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A21DF00697003CE73F /* WanJiaQunLayer.cpp */; };
 		D26779451DF00698003CE73F /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A51DF00697003CE73F /* HeadImage.cpp */; };
 		D26779461DF00698003CE73F /* HeadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A51DF00697003CE73F /* HeadImage.cpp */; };
-		D26779471DF00698003CE73F /* ScrollCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A71DF00697003CE73F /* ScrollCell.cpp */; };
-		D26779481DF00698003CE73F /* ScrollCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A71DF00697003CE73F /* ScrollCell.cpp */; };
 		D26779491DF00698003CE73F /* ScrollTextEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A91DF00697003CE73F /* ScrollTextEx.cpp */; };
 		D267794A1DF00698003CE73F /* ScrollTextEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778A91DF00697003CE73F /* ScrollTextEx.cpp */; };
 		D267794E1DF012E2003CE73F /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267794C1DF012E2003CE73F /* ParticleUtil.cpp */; };
@@ -604,8 +602,6 @@
 		D26778A31DF00697003CE73F /* WanJiaQunLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WanJiaQunLayer.hpp; sourceTree = "<group>"; };
 		D26778A51DF00697003CE73F /* HeadImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeadImage.cpp; sourceTree = "<group>"; };
 		D26778A61DF00697003CE73F /* HeadImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HeadImage.hpp; sourceTree = "<group>"; };
-		D26778A71DF00697003CE73F /* ScrollCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollCell.cpp; sourceTree = "<group>"; };
-		D26778A81DF00697003CE73F /* ScrollCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScrollCell.hpp; sourceTree = "<group>"; };
 		D26778A91DF00697003CE73F /* ScrollTextEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollTextEx.cpp; sourceTree = "<group>"; };
 		D26778AA1DF00697003CE73F /* ScrollTextEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextEx.h; sourceTree = "<group>"; };
 		D267794C1DF012E2003CE73F /* ParticleUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleUtil.cpp; sourceTree = "<group>"; };
@@ -1439,8 +1435,6 @@
 				D267794D1DF012E2003CE73F /* ParticleUtil.hpp */,
 				D26778A51DF00697003CE73F /* HeadImage.cpp */,
 				D26778A61DF00697003CE73F /* HeadImage.hpp */,
-				D26778A71DF00697003CE73F /* ScrollCell.cpp */,
-				D26778A81DF00697003CE73F /* ScrollCell.hpp */,
 				D26778A91DF00697003CE73F /* ScrollTextEx.cpp */,
 				D26778AA1DF00697003CE73F /* ScrollTextEx.h */,
 			);
@@ -1856,7 +1850,6 @@
 				D26778B91DF00697003CE73F /* BillInfo.cpp in Sources */,
 				D26778BB1DF00697003CE73F /* ChatDialog.cpp in Sources */,
 				D2FB85251E0924AF00257EE1 /* GoldRoomPlate.cpp in Sources */,
-				D26779471DF00698003CE73F /* ScrollCell.cpp in Sources */,
 				D26779071DF00698003CE73F /* NormalResultLayer.cpp in Sources */,
 				D26778BF1DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
 				D26778B71DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
@@ -1992,7 +1985,6 @@
 				D26778CA1DF00697003CE73F /* Orientation.cpp in Sources */,
 				D267792C1DF00698003CE73F /* LequanExchangeRecord.cpp in Sources */,
 				D26779101DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
-				D26779481DF00698003CE73F /* ScrollCell.cpp in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D267794F1DF012E2003CE73F /* ParticleUtil.cpp in Sources */,
 				D26778BC1DF00697003CE73F /* ChatDialog.cpp in Sources */,
