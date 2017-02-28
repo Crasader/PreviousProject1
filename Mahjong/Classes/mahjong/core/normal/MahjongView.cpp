@@ -169,7 +169,7 @@ void MahjongView::startGameAgain(){
     }else{
         GAMEDATA::getInstance()->setHuangfan("0");
     }
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);//刷新开宝信息
+//    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);//刷新开宝信息
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
@@ -557,7 +557,7 @@ void MahjongView::recoverGame(){
         GAMEDATA::getInstance()->setCurrentBank(data.loard);
         GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
         GAMEDATA::getInstance()->setKaibao(StringUtil::itos(data.kb));
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
+//        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
         for (int i = 0; i < data.players.size(); i++)
         {
             PlayerGameData player = data.players.at(i);
