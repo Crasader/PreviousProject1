@@ -658,7 +658,7 @@ void ReviewGame::addCoustomListener(){
         }
         
         showPaiduiNum(91);
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
+//        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
         auto controlbg = Sprite::create("fupan/bg.png");
         controlbg->setPosition(640,220);
         addChild(controlbg,100);
