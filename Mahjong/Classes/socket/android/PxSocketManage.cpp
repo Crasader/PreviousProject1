@@ -26,6 +26,7 @@ bool PxSocketManage::connectSocket(std::string host,int port){
 
 void PxSocketManage::startScoketBeat(std::string msg){
     heartMsg = msg;
+    Director::getInstance()->getScheduler()->unschedule(schedule_selector(PxSocketManage::sendHeartBeat), this);
     Director::getInstance()->getScheduler()->schedule(schedule_selector(PxSocketManage::sendHeartBeat), this, 5.0f,CC_REPEAT_FOREVER, 0, false);
 }
 
