@@ -63,8 +63,8 @@ void LobbyScene::signUpdate(float dt){
                     }else{
                         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
                     }
-                    NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
                 }, 0, 0, delayTime, "socket_reconnect2000");
+                NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             }else{
                 HintDialog* dia = HintDialog::create("无法连接网络,请检查当前网络环境", NULL);
                 addChild(dia,1000);
@@ -74,22 +74,22 @@ void LobbyScene::signUpdate(float dt){
     }
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
-        //        for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
-        //            if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-        //#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-        //                if(UserData::getInstance()->isWeixinPayOpen()){
-        //                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-        //                    addChild(gold,30);
-        //                }else{
-        //                    HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
-        //                    addChild(hint,100);
-        //                }
-        //#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-        //                GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getCurrentSelectRoomId());
-        //                addChild(gold,30);
-        //#endif
-        //            }
-        //        }
+                for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
+                    if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+        #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+                        if(UserData::getInstance()->isWeixinPayOpen()){
+                            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                            addChild(gold,30);
+                        }else{
+                            HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
+                            addChild(hint,100);
+                        }
+        #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                        addChild(gold,30);
+        #endif
+                    }
+                }
         GAMEDATA::getInstance()->setShowDialogType(-1);
     }
     else if(GAMEDATA::getInstance()->getShowDialogType() == 3){
@@ -765,9 +765,12 @@ void LobbyScene::addEventListener(){
     
     //游戏公告
     noticeUrlLitener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_GONG_GAO, [=](EventCustom* event){
+        GameActivityData* data = static_cast<GameActivityData*>(event->getUserData());
+        GameActivityData newData = *data;
+        GAMEDATA::getInstance()->setGameActivityData(newData);
         if(!GAMEDATA::getInstance()->getHaveShowNotice()){
             NoticeDialog* nod = NoticeDialog::create();
-            nod->setContentImage(GAMEDATA::getInstance()->getNoticeUrl());
+            nod->setContentImage(newData.imageUrl,newData.showTime);
             addChild(nod,100);
             GAMEDATA::getInstance()->setHaveShowNotice(true);
         }

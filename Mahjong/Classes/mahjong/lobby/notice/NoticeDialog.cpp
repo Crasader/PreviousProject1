@@ -43,7 +43,7 @@ bool NoticeDialog::init(){
 void NoticeDialog::onEnter(){
    Layer::onEnter();
     updateContentImg  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_GONG_GAO_SHOW_DIALOG, [=](EventCustom* event){
-        setContentImage(GAMEDATA::getInstance()->getNoticeUrl());
+        setContentImage(GAMEDATA::getInstance()->getGameActivityData().imageUrl,GAMEDATA::getInstance()->getGameActivityData().showTime);
     });
 
 }
@@ -59,12 +59,23 @@ void NoticeDialog::closeView(){
 }
 
 
-void NoticeDialog::setContentImage(std::string fileName){
+void NoticeDialog::setContentImage(std::string fileName,std::string showTime){
     std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(fileName);
+    if(showTime == "")
+        showTime = "6";
     if(path != IAMGE_LOADING){
         content->setTexture(path);
+        if("" != GAMEDATA::getInstance()->getGameActivityData().jumpUrl){
+            MenuItem* clickUrl = MenuItem::create([=](Ref* ref){
+                Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().jumpUrl);
+            });
+            clickUrl->setContentSize(content->getContentSize());
+            Menu* myMenu = Menu::create(clickUrl,NULL);
+            myMenu->setPosition(640,360);
+            addChild(myMenu);
+        }
         schedule([=](float dt){
             removeFromParent();
-        }, 0, 0, 4.0f,"dismiss");
+        }, 0, 0, atoi(showTime.c_str()),"dismiss");
     }
 }

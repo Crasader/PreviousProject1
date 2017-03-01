@@ -106,6 +106,7 @@ public:
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, wanJiaQun, WanJiaQun);//私人房间游戏局数
     CC_SYNTHESIZE(string, daiLiQun, DaiLiQun);//私人房间游戏局数
+    CC_SYNTHESIZE(GameActivityData, gameActivityData, GameActivityData);
     CC_SYNTHESIZE(string, ip, IP);//玩家IP
     CC_SYNTHESIZE(string, kaibao, Kaibao);
     CC_SYNTHESIZE(string, huangfan, Huangfan);
@@ -116,7 +117,6 @@ public:
     CC_SYNTHESIZE(string, privateLezi, PrivateLezi);
     CC_SYNTHESIZE(string, privateKaibao, PrivateKaibao);
     CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
-    CC_SYNTHESIZE(string, noticeUrl, NoticeUrl);
     CC_SYNTHESIZE(string, dissolveName, DissolveName);
     CC_SYNTHESIZE(string, hsman, Hsman);
     CC_SYNTHESIZE(string, hstype, Hstype);

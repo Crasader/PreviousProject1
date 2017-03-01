@@ -93,22 +93,6 @@ static const NSInteger socket_timeout = 15;//超时时间
 {
     NSLog(@"GCDAsyncSocket--->socketDidDisconnect");
     self.connectStatus = -1;
-    //    if (self.reconnectionCount >= 0 && self.reconnectionCount <= kBeatLimit) {
-    //        NSTimeInterval time = pow(2, self.reconnectionCount);
-    //        if (!self.reconnectTimer) {
-    //            self.reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:time
-    //                                                                   target:self
-    //                                                                 selector:@selector(reconnection:)
-    //                                                                 userInfo:nil
-    //                                                                  repeats:NO];
-    //            [[NSRunLoop mainRunLoop] addTimer:self.reconnectTimer forMode:NSRunLoopCommonModes];
-    //        }
-    //        self.reconnectionCount++;
-    //    } else {
-    //        [self.reconnectTimer invalidate];
-    //        self.reconnectTimer = nil;
-    //        self.reconnectionCount = 0;
-    //    }
     //目前无法解决NSTimer后台定时器的问题,将连接断开的消息发回给cocos2d-x
     [self.beatTimer invalidate];
     self.beatTimer = nil;

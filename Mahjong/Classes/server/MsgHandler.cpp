@@ -504,11 +504,24 @@ void MsgHandler::handleNoticeResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    GameActivityData* data = new GameActivityData();
     if(_mDoc.HasMember("content")){
-        const rapidjson::Value &content = _mDoc["content"];
-        GAMEDATA::getInstance()->setNoticeUrl(content.GetString());
+        auto &content = _mDoc["content"];
+        data->imageUrl = content.GetString();
     }
-    postNotifyMessage(MSG_WAN_JIA_GONG_GAO, nullptr);
+    if(_mDoc.HasMember("url")){
+        auto &url = _mDoc["url"];
+        data->jumpUrl = url.GetString();
+    }else{
+        data->jumpUrl = "";
+    }
+    if(_mDoc.HasMember("time")){
+        auto &time = _mDoc["time"];
+        data->showTime = time.GetString();
+    }else{
+        data->showTime = "";
+    }
+    postNotifyMessage(MSG_WAN_JIA_GONG_GAO, data);
 }
 
 // 获取走马灯回复{code:143,poxiaoId:poxiaoId,content:"11111111"}

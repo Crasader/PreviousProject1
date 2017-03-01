@@ -18,7 +18,7 @@ public:
     void onEnter() override;
     void onExit() override ;
     CREATE_FUNC(NoticeDialog);
-    void setContentImage(std::string fileName);
+    void setContentImage(std::string fileName,std::string showTime);
 private:
     Sprite* content;
     EventListenerCustom* updateContentImg;

@@ -607,4 +607,10 @@ struct MahjongFaPaiData{
     ReplaceJongVec  mjReplaceVec;
     PlayerCpgtData mjTingData;
 };
+
+struct GameActivityData{
+    std::string imageUrl;
+    std::string showTime;
+    std::string jumpUrl;
+};
 #endif
