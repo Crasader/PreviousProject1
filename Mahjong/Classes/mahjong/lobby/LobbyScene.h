@@ -51,6 +51,7 @@ private:
     EventListenerCustom* showLoobyLoadingLayer;
     EventListenerCustom* gameFupanListener;
     EventListenerCustom* roomListRespListener;
+    EventListenerCustom* lobbyReconnectRespListener;
     
 	void initView();
 	void drawSceneMid();

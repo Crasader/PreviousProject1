@@ -181,18 +181,24 @@ void MahjongView::startGameAgain(){
 
 void MahjongView::update(float dt){
     if(GAMEDATA::getInstance()->getWaitNetwork()){
-        LostNetwork* net = LostNetwork::create();
-        net->setTag(2000);
-        addChild(net,200);
-        schedule([=](float dt){
+        if(NULL == getChildByTag(2000)){
+            LostNetwork* net = LostNetwork::create();
+            net->setTag(2000);
+            addChild(net,200);
             NetworkManage::getInstance()->reConnectSocket();
-            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-            if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-            }else{
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
-            }
-        }, 0, 0, 2.0f, "socket_reconnect");
+            int delayTime = 2.5;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+            delayTime = 5;
+#endif
+            schedule([=](float dt){
+                NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                }else{
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                }
+            }, 0, 0, delayTime, "socket_reconnect");
+        }
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
     

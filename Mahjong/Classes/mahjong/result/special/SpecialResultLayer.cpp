@@ -129,21 +129,28 @@ void SpecialResultLayer::gotoLobby(){
 
 void SpecialResultLayer::update(float dt){
     if(GAMEDATA::getInstance()->getWaitNetwork()){
-        LostNetwork2* net = LostNetwork2::create();
-        net->setTag(2000);
-        addChild(net,200);
-        schedule([=](float dt){
+        if(NULL == getChildByTag(2000)){
+            LostNetwork2* net = LostNetwork2::create();
+            net->setTag(2000);
+            addChild(net,200);
             if(NetworkManage::getInstance()->reConnectSocket()){
-                log("重新连接成功");
-                net->removeFromParent();
-                NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+                int dleayTime = 2.5f;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+                dleayTime = 5;
+#endif
+                schedule([=](float dt){
+                    if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                    }else{
+                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                    }
+                    NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+                }, 0, 0, dleayTime, "socket_reconnect2000");
             }else{
-                net->removeFromParent();
                 HintDialog* dia = HintDialog::create("无法连接网络,请检查当前网络环境", NULL);
                 addChild(dia,1000);
             }
-        }, 0, 0, 2.0f, "socket_reconnect");
+        }
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }
-
 }

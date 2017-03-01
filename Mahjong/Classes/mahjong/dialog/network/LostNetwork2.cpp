@@ -7,6 +7,10 @@
 //
 
 #include "mahjong/dialog/network/LostNetwork2.hpp"
+#include "server/SocketDataManage.h"
+#include "server/NetworkManage.h"
+#include "userdata/UserData.h"
+#include "mahjong/lobby/LobbyScene.h"
 
 bool LostNetwork2::init(){
     if(!Layer::init()){
@@ -28,6 +32,14 @@ bool LostNetwork2::init(){
     showMsg->setAnchorPoint(Point::ANCHOR_MIDDLE);
     showMsg->setPosition(640,300);
     addChild(showMsg);
+    
+    schedule([=](float dt){
+        if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+        }else{
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+        }
+    }, 0, 2, 8.0f,"recomn3000");
 
     return true;
 }
