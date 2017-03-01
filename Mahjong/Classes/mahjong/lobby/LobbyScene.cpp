@@ -721,7 +721,7 @@ void LobbyScene::addEventListener(){
         removeLoading();
         if(UserData::getInstance()->getFangkaNum()>0){
             FriendRoom* friendroom = FriendRoom::create();
-            addChild(friendroom);
+            addChild(friendroom,10);
         }else{
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
             if(UserData::getInstance()->isWeixinPayOpen()){
