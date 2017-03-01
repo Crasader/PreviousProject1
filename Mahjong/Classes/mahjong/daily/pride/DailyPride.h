@@ -20,5 +20,5 @@ private:
 	void showDailyPrideLayer();
 	void beginPride();
 	std::string getImageNameById(int id);
-	Point getPosByRotation(Point pos,float r,float a);//Ô²ÐÄ£¬°ë¾¶£¬½Ç¶È
+	Point getPosByRotation(Point pos,float r,float a);//
 };
