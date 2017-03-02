@@ -36,8 +36,8 @@ public:
     void playerTurnReplace(PlayerTurnData data);
     //玩家吃碰杠
     void drawHeroChi(HeroCpgRespData resp, std::vector<string> chipai, PlayerBase* playerBase);
-    void drawHeroPeng(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
-    void drawHeroGang(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
+    void drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase);
+    void drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase);
     
     void actionTing(HeroCpgRespData ht);
     void actionQi();
@@ -65,8 +65,8 @@ public:
     void playerTurnReplaceMingpai(PlayerTurnData data);
     void updateMingpai(Vector<Jong*> playerHandJongs,Vector<Jong*> playerPlayedJongs,std::vector<PlayerCpgRecord> playerCpgRecords);
     void drawHeroChiMingpai(HeroCpgRespData resp, std::vector<string> chipai, PlayerBase* playerBase);
-    void drawHeroPengMingpai(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
-    void drawHeroGangMingpai(HeroCpgRespData resp, PlayerCpgtData data, PlayerBase* playerBase);
+    void drawHeroPengMingpai(HeroCpgRespData resp, PlayerBase* playerBase);
+    void drawHeroGangMingpai(HeroCpgRespData resp, PlayerBase* playerBase);
     
     CREATE_FUNC(PlayerHero);
     

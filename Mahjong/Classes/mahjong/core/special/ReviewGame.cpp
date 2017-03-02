@@ -884,7 +884,7 @@ void ReviewGame::addCoustomListener(){
             hideTingGangControllPad();
             HeroCpgRespData heroCpgData;
             heroCpgData.result = 1;
-            playerHero->drawHeroPengMingpai(heroCpgData,newData, getPlayerBySeatId(newData.sId));
+            playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newData.sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
             
         }
@@ -914,7 +914,7 @@ void ReviewGame::addCoustomListener(){
         }else if (seatId == ClientSeatId::hero){
             hideTingGangControllPad();
             HeroCpgRespData heroTingData;
-            playerHero->drawHeroGangMingpai(heroTingData,newData, getPlayerBySeatId(data->sId));
+            playerHero->drawHeroGangMingpai(heroTingData, getPlayerBySeatId(data->sId));
             playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
             
         }
@@ -964,13 +964,13 @@ void ReviewGame::addCoustomListener(){
         playerHero->hideCurrentBigJong();
         if(cpgRespData->result == 1||cpgRespData->result == 2){
             if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroPeng(newCpgRespData, shmjPlayerCpgtData, playerRight);
+                playerHero->drawHeroPeng(newCpgRespData, playerRight);
             }
             else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroPeng(newCpgRespData, shmjPlayerCpgtData, playerOpposite);
+                playerHero->drawHeroPeng(newCpgRespData, playerOpposite);
             }
             else{
-                playerHero->drawHeroPeng(newCpgRespData, shmjPlayerCpgtData, playerLeft);
+                playerHero->drawHeroPeng(newCpgRespData, playerLeft);
             }
         }
     });
@@ -987,13 +987,13 @@ void ReviewGame::addCoustomListener(){
         else{
             
             if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerRight);
+                playerHero->drawHeroGang(shmjHeroCpgtData, playerRight);
             }
             else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerOpposite);
+                playerHero->drawHeroGang(shmjHeroCpgtData, playerOpposite);
             }
             else{
-                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerLeft);
+                playerHero->drawHeroGang(shmjHeroCpgtData, playerLeft);
             }
         }
 
@@ -1001,9 +1001,9 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
     playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
-        PlayerCpgtData* cpgData = new PlayerCpgtData();
-        cpgData = static_cast<PlayerCpgtData*>(event->getUserData());
-//        drawCpgControllPad(cpgData);
+        HeroCpgRespData* cpgData = static_cast<HeroCpgRespData*>(event->getUserData());
+        HeroCpgRespData newCpgData = *cpgData;
+        drawCpgControllPad(newCpgData.playCpgt);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerCpgListener, 1);
     

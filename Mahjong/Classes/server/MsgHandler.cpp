@@ -1322,6 +1322,7 @@ void MsgHandler::showCpgNotify(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &poker = _mDoc["poker"];
     const rapidjson::Value &seatId = _mDoc["sId"];
+    HeroCpgRespData cpgRespData;
     PlayerCpgtData cpgData;
     cpgData.poker = poker.GetString();
     cpgData.sId = seatId.GetInt();
@@ -1341,7 +1342,8 @@ void MsgHandler::showCpgNotify(std::string msg){
         cpgData.gang = gang.GetString();
         cpgData.flag = 0;
     }
-    postNotifyMessage(MSG_PLAYER_CPG,&cpgData);
+    cpgRespData.playCpgt = cpgData;
+    postNotifyMessage(MSG_PLAYER_CPG,&cpgRespData);
 }
 
 
