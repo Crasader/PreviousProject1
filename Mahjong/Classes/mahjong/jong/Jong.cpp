@@ -9,13 +9,13 @@ bool Jong::init(){
     addChild(background);
     contentSprite = Sprite::create();
     addChild(contentSprite);
-    selcetedIcon = Sprite::create("gameview/poker_select.png");
-    selcetedIcon->setVisible(false);
-    addChild(selcetedIcon);
     protectedIcon = Sprite::create("gameview/poker_protected.png");
     protectedIcon->setVisible(false);
     addChild(protectedIcon);
     setIsProtected(false);
+    selcetedIcon = Sprite::create("gameview/poker_select.png");
+    selcetedIcon->setVisible(false);
+    addChild(selcetedIcon);
     return true;
 }
 
@@ -31,6 +31,7 @@ void Jong::showJong(int bType, int cType,bool show){
         contentSprite->setScale(getContentScaleByType(bType));
         contentSprite->setPosition(getContentPosition(bType, background->getPosition()));
         contentSprite->setVisible(true);
+        selcetedIcon->setScale(getContentScaleByType(bType));
     }
     else{
         contentSprite->setVisible(false);

@@ -1589,6 +1589,8 @@ void MahjongView::addHeroTingRespListener(){
         char* buf = static_cast<char*>(event->getUserData());
         if (atoi(buf) == 1){
             GAMEDATA::getInstance()->setIsTingState(true);
+            if(playerHero->playerPlayedJongs.size()>0)
+                playerHero->playerPlayedJongs.at(playerHero->playerPlayedJongs.size()-1)->setJongSelectIcon(true);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingRespListener, 1);
