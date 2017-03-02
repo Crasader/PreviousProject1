@@ -134,13 +134,13 @@ void GuiLayer::drawGameInfo(){
 
 void GuiLayer::chatButtonClick(){
     auto gameChat = ChatDialog::create();
-    getParent()->addChild(gameChat,2);
+    getParent()->addChild(gameChat,50);
 }
 
 void GuiLayer::settingButtonClick(){
     Audio::getInstance()->playSoundClick();
     UserSetting* setting = UserSetting::create();
-    getParent()->addChild(setting,3);
+    getParent()->addChild(setting,50);
 }
 
 void GuiLayer::quitButtonClick(){
@@ -153,14 +153,14 @@ void GuiLayer::quitButtonClick(){
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
-            getParent()->addChild(dia,5);
+            getParent()->addChild(dia,50);
         }else if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             HintDialog* dia = HintDialog::create("是否退出当前房间?", [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
-            getParent()->addChild(dia,5);
+            getParent()->addChild(dia,50);
         }else{
             GAMEDATA::getInstance()->clearPlayersInfo();
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
@@ -169,7 +169,7 @@ void GuiLayer::quitButtonClick(){
         }
     }else{
         QuitRoomDialog* dialog = QuitRoomDialog::create();
-        getParent()->addChild(dialog,5);
+        getParent()->addChild(dialog,50);
     }
 }
 
@@ -219,7 +219,7 @@ void GuiLayer::showPlayerBill(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
     BillInfo* bill = BillInfo::create();
     bill->setShowPosition();
-    getParent()->addChild(bill);
+    getParent()->addChild(bill,50);
 }
 
 void GuiLayer::drawPlayerInvite(){
@@ -253,7 +253,7 @@ void GuiLayer::dissovleRoom(){
         GAMEDATA::getInstance()->clearPlayersInfo();
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
     });
-    getParent()->addChild(dia,5);
+    getParent()->addChild(dia,50);
 }
 
 
