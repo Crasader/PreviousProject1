@@ -73,3 +73,9 @@ void GameSocketManage::resetBeatCount(){
 void GameSocketManage::disConnectSocket(){
     NetworkManage::getInstance()->disConnectSocket();
 }
+
+void GameSocketManage::disConnectSelf(){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    PxSocketManage::getInstance()->disConnectSelf();
+#endif
+}

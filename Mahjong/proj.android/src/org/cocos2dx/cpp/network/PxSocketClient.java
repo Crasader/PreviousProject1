@@ -31,7 +31,6 @@ public class PxSocketClient {
 
 	/* Public Methods */
 	public void connect(String ip, String port) {
-		localSocketClient = null;
 		getLocalSocketClient(ip, port).connect();
 	}
 
@@ -44,6 +43,10 @@ public class PxSocketClient {
 	
 	public void  disConnectSocket(){
 		JniSocketCallback.onDisconnected();
+	}
+	
+	public void disConnectSocketSelf(){
+		localSocketClient.disconnect();
 	}
 	
 	private SocketClient getLocalSocketClient(String ip, String port) {

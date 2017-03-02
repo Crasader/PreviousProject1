@@ -12,4 +12,9 @@ public class AndroidSocketJni {
 	public static void sendDataSever(String msg) {
 		PxSocketClient.getInstance().sendDataSever(msg);
 	}
+	
+	public static void disConnectSelf() {
+		Log.i("AndroidSocket", "Socket主动断开重连");
+		PxSocketClient.getInstance().disConnectSocketSelf();
+	}
 }

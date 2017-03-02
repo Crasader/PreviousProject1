@@ -5304,9 +5304,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "462"
-            endingLineNumber = "462"
-            landmarkName = "LobbyScene::chargeFangka()"
-            landmarkType = "7">
+            endingLineNumber = "462">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -20,6 +20,7 @@ public:
     void receiveScoketData(std::string msg);
     void resetBeatCount();
     void disConnectSocket();
+    void disConnectSelf();
 private:
     GameSocketManage();
     static GameSocketManage* _instance;

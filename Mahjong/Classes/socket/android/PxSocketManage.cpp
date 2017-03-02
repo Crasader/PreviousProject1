@@ -55,3 +55,7 @@ void PxSocketManage::receiveScoketData(std::string msg){
 void PxSocketManage::resetBeatCount(){
     beatCount =0;
 }
+
+void PxSocketManage::disConnectSelf(){
+    CallAndroidSocket::getInstance()->disConnectSelf();
+}

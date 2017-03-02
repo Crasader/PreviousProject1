@@ -46,6 +46,17 @@ bool CallAndroidSocket::connectSocket(std::string host,std::string port){
     return true;
 }
 
+void CallAndroidSocket::disConnectSelf(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path  = String::createWithFormat("%s%s",getSocketJniPath(),"/AndroidSocketJni");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"disConnectSelf","()V");
+    if(isHave){
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
+    }
+#endif
+}
+
 void CallAndroidSocket::sendDataSever(std::string data){
     log("send data = %s",data.c_str());
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

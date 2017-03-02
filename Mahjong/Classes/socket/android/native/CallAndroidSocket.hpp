@@ -18,6 +18,7 @@ public:
     static CallAndroidSocket* getInstance();
     bool connectSocket(std::string host,std::string prot);
     void sendDataSever(std::string data);
+    void disConnectSelf();
 private:
     std::string _jniPath;
     const char* getSocketJniPath();

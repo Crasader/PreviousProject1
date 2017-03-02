@@ -6,6 +6,7 @@
 #include "server/NetworkManage.h"
 #include "mahjong/audio/Audio.h"
 #include "server/SocketDataManage.h"
+ #include "socket/GameSocketManage.hpp"
 
 USING_NS_CC;
 using namespace experimental;
@@ -83,7 +84,7 @@ void AppDelegate::applicationWillEnterForeground() {
     if(resumeIndex == 0){
         resumeIndex++;
     }else{
-        GAMEDATA::getInstance()->setWaitNetwork(true);
+        GameSocketManage::getInstance()->disConnectSelf();
         //             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
     }
     if(GAMEDATA::getInstance()->getIsInPay()){
