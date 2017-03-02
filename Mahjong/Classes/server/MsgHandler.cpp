@@ -1365,6 +1365,20 @@ void MsgHandler::heroChiResp(std::string msg){
         const rapidjson::Value &forbit = _mDoc["forbit"];
         cpgRespData.forbit = forbit.GetString();
     }
+    if (_mDoc.HasMember("ting1")){
+        const rapidjson::Value &ting1 = _mDoc["ting1"];
+        for(int i=0;i<ting1.Capacity();i++){
+            HeroHuPaiData huPaiData;
+            auto &temp = ting1[0];
+            if(temp.HasMember("poker")){
+                huPaiData.poker = temp["poker"].GetInt();
+            }
+            if(temp.HasMember("hu")){
+                huPaiData.hu = temp["hu"].GetString();
+            }
+            cpgRespData.heroHu.push_back(huPaiData);
+        }
+    }
     postNotifyMessage(MSG_HERO_CHI_RESP, &cpgRespData);
 }
 
@@ -1398,6 +1412,20 @@ void MsgHandler::heroPengResp(std::string msg){
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &result = _mDoc["ting"];
         cpgRespData.ting = result.GetString();
+    }
+    if (_mDoc.HasMember("ting1")){
+        const rapidjson::Value &ting1 = _mDoc["ting1"];
+        for(int i=0;i<ting1.Capacity();i++){
+            HeroHuPaiData huPaiData;
+            auto &temp = ting1[0];
+            if(temp.HasMember("poker")){
+                huPaiData.poker = temp["poker"].GetInt();
+            }
+            if(temp.HasMember("hu")){
+                huPaiData.hu = temp["hu"].GetString();
+            }
+            cpgRespData.heroHu.push_back(huPaiData);
+        }
     }
     postNotifyMessage(MSG_HERO_PENG_RESP, &cpgRespData);
 }
@@ -1502,18 +1530,16 @@ void MsgHandler::nextPlayer(std::string msg){
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
         playerTurnData.hastinggang = true;
     }
-    
-    
-    
     if (_mDoc.HasMember("ting1")){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
         for(int i=0;i<ting1.Capacity();i++){
             HeroHuPaiData huPaiData;
-            if(ting1.HasMember("poker")){
-                huPaiData.poker = ting1["poker"].GetInt();
+            auto &temp = ting1[0];
+            if(temp.HasMember("poker")){
+                huPaiData.poker = temp["poker"].GetInt();
             }
-            if(ting1.HasMember("hu")){
-                huPaiData.hu = ting1["hu"].GetString();
+            if(temp.HasMember("hu")){
+                huPaiData.hu = temp["hu"].GetString();
             }
             tingData.heroHu.push_back(huPaiData);
         }
