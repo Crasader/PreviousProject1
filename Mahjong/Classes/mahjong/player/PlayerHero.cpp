@@ -813,6 +813,7 @@ void PlayerHero::actionTing(HeroCpgRespData tingData){
     GAMEDATA::getInstance()->setIsTingProcess(true);
     std::vector<string> tingpai = StringUtil::split(tingData.playCpgt.ting, ",");
     log("提示玩家可以听的牌:%s",tingData.playCpgt.ting.c_str());
+    
     HuPaiHintLayer* huPai =  HuPaiHintLayer::create(playerHandJongs, tingData.playCpgt.heroHu,this);
     huPai->setTag(6689);
     addChild(huPai,5);
@@ -825,6 +826,9 @@ void PlayerHero::sendTingRequest(int poker){
 }
 
 void PlayerHero::actionQi(){
+    if(NULL != getChildByTag(6689)){
+        getChildByTag(6689)->removeFromParent();
+    }
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
     setIsAllowTouch(true);
     resetHandJongsY(NULL);
