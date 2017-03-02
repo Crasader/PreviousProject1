@@ -398,6 +398,7 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData newData){
 }
 
 void MahjongView::showTingGangControllPad(PlayerCpgtData tingData){
+     shmjHeroCpgtData.playCpgt = tingData;
     playerHero->stopTimeClockAnim();
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
@@ -405,7 +406,6 @@ void MahjongView::showTingGangControllPad(PlayerCpgtData tingData){
     controllPad->addChild(qi);
     MenuItemImage* ting = nullptr;
     MenuItemImage* penggang = nullptr;
-    shmjHeroCpgtData.playCpgt = tingData;
     int buttonCount = 1;
     if (tingData.ting != ""){
         ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
@@ -1574,10 +1574,10 @@ void MahjongView::addPlayerTingNotifyListener(){
 
 void MahjongView::addHeroTingNotifyListener(){
     tingNotifyListener = EventListenerCustom::create(MSG_HERO_TING_GANG, [=](EventCustom* event){
-        PlayerCpgtData* cpgtData = static_cast<PlayerCpgtData*>(event->getUserData());
-        PlayerCpgtData newData = *cpgtData;
-        if (cpgtData->seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-            showTingGangControllPad(newData);
+        HeroCpgRespData* cpgtData = static_cast<HeroCpgRespData*>(event->getUserData());
+        HeroCpgRespData newData = *cpgtData;
+        if (newData.playCpgt.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+            showTingGangControllPad(newData.playCpgt);
             playerHero->startTimeClockAnim(9, 2);
         }
     });

@@ -1561,6 +1561,7 @@ void MsgHandler::heroTingMsg(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &seatId = _mDoc["seatId"];
+    HeroCpgRespData cpgRespData;
     PlayerCpgtData tingData;
     tingData.seatId = seatId.GetInt();
     if (_mDoc.HasMember("ting")){
@@ -1577,7 +1578,8 @@ void MsgHandler::heroTingMsg(std::string msg){
         tingData.gang = penggang.GetString();
         tingData.flag = 2;
     }
-    postNotifyMessage(MSG_HERO_TING_GANG, &tingData);
+    cpgRespData.playCpgt = tingData;
+    postNotifyMessage(MSG_HERO_TING_GANG, &cpgRespData);
 }
 
 //{code:2023,poxiaoId:poxiaoId,seatId:seatId,result:1}

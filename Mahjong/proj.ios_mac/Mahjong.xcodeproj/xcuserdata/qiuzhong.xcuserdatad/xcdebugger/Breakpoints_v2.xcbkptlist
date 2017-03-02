@@ -3994,11 +3994,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "510139789.282929"
+            timestampString = "510140816.184726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2387"
-            endingLineNumber = "2387">
+            startingLineNumber = "2389"
+            endingLineNumber = "2389">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5466,6 +5466,22 @@
             startingLineNumber = "1454"
             endingLineNumber = "1454"
             landmarkName = "MsgHandler::showOtherPengNotify(std::string msg)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/core/widget/HuPaiHintLayer.cpp"
+            timestampString = "510140888.983394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "HuPaiHintLayer::init(Vector&lt;Jong *&gt; playerHandJongs, std::vector&lt;HeroHuPaiData&gt; heroHu,PlayerHero* playerHero)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

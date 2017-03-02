@@ -35,8 +35,18 @@ bool HuPaiHintLayer::init(Vector<Jong *> playerHandJongs, std::vector<HeroHuPaiD
                 std::vector<std::string> huPai = StringUtil::split(heroHu.at(j).hu, ",");
                 //开始绘制听牌提示界面
                 auto huBg = Sprite::create("gameview/hu_hint_bg.png");
-                huBg->setPosition(playerHandJongs.at(i)->getPositionX(),260);
+                huBg->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+                huBg->setPosition(playerHandJongs.at(i)->getPositionX(),150);
                 addChild(huBg);
+                //绘制可以胡的牌
+                for (int j=0; j<huPai.size(); j++) {
+                    auto jong = Jong::create();
+                    jong->setScale(0.6f);
+                    huBg->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+                    jong->showJong(herohand, atoi(huPai.at(j).c_str()));
+                    jong->setPosition(playerHandJongs.at(i)->getPositionX(),180+61*j);
+                    addChild(jong);
+                }
                 auto huText = Sprite::create("gameview/hu_pai_text.png");
                 huText->setPosition(playerHandJongs.at(i)->getPositionX(),400);
                 addChild(huText);
@@ -44,15 +54,6 @@ bool HuPaiHintLayer::init(Vector<Jong *> playerHandJongs, std::vector<HeroHuPaiD
                 auto huNum = LabelAtlas::create(StringUtils::format("%d",num), "gameview/hu_pai_num.png", 12, 17, '0');
                 huNum->setPosition(playerHandJongs.at(i)->getPositionX()+5,390);
                 addChild(huNum);
-                //绘制可以胡的牌
-                for (int j=0; j<huPai.size(); j++) {
-                    auto jong = Jong::create();
-                    jong->setScale(0.6f);
-                    jong->showJong(herohand, atoi(huPai.at(j).c_str()));
-                    jong->setPosition(playerHandJongs.at(i)->getPositionX(),170+61*j);
-                    addChild(jong);
-                }
-                //计算胡牌剩余的张数
             }
         }
     }
