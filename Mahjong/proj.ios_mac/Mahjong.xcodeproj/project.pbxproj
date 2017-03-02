@@ -57,6 +57,8 @@
 		D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
 		D212D53C1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
 		D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
+		D21E08AF1E67F2250026323A /* HuPaiHintLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21E08AD1E67F2250026323A /* HuPaiHintLayer.cpp */; };
+		D21E08B01E67F2250026323A /* HuPaiHintLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D21E08AD1E67F2250026323A /* HuPaiHintLayer.cpp */; };
 		D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
@@ -421,6 +423,8 @@
 		D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatteryInfo.cpp; sourceTree = "<group>"; };
 		D212D5381E13BB5F00C29C00 /* BatteryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatteryInfo.h; sourceTree = "<group>"; };
 		D212D53B1E14A0BA00C29C00 /* batteryInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = batteryInfo; sourceTree = "<group>"; };
+		D21E08AD1E67F2250026323A /* HuPaiHintLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuPaiHintLayer.cpp; sourceTree = "<group>"; };
+		D21E08AE1E67F2250026323A /* HuPaiHintLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuPaiHintLayer.hpp; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* PxSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PxSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
@@ -1091,6 +1095,8 @@
 				D267780C1DF00697003CE73F /* QuitRoomDialog.hpp */,
 				D2DD423E1E30A4E70036A694 /* CardStack.cpp */,
 				D2DD423F1E30A4E70036A694 /* CardStack.hpp */,
+				D21E08AD1E67F2250026323A /* HuPaiHintLayer.cpp */,
+				D21E08AE1E67F2250026323A /* HuPaiHintLayer.hpp */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -1919,6 +1925,7 @@
 				D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
 				D26778AD1DF00697003CE73F /* HuaAnim.cpp in Sources */,
 				D26779531DF01349003CE73F /* Audio.cpp in Sources */,
+				D21E08AF1E67F2250026323A /* HuPaiHintLayer.cpp in Sources */,
 				D26779151DF00698003CE73F /* UserSetting.cpp in Sources */,
 				D29E85B91E359CC200AFACEE /* MahjongView.cpp in Sources */,
 				D26778F31DF00698003CE73F /* EnterRoomDialog.cpp in Sources */,
@@ -1993,6 +2000,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D26779161DF00698003CE73F /* UserSetting.cpp in Sources */,
 				D26778FE1DF00698003CE73F /* PlayerHero.cpp in Sources */,
+				D21E08B01E67F2250026323A /* HuPaiHintLayer.cpp in Sources */,
 				D26778AC1DF00697003CE73F /* DealJongAnim.cpp in Sources */,
 				D267791A1DF00698003CE73F /* ChargeFangka.cpp in Sources */,
 				D26778D01DF00697003CE73F /* DailyPride.cpp in Sources */,

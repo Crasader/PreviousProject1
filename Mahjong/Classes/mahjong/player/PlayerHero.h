@@ -44,7 +44,7 @@ public:
     void eraseHeroJong(Jong* jong);
     void removePlayedIcon();
     void drawPlayedJong(int type);//绘制出牌动作
-    
+    int  getNumbersByPoker(string pokers);
     
     void recoverHua(int hua);
     void recoverPlayed(std::string played);

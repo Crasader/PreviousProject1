@@ -34,6 +34,7 @@ public:
     void showHandPokerOver(int seatId);//翻牌
     void showPaiduiNum(int num);
     void checkPlayerIpRepetition();
+    int  getNumbersByPoker(string pokers);
     
 private:
 	std::mutex m_mutex;

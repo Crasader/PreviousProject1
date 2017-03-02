@@ -1502,6 +1502,22 @@ void MsgHandler::nextPlayer(std::string msg){
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
         playerTurnData.hastinggang = true;
     }
+    
+    
+    
+    if (_mDoc.HasMember("ting1")){
+        const rapidjson::Value &ting1 = _mDoc["ting1"];
+        for(int i=0;i<ting1.Capacity();i++){
+            HeroHuPaiData huPaiData;
+            if(ting1.HasMember("poker")){
+                huPaiData.poker = ting1["poker"].GetInt();
+            }
+            if(ting1.HasMember("hu")){
+                huPaiData.hu = ting1["hu"].GetString();
+            }
+            tingData.heroHu.push_back(huPaiData);
+        }
+    }
     playerTurnData.cpgData = tingData;
     postNotifyMessage(MSG_PLAYER_TURN_WHO, &playerTurnData);
 }

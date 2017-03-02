@@ -319,6 +319,53 @@ void MahjongView::checkPlayerIpRepetition(){
 }
 
 
+int  MahjongView::getNumbersByPoker(string pokers){
+    std::vector<std::string> myPokers = StringUtil::split(pokers, ",");
+    int sum = myPokers.size()*4;
+    Vector<Jong*> allKnowPokers;//玩家已知的牌
+    for (auto  hero: playerHero->playerHandJongs) {
+        allKnowPokers.pushBack(hero);
+    }
+    for (auto  left: playerLeft->playerPlayedJongs) {
+        allKnowPokers.pushBack(left);
+    }
+    for (auto  opposite: playerOpposite->playerPlayedJongs) {
+        allKnowPokers.pushBack(opposite);
+    }
+    for (auto  right: playerRight->playerPlayedJongs) {
+        allKnowPokers.pushBack(right);
+    }
+    for (auto  leftCpg: playerLeft->playerCpgRecords) {
+        for(auto poke1:leftCpg.pokersRecord){
+         allKnowPokers.pushBack(poke1);
+        }
+    }
+    for (auto  oppsiteCpg: playerOpposite->playerCpgRecords) {
+        for(auto poke2:oppsiteCpg.pokersRecord){
+            allKnowPokers.pushBack(poke2);
+        }
+    }
+    for (auto rightCpg: playerRight->playerCpgRecords) {
+        for(auto poke3:rightCpg.pokersRecord){
+            allKnowPokers.pushBack(poke3);
+        }
+    }
+    for (auto  heroCpg: playerHero->playerCpgRecords) {
+        for(auto poke4:heroCpg.pokersRecord){
+            allKnowPokers.pushBack(poke4);
+        }
+    }
+    for (int i =0 ; i< myPokers.size(); i++) {
+        for (auto var: allKnowPokers) {
+            if(atoi(myPokers.at(i).c_str()) == var->getJongType()){
+                sum--;
+            }
+        }
+    }
+    return sum;
+}
+
+
 void MahjongView::drawCpgControllPad(PlayerCpgtData newData){
     shmjPlayerCpgtData = newData;
     controllPad->removeAllChildrenWithCleanup(true);
@@ -360,6 +407,7 @@ void MahjongView::showTingGangControllPad(PlayerCpgtData tingData){
     MenuItemImage* penggang = nullptr;
     shmjPlayerCpgtData = tingData;
     shmjHeroCpgtData.ting = tingData.ting;
+    shmjHeroCpgtData.heroHu = tingData.heroHu;
     int buttonCount = 1;
     if (tingData.ting != ""){
         ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));

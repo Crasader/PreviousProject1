@@ -7,6 +7,7 @@
 #include "server/CommandManage.h"
 #include "server/MsgConfig.h"
 #include "server/SocketDataManage.h"
+#include "mahjong/core/widget/HuPaiHintLayer.hpp"
 
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -190,6 +191,9 @@ Jong* PlayerHero::getTouchJong(Touch *touch){
 void PlayerHero::playPokerByHand(Jong* jong){
     if(NULL != virtualJong){
         virtualJong = NULL;
+    }
+    if(NULL != getChildByTag(6689)){
+        getChildByTag(6689)->removeFromParent();
     }
     updateSelectedInfo(NULL);
     stopTimeClockAnim();
@@ -696,6 +700,9 @@ void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
 
 void PlayerHero:: drawPlayedJong(int type){
     PlayerBase::showPlayedJong(type);
+    if(NULL != getChildByTag(6689)){
+        getChildByTag(6689)->removeFromParent();
+    }
     if (virtualJong != NULL){
         virtualJong->setVisible(false);
         virtualJong->removeFromParent();
@@ -745,6 +752,11 @@ void PlayerHero:: drawPlayedJong(int type){
         log("手牌中并没有这张牌== %d",type);
     }
 }
+
+int PlayerHero::getNumbersByPoker(string pokers){
+    return ((MahjongView*)getParent())->getNumbersByPoker(pokers);
+}
+
 
 void PlayerHero::drawPlayedJongMingpai(int type){
     PlayerBase::showPlayedJong(type);
@@ -801,13 +813,9 @@ void PlayerHero::actionTing(HeroCpgRespData tingData){
     GAMEDATA::getInstance()->setIsTingProcess(true);
     std::vector<string> tingpai = StringUtil::split(tingData.ting, ",");
     log("提示玩家可以听的牌:%s",tingData.ting.c_str());
-    for (int i = 0; i < tingpai.size(); i++){
-        for (int j = 0; j < playerHandJongs.size(); j++){
-            if (atoi(tingpai.at(i).c_str()) == playerHandJongs.at(j)->getJongType()){
-                playerHandJongs.at(j)->setPosition(playerHandJongs.at(j)->getPosition().x, playerHandJongs.at(j)->getPosition().y + 40);
-            }
-        }
-    }
+    HuPaiHintLayer* huPai =  HuPaiHintLayer::create(playerHandJongs, tingData.heroHu,this);
+    huPai->setTag(6689);
+    addChild(huPai,5);
     startTimeClockAnim(20, 2);
 }
 

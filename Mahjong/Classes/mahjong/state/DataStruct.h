@@ -90,6 +90,11 @@ struct OtherPlayedJong
     int seatId;
 };
 
+struct HeroHuPaiData{
+    int poker;
+    std::string hu;
+};
+
 struct PlayerCpgtData
 {
     int seatId;
@@ -100,6 +105,7 @@ struct PlayerCpgtData
     std::string chi[3];
     std::string peng;
     std::string gang;
+    std::vector<HeroHuPaiData> heroHu;
 };
 
 struct PlayerTurnData
@@ -154,6 +160,7 @@ struct HeroCpgRespData{
     int result;
     std::string forbit;
     std::string ting;
+    std::vector<HeroHuPaiData> heroHu;
 };
 
 

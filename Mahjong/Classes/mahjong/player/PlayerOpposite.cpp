@@ -59,7 +59,8 @@ void PlayerOpposite::drawOppositePlayerTurnMingpai(int jongtype){
 }
 
 void PlayerOpposite::drawPlayedJong(int ctype){
-    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
+//    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
+    PlayerBase::showPlayedJong(ctype);
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(oppositeplayed, ctype);
     lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y));
