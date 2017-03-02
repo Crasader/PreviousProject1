@@ -367,7 +367,7 @@ int  MahjongView::getNumbersByPoker(string pokers){
 
 
 void MahjongView::drawCpgControllPad(PlayerCpgtData newData){
-    shmjPlayerCpgtData = newData;
+    shmjHeroCpgtData.playCpgt = newData;
     controllPad->removeAllChildrenWithCleanup(true);
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoCpgQi,this));
     qi->setPosition(Point(0, 0));
@@ -405,9 +405,7 @@ void MahjongView::showTingGangControllPad(PlayerCpgtData tingData){
     controllPad->addChild(qi);
     MenuItemImage* ting = nullptr;
     MenuItemImage* penggang = nullptr;
-    shmjPlayerCpgtData = tingData;
-    shmjHeroCpgtData.ting = tingData.ting;
-    shmjHeroCpgtData.heroHu = tingData.heroHu;
+    shmjHeroCpgtData.playCpgt = tingData;
     int buttonCount = 1;
     if (tingData.ting != ""){
         ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
@@ -450,23 +448,23 @@ void MahjongView::removeHeroPlayedIcon(){
 void MahjongView::showHeroChiUi(Ref* ref){
     controllPad->setVisible(false);
     //吃牌排序
-    if (shmjPlayerCpgtData.chi[0] != "" && shmjPlayerCpgtData.chi[1] != ""){
+    if ( shmjHeroCpgtData.playCpgt.chi[0] != "" &&  shmjHeroCpgtData.playCpgt.chi[1] != ""){
         //对吃牌的大小进行排序
         for (int j = 2; j > 0; j--) {
             for (int k = 0; k < j; k++) {
-                if (shmjPlayerCpgtData.chi[k] < shmjPlayerCpgtData.chi[k + 1]) {
-                    auto temp = shmjPlayerCpgtData.chi[k];
-                    shmjPlayerCpgtData.chi[k] = shmjPlayerCpgtData.chi[k + 1];
-                    shmjPlayerCpgtData.chi[k + 1] = temp;
+                if ( shmjHeroCpgtData.playCpgt.chi[k] <  shmjHeroCpgtData.playCpgt.chi[k + 1]) {
+                    auto temp =  shmjHeroCpgtData.playCpgt.chi[k];
+                     shmjHeroCpgtData.playCpgt.chi[k] = shmjHeroCpgtData.playCpgt.chi[k + 1];
+                     shmjHeroCpgtData.playCpgt.chi[k + 1] = temp;
                 }
             }
         }
         for (int i = 0; i < 3; i++){
-            if(shmjPlayerCpgtData.chi[i] == ""){
+            if( shmjHeroCpgtData.playCpgt.chi[i] == ""){
                 continue;
             }
-            std::vector<string> pai = StringUtil::split(shmjPlayerCpgtData.chi[i], ",");
-            pai.push_back(shmjPlayerCpgtData.poker);
+            std::vector<string> pai = StringUtil::split( shmjHeroCpgtData.playCpgt.chi[i], ",");
+            pai.push_back( shmjHeroCpgtData.playCpgt.poker);
             sort(pai.begin(), pai.end());
             auto choice = Menu::create();
             choice->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
@@ -500,21 +498,21 @@ void MahjongView::heroDoChi(Ref* psend){
         choiceMenu->removeAllChildren();
     }
     MenuItemImage* item = (MenuItemImage*)psend;
-    selectedChi = shmjPlayerCpgtData.chi[item->getTag()];
+    selectedChi =  shmjHeroCpgtData.playCpgt.chi[item->getTag()];
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(shmjPlayerCpgtData.poker.c_str())));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi( shmjHeroCpgtData.playCpgt.poker.c_str())));
 }
 
 void MahjongView::heroDoPeng(Ref* psend){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(shmjPlayerCpgtData.peng, atoi(shmjPlayerCpgtData.poker.c_str())));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(shmjHeroCpgtData.playCpgt.peng, atoi(shmjHeroCpgtData.playCpgt.poker.c_str())));
 }
 
 void MahjongView::heroDoGang(Ref* psend){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(shmjPlayerCpgtData.gang, atoi(shmjPlayerCpgtData.poker.c_str()), shmjPlayerCpgtData.flag));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(shmjHeroCpgtData.playCpgt.gang, atoi(shmjHeroCpgtData.playCpgt.poker.c_str()), shmjHeroCpgtData.playCpgt.flag));
 }
 
 void MahjongView::heroDoCpgQi(){
@@ -544,8 +542,8 @@ void MahjongView::heroDoTingQi(){
 void MahjongView::heroDoPengGangAndAGang(Ref* ref){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
-    std::vector<string> gangpai = StringUtil::split(shmjPlayerCpgtData.gang, ",");
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(shmjPlayerCpgtData.gang, atoi(gangpai.at(0).c_str()), shmjPlayerCpgtData.flag));
+    std::vector<string> gangpai = StringUtil::split(shmjHeroCpgtData.playCpgt.gang, ",");
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(shmjHeroCpgtData.playCpgt.gang, atoi(gangpai.at(0).c_str()), shmjHeroCpgtData.playCpgt.flag));
 }
 
 void MahjongView::setCurrentJongVisible(int seatId){
@@ -1602,7 +1600,6 @@ void MahjongView::addHeroChiRespListener(){
         HeroCpgRespData* heroData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData newHeroData = *heroData;
         shmjHeroCpgtData = *heroData;
-        shmjPlayerCpgtData.heroHu = newHeroData.heroHu;
         playerHero->hideCurrentBigJong();
         std::vector<string> chipai = StringUtil::split(selectedChi, ",");
         playerHero->drawHeroChi(newHeroData, chipai, playerLeft);
@@ -1616,18 +1613,17 @@ void MahjongView::addHeroPengRespListener(){
         HeroCpgRespData* cpgRespData  = static_cast<HeroCpgRespData*>(event->getUserData());
         shmjHeroCpgtData = *cpgRespData;
         HeroCpgRespData newCpgRespData = *cpgRespData;
-        shmjPlayerCpgtData.heroHu = newCpgRespData.heroHu;
-        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), shmjPlayerCpgtData.sId);
+        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), shmjHeroCpgtData.playCpgt.sId);
         playerHero->hideCurrentBigJong();
         if(cpgRespData->result == 1||cpgRespData->result == 2){
             if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroPeng(newCpgRespData, shmjPlayerCpgtData, playerRight);
+                playerHero->drawHeroPeng(newCpgRespData, shmjHeroCpgtData.playCpgt, playerRight);
             }
             else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroPeng(newCpgRespData, shmjPlayerCpgtData, playerOpposite);
+                playerHero->drawHeroPeng(newCpgRespData, shmjHeroCpgtData.playCpgt, playerOpposite);
             }
             else{
-                playerHero->drawHeroPeng(newCpgRespData, shmjPlayerCpgtData, playerLeft);
+                playerHero->drawHeroPeng(newCpgRespData, shmjHeroCpgtData.playCpgt, playerLeft);
             }
         }
     });
@@ -1640,20 +1636,20 @@ void MahjongView::addHeroGangRespListener(){
         HeroCpgRespData* resp = static_cast<HeroCpgRespData*>(event->getUserData());
         shmjHeroCpgtData = *resp;
         playerHero->hideCurrentBigJong();
-        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), shmjPlayerCpgtData.sId);
+        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), shmjHeroCpgtData.playCpgt.sId);
         if (resp->result == 0){
             playerHero->stopTimeClockAnim();
         }
         else{
             
             if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerRight);
+                playerHero->drawHeroGang(shmjHeroCpgtData, shmjHeroCpgtData.playCpgt, playerRight);
             }
             else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerOpposite);
+                playerHero->drawHeroGang(shmjHeroCpgtData, shmjHeroCpgtData.playCpgt, playerOpposite);
             }
             else{
-                playerHero->drawHeroGang(shmjHeroCpgtData, shmjPlayerCpgtData, playerLeft);
+                playerHero->drawHeroGang(shmjHeroCpgtData, shmjHeroCpgtData.playCpgt, playerLeft);
             }
         }
     });

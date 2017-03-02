@@ -108,6 +108,12 @@ struct PlayerCpgtData
     std::vector<HeroHuPaiData> heroHu;
 };
 
+struct HeroCpgRespData{
+    int result;
+    std::string forbit;
+    PlayerCpgtData playCpgt;
+};
+
 struct PlayerTurnData
 {
     int seatId;
@@ -154,13 +160,6 @@ struct PlayerCpgRecord
     int gangValue;//杠的值
     bool anGangFan = false;
     Vector<Jong*> pokersRecord;
-};
-
-struct HeroCpgRespData{
-    int result;
-    std::string forbit;
-    std::string ting;
-    std::vector<HeroHuPaiData> heroHu;
 };
 
 

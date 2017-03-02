@@ -1353,14 +1353,16 @@ void MsgHandler::heroChiResp(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     HeroCpgRespData cpgRespData;
     const rapidjson::Value &result = _mDoc["result"];
+    PlayerCpgtData playerCpg;
     cpgRespData.result = result.GetInt();
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &ting = _mDoc["ting"];
-        cpgRespData.ting = ting.GetString();
+        playerCpg.ting = ting.GetString();
     }
     else{
-        cpgRespData.ting = "";
+        playerCpg.ting = "";
     }
+    
     if (_mDoc.HasMember("forbit")){
         const rapidjson::Value &forbit = _mDoc["forbit"];
         cpgRespData.forbit = forbit.GetString();
@@ -1376,9 +1378,10 @@ void MsgHandler::heroChiResp(std::string msg){
             if(temp.HasMember("hu")){
                 huPaiData.hu = temp["hu"].GetString();
             }
-            cpgRespData.heroHu.push_back(huPaiData);
+            playerCpg.heroHu.push_back(huPaiData);
         }
     }
+    cpgRespData.playCpgt = playerCpg;
     postNotifyMessage(MSG_HERO_CHI_RESP, &cpgRespData);
 }
 
@@ -1409,9 +1412,10 @@ void MsgHandler::heroPengResp(std::string msg){
     HeroCpgRespData cpgRespData;
     const rapidjson::Value &result = _mDoc["result"];
     cpgRespData.result = result.GetInt();
+    PlayerCpgtData playerCpg;
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &result = _mDoc["ting"];
-        cpgRespData.ting = result.GetString();
+        playerCpg.ting = result.GetString();
     }
     if (_mDoc.HasMember("ting1")){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
@@ -1424,9 +1428,10 @@ void MsgHandler::heroPengResp(std::string msg){
             if(temp.HasMember("hu")){
                 huPaiData.hu = temp["hu"].GetString();
             }
-            cpgRespData.heroHu.push_back(huPaiData);
+            playerCpg.heroHu.push_back(huPaiData);
         }
     }
+    cpgRespData.playCpgt = playerCpg;
     postNotifyMessage(MSG_HERO_PENG_RESP, &cpgRespData);
 }
 
@@ -1459,13 +1464,12 @@ void MsgHandler::heroGangResp(std::string msg){
     HeroCpgRespData cpgRespData;
     const rapidjson::Value &result = _mDoc["result"];
     cpgRespData.result = result.GetInt();
+    PlayerCpgtData playerCpg;
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &result = _mDoc["ting"];
-        cpgRespData.ting = result.GetString();
+        playerCpg.ting = result.GetString();
     }
-    else{
-        cpgRespData.ting = "";
-    }
+    cpgRespData.playCpgt = playerCpg;
     postNotifyMessage(MSG_HERO_GANG_RESP, &cpgRespData);
 }
 

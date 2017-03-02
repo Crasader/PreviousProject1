@@ -40,7 +40,6 @@ private:
 	std::mutex m_mutex;
 	int currentReadyPlayer;
 	std::string  selectedChi;
-    PlayerCpgtData  shmjPlayerCpgtData;
     HeroCpgRespData shmjHeroCpgtData;
 	Sprite* choiceMenu;
     Menu* controllPad;
