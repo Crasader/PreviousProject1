@@ -3999,7 +3999,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2299"
             endingLineNumber = "2299"
-            landmarkName = "MsgHandler::handleGamePayType(std::string msg)"
+            landmarkName = "MsgHandler::handleFupanPlayerInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4511,7 +4511,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "788"
             endingLineNumber = "788"
-            landmarkName = "MsgHandler::showOtherPengNotify(std::string msg)"
+            landmarkName = "MsgHandler::loginResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5145,7 +5145,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "829"
             endingLineNumber = "829"
-            landmarkName = "MsgHandler::nextPlayer(std::string msg)"
+            landmarkName = "MsgHandler::loginResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

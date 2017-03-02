@@ -1373,7 +1373,7 @@ void MsgHandler::heroChiResp(std::string msg){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
         for(int i=0;i<ting1.Capacity();i++){
             HeroHuPaiData huPaiData;
-            auto &temp = ting1[0];
+            auto &temp = ting1[i];
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
@@ -1423,7 +1423,7 @@ void MsgHandler::heroPengResp(std::string msg){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
         for(int i=0;i<ting1.Capacity();i++){
             HeroHuPaiData huPaiData;
-            auto &temp = ting1[0];
+            auto &temp = ting1[i];
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
@@ -1540,7 +1540,7 @@ void MsgHandler::nextPlayer(std::string msg){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
         for(int i=0;i<ting1.Capacity();i++){
             HeroHuPaiData huPaiData;
-            auto &temp = ting1[0];
+            auto &temp = ting1[i];
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
