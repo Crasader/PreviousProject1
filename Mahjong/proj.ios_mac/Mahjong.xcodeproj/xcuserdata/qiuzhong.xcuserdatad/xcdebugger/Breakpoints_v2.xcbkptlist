@@ -4335,7 +4335,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "559"
             endingLineNumber = "559"
-            landmarkName = "PlayBackInfo"
+            landmarkName = "PlayerCpgRecShow"
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5316,11 +5316,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
-            timestampString = "510150150.831611"
+            timestampString = "510151581.289466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1606"
-            endingLineNumber = "1606"
+            startingLineNumber = "1610"
+            endingLineNumber = "1610"
             landmarkName = "MahjongView::addHeroChiRespListener()"
             landmarkType = "7">
          </BreakpointContent>

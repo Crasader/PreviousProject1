@@ -253,7 +253,7 @@ void GuiLayer::dissovleRoom(){
         GAMEDATA::getInstance()->clearPlayersInfo();
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
     });
-    getParent()->addChild(dia);
+    getParent()->addChild(dia,5);
 }
 
 
