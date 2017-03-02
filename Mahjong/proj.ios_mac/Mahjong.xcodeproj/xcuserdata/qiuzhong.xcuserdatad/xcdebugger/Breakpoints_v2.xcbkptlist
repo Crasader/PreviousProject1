@@ -4845,7 +4845,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "449"
             endingLineNumber = "449"
-            landmarkName = "ReviewGame::showOriention()"
+            landmarkName = "ReviewGame::getPlayerBySeatId(int sid)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4966,11 +4966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/player/PlayerHero.cpp"
-            timestampString = "510143031.044307"
+            timestampString = "510149843.751979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1579"
-            endingLineNumber = "1579"
+            startingLineNumber = "1576"
+            endingLineNumber = "1576"
             landmarkName = "PlayerHero::updateMingpai(Vector&lt;Jong*&gt; myPlayerHandJongs,Vector&lt;Jong*&gt; myPlayerPlayedJongs,std::vector&lt;PlayerCpgRecord&gt; myPlayerCpgRecords)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5306,6 +5306,22 @@
             startingLineNumber = "462"
             endingLineNumber = "462"
             landmarkName = "LobbyScene::chargeFangka()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/core/normal/MahjongView.cpp"
+            timestampString = "510150150.831611"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1606"
+            endingLineNumber = "1606"
+            landmarkName = "MahjongView::addHeroChiRespListener()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1601,7 +1601,6 @@ void MahjongView::addHeroChiRespListener(){
     heroChiRespListener = EventListenerCustom::create(MSG_HERO_CHI_RESP, [=](EventCustom* event){
         HeroCpgRespData* heroData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData newHeroData = *heroData;
-        newHeroData.playCpgt = shmjHeroCpgtData.playCpgt;
         playerHero->hideCurrentBigJong();
         std::vector<string> chipai = StringUtil::split(selectedChi, ",");
         playerHero->drawHeroChi(newHeroData, chipai, playerLeft);
@@ -1614,7 +1613,6 @@ void MahjongView::addHeroPengRespListener(){
     heroPengRespListener = EventListenerCustom::create(MSG_HERO_PENG_RESP, [=](EventCustom* event){
         HeroCpgRespData* cpgRespData  = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData newCpgRespData = *cpgRespData;
-        newCpgRespData.playCpgt = shmjHeroCpgtData.playCpgt;
         int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newCpgRespData.playCpgt.sId);
         playerHero->hideCurrentBigJong();
         if(cpgRespData->result == 1||cpgRespData->result == 2){

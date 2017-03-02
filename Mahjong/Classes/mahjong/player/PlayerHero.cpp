@@ -898,9 +898,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
         //吃完后触发听牌
         if (cpgResp.result == 2 && cpgResp.playCpgt.ting != ""){
             log("吃听的牌: %s",cpgResp.playCpgt.ting.c_str());
-            PlayerCpgtData tingData;
-            tingData.ting = cpgResp.playCpgt.ting;
-            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
+            ((MahjongView*)getParent())->showTingGangControllPad(cpgResp.playCpgt);
         }else{
             setIsAllowPlay(true);
             startTimeClockAnim();
@@ -989,9 +987,8 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase){
     runAction(mySe);
     
     if (resp.result == 2 && resp.playCpgt.ting != ""){
-        PlayerCpgtData tingData;
-        tingData.ting = resp.playCpgt.ting;
-        ((MahjongView*)getParent())->showTingGangControllPad(tingData);
+        log("碰听的牌: %s",resp.playCpgt.ting.c_str());
+        ((MahjongView*)getParent())->showTingGangControllPad(resp.playCpgt);
     }else{
         setIsAllowPlay(true);
         startTimeClockAnim();
