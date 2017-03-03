@@ -45,16 +45,6 @@ void HeadImageDialog::showDialog(){
     closeMenu->setPosition(870, 495);
     addChild(closeMenu);
     
-    //	auto use_camara = MenuItemImage::create("playerinfo/use_phote_btn_1.png", "playerinfo/use_phote_btn_2.png",
-    //		CC_CALLBACK_0(HeadImageDialog::useCamara,this));
-    //	auto use_photo = MenuItemImage::create("playerinfo/from_photo_btn_1.png", "playerinfo/from_photo_btn_2.png",
-    //		CC_CALLBACK_0(HeadImageDialog::usePhoto, this));
-    //
-    //	Menu* menu = Menu::create(use_camara, use_photo,NULL);
-    //	menu->setPosition(640, 360);
-    //	menu->alignItemsVerticallyWithPadding(20);
-    //	addChild(menu);
-    
     auto title = Sprite::create("playerinfo/head_iamge_title.png");
     title->setPosition(640,495);
     addChild(title);
