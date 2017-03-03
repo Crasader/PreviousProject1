@@ -227,11 +227,11 @@ void ReviewGame::drawCpgControllPad(PlayerCpgtData newData){
         controllPad->addChild(peng);
         buttonCount++;
     }
-//    if (newData.gang != ""){
-//        gang = MenuItemImage::create("gameview/mj_gang.png","gameview/mj_gang.png", CC_CALLBACK_1(ReviewGame::heroDoGang, this));
-//        gang->setPosition(Point(-buttonCount * 160, 0));
-//        controllPad->addChild(gang);
-//    }
+    if (newData.playerGang.size()>0){
+        gang = MenuItemImage::create("gameview/mj_gang.png","gameview/mj_gang.png", CC_CALLBACK_1(ReviewGame::showHeroGangUi, this));
+        gang->setPosition(Point(-buttonCount * 160, 0));
+        controllPad->addChild(gang);
+    }
     controllPad->setVisible(true);
 }
 
@@ -250,12 +250,12 @@ void ReviewGame::showTingGangControllPad(PlayerCpgtData tingData){
         controllPad->addChild(ting);
         buttonCount++;
     }
-//    if (tingData.gang != ""){
-//        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(ReviewGame::heroDoPengGangAndAGang, this));
-//        penggang->setPosition(Point(-buttonCount * 140, 0));
-//        controllPad->addChild(penggang);
-//        buttonCount++;
-//    }
+    if (tingData.playerGang.size()>0){
+        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(ReviewGame::showHeroGangUi, this));
+        penggang->setPosition(Point(-buttonCount * 140, 0));
+        controllPad->addChild(penggang);
+        buttonCount++;
+    }
     controllPad->setPosition(Point(1100, 160));
     controllPad->setVisible(true);
     playerHero->setIsAllowTouch(false);
@@ -330,6 +330,58 @@ void ReviewGame::showHeroChiUi(Ref* ref){
     }
 }
 
+
+void ReviewGame::showHeroGangUi(Ref* ref){
+    controllPad->setVisible(false);
+    std::vector<std::string> allGangs;
+    for (auto var : shmjHeroCpgtData.playCpgt.playerGang) {
+        std::vector<std::string> temp = StringUtil::split(var.gang, ",");
+        for(auto gang : temp){
+            allGangs.push_back(gang);
+        }
+    }
+    if (allGangs.size()>1){
+        //对杠牌的大小进行排序
+        for (int j = allGangs.size()-1; j > 0; j--) {
+            for (int k = 0; k < j; k++) {
+                if ( allGangs[k] <  allGangs[k + 1]) {
+                    auto temp =  allGangs[k];
+                    allGangs[k] = allGangs[k + 1];
+                    allGangs[k + 1] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < allGangs.size(); i++){
+            if( allGangs.at(i) == ""){
+                continue;
+            }
+            auto choice = Menu::create();
+            choice->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+            for (int l = 0; l < 4; l++){
+                Sprite* chibg = Sprite::create("jong/middle_2.png");
+                chibg->setPosition(1000 + l * 40 - i * 170, 150);
+                choiceMenu->setVisible(true);
+                choiceMenu->addChild(chibg);
+                std::string imageName = Jong::getContextImage(atoi(allGangs.at(i).c_str()));
+                MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(ReviewGame::heroDoGang, this));
+                imageItem->setTag(atoi(allGangs.at(i).c_str()));
+                imageItem->setPosition(1000 + l * 40 - i * 170, 160);
+                imageItem->setScale(0.5f);
+                choice->addChild(imageItem);
+            }
+            choice->setPosition(0, 0);
+            choiceMenu->addChild(choice);
+        }
+        playerHero->startTimeClockAnim(9, 1);
+    }
+    else{
+        MenuItemImage* imageItem = MenuItemImage::create();
+        imageItem->setTag(atoi(allGangs.at(0).c_str()));
+        heroDoGang(imageItem);
+    }
+}
+
+
 void ReviewGame::heroDoChi(Ref* psend){
     if (NULL != choiceMenu){
         choiceMenu->setVisible(false);
@@ -349,10 +401,20 @@ void ReviewGame::heroDoPeng(Ref* ref){
 }
 
 void ReviewGame::heroDoGang(Ref* ref){
+    MenuItemImage* item = (MenuItemImage*)ref;
+    int tag = item->getTag();
+    GangData gangData;
+    for (auto var : shmjHeroCpgtData.playCpgt.playerGang) {
+        std::vector<std::string> temp = StringUtil::split(var.gang, ",");
+        for(auto gang : temp){
+            if(atoi(gang.c_str()) == tag){
+                gangData = var;
+            }
+        }
+    }
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg->gang, atoi(cpg->poker.c_str()), cpg->flag));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(gangData.gang, atoi(shmjHeroCpgtData.playCpgt.poker.c_str()), gangData.flag));
 }
 
 void ReviewGame::heroDoCpgQi(){
@@ -373,13 +435,6 @@ void ReviewGame::heroDoTingQi(){
     
 }
 
-void ReviewGame::heroDoPengGangAndAGang(Ref* ref){
-    playerHero->stopTimeClockAnim();
-    controllPad->setVisible(false);
-    PlayerCpgtData* tingData = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
-//    std::vector<string> gangpai = StringUtil::split(tingData->gang, ",");
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData->gang, atoi(gangpai.at(0).c_str()), tingData->flag));
-}
 
 void ReviewGame::setCurrentJongVisible(int seatId){
     //TODO

@@ -59,13 +59,13 @@ private:
 	void addTouchListener();
 	void drawCpgControllPad(PlayerCpgtData cpg);
 	void showHeroChiUi(Ref* ref);
+    void showHeroGangUi(Ref* ref);
 	void heroDoChi(Ref* psend);
 	void heroDoPeng(Ref* psend);
 	void heroDoGang(Ref* psend);
 	void heroDoCpgQi();
 	void heroDoTing();
 	void heroDoTingQi();
-	void heroDoPengGangAndAGang(Ref* ref);
 	void setCurrentJongVisible(int seatId);
 	void playerTingAnim(int seatId);
 	void clearRoomPlayer();
