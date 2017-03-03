@@ -56,6 +56,7 @@ public:
 	Rect getJongBoundingBox();//获取牌的区域
     std::string getJongName(int type);//获取牌的名字
     void setJongSelectIcon(bool show);//选择框
+    void showTingIcon(int bType);
     void showBackShadow(bool show);//阴影保护
  	CC_SYNTHESIZE(int, jongType, JongType);
     CC_SYNTHESIZE(bool, isProtected, IsProtected);

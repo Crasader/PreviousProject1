@@ -561,12 +561,18 @@ void MahjongView::playerTingAnim(int seatId){
     schedule([=](float t){
         if (seatId == ClientSeatId::left){
             playerLeft->setPlayerTingState(true);
+            if(playerLeft->playerPlayedJongs.size()>0)
+                playerLeft->playerPlayedJongs.at(playerLeft->playerPlayedJongs.size()-1)->showTingIcon(leftplayed);
         }
         else if (seatId == ClientSeatId::right){
             playerRight->setPlayerTingState(true);
+            if(playerRight->playerPlayedJongs.size()>0)
+                playerRight->playerPlayedJongs.at(playerRight->playerPlayedJongs.size()-1)->showTingIcon(rightplayed);
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setPlayerTingState(true);
+            if(playerRight->playerPlayedJongs.size()>0)
+                playerOpposite->playerPlayedJongs.at(playerOpposite->playerPlayedJongs.size()-1)->showTingIcon(oppositeplayed);
         }
         else
         {
@@ -614,7 +620,6 @@ void MahjongView::recoverGame(){
         GAMEDATA::getInstance()->setCurrentBank(data.loard);
         GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
         GAMEDATA::getInstance()->setKaibao(StringUtil::itos(data.kb));
-//        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
         for (int i = 0; i < data.players.size(); i++)
         {
             PlayerGameData player = data.players.at(i);
@@ -1595,7 +1600,7 @@ void MahjongView::addHeroTingRespListener(){
         if (atoi(buf) == 1){
             GAMEDATA::getInstance()->setIsTingState(true);
             if(playerHero->playerPlayedJongs.size()>0)
-                playerHero->playerPlayedJongs.at(playerHero->playerPlayedJongs.size()-1)->setJongSelectIcon(true);
+                playerHero->playerPlayedJongs.at(playerHero->playerPlayedJongs.size()-1)->showTingIcon(heroplayed);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingRespListener, 1);

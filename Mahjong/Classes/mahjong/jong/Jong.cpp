@@ -53,6 +53,13 @@ void Jong::setJongSelectIcon(bool show){
     selcetedIcon->setVisible(show);
 }
 
+void Jong::showTingIcon(int bType){
+    auto icon = Sprite::create("gameview/game_ting_hint.png");
+    icon->setPosition(getContentPosition(bType, background->getPosition()).x,getContentPosition(bType, background->getPosition()).y-3);
+    icon->setRotation(getRotationByType(bType));
+    addChild(icon);
+}
+
 
 void Jong::showBackShadow(bool show){
     protectedIcon->setVisible(show);
