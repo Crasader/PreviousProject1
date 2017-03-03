@@ -1706,7 +1706,6 @@ void MahjongView::addHeroGangRespListener(){
     heroGangRespListener = EventListenerCustom::create(MSG_HERO_GANG_RESP, [=](EventCustom* event){
         HeroCpgRespData* resp = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData newResp = *resp;
-        newResp.playCpgt = shmjHeroCpgtData.playCpgt;
         playerHero->hideCurrentBigJong();
         int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newResp.playCpgt.sId);
         if (newResp.result == 0){

@@ -1373,6 +1373,7 @@ void MsgHandler::heroChiResp(std::string msg){
         const rapidjson::Value &forbit = _mDoc["forbit"];
         cpgRespData.forbit = forbit.GetString();
     }
+    
     if (_mDoc.HasMember("ting1")){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
         for(int i=0;i<ting1.Capacity();i++){
@@ -1474,6 +1475,22 @@ void MsgHandler::heroGangResp(std::string msg){
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &result = _mDoc["ting"];
         playerCpg.ting = result.GetString();
+    }
+    if (_mDoc.HasMember("gang")&&_mDoc.HasMember("flag")){
+        const rapidjson::Value &gang = _mDoc["gang"];
+        const rapidjson::Value &flag = _mDoc["flag"];
+        GangData gangData;
+        gangData.gang = gang.GetString();
+        gangData.flag = atoi(flag.GetString());
+        playerCpg.playerGang.push_back(gangData);
+    }
+    if (_mDoc.HasMember("sId")){
+        const rapidjson::Value &sId = _mDoc["sId"];
+        playerCpg.sId= sId.GetInt();
+    }
+    if (_mDoc.HasMember("poker")){
+        const rapidjson::Value &poker = _mDoc["poker"];
+        playerCpg.poker= poker.GetInt();
     }
     cpgRespData.playCpgt = playerCpg;
     postNotifyMessage(MSG_HERO_GANG_RESP, &cpgRespData);
