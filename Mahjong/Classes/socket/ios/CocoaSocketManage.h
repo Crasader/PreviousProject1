@@ -18,6 +18,7 @@ public:
     void receiveScoketData(std::string msg);
     void resetBeatCount();
     void disConnectSocket();
+    void disConnectSelf();
 private:
     CocoaSocketManage();
     static CocoaSocketManage* _instance;

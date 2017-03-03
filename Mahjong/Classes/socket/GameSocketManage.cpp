@@ -75,7 +75,9 @@ void GameSocketManage::disConnectSocket(){
 }
 
 void GameSocketManage::disConnectSelf(){
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    CocoaSocketManage::getInstance()->disConnectSelf();
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     PxSocketManage::getInstance()->disConnectSelf();
 #endif
 }

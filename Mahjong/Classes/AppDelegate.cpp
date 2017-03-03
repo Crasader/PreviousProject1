@@ -85,7 +85,7 @@ void AppDelegate::applicationWillEnterForeground() {
         resumeIndex++;
     }else{
         GameSocketManage::getInstance()->disConnectSelf();
-        //             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+        GAMEDATA::getInstance()->setShowProtected(true);
     }
     if(GAMEDATA::getInstance()->getIsInPay()){
         CallAndroidMethod::getInstance()->queryEventResult();
@@ -93,8 +93,8 @@ void AppDelegate::applicationWillEnterForeground() {
     }
     AudioEngine::resumeAll();
 #else
-    //    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
-    GAMEDATA::getInstance()->setWaitNetwork(true);
+    GameSocketManage::getInstance()->disConnectSelf();
+    GAMEDATA::getInstance()->setShowProtected(true);
 #endif
     
 }

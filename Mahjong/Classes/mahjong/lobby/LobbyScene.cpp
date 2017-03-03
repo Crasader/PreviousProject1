@@ -47,28 +47,33 @@ bool LobbyScene::init()
 
 
 void LobbyScene::signUpdate(float dt){
+    if(GAMEDATA::getInstance()->getShowProtected()){
+        if(NULL == getChildByTag(2000)){
+            LostNetwork2* net = LostNetwork2::create();
+            net->setTag(2000);
+            addChild(net,200);
+        }
+        GAMEDATA::getInstance()->setShowProtected(false);
+    }
     if(GAMEDATA::getInstance()->getWaitNetwork()){
         if(NULL == getChildByTag(2000)){
             LostNetwork2* net = LostNetwork2::create();
             net->setTag(2000);
             addChild(net,200);
-            if(NetworkManage::getInstance()->reConnectSocket()){
-               int  delayTime = 2.5f;
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-                delayTime = 5;
-#endif
-                schedule([=](float dt){
-                    if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
-                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-                    }else{
-                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
-                    }
-                }, 0, 0, delayTime, "socket_reconnect2000");
-                NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-            }else{
-                HintDialog* dia = HintDialog::create("无法连接网络,请检查当前网络环境", NULL);
-                addChild(dia,1000);
-            }
+        }
+        if(NetworkManage::getInstance()->reConnectSocket()){
+            int  delayTime = 2.5f;
+            schedule([=](float dt){
+                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                }else{
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                }
+            }, 0, 0, delayTime, "socket_reconnect2000");
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+        }else{
+            HintDialog* dia = HintDialog::create("无法连接网络,请检查当前网络环境", NULL);
+            addChild(dia,1000);
         }
         GAMEDATA::getInstance()->setWaitNetwork(false);
     }

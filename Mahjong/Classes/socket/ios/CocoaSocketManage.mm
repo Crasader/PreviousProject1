@@ -56,3 +56,9 @@ void CocoaSocketManage::disConnectSocket(){
     GameSocketManage::getInstance()->disConnectSocket();
 }
 
+void CocoaSocketManage::disConnectSelf(){
+    CocoaSocket *socket = [CocoaSocket sharedSocket];
+    [socket disconnectSocket];
+}
+
+

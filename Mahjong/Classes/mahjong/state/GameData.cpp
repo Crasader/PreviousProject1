@@ -21,6 +21,7 @@ void GAMEDATA::init(){
     setIsInPay(false);
     setIsInGameScene(false);
     setWaitNetwork(false);
+    setShowProtected(false);
     setHaveShowNotice(false);
     setNeedShowLastResult(false);
     setShowFangZhuDismiss(false);
