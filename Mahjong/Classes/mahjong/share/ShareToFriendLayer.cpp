@@ -244,7 +244,7 @@ bool ShareToFriendLayer::init(){
         if(NULL !=recordLayer->getChildByTag(8878)){
             Menu* temp =(Menu*)recordLayer->getChildByTag(8878);
             if(NULL != temp->getChildByTag(8876)){
-                if(GAMEDATA::getInstance()->getTuiGuangRecord().gold == 0 && GAMEDATA::getInstance()->getTuiGuangRecord().fangka ==0){
+                if(GAMEDATA::getInstance()->getTuiGuangPride().gold == 0 && GAMEDATA::getInstance()->getTuiGuangPride().fangka ==0){
                     ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(false);
                 }else{
                     ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(true);
@@ -342,7 +342,7 @@ void ShareToFriendLayer::updateUi(float dt){
                 if(NULL !=recordLayer->getChildByTag(8878)){
                     Menu* temp =(Menu*)recordLayer->getChildByTag(8878);
                     if(NULL != temp->getChildByTag(8876)){
-                        if(GAMEDATA::getInstance()->getTuiGuangRecord().gold == 0 && GAMEDATA::getInstance()->getTuiGuangRecord().fangka ==0){
+                        if(GAMEDATA::getInstance()->getTuiGuangPride().gold == 0 && GAMEDATA::getInstance()->getTuiGuangPride().fangka ==0){
                             ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(false);
                         }else{
                             ((MenuItemImage*)temp->getChildByTag(8876))->setEnabled(true);
