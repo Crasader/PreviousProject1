@@ -74,6 +74,7 @@ private:
     std::mutex j_mutex;
     std::vector<std::string> pokerV;
     std::vector<std::string> replaceV;
+    std::vector<HeroHuPaiData> heroHuData;
     
     Sprite* playedIcon;
     Jong* currentJong;

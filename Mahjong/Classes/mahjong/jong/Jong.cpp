@@ -16,6 +16,9 @@ bool Jong::init(){
     selcetedIcon = Sprite::create("gameview/poker_select.png");
     selcetedIcon->setVisible(false);
     addChild(selcetedIcon);
+    tingPaiArrow  = Sprite::create("gameview/hu_jong_hint.png");
+    tingPaiArrow->setVisible(false);
+    addChild(tingPaiArrow);
     return true;
 }
 
@@ -32,6 +35,7 @@ void Jong::showJong(int bType, int cType,bool show){
         contentSprite->setPosition(getContentPosition(bType, background->getPosition()));
         contentSprite->setVisible(true);
         selcetedIcon->setScale(getContentScaleByType(bType));
+        tingPaiArrow->setPosition(getContentPosition(bType, background->getPosition()).x,getContentPosition(bType, background->getPosition()).y+85);
     }
     else{
         contentSprite->setVisible(false);
@@ -51,6 +55,10 @@ Rect Jong::getJongBoundingBox(){
 
 void Jong::setJongSelectIcon(bool show){
     selcetedIcon->setVisible(show);
+}
+
+void Jong::setTingJongHint(bool show){
+    tingPaiArrow ->setVisible(show);
 }
 
 void Jong::showTingIcon(int bType){

@@ -56,7 +56,8 @@ public:
 	Rect getJongBoundingBox();//获取牌的区域
     std::string getJongName(int type);//获取牌的名字
     void setJongSelectIcon(bool show);//选择框
-    void showTingIcon(int bType);
+    void setTingJongHint(bool show);//听牌箭头
+    void showTingIcon(int bType);//玩家听牌标记,打出去的牌堆显示
     void showBackShadow(bool show);//阴影保护
  	CC_SYNTHESIZE(int, jongType, JongType);
     CC_SYNTHESIZE(bool, isProtected, IsProtected);
@@ -65,6 +66,7 @@ private:
 	Sprite* background;
 	Sprite* contentSprite;
     Sprite* selcetedIcon;
+    Sprite* tingPaiArrow;
     Sprite* protectedIcon;
 	float getContentScaleByType(int bType);//内容缩放比例
     float getBackgroundScaleByType(int bType);//背景缩放比例

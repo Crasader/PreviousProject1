@@ -79,6 +79,29 @@ bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
     selectJong = getTouchJong(touch);
     if(NULL != selectJong&&!selectJong->getIsProtected()){
         updateSelectedInfo(selectJong);
+        if(GAMEDATA::getInstance()->getIsTingProcess()){
+            selectJong->setPosition(selectJong->getPositionX(),JONG_POS_Y+40);
+            //其余的牌Y轴高度回落
+            resetHandJongsY(selectJong);
+            bool findPoker = false;
+            for(auto var : heroHuData){
+                if(var.poker == selectJong->getJongType()){
+                    findPoker = true;
+                    if(NULL != getChildByTag(6689)){
+                        getChildByTag(6689)->removeFromParent();
+                    }
+                    HuPaiHintLayer* huPai =  HuPaiHintLayer::create(var,this);
+                    huPai->setTag(6689);
+                    addChild(huPai,5);
+                    startTimeClockAnim(20, 2);
+                }
+            }
+            if(!findPoker){
+                if(NULL != getChildByTag(6689)){
+                    getChildByTag(6689)->removeFromParent();
+                }
+            }
+        }
     }else{
         selectJong = NULL;
     }
@@ -811,13 +834,14 @@ void PlayerHero::doEventTimeOver(int type){
 void PlayerHero::actionTing(HeroCpgRespData tingData){
     setIsAllowTouch(true);
     GAMEDATA::getInstance()->setIsTingProcess(true);
-    std::vector<string> tingpai = StringUtil::split(tingData.playCpgt.ting, ",");
-    log("提示玩家可以听的牌:%s",tingData.playCpgt.ting.c_str());
-    
-    HuPaiHintLayer* huPai =  HuPaiHintLayer::create(playerHandJongs, tingData.playCpgt.heroHu,this);
-    huPai->setTag(6689);
-    addChild(huPai,5);
-    startTimeClockAnim(20, 2);
+    heroHuData = tingData.playCpgt.heroHu;
+    for (int i = 0; i < playerHandJongs.size(); i++){
+        for (int j=0; j<tingData.playCpgt.heroHu.size(); j++) {
+            if(playerHandJongs.at(i)->getJongType() == tingData.playCpgt.heroHu.at(j).poker){
+                playerHandJongs.at(i)->setTingJongHint(true);
+            }
+        }
+    }
 }
 
 void PlayerHero::sendTingRequest(int poker){

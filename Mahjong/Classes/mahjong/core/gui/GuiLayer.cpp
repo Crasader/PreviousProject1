@@ -34,7 +34,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-//    drawTestButton();
+    drawTestButton();
     scheduleUpdate();
 }
 
@@ -359,20 +359,20 @@ void GuiLayer::testButtonClick(){
     //    char* buf = const_cast<char*>("2");
     //    _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
     
-//    PlayerTurnData playerTurnData;
-//    playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
-//    PlayerCpgtData tingData;
-//    tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
-//    tingData.ting ="1";
-//    playerTurnData.hastinggang = true;
-//    HeroHuPaiData huPaiData;
-//    huPaiData.poker = 7;
-//    huPaiData.hu = "2,7,5";
-//    tingData.heroHu.push_back(huPaiData);
-//    HeroHuPaiData huPaiData2;
-//    huPaiData2.poker = 9;
-//    huPaiData2.hu = "2,5,6,7";
-//    tingData.heroHu.push_back(huPaiData2);
-//    playerTurnData.cpgData = tingData;
-//    _eventDispatcher->dispatchCustomEvent(MSG_PLAYER_TURN_WHO, &playerTurnData);
+    PlayerTurnData playerTurnData;
+    playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    PlayerCpgtData tingData;
+    tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    tingData.ting ="1";
+    playerTurnData.hastinggang = true;
+    HeroHuPaiData huPaiData;
+    huPaiData.poker = 6;
+    huPaiData.hu = "2,7,5";
+    tingData.heroHu.push_back(huPaiData);
+    HeroHuPaiData huPaiData2;
+    huPaiData2.poker = 8;
+    huPaiData2.hu = "2,5,6,7";
+    tingData.heroHu.push_back(huPaiData2);
+    playerTurnData.cpgData = tingData;
+    _eventDispatcher->dispatchCustomEvent(MSG_PLAYER_TURN_WHO, &playerTurnData);
 }

@@ -10,15 +10,18 @@
 #define HuPaiHintLayer_hpp
 #include <stdio.h>
 #include "cocos2d.h"
+#include "cocos-ext.h"
 #include "mahjong/jong/Jong.h"
 #include "mahjong/state/GameData.h"
 #include "mahjong/player/PlayerHero.h"
 USING_NS_CC;
+USING_NS_CC_EXT;
 
 class HuPaiHintLayer : public Layer{
 public:
-    static HuPaiHintLayer* create(Vector<Jong*> playerHandJongs,std::vector<HeroHuPaiData> heroHu,PlayerHero* playerHero);
-    bool init(Vector<Jong*> playerHandJongs,std::vector<HeroHuPaiData> heroHu,PlayerHero* playerHero);
+    static HuPaiHintLayer* create(HeroHuPaiData heroHu,PlayerHero* playerHero);
+    bool init(HeroHuPaiData heroHu,PlayerHero* playerHero);
+private:
     
 };
 #endif /* HuPaiHintLayer_hpp */
