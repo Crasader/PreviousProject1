@@ -227,11 +227,11 @@ void ReviewGame::drawCpgControllPad(PlayerCpgtData newData){
         controllPad->addChild(peng);
         buttonCount++;
     }
-    if (newData.gang != ""){
-        gang = MenuItemImage::create("gameview/mj_gang.png","gameview/mj_gang.png", CC_CALLBACK_1(ReviewGame::heroDoGang, this));
-        gang->setPosition(Point(-buttonCount * 160, 0));
-        controllPad->addChild(gang);
-    }
+//    if (newData.gang != ""){
+//        gang = MenuItemImage::create("gameview/mj_gang.png","gameview/mj_gang.png", CC_CALLBACK_1(ReviewGame::heroDoGang, this));
+//        gang->setPosition(Point(-buttonCount * 160, 0));
+//        controllPad->addChild(gang);
+//    }
     controllPad->setVisible(true);
 }
 
@@ -250,12 +250,12 @@ void ReviewGame::showTingGangControllPad(PlayerCpgtData tingData){
         controllPad->addChild(ting);
         buttonCount++;
     }
-    if (tingData.gang != ""){
-        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(ReviewGame::heroDoPengGangAndAGang, this));
-        penggang->setPosition(Point(-buttonCount * 140, 0));
-        controllPad->addChild(penggang);
-        buttonCount++;
-    }
+//    if (tingData.gang != ""){
+//        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(ReviewGame::heroDoPengGangAndAGang, this));
+//        penggang->setPosition(Point(-buttonCount * 140, 0));
+//        controllPad->addChild(penggang);
+//        buttonCount++;
+//    }
     controllPad->setPosition(Point(1100, 160));
     controllPad->setVisible(true);
     playerHero->setIsAllowTouch(false);
@@ -352,7 +352,7 @@ void ReviewGame::heroDoGang(Ref* ref){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
     PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg->gang, atoi(cpg->poker.c_str()), cpg->flag));
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(cpg->gang, atoi(cpg->poker.c_str()), cpg->flag));
 }
 
 void ReviewGame::heroDoCpgQi(){
@@ -377,8 +377,8 @@ void ReviewGame::heroDoPengGangAndAGang(Ref* ref){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
     PlayerCpgtData* tingData = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
-    std::vector<string> gangpai = StringUtil::split(tingData->gang, ",");
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData->gang, atoi(gangpai.at(0).c_str()), tingData->flag));
+//    std::vector<string> gangpai = StringUtil::split(tingData->gang, ",");
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(tingData->gang, atoi(gangpai.at(0).c_str()), tingData->flag));
 }
 
 void ReviewGame::setCurrentJongVisible(int seatId){

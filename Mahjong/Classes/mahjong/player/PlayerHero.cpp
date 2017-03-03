@@ -1022,157 +1022,157 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase){
 void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
     Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
-    if(resp.playCpgt.flag == 0){
-        //明杠
-        std::vector<string> gangpai = StringUtil::split(resp.playCpgt.gang, ",");
-        Vector<Jong*> gangVector;
-        for (int i = 0; i < gangpai.size(); i++){
-            for (int j = 0; j < getSelfHandJongs().size(); j++){
-                if (atoi(gangpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
-                    getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
-                    gangVector.pushBack(getSelfHandJongs().at(j));
-                    eraseHeroJong(getSelfHandJongs().at(j));
-                    break;
-                }
-            }
-        }
-        Jong* jon = Jong::create();
-        jon->showJong(herocpgportrait, playerBase->getCurrentJong()->getJongType());
-        jon->setPosition(playerBase->getCurrentJong()->getPosition());
-        addChild(jon, 5);
-        gangVector.pushBack(jon);
-        PlayerCpgRecord record;
-        record.type = CpgType::gang;
-        record.pokersRecord = gangVector;
-        playerCpgRecords.push_back(record);
-        CallFunc* action1 = CallFunc::create([=](){
-            playerBase->removeLastJong();
-            for (int m = 0; m < gangVector.size(); m++){
-                MoveTo* mv = MoveTo::create(0.15f, Point(400 + 28 * m, 150));
-                ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
-                Spawn* sp = Spawn::create(mv, scale, NULL);
-                gangVector.at(m)->runAction(sp);
-            }
-            setHandPosX(getHandPosX() + JONG_WIDTH * 3);
-            sortHandJongs(getHandPosX(), true);
-        });
-        DelayTime* delay = DelayTime::create(0.25f);
-        CallFunc* action2 = CallFunc::create([=](){
-            for (int k = 0; k < gangVector.size(); k++){
-                if (k != 3){
-                    MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47 * k, 45));
-                    ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
-                    Spawn* sp = Spawn::create(mv, scale, NULL);
-                    gangVector.at(k)->runAction(sp);
-                }
-                else{
-                    MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47, 55));
-                    ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
-                    Spawn* sp = Spawn::create(mv, scale, NULL);
-                    gangVector.at(k)->setLocalZOrder(4);
-                    gangVector.at(k)->runAction(sp);
-                }
-            }
-            setCpgPostionX(getCpgPostionX()+170);
-        });
-        auto spriteAnim = Sprite::create();
-        addChild(spriteAnim);
-        spriteAnim->runAction(Sequence::create(action1, delay, action2, NULL));
-        if (resp.result == 2 && resp.playCpgt.ting != ""){
-            PlayerCpgtData tingData;
-            tingData.ting = resp.playCpgt.ting;
-            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
-        }
-        
-    }else{
-        std::vector<string> gangpai = StringUtil::split(resp.playCpgt.gang, ",");
-        Vector<Jong*> gangVector;
-        if (resp.playCpgt.flag == 2){
-            for(int j=0; j<playerHandJongs.size();j++){
-                if(playerHandJongs.at(j)->getJongType() == atoi(gangpai.at(0).c_str())){
-                    gangVector.pushBack(playerHandJongs.at(j));
-                    eraseHeroJong(playerHandJongs.at(j));
-                }
-            }
-            for (int i = 0; i < this->playerCpgRecords.size(); i++){
-                if (playerCpgRecords.at(i).type == CpgType::peng){
-                    if (atoi(gangpai.at(0).c_str()) == playerCpgRecords.at(i).pokersRecord.at(0)->getJongType()){
-                        playerCpgRecords.at(i).type = penggang;
-                        playerCpgRecords.at(i).pokersRecord.pushBack(gangVector);
-                        gangVector.at(0)->showJong(herocpgportrait, gangVector.at(0)->getJongType());
-                        Point pos;
-                        if(playerCpgRecords.at(i).pengDir ==0){
-                            pos = playerCpgRecords.at(i).pokersRecord.at(1)->getPosition();
-                        }else if(playerCpgRecords.at(i).pengDir ==0){
-                            pos = Point((playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().x+playerCpgRecords.at(i).pokersRecord.at(2)->getPosition().x)/2,playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().y);
-                        }else{
-                            pos = playerCpgRecords.at(i).pokersRecord.at(2)->getPosition();
-                        }
-                        MoveTo* mv = MoveTo::create(0.2f, Point(pos.x, pos.y + 10));
-                        ScaleTo* sc = ScaleTo::create(0.2f, 0.75f);
-                        Spawn* spawn = Spawn::create(mv, sc, NULL);
-                        gangVector.at(0)->setLocalZOrder(4);
-                        gangVector.at(0)->runAction(Sequence::create(spawn, CallFunc::create([=](){
-                            sortHandJongs(getHandPosX(), false);
-                        }), NULL) );
-                    }
-                }
-            }
-        }
-        else{
-            for (int j = 0; j < getSelfHandJongs().size(); j++){
-                if (atoi(gangpai.at(0).c_str()) == getSelfHandJongs().at(j)->getJongType()){
-                    gangVector.pushBack(getSelfHandJongs().at(j));
-                }
-            }
-            for (int i = 0; i < gangVector.size(); i++){
-                eraseHeroJong(gangVector.at(i));
-            }
-            PlayerCpgRecord record;
-            record.type = CpgType::angang;
-            record.pokersRecord = gangVector;
-            playerCpgRecords.push_back(record);
-            CallFunc* action1 = CallFunc::create([=](){
-                for (int m = 0; m < gangVector.size(); m++){
-                    gangVector.at(m)->showJong(herocpgportrait, gangVector.at(m)->getJongType());
-                    MoveTo* mv = MoveTo::create(0.15f, Point(400 + 28 * m, 150));
-                    ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
-                    Spawn* sp = Spawn::create(mv, scale, NULL);
-                    gangVector.at(m)->runAction(sp);
-                }
-                setHandPosX(getHandPosX() + JONG_WIDTH * 3);
-                sortHandJongs(getHandPosX(), true);
-            });
-            DelayTime* delay = DelayTime::create(0.25f);
-            CallFunc* action2 = CallFunc::create([=](){
-                for (int k = 0; k < gangVector.size(); k++){
-                    if (k != 3){
-                        MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX()+ 47 * k, 45));
-                        ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
-                        Spawn* sp = Spawn::create(mv, scale, NULL);
-                        gangVector.at(k)->runAction(sp);
-                    }
-                    else{
-                        MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47, 55));
-                        ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
-                        Spawn* sp = Spawn::create(mv, scale, NULL);
-                        gangVector.at(k)->runAction(sp);
-                        gangVector.at(k)->setLocalZOrder(4);
-                    }
-                }
-                setCpgPostionX(getCpgPostionX()+170);
-            });
-            CallFunc* action3 = CallFunc::create([=](){
-                for (int k = 0; k < gangVector.size() - 1; k++){
-                    gangVector.at(k)->showJong(herodeal, gangVector.at(k)->getJongType(),false);
-                    gangVector.at(k)->setScale(0.8);
-                }
-            });
-            Sequence* mySe = Sequence::create(action1, delay, action2, delay, action3, NULL);
-            runAction(mySe);
-        }
-        setIsAllowTouch(true);
-    }
+//    if(resp.playCpgt.flag == 0){
+//        //明杠
+//        std::vector<string> gangpai = StringUtil::split(resp.playCpgt.gang, ",");
+//        Vector<Jong*> gangVector;
+//        for (int i = 0; i < gangpai.size(); i++){
+//            for (int j = 0; j < getSelfHandJongs().size(); j++){
+//                if (atoi(gangpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+//                    getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
+//                    gangVector.pushBack(getSelfHandJongs().at(j));
+//                    eraseHeroJong(getSelfHandJongs().at(j));
+//                    break;
+//                }
+//            }
+//        }
+//        Jong* jon = Jong::create();
+//        jon->showJong(herocpgportrait, playerBase->getCurrentJong()->getJongType());
+//        jon->setPosition(playerBase->getCurrentJong()->getPosition());
+//        addChild(jon, 5);
+//        gangVector.pushBack(jon);
+//        PlayerCpgRecord record;
+//        record.type = CpgType::gang;
+//        record.pokersRecord = gangVector;
+//        playerCpgRecords.push_back(record);
+//        CallFunc* action1 = CallFunc::create([=](){
+//            playerBase->removeLastJong();
+//            for (int m = 0; m < gangVector.size(); m++){
+//                MoveTo* mv = MoveTo::create(0.15f, Point(400 + 28 * m, 150));
+//                ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
+//                Spawn* sp = Spawn::create(mv, scale, NULL);
+//                gangVector.at(m)->runAction(sp);
+//            }
+//            setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+//            sortHandJongs(getHandPosX(), true);
+//        });
+//        DelayTime* delay = DelayTime::create(0.25f);
+//        CallFunc* action2 = CallFunc::create([=](){
+//            for (int k = 0; k < gangVector.size(); k++){
+//                if (k != 3){
+//                    MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47 * k, 45));
+//                    ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
+//                    Spawn* sp = Spawn::create(mv, scale, NULL);
+//                    gangVector.at(k)->runAction(sp);
+//                }
+//                else{
+//                    MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47, 55));
+//                    ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
+//                    Spawn* sp = Spawn::create(mv, scale, NULL);
+//                    gangVector.at(k)->setLocalZOrder(4);
+//                    gangVector.at(k)->runAction(sp);
+//                }
+//            }
+//            setCpgPostionX(getCpgPostionX()+170);
+//        });
+//        auto spriteAnim = Sprite::create();
+//        addChild(spriteAnim);
+//        spriteAnim->runAction(Sequence::create(action1, delay, action2, NULL));
+//        if (resp.result == 2 && resp.playCpgt.ting != ""){
+//            PlayerCpgtData tingData;
+//            tingData.ting = resp.playCpgt.ting;
+//            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
+//        }
+//        
+//    }else{
+//        std::vector<string> gangpai = StringUtil::split(resp.playCpgt.gang, ",");
+//        Vector<Jong*> gangVector;
+//        if (resp.playCpgt.flag == 2){
+//            for(int j=0; j<playerHandJongs.size();j++){
+//                if(playerHandJongs.at(j)->getJongType() == atoi(gangpai.at(0).c_str())){
+//                    gangVector.pushBack(playerHandJongs.at(j));
+//                    eraseHeroJong(playerHandJongs.at(j));
+//                }
+//            }
+//            for (int i = 0; i < this->playerCpgRecords.size(); i++){
+//                if (playerCpgRecords.at(i).type == CpgType::peng){
+//                    if (atoi(gangpai.at(0).c_str()) == playerCpgRecords.at(i).pokersRecord.at(0)->getJongType()){
+//                        playerCpgRecords.at(i).type = penggang;
+//                        playerCpgRecords.at(i).pokersRecord.pushBack(gangVector);
+//                        gangVector.at(0)->showJong(herocpgportrait, gangVector.at(0)->getJongType());
+//                        Point pos;
+//                        if(playerCpgRecords.at(i).pengDir ==0){
+//                            pos = playerCpgRecords.at(i).pokersRecord.at(1)->getPosition();
+//                        }else if(playerCpgRecords.at(i).pengDir ==0){
+//                            pos = Point((playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().x+playerCpgRecords.at(i).pokersRecord.at(2)->getPosition().x)/2,playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().y);
+//                        }else{
+//                            pos = playerCpgRecords.at(i).pokersRecord.at(2)->getPosition();
+//                        }
+//                        MoveTo* mv = MoveTo::create(0.2f, Point(pos.x, pos.y + 10));
+//                        ScaleTo* sc = ScaleTo::create(0.2f, 0.75f);
+//                        Spawn* spawn = Spawn::create(mv, sc, NULL);
+//                        gangVector.at(0)->setLocalZOrder(4);
+//                        gangVector.at(0)->runAction(Sequence::create(spawn, CallFunc::create([=](){
+//                            sortHandJongs(getHandPosX(), false);
+//                        }), NULL) );
+//                    }
+//                }
+//            }
+//        }
+//        else{
+//            for (int j = 0; j < getSelfHandJongs().size(); j++){
+//                if (atoi(gangpai.at(0).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+//                    gangVector.pushBack(getSelfHandJongs().at(j));
+//                }
+//            }
+//            for (int i = 0; i < gangVector.size(); i++){
+//                eraseHeroJong(gangVector.at(i));
+//            }
+//            PlayerCpgRecord record;
+//            record.type = CpgType::angang;
+//            record.pokersRecord = gangVector;
+//            playerCpgRecords.push_back(record);
+//            CallFunc* action1 = CallFunc::create([=](){
+//                for (int m = 0; m < gangVector.size(); m++){
+//                    gangVector.at(m)->showJong(herocpgportrait, gangVector.at(m)->getJongType());
+//                    MoveTo* mv = MoveTo::create(0.15f, Point(400 + 28 * m, 150));
+//                    ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
+//                    Spawn* sp = Spawn::create(mv, scale, NULL);
+//                    gangVector.at(m)->runAction(sp);
+//                }
+//                setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+//                sortHandJongs(getHandPosX(), true);
+//            });
+//            DelayTime* delay = DelayTime::create(0.25f);
+//            CallFunc* action2 = CallFunc::create([=](){
+//                for (int k = 0; k < gangVector.size(); k++){
+//                    if (k != 3){
+//                        MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX()+ 47 * k, 45));
+//                        ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
+//                        Spawn* sp = Spawn::create(mv, scale, NULL);
+//                        gangVector.at(k)->runAction(sp);
+//                    }
+//                    else{
+//                        MoveTo* mv = MoveTo::create(0.15f, Point(getCpgPostionX() + 47, 55));
+//                        ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
+//                        Spawn* sp = Spawn::create(mv, scale, NULL);
+//                        gangVector.at(k)->runAction(sp);
+//                        gangVector.at(k)->setLocalZOrder(4);
+//                    }
+//                }
+//                setCpgPostionX(getCpgPostionX()+170);
+//            });
+//            CallFunc* action3 = CallFunc::create([=](){
+//                for (int k = 0; k < gangVector.size() - 1; k++){
+//                    gangVector.at(k)->showJong(herodeal, gangVector.at(k)->getJongType(),false);
+//                    gangVector.at(k)->setScale(0.8);
+//                }
+//            });
+//            Sequence* mySe = Sequence::create(action1, delay, action2, delay, action3, NULL);
+//            runAction(mySe);
+//        }
+//        setIsAllowTouch(true);
+//    }
 }
 
 void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string> chipai, PlayerBase* playerBase){
@@ -1303,117 +1303,117 @@ void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerBase* playerBas
 }
 
 void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
-    updateSelectedInfo(NULL);
-    if(resp.playCpgt.flag == 0){
-        std::vector<string> gangpai = StringUtil::split(resp.playCpgt.gang, ",");
-        Vector<Jong*> gangVector;
-        for (int i = 0; i < gangpai.size(); i++){
-            for (int j = 0; j < getSelfHandJongs().size(); j++){
-                if (atoi(gangpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
-                    getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
-                    gangVector.pushBack(getSelfHandJongs().at(j));
-                    eraseHeroJong(getSelfHandJongs().at(j));
-                    break;
-                }
-            }
-        }
-        Jong* jon = Jong::create();
-        jon->showJong(herocpgportrait, playerBase->getCurrentJong()->getJongType());
-        jon->setPosition(playerBase->getCurrentJong()->getPosition());
-        this->addChild(jon, 5);
-        gangVector.pushBack(jon);
-        PlayerCpgRecord record;
-        record.type = CpgType::gang;
-        record.pokersRecord = gangVector;
-        playerCpgRecords.push_back(record);
-        setHandPosX(getHandPosX() + JONG_WIDTH * 3);
-        sortHandJongs(getHandPosX(), true);
-        for (int k = 0; k < gangVector.size(); k++){
-            if (k != 3){
-                gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47 * k, 45));
-                gangVector.at(k)->setScale( 0.75f);
-            }
-            else{
-                gangVector.at(k)->setLocalZOrder(4);
-                gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47, 55));
-                gangVector.at(k)->setScale( 0.75f);
-            }
-        }
-        setCpgPostionX(getCpgPostionX()+170);
-        
-        if (resp.result == 2 && resp.playCpgt.ting != ""){
-            PlayerCpgtData tingData;
-            tingData.ting = resp.playCpgt.ting;
-            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
-        }
-        
-    }else{
-        std::vector<string> gangpai = StringUtil::split(resp.playCpgt.gang, ",");
-        Vector<Jong*> gangVector;
-        if (resp.playCpgt.flag == 2){
-            for(int j=0; j<playerHandJongs.size();j++){
-                if(playerHandJongs.at(j)->getJongType() == atoi(gangpai.at(0).c_str())){
-                    gangVector.pushBack(playerHandJongs.at(j));
-                    eraseHeroJong(playerHandJongs.at(j));
-                }
-            }
-            for (int i = 0; i < this->playerCpgRecords.size(); i++){
-                if (playerCpgRecords.at(i).type == CpgType::peng){
-                    if (atoi(gangpai.at(0).c_str()) == playerCpgRecords.at(i).pokersRecord.at(0)->getJongType()){
-                        playerCpgRecords.at(i).type = penggang;
-                        playerCpgRecords.at(i).pokersRecord.pushBack(gangVector);
-                        gangVector.at(0)->showJong(herocpgportrait, gangVector.at(0)->getJongType());
-                        Point pos;
-                        if(playerCpgRecords.at(i).pengDir ==0){
-                            pos = playerCpgRecords.at(i).pokersRecord.at(1)->getPosition();
-                        }else if(playerCpgRecords.at(i).pengDir ==0){
-                            pos = Point((playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().x+playerCpgRecords.at(i).pokersRecord.at(2)->getPosition().x)/2,playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().y);
-                        }else{
-                            pos = playerCpgRecords.at(i).pokersRecord.at(2)->getPosition();
-                        }
-                        gangVector.at(0)->setLocalZOrder(4);
-                        gangVector.at(0)->setPosition(Point(pos.x, pos.y + 10));
-                        gangVector.at(0)->setScale(0.75f);
-                        sortHandJongs(getHandPosX(), false);
-                    }
-                }
-            }
-        }
-        else{
-            for (int j = 0; j < getSelfHandJongs().size(); j++){
-                if (atoi(gangpai.at(0).c_str()) == getSelfHandJongs().at(j)->getJongType()){
-                    gangVector.pushBack(getSelfHandJongs().at(j));
-                }
-            }
-            for (int i = 0; i < gangVector.size(); i++){
-                eraseHeroJong(gangVector.at(i));
-            }
-            PlayerCpgRecord record;
-            record.type = CpgType::angang;
-            record.pokersRecord = gangVector;
-            playerCpgRecords.push_back(record);
-            setHandPosX(getHandPosX() + JONG_WIDTH * 3);
-            sortHandJongs(getHandPosX(), true);
-            for (int k = 0; k < gangVector.size(); k++){
-                if (k != 3){
-                    gangVector.at(k)->setPosition(Point(getCpgPostionX()+ 47 * k, 45));
-                    gangVector.at(k)->setScale(0.75f);
-                }
-                else{
-                    gangVector.at(k)->setLocalZOrder(4);
-                    gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47, 55));
-                    gangVector.at(k)->setScale(0.75f);
-                }
-            }
-            setCpgPostionX(getCpgPostionX()+170);
-            for (int k = 0; k < gangVector.size() - 1; k++){
-                gangVector.at(k)->showJong(herodeal, gangVector.at(k)->getJongType(),false);
-                gangVector.at(k)->setScale(0.8);
-            }
-        }
-        setIsAllowTouch(true);
-    }
+//    Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
+//    updateSelectedInfo(NULL);
+//    if(resp.playCpgt.flag == 0){
+//        std::vector<string> gangpai = StringUtil::split(resp.playCpgt.gang, ",");
+//        Vector<Jong*> gangVector;
+//        for (int i = 0; i < gangpai.size(); i++){
+//            for (int j = 0; j < getSelfHandJongs().size(); j++){
+//                if (atoi(gangpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+//                    getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
+//                    gangVector.pushBack(getSelfHandJongs().at(j));
+//                    eraseHeroJong(getSelfHandJongs().at(j));
+//                    break;
+//                }
+//            }
+//        }
+//        Jong* jon = Jong::create();
+//        jon->showJong(herocpgportrait, playerBase->getCurrentJong()->getJongType());
+//        jon->setPosition(playerBase->getCurrentJong()->getPosition());
+//        this->addChild(jon, 5);
+//        gangVector.pushBack(jon);
+//        PlayerCpgRecord record;
+//        record.type = CpgType::gang;
+//        record.pokersRecord = gangVector;
+//        playerCpgRecords.push_back(record);
+//        setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+//        sortHandJongs(getHandPosX(), true);
+//        for (int k = 0; k < gangVector.size(); k++){
+//            if (k != 3){
+//                gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47 * k, 45));
+//                gangVector.at(k)->setScale( 0.75f);
+//            }
+//            else{
+//                gangVector.at(k)->setLocalZOrder(4);
+//                gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47, 55));
+//                gangVector.at(k)->setScale( 0.75f);
+//            }
+//        }
+//        setCpgPostionX(getCpgPostionX()+170);
+//        
+//        if (resp.result == 2 && resp.playCpgt.ting != ""){
+//            PlayerCpgtData tingData;
+//            tingData.ting = resp.playCpgt.ting;
+//            ((MahjongView*)getParent())->showTingGangControllPad(tingData);
+//        }
+//        
+//    }else{
+//        std::vector<string> gangpai = StringUtil::split(resp.playCpgt.gang, ",");
+//        Vector<Jong*> gangVector;
+//        if (resp.playCpgt.flag == 2){
+//            for(int j=0; j<playerHandJongs.size();j++){
+//                if(playerHandJongs.at(j)->getJongType() == atoi(gangpai.at(0).c_str())){
+//                    gangVector.pushBack(playerHandJongs.at(j));
+//                    eraseHeroJong(playerHandJongs.at(j));
+//                }
+//            }
+//            for (int i = 0; i < this->playerCpgRecords.size(); i++){
+//                if (playerCpgRecords.at(i).type == CpgType::peng){
+//                    if (atoi(gangpai.at(0).c_str()) == playerCpgRecords.at(i).pokersRecord.at(0)->getJongType()){
+//                        playerCpgRecords.at(i).type = penggang;
+//                        playerCpgRecords.at(i).pokersRecord.pushBack(gangVector);
+//                        gangVector.at(0)->showJong(herocpgportrait, gangVector.at(0)->getJongType());
+//                        Point pos;
+//                        if(playerCpgRecords.at(i).pengDir ==0){
+//                            pos = playerCpgRecords.at(i).pokersRecord.at(1)->getPosition();
+//                        }else if(playerCpgRecords.at(i).pengDir ==0){
+//                            pos = Point((playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().x+playerCpgRecords.at(i).pokersRecord.at(2)->getPosition().x)/2,playerCpgRecords.at(i).pokersRecord.at(1)->getPosition().y);
+//                        }else{
+//                            pos = playerCpgRecords.at(i).pokersRecord.at(2)->getPosition();
+//                        }
+//                        gangVector.at(0)->setLocalZOrder(4);
+//                        gangVector.at(0)->setPosition(Point(pos.x, pos.y + 10));
+//                        gangVector.at(0)->setScale(0.75f);
+//                        sortHandJongs(getHandPosX(), false);
+//                    }
+//                }
+//            }
+//        }
+//        else{
+//            for (int j = 0; j < getSelfHandJongs().size(); j++){
+//                if (atoi(gangpai.at(0).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+//                    gangVector.pushBack(getSelfHandJongs().at(j));
+//                }
+//            }
+//            for (int i = 0; i < gangVector.size(); i++){
+//                eraseHeroJong(gangVector.at(i));
+//            }
+//            PlayerCpgRecord record;
+//            record.type = CpgType::angang;
+//            record.pokersRecord = gangVector;
+//            playerCpgRecords.push_back(record);
+//            setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+//            sortHandJongs(getHandPosX(), true);
+//            for (int k = 0; k < gangVector.size(); k++){
+//                if (k != 3){
+//                    gangVector.at(k)->setPosition(Point(getCpgPostionX()+ 47 * k, 45));
+//                    gangVector.at(k)->setScale(0.75f);
+//                }
+//                else{
+//                    gangVector.at(k)->setLocalZOrder(4);
+//                    gangVector.at(k)->setPosition(Point(getCpgPostionX() + 47, 55));
+//                    gangVector.at(k)->setScale(0.75f);
+//                }
+//            }
+//            setCpgPostionX(getCpgPostionX()+170);
+//            for (int k = 0; k < gangVector.size() - 1; k++){
+//                gangVector.at(k)->showJong(herodeal, gangVector.at(k)->getJongType(),false);
+//                gangVector.at(k)->setScale(0.8);
+//            }
+//        }
+//        setIsAllowTouch(true);
+//    }
 }
 
 

@@ -95,16 +95,20 @@ struct HeroHuPaiData{
     std::string hu;
 };
 
+struct GangData{
+    int flag;//0明杠，1暗杠，2碰杠
+    std::string gang;
+};
+
 struct PlayerCpgtData
 {
     int seatId;
     int sId;
-    int flag;//0明杠，1暗杠，2碰杠
     std::string ting;
     std::string poker;
     std::string chi[3];
     std::string peng;
-    std::string gang;
+    std::vector<GangData> playerGang;
     std::vector<HeroHuPaiData> heroHu;
 };
 

@@ -1288,8 +1288,10 @@ void MsgHandler::getHeroJongs(std::string msg){
     PlayerCpgtData tingData;
     if(_mDoc.HasMember("angang")){
         const rapidjson::Value &angang = _mDoc["angang"];
-        tingData.gang = angang.GetString();
-        tingData.flag = 1;
+        GangData gangData;
+        gangData.gang = angang.GetString();
+        gangData.flag = 1;
+        tingData.playerGang.push_back(gangData);
         tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
     }
     if(_mDoc.HasMember("ting")){
@@ -1339,8 +1341,10 @@ void MsgHandler::showCpgNotify(std::string msg){
     }
     if (_mDoc.HasMember("gang")){
         const rapidjson::Value &gang = _mDoc["gang"];
-        cpgData.gang = gang.GetString();
-        cpgData.flag = 0;
+        GangData gangData;
+        gangData.gang = gang.GetString();
+        gangData.flag = 0;
+        cpgData.playerGang.push_back(gangData);
     }
     cpgRespData.playCpgt = cpgData;
     postNotifyMessage(MSG_PLAYER_CPG,&cpgRespData);
@@ -1488,11 +1492,13 @@ void MsgHandler::showOtherGangNotify(std::string msg){
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &sId = _mDoc["sId"];
     PlayerCpgtData cpgData;
-    cpgData.flag = atoi(flag.GetString());
     cpgData.poker = poker.GetString();
     cpgData.seatId = seatId.GetInt();
-    cpgData.gang = gang.GetString();
     cpgData.sId = sId.GetInt();
+    GangData gangData;
+    gangData.gang = gang.GetString();
+    gangData.flag = atoi(flag.GetString());
+    cpgData.playerGang.push_back(gangData);
     postNotifyMessage(MSG_OTHER_PLAYER_GANG, &cpgData);
 }
 
@@ -1525,13 +1531,17 @@ void MsgHandler::nextPlayer(std::string msg){
     }
     if (_mDoc.HasMember("angang")){
         const rapidjson::Value &angang = _mDoc["angang"];
-        tingData.gang = angang.GetString();
-        tingData.flag = 1;
+        GangData gangData;
+        gangData.gang = angang.GetString();
+        gangData.flag = 1;
+        tingData.playerGang.push_back(gangData);
     }
     if (_mDoc.HasMember("penggang")){
         const rapidjson::Value &penggang = _mDoc["penggang"];
-        tingData.gang = penggang.GetString();
-        tingData.flag = 2;
+        GangData gangData;
+        gangData.gang = penggang.GetString();
+        gangData.flag = 2;
+        tingData.playerGang.push_back(gangData);
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
         playerTurnData.hastinggang = true;
@@ -1570,13 +1580,17 @@ void MsgHandler::heroTingMsg(std::string msg){
     }
     if (_mDoc.HasMember("angang")){
         const rapidjson::Value &angang = _mDoc["angang"];
-        tingData.gang = angang.GetString();
-        tingData.flag = 1;
+        GangData gangData;
+        gangData.gang = angang.GetString();
+        gangData.flag = 1;
+        tingData.playerGang.push_back(gangData);
     }
     if (_mDoc.HasMember("penggang")){
         const rapidjson::Value &penggang = _mDoc["penggang"];
-        tingData.gang = penggang.GetString();
-        tingData.flag = 2;
+        GangData gangData;
+        gangData.gang = penggang.GetString();
+        gangData.flag = 2;
+        tingData.playerGang.push_back(gangData);
     }
     cpgRespData.playCpgt = tingData;
     postNotifyMessage(MSG_HERO_TING_GANG, &cpgRespData);

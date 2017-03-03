@@ -244,12 +244,12 @@ void PlayerRight::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
 
 void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
-    if(data.flag == 1){
+    if(data.playerGang.at(0).flag == 1){
         for (int j = 0; j < 4; j++){
             playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
         }
-    }else if (data.flag == 2){
+    }else if (data.playerGang.at(0).flag == 2){
         if(GAMEDATA::getInstance()->getIsFuPan()){
             ((ReviewGame*)getParent())->removeHeroPlayedIcon();
         }else{
@@ -264,17 +264,17 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
         }
     }
-    std::vector<std::string> gang = StringUtil::split(data.gang, ",");
+    std::vector<std::string> gang = StringUtil::split(data.playerGang.at(0).gang, ",");
     gang.push_back(data.poker);
     sort(gang.begin(), gang.end());
     PlayerCpgRecord record;
-    if(data.flag ==1){
+    if(data.playerGang.at(0).flag ==1){
         record.type = CpgType::angang;
     }else{
         record.type = CpgType::gang;
     }
     record.gangValue = atoi(gang.at(0).c_str());
-    if (data.flag == 2){
+    if (data.playerGang.at(0).flag == 2){
         for (int i = 0; i < this->playerCpgRecords.size(); i++)
         {
             if (playerCpgRecords.at(i).type == CpgType::peng){
@@ -290,12 +290,12 @@ void PlayerRight::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
         }
     }
     else{
-        if (data.flag == 0){
+        if (data.playerGang.at(0).flag == 0){
             playerBase->removeLastJong();
         }
         for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
-            if (data.flag == 1){
+            if (data.playerGang.at(0).flag == 1){
                 if(i==3){
                     jong->showJong(rightcpglandscape, atoi(gang.at(0).c_str()));
                     record.anGangFan = true;
@@ -414,7 +414,7 @@ void PlayerRight::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerB
 
 void PlayerRight::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerGang(data,playerBase);
-    std::vector<string> chipai =  StringUtil::split(data.gang, ",");
+    std::vector<string> chipai =  StringUtil::split(data.playerGang.at(0).gang, ",");
     for (int j = 0; j < playerHandJongs.size(); j++){
         if (atoi(chipai.at(0).c_str()) == playerHandJongs.at(j)->getJongType()){
             playerHandJongs.at(j)->removeFromParent();
@@ -423,17 +423,17 @@ void PlayerRight::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerB
         }
     }
     settleJongMingpai();
-    std::vector<std::string> gang = StringUtil::split(data.gang, ",");
+    std::vector<std::string> gang = StringUtil::split(data.playerGang.at(0).gang, ",");
     gang.push_back(data.poker);
     sort(gang.begin(), gang.end());
     PlayerCpgRecord record;
-    if(data.flag ==1){
+    if(data.playerGang.at(0).flag ==1){
         record.type = CpgType::angang;
     }else{
         record.type = CpgType::gang;
     }
     record.gangValue = atoi(gang.at(0).c_str());
-    if (data.flag == 2){
+    if (data.playerGang.at(0).flag == 2){
         for (int i = 0; i < this->playerCpgRecords.size(); i++)
         {
             if (playerCpgRecords.at(i).type == CpgType::peng){
@@ -449,12 +449,12 @@ void PlayerRight::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerB
         }
     }
     else{
-        if (data.flag == 0){
+        if (data.playerGang.at(0).flag == 0){
             playerBase->removeLastJong();
         }
         for (int i = 0; i < 4; i++){
             Jong* jong = Jong::create();
-            if (data.flag == 1){
+            if (data.playerGang.at(0).flag == 1){
                 if(i==3){
                     jong->showJong(rightcpglandscape, atoi(gang.at(0).c_str()));
                     record.anGangFan = true;
