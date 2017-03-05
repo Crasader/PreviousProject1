@@ -32,7 +32,7 @@ bool HuPaiHintLayer::init(HeroHuPaiData heroHu,PlayerHero* playerHero){
     std::vector<std::string> huPai = StringUtil::split(heroHu.hu, ",");
     //开始绘制听牌提示界面
     auto huBg = ui::Scale9Sprite::create("gameview/hu_hint_bg.png");
-    huBg->setContentSize(Size(100+huPai.size()*70,172));
+    huBg->setContentSize(Size(100+huPai.size()*72+(huPai.size()==1?40:0),172));
     huBg->setPosition(640,380);
     addChild(huBg);
     

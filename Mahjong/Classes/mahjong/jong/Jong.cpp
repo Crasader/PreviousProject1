@@ -63,7 +63,8 @@ void Jong::setTingJongHint(bool show){
 
 void Jong::showTingIcon(int bType){
     auto icon = Sprite::create("gameview/game_ting_hint.png");
-    icon->setPosition(getContentPosition(bType, background->getPosition()).x,getContentPosition(bType, background->getPosition()).y-3);
+    icon->setPosition(getContentPosition(bType, background->getPosition()).x,getContentPosition(bType, background->getPosition()).y);
+    icon->setScale(0.98);
     icon->setRotation(getRotationByType(bType));
     addChild(icon);
 }
