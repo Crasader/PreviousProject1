@@ -504,6 +504,7 @@ void MahjongView::showHeroGangUi(Ref* ref){
         std::vector<std::string> temp = StringUtil::split(var.gang, ",");
         for(auto gang : temp){
             allGangs.push_back(gang);
+             break;
         }
     }
     if (allGangs.size()>1){
