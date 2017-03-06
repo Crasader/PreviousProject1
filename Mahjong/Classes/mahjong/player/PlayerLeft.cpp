@@ -50,7 +50,6 @@ void PlayerLeft::drawLeftPlayerTurnMingpai(int jongtype){
 }
 
 void PlayerLeft::drawPlayedJong(int ctype){
-//    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     PlayerBase::showPlayedJong(ctype);
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(leftplayed, ctype);

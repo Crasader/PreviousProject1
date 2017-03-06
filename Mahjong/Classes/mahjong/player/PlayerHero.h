@@ -43,7 +43,7 @@ public:
     void actionQi();
     void eraseHeroJong(Jong* jong);
     void removePlayedIcon();
-    void drawPlayedJong(int type);//绘制出牌动作
+    void drawPlayedJong(int type);//听牌后出牌
     int  getNumbersByPoker(string pokers);
     
     void recoverHua(int hua);
@@ -90,7 +90,7 @@ private:
     void inviteWechatFriend();
     void sendTingRequest(int poker);
     void sendPokerRequest(int poker);
-    void playPokerByHand(Jong* jong);
+    void playPokerByHand(Jong* jong);//手动出牌
     void updateSelectedInfo(Jong* jong);
     float distance(Point pos1, Point pos2);
     Point getHeroPlayedJongsPos(int index);
