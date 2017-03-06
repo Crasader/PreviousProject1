@@ -1517,7 +1517,7 @@ void MsgHandler::heroGangResp(std::string msg){
     }
     if (_mDoc.HasMember("poker")){
         const rapidjson::Value &poker = _mDoc["poker"];
-        playerCpg.poker= poker.GetInt();
+        playerCpg.poker= atoi(poker.GetString());
     }
     cpgRespData.playCpgt = playerCpg;
     postNotifyMessage(MSG_HERO_GANG_RESP, &cpgRespData);

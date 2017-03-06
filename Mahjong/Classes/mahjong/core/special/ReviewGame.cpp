@@ -414,7 +414,7 @@ void ReviewGame::heroDoGang(Ref* ref){
     }
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(gangData.gang, atoi(shmjHeroCpgtData.playCpgt.poker.c_str()), gangData.flag));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(gangData.gang, atoi(gangData.gang.c_str()), gangData.flag));
 }
 
 void ReviewGame::heroDoCpgQi(){
