@@ -239,6 +239,12 @@ void PlayerHero::playPokerByHand(Jong* jong){
     ScaleTo* scale = ScaleTo::create(0.3f, 0.45f);
     Spawn* spa = Spawn::create(actionMove, scale, NULL);
     CallFunc* callback = CallFunc::create([=](){
+        jong->showJong(heroplayed, jong->getJongType());
+        jong->setScale(1.0f);
+        playerPlayedJongs.pushBack(jong);
+        isAllowPlay = false;
+        resetHandJongsY(jong);
+        virtualJong = NULL;
         if (!GAMEDATA::getInstance()->getIsTingState()
             && !GAMEDATA::getInstance()->getIsTingProcess()
             && !GAMEDATA::getInstance()->getIsTrusteeship()){
@@ -249,12 +255,6 @@ void PlayerHero::playPokerByHand(Jong* jong){
             ((MahjongView*)getParent())->hideTingGangControllPad();
             GAMEDATA::getInstance()->setIsTingProcess(false);
         }
-        jong->showJong(heroplayed, jong->getJongType());
-        jong->setScale(1.0f);
-        playerPlayedJongs.pushBack(jong);
-        isAllowPlay = false;
-        resetHandJongsY(jong);
-        virtualJong = NULL;
     });
     CallFunc* callback2 = CallFunc::create([=](){
         showCurrentPlayedJongIcon(true);
