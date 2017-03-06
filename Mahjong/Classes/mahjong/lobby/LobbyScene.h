@@ -52,6 +52,7 @@ private:
     EventListenerCustom* gameFupanListener;
     EventListenerCustom* roomListRespListener;
     EventListenerCustom* lobbyReconnectRespListener;
+    EventListenerCustom* gongGaoInfoListener;
     
 	void initView();
 	void drawSceneMid();

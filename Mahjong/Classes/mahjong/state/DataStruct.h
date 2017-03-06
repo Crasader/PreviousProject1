@@ -623,4 +623,8 @@ struct GameActivityData{
     std::string showTime;
     std::string jumpUrl;
 };
+
+struct GameGongGao{
+    std::vector<GameActivityData> gongGaoData;
+};
 #endif

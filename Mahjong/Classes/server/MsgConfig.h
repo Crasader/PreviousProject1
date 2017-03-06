@@ -45,6 +45,9 @@
 #define MSGCODE_SPREAD_NEWUSER_REWARD_REQUEST  163// 领取推广奖励请求{code:163,poxiaoId:poxiaoId}
 #define MSGCODE_SPREAD_NEWUSER_REWARD_RESPNOSE  164// 领取推广奖励回复{code:164,poxiaoId:poxiaoId,result:0}
 
+#define MSGCODE_HUODONG_REQUEST  165// 获取活动请求{code:165,poxiaoId:poxiaoId}
+#define MSGCODE_HUODONG_RESPONSE  166// 获取活动回复{code:166,poxiaoId:poxiaoId,content:[{pic:"http://1212.com",url:"11",time:"6"},{pic:"http://1212.com",url:"11",time:"6"}]}
+
 #define MSGCODE_THIRED_LOGIN_REQUEST  999//第三方登录请求{code:999,open_id:123,type:1,hsman:厂商,hstype:机型,imsi:imsi,imei:imei} typ为1表示微信
 #define MSGCODE_INTO_ROOMSTYLE_REQUEST  1000 //进入房间请求{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 #define MSGCODE_INTO_ROOMSTYLE_RESPONSE 1001 //进入房间回复{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]} result1为成功 2为金币低于下限 3为金币高于上线 4为其他错误
@@ -232,4 +235,5 @@
 #define MSG_GAME_FU_PAN_PLAYER_NOTIFY "MSG_GAME_FU_PAN_PLAYER_NOTIFY"
 #define MSG_GAME_FANG_ZHU_LEAVE "MSG_GAME_FANG_ZHU_LEAVE"
 #define MSG_GET_TUI_GUANG_PRIDE "MSG_GET_TUI_GUANG_PRIDE"
+#define MSG_GET_WAN_JIA_GONG_GAO "MSG_GET_WAN_JIA_GONG_GAO"
 #endif

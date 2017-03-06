@@ -28,7 +28,7 @@
 #include "payment/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/dialog/network/LostNetwork2.hpp"
-
+#include "mahjong/gonggao/GameGongGaoLayer.hpp"
 
 bool LobbyScene::init()
 {
@@ -423,8 +423,10 @@ void LobbyScene::showRedWallet(){
 
 void LobbyScene::showWanJiaQun(){
     Audio::getInstance()->playSoundClick();
-    WanJiaQunLayer* wanjia = WanJiaQunLayer::create();
-    addChild(wanjia,5);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGongGaoCommand());
+    Loading* load = Loading::create();
+    load->setTag(1209);
+    addChild(load,5);
 }
 
 void LobbyScene::showDayTask(){
@@ -569,6 +571,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(gameFupanListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(roomListRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyReconnectRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(gongGaoInfoListener);
 }
 
 void LobbyScene::addEventListener(){
@@ -768,7 +771,7 @@ void LobbyScene::addEventListener(){
         }
     });
     
-    //游戏公告
+    //游戏广告
     noticeUrlLitener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_GONG_GAO, [=](EventCustom* event){
         GameActivityData* data = static_cast<GameActivityData*>(event->getUserData());
         GameActivityData newData = *data;
@@ -841,6 +844,16 @@ void LobbyScene::addEventListener(){
         Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyReconnectRespListener, 1);
+    
+    gongGaoInfoListener = EventListenerCustom::create(MSG_GET_WAN_JIA_GONG_GAO, [=](EventCustom* event){
+        if(getChildByTag(1209)!=NULL){
+            getChildByTag(1209)->removeFromParent();
+        }
+        GameGongGao* gonggaoData = static_cast<GameGongGao*>(event->getUserData());
+        GameGongGaoLayer* gonggao = GameGongGaoLayer::create(*gonggaoData);
+        addChild(gonggao,5);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gongGaoInfoListener, 1);
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

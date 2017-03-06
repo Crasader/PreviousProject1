@@ -72,5 +72,6 @@ private:
     void fangZhuLeaveRoom(std::string msg);
     void handleTuiGuangInfo(std::string msg);
     void handleTuiGuangPrideInfo(std::string msg);
+    void handleGongGaoInfo(std::string msg);
 };
 #endif

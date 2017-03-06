@@ -19,6 +19,7 @@ public:
     void uploadImage2Server(CallFunc* callBack);//上传图片到七牛的服务器
     std::string downloadQunImgByUrl(std::string url,bool recover = false);//下载图片到SD卡
     std::string downloadDailiImgByUrl(std::string url,bool recover = false);//下载图片到SD卡
+    std::string downloadGongGaoImgByUrl(std::string url);
 private:
 	UrlImageMannger();
 	static UrlImageMannger* _instance;

@@ -57,6 +57,7 @@ public:
     std::string getFupanInfo(std::string recordId);
     std::string getTuiGuangCommand();
     std::string getTuiGuangPrideCommand();
+    std::string getGongGaoCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

@@ -355,6 +355,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleTuiGuangPrideInfo(msg);
             break;
         }
+        case MSGCODE_HUODONG_RESPONSE:{
+            handleGongGaoInfo(msg);
+            break;
+        }
         default:
             break;
     }
@@ -619,17 +623,6 @@ void MsgHandler::handleGamePayType(std::string msg){
     postNotifyMessage(MSG_UPDATE_LEQUAN_SHANG_CHEN_SHOW, nullptr);
 }
 
-// 领取推广奖励回复{code:164,poxiaoId:poxiaoId,result:0}
-void MsgHandler::handleTuiGuangPrideInfo(std::string msg){
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &result = _mDoc["result"];
-    char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
-    postNotifyMessage(MSG_GET_TUI_GUANG_PRIDE,buf);
-}
-
 //获取推广回复{code:162,poxiaoId:poxiaoId,reward:[{gold:50000},{fangka:1}],result:1,havegot:[{gold:50000},{fangka:1},{people:1}],willget:[{gold:50000},{fangka:1},{people:1}]}
 void MsgHandler::handleTuiGuangInfo(std::string msg){
     
@@ -680,6 +673,40 @@ void MsgHandler::handleTuiGuangInfo(std::string msg){
         }
     }
 }
+
+
+// 领取推广奖励回复{code:164,poxiaoId:poxiaoId,result:0}
+void MsgHandler::handleTuiGuangPrideInfo(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
+    postNotifyMessage(MSG_GET_TUI_GUANG_PRIDE,buf);
+}
+
+//{code:166,poxiaoId:poxiaoId,content:[{pic:"http://1212.com",url:"11",time:"6"},{pic:"http://1212.com",url:"11",time:"6"}]}
+void MsgHandler::handleGongGaoInfo(std:: string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    GameGongGao gameGongGao;
+    if(_mDoc.HasMember("content")){
+        auto &content = _mDoc["content"];
+        for (int i=0; i<content.Capacity(); i++){
+            GameActivityData data;
+            auto &temp = content[i];
+            data.imageUrl = temp["pic"].GetString();
+            data.jumpUrl = temp["url"].GetString();
+            data.showTime = StringUtils::format("%d",temp["time"].GetInt());
+            gameGongGao.gongGaoData.push_back(data);
+        }
+    }
+    postNotifyMessage(MSG_GET_WAN_JIA_GONG_GAO,&gameGongGao);
+}
+
 
 
 //{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]}
