@@ -43,7 +43,8 @@ bool HuPaiHintLayer::init(HeroHuPaiData heroHu,PlayerHero* playerHero){
     
     int num =  playerHero->getNumbersByPoker(heroHu.hu);
     auto huNum = LabelAtlas::create(StringUtils::format("%d",num), "gameview/hu_pai_num.png", 16, 24, '0');
-    huNum->setPosition(640-(85+huPai.size()*70)/2+30,332);
+    huNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    huNum->setPosition(640-(85+huPai.size()*70)/2+45,345);
     addChild(huNum);
     
     //绘制可以胡的牌

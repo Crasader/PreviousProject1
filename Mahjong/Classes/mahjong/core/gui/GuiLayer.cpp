@@ -34,7 +34,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-//    drawTestButton();
+    drawTestButton();
     scheduleUpdate();
 }
 
@@ -366,8 +366,8 @@ void GuiLayer::testButtonClick(){
     tingData.ting ="1";
     playerTurnData.hastinggang = true;
     HeroHuPaiData huPaiData;
-    huPaiData.poker = 6;
-    huPaiData.hu = "2,7,5";
+    huPaiData.poker = 4;
+    huPaiData.hu = "2";
     tingData.heroHu.push_back(huPaiData);
     HeroHuPaiData huPaiData2;
     huPaiData2.poker = 8;
