@@ -36,7 +36,7 @@ bool HuaAnim::init(std::vector<Jong*> jongs,int seatId,CallFunc* func){
             addChild(bot);
             showHuaAnim(bot);
         }),Spawn::create(ScaleTo::create(2.0f/24, 0.8f),FadeTo::create(2.0f/24, 255.0f), NULL),DelayTime::create(10.0f/24),Spawn::create(MoveTo::create(2.0f/24, getHuaPosBySeatId(seatId)),ScaleTo::create(2.0f/24, 0.2f),NULL),func, CallFunc::create([=](){
-                this->removeFromParent();
+                removeFromParent();
         }), NULL));
     
     }

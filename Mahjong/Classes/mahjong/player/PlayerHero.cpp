@@ -639,15 +639,15 @@ void PlayerHero::replaceFlower(){
                 }));
                 addChild(huaAnim,100);
             }
-        }, 0.8f, (int)rejong.poker.size()-1, 0,"huahuahua");
+        }, 0.6f, (int)rejong.poker.size()-1, 0,"huahuahua");
         
         schedule([=](float dt){
             int bankId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
             if (bankId == ClientSeatId::hero){
                 isAllowPlay = true;
             }
-            sortHandJongs(this->getHandPosX(), true);
-        }, 0, 0, 0.8f*rejong.poker.size(),"huadelay");
+            sortHandJongs(getHandPosX(), true);
+        }, 0, 0, 0.6f*rejong.poker.size(),"huadelay");
     }
 }
 
@@ -666,9 +666,6 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             needReplace.clear();
             Jong* jong = Jong::create();
             jong->showJong(herohand, atoi(replace.at(huaIndex).c_str()));
-            jong->setPosition(1130,70);
-            jong->setVisible(false);
-            addChild(jong);
             needReplace.push_back(jong);
             HuaAnim* huaAnim = HuaAnim::create(needReplace, GAMEDATA::getInstance()->getHeroSeatId(),CallFunc::create([=](){
                 setHuaNum(getHuaNum()+(int)needReplace.size());
