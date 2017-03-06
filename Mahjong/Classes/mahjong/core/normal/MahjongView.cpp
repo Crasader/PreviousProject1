@@ -502,9 +502,12 @@ void MahjongView::showHeroGangUi(Ref* ref){
     std::vector<std::string> allGangs;
     for (auto var : shmjHeroCpgtData.playCpgt.playerGang) {
         std::vector<std::string> temp = StringUtil::split(var.gang, ",");
+        std::string temp2 = "";
         for(auto gang : temp){
-            allGangs.push_back(gang);
-             break;
+            if(temp2 != gang){
+                allGangs.push_back(gang);
+                temp2 = gang;
+            }
         }
     }
     if (allGangs.size()>1){
@@ -566,6 +569,10 @@ void MahjongView::heroDoPeng(Ref* psend){
 }
 
 void MahjongView::heroDoGang(Ref* psend){
+    if (NULL != choiceMenu){
+        choiceMenu->setVisible(false);
+        choiceMenu->removeAllChildren();
+    }
     MenuItemImage* item = (MenuItemImage*)psend;
     int tag = item->getTag();
     GangData gangData;
@@ -579,7 +586,7 @@ void MahjongView::heroDoGang(Ref* psend){
     }
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(gangData.gang, atoi(gangData.gang.c_str()), gangData.flag));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(StringUtils::format("%d",tag), tag, gangData.flag));
 }
 
 void MahjongView::heroDoCpgQi(){

@@ -336,19 +336,23 @@ void ReviewGame::showHeroGangUi(Ref* ref){
     std::vector<std::string> allGangs;
     for (auto var : shmjHeroCpgtData.playCpgt.playerGang) {
         std::vector<std::string> temp = StringUtil::split(var.gang, ",");
+        std::string temp2 = "";
         for(auto gang : temp){
-            allGangs.push_back(gang);
-            break;
+            if(temp2 != gang){
+               allGangs.push_back(gang);
+                temp2 = gang;
+            }
         }
     }
+    
     if (allGangs.size()>1){
         //对杠牌的大小进行排序
-        for (int j = allGangs.size()-1; j > 0; j--) {
+        for (int j = (int)allGangs.size()-1; j > 0; j--) {
             for (int k = 0; k < j; k++) {
-                if ( allGangs[k] <  allGangs[k + 1]) {
-                    auto temp =  allGangs[k];
-                    allGangs[k] = allGangs[k + 1];
-                    allGangs[k + 1] = temp;
+                if ( allGangs.at(k) <  allGangs.at(k+1)) {
+                    auto temp =  allGangs.at(k) ;
+                    allGangs.at(k)= allGangs.at(k+1);
+                    allGangs.at(k+1) = temp;
                 }
             }
         }
@@ -415,7 +419,7 @@ void ReviewGame::heroDoGang(Ref* ref){
     }
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(gangData.gang, atoi(gangData.gang.c_str()), gangData.flag));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(StringUtils::format("%d",tag), tag, gangData.flag));
 }
 
 void ReviewGame::heroDoCpgQi(){
