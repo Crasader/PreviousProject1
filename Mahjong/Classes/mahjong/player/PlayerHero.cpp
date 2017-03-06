@@ -217,9 +217,9 @@ void PlayerHero::playPokerByHand(Jong* jong){
     }
     if(NULL != getChildByTag(6689)){
         getChildByTag(6689)->removeFromParent();
-        for(auto var:playerHandJongs){
-            var->setTingJongHint(false);
-        }
+    }
+    for(auto var:playerHandJongs){
+        var->setTingJongHint(false);
     }
     updateSelectedInfo(NULL);
     stopTimeClockAnim();
@@ -725,9 +725,9 @@ void PlayerHero:: drawPlayedJong(int type){
     PlayerBase::showPlayedJong(type);
     if(NULL != getChildByTag(6689)){
         getChildByTag(6689)->removeFromParent();
-        for(auto var:playerHandJongs){
-            var->setTingJongHint(false);
-        }
+    }
+    for(auto var:playerHandJongs){
+        var->setTingJongHint(false);
     }
     if (virtualJong != NULL){
         virtualJong->setVisible(false);
@@ -855,9 +855,9 @@ void PlayerHero::sendTingRequest(int poker){
 void PlayerHero::actionQi(){
     if(NULL != getChildByTag(6689)){
         getChildByTag(6689)->removeFromParent();
-        for(auto var:playerHandJongs){
-            var->setTingJongHint(false);
-        }
+    }
+    for(auto var:playerHandJongs){
+        var->setTingJongHint(false);
     }
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
     setIsAllowTouch(true);
