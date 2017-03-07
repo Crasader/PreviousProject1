@@ -231,10 +231,16 @@ void LobbyScene::drawSceneTop(){
     chargLequan->setTag(903);
     chargLequan->setPosition(770, 685);
     addChild(chargLequan);
-    lequan_bg->setVisible(false);
-    lequan_icon->setVisible(false);
-    lequanNum->setVisible(false);
-    chargLequan->setVisible(false);
+
+    //支付审核专用
+    gold_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    gold_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    chargGold->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    lequan_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    lequan_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    chargLequan->setVisible(UserData::getInstance()->isWeixinPayOpen());
     
 }
 
@@ -793,6 +799,27 @@ void LobbyScene::addEventListener(){
             getChildByTag(903)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != lequanNum)
             lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != getChildByTag(801))
+            getChildByTag(801)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != getChildByTag(802))
+            getChildByTag(802)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != getChildByTag(803))
+            getChildByTag(803)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != lequanNum)
+            goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != getChildByTag(1298)){
+            getChildByTag(1298)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        }
+        if(NULL != getChildByTag(6656)){
+            getChildByTag(6656)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        }
+        if(UserData::getInstance()->isFirstCharge()){
+            firstMenu->setVisible(false);
+            ganTanhao->setVisible(false);
+        }else{
+            firstMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
+            ganTanhao->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        }
     });
     
     showLoobyLoadingLayer = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_SHOW_LOADING_LAYER, [=](EventCustom* event){

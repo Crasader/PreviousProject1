@@ -1520,8 +1520,11 @@ void MahjongView::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
     gameFaPaiListener = EventListenerCustom::create(MSG_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
-        if(GAMEDATA::getInstance()->getIsPlaying())
+        log("执行发牌,开始播放动画");
+        if(GAMEDATA::getInstance()->getIsPlaying()){
+            log("已经在游戏中了,不在发牌");
             return;
+        }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
         GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
@@ -1550,6 +1553,7 @@ void MahjongView::addCoustomListener(){
         anim->setTag(1000);
         anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
         addChild(anim);
+        log("执行发牌,播放动画结束");
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
     
