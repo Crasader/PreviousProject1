@@ -376,5 +376,5 @@ void GuiLayer::testButtonClick(){
 //    tingData.heroHu.push_back(huPaiData2);
 //    playerTurnData.cpgData = tingData;
 //    _eventDispatcher->dispatchCustomEvent(MSG_PLAYER_TURN_WHO, &playerTurnData);
-    ChatAndroidMethod::getInstance()->sendChatInfo(UserData::getInstance()->getPoxiaoId(), "hello word");
+//    ChatAndroidMethod::getInstance()->sendChatInfo(UserData::getInstance()->getPoxiaoId(), "hello word");
 }
