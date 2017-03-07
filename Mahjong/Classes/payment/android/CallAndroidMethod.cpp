@@ -80,6 +80,7 @@ void CallAndroidMethod::shareImageToWeChat(std::string imagePath,bool friends){
         jstring share_url = JniHelper::getEnv()->NewStringUTF(imagePath.c_str());
         jboolean share_friends = friends;
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url,friends);
+        JniHelper::getEnv()->DeleteLocalRef(share_url);
     }
 #endif
 }

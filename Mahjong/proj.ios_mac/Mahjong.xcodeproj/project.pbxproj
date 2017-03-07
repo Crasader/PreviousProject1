@@ -317,6 +317,8 @@
 		D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */; };
 		D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
+		D2B3DD931E6EB50C0099B97E /* ChatAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD911E6EB50C0099B97E /* ChatAndroidMethod.cpp */; };
+		D2B3DD941E6EB50C0099B97E /* ChatAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD911E6EB50C0099B97E /* ChatAndroidMethod.cpp */; };
 		D2C3FA561D9906FF00CFC80E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */; };
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
 		D2C3FA5A1D9909AE00CFC80E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */; };
@@ -669,6 +671,8 @@
 		D2B1A8631CCDF0F300A20896 /* SocketDataManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketDataManage.h; sourceTree = "<group>"; };
 		D2B1A86D1CCDF0F400A20896 /* UserData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserData.cpp; sourceTree = "<group>"; };
 		D2B1A86E1CCDF0F400A20896 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
+		D2B3DD911E6EB50C0099B97E /* ChatAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatAndroidMethod.cpp; sourceTree = "<group>"; };
+		D2B3DD921E6EB50C0099B97E /* ChatAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAndroidMethod.h; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		D2C3FA531D9906FF00CFC80E /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
@@ -1061,6 +1065,7 @@
 		D26777F71DF00697003CE73F /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				D2B3DD901E6EB50C0099B97E /* chatAndroid */,
 				D26777F81DF00697003CE73F /* ChatDialog.cpp */,
 				D26777F91DF00697003CE73F /* ChatDialog.hpp */,
 				D26777FA1DF00697003CE73F /* FaceChatLayer.cpp */,
@@ -1590,6 +1595,15 @@
 			path = userdata;
 			sourceTree = "<group>";
 		};
+		D2B3DD901E6EB50C0099B97E /* chatAndroid */ = {
+			isa = PBXGroup;
+			children = (
+				D2B3DD911E6EB50C0099B97E /* ChatAndroidMethod.cpp */,
+				D2B3DD921E6EB50C0099B97E /* ChatAndroidMethod.h */,
+			);
+			path = chatAndroid;
+			sourceTree = "<group>";
+		};
 		D2C3FA511D9906FF00CFC80E /* wechat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1852,6 +1866,7 @@
 				D26778F11DF00698003CE73F /* Loading.cpp in Sources */,
 				D26779451DF00698003CE73F /* HeadImage.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
+				D2B3DD931E6EB50C0099B97E /* ChatAndroidMethod.cpp in Sources */,
 				D26779231DF00698003CE73F /* GoldNotEnoughDialog.cpp in Sources */,
 				D26778B51DF00697003CE73F /* PlayerCpgAnim.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
@@ -2005,6 +2020,7 @@
 				D26778B41DF00697003CE73F /* OutFogAnim.cpp in Sources */,
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D26778D41DF00697003CE73F /* BaseDialog.cpp in Sources */,
+				D2B3DD941E6EB50C0099B97E /* ChatAndroidMethod.cpp in Sources */,
 				D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D26778F21DF00698003CE73F /* Loading.cpp in Sources */,
 				D26778D81DF00697003CE73F /* TextHintDialog.cpp in Sources */,

@@ -257,7 +257,7 @@ void NormalResultLayer::continueGame(){
     }
     schedule([=](float dt){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getContinueGameCommand());
-    }, 0.0f, 0.0f, 1.0f,"delayGame");
+    }, 0.0f, 0.0f, 0.8f,"delayGame");
 }
 
 
@@ -331,7 +331,7 @@ void NormalResultLayer::onEnter(){
     });
     
     myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(myCoreLoginRespListener, 1);
 }

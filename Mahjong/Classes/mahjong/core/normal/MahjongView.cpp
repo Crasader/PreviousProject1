@@ -19,6 +19,7 @@
 #include "mahjong/widget/batteryinfo/BatteryInfo.h"
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
+#include "mahjong/chat/chatAndroid/ChatAndroidMethod.h"
 
 
 
@@ -35,7 +36,6 @@ bool MahjongView::init(){
     }else{
         if(GAMEDATA::getInstance()->getContinueAgain()){
             startGameAgain();
-            GAMEDATA::getInstance()->setContinueAgain(false);
         }else{
             startGameFirst();
         }
@@ -173,9 +173,6 @@ void MahjongView::startGameAgain(){
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
     GAMEDATA::getInstance()->setIsTingState(false);
-    schedule([=](float dt){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
-    }, 0, 0, 0.5f,"continueGame");
 }
 
 void MahjongView::update(float dt){
@@ -275,6 +272,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerLeft->initPlayer(playerInfo);
             playerLeft->setIsReady(playerInfo->getIsReady());
             addChild(playerLeft,1);
+            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
     else if (type == ClientSeatId::right){
@@ -283,6 +281,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerRight->initPlayer(playerInfo);
             playerRight->setIsReady(playerInfo->getIsReady());
             addChild(playerRight,1);
+            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
     else if (type == ClientSeatId::opposite){
@@ -291,6 +290,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerOpposite->initPlayer(playerInfo);
             playerOpposite->setIsReady(playerInfo->getIsReady());
             addChild(playerOpposite,1);
+            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
 }
@@ -1335,6 +1335,13 @@ void MahjongView::showHandPokerOver(int seatId){
 
 
 void MahjongView::onEnterTransitionDidFinish(){
+    if(GAMEDATA::getInstance()->getContinueAgain()){
+        GAMEDATA::getInstance()->setContinueAgain(false);
+        schedule([=](float dt){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+        }, 0, 0, 0.3f,"continueGame");
+    }
+    
     if (GAMEDATA::getInstance()->getIsRecover()){
         //重新设置庄的位置
         LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();

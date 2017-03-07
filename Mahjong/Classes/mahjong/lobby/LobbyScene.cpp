@@ -29,6 +29,7 @@
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/dialog/network/LostNetwork2.hpp"
 #include "mahjong/gonggao/GameGongGaoLayer.hpp"
+#include "mahjong/chat/chatAndroid/ChatAndroidMethod.h"
 
 bool LobbyScene::init()
 {
@@ -659,6 +660,7 @@ void LobbyScene::addEventListener(){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
+            ChatAndroidMethod::getInstance()->createChatRoom(UserData::getInstance()->getPoxiaoId());
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
@@ -868,6 +870,7 @@ void LobbyScene::addEventListener(){
         if(getChildByTag(2000)!=NULL){
             getChildByTag(2000)->removeFromParent();
         }
+        ChatAndroidMethod::getInstance()->loginChatServer(UserData::getInstance()->getPoxiaoId());
         Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyReconnectRespListener, 1);
