@@ -29,6 +29,7 @@ package org.cocos2dx.cpp;
 import java.util.Arrays;
 import java.util.Collections;
 
+import org.cocos2dx.cpp.chat.RecordUtil;
 import org.cocos2dx.cpp.payment.Payment;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
@@ -63,7 +64,7 @@ public class AppActivity extends Cocos2dxActivity {
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		Payment.init(this);
 		registerReceiver(batteryReceiver, intentFilter);
-
+		RecordUtil.init(this);
 
 	}
 

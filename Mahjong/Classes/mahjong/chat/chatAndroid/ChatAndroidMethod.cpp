@@ -83,3 +83,52 @@ void ChatAndroidMethod::sendChatInfo(std::string poxiaoId,std::string msg){
     }
 #endif
 }
+
+void ChatAndroidMethod::beginRecordAudio()
+{
+    log("ChatAndroidMethod—>beginRecordAudio");
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path = String::createWithFormat("%s%s", JAVA_SRC, "/chat/RecordUtil");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo, path->getCString(), "beginRecordAudio", "()V");
+    if (isHave) {
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
+    }
+#endif
+}
+
+void ChatAndroidMethod::endRecordAudio()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path = String::createWithFormat("%s%s", JAVA_SRC, "/chat/RecordUtil");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo, path->getCString(), "endRecordAudio", "()V");
+    if (isHave) {
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
+    }
+#endif
+}
+
+void ChatAndroidMethod::playAudio()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path = String::createWithFormat("%s%s", JAVA_SRC, "/chat/RecordUtil");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo, path->getCString(), "playAudio", "()V");
+    if (isHave) {
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
+    }
+#endif
+}
+
+void ChatAndroidMethod::deleteAudio()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path = String::createWithFormat("%s%s", JAVA_SRC, "/chat/RecordUtil");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo, path->getCString(), "deleteFile", "()V");
+    if (isHave) {
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
+    }
+#endif
+}

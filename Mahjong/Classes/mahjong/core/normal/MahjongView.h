@@ -1,6 +1,5 @@
 #ifndef __MAHJONG_VIEW__
 #define __MAHJONG_VIEW__
-#include "cocos2d.h"
 #include "mahjong/core/gui/GuiLayer.h"
 #include "mahjong/jong/Jong.h"
 #include "mahjong/player/base/PlayerBase.h"
@@ -12,7 +11,12 @@
 #include "mahjong/dialog/toast/InfoToast.hpp"
 #include "mahjong/state/DataStruct.h"
 #include "userdata/UserData.h"
+
+#include "cocos2d.h"
+#include "extensions/cocos-ext.h"
+USING_NS_CC_EXT;
 USING_NS_CC;
+using namespace ui;
 
 class MahjongView : public cocos2d::Layer
 {
@@ -75,7 +79,7 @@ private:
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data);//首次杠花
 	PlayerBase* getPlayerBySeatId(int sid);
-
+    void touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 
     EventListenerCustom* gameFaPaiListener;
 	EventListenerCustom* addOtherReadyListener;

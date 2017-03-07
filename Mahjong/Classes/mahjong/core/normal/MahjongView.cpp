@@ -20,7 +20,7 @@
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "mahjong/chat/chatAndroid/ChatAndroidMethod.h"
-
+#include "mahjong/chat/GameRecordAudioManage.h"
 
 
 
@@ -97,6 +97,12 @@ void MahjongView::loadView(){
     BatteryInfo* battery = BatteryInfo::create();
     battery->setPosition(0,0);
     addChild(battery,100);
+    //语音聊天
+    auto playBtn = Button::create("gameview/chat_sound_1.png");
+    playBtn->addTouchEventListener(CC_CALLBACK_2(MahjongView::touchEvent, this));
+    playBtn->setPosition(Vec2(80, 50));
+    addChild(playBtn);
+    
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
         wukaibao->setVisible(false);
@@ -1806,4 +1812,28 @@ void MahjongView::addPlayerResumeListener(){
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
+}
+
+
+void MahjongView::touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type)
+{
+    Button *btn = (Button*)pSender;
+    int btnTag = btn->getTag();
+    switch (type)
+    {
+        case Widget::TouchEventType::BEGAN:
+            GameAudioManage::getInstance()->beginRecordAudio();
+            break;
+        case Widget::TouchEventType::MOVED:
+            
+            break;
+        case Widget::TouchEventType::ENDED:
+            GameAudioManage::getInstance()->endRecordAudio();
+            break;
+        case Widget::TouchEventType::CANCELED:
+            
+            break;
+        default:
+            break;
+    }
 }

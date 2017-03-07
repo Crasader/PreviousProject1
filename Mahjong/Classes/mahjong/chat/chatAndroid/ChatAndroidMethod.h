@@ -10,6 +10,12 @@ class ChatAndroidMethod{
 public:
 	static ChatAndroidMethod* getInstance();
 	const char* getJniPath();
+    
+    void beginRecordAudio();
+    void endRecordAudio();
+    void deleteAudio();
+    void playAudio();
+    
     void loginChatServer(std::string poxiaoId);
     void createChatRoom(std::string poxiaoId);
     void sendChatInfo(std::string poxiaoId,std::string msg);
