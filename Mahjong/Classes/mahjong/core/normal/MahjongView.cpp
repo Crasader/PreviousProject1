@@ -1357,7 +1357,9 @@ void MahjongView::onEnterTransitionDidFinish(){
             int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
             if(playturn == ClientSeatId::hero){
                 playerHero->startTimeClockAnim();
-                playerHero->setIsAllowPlay(true);
+                if(!GAMEDATA::getInstance()->getTurnHeroCpg()){
+                    playerHero->setIsAllowPlay(true);
+                }
             }else if(playturn == ClientSeatId::left){
                 playerLeft->startTimeClockAnim();
             }else if(playturn == ClientSeatId::opposite){

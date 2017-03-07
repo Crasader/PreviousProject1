@@ -94,6 +94,7 @@ public:
     CC_SYNTHESIZE(bool, isGotoLobby, IsGotoLobby);
     CC_SYNTHESIZE(bool, isInPay, IsInPay);
     CC_SYNTHESIZE(bool, isInGameScene, IsInGameScene);
+    CC_SYNTHESIZE(bool, turnHeroCpg, TurnHeroCpg);
     CC_SYNTHESIZE(int, showDialogType, ShowDialogType);
     CC_SYNTHESIZE(int, score, Score);
     CC_SYNTHESIZE(int, wanJiaQunVer, WanJiaQunVer);

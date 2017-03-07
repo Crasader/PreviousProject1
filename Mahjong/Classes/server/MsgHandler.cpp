@@ -1841,6 +1841,9 @@ void MsgHandler::playerConnectAgain(std::string msg){
     const rapidjson::Value &kb = _mDoc["kb"];
     const rapidjson::Value &hf = _mDoc["hf"];
     const rapidjson::Value &turn = _mDoc["turn"];
+    if(_mDoc.HasMember("s")){
+        GAMEDATA::getInstance()->setTurnHeroCpg(true);
+    }
     GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
     //设置是否是私人房间
     std::string roomType = isprivate.GetString();
