@@ -15,17 +15,11 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class AudioRecorderManager {
@@ -55,10 +49,6 @@ public class AudioRecorderManager {
 
 	public void init(Activity activity) {
 		appActivity = activity;
-		//		luyin_txt = new TextView(appActivity); // 录音实现时间 文本
-		//		luyin_path = new TextView(appActivity); // 文件存放路劲
-		//		record_memo = new TextView(appActivity); // 提示文字 "按住进行录音"
-		//		player_memo = new TextView(appActivity); // 提示文字 "播放录音"
 	}
 
 	// 开始录音 录音按钮按下调用 btnDown
@@ -69,11 +59,9 @@ public class AudioRecorderManager {
 					Locale.getDefault()).format(new Date());
 			mr = new AudioRecorder(date);
 			RECODE_STATE = RECORD_ING;
-			showVoiceDialog();
 			try {
 				mr.start();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			mythread();
@@ -92,26 +80,14 @@ public class AudioRecorderManager {
 			}
 
 			if (recodeTime < MIX_TIME) {
-				showWarnToast();
+				Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
 				//				record_memo.setText("按住开始录音");
 				RECODE_STATE = RECORD_NO;
 				File file = new File(Environment.getExternalStorageDirectory(),
 						"my/" + date + ".amr");
 				file.delete();
 			} else {
-				// record.setText("录音完成!点击重新录音");
-				//				record_memo.setText("录音完成!点击重新录音");
-				//				player_memo.setVisibility(View.VISIBLE);
-				//				luyin_txt.setText("录音时间：" + ((int) recodeTime));
-				//				luyin_path.setText("文件路径：" + getAmrPath());
-				// try {
-				// SyncHttp.uploadFile("http://192.168.1.125:8887/upload.php",
-				// getAmrPath());
-				// } catch (IOException e) {
-				// Toast.makeText(RecordActivity.this, "上传失败",
-				// Toast.LENGTH_LONG).show();
-				// e.printStackTrace();
-				// }
+				// 录音完成!点击重新录音
 			}
 		}
 	}
@@ -133,19 +109,15 @@ public class AudioRecorderManager {
 					@Override
 					public void onCompletion(MediaPlayer mp) {
 						if (playState) {
-							//							player_memo.setText("点击上面播放声音");
 							playState = false;
 						}
 					}
 				});
 			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -156,7 +128,6 @@ public class AudioRecorderManager {
 			} else {
 				playState = false;
 			}
-			//			player_memo.setText("点击上面播放录音");
 		}
 	}
 
@@ -169,44 +140,11 @@ public class AudioRecorderManager {
 		}
 		File g[] = file.listFiles();
 		if (g.length == 0) {
-			//			player_memo.setVisibility(View.GONE);
 			Toast.makeText(appActivity, "删除成功", Toast.LENGTH_LONG).show();
 		}
 
 	}
 
-	// 录音时显示Dialog
-	public void showVoiceDialog() {
-
-	}
-
-	// 录音时间太短时Toast显示
-	public void showWarnToast() {
-		Toast toast = new Toast(appActivity);
-		LinearLayout linearLayout = new LinearLayout(appActivity);
-		linearLayout.setOrientation(LinearLayout.VERTICAL);
-		linearLayout.setPadding(20, 20, 20, 20);
-
-		// 定义一个ImageView
-		ImageView imageView = new ImageView(appActivity);
-		//imageView.setImageResource(R.drawable.voice_to_short); // 图标
-
-		TextView mTv = new TextView(appActivity);
-		mTv.setText("时间太短   录音失败");
-		mTv.setTextSize(14);
-		mTv.setTextColor(Color.WHITE);// 字体颜色
-		// mTv.setPadding(0, 10, 0, 0);
-
-		// 将ImageView和ToastView合并到Layout中
-		linearLayout.addView(imageView);
-		linearLayout.addView(mTv);
-		linearLayout.setGravity(Gravity.CENTER);// 内容居中
-		//linearLayout.setBackgroundResource(R.drawable.record_bg);// 设置自定义toast的背景
-
-		toast.setView(linearLayout);
-		toast.setGravity(Gravity.CENTER, 0, 0);// 起点位置为中间 100为向下移100dp
-		toast.show();
-	}
 
 	// 获取文件手机路径
 	public String getAmrPath() {
@@ -219,11 +157,6 @@ public class AudioRecorderManager {
 	public void mythread() {
 		recordThread = new Thread(ImgThread);
 		recordThread.start();
-	}
-
-	// 录音Dialog图片随声音大小切换
-	public void setDialogImage() {
-
 	}
 
 	// 录音线程
@@ -268,13 +201,10 @@ public class AudioRecorderManager {
 						}
 
 						if (recodeTime < 1.0) {
-							showWarnToast();
-							//							record_memo.setText("按住开始录音");
+							Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
 							RECODE_STATE = RECORD_NO;
 						} else {
-							//							record_memo.setText("录音完成!点击重新录音");
-							//							luyin_txt.setText("录音时间：" + ((int) recodeTime));
-							//							luyin_path.setText("文件路径：" + getAmrPath());
+							//	录音完成!点击重新录音
 						}
 					}
 					break;

@@ -63,9 +63,8 @@ public class AppActivity extends Cocos2dxActivity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		Payment.init(this);
-		registerReceiver(batteryReceiver, intentFilter);
 		RecordUtil.init(this);
-
+		registerReceiver(batteryReceiver, intentFilter);
 	}
 
 	@Override
