@@ -366,7 +366,7 @@ void GuiLayer::testButtonClick(){
     tingData.ting ="1";
     playerTurnData.hastinggang = true;
     HeroHuPaiData huPaiData;
-    huPaiData.poker = 4;
+    huPaiData.poker = 1;
     huPaiData.hu = "2";
     tingData.heroHu.push_back(huPaiData);
     HeroHuPaiData huPaiData2;

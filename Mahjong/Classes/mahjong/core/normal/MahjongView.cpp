@@ -169,14 +169,13 @@ void MahjongView::startGameAgain(){
     }else{
         GAMEDATA::getInstance()->setHuangfan("0");
     }
-    //    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);//刷新开宝信息
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
     GAMEDATA::getInstance()->setIsTingState(false);
     schedule([=](float dt){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
-    }, 0, 0, 1.0f,"continueGame");
+    }, 0, 0, 0.5f,"continueGame");
 }
 
 void MahjongView::update(float dt){

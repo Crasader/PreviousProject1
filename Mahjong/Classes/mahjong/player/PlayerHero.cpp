@@ -381,7 +381,6 @@ void PlayerHero::readyGo(){
         getChildByTag(888)->setVisible(false);
     }
     setIsReady(true);
-//    GAMEDATA::getInstance()->setIsReady(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
 }
 
@@ -1032,9 +1031,9 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
         //明杠
         std::vector<string> gangpai = StringUtil::split(resp.playCpgt.playerGang.at(0).gang, ",");
         Vector<Jong*> gangVector;
-        for (int i = 0; i < gangpai.size(); i++){
+        for (int i = 0; i < 3; i++){
             for (int j = 0; j < getSelfHandJongs().size(); j++){
-                if (atoi(gangpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+                if (atoi(gangpai.at(0).c_str()) == getSelfHandJongs().at(j)->getJongType()){
                     getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
                     gangVector.pushBack(getSelfHandJongs().at(j));
                     eraseHeroJong(getSelfHandJongs().at(j));

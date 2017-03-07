@@ -59,6 +59,11 @@ void Jong::setJongSelectIcon(bool show){
 
 void Jong::setTingJongHint(bool show){
     tingPaiArrow ->setVisible(show);
+    if(show){
+        tingPaiArrow->runAction(Repeat::create(Sequence::create(MoveTo::create(0.5f, Point(tingPaiArrow->getPositionX(),tingPaiArrow->getPositionY()+10)), MoveTo::create(0.5f, Point(tingPaiArrow->getPositionX(),tingPaiArrow->getPositionY()-10)),NULL), CC_REPEAT_FOREVER));
+    }else{
+        tingPaiArrow->stopAllActions();
+    }
 }
 
 void Jong::showTingIcon(int bType){
