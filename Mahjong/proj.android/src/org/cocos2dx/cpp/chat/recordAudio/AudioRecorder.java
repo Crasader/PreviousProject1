@@ -32,7 +32,6 @@ public class AudioRecorder
 				+ "/my" + path;
 	}
 
-	// ��ʼ¼��
 	public void start() throws IOException
 	{
 		String state = android.os.Environment.getExternalStorageState();
@@ -50,14 +49,12 @@ public class AudioRecorder
 		recorder.start();
 	}
 
-	// ֹͣ¼��
 	public void stop() throws IOException
 	{
 		recorder.stop();
 		recorder.release();
 	}
 	
-	// �õ�  ���
 	public double getAmplitude() {		
 		if (recorder != null){			
 			return  (recorder.getMaxAmplitude());		

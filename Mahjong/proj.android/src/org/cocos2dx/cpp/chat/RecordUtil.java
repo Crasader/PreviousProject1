@@ -2,6 +2,8 @@ package org.cocos2dx.cpp.chat;
 
 import org.cocos2dx.cpp.chat.recordAudio.AudioRecorderManager;
 
+import com.tbu.androidtools.Debug;
+
 import android.app.Activity;
 import android.util.Log;
 
@@ -52,9 +54,9 @@ public class RecordUtil {
 	/**
 	 * 获取录音路径
 	 */
-	public static void getRecordFilePath() {
-		Log.w("recordAudio","==RecordUtil::getRecordFilePath==");   
-		audioManager.getAmrPath();
+	public static String getRecordFilePath() {
+		Debug.i("==RecordUtil::getRecordFilePath==");   
+		return audioManager.getAmrPath();
 	}
 
 

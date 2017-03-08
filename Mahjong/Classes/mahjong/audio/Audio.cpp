@@ -746,6 +746,10 @@ void Audio::playSoundNorth(int gender){
     }
 }
 
+void Audio::playNormalSound(std::string path){
+    AudioEngine::play2d(path,false,UserData::getInstance()->getSoundValue());
+}
+
 
 
 

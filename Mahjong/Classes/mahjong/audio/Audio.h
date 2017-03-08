@@ -33,6 +33,8 @@ public:
     void setBGMValue(float value);//设置音效
     void setEffectValue(float value);
     
+    void playNormalSound(std::string path);
+    
     CC_SYNTHESIZE(bool, hasTingPlayer, HasTingPlayer);//是否有玩家听牌(音效相关的状态)
     
 private:

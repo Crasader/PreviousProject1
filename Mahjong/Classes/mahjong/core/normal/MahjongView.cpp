@@ -1817,15 +1817,12 @@ void MahjongView::addPlayerResumeListener(){
 
 void MahjongView::touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type)
 {
-    Button *btn = (Button*)pSender;
-    int btnTag = btn->getTag();
     switch (type)
     {
         case Widget::TouchEventType::BEGAN:
             GameAudioManage::getInstance()->beginRecordAudio();
             break;
         case Widget::TouchEventType::MOVED:
-            
             break;
         case Widget::TouchEventType::ENDED:
             GameAudioManage::getInstance()->endRecordAudio();

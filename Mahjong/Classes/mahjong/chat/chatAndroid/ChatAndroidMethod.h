@@ -15,6 +15,7 @@ public:
     void endRecordAudio();
     void deleteAudio();
     void playAudio();
+    std::string getRecordFilePath();
     
     void loginChatServer(std::string poxiaoId);
     void createChatRoom(std::string poxiaoId);

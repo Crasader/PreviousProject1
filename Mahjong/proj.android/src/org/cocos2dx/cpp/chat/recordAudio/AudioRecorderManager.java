@@ -54,7 +54,6 @@ public class AudioRecorderManager {
 	// 开始录音 录音按钮按下调用 btnDown
 	public void beginRecordAudio() {
 		if (RECODE_STATE != RECORD_ING) {
-			// scanOldFile();
 			date = new SimpleDateFormat("yy-MM-dd-HH-mm-ss",
 					Locale.getDefault()).format(new Date());
 			mr = new AudioRecorder(date);
@@ -104,7 +103,6 @@ public class AudioRecorderManager {
 				mediaPlayer.setDataSource(getAmrPath());
 				mediaPlayer.prepare();
 				mediaPlayer.start();
-				//				player_memo.setText("正在播放");
 				playState = true;
 				// 设置播放结束时监听
 				mediaPlayer.setOnCompletionListener(new OnCompletionListener() {

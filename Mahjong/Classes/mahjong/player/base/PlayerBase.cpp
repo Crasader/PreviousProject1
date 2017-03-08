@@ -8,6 +8,7 @@
 #include "userdata/UserData.h"
 #include "ui/UIImageView.h"
 #include "ui/UIRichText.h"
+#include "http/base64/base64.h"
 
 Sprite* PlayerBase::biaoji = NULL;
 Sprite* PlayerBase::currentBigJongBg = NULL;
@@ -520,13 +521,18 @@ void PlayerBase::onEnter(){
         if(playerInfo->getSeatId() == GAMEDATA::getInstance()->getHeroSeatId()){
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
             chatShowLayer->removeAllChildren();//清空界面
+
             ChatData data = GAMEDATA::getInstance()->getChatData();
             std::string content = data.content;
             vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
-            
             RichText* text = RichText ::create();
             text->setAnchorPoint(Point::ANCHOR_MIDDLE);
             for(auto var : msgs){
+                auto file = FileUtils::getInstance();
+                auto debase64 = base64_decode(var);
+                auto path = file->getWritablePath()+"2234.amr";
+                file->writeStringToFile(debase64, path);
+                Audio::getInstance()->playNormalSound(path);
                 if(!PlayerChatManage::getInstance()->isFaceImage(var)){
                     RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 24);
                     text->pushBackElement(element1);
@@ -545,6 +551,7 @@ void PlayerBase::onEnter(){
             }
             text->setPosition(getVec2BySeatId(seatId));
             chatShowLayer->addChild(text,1);
+            
             auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 66, 66), Rect(37, 0, 10, 0));
             bob->setContentSize(Size(text->getContentSize().width+20, 70));
             bob->setPosition(getVec2BySeatId(seatId));

@@ -132,3 +132,22 @@ void ChatAndroidMethod::deleteAudio()
     }
 #endif
 }
+
+
+std::string ChatAndroidMethod::getRecordFilePath(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/chat/RecordUtil");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"getRecordFilePath","()Ljava/lang/String;");
+    if(isHave){
+       	jstring str = (jstring)JniHelper::getEnv()->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
+        JniHelper::getEnv()->DeleteLocalRef(methodInfo.classID);
+        CCString *ret = new CCString(JniHelper::jstring2string(str).c_str());
+        ret->autorelease();
+        JniHelper::getEnv()->DeleteLocalRef(str);
+        return ret->getCString();
+    }
+#endif
+    return "";
+}
+
