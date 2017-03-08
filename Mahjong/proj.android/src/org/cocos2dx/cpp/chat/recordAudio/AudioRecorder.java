@@ -3,7 +3,6 @@ package org.cocos2dx.cpp.chat.recordAudio;
 import java.io.File;
 import java.io.IOException;
 
-import android.media.AudioFormat;
 import android.media.MediaRecorder;
 import android.os.Environment;
 

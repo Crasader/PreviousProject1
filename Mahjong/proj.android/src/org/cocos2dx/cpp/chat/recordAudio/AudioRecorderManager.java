@@ -80,8 +80,11 @@ public class AudioRecorderManager {
 			}
 
 			if (recodeTime < MIX_TIME) {
-				Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
-				//				record_memo.setText("按住开始录音");
+				appActivity.runOnUiThread(new Runnable() {
+					public void run() {
+						Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
+					}
+				});
 				RECODE_STATE = RECORD_NO;
 				File file = new File(Environment.getExternalStorageDirectory(),
 						"my/" + date + ".amr");
@@ -140,7 +143,12 @@ public class AudioRecorderManager {
 		}
 		File g[] = file.listFiles();
 		if (g.length == 0) {
-			Toast.makeText(appActivity, "删除成功", Toast.LENGTH_LONG).show();
+			
+			appActivity.runOnUiThread(new Runnable() {
+				public void run() {
+					Toast.makeText(appActivity, "删除成功", Toast.LENGTH_LONG).show();
+				}
+			});
 		}
 
 	}
@@ -201,7 +209,12 @@ public class AudioRecorderManager {
 						}
 
 						if (recodeTime < 1.0) {
-							Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
+							appActivity.runOnUiThread(new Runnable() {
+								public void run() {
+									Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
+								}
+							});
+							
 							RECODE_STATE = RECORD_NO;
 						} else {
 							//	录音完成!点击重新录音
