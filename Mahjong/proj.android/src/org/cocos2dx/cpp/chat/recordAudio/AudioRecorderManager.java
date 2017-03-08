@@ -14,6 +14,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.cocos2dx.cpp.payment.JniPayCallbackHelper;
+
+import com.tbu.androidtools.Debug;
+
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -85,8 +89,7 @@ public class AudioRecorderManager {
 					}
 				});
 				RECODE_STATE = RECORD_NO;
-				File file = new File(Environment.getExternalStorageDirectory(),
-						"my/" + date + ".amr");
+				File file = new File(getAmrPath());
 				file.delete();
 			} else {
 				// 录音完成!点击重新录音
@@ -134,28 +137,17 @@ public class AudioRecorderManager {
 
 	// 删除文件 录音
 	public void deleteFile() {
-		File file = new File(Environment.getExternalStorageDirectory() + "/my");
-		File f[] = file.listFiles();
-		for (int i = 0; i < f.length; i++) {
-			f[i].delete();
-		}
-		File g[] = file.listFiles();
-		if (g.length == 0) {
-			
-			appActivity.runOnUiThread(new Runnable() {
-				public void run() {
-					Toast.makeText(appActivity, "删除成功", Toast.LENGTH_LONG).show();
-				}
-			});
-		}
-
+		File file = new File(getAmrPath());
+		file.delete();
 	}
 
 
 	// 获取文件手机路径
 	public String getAmrPath() {
-		File file = new File(Environment.getExternalStorageDirectory(), "my/"
+		Debug.e("getAmrPath = "+JniPayCallbackHelper.getWriteablePath());
+		File file = new File(JniPayCallbackHelper.getWriteablePath(), "/"
 				+ date + ".amr");
+		Debug.e("getAmrPath = "+JniPayCallbackHelper.getWriteablePath());
 		return file.getAbsolutePath();
 	}
 

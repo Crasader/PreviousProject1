@@ -71,3 +71,12 @@ Java_org_cocos2dx_cpp_network_JniSocketCallback_onDisconnected(JNIEnv* env, jcla
 {
 	SocketDataBack::getInstance()->onDisconnected();
 }
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_getWriteablePath(JNIEnv* env, jclass jcl)
+{
+	auto writepath = FileUtils::getInstance()->getWritablePath();
+	jstring jstr = JniHelper::getEnv()->NewStringUTF(writepath.c_str());
+	return jstr;
+}
+

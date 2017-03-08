@@ -40,7 +40,7 @@ void GameAudioManage::endRecordAudio()
     ssize_t*size = new ssize_t();
     auto data = file->getFileData(path, "r", size);
     auto enbase64 = base64_encode(data, *size);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(enbase64,""));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(enbase64,"",true));
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 	ChatAndroidMethod::getInstance()->endRecordAudio();
     //向服务端发送录音文件
@@ -52,7 +52,7 @@ void GameAudioManage::endRecordAudio()
     auto data = file->getFileData(path, "r", size);
     auto enbase64 = base64_encode(data, *size);
 //    log("enbase64  = %s",enbase64.c_str());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(enbase64,""));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(enbase64,"",true));
 #endif
 }
 

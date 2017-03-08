@@ -199,7 +199,7 @@ void ChatDialog:: sendMessage(){
     if(NULL != getChildByTag(1001)){
         std::string msg = ((cocos2d::ui::EditBox*)getChildByTag(1001))->getText();
         if("" != msg){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,chatPid));
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,chatPid,false));
         }
         ((cocos2d::ui::EditBox*)getChildByTag(1001))->setText("");
     }
@@ -216,6 +216,6 @@ void ChatDialog::sendFaceId(int id){
 
 void ChatDialog::sendQuickChat(std::string msg){
     if(NULL != getChildByTag(1001)){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,chatPid));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg,chatPid,false));
     }
 }

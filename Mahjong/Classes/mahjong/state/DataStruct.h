@@ -502,6 +502,7 @@ struct ChatData{
     std::string nickname;
     std::string content;
     std::string poxiaoId;
+    bool mark;
     bool isRead;
 };
 

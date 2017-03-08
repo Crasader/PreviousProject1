@@ -3,8 +3,9 @@ package org.cocos2dx.cpp.chat.recordAudio;
 import java.io.File;
 import java.io.IOException;
 
+import org.cocos2dx.cpp.chat.RecordUtil;
+
 import android.media.MediaRecorder;
-import android.os.Environment;
 
 public class AudioRecorder
 {
@@ -15,22 +16,9 @@ public class AudioRecorder
 
 	public AudioRecorder(String path)
 	{
-		this.path = sanitizePath(path);
+		this.path = RecordUtil.getRecordFilePath();
 	}
 
-	private String sanitizePath(String path)
-	{
-		if (!path.startsWith("/"))
-		{
-			path = "/" + path;
-		}
-		if (!path.contains("."))
-		{
-			path += ".amr";
-		}
-		return Environment.getExternalStorageDirectory().getAbsolutePath()
-				+ "/my" + path;
-	}
 
 	public void start() throws IOException
 	{

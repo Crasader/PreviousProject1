@@ -415,6 +415,11 @@ void MsgHandler::playerChatNotify(std::string msg){
         const rapidjson::Value &nickname = _mDoc["nickname"];
         chatData.nickname = nickname.GetString();
     }
+    if (_mDoc.HasMember("mark")){
+        chatData.mark = true;
+    }else{
+        chatData.mark = false;
+    }
     if (_mDoc.HasMember("flag")){
         const rapidjson::Value &flag = _mDoc["flag"];
         if(flag.GetInt() == 0){

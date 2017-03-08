@@ -55,7 +55,7 @@ public class RecordUtil {
 	 * 获取录音路径
 	 */
 	public static String getRecordFilePath() {
-		Debug.i("==RecordUtil::getRecordFilePath==");   
+		Debug.e("RecordUtil->getRecordFilePath");   
 		return audioManager.getAmrPath();
 	}
 
