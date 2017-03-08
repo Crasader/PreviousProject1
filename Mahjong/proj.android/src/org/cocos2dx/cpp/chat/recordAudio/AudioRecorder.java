@@ -14,7 +14,7 @@ public class AudioRecorder
 	final MediaRecorder recorder = new MediaRecorder();
 	final String path;
 
-	public AudioRecorder(String path)
+	public AudioRecorder()
 	{
 		this.path = RecordUtil.getRecordFilePath();
 	}

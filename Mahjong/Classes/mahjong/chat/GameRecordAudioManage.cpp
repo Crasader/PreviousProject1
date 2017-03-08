@@ -33,12 +33,12 @@ void GameAudioManage::beginRecordAudio()
 
 void GameAudioManage::endRecordAudio()
 {
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    CallRcordMecordios::getInstance()->endRecordAudio();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+//    CallRcordMecordios::getInstance()->endRecordAudio();
     auto file = FileUtils::getInstance();
-    auto path = CallRcordMecordios::getInstance()->getRecordFilePath();
-    ssize_t*size = new ssize_t();
-    auto data = file->getFileData(path, "r", size);
+//    auto path = CallRcordMecordios::getInstance()->getRecordFilePath();
+    ssize_t* size = new ssize_t();
+    auto data = file->getFileData(file->getWritablePath()+"/17-03-08-18-11-09.amr", "r", size);
     auto enbase64 = base64_encode(data, *size);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(enbase64,"",true));
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID

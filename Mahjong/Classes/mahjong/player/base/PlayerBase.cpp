@@ -527,7 +527,7 @@ void PlayerBase::onEnter(){
                 auto file = FileUtils::getInstance();
                 log("content = %s",data.content.c_str());
                 auto debase64 = base64_decode(data.content);
-                auto path = file->getWritablePath()+StringUtils::format("%s.amr",data.poxiaoId.c_str());
+                auto path = file->getWritablePath()+StringUtils::format("%s123.amr",data.poxiaoId.c_str());
                 log("path = %s",path.c_str());
                 file->writeStringToFile(debase64, path);
                 Audio::getInstance()->playNormalSound(path);

@@ -19,6 +19,7 @@ import org.cocos2dx.cpp.payment.JniPayCallbackHelper;
 import com.tbu.androidtools.Debug;
 
 import android.app.Activity;
+import android.gesture.GestureOverlayView;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Environment;
@@ -60,7 +61,7 @@ public class AudioRecorderManager {
 		if (RECODE_STATE != RECORD_ING) {
 			date = new SimpleDateFormat("yy-MM-dd-HH-mm-ss",
 					Locale.getDefault()).format(new Date());
-			mr = new AudioRecorder(date);
+			mr = new AudioRecorder();
 			RECODE_STATE = RECORD_ING;
 			try {
 				mr.start();
@@ -145,9 +146,11 @@ public class AudioRecorderManager {
 	// 获取文件手机路径
 	public String getAmrPath() {
 		Debug.e("getAmrPath = "+JniPayCallbackHelper.getWriteablePath());
-		File file = new File(JniPayCallbackHelper.getWriteablePath(), "/"
+//		File file = new File(JniPayCallbackHelper.getWriteablePath(), "/"
+//				+ date + ".amr");
+		File file = new File(Environment.getExternalStorageDirectory(), "/"
 				+ date + ".amr");
-		Debug.e("getAmrPath = "+JniPayCallbackHelper.getWriteablePath());
+		Debug.e("getAmrPath = "+file.getAbsolutePath());
 		return file.getAbsolutePath();
 	}
 
