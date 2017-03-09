@@ -77,7 +77,7 @@ void GameAudioManage::playAudio(std::string content,std::string poxiaoId)
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     CallRcordMecordios::getInstance()->setCallCanPlayFilepath(path);
     CallRcordMecordios::getInstance()->playAudio(UserData::getInstance()->getSoundValue());
-    CallRcordMecordios::getInstance()->deleltefile();
+//    CallRcordMecordios::getInstance()->deleltefile();
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     Audio::getInstance()->playNormalSound(path);
     ChatAndroidMethod::getInstance()->deleteAudio();

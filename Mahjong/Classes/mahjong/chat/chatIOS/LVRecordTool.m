@@ -17,6 +17,9 @@
 /** 录音文件地址 */
 @property (nonatomic, strong) NSURL *recordFileUrl;
 
+/** 录音文件地址 */
+@property (nonatomic, strong) NSURL *recordFileUrl2;
+
 /** 定时器 */
 @property (nonatomic, strong) NSTimer *timer;
 
@@ -27,11 +30,14 @@
 @implementation LVRecordTool
 
 - (void)startRecording {
-     NSLog(@"== LVRecordTool startRecording == ");
+    NSLog(@"== LVRecordTool startRecording == ");
+//    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    NSString *filePath = [path stringByAppendingPathComponent:LVRecordFielName];
+//    self.recordFileUrl = [NSURL fileURLWithPath:filePath];
     // 录音时停止播放 删除曾经生成的文件
     [self stopPlaying];
     [self destructionRecordingFile];
-    
+    self.recordFileUrl = self.recordFileUrl2;
     // 真机环境下需要的代码
     AVAudioSession *session = [AVAudioSession sharedInstance];
     NSError *sessionError;
@@ -99,6 +105,7 @@
     [self.player setVolume:soundValue];
     [self.player play];
     NSLog(@"ios sound path = %@",self.recordFileUrl);
+    
 }
 
 - (void)stopPlaying {
@@ -136,7 +143,7 @@ static id instance;
         NSString *filePath = [path stringByAppendingPathComponent:LVRecordFielName];
         self.recordFileUrl = [NSURL fileURLWithPath:filePath];
         NSLog(@"%@", filePath);
-        
+        self.recordFileUrl2 = self.recordFileUrl;
         // 3.设置录音的一些参数
         NSMutableDictionary *setting = [NSMutableDictionary dictionary];
         // 音频格式

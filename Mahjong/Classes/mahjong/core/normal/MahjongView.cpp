@@ -1857,7 +1857,9 @@ void MahjongView::touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEv
             }
             break;
         case Widget::TouchEventType::CANCELED:
-            
+            if(NULL != getChildByTag(1789)){
+                getChildByTag(1789)->removeFromParent();
+            }
             break;
         default:
             break;
