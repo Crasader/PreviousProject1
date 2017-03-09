@@ -62,6 +62,8 @@ xcschememanagement.plist
 build/
 .DS_Store
 
+.deploy_git
+
 # Ignore files built by bada
 .Simulator-Debug/
 .Target-Debug/

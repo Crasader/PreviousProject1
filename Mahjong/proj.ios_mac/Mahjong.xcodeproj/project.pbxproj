@@ -1738,6 +1738,9 @@
 						DevelopmentTeam = BNQSYUZH5R;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 0;
 							};

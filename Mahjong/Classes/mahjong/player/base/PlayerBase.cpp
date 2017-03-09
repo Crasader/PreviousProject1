@@ -9,6 +9,7 @@
 #include "ui/UIImageView.h"
 #include "ui/UIRichText.h"
 #include "http/base64/base64.h"
+#include "mahjong/chat/GameRecordAudioManage.h"
 
 Sprite* PlayerBase::biaoji = NULL;
 Sprite* PlayerBase::currentBigJongBg = NULL;
@@ -523,14 +524,10 @@ void PlayerBase::onEnter(){
             chatShowLayer->removeAllChildren();//清空界面
             
             ChatData data = GAMEDATA::getInstance()->getChatData();
-            if(data.mark){
-                auto file = FileUtils::getInstance();
-                log("content = %s",data.content.c_str());
-                auto debase64 = base64_decode(data.content);
-                auto path = file->getWritablePath()+StringUtils::format("%s123.amr",data.poxiaoId.c_str());
-                log("path = %s",path.c_str());
-                file->writeStringToFile(debase64, path);
-                Audio::getInstance()->playNormalSound(path);
+            if(data.mark ){
+                if((data.poxiaoId != UserData::getInstance()->getPoxiaoId())){
+                    GameAudioManage::getInstance()->playAudio(data.content,data.poxiaoId);
+                }
             }else{
                 std::string content = data.content;
                 vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);

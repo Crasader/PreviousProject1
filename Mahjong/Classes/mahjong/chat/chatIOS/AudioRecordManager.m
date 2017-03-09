@@ -81,9 +81,14 @@
 }
 
 /** 获取录音文件路径*/
-- (void)getRecordFilepath{
-    //self.recordTool.
-    //NSURL* t = self.recordTool.recordFileUrl;
+- (NSURL*)getRecordFilepath{
+    NSURL* oldPath = [self.recordTool getRecordPath];
+    return oldPath;
+}
+
+- (void)setCanPlayFilepath:(NSString*)path{
+//    NSLog(@"AudioRecordManager :: setPlayRecordFilepath  === path = %@",path);
+    [self.recordTool setCanPlayFilepath:path];
 }
 
 - (void)dealloc {

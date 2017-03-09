@@ -11,6 +11,7 @@
 #include "mahjong/chat/chatAndroid/ChatAndroidMethod.h"
 #include "http/base64/base64.h"
 #include "server/NetworkManage.h"
+#include "mahjong/audio/Audio.h"
 
 GameAudioManage* GameAudioManage::_instance = NULL;
 
@@ -33,12 +34,12 @@ void GameAudioManage::beginRecordAudio()
 
 void GameAudioManage::endRecordAudio()
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-//    CallRcordMecordios::getInstance()->endRecordAudio();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallRcordMecordios::getInstance()->endRecordAudio();
     auto file = FileUtils::getInstance();
-//    auto path = CallRcordMecordios::getInstance()->getRecordFilePath();
+    auto path = CallRcordMecordios::getInstance()->getRecordFilepath();
     ssize_t* size = new ssize_t();
-    auto data = file->getFileData(file->getWritablePath()+"/17-03-08-18-11-09.amr", "r", size);
+    auto data = file->getFileData(path, "r", size);
     auto enbase64 = base64_encode(data, *size);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(enbase64,"",true));
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
@@ -65,12 +66,18 @@ void GameAudioManage::deleteAudio()
 #endif
 }
 
-void GameAudioManage::playAudio()
+void GameAudioManage::playAudio(std::string content,std::string poxiaoId)
 {
+    auto file = FileUtils::getInstance();
+    auto debase64 = base64_decode(content);
+    auto path = file->getWritablePath()+StringUtils::format("%s.aac",poxiaoId.c_str());
+    file->writeStringToFile(debase64, path);
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    CallRcordMecordios::getInstance()->deleltefile();
+    CallRcordMecordios::getInstance()->setCallCanPlayFilepath(path);
     CallRcordMecordios::getInstance()->playAudio();
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID  
-	ChatAndroidMethod::getInstance()->playAudio();
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    Audio::getInstance()->playNormalSound(path);
 #endif
 }
 

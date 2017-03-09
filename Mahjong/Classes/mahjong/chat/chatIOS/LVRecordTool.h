@@ -37,6 +37,11 @@
 /** 销毁录音文件 */
 - (void)destructionRecordingFile;
 
+- (NSURL*) getRecordPath;
+
+/** 解决当前需求 ckj 求了各种 */
+- (void)setCanPlayFilepath:(NSString*)path;
+
 /** 录音对象 */
 @property (nonatomic, strong) AVAudioRecorder *recorder;
 /** 播放器对象 */

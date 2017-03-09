@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 liuchunlao. All rights reserved.
 //
 
-#define LVRecordFielName @"lvRecord.caf"
+#define LVRecordFielName @"lvRecord.aac"
 
 #import "mahjong/chat/chatIOS/LVRecordTool.h"
 
@@ -138,7 +138,7 @@ static id instance;
         // 3.设置录音的一些参数
         NSMutableDictionary *setting = [NSMutableDictionary dictionary];
         // 音频格式
-        setting[AVFormatIDKey] = @(kAudioFormatAppleIMA4);
+        setting[AVFormatIDKey] = @(kAudioFormatMPEG4AAC);
         // 录音采样率(Hz) 如：AVSampleRateKey==8000/44100/96000（影响音频的质量）
         setting[AVSampleRateKey] = @(44100);
         // 音频通道数 1 或 2
@@ -163,6 +163,15 @@ static id instance;
     if (self.recordFileUrl) {
         [fileManager removeItemAtURL:self.recordFileUrl error:NULL];
     }
+}
+
+- (NSURL*) getRecordPath{
+    return self.recordFileUrl;
+}
+
+- (void)setCanPlayFilepath:(NSString*)path{
+//    NSLog(@"LVRecordTool :: setPlayRecordFilepath  === path = %@",path);
+    self.recordFileUrl = [NSURL URLWithString:path];
 }
 
 #pragma mark - AVAudioRecorderDelegate

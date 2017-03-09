@@ -121,60 +121,63 @@ void ChatDialog::onExit(){
 }
 
 void ChatDialog:: showChatInfo(ChatData data){
-    Layout *customItem = Layout::create();
-    customItem->setLayoutType(Layout::Type::ABSOLUTE);
-    customItem->setContentSize(Size(720,100));
-    //显示聊天的头像
-    HeadImage* iamge;
-    bool find = false;
-    for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
-        if(data.poxiaoId == player->getPoxiaoId()){
-            iamge = HeadImage::createByImage(player->getPicture(),Size(70,70));
-            find = true;
-        }
-    }
-    if(!find){
-        iamge = HeadImage::createByImage("unknow",Size(70,70));
-    }
-    customItem->addChild(iamge);
-    listView->pushBackCustomItem(customItem);
-    listView->jumpToBottom();
-    std::string content = data.content;
-    if(content.size()>0){
-        vector<std::string> msgs = PlayerChatManage::getInstance()->splitContentByFace(content);
-        RichText* text = RichText ::create();
-        text->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        for(auto var : msgs){
-            if(!PlayerChatManage::getInstance()->isFaceImage(var)){
-                RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
-                text->pushBackElement(element1);
-                text->formatText();
-            }else{
-                RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
-                text->pushBackElement(element2);
-                text->formatText();
+    
+    if(!data.mark){
+        Layout *customItem = Layout::create();
+        customItem->setLayoutType(Layout::Type::ABSOLUTE);
+        customItem->setContentSize(Size(720,100));
+        //显示聊天的头像
+        HeadImage* iamge;
+        bool find = false;
+        for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
+            if(data.poxiaoId == player->getPoxiaoId()){
+                iamge = HeadImage::createByImage(player->getPicture(),Size(70,70));
+                find = true;
             }
         }
-        customItem->addChild(text,1);
-        auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 66, 66), Rect(37, 0, 10, 0));
-        bob->setContentSize(Size(text->getContentSize().width+20, 70));
-        customItem->addChild(bob);
-        
-        if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
-            iamge->setPosition(Point(645,30));
-            text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            text->setPosition(Point(580,40));
-            bob->setFlippedX(true);
-            bob->setPosition(Point(585,30));
-        }else{
-            iamge->setPosition(Point(80,30));
-            text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            text->setPosition(Point(140,40));
-            bob->setPosition(Point(135,30));
+        if(!find){
+            iamge = HeadImage::createByImage("unknow",Size(70,70));
         }
-        
+        customItem->addChild(iamge);
+        listView->pushBackCustomItem(customItem);
+        listView->jumpToBottom();
+        std::string content = data.content;
+        if(content.size()>0){
+            vector<std::string> msgs = PlayerChatManage::getInstance()->splitContentByFace(content);
+            RichText* text = RichText ::create();
+            text->setAnchorPoint(Point::ANCHOR_MIDDLE);
+            for(auto var : msgs){
+                if(!PlayerChatManage::getInstance()->isFaceImage(var)){
+                    RichElementText* element1 = RichElementText::create(1, Color3B(255,255,255), 255, var, "arial", 20);
+                    text->pushBackElement(element1);
+                    text->formatText();
+                }else{
+                    RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
+                    text->pushBackElement(element2);
+                    text->formatText();
+                }
+            }
+            customItem->addChild(text,1);
+            auto bob = ui::Scale9Sprite::create("chat/text_bob.png", Rect(0, 0, 66, 66), Rect(37, 0, 10, 0));
+            bob->setContentSize(Size(text->getContentSize().width+20, 70));
+            customItem->addChild(bob);
+            
+            if(data.poxiaoId == UserData::getInstance()->getPoxiaoId()){
+                iamge->setPosition(Point(645,30));
+                text->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+                bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+                text->setPosition(Point(580,40));
+                bob->setFlippedX(true);
+                bob->setPosition(Point(585,30));
+            }else{
+                iamge->setPosition(Point(80,30));
+                text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+                bob->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+                text->setPosition(Point(140,40));
+                bob->setPosition(Point(135,30));
+            }
+            
+        }
     }
 }
 

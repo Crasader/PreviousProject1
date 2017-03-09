@@ -837,10 +837,24 @@ void PlayerHero::actionTing(HeroCpgRespData tingData){
     setIsAllowTouch(true);
     GAMEDATA::getInstance()->setIsTingProcess(true);
     heroHuData = tingData.playCpgt.heroHu;
+    //对heroHuData进行自动排序
+    for(int k=heroHuData.size()-1;k>0;k++){
+        for(int l = 0;l<k;l++){
+            if(getNumbersByPoker(heroHuData.at(l).hu)<getNumbersByPoker(heroHuData.at(l+1).hu)){
+                HeroHuPaiData temp = heroHuData.at(l);
+                heroHuData.at(l) =  heroHuData.at(l+1);
+                heroHuData.at(l+1) = temp;
+            }
+        }
+    }
     for (int i = 0; i < playerHandJongs.size(); i++){
         for (int j=0; j<tingData.playCpgt.heroHu.size(); j++) {
             if(playerHandJongs.at(i)->getJongType() == tingData.playCpgt.heroHu.at(j).poker){
-                playerHandJongs.at(i)->setTingJongHint(true);
+                if(i==0){
+                    playerHandJongs.at(i)->setTingJongHint(true,"gameview/hu_jong_hint_2.png");
+                }else{
+                    playerHandJongs.at(i)->setTingJongHint(true);
+                }
             }
         }
     }

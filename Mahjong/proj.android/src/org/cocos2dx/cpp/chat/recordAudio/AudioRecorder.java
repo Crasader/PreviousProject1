@@ -29,8 +29,8 @@ public class AudioRecorder
 		if (!directory.exists() && !directory.mkdirs()) { throw new IOException(
 				"Path to file could not be created"); }
 		recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-		recorder.setOutputFormat(MediaRecorder.OutputFormat.RAW_AMR);
-		recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+		recorder.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS);
+		recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
 		recorder.setAudioSamplingRate(SAMPLE_RATE_IN_HZ);
 		recorder.setOutputFile(path);
 		recorder.prepare();

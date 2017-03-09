@@ -57,7 +57,10 @@ void Jong::setJongSelectIcon(bool show){
     selcetedIcon->setVisible(show);
 }
 
-void Jong::setTingJongHint(bool show){
+void Jong::setTingJongHint(bool show,std::string texure){
+    if("" != texure){
+        tingPaiArrow->setTexture(texure);
+    }
     tingPaiArrow ->setVisible(show);
     if(show){
         tingPaiArrow->runAction(Repeat::create(Sequence::create(MoveTo::create(0.5f, Point(tingPaiArrow->getPositionX(),tingPaiArrow->getPositionY()+10)), MoveTo::create(0.5f, Point(tingPaiArrow->getPositionX(),tingPaiArrow->getPositionY()-10)),NULL), CC_REPEAT_FOREVER));

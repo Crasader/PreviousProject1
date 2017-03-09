@@ -42,7 +42,10 @@
 - (void)deleltefile;
 
 /** 获取录音文件路径*/
-- (void)getRecordFilepath;
+- (NSURL*)getRecordFilepath;
 
+
+/** 获取可以播放的录音路径*/
+- (void)setCanPlayFilepath:(NSString*)path;
 
 @end

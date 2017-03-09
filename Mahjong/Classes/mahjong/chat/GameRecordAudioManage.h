@@ -20,7 +20,7 @@ public:
 
 	void deleteAudio();
 
-	void playAudio();
+	void playAudio(std::string content,std::string poxiaoId);
     
     
 
