@@ -66,6 +66,7 @@ private:
     void exchangeLequan();
 	void showFirstCharge();
 	void showRedWallet();
+    void showShiMing();
     void showWanJiaQun();
 	void showDayTask();
 	void showPlayerBill();

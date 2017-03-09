@@ -850,7 +850,7 @@ void PlayerHero::actionTing(HeroCpgRespData tingData){
     for (int i = 0; i < playerHandJongs.size(); i++){
         for (int j=0; j<tingData.playCpgt.heroHu.size(); j++) {
             if(playerHandJongs.at(i)->getJongType() == tingData.playCpgt.heroHu.at(j).poker){
-                if(i==0){
+                if(i==0&&getNumbersByPoker(tingData.playCpgt.heroHu.at(j).hu)>1){
                     playerHandJongs.at(i)->setTingJongHint(true,"gameview/hu_jong_hint_2.png");
                 }else{
                     playerHandJongs.at(i)->setTingJongHint(true);

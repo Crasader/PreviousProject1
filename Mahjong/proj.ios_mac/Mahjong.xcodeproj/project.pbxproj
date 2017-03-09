@@ -326,6 +326,8 @@
 		D2B3DDBC1E6EDAE40099B97E /* LVRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDB91E6EDAE40099B97E /* LVRecordTool.m */; };
 		D2B3DDBF1E6EDE030099B97E /* GameRecordAudioManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDBD1E6EDE030099B97E /* GameRecordAudioManage.cpp */; };
 		D2B3DDC01E6EDE030099B97E /* GameRecordAudioManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDBD1E6EDE030099B97E /* GameRecordAudioManage.cpp */; };
+		D2B3DDC41E71410E0099B97E /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDC21E71410E0099B97E /* ShiMingLayer.cpp */; };
+		D2B3DDC51E71410E0099B97E /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDC21E71410E0099B97E /* ShiMingLayer.cpp */; };
 		D2C3FA561D9906FF00CFC80E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */; };
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
 		D2C3FA5A1D9909AE00CFC80E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */; };
@@ -690,6 +692,8 @@
 		D2B3DDB91E6EDAE40099B97E /* LVRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVRecordTool.m; sourceTree = "<group>"; };
 		D2B3DDBD1E6EDE030099B97E /* GameRecordAudioManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameRecordAudioManage.cpp; sourceTree = "<group>"; };
 		D2B3DDBE1E6EDE030099B97E /* GameRecordAudioManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecordAudioManage.h; sourceTree = "<group>"; };
+		D2B3DDC21E71410E0099B97E /* ShiMingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiMingLayer.cpp; sourceTree = "<group>"; };
+		D2B3DDC31E71410E0099B97E /* ShiMingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShiMingLayer.hpp; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
 		D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		D2C3FA531D9906FF00CFC80E /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
@@ -1021,6 +1025,7 @@
 		D26777E41DF00697003CE73F /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D2B3DDC11E7140FB0099B97E /* shiming */,
 				D29FB5501E6D0D2D00FD4B9A /* gonggao */,
 				D26779501DF01349003CE73F /* audio */,
 				D26777E51DF00697003CE73F /* anim */,
@@ -1647,6 +1652,15 @@
 			path = chatIOS;
 			sourceTree = "<group>";
 		};
+		D2B3DDC11E7140FB0099B97E /* shiming */ = {
+			isa = PBXGroup;
+			children = (
+				D2B3DDC21E71410E0099B97E /* ShiMingLayer.cpp */,
+				D2B3DDC31E71410E0099B97E /* ShiMingLayer.hpp */,
+			);
+			path = shiming;
+			sourceTree = "<group>";
+		};
 		D2C3FA511D9906FF00CFC80E /* wechat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1987,6 +2001,7 @@
 				D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
 				D26778EF1DF00698003CE73F /* Jong.cpp in Sources */,
 				D26778CF1DF00697003CE73F /* DailyPride.cpp in Sources */,
+				D2B3DDC41E71410E0099B97E /* ShiMingLayer.cpp in Sources */,
 				D26778CD1DF00697003CE73F /* DailyEvent.cpp in Sources */,
 				D26778D11DF00697003CE73F /* PrideCell.cpp in Sources */,
 				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
@@ -2063,6 +2078,7 @@
 				D26778FA1DF00698003CE73F /* NoticeDialog.cpp in Sources */,
 				D26779361DF00698003CE73F /* GameData.cpp in Sources */,
 				D278ADCE1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
+				D2B3DDC51E71410E0099B97E /* ShiMingLayer.cpp in Sources */,
 				D26778CE1DF00697003CE73F /* DailyEvent.cpp in Sources */,
 				D26779001DF00698003CE73F /* Player.cpp in Sources */,
 				D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,

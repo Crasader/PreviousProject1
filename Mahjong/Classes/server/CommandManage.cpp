@@ -501,6 +501,15 @@ std::string CommandManage::getGongGaoCommand(){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getCertification(std::string name, std::string sfz){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_IDCARD_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("name", name));
+    keyValue.insert(map<string, string>::value_type("idcard", sfz));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

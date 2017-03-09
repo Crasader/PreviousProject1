@@ -17,7 +17,7 @@ public:
     void cancelRecordAudio();
     
     /** 播放录音*/
-    void playAudio();
+    void playAudio(float value);
     
     /** 删除录音*/
     void deleltefile();

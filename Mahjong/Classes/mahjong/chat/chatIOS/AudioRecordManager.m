@@ -69,9 +69,9 @@
 }
 
 /** 播放录音*/
-- (void)playAudio{
+- (void)playAudio:(float) soundValue{
      NSLog(@"== playAudio == ");
-    [self.recordTool playRecordingFile];
+    [self.recordTool playRecordingFile:soundValue];
 }
 
 /** 删除录音*/

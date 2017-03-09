@@ -71,11 +71,13 @@ void GameAudioManage::playAudio(std::string content,std::string poxiaoId)
     auto file = FileUtils::getInstance();
     auto debase64 = base64_decode(content);
     auto path = file->getWritablePath()+StringUtils::format("%s.aac",poxiaoId.c_str());
+    if(debase64.size() == 0)
+        return;
     file->writeStringToFile(debase64, path);
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     CallRcordMecordios::getInstance()->deleltefile();
     CallRcordMecordios::getInstance()->setCallCanPlayFilepath(path);
-    CallRcordMecordios::getInstance()->playAudio();
+    CallRcordMecordios::getInstance()->playAudio(UserData::getInstance()->getSoundValue());
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     Audio::getInstance()->playNormalSound(path);
 #endif

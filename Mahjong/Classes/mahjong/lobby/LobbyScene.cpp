@@ -30,6 +30,7 @@
 #include "mahjong/dialog/network/LostNetwork2.hpp"
 #include "mahjong/gonggao/GameGongGaoLayer.hpp"
 #include "mahjong/chat/chatAndroid/ChatAndroidMethod.h"
+#include "mahjong/shiming/ShiMingLayer.hpp"
 
 bool LobbyScene::init()
 {
@@ -310,13 +311,14 @@ void LobbyScene::drawSceneBot(){
     bot_bg->setPosition(955,48);
     addChild(bot_bg);
     
+    auto btn_0 = MenuItemImage::create("mjlobby/sm_btn_1.png", "mjlobby/sm_btn_2.png", CC_CALLBACK_0(LobbyScene::showShiMing, this));
     auto btn_1 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
     auto btn_2 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
     auto btn_3 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto btn_4 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
-    auto gameMenu = Menu::create(btn_1,btn_2,btn_3, btn_4, NULL);
-    gameMenu->alignItemsHorizontallyWithPadding(50);
-    gameMenu->setPosition(900, 43);
+    auto gameMenu = Menu::create(btn_0,btn_1,btn_2,btn_3, btn_4, NULL);
+    gameMenu->alignItemsHorizontallyWithPadding(45);
+    gameMenu->setPosition(870, 43);
     addChild(gameMenu);
     auto openRoom = MenuItemImage::create("mjlobby/gold_room_btn_1.png", "mjlobby/gold_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showGoldRoomPad, this));
     auto openMenu = Menu::create(openRoom,NULL);
@@ -503,7 +505,11 @@ void LobbyScene::showLoading(){
     addChild(loadLayer,3);
 }
 
+void LobbyScene::showShiMing(){
+    ShiMingLayer* shim = ShiMingLayer::create();
+    addChild(shim,5);
 
+}
 
 void LobbyScene::removeLoading(){
     if(NULL != getChildByTag(1000)){

@@ -58,6 +58,7 @@ public:
     std::string getTuiGuangCommand();
     std::string getTuiGuangPrideCommand();
     std::string getGongGaoCommand();
+    std::string getCertification(std::string name, std::string sfz);
 private:
 	CommandManage();
 	static CommandManage* _instance;

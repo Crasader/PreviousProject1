@@ -30,8 +30,8 @@ void CallRcordMecordios::cancelRecordAudio(){
 }
 
 /** 播放录音*/
-void CallRcordMecordios::playAudio(){
-    [[AudioRecordManager recordManager]  playAudio];
+void CallRcordMecordios::playAudio(float value){
+    [[AudioRecordManager recordManager]  playAudio:value];
 }
 
 /** 删除录音*/

@@ -87,7 +87,7 @@
     }
 }
 
-- (void)playRecordingFile {
+- (void)playRecordingFile:(float)soundValue{
     // 播放时停止录音
     [self.recorder stop];
     
@@ -96,6 +96,7 @@
 
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordFileUrl error:NULL];
     [self.session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [self.player setVolume:soundValue];
     [self.player play];
 }
 

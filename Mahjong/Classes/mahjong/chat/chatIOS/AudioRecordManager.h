@@ -36,7 +36,7 @@
 - (void)cancelRecordAudio;
 
 /** 播放录音*/
-- (void)playAudio;
+- (void)playAudio:(float) soundValue;
 
 /** 删除录音*/
 - (void)deleltefile;

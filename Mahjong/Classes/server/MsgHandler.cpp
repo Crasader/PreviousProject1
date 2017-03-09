@@ -712,6 +712,17 @@ void MsgHandler::handleGongGaoInfo(std:: string msg){
     postNotifyMessage(MSG_GET_WAN_JIA_GONG_GAO,&gameGongGao);
 }
 
+ // 实名认证回复{code:168,poxiaoId:poxiaoId,result:0}
+void MsgHandler::handleCertification(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
+   postNotifyMessage(MSG_GET_WAN_JIA_SHI_MING,&buf);
+}
+
 
 
 //{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]}
@@ -862,6 +873,10 @@ void MsgHandler::loginResp(std::string msg){
         if(_mDoc.HasMember("ip")){
             const rapidjson::Value &ip = _mDoc["ip"];
             GAMEDATA::getInstance()->setIP(ip.GetString());
+        }
+        if(_mDoc.HasMember("idcard")){
+            const rapidjson::Value &idcard = _mDoc["idcard"];
+            GAMEDATA::getInstance()->setCertification(idcard.GetInt()==1?true:false);
         }
         char* buf = const_cast<char*>(LOGIN_SUCCESS);
         postNotifyMessage(MSG_LOGIN_RESP, buf);

@@ -73,5 +73,6 @@ private:
     void handleTuiGuangInfo(std::string msg);
     void handleTuiGuangPrideInfo(std::string msg);
     void handleGongGaoInfo(std::string msg);
+    void handleCertification(std::string msg);
 };
 #endif

@@ -105,6 +105,7 @@ public:
     CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间
     CC_SYNTHESIZE(bool, isFuPan, IsFuPan);//是否开始发牌
     CC_SYNTHESIZE(bool, showDissolveDialog, ShowDissolveDialog);
+    CC_SYNTHESIZE(bool, certification, Certification);
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, wanJiaQun, WanJiaQun);//私人房间游戏局数
     CC_SYNTHESIZE(string, daiLiQun, DaiLiQun);//私人房间游戏局数

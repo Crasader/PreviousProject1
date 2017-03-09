@@ -264,6 +264,7 @@ void ShareToFriendLayer::closeView(){
     removeFromParent();
 }
 
+
 void ShareToFriendLayer::showWanJiaQun(Ref* ref){
     qunToggle->setSelectedIndex(0);
     fangkaToggle->setSelectedIndex(1);

@@ -29,7 +29,7 @@
 - (void)stopRecording;
 
 /** 播放录音文件 */
-- (void)playRecordingFile;
+- (void)playRecordingFile:(float) soundValue;
 
 /** 停止播放录音文件 */
 - (void)stopPlaying;
