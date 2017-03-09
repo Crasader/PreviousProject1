@@ -98,6 +98,7 @@
     [self.session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [self.player setVolume:soundValue];
     [self.player play];
+    NSLog(@"ios sound path = %@",self.recordFileUrl);
 }
 
 - (void)stopPlaying {
