@@ -80,6 +80,7 @@ void GameAudioManage::playAudio(std::string content,std::string poxiaoId)
     CallRcordMecordios::getInstance()->playAudio(UserData::getInstance()->getSoundValue());
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     Audio::getInstance()->playNormalSound(path);
+    ChatAndroidMethod::getInstance()->deleteAudio();
 #endif
 }
 

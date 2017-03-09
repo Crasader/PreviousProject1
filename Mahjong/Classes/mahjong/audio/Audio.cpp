@@ -746,8 +746,8 @@ void Audio::playSoundNorth(int gender){
     }
 }
 
-void Audio::playNormalSound(std::string path){
-    int id = AudioEngine::play2d(path.c_str(),false,UserData::getInstance()->getSoundValue());
+void Audio::playNormalSound(std::string filePath){
+    int id = AudioEngine::play2d(filePath.c_str(),false,UserData::getInstance()->getSoundValue());
     AudioEngine::setFinishCallback(id, [&](int id, const std::string& filePath){
         FileUtils::getInstance()->removeFile(filePath);
     });

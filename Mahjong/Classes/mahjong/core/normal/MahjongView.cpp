@@ -291,7 +291,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerLeft->initPlayer(playerInfo);
             playerLeft->setIsReady(playerInfo->getIsReady());
             addChild(playerLeft,1);
-//            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
+            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
     else if (type == ClientSeatId::right){
@@ -300,7 +300,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerRight->initPlayer(playerInfo);
             playerRight->setIsReady(playerInfo->getIsReady());
             addChild(playerRight,1);
-//            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
+            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
     else if (type == ClientSeatId::opposite){
@@ -309,7 +309,7 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerOpposite->initPlayer(playerInfo);
             playerOpposite->setIsReady(playerInfo->getIsReady());
             addChild(playerOpposite,1);
-//            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
+            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
 }
@@ -1834,12 +1834,15 @@ void MahjongView::touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEv
     switch (type)
     {
         case Widget::TouchEventType::BEGAN:{
-            statRecordSound = true;
-            GameAudioManage::getInstance()->beginRecordAudio();
-            auto soudn = Sprite::create("gameview/record_sound_ing.png");
-            soudn->setPosition(640,320);
-            soudn->setTag(1789);
-            addChild(soudn,5);
+            if(NULL == getChildByTag(1789)){
+                statRecordSound = true;
+                GameAudioManage::getInstance()->beginRecordAudio();
+                auto soudn = Sprite::create("gameview/record_sound_ing.png");
+                soudn->setPosition(640,320);
+                soudn->setTag(1789);
+                addChild(soudn,5);
+                
+            }
         }
             break;
         case Widget::TouchEventType::MOVED:
