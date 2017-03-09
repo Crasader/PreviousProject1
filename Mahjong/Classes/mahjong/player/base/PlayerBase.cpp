@@ -402,7 +402,7 @@ Point PlayerBase::getBigJongPos(int type){
 
 Point PlayerBase::getHuaNumPos(int seatId){
     if (seatId == ClientSeatId::hero){
-        return Vec2(278,205);
+        return Vec2(278,175);
     }
     else if (seatId == ClientSeatId::left){
         return Vec2(45,555);

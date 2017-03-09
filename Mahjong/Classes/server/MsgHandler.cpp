@@ -1346,6 +1346,20 @@ void MsgHandler::getHeroJongs(std::string msg){
         tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
         tingData.ting = ting.GetString();
     }
+    if (_mDoc.HasMember("ting1")){
+        const rapidjson::Value &ting1 = _mDoc["ting1"];
+        for(int i=0;i<ting1.Capacity();i++){
+            HeroHuPaiData huPaiData;
+            auto &temp = ting1[i];
+            if(temp.HasMember("poker")){
+                huPaiData.poker = temp["poker"].GetInt();
+            }
+            if(temp.HasMember("hu")){
+                huPaiData.hu = temp["hu"].GetString();
+            }
+            tingData.heroHu.push_back(huPaiData);
+        }
+    }
     faPaiData.mjTingData = tingData;
     postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
