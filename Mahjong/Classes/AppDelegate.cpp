@@ -84,8 +84,10 @@ void AppDelegate::applicationWillEnterForeground() {
     if(resumeIndex == 0){
         resumeIndex++;
     }else{
-        GameSocketManage::getInstance()->disConnectSelf();
-        GAMEDATA::getInstance()->setShowProtected(true);
+        if(GAMEDATA::getInstance()->getLogingGame()){
+            GameSocketManage::getInstance()->disConnectSelf();
+            GAMEDATA::getInstance()->setShowProtected(true);
+        }
     }
     if(GAMEDATA::getInstance()->getIsInPay()){
         CallAndroidMethod::getInstance()->queryEventResult();
@@ -93,8 +95,10 @@ void AppDelegate::applicationWillEnterForeground() {
     }
     AudioEngine::resumeAll();
 #else
-    GameSocketManage::getInstance()->disConnectSelf();
-    GAMEDATA::getInstance()->setShowProtected(true);
+    if(GAMEDATA::getInstance()->getLogingGame()){
+        GameSocketManage::getInstance()->disConnectSelf();
+        GAMEDATA::getInstance()->setShowProtected(true);
+    }
 #endif
     
 }

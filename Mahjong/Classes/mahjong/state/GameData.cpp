@@ -29,6 +29,7 @@ void GAMEDATA::init(){
     setIsFuPan(false);
     setIsSelected(true);
     setShowDissolveDialog(false);
+    setLogingGame(false);
     setShowDialogType(-1);
     setScore(0);
     setHuangfan("0");

@@ -41,6 +41,8 @@ public:
     int  getNumbersByPoker(string pokers);
     
 private:
+    float protectedTime =0;
+    bool statRecordSound = false;
 	std::mutex m_mutex;
 	int currentReadyPlayer;
 	std::string  selectedChi;

@@ -84,14 +84,14 @@ public class AudioRecorderManager {
 			}
 
 			if (recodeTime < MIX_TIME) {
-				appActivity.runOnUiThread(new Runnable() {
-					public void run() {
-						Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
-					}
-				});
-				RECODE_STATE = RECORD_NO;
-				File file = new File(getAmrPath());
-				file.delete();
+//				appActivity.runOnUiThread(new Runnable() {
+//					public void run() {
+//						Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
+//					}
+//				});
+//				RECODE_STATE = RECORD_NO;
+//				File file = new File(getAmrPath());
+//				file.delete();
 			} else {
 				// 录音完成!点击重新录音
 			}

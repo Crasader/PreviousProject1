@@ -138,6 +138,7 @@ void LobbyScene::initView(){
     if(getChildByTag(2000)!=NULL){
         getChildByTag(2000)->removeFromParent();
     }
+    GAMEDATA::getInstance()->setLogingGame(true);
 }
 
 
@@ -506,9 +507,14 @@ void LobbyScene::showLoading(){
 }
 
 void LobbyScene::showShiMing(){
-    ShiMingLayer* shim = ShiMingLayer::create();
-    addChild(shim,5);
-
+    
+    if(GAMEDATA::getInstance()->getCertification()){
+        HintDialog* hd = HintDialog::create("你已经完成实名认证", nullptr);
+        addChild(hd,5);
+    }else{
+        ShiMingLayer* shim = ShiMingLayer::create();
+        addChild(shim,5);
+    }
 }
 
 void LobbyScene::removeLoading(){

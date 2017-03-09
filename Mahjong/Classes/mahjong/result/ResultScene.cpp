@@ -35,7 +35,7 @@ Scene* ResultScene::createScene(int type)
         SpecialResultLayer* layer = SpecialResultLayer::create();
         scene->addChild(layer);
     }
-    
+    GAMEDATA::getInstance()->setLogingGame(true);
     return scene;
 }
 

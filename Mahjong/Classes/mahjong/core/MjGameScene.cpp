@@ -13,6 +13,7 @@ bool MjGameScene::init(){
         MahjongView* mjView = MahjongView::create();
         addChild(mjView);
     }
+    GAMEDATA::getInstance()->setLogingGame(true);
     return true;
 }
 

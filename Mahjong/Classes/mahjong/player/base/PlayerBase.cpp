@@ -402,7 +402,7 @@ Point PlayerBase::getBigJongPos(int type){
 
 Point PlayerBase::getHuaNumPos(int seatId){
     if (seatId == ClientSeatId::hero){
-        return Vec2(278,175);
+        return Vec2(278,205);
     }
     else if (seatId == ClientSeatId::left){
         return Vec2(45,555);
@@ -421,7 +421,7 @@ Point PlayerBase::getHuaNumPos(int seatId){
 
 Point PlayerBase::getPostionBySeat(int seatId){
     if (seatId == ClientSeatId::hero){
-        return Vec2(80, 157);
+        return Vec2(80, 187);
     }
     else if (seatId == ClientSeatId::right){
         return Vec2(1200, 455);
@@ -440,7 +440,7 @@ Point PlayerBase::getPostionBySeat(int seatId){
 
 Point PlayerBase::getReadyPosBySeat(int seatId){
     if (seatId == ClientSeatId::hero){
-        return Vec2(175, 95);
+        return Vec2(175, 125);
     }
     else if (seatId == ClientSeatId::right){
         return Vec2(1110, 395);
@@ -524,9 +524,25 @@ void PlayerBase::onEnter(){
             chatShowLayer->removeAllChildren();//清空界面
             
             ChatData data = GAMEDATA::getInstance()->getChatData();
+            int seatId = GAMEDATA::getInstance()->getHeroSeatId();
+            for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
+                if(play->getPoxiaoId() == data.poxiaoId){
+                    seatId = play->getSeatId();
+                }
+            }
+
             if(data.mark ){
                 if((data.poxiaoId != UserData::getInstance()->getPoxiaoId())){
                     GameAudioManage::getInstance()->playAudio(data.content,data.poxiaoId);
+                }
+                auto sound = Sprite::create("gameview/sound_pop.png");
+                sound->setPosition(getVec2BySeatId(seatId));
+                chatShowLayer->addChild(sound);
+                if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::left
+                   || SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::hero){
+                    sound->setFlippedX(false);
+                }else{
+                    sound->setFlippedX(true);
                 }
             }else{
                 std::string content = data.content;
@@ -543,12 +559,6 @@ void PlayerBase::onEnter(){
                         RichElementImage* element2 = RichElementImage::create(1, Color3B(255,255,255), 255, PlayerChatManage::getInstance()->getFaceImageName(var));
                         text->pushBackElement(element2);
                         text->formatText();
-                    }
-                }
-                int seatId = GAMEDATA::getInstance()->getHeroSeatId();
-                for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
-                    if(play->getPoxiaoId() == data.poxiaoId){
-                        seatId = play->getSeatId();
                     }
                 }
                 text->setPosition(getVec2BySeatId(seatId));

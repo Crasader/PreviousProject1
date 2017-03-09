@@ -838,19 +838,16 @@ void PlayerHero::actionTing(HeroCpgRespData tingData){
     GAMEDATA::getInstance()->setIsTingProcess(true);
     heroHuData = tingData.playCpgt.heroHu;
     //对heroHuData进行自动排序
-    for(int k=heroHuData.size()-1;k>0;k++){
-        for(int l = 0;l<k;l++){
-            if(getNumbersByPoker(heroHuData.at(l).hu)<getNumbersByPoker(heroHuData.at(l+1).hu)){
-                HeroHuPaiData temp = heroHuData.at(l);
-                heroHuData.at(l) =  heroHuData.at(l+1);
-                heroHuData.at(l+1) = temp;
-            }
+    int max = 1;
+    for(int k=0;k<heroHuData.size();k++){
+        if(getNumbersByPoker(heroHuData.at(k).hu) > max){
+            max = getNumbersByPoker(heroHuData.at(k).hu);
         }
     }
     for (int i = 0; i < playerHandJongs.size(); i++){
         for (int j=0; j<tingData.playCpgt.heroHu.size(); j++) {
             if(playerHandJongs.at(i)->getJongType() == tingData.playCpgt.heroHu.at(j).poker){
-                if(i==0&&getNumbersByPoker(tingData.playCpgt.heroHu.at(j).hu)>1){
+                if(getNumbersByPoker(tingData.playCpgt.heroHu.at(j).hu) == max){
                     playerHandJongs.at(i)->setTingJongHint(true,"gameview/hu_jong_hint_2.png");
                 }else{
                     playerHandJongs.at(i)->setTingJongHint(true);
