@@ -19,9 +19,8 @@
 #include "mahjong/widget/batteryinfo/BatteryInfo.h"
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
-#include "mahjong/chat/chatAndroid/ChatAndroidMethod.h"
 #include "mahjong/chat/GameRecordAudioManage.h"
-
+#include "mahjong/core/widget/SoundRecordBtn.hpp"
 
 
 bool MahjongView::init(){
@@ -99,11 +98,8 @@ void MahjongView::loadView(){
     battery->setPosition(0,0);
     addChild(battery,100);
     //语音聊天
-    auto playBtn = Button::create("gameview/chat_sound_1.png");
-    playBtn->setTag(1888);
-    playBtn->addTouchEventListener(CC_CALLBACK_2(MahjongView::touchEvent, this));
-    playBtn->setPosition(Vec2(80, 50));
-    addChild(playBtn);
+    SoundRecordBtn* soun = SoundRecordBtn::create();
+    addChild(soun,5);
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
@@ -185,15 +181,15 @@ void MahjongView::startGameAgain(){
 
 void MahjongView::update(float dt){
     
-    if(NULL != getChildByTag(1888)){
-        if(!((Button*)getChildByTag(1888))->isTouchEnabled()){
-            protectedTime += dt;
-        }
-        if(protectedTime>=2){
-            ((Button*)getChildByTag(1888))->setTouchEnabled(true);
-            protectedTime =0;
-        }
-    }
+//    if(NULL != getChildByTag(1888)){
+//        if(!((Button*)getChildByTag(1888))->isTouchEnabled()){
+//            protectedTime += dt;
+//        }
+//        if(protectedTime>=2){
+//            ((Button*)getChildByTag(1888))->setTouchEnabled(true);
+//            protectedTime =0;
+//        }
+//    }
     
     if(GAMEDATA::getInstance()->getShowProtected()){
         if(NULL == getChildByTag(2000)){
@@ -1828,40 +1824,39 @@ void MahjongView::addPlayerResumeListener(){
 }
 
 
-void MahjongView::touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type)
-{
-    Button* tem = (Button*)pSender;
-    switch (type)
-    {
-        case Widget::TouchEventType::BEGAN:{
-            if(NULL == getChildByTag(1789)){
-                statRecordSound = true;
-                GameAudioManage::getInstance()->beginRecordAudio();
-                auto soudn = Sprite::create("gameview/record_sound_ing.png");
-                soudn->setPosition(640,320);
-                soudn->setTag(1789);
-                addChild(soudn,5);
-                
-            }
-        }
-            break;
-        case Widget::TouchEventType::MOVED:
-            break;
-        case Widget::TouchEventType::ENDED:
-            if(statRecordSound){
-                GameAudioManage::getInstance()->endRecordAudio();
-                if(NULL != getChildByTag(1789)){
-                    getChildByTag(1789)->removeFromParent();
-                }
-                tem->setTouchEnabled(false);
-            }
-            break;
-        case Widget::TouchEventType::CANCELED:
-            if(NULL != getChildByTag(1789)){
-                getChildByTag(1789)->removeFromParent();
-            }
-            break;
-        default:
-            break;
-    }
-}
+//void MahjongView::touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type)
+//{
+//    Button* tem = (Button*)pSender;
+//    switch (type)
+//    {
+//        case Widget::TouchEventType::BEGAN:{
+//            if(NULL == getChildByTag(1789)){
+//                statRecordSound = true;
+//                GameAudioManage::getInstance()->beginRecordAudio();
+//                auto soudn = Sprite::create("gameview/record_sound_ing.png");
+//                soudn->setPosition(640,320);
+//                soudn->setTag(1789);
+//                addChild(soudn,5);
+//            }
+//        }
+//            break;
+//        case Widget::TouchEventType::MOVED:
+//            break;
+//        case Widget::TouchEventType::ENDED:
+//            if(statRecordSound){
+//                GameAudioManage::getInstance()->endRecordAudio();
+//                if(NULL != getChildByTag(1789)){
+//                    getChildByTag(1789)->removeFromParent();
+//                }
+//                tem->setTouchEnabled(false);
+//            }
+//            break;
+//        case Widget::TouchEventType::CANCELED:
+//            if(NULL != getChildByTag(1789)){
+//                getChildByTag(1789)->removeFromParent();
+//            }
+//            break;
+//        default:
+//            break;
+//    }
+//}

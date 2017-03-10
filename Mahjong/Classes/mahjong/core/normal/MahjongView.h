@@ -41,8 +41,6 @@ public:
     int  getNumbersByPoker(string pokers);
     
 private:
-    float protectedTime =0;
-    bool statRecordSound = false;
 	std::mutex m_mutex;
 	int currentReadyPlayer;
 	std::string  selectedChi;
@@ -81,7 +79,7 @@ private:
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data);//首次杠花
 	PlayerBase* getPlayerBySeatId(int sid);
-    void touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
+//    void touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 
     EventListenerCustom* gameFaPaiListener;
 	EventListenerCustom* addOtherReadyListener;

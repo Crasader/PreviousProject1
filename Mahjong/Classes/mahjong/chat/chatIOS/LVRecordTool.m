@@ -37,7 +37,6 @@
     // 录音时停止播放 删除曾经生成的文件
     [self stopPlaying];
     [self destructionRecordingFile];
-    self.recordFileUrl = self.recordFileUrl2;
     // 真机环境下需要的代码
     AVAudioSession *session = [AVAudioSession sharedInstance];
     NSError *sessionError;
@@ -100,11 +99,11 @@
     // 正在播放就返回
     if ([self.player isPlaying]) return;
 
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordFileUrl error:NULL];
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recordFileUrl2 error:NULL];
     [self.session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [self.player setVolume:soundValue];
     [self.player play];
-    NSLog(@"ios sound path = %@",self.recordFileUrl);
+//    NSLog(@"ios sound path = %@",self.recordFileUrl);
     
 }
 
@@ -143,7 +142,6 @@ static id instance;
         NSString *filePath = [path stringByAppendingPathComponent:LVRecordFielName];
         self.recordFileUrl = [NSURL fileURLWithPath:filePath];
         NSLog(@"%@", filePath);
-        self.recordFileUrl2 = self.recordFileUrl;
         // 3.设置录音的一些参数
         NSMutableDictionary *setting = [NSMutableDictionary dictionary];
         // 音频格式
@@ -180,7 +178,7 @@ static id instance;
 
 - (void)setCanPlayFilepath:(NSString*)path{
 //    NSLog(@"LVRecordTool :: setPlayRecordFilepath  === path = %@",path);
-    self.recordFileUrl = [NSURL URLWithString:path];
+    self.recordFileUrl2 = [NSURL URLWithString:path];
 }
 
 #pragma mark - AVAudioRecorderDelegate

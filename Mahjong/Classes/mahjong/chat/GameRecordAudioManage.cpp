@@ -70,7 +70,7 @@ void GameAudioManage::playAudio(std::string content,std::string poxiaoId)
 {
     auto file = FileUtils::getInstance();
     auto debase64 = base64_decode(content);
-    auto path = file->getWritablePath()+StringUtils::format("%s%d.aac",poxiaoId.c_str(),rand());
+    auto path = file->getWritablePath()+StringUtils::format("%s.aac",poxiaoId.c_str());
     if(debase64.size() == 0)
         return;
     file->writeStringToFile(debase64, path);
@@ -80,7 +80,7 @@ void GameAudioManage::playAudio(std::string content,std::string poxiaoId)
 //    CallRcordMecordios::getInstance()->deleltefile();
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     Audio::getInstance()->playNormalSound(path);
-    ChatAndroidMethod::getInstance()->deleteAudio();
+//    ChatAndroidMethod::getInstance()->deleteAudio();
 #endif
 }
 
