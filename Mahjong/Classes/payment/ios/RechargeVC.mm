@@ -165,7 +165,7 @@ sqlite3 *poxiaoDB = nil;
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    NSLog(@"received = %@",result);
+//    NSLog(@"received = %@",result);
     //刷新用户信息
     WxLoginHandler::getInstance()->updatePlayerInfo("IAP");
     [self deleteRecordFromDB:[poxiaoOrderId intValue]];

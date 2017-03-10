@@ -13,6 +13,8 @@
 
 #define SERVER_ADDRESS "aliyun.5278-mobi.com"
 #define SERVER_PORT 9999
+//#define SERVER_ADDRESS "172.23.1.35"
+//#define SERVER_PORT 9999
 
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币
 #define ENTER_ROOM_2_GOLD 150000// 进入第2个房间需要的最低金币

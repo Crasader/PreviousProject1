@@ -97,7 +97,7 @@ static NSString *DEVICESTRING= @"iphone";
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    NSLog(@"received = %@",result);
+//    NSLog(@"received = %@",result);
     //解析返回的json数据
     NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
     if(NSClassFromString(@"NSJSONSerialization"))
@@ -170,7 +170,7 @@ static NSString *DEVICESTRING= @"iphone";
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    NSLog(@"received = %@",result);
+//    NSLog(@"received = %@",result);
     //解析返回的json数据
     NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
     if(NSClassFromString(@"NSJSONSerialization"))
@@ -180,7 +180,7 @@ static NSString *DEVICESTRING= @"iphone";
                      JSONObjectWithData:returnedData
                      options:0
                      error:&error];
-        
+
         if(error) {
             NSLog(@"json 格式有错误1");
         }
@@ -302,7 +302,7 @@ static NSString *DEVICESTRING= @"iphone";
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    NSLog(@"received = %@",result);
+//    NSLog(@"received = %@",result);
     //解析返回的json数据
     NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
     if(NSClassFromString(@"NSJSONSerialization"))
@@ -370,7 +370,7 @@ static NSString *DEVICESTRING= @"iphone";
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    NSLog(@"received = %@",result);
+//    NSLog(@"received = %@",result);
     //解析返回的json数据
     NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
     if(NSClassFromString(@"NSJSONSerialization"))

@@ -119,7 +119,7 @@ static const NSInteger socket_timeout = 15;//超时时间
 {
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
-    NSLog(@"receive = %@",jsonString);
+//    NSLog(@"receive = %@",jsonString);
     if(jsonString != nil){
         CocoaSocketManage::getInstance()->receiveScoketData([jsonString UTF8String]);
     }else{
@@ -130,7 +130,7 @@ static const NSInteger socket_timeout = 15;//超时时间
 
 
 - (void)socketWriteData:(NSString *)data {
-    NSLog(@"send = %@",data);
+//    NSLog(@"send = %@",data);
     NSData *requestData = [data dataUsingEncoding:NSUTF8StringEncoding];
     [_asyncSocket writeData:requestData withTimeout:-1 tag:0];
     [self socketBeginReadData];

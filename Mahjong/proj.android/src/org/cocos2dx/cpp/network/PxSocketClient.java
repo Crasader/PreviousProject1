@@ -36,7 +36,7 @@ public class PxSocketClient {
 
 	public void sendDataSever(String msg) {
 		if (localSocketClient != null) {
-			Log.i("AndroidSocket", "向服务端发送数据:" + msg);
+//			Log.i("AndroidSocket", "向服务端发送数据:" + msg);
 			localSocketClient.sendData(CharsetUtil.stringToData(msg, CharsetUtil.UTF_8));
 		}
 	}
@@ -97,7 +97,7 @@ public class PxSocketClient {
 
 				@Override
 				public void onResponse(final SocketClient client, @NonNull SocketResponsePacket responsePacket) {
-					Log.i("AndroidSocket","PxSocketClient: onResponse: " + responsePacket.getMessage());
+//					Log.i("AndroidSocket","PxSocketClient: onResponse: " + responsePacket.getMessage());
 					if(null!=responsePacket.getMessage())
 						JniSocketCallback.dataRecieve(responsePacket.getMessage());
 				}
