@@ -19,7 +19,7 @@
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币
 #define ENTER_ROOM_2_GOLD 150000// 进入第2个房间需要的最低金币
 #define ENTER_ROOM_3_GOLD 1200000// 进入第3个房间需要的最低金币
-#define DIAMOND_TO_GOLD_RATE 10//钻石兑换金币的比例
+#define DIAMOND_TO_GOLD_RATE 10//钻石兑换金币的比例 Socket Connect: YES
 
 #define APPLE_STORE_PAY_LIST "http://aliyun.5278-mobi.com:1111/pay!getIosPoint.action"
 
