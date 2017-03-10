@@ -11,6 +11,9 @@
 
 #define PAY_PLAT_VALUE "11" //ios支付版本
 
+#define SERVER_ADDRESS "aliyun.5278-mobi.com"
+#define SERVER_PORT 9999
+
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币
 #define ENTER_ROOM_2_GOLD 150000// 进入第2个房间需要的最低金币
 #define ENTER_ROOM_3_GOLD 1200000// 进入第3个房间需要的最低金币
@@ -21,6 +24,9 @@
 
 #define WECHAT_WAN_JIA_QUN_URL "http://aliyun.5278-mobi.com:1112/qunewm.png"
 #define WECHAT_DAI_LI_QUN_URL "http://aliyun.5278-mobi.com:1112/dlewm.png"
+
+#define WECHAT_SHARE_LINK_PATH_1 "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2faliyun.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state="
+#define WECHAT_SHARE_LINK_PATH_2 "&connect_redirect=1#wechat_redirect"
 
 #define IAMGE_LOADING "image_loading"
 #define SHARE_TEXT_1 "小白相上海敲麻——有无勒子,2摸3冲随意选择"

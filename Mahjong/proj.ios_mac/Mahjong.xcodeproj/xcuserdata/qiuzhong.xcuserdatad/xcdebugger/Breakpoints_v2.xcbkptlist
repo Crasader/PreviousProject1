@@ -3738,11 +3738,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/socket/GameSocketManage.cpp"
-            timestampString = "509348510.597675"
+            timestampString = "510821125.211529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "GameSocketManage::socketConnect()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5204,11 +5204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/share/ShareToFriendLayer.cpp"
-            timestampString = "510737733.421324"
+            timestampString = "510821413.725606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "ShareToFriendLayer:: doFaHongBaoFriend()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5236,11 +5236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/share/ShareToFriendLayer.cpp"
-            timestampString = "510737733.421324"
+            timestampString = "510821413.725606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "ShareToFriendLayer::updateUi(float dt)"
             landmarkType = "7">
          </BreakpointContent>

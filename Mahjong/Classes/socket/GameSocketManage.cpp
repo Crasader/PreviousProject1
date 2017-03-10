@@ -10,14 +10,8 @@
 #include "socket/ios/CocoaSocketManage.h"
 #include "socket/android/PxSocketManage.h"
 #include "server/NetworkManage.h"
+#include "mahjong/GameConfig.h"
 
-
-const char* ip = "aliyun.5278-mobi.com";//线网服务器地址
-//const char* ip = "183.129.206.54";
-const int port = 9999;//端口号
-//const int port = 8080;//测试端口号
-//const char* ip = "172.23.1.59";//测试地址
-//const int port = 9999;//端口号
 
 GameSocketManage* GameSocketManage::_instance = NULL;
 
@@ -36,7 +30,7 @@ GameSocketManage::GameSocketManage(){
 bool GameSocketManage::socketConnect(){
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-   return  CocoaSocketManage::getInstance()->connectSocket(ip,port);
+   return  CocoaSocketManage::getInstance()->connectSocket(SERVER_ADDRESS,SERVER_PORT);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     return PxSocketManage::getInstance()->connectSocket(ip,port);
 #endif
