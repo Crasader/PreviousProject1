@@ -12,7 +12,7 @@
 #include "server/NetworkManage.h"
 
 
-const char* ip = "wyhl.5278-mobi.com";//线网服务器地址
+const char* ip = "aliyun.5278-mobi.com";//线网服务器地址
 //const char* ip = "183.129.206.54";
 //const int port = 9999;//端口号
 const int port = 8080;//测试端口号
