@@ -117,6 +117,7 @@ void ShiMingLayer::onEnter(){
             if(newResult == 1){
                 getChildByTag(300)->setVisible(false);
                 removeFromParent();
+                GAMEDATA::getInstance()->setCertification(true);
             }else{
                 getChildByTag(300)->setVisible(true);
             }
