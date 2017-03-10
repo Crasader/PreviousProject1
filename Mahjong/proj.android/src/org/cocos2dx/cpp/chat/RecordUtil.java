@@ -23,7 +23,12 @@ public class RecordUtil {
 	 */
 	public static void beginRecordAudio() {
 		Debug.e("RecordUtil->beginRecordAudio");
-		audioManager.beginRecordAudio();	
+		try {
+			audioManager.beginRecordAudio();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -31,7 +36,12 @@ public class RecordUtil {
 	 */
 	public static void endRecordAudio() {
 		Debug.e("RecordUtil->endRecordAudio");
-		audioManager.endRecordAudio();
+		try {
+			audioManager.endRecordAudio();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -54,7 +64,7 @@ public class RecordUtil {
 	 * 获取录音路径
 	 */
 	public static String getRecordFilePath() {
-		Debug.e("RecordUtil->getRecordFilePath");   
+		Debug.e("RecordUtil->getRecordFilePath");  
 		return audioManager.getAmrPath();
 	}
 

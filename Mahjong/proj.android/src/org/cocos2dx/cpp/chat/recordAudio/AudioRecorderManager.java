@@ -156,6 +156,7 @@ public class AudioRecorderManager {
 							mr.stop();
 							voiceValue = 0.0;
 						} catch (IOException e) {
+							Debug.e("ImgThread error1");
 							e.printStackTrace();
 						}
 					}
@@ -167,6 +168,7 @@ public class AudioRecorderManager {
 							voiceValue = mr.getAmplitude();
 						}
 					} catch (InterruptedException e) {
+						Debug.e("ImgThread error2");
 						e.printStackTrace();
 					}
 				}
