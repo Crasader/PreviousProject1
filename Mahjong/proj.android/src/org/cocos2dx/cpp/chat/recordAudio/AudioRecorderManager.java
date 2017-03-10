@@ -19,13 +19,9 @@ import org.cocos2dx.cpp.payment.JniPayCallbackHelper;
 import com.tbu.androidtools.Debug;
 
 import android.app.Activity;
-import android.gesture.GestureOverlayView;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
 
 public class AudioRecorderManager {
 
@@ -80,20 +76,8 @@ public class AudioRecorderManager {
 				mr.stop();
 				voiceValue = 0.0;
 			} catch (IOException e) {
+				Debug.e("endRecordAudio error");
 				e.printStackTrace();
-			}
-
-			if (recodeTime < MIX_TIME) {
-//				appActivity.runOnUiThread(new Runnable() {
-//					public void run() {
-//						Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
-//					}
-//				});
-//				RECODE_STATE = RECORD_NO;
-//				File file = new File(getAmrPath());
-//				file.delete();
-			} else {
-				// 录音完成!点击重新录音
 			}
 		}
 	}
@@ -146,8 +130,6 @@ public class AudioRecorderManager {
 	// 获取文件手机路径
 	public String getAmrPath() {
 		Debug.e("getAmrPath = "+JniPayCallbackHelper.getWriteablePath());
-//		File file = new File(JniPayCallbackHelper.getWriteablePath(), "/"
-//				+ date + ".amr");
 		File file = new File(Environment.getExternalStorageDirectory(), "/"
 				+ date + ".amr");
 		Debug.e("getAmrPath = "+file.getAbsolutePath());
@@ -168,14 +150,21 @@ public class AudioRecorderManager {
 			recodeTime = 0.0f;
 			while (RECODE_STATE == RECORD_ING) {
 				if (recodeTime >= MAX_TIME && MAX_TIME != 0) {
-					imgHandle.sendEmptyMessage(0);
+					if (RECODE_STATE == RECORD_ING) {
+						RECODE_STATE = RECODE_ED;
+						try {
+							mr.stop();
+							voiceValue = 0.0;
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
 				} else {
 					try {
 						Thread.sleep(200);
 						recodeTime += 0.2;
 						if (RECODE_STATE == RECORD_ING) {
 							voiceValue = mr.getAmplitude();
-							imgHandle.sendEmptyMessage(1);
 						}
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -183,45 +172,6 @@ public class AudioRecorderManager {
 				}
 			}
 		}
-
-		Handler imgHandle = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-
-				switch (msg.what) {
-				case 0:
-					// 录音超过15秒自动停止
-					if (RECODE_STATE == RECORD_ING) {
-						RECODE_STATE = RECODE_ED;
-
-						try {
-							mr.stop();
-							voiceValue = 0.0;
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-
-						if (recodeTime < 1.0) {
-							appActivity.runOnUiThread(new Runnable() {
-								public void run() {
-									Toast.makeText(appActivity, "说话时间太短", Toast.LENGTH_SHORT).show();
-								}
-							});
-							
-							RECODE_STATE = RECORD_NO;
-						} else {
-							//	录音完成!点击重新录音
-						}
-					}
-					break;
-				case 1:
-					//setDialogImage();
-					break;
-				default:
-					break;
-				}
-			}
-		};
 	};
 
 }

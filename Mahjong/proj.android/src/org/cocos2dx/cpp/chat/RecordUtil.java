@@ -5,7 +5,6 @@ import org.cocos2dx.cpp.chat.recordAudio.AudioRecorderManager;
 import com.tbu.androidtools.Debug;
 
 import android.app.Activity;
-import android.util.Log;
 
 public class RecordUtil {
 
@@ -23,7 +22,7 @@ public class RecordUtil {
 	 * 开始录音
 	 */
 	public static void beginRecordAudio() {
-		Log.w("recordAudio","==RecordUtil::beginRecordAudio==");
+		Debug.e("RecordUtil->beginRecordAudio");
 		audioManager.beginRecordAudio();	
 	}
 
@@ -31,7 +30,7 @@ public class RecordUtil {
 	 * 结束录音
 	 */
 	public static void endRecordAudio() {
-		Log.w("recordAudio","==RecordUtil::endRecordAudio==");
+		Debug.e("RecordUtil->endRecordAudio");
 		audioManager.endRecordAudio();
 	}
 
@@ -39,7 +38,7 @@ public class RecordUtil {
 	 * 播放录音
 	 */
 	public static void playAudio() {
-		Log.w("recordAudio","==RecordUtil::playAudio==");
+		Debug.e("RecordUtil->playAudio");
 		audioManager.playAudio();
 	}
 
@@ -47,7 +46,7 @@ public class RecordUtil {
 	 *  删除录音
 	 */
 	public static void deleteFile() {
-		Log.w("recordAudio","==RecordUtil::deleteFile==");
+		Debug.e("RecordUtil->deleteFile");
 		audioManager.deleteFile();
 	}
 
