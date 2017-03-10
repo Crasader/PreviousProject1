@@ -943,6 +943,7 @@ void ReviewGame::addCoustomListener(){
             hideTingGangControllPad();
             HeroCpgRespData heroCpgData;
             heroCpgData.result = 1;
+            heroCpgData.playCpgt = newData;
             playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newData.sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
             
@@ -973,9 +974,10 @@ void ReviewGame::addCoustomListener(){
         }else if (seatId == ClientSeatId::hero){
             hideTingGangControllPad();
             HeroCpgRespData heroTingData;
-            playerHero->drawHeroGangMingpai(heroTingData, getPlayerBySeatId(data->sId));
+            heroTingData.result = 1;
+            heroTingData.playCpgt = newData;
+            playerHero->drawHeroGangMingpai(heroTingData, getPlayerBySeatId(newData.sId));
             playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
-            
         }
         
     });

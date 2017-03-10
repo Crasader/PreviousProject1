@@ -1287,31 +1287,52 @@ void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerBase* playerBas
         record.pengDir = 2;
     }
     playerCpgRecords.push_back(record);
-    playerBase->removeLastJong();
-    setHandPosX(getHandPosX() + JONG_WIDTH * 3);
-    sortHandJongs(getHandPosX(), true);
-    for (int k = 0; k < pengVector.size(); k++){
-        Point mv;
-        if(playerBase->getClientSeat()==ClientSeatId::left){
-            mv = Point(getCpgPostionX() + (k==0? 0:(5+48 * k)), k==0?35:45);
-        }else if(playerBase->getClientSeat()==ClientSeatId::opposite){
-            mv = Point(getCpgPostionX() + (k==0? 32:(-48+48 * k)), k==0?90:45);
-        }else{
-            mv = Point(getCpgPostionX()+ (k==0? 105:(5+48 * (k-1))), k==0?35:45);
+    CallFunc* action1 = CallFunc::create([=](){
+        playerBase->removeLastJong();
+        for (int m = 0; m < pengVector.size(); m++){
+            MoveTo* mv;
+            if(playerBase->getClientSeat()==ClientSeatId::left){
+                mv= MoveTo::create(0.15f, Point(580 + (m==0?0:3+38 * m), 195));
+                
+            }else if(playerBase->getClientSeat()==ClientSeatId::opposite){
+                mv= MoveTo::create(0.15f, Point(580 + (m==0?20:3+38 * (m-1)), 195+(m==0?40:0)));
+            }else{
+                mv= MoveTo::create(0.15f, Point(580 + (m==0?80:3+38 * (m-1)), 195));
+            }
+            ScaleTo* scale = ScaleTo::create(0.15f, 0.6f);
+            Spawn* sp = Spawn::create(mv, scale, NULL);
+            pengVector.at(m)->runAction(sp);
         }
-        pengVector.at(k)->setScale(0.75);
-        pengVector.at(k)->setPosition(mv);
-    }
-    if(playerBase->getClientSeat()==ClientSeatId::opposite){
-        setCpgPostionX(getCpgPostionX()+115);
-    }else{
-        setCpgPostionX(getCpgPostionX()+170);
-    }
+        setHandPosX(getHandPosX() + JONG_WIDTH * 3);
+        sortHandJongs(getHandPosX(), true);
+    });
+    DelayTime* delay = DelayTime::create(0.25f);
+    CallFunc* action2 = CallFunc::create([=](){
+        for (int k = 0; k < pengVector.size(); k++){
+            MoveTo* mv;
+            if(playerBase->getClientSeat()==ClientSeatId::left){
+                mv = MoveTo::create(0.15f, Point(getCpgPostionX() + (k==0? 0:(5+48 * k)), k==0?35:45));
+            }else if(playerBase->getClientSeat()==ClientSeatId::opposite){
+                mv = MoveTo::create(0.15f, Point(getCpgPostionX() + (k==0? 32:(-48+48 * k)), k==0?90:45));
+            }else{
+                mv = MoveTo::create(0.15f, Point(getCpgPostionX()+ (k==0? 105:(5+48 * (k-1))), k==0?35:45));
+            }
+            ScaleTo* scale = ScaleTo::create(0.15f, 0.75f);
+            Spawn* sp = Spawn::create(mv, scale, NULL);
+            pengVector.at(k)->runAction(sp);
+        }
+        if(playerBase->getClientSeat()==ClientSeatId::opposite){
+            setCpgPostionX(getCpgPostionX()+115);
+        }else{
+            setCpgPostionX(getCpgPostionX()+170);
+        }
+    });
+    Sequence* mySe = Sequence::create(action1, delay, action2, NULL);
+    runAction(mySe);
     
     if (resp.result == 2 && resp.playCpgt.ting != ""){
-        PlayerCpgtData tingData;
-        tingData.ting = resp.playCpgt.ting;
-        ((MahjongView*)getParent())->showTingGangControllPad(tingData);
+        log("碰听的牌: %s",resp.playCpgt.ting.c_str());
+        ((MahjongView*)getParent())->showTingGangControllPad(resp.playCpgt);
     }else{
         setIsAllowPlay(true);
         startTimeClockAnim();
@@ -1324,9 +1345,9 @@ void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerBase* playerBas
     if(resp.playCpgt.playerGang.at(0).flag == 0){
         std::vector<string> gangpai = StringUtil::split(resp.playCpgt.playerGang.at(0).gang, ",");
         Vector<Jong*> gangVector;
-        for (int i = 0; i < gangpai.size(); i++){
+        for (int i = 0; i < 3; i++){
             for (int j = 0; j < getSelfHandJongs().size(); j++){
-                if (atoi(gangpai.at(i).c_str()) == getSelfHandJongs().at(j)->getJongType()){
+                if (atoi(gangpai.at(0).c_str()) == getSelfHandJongs().at(j)->getJongType()){
                     getSelfHandJongs().at(j)->showJong(herocpgportrait, getSelfHandJongs().at(j)->getJongType());
                     gangVector.pushBack(getSelfHandJongs().at(j));
                     eraseHeroJong(getSelfHandJongs().at(j));
