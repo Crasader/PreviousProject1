@@ -898,6 +898,8 @@ void MahjongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
         playerOpposite->setIsReady(false);
     if(NULL != playerLeft)
         playerLeft->setIsReady(false);
+    if(NULL != playerHero)
+        playerHero->setIsReady(false);
 }
 
 
@@ -1567,6 +1569,12 @@ void MahjongView::addCoustomListener(){
             std::vector<std::string> strvce = StringUtil::split(newMsgData.heroPokers, ",");
             GAMEDATA::getInstance()->setHeroJongs(strvce);
         }
+        if(NULL != playerRight)
+            playerRight->setIsReady(false);
+        if(NULL != playerOpposite)
+            playerOpposite->setIsReady(false);
+        if(NULL != playerLeft)
+            playerLeft->setIsReady(false);
         playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
         guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
