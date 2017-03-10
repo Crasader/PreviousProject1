@@ -359,6 +359,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleGongGaoInfo(msg);
             break;
         }
+        case MSGCODE_IDCARD_RESPONSE:{
+            handleCertification(msg);
+            break;
+        }
         default:
             break;
     }
@@ -719,8 +723,9 @@ void MsgHandler::handleCertification(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
-    char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
-   postNotifyMessage(MSG_GET_WAN_JIA_SHI_MING,&buf);
+    std:: string newResult = StringUtil::itos(result.GetInt());
+    char* buf = const_cast<char*>(newResult.c_str());
+    postNotifyMessage(MSG_GET_WAN_JIA_SHI_MING,&buf);
 }
 
 

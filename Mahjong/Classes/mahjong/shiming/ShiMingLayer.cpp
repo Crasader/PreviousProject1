@@ -66,7 +66,7 @@ bool ShiMingLayer::init(){
         _editName1 = ui::EditBox::create(Size(400, 50), ui::Scale9Sprite::create());
         _editName1->setPosition(Point(710, 460));
         _editName1->setTag(100);
-        _editName1->setFont("arial", 18);
+        _editName1->setFont("arial", 24);
         _editName1->setPlaceHolder("请输入姓名");
         _editName1->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);
         _editName1->setInputFlag(cocos2d::ui::EditBox::InputFlag::SENSITIVE);
@@ -77,7 +77,7 @@ bool ShiMingLayer::init(){
         _editName2 = ui::EditBox::create(Size(400, 50), ui::Scale9Sprite::create());
         _editName2->setPosition(Point(710, 350));
         _editName2->setTag(200);
-        _editName2->setFont("arial", 18);
+        _editName2->setFont("arial", 24);
         _editName2->setPlaceHolder("请输入身份证号码");
         _editName2->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);
         _editName2->setInputFlag(cocos2d::ui::EditBox::InputFlag::SENSITIVE);
@@ -85,7 +85,7 @@ bool ShiMingLayer::init(){
         _editName2->setDelegate(this);
         addChild(_editName2);
         
-        auto comfimImage = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_1.png",CC_CALLBACK_0(ShiMingLayer::comfirmInfo, this));
+        auto comfimImage = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",CC_CALLBACK_0(ShiMingLayer::comfirmInfo, this));
         auto myMneu = Menu::create(comfimImage,NULL);
         myMneu->setPosition(640,200);
         addChild(myMneu);
@@ -111,14 +111,14 @@ void ShiMingLayer::closeView(){
 void ShiMingLayer::onEnter(){
     Layer::onEnter();
     resultListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GET_WAN_JIA_SHI_MING, [=](EventCustom* event){
-        std::string result = static_cast<char*>(event->getUserData());
+        char* result = static_cast<char*>(event->getUserData());
+        int newResult = atoi(result);
         if(NULL != getChildByTag(300)){
-            if(result == "0"){
-                
-                getChildByTag(300)->setVisible(true);
-                
-            }else{
+            if(newResult == 1){
                 getChildByTag(300)->setVisible(false);
+                removeFromParent();
+            }else{
+                getChildByTag(300)->setVisible(true);
             }
         }
     });
@@ -131,8 +131,10 @@ void ShiMingLayer::onExit(){
 }
 
 void ShiMingLayer::comfirmInfo(){
-    if(_editName1->getText() != "" && _editName2->getText() != "")
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCertification(_editName1->getText(),_editName2->getText()));
+    std::string name = _editName1->getText();
+    std::string sfz = _editName2->getText();
+    if(name != "" && sfz != "")
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCertification(name,sfz));
 }
 
 void ShiMingLayer::editBoxEditingDidBegin(ui::EditBox* editBox){

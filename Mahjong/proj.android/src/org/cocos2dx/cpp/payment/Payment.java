@@ -97,7 +97,7 @@ public class Payment {
 		TbuWxUtil.getInstance().getWechatCode(getWeChatState(), new QueryCallBack() {
 			@Override
 			public void queryCallBackMsg(WxUserInfo info) {
-				if (!info.isResult()) {
+				if (null != info&&!info.isResult()) {
 					Debug.i("微信登录游戏...");
 					JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId(),info.getUnionid(),
 							info.getHeadImage(), info.getSex(), info.getNickName(), DeviceInfo.getProduct(),
