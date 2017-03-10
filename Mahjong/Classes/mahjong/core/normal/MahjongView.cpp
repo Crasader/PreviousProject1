@@ -98,8 +98,8 @@ void MahjongView::loadView(){
     battery->setPosition(0,0);
     addChild(battery,100);
     //语音聊天
-    SoundRecordBtn* soun = SoundRecordBtn::create();
-    addChild(soun,5);
+//    SoundRecordBtn* soun = SoundRecordBtn::create();
+//    addChild(soun,5);
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");

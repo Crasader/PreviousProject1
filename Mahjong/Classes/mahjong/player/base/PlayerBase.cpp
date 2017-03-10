@@ -530,7 +530,7 @@ void PlayerBase::onEnter(){
                     seatId = play->getSeatId();
                 }
             }
-
+            
             if(data.mark ){
                 if((data.poxiaoId != UserData::getInstance()->getPoxiaoId())){
                     GameAudioManage::getInstance()->playAudio(data.content,data.poxiaoId);
@@ -543,6 +543,12 @@ void PlayerBase::onEnter(){
                     sound->setFlippedX(false);
                 }else{
                     sound->setFlippedX(true);
+                    if(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seatId) == ClientSeatId::opposite){
+                        sound->setPosition(getVec2BySeatId(seatId).x+30,getVec2BySeatId(seatId).y-20);
+                    }else{
+                        sound->setPosition(getVec2BySeatId(seatId).x-20,getVec2BySeatId(seatId).y-20);
+                    }
+                    
                 }
             }else{
                 std::string content = data.content;
