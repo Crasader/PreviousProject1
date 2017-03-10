@@ -236,10 +236,12 @@ void LobbyScene::drawSceneTop(){
     addChild(chargLequan);
 
     //支付审核专用
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     gold_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
     gold_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
     goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
     chargGold->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
     lequan_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
     lequan_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
     lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
@@ -819,8 +821,10 @@ void LobbyScene::addEventListener(){
             getChildByTag(802)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != getChildByTag(803))
             getChildByTag(803)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         if(NULL != lequanNum)
             goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+
         if(NULL != getChildByTag(1298)){
             getChildByTag(1298)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         }
@@ -834,6 +838,7 @@ void LobbyScene::addEventListener(){
             firstMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
             ganTanhao->setVisible(UserData::getInstance()->isWeixinPayOpen());
         }
+#endif
     });
     
     showLoobyLoadingLayer = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_SHOW_LOADING_LAYER, [=](EventCustom* event){
