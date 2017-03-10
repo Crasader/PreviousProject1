@@ -764,14 +764,14 @@ void LobbyScene::addEventListener(){
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
             if(UserData::getInstance()->isWeixinPayOpen()){
                 FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-                addChild(charge,4);
+                addChild(charge,14);
             }else{
                 HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
-                addChild(hint,4);
+                addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
             FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-            addChild(charge,4);
+            addChild(charge,14);
 #endif
         }
     });
