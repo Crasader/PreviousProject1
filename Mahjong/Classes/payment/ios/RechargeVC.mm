@@ -1,6 +1,7 @@
 #import "payment/ios/RechargeVC.h"
-#import "sqlite3.h"
 #import "payment/ios/WxLoginHandler.h"
+#include "mahjong/GameConfig.h"
+#import "sqlite3.h"
 
 @implementation RechargeVC
 
@@ -149,7 +150,7 @@ sqlite3 *poxiaoDB = nil;
 -(void) checkReceiptIsValid:(NSString *) myOrderId receipt:(NSString *)myReceipt{
     NSLog(@"---checkReceiptIsValid---");
     //第一步，创建URL
-    NSURL *url = [NSURL URLWithString:@"http://183.129.206.54:1111/pay!iosOrderVerify.action"];
+    NSURL *url = [NSURL URLWithString:@"%s",APP_STORE_PAY_ORDER];
     //第二步，创建请求
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     //    NSString *post = [NSString stringWithFormat:@"{order_id:%@,receipt:%@}",myOrderId,myReceipt];

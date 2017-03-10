@@ -11,6 +11,7 @@
 #include "userdata/UserData.h"
 #import "payment/ios/WXApiManager.h"
 #import "sys/utsname.h"
+#include "mahjong/GameConfig.h"
 
 @interface LoginByWechat ()<UITextViewDelegate,WXApiDelegate>
 
@@ -89,7 +90,7 @@ static NSString *DEVICESTRING= @"iphone";
 - (void)sendLoginMsg2Server:(NSString*) code{
     
     //第一步，创建URL
-    NSString *urlstring = [NSString stringWithFormat:@"http://aliyun.5278-mobi.com:1111/pay!getWxAccessToken.action?appid=%@&code=%@",AppID,code];
+    NSString *urlstring = [NSString stringWithFormat:@"%s?appid=%@&code=%@",APP_WECHAT_LOGIN,AppID,code];
     NSURL *url = [NSURL URLWithString:urlstring];
     //第二步，创建请求
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
@@ -162,7 +163,7 @@ static NSString *DEVICESTRING= @"iphone";
 - (BOOL)checkTokenOutTime{
     //第一步，创建URL
     NSString *openidstr = [NSString stringWithFormat:@"%s", UserData::getInstance()->getWxOpenId().c_str()];
-    NSString *urlstring = [NSString stringWithFormat:@"http://aliyun.5278-mobi.com:1111/login!getIfExpire.action?openId=%@",openidstr];
+    NSString *urlstring = [NSString stringWithFormat:@"%s?openId=%@",APP_WECHAT_TOKEN_CHECK,openidstr];
     NSURL *url = [NSURL URLWithString:urlstring];
     //第二步，创建请求
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
@@ -293,7 +294,7 @@ static NSString *DEVICESTRING= @"iphone";
 }
 
 -(void) payWeChat:(NSString*) poxiaoId PayPoint:(NSString*) payPoint{
-    NSString* urlString= [NSString stringWithFormat:@"http://aliyun.5278-mobi.com:1111/pay!generateOrd.action?charge_type=1&tbu_id=201617&pay_platform=apple&game_version=1&hsman=ios&hstype=ios&imei=123456789&imsi=46000&channel_id=apple&request_pay_amount=1&poxiao_id=%@&pay_point=%@",poxiaoId,payPoint];
+    NSString* urlString= [NSString stringWithFormat:@"%s?charge_type=1&tbu_id=201617&pay_platform=apple&game_version=1&hsman=ios&hstype=ios&imei=123456789&imsi=46000&channel_id=apple&request_pay_amount=1&poxiao_id=%@&pay_point=%@",APP_WECHAT_PAY,poxiaoId,payPoint];
     NSLog(@"url:%@",urlString);
     //解析服务端返回json数据
     //加载一个NSURL对象
@@ -361,7 +362,7 @@ static NSString *DEVICESTRING= @"iphone";
 
 - (BOOL) queryPayResult{
     //    NSLog(@"poxiaoOrderId == %@",poxiaoOrderId);
-    NSString* urlString= [NSString stringWithFormat:@"http://aliyun.5278-mobi.com:1111/pay!findOrd.action?order_id=%s",UserData::getInstance()->getPoxiaoOrderID().c_str()];
+    NSString* urlString= [NSString stringWithFormat:@"%s?order_id=%s",PAY_WECHAT_QUERY_ORDER,UserData::getInstance()->getPoxiaoOrderID().c_str()];
     NSLog(@"url:%@",urlString);
     //解析服务端返回json数据
     //加载一个NSURL对象

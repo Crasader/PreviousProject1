@@ -8,11 +8,12 @@
 
 #import "payment/ios/IOSBridge.h"
 #import "payment/ios/StatusBarTool.h"
-#import "json/document.h"
-#import "json/rapidjson.h"
 #import "payment/ios/RechargeVC.h"
 #import "payment/ios/LoginByWechat.h"
 #include "userdata/UserData.h"
+#import "json/document.h"
+#import "json/rapidjson.h"
+#include "mahjong/GameConfig.h"
 
 #define RETURN_IF(cond)           if((cond)) return
 
@@ -104,7 +105,7 @@ void IOSBridge::doWechatShareImg(std::string filepath,int scene){
 void IOSBridge::getProductId(std::string poxiaoId,std::string payId){
     HttpRequest* request = new HttpRequest();
     request->setRequestType(HttpRequest::Type::GET);
-    request->setUrl(StringUtils::format("http://aliyun.5278-mobi.com:1111/pay!getIosPoint.action?pay_point=%s&tbu_id=%s&poxiao_id=%s",payId.c_str(),TBU_ID,poxiaoId.c_str()).c_str());
+    request->setUrl(StringUtils::format("%s?pay_point=%s&tbu_id=%s&poxiao_id=%s",APPLE_STORE_PAY_LIST,payId.c_str(),TBU_ID,poxiaoId.c_str()).c_str());
     request->setResponseCallback(CC_CALLBACK_2(IOSBridge::onHttpRequestCompleted, this));
     request->setTag("Get Product ID");
     HttpClient::getInstance()->send(request);
