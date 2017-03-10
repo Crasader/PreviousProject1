@@ -61,15 +61,15 @@ void PlayerHero::removeLastJong(){
 
 void PlayerHero::setIsReady(bool b){
     PlayerBase::setIsReady(b);
-
+    
 }
 
 void PlayerHero::hideInviteButton(){
-        if(NULL != getChildByTag(9998)){
-            if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>0){
-                getChildByTag(9998)->setVisible(false);
-            }
+    if(NULL != getChildByTag(9998)){
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom && atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>0){
+            getChildByTag(9998)->setVisible(false);
         }
+    }
 }
 
 bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
@@ -679,7 +679,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             currentJong = turnJong;
             setIsAllowPlay(true);
             if(data.hastinggang){
-                 ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
+                ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
             }
         }, 0, 0, 0.6f*replace.size(),"hua2pokerdelay");
     }
@@ -705,12 +705,13 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
 void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
     if(data.replace != ""){
         std::vector<std::string> replace = StringUtil::split(data.replace, ",");
-        setHuaNum(getHuaNum()+(int)replace.size());
+        if((int)replace.size()>0)
+            setHuaNum(getHuaNum()+(int)replace.size());
+        showPlayerHua(getHuaNum());
     }
     Jong* jong = Jong::create();
     jong->showJong(herohand, data.poker);
     addChild(jong);
-    showPlayerHua(getHuaNum());
     playerHandJongs.pushBack(jong);
     currentJong = jong;
     settleHandJongs(getHandPosX());
@@ -824,12 +825,12 @@ void PlayerHero::eraseHeroJong(Jong* jong){
 
 void PlayerHero::removePlayedIcon(){
     if(NULL!= playedIcon){
-            playedIcon->setVisible(false);
+        playedIcon->setVisible(false);
     }
 }
 
 void PlayerHero::doEventTimeOver(int type){
-//TODO
+    //TODO
 }
 
 
@@ -1218,7 +1219,7 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
         
         setHandPosX(getHandPosX() + JONG_WIDTH * 3);
         sortHandJongs(getHandPosX(), true);
-
+        
         PlayerCpgRecord record;
         record.type = CpgType::chi;
         record.pokersRecord = chiVector;
@@ -1254,7 +1255,7 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
 
 
 void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerBase* playerBase){
-
+    
     Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
     updateSelectedInfo(NULL);
     std::vector<string> pengpai = StringUtil::split(resp.playCpgt.peng, ",");
