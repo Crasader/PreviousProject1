@@ -619,7 +619,7 @@ void MsgHandler::otherClientReplace(std::string msg){
 
 
 
-// 苹果开关回复{code:158,poxiaoId:poxiaoId,result:0} 0关1开
+// 苹果开关回复{code:158,poxiaoId:poxiaoId,result:0} 0微信1苹果
 void MsgHandler::handleGamePayType(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
