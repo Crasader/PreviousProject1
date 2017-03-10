@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/wanjiaqun/WanJiaQunLayer.hpp"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/state/GameData.h"
 

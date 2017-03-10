@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/gonggao/GongGaoItem.hpp"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 
 

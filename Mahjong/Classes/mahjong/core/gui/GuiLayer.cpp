@@ -7,7 +7,7 @@
 #include "mahjong/chat/ChatDialog.hpp"
 #include "mahjong/audio/Audio.h"
 #include "mahjong/utils/SeatIdUtil.h"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "server/MsgHandler.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"

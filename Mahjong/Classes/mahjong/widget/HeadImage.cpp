@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/widget/HeadImage.hpp"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "userdata/UserData.h"
 #include "http/image/UrlImageMannger.h"
 

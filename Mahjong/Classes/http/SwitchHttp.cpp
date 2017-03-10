@@ -7,7 +7,7 @@
 //
 
 #include "SwitchHttp.hpp"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 
 SwitchHttp* SwitchHttp::_instance = 0;
 

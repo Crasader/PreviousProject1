@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/gonggao/GameGongGaoLayer.hpp"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 
 GameGongGaoLayer* GameGongGaoLayer::create(GameGongGao gonggaoData){

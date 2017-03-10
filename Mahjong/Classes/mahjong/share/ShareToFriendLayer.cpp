@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/share/ShareToFriendLayer.hpp"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "mahjong/state/GameData.h"
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"

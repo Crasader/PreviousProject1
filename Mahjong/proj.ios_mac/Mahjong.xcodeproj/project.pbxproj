@@ -437,6 +437,7 @@
 		D20474B71E5D36F7001F7121 /* SwitchHttp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwitchHttp.hpp; sourceTree = "<group>"; };
 		D2065FE91E6D26A3002869F4 /* GongGaoItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GongGaoItem.cpp; sourceTree = "<group>"; };
 		D2065FEA1E6D26A3002869F4 /* GongGaoItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GongGaoItem.hpp; sourceTree = "<group>"; };
+		D207A7431E7280DC00FF09DA /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		D212D5321E13A89900C29C00 /* LostNetwork2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork2.cpp; sourceTree = "<group>"; };
 		D212D5331E13A89900C29C00 /* LostNetwork2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork2.hpp; sourceTree = "<group>"; };
 		D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatteryInfo.cpp; sourceTree = "<group>"; };
@@ -616,7 +617,6 @@
 		D26778921DF00697003CE73F /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		D26778961DF00697003CE73F /* Chinese.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chinese.cpp; sourceTree = "<group>"; };
 		D26778971DF00697003CE73F /* Chinese.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chinese.h; sourceTree = "<group>"; };
-		D26778981DF00697003CE73F /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		D267789B1DF00697003CE73F /* SeatIdUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SeatIdUtil.cpp; sourceTree = "<group>"; };
 		D267789C1DF00697003CE73F /* SeatIdUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatIdUtil.h; sourceTree = "<group>"; };
 		D267789D1DF00697003CE73F /* StringUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringUtil.cpp; sourceTree = "<group>"; };
@@ -1029,6 +1029,7 @@
 		D26777E41DF00697003CE73F /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D207A7431E7280DC00FF09DA /* GameConfig.h */,
 				D2B3DDC11E7140FB0099B97E /* shiming */,
 				D29FB5501E6D0D2D00FD4B9A /* gonggao */,
 				D26779501DF01349003CE73F /* audio */,
@@ -1460,7 +1461,6 @@
 			children = (
 				D26778961DF00697003CE73F /* Chinese.cpp */,
 				D26778971DF00697003CE73F /* Chinese.h */,
-				D26778981DF00697003CE73F /* GameConfig.h */,
 				D267789B1DF00697003CE73F /* SeatIdUtil.cpp */,
 				D267789C1DF00697003CE73F /* SeatIdUtil.h */,
 				D267789D1DF00697003CE73F /* StringUtil.cpp */,

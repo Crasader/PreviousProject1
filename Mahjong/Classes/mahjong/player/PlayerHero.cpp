@@ -2,7 +2,7 @@
 #include "mahjong/core/normal/MahjongView.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/anim/HuaAnim.hpp"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "server/MsgConfig.h"

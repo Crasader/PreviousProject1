@@ -8,7 +8,7 @@
 #include "mahjong/state/GAMEDATA.h"
 #include "mahjong/utils/StringUtil.h"
 #include "server/MsgConfig.h"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 
 
 

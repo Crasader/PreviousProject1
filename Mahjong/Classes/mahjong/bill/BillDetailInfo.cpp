@@ -7,7 +7,7 @@
 #include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 
 bool BillDetailInfo::init()
 {

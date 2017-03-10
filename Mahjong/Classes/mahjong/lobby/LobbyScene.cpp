@@ -23,7 +23,7 @@
 #include "mahjong/widget/ScrollTextEx.h"
 #include "mahjong/friend/FriendRoom.h"
 #include "mahjong/audio/Audio.h"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "mahjong/widget/ParticleUtil.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"

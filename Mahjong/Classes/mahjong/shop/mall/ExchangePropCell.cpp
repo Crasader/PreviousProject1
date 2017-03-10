@@ -9,7 +9,7 @@
 #include "mahjong/shop/mall/ExchangePropCell.hpp"
 #include "mahjong/shop/mall/ExchangeItem.hpp"
 #include "mahjong/shop/ShopHintDialog.hpp"
-#include "mahjong/utils/GameConfig.h"
+#include "mahjong/GameConfig.h"
 #include "userdata/UserData.h"
 #include "http/image/UrlImageMannger.h"
 
