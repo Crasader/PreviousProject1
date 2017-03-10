@@ -150,7 +150,8 @@ sqlite3 *poxiaoDB = nil;
 -(void) checkReceiptIsValid:(NSString *) myOrderId receipt:(NSString *)myReceipt{
     NSLog(@"---checkReceiptIsValid---");
     //第一步，创建URL
-    NSURL *url = [NSURL URLWithString:@"%s",APP_STORE_PAY_ORDER];
+    NSString *urlstring = [NSString stringWithFormat:@"%s",APP_STORE_PAY_ORDER];
+    NSURL *url = [NSURL URLWithString:urlstring];
     //第二步，创建请求
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     //    NSString *post = [NSString stringWithFormat:@"{order_id:%@,receipt:%@}",myOrderId,myReceipt];
