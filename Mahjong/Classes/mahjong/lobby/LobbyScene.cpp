@@ -198,9 +198,11 @@ void LobbyScene::drawSceneTop(){
     //gold
     auto gold_bg = Sprite::create("mjlobby/room_info_bg.png");
     gold_bg->setPosition(462, 685);
+    gold_bg->setTag(801);
     addChild(gold_bg);
     auto gold_icon = Sprite::create("mjlobby/gold_icon.png");
     gold_icon->setPosition(380, 685);
+    gold_icon->setTag(802);
     addChild(gold_icon);
     goldNum = Label::createWithSystemFont(StringUtils::format("%d",UserData::getInstance()->getGold()),"Arial",24);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
@@ -210,7 +212,9 @@ void LobbyScene::drawSceneTop(){
     auto gold_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeGold, this));
     auto chargGold = Menu::create(gold_btn, NULL);
     chargGold->setPosition(543, 685);
+    chargGold->setTag(803);
     addChild(chargGold);
+
     
     
     //lequan
@@ -326,8 +330,12 @@ void LobbyScene::drawSceneBot(){
     auto openRoom = MenuItemImage::create("mjlobby/gold_room_btn_1.png", "mjlobby/gold_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showGoldRoomPad, this));
     auto openMenu = Menu::create(openRoom,NULL);
     openMenu->setPosition(1203,67);
+    openMenu->setTag(6656);
     addChild(openMenu);
-    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    //支付审核
+    openMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
 }
 
 //刷新显示的用户信息
@@ -815,16 +823,15 @@ void LobbyScene::addEventListener(){
             getChildByTag(903)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != lequanNum)
             lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         if(NULL != getChildByTag(801))
             getChildByTag(801)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != getChildByTag(802))
             getChildByTag(802)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != getChildByTag(803))
             getChildByTag(803)->setVisible(UserData::getInstance()->isWeixinPayOpen());
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-        if(NULL != lequanNum)
+        if(NULL != goldNum)
             goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
-
         if(NULL != getChildByTag(1298)){
             getChildByTag(1298)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         }
@@ -878,6 +885,10 @@ void LobbyScene::addEventListener(){
             GoldRoomPlate* plate = GoldRoomPlate::create(newData);
             plate->setTag(1298);
             addChild(plate,2);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+            //支付审核
+            plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomListRespListener, 1);
