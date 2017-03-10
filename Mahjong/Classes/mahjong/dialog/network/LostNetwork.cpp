@@ -34,16 +34,18 @@ bool LostNetwork::init(){
     addChild(showMsg);
 
     schedule([=](float dt){
-        if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-        }else{
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+        if(NetworkManage::getInstance()->reConnectSocket()){
+            int  delayTime = 2.5f;
+            schedule([=](float dt){
+                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                }else{
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                }
+            }, 0, 0, delayTime, "socket_reconnect3000");
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         }
-    }, 0, 2, 8.0f,"recomn");
-    
-    schedule([=](float dt){
-         Director::getInstance()->replaceScene(TransitionFade::create(0.8f,LobbyScene::create()));
-    }, 0, 0, 30.0f,"recomn2");
+    }, 0,0,2.0f,"recomn4000");
     
     return true;
 }

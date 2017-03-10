@@ -107,7 +107,6 @@ void ScrollTextEx::update(float delta) {
 }
 void ScrollTextEx::loadNewStr(std::string str)
 {
-	log("loadNewStr");
 
 	pMoved->setString(str);
 	pMoved->setPositionX(-contentX);

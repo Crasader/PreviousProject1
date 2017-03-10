@@ -57,8 +57,8 @@ void CocoaSocketManage::disConnectSocket(){
 }
 
 void CocoaSocketManage::disConnectSelf(){
-//    CocoaSocket *socket = [CocoaSocket sharedSocket];
-//    [socket disconnectSocket];
+    CocoaSocket *socket = [CocoaSocket sharedSocket];
+    [socket disconnectSocket];
 }
 
 

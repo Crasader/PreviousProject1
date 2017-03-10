@@ -199,23 +199,23 @@ void MahjongView::update(float dt){
         }
         GAMEDATA::getInstance()->setShowProtected(false);
     }
-    if(GAMEDATA::getInstance()->getWaitNetwork()){
+    if(GAMEDATA::getInstance()->getMahjongWaitNetwork()){
         if(NULL == getChildByTag(2000)){
             LostNetwork* net = LostNetwork::create();
             net->setTag(2000);
             addChild(net,200);
         }
-        NetworkManage::getInstance()->reConnectSocket();
-        int delayTime = 2.5;
-        schedule([=](float dt){
-            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-            if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-            }else{
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
-            }
-        }, 0, 0, delayTime, "socket_reconnect");
-        GAMEDATA::getInstance()->setWaitNetwork(false);
+//        NetworkManage::getInstance()->reConnectSocket();
+//        int delayTime = 2.5;
+//        schedule([=](float dt){
+//            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+//            if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+//                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+//            }else{
+//                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+//            }
+//        }, 0, 0, delayTime, "socket_reconnect");
+        GAMEDATA::getInstance()->setMahjongWaitNetwork(false);
     }
     
     if (GAMEDATA::getInstance()->getNeedAddPlayer()){

@@ -23,7 +23,7 @@ bool LostNetwork2::init(){
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
-
+    
     auto bg = Sprite::create("common/toast_bg_2.png");
     bg->setPosition(640,300);
     addChild(bg);
@@ -34,12 +34,18 @@ bool LostNetwork2::init(){
     addChild(showMsg);
     
     schedule([=](float dt){
-        if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-        }else{
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(), UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+        if(NetworkManage::getInstance()->reConnectSocket()){
+            int  delayTime = 2.5f;
+            schedule([=](float dt){
+                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                }else{
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                }
+            }, 0, 0, delayTime, "socket_reconnect1000");
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         }
-    }, 0, 2, 8.0f,"recomn3000");
-
+    }, 0,0,2.0f,"recomn2000");
+    
     return true;
 }

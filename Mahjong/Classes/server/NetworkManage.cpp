@@ -35,7 +35,8 @@ void NetworkManage::resetBeatCount(){
 }
 
 void NetworkManage::disConnectSocket(){
-    GAMEDATA::getInstance()->setWaitNetwork(true);
+    GAMEDATA::getInstance()->setMahjongWaitNetwork(true);
+//    GAMEDATA::getInstance()->setShowProtected(true);
 }
 
 bool NetworkManage::reConnectSocket(){

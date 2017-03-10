@@ -39,7 +39,7 @@
 #define WECHAT_WAN_JIA_QUN_URL "http://aliyun.5278-mobi.com:1112/qunewm.png"
 #define WECHAT_DAI_LI_QUN_URL "http://aliyun.5278-mobi.com:1112/dlewm.png"
 
-#define WECHAT_SHARE_LINK_PATH_1 "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2faliyun.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state="
+#define WECHAT_SHARE_LINK_PATH_1 "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state="
 #define WECHAT_SHARE_LINK_PATH_2 "&connect_redirect=1#wechat_redirect"
 
 #define IAMGE_LOADING "image_loading"

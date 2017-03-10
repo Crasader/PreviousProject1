@@ -99,7 +99,7 @@ public:
     CC_SYNTHESIZE(int, score, Score);
     CC_SYNTHESIZE(int, wanJiaQunVer, WanJiaQunVer);
     CC_SYNTHESIZE(int, dailiQunVer, DailiQunVer);
-    CC_SYNTHESIZE(bool, waitNetwork, WaitNetwork);//网络状态
+    CC_SYNTHESIZE(bool, mahjongWaitNetwork, MahjongWaitNetwork);//网络状态
     CC_SYNTHESIZE(bool, showProtected, ShowProtected);//从后台切回来
     CC_SYNTHESIZE(bool, haveShowNotice, HaveShowNotice);//是否展示过推广
     CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间

@@ -20,7 +20,7 @@ void GAMEDATA::init(){
     setIsGotoLobby(false);
     setIsInPay(false);
     setIsInGameScene(false);
-    setWaitNetwork(false);
+    setMahjongWaitNetwork(false);
     setShowProtected(false);
     setHaveShowNotice(false);
     setNeedShowLastResult(false);
