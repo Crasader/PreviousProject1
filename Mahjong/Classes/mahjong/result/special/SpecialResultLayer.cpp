@@ -61,7 +61,7 @@ void SpecialResultLayer::showGameReslut(){
     fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     fanghaoNum->setPosition(980,570);
     addChild(fanghaoNum);
-
+    
     
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
     for (int i=0; i<results.size();i++) {
@@ -74,11 +74,11 @@ void SpecialResultLayer::showGameReslut(){
 }
 
 void SpecialResultLayer::showLayerBtn(){
-
+    
     auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
                                            CC_CALLBACK_0(SpecialResultLayer::shareResult, this));
     auto golobby = MenuItemImage::create("result/go_lobby_btn_1.png","result/go_lobby_btn_2.png",
-                                           CC_CALLBACK_0(SpecialResultLayer::gotoLobby, this));
+                                         CC_CALLBACK_0(SpecialResultLayer::gotoLobby, this));
     
     Menu* myMneu = Menu::create(helpImage,golobby,NULL);
     myMneu->setPosition(640,60);
@@ -90,6 +90,8 @@ void SpecialResultLayer::showLayerBtn(){
     addChild(info);
     if(GAMEDATA::getInstance()->getPrivateRoomType() == "4"){
         info->setTexture("result/game_over_4.png");
+    }else if(GAMEDATA::getInstance()->getPrivateRoomType() == "16"){
+        info->setTexture("result/game_over_16.png");
     }else{
         info->setTexture("result/game_over_8.png");
     }

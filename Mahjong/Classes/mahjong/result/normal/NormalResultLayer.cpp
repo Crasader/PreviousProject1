@@ -114,6 +114,8 @@ void NormalResultLayer::showRoomInfo(){
         
         if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "4"){
             jucount->setTexture("result/4ju_bg.png");
+        }else if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "16"){
+            jucount->setTexture("result/16ju_bg.png");
         }else{
             jucount->setTexture("result/8ju_bg.png");
         }

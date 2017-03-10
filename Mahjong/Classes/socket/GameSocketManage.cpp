@@ -45,7 +45,7 @@ void GameSocketManage::startSocketBeat(std::string send){
 }
 
 void GameSocketManage::sendScoketData(std::string msg){
-//    log("send msg = %s",msg.c_str());
+    log("send msg = %s",msg.c_str());
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     CocoaSocketManage::getInstance()->sendScoketData(msg);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
