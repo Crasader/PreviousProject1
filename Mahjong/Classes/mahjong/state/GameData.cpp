@@ -28,6 +28,7 @@ void GAMEDATA::init(){
     setTurnHeroCpg(false);
     setIsFuPan(false);
     setIsSelected(true);
+    setFangzhuLequan("0");
     setShowDissolveDialog(false);
     setLogingGame(false);
     setShowDialogType(-1);
