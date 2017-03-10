@@ -116,7 +116,7 @@ void LobbyScene::signUpdate(float dt){
             addChild(charge,30);
             GAMEDATA::getInstance()->setShowDialogType(-1);
         }else{
-            HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+            HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
             addChild(hint,30);
         }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
@@ -494,7 +494,7 @@ void LobbyScene::chargeFangka(){
         ChargeFangka* charge = ChargeFangka::create();
         addChild(charge,3);
     }else{
-        HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+        HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
         addChild(hint,3);
     }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
@@ -662,7 +662,7 @@ void LobbyScene::addEventListener(){
                 addChild(charge,14);
                 GAMEDATA::getInstance()->setShowDialogType(-1);
             }else{
-                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
                 addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -692,7 +692,7 @@ void LobbyScene::addEventListener(){
                 addChild(charge,14);
                 GAMEDATA::getInstance()->setShowDialogType(-1);
             }else{
-                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
                 addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -766,7 +766,7 @@ void LobbyScene::addEventListener(){
                 FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
                 addChild(charge,14);
             }else{
-                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
                 addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)

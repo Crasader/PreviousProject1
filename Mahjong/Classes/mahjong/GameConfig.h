@@ -9,7 +9,7 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "11" //ios支付版本
+#define PAY_PLAT_VALUE "13" //ios支付版本
 
 #define SERVER_ADDRESS "aliyun.5278-mobi.com"
 #define SERVER_PORT 9999
