@@ -45,7 +45,7 @@ bool LostNetwork::init(){
             }, 0, 0, delayTime, "socket_reconnect3000");
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         }
-    }, 0,0,2.0f,"recomn4000");
+    }, 0,0,1.0f,"recomn4000");
     
     return true;
 }
