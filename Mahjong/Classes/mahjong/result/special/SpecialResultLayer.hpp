@@ -14,6 +14,8 @@ USING_NS_CC;
 class SpecialResultLayer :public  Layer{
 public:
     virtual bool init() override;
+    virtual void onEnter() override;
+    virtual void onExit() override;
     CREATE_FUNC(SpecialResultLayer);
 private:
     void showResultTitle();
@@ -23,6 +25,7 @@ private:
     void gotoLobby();
     void afterCaptured(bool succeed, const std::string &outputFile);
     void update(float dt);
+    EventListenerCustom* myCoreLoginRespListener;
 
 };
 #endif /* PublicResultLayer_hpp */

@@ -124,6 +124,19 @@ void SpecialResultLayer::afterCaptured(bool succeed, const std::string &outputFi
     }
 }
 
+void SpecialResultLayer::onEnter(){
+    Layer::onEnter();
+    myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+        Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(myCoreLoginRespListener, 1);
+}
+
+void SpecialResultLayer::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
+}
+
 void SpecialResultLayer::gotoLobby(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
     Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
