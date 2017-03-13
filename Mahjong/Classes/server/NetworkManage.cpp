@@ -35,7 +35,10 @@ void NetworkManage::resetBeatCount(){
 }
 
 void NetworkManage::disConnectSocket(){
-    GAMEDATA::getInstance()->setMahjongWaitNetwork(true);
+    Director ::getInstance ()-> getScheduler()-> performFunctionInCocosThread ([&, this ]{
+        //可以执行UI线程
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
+    });
 }
 
 bool NetworkManage::reConnectSocket(){

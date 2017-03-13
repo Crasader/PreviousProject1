@@ -113,6 +113,7 @@ private:
     EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* coreLoginRespListener;
     EventListenerCustom* fangZhuLeaveListener;
+    EventListenerCustom* networkBreakListener;
     
 	void addCoustomListener();
     void addOthersReadyListener();

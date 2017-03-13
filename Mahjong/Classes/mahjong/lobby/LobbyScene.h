@@ -53,6 +53,7 @@ private:
     EventListenerCustom* roomListRespListener;
     EventListenerCustom* lobbyReconnectRespListener;
     EventListenerCustom* gongGaoInfoListener;
+    EventListenerCustom* networkBreakListener;
     
 	void initView();
 	void drawSceneMid();

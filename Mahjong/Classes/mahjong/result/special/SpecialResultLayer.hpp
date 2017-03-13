@@ -26,6 +26,7 @@ private:
     void afterCaptured(bool succeed, const std::string &outputFile);
     void update(float dt);
     EventListenerCustom* myCoreLoginRespListener;
+    EventListenerCustom* networkBreakListener;
 
 };
 #endif /* PublicResultLayer_hpp */

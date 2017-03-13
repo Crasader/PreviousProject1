@@ -57,43 +57,25 @@ void LobbyScene::signUpdate(float dt){
         }
         GAMEDATA::getInstance()->setShowProtected(false);
     }
-    if(GAMEDATA::getInstance()->getMahjongWaitNetwork()){
-        if(NULL == getChildByTag(2000)){
-            LostNetwork2* net = LostNetwork2::create();
-            net->setTag(2000);
-            addChild(net,200);
-        }
-//        if(NetworkManage::getInstance()->reConnectSocket()){
-//            int  delayTime = 2.5f;
-//            schedule([=](float dt){
-//                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
-//                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-//                }else{
-//                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
-//                }
-//            }, 0, 0, delayTime, "socket_reconnect2000");
-//            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-//        }
-        GAMEDATA::getInstance()->setMahjongWaitNetwork(false);
-    }
+    
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
-                for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
-                    if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-        #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-                        if(UserData::getInstance()->isWeixinPayOpen()){
-                            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                            addChild(gold,30);
-                        }else{
-                            HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
-                            addChild(hint,100);
-                        }
-        #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                        addChild(gold,30);
-        #endif
-                    }
+        for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
+            if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+                if(UserData::getInstance()->isWeixinPayOpen()){
+                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                    addChild(gold,30);
+                }else{
+                    HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
+                    addChild(hint,100);
                 }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+                GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
+                addChild(gold,30);
+#endif
+            }
+        }
         GAMEDATA::getInstance()->setShowDialogType(-1);
     }
     else if(GAMEDATA::getInstance()->getShowDialogType() == 3){
@@ -211,7 +193,7 @@ void LobbyScene::drawSceneTop(){
     chargGold->setPosition(543, 685);
     chargGold->setTag(803);
     addChild(chargGold);
-
+    
     
     
     //lequan
@@ -235,7 +217,7 @@ void LobbyScene::drawSceneTop(){
     chargLequan->setTag(903);
     chargLequan->setPosition(770, 685);
     addChild(chargLequan);
-
+    
     //支付审核专用
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     gold_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
@@ -598,6 +580,8 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(roomListRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyReconnectRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(gongGaoInfoListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
+    
 }
 
 void LobbyScene::addEventListener(){
@@ -679,7 +663,7 @@ void LobbyScene::addEventListener(){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
-//            ChatAndroidMethod::getInstance()->createChatRoom(UserData::getInstance()->getPoxiaoId());
+            //            ChatAndroidMethod::getInstance()->createChatRoom(UserData::getInstance()->getPoxiaoId());
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
@@ -895,7 +879,7 @@ void LobbyScene::addEventListener(){
         if(getChildByTag(2000)!=NULL){
             getChildByTag(2000)->removeFromParent();
         }
-//        ChatAndroidMethod::getInstance()->loginChatServer(UserData::getInstance()->getPoxiaoId());
+        //        ChatAndroidMethod::getInstance()->loginChatServer(UserData::getInstance()->getPoxiaoId());
         Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyReconnectRespListener, 1);
@@ -910,6 +894,26 @@ void LobbyScene::addEventListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gongGaoInfoListener, 1);
     
+    
+    networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
+        if(NULL == getChildByTag(2000)){
+            LostNetwork2* net = LostNetwork2::create();
+            net->setTag(2000);
+            addChild(net,200);
+        }
+        if(NetworkManage::getInstance()->reConnectSocket()){
+            int  delayTime = 3.0f;
+            schedule([=](float dt){
+                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                }else{
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                }
+            }, 0, 0, delayTime, "socket_reconnect2000");
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
     //点击事件
     auto listener = EventListenerKeyboard::create();
     listener->onKeyReleased = [=](EventKeyboard::KeyCode code, Event * e){

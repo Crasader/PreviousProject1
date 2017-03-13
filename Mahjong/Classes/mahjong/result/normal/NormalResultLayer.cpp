@@ -272,14 +272,6 @@ void NormalResultLayer::updateTime(float dt){
         }
         GAMEDATA::getInstance()->setShowProtected(false);
     }
-    if(GAMEDATA::getInstance()->getMahjongWaitNetwork()){
-        if(NULL == getChildByTag(2000)){
-            LostNetwork2* net = LostNetwork2::create();
-            net->setTag(2000);
-            addChild(net,200);
-        }
-        GAMEDATA::getInstance()->setMahjongWaitNetwork(false);
-    }
     
     if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
@@ -322,6 +314,27 @@ void NormalResultLayer::onEnter(){
         Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(myCoreLoginRespListener, 1);
+    
+    networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
+        if(NULL == getChildByTag(2000)){
+            LostNetwork2* net = LostNetwork2::create();
+            net->setTag(2000);
+            addChild(net,200);
+        }
+        if(NetworkManage::getInstance()->reConnectSocket()){
+            int  delayTime = 3.0f;
+            schedule([=](float dt){
+                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                }else{
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                }
+            }, 0, 0, delayTime, "socket_reconnect2000");
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
+
 }
 
 void NormalResultLayer::onExit(){
@@ -330,4 +343,6 @@ void NormalResultLayer::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
+    
 }

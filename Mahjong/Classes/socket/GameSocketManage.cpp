@@ -30,7 +30,7 @@ GameSocketManage::GameSocketManage(){
 bool GameSocketManage::socketConnect(){
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-   return  CocoaSocketManage::getInstance()->connectSocket(SERVER_ADDRESS,SERVER_PORT);
+    return  CocoaSocketManage::getInstance()->connectSocket(SERVER_ADDRESS,SERVER_PORT);
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     return PxSocketManage::getInstance()->connectSocket(SERVER_ADDRESS,SERVER_PORT);
 #endif
@@ -54,7 +54,7 @@ void GameSocketManage::sendScoketData(std::string msg){
     
 }
 void GameSocketManage::receiveScoketData(std::string msg){
-//    log("receive msg = %s",msg.c_str());
+    //    log("receive msg = %s",msg.c_str());
     NetworkManage::getInstance()->receiveMsg(msg);
 }
 
@@ -67,12 +67,12 @@ void GameSocketManage::resetBeatCount(){
 }
 
 void GameSocketManage::disConnectSocket(){
-    NetworkManage::getInstance()->disConnectSocket();
+     NetworkManage::getInstance()->disConnectSocket();    
 }
 
 void GameSocketManage::disConnectSelf(){
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-//    CocoaSocketManage::getInstance()->disConnectSelf();
+    CocoaSocketManage::getInstance()->disConnectSelf();
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     PxSocketManage::getInstance()->disConnectSelf();
 #endif
