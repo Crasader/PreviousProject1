@@ -5496,9 +5496,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "836"
-            endingLineNumber = "836"
-            landmarkName = "PlayerHero::actionTing(HeroCpgRespData tingData)"
-            landmarkType = "7">
+            endingLineNumber = "836">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
