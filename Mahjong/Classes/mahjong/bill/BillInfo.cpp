@@ -148,7 +148,13 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->addChild(ju);
         
         //客户端写死，只有2中情况
-        Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",data.atype == "0" ? "8": "4"),"Arial",22);
+        std::string jushuNum = "8";
+        if(data.atype == "1"){
+            jushuNum = 4;
+        }else if(data.atype == "2"){
+            jushuNum = 16;
+        }
+        Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",jushuNum.c_str()),"Arial",22);
         jushu->setTag(401);
         jushu->setColor(Color3B(93,182,215));
         jushu->setAnchorPoint(Vec2::ZERO);
