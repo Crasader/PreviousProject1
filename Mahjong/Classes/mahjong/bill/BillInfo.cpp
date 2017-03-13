@@ -150,9 +150,9 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         //客户端写死，只有2中情况
         std::string jushuNum = "8";
         if(data.atype == "1"){
-            jushuNum = 4;
+            jushuNum = "4";
         }else if(data.atype == "2"){
-            jushuNum = 16;
+            jushuNum = "16";
         }
         Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",jushuNum.c_str()),"Arial",22);
         jushu->setTag(401);
@@ -197,7 +197,13 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
     }else{
         ((Label*)cell->getChildByTag(100))->setString(data.date);
         ((Label*)cell->getChildByTag(400))->setString(data.prid);
-        ((Label*)cell->getChildByTag(401))->setString(data.atype == "0" ? "8": "16");
+        std::string jushuNum = "8";
+        if(data.atype == "1"){
+            jushuNum = "4";
+        }else if(data.atype == "2"){
+            jushuNum = "16";
+        }
+        ((Label*)cell->getChildByTag(401))->setString(jushuNum);
         std::vector<BillContent> conBill = sortBillInfo(data.content);
         for (int i = 0; i < conBill.size(); i++){
             ((Label*)cell->getChildByTag(200+i))->setString(conBill.at(i).nickName);

@@ -66,7 +66,13 @@ bool BillDetailInfo::init()
     ju->setPosition(Vec2(750, 585));
     addChild(ju);
     
-    Label* jushu = Label::createWithSystemFont(data.atype == "0" ? "8": "4","Arial",22);
+    std::string jushuNum = "8";
+    if(data.atype == "1"){
+        jushuNum = "4";
+    }else if(data.atype == "2"){
+        jushuNum = "16";
+    }
+    Label* jushu = Label::createWithSystemFont(jushuNum,"Arial",22);
     jushu->setColor(Color3B(93,182,215));
     jushu->setAnchorPoint(Vec2::ZERO);
     jushu->setPosition(Vec2(800, 585));
