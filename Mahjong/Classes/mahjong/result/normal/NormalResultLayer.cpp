@@ -334,6 +334,26 @@ void NormalResultLayer::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
+    
+    //好友开房
+    openFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }
+    });
+    
+    enterFriendRoomListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }
+    });
+
 
 }
 
@@ -344,5 +364,7 @@ void NormalResultLayer::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     
 }

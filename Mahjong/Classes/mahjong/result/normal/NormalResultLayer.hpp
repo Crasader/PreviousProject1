@@ -24,6 +24,8 @@ private:
     EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* myCoreLoginRespListener;
     EventListenerCustom* networkBreakListener;
+    EventListenerCustom* openFriendRoomListener;
+    EventListenerCustom* enterFriendRoomListener;
     bool showDissolveDialog = false;
     void showGameResult();
     void showRoomInfo();

@@ -33,17 +33,20 @@ bool LostNetwork::init(){
     showMsg->setPosition(640,300);
     addChild(showMsg);
     
-//    if(NetworkManage::getInstance()->reConnectSocket()){
-//        int  delayTime = 2.5f;
-//        schedule([=](float dt){
-//            if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
-//                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
-//            }else{
-//                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
-//            }
-//        }, 0, 0, delayTime, "socket_reconnect3000");
-//        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
-//    }
+    schedule([=](float dt){
+        if(NetworkManage::getInstance()->reConnectSocket()){
+            int  delayTime = 2.5f;
+            schedule([=](float dt){
+                if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
+                }else{
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), GAMEDATA::getInstance()->getHsman(), GAMEDATA::getInstance()->getHstype(), GAMEDATA::getInstance()->getImsi(),GAMEDATA::getInstance()->getImei(),GAMEDATA::getInstance()->getAppVer(),true));
+                }
+            }, 0, 0, delayTime, "socket_reconnect2000");
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+        }
+        
+    }, 10, 2, 30, "socket_reconnect5000");
     
     return true;
 }
