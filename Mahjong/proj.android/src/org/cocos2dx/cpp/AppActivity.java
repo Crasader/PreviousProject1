@@ -55,10 +55,11 @@ public class AppActivity extends Cocos2dxActivity {
 	IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 	BatteryReceiver  batteryReceiver = new BatteryReceiver();
 	private static int batteryPer =100; 
-//	private static AVIMClient chatClient = null;
+	//	private static AVIMClient chatClient = null;
 	private static String conversitionId = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		com.youme.im.IMEngine.init(this);     
 		super.onCreate(savedInstanceState);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -103,15 +104,15 @@ public class AppActivity extends Cocos2dxActivity {
 	}
 
 	public static void loginChatServer(final String poxiaoId){
-//		chatClient = AVIMClient.getInstance(poxiaoId);
-//		chatClient.open(new AVIMClientCallback(){
-//			@Override
-//			public void done(AVIMClient client,AVIMException e){
-//				if(e==null){
-//					Debug.e("聊天服务器连接建立成功");
-//				}
-//			}
-//		});
+		//		chatClient = AVIMClient.getInstance(poxiaoId);
+		//		chatClient.open(new AVIMClientCallback(){
+		//			@Override
+		//			public void done(AVIMClient client,AVIMException e){
+		//				if(e==null){
+		//					Debug.e("聊天服务器连接建立成功");
+		//				}
+		//			}
+		//		});
 	}
 
 	/**
@@ -119,83 +120,83 @@ public class AppActivity extends Cocos2dxActivity {
 	 * @param poxiaoId
 	 */
 	public static void createRoom(final String poxiaoId){
-//		chatClient = AVIMClient.getInstance(poxiaoId);
-//		chatClient.open(new AVIMClientCallback(){
-//
-//			@Override
-//			public void done(AVIMClient client,AVIMException e){
-//				if(e==null){
-//					//登录成功
-//					//创建一个 名为 "ShangHaiMahjong"的暂态对话
-//					client.createConversation(Collections.<String>emptyList(),"ShangHaiMahjong"+poxiaoId,null,true,
-//							new AVIMConversationCreatedCallback(){
-//						@Override
-//						public void done(AVIMConversation conv,AVIMException e){
-//							Debug.e("成功创建了一个聊天室");
-//							conversitionId = conv.getConversationId();
-//						}
-//					});
-//				}
-//			}
-//		});
+		//		chatClient = AVIMClient.getInstance(poxiaoId);
+		//		chatClient.open(new AVIMClientCallback(){
+		//
+		//			@Override
+		//			public void done(AVIMClient client,AVIMException e){
+		//				if(e==null){
+		//					//登录成功
+		//					//创建一个 名为 "ShangHaiMahjong"的暂态对话
+		//					client.createConversation(Collections.<String>emptyList(),"ShangHaiMahjong"+poxiaoId,null,true,
+		//							new AVIMConversationCreatedCallback(){
+		//						@Override
+		//						public void done(AVIMConversation conv,AVIMException e){
+		//							Debug.e("成功创建了一个聊天室");
+		//							conversitionId = conv.getConversationId();
+		//						}
+		//					});
+		//				}
+		//			}
+		//		});
 	}
 
 	public static void addMenber(final String myPoxiaoId,final String tarPoxiaoId){
-//		chatClient = AVIMClient.getInstance(myPoxiaoId);
-//		chatClient.open(new AVIMClientCallback() {
-//			@Override
-//			public void done(AVIMClient client, AVIMException e) {
-//				if (e == null) {
-//					//登录成功
-//					final AVIMConversation conv = client.getConversation(conversitionId);
-//					conv.join(new AVIMConversationCallback() {
-//						@Override
-//						public void done(AVIMException e) {
-//							if (e == null) {
-//								//加入成功
-//								conv.addMembers(Arrays.asList(tarPoxiaoId), new AVIMConversationCallback() {
-//									@Override
-//									public void done(AVIMException e) {
-//										Debug.i("加入用户成功：用户："+tarPoxiaoId);
-//									}
-//								});
-//							}
-//						}
-//					});
-//				}
-//			}
-//		});
+		//		chatClient = AVIMClient.getInstance(myPoxiaoId);
+		//		chatClient.open(new AVIMClientCallback() {
+		//			@Override
+		//			public void done(AVIMClient client, AVIMException e) {
+		//				if (e == null) {
+		//					//登录成功
+		//					final AVIMConversation conv = client.getConversation(conversitionId);
+		//					conv.join(new AVIMConversationCallback() {
+		//						@Override
+		//						public void done(AVIMException e) {
+		//							if (e == null) {
+		//								//加入成功
+		//								conv.addMembers(Arrays.asList(tarPoxiaoId), new AVIMConversationCallback() {
+		//									@Override
+		//									public void done(AVIMException e) {
+		//										Debug.i("加入用户成功：用户："+tarPoxiaoId);
+		//									}
+		//								});
+		//							}
+		//						}
+		//					});
+		//				}
+		//			}
+		//		});
 	}
 
 	public static void sendChatInfo(String poxiaoId,final String sendMsg){
-//		chatClient = AVIMClient.getInstance(poxiaoId);
-//		chatClient.open(new AVIMClientCallback() {
-//			@Override
-//			public void done(AVIMClient client, AVIMException e) {
-//				if (e == null) {
-//					//登录成功
-//					final AVIMConversation conversation = client.getConversation(conversitionId);
-//					conversation.join(new AVIMConversationCallback() {
-//						@Override
-//						public void done(AVIMException e) {
-//							if (e == null) {
-//								AVIMTextMessage msg = new AVIMTextMessage();
-//								msg.setText(sendMsg);
-//								// 发送消息
-//								conversation.sendMessage(msg, new AVIMConversationCallback() {
-//
-//									@Override
-//									public void done(AVIMException e) {
-//										// TODO Auto-generated method stub
-//										Debug.e("发送消息");
-//									}
-//								});
-//
-//							}
-//						}
-//					});
-//				}
-//			}
-//		});
+		//		chatClient = AVIMClient.getInstance(poxiaoId);
+		//		chatClient.open(new AVIMClientCallback() {
+		//			@Override
+		//			public void done(AVIMClient client, AVIMException e) {
+		//				if (e == null) {
+		//					//登录成功
+		//					final AVIMConversation conversation = client.getConversation(conversitionId);
+		//					conversation.join(new AVIMConversationCallback() {
+		//						@Override
+		//						public void done(AVIMException e) {
+		//							if (e == null) {
+		//								AVIMTextMessage msg = new AVIMTextMessage();
+		//								msg.setText(sendMsg);
+		//								// 发送消息
+		//								conversation.sendMessage(msg, new AVIMConversationCallback() {
+		//
+		//									@Override
+		//									public void done(AVIMException e) {
+		//										// TODO Auto-generated method stub
+		//										Debug.e("发送消息");
+		//									}
+		//								});
+		//
+		//							}
+		//						}
+		//					});
+		//				}
+		//			}
+		//		});
 	}
 }

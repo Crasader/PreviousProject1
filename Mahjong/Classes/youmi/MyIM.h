@@ -35,9 +35,9 @@ private:
 private:
 	///IYIMLoginCallback
 
-	virtual void OnLogin(YIMErrorcode errorcode, const XCHAR* userID){};
+	virtual void OnLogin(YIMErrorcode errorcode, const XCHAR* userID);
 
-	virtual void OnLogout(YIMErrorcode errorcode){};
+	virtual void OnLogout(YIMErrorcode errorcode);
 
 	virtual void OnKickOff(){};
 private:
@@ -59,9 +59,9 @@ private:
 private:
 	//IYIMChatRoomCallback
 
-	virtual void OnJoinChatRoom(YIMErrorcode errorcode, const XCHAR* chatRoomID){};
+	virtual void OnJoinChatRoom(YIMErrorcode errorcode, const XCHAR* chatRoomID);
 
-	virtual void OnLeaveChatRoom(YIMErrorcode errorcode, const XCHAR* chatRoomID){};
+	virtual void OnLeaveChatRoom(YIMErrorcode errorcode, const XCHAR* chatRoomID);
 private: //utill
 	static std::string XcharToString(const XCHAR* _xstr);
 	static std::string XcharToString(XCHAR* _xstr);
