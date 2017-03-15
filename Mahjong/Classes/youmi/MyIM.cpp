@@ -50,8 +50,7 @@ YIMErrorcode MyIM::leaveRoom(std::string roomid)
 {
     YIMErrorcode ymErrorcode;
     ymErrorcode = MyIM::Inst()->GetChatRoomManager()->LeaveChatRoom(STRINGTOXCHAR(roomid.c_str()));
-    if (ymErrorcode != YIMErrorcode_Success)
-        return ymErrorcode;
+    return ymErrorcode;
 }
 
 YIMErrorcode MyIM::Logout()
@@ -136,7 +135,6 @@ void MyIM::OnDownload(XUINT64 messageID, YIMErrorcode errorcode, const XCHAR* sa
         messageID,
         (int)errorcode,
         STRINGTOXCHAR(AUDIO_PATH));
-    
     Audio::getInstance()->playNormalSound(XcharToString(savePath));
 }
 
@@ -145,18 +143,6 @@ void MyIM::OnSendAudioMessageStatus(XUINT64 requestID, YIMErrorcode errorcode, c
 {
     log("[YOUMILOG] MyIM::OnSendAudioMessageStatus requestID=%d,errorcode=%d,audioPath=%s,audioTime=%d", (int)requestID, (int)errorcode, XcharToString(audioPath).c_str(), audioTime);
 }
-
-//void  MyIM::StringToXchar(std::string _str, XCHAR* out)
-//{
-//	int nLength = MultiByteToWideChar(CP_ACP, 0, _str.c_str(), -1, NULL, NULL);
-//	std::wstring wszStr;
-//	wszStr.resize(nLength);
-//	LPWSTR lpwszStr = new wchar_t[nLength];
-//	MultiByteToWideChar(CP_ACP, 0, _str.c_str(), -1, lpwszStr, nLength);
-//	wszStr = lpwszStr;
-//
-//	out = wszStr.c_str();
-//}
 
 
 std::wstring  MyIM::StringToWString(std::string _str)
