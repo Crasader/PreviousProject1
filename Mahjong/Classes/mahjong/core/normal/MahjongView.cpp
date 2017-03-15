@@ -21,7 +21,7 @@
 #include "server/NetworkManage.h"
 #include "mahjong/chat/GameRecordAudioManage.h"
 #include "mahjong/core/widget/SoundRecordBtn.hpp"
-
+#include "youmi/MyIM.h"
 
 bool MahjongView::init(){
     if (!Layer::init())
@@ -45,6 +45,7 @@ bool MahjongView::init(){
 
 void MahjongView::onEnter(){
     Layer::onEnter();
+    MyIM::joinRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
     scheduleUpdate();
     addCoustomListener();
 }
@@ -1374,11 +1375,14 @@ void MahjongView::onEnterTransitionDidFinish(){
     }
     GAMEDATA::getInstance()->setIsInGameScene(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+    
+    
 }
 
 void MahjongView::onExit()
 {
     Layer::onExit();
+    MyIM::leaveRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
     Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);

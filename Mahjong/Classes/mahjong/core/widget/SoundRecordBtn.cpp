@@ -8,6 +8,8 @@
 
 #include "mahjong/core/widget/SoundRecordBtn.hpp"
 #include "mahjong/chat/GameRecordAudioManage.h"
+#include "mahjong/state/GameData.h"
+#include "youmi/MyIM.h"
 
 bool SoundRecordBtn::init(){
     if(!Layer::init()){
@@ -38,8 +40,8 @@ bool SoundRecordBtn::onTouchBegan(Touch *touch, Event  *event){
         soudn->setPosition(640,320);
         soudn->setTag(1789);
         addChild(soudn,5);
-        GameAudioManage::getInstance()->beginRecordAudio();
         startRecord = true;
+        MyIM::beginRecord(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()));
     }
     return true;
 }
@@ -55,13 +57,13 @@ void SoundRecordBtn::onTouchEnded(Touch *touch, Event  *event){
         return;
     playBtn->setTexture("gameview/chat_sound_1.png");
     if(startRecord){
-        GameAudioManage::getInstance()->endRecordAudio();
         if(NULL != getChildByTag(1789)){
             getChildByTag(1789)->removeFromParent();
         }
         statProtected = true;
         protectedTime =0;
         startRecord = false;
+        MyIM::endRecord();
     }
 }
 
