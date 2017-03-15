@@ -32,41 +32,31 @@ private:
 private:
 	//IYIMDownloadCallback
 	virtual void OnDownload(XUINT64 messageID, YIMErrorcode errorcode, const XCHAR* savePath);
+    
 private:
 	///IYIMLoginCallback
-
 	virtual void OnLogin(YIMErrorcode errorcode, const XCHAR* userID);
-
 	virtual void OnLogout(YIMErrorcode errorcode);
-
 	virtual void OnKickOff(){};
+    
 private:
 	//IYIMMessageCallback
-
 	virtual void OnSendMessageStatus(XUINT64 requestID, YIMErrorcode errorcode){};
-
 	virtual void OnSendAudioMessageStatus(XUINT64 requestID, YIMErrorcode errorcode, const XCHAR* text, const XCHAR* audioPath, unsigned int audioTime);
-
 	virtual void OnRecvMessage(IYIMMessage* message);
-
 	virtual void OnQueryHistoryMessage(YIMErrorcode errorcode, const XCHAR* targetID, int remain, std::list<IYIMMessage*> messageList){};
-
 	virtual void OnQueryRoomHistoryMessage(YIMErrorcode errorcode, std::list<IYIMMessage*> messageList){};
-
 	virtual void OnStopAudioSpeechStatus(YIMErrorcode errorcode, IAudioSpeechInfo* audioSpeechInfo) {};
-
 	virtual void OnReceiveMessageNotify(){};
+    
 private:
 	//IYIMChatRoomCallback
-
 	virtual void OnJoinChatRoom(YIMErrorcode errorcode, const XCHAR* chatRoomID);
-
 	virtual void OnLeaveChatRoom(YIMErrorcode errorcode, const XCHAR* chatRoomID);
+    
 private: //utill
 	static std::string XcharToString(const XCHAR* _xstr);
 	static std::string XcharToString(XCHAR* _xstr);
-
-
 	static std::wstring StringToWString(std::string _str);
 
 };
