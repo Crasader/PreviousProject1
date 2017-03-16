@@ -338,8 +338,6 @@
 		D2DB5DED1E790B440073ABD8 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DEC1E790B440073ABD8 /* libresolv.9.tbd */; };
 		D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DF21E790B9E0073ABD8 /* libz.tbd */; };
 		D2DB5DF51E790BDA0073ABD8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DF41E790BDA0073ABD8 /* AddressBook.framework */; };
-		D2DB5E681E7915EC0073ABD8 /* libycommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E591E7915EC0073ABD8 /* libycommon.a */; };
-		D2DB5E6A1E7915EC0073ABD8 /* libyim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E5A1E7915EC0073ABD8 /* libyim.a */; };
 		D2DB5E711E7916420073ABD8 /* libycommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E591E7915EC0073ABD8 /* libycommon.a */; };
 		D2DB5E721E7916420073ABD8 /* libyim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E5A1E7915EC0073ABD8 /* libyim.a */; };
 		D2DB5E741E7916A90073ABD8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E731E7916A90073ABD8 /* libsqlite3.0.tbd */; };
@@ -348,8 +346,7 @@
 		D2DB5E7A1E7917000073ABD8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E791E7917000073ABD8 /* AddressBook.framework */; };
 		D2DB5E7C1E7917270073ABD8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */; };
 		D2DB5E7E1E7917490073ABD8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */; };
-		D2DB5E811E791D4E0073ABD8 /* MyIM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DB5E7F1E791D4E0073ABD8 /* MyIM.cpp */; };
-		D2DB5E821E791D4E0073ABD8 /* MyIM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DB5E7F1E791D4E0073ABD8 /* MyIM.cpp */; };
+		D2DB5E871E7A2D0A0073ABD8 /* MyIM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DB5E851E7A2D0A0073ABD8 /* MyIM.cpp */; };
 		D2DD42401E30A4E70036A694 /* CardStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD423E1E30A4E70036A694 /* CardStack.cpp */; };
 		D2DD42411E30A4E70036A694 /* CardStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD423E1E30A4E70036A694 /* CardStack.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
@@ -738,8 +735,8 @@
 		D2DB5E791E7917000073ABD8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		D2DB5E7F1E791D4E0073ABD8 /* MyIM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyIM.cpp; sourceTree = "<group>"; };
-		D2DB5E801E791D4E0073ABD8 /* MyIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIM.h; sourceTree = "<group>"; };
+		D2DB5E851E7A2D0A0073ABD8 /* MyIM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyIM.cpp; sourceTree = "<group>"; };
+		D2DB5E861E7A2D0A0073ABD8 /* MyIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIM.h; sourceTree = "<group>"; };
 		D2DD423E1E30A4E70036A694 /* CardStack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CardStack.cpp; sourceTree = "<group>"; };
 		D2DD423F1E30A4E70036A694 /* CardStack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CardStack.hpp; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
@@ -806,8 +803,6 @@
 				D2DB5E781E7916EB0073ABD8 /* libz.tbd in Frameworks */,
 				D2DB5E761E7916BE0073ABD8 /* libresolv.9.tbd in Frameworks */,
 				D2DB5E741E7916A90073ABD8 /* libsqlite3.0.tbd in Frameworks */,
-				D2DB5E681E7915EC0073ABD8 /* libycommon.a in Frameworks */,
-				D2DB5E6A1E7915EC0073ABD8 /* libyim.a in Frameworks */,
 				ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */,
 				1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */,
 				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
@@ -1743,8 +1738,8 @@
 		D2DB5E421E7913090073ABD8 /* youmi */ = {
 			isa = PBXGroup;
 			children = (
-				D2DB5E7F1E791D4E0073ABD8 /* MyIM.cpp */,
-				D2DB5E801E791D4E0073ABD8 /* MyIM.h */,
+				D2DB5E851E7A2D0A0073ABD8 /* MyIM.cpp */,
+				D2DB5E861E7A2D0A0073ABD8 /* MyIM.h */,
 			);
 			path = youmi;
 			sourceTree = "<group>";
@@ -2037,6 +2032,7 @@
 				D267790F1DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
 				D26779011DF00698003CE73F /* PlayerLeft.cpp in Sources */,
 				D26778E91DF00698003CE73F /* HeroInfoEdit.cpp in Sources */,
+				D2DB5E871E7A2D0A0073ABD8 /* MyIM.cpp in Sources */,
 				D26778F11DF00698003CE73F /* Loading.cpp in Sources */,
 				D26779451DF00698003CE73F /* HeadImage.cpp in Sources */,
 				D2B3DDBF1E6EDE030099B97E /* GameRecordAudioManage.cpp in Sources */,
@@ -2106,7 +2102,6 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D267791B1DF00698003CE73F /* ChargeItem.cpp in Sources */,
 				D267790B1DF00698003CE73F /* ResultScene.cpp in Sources */,
-				D2DB5E811E791D4E0073ABD8 /* MyIM.cpp in Sources */,
 				D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D2B3DDBB1E6EDAE40099B97E /* CallRcordMecordios.mm in Sources */,
 				D2DD42401E30A4E70036A694 /* CardStack.cpp in Sources */,
@@ -2254,7 +2249,6 @@
 				D26778C41DF00697003CE73F /* GuiLayer.cpp in Sources */,
 				D2FB852B1E09254900257EE1 /* GoldRoomButton.cpp in Sources */,
 				D26778B01DF00697003CE73F /* HupaiAnim.cpp in Sources */,
-				D2DB5E821E791D4E0073ABD8 /* MyIM.cpp in Sources */,
 				D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */,
 				D26778E41DF00698003CE73F /* FriendRoom.cpp in Sources */,

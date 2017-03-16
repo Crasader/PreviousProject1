@@ -518,6 +518,7 @@ void PlayerBase::updatePlayerHeadImage(){
 
 void PlayerBase::onEnter(){
     Layer::onEnter();
+    
     roomChatListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CHAT_NOTIFY, [=](EventCustom* event){
         if(playerInfo->getSeatId() == GAMEDATA::getInstance()->getHeroSeatId()){
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
@@ -602,5 +603,6 @@ void PlayerBase::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(wechatImageListener);
+    
 }
 

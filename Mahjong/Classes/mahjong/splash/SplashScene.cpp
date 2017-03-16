@@ -394,7 +394,9 @@ void SplashScene::onEnter(){
         std::string result = buf;
         removeLoading();
         if (result == LOGIN_SUCCESS){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
             MyIM::login(UserData::getInstance()->getPoxiaoId(), UserData::getInstance()->getPoxiaoId());
+#endif            
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             
@@ -410,7 +412,9 @@ void SplashScene::onEnter(){
     
     //断线续玩
     reConnectAgain = EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         MyIM::login(UserData::getInstance()->getPoxiaoId(), UserData::getInstance()->getPoxiaoId());
+#endif
         GAMEDATA::getInstance()->setIsRecover(true);
         NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         Director::getInstance()->replaceScene(MjGameScene::create());
@@ -423,7 +427,9 @@ void SplashScene::onEnter(){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         if (result == "1"){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
             MyIM::login(UserData::getInstance()->getPoxiaoId(), UserData::getInstance()->getPoxiaoId());
+#endif
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
@@ -460,7 +466,9 @@ void SplashScene::onEnter(){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
             MyIM::login(UserData::getInstance()->getPoxiaoId(), UserData::getInstance()->getPoxiaoId());
+#endif
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));

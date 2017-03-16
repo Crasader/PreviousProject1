@@ -78,7 +78,7 @@ private:
     int mCDTime;
     std::vector<Jong*> needReplace;//需要替换的花牌
     EventListenerCustom* roomChatListener;
-    EventListenerCustom* wechatImageListener; 
+    EventListenerCustom* wechatImageListener;
     Sprite* tingTitle;
     Sprite* playerHua;
     Menu* headimage;

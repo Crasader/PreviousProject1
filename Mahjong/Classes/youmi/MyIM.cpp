@@ -16,13 +16,14 @@ MyIM* MyIM::myim = new MyIM();
 
 YIMManager * MyIM::Inst()
 {
+    
     if (NULL == _instance)
     {
-        
         _instance = YIMManager::CreateInstance();
         MyIM::init(_instance);
     }
     return _instance;
+    
 }
 void MyIM::init(YIMManager*psend)
 {

@@ -45,7 +45,9 @@ bool MahjongView::init(){
 
 void MahjongView::onEnter(){
     Layer::onEnter();
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     MyIM::joinRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
+#endif
     scheduleUpdate();
     addCoustomListener();
 }
@@ -1382,7 +1384,9 @@ void MahjongView::onEnterTransitionDidFinish(){
 void MahjongView::onExit()
 {
     Layer::onExit();
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     MyIM::leaveRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
+#endif
     Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);

@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/core/widget/SoundRecordBtn.hpp"
-#include "mahjong/chat/GameRecordAudioManage.h"
+#include "server/NetworkManage.h"
 #include "mahjong/state/GameData.h"
 #include "youmi/MyIM.h"
 
@@ -41,7 +41,9 @@ bool SoundRecordBtn::onTouchBegan(Touch *touch, Event  *event){
         soudn->setTag(1789);
         addChild(soudn,5);
         startRecord = true;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         MyIM::beginRecord(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()));
+#endif
     }
     return true;
 }
@@ -63,7 +65,10 @@ void SoundRecordBtn::onTouchEnded(Touch *touch, Event  *event){
         statProtected = true;
         protectedTime =0;
         startRecord = false;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         MyIM::endRecord();
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand("","",true));
+#endif
     }
 }
 
@@ -74,5 +79,5 @@ void SoundRecordBtn::update(float dt){
             statProtected = false;
         }
     }
-
+    
 }
