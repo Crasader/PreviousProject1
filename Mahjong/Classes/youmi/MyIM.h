@@ -23,6 +23,7 @@ public:
     static YIMErrorcode beginRecord(int roomid);
     static YIMErrorcode endRecord();
     static YIMErrorcode cancelRecord();
+     static int getlocationPathIndex();
     
 private:
 	static void init(YIMManager* psend);
@@ -58,6 +59,5 @@ private: //utill
 	static std::string XcharToString(const XCHAR* _xstr);
 	static std::string XcharToString(XCHAR* _xstr);
 	static std::wstring StringToWString(std::string _str);
-
 };
 

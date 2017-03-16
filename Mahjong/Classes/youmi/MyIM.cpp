@@ -3,7 +3,7 @@
 
 YIMManager* MyIM::_instance = NULL;
 MyIM* MyIM::myim = new MyIM();
-#define AUDIO_PATH (FileUtils::getInstance()->getWritablePath()+"xxx.wav").c_str()
+#define AUDIO_PATH  String::createWithFormat((FileUtils::getInstance()->getWritablePath()+"xxx%d.wav").c_str(),MyIM::getlocationPathIndex())->getCString()
 
 
 #if (CC_PLATFORM_WIN32==CC_TARGET_PLATFORM)
@@ -132,10 +132,7 @@ void MyIM::OnRecvMessage(IYIMMessage* pMessage)
 
 void MyIM::OnDownload(XUINT64 messageID, YIMErrorcode errorcode, const XCHAR* savePath)
 {
-    log("[YOUMILOG] OnDownload ,messageid is %llu ,errorcode is %d ,savePath is %s",
-        messageID,
-        (int)errorcode,
-        STRINGTOXCHAR(AUDIO_PATH));
+    log("[YOUMILOG] OnDownload ,messageid is %llu ,errorcode is %d ,savePath is %s",messageID,(int)errorcode,savePath);
     Audio::getInstance()->playNormalSound(XcharToString(savePath));
 }
 
@@ -145,6 +142,11 @@ void MyIM::OnSendAudioMessageStatus(XUINT64 requestID, YIMErrorcode errorcode, c
     log("[YOUMILOG] MyIM::OnSendAudioMessageStatus requestID=%d,errorcode=%d,audioPath=%s,audioTime=%d", (int)requestID, (int)errorcode, XcharToString(audioPath).c_str(), audioTime);
 }
 
+int MyIM::getlocationPathIndex()
+{
+    UserDefault::getInstance()->setIntegerForKey("YIMINDEX", UserDefault::getInstance()->getIntegerForKey("YIMINDEX", 0) + 1);
+    return UserDefault::getInstance()->getIntegerForKey("YIMINDEX", 0);
+}
 
 std::wstring  MyIM::StringToWString(std::string _str)
 {
