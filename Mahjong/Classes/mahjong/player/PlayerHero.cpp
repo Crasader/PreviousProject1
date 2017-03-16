@@ -133,7 +133,7 @@ void PlayerHero::onTouchMoved(Touch *touch, Event *event) {
                 addChild(virtualJong);
             }
             if (virtualJong != NULL)
-                virtualJong->setPosition(touch->getLocation());
+                virtualJong->setPosition(touch->getLocation() - touch->getPreviousLocation() + virtualJong->getPosition());
         }
     }
     else{
