@@ -3,6 +3,7 @@
 
 YIMManager* MyIM::_instance = NULL;
 MyIM* MyIM::myim = new MyIM();
+
 #define AUDIO_PATH  String::createWithFormat((FileUtils::getInstance()->getWritablePath()+"xxx%d.wav").c_str(),MyIM::getlocationPathIndex())->getCString()
 
 

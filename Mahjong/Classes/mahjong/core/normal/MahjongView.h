@@ -29,7 +29,6 @@ public:
     void onEnterTransitionDidFinish() override;
 	void showTingGangControllPad(PlayerCpgtData cpg);
 	void hideTingGangControllPad();
-    void heroPlayPokerAuto(int poker);
 	void showGuiLayer();
 	void startGameAgain();
     void startGameFirst();
@@ -79,7 +78,6 @@ private:
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data);//首次杠花
 	PlayerBase* getPlayerBySeatId(int sid);
-//    void touchEvent(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
 
     EventListenerCustom* gameFaPaiListener;
 	EventListenerCustom* addOtherReadyListener;
@@ -114,25 +112,5 @@ private:
     EventListenerCustom* coreLoginRespListener;
     EventListenerCustom* fangZhuLeaveListener;
     EventListenerCustom* networkBreakListener;
-    
-	void addCoustomListener();
-    void addOthersReadyListener();
-	void addPlayerTurnListener();
-	void addJongPlayedListener();
-	void addHeroCpgListener();//自己吃碰杠通知
-    void addHeroChiRespListener();//自己吃回复
-    void addHeroPengRespListener();//自己碰回复
-    void addHeroGangRespListener();//自己杠回复
-	void addGameResultListener();//胡牌结算
-	void addOthersChiListener();//其余玩家吃牌
-	void addOthersPengListener();//其余玩家碰牌
-	void addOthersGangListener();//其余玩家杠牌
-	void addPlayerTingNotifyListener();
-	void addHeroTingNotifyListener();
-	void addHeroTingRespListener();
-	void addLostConnectListener();
-    void addPlayerRemoveListener();
-    void addPlayerOffLineListener();
-    void addPlayerResumeListener();
 };
 #endif
