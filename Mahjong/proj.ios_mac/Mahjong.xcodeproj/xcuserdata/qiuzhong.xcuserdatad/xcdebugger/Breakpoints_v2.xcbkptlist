@@ -4969,7 +4969,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
             endingLineNumber = "180"
-            landmarkName = "MahjongView::startGameAgain()"
+            landmarkName = "MahjongView::update(float dt)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5145,7 +5145,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "579"
             endingLineNumber = "579"
-            landmarkName = "MahjongView::heroDoGang(Ref* psend)"
+            landmarkName = "MahjongView::heroDoCpgQi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -953,7 +953,6 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D2DB5E421E7913090073ABD8 /* youmi */,
 				D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */,
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
 				D28A4A0A1D0565C200741FD0 /* http */,
@@ -962,6 +961,7 @@
 				D2B1A85A1CCDF0F300A20896 /* server */,
 				D2B1A8641CCDF0F300A20896 /* socket */,
 				D2B1A86C1CCDF0F400A20896 /* userdata */,
+				D2DB5E421E7913090073ABD8 /* youmi */,
 			);
 			name = Classes;
 			path = ../Classes;

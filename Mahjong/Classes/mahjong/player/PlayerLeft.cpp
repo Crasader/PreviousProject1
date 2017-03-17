@@ -496,7 +496,7 @@ void PlayerLeft::recoverPlayed(std::string played){
         Jong* lastPlayedJong = Jong::create();
         lastPlayedJong->showJong(leftplayed, atoi(playeds.at(i).c_str()));
         lastPlayedJong->setPosition(getPlayedJongPos((int)playerPlayedJongs.size()));
-        this->addChild(lastPlayedJong);
+        addChild(lastPlayedJong);
         playerPlayedJongs.pushBack(lastPlayedJong);
     }
 }
