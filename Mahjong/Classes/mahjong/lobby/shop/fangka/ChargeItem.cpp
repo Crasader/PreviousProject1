@@ -8,7 +8,7 @@
 
 #include "mahjong/lobby/shop/fangka/ChargeItem.hpp"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 #define FANGKA_NUM 5
 
@@ -95,6 +95,6 @@ void ChargeItem::confirmCharge(Ref* ref){
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),StringUtils::format("%d",temp->getTag()));//从2开始
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),temp->getTag());
+    CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),temp->getTag());
 #endif
 }

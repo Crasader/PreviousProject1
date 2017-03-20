@@ -12,7 +12,7 @@
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/GameConfig.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 GoldNotEnoughDialog* GoldNotEnoughDialog::create(EnterRoomResp newRespData,int type){
     GoldNotEnoughDialog* ret = new GoldNotEnoughDialog();
@@ -127,14 +127,14 @@ void GoldNotEnoughDialog::chargeGold(){
             CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "4");
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-            IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),4);
+            CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),4);
 #endif
         }else if(getRoomType() == ROOM_2){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
             CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "5");
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-            IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),5);
+            CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),5);
 #endif
         }
         else if(getRoomType() == ROOM_3){
@@ -142,7 +142,7 @@ void GoldNotEnoughDialog::chargeGold(){
             CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "6");
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-            IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),6);
+            CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),6);
 #endif
         }
     }

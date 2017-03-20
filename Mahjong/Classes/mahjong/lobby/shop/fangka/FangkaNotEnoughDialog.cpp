@@ -8,7 +8,7 @@
 
 #include "mahjong/lobby/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
 
 
@@ -84,6 +84,6 @@ void FangkaNotEnoughDialog::confirmCharge(){
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"7");
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),7);
+    CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),7);
 #endif
 }

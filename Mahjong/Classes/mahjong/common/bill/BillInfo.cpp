@@ -8,7 +8,7 @@
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 bool BillInfo::init()
 {
@@ -318,7 +318,7 @@ void BillInfo::afterCaptured(bool succeed, const std::string &outputFile)
 #endif
         
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        IOSBridge::getInstance()->doWechatShareImg(outputFile, 0);
+        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 0);
 #endif
     }
 }

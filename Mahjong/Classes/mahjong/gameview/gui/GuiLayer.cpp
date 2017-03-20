@@ -12,7 +12,7 @@
 #include "server/MsgHandler.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 #include "wechat/android/CallAndroidMethod.h"
 
 

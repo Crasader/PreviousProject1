@@ -1,5 +1,5 @@
 //
-//  IOSBridge.cpp
+//  CallIOSMethod.cpp
 //  Mahjong
 //
 //  Created by qiuzhong on 16/9/19.
@@ -7,7 +7,7 @@
 //
 #import "json/document.h"
 #import "json/rapidjson.h"
-#import "wechat/ios/IOSBridge.h"
+#import "wechat/ios/CallIOSMethod.h"
 #import "wechat/ios/StatusBarTool.h"
 #import "wechat/ios/RechargeVC.h"
 #import "wechat/ios/LoginByWechat.h"
@@ -16,24 +16,24 @@
 
 #define RETURN_IF(cond)           if((cond)) return
 
-IOSBridge* IOSBridge::_instance = 0;
+CallIOSMethod* CallIOSMethod::_instance = 0;
 
-IOSBridge::IOSBridge(){
+CallIOSMethod::CallIOSMethod(){
     this->init();
 }
 
-void IOSBridge::init(){
+void CallIOSMethod::init(){
     //TODO
 }
 
-IOSBridge* IOSBridge::getInstance(){
+CallIOSMethod* CallIOSMethod::getInstance(){
     if (_instance == 0){
-        _instance = new IOSBridge();
+        _instance = new CallIOSMethod();
     }
     return _instance;
 }
 
-void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
+void CallIOSMethod::doPayEvent(std::string poxiaoId,int payId){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     //获取商品的编号
     if(UserData::getInstance()->isWeixinPayOpen()){
@@ -50,18 +50,18 @@ void IOSBridge::doPayEvent(std::string poxiaoId,int payId){
 }
 
 
-void IOSBridge::doWechatLogin(){
+void CallIOSMethod::doWechatLogin(){
     LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
     [loginByWechat sendAuthRequestScope];
 }
 
-bool IOSBridge::isWenxinInstalled(){
+bool CallIOSMethod::isWenxinInstalled(){
     LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
     bool result = [loginByWechat isWenxinInstalled];
     return result;
 }
 
-std::string IOSBridge::getBatteryPersent(){
+std::string CallIOSMethod::getBatteryPersent(){
     NSArray *infoArray = [[[[UIApplication sharedApplication] valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"] subviews];
     
     for (id info in infoArray)
@@ -76,7 +76,7 @@ std::string IOSBridge::getBatteryPersent(){
     return "100";
 }
 
-void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string content,int scene){
+void CallIOSMethod::doWechatShareWeb(std::string url,std::string title,std::string content,int scene){
     NSString* wxUrl = [[NSString alloc] initWithFormat:@"%s",url.c_str()];
     NSString *wxTitle= [[NSString alloc] initWithCString:title.c_str() encoding:NSUTF8StringEncoding];
     NSString* wxContent = [[NSString alloc] initWithCString:content.c_str() encoding:NSUTF8StringEncoding];
@@ -86,14 +86,14 @@ void IOSBridge::doWechatShareWeb(std::string url,std::string title,std::string c
 }
 
 
-void IOSBridge::doWechatShareApp(std::string title,std::string content){
+void CallIOSMethod::doWechatShareApp(std::string title,std::string content){
     NSString* wxTitle = [[NSString alloc] initWithFormat:@"%s",title.c_str()];
     NSString* wxContent = [[NSString alloc] initWithFormat:@"%s",content.c_str()];
     LoginByWechat* loginByWechat = [LoginByWechat sharedManager];
     [loginByWechat wechatShareApp:wxTitle ContentDescription:wxContent];
 }
 
-void IOSBridge::doWechatShareImg(std::string filepath,int scene){
+void CallIOSMethod::doWechatShareImg(std::string filepath,int scene){
     NSString *filePath=[NSString stringWithFormat:@"%s",filepath.c_str()];
     NSData *imageData = [NSData dataWithContentsOfFile:filePath];
     LoginByWechat* loginByWechat = [LoginByWechat sharedManager];
@@ -101,17 +101,17 @@ void IOSBridge::doWechatShareImg(std::string filepath,int scene){
 }
 
 
-void IOSBridge::getProductId(std::string poxiaoId,std::string payId){
+void CallIOSMethod::getProductId(std::string poxiaoId,std::string payId){
     HttpRequest* request = new HttpRequest();
     request->setRequestType(HttpRequest::Type::GET);
     request->setUrl(StringUtils::format("%s?pay_point=%s&tbu_id=%s&poxiao_id=%s",APPLE_STORE_PAY_LIST,payId.c_str(),TBU_ID,poxiaoId.c_str()).c_str());
-    request->setResponseCallback(CC_CALLBACK_2(IOSBridge::onHttpRequestCompleted, this));
+    request->setResponseCallback(CC_CALLBACK_2(CallIOSMethod::onHttpRequestCompleted, this));
     request->setTag("Get Product ID");
     HttpClient::getInstance()->send(request);
     request->release();
 }
 
-void IOSBridge::onHttpRequestCompleted(HttpClient *sender, HttpResponse *response){
+void CallIOSMethod::onHttpRequestCompleted(HttpClient *sender, HttpResponse *response){
     std::vector<char> *buffer;
     while (true)
     {

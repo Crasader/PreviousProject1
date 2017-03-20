@@ -11,7 +11,7 @@
 #include "mahjong/common/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 bool FirstChargeDialog::init(){
     
@@ -144,7 +144,7 @@ void FirstChargeDialog:: charge(){
     CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "1");
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),1);
+    CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),1);
 #endif
     removeFromParent();
 }

@@ -10,7 +10,7 @@
 #include "mahjong/GameConfig.h"
 #include "mahjong/common/state/GameData.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
 
 bool ShareToFriendLayer::init(){
@@ -290,7 +290,7 @@ void ShareToFriendLayer::doFaHongBaoPerson(){
     CallAndroidMethod::getInstance()->shareToWeChat(url,SHARE_TEXT_1, SHARE_TEXT_2,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string url = StringUtils::format("%s%s%s",WECHAT_SHARE_LINK_PATH_1,UserData::getInstance()->getPoxiaoId().c_str(),WECHAT_SHARE_LINK_PATH_2);
-    IOSBridge::getInstance()->doWechatShareWeb(url,SHARE_TEXT_1, SHARE_TEXT_2,0);
+    CallIOSMethod::getInstance()->doWechatShareWeb(url,SHARE_TEXT_1, SHARE_TEXT_2,0);
 #endif
 }
 
@@ -300,7 +300,7 @@ void ShareToFriendLayer:: doFaHongBaoFriend(){
     CallAndroidMethod::getInstance()->shareToWeChat(url,SHARE_TEXT_1, SHARE_TEXT_2,true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string url = StringUtils::format("%s%s%s",WECHAT_SHARE_LINK_PATH_1,UserData::getInstance()->getPoxiaoId().c_str(),WECHAT_SHARE_LINK_PATH_2);
-    IOSBridge::getInstance()->doWechatShareWeb(url, SHARE_TEXT_1, SHARE_TEXT_2,1);
+    CallIOSMethod::getInstance()->doWechatShareWeb(url, SHARE_TEXT_1, SHARE_TEXT_2,1);
 #endif
 }
 

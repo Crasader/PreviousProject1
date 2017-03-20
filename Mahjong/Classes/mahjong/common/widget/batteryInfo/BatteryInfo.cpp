@@ -1,6 +1,6 @@
 #include "mahjong/common/widget/batteryinfo/BatteryInfo.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 
 std::string gettime()
@@ -71,7 +71,7 @@ void BatteryInfo::updateInfo(float delta)
 #endif
 
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    batteryItem->setScaleX(atoi(IOSBridge::getInstance()->getBatteryPersent().c_str())/100.0f);
+    batteryItem->setScaleX(atoi(CallIOSMethod::getInstance()->getBatteryPersent().c_str())/100.0f);
 #endif
 
 }

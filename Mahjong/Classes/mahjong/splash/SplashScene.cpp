@@ -9,7 +9,7 @@
 #include "mahjong/common/utils/SeatIdUtil.h"
 #include "mahjong/common/audio/Audio.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
 #include "youmi/MyIM.h"
 
@@ -90,7 +90,7 @@ void SplashScene::loginByWechat(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwu03GkOg7nFWtqZPhqveKKM","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Tester01","APPLE","iphone","11111111111","11111111111","1.0.4"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doWechatLogin();
+    CallIOSMethod::getInstance()->doWechatLogin();
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->weChatLogin();
@@ -242,7 +242,7 @@ void SplashScene::showSplashAnim(){
     
     
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    if(IOSBridge::getInstance()->isWenxinInstalled()){
+    if(CallIOSMethod::getInstance()->isWenxinInstalled()){
         
         //按钮光效
         auto btnlight = Sprite::create("mainlogin/login_btn_light.png");

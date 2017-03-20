@@ -8,7 +8,7 @@
 #include "server/CommandManage.h"
 #include "server/MsgConfig.h"
 #include "server/SocketDataManage.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 #include "wechat/android/CallAndroidMethod.h"
 
 
@@ -398,7 +398,7 @@ void PlayerHero::inviteWechatFriend(){
     
     CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    IOSBridge::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,0);
+    CallIOSMethod::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,0);
 #endif
 }
 

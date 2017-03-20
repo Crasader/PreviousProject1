@@ -24,7 +24,7 @@
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 bool SpecialResultLayer::init(){
     if(!Layer::init()){
@@ -119,7 +119,7 @@ void SpecialResultLayer::afterCaptured(bool succeed, const std::string &outputFi
 #endif
         
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        IOSBridge::getInstance()->doWechatShareImg(outputFile, 0);
+        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 0);
 #endif
     }
 }

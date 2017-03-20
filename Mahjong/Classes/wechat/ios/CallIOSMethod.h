@@ -1,13 +1,13 @@
 //
-//  IOSBridge.hpp
+//  CallIOSMethod.hpp
 //  Mahjong
 //
 //  Created by qiuzhong on 16/9/19.
 //
 //
 
-#ifndef IOSBridge_hpp
-#define IOSBridge_hpp
+#ifndef CallIOSMethod_hpp
+#define CallIOSMethod_hpp
 
 
 #include "cocos2d.h"
@@ -18,9 +18,9 @@
 using namespace cocos2d;
 using namespace network;
 
-class IOSBridge{
+class CallIOSMethod{
 public:
-    static IOSBridge* getInstance();
+    static CallIOSMethod* getInstance();
     void doPayEvent(std::string poxiaoId,int payId);
     void doWechatLogin();
     bool isWenxinInstalled();
@@ -29,10 +29,10 @@ public:
     void doWechatShareApp(std::string title,std::string content);
     void doWechatShareImg(std::string filepath,int scene);
 private:
-    IOSBridge();
-    static IOSBridge* _instance;
+    CallIOSMethod();
+    static CallIOSMethod* _instance;
     void init();
     void getProductId(std::string poxiaoId,std::string payId);
     void onHttpRequestCompleted(HttpClient *sender, HttpResponse *response);
 };
-#endif /* IOSBridge_hpp */
+#endif /* CallIOSMethod_hpp */

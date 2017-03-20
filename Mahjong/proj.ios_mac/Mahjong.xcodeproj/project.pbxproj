@@ -250,13 +250,13 @@
 		D252FC8B1E7FB76700937322 /* CallAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC741E7FB76700937322 /* CallAndroidMethod.cpp */; };
 		D252FC8C1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC761E7FB76700937322 /* MahjongPayHandler.cpp */; };
 		D252FC8D1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC761E7FB76700937322 /* MahjongPayHandler.cpp */; };
-		D252FCAE1E7FB77F00937322 /* IOSBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FC9E1E7FB77F00937322 /* IOSBridge.mm */; };
+		D252FCAE1E7FB77F00937322 /* CallIOSMethod.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FC9E1E7FB77F00937322 /* CallIOSMethod.mm */; };
 		D252FCAF1E7FB77F00937322 /* LoginByWechat.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FCA01E7FB77F00937322 /* LoginByWechat.mm */; };
 		D252FCB01E7FB77F00937322 /* RechargeVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FCA21E7FB77F00937322 /* RechargeVC.mm */; };
 		D252FCB11E7FB77F00937322 /* StatusBarTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D252FCA41E7FB77F00937322 /* StatusBarTool.m */; };
-		D252FCB21E7FB77F00937322 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D252FCA61E7FB77F00937322 /* libWeChatSDK.a */; };
 		D252FCB31E7FB77F00937322 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FCAB1E7FB77F00937322 /* WXApiManager.mm */; };
 		D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FCAC1E7FB77F00937322 /* WxLoginHandler.cpp */; };
+		D252FCB61E7FC31300937322 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D252FCA61E7FB77F00937322 /* libWeChatSDK.a */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -650,8 +650,8 @@
 		D252FC751E7FB76700937322 /* CallAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallAndroidMethod.h; sourceTree = "<group>"; };
 		D252FC761E7FB76700937322 /* MahjongPayHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MahjongPayHandler.cpp; sourceTree = "<group>"; };
 		D252FC771E7FB76700937322 /* MahjongPayHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MahjongPayHandler.h; sourceTree = "<group>"; };
-		D252FC9D1E7FB77F00937322 /* IOSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSBridge.h; sourceTree = "<group>"; };
-		D252FC9E1E7FB77F00937322 /* IOSBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSBridge.mm; sourceTree = "<group>"; };
+		D252FC9D1E7FB77F00937322 /* CallIOSMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallIOSMethod.h; sourceTree = "<group>"; };
+		D252FC9E1E7FB77F00937322 /* CallIOSMethod.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CallIOSMethod.mm; sourceTree = "<group>"; };
 		D252FC9F1E7FB77F00937322 /* LoginByWechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginByWechat.h; sourceTree = "<group>"; };
 		D252FCA01E7FB77F00937322 /* LoginByWechat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginByWechat.mm; sourceTree = "<group>"; };
 		D252FCA11E7FB77F00937322 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
@@ -766,9 +766,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D252FCB61E7FC31300937322 /* libWeChatSDK.a in Frameworks */,
 				D2DB5E711E7916420073ABD8 /* libycommon.a in Frameworks */,
 				D2DB5E721E7916420073ABD8 /* libyim.a in Frameworks */,
-				D252FCB21E7FB77F00937322 /* libWeChatSDK.a in Frameworks */,
 				D2DB5DF51E790BDA0073ABD8 /* AddressBook.framework in Frameworks */,
 				D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */,
 				D2DB5DED1E790B440073ABD8 /* libresolv.9.tbd in Frameworks */,
@@ -1631,8 +1631,8 @@
 		D252FC9C1E7FB77F00937322 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				D252FC9D1E7FB77F00937322 /* IOSBridge.h */,
-				D252FC9E1E7FB77F00937322 /* IOSBridge.mm */,
+				D252FC9D1E7FB77F00937322 /* CallIOSMethod.h */,
+				D252FC9E1E7FB77F00937322 /* CallIOSMethod.mm */,
 				D252FC9F1E7FB77F00937322 /* LoginByWechat.h */,
 				D252FCA01E7FB77F00937322 /* LoginByWechat.mm */,
 				D252FCA11E7FB77F00937322 /* RechargeVC.h */,
@@ -2071,7 +2071,7 @@
 				D252FBA01E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D252FB5E1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
-				D252FCAE1E7FB77F00937322 /* IOSBridge.mm in Sources */,
+				D252FCAE1E7FB77F00937322 /* CallIOSMethod.mm in Sources */,
 				D252FBC61E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
 				D252FB421E7FA5EC00937322 /* InfoToast.cpp in Sources */,
 				D252FBBA1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
@@ -2331,7 +2331,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../Classes/payment/ios/wechat/",
+					"$(SRCROOT)/../Classes/wechat/ios/wechat/",
 					"$(SRCROOT)/../yim/lib/ios/",
 				);
 				OTHER_LDFLAGS = (
@@ -2384,7 +2384,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../Classes/payment/ios/wechat/",
+					"$(SRCROOT)/../Classes/wechat/ios/wechat/",
 					"$(SRCROOT)/../yim/lib/ios/",
 				);
 				OTHER_LDFLAGS = (

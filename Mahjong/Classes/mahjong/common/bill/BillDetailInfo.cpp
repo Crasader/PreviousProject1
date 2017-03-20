@@ -7,7 +7,7 @@
 #include "userdata/UserData.h"
 #include "server/NetworkManage.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 bool BillDetailInfo::init()
 {
@@ -282,7 +282,7 @@ void BillDetailInfo::shareFupan(Ref* ref){
     CallAndroidMethod::getInstance()->shareToWeChat(url,"我在小白相上海敲麻搓麻将了，输复盘码看回放.",StringUtils::format("复盘码:%s",fupanid.c_str()) ,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_HONGBAO_URL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
-    IOSBridge::getInstance()->doWechatShareWeb(url,"我在小白相上海敲麻搓麻将了，输复盘码看回放.", StringUtils::format("复盘码:%s",fupanid.c_str()),0);
+    CallIOSMethod::getInstance()->doWechatShareWeb(url,"我在小白相上海敲麻搓麻将了，输复盘码看回放.", StringUtils::format("复盘码:%s",fupanid.c_str()),0);
 #endif
 }
 
@@ -313,7 +313,7 @@ void BillDetailInfo::afterCaptured(bool succeed, const std::string &outputFile)
 #endif
         
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        IOSBridge::getInstance()->doWechatShareImg(outputFile, 0);
+        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 0);
 #endif
     }
 }

@@ -13,7 +13,7 @@
 #include "mahjong/common/loading/Loading.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/IOSBridge.h"
+#include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
 
 
