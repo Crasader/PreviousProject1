@@ -1,7 +1,8 @@
+#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/widget/Orientation.h"
+#include "mahjong/gameview/widget/CardStack.hpp"
+#include "mahjong/gameview/widget/SoundRecordBtn.hpp"
 #include "mahjong/anim/DealJongAnim.h"
-#include "mahjong/core/normal/MahjongView.h"
-#include "mahjong/core/widget/Orientation.h"
-#include "mahjong/core/widget/CardStack.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/state/GameData.h"
 #include "mahjong/utils/SeatIdUtil.h"
@@ -20,7 +21,6 @@
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "mahjong/chat/GameRecordAudioManage.h"
-#include "mahjong/core/widget/SoundRecordBtn.hpp"
 #include "youmi/MyIM.h"
 
 bool MahjongView::init(){

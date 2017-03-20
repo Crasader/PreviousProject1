@@ -1,4 +1,4 @@
-#include "mahjong/core/widget/Orientation.h"
+#include "mahjong/gameview/widget/Orientation.h"
 #include "mahjong/utils/SeatIdUtil.h"
 
 bool Orientation::init(){

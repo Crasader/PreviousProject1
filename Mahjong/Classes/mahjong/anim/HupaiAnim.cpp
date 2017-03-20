@@ -7,9 +7,9 @@
 //
 
 #include "mahjong/anim/HupaiAnim.hpp"
+#include "mahjong/gameview/normal/MahjongView.h"
 #include "mahjong/jong/Jong.h"
 #include "mahjong/utils/SeatIdUtil.h"
-#include "mahjong/core/normal/MahjongView.h"
 
 HupaiAnim*  HupaiAnim::create(MahjongHuType hutype,int jongType,int seatId1,std::vector<int> seatId2){
     HupaiAnim* hupai = new HupaiAnim();

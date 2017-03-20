@@ -1,5 +1,6 @@
 #include "mahjong/player/PlayerHero.h"
-#include "mahjong/core/normal/MahjongView.h"
+#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/widget/HuPaiHintLayer.hpp"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/anim/HuaAnim.hpp"
 #include "mahjong/GameConfig.h"
@@ -7,7 +8,6 @@
 #include "server/CommandManage.h"
 #include "server/MsgConfig.h"
 #include "server/SocketDataManage.h"
-#include "mahjong/core/widget/HuPaiHintLayer.hpp"
 
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)

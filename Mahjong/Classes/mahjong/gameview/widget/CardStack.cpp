@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/core/widget/CardStack.hpp"
+#include "mahjong/gameview/widget/CardStack.hpp"
 #include "mahjong/jong/Jong.h"
 #include "mahjong/state/GameData.h"
 #include "server/MsgConfig.h"

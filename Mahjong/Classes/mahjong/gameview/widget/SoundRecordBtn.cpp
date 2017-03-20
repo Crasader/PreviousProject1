@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/core/widget/SoundRecordBtn.hpp"
+#include "mahjong/gameview/widget/SoundRecordBtn.hpp"
 #include "server/NetworkManage.h"
 #include "mahjong/state/GameData.h"
 #include "youmi/MyIM.h"

@@ -1,6 +1,6 @@
 #ifndef __MAHJONG_VIEW__
 #define __MAHJONG_VIEW__
-#include "mahjong/core/gui/GuiLayer.h"
+#include "mahjong/gameview/gui/GuiLayer.h"
 #include "mahjong/jong/Jong.h"
 #include "mahjong/player/base/PlayerBase.h"
 #include "mahjong/player/PlayerLeft.h"

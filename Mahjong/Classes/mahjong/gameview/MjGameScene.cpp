@@ -1,6 +1,6 @@
-#include"mahjong/core/MjGameScene.h"
-#include"mahjong/core/normal/MahjongView.h"
-#include "mahjong/core/special/ReviewGame.h"
+#include"mahjong/gameview/MjGameScene.h"
+#include"mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/special/ReviewGame.h"
 
 bool MjGameScene::init(){
     if (!Scene::init()){

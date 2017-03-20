@@ -5,7 +5,7 @@
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/loading/Loading.h"
 #include "mahjong/state/GameData.h"
-#include "mahjong/core/MjGameScene.h"
+#include "mahjong/gameview/MjGameScene.h"
 #include "mahjong/setting/UserSetting.h"
 #include "mahjong/friend/FriendRoom.h"
 #include "mahjong/common/bill/BillInfo.h"

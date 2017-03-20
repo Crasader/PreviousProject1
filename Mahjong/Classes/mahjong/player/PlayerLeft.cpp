@@ -1,7 +1,7 @@
 #include "mahjong/player/PlayerLeft.h"
-#include "mahjong/core/normal/MahjongView.h"
+#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/special/ReviewGame.h"
 #include "mahjong/anim/HuaAnim.hpp"
-#include "mahjong/core/special/ReviewGame.h"
 
 bool PlayerLeft::init(){
     if (!PlayerBase::init()){
