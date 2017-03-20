@@ -1,6 +1,6 @@
 #include "mahjong/gameview/anim/DealJongAnim.h"
 #include "mahjong/gameview/normal/MahjongView.h"
-#include "mahjong/jong/Jong.h"
+#include "mahjong/common/jong/Jong.h"
 #include "server/MsgConfig.h"
 
 bool DealJongAnim::init(){

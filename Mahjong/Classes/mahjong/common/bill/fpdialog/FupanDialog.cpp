@@ -7,8 +7,8 @@
 //
 
 #include "mahjong/common/bill/fpdialog/FupanDialog.hpp"
+#include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
-#include "mahjong/state/GameData.h"
 
 bool FupanDialog::init(){
     if(!Layer::init()){

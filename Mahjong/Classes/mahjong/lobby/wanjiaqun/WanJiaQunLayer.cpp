@@ -7,9 +7,9 @@
 //
 
 #include "mahjong/lobby/wanjiaqun/WanJiaQunLayer.hpp"
+#include "mahjong/common/state/GameData.h"
 #include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
-#include "mahjong/state/GameData.h"
 
 bool WanJiaQunLayer::init(){
     if(!Layer::init()){

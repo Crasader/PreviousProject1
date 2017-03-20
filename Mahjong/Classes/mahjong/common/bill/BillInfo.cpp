@@ -1,14 +1,14 @@
 #include "mahjong/common/bill/BillInfo.h"
 #include "mahjong/common/bill/BillDetailInfo.h"
 #include "mahjong/common/bill/fpdialog/FupanDialog.hpp"
-#include "mahjong/loading/Loading.h"
-#include "mahjong/utils/StringUtil.h"
-#include "mahjong/utils/Chinese.h"
+#include "mahjong/common/loading/Loading.h"
+#include "mahjong/common/utils/StringUtil.h"
+#include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "payment/android/CallAndroidMethod.h"
-#import "payment/ios/IOSBridge.h"
+#include "payment/ios/IOSBridge.h"
 
 bool BillInfo::init()
 {

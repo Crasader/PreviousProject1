@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/lobby/shiming/ShiMingLayer.hpp"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
 
 bool ShiMingLayer::init(){

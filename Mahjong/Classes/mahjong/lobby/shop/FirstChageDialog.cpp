@@ -6,9 +6,9 @@
 //
 //
 
-#include "mahjong/shop/FirstChageDialog.hpp"
-#include "mahjong/state/GameData.h"
-#include "mahjong/loading/Loading.h"
+#include "mahjong/lobby/shop/FirstChageDialog.hpp"
+#include "mahjong/common/state/GameData.h"
+#include "mahjong/common/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"

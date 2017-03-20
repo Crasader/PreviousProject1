@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/lobby/notice/NoticeDialog.hpp"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 #include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 #include "server/NetworkManage.h"

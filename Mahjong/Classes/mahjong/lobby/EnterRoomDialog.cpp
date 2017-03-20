@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/lobby/EnterRoomDialog.hpp"
-#include "mahjong/shop/gold/ChargeGold.hpp"
+#include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "server/NetworkManage.h"
 
 

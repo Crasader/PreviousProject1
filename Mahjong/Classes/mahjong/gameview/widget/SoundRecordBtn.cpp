@@ -7,8 +7,8 @@
 //
 
 #include "mahjong/gameview/widget/SoundRecordBtn.hpp"
+#include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
-#include "mahjong/state/GameData.h"
 #include "youmi/MyIM.h"
 
 bool SoundRecordBtn::init(){

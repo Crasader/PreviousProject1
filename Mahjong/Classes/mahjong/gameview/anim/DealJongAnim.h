@@ -1,8 +1,8 @@
 #ifndef __DEAL_JONG_ANIM__
 #define __DEAL_JONG_ANIM__
 #include "cocos2d.h"
-#include "mahjong/utils/SeatIdUtil.h"
-#include "mahjong/state/DataStruct.h"
+#include "mahjong/common/utils/SeatIdUtil.h"
+#include "mahjong/common/state/DataStruct.h"
 
 USING_NS_CC;
 

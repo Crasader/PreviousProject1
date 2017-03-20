@@ -1,15 +1,16 @@
 #include "mahjong/gameview/player/base/PlayerBase.h"
 #include "mahjong/gameview/anim/PlayerCpgAnim.hpp"
 #include "mahjong/gameview/anim/HuaAnim.hpp"
-#include "mahjong/heroinfo/OtherPlayerInfo.hpp"
-#include "mahjong/chat/PlayerChatManage.hpp"
-#include "mahjong/widget/HeadImage.hpp"
+#include "mahjong/common/heroinfo/OtherPlayerInfo.hpp"
+#include "mahjong/common/chat/PlayerChatManage.hpp"
+#include "mahjong/common/widget/HeadImage.hpp"
+#include "mahjong/common/chat/GameRecordAudioManage.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
+#include "http/base64/base64.h"
 #include "ui/UIImageView.h"
 #include "ui/UIRichText.h"
-#include "http/base64/base64.h"
-#include "mahjong/chat/GameRecordAudioManage.h"
+
 
 Sprite* PlayerBase::biaoji = NULL;
 Sprite* PlayerBase::currentBigJongBg = NULL;

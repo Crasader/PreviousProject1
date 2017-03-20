@@ -7,10 +7,10 @@
 //
 
 #include "mahjong/result/normal/PlayerResultCell.hpp"
-#include "mahjong/widget/HeadImage.hpp"
-#include "mahjong/utils/Chinese.h"
-#include "mahjong/utils/StringUtil.h"
-#include "mahjong/utils/SeatIdUtil.h"
+#include "mahjong/common/widget/HeadImage.hpp"
+#include "mahjong/common/utils/Chinese.h"
+#include "mahjong/common/utils/StringUtil.h"
+#include "mahjong/common/utils/SeatIdUtil.h"
 #include "userdata/UserData.h"
 
 PlayerResultCell* PlayerResultCell::create(GameResultData data){

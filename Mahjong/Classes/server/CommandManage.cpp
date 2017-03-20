@@ -1,14 +1,14 @@
-#include "server/CommandManage.h"
 #include "json/document.h"
 #include "json/rapidjson.h"
 #include "json/stringbuffer.h"
 #include "json/prettywriter.h"
 #include "json/filestream.h"
-#include "userdata/UserData.h"
-#include "mahjong/state/GAMEDATA.h"
-#include "mahjong/utils/StringUtil.h"
-#include "server/MsgConfig.h"
+#include "server/CommandManage.h"
+#include "mahjong/common/state/GAMEDATA.h"
+#include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/GameConfig.h"
+#include "server/MsgConfig.h"
+#include "userdata/UserData.h"
 
 
 

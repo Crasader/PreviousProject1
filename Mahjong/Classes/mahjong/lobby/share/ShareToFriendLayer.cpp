@@ -8,9 +8,9 @@
 
 #include "mahjong/lobby/share/ShareToFriendLayer.hpp"
 #include "mahjong/GameConfig.h"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 #include "payment/android/CallAndroidMethod.h"
-#import "payment/ios/IOSBridge.h"
+#include "payment/ios/IOSBridge.h"
 #include "server/NetworkManage.h"
 
 bool ShareToFriendLayer::init(){

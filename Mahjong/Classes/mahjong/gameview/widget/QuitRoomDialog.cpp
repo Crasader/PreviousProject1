@@ -8,7 +8,7 @@
 
 #include "mahjong/gameview/widget/QuitRoomDialog.hpp"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
 
 

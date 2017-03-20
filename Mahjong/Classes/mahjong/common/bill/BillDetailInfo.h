@@ -2,7 +2,7 @@
 #define __BILL_DETAIL_INFO_H__
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 

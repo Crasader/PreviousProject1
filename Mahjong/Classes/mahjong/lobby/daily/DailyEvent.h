@@ -3,7 +3,7 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "mahjong/lobby/daily/pride/DailyPride.h"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
 USING_NS_CC;
 USING_NS_CC_EXT;

@@ -7,9 +7,9 @@
 //
 
 #include "mahjong/lobby/goldroom/GoldRoomButton.hpp"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
+#include "mahjong/common/loading/Loading.h"
 #include "server/NetworkManage.h"
-#include "mahjong/loading/Loading.h"
 #include "server/MsgConfig.h"
 
 GoldRoomButton* GoldRoomButton::create(int roomid,int base,int hua){

@@ -10,7 +10,7 @@
 #define GoldRoomPlate_hpp
 #include "cocos2d.h"
 #include "mahjong/lobby/goldroom/GoldRoomButton.hpp"
-#include "mahjong/state/DataStruct.h"
+#include "mahjong/common/state/DataStruct.h"
 USING_NS_CC;
 
 class GoldRoomPlate : public Layer{

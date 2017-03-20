@@ -10,7 +10,7 @@
 #define GameGongGao_hpp
 
 #include "cocos2d.h"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 #include "mahjong/lobby/gonggao/GongGaoItem.hpp"
 
 USING_NS_CC;

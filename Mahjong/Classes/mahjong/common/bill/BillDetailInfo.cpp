@@ -1,13 +1,13 @@
 #include "mahjong/common/bill/BillDetailInfo.h"
-#include "mahjong/state/GameData.h"
-#include "mahjong/utils/StringUtil.h"
-#include "mahjong/utils/Chinese.h"
-#include "mahjong/loading/Loading.h"
+#include "mahjong/common/state/GameData.h"
+#include "mahjong/common/utils/StringUtil.h"
+#include "mahjong/common/utils/Chinese.h"
+#include "mahjong/common/loading/Loading.h"
+#include "mahjong/GameConfig.h"
 #include "userdata/UserData.h"
 #include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
-#import "payment/ios/IOSBridge.h"
-#include "mahjong/GameConfig.h"
+#include "payment/ios/IOSBridge.h"
 
 bool BillDetailInfo::init()
 {

@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 
 
 GoldRoomPlate* GoldRoomPlate::create(RoomListData data){

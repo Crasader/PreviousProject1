@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/shop/fangka/ChargeItem.hpp"
+#include "mahjong/lobby/shop/fangka/ChargeItem.hpp"
 #include "payment/android/CallAndroidMethod.h"
 #include "payment/ios/IOSBridge.h"
 

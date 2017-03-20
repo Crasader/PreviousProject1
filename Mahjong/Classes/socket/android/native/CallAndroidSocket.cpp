@@ -7,7 +7,7 @@
 //
 
 #include "socket/android/native/CallAndroidSocket.hpp"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 #include "json/document.h"
 #include "json/stringbuffer.h"
 #include "json/writer.h"

@@ -7,9 +7,9 @@
 //
 
 #include "mahjong/result/special/GameResultCell.hpp"
-#include "mahjong/widget/HeadImage.hpp"
-#include "mahjong/utils/Chinese.h"
-#include "mahjong/utils/StringUtil.h"
+#include "mahjong/common/widget/HeadImage.hpp"
+#include "mahjong/common/utils/Chinese.h"
+#include "mahjong/common/utils/StringUtil.h"
 #include "userdata/UserData.h"
 
 
