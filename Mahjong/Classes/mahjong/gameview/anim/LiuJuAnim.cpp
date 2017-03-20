@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/anim/LiuJuAnim.hpp"
+#include "mahjong/gameview/anim/LiuJuAnim.hpp"
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/gameview/normal/MahjongView.h"
 
