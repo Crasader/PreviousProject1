@@ -6,7 +6,7 @@
 #include "mahjong/bill/BillInfo.h"
 #include "mahjong/dialog/prompt/HintDialog.hpp"
 #include "mahjong/dialog/prompt/TextHintDialog.hpp"
-#include "mahjong/daily/DailyEvent.h"
+#include "mahjong/lobby/daily/DailyEvent.h"
 #include "mahjong/shop/FirstChageDialog.hpp"
 #include "mahjong/shop/gold/ChargeGold.hpp"
 #include "mahjong/shop/fangka/ChargeFangka.hpp"

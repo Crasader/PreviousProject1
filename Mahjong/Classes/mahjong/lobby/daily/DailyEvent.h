@@ -2,7 +2,7 @@
 #define __DAILYEVENT_H__
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "mahjong/daily/pride/DailyPride.h"
+#include "mahjong/lobby/daily/pride/DailyPride.h"
 #include "mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 USING_NS_CC;
