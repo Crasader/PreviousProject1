@@ -26,8 +26,8 @@
 #include "mahjong/gameview/normal/MahjongView.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
-#include "payment/android/CallAndroidMethod.h"
-#import "payment/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 
 
 

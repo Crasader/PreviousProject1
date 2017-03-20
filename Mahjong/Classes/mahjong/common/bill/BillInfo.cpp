@@ -7,8 +7,8 @@
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
-#include "payment/android/CallAndroidMethod.h"
-#include "payment/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 
 bool BillInfo::init()
 {

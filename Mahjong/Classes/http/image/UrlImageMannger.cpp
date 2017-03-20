@@ -4,7 +4,7 @@
 #include "mahjong/GameConfig.h"
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
-#include "payment/android/CallAndroidMethod.h"
+#include "wechat/android/CallAndroidMethod.h"
 
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

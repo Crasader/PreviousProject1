@@ -9,8 +9,8 @@
 #include "mahjong/splash/LoadResource.hpp"
 #include "mahjong/splash/SplashScene.h"
 #include "mahjong/common/audio/Audio.h"
-#include "payment/android/CallAndroidMethod.h"
-#include "payment/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 
 Scene* LoadResource::createScene()
 {

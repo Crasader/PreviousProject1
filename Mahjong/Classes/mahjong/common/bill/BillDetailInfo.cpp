@@ -6,8 +6,8 @@
 #include "mahjong/GameConfig.h"
 #include "userdata/UserData.h"
 #include "server/NetworkManage.h"
-#include "payment/android/CallAndroidMethod.h"
-#include "payment/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 
 bool BillDetailInfo::init()
 {

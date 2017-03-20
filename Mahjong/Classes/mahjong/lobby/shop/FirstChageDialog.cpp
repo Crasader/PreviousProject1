@@ -10,8 +10,8 @@
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/loading/Loading.h"
 #include "server/NetworkManage.h"
-#include "payment/android/CallAndroidMethod.h"
-#include "payment/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 
 bool FirstChargeDialog::init(){
     

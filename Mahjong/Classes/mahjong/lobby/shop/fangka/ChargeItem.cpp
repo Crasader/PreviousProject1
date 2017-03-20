@@ -7,8 +7,8 @@
 //
 
 #include "mahjong/lobby/shop/fangka/ChargeItem.hpp"
-#include "payment/android/CallAndroidMethod.h"
-#include "payment/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 
 #define FANGKA_NUM 5
 

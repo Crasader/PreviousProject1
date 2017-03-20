@@ -3,10 +3,10 @@
 #include "mahjong/splash/LoadResource.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/audio/Audio.h"
-#include "payment/android/CallAndroidMethod.h"
+#include "wechat/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
 #include "server/SocketDataManage.h"
- #include "socket/GameSocketManage.hpp"
+#include "socket/GameSocketManage.hpp"
 
 USING_NS_CC;
 using namespace experimental;

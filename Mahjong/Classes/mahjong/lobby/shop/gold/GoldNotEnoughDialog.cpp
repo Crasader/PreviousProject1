@@ -11,8 +11,8 @@
 #include "mahjong/lobby/goldroom/GoldRoomButton.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/GameConfig.h"
-#include "payment/android/CallAndroidMethod.h"
-#include "payment/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 
 GoldNotEnoughDialog* GoldNotEnoughDialog::create(EnterRoomResp newRespData,int type){
     GoldNotEnoughDialog* ret = new GoldNotEnoughDialog();

@@ -57,7 +57,6 @@
 		D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
 		D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
-		D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */; };
 		D22F1C181CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D252FB1E1E7FA5EC00937322 /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA301E7FA5EC00937322 /* Audio.cpp */; };
@@ -247,6 +246,17 @@
 		D252FC6C1E7FABE900937322 /* QuitRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC411E7FABE900937322 /* QuitRoomDialog.cpp */; };
 		D252FC6D1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC431E7FABE900937322 /* SoundRecordBtn.cpp */; };
 		D252FC6E1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC431E7FABE900937322 /* SoundRecordBtn.cpp */; };
+		D252FC8A1E7FB76700937322 /* CallAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC741E7FB76700937322 /* CallAndroidMethod.cpp */; };
+		D252FC8B1E7FB76700937322 /* CallAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC741E7FB76700937322 /* CallAndroidMethod.cpp */; };
+		D252FC8C1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC761E7FB76700937322 /* MahjongPayHandler.cpp */; };
+		D252FC8D1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC761E7FB76700937322 /* MahjongPayHandler.cpp */; };
+		D252FCAE1E7FB77F00937322 /* IOSBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FC9E1E7FB77F00937322 /* IOSBridge.mm */; };
+		D252FCAF1E7FB77F00937322 /* LoginByWechat.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FCA01E7FB77F00937322 /* LoginByWechat.mm */; };
+		D252FCB01E7FB77F00937322 /* RechargeVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FCA21E7FB77F00937322 /* RechargeVC.mm */; };
+		D252FCB11E7FB77F00937322 /* StatusBarTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D252FCA41E7FB77F00937322 /* StatusBarTool.m */; };
+		D252FCB21E7FB77F00937322 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D252FCA61E7FB77F00937322 /* libWeChatSDK.a */; };
+		D252FCB31E7FB77F00937322 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FCAB1E7FB77F00937322 /* WXApiManager.mm */; };
+		D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FCAC1E7FB77F00937322 /* WxLoginHandler.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -283,16 +293,10 @@
 		D253297B1CC0D33600DDAD97 /* result in Resources */ = {isa = PBXBuildFile; fileRef = D25329521CC0D33600DDAD97 /* result */; };
 		D253297C1CC0D33600DDAD97 /* trusteeship in Resources */ = {isa = PBXBuildFile; fileRef = D25329531CC0D33600DDAD97 /* trusteeship */; };
 		D253297D1CC0D33600DDAD97 /* trusteeship in Resources */ = {isa = PBXBuildFile; fileRef = D25329531CC0D33600DDAD97 /* trusteeship */; };
-		D257FD761D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD6F1D6C2E2400B8C596 /* CallAndroidMethod.cpp */; };
-		D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD6F1D6C2E2400B8C596 /* CallAndroidMethod.cpp */; };
-		D257FD781D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */; };
-		D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */; };
-		D257FD7A1D6C2E2400B8C596 /* RechargeVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = D257FD751D6C2E2400B8C596 /* RechargeVC.mm */; };
 		D25DEE371CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE381CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE411CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
 		D25DEE421CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
-		D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27399681DF7BAC7008439C9 /* WXApiManager.mm */; };
 		D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -313,8 +317,6 @@
 		D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
 		D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
-		D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */ = {isa = PBXBuildFile; fileRef = D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */; };
-		D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */; };
 		D294FE1F1D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
 		D294FE201D9CFBE1005FB8A2 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */; };
 		D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D299F8C91E25BFDC00D10B0D /* CallAndroidSocket.cpp */; };
@@ -336,7 +338,6 @@
 		D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2B3DD981E6ED2F70099B97E /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD961E6ED2F70099B97E /* Base64.cpp */; };
 		D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD961E6ED2F70099B97E /* Base64.cpp */; };
-		D2C3FA561D9906FF00CFC80E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */; };
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
 		D2C3FA5A1D9909AE00CFC80E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */; };
 		D2C3FA5C1D9909EC00CFC80E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */; };
@@ -359,7 +360,6 @@
 		D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
 		D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
 		D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
-		D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */; };
 		D2FB85211E07B9F700257EE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2FB85201E07B9F700257EE1 /* Images.xcassets */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
@@ -453,8 +453,6 @@
 		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
 		D22912481D12C583005C7167 /* CommandManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandManage.h; sourceTree = "<group>"; };
-		D22A7EA21DEECD2500CC6CE2 /* StatusBarTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarTool.h; sourceTree = "<group>"; };
-		D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarTool.m; sourceTree = "<group>"; };
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D252FA301E7FA5EC00937322 /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
 		D252FA311E7FA5EC00937322 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
@@ -648,6 +646,26 @@
 		D252FC421E7FABE900937322 /* QuitRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuitRoomDialog.hpp; sourceTree = "<group>"; };
 		D252FC431E7FABE900937322 /* SoundRecordBtn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundRecordBtn.cpp; sourceTree = "<group>"; };
 		D252FC441E7FABE900937322 /* SoundRecordBtn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundRecordBtn.hpp; sourceTree = "<group>"; };
+		D252FC741E7FB76700937322 /* CallAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallAndroidMethod.cpp; sourceTree = "<group>"; };
+		D252FC751E7FB76700937322 /* CallAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallAndroidMethod.h; sourceTree = "<group>"; };
+		D252FC761E7FB76700937322 /* MahjongPayHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MahjongPayHandler.cpp; sourceTree = "<group>"; };
+		D252FC771E7FB76700937322 /* MahjongPayHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MahjongPayHandler.h; sourceTree = "<group>"; };
+		D252FC9D1E7FB77F00937322 /* IOSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSBridge.h; sourceTree = "<group>"; };
+		D252FC9E1E7FB77F00937322 /* IOSBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSBridge.mm; sourceTree = "<group>"; };
+		D252FC9F1E7FB77F00937322 /* LoginByWechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginByWechat.h; sourceTree = "<group>"; };
+		D252FCA01E7FB77F00937322 /* LoginByWechat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginByWechat.mm; sourceTree = "<group>"; };
+		D252FCA11E7FB77F00937322 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
+		D252FCA21E7FB77F00937322 /* RechargeVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RechargeVC.mm; sourceTree = "<group>"; };
+		D252FCA31E7FB77F00937322 /* StatusBarTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarTool.h; sourceTree = "<group>"; };
+		D252FCA41E7FB77F00937322 /* StatusBarTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarTool.m; sourceTree = "<group>"; };
+		D252FCA61E7FB77F00937322 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		D252FCA71E7FB77F00937322 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		D252FCA81E7FB77F00937322 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		D252FCA91E7FB77F00937322 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		D252FCAA1E7FB77F00937322 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		D252FCAB1E7FB77F00937322 /* WXApiManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXApiManager.mm; sourceTree = "<group>"; };
+		D252FCAC1E7FB77F00937322 /* WxLoginHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WxLoginHandler.cpp; sourceTree = "<group>"; };
+		D252FCAD1E7FB77F00937322 /* WxLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WxLoginHandler.h; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -666,16 +684,8 @@
 		D25329511CC0D33600DDAD97 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		D25329521CC0D33600DDAD97 /* result */ = {isa = PBXFileReference; lastKnownFileType = folder; path = result; sourceTree = "<group>"; };
 		D25329531CC0D33600DDAD97 /* trusteeship */ = {isa = PBXFileReference; lastKnownFileType = folder; path = trusteeship; sourceTree = "<group>"; };
-		D257FD6F1D6C2E2400B8C596 /* CallAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = CallAndroidMethod.cpp; sourceTree = "<group>"; };
-		D257FD701D6C2E2400B8C596 /* CallAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CallAndroidMethod.h; sourceTree = "<group>"; };
-		D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = MahjongPayHandler.cpp; sourceTree = "<group>"; };
-		D257FD721D6C2E2400B8C596 /* MahjongPayHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MahjongPayHandler.h; sourceTree = "<group>"; };
-		D257FD741D6C2E2400B8C596 /* RechargeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeVC.h; sourceTree = "<group>"; };
-		D257FD751D6C2E2400B8C596 /* RechargeVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RechargeVC.mm; sourceTree = "<group>"; };
 		D25DEE361CC0F56A007D428A /* bill */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bill; sourceTree = "<group>"; };
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
-		D27399671DF7BAC7008439C9 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
-		D27399681DF7BAC7008439C9 /* WXApiManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXApiManager.mm; sourceTree = "<group>"; };
 		D278ADB61DFFC23400C90B25 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		D278ADB81DFFC23400C90B25 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -693,10 +703,6 @@
 		D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientUtill.h; sourceTree = "<group>"; };
 		D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMannger.cpp; sourceTree = "<group>"; };
 		D28A4A0E1D0565C200741FD0 /* HttpMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpMannger.h; sourceTree = "<group>"; };
-		D294FE0D1D990B2B005FB8A2 /* LoginByWechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginByWechat.h; sourceTree = "<group>"; };
-		D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginByWechat.mm; sourceTree = "<group>"; };
-		D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WxLoginHandler.cpp; sourceTree = "<group>"; };
-		D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WxLoginHandler.h; sourceTree = "<group>"; };
 		D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		D299F8C91E25BFDC00D10B0D /* CallAndroidSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallAndroidSocket.cpp; sourceTree = "<group>"; };
 		D299F8CA1E25BFDC00D10B0D /* CallAndroidSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CallAndroidSocket.hpp; sourceTree = "<group>"; };
@@ -718,10 +724,6 @@
 		D2B3DD961E6ED2F70099B97E /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cpp; sourceTree = "<group>"; };
 		D2B3DD971E6ED2F70099B97E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
-		D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		D2C3FA531D9906FF00CFC80E /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		D2C3FA541D9906FF00CFC80E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		D2C3FA551D9906FF00CFC80E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		D2C3FA571D99081100CFC80E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
@@ -750,8 +752,6 @@
 		D2F05F461D8E360B006E5A4C /* MD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MD5.cpp; sourceTree = "<group>"; };
 		D2F05F471D8E360B006E5A4C /* MD5.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MD5.hpp; sourceTree = "<group>"; };
 		D2F05F701D8F8C4F006E5A4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IOSBridge.mm; sourceTree = "<group>"; };
-		D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSBridge.h; sourceTree = "<group>"; };
 		D2FB85201E07B9F700257EE1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Mahjong-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -768,6 +768,7 @@
 			files = (
 				D2DB5E711E7916420073ABD8 /* libycommon.a in Frameworks */,
 				D2DB5E721E7916420073ABD8 /* libyim.a in Frameworks */,
+				D252FCB21E7FB77F00937322 /* libWeChatSDK.a in Frameworks */,
 				D2DB5DF51E790BDA0073ABD8 /* AddressBook.framework in Frameworks */,
 				D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */,
 				D2DB5DED1E790B440073ABD8 /* libresolv.9.tbd in Frameworks */,
@@ -776,7 +777,6 @@
 				D2C3FA5A1D9909AE00CFC80E /* SystemConfiguration.framework in Frameworks */,
 				D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
-				D2C3FA561D9906FF00CFC80E /* libWeChatSDK.a in Frameworks */,
 				D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
@@ -955,12 +955,12 @@
 			children = (
 				D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */,
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
-				D252FA2D1E7FA5EC00937322 /* mahjong */,
 				D28A4A0A1D0565C200741FD0 /* http */,
-				D257FD6D1D6C2E2400B8C596 /* payment */,
+				D252FA2D1E7FA5EC00937322 /* mahjong */,
 				D2B1A85A1CCDF0F300A20896 /* server */,
 				D2B1A8641CCDF0F300A20896 /* socket */,
 				D2B1A86C1CCDF0F400A20896 /* userdata */,
+				D252FC721E7FB76700937322 /* wechat */,
 				D2DB5E421E7913090073ABD8 /* youmi */,
 			);
 			name = Classes;
@@ -1028,9 +1028,9 @@
 		D252FA2D1E7FA5EC00937322 /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
-				D252FC121E7FABE900937322 /* gameview */,
-				D252FA2E1E7FA5EC00937322 /* common */,
 				D252FA8D1E7FA5EC00937322 /* GameConfig.h */,
+				D252FA2E1E7FA5EC00937322 /* common */,
+				D252FC121E7FABE900937322 /* gameview */,
 				D252FACD1E7FA5EC00937322 /* lobby */,
 				D252FB0C1E7FA5EC00937322 /* result */,
 				D252FB191E7FA5EC00937322 /* splash */,
@@ -1608,44 +1608,55 @@
 			path = widget;
 			sourceTree = "<group>";
 		};
-		D257FD6D1D6C2E2400B8C596 /* payment */ = {
+		D252FC721E7FB76700937322 /* wechat */ = {
 			isa = PBXGroup;
 			children = (
-				D257FD6E1D6C2E2400B8C596 /* android */,
-				D257FD731D6C2E2400B8C596 /* ios */,
+				D252FC9C1E7FB77F00937322 /* ios */,
+				D252FC731E7FB76700937322 /* android */,
 			);
-			path = payment;
+			path = wechat;
 			sourceTree = "<group>";
 		};
-		D257FD6E1D6C2E2400B8C596 /* android */ = {
+		D252FC731E7FB76700937322 /* android */ = {
 			isa = PBXGroup;
 			children = (
-				D257FD6F1D6C2E2400B8C596 /* CallAndroidMethod.cpp */,
-				D257FD701D6C2E2400B8C596 /* CallAndroidMethod.h */,
-				D257FD711D6C2E2400B8C596 /* MahjongPayHandler.cpp */,
-				D257FD721D6C2E2400B8C596 /* MahjongPayHandler.h */,
+				D252FC741E7FB76700937322 /* CallAndroidMethod.cpp */,
+				D252FC751E7FB76700937322 /* CallAndroidMethod.h */,
+				D252FC761E7FB76700937322 /* MahjongPayHandler.cpp */,
+				D252FC771E7FB76700937322 /* MahjongPayHandler.h */,
 			);
 			path = android;
 			sourceTree = "<group>";
 		};
-		D257FD731D6C2E2400B8C596 /* ios */ = {
+		D252FC9C1E7FB77F00937322 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				D27399671DF7BAC7008439C9 /* WXApiManager.h */,
-				D27399681DF7BAC7008439C9 /* WXApiManager.mm */,
-				D22A7EA21DEECD2500CC6CE2 /* StatusBarTool.h */,
-				D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */,
-				D2F05F781D8FBEE8006E5A4C /* IOSBridge.h */,
-				D2F05F771D8FBEE8006E5A4C /* IOSBridge.mm */,
-				D294FE0D1D990B2B005FB8A2 /* LoginByWechat.h */,
-				D294FE0E1D990B2B005FB8A2 /* LoginByWechat.mm */,
-				D257FD741D6C2E2400B8C596 /* RechargeVC.h */,
-				D257FD751D6C2E2400B8C596 /* RechargeVC.mm */,
-				D2C3FA511D9906FF00CFC80E /* wechat */,
-				D294FE1B1D9A5A6B005FB8A2 /* WxLoginHandler.cpp */,
-				D294FE1C1D9A5A6B005FB8A2 /* WxLoginHandler.h */,
+				D252FC9D1E7FB77F00937322 /* IOSBridge.h */,
+				D252FC9E1E7FB77F00937322 /* IOSBridge.mm */,
+				D252FC9F1E7FB77F00937322 /* LoginByWechat.h */,
+				D252FCA01E7FB77F00937322 /* LoginByWechat.mm */,
+				D252FCA11E7FB77F00937322 /* RechargeVC.h */,
+				D252FCA21E7FB77F00937322 /* RechargeVC.mm */,
+				D252FCA31E7FB77F00937322 /* StatusBarTool.h */,
+				D252FCA41E7FB77F00937322 /* StatusBarTool.m */,
+				D252FCA51E7FB77F00937322 /* wechat */,
+				D252FCAA1E7FB77F00937322 /* WXApiManager.h */,
+				D252FCAB1E7FB77F00937322 /* WXApiManager.mm */,
+				D252FCAC1E7FB77F00937322 /* WxLoginHandler.cpp */,
+				D252FCAD1E7FB77F00937322 /* WxLoginHandler.h */,
 			);
 			path = ios;
+			sourceTree = "<group>";
+		};
+		D252FCA51E7FB77F00937322 /* wechat */ = {
+			isa = PBXGroup;
+			children = (
+				D252FCA61E7FB77F00937322 /* libWeChatSDK.a */,
+				D252FCA71E7FB77F00937322 /* WechatAuthSDK.h */,
+				D252FCA81E7FB77F00937322 /* WXApi.h */,
+				D252FCA91E7FB77F00937322 /* WXApiObject.h */,
+			);
+			path = wechat;
 			sourceTree = "<group>";
 		};
 		D278ADB41DFFC23400C90B25 /* ios */ = {
@@ -1741,17 +1752,6 @@
 				D2B3DD971E6ED2F70099B97E /* Base64.h */,
 			);
 			path = base64;
-			sourceTree = "<group>";
-		};
-		D2C3FA511D9906FF00CFC80E /* wechat */ = {
-			isa = PBXGroup;
-			children = (
-				D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */,
-				D2C3FA531D9906FF00CFC80E /* WechatAuthSDK.h */,
-				D2C3FA541D9906FF00CFC80E /* WXApi.h */,
-				D2C3FA551D9906FF00CFC80E /* WXApiObject.h */,
-			);
-			path = wechat;
 			sourceTree = "<group>";
 		};
 		D2DB5E421E7913090073ABD8 /* youmi */ = {
@@ -2025,12 +2025,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2F05F791D8FBEE8006E5A4C /* IOSBridge.mm in Sources */,
+				D252FC8C1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */,
 				D252FBC01E7FA5EC00937322 /* Huode.cpp in Sources */,
 				D252FB341E7FA5EC00937322 /* PlayerChatManage.cpp in Sources */,
 				D252FC651E7FABE900937322 /* CardStack.cpp in Sources */,
 				D252FBB41E7FA5EC00937322 /* ChargeFangka.cpp in Sources */,
-				D257FD761D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D252FB1E1E7FA5EC00937322 /* Audio.cpp in Sources */,
 				D252FBA81E7FA5EC00937322 /* GameGongGaoLayer.cpp in Sources */,
 				D252FBA41E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */,
@@ -2040,8 +2039,8 @@
 				D252FBA21E7FA5EC00937322 /* EnterRoomDialog.cpp in Sources */,
 				D252FB361E7FA5EC00937322 /* QuickChatLayer.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
+				D252FCB11E7FB77F00937322 /* StatusBarTool.m in Sources */,
 				D252FB441E7FA5EC00937322 /* ToastCell.cpp in Sources */,
-				D257FD7A1D6C2E2400B8C596 /* RechargeVC.mm in Sources */,
 				D252FC611E7FABE900937322 /* PlayerRight.cpp in Sources */,
 				D252FB641E7FA5EC00937322 /* ParticleUtil.cpp in Sources */,
 				D252FB601E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,
@@ -2060,20 +2059,19 @@
 				D252FC081E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */,
 				D252FC5D1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
 				D252FBD61E7FA5EC00937322 /* SpecialResultLayer.cpp in Sources */,
-				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */,
 				D252FC571E7FABE900937322 /* PlayerBase.cpp in Sources */,
+				D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */,
 				D252FBFB1E7FAA3100937322 /* LVRecordTool.m in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D252FB4A1E7FA5EC00937322 /* OtherPlayerInfo.cpp in Sources */,
 				D252FB5C1E7FA5EC00937322 /* SeatIdUtil.cpp in Sources */,
 				D252FC4B1E7FABE900937322 /* LiuJuAnim.cpp in Sources */,
-				D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */,
-				D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */,
 				D252FC0E1E7FABC700937322 /* FriendRoom.cpp in Sources */,
 				D252FBA01E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D252FB5E1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
+				D252FCAE1E7FB77F00937322 /* IOSBridge.mm in Sources */,
 				D252FBC61E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
 				D252FB421E7FA5EC00937322 /* InfoToast.cpp in Sources */,
 				D252FBBA1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
@@ -2091,7 +2089,7 @@
 				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D252FC591E7FABE900937322 /* PlayerHero.cpp in Sources */,
 				D252FBD01E7FA5EC00937322 /* PlayerResultCell.cpp in Sources */,
-				D257FD781D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
+				D252FC8A1E7FB76700937322 /* CallAndroidMethod.cpp in Sources */,
 				D252FBBC1E7FA5EC00937322 /* ChargeGold.cpp in Sources */,
 				D252FBBE1E7FA5EC00937322 /* GoldNotEnoughDialog.cpp in Sources */,
 				D252FBCA1E7FA5EC00937322 /* ShopHintDialog.cpp in Sources */,
@@ -2129,14 +2127,15 @@
 				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D252FBAE1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D252FBF91E7FAA3100937322 /* AudioRecordManager.m in Sources */,
-				D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */,
 				D252FB581E7FA5EC00937322 /* GameData.cpp in Sources */,
 				D252FC491E7FABE900937322 /* HupaiAnim.cpp in Sources */,
 				D252FBD81E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D252FC6D1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */,
+				D252FCAF1E7FB77F00937322 /* LoginByWechat.mm in Sources */,
 				D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
 				D252FB221E7FA5EC00937322 /* BillInfo.cpp in Sources */,
 				D252FBC41E7FA5EC00937322 /* ExchangePropCell.cpp in Sources */,
+				D252FCB31E7FB77F00937322 /* WXApiManager.mm in Sources */,
 				D252FBD21E7FA5EC00937322 /* ResultScene.cpp in Sources */,
 				D252FB241E7FA5EC00937322 /* FupanDialog.cpp in Sources */,
 				D252FBCE1E7FA5EC00937322 /* NormalResultLayer.cpp in Sources */,
@@ -2148,6 +2147,7 @@
 				D252FB501E7FA5EC00937322 /* Loading.cpp in Sources */,
 				D252FC511E7FABE900937322 /* GuiLayer.cpp in Sources */,
 				D252FB481E7FA5EC00937322 /* HeroInfoEdit.cpp in Sources */,
+				D252FCB01E7FB77F00937322 /* RechargeVC.mm in Sources */,
 				D252FB3C1E7FA5EC00937322 /* LostNetwork2.cpp in Sources */,
 				D252FC551E7FABE900937322 /* MahjongView.cpp in Sources */,
 				D252FB401E7FA5EC00937322 /* TextHintDialog.cpp in Sources */,
@@ -2163,7 +2163,6 @@
 				D252FBAB1E7FA5EC00937322 /* GongGaoItem.cpp in Sources */,
 				D252FC4A1E7FABE900937322 /* HupaiAnim.cpp in Sources */,
 				D252FC541E7FABE900937322 /* MjGameScene.cpp in Sources */,
-				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D252FC5E1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
 				D252FBDB1E7FA5EC00937322 /* SplashScene.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
@@ -2241,7 +2240,6 @@
 				D252FBBB1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
 				D252FB311E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
 				D252FBC31E7FA5EC00937322 /* ExchangeItem.cpp in Sources */,
-				D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D252FB491E7FA5EC00937322 /* HeroInfoEdit.cpp in Sources */,
 				D252FBA11E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */,
@@ -2255,6 +2253,7 @@
 				D252FB3F1E7FA5EC00937322 /* HintDialog.cpp in Sources */,
 				D252FBB11E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
 				D252FBC51E7FA5EC00937322 /* ExchangePropCell.cpp in Sources */,
+				D252FC8D1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */,
 				D252FBAF1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D252FBC71E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
@@ -2263,6 +2262,7 @@
 				D252FC6A1E7FABE900937322 /* Orientation.cpp in Sources */,
 				D252FC5A1E7FABE900937322 /* PlayerHero.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
+				D252FC8B1E7FB76700937322 /* CallAndroidMethod.cpp in Sources */,
 				D252FB371E7FA5EC00937322 /* QuickChatLayer.cpp in Sources */,
 				D252FB551E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D252FBD31E7FA5EC00937322 /* ResultScene.cpp in Sources */,

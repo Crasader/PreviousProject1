@@ -5,7 +5,7 @@
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/splash/SplashScene.h"
 #include "userdata/UserData.h"
-#include "payment/android/CallAndroidMethod.h"
+#include "wechat/android/CallAndroidMethod.h"
 
 
 bool UserInfo::init(){

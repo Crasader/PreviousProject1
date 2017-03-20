@@ -8,9 +8,9 @@
 #include "mahjong/common/loading/Loading.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 #include "mahjong/common/audio/Audio.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 #include "server/NetworkManage.h"
-#include "payment/android/CallAndroidMethod.h"
-#import "payment/ios/IOSBridge.h"
 #include "youmi/MyIM.h"
 
 Scene* SplashScene::createScene()

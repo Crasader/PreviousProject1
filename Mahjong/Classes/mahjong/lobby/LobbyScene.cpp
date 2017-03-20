@@ -29,7 +29,7 @@
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/common/chat/chatAndroid/ChatAndroidMethod.h"
 #include "mahjong/GameConfig.h"
-#include "payment/android/CallAndroidMethod.h"
+#include "wechat/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
 
 

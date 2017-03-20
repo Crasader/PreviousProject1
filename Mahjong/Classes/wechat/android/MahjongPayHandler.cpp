@@ -1,5 +1,5 @@
-#include "payment/android/MahjongPayHandler.h"
-#include "payment/android/CallAndroidMethod.h"
+#include "wechat/android/MahjongPayHandler.h"
+#include "wechat/android/CallAndroidMethod.h"
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "http/image/UrlImageMannger.h"

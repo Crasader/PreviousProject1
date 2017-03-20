@@ -1,6 +1,6 @@
 #include "mahjong/common/widget/batteryinfo/BatteryInfo.h"
-#include "payment/android/CallAndroidMethod.h"
-#import "payment/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/IOSBridge.h"
 
 
 std::string gettime()

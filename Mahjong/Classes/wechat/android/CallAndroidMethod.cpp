@@ -1,9 +1,9 @@
-#include "payment/android/CallAndroidMethod.h"
-#include "payment/android/MahjongPayHandler.h"
-#include "mahjong/common/state/GameData.h"
 #include "json/document.h"
 #include "json/stringbuffer.h"
 #include "json/writer.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/android/MahjongPayHandler.h"
+#include "mahjong/common/state/GameData.h"
 #define JAVA_SRC getJniPath()
 
 CallAndroidMethod* CallAndroidMethod::_instance = 0;
