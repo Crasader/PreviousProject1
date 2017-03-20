@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "mahjong/state/GameData.h"
-#include "mahjong/gonggao/GongGaoItem.hpp"
+#include "mahjong/lobby/gonggao/GongGaoItem.hpp"
 
 USING_NS_CC;
 

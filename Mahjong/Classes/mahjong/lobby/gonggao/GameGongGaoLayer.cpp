@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/gonggao/GameGongGaoLayer.hpp"
+#include "mahjong/lobby/gonggao/GameGongGaoLayer.hpp"
 #include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 

@@ -28,7 +28,7 @@
 #include "payment/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/dialog/network/LostNetwork2.hpp"
-#include "mahjong/gonggao/GameGongGaoLayer.hpp"
+#include "mahjong/lobby/gonggao/GameGongGaoLayer.hpp"
 #include "mahjong/chat/chatAndroid/ChatAndroidMethod.h"
 #include "mahjong/lobby/shiming/ShiMingLayer.hpp"
 

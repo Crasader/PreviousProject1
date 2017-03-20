@@ -51,8 +51,6 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
 		D20474B91E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
-		D2065FEB1E6D26A3002869F4 /* GongGaoItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2065FE91E6D26A3002869F4 /* GongGaoItem.cpp */; };
-		D2065FEC1E6D26A3002869F4 /* GongGaoItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2065FE91E6D26A3002869F4 /* GongGaoItem.cpp */; };
 		D212D5341E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
 		D212D5351E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
 		D212D5391E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
@@ -72,6 +70,10 @@
 		D25139A31E45D6CC00FAB9C9 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25139A01E45D6CC00FAB9C9 /* FupanDialog.cpp */; };
 		D252F9931E7F7B9700937322 /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */; };
 		D252F9941E7F7B9700937322 /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */; };
+		D252F99B1E7F7CC700937322 /* GameGongGaoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9971E7F7CC700937322 /* GameGongGaoLayer.cpp */; };
+		D252F99C1E7F7CC700937322 /* GameGongGaoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9971E7F7CC700937322 /* GameGongGaoLayer.cpp */; };
+		D252F99D1E7F7CC700937322 /* GongGaoItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9991E7F7CC700937322 /* GongGaoItem.cpp */; };
+		D252F99E1E7F7CC700937322 /* GongGaoItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9991E7F7CC700937322 /* GongGaoItem.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -307,8 +309,6 @@
 		D29E85B01E359C3700AFACEE /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29E85AD1E359C3700AFACEE /* ReviewGame.cpp */; };
 		D29E85B91E359CC200AFACEE /* MahjongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29E85B71E359CC200AFACEE /* MahjongView.cpp */; };
 		D29E85BA1E359CC200AFACEE /* MahjongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29E85B71E359CC200AFACEE /* MahjongView.cpp */; };
-		D29FB5531E6D0D4000FD4B9A /* GameGongGaoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29FB5511E6D0D4000FD4B9A /* GameGongGaoLayer.cpp */; };
-		D29FB5541E6D0D4000FD4B9A /* GameGongGaoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29FB5511E6D0D4000FD4B9A /* GameGongGaoLayer.cpp */; };
 		D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
 		D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
 		D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */; };
@@ -448,8 +448,6 @@
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwitchHttp.cpp; sourceTree = "<group>"; };
 		D20474B71E5D36F7001F7121 /* SwitchHttp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwitchHttp.hpp; sourceTree = "<group>"; };
-		D2065FE91E6D26A3002869F4 /* GongGaoItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GongGaoItem.cpp; sourceTree = "<group>"; };
-		D2065FEA1E6D26A3002869F4 /* GongGaoItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GongGaoItem.hpp; sourceTree = "<group>"; };
 		D207A7431E7280DC00FF09DA /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		D212D5321E13A89900C29C00 /* LostNetwork2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork2.cpp; sourceTree = "<group>"; };
 		D212D5331E13A89900C29C00 /* LostNetwork2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork2.hpp; sourceTree = "<group>"; };
@@ -469,6 +467,10 @@
 		D25139A11E45D6CC00FAB9C9 /* FupanDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FupanDialog.hpp; sourceTree = "<group>"; };
 		D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiMingLayer.cpp; sourceTree = "<group>"; };
 		D252F9921E7F7B9700937322 /* ShiMingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShiMingLayer.hpp; sourceTree = "<group>"; };
+		D252F9971E7F7CC700937322 /* GameGongGaoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameGongGaoLayer.cpp; sourceTree = "<group>"; };
+		D252F9981E7F7CC700937322 /* GameGongGaoLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameGongGaoLayer.hpp; sourceTree = "<group>"; };
+		D252F9991E7F7CC700937322 /* GongGaoItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GongGaoItem.cpp; sourceTree = "<group>"; };
+		D252F99A1E7F7CC700937322 /* GongGaoItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GongGaoItem.hpp; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -684,8 +686,6 @@
 		D29E85AE1E359C3700AFACEE /* ReviewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewGame.h; sourceTree = "<group>"; };
 		D29E85B71E359CC200AFACEE /* MahjongView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MahjongView.cpp; sourceTree = "<group>"; };
 		D29E85B81E359CC200AFACEE /* MahjongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MahjongView.h; sourceTree = "<group>"; };
-		D29FB5511E6D0D4000FD4B9A /* GameGongGaoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameGongGaoLayer.cpp; sourceTree = "<group>"; };
-		D29FB5521E6D0D4000FD4B9A /* GameGongGaoLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameGongGaoLayer.hpp; sourceTree = "<group>"; };
 		D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManage.cpp; sourceTree = "<group>"; };
 		D2A86CE71E01286C00B67F86 /* NetworkManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
 		D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -1052,6 +1052,24 @@
 			path = shiming;
 			sourceTree = "<group>";
 		};
+		D252F9951E7F7C9D00937322 /* common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		D252F9961E7F7CC700937322 /* gonggao */ = {
+			isa = PBXGroup;
+			children = (
+				D252F9971E7F7CC700937322 /* GameGongGaoLayer.cpp */,
+				D252F9981E7F7CC700937322 /* GameGongGaoLayer.hpp */,
+				D252F9991E7F7CC700937322 /* GongGaoItem.cpp */,
+				D252F99A1E7F7CC700937322 /* GongGaoItem.hpp */,
+			);
+			path = gonggao;
+			sourceTree = "<group>";
+		};
 		D257FD6D1D6C2E2400B8C596 /* payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1095,8 +1113,8 @@
 		D26777E41DF00697003CE73F /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
+				D252F9951E7F7C9D00937322 /* common */,
 				D207A7431E7280DC00FF09DA /* GameConfig.h */,
-				D29FB5501E6D0D2D00FD4B9A /* gonggao */,
 				D26779501DF01349003CE73F /* audio */,
 				D26777E51DF00697003CE73F /* anim */,
 				D26777F21DF00697003CE73F /* bill */,
@@ -1336,6 +1354,7 @@
 		D267783E1DF00697003CE73F /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D252F9961E7F7CC700937322 /* gonggao */,
 				D252F9901E7F7B9700937322 /* shiming */,
 				D2FB85221E09243000257EE1 /* goldroom */,
 				D267783F1DF00697003CE73F /* EnterRoomDialog.cpp */,
@@ -1644,17 +1663,6 @@
 				D29E85B81E359CC200AFACEE /* MahjongView.h */,
 			);
 			path = normal;
-			sourceTree = "<group>";
-		};
-		D29FB5501E6D0D2D00FD4B9A /* gonggao */ = {
-			isa = PBXGroup;
-			children = (
-				D29FB5511E6D0D4000FD4B9A /* GameGongGaoLayer.cpp */,
-				D29FB5521E6D0D4000FD4B9A /* GameGongGaoLayer.hpp */,
-				D2065FE91E6D26A3002869F4 /* GongGaoItem.cpp */,
-				D2065FEA1E6D26A3002869F4 /* GongGaoItem.hpp */,
-			);
-			path = gonggao;
 			sourceTree = "<group>";
 		};
 		D2B1A85A1CCDF0F300A20896 /* server */ = {
@@ -2023,8 +2031,6 @@
 				D257FD761D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D26778AB1DF00697003CE73F /* DealJongAnim.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
-				D2065FEB1E6D26A3002869F4 /* GongGaoItem.cpp in Sources */,
-				D29FB5531E6D0D4000FD4B9A /* GameGongGaoLayer.cpp in Sources */,
 				D26778DF1DF00697003CE73F /* RoomFullDialog.cpp in Sources */,
 				D26778E51DF00698003CE73F /* MahjongNumberKeypads.cpp in Sources */,
 				D257FD7A1D6C2E2400B8C596 /* RechargeVC.mm in Sources */,
@@ -2053,6 +2059,7 @@
 				D26778FD1DF00698003CE73F /* PlayerHero.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */,
+				D252F99B1E7F7CC700937322 /* GameGongGaoLayer.cpp in Sources */,
 				D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */,
 				D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
 				D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
@@ -2080,6 +2087,7 @@
 				D26779291DF00698003CE73F /* ExchangePropCell.cpp in Sources */,
 				D252F9931E7F7B9700937322 /* ShiMingLayer.cpp in Sources */,
 				D26778C71DF00697003CE73F /* MjGameScene.cpp in Sources */,
+				D252F99D1E7F7CC700937322 /* GongGaoItem.cpp in Sources */,
 				D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				D212D5341E13A89900C29C00 /* LostNetwork2.cpp in Sources */,
@@ -2179,6 +2187,7 @@
 				D29E85BA1E359CC200AFACEE /* MahjongView.cpp in Sources */,
 				D281A3951E5449BD007FF30E /* ShareToFriendLayer.cpp in Sources */,
 				D26779541DF01349003CE73F /* Audio.cpp in Sources */,
+				D252F99C1E7F7CC700937322 /* GameGongGaoLayer.cpp in Sources */,
 				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D26779321DF00698003CE73F /* LoadResource.cpp in Sources */,
 				D26779401DF00698003CE73F /* StringUtil.cpp in Sources */,
@@ -2224,6 +2233,7 @@
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D26778B81DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
+				D252F99E1E7F7CC700937322 /* GongGaoItem.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D26779441DF00698003CE73F /* WanJiaQunLayer.cpp in Sources */,
 				D26779021DF00698003CE73F /* PlayerLeft.cpp in Sources */,
@@ -2237,7 +2247,6 @@
 				D299F8CC1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
 				D267790C1DF00698003CE73F /* ResultScene.cpp in Sources */,
 				D20474B91E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
-				D29FB5541E6D0D4000FD4B9A /* GameGongGaoLayer.cpp in Sources */,
 				D26778DA1DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D26778EA1DF00698003CE73F /* HeroInfoEdit.cpp in Sources */,
 				D26779461DF00698003CE73F /* HeadImage.cpp in Sources */,
@@ -2265,7 +2274,6 @@
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D26779241DF00698003CE73F /* GoldNotEnoughDialog.cpp in Sources */,
-				D2065FEC1E6D26A3002869F4 /* GongGaoItem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
