@@ -66,8 +66,6 @@
 		D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */; };
 		D22F1C181CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
-		D25139A21E45D6CC00FAB9C9 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25139A01E45D6CC00FAB9C9 /* FupanDialog.cpp */; };
-		D25139A31E45D6CC00FAB9C9 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25139A01E45D6CC00FAB9C9 /* FupanDialog.cpp */; };
 		D252F9931E7F7B9700937322 /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */; };
 		D252F9941E7F7B9700937322 /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */; };
 		D252F99B1E7F7CC700937322 /* GameGongGaoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9971E7F7CC700937322 /* GameGongGaoLayer.cpp */; };
@@ -80,6 +78,12 @@
 		D252F9AA1E7F7D6800937322 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9A31E7F7D6800937322 /* DailyPride.cpp */; };
 		D252F9AB1E7F7D6800937322 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9A51E7F7D6800937322 /* PrideCell.cpp */; };
 		D252F9AC1E7F7D6800937322 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9A51E7F7D6800937322 /* PrideCell.cpp */; };
+		D252F9B61E7F84AB00937322 /* BillDetailInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9AF1E7F84AB00937322 /* BillDetailInfo.cpp */; };
+		D252F9B71E7F84AB00937322 /* BillDetailInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9AF1E7F84AB00937322 /* BillDetailInfo.cpp */; };
+		D252F9B81E7F84AB00937322 /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9B11E7F84AB00937322 /* BillInfo.cpp */; };
+		D252F9B91E7F84AB00937322 /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9B11E7F84AB00937322 /* BillInfo.cpp */; };
+		D252F9BA1E7F84AB00937322 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9B41E7F84AB00937322 /* FupanDialog.cpp */; };
+		D252F9BB1E7F84AB00937322 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9B41E7F84AB00937322 /* FupanDialog.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -137,10 +141,6 @@
 		D26778B41DF00697003CE73F /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777EE1DF00697003CE73F /* OutFogAnim.cpp */; };
 		D26778B51DF00697003CE73F /* PlayerCpgAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777F01DF00697003CE73F /* PlayerCpgAnim.cpp */; };
 		D26778B61DF00697003CE73F /* PlayerCpgAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777F01DF00697003CE73F /* PlayerCpgAnim.cpp */; };
-		D26778B71DF00697003CE73F /* BillDetailInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777F31DF00697003CE73F /* BillDetailInfo.cpp */; };
-		D26778B81DF00697003CE73F /* BillDetailInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777F31DF00697003CE73F /* BillDetailInfo.cpp */; };
-		D26778B91DF00697003CE73F /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777F51DF00697003CE73F /* BillInfo.cpp */; };
-		D26778BA1DF00697003CE73F /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777F51DF00697003CE73F /* BillInfo.cpp */; };
 		D26778BB1DF00697003CE73F /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777F81DF00697003CE73F /* ChatDialog.cpp */; };
 		D26778BC1DF00697003CE73F /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777F81DF00697003CE73F /* ChatDialog.cpp */; };
 		D26778BD1DF00697003CE73F /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777FA1DF00697003CE73F /* FaceChatLayer.cpp */; };
@@ -463,8 +463,6 @@
 		D22A7EA21DEECD2500CC6CE2 /* StatusBarTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusBarTool.h; sourceTree = "<group>"; };
 		D22A7EA31DEECD2500CC6CE2 /* StatusBarTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusBarTool.m; sourceTree = "<group>"; };
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
-		D25139A01E45D6CC00FAB9C9 /* FupanDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FupanDialog.cpp; sourceTree = "<group>"; };
-		D25139A11E45D6CC00FAB9C9 /* FupanDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FupanDialog.hpp; sourceTree = "<group>"; };
 		D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiMingLayer.cpp; sourceTree = "<group>"; };
 		D252F9921E7F7B9700937322 /* ShiMingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShiMingLayer.hpp; sourceTree = "<group>"; };
 		D252F9971E7F7CC700937322 /* GameGongGaoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameGongGaoLayer.cpp; sourceTree = "<group>"; };
@@ -477,6 +475,12 @@
 		D252F9A41E7F7D6800937322 /* DailyPride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyPride.h; sourceTree = "<group>"; };
 		D252F9A51E7F7D6800937322 /* PrideCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrideCell.cpp; sourceTree = "<group>"; };
 		D252F9A61E7F7D6800937322 /* PrideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrideCell.h; sourceTree = "<group>"; };
+		D252F9AF1E7F84AB00937322 /* BillDetailInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BillDetailInfo.cpp; sourceTree = "<group>"; };
+		D252F9B01E7F84AB00937322 /* BillDetailInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDetailInfo.h; sourceTree = "<group>"; };
+		D252F9B11E7F84AB00937322 /* BillInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BillInfo.cpp; sourceTree = "<group>"; };
+		D252F9B21E7F84AB00937322 /* BillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillInfo.h; sourceTree = "<group>"; };
+		D252F9B41E7F84AB00937322 /* FupanDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FupanDialog.cpp; sourceTree = "<group>"; };
+		D252F9B51E7F84AB00937322 /* FupanDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FupanDialog.hpp; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -515,10 +519,6 @@
 		D26777EF1DF00697003CE73F /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
 		D26777F01DF00697003CE73F /* PlayerCpgAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerCpgAnim.cpp; sourceTree = "<group>"; };
 		D26777F11DF00697003CE73F /* PlayerCpgAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerCpgAnim.hpp; sourceTree = "<group>"; };
-		D26777F31DF00697003CE73F /* BillDetailInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BillDetailInfo.cpp; sourceTree = "<group>"; };
-		D26777F41DF00697003CE73F /* BillDetailInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDetailInfo.h; sourceTree = "<group>"; };
-		D26777F51DF00697003CE73F /* BillInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BillInfo.cpp; sourceTree = "<group>"; };
-		D26777F61DF00697003CE73F /* BillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillInfo.h; sourceTree = "<group>"; };
 		D26777F81DF00697003CE73F /* ChatDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatDialog.cpp; sourceTree = "<group>"; };
 		D26777F91DF00697003CE73F /* ChatDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChatDialog.hpp; sourceTree = "<group>"; };
 		D26777FA1DF00697003CE73F /* FaceChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaceChatLayer.cpp; sourceTree = "<group>"; };
@@ -1034,15 +1034,6 @@
 			path = android;
 			sourceTree = "<group>";
 		};
-		D251399F1E45D67900FAB9C9 /* fpdialog */ = {
-			isa = PBXGroup;
-			children = (
-				D25139A01E45D6CC00FAB9C9 /* FupanDialog.cpp */,
-				D25139A11E45D6CC00FAB9C9 /* FupanDialog.hpp */,
-			);
-			path = fpdialog;
-			sourceTree = "<group>";
-		};
 		D252F9901E7F7B9700937322 /* shiming */ = {
 			isa = PBXGroup;
 			children = (
@@ -1055,6 +1046,7 @@
 		D252F9951E7F7C9D00937322 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				D252F9AE1E7F84AB00937322 /* bill */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1089,6 +1081,27 @@
 				D252F9A61E7F7D6800937322 /* PrideCell.h */,
 			);
 			path = pride;
+			sourceTree = "<group>";
+		};
+		D252F9AE1E7F84AB00937322 /* bill */ = {
+			isa = PBXGroup;
+			children = (
+				D252F9AF1E7F84AB00937322 /* BillDetailInfo.cpp */,
+				D252F9B01E7F84AB00937322 /* BillDetailInfo.h */,
+				D252F9B11E7F84AB00937322 /* BillInfo.cpp */,
+				D252F9B21E7F84AB00937322 /* BillInfo.h */,
+				D252F9B31E7F84AB00937322 /* fpdialog */,
+			);
+			path = bill;
+			sourceTree = "<group>";
+		};
+		D252F9B31E7F84AB00937322 /* fpdialog */ = {
+			isa = PBXGroup;
+			children = (
+				D252F9B41E7F84AB00937322 /* FupanDialog.cpp */,
+				D252F9B51E7F84AB00937322 /* FupanDialog.hpp */,
+			);
+			path = fpdialog;
 			sourceTree = "<group>";
 		};
 		D257FD6D1D6C2E2400B8C596 /* payment */ = {
@@ -1134,15 +1147,14 @@
 		D26777E41DF00697003CE73F /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
-				D252F9951E7F7C9D00937322 /* common */,
-				D207A7431E7280DC00FF09DA /* GameConfig.h */,
-				D26779501DF01349003CE73F /* audio */,
 				D26777E51DF00697003CE73F /* anim */,
-				D26777F21DF00697003CE73F /* bill */,
+				D26779501DF01349003CE73F /* audio */,
 				D26777F71DF00697003CE73F /* chat */,
+				D252F9951E7F7C9D00937322 /* common */,
 				D26778001DF00697003CE73F /* core */,
 				D26778151DF00697003CE73F /* dialog */,
 				D26778231DF00697003CE73F /* friend */,
+				D207A7431E7280DC00FF09DA /* GameConfig.h */,
 				D267782F1DF00697003CE73F /* heroinfo */,
 				D26778381DF00697003CE73F /* jong */,
 				D267783B1DF00697003CE73F /* loading */,
@@ -1178,18 +1190,6 @@
 				D26777F11DF00697003CE73F /* PlayerCpgAnim.hpp */,
 			);
 			path = anim;
-			sourceTree = "<group>";
-		};
-		D26777F21DF00697003CE73F /* bill */ = {
-			isa = PBXGroup;
-			children = (
-				D251399F1E45D67900FAB9C9 /* fpdialog */,
-				D26777F31DF00697003CE73F /* BillDetailInfo.cpp */,
-				D26777F41DF00697003CE73F /* BillDetailInfo.h */,
-				D26777F51DF00697003CE73F /* BillInfo.cpp */,
-				D26777F61DF00697003CE73F /* BillInfo.h */,
-			);
-			path = bill;
 			sourceTree = "<group>";
 		};
 		D26777F71DF00697003CE73F /* chat */ = {
@@ -2051,6 +2051,7 @@
 				D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D26779271DF00698003CE73F /* ExchangeItem.cpp in Sources */,
 				D267793F1DF00698003CE73F /* StringUtil.cpp in Sources */,
+				D252F9B81E7F84AB00937322 /* BillInfo.cpp in Sources */,
 				D26778D31DF00697003CE73F /* BaseDialog.cpp in Sources */,
 				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */,
 				D26778EB1DF00698003CE73F /* OtherPlayerInfo.cpp in Sources */,
@@ -2062,19 +2063,19 @@
 				D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D252F99B1E7F7CC700937322 /* GameGongGaoLayer.cpp in Sources */,
 				D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */,
+				D252F9BA1E7F84AB00937322 /* FupanDialog.cpp in Sources */,
 				D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
 				D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */,
+				D252F9B61E7F84AB00937322 /* BillDetailInfo.cpp in Sources */,
 				D26779211DF00698003CE73F /* ChargeGold.cpp in Sources */,
 				D26778ED1DF00698003CE73F /* UserInfo.cpp in Sources */,
 				D26778F71DF00698003CE73F /* LobbyScene.cpp in Sources */,
 				D26778E71DF00698003CE73F /* HeadImageDialog.cpp in Sources */,
-				D26778B91DF00697003CE73F /* BillInfo.cpp in Sources */,
 				D26778BB1DF00697003CE73F /* ChatDialog.cpp in Sources */,
 				D2FB85251E0924AF00257EE1 /* GoldRoomPlate.cpp in Sources */,
 				D26779071DF00698003CE73F /* NormalResultLayer.cpp in Sources */,
 				D26778BF1DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
-				D26778B71DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
 				D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */,
 				D26778DD1DF00697003CE73F /* DissovleRoomDialog.cpp in Sources */,
 				D26778AF1DF00697003CE73F /* HupaiAnim.cpp in Sources */,
@@ -2138,7 +2139,6 @@
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D2FB852A1E09254900257EE1 /* GoldRoomButton.cpp in Sources */,
-				D25139A21E45D6CC00FAB9C9 /* FupanDialog.cpp in Sources */,
 				D267790D1DF00698003CE73F /* GameResultCell.cpp in Sources */,
 				D22A7EA41DEECD2500CC6CE2 /* StatusBarTool.m in Sources */,
 				D252F9A91E7F7D6800937322 /* DailyPride.cpp in Sources */,
@@ -2173,6 +2173,7 @@
 				D26778D61DF00697003CE73F /* HintDialog.cpp in Sources */,
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D26778C01DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
+				D252F9B91E7F84AB00937322 /* BillInfo.cpp in Sources */,
 				D252F9AA1E7F7D6800937322 /* DailyPride.cpp in Sources */,
 				D26778F01DF00698003CE73F /* Jong.cpp in Sources */,
 				D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */,
@@ -2212,7 +2213,6 @@
 				D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D26778F21DF00698003CE73F /* Loading.cpp in Sources */,
 				D26778D81DF00697003CE73F /* TextHintDialog.cpp in Sources */,
-				D25139A31E45D6CC00FAB9C9 /* FupanDialog.cpp in Sources */,
 				D26779041DF00698003CE73F /* PlayerOpposite.cpp in Sources */,
 				D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D26778CA1DF00697003CE73F /* Orientation.cpp in Sources */,
@@ -2231,7 +2231,6 @@
 				D267791A1DF00698003CE73F /* ChargeFangka.cpp in Sources */,
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
-				D26778B81DF00697003CE73F /* BillDetailInfo.cpp in Sources */,
 				D252F99E1E7F7CC700937322 /* GongGaoItem.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D26779441DF00698003CE73F /* WanJiaQunLayer.cpp in Sources */,
@@ -2263,10 +2262,11 @@
 				D26778E41DF00698003CE73F /* FriendRoom.cpp in Sources */,
 				D26779341DF00698003CE73F /* SplashScene.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
+				D252F9B71E7F84AB00937322 /* BillDetailInfo.cpp in Sources */,
 				D26778E01DF00697003CE73F /* RoomFullDialog.cpp in Sources */,
+				D252F9BB1E7F84AB00937322 /* FupanDialog.cpp in Sources */,
 				D212D5351E13A89900C29C00 /* LostNetwork2.cpp in Sources */,
 				D26778CC1DF00697003CE73F /* QuitRoomDialog.cpp in Sources */,
-				D26778BA1DF00697003CE73F /* BillInfo.cpp in Sources */,
 				D267792A1DF00698003CE73F /* ExchangePropCell.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D26779281DF00698003CE73F /* ExchangeItem.cpp in Sources */,

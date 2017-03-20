@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/bill/fpdialog/FupanDialog.hpp"
+#include "mahjong/common/bill/fpdialog/FupanDialog.hpp"
 #include "server/NetworkManage.h"
 #include "mahjong/state/GameData.h"
 

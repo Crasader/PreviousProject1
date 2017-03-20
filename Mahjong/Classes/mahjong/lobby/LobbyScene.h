@@ -8,7 +8,7 @@
 #include "mahjong/core/MjGameScene.h"
 #include "mahjong/setting/UserSetting.h"
 #include "mahjong/friend/FriendRoom.h"
-#include "mahjong/bill/BillInfo.h"
+#include "mahjong/common/bill/BillInfo.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 

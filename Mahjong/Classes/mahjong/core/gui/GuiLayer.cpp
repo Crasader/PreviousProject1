@@ -1,7 +1,7 @@
 #include "mahjong/core/gui/GuiLayer.h"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/state/GameData.h"
-#include "mahjong/bill/BillInfo.h"
+#include "mahjong/common/bill/BillInfo.h"
 #include "mahjong/core/widget/QuitRoomDialog.hpp"
 #include "mahjong/dialog/prompt/HintDialog.hpp"
 #include "mahjong/chat/ChatDialog.hpp"
