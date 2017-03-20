@@ -6,7 +6,7 @@
 //
 //
 
-#import "payment/ios/StatusBarTool.h"
+#import "wechat/ios/StatusBarTool.h"
 
 @implementation StatusBarTool
 

@@ -8,15 +8,8 @@
 #include "server/CommandManage.h"
 #include "server/MsgConfig.h"
 #include "server/SocketDataManage.h"
-
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#import "payment/ios/IOSBridge.h"
-#endif
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include "payment/android/CallAndroidMethod.h"
-#endif
+#include "wechat/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
 
 
 bool PlayerHero::init() {

@@ -6,11 +6,11 @@
 //
 //
 
-#include "payment/ios/WxLoginHandler.h"
-#include "mahjong/state/GameData.h"
+#include "wechat/ios/WxLoginHandler.h"
+#include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
-#include "http/image/UrlImageMannger.h"
 #include "userdata/UserData.h"
+#include "http/image/UrlImageMannger.h"
 
 
 WxLoginHandler* WxLoginHandler::_instance = 0;

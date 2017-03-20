@@ -6,9 +6,9 @@
 //
 //
 
-#import "payment/ios/WXApiManager.h"
-#import "payment/ios/LoginByWechat.h"
-#import "payment/ios/WxLoginHandler.h"
+#import "wechat/ios/WXApiManager.h"
+#import "wechat/ios/LoginByWechat.h"
+#import "wechat/ios/WxLoginHandler.h"
 #include "userdata/UserData.h"
 
 @implementation WXApiManager

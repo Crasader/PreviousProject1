@@ -6,12 +6,12 @@
 //
 //
 
-#import "payment/ios/LoginByWechat.h"
-#import "payment/ios/WxLoginHandler.h"
-#include "userdata/UserData.h"
-#import "payment/ios/WXApiManager.h"
+#import "wechat/ios/LoginByWechat.h"
+#import "wechat/ios/WxLoginHandler.h"
+#import "wechat/ios/WXApiManager.h"
 #import "sys/utsname.h"
 #include "mahjong/GameConfig.h"
+#include "userdata/UserData.h"
 
 @interface LoginByWechat ()<UITextViewDelegate,WXApiDelegate>
 

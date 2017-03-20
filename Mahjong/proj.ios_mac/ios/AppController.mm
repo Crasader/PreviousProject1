@@ -27,10 +27,9 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
-
-#import "payment/ios/wechat/WXApi.h"
-#import "payment/ios/WXApiManager.h"
-#import "payment/ios/LoginByWechat.h"
+#import "wechat/ios/wechat/WXApi.h"
+#import "wechat/ios/WXApiManager.h"
+#import "wechat/ios/LoginByWechat.h"
 
 
 @implementation AppController

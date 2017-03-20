@@ -1,5 +1,5 @@
-#import "payment/ios/RechargeVC.h"
-#import "payment/ios/WxLoginHandler.h"
+#import "wechat/ios/RechargeVC.h"
+#import "wechat/ios/WxLoginHandler.h"
 #include "mahjong/GameConfig.h"
 #import "sqlite3.h"
 

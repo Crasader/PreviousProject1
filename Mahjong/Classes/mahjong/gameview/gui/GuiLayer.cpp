@@ -12,15 +12,9 @@
 #include "server/MsgHandler.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
+#include "wechat/ios/IOSBridge.h"
+#include "wechat/android/CallAndroidMethod.h"
 
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#import "payment/ios/IOSBridge.h"
-#endif
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include "payment/android/CallAndroidMethod.h"
-#endif
 
 bool GuiLayer::init(){
     if (!Layer::init()){

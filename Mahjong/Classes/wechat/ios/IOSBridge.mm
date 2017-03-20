@@ -5,15 +5,14 @@
 //  Created by qiuzhong on 16/9/19.
 //
 //
-
-#import "payment/ios/IOSBridge.h"
-#import "payment/ios/StatusBarTool.h"
-#import "payment/ios/RechargeVC.h"
-#import "payment/ios/LoginByWechat.h"
-#include "userdata/UserData.h"
 #import "json/document.h"
 #import "json/rapidjson.h"
+#import "wechat/ios/IOSBridge.h"
+#import "wechat/ios/StatusBarTool.h"
+#import "wechat/ios/RechargeVC.h"
+#import "wechat/ios/LoginByWechat.h"
 #include "mahjong/GameConfig.h"
+#include "userdata/UserData.h"
 
 #define RETURN_IF(cond)           if((cond)) return
 

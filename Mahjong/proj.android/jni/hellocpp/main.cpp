@@ -3,8 +3,8 @@
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>
 #include <android/log.h>
-#include "../../../Classes/payment/android/CallAndroidMethod.h"
-#include "../../../Classes/payment/android/MahjongPayHandler.h"
+#include "../../../Classes/wechat/android/CallAndroidMethod.h"
+#include "../../../Classes/wechat/android/MahjongPayHandler.h"
 #include "../../../Classes/socket/android/native/SocketDataBack.h"
 
 #define  LOG_TAG    "main"

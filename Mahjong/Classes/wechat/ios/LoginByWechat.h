@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "payment/ios/wechat/WXApi.h"
+#import "wechat/ios/wechat/WXApi.h"
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
 

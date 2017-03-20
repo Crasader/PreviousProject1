@@ -1,5 +1,5 @@
 #include "youmi/MyIM.h"
-#include "mahjong/audio/Audio.h"
+#include "mahjong/common/audio/Audio.h"
 
 YIMManager* MyIM::_instance = NULL;
 MyIM* MyIM::myim = new MyIM();
