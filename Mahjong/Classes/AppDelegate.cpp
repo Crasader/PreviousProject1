@@ -1,10 +1,10 @@
 #include "AppDelegate.h"
 #include "audio/include/AudioEngine.h"
 #include "mahjong/splash/LoadResource.hpp"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
+#include "mahjong/common/audio/Audio.h"
 #include "payment/android/CallAndroidMethod.h"
 #include "server/NetworkManage.h"
-#include "mahjong/audio/Audio.h"
 #include "server/SocketDataManage.h"
  #include "socket/GameSocketManage.hpp"
 

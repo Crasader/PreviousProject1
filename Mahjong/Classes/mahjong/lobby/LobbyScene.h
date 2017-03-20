@@ -2,13 +2,13 @@
 #define __LOBBY_SCENE_H__
 
 #include "cocos2d.h"
-#include "mahjong/utils/StringUtil.h"
-#include "mahjong/loading/Loading.h"
-#include "mahjong/state/GameData.h"
-#include "mahjong/gameview/MjGameScene.h"
-#include "mahjong/setting/UserSetting.h"
-#include "mahjong/friend/FriendRoom.h"
+#include "mahjong/common/utils/StringUtil.h"
+#include "mahjong/common/loading/Loading.h"
+#include "mahjong/common/state/GameData.h"
+#include "mahjong/common/setting/UserSetting.h"
 #include "mahjong/common/bill/BillInfo.h"
+#include "mahjong/lobby/friend/FriendRoom.h"
+#include "mahjong/gameview/MjGameScene.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 

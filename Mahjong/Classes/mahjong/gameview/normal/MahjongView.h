@@ -1,15 +1,15 @@
 #ifndef __MAHJONG_VIEW__
 #define __MAHJONG_VIEW__
 #include "mahjong/gameview/gui/GuiLayer.h"
-#include "mahjong/jong/Jong.h"
-#include "mahjong/player/base/PlayerBase.h"
-#include "mahjong/player/PlayerLeft.h"
-#include "mahjong/player/PlayerRight.h"
-#include "mahjong/player/PlayerOpposite.h"
-#include "mahjong/player/PlayerHero.h"
-#include "mahjong/player/playerinfo/Player.h"
+#include "mahjong/gameview/player/base/PlayerBase.h"
+#include "mahjong/gameview/player/PlayerLeft.h"
+#include "mahjong/gameview/player/PlayerRight.h"
+#include "mahjong/gameview/player/PlayerOpposite.h"
+#include "mahjong/gameview/player/PlayerHero.h"
+#include "mahjong/gameview/player/playerinfo/Player.h"
+#include "mahjong/common/jong/Jong.h"
 #include "mahjong/common/dialog/toast/InfoToast.hpp"
-#include "mahjong/state/DataStruct.h"
+#include "mahjong/common/state/DataStruct.h"
 #include "userdata/UserData.h"
 
 #include "cocos2d.h"

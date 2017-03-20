@@ -11,9 +11,9 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "mahjong/jong/Jong.h"
-#include "mahjong/state/GameData.h"
-#include "mahjong/player/PlayerHero.h"
+#include "mahjong/common/jong/Jong.h"
+#include "mahjong/common/state/GameData.h"
+#include "mahjong/gameview/player/PlayerHero.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 

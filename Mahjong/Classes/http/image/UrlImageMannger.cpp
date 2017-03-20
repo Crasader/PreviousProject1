@@ -1,9 +1,9 @@
 #include "http/image/UrlImageMannger.h"
 #include "http/HttpMannger.h"
-#include "server/NetworkManage.h"
 #include "http/MD5/MD5.hpp"
 #include "mahjong/GameConfig.h"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
+#include "server/NetworkManage.h"
 #include "payment/android/CallAndroidMethod.h"
 
 

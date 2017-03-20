@@ -1,6 +1,6 @@
 #include "server/NetworkManage.h"
 #include "server/SocketDataManage.h"
-#include "mahjong/state/GameData.h"
+#include "mahjong/common/state/GameData.h"
 #include "socket/GameSocketManage.hpp"
 
 NetworkManage* NetworkManage::_instance = NULL;

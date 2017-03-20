@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "cocos2d.h"
 USING_NS_CC;
-#include "mahjong/jong/Jong.h"
+#include "mahjong/common/jong/Jong.h"
 
 class HuaAnim:public Layer{
 public:
