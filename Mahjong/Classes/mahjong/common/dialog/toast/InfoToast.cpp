@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/dialog/toast/InfoToast.hpp"
+#include "mahjong/common/dialog/toast/InfoToast.hpp"
 
 
 InfoToast* InfoToast::create(){

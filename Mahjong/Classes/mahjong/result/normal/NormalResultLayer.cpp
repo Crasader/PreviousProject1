@@ -17,7 +17,8 @@
 #include "mahjong/lobby/EnterRoomDialog.hpp"
 #include "mahjong/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/shop/gold/ChargeGold.hpp"
-#include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
+#include "mahjong/common/dialog/network/LostNetwork2.hpp"
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/utils/Chinese.h"
@@ -26,7 +27,6 @@
 #include "server/CommandManage.h"
 #include "payment/android/CallAndroidMethod.h"
 #import "payment/ios/IOSBridge.h"
-#include "mahjong/dialog/network/LostNetwork2.hpp"
 #include "mahjong/friend/dialog/DissovleRoomDialog.hpp"
 
 

@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/dialog/toast/ToastCell.hpp"
+#include "mahjong/common/dialog/toast/ToastCell.hpp"
 
 
 ToastCell* ToastCell::create(std::string msg){

@@ -4,7 +4,7 @@
 #include "mahjong/loading/Loading.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/utils/Chinese.h"
-#include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "payment/android/CallAndroidMethod.h"

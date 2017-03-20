@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 
 
 HintDialog* HintDialog::create(std::string msg,const ccMenuCallback& callback1,const ccMenuCallback& callback2){

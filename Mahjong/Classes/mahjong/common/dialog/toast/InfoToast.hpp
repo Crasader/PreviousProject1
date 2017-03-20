@@ -9,7 +9,7 @@
 #ifndef InfoTaost_hpp
 #define InfoTaost_hpp
 #include "cocos2d.h"
-#include "mahjong/dialog/toast/ToastCell.hpp"
+#include "mahjong/common/dialog/toast/ToastCell.hpp"
 USING_NS_CC;
 
 class InfoToast : public Layer{

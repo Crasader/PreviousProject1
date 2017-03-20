@@ -51,8 +51,6 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
 		D20474B91E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
-		D212D5341E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
-		D212D5351E13A89900C29C00 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5321E13A89900C29C00 /* LostNetwork2.cpp */; };
 		D212D5391E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
 		D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */; };
 		D212D53C1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
@@ -76,12 +74,6 @@
 		D252F9AA1E7F7D6800937322 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9A31E7F7D6800937322 /* DailyPride.cpp */; };
 		D252F9AB1E7F7D6800937322 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9A51E7F7D6800937322 /* PrideCell.cpp */; };
 		D252F9AC1E7F7D6800937322 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9A51E7F7D6800937322 /* PrideCell.cpp */; };
-		D252F9B61E7F84AB00937322 /* BillDetailInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9AF1E7F84AB00937322 /* BillDetailInfo.cpp */; };
-		D252F9B71E7F84AB00937322 /* BillDetailInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9AF1E7F84AB00937322 /* BillDetailInfo.cpp */; };
-		D252F9B81E7F84AB00937322 /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9B11E7F84AB00937322 /* BillInfo.cpp */; };
-		D252F9B91E7F84AB00937322 /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9B11E7F84AB00937322 /* BillInfo.cpp */; };
-		D252F9BA1E7F84AB00937322 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9B41E7F84AB00937322 /* FupanDialog.cpp */; };
-		D252F9BB1E7F84AB00937322 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9B41E7F84AB00937322 /* FupanDialog.cpp */; };
 		D252F9D31E7F86BC00937322 /* GuiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9BE1E7F86BC00937322 /* GuiLayer.cpp */; };
 		D252F9D41E7F86BC00937322 /* GuiLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9BE1E7F86BC00937322 /* GuiLayer.cpp */; };
 		D252F9D51E7F86BC00937322 /* MjGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9C01E7F86BC00937322 /* MjGameScene.cpp */; };
@@ -112,6 +104,26 @@
 		D252F9FB1E7F889D00937322 /* OutFogAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9EE1E7F889D00937322 /* OutFogAnim.cpp */; };
 		D252F9FC1E7F889D00937322 /* PlayerCpgAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9F01E7F889D00937322 /* PlayerCpgAnim.cpp */; };
 		D252F9FD1E7F889D00937322 /* PlayerCpgAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9F01E7F889D00937322 /* PlayerCpgAnim.cpp */; };
+		D252FA061E7FA19D00937322 /* BillDetailInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9FF1E7FA19D00937322 /* BillDetailInfo.cpp */; };
+		D252FA071E7FA19D00937322 /* BillDetailInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9FF1E7FA19D00937322 /* BillDetailInfo.cpp */; };
+		D252FA081E7FA19D00937322 /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA011E7FA19D00937322 /* BillInfo.cpp */; };
+		D252FA091E7FA19D00937322 /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA011E7FA19D00937322 /* BillInfo.cpp */; };
+		D252FA0A1E7FA19D00937322 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA041E7FA19D00937322 /* FupanDialog.cpp */; };
+		D252FA0B1E7FA19D00937322 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA041E7FA19D00937322 /* FupanDialog.cpp */; };
+		D252FA1F1E7FA1B800937322 /* BaseDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA0E1E7FA1B800937322 /* BaseDialog.cpp */; };
+		D252FA201E7FA1B800937322 /* BaseDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA0E1E7FA1B800937322 /* BaseDialog.cpp */; };
+		D252FA211E7FA1B800937322 /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA111E7FA1B800937322 /* LostNetwork.cpp */; };
+		D252FA221E7FA1B800937322 /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA111E7FA1B800937322 /* LostNetwork.cpp */; };
+		D252FA231E7FA1B800937322 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA131E7FA1B800937322 /* LostNetwork2.cpp */; };
+		D252FA241E7FA1B800937322 /* LostNetwork2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA131E7FA1B800937322 /* LostNetwork2.cpp */; };
+		D252FA251E7FA1B800937322 /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA161E7FA1B800937322 /* HintDialog.cpp */; };
+		D252FA261E7FA1B800937322 /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA161E7FA1B800937322 /* HintDialog.cpp */; };
+		D252FA271E7FA1B800937322 /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA181E7FA1B800937322 /* TextHintDialog.cpp */; };
+		D252FA281E7FA1B800937322 /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA181E7FA1B800937322 /* TextHintDialog.cpp */; };
+		D252FA291E7FA1B800937322 /* InfoToast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA1B1E7FA1B800937322 /* InfoToast.cpp */; };
+		D252FA2A1E7FA1B800937322 /* InfoToast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA1B1E7FA1B800937322 /* InfoToast.cpp */; };
+		D252FA2B1E7FA1B800937322 /* ToastCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA1D1E7FA1B800937322 /* ToastCell.cpp */; };
+		D252FA2C1E7FA1B800937322 /* ToastCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA1D1E7FA1B800937322 /* ToastCell.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -165,16 +177,6 @@
 		D26778C01DF00697003CE73F /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777FC1DF00697003CE73F /* PlayerChatManage.cpp */; };
 		D26778C11DF00697003CE73F /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777FE1DF00697003CE73F /* QuickChatLayer.cpp */; };
 		D26778C21DF00697003CE73F /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26777FE1DF00697003CE73F /* QuickChatLayer.cpp */; };
-		D26778D31DF00697003CE73F /* BaseDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778171DF00697003CE73F /* BaseDialog.cpp */; };
-		D26778D41DF00697003CE73F /* BaseDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778171DF00697003CE73F /* BaseDialog.cpp */; };
-		D26778D51DF00697003CE73F /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267781A1DF00697003CE73F /* HintDialog.cpp */; };
-		D26778D61DF00697003CE73F /* HintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267781A1DF00697003CE73F /* HintDialog.cpp */; };
-		D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267781C1DF00697003CE73F /* TextHintDialog.cpp */; };
-		D26778D81DF00697003CE73F /* TextHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267781C1DF00697003CE73F /* TextHintDialog.cpp */; };
-		D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267781F1DF00697003CE73F /* InfoToast.cpp */; };
-		D26778DA1DF00697003CE73F /* InfoToast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267781F1DF00697003CE73F /* InfoToast.cpp */; };
-		D26778DB1DF00697003CE73F /* ToastCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778211DF00697003CE73F /* ToastCell.cpp */; };
-		D26778DC1DF00697003CE73F /* ToastCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778211DF00697003CE73F /* ToastCell.cpp */; };
 		D26778DD1DF00697003CE73F /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778251DF00697003CE73F /* DissovleRoomDialog.cpp */; };
 		D26778DE1DF00697003CE73F /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778251DF00697003CE73F /* DissovleRoomDialog.cpp */; };
 		D26778DF1DF00697003CE73F /* RoomFullDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26778271DF00697003CE73F /* RoomFullDialog.cpp */; };
@@ -277,8 +279,6 @@
 		D267794F1DF012E2003CE73F /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267794C1DF012E2003CE73F /* ParticleUtil.cpp */; };
 		D26779531DF01349003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26779511DF01349003CE73F /* Audio.cpp */; };
 		D26779541DF01349003CE73F /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D26779511DF01349003CE73F /* Audio.cpp */; };
-		D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
-		D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D267795A1DF1614F003CE73F /* LostNetwork.cpp */; };
 		D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27399681DF7BAC7008439C9 /* WXApiManager.mm */; };
 		D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -449,8 +449,6 @@
 		D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwitchHttp.cpp; sourceTree = "<group>"; };
 		D20474B71E5D36F7001F7121 /* SwitchHttp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwitchHttp.hpp; sourceTree = "<group>"; };
 		D207A7431E7280DC00FF09DA /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
-		D212D5321E13A89900C29C00 /* LostNetwork2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork2.cpp; sourceTree = "<group>"; };
-		D212D5331E13A89900C29C00 /* LostNetwork2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork2.hpp; sourceTree = "<group>"; };
 		D212D5371E13BB5F00C29C00 /* BatteryInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatteryInfo.cpp; sourceTree = "<group>"; };
 		D212D5381E13BB5F00C29C00 /* BatteryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatteryInfo.h; sourceTree = "<group>"; };
 		D212D53B1E14A0BA00C29C00 /* batteryInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = batteryInfo; sourceTree = "<group>"; };
@@ -473,12 +471,6 @@
 		D252F9A41E7F7D6800937322 /* DailyPride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyPride.h; sourceTree = "<group>"; };
 		D252F9A51E7F7D6800937322 /* PrideCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrideCell.cpp; sourceTree = "<group>"; };
 		D252F9A61E7F7D6800937322 /* PrideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrideCell.h; sourceTree = "<group>"; };
-		D252F9AF1E7F84AB00937322 /* BillDetailInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BillDetailInfo.cpp; sourceTree = "<group>"; };
-		D252F9B01E7F84AB00937322 /* BillDetailInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDetailInfo.h; sourceTree = "<group>"; };
-		D252F9B11E7F84AB00937322 /* BillInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BillInfo.cpp; sourceTree = "<group>"; };
-		D252F9B21E7F84AB00937322 /* BillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillInfo.h; sourceTree = "<group>"; };
-		D252F9B41E7F84AB00937322 /* FupanDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FupanDialog.cpp; sourceTree = "<group>"; };
-		D252F9B51E7F84AB00937322 /* FupanDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FupanDialog.hpp; sourceTree = "<group>"; };
 		D252F9BE1E7F86BC00937322 /* GuiLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GuiLayer.cpp; sourceTree = "<group>"; };
 		D252F9BF1E7F86BC00937322 /* GuiLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiLayer.h; sourceTree = "<group>"; };
 		D252F9C01E7F86BC00937322 /* MjGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MjGameScene.cpp; sourceTree = "<group>"; };
@@ -509,6 +501,26 @@
 		D252F9EF1E7F889D00937322 /* OutFogAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutFogAnim.hpp; sourceTree = "<group>"; };
 		D252F9F01E7F889D00937322 /* PlayerCpgAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerCpgAnim.cpp; sourceTree = "<group>"; };
 		D252F9F11E7F889D00937322 /* PlayerCpgAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerCpgAnim.hpp; sourceTree = "<group>"; };
+		D252F9FF1E7FA19D00937322 /* BillDetailInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BillDetailInfo.cpp; sourceTree = "<group>"; };
+		D252FA001E7FA19D00937322 /* BillDetailInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillDetailInfo.h; sourceTree = "<group>"; };
+		D252FA011E7FA19D00937322 /* BillInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BillInfo.cpp; sourceTree = "<group>"; };
+		D252FA021E7FA19D00937322 /* BillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillInfo.h; sourceTree = "<group>"; };
+		D252FA041E7FA19D00937322 /* FupanDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FupanDialog.cpp; sourceTree = "<group>"; };
+		D252FA051E7FA19D00937322 /* FupanDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FupanDialog.hpp; sourceTree = "<group>"; };
+		D252FA0E1E7FA1B800937322 /* BaseDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseDialog.cpp; sourceTree = "<group>"; };
+		D252FA0F1E7FA1B800937322 /* BaseDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDialog.h; sourceTree = "<group>"; };
+		D252FA111E7FA1B800937322 /* LostNetwork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork.cpp; sourceTree = "<group>"; };
+		D252FA121E7FA1B800937322 /* LostNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork.hpp; sourceTree = "<group>"; };
+		D252FA131E7FA1B800937322 /* LostNetwork2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork2.cpp; sourceTree = "<group>"; };
+		D252FA141E7FA1B800937322 /* LostNetwork2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork2.hpp; sourceTree = "<group>"; };
+		D252FA161E7FA1B800937322 /* HintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HintDialog.cpp; sourceTree = "<group>"; };
+		D252FA171E7FA1B800937322 /* HintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HintDialog.hpp; sourceTree = "<group>"; };
+		D252FA181E7FA1B800937322 /* TextHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextHintDialog.cpp; sourceTree = "<group>"; };
+		D252FA191E7FA1B800937322 /* TextHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextHintDialog.hpp; sourceTree = "<group>"; };
+		D252FA1B1E7FA1B800937322 /* InfoToast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfoToast.cpp; sourceTree = "<group>"; };
+		D252FA1C1E7FA1B800937322 /* InfoToast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InfoToast.hpp; sourceTree = "<group>"; };
+		D252FA1D1E7FA1B800937322 /* ToastCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToastCell.cpp; sourceTree = "<group>"; };
+		D252FA1E1E7FA1B800937322 /* ToastCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToastCell.hpp; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -543,16 +555,6 @@
 		D26777FD1DF00697003CE73F /* PlayerChatManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerChatManage.hpp; sourceTree = "<group>"; };
 		D26777FE1DF00697003CE73F /* QuickChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuickChatLayer.cpp; sourceTree = "<group>"; };
 		D26777FF1DF00697003CE73F /* QuickChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = QuickChatLayer.hpp; sourceTree = "<group>"; };
-		D26778171DF00697003CE73F /* BaseDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseDialog.cpp; sourceTree = "<group>"; };
-		D26778181DF00697003CE73F /* BaseDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDialog.h; sourceTree = "<group>"; };
-		D267781A1DF00697003CE73F /* HintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HintDialog.cpp; sourceTree = "<group>"; };
-		D267781B1DF00697003CE73F /* HintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HintDialog.hpp; sourceTree = "<group>"; };
-		D267781C1DF00697003CE73F /* TextHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextHintDialog.cpp; sourceTree = "<group>"; };
-		D267781D1DF00697003CE73F /* TextHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextHintDialog.hpp; sourceTree = "<group>"; };
-		D267781F1DF00697003CE73F /* InfoToast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InfoToast.cpp; sourceTree = "<group>"; };
-		D26778201DF00697003CE73F /* InfoToast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InfoToast.hpp; sourceTree = "<group>"; };
-		D26778211DF00697003CE73F /* ToastCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToastCell.cpp; sourceTree = "<group>"; };
-		D26778221DF00697003CE73F /* ToastCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToastCell.hpp; sourceTree = "<group>"; };
 		D26778251DF00697003CE73F /* DissovleRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DissovleRoomDialog.cpp; sourceTree = "<group>"; };
 		D26778261DF00697003CE73F /* DissovleRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DissovleRoomDialog.hpp; sourceTree = "<group>"; };
 		D26778271DF00697003CE73F /* RoomFullDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomFullDialog.cpp; sourceTree = "<group>"; };
@@ -656,8 +658,6 @@
 		D267794D1DF012E2003CE73F /* ParticleUtil.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParticleUtil.hpp; sourceTree = "<group>"; };
 		D26779511DF01349003CE73F /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
 		D26779521DF01349003CE73F /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
-		D267795A1DF1614F003CE73F /* LostNetwork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LostNetwork.cpp; sourceTree = "<group>"; };
-		D267795B1DF1614F003CE73F /* LostNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LostNetwork.hpp; sourceTree = "<group>"; };
 		D27399671DF7BAC7008439C9 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
 		D27399681DF7BAC7008439C9 /* WXApiManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXApiManager.mm; sourceTree = "<group>"; };
 		D278ADB61DFFC23400C90B25 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
@@ -1046,7 +1046,8 @@
 		D252F9951E7F7C9D00937322 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				D252F9AE1E7F84AB00937322 /* bill */,
+				D252FA0C1E7FA1B800937322 /* dialog */,
+				D252F9FE1E7FA19D00937322 /* bill */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -1081,27 +1082,6 @@
 				D252F9A61E7F7D6800937322 /* PrideCell.h */,
 			);
 			path = pride;
-			sourceTree = "<group>";
-		};
-		D252F9AE1E7F84AB00937322 /* bill */ = {
-			isa = PBXGroup;
-			children = (
-				D252F9AF1E7F84AB00937322 /* BillDetailInfo.cpp */,
-				D252F9B01E7F84AB00937322 /* BillDetailInfo.h */,
-				D252F9B11E7F84AB00937322 /* BillInfo.cpp */,
-				D252F9B21E7F84AB00937322 /* BillInfo.h */,
-				D252F9B31E7F84AB00937322 /* fpdialog */,
-			);
-			path = bill;
-			sourceTree = "<group>";
-		};
-		D252F9B31E7F84AB00937322 /* fpdialog */ = {
-			isa = PBXGroup;
-			children = (
-				D252F9B41E7F84AB00937322 /* FupanDialog.cpp */,
-				D252F9B51E7F84AB00937322 /* FupanDialog.hpp */,
-			);
-			path = fpdialog;
 			sourceTree = "<group>";
 		};
 		D252F9BC1E7F86BC00937322 /* gameview */ = {
@@ -1181,6 +1161,80 @@
 			path = anim;
 			sourceTree = "<group>";
 		};
+		D252F9FE1E7FA19D00937322 /* bill */ = {
+			isa = PBXGroup;
+			children = (
+				D252F9FF1E7FA19D00937322 /* BillDetailInfo.cpp */,
+				D252FA001E7FA19D00937322 /* BillDetailInfo.h */,
+				D252FA011E7FA19D00937322 /* BillInfo.cpp */,
+				D252FA021E7FA19D00937322 /* BillInfo.h */,
+				D252FA031E7FA19D00937322 /* fpdialog */,
+			);
+			path = bill;
+			sourceTree = "<group>";
+		};
+		D252FA031E7FA19D00937322 /* fpdialog */ = {
+			isa = PBXGroup;
+			children = (
+				D252FA041E7FA19D00937322 /* FupanDialog.cpp */,
+				D252FA051E7FA19D00937322 /* FupanDialog.hpp */,
+			);
+			path = fpdialog;
+			sourceTree = "<group>";
+		};
+		D252FA0C1E7FA1B800937322 /* dialog */ = {
+			isa = PBXGroup;
+			children = (
+				D252FA0D1E7FA1B800937322 /* base */,
+				D252FA101E7FA1B800937322 /* network */,
+				D252FA151E7FA1B800937322 /* prompt */,
+				D252FA1A1E7FA1B800937322 /* toast */,
+			);
+			path = dialog;
+			sourceTree = "<group>";
+		};
+		D252FA0D1E7FA1B800937322 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				D252FA0E1E7FA1B800937322 /* BaseDialog.cpp */,
+				D252FA0F1E7FA1B800937322 /* BaseDialog.h */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		D252FA101E7FA1B800937322 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				D252FA111E7FA1B800937322 /* LostNetwork.cpp */,
+				D252FA121E7FA1B800937322 /* LostNetwork.hpp */,
+				D252FA131E7FA1B800937322 /* LostNetwork2.cpp */,
+				D252FA141E7FA1B800937322 /* LostNetwork2.hpp */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		D252FA151E7FA1B800937322 /* prompt */ = {
+			isa = PBXGroup;
+			children = (
+				D252FA161E7FA1B800937322 /* HintDialog.cpp */,
+				D252FA171E7FA1B800937322 /* HintDialog.hpp */,
+				D252FA181E7FA1B800937322 /* TextHintDialog.cpp */,
+				D252FA191E7FA1B800937322 /* TextHintDialog.hpp */,
+			);
+			path = prompt;
+			sourceTree = "<group>";
+		};
+		D252FA1A1E7FA1B800937322 /* toast */ = {
+			isa = PBXGroup;
+			children = (
+				D252FA1B1E7FA1B800937322 /* InfoToast.cpp */,
+				D252FA1C1E7FA1B800937322 /* InfoToast.hpp */,
+				D252FA1D1E7FA1B800937322 /* ToastCell.cpp */,
+				D252FA1E1E7FA1B800937322 /* ToastCell.hpp */,
+			);
+			path = toast;
+			sourceTree = "<group>";
+		};
 		D257FD6D1D6C2E2400B8C596 /* payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1224,13 +1278,12 @@
 		D26777E41DF00697003CE73F /* mahjong */ = {
 			isa = PBXGroup;
 			children = (
-				D252F9BC1E7F86BC00937322 /* gameview */,
 				D26779501DF01349003CE73F /* audio */,
 				D26777F71DF00697003CE73F /* chat */,
 				D252F9951E7F7C9D00937322 /* common */,
-				D26778151DF00697003CE73F /* dialog */,
 				D26778231DF00697003CE73F /* friend */,
 				D207A7431E7280DC00FF09DA /* GameConfig.h */,
+				D252F9BC1E7F86BC00937322 /* gameview */,
 				D267782F1DF00697003CE73F /* heroinfo */,
 				D26778381DF00697003CE73F /* jong */,
 				D267783B1DF00697003CE73F /* loading */,
@@ -1266,48 +1319,6 @@
 				D26777FF1DF00697003CE73F /* QuickChatLayer.hpp */,
 			);
 			path = chat;
-			sourceTree = "<group>";
-		};
-		D26778151DF00697003CE73F /* dialog */ = {
-			isa = PBXGroup;
-			children = (
-				D26779591DF16136003CE73F /* network */,
-				D26778161DF00697003CE73F /* base */,
-				D26778191DF00697003CE73F /* prompt */,
-				D267781E1DF00697003CE73F /* toast */,
-			);
-			path = dialog;
-			sourceTree = "<group>";
-		};
-		D26778161DF00697003CE73F /* base */ = {
-			isa = PBXGroup;
-			children = (
-				D26778171DF00697003CE73F /* BaseDialog.cpp */,
-				D26778181DF00697003CE73F /* BaseDialog.h */,
-			);
-			path = base;
-			sourceTree = "<group>";
-		};
-		D26778191DF00697003CE73F /* prompt */ = {
-			isa = PBXGroup;
-			children = (
-				D267781A1DF00697003CE73F /* HintDialog.cpp */,
-				D267781B1DF00697003CE73F /* HintDialog.hpp */,
-				D267781C1DF00697003CE73F /* TextHintDialog.cpp */,
-				D267781D1DF00697003CE73F /* TextHintDialog.hpp */,
-			);
-			path = prompt;
-			sourceTree = "<group>";
-		};
-		D267781E1DF00697003CE73F /* toast */ = {
-			isa = PBXGroup;
-			children = (
-				D267781F1DF00697003CE73F /* InfoToast.cpp */,
-				D26778201DF00697003CE73F /* InfoToast.hpp */,
-				D26778211DF00697003CE73F /* ToastCell.cpp */,
-				D26778221DF00697003CE73F /* ToastCell.hpp */,
-			);
-			path = toast;
 			sourceTree = "<group>";
 		};
 		D26778231DF00697003CE73F /* friend */ = {
@@ -1602,17 +1613,6 @@
 				D26779521DF01349003CE73F /* Audio.h */,
 			);
 			path = audio;
-			sourceTree = "<group>";
-		};
-		D26779591DF16136003CE73F /* network */ = {
-			isa = PBXGroup;
-			children = (
-				D212D5321E13A89900C29C00 /* LostNetwork2.cpp */,
-				D212D5331E13A89900C29C00 /* LostNetwork2.hpp */,
-				D267795A1DF1614F003CE73F /* LostNetwork.cpp */,
-				D267795B1DF1614F003CE73F /* LostNetwork.hpp */,
-			);
-			path = network;
 			sourceTree = "<group>";
 		};
 		D278ADB41DFFC23400C90B25 /* ios */ = {
@@ -2046,17 +2046,20 @@
 				D252F9D51E7F86BC00937322 /* MjGameScene.cpp in Sources */,
 				D252F9A71E7F7D6800937322 /* DailyEvent.cpp in Sources */,
 				D2B3DDBF1E6EDE030099B97E /* GameRecordAudioManage.cpp in Sources */,
+				D252FA1F1E7FA1B800937322 /* BaseDialog.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
+				D252FA231E7FA1B800937322 /* LostNetwork2.cpp in Sources */,
 				D2B3DD931E6EB50C0099B97E /* ChatAndroidMethod.cpp in Sources */,
 				D26779231DF00698003CE73F /* GoldNotEnoughDialog.cpp in Sources */,
 				D252F9D31E7F86BC00937322 /* GuiLayer.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D252F9FC1E7F889D00937322 /* PlayerCpgAnim.cpp in Sources */,
+				D252FA211E7FA1B800937322 /* LostNetwork.cpp in Sources */,
 				D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D26779271DF00698003CE73F /* ExchangeItem.cpp in Sources */,
 				D267793F1DF00698003CE73F /* StringUtil.cpp in Sources */,
-				D252F9B81E7F84AB00937322 /* BillInfo.cpp in Sources */,
-				D26778D31DF00697003CE73F /* BaseDialog.cpp in Sources */,
+				D252FA0A1E7FA19D00937322 /* FupanDialog.cpp in Sources */,
+				D252FA251E7FA1B800937322 /* HintDialog.cpp in Sources */,
 				D294FE0F1D990B2B005FB8A2 /* LoginByWechat.mm in Sources */,
 				D26778EB1DF00698003CE73F /* OtherPlayerInfo.cpp in Sources */,
 				D267793D1DF00698003CE73F /* SeatIdUtil.cpp in Sources */,
@@ -2064,18 +2067,14 @@
 				D26779351DF00698003CE73F /* GameData.cpp in Sources */,
 				D26778FD1DF00698003CE73F /* PlayerHero.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
-				D26778D91DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D252F99B1E7F7CC700937322 /* GameGongGaoLayer.cpp in Sources */,
-				D26778D71DF00697003CE73F /* TextHintDialog.cpp in Sources */,
-				D252F9BA1E7F84AB00937322 /* FupanDialog.cpp in Sources */,
-				D267795C1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
 				D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D294FE1D1D9A5A6B005FB8A2 /* WxLoginHandler.cpp in Sources */,
-				D252F9B61E7F84AB00937322 /* BillDetailInfo.cpp in Sources */,
 				D26779211DF00698003CE73F /* ChargeGold.cpp in Sources */,
 				D26778ED1DF00698003CE73F /* UserInfo.cpp in Sources */,
 				D26778F71DF00698003CE73F /* LobbyScene.cpp in Sources */,
 				D26778E71DF00698003CE73F /* HeadImageDialog.cpp in Sources */,
+				D252FA271E7FA1B800937322 /* TextHintDialog.cpp in Sources */,
 				D26778BB1DF00697003CE73F /* ChatDialog.cpp in Sources */,
 				D2FB85251E0924AF00257EE1 /* GoldRoomPlate.cpp in Sources */,
 				D26779071DF00698003CE73F /* NormalResultLayer.cpp in Sources */,
@@ -2083,18 +2082,15 @@
 				D252F9D91E7F86BC00937322 /* ReviewGame.cpp in Sources */,
 				D27399691DF7BAC7008439C9 /* WXApiManager.mm in Sources */,
 				D26778DD1DF00697003CE73F /* DissovleRoomDialog.cpp in Sources */,
-				D26778DB1DF00697003CE73F /* ToastCell.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D267794E1DF012E2003CE73F /* ParticleUtil.cpp in Sources */,
 				D267791F1DF00698003CE73F /* FirstChageDialog.cpp in Sources */,
-				D26778D51DF00697003CE73F /* HintDialog.cpp in Sources */,
 				D26778FF1DF00698003CE73F /* Player.cpp in Sources */,
 				D26779291DF00698003CE73F /* ExchangePropCell.cpp in Sources */,
 				D252F9931E7F7B9700937322 /* ShiMingLayer.cpp in Sources */,
 				D252F99D1E7F7CC700937322 /* GongGaoItem.cpp in Sources */,
 				D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
-				D212D5341E13A89900C29C00 /* LostNetwork2.cpp in Sources */,
 				D26778FB1DF00698003CE73F /* PlayerBase.cpp in Sources */,
 				D252F9F81E7F889D00937322 /* LiuJuAnim.cpp in Sources */,
 				D26779031DF00698003CE73F /* PlayerOpposite.cpp in Sources */,
@@ -2120,7 +2116,10 @@
 				D26779251DF00698003CE73F /* Huode.cpp in Sources */,
 				D26778F91DF00698003CE73F /* NoticeDialog.cpp in Sources */,
 				D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
+				D252FA061E7FA19D00937322 /* BillDetailInfo.cpp in Sources */,
+				D252FA2B1E7FA1B800937322 /* ToastCell.cpp in Sources */,
 				D26778EF1DF00698003CE73F /* Jong.cpp in Sources */,
+				D252FA081E7FA19D00937322 /* BillInfo.cpp in Sources */,
 				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D26778E11DF00697003CE73F /* RoomIdErrorDialog.cpp in Sources */,
 				D212D5391E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */,
@@ -2136,6 +2135,7 @@
 				D252F9E31E7F86BC00937322 /* SoundRecordBtn.cpp in Sources */,
 				D267792F1DF00698003CE73F /* ShopHintDialog.cpp in Sources */,
 				D26778C11DF00697003CE73F /* QuickChatLayer.cpp in Sources */,
+				D252FA291E7FA1B800937322 /* InfoToast.cpp in Sources */,
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D2FB852A1E09254900257EE1 /* GoldRoomButton.cpp in Sources */,
@@ -2168,17 +2168,15 @@
 				D26779081DF00698003CE73F /* NormalResultLayer.cpp in Sources */,
 				D252F9941E7F7B9700937322 /* ShiMingLayer.cpp in Sources */,
 				D267790E1DF00698003CE73F /* GameResultCell.cpp in Sources */,
-				D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
-				D26778D61DF00697003CE73F /* HintDialog.cpp in Sources */,
 				D257FD771D6C2E2400B8C596 /* CallAndroidMethod.cpp in Sources */,
 				D26778C01DF00697003CE73F /* PlayerChatManage.cpp in Sources */,
-				D252F9B91E7F84AB00937322 /* BillInfo.cpp in Sources */,
 				D252F9AA1E7F7D6800937322 /* DailyPride.cpp in Sources */,
 				D26778F01DF00698003CE73F /* Jong.cpp in Sources */,
 				D212D53A1E13BB5F00C29C00 /* BatteryInfo.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D252F9FD1E7F889D00937322 /* PlayerCpgAnim.cpp in Sources */,
 				D26778EC1DF00698003CE73F /* OtherPlayerInfo.cpp in Sources */,
+				D252FA071E7FA19D00937322 /* BillDetailInfo.cpp in Sources */,
 				D26778F81DF00698003CE73F /* LobbyScene.cpp in Sources */,
 				D252F9E21E7F86BC00937322 /* QuitRoomDialog.cpp in Sources */,
 				D26779061DF00698003CE73F /* PlayerRight.cpp in Sources */,
@@ -2194,11 +2192,12 @@
 				D26779401DF00698003CE73F /* StringUtil.cpp in Sources */,
 				D267793E1DF00698003CE73F /* SeatIdUtil.cpp in Sources */,
 				D252F9D41E7F86BC00937322 /* GuiLayer.cpp in Sources */,
-				D26778DC1DF00697003CE73F /* ToastCell.cpp in Sources */,
 				D26778FA1DF00698003CE73F /* NoticeDialog.cpp in Sources */,
+				D252FA261E7FA1B800937322 /* HintDialog.cpp in Sources */,
 				D252F9FB1E7F889D00937322 /* OutFogAnim.cpp in Sources */,
 				D26779361DF00698003CE73F /* GameData.cpp in Sources */,
 				D278ADCE1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
+				D252FA091E7FA19D00937322 /* BillInfo.cpp in Sources */,
 				D26779001DF00698003CE73F /* Player.cpp in Sources */,
 				D252F9F51E7F889D00937322 /* HuaAnim.cpp in Sources */,
 				D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
@@ -2207,22 +2206,24 @@
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D252F9E41E7F86BC00937322 /* SoundRecordBtn.cpp in Sources */,
 				D2B3DDC01E6EDE030099B97E /* GameRecordAudioManage.cpp in Sources */,
-				D26778D41DF00697003CE73F /* BaseDialog.cpp in Sources */,
 				D2B3DD941E6EB50C0099B97E /* ChatAndroidMethod.cpp in Sources */,
 				D252F9AC1E7F7D6800937322 /* PrideCell.cpp in Sources */,
+				D252FA221E7FA1B800937322 /* LostNetwork.cpp in Sources */,
 				D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D26778F21DF00698003CE73F /* Loading.cpp in Sources */,
-				D26778D81DF00697003CE73F /* TextHintDialog.cpp in Sources */,
 				D26779041DF00698003CE73F /* PlayerOpposite.cpp in Sources */,
 				D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D267792C1DF00698003CE73F /* LequanExchangeRecord.cpp in Sources */,
+				D252FA2A1E7FA1B800937322 /* InfoToast.cpp in Sources */,
 				D26779101DF00698003CE73F /* SpecialResultLayer.cpp in Sources */,
 				D2B1A8701CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D267794F1DF012E2003CE73F /* ParticleUtil.cpp in Sources */,
 				D252F9DC1E7F86BC00937322 /* CardStack.cpp in Sources */,
 				D252F9F71E7F889D00937322 /* HupaiAnim.cpp in Sources */,
+				D252FA241E7FA1B800937322 /* LostNetwork2.cpp in Sources */,
 				D252F9DE1E7F86BC00937322 /* HuPaiHintLayer.cpp in Sources */,
 				D252F9F31E7F889D00937322 /* DealJongAnim.cpp in Sources */,
+				D252FA281E7FA1B800937322 /* TextHintDialog.cpp in Sources */,
 				D26778BC1DF00697003CE73F /* ChatDialog.cpp in Sources */,
 				D267794A1DF00698003CE73F /* ScrollTextEx.cpp in Sources */,
 				D267792E1DF00698003CE73F /* LequanShop.cpp in Sources */,
@@ -2231,6 +2232,7 @@
 				D26778FE1DF00698003CE73F /* PlayerHero.cpp in Sources */,
 				D267791A1DF00698003CE73F /* ChargeFangka.cpp in Sources */,
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
+				D252FA2C1E7FA1B800937322 /* ToastCell.cpp in Sources */,
 				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D252F99E1E7F7CC700937322 /* GongGaoItem.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
@@ -2246,14 +2248,15 @@
 				D299F8CC1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
 				D267790C1DF00698003CE73F /* ResultScene.cpp in Sources */,
 				D20474B91E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
-				D26778DA1DF00697003CE73F /* InfoToast.cpp in Sources */,
 				D26778EA1DF00698003CE73F /* HeroInfoEdit.cpp in Sources */,
 				D26779461DF00698003CE73F /* HeadImage.cpp in Sources */,
+				D252FA201E7FA1B800937322 /* BaseDialog.cpp in Sources */,
 				D26779261DF00698003CE73F /* Huode.cpp in Sources */,
 				D26779141DF00698003CE73F /* GameRuleDialog.cpp in Sources */,
 				D2FB85261E0924AF00257EE1 /* GoldRoomPlate.cpp in Sources */,
 				D26778DE1DF00697003CE73F /* DissovleRoomDialog.cpp in Sources */,
 				D267790A1DF00698003CE73F /* PlayerResultCell.cpp in Sources */,
+				D252FA0B1E7FA19D00937322 /* FupanDialog.cpp in Sources */,
 				D2FB852B1E09254900257EE1 /* GoldRoomButton.cpp in Sources */,
 				D257FD791D6C2E2400B8C596 /* MahjongPayHandler.cpp in Sources */,
 				D252F9A81E7F7D6800937322 /* DailyEvent.cpp in Sources */,
@@ -2262,10 +2265,7 @@
 				D26779341DF00698003CE73F /* SplashScene.cpp in Sources */,
 				D252F9E01E7F86BC00937322 /* Orientation.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
-				D252F9B71E7F84AB00937322 /* BillDetailInfo.cpp in Sources */,
 				D26778E01DF00697003CE73F /* RoomFullDialog.cpp in Sources */,
-				D252F9BB1E7F84AB00937322 /* FupanDialog.cpp in Sources */,
-				D212D5351E13A89900C29C00 /* LostNetwork2.cpp in Sources */,
 				D267792A1DF00698003CE73F /* ExchangePropCell.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D26779281DF00698003CE73F /* ExchangeItem.cpp in Sources */,

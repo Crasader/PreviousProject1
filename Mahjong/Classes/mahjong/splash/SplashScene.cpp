@@ -1,5 +1,5 @@
 #include "mahjong/splash/SplashScene.h"
-#include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/friend/dialog/RoomFullDialog.hpp"
 #include "mahjong/friend/dialog/RoomIdErrorDialog.hpp"
 #include "mahjong/loading/Loading.h"

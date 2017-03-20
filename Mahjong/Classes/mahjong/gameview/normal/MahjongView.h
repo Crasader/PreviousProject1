@@ -8,7 +8,7 @@
 #include "mahjong/player/PlayerOpposite.h"
 #include "mahjong/player/PlayerHero.h"
 #include "mahjong/player/playerinfo/Player.h"
-#include "mahjong/dialog/toast/InfoToast.hpp"
+#include "mahjong/common/dialog/toast/InfoToast.hpp"
 #include "mahjong/state/DataStruct.h"
 #include "userdata/UserData.h"
 

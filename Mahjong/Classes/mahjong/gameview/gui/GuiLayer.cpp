@@ -3,7 +3,7 @@
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/state/GameData.h"
 #include "mahjong/common/bill/BillInfo.h"
-#include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/chat/ChatDialog.hpp"
 #include "mahjong/audio/Audio.h"
 #include "mahjong/utils/SeatIdUtil.h"

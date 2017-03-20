@@ -6,25 +6,25 @@
 //
 //
 
-#include "mahjong/dialog/network/LostNetwork.hpp"
+#include "mahjong/common/dialog/network/LostNetwork2.hpp"
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "mahjong/lobby/LobbyScene.h"
 
-bool LostNetwork::init(){
+bool LostNetwork2::init(){
     if(!Layer::init()){
         return false;
     }
-    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 50), 1280, 720);
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 125), 1280, 720);
     addChild(bg0, -1);
     
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
-
-    auto bg = Sprite::create("common/toast_bg.png");
+    
+    auto bg = Sprite::create("common/toast_bg_2.png");
     bg->setPosition(640,300);
     addChild(bg);
     
@@ -45,8 +45,7 @@ bool LostNetwork::init(){
             }, 0, 0, delayTime, "socket_reconnect2000");
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         }
-        
+
     }, 10, 2, 30, "socket_reconnect5000");
-    
     return true;
 }

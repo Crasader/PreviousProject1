@@ -2,7 +2,7 @@
 #define __USER_SETTING_H__
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
-#include "mahjong/dialog/base/BaseDialog.h"
+#include "mahjong/common/dialog/base/BaseDialog.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 

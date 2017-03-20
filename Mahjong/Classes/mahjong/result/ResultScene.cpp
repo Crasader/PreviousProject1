@@ -16,7 +16,7 @@
 #include "mahjong/lobby/EnterRoomDialog.hpp"
 #include "mahjong/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/shop/gold/ChargeGold.hpp"
-#include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/utils/SeatIdUtil.h"
 #include "mahjong/utils/StringUtil.h"
 #include "mahjong/utils/Chinese.h"

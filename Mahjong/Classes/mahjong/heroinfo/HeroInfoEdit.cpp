@@ -1,5 +1,5 @@
 #include "mahjong/heroinfo/HeroInfoEdit.h"
-#include "mahjong/dialog/prompt/HintDialog.hpp"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 
 
 HeroInfoEdit* HeroInfoEdit::create(int type){
