@@ -70,6 +70,8 @@
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D25139A21E45D6CC00FAB9C9 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25139A01E45D6CC00FAB9C9 /* FupanDialog.cpp */; };
 		D25139A31E45D6CC00FAB9C9 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25139A01E45D6CC00FAB9C9 /* FupanDialog.cpp */; };
+		D252F9931E7F7B9700937322 /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */; };
+		D252F9941E7F7B9700937322 /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -326,8 +328,6 @@
 		D2B3DDBC1E6EDAE40099B97E /* LVRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDB91E6EDAE40099B97E /* LVRecordTool.m */; };
 		D2B3DDBF1E6EDE030099B97E /* GameRecordAudioManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDBD1E6EDE030099B97E /* GameRecordAudioManage.cpp */; };
 		D2B3DDC01E6EDE030099B97E /* GameRecordAudioManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDBD1E6EDE030099B97E /* GameRecordAudioManage.cpp */; };
-		D2B3DDC41E71410E0099B97E /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDC21E71410E0099B97E /* ShiMingLayer.cpp */; };
-		D2B3DDC51E71410E0099B97E /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDC21E71410E0099B97E /* ShiMingLayer.cpp */; };
 		D2B3DDC91E718E940099B97E /* SoundRecordBtn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDC71E718E940099B97E /* SoundRecordBtn.cpp */; };
 		D2B3DDCA1E718E940099B97E /* SoundRecordBtn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DDC71E718E940099B97E /* SoundRecordBtn.cpp */; };
 		D2C3FA561D9906FF00CFC80E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA521D9906FF00CFC80E /* libWeChatSDK.a */; };
@@ -467,6 +467,8 @@
 		D22F1C171CC5CB67007270B2 /* setting */ = {isa = PBXFileReference; lastKnownFileType = folder; path = setting; sourceTree = "<group>"; };
 		D25139A01E45D6CC00FAB9C9 /* FupanDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FupanDialog.cpp; sourceTree = "<group>"; };
 		D25139A11E45D6CC00FAB9C9 /* FupanDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FupanDialog.hpp; sourceTree = "<group>"; };
+		D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiMingLayer.cpp; sourceTree = "<group>"; };
+		D252F9921E7F7B9700937322 /* ShiMingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShiMingLayer.hpp; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -707,8 +709,6 @@
 		D2B3DDB91E6EDAE40099B97E /* LVRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVRecordTool.m; sourceTree = "<group>"; };
 		D2B3DDBD1E6EDE030099B97E /* GameRecordAudioManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameRecordAudioManage.cpp; sourceTree = "<group>"; };
 		D2B3DDBE1E6EDE030099B97E /* GameRecordAudioManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecordAudioManage.h; sourceTree = "<group>"; };
-		D2B3DDC21E71410E0099B97E /* ShiMingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiMingLayer.cpp; sourceTree = "<group>"; };
-		D2B3DDC31E71410E0099B97E /* ShiMingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShiMingLayer.hpp; sourceTree = "<group>"; };
 		D2B3DDC71E718E940099B97E /* SoundRecordBtn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundRecordBtn.cpp; sourceTree = "<group>"; };
 		D2B3DDC81E718E940099B97E /* SoundRecordBtn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SoundRecordBtn.hpp; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
@@ -1043,6 +1043,15 @@
 			path = fpdialog;
 			sourceTree = "<group>";
 		};
+		D252F9901E7F7B9700937322 /* shiming */ = {
+			isa = PBXGroup;
+			children = (
+				D252F9911E7F7B9700937322 /* ShiMingLayer.cpp */,
+				D252F9921E7F7B9700937322 /* ShiMingLayer.hpp */,
+			);
+			path = shiming;
+			sourceTree = "<group>";
+		};
 		D257FD6D1D6C2E2400B8C596 /* payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1087,7 +1096,6 @@
 			isa = PBXGroup;
 			children = (
 				D207A7431E7280DC00FF09DA /* GameConfig.h */,
-				D2B3DDC11E7140FB0099B97E /* shiming */,
 				D29FB5501E6D0D2D00FD4B9A /* gonggao */,
 				D26779501DF01349003CE73F /* audio */,
 				D26777E51DF00697003CE73F /* anim */,
@@ -1328,6 +1336,7 @@
 		D267783E1DF00697003CE73F /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D252F9901E7F7B9700937322 /* shiming */,
 				D2FB85221E09243000257EE1 /* goldroom */,
 				D267783F1DF00697003CE73F /* EnterRoomDialog.cpp */,
 				D26778401DF00697003CE73F /* EnterRoomDialog.hpp */,
@@ -1715,15 +1724,6 @@
 			path = chatIOS;
 			sourceTree = "<group>";
 		};
-		D2B3DDC11E7140FB0099B97E /* shiming */ = {
-			isa = PBXGroup;
-			children = (
-				D2B3DDC21E71410E0099B97E /* ShiMingLayer.cpp */,
-				D2B3DDC31E71410E0099B97E /* ShiMingLayer.hpp */,
-			);
-			path = shiming;
-			sourceTree = "<group>";
-		};
 		D2C3FA511D9906FF00CFC80E /* wechat */ = {
 			isa = PBXGroup;
 			children = (
@@ -2078,6 +2078,7 @@
 				D26778D51DF00697003CE73F /* HintDialog.cpp in Sources */,
 				D26778FF1DF00698003CE73F /* Player.cpp in Sources */,
 				D26779291DF00698003CE73F /* ExchangePropCell.cpp in Sources */,
+				D252F9931E7F7B9700937322 /* ShiMingLayer.cpp in Sources */,
 				D26778C71DF00697003CE73F /* MjGameScene.cpp in Sources */,
 				D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -2111,7 +2112,6 @@
 				D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
 				D26778EF1DF00698003CE73F /* Jong.cpp in Sources */,
 				D26778CF1DF00697003CE73F /* DailyPride.cpp in Sources */,
-				D2B3DDC41E71410E0099B97E /* ShiMingLayer.cpp in Sources */,
 				D26778CD1DF00697003CE73F /* DailyEvent.cpp in Sources */,
 				D26778D11DF00697003CE73F /* PrideCell.cpp in Sources */,
 				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
@@ -2158,6 +2158,7 @@
 				D26778BE1DF00697003CE73F /* FaceChatLayer.cpp in Sources */,
 				D26778FC1DF00698003CE73F /* PlayerBase.cpp in Sources */,
 				D26779081DF00698003CE73F /* NormalResultLayer.cpp in Sources */,
+				D252F9941E7F7B9700937322 /* ShiMingLayer.cpp in Sources */,
 				D267790E1DF00698003CE73F /* GameResultCell.cpp in Sources */,
 				D26778B61DF00697003CE73F /* PlayerCpgAnim.cpp in Sources */,
 				D267795D1DF1614F003CE73F /* LostNetwork.cpp in Sources */,
@@ -2188,7 +2189,6 @@
 				D26778FA1DF00698003CE73F /* NoticeDialog.cpp in Sources */,
 				D26779361DF00698003CE73F /* GameData.cpp in Sources */,
 				D278ADCE1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
-				D2B3DDC51E71410E0099B97E /* ShiMingLayer.cpp in Sources */,
 				D26778CE1DF00697003CE73F /* DailyEvent.cpp in Sources */,
 				D26779001DF00698003CE73F /* Player.cpp in Sources */,
 				D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,

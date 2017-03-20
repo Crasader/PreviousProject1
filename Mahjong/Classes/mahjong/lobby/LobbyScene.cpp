@@ -30,7 +30,7 @@
 #include "mahjong/dialog/network/LostNetwork2.hpp"
 #include "mahjong/gonggao/GameGongGaoLayer.hpp"
 #include "mahjong/chat/chatAndroid/ChatAndroidMethod.h"
-#include "mahjong/shiming/ShiMingLayer.hpp"
+#include "mahjong/lobby/shiming/ShiMingLayer.hpp"
 
 bool LobbyScene::init()
 {

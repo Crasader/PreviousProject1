@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/shiming/ShiMingLayer.hpp"
+#include "mahjong/lobby/shiming/ShiMingLayer.hpp"
 #include "mahjong/state/GameData.h"
 #include "server/NetworkManage.h"
 
