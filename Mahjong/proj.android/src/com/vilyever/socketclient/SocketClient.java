@@ -1,12 +1,10 @@
 package com.vilyever.socketclient;
 
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.util.Log;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import com.vilyever.socketclient.helper.SocketClientAddress;
 import com.vilyever.socketclient.helper.SocketClientDelegate;
@@ -19,11 +17,12 @@ import com.vilyever.socketclient.helper.SocketPacket;
 import com.vilyever.socketclient.helper.SocketPacketHelper;
 import com.vilyever.socketclient.helper.SocketResponsePacket;
 
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.concurrent.LinkedBlockingQueue;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.CallSuper;
+import android.support.annotation.NonNull;
 
 /**
  * SocketClient AndroidSocketClient <com.vilyever.socketclient> Created by
