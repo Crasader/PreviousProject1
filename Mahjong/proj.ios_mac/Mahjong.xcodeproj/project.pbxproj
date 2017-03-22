@@ -257,6 +257,8 @@
 		D252FCB31E7FB77F00937322 /* WXApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FCAB1E7FB77F00937322 /* WXApiManager.mm */; };
 		D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FCAC1E7FB77F00937322 /* WxLoginHandler.cpp */; };
 		D252FCB61E7FC31300937322 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D252FCA61E7FB77F00937322 /* libWeChatSDK.a */; };
+		D252FD681E80F3A500937322 /* openroom in Resources */ = {isa = PBXBuildFile; fileRef = D252FD671E80F3A500937322 /* openroom */; };
+		D252FD691E80F3A500937322 /* openroom in Resources */ = {isa = PBXBuildFile; fileRef = D252FD671E80F3A500937322 /* openroom */; };
 		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
@@ -666,6 +668,7 @@
 		D252FCAB1E7FB77F00937322 /* WXApiManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXApiManager.mm; sourceTree = "<group>"; };
 		D252FCAC1E7FB77F00937322 /* WxLoginHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WxLoginHandler.cpp; sourceTree = "<group>"; };
 		D252FCAD1E7FB77F00937322 /* WxLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WxLoginHandler.h; sourceTree = "<group>"; };
+		D252FD671E80F3A500937322 /* openroom */ = {isa = PBXFileReference; lastKnownFileType = folder; path = openroom; sourceTree = "<group>"; };
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
@@ -917,6 +920,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D252FD671E80F3A500937322 /* openroom */,
 				D281A38F1E5442C8007FF30E /* share */,
 				D29E85981E320EB100AFACEE /* fupan */,
 				D212D53B1E14A0BA00C29C00 /* batteryInfo */,
@@ -1971,6 +1975,7 @@
 				D25DEE371CC0F56A007D428A /* bill in Resources */,
 				D22F1C181CC5CB67007270B2 /* setting in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				D252FD681E80F3A500937322 /* openroom in Resources */,
 				D2FB85211E07B9F700257EE1 /* Images.xcassets in Resources */,
 				D25329701CC0D33600DDAD97 /* mjitem in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
@@ -2013,6 +2018,7 @@
 				D281E5A21DACF35600D3E44E /* audio in Resources */,
 				D25329691CC0D33600DDAD97 /* headportrait in Resources */,
 				D25DEE421CC4AE78007D428A /* shop in Resources */,
+				D252FD691E80F3A500937322 /* openroom in Resources */,
 				D294FE201D9CFBE1005FB8A2 /* Icon-180.png in Resources */,
 				D25329751CC0D33600DDAD97 /* playerinfo in Resources */,
 			);

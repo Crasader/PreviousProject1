@@ -27,10 +27,28 @@ bool FriendRoom::init()
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(FriendRoom::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 570);
+    closeMenu->setPosition(1050, 600);
     addChild(closeMenu);
     
-    auto Sprite
+    auto roomline = Sprite::create("openroom/across_line.png");
+    roomline->setPosition(640,380);
+    addChild(roomline);
+    
+    auto  shangHai = Sprite::create("openroom/shang_hai_btn_1.png");
+    shangHai->setPosition(303,509);
+    addChild(shangHai);
+    
+    auto hongZhong = Sprite::create("openroom/hong_zhong_btn_2.png");
+    hongZhong->setPosition(303,400);
+    addChild(hongZhong);
+    
+    auto vertical = Sprite::create("openroom/vertical_line_1.png");
+    vertical->setPosition(380,380);
+    addChild(vertical);
+    
+    auto roomText = Sprite::create("openroom/shang_hai_text.png");
+    roomText->setPosition(725,415);
+    addChild(roomText);
     
 //    auto roomInfo = Sprite::create("friend/qiaoma_hua_di.png");
 //    roomInfo->setPosition(640,500);
