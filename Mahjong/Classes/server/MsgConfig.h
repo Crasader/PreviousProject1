@@ -166,6 +166,55 @@
 
 #define MSGCODE_FUPAN_PLAYER_NOTIFY  10000//复盘玩家数据
 
+/**
+ 红中麻将协议
+ **/
+#define MSGCODE_HH_MAJIANG_BACK_OUT_REQUEST 2997//后台切出请求{code:2997,poxiaoId:poxiaoId}
+#define MSGCODE_HH_MAJIANG_AGAIN_REQUEST 2998//再来一局请求{code:2998,poxiaoId:poxiaoId}
+#define MSGCODE_HH_MAJIANG_AGAIN_RESPONSE 2999//再来一局回复{code:2999,poxiaoId:poxiaoId,result:1,rsid:1000,kb:"1"}1为成功 2为金币小于下限 3为金币高于上限rsid为跳转房间
+
+#define MSGCODE_HH_READY_REQUEST   3000// 晃晃麻将客户端到服务端准备请求{code:3000,poxiaoId:poxiaoId}
+#define MSGCODE_HH_READY_RESPONSE   3001 // 晃晃麻将服务端到客户端准备回复{code:3001,poxiaoId:poxiaoId,result:1,rsid:'1111'}
+#define MSGCODE_HH_LOGIN_NOTIFY   3002 // 晃晃麻将服务端到客户端登陆通知{code:3002,result:0,poxiaoId:poxiaoId,seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0,pId:pId} gender性别0女1男 ifready准备0未准备1准备
+#define MSGCODE_HH_READY_NOTIFY   3003 // 晃晃麻将服务端到客户端准备通知{code:3003,poxiaoId:poxiaoId,seatId:1}
+#define MSGCODE_HH_MAJIANG_DISCARD_NOTIFY   3004 // 晃晃麻将开始游戏,发牌通知{code:3004,poxiaoId:poxiaoId,start:1,dice:"3,6",poker:"1,2,4,5,6",kb:"1",hf:"2",prjucount:1} 私人房间进行到的局数prjucount
+#define MSGCODE_HH_MAJIANG_DISPATCH_REQUEST   3005 // 晃晃麻将出牌请求{code:3005,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
+#define MSGCODE_HH_MAJIANG_DISPATCH_NOTIFY   3006 // 晃晃麻将出牌通知{code:3006,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
+#define MSGCODE_HH_MAJIANG_PLAYER_CPG_NOTIFY   3007 //晃晃麻将玩家碰杠通知{code:3007,poxiaoId:poxiaoId,seatId:seatId,poker:1,peng:"1,2,3",gang:"1,1,1,1"}
+#define MSGCODE_HH_MAJIANG_PENG_REQUEST   3008 // 晃晃麻将碰牌请求{code:3008,poxiaoId:poxiaoId,seatId:seatId,peng:"1,2",poker:poker}
+#define MSGCODE_HH_MAJIANG_PENG_RESPONSE   3009 // 晃晃麻将碰牌回复{code:3009,poxiaoId:poxiaoId,seatId:seatId,result:1,ting:"1,2,3"}  1成功0失败
+#define MSGCODE_HH_MAJIANG_PENG_NOTIFY   3010 // 晃晃麻将碰牌通知{code:3010,poxiaoId:poxiaoId,seatId:seatId,peng:"1,2",poker:poker,sId:2} seatId为碰牌人的座位号
+#define MSGCODE_HH_MAJIANG_GANG_REQUEST   3011 // 晃晃麻将杠牌请求{code:3011,poxiaoId:poxiaoId,seatId:seatId,gang:"1,1,1",poker:poker,flag:0} flag 0为明杠1为暗杠,2碰杠
+#define MSGCODE_HH_MAJIANG_GANG_RESPONSE   3012 // 晃晃麻将杠牌回复{code:3012,poxiaoId:poxiaoId,seatId:seatId,result:1}  1成功0失败
+#define MSGCODE_HH_MAJIANG_GANG_NOTIFY   3013 // 晃晃麻将杠牌通知{code:3013,poxiaoId:poxiaoId,seatId:seatId,gang:"1,1,1",poker:poker,flag:0,sId:2} seatId为杠牌人的座位号 1暗杠 2碰杠 0普通杠
+#define MSGCODE_HH_MAJIANG_NO_CHI_PENG_GANG_REQUEST   3014 // 晃晃麻将取消碰杠牌请求{code:3014,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_HH_MAJIANG_NO_CHI_PENG_GANG_RESPONSE   3015 // 晃晃麻将取消碰杠回复{code:3015,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_HH_MAJIANG_POKER_NOTIFY   3016 //晃晃麻将游戏中发牌{code:3016,poxiaoId:poxiaoId,seatId:seatId,poker:{poker:1,hua:32,33}}poker为花时替换牌
+#define MSGCODE_HH_MAJIANG_FINISH_NOTIFY   3017 //晃晃麻将结算通知 ,结算,result0为平,1为自摸,2为放炮 3胡牌  4输
+//{code:3017,flag:"1",poxiaoId:poxiaoId,seatId:seatId,poker:1,finish:[{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0,hua:1,poker:1,2,3},{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0,hua:1,poker:1,2,3}]}
+#define MSGCODE_HH_MAJIANG_OUT_REQUEST   3018 //晃晃麻将退出游戏请求{code:3018,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_HH_MAJIANG_OUT_RESPONSE   3019 // 晃晃麻将退出游戏回复{code:3019,poxiaoId:poxiaoId,seatId:seatId,result:1}
+#define MSGCODE_HH_MAJIANG_OUTLINE_RESUME_NOTIFY 3020 
+//断线续完{code:3020,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",prId:"123",fzId:"456",prjucount:"1",prjushu:"2"}]}
+#define MSGCODE_HH_FRIEND_GAME_REQUEST   3021 // 晃晃麻将好友开房请求{code:3021,poxiaoId:"123",ma:"",prJushu:"8"} ftype 1为打八局 2为打16局,ma抓馬個數
+#define MSGCODE_HH_FRIEND_GAME_NOTIFY   3022 // 晃晃麻将好友开房通知{code:3022,poxiaoId:"123",nickname:"aaa",pId:"456"}
+#define MSGCODE_HH_FRIEND_GAME_RESPONSE   3023 //晃晃麻将好友开房回复{code:3023,poxiaoId:poxiaoId,result:"0",seatId:1,prId:"1234",prjushu:"8"} prjushu 8\16
+#define MSGCODE_HH_FRIEND_JOIN_GAME_REQUEST   3024 // 晃晃麻将好友加入房间请求{code:3024,poxiaoId:"123",pId:"456"}
+#define MSGCODE_HH_FRIEND_JOIN_GAME_RESPONSE   3025 //晃晃麻将好友进入房间回复{code:3025,poxiaoId:poxiaoId,result:0,seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1,pic:"1"}],prId:"1234",prjushu:"8",iflezi:"0"} iflezi为0表示无勒子1表示有勒子 result 0为自己在游戏中 1为成功 2为房间已满
+#define MSGCODE_HH_FRIEND_GAME_BILL_REQUEST   3026 //晃晃麻将获取账单请求{code:3026,poxiaoId:poxiaoId}
+#define MSGCODE_HH_FRIEND_GAME_BILL_RESPONSE   3027 //晃晃麻将获取账单回复{code:3027,poxiaoId:poxiaoId,bill:[{date:"2015-06-06 15:15",count:"10",prId:"123",atype:"0",billid:"8888888888",content:[{nickname:"张三",score:"1000"},{nickname:"李四",score:"2000"},{nickname:"王五",score:"1000"},{nickname:"赵六",score:"1100"}]}]}
+#define MSGCODE_HH_FRIEND_GAME_RESULT_NOTIFY   3028 // 晃晃麻将好友邀请结果通知{code:3028,poxiaoId:"123",pId:"456",result:1,nickname:"xxx"} result 为1是好友不在线 2是好友在游戏中，邀请成功不发送次通知
+#define MSGCODE_HH_FRIEND_JOIN_GAME_FJH_REQUEST   3029 // 晃晃麻将好友输入房间号加入房间请求{code:3029,poxiaoId:"123",prId:"456"}
+
+#define MSGCODE_HH_FRIEND_DISMISS_NOTIFY   3030 // 晃晃麻将私人房间可以解散通知{code:3030,poxiaoId:"123"}
+#define MSGCODE_HH_FRIEND_DISMISS_FZAGREE_REQUEST   3031 //晃晃麻将私人房间房主解散请求{code:3031,poxiaoId:poxiaoId}
+#define MSGCODE_HH_FRIEND_DISMISS_AGREE_NOTIFY   3032 // 晃晃麻将私人房间是否同意解散通知{code:3032,poxiaoId:"123"}
+#define MSGCODE_HH_FRIEND_DISMISS_AGREE_REQUEST   3033 //晃晃麻将私人房间是否同意解散请求{code:3033,poxiaoId:poxiaoId,agree:0} 0为不同意 1为同意
+#define MSGCODE_HH_FRIEND_DISMISS_AGREE_RESULT_NOTIFY   3034 //晃晃麻将私人房间是否同意解散通知{code:3034,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同意 1为同意,pId为谁同意了或则不同意了
+#define MSGCODE_HH_FRIEND_DISMISS_FZ_REQUEST   3035 //晃晃麻将私人房间房主解散请求{code:3035,poxiaoId:poxiaoId}
+#define MSGCODE_HH_FANMA_DISMISS_NOTIFY   3036 // 晃晃麻将翻码通知{code:3036,poxiaoId:"123",ma:"1,2,3"}
+
+
 #define LOGIN_SUCCESS "login_success"
 #define MSG_VISITOR_LOGIN_RESP  "msg_visitor_login_resp"
 #define MSG_LOGIN_RESP  "msg_login_resp"
