@@ -52,43 +52,41 @@ bool FriendRoom::init()
     
     auto fangka8 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka8, this));
     auto fangka8Menu = Menu::create(fangka8,NULL);
-    fangka8Menu->setPosition(330,420);
+    fangka8Menu->setPosition(490,475);
     addChild(fangka8Menu);
     
     auto select8 = Sprite::create("friend/icon_right.png");
     select8->setTag(1024);
-    select8->setPosition(330,420);
+    select8->setPosition(490,475);
     select8->setVisible(true);
     addChild(select8);
 
-    
-    
     auto fangka4 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png","friend/select_box_gray.png",CC_CALLBACK_0(FriendRoom::selectFangka4, this));
     auto fangka4Menu = Menu::create(fangka4,NULL);
-    fangka4Menu->setPosition(555,420);
+    fangka4Menu->setPosition(740,475);
     addChild(fangka4Menu);
     
     auto select4 = Sprite::create("friend/icon_right.png");
     select4->setTag(1025);
-    select4->setPosition(555,420);
+    select4->setPosition(740,475);
     select4->setVisible(false);
     addChild(select4);
 
     
     auto fangka16 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png","friend/select_box_gray.png",CC_CALLBACK_0(FriendRoom::selectFangka16, this));
     auto fangka16Menu = Menu::create(fangka16,NULL);
-    fangka16Menu->setPosition(785,420);
+    fangka16Menu->setPosition(490,420);
     addChild(fangka16Menu);
     
     auto select16 = Sprite::create("friend/icon_right.png");
     select16->setTag(1026);
-    select16->setPosition(785,420);
+    select16->setPosition(490,420);
     select16->setVisible(false);
     addChild(select16);
 
     auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(FriendRoom::openRoom, this));
     auto openMenu = Menu::create(openBtn,NULL);
-    openMenu->setPosition(640,150);
+    openMenu->setPosition(640,130);
     addChild(openMenu);
     
     return true;
