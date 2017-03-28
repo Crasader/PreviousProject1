@@ -9,8 +9,17 @@ public:
     virtual bool init() override;
     virtual void onEnter() override;
     virtual void onExit() override;
+    bool onTouchBegan(Touch *touch, Event  *event) override;
+    void onTouchMoved(Touch *touch, Event  *event) override;
+    void onTouchEnded(Touch *touch, Event  *event) override;
     CREATE_FUNC(FriendRoom);
 private:
+    bool  shangHaiSelected = true;
+    Sprite* hongZhong;
+    Sprite* shangHai;
+    Sprite* vertical;
+    Sprite* shangHaiRoomText;
+    Sprite* hongZhongRoomText;
     void openRoom();
     void closeView();
     void selectFangka8();
@@ -20,5 +29,10 @@ private:
     void selectLezi();
     void selectWukaibao();
     void select2mo3chong();
+    void selectMa159zh();
+    void selectMa159();
+    void selectMa1();
+    void selectDifen2();
+    void selectDifen10();
 };
 #endif

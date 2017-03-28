@@ -41,7 +41,7 @@ bool GoldRoomPlate::init(RoomListData data){
 }
 
 bool GoldRoomPlate::onTouchBegan(Touch *touch, Event  *event){
-    return true;
+    return false;
 }
 
 
