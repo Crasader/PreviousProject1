@@ -36,7 +36,7 @@ LOCAL_SHARED_LIBRARIES := YIM
 # _COCOS_LIB_ANDROID_END
 
 include $(BUILD_SHARED_LIBRARY)
-include $(LOCAL_PATH)/../../yim/lib/android/Android.mk
+#include $(LOCAL_PATH)/../../yim/lib/android/Android.mk
 
 $(call import-module,.)
 

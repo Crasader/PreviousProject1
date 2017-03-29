@@ -196,7 +196,7 @@
 #define MSGCODE_HH_MAJIANG_OUT_RESPONSE   3019 // 晃晃麻将退出游戏回复{code:3019,poxiaoId:poxiaoId,seatId:seatId,result:1}
 #define MSGCODE_HH_MAJIANG_OUTLINE_RESUME_NOTIFY 3020 
 //断线续完{code:3020,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",prId:"123",fzId:"456",prjucount:"1",prjushu:"2"}]}
-#define MSGCODE_HH_FRIEND_GAME_REQUEST   3021 // 晃晃麻将好友开房请求{code:3021,poxiaoId:"123",ma:"",prJushu:"8"} ftype 1为打八局 2为打16局,ma抓馬個數
+#define MSGCODE_HH_FRIEND_GAME_REQUEST   3021 // 晃晃麻将好友开房请求{code:3021,poxiaoId:"123",difen:"",fanma:"",prJushu:"8"
 #define MSGCODE_HH_FRIEND_GAME_NOTIFY   3022 // 晃晃麻将好友开房通知{code:3022,poxiaoId:"123",nickname:"aaa",pId:"456"}
 #define MSGCODE_HH_FRIEND_GAME_RESPONSE   3023 //晃晃麻将好友开房回复{code:3023,poxiaoId:poxiaoId,result:"0",seatId:1,prId:"1234",prjushu:"8"} prjushu 8\16
 #define MSGCODE_HH_FRIEND_JOIN_GAME_REQUEST   3024 // 晃晃麻将好友加入房间请求{code:3024,poxiaoId:"123",pId:"456"}

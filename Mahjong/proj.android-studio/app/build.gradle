@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "org.cocos2dx.NewCocosProject"
+        applicationId "org.cocos2dx.Mahjong"
         minSdkVersion 10
         targetSdkVersion 22
         versionCode 1
