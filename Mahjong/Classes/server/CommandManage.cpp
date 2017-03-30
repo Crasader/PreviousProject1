@@ -510,6 +510,16 @@ std::string CommandManage::getCertification(std::string name, std::string sfz){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getEnterHongZhongCommand(std::string ftype,std::string ma,std::string difen){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_FRIEND_GAME_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("difen", difen));
+    keyValue.insert(map<string, string>::value_type("fanma", ma));
+    keyValue.insert(map<string, string>::value_type("ftype", ftype));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
@@ -527,4 +537,5 @@ std::string CommandManage::commandString(std::map<std::string, std::string> keyV
     std::string result = buffer.GetString();
     return result;
 }
+
 

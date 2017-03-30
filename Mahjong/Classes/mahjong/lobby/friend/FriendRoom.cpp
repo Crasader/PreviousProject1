@@ -317,20 +317,21 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
 }
 
 void FriendRoom::openRoom(){
+    std::string ftype = "1";//1表示8局，2表示4局，3表示16局
+    if(NULL != getChildByTag(1024)&& NULL != getChildByTag(1025)&& NULL != getChildByTag(1026)){
+        if(getChildByTag(1025)->isVisible()){
+            ftype = "2";
+        }else if(getChildByTag(1026)->isVisible()){
+            ftype = "3";
+        }else{
+            ftype = "1";
+        }
+    }
+    
     if(shangHaiSelected){
-        std::string ftype = "1";//1表示8局，2表示4局，3表示16局
         std::string iflezi = "0";//0表示没有，1表示有
         std::string ifkb = "1";//0表示没有，1表示有
         std::string ifemsc = "0";//0表示没有，1表示有
-        if(NULL != getChildByTag(1024)&& NULL != getChildByTag(1025)&& NULL != getChildByTag(1026)){
-            if(getChildByTag(1025)->isVisible()){
-                ftype = "2";
-            }else if(getChildByTag(1026)->isVisible()){
-                ftype = "3";
-            }else{
-                ftype = "1";
-            }
-        }
         if(NULL != getChildByTag(2024)&& NULL != getChildByTag(2026)){
             if(getChildByTag(2024)->isVisible()){
                 iflezi = "0";
@@ -354,7 +355,25 @@ void FriendRoom::openRoom(){
         }
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(ftype,iflezi,ifkb,ifemsc));
     }else{
+        std::string fanma = "0";//0表示没有159zhong,1表示有159,2表示1码
+        std::string difen = "2";
+        if(NULL != getChildByTag(4024)&&getChildByTag(4024)->isVisible()){
+            fanma  = "0";
+        }
+        if(NULL != getChildByTag(4026)&&getChildByTag(4026)->isVisible()){
+            fanma  = "1";
+        }
+        if(NULL != getChildByTag(4028)&&getChildByTag(4028)->isVisible()){
+            fanma  = "2";
+        }
         
+        if(NULL != getChildByTag(5024)&&getChildByTag(5024)->isVisible()){
+            difen = "2";
+        }
+        if(NULL != getChildByTag(5026)&&getChildByTag(5026)->isVisible()){
+            difen = "10";
+        }
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterHongZhongCommand(ftype, fanma,difen));
     }
 }
 
