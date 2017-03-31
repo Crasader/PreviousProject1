@@ -54,7 +54,7 @@ void GameSocketManage::sendScoketData(std::string msg){
     
 }
 void GameSocketManage::receiveScoketData(std::string msg){
-    //    log("receive msg = %s",msg.c_str());
+    log("receive msg = %s",msg.c_str());
     NetworkManage::getInstance()->receiveMsg(msg);
 }
 
@@ -67,7 +67,7 @@ void GameSocketManage::resetBeatCount(){
 }
 
 void GameSocketManage::disConnectSocket(){
-     NetworkManage::getInstance()->disConnectSocket();    
+    NetworkManage::getInstance()->disConnectSocket();
 }
 
 void GameSocketManage::disConnectSelf(){
