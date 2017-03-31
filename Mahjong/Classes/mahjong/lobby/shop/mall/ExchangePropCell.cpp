@@ -71,7 +71,7 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName,std::s
         lequan->setColor(Color3B(240,228,45));
         lequan->setPosition(0,-35);
         addChild(lequan);
-		auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%d%s", lequanNum, ChineseWord("lequan")), "arial", 24);
+		auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%d%s", lequanNum, ChineseWord("lequan").c_str()), "arial", 24);
         lequanXiao->setAnchorPoint(Point::ANCHOR_MIDDLE);
         lequanXiao->setColor(Color3B(240,228,45));
         lequanXiao->setPosition(0,-65);

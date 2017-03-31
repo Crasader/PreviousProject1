@@ -152,7 +152,7 @@ void LobbyScene::drawSceneTop(){
     nickName->setAlignment(TextHAlignment::LEFT);
     addChild(nickName);
     
-    auto markid = Label::createWithSystemFont(StringUtils::format("ID%s:%s",ChineseWord("hao"),UserData::getInstance()->getMarkId().c_str()), "arial", 24);
+    auto markid = Label::createWithSystemFont(StringUtils::format("ID%s:%s",ChineseWord("hao").c_str(),UserData::getInstance()->getMarkId().c_str()), "arial", 24);
     markid->setPosition(nickName->getPositionX()+nickName->getContentSize().width+30, 628);
     markid->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     markid->setAlignment(TextHAlignment::LEFT);

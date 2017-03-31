@@ -1127,9 +1127,9 @@ void MahjongView::onEnter(){
             }
         }
         if(data.agree == "0"){
-            tao->addToast(StringUtils::format("%s%s",name.c_str(),ChineseWord("dialog_text_6")));
+            tao->addToast(StringUtils::format("%s%s",name.c_str(),ChineseWord("dialog_text_6").c_str()));
         }else{
-			tao->addToast(StringUtils::format("%s%s", name.c_str(), ChineseWord("dialog_text_7")));
+			tao->addToast(StringUtils::format("%s%s", name.c_str(), ChineseWord("dialog_text_7").c_str()));
         }
     });
     
