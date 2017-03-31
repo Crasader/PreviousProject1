@@ -249,11 +249,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\socket\android\native\CallAndroidSocket.cpp" />
     <ClCompile Include="..\Classes\socket\android\native\SocketDataBack.cpp" />
     <ClCompile Include="..\Classes\socket\android\PxSocketManage.cpp" />
+    <ClCompile Include="..\Classes\socket\GameSocketManage.cpp" />
     <ClCompile Include="..\Classes\userdata\UserData.cpp" />
     <ClCompile Include="..\Classes\wechat\android\CallAndroidMethod.cpp" />
     <ClCompile Include="..\Classes\wechat\android\MahjongPayHandler.cpp" />
     <ClCompile Include="..\Classes\wechat\ios\WxLoginHandler.cpp" />
-    <ClCompile Include="..\Classes\youmi\MyIM.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -368,6 +368,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\socket\android\native\CallAndroidSocket.hpp" />
     <ClInclude Include="..\Classes\socket\android\native\SocketDataBack.h" />
     <ClInclude Include="..\Classes\socket\android\PxSocketManage.h" />
+    <ClInclude Include="..\Classes\socket\GameSocketManage.hpp" />
     <ClInclude Include="..\Classes\socket\ios\CocoaSocket.h" />
     <ClInclude Include="..\Classes\socket\ios\CocoaSocketManage.h" />
     <ClInclude Include="..\Classes\socket\ios\cocoa\GCDAsyncSocket.h" />
@@ -384,7 +385,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\wechat\ios\wechat\WXApiObject.h" />
     <ClInclude Include="..\Classes\wechat\ios\WXApiManager.h" />
     <ClInclude Include="..\Classes\wechat\ios\WxLoginHandler.h" />
-    <ClInclude Include="..\Classes\youmi\MyIM.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

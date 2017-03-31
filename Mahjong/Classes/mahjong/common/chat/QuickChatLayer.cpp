@@ -7,6 +7,7 @@
 //
 #include "mahjong/common/chat/QuickChatLayer.hpp"
 #include "mahjong/common/chat/ChatDialog.hpp"
+#include "mahjong/common/utils/Chinese.h"
 
 
 bool QuickChatLayer::init(){
@@ -86,64 +87,64 @@ std::string QuickChatLayer::getQuickChatById(int id){
     std::string chatInfo;
     switch (id) {
         case 0:
-            chatInfo = "再打一盘我要走了拿慢慢叫白相";
+			chatInfo = ChineseWord("text_info_1");
             break;
         case 1:
-            chatInfo = "今朝弄风头特好了";
+			chatInfo = ChineseWord("text_info_2");
             break;
         case 2:
-            chatInfo = "今朝手气太忒班了";
+			chatInfo = ChineseWord("text_info_3");
             break;
         case 3:
-            chatInfo = "弄打牌打的特老巨了";
+			chatInfo = ChineseWord("text_info_4");
             break;
         case 4:
-            chatInfo = "勿要吵了，专心眼打";
+			chatInfo = ChineseWord("text_info_5");
             break;
         case 5:
-            chatInfo = "我就等自摸了，那勿要出冲啊";
+			chatInfo = ChineseWord("text_info_6");
             break;
         case 6:
-            chatInfo = "动作快眼，多想有啥想头";
+			chatInfo = ChineseWord("text_info_7");
             break;
         case 7:
-            chatInfo = "今朝额骨头碰着天花板，想撒来撒";
+			chatInfo = ChineseWord("text_info_8");
             break;
         case 8:
-            chatInfo = "辣末一盘，打好差路";
+			chatInfo = ChineseWord("text_info_9");
             break;
         case 9:
-            chatInfo = "哪嫩意思啦，侬帮我豁大咯，侬帮我豁胖咯！";
+			chatInfo = ChineseWord("text_info_10");
             break;
         case 10:
-            chatInfo = "朋友哪意思啦，掰种牌啊打得出来呃！";
+			chatInfo = ChineseWord("text_info_11");
             break;
         case 11:
-            chatInfo = "哪特结棍了，放着码头跳跳啊。";
+			chatInfo = ChineseWord("text_info_12");
             break;
         case 12:
-            chatInfo = "认得哪算我路道粗。";
+			chatInfo = ChineseWord("text_info_13");
             break;
         case 13:
-            chatInfo = "唉，今朝霉头触到哈尔滨。";
+			chatInfo = ChineseWord("text_info_14");
             break;
         case 14:
-            chatInfo = "今朝赢了噶西多，谢谢老板送米";
+			chatInfo = ChineseWord("text_info_15");
             break;
         case 15:
-            chatInfo = "伐好意思，手滑打错了。";
+			chatInfo = ChineseWord("text_info_16");
             break;
         case 16:
-            chatInfo = "桑活要弄弄清，勿能哈来来。";
+			chatInfo = ChineseWord("text_info_17");
             break;
         case 17:
-            chatInfo = "伐弄伊三口，伐适意额。";
+			chatInfo = ChineseWord("text_info_18");
             break;
         case 18:
-            chatInfo = "朋友，好叫，小麻将搞的的噶度组撒？";
+			chatInfo = ChineseWord("text_info_19");
             break;
         case 19:
-            chatInfo = "伐好意思，我又要听张了";
+			chatInfo = ChineseWord("text_info_20");
             break;
         default:
             break;

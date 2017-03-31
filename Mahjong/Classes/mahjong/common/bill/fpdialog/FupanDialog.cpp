@@ -9,6 +9,7 @@
 #include "mahjong/common/bill/fpdialog/FupanDialog.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
+#include "mahjong/common/utils/Chinese.h"
 
 bool FupanDialog::init(){
     if(!Layer::init()){
@@ -68,7 +69,7 @@ void FupanDialog::onEnter(){
     gameFupanListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GAME_FU_PAN_NOTIFY, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getPlaybackInfo().result ==0){
             hintLabel->setVisible(true);
-            hintLabel->setString("输入的复盘码不正确");
+			hintLabel->setString(ChineseWord("text_info_0"));
         }
     });
 }

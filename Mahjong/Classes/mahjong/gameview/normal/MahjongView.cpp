@@ -21,7 +21,8 @@
 #include "mahjong/result/ResultScene.hpp"
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
-#include "youmi/MyIM.h"
+#include "mahjong/common/utils/Chinese.h"
+//#include "youmi/MyIM.h"
 
 bool MahjongView::init(){
     if (!Layer::init())
@@ -194,7 +195,7 @@ void MahjongView::update(float dt){
     if(GAMEDATA::getInstance()->getIsGotoLobby()){
         GAMEDATA::getInstance()->setIsGotoLobby(false);
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            HintDialog* dialog = HintDialog::create("房间已经解散或游戏已经结束!", [=](Ref* ref){
+            HintDialog* dialog = HintDialog::create(ChineseWord("dialog_text_4"), [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
                 GAMEDATA::getInstance()->setIsPlaying(false);
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
@@ -296,11 +297,11 @@ void MahjongView::checkPlayerIpRepetition(){
         for(int j=i+1;j<players.size();j++){
             if(players.at(i)->getIP()==players.at(j)->getIP()){
                 //发现有相同的IP,发出通知
-                if(!showRepeatDialog){
+                /*if(!showRepeatDialog){
                     HintDialog* hint3 = HintDialog::create(StringUtils::format("%s和%sIP相同",players.at(i)->getNickname().c_str(),players.at(j)->getNickname().c_str()),nullptr);
                     addChild(hint3,100);
                     showRepeatDialog = true;
-                }
+                }*/
             }
         }
     }
@@ -1065,7 +1066,7 @@ void MahjongView::onExit()
 {
     Layer::onExit();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    MyIM::leaveRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
+    //MyIM::leaveRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
 #endif
     Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
@@ -1105,12 +1106,12 @@ void MahjongView::onExit()
 void MahjongView::onEnter(){
     Layer::onEnter();
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    MyIM::joinRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
+    //MyIM::joinRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
 #endif
     scheduleUpdate();
     //登录地址变更
     playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
-        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
+        HintDialog* hin = HintDialog::create(ChineseWord("dialog_text_5"),[=](Ref* ref){
             exit(0);
         });
         addChild(hin,5);
@@ -1126,9 +1127,9 @@ void MahjongView::onEnter(){
             }
         }
         if(data.agree == "0"){
-            tao->addToast(StringUtils::format("%s不同意解散房间",name.c_str()));
+            tao->addToast(StringUtils::format("%s%s",name.c_str(),ChineseWord("dialog_text_6")));
         }else{
-            tao->addToast(StringUtils::format("%s同意解散房间",name.c_str()));
+			tao->addToast(StringUtils::format("%s%s", name.c_str(), ChineseWord("dialog_text_7")));
         }
     });
     
@@ -1198,9 +1199,7 @@ void MahjongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
     gameFaPaiListener = EventListenerCustom::create(MSG_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
-        log("执行发牌,开始播放动画");
         if(GAMEDATA::getInstance()->getIsPlaying()){
-            log("已经在游戏中了,不在发牌");
             return;
         }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
@@ -1231,7 +1230,6 @@ void MahjongView::onEnter(){
         anim->setTag(1000);
         anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
         addChild(anim);
-        log("执行发牌,播放动画结束");
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
     
@@ -1534,7 +1532,6 @@ void MahjongView::onEnter(){
             }
         }else if(seatId == ClientSeatId::hero){
             schedule([=](float dt){
-                log("听牌后,系统提玩家出的牌是: %d",poker);
                 playerHero->stopTimeClockAnim();
                 playerHero->drawPlayedJong(poker);
                 if(poker == playerLeft->getLastPoker()){

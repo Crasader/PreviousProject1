@@ -58,9 +58,6 @@
     <Filter Include="src\wechat\ios\wechat">
       <UniqueIdentifier>{bbb3f74a-6361-4476-962f-b7b053b51160}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\youmi">
-      <UniqueIdentifier>{d4547513-cda4-446e-9f4a-424dac060c51}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\mahjong\gameview">
       <UniqueIdentifier>{150e9d8d-f240-494f-bbae-446743c52d8e}</UniqueIdentifier>
     </Filter>
@@ -251,9 +248,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\http\base64\Base64.cpp">
       <Filter>src\http\base64</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\youmi\MyIM.cpp">
-      <Filter>src\youmi</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\mahjong\common\bill\BillDetailInfo.cpp">
       <Filter>src\mahjong\common\bill</Filter>
@@ -540,6 +534,9 @@
     <ClCompile Include="..\Classes\mahjong\gameview\player\playerinfo\Player.cpp">
       <Filter>src\mahjong\gameview\player\playerinfo</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\socket\GameSocketManage.cpp">
+      <Filter>src\socket</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -601,9 +598,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\http\base64\Base64.h">
       <Filter>src\http\base64</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\youmi\MyIM.h">
-      <Filter>src\youmi</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\mahjong\GameConfig.h">
       <Filter>src\mahjong</Filter>
@@ -928,6 +922,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\mahjong\gameview\player\playerinfo\Player.h">
       <Filter>src\mahjong\gameview\player\playerinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\GameSocketManage.hpp">
+      <Filter>src\socket</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

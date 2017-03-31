@@ -12,6 +12,7 @@
 #include "mahjong/common/loading/Loading.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "server/NetworkManage.h"
+#include "mahjong/common/utils/Chinese.h"
 
 
 ExchangeItem* ExchangeItem::create(int propId,std::string propName,std::string proptype){
@@ -215,14 +216,14 @@ void ExchangeItem::confirm(Ref* ref){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeCommand(StringUtil::itos(getItemPropId()),_newPhoneNumber->getText(),"",""));
         }else{
             ShopHintDialog* shop = ShopHintDialog::create();
-            shop->showText("请输入正确的手机号");
+            shop->showText(ChineseWord("dialog_text_8"));
             addChild(shop);        }
     }else{
         if(NULL != getChildByTag(1003) && !getChildByTag(1003)->isVisible()&&_xiangXiDiZhi->getText() != "" && _lianXiRen->getText() != ""){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeCommand(StringUtil::itos(getItemPropId()),_shouJiHao->getText(),_lianXiRen->getText(),_xiangXiDiZhi->getText()));
         }else{
             ShopHintDialog* shop = ShopHintDialog::create();
-            shop->showText("请输入正确的收件信息");
+			shop->showText(ChineseWord("dialog_text_8"));
             addChild(shop);
         }
     }

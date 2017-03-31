@@ -70,7 +70,7 @@ void ResultScene::initTestData(){
         resultData.fan = "10";
         resultData.showPoker = "1,2,3,4,5,6,7,8,9,10,11,12,13,14";
         resultData.huType = "1,3";
-        resultData.nickName = "这里是装电视台";
+        //resultData.nickName = "这里是装电视台";
         gameResults.push_back(resultData);
     }
     GAMEDATA::getInstance()->setGameResults(gameResults);

@@ -114,9 +114,8 @@ std::string UrlImageMannger::downloadQunImgByUrl(std::string url,bool recover){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
     return IAMGE_LOADING;
-#endif
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string path =getImgNameByUrl(url);
     if(!recover){
         if (FileUtils::getInstance()->isFileExist(path))
@@ -136,6 +135,8 @@ std::string UrlImageMannger::downloadQunImgByUrl(std::string url,bool recover){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
     return IAMGE_LOADING;
+#else
+	return IAMGE_LOADING;
 #endif
 }
 
@@ -160,8 +161,7 @@ std::string UrlImageMannger::downloadDailiImgByUrl(std::string url,bool recover 
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener3, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
     return IAMGE_LOADING;
-#endif
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string path =getImgNameByUrl(url);
     if(!recover){
         if (FileUtils::getInstance()->isFileExist(path))
@@ -181,6 +181,8 @@ std::string UrlImageMannger::downloadDailiImgByUrl(std::string url,bool recover 
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener3, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
     return IAMGE_LOADING;
+#else
+	return IAMGE_LOADING;
 #endif
 }
 

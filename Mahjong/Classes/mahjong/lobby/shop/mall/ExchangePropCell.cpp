@@ -9,6 +9,7 @@
 #include "mahjong/lobby/shop/mall/ExchangePropCell.hpp"
 #include "mahjong/lobby/shop/mall/ExchangeItem.hpp"
 #include "mahjong/lobby/shop/ShopHintDialog.hpp"
+#include "mahjong/common/utils/Chinese.h"
 #include "mahjong/GameConfig.h"
 #include "userdata/UserData.h"
 #include "http/image/UrlImageMannger.h"
@@ -65,12 +66,12 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName,std::s
     }else if(lequanNum == 1500000){
         consume_lequan->setTexture("shop/resume_1500000.png");
     }else{
-        auto lequan = Label::createWithSystemFont("消耗","arial",24);
+        auto lequan = Label::createWithSystemFont(ChineseWord("xioahao"),"arial",24);
         lequan->setAnchorPoint(Point::ANCHOR_MIDDLE);
         lequan->setColor(Color3B(240,228,45));
         lequan->setPosition(0,-35);
         addChild(lequan);
-        auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%d乐券",lequanNum),"arial",24);
+		auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%d%s", lequanNum, ChineseWord("lequan")), "arial", 24);
         lequanXiao->setAnchorPoint(Point::ANCHOR_MIDDLE);
         lequanXiao->setColor(Color3B(240,228,45));
         lequanXiao->setPosition(0,-65);

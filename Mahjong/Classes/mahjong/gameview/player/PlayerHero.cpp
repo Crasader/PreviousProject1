@@ -10,6 +10,7 @@
 #include "server/SocketDataManage.h"
 #include "wechat/ios/CallIOSMethod.h"
 #include "wechat/android/CallAndroidMethod.h"
+#include "mahjong/common/utils/Chinese.h"
 
 
 bool PlayerHero::init() {
@@ -379,23 +380,22 @@ void PlayerHero::readyGo(){
 
 
 void PlayerHero::inviteWechatFriend(){
-    std::string roomtype = "房间类型:局数";
+	std::string roomtype = ChineseWord("room_info_1");
     roomtype += GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu;
     if(GAMEDATA::getInstance()->getPrivateKaibao()=="0"){
-        roomtype += ",无开宝";
+		roomtype += ChineseWord("room_info_2");
     }else{
-        roomtype += ",开宝";
+		roomtype += ChineseWord("room_info_3");
     }
     if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
-        roomtype += ",无勒子";
+		roomtype += ChineseWord("room_info_4");
     }else{
-        roomtype += ",40勒子";
+		roomtype += ChineseWord("room_info_5");
     }
     if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
-        roomtype += ",二模三冲";
+		roomtype += ChineseWord("room_info_6");
     }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    
     CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CallIOSMethod::getInstance()->doWechatShareWeb(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,0);

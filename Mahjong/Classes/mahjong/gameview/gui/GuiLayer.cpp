@@ -14,6 +14,7 @@
 #include "userdata/UserData.h"
 #include "wechat/ios/CallIOSMethod.h"
 #include "wechat/android/CallAndroidMethod.h"
+#include "mahjong/common/utils/Chinese.h"
 
 
 bool GuiLayer::init(){
@@ -143,7 +144,7 @@ void GuiLayer::quitButtonClick(){
     Audio::getInstance()->playSoundClick();
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
-            HintDialog* dia = HintDialog::create("返回大厅,如需解散房间,请按解散房间按钮", [=](Ref* ref){
+            HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_1"), [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
                 GAMEDATA::getInstance()->setIsPlaying(false);
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
@@ -151,7 +152,7 @@ void GuiLayer::quitButtonClick(){
             });
             getParent()->addChild(dia,50);
         }else if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            HintDialog* dia = HintDialog::create("是否退出当前房间?", [=](Ref* ref){
+			HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_2"), [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
@@ -245,7 +246,7 @@ void GuiLayer::invitePlayer(Ref* ref){
 
 
 void GuiLayer::dissovleRoom(){
-    HintDialog* dia = HintDialog::create("游戏未开始前解散房间不扣除房卡,是否解散?", [=](Ref* ref){
+	HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_3"), [=](Ref* ref){
         GAMEDATA::getInstance()->clearPlayersInfo();
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
     });

@@ -28,6 +28,7 @@
 #include "mahjong/common/audio/Audio.h"
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/common/chat/chatAndroid/ChatAndroidMethod.h"
+#include "mahjong/common/utils/Chinese.h"
 #include "mahjong/GameConfig.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
@@ -68,7 +69,7 @@ void LobbyScene::signUpdate(float dt){
                     GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
                     addChild(gold,30);
                 }else{
-                    HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
+                    HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_16"),NULL);
                     addChild(hint,100);
                 }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
@@ -96,7 +97,7 @@ void LobbyScene::signUpdate(float dt){
             addChild(charge,30);
             GAMEDATA::getInstance()->setShowDialogType(-1);
         }else{
-            HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
+			HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
             addChild(hint,30);
         }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
@@ -151,7 +152,7 @@ void LobbyScene::drawSceneTop(){
     nickName->setAlignment(TextHAlignment::LEFT);
     addChild(nickName);
     
-    auto markid = Label::createWithSystemFont(StringUtils::format("ID号:%s",UserData::getInstance()->getMarkId().c_str()), "arial", 24);
+    auto markid = Label::createWithSystemFont(StringUtils::format("ID%s:%s",ChineseWord("hao"),UserData::getInstance()->getMarkId().c_str()), "arial", 24);
     markid->setPosition(nickName->getPositionX()+nickName->getContentSize().width+30, 628);
     markid->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     markid->setAlignment(TextHAlignment::LEFT);
@@ -474,7 +475,7 @@ void LobbyScene::chargeFangka(){
         ChargeFangka* charge = ChargeFangka::create();
         addChild(charge,3);
     }else{
-        HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
+        HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
         addChild(hint,3);
     }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
@@ -499,7 +500,7 @@ void LobbyScene::showLoading(){
 void LobbyScene::showShiMing(){
     
     if(GAMEDATA::getInstance()->getCertification()){
-        HintDialog* hd = HintDialog::create("你已经完成实名认证", nullptr);
+        HintDialog* hd = HintDialog::create(ChineseWord("dialog_text_18"), nullptr);
         addChild(hd,5);
     }else{
         ShiMingLayer* shim = ShiMingLayer::create();
@@ -552,7 +553,7 @@ void LobbyScene::onEnterTransitionDidFinish(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
-        HintDialog* hint  = HintDialog::create("房主已经解散了房间", nullptr);
+        HintDialog* hint  = HintDialog::create(ChineseWord("dialog_text_19"), nullptr);
         addChild(hint,50);
         GAMEDATA::getInstance()->setShowFangZhuDismiss(false);
     }
@@ -602,7 +603,7 @@ void LobbyScene::addEventListener(){
                         GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(newRespData,GAMEDATA::getInstance()->getCurrentSelectRoomId());
                         addChild(gold,4);
                     }else{
-                        HintDialog* hint = HintDialog::create("游戏金币不足",NULL);
+                        HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_16"),NULL);
                         addChild(hint,100);
                     }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -644,7 +645,7 @@ void LobbyScene::addEventListener(){
                 addChild(charge,14);
                 GAMEDATA::getInstance()->setShowDialogType(-1);
             }else{
-                HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
+                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
                 addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -674,7 +675,7 @@ void LobbyScene::addEventListener(){
                 addChild(charge,14);
                 GAMEDATA::getInstance()->setShowDialogType(-1);
             }else{
-                HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
+				HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
                 addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -694,7 +695,7 @@ void LobbyScene::addEventListener(){
     
     //登录地址变更
     loginReplaceListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
-        HintDialog* hin = HintDialog::create("你的账号在其他客户端登录",[=](Ref* ref){
+        HintDialog* hin = HintDialog::create(ChineseWord("dialog_text_20"),[=](Ref* ref){
             exit(0);
         });
         addChild(hin,500);
@@ -717,9 +718,9 @@ void LobbyScene::addEventListener(){
         ShopHintDialog* da = ShopHintDialog::create();
         if(result == "1"){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
-            da->showText("充值成功");
+			da->showText(ChineseWord("dialog_text_21"));
         }else{
-            da->showText("充值失败");
+			da->showText(ChineseWord("dialog_text_22"));
         }
         addChild(da,20);
     });
@@ -748,7 +749,7 @@ void LobbyScene::addEventListener(){
                 FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
                 addChild(charge,14);
             }else{
-                HintDialog* hint = HintDialog::create("分享游戏给好友可获得房卡",NULL);
+				HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
                 addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -845,14 +846,14 @@ void LobbyScene::addEventListener(){
         std::string buf = static_cast<char*>(event->getUserData());
         ShopHintDialog* da = ShopHintDialog::create();
         if(buf == "1"){
-            da->showText("领取成功");
+            da->showText(ChineseWord("dialog_text_23"));
             ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
             addChild(par,10);
             //刷新用户信息
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTuiGuangCommand());
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
         }else{
-            da->showText("领取失败");
+			da->showText(ChineseWord("dialog_text_24"));
         }
         addChild(da,10);
     });
@@ -924,7 +925,7 @@ void LobbyScene::addEventListener(){
                 break;
             case cocos2d::EventKeyboard::KeyCode::KEY_BACK:
             {
-                HintDialog* hit = HintDialog::create("确定要离开游戏吗？",[=](Ref* ref){
+                HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_24"),[=](Ref* ref){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLobbyQuitCommand());
                     Director::getInstance()->end();
                 });

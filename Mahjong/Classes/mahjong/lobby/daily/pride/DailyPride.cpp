@@ -4,9 +4,11 @@
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/widget/ParticleUtil.hpp"
+#include "mahjong/common/utils/Chinese.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "math.h"
+
 
 bool DailyPride::init(){
     if (!Layer::init()){
@@ -27,7 +29,7 @@ void DailyPride::onEnter(){
     
     prideCallBackListener2 = EventListenerCustom::create(MSG_PLAYER_TODAY_PRIDE, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getTodayPrideData().result == "2"){
-            HintDialog* hit = HintDialog::create("正在游戏中,无法抽奖", nullptr);
+			HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_11"), nullptr, nullptr);
             addChild(hit,10);
             m_turnBg->stopAllActions();
         }else{
@@ -42,13 +44,13 @@ void DailyPride::onEnter(){
                         startMenu->setEnabled(true);
                         if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::gold){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
-                            getParent()->addChild(util,5);
+                            this->getParent()->addChild(util,5);
                         }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::fangka){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::fangkaOnly);
-                            getParent()->addChild(util,5);
+							this->getParent()->addChild(util, 5);
                         }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
-                            getParent()->addChild(util,5);
+							this->getParent()->addChild(util, 5);
                         }
                         if(NULL != getChildByTag(1000)){
                             ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(GAMEDATA::getInstance()->getTodayPrideData().rest));
@@ -123,7 +125,7 @@ void DailyPride::showDailyPrideLayer(){
     addChild(arrows);
     
     auto itemImage = MenuItemImage::create("daily/pride/go_btn_1.png", "daily/pride/go_btn_2.png",
-                                           CC_CALLBACK_0(DailyPride::beginPride, this));
+                                           CC_CALLBACK_1(DailyPride::beginPride, this));
     startMenu = Menu::create(itemImage, NULL);
     startMenu->setPosition(463, 325);
     addChild(startMenu);
@@ -144,11 +146,11 @@ void DailyPride::updateData(){
 }
 
 
-void DailyPride::beginPride(){
+void DailyPride::beginPride(Ref* ref){
     
     if(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())>0){
         if(UserData::getInstance()->getGold()<50000){
-            HintDialog* hit = HintDialog::create("金币不足,请充值",NULL);
+			HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_10"), nullptr, nullptr);
             addChild(hit);
         }else{
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTodayPrideCommand());
@@ -162,7 +164,7 @@ void DailyPride::beginPride(){
             m_turnBg->runAction(sequence);
         }
     }else{
-        HintDialog* hit = HintDialog::create("未达成抽奖条件",NULL);
+		HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_12"), nullptr, nullptr);
         addChild(hit);
     }
 }

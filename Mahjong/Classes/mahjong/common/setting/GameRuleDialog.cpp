@@ -7,6 +7,7 @@
 //
 
 #include "mahjong/common/setting/GameRuleDialog.hpp"
+#include "mahjong/common/utils/Chinese.h"
 
 bool GameRuleDialog::init(){
     if(!Layer::init()){
@@ -34,7 +35,7 @@ bool GameRuleDialog::init(){
     icon->setPosition(640, 680);
     addChild(icon);
     
-    auto input_bg = Scale9Sprite::create("common/input_box_bg.png");
+    auto input_bg = ui::Scale9Sprite::create("common/input_box_bg.png");
     input_bg->setContentSize(Size(700,560));
     input_bg->setPosition(640, 340);
     addChild(input_bg);
@@ -71,26 +72,26 @@ void GameRuleDialog::closeView(){
 
 std::vector<std::string> GameRuleDialog::getGameRules(){
     std::vector<std::string> rules;
-    rules.push_back("游戏规则:");
-    rules.push_back("玩法:上海麻将敲麻");
-    rules.push_back("番数算法:");
-    rules.push_back("底分:不同房间不同底分");
-    rules.push_back("花分:不同房间不同花分");
-    rules.push_back("勒子封顶值:按照1分底1分花算,勒子峰顶值20分");
-    rules.push_back("底分+花分=输赢分数");
-    rules.push_back("翻数算法:");
-    rules.push_back("门清*2");
-    rules.push_back("大吊车*2");
-    rules.push_back("杠开*2");
-    rules.push_back("碰碰胡*2");
-    rules.push_back("混一色*2");
-    rules.push_back("混碰勒子");
-    rules.push_back("清一色勒子");
-    rules.push_back("清碰2倍勒子");
-    rules.push_back("以上翻数最多翻到勒子,勒子是20,那最大值就是20");
-    rules.push_back("清碰2个勒子，勒子20,最大值就是40");
-    rules.push_back("开宝*2");
-    rules.push_back("荒翻*2");
-    rules.push_back("有开宝和荒翻的情况下,勒子翻倍");
+	rules.push_back(ChineseWord("rule_text_1"));
+	rules.push_back(ChineseWord("rule_text_2"));
+	rules.push_back(ChineseWord("rule_text_3"));
+	rules.push_back(ChineseWord("rule_text_4"));
+	rules.push_back(ChineseWord("rule_text_5"));
+	rules.push_back(ChineseWord("rule_text_6"));
+	rules.push_back(ChineseWord("rule_text_7"));
+	rules.push_back(ChineseWord("rule_text_8"));
+	rules.push_back(ChineseWord("rule_text_9"));
+	rules.push_back(ChineseWord("rule_text_10"));
+	rules.push_back(ChineseWord("rule_text_11"));
+	rules.push_back(ChineseWord("rule_text_12"));
+	rules.push_back(ChineseWord("rule_text_13"));
+	rules.push_back(ChineseWord("rule_text_14"));
+	rules.push_back(ChineseWord("rule_text_15"));
+	rules.push_back(ChineseWord("rule_text_16"));
+	rules.push_back(ChineseWord("rule_text_17"));
+	rules.push_back(ChineseWord("rule_text_18"));
+	rules.push_back(ChineseWord("rule_text_19"));
+	rules.push_back(ChineseWord("rule_text_20"));
+	rules.push_back(ChineseWord("rule_text_21"));
     return rules;
 }

@@ -8,6 +8,7 @@
 
 #include "mahjong/lobby/shop/mall/LequanExchangeRecord.hpp"
 #include "mahjong/common/state/GameData.h"
+#include "mahjong/common/utils/Chinese.h"
 #include "server/NetworkManage.h"
 
 bool LequanExchangeRecord::init(){
@@ -120,7 +121,7 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         propName->setPosition(200,80);
         cell->addChild(propName);
         
-        auto propConfuse = Label::createWithSystemFont("消耗"+getPropConsume(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId)+"乐券","Arial",20);
+		auto propConfuse = Label::createWithSystemFont(ChineseWord("xioahao") + getPropConsume(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId) + ChineseWord("lequan"), "Arial", 20);
         propConfuse->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         propConfuse->setTag(102);
         propConfuse->setPosition(200,50);

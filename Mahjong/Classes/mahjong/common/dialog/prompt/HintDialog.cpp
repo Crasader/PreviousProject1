@@ -28,7 +28,7 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMe
 
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
-    Menu* menu1 = Menu::create(item1, NULL);
+	Menu* menu1 = Menu::create(item1, nullptr);
     this->addChild(menu1);
     
     auto dialogBg = Sprite::create("common/dialog_bg_small.png");
@@ -54,12 +54,12 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMe
     
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        callback2);
-    if(callback2 == NULL){
+	if (callback2 == nullptr){
         close->setCallback([=](Ref* ref){
             removeFromParent();
         });
     }
-    auto closeMenu = Menu::create(close, NULL);
+	auto closeMenu = Menu::create(close, nullptr);
     
     
     closeMenu->setPosition(860, 490);
@@ -67,12 +67,12 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMe
     
     auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",
                                          callback1);
-    if(callback1 == NULL){
+	if (callback1 == nullptr){
         confirm->setCallback([=](Ref* ref){
             removeFromParent();
         });
     }
-    auto confirmMenu = Menu::create(confirm, NULL);
+	auto confirmMenu = Menu::create(confirm, nullptr);
     confirmMenu->setPosition(640, 240);
     addChild(confirmMenu);
     

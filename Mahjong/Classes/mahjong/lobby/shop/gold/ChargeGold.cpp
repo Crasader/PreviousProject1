@@ -13,6 +13,7 @@
 #include "mahjong/common/loading/Loading.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/widget/ParticleUtil.hpp"
+#include "mahjong/common/utils/Chinese.h"
 #include "server/NetworkManage.h"
 
 bool ChargeGold::init(){
@@ -70,13 +71,13 @@ void ChargeGold::onEnter(){
         std::string buf = static_cast<char*>(event->getUserData());
         ShopHintDialog* da = ShopHintDialog::create();
         if(buf == "1"){
-            da->showText("充值成功");
+            da->showText(ChineseWord("dialog_text_21"));
             ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
             addChild(par,2);
             //刷新用户信息
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
         }else{
-            da->showText("充值失败");
+			da->showText(ChineseWord("dialog_text_22"));
         }
         addChild(da);
     });

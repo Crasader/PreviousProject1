@@ -2,16 +2,17 @@
 #include "mahjong/splash/LoadResource.hpp"
 #include "mahjong/lobby/friend/dialog/RoomFullDialog.hpp"
 #include "mahjong/lobby/friend/dialog/RoomIdErrorDialog.hpp"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/lobby/shop/fangka/FangkaNotEnoughDialog.hpp"
-#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/common/loading/Loading.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 #include "mahjong/common/audio/Audio.h"
+#include "mahjong/common/utils/Chinese.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
-#include "youmi/MyIM.h"
+//#include "youmi/MyIM.h"
 
 Scene* SplashScene::createScene()
 {
@@ -403,7 +404,7 @@ void SplashScene::onEnter(){
         }
         else{
             
-            HintDialog* hint = HintDialog::create("用户名或者密码错误",NULL);
+            HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_25"),nullptr);
             addChild(hint,6);
         }
     });
@@ -446,7 +447,7 @@ void SplashScene::onEnter(){
                 FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
                 addChild(charge,100);
             }else{
-                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",nullptr);
                 addChild(hint,100);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
@@ -478,7 +479,7 @@ void SplashScene::onEnter(){
                 FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
                 addChild(charge,100);
             }else{
-                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",NULL);
+                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),nullptr);
                 addChild(hint,100);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)

@@ -16,7 +16,8 @@ USING_NS_CC;
 
 class HintDialog : public Layer{
 public:
-    static HintDialog* create(std::string msg,const ccMenuCallback& callback1,const ccMenuCallback& callback2 = NULL);
+	static HintDialog* create(std::string msg, const ccMenuCallback& callback1, const ccMenuCallback& callback2 = nullptr);
+private:
     bool init(std::string msg,const ccMenuCallback& callback1,const ccMenuCallback& callback2);
 };
 #endif /* HintDialog_hpp */

@@ -9,6 +9,7 @@
 #include "mahjong/lobby/shiming/ShiMingLayer.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
+#include "mahjong/common/utils/Chinese.h"
 
 bool ShiMingLayer::init(){
     if(!Layer::init()){
@@ -67,7 +68,7 @@ bool ShiMingLayer::init(){
         _editName1->setPosition(Point(710, 460));
         _editName1->setTag(100);
         _editName1->setFont("arial", 24);
-        _editName1->setPlaceHolder("请输入姓名");
+        _editName1->setPlaceHolder(ChineseWord("dialog_text_13").c_str());
         _editName1->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);
         _editName1->setInputFlag(cocos2d::ui::EditBox::InputFlag::SENSITIVE);
         _editName1->setReturnType(cocos2d::ui::EditBox::KeyboardReturnType::DONE);
@@ -78,7 +79,7 @@ bool ShiMingLayer::init(){
         _editName2->setPosition(Point(710, 350));
         _editName2->setTag(200);
         _editName2->setFont("arial", 24);
-        _editName2->setPlaceHolder("请输入身份证号码");
+		_editName2->setPlaceHolder(ChineseWord("dialog_text_14").c_str());
         _editName2->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);
         _editName2->setInputFlag(cocos2d::ui::EditBox::InputFlag::SENSITIVE);
         _editName2->setReturnType(cocos2d::ui::EditBox::KeyboardReturnType::DONE);
@@ -90,7 +91,7 @@ bool ShiMingLayer::init(){
         myMneu->setPosition(640,200);
         addChild(myMneu);
         
-        Label* error = Label::createWithSystemFont("输入的身份证号码不正确", "arial", 20);
+		Label* error = Label::createWithSystemFont(ChineseWord("dialog_text_15"), "arial", 20);
         error->setTag(300);
         error->setColor(Color3B::RED);
         error->setPosition(640,300);

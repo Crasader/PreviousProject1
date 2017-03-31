@@ -34,6 +34,7 @@ bool GameSocketManage::socketConnect(){
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     return PxSocketManage::getInstance()->connectSocket(SERVER_ADDRESS,SERVER_PORT);
 #endif
+	return true;
 }
 
 void GameSocketManage::startSocketBeat(std::string send){
