@@ -41,7 +41,7 @@ void LiuJuAnim::showLiuJuAnim(){
     guangXiao1->setOpacity(77);
     addChild(guangXiao1);
     guangXiao1->runAction(Sequence::create(CallFunc::create([=](){
-        if(!GAMEDATA::getInstance()->getIsFuPan()){
+        if(GAMEDATA::getInstance()->getGameType() == 1){
             ((MahjongView*)getParent())->showHandPokerOver(GAMEDATA::getInstance()->getHeroSeatId());
         }
     }),DelayTime::create(12.0f/24),Spawn::create(ScaleTo::create(5.0/24, 2.0f,2.0f),MoveTo::create(5.0/24, pos2),FadeTo::create(5.0/24, 200),NULL),Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0), NULL),NULL));

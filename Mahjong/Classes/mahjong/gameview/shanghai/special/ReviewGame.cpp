@@ -12,7 +12,7 @@
 #include "mahjong/common/dialog/network/LostNetwork.hpp"
 #include "mahjong/common/dialog/prompt/TextHintDialog.hpp"
 #include "mahjong/common/widget/ScrollTextEx.h"
-#include "mahjong/common/widget/batteryinfo/BatteryInfo.h"
+#include "mahjong/common/widget/batteryInfo/BatteryInfo.h"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/result/ResultScene.hpp"
@@ -182,7 +182,7 @@ void ReviewGame::controlUp(){
     
 }
 void ReviewGame::controlBack(){
-    GAMEDATA::getInstance()->setIsFuPan(false);
+    GAMEDATA::getInstance()->setGameType(1);
     GAMEDATA::getInstance()->clearPlayersInfo();
     Director::getInstance()->replaceScene(LobbyScene::create());
 }

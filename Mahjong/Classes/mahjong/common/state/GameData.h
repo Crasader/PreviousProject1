@@ -72,6 +72,8 @@ public:
     CC_SYNTHESIZE(TuiGuangPride, tuiGuangPride, TuiGuangPride);
     CC_SYNTHESIZE(TuiGuangRecord, tuiGuangRecord, TuiGuangRecord);
     //游戏状态
+    
+    CC_SYNTHESIZE(int, gameType, GameType);//麻将类型:1,2上海麻将复盘,3红中麻将,4红中麻将复盘
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
     CC_SYNTHESIZE(int, currentSelectRoomId, CurrentSelectRoomId);
@@ -103,7 +105,7 @@ public:
     CC_SYNTHESIZE(bool, showProtected, ShowProtected);//从后台切回来
     CC_SYNTHESIZE(bool, haveShowNotice, HaveShowNotice);//是否展示过推广
     CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间
-    CC_SYNTHESIZE(bool, isFuPan, IsFuPan);//是否开始发牌
+//    CC_SYNTHESIZE(bool, isFuPan, IsFuPan);//是否开始发牌
     CC_SYNTHESIZE(bool, showDissolveDialog, ShowDissolveDialog);
     CC_SYNTHESIZE(bool, certification, Certification);
     CC_SYNTHESIZE(bool, logingGame, LogingGame);

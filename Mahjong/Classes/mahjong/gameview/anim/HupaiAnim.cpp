@@ -159,8 +159,10 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
             gang->setVisible(true);
         }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
-            if(!GAMEDATA::getInstance()->getIsFuPan())
+            if(GAMEDATA::getInstance()->getGameType() == 1){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
+            }
+            
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
         
         auto kai = Sprite::create("gameview/gang_kai2.png");
@@ -171,7 +173,7 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
             kai->setVisible(true);
         }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
-            if(!GAMEDATA::getInstance()->getIsFuPan())
+            if(GAMEDATA::getInstance()->getGameType() == 1)
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
         
@@ -184,7 +186,7 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
             gang->setVisible(true);
         }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
-            if(!GAMEDATA::getInstance()->getIsFuPan())
+            if(GAMEDATA::getInstance()->getGameType() == 1)
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
         
@@ -196,7 +198,7 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
             kai->setVisible(true);
         }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
-            if(!GAMEDATA::getInstance()->getIsFuPan())
+            if(GAMEDATA::getInstance()->getGameType() == 1)
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
         
@@ -211,7 +213,7 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
             fontZi->setVisible(true);
         }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
-            if(!GAMEDATA::getInstance()->getIsFuPan())
+            if(GAMEDATA::getInstance()->getGameType() == 1)
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
         
@@ -226,7 +228,7 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
             fontMo->setVisible(true);
         }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
-            if(!GAMEDATA::getInstance()->getIsFuPan())
+            if(GAMEDATA::getInstance()->getGameType() == 1)
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
         
@@ -238,7 +240,7 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
         huText->setScale(2.2);
         auto sequ4 =Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
-            if(!GAMEDATA::getInstance()->getIsFuPan())
+            if(GAMEDATA::getInstance()->getGameType() == 1)
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
         }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL);
         huText->runAction(sequ4);

@@ -309,6 +309,8 @@
 		D27F06001E94BDF90085438A /* MahjongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F05FA1E94BDF90085438A /* MahjongView.cpp */; };
 		D27F06011E94BDF90085438A /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F05FD1E94BDF90085438A /* ReviewGame.cpp */; };
 		D27F06021E94BDF90085438A /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F05FD1E94BDF90085438A /* ReviewGame.cpp */; };
+		D27F06081E94BFE50085438A /* HongZhongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F06061E94BFE50085438A /* HongZhongView.cpp */; };
+		D27F06091E94BFE50085438A /* HongZhongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F06061E94BFE50085438A /* HongZhongView.cpp */; };
 		D281A3901E5442C8007FF30E /* share in Resources */ = {isa = PBXBuildFile; fileRef = D281A38F1E5442C8007FF30E /* share */; };
 		D281A3911E5442C8007FF30E /* share in Resources */ = {isa = PBXBuildFile; fileRef = D281A38F1E5442C8007FF30E /* share */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
@@ -699,6 +701,8 @@
 		D27F05FB1E94BDF90085438A /* MahjongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MahjongView.h; sourceTree = "<group>"; };
 		D27F05FD1E94BDF90085438A /* ReviewGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewGame.cpp; sourceTree = "<group>"; };
 		D27F05FE1E94BDF90085438A /* ReviewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewGame.h; sourceTree = "<group>"; };
+		D27F06061E94BFE50085438A /* HongZhongView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongZhongView.cpp; sourceTree = "<group>"; };
+		D27F06071E94BFE50085438A /* HongZhongView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongZhongView.hpp; sourceTree = "<group>"; };
 		D281A38F1E5442C8007FF30E /* share */ = {isa = PBXFileReference; lastKnownFileType = folder; path = share; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
@@ -1671,6 +1675,8 @@
 		D27F05F71E94BDF90085438A /* hongzhong */ = {
 			isa = PBXGroup;
 			children = (
+				D27F06041E94BFBA0085438A /* special */,
+				D27F06051E94BFBA0085438A /* normal */,
 			);
 			path = hongzhong;
 			sourceTree = "<group>";
@@ -1700,6 +1706,22 @@
 				D27F05FE1E94BDF90085438A /* ReviewGame.h */,
 			);
 			path = special;
+			sourceTree = "<group>";
+		};
+		D27F06041E94BFBA0085438A /* special */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = special;
+			sourceTree = "<group>";
+		};
+		D27F06051E94BFBA0085438A /* normal */ = {
+			isa = PBXGroup;
+			children = (
+				D27F06061E94BFE50085438A /* HongZhongView.cpp */,
+				D27F06071E94BFE50085438A /* HongZhongView.hpp */,
+			);
+			path = normal;
 			sourceTree = "<group>";
 		};
 		D28A4A0A1D0565C200741FD0 /* http */ = {
@@ -2094,6 +2116,7 @@
 				D252FC0E1E7FABC700937322 /* FriendRoom.cpp in Sources */,
 				D252FBA01E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
+				D27F06081E94BFE50085438A /* HongZhongView.cpp in Sources */,
 				D252FB5E1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
 				D252FCAE1E7FB77F00937322 /* CallIOSMethod.mm in Sources */,
 				D252FBC61E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
@@ -2236,6 +2259,7 @@
 				D27F06021E94BDF90085438A /* ReviewGame.cpp in Sources */,
 				D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D252FC601E7FABE900937322 /* PlayerOpposite.cpp in Sources */,
+				D27F06091E94BFE50085438A /* HongZhongView.cpp in Sources */,
 				D252FB651E7FA5EC00937322 /* ParticleUtil.cpp in Sources */,
 				D252FB631E7FA5EC00937322 /* HeadImage.cpp in Sources */,
 				D252FBA91E7FA5EC00937322 /* GameGongGaoLayer.cpp in Sources */,

@@ -1,4 +1,4 @@
-#include "mahjong/common/widget/batteryinfo/BatteryInfo.h"
+#include "mahjong/common/widget/batteryInfo/BatteryInfo.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
 

@@ -65,7 +65,7 @@ void PlayerLeft::drawPlayedJong(int ctype){
     bezier.endPosition = endPoint;
     BezierTo *actionMove = BezierTo::create(0.3f, bezier);
     CallFunc* callback = CallFunc::create([=](){
-        if(GAMEDATA::getInstance()->getIsFuPan()){
+        if(GAMEDATA::getInstance()->getGameType()==2){
             ((ReviewGame*)getParent())->removeHeroPlayedIcon();
         }else{
             ((MahjongView*)getParent())->removeHeroPlayedIcon();
@@ -170,7 +170,7 @@ void PlayerLeft::removeLastJong(){
 void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerChi(data.chi[0], playerBase);
     setStateCpg(true);
-    if(GAMEDATA::getInstance()->getIsFuPan()){
+    if(GAMEDATA::getInstance()->getGameType() == 2){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
     }else{
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
@@ -203,7 +203,7 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
-    if(GAMEDATA::getInstance()->getIsFuPan()){
+    if(GAMEDATA::getInstance()->getGameType() == 2){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
     }else{
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
@@ -253,7 +253,7 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
         }
     }else if (data.playerGang.at(0).flag == 2){
-        if(GAMEDATA::getInstance()->getIsFuPan()){
+        if(GAMEDATA::getInstance()->getGameType() == 2){
             ((ReviewGame*)getParent())->removeHeroPlayedIcon();
         }else{
             ((MahjongView*)getParent())->removeHeroPlayedIcon();
@@ -326,7 +326,7 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
 void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerChi(data.chi[0], playerBase);
     setStateCpg(true);
-    if(GAMEDATA::getInstance()->getIsFuPan()){
+    if(GAMEDATA::getInstance()->getGameType() == 2){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
     }else{
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
@@ -365,7 +365,7 @@ void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBa
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
-    if(GAMEDATA::getInstance()->getIsFuPan()){
+    if(GAMEDATA::getInstance()->getGameType() == 2){
         ((ReviewGame*)getParent())->removeHeroPlayedIcon();
     }else{
         ((MahjongView*)getParent())->removeHeroPlayedIcon();

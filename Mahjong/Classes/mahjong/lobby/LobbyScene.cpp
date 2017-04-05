@@ -690,6 +690,7 @@ void LobbyScene::addEventListener(){
     //好友开房红中麻将
     hzOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_HONGZHONG_RESP, [=](EventCustom* event){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        GAMEDATA::getInstance()->setGameType(3);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
@@ -864,7 +865,7 @@ void LobbyScene::addEventListener(){
     //游戏复盘
     gameFupanListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GAME_FU_PAN_NOTIFY, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getPlaybackInfo().result == 1){
-            GAMEDATA::getInstance()->setIsFuPan(true);
+            GAMEDATA::getInstance()->setGameType(2);
             Director::getInstance()->replaceScene(MjGameScene::create());
         }
     });
