@@ -489,6 +489,31 @@ void SplashScene::onEnter(){
         }
         
     });
+    
+    //好友开房红中麻将
+    hzOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_HONGZHONG_RESP, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else if(resp.result == 2){
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,14);
+                GAMEDATA::getInstance()->setShowDialogType(-1);
+            }else{
+                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
+                addChild(hint,14);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,14);
+#endif
+        }
+    });
+
 }
 
 
@@ -498,4 +523,6 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(reConnectAgain);
     Director::getInstance()->getEventDispatcher()->removeEventListener(reEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(reOpenFriendRoomListener);
+     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
+    
 }

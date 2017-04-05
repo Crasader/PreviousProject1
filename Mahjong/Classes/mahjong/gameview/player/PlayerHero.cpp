@@ -1,5 +1,5 @@
 #include "mahjong/gameview/player/PlayerHero.h"
-#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/gameview/widget/HuPaiHintLayer.hpp"
 #include "mahjong/gameview/anim/HuaAnim.hpp"
 #include "mahjong/common/utils/StringUtil.h"

@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/gameview/anim/LiuJuAnim.hpp"
-#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 
 bool LiuJuAnim::init(){

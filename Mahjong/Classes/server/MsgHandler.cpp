@@ -363,7 +363,7 @@ void MsgHandler::distribute(int code, std::string msg){
             handleCertification(msg);
             break;
         }
-        case MSGCODE_HH_FRIEND_JOIN_GAME_RESPONSE:{
+        case MSGCODE_HH_FRIEND_GAME_RESPONSE:{
             handleHongZhongEnterRoom(msg);
             break;
         }

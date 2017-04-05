@@ -23,7 +23,7 @@
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/gameview/MjGameScene.h"
-#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "wechat/android/CallAndroidMethod.h"

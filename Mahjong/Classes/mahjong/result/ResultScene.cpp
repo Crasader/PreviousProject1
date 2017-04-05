@@ -20,7 +20,7 @@
 #include "mahjong/lobby/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/gameview/MjGameScene.h"
-#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 

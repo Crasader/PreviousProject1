@@ -1,4 +1,4 @@
-#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/gameview/widget/Orientation.h"
 #include "mahjong/gameview/widget/CardStack.hpp"
 #include "mahjong/gameview/widget/SoundRecordBtn.hpp"

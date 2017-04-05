@@ -1,5 +1,5 @@
 #include "mahjong/gameview/anim/DealJongAnim.h"
-#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/common/jong/Jong.h"
 #include "server/MsgConfig.h"
 

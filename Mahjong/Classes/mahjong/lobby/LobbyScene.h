@@ -35,6 +35,7 @@ private:
     EventListenerCustom* enterRoomListener;
     EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* openFriendRoomListener;
+    EventListenerCustom* hzOpenFriendRoomListener;
     EventListenerCustom* lobbyConncetAgainListener;
     EventListenerCustom* intnetListener;
     EventListenerCustom* loginReplaceListener;

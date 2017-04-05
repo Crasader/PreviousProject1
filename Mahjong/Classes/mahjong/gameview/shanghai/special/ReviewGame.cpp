@@ -1,4 +1,4 @@
-#include "mahjong/gameview/special/ReviewGame.h"
+#include "mahjong/gameview/shanghai/special/ReviewGame.h"
 #include "mahjong/gameview/widget/Orientation.h"
 #include "mahjong/gameview/widget/CardStack.hpp"
 #include "mahjong/gameview/anim/DealJongAnim.h"

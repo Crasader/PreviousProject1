@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/gameview/widget/HuPaiHintLayer.hpp"
-#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 

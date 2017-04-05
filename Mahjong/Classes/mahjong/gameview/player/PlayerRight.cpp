@@ -1,6 +1,6 @@
 #include "mahjong/gameview/player/PlayerRight.h"
-#include "mahjong/gameview/normal/MahjongView.h"
-#include "mahjong/gameview/special/ReviewGame.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/special/ReviewGame.h"
 #include "mahjong/gameview/anim/HuaAnim.hpp"
 
 

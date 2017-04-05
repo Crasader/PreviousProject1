@@ -20,7 +20,7 @@
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/gameview/MjGameScene.h"
-#include "mahjong/gameview/normal/MahjongView.h"
+#include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "wechat/android/CallAndroidMethod.h"
