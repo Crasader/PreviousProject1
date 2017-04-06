@@ -20,7 +20,7 @@ private:
 	Menu* rightPlayerInvite;
 	Menu* oppositePlayerInvite;
 	void initView();
-    void drawGameInfo();//开宝，荒翻,房号
+    void drawGameInfo();//开宝，荒翻，房间号
     void drawGuiButton();//设置,账单,聊天
 	void chatButtonClick();
 	void settingButtonClick();

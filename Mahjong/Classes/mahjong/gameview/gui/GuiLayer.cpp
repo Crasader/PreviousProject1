@@ -31,7 +31,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-//    drawTestButton();
+    //    drawTestButton();
     scheduleUpdate();
 }
 
@@ -65,7 +65,7 @@ void GuiLayer::drawGuiButton(){
         
         if(!GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()||GAMEDATA::getInstance()->getLastGameDataBackup().result == 0){
             if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 3)
-                drawPlayerInvite();
+            drawPlayerInvite();
         }
         auto bill = MenuItemImage::create("gameview/bill_btn_1.png", "gameview/bill_btn_2.png",
                                           CC_CALLBACK_0(GuiLayer::showPlayerBill, this));
@@ -76,6 +76,7 @@ void GuiLayer::drawGuiButton(){
     }
 }
 
+
 void GuiLayer::drawGameInfo(){
     
     auto roomInfoBg = Sprite::create("gameview/room_id_bg.png");
@@ -83,21 +84,35 @@ void GuiLayer::drawGameInfo(){
     roomInfoBg->setPosition(1275,710);
     addChild(roomInfoBg);
     
-    auto kaibao = Sprite::create("gameview/kai_bao.png");
-    addChild(kaibao);
-    
-    kaibaoNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getKaibao(),"Arial",25);
-    kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    kaibaoNum->setColor(Color3B(233,209,112));
-    addChild(kaibaoNum);
-    
-    auto huangfan = Sprite::create("gameview/huang_fan.png");
-    addChild(huangfan);
-    
-    haungNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getHuangfan(), "Arial",25);
-    haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    haungNum->setColor(Color3B(233,209,112));
-    addChild(haungNum);
+    if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
+        auto kaibao = Sprite::create("gameview/kai_bao.png");
+        addChild(kaibao);
+        
+        kaibaoNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getKaibao(),"Arial",25);
+        kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        kaibaoNum->setColor(Color3B(233,209,112));
+        addChild(kaibaoNum);
+        
+        auto huangfan = Sprite::create("gameview/huang_fan.png");
+        addChild(huangfan);
+        
+        haungNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getHuangfan(), "Arial",25);
+        haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        haungNum->setColor(Color3B(233,209,112));
+        addChild(haungNum);
+        
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            kaibao->setPosition(1160,640);
+            kaibaoNum->setPosition(1200,638);
+            huangfan->setPosition(1160, 610);
+            haungNum->setPosition(1200, 608);
+        }else{
+            kaibao->setPosition(1170,680);
+            kaibaoNum->setPosition(1210,678);
+            huangfan->setPosition(1170, 650);
+            haungNum->setPosition(1210, 648);
+        }
+    }
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         //私人房间
@@ -108,20 +123,10 @@ void GuiLayer::drawGameInfo(){
         roomIdNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         roomIdNum->setColor(Color3B(233,209,112));
         addChild(roomIdNum);
-        
         roomId->setPosition(1160,680);
         roomIdNum->setPosition(1185,678);
-        kaibao->setPosition(1160,640);
-        kaibaoNum->setPosition(1200,638);
-        huangfan->setPosition(1160, 610);
-        haungNum->setPosition(1200, 608);
-        
     }else{
         roomInfoBg->setScale(0.95, 0.68);
-        kaibao->setPosition(1170,680);
-        kaibaoNum->setPosition(1210,678);
-        huangfan->setPosition(1170, 650);
-        haungNum->setPosition(1210, 648);
     }
 }
 
@@ -152,7 +157,7 @@ void GuiLayer::quitButtonClick(){
             });
             getParent()->addChild(dia,50);
         }else if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-			HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_2"), [=](Ref* ref){
+            HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_2"), [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
@@ -182,15 +187,15 @@ void GuiLayer::updateData(){
 void GuiLayer::hideInvitePlayer(int clientId){
     if (clientId == ClientSeatId::left){
         if(NULL != leftPlayerInvite)
-            leftPlayerInvite->setVisible(false);
+        leftPlayerInvite->setVisible(false);
     }
     else if (clientId == ClientSeatId::right){
         if(NULL != rightPlayerInvite)
-            rightPlayerInvite->setVisible(false);
+        rightPlayerInvite->setVisible(false);
     }
     else if (clientId == ClientSeatId::opposite){
         if(NULL != oppositePlayerInvite)
-            oppositePlayerInvite->setVisible(false);
+        oppositePlayerInvite->setVisible(false);
     }
 }
 
@@ -198,15 +203,15 @@ void GuiLayer::hideInvitePlayer(int clientId){
 void GuiLayer::showInvitePlayer(int clientId){
     if (clientId == ClientSeatId::left){
         if(NULL != leftPlayerInvite)
-            leftPlayerInvite->setVisible(true);
+        leftPlayerInvite->setVisible(true);
     }
     else if (clientId == ClientSeatId::right){
         if(NULL != rightPlayerInvite)
-            rightPlayerInvite->setVisible(true);
+        rightPlayerInvite->setVisible(true);
     }
     else if (clientId == ClientSeatId::opposite){
         if(NULL != oppositePlayerInvite)
-            oppositePlayerInvite->setVisible(true);
+        oppositePlayerInvite->setVisible(true);
     }
 }
 
@@ -246,9 +251,13 @@ void GuiLayer::invitePlayer(Ref* ref){
 
 
 void GuiLayer::dissovleRoom(){
-	HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_3"), [=](Ref* ref){
+    HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_3"), [=](Ref* ref){
         GAMEDATA::getInstance()->clearPlayersInfo();
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
+        if(GAMEDATA::getInstance()->getGameType() == 3){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomCommand());
+        }else{
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
+        }
     });
     getParent()->addChild(dia,50);
 }
@@ -264,7 +273,7 @@ void GuiLayer::update(float dt){
     if(getChildByTag(1212)!=NULL){
         if(GAMEDATA::getInstance()->getIsPlaying()&&GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             if(getChildByTag(1212)->isVisible())
-                getChildByTag(1212)->setVisible(false);
+            getChildByTag(1212)->setVisible(false);
         }
     }
     updateData();
@@ -356,21 +365,21 @@ void GuiLayer::testButtonClick(){
     //    char* buf = const_cast<char*>("2");
     //    _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
     
-//    PlayerTurnData playerTurnData;
-//    playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
-//    PlayerCpgtData tingData;
-//    tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
-//    tingData.ting ="1";
-//    playerTurnData.hastinggang = true;
-//    HeroHuPaiData huPaiData;
-//    huPaiData.poker = 1;
-//    huPaiData.hu = "2";
-//    tingData.heroHu.push_back(huPaiData);
-//    HeroHuPaiData huPaiData2;
-//    huPaiData2.poker = 8;
-//    huPaiData2.hu = "2,5,6,7";
-//    tingData.heroHu.push_back(huPaiData2);
-//    playerTurnData.cpgData = tingData;
-//    _eventDispatcher->dispatchCustomEvent(MSG_PLAYER_TURN_WHO, &playerTurnData);
-//    ChatAndroidMethod::getInstance()->sendChatInfo(UserData::getInstance()->getPoxiaoId(), "hello word");
+    //    PlayerTurnData playerTurnData;
+    //    playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    //    PlayerCpgtData tingData;
+    //    tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    //    tingData.ting ="1";
+    //    playerTurnData.hastinggang = true;
+    //    HeroHuPaiData huPaiData;
+    //    huPaiData.poker = 1;
+    //    huPaiData.hu = "2";
+    //    tingData.heroHu.push_back(huPaiData);
+    //    HeroHuPaiData huPaiData2;
+    //    huPaiData2.poker = 8;
+    //    huPaiData2.hu = "2,5,6,7";
+    //    tingData.heroHu.push_back(huPaiData2);
+    //    playerTurnData.cpgData = tingData;
+    //    _eventDispatcher->dispatchCustomEvent(MSG_PLAYER_TURN_WHO, &playerTurnData);
+    //    ChatAndroidMethod::getInstance()->sendChatInfo(UserData::getInstance()->getPoxiaoId(), "hello word");
 }

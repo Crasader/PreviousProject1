@@ -61,6 +61,8 @@ public:
     std::string getCertification(std::string name, std::string sfz);
     /** ------------------------------红中麻将协议开始 ------------------- **/
     std::string getEnterHongZhongCommand(std::string ftype,std::string ma,std::string difen);
+    std::string getHZDissolveRoomCommand();
+    
     /** ------------------------------红中麻将协议结束 ------------------- **/
 private:
 	CommandManage();
