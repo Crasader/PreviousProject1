@@ -125,6 +125,9 @@ void GuiLayer::drawGameInfo(){
         addChild(roomIdNum);
         roomId->setPosition(1160,680);
         roomIdNum->setPosition(1185,678);
+        if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
+            roomInfoBg->setScale(1.0f, 0.4f);
+        }
     }else{
         roomInfoBg->setScale(0.95, 0.68);
     }

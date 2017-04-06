@@ -1150,6 +1150,7 @@ void MahjongView::onEnter(){
     
     //好友房间游戏未开始重新连接
     coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
+         GAMEDATA::getInstance()->setGameType(1);
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         for(auto var: GAMEDATA::getInstance()->getPlayersInfo()){

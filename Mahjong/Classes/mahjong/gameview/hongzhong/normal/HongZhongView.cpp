@@ -106,34 +106,26 @@ void HongZhongView::loadView(){
     SoundRecordBtn* soun = SoundRecordBtn::create();
     addChild(soun,5);
     
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
-        wukaibao->setVisible(false);
-        addChild(wukaibao);
-        if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
-            wukaibao->setVisible(true);
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom
+       && GAMEDATA::getInstance()->getGameType() == 3){
+        //码和低分
+        auto hzma  = Sprite::create("gameview/hz_ma_159zh.png");
+        addChild(hzma);
+        if(GAMEDATA::getInstance()->getHzMaType() == "1"){
+            hzma->setTexture("gameview/hz_ma_159.png");
+        }else if (GAMEDATA::getInstance()->getHzMaType() == "2"){
+            hzma->setTexture("gameview/hz_ma_1.png");
         }
-        auto lezi = Sprite::create();
-        addChild(lezi);
-        if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
-            //有乐子
-            lezi->setTexture("gameview/40_lezi.png");
-        }else{
-            lezi->setTexture("gameview/wu_lezi.png");
+        auto difen = Sprite::create("gameview/hz_di_10.png");
+        addChild(difen);
+        if(GAMEDATA::getInstance()->getHzDiType() == "1"){
+            difen->setTexture("gameview/hz_di_10.png");
         }
-        auto emsc =  Sprite::create("gameview/2mo3chong.png");
-        emsc->setVisible(false);
-        addChild(emsc);
-        if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
-            emsc->setVisible(true);
-        }
-        int wid = lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
-        wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
-        wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
-        lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
-        emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        int wid = hzma->getContentSize().width +(difen->getContentSize().width);
+        hzma->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
+        hzma->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        difen->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+hzma->getContentSize().width,160);
+        difen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     }
 }
 
