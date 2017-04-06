@@ -349,15 +349,12 @@
 		D2DB5DED1E790B440073ABD8 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DEC1E790B440073ABD8 /* libresolv.9.tbd */; };
 		D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DF21E790B9E0073ABD8 /* libz.tbd */; };
 		D2DB5DF51E790BDA0073ABD8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DF41E790BDA0073ABD8 /* AddressBook.framework */; };
-		D2DB5E711E7916420073ABD8 /* libycommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E591E7915EC0073ABD8 /* libycommon.a */; };
-		D2DB5E721E7916420073ABD8 /* libyim.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E5A1E7915EC0073ABD8 /* libyim.a */; };
 		D2DB5E741E7916A90073ABD8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E731E7916A90073ABD8 /* libsqlite3.0.tbd */; };
 		D2DB5E761E7916BE0073ABD8 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E751E7916BD0073ABD8 /* libresolv.9.tbd */; };
 		D2DB5E781E7916EB0073ABD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E771E7916EB0073ABD8 /* libz.tbd */; };
 		D2DB5E7A1E7917000073ABD8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E791E7917000073ABD8 /* AddressBook.framework */; };
 		D2DB5E7C1E7917270073ABD8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */; };
 		D2DB5E7E1E7917490073ABD8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */; };
-		D2DB5E871E7A2D0A0073ABD8 /* MyIM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DB5E851E7A2D0A0073ABD8 /* MyIM.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -740,18 +737,12 @@
 		D2DB5DEF1E790B840073ABD8 /* libyim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyim.a; path = ../yim/lib/ios/libyim.a; sourceTree = "<group>"; };
 		D2DB5DF21E790B9E0073ABD8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		D2DB5DF41E790BDA0073ABD8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
-		D2DB5E4F1E7915EC0073ABD8 /* YIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YIM.h; sourceTree = "<group>"; };
-		D2DB5E501E7915EC0073ABD8 /* YIMPlatformDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YIMPlatformDefine.h; sourceTree = "<group>"; };
-		D2DB5E591E7915EC0073ABD8 /* libycommon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libycommon.a; sourceTree = "<group>"; };
-		D2DB5E5A1E7915EC0073ABD8 /* libyim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libyim.a; sourceTree = "<group>"; };
 		D2DB5E731E7916A90073ABD8 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		D2DB5E751E7916BD0073ABD8 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
 		D2DB5E771E7916EB0073ABD8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D2DB5E791E7917000073ABD8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		D2DB5E851E7A2D0A0073ABD8 /* MyIM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyIM.cpp; sourceTree = "<group>"; };
-		D2DB5E861E7A2D0A0073ABD8 /* MyIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIM.h; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -774,8 +765,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D252FCB61E7FC31300937322 /* libWeChatSDK.a in Frameworks */,
-				D2DB5E711E7916420073ABD8 /* libycommon.a in Frameworks */,
-				D2DB5E721E7916420073ABD8 /* libyim.a in Frameworks */,
 				D2DB5DF51E790BDA0073ABD8 /* AddressBook.framework in Frameworks */,
 				D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */,
 				D2DB5DED1E790B440073ABD8 /* libresolv.9.tbd in Frameworks */,
@@ -864,7 +853,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				D2DB5E4D1E7915EC0073ABD8 /* yim */,
 				D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				46880B8319C43A87006E1F66 /* Classes */,
@@ -969,7 +957,6 @@
 				D2B1A8641CCDF0F300A20896 /* socket */,
 				D2B1A86C1CCDF0F400A20896 /* userdata */,
 				D252FC721E7FB76700937322 /* wechat */,
-				D2DB5E421E7913090073ABD8 /* youmi */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1796,51 +1783,6 @@
 			path = base64;
 			sourceTree = "<group>";
 		};
-		D2DB5E421E7913090073ABD8 /* youmi */ = {
-			isa = PBXGroup;
-			children = (
-				D2DB5E851E7A2D0A0073ABD8 /* MyIM.cpp */,
-				D2DB5E861E7A2D0A0073ABD8 /* MyIM.h */,
-			);
-			path = youmi;
-			sourceTree = "<group>";
-		};
-		D2DB5E4D1E7915EC0073ABD8 /* yim */ = {
-			isa = PBXGroup;
-			children = (
-				D2DB5E4E1E7915EC0073ABD8 /* include */,
-				D2DB5E511E7915EC0073ABD8 /* lib */,
-			);
-			name = yim;
-			path = ../yim;
-			sourceTree = "<group>";
-		};
-		D2DB5E4E1E7915EC0073ABD8 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				D2DB5E4F1E7915EC0073ABD8 /* YIM.h */,
-				D2DB5E501E7915EC0073ABD8 /* YIMPlatformDefine.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		D2DB5E511E7915EC0073ABD8 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				D2DB5E581E7915EC0073ABD8 /* ios */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		D2DB5E581E7915EC0073ABD8 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				D2DB5E591E7915EC0073ABD8 /* libycommon.a */,
-				D2DB5E5A1E7915EC0073ABD8 /* libyim.a */,
-			);
-			path = ios;
-			sourceTree = "<group>";
-		};
 		D2F05F281D8E2B22006E5A4C /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -2091,7 +2033,6 @@
 				D252FB641E7FA5EC00937322 /* ParticleUtil.cpp in Sources */,
 				D252FB601E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,
 				D278ADC01DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
-				D2DB5E871E7A2D0A0073ABD8 /* MyIM.cpp in Sources */,
 				D252FB9C1E7FA5EC00937322 /* DailyEvent.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D252FC531E7FABE900937322 /* MjGameScene.cpp in Sources */,
@@ -2354,7 +2295,7 @@
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = BNQSYUZH5R;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../yim/lib/ios/";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -2371,14 +2312,12 @@
 					"$(inherited)",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
-					"$(SRCROOT)/../yim/include/",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../Classes/wechat/ios/wechat/",
-					"$(SRCROOT)/../yim/lib/ios/",
 				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -2409,7 +2348,7 @@
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = BNQSYUZH5R;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../yim/lib/ios/";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2424,14 +2363,12 @@
 					"$(inherited)",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
-					"$(SRCROOT)/../yim/include/",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../Classes/wechat/ios/wechat/",
-					"$(SRCROOT)/../yim/lib/ios/",
 				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
