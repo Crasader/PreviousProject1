@@ -177,8 +177,10 @@ void GuiLayer::quitButtonClick(){
 
 
 void GuiLayer::updateData(){
-    kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
-    haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
+    if(GAMEDATA::getInstance()->getGameType() == 1||GAMEDATA::getInstance()->getGameType() == 2){
+        kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
+        haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
+    }
     if(NULL != getChildByTag(1088)){
         ((Label*)getChildByTag(1088))->setString(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
     }

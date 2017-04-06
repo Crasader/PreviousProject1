@@ -73,7 +73,7 @@ public:
     CC_SYNTHESIZE(TuiGuangRecord, tuiGuangRecord, TuiGuangRecord);
     //游戏状态
     
-    CC_SYNTHESIZE(int, gameType, GameType);//麻将类型:1,2上海麻将复盘,3红中麻将,4红中麻将复盘
+    CC_SYNTHESIZE(int, gameType, GameType);//游戏类型:1上海麻将,2上海麻将复盘,3红中麻将,4红中麻将复盘
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
     CC_SYNTHESIZE(int, currentSelectRoomId, CurrentSelectRoomId);
