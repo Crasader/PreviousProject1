@@ -455,7 +455,7 @@ void SplashScene::onEnter(){
     
     
     reOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
-         GAMEDATA::getInstance()->setGameType(1);
+        GAMEDATA::getInstance()->setGameType(1);
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
@@ -503,7 +503,7 @@ void SplashScene::onEnter(){
 #endif
         }
     });
-
+    
 }
 
 
@@ -513,6 +513,6 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(reConnectAgain);
     Director::getInstance()->getEventDispatcher()->removeEventListener(reEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(reOpenFriendRoomListener);
-     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
     
 }

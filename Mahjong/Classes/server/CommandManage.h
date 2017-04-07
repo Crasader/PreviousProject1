@@ -62,7 +62,7 @@ public:
     /** ------------------------------红中麻将协议开始 ------------------- **/
     std::string getEnterHongZhongCommand(std::string ftype,std::string ma,std::string difen);
     std::string getHZDissolveRoomCommand();
-    
+    std::string getHZPlayerReadyCommand();
     /** ------------------------------红中麻将协议结束 ------------------- **/
 private:
 	CommandManage();

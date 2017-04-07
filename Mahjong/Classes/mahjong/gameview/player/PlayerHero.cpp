@@ -375,25 +375,29 @@ void PlayerHero::readyGo(){
         getChildByTag(888)->setVisible(false);
     }
     setIsReady(true);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+    if(GAMEDATA::getInstance()->getGameType() == 1){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+    }else if (GAMEDATA::getInstance()->getGameType() == 2){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerReadyCommand());
+    }
 }
 
 
 void PlayerHero::inviteWechatFriend(){
-	std::string roomtype = ChineseWord("room_info_1");
+    std::string roomtype = ChineseWord("room_info_1");
     roomtype += GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu;
     if(GAMEDATA::getInstance()->getPrivateKaibao()=="0"){
-		roomtype += ChineseWord("room_info_2");
+        roomtype += ChineseWord("room_info_2");
     }else{
-		roomtype += ChineseWord("room_info_3");
+        roomtype += ChineseWord("room_info_3");
     }
     if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
-		roomtype += ChineseWord("room_info_4");
+        roomtype += ChineseWord("room_info_4");
     }else{
-		roomtype += ChineseWord("room_info_5");
+        roomtype += ChineseWord("room_info_5");
     }
     if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
-		roomtype += ChineseWord("room_info_6");
+        roomtype += ChineseWord("room_info_6");
     }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,false);

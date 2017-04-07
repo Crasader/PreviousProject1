@@ -1018,7 +1018,7 @@ void HongZhongView::onEnterTransitionDidFinish(){
     if(GAMEDATA::getInstance()->getContinueAgain()){
         GAMEDATA::getInstance()->setContinueAgain(false);
         schedule([=](float dt){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerReadyCommand());
         }, 0, 0, 0.3f,"continueGame");
     }
     
