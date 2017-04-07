@@ -22,8 +22,8 @@ def build(build_mode):
     	  build_mode = 'release'
     elif build_mode != 'release':
         build_mode = 'release'
-#     COCOS_CONSOLE_ROOT='/Applications/Cocos/Cocos2d-x/cocos2d-x-3.10/tools/cocos2d-console/bin'
-    COCOS_CONSOLE_ROOT='E:\\Cocos2d\\Cocos2d-x\\Cocos2d-x-3.10\\tools\\cocos2d-console\\bin'
+    COCOS_CONSOLE_ROOT='/Applications/Cocos/Cocos2d-x/cocos2d-x-3.10/tools/cocos2d-console/bin'
+#     COCOS_CONSOLE_ROOT='E:\\Cocos2d\\Cocos2d-x\\Cocos2d-x-3.10\\tools\\cocos2d-console\\bin'
     command = '%s/cocos compile -p android -s %s -m %s' % (COCOS_CONSOLE_ROOT,app_android_root, build_mode) 
     if os.system(command) != 0:
         raise Exception("Build dynamic library for project [ " + app_android_root + " ] fails!")
