@@ -4,7 +4,7 @@
 #include "json/prettywriter.h"
 #include "json/filestream.h"
 #include "server/CommandManage.h"
-#include "mahjong/common/state/GAMEDATA.h"
+#include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/GameConfig.h"
 #include "server/MsgConfig.h"
@@ -531,6 +531,14 @@ std::string CommandManage::getHZPlayerReadyCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_READY_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getHZEnterRoomCommand(std::string roomId){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_FRIEND_JOIN_GAME_FJH_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("prId", roomId));
     return commandString(keyValue);
 }
 

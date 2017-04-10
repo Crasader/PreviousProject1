@@ -352,10 +352,21 @@ void NormalResultLayer::onEnter(){
         std::string result = buf;
         if (result == "1"){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            GAMEDATA::getInstance()->setGameType(1);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
     });
 
+    
+    hzEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            GAMEDATA::getInstance()->setGameType(3);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }
+    });
 
 }
 
@@ -368,5 +379,6 @@ void NormalResultLayer::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
     
 }

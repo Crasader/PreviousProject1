@@ -26,6 +26,7 @@ private:
     EventListenerCustom* networkBreakListener;
     EventListenerCustom* openFriendRoomListener;
     EventListenerCustom* enterFriendRoomListener;
+    EventListenerCustom* hzEnterFriendRoomListener;
     bool showDissolveDialog = false;
     void showGameResult();
     void showRoomInfo();

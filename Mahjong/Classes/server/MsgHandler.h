@@ -75,5 +75,7 @@ private:
     void handleGongGaoInfo(std::string msg);
     void handleCertification(std::string msg);
     void handleHongZhongEnterRoom(std::string msg);
+    void handleHZEnterRoomResp(std::string msg);
+    void handleHZReadyNoyify(std::string msg);
 };
 #endif

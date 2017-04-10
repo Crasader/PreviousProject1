@@ -7,6 +7,7 @@
 //
 
 #include "mahjong/lobby/friend/MahjongNumberKeypads.hpp"
+#include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
 
 
@@ -61,7 +62,7 @@ bool MahjongNumberKeypads::init(){
     touchListener->onTouchBegan = CC_CALLBACK_2(MahjongNumberKeypads::onTouchBegan, this);
     touchListener->onTouchEnded = CC_CALLBACK_2(MahjongNumberKeypads::onTouchEnded, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener,this);
-
+    
     return true;
 }
 
@@ -72,6 +73,11 @@ void MahjongNumberKeypads::clickNumber(Ref* ref){
         std::string num = numberShow->getString();
         if(num.size() == 6){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(num));
+//            if(GAMEDATA::getInstance()->getGameType() == 1){
+//                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(num));
+//            }else if(GAMEDATA::getInstance()->getGameType() == 3){
+//                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZEnterRoomCommand(num));
+//            }
         }
         removeFromParent();
     }else if(index == 10){

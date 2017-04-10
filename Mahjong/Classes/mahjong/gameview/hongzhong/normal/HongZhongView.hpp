@@ -116,7 +116,7 @@ class HongZhongView : public Layer{
     EventListenerCustom* viewIntnetListener;
     EventListenerCustom* scrollTetxListener;
     EventListenerCustom* coreOpenFriendRoomListener;
-    EventListenerCustom* enterFriendRoomListener;
+    EventListenerCustom* hzEnterFriendRoomListener;
     EventListenerCustom* coreLoginRespListener;
     EventListenerCustom* fangZhuLeaveListener;
     EventListenerCustom* networkBreakListener;

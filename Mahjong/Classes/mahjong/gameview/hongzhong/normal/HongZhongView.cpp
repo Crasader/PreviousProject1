@@ -1098,9 +1098,8 @@ void HongZhongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerOffLineListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(fangZhuLeaveListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
-    
+    Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
 }
 
 void HongZhongView::onEnter(){
@@ -1165,7 +1164,7 @@ void HongZhongView::onEnter(){
         }
     });
     
-    enterFriendRoomListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+    hzEnterFriendRoomListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
         std::string result = buf;
         for(auto var: GAMEDATA::getInstance()->getPlayersInfo()){
@@ -1176,8 +1175,9 @@ void HongZhongView::onEnter(){
         if (result == "1"){
             schedule([=](float dt){
                 GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+                GAMEDATA::getInstance()->setGameType(3);
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
-            }, 0, 0, 2.0f,"continueGame223");
+            }, 0, 0, 2.0f,"continueGame6666");
         }
     });
     
