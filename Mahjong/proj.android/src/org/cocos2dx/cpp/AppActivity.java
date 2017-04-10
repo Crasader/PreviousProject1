@@ -26,29 +26,15 @@ THE SOFTWARE.
  ****************************************************************************/
 package org.cocos2dx.cpp;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 import org.cocos2dx.cpp.chat.RecordUtil;
 import org.cocos2dx.cpp.payment.Payment;
 import org.cocos2dx.lib.Cocos2dxActivity;
-
-//import com.avos.avoscloud.AVException;
-//import com.avos.avoscloud.im.v2.AVIMClient;
-//import com.avos.avoscloud.im.v2.AVIMConversation;
-//import com.avos.avoscloud.im.v2.AVIMException;
-//import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
-//import com.avos.avoscloud.im.v2.callback.AVIMConversationCallback;
-//import com.avos.avoscloud.im.v2.callback.AVIMConversationCreatedCallback;
-//import com.avos.avoscloud.im.v2.messages.AVIMTextMessage;
-import com.tbu.androidtools.Debug;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
 
 public class AppActivity extends Cocos2dxActivity {
@@ -56,10 +42,10 @@ public class AppActivity extends Cocos2dxActivity {
 	BatteryReceiver  batteryReceiver = new BatteryReceiver();
 	private static int batteryPer =100; 
 	//	private static AVIMClient chatClient = null;
-	private static String conversitionId = "";
+//	private static String conversitionId = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		com.youme.im.IMEngine.init(this);     
+//		com.youme.im.IMEngine.init(this);     
 		super.onCreate(savedInstanceState);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
