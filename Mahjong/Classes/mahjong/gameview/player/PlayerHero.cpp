@@ -377,7 +377,7 @@ void PlayerHero::readyGo(){
     setIsReady(true);
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
-    }else if (GAMEDATA::getInstance()->getGameType() == 2){
+    }else if (GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerReadyCommand());
     }
 }

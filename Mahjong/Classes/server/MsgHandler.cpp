@@ -380,6 +380,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHZFaPaiNotify(msg);
         }
             break;
+        case MSGCODE_HH_LOGIN_NOTIFY:{
+            addPalyer(msg);
+        }
+            break;
         default:
             break;
     }
@@ -2651,31 +2655,13 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
     MahjongFaPaiData faPaiData;
     faPaiData.heroPokers = _mDoc["poker"].GetString();
     faPaiData.dice = _mDoc["dice"].GetString();
-    faPaiData.kaibao = _mDoc["kb"].GetString();
-    faPaiData.huangfan = _mDoc["hf"].GetString();
-    faPaiData.dice = _mDoc["dice"].GetString();
     faPaiData.start = _mDoc["start"].GetInt();
     if(_mDoc.HasMember("prjucount")){
         faPaiData.prjucount = _mDoc["prjucount"].GetInt();
     }
     ReplaceJongVec  replaceVec;
-    const rapidjson::Value &hua = _mDoc["hua"];
     const rapidjson::Value &rest = _mDoc["rest"];
     replaceVec.rest = rest.GetString();
-    for (int i = 0; i < hua.Capacity(); i++){
-        const rapidjson::Value &player = hua[i];
-        ReplaceJong replacePoker;
-        replacePoker.seatId = player["seatId"].GetInt();
-        const rapidjson::Value &poker = player["poker"];
-        for (int i = 0; i < poker.Capacity(); ++i){
-            const rapidjson::Value &temp = poker[i];
-            auto pokers = temp["poker"].GetString();
-            auto replace = temp["replace"].GetString();
-            replacePoker.poker.push_back(pokers);
-            replacePoker.replace.push_back(replace);
-        }
-        replaceVec.times.push_back(replacePoker);
-    }
     faPaiData.mjReplaceVec = replaceVec;
     PlayerCpgtData tingData;
     if(_mDoc.HasMember("angang")){
