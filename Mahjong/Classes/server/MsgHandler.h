@@ -77,5 +77,6 @@ private:
     void handleHongZhongEnterRoom(std::string msg);
     void handleHZEnterRoomResp(std::string msg);
     void handleHZReadyNoyify(std::string msg);
+    void handleHZFaPaiNotify(std::string msg);
 };
 #endif
