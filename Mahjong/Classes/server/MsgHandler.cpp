@@ -2701,7 +2701,7 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
         }
     }
     faPaiData.mjTingData = tingData;
-    postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
+    postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
 void MsgHandler::handleHZPlayerPlayPokerNotify(std::string msg){

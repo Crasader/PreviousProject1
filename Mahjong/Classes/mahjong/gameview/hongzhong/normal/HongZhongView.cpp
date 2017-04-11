@@ -430,7 +430,7 @@ void HongZhongView::showGuiLayer(){
 
 void HongZhongView::removeHeroPlayedIcon(){
     if(NULL != playerHero)
-    playerHero->removePlayedIcon();
+        playerHero->removePlayedIcon();
 }
 
 
@@ -609,17 +609,17 @@ void HongZhongView::playerTingAnim(int seatId){
         if (seatId == ClientSeatId::left){
             playerLeft->setPlayerTingState(true);
             if(playerLeft->playerPlayedJongs.size()>0)
-            playerLeft->playerPlayedJongs.at(playerLeft->playerPlayedJongs.size()-1)->showTingIcon(leftplayed);
+                playerLeft->playerPlayedJongs.at(playerLeft->playerPlayedJongs.size()-1)->showTingIcon(leftplayed);
         }
         else if (seatId == ClientSeatId::right){
             playerRight->setPlayerTingState(true);
             if(playerRight->playerPlayedJongs.size()>0)
-            playerRight->playerPlayedJongs.at(playerRight->playerPlayedJongs.size()-1)->showTingIcon(rightplayed);
+                playerRight->playerPlayedJongs.at(playerRight->playerPlayedJongs.size()-1)->showTingIcon(rightplayed);
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setPlayerTingState(true);
             if(playerRight->playerPlayedJongs.size()>0)
-            playerOpposite->playerPlayedJongs.at(playerOpposite->playerPlayedJongs.size()-1)->showTingIcon(oppositeplayed);
+                playerOpposite->playerPlayedJongs.at(playerOpposite->playerPlayedJongs.size()-1)->showTingIcon(oppositeplayed);
         }
         else
         {
@@ -853,23 +853,26 @@ void HongZhongView::showPaiduiNum(int num){
 
 void HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
     if(NULL != playerHero)
-    playerHero->drawPlayerHero();
+        playerHero->drawPlayerHero();
     if(NULL != playerRight)
-    playerRight->drawHandJong();
+        playerRight->drawHandJong();
     if(NULL != playerOpposite)
-    playerOpposite->drawHandJong();
+        playerOpposite->drawHandJong();
     if(NULL != playerLeft)
-    playerLeft->drawHandJong();
-    if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
-    firstReplaceFlower(vec,data);
+        playerLeft->drawHandJong();
     if(NULL != playerRight)
-    playerRight->setIsReady(false);
+        playerRight->setIsReady(false);
     if(NULL != playerOpposite)
-    playerOpposite->setIsReady(false);
+        playerOpposite->setIsReady(false);
     if(NULL != playerLeft)
-    playerLeft->setIsReady(false);
+        playerLeft->setIsReady(false);
     if(NULL != playerHero)
-    playerHero->setIsReady(false);
+        playerHero->setIsReady(false);
+    if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
+        if(GAMEDATA::getInstance()->getCurrentBank() == GAMEDATA::getInstance()->getHeroSeatId()){
+            playerHero->setIsAllowPlay(true);
+        }
+    
 }
 
 
@@ -1198,14 +1201,12 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
-    gameFaPaiListener = EventListenerCustom::create(MSG_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
+    gameFaPaiListener = EventListenerCustom::create(MSG_HZ_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getIsPlaying()){
             return;
         }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
-        GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
-        GAMEDATA::getInstance()->setHuangfan(newMsgData.huangfan);
         GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
         FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         data.prjucount = StringUtils::format("%d",newMsgData.prjucount);
@@ -1217,11 +1218,11 @@ void HongZhongView::onEnter(){
             GAMEDATA::getInstance()->setHeroJongs(strvce);
         }
         if(NULL != playerRight)
-        playerRight->setIsReady(false);
+            playerRight->setIsReady(false);
         if(NULL != playerOpposite)
-        playerOpposite->setIsReady(false);
+            playerOpposite->setIsReady(false);
         if(NULL != playerLeft)
-        playerLeft->setIsReady(false);
+            playerLeft->setIsReady(false);
         playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
         guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
@@ -1424,7 +1425,7 @@ void HongZhongView::onEnter(){
         if (atoi(buf) == 1){
             GAMEDATA::getInstance()->setIsTingState(true);
             if(playerHero->playerPlayedJongs.size()>0)
-            playerHero->playerPlayedJongs.at(playerHero->playerPlayedJongs.size()-1)->showTingIcon(heroplayed);
+                playerHero->playerPlayedJongs.at(playerHero->playerPlayedJongs.size()-1)->showTingIcon(heroplayed);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingRespListener, 1);
