@@ -416,6 +416,12 @@ void SplashScene::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(reConnectAgain, 1);
     
+    hzReConnectAgain= EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setIsRecover(true);
+        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+        Director::getInstance()->replaceScene(MjGameScene::create());
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(hzReConnectAgain, 1);
     
     //进入好友房间回复
     reEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
@@ -514,5 +520,7 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(reEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(reOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(hzReConnectAgain);
+    
     
 }

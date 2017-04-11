@@ -21,6 +21,7 @@ private:
     
 	EventListenerCustom* loginRespListener;
 	EventListenerCustom* reConnectAgain;
+    EventListenerCustom* hzReConnectAgain;
     EventListenerCustom* reEnterFriendRoomListener;
     EventListenerCustom* reOpenFriendRoomListener;
     EventListenerCustom* hzOpenFriendRoomListener;

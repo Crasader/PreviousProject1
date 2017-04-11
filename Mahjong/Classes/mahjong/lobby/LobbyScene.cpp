@@ -585,6 +585,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(hzLobbyConncetAgainListener);
     
 }
 
@@ -754,9 +755,16 @@ void LobbyScene::addEventListener(){
     //断线续玩
     lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsRecover(true);
+        GAMEDATA::getInstance()->setGameType(1);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
     
+    //断线续玩HZ
+    hzLobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setIsRecover(true);
+        GAMEDATA::getInstance()->setGameType(3);
+        Director::getInstance()->replaceScene(MjGameScene::create());
+    });
     
     //登录地址变更
     loginReplaceListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){

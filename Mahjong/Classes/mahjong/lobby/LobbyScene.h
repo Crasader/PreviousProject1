@@ -38,6 +38,7 @@ private:
     EventListenerCustom* openFriendRoomListener;
     EventListenerCustom* hzOpenFriendRoomListener;
     EventListenerCustom* lobbyConncetAgainListener;
+    EventListenerCustom* hzLobbyConncetAgainListener;
     EventListenerCustom* intnetListener;
     EventListenerCustom* loginReplaceListener;
     EventListenerCustom* payDialogListener;
