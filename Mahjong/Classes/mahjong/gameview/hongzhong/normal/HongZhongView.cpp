@@ -871,6 +871,7 @@ void HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
     if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
         if(GAMEDATA::getInstance()->getCurrentBank() == GAMEDATA::getInstance()->getHeroSeatId()){
             playerHero->setIsAllowPlay(true);
+            playerHero->setIsAllowTouch(true);
         }
     
 }
