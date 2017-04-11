@@ -64,6 +64,7 @@ public:
     std::string getHZDissolveRoomCommand();
     std::string getHZPlayerReadyCommand();
     std::string getHZEnterRoomCommand(std::string roomId);
+    std::string getHZPlayPokerCommand(std::string seatId,std::string pokerId);
     /** ------------------------------红中麻将协议结束 ------------------- **/
 private:
 	CommandManage();

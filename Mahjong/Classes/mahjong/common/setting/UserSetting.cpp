@@ -120,6 +120,10 @@ void UserSetting::feedBack(){
 }
 
 void UserSetting::dissolveRoom(){
-     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomRequestCommand());
-     removeFromParent();
+    if(GAMEDATA::getInstance()->getGameType() == 1){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomRequestCommand());
+    }else{
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomCommand());
+    }
+    removeFromParent();
 }

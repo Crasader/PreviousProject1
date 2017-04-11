@@ -78,5 +78,7 @@ private:
     void handleHZEnterRoomResp(std::string msg);
     void handleHZReadyNoyify(std::string msg);
     void handleHZFaPaiNotify(std::string msg);
+    void handleHZPlayerPlayPokerNotify(std::string msg);
+    void handleHZDispatchPokerNotify(std::string msg);
 };
 #endif

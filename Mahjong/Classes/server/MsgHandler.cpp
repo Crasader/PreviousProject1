@@ -384,6 +384,15 @@ void MsgHandler::distribute(int code, std::string msg){
             addPalyer(msg);
         }
             break;
+        case MSGCODE_HH_MAJIANG_DISPATCH_NOTIFY:{
+            handleHZPlayerPlayPokerNotify(msg);
+        }
+            break;
+        case MSGCODE_HH_MAJIANG_POKER_NOTIFY:
+        {
+            handleHZDispatchPokerNotify(msg);
+        }
+            break;
         default:
             break;
     }
@@ -2695,3 +2704,70 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
     postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
+void MsgHandler::handleHZPlayerPlayPokerNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &poker = _mDoc["poker"];
+    const rapidjson::Value &seatId = _mDoc["seatId"];
+    std::string resultMsg = StringUtils::format("%d,%s",seatId.GetInt(),poker.GetString());
+    char* buf = const_cast<char*>(resultMsg.c_str());
+    postNotifyMessage(MSG_HZ_OTHER_PALYER_JONG, buf);
+}
+
+
+void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    PlayerTurnData playerTurnData;
+    playerTurnData.seatId = _mDoc["seatId"].GetInt();
+    if (_mDoc.HasMember("poker")){
+        const rapidjson::Value &poker = _mDoc["poker"];
+        playerTurnData.poker = poker.GetInt();
+    }
+    const rapidjson::Value &rest = _mDoc["rest"];
+    playerTurnData.rest = rest.GetString();
+    
+    PlayerCpgtData tingData;
+    tingData.seatId = _mDoc["seatId"].GetInt();
+    if (_mDoc.HasMember("ting")){
+        const rapidjson::Value &ting = _mDoc["ting"];
+        tingData.ting = ting.GetString();
+    }
+    if (_mDoc.HasMember("angang")){
+        const rapidjson::Value &angang = _mDoc["angang"];
+        GangData gangData;
+        gangData.gang = angang.GetString();
+        gangData.flag = 1;
+        tingData.playerGang.push_back(gangData);
+    }
+    if (_mDoc.HasMember("penggang")){
+        const rapidjson::Value &penggang = _mDoc["penggang"];
+        GangData gangData;
+        gangData.gang = penggang.GetString();
+        gangData.flag = 2;
+        tingData.playerGang.push_back(gangData);
+    }
+    if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
+        playerTurnData.hastinggang = true;
+    }
+    if (_mDoc.HasMember("ting1")){
+        const rapidjson::Value &ting1 = _mDoc["ting1"];
+        for(int i=0;i<ting1.Capacity();i++){
+            HeroHuPaiData huPaiData;
+            auto &temp = ting1[i];
+            if(temp.HasMember("poker")){
+                huPaiData.poker = temp["poker"].GetInt();
+            }
+            if(temp.HasMember("hu")){
+                huPaiData.hu = temp["hu"].GetString();
+            }
+            tingData.heroHu.push_back(huPaiData);
+        }
+    }
+    playerTurnData.cpgData = tingData;
+    postNotifyMessage(MSG_HZ_PLAYER_TURN_WHO, &playerTurnData);
+}

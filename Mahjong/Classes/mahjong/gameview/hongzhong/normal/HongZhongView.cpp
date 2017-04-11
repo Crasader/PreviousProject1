@@ -1463,7 +1463,7 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
     
-    turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
+    turnListener = EventListenerCustom::create(MSG_HZ_PLAYER_TURN_WHO, [=](EventCustom* event){
         PlayerTurnData* turnData = static_cast<PlayerTurnData*>(event->getUserData());
         PlayerTurnData newData = *turnData;
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
@@ -1494,7 +1494,7 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);
     
-    otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
+    otherListener = EventListenerCustom::create(MSG_HZ_OTHER_PALYER_JONG, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         vector<string> res =  StringUtil::split(result, ",");
         int seat = atoi(res.at(0).c_str());

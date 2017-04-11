@@ -542,6 +542,15 @@ std::string CommandManage::getHZEnterRoomCommand(std::string roomId){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getHZPlayPokerCommand(std::string seatId,std::string pokerId){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_MAJIANG_DISPATCH_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", seatId));
+    keyValue.insert(map<string, string>::value_type("poker", pokerId));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
