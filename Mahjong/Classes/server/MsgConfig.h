@@ -201,8 +201,8 @@
 #define MSGCODE_HH_FRIEND_GAME_RESPONSE   3023 //晃晃麻将好友开房回复{code:3023,poxiaoId:poxiaoId,result:"0",seatId:1,prId:"1234",prjushu:"8"} prjushu 8\16
 #define MSGCODE_HH_FRIEND_JOIN_GAME_REQUEST   3024 // 晃晃麻将好友加入房间请求{code:3024,poxiaoId:"123",pId:"456"}
 #define MSGCODE_HH_FRIEND_JOIN_GAME_RESPONSE   3025 //晃晃麻将好友进入房间回复{code:3025,poxiaoId:poxiaoId,result:0,seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1,pic:"1"}],prId:"1234",prjushu:"8",iflezi:"0"} iflezi为0表示无勒子1表示有勒子 result 0为自己在游戏中 1为成功 2为房间已满
-#define MSGCODE_HH_FRIEND_GAME_BILL_REQUEST   3026 //晃晃麻将获取账单请求{code:3026,poxiaoId:poxiaoId}
-#define MSGCODE_HH_FRIEND_GAME_BILL_RESPONSE   3027 //晃晃麻将获取账单回复{code:3027,poxiaoId:poxiaoId,bill:[{date:"2015-06-06 15:15",count:"10",prId:"123",atype:"0",billid:"8888888888",content:[{nickname:"张三",score:"1000"},{nickname:"李四",score:"2000"},{nickname:"王五",score:"1000"},{nickname:"赵六",score:"1100"}]}]}
+//#define MSGCODE_HH_FRIEND_GAME_BILL_REQUEST   3026 //晃晃麻将获取账单请求{code:3026,poxiaoId:poxiaoId}
+//#define MSGCODE_HH_FRIEND_GAME_BILL_RESPONSE   3027 //晃晃麻将获取账单回复{code:3027,poxiaoId:poxiaoId,bill:[{date:"2015-06-06 15:15",count:"10",prId:"123",atype:"0",billid:"8888888888",content:[{nickname:"张三",score:"1000"},{nickname:"李四",score:"2000"},{nickname:"王五",score:"1000"},{nickname:"赵六",score:"1100"}]}]}
 #define MSGCODE_HH_FRIEND_GAME_RESULT_NOTIFY   3028 // 晃晃麻将好友邀请结果通知{code:3028,poxiaoId:"123",pId:"456",result:1,nickname:"xxx"} result 为1是好友不在线 2是好友在游戏中，邀请成功不发送次通知
 #define MSGCODE_HH_FRIEND_JOIN_GAME_FJH_REQUEST   3029 // 晃晃麻将好友输入房间号加入房间请求{code:3029,poxiaoId:"123",prId:"456"}
 
@@ -297,4 +297,5 @@
 #define MSG_HZ_PLAYER_TURN_WHO "MSG_HZ_PLAYER_TURN_WHO"
 #define MSG_HZ_GAME_START_FAPAI_NOTIFY "MSG_HZ_GAME_START_FAPAI_NOTIFY"
 #define MSG_HZ_PLAYER_CONNECT_AGAIN "MSG_HZ_PLAYER_CONNECT_AGAIN"
+#define MSG_PLAYER_PG "MSG_PLAYER_PG"
 #endif

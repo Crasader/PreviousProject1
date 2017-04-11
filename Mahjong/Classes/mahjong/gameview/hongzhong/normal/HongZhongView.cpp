@@ -1546,7 +1546,7 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
     
-    playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
+    playerCpgListener = EventListenerCustom::create(MSG_PLAYER_PG, [=](EventCustom* event){
         HeroCpgRespData* cpgData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData mewCpgData = *cpgData;
         drawCpgControllPad(mewCpgData.playCpgt);

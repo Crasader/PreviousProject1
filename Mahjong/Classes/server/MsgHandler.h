@@ -81,5 +81,11 @@ private:
     void handleHZPlayerPlayPokerNotify(std::string msg);
     void handleHZDispatchPokerNotify(std::string msg);
     void handleHZGameReconnectNotify(std::string msg);
+    void handleHZPlayerActionNotify(std::string msg);
+    void handleHZGameResultNotify(std::string msg);
+    void handleHZPlayerPengNotify(std::string msg);
+    void handleHZPlayerGangNotify(std::string msg);
+    void handleHZPlayerCanclePGResp(std::string msg);
+    void handleHZPlayerFanMaNotify(std::string msg);
 };
 #endif

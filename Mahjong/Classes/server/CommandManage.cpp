@@ -551,6 +551,35 @@ std::string CommandManage::getHZPlayPokerCommand(std::string seatId,std::string 
     return commandString(keyValue);
 }
 
+std::string CommandManage::getHZPlayerPengCommand(std::string poker,std::string seatId,std::string peng){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_MAJIANG_PENG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", seatId));
+    keyValue.insert(map<string, string>::value_type("poker", poker));
+    keyValue.insert(map<string, string>::value_type("peng", peng));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getHZPlayerGangCommand(std::string poker,std::string seatId,std::string gang,std::string flag){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_MAJIANG_GANG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", seatId));
+    keyValue.insert(map<string, string>::value_type("poker", poker));
+    keyValue.insert(map<string, string>::value_type("gang", gang));
+    keyValue.insert(map<string, string>::value_type("flag", flag));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getHZPlayerCanclePGCommand(std::string seatId){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_MAJIANG_NO_CHI_PENG_GANG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", seatId));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

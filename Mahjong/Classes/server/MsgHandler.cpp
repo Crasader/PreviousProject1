@@ -396,6 +396,26 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHZGameReconnectNotify(msg);
         }
             break;
+        case MSGCODE_HH_MAJIANG_PLAYER_CPG_NOTIFY:{
+            handleHZPlayerActionNotify(msg);
+        }
+            break;
+        case MSGCODE_HH_MAJIANG_PENG_NOTIFY:{
+            handleHZPlayerPengNotify(msg);
+        }
+            break;
+        case MSGCODE_HH_MAJIANG_GANG_NOTIFY:{
+            handleHZPlayerGangNotify(msg);
+        }
+            break;
+        case MSGCODE_HH_MAJIANG_NO_CHI_PENG_GANG_RESPONSE:{
+            handleHZPlayerCanclePGResp(msg);
+        }
+            break;
+        case MSGCODE_HH_FANMA_DISMISS_NOTIFY:{
+            handleHZPlayerFanMaNotify(msg);
+        }
+            break;
         default:
             break;
     }
@@ -2907,3 +2927,151 @@ void MsgHandler::handleHZGameReconnectNotify(std::string msg){
     char* buf = const_cast<char*>(StringUtil::itos(seatId.GetInt()).c_str());
     postNotifyMessage(MSG_PLAYER_CONNECT_AGAIN, buf);
 }
+
+void MsgHandler::handleHZPlayerActionNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &poker = _mDoc["poker"];
+    const rapidjson::Value &seatId = _mDoc["sId"];
+    HeroCpgRespData cpgRespData;
+    PlayerCpgtData cpgData;
+    cpgData.poker = poker.GetString();
+    cpgData.sId = seatId.GetInt();
+    if (_mDoc.HasMember("chi")){
+        const rapidjson::Value &chi = _mDoc["chi"];
+        for (int i = 0; i < chi.Capacity(); i++){
+            const rapidjson::Value &temp = chi[i];
+            cpgData.chi[i] = temp["chi"].GetString();
+        }
+    }
+    if (_mDoc.HasMember("peng")){
+        const rapidjson::Value &peng = _mDoc["peng"];
+        cpgData.peng = peng.GetString();
+    }
+    if (_mDoc.HasMember("gang")){
+        const rapidjson::Value &gang = _mDoc["gang"];
+        GangData gangData;
+        gangData.gang = gang.GetString();
+        gangData.flag = 0;
+        cpgData.playerGang.push_back(gangData);
+    }
+    cpgRespData.playCpgt = cpgData;
+    postNotifyMessage(MSG_PLAYER_PG,&cpgRespData);
+}
+
+
+void MsgHandler::handleHZGameResultNotify(std::string msg){
+
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("poker")){
+        GAMEDATA::getInstance()->setDiaopao(_mDoc["poker"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setDiaopao("");
+    }
+    if(_mDoc.HasMember("fzId")){
+        GAMEDATA::getInstance()->setFangZhuId(_mDoc["fzId"].GetString());
+    }
+    
+    if(_mDoc.HasMember("prjucount")){
+        GAMEDATA::getInstance()->setPrivateRoomType(_mDoc["prjucount"].GetString());
+    }
+    if(_mDoc.HasMember("fee")){
+        GAMEDATA::getInstance()->setFee(_mDoc["fee"].GetString());
+    }
+    const rapidjson::Value &flag = _mDoc["flag"];
+    const rapidjson::Value &finish = _mDoc["finish"];
+    vector<GameResultData> gameResults;
+    for (int i = 0; i < finish.Capacity(); ++i){
+        GameResultData resultData;
+        const rapidjson::Value &temp = finish[i];
+        resultData.result = temp["result"].GetInt();
+        if (temp.HasMember("gold")){
+            resultData.gold = temp["gold"].GetInt();
+        }
+        if (temp.HasMember("golddelta")){
+            resultData.golddelta = temp["golddelta"].GetInt();
+        }
+        if (temp.HasMember("jifen")){
+            resultData.jifen = temp["jifen"].GetInt();
+        }
+        if (temp.HasMember("jifendelta")){
+            resultData.jifendelta = temp["jifendelta"].GetInt();
+        }
+        if (temp.HasMember("lequan")){
+            resultData.lequan = temp["lequan"].GetInt();
+        }
+        if (temp.HasMember("lequandelta")){
+            resultData.lequandelta = temp["lequandelta"].GetInt();
+        }
+        if(temp.HasMember("pic")){
+            resultData.pic = temp["pic"].GetString();
+        }
+        resultData.seatId = temp["seatId"].GetInt();
+        resultData.showPoker = temp["poker"].GetString();
+        if (temp.HasMember("hutype")){
+            resultData.huType = temp["hutype"].GetString();
+        }
+        else{
+            resultData.huType = "";
+        }
+        if (temp.HasMember("umark")){
+            resultData.umark = temp["umark"].GetString();
+        }
+        if (temp.HasMember("fan")){
+            resultData.fan = temp["fan"].GetString();
+        }
+        if (temp.HasMember("nickname")){
+            resultData.nickName = temp["nickname"].GetString();
+        }
+        if (temp.HasMember("lost")){
+            resultData.lost = temp["lost"].GetString();
+        }
+        if (temp.HasMember("win")){
+            resultData.win = temp["win"].GetString();
+        }
+        if (temp.HasMember("even")){
+            resultData.even = temp["even"].GetString();
+        }
+        if (temp.HasMember("poxiaoId")){
+            resultData.poxiaoId = temp["poxiaoId"].GetString();
+        }
+        gameResults.push_back(resultData);
+    }
+    //对GameResult进行一次排序
+    vector<GameResultData> rankGameResults;
+    for(int i= 0;i<gameResults.size();i++){
+        if(gameResults.at(i).seatId ==  GAMEDATA::getInstance()->getHeroSeatId()){
+            for(int j=i;j<gameResults.size();j++){
+                rankGameResults.push_back(gameResults.at(j));
+            }
+            for(int k=0;k<i;k++){
+                rankGameResults.push_back(gameResults.at(k));
+            }
+        }
+    }
+    GAMEDATA::getInstance()->setGameResults(rankGameResults);
+    char* buf = const_cast<char*>(flag.GetString());
+    postNotifyMessage(MSG_GAME_RESULT, buf);
+
+}
+
+
+void MsgHandler:: handleHZPlayerPengNotify(std::string msg){
+
+
+}
+
+void MsgHandler::handleHZPlayerGangNotify(std::string msg){
+
+
+}
+
+void MsgHandler::handleHZPlayerCanclePGResp(std::string msg){
+
+}
+
