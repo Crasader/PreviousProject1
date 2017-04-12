@@ -3077,7 +3077,7 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     }
     GAMEDATA::getInstance()->setGameResults(rankGameResults);
     char* buf = const_cast<char*>(flag.GetString());
-    postNotifyMessage(MSG_GAME_RESULT, buf);
+    postNotifyMessage(MSG_HZ_GAME_RESULT, buf);
     
 }
 
