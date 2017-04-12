@@ -512,7 +512,7 @@ void HongZhongView::heroDoGang(Ref* psend){
     playerHero->stopTimeClockAnim();
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(StringUtils::format("%d",tag), tag, gangData.flag));
-    }else if(GAMEDATA::getInstance()->getGameType() == 2){
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerGangCommand(StringUtils::format("%d",tag), StringUtils::format("%d",GAMEDATA::getInstance()->getHeroSeatId()), StringUtils::format("%d",tag), StringUtils::format("%d",gangData.flag)));
     }
     
@@ -1358,7 +1358,6 @@ void HongZhongView::onEnter(){
         //TODO  显示胡牌按钮
         PlayerCpgtData temp = *data;
         showTingGangControllPad(temp);
-        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playeHuActionListener, 1);
     
