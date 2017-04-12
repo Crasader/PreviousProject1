@@ -372,7 +372,7 @@ void MsgHandler::distribute(int code, std::string msg){
         }
             break;
         case MSGCODE_HH_READY_NOTIFY:{
-             handleHZReadyNoyify(msg);
+            handleHZReadyNoyify(msg);
         }
             break;
         case MSGCODE_HH_MAJIANG_DISCARD_NOTIFY:{
@@ -414,6 +414,10 @@ void MsgHandler::distribute(int code, std::string msg){
             break;
         case MSGCODE_HH_FANMA_DISMISS_NOTIFY:{
             handleHZPlayerFanMaNotify(msg);
+        }
+            break;
+        case MSGCODE_HH_MAJIANG_FINISH_NOTIFY:{
+            handleHZGameResultNotify(msg);
         }
             break;
         default:
@@ -2879,16 +2883,16 @@ void MsgHandler::handleHZGameReconnectNotify(std::string msg){
         if(data.seatId == GAMEDATA::getInstance()->getHeroSeatId()&&data.status== 1){
             GAMEDATA::getInstance()->setIsTingState(true);
         }
-//        if(temp.HasMember("chi")){
-//            const rapidjson::Value &chi = temp["chi"];
-//            for(int j = 0; j < chi.Capacity(); ++j){
-//                const rapidjson::Value &temp2 = chi[j];
-//                PlayerChiData chiDa;
-//                chiDa.chi = temp2["chi"].GetString();
-//                chiDa.poker = temp2["poker"].GetString();
-//                data.chiData.push_back(chiDa);
-//            }
-//        }
+        //        if(temp.HasMember("chi")){
+        //            const rapidjson::Value &chi = temp["chi"];
+        //            for(int j = 0; j < chi.Capacity(); ++j){
+        //                const rapidjson::Value &temp2 = chi[j];
+        //                PlayerChiData chiDa;
+        //                chiDa.chi = temp2["chi"].GetString();
+        //                chiDa.poker = temp2["poker"].GetString();
+        //                data.chiData.push_back(chiDa);
+        //            }
+        //        }
         if(temp.HasMember("peng")){
             const rapidjson::Value &peng = temp["peng"];
             for(int j = 0; j < peng.Capacity(); ++j){
@@ -2963,7 +2967,7 @@ void MsgHandler::handleHZPlayerActionNotify(std::string msg){
 
 
 void MsgHandler::handleHZGameResultNotify(std::string msg){
-
+    
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -3057,7 +3061,7 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     GAMEDATA::getInstance()->setGameResults(rankGameResults);
     char* buf = const_cast<char*>(flag.GetString());
     postNotifyMessage(MSG_GAME_RESULT, buf);
-
+    
 }
 
 
@@ -3100,11 +3104,11 @@ void MsgHandler::handleHZPlayerGangNotify(std::string msg){
 }
 
 void MsgHandler::handleHZPlayerCanclePGResp(std::string msg){
-
+    
 }
 
 
 void MsgHandler::handleHZPlayerFanMaNotify(std::string msg){
-
+    
 }
 

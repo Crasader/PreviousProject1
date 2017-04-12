@@ -15,6 +15,7 @@
 #include "mahjong/gameview/anim/PlayerCpgAnim.hpp"
 #include "mahjong/gameview/anim/LiuJuAnim.hpp"
 #include "mahjong/gameview/anim/OutFogAnim.hpp"
+#include "mahjong/gameview/anim/FanMaAnim.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/common/state/GameData.h"
@@ -65,7 +66,6 @@ void HongZhongView::initData(){
     GAMEDATA::getInstance()->setIsLiuJu(false);
     GAMEDATA::getInstance()->setIsGotoLobby(false);
     Audio::getInstance()->setHasTingPlayer(false);
-    
 }
 
 void HongZhongView::loadView(){
@@ -883,7 +883,6 @@ void HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
             playerHero->setIsAllowPlay(true);
             playerHero->setIsAllowTouch(true);
         }
-    
 }
 
 

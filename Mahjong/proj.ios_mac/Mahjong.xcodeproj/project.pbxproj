@@ -340,6 +340,10 @@
 		D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A8621CCDF0F300A20896 /* SocketDataManage.cpp */; };
 		D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
 		D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A86D1CCDF0F400A20896 /* UserData.cpp */; };
+		D2B1D8FB1E9DF64100EB8FB0 /* FanMaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D8F91E9DF64100EB8FB0 /* FanMaAnim.cpp */; };
+		D2B1D8FC1E9DF64100EB8FB0 /* FanMaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D8F91E9DF64100EB8FB0 /* FanMaAnim.cpp */; };
+		D2B1D8FE1E9DF95B00EB8FB0 /* fanma in Resources */ = {isa = PBXBuildFile; fileRef = D2B1D8FD1E9DF95B00EB8FB0 /* fanma */; };
+		D2B1D8FF1E9DF95B00EB8FB0 /* fanma in Resources */ = {isa = PBXBuildFile; fileRef = D2B1D8FD1E9DF95B00EB8FB0 /* fanma */; };
 		D2B3DD981E6ED2F70099B97E /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD961E6ED2F70099B97E /* Base64.cpp */; };
 		D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD961E6ED2F70099B97E /* Base64.cpp */; };
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
@@ -725,6 +729,9 @@
 		D2B1A8631CCDF0F300A20896 /* SocketDataManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketDataManage.h; sourceTree = "<group>"; };
 		D2B1A86D1CCDF0F400A20896 /* UserData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserData.cpp; sourceTree = "<group>"; };
 		D2B1A86E1CCDF0F400A20896 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
+		D2B1D8F91E9DF64100EB8FB0 /* FanMaAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FanMaAnim.cpp; sourceTree = "<group>"; };
+		D2B1D8FA1E9DF64100EB8FB0 /* FanMaAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FanMaAnim.hpp; sourceTree = "<group>"; };
+		D2B1D8FD1E9DF95B00EB8FB0 /* fanma */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fanma; sourceTree = "<group>"; };
 		D2B3DD961E6ED2F70099B97E /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cpp; sourceTree = "<group>"; };
 		D2B3DD971E6ED2F70099B97E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
@@ -912,6 +919,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2B1D8FD1E9DF95B00EB8FB0 /* fanma */,
 				D252FD671E80F3A500937322 /* openroom */,
 				D281A38F1E5442C8007FF30E /* share */,
 				D29E85981E320EB100AFACEE /* fupan */,
@@ -1520,6 +1528,8 @@
 				D252FC1D1E7FABE900937322 /* OutFogAnim.hpp */,
 				D252FC1E1E7FABE900937322 /* PlayerCpgAnim.cpp */,
 				D252FC1F1E7FABE900937322 /* PlayerCpgAnim.hpp */,
+				D2B1D8F91E9DF64100EB8FB0 /* FanMaAnim.cpp */,
+				D2B1D8FA1E9DF64100EB8FB0 /* FanMaAnim.hpp */,
 			);
 			path = anim;
 			sourceTree = "<group>";
@@ -1927,6 +1937,7 @@
 				D25329661CC0D33600DDAD97 /* gameview in Resources */,
 				D253296E1CC0D33600DDAD97 /* mainlogin in Resources */,
 				D253295C1CC0D33600DDAD97 /* daily in Resources */,
+				D2B1D8FE1E9DF95B00EB8FB0 /* fanma in Resources */,
 				D25329681CC0D33600DDAD97 /* headportrait in Resources */,
 				D281E5A11DACF35600D3E44E /* audio in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
@@ -1989,6 +2000,7 @@
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				D25329791CC0D33600DDAD97 /* res in Resources */,
 				D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */,
+				D2B1D8FF1E9DF95B00EB8FB0 /* fanma in Resources */,
 				D25329711CC0D33600DDAD97 /* mjitem in Resources */,
 				D281A3911E5442C8007FF30E /* share in Resources */,
 				D25329611CC0D33600DDAD97 /* fonts in Resources */,
@@ -2081,6 +2093,7 @@
 				D252FBBE1E7FA5EC00937322 /* GoldNotEnoughDialog.cpp in Sources */,
 				D252FBCA1E7FA5EC00937322 /* ShopHintDialog.cpp in Sources */,
 				D252FB4C1E7FA5EC00937322 /* UserInfo.cpp in Sources */,
+				D2B1D8FB1E9DF64100EB8FB0 /* FanMaAnim.cpp in Sources */,
 				D252FB281E7FA5EC00937322 /* ChatDialog.cpp in Sources */,
 				D252FB461E7FA5EC00937322 /* HeadImageDialog.cpp in Sources */,
 				D2B3DD981E6ED2F70099B97E /* Base64.cpp in Sources */,
@@ -2229,6 +2242,7 @@
 				D252FB311E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
 				D252FBC31E7FA5EC00937322 /* ExchangeItem.cpp in Sources */,
 				D252FB491E7FA5EC00937322 /* HeroInfoEdit.cpp in Sources */,
+				D2B1D8FC1E9DF64100EB8FB0 /* FanMaAnim.cpp in Sources */,
 				D252FBA11E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
