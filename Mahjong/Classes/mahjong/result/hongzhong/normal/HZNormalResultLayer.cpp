@@ -40,6 +40,7 @@ bool HZNormalResultLayer::init(){
     addChild(reslut_bg,-1);
     showGameResult();//结算界面标题
     showRoomInfo();
+    showHZMa();
     showPlayerResluts();
     showLayerBtn();
     updatePlayerData();
@@ -90,25 +91,23 @@ void HZNormalResultLayer::showRoomInfo(){
         fanghaoNum->setPosition(940,560);
         addChild(fanghaoNum);
         
-        auto wukaibao  = Sprite::create("result/public_wu_kaibao.png");
-        wukaibao->setVisible(false);
-        addChild(wukaibao);
-        if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
-            wukaibao->setVisible(true);
-        }
-        auto lezi = Sprite::create();
-        addChild(lezi);
-        if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
-            //有乐子
-            lezi->setTexture("result/public_40_lezi.png");
+        auto maType  = Sprite::create();
+        addChild(maType);
+        if(GAMEDATA::getInstance()->getFanMaType() == "1"){
+            maType->setTexture("result/ma_159zh.png");
+        }else if(GAMEDATA::getInstance()->getFanMaType() == "2"){
+            maType->setTexture("result/ma_159.png");
         }else{
-            lezi->setTexture("result/public_wu_lezi.png");
+            maType->setTexture("result/ma_1.png");
         }
-        auto emsc =  Sprite::create("result/public_2mo_3chong.png");
-        emsc->setVisible(false);
-        addChild(emsc);
-        if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
-            emsc->setVisible(true);
+        
+        auto difen = Sprite::create();
+        addChild(difen);
+        if(GAMEDATA::getInstance()->getHZDiFen() == "2"){
+            //有乐子
+            difen->setTexture("result/difen_2.png");
+        }else{
+            difen->setTexture("result/difen_10.png");
         }
         auto jucount = Sprite::create();
         addChild(jucount);
@@ -123,14 +122,12 @@ void HZNormalResultLayer::showRoomInfo(){
         auto juNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str()),"result/ju_num.png" , 16, 22, '0');
         addChild(juNum);
         
-        int wid = lezi->getContentSize().width + jucount->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
-        wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2-(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
-        wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
-        lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
-        emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        jucount->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2+(emsc->isVisible()?(emsc->getContentSize().width):0),560);
+        int wid = difen->getContentSize().width + jucount->getContentSize().width+(maType->isVisible()?(maType->getContentSize().width):0);
+        maType->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2-(maType->isVisible()?(maType->getContentSize().width):0)/2,560);
+        maType->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        difen->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(maType->isVisible()?(maType->getContentSize().width):0)/2,560);
+        difen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+               jucount->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+difen->getContentSize().width+(maType->isVisible()?(maType->getContentSize().width):0)/2,560);
         jucount->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         juNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         juNum->setPosition(jucount->getPositionX()+45,jucount->getPositionY());
@@ -142,6 +139,20 @@ void HZNormalResultLayer::showRoomInfo(){
         fee->setAnchorPoint(Point::ANCHOR_MIDDLE);
         fee->setPosition(665,560);
         addChild(fee,1);
+    }
+}
+
+void HZNormalResultLayer::showHZMa(){
+    auto mabg = Sprite::create("result/fanma_di.png");
+    mabg->setPosition(150,650);
+    addChild(mabg);
+    vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
+    for (int i=0; i<ma.size(); i++) {
+        auto jong = Jong::create();
+        jong->showJong(herohand,atoi(ma.at(i).c_str()));
+        jong->setPosition(150- 70*(ma.size()-1)/2+i*70,650);
+        jong->setScale(0.8f);
+        addChild(jong);
     }
 }
 
@@ -341,7 +352,7 @@ void HZNormalResultLayer::onEnter(){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
-             GAMEDATA::getInstance()->setGameType(1);
+            GAMEDATA::getInstance()->setGameType(1);
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
@@ -356,7 +367,7 @@ void HZNormalResultLayer::onEnter(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
     });
-
+    
     
     hzEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
@@ -367,7 +378,7 @@ void HZNormalResultLayer::onEnter(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
     });
-
+    
 }
 
 void HZNormalResultLayer::onExit(){

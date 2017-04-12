@@ -2995,6 +2995,14 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     if(_mDoc.HasMember("ma")){
         GAMEDATA::getInstance()->setFanMa(_mDoc["ma"].GetString());
     }
+    
+    if(_mDoc.HasMember("fanma")){
+        GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
+    }
+    
+    if(_mDoc.HasMember("difen")){
+        GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
+    }
 
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];

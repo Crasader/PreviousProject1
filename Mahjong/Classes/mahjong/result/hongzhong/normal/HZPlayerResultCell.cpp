@@ -46,40 +46,20 @@ bool HZPlayerResultCell::init(GameResultData data){
     idNumber->setPosition(-200,15);
     addChild(idNumber);
     
-    if(data.lz == "0"){
-        auto fanNum = LabelAtlas::create(StringUtils::format("%s",data.fan.c_str()), "result/fan_num.png", 17, 26, '0');
-        fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        fanNum->setPosition(170,-15);
-        addChild(fanNum);
-        auto fanText = Sprite::create("result/fan_text.png");
-        fanText->setPosition(190,-15);
-        addChild(fanText);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            fanNum->setPosition(190,-15);
-            fanText->setPosition(210,-15);
-        }
-    }else if(data.lz == "1"){
-        auto lezi = Sprite::create("result/1beilezi.png");
-        lezi->setPosition(190,-15);
-        addChild(lezi);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            lezi->setPosition(210,-15);
-        }
-    }else if(data.lz == "2"){
-        auto lezi = Sprite::create("result/2beilezi.png");
-        lezi->setPosition(190,-15);
-        addChild(lezi);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            lezi->setPosition(210,-15);
-        }
-    }else if(data.lz == "4"){
-        auto lezi = Sprite::create("result/4beilezi.png");
-        lezi->setPosition(190,-15);
-        addChild(lezi);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            lezi->setPosition(210,-15);
-        }
+    
+    int num = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",").size();
+    auto fanNum = LabelAtlas::create(StringUtils::format("%d",num), "result/fan_num.png", 17, 26, '0');
+    fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fanNum->setPosition(190,-15);
+    addChild(fanNum);
+    auto fanText = Sprite::create("result/ma.png");
+    fanText->setPosition(135,-15);
+    addChild(fanText);
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+        fanNum->setPosition(210,-15);
+        fanText->setPosition(155,-15);
     }
+    
     if(GAMEDATA::getInstance()->getCurrentBank() ==  data.seatId){
         auto bank = Sprite::create("result/zhaung.png");
         bank->setPosition(-520,0);
@@ -104,16 +84,6 @@ bool HZPlayerResultCell::init(GameResultData data){
             resultNum->setString(StringUtils::format(":%d",data.golddelta));
         }
         
-        auto huaIcon = Sprite::create("gameview/flower.png");
-        huaIcon->setScale(0.7f);
-        huaIcon->setPosition(-18, 28);
-        addChild(huaIcon);
-        auto hua = Label::createWithSystemFont(StringUtils::format("X%d",data.hua),"Arial",20);
-        hua->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        hua->setColor(Color3B(230,215,30));
-        hua->setPosition(0,15);
-        addChild(hua);
-        
         if (data.huType != ""){
             std::vector<std::string> hutypeInfo = StringUtil::split(data.huType, ",");
             std::vector<int> hutemp;
@@ -132,9 +102,23 @@ bool HZPlayerResultCell::init(GameResultData data){
             auto hutype = Label::createWithSystemFont(StringUtils::format("%s",hu.c_str()),"Arial",20);
             hutype->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
             hutype->setColor(Color3B(230,215,30));
-            hutype->setPosition(60,15);
+            hutype->setPosition(-60,15);
             addChild(hutype);
         }
+        
+        auto gangfenText = Sprite::create("result/gang_fen.png");
+        gangfenText->setPosition(160,20);
+        addChild(gangfenText);
+        
+        auto fuhao = Sprite::create();
+        fuhao->setTexture("result/gang_fen_jia.png");
+        fuhao->setPosition(200,20);
+        addChild(fuhao);
+        
+        auto juNum = LabelAtlas::create(StringUtils::format("%s","2"),"result/ju_num.png" , 16, 22, '0');
+        juNum->setPosition(210,10);
+        addChild(juNum);
+
         //胡的玩家需要单独排序
         vector<std::string>::iterator itor;
         for(itor=showPokers.begin();itor!=showPokers.end();)

@@ -31,7 +31,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-    //    drawTestButton();
+    drawTestButton();
     scheduleUpdate();
 }
 
@@ -65,7 +65,7 @@ void GuiLayer::drawGuiButton(){
         
         if(!GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()||GAMEDATA::getInstance()->getLastGameDataBackup().result == 0){
             if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 3)
-            drawPlayerInvite();
+                drawPlayerInvite();
         }
         auto bill = MenuItemImage::create("gameview/bill_btn_1.png", "gameview/bill_btn_2.png",
                                           CC_CALLBACK_0(GuiLayer::showPlayerBill, this));
@@ -192,15 +192,15 @@ void GuiLayer::updateData(){
 void GuiLayer::hideInvitePlayer(int clientId){
     if (clientId == ClientSeatId::left){
         if(NULL != leftPlayerInvite)
-        leftPlayerInvite->setVisible(false);
+            leftPlayerInvite->setVisible(false);
     }
     else if (clientId == ClientSeatId::right){
         if(NULL != rightPlayerInvite)
-        rightPlayerInvite->setVisible(false);
+            rightPlayerInvite->setVisible(false);
     }
     else if (clientId == ClientSeatId::opposite){
         if(NULL != oppositePlayerInvite)
-        oppositePlayerInvite->setVisible(false);
+            oppositePlayerInvite->setVisible(false);
     }
 }
 
@@ -208,15 +208,15 @@ void GuiLayer::hideInvitePlayer(int clientId){
 void GuiLayer::showInvitePlayer(int clientId){
     if (clientId == ClientSeatId::left){
         if(NULL != leftPlayerInvite)
-        leftPlayerInvite->setVisible(true);
+            leftPlayerInvite->setVisible(true);
     }
     else if (clientId == ClientSeatId::right){
         if(NULL != rightPlayerInvite)
-        rightPlayerInvite->setVisible(true);
+            rightPlayerInvite->setVisible(true);
     }
     else if (clientId == ClientSeatId::opposite){
         if(NULL != oppositePlayerInvite)
-        oppositePlayerInvite->setVisible(true);
+            oppositePlayerInvite->setVisible(true);
     }
 }
 
@@ -278,7 +278,7 @@ void GuiLayer::update(float dt){
     if(getChildByTag(1212)!=NULL){
         if(GAMEDATA::getInstance()->getIsPlaying()&&GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             if(getChildByTag(1212)->isVisible())
-            getChildByTag(1212)->setVisible(false);
+                getChildByTag(1212)->setVisible(false);
         }
     }
     updateData();
@@ -324,51 +324,54 @@ void GuiLayer::testButtonClick(){
     //            EventCustom event2(MSG_OTHER_PLAYER_CHI);
     //            _eventDispatcher->dispatchEvent(&event2);
     
-    //    vector<GameResultData> gameResults;
-    //    for (int i = 0; i < 4; i++){
-    //        GameResultData resultData;
-    //        if(i == 0){
-    //            resultData.result = 3;
-    //        }else if(i==1){
-    //            resultData.result = 3;
-    //        }
-    //        else if(i==2){
-    //            resultData.result = 2;
-    //        }else{
-    //            resultData.result = 0;
-    //        }
-    //        resultData.gold = 100;
-    //        resultData.diamond = 100;
-    //        resultData.jifen =10;
-    //        resultData.lequan = 10;
-    //        resultData.golddelta = 200000;
-    //        resultData.diamonddelta =2;
-    //        resultData.jifendelta = 4000000;
-    //        resultData.lequandelta = 222220;
-    //        resultData.seatId = i+1;
-    //        resultData.umark ="100010000";
-    //        resultData.hua = 3;
-    //        resultData.lz = "2";
-    //        resultData.fan = "10";
-    //        resultData.showPoker = "1,2,3,4,5,6,7,8";
-    //        resultData.huType = "3,4,13";
-    //        resultData.nickName = StringUtils::format("这里是装电视台%d",i+1);
-    //        gameResults.push_back(resultData);
-    //    }
-    //    GAMEDATA::getInstance()->setDiaopao("8");
-    //    GAMEDATA::getInstance()->setGameResults(gameResults);
-    //    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-    //    GAMEDATA::getInstance()->setHeroSeatId(1);
-    //    GAMEDATA::getInstance()->setPrivateLezi("0");
-    //    GAMEDATA::getInstance()->setPrivateKaibao("0");
-    //    GAMEDATA::getInstance()->setPrivateEmsc("1");
-    //    GAMEDATA::getInstance()->setCurrentBank(1);
-    //    FriendOpenRoomRespData opendata;
-    //    opendata.prjushu ="8";
-    //    opendata.prjucount ="2";
-    //    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
-    //    char* buf = const_cast<char*>("2");
-    //    _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
+    vector<GameResultData> gameResults;
+    for (int i = 0; i < 4; i++){
+        GameResultData resultData;
+        if(i == 0){
+            resultData.result = 3;
+        }else if(i==1){
+            resultData.result = 3;
+        }
+        else if(i==2){
+            resultData.result = 2;
+        }else{
+            resultData.result = 0;
+        }
+        resultData.gold = 100;
+        resultData.diamond = 100;
+        resultData.jifen =10;
+        resultData.lequan = 10;
+        resultData.golddelta = 200000;
+        resultData.diamonddelta =2;
+        resultData.jifendelta = 4000000;
+        resultData.lequandelta = 222220;
+        resultData.seatId = i+1;
+        resultData.umark ="100010000";
+        resultData.hua = 3;
+        resultData.lz = "2";
+        resultData.fan = "10";
+        resultData.showPoker = "1,2,3,4,5,6,7,8";
+        resultData.huType = "3,4,13";
+        resultData.nickName = StringUtils::format("这里是装电视台%d",i+1);
+        gameResults.push_back(resultData);
+    }
+    GAMEDATA::getInstance()->setDiaopao("8");
+    GAMEDATA::getInstance()->setGameResults(gameResults);
+    GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+    GAMEDATA::getInstance()->setHeroSeatId(1);
+    GAMEDATA::getInstance()->setPrivateLezi("0");
+    GAMEDATA::getInstance()->setPrivateKaibao("0");
+    GAMEDATA::getInstance()->setPrivateEmsc("1");
+    GAMEDATA::getInstance()->setCurrentBank(1);
+    GAMEDATA::getInstance()->setFanMa("1,2");
+    GAMEDATA::getInstance()->setFanMaType("1");
+    GAMEDATA::getInstance()->setHZDiFen("10");
+    FriendOpenRoomRespData opendata;
+    opendata.prjushu ="8";
+    opendata.prjucount ="2";
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
+    char* buf = const_cast<char*>("1");
+    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_RESULT,buf);
     
     //    PlayerTurnData playerTurnData;
     //    playerTurnData.seatId = GAMEDATA::getInstance()->getHeroSeatId();

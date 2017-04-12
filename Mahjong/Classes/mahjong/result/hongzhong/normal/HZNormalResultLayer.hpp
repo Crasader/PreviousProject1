@@ -30,6 +30,7 @@ private:
     bool showDissolveDialog = false;
     void showGameResult();
     void showRoomInfo();
+    void showHZMa();
     void showPlayerResluts();
     void showLayerBtn();
     void shareResult();
