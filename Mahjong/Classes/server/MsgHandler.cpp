@@ -3103,3 +3103,8 @@ void MsgHandler::handleHZPlayerCanclePGResp(std::string msg){
 
 }
 
+
+void MsgHandler::handleHZPlayerFanMaNotify(std::string msg){
+
+}
+
