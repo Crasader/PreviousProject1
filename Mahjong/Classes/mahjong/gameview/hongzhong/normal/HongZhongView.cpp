@@ -421,6 +421,7 @@ void HongZhongView::removeHeroPlayedIcon(){
 
 
 void HongZhongView::playerApplyHu(){
+    hideTingGangControllPad();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("1"));
 }
 
