@@ -1,5 +1,6 @@
 #include "mahjong/gameview/anim/DealJongAnim.h"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
+#include "mahjong/gameview/hongzhong/normal/HongZhongView.hpp"
 #include "mahjong/common/jong/Jong.h"
 #include "server/MsgConfig.h"
 
@@ -90,12 +91,23 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
     auto lastStep = Sprite::create();
     addChild(lastStep);
     lastStep->runAction(Sequence::create(DelayTime::create(144.0/24),CallFunc::create([=](){
-        if(NULL != ((MahjongView*)getParent()))
-            ((MahjongView*)getParent())->showPaiduiNum(91);
+        if(GAMEDATA::getInstance()->getGameType() == 1){
+            if(NULL != ((MahjongView*)getParent()))
+                ((MahjongView*)getParent())->showPaiduiNum(91);
+        }else if(GAMEDATA::getInstance()->getGameType() == 3){
+            if(NULL != ((HongZhongView*)getParent()))
+                ((HongZhongView*)getParent())->showPaiduiNum(91);
+        }
+        
     }), DelayTime::create(6.0f/24), CallFunc::create([=](){
         paishuLayer->removeFromParent();
-        if(NULL != ((MahjongView*)getParent()))
-            ((MahjongView*)getParent())->dealJongFinish(vec,cpgtData);
+        if(GAMEDATA::getInstance()->getGameType() == 1){
+            if(NULL != ((MahjongView*)getParent()))
+                ((MahjongView*)getParent())->dealJongFinish(vec,cpgtData);
+        }else if(GAMEDATA::getInstance()->getGameType() == 3){
+            if(NULL != ((HongZhongView*)getParent()))
+                ((HongZhongView*)getParent())->dealJongFinish(vec,cpgtData);
+        }
     }), NULL));
 }
 
