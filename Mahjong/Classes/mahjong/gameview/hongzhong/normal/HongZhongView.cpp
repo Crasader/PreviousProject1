@@ -1555,7 +1555,7 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
     
-    playerCpgListener = EventListenerCustom::create(MSG_PLAYER_PG, [=](EventCustom* event){
+    playerCpgListener = EventListenerCustom::create(MSG_HZ_PLAYER_PG, [=](EventCustom* event){
         HeroCpgRespData* cpgData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData mewCpgData = *cpgData;
         drawCpgControllPad(mewCpgData.playCpgt);
@@ -1585,7 +1585,7 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
     
-    gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
+    gameResultListener = EventListenerCustom::create(MSG_HZ_GAME_RESULT, [=](EventCustom* event){
         string flag = static_cast<char*>(event->getUserData());
         if(flag == "1"||flag == "2"){
             GAMEDATA::getInstance()->setIsTrusteeship(false);
@@ -1695,6 +1695,13 @@ void HongZhongView::onEnter(){
                 addChild(liuju,3);
                 GAMEDATA::getInstance()->setIsLiuJu(true);
             }
+            
+            schedule([=](float dt){
+                vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
+                FanMaAnim* fan = FanMaAnim::create(ma);
+                addChild(fan);
+            },0,0,5.0f,"fanma");
+            
             schedule([=](float dt){
                 PlayerCpgRecShow showRec;
                 CpgPokerRec pokerRecL;
@@ -1754,7 +1761,7 @@ void HongZhongView::onEnter(){
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(0)));
-            },0,0,6.0f,"go2Result");
+            },0,0,10.0f,"go2Result");
         }else{
             clearRoomPlayer();
             GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());

@@ -121,6 +121,7 @@ public:
     CC_SYNTHESIZE(string, fangZhuId, FangZhuId);
     CC_SYNTHESIZE(string, privateRoomType, PrivateRoomType);
     CC_SYNTHESIZE(string, fee, Fee);
+    CC_SYNTHESIZE(string, fanMa, FanMa);
     CC_SYNTHESIZE(string, privateLezi, PrivateLezi);
     CC_SYNTHESIZE(string, privateKaibao, PrivateKaibao);
     CC_SYNTHESIZE(string, hzMaType,HzMaType);

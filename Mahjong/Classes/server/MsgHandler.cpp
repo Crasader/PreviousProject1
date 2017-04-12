@@ -2962,7 +2962,7 @@ void MsgHandler::handleHZPlayerActionNotify(std::string msg){
         cpgData.playerGang.push_back(gangData);
     }
     cpgRespData.playCpgt = cpgData;
-    postNotifyMessage(MSG_PLAYER_PG,&cpgRespData);
+    postNotifyMessage(MSG_HZ_PLAYER_PG,&cpgRespData);
 }
 
 
@@ -2987,6 +2987,11 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     if(_mDoc.HasMember("fee")){
         GAMEDATA::getInstance()->setFee(_mDoc["fee"].GetString());
     }
+    
+    if(_mDoc.HasMember("ma")){
+        GAMEDATA::getInstance()->setFanMa(_mDoc["ma"].GetString());
+    }
+
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];
     vector<GameResultData> gameResults;
