@@ -69,14 +69,12 @@ class HongZhongView : public Layer{
     void updatePlayerView(int type,Player* info);
     void addTouchListener();
     void drawCpgControllPad(PlayerCpgtData cpg);
-    void showHeroChiUi(Ref* ref);
+    void playerApplyHu();
     void showHeroGangUi(Ref* ref);
-    void heroDoChi(Ref* psend);
     void heroDoPeng(Ref* psend);
     void heroDoGang(Ref* psend);
     void heroDoCpgQi();
-    void heroDoTing();
-    void heroDoTingQi();
+    void heroDoQiHu();
     void setCurrentJongVisible(int seatId);
     void playerTingAnim(int seatId);
     void clearRoomPlayer();

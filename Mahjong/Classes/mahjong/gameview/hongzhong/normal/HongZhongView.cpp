@@ -361,17 +361,9 @@ void HongZhongView::drawCpgControllPad(PlayerCpgtData newData){
     auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(HongZhongView::heroDoCpgQi,this));
     qi->setPosition(Point(0, 0));
     controllPad->addChild(qi);
-    MenuItemImage* chi = nullptr;
     MenuItemImage* peng = nullptr;
     MenuItemImage* gang = nullptr;
     int buttonCount = 1;
-    if (newData.chi[0] != ""){
-        chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_1(HongZhongView::showHeroChiUi, this));
-        chi->setPosition(Point(-buttonCount * 160, 0));
-        controllPad->addChild(chi);
-        buttonCount++;
-        
-    }
     if (newData.peng != ""){
         peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_1(HongZhongView::heroDoPeng, this));
         peng->setPosition(Point(-buttonCount * 160, 0));
@@ -390,22 +382,15 @@ void HongZhongView::showTingGangControllPad(PlayerCpgtData tingData){
     shmjHeroCpgtData.playCpgt = tingData;
     playerHero->stopTimeClockAnim();
     controllPad->removeAllChildrenWithCleanup(true);
-    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(HongZhongView::heroDoTingQi, this));
+    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(HongZhongView::heroDoQiHu, this));
     qi->setPosition(Point(0, 0));
     controllPad->addChild(qi);
     MenuItemImage* ting = nullptr;
-    MenuItemImage* penggang = nullptr;
     int buttonCount = 1;
-    if (tingData.ting != ""){
-        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(HongZhongView::heroDoTing, this));
+    if (tingData.hu == 1){
+        ting = MenuItemImage::create("gameview/hz_hu_btn.png", "gameview/hz_hu_btn.png", CC_CALLBACK_0(HongZhongView::playerApplyHu, this));
         ting->setPosition(Point(-buttonCount * 140, 0));
         controllPad->addChild(ting);
-        buttonCount++;
-    }
-    if (tingData.playerGang.size()>0){
-        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(HongZhongView::showHeroGangUi, this));
-        penggang->setPosition(Point(-buttonCount * 140, 0));
-        controllPad->addChild(penggang);
         buttonCount++;
     }
     controllPad->setVisible(true);
@@ -434,51 +419,9 @@ void HongZhongView::removeHeroPlayedIcon(){
 }
 
 
-void HongZhongView::showHeroChiUi(Ref* ref){
-    controllPad->setVisible(false);
-    //吃牌排序
-    if ( shmjHeroCpgtData.playCpgt.chi[0] != "" &&  shmjHeroCpgtData.playCpgt.chi[1] != ""){
-        //对吃牌的大小进行排序
-        for (int j = 2; j > 0; j--) {
-            for (int k = 0; k < j; k++) {
-                if ( shmjHeroCpgtData.playCpgt.chi[k] <  shmjHeroCpgtData.playCpgt.chi[k + 1]) {
-                    auto temp =  shmjHeroCpgtData.playCpgt.chi[k];
-                    shmjHeroCpgtData.playCpgt.chi[k] = shmjHeroCpgtData.playCpgt.chi[k + 1];
-                    shmjHeroCpgtData.playCpgt.chi[k + 1] = temp;
-                }
-            }
-        }
-        for (int i = 0; i < 3; i++){
-            if( shmjHeroCpgtData.playCpgt.chi[i] == ""){
-                continue;
-            }
-            std::vector<string> pai = StringUtil::split( shmjHeroCpgtData.playCpgt.chi[i], ",");
-            pai.push_back( shmjHeroCpgtData.playCpgt.poker);
-            sort(pai.begin(), pai.end());
-            auto choice = Menu::create();
-            choice->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-            for (int j = 0; j < pai.size(); j++){
-                Sprite* chibg = Sprite::create("jong/middle_2.png");
-                chibg->setPosition(1000 + j * 40 - i * 130, 150);
-                choiceMenu->setVisible(true);
-                choiceMenu->addChild(chibg);
-                std::string imageName = Jong::getContextImage(atoi(pai.at(j).c_str()));
-                MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(HongZhongView::heroDoChi, this));
-                imageItem->setTag(i);
-                imageItem->setPosition(1000 + j * 40 - i * 130, 160);
-                imageItem->setScale(0.5f);
-                choice->addChild(imageItem);
-            }
-            choice->setPosition(0, 0);
-            choiceMenu->addChild(choice);
-        }
-        playerHero->startTimeClockAnim(9, 1);
-    }
-    else{
-        MenuItemImage* imageItem = MenuItemImage::create();
-        imageItem->setTag(0);
-        heroDoChi(imageItem);
-    }
+
+void HongZhongView::playerApplyHu(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("1"));
 }
 
 void HongZhongView::showHeroGangUi(Ref* ref){
@@ -535,16 +478,7 @@ void HongZhongView::showHeroGangUi(Ref* ref){
     }
 }
 
-void HongZhongView::heroDoChi(Ref* psend){
-    if (NULL != choiceMenu){
-        choiceMenu->setVisible(false);
-        choiceMenu->removeAllChildren();
-    }
-    MenuItemImage* item = (MenuItemImage*)psend;
-    selectedChi =  shmjHeroCpgtData.playCpgt.chi[item->getTag()];
-    playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi( shmjHeroCpgtData.playCpgt.poker.c_str())));
-}
+
 
 void HongZhongView::heroDoPeng(Ref* psend){
     controllPad->setVisible(false);
@@ -586,30 +520,20 @@ void HongZhongView::heroDoGang(Ref* psend){
 void HongZhongView::heroDoCpgQi(){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerCanclePGCommand(StringUtils::format("%d",GAMEDATA::getInstance()->getHeroSeatId())));
 }
 
-void HongZhongView::heroDoTing(){
+
+void HongZhongView::heroDoQiHu(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
-    playerHero->actionTing(shmjHeroCpgtData);
-    controllPad->removeAllChildrenWithCleanup(true);
-    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(HongZhongView::heroDoTingQi, this));
-    qi->setPosition(Point(0, 50));
-    qi->setScale(0.8f);
-    controllPad->addChild(qi);
-    controllPad->setVisible(true);
-}
-void HongZhongView::heroDoTingQi(){
-    playerHero->stopTimeClockAnim();
-    controllPad->setVisible(false);
-    playerHero->actionQi();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("0"));
     playerHero->startTimeClockAnim();
 }
 
 
 void HongZhongView::setCurrentJongVisible(int seatId){
-    //TODO
+    //
 }
 
 void HongZhongView::playerTingAnim(int seatId){
@@ -1416,6 +1340,7 @@ void HongZhongView::onEnter(){
     playeHuActionListener = EventListenerCustom::create(MSG_HZ_GAME_HU_ACTION, [=](EventCustom* event){
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
         //TODO  显示胡牌按钮
+        
         
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playeHuActionListener, 1);
