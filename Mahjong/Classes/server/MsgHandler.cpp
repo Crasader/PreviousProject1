@@ -3088,7 +3088,7 @@ void MsgHandler:: handleHZPlayerPengNotify(std::string msg){
     data.seatId = seatId.GetInt();
     data.peng = pengPoker.GetString();
     data.sId = sId.GetInt();
-    postNotifyMessage(MSG_OTHER_PLAYER_PENG, &data);
+    postNotifyMessage(MSG_HZ_PLAYER_PENG, &data);
 }
 
 void MsgHandler::handleHZPlayerGangNotify(std::string msg){

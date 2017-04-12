@@ -9,6 +9,8 @@
 #include "mahjong/result/ResultScene.hpp"
 #include "mahjong/result/shanghai/normal/NormalResultLayer.hpp"
 #include "mahjong/result/shanghai/special/SpecialResultLayer.hpp"
+#include "mahjong/result/hongzhong/normal/HZNormalResultLayer.hpp"
+#include "mahjong/result/hongzhong/special/HZSpecialResultLayer.hpp"
 #include "mahjong/common/jong/Jong.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/common/utils/SeatIdUtil.h"
@@ -28,12 +30,22 @@ Scene* ResultScene::createScene(int type)
 {
 //    initTestData();
     auto scene = Scene::create();
-    if(type == 0){
-        NormalResultLayer* layer = NormalResultLayer::create();
-        scene->addChild(layer);
-    }else{
-        SpecialResultLayer* layer = SpecialResultLayer::create();
-        scene->addChild(layer);
+    if(GAMEDATA::getInstance()->getGameType()==1){
+        if(type == 0){
+            NormalResultLayer* layer = NormalResultLayer::create();
+            scene->addChild(layer);
+        }else{
+            SpecialResultLayer* layer = SpecialResultLayer::create();
+            scene->addChild(layer);
+        }
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        if(type == 0){
+            HZNormalResultLayer* layer = HZNormalResultLayer::create();
+            scene->addChild(layer);
+        }else{
+            HZSpecialResultLayer* layer = HZSpecialResultLayer::create();
+            scene->addChild(layer);
+        }
     }
     GAMEDATA::getInstance()->setLogingGame(true);
     return scene;

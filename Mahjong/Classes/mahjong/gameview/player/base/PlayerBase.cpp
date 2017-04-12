@@ -284,19 +284,22 @@ void PlayerBase::updatePlayerInfo(int num){
 
 
 void PlayerBase::showPlayerHua(int num){
-    if(num>5 && !getIsPlayHuaChi()){
-        Audio::getInstance()->playSoundHuaChi(getPlayerInfo()->getGender());
-        setIsPlayHuaChi(true);
+    if(GAMEDATA::getInstance()->getGameType()==1||GAMEDATA::getInstance()->getGameType()==2){
+        if(num>5 && !getIsPlayHuaChi()){
+            Audio::getInstance()->playSoundHuaChi(getPlayerInfo()->getGender());
+            setIsPlayHuaChi(true);
+        }
+        playerHua->setVisible(true);
+        playerHuaCount->setVisible(true);
+        Point pos = getHuaNumPos(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), playerInfo->getSeatId()));
+        playerHua->setPosition(pos);
+        playerHuaCount->setPosition(pos.x + 30, pos.y);
+        playerHuaCount->setString(StringUtils::format(":%d",num));
+        playerHuaCount->setScale(2.0f);
+        playerHuaCount->setOpacity(77);
+        playerHuaCount->runAction(Sequence::create(Spawn::create(FadeTo::create(4.0/24, 255),ScaleTo::create(4.0f/24, 1.0f), NULL), NULL));
+        
     }
-    playerHua->setVisible(true);
-    playerHuaCount->setVisible(true);
-    Point pos = getHuaNumPos(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), playerInfo->getSeatId()));
-    playerHua->setPosition(pos);
-    playerHuaCount->setPosition(pos.x + 30, pos.y);
-    playerHuaCount->setString(StringUtils::format(":%d",num));
-    playerHuaCount->setScale(2.0f);
-    playerHuaCount->setOpacity(77);
-    playerHuaCount->runAction(Sequence::create(Spawn::create(FadeTo::create(4.0/24, 255),ScaleTo::create(4.0f/24, 1.0f), NULL), NULL));
 }
 
 
