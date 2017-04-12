@@ -586,7 +586,7 @@ std::string CommandManage::getHZPlayerCanclePGCommand(std::string seatId){
 
 std::string CommandManage::getHZHuActionCommand(std::string msg){
     std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_MAJIANG_NO_CHI_PENG_GANG_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_IFHU_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("flag", msg));
     return commandString(keyValue);
