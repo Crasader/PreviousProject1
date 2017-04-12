@@ -17,6 +17,6 @@ public:
     bool init(std::vector<std::string> mas);
 private:
     void showTextAnim(Sprite* sprite);
-    
+    void showFanPai(Sprite* sprite);
 };
 #endif /* FanMaAnim_hpp */
