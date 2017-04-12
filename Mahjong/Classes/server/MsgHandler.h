@@ -87,5 +87,6 @@ private:
     void handleHZPlayerGangNotify(std::string msg);
     void handleHZPlayerCanclePGResp(std::string msg);
     void handleHZPlayerFanMaNotify(std::string msg);
+    void handleHZPlayerHuNotify(std::string msg);
 };
 #endif

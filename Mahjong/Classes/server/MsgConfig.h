@@ -212,7 +212,9 @@
 #define MSGCODE_HH_FRIEND_DISMISS_AGREE_REQUEST   3033 //晃晃麻将私人房间是否同意解散请求{code:3033,poxiaoId:poxiaoId,agree:0} 0为不同意 1为同意
 #define MSGCODE_HH_FRIEND_DISMISS_AGREE_RESULT_NOTIFY   3034 //晃晃麻将私人房间是否同意解散通知{code:3034,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同意 1为同意,pId为谁同意了或则不同意了
 #define MSGCODE_HH_FRIEND_DISMISS_FZ_REQUEST   3035 //晃晃麻将私人房间房主解散请求{code:3035,poxiaoId:poxiaoId}
-#define MSGCODE_HH_FANMA_DISMISS_NOTIFY   3036 // 晃晃麻将翻码通知{code:3036,poxiaoId:"123",ma:"1,2,3"}
+//#define MSGCODE_HH_FANMA_DISMISS_NOTIFY   3036 // 晃晃麻将翻码通知{code:3036,poxiaoId:"123",ma:"1,2,3"}
+#define MSGCODE_HH_IFHU_NOTIFY  3037// 晃晃麻将可以胡通知{code:3037,poxiaoId:"123"}
+#define MSGCODE_HH_IFHU_REQUEST  3038// 晃晃麻将胡牌请求{code:3038,poxiaoId:"123",flag:"1"} flag为1是确认胡牌，2是取消胡牌
 
 
 #define LOGIN_SUCCESS "login_success"
@@ -299,4 +301,5 @@
 #define MSG_HZ_PLAYER_CONNECT_AGAIN "MSG_HZ_PLAYER_CONNECT_AGAIN"
 #define MSG_HZ_PLAYER_PG "MSG_HZ_PLAYER_PG"
 #define MSG_HZ_GAME_RESULT "MSG_HZ_GAME_RESULT"
+#define MSG_HZ_GAME_HU_ACTION "MSG_HZ_GAME_HU_ACTION"
 #endif

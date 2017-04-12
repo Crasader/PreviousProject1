@@ -104,6 +104,7 @@ struct PlayerCpgtData
 {
     int seatId;
     int sId;
+    int hu;
     std::string ting;
     std::string poker;
     std::string chi[3];

@@ -99,6 +99,7 @@ class HongZhongView : public Layer{
     EventListenerCustom* othersPengListener;
     EventListenerCustom* othersGangListener;
     EventListenerCustom* playerTingNotifyListener;
+    EventListenerCustom* playeHuActionListener;
     EventListenerCustom* tingNotifyListener;
     EventListenerCustom* tingRespListener;
     EventListenerCustom* trusteeshipRespListener;

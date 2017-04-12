@@ -68,6 +68,7 @@ public:
     std::string getHZPlayerPengCommand(std::string poker,std::string seatId,std::string peng);
     std::string getHZPlayerGangCommand(std::string poker,std::string seatId,std::string peng,std::string flag);
     std::string getHZPlayerCanclePGCommand(std::string seatId);
+    std::string getHZHuActionCommand(std::string msg);
     /** ------------------------------红中麻将协议结束 ------------------- **/
 private:
 	CommandManage();

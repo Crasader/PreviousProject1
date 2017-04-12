@@ -412,12 +412,12 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHZPlayerCanclePGResp(msg);
         }
             break;
-        case MSGCODE_HH_FANMA_DISMISS_NOTIFY:{
-            handleHZPlayerFanMaNotify(msg);
-        }
-            break;
         case MSGCODE_HH_MAJIANG_FINISH_NOTIFY:{
             handleHZGameResultNotify(msg);
+        }
+            break;
+        case MSGCODE_HH_IFHU_NOTIFY:{
+            handleHZPlayerHuNotify(msg);
         }
             break;
         default:
@@ -3117,3 +3117,12 @@ void MsgHandler::handleHZPlayerFanMaNotify(std::string msg){
     
 }
 
+void MsgHandler::handleHZPlayerHuNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    PlayerCpgtData cpgData;
+    cpgData.hu = 1;
+    postNotifyMessage(MSG_HZ_GAME_HU_ACTION, &cpgData);
+}
