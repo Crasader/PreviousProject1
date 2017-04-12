@@ -3062,13 +3062,41 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
 
 
 void MsgHandler:: handleHZPlayerPengNotify(std::string msg){
-
-
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &poker = _mDoc["poker"];
+    const rapidjson::Value &seatId = _mDoc["seatId"];
+    const rapidjson::Value &pengPoker = _mDoc["peng"];
+    const rapidjson::Value &sId = _mDoc["sId"];
+    PlayerCpgtData data;
+    data.poker = poker.GetString();
+    data.seatId = seatId.GetInt();
+    data.peng = pengPoker.GetString();
+    data.sId = sId.GetInt();
+    postNotifyMessage(MSG_OTHER_PLAYER_PENG, &data);
 }
 
 void MsgHandler::handleHZPlayerGangNotify(std::string msg){
-
-
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &poker = _mDoc["poker"];
+    const rapidjson::Value &seatId = _mDoc["seatId"];
+    const rapidjson::Value &gang = _mDoc["gang"];
+    const rapidjson::Value &flag = _mDoc["flag"];
+    const rapidjson::Value &sId = _mDoc["sId"];
+    PlayerCpgtData cpgData;
+    cpgData.poker = poker.GetString();
+    cpgData.seatId = seatId.GetInt();
+    cpgData.sId = sId.GetInt();
+    GangData gangData;
+    gangData.gang = gang.GetString();
+    gangData.flag = atoi(flag.GetString());
+    cpgData.playerGang.push_back(gangData);
+    postNotifyMessage(MSG_OTHER_PLAYER_GANG, &cpgData);
 }
 
 void MsgHandler::handleHZPlayerCanclePGResp(std::string msg){
