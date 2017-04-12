@@ -177,16 +177,8 @@
 		D252FBCB1E7FA5EC00937322 /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB071E7FA5EC00937322 /* ShopHintDialog.cpp */; };
 		D252FBCC1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB0A1E7FA5EC00937322 /* WanJiaQunLayer.cpp */; };
 		D252FBCD1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB0A1E7FA5EC00937322 /* WanJiaQunLayer.cpp */; };
-		D252FBCE1E7FA5EC00937322 /* NormalResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB0E1E7FA5EC00937322 /* NormalResultLayer.cpp */; };
-		D252FBCF1E7FA5EC00937322 /* NormalResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB0E1E7FA5EC00937322 /* NormalResultLayer.cpp */; };
-		D252FBD01E7FA5EC00937322 /* PlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB101E7FA5EC00937322 /* PlayerResultCell.cpp */; };
-		D252FBD11E7FA5EC00937322 /* PlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB101E7FA5EC00937322 /* PlayerResultCell.cpp */; };
 		D252FBD21E7FA5EC00937322 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB121E7FA5EC00937322 /* ResultScene.cpp */; };
 		D252FBD31E7FA5EC00937322 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB121E7FA5EC00937322 /* ResultScene.cpp */; };
-		D252FBD41E7FA5EC00937322 /* GameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB151E7FA5EC00937322 /* GameResultCell.cpp */; };
-		D252FBD51E7FA5EC00937322 /* GameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB151E7FA5EC00937322 /* GameResultCell.cpp */; };
-		D252FBD61E7FA5EC00937322 /* SpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB171E7FA5EC00937322 /* SpecialResultLayer.cpp */; };
-		D252FBD71E7FA5EC00937322 /* SpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB171E7FA5EC00937322 /* SpecialResultLayer.cpp */; };
 		D252FBD81E7FA5EC00937322 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB1A1E7FA5EC00937322 /* LoadResource.cpp */; };
 		D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB1A1E7FA5EC00937322 /* LoadResource.cpp */; };
 		D252FBDA1E7FA5EC00937322 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB1C1E7FA5EC00937322 /* SplashScene.cpp */; };
@@ -344,6 +336,22 @@
 		D2B1D8FC1E9DF64100EB8FB0 /* FanMaAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D8F91E9DF64100EB8FB0 /* FanMaAnim.cpp */; };
 		D2B1D8FE1E9DF95B00EB8FB0 /* fanma in Resources */ = {isa = PBXBuildFile; fileRef = D2B1D8FD1E9DF95B00EB8FB0 /* fanma */; };
 		D2B1D8FF1E9DF95B00EB8FB0 /* fanma in Resources */ = {isa = PBXBuildFile; fileRef = D2B1D8FD1E9DF95B00EB8FB0 /* fanma */; };
+		D2B1D9161E9E026800EB8FB0 /* HZNormalResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9021E9E026800EB8FB0 /* HZNormalResultLayer.cpp */; };
+		D2B1D9171E9E026800EB8FB0 /* HZNormalResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9021E9E026800EB8FB0 /* HZNormalResultLayer.cpp */; };
+		D2B1D9181E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9041E9E026800EB8FB0 /* HZPlayerResultCell.cpp */; };
+		D2B1D9191E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9041E9E026800EB8FB0 /* HZPlayerResultCell.cpp */; };
+		D2B1D91A1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9071E9E026800EB8FB0 /* HZGameResultCell.cpp */; };
+		D2B1D91B1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9071E9E026800EB8FB0 /* HZGameResultCell.cpp */; };
+		D2B1D91C1E9E026800EB8FB0 /* HZSpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9091E9E026800EB8FB0 /* HZSpecialResultLayer.cpp */; };
+		D2B1D91D1E9E026800EB8FB0 /* HZSpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9091E9E026800EB8FB0 /* HZSpecialResultLayer.cpp */; };
+		D2B1D91E1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D90D1E9E026800EB8FB0 /* NormalResultLayer.cpp */; };
+		D2B1D91F1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D90D1E9E026800EB8FB0 /* NormalResultLayer.cpp */; };
+		D2B1D9201E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D90F1E9E026800EB8FB0 /* PlayerResultCell.cpp */; };
+		D2B1D9211E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D90F1E9E026800EB8FB0 /* PlayerResultCell.cpp */; };
+		D2B1D9221E9E026800EB8FB0 /* GameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9121E9E026800EB8FB0 /* GameResultCell.cpp */; };
+		D2B1D9231E9E026800EB8FB0 /* GameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9121E9E026800EB8FB0 /* GameResultCell.cpp */; };
+		D2B1D9241E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9141E9E026800EB8FB0 /* SpecialResultLayer.cpp */; };
+		D2B1D9251E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9141E9E026800EB8FB0 /* SpecialResultLayer.cpp */; };
 		D2B3DD981E6ED2F70099B97E /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD961E6ED2F70099B97E /* Base64.cpp */; };
 		D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD961E6ED2F70099B97E /* Base64.cpp */; };
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
@@ -579,16 +587,8 @@
 		D252FB081E7FA5EC00937322 /* ShopHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShopHintDialog.hpp; sourceTree = "<group>"; };
 		D252FB0A1E7FA5EC00937322 /* WanJiaQunLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WanJiaQunLayer.cpp; sourceTree = "<group>"; };
 		D252FB0B1E7FA5EC00937322 /* WanJiaQunLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WanJiaQunLayer.hpp; sourceTree = "<group>"; };
-		D252FB0E1E7FA5EC00937322 /* NormalResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalResultLayer.cpp; sourceTree = "<group>"; };
-		D252FB0F1E7FA5EC00937322 /* NormalResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NormalResultLayer.hpp; sourceTree = "<group>"; };
-		D252FB101E7FA5EC00937322 /* PlayerResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerResultCell.cpp; sourceTree = "<group>"; };
-		D252FB111E7FA5EC00937322 /* PlayerResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerResultCell.hpp; sourceTree = "<group>"; };
 		D252FB121E7FA5EC00937322 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultScene.cpp; sourceTree = "<group>"; };
 		D252FB131E7FA5EC00937322 /* ResultScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResultScene.hpp; sourceTree = "<group>"; };
-		D252FB151E7FA5EC00937322 /* GameResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameResultCell.cpp; sourceTree = "<group>"; };
-		D252FB161E7FA5EC00937322 /* GameResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameResultCell.hpp; sourceTree = "<group>"; };
-		D252FB171E7FA5EC00937322 /* SpecialResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpecialResultLayer.cpp; sourceTree = "<group>"; };
-		D252FB181E7FA5EC00937322 /* SpecialResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpecialResultLayer.hpp; sourceTree = "<group>"; };
 		D252FB1A1E7FA5EC00937322 /* LoadResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadResource.cpp; sourceTree = "<group>"; };
 		D252FB1B1E7FA5EC00937322 /* LoadResource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadResource.hpp; sourceTree = "<group>"; };
 		D252FB1C1E7FA5EC00937322 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
@@ -732,6 +732,22 @@
 		D2B1D8F91E9DF64100EB8FB0 /* FanMaAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FanMaAnim.cpp; sourceTree = "<group>"; };
 		D2B1D8FA1E9DF64100EB8FB0 /* FanMaAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FanMaAnim.hpp; sourceTree = "<group>"; };
 		D2B1D8FD1E9DF95B00EB8FB0 /* fanma */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fanma; sourceTree = "<group>"; };
+		D2B1D9021E9E026800EB8FB0 /* HZNormalResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HZNormalResultLayer.cpp; sourceTree = "<group>"; };
+		D2B1D9031E9E026800EB8FB0 /* HZNormalResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HZNormalResultLayer.hpp; sourceTree = "<group>"; };
+		D2B1D9041E9E026800EB8FB0 /* HZPlayerResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HZPlayerResultCell.cpp; sourceTree = "<group>"; };
+		D2B1D9051E9E026800EB8FB0 /* HZPlayerResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HZPlayerResultCell.hpp; sourceTree = "<group>"; };
+		D2B1D9071E9E026800EB8FB0 /* HZGameResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HZGameResultCell.cpp; sourceTree = "<group>"; };
+		D2B1D9081E9E026800EB8FB0 /* HZGameResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HZGameResultCell.hpp; sourceTree = "<group>"; };
+		D2B1D9091E9E026800EB8FB0 /* HZSpecialResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HZSpecialResultLayer.cpp; sourceTree = "<group>"; };
+		D2B1D90A1E9E026800EB8FB0 /* HZSpecialResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HZSpecialResultLayer.hpp; sourceTree = "<group>"; };
+		D2B1D90D1E9E026800EB8FB0 /* NormalResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalResultLayer.cpp; sourceTree = "<group>"; };
+		D2B1D90E1E9E026800EB8FB0 /* NormalResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NormalResultLayer.hpp; sourceTree = "<group>"; };
+		D2B1D90F1E9E026800EB8FB0 /* PlayerResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerResultCell.cpp; sourceTree = "<group>"; };
+		D2B1D9101E9E026800EB8FB0 /* PlayerResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerResultCell.hpp; sourceTree = "<group>"; };
+		D2B1D9121E9E026800EB8FB0 /* GameResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameResultCell.cpp; sourceTree = "<group>"; };
+		D2B1D9131E9E026800EB8FB0 /* GameResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameResultCell.hpp; sourceTree = "<group>"; };
+		D2B1D9141E9E026800EB8FB0 /* SpecialResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpecialResultLayer.cpp; sourceTree = "<group>"; };
+		D2B1D9151E9E026800EB8FB0 /* SpecialResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpecialResultLayer.hpp; sourceTree = "<group>"; };
 		D2B3DD961E6ED2F70099B97E /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cpp; sourceTree = "<group>"; };
 		D2B3DD971E6ED2F70099B97E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
@@ -1419,34 +1435,12 @@
 		D252FB0C1E7FA5EC00937322 /* result */ = {
 			isa = PBXGroup;
 			children = (
-				D252FB0D1E7FA5EC00937322 /* normal */,
+				D2B1D9001E9E026800EB8FB0 /* hongzhong */,
+				D2B1D90B1E9E026800EB8FB0 /* shanghai */,
 				D252FB121E7FA5EC00937322 /* ResultScene.cpp */,
 				D252FB131E7FA5EC00937322 /* ResultScene.hpp */,
-				D252FB141E7FA5EC00937322 /* special */,
 			);
 			path = result;
-			sourceTree = "<group>";
-		};
-		D252FB0D1E7FA5EC00937322 /* normal */ = {
-			isa = PBXGroup;
-			children = (
-				D252FB0E1E7FA5EC00937322 /* NormalResultLayer.cpp */,
-				D252FB0F1E7FA5EC00937322 /* NormalResultLayer.hpp */,
-				D252FB101E7FA5EC00937322 /* PlayerResultCell.cpp */,
-				D252FB111E7FA5EC00937322 /* PlayerResultCell.hpp */,
-			);
-			path = normal;
-			sourceTree = "<group>";
-		};
-		D252FB141E7FA5EC00937322 /* special */ = {
-			isa = PBXGroup;
-			children = (
-				D252FB151E7FA5EC00937322 /* GameResultCell.cpp */,
-				D252FB161E7FA5EC00937322 /* GameResultCell.hpp */,
-				D252FB171E7FA5EC00937322 /* SpecialResultLayer.cpp */,
-				D252FB181E7FA5EC00937322 /* SpecialResultLayer.hpp */,
-			);
-			path = special;
 			sourceTree = "<group>";
 		};
 		D252FB191E7FA5EC00937322 /* splash */ = {
@@ -1784,6 +1778,68 @@
 			path = userdata;
 			sourceTree = "<group>";
 		};
+		D2B1D9001E9E026800EB8FB0 /* hongzhong */ = {
+			isa = PBXGroup;
+			children = (
+				D2B1D9011E9E026800EB8FB0 /* normal */,
+				D2B1D9061E9E026800EB8FB0 /* special */,
+			);
+			path = hongzhong;
+			sourceTree = "<group>";
+		};
+		D2B1D9011E9E026800EB8FB0 /* normal */ = {
+			isa = PBXGroup;
+			children = (
+				D2B1D9021E9E026800EB8FB0 /* HZNormalResultLayer.cpp */,
+				D2B1D9031E9E026800EB8FB0 /* HZNormalResultLayer.hpp */,
+				D2B1D9041E9E026800EB8FB0 /* HZPlayerResultCell.cpp */,
+				D2B1D9051E9E026800EB8FB0 /* HZPlayerResultCell.hpp */,
+			);
+			path = normal;
+			sourceTree = "<group>";
+		};
+		D2B1D9061E9E026800EB8FB0 /* special */ = {
+			isa = PBXGroup;
+			children = (
+				D2B1D9071E9E026800EB8FB0 /* HZGameResultCell.cpp */,
+				D2B1D9081E9E026800EB8FB0 /* HZGameResultCell.hpp */,
+				D2B1D9091E9E026800EB8FB0 /* HZSpecialResultLayer.cpp */,
+				D2B1D90A1E9E026800EB8FB0 /* HZSpecialResultLayer.hpp */,
+			);
+			path = special;
+			sourceTree = "<group>";
+		};
+		D2B1D90B1E9E026800EB8FB0 /* shanghai */ = {
+			isa = PBXGroup;
+			children = (
+				D2B1D90C1E9E026800EB8FB0 /* normal */,
+				D2B1D9111E9E026800EB8FB0 /* special */,
+			);
+			path = shanghai;
+			sourceTree = "<group>";
+		};
+		D2B1D90C1E9E026800EB8FB0 /* normal */ = {
+			isa = PBXGroup;
+			children = (
+				D2B1D90D1E9E026800EB8FB0 /* NormalResultLayer.cpp */,
+				D2B1D90E1E9E026800EB8FB0 /* NormalResultLayer.hpp */,
+				D2B1D90F1E9E026800EB8FB0 /* PlayerResultCell.cpp */,
+				D2B1D9101E9E026800EB8FB0 /* PlayerResultCell.hpp */,
+			);
+			path = normal;
+			sourceTree = "<group>";
+		};
+		D2B1D9111E9E026800EB8FB0 /* special */ = {
+			isa = PBXGroup;
+			children = (
+				D2B1D9121E9E026800EB8FB0 /* GameResultCell.cpp */,
+				D2B1D9131E9E026800EB8FB0 /* GameResultCell.hpp */,
+				D2B1D9141E9E026800EB8FB0 /* SpecialResultLayer.cpp */,
+				D2B1D9151E9E026800EB8FB0 /* SpecialResultLayer.hpp */,
+			);
+			path = special;
+			sourceTree = "<group>";
+		};
 		D2B3DD951E6ED2D00099B97E /* base64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2029,10 +2085,13 @@
 				D252FC651E7FABE900937322 /* CardStack.cpp in Sources */,
 				D252FBB41E7FA5EC00937322 /* ChargeFangka.cpp in Sources */,
 				D27F05FF1E94BDF90085438A /* MahjongView.cpp in Sources */,
+				D2B1D9161E9E026800EB8FB0 /* HZNormalResultLayer.cpp in Sources */,
+				D2B1D91A1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */,
 				D252FB1E1E7FA5EC00937322 /* Audio.cpp in Sources */,
 				D252FBA81E7FA5EC00937322 /* GameGongGaoLayer.cpp in Sources */,
 				D252FBA41E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */,
 				D252FC691E7FABE900937322 /* Orientation.cpp in Sources */,
+				D2B1D9241E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */,
 				D252FC101E7FABC700937322 /* MahjongNumberKeypads.cpp in Sources */,
 				D252FB3A1E7FA5EC00937322 /* LostNetwork.cpp in Sources */,
 				D252FBA21E7FA5EC00937322 /* EnterRoomDialog.cpp in Sources */,
@@ -2057,7 +2116,6 @@
 				D252FB301E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
 				D252FC081E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */,
 				D252FC5D1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
-				D252FBD61E7FA5EC00937322 /* SpecialResultLayer.cpp in Sources */,
 				D252FC571E7FABE900937322 /* PlayerBase.cpp in Sources */,
 				D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */,
 				D252FBFB1E7FAA3100937322 /* LVRecordTool.m in Sources */,
@@ -2072,11 +2130,13 @@
 				D27F06081E94BFE50085438A /* HongZhongView.cpp in Sources */,
 				D252FB5E1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
 				D252FCAE1E7FB77F00937322 /* CallIOSMethod.mm in Sources */,
+				D2B1D9221E9E026800EB8FB0 /* GameResultCell.cpp in Sources */,
 				D252FBC61E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
 				D252FB421E7FA5EC00937322 /* InfoToast.cpp in Sources */,
 				D252FBBA1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
 				D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
 				D252FBC21E7FA5EC00937322 /* ExchangeItem.cpp in Sources */,
+				D2B1D9201E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */,
 				D252FC5F1E7FABE900937322 /* PlayerOpposite.cpp in Sources */,
 				D252FB381E7FA5EC00937322 /* BaseDialog.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -2087,7 +2147,6 @@
 				D252FBAA1E7FA5EC00937322 /* GongGaoItem.cpp in Sources */,
 				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D252FC591E7FABE900937322 /* PlayerHero.cpp in Sources */,
-				D252FBD01E7FA5EC00937322 /* PlayerResultCell.cpp in Sources */,
 				D252FC8A1E7FB76700937322 /* CallAndroidMethod.cpp in Sources */,
 				D252FBBC1E7FA5EC00937322 /* ChargeGold.cpp in Sources */,
 				D252FBBE1E7FA5EC00937322 /* GoldNotEnoughDialog.cpp in Sources */,
@@ -2113,11 +2172,11 @@
 				D252FBAC1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FC4F1E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
 				D252FB321E7FA5EC00937322 /* GameRecordAudioManage.cpp in Sources */,
+				D2B1D9181E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */,
 				D252FBB01E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
 				D252FB521E7FA5EC00937322 /* GameFeedDialog.cpp in Sources */,
 				D252FBFA1E7FAA3100937322 /* CallRcordMecordios.mm in Sources */,
 				D252FB621E7FA5EC00937322 /* HeadImage.cpp in Sources */,
-				D252FBD41E7FA5EC00937322 /* GameResultCell.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D252FB261E7FA5EC00937322 /* ChatAndroidMethod.cpp in Sources */,
 				D252FBA61E7FA5EC00937322 /* GoldRoomPlate.cpp in Sources */,
@@ -2127,6 +2186,7 @@
 				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D252FBAE1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D252FBF91E7FAA3100937322 /* AudioRecordManager.m in Sources */,
+				D2B1D91C1E9E026800EB8FB0 /* HZSpecialResultLayer.cpp in Sources */,
 				D252FB581E7FA5EC00937322 /* GameData.cpp in Sources */,
 				D252FC491E7FABE900937322 /* HupaiAnim.cpp in Sources */,
 				D252FBD81E7FA5EC00937322 /* LoadResource.cpp in Sources */,
@@ -2138,7 +2198,6 @@
 				D252FCB31E7FB77F00937322 /* WXApiManager.mm in Sources */,
 				D252FBD21E7FA5EC00937322 /* ResultScene.cpp in Sources */,
 				D252FB241E7FA5EC00937322 /* FupanDialog.cpp in Sources */,
-				D252FBCE1E7FA5EC00937322 /* NormalResultLayer.cpp in Sources */,
 				D252FB201E7FA5EC00937322 /* BillDetailInfo.cpp in Sources */,
 				D252FC671E7FABE900937322 /* HuPaiHintLayer.cpp in Sources */,
 				D252FBDA1E7FA5EC00937322 /* SplashScene.cpp in Sources */,
@@ -2146,6 +2205,7 @@
 				D252FBC81E7FA5EC00937322 /* LequanShop.cpp in Sources */,
 				D252FB501E7FA5EC00937322 /* Loading.cpp in Sources */,
 				D252FC511E7FABE900937322 /* GuiLayer.cpp in Sources */,
+				D2B1D91E1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */,
 				D252FB481E7FA5EC00937322 /* HeroInfoEdit.cpp in Sources */,
 				D252FCB01E7FB77F00937322 /* RechargeVC.mm in Sources */,
 				D252FB3C1E7FA5EC00937322 /* LostNetwork2.cpp in Sources */,
@@ -2159,6 +2219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D278ADC11DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
+				D2B1D91D1E9E026800EB8FB0 /* HZSpecialResultLayer.cpp in Sources */,
 				D252FBAB1E7FA5EC00937322 /* GongGaoItem.cpp in Sources */,
 				D252FC4A1E7FABE900937322 /* HupaiAnim.cpp in Sources */,
 				D252FC541E7FABE900937322 /* MjGameScene.cpp in Sources */,
@@ -2190,6 +2251,7 @@
 				D27F06001E94BDF90085438A /* MahjongView.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D252FB9F1E7FA5EC00937322 /* DailyPride.cpp in Sources */,
+				D2B1D91F1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */,
 				D252FBA71E7FA5EC00937322 /* GoldRoomPlate.cpp in Sources */,
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D252FBAD1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
@@ -2199,10 +2261,10 @@
 				D252FBA31E7FA5EC00937322 /* EnterRoomDialog.cpp in Sources */,
 				D252FBCD1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */,
 				D252FBB91E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
-				D252FBD71E7FA5EC00937322 /* SpecialResultLayer.cpp in Sources */,
 				D252FC581E7FABE900937322 /* PlayerBase.cpp in Sources */,
 				D252FBB71E7FA5EC00937322 /* ChargeItem.cpp in Sources */,
 				D252FC6E1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */,
+				D2B1D9211E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */,
 				D252FB5F1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
 				D252FC521E7FABE900937322 /* GuiLayer.cpp in Sources */,
 				D252FB3D1E7FA5EC00937322 /* LostNetwork2.cpp in Sources */,
@@ -2219,20 +2281,21 @@
 				D252FBA91E7FA5EC00937322 /* GameGongGaoLayer.cpp in Sources */,
 				D252FBCB1E7FA5EC00937322 /* ShopHintDialog.cpp in Sources */,
 				D252FC661E7FABE900937322 /* CardStack.cpp in Sources */,
+				D2B1D9191E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */,
 				D252FC681E7FABE900937322 /* HuPaiHintLayer.cpp in Sources */,
 				D252FB211E7FA5EC00937322 /* BillDetailInfo.cpp in Sources */,
 				D252FC0B1E7FABC600937322 /* RoomFullDialog.cpp in Sources */,
+				D2B1D9251E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */,
 				D252FC091E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */,
 				D252FB251E7FA5EC00937322 /* FupanDialog.cpp in Sources */,
 				D252FBBD1E7FA5EC00937322 /* ChargeGold.cpp in Sources */,
 				D252FB511E7FA5EC00937322 /* Loading.cpp in Sources */,
-				D252FBCF1E7FA5EC00937322 /* NormalResultLayer.cpp in Sources */,
 				D299F8CC1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
-				D252FBD11E7FA5EC00937322 /* PlayerResultCell.cpp in Sources */,
 				D252FBA51E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */,
 				D252FB471E7FA5EC00937322 /* HeadImageDialog.cpp in Sources */,
 				D252FB591E7FA5EC00937322 /* GameData.cpp in Sources */,
 				D252FB5D1E7FA5EC00937322 /* SeatIdUtil.cpp in Sources */,
+				D2B1D9231E9E026800EB8FB0 /* GameResultCell.cpp in Sources */,
 				D252FB431E7FA5EC00937322 /* InfoToast.cpp in Sources */,
 				D252FB671E7FA5EC00937322 /* ScrollTextEx.cpp in Sources */,
 				D252FB351E7FA5EC00937322 /* PlayerChatManage.cpp in Sources */,
@@ -2242,6 +2305,7 @@
 				D252FB311E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
 				D252FBC31E7FA5EC00937322 /* ExchangeItem.cpp in Sources */,
 				D252FB491E7FA5EC00937322 /* HeroInfoEdit.cpp in Sources */,
+				D2B1D9171E9E026800EB8FB0 /* HZNormalResultLayer.cpp in Sources */,
 				D2B1D8FC1E9DF64100EB8FB0 /* FanMaAnim.cpp in Sources */,
 				D252FBA11E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */,
@@ -2250,8 +2314,8 @@
 				D252FB411E7FA5EC00937322 /* TextHintDialog.cpp in Sources */,
 				D252FB4F1E7FA5EC00937322 /* Jong.cpp in Sources */,
 				D252FBB51E7FA5EC00937322 /* ChargeFangka.cpp in Sources */,
-				D252FBD51E7FA5EC00937322 /* GameResultCell.cpp in Sources */,
 				D252FB1F1E7FA5EC00937322 /* Audio.cpp in Sources */,
+				D2B1D91B1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */,
 				D252FB3F1E7FA5EC00937322 /* HintDialog.cpp in Sources */,
 				D252FBB11E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
 				D252FBC51E7FA5EC00937322 /* ExchangePropCell.cpp in Sources */,

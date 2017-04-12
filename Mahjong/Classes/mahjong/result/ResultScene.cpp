@@ -7,8 +7,8 @@
 //
 
 #include "mahjong/result/ResultScene.hpp"
-#include "mahjong/result/normal/NormalResultLayer.hpp"
-#include "mahjong/result/special/SpecialResultLayer.hpp"
+#include "mahjong/result/shanghai/normal/NormalResultLayer.hpp"
+#include "mahjong/result/shanghai/special/SpecialResultLayer.hpp"
 #include "mahjong/common/jong/Jong.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/common/utils/SeatIdUtil.h"

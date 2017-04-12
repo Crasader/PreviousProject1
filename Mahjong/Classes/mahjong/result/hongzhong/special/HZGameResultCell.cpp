@@ -6,15 +6,15 @@
 //
 //
 
-#include "mahjong/result/special/GameResultCell.hpp"
+#include "mahjong/result/hongzhong/special/HZGameResultCell.hpp"
 #include "mahjong/common/widget/HeadImage.hpp"
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "userdata/UserData.h"
 
 
-GameResultCell* GameResultCell::create(GameResultData data){
-    GameResultCell* cell = new GameResultCell();
+HZGameResultCell* HZGameResultCell::create(GameResultData data){
+    HZGameResultCell* cell = new HZGameResultCell();
     if(cell && cell->init(data)){
         cell -> autorelease();
         return cell;
@@ -23,7 +23,7 @@ GameResultCell* GameResultCell::create(GameResultData data){
     return NULL;
 }
 
-bool GameResultCell::init(GameResultData data){
+bool HZGameResultCell::init(GameResultData data){
     if(!Sprite::init()){
         return false;
     }

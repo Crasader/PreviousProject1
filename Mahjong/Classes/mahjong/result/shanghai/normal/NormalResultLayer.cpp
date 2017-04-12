@@ -6,8 +6,8 @@
 //
 //
 
-#include "mahjong/result/normal/NormalResultLayer.hpp"
-#include "mahjong/result/normal/PlayerResultCell.hpp"
+#include "mahjong/result/shanghai/normal/NormalResultLayer.hpp"
+#include "mahjong/result/shanghai/normal/PlayerResultCell.hpp"
 #include "mahjong/result/ResultScene.hpp"
 #include "mahjong/common/jong/Jong.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
