@@ -1316,7 +1316,7 @@ void HongZhongView::onEnter(){
             playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newData.sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
         }
-
+        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
     
@@ -1355,7 +1355,8 @@ void HongZhongView::onEnter(){
     playeHuActionListener = EventListenerCustom::create(MSG_HZ_GAME_HU_ACTION, [=](EventCustom* event){
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
         //TODO  显示胡牌按钮
-        
+        PlayerCpgtData temp = *data;
+        showTingGangControllPad(temp);
         
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playeHuActionListener, 1);
@@ -1489,15 +1490,15 @@ void HongZhongView::onEnter(){
                 Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
             }
         }else if(seatId == ClientSeatId::hero){
-            schedule([=](float dt){
-                playerHero->stopTimeClockAnim();
-                playerHero->drawPlayedJong(poker);
-                if(poker == playerLeft->getLastPoker()){
-                    Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-                }else if(poker == playerRight->getLastPoker()){
-                    Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
-                }
-            },0,0,0.6f,"delay_play_poker_auto");
+            //            schedule([=](float dt){
+            //                playerHero->stopTimeClockAnim();
+            //                playerHero->drawPlayedJong(poker);
+            //                if(poker == playerLeft->getLastPoker()){
+            //                    Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
+            //                }else if(poker == playerRight->getLastPoker()){
+            //                    Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
+            //                }
+            //            },0,0,0.6f,"delay_play_poker_auto");
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
