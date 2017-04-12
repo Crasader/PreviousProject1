@@ -70,6 +70,7 @@ public:
     std::string getHZPlayerCanclePGCommand(std::string seatId);
     std::string getHZHuActionCommand(std::string msg);
     std::string getHZDissolveRoomSelectCommand(std::string agree);
+    std::string getHZDissolveRoomInGameCommand();
     /** ------------------------------红中麻将协议结束 ------------------- **/
 private:
 	CommandManage();

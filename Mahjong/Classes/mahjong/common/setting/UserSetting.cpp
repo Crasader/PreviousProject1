@@ -123,7 +123,7 @@ void UserSetting::dissolveRoom(){
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomRequestCommand());
     }else{
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomCommand());
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomInGameCommand());
     }
     removeFromParent();
 }
