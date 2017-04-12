@@ -68,20 +68,35 @@ void DissovleRoomDialog::setNickName(std::string msg){
 void DissovleRoomDialog::agree(){
     GAMEDATA::getInstance()->setIsSelected(true);
     GAMEDATA::getInstance()->setShowDissolveDialog(false);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("1"));
+    if(GAMEDATA::getInstance()->getGameType() == 1){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("1"));
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("1"));
+    }
+    
     removeFromParent();
 }
 
 void DissovleRoomDialog::disAgree(){
     GAMEDATA::getInstance()->setIsSelected(true);
     GAMEDATA::getInstance()->setShowDissolveDialog(false);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
+    if(GAMEDATA::getInstance()->getGameType() == 1){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("1"));
+    }
+    
     removeFromParent();
 }
 
 void DissovleRoomDialog::closeView(){
     GAMEDATA::getInstance()->setIsSelected(true);
     GAMEDATA::getInstance()->setShowDissolveDialog(false);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
+    if(GAMEDATA::getInstance()->getGameType() == 1){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("1"));
+    }
+    
     removeFromParent();
 }

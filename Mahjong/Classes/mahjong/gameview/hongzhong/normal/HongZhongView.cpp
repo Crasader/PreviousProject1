@@ -1130,7 +1130,7 @@ void HongZhongView::onEnter(){
     });
     
     
-    dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
+    dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
         DissolveData data = GAMEDATA::getInstance()->getDissolveData();
         std::string  name ="";
         for(auto var :GAMEDATA::getInstance()->getPlayersInfo()){

@@ -420,6 +420,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHZPlayerHuNotify(msg);
         }
             break;
+        case MSGCODE_HH_FRIEND_DISMISS_AGREE_NOTIFY:{
+            handleHZPlayerDissovleNotify(msg);
+        }
+            break;
         default:
             break;
     }
@@ -3125,4 +3129,34 @@ void MsgHandler::handleHZPlayerHuNotify(std::string msg){
     PlayerCpgtData cpgData;
     cpgData.hu = 1;
     postNotifyMessage(MSG_HZ_GAME_HU_ACTION, &cpgData);
+}
+
+void MsgHandler::handleHZPlayerDissovleNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("nickName")){
+        const rapidjson::Value &nickName = _mDoc["nickName"];
+        std::string name = nickName.GetString();
+        GAMEDATA::getInstance()->setDissolveName(name);
+        GAMEDATA::getInstance()->setIsSelected(false);
+    }
+
+}
+
+void MsgHandler::handleHZDissovleRoomSelectedNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    DissolveData data;
+    const rapidjson::Value &pId = _mDoc["pId"];
+    data.pid = pId.GetString();
+    if(_mDoc.HasMember("agree")){
+        const rapidjson::Value &agree = _mDoc["agree"];
+        data.agree = agree.GetString();
+    }
+    GAMEDATA::getInstance()->setDissolveData(data);
+    postNotifyMessage(MSG_HZ_DISSOVLE_ROOM_SELECTED_NOTIFY, nullptr);
 }

@@ -405,6 +405,9 @@ std::string CommandManage::getDissolveRoomSelectCommand(std::string agree){
     return commandString(keyValue);
 }
 
+
+
+
 std::string CommandManage::getOpenRoomRequestCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FANG_REQUEST)));
@@ -588,6 +591,14 @@ std::string CommandManage::getHZHuActionCommand(std::string msg){
     keyValue.insert(map<string, string>::value_type("flag", msg));
     return commandString(keyValue);
 
+}
+
+std::string CommandManage::getHZDissolveRoomSelectCommand(std::string agree){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_FRIEND_DISMISS_AGREE_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("agree",agree));
+    return commandString(keyValue);
 }
 
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
