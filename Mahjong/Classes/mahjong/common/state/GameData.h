@@ -124,10 +124,9 @@ public:
     CC_SYNTHESIZE(string, fanMa, FanMa);
     CC_SYNTHESIZE(string, fanMaType, FanMaType);
     CC_SYNTHESIZE(string, hzDiFen, HZDiFen);
+    CC_SYNTHESIZE(string, hzMaShu, HZMaShu);
     CC_SYNTHESIZE(string, privateLezi, PrivateLezi);
     CC_SYNTHESIZE(string, privateKaibao, PrivateKaibao);
-    CC_SYNTHESIZE(string, hzMaType,HzMaType);
-    CC_SYNTHESIZE(string, hzDiType,HzDiType);
     CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
     CC_SYNTHESIZE(string, dissolveName, DissolveName);
     CC_SYNTHESIZE(string, hsman, Hsman);

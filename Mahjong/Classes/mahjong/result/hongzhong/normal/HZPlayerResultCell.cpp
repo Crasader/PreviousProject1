@@ -47,7 +47,7 @@ bool HZPlayerResultCell::init(GameResultData data){
     addChild(idNumber);
     
     
-    int num = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",").size();
+    int num = StringUtil::split(GAMEDATA::getInstance()->getHZMaShu(), ",").size();
     auto fanNum = LabelAtlas::create(StringUtils::format("%d",num), "result/fan_num.png", 17, 26, '0');
     fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     fanNum->setPosition(190,-15);
@@ -105,20 +105,20 @@ bool HZPlayerResultCell::init(GameResultData data){
             hutype->setPosition(-60,15);
             addChild(hutype);
         }
-        
-        auto gangfenText = Sprite::create("result/gang_fen.png");
-        gangfenText->setPosition(160,20);
-        addChild(gangfenText);
-        
-        auto fuhao = Sprite::create();
-        fuhao->setTexture("result/gang_fen_jia.png");
-        fuhao->setPosition(200,20);
-        addChild(fuhao);
-        
-        auto juNum = LabelAtlas::create(StringUtils::format("%s","2"),"result/ju_num.png" , 16, 22, '0');
-        juNum->setPosition(210,10);
-        addChild(juNum);
-
+        if(data.gangfen !=""){
+            auto gangfenText = Sprite::create("result/gang_fen.png");
+            gangfenText->setPosition(160,20);
+            addChild(gangfenText);
+            
+            auto fuhao = Sprite::create();
+            fuhao->setTexture("result/gang_fen_jia.png");
+            fuhao->setPosition(200,20);
+            addChild(fuhao);
+            
+            auto juNum = LabelAtlas::create(StringUtils::format("%s",data.gangfen.c_str()),"result/ju_num.png" , 16, 22, '0');
+            juNum->setPosition(210,10);
+            addChild(juNum);
+        }
         //胡的玩家需要单独排序
         vector<std::string>::iterator itor;
         for(itor=showPokers.begin();itor!=showPokers.end();)

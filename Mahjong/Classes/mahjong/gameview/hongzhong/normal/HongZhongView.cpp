@@ -111,14 +111,14 @@ void HongZhongView::loadView(){
         //码和低分
         auto hzma  = Sprite::create("gameview/hz_ma_159zh.png");
         addChild(hzma);
-        if(GAMEDATA::getInstance()->getHzMaType() == "1"){
+        if(GAMEDATA::getInstance()->getFanMaType() == "1"){
             hzma->setTexture("gameview/hz_ma_159.png");
-        }else if (GAMEDATA::getInstance()->getHzMaType() == "2"){
+        }else if (GAMEDATA::getInstance()->getFanMaType() == "2"){
             hzma->setTexture("gameview/hz_ma_1.png");
         }
-        auto difen = Sprite::create("gameview/hz_di_10.png");
+        auto difen = Sprite::create("gameview/hz_di_2.png");
         addChild(difen);
-        if(GAMEDATA::getInstance()->getHzDiType() == "1"){
+        if(GAMEDATA::getInstance()->getHZDiFen() == "10"){
             difen->setTexture("gameview/hz_di_10.png");
         }
         int wid = hzma->getContentSize().width +(difen->getContentSize().width);

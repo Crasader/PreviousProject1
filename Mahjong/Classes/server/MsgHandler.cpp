@@ -2507,6 +2507,14 @@ void MsgHandler::handleHongZhongEnterRoom(std::string msg){
         UserData::getInstance()->setMarkId(umark.GetString());
     }
     
+    if(_mDoc.HasMember("fanma")){
+        GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
+    }
+    
+    if(_mDoc.HasMember("difen")){
+        GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
+    }
+    
     FriendOpenRoomRespData data;
     if(_mDoc.HasMember("prjushu")){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
@@ -2591,21 +2599,15 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
     }
-    if(_mDoc.HasMember("ifkb")){
-        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+    if(_mDoc.HasMember("fanma")){
+        GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
     }
-    if(_mDoc.HasMember("ifemsc")){
-        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
-    }
-    if(_mDoc.HasMember("iflezi")){
-        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+    
+    if(_mDoc.HasMember("difen")){
+        GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
     }
     const rapidjson::Value &result = _mDoc["result"];
     FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
-    if(_mDoc.HasMember("kb")){
-        const rapidjson::Value &kb = _mDoc["kb"];
-        data.kb = kb.GetString();
-    }
     if(_mDoc.HasMember("seatId")){
         const rapidjson::Value &seatId = _mDoc["seatId"];
         GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
@@ -2838,14 +2840,12 @@ void MsgHandler::handleHZGameReconnectNotify(std::string msg){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
         opdata.prjucount = prjucount.GetString();
     }
-    if(_mDoc.HasMember("ifkb")){
-        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+    if(_mDoc.HasMember("fanma")){
+        GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
     }
-    if(_mDoc.HasMember("ifemsc")){
-        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
-    }
-    if(_mDoc.HasMember("iflezi")){
-        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+    
+    if(_mDoc.HasMember("difen")){
+        GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
     }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
     const rapidjson::Value &seatId = _mDoc["seatId"];
@@ -3008,12 +3008,23 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
         GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
     }
     
+    
+    if(_mDoc.HasMember("mashu")){
+        GAMEDATA::getInstance()->setHZMaShu(_mDoc["mashu"].GetString());
+    }
+    
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];
     vector<GameResultData> gameResults;
     for (int i = 0; i < finish.Capacity(); ++i){
         GameResultData resultData;
         const rapidjson::Value &temp = finish[i];
+        
+        if(_mDoc.HasMember("gangfen")){
+            resultData.gangfen = temp["gangfen"].GetString();
+        }else{
+            resultData.gangfen ="";
+        }
         resultData.result = temp["result"].GetInt();
         if (temp.HasMember("gold")){
             resultData.gold = temp["gold"].GetInt();

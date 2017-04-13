@@ -145,6 +145,7 @@ struct GameResultData
     int bangzuan;
     int bangzuandelta;
     int hua;
+    std::string gangfen;
     std::string lz;
     std::string win;
     std::string lost;
