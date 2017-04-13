@@ -47,8 +47,7 @@ bool HZPlayerResultCell::init(GameResultData data){
     addChild(idNumber);
     
     
-    int num = StringUtil::split(GAMEDATA::getInstance()->getHZMaShu(), ",").size();
-    auto fanNum = LabelAtlas::create(StringUtils::format("%d",num), "result/fan_num.png", 17, 26, '0');
+    auto fanNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getHZMaShu().c_str()), "result/fan_num.png", 17, 26, '0');
     fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     fanNum->setPosition(190,-15);
     addChild(fanNum);
