@@ -459,6 +459,41 @@ void SplashScene::onEnter(){
         }
     });
     
+    hzReEnterFriendRoomListener  =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        } else if(result == "2")
+        {
+            RoomFullDialog* doo = RoomFullDialog::create();
+            addChild(doo,100);
+        }
+        else if(result == "3")
+        {
+            removeLoading();
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,100);
+            }else{
+                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",nullptr);
+                addChild(hint,100);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,100);
+#endif
+        }
+        else if(result == "4"){
+            removeLoading();
+            RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
+            addChild(idd,100);
+        }
+    });
+
     
     reOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
         GAMEDATA::getInstance()->setGameType(1);
@@ -521,6 +556,8 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(reOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReConnectAgain);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(hzReEnterFriendRoomListener);
+    
     
     
 }

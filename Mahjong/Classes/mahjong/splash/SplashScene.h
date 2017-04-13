@@ -23,6 +23,7 @@ private:
 	EventListenerCustom* reConnectAgain;
     EventListenerCustom* hzReConnectAgain;
     EventListenerCustom* reEnterFriendRoomListener;
+    EventListenerCustom* hzReEnterFriendRoomListener;
     EventListenerCustom* reOpenFriendRoomListener;
     EventListenerCustom* hzOpenFriendRoomListener;
     void loginByWechat();
