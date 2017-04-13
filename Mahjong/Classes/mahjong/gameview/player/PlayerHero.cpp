@@ -290,11 +290,6 @@ void PlayerHero::drawPlayerHero() {
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
     
-    for(auto protect:playerHandJongs){
-        if(protect->getJongType() == 32){
-            protect->showBackShadow(true);
-        }
-    }
     
 }
 
@@ -619,7 +614,6 @@ void PlayerHero::replaceFlower(){
             isAllowPlay = true;
         }
         showPlayerHua(getHuaNum());
-        //        SocketDataManage::getInstance()->resumeMsg();
     }else{
         //有花的情况
         huaIndex = 0;
@@ -701,8 +695,14 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             addChild(jong);
             playerHandJongs.pushBack(jong);
             currentJong = jong;
+            if(GAMEDATA::getInstance()->getGameType() ==3){
+                if(jong->getJongType() == 32){
+                    jong->showBackShadow(true);
+                }
+            }
             settleHandJongs(getHandPosX());
         }
+        
         if(data.hastinggang){
             ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
         }

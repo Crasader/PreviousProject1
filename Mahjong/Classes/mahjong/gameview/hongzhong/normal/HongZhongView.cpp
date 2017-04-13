@@ -310,7 +310,7 @@ void HongZhongView::checkPlayerIpRepetition(){
 
 int  HongZhongView::getNumbersByPoker(string pokers){
     std::vector<std::string> myPokers = StringUtil::split(pokers, ",");
-    int sum = myPokers.size()*4;
+    int sum = (int)myPokers.size()*4;
     Vector<Jong*> allKnowPokers;//玩家已知的牌
     for (auto  hero: playerHero->playerHandJongs) {
         allKnowPokers.pushBack(hero);
