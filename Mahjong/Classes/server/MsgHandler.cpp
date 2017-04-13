@@ -2891,16 +2891,6 @@ void MsgHandler::handleHZGameReconnectNotify(std::string msg){
         if(data.seatId == GAMEDATA::getInstance()->getHeroSeatId()&&data.status== 1){
             GAMEDATA::getInstance()->setIsTingState(true);
         }
-        //        if(temp.HasMember("chi")){
-        //            const rapidjson::Value &chi = temp["chi"];
-        //            for(int j = 0; j < chi.Capacity(); ++j){
-        //                const rapidjson::Value &temp2 = chi[j];
-        //                PlayerChiData chiDa;
-        //                chiDa.chi = temp2["chi"].GetString();
-        //                chiDa.poker = temp2["poker"].GetString();
-        //                data.chiData.push_back(chiDa);
-        //            }
-        //        }
         if(temp.HasMember("peng")){
             const rapidjson::Value &peng = temp["peng"];
             for(int j = 0; j < peng.Capacity(); ++j){
