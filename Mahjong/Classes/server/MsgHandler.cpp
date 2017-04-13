@@ -3141,7 +3141,22 @@ void MsgHandler::handleHZPlayerHuNotify(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     PlayerCpgtData cpgData;
     cpgData.hu = 1;
-//    GAMEDATA::getInstance()->setHongZhongHuState(true);
+    if(_mDoc.HasMember("angang")){
+        const rapidjson::Value &angang = _mDoc["angang"];
+        GangData gangData;
+        gangData.gang = angang.GetString();
+        gangData.flag = 1;
+        cpgData.playerGang.push_back(gangData);
+        cpgData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    }
+    if(_mDoc.HasMember("penggang")){
+        const rapidjson::Value &angang = _mDoc["penggang"];
+        GangData gangData;
+        gangData.gang = angang.GetString();
+        gangData.flag = 2;
+        cpgData.playerGang.push_back(gangData);
+        cpgData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    }
     postNotifyMessage(MSG_HZ_GAME_HU_ACTION, &cpgData);
 }
 
@@ -3156,7 +3171,6 @@ void MsgHandler::handleHZPlayerDissovleNotify(std::string msg){
         GAMEDATA::getInstance()->setDissolveName(name);
         GAMEDATA::getInstance()->setIsSelected(false);
     }
-    
 }
 
 void MsgHandler::handleHZDissovleRoomSelectedNotify(std::string msg){
