@@ -2937,7 +2937,7 @@ void MsgHandler::handleHZGameReconnectNotify(std::string msg){
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
     char* buf = const_cast<char*>(StringUtil::itos(seatId.GetInt()).c_str());
-    postNotifyMessage(MSG_PLAYER_CONNECT_AGAIN, buf);
+    postNotifyMessage(MSG_HZ_PLAYER_CONNECT_AGAIN, buf);
 }
 
 void MsgHandler::handleHZPlayerActionNotify(std::string msg){

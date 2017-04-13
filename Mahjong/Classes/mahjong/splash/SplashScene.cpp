@@ -416,7 +416,7 @@ void SplashScene::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(reConnectAgain, 1);
     
-    hzReConnectAgain= EventListenerCustom::create(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+    hzReConnectAgain= EventListenerCustom::create(MSG_HZ_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsRecover(true);
         NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         Director::getInstance()->replaceScene(MjGameScene::create());

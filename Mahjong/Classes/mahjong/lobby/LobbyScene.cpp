@@ -760,7 +760,7 @@ void LobbyScene::addEventListener(){
     });
     
     //断线续玩HZ
-    hzLobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
+    hzLobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         GAMEDATA::getInstance()->setIsRecover(true);
         GAMEDATA::getInstance()->setGameType(3);
         Director::getInstance()->replaceScene(MjGameScene::create());
