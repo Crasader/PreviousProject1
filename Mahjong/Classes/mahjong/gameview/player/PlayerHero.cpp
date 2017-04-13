@@ -252,8 +252,11 @@ void PlayerHero::playPokerByHand(Jong* jong){
     });
     CallFunc* callback2 = CallFunc::create([=](){
         showCurrentPlayedJongIcon(true);
-        for(auto var:getSelfHandJongs()){
-            var->showBackShadow(false);
+        if(GAMEDATA::getInstance()->getGameType() == 1){
+            //打完牌后取消不可出牌的保护
+            for(auto var:getSelfHandJongs()){
+                var->showBackShadow(false);
+            }
         }
     });
     
@@ -286,6 +289,13 @@ void PlayerHero::drawPlayerHero() {
         addChild(playerHandJongs.at(i));
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
+    
+    for(auto protect:playerHandJongs){
+        if(protect->getJongType() == 32){
+            protect->showBackShadow(true);
+        }
+    }
+    
 }
 
 

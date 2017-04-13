@@ -3121,7 +3121,7 @@ void MsgHandler::handleHZPlayerGangNotify(std::string msg){
     gangData.gang = gang.GetString();
     gangData.flag = atoi(flag.GetString());
     cpgData.playerGang.push_back(gangData);
-    postNotifyMessage(MSG_OTHER_PLAYER_GANG, &cpgData);
+    postNotifyMessage(MSG_HZ_PLAYER_GANG, &cpgData);
 }
 
 void MsgHandler::handleHZPlayerCanclePGResp(std::string msg){
