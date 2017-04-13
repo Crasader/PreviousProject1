@@ -289,7 +289,11 @@ void PlayerHero::drawPlayerHero() {
         addChild(playerHandJongs.at(i));
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
-    
+    for(auto protect:playerHandJongs){
+        if(protect->getJongType() == JongEnum::hz){
+            protect->showBackShadow(true);
+        }
+    }
     
 }
 
@@ -696,7 +700,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             playerHandJongs.pushBack(jong);
             currentJong = jong;
             if(GAMEDATA::getInstance()->getGameType() ==3){
-                if(jong->getJongType() == 32){
+                if(jong->getJongType() == JongEnum::hz){
                     jong->showBackShadow(true);
                 }
             }
@@ -1616,6 +1620,11 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
         playerHandJongs.pushBack(jong);
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
+    for(auto protect:playerHandJongs){
+        if(protect->getJongType() == JongEnum::hz){
+            protect->showBackShadow(true);
+        }
+    }
 }
 
 void PlayerHero::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){

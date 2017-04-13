@@ -282,6 +282,9 @@ std::string Jong::getContextImage(int cType){
     std::string imageName;
     switch (cType)
     {
+        case hz:
+            imageName = "jong/zhong.png";
+            break;
         case JongEnum::wan_1:
             imageName = "jong/wan_1.png";
             break;
