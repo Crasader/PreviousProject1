@@ -270,7 +270,7 @@ void HZNormalResultLayer::continueGame(){
         }
     }
     schedule([=](float dt){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getContinueGameCommand());
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayGameAgain());
     }, 0.0f, 0.0f, 0.8f,"delayGame");
 }
 
@@ -296,7 +296,7 @@ void HZNormalResultLayer::updateTime(float dt){
 
 void HZNormalResultLayer::onEnter(){
     Layer::onEnter();
-    continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_CONTINUE_RESP, [=](EventCustom* event){
+    continueAgainLisetner =  EventListenerCustom::create(MSG_HZ_HERO_CONTINUE_RESP, [=](EventCustom* event){
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
             //返回正常可以继续游戏
             GAMEDATA::getInstance()->setContinueAgain(true);

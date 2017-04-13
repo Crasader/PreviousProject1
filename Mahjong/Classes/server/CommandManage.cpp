@@ -564,6 +564,8 @@ std::string CommandManage::getHZPlayerPengCommand(std::string poker,std::string 
     return commandString(keyValue);
 }
 
+
+
 std::string CommandManage::getHZPlayerGangCommand(std::string poker,std::string seatId,std::string gang,std::string flag){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_MAJIANG_GANG_REQUEST)));
@@ -605,6 +607,22 @@ std::string CommandManage::getHZDissolveRoomInGameCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_FRIEND_DISMISS_FZAGREE_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getHZPlayGameAgain(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_MAJIANG_AGAIN_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getHZOutResumeCommand(){
+    std::map<std::string, std::string> keyValue;
+    if("" != UserData::getInstance()->getPoxiaoId() && "unknow" != UserData::getInstance()->getPoxiaoId()){
+        keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_HH_MAJIANG_BACK_OUT_REQUEST)));
+        keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    }
     return commandString(keyValue);
 }
 

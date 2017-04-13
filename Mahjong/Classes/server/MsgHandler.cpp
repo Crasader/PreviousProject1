@@ -424,6 +424,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHZPlayerDissovleNotify(msg);
         }
             break;
+        case MSGCODE_HH_MAJIANG_AGAIN_RESPONSE:{
+            handleHZGameContinueResp(msg);
+        }
+            break;
         default:
             break;
     }
@@ -3003,7 +3007,7 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     if(_mDoc.HasMember("difen")){
         GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
     }
-
+    
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];
     vector<GameResultData> gameResults;
@@ -3150,7 +3154,7 @@ void MsgHandler::handleHZPlayerDissovleNotify(std::string msg){
         GAMEDATA::getInstance()->setDissolveName(name);
         GAMEDATA::getInstance()->setIsSelected(false);
     }
-
+    
 }
 
 void MsgHandler::handleHZDissovleRoomSelectedNotify(std::string msg){
@@ -3168,3 +3172,63 @@ void MsgHandler::handleHZDissovleRoomSelectedNotify(std::string msg){
     GAMEDATA::getInstance()->setDissolveData(data);
     postNotifyMessage(MSG_HZ_DISSOVLE_ROOM_SELECTED_NOTIFY, nullptr);
 }
+
+void MsgHandler::handleHZGameContinueResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    EnterRoomResp resp;
+    const rapidjson::Value &result = _mDoc["result"];
+    resp.result = StringUtil::itos(result.GetInt());
+    
+    if(_mDoc.HasMember("rsid")){
+        const rapidjson::Value &rsid = _mDoc["rsid"];
+        resp.rsid = rsid.GetString();
+    }
+    if(_mDoc.HasMember("money")){
+        const rapidjson::Value &money = _mDoc["money"];
+        resp.money = money.GetString();
+    }
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        resp.gold = gold.GetString();
+    }
+    if(_mDoc.HasMember("id")){
+        const rapidjson::Value &payid = _mDoc["id"];
+        resp.payid = payid.GetString();
+    }
+    if(_mDoc.HasMember("min")){
+        const rapidjson::Value &min = _mDoc["min"];
+        resp.min = min.GetString();
+    }
+    if(_mDoc.HasMember("kb")){
+        const rapidjson::Value &kb = _mDoc["kb"];
+        resp.kb = kb.GetString();
+    }
+    if(_mDoc.HasMember("huangfan")){
+        const rapidjson::Value &huangfan = _mDoc["huangfan"];
+        resp.huangfan = huangfan.GetString();
+    }
+    if(_mDoc.HasMember("all")){
+        const rapidjson::Value &all = _mDoc["all"];
+        for (int i = 0; i < all.Capacity(); ++i){
+            const rapidjson::Value &temp = all[i];
+            PlayerReady ready;
+            if(temp.HasMember("ifready")){
+                ready.ifready = temp["ifready"].GetInt();
+            }
+            if(temp.HasMember("poxiaoId")){
+                ready.poxiaoId = temp["poxiaoId"].GetString();
+            }
+            if(temp.HasMember("seatId")){
+                ready.seatId = temp["seatId"].GetInt();
+            }
+            resp.playerReadys.push_back(ready);
+        }
+    }
+    GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
+    GAMEDATA::getInstance()->setEnterRoomResp(resp);
+    postNotifyMessage(MSG_HZ_HERO_CONTINUE_RESP, nullptr);
+}
+

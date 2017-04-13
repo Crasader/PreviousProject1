@@ -69,7 +69,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 void AppDelegate::applicationDidEnterBackground() {
     log("applicationDidEnterBackground");
     Director::getInstance()->stopAnimation();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOutResumeCommand());
+    if(GAMEDATA::getInstance()->getGameType() == 1){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOutResumeCommand());
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZOutResumeCommand());
+    }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     AudioEngine::pauseAll();
 #endif

@@ -71,6 +71,8 @@ public:
     std::string getHZHuActionCommand(std::string msg);
     std::string getHZDissolveRoomSelectCommand(std::string agree);
     std::string getHZDissolveRoomInGameCommand();
+    std::string getHZPlayGameAgain();
+    std::string getHZOutResumeCommand();
     /** ------------------------------红中麻将协议结束 ------------------- **/
 private:
 	CommandManage();

@@ -90,5 +90,6 @@ private:
     void handleHZPlayerHuNotify(std::string msg);
     void handleHZPlayerDissovleNotify(std::string msg);
     void handleHZDissovleRoomSelectedNotify(std::string msg);
+    void handleHZGameContinueResp(std::string msg);
 };
 #endif
