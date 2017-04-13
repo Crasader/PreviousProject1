@@ -484,12 +484,7 @@ void HongZhongView::showHeroGangUi(Ref* ref){
 void HongZhongView::heroDoPeng(Ref* psend){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    if(GAMEDATA::getInstance()->getGameType() == 1){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(shmjHeroCpgtData.playCpgt.peng, atoi(shmjHeroCpgtData.playCpgt.poker.c_str())));
-    }else{
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerPengCommand(shmjHeroCpgtData.playCpgt.poker.c_str(), StringUtils::format("%d",GAMEDATA::getInstance()->getHeroSeatId()), shmjHeroCpgtData.playCpgt.peng));
-    }
-    
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerPengCommand(shmjHeroCpgtData.playCpgt.poker.c_str(), StringUtils::format("%d",GAMEDATA::getInstance()->getHeroSeatId()), shmjHeroCpgtData.playCpgt.peng));
 }
 
 void HongZhongView::heroDoGang(Ref* psend){
@@ -510,12 +505,7 @@ void HongZhongView::heroDoGang(Ref* psend){
     }
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    if(GAMEDATA::getInstance()->getGameType() == 1){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(StringUtils::format("%d",tag), tag, gangData.flag));
-    }else if(GAMEDATA::getInstance()->getGameType() == 3){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerGangCommand(StringUtils::format("%d",tag), StringUtils::format("%d",GAMEDATA::getInstance()->getHeroSeatId()), StringUtils::format("%d",tag), StringUtils::format("%d",gangData.flag)));
-    }
-    
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerGangCommand(StringUtils::format("%d",tag), StringUtils::format("%d",GAMEDATA::getInstance()->getHeroSeatId()), StringUtils::format("%d",tag), StringUtils::format("%d",gangData.flag)));
 }
 
 void HongZhongView::heroDoCpgQi(){

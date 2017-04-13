@@ -693,7 +693,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         }, 0, 0, 0.6f*replace.size(),"hua2pokerdelay");
     }
     else{
-        if(data.poker>0){
+        if(data.poker>=0){
             Jong* jong = Jong::create();
             jong->showJong(herohand, data.poker);
             addChild(jong);
