@@ -43,7 +43,7 @@ bool FriendRoom::init()
     addChild(hongZhong);
     
     vertical = Sprite::create("openroom/vertical_line_1.png");
-    vertical->setPosition(380,385);
+    vertical->setPosition(385,385);
     addChild(vertical);
     
     auto fangka8 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka8, this));
@@ -196,18 +196,33 @@ bool FriendRoom::init()
     addChild(di2Img);
     di2Img->setVisible(false);
     
-    auto di10 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectDifen10, this));
-    auto di10Menu = Menu::create(di10,NULL);
-    di10Menu->setTag(5025);
-    di10Menu->setPosition(740,245);
-    addChild(di10Menu);
-    di10Menu->setVisible(false);
+    auto di1 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectDifen1, this));
+    auto di1Menu = Menu::create(di1,NULL);
+    di1Menu->setTag(5025);
+    di1Menu->setPosition(740,245);
+    addChild(di1Menu);
+    di1Menu->setVisible(false);
     
-    auto di10Img = Sprite::create("friend/icon_right.png");
-    di10Img->setTag(5026);
-    di10Img->setPosition(740,245);
-    addChild(di10Img);
-    di10Img->setVisible(false);
+    auto di1Img = Sprite::create("friend/icon_right.png");
+    di1Img->setTag(5026);
+    di1Img->setPosition(740,245);
+    addChild(di1Img);
+    di1Img->setVisible(false);
+    
+    
+    auto di5 = MenuItemImage::create("friend/select_box_normal.png","friend/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectDifen5, this));
+    auto di5Menu = Menu::create(di5,NULL);
+    di5Menu->setTag(5027);
+    di5Menu->setPosition(940,245);
+    addChild(di5Menu);
+    di5Menu->setVisible(false);
+    
+    auto di5Img = Sprite::create("friend/icon_right.png");
+    di5Img->setTag(5028);
+    di5Img->setPosition(940,245);
+    addChild(di5Img);
+    di5Img->setVisible(false);
+
     
     /** --------------------------红中麻将选择界面ui显示结束-------------------------- **/
     
@@ -290,6 +305,8 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
         getChildByTag(5024)->setVisible(false);
         getChildByTag(5025)->setVisible(false);
         getChildByTag(5026)->setVisible(false);
+        getChildByTag(5027)->setVisible(false);
+        getChildByTag(5028)->setVisible(false);
     }
     if(hongZhong->getBoundingBox().containsPoint(touch->getLocation())){
         shangHaiSelected = false;
@@ -313,6 +330,7 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
         getChildByTag(5023)->setVisible(true);
         getChildByTag(5024)->setVisible(true);
         getChildByTag(5025)->setVisible(true);
+        getChildByTag(5027)->setVisible(true);
     }
 }
 
@@ -371,7 +389,10 @@ void FriendRoom::openRoom(){
             difen = "2";
         }
         if(NULL != getChildByTag(5026)&&getChildByTag(5026)->isVisible()){
-            difen = "10";
+            difen = "1";
+        }
+        if(NULL != getChildByTag(5028)&&getChildByTag(5028)->isVisible()){
+            difen = "5";
         }
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterHongZhongCommand(ftype, fanma,difen));
     }
@@ -497,15 +518,34 @@ void FriendRoom::selectDifen2(){
     if(NULL != getChildByTag(5026)){
         getChildByTag(5026)->setVisible(false);
     }
+    if(NULL != getChildByTag(5028)){
+        getChildByTag(5028)->setVisible(false);
+    }
 }
 
 
-void FriendRoom::selectDifen10(){
+void FriendRoom::selectDifen1(){
     if(NULL != getChildByTag(5024)){
         getChildByTag(5024)->setVisible(false);
     }
     if(NULL != getChildByTag(5026)){
         getChildByTag(5026)->setVisible(true);
+    }
+    
+    if(NULL != getChildByTag(5028)){
+        getChildByTag(5028)->setVisible(false);
+    }
+}
+
+void FriendRoom::selectDifen5(){
+    if(NULL != getChildByTag(5024)){
+        getChildByTag(5024)->setVisible(false);
+    }
+    if(NULL != getChildByTag(5026)){
+        getChildByTag(5026)->setVisible(false);
+    }
+    if(NULL != getChildByTag(5028)){
+        getChildByTag(5028)->setVisible(true);
     }
 }
 

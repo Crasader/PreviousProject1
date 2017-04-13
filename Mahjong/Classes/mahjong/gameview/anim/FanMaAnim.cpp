@@ -23,6 +23,7 @@ bool FanMaAnim::init(std::vector<std::string> mas){
     if(!Layer::init()){
         return false;
     }
+   
     
     auto animStep1 = CallFunc::create([=](){
         auto text  = Sprite::create();
@@ -34,29 +35,26 @@ bool FanMaAnim::init(std::vector<std::string> mas){
     auto animStep2 = DelayTime::create(1.0f);
     
     auto animSetp3 = CallFunc::create([=](){
-        for(int i=0;i<mas.size();i++){
-            auto anim = Sprite::create();
-            anim->setPosition(640-65*mas.size()/2+i*65,360);
-            addChild(anim);
-            showFanPai(anim);
-        }
+        auto anim = Sprite::create();
+        anim->setPosition(640-65*mas.size()/2+index*65,360);
+        addChild(anim);
+        showFanPai(anim);
     });
     
      auto animStep4  = DelayTime::create(1.0f);
     
     auto animStep5 = CallFunc::create([=](){
-        for(int i=0;i<mas.size();i++){
-            Jong* bigJong = Jong::create();
-            bigJong->showJong(playedshow, atoi(mas.at(i).c_str()));
-            bigJong->setPosition(640-65*mas.size()/2+i*65,360);
-            addChild(bigJong);
-        }
+        Jong* bigJong = Jong::create();
+        bigJong->showJong(playedshow, atoi(mas.at(index).c_str()));
+        bigJong->setPosition(640-65*mas.size()/2+index*65,360);
+        addChild(bigJong);
+        index++;
     });
     
     auto seq =Sequence::create(animStep1,animStep2, animSetp3,animStep4,animStep5,NULL);
     auto shuzhu = Sprite::create();
     addChild(shuzhu);
-    shuzhu->runAction(seq);
+    shuzhu->runAction(Repeat::create(seq, mas.size()));
     
     return  true;
 }

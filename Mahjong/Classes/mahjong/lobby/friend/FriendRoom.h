@@ -33,6 +33,7 @@ private:
     void selectMa159();
     void selectMa1();
     void selectDifen2();
-    void selectDifen10();
+    void selectDifen1();
+    void selectDifen5();
 };
 #endif

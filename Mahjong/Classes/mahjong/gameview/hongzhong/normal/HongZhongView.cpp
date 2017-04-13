@@ -117,10 +117,9 @@ void HongZhongView::loadView(){
             hzma->setTexture("gameview/hz_ma_1.png");
         }
         auto difen = Sprite::create("gameview/hz_di_2.png");
+        difen->setTexture(StringUtils::format("gameview/hz_di_%s.png",GAMEDATA::getInstance()->getHZDiFen().c_str()));
         addChild(difen);
-        if(GAMEDATA::getInstance()->getHZDiFen() == "10"){
-            difen->setTexture("gameview/hz_di_10.png");
-        }
+        
         int wid = hzma->getContentSize().width +(difen->getContentSize().width);
         hzma->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
         hzma->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
@@ -159,16 +158,6 @@ void HongZhongView::startGameAgain(){
         if(players.at(i)->getSeatId() ==  GAMEDATA::getInstance()->getHeroSeatId()){
             players.at(i)->setIsReady(true);
         }
-    }
-    if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
-        GAMEDATA::getInstance()->setKaibao("1");
-    }else{
-        GAMEDATA::getInstance()->setKaibao("0");
-    }
-    if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
-        GAMEDATA::getInstance()->setHuangfan("1");
-    }else{
-        GAMEDATA::getInstance()->setHuangfan("0");
     }
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
     ((Orientation*)getChildByTag(123))->resetBank();
@@ -257,7 +246,6 @@ void HongZhongView::updatePlayerView(int type, Player* playerInfo){
             playerLeft->initPlayer(playerInfo);
             playerLeft->setIsReady(playerInfo->getIsReady());
             addChild(playerLeft,1);
-            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
     else if (type == ClientSeatId::right){
@@ -266,7 +254,6 @@ void HongZhongView::updatePlayerView(int type, Player* playerInfo){
             playerRight->initPlayer(playerInfo);
             playerRight->setIsReady(playerInfo->getIsReady());
             addChild(playerRight,1);
-            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
     else if (type == ClientSeatId::opposite){
@@ -275,7 +262,6 @@ void HongZhongView::updatePlayerView(int type, Player* playerInfo){
             playerOpposite->initPlayer(playerInfo);
             playerOpposite->setIsReady(playerInfo->getIsReady());
             addChild(playerOpposite,1);
-            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
 }
