@@ -378,7 +378,7 @@ void HongZhongView::drawCpgControllPad(PlayerCpgtData newData){
     controllPad->setVisible(true);
 }
 
-void HongZhongView::showTingGangControllPad(PlayerCpgtData tingData){
+void HongZhongView::showHuGangControllPad(PlayerCpgtData tingData){
     shmjHeroCpgtData.playCpgt = tingData;
     playerHero->stopTimeClockAnim();
     controllPad->removeAllChildrenWithCleanup(true);
@@ -386,11 +386,18 @@ void HongZhongView::showTingGangControllPad(PlayerCpgtData tingData){
     qi->setPosition(Point(0, 0));
     controllPad->addChild(qi);
     MenuItemImage* ting = nullptr;
+    MenuItemImage* gang = nullptr;
     int buttonCount = 1;
     if (tingData.hu == 1){
         ting = MenuItemImage::create("gameview/hz_hu_btn.png", "gameview/hz_hu_btn.png", CC_CALLBACK_0(HongZhongView::playerApplyHu, this));
         ting->setPosition(Point(-buttonCount * 140, 0));
         controllPad->addChild(ting);
+        buttonCount++;
+    }
+    if (tingData.playerGang.size()>0){
+        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(HongZhongView::showHeroGangUi, this));
+        gang->setPosition(Point(-buttonCount * 160, 0));
+        controllPad->addChild(gang);
         buttonCount++;
     }
     controllPad->setVisible(true);
@@ -399,7 +406,7 @@ void HongZhongView::showTingGangControllPad(PlayerCpgtData tingData){
     playerHero->startTimeClockAnim(9, 2);
 }
 
-void HongZhongView::hideTingGangControllPad(){
+void HongZhongView::hideHuGangControllPad(){
     controllPad->setVisible(false);
     choiceMenu->removeAllChildren();
     choiceMenu->setVisible(false);
@@ -421,7 +428,7 @@ void HongZhongView::removeHeroPlayedIcon(){
 
 
 void HongZhongView::playerApplyHu(){
-    hideTingGangControllPad();
+    hideHuGangControllPad();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("1"));
 }
 
@@ -758,7 +765,7 @@ void HongZhongView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
             }else if(clientId == ClientSeatId::hero){
                 if(data.playerGang.size()>0||data.ting!=""){
                     if (data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-                        showTingGangControllPad(data);
+                        showHuGangControllPad(data);
                         playerHero->startTimeClockAnim(9, 2);
                     }
                 }else{
@@ -1285,24 +1292,24 @@ void HongZhongView::onEnter(){
         setCurrentJongVisible(newData.sId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
         if (seatId == ClientSeatId::left){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerLeft->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerRight->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
         }else if (seatId == ClientSeatId::hero){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             HeroCpgRespData heroCpgData;
             heroCpgData.result = 1;
             heroCpgData.playCpgt = newData;
@@ -1320,21 +1327,21 @@ void HongZhongView::onEnter(){
         setCurrentJongVisible(newData.sId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
         if (seatId == ClientSeatId::left){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerLeft->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerRight->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
         else if (seatId == ClientSeatId::opposite){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerOpposite->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
         }else if (seatId == ClientSeatId::hero){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             HeroCpgRespData heroTingData;
             heroTingData.result = 1;
             heroTingData.playCpgt = newData;
@@ -1349,7 +1356,7 @@ void HongZhongView::onEnter(){
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
         //TODO  显示胡牌按钮
         PlayerCpgtData temp = *data;
-        showTingGangControllPad(temp);
+        showHuGangControllPad(temp);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playeHuActionListener, 1);
     
@@ -1364,7 +1371,7 @@ void HongZhongView::onEnter(){
         HeroCpgRespData* cpgtData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData newData = *cpgtData;
         if (newData.playCpgt.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-            showTingGangControllPad(newData.playCpgt);
+            showHuGangControllPad(newData.playCpgt);
             playerHero->startTimeClockAnim(9, 2);
         }
     });

@@ -3141,6 +3141,7 @@ void MsgHandler::handleHZPlayerHuNotify(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     PlayerCpgtData cpgData;
     cpgData.hu = 1;
+//    GAMEDATA::getInstance()->setHongZhongHuState(true);
     postNotifyMessage(MSG_HZ_GAME_HU_ACTION, &cpgData);
 }
 

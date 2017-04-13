@@ -35,8 +35,8 @@ class HongZhongView : public Layer{
     virtual void onEnter() override;
     virtual void onExit() override;
     void onEnterTransitionDidFinish() override;
-    void showTingGangControllPad(PlayerCpgtData cpg);
-    void hideTingGangControllPad();
+    void showHuGangControllPad(PlayerCpgtData cpg);
+    void hideHuGangControllPad();
     void showGuiLayer();
     void startGameAgain();
     void startGameFirst();
