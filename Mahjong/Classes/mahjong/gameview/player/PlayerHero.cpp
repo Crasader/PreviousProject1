@@ -708,11 +708,11 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             settleHandJongs(getHandPosX());
         }
         
-        if(data.hastinggang){
+        if(GAMEDATA::getInstance()->getGameType() == 1 && data.hastinggang){
             ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
         }
         
-        if(GAMEDATA::getInstance()->getGameType() == 3 && data.cpgData.hu == 1){
+        if(GAMEDATA::getInstance()->getGameType() == 3 && (data.cpgData.hu == 1 ||data.hastinggang)){
             ((HongZhongView*)getParent())->showHuGangControllPad(cpgData);
         }
         
