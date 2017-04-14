@@ -1631,9 +1631,11 @@ void HongZhongView::onEnter(){
             }
             
             schedule([=](float dt){
-                vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
-                FanMaAnim* fan = FanMaAnim::create(ma);
-                addChild(fan);
+                if(GAMEDATA::getInstance()->getFanMa() == ""){
+                    vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
+                    FanMaAnim* fan = FanMaAnim::create(ma);
+                    addChild(fan);
+                }
             },0,0,5.0f,"fanma");
             
             schedule([=](float dt){
