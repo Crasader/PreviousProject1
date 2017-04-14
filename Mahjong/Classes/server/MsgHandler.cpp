@@ -2993,6 +2993,8 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     
     if(_mDoc.HasMember("ma")){
         GAMEDATA::getInstance()->setFanMa(_mDoc["ma"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setFanMa("");
     }
     
     if(_mDoc.HasMember("fanma")){
