@@ -1299,7 +1299,7 @@ void HongZhongView::onEnter(){
             HeroCpgRespData heroCpgData;
             heroCpgData.result = 1;
             heroCpgData.playCpgt = newData;
-            playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newData.sId));
+            playerHero->drawHeroPeng(heroCpgData, getPlayerBySeatId(newData.sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
         }
         
@@ -1331,7 +1331,7 @@ void HongZhongView::onEnter(){
             HeroCpgRespData heroTingData;
             heroTingData.result = 1;
             heroTingData.playCpgt = newData;
-            playerHero->drawHeroGangMingpai(heroTingData, getPlayerBySeatId(newData.sId));
+            playerHero->drawHeroGang(heroTingData, getPlayerBySeatId(newData.sId));
             playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
         }
         

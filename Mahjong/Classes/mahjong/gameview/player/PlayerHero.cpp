@@ -268,7 +268,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
 void PlayerHero::drawPlayerHero() {
     std::vector<std::string> strvce = GAMEDATA::getInstance()->getHeroJongs();
     for (int t = 0; t < strvce.size(); t++) {
-        if (t < -1){
+        if (t < 3){
             Jong* jong = Jong::create();
             jong->showJong(herohand, 1);
             playerHandJongs.pushBack(jong);
@@ -1107,23 +1107,33 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
             }
             setCpgPostionX(getCpgPostionX()+170);
         });
+        
+        DelayTime* delay2 = DelayTime::create(0.3f);
+        
+        CallFunc* action3 = CallFunc::create([=](){
+            int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), resp.playCpgt.sId);
+            if( clientId == ClientSeatId::left){
+                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                arrow->setRotation(90);
+                addChild(arrow,20);
+            }else if( clientId == ClientSeatId::opposite){
+                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                arrow->setRotation(180);
+                addChild(arrow,20);
+            }else if( clientId == ClientSeatId::right){
+                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                arrow->setRotation(270);
+                addChild(arrow,20);
+            }
+        });
+        
         auto spriteAnim = Sprite::create();
         addChild(spriteAnim);
-        spriteAnim->runAction(Sequence::create(action1, delay, action2, NULL));
-        int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), resp.playCpgt.sId);
-        if( clientId == ClientSeatId::left){
-            auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-            arrow->setPosition(gangVector.at(3)->getPosition());
-            addChild(arrow);
-        }else if( clientId == ClientSeatId::opposite){
-            auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-            arrow->setPosition(gangVector.at(3)->getPosition());
-            addChild(arrow);
-        }else if( clientId == ClientSeatId::right){
-            auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-            arrow->setPosition(gangVector.at(3)->getPosition());
-            addChild(arrow);
-        }
+        spriteAnim->runAction(Sequence::create(action1, delay, action2,delay2,action3, NULL));
+        
         
         if (resp.result == 2 && resp.playCpgt.ting != ""){
             PlayerCpgtData tingData;
