@@ -1,5 +1,6 @@
 #include "mahjong/gameview/player/PlayerHero.h"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
+#include "mahjong/gameview/hongzhong/normal/HongZhongView.hpp"
 #include "mahjong/gameview/widget/HuPaiHintLayer.hpp"
 #include "mahjong/gameview/anim/HuaAnim.hpp"
 #include "mahjong/common/utils/StringUtil.h"
@@ -710,6 +711,11 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         if(data.hastinggang){
             ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
         }
+        
+        if(GAMEDATA::getInstance()->getGameType() == 3 && data.cpgData.hu == 1){
+            ((HongZhongView*)getParent())->showHuGangControllPad(cpgData);
+        }
+        
         if (!(GAMEDATA::getInstance()->getIsTingState())){
             setIsAllowPlay(true);
         }
@@ -1591,6 +1597,25 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 }
                 this->addChild(jong,10);
                 record.pokersRecord.pushBack(jong);
+            }
+            if(atoi(gang.at(i).gaId.c_str()) != 0){
+                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),atoi(gang.at(i).gaId.c_str()));
+                if( clientId == ClientSeatId::left){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgPostionX()+50,120);
+                    arrow->setRotation(90);
+                    addChild(arrow,20);
+                }else if( clientId == ClientSeatId::opposite){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgPostionX()+50,120);
+                    arrow->setRotation(180);
+                    addChild(arrow,20);
+                }else if( clientId == ClientSeatId::right){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgPostionX()+50,120);
+                    arrow->setRotation(270);
+                    addChild(arrow,20);
+                }
             }
             playerCpgRecords.push_back(record);
             setHandPosX(getHandPosX() + JONG_WIDTH * 3);

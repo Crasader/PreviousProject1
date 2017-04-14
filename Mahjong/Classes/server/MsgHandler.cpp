@@ -2806,6 +2806,9 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
             tingData.heroHu.push_back(huPaiData);
         }
     }
+    if(_mDoc.HasMember("hu")){
+        tingData.hu = 1;//红中麻将可胡
+    }
     playerTurnData.cpgData = tingData;
     postNotifyMessage(MSG_HZ_PLAYER_TURN_WHO, &playerTurnData);
 }
