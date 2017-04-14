@@ -269,7 +269,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
 void PlayerHero::drawPlayerHero() {
     std::vector<std::string> strvce = GAMEDATA::getInstance()->getHeroJongs();
     for (int t = 0; t < strvce.size(); t++) {
-        if (t < 3){
+        if (t < -3){
             Jong* jong = Jong::create();
             jong->showJong(herohand, 1);
             playerHandJongs.pushBack(jong);

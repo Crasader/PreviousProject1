@@ -2571,6 +2571,7 @@ void MsgHandler::handleHongZhongEnterRoom(std::string msg){
             GAMEDATA::getInstance()->addPlayersInfo(info);
         }
     }
+    GAMEDATA::getInstance()->setGameType(3);
     Player* info = new Player();
     info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
     info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
@@ -2670,6 +2671,7 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     info->setUmark(UserData::getInstance()->getMarkId());
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
+    GAMEDATA::getInstance()->setGameType(3);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
     postNotifyMessage(MSG_HZ_ENTER_FRIEND_ROOM_RESP, buf);
     

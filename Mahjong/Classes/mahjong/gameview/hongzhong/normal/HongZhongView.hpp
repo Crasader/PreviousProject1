@@ -71,8 +71,8 @@ class HongZhongView : public Layer{
     void drawCpgControllPad(PlayerCpgtData cpg);
     void playerApplyHu();
     void showHeroGangUi(Ref* ref);
-    void heroDoPeng(Ref* psend);
-    void heroDoGang(Ref* psend);
+    void heroDoHZPeng(Ref* psend);
+    void heroDoHZGang(Ref* psend);
     void heroDoCpgQi();
     void heroDoQiHu();
     void setCurrentJongVisible(int seatId);

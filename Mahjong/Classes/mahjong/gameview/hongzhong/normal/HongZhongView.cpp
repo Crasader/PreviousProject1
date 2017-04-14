@@ -31,7 +31,6 @@
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
-//#include "youmi/MyIM.h"
 
 bool HongZhongView::init(){
     if (!Layer::init())
@@ -106,8 +105,7 @@ void HongZhongView::loadView(){
     SoundRecordBtn* soun = SoundRecordBtn::create();
     addChild(soun,5);
     
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom
-       && GAMEDATA::getInstance()->getGameType() == 3){
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         //码和低分
         auto hzma  = Sprite::create("gameview/hz_ma_159zh.png");
         addChild(hzma);
@@ -351,7 +349,7 @@ void HongZhongView::drawCpgControllPad(PlayerCpgtData newData){
     MenuItemImage* gang = nullptr;
     int buttonCount = 1;
     if (newData.peng != ""){
-        peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_1(HongZhongView::heroDoPeng, this));
+        peng = MenuItemImage::create("gameview/mj_peng.png", "gameview/mj_peng.png", CC_CALLBACK_1(HongZhongView::heroDoHZPeng, this));
         peng->setPosition(Point(-buttonCount * 160, 0));
         controllPad->addChild(peng);
         buttonCount++;
@@ -454,7 +452,7 @@ void HongZhongView::showHeroGangUi(Ref* ref){
                 choiceMenu->setVisible(true);
                 choiceMenu->addChild(chibg);
                 std::string imageName = Jong::getContextImage(atoi(allGangs.at(i).c_str()));
-                MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(HongZhongView::heroDoGang, this));
+                MenuItemImage* imageItem = MenuItemImage::create(imageName, imageName, CC_CALLBACK_1(HongZhongView::heroDoHZGang, this));
                 imageItem->setTag(atoi(allGangs.at(i).c_str()));
                 imageItem->setPosition(1000 + l * 40 - i * 170, 160);
                 imageItem->setScale(0.5f);
@@ -468,19 +466,19 @@ void HongZhongView::showHeroGangUi(Ref* ref){
     else{
         MenuItemImage* imageItem = MenuItemImage::create();
         imageItem->setTag(atoi(allGangs.at(0).c_str()));
-        heroDoGang(imageItem);
+        heroDoHZGang(imageItem);
     }
 }
 
 
 
-void HongZhongView::heroDoPeng(Ref* psend){
+void HongZhongView::heroDoHZPeng(Ref* psend){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerPengCommand(shmjHeroCpgtData.playCpgt.poker.c_str(), StringUtils::format("%d",GAMEDATA::getInstance()->getHeroSeatId()), shmjHeroCpgtData.playCpgt.peng));
 }
 
-void HongZhongView::heroDoGang(Ref* psend){
+void HongZhongView::heroDoHZGang(Ref* psend){
     if (NULL != choiceMenu){
         choiceMenu->setVisible(false);
         choiceMenu->removeAllChildren();
@@ -511,8 +509,11 @@ void HongZhongView::heroDoCpgQi(){
 void HongZhongView::heroDoQiHu(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("0"));
     playerHero->startTimeClockAnim();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("0"));
+    playerHero->setIsAllowPlay(true);
+    playerHero->setIsAllowTouch(true);
+    
 }
 
 
