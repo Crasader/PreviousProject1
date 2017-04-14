@@ -68,6 +68,27 @@ bool HZPlayerResultCell::init(GameResultData data){
     auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 40, 64, '0');
     addChild(resultNum);
     
+    if(data.gangfen !=""){
+        auto gangfenText = Sprite::create("result/gang_fen.png");
+        gangfenText->setPosition(160,20);
+        addChild(gangfenText);
+        
+        int fen = atoi(data.gangfen.c_str());
+        auto fuhao = Sprite::create();
+        if(fen>0){
+             fuhao->setTexture("result/gang_fen_jia.png");
+        }else{
+            fuhao->setTexture("result/gang_fen_jian.png");
+        }
+        fuhao->setPosition(200,20);
+        addChild(fuhao);
+        
+        
+        auto juNum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
+        juNum->setPosition(210,10);
+        addChild(juNum);
+    }
+    
     std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
     bool win = false;
     if(data.result == 1||data.result == 3){
@@ -103,20 +124,6 @@ bool HZPlayerResultCell::init(GameResultData data){
             hutype->setColor(Color3B(230,215,30));
             hutype->setPosition(-60,15);
             addChild(hutype);
-        }
-        if(data.gangfen !=""){
-            auto gangfenText = Sprite::create("result/gang_fen.png");
-            gangfenText->setPosition(160,20);
-            addChild(gangfenText);
-            
-            auto fuhao = Sprite::create();
-            fuhao->setTexture("result/gang_fen_jia.png");
-            fuhao->setPosition(200,20);
-            addChild(fuhao);
-            
-            auto juNum = LabelAtlas::create(StringUtils::format("%s",data.gangfen.c_str()),"result/ju_num.png" , 16, 22, '0');
-            juNum->setPosition(210,10);
-            addChild(juNum);
         }
         //胡的玩家需要单独排序
         vector<std::string>::iterator itor;
