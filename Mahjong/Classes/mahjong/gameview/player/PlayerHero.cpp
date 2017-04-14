@@ -1110,6 +1110,21 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
         auto spriteAnim = Sprite::create();
         addChild(spriteAnim);
         spriteAnim->runAction(Sequence::create(action1, delay, action2, NULL));
+        int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), resp.playCpgt.sId);
+        if( clientId == ClientSeatId::left){
+            auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+            arrow->setPosition(gangVector.at(3)->getPosition());
+            addChild(arrow);
+        }else if( clientId == ClientSeatId::opposite){
+            auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+            arrow->setPosition(gangVector.at(3)->getPosition());
+            addChild(arrow);
+        }else if( clientId == ClientSeatId::right){
+            auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+            arrow->setPosition(gangVector.at(3)->getPosition());
+            addChild(arrow);
+        }
+        
         if (resp.result == 2 && resp.playCpgt.ting != ""){
             PlayerCpgtData tingData;
             tingData.ting = resp.playCpgt.ting;

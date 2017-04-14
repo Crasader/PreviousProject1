@@ -31,7 +31,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-//    drawTestButton();
+    drawTestButton();
     scheduleUpdate();
 }
 

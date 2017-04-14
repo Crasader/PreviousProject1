@@ -102,13 +102,9 @@ void HZNormalResultLayer::showRoomInfo(){
         }
         
         auto difen = Sprite::create();
+        difen->setTexture(StringUtils::format("result/difen_%s.png",GAMEDATA::getInstance()->getHZDiFen().c_str()));
         addChild(difen);
-        if(GAMEDATA::getInstance()->getHZDiFen() == "2"){
-            //有乐子
-            difen->setTexture("result/difen_2.png");
-        }else{
-            difen->setTexture("result/difen_10.png");
-        }
+
         auto jucount = Sprite::create();
         addChild(jucount);
         

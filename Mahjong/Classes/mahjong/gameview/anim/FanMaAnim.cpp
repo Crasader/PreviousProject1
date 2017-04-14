@@ -36,25 +36,27 @@ bool FanMaAnim::init(std::vector<std::string> mas){
     
     auto animSetp3 = CallFunc::create([=](){
         auto anim = Sprite::create();
-        anim->setPosition(640-65*mas.size()/2+index*65,360);
+        anim->setPosition(640-70*mas.size()/2+index*70,360);
         addChild(anim);
         showFanPai(anim);
     });
     
-     auto animStep4  = DelayTime::create(1.0f);
+    auto animStep4  = DelayTime::create(0.75f);
     
     auto animStep5 = CallFunc::create([=](){
         Jong* bigJong = Jong::create();
         bigJong->showJong(playedshow, atoi(mas.at(index).c_str()));
-        bigJong->setPosition(640-65*mas.size()/2+index*65,360);
+        bigJong->setPosition(640-70*mas.size()/2+index*70,360);
+        bigJong->setScale(0.9);
         addChild(bigJong);
         index++;
     });
     
-    auto seq =Sequence::create(animStep1,animStep2, animSetp3,animStep4,animStep5,NULL);
+    auto seq1 =Sequence::create(animSetp3,animStep4,animStep5,NULL);
+    auto seq2 =Sequence::create(animStep1,animStep2,Repeat::create(seq1, mas.size()),NULL);
     auto shuzhu = Sprite::create();
     addChild(shuzhu);
-    shuzhu->runAction(Repeat::create(seq, mas.size()));
+    shuzhu->runAction(seq2);
     
     return  true;
 }
@@ -92,7 +94,7 @@ void FanMaAnim::showFanPai(Sprite* sprite){
         animation->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(2.0f / 24.0f);
+    animation->setDelayPerUnit(3.0f / 24.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action,CallFunc::create([=](){
