@@ -1602,17 +1602,17 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),atoi(gang.at(i).gaId.c_str()));
                 if( clientId == ClientSeatId::left){
                     auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                    arrow->setPosition(getCpgPostionX()+50,120);
+                    arrow->setPosition(getCpgPostionX()+84,55);
                     arrow->setRotation(90);
                     addChild(arrow,20);
                 }else if( clientId == ClientSeatId::opposite){
                     auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                    arrow->setPosition(getCpgPostionX()+50,120);
+                    arrow->setPosition(getCpgPostionX()+84,55);
                     arrow->setRotation(180);
                     addChild(arrow,20);
                 }else if( clientId == ClientSeatId::right){
                     auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                    arrow->setPosition(getCpgPostionX()+50,120);
+                    arrow->setPosition(getCpgPostionX()+84,55);
                     arrow->setRotation(270);
                     addChild(arrow,20);
                 }
