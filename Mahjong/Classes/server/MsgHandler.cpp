@@ -2791,7 +2791,10 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
         gangData.flag = 2;
         tingData.playerGang.push_back(gangData);
     }
-    if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
+    if(_mDoc.HasMember("hu")){
+        tingData.hu = 1;//红中麻将可胡
+    }
+    if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")||_mDoc.HasMember("hu")){
         playerTurnData.hastinggang = true;
     }
     if (_mDoc.HasMember("ting1")){
@@ -2807,9 +2810,6 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
             }
             tingData.heroHu.push_back(huPaiData);
         }
-    }
-    if(_mDoc.HasMember("hu")){
-        tingData.hu = 1;//红中麻将可胡
     }
     playerTurnData.cpgData = tingData;
     postNotifyMessage(MSG_HZ_PLAYER_TURN_WHO, &playerTurnData);
