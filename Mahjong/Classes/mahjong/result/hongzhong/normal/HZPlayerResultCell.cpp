@@ -87,6 +87,8 @@ bool HZPlayerResultCell::init(GameResultData data){
         auto juNum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
         juNum->setPosition(210,10);
         addChild(juNum);
+    }else{
+        log("GangFen is null");
     }
     
     std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
