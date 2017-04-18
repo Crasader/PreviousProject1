@@ -1614,7 +1614,7 @@ void HongZhongView::onEnter(){
                     log("HongZhong Mahjong FanMa %s",GAMEDATA::getInstance()->getFanMa().c_str());
                     vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
                     FanMaAnim* fan = FanMaAnim::create(ma);
-                    addChild(fan);
+                    addChild(fan,20);
                 }
             },0,0,4.0f,"fanma");
             
