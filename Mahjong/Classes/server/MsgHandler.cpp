@@ -2153,6 +2153,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     info->setUmark(UserData::getInstance()->getMarkId());
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
+    GAMEDATA::getInstance()->setGameType(1);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, nullptr);
 }
 
@@ -2244,6 +2245,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     info->setUmark(UserData::getInstance()->getMarkId());
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
+    GAMEDATA::getInstance()->setGameType(1);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
     postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP, buf);
 }
