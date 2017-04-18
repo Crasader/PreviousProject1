@@ -92,7 +92,7 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
     bool win = false;
-    if(data.result == 1||data.result == 3){
+    if(data.jifendelta>0){
         win = true;
         spritebg->setTexture("result/jie_suan_lan_suc.png");
         nickName->setColor(Color3B(230,215,30));
@@ -150,7 +150,7 @@ bool HZPlayerResultCell::init(GameResultData data){
     }else{
         resultNum->setTexture(texture2);
     }
-    resultNum->setString(StringUtils::format(":%d",data.jifendelta));
+    resultNum->setString(StringUtils::format(":%d",abs(data.jifendelta)));
     
     //在展示的牌前加上吃碰杠的显示
     std::vector<std::vector<std::string>> finalShowPoker;

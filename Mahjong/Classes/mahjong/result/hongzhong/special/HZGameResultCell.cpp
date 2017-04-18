@@ -73,7 +73,7 @@ bool HZGameResultCell::init(GameResultData data){
         addChild(title,30);
     }
     
-    if(data.jifen>0){
+    if(data.jifen>=0){
         bg->setTexture("result/win_game_bg.png");
         Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_win_num.png");
         resultNum->setTexture(texture);
