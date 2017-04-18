@@ -76,7 +76,7 @@ bool HZPlayerResultCell::init(GameResultData data){
         int fen = atoi(data.gangfen.c_str());
         auto fuhao = Sprite::create();
         if(fen>=0){
-             fuhao->setTexture("result/gang_fen_jia.png");
+            fuhao->setTexture("result/gang_fen_jia.png");
         }else{
             fuhao->setTexture("result/gang_fen_jian.png");
         }
@@ -97,13 +97,6 @@ bool HZPlayerResultCell::init(GameResultData data){
         spritebg->setTexture("result/jie_suan_lan_suc.png");
         nickName->setColor(Color3B(230,215,30));
         idNumber->setColor(Color3B(230,215,30));
-        Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_win_num.png");
-        resultNum->setTexture(texture);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            resultNum->setString(StringUtils::format(":%d",data.jifendelta));
-        }else{
-            resultNum->setString(StringUtils::format(":%d",data.golddelta));
-        }
         
         if (data.huType != ""){
             std::vector<std::string> hutypeInfo = StringUtil::split(data.huType, ",");
@@ -149,19 +142,16 @@ bool HZPlayerResultCell::init(GameResultData data){
     }else{
         win = false;
         spritebg->setTexture("result/jie_suan_lan_fai.png");
-        Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_lose_num.png");
-        resultNum->setTexture(texture);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            resultNum->setString(StringUtils::format(":%d",abs(data.jifendelta)));
-        }else{
-            resultNum->setString(StringUtils::format(":%d",abs(data.golddelta)));
-        }
-        if(data.result == 2){
-            auto chuchong = Sprite::create("result/chuchong.png");
-            chuchong->setPosition(550,-10);
-            addChild(chuchong);
-        }
     }
+    Texture2D *texture1 = Director::getInstance()->getTextureCache()->addImage("result/game_result_win_num.png");
+    Texture2D *texture2 = Director::getInstance()->getTextureCache()->addImage("result/game_result_lose_num.png");
+    if(data.jifendelta>=0){
+        resultNum->setTexture(texture1);
+    }else{
+        resultNum->setTexture(texture2);
+    }
+    resultNum->setString(StringUtils::format(":%d",data.jifendelta));
+    
     //在展示的牌前加上吃碰杠的显示
     std::vector<std::vector<std::string>> finalShowPoker;
     PlayerCpgRecShow recShow = GAMEDATA::getInstance()->getPlayerCpgRecShow();
