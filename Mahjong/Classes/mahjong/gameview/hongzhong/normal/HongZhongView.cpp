@@ -719,27 +719,8 @@ PlayerBase* HongZhongView::getPlayerBySeatId(int sid){
     }
 }
 
-void HongZhongView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
+void HongZhongView::firstPlayPoker(ReplaceJongVec vec,PlayerCpgtData data) {
     showPaiduiNum(atoi(vec.rest.c_str()));
-    for (int i = 0; i < vec.times.size(); i++){
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
-        if (seatId == ClientSeatId::hero){
-            playerHero->setReplacePoker(vec.times.at(i));
-            playerHero->replaceFlower();
-        }
-        else if (seatId == ClientSeatId::left){
-            playerLeft->setReplacePoker(vec.times.at(i));
-            playerLeft->replaceHandHua(leftplayed);
-        }
-        else if (seatId == ClientSeatId::right){
-            playerRight->setReplacePoker(vec.times.at(i));
-            playerRight->replaceHandHua(rightplayed);
-        }
-        else if (seatId == ClientSeatId::opposite){
-            playerOpposite->setReplacePoker(vec.times.at(i));
-            playerOpposite->replaceHandHua(oppositeplayed);
-        }
-    }
     for(auto player : GAMEDATA::getInstance()->getPlayersInfo()){
         if(player->getSeatId() == GAMEDATA::getInstance()->getCurrentBank()){
             int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player->getSeatId());
@@ -750,7 +731,9 @@ void HongZhongView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
             }else if(clientId == ClientSeatId::right){
                 playerRight->startTimeClockAnim();
             }else if(clientId == ClientSeatId::hero){
-                if(data.playerGang.size()>0||data.ting!=""){
+                playerHero->setIsAllowPlay(true);
+                playerHero->setIsAllowTouch(true);
+                if(data.playerGang.size()>0||data.hu == 1){
                     if (data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
                         showHuGangControllPad(data);
                         playerHero->startTimeClockAnim(9, 2);
@@ -779,6 +762,8 @@ void HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
         playerOpposite->drawHandJong();
     if(NULL != playerLeft)
         playerLeft->drawHandJong();
+    if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
+        firstPlayPoker(vec,data);
     if(NULL != playerRight)
         playerRight->setIsReady(false);
     if(NULL != playerOpposite)
@@ -786,13 +771,7 @@ void HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
     if(NULL != playerLeft)
         playerLeft->setIsReady(false);
     if(NULL != playerHero)
-        playerHero->setIsReady(false);
-    if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
-        if(GAMEDATA::getInstance()->getCurrentBank() == GAMEDATA::getInstance()->getHeroSeatId()){
-            playerHero->setIsAllowPlay(true);
-            playerHero->setIsAllowTouch(true);
-        }
-}
+        playerHero->setIsReady(false);}
 
 
 
@@ -1631,7 +1610,7 @@ void HongZhongView::onEnter(){
             }
             
             schedule([=](float dt){
-                if(GAMEDATA::getInstance()->getFanMa() == ""){
+                if(GAMEDATA::getInstance()->getFanMa() != ""){
                     vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
                     FanMaAnim* fan = FanMaAnim::create(ma);
                     addChild(fan);

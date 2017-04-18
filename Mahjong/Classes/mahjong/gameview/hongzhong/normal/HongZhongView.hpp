@@ -82,7 +82,7 @@ class HongZhongView : public Layer{
     void recoverPlayer(PlayerGameData data,int type, Player* playerInfo);
     void showOriention();
     void showHuPaiXing(std::string paixing);
-    void firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data);//首次杠花
+    void firstPlayPoker(ReplaceJongVec vec,PlayerCpgtData data);
     PlayerBase* getPlayerBySeatId(int sid);
     
     EventListenerCustom* gameFaPaiListener;

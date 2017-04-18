@@ -2720,24 +2720,10 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
         tingData.playerGang.push_back(gangData);
         tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
     }
-    if(_mDoc.HasMember("ting")){
-        const rapidjson::Value &ting = _mDoc["ting"];
-        tingData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
-        tingData.ting = ting.GetString();
-    }
-    if (_mDoc.HasMember("ting1")){
-        const rapidjson::Value &ting1 = _mDoc["ting1"];
-        for(int i=0;i<ting1.Capacity();i++){
-            HeroHuPaiData huPaiData;
-            auto &temp = ting1[i];
-            if(temp.HasMember("poker")){
-                huPaiData.poker = temp["poker"].GetInt();
-            }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
-            }
-            tingData.heroHu.push_back(huPaiData);
-        }
+    if(_mDoc.HasMember("hu")){
+        tingData.hu = 1;
+    }else{
+        tingData.hu = 0;
     }
     faPaiData.mjTingData = tingData;
     postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
@@ -3017,7 +3003,7 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
         GameResultData resultData;
         const rapidjson::Value &temp = finish[i];
         
-        if(_mDoc.HasMember("gangfen")){
+        if(temp.HasMember("gangfen")){
             resultData.gangfen = temp["gangfen"].GetString();
         }else{
             resultData.gangfen ="";

@@ -75,14 +75,13 @@ bool HZPlayerResultCell::init(GameResultData data){
         
         int fen = atoi(data.gangfen.c_str());
         auto fuhao = Sprite::create();
-        if(fen>0){
+        if(fen>=0){
              fuhao->setTexture("result/gang_fen_jia.png");
         }else{
             fuhao->setTexture("result/gang_fen_jian.png");
         }
         fuhao->setPosition(200,20);
         addChild(fuhao);
-        
         
         auto juNum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
         juNum->setPosition(210,10);
