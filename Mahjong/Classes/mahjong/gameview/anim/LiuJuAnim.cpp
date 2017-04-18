@@ -8,6 +8,7 @@
 
 #include "mahjong/gameview/anim/LiuJuAnim.hpp"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
+#include "mahjong/gameview/hongzhong/normal/HongZhongView.hpp"
 #include "mahjong/common/utils/SeatIdUtil.h"
 
 bool LiuJuAnim::init(){
@@ -43,6 +44,8 @@ void LiuJuAnim::showLiuJuAnim(){
     guangXiao1->runAction(Sequence::create(CallFunc::create([=](){
         if(GAMEDATA::getInstance()->getGameType() == 1){
             ((MahjongView*)getParent())->showHandPokerOver(GAMEDATA::getInstance()->getHeroSeatId());
+        }else if(GAMEDATA::getInstance()->getGameType() == 3){
+            ((HongZhongView*)getParent())->showHandPokerOver(GAMEDATA::getInstance()->getHeroSeatId());
         }
     }),DelayTime::create(12.0f/24),Spawn::create(ScaleTo::create(5.0/24, 2.0f,2.0f),MoveTo::create(5.0/24, pos2),FadeTo::create(5.0/24, 200),NULL),Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0), NULL),NULL));
     

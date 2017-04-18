@@ -2268,6 +2268,7 @@ void MsgHandler::billResp(std::string msg){
             data.date = temp["date"].GetString();
             data.prid = temp["prId"].GetString();
             data.atype = temp["atype"].GetString();
+            data.gameType = temp["t"].GetString();
             if (temp.HasMember("content")){
                 BillContent con;
                 const rapidjson::Value &content = temp["content"];

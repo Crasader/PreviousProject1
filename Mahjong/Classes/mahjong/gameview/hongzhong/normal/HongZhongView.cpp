@@ -1611,6 +1611,7 @@ void HongZhongView::onEnter(){
             
             schedule([=](float dt){
                 if(GAMEDATA::getInstance()->getFanMa() != ""){
+                    log("HongZhong Mahjong FanMa %s",GAMEDATA::getInstance()->getFanMa().c_str());
                     vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
                     FanMaAnim* fan = FanMaAnim::create(ma);
                     addChild(fan);

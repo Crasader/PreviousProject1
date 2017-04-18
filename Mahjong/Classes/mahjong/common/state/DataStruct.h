@@ -288,6 +288,7 @@ struct BillContent{
 };
 
 struct BillInfoData{
+    std::string gameType;
     std::string date;
     std::string billId;
     std::string prid;
