@@ -23,7 +23,7 @@ SocketDataBack* SocketDataBack::getInstance(){
 }
 
 void SocketDataBack::dealDataCallBack(std::string data){
-    log("recieve data = %s",data.c_str());
+//    log("recieve data = %s",data.c_str());
     GameSocketManage::getInstance()->receiveScoketData(data);
 }
 
