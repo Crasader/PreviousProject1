@@ -120,17 +120,25 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         sprite1->setPosition(Vec2(0, 0));
         cell->addChild(sprite1);
         
+        
+        Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
+        gameType->setTag(90);
+        gameType->setColor(Color3B(93,182,215));
+        gameType->setAnchorPoint(Vec2::ZERO);
+        gameType->setPosition(Vec2(65, 105));
+        cell->addChild(gameType);
+        
         Label* date = Label::createWithSystemFont(data.date,"Arial",22);
         date->setTag(100);
         date->setColor(Color3B(93,182,215));
         date->setAnchorPoint(Vec2::ZERO);
-        date->setPosition(Vec2(170, 105));
+        date->setPosition(Vec2(230, 105));
         cell->addChild(date);
         
         Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
         fanghao->setColor(Color3B(93,182,215));
         fanghao->setAnchorPoint(Vec2::ZERO);
-        fanghao->setPosition(Vec2(380, 105));
+        fanghao->setPosition(Vec2(450, 105));
         cell->addChild(fanghao);
         
         
@@ -138,16 +146,16 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         prID->setTag(400);
         prID->setColor(Color3B(93,182,215));
         prID->setAnchorPoint(Vec2::ZERO);
-        prID->setPosition(Vec2(435, 105));
+        prID->setPosition(Vec2(515, 105));
         cell->addChild(prID);
         
         Label* ju = Label::createWithSystemFont("局数:","Arial",22);
         ju->setColor(Color3B(93,182,215));
         ju->setAnchorPoint(Vec2::ZERO);
-        ju->setPosition(Vec2(550, 105));
+        ju->setPosition(Vec2(640, 105));
         cell->addChild(ju);
         
-        //客户端写死，只有2中情况
+        //客户端写死de值
         std::string jushuNum = "8";
         if(data.atype == "1"){
             jushuNum = "4";
@@ -158,7 +166,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         jushu->setTag(401);
         jushu->setColor(Color3B(93,182,215));
         jushu->setAnchorPoint(Vec2::ZERO);
-        jushu->setPosition(Vec2(605, 105));
+        jushu->setPosition(Vec2(695, 105));
         cell->addChild(jushu);
         
         std::vector<BillContent> conBill = sortBillInfo(data.content);
@@ -195,6 +203,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->addChild(myMenu);
         cell->setName(data.billId);
     }else{
+        ((Label*)cell->getChildByTag(90))->setString(data.gameType == "1"?"红中麻将":"上海敲麻");
         ((Label*)cell->getChildByTag(100))->setString(data.date);
         ((Label*)cell->getChildByTag(400))->setString(data.prid);
         std::string jushuNum = "8";

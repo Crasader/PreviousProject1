@@ -41,29 +41,37 @@ bool BillDetailInfo::init()
     
     BillInfoData data = GAMEDATA::getInstance()->getBillInfoData();
     
+    Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
+    gameType->setTag(90);
+    gameType->setColor(Color3B(93,182,215));
+    gameType->setAnchorPoint(Vec2::ZERO);
+    gameType->setPosition(Vec2(290, 585));
+    addChild(gameType);
+
+    
     Label* date = Label::createWithSystemFont(data.date,"Arial",22);
     date->setAnchorPoint(Vec2::ZERO);
     date->setColor(Color3B(93,182,215));
-    date->setPosition(400,585);
+    date->setPosition(440,585);
     addChild(date);
     
     Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
     fanghao->setColor(Color3B(93,182,215));
     fanghao->setAnchorPoint(Vec2::ZERO);
-    fanghao->setPosition(Vec2(600,585));
+    fanghao->setPosition(Vec2(670,585));
     addChild(fanghao);
     
     
     Label* prID = Label::createWithSystemFont(data.prid,"Arial",22);
     prID->setColor(Color3B(93,182,215));
     prID->setAnchorPoint(Vec2::ZERO);
-    prID->setPosition(Vec2(650, 585));
+    prID->setPosition(Vec2(720, 585));
     addChild(prID);
     
     Label* ju = Label::createWithSystemFont("局数:","Arial",22);
     ju->setColor(Color3B(93,182,215));
     ju->setAnchorPoint(Vec2::ZERO);
-    ju->setPosition(Vec2(750, 585));
+    ju->setPosition(Vec2(850, 585));
     addChild(ju);
     
     std::string jushuNum = "8";
@@ -75,7 +83,7 @@ bool BillDetailInfo::init()
     Label* jushu = Label::createWithSystemFont(jushuNum,"Arial",22);
     jushu->setColor(Color3B(93,182,215));
     jushu->setAnchorPoint(Vec2::ZERO);
-    jushu->setPosition(Vec2(800, 585));
+    jushu->setPosition(Vec2(900, 585));
     addChild(jushu);
     
     
