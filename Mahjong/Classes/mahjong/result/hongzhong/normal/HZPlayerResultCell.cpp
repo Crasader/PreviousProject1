@@ -90,11 +90,16 @@ bool HZPlayerResultCell::init(GameResultData data){
         log("GangFen is null");
     }
     
+    if(data.jifen>0){
+        spritebg->setTexture("result/jie_suan_lan_suc.png");
+    }else{
+        spritebg->setTexture("result/jie_suan_lan_fai.png");
+    }
+    
     std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
     bool win = false;
-    if(data.jifendelta>0){
+    if(data.result == 1 || data.result == 3){
         win = true;
-        spritebg->setTexture("result/jie_suan_lan_suc.png");
         nickName->setColor(Color3B(230,215,30));
         idNumber->setColor(Color3B(230,215,30));
         
@@ -141,7 +146,6 @@ bool HZPlayerResultCell::init(GameResultData data){
         
     }else{
         win = false;
-        spritebg->setTexture("result/jie_suan_lan_fai.png");
     }
     Texture2D *texture1 = Director::getInstance()->getTextureCache()->addImage("result/game_result_win_num.png");
     Texture2D *texture2 = Director::getInstance()->getTextureCache()->addImage("result/game_result_lose_num.png");
