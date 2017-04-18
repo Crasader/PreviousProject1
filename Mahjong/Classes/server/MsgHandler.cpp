@@ -3157,6 +3157,7 @@ void MsgHandler::handleHZPlayerHuNotify(std::string msg){
         cpgData.playerGang.push_back(gangData);
         cpgData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
     }
+    log("收到了服务端的胡牌协议2");
     postNotifyMessage(MSG_HZ_GAME_HU_ACTION, &cpgData);
 }
 
