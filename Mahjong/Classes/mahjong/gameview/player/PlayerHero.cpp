@@ -156,7 +156,8 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
     if (virtualJong != NULL&&selectJong != NULL){
         virtualJong->setOpacity(255);
         playPokerByHand(virtualJong);
-        arrangeHandJongs();
+//        arrangeHandJongs();
+        selectJong->setVisible(false);
     }
     if (isAllowPlay) {
         if (doubleClickJong == NULL){
@@ -172,9 +173,10 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
                 jong->setPosition(doubleClickJong->getPosition());
                 jong->showJong(herohand, doubleClickJong->getJongType());
                 addChild(jong);
-                playPokerByHand(jong);
                 selectJong = doubleClickJong;
-                arrangeHandJongs();
+                selectJong->setVisible(false);
+                playPokerByHand(jong);
+//                arrangeHandJongs();
                 doubleClickJong = NULL;
             }else{
                 doubleClickJong = getTouchJong(touch);
@@ -238,7 +240,6 @@ void PlayerHero::playPokerByHand(Jong* jong){
         jong->setScale(1.0f);
         playerPlayedJongs.pushBack(jong);
         isAllowPlay = false;
-        resetHandJongsY(jong);
         virtualJong = NULL;
         if (!GAMEDATA::getInstance()->getIsTingState()
             && !GAMEDATA::getInstance()->getIsTingProcess()
@@ -250,6 +251,8 @@ void PlayerHero::playPokerByHand(Jong* jong){
             ((MahjongView*)getParent())->hideTingGangControllPad();
             GAMEDATA::getInstance()->setIsTingProcess(false);
         }
+        resetHandJongsY(jong);
+       
     });
     CallFunc* callback2 = CallFunc::create([=](){
         showCurrentPlayedJongIcon(true);
@@ -261,7 +264,10 @@ void PlayerHero::playPokerByHand(Jong* jong){
         }
     });
     
-    Sequence* seq = Sequence::create(spa, callback, callback2, NULL);
+    auto callBack3 = CallFunc::create([=](){
+         arrangeHandJongs();
+    });
+    Sequence* seq = Sequence::create(spa, callback, callback2,callBack3,NULL);
     jong->runAction(seq);
 }
 

@@ -882,7 +882,7 @@ void MsgHandler::enterRoomResp(std::string msg){
     info->setUmark(UserData::getInstance()->getMarkId());
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
-    
+    GAMEDATA::getInstance()->setGameType(1);
     postNotifyMessage(MSG_ENTER_ROOM_RESP, &resp);
 }
 
@@ -2029,6 +2029,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
         }
         lastGameData.players.push_back(data);
     }
+    GAMEDATA::getInstance()->setGameType(1);
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
     char* buf = const_cast<char*>(StringUtil::itos(seatId.GetInt()).c_str());
     postNotifyMessage(MSG_PLAYER_CONNECT_AGAIN, buf);
