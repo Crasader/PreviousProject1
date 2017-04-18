@@ -3001,6 +3001,8 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     
     if(_mDoc.HasMember("mashu")){
         GAMEDATA::getInstance()->setHZMaShu(_mDoc["mashu"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setHZMaShu("0");
     }
     
     const rapidjson::Value &flag = _mDoc["flag"];
@@ -3157,7 +3159,7 @@ void MsgHandler::handleHZPlayerHuNotify(std::string msg){
         cpgData.playerGang.push_back(gangData);
         cpgData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
     }
-    log("收到了服务端的胡牌协议2");
+    log("收到了服务端的胡牌协议1");
     postNotifyMessage(MSG_HZ_GAME_HU_ACTION, &cpgData);
 }
 

@@ -104,7 +104,7 @@ void HZNormalResultLayer::showRoomInfo(){
         auto difen = Sprite::create();
         difen->setTexture(StringUtils::format("result/difen_%s.png",GAMEDATA::getInstance()->getHZDiFen().c_str()));
         addChild(difen);
-
+        
         auto jucount = Sprite::create();
         addChild(jucount);
         
@@ -123,7 +123,7 @@ void HZNormalResultLayer::showRoomInfo(){
         maType->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         difen->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(maType->isVisible()?(maType->getContentSize().width):0)/2,560);
         difen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-               jucount->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+difen->getContentSize().width+(maType->isVisible()?(maType->getContentSize().width):0)/2,560);
+        jucount->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+difen->getContentSize().width+(maType->isVisible()?(maType->getContentSize().width):0)/2,560);
         jucount->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         juNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         juNum->setPosition(jucount->getPositionX()+45,jucount->getPositionY());
@@ -139,16 +139,18 @@ void HZNormalResultLayer::showRoomInfo(){
 }
 
 void HZNormalResultLayer::showHZMa(){
-    auto mabg = Sprite::create("result/fanma_di.png");
-    mabg->setPosition(150,650);
-    addChild(mabg);
-    vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
-    for (int i=0; i<ma.size(); i++) {
-        auto jong = Jong::create();
-        jong->showJong(herohand,atoi(ma.at(i).c_str()));
-        jong->setPosition(150- 70*(ma.size()-1)/2+i*70,650);
-        jong->setScale(0.8f);
-        addChild(jong);
+    if(GAMEDATA::getInstance()->getFanMa() != ""){
+        auto mabg = Sprite::create("result/fanma_di.png");
+        mabg->setPosition(150,650);
+        addChild(mabg);
+        vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
+        for (int i=0; i<ma.size(); i++) {
+            auto jong = Jong::create();
+            jong->showJong(herohand,atoi(ma.at(i).c_str()));
+            jong->setPosition(150- 70*(ma.size()-1)/2+i*70,650);
+            jong->setScale(0.8f);
+            addChild(jong);
+        }
     }
 }
 
