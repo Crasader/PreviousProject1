@@ -543,7 +543,7 @@ void PlayerHero::arrangeHandJongs() {
                     }
                 }
                 else {
-                    auto move = MoveTo::create(0.3f,
+                    auto move = MoveTo::create(0.18f,
                                                Point(playerHandJongs.at(j)->getPositionX() - JONG_WIDTH,
                                                      JONG_POS_Y));
                     playerHandJongs.at(j)->runAction(move);
@@ -552,7 +552,7 @@ void PlayerHero::arrangeHandJongs() {
             if (!isMoved){
                 isMoved = true;
                 needBezier = false;
-                auto move = MoveTo::create(0.3f,
+                auto move = MoveTo::create(0.18f,
                                            Point(getHandPosX() + JONG_WIDTH * (playerHandJongs.size() - 1), JONG_POS_Y));
                 playerHandJongs.at(playerHandJongs.size() - 1)->runAction(move);
             }
@@ -569,7 +569,7 @@ void PlayerHero::arrangeHandJongs() {
                     }
                 }
                 else {
-                    auto move = MoveTo::create(0.3f,
+                    auto move = MoveTo::create(0.18f,
                                                Point(playerHandJongs.at(k)->getPositionX() + JONG_WIDTH,
                                                      JONG_POS_Y));
                     playerHandJongs.at(k)->runAction(move);
@@ -590,14 +590,14 @@ void PlayerHero::arrangeHandJongs() {
                                       needMovePos.x + (currentJong->getPositionX() - needMovePos.x) * 0.5,
                                       JONG_POS_Y + 50);
         bezier.endPosition = Point(needMovePos.x, JONG_POS_Y);
-        BezierTo *actionMove = BezierTo::create(0.3f, bezier);
+        BezierTo *actionMove = BezierTo::create(0.18f, bezier);
         currentJong->runAction(actionMove);
     }
     
     setIsAllowPlay(false);
     selectJong->removeFromParent();
     eraseHeroJong(selectJong);
-    auto delay = DelayTime::create(0.3f);
+    auto delay = DelayTime::create(0.21f);
     auto callback = CallFunc::create([=](){
         sortHandJongs(getHandPosX(), true);
     });
