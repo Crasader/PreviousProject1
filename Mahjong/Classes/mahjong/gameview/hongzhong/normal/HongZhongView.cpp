@@ -1616,7 +1616,7 @@ void HongZhongView::onEnter(){
                     FanMaAnim* fan = FanMaAnim::create(ma);
                     addChild(fan);
                 }
-            },0,0,5.0f,"fanma");
+            },0,0,4.0f,"fanma");
             
             schedule([=](float dt){
                 PlayerCpgRecShow showRec;
@@ -1677,7 +1677,7 @@ void HongZhongView::onEnter(){
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(0)));
-            },0,0,10.0f,"go2Result");
+            },0,0,8.0f,"go2Result");
         }else{
             clearRoomPlayer();
             GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
