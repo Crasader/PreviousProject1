@@ -1287,27 +1287,24 @@ void HongZhongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
     
     othersGangListener = EventListenerCustom::create(MSG_HZ_PLAYER_GANG, [=](EventCustom* event){
+        hideHuGangControllPad();
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
         PlayerCpgtData newData = *data;
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
         setCurrentJongVisible(newData.sId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
         if (seatId == ClientSeatId::left){
-            hideHuGangControllPad();
             playerLeft->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
-            hideHuGangControllPad();
             playerRight->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
         else if (seatId == ClientSeatId::opposite){
-            hideHuGangControllPad();
             playerOpposite->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
         }else if (seatId == ClientSeatId::hero){
-            hideHuGangControllPad();
             HeroCpgRespData heroTingData;
             heroTingData.result = 1;
             heroTingData.playCpgt = newData;
@@ -1320,10 +1317,12 @@ void HongZhongView::onEnter(){
     
     playeHuActionListener = EventListenerCustom::create(MSG_HZ_GAME_HU_ACTION, [=](EventCustom* event){
         //TODO  显示胡牌按钮
-        log("收到了服务端的胡牌协议2");
+        //        log("收到了服务端的胡牌协议2");
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
         PlayerCpgtData temp = *data;
-        showHuGangControllPad(temp);
+        schedule([=](float dt){
+            showHuGangControllPad(temp);
+        },0,0,1.5f,"showHu");
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playeHuActionListener, 1);
     
