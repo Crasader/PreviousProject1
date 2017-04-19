@@ -367,8 +367,8 @@
 		D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
 		D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
 		D2FB85211E07B9F700257EE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2FB85201E07B9F700257EE1 /* Images.xcassets */; };
-		D2FD5A6B1EA64B420016FCCC /* ReviewHongZhongcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */; };
-		D2FD5A6C1EA64B420016FCCC /* ReviewHongZhongcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */; };
+		D2FD5A6B1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhong.cpp */; };
+		D2FD5A6C1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhong.cpp */; };
 		D2FD5B541EA711510016FCCC /* CallVoiceAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */; };
 		D2FD5B571EA711510016FCCC /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B381EA711510016FCCC /* amrFileCodec.mm */; };
 		D2FD5B581EA711510016FCCC /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B3A1EA711510016FCCC /* wav.mm */; };
@@ -768,7 +768,7 @@
 		D2F05F701D8F8C4F006E5A4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D2FB85201E07B9F700257EE1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Mahjong-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		D2FD5A691EA64B420016FCCC /* ReviewHongZhong.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ReviewHongZhong.hpp; sourceTree = "<group>"; };
-		D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewHongZhongcpp.cpp; sourceTree = "<group>"; };
+		D2FD5A6A1EA64B420016FCCC /* ReviewHongZhong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewHongZhong.cpp; sourceTree = "<group>"; };
 		D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallVoiceAndroidMethod.cpp; sourceTree = "<group>"; };
 		D2FD5B311EA711510016FCCC /* CallVoiceAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallVoiceAndroidMethod.h; sourceTree = "<group>"; };
 		D2FD5B371EA711510016FCCC /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
@@ -1854,7 +1854,7 @@
 			isa = PBXGroup;
 			children = (
 				D2FD5A691EA64B420016FCCC /* ReviewHongZhong.hpp */,
-				D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */,
+				D2FD5A6A1EA64B420016FCCC /* ReviewHongZhong.cpp */,
 			);
 			path = special;
 			sourceTree = "<group>";
@@ -2203,7 +2203,7 @@
 				D252FBBA1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
 				D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
 				D252FBC21E7FA5EC00937322 /* ExchangeItem.cpp in Sources */,
-				D2FD5A6B1EA64B420016FCCC /* ReviewHongZhongcpp.cpp in Sources */,
+				D2FD5A6B1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */,
 				D2B1D9201E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */,
 				D252FC5F1E7FABE900937322 /* PlayerOpposite.cpp in Sources */,
 				D252FB381E7FA5EC00937322 /* BaseDialog.cpp in Sources */,
@@ -2332,7 +2332,7 @@
 				D252FC6E1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */,
 				D2B1D9211E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */,
 				D252FB5F1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
-				D2FD5A6C1EA64B420016FCCC /* ReviewHongZhongcpp.cpp in Sources */,
+				D2FD5A6C1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */,
 				D252FC521E7FABE900937322 /* GuiLayer.cpp in Sources */,
 				D252FB3D1E7FA5EC00937322 /* LostNetwork2.cpp in Sources */,
 				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,

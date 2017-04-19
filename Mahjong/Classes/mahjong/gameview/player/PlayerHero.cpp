@@ -174,7 +174,6 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
                 jong->showJong(herohand, doubleClickJong->getJongType());
                 addChild(jong);
                 selectJong = doubleClickJong;
-                selectJong->setVisible(false);
                 playPokerByHand(jong);
                 arrangeHandJongs();
                 doubleClickJong = NULL;
@@ -252,7 +251,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
             GAMEDATA::getInstance()->setIsTingProcess(false);
         }
         resetHandJongsY(jong);
-       
+        
     });
     CallFunc* callback2 = CallFunc::create([=](){
         showCurrentPlayedJongIcon(true);
@@ -264,9 +263,6 @@ void PlayerHero::playPokerByHand(Jong* jong){
         }
     });
     
-//    auto callBack3 = CallFunc::create([=](){
-//         arrangeHandJongs();
-//    });
     Sequence* seq = Sequence::create(spa,callback,callback2,NULL);
     jong->runAction(seq);
 }
@@ -296,11 +292,11 @@ void PlayerHero::drawPlayerHero() {
         addChild(playerHandJongs.at(i));
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
-//    for(auto protect:playerHandJongs){
-//        if(protect->getJongType() == JongEnum::hz){
-//            protect->showBackShadow(true);
-//        }
-//    }
+    //    for(auto protect:playerHandJongs){
+    //        if(protect->getJongType() == JongEnum::hz){
+    //            protect->showBackShadow(true);
+    //        }
+    //    }
     
 }
 
@@ -408,9 +404,18 @@ void PlayerHero::inviteWechatFriend(){
         roomtype += ChineseWord("room_info_3");
     }
     if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
-        roomtype += ChineseWord("room_info_4");
-    }else{
-        roomtype += ChineseWord("room_info_5");
+        roomtype += ChineseWord("room_info_7");
+    }else if(GAMEDATA::getInstance()->getPrivateLezi()=="1"){
+        roomtype += ChineseWord("room_info_8");
+    }
+    else if(GAMEDATA::getInstance()->getPrivateLezi()=="2"){
+        roomtype += ChineseWord("room_info_9");
+    }else if(GAMEDATA::getInstance()->getPrivateLezi()=="3"){
+        roomtype += ChineseWord("room_info_10");
+    }else if(GAMEDATA::getInstance()->getPrivateLezi()=="4"){
+        roomtype += ChineseWord("room_info_11");
+    }else if(GAMEDATA::getInstance()->getPrivateLezi()=="5"){
+        roomtype += ChineseWord("room_info_12");
     }
     if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
         roomtype += ChineseWord("room_info_6");
@@ -543,7 +548,7 @@ void PlayerHero::arrangeHandJongs() {
                     }
                 }
                 else {
-                    auto move = MoveTo::create(0.18f,
+                    auto move = MoveTo::create(0.2f,
                                                Point(playerHandJongs.at(j)->getPositionX() - JONG_WIDTH,
                                                      JONG_POS_Y));
                     playerHandJongs.at(j)->runAction(move);
@@ -552,7 +557,7 @@ void PlayerHero::arrangeHandJongs() {
             if (!isMoved){
                 isMoved = true;
                 needBezier = false;
-                auto move = MoveTo::create(0.18f,
+                auto move = MoveTo::create(0.2f,
                                            Point(getHandPosX() + JONG_WIDTH * (playerHandJongs.size() - 1), JONG_POS_Y));
                 playerHandJongs.at(playerHandJongs.size() - 1)->runAction(move);
             }
@@ -569,7 +574,7 @@ void PlayerHero::arrangeHandJongs() {
                     }
                 }
                 else {
-                    auto move = MoveTo::create(0.18f,
+                    auto move = MoveTo::create(0.2f,
                                                Point(playerHandJongs.at(k)->getPositionX() + JONG_WIDTH,
                                                      JONG_POS_Y));
                     playerHandJongs.at(k)->runAction(move);
@@ -590,14 +595,14 @@ void PlayerHero::arrangeHandJongs() {
                                       needMovePos.x + (currentJong->getPositionX() - needMovePos.x) * 0.5,
                                       JONG_POS_Y + 50);
         bezier.endPosition = Point(needMovePos.x, JONG_POS_Y);
-        BezierTo *actionMove = BezierTo::create(0.18f, bezier);
+        BezierTo *actionMove = BezierTo::create(0.2f, bezier);
         currentJong->runAction(actionMove);
     }
     
     setIsAllowPlay(false);
     selectJong->removeFromParent();
     eraseHeroJong(selectJong);
-    auto delay = DelayTime::create(0.21f);
+    auto delay = DelayTime::create(0.25f);
     auto callback = CallFunc::create([=](){
         sortHandJongs(getHandPosX(), true);
     });
@@ -706,11 +711,11 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             addChild(jong);
             playerHandJongs.pushBack(jong);
             currentJong = jong;
-//            if(GAMEDATA::getInstance()->getGameType() ==3){
-//                if(jong->getJongType() == JongEnum::hz){
-//                    jong->showBackShadow(true);
-//                }
-//            }
+            //            if(GAMEDATA::getInstance()->getGameType() ==3){
+            //                if(jong->getJongType() == JongEnum::hz){
+            //                    jong->showBackShadow(true);
+            //                }
+            //            }
             settleHandJongs(getHandPosX());
         }
         
@@ -1676,11 +1681,11 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
         playerHandJongs.pushBack(jong);
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
-//    for(auto protect:playerHandJongs){
-//        if(protect->getJongType() == JongEnum::hz){
-//            protect->showBackShadow(true);
-//        }
-//    }
+    //    for(auto protect:playerHandJongs){
+    //        if(protect->getJongType() == JongEnum::hz){
+    //            protect->showBackShadow(true);
+    //        }
+    //    }
 }
 
 void PlayerHero::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){

@@ -883,7 +883,6 @@ void MahjongView::showHuPaiXing(std::string paixing){
     if(paixing==""){
         return;
     }
-    
     float posY = 260;
     //判断是不是自己胡了
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();

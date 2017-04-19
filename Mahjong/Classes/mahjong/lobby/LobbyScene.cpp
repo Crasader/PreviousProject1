@@ -909,8 +909,14 @@ void LobbyScene::addEventListener(){
     //游戏复盘
     gameFupanListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GAME_FU_PAN_NOTIFY, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getPlaybackInfo().result == 1){
-            GAMEDATA::getInstance()->setGameType(2);
-            Director::getInstance()->replaceScene(MjGameScene::create());
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            if(GAMEDATA::getInstance()->getPlaybackInfo().gameType == "0"){
+                GAMEDATA::getInstance()->setGameType(2);
+                Director::getInstance()->replaceScene(MjGameScene::create());
+            }else{
+                GAMEDATA::getInstance()->setGameType(4);
+                Director::getInstance()->replaceScene(MjGameScene::create());
+            }
         }
     });
     
