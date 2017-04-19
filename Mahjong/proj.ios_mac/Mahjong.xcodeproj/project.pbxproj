@@ -373,13 +373,6 @@
 		D2FD5B571EA711510016FCCC /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B381EA711510016FCCC /* amrFileCodec.mm */; };
 		D2FD5B581EA711510016FCCC /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B3A1EA711510016FCCC /* wav.mm */; };
 		D2FD5B591EA711510016FCCC /* CallVoiceApi.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B3C1EA711510016FCCC /* CallVoiceApi.mm */; };
-		D2FD5B5A1EA711510016FCCC /* ChatRecorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B471EA711510016FCCC /* ChatRecorderView.m */; };
-		D2FD5B5B1EA711510016FCCC /* ChatRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2FD5B481EA711510016FCCC /* ChatRecorderView.xib */; };
-		D2FD5B5C1EA711510016FCCC /* ChatVoiceRecorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B4A1EA711510016FCCC /* ChatVoiceRecorderVC.m */; };
-		D2FD5B5D1EA711510016FCCC /* ChatVoiceRecorderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2FD5B4B1EA711510016FCCC /* ChatVoiceRecorderVC.xib */; };
-		D2FD5B5E1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata in Resources */ = {isa = PBXBuildFile; fileRef = D2FD5B4C1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata */; };
-		D2FD5B5F1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip in Resources */ = {isa = PBXBuildFile; fileRef = D2FD5B4D1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip */; };
-		D2FD5B601EA711510016FCCC /* VoiceRecorderBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B4F1EA711510016FCCC /* VoiceRecorderBaseVC.m */; };
 		D2FD5B611EA711510016FCCC /* VoiceSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B511EA711510016FCCC /* VoiceSDK.mm */; };
 		D2FD5B621EA711510016FCCC /* VoiceMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B521EA711510016FCCC /* VoiceMgr.cpp */; };
 		D2FD5C8C1EA74A5C0016FCCC /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD5C8A1EA74A5C0016FCCC /* libopencore-amrnb.a */; };
@@ -788,16 +781,6 @@
 		D2FD5B3F1EA711510016FCCC /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
 		D2FD5B411EA711510016FCCC /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
 		D2FD5B421EA711510016FCCC /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
-		D2FD5B461EA711510016FCCC /* ChatRecorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRecorderView.h; sourceTree = "<group>"; };
-		D2FD5B471EA711510016FCCC /* ChatRecorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRecorderView.m; sourceTree = "<group>"; };
-		D2FD5B481EA711510016FCCC /* ChatRecorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatRecorderView.xib; sourceTree = "<group>"; };
-		D2FD5B491EA711510016FCCC /* ChatVoiceRecorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatVoiceRecorderVC.h; sourceTree = "<group>"; };
-		D2FD5B4A1EA711510016FCCC /* ChatVoiceRecorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatVoiceRecorderVC.m; sourceTree = "<group>"; };
-		D2FD5B4B1EA711510016FCCC /* ChatVoiceRecorderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatVoiceRecorderVC.xib; sourceTree = "<group>"; };
-		D2FD5B4C1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = com.poxiao.dqmahjong.xcappdata; sourceTree = "<group>"; };
-		D2FD5B4D1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = com.poxiao.dqmahjong.xcappdata.zip; sourceTree = "<group>"; };
-		D2FD5B4E1EA711510016FCCC /* VoiceRecorderBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorderBaseVC.h; sourceTree = "<group>"; };
-		D2FD5B4F1EA711510016FCCC /* VoiceRecorderBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorderBaseVC.m; sourceTree = "<group>"; };
 		D2FD5B501EA711510016FCCC /* VoiceSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceSDK.h; sourceTree = "<group>"; };
 		D2FD5B511EA711510016FCCC /* VoiceSDK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceSDK.mm; sourceTree = "<group>"; };
 		D2FD5B521EA711510016FCCC /* VoiceMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoiceMgr.cpp; sourceTree = "<group>"; };
@@ -1905,7 +1888,6 @@
 				D2FD5B3C1EA711510016FCCC /* CallVoiceApi.mm */,
 				D2FD5B3D1EA711510016FCCC /* opencore-amrnb */,
 				D2FD5B401EA711510016FCCC /* opencore-amrwb */,
-				D2FD5B431EA711510016FCCC /* VoiceRecorderVC */,
 				D2FD5B501EA711510016FCCC /* VoiceSDK.h */,
 				D2FD5B511EA711510016FCCC /* VoiceSDK.mm */,
 			);
@@ -1939,39 +1921,6 @@
 				D2FD5B421EA711510016FCCC /* if_rom.h */,
 			);
 			path = "opencore-amrwb";
-			sourceTree = "<group>";
-		};
-		D2FD5B431EA711510016FCCC /* VoiceRecorderVC */ = {
-			isa = PBXGroup;
-			children = (
-				D2FD5B441EA711510016FCCC /* ChatVoiceRecorderVC */,
-				D2FD5B4C1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata */,
-				D2FD5B4D1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip */,
-				D2FD5B4E1EA711510016FCCC /* VoiceRecorderBaseVC.h */,
-				D2FD5B4F1EA711510016FCCC /* VoiceRecorderBaseVC.m */,
-			);
-			path = VoiceRecorderVC;
-			sourceTree = "<group>";
-		};
-		D2FD5B441EA711510016FCCC /* ChatVoiceRecorderVC */ = {
-			isa = PBXGroup;
-			children = (
-				D2FD5B451EA711510016FCCC /* ChatRecorderView */,
-				D2FD5B491EA711510016FCCC /* ChatVoiceRecorderVC.h */,
-				D2FD5B4A1EA711510016FCCC /* ChatVoiceRecorderVC.m */,
-				D2FD5B4B1EA711510016FCCC /* ChatVoiceRecorderVC.xib */,
-			);
-			path = ChatVoiceRecorderVC;
-			sourceTree = "<group>";
-		};
-		D2FD5B451EA711510016FCCC /* ChatRecorderView */ = {
-			isa = PBXGroup;
-			children = (
-				D2FD5B461EA711510016FCCC /* ChatRecorderView.h */,
-				D2FD5B471EA711510016FCCC /* ChatRecorderView.m */,
-				D2FD5B481EA711510016FCCC /* ChatRecorderView.xib */,
-			);
-			path = ChatRecorderView;
 			sourceTree = "<group>";
 		};
 		D2FD5C891EA74A5C0016FCCC /* armlib */ = {
@@ -2130,15 +2079,12 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				D253296A1CC0D33600DDAD97 /* jong in Resources */,
-				D2FD5B5D1EA711510016FCCC /* ChatVoiceRecorderVC.xib in Resources */,
 				D253295A1CC0D33600DDAD97 /* common in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				D25DEE411CC4AE78007D428A /* shop in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				D25329561CC0D33600DDAD97 /* chat in Resources */,
-				D2FD5B5E1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata in Resources */,
 				D25DEE371CC0F56A007D428A /* bill in Resources */,
-				D2FD5B5B1EA711510016FCCC /* ChatRecorderView.xib in Resources */,
 				D22F1C181CC5CB67007270B2 /* setting in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				D252FD681E80F3A500937322 /* openroom in Resources */,
@@ -2149,7 +2095,6 @@
 				D25329781CC0D33600DDAD97 /* res in Resources */,
 				D253297C1CC0D33600DDAD97 /* trusteeship in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
-				D2FD5B5F1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip in Resources */,
 				D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2235,7 +2180,6 @@
 				D252FC4D1E7FABE900937322 /* OutFogAnim.cpp in Sources */,
 				D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D252FB301E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
-				D2FD5B5C1EA711510016FCCC /* ChatVoiceRecorderVC.m in Sources */,
 				D252FC081E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */,
 				D252FC5D1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
 				D252FC571E7FABE900937322 /* PlayerBase.cpp in Sources */,
@@ -2304,7 +2248,6 @@
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D252FB3E1E7FA5EC00937322 /* HintDialog.cpp in Sources */,
 				D252FC451E7FABE900937322 /* DealJongAnim.cpp in Sources */,
-				D2FD5B601EA711510016FCCC /* VoiceRecorderBaseVC.m in Sources */,
 				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D252FBAE1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D2B1D91C1E9E026800EB8FB0 /* HZSpecialResultLayer.cpp in Sources */,
@@ -2323,7 +2266,6 @@
 				D252FB241E7FA5EC00937322 /* FupanDialog.cpp in Sources */,
 				D252FB201E7FA5EC00937322 /* BillDetailInfo.cpp in Sources */,
 				D252FC671E7FABE900937322 /* HuPaiHintLayer.cpp in Sources */,
-				D2FD5B5A1EA711510016FCCC /* ChatRecorderView.m in Sources */,
 				D252FBDA1E7FA5EC00937322 /* SplashScene.cpp in Sources */,
 				D252FC6B1E7FABE900937322 /* QuitRoomDialog.cpp in Sources */,
 				D252FBC81E7FA5EC00937322 /* LequanShop.cpp in Sources */,
