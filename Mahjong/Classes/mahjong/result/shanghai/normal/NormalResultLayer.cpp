@@ -98,11 +98,18 @@ void NormalResultLayer::showRoomInfo(){
         }
         auto lezi = Sprite::create();
         addChild(lezi);
-        if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
-            //有乐子
-            lezi->setTexture("result/public_40_lezi.png");
-        }else{
-            lezi->setTexture("result/public_wu_lezi.png");
+        if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1100)){
+            lezi->setTexture("result/lezi_1100.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1120)){
+            lezi->setTexture("result/lezi_1120.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1150)){
+            lezi->setTexture("result/lezi_1150.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2200)){
+            lezi->setTexture("result/lezi_2200.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2240)){
+            lezi->setTexture("result/lezi_2240.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type22100)){
+            lezi->setTexture("result/lezi_22100.png");
         }
         auto emsc =  Sprite::create("result/public_2mo_3chong.png");
         emsc->setVisible(false);

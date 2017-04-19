@@ -21,7 +21,6 @@
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
-//#include "youmi/MyIM.h"
 
 bool MahjongView::init(){
     if (!Layer::init())
@@ -106,11 +105,18 @@ void MahjongView::loadView(){
         }
         auto lezi = Sprite::create();
         addChild(lezi);
-        if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
-            //有乐子
-            lezi->setTexture("gameview/40_lezi.png");
-        }else{
-            lezi->setTexture("gameview/wu_lezi.png");
+        if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1100)){
+            lezi->setTexture("gameview/lezi_1100.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1120)){
+            lezi->setTexture("gameview/lezi_1120.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1150)){
+            lezi->setTexture("gameview/lezi_1150.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2200)){
+            lezi->setTexture("gameview/lezi_2200.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2240)){
+            lezi->setTexture("gameview/lezi_2240.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type22100)){
+            lezi->setTexture("gameview/lezi_22100.png");
         }
         auto emsc =  Sprite::create("gameview/2mo3chong.png");
         emsc->setVisible(false);
@@ -176,7 +182,7 @@ void MahjongView::startGameAgain(){
 }
 
 void MahjongView::update(float dt){
-
+    
     
     if(GAMEDATA::getInstance()->getShowProtected()){
         if(NULL == getChildByTag(2000)){
@@ -297,10 +303,10 @@ void MahjongView::checkPlayerIpRepetition(){
             if(players.at(i)->getIP()==players.at(j)->getIP()){
                 //发现有相同的IP,发出通知
                 /*if(!showRepeatDialog){
-                    HintDialog* hint3 = HintDialog::create(StringUtils::format("%s和%sIP相同",players.at(i)->getNickname().c_str(),players.at(j)->getNickname().c_str()),nullptr);
-                    addChild(hint3,100);
-                    showRepeatDialog = true;
-                }*/
+                 HintDialog* hint3 = HintDialog::create(StringUtils::format("%s和%sIP相同",players.at(i)->getNickname().c_str(),players.at(j)->getNickname().c_str()),nullptr);
+                 addChild(hint3,100);
+                 showRepeatDialog = true;
+                 }*/
             }
         }
     }
@@ -1128,7 +1134,7 @@ void MahjongView::onEnter(){
         if(data.agree == "0"){
             tao->addToast(StringUtils::format("%s%s",name.c_str(),ChineseWord("dialog_text_6").c_str()));
         }else{
-			tao->addToast(StringUtils::format("%s%s", name.c_str(), ChineseWord("dialog_text_7").c_str()));
+            tao->addToast(StringUtils::format("%s%s", name.c_str(), ChineseWord("dialog_text_7").c_str()));
         }
     });
     
@@ -1149,7 +1155,7 @@ void MahjongView::onEnter(){
     
     //好友房间游戏未开始重新连接
     coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
-         GAMEDATA::getInstance()->setGameType(1);
+        GAMEDATA::getInstance()->setGameType(1);
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         for(auto var: GAMEDATA::getInstance()->getPlayersInfo()){
@@ -1462,7 +1468,7 @@ void MahjongView::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
-
+    
     turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
         PlayerTurnData* turnData = static_cast<PlayerTurnData*>(event->getUserData());
         PlayerTurnData newData = *turnData;
