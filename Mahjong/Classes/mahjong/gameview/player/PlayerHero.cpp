@@ -156,7 +156,7 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
     if (virtualJong != NULL&&selectJong != NULL){
         virtualJong->setOpacity(255);
         playPokerByHand(virtualJong);
-//        arrangeHandJongs();
+        arrangeHandJongs();
         selectJong->setVisible(false);
     }
     if (isAllowPlay) {
@@ -176,7 +176,7 @@ void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
                 selectJong = doubleClickJong;
                 selectJong->setVisible(false);
                 playPokerByHand(jong);
-//                arrangeHandJongs();
+                arrangeHandJongs();
                 doubleClickJong = NULL;
             }else{
                 doubleClickJong = getTouchJong(touch);
@@ -264,10 +264,10 @@ void PlayerHero::playPokerByHand(Jong* jong){
         }
     });
     
-    auto callBack3 = CallFunc::create([=](){
-         arrangeHandJongs();
-    });
-    Sequence* seq = Sequence::create(spa, callback, callback2,callBack3,NULL);
+//    auto callBack3 = CallFunc::create([=](){
+//         arrangeHandJongs();
+//    });
+    Sequence* seq = Sequence::create(spa,callback,callback2,NULL);
     jong->runAction(seq);
 }
 
