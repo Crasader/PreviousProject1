@@ -835,7 +835,7 @@ void LobbyScene::addEventListener(){
     enterRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_ENTER_ROOM, [=](EventCustom* event){
         removeLoading();
         MahjongNumberKeypads* keypads = MahjongNumberKeypads::create();
-        addChild(keypads);
+        addChild(keypads,20);
     });
     
     //跑马灯

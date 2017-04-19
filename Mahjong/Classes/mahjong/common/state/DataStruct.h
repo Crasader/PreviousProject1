@@ -580,6 +580,7 @@ struct PlayerCpgRecShow{
 
 struct PlayBackInfo{
     int result;
+    std::string gameType;
     std::string heroid;
     std::vector<std::string> playBackInfo;
 };

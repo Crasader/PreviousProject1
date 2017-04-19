@@ -2446,6 +2446,10 @@ void MsgHandler::handleFupanInfo(std::string msg){
         const rapidjson::Value &who = _mDoc["who"];
         info.heroid =who.GetString();
     }
+    if(_mDoc.HasMember("t")){
+        const rapidjson::Value &temp = _mDoc["t"];
+        info.gameType =temp.GetString();
+    }
     GAMEDATA::getInstance()->setPlaybackInfo(info);
     postNotifyMessage(MSG_GAME_FU_PAN_NOTIFY, NULL);
 }

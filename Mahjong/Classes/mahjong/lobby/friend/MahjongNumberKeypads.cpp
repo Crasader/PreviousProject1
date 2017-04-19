@@ -26,12 +26,12 @@ bool MahjongNumberKeypads::init(){
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(MahjongNumberKeypads::closeView, this));
     closeImage->setScale(0.85f);
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(930, 565);
+    closeMenu->setPosition(1030, 655);
     addChild(closeMenu);
     
-    numberShow = Label::createWithSystemFont("", "arial", 48);
+    numberShow = Label::createWithSystemFont("", "arial", 68);
     numberShow->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    numberShow->setPosition(640,490);
+    numberShow->setPosition(640,550);
     addChild(numberShow);
     
     auto numberMenu = Menu::create();
@@ -41,19 +41,19 @@ bool MahjongNumberKeypads::init(){
         auto numebrBtn = MenuItemImage::create("friend/num_btn_1.png", "friend/num_btn_2.png", CC_CALLBACK_1(MahjongNumberKeypads::clickNumber, this));
         numebrBtn->setTag(i);
         numberMenu->addChild(numebrBtn);
-        numebrBtn->setPosition(-185+(i%3)*185,36-(i/3)*74);
+        numebrBtn->setPosition(-266+(i%3)*266,60-(i/3)*105);
         if(i<10){
-            auto numberLabel = Label::createWithSystemFont(StringUtils::format("%d",(i+1)%10), "arial", 48);
-            numberLabel->setPosition(85,35);
+            auto numberLabel = Label::createWithSystemFont(StringUtils::format("%d",(i+1)%10), "arial", 68);
+            numberLabel->setPosition(125,55);
             numberLabel->setColor(Color3B(239,239,239));
             numebrBtn->addChild(numberLabel);
         }else if (i==10){
             auto del = Sprite::create("friend/num_deleta.png");
-            del->setPosition(85,35);
+            del->setPosition(125,55);
             numebrBtn->addChild(del);
         }else{
             auto ok = Sprite::create("friend/confirm_iamge.png");
-            ok->setPosition(85,35);
+            ok->setPosition(125,55);
             numebrBtn->addChild(ok);
         }
         
