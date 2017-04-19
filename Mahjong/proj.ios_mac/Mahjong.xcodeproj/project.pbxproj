@@ -376,6 +376,21 @@
 		D2FB85211E07B9F700257EE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2FB85201E07B9F700257EE1 /* Images.xcassets */; };
 		D2FD5A6B1EA64B420016FCCC /* ReviewHongZhongcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */; };
 		D2FD5A6C1EA64B420016FCCC /* ReviewHongZhongcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */; };
+		D2FD5B541EA711510016FCCC /* CallVoiceAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */; };
+		D2FD5B551EA711510016FCCC /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD5B331EA711510016FCCC /* libopencore-amrnb.a */; };
+		D2FD5B561EA711510016FCCC /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD5B341EA711510016FCCC /* libopencore-amrwb.a */; };
+		D2FD5B571EA711510016FCCC /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B381EA711510016FCCC /* amrFileCodec.mm */; };
+		D2FD5B581EA711510016FCCC /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B3A1EA711510016FCCC /* wav.mm */; };
+		D2FD5B591EA711510016FCCC /* CallVoiceApi.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B3C1EA711510016FCCC /* CallVoiceApi.mm */; };
+		D2FD5B5A1EA711510016FCCC /* ChatRecorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B471EA711510016FCCC /* ChatRecorderView.m */; };
+		D2FD5B5B1EA711510016FCCC /* ChatRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2FD5B481EA711510016FCCC /* ChatRecorderView.xib */; };
+		D2FD5B5C1EA711510016FCCC /* ChatVoiceRecorderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B4A1EA711510016FCCC /* ChatVoiceRecorderVC.m */; };
+		D2FD5B5D1EA711510016FCCC /* ChatVoiceRecorderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2FD5B4B1EA711510016FCCC /* ChatVoiceRecorderVC.xib */; };
+		D2FD5B5E1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata in Resources */ = {isa = PBXBuildFile; fileRef = D2FD5B4C1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata */; };
+		D2FD5B5F1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip in Resources */ = {isa = PBXBuildFile; fileRef = D2FD5B4D1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip */; };
+		D2FD5B601EA711510016FCCC /* VoiceRecorderBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B4F1EA711510016FCCC /* VoiceRecorderBaseVC.m */; };
+		D2FD5B611EA711510016FCCC /* VoiceSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B511EA711510016FCCC /* VoiceSDK.mm */; };
+		D2FD5B621EA711510016FCCC /* VoiceMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B521EA711510016FCCC /* VoiceMgr.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -778,6 +793,34 @@
 		D2FB85201E07B9F700257EE1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Mahjong-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		D2FD5A691EA64B420016FCCC /* ReviewHongZhong.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ReviewHongZhong.hpp; sourceTree = "<group>"; };
 		D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewHongZhongcpp.cpp; sourceTree = "<group>"; };
+		D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallVoiceAndroidMethod.cpp; sourceTree = "<group>"; };
+		D2FD5B311EA711510016FCCC /* CallVoiceAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallVoiceAndroidMethod.h; sourceTree = "<group>"; };
+		D2FD5B331EA711510016FCCC /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		D2FD5B341EA711510016FCCC /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		D2FD5B371EA711510016FCCC /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		D2FD5B381EA711510016FCCC /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		D2FD5B391EA711510016FCCC /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		D2FD5B3A1EA711510016FCCC /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
+		D2FD5B3B1EA711510016FCCC /* CallVoiceApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallVoiceApi.h; sourceTree = "<group>"; };
+		D2FD5B3C1EA711510016FCCC /* CallVoiceApi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CallVoiceApi.mm; sourceTree = "<group>"; };
+		D2FD5B3E1EA711510016FCCC /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		D2FD5B3F1EA711510016FCCC /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		D2FD5B411EA711510016FCCC /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		D2FD5B421EA711510016FCCC /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		D2FD5B461EA711510016FCCC /* ChatRecorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRecorderView.h; sourceTree = "<group>"; };
+		D2FD5B471EA711510016FCCC /* ChatRecorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRecorderView.m; sourceTree = "<group>"; };
+		D2FD5B481EA711510016FCCC /* ChatRecorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatRecorderView.xib; sourceTree = "<group>"; };
+		D2FD5B491EA711510016FCCC /* ChatVoiceRecorderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatVoiceRecorderVC.h; sourceTree = "<group>"; };
+		D2FD5B4A1EA711510016FCCC /* ChatVoiceRecorderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatVoiceRecorderVC.m; sourceTree = "<group>"; };
+		D2FD5B4B1EA711510016FCCC /* ChatVoiceRecorderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatVoiceRecorderVC.xib; sourceTree = "<group>"; };
+		D2FD5B4C1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = com.poxiao.dqmahjong.xcappdata; sourceTree = "<group>"; };
+		D2FD5B4D1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = com.poxiao.dqmahjong.xcappdata.zip; sourceTree = "<group>"; };
+		D2FD5B4E1EA711510016FCCC /* VoiceRecorderBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceRecorderBaseVC.h; sourceTree = "<group>"; };
+		D2FD5B4F1EA711510016FCCC /* VoiceRecorderBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceRecorderBaseVC.m; sourceTree = "<group>"; };
+		D2FD5B501EA711510016FCCC /* VoiceSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceSDK.h; sourceTree = "<group>"; };
+		D2FD5B511EA711510016FCCC /* VoiceSDK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceSDK.mm; sourceTree = "<group>"; };
+		D2FD5B521EA711510016FCCC /* VoiceMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoiceMgr.cpp; sourceTree = "<group>"; };
+		D2FD5B531EA711510016FCCC /* VoiceMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceMgr.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -791,6 +834,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FD5B551EA711510016FCCC /* libopencore-amrnb.a in Frameworks */,
+				D2FD5B561EA711510016FCCC /* libopencore-amrwb.a in Frameworks */,
 				D252FCB61E7FC31300937322 /* libWeChatSDK.a in Frameworks */,
 				D2DB5DF51E790BDA0073ABD8 /* AddressBook.framework in Frameworks */,
 				D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */,
@@ -984,6 +1029,7 @@
 				D2B1A85A1CCDF0F300A20896 /* server */,
 				D2B1A8641CCDF0F300A20896 /* socket */,
 				D2B1A86C1CCDF0F400A20896 /* userdata */,
+				D2FD5B2E1EA711510016FCCC /* voicesdk */,
 				D252FC721E7FB76700937322 /* wechat */,
 			);
 			name = Classes;
@@ -1873,6 +1919,113 @@
 			path = special;
 			sourceTree = "<group>";
 		};
+		D2FD5B2E1EA711510016FCCC /* voicesdk */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B2F1EA711510016FCCC /* android */,
+				D2FD5B321EA711510016FCCC /* armlib */,
+				D2FD5B351EA711510016FCCC /* ios */,
+				D2FD5B521EA711510016FCCC /* VoiceMgr.cpp */,
+				D2FD5B531EA711510016FCCC /* VoiceMgr.h */,
+			);
+			path = voicesdk;
+			sourceTree = "<group>";
+		};
+		D2FD5B2F1EA711510016FCCC /* android */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */,
+				D2FD5B311EA711510016FCCC /* CallVoiceAndroidMethod.h */,
+			);
+			path = android;
+			sourceTree = "<group>";
+		};
+		D2FD5B321EA711510016FCCC /* armlib */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B331EA711510016FCCC /* libopencore-amrnb.a */,
+				D2FD5B341EA711510016FCCC /* libopencore-amrwb.a */,
+			);
+			path = armlib;
+			sourceTree = "<group>";
+		};
+		D2FD5B351EA711510016FCCC /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B361EA711510016FCCC /* amrwapper */,
+				D2FD5B3B1EA711510016FCCC /* CallVoiceApi.h */,
+				D2FD5B3C1EA711510016FCCC /* CallVoiceApi.mm */,
+				D2FD5B3D1EA711510016FCCC /* opencore-amrnb */,
+				D2FD5B401EA711510016FCCC /* opencore-amrwb */,
+				D2FD5B431EA711510016FCCC /* VoiceRecorderVC */,
+				D2FD5B501EA711510016FCCC /* VoiceSDK.h */,
+				D2FD5B511EA711510016FCCC /* VoiceSDK.mm */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		D2FD5B361EA711510016FCCC /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B371EA711510016FCCC /* amrFileCodec.h */,
+				D2FD5B381EA711510016FCCC /* amrFileCodec.mm */,
+				D2FD5B391EA711510016FCCC /* wav.h */,
+				D2FD5B3A1EA711510016FCCC /* wav.mm */,
+			);
+			path = amrwapper;
+			sourceTree = "<group>";
+		};
+		D2FD5B3D1EA711510016FCCC /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B3E1EA711510016FCCC /* interf_dec.h */,
+				D2FD5B3F1EA711510016FCCC /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		D2FD5B401EA711510016FCCC /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B411EA711510016FCCC /* dec_if.h */,
+				D2FD5B421EA711510016FCCC /* if_rom.h */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		D2FD5B431EA711510016FCCC /* VoiceRecorderVC */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B441EA711510016FCCC /* ChatVoiceRecorderVC */,
+				D2FD5B4C1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata */,
+				D2FD5B4D1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip */,
+				D2FD5B4E1EA711510016FCCC /* VoiceRecorderBaseVC.h */,
+				D2FD5B4F1EA711510016FCCC /* VoiceRecorderBaseVC.m */,
+			);
+			path = VoiceRecorderVC;
+			sourceTree = "<group>";
+		};
+		D2FD5B441EA711510016FCCC /* ChatVoiceRecorderVC */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B451EA711510016FCCC /* ChatRecorderView */,
+				D2FD5B491EA711510016FCCC /* ChatVoiceRecorderVC.h */,
+				D2FD5B4A1EA711510016FCCC /* ChatVoiceRecorderVC.m */,
+				D2FD5B4B1EA711510016FCCC /* ChatVoiceRecorderVC.xib */,
+			);
+			path = ChatVoiceRecorderVC;
+			sourceTree = "<group>";
+		};
+		D2FD5B451EA711510016FCCC /* ChatRecorderView */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5B461EA711510016FCCC /* ChatRecorderView.h */,
+				D2FD5B471EA711510016FCCC /* ChatRecorderView.m */,
+				D2FD5B481EA711510016FCCC /* ChatRecorderView.xib */,
+			);
+			path = ChatRecorderView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2020,12 +2173,15 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				D253296A1CC0D33600DDAD97 /* jong in Resources */,
+				D2FD5B5D1EA711510016FCCC /* ChatVoiceRecorderVC.xib in Resources */,
 				D253295A1CC0D33600DDAD97 /* common in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				D25DEE411CC4AE78007D428A /* shop in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				D25329561CC0D33600DDAD97 /* chat in Resources */,
+				D2FD5B5E1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata in Resources */,
 				D25DEE371CC0F56A007D428A /* bill in Resources */,
+				D2FD5B5B1EA711510016FCCC /* ChatRecorderView.xib in Resources */,
 				D22F1C181CC5CB67007270B2 /* setting in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				D252FD681E80F3A500937322 /* openroom in Resources */,
@@ -2036,6 +2192,7 @@
 				D25329781CC0D33600DDAD97 /* res in Resources */,
 				D253297C1CC0D33600DDAD97 /* trusteeship in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				D2FD5B5F1EA711510016FCCC /* com.poxiao.dqmahjong.xcappdata.zip in Resources */,
 				D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2116,10 +2273,12 @@
 				D252FC5B1E7FABE900937322 /* Player.cpp in Sources */,
 				D252FB5A1E7FA5EC00937322 /* Chinese.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
+				D2FD5B591EA711510016FCCC /* CallVoiceApi.mm in Sources */,
 				D252FB561E7FA5EC00937322 /* UserSetting.cpp in Sources */,
 				D252FC4D1E7FABE900937322 /* OutFogAnim.cpp in Sources */,
 				D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D252FB301E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
+				D2FD5B5C1EA711510016FCCC /* ChatVoiceRecorderVC.m in Sources */,
 				D252FC081E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */,
 				D252FC5D1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
 				D252FC571E7FABE900937322 /* PlayerBase.cpp in Sources */,
@@ -2134,9 +2293,11 @@
 				D252FBA01E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D27F06081E94BFE50085438A /* HongZhongView.cpp in Sources */,
+				D2FD5B621EA711510016FCCC /* VoiceMgr.cpp in Sources */,
 				D252FB5E1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
 				D252FCAE1E7FB77F00937322 /* CallIOSMethod.mm in Sources */,
 				D2B1D9221E9E026800EB8FB0 /* GameResultCell.cpp in Sources */,
+				D2FD5B541EA711510016FCCC /* CallVoiceAndroidMethod.cpp in Sources */,
 				D252FBC61E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
 				D252FB421E7FA5EC00937322 /* InfoToast.cpp in Sources */,
 				D252FBBA1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
@@ -2190,6 +2351,7 @@
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D252FB3E1E7FA5EC00937322 /* HintDialog.cpp in Sources */,
 				D252FC451E7FABE900937322 /* DealJongAnim.cpp in Sources */,
+				D2FD5B601EA711510016FCCC /* VoiceRecorderBaseVC.m in Sources */,
 				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D252FBAE1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D252FBF91E7FAA3100937322 /* AudioRecordManager.m in Sources */,
@@ -2198,7 +2360,9 @@
 				D252FC491E7FABE900937322 /* HupaiAnim.cpp in Sources */,
 				D252FBD81E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D252FC6D1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */,
+				D2FD5B571EA711510016FCCC /* amrFileCodec.mm in Sources */,
 				D252FCAF1E7FB77F00937322 /* LoginByWechat.mm in Sources */,
+				D2FD5B581EA711510016FCCC /* wav.mm in Sources */,
 				D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
 				D252FB221E7FA5EC00937322 /* BillInfo.cpp in Sources */,
 				D252FBC41E7FA5EC00937322 /* ExchangePropCell.cpp in Sources */,
@@ -2207,6 +2371,7 @@
 				D252FB241E7FA5EC00937322 /* FupanDialog.cpp in Sources */,
 				D252FB201E7FA5EC00937322 /* BillDetailInfo.cpp in Sources */,
 				D252FC671E7FABE900937322 /* HuPaiHintLayer.cpp in Sources */,
+				D2FD5B5A1EA711510016FCCC /* ChatRecorderView.m in Sources */,
 				D252FBDA1E7FA5EC00937322 /* SplashScene.cpp in Sources */,
 				D252FC6B1E7FABE900937322 /* QuitRoomDialog.cpp in Sources */,
 				D252FBC81E7FA5EC00937322 /* LequanShop.cpp in Sources */,
@@ -2217,6 +2382,7 @@
 				D252FCB01E7FB77F00937322 /* RechargeVC.mm in Sources */,
 				D252FB3C1E7FA5EC00937322 /* LostNetwork2.cpp in Sources */,
 				D252FB401E7FA5EC00937322 /* TextHintDialog.cpp in Sources */,
+				D2FD5B611EA711510016FCCC /* VoiceSDK.mm in Sources */,
 				D252FBB61E7FA5EC00937322 /* ChargeItem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2404,6 +2570,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../Classes/wechat/ios/wechat/",
+					"$(SRCROOT)/../Classes/voicesdk/armlib/",
 				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -2455,6 +2622,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../Classes/wechat/ios/wechat/",
+					"$(SRCROOT)/../Classes/voicesdk/armlib/",
 				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
