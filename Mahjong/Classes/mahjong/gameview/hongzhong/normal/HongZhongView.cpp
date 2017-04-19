@@ -778,7 +778,16 @@ void HongZhongView::showHuPaiXing(std::string paixing){
     if(paixing==""){
         return;
     }
-    
+    vector<string> pais = StringUtil::split(paixing, ",");
+    bool hasPaiXing = false;
+    for(auto type:pais){
+        if(type == "3"||type == "12"||type == "13"||type == "14"){
+            hasPaiXing = true;
+        }
+    }
+    if(!hasPaiXing){
+        return;
+    }
     float posY = 260;
     //判断是不是自己胡了
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
@@ -796,8 +805,6 @@ void HongZhongView::showHuPaiXing(std::string paixing){
     paixinBg->setOpacity(77);
     paixinBg->runAction(Sequence::create(FadeTo::create(3.0/24, 255), NULL));
     
-    
-    vector<string> pais = StringUtil::split(paixing, ",");
     std::vector<int> hutemp;
     for(auto var:pais){
         hutemp.push_back(atoi(var.c_str()));
