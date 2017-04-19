@@ -2490,7 +2490,9 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         data.lequan = temp["lequan"].GetInt();
         data.fangka = temp["fangka"].GetDouble();
         data.pic = temp["pic"].GetString();
-        data.hua = temp["hua"].GetInt();
+        if(temp.HasMember("hua")){
+          data.hua = temp["hua"].GetInt();
+        }
         data.status = 2;
         data.ifready = 0;
         data.hand = temp["poker"].GetString();
