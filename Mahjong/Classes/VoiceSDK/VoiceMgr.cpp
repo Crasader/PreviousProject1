@@ -4,7 +4,7 @@
 using namespace experimental;
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-#include "VoiceSDK/android/CallAndroidMethod.h"
+#include "voicesdk/android/CallVoiceAndroidMethod.h"
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
 #include "voicesdk/ios/CallVoiceApi.h"
@@ -41,7 +41,7 @@ void VoiceMgr::prepare(string filename)
 	AudioEngine::pauseAll();
 	clearCache(filename);  // todov
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-	CallAndroidMethod::getInstance()->prepare(filename);
+	CallVoiceAndroidMethod::getInstance()->prepare(filename);
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
    CallVoiceApi::getInstance()->prepareRecord(filename);
@@ -52,7 +52,7 @@ void VoiceMgr::release()
 {
 	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-	CallAndroidMethod::getInstance()->release();
+	CallVoiceAndroidMethod::getInstance()->release();
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
     CallVoiceApi::getInstance()->finishRecord();
@@ -63,7 +63,7 @@ void VoiceMgr::cancel()
 {
 	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-	CallAndroidMethod::getInstance()->cancel();
+	CallVoiceAndroidMethod::getInstance()->cancel();
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
      CallVoiceApi::getInstance()->cancelRecord();
@@ -100,7 +100,7 @@ void VoiceMgr::play(string filename)
 {
 	AudioEngine::pauseAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-	CallAndroidMethod::getInstance()->play(filename);
+	CallVoiceAndroidMethod::getInstance()->play(filename);
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
      CallVoiceApi::getInstance()->play(filename);
@@ -111,7 +111,7 @@ void VoiceMgr::stop()
 {
 	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-	CallAndroidMethod::getInstance()->stop();
+	CallVoiceAndroidMethod::getInstance()->stop();
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
      CallVoiceApi::getInstance()->stopPlay();
@@ -167,7 +167,7 @@ void VoiceMgr::setStorageDir(string dir)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	// jni 调用 setStorageDir 方法
-	CallAndroidMethod::getInstance()->setStorageDir(dir);
+	CallVoiceAndroidMethod::getInstance()->setStorageDir(dir);
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
     CallVoiceApi::getInstance()->setStorageDir(dir);

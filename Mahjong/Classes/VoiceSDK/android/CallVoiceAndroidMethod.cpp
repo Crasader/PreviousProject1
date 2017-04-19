@@ -23,69 +23,6 @@ const char*  CallVoiceAndroidMethod::getJniPath()
 }
 
 
-
-void CallVoiceAndroidMethod::requestEvent(std::string poxiaoId,std::string payId){
-    //GAMEDATA::getInstance()->setIsInPay(true);
-    Director::getInstance()->getEventDispatcher()->dispatchCustomEvent("mahjong_start_pay");
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-		JniMethodInfo methodInfo;
-		auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
-		bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"requestEvent","(Ljava/lang/String;Ljava/lang/String;)V");
-        jstring poxiao_id = JniHelper::getEnv()->NewStringUTF(poxiaoId.c_str());
-		jstring pay_point = JniHelper::getEnv()->NewStringUTF(payId.c_str());;
-		if(isHave){
-			jobject jobj;
-			JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,poxiao_id,pay_point);
-		}
-#endif	
-}
-
-void CallVoiceAndroidMethod::queryEventResult(){
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo methodInfo;
-    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
-    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"queryPayResult","()V");
-    if(isHave){
-        jobject jobj;
-        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
-    }
-#endif
-}
-
-void CallVoiceAndroidMethod::shareToWeChat(std::string url,std::string title, std::string content,bool friends){
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo methodInfo;
-    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
-    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"shareToWeChat","(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V");
-    jstring share_url = JniHelper::getEnv()->NewStringUTF(url.c_str());
-    jstring share_title = JniHelper::getEnv()->NewStringUTF(title.c_str());
-    jstring share_content = JniHelper::getEnv()->NewStringUTF(content.c_str());
-    jboolean share_friends = friends;
-    if(isHave){
-        jobject jobj;
-        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url,share_title,share_content,friends);
-    }
-#endif
-}
-
-void CallVoiceAndroidMethod::shareImageToWeChat(std::string imagePath,bool friends){
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo methodInfo;
-    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
-    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"shareImageToWeChat","(Ljava/lang/String;Z)V");
-    jstring share_url = JniHelper::getEnv()->NewStringUTF(imagePath.c_str());
-    jboolean share_friends = friends;
-    if(isHave){
-        jobject jobj;
-        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url,friends);
-    }
-#endif
-}
-
-/*
- * Â¼ÒôÏà¹Ø  v1   start 
- */
-
 void CallVoiceAndroidMethod::beginRecordAudio()
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
@@ -244,38 +181,6 @@ void CallVoiceAndroidMethod::setStorageDir(std::string dir)
 
 
 
-
-
-
-
-
-
-
-
-void CallVoiceAndroidMethod::weChatLogin(){
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo methodInfo;
-    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/RecordUtil");
-    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"weChatLogin","()V");
-    if(isHave){
-        jobject jobj;
-        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
-    }
-#endif
-}
-
-void CallVoiceAndroidMethod::clearWechatOpenId(){
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo methodInfo;
-    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
-    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"clearWechatOpenId","()V");
-    if(isHave){
-        jobject jobj;
-        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
-    }
-#endif
-}
-
 std::string CallVoiceAndroidMethod::getSdCardDir(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     JniMethodInfo methodInfo;
@@ -334,28 +239,3 @@ int CallVoiceAndroidMethod::getBatteryPersent(){
 	return 50;
 }
 
-void CallVoiceAndroidMethod::showFeedBackDialog()
-{
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-	JniMethodInfo methodInfo;
-	bool isHave = JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/cpp/AppActivity", "showFeedDialogOnUiThread", "()V");
-	if (isHave){
-		jobject jobj;
-		JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
-	}
-#endif
-}
-
-bool CallVoiceAndroidMethod::isInstalledWX()
-{
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-	JniMethodInfo methodInfo;
-	bool isHave = JniHelper::getStaticMethodInfo(methodInfo, "org/cocos2dx/cpp/payment/Payment", "isWxinstalled", "()Z");
-	if (isHave){
-		
-		auto jbool = JniHelper::getEnv()->CallStaticBooleanMethod(methodInfo.classID, methodInfo.methodID);
-		return jbool;
-	}
-#endif
-	return false;
-}
