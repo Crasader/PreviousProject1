@@ -67,14 +67,10 @@
 		D252FB231E7FA5EC00937322 /* BillInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA351E7FA5EC00937322 /* BillInfo.cpp */; };
 		D252FB241E7FA5EC00937322 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA381E7FA5EC00937322 /* FupanDialog.cpp */; };
 		D252FB251E7FA5EC00937322 /* FupanDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA381E7FA5EC00937322 /* FupanDialog.cpp */; };
-		D252FB261E7FA5EC00937322 /* ChatAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA3C1E7FA5EC00937322 /* ChatAndroidMethod.cpp */; };
-		D252FB271E7FA5EC00937322 /* ChatAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA3C1E7FA5EC00937322 /* ChatAndroidMethod.cpp */; };
 		D252FB281E7FA5EC00937322 /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA3E1E7FA5EC00937322 /* ChatDialog.cpp */; };
 		D252FB291E7FA5EC00937322 /* ChatDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA3E1E7FA5EC00937322 /* ChatDialog.cpp */; };
 		D252FB301E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA471E7FA5EC00937322 /* FaceChatLayer.cpp */; };
 		D252FB311E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA471E7FA5EC00937322 /* FaceChatLayer.cpp */; };
-		D252FB321E7FA5EC00937322 /* GameRecordAudioManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA491E7FA5EC00937322 /* GameRecordAudioManage.cpp */; };
-		D252FB331E7FA5EC00937322 /* GameRecordAudioManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA491E7FA5EC00937322 /* GameRecordAudioManage.cpp */; };
 		D252FB341E7FA5EC00937322 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA4B1E7FA5EC00937322 /* PlayerChatManage.cpp */; };
 		D252FB351E7FA5EC00937322 /* PlayerChatManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA4B1E7FA5EC00937322 /* PlayerChatManage.cpp */; };
 		D252FB361E7FA5EC00937322 /* QuickChatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA4D1E7FA5EC00937322 /* QuickChatLayer.cpp */; };
@@ -183,9 +179,6 @@
 		D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB1A1E7FA5EC00937322 /* LoadResource.cpp */; };
 		D252FBDA1E7FA5EC00937322 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB1C1E7FA5EC00937322 /* SplashScene.cpp */; };
 		D252FBDB1E7FA5EC00937322 /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB1C1E7FA5EC00937322 /* SplashScene.cpp */; };
-		D252FBF91E7FAA3100937322 /* AudioRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D252FBF41E7FAA3100937322 /* AudioRecordManager.m */; };
-		D252FBFA1E7FAA3100937322 /* CallRcordMecordios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D252FBF61E7FAA3100937322 /* CallRcordMecordios.mm */; };
-		D252FBFB1E7FAA3100937322 /* LVRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D252FBF81E7FAA3100937322 /* LVRecordTool.m */; };
 		D252FC081E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FBFE1E7FABC600937322 /* DissovleRoomDialog.cpp */; };
 		D252FC091E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FBFE1E7FABC600937322 /* DissovleRoomDialog.cpp */; };
 		D252FC0A1E7FABC600937322 /* RoomFullDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FC001E7FABC600937322 /* RoomFullDialog.cpp */; };
@@ -492,14 +485,10 @@
 		D252FA361E7FA5EC00937322 /* BillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BillInfo.h; sourceTree = "<group>"; };
 		D252FA381E7FA5EC00937322 /* FupanDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FupanDialog.cpp; sourceTree = "<group>"; };
 		D252FA391E7FA5EC00937322 /* FupanDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FupanDialog.hpp; sourceTree = "<group>"; };
-		D252FA3C1E7FA5EC00937322 /* ChatAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatAndroidMethod.cpp; sourceTree = "<group>"; };
-		D252FA3D1E7FA5EC00937322 /* ChatAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatAndroidMethod.h; sourceTree = "<group>"; };
 		D252FA3E1E7FA5EC00937322 /* ChatDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChatDialog.cpp; sourceTree = "<group>"; };
 		D252FA3F1E7FA5EC00937322 /* ChatDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChatDialog.hpp; sourceTree = "<group>"; };
 		D252FA471E7FA5EC00937322 /* FaceChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaceChatLayer.cpp; sourceTree = "<group>"; };
 		D252FA481E7FA5EC00937322 /* FaceChatLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaceChatLayer.hpp; sourceTree = "<group>"; };
-		D252FA491E7FA5EC00937322 /* GameRecordAudioManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameRecordAudioManage.cpp; sourceTree = "<group>"; };
-		D252FA4A1E7FA5EC00937322 /* GameRecordAudioManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecordAudioManage.h; sourceTree = "<group>"; };
 		D252FA4B1E7FA5EC00937322 /* PlayerChatManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerChatManage.cpp; sourceTree = "<group>"; };
 		D252FA4C1E7FA5EC00937322 /* PlayerChatManage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerChatManage.hpp; sourceTree = "<group>"; };
 		D252FA4D1E7FA5EC00937322 /* QuickChatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuickChatLayer.cpp; sourceTree = "<group>"; };
@@ -610,12 +599,6 @@
 		D252FB1B1E7FA5EC00937322 /* LoadResource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadResource.hpp; sourceTree = "<group>"; };
 		D252FB1C1E7FA5EC00937322 /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		D252FB1D1E7FA5EC00937322 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
-		D252FBF31E7FAA3100937322 /* AudioRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecordManager.h; sourceTree = "<group>"; };
-		D252FBF41E7FAA3100937322 /* AudioRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecordManager.m; sourceTree = "<group>"; };
-		D252FBF51E7FAA3100937322 /* CallRcordMecordios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallRcordMecordios.h; sourceTree = "<group>"; };
-		D252FBF61E7FAA3100937322 /* CallRcordMecordios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CallRcordMecordios.mm; sourceTree = "<group>"; };
-		D252FBF71E7FAA3100937322 /* LVRecordTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVRecordTool.h; sourceTree = "<group>"; };
-		D252FBF81E7FAA3100937322 /* LVRecordTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVRecordTool.m; sourceTree = "<group>"; };
 		D252FBFE1E7FABC600937322 /* DissovleRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DissovleRoomDialog.cpp; sourceTree = "<group>"; };
 		D252FBFF1E7FABC600937322 /* DissovleRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DissovleRoomDialog.hpp; sourceTree = "<group>"; };
 		D252FC001E7FABC600937322 /* RoomFullDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoomFullDialog.cpp; sourceTree = "<group>"; };
@@ -1158,29 +1141,16 @@
 		D252FA3A1E7FA5EC00937322 /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				D252FBF21E7FAA3100937322 /* chatIOS */,
-				D252FA3B1E7FA5EC00937322 /* chatAndroid */,
 				D252FA3E1E7FA5EC00937322 /* ChatDialog.cpp */,
 				D252FA3F1E7FA5EC00937322 /* ChatDialog.hpp */,
 				D252FA471E7FA5EC00937322 /* FaceChatLayer.cpp */,
 				D252FA481E7FA5EC00937322 /* FaceChatLayer.hpp */,
-				D252FA491E7FA5EC00937322 /* GameRecordAudioManage.cpp */,
-				D252FA4A1E7FA5EC00937322 /* GameRecordAudioManage.h */,
 				D252FA4B1E7FA5EC00937322 /* PlayerChatManage.cpp */,
 				D252FA4C1E7FA5EC00937322 /* PlayerChatManage.hpp */,
 				D252FA4D1E7FA5EC00937322 /* QuickChatLayer.cpp */,
 				D252FA4E1E7FA5EC00937322 /* QuickChatLayer.hpp */,
 			);
 			path = chat;
-			sourceTree = "<group>";
-		};
-		D252FA3B1E7FA5EC00937322 /* chatAndroid */ = {
-			isa = PBXGroup;
-			children = (
-				D252FA3C1E7FA5EC00937322 /* ChatAndroidMethod.cpp */,
-				D252FA3D1E7FA5EC00937322 /* ChatAndroidMethod.h */,
-			);
-			path = chatAndroid;
 			sourceTree = "<group>";
 		};
 		D252FA4F1E7FA5EC00937322 /* dialog */ = {
@@ -1502,19 +1472,6 @@
 				D252FB1D1E7FA5EC00937322 /* SplashScene.h */,
 			);
 			path = splash;
-			sourceTree = "<group>";
-		};
-		D252FBF21E7FAA3100937322 /* chatIOS */ = {
-			isa = PBXGroup;
-			children = (
-				D252FBF31E7FAA3100937322 /* AudioRecordManager.h */,
-				D252FBF41E7FAA3100937322 /* AudioRecordManager.m */,
-				D252FBF51E7FAA3100937322 /* CallRcordMecordios.h */,
-				D252FBF61E7FAA3100937322 /* CallRcordMecordios.mm */,
-				D252FBF71E7FAA3100937322 /* LVRecordTool.h */,
-				D252FBF81E7FAA3100937322 /* LVRecordTool.m */,
-			);
-			path = chatIOS;
 			sourceTree = "<group>";
 		};
 		D252FBFC1E7FABC600937322 /* friend */ = {
@@ -2283,7 +2240,6 @@
 				D252FC5D1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
 				D252FC571E7FABE900937322 /* PlayerBase.cpp in Sources */,
 				D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */,
-				D252FBFB1E7FAA3100937322 /* LVRecordTool.m in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
 				D252FB4A1E7FA5EC00937322 /* OtherPlayerInfo.cpp in Sources */,
@@ -2339,14 +2295,11 @@
 				D252FC0C1E7FABC600937322 /* RoomIdErrorDialog.cpp in Sources */,
 				D252FBAC1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FC4F1E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
-				D252FB321E7FA5EC00937322 /* GameRecordAudioManage.cpp in Sources */,
 				D2B1D9181E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */,
 				D252FBB01E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
 				D252FB521E7FA5EC00937322 /* GameFeedDialog.cpp in Sources */,
-				D252FBFA1E7FAA3100937322 /* CallRcordMecordios.mm in Sources */,
 				D252FB621E7FA5EC00937322 /* HeadImage.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
-				D252FB261E7FA5EC00937322 /* ChatAndroidMethod.cpp in Sources */,
 				D252FBA61E7FA5EC00937322 /* GoldRoomPlate.cpp in Sources */,
 				D2B1A8FD1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D252FB3E1E7FA5EC00937322 /* HintDialog.cpp in Sources */,
@@ -2354,7 +2307,6 @@
 				D2FD5B601EA711510016FCCC /* VoiceRecorderBaseVC.m in Sources */,
 				D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
 				D252FBAE1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
-				D252FBF91E7FAA3100937322 /* AudioRecordManager.m in Sources */,
 				D2B1D91C1E9E026800EB8FB0 /* HZSpecialResultLayer.cpp in Sources */,
 				D252FB581E7FA5EC00937322 /* GameData.cpp in Sources */,
 				D252FC491E7FABE900937322 /* HupaiAnim.cpp in Sources */,
@@ -2429,7 +2381,6 @@
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D252FBAD1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FB391E7FA5EC00937322 /* BaseDialog.cpp in Sources */,
-				D252FB271E7FA5EC00937322 /* ChatAndroidMethod.cpp in Sources */,
 				D252FB9D1E7FA5EC00937322 /* DailyEvent.cpp in Sources */,
 				D252FBA31E7FA5EC00937322 /* EnterRoomDialog.cpp in Sources */,
 				D252FBCD1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */,
@@ -2497,7 +2448,6 @@
 				D252FBAF1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D252FBC71E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
-				D252FB331E7FA5EC00937322 /* GameRecordAudioManage.cpp in Sources */,
 				D252FBC11E7FA5EC00937322 /* Huode.cpp in Sources */,
 				D252FC6A1E7FABE900937322 /* Orientation.cpp in Sources */,
 				D252FC5A1E7FABE900937322 /* PlayerHero.cpp in Sources */,

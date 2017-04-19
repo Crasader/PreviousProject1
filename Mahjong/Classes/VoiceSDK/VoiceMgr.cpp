@@ -1,7 +1,3 @@
-/*
-  祭奠我逝去的  恒光 
-  tanwejiang 
-*/
 #include "voicesdk/VoiceMgr.h"
 #include "audio/include/AudioEngine.h"
 #include "http/base64/Base64.h"  
@@ -12,7 +8,6 @@ using namespace experimental;
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)
 #include "voicesdk/ios/CallVoiceApi.h"
-//#include "voicesdk/ios/VoiceApi.h"
 #endif
 
 VoiceMgr* VoiceMgr::_instance = NULL;

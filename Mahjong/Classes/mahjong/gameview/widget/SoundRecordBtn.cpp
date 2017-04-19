@@ -9,7 +9,7 @@
 #include "mahjong/gameview/widget/SoundRecordBtn.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
-//#include "youmi/MyIM.h"
+#include "voicesdk/VoiceMgr.h"
 
 bool SoundRecordBtn::init(){
     if(!Layer::init()){
@@ -42,7 +42,7 @@ bool SoundRecordBtn::onTouchBegan(Touch *touch, Event  *event){
         addChild(soudn,5);
         startRecord = true;
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-        //MyIM::beginRecord(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()));
+        VoiceMgr::getInstance()->prepare(AUDIO_RECOR_PATH);
 #endif
     }
     return true;
@@ -66,8 +66,9 @@ void SoundRecordBtn::onTouchEnded(Touch *touch, Event  *event){
         protectedTime =0;
         startRecord = false;
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-        //MyIM::endRecord();
-        //NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand("","",true));
+        VoiceMgr::getInstance()->release();	                                //  录音管理类释放资源
+        string msg = VoiceMgr::getInstance()->getVoiceData(AUDIO_RECOR_PATH);
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerChatMsgCommand(msg, "", true));
 #endif
     }
 }

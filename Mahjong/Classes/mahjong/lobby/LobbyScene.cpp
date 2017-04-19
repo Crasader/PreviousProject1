@@ -27,7 +27,6 @@
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/audio/Audio.h"
 #include "mahjong/common/widget/ParticleUtil.hpp"
-#include "mahjong/common/chat/chatAndroid/ChatAndroidMethod.h"
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/GameConfig.h"
 #include "wechat/android/CallAndroidMethod.h"

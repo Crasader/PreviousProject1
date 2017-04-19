@@ -6,7 +6,6 @@
 #include "mahjong/common/chat/ChatDialog.hpp"
 #include "mahjong/common/audio/Audio.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
-#include "mahjong/common/chat/chatAndroid/ChatAndroidMethod.h"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/GameConfig.h"
 #include "server/MsgHandler.h"

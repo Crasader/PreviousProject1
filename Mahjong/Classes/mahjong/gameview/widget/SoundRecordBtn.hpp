@@ -12,6 +12,8 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+#define AUDIO_RECOR_PATH "mahjong_record.amr"
+
 class SoundRecordBtn : public Layer{
     
 public:

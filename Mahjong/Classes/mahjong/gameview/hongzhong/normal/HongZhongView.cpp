@@ -25,7 +25,6 @@
 #include "mahjong/common/dialog/prompt/TextHintDialog.hpp"
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/widget/batteryInfo/BatteryInfo.h"
-#include "mahjong/common/chat/GameRecordAudioManage.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/result/ResultScene.hpp"
 #include "server/SocketDataManage.h"

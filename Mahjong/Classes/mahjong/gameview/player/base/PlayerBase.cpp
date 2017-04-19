@@ -4,12 +4,12 @@
 #include "mahjong/common/heroinfo/OtherPlayerInfo.hpp"
 #include "mahjong/common/chat/PlayerChatManage.hpp"
 #include "mahjong/common/widget/HeadImage.hpp"
-#include "mahjong/common/chat/GameRecordAudioManage.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
-#include "http/base64/base64.h"
+#include "http/base64/Base64.h"
 #include "ui/UIImageView.h"
 #include "ui/UIRichText.h"
+#include "voicesdk/VoiceMgr.h"
 
 
 Sprite* PlayerBase::biaoji = NULL;
@@ -538,7 +538,7 @@ void PlayerBase::onEnter(){
             
             if(data.mark ){
                 if((data.poxiaoId != UserData::getInstance()->getPoxiaoId())){
-                    GameAudioManage::getInstance()->playAudio(data.content,data.poxiaoId);
+                    VoiceMgr::getInstance()->writeVoice("record.amr",data.content);
                 }
                 auto sound = Sprite::create("gameview/sound_pop.png");
                 sound->setPosition(getVec2BySeatId(seatId));
