@@ -205,9 +205,6 @@ static NSString *DEVICESTRING= @"iphone";
                     UserData::getInstance()->setGender(1);
                 }
                 return true;
-            }else{
-                UserData::getInstance()->setWxOpenId("unknow");
-                [self sendAuthRequestScope];
             }
             
         }
@@ -220,6 +217,8 @@ static NSString *DEVICESTRING= @"iphone";
     {
         NSLog(@"系统版本过低");
     }
+    UserData::getInstance()->setWxOpenId("unknow");
+    [self sendAuthRequestScope];
     return false;
 }
 
