@@ -37,7 +37,7 @@ bool FanMaAnim::init(std::vector<std::string> mas){
     auto animStep3 = CallFunc::create([=](){
         for(int i =0; i<mas.size();i++ ){
             Jong* bigJong = Jong::create();
-            bigJong->showJong(playedshow, atoi(mas.at(index).c_str()));
+            bigJong->showJong(playedshow, atoi(mas.at(i).c_str()));
             bigJong->setPosition(640-72*mas.size()/2+i*72,350);
             bigJong->setScale(0.9);
             addChild(bigJong);
