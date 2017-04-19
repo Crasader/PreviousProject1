@@ -2391,8 +2391,8 @@ void MsgHandler::openRoomEnquireResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if(_mDoc.HasMember("lequan")){
-        auto &lequan = _mDoc["lequan"];
+    if(_mDoc.HasMember("le")){
+        auto &lequan = _mDoc["le"];
         GAMEDATA::getInstance()->setFangzhuLequan(lequan.GetString());
     }
     postNotifyMessage(MSG_LOBBY_ASK_OPEN_ROOM, nullptr);

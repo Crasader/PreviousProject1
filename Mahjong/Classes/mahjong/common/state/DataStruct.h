@@ -42,6 +42,15 @@ enum HuType{
     lajihu
 };
 
+enum LeziType{
+    type1100 = 0,// 1/1 无勒子
+    type1120,// 1/1 20勒子
+    type1150,// 1/1 50勒子
+    type2200,// 2/2 无勒子
+    type2240,// 2/2 40勒子
+    type22100 // 2/2 100勒子
+};
+
 //麻将游戏状态
 enum MahjongState{
     heroChi,//吃牌

@@ -9,7 +9,9 @@
 #include "http/base64/Base64.h"
 #include "ui/UIImageView.h"
 #include "ui/UIRichText.h"
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "voicesdk/VoiceMgr.h"
+#endif
 
 
 Sprite* PlayerBase::biaoji = NULL;
@@ -538,7 +540,10 @@ void PlayerBase::onEnter(){
             
             if(data.mark ){
                 if((data.poxiaoId != UserData::getInstance()->getPoxiaoId())){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
                     VoiceMgr::getInstance()->writeVoice("record.amr",data.content);
+                    
+#endif
                 }
                 auto sound = Sprite::create("gameview/sound_pop.png");
                 sound->setPosition(getVec2BySeatId(seatId));

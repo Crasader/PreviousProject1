@@ -25,8 +25,12 @@ private:
     void selectFangka8();
     void selectFangka4();
     void selectFangka16();
-    void selectWulezi();
-    void selectLezi();
+    void selectLeziType1();
+    void selectLeziType2();
+    void selectLeziType3();
+    void selectLeziType4();
+    void selectLeziType5();
+    void selectLeziType6();
     void selectWukaibao();
     void select2mo3chong();
     void selectMa159zh();
