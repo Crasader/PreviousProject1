@@ -370,8 +370,6 @@
 		D2FD5A6B1EA64B420016FCCC /* ReviewHongZhongcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */; };
 		D2FD5A6C1EA64B420016FCCC /* ReviewHongZhongcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */; };
 		D2FD5B541EA711510016FCCC /* CallVoiceAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */; };
-		D2FD5B551EA711510016FCCC /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD5B331EA711510016FCCC /* libopencore-amrnb.a */; };
-		D2FD5B561EA711510016FCCC /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD5B341EA711510016FCCC /* libopencore-amrwb.a */; };
 		D2FD5B571EA711510016FCCC /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B381EA711510016FCCC /* amrFileCodec.mm */; };
 		D2FD5B581EA711510016FCCC /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B3A1EA711510016FCCC /* wav.mm */; };
 		D2FD5B591EA711510016FCCC /* CallVoiceApi.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B3C1EA711510016FCCC /* CallVoiceApi.mm */; };
@@ -384,6 +382,8 @@
 		D2FD5B601EA711510016FCCC /* VoiceRecorderBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B4F1EA711510016FCCC /* VoiceRecorderBaseVC.m */; };
 		D2FD5B611EA711510016FCCC /* VoiceSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B511EA711510016FCCC /* VoiceSDK.mm */; };
 		D2FD5B621EA711510016FCCC /* VoiceMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B521EA711510016FCCC /* VoiceMgr.cpp */; };
+		D2FD5C8C1EA74A5C0016FCCC /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD5C8A1EA74A5C0016FCCC /* libopencore-amrnb.a */; };
+		D2FD5C8D1EA74A5C0016FCCC /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2FD5C8B1EA74A5C0016FCCC /* libopencore-amrwb.a */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -778,8 +778,6 @@
 		D2FD5A6A1EA64B420016FCCC /* ReviewHongZhongcpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewHongZhongcpp.cpp; sourceTree = "<group>"; };
 		D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallVoiceAndroidMethod.cpp; sourceTree = "<group>"; };
 		D2FD5B311EA711510016FCCC /* CallVoiceAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallVoiceAndroidMethod.h; sourceTree = "<group>"; };
-		D2FD5B331EA711510016FCCC /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
-		D2FD5B341EA711510016FCCC /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
 		D2FD5B371EA711510016FCCC /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		D2FD5B381EA711510016FCCC /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
 		D2FD5B391EA711510016FCCC /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
@@ -804,6 +802,8 @@
 		D2FD5B511EA711510016FCCC /* VoiceSDK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceSDK.mm; sourceTree = "<group>"; };
 		D2FD5B521EA711510016FCCC /* VoiceMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoiceMgr.cpp; sourceTree = "<group>"; };
 		D2FD5B531EA711510016FCCC /* VoiceMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceMgr.h; sourceTree = "<group>"; };
+		D2FD5C8A1EA74A5C0016FCCC /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		D2FD5C8B1EA74A5C0016FCCC /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -817,8 +817,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2FD5B551EA711510016FCCC /* libopencore-amrnb.a in Frameworks */,
-				D2FD5B561EA711510016FCCC /* libopencore-amrwb.a in Frameworks */,
+				D2FD5C8C1EA74A5C0016FCCC /* libopencore-amrnb.a in Frameworks */,
+				D2FD5C8D1EA74A5C0016FCCC /* libopencore-amrwb.a in Frameworks */,
 				D252FCB61E7FC31300937322 /* libWeChatSDK.a in Frameworks */,
 				D2DB5DF51E790BDA0073ABD8 /* AddressBook.framework in Frameworks */,
 				D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */,
@@ -1880,7 +1880,6 @@
 			isa = PBXGroup;
 			children = (
 				D2FD5B2F1EA711510016FCCC /* android */,
-				D2FD5B321EA711510016FCCC /* armlib */,
 				D2FD5B351EA711510016FCCC /* ios */,
 				D2FD5B521EA711510016FCCC /* VoiceMgr.cpp */,
 				D2FD5B531EA711510016FCCC /* VoiceMgr.h */,
@@ -1897,18 +1896,10 @@
 			path = android;
 			sourceTree = "<group>";
 		};
-		D2FD5B321EA711510016FCCC /* armlib */ = {
-			isa = PBXGroup;
-			children = (
-				D2FD5B331EA711510016FCCC /* libopencore-amrnb.a */,
-				D2FD5B341EA711510016FCCC /* libopencore-amrwb.a */,
-			);
-			path = armlib;
-			sourceTree = "<group>";
-		};
 		D2FD5B351EA711510016FCCC /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D2FD5C891EA74A5C0016FCCC /* armlib */,
 				D2FD5B361EA711510016FCCC /* amrwapper */,
 				D2FD5B3B1EA711510016FCCC /* CallVoiceApi.h */,
 				D2FD5B3C1EA711510016FCCC /* CallVoiceApi.mm */,
@@ -1981,6 +1972,15 @@
 				D2FD5B481EA711510016FCCC /* ChatRecorderView.xib */,
 			);
 			path = ChatRecorderView;
+			sourceTree = "<group>";
+		};
+		D2FD5C891EA74A5C0016FCCC /* armlib */ = {
+			isa = PBXGroup;
+			children = (
+				D2FD5C8A1EA74A5C0016FCCC /* libopencore-amrnb.a */,
+				D2FD5C8B1EA74A5C0016FCCC /* libopencore-amrwb.a */,
+			);
+			path = armlib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2520,7 +2520,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../Classes/wechat/ios/wechat/",
-					"$(SRCROOT)/../Classes/voicesdk/armlib/",
+					"$(SRCROOT)/../Classes/voicesdk/ios/armlib/",
 				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -2572,7 +2572,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../Classes/wechat/ios/wechat/",
-					"$(SRCROOT)/../Classes/voicesdk/armlib/",
+					"$(SRCROOT)/../Classes/voicesdk/ios/armlib/",
 				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",

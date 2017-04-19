@@ -10,7 +10,6 @@ public:
 	void endRecordAudio();
 	void deleteAudio();
 	void playAudio();
-	
 	void prepare(std::string filename);
 	void release();
 	void cancel();
@@ -20,7 +19,7 @@ public:
 	void setStorageDir(std::string dir);
 
 	static CallVoiceAndroidMethod* getInstance();
-    std::string getSdCardDir();   // 获得sd卡路劲      // 是否安装wechat
+    std::string getSdCardDir();
 	const char* getJniPath();
 public:
 	void getNetInfo(int &netType, int &netLevel);
