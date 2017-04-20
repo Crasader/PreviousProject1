@@ -1,6 +1,8 @@
 #include "mahjong/gameview/player/PlayerOpposite.h"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/gameview/shanghai/special/ReviewGame.h"
+#include "mahjong/gameview/hongzhong/normal/HongZhongView.hpp"
+#include "mahjong/gameview/hongzhong/special/ReviewHongZhong.hpp"
 #include "mahjong/gameview/anim/HuaAnim.hpp"
 
 bool PlayerOpposite::init(){
@@ -59,7 +61,7 @@ void PlayerOpposite::drawOppositePlayerTurnMingpai(int jongtype){
 }
 
 void PlayerOpposite::drawPlayedJong(int ctype){
-//    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
+    //    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     PlayerBase::showPlayedJong(ctype);
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(oppositeplayed, ctype);
@@ -116,7 +118,7 @@ void PlayerOpposite::drawPlayedJongMingpai(int ctype){
             break;
         }
     }
-
+    
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(oppositeplayed, ctype);
     lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y));
@@ -182,10 +184,14 @@ void PlayerOpposite::removeLastJong(){
 void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerChi(data.chi[0], playerBase);
     setStateCpg(true);
-    if(GAMEDATA::getInstance()->getGameType() == 2){
-        ((ReviewGame*)getParent())->removeHeroPlayedIcon();
-    }else{
+    if (GAMEDATA::getInstance()->getGameType() == 1){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 2){
+        ((ReviewGame*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        ((HongZhongView*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 4){
+        ((ReviewHongZhong*)getParent())->removeHeroPlayedIcon();
     }
     for (int j = 0; j < 2; j++){
         playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
@@ -215,10 +221,14 @@ void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase)
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
-    if(GAMEDATA::getInstance()->getGameType() == 2){
-        ((ReviewGame*)getParent())->removeHeroPlayedIcon();
-    }else{
+    if (GAMEDATA::getInstance()->getGameType() == 1){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 2){
+        ((ReviewGame*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        ((HongZhongView*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 4){
+        ((ReviewHongZhong*)getParent())->removeHeroPlayedIcon();
     }
     for (int j = 0; j < 2; j++){
         playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
@@ -267,12 +277,15 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
         }
     }else if (data.playerGang.at(0).flag == 2){
-        if(GAMEDATA::getInstance()->getGameType() == 2){
-            ((ReviewGame*)getParent())->removeHeroPlayedIcon();
-        }else{
+        if (GAMEDATA::getInstance()->getGameType() == 1){
             ((MahjongView*)getParent())->removeHeroPlayedIcon();
-        }
-        playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
+        }else if(GAMEDATA::getInstance()->getGameType() == 2){
+            ((ReviewGame*)getParent())->removeHeroPlayedIcon();
+        }else if(GAMEDATA::getInstance()->getGameType() == 3){
+            ((HongZhongView*)getParent())->removeHeroPlayedIcon();
+        }else if(GAMEDATA::getInstance()->getGameType() == 4){
+            ((ReviewHongZhong*)getParent())->removeHeroPlayedIcon();
+        }        playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
         playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
     }
     else{
@@ -340,10 +353,14 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
 void PlayerOpposite::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerChi(data.chi[0], playerBase);
     setStateCpg(true);
-    if(GAMEDATA::getInstance()->getGameType() == 2){
-        ((ReviewGame*)getParent())->removeHeroPlayedIcon();
-    }else{
+    if (GAMEDATA::getInstance()->getGameType() == 1){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 2){
+        ((ReviewGame*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        ((HongZhongView*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 4){
+        ((ReviewHongZhong*)getParent())->removeHeroPlayedIcon();
     }
     std::vector<string> chipai =  StringUtil::split(data.chi[0], ",");
     for (int i = 0; i < chipai.size(); i++){
@@ -380,10 +397,14 @@ void PlayerOpposite::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* play
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
     Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
-    if(GAMEDATA::getInstance()->getGameType() == 2){
-        ((ReviewGame*)getParent())->removeHeroPlayedIcon();
-    }else{
+    if (GAMEDATA::getInstance()->getGameType() == 1){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 2){
+        ((ReviewGame*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        ((HongZhongView*)getParent())->removeHeroPlayedIcon();
+    }else if(GAMEDATA::getInstance()->getGameType() == 4){
+        ((ReviewHongZhong*)getParent())->removeHeroPlayedIcon();
     }
     std::vector<string> chipai =  StringUtil::split(data.peng, ",");
     for (int i = 0; i < 2; i++){
