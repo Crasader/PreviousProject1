@@ -103,7 +103,6 @@ class HongZhongView : public Layer{
     EventListenerCustom* trusteeshipRespListener;
     EventListenerCustom* trusteeshipNotifyListener;
     EventListenerCustom* trusteeshipCancelListener;
-    EventListenerCustom* heroChiRespListener;
     EventListenerCustom* heroPengRespListener;
     EventListenerCustom* heroGangRespListener;
     EventListenerCustom* playerRemoveListener;

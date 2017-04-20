@@ -74,9 +74,13 @@ void AppDelegate::applicationDidEnterBackground() {
     }else if(GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZOutResumeCommand());
     }
+    if(GAMEDATA::getInstance()->getLogingGame()){
+        GameSocketManage::getInstance()->disConnectSelf();//切后台强制断开socket
+    }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     AudioEngine::pauseAll();
 #endif
+
 }
 
 // this function will be called when the app is active again
@@ -89,7 +93,6 @@ void AppDelegate::applicationWillEnterForeground() {
         resumeIndex++;
     }else{
         if(GAMEDATA::getInstance()->getLogingGame()){
-            GameSocketManage::getInstance()->disConnectSelf();
             GAMEDATA::getInstance()->setShowProtected(true);
         }
     }
@@ -100,7 +103,6 @@ void AppDelegate::applicationWillEnterForeground() {
     AudioEngine::resumeAll();
 #else
     if(GAMEDATA::getInstance()->getLogingGame()){
-        GameSocketManage::getInstance()->disConnectSelf();
         GAMEDATA::getInstance()->setShowProtected(true);
     }
 #endif

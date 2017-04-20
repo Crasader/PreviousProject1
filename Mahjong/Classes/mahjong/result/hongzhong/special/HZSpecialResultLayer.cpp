@@ -137,7 +137,7 @@ void HZSpecialResultLayer::onEnter(){
             addChild(net,200);
         }
         if(NetworkManage::getInstance()->reConnectSocket()){
-            int  delayTime = 3.0f;
+            int  delayTime = 1.0f;
             schedule([=](float dt){
                 if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));

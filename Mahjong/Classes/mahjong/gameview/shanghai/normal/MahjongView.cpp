@@ -546,9 +546,8 @@ void MahjongView::heroDoChi(Ref* psend){
         choiceMenu->removeAllChildren();
     }
     MenuItemImage* item = (MenuItemImage*)psend;
-    selectedChi =  shmjHeroCpgtData.playCpgt.chi[item->getTag()];
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi( shmjHeroCpgtData.playCpgt.poker.c_str())));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(shmjHeroCpgtData.playCpgt.chi[item->getTag()], atoi( shmjHeroCpgtData.playCpgt.poker.c_str())));
 }
 
 void MahjongView::heroDoPeng(Ref* psend){
@@ -1245,7 +1244,7 @@ void MahjongView::onEnter(){
             addChild(net,200);
         }
         if(NetworkManage::getInstance()->reConnectSocket()){
-            int  delayTime = 3.0f;
+            int  delayTime = 1.0f;
             schedule([=](float dt){
                 if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
@@ -1439,9 +1438,8 @@ void MahjongView::onEnter(){
         HeroCpgRespData newHeroData = *heroData;
         shmjHeroCpgtData.playCpgt.heroHu =  newHeroData.playCpgt.heroHu;
         shmjHeroCpgtData.playCpgt.ting = newHeroData.playCpgt.ting;
-        newHeroData.playCpgt = shmjHeroCpgtData.playCpgt;
         playerHero->hideCurrentBigJong();
-        std::vector<string> chipai = StringUtil::split(selectedChi, ",");
+        std::vector<string> chipai = StringUtil::split(newHeroData.playCpgt.chi[0], ",");
         playerHero->drawHeroChi(newHeroData, chipai, playerLeft);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroChiRespListener, 1);

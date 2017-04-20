@@ -991,7 +991,6 @@ void HongZhongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipCancelListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroChiRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
@@ -1147,7 +1146,7 @@ void HongZhongView::onEnter(){
             addChild(net,200);
         }
         if(NetworkManage::getInstance()->reConnectSocket()){
-            int  delayTime = 3.0f;
+            int  delayTime = 1.0f;
             schedule([=](float dt){
                 if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
@@ -1359,17 +1358,6 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(tingRespListener, 1);
     
-    heroChiRespListener = EventListenerCustom::create(MSG_HERO_CHI_RESP, [=](EventCustom* event){
-        HeroCpgRespData* heroData = static_cast<HeroCpgRespData*>(event->getUserData());
-        HeroCpgRespData newHeroData = *heroData;
-        shmjHeroCpgtData.playCpgt.heroHu =  newHeroData.playCpgt.heroHu;
-        shmjHeroCpgtData.playCpgt.ting = newHeroData.playCpgt.ting;
-        newHeroData.playCpgt = shmjHeroCpgtData.playCpgt;
-        playerHero->hideCurrentBigJong();
-        std::vector<string> chipai = StringUtil::split(selectedChi, ",");
-        playerHero->drawHeroChi(newHeroData, chipai, playerLeft);
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroChiRespListener, 1);
     
     heroPengRespListener = EventListenerCustom::create(MSG_HERO_PENG_RESP, [=](EventCustom* event){
         HeroCpgRespData* cpgRespData  = static_cast<HeroCpgRespData*>(event->getUserData());

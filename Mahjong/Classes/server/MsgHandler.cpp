@@ -1504,7 +1504,13 @@ void MsgHandler::heroChiResp(std::string msg){
         const rapidjson::Value &forbit = _mDoc["forbit"];
         cpgRespData.forbit = forbit.GetString();
     }
-    
+    if(_mDoc.HasMember("chi")){
+        const rapidjson::Value &chiPoker = _mDoc["chi"];
+        playerCpg.chi[0] = chiPoker.GetString();
+
+    }else{
+        playerCpg.chi[0] = "";
+    }
     if (_mDoc.HasMember("ting1")){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
         for(int i=0;i<ting1.Capacity();i++){
