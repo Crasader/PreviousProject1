@@ -154,20 +154,32 @@ void GuiLayer::quitButtonClick(){
             HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_1"), [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
                 GAMEDATA::getInstance()->setIsPlaying(false);
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+                if(GAMEDATA::getInstance()->getGameType() == 1){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+                }else if (GAMEDATA::getInstance()->getGameType() == 3){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZQuitRoomCommand());
+                }
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
             getParent()->addChild(dia,50);
         }else if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_2"), [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+                if(GAMEDATA::getInstance()->getGameType() == 1){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+                }else if (GAMEDATA::getInstance()->getGameType() == 3){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZQuitRoomCommand());
+                }
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
             getParent()->addChild(dia,50);
         }else{
             GAMEDATA::getInstance()->clearPlayersInfo();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+            if(GAMEDATA::getInstance()->getGameType() == 1){
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+            }else if (GAMEDATA::getInstance()->getGameType() == 3){
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZQuitRoomCommand());
+            }
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             
         }

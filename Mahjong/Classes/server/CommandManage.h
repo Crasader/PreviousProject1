@@ -73,6 +73,7 @@ public:
     std::string getHZDissolveRoomInGameCommand();
     std::string getHZPlayGameAgain();
     std::string getHZOutResumeCommand();
+    std::string getHZQuitRoomCommand();
     /** ------------------------------红中麻将协议结束 ------------------- **/
 private:
 	CommandManage();
