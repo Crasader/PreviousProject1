@@ -70,10 +70,14 @@ void PlayerRight::drawPlayedJong(int ctype){
     bezier.endPosition = endPoint;
     BezierTo *actionMove = BezierTo::create(0.3f, bezier);
     CallFunc* callback = CallFunc::create([=](){
-        if(GAMEDATA::getInstance()->getGameType() == 2){
-            ((ReviewGame*)getParent())->removeHeroPlayedIcon();
-        }else{
+        if (GAMEDATA::getInstance()->getGameType() == 1){
             ((MahjongView*)getParent())->removeHeroPlayedIcon();
+        }else if(GAMEDATA::getInstance()->getGameType() == 2){
+            ((ReviewGame*)getParent())->removeHeroPlayedIcon();
+        }else if(GAMEDATA::getInstance()->getGameType() == 3){
+            ((HongZhongView*)getParent())->removeHeroPlayedIcon();
+        }else if(GAMEDATA::getInstance()->getGameType() == 4){
+            ((ReviewHongZhong*)getParent())->removeHeroPlayedIcon();
         }
         showCurrentPlayedJongIcon(true);
     });

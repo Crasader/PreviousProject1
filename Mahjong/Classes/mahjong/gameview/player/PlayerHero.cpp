@@ -674,7 +674,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     huaIndex = 0;
     std::vector<std::string> replace = StringUtil::split(data.replace, ",");
     PlayerCpgtData cpgData = data.cpgData;
-    if (data.replace != "" && replace.size() > 0){
+    if (data.replace != "" && replace.size() > 0 && data.handNum>getSelfHandJongs().size()){
         Jong* turnJong = Jong::create();
         turnJong->setVisible(false);
         turnJong->showJong(herohand, data.poker);
@@ -704,17 +704,12 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         }, 0, 0, 0.6f*replace.size(),"hua2pokerdelay");
     }
     else{
-        if(data.poker>=0){
+        if(data.poker>=0 && data.handNum>getSelfHandJongs().size()){
             Jong* jong = Jong::create();
             jong->showJong(herohand, data.poker);
             addChild(jong);
             playerHandJongs.pushBack(jong);
             currentJong = jong;
-            //            if(GAMEDATA::getInstance()->getGameType() ==3){
-            //                if(jong->getJongType() == JongEnum::hz){
-            //                    jong->showBackShadow(true);
-            //                }
-            //            }
             settleHandJongs(getHandPosX());
         }
         

@@ -1676,7 +1676,10 @@ void MsgHandler::nextPlayer(std::string msg){
     }
     const rapidjson::Value &rest = _mDoc["rest"];
     playerTurnData.rest = rest.GetString();
-    
+    if (_mDoc.HasMember("num")){
+        const rapidjson::Value &num = _mDoc["num"];
+        playerTurnData.handNum = num.GetInt();
+    }
     PlayerCpgtData tingData;
     tingData.seatId = _mDoc["seatId"].GetInt();
     if (_mDoc.HasMember("ting")){
@@ -2775,7 +2778,10 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
     }
     const rapidjson::Value &rest = _mDoc["rest"];
     playerTurnData.rest = rest.GetString();
-    
+    if (_mDoc.HasMember("num")){
+        const rapidjson::Value &num = _mDoc["num"];
+        playerTurnData.handNum = num.GetInt();
+    }
     PlayerCpgtData tingData;
     tingData.seatId = _mDoc["seatId"].GetInt();
     if (_mDoc.HasMember("ting")){
@@ -2798,6 +2804,8 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
     }
     if(_mDoc.HasMember("hu")){
         tingData.hu = 1;//红中麻将可胡
+    }else{
+        tingData.hu = 0;
     }
     if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")||_mDoc.HasMember("hu")){
         playerTurnData.hastinggang = true;

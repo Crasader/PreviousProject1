@@ -132,6 +132,7 @@ struct PlayerTurnData
 {
     int seatId;
     int poker;
+    int handNum;
     std::string rest;
     std::string replace;
     bool hastinggang = false;

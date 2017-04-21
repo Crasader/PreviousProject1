@@ -73,7 +73,7 @@ void SplashScene::drawLonginScene(){
     addChild(feipai);
     
     auto desk = Sprite::create("mainlogin/login_desk.png");
-    desk->setPosition(640,205);
+    desk->setPosition(640,215);
     addChild(desk);
     
 }
@@ -88,7 +88,7 @@ void SplashScene::loginByWechat(){
     //oTIvfwnO4yCaBasG7qJedNbiGuG0  ziji
     //oTIvfwmTH71Oqx_XRJTPB4p2TjkU 魂斗罗
     //oTIvfwu03GkOg7nFWtqZPhqveKKM
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwm1C14AtD2bnuoQrXtGWzhY","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwqK9YwoAi1dANUQjhlhOAZ4","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CallIOSMethod::getInstance()->doWechatLogin();
@@ -278,7 +278,7 @@ void SplashScene::showSplashAnim(){
         
         //[4].创建裁剪节点 : clippingNode
         ClippingNode* clippingNode = ClippingNode::create();
-        clippingNode->setPosition(640,88);
+        clippingNode->setPosition(640,108);
         addChild(clippingNode,10);
         
         clippingNode->setAlphaThreshold(0.05f); //设置alpha闸值
@@ -297,7 +297,7 @@ void SplashScene::showSplashAnim(){
         auto visitorBtn = MenuItemImage::create("mainlogin/visitor_login_btn.png", "mainlogin/visitor_login_btn.png",
                                                 CC_CALLBACK_0(SplashScene::loginByVisitor, this));
         auto loginMenu = Menu::create(visitorBtn, NULL);
-        loginMenu->setPosition(640, 100);
+        loginMenu->setPosition(640, 108);
         addChild(loginMenu);
     }
 #elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID||CC_TARGET_PLATFORM == CC_PLATFORM_MAC
@@ -335,7 +335,7 @@ void SplashScene::showSplashAnim(){
     
     //[4].创建裁剪节点 : clippingNode
     ClippingNode* clippingNode = ClippingNode::create();
-    clippingNode->setPosition(640,88);
+    clippingNode->setPosition(640,108);
     addChild(clippingNode,10);
     
     clippingNode->setAlphaThreshold(0.05f); //设置alpha闸值

@@ -496,7 +496,7 @@ void FriendRoom::openRoom(){
             fanma  = "0";
         }else if(NULL != getChildByTag(3026)&&getChildByTag(3026)->isVisible()){
             fanma  = "1";
-        }else if(NULL != getChildByTag(2028)&&getChildByTag(2028)->isVisible()){
+        }else if(NULL != getChildByTag(3028)&&getChildByTag(3028)->isVisible()){
             fanma  = "2";
         }
         
