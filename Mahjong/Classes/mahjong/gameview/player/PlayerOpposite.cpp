@@ -67,6 +67,7 @@ void PlayerOpposite::drawPlayedJong(int ctype){
     lastPlayedJong->showJong(oppositeplayed, ctype);
     lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y));
     playerPlayedJongs.pushBack(lastPlayedJong);
+    log("OOOOOOOOOOOOOOOOOO === %d",(int)playerPlayedJongs.size());
     if (playerPlayedJongs.size() / 10 == 0){
         addChild(lastPlayedJong, 3);
     }

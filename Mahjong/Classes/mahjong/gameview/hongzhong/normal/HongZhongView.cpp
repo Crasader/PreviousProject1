@@ -108,9 +108,9 @@ void HongZhongView::loadView(){
         //码和低分
         auto hzma  = Sprite::create("gameview/hz_ma_159zh.png");
         addChild(hzma);
-        if(GAMEDATA::getInstance()->getFanMaType() == "1"){
+        if(GAMEDATA::getInstance()->getFanMaType() == "3"){
             hzma->setTexture("gameview/hz_ma_159.png");
-        }else if (GAMEDATA::getInstance()->getFanMaType() == "2"){
+        }else if (GAMEDATA::getInstance()->getFanMaType() == "1"){
             hzma->setTexture("gameview/hz_ma_1.png");
         }
         auto difen = Sprite::create("gameview/hz_di_2.png");
@@ -1366,7 +1366,7 @@ void HongZhongView::onEnter(){
         HeroCpgRespData newCpgRespData = *cpgRespData;
         shmjHeroCpgtData.playCpgt.heroHu =  newCpgRespData.playCpgt.heroHu;
         shmjHeroCpgtData.playCpgt.ting = newCpgRespData.playCpgt.ting;
-        newCpgRespData.playCpgt = shmjHeroCpgtData.playCpgt;
+//        newCpgRespData.playCpgt = shmjHeroCpgtData.playCpgt;
         int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newCpgRespData.playCpgt.sId);
         playerHero->hideCurrentBigJong();
         if(cpgRespData->result == 1||cpgRespData->result == 2){

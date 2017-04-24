@@ -11,6 +11,7 @@ public:
 	void hideInvitePlayer(int clientId);
     void showInvitePlayer(int clientId);
     void hideDissovleBtn();
+    void updateData();
 	CC_SYNTHESIZE(bool, showChat,ShowChat);
 	CREATE_FUNC(GuiLayer);
 private:
@@ -30,9 +31,8 @@ private:
 	void invitePlayer(Ref* ref);
     void dissovleRoom();
     void update(float dt) override;
-    void updateData();
     void drawTestButton();
     void testButtonClick();
-    
+    EventListenerCustom* kaibaoListener;
 };
 #endif

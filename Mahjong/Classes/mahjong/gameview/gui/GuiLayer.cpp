@@ -191,7 +191,7 @@ void GuiLayer::quitButtonClick(){
 
 
 void GuiLayer::updateData(){
-    if(GAMEDATA::getInstance()->getGameType() == 1||GAMEDATA::getInstance()->getGameType() == 2){
+    if(GAMEDATA::getInstance()->getGameType() != 3 && GAMEDATA::getInstance()->getGameType() != 4){
         kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
         haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
     }
@@ -298,15 +298,16 @@ void GuiLayer::update(float dt){
 
 void GuiLayer::onEnter(){
     Layer::onEnter();
-    Director::getInstance()->getEventDispatcher()->addCustomEventListener(UPDATE_DICE_KAOBAO_STATE, [=](EventCustom* event){
-        updateData();
+    kaibaoListener = EventListenerCustom::create(UPDATE_DICE_KAOBAO_STATE, [=](EventCustom* event){
+       updateData();
     });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(kaibaoListener, 1);
 };
 
 
 void GuiLayer::onExit(){
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(UPDATE_DICE_KAOBAO_STATE);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(kaibaoListener);
 };
 
 

@@ -1507,10 +1507,18 @@ void MsgHandler::heroChiResp(std::string msg){
     if(_mDoc.HasMember("chi")){
         const rapidjson::Value &chiPoker = _mDoc["chi"];
         playerCpg.chi[0] = chiPoker.GetString();
-
+        
     }else{
         playerCpg.chi[0] = "";
     }
+    if (_mDoc.HasMember("gang")){
+        const rapidjson::Value &gang = _mDoc["gang"];
+        GangData gangData;
+        gangData.gang = gang.GetString();
+        gangData.flag = 0;
+        playerCpg.playerGang.push_back(gangData);
+    }
+    
     if (_mDoc.HasMember("ting1")){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
         for(int i=0;i<ting1.Capacity();i++){
@@ -1560,6 +1568,33 @@ void MsgHandler::heroPengResp(std::string msg){
     if (_mDoc.HasMember("ting")){
         const rapidjson::Value &result = _mDoc["ting"];
         playerCpg.ting = result.GetString();
+    }
+    if (_mDoc.HasMember("poker")){
+        const rapidjson::Value &poker = _mDoc["poker"];
+        playerCpg.poker = poker.GetString();
+    }
+    if (_mDoc.HasMember("seatId")){
+        const rapidjson::Value &seatId = _mDoc["seatId"];
+        playerCpg.seatId = seatId.GetInt();
+    }
+    if (_mDoc.HasMember("peng")){
+        const rapidjson::Value &pengPoker = _mDoc["peng"];
+        playerCpg.peng = pengPoker.GetString();
+    }
+    if (_mDoc.HasMember("sId")){
+        const rapidjson::Value &sId = _mDoc["sId"];
+        playerCpg.sId = sId.GetInt();
+    }
+    
+    
+    if (_mDoc.HasMember("gang")){
+        const rapidjson::Value &gang = _mDoc["gang"];
+        GangData gangData;
+        gangData.gang = gang.GetString();
+        gangData.flag = 0;
+        playerCpg.playerGang.push_back(gangData);
+    }else{
+        playerCpg.playerGang.clear();
     }
     if (_mDoc.HasMember("ting1")){
         const rapidjson::Value &ting1 = _mDoc["ting1"];
@@ -2324,9 +2359,9 @@ void MsgHandler::billDetailResp(std::string msg){
             if(temp0.HasMember("recordId")){
                 data.recordId = temp0["recordId"].GetString();
             }
-//             if(temp0.HasMember("t")){
-//                 data.gameType = temp0["t"].GetString();
-//             }
+            //             if(temp0.HasMember("t")){
+            //                 data.gameType = temp0["t"].GetString();
+            //             }
             detailAll.detail.push_back(data);
         }
         GAMEDATA::getInstance()->setBillInfoDetailAll(detailAll);
@@ -2495,7 +2530,7 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
     if(_mDoc.HasMember("difen")){
         GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
     }
-
+    
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;
@@ -2512,7 +2547,7 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         data.fangka = temp["fangka"].GetDouble();
         data.pic = temp["pic"].GetString();
         if(temp.HasMember("hua")){
-          data.hua = temp["hua"].GetInt();
+            data.hua = temp["hua"].GetInt();
         }
         data.status = 2;
         data.ifready = 0;
@@ -3187,7 +3222,7 @@ void MsgHandler::handleHZPlayerHuNotify(std::string msg){
         cpgData.playerGang.push_back(gangData);
         cpgData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
     }
-//    log("收到了服务端的胡牌协议1");
+    //    log("收到了服务端的胡牌协议1");
     postNotifyMessage(MSG_HZ_GAME_HU_ACTION, &cpgData);
 }
 

@@ -61,6 +61,7 @@ void PlayerRight::drawPlayedJong(int ctype){
     int tar = playerPlayedJongs.size() % 7;
     this->addChild(lastPlayedJong, 7 - tar);
     playerPlayedJongs.pushBack(lastPlayedJong);
+    log("RRRRRRRRRRRRRRRRRRRRR === %d",(int)playerPlayedJongs.size());
     Point startPoint = Point(RIGHT_POS_X, RIGHT_POS_Y + 35);
     Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
     ccBezierConfig bezier;

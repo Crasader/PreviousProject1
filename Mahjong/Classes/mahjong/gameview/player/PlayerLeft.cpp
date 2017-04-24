@@ -58,6 +58,7 @@ void PlayerLeft::drawPlayedJong(int ctype){
     lastPlayedJong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 35));
     addChild(lastPlayedJong);
     playerPlayedJongs.pushBack(lastPlayedJong);
+    log("LLLLLLLLLLLLLLLLLLLLLL === %d",(int)playerPlayedJongs.size());
     Point startPoint = Point(LEFT_POS_X, LEFT_POS_Y - 35);
     Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
     ccBezierConfig bezier;

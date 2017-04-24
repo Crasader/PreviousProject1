@@ -148,6 +148,7 @@ void MahjongView::startGameFirst(){
     }else{
         GAMEDATA::getInstance()->setHuangfan("0");
     }
+    guiLayer->updateData();
 }
 
 void MahjongView::startGameAgain(){
@@ -170,11 +171,13 @@ void MahjongView::startGameAgain(){
     }else{
         GAMEDATA::getInstance()->setKaibao("0");
     }
+
     if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
         GAMEDATA::getInstance()->setHuangfan("1");
     }else{
         GAMEDATA::getInstance()->setHuangfan("0");
     }
+    guiLayer->updateData();
     ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
@@ -671,6 +674,7 @@ void MahjongView::recoverGame(){
         GAMEDATA::getInstance()->setCurrentBank(data.loard);
         GAMEDATA::getInstance()->setHuangfan(StringUtil::itos(data.hf));
         GAMEDATA::getInstance()->setKaibao(StringUtil::itos(data.kb));
+        guiLayer->updateData();
         for (int i = 0; i < data.players.size(); i++)
         {
             PlayerGameData player = data.players.at(i);
@@ -1449,7 +1453,7 @@ void MahjongView::onEnter(){
         HeroCpgRespData newCpgRespData = *cpgRespData;
         shmjHeroCpgtData.playCpgt.heroHu =  newCpgRespData.playCpgt.heroHu;
         shmjHeroCpgtData.playCpgt.ting = newCpgRespData.playCpgt.ting;
-        newCpgRespData.playCpgt = shmjHeroCpgtData.playCpgt;
+//        newCpgRespData.playCpgt = shmjHeroCpgtData.playCpgt;
         int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newCpgRespData.playCpgt.sId);
         playerHero->hideCurrentBigJong();
         if(cpgRespData->result == 1||cpgRespData->result == 2){
@@ -1459,7 +1463,7 @@ void MahjongView::onEnter(){
             else if (clientSeatId == ClientSeatId::opposite){
                 playerHero->drawHeroPeng(newCpgRespData, playerOpposite);
             }
-            else{
+            else if (clientSeatId == ClientSeatId::left){
                 playerHero->drawHeroPeng(newCpgRespData, playerLeft);
             }
         }

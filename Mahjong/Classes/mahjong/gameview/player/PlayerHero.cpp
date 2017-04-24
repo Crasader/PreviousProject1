@@ -421,11 +421,11 @@ void PlayerHero::inviteWechatFriend(){
             roomtype += ChineseWord("room_info_6");
         }
     }else if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
-        if(GAMEDATA::getInstance()->getFanMaType() == "0"){
+        if(GAMEDATA::getInstance()->getFanMaType() == "4"){
             roomtype += ChineseWord("room_info_13");
-        }else if(GAMEDATA::getInstance()->getFanMaType() == "1"){
+        }else if(GAMEDATA::getInstance()->getFanMaType() == "3"){
             roomtype += ChineseWord("room_info_14");
-        }else if (GAMEDATA::getInstance()->getFanMaType() == "2"){
+        }else if (GAMEDATA::getInstance()->getFanMaType() == "1"){
             roomtype += ChineseWord("room_info_15");
         }
         roomtype += ChineseWord("room_info_16");
