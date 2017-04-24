@@ -246,6 +246,7 @@ void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
         jongpeng->setLocalZOrder((int)playerCpgRecords.size()*4+1);
     }
     addChild(jongpeng);
+
     record.pokersRecord.pushBack(jongpeng);
     std::vector<std::string> peng = StringUtil::split(data.peng, ",");
     for (int i = 0; i < peng.size(); i++){
@@ -284,6 +285,7 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             playerHandJongs.at(playerHandJongs.size()-1)->removeFromParent();
             playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size()-1));
         }
+        
     }
     std::vector<std::string> gang = StringUtil::split(data.playerGang.at(0).gang, ",");
     gang.push_back(data.poker);
@@ -335,6 +337,27 @@ void PlayerLeft::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
             }
             addChild(jong, (int)playerCpgRecords.size()*4);
             record.pokersRecord.pushBack(jong);
+        }
+        if (data.playerGang.at(0).flag == 0){
+            if(GAMEDATA::getInstance()->getGameType() == 3||GAMEDATA::getInstance()->getGameType() == 4){
+                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.sId);
+                if( clientId == ClientSeatId::hero){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
+//                    arrow->setRotation(90);
+                    addChild(arrow,20);
+                }else if( clientId == ClientSeatId::opposite){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
+                    arrow->setRotation(180);
+                    addChild(arrow,20);
+                }else if( clientId == ClientSeatId::right){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
+                    arrow->setRotation(270);
+                    addChild(arrow,20);
+                }
+            }
         }
         playerCpgRecords.push_back(record);
     }
@@ -499,6 +522,27 @@ void PlayerLeft::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* playerBa
             }
             addChild(jong, (int)playerCpgRecords.size()*4);
             record.pokersRecord.pushBack(jong);
+        }
+        if (data.playerGang.at(0).flag == 0){
+            if(GAMEDATA::getInstance()->getGameType() == 3||GAMEDATA::getInstance()->getGameType() == 4){
+                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.sId);
+                if( clientId == ClientSeatId::hero){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
+//                    arrow->setRotation(90);
+                    addChild(arrow,20);
+                }else if( clientId == ClientSeatId::opposite){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
+                    arrow->setRotation(180);
+                    addChild(arrow,20);
+                }else if( clientId == ClientSeatId::right){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(getCpgShowPostion((int)playerCpgRecords.size()).x + 2, getCpgShowPostion((int)playerCpgRecords.size()).y - 16);
+                    arrow->setRotation(270);
+                    addChild(arrow,20);
+                }
+            }
         }
         playerCpgRecords.push_back(record);
     }

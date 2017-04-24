@@ -190,6 +190,7 @@ Point DealJongAnim::getPosByDirection(int direction, int index){
             return Point(60, 20);
         }
     }
+    return Point(0, 0);
 }
 
 

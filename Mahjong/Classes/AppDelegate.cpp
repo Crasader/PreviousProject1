@@ -75,6 +75,7 @@ void AppDelegate::applicationDidEnterBackground() {
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZOutResumeCommand());
     }
     if(GAMEDATA::getInstance()->getLogingGame()){
+        log("主动断开socket");
         GameSocketManage::getInstance()->disConnectSelf();//切后台强制断开socket
     }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

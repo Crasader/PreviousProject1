@@ -42,6 +42,7 @@ public class PxSocketClient {
 	}
 	
 	public void  disConnectSocket(){
+		Log.e("AndroidSocket","主动断开socket");
 		JniSocketCallback.onDisconnected();
 	}
 	
