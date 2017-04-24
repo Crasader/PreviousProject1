@@ -52,7 +52,7 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
         addChild(diec2);
         diec2->setScale(0.6f);
         diec2->setTag(300);
-        diec2->runAction(Sequence::create(DelayTime::create(1.0/12),ScaleTo::create(1.0/24*3,1.0f),ScaleTo::create(1.0/24*2,0.8f),CallFunc::create([=](){
+        diec2->runAction(Sequence::create(DelayTime::create(1.0/12),ScaleTo::create(1.0/24*3,1.0f),ScaleTo::create(1.0/24*2,0.8f),DelayTime::create(2.0/12.0),CallFunc::create([=](){
             auto spr = Sprite::create();
             spr->setTag(400);
             spr->setPosition(640,500);
@@ -228,7 +228,6 @@ void DealJongAnim::showDiceAnim(Sprite* sprite){
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action,CallFunc::create([=](){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(UPDATE_DICE_KAOBAO_STATE);
-        
     }), NULL));
 }
 
@@ -287,7 +286,7 @@ void DealJongAnim::faPaiAction(int seatId,int round){
             sky->setPosition(200+167*round/4,650);
         }else if(seatId == ClientSeatId::right){
             sky->setPosition(1100,200+130*round/4);
-            sky->setZOrder(4-round);
+            sky->setLocalZOrder(4-round);
         }else{
             sky->setPosition(200+247*round/4,70);
         }

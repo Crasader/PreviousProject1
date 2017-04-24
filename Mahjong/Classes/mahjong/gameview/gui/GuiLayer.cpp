@@ -292,7 +292,7 @@ void GuiLayer::update(float dt){
                 getChildByTag(1212)->setVisible(false);
         }
     }
-    updateData();
+//    updateData();
 }
 
 
