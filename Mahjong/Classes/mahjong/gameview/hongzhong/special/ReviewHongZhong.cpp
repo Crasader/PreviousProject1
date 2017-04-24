@@ -934,6 +934,9 @@ void ReviewHongZhong::controlDown(){
     interval =0;
     playerHero->showCurrentPlayedJongIcon(false);
     if(fupanStep>=2 && myPlayMingpaiRecord.size()>0){
+        if(NULL != getChildByTag(1980)){
+            getChildByTag(1980)->removeFromParent();
+        }
         image3->setEnabled(true);
         fupanStep -= 2;
         fupanStep  = fupanStep%2 == 0?fupanStep:(fupanStep-1);
@@ -1489,17 +1492,17 @@ void ReviewHongZhong::onEnter(){
         }
         else if (seatId == ClientSeatId::left){
             playerLeft->drawLeftPlayerTurnMingpai(newData.poker);
-//            playerLeft->replaceTurnHua();
+            //            playerLeft->replaceTurnHua();
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             playerRight->drawRightPlayerTurnMingpai(newData.poker);
-//            playerRight->replaceTurnHua(newData);
+            //            playerRight->replaceTurnHua(newData);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->drawOppositePlayerTurnMingpai(newData.poker);
-//            playerOpposite->replaceTurnHua(newData);
+            //            playerOpposite->replaceTurnHua(newData);
             playerOpposite->startTimeClockAnim();
         }
     });
@@ -1549,7 +1552,7 @@ void ReviewHongZhong::onEnter(){
             }else if(poker == playerRight->getLastPoker()){
                 Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
             }
-
+            
         }
         if(fupanStep>= currentMaxStep){
             //记录玩家的手牌
@@ -1738,78 +1741,14 @@ void ReviewHongZhong::onEnter(){
                     log("HongZhong Mahjong FanMa %s",GAMEDATA::getInstance()->getFanMa().c_str());
                     vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
                     FanMaAnim* fan = FanMaAnim::create(ma);
+                    fan->setTag(1980);
                     addChild(fan,20);
                 }
-            },0,0,4.0f,"fanma");
-            
-            schedule([=](float dt){
-                PlayerCpgRecShow showRec;
-                CpgPokerRec pokerRecL;
-                pokerRecL.clientseatid =  ClientSeatId::left;
-                for(auto left:playerLeft->playerCpgRecords){
-                    std::vector<int> p;
-                    for(auto pokers : left.pokersRecord){
-                        p.push_back(pokers->getJongType());
-                    }
-                    pokerRecL.cpg.push_back(p);
-                }
-                showRec.playercpg.push_back(pokerRecL);
-                
-                CpgPokerRec pokerRecO;
-                pokerRecO.clientseatid =  ClientSeatId::opposite;
-                for(auto oppsite:playerOpposite->playerCpgRecords){
-                    std::vector<int> p1;
-                    for(auto pokers : oppsite.pokersRecord){
-                        p1.push_back(pokers->getJongType());
-                    }
-                    pokerRecO.cpg.push_back(p1);
-                }
-                showRec.playercpg.push_back(pokerRecO);
-                
-                CpgPokerRec pokerRecR;
-                pokerRecR.clientseatid =  ClientSeatId::right;
-                for(auto right:playerRight->playerCpgRecords){
-                    std::vector<int> p2;
-                    for(auto pokers : right.pokersRecord){
-                        p2.push_back(pokers->getJongType());
-                    }
-                    pokerRecR.cpg.push_back(p2);
-                }
-                showRec.playercpg.push_back(pokerRecR);
-                
-                CpgPokerRec pokerRecH;
-                pokerRecH.clientseatid =  ClientSeatId::hero;
-                for(auto hero:playerHero->playerCpgRecords){
-                    std::vector<int> p3;
-                    for(auto pokers : hero.pokersRecord){
-                        p3.push_back(pokers->getJongType());
-                    }
-                    pokerRecH.cpg.push_back(p3);
-                }
-                showRec.playercpg.push_back(pokerRecH);
-                
-                GAMEDATA::getInstance()->setPlayerCpgRecShow(showRec);
-                
-                clearRoomPlayer();
-                if(flag == "2"){
-                    GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
-                    GAMEDATA::getInstance()->setFangZhuId("");
-                    GAMEDATA::getInstance()->setNeedShowLastResult(true);
-                    GAMEDATA::getInstance()->setPrivateGameNum("0");
-                    GAMEDATA::getInstance()->clearPlayersInfo();
-                }else{
-                    GAMEDATA::getInstance()->setNeedShowLastResult(false);
-                }
-                Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(0)));
-            },0,0,8.0f,"go2Result");
-        }else{
-            clearRoomPlayer();
-            GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
-            GAMEDATA::getInstance()->setFangZhuId("");
-            GAMEDATA::getInstance()->setPrivateGameNum("0");
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            Director::getInstance()->replaceScene(TransitionFade::create(0.8f, LobbyScene::create()));
+            },0,0,2.0f,"fanma");
         }
+        GAMEDATA::getInstance()->setPrivateGameNum("0");
+        GAMEDATA::getInstance()->setFangZhuId("");
+        GAMEDATA::getInstance()->clearPlayersInfo();
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
     

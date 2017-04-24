@@ -2488,6 +2488,14 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
     if(_mDoc.HasMember("kb")){
         GAMEDATA::getInstance()->setKaibao(StringUtils::format("%d",_mDoc["kb"].GetInt()));
     }
+    if(_mDoc.HasMember("fanma")){
+        GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
+    }
+    
+    if(_mDoc.HasMember("difen")){
+        GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
+    }
+
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;
