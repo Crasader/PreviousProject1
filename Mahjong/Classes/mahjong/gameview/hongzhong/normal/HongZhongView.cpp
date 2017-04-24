@@ -1391,7 +1391,7 @@ void HongZhongView::onEnter(){
         showPaiduiNum(atoi(newData.rest.c_str()));
         if (seatId == ClientSeatId::hero){
             playerHero->hideCurrentBigJong();
-            playerHero->playerTurnReplace(newData);
+            playerHero->playerTurnReplaceMingpai(newData);
             if (!GAMEDATA::getInstance()->getIsTingState()){
                 playerHero->startTimeClockAnim();
             }

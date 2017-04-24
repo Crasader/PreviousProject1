@@ -1346,19 +1346,19 @@ void ReviewHongZhong::onEnter(){
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
         if (seatId == ClientSeatId::left){
             hideHuGangControllPad();
-            playerLeft->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             hideHuGangControllPad();
-            playerRight->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             hideHuGangControllPad();
-            playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
         }else if (seatId == ClientSeatId::hero){
@@ -1366,7 +1366,7 @@ void ReviewHongZhong::onEnter(){
             HeroCpgRespData heroCpgData;
             heroCpgData.result = 1;
             heroCpgData.playCpgt = newData;
-            playerHero->drawHeroPeng(heroCpgData, getPlayerBySeatId(newData.sId));
+            playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newData.sId));
             playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
         }
         
@@ -1381,21 +1381,21 @@ void ReviewHongZhong::onEnter(){
         setCurrentJongVisible(newData.sId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
         if (seatId == ClientSeatId::left){
-            playerLeft->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
         }else if (seatId == ClientSeatId::hero){
             HeroCpgRespData heroTingData;
             heroTingData.result = 1;
             heroTingData.playCpgt = newData;
-            playerHero->drawHeroGang(heroTingData, getPlayerBySeatId(newData.sId));
+            playerHero->drawHeroGangMingpai(heroTingData, getPlayerBySeatId(newData.sId));
             playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
         }
         
@@ -1482,24 +1482,24 @@ void ReviewHongZhong::onEnter(){
         showPaiduiNum(atoi(newData.rest.c_str()));
         if (seatId == ClientSeatId::hero){
             playerHero->hideCurrentBigJong();
-            playerHero->playerTurnReplace(newData);
+            playerHero->playerTurnReplaceMingpai(newData);
             if (!GAMEDATA::getInstance()->getIsTingState()){
                 playerHero->startTimeClockAnim();
             }
         }
         else if (seatId == ClientSeatId::left){
-            playerLeft->drawLeftPlayerTurn();
-            playerLeft->replaceTurnHua(newData);
+            playerLeft->drawLeftPlayerTurnMingpai(newData.poker);
+//            playerLeft->replaceTurnHua();
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->drawRightPlayerTurn();
-            playerRight->replaceTurnHua(newData);
+            playerRight->drawRightPlayerTurnMingpai(newData.poker);
+//            playerRight->replaceTurnHua(newData);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawOppositePlayerTurn();
-            playerOpposite->replaceTurnHua(newData);
+            playerOpposite->drawOppositePlayerTurnMingpai(newData.poker);
+//            playerOpposite->replaceTurnHua(newData);
             playerOpposite->startTimeClockAnim();
         }
     });
@@ -1515,7 +1515,7 @@ void ReviewHongZhong::onEnter(){
         if (seatId == ClientSeatId::left){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
-            playerLeft->drawPlayedJong(poker);
+            playerLeft->drawPlayedJongMingpai(poker);
             if(poker == playerOpposite->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
             }else if(poker == playerHero->getLastPoker()){
@@ -1525,7 +1525,7 @@ void ReviewHongZhong::onEnter(){
         else if (seatId == ClientSeatId::right){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
-            playerRight->drawPlayedJong(poker);
+            playerRight->drawPlayedJongMingpai(poker);
             if(poker == playerHero->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
             }else if(poker == playerOpposite->getLastPoker()){
@@ -1535,22 +1535,59 @@ void ReviewHongZhong::onEnter(){
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
-            playerOpposite->drawPlayedJong(poker);
+            playerOpposite->drawPlayedJongMingpai(poker);
             if(poker == playerRight->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
             }else if(poker == playerLeft->getLastPoker()){
                 Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
             }
         }else if(seatId == ClientSeatId::hero){
-            //            schedule([=](float dt){
-            //                playerHero->stopTimeClockAnim();
-            //                playerHero->drawPlayedJong(poker);
-            //                if(poker == playerLeft->getLastPoker()){
-            //                    Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-            //                }else if(poker == playerRight->getLastPoker()){
-            //                    Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
-            //                }
-            //            },0,0,0.6f,"delay_play_poker_auto");
+            playerHero->stopTimeClockAnim();
+            playerHero->drawPlayedJongMingpai(poker);
+            if(poker == playerLeft->getLastPoker()){
+                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
+            }else if(poker == playerRight->getLastPoker()){
+                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
+            }
+
+        }
+        if(fupanStep>= currentMaxStep){
+            //记录玩家的手牌
+            PlayMingpaiRecord record;
+            record.step = fupanStep;
+            PlayerMingpai leftpai;
+            leftpai.seatId = ClientSeatId::left;
+            leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
+            leftpai.playerHandJongs = playerLeft->playerHandJongs;
+            leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
+            leftpai.hua = playerLeft->getHuaNum();
+            leftpai.isTing =  playerLeft->getPlayerTingState();
+            record.record.push_back(leftpai);
+            PlayerMingpai oppsitepai;
+            oppsitepai.seatId = ClientSeatId::opposite;
+            oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
+            oppsitepai.playerHandJongs = playerOpposite->playerHandJongs;
+            oppsitepai.playerPlayedJongs =playerOpposite->playerPlayedJongs;
+            oppsitepai.hua = playerOpposite->getHuaNum();
+            oppsitepai.isTing =  playerOpposite->getPlayerTingState();
+            record.record.push_back(oppsitepai);
+            PlayerMingpai rightpai;
+            rightpai.seatId = ClientSeatId::right;
+            rightpai.playerCpgRecords = playerRight->playerCpgRecords;
+            rightpai.playerHandJongs = playerRight->playerHandJongs;
+            rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
+            rightpai.hua = playerRight->getHuaNum();
+            rightpai.isTing =  playerRight->getPlayerTingState();
+            record.record.push_back(rightpai);
+            PlayerMingpai heropai;
+            heropai.seatId = ClientSeatId::hero;
+            heropai.playerCpgRecords = playerHero->playerCpgRecords;
+            heropai.playerHandJongs = playerHero->playerHandJongs;
+            heropai.playerPlayedJongs =playerHero->playerPlayedJongs;
+            heropai.hua = playerHero->getHuaNum();
+            heropai.isTing =   playerHero->getPlayerTingState();
+            record.record.push_back(heropai);
+            myPlayMingpaiRecord.push_back(record);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);

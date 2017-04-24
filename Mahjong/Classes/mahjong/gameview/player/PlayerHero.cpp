@@ -424,13 +424,13 @@ void PlayerHero::inviteWechatFriend(){
         if(GAMEDATA::getInstance()->getFanMaType() == "0"){
             roomtype += ChineseWord("room_info_13");
         }else if(GAMEDATA::getInstance()->getFanMaType() == "1"){
-             roomtype += ChineseWord("room_info_14");
+            roomtype += ChineseWord("room_info_14");
         }else if (GAMEDATA::getInstance()->getFanMaType() == "2"){
-             roomtype += ChineseWord("room_info_15");
+            roomtype += ChineseWord("room_info_15");
         }
         roomtype += ChineseWord("room_info_16");
         roomtype += StringUtils::format("%s",GAMEDATA::getInstance()->getHZDiFen().c_str());
-
+        
     }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,false);
@@ -1139,22 +1139,24 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
         DelayTime* delay2 = DelayTime::create(0.3f);
         
         CallFunc* action3 = CallFunc::create([=](){
-            int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), resp.playCpgt.sId);
-            if( clientId == ClientSeatId::left){
-                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
-                arrow->setRotation(90);
-                addChild(arrow,20);
-            }else if( clientId == ClientSeatId::opposite){
-                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
-                arrow->setRotation(180);
-                addChild(arrow,20);
-            }else if( clientId == ClientSeatId::right){
-                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
-                arrow->setRotation(270);
-                addChild(arrow,20);
+            if(GAMEDATA::getInstance()->getGameType() == 3||GAMEDATA::getInstance()->getGameType() == 4){
+                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), resp.playCpgt.sId);
+                if( clientId == ClientSeatId::left){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                    arrow->setRotation(90);
+                    addChild(arrow,20);
+                }else if( clientId == ClientSeatId::opposite){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                    arrow->setRotation(180);
+                    addChild(arrow,20);
+                }else if( clientId == ClientSeatId::right){
+                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                    arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                    arrow->setRotation(270);
+                    addChild(arrow,20);
+                }
             }
         });
         
@@ -1446,6 +1448,26 @@ void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerBase* playerBas
                 gangVector.at(k)->setScale( 0.75f);
             }
         }
+        if(GAMEDATA::getInstance()->getGameType() == 3||GAMEDATA::getInstance()->getGameType() == 4){
+            int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), resp.playCpgt.sId);
+            if( clientId == ClientSeatId::left){
+                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                arrow->setRotation(90);
+                addChild(arrow,20);
+            }else if( clientId == ClientSeatId::opposite){
+                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                arrow->setRotation(180);
+                addChild(arrow,20);
+            }else if( clientId == ClientSeatId::right){
+                auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                arrow->setPosition(gangVector.at(0)->getPosition().x+40,gangVector.at(0)->getPosition().y+15);
+                arrow->setRotation(270);
+                addChild(arrow,20);
+            }
+        }
+        
         setCpgPostionX(getCpgPostionX()+170);
         
         if (resp.result == 2 && resp.playCpgt.ting != ""){
