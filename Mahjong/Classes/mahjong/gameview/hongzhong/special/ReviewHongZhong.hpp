@@ -28,7 +28,7 @@ USING_NS_CC;
 using namespace ui;
 
 class ReviewHongZhong : public Layer{
-    public:
+public:
     
     virtual bool init() override;
     CREATE_FUNC(ReviewHongZhong);
@@ -47,7 +47,11 @@ class ReviewHongZhong : public Layer{
     void checkPlayerIpRepetition();
     int  getNumbersByPoker(string pokers);
     
-    private:
+private:
+    float interval =0;
+    int fupanStep = 0;
+    int currentMaxStep =0;
+    bool playing = true;
     std::mutex m_mutex;
     int currentReadyPlayer;
     std::string  selectedChi;
@@ -61,6 +65,9 @@ class ReviewHongZhong : public Layer{
     PlayerRight* playerRight;
     PlayerOpposite* playerOpposite;
     bool showRepeatDialog = false;
+    std::vector<PlayMingpaiRecord> myPlayMingpaiRecord;
+    MenuItemImage* image1;
+    MenuItemImage* image3;
     
     void update(float dt) override;
     void initData();
@@ -83,7 +90,13 @@ class ReviewHongZhong : public Layer{
     void showOriention();
     void showHuPaiXing(std::string paixing);
     void firstPlayPoker(ReplaceJongVec vec,PlayerCpgtData data);
+    void createPlayer(PlayerGameData data, int type, Player* playerInfo);
     PlayerBase* getPlayerBySeatId(int sid);
+    
+    void controlDown();
+    void controlPause();
+    void controlUp();
+    void controlBack();
     
     EventListenerCustom* gameFaPaiListener;
     EventListenerCustom* addOtherReadyListener;
@@ -119,5 +132,6 @@ class ReviewHongZhong : public Layer{
     EventListenerCustom* coreLoginRespListener;
     EventListenerCustom* fangZhuLeaveListener;
     EventListenerCustom* networkBreakListener;
+    EventListenerCustom* fupanPlayerInfoListener;
 };
 #endif /* ReviewHongZhong_hpp */

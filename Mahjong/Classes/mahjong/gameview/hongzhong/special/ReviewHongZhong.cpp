@@ -163,62 +163,19 @@ void ReviewHongZhong::startGameAgain(){
 }
 
 void ReviewHongZhong::update(float dt){
-    
-    
-    if(GAMEDATA::getInstance()->getShowProtected()){
-        if(NULL == getChildByTag(2000)){
-            LostNetwork* net = LostNetwork::create();
-            net->setTag(2000);
-            addChild(net,200);
-        }
-        GAMEDATA::getInstance()->setShowProtected(false);
-    }
-    
-    if (GAMEDATA::getInstance()->getNeedAddPlayer()){
-        addPlayer2Room();
-        GAMEDATA::getInstance()->setNeedAddPlayer(false);
-    }
-    if(GAMEDATA::getInstance()->getIsGotoLobby()){
-        GAMEDATA::getInstance()->setIsGotoLobby(false);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            HintDialog* dialog = HintDialog::create(ChineseWord("dialog_text_4"), [=](Ref* ref){
-                GAMEDATA::getInstance()->clearPlayersInfo();
-                GAMEDATA::getInstance()->setIsPlaying(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            },[=](Ref* ref){
-                GAMEDATA::getInstance()->clearPlayersInfo();
-                GAMEDATA::getInstance()->setIsPlaying(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            });
-            addChild(dialog,5);
-        }
-    }
-    if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        std::string name = GAMEDATA::getInstance()->getDissolveName();
-        dis->setNickName(name);
-        addChild(dis,1000);
-        GAMEDATA::getInstance()->setShowDissolveDialog(true);
-    }
-    
-    if(!GAMEDATA::getInstance()->getIsPlaying()){
-        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-        for (int i = 0; i < players.size(); i++){
-            int seat_id = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),players.at(i)->getSeatId() );
-            if(seat_id == ClientSeatId::left){
-                if(NULL != playerLeft){
-                    playerLeft->setIsReady(players.at(i)->getIsReady());
-                }
-            }else if(seat_id == ClientSeatId::right){
-                if(NULL != playerRight){
-                    playerRight->setIsReady(players.at(i)->getIsReady());
-                }
-            }else if(seat_id == ClientSeatId::opposite){
-                if(NULL != playerOpposite){
-                    playerOpposite->setIsReady(players.at(i)->getIsReady());
-                }
+    interval += dt;
+    if(playing){
+        if(interval>1.5){
+            if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size()){
+                NetworkManage::getInstance()->receiveMsg(GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.at(fupanStep));
+                fupanStep++;
             }
+            interval = interval-1.5;
+            if(fupanStep>currentMaxStep)
+                currentMaxStep = fupanStep;
         }
+    }else{
+        interval=0;
     }
 }
 
@@ -914,6 +871,134 @@ void ReviewHongZhong::showHandPokerOver(int seatId){
 }
 
 
+void ReviewHongZhong::createPlayer(PlayerGameData data, int type, Player* playerInfo){
+    if (type == ClientSeatId::hero){
+        if (playerHero == NULL){
+            playerHero = PlayerHero::create();
+            playerHero->initPlayer(playerInfo);
+            playerHero->setIsAllowPlay(false);
+            playerHero->setPlayerTingState(data.status == 1?true:false);
+            addChild(playerHero, 2);
+            playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerHero->recoverHand(data.hand,data.lastpoker);
+            playerHero->recoverPlayed(data.outhand);
+            playerHero->recoverHua(data.hua);
+        }
+    }
+    else if (type == ClientSeatId::left){
+        if (playerLeft == NULL){
+            playerLeft = PlayerLeft::create();
+            playerLeft->initPlayer(playerInfo);
+            playerLeft->setPlayerTingState(data.status == 1?true:false);
+            playerLeft->setIsOffLine(data.isOnline == 0?true:false);
+            addChild(playerLeft);
+            playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerLeft->drawMingPai(data.hand);
+            playerLeft->recoverPlayed(data.outhand);
+            playerLeft->recoverHua(data.hua);
+            
+        }
+    }
+    else if (type == ClientSeatId::right){
+        if (playerRight == NULL){
+            playerRight = PlayerRight::create();
+            playerRight->initPlayer(playerInfo);
+            playerRight->setPlayerTingState(data.status == 1?true:false);
+            playerRight->setIsOffLine(data.isOnline == 0?true:false);
+            addChild(playerRight);
+            playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerRight->drawMingPai(data.hand);
+            playerRight->recoverPlayed(data.outhand);
+            playerRight->recoverHua(data.hua);
+            
+        }
+    }
+    else if (type == ClientSeatId::opposite){
+        if (playerOpposite == NULL){
+            playerOpposite = PlayerOpposite::create();
+            playerOpposite->initPlayer(playerInfo);
+            playerOpposite->setPlayerTingState(data.status == 1?true:false);
+            playerOpposite->setIsOffLine(data.isOnline == 0?true:false);
+            addChild(playerOpposite);
+            playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
+            playerOpposite->drawMingPai(data.hand);
+            playerOpposite->recoverPlayed(data.outhand);
+            playerOpposite->recoverHua(data.hua);
+            
+        }
+    }
+}
+
+
+void ReviewHongZhong::controlDown(){
+    interval =0;
+    playerHero->showCurrentPlayedJongIcon(false);
+    if(fupanStep>=2 && myPlayMingpaiRecord.size()>0){
+        image3->setEnabled(true);
+        fupanStep -= 2;
+        fupanStep  = fupanStep%2 == 0?fupanStep:(fupanStep-1);
+        if(fupanStep/2>=myPlayMingpaiRecord.size())
+            fupanStep = ((int)myPlayMingpaiRecord.size()-1)*2;
+        PlayMingpaiRecord record = myPlayMingpaiRecord.at(fupanStep/2);
+        for(auto var:record.record){
+            if(var.seatId==ClientSeatId::left){
+                playerLeft->setHuaNum(var.hua);
+                playerLeft->showPlayerHua(var.hua);
+                playerLeft->setPlayerTingState(var.isTing);
+                playerLeft->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
+            }else if(var.seatId==ClientSeatId::opposite){
+                playerOpposite->setHuaNum(var.hua);
+                playerOpposite->showPlayerHua(var.hua);
+                playerOpposite->setPlayerTingState(var.isTing);
+                playerOpposite->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
+            }else if(var.seatId==ClientSeatId::right){
+                playerRight->setHuaNum(var.hua);
+                playerRight->showPlayerHua(var.hua);
+                playerRight->setPlayerTingState(var.isTing);
+                playerRight->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
+            }else if(var.seatId==ClientSeatId::hero){
+                playerHero->setHuaNum(var.hua);
+                playerHero->showPlayerHua(var.hua);
+                playerHero->setPlayerTingState(var.isTing);
+                playerHero->updateMingpai(var.playerHandJongs, var.playerPlayedJongs,var.playerCpgRecords);
+            }
+        }
+    }else{
+        image1->setEnabled(false);
+    }
+}
+
+void ReviewHongZhong::controlPause(){
+    playing= !playing;
+    if(NULL == getChildByTag(1088)||NULL == (getChildByTag(1088)->getChildByTag(1087)))
+        return;
+    if(playing){
+        auto iamge001 = Sprite::create("fupan/pause_1.png");
+        ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setNormalImage(iamge001);
+        auto iamge002 = Sprite::create("fupan/pause_2.png");
+        ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setSelectedImage(iamge002);
+    }else{
+        auto iamge001 = Sprite::create("fupan/play_1.png");
+        ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setNormalImage(iamge001);
+        auto iamge002 = Sprite::create("fupan/play_2.png");
+        ((MenuItemImage*)(getChildByTag(1088)->getChildByTag(1087)))->setSelectedImage(iamge002);
+    }
+}
+void ReviewHongZhong::controlUp(){
+    if(fupanStep<GAMEDATA::getInstance()->getPlaybackInfo().playBackInfo.size()){
+        image1->setEnabled(true);
+        interval+=3.0;
+    }else{
+        image3 ->setEnabled(false);
+    }
+    
+}
+void ReviewHongZhong::controlBack(){
+    GAMEDATA::getInstance()->setGameType(1);
+    GAMEDATA::getInstance()->clearPlayersInfo();
+    Director::getInstance()->replaceScene(LobbyScene::create());
+}
+
 void ReviewHongZhong::onEnterTransitionDidFinish(){
     if(GAMEDATA::getInstance()->getContinueAgain()){
         GAMEDATA::getInstance()->setContinueAgain(false);
@@ -961,6 +1046,9 @@ void ReviewHongZhong::onEnterTransitionDidFinish(){
     
     
 }
+
+
+
 
 void ReviewHongZhong::onExit()
 {
@@ -1687,5 +1775,86 @@ void ReviewHongZhong::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
+    
+    fupanPlayerInfoListener = EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
+        ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
+        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+        FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();
+        for (int i = 0; i < data.players.size(); i++)
+        {
+            PlayerGameData player = data.players.at(i);
+            Player* info = new Player();
+            info->setSeatId(player.seatId);
+            info->setGold(player.gold);
+            info->setDiamond(player.diamond);
+            info->setNickname(player.nickname);
+            info->setPicture(player.pic);
+            info->setGender(player.gender);
+            info->setScore(player.jifen);
+            info->setTicket(player.lequan);
+            info->setLockDiamond(player.bangzuan);
+            info->setPoxiaoId(player.poxiaoId);
+            info->setFangka(player.fangka);
+            info->setIP(player.ip);
+            info->setIsReady(true);
+            info->setUmark(player.umark);
+            GAMEDATA::getInstance()->addPlayersInfo(info);
+            createPlayer(player,SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId),info);
+        }
+        
+        showPaiduiNum(91);
+        auto controlbg = Sprite::create("fupan/bg.png");
+        controlbg->setPosition(640,220);
+        addChild(controlbg,100);
+        
+        //记录玩家的手牌
+        PlayMingpaiRecord record;
+        record.step = fupanStep;
+        PlayerMingpai leftpai;
+        leftpai.seatId = ClientSeatId::left;
+        leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
+        leftpai.playerHandJongs = playerLeft->playerHandJongs;
+        leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
+        leftpai.hua = playerLeft->getHuaNum();
+        leftpai.isTing =  false;
+        record.record.push_back(leftpai);
+        PlayerMingpai oppsitepai;
+        oppsitepai.seatId = ClientSeatId::opposite;
+        oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
+        oppsitepai.playerHandJongs = playerOpposite->playerHandJongs;
+        oppsitepai.playerPlayedJongs =playerOpposite->playerPlayedJongs;
+        oppsitepai.hua = playerOpposite->getHuaNum();
+        oppsitepai.isTing =  false;
+        record.record.push_back(oppsitepai);
+        PlayerMingpai rightpai;
+        rightpai.seatId = ClientSeatId::right;
+        rightpai.playerCpgRecords = playerRight->playerCpgRecords;
+        rightpai.playerHandJongs = playerRight->playerHandJongs;
+        rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
+        rightpai.hua = playerRight->getHuaNum();
+        rightpai.isTing =  false;
+        record.record.push_back(rightpai);
+        PlayerMingpai heropai;
+        heropai.seatId = ClientSeatId::hero;
+        heropai.playerCpgRecords = playerHero->playerCpgRecords;
+        heropai.playerHandJongs = playerHero->playerHandJongs;
+        heropai.playerPlayedJongs =playerHero->playerPlayedJongs;
+        heropai.hua = playerHero->getHuaNum();
+        heropai.isTing =  false;
+        record.record.push_back(heropai);
+        myPlayMingpaiRecord.push_back(record);
+        
+        image1= MenuItemImage::create("fupan/down_1.png", "fupan/down_2.png","fupan/down_3.png",CC_CALLBACK_0(ReviewHongZhong::controlDown, this));
+        auto image2 = MenuItemImage::create("fupan/pause_1.png", "fupan/pause_2.png",CC_CALLBACK_0(ReviewHongZhong::controlPause, this));
+        image2->setTag(1087);
+        image3 = MenuItemImage::create("fupan/up_1.png", "fupan/up_2.png","fupan/up_3.png",CC_CALLBACK_0(ReviewHongZhong::controlUp, this));
+        MenuItemImage* image4 = MenuItemImage::create("fupan/back_1.png", "fupan/back_2.png",CC_CALLBACK_0(ReviewHongZhong::controlBack, this));
+        auto menucontrol = Menu::create(image1,image2,image3,image4,NULL);
+        menucontrol->alignItemsHorizontallyWithPadding(50);
+        menucontrol->setPosition(640,220);
+        menucontrol->setTag(1088);
+        addChild(menucontrol,900);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fupanPlayerInfoListener, 1);
 }
 

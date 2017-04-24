@@ -35,7 +35,7 @@ private:
 	int currentReadyPlayer;
     float interval =0;
     int fupanStep = 0;
-    int currentMaxStep =0;;
+    int currentMaxStep =0;
     bool playing = true;
 	std::string  selectedChi;
 	Sprite* choiceMenu;
@@ -46,10 +46,9 @@ private:
     PlayerLeft* playerLeft;
     PlayerRight* playerRight;
     PlayerOpposite* playerOpposite;
-    std::vector<PlayMingpaiRecord> myPlayMingpaiRecord;
     PlayerCpgtData  shmjPlayerCpgtData;
     HeroCpgRespData shmjHeroCpgtData;
-    
+    std::vector<PlayMingpaiRecord> myPlayMingpaiRecord;
     MenuItemImage* image1;
     MenuItemImage* image3;
 
