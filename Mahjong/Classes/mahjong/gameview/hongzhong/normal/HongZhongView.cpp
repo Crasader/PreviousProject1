@@ -1007,6 +1007,8 @@ void HongZhongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playeHuActionListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(vhzOpenFriendRoomListener);
+    
     
 }
 
@@ -1682,5 +1684,15 @@ void HongZhongView::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
+    
+    vhzOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_HONGZHONG_RESP, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        GAMEDATA::getInstance()->setGameType(3);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }
+    });
 }
 

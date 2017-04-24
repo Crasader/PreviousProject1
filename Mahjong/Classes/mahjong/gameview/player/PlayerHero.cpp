@@ -397,27 +397,40 @@ void PlayerHero::readyGo(){
 void PlayerHero::inviteWechatFriend(){
     std::string roomtype = ChineseWord("room_info_1");
     roomtype += GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu;
-    if(GAMEDATA::getInstance()->getPrivateKaibao()=="0"){
-        roomtype += ChineseWord("room_info_2");
-    }else{
-        roomtype += ChineseWord("room_info_3");
-    }
-    if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
-        roomtype += ChineseWord("room_info_7");
-    }else if(GAMEDATA::getInstance()->getPrivateLezi()=="1"){
-        roomtype += ChineseWord("room_info_8");
-    }
-    else if(GAMEDATA::getInstance()->getPrivateLezi()=="2"){
-        roomtype += ChineseWord("room_info_9");
-    }else if(GAMEDATA::getInstance()->getPrivateLezi()=="3"){
-        roomtype += ChineseWord("room_info_10");
-    }else if(GAMEDATA::getInstance()->getPrivateLezi()=="4"){
-        roomtype += ChineseWord("room_info_11");
-    }else if(GAMEDATA::getInstance()->getPrivateLezi()=="5"){
-        roomtype += ChineseWord("room_info_12");
-    }
-    if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
-        roomtype += ChineseWord("room_info_6");
+    if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
+        if(GAMEDATA::getInstance()->getPrivateKaibao()=="0"){
+            roomtype += ChineseWord("room_info_2");
+        }else{
+            roomtype += ChineseWord("room_info_3");
+        }
+        if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
+            roomtype += ChineseWord("room_info_7");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi()=="1"){
+            roomtype += ChineseWord("room_info_8");
+        }
+        else if(GAMEDATA::getInstance()->getPrivateLezi()=="2"){
+            roomtype += ChineseWord("room_info_9");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi()=="3"){
+            roomtype += ChineseWord("room_info_10");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi()=="4"){
+            roomtype += ChineseWord("room_info_11");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi()=="5"){
+            roomtype += ChineseWord("room_info_12");
+        }
+        if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
+            roomtype += ChineseWord("room_info_6");
+        }
+    }else if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
+        if(GAMEDATA::getInstance()->getFanMaType() == "0"){
+            roomtype += ChineseWord("room_info_13");
+        }else if(GAMEDATA::getInstance()->getFanMaType() == "1"){
+             roomtype += ChineseWord("room_info_14");
+        }else if (GAMEDATA::getInstance()->getFanMaType() == "2"){
+             roomtype += ChineseWord("room_info_15");
+        }
+        roomtype += ChineseWord("room_info_16");
+        roomtype += StringUtils::format("%s",GAMEDATA::getInstance()->getHZDiFen().c_str());
+
     }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,false);
