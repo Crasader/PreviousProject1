@@ -106,7 +106,6 @@ private:
     EventListenerCustom* otherListener;
     EventListenerCustom* playerCpgListener;
     EventListenerCustom* gameResultListener;
-    EventListenerCustom* othersChiListener;
     EventListenerCustom* othersPengListener;
     EventListenerCustom* othersGangListener;
     EventListenerCustom* playerTingNotifyListener;
