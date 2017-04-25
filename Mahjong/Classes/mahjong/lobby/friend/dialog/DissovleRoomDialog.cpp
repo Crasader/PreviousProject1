@@ -83,7 +83,7 @@ void DissovleRoomDialog::disAgree(){
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
     }else if(GAMEDATA::getInstance()->getGameType() == 3){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("1"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("0"));
     }
     
     removeFromParent();
@@ -95,7 +95,7 @@ void DissovleRoomDialog::closeView(){
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
     }else if(GAMEDATA::getInstance()->getGameType() == 3){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("1"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("0"));
     }
     
     removeFromParent();
