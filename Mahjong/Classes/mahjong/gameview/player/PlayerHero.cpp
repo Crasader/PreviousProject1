@@ -1643,22 +1643,24 @@ void PlayerHero::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pen
                 record.pokersRecord.pushBack(jong);
             }
             if(atoi(gang.at(i).gaId.c_str()) != 0){
-                int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),atoi(gang.at(i).gaId.c_str()));
-                if( clientId == ClientSeatId::left){
-                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                    arrow->setPosition(getCpgPostionX()+47,55);
-                    arrow->setRotation(90);
-                    addChild(arrow,20);
-                }else if( clientId == ClientSeatId::opposite){
-                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                    arrow->setPosition(getCpgPostionX()+47,55);
-                    arrow->setRotation(180);
-                    addChild(arrow,20);
-                }else if( clientId == ClientSeatId::right){
-                    auto arrow = Sprite::create("gameview/hu_jong_hint.png");
-                    arrow->setPosition(getCpgPostionX()+47,55);
-                    arrow->setRotation(270);
-                    addChild(arrow,20);
+                if(GAMEDATA::getInstance()->getGameType() == 3||GAMEDATA::getInstance()->getGameType() == 4){
+                    int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),atoi(gang.at(i).gaId.c_str()));
+                    if( clientId == ClientSeatId::left){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(getCpgPostionX()+47,55);
+                        arrow->setRotation(90);
+                        addChild(arrow,20);
+                    }else if( clientId == ClientSeatId::opposite){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(getCpgPostionX()+47,55);
+                        arrow->setRotation(180);
+                        addChild(arrow,20);
+                    }else if( clientId == ClientSeatId::right){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(getCpgPostionX()+47,55);
+                        arrow->setRotation(270);
+                        addChild(arrow,20);
+                    }
                 }
             }
             playerCpgRecords.push_back(record);

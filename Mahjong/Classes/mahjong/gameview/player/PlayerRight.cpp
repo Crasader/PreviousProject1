@@ -61,7 +61,6 @@ void PlayerRight::drawPlayedJong(int ctype){
     int tar = playerPlayedJongs.size() % 7;
     this->addChild(lastPlayedJong, 7 - tar);
     playerPlayedJongs.pushBack(lastPlayedJong);
-    log("RRRRRRRRRRRRRRRRRRRRR === %d",(int)playerPlayedJongs.size());
     Point startPoint = Point(RIGHT_POS_X, RIGHT_POS_Y + 35);
     Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
     ccBezierConfig bezier;
@@ -640,6 +639,27 @@ void PlayerRight::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> pe
                     addChild(jong, 30 - (int)playerCpgRecords.size()*3-j);
                 }
                 record.pokersRecord.pushBack(jong);
+            }
+            if(atoi(gang.at(i).gaId.c_str()) != 0){
+                if(GAMEDATA::getInstance()->getGameType() == 3||GAMEDATA::getInstance()->getGameType() == 4){
+                    int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(gang.at(i).gaId.c_str()));
+                    if( clientId == ClientSeatId::left){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-3, getCpgShowPostion((int)playerCpgRecords.size()).y +  34));
+                        arrow->setRotation(90);
+                        addChild(arrow,40);
+                    }else if( clientId == ClientSeatId::opposite){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-3, getCpgShowPostion((int)playerCpgRecords.size()).y +  34));
+                        arrow->setRotation(180);
+                        addChild(arrow,40);
+                    }else if( clientId == ClientSeatId::hero){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x-3, getCpgShowPostion((int)playerCpgRecords.size()).y +  34));
+                        //                    arrow->setRotation(270);
+                        addChild(arrow,40);
+                    }
+                }
             }
             playerCpgRecords.push_back(record);
         }

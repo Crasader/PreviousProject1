@@ -61,13 +61,11 @@ void PlayerOpposite::drawOppositePlayerTurnMingpai(int jongtype){
 }
 
 void PlayerOpposite::drawPlayedJong(int ctype){
-    //    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
     PlayerBase::showPlayedJong(ctype);
     Jong* lastPlayedJong = Jong::create();
     lastPlayedJong->showJong(oppositeplayed, ctype);
     lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y));
     playerPlayedJongs.pushBack(lastPlayedJong);
-    log("OOOOOOOOOOOOOOOOOO === %d",(int)playerPlayedJongs.size());
     if (playerPlayedJongs.size() / 10 == 0){
         addChild(lastPlayedJong, 3);
     }
@@ -362,7 +360,6 @@ void PlayerOpposite::drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase)
                 }else if( clientId == ClientSeatId::hero){
                     auto arrow = Sprite::create("gameview/hu_jong_hint.png");
                     arrow->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 34, getCpgShowPostion((int)playerCpgRecords.size()).y - 2));
-//                    arrow->setRotation(180);
                     addChild(arrow,20);
                 }else if( clientId == ClientSeatId::right){
                     auto arrow = Sprite::create("gameview/hu_jong_hint.png");
@@ -552,7 +549,6 @@ void PlayerOpposite::drawPlayerMingpaiGang(PlayerCpgtData data, PlayerBase* play
                 }else if( clientId == ClientSeatId::hero){
                     auto arrow = Sprite::create("gameview/hu_jong_hint.png");
                     arrow->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 34, getCpgShowPostion((int)playerCpgRecords.size()).y - 2));
-//                    arrow->setRotation(180);
                     addChild(arrow,20);
                 }else if( clientId == ClientSeatId::right){
                     auto arrow = Sprite::create("gameview/hu_jong_hint.png");
@@ -702,6 +698,26 @@ void PlayerOpposite::recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData>
                     addChild(jong, 5);
                 }
                 record.pokersRecord.pushBack(jong);
+            }
+            if(atoi(gang.at(i).gaId.c_str()) != 0){
+                if(GAMEDATA::getInstance()->getGameType() == 3||GAMEDATA::getInstance()->getGameType() == 4){
+                    int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(gang.at(i).gaId.c_str()));
+                    if( clientId == ClientSeatId::left){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 34, getCpgShowPostion((int)playerCpgRecords.size()).y - 2));
+                        arrow->setRotation(90);
+                        addChild(arrow,20);
+                    }else if( clientId == ClientSeatId::hero){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 34, getCpgShowPostion((int)playerCpgRecords.size()).y - 2));
+                        addChild(arrow,20);
+                    }else if( clientId == ClientSeatId::right){
+                        auto arrow = Sprite::create("gameview/hu_jong_hint.png");
+                        arrow->setPosition(Point(getCpgShowPostion((int)playerCpgRecords.size()).x - 34, getCpgShowPostion((int)playerCpgRecords.size()).y - 2));
+                        arrow->setRotation(270);
+                        addChild(arrow,20);
+                    }
+                }
             }
             playerCpgRecords.push_back(record);
         }
