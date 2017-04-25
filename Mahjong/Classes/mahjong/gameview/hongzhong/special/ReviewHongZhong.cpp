@@ -1091,6 +1091,7 @@ void ReviewHongZhong::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playeHuActionListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(fupanPlayerInfoListener);
     
 }
 
