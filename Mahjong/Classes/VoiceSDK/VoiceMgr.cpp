@@ -1,5 +1,4 @@
 #include "voicesdk/VoiceMgr.h"
-//#include "audio/include/AudioEngine.h"
 #include "http/base64/Base64.h"
 using namespace experimental;
 
@@ -20,7 +19,7 @@ VoiceMgr* VoiceMgr::getInstance() {
 }
 
 VoiceMgr::VoiceMgr() {
-    _voiceMediaPath = FileUtils::getInstance()->getWritablePath(); // + "voicemsgs/";      // 每次初始化路劲
+    _voiceMediaPath = FileUtils::getInstance()->getWritablePath(); // + "voicemsgs/";
     setStorageDir(_voiceMediaPath);
 }
 
@@ -38,7 +37,6 @@ Data VoiceMgr::decode(string data)
 
 void VoiceMgr::prepare(string filename)
 {
-//	AudioEngine::pauseAll();
 	clearCache(filename);  // todov
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->prepare(filename);
@@ -50,7 +48,6 @@ void VoiceMgr::prepare(string filename)
 
 void VoiceMgr::release()
 {
-//	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->release();
 #endif
@@ -61,7 +58,6 @@ void VoiceMgr::release()
 
 void VoiceMgr::cancel()
 {
-//	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->cancel();
 #endif
@@ -72,7 +68,7 @@ void VoiceMgr::cancel()
 
 void VoiceMgr::writeVoice(string filename, string voiceData)
 {
-	log("testmsg === %s", voiceData.c_str());  // 服务器接收到的数据
+	log("testmsg === %s", voiceData.c_str());
 	string recodByte = base64_decode(voiceData.c_str());
 	log("recodByte === %s", recodByte.c_str());
 	string path = VoiceMgr::getInstance()->_voiceMediaPath + filename;
@@ -98,7 +94,6 @@ void VoiceMgr::clearCache(string filename)
 
 void VoiceMgr::play(string filename)
 {
-//	AudioEngine::pauseAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->play(filename);
 #endif
@@ -109,7 +104,6 @@ void VoiceMgr::play(string filename)
 
 void VoiceMgr::stop()
 {
-//	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->stop();
 #endif
@@ -120,7 +114,6 @@ void VoiceMgr::stop()
 
 int VoiceMgr::getVoiceLevel(int maxLevel)
 {
-	// return Math.floor(Math.random() * maxLevel + 1);
 	return 1;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 #endif
@@ -162,11 +155,9 @@ string VoiceMgr::getVoiceData(string filename)
 }
 
 
-// 设置本地存储路劲
 void VoiceMgr::setStorageDir(string dir)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
-	// jni 调用 setStorageDir 方法
 	CallVoiceAndroidMethod::getInstance()->setStorageDir(dir);
 #endif
 #if (CC_TARGET_PLATFORM==CC_PLATFORM_IOS)

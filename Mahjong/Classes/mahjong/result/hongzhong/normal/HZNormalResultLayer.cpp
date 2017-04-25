@@ -93,9 +93,9 @@ void HZNormalResultLayer::showRoomInfo(){
         
         auto maType  = Sprite::create();
         addChild(maType);
-        if(GAMEDATA::getInstance()->getFanMaType() == "0"){
+        if(GAMEDATA::getInstance()->getFanMaType() == "4"){
             maType->setTexture("result/ma_159zh.png");
-        }else if(GAMEDATA::getInstance()->getFanMaType() == "1"){
+        }else if(GAMEDATA::getInstance()->getFanMaType() == "3"){
             maType->setTexture("result/ma_159.png");
         }else{
             maType->setTexture("result/ma_1.png");

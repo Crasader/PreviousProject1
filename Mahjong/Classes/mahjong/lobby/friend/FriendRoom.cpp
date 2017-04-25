@@ -291,43 +291,46 @@ bool FriendRoom::init()
     leX1->setPosition(548,147);
     addChild(leX1);
     
-    vector<std::string> fuZhuLeQuan = StringUtil::split(GAMEDATA::getInstance()->getFangzhuLequan(), ",");
-    while(fuZhuLeQuan.size()<3){
-        fuZhuLeQuan.push_back("50");
+    if(GAMEDATA::getInstance()->getFangzhuLequan() != ""){
+        vector<std::string> fuZhuLeQuan = StringUtil::split(GAMEDATA::getInstance()->getFangzhuLequan(), ",");
+        while(fuZhuLeQuan.size()<3){
+            fuZhuLeQuan.push_back("50");
+        }
+        
+        LabelAtlas* lequanNum1 = LabelAtlas::create(fuZhuLeQuan.at(0),"shop/prop_num.png",21,28,'0');
+        lequanNum1->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        lequanNum1->setPosition(556,147);
+        addChild(lequanNum1);
+        
+        auto lequan2 = Sprite::create("common/lequan_icon.png");
+        lequan2->setPosition(734,145);
+        addChild(lequan2);
+        
+        auto leX2 = Sprite::create("friend/fangzhu_x.png");
+        leX2->setPosition(767,147);
+        addChild(leX2);
+        
+        LabelAtlas* lequanNum2 = LabelAtlas::create(fuZhuLeQuan.at(1),"shop/prop_num.png",21,28,'0');
+        lequanNum2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        lequanNum2->setPosition(775,147);
+        addChild(lequanNum2);
+        
+        
+        auto lequan3 = Sprite::create("common/lequan_icon.png");
+        lequan3->setPosition(962,145);
+        addChild(lequan3);
+        
+        auto leX3 = Sprite::create("friend/fangzhu_x.png");
+        leX3->setPosition(995,147);
+        addChild(leX3);
+        
+        LabelAtlas* lequanNum4 = LabelAtlas::create(fuZhuLeQuan.at(2),"shop/prop_num.png",21,28,'0');
+        lequanNum4->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        lequanNum4->setPosition(1003,147);
+        addChild(lequanNum4);
+
     }
-    
-    LabelAtlas* lequanNum1 = LabelAtlas::create(fuZhuLeQuan.at(0),"shop/prop_num.png",21,28,'0');
-    lequanNum1->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum1->setPosition(556,147);
-    addChild(lequanNum1);
-    
-    auto lequan2 = Sprite::create("common/lequan_icon.png");
-    lequan2->setPosition(734,145);
-    addChild(lequan2);
-    
-    auto leX2 = Sprite::create("friend/fangzhu_x.png");
-    leX2->setPosition(767,147);
-    addChild(leX2);
-    
-    LabelAtlas* lequanNum2 = LabelAtlas::create(fuZhuLeQuan.at(1),"shop/prop_num.png",21,28,'0');
-    lequanNum2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum2->setPosition(775,147);
-    addChild(lequanNum2);
-
-    
-    auto lequan3 = Sprite::create("common/lequan_icon.png");
-    lequan3->setPosition(962,145);
-    addChild(lequan3);
-    
-    auto leX3 = Sprite::create("friend/fangzhu_x.png");
-    leX3->setPosition(995,147);
-    addChild(leX3);
-    
-    LabelAtlas* lequanNum4 = LabelAtlas::create(fuZhuLeQuan.at(2),"shop/prop_num.png",21,28,'0');
-    lequanNum4->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum4->setPosition(1003,147);
-    addChild(lequanNum4);
-
+   
     
     auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(FriendRoom::openRoom, this));
     auto openMenu = Menu::create(openBtn,NULL);
