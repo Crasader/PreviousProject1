@@ -493,11 +493,11 @@ void FriendRoom::openRoom(){
         std::string fanma = "0";//0表示没有159zhong,1表示有159,2表示1码
         std::string difen = "2";
         if(NULL != getChildByTag(3024)&&getChildByTag(3024)->isVisible()){
-            fanma  = "0";
+            fanma  = "4";
         }else if(NULL != getChildByTag(3026)&&getChildByTag(3026)->isVisible()){
-            fanma  = "1";
+            fanma  = "3";
         }else if(NULL != getChildByTag(3028)&&getChildByTag(3028)->isVisible()){
-            fanma  = "2";
+            fanma  = "1";
         }
         
         if(NULL != getChildByTag(3030)&&getChildByTag(3030)->isVisible()){
