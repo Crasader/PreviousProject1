@@ -1,6 +1,6 @@
 #include "voicesdk/VoiceMgr.h"
-#include "audio/include/AudioEngine.h"
-#include "http/base64/Base64.h"  
+//#include "audio/include/AudioEngine.h"
+#include "http/base64/Base64.h"
 using namespace experimental;
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
@@ -38,7 +38,7 @@ Data VoiceMgr::decode(string data)
 
 void VoiceMgr::prepare(string filename)
 {
-	AudioEngine::pauseAll();
+//	AudioEngine::pauseAll();
 	clearCache(filename);  // todov
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->prepare(filename);
@@ -50,7 +50,7 @@ void VoiceMgr::prepare(string filename)
 
 void VoiceMgr::release()
 {
-	AudioEngine::resumeAll();
+//	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->release();
 #endif
@@ -61,7 +61,7 @@ void VoiceMgr::release()
 
 void VoiceMgr::cancel()
 {
-	AudioEngine::resumeAll();
+//	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->cancel();
 #endif
@@ -98,7 +98,7 @@ void VoiceMgr::clearCache(string filename)
 
 void VoiceMgr::play(string filename)
 {
-	AudioEngine::pauseAll();
+//	AudioEngine::pauseAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->play(filename);
 #endif
@@ -109,7 +109,7 @@ void VoiceMgr::play(string filename)
 
 void VoiceMgr::stop()
 {
-	AudioEngine::resumeAll();
+//	AudioEngine::resumeAll();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->stop();
 #endif
