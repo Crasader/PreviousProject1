@@ -50,13 +50,13 @@ bool GameRuleDialog::init(){
     
     auto hongzhong = Sprite::create("setting/text_hz_2.png");
     hongzhong->setTag(2024);
-    hongzhong->setPosition(550,610);
+    hongzhong->setPosition(555,610);
     addChild(hongzhong,2);
     
     auto qun_normal = MenuItemImage::create("setting/tab_btn_1.png", "setting/tab_btn_1.png");
     auto qun_selected = MenuItemImage::create("setting/tab_btn_2.png", "setting/tab_btn_2.png");
     qunToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showShangHai, this), qun_normal, qun_selected, NULL);
-    
+    qunToggle->setSelectedIndex(1);
     auto fangka_normal = MenuItemImage::create("setting/tab_btn_1.png", "setting/tab_btn_1.png");
     auto fangka_selected = MenuItemImage::create("setting/tab_btn_2.png", "setting/tab_btn_2.png");
     fangkaToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showHongZhong, this), fangka_normal, fangka_selected, NULL);
