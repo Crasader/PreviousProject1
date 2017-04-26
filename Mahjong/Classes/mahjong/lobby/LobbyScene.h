@@ -24,7 +24,7 @@ public:
     void onEnterTransitionDidFinish() override;
     CREATE_FUNC(LobbyScene);
 private:
-    
+    bool showDissolveDialog;
 	Label* nickName;
 	Label* goldNum;
 	Label* fangkaNum;

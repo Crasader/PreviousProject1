@@ -4,6 +4,7 @@
 #include "mahjong/lobby/wanjiaqun/WanJiaQunLayer.hpp"
 #include "mahjong/lobby/friend/dialog/RoomFullDialog.hpp"
 #include "mahjong/lobby/friend/FriendRoom.h"
+#include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
 #include "mahjong/lobby/EnterRoomDialog.hpp"
 #include "mahjong/lobby/notice/NoticeDialog.hpp"
@@ -39,6 +40,7 @@ bool LobbyScene::init()
     {
         return false;
     }
+    showDissolveDialog = false;
     initView();
     //add sprite to scene
     drawSceneTop();
@@ -105,6 +107,15 @@ void LobbyScene::signUpdate(float dt){
         GAMEDATA::getInstance()->setShowDialogType(-1);
 #endif
     }
+    
+    if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
+        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+        std::string name = GAMEDATA::getInstance()->getDissolveName();
+        dis->setNickName(name);
+        addChild(dis,1000);
+        showDissolveDialog = true;
+    }
+
 }
 
 

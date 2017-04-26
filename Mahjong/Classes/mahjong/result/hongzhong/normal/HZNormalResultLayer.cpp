@@ -261,15 +261,19 @@ void HZNormalResultLayer::afterCaptured(bool succeed, const std::string &outputF
 }
 
 void HZNormalResultLayer::continueGame(){
-    vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-    for (int i = 0; i < players.size(); i++){
-        if(players.at(i)->getSeatId() != GAMEDATA::getInstance()->getHeroSeatId()){
-            players.at(i)->setIsReady(false);
+    if(GAMEDATA::getInstance()->getIsGotoLobby()){
+        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+    }else{
+        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+        for (int i = 0; i < players.size(); i++){
+            if(players.at(i)->getSeatId() != GAMEDATA::getInstance()->getHeroSeatId()){
+                players.at(i)->setIsReady(false);
+            }
         }
+        schedule([=](float dt){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayGameAgain());
+        }, 0.0f, 0.0f, 0.8f,"delayGame");
     }
-    schedule([=](float dt){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayGameAgain());
-    }, 0.0f, 0.0f, 0.8f,"delayGame");
 }
 
 

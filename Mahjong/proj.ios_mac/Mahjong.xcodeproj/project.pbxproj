@@ -1284,14 +1284,14 @@
 		D252FACD1E7FA5EC00937322 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
-				D252FAD61E7FA5EC00937322 /* EnterRoomDialog.cpp */,
-				D252FAE21E7FA5EC00937322 /* LobbyScene.cpp */,
-				D252FAE31E7FA5EC00937322 /* LobbyScene.h */,
-				D252FAD71E7FA5EC00937322 /* EnterRoomDialog.hpp */,
 				D252FACE1E7FA5EC00937322 /* daily */,
+				D252FAD61E7FA5EC00937322 /* EnterRoomDialog.cpp */,
+				D252FAD71E7FA5EC00937322 /* EnterRoomDialog.hpp */,
 				D252FBFC1E7FABC600937322 /* friend */,
 				D252FAD81E7FA5EC00937322 /* goldroom */,
 				D252FADD1E7FA5EC00937322 /* gonggao */,
+				D252FAE21E7FA5EC00937322 /* LobbyScene.cpp */,
+				D252FAE31E7FA5EC00937322 /* LobbyScene.h */,
 				D252FAE41E7FA5EC00937322 /* notice */,
 				D252FAE71E7FA5EC00937322 /* share */,
 				D252FAEA1E7FA5EC00937322 /* shiming */,
