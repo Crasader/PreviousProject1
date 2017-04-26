@@ -26,8 +26,10 @@ private:
     MenuItemToggle* qunToggle;
     MenuItemToggle* fangkaToggle;
     ListView* listView;
+    ListView* listViewHz;
     void closeView();
-    std::vector<std::string> getGameRules();
+    std::vector<std::string> getGameRulesShangHai();
+    std::vector<std::string> getGameRulesHongZhong();
     void showShangHai(Ref* ref);
     void showHongZhong(Ref* ref);
 };

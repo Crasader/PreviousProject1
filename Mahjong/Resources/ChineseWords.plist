@@ -143,6 +143,40 @@
 		<string>荒翻*2</string>
 		<key>rule_text_21</key>
 		<string>有开宝和荒翻的情况下,勒子翻倍</string>
+		<key>rule_text_22</key>
+		<string>计分规则：底分2分或10分,自摸算2分或10分</string>
+		<key>rule_text_23</key>
+		<string>放杠出：底分*1倍*3</string>
+		<key>rule_text_24</key>
+		<string>接杠得：底分*1倍*3</string>
+		<key>rule_text_25</key>
+		<string>A玩家公杠,其他三人每人出1倍底分,A玩家得3*1倍底分</string>
+		<key>rule_text_26</key>
+		<string>A玩家暗杠,其他三人每人处2倍底分,A玩家得3*2倍底分</string>
+		<key>rule_text_27</key>
+		<string>自摸，每人出1倍底分，再算翻码</string>
+		<key>rule_text_28</key>
+		<string>扎码规则:</string>
+		<key>rule_text_29</key>
+		<string>A、1,5,9,红中算鸟,有人胡牌后,从墩上摸牌,不管哪家,</string>
+		<key>rule_text_30</key>
+		<string>都是1,5,9,红中算鸟.中1个鸟,则每人多出1倍底分,</string>
+		<key>rule_text_31</key>
+		<string>中2个则每人多出2倍底分，中4个则每人多出4倍底分.</string>
+		<key>rule_text_32</key>
+		<string>B、1,5,9算鸟,有人胡牌后,从墩上摸牌,不管哪家,</string>
+		<key>rule_text_33</key>
+		<string>都是1,5,9算鸟.中1个鸟,则每人多出1倍底分,</string>
+		<key>rule_text_34</key>
+		<string>中2个则每人多出2倍底分,中3个则每人多出3倍底分</string>
+		<key>rule_text_35</key>
+		<string>C、抓一个鸟,鸟是几点就算几倍,红中算10倍*底分,</string>
+		<key>rule_text_36</key>
+		<string> 如5筒算5倍*底分,9条算9倍*底分.</string>
+		<key>rule_text_37</key>
+		<string>抢杠胡:只可抢公杠，抢杠后不能翻码。</string>
+		<key>rule_text_38</key>
+		<string>杠开番数*2</string>
 		<key>room_info_1</key>
 		<string>房间类型:局数</string>
 		<key>room_info_2</key>
