@@ -257,6 +257,8 @@
 		<string>领取成功</string>
 		<key>dialog_text_24</key>
 		<string>确定要离开游戏吗？</string>
+		<key>dialog_text_25</key>
+		<string>房间已经解散</string>
 		<key>xioahao</key>
 		<string>消耗</string>
 		<key>lequan</key>

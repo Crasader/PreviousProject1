@@ -273,7 +273,10 @@ void BillInfo::showKongBill(){
             getChildByTag(1001)->removeFromParent();
         }
         if(NULL != getChildByTag(2016)){
-            getChildByTag(2016)->setVisible(true);
+            if(GAMEDATA::getInstance()->getShowFuPanBtn()){
+                getChildByTag(2016)->setVisible(true);
+            }
+            
         }
     }
 }
@@ -289,6 +292,14 @@ std::vector<BillContent> BillInfo::sortBillInfo(std::vector<BillContent> content
 
 void BillInfo::setShowPosition(){
     GAMEDATA::getInstance()->setShowFuPanBtn(false);
+//    if(NULL != getChildByTag(2016))
+        getChildByTag(2016)->setVisible(false);
+    auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::screenShot, this));
+    auto shareBtn = Menu::create(xuanyao,NULL);
+    shareBtn->alignItemsHorizontallyWithPadding(50);
+    shareBtn->setPosition(640,80);
+    addChild(shareBtn);
+
 //    this->setIsPrivateBill(true);
 //    getChildByTag(101)->setPositionX(890);
 //    getChildByTag(102)->setPositionX(1230);

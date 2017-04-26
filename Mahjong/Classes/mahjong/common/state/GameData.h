@@ -107,6 +107,7 @@ public:
     CC_SYNTHESIZE(bool, showProtected, ShowProtected);//从后台切回来
     CC_SYNTHESIZE(bool, haveShowNotice, HaveShowNotice);//是否展示过推广
     CC_SYNTHESIZE(bool, showFangZhuDismiss, ShowFangZhuDismiss);//是否房主解散了房间
+    CC_SYNTHESIZE(bool, showRoomDismiss, ShowRoomDismiss);//是否房主解散了房间
 //    CC_SYNTHESIZE(bool, isFuPan, IsFuPan);//是否开始发牌
     CC_SYNTHESIZE(bool, showDissolveDialog, ShowDissolveDialog);
     CC_SYNTHESIZE(bool, certification, Certification);

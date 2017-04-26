@@ -566,6 +566,10 @@ void LobbyScene::onEnterTransitionDidFinish(){
         HintDialog* hint  = HintDialog::create(ChineseWord("dialog_text_19"), nullptr);
         addChild(hint,50);
         GAMEDATA::getInstance()->setShowFangZhuDismiss(false);
+    }else if(GAMEDATA::getInstance()->getShowRoomDismiss()){
+        HintDialog* hint  = HintDialog::create(ChineseWord("dialog_text_25"), nullptr);
+        addChild(hint,50);
+        GAMEDATA::getInstance()->setShowFangZhuDismiss(false);
     }
 }
 
