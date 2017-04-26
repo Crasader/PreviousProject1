@@ -35,18 +35,35 @@ bool GameRuleDialog::init(){
     icon->setPosition(640, 680);
     addChild(icon);
     
-    auto input_bg = ui::Scale9Sprite::create("common/input_box_bg.png");
-    input_bg->setContentSize(Size(700,560));
-    input_bg->setPosition(640, 340);
+    auto input_bg = Sprite::create("setting/text_bg.png");
+    input_bg->setPosition(640, 320);
     addChild(input_bg);
+    
+    auto tabBg = Sprite::create("setting/tab_bg.png");
+    tabBg->setPosition(470,610);
+    addChild(tabBg);
+    
+    auto qun_normal = MenuItemImage::create("setting/tab_btn_1.png", "setting/tab_btn_1.png");
+    auto qun_selected = MenuItemImage::create("setting/tab_btn_2.png", "setting/tab_btn_2.png");
+    qunToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showShangHai, this), qun_normal, qun_selected, NULL);
+    
+    auto fangka_normal = MenuItemImage::create("setting/tab_btn_1.png", "setting/tab_btn_1.png");
+    auto fangka_selected = MenuItemImage::create("setting/tab_btn_2.png", "setting/tab_btn_2.png");
+    fangkaToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showHongZhong, this), fangka_normal, fangka_selected, NULL);
+    
+    auto menu = Menu::create(qunToggle, fangkaToggle, NULL);
+    menu->alignItemsHorizontallyWithPadding(0);
+    menu->setPosition(470,610);
+    addChild(menu,1);
+
     
     listView = ListView::create();
     listView->setDirection(ui::ScrollView::Direction::VERTICAL);//设置ListView布局方向
     listView->setTouchEnabled(true);//可触摸
-    listView->setContentSize(Size(720,480));//设置ListView大小
+    listView->setContentSize(Size(720,470));//设置ListView大小
     listView->ignoreContentAdaptWithSize(false);//开启锚点设置，false可更改锚点，true不可更改，Layer默认为point(0,0),其他Node为Point(0.5,0.5)
     listView->setAnchorPoint(Vec2(0.5, 0.5));//设置锚点，即锚点放在节点setPosition的位置，0，0：表示节点左下角；1，1：表示节点右上角；0.5，0.5表示节点中点
-    listView->setPosition(Point(640,350));
+    listView->setPosition(Point(640,325));
     addChild(listView);
     
     for(auto var: getGameRules()){
@@ -68,6 +85,17 @@ bool GameRuleDialog::init(){
 
 void GameRuleDialog::closeView(){
     removeFromParent();
+}
+
+
+void GameRuleDialog::showShangHai(Ref* ref){
+    qunToggle->setSelectedIndex(1);
+    fangkaToggle->setSelectedIndex(0);
+}
+
+void GameRuleDialog::showHongZhong(Ref* ref){
+    qunToggle->setSelectedIndex(0);
+    fangkaToggle->setSelectedIndex(1);
 }
 
 std::vector<std::string> GameRuleDialog::getGameRules(){

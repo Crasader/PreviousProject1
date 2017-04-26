@@ -23,8 +23,12 @@ public:
     virtual bool init();
     CREATE_FUNC(GameRuleDialog);
 private:
+    MenuItemToggle* qunToggle;
+    MenuItemToggle* fangkaToggle;
     ListView* listView;
     void closeView();
     std::vector<std::string> getGameRules();
+    void showShangHai(Ref* ref);
+    void showHongZhong(Ref* ref);
 };
 #endif /* GameRuleDialog_hpp */
