@@ -92,11 +92,8 @@ void BillInfo::tableCellTouched(TableView* table, TableViewCell* cell)
             GAMEDATA::getInstance()->setBillInfoData(info.bills.at(i));
         }
     }
-    BillDetailInfo* detail =BillDetailInfo::create();
-    if(getIsPrivateBill()){
-        detail->setIsPrivateBill(true);
-    }
-    addChild(detail);
+    BillDetailInfo* detail = BillDetailInfo::create();
+    this->addChild(detail);
 }
 
 Size BillInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
@@ -245,6 +242,7 @@ void BillInfo::showDetailInfo(Ref* ref){
 }
 
 void BillInfo::closeView(){
+    GAMEDATA::getInstance()->setShowFuPanBtn(true);
     this->removeFromParent();
 }
 
@@ -290,7 +288,8 @@ std::vector<BillContent> BillInfo::sortBillInfo(std::vector<BillContent> content
 }
 
 void BillInfo::setShowPosition(){
-    setIsPrivateBill(true);
+    GAMEDATA::getInstance()->setShowFuPanBtn(false);
+//    this->setIsPrivateBill(true);
 //    getChildByTag(101)->setPositionX(890);
 //    getChildByTag(102)->setPositionX(1230);
 //    getChildByTag(104)->setPositionX(890);

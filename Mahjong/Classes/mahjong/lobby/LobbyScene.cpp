@@ -52,14 +52,14 @@ bool LobbyScene::init()
 
 
 void LobbyScene::signUpdate(float dt){
-    if(GAMEDATA::getInstance()->getShowProtected()){
-        if(NULL == getChildByTag(2000)){
-            LostNetwork2* net = LostNetwork2::create();
-            net->setTag(2000);
-            addChild(net,200);
-        }
-        GAMEDATA::getInstance()->setShowProtected(false);
-    }
+    //    if(GAMEDATA::getInstance()->getShowProtected()){
+    //        if(NULL == getChildByTag(2000)){
+    //            LostNetwork2* net = LostNetwork2::create();
+    //            net->setTag(2000);
+    //            addChild(net,200);
+    //        }
+    //        GAMEDATA::getInstance()->setShowProtected(false);
+    //    }
     
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
@@ -98,7 +98,7 @@ void LobbyScene::signUpdate(float dt){
             addChild(charge,30);
             GAMEDATA::getInstance()->setShowDialogType(-1);
         }else{
-			HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
+            HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
             addChild(hint,30);
         }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
@@ -115,7 +115,7 @@ void LobbyScene::signUpdate(float dt){
         addChild(dis,1000);
         showDissolveDialog = true;
     }
-
+    
 }
 
 
@@ -707,7 +707,7 @@ void LobbyScene::addEventListener(){
             addChild(idd,14);
         }
     });
-
+    
     
     //好友开房上海麻将
     openFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
@@ -725,7 +725,7 @@ void LobbyScene::addEventListener(){
                 addChild(charge,14);
                 GAMEDATA::getInstance()->setShowDialogType(-1);
             }else{
-				HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
+                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
                 addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -759,7 +759,7 @@ void LobbyScene::addEventListener(){
 #endif
         }
     });
-
+    
     
     
     //断线续玩
@@ -801,9 +801,9 @@ void LobbyScene::addEventListener(){
         ShopHintDialog* da = ShopHintDialog::create();
         if(result == "1"){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
-			da->showText(ChineseWord("dialog_text_21"));
+            da->showText(ChineseWord("dialog_text_21"));
         }else{
-			da->showText(ChineseWord("dialog_text_22"));
+            da->showText(ChineseWord("dialog_text_22"));
         }
         addChild(da,20);
     });
@@ -832,7 +832,7 @@ void LobbyScene::addEventListener(){
                 FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
                 addChild(charge,14);
             }else{
-				HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
+                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
                 addChild(hint,14);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -942,7 +942,7 @@ void LobbyScene::addEventListener(){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTuiGuangCommand());
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
         }else{
-			da->showText(ChineseWord("dialog_text_24"));
+            da->showText(ChineseWord("dialog_text_24"));
         }
         addChild(da,10);
     });
@@ -967,11 +967,11 @@ void LobbyScene::addEventListener(){
     
     
     lobbyReconnectRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        if(getChildByTag(2000)!=NULL){
-            getChildByTag(2000)->removeFromParent();
-        }
+        //        if(getChildByTag(2000)!=NULL){
+        //            getChildByTag(2000)->removeFromParent();
+        //        }
         //        ChatAndroidMethod::getInstance()->loginChatServer(UserData::getInstance()->getPoxiaoId());
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        //        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyReconnectRespListener, 1);
     
@@ -987,11 +987,11 @@ void LobbyScene::addEventListener(){
     
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
-        if(NULL == getChildByTag(2000)){
-            LostNetwork2* net = LostNetwork2::create();
-            net->setTag(2000);
-            addChild(net,200);
-        }
+        //        if(NULL == getChildByTag(2000)){
+        //            LostNetwork2* net = LostNetwork2::create();
+        //            net->setTag(2000);
+        //            addChild(net,200);
+        //        }
         if(NetworkManage::getInstance()->reConnectSocket()){
             int  delayTime = 1.0f;
             schedule([=](float dt){

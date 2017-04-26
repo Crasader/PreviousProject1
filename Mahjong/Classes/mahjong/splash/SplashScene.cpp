@@ -38,7 +38,7 @@ bool SplashScene::init()
 
 
 void SplashScene::onEnterTransitionDidFinish(){
-    
+    GAMEDATA::getInstance()->setLogingGame(false);
     Audio::getInstance()->playBGM();
     TuiGuangReward myReward;
     myReward.fangka =0;

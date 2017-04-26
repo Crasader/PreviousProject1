@@ -1,4 +1,5 @@
 #include "mahjong/common/bill/BillDetailInfo.h"
+#include "mahjong/common/bill/BillInfo.h"
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/utils/Chinese.h"
@@ -212,7 +213,7 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
                                                       CC_CALLBACK_1(BillDetailInfo::showFupan, this));
         auto fupanMenu = Menu::create();
         fupanMenu->addChild(fengxiang);
-        if(!getIsPrivateBill()){
+        if(GAMEDATA::getInstance()->getShowFuPanBtn()){
             fupanMenu->addChild(fupan);
         }
         fupanMenu->setTag(1001);
@@ -242,7 +243,6 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
                 ((LabelAtlas*)cell->getChildByTag(100+i)) -> setString(myScore);
             }
         }
-        
     }
     return cell;
 }
@@ -328,5 +328,5 @@ void BillDetailInfo::afterCaptured(bool succeed, const std::string &outputFile)
 
 
 void BillDetailInfo::goBack(){
-    removeFromParent();
+    setVisible(false);
 }

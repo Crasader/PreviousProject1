@@ -26,7 +26,7 @@ void GAMEDATA::init(){
     setNeedShowLastResult(false);
     setShowFangZhuDismiss(false);
     setTurnHeroCpg(false);
-//    setIsFuPan(false);
+    setShowFuPanBtn(true);
     setIsSelected(true);
     setFangzhuLequan("0");
     setShowDissolveDialog(false);
