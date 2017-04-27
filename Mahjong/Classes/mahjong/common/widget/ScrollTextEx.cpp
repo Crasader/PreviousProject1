@@ -10,7 +10,6 @@ bool ScrollTextEx::init() {
         pMask = Sprite::create("gameview/sroll_bg.png");
         pMask->setOpacity(0);
 
-	
         pMoved = Label::create("","arial",24);
         pMoved->setAnchorPoint(Point::ANCHOR_MIDDLE);
         pMoved->setColor(Color3B::YELLOW);
@@ -73,7 +72,7 @@ ScrollTextEx::~ScrollTextEx() {
     //	CC_SAFE_RELEASE(_mLable);
 }
 
-#define  contentX getContentSize().width * (-1.2f)
+#define  contentX pMoved->getContentSize().width * (-1.0f)
 void ScrollTextEx::update(float delta) {
     if (!pMoved) {
         return;
@@ -83,7 +82,7 @@ void ScrollTextEx::update(float delta) {
     float lableX = pMoved->getContentSize().width * (-1.0f);
     if (_autoScroll) {
         if (pMoved->getPositionX() >= (lableX + contentX)){
-            pMoved->setPositionX(pMoved->getPositionX() -speed);
+            pMoved->setPositionX(pMoved->getPositionX() - speed);
         }
         else {
             if (m_strs.size()>0)
@@ -91,7 +90,6 @@ void ScrollTextEx::update(float delta) {
 				auto str = m_strs.front();
 				m_strs.pop_front();
 				loadNewStr(str);
-			
             }
             else
             {

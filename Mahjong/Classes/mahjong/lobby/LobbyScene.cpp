@@ -856,8 +856,9 @@ void LobbyScene::addEventListener(){
     //跑马灯
     scrollTetxListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_SCROLL_TEXT, [=](EventCustom* event){
         std::string msg = static_cast<char*>(event->getUserData());
+        std::vector<std::string> showMsg = StringUtil::split(msg, "#$");
         if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
-            ((ScrollTextEx*)getChildByTag(9980))->setScrollStr(msg);
+            ((ScrollTextEx*)getChildByTag(9980))->setScrollStrs(showMsg);
         }
     });
     
