@@ -1139,7 +1139,9 @@ void ReviewHongZhong::onEnter(){
         if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
             ((ScrollTextEx*)getChildByTag(9980))->setScrollStrs(showMsg);
         }
-
+        schedule([=](float dt){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+        }, 0, 0, 300,"ask_tui_guang");
     });
     
     //好友房间游戏未开始重新连接

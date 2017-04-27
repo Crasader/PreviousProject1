@@ -9,10 +9,10 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "14" //ios审核版本16，应用宝审核版本17.
+#define PAY_PLAT_VALUE "16" //ios审核版本16，应用宝审核版本17.
 
-//#define SERVER_ADDRESS "aliyun.5278-mobi.com"
-#define SERVER_ADDRESS "ceshi.5278-mobi.com"
+#define SERVER_ADDRESS "aliyun.5278-mobi.com"
+//#define SERVER_ADDRESS "ceshi.5278-mobi.com"
 #define SERVER_PORT 9999
 //#define SERVER_ADDRESS "172.23.1.35"
 //#define SERVER_PORT 9999

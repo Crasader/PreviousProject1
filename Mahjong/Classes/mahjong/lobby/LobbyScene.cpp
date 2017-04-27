@@ -860,6 +860,9 @@ void LobbyScene::addEventListener(){
         if(nullptr != ((ScrollTextEx*)getChildByTag(9980))){
             ((ScrollTextEx*)getChildByTag(9980))->setScrollStrs(showMsg);
         }
+        schedule([=](float dt){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+        }, 0, 0, 300,"ask_tui_guang");
     });
     
     //玩家群
