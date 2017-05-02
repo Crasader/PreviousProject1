@@ -1327,13 +1327,11 @@ void HongZhongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersGangListener, 1);
     
     playeHuActionListener = EventListenerCustom::create(MSG_HZ_GAME_HU_ACTION, [=](EventCustom* event){
-        //TODO  显示胡牌按钮
-        //        log("收到了服务端的胡牌协议2");
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
         PlayerCpgtData temp = *data;
         schedule([=](float dt){
             showHuGangControllPad(temp);
-        },0,0,1.5f,"showHu");
+        },0,0,1.2f,"showHuText");
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playeHuActionListener, 1);
     
