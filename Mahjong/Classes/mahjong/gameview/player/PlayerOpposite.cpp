@@ -112,7 +112,11 @@ void PlayerOpposite::drawPlayedJong(int ctype){
 
 
 void PlayerOpposite::drawPlayedJongMingpai(int ctype){
-    Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+        Audio::getInstance()->playMahjongNormal(ctype,getPlayerInfo()->getGender());//普通打牌音效
+    }else{
+        Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
+    }
     //移除手牌
     for(auto var : playerHandJongs){
         if(var->getJongType()== ctype){
@@ -223,7 +227,13 @@ void PlayerOpposite::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
 void PlayerOpposite::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
-    Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+        Audio::getInstance()->playSoundPengNormal(getPlayerInfo()->getGender());
+        
+    }else{
+        Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
+        
+    }
     if (GAMEDATA::getInstance()->getGameType() == 1){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }else if(GAMEDATA::getInstance()->getGameType() == 2){
@@ -419,7 +429,13 @@ void PlayerOpposite::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playe
 void PlayerOpposite::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
-    Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+        Audio::getInstance()->playSoundPengNormal(getPlayerInfo()->getGender());
+        
+    }else{
+        Audio::getInstance()->playSoundPeng(getPlayerInfo()->getGender());
+        
+    }
     if (GAMEDATA::getInstance()->getGameType() == 1){
         ((MahjongView*)getParent())->removeHeroPlayedIcon();
     }else if(GAMEDATA::getInstance()->getGameType() == 2){

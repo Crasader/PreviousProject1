@@ -746,11 +746,311 @@ void Audio::playSoundNorth(int gender){
     }
 }
 
-void Audio::playNormalSound(std::string filePath){
-    int id = AudioEngine::play2d(filePath.c_str(),false,UserData::getInstance()->getSoundValue());
-    AudioEngine::setFinishCallback(id, [&](int id, const std::string& filePath){
-        bool result = FileUtils::getInstance()->removeFile(filePath);
-    });
+void Audio::playMahjongNormal(int type,int gender){
+    switch (type) {
+        case JongEnum::hz:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt_zhong.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/wzhong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::wan_1:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_1.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w1wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::wan_2:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_2.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w2wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::wan_3:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_3.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w3wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }            break;
+        case JongEnum::wan_4:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_4.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w4wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::wan_5:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_5.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w5wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::wan_6:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_6.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w6wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::wan_7:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_7.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w7wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::wan_8:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_8.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w8wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }            break;
+        case JongEnum::wan_9:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt1_9.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w9wan.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tiao_1:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_1.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w1tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tiao_2:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_2.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w2tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tiao_3:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_3.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w3tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }            break;
+        case JongEnum::tiao_4:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_4.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w4tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tiao_5:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_5.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w5tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tiao_6:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_6.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w6tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tiao_7:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_7.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w7tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }            break;
+        case JongEnum::tiao_8:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_8.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w8tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }            break;
+        case JongEnum::tiao_9:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt3_9.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w9tiao.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tong_1:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_1.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w1tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tong_2:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_2.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w2tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tong_3:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_3.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w3tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tong_4:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_4.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w4tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }            break;
+        case JongEnum::tong_5:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_5.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w5tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tong_6:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_61.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w6tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tong_7:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_7.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w7tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tong_8:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_8.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w8tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        case JongEnum::tong_9:
+        {
+            if(gender==1){
+                AudioEngine::play2d("audio/nan/mjt2_9.mp3",false,UserData::getInstance()->getSoundValue());
+            }else{
+                AudioEngine::play2d("audio/nv/w9tong.mp3",false,UserData::getInstance()->getSoundValue());
+            }
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+void Audio::playSoundPengNormal(int gender){
+    if(gender==1){
+        AudioEngine::play2d("audio/nan/peng3.mp3",false,UserData::getInstance()->getSoundValue());
+    }else{
+        AudioEngine::play2d("audio/nv/wzhong.mp3",false,UserData::getInstance()->getSoundValue());
+    }
+}
+
+
+void Audio::playSoundGangNormal(int gender){
+    if(gender==1){
+        AudioEngine::play2d("audio/nan/wpeng.mp3",false,UserData::getInstance()->getSoundValue());
+    }else{
+        AudioEngine::play2d("audio/nv/wgang.mp3",false,UserData::getInstance()->getSoundValue());
+    }
+}
+
+
+void Audio::playSoundHuNormal(int gender){
+    if(gender==1){
+        AudioEngine::play2d("audio/nan/hu1.mp3",false,UserData::getInstance()->getSoundValue());
+    }else{
+        AudioEngine::play2d("audio/nv/whu.mp3",false,UserData::getInstance()->getSoundValue());
+    }
 }
 
 

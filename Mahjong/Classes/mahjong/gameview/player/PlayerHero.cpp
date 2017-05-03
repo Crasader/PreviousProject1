@@ -994,7 +994,15 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
 
 
 void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
+    
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+        Audio::getInstance()->playSoundPengNormal(UserData::getInstance()->getGender());
+        
+    }else{
+        Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
+        
+    }
+    
     updateSelectedInfo(NULL);
     std::vector<string> pengpai = StringUtil::split(resp.playCpgt.peng, ",");
     if(pengpai.size() == 2){
@@ -1080,7 +1088,13 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase){
 }
 
 void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+        Audio::getInstance()->playSoundGangNormal(UserData::getInstance()->getGender());
+        
+    }else{
+        Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
+        
+    }
     updateSelectedInfo(NULL);
     if(resp.playCpgt.playerGang.at(0).flag == 0){
         //明杠
@@ -1326,7 +1340,13 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
 
 void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerBase* playerBase){
     
-    Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+        Audio::getInstance()->playSoundPengNormal(UserData::getInstance()->getGender());
+        
+    }else{
+        Audio::getInstance()->playSoundPeng(UserData::getInstance()->getGender());
+        
+    }
     updateSelectedInfo(NULL);
     std::vector<string> pengpai = StringUtil::split(resp.playCpgt.peng, ",");
     Vector<Jong*> pengVector;
@@ -1411,7 +1431,13 @@ void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerBase* playerBas
 }
 
 void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerBase* playerBase){
-    Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+        Audio::getInstance()->playSoundGangNormal(UserData::getInstance()->getGender());
+        
+    }else{
+        Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
+        
+    }
     updateSelectedInfo(NULL);
     if(resp.playCpgt.playerGang.at(0).flag == 0){
         std::vector<string> gangpai = StringUtil::split(resp.playCpgt.playerGang.at(0).gang, ",");

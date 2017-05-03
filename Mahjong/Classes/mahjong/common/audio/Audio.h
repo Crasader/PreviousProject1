@@ -10,6 +10,10 @@ public:
     void playBGM();
     void pauseBGM();
     void playMahjong(int type,int gender);//报牌
+    void playMahjongNormal(int type,int gender);//普通话报牌
+    void playSoundPengNormal(int gender);//碰
+    void playSoundGangNormal(int gender);//杠
+    void playSoundHuNormal(int gender);//胡牌语音
     void playSoundChi(int type,int gender);//吃
     void playSoundPeng(int gender);//碰
     void playSoundGang(int gender);//杠
@@ -33,7 +37,6 @@ public:
     void setBGMValue(float value);//设置音效
     void setEffectValue(float value);
     
-    void playNormalSound(std::string path);
     
     CC_SYNTHESIZE(bool, hasTingPlayer, HasTingPlayer);//是否有玩家听牌(音效相关的状态)
     
