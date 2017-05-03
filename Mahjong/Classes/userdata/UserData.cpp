@@ -197,3 +197,12 @@ void UserData::setWeixinPayOpen(bool open){
     UserDefault::getInstance()->setBoolForKey("weixin_pay_state",open);
 }
 
+
+bool UserData::isFangYan(){
+   return UserDefault::getInstance()->getBoolForKey("sound_is_fangyan",false);
+}
+
+
+void UserData::setFangYan(bool open){
+    UserDefault::getInstance()->setBoolForKey("sound_is_fangyan",open);
+}

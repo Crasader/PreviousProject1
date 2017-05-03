@@ -73,6 +73,9 @@ public:
     bool isWeixinPayOpen();
     void setWeixinPayOpen(bool open);
     
+    bool isFangYan();
+    void setFangYan(bool open);
+    
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();

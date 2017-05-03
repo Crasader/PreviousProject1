@@ -37,11 +37,39 @@ void UserSetting::drawDialog(){
     addChild(titleIcon);
     
     auto musicBg = Sprite::create("setting/setting_bg.png");
-    musicBg->setPosition(640,380);
+    musicBg->setPosition(640,385);
     addChild(musicBg);
     
+    
+    auto peiying = Sprite::create("setting/pei_ying.png");
+    addChild(peiying);
+    peiying->setPosition(385,470);
+    
+    auto putong = Sprite::create("setting/pu_tong_hua.png");
+    addChild(putong);
+    putong->setPosition(570,470);
+    
+    auto shanghai = Sprite::create("setting/shang_hai_hua.png");
+    addChild(shanghai);
+    shanghai->setPosition(810,470);
+    
+    auto quan_normal_1 = MenuItemImage::create("setting/yuan_hui.png", "setting/yuan_hui.png");
+    auto quan_selected_1 = MenuItemImage::create("setting/yuan_lv.png", "setting/yuan_lv.png");
+    putongToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(UserSetting::useSoundPuTong, this), quan_normal_1, quan_selected_1, NULL);
+    putongToggle->setSelectedIndex(1);
+    auto quan_normal_2 = MenuItemImage::create("setting/yuan_hui.png", "setting/yuan_hui.png");
+    auto quan_selected_2 = MenuItemImage::create("setting/yuan_lv.png", "setting/yuan_lv.png");
+    shanghaikaToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(UserSetting::useSoundShangHai, this), quan_normal_2, quan_selected_2, NULL);
+    
+    auto menu = Menu::create(putongToggle, shanghaikaToggle, NULL);
+    menu->alignItemsHorizontallyWithPadding(180);
+    menu->setPosition(595,470);
+    addChild(menu,1);
+
+    
+    //音效条
     auto soudnText = Sprite::create("setting/sound.png");
-    soudnText->setPosition(385,440);
+    soudnText->setPosition(385,380);
     addChild(soudnText);
     
     ControlSlider* slide_control = ControlSlider::create("setting/progress_1.png", "setting/progress_2.png",
@@ -51,13 +79,13 @@ void UserSetting::drawDialog(){
     slide_control->setValue(UserData::getInstance()->getSoundValue()*100);//设置初始值
     slide_control->setTag(20);
     slide_control->addTargetWithActionForControlEvents(this,cccontrol_selector(UserSetting::slideCallback),Control::EventType::VALUE_CHANGED);//设置拖动回调
-    slide_control->setPosition(720,440);
+    slide_control->setPosition(720,380);
     addChild(slide_control);
     
     
-    
+    //音乐条
     auto musicText = Sprite::create("setting/music.png");
-    musicText->setPosition(385,342);
+    musicText->setPosition(385,290);
     addChild(musicText);
     
     
@@ -68,7 +96,7 @@ void UserSetting::drawDialog(){
     slide_control2->setValue(UserData::getInstance()->getMusicValue()*100);//设置初始值
     slide_control2->setTag(30);
     slide_control2->addTargetWithActionForControlEvents(this,cccontrol_selector(UserSetting::slideCallback),Control::EventType::VALUE_CHANGED);//设置拖动回调
-    slide_control2->setPosition(720,345);
+    slide_control2->setPosition(720,290);
     addChild(slide_control2);
     
     auto helpImage = MenuItemImage::create("setting/game_help_btn_1.png","setting/game_help_btn_2.png",
@@ -126,4 +154,18 @@ void UserSetting::dissolveRoom(){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomInGameCommand());
     }
     removeFromParent();
+}
+
+//配音设置只对红中麻将生效
+void UserSetting::useSoundShangHai(Ref* ref){
+    putongToggle->setSelectedIndex(0);
+    shanghaikaToggle->setSelectedIndex(1);
+    UserData::getInstance()->setFangYan(true);
+}
+
+
+void UserSetting::useSoundPuTong(Ref* ref){
+    putongToggle->setSelectedIndex(1);
+    shanghaikaToggle->setSelectedIndex(0);
+    UserData::getInstance()->setFangYan(false);
 }
