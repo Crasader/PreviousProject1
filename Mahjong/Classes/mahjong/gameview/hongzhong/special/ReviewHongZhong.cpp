@@ -108,12 +108,12 @@ void ReviewHongZhong::loadView(){
         //码和低分
         auto hzma  = Sprite::create("gameview/hz_ma_159zh.png");
         addChild(hzma);
-        if(GAMEDATA::getInstance()->getFanMaType() == "1"){
+        if(GAMEDATA::getInstance()->getFanMaType() == "3"){
             hzma->setTexture("gameview/hz_ma_159.png");
-        }else if (GAMEDATA::getInstance()->getFanMaType() == "2"){
+        }else if (GAMEDATA::getInstance()->getFanMaType() == "1"){
             hzma->setTexture("gameview/hz_ma_1.png");
         }
-        auto difen = Sprite::create("gameview/hz_di_2.png");
+        auto difen = Sprite::create();
         difen->setTexture(StringUtils::format("gameview/hz_di_%s.png",GAMEDATA::getInstance()->getHZDiFen().c_str()));
         addChild(difen);
         
@@ -1387,8 +1387,6 @@ void ReviewHongZhong::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersGangListener, 1);
     
     playeHuActionListener = EventListenerCustom::create(MSG_HZ_GAME_HU_ACTION, [=](EventCustom* event){
-        //TODO  显示胡牌按钮
-        //        log("收到了服务端的胡牌协议2");
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
         PlayerCpgtData temp = *data;
         schedule([=](float dt){

@@ -395,7 +395,13 @@ void PlayerHero::readyGo(){
 
 
 void PlayerHero::inviteWechatFriend(){
-    std::string roomtype = ChineseWord("room_info_1");
+    std::string roomtype = ChineseWord("room_info_0");
+    if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
+        roomtype += ChineseWord("game_type_1");
+    }else{
+        roomtype += ChineseWord("game_type_2");
+    }
+    roomtype += ChineseWord("room_info_1");
     roomtype += GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu;
     if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
         if(GAMEDATA::getInstance()->getPrivateKaibao()=="0"){

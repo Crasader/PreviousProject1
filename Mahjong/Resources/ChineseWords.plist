@@ -177,8 +177,10 @@
 		<string>抢杠胡:只可抢公杠，抢杠后不能翻码。</string>
 		<key>rule_text_38</key>
 		<string>杠开番数*2</string>
+		<key>room_info_0</key>
+		<string>房间类型:</string>
 		<key>room_info_1</key>
-		<string>房间类型:局数</string>
+		<string>,局数</string>
 		<key>room_info_2</key>
 		<string>,无开宝</string>
 		<key>room_info_3</key>
@@ -258,11 +260,15 @@
 		<key>dialog_text_24</key>
 		<string>确定要离开游戏吗？</string>
 		<key>dialog_text_25</key>
-		<string>房间已经解散</string>
+		<string>房间已解散或游戏已结束</string>
 		<key>xioahao</key>
 		<string>消耗</string>
 		<key>lequan</key>
 		<string>乐券</string>
+		<key>game_type_1</key>
+		<string>上海敲麻</string>
+		<key>game_type_2</key>
+		<string>红中麻将</string>
 	</dict>
 </array>
 </plist>

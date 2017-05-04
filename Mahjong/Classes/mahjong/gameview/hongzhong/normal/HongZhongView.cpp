@@ -733,10 +733,8 @@ void HongZhongView::firstPlayPoker(ReplaceJongVec vec,PlayerCpgtData data) {
                 playerHero->setIsAllowPlay(true);
                 playerHero->setIsAllowTouch(true);
                 if(data.playerGang.size()>0||data.hu == 1){
-                    if (data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-                        showHuGangControllPad(data);
-                        playerHero->startTimeClockAnim(9, 2);
-                    }
+                    showHuGangControllPad(data);
+                    playerHero->startTimeClockAnim(9, 2);
                 }else{
                     playerHero->startTimeClockAnim();
                 }

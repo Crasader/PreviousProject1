@@ -52,15 +52,6 @@ bool LobbyScene::init()
 
 
 void LobbyScene::signUpdate(float dt){
-    //    if(GAMEDATA::getInstance()->getShowProtected()){
-    //        if(NULL == getChildByTag(2000)){
-    //            LostNetwork2* net = LostNetwork2::create();
-    //            net->setTag(2000);
-    //            addChild(net,200);
-    //        }
-    //        GAMEDATA::getInstance()->setShowProtected(false);
-    //    }
-    
     
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
         for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
@@ -258,7 +249,6 @@ void LobbyScene::drawSceneMid(){
     
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
-    
     firstMenu = Menu::create(first_chaege, NULL);
     firstMenu->alignItemsHorizontallyWithPadding(15);
     firstMenu->setPosition(200, 552);
@@ -569,7 +559,7 @@ void LobbyScene::onEnterTransitionDidFinish(){
     }else if(GAMEDATA::getInstance()->getShowRoomDismiss()){
         HintDialog* hint  = HintDialog::create(ChineseWord("dialog_text_25"), nullptr);
         addChild(hint,50);
-        GAMEDATA::getInstance()->setShowFangZhuDismiss(false);
+        GAMEDATA::getInstance()->setShowRoomDismiss(false);
     }
 }
 
@@ -975,11 +965,7 @@ void LobbyScene::addEventListener(){
     
     
     lobbyReconnectRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        //        if(getChildByTag(2000)!=NULL){
-        //            getChildByTag(2000)->removeFromParent();
-        //        }
-        //        ChatAndroidMethod::getInstance()->loginChatServer(UserData::getInstance()->getPoxiaoId());
-        //        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        GAMEDATA::getInstance()->setShowProtected(false);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyReconnectRespListener, 1);
     
@@ -995,11 +981,7 @@ void LobbyScene::addEventListener(){
     
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
-        //        if(NULL == getChildByTag(2000)){
-        //            LostNetwork2* net = LostNetwork2::create();
-        //            net->setTag(2000);
-        //            addChild(net,200);
-        //        }
+        GAMEDATA::getInstance()->setShowProtected(false);
         if(NetworkManage::getInstance()->reConnectSocket()){
             int  delayTime = 1.0f;
             schedule([=](float dt){

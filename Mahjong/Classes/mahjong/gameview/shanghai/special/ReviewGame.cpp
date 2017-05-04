@@ -694,6 +694,7 @@ void ReviewGame::addCoustomListener(){
     fupanPlayerInfoListener = EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
         ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+        guiLayer->updateData();
         FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();
         for (int i = 0; i < data.players.size(); i++)
         {
