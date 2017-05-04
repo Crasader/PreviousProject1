@@ -428,6 +428,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHZGameContinueResp(msg);
         }
             break;
+        case MSGCODE_YQM_RESPONSE:{
+           handleInviteCodeResp(msg);
+        }
+            break;
         default:
             break;
     }
@@ -3315,5 +3319,9 @@ void MsgHandler::handleHZGameContinueResp(std::string msg){
     GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
     GAMEDATA::getInstance()->setEnterRoomResp(resp);
     postNotifyMessage(MSG_HZ_HERO_CONTINUE_RESP, nullptr);
+}
+
+void MsgHandler::handleInviteCodeResp(std::string msg){
+    //TODO
 }
 
