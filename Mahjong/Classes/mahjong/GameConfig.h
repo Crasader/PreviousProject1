@@ -44,7 +44,7 @@
 #define WECHAT_SHARE_LINK_PATH_2 "&connect_redirect=1#wechat_redirect"
 
 #define IAMGE_LOADING "image_loading"
-#define SHARE_TEXT_1 "小白相上海敲麻——有无勒子,2摸3冲随意选择"
-#define SHARE_TEXT_2 "最方便的手机麻将馆,随时组局,玩金币房还可以用乐券换话费,是模子才告诉侬格!点击即可下载!"
+#define SHARE_TEXT_1 "小白相上海敲麻——正宗敲麻，红中麻将随意选择。"
+#define SHARE_TEXT_2 "最方便的手机麻将馆，随时组局，简单好玩！点击即可下载游戏!"
 #define SHARE_TEXT_3 "来来来,房间开好了,麻将搓起来!"
 #endif /* GameConfig_h */
