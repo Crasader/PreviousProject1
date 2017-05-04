@@ -429,7 +429,7 @@ void MsgHandler::distribute(int code, std::string msg){
         }
             break;
         case MSGCODE_YQM_RESPONSE:{
-           handleInviteCodeResp(msg);
+            handleInviteCodeResp(msg);
         }
             break;
         default:
@@ -3333,6 +3333,12 @@ void MsgHandler::handleHZGameContinueResp(std::string msg){
 }
 
 void MsgHandler::handleInviteCodeResp(std::string msg){
-    //TODO
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    char* buf = const_cast<char*>(result.GetString());
+    postNotifyMessage(MSG_INVITE_CODE_RESP, buf);
 }
 
