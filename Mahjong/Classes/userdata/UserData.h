@@ -76,6 +76,18 @@ public:
     bool isFangYan();
     void setFangYan(bool open);
     
+    bool isInviteCodeBind();
+    void setInviteCodeBind(bool bind);
+    
+    std::string getInvitePropMoney();
+    void setInvitePropMoney(std::string money);
+    
+    std::string getInvitePropType();
+    void setInvitePropType(std::string type);
+    
+    std::string getInvitePropNum();
+    void setInvitePropNum(std::string num);
+    
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();

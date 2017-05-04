@@ -199,10 +199,44 @@ void UserData::setWeixinPayOpen(bool open){
 
 
 bool UserData::isFangYan(){
-   return UserDefault::getInstance()->getBoolForKey("sound_is_fangyan",false);
+    return UserDefault::getInstance()->getBoolForKey("sound_is_fangyan",false);
 }
 
 
 void UserData::setFangYan(bool open){
     UserDefault::getInstance()->setBoolForKey("sound_is_fangyan",open);
+}
+
+
+bool UserData::isInviteCodeBind(){
+    return UserDefault::getInstance()->getBoolForKey("isInviteCodeBind",false);
+}
+
+void UserData::setInviteCodeBind(bool bind){
+    UserDefault::getInstance()->setBoolForKey("isInviteCodeBind",bind);
+}
+
+
+std::string UserData::getInvitePropMoney(){
+    return UserDefault::getInstance()->getStringForKey("InvitePropMoney","48");
+}
+
+void UserData::setInvitePropMoney(std::string money){
+    UserDefault::getInstance()->getStringForKey("InvitePropMoney",money);
+}
+
+std::string UserData::getInvitePropType(){
+    return UserDefault::getInstance()->getStringForKey("InvitePropType","1");
+}
+
+void UserData::setInvitePropType(std::string type){
+    UserDefault::getInstance()->setStringForKey("InvitePropType",type);
+}
+
+std::string UserData::getInvitePropNum(){
+    return UserDefault::getInstance()->getStringForKey("InvitePropNum","0");
+}
+
+void UserData::setInvitePropNum(std::string num){
+    UserDefault::getInstance()->setStringForKey("InvitePropNum",num);
 }

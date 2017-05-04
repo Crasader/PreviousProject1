@@ -902,6 +902,17 @@ void MsgHandler::loginResp(std::string msg){
     
     const rapidjson::Value &result = _mDoc["result"];
     if (result.GetInt() == 1){
+        if(_mDoc.HasMember("yq")){
+            UserData::getInstance()->setInviteCodeBind(false);
+            if(_mDoc.HasMember("type")){
+                UserData::getInstance()->setInvitePropType(_mDoc["type"].GetString());
+            }
+            if(_mDoc.HasMember("num")){
+                UserData::getInstance()->setInvitePropNum(_mDoc["num"].GetString());
+            }
+        }else{
+            UserData::getInstance()->setInviteCodeBind(true);
+        }
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
         const rapidjson::Value &nickname = _mDoc["nickname"];

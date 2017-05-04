@@ -32,6 +32,7 @@
 #include "mahjong/GameConfig.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
+#include "mahjong/lobby/invitecode/InviteCodeLayer.hpp"
 
 
 bool LobbyScene::init()
@@ -470,8 +471,14 @@ void LobbyScene::chargeGold(){
 
 void LobbyScene::chargeFangka(){
     Audio::getInstance()->playSoundClick();
+    InviteCodeLayer* lay = InviteCodeLayer::create();
+    addChild(lay,6);
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
     if(UserData::getInstance()->isWeixinPayOpen()){
+        if(!UserData::getInstance()->isInviteCodeBind()){
+            InviteCodeLayer* lay = InviteCodeLayer::create();
+            addChild(lay,6);
+        }
         ChargeFangka* charge = ChargeFangka::create();
         addChild(charge,3);
     }else{
@@ -479,6 +486,10 @@ void LobbyScene::chargeFangka(){
         addChild(hint,3);
     }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
+    if(!UserData::getInstance()->isInviteCodeBind()){
+        InviteCodeLayer* lay = InviteCodeLayer::create();
+        addChild(lay,6);
+    }
     ChargeFangka* charge = ChargeFangka::create();
     addChild(charge,3);
 #endif
