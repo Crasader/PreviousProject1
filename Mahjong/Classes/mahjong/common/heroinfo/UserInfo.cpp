@@ -151,11 +151,7 @@ void UserInfo::updateHeadImage(){
 }
 
 void UserInfo::cleanAccountRercord(){
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->clearWechatOpenId();
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     UserData::getInstance()->setWxOpenId("unknow");
     UserData::getInstance()->setWxUnionid("unknow");
-#endif
     Director::getInstance()->replaceScene(TransitionFade::create(1, SplashScene::createScene()));
 }

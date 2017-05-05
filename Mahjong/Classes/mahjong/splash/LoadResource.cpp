@@ -23,7 +23,7 @@ Scene* LoadResource::createScene()
 
 bool LoadResource::init(){
     if(!Layer::init()){
-    
+        
         return false;
     }
     showHealthLayer();
@@ -39,7 +39,7 @@ bool LoadResource::init(){
     log("screenShot path = %s",path.c_str());
     utils::captureScreen(NULL ,path);
 #endif
-
+    
     return true;
 }
 
@@ -61,7 +61,7 @@ void LoadResource::showNormalLayer(){
     auto dragon = Sprite::create("mainlogin/loading_dragon.png");
     dragon->setPosition(640,360);
     addChild(dragon);
-
+    
     auto mahjong = Sprite::create("mainlogin/feipai.png");
     mahjong->setPosition(640,360);
     addChild(mahjong);
@@ -73,7 +73,7 @@ void LoadResource::showNormalLayer(){
     auto loadBotBg = Sprite::create("mainlogin/loading_bot_bg.png");
     loadBotBg->setPosition(640,360);
     addChild(loadBotBg);
-   
+    
     for(int i=1;i<11;i++){
         auto loadText = Sprite::create();
         loadText->setTag(100+i);
@@ -94,13 +94,14 @@ void LoadResource::showNormalLayer(){
     
     auto loadProgerss = ProgressTimer::create(Sprite::create("mainlogin/loading_pro_1.png"));
     loadProgerss->setPosition(640,60);
-     addChild(loadProgerss,1);
+    addChild(loadProgerss,1);
     loadProgerss->setType(ProgressTimer::Type::BAR);
     loadProgerss->setBarChangeRate(Point(1,0));//设置进程条的变化速率
     loadProgerss->setType(ProgressTimer::Type::BAR);//设置进程条的类型
     loadProgerss->setMidpoint(Point(0,1));//设置进度的运动方向
     loadProgerss->runAction(Sequence::create(ProgressTo::create(2, 100),CallFunc::create([=](){
-        Director::getInstance()->replaceScene(SplashScene::createScene());
+         Director::getInstance()->replaceScene(SplashScene::createScene());
+        
     }),NULL));
 }
 

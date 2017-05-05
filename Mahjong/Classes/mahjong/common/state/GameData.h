@@ -132,11 +132,6 @@ public:
     CC_SYNTHESIZE(string, privateKaibao, PrivateKaibao);
     CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
     CC_SYNTHESIZE(string, dissolveName, DissolveName);
-    CC_SYNTHESIZE(string, hsman, Hsman);
-    CC_SYNTHESIZE(string, hstype, Hstype);
-    CC_SYNTHESIZE(string, imsi, Imsi);
-    CC_SYNTHESIZE(string, imei, Imei);
-    CC_SYNTHESIZE(string, appVer, AppVer);
     CC_SYNTHESIZE(string, resultFangzhuId, ResultFangzhuId);
 private:
     GAMEDATA();

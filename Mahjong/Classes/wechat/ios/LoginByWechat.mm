@@ -64,30 +64,12 @@ static NSString *DEVICESTRING= @"iphone";
 }
 
 - (BOOL)sendAuthRequestScope{
-    if (UserData::getInstance()->getWxOpenId() == "unknow") {
-        SendAuthReq* req    =[[SendAuthReq alloc]init];
-        //        req.scope           = kAuthScope;
-        req.scope           =@"snsapi_userinfo";
-        req.state           = kAuthState;
-        //第三方向微信终端发送一个SendAuthReq消息结构
-        return [WXApi sendAuthReq:req viewController:self delegate:[WXApiManager sharedManager]];
-        
-    }else{
-        WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
-        //        BOOL result = [self checkTokenOutTime];
-        //        if(result){
-        //            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
-        //            return true;
-        //        }else{
-        //            SendAuthReq* req    =[[SendAuthReq alloc]init];
-        //            req.scope           = kAuthScope;
-        //            req.state           = kAuthState;
-        //            //第三方向微信终端发送一个SendAuthReq消息结构
-        //            return [WXApi sendAuthReq:req viewController:self delegate:[WXApiManager sharedManager]];
-        //        }
-        
-    }
-    return true;
+    SendAuthReq* req    =[[SendAuthReq alloc]init];
+    //        req.scope           = kAuthScope;
+    req.scope           =@"snsapi_userinfo";
+    req.state           = kAuthState;
+    //第三方向微信终端发送一个SendAuthReq消息结构
+    return [WXApi sendAuthReq:req viewController:self delegate:[WXApiManager sharedManager]];
 }
 
 - (void)sendLoginMsg2Server:(NSString*) code{
@@ -142,6 +124,11 @@ static NSString *DEVICESTRING= @"iphone";
                 UserData::getInstance()->setWxUnionid(std::string([unionidstr UTF8String]));
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));
                 UserData::getInstance()->setNickName(std::string([nicknameStr UTF8String]));
+                UserData::getInstance()->setHsman(std::string([HSMAN UTF8String]));
+                UserData::getInstance()->setHstype(std::string([DEVICESTRING UTF8String]));
+                UserData::getInstance()->setImei(std::string([IMEI_IMSI UTF8String]));
+                UserData::getInstance()->setImsi(std::string([IMEI_IMSI UTF8String]));
+                UserData::getInstance()->setAppVer(std::string([GAME_VERSION UTF8String]));
                 WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([unionidstr UTF8String]),std::string([headimgurlstr UTF8String]),StringUtils::format("%d",UserData::getInstance()->getGender()),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");

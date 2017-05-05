@@ -99,16 +99,9 @@ public class Payment {
 			public void queryCallBackMsg(WxUserInfo info) {
 				if (null != info&&!info.isResult()) {
 					Debug.i("微信登录游戏...");
-					if(info.getErrcode()==1024){
-						JniPayCallbackHelper.loginThirdPlatform2(TbuWxUtil.getInstance().getWeChatOpenId(),TbuWxUtil.getInstance().getWeChatUnionid(),
-								DeviceInfo.getProduct(),DeviceInfo.getModle(), DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());
-					}
-					else{
-						JniPayCallbackHelper.loginThirdPlatform(TbuWxUtil.getInstance().getWeChatOpenId(),TbuWxUtil.getInstance().getWeChatUnionid(),
-								info.getHeadImage(), info.getSex(), info.getNickName(), DeviceInfo.getProduct(),
-								DeviceInfo.getModle(), DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());
-						
-					}
+					JniPayCallbackHelper.loginThirdPlatform(info.getOpenId(),info.getUnionid(),
+							info.getHeadImage(), info.getSex(), info.getNickName(), DeviceInfo.getProduct(),
+							DeviceInfo.getModle(), DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());
 				}
 			}
 

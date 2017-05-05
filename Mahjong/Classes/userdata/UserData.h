@@ -88,6 +88,24 @@ public:
     std::string getInvitePropNum();
     void setInvitePropNum(std::string num);
     
+    std::string getHsman();
+    void setHsman(std::string num);
+    
+    std::string getHstype();
+    void setHstype(std::string num);
+
+    
+    std::string getImsi();
+    void setImsi(std::string num);
+    
+    std::string getImei();
+    void setImei(std::string num);
+    
+    std::string getAppVer();
+    void setAppVer(std::string num);
+
+
+    
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();

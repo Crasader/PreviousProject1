@@ -34,6 +34,8 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid,std::string unioni
 		//登录错误的提示
 		log("mahjong game openid is null");
 	} else {
+        UserData::getInstance()->setWxOpenId(openid);
+        UserData::getInstance()->setWxUnionid(unionid);
 		UserData::getInstance()->setPicture(url);
 		UserData::getInstance()->setNickName(nickname);
 		if (sex == "0") {
@@ -42,33 +44,16 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid,std::string unioni
 			UserData::getInstance()->setGender(1);
 		}
 		UrlImageMannger::getInstance()->loadHeadImgByUrl(url);
-        GAMEDATA::getInstance()->setHsman(hsman);
-        GAMEDATA::getInstance()->setHstype(hstype);
-        GAMEDATA::getInstance()->setImsi(imsi);
-        GAMEDATA::getInstance()->setImei(imei);
-        GAMEDATA::getInstance()->setAppVer(ver1);
-        UserData::getInstance()->setWxOpenId(openid);
-        UserData::getInstance()->setWxUnionid(unionid);
+        UserData::getInstance()->setHsman(hsman);
+        UserData::getInstance()->setHstype(hstype);
+        UserData::getInstance()->setImei(imei);
+        UserData::getInstance()->setImsi(imsi);
+        UserData::getInstance()->setAppVer(ver1);
 		std::string msg = CommandManage::getInstance()->getThirdLoginCommand(
 				openid,unionid, url,sex,nickname,hsman,hstype,imsi,imei,ver1);
 		if (msg != "") {
 			NetworkManage::getInstance()->sendMsg(msg);
 		}
 	}
-}
-
-void MahjongPayHandler::loginThirdPlatform2(std::string openid,std::string unionid,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1){
-    GAMEDATA::getInstance()->setHsman(hsman);
-    GAMEDATA::getInstance()->setHstype(hstype);
-    GAMEDATA::getInstance()->setImsi(imsi);
-    GAMEDATA::getInstance()->setImei(imei);
-    GAMEDATA::getInstance()->setAppVer(ver1);
-    UserData::getInstance()->setWxOpenId(openid);
-    UserData::getInstance()->setWxUnionid(unionid);
-    std::string msg = CommandManage::getInstance()->getThirdLoginCommand(
-                                                                         openid,unionid, UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),hsman,hstype,imsi,imei,ver1);
-    if (msg != "") {
-        NetworkManage::getInstance()->sendMsg(msg);
-    }
 }
 

@@ -240,3 +240,44 @@ std::string UserData::getInvitePropNum(){
 void UserData::setInvitePropNum(std::string num){
     UserDefault::getInstance()->setStringForKey("InvitePropNum",num);
 }
+
+std::string UserData::getHsman(){
+    return UserDefault::getInstance()->getStringForKey("Android_Hsman","android");
+}
+
+void UserData::setHsman(std::string hsm){
+    UserDefault::getInstance()->setStringForKey("Android_Hsman",hsm);
+}
+
+std::string UserData::getHstype(){
+    return UserDefault::getInstance()->getStringForKey("Android_Hstype","android");
+}
+
+void UserData::setHstype(std::string hstype){
+     UserDefault::getInstance()->setStringForKey("Android_Hstype",hstype);
+}
+
+
+std::string UserData::getImsi(){
+    return UserDefault::getInstance()->getStringForKey("Android_imsi","11111111111");
+}
+
+void UserData::setImsi(std::string imsi){
+    return UserDefault::getInstance()->setStringForKey("Android_imsi",imsi);
+}
+
+std::string UserData::getImei(){
+    return UserDefault::getInstance()->getStringForKey("Android_Imei","11111111111");
+}
+
+void UserData::setImei(std::string imei){
+     UserDefault::getInstance()->setStringForKey("Android_Imei",imei);
+}
+
+std::string UserData::getAppVer(){
+    return UserDefault::getInstance()->getStringForKey("Android_AppVer","1.0.0");
+}
+void UserData::setAppVer(std::string ver){
+     UserDefault::getInstance()->setStringForKey("Android_AppVer",ver);
+}
+
