@@ -16,6 +16,7 @@ Audio* Audio::getInstance(){
 
 void Audio::init(){
     setIsFirstDong(true);
+    setBgmId(-999);
 }
 
 void Audio::playBGM(){

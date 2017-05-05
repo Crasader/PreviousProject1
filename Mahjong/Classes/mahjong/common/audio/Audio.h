@@ -39,12 +39,11 @@ public:
     
     
     CC_SYNTHESIZE(bool, hasTingPlayer, HasTingPlayer);//是否有玩家听牌(音效相关的状态)
-    
+    CC_SYNTHESIZE(int, bgmId, BgmId);
 private:
     
     static Audio* m_instance;
     CC_SYNTHESIZE(bool, isFirstDong, IsFirstDong);
-    CC_SYNTHESIZE(int, bgmId, BgmId);
     void playSoundWan1(int gender);
     void playSoundWan2(int gender);
     void playSoundWan3(int gender);

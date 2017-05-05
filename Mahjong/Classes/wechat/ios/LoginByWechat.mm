@@ -120,6 +120,7 @@ static NSString *DEVICESTRING= @"iphone";
                 }else{
                     UserData::getInstance()->setGender(1);
                 }
+//                NSLog(@"IOS WEI XIN OPENID = %s",std::string([openidstr UTF8String]).c_str());
                 UserData::getInstance()->setWxOpenId(std::string([openidstr UTF8String]));
                 UserData::getInstance()->setWxUnionid(std::string([unionidstr UTF8String]));
                 UserData::getInstance()->setPicture(std::string([headimgurlstr UTF8String]));

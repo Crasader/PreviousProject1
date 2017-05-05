@@ -42,7 +42,8 @@ void SplashScene::onEnterTransitionDidFinish(){
          NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
     }
     GAMEDATA::getInstance()->setLogingGame(false);
-    Audio::getInstance()->playBGM();
+    if(Audio::getInstance()->getBgmId()<0)
+        Audio::getInstance()->playBGM();
     TuiGuangReward myReward;
     myReward.fangka =0;
     myReward.gold=0;
