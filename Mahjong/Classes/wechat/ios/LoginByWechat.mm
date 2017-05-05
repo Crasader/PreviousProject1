@@ -73,18 +73,21 @@ static NSString *DEVICESTRING= @"iphone";
         return [WXApi sendAuthReq:req viewController:self delegate:[WXApiManager sharedManager]];
         
     }else{
-        BOOL result = [self checkTokenOutTime];
-        if(result){
-            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
-            return true;
-        }else{
-            SendAuthReq* req    =[[SendAuthReq alloc]init];
-            req.scope           = kAuthScope;
-            req.state           = kAuthState;
-            //第三方向微信终端发送一个SendAuthReq消息结构
-            return [WXApi sendAuthReq:req viewController:self delegate:[WXApiManager sharedManager]];
-        }
+        WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
+        //        BOOL result = [self checkTokenOutTime];
+        //        if(result){
+        //            WxLoginHandler::getInstance()->doGameLogin(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
+        //            return true;
+        //        }else{
+        //            SendAuthReq* req    =[[SendAuthReq alloc]init];
+        //            req.scope           = kAuthScope;
+        //            req.state           = kAuthState;
+        //            //第三方向微信终端发送一个SendAuthReq消息结构
+        //            return [WXApi sendAuthReq:req viewController:self delegate:[WXApiManager sharedManager]];
+        //        }
+        
     }
+    return true;
 }
 
 - (void)sendLoginMsg2Server:(NSString*) code{
@@ -97,7 +100,7 @@ static NSString *DEVICESTRING= @"iphone";
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-//    NSLog(@"received = %@",result);
+    //    NSLog(@"received = %@",result);
     //解析返回的json数据
     NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
     if(NSClassFromString(@"NSJSONSerialization"))
@@ -169,7 +172,7 @@ static NSString *DEVICESTRING= @"iphone";
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-//    NSLog(@"received = %@",result);
+    //    NSLog(@"received = %@",result);
     //解析返回的json数据
     NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
     if(NSClassFromString(@"NSJSONSerialization"))
@@ -179,7 +182,7 @@ static NSString *DEVICESTRING= @"iphone";
                      JSONObjectWithData:returnedData
                      options:0
                      error:&error];
-
+        
         if(error) {
             NSLog(@"json 格式有错误1");
         }
@@ -300,7 +303,7 @@ static NSString *DEVICESTRING= @"iphone";
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-//    NSLog(@"received = %@",result);
+    //    NSLog(@"received = %@",result);
     //解析返回的json数据
     NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
     if(NSClassFromString(@"NSJSONSerialization"))
@@ -368,7 +371,7 @@ static NSString *DEVICESTRING= @"iphone";
     //第三步，连接服务器
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *result = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-//    NSLog(@"received = %@",result);
+    //    NSLog(@"received = %@",result);
     //解析返回的json数据
     NSData *returnedData = [result dataUsingEncoding:NSUTF8StringEncoding];;
     if(NSClassFromString(@"NSJSONSerialization"))

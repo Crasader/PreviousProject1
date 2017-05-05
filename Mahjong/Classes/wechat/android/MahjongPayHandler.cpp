@@ -57,3 +57,18 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid,std::string unioni
 	}
 }
 
+void MahjongPayHandler::loginThirdPlatform2(std::string openid,std::string unionid,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1){
+    GAMEDATA::getInstance()->setHsman(hsman);
+    GAMEDATA::getInstance()->setHstype(hstype);
+    GAMEDATA::getInstance()->setImsi(imsi);
+    GAMEDATA::getInstance()->setImei(imei);
+    GAMEDATA::getInstance()->setAppVer(ver1);
+    UserData::getInstance()->setWxOpenId(openid);
+    UserData::getInstance()->setWxUnionid(unionid);
+    std::string msg = CommandManage::getInstance()->getThirdLoginCommand(
+                                                                         openid,unionid, UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()) ,UserData::getInstance()->getNickName(),hsman,hstype,imsi,imei,ver1);
+    if (msg != "") {
+        NetworkManage::getInstance()->sendMsg(msg);
+    }
+}
+
