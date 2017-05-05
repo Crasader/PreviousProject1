@@ -9,7 +9,6 @@
 #include "mahjong/common/utils/SeatIdUtil.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
-#include "mahjong/common/dialog/network/LostNetwork.hpp"
 #include "mahjong/common/dialog/prompt/TextHintDialog.hpp"
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/widget/batteryInfo/BatteryInfo.h"
@@ -659,7 +658,7 @@ void ReviewGame::addCoustomListener(){
     });
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+//        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
     

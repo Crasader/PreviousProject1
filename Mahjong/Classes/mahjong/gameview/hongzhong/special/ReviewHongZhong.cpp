@@ -21,7 +21,6 @@
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
-#include "mahjong/common/dialog/network/LostNetwork.hpp"
 #include "mahjong/common/dialog/prompt/TextHintDialog.hpp"
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/widget/batteryInfo/BatteryInfo.h"
@@ -1160,7 +1159,7 @@ void ReviewHongZhong::onEnter(){
     
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+//        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
     fangZhuLeaveListener = EventListenerCustom::create(MSG_GAME_FANG_ZHU_LEAVE, [=](EventCustom* event){
@@ -1209,11 +1208,6 @@ void ReviewHongZhong::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
-        if(NULL == getChildByTag(2000)){
-            LostNetwork* net = LostNetwork::create();
-            net->setTag(2000);
-            addChild(net,200);
-        }
         if(NetworkManage::getInstance()->reConnectSocket()){
             int  delayTime = 1.0f;
             schedule([=](float dt){

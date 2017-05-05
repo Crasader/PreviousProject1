@@ -23,7 +23,7 @@
 #include "mahjong/common/bill/BillInfo.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/common/dialog/prompt/TextHintDialog.hpp"
-#include "mahjong/common/dialog/network/LostNetwork2.hpp"
+//#include "mahjong/common/dialog/network/LostNetwork2.hpp"
 #include "mahjong/common/widget/HeadImage.hpp"
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/audio/Audio.h"
@@ -55,11 +55,12 @@ bool LobbyScene::init()
 void LobbyScene::signUpdate(float dt){
     
     if(GAMEDATA::getInstance()->getShowProtected()){
-        if(NULL == getChildByTag(2000)){
-            LostNetwork2* net = LostNetwork2::create();
-            net->setTag(2000);
-            addChild(net,200);
-        }
+//        if(NULL == getChildByTag(2000)){
+//            LostNetwork2* net = LostNetwork2::create();
+//            net->setTag(2000);
+//            addChild(net,200);
+//        }
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
     }
     
@@ -984,7 +985,10 @@ void LobbyScene::addEventListener(){
     
     
     lobbyReconnectRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setShowProtected(false);
+//        if(NULL != getChildByTag(2000)){
+//            getChildByTag(2000)->removeFromParent();
+//        }
+//        GAMEDATA::getInstance()->setShowProtected(false);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyReconnectRespListener, 1);
     
@@ -1000,9 +1004,12 @@ void LobbyScene::addEventListener(){
     
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
-        if(getChildByTag(2000)!=NULL){
-            getChildByTag(2000)->removeFromParent();
-        }
+//        if(NULL == getChildByTag(2000)){
+//            LostNetwork2* net = LostNetwork2::create();
+//            net->setTag(2000);
+//            addChild(net,200);
+//        }
+//        GAMEDATA::getInstance()->setShowProtected(false);
         if(NetworkManage::getInstance()->reConnectSocket()){
             int  delayTime = 1.0f;
             schedule([=](float dt){
