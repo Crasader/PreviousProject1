@@ -56,16 +56,23 @@ void UserSetting::drawDialog(){
     auto quan_normal_1 = MenuItemImage::create("setting/yuan_hui.png", "setting/yuan_hui.png");
     auto quan_selected_1 = MenuItemImage::create("setting/yuan_lv.png", "setting/yuan_lv.png");
     putongToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(UserSetting::useSoundPuTong, this), quan_normal_1, quan_selected_1, NULL);
-    putongToggle->setSelectedIndex(1);
+    
     auto quan_normal_2 = MenuItemImage::create("setting/yuan_hui.png", "setting/yuan_hui.png");
     auto quan_selected_2 = MenuItemImage::create("setting/yuan_lv.png", "setting/yuan_lv.png");
     shanghaikaToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(UserSetting::useSoundShangHai, this), quan_normal_2, quan_selected_2, NULL);
+    if(UserData::getInstance()->isFangYan()){
+        putongToggle->setSelectedIndex(0);
+        shanghaikaToggle->setSelectedIndex(1);
+    }else{
+        putongToggle->setSelectedIndex(1);
+        shanghaikaToggle->setSelectedIndex(0);
+    }
     
     auto menu = Menu::create(putongToggle, shanghaikaToggle, NULL);
     menu->alignItemsHorizontallyWithPadding(180);
     menu->setPosition(595,470);
     addChild(menu,1);
-
+    
     
     //音效条
     auto soudnText = Sprite::create("setting/sound.png");
@@ -156,6 +163,12 @@ void UserSetting::dissolveRoom(){
     removeFromParent();
 }
 
+void UserSetting::useSoundPuTong(Ref* ref){
+    putongToggle->setSelectedIndex(1);
+    shanghaikaToggle->setSelectedIndex(0);
+    UserData::getInstance()->setFangYan(false);
+}
+
 //配音设置只对红中麻将生效
 void UserSetting::useSoundShangHai(Ref* ref){
     putongToggle->setSelectedIndex(0);
@@ -163,9 +176,3 @@ void UserSetting::useSoundShangHai(Ref* ref){
     UserData::getInstance()->setFangYan(true);
 }
 
-
-void UserSetting::useSoundPuTong(Ref* ref){
-    putongToggle->setSelectedIndex(1);
-    shanghaikaToggle->setSelectedIndex(0);
-    UserData::getInstance()->setFangYan(false);
-}

@@ -71,6 +71,9 @@ bool ChatDialog::init(){
     auto quickChatBtn  = Menu::create(image,NULL);
     quickChatBtn->setPosition(805,85);
     addChild(quickChatBtn);
+    if(GAMEDATA::getInstance()->getGameType() == 3 && !UserData::getInstance()->isFangYan()){
+        quickChatBtn->setVisible(false);
+    }
     
     MenuItemImage* face = MenuItemImage::create("chat/face_btn_1.png","chat/face_btn_2.png",CC_CALLBACK_0(ChatDialog::showFaceList, this));
     auto faceChatBtn  = Menu::create(face,NULL);
