@@ -1469,39 +1469,39 @@ void ReviewHongZhong::onEnter(){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
             playerLeft->drawPlayedJongMingpai(poker);
-            if(poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
-            }else if(poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
-            }
+//            if(poker == playerOpposite->getLastPoker()){
+//                Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
+//            }else if(poker == playerHero->getLastPoker()){
+//                Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
+//            }
         }
         else if (seatId == ClientSeatId::right){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
             playerRight->drawPlayedJongMingpai(poker);
-            if(poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
-            }else if(poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
-            }
+//            if(poker == playerHero->getLastPoker()){
+//                Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
+//            }else if(poker == playerOpposite->getLastPoker()){
+//                Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
+//            }
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
             playerOpposite->drawPlayedJongMingpai(poker);
-            if(poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
-            }else if(poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
-            }
+//            if(poker == playerRight->getLastPoker()){
+//                Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
+//            }else if(poker == playerLeft->getLastPoker()){
+//                Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
+//            }
         }else if(seatId == ClientSeatId::hero){
             playerHero->stopTimeClockAnim();
             playerHero->drawPlayedJongMingpai(poker);
-            if(poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-            }else if(poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
-            }
+//            if(poker == playerLeft->getLastPoker()){
+//                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
+//            }else if(poker == playerRight->getLastPoker()){
+//                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
+//            }
             
         }
         if(fupanStep>= currentMaxStep){
