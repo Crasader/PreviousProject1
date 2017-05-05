@@ -103,26 +103,6 @@ void ReviewHongZhong::loadView(){
     //语音聊天
     SoundRecordBtn* soun = SoundRecordBtn::create();
     addChild(soun,5);
-    
-    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        //码和低分
-        auto hzma  = Sprite::create("gameview/hz_ma_159zh.png");
-        addChild(hzma);
-        if(GAMEDATA::getInstance()->getFanMaType() == "3"){
-            hzma->setTexture("gameview/hz_ma_159.png");
-        }else if (GAMEDATA::getInstance()->getFanMaType() == "1"){
-            hzma->setTexture("gameview/hz_ma_1.png");
-        }
-        auto difen = Sprite::create();
-        difen->setTexture(StringUtils::format("gameview/hz_di_%s.png",GAMEDATA::getInstance()->getHZDiFen().c_str()));
-        addChild(difen);
-        
-        int wid = hzma->getContentSize().width +(difen->getContentSize().width);
-        hzma->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
-        hzma->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        difen->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+hzma->getContentSize().width,160);
-        difen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    }
 }
 
 void ReviewHongZhong::startGameFirst(){
@@ -1729,6 +1709,23 @@ void ReviewHongZhong::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
     
     fupanPlayerInfoListener = EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
+        //码和低分
+        auto hzma  = Sprite::create("gameview/hz_ma_159zh.png");
+        addChild(hzma);
+        if(GAMEDATA::getInstance()->getFanMaType() == "3"){
+            hzma->setTexture("gameview/hz_ma_159.png");
+        }else if (GAMEDATA::getInstance()->getFanMaType() == "1"){
+            hzma->setTexture("gameview/hz_ma_1.png");
+        }
+        auto difen = Sprite::create();
+        difen->setTexture(StringUtils::format("gameview/hz_di_%s.png",GAMEDATA::getInstance()->getHZDiFen().c_str()));
+        addChild(difen);
+        
+        int wid = hzma->getContentSize().width +(difen->getContentSize().width);
+        hzma->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
+        hzma->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        difen->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+hzma->getContentSize().width,160);
+        difen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();

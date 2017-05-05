@@ -2549,6 +2549,16 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
         GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
     }
     
+    if(_mDoc.HasMember("ifkb")){
+        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+    }
+    if(_mDoc.HasMember("ifemsc")){
+        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+    }
+    if(_mDoc.HasMember("iflezi")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+    }
+    
     const rapidjson::Value &all = _mDoc["all"];
     for (int i = 0; i < all.Capacity(); ++i){
         PlayerGameData  data;

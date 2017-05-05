@@ -54,6 +54,15 @@ bool LobbyScene::init()
 
 void LobbyScene::signUpdate(float dt){
     
+    if(GAMEDATA::getInstance()->getShowProtected()){
+        if(NULL == getChildByTag(2000)){
+            LostNetwork2* net = LostNetwork2::create();
+            net->setTag(2000);
+            addChild(net,200);
+        }
+        GAMEDATA::getInstance()->setShowProtected(false);
+    }
+    
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
         for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
             if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
@@ -939,7 +948,6 @@ void LobbyScene::addEventListener(){
             }
         }
     });
-    
     gameFupanListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_GET_TUI_GUANG_PRIDE, [=](EventCustom* event){
         std::string buf = static_cast<char*>(event->getUserData());
         ShopHintDialog* da = ShopHintDialog::create();
@@ -992,7 +1000,9 @@ void LobbyScene::addEventListener(){
     
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setShowProtected(false);
+        if(getChildByTag(2000)!=NULL){
+            getChildByTag(2000)->removeFromParent();
+        }
         if(NetworkManage::getInstance()->reConnectSocket()){
             int  delayTime = 1.0f;
             schedule([=](float dt){

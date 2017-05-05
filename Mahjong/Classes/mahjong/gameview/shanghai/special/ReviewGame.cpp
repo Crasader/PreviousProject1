@@ -81,34 +81,6 @@ void ReviewGame::loadView(){
     stack->setTag(1129);
     stack->setVisible(false);
     addChild(stack);
-    //复盘功能只存在于私人房间
-    auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
-    wukaibao->setVisible(false);
-    addChild(wukaibao);
-    if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
-        wukaibao->setVisible(true);
-    }
-    auto lezi = Sprite::create();
-    addChild(lezi);
-    if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
-        //有乐子
-        lezi->setTexture("gameview/40_lezi.png");
-    }else{
-        lezi->setTexture("gameview/wu_lezi.png");
-    }
-    auto emsc =  Sprite::create("gameview/2mo3chong.png");
-    emsc->setVisible(false);
-    addChild(emsc);
-    if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
-        emsc->setVisible(true);
-    }
-    int wid = lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
-    wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
-    wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
-    lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
-    emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
@@ -692,6 +664,41 @@ void ReviewGame::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
     
     fupanPlayerInfoListener = EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
+        //复盘功能只存在于私人房间
+        auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
+        wukaibao->setVisible(false);
+        addChild(wukaibao);
+        if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
+            wukaibao->setVisible(true);
+        }
+        auto lezi = Sprite::create();
+        addChild(lezi);
+        if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1100)){
+            lezi->setTexture("gameview/lezi_1100.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1120)){
+            lezi->setTexture("gameview/lezi_1120.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1150)){
+            lezi->setTexture("gameview/lezi_1150.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2200)){
+            lezi->setTexture("gameview/lezi_2200.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2240)){
+            lezi->setTexture("gameview/lezi_2240.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type22100)){
+            lezi->setTexture("gameview/lezi_22100.png");
+        }
+        auto emsc =  Sprite::create("gameview/2mo3chong.png");
+        emsc->setVisible(false);
+        addChild(emsc);
+        if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
+            emsc->setVisible(true);
+        }
+        int wid = lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
+        wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
+        wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
+        lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
+        emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         guiLayer->updateData();
