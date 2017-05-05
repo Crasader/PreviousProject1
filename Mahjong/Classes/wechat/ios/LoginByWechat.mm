@@ -110,7 +110,7 @@ static NSString *DEVICESTRING= @"iphone";
         
         if(error) {
             UserData::getInstance()->setWxOpenId("unknow");
-            NSLog(@"json 格式有错误1");
+            NSLog(@"sendLoginMsg2Server json 格式有错误1");
         }
         if([object isKindOfClass:[NSDictionary class]])
         {
@@ -142,14 +142,13 @@ static NSString *DEVICESTRING= @"iphone";
                 WxLoginHandler::getInstance()->doGameLogin(std::string([openidstr UTF8String]), std::string([unionidstr UTF8String]),std::string([headimgurlstr UTF8String]),StringUtils::format("%d",UserData::getInstance()->getGender()),std::string([nicknameStr UTF8String]),std::string([HSMAN UTF8String]),std::string([DEVICESTRING UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([IMEI_IMSI UTF8String]),std::string([GAME_VERSION UTF8String]));
             }else{
                 UserData::getInstance()->setWxOpenId("unknow");
-                [self sendAuthRequestScope];
             }
             
         }
         else
         {
             UserData::getInstance()->setWxOpenId("unknow");
-            NSLog(@"json 格式有错误2");
+            NSLog(@"sendLoginMsg2Server json 格式有错误2");
         }
     }
     else

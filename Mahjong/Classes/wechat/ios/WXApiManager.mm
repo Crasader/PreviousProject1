@@ -31,6 +31,7 @@
 - (void)onResp:(BaseResp *)resp {
     if ([resp isKindOfClass:[SendAuthResp class]]) {
         SendAuthResp *authResp = (SendAuthResp *)resp;
+//        NSLog(@"GGGGGGGGG %d",authResp.errCode);
         //发送请求到服务端
         LoginByWechat* loginByWechat = [LoginByWechat sharedManager] ;
         [loginByWechat sendLoginMsg2Server:authResp.code];
