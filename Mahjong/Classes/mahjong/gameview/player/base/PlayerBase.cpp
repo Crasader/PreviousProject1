@@ -197,7 +197,7 @@ void PlayerBase::showPlayedJong(int ctype){
     playedPokers.insert(ctype);
     setLastPoker(ctype);
     set<int>::iterator it =playedPokers.find(lastPoker);
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playMahjongNormal(ctype,getPlayerInfo()->getGender());//普通打牌音效
     }else{
         if(it == playedPokers.end() && Audio::getInstance()->getHasTingPlayer()){
@@ -240,7 +240,7 @@ void PlayerBase::showPlayerChi(string chiPoker, PlayerBase* playerBase){
 }
 
 void PlayerBase::showPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundPengNormal(getPlayerInfo()->getGender());
         
     }else{
@@ -251,7 +251,7 @@ void PlayerBase::showPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase){
 
 void PlayerBase::showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase){
     
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundGangNormal(getPlayerInfo()->getGender());
         
     }else{
@@ -527,7 +527,7 @@ Point PlayerBase::getVec2BySeatId(int seatId){
 
 void PlayerBase::playSoundHuPai(int type){
     
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundHuNormal(getPlayerInfo()->getGender());
         
     }else{

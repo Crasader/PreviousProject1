@@ -19,11 +19,11 @@
 #include "mahjong/lobby/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/lobby/shop/ShopHintDialog.hpp"
 #include "mahjong/lobby/share/ShareToFriendLayer.hpp"
+#include "mahjong/lobby/invitecode/InviteCodeLayer.hpp"
 #include "mahjong/common/heroinfo/HeroInfoEdit.h"
 #include "mahjong/common/bill/BillInfo.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/common/dialog/prompt/TextHintDialog.hpp"
-//#include "mahjong/common/dialog/network/LostNetwork2.hpp"
 #include "mahjong/common/widget/HeadImage.hpp"
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/audio/Audio.h"
@@ -32,7 +32,6 @@
 #include "mahjong/GameConfig.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
-#include "mahjong/lobby/invitecode/InviteCodeLayer.hpp"
 
 
 bool LobbyScene::init()
@@ -605,7 +604,6 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(showLoobyLoadingLayer);
     Director::getInstance()->getEventDispatcher()->removeEventListener(gameFupanListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(roomListRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(lobbyReconnectRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(gongGaoInfoListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
@@ -984,14 +982,6 @@ void LobbyScene::addEventListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomListRespListener, 1);
     
     
-    lobbyReconnectRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-//        if(NULL != getChildByTag(2000)){
-//            getChildByTag(2000)->removeFromParent();
-//        }
-//        GAMEDATA::getInstance()->setShowProtected(false);
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(lobbyReconnectRespListener, 1);
-    
     gongGaoInfoListener = EventListenerCustom::create(MSG_GET_WAN_JIA_GONG_GAO, [=](EventCustom* event){
         if(getChildByTag(1209)!=NULL){
             getChildByTag(1209)->removeFromParent();
@@ -1004,12 +994,6 @@ void LobbyScene::addEventListener(){
     
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
-//        if(NULL == getChildByTag(2000)){
-//            LostNetwork2* net = LostNetwork2::create();
-//            net->setTag(2000);
-//            addChild(net,200);
-//        }
-//        GAMEDATA::getInstance()->setShowProtected(false);
         if(NetworkManage::getInstance()->reConnectSocket()){
             int  delayTime = 1.0f;
             schedule([=](float dt){

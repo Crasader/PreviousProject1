@@ -1001,7 +1001,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
 
 void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase){
     
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundPengNormal(UserData::getInstance()->getGender());
         
     }else{
@@ -1094,7 +1094,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase){
 }
 
 void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundGangNormal(UserData::getInstance()->getGender());
         
     }else{
@@ -1346,7 +1346,7 @@ void PlayerHero::drawHeroChiMingpai(HeroCpgRespData cpgResp, std::vector<string>
 
 void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerBase* playerBase){
     
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundPengNormal(UserData::getInstance()->getGender());
         
     }else{
@@ -1437,7 +1437,7 @@ void PlayerHero::drawHeroPengMingpai(HeroCpgRespData resp, PlayerBase* playerBas
 }
 
 void PlayerHero::drawHeroGangMingpai(HeroCpgRespData resp, PlayerBase* playerBase){
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundGangNormal(UserData::getInstance()->getGender());
         
     }else{

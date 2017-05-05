@@ -54,7 +54,6 @@ private:
     EventListenerCustom* showLoobyLoadingLayer;
     EventListenerCustom* gameFupanListener;
     EventListenerCustom* roomListRespListener;
-    EventListenerCustom* lobbyReconnectRespListener;
     EventListenerCustom* gongGaoInfoListener;
     EventListenerCustom* networkBreakListener;
     

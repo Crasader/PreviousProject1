@@ -93,7 +93,7 @@ void PlayerLeft::drawPlayedJong(int ctype){
 }
 
 void PlayerLeft::drawPlayedJongMingpai(int ctype){
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playMahjongNormal(ctype,getPlayerInfo()->getGender());//普通打牌音效
     }else{
         Audio::getInstance()->playMahjong(ctype,getPlayerInfo()->getGender());
@@ -214,7 +214,7 @@ void PlayerLeft::drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase){
 void PlayerLeft::drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundPengNormal(getPlayerInfo()->getGender());
         
     }else{
@@ -416,7 +416,7 @@ void PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBas
 void PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase){
     PlayerBase::showPlayerPeng(data, playerBase);
     setStateCpg(true);
-    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && UserData::getInstance()->isFangYan()){
+    if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
         Audio::getInstance()->playSoundPengNormal(getPlayerInfo()->getGender());
         
     }else{
