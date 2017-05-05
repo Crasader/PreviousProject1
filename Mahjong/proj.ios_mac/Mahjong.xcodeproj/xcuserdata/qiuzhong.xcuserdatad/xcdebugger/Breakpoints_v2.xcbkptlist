@@ -5458,11 +5458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
-            timestampString = "514350791.1819"
+            timestampString = "515655391.355975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "GuiLayer::dissovleRoom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5474,11 +5474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
-            timestampString = "514275183.627825"
+            timestampString = "515655391.355975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "GuiLayer::drawGameInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5490,11 +5490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
-            timestampString = "514275183.627825"
+            timestampString = "515655391.355975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "GuiLayer::drawGameInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5634,11 +5634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
-            timestampString = "514731685.72657"
+            timestampString = "515655391.355975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "GuiLayer::testButtonClick()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5808,11 +5808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
-            timestampString = "514304121.034838"
+            timestampString = "515655391.355975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "GuiLayer::drawGameInfo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6208,11 +6208,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
-            timestampString = "514730688.759549"
+            timestampString = "515655391.355975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "GuiLayer::updateData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6256,11 +6256,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
-            timestampString = "514731378.971338"
+            timestampString = "515655391.355975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "GuiLayer::updateData()"
             landmarkType = "7">
          </BreakpointContent>

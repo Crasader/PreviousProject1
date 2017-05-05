@@ -9,10 +9,10 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "16" //ios审核版本16，应用宝审核版本17.
+#define PAY_PLAT_VALUE "16" //ios审核版本18，应用宝审核版本19.
 
-//#define SERVER_ADDRESS "aliyun.5278-mobi.com"
-#define SERVER_ADDRESS "ceshi.5278-mobi.com"
+#define SERVER_ADDRESS "aliyun.5278-mobi.com"
+//#define SERVER_ADDRESS "ceshi.5278-mobi.com"
 #define SERVER_PORT 9999
 //#define SERVER_ADDRESS "172.23.1.35"
 //#define SERVER_PORT 9999
@@ -35,9 +35,11 @@
 #define PAY_WECHAT_QUERY_ORDER "http://web.5278-mobi.com/pay!findOrd.action"
 
 #define WECHAT_SHARE_HONGBAO_URL "http://web.5278-mobi.com:1112/hongbao.jsp"
+
 #define WECHAT_SHARE_FRIEND_URL "http://web.5278-mobi.com:1112/majiang.html"
 
 #define WECHAT_WAN_JIA_QUN_URL "http://web.5278-mobi.com:1112/qunewm.png"
+
 #define WECHAT_DAI_LI_QUN_URL "http://web.5278-mobi.com:1112/dlewm.png"
 
 #define WECHAT_SHARE_LINK_PATH_1 "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state="
