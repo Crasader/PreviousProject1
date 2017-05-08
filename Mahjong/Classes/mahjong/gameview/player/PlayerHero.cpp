@@ -695,7 +695,6 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     PlayerCpgtData cpgData = data.cpgData;
     if (data.replace != "" && replace.size() > 0 && data.handNum>getSelfHandJongs().size()){
         Jong* turnJong = Jong::create();
-        turnJong->setVisible(false);
         turnJong->showJong(herohand, data.poker);
         addChild(turnJong);
         playerHandJongs.pushBack(turnJong);
@@ -713,9 +712,8 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             huaIndex++;
         }, 0.6f, (int)replace.size()-1, 0,"hua2poker");
         schedule([=](float dt){
-            turnJong->setVisible(true);
-            settleHandJongs(getHandPosX());
             currentJong = turnJong;
+            settleHandJongs(getHandPosX());
             setIsAllowPlay(true);
             if(data.hastinggang){
                 ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
@@ -801,8 +799,8 @@ void PlayerHero:: drawPlayedJong(int type){
             bezier.controlPoint_2 = Point(sx + (ex - sx) * 0.5,
                                           sy + (ey - sy) * 0.5 + 200);
             bezier.endPosition = Point(endPoint.x , endPoint.y);
-            BezierTo *actionMove = BezierTo::create(0.5f, bezier);
-            ScaleTo* scale = ScaleTo::create(0.5f, 0.45f);
+            BezierTo *actionMove = BezierTo::create(0.3f, bezier);
+            ScaleTo* scale = ScaleTo::create(0.3f, 0.45f);
             Spawn* spa = Spawn::create(actionMove, scale, NULL);
             CallFunc* callback = CallFunc::create([=](){
                 spJong->showJong(heroplayed, spJong->getJongType());
