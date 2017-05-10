@@ -124,17 +124,17 @@ bool FriendRoom::init()
     addChild(lezi1150Img);
     
     // 2/2 无勒子
-    auto leziwu22 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType4, this));
-    auto leziwuMenu22 = Menu::create(leziwu22,NULL);
-    leziwuMenu22->setTag(2029);
-    leziwuMenu22->setPosition(458,310);
-    addChild(leziwuMenu22);
-    
-    auto leziwuImg22 = Sprite::create("openroom/icon_right.png");
-    leziwuImg22->setTag(2030);
-    leziwuImg22->setPosition(458,310);
-    leziwuImg22->setVisible(false);
-    addChild(leziwuImg22);
+//    auto leziwu22 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType4, this));
+//    auto leziwuMenu22 = Menu::create(leziwu22,NULL);
+//    leziwuMenu22->setTag(2029);
+//    leziwuMenu22->setPosition(458,310);
+//    addChild(leziwuMenu22);
+//    
+//    auto leziwuImg22 = Sprite::create("openroom/icon_right.png");
+//    leziwuImg22->setTag(2030);
+//    leziwuImg22->setPosition(458,310);
+//    leziwuImg22->setVisible(false);
+//    addChild(leziwuImg22);
     
     
     // 2/2 40勒子
@@ -142,12 +142,12 @@ bool FriendRoom::init()
     auto lezi2240 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType5, this));
     auto lezi2240Menu = Menu::create(lezi2240,NULL);
     lezi2240Menu->setTag(2031);
-    lezi2240Menu->setPosition(695,310);
+    lezi2240Menu->setPosition(458,310);
     addChild(lezi2240Menu);
     
     auto lezi2240Img = Sprite::create("openroom/icon_right.png");
     lezi2240Img->setTag(2032);
-    lezi2240Img->setPosition(695,310);
+    lezi2240Img->setPosition(458,310);
     lezi2240Img->setVisible(false);
     addChild(lezi2240Img);
     
@@ -155,12 +155,12 @@ bool FriendRoom::init()
     auto lezi22100 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType6, this));
     auto lezi22100Menu = Menu::create(lezi22100,NULL);
     lezi22100Menu->setTag(2033);
-    lezi22100Menu->setPosition(950,310);
+    lezi22100Menu->setPosition(695,310);
     addChild(lezi22100Menu);
     
     auto lezi22100Img = Sprite::create("openroom/icon_right.png");
     lezi22100Img->setTag(2034);
-    lezi22100Img->setPosition(950,310);
+    lezi22100Img->setPosition(695,310);
     lezi22100Img->setVisible(false);
     addChild(lezi22100Img);
     
@@ -385,8 +385,8 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
         getChildByTag(2026)->setVisible(false);
         getChildByTag(2027)->setVisible(true);
         getChildByTag(2028)->setVisible(false);
-        getChildByTag(2029)->setVisible(true);
-        getChildByTag(2030)->setVisible(false);
+//        getChildByTag(2029)->setVisible(true);
+//        getChildByTag(2030)->setVisible(false);
         getChildByTag(2031)->setVisible(true);
         getChildByTag(2032)->setVisible(false);
         getChildByTag(2033)->setVisible(true);
@@ -421,8 +421,8 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
         getChildByTag(2026)->setVisible(false);
         getChildByTag(2027)->setVisible(false);
         getChildByTag(2028)->setVisible(false);
-        getChildByTag(2029)->setVisible(false);
-        getChildByTag(2030)->setVisible(false);
+//        getChildByTag(2029)->setVisible(false);
+//        getChildByTag(2030)->setVisible(false);
         getChildByTag(2031)->setVisible(false);
         getChildByTag(2032)->setVisible(false);
         getChildByTag(2033)->setVisible(false);
@@ -469,9 +469,11 @@ void FriendRoom::openRoom(){
             iflezi = LeziType::type1120;
         }else if(NULL != getChildByTag(2028)&&getChildByTag(2028)->isVisible()){
             iflezi = LeziType::type1150;
-        }else if(NULL != getChildByTag(2030)&&getChildByTag(2030)->isVisible()){
-            iflezi = LeziType::type2200;
-        }else if(NULL != getChildByTag(2032)&&getChildByTag(2032)->isVisible()){
+        }
+//        else if(NULL != getChildByTag(2030)&&getChildByTag(2030)->isVisible()){
+//            iflezi = LeziType::type2200;
+//        }
+        else if(NULL != getChildByTag(2032)&&getChildByTag(2032)->isVisible()){
             iflezi = LeziType::type2240;
         }else if(NULL != getChildByTag(2034)&&getChildByTag(2034)->isVisible()){
             iflezi = LeziType::type22100;
@@ -567,9 +569,9 @@ void FriendRoom::selectLeziType1(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-    if(NULL != getChildByTag(2030)){
-        getChildByTag(2030)->setVisible(false);
-    }
+//    if(NULL != getChildByTag(2030)){
+//        getChildByTag(2030)->setVisible(false);
+//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -588,9 +590,9 @@ void FriendRoom::selectLeziType2(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-    if(NULL != getChildByTag(2030)){
-        getChildByTag(2030)->setVisible(false);
-    }
+//    if(NULL != getChildByTag(2030)){
+//        getChildByTag(2030)->setVisible(false);
+//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -609,9 +611,9 @@ void FriendRoom::selectLeziType3(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(true);
     }
-    if(NULL != getChildByTag(2030)){
-        getChildByTag(2030)->setVisible(false);
-    }
+//    if(NULL != getChildByTag(2030)){
+//        getChildByTag(2030)->setVisible(false);
+//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -630,9 +632,9 @@ void FriendRoom::selectLeziType4(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-    if(NULL != getChildByTag(2030)){
-        getChildByTag(2030)->setVisible(true);
-    }
+//    if(NULL != getChildByTag(2030)){
+//        getChildByTag(2030)->setVisible(true);
+//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -651,9 +653,9 @@ void FriendRoom::selectLeziType5(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-    if(NULL != getChildByTag(2030)){
-        getChildByTag(2030)->setVisible(false);
-    }
+//    if(NULL != getChildByTag(2030)){
+//        getChildByTag(2030)->setVisible(false);
+//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(true);
     }
@@ -672,9 +674,9 @@ void FriendRoom::selectLeziType6(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-    if(NULL != getChildByTag(2030)){
-        getChildByTag(2030)->setVisible(false);
-    }
+//    if(NULL != getChildByTag(2030)){
+//        getChildByTag(2030)->setVisible(false);
+//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
