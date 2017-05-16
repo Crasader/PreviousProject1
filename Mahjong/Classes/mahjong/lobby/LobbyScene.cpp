@@ -501,6 +501,9 @@ void LobbyScene::chargeFangka(){
     }
     ChargeFangka* charge = ChargeFangka::create();
     addChild(charge,3);
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
+    ChargeFangka* charge = ChargeFangka::create();
+    addChild(charge,3);
 #endif
 }
 
