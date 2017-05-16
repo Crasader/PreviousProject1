@@ -1296,7 +1296,10 @@ void HongZhongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
     
     othersGangListener = EventListenerCustom::create(MSG_HZ_PLAYER_GANG, [=](EventCustom* event){
-        hideHuGangControllPad();
+//        if(!GAMEDATA::getInstance()->getHongZhongHuState()){
+//            hideHuGangControllPad();
+//            GAMEDATA::getInstance()->setHongZhongHuState(false);
+//        }
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
         PlayerCpgtData newData = *data;
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);

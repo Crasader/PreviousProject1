@@ -31,11 +31,12 @@ void GAMEDATA::init(){
     setFangzhuLequan("0");
     setShowDissolveDialog(false);
     setLogingGame(false);
-    setHongZhongHuState(false);
+//    setHongZhongHuState(false);
     setShowDialogType(-1);
     setScore(0);
     setHuangfan("0");
     setKaibao("0");
+//    setHongZhongHuState(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

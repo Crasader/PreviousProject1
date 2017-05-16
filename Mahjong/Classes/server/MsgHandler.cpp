@@ -2875,6 +2875,7 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
     }
     if(_mDoc.HasMember("hu")){
         tingData.hu = 1;//红中麻将可胡
+//        GAMEDATA::getInstance()->setHongZhongHuState(true);
     }else{
         tingData.hu = 0;
     }
