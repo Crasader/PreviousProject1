@@ -557,6 +557,18 @@ void MsgHandler::roomListResp(std::string msg){
         data.hua = temp["hua"].GetInt();
         roomlist.rooms.push_back(data);
     }
+    if(_mDoc.HasMember("match")){
+        const rapidjson::Value &match = _mDoc["match"];
+        for (int j=0 ; j<match.Capacity(); j++){
+            CompetitionRoom room;
+            const rapidjson::Value &temp = match[j];
+            room.roomId = temp["id"].GetInt();
+            room.name = temp["name"].GetInt();
+            room.fangka = temp["fangka"].GetInt();
+            room.prize = temp["prize"].GetInt();
+            roomlist.matchList.push_back(room);
+        }
+    }
     postNotifyMessage(MSG_ROOM_LIST_RESP,&roomlist);
 }
 

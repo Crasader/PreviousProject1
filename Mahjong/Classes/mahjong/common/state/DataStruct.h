@@ -246,10 +246,21 @@ struct RoomData{
     int hua;
 };
 
+struct CompetitionRoom{
+    std::string name;
+    std::string fangka;
+    std::string roomId;
+    std::string prize;
+};
+
 struct RoomListData
 {
     std::vector <RoomData> rooms;
+    std::vector <CompetitionRoom> matchList;
 };
+
+
+
 
 
 struct FriendInfo{

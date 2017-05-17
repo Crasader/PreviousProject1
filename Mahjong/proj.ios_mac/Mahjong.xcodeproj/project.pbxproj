@@ -352,6 +352,8 @@
 		D2C3FA5C1D9909EC00CFC80E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */; };
 		D2D894A41EBB217D008C1E5D /* InviteCodeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */; };
 		D2D894A51EBB217D008C1E5D /* InviteCodeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */; };
+		D2DAE75F1ECBE82A008B20FF /* CompetitionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */; };
+		D2DAE7601ECBE82A008B20FF /* CompetitionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */; };
 		D2DB5DEB1E790B290073ABD8 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DEA1E790B290073ABD8 /* libc++.1.tbd */; };
 		D2DB5DED1E790B440073ABD8 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DEC1E790B440073ABD8 /* libresolv.9.tbd */; };
 		D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DF21E790B9E0073ABD8 /* libz.tbd */; };
@@ -751,6 +753,8 @@
 		D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InviteCodeLayer.cpp; sourceTree = "<group>"; };
 		D2D894A31EBB217D008C1E5D /* InviteCodeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InviteCodeLayer.hpp; sourceTree = "<group>"; };
+		D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitionQueue.cpp; sourceTree = "<group>"; };
+		D2DAE75E1ECBE82A008B20FF /* CompetitionQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitionQueue.hpp; sourceTree = "<group>"; };
 		D2DB5DEA1E790B290073ABD8 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
 		D2DB5DEC1E790B440073ABD8 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libresolv.9.tbd; sourceTree = DEVELOPER_DIR; };
 		D2DB5DEE1E790B840073ABD8 /* libycommon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libycommon.a; path = ../yim/lib/ios/libycommon.a; sourceTree = "<group>"; };
@@ -1288,6 +1292,7 @@
 		D252FACD1E7FA5EC00937322 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D2DAE75C1ECBE82A008B20FF /* competition */,
 				D2D894A11EBB2163008C1E5D /* invitecode */,
 				D252FACE1E7FA5EC00937322 /* daily */,
 				D252FAD61E7FA5EC00937322 /* EnterRoomDialog.cpp */,
@@ -1846,6 +1851,15 @@
 			path = invitecode;
 			sourceTree = "<group>";
 		};
+		D2DAE75C1ECBE82A008B20FF /* competition */ = {
+			isa = PBXGroup;
+			children = (
+				D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */,
+				D2DAE75E1ECBE82A008B20FF /* CompetitionQueue.hpp */,
+			);
+			path = competition;
+			sourceTree = "<group>";
+		};
 		D2F05F281D8E2B22006E5A4C /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -2260,6 +2274,7 @@
 				D252FC0A1E7FABC600937322 /* RoomFullDialog.cpp in Sources */,
 				D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D252FB9E1E7FA5EC00937322 /* DailyPride.cpp in Sources */,
+				D2DAE75F1ECBE82A008B20FF /* CompetitionQueue.cpp in Sources */,
 				D252FC0C1E7FABC600937322 /* RoomIdErrorDialog.cpp in Sources */,
 				D252FBAC1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FC4F1E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
@@ -2364,6 +2379,7 @@
 				D252FC4E1E7FABE900937322 /* OutFogAnim.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D27F06021E94BDF90085438A /* ReviewGame.cpp in Sources */,
+				D2DAE7601ECBE82A008B20FF /* CompetitionQueue.cpp in Sources */,
 				D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D252FC601E7FABE900937322 /* PlayerOpposite.cpp in Sources */,
 				D27F06091E94BFE50085438A /* HongZhongView.cpp in Sources */,
