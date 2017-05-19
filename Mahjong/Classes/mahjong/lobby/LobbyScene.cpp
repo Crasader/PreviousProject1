@@ -304,10 +304,6 @@ void LobbyScene::drawSceneMid(){
     scroll->setPosition(600,600);
     addChild(scroll,2);
     
-    
-    
-    
-    
 }
 
 void LobbyScene::drawSceneBot(){
@@ -338,7 +334,7 @@ void LobbyScene::drawSceneBot(){
     setting->setPosition(1020, 60);
     addChild(setting);
     
-    auto btn_setting = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_1.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
+    auto btn_setting = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_1.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
     auto settingMenu = Menu::create(btn_setting, NULL);
     
     settingMenu->setPosition(1025, 60);

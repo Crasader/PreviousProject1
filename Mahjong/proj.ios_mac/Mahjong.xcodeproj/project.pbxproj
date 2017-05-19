@@ -366,6 +366,8 @@
 		D2DB5E7E1E7917490073ABD8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */; };
 		D2DCA7D31ECE826A009F9C59 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */; };
 		D2DCA7D41ECE826A009F9C59 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */; };
+		D2DCA7D71ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
+		D2DCA7D81ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -771,6 +773,7 @@
 		D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonItem.cpp; sourceTree = "<group>"; };
 		D2DCA7D21ECE826A009F9C59 /* CompetitonItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonItem.hpp; sourceTree = "<group>"; };
+		D2DCA7D61ECEC067009F9C59 /* competition */ = {isa = PBXFileReference; lastKnownFileType = folder; path = competition; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -962,36 +965,37 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D2B1D8FD1E9DF95B00EB8FB0 /* fanma */,
-				D252FD671E80F3A500937322 /* openroom */,
-				D281A38F1E5442C8007FF30E /* share */,
-				D29E85981E320EB100AFACEE /* fupan */,
-				D212D53B1E14A0BA00C29C00 /* batteryInfo */,
-				D2FB85201E07B9F700257EE1 /* Images.xcassets */,
-				D286A53D1DD30E46001369C1 /* wanjiaqun */,
-				D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */,
+				D2DCA7D61ECEC067009F9C59 /* competition */,
 				D281E5A01DACF35600D3E44E /* audio */,
-				D22F1C171CC5CB67007270B2 /* setting */,
-				D25DEE401CC4AE78007D428A /* shop */,
-				D25DEE361CC0F56A007D428A /* bill */,
+				D212D53B1E14A0BA00C29C00 /* batteryInfo */,
 				D253293F1CC0D33600DDAD97 /* bignum */,
+				D25DEE361CC0F56A007D428A /* bill */,
 				D25329401CC0D33600DDAD97 /* chat */,
 				D25329411CC0D33600DDAD97 /* ChineseWords.plist */,
 				D25329421CC0D33600DDAD97 /* common */,
 				D25329431CC0D33600DDAD97 /* daily */,
+				D2B1D8FD1E9DF95B00EB8FB0 /* fanma */,
 				D25329451CC0D33600DDAD97 /* fonts */,
 				D25329461CC0D33600DDAD97 /* friend */,
+				D29E85981E320EB100AFACEE /* fupan */,
 				D25329481CC0D33600DDAD97 /* gameview */,
 				D25329491CC0D33600DDAD97 /* headportrait */,
+				D294FE1E1D9CFBE1005FB8A2 /* Icon-180.png */,
+				D2FB85201E07B9F700257EE1 /* Images.xcassets */,
 				D253294A1CC0D33600DDAD97 /* jong */,
 				D253294B1CC0D33600DDAD97 /* loading */,
 				D253294C1CC0D33600DDAD97 /* mainlogin */,
 				D253294D1CC0D33600DDAD97 /* mjitem */,
 				D253294E1CC0D33600DDAD97 /* mjlobby */,
+				D252FD671E80F3A500937322 /* openroom */,
 				D253294F1CC0D33600DDAD97 /* playerinfo */,
 				D25329511CC0D33600DDAD97 /* res */,
 				D25329521CC0D33600DDAD97 /* result */,
+				D22F1C171CC5CB67007270B2 /* setting */,
+				D281A38F1E5442C8007FF30E /* share */,
+				D25DEE401CC4AE78007D428A /* shop */,
 				D25329531CC0D33600DDAD97 /* trusteeship */,
+				D286A53D1DD30E46001369C1 /* wanjiaqun */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -2094,6 +2098,7 @@
 				D25329621CC0D33600DDAD97 /* friend in Resources */,
 				D294FE1F1D9CFBE1005FB8A2 /* Icon-180.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				D2DCA7D71ECEC067009F9C59 /* competition in Resources */,
 				D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -2168,6 +2173,7 @@
 				D25329711CC0D33600DDAD97 /* mjitem in Resources */,
 				D281A3911E5442C8007FF30E /* share in Resources */,
 				D25329611CC0D33600DDAD97 /* fonts in Resources */,
+				D2DCA7D81ECEC067009F9C59 /* competition in Resources */,
 				D25329731CC0D33600DDAD97 /* mjlobby in Resources */,
 				D25329631CC0D33600DDAD97 /* friend in Resources */,
 				D286A53F1DD30E46001369C1 /* wanjiaqun in Resources */,

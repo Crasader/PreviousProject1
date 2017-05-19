@@ -26,7 +26,7 @@ bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::strin
     if(roomId ==  CompetitionRoomId::Shanghai_High||roomId ==  CompetitionRoomId::Hongzhong_High){
         auto image1 = Sprite::create("mjlobby/competition_2_1.png");
         room_1->setNormalImage(image1);
-        auto image2 = Sprite::create("mjlobby/competition_2_1.png");
+        auto image2 = Sprite::create("mjlobby/competition_2_2.png");
         room_1->setSelectedImage(image2);
     }
     room_1->setTag(roomId);
