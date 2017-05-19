@@ -368,6 +368,8 @@
 		D2DCA7D41ECE826A009F9C59 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */; };
 		D2DCA7D71ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
 		D2DCA7D81ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
+		D2DCA7DB1ECEC25B009F9C59 /* CompetitonLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D91ECEC25B009F9C59 /* CompetitonLayer.cpp */; };
+		D2DCA7DC1ECEC25B009F9C59 /* CompetitonLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D91ECEC25B009F9C59 /* CompetitonLayer.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -774,6 +776,8 @@
 		D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonItem.cpp; sourceTree = "<group>"; };
 		D2DCA7D21ECE826A009F9C59 /* CompetitonItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonItem.hpp; sourceTree = "<group>"; };
 		D2DCA7D61ECEC067009F9C59 /* competition */ = {isa = PBXFileReference; lastKnownFileType = folder; path = competition; sourceTree = "<group>"; };
+		D2DCA7D91ECEC25B009F9C59 /* CompetitonLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonLayer.cpp; sourceTree = "<group>"; };
+		D2DCA7DA1ECEC25B009F9C59 /* CompetitonLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonLayer.hpp; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1866,6 +1870,8 @@
 				D2DAE75E1ECBE82A008B20FF /* CompetitionQueue.hpp */,
 				D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */,
 				D2DCA7D21ECE826A009F9C59 /* CompetitonItem.hpp */,
+				D2DCA7D91ECEC25B009F9C59 /* CompetitonLayer.cpp */,
+				D2DCA7DA1ECEC25B009F9C59 /* CompetitonLayer.hpp */,
 			);
 			path = competition;
 			sourceTree = "<group>";
@@ -2280,6 +2286,7 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D252FB661E7FA5EC00937322 /* ScrollTextEx.cpp in Sources */,
+				D2DCA7DB1ECEC25B009F9C59 /* CompetitonLayer.cpp in Sources */,
 				D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
 				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D252FBB81E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
@@ -2412,6 +2419,7 @@
 				D252FBBD1E7FA5EC00937322 /* ChargeGold.cpp in Sources */,
 				D252FB511E7FA5EC00937322 /* Loading.cpp in Sources */,
 				D299F8CC1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
+				D2DCA7DC1ECEC25B009F9C59 /* CompetitonLayer.cpp in Sources */,
 				D252FBA51E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */,
 				D252FB471E7FA5EC00937322 /* HeadImageDialog.cpp in Sources */,
 				D252FB591E7FA5EC00937322 /* GameData.cpp in Sources */,

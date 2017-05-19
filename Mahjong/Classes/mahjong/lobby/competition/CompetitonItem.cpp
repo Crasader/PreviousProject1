@@ -7,10 +7,11 @@
 //
 
 #include "mahjong/lobby/competition/CompetitonItem.hpp"
+#include "mahjong/lobby/competition/CompetitonLayer.hpp"
 
-CompetitonItem* CompetitonItem::create(CompetitionRoomId roomId,std::string haufei,std::string fangka){
+CompetitonItem* CompetitonItem::create(CompetitionRoomId roomId,std::string haufei,std::string fangka,std::string rule){
     CompetitonItem* cell = new CompetitonItem();
-    if(cell && cell->init(roomId,haufei,fangka)){
+    if(cell && cell->init(roomId,haufei,fangka,rule)){
         cell -> autorelease();
         return cell;
     }
@@ -18,10 +19,14 @@ CompetitonItem* CompetitonItem::create(CompetitionRoomId roomId,std::string hauf
     return NULL;
 }
 
-bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::string fangka){
+bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::string fangka,std::string rule){
     if(!Sprite::init()){
         return false;
     }
+    setRoomId(roomId);
+    setFangka(fangka);
+    setHuaFei(haufei);
+    setRule(rule);
     auto room_1 = MenuItemImage::create("mjlobby/competition_1_1.png", "mjlobby/competition_1_2.png", CC_CALLBACK_1(CompetitonItem::joinCompetition, this));
     if(roomId ==  CompetitionRoomId::Shanghai_High||roomId ==  CompetitionRoomId::Hongzhong_High){
         auto image1 = Sprite::create("mjlobby/competition_2_1.png");
@@ -79,6 +84,8 @@ bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::strin
 }
 
 void CompetitonItem::joinCompetition(Ref* ref){
-
-
+    CompetitonLayer* lay = CompetitonLayer::create();
+    lay->initView(getRoomId(),getHuaFei(),getFangka(),getRule());
+    getParent()->addChild(lay,5);
+    
 }

@@ -16,10 +16,14 @@ USING_NS_CC;
 
 class CompetitonItem : public Sprite{
 public:
-    static CompetitonItem* create(CompetitionRoomId roomId,std::string haufei,std::string fangka);
-    virtual bool init(CompetitionRoomId roomId,std::string haufei,std::string fangka);
+    static CompetitonItem* create(CompetitionRoomId roomId,std::string haufei,std::string fangka,std::string rule);
+    virtual bool init(CompetitionRoomId roomId,std::string haufei,std::string fangka,std::string rule);
 private:
     void joinCompetition(Ref* ref);
+    CC_SYNTHESIZE(CompetitionRoomId, roomId, RoomId);
+    CC_SYNTHESIZE(std::string, huaFei, HuaFei);
+    CC_SYNTHESIZE(std::string, fangka, Fangka);
+    CC_SYNTHESIZE(std::string, rule, Rule);
 };
 
 #endif /* CompetitonItem_hpp */

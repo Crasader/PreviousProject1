@@ -983,14 +983,13 @@ void LobbyScene::addEventListener(){
     roomListRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
         RoomListData* data = static_cast<RoomListData*>(event->getUserData());
         RoomListData newData = *data;
+        for (int i=0; i<newData.matchList.size();i++) {
+            CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
+            CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
+            com->setPosition(240+(i%2)*400,420-180*(i/2));
+            addChild(com);
+        }
         if(data->rooms.size()>0 && getChildByTag(1298) == NULL){
-            
-            for (int i=0; i<newData.matchList.size();i++) {
-                CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
-                CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka);
-                com->setPosition(240+(i%2)*400,420-180*(i/2));
-                addChild(com);
-            }
             GAMEDATA::getInstance()->setRoomList(newData);
             GoldRoomPlate* plate = GoldRoomPlate::create(newData);
             plate->setTag(1298);

@@ -258,6 +258,7 @@ struct CompetitionRoom{
     std::string fangka;
     std::string roomId;
     std::string prize;
+    std::string rule;
 };
 
 struct RoomListData
