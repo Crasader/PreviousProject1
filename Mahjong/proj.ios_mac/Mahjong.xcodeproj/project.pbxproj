@@ -364,6 +364,8 @@
 		D2DB5E7A1E7917000073ABD8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E791E7917000073ABD8 /* AddressBook.framework */; };
 		D2DB5E7C1E7917270073ABD8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */; };
 		D2DB5E7E1E7917490073ABD8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */; };
+		D2DCA7D31ECE826A009F9C59 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */; };
+		D2DCA7D41ECE826A009F9C59 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -767,6 +769,8 @@
 		D2DB5E791E7917000073ABD8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonItem.cpp; sourceTree = "<group>"; };
+		D2DCA7D21ECE826A009F9C59 /* CompetitonItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonItem.hpp; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1856,6 +1860,8 @@
 			children = (
 				D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */,
 				D2DAE75E1ECBE82A008B20FF /* CompetitionQueue.hpp */,
+				D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */,
+				D2DCA7D21ECE826A009F9C59 /* CompetitonItem.hpp */,
 			);
 			path = competition;
 			sourceTree = "<group>";
@@ -2280,6 +2286,7 @@
 				D252FC4F1E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
 				D2B1D9181E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */,
 				D252FBB01E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
+				D2DCA7D31ECE826A009F9C59 /* CompetitonItem.cpp in Sources */,
 				D252FB521E7FA5EC00937322 /* GameFeedDialog.cpp in Sources */,
 				D252FB621E7FA5EC00937322 /* HeadImage.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
@@ -2356,6 +2363,7 @@
 				D252FBBF1E7FA5EC00937322 /* GoldNotEnoughDialog.cpp in Sources */,
 				D27F06001E94BDF90085438A /* MahjongView.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				D2DCA7D41ECE826A009F9C59 /* CompetitonItem.cpp in Sources */,
 				D252FB9F1E7FA5EC00937322 /* DailyPride.cpp in Sources */,
 				D2B1D91F1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */,
 				D252FBA71E7FA5EC00937322 /* GoldRoomPlate.cpp in Sources */,

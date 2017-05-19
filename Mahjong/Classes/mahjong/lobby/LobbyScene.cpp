@@ -5,6 +5,7 @@
 #include "mahjong/lobby/friend/dialog/RoomFullDialog.hpp"
 #include "mahjong/lobby/friend/FriendRoom.h"
 #include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
+#include "mahjong/lobby/competition/CompetitonItem.hpp"
 #include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
 #include "mahjong/lobby/EnterRoomDialog.hpp"
 #include "mahjong/lobby/notice/NoticeDialog.hpp"
@@ -46,7 +47,6 @@ bool LobbyScene::init()
     drawSceneTop();
     drawSceneMid();
     drawSceneBot();
-    showLobbyAnim();
     return true;
 }
 
@@ -54,11 +54,6 @@ bool LobbyScene::init()
 void LobbyScene::signUpdate(float dt){
     
     if(GAMEDATA::getInstance()->getShowProtected()){
-//        if(NULL == getChildByTag(2000)){
-//            LostNetwork2* net = LostNetwork2::create();
-//            net->setTag(2000);
-//            addChild(net,200);
-//        }
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
     }
@@ -231,6 +226,36 @@ void LobbyScene::drawSceneTop(){
     chargLequan->setPosition(770, 685);
     addChild(chargLequan);
     
+    //huafei
+    auto huafei_bg = Sprite::create("mjlobby/huafei_bg.png");
+    //    huafei_bg->setTag(901);
+    huafei_bg->setPosition(900, 685);
+    addChild(huafei_bg);
+    auto huafei_icon = Sprite::create("mjlobby/huafei_icon.png");
+    //    huafei_icon->setTag(902);
+    huafei_icon->setPosition(840, 685);
+    addChild(huafei_icon);
+    haufeiNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),"Arial",24);
+    haufeiNum->setColor(Color3B(242,227,75));
+    haufeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    haufeiNum->setPosition(910, 685);
+    addChild(haufeiNum);
+    auto haufei_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
+    auto chargHuaFei = Menu::create(haufei_btn, NULL);
+    //    chargHuaFei->setTag(903);
+    chargHuaFei->setPosition(970, 685);
+    addChild(chargHuaFei);
+    
+    auto btn_0 = MenuItemImage::create("mjlobby/sm_btn_1.png", "mjlobby/sm_btn_2.png", CC_CALLBACK_0(LobbyScene::showShiMing, this));
+    auto btn_1 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
+    auto btn_2 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
+    auto gameMenu = Menu::create(btn_0,btn_1,btn_2, NULL);
+    gameMenu->alignItemsHorizontallyWithPadding(5);
+    gameMenu->setPosition(1150, 675);
+    addChild(gameMenu);
+    
+    
+    
     //支付审核专用
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     gold_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
@@ -246,9 +271,7 @@ void LobbyScene::drawSceneTop(){
 }
 
 void LobbyScene::drawSceneMid(){
-    auto gameTitle = Sprite::create("mjlobby/game_icon.png");
-    gameTitle->setPosition(1070, 640);
-    this->addChild(gameTitle);
+    
     
     auto sharefriend = MenuItemImage::create("mjlobby/red_wallet_1.png", "mjlobby/red_wallet_2.png",
                                              CC_CALLBACK_0(LobbyScene::showRedWallet, this));
@@ -273,27 +296,6 @@ void LobbyScene::drawSceneMid(){
         firstMenu->setVisible(false);
         ganTanhao->setVisible(false);
     }
-    //房间按钮
-    auto openRoom = MenuItemImage::create("mjlobby/open_room_image.png","mjlobby/open_room_image.png",CC_CALLBACK_0(LobbyScene::openRoom, this));
-    auto opmneu = Menu::create(openRoom,NULL);
-    opmneu->setPosition(260,360);
-    addChild(opmneu);
-    auto joinRooom = MenuItemImage::create("mjlobby/join_room_image.png","mjlobby/join_room_image.png",CC_CALLBACK_0(LobbyScene::joinRoom, this));
-    auto joimenu = Menu::create(joinRooom,NULL);
-    joimenu->setPosition(700,360);
-    addChild(joimenu);
-    auto openBtn = MenuItemImage::create("mjlobby/open_room_btn_img_1.png", "mjlobby/open_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
-    if(atoi(GAMEDATA::getInstance()->getPrivateGameNum().c_str())>0||GAMEDATA::getInstance()->getFangZhuId() == UserData::getInstance()->getPoxiaoId()){
-        Sprite* frame = Sprite::create("mjlobby/go_to_friend_room_1.png");
-        openBtn->setNormalImage(frame);
-        Sprite* frame2 = Sprite::create("mjlobby/go_to_friend_room_2.png");
-        openBtn->setSelectedImage(frame2);
-    }
-    auto joinBtn = MenuItemImage::create("mjlobby/join_room_btn_img_1.png", "mjlobby/join_room_btn_img_2.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
-    auto roomMenu = Menu::create(openBtn,joinBtn,NULL);
-    roomMenu->alignItemsHorizontallyWithPadding(130);
-    roomMenu->setPosition(485,190);
-    addChild(roomMenu);
     
     //跑马灯
     ScrollTextEx* scroll = ScrollTextEx::create();
@@ -302,31 +304,45 @@ void LobbyScene::drawSceneMid(){
     scroll->setPosition(600,600);
     addChild(scroll,2);
     
+    
+    
+    
+    
 }
 
 void LobbyScene::drawSceneBot(){
-    auto bot_bg = Sprite::create("mjlobby/lobby_bottom_bg.png");
-    bot_bg->setPosition(955,48);
-    addChild(bot_bg);
+    auto bottomBg = Sprite::create("mjlobby/open_room_bg_bot.png");
+    bottomBg->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+    bottomBg->setPosition(640,0);
+    addChild(bottomBg);
     
-    auto btn_0 = MenuItemImage::create("mjlobby/sm_btn_1.png", "mjlobby/sm_btn_2.png", CC_CALLBACK_0(LobbyScene::showShiMing, this));
-    auto btn_1 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
-    auto btn_2 = MenuItemImage::create("mjlobby/task_btn_1.png", "mjlobby/task_btn_2.png", CC_CALLBACK_0(LobbyScene::showDayTask, this));
-    auto btn_3 = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_2.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
-    auto btn_4 = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_2.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
-    auto gameMenu = Menu::create(btn_0,btn_1,btn_2,btn_3, btn_4, NULL);
-    gameMenu->alignItemsHorizontallyWithPadding(45);
-    gameMenu->setPosition(870, 43);
+    auto btn_open = MenuItemImage::create("mjlobby/open_room_text.png", "mjlobby/open_room_text.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
+    auto btn_enter = MenuItemImage::create("mjlobby/enter_room_text.png", "mjlobby/enter_room_text.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
+    auto gameMenu = Menu::create(btn_open,btn_enter, NULL);
+    gameMenu->alignItemsHorizontallyWithPadding(40);
+    gameMenu->setPosition(640, 70);
     addChild(gameMenu);
-    auto openRoom = MenuItemImage::create("mjlobby/gold_room_btn_1.png", "mjlobby/gold_room_btn_2.png", CC_CALLBACK_0(LobbyScene::showGoldRoomPad, this));
-    auto openMenu = Menu::create(openRoom,NULL);
-    openMenu->setPosition(1203,67);
-    openMenu->setTag(6656);
-    addChild(openMenu);
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    //支付审核
-    openMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
-#endif
+    
+    auto bill = Sprite::create("mjlobby/btn_bill_bg.png");
+    bill->setPosition(262, 60);
+    bill->setFlippedX(true);
+    addChild(bill);
+    
+    auto btn_bill = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_1.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
+    auto billMenu = Menu::create(btn_bill, NULL);
+    
+    billMenu->setPosition(255, 60);
+    addChild(billMenu);
+    
+    auto setting = Sprite::create("mjlobby/btn_bill_bg.png");
+    setting->setPosition(1020, 60);
+    addChild(setting);
+    
+    auto btn_setting = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_1.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
+    auto settingMenu = Menu::create(btn_setting, NULL);
+    
+    settingMenu->setPosition(1025, 60);
+    addChild(settingMenu);
 }
 
 //刷新显示的用户信息
@@ -480,8 +496,8 @@ void LobbyScene::chargeGold(){
 
 void LobbyScene::chargeFangka(){
     Audio::getInstance()->playSoundClick();
-//    InviteCodeLayer* lay = InviteCodeLayer::create();
-//    addChild(lay,6);
+    //    InviteCodeLayer* lay = InviteCodeLayer::create();
+    //    addChild(lay,6);
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
     if(UserData::getInstance()->isWeixinPayOpen()){
         if(!UserData::getInstance()->isInviteCodeBind()){
@@ -972,6 +988,13 @@ void LobbyScene::addEventListener(){
         RoomListData* data = static_cast<RoomListData*>(event->getUserData());
         RoomListData newData = *data;
         if(data->rooms.size()>0 && getChildByTag(1298) == NULL){
+            
+            for (int i=0; i<newData.matchList.size();i++) {
+                CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
+                CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka);
+                com->setPosition(240+(i%2)*400,420-180*(i/2));
+                addChild(com);
+            }
             GAMEDATA::getInstance()->setRoomList(newData);
             GoldRoomPlate* plate = GoldRoomPlate::create(newData);
             plate->setTag(1298);

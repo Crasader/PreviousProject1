@@ -33,46 +33,36 @@ bool GoldRoomButton::init(int roomid, int base, int hua){
     addChild(roomSelect);
     
     auto imag = Sprite::create(getImageByRoomId(roomid));
-    imag->setPosition(-60,20);
+    imag->setPosition(-65,20);
     addChild(imag);
     
-    auto huaText = Sprite::create("mjlobby/gold_hua.png");
-    huaText->setPosition(110,-25);
-    addChild(huaText);
+    auto roomtext = Label::createWithSystemFont("(上海敲麻)", "arial", 20);
+    roomtext->setColor(Color3B(211,232,255));
+    roomtext->setPosition(65,20);
+    addChild(roomtext);
     
     
-    auto huaNum = LabelAtlas::create(StringUtils::format("%d",hua), "mjlobby/gold_fen_num.png", 13, 20, '0');
-    huaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    huaNum->setPosition(95,-25);
-    addChild(huaNum);
-    
-    if(hua>10000){
-        hua = hua/10000;
-        huaNum->setString(StringUtils::format("%d",hua));
-        auto wan =  Sprite::create("mjlobby/gold_wan.png");
-        wan->setPosition(85,-25);
-        addChild(wan);
-        huaNum->setPosition(70,-25);
-    }
-    
-    
-    auto diText = Sprite::create("mjlobby/gold_di.png");
-    diText->setPosition(20,-25);
-    addChild(diText);
-    
-    auto diNum = LabelAtlas::create(StringUtils::format("%d",hua), "mjlobby/gold_fen_num.png", 13, 20, '0');
-    diNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    diNum->setPosition(5,-25);
+    auto diNum = LabelAtlas::create(StringUtils::format("%d",base), "mjlobby/gold_room_num_label.png", 20, 26, '0');
+    diNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    diNum->setPosition(-140,-25);
     addChild(diNum);
     
-    if(base>10000){
-        base = base/10000;
-        diNum->setString(StringUtils::format("%d",base));
-        auto wan =  Sprite::create("mjlobby/gold_wan.png");
-        wan->setPosition(-5,-25);
-        addChild(wan);
-        diNum->setPosition(-20,-25);
-    }
+    auto diText = Sprite::create("mjlobby/gold_di.png");
+    diText->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    diText->setPosition(diNum->getPositionX()+diNum->getContentSize().width-5,-25);
+    addChild(diText);
+    
+    
+    
+    auto huaNum = LabelAtlas::create(StringUtils::format("%d",hua), "mjlobby/gold_room_num_label.png", 20, 26, '0');
+    huaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    huaNum->setPosition(diText->getPositionX()+diText->getContentSize().width+20,-25);
+    addChild(huaNum);
+    
+    auto huaText = Sprite::create("mjlobby/gold_hua.png");
+    huaText->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    huaText->setPosition(huaNum->getPositionX()+huaNum->getContentSize().width-5,-25);
+    addChild(huaText);
     
     
     return true;
@@ -90,12 +80,5 @@ void GoldRoomButton::openGoldRoom(Ref* ref){
 
 
 std::string GoldRoomButton::getImageByRoomId(int roomId){
-    if(roomId == ROOM_1){
-        return "mjlobby/gold_room_one_1.png";
-    }else if(roomId == ROOM_2){
-        return "mjlobby/gold_room_one_2.png";
-    }else if(roomId == ROOM_3){
-        return "mjlobby/gold_room_one_3.png";
-    }
-    return "";
+    return "mjlobby/gold_room_text.png";
 }

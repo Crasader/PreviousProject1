@@ -29,6 +29,7 @@ private:
 	Label* goldNum;
 	Label* fangkaNum;
 	Label* lequanNum;
+    Label* haufeiNum;
     Menu* firstMenu;
     Sprite* ganTanhao;
     

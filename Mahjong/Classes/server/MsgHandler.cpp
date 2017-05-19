@@ -562,10 +562,10 @@ void MsgHandler::roomListResp(std::string msg){
         for (int j=0 ; j<match.Capacity(); j++){
             CompetitionRoom room;
             const rapidjson::Value &temp = match[j];
-            room.roomId = temp["id"].GetInt();
-            room.name = temp["name"].GetInt();
-            room.fangka = temp["fangka"].GetInt();
-            room.prize = temp["prize"].GetInt();
+            room.roomId = temp["id"].GetString();
+            room.name = temp["name"].GetString();
+            room.fangka = temp["fangka"].GetString();
+            room.prize = temp["prize"].GetString();
             roomlist.matchList.push_back(room);
         }
     }

@@ -51,6 +51,13 @@ enum LeziType{
     type22100 // 2/2 100勒子
 };
 
+enum CompetitionRoomId{
+    Shanghai_Normal = 1,
+    Shanghai_High,
+    Hongzhong_Normal,
+    Hongzhong_High,
+};
+
 //麻将游戏状态
 enum MahjongState{
     heroChi,//吃牌
