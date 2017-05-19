@@ -112,6 +112,7 @@ public:
     CC_SYNTHESIZE(bool, showDissolveDialog, ShowDissolveDialog);
     CC_SYNTHESIZE(bool, certification, Certification);
     CC_SYNTHESIZE(bool, logingGame, LogingGame);
+    CC_SYNTHESIZE(bool, isCompetitionQueue, IsCompetitionQueue);
     CC_SYNTHESIZE(string, fangzhuLequan, FangzhuLequan);
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, wanJiaQun, WanJiaQun);//私人房间游戏局数

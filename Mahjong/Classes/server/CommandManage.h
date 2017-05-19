@@ -76,6 +76,8 @@ public:
     std::string getHZQuitRoomCommand();
     /** ------------------------------红中麻将协议结束 ------------------- **/
     std::string sendInviteCodeCommand(std::string code);
+    /** ---------------------- 比赛协议 ---------------------------**/
+    std::string sendJoinCompetiotnCommand(std::string competitionId);
 private:
 	CommandManage();
 	static CommandManage* _instance;

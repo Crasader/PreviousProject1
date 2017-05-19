@@ -168,6 +168,12 @@
 #define MSGCODE_FANG1_RESPONSE  2056//开房进房前回复{code:2056,poxiaoId:poxiaoId}
 #define MSGCODE_FANGZHU_OUT  2057//开房进房前回复{code:2057,poxiaoId:poxiaoId,seatId:1}
 
+#define MSGCODE_MATCH_SIGN_REQUEST  2058//上海麻将比赛报名请求{code:2058,poxiaoId:poxiaoId,id:"1"}
+#define MSGCODE_MATCH_SIGN_RESPONSE  2059//上海麻将比赛报名回复{code:2059,poxiaoId:poxiaoId,result:0} result0失败 1成功
+#define MSGCODE_MATCH_OUT_REQUEST  2060//上海麻将比赛开始通知{code:2060,poxiaoId:poxiaoId}
+#define MSGCODE_MATCH_OUT_RESPONSE  2061//上海麻将比赛退赛回复{code:2061,poxiaoId:poxiaoId,result:0} result0失败 1成功
+#define MSGCODE_MATCH_START_NOTIFY  2062//上海麻将比赛开始通知{code:2062,poxiaoId:poxiaoId}
+
 #define MSGCODE_FUPAN_PLAYER_NOTIFY  10000//复盘玩家数据
 
 /**
@@ -311,4 +317,6 @@
 #define MSG_HZ_PLAYER_GANG "MSG_HZ_PLAYER_GANG"
 #define MSG_HZ_HERO_CONTINUE_RESP "MSG_HZ_HERO_CONTINUE_RESP"
 #define MSG_INVITE_CODE_RESP "MSG_INVITE_CODE_RESP"
+#define MSG_JOIN_COMPETITION_RESP "MSG_JOIN_COMPETITION_RESP"
+#define MSG_COMPETITION_QUEUE_RESP "MSG_COMPETITION_QUEUE_RESP"
 #endif

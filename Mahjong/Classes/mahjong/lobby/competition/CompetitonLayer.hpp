@@ -16,10 +16,13 @@ USING_NS_CC;
 class CompetitonLayer : public Layer{
 public:
     virtual bool init();
+    void onEnter();
+    void onExit();
     void initView(CompetitionRoomId roomId,std::string huafei,std::string fangka,std::string rule);
     CREATE_FUNC(CompetitonLayer);
 private:
+    EventListenerCustom* joinResp;
     void closeView();
-
+    void joinCompetiton(Ref* ref);
 };
 #endif /* CompetitonLayer_hpp */

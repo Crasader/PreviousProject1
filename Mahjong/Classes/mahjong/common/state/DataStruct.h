@@ -52,7 +52,8 @@ enum LeziType{
 };
 
 enum CompetitionRoomId{
-    Shanghai_Normal = 1,
+    Competition_Error,
+    Shanghai_Normal,
     Shanghai_High,
     Hongzhong_Normal,
     Hongzhong_High,
@@ -648,6 +649,7 @@ struct MahjongFaPaiData{
     std::string dice;
     std::string ting;
     std::string gang;
+    std::string matchId;
     ReplaceJongVec  mjReplaceVec;
     PlayerCpgtData mjTingData;
 };
@@ -660,5 +662,10 @@ struct GameActivityData{
 
 struct GameGongGao{
     std::vector<GameActivityData> gongGaoData;
+};
+
+struct JoinCompetitionData{
+    int result;
+    std::string roomId;
 };
 #endif

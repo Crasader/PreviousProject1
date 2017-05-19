@@ -36,7 +36,7 @@ void GAMEDATA::init(){
     setScore(0);
     setHuangfan("0");
     setKaibao("0");
-//    setHongZhongHuState(false);
+    setIsCompetitionQueue(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

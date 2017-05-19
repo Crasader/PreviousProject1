@@ -7,8 +7,9 @@
 //
 
 #include "mahjong/lobby/competition/CompetitonLayer.hpp"
-
-
+#include "mahjong/common/loading/Loading.h"
+#include"mahjong/gameview/MjGameScene.h"
+#include "server/NetworkManage.h"
 
 bool CompetitonLayer::init(){
     
@@ -34,7 +35,6 @@ bool CompetitonLayer::init(){
 
 
 void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::string fangka,std::string rule){
-    
     auto title = Sprite::create("competition/shanghai_text.png");
     if(roomId == CompetitionRoomId::Hongzhong_High||roomId == Hongzhong_Normal){
         title->setTexture("competition/hongzhong_text.png");
@@ -70,11 +70,80 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     huatext->setPosition(prideNum->getPositionX()+prideNum->getContentSize().width,465);
     addChild(huatext);
     
-    auto time = Label::createWithSystemFont(<#const std::string &text#>, <#const std::string &font#>, <#float fontSize#>)
+    auto time = Label::createWithSystemFont("比赛时间:", "arial", 28);
+    time->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    time->setPosition(845,400);
+    addChild(time);
     
+    auto time2 = Label::createWithSystemFont("满4人开赛", "arial", 28);
+    time2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    time2->setPosition(860,400);
+    addChild(time2);
+    
+    auto fee = Label::createWithSystemFont("报 名 费:", "arial", 28);
+    fee->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fee->setPosition(845,345);
+    addChild(fee);
+    
+    auto fee2 = Label::createWithSystemFont(StringUtils::format("%s张房卡",fangka.c_str()), "arial", 28);
+    fee2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    fee2->setPosition(860,345);
+    addChild(fee2);
+    
+    
+    auto difen = Label::createWithSystemFont("房间底分:", "arial", 28);
+    difen->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    difen->setPosition(845,285);
+    addChild(difen);
+    
+    auto difen2 = Label::createWithSystemFont("1/1无勒子", "arial", 28);
+    difen2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    difen2->setPosition(860,285);
+    addChild(difen2);
+    
+    auto joinBtn = MenuItemImage::create("competition/competition_btn_1.png", "competition/competition_btn_2.png", CC_CALLBACK_1(CompetitonLayer::joinCompetiton,this));
+    joinBtn->setTag((int)roomId);
+    auto joinMenu = Menu::create(joinBtn, NULL);
+    joinMenu->setPosition(640, 110);
+    addChild(joinMenu);
+    
+}
+
+void CompetitonLayer::onEnter(){
+    Layer::onEnter();
+    joinResp = EventListenerCustom::create(MSG_JOIN_COMPETITION_RESP, [=](EventCustom* event){
+        JoinCompetitionData* result = static_cast<JoinCompetitionData*>(event->getUserData());
+        JoinCompetitionData newData = *result;
+        if(newData.result == 1){
+            if(atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_High||atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_Normal){
+                GAMEDATA::getInstance()->setIsCompetitionQueue(true);
+                GAMEDATA::getInstance()->setGameType(1);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            }else{
+                GAMEDATA::getInstance()->setIsCompetitionQueue(true);
+                GAMEDATA::getInstance()->setGameType(3);
+                Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            }
+        }else{
+            removeFromParent();
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(joinResp, 1);
+}
+
+
+void CompetitonLayer::onExit(){
+    Layer::onExit();
 }
 
 
 void CompetitonLayer::closeView(){
     removeFromParent();
+}
+
+void CompetitonLayer::joinCompetiton(Ref* ref){
+    Loading* lod = Loading::create();
+    addChild(lod);
+    MenuItemImage* tem =  (MenuItemImage*) ref;
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%d",tem->getTag())));
 }

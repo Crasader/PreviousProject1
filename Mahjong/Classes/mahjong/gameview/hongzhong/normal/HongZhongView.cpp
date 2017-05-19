@@ -30,6 +30,7 @@
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
+#include "mahjong/lobby/competition/CompetitionQueue.hpp"
 
 bool HongZhongView::init(){
     if (!Layer::init())
@@ -122,6 +123,11 @@ void HongZhongView::loadView(){
         hzma->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         difen->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+hzma->getContentSize().width,160);
         difen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    }
+    
+    if(GAMEDATA::getInstance()->getIsCompetitionQueue()){
+        CompetitionQueue* queue = CompetitionQueue::create();
+        addChild(queue);
     }
 }
 

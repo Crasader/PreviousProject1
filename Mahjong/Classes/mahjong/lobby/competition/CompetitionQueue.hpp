@@ -13,8 +13,8 @@ USING_NS_CC;
 
 class CompetitionQueue : public Layer{
 public:
-    static CompetitionQueue create();
     bool init();
+    CREATE_FUNC(CompetitionQueue);
 private:
     
 };

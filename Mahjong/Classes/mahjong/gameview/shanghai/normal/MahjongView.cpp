@@ -21,6 +21,7 @@
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
+#include "mahjong/lobby/competition/CompetitionQueue.hpp"
 
 bool MahjongView::init(){
     if (!Layer::init())
@@ -131,6 +132,12 @@ void MahjongView::loadView(){
         lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
         emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    }
+    
+    if(GAMEDATA::getInstance()->getIsCompetitionQueue()){
+        CompetitionQueue* queue = CompetitionQueue::create();
+        queue->setTag(9981);
+        addChild(queue);
     }
 }
 
@@ -1216,6 +1223,12 @@ void MahjongView::onEnter(){
         }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
+        if(atoi(newMsgData.matchId.c_str()) == CompetitionRoomId::Shanghai_Normal|| atoi(newMsgData.matchId.c_str()) ==  CompetitionRoomId::Shanghai_High){
+            //TODO 比赛开始绘制假人
+            if(NULL != getChildByTag(9981)){
+                getChildByTag(9981)->removeFromParent();
+            }
+        }
         GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
         GAMEDATA::getInstance()->setHuangfan(newMsgData.huangfan);
         GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);

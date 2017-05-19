@@ -432,6 +432,14 @@ void MsgHandler::distribute(int code, std::string msg){
             handleInviteCodeResp(msg);
         }
             break;
+        case MSGCODE_MATCH_SIGN_RESPONSE:{
+            handleJoinCompetitionResp(msg);
+        }
+            break;
+        case MSGCODE_MATCH_START_NOTIFY:{
+            handleCompetiotnQueueResp(msg);
+        }
+            break;
         default:
             break;
     }
@@ -1459,6 +1467,10 @@ void MsgHandler::getHeroJongs(std::string msg){
             }
             tingData.heroHu.push_back(huPaiData);
         }
+    }
+    
+    if(_mDoc.HasMember("matchid")){
+        faPaiData.matchId = _mDoc["matchid"].GetString();
     }
     faPaiData.mjTingData = tingData;
     postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
@@ -3363,5 +3375,28 @@ void MsgHandler::handleInviteCodeResp(std::string msg){
     const rapidjson::Value &result = _mDoc["result"];
     char* buf = const_cast<char*>(result.GetString());
     postNotifyMessage(MSG_INVITE_CODE_RESP, buf);
+}
+
+void MsgHandler::handleJoinCompetitionResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    JoinCompetitionData data;
+    const rapidjson::Value &result = _mDoc["result"];
+    data.result =  result.GetInt();
+    const rapidjson::Value &roomId = _mDoc["id"];
+    data.roomId =  roomId.GetString();
+    postNotifyMessage(MSG_JOIN_COMPETITION_RESP, &data);
+}
+
+void MsgHandler::handleCompetiotnQueueResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["id"];
+    char* buf = const_cast<char*>(result.GetString());
+    postNotifyMessage(MSG_COMPETITION_QUEUE_RESP, buf);
 }
 

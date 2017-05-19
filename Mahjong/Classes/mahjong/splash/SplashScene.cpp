@@ -92,7 +92,7 @@ void SplashScene::loginByWechat(){
     //oTIvfwnO4yCaBasG7qJedNbiGuG0  ziji
     //oTIvfwmTH71Oqx_XRJTPB4p2TjkU 魂斗罗
     //oTIvfwu03GkOg7nFWtqZPhqveKKM
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwqK9YwoAi1dANUQjhlhOAZ4","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwm1C14AtD2bnuoQrXtGWzhY","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CallIOSMethod::getInstance()->doWechatLogin();
@@ -548,6 +548,20 @@ void SplashScene::onEnter(){
 #endif
         }
     });
+    
+    competitionQueueListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_COMPETITION_QUEUE_RESP, [=](EventCustom* event){
+        std::string roomId = static_cast<char*>(event->getUserData());
+        if(atoi(roomId.c_str()) == CompetitionRoomId::Shanghai_High||atoi(roomId.c_str()) == CompetitionRoomId::Shanghai_Normal){
+            GAMEDATA::getInstance()->setIsCompetitionQueue(true);
+            GAMEDATA::getInstance()->setGameType(1);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else{
+            GAMEDATA::getInstance()->setIsCompetitionQueue(true);
+            GAMEDATA::getInstance()->setGameType(3);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }
+    });
+
     
 }
 
