@@ -30,7 +30,7 @@
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
-#include "mahjong/lobby/competition/CompetitionQueue.hpp"
+#include "mahjong/common/competition/CompetitionQueue.hpp"
 
 bool HongZhongView::init(){
     if (!Layer::init())

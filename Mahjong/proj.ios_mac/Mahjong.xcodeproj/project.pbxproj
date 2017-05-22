@@ -315,6 +315,12 @@
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
 		D29E85991E320EB100AFACEE /* fupan in Resources */ = {isa = PBXBuildFile; fileRef = D29E85981E320EB100AFACEE /* fupan */; };
 		D29E859A1E320EB100AFACEE /* fupan in Resources */ = {isa = PBXBuildFile; fileRef = D29E85981E320EB100AFACEE /* fupan */; };
+		D2A713AC1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713A61ED2B830000EE572 /* CompetitionQueue.cpp */; };
+		D2A713AD1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713A61ED2B830000EE572 /* CompetitionQueue.cpp */; };
+		D2A713AE1ED2B830000EE572 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713A81ED2B830000EE572 /* CompetitonItem.cpp */; };
+		D2A713AF1ED2B830000EE572 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713A81ED2B830000EE572 /* CompetitonItem.cpp */; };
+		D2A713B01ED2B830000EE572 /* CompetitonLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713AA1ED2B830000EE572 /* CompetitonLayer.cpp */; };
+		D2A713B11ED2B830000EE572 /* CompetitonLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713AA1ED2B830000EE572 /* CompetitonLayer.cpp */; };
 		D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
 		D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
 		D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */; };
@@ -352,8 +358,6 @@
 		D2C3FA5C1D9909EC00CFC80E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */; };
 		D2D894A41EBB217D008C1E5D /* InviteCodeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */; };
 		D2D894A51EBB217D008C1E5D /* InviteCodeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */; };
-		D2DAE75F1ECBE82A008B20FF /* CompetitionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */; };
-		D2DAE7601ECBE82A008B20FF /* CompetitionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */; };
 		D2DB5DEB1E790B290073ABD8 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DEA1E790B290073ABD8 /* libc++.1.tbd */; };
 		D2DB5DED1E790B440073ABD8 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DEC1E790B440073ABD8 /* libresolv.9.tbd */; };
 		D2DB5DF31E790B9E0073ABD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DF21E790B9E0073ABD8 /* libz.tbd */; };
@@ -364,12 +368,8 @@
 		D2DB5E7A1E7917000073ABD8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E791E7917000073ABD8 /* AddressBook.framework */; };
 		D2DB5E7C1E7917270073ABD8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */; };
 		D2DB5E7E1E7917490073ABD8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */; };
-		D2DCA7D31ECE826A009F9C59 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */; };
-		D2DCA7D41ECE826A009F9C59 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */; };
 		D2DCA7D71ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
 		D2DCA7D81ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
-		D2DCA7DB1ECEC25B009F9C59 /* CompetitonLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D91ECEC25B009F9C59 /* CompetitonLayer.cpp */; };
-		D2DCA7DC1ECEC25B009F9C59 /* CompetitonLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DCA7D91ECEC25B009F9C59 /* CompetitonLayer.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -721,6 +721,12 @@
 		D299F8D71E27640000D10B0D /* SocketDataBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketDataBack.h; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D29E85981E320EB100AFACEE /* fupan */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fupan; sourceTree = "<group>"; };
+		D2A713A61ED2B830000EE572 /* CompetitionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitionQueue.cpp; sourceTree = "<group>"; };
+		D2A713A71ED2B830000EE572 /* CompetitionQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitionQueue.hpp; sourceTree = "<group>"; };
+		D2A713A81ED2B830000EE572 /* CompetitonItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonItem.cpp; sourceTree = "<group>"; };
+		D2A713A91ED2B830000EE572 /* CompetitonItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonItem.hpp; sourceTree = "<group>"; };
+		D2A713AA1ED2B830000EE572 /* CompetitonLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonLayer.cpp; sourceTree = "<group>"; };
+		D2A713AB1ED2B830000EE572 /* CompetitonLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonLayer.hpp; sourceTree = "<group>"; };
 		D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManage.cpp; sourceTree = "<group>"; };
 		D2A86CE71E01286C00B67F86 /* NetworkManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
 		D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -759,8 +765,6 @@
 		D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
 		D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InviteCodeLayer.cpp; sourceTree = "<group>"; };
 		D2D894A31EBB217D008C1E5D /* InviteCodeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InviteCodeLayer.hpp; sourceTree = "<group>"; };
-		D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitionQueue.cpp; sourceTree = "<group>"; };
-		D2DAE75E1ECBE82A008B20FF /* CompetitionQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitionQueue.hpp; sourceTree = "<group>"; };
 		D2DB5DEA1E790B290073ABD8 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
 		D2DB5DEC1E790B440073ABD8 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libresolv.9.tbd; sourceTree = DEVELOPER_DIR; };
 		D2DB5DEE1E790B840073ABD8 /* libycommon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libycommon.a; path = ../yim/lib/ios/libycommon.a; sourceTree = "<group>"; };
@@ -773,11 +777,7 @@
 		D2DB5E791E7917000073ABD8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonItem.cpp; sourceTree = "<group>"; };
-		D2DCA7D21ECE826A009F9C59 /* CompetitonItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonItem.hpp; sourceTree = "<group>"; };
 		D2DCA7D61ECEC067009F9C59 /* competition */ = {isa = PBXFileReference; lastKnownFileType = folder; path = competition; sourceTree = "<group>"; };
-		D2DCA7D91ECEC25B009F9C59 /* CompetitonLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonLayer.cpp; sourceTree = "<group>"; };
-		D2DCA7DA1ECEC25B009F9C59 /* CompetitonLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonLayer.hpp; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1096,6 +1096,7 @@
 		D252FA2E1E7FA5EC00937322 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				D2A713A51ED2B830000EE572 /* competition */,
 				D252FA2F1E7FA5EC00937322 /* audio */,
 				D252FA321E7FA5EC00937322 /* bill */,
 				D252FA3A1E7FA5EC00937322 /* chat */,
@@ -1304,7 +1305,6 @@
 		D252FACD1E7FA5EC00937322 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
-				D2DAE75C1ECBE82A008B20FF /* competition */,
 				D2D894A11EBB2163008C1E5D /* invitecode */,
 				D252FACE1E7FA5EC00937322 /* daily */,
 				D252FAD61E7FA5EC00937322 /* EnterRoomDialog.cpp */,
@@ -1747,6 +1747,19 @@
 			path = native;
 			sourceTree = "<group>";
 		};
+		D2A713A51ED2B830000EE572 /* competition */ = {
+			isa = PBXGroup;
+			children = (
+				D2A713A61ED2B830000EE572 /* CompetitionQueue.cpp */,
+				D2A713A71ED2B830000EE572 /* CompetitionQueue.hpp */,
+				D2A713A81ED2B830000EE572 /* CompetitonItem.cpp */,
+				D2A713A91ED2B830000EE572 /* CompetitonItem.hpp */,
+				D2A713AA1ED2B830000EE572 /* CompetitonLayer.cpp */,
+				D2A713AB1ED2B830000EE572 /* CompetitonLayer.hpp */,
+			);
+			path = competition;
+			sourceTree = "<group>";
+		};
 		D2B1A85A1CCDF0F300A20896 /* server */ = {
 			isa = PBXGroup;
 			children = (
@@ -1861,19 +1874,6 @@
 				D2D894A31EBB217D008C1E5D /* InviteCodeLayer.hpp */,
 			);
 			path = invitecode;
-			sourceTree = "<group>";
-		};
-		D2DAE75C1ECBE82A008B20FF /* competition */ = {
-			isa = PBXGroup;
-			children = (
-				D2DAE75D1ECBE82A008B20FF /* CompetitionQueue.cpp */,
-				D2DAE75E1ECBE82A008B20FF /* CompetitionQueue.hpp */,
-				D2DCA7D11ECE826A009F9C59 /* CompetitonItem.cpp */,
-				D2DCA7D21ECE826A009F9C59 /* CompetitonItem.hpp */,
-				D2DCA7D91ECEC25B009F9C59 /* CompetitonLayer.cpp */,
-				D2DCA7DA1ECEC25B009F9C59 /* CompetitonLayer.hpp */,
-			);
-			path = competition;
 			sourceTree = "<group>";
 		};
 		D2F05F281D8E2B22006E5A4C /* image */ = {
@@ -2286,20 +2286,20 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D252FB661E7FA5EC00937322 /* ScrollTextEx.cpp in Sources */,
-				D2DCA7DB1ECEC25B009F9C59 /* CompetitonLayer.cpp in Sources */,
+				D2A713B01ED2B830000EE572 /* CompetitonLayer.cpp in Sources */,
 				D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
 				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D252FBB81E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
 				D252FC0A1E7FABC600937322 /* RoomFullDialog.cpp in Sources */,
 				D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D252FB9E1E7FA5EC00937322 /* DailyPride.cpp in Sources */,
-				D2DAE75F1ECBE82A008B20FF /* CompetitionQueue.cpp in Sources */,
+				D2A713AC1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */,
 				D252FC0C1E7FABC600937322 /* RoomIdErrorDialog.cpp in Sources */,
 				D252FBAC1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FC4F1E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
 				D2B1D9181E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */,
 				D252FBB01E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
-				D2DCA7D31ECE826A009F9C59 /* CompetitonItem.cpp in Sources */,
+				D2A713AE1ED2B830000EE572 /* CompetitonItem.cpp in Sources */,
 				D252FB521E7FA5EC00937322 /* GameFeedDialog.cpp in Sources */,
 				D252FB621E7FA5EC00937322 /* HeadImage.cpp in Sources */,
 				D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */,
@@ -2376,7 +2376,7 @@
 				D252FBBF1E7FA5EC00937322 /* GoldNotEnoughDialog.cpp in Sources */,
 				D27F06001E94BDF90085438A /* MahjongView.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
-				D2DCA7D41ECE826A009F9C59 /* CompetitonItem.cpp in Sources */,
+				D2A713AF1ED2B830000EE572 /* CompetitonItem.cpp in Sources */,
 				D252FB9F1E7FA5EC00937322 /* DailyPride.cpp in Sources */,
 				D2B1D91F1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */,
 				D252FBA71E7FA5EC00937322 /* GoldRoomPlate.cpp in Sources */,
@@ -2400,7 +2400,7 @@
 				D252FC4E1E7FABE900937322 /* OutFogAnim.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
 				D27F06021E94BDF90085438A /* ReviewGame.cpp in Sources */,
-				D2DAE7601ECBE82A008B20FF /* CompetitionQueue.cpp in Sources */,
+				D2A713AD1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */,
 				D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D252FC601E7FABE900937322 /* PlayerOpposite.cpp in Sources */,
 				D27F06091E94BFE50085438A /* HongZhongView.cpp in Sources */,
@@ -2419,7 +2419,7 @@
 				D252FBBD1E7FA5EC00937322 /* ChargeGold.cpp in Sources */,
 				D252FB511E7FA5EC00937322 /* Loading.cpp in Sources */,
 				D299F8CC1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
-				D2DCA7DC1ECEC25B009F9C59 /* CompetitonLayer.cpp in Sources */,
+				D2A713B11ED2B830000EE572 /* CompetitonLayer.cpp in Sources */,
 				D252FBA51E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */,
 				D252FB471E7FA5EC00937322 /* HeadImageDialog.cpp in Sources */,
 				D252FB591E7FA5EC00937322 /* GameData.cpp in Sources */,

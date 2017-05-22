@@ -21,7 +21,7 @@
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
-#include "mahjong/lobby/competition/CompetitionQueue.hpp"
+#include "mahjong/common/competition/CompetitionQueue.hpp"
 
 bool MahjongView::init(){
     if (!Layer::init())

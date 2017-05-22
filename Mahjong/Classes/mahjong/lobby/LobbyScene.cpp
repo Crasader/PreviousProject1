@@ -5,7 +5,7 @@
 #include "mahjong/lobby/friend/dialog/RoomFullDialog.hpp"
 #include "mahjong/lobby/friend/FriendRoom.h"
 #include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
-#include "mahjong/lobby/competition/CompetitonItem.hpp"
+#include "mahjong/common/competition/CompetitonItem.hpp"
 #include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
 #include "mahjong/lobby/EnterRoomDialog.hpp"
 #include "mahjong/lobby/notice/NoticeDialog.hpp"

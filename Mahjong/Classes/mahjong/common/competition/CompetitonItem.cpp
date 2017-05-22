@@ -6,8 +6,8 @@
 //
 //
 
-#include "mahjong/lobby/competition/CompetitonItem.hpp"
-#include "mahjong/lobby/competition/CompetitonLayer.hpp"
+#include "mahjong/common/competition/CompetitonItem.hpp"
+#include "mahjong/common/competition/CompetitonLayer.hpp"
 
 CompetitonItem* CompetitonItem::create(CompetitionRoomId roomId,std::string haufei,std::string fangka,std::string rule){
     CompetitonItem* cell = new CompetitonItem();

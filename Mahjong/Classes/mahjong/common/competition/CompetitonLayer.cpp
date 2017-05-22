@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/lobby/competition/CompetitonLayer.hpp"
+#include "mahjong/common/competition/CompetitonLayer.hpp"
 #include "mahjong/common/loading/Loading.h"
 #include"mahjong/gameview/MjGameScene.h"
 #include "server/NetworkManage.h"
