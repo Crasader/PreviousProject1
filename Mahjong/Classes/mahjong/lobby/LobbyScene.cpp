@@ -43,10 +43,12 @@ bool LobbyScene::init()
     }
     showDissolveDialog = false;
     initView();
+    showLobbyAnim();
     //add sprite to scene
     drawSceneTop();
     drawSceneMid();
     drawSceneBot();
+
     return true;
 }
 
@@ -352,36 +354,6 @@ void LobbyScene::updateHeroInfo(){
 }
 
 void LobbyScene::showLobbyAnim(){
-    //logo光效
-    auto logoLight = Sprite::create();
-    logoLight->setPosition(1070, 645);
-    addChild(logoLight);
-    auto animation = Animation::create();
-    for( int i=1;i<4;i++)
-    {
-        std::string imageName = StringUtils::format("mjlobby/lobby_logo_light_%d.png",i);
-        animation->addSpriteFrameWithFile(imageName);
-    }
-    // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(4.0f/ 24.0f);
-    animation->setRestoreOriginalFrame(true);
-    auto action = Animate::create(animation);
-    logoLight->runAction(Sequence::create(Repeat::create(Sequence::create(action,DelayTime::create(12.0f/24), NULL), CC_REPEAT_FOREVER), NULL));
-    //文字光效
-    auto logoText = Sprite::create();
-    logoText->setPosition(1070, 645);
-    addChild(logoText);
-    auto animation2 = Animation::create();
-    for( int j=1;j<5;j++)
-    {
-        std::string imageName = StringUtils::format("mjlobby/lobby_logo_text_%d.png",j);
-        animation2->addSpriteFrameWithFile(imageName);
-    }
-    // should last 1 seconds. And there are 24 frames.
-    animation2->setDelayPerUnit(3.0f / 24.0f);
-    animation2->setRestoreOriginalFrame(true);
-    auto action2 = Animate::create(animation2);
-    logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(24.0/24), NULL), CC_REPEAT_FOREVER), NULL));
     
     //光效
     auto lobbyLight_1 = Sprite::create("mjlobby/lobby_light_1.png");

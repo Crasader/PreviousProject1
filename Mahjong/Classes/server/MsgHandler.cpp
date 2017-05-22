@@ -3411,7 +3411,7 @@ void MsgHandler::handleCompetitionQuitResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["result"];
-    char* buf = const_cast<char*>(result.GetString());
+    char* buf = const_cast<char*>(StringUtils::format("%d",result.GetInt()).c_str());
     postNotifyMessage(MSG_QUIT_COMPETITON_RESP, buf);
 }
 

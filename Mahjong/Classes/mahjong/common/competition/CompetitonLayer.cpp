@@ -10,6 +10,7 @@
 #include "mahjong/common/loading/Loading.h"
 #include"mahjong/gameview/MjGameScene.h"
 #include "server/NetworkManage.h"
+#include "mahjong/common/competition/CompetitionResult.hpp"
 
 bool CompetitonLayer::init(){
     
@@ -142,8 +143,10 @@ void CompetitonLayer::closeView(){
 }
 
 void CompetitonLayer::joinCompetiton(Ref* ref){
-    Loading* lod = Loading::create();
-    addChild(lod);
-    MenuItemImage* tem =  (MenuItemImage*) ref;
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%d",tem->getTag())));
+    CompetitionResult* res = CompetitionResult::create();
+    addChild(res);
+//    Loading* lod = Loading::create();
+//    addChild(lod);
+//    MenuItemImage* tem =  (MenuItemImage*) ref;
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%d",tem->getTag())));
 }

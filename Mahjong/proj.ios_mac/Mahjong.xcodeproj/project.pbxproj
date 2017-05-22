@@ -321,6 +321,8 @@
 		D2A713AF1ED2B830000EE572 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713A81ED2B830000EE572 /* CompetitonItem.cpp */; };
 		D2A713B01ED2B830000EE572 /* CompetitonLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713AA1ED2B830000EE572 /* CompetitonLayer.cpp */; };
 		D2A713B11ED2B830000EE572 /* CompetitonLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713AA1ED2B830000EE572 /* CompetitonLayer.cpp */; };
+		D2A713B41ED2BCCF000EE572 /* CompetitionResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713B21ED2BCCF000EE572 /* CompetitionResult.cpp */; };
+		D2A713B51ED2BCCF000EE572 /* CompetitionResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713B21ED2BCCF000EE572 /* CompetitionResult.cpp */; };
 		D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
 		D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */; };
 		D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */; };
@@ -727,6 +729,8 @@
 		D2A713A91ED2B830000EE572 /* CompetitonItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonItem.hpp; sourceTree = "<group>"; };
 		D2A713AA1ED2B830000EE572 /* CompetitonLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonLayer.cpp; sourceTree = "<group>"; };
 		D2A713AB1ED2B830000EE572 /* CompetitonLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitonLayer.hpp; sourceTree = "<group>"; };
+		D2A713B21ED2BCCF000EE572 /* CompetitionResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitionResult.cpp; sourceTree = "<group>"; };
+		D2A713B31ED2BCCF000EE572 /* CompetitionResult.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitionResult.hpp; sourceTree = "<group>"; };
 		D2A86CE61E01286C00B67F86 /* NetworkManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManage.cpp; sourceTree = "<group>"; };
 		D2A86CE71E01286C00B67F86 /* NetworkManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
 		D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -1756,6 +1760,8 @@
 				D2A713A91ED2B830000EE572 /* CompetitonItem.hpp */,
 				D2A713AA1ED2B830000EE572 /* CompetitonLayer.cpp */,
 				D2A713AB1ED2B830000EE572 /* CompetitonLayer.hpp */,
+				D2A713B21ED2BCCF000EE572 /* CompetitionResult.cpp */,
+				D2A713B31ED2BCCF000EE572 /* CompetitionResult.hpp */,
 			);
 			path = competition;
 			sourceTree = "<group>";
@@ -2318,6 +2324,7 @@
 				D252FCAF1E7FB77F00937322 /* LoginByWechat.mm in Sources */,
 				D2FD5B581EA711510016FCCC /* wav.mm in Sources */,
 				D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
+				D2A713B41ED2BCCF000EE572 /* CompetitionResult.cpp in Sources */,
 				D252FB221E7FA5EC00937322 /* BillInfo.cpp in Sources */,
 				D252FBC41E7FA5EC00937322 /* ExchangePropCell.cpp in Sources */,
 				D252FCB31E7FB77F00937322 /* WXApiManager.mm in Sources */,
@@ -2362,6 +2369,7 @@
 				D252FC111E7FABC700937322 /* MahjongNumberKeypads.cpp in Sources */,
 				D252FC621E7FABE900937322 /* PlayerRight.cpp in Sources */,
 				D252FB4D1E7FA5EC00937322 /* UserInfo.cpp in Sources */,
+				D2A713B51ED2BCCF000EE572 /* CompetitionResult.cpp in Sources */,
 				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
 				D278ADCE1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
 				D252FB3B1E7FA5EC00937322 /* LostNetwork.cpp in Sources */,
