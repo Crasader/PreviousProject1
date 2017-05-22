@@ -95,5 +95,6 @@ private:
     void handleJoinCompetitionResp(std::string msg);
     void handleCompetiotnQueueResp(std::string msg);
     void handleCompetitionQuitResp(std::string msg);
+    void handleCompetitionStart(std::string msg);
 };
 #endif

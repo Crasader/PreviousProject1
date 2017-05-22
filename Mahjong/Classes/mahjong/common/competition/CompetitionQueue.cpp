@@ -100,6 +100,7 @@ void CompetitionQueue::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(quitResp, 1);
+    
 }
 
 

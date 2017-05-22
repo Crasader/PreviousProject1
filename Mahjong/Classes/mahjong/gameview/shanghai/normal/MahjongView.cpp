@@ -290,7 +290,6 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerOpposite->initPlayer(playerInfo);
             playerOpposite->setIsReady(playerInfo->getIsReady());
             addChild(playerOpposite,1);
-            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
 }
@@ -300,7 +299,6 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
 
 void MahjongView::addPlayer2Room(){
     vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-    //    checkPlayerIpRepetition();
     for (int i = 0; i < players.size(); i++){
         updatePlayerView(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), players.at(i)->getSeatId()), players.at(i));
     }
@@ -1114,6 +1112,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(fangZhuLeaveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(competitionStartNotify);
     
 }
 
@@ -1223,12 +1222,6 @@ void MahjongView::onEnter(){
         }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
-        if(atoi(newMsgData.matchId.c_str()) == CompetitionRoomId::Shanghai_Normal|| atoi(newMsgData.matchId.c_str()) ==  CompetitionRoomId::Shanghai_High){
-            //TODO 比赛开始绘制假人
-            if(NULL != getChildByTag(9981)){
-                getChildByTag(9981)->removeFromParent();
-            }
-        }
         GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
         GAMEDATA::getInstance()->setHuangfan(newMsgData.huangfan);
         GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
@@ -1470,7 +1463,6 @@ void MahjongView::onEnter(){
         HeroCpgRespData newCpgRespData = *cpgRespData;
         shmjHeroCpgtData.playCpgt.heroHu =  newCpgRespData.playCpgt.heroHu;
         shmjHeroCpgtData.playCpgt.ting = newCpgRespData.playCpgt.ting;
-//        newCpgRespData.playCpgt = shmjHeroCpgtData.playCpgt;
         int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newCpgRespData.playCpgt.sId);
         playerHero->hideCurrentBigJong();
         if(cpgRespData->result == 1||cpgRespData->result == 2){
@@ -1597,6 +1589,44 @@ void MahjongView::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
+    
+    competitionStartNotify = EventListenerCustom::create(MSG_COMPETITION_START_NOTIFY, [=](EventCustom* event){
+        //TODO 需要明确自己的座位号
+        for (int i = 0; i < 4; i++)
+        {
+            Player* info = new Player();
+            info->setSeatId(i);
+            info->setGold(0);
+            info->setDiamond(0);
+            info->setNickname("");
+            info->setPicture("gameview/head_image_3.png");
+            info->setGender("");
+            info->setScore(0);
+            info->setTicket(0);
+            info->setFangka(0);
+            info->setIP(0);
+            info->setIsReady(true);
+            info->setUmark(0);
+            GAMEDATA::getInstance()->addPlayersInfo(info);
+        }
+        addPlayer2Room();
+        if(NULL != getChildByTag(9981)){
+            getChildByTag(9981)->removeFromParent();
+        }
+        auto startSprite1 = Sprite::create("competition/competition_start_1.png");
+        startSprite1->setPosition(320,350);
+        startSprite1->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+            removeFromParent();
+        }), NULL));
+        addChild(startSprite1);
+        auto startSprite2 = Sprite::create("competition/competition_start_2.png");
+        startSprite2->setPosition(960,320);
+        startSprite2->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+            removeFromParent();
+        }), NULL));
+        addChild(startSprite2);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(competitionStartNotify, 1);
     
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
         string flag = static_cast<char*>(event->getUserData());

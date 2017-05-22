@@ -6415,22 +6415,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/mahjong/gameview/shanghai/normal/MahjongView.cpp"
-            timestampString = "516884119.902706"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1226"
-            endingLineNumber = "1226"
-            landmarkName = "MahjongView::onEnter()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/splash/SplashScene.cpp"
             timestampString = "516885217.668892"
             startingColumnNumber = "9223372036854775807"
