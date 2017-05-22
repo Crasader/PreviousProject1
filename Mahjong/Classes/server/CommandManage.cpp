@@ -649,6 +649,13 @@ std::string CommandManage::sendJoinCompetiotnCommand(std::string competitionId){
     return commandString(keyValue);
 }
 
+std::string CommandManage::sendQuitCompetitionCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MATCH_OUT_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

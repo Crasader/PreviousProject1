@@ -137,7 +137,7 @@ void MahjongView::loadView(){
     if(GAMEDATA::getInstance()->getIsCompetitionQueue()){
         CompetitionQueue* queue = CompetitionQueue::create();
         queue->setTag(9981);
-        addChild(queue);
+        addChild(queue,10);
     }
 }
 

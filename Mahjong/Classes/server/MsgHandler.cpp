@@ -440,6 +440,11 @@ void MsgHandler::distribute(int code, std::string msg){
             handleCompetiotnQueueResp(msg);
         }
             break;
+        case MSGCODE_MATCH_OUT_RESPONSE:
+        {
+            handleCompetitionQuitResp(msg);
+        }
+            break;
         default:
             break;
     }
@@ -3398,5 +3403,15 @@ void MsgHandler::handleCompetiotnQueueResp(std::string msg){
     const rapidjson::Value &result = _mDoc["id"];
     char* buf = const_cast<char*>(result.GetString());
     postNotifyMessage(MSG_COMPETITION_QUEUE_RESP, buf);
+}
+
+void MsgHandler::handleCompetitionQuitResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    char* buf = const_cast<char*>(result.GetString());
+    postNotifyMessage(MSG_QUIT_COMPETITON_RESP, buf);
 }
 
