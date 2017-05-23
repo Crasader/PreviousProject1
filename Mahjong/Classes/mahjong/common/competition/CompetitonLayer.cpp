@@ -144,6 +144,7 @@ void CompetitonLayer::closeView(){
 
 void CompetitonLayer::joinCompetiton(Ref* ref){
     CompetitionResult* res = CompetitionResult::create();
+    res->showCompetiotionResult("", "", "", "");
     addChild(res);
 //    Loading* lod = Loading::create();
 //    addChild(lod);

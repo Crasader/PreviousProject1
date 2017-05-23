@@ -22,7 +22,9 @@ public:
 //    void onExit();
     CREATE_FUNC(CompetitionResult);
 private:
-    
+    void share();
+    void quit();
+    void continueCompetition();
 };
 
 #endif /* CompetitionResult_hpp */

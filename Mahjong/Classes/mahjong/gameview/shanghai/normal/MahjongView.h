@@ -112,6 +112,5 @@ private:
     EventListenerCustom* coreLoginRespListener;
     EventListenerCustom* fangZhuLeaveListener;
     EventListenerCustom* networkBreakListener;
-    EventListenerCustom* competitionStartNotify;
 };
 #endif

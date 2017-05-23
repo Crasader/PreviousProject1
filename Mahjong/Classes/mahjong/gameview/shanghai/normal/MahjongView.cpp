@@ -178,7 +178,7 @@ void MahjongView::startGameAgain(){
     }else{
         GAMEDATA::getInstance()->setKaibao("0");
     }
-
+    
     if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
         GAMEDATA::getInstance()->setHuangfan("1");
     }else{
@@ -1112,7 +1112,6 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(fangZhuLeaveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(competitionStartNotify);
     
 }
 
@@ -1222,6 +1221,42 @@ void MahjongView::onEnter(){
         }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
+        if(newMsgData.matchId == "1" || newMsgData.matchId == "2"){
+            for (int i = 0; i < 4; i++)
+            {
+                Player* info = new Player();
+                info->setSeatId(i);
+                info->setGold(0);
+                info->setDiamond(0);
+                info->setNickname("");
+                info->setPicture("gameview/head_image_3.png");
+                info->setGender("");
+                info->setScore(0);
+                info->setTicket(0);
+                info->setFangka(0);
+                info->setIP(0);
+                info->setIsReady(true);
+                info->setUmark(0);
+                GAMEDATA::getInstance()->addPlayersInfo(info);
+            }
+            addPlayer2Room();
+            if(NULL != getChildByTag(9981)){
+                getChildByTag(9981)->removeFromParent();
+            }
+            auto startSprite1 = Sprite::create("competition/competition_start_1.png");
+            startSprite1->setPosition(320,350);
+            startSprite1->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                removeFromParent();
+            }), NULL));
+            addChild(startSprite1);
+            auto startSprite2 = Sprite::create("competition/competition_start_2.png");
+            startSprite2->setPosition(960,320);
+            startSprite2->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                removeFromParent();
+            }), NULL));
+            addChild(startSprite2);
+            
+        }
         GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
         GAMEDATA::getInstance()->setHuangfan(newMsgData.huangfan);
         GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
@@ -1589,44 +1624,6 @@ void MahjongView::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
-    
-    competitionStartNotify = EventListenerCustom::create(MSG_COMPETITION_START_NOTIFY, [=](EventCustom* event){
-        //TODO 需要明确自己的座位号
-        for (int i = 0; i < 4; i++)
-        {
-            Player* info = new Player();
-            info->setSeatId(i);
-            info->setGold(0);
-            info->setDiamond(0);
-            info->setNickname("");
-            info->setPicture("gameview/head_image_3.png");
-            info->setGender("");
-            info->setScore(0);
-            info->setTicket(0);
-            info->setFangka(0);
-            info->setIP(0);
-            info->setIsReady(true);
-            info->setUmark(0);
-            GAMEDATA::getInstance()->addPlayersInfo(info);
-        }
-        addPlayer2Room();
-        if(NULL != getChildByTag(9981)){
-            getChildByTag(9981)->removeFromParent();
-        }
-        auto startSprite1 = Sprite::create("competition/competition_start_1.png");
-        startSprite1->setPosition(320,350);
-        startSprite1->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
-            removeFromParent();
-        }), NULL));
-        addChild(startSprite1);
-        auto startSprite2 = Sprite::create("competition/competition_start_2.png");
-        startSprite2->setPosition(960,320);
-        startSprite2->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
-            removeFromParent();
-        }), NULL));
-        addChild(startSprite2);
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(competitionStartNotify, 1);
     
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
         string flag = static_cast<char*>(event->getUserData());
