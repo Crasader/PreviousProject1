@@ -164,9 +164,16 @@ void NormalResultLayer::showPlayerResluts(){
 void NormalResultLayer::showLayerBtn(){
     if(GAMEDATA::getInstance()->getNeedShowLastResult()){
         GAMEDATA::getInstance()->setNeedShowLastResult(false);
-        schedule([=](float dt){
-            Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(1)));
-        }, 0, 0, 5,"KillBill");
+               //TODO显示比赛
+        if(GAMEDATA::getInstance()->getIsCompetitionState()){
+            schedule([=](float dt){
+                Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(2)));
+            }, 0, 0, 5,"KillBill");
+        }else{
+            schedule([=](float dt){
+                Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(1)));
+            }, 0, 0, 5,"KillBill");
+        }
     }else{
         auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));
         

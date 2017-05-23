@@ -23,6 +23,7 @@
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/gameview/MjGameScene.h"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
+#include "mahjong/common/competition/CompetitionResult.hpp"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 
@@ -34,6 +35,9 @@ Scene* ResultScene::createScene(int type)
         if(type == 0){
             NormalResultLayer* layer = NormalResultLayer::create();
             scene->addChild(layer);
+        }else if(type == 2){
+            CompetitionResult* res = CompetitionResult::create();
+            scene->addChild(res);
         }else{
             SpecialResultLayer* layer = SpecialResultLayer::create();
             scene->addChild(layer);
@@ -42,6 +46,9 @@ Scene* ResultScene::createScene(int type)
         if(type == 0){
             HZNormalResultLayer* layer = HZNormalResultLayer::create();
             scene->addChild(layer);
+        }else if(type == 2){
+            CompetitionResult* res = CompetitionResult::create();
+            scene->addChild(res);
         }else{
             HZSpecialResultLayer* layer = HZSpecialResultLayer::create();
             scene->addChild(layer);

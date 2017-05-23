@@ -146,7 +146,27 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     auto setp05 = ScaleTo::create(0.4, 1.0f);
     rankNum->runAction(Sequence::create(setp03,setp04,setp05,NULL));
     
-    auto jifen1 = Label::createWithSystemFont("(", "arial", <#float fontSize#>);
+    auto kuohao =Sprite::create("competition/kuohao.png");
+    kuohao->setPosition(720,360);
+    kuohao->setOpacity(0);
+    addChild(kuohao);
+    auto icon = Sprite::create("mjitem/jifen_icon.png");
+    addChild(icon);
+    icon->setPosition(680,360);
+    icon->setScale(0.6f);
+    icon->setOpacity(0);
+    auto jifen = LabelAtlas::create(":1000","competition/score_num_1.png",22,30,'0');
+    jifen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    jifen->setPosition(690,360);
+    jifen->setOpacity(0);
+    addChild(jifen);
+    auto setp06 = DelayTime::create(1.8f);
+    auto setp07_1 = Spawn::create(MoveTo::create(0.3,Point(840,360)),FadeTo::create(0.3, 255) ,NULL);
+    auto setp07_2 = Spawn::create(MoveTo::create(0.3,Point(800,360)),FadeTo::create(0.3, 255) ,NULL);
+    auto setp07_3 = Spawn::create(MoveTo::create(0.3,Point(810,360)),FadeTo::create(0.3, 255) ,NULL);
+    kuohao->runAction(Sequence::create(setp06,setp07_1, NULL));
+    icon->runAction(Sequence::create(setp06,setp07_2, NULL));
+    jifen->runAction(Sequence::create(setp06,setp07_3, NULL));
     
     auto light = Sprite::create("competition/light_bg.png");
     addChild(light);
@@ -170,6 +190,21 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     auto setp9_2 = CallFunc::create([=](){prideText->setVisible(true);});
     auto setp9_3 = Spawn::create(FadeTo::create(0.3f,255),MoveTo::create(0.3f,Point(640,290)),NULL);
     prideText->runAction(Sequence::create(setp9_1,setp9_2,setp9_3,NULL));
+    
+    auto huaPride = Sprite::create();
+    if(type == "2"||type == "4"){
+        huaPride->setTexture("competition/36_huafei.png");
+    }else{
+        huaPride->setTexture("competition/8_huafei.png");
+
+    }
+    huaPride->setScale(0.24);
+    huaPride->setOpacity(0);
+    huaPride->setPosition(640,210);
+    auto setp0_1 = DelayTime::create(2.3f);
+    auto setp0_2 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
+    auto setp0_3 = ScaleTo::create(0.2f,1.2f);
+    huaPride->runAction(Sequence::create(setp0_1,setp0_2,setp0_3, NULL));
     
     auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(CompetitionResult::quit,this));
     

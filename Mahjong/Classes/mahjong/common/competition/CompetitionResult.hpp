@@ -18,8 +18,6 @@ class CompetitionResult : public Layer{
 public:
     virtual bool init();
     void showCompetiotionResult(std::string type,std::string rank,std::string pride,std::string score);
-//    void onEnter();
-//    void onExit();
     CREATE_FUNC(CompetitionResult);
 private:
     void share();
