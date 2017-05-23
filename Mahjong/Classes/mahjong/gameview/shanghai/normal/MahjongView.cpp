@@ -1234,9 +1234,9 @@ void MahjongView::onEnter(){
                 info->setScore(0);
                 info->setTicket(0);
                 info->setFangka(0);
-                info->setIP(0);
+                info->setIP("");
                 info->setIsReady(true);
-                info->setUmark(0);
+                info->setUmark("");
                 GAMEDATA::getInstance()->addPlayersInfo(info);
             }
             addPlayer2Room();
