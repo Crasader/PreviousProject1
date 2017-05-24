@@ -171,62 +171,62 @@ void DailyPride::beginPride(Ref* ref){
     }
 }
 
-std::string DailyPride::getImageNameById(int id){
-    std::string dayImage = "bignum/zero_1.png";
-    switch (id)
-    {
-        case 0:
-            dayImage = "bignum/zero_1.png";
-            
-            break;
-        case 1:
-            
-            dayImage = "bignum/one_1.png";
-            
-            break;
-        case 2:
-            
-            dayImage = "bignum/two_1.png";
-            
-            break;
-        case 3:
-            
-            dayImage = "bignum/three_1.png";
-            
-            break;
-        case 4:
-            
-            dayImage = "bignum/four_1.png";
-            
-            break;
-        case 5:
-            
-            dayImage = "bignum/five_1.png";
-            
-            break;
-        case 6:
-            
-            dayImage = "bignum/six_1.png";
-            
-            break;
-        case 7:
-            
-            dayImage = "bignum/seven_1.png";
-            
-            break;
-        case 8:
-            
-            dayImage = "bignum/eight_1.png";
-            
-            break;
-        case 9:
-            
-            dayImage = "bignum/nine_1.png";
-            
-            break;
-    }
-    return dayImage;
-}
+//std::string DailyPride::getImageNameById(int id){
+//    std::string dayImage = "bignum/zero_1.png";
+//    switch (id)
+//    {
+//        case 0:
+//            dayImage = "bignum/zero_1.png";
+//            
+//            break;
+//        case 1:
+//            
+//            dayImage = "bignum/one_1.png";
+//            
+//            break;
+//        case 2:
+//            
+//            dayImage = "bignum/two_1.png";
+//            
+//            break;
+//        case 3:
+//            
+//            dayImage = "bignum/three_1.png";
+//            
+//            break;
+//        case 4:
+//            
+//            dayImage = "bignum/four_1.png";
+//            
+//            break;
+//        case 5:
+//            
+//            dayImage = "bignum/five_1.png";
+//            
+//            break;
+//        case 6:
+//            
+//            dayImage = "bignum/six_1.png";
+//            
+//            break;
+//        case 7:
+//            
+//            dayImage = "bignum/seven_1.png";
+//            
+//            break;
+//        case 8:
+//            
+//            dayImage = "bignum/eight_1.png";
+//            
+//            break;
+//        case 9:
+//            
+//            dayImage = "bignum/nine_1.png";
+//            
+//            break;
+//    }
+//    return dayImage;
+//}
 
 Point DailyPride::getPosByRotation(Point pos, float r, float a){
     return Point(pos.x + cos(CC_DEGREES_TO_RADIANS(a))*r, pos.y + sin(CC_DEGREES_TO_RADIANS(a))*r);

@@ -19,6 +19,6 @@ private:
 	Sprite* m_turnBg;
 	void showDailyPrideLayer();
 	void beginPride(Ref* ref);
-	std::string getImageNameById(int id);
+//	std::string getImageNameById(int id);
 	Point getPosByRotation(Point pos,float r,float a);//
 };
