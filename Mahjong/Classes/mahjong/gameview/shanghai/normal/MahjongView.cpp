@@ -136,7 +136,7 @@ void MahjongView::loadView(){
     
     if(GAMEDATA::getInstance()->getIsCompetitionQueue()){
         CompetitionQueue* queue = CompetitionQueue::create();
-        queue->setTag(9981);
+        queue->setTag(9982);
         addChild(queue,10);
     }
 }
@@ -1221,41 +1221,42 @@ void MahjongView::onEnter(){
         }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
-        if(newMsgData.matchId == "1" || newMsgData.matchId == "2"){
-            for (int i = 0; i < 4; i++)
-            {
-                Player* info = new Player();
-                info->setSeatId(i);
-                info->setGold(0);
-                info->setDiamond(0);
-                info->setNickname("");
-                info->setPicture("gameview/head_image_3.png");
-                info->setGender("");
-                info->setScore(0);
-                info->setTicket(0);
-                info->setFangka(0);
-                info->setIP("");
-                info->setIsReady(true);
-                info->setUmark("");
-                GAMEDATA::getInstance()->addPlayersInfo(info);
+        if(GAMEDATA::getInstance()->getIsCompetitionState()){
+            if(GAMEDATA::getInstance()->getPlayersInfo().size()==0){
+                for (int i = 0; i < 4; i++)
+                {
+                    Player* info = new Player();
+                    info->setSeatId(i+1);
+                    info->setGold(0);
+                    info->setDiamond(0);
+                    info->setNickname("");
+                    info->setPicture("gameview/head_image_3.png");
+                    info->setGender("");
+                    info->setScore(0);
+                    info->setTicket(0);
+                    info->setFangka(0);
+                    info->setIP("");
+                    info->setIsReady(true);
+                    info->setUmark("");
+                    GAMEDATA::getInstance()->addPlayersInfo(info);
+                }
+                addPlayer2Room();
+                if(NULL != getChildByTag(9982)){
+                    getChildByTag(9982)->removeFromParent();
+                }
+                auto startSprite1 = Sprite::create("competition/competition_start_1.png");
+                startSprite1->setPosition(320,350);
+                startSprite1->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                    startSprite1->removeFromParent();
+                }), NULL));
+                addChild(startSprite1);
+                auto startSprite2 = Sprite::create("competition/competition_start_2.png");
+                startSprite2->setPosition(960,320);
+                startSprite2->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                    startSprite2->removeFromParent();
+                }), NULL));
+                addChild(startSprite2);
             }
-            addPlayer2Room();
-            if(NULL != getChildByTag(9981)){
-                getChildByTag(9981)->removeFromParent();
-            }
-            auto startSprite1 = Sprite::create("competition/competition_start_1.png");
-            startSprite1->setPosition(320,350);
-            startSprite1->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
-                removeFromParent();
-            }), NULL));
-            addChild(startSprite1);
-            auto startSprite2 = Sprite::create("competition/competition_start_2.png");
-            startSprite2->setPosition(960,320);
-            startSprite2->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
-                removeFromParent();
-            }), NULL));
-            addChild(startSprite2);
-            
         }
         GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
         GAMEDATA::getInstance()->setHuangfan(newMsgData.huangfan);
@@ -1275,7 +1276,8 @@ void MahjongView::onEnter(){
             playerOpposite->setIsReady(false);
         if(NULL != playerLeft)
             playerLeft->setIsReady(false);
-        playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
+        if(!GAMEDATA::getInstance()->getIsCompetitionState())
+            playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
         guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;

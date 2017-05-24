@@ -1419,7 +1419,9 @@ void MsgHandler::getHeroJongs(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    
+    if(_mDoc.HasMember("seatId")){
+        GAMEDATA::getInstance()->setHeroSeatId(atoi(_mDoc["seatId"].GetString()));
+    }
     MahjongFaPaiData faPaiData;
     faPaiData.heroPokers = _mDoc["poker"].GetString();
     faPaiData.dice = _mDoc["dice"].GetString();
@@ -1480,6 +1482,7 @@ void MsgHandler::getHeroJongs(std::string msg){
     
     if(_mDoc.HasMember("matchid")){
         faPaiData.matchId = _mDoc["matchid"].GetString();
+        GAMEDATA::getInstance()->setIsCompetitionState(true);
     }
     faPaiData.mjTingData = tingData;
     postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
@@ -3394,8 +3397,10 @@ void MsgHandler::handleJoinCompetitionResp(std::string msg){
     JoinCompetitionData data;
     const rapidjson::Value &result = _mDoc["result"];
     data.result =  result.GetInt();
-    const rapidjson::Value &roomId = _mDoc["id"];
-    data.roomId =  roomId.GetString();
+    if(_mDoc.HasMember("id")){
+        const rapidjson::Value &roomId = _mDoc["id"];
+        data.roomId =  roomId.GetString();
+    }
     postNotifyMessage(MSG_JOIN_COMPETITION_RESP, &data);
 }
 
