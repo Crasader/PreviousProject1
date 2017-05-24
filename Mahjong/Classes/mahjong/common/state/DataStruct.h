@@ -147,6 +147,11 @@ struct PlayerTurnData
     PlayerCpgtData cpgData;
 };
 
+struct CompetitionResultInfo{
+    std::string matchid;
+    std::string pride;
+    std::string paiming;
+};
 
 struct GameResultData
 {

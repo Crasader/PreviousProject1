@@ -138,6 +138,7 @@ void MahjongView::loadView(){
         CompetitionQueue* queue = CompetitionQueue::create();
         queue->setTag(9982);
         addChild(queue,10);
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
     }
 }
 
@@ -685,19 +686,31 @@ void MahjongView::recoverGame(){
             PlayerGameData player = data.players.at(i);
             Player* info = new Player();
             info->setSeatId(player.seatId);
-            info->setGold(player.gold);
-            info->setDiamond(player.diamond);
-            info->setNickname(player.nickname);
-            info->setPicture(player.pic);
-            info->setGender(player.gender);
             info->setScore(player.jifen);
-            info->setTicket(player.lequan);
-            info->setLockDiamond(player.bangzuan);
             info->setPoxiaoId(player.poxiaoId);
-            info->setFangka(player.fangka);
-            info->setIP(player.ip);
-            info->setIsReady(true);
-            info->setUmark(player.umark);
+             info->setIsReady(true);
+            if(GAMEDATA::getInstance()->getIsCompetitionState()){
+                info->setGold(0);
+                info->setDiamond(0);
+                info->setNickname("");
+                info->setPicture("gameview/head_image_3.png");
+                info->setGender("");
+                info->setTicket(0);
+                info->setFangka(0);
+                info->setIP("");
+                info->setUmark("");
+            }else{
+                info->setGold(player.gold);
+                info->setDiamond(player.diamond);
+                info->setNickname(player.nickname);
+                info->setPicture(player.pic);
+                info->setGender(player.gender);
+                info->setTicket(player.lequan);
+                info->setLockDiamond(player.bangzuan);
+                info->setFangka(player.fangka);
+                info->setIP(player.ip);
+                info->setUmark(player.umark);
+            }
             GAMEDATA::getInstance()->addPlayersInfo(info);
             recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
         }

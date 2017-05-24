@@ -1863,6 +1863,14 @@ void MsgHandler::gameResultNotify(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("matchid")){
+        CompetitionResultInfo competitionData;
+        competitionData.matchid = _mDoc["poker"].GetString();
+        competitionData.pride = _mDoc["prize"].GetString();
+        competitionData.paiming = _mDoc["paiming"].GetString();
+        GAMEDATA::getInstance()->setCompetitionResultData(competitionData);
+    }
+    
     if(_mDoc.HasMember("poker")){
         GAMEDATA::getInstance()->setDiaopao(_mDoc["poker"].GetString());
     }else{
@@ -2004,6 +2012,9 @@ void MsgHandler::playerConnectAgain(std::string msg){
     if(_mDoc.HasMember("poxiaoId")){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
+    }
+    if(_mDoc.HasMember("matchid")){
+        GAMEDATA::getInstance()->setIsCompetitionState(true);
     }
     if(_mDoc.HasMember("umark")){
         const rapidjson::Value &umark = _mDoc["umark"];

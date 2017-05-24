@@ -37,7 +37,7 @@ Scene* ResultScene::createScene(int type)
             scene->addChild(layer);
         }else if(type == 2){
             CompetitionResult* res = CompetitionResult::create();
-            res->showCompetiotionResult("1", "1", "1", "1");
+            res->showCompetiotionResult(GAMEDATA::getInstance()->getCompetitionResultData().matchid, GAMEDATA::getInstance()->getCompetitionResultData().paiming, GAMEDATA::getInstance()->getCompetitionResultData().pride, "100");
             scene->addChild(res);
         }else{
             SpecialResultLayer* layer = SpecialResultLayer::create();
@@ -49,7 +49,7 @@ Scene* ResultScene::createScene(int type)
             scene->addChild(layer);
         }else if(type == 2){
             CompetitionResult* res = CompetitionResult::create();
-            res->showCompetiotionResult("1", "1", "1", "1");
+            res->showCompetiotionResult(GAMEDATA::getInstance()->getCompetitionResultData().matchid, GAMEDATA::getInstance()->getCompetitionResultData().paiming, GAMEDATA::getInstance()->getCompetitionResultData().pride,"1");
             scene->addChild(res);
         }else{
             HZSpecialResultLayer* layer = HZSpecialResultLayer::create();
