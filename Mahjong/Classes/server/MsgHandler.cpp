@@ -3413,6 +3413,10 @@ void MsgHandler::handleJoinCompetitionResp(std::string msg){
         const rapidjson::Value &roomId = _mDoc["id"];
         data.roomId =  roomId.GetString();
     }
+    if(_mDoc.HasMember("wait")){
+        const rapidjson::Value &wait = _mDoc["wait"];
+        data.text =  wait.GetString();
+    }
     postNotifyMessage(MSG_JOIN_COMPETITION_RESP, &data);
 }
 
@@ -3422,6 +3426,10 @@ void MsgHandler::handleCompetiotnQueueResp(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     const rapidjson::Value &result = _mDoc["id"];
+    GAMEDATA::getInstance()->setCompetitionId(result.GetString());
+    if(_mDoc.HasMember("wait")){
+        GAMEDATA::getInstance()->setCompetitionText(_mDoc["wait"].GetString());
+    }
     char* buf = const_cast<char*>(result.GetString());
     postNotifyMessage(MSG_COMPETITION_QUEUE_RESP, buf);
 }

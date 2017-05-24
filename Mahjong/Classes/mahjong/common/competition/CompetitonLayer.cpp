@@ -135,14 +135,15 @@ void CompetitonLayer::onEnter(){
         if(newData.result == 1){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             GAMEDATA::getInstance()->setCompetitionId(newData.roomId);
+            GAMEDATA::getInstance()->setCompetitionText(newData.text);
             if(atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_High||atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_Normal){
                 GAMEDATA::getInstance()->setIsCompetitionQueue(true);
                 GAMEDATA::getInstance()->setGameType(1);
-                Director::getInstance()->replaceScene(TransitionFade::create(0.2, MjGameScene::create()));
+                Director::getInstance()->replaceScene(TransitionFade::create(0.1, MjGameScene::create()));
             }else{
                 GAMEDATA::getInstance()->setIsCompetitionQueue(true);
                 GAMEDATA::getInstance()->setGameType(3);
-                Director::getInstance()->replaceScene(TransitionFade::create(0.2, MjGameScene::create()));
+                Director::getInstance()->replaceScene(TransitionFade::create(0.1, MjGameScene::create()));
             }
         }else{
             removeFromParent();

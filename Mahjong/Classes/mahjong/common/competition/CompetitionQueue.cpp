@@ -55,7 +55,7 @@ bool CompetitionQueue::init(){
     addChild(wait);
     
     
-    auto info = Label::createWithSystemFont("每一场4轮结束后,第一名获得10元话费", "arial", 30);
+    auto info = Label::createWithSystemFont(GAMEDATA::getInstance()->getCompetitionText(), "arial", 30);
     info->setAnchorPoint(Point::ANCHOR_MIDDLE);
     info->setColor(Color3B(153,226,220));
     info->setPosition(640,210);

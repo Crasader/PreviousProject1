@@ -672,5 +672,6 @@ struct GameGongGao{
 struct JoinCompetitionData{
     int result;
     std::string roomId;
+    std::string text;
 };
 #endif
