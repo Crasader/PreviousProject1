@@ -136,7 +136,7 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     auto setp7_3 = FadeTo::create(0.1, 255);
     rankText->runAction(Sequence::create(setp7_1,setp7_2,setp7_3,NULL));
     
-    auto rankNum = LabelAtlas::create(rank, "competition/rank_num.png", 94, 124, '0');
+    auto rankNum = LabelAtlas::create(rank, "competition/rank_num.png", 98, 124, '0');
     rankNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     rankNum->setScale(1.54);
     rankNum->setVisible(false);
@@ -191,13 +191,7 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     auto setp9_3 = Spawn::create(FadeTo::create(0.3f,255),MoveTo::create(0.3f,Point(640,290)),NULL);
     prideText->runAction(Sequence::create(setp9_1,setp9_2,setp9_3,NULL));
     
-    auto huaPride = Sprite::create();
-    if(type == "2"||type == "4"){
-        huaPride->setTexture("competition/36_huafei.png");
-    }else{
-        huaPride->setTexture("competition/8_huafei.png");
-
-    }
+    auto huaPride = Sprite::create("competition/pride_quan_bg.png");
     huaPride->setScale(0.24);
     huaPride->setOpacity(0);
     huaPride->setPosition(640,210);

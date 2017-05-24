@@ -53,7 +53,7 @@ void DailyPride::onEnter(){
 							this->getParent()->addChild(util, 5);
                         }
                         if(NULL != getChildByTag(1000)){
-                            ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(GAMEDATA::getInstance()->getTodayPrideData().rest));
+                            ((LabelAtlas*)getChildByTag(1000))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTodayPrideData().rest));
                         }
                     }
                 }
@@ -94,9 +94,11 @@ void DailyPride::showDailyPrideLayer(){
     hint->setPosition(900, 420);
     addChild(hint);
     
-    auto num = Sprite::create(getImageNameById(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())));
+    auto num = LabelAtlas::create(GAMEDATA::getInstance()->getDailyPrideData().count, "competition/rank_num.png", 98, 124, '0');
+    num->setAnchorPoint(Point::ANCHOR_MIDDLE);
     num->setPosition(910,425);
     num->setTag(1000);
+    num->setScale(0.4);
     addChild(num);
     
     auto text = Sprite::create("daily/pride/text_info.png");
@@ -134,7 +136,7 @@ void DailyPride::showDailyPrideLayer(){
 }
 
 void DailyPride::updateData(){
-    ((Sprite*)getChildByTag(1000))->setTexture(getImageNameById(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())));
+    ((LabelAtlas*)getChildByTag(1000))->setString(GAMEDATA::getInstance()->getDailyPrideData().count);
     DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
     for (int i = 0; i < data.prides.size(); i++){
         PrideCell* cell = PrideCell::create(data.prides.at(i).type, data.prides.at(i).number);
