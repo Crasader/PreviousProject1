@@ -32,7 +32,7 @@ bool CompetitionQueue::init(){
     queueTitle->setPosition(640,720);
     addChild(queueTitle);
     
-    auto prideNum = LabelAtlas::create("8", "competition/huafei_num.png", 48, 76, '0');
+    auto prideNum = LabelAtlas::create(GAMEDATA::getInstance()->getCompetitionPride(), "competition/huafei_num.png", 48, 76, '0');
     prideNum->setScale(0.8);
     prideNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(prideNum);
@@ -46,7 +46,12 @@ bool CompetitionQueue::init(){
     prideNum->setPosition(640-wid/2*0.8f,685);
     huatext->setPosition(640-wid/2*0.8f+prideNum->getContentSize().width*0.8f,685);
     
-    auto title = Sprite::create("competition/shanghai_title.png");
+    auto title = Sprite::create();
+    if(atoi(GAMEDATA::getInstance()->getCompetitionId().c_str()) == CompetitionRoomId::Shanghai_High || atoi(GAMEDATA::getInstance()->getCompetitionId().c_str()) == CompetitionRoomId::Shanghai_Normal){
+        title->setTexture("competition/shanghai_title.png");
+    }else{
+        title->setTexture("competition/hongzhong_title.png");
+    }
     addChild(title);
     title->setPosition(640,635);
     

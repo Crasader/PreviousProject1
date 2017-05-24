@@ -127,7 +127,9 @@ void HongZhongView::loadView(){
     
     if(GAMEDATA::getInstance()->getIsCompetitionQueue()){
         CompetitionQueue* queue = CompetitionQueue::create();
+        queue->setTag(9982);
         addChild(queue,10);
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
     }
 }
 

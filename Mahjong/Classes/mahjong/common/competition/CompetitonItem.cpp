@@ -84,6 +84,8 @@ bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::strin
 }
 
 void CompetitonItem::joinCompetition(Ref* ref){
+    GAMEDATA::getInstance()->setCompetitionId(StringUtils::format("%d",getRoomId()));
+    GAMEDATA::getInstance()->setCompetitionPride(getHuaFei());
     CompetitonLayer* lay = CompetitonLayer::create();
     lay->initView(getRoomId(),getHuaFei(),getFangka(),getRule());
     getParent()->addChild(lay,5);
