@@ -583,6 +583,7 @@ void MsgHandler::roomListResp(std::string msg){
             room.name = temp["name"].GetString();
             room.fangka = temp["fangka"].GetString();
             room.prize = temp["prize"].GetString();
+            room.rule = temp["rule"].GetString();
             roomlist.matchList.push_back(room);
         }
     }

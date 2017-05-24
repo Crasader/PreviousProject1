@@ -85,7 +85,7 @@ bool CompetitionQueue::init(){
 }
 
 void CompetitionQueue::quitCompetiton(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendQuitCompetitionCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendQuitCompetitionCommand(GAMEDATA::getInstance()->getCompetitionId()));
 }
 
 void CompetitionQueue::onEnter(){

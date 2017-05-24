@@ -48,7 +48,7 @@ bool LobbyScene::init()
     drawSceneTop();
     drawSceneMid();
     drawSceneBot();
-
+    
     return true;
 }
 
@@ -230,11 +230,11 @@ void LobbyScene::drawSceneTop(){
     
     //huafei
     auto huafei_bg = Sprite::create("mjlobby/huafei_bg.png");
-    //    huafei_bg->setTag(901);
+    huafei_bg->setTag(904);
     huafei_bg->setPosition(900, 685);
     addChild(huafei_bg);
     auto huafei_icon = Sprite::create("mjlobby/huafei_icon.png");
-    //    huafei_icon->setTag(902);
+    huafei_icon->setTag(905);
     huafei_icon->setPosition(840, 685);
     addChild(huafei_icon);
     haufeiNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),"Arial",24);
@@ -242,9 +242,9 @@ void LobbyScene::drawSceneTop(){
     haufeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     haufeiNum->setPosition(910, 685);
     addChild(haufeiNum);
-    auto haufei_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
+    auto haufei_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeHuafei, this));
     auto chargHuaFei = Menu::create(haufei_btn, NULL);
-    //    chargHuaFei->setTag(903);
+    chargHuaFei->setTag(906);
     chargHuaFei->setPosition(970, 685);
     addChild(chargHuaFei);
     
@@ -496,6 +496,10 @@ void LobbyScene::exchangeLequan(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeListCommand());
     LequanShop* shop = LequanShop::create();
     addChild(shop,3);
+}
+
+void LobbyScene::exchangeHuafei(){
+
 }
 
 void LobbyScene::showLoading(){

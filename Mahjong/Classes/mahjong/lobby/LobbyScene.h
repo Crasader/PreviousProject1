@@ -68,6 +68,7 @@ private:
     void chargeGold();
     void chargeFangka();
     void exchangeLequan();
+    void exchangeHuafei();
 	void showFirstCharge();
 	void showRedWallet();
     void showShiMing();

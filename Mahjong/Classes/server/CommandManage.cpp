@@ -649,10 +649,11 @@ std::string CommandManage::sendJoinCompetiotnCommand(std::string competitionId){
     return commandString(keyValue);
 }
 
-std::string CommandManage::sendQuitCompetitionCommand(){
+std::string CommandManage::sendQuitCompetitionCommand(std::string competitionId){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MATCH_OUT_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("id", competitionId));
     return commandString(keyValue);
 }
 

@@ -71,6 +71,8 @@ public:
     CC_SYNTHESIZE(TuiGuangReward, tuiGuangReward, TuiGuangReward);
     CC_SYNTHESIZE(TuiGuangPride, tuiGuangPride, TuiGuangPride);
     CC_SYNTHESIZE(TuiGuangRecord, tuiGuangRecord, TuiGuangRecord);
+    CC_SYNTHESIZE(GameActivityData, gameActivityData, GameActivityData);
+    CC_SYNTHESIZE(CompetitionResultInfo, competitionResultData, CompetitionResultData);
     //游戏状态
     
     CC_SYNTHESIZE(int, gameType, GameType);//游戏类型:1上海麻将,2上海麻将复盘,3红中麻将,4红中麻将复盘
@@ -111,12 +113,11 @@ public:
     CC_SYNTHESIZE(bool, logingGame, LogingGame);
     CC_SYNTHESIZE(bool, isCompetitionQueue, IsCompetitionQueue);
     CC_SYNTHESIZE(bool, isCompetitionState, IsCompetitionState);
-    CC_SYNTHESIZE(CompetitionResultInfo, competitionResultData, CompetitionResultData);
+    CC_SYNTHESIZE(std::string, competitionId, CompetitionId);
     CC_SYNTHESIZE(string, fangzhuLequan, FangzhuLequan);
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, wanJiaQun, WanJiaQun);//私人房间游戏局数
     CC_SYNTHESIZE(string, daiLiQun, DaiLiQun);//私人房间游戏局数
-    CC_SYNTHESIZE(GameActivityData, gameActivityData, GameActivityData);
     CC_SYNTHESIZE(string, ip, IP);//玩家IP
     CC_SYNTHESIZE(string, kaibao, Kaibao);
     CC_SYNTHESIZE(string, huangfan, Huangfan);

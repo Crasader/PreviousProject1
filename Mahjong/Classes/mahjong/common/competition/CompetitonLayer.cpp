@@ -57,6 +57,13 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     ruleTitle->setPosition(380,460);
     addChild(ruleTitle);
     
+    auto ruleText = Label::createWithSystemFont(StringUtils::format("       %s",rule.c_str()), "arial", 28);
+    ruleText->setWidth(338);
+    ruleText->setHorizontalAlignment(cocos2d::TextHAlignment::LEFT);
+    ruleText->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    ruleText->setPosition(560,350);
+    addChild(ruleText);
+    
     auto prideTitle = Sprite::create("competition/competition_pride.png");
     prideTitle->setPosition(780,460);
     addChild(prideTitle);
@@ -81,15 +88,25 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     time2->setPosition(860,400);
     addChild(time2);
     
-    auto fee = Label::createWithSystemFont("报 名 费:", "arial", 28);
-    fee->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fee->setPosition(845,345);
-    addChild(fee);
+    auto fee1 = Label::createWithSystemFont("报", "arial", 28);
+    fee1->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fee1->setPosition(752,345);
+    addChild(fee1);
     
-    auto fee2 = Label::createWithSystemFont(StringUtils::format("%s张房卡",fangka.c_str()), "arial", 28);
-    fee2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fee2->setPosition(860,345);
+    auto fee2 = Label::createWithSystemFont("名", "arial", 28);
+    fee2->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fee2->setPosition(793,345);
     addChild(fee2);
+    
+    auto fee3 = Label::createWithSystemFont("费:", "arial", 28);
+    fee3->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fee3->setPosition(845,345);
+    addChild(fee3);
+    
+    auto fee4 = Label::createWithSystemFont(StringUtils::format("%s张房卡",fangka.c_str()), "arial", 28);
+    fee4->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    fee4->setPosition(860,345);
+    addChild(fee4);
     
     
     auto difen = Label::createWithSystemFont("房间底分:", "arial", 28);
@@ -97,7 +114,7 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     difen->setPosition(845,285);
     addChild(difen);
     
-    auto difen2 = Label::createWithSystemFont("1/1无勒子", "arial", 28);
+    auto difen2 = Label::createWithSystemFont("5/5无勒子", "arial", 28);
     difen2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     difen2->setPosition(860,285);
     addChild(difen2);
@@ -117,6 +134,7 @@ void CompetitonLayer::onEnter(){
         JoinCompetitionData newData = *result;
         if(newData.result == 1){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            GAMEDATA::getInstance()->setCompetitionId(newData.roomId);
             if(atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_High||atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_Normal){
                 GAMEDATA::getInstance()->setIsCompetitionQueue(true);
                 GAMEDATA::getInstance()->setGameType(1);
