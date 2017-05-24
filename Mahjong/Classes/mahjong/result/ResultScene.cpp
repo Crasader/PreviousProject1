@@ -29,7 +29,7 @@
 
 Scene* ResultScene::createScene(int type)
 {
-//    initTestData();
+    //    initTestData();
     auto scene = Scene::create();
     if(GAMEDATA::getInstance()->getGameType()==1){
         if(type == 0){
@@ -37,6 +37,7 @@ Scene* ResultScene::createScene(int type)
             scene->addChild(layer);
         }else if(type == 2){
             CompetitionResult* res = CompetitionResult::create();
+            res->showCompetiotionResult("1", "1", "1", "1");
             scene->addChild(res);
         }else{
             SpecialResultLayer* layer = SpecialResultLayer::create();
@@ -48,6 +49,7 @@ Scene* ResultScene::createScene(int type)
             scene->addChild(layer);
         }else if(type == 2){
             CompetitionResult* res = CompetitionResult::create();
+            res->showCompetiotionResult("1", "1", "1", "1");
             scene->addChild(res);
         }else{
             HZSpecialResultLayer* layer = HZSpecialResultLayer::create();

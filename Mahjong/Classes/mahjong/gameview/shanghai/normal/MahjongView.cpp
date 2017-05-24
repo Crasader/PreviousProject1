@@ -1221,6 +1221,7 @@ void MahjongView::onEnter(){
         }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
+        GAMEDATA::getInstance()->setIsCompetitionQueue(false);
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             if(GAMEDATA::getInstance()->getPlayersInfo().size()==0){
                 for (int i = 0; i < 4; i++)
