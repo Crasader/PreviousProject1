@@ -208,8 +208,8 @@ void NormalResultLayer::showLayerBtn(){
             timeLabel->setPosition(910,55);
             
             auto stetx = Sprite::create("competition/daojishi_s.png");
-            stetx->setPosition(920,55);
-            stetx->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            stetx->setPosition(930,55);
+            stetx->setAnchorPoint(Point::ANCHOR_MIDDLE);
             addChild(stetx);
             
         }else{
@@ -321,7 +321,9 @@ void NormalResultLayer::continueGame(){
 
 void NormalResultLayer::updateTime(float dt){
     totalTime --;
-    timeLabel->setString(StringUtils::format("%d",totalTime));
+    if(totalTime>=0){
+        timeLabel->setString(StringUtils::format("%d",totalTime));
+    }
     if(totalTime<=0&&GAMEDATA::getInstance()->getIsCompetitionState()){
         continueGame();
     }

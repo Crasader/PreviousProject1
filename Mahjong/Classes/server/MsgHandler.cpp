@@ -1870,12 +1870,11 @@ void MsgHandler::gameResultNotify(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     if(_mDoc.HasMember("matchid")){
         CompetitionResultInfo competitionData;
-        competitionData.matchid = _mDoc["poker"].GetString();
+        competitionData.matchid = _mDoc["matchid"].GetString();
         competitionData.pride = _mDoc["prize"].GetString();
         competitionData.paiming = _mDoc["paiming"].GetString();
         GAMEDATA::getInstance()->setCompetitionResultData(competitionData);
     }
-    
     if(_mDoc.HasMember("poker")){
         GAMEDATA::getInstance()->setDiaopao(_mDoc["poker"].GetString());
     }else{

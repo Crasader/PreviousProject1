@@ -23,6 +23,8 @@ private:
     void share();
     void quit();
     void continueCompetition();
+    void afterCaptured(bool succeed, const std::string &outputFile);
+
 };
 
 #endif /* CompetitionResult_hpp */

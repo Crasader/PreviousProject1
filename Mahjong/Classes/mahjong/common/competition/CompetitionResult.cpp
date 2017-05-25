@@ -8,6 +8,10 @@
 
 #include "mahjong/common/competition/CompetitionResult.hpp"
 #include "mahjong/common/widget/ParticleUtil.hpp"
+#include "mahjong/lobby/LobbyScene.h"
+#include "server/NetworkManage.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 bool CompetitionResult::init(){
     if(!Layer::init()){
@@ -139,6 +143,7 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     auto rankNum = LabelAtlas::create(rank, "competition/rank_num.png", 98, 124, '0');
     rankNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     rankNum->setScale(1.54);
+    rankNum->setPosition(640,388);
     rankNum->setVisible(false);
     addChild(rankNum);
     auto setp03 = DelayTime::create(1.6f);
@@ -155,7 +160,7 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     icon->setPosition(680,360);
     icon->setScale(0.6f);
     icon->setOpacity(0);
-    auto jifen = LabelAtlas::create(":1000","competition/score_num_1.png",22,30,'0');
+    auto jifen = LabelAtlas::create(StringUtils::format(":%s",score.c_str()),"competition/score_num_1.png",22,30,'0');
     jifen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     jifen->setPosition(690,360);
     jifen->setOpacity(0);
@@ -192,13 +197,34 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     prideText->runAction(Sequence::create(setp9_1,setp9_2,setp9_3,NULL));
     
     auto huaPride = Sprite::create("competition/pride_quan_bg.png");
+    huaPride->setAnchorPoint(Point::ANCHOR_MIDDLE);
     huaPride->setScale(0.24);
     huaPride->setOpacity(0);
-    huaPride->setPosition(640,210);
+    huaPride->setPosition(640,190);
+    addChild(huaPride,1);
     auto setp0_1 = DelayTime::create(2.3f);
     auto setp0_2 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
-    auto setp0_3 = ScaleTo::create(0.2f,1.2f);
+    auto setp0_3 = ScaleTo::create(0.2f,1.0f);
     huaPride->runAction(Sequence::create(setp0_1,setp0_2,setp0_3, NULL));
+    auto yuan = Sprite::create("competition/pride_quan_yuan.png");
+    yuan->setScale(0.24);
+    yuan->setOpacity(0);
+    yuan->setPosition(730,170);
+    addChild(yuan,2);
+    auto setp0_4 = DelayTime::create(2.3f);
+    auto setp0_5 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
+    auto setp0_6 = ScaleTo::create(0.2f,1.0f);
+    yuan->runAction(Sequence::create(setp0_4,setp0_5,setp0_6, NULL));
+    auto huaNum = LabelAtlas::create(pride,"competition/pride_quan_num.png",64,84,'0');
+    huaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    huaNum->setScale(0.24);
+    huaNum->setOpacity(0);
+    huaNum->setPosition(645,190);
+    addChild(huaNum,2);
+    auto setp0_7 = DelayTime::create(2.3f);
+    auto setp0_8 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
+    auto setp0_9 = ScaleTo::create(0.2f,1.0f);
+    huaNum->runAction(Sequence::create(setp0_7,setp0_8,setp0_9, NULL));
     
     auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(CompetitionResult::quit,this));
     
@@ -213,17 +239,41 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     
 }
 
-void CompetitionResult::share(){
+void CompetitionResult::continueCompetition(){
     
 }
 
 
 void CompetitionResult::quit(){
-    
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
+    Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
 }
 
-void CompetitionResult::continueCompetition(){
-    
+
+void CompetitionResult::share(){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(CC_CALLBACK_2(CompetitionResult::afterCaptured, this) ,path);
+#endif
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(CC_CALLBACK_2(CompetitionResult::afterCaptured, this) ,path);
+#endif
+}
+
+void CompetitionResult::afterCaptured(bool succeed, const std::string &outputFile)
+{
+    if (succeed) {
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        CallAndroidMethod::getInstance()->shareImageToWeChat("mahjong_screen_shot.png", false);
+#endif
+        
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 0);
+#endif
+    }
 }
 
 

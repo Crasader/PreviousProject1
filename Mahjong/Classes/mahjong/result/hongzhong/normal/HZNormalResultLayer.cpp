@@ -323,7 +323,9 @@ void HZNormalResultLayer::continueGame(){
 
 void HZNormalResultLayer::updateTime(float dt){
     totalTime --;
-    timeLabel->setString(StringUtils::format("%d",totalTime));
+    if(totalTime>=0){
+        timeLabel->setString(StringUtils::format("%d",totalTime));
+    }
     if(totalTime<=0&&GAMEDATA::getInstance()->getIsCompetitionState()){
         continueGame();
     }
