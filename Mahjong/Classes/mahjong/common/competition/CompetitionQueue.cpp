@@ -74,6 +74,7 @@ bool CompetitionQueue::init(){
     for (int i=0; i<4; i++) {
         auto waitPlayer = Sprite::create("competition/player_wait.png");
         waitPlayer->setPosition(375+i*165,350);
+        waitPlayer->setTag(100+i);
         addChild(waitPlayer);
     }
 
@@ -85,7 +86,7 @@ bool CompetitionQueue::init(){
     auto playerLight = Sprite::create("competition/head_white.png");
     playerLight->setPosition(375,350);
     addChild(playerLight);
-    
+    index = 1;
     return true;
 }
 
@@ -106,10 +107,31 @@ void CompetitionQueue::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(quitResp, 1);
     
+    addPlayer  = EventListenerCustom::create(MSG_COMPETITION_ADD_PLAYER_NOTIFY, [=](EventCustom* event){
+        std::string num = static_cast<char*>(event->getUserData());
+        int number =abs(atoi(num.c_str()));
+        if(number == 4){
+            number = 3;
+        }
+        for(int i=0; i<number;i++){
+            auto playerReady = Sprite::create("gameview/head_image_3.png");
+            playerReady->setScale(1.3778);
+            playerReady->setPosition(375+index*165,350);
+            addChild(playerReady);
+            auto playerLight = Sprite::create("competition/head_white.png");
+            playerLight->setPosition(375+index*165,350);
+            addChild(playerLight);
+            index++;
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addPlayer, 1);
+
+    
 }
 
 
 void CompetitionQueue::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(quitResp);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayer);
 }

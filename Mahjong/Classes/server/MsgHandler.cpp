@@ -449,6 +449,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleCompetitionStart(msg);
         }
             break;
+        case MSGCODE_MATCH_ADDPLAYER_NOTIFY:{
+            handleCompetitionAddPalyer(msg);
+        }
+            break;
         default:
             break;
     }
@@ -3430,6 +3434,9 @@ void MsgHandler::handleCompetiotnQueueResp(std::string msg){
     if(_mDoc.HasMember("wait")){
         GAMEDATA::getInstance()->setCompetitionText(_mDoc["wait"].GetString());
     }
+    if(_mDoc.HasMember("prize")){
+        GAMEDATA::getInstance()->setCompetitionPride(_mDoc["prize"].GetString());
+    }
     char* buf = const_cast<char*>(result.GetString());
     postNotifyMessage(MSG_COMPETITION_QUEUE_RESP, buf);
 }
@@ -3450,5 +3457,16 @@ void MsgHandler::handleCompetitionStart(std::string msg){
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     postNotifyMessage(MSG_COMPETITION_START_NOTIFY, nullptr);
+}
+
+
+void MsgHandler::handleCompetitionAddPalyer(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &num = _mDoc["num"];
+    char* buf = const_cast<char*>(num.GetString());
+    postNotifyMessage(MSG_COMPETITION_ADD_PLAYER_NOTIFY, buf);
 }
 

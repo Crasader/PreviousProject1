@@ -96,5 +96,6 @@ private:
     void handleCompetiotnQueueResp(std::string msg);
     void handleCompetitionQuitResp(std::string msg);
     void handleCompetitionStart(std::string msg);
+    void handleCompetitionAddPalyer(std::string msg);
 };
 #endif

@@ -19,6 +19,8 @@ public:
     CREATE_FUNC(CompetitionQueue);
 private:
     EventListenerCustom* quitResp;
+    EventListenerCustom* addPlayer;
     void quitCompetiton();
+    int index;
 };
 #endif /* CompetitionQueue_hpp */
