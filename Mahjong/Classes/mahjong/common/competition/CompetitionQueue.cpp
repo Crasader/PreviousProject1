@@ -18,6 +18,7 @@ bool CompetitionQueue::init(){
     if(!Layer::init()){
         return false;
     }
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Sprite* view_bg = Sprite::create("gameview/game_bg.jpg");
     view_bg->setPosition(visibleSize.width / 2, visibleSize.height / 2);
@@ -70,23 +71,25 @@ bool CompetitionQueue::init(){
     auto quitMenu = Menu::create(quitBtn, NULL);
     quitMenu->setPosition(640, 125);
     addChild(quitMenu);
-
+    
     for (int i=0; i<4; i++) {
         auto waitPlayer = Sprite::create("competition/player_wait.png");
         waitPlayer->setPosition(375+i*165,350);
         waitPlayer->setTag(100+i);
         addChild(waitPlayer);
     }
-
-    auto playerReady = Sprite::create("gameview/head_image_3.png");
-    playerReady->setScale(1.3778);
-    playerReady->setPosition(375,350);
-    addChild(playerReady);
-    
-    auto playerLight = Sprite::create("competition/head_white.png");
-    playerLight->setPosition(375,350);
-    addChild(playerLight);
-    index = 1;
+    index = atoi(GAMEDATA::getInstance()->getCompetitionNumber().c_str());
+    for(int i=0; i<index;i++){
+        auto playerReady = Sprite::create("gameview/head_image_3.png");
+        playerReady->setScale(1.3778);
+        playerReady->setPosition(375+index*165,350);
+        addChild(playerReady);
+        
+        auto playerLight = Sprite::create("competition/head_white.png");
+        playerLight->setPosition(375+index*165,350);
+        addChild(playerLight);
+        index++;
+    }
     return true;
 }
 
@@ -110,22 +113,21 @@ void CompetitionQueue::onEnter(){
     addPlayer  = EventListenerCustom::create(MSG_COMPETITION_ADD_PLAYER_NOTIFY, [=](EventCustom* event){
         std::string num = static_cast<char*>(event->getUserData());
         int number =abs(atoi(num.c_str()));
-        if(number == 4){
-            number = 3;
-        }
-        for(int i=0; i<number;i++){
-            auto playerReady = Sprite::create("gameview/head_image_3.png");
-            playerReady->setScale(1.3778);
-            playerReady->setPosition(375+index*165,350);
-            addChild(playerReady);
-            auto playerLight = Sprite::create("competition/head_white.png");
-            playerLight->setPosition(375+index*165,350);
-            addChild(playerLight);
-            index++;
+        if(index<4){
+            for(int i=0; i<number;i++){
+                auto playerReady = Sprite::create("gameview/head_image_3.png");
+                playerReady->setScale(1.3778);
+                playerReady->setPosition(375+index*165,350);
+                addChild(playerReady);
+                auto playerLight = Sprite::create("competition/head_white.png");
+                playerLight->setPosition(375+index*165,350);
+                addChild(playerLight);
+                index++;
+            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addPlayer, 1);
-
+    
     
 }
 

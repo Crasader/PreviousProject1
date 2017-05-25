@@ -2847,7 +2847,9 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    
+    if(_mDoc.HasMember("seatId")){
+        GAMEDATA::getInstance()->setHeroSeatId(atoi(_mDoc["seatId"].GetString()));
+    }
     MahjongFaPaiData faPaiData;
     faPaiData.heroPokers = _mDoc["poker"].GetString();
     faPaiData.dice = _mDoc["dice"].GetString();
@@ -3443,6 +3445,10 @@ void MsgHandler::handleJoinCompetitionResp(std::string msg){
     if(_mDoc.HasMember("wait")){
         const rapidjson::Value &wait = _mDoc["wait"];
         data.text =  wait.GetString();
+    }
+    if(_mDoc.HasMember("num")){
+        const rapidjson::Value &num = _mDoc["num"];
+        data.num =  num.GetString();
     }
     postNotifyMessage(MSG_JOIN_COMPETITION_RESP, &data);
 }

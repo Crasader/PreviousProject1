@@ -139,6 +139,7 @@ void CompetitonLayer::onEnter(){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             GAMEDATA::getInstance()->setCompetitionId(newData.roomId);
             GAMEDATA::getInstance()->setCompetitionText(newData.text);
+            GAMEDATA::getInstance()->setCompetitionNumber(newData.num);
             if(atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_High||atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_Normal){
                 GAMEDATA::getInstance()->setIsCompetitionQueue(true);
                 GAMEDATA::getInstance()->setGameType(1);
