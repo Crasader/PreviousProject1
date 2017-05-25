@@ -25,6 +25,7 @@
 #include "mahjong/common/bill/BillInfo.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/common/dialog/prompt/TextHintDialog.hpp"
+#include "mahjong/lobby/shop/huafei/HuafeiShop.hpp"
 #include "mahjong/common/widget/HeadImage.hpp"
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/audio/Audio.h"
@@ -499,7 +500,10 @@ void LobbyScene::exchangeLequan(){
 }
 
 void LobbyScene::exchangeHuafei(){
-
+    Audio::getInstance()->playSoundClick();
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeListCommand());
+    HuafeiShop* shop = HuafeiShop::create();
+    addChild(shop,3);
 }
 
 void LobbyScene::showLoading(){

@@ -1140,7 +1140,8 @@ void HongZhongView::onEnter(){
             playerOpposite->setIsReady(false);
         if(NULL != playerLeft)
             playerLeft->setIsReady(false);
-        playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
+        if(!GAMEDATA::getInstance()->getIsCompetitionState())
+            playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
         guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;

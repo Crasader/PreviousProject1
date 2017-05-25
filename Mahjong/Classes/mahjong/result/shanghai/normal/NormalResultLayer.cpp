@@ -38,6 +38,9 @@ bool NormalResultLayer::init(){
     auto reslut_bg = Sprite::create("result/result_bg.jpg");
     reslut_bg->setPosition(640, 360);
     addChild(reslut_bg,-1);
+    timeLabel = LabelAtlas::create(StringUtils::format("%d",totalTime),"competition/daojishi_num.png",31,45,'0');
+    timeLabel->setVisible(false);
+    addChild(timeLabel);
     showGameResult();//结算界面标题
     showRoomInfo();
     showPlayerResluts();
@@ -196,6 +199,19 @@ void NormalResultLayer::showLayerBtn(){
             myMneu->setPosition(640,60);
             addChild(myMneu);
             
+            auto timeText = Sprite::create("competition/daojishi.png");
+            timeText->setPosition(830,55);
+            addChild(timeText);
+            
+            timeLabel->setVisible(true);
+            timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            timeLabel->setPosition(900,55);
+            
+            auto stetx = Sprite::create("competition/daojishi_s.png");
+            stetx->setPosition(timeLabel->getPositionX()+timeLabel->getContentSize().width,55);
+            stetx->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            addChild(stetx);
+            
         }else{
             auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));
             
@@ -305,6 +321,7 @@ void NormalResultLayer::continueGame(){
 
 void NormalResultLayer::updateTime(float dt){
     totalTime --;
+    timeLabel->setString(StringUtils::format("%d",totalTime));
     if(totalTime<=0&&GAMEDATA::getInstance()->getIsCompetitionState()){
         continueGame();
     }

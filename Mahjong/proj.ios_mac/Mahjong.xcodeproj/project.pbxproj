@@ -312,6 +312,8 @@
 		D299F8CC1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D299F8C91E25BFDC00D10B0D /* CallAndroidSocket.cpp */; };
 		D299F8D81E27640000D10B0D /* SocketDataBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D299F8D61E27640000D10B0D /* SocketDataBack.cpp */; };
 		D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D299F8D61E27640000D10B0D /* SocketDataBack.cpp */; };
+		D29BE26D1ED686CF00EED3A0 /* HuafeiShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29BE26B1ED686CF00EED3A0 /* HuafeiShop.cpp */; };
+		D29BE26E1ED686CF00EED3A0 /* HuafeiShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D29BE26B1ED686CF00EED3A0 /* HuafeiShop.cpp */; };
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
 		D29E85991E320EB100AFACEE /* fupan in Resources */ = {isa = PBXBuildFile; fileRef = D29E85981E320EB100AFACEE /* fupan */; };
 		D29E859A1E320EB100AFACEE /* fupan in Resources */ = {isa = PBXBuildFile; fileRef = D29E85981E320EB100AFACEE /* fupan */; };
@@ -721,6 +723,8 @@
 		D299F8CA1E25BFDC00D10B0D /* CallAndroidSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CallAndroidSocket.hpp; sourceTree = "<group>"; };
 		D299F8D61E27640000D10B0D /* SocketDataBack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketDataBack.cpp; sourceTree = "<group>"; };
 		D299F8D71E27640000D10B0D /* SocketDataBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketDataBack.h; sourceTree = "<group>"; };
+		D29BE26B1ED686CF00EED3A0 /* HuafeiShop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuafeiShop.cpp; sourceTree = "<group>"; };
+		D29BE26C1ED686CF00EED3A0 /* HuafeiShop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuafeiShop.hpp; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D29E85981E320EB100AFACEE /* fupan */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fupan; sourceTree = "<group>"; };
 		D2A713A61ED2B830000EE572 /* CompetitionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitionQueue.cpp; sourceTree = "<group>"; };
@@ -1400,6 +1404,7 @@
 		D252FAED1E7FA5EC00937322 /* shop */ = {
 			isa = PBXGroup;
 			children = (
+				D29BE26A1ED686AA00EED3A0 /* huafei */,
 				D252FAEE1E7FA5EC00937322 /* fangka */,
 				D252FAF51E7FA5EC00937322 /* FirstChageDialog.cpp */,
 				D252FAF61E7FA5EC00937322 /* FirstChageDialog.hpp */,
@@ -1749,6 +1754,15 @@
 				D299F8D71E27640000D10B0D /* SocketDataBack.h */,
 			);
 			path = native;
+			sourceTree = "<group>";
+		};
+		D29BE26A1ED686AA00EED3A0 /* huafei */ = {
+			isa = PBXGroup;
+			children = (
+				D29BE26B1ED686CF00EED3A0 /* HuafeiShop.cpp */,
+				D29BE26C1ED686CF00EED3A0 /* HuafeiShop.hpp */,
+			);
+			path = huafei;
 			sourceTree = "<group>";
 		};
 		D2A713A51ED2B830000EE572 /* competition */ = {
@@ -2292,6 +2306,7 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D252FB661E7FA5EC00937322 /* ScrollTextEx.cpp in Sources */,
+				D29BE26D1ED686CF00EED3A0 /* HuafeiShop.cpp in Sources */,
 				D2A713B01ED2B830000EE572 /* CompetitonLayer.cpp in Sources */,
 				D299F8CB1E25BFDC00D10B0D /* CallAndroidSocket.cpp in Sources */,
 				D278ADC51DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
@@ -2438,6 +2453,7 @@
 				D2D894A51EBB217D008C1E5D /* InviteCodeLayer.cpp in Sources */,
 				D252FB351E7FA5EC00937322 /* PlayerChatManage.cpp in Sources */,
 				D20474B91E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
+				D29BE26E1ED686CF00EED3A0 /* HuafeiShop.cpp in Sources */,
 				D252FB231E7FA5EC00937322 /* BillInfo.cpp in Sources */,
 				D252FBBB1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
 				D252FB311E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
