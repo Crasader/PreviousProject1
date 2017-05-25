@@ -1081,7 +1081,7 @@ void MsgHandler::getPlayerOffLineNotify(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     if(_mDoc.HasMember("seatId")){
         const rapidjson::Value &seatId = _mDoc["seatId"];
-        char* buf = const_cast<char*>(seatId.GetString());
+        char* buf = const_cast<char*>(StringUtils::format("%d",seatId.GetInt()).c_str());
         postNotifyMessage(MSG_PLAYER_OFF_LINE_NOTIFY, buf);
     }
 }

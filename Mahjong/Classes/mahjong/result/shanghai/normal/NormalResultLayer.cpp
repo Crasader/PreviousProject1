@@ -89,7 +89,7 @@ void NormalResultLayer::showRoomInfo(){
             fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
             fanghaoNum->setPosition(940,580);
             addChild(fanghaoNum);
-            auto yuan = Sprite::create("competiotn/yuan_hua_fei.png");
+            auto yuan = Sprite::create("competition/yuan_hua_fei.png");
             yuan->setPosition(940,585);
             addChild(yuan);
         }else{
@@ -208,7 +208,7 @@ void NormalResultLayer::showLayerBtn(){
             timeLabel->setPosition(900,55);
             
             auto stetx = Sprite::create("competition/daojishi_s.png");
-            stetx->setPosition(timeLabel->getPositionX()+timeLabel->getContentSize().width,55);
+            stetx->setPosition(timeLabel->getPositionX()+timeLabel->getContentSize().width-10,55);
             stetx->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             addChild(stetx);
             
