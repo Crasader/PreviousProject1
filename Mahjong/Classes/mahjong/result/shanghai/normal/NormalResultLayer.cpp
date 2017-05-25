@@ -81,14 +81,25 @@ void NormalResultLayer::showGameResult(){
 
 void NormalResultLayer::showRoomInfo(){
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        auto fanghao = Sprite::create("result/fang_jian_hao.png");
-        fanghao->setPosition(900,560);
-        addChild(fanghao,1);
-        
-        auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
-        fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        fanghaoNum->setPosition(940,560);
-        addChild(fanghaoNum);
+        if(GAMEDATA::getInstance()->getIsCompetitionState()){
+            auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getCompetitionPride(), "result/ju_num.png",16,22,'0');
+            fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+            fanghaoNum->setPosition(940,580);
+            addChild(fanghaoNum);
+            auto yuan = Sprite::create("competiotn/yuan_hua_fei.png");
+            yuan->setPosition(940,585);
+            addChild(yuan);
+        }else{
+            auto fanghao = Sprite::create("result/fang_jian_hao.png");
+            fanghao->setPosition(900,560);
+            addChild(fanghao,1);
+            
+            auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
+            fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            fanghaoNum->setPosition(940,560);
+            addChild(fanghaoNum);
+            
+        }
         
         auto wukaibao  = Sprite::create("result/public_wu_kaibao.png");
         wukaibao->setVisible(false);
@@ -166,7 +177,6 @@ void NormalResultLayer::showPlayerResluts(){
 void NormalResultLayer::showLayerBtn(){
     if(GAMEDATA::getInstance()->getNeedShowLastResult()){
         GAMEDATA::getInstance()->setNeedShowLastResult(false);
-               //TODO显示比赛
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             schedule([=](float dt){
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(2)));
@@ -177,33 +187,42 @@ void NormalResultLayer::showLayerBtn(){
             }, 0, 0, 5,"KillBill");
         }
     }else{
-        auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));
-        
-        auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
-                                               CC_CALLBACK_0(NormalResultLayer::shareResult, this));
-        auto feedImage = MenuItemImage::create("result/continue_btn_1.png","result/continue_btn_2.png",
-                                               CC_CALLBACK_0(NormalResultLayer::continueGame, this));
-        if(GAMEDATA::getInstance()->getMahjongRoomType() ==  MahjongRoom::privateRoom){
-            auto iamge1 = Sprite::create("result/start_game_btn_1.png");
-            feedImage->setNormalImage(iamge1);
-            auto iamge2 = Sprite::create("result/start_game_btn_2.png");
-            feedImage->setSelectedImage(iamge2);
-        }
-        Menu* myMneu = Menu::create();
-        if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
-            myMneu->addChild(quitImage);
-        }
-        myMneu->addChild(helpImage);
-        myMneu->addChild(feedImage);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
-            myMneu->alignItemsHorizontallyWithPadding(60);
-        }else{
-            myMneu->alignItemsHorizontallyWithPadding(100);
-        }
-        myMneu->setPosition(640,60);
-        addChild(myMneu);
-        
         schedule(schedule_selector(NormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+        if(GAMEDATA::getInstance()->getIsCompetitionState()){
+            auto feedImage = MenuItemImage::create("result/start_game_btn_1.png","result/start_game_btn_2.png",
+                                                   CC_CALLBACK_0(NormalResultLayer::continueGame, this));
+            Menu* myMneu = Menu::create();
+            myMneu->addChild(feedImage);
+            myMneu->setPosition(640,60);
+            addChild(myMneu);
+            
+        }else{
+            auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));
+            
+            auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
+                                                   CC_CALLBACK_0(NormalResultLayer::shareResult, this));
+            auto feedImage = MenuItemImage::create("result/continue_btn_1.png","result/continue_btn_2.png",
+                                                   CC_CALLBACK_0(NormalResultLayer::continueGame, this));
+            if(GAMEDATA::getInstance()->getMahjongRoomType() ==  MahjongRoom::privateRoom){
+                auto iamge1 = Sprite::create("result/start_game_btn_1.png");
+                feedImage->setNormalImage(iamge1);
+                auto iamge2 = Sprite::create("result/start_game_btn_2.png");
+                feedImage->setSelectedImage(iamge2);
+            }
+            Menu* myMneu = Menu::create();
+            if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
+                myMneu->addChild(quitImage);
+            }
+            myMneu->addChild(helpImage);
+            myMneu->addChild(feedImage);
+            if(GAMEDATA::getInstance()->getMahjongRoomType() !=  MahjongRoom::privateRoom){
+                myMneu->alignItemsHorizontallyWithPadding(60);
+            }else{
+                myMneu->alignItemsHorizontallyWithPadding(100);
+            }
+            myMneu->setPosition(640,60);
+            addChild(myMneu);
+        }
     }
 }
 
@@ -285,6 +304,11 @@ void NormalResultLayer::continueGame(){
 
 
 void NormalResultLayer::updateTime(float dt){
+    totalTime --;
+    if(totalTime<=0&&GAMEDATA::getInstance()->getIsCompetitionState()){
+        continueGame();
+    }
+    
     if(GAMEDATA::getInstance()->getShowProtected()){
         if(NULL == getChildByTag(2000)){
             LostNetwork2* net = LostNetwork2::create();
@@ -361,7 +385,7 @@ void NormalResultLayer::onEnter(){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
-             GAMEDATA::getInstance()->setGameType(1);
+            GAMEDATA::getInstance()->setGameType(1);
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
@@ -376,7 +400,7 @@ void NormalResultLayer::onEnter(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
     });
-
+    
     
     hzEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
@@ -387,7 +411,7 @@ void NormalResultLayer::onEnter(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
     });
-
+    
 }
 
 void NormalResultLayer::onExit(){

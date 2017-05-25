@@ -27,6 +27,7 @@ private:
     EventListenerCustom* openFriendRoomListener;
     EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* hzEnterFriendRoomListener;
+    float totalTime = 10;
     bool showDissolveDialog = false;
     void showGameResult();
     void showRoomInfo();

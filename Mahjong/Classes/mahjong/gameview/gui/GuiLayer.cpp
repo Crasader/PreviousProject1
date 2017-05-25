@@ -119,7 +119,7 @@ void GuiLayer::drawGameInfo(){
         //私人房间
         if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
             auto matchname = Label::createWithSystemFont(StringUtils::format("%s元话费赛",GAMEDATA::getInstance()->getCompetitionPride().c_str()), "arial", 25);
-            matchname->setPosition(1210,680);
+            matchname->setPosition(1200,680);
             matchname->setColor(Color3B(233,209,112));
             addChild(matchname);
             
