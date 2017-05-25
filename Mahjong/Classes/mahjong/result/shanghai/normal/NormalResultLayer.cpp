@@ -204,11 +204,11 @@ void NormalResultLayer::showLayerBtn(){
             addChild(timeText);
             
             timeLabel->setVisible(true);
-            timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            timeLabel->setPosition(900,55);
+            timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE);
+            timeLabel->setPosition(910,55);
             
             auto stetx = Sprite::create("competition/daojishi_s.png");
-            stetx->setPosition(timeLabel->getPositionX()+timeLabel->getContentSize().width-10,55);
+            stetx->setPosition(920,55);
             stetx->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             addChild(stetx);
             
