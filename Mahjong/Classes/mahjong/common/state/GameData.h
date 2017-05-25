@@ -116,6 +116,7 @@ public:
     CC_SYNTHESIZE(std::string, competitionId, CompetitionId);
     CC_SYNTHESIZE(std::string, competitionText, CompetitionText);
     CC_SYNTHESIZE(std::string, competitionPride, CompetitionPride);
+    CC_SYNTHESIZE(std::string, competitionScore, CompetitionScore);
     CC_SYNTHESIZE(string, fangzhuLequan, FangzhuLequan);
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, wanJiaQun, WanJiaQun);//私人房间游戏局数

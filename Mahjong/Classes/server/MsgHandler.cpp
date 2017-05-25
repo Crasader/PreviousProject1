@@ -3134,6 +3134,7 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
         competitionData.paiming = _mDoc["paiming"].GetString();
         GAMEDATA::getInstance()->setCompetitionResultData(competitionData);
     }
+
     if(_mDoc.HasMember("poker")){
         GAMEDATA::getInstance()->setDiaopao(_mDoc["poker"].GetString());
     }else{

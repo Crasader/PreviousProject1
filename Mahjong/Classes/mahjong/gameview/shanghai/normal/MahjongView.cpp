@@ -1692,6 +1692,9 @@ void MahjongView::onEnter(){
                     }
                     seatId2.push_back(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),data.seatId));
                 }
+                if(data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
+                    GAMEDATA::getInstance()->setCompetitionScore(StringUtils::format("%d",data.jifen));
+                }
             }
             if(zimoState){
                 Audio::getInstance()->playSoundHuMusic(1);
