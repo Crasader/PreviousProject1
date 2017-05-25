@@ -188,22 +188,22 @@ void HZNormalResultLayer::showLayerBtn(){
             }, 0, 0, 5,"KillBill");
         }
     }else{
-        schedule(schedule_selector(NormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+        schedule(schedule_selector(HZNormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             auto feedImage = MenuItemImage::create("result/start_game_btn_1.png","result/start_game_btn_2.png",
-                                                   CC_CALLBACK_0(NormalResultLayer::continueGame, this));
+                                                   CC_CALLBACK_0(HZNormalResultLayer::continueGame, this));
             Menu* myMneu = Menu::create();
             myMneu->addChild(feedImage);
             myMneu->setPosition(640,60);
             addChild(myMneu);
             
         }else{
-            auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));
+            auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(HZNormalResultLayer::gotoLobby, this));
             
             auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
-                                                   CC_CALLBACK_0(NormalResultLayer::shareResult, this));
+                                                   CC_CALLBACK_0(HZNormalResultLayer::shareResult, this));
             auto feedImage = MenuItemImage::create("result/continue_btn_1.png","result/continue_btn_2.png",
-                                                   CC_CALLBACK_0(NormalResultLayer::continueGame, this));
+                                                   CC_CALLBACK_0(HZNormalResultLayer::continueGame, this));
             if(GAMEDATA::getInstance()->getMahjongRoomType() ==  MahjongRoom::privateRoom){
                 auto iamge1 = Sprite::create("result/start_game_btn_1.png");
                 feedImage->setNormalImage(iamge1);
