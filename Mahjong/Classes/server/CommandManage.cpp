@@ -657,6 +657,13 @@ std::string CommandManage::sendQuitCompetitionCommand(std::string competitionId)
     return commandString(keyValue);
 }
 
+std::string CommandManage::sendHuafeiExchangeCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_LIST_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

@@ -18,7 +18,7 @@ bool CompetitionQueue::init(){
     if(!Layer::init()){
         return false;
     }
-    
+    index = 1;
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Sprite* view_bg = Sprite::create("gameview/game_bg.jpg");
     view_bg->setPosition(visibleSize.width / 2, visibleSize.height / 2);
@@ -78,8 +78,16 @@ bool CompetitionQueue::init(){
         waitPlayer->setTag(100+i);
         addChild(waitPlayer);
     }
-    index = atoi(GAMEDATA::getInstance()->getCompetitionNumber().c_str());
-    for(int i=0; i<index;i++){
+    auto playerReady = Sprite::create("gameview/head_image_3.png");
+    playerReady->setScale(1.3778);
+    playerReady->setPosition(375,350);
+    addChild(playerReady);
+    
+    auto playerLight = Sprite::create("competition/head_white.png");
+    playerLight->setPosition(375,350);
+    addChild(playerLight);
+    
+    for(int i=0; i<atoi(GAMEDATA::getInstance()->getCompetitionNumber().c_str())-1;i++){
         auto playerReady = Sprite::create("gameview/head_image_3.png");
         playerReady->setScale(1.3778);
         playerReady->setPosition(375+index*165,350);
@@ -113,7 +121,7 @@ void CompetitionQueue::onEnter(){
     addPlayer  = EventListenerCustom::create(MSG_COMPETITION_ADD_PLAYER_NOTIFY, [=](EventCustom* event){
         std::string num = static_cast<char*>(event->getUserData());
         int number =abs(atoi(num.c_str()));
-        if(index<4){
+        if(index<3){
             for(int i=0; i<number;i++){
                 auto playerReady = Sprite::create("gameview/head_image_3.png");
                 playerReady->setScale(1.3778);

@@ -95,6 +95,10 @@
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_REQUEST  1056// 乐券商城兑换记录请求{code:1056,poxiaoId:poxiaoId}
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_RESPONSE  1057// 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
 
+#define MSGCODE_FEE_LIST_REQUEST  1070// 话费兑换列表请求{code:1070,poxiaoId:poxiaoId}
+#define MSGCODE_FEE_LIST_RESPONSE  1071// 话费兑换列表回复{code:1071,poxiaoId:poxiaoId,list:[{url:"http://web.5278-mobi.com:1112/30.jpg",goods_id:3},{url:"http://web.5278-mobi.com:1112/50.jpg",goods_id:4},{url:"http://web.5278-mobi.com:1112/100.jpg",goods_id:5},{url:"http://web.5278-mobi.com:1112/200.jpg",goods_id:6}]}
+
+
 #define MSGCODE_MAJIANG_BACK_OUT_REQUEST 1992//后台切出请求{code:1992,poxiaoId:poxiaoId}
 
 #define MSGCODE_GAME_CHART_REQUEST  1993//游戏内聊天请求{code:1993,poxiaoId:"123",content:"哈哈",pId:"11111"}

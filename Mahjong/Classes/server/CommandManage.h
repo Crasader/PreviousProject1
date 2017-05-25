@@ -79,6 +79,7 @@ public:
     /** ---------------------- 比赛协议 ---------------------------**/
     std::string sendJoinCompetiotnCommand(std::string competitionId);
     std::string sendQuitCompetitionCommand(std::string competitionId);
+    std::string sendHuafeiExchangeCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

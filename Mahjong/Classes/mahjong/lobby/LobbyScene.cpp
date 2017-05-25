@@ -383,7 +383,59 @@ void LobbyScene::showLobbyAnim(){
     addChild(lightSpot);
     schedule(schedule_selector(LobbyScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
     
+    auto star = Sprite::create("competition/star.png");
+    star->setPosition(365,112);
+    star->setOpacity(0);
+    addChild(star,1);
+    star->runAction(Repeat::create(Sequence::create(FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(7), NULL),CC_REPEAT_FOREVER));
     
+    auto blink = Sprite::create("mjlobby/light_btn_anim_2.png");
+    blink->setPosition(430,65);
+    addChild(blink,1);
+    blink->setVisible(false);
+    blink->runAction(Repeat::create(Sequence::create(DelayTime::create(1),CallFunc::create([=](){
+        blink->setVisible(true);
+        blink->setPosition(430,65);
+    }),MoveTo::create(1.5,Point(810,65)),CallFunc::create([=](){
+        blink->setVisible(false);
+    }),DelayTime::create(5.5), NULL),CC_REPEAT_FOREVER));
+    auto blink2 = Sprite::create("mjlobby/light_btn_anim_2.png");
+    blink2->setPosition(470,65);
+    addChild(blink2,1);
+    blink2->setVisible(false);
+    blink2->runAction(Repeat::create(Sequence::create(DelayTime::create(1),CallFunc::create([=](){
+        blink2->setPosition(470,65);
+        blink2->setVisible(true);
+    }),MoveTo::create(1.5,Point(850,65)),CallFunc::create([=](){
+        blink2->setVisible(false);
+    }),DelayTime::create(5.5), NULL),CC_REPEAT_FOREVER));
+    
+    auto btnlight = Sprite::create("mjlobby/light_btn_anim_1.png");
+    btnlight->setPosition(640,70);
+    addChild(btnlight,1);
+    btnlight->runAction(Repeat::create(Sequence::create(DelayTime::create(1),Blink::create(2, 2),DelayTime::create(5), NULL),CC_REPEAT_FOREVER));
+    
+    auto blue = Sprite::create("mjlobby/btn_blue_light.png");
+    blue->setPosition(1025,58);
+    addChild(blue,1);
+    blue->setVisible(false);
+    blue->runAction(Repeat::create(Sequence::create(DelayTime::create(3),CallFunc::create([=](){
+        blue->setVisible(true);
+    }),Blink::create(2, 2),CallFunc::create([=](){
+        blue->setVisible(false);
+    }), DelayTime::create(3),NULL),CC_REPEAT_FOREVER));
+    
+    
+    auto blue2 = Sprite::create("mjlobby/btn_blue_light.png");
+    blue->setFlippedX(true);
+    blue2->setPosition(255,58);
+    addChild(blue2,1);
+    blue2->setVisible(false);
+    blue2->runAction(Repeat::create(Sequence::create(DelayTime::create(3),CallFunc::create([=](){
+        blue2->setVisible(true);
+    }),Blink::create(2, 2),CallFunc::create([=](){
+        blue2->setVisible(false);
+    }), DelayTime::create(3),NULL),CC_REPEAT_FOREVER));
 }
 
 
@@ -501,7 +553,7 @@ void LobbyScene::exchangeLequan(){
 
 void LobbyScene::exchangeHuafei(){
     Audio::getInstance()->playSoundClick();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeListCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiExchangeCommand());
     HuafeiShop* shop = HuafeiShop::create();
     addChild(shop,3);
 }
