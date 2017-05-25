@@ -118,6 +118,8 @@ void MahjongView::loadView(){
             lezi->setTexture("gameview/lezi_2240.png");
         }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type22100)){
             lezi->setTexture("gameview/lezi_22100.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type55c)){
+            lezi->setTexture("gameview/lezi_22100.png");
         }
         auto emsc =  Sprite::create("gameview/2mo3chong.png");
         emsc->setVisible(false);

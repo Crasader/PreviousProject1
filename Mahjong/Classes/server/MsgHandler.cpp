@@ -2020,6 +2020,10 @@ void MsgHandler::playerConnectAgain(std::string msg){
     }
     if(_mDoc.HasMember("matchid")){
         GAMEDATA::getInstance()->setIsCompetitionState(true);
+        GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
+    }
+    if(_mDoc.HasMember("prize")){
+        GAMEDATA::getInstance()->setCompetitionPride(_mDoc["prize"].GetString());
     }
     if(_mDoc.HasMember("umark")){
         const rapidjson::Value &umark = _mDoc["umark"];
@@ -2964,6 +2968,13 @@ void MsgHandler::handleHZGameReconnectNotify(std::string msg){
     if(_mDoc.HasMember("umark")){
         const rapidjson::Value &umark = _mDoc["umark"];
         UserData::getInstance()->setMarkId(umark.GetString());
+    }
+    if(_mDoc.HasMember("matchid")){
+        GAMEDATA::getInstance()->setIsCompetitionState(true);
+        GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
+    }
+    if(_mDoc.HasMember("prize")){
+        GAMEDATA::getInstance()->setCompetitionPride(_mDoc["prize"].GetString());
     }
     FriendOpenRoomRespData opdata;
     if(_mDoc.HasMember("prjushu")){

@@ -117,15 +117,23 @@ void GuiLayer::drawGameInfo(){
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         //私人房间
-        auto roomId = Sprite::create("gameview/fang_hao.png");
-        addChild(roomId);
-        auto roomIdNum = Label::createWithSystemFont(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"Arial",25);
-        roomIdNum->setTag(1088);
-        roomIdNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        roomIdNum->setColor(Color3B(233,209,112));
-        addChild(roomIdNum);
-        roomId->setPosition(1160,680);
-        roomIdNum->setPosition(1185,678);
+        if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
+            auto matchname = Label::createWithSystemFont(StringUtils::format("%s元话费赛",GAMEDATA::getInstance()->getCompetitionPride().c_str()), "arial", 25);
+            matchname->setPosition(1210,680);
+            matchname->setColor(Color3B(233,209,112));
+            addChild(matchname);
+            
+        }else{
+            auto roomId = Sprite::create("gameview/fang_hao.png");
+            addChild(roomId);
+            auto roomIdNum = Label::createWithSystemFont(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"Arial",25);
+            roomIdNum->setTag(1088);
+            roomIdNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            roomIdNum->setColor(Color3B(233,209,112));
+            addChild(roomIdNum);
+            roomId->setPosition(1160,680);
+            roomIdNum->setPosition(1185,678);
+        }
         if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
             roomInfoBg->setScale(1.0f, 0.4f);
         }

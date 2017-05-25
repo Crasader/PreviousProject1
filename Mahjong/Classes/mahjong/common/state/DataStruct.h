@@ -48,7 +48,8 @@ enum LeziType{
     type1150,// 1/1 50勒子
     type2200,// 2/2 无勒子
     type2240,// 2/2 40勒子
-    type22100 // 2/2 100勒子
+    type22100,// 2/2 100勒子
+    type55c//比赛专用
 };
 
 enum CompetitionRoomId{
