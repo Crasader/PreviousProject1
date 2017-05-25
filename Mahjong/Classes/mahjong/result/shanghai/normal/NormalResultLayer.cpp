@@ -110,6 +110,8 @@ void NormalResultLayer::showRoomInfo(){
             lezi->setTexture("result/lezi_2240.png");
         }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type22100)){
             lezi->setTexture("result/lezi_22100.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type55c)){
+            lezi->setTexture("competition/55wulezi_2.png");
         }
         auto emsc =  Sprite::create("result/public_2mo_3chong.png");
         emsc->setVisible(false);
