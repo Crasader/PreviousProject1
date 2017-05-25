@@ -24,7 +24,25 @@ bool CompetitionResult::init(){
 }
 
 void CompetitionResult::showCompetiotionResult(std::string type,std::string rank,std::string pride,std::string score){
+    if(rank == "1"){
+        showWin(type, rank, pride, score);
+    }else{
+        showLose(type, rank, pride, score);
+    }
+    auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(CompetitionResult::quit,this));
     
+    auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
+                                           CC_CALLBACK_0(CompetitionResult::share, this));
+    auto feedImage = MenuItemImage::create("competition/continiue_btn_1.png","competition/continiue_btn_2.png",
+                                           CC_CALLBACK_0(CompetitionResult::continueCompetition, this));
+    auto menu = Menu::create(quitImage,helpImage,feedImage,NULL);
+    menu->alignItemsHorizontallyWithPadding(60);
+    menu->setPosition(640,60);
+    addChild(menu);
+    
+}
+
+void CompetitionResult::showWin(std::string type,std::string rank,std::string pride,std::string score){
     auto title1 = Sprite::create("competition/shi_dai_1.png");
     title1->setPosition(640,600);
     addChild(title1,3);
@@ -225,18 +243,73 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     auto setp0_8 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
     auto setp0_9 = ScaleTo::create(0.2f,1.0f);
     huaNum->runAction(Sequence::create(setp0_7,setp0_8,setp0_9, NULL));
+}
+
+void CompetitionResult::showLose(std::string type,std::string rank,std::string pride,std::string score){
     
-    auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(CompetitionResult::quit,this));
+    auto title1 = Sprite::create("competition/title_fail.png");
+    title1->setPosition(640,600);
+    addChild(title1,3);
     
-    auto helpImage = MenuItemImage::create("result/xuan_yao_btn_1.png","result/xuan_yao_btn_2.png",
-                                           CC_CALLBACK_0(CompetitionResult::share, this));
-    auto feedImage = MenuItemImage::create("competition/continiue_btn_1.png","competition/continiue_btn_2.png",
-                                           CC_CALLBACK_0(CompetitionResult::continueCompetition, this));
-    auto menu = Menu::create(quitImage,helpImage,feedImage,NULL);
-    menu->alignItemsHorizontallyWithPadding(60);
-    menu->setPosition(640,60);
-    addChild(menu);
+
+    auto congratulation = Sprite::create("competition/yi_han.png");
+    congratulation->setPosition(640,480);
+    addChild(congratulation);
     
+    auto name = Sprite::create();
+    name->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    if(type == "1" ||type == "2" ){
+        name->setTexture("competition/shanghai_qiaoma.png");
+    }else{
+        name->setTexture("competition/hongzhong.png");
+    }
+    addChild(name);
+    
+    auto num = LabelAtlas::create(pride, "competition/huafei_zhi.png", 26, 44, '0');
+    num->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    addChild(num);
+    auto huafei = Sprite::create("competition/haufei_text.png");
+    huafei->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    addChild(huafei);
+    int wid = name->getContentSize().width+num->getContentSize().width+huafei->getContentSize().width;
+    name->setPosition(640-wid/2,482);
+    num->setPosition(640-wid/2+name->getContentSize().width,482);
+    huafei->setPosition(640-wid/2+name->getContentSize().width+num->getContentSize().width,482);
+    
+    auto rankText = Sprite::create("competition/rank_text.png");
+    rankText->setPosition(640,375);
+    addChild(rankText);
+    
+    auto rankNum = LabelAtlas::create(rank, "competition/rank_num.png", 98, 124, '0');
+    rankNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    rankNum->setPosition(640,388);
+    addChild(rankNum);
+    
+    auto kuohao =Sprite::create("competition/kuohao.png");
+    kuohao->setPosition(840,360);
+    addChild(kuohao);
+    auto icon = Sprite::create("mjitem/jifen_icon.png");
+    icon->setPosition(800,360);
+    icon->setScale(0.6f);
+    addChild(icon);
+    auto jifen = LabelAtlas::create(StringUtils::format(":%s",score.c_str()),"competition/score_num_1.png",22,30,'0');
+    jifen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    jifen->setPosition(810,360);
+    addChild(jifen);
+    
+    auto light = Sprite::create("competition/light_bg.png");
+    light->setPosition(640,240);
+    addChild(light);
+    
+    auto prideText = Sprite::create("competition/wu_jiang_li.png");
+    prideText->setPosition(640,260);
+    addChild(prideText);
+    
+    auto huaPride = Sprite::create("competition/zai_jie_zai_li.png");
+    huaPride->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    huaPride->setPosition(640,190);
+    addChild(huaPride,1);
+
 }
 
 void CompetitionResult::continueCompetition(){

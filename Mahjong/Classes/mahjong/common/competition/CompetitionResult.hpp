@@ -21,6 +21,8 @@ public:
     CREATE_FUNC(CompetitionResult);
 private:
     void share();
+    void showWin(std::string type,std::string rank,std::string pride,std::string score);
+    void showLose(std::string type,std::string rank,std::string pride,std::string score);
     void quit();
     void continueCompetition();
     void afterCaptured(bool succeed, const std::string &outputFile);
