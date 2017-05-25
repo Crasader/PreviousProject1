@@ -115,6 +115,9 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     addChild(difen);
     
     auto difen2 = Label::createWithSystemFont("5/5无勒子", "arial", 28);
+    if(roomId == CompetitionRoomId::Hongzhong_Normal||roomId == CompetitionRoomId::Hongzhong_High){
+        difen2->setString("5底分1码");
+    }
     difen2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     difen2->setPosition(860,285);
     addChild(difen2);
