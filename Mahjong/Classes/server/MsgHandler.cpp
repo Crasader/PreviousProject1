@@ -2874,6 +2874,10 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
         tingData.hu = 0;
     }
     faPaiData.mjTingData = tingData;
+    if(_mDoc.HasMember("matchid")){
+        faPaiData.matchId = _mDoc["matchid"].GetString();
+        GAMEDATA::getInstance()->setIsCompetitionState(true);
+    }
     postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
@@ -3122,6 +3126,14 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    
+    if(_mDoc.HasMember("matchid")){
+        CompetitionResultInfo competitionData;
+        competitionData.matchid = _mDoc["matchid"].GetString();
+        competitionData.pride = _mDoc["prize"].GetString();
+        competitionData.paiming = _mDoc["paiming"].GetString();
+        GAMEDATA::getInstance()->setCompetitionResultData(competitionData);
+    }
     if(_mDoc.HasMember("poker")){
         GAMEDATA::getInstance()->setDiaopao(_mDoc["poker"].GetString());
     }else{

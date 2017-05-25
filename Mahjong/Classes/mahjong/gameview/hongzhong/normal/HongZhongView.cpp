@@ -129,7 +129,7 @@ void HongZhongView::loadView(){
         CompetitionQueue* queue = CompetitionQueue::create();
         queue->setTag(9982);
         addChild(queue,10);
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerReadyCommand());
     }
 }
 
@@ -598,19 +598,31 @@ void HongZhongView::recoverGame(){
             PlayerGameData player = data.players.at(i);
             Player* info = new Player();
             info->setSeatId(player.seatId);
-            info->setGold(player.gold);
-            info->setDiamond(player.diamond);
-            info->setNickname(player.nickname);
-            info->setPicture(player.pic);
-            info->setGender(player.gender);
-            info->setScore(player.jifen);
-            info->setTicket(player.lequan);
-            info->setLockDiamond(player.bangzuan);
-            info->setPoxiaoId(player.poxiaoId);
-            info->setFangka(player.fangka);
-            info->setIP(player.ip);
             info->setIsReady(true);
-            info->setUmark(player.umark);
+            info->setPoxiaoId(player.poxiaoId);
+            info->setScore(player.jifen);
+            if(GAMEDATA::getInstance()->getIsCompetitionState()){
+                info->setGold(0);
+                info->setDiamond(0);
+                info->setNickname("");
+                info->setPicture("gameview/head_image_3.png");
+                info->setGender("");
+                info->setTicket(0);
+                info->setFangka(0);
+                info->setIP("");
+                info->setUmark("");
+            }else{
+                info->setGold(player.gold);
+                info->setDiamond(player.diamond);
+                info->setNickname(player.nickname);
+                info->setPicture(player.pic);
+                info->setGender(player.gender);
+                info->setTicket(player.lequan);
+                info->setLockDiamond(player.bangzuan);
+                info->setFangka(player.fangka);
+                info->setIP(player.ip);
+                info->setUmark(player.umark);
+            }
             GAMEDATA::getInstance()->addPlayersInfo(info);
             recoverPlayer(player, SeatIdUtil::getClientSeatId(data.seatId, player.seatId), info);
         }
@@ -1124,6 +1136,44 @@ void HongZhongView::onEnter(){
         }
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
+        GAMEDATA::getInstance()->setIsCompetitionQueue(false);
+        if(GAMEDATA::getInstance()->getIsCompetitionState()){
+            if(GAMEDATA::getInstance()->getPlayersInfo().size()==0){
+                for (int i = 0; i < 4; i++)
+                {
+                    Player* info = new Player();
+                    info->setSeatId(i+1);
+                    info->setGold(0);
+                    info->setDiamond(0);
+                    info->setNickname("");
+                    info->setPicture("gameview/head_image_3.png");
+                    info->setGender("");
+                    info->setScore(0);
+                    info->setTicket(0);
+                    info->setFangka(0);
+                    info->setIP("");
+                    info->setIsReady(true);
+                    info->setUmark("");
+                    GAMEDATA::getInstance()->addPlayersInfo(info);
+                }
+                addPlayer2Room();
+                if(NULL != getChildByTag(9982)){
+                    getChildByTag(9982)->removeFromParent();
+                }
+                auto startSprite1 = Sprite::create("competition/competition_start_1.png");
+                startSprite1->setPosition(320,350);
+                startSprite1->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                    startSprite1->removeFromParent();
+                }), NULL));
+                addChild(startSprite1);
+                auto startSprite2 = Sprite::create("competition/competition_start_2.png");
+                startSprite2->setPosition(960,320);
+                startSprite2->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                    startSprite2->removeFromParent();
+                }), NULL));
+                addChild(startSprite2);
+            }
+        }
         GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
         FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         data.prjucount = StringUtils::format("%d",newMsgData.prjucount);
@@ -1140,7 +1190,7 @@ void HongZhongView::onEnter(){
             playerOpposite->setIsReady(false);
         if(NULL != playerLeft)
             playerLeft->setIsReady(false);
-        if(!GAMEDATA::getInstance()->getIsCompetitionState())
+        if(!GAMEDATA::getInstance()->getIsCompetitionQueue())
             playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
         guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());

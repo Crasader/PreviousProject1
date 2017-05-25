@@ -87,10 +87,11 @@ void NormalResultLayer::showRoomInfo(){
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getCompetitionPride(), "result/ju_num.png",16,22,'0');
             fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-            fanghaoNum->setPosition(940,580);
+            fanghaoNum->setPosition(940,560);
             addChild(fanghaoNum);
             auto yuan = Sprite::create("competition/yuan_hua_fei.png");
-            yuan->setPosition(940,585);
+            yuan->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            yuan->setPosition(945,560);
             addChild(yuan);
         }else{
             auto fanghao = Sprite::create("result/fang_jian_hao.png");
