@@ -80,6 +80,7 @@ public:
     std::string sendJoinCompetiotnCommand(std::string competitionId);
     std::string sendQuitCompetitionCommand(std::string competitionId);
     std::string sendHuafeiExchangeCommand();
+//    std::string 
 private:
 	CommandManage();
 	static CommandManage* _instance;

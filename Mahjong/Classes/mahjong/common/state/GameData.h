@@ -50,6 +50,7 @@ public:
     CC_SYNTHESIZE(GoldChangeList, goldChangeList, GoldChangeList);
     CC_SYNTHESIZE(FangkaChargeList, fangkaChargeList, FangkaChargeList);
     CC_SYNTHESIZE(LequanChangeList, lequanChangeList, LequanChangeList);
+    CC_SYNTHESIZE(HuafeiChangeList, huafeiChangeList, HuafeiChangeList);
     CC_SYNTHESIZE(LequanChangeResult, lequanChangeResult, LequanChangeResult);
     CC_SYNTHESIZE(RedWalletRespData, redWalletRespData, RedWalletRespData);
     CC_SYNTHESIZE(ReciveRedWallet, reciveRedWallet, ReciveRedWallet);

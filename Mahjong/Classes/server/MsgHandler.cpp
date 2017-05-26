@@ -453,6 +453,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleCompetitionAddPalyer(msg);
         }
             break;
+        case MSGCODE_FEE_LIST_RESPONSE:{
+            handleHuafeiChangeListResp(msg);
+        }
+            break;
         default:
             break;
     }
@@ -3499,3 +3503,23 @@ void MsgHandler::handleCompetitionAddPalyer(std::string msg){
     postNotifyMessage(MSG_COMPETITION_ADD_PLAYER_NOTIFY, buf);
 }
 
+void MsgHandler::handleHuafeiChangeListResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &mall = _mDoc["list"];
+    HuafeiChangeList data;
+    data.needInit = true;
+    for(int i=0;i<mall.Capacity();i++){
+        const rapidjson::Value &temp = mall[i];
+        HuafeiChange change;
+        change.propId = temp["goods_id"].GetString();
+        change.propPrice = temp["prize"].GetString();
+        change.url = temp["url"].GetString();
+        data.list.push_back(change);
+    }
+    GAMEDATA::getInstance()->setHuafeiChangeList(data);
+    postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_LIST, nullptr);
+
+}

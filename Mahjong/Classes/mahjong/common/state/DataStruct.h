@@ -467,6 +467,17 @@ struct LequanChangeList{
     std::vector<LequanChange> list;
 };
 
+struct HuafeiChange{
+    std::string propId;
+    std::string propPrice;
+    std::string url;
+};
+
+struct HuafeiChangeList{
+    bool needInit;
+    std::vector<HuafeiChange> list;
+};
+
 struct LequanChangeResult{
     std::string result;
     int  lequan;

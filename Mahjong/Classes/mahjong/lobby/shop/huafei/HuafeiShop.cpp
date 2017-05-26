@@ -53,7 +53,7 @@ bool HuafeiShop::init(){
 
 void HuafeiShop::onEnter(){
     Layer::onEnter();
-    huafeiChangeList = EventListenerCustom::create(MSG_PLAYER_LEQUAN_CHANGE_LIST, [=](EventCustom* event){
+    huafeiChangeList = EventListenerCustom::create(MSG_PLAYER_HUAFEI_CHANGE_LIST, [=](EventCustom* event){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
             showHuafeiShop();
@@ -112,9 +112,9 @@ void HuafeiShop::showHuafeiShop(){
     addChild(lequanNum);
     
     for(int i=0;i<GAMEDATA::getInstance()->getLequanChangeList().list.size();i++){
-        ExchangePropCell* cell = ExchangePropCell::create(atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propId.c_str()), atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propPrice.c_str()),GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propName,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).url,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propType);
-        cell->setPosition(312+(i%4)*220,315);
-        addChild(cell);
+//        ExchangePropCell* cell = ExchangePropCell::create(atoi(GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).propId.c_str()), atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propPrice.c_str()),GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propName,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).url,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propType);
+//        cell->setPosition(312+(i%4)*220,315);
+//        addChild(cell);
     }
 }
 
