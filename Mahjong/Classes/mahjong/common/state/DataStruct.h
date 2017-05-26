@@ -471,6 +471,7 @@ struct HuafeiChange{
     std::string propId;
     std::string propPrice;
     std::string url;
+    std::string name;
 };
 
 struct HuafeiChangeList{

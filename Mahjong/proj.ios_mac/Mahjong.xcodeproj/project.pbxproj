@@ -374,6 +374,10 @@
 		D2DB5E7E1E7917490073ABD8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */; };
 		D2DCA7D71ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
 		D2DCA7D81ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
+		D2E035081ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */; };
+		D2E035091ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */; };
+		D2E0350C1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */; };
+		D2E0350D1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -786,6 +790,10 @@
 		D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D2DCA7D61ECEC067009F9C59 /* competition */ = {isa = PBXFileReference; lastKnownFileType = folder; path = competition; sourceTree = "<group>"; };
+		D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeHuafeiCell.cpp; sourceTree = "<group>"; };
+		D2E035071ED7C38C00291282 /* ExchangeHuafeiCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeHuafeiCell.hpp; sourceTree = "<group>"; };
+		D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeHuafeiItem.cpp; sourceTree = "<group>"; };
+		D2E0350B1ED7CCDA00291282 /* ExchangeHuafeiItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeHuafeiItem.hpp; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1759,6 +1767,10 @@
 		D29BE26A1ED686AA00EED3A0 /* huafei */ = {
 			isa = PBXGroup;
 			children = (
+				D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */,
+				D2E0350B1ED7CCDA00291282 /* ExchangeHuafeiItem.hpp */,
+				D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */,
+				D2E035071ED7C38C00291282 /* ExchangeHuafeiCell.hpp */,
 				D29BE26B1ED686CF00EED3A0 /* HuafeiShop.cpp */,
 				D29BE26C1ED686CF00EED3A0 /* HuafeiShop.hpp */,
 			);
@@ -2292,6 +2304,7 @@
 				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D252FC591E7FABE900937322 /* PlayerHero.cpp in Sources */,
 				D252FC8A1E7FB76700937322 /* CallAndroidMethod.cpp in Sources */,
+				D2E035081ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */,
 				D252FBBC1E7FA5EC00937322 /* ChargeGold.cpp in Sources */,
 				D252FBBE1E7FA5EC00937322 /* GoldNotEnoughDialog.cpp in Sources */,
 				D252FBCA1E7FA5EC00937322 /* ShopHintDialog.cpp in Sources */,
@@ -2353,6 +2366,7 @@
 				D252FB501E7FA5EC00937322 /* Loading.cpp in Sources */,
 				D252FC511E7FABE900937322 /* GuiLayer.cpp in Sources */,
 				D2B1D91E1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */,
+				D2E0350C1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */,
 				D252FB481E7FA5EC00937322 /* HeroInfoEdit.cpp in Sources */,
 				D252FCB01E7FB77F00937322 /* RechargeVC.mm in Sources */,
 				D252FB3C1E7FA5EC00937322 /* LostNetwork2.cpp in Sources */,
@@ -2377,6 +2391,7 @@
 				D252FB4B1E7FA5EC00937322 /* OtherPlayerInfo.cpp in Sources */,
 				D252FC5C1E7FABE900937322 /* Player.cpp in Sources */,
 				D252FB291E7FA5EC00937322 /* ChatDialog.cpp in Sources */,
+				D2E0350D1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */,
 				D252FB611E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,
 				D252FC461E7FABE900937322 /* DealJongAnim.cpp in Sources */,
 				D252FC4C1E7FABE900937322 /* LiuJuAnim.cpp in Sources */,
@@ -2391,6 +2406,7 @@
 				D252FC6C1E7FABE900937322 /* QuitRoomDialog.cpp in Sources */,
 				D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
+				D2E035091ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */,
 				D252FBC91E7FA5EC00937322 /* LequanShop.cpp in Sources */,
 				D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */,

@@ -3514,9 +3514,10 @@ void MsgHandler::handleHuafeiChangeListResp(std::string msg){
     for(int i=0;i<mall.Capacity();i++){
         const rapidjson::Value &temp = mall[i];
         HuafeiChange change;
-        change.propId = temp["goods_id"].GetString();
+        change.propId = StringUtils::format("%d",temp["goods_id"].GetInt());
         change.propPrice = temp["prize"].GetString();
         change.url = temp["url"].GetString();
+        change.name =  temp["name"].GetString();
         data.list.push_back(change);
     }
     GAMEDATA::getInstance()->setHuafeiChangeList(data);

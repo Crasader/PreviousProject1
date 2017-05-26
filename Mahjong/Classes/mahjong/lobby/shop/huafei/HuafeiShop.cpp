@@ -7,7 +7,7 @@
 //
 
 #include "mahjong/lobby/shop/huafei/HuafeiShop.hpp"
-#include "mahjong/lobby/shop/mall/ExchangePropCell.hpp"
+#include "mahjong/lobby/shop/huafei/ExchangeHuafeiCell.hpp"
 #include "mahjong/lobby/shop/mall/LequanExchangeRecord.hpp"
 #include "mahjong/lobby/shop/ShopHintDialog.hpp"
 #include "mahjong/common/state/GameData.h"
@@ -101,8 +101,8 @@ void HuafeiShop::showHuafeiShop(){
     recordMenu->setPosition(272,512);
     addChild(recordMenu);
     
-    auto lequanIcon = Sprite::create("shop/lequan_icon.png");
-    lequanIcon->setPosition(385,512);
+    auto lequanIcon = Sprite::create("mjlobby/huafei_icon.png");
+    lequanIcon->setPosition(385,508);
     addChild(lequanIcon);
     
     LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format("%d",UserData::getInstance()->getTicket()),"shop/prop_num.png",21,28,'0');
@@ -111,10 +111,10 @@ void HuafeiShop::showHuafeiShop(){
     lequanNum->setPosition(416,512);
     addChild(lequanNum);
     
-    for(int i=0;i<GAMEDATA::getInstance()->getLequanChangeList().list.size();i++){
-//        ExchangePropCell* cell = ExchangePropCell::create(atoi(GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).propId.c_str()), atoi(GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propPrice.c_str()),GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propName,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).url,GAMEDATA::getInstance()->getLequanChangeList().list.at(i).propType);
-//        cell->setPosition(312+(i%4)*220,315);
-//        addChild(cell);
+    for(int i=0;i<GAMEDATA::getInstance()->getHuafeiChangeList().list.size();i++){
+        ExchangeHuafeiCell* cell = ExchangeHuafeiCell::create(GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).propId,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).url,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).propPrice,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).name);
+        cell->setPosition(312+(i%4)*220,315);
+        addChild(cell);
     }
 }
 
