@@ -484,6 +484,11 @@ struct LequanChangeResult{
     int  lequan;
 };
 
+struct HuafeiChangeResult{
+    std::string result;
+    std::string  huafei;
+};
+
 struct RedShareFriend{
     std::string pId;
     std::string nickname;

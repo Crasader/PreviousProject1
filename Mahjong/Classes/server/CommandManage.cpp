@@ -356,7 +356,7 @@ std::string CommandManage::getThirdLoginCommand(std::string openid,std::string u
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_THIRED_LOGIN_REQUEST)));
     keyValue.insert(map<string, string>::value_type("type", "1"));
     keyValue.insert(map<string, string>::value_type("open_id", openid));
-     keyValue.insert(map<string, string>::value_type("unionid", unionid));
+    keyValue.insert(map<string, string>::value_type("unionid", unionid));
     keyValue.insert(map<string, string>::value_type("head", head));
     keyValue.insert(map<string, string>::value_type("sex", sex));
     keyValue.insert(map<string, string>::value_type("nickname", nickname));
@@ -592,7 +592,7 @@ std::string CommandManage::getHZHuActionCommand(std::string msg){
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("flag", msg));
     return commandString(keyValue);
-
+    
 }
 
 std::string CommandManage::getHZDissolveRoomSelectCommand(std::string agree){
@@ -661,6 +661,15 @@ std::string CommandManage::sendHuafeiExchangeCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_LIST_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_EXCHANGE_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("goodsId", goodsId));
+    keyValue.insert(map<string, string>::value_type("phone", phone));
     return commandString(keyValue);
 }
 

@@ -132,7 +132,7 @@ void ExchangeHuafeiItem::showVirtualItem(int propId,std::string propName){
 
 void ExchangeHuafeiItem::confirm(Ref* ref){
     if(NULL != getChildByTag(1001) && !getChildByTag(1001)->isVisible()&& NULL != getChildByTag(1002) && !getChildByTag(1002)->isVisible()){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeCommand(StringUtil::itos(getItemPropId()),_newPhoneNumber->getText(),"",""));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiDuiHuanCommand(StringUtil::itos(getItemPropId()),_newPhoneNumber->getText()));
     }else{
         ShopHintDialog* shop = ShopHintDialog::create();
         shop->showText(ChineseWord("dialog_text_8"));

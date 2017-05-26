@@ -61,18 +61,18 @@ void HuafeiShop::onEnter(){
     });
     _eventDispatcher->addEventListenerWithFixedPriority(huafeiChangeList, 1);
     
-    huafeiChangeResp = EventListenerCustom::create(MSG_PLAYER_LEQUAN_EXCHANGE, [=](EventCustom* event){
+    huafeiChangeResp = EventListenerCustom::create(MSG_PLAYER_HUAFEI_CHANGE_RESP, [=](EventCustom* event){
         if(NULL != getChildByTag(1000)){
             getChildByTag(1000)->removeFromParent();
             showHuafeiShop();
         }
-        if(GAMEDATA::getInstance()->getLequanChangeResult().result == "1"){
+        if(GAMEDATA::getInstance()->getHuafeiChangeResult().result == "1"){
             ShopHintDialog* shop = ShopHintDialog::create();
             shop->showText("兑换成功");
             addChild(shop);
-            UserData::getInstance()->setTicket(GAMEDATA::getInstance()->getLequanChangeResult().lequan);
+//            UserData::getInstance()->setTicket(atoi(GAMEDATA::getInstance()->getHuafeiChangeResult().huafei.c_str()));
             if(NULL != getChildByTag(962)){
-                ((LabelAtlas*)getChildByTag(962))->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
+//                ((LabelAtlas*)getChildByTag(962))->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
             }
         }else{
             ShopHintDialog* shop = ShopHintDialog::create();

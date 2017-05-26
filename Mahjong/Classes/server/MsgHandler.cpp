@@ -457,6 +457,11 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHuafeiChangeListResp(msg);
         }
             break;
+        case MSGCODE_FEE_EXCHANGE_RESPONSE:
+        {
+             handleHuafeiChangeResp(msg);
+        }
+            break;
         default:
             break;
     }
@@ -3522,5 +3527,23 @@ void MsgHandler::handleHuafeiChangeListResp(std::string msg){
     }
     GAMEDATA::getInstance()->setHuafeiChangeList(data);
     postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_LIST, nullptr);
+
+}
+
+void MsgHandler::handleHuafeiChangeResp(std::string msg){
+
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    HuafeiChangeResult myResult;
+    myResult.result = result.GetString();
+    if(_mDoc.HasMember("rest")){
+        const rapidjson::Value &lequan = _mDoc["rest"];
+        myResult.huafei = lequan.GetInt();
+    }
+    GAMEDATA::getInstance()->setHuafeiChangeResult(myResult);
+    postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_RESP, nullptr);
 
 }
