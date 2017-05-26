@@ -681,6 +681,12 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         const rapidjson::Value &gold = _mDoc["gold"];
         UserData::getInstance()->setGold(gold.GetInt());
     }
+    
+    if(_mDoc.HasMember("fee")){
+        const rapidjson::Value &fee = _mDoc["fee"];
+        UserData::getInstance()->setHuafeiQuan(fee.GetDouble());
+    }
+    
     if(_mDoc.HasMember("jifen")){
         const rapidjson::Value &jifen = _mDoc["jifen"];
         GAMEDATA::getInstance()->setScore(jifen.GetInt());
@@ -690,6 +696,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         const rapidjson::Value &ip = _mDoc["ip"];
         GAMEDATA::getInstance()->setIP(ip.GetString());
     }
+    
 }
 
 
@@ -968,6 +975,8 @@ void MsgHandler::loginResp(std::string msg){
         UserData::getInstance()->setGender(gender.GetInt());
         const rapidjson::Value &lequan = _mDoc["lequan"];
         UserData::getInstance()->setTicket(lequan.GetInt());
+        const rapidjson::Value &fee = _mDoc["fee"];
+        UserData::getInstance()->setHuafeiQuan(fee.GetDouble());
         if(_mDoc.HasMember("mobile")){
             const rapidjson::Value &mobile = _mDoc["mobile"];
             UserData::getInstance()->setBoundPhone(mobile.GetString());
@@ -3541,7 +3550,7 @@ void MsgHandler::handleHuafeiChangeResp(std::string msg){
     myResult.result = result.GetString();
     if(_mDoc.HasMember("rest")){
         const rapidjson::Value &lequan = _mDoc["rest"];
-        myResult.huafei = lequan.GetInt();
+        myResult.huafei = lequan.GetString();
     }
     GAMEDATA::getInstance()->setHuafeiChangeResult(myResult);
     postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_RESP, nullptr);

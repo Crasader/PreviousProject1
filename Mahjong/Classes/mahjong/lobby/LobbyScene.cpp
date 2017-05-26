@@ -238,7 +238,7 @@ void LobbyScene::drawSceneTop(){
     huafei_icon->setTag(905);
     huafei_icon->setPosition(840, 685);
     addChild(huafei_icon);
-    haufeiNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),"Arial",24);
+    haufeiNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()),"Arial",24);
     haufeiNum->setColor(Color3B(242,227,75));
     haufeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     haufeiNum->setPosition(910, 685);

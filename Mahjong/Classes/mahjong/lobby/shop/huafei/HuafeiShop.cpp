@@ -70,9 +70,9 @@ void HuafeiShop::onEnter(){
             ShopHintDialog* shop = ShopHintDialog::create();
             shop->showText("兑换成功");
             addChild(shop);
-//            UserData::getInstance()->setTicket(atoi(GAMEDATA::getInstance()->getHuafeiChangeResult().huafei.c_str()));
+            UserData::getInstance()->setHuafeiQuan(atoi(GAMEDATA::getInstance()->getHuafeiChangeResult().huafei.c_str()));
             if(NULL != getChildByTag(962)){
-//                ((LabelAtlas*)getChildByTag(962))->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
+                ((LabelAtlas*)getChildByTag(962))->setString(StringUtils::format("%d",UserData::getInstance()->getHuafeiQuan()));
             }
         }else{
             ShopHintDialog* shop = ShopHintDialog::create();
@@ -105,7 +105,7 @@ void HuafeiShop::showHuafeiShop(){
     lequanIcon->setPosition(385,508);
     addChild(lequanIcon);
     
-    LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format("%d",UserData::getInstance()->getTicket()),"shop/prop_num.png",21,28,'0');
+    LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()),"shop/prop_num.png",21,28,'0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setTag(962);
     lequanNum->setPosition(416,512);

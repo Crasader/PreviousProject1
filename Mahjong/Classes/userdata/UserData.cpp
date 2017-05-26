@@ -69,6 +69,15 @@ void UserData::setTicket(int num){
     UserDefault::getInstance()->setIntegerForKey("user_ticket", num);
 }
 
+float UserData::getHuafeiQuan(){
+    return UserDefault::getInstance()->getIntegerForKey("user_huafei_quan", 0);
+}
+
+
+void UserData::setHuafeiQuan(float num){
+     UserDefault::getInstance()->setDoubleForKey("user_huafei_quan", num);
+}
+
 std::string UserData::getUserName(){
     return UserDefault::getInstance()->getStringForKey("user_name", "unknow");
 }

@@ -21,6 +21,9 @@ public:
     
     int getLockDiamond();
     void setLockDiamond(int num);
+    
+    float getHuafeiQuan();
+    void setHuafeiQuan(float num);
 
 	int getTicket();
 	void setTicket(int num);
