@@ -22,5 +22,6 @@ private:
     EventListenerCustom* addPlayer;
     void quitCompetiton();
     int index;
+    std::vector<Sprite*> mylist ;
 };
 #endif /* CompetitionQueue_hpp */

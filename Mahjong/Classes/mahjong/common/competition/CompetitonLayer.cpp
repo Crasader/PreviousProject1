@@ -174,6 +174,7 @@ void CompetitonLayer::onEnter(){
 
 void CompetitonLayer::onExit(){
     Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(joinResp);
 }
 
 
