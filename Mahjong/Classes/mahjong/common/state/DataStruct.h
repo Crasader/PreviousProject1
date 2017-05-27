@@ -154,6 +154,16 @@ struct CompetitionResultInfo{
     std::string paiming;
 };
 
+struct GameHongBaoPride{
+    std::string dyj;
+    std::string dyjfee;
+    std::string dsj;
+    std::string dsjfee;
+    std::string fzid ;
+    std::string fzfee ;
+    std::string sxlmfee;
+};
+
 struct GameResultData
 {
     int result;//0打酱油,1自摸,3胡牌,2点炮

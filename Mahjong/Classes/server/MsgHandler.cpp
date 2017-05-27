@@ -1918,16 +1918,37 @@ void MsgHandler::gameResultNotify(std::string msg){
     if(_mDoc.HasMember("ifemsc")){
         GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
     }
+    GameHongBaoPride pride;
+    if(_mDoc.HasMember("dyj")){
+        pride.dyj = _mDoc["dyj"].GetString();
+    }
+    if(_mDoc.HasMember("dyjfee")){
+        pride.dyjfee = _mDoc["dyjfee"].GetString();
+    }
+    if(_mDoc.HasMember("dsj")){
+        pride.dsj = _mDoc["dsj"].GetString();
+    }
+    if(_mDoc.HasMember("dsjfee")){
+        pride.dsjfee = _mDoc["dsjfee"].GetString();
+    }
+    if(_mDoc.HasMember("fzfee")){
+        pride.fzfee = _mDoc["fzfee"].GetString();
+    }
+    if(_mDoc.HasMember("sxlmfee")){
+        pride.sxlmfee = _mDoc["sxlmfee"].GetString();
+    }
     if(_mDoc.HasMember("fzId")){
+        pride.fzid = _mDoc["fzId"].GetString();
         GAMEDATA::getInstance()->setFangZhuId(_mDoc["fzId"].GetString());
     }
-    
+    GAMEDATA::getInstance()->setGameHongBaoPride(pride);
     if(_mDoc.HasMember("prjucount")){
         GAMEDATA::getInstance()->setPrivateRoomType(_mDoc["prjucount"].GetString());
     }
     if(_mDoc.HasMember("fee")){
         GAMEDATA::getInstance()->setFee(_mDoc["fee"].GetString());
     }
+    
     const rapidjson::Value &flag = _mDoc["flag"];
     const rapidjson::Value &finish = _mDoc["finish"];
     vector<GameResultData> gameResults;
@@ -3171,10 +3192,30 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     }else{
         GAMEDATA::getInstance()->setDiaopao("");
     }
+    GameHongBaoPride pride;
+    if(_mDoc.HasMember("dyj")){
+        pride.dyj = _mDoc["dyj"].GetString();
+    }
+    if(_mDoc.HasMember("dyjfee")){
+        pride.dyjfee = _mDoc["dyjfee"].GetString();
+    }
+    if(_mDoc.HasMember("dsj")){
+        pride.dsj = _mDoc["dsj"].GetString();
+    }
+    if(_mDoc.HasMember("dsjfee")){
+        pride.dsjfee = _mDoc["dsjfee"].GetString();
+    }
+    if(_mDoc.HasMember("fzfee")){
+        pride.fzfee = _mDoc["fzfee"].GetString();
+    }
+    if(_mDoc.HasMember("sxlmfee")){
+        pride.sxlmfee = _mDoc["sxlmfee"].GetString();
+    }
     if(_mDoc.HasMember("fzId")){
+        pride.fzid = _mDoc["fzId"].GetString();
         GAMEDATA::getInstance()->setFangZhuId(_mDoc["fzId"].GetString());
     }
-    
+    GAMEDATA::getInstance()->setGameHongBaoPride(pride);
     if(_mDoc.HasMember("prjucount")){
         GAMEDATA::getInstance()->setPrivateRoomType(_mDoc["prjucount"].GetString());
     }

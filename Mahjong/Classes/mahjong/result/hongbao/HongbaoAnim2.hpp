@@ -16,7 +16,7 @@ class HongbaoAnim2 : public Layer{
 public :
     virtual bool init();
     CREATE_FUNC(HongbaoAnim2);
-    void initView(std::string hongNum,std::string hongNum2);
+    void initView(std::string hongNum,std::string hongNum2,bool shuang);
 private:
     void goBack();
     void share();

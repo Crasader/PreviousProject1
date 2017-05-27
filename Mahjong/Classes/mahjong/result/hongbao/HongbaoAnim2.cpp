@@ -16,12 +16,11 @@ bool HongbaoAnim2::init(){
     auto anim = Sprite::create("hongbao/hongbao_amin_bg.png");
     anim->setPosition(640,360);
     addChild(anim);
-    initView("0.9","0.9");
     return true;
 }
 
 
-void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2){
+void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,bool shuang){
     for (int i=0; i<1000; i++) {
         //飘带
         auto piao = Sprite::create();
@@ -165,7 +164,7 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2){
     hongbaoNum0->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){hongbaoNum0->setVisible(true);}),NULL));
     
     
-    if(hongNum2 == hongNum){
+    if(shuang){
         auto title = Sprite::create("hongbao/shuang_xi.png");
         title->setPosition(-220,660);
         addChild(title);

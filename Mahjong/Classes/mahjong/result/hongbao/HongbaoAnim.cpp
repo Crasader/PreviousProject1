@@ -16,7 +16,6 @@ bool HongbaoAnim::init(){
     auto anim = Sprite::create("hongbao/hongbao_amin_bg.png");
     anim->setPosition(640,360);
     addChild(anim);
-    initView("0.9");
     return true;
 }
 

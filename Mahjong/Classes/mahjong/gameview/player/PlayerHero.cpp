@@ -64,10 +64,10 @@ void PlayerHero::drawPlayerTrue(bool state){
     if(NULL == getChildByTag(1678)&&state){
         Trusteeship* tru = Trusteeship::create();
         tru->setTag(1678);
-        addChild(tru,100);
+        getParent()->addChild(tru,100);
     }
     if(NULL != getChildByTag(1678)&&!state){
-        getChildByTag(1678)->removeFromParent();
+        getParent()->getChildByTag(1678)->removeFromParent();
     }
 }
 
@@ -303,11 +303,6 @@ void PlayerHero::drawPlayerHero() {
         addChild(playerHandJongs.at(i));
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
-    //    for(auto protect:playerHandJongs){
-    //        if(protect->getJongType() == JongEnum::hz){
-    //            protect->showBackShadow(true);
-    //        }
-    //    }
     
 }
 

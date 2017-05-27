@@ -25,6 +25,8 @@
 #include "server/CommandManage.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
+#include "mahjong/result/hongbao/HongbaoAnim.hpp"
+#include "mahjong/result/hongbao/HongbaoAnim2.hpp"
 
 bool SpecialResultLayer::init(){
     if(!Layer::init()){
@@ -68,7 +70,42 @@ void SpecialResultLayer::showGameReslut(){
         GameResultCell* cell = GameResultCell::create(results.at(i));
         cell->setPosition(250+260*i,340);
         addChild(cell);
+        //判断是否有红包动画
     }
+    
+    if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()){
+        //双喜临门
+        if(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee != "0"){
+            HongbaoAnim2* ami = HongbaoAnim2::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,true);
+            addChild(ami,10);
+        }else{
+            HongbaoAnim2* ami = HongbaoAnim2::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,false);
+            addChild(ami,10);
+        }
+        
+    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()){
+        HongbaoAnim2* ami = HongbaoAnim2::create();
+        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,false);
+        addChild(ami,10);
+    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee != "0"){
+        HongbaoAnim* ami = HongbaoAnim::create();
+        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee);
+        addChild(ami,10);
+    
+    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().dyj != "0"){
+        HongbaoAnim* ami = HongbaoAnim::create();
+        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee);
+        addChild(ami,10);
+        
+    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzfee!= "0"){
+        HongbaoAnim* ami = HongbaoAnim::create();
+        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee);
+        addChild(ami,10);
+    }
+
+    
     //大结算的时候获取玩家信息
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
 }
