@@ -119,5 +119,6 @@ class HongZhongView : public Layer{
     EventListenerCustom* fangZhuLeaveListener;
     EventListenerCustom* networkBreakListener;
     EventListenerCustom* vhzOpenFriendRoomListener;
+    EventListenerCustom* truNotifyListener;
 };
 #endif /* HongZhongView_hpp */

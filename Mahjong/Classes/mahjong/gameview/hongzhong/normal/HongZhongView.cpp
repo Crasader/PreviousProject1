@@ -1026,7 +1026,7 @@ void HongZhongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playeHuActionListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(vhzOpenFriendRoomListener);
-    
+    Director::getInstance()->getEventDispatcher()->removeEventListener(truNotifyListener);
     
 }
 
@@ -1764,5 +1764,21 @@ void HongZhongView::onEnter(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
     });
+    
+    truNotifyListener  = EventListenerCustom::create(MSG_PLAYER_TRU_NOTIFY, [=](EventCustom* event){
+        TruStateData* tru_seatid = static_cast<TruStateData*>(event->getUserData());
+        TruStateData data = *tru_seatid;
+        int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(data.seatId.c_str()));
+        if(clientId == ClientSeatId::left){
+            playerLeft->setIsOffLine(data.flag == "1"?true:false);
+        }else if(clientId == ClientSeatId::opposite){
+            playerOpposite->setIsOffLine(data.flag == "1"?true:false);
+        }else if(clientId == ClientSeatId::right){
+            playerRight->setIsOffLine(data.flag == "1"?true:false);
+        }else {
+            playerHero->drawPlayerTrue(data.flag == "1"?true:false);
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(truNotifyListener, 1);
 }
 
