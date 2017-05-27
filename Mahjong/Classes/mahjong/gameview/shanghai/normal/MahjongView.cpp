@@ -1234,6 +1234,7 @@ void MahjongView::onEnter(){
         if(GAMEDATA::getInstance()->getIsPlaying()){
             return;
         }
+        float delay = 0;
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
         MahjongFaPaiData newMsgData = *msgData;
         GAMEDATA::getInstance()->setIsCompetitionQueue(false);
@@ -1272,6 +1273,7 @@ void MahjongView::onEnter(){
                     startSprite2->removeFromParent();
                 }), NULL));
                 addChild(startSprite2);
+                delay = 1.5f;
             }
         }
         GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
@@ -1297,10 +1299,12 @@ void MahjongView::onEnter(){
         guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;
-        DealJongAnim* anim = DealJongAnim::create();
-        anim->setTag(1000);
-        anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
-        addChild(anim);
+        schedule([=](float dt){
+            DealJongAnim* anim = DealJongAnim::create();
+            anim->setTag(1000);
+            anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
+            addChild(anim);
+        },0,0,delay,"hi_jim");
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
     
