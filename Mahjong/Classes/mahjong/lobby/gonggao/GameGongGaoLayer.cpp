@@ -19,27 +19,25 @@ GameGongGaoLayer* GameGongGaoLayer::create(GameGongGao gonggaoData){
         CC_SAFE_DELETE(gongGao);
         return nullptr;
     }
+    
 }
 
 bool GameGongGaoLayer::init(GameGongGao gonggaoData){
     if(!Layer::init()){
         return false;
     }
-    myGongGao = gonggaoData;
-    MenuItem* item1 = MenuItem::create();
-    item1->setContentSize(Size(1280, 720));
-    Menu* menu1 = Menu::create(item1, NULL);
-    this->addChild(menu1);
-    
 
+    
+    myGongGao = gonggaoData;
     auto day_bg = Sprite::create("daily/daily_bg.png");
+    day_bg->setTag(1024);
     day_bg->setPosition(640, 360);
     addChild(day_bg);
     
     auto title = Sprite::create("mjlobby/gong_gao_title.png");
     title->setPosition(640,640);
     addChild(title);
-
+    
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        CC_CALLBACK_0(GameGongGaoLayer::closeView, this));
     
@@ -68,9 +66,16 @@ bool GameGongGaoLayer::init(GameGongGao gonggaoData){
         }else{
             bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
         }
-
+        
     }
     schedule(schedule_selector(GameGongGaoLayer::updateGongGao), atoi(gonggaoData.gongGaoData.at(0).showTime.c_str()), CC_REPEAT_FOREVER, 0);
+    
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->setSwallowTouches(true);
+    touchListener->onTouchBegan = CC_CALLBACK_2(GameGongGaoLayer::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(GameGongGaoLayer::onTouchMoved, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(GameGongGaoLayer::onTouchEnded, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener,this);
     return true;
 }
 
@@ -98,4 +103,56 @@ void GameGongGaoLayer::updateGongGao(float dt){
             bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
         }
     }
+}
+
+
+bool GameGongGaoLayer::onTouchBegan(Touch *touch, Event  *event){
+    if(((Sprite*)getChildByTag(1024))->getBoundingBox().containsPoint(touch->getLocation())){
+        lastPos = touch->getLocation();
+        return true;
+    }
+    return false;
+}
+
+
+void GameGongGaoLayer::onTouchMoved(Touch *touch, Event  *event){
+    
+    }
+
+
+void GameGongGaoLayer::onTouchEnded(Touch *touch, Event  *event){
+    Point currentPos = touch->getLocation();
+    float dis = getDistance(lastPos,currentPos);
+    if(dis>50){
+        if(currentPos.x>lastPos.x){
+            showIndex =  (showIndex+1)%myGongGao.gongGaoData.size();
+        }else{
+            int temp = showIndex-1;
+            if(temp<0){
+                temp = contents.size()-1;
+            }
+            showIndex =  temp%myGongGao.gongGaoData.size();
+        }
+        
+        for(auto var : contents){
+            if(showIndex == var->getTag()){
+                var->setVisible(true);
+            }else{
+                var->setVisible(false);
+            }
+        }
+        for (int i=0 ;i<bubbles.size();i++) {
+            if(i==showIndex){
+                bubbles.at(i)->setTexture("mjlobby/bubble_2.png");
+            }else{
+                bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
+            }
+        }
+
+    }
+}
+
+float GameGongGaoLayer::getDistance(Point s, Point e){
+    return sqrt(pow(e.x-s.x, 2)+pow(e.y-s.y, 2));
+
 }

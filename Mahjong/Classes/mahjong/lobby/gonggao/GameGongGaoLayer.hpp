@@ -19,14 +19,19 @@ class GameGongGaoLayer : public Layer{
 public:
     static GameGongGaoLayer* create(GameGongGao gonggaoData);
     bool init(GameGongGao gonggaoData);
+    bool onTouchBegan(Touch *touch, Event  *event) override;
+    void onTouchMoved(Touch *touch, Event  *event) override;
+    void onTouchEnded(Touch *touch, Event  *event) override;
 private:
     int showIndex ;
+    Point lastPos;
     GameGongGao myGongGao;
     std::vector<GongGaoItem*> contents;
     std::vector<Sprite*> bubbles;
     Point getBubblePos(int size,int index);
     void updateGongGao(float dt);
     void closeView();
+    float getDistance(Point s, Point e);
 };
 
 #endif /* GameGongGao_hpp */
