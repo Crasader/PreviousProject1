@@ -530,6 +530,15 @@ struct LeChangeRecord{
     std::vector<LeRecord> records;
 };
 
+struct HuaRecord{
+    std::string propId;
+    std::string state;
+};
+
+struct HuaChangeRecord{
+    std::vector<HuaRecord> records;
+};
+
 struct PlayerResumeData{
     int seatId;
     int hua;

@@ -378,6 +378,8 @@
 		D2E035091ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */; };
 		D2E0350C1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */; };
 		D2E0350D1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */; };
+		D2E035101ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */; };
+		D2E035111ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -794,6 +796,8 @@
 		D2E035071ED7C38C00291282 /* ExchangeHuafeiCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeHuafeiCell.hpp; sourceTree = "<group>"; };
 		D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeHuafeiItem.cpp; sourceTree = "<group>"; };
 		D2E0350B1ED7CCDA00291282 /* ExchangeHuafeiItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeHuafeiItem.hpp; sourceTree = "<group>"; };
+		D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuafeiExchangeRecord.cpp; sourceTree = "<group>"; };
+		D2E0350F1ED90CF000291282 /* HuafeiExchangeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuafeiExchangeRecord.hpp; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1767,6 +1771,8 @@
 		D29BE26A1ED686AA00EED3A0 /* huafei */ = {
 			isa = PBXGroup;
 			children = (
+				D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */,
+				D2E0350F1ED90CF000291282 /* HuafeiExchangeRecord.hpp */,
 				D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */,
 				D2E0350B1ED7CCDA00291282 /* ExchangeHuafeiItem.hpp */,
 				D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */,
@@ -2256,6 +2262,7 @@
 				D252FB641E7FA5EC00937322 /* ParticleUtil.cpp in Sources */,
 				D252FB601E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,
 				D278ADC01DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
+				D2E035101ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */,
 				D252FB9C1E7FA5EC00937322 /* DailyEvent.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D252FC531E7FABE900937322 /* MjGameScene.cpp in Sources */,
@@ -2382,6 +2389,7 @@
 			files = (
 				D278ADC11DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
 				D2B1D91D1E9E026800EB8FB0 /* HZSpecialResultLayer.cpp in Sources */,
+				D2E035111ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */,
 				D252FBAB1E7FA5EC00937322 /* GongGaoItem.cpp in Sources */,
 				D252FC4A1E7FABE900937322 /* HupaiAnim.cpp in Sources */,
 				D252FC541E7FABE900937322 /* MjGameScene.cpp in Sources */,

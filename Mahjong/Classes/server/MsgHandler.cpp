@@ -462,6 +462,11 @@ void MsgHandler::distribute(int code, std::string msg){
              handleHuafeiChangeResp(msg);
         }
             break;
+        case MSGCODE_FEE_EXCHANGE_RECORD_RESPONSE:
+        {
+            handleHuafeiChangeRecord(msg);
+        }
+            break;
         default:
             break;
     }
@@ -3555,4 +3560,25 @@ void MsgHandler::handleHuafeiChangeResp(std::string msg){
     GAMEDATA::getInstance()->setHuafeiChangeResult(myResult);
     postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_RESP, nullptr);
 
+}
+
+
+void MsgHandler::handleHuafeiChangeRecord(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    HuaChangeRecord records;
+    if(_mDoc.HasMember("list")){
+        const rapidjson::Value &list = _mDoc["list"];
+        for(int i=0;i<list.Capacity();i++){
+            HuaRecord rec;
+            const rapidjson::Value &temp = list[i];
+            rec.propId =temp["id"].GetString();
+            rec.state = temp["status"].GetString();
+            records.records.push_back(rec);
+        }
+    }
+    GAMEDATA::getInstance()->setHuaChangeRecord(records);
+    postNotifyMessage(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, nullptr);
 }

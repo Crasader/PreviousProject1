@@ -8,7 +8,7 @@
 
 #include "mahjong/lobby/shop/huafei/HuafeiShop.hpp"
 #include "mahjong/lobby/shop/huafei/ExchangeHuafeiCell.hpp"
-#include "mahjong/lobby/shop/mall/LequanExchangeRecord.hpp"
+#include "mahjong/lobby/shop/huafei/HuafeiExchangeRecord.hpp"
 #include "mahjong/lobby/shop/ShopHintDialog.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/loading/Loading.h"
@@ -72,7 +72,7 @@ void HuafeiShop::onEnter(){
             addChild(shop);
             UserData::getInstance()->setHuafeiQuan(atoi(GAMEDATA::getInstance()->getHuafeiChangeResult().huafei.c_str()));
             if(NULL != getChildByTag(962)){
-                ((LabelAtlas*)getChildByTag(962))->setString(StringUtils::format("%d",UserData::getInstance()->getHuafeiQuan()));
+                ((Label*)getChildByTag(962))->setString(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()));
             }
         }else{
             ShopHintDialog* shop = ShopHintDialog::create();
@@ -105,7 +105,8 @@ void HuafeiShop::showHuafeiShop(){
     lequanIcon->setPosition(385,508);
     addChild(lequanIcon);
     
-    LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()),"shop/prop_num.png",21,28,'0');
+    Label* lequanNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()), "arial", 30);
+    lequanNum->setColor(Color3B(255,214,88));
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setTag(962);
     lequanNum->setPosition(416,512);
@@ -126,8 +127,8 @@ void HuafeiShop::exchange(Ref* ref){
 }
 
 void HuafeiShop::showRecord(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeRecordCommand());
-    LequanExchangeRecord* record  = LequanExchangeRecord::create();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiRecordCommmand());
+    HuafeiExchangeRecord* record  = HuafeiExchangeRecord::create();
     addChild(record);
 }
 

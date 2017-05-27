@@ -99,5 +99,6 @@ private:
     void handleCompetitionAddPalyer(std::string msg);
     void handleHuafeiChangeListResp(std::string msg);
     void handleHuafeiChangeResp(std::string msg);
+    void handleHuafeiChangeRecord(std::string msg);
 };
 #endif

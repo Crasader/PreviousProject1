@@ -81,6 +81,7 @@ public:
     std::string sendQuitCompetitionCommand(std::string competitionId);
     std::string sendHuafeiExchangeCommand();
     std::string sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone);
+    std::string sendHuafeiRecordCommmand();
 private:
 	CommandManage();
 	static CommandManage* _instance;
