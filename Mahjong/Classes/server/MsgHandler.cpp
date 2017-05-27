@@ -980,8 +980,10 @@ void MsgHandler::loginResp(std::string msg){
         UserData::getInstance()->setGender(gender.GetInt());
         const rapidjson::Value &lequan = _mDoc["lequan"];
         UserData::getInstance()->setTicket(lequan.GetInt());
-        const rapidjson::Value &fee = _mDoc["fee"];
-        UserData::getInstance()->setHuafeiQuan(fee.GetDouble());
+        if(_mDoc.HasMember("fee")){
+            const rapidjson::Value &fee = _mDoc["fee"];
+            UserData::getInstance()->setHuafeiQuan(fee.GetDouble());
+        }
         if(_mDoc.HasMember("mobile")){
             const rapidjson::Value &mobile = _mDoc["mobile"];
             UserData::getInstance()->setBoundPhone(mobile.GetString());
@@ -1024,7 +1026,8 @@ void MsgHandler::loginResp(std::string msg){
         postNotifyMessage(MSG_LOGIN_RESP, buf);
     }
     else{
-        postNotifyMessage(MSG_LOGIN_RESP, NULL);
+        char* buf = const_cast<char*>("");
+        postNotifyMessage(MSG_LOGIN_RESP,buf);
     }
 }
 

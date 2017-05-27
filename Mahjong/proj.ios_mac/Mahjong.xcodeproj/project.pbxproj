@@ -380,6 +380,12 @@
 		D2E0350D1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */; };
 		D2E035101ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */; };
 		D2E035111ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */; };
+		D2E035151ED9120700291282 /* HongbaoAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035131ED9120700291282 /* HongbaoAnim.cpp */; };
+		D2E035161ED9120700291282 /* HongbaoAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035131ED9120700291282 /* HongbaoAnim.cpp */; };
+		D2E035181ED914D400291282 /* hongbao in Resources */ = {isa = PBXBuildFile; fileRef = D2E035171ED914D400291282 /* hongbao */; };
+		D2E035191ED914D400291282 /* hongbao in Resources */ = {isa = PBXBuildFile; fileRef = D2E035171ED914D400291282 /* hongbao */; };
+		D2E0351C1ED92BE700291282 /* HongbaoAnim2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0351A1ED92BE700291282 /* HongbaoAnim2.cpp */; };
+		D2E0351D1ED92BE700291282 /* HongbaoAnim2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0351A1ED92BE700291282 /* HongbaoAnim2.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -798,6 +804,11 @@
 		D2E0350B1ED7CCDA00291282 /* ExchangeHuafeiItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeHuafeiItem.hpp; sourceTree = "<group>"; };
 		D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuafeiExchangeRecord.cpp; sourceTree = "<group>"; };
 		D2E0350F1ED90CF000291282 /* HuafeiExchangeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuafeiExchangeRecord.hpp; sourceTree = "<group>"; };
+		D2E035131ED9120700291282 /* HongbaoAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongbaoAnim.cpp; sourceTree = "<group>"; };
+		D2E035141ED9120700291282 /* HongbaoAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongbaoAnim.hpp; sourceTree = "<group>"; };
+		D2E035171ED914D400291282 /* hongbao */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hongbao; sourceTree = "<group>"; };
+		D2E0351A1ED92BE700291282 /* HongbaoAnim2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongbaoAnim2.cpp; sourceTree = "<group>"; };
+		D2E0351B1ED92BE700291282 /* HongbaoAnim2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongbaoAnim2.hpp; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -989,6 +1000,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2E035171ED914D400291282 /* hongbao */,
 				D2DCA7D61ECEC067009F9C59 /* competition */,
 				D281E5A01DACF35600D3E44E /* audio */,
 				D212D53B1E14A0BA00C29C00 /* batteryInfo */,
@@ -1481,6 +1493,7 @@
 		D252FB0C1E7FA5EC00937322 /* result */ = {
 			isa = PBXGroup;
 			children = (
+				D2E035121ED911ED00291282 /* hongbao */,
 				D2B1D9001E9E026800EB8FB0 /* hongzhong */,
 				D2B1D90B1E9E026800EB8FB0 /* shanghai */,
 				D252FB121E7FA5EC00937322 /* ResultScene.cpp */,
@@ -1914,6 +1927,17 @@
 			path = invitecode;
 			sourceTree = "<group>";
 		};
+		D2E035121ED911ED00291282 /* hongbao */ = {
+			isa = PBXGroup;
+			children = (
+				D2E0351A1ED92BE700291282 /* HongbaoAnim2.cpp */,
+				D2E0351B1ED92BE700291282 /* HongbaoAnim2.hpp */,
+				D2E035131ED9120700291282 /* HongbaoAnim.cpp */,
+				D2E035141ED9120700291282 /* HongbaoAnim.hpp */,
+			);
+			path = hongbao;
+			sourceTree = "<group>";
+		};
 		D2F05F281D8E2B22006E5A4C /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -2186,6 +2210,7 @@
 				D281A3901E5442C8007FF30E /* share in Resources */,
 				D25329781CC0D33600DDAD97 /* res in Resources */,
 				D253297C1CC0D33600DDAD97 /* trusteeship in Resources */,
+				D2E035181ED914D400291282 /* hongbao in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */,
 			);
@@ -2216,6 +2241,7 @@
 				D2B1D8FF1E9DF95B00EB8FB0 /* fanma in Resources */,
 				D25329711CC0D33600DDAD97 /* mjitem in Resources */,
 				D281A3911E5442C8007FF30E /* share in Resources */,
+				D2E035191ED914D400291282 /* hongbao in Resources */,
 				D25329611CC0D33600DDAD97 /* fonts in Resources */,
 				D2DCA7D81ECEC067009F9C59 /* competition in Resources */,
 				D25329731CC0D33600DDAD97 /* mjlobby in Resources */,
@@ -2320,6 +2346,7 @@
 				D252FB281E7FA5EC00937322 /* ChatDialog.cpp in Sources */,
 				D252FB461E7FA5EC00937322 /* HeadImageDialog.cpp in Sources */,
 				D2B3DD981E6ED2F70099B97E /* Base64.cpp in Sources */,
+				D2E035151ED9120700291282 /* HongbaoAnim.cpp in Sources */,
 				D252FB541E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D252FBB21E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */,
 				D299F8D81E27640000D10B0D /* SocketDataBack.cpp in Sources */,
@@ -2355,6 +2382,7 @@
 				D252FC491E7FABE900937322 /* HupaiAnim.cpp in Sources */,
 				D252FBD81E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D252FC6D1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */,
+				D2E0351C1ED92BE700291282 /* HongbaoAnim2.cpp in Sources */,
 				D2FD5B571EA711510016FCCC /* amrFileCodec.mm in Sources */,
 				D252FCAF1E7FB77F00937322 /* LoginByWechat.mm in Sources */,
 				D2FD5B581EA711510016FCCC /* wav.mm in Sources */,
@@ -2497,6 +2525,7 @@
 				D252FB3F1E7FA5EC00937322 /* HintDialog.cpp in Sources */,
 				D252FBB11E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
 				D252FBC51E7FA5EC00937322 /* ExchangePropCell.cpp in Sources */,
+				D2E0351D1ED92BE700291282 /* HongbaoAnim2.cpp in Sources */,
 				D252FC8D1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */,
 				D252FBAF1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */,
@@ -2508,6 +2537,7 @@
 				D252FC8B1E7FB76700937322 /* CallAndroidMethod.cpp in Sources */,
 				D252FB371E7FA5EC00937322 /* QuickChatLayer.cpp in Sources */,
 				D252FB551E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
+				D2E035161ED9120700291282 /* HongbaoAnim.cpp in Sources */,
 				D252FBD31E7FA5EC00937322 /* ResultScene.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D252FB451E7FA5EC00937322 /* ToastCell.cpp in Sources */,

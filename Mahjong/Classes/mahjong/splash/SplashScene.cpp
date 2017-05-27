@@ -394,8 +394,7 @@ void SplashScene::addTocuhListener(){
 void SplashScene::onEnter(){
     Layer::onEnter();
     loginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
+        std::string result = static_cast<char*>(event->getUserData());
         removeLoading();
         if (result == LOGIN_SUCCESS){
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
