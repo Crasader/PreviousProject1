@@ -1241,6 +1241,8 @@ void MahjongView::onEnter(){
         MahjongFaPaiData newMsgData = *msgData;
         GAMEDATA::getInstance()->setIsCompetitionQueue(false);
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
+            ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
+            ((Orientation*)getChildByTag(123))->resetBank();
             if(GAMEDATA::getInstance()->getPlayersInfo().size()==0){
                 for (int i = 0; i < 4; i++)
                 {
@@ -1277,6 +1279,7 @@ void MahjongView::onEnter(){
                 addChild(startSprite2);
                 delay = 1.5f;
             }
+            
         }
         GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
         GAMEDATA::getInstance()->setHuangfan(newMsgData.huangfan);
@@ -1847,5 +1850,6 @@ void MahjongView::onEnter(){
             playerHero->drawPlayerTrue(data.flag == "1"?true:false);
         }
     });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(truNotifyListener, 1);
 }
 

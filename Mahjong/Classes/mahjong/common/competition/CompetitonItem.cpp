@@ -86,6 +86,10 @@ bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::strin
 void CompetitonItem::joinCompetition(Ref* ref){
     GAMEDATA::getInstance()->setCompetitionId(StringUtils::format("%d",getRoomId()));
     GAMEDATA::getInstance()->setCompetitionPride(getHuaFei());
+    GAMEDATA::getInstance()->setPrivateLezi(StringUtils::format("%d", LeziType::type55c));
+    FriendOpenRoomRespData opdata;
+    opdata.prjushu = "4";
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
     CompetitonLayer* lay = CompetitonLayer::create();
     lay->initView(getRoomId(),getHuaFei(),getFangka(),getRule());
     getParent()->addChild(lay,5);
