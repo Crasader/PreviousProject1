@@ -691,7 +691,7 @@ void MahjongView::recoverGame(){
             info->setSeatId(player.seatId);
             info->setScore(player.jifen);
             info->setPoxiaoId(player.poxiaoId);
-             info->setIsReady(true);
+            info->setIsReady(true);
             if(GAMEDATA::getInstance()->getIsCompetitionState()){
                 info->setGold(0);
                 info->setDiamond(0);
@@ -750,6 +750,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerHero->initPlayer(playerInfo);
             playerHero->setIsAllowPlay(false);
             playerHero->setPlayerTingState(data.status == 1?true:false);
+            playerHero->drawPlayerTrue(data.tru == 1?true:false);
             addChild(playerHero, 2);
             playerHero->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerHero->recoverHand(data.hand,data.lastpoker);
