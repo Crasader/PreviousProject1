@@ -208,10 +208,10 @@ void NormalResultLayer::showLayerBtn(){
             timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE);
             timeLabel->setPosition(910,55);
             
-            auto stetx = Sprite::create("competition/daojishi_s.png");
-            stetx->setPosition(930,55);
-            stetx->setAnchorPoint(Point::ANCHOR_MIDDLE);
-            addChild(stetx);
+//            auto stetx = Sprite::create("competition/daojishi_s.png");
+//            stetx->setPosition(930,55);
+//            stetx->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//            addChild(stetx);
             
         }else{
             auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));

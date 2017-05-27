@@ -79,51 +79,50 @@ void GuiLayer::drawGuiButton(){
 
 
 void GuiLayer::drawGameInfo(){
-    
     auto roomInfoBg = Sprite::create("gameview/room_id_bg.png");
     roomInfoBg->setAnchorPoint(Point::ANCHOR_TOP_RIGHT);
     roomInfoBg->setPosition(1275,710);
     addChild(roomInfoBg);
-    
-    if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
-        auto kaibao = Sprite::create("gameview/kai_bao.png");
-        addChild(kaibao);
+    if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
+        roomInfoBg->setScaleY(0.4);
+        auto matchname = Label::createWithSystemFont(StringUtils::format("%s元话费赛",GAMEDATA::getInstance()->getCompetitionPride().c_str()), "arial", 25);
+        matchname->setPosition(1200,710);
+        matchname->setColor(Color3B(233,209,112));
+        addChild(matchname);
+    }else{
         
-        kaibaoNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getKaibao(),"Arial",25);
-        kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        kaibaoNum->setColor(Color3B(233,209,112));
-        addChild(kaibaoNum);
-        
-        auto huangfan = Sprite::create("gameview/huang_fan.png");
-        addChild(huangfan);
-        
-        haungNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getHuangfan(), "Arial",25);
-        haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        haungNum->setColor(Color3B(233,209,112));
-        addChild(haungNum);
-        
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            kaibao->setPosition(1160,640);
-            kaibaoNum->setPosition(1200,638);
-            huangfan->setPosition(1160, 610);
-            haungNum->setPosition(1200, 608);
-        }else{
-            kaibao->setPosition(1170,680);
-            kaibaoNum->setPosition(1210,678);
-            huangfan->setPosition(1170, 650);
-            haungNum->setPosition(1210, 648);
-        }
-    }
-    
-    if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        //私人房间
-        if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
-            auto matchname = Label::createWithSystemFont(StringUtils::format("%s元话费赛",GAMEDATA::getInstance()->getCompetitionPride().c_str()), "arial", 25);
-            matchname->setPosition(1200,680);
-            matchname->setColor(Color3B(233,209,112));
-            addChild(matchname);
+        if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
+            auto kaibao = Sprite::create("gameview/kai_bao.png");
+            addChild(kaibao);
             
-        }else{
+            kaibaoNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getKaibao(),"Arial",25);
+            kaibaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            kaibaoNum->setColor(Color3B(233,209,112));
+            addChild(kaibaoNum);
+            
+            auto huangfan = Sprite::create("gameview/huang_fan.png");
+            addChild(huangfan);
+            
+            haungNum = Label::createWithSystemFont("X "+GAMEDATA::getInstance()->getHuangfan(), "Arial",25);
+            haungNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            haungNum->setColor(Color3B(233,209,112));
+            addChild(haungNum);
+            
+            if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+                kaibao->setPosition(1160,640);
+                kaibaoNum->setPosition(1200,638);
+                huangfan->setPosition(1160, 610);
+                haungNum->setPosition(1200, 608);
+            }else{
+                kaibao->setPosition(1170,680);
+                kaibaoNum->setPosition(1210,678);
+                huangfan->setPosition(1170, 650);
+                haungNum->setPosition(1210, 648);
+            }
+        }
+        
+        if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            //私人房间
             auto roomId = Sprite::create("gameview/fang_hao.png");
             addChild(roomId);
             auto roomIdNum = Label::createWithSystemFont(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid,"Arial",25);
@@ -132,13 +131,12 @@ void GuiLayer::drawGameInfo(){
             roomIdNum->setColor(Color3B(233,209,112));
             addChild(roomIdNum);
             roomId->setPosition(1160,680);
-            roomIdNum->setPosition(1185,678);
+            roomIdNum->setPosition(1185,678);        if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
+                roomInfoBg->setScale(1.0f, 0.4f);
+            }
+        }else{
+            roomInfoBg->setScale(0.95, 0.68);
         }
-        if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
-            roomInfoBg->setScale(1.0f, 0.4f);
-        }
-    }else{
-        roomInfoBg->setScale(0.95, 0.68);
     }
 }
 
@@ -201,12 +199,14 @@ void GuiLayer::quitButtonClick(){
 
 
 void GuiLayer::updateData(){
-    if(GAMEDATA::getInstance()->getGameType() != 3 && GAMEDATA::getInstance()->getGameType() != 4){
-        kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
-        haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
-    }
-    if(NULL != getChildByTag(1088)){
-        ((Label*)getChildByTag(1088))->setString(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
+    if(!GAMEDATA::getInstance()->getIsCompetitionQueue()&&!GAMEDATA::getInstance()->getIsCompetitionState()){
+        if(GAMEDATA::getInstance()->getGameType() != 3 && GAMEDATA::getInstance()->getGameType() != 4){
+            kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
+            haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
+        }
+        if(NULL != getChildByTag(1088)){
+            ((Label*)getChildByTag(1088))->setString(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
+        }
     }
 }
 

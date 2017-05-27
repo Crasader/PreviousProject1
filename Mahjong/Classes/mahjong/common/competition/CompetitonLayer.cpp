@@ -11,6 +11,7 @@
 #include"mahjong/gameview/MjGameScene.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/competition/CompetitionResult.hpp"
+#include "mahjong/lobby/shop/fangka/FangkaNotEnoughDialog.hpp"
 
 bool CompetitonLayer::init(){
     
@@ -150,7 +151,11 @@ void CompetitonLayer::onEnter(){
                 Director::getInstance()->replaceScene(TransitionFade::create(0.1, MjGameScene::create()));
             }
         }else{
-            removeFromParent();
+            if(NULL != getChildByTag(1024)){
+                getChildByTag(1024)->removeFromParentAndCleanup(true);
+            }
+            FangkaNotEnoughDialog* da =  FangkaNotEnoughDialog::create();
+            addChild(da);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(joinResp, 1);
@@ -167,8 +172,11 @@ void CompetitonLayer::closeView(){
 }
 
 void CompetitonLayer::joinCompetiton(Ref* ref){
-    Loading* lod = Loading::create();
-    addChild(lod);
+    if(NULL == getChildByTag(1024)){
+        Loading* lod = Loading::create();
+        lod->setTag(1024);
+        addChild(lod);
+    }
     MenuItemImage* tem =  (MenuItemImage*) ref;
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%d",tem->getTag())));
 }

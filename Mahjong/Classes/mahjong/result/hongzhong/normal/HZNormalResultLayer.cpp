@@ -209,10 +209,10 @@ void HZNormalResultLayer::showLayerBtn(){
             timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             timeLabel->setPosition(900,55);
             
-            auto stetx = Sprite::create("competition/daojishi_s.png");
-            stetx->setPosition(timeLabel->getPositionX()+timeLabel->getContentSize().width,55);
-            stetx->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            addChild(stetx);
+//            auto stetx = Sprite::create("competition/daojishi_s.png");
+//            stetx->setPosition(timeLabel->getPositionX()+timeLabel->getContentSize().width,55);
+//            stetx->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//            addChild(stetx);
 
             
         }else{

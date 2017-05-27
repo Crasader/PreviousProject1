@@ -86,6 +86,8 @@ bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::strin
 void CompetitonItem::joinCompetition(Ref* ref){
     GAMEDATA::getInstance()->setCompetitionId(StringUtils::format("%d",getRoomId()));
     GAMEDATA::getInstance()->setCompetitionPride(getHuaFei());
+    GAMEDATA::getInstance()->setCompetitionRule(getFangka());
+    GAMEDATA::getInstance()->setCompetitionFee(getRule());
     GAMEDATA::getInstance()->setPrivateLezi(StringUtils::format("%d", LeziType::type55c));
     FriendOpenRoomRespData opdata;
     opdata.prjushu = "4";

@@ -7,6 +7,7 @@
 //
 
 #include "mahjong/common/competition/CompetitionResult.hpp"
+#include "mahjong/common/competition/CompetitonLayer.hpp"
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/lobby/LobbyScene.h"
 #include "server/NetworkManage.h"
@@ -178,7 +179,14 @@ void CompetitionResult::showWin(std::string type,std::string rank,std::string pr
     icon->setPosition(680,360);
     icon->setScale(0.6f);
     icon->setOpacity(0);
-    auto jifen = LabelAtlas::create(StringUtils::format(":%s",score.c_str()),"competition/score_num_1.png",22,30,'0');
+    LabelAtlas* jifen;
+    int sco = atoi(score.c_str());
+    if(sco>=0){
+        jifen = LabelAtlas::create(StringUtils::format(":%d",sco),"competition/score_num_1.png",22,30,'0');
+
+    }else{
+        jifen = LabelAtlas::create(StringUtils::format(":%d",abs(sco)),"competition/score_num_2.png",22,30,'0');
+    }
     jifen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     jifen->setPosition(690,360);
     jifen->setOpacity(0);
@@ -313,7 +321,14 @@ void CompetitionResult::showLose(std::string type,std::string rank,std::string p
 }
 
 void CompetitionResult::continueCompetition(){
-    
+    GAMEDATA::getInstance()->setPrivateLezi(StringUtils::format("%d", LeziType::type55c));
+    FriendOpenRoomRespData opdata;
+    opdata.prjushu = "4";
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
+    CompetitonLayer* lay = CompetitonLayer::create();
+    lay->initView((CompetitionRoomId)atoi(GAMEDATA::getInstance()->getCompetitionId().c_str()),GAMEDATA::getInstance()->getCompetitionPride(),GAMEDATA::getInstance()->getCompetitionRule(),GAMEDATA::getInstance()->getCompetitionFee());
+    getParent()->addChild(lay,5);
+
 }
 
 
