@@ -14,8 +14,11 @@ USING_NS_CC;
 class FangkaNotEnoughDialog :public Layer{
 public:
     virtual bool init();
+    void initView(int num,int fee);
     CREATE_FUNC(FangkaNotEnoughDialog);
 private:
+    LabelAtlas* fangkanum;
+    LabelAtlas* xuyaunnum;
     void closeView();
     void confirmCharge();
 };

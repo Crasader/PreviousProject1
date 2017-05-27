@@ -31,34 +31,25 @@ bool CompetitonLayer::init(){
     auto closeMenu = Menu::create(closeImage, NULL);
     closeMenu->setPosition(1150, 642);
     addChild(closeMenu);
-    
-    return  true;
-}
-
-
-void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::string fangka,std::string rule){
-    auto title = Sprite::create("competition/shanghai_text.png");
-    if(roomId == CompetitionRoomId::Hongzhong_High||roomId == Hongzhong_Normal){
-        title->setTexture("competition/hongzhong_text.png");
-    }
+    title = Sprite::create("competition/shanghai_text.png");
     title->setPosition(415,600);
     addChild(title);
-
-    auto huafeiNum = LabelAtlas::create(huafei, "competition/huafei_num.png", 48, 76, '0');
+    
+    huafeiNum = LabelAtlas::create("0", "competition/huafei_num.png", 48, 76, '0');
     huafeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     huafeiNum->setPosition(530,606);
     addChild(huafeiNum);
     
-    auto text = Sprite::create("competition/huafei_text.png");
+    text = Sprite::create("competition/huafei_text.png");
     text->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    text->setPosition(huafeiNum->getPositionX()+huafeiNum->getContentSize().width,606);
+    
     addChild(text);
     
     auto ruleTitle = Sprite::create("competition/competition_rule.png");
     ruleTitle->setPosition(380,460);
     addChild(ruleTitle);
     
-    auto ruleText = Label::createWithSystemFont(StringUtils::format("       %s",rule.c_str()), "arial", 28);
+    ruleText = Label::createWithSystemFont("", "arial", 28);
     ruleText->setWidth(338);
     ruleText->setHorizontalAlignment(cocos2d::TextHAlignment::LEFT);
     ruleText->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
@@ -69,14 +60,13 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     prideTitle->setPosition(780,460);
     addChild(prideTitle);
     
-    auto prideNum = LabelAtlas::create(huafei, "competition/pride_num.png", 28, 46, '0');
+    prideNum = LabelAtlas::create("0", "competition/pride_num.png", 28, 46, '0');
     prideNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     prideNum->setPosition(865,465);
     addChild(prideNum);
-
-    auto huatext = Sprite::create("competition/hua_fei_text.png");
+    
+    huatext = Sprite::create("competition/hua_fei_text.png");
     huatext->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    huatext->setPosition(prideNum->getPositionX()+prideNum->getContentSize().width,465);
     addChild(huatext);
     
     auto time = Label::createWithSystemFont("比赛时间:", "arial", 28);
@@ -104,7 +94,7 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     fee3->setPosition(845,345);
     addChild(fee3);
     
-    auto fee4 = Label::createWithSystemFont(StringUtils::format("%s张房卡",fangka.c_str()), "arial", 28);
+    fee4 = Label::createWithSystemFont("", "arial", 28);
     fee4->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     fee4->setPosition(860,345);
     addChild(fee4);
@@ -115,20 +105,33 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     difen->setPosition(845,285);
     addChild(difen);
     
-    auto difen2 = Label::createWithSystemFont("5/5无勒子", "arial", 28);
-    if(roomId == CompetitionRoomId::Hongzhong_Normal||roomId == CompetitionRoomId::Hongzhong_High){
-        difen2->setString("5底分1码");
-    }
+    difen2 = Label::createWithSystemFont("5/5无勒子", "arial", 28);
     difen2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     difen2->setPosition(860,285);
     addChild(difen2);
     
     auto joinBtn = MenuItemImage::create("competition/competition_btn_1.png", "competition/competition_btn_2.png", CC_CALLBACK_1(CompetitonLayer::joinCompetiton,this));
-    joinBtn->setTag((int)roomId);
     auto joinMenu = Menu::create(joinBtn, NULL);
     joinMenu->setPosition(640, 110);
     addChild(joinMenu);
     
+    return  true;
+}
+
+
+void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::string fangka,std::string rule){
+    if(roomId == CompetitionRoomId::Hongzhong_High||roomId == Hongzhong_Normal){
+        title->setTexture("competition/hongzhong_text.png");
+    }
+    ruleText->setString(StringUtils::format("       %s",rule.c_str()));
+    huafeiNum->setString(huafei);
+    prideNum->setString(huafei);
+    fee4->setString(StringUtils::format("%s张房卡",fangka.c_str()));
+    if(roomId == CompetitionRoomId::Hongzhong_Normal||roomId == CompetitionRoomId::Hongzhong_High){
+        difen2->setString("5底分1码");
+    }
+    text->setPosition(huafeiNum->getPositionX()+huafeiNum->getContentSize().width,606);
+    huatext->setPosition(prideNum->getPositionX()+prideNum->getContentSize().width,465);
 }
 
 void CompetitonLayer::onEnter(){
@@ -155,6 +158,13 @@ void CompetitonLayer::onEnter(){
                 getChildByTag(1024)->removeFromParentAndCleanup(true);
             }
             FangkaNotEnoughDialog* da =  FangkaNotEnoughDialog::create();
+            if(GAMEDATA::getInstance()->getCompetitionId() == StringUtils::format("%d",CompetitionRoomId::Shanghai_High)||
+               GAMEDATA::getInstance()->getCompetitionId() == StringUtils::format("%d",CompetitionRoomId::Hongzhong_High)){
+                da->initView(5,24);
+                
+            }else{
+                da->initView(5,1);
+            }
             addChild(da);
         }
     });
@@ -177,6 +187,5 @@ void CompetitonLayer::joinCompetiton(Ref* ref){
         lod->setTag(1024);
         addChild(lod);
     }
-    MenuItemImage* tem =  (MenuItemImage*) ref;
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%d",tem->getTag())));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%s",GAMEDATA::getInstance()->getCompetitionId().c_str())));
 }

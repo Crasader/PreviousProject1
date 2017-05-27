@@ -22,6 +22,15 @@ public:
     CREATE_FUNC(CompetitonLayer);
 private:
     EventListenerCustom* joinResp;
+    Sprite* title;
+    LabelAtlas* huafeiNum;
+    LabelAtlas* prideNum;
+    Label* ruleText;
+    Label* fee4;
+    Label* difen2 ;
+    Sprite* text ;
+    Sprite* huatext;
+    
     void closeView();
     void joinCompetiton(Ref* ref);
 };

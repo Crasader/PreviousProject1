@@ -50,12 +50,12 @@ bool FangkaNotEnoughDialog::init(){
     fangka->setPosition(540,320);
     addChild(fangka);
     
-    auto fangkanum = LabelAtlas::create(StringUtils::format(":%d",1),"shop/charge/charge_num.png",21,30,'0');
+    fangkanum = LabelAtlas::create(StringUtils::format(":%d",1),"shop/charge/charge_num.png",21,30,'0');
     fangkanum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     fangkanum->setPosition(600,325);
     addChild(fangkanum);
     
-    auto xuyaunnum = LabelAtlas::create(StringUtils::format("%d",6),"shop/charge/charge_num.png",21,30,'0');
+    xuyaunnum = LabelAtlas::create(StringUtils::format("%d",5),"shop/charge/charge_num.png",21,30,'0');
     xuyaunnum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     xuyaunnum->setScale(0.8f);
     xuyaunnum->setPosition(690,320);
@@ -72,6 +72,11 @@ bool FangkaNotEnoughDialog::init(){
     addChild(menu);
 
     return true;
+}
+
+void FangkaNotEnoughDialog::initView(int num,int fee){
+    fangkanum->setString(StringUtils::format(":%d",num));
+    xuyaunnum->setString(StringUtils::format("%d",fee));
 }
 
 void FangkaNotEnoughDialog::closeView(){
