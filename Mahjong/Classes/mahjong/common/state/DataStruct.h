@@ -376,6 +376,11 @@ struct TodaySignData{
     std::vector<PrideData> pride;
 };
 
+struct TruStateData{
+    std::string seatId;
+    std::string flag;
+};
+
 struct WelfareData{
     bool needInit;
     std::string jjj_count;

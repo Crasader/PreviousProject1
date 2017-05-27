@@ -82,6 +82,7 @@ public:
     std::string sendHuafeiExchangeCommand();
     std::string sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone);
     std::string sendHuafeiRecordCommmand();
+    std::string sendCancleTruCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

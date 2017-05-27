@@ -680,6 +680,13 @@ std::string CommandManage::sendHuafeiRecordCommmand(){
     return commandString(keyValue);
 }
 
+std::string CommandManage::sendCancleTruCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_MAJIANG_CANCEL_TRUSTEESHIP_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

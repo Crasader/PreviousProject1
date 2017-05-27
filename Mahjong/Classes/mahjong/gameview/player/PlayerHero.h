@@ -39,6 +39,8 @@ public:
     void drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase);
     void drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase);
     
+    void drawPlayerTrue(bool state);
+    
     void actionTing(HeroCpgRespData ht);
     void actionQi();
     void eraseHeroJong(Jong* jong);

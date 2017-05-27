@@ -467,6 +467,9 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHuafeiChangeRecord(msg);
         }
             break;
+        case MSGCODE_MAJIANG_TRUSTEESHIP_NOTIFY:{
+            handleTruNotify(msg);
+        }
         default:
             break;
     }
@@ -3584,4 +3587,19 @@ void MsgHandler::handleHuafeiChangeRecord(std::string msg){
     }
     GAMEDATA::getInstance()->setHuaChangeRecord(records);
     postNotifyMessage(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, nullptr);
+}
+
+void MsgHandler::handleTruNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("seatId")){
+        TruStateData data;
+        const rapidjson::Value &result = _mDoc["seatId"];
+        data.seatId = result.GetString();
+        const rapidjson::Value &flag = _mDoc["flag"];
+        data.flag = flag.GetString();
+        postNotifyMessage(MSG_PLAYER_TRU_NOTIFY, &data);
+    }
 }

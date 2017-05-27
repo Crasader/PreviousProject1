@@ -12,7 +12,7 @@
 #include "wechat/ios/CallIOSMethod.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "mahjong/common/utils/Chinese.h"
-
+#include "mahjong/gameview/trusteeship/Trusteeship.h"
 
 bool PlayerHero::init() {
     if (!PlayerBase::init()) {
@@ -33,6 +33,7 @@ void PlayerHero::initData() {
     playedIcon->setVisible(false);
     addChild(playedIcon, 666);
     setCpgPostionX(JONG_POS_START_X);
+
 }
 
 void PlayerHero::onEnter(){
@@ -57,6 +58,18 @@ void PlayerHero::removeLastJong(){
 void PlayerHero::setIsReady(bool b){
     PlayerBase::setIsReady(b);
     
+}
+
+void PlayerHero::drawPlayerTrue(bool state){
+    if(NULL == getChildByTag(1678)){
+        if(state){
+            Trusteeship* tru = Trusteeship::create();
+            tru->setTag(1678);
+            addChild(tru);
+        }else{
+            getChildByTag(1678)->removeFromParent();
+        }
+    }
 }
 
 void PlayerHero::hideInviteButton(){

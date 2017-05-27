@@ -386,6 +386,8 @@
 		D2E035191ED914D400291282 /* hongbao in Resources */ = {isa = PBXBuildFile; fileRef = D2E035171ED914D400291282 /* hongbao */; };
 		D2E0351C1ED92BE700291282 /* HongbaoAnim2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0351A1ED92BE700291282 /* HongbaoAnim2.cpp */; };
 		D2E0351D1ED92BE700291282 /* HongbaoAnim2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0351A1ED92BE700291282 /* HongbaoAnim2.cpp */; };
+		D2E035211ED9581100291282 /* Trusteeship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0351F1ED9581100291282 /* Trusteeship.cpp */; };
+		D2E035221ED9581100291282 /* Trusteeship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0351F1ED9581100291282 /* Trusteeship.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
@@ -809,6 +811,8 @@
 		D2E035171ED914D400291282 /* hongbao */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hongbao; sourceTree = "<group>"; };
 		D2E0351A1ED92BE700291282 /* HongbaoAnim2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongbaoAnim2.cpp; sourceTree = "<group>"; };
 		D2E0351B1ED92BE700291282 /* HongbaoAnim2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongbaoAnim2.hpp; sourceTree = "<group>"; };
+		D2E0351F1ED9581100291282 /* Trusteeship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trusteeship.cpp; sourceTree = "<group>"; };
+		D2E035201ED9581100291282 /* Trusteeship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trusteeship.h; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
@@ -1541,6 +1545,7 @@
 		D252FC121E7FABE900937322 /* gameview */ = {
 			isa = PBXGroup;
 			children = (
+				D2E0351E1ED957C400291282 /* trusteeship */,
 				D27F05F71E94BDF90085438A /* hongzhong */,
 				D27F05F81E94BDF90085438A /* shanghai */,
 				D252FC131E7FABE900937322 /* anim */,
@@ -1936,6 +1941,15 @@
 				D2E035141ED9120700291282 /* HongbaoAnim.hpp */,
 			);
 			path = hongbao;
+			sourceTree = "<group>";
+		};
+		D2E0351E1ED957C400291282 /* trusteeship */ = {
+			isa = PBXGroup;
+			children = (
+				D2E0351F1ED9581100291282 /* Trusteeship.cpp */,
+				D2E035201ED9581100291282 /* Trusteeship.h */,
+			);
+			path = trusteeship;
 			sourceTree = "<group>";
 		};
 		D2F05F281D8E2B22006E5A4C /* image */ = {
@@ -2389,6 +2403,7 @@
 				D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
 				D2A713B41ED2BCCF000EE572 /* CompetitionResult.cpp in Sources */,
 				D252FB221E7FA5EC00937322 /* BillInfo.cpp in Sources */,
+				D2E035211ED9581100291282 /* Trusteeship.cpp in Sources */,
 				D252FBC41E7FA5EC00937322 /* ExchangePropCell.cpp in Sources */,
 				D252FCB31E7FB77F00937322 /* WXApiManager.mm in Sources */,
 				D252FBD21E7FA5EC00937322 /* ResultScene.cpp in Sources */,
@@ -2519,6 +2534,7 @@
 				D252FC0D1E7FABC600937322 /* RoomIdErrorDialog.cpp in Sources */,
 				D252FB411E7FA5EC00937322 /* TextHintDialog.cpp in Sources */,
 				D252FB4F1E7FA5EC00937322 /* Jong.cpp in Sources */,
+				D2E035221ED9581100291282 /* Trusteeship.cpp in Sources */,
 				D252FBB51E7FA5EC00937322 /* ChargeFangka.cpp in Sources */,
 				D252FB1F1E7FA5EC00937322 /* Audio.cpp in Sources */,
 				D2B1D91B1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */,

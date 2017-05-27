@@ -148,10 +148,18 @@
 #define MSGCODE_MAJIANG_TING_NOTIFY  2025// 听牌群发通知{code:2025,poxiaoId:poxiaoId,seatId:seatId}
 #define MSGCODE_MAJIANG_OUT_REQUEST  2026//退出游戏请求{code:2026,poxiaoId:poxiaoId,seatId:seatId}
 #define MSGCODE_MAJIANG_OUT_RESPONSE  2027// 退出游戏回复{code:2027,poxiaoId:poxiaoId,seatId:seatId,result:1}
+
+#define MSGCODE_MAJIANG_TRUSTEESHIP_REQUEST  2028// 托管请求{code:2028,poxiaoId:poxiaoId,seatId:seatId}
+
+#define MSGCODE_MAJIANG_TRUSTEESHIP_RESPONSE  2035// 托管回復{code:2035,poxiaoId:poxiaoId}
+#define MSGCODE_MAJIANG_CANCEL_TRUSTEESHIP_REQUEST  2029// 取消托管请求{code:2029,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_MAJIANG_CANCEL_TRUSTEESHIP_RESPONSE  2030// 取消托管回复{code:2030,poxiaoId:poxiaoId,pId:pId}
+
 #define MSGCODE_MAJIANG_OUTLINE_RESUME_NOTIFY  2031//断线续玩{code:2031,poxiaoId:poxiaoId,seatId:seatId,all:[{seatId:1,hua:"1,2,3",chi:"4,5,6",peng:"7,7,7",gang:"6,6,6,6",angang:"6,6,6,6",hand:"1,2,3,4,5",out:"11,22,33,44"},{seatId:2,hua:"1,2,3",chi:"4,5,6",peng:"7,7,7",gang:"6,6,6,6",angang:"6,6,6,6",hand:"1,2,3,4,5",out:"11,22,33,44"},{seatId:3,hua:"1,2,3",chi:"4,5,6",peng:"7,7,7",gang:"6,6,6,6",angang:"6,6,6,6",hand:"1,2,3,4,5",out:"11,22,33,44"},{seatId:4,hua:"1,2,3",chi:"4,5,6",peng:"7,7,7",gang:"6,6,6,6",angang:"6,6,6,6",hand:"1,2,3,4,5",out:"11,22,33,44"}]}
 #define MSGCODE_MAJIANG_CHART_REQUEST  2032//{code:2032,poxiaoId:poxiaoId,seatId:seatId,no:"1"}
 #define MSGCODE_MAJIANG_CHART_NOTIFY  2033//{code:2033,poxiaoId:poxiaoId,seatId:seatId,nickName:"12",content:"你好啊1234"}
 
+#define MSGCODE_MAJIANG_TRUSTEESHIP_NOTIFY  2034// 托管通知{code:2034,poxiaoId:poxiaoId,pId:pId}
 
 #define MSGCODE_FRIEND_GAME_REQUEST  2036// 好友开房请求{code:2036,poxiaoId:"123",pId:"456,789,333,444,555"}
 #define MSGCODE_FRIEND_GAME_NOTIFY  2037// 好友开房通知{code:2037,poxiaoId:"123",nickname:"aaa",pId:"456"}
@@ -335,4 +343,5 @@
 #define MSG_PLAYER_HUAFEI_CHANGE_LIST  "MSG_PLAYER_HUAFEI_CHANGE_LIST"
 #define MSG_PLAYER_HUAFEI_CHANGE_RESP  "MSG_PLAYER_HUAFEI_CHANGE_RESP"
 #define MSG_PLAYER_HAUFEI_EXCHANGE_RECORD "MSG_PLAYER_HAUFEI_EXCHANGE_RECORD"
+#define MSG_PLAYER_TRU_NOTIFY "MSG_PLAYER_TRU_NOTIFY"
 #endif
