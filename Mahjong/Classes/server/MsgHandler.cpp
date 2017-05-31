@@ -1351,6 +1351,8 @@ void MsgHandler::getLequanChangeRecordResp(std::string msg){
             const rapidjson::Value &temp = list[i];
             rec.propId =temp["id"].GetString();
             rec.state = temp["status"].GetString();
+            rec.time =temp["time"].GetString();
+            rec.phone = temp["phone"].GetString();
             records.records.push_back(rec);
         }
     }

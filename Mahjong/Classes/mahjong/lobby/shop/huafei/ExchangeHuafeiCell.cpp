@@ -96,7 +96,7 @@ void ExchangeHuafeiCell::onExit(){
 void ExchangeHuafeiCell::confirmChange(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
     //判断券是否足够
-    if(UserData::getInstance()->getTicket()>=atoi(getpropPrice().c_str())){
+    if(UserData::getInstance()->getHuafeiQuan()>=atoi(getpropPrice().c_str())){
         ExchangeHuafeiItem* item = ExchangeHuafeiItem::create(temp->getTag(),temp->getName());
         getParent()->addChild(item);
     }else{

@@ -539,6 +539,8 @@ struct LoginAccPwd{
 struct LeRecord{
     std::string propId;
     std::string state;
+    std::string time;
+    std::string phone;
 };
 
 struct LeChangeRecord{
