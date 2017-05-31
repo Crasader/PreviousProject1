@@ -112,6 +112,9 @@ Size HuafeiExchangeRecord::tableCellSizeForIndex(TableView *table, ssize_t idx){
 TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t idx){
     auto string = StringUtils::format("%ld", idx);
     TableViewCell *cell = table->dequeueCell();
+    std::string propName =getPropName(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId);
+    int pos = (int)propName.find("元");
+    std::string newName = propName.substr(0,pos);
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
@@ -125,23 +128,64 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         content->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         cell->addChild(content);
         
-        auto propName = Label::createWithSystemFont(getPropName(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId),"Arial",20);
-        propName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        propName->setTag(101);
-        propName->setPosition(200,80);
-        cell->addChild(propName);
+        auto huafeiNum = LabelAtlas::create(newName, "shop/chong_zhi_ka_num.png", 22, 34, '0');
+        huafeiNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        huafeiNum->setTag(101);
+        huafeiNum->setPosition(190,90);
+        cell->addChild(huafeiNum);
         
-        auto propConfuse = Label::createWithSystemFont(ChineseWord("xioahao") + getPropConsume(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId) + ChineseWord("lequan"), "Arial", 20);
-        propConfuse->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        propConfuse->setTag(102);
-        propConfuse->setPosition(200,50);
-        cell->addChild(propConfuse);
+        auto haufeiImage = Sprite::create("shop/chong_zhi_ka.png");
+        haufeiImage->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        haufeiImage->setPosition(huafeiNum->getContentSize().width+huafeiNum->getPositionX(),88);
+        cell->addChild(haufeiImage);
         
+        auto xiao = Sprite::create("shop/xiaohao_img.png");
+        xiao->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        xiao->setPosition(haufeiImage->getContentSize().width+haufeiImage->getPositionX(),90);
+        cell->addChild(xiao);
+        
+        auto huaNum = LabelAtlas::create(newName, "shop/chong_zhi_ka_num.png", 22, 34, '0');
+        huaNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        huaNum->setPosition(xiao->getContentSize().width+xiao->getPositionX(),90);
+        huaNum->setTag(102);
+        cell->addChild(huaNum);
+        
+        auto quan = Sprite::create("shop/huafei_img.png");
+        quan->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        quan->setPosition(huaNum->getContentSize().width+huaNum->getPositionX(),90);
+        cell->addChild(quan);
+        
+        
+        auto shijian = Label::createWithSystemFont("兑换时间:","arial", 22);
+        shijian->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        shijian->setColor(Color3B(223,162,182));
+        shijian->setPosition(190,60);
+        cell->addChild(shijian);
+        
+        auto time = Label::createWithSystemFont(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).time,"arial", 22);
+        time->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        time->setColor(Color3B(223,162,182));
+        time->setPosition(300,60);
+        time->setTag(103);
+        cell->addChild(time);
+        
+        auto shouji = Label::createWithSystemFont("兑换手机号:","arial", 22);
+        shouji->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        shouji->setColor(Color3B(223,162,182));
+        shouji->setPosition(190,30);
+        cell->addChild(shouji);
+        
+        auto phoneNum = Label::createWithSystemFont(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).phone,"arial", 22);
+        phoneNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        phoneNum->setColor(Color3B(223,162,182));
+        phoneNum->setPosition(320,30);
+        phoneNum->setTag(104);
+        cell->addChild(phoneNum);
         
         auto stateImage = Sprite::create();
         stateImage->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        stateImage->setTag(103);
-        stateImage->setPosition(550,50);
+        stateImage->setTag(105);
+        stateImage->setPosition(600,50);
         cell->addChild(stateImage);
         if(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).state == "0"){
             stateImage->setTexture("shop/duihuanzhong.png");
@@ -149,7 +193,28 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
             stateImage->setTexture("shop/yiduihuan.png");
         }
     }else{
-        
+        if(NULL != cell->getChildByTag(100)){
+            ((Sprite*)cell->getChildByTag(100))->setTexture(getImageNameById(atoi(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId.c_str())));
+        }
+        if(NULL != cell->getChildByTag(101)){
+            ((LabelAtlas*)cell->getChildByTag(101))->setString(newName);
+        }
+        if(NULL != cell->getChildByTag(102)){
+            ((LabelAtlas*)cell->getChildByTag(102))->setString(newName);
+        }
+        if(NULL != cell->getChildByTag(103)){
+            ((Label*)cell->getChildByTag(103))->setString(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).time);
+        }
+        if(NULL != cell->getChildByTag(104)){
+            ((Label*)cell->getChildByTag(104))->setString(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).phone);
+        }
+        if(NULL != cell->getChildByTag(105)){
+            if(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).state == "0"){
+                ((Sprite*)cell->getChildByTag(105))->setTexture("shop/duihuanzhong.png");
+            }else{
+                ((Sprite*)cell->getChildByTag(105))->setTexture("shop/yiduihuan.png");
+            }
+        }
     }
     return cell;
 }
