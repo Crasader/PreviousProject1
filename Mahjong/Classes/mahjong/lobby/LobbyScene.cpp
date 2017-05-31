@@ -348,10 +348,12 @@ void LobbyScene::drawSceneBot(){
 void LobbyScene::updateHeroInfo(){
     ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
-    goldNum ->setString(StringUtils::format("%d", UserData::getInstance()->getGold()));
-    fangkaNum->setString(StringUtils::format("%0.1f", UserData::getInstance()->getFangkaNum()));
+    goldNum ->setString(StringUtils::format("%d",UserData::getInstance()->getGold()));
+    fangkaNum->setString(StringUtils::format("%0.1f",UserData::getInstance()->getFangkaNum()));
     if(NULL != lequanNum)
-        lequanNum->setString(StringUtils::format("%d", UserData::getInstance()->getTicket()));
+        lequanNum->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
+    if(NULL != haufeiNum)
+        haufeiNum->setString(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()));
 }
 
 void LobbyScene::showLobbyAnim(){

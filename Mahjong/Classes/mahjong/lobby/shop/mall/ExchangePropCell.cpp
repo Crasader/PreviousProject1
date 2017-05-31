@@ -16,11 +16,9 @@
 
 
 ExchangePropCell* ExchangePropCell::create(int propId,int lequanNum,std::string propName,std::string url,std::string propType){
-    
     ExchangePropCell* ret = new ExchangePropCell();
-   
+    
     if(ret &&ret->init(propId, lequanNum,propName,url,propType)){
-        ret->setPropType(url);
         ret->autorelease();
         return ret;
     }else{
@@ -35,6 +33,7 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName,std::s
         return false;
     }
     setLequanNum(lequanNum);
+    setPropType(propType);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
     bg->setPosition(0,0);
     addChild(bg);
@@ -71,14 +70,13 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName,std::s
         lequan->setColor(Color3B(240,228,45));
         lequan->setPosition(0,-35);
         addChild(lequan);
-		auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%d%s", lequanNum, ChineseWord("lequan").c_str()), "arial", 24);
+        auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%d%s", lequanNum, ChineseWord("lequan").c_str()), "arial", 24);
         lequanXiao->setAnchorPoint(Point::ANCHOR_MIDDLE);
         lequanXiao->setColor(Color3B(240,228,45));
         lequanXiao->setPosition(0,-65);
         addChild(lequanXiao);
     }
     
-    setPropType(propType);
     auto btnImage = MenuItemImage::create("shop/btn_buy_1.png","shop/btn_buy_2.png",CC_CALLBACK_1(ExchangePropCell::confirmChange, this));
     btnImage->setTag(propId);
     btnImage->setName(propName);
@@ -94,7 +92,7 @@ void ExchangePropCell::onEnter(){
     Sprite::onEnter();
     shopPropListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(StringUtils::format("MSG_UPDATE_SHOP_PROP_IMAG_%s",getPropUrl().c_str()), [=](EventCustom* event){
         if(NULL != getChildByTag(1998)){
-             std::string filepath = UrlImageMannger::getInstance()->loadHeadImgByUrl(getPropUrl());
+            std::string filepath = UrlImageMannger::getInstance()->loadHeadImgByUrl(getPropUrl());
             ((Sprite*)getChildByTag(1998))->setTexture(filepath);
         }
     });
@@ -110,6 +108,7 @@ void ExchangePropCell::confirmChange(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
     //判断乐券是否足够
     if(UserData::getInstance()->getTicket()>=getLequanNum()){
+        log("HHHHHHHHHHHHH %s",getPropType().c_str());
         ExchangeItem* item = ExchangeItem::create(temp->getTag(),temp->getName(),getPropType());
         getParent()->addChild(item);
     }else{

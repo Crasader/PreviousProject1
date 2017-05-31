@@ -210,20 +210,27 @@ void ExchangeItem::showVirtualItem(int propId,std::string propName){
 
 
 void ExchangeItem::confirm(Ref* ref){
-    //TODO 信息检查
     if(getIsVirtual()){
         if(NULL != getChildByTag(1001) && !getChildByTag(1001)->isVisible()&& NULL != getChildByTag(1002) && !getChildByTag(1002)->isVisible()){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeCommand(StringUtil::itos(getItemPropId()),_newPhoneNumber->getText(),"",""));
+            if(strcmp(_newPhoneNumber->getText(),"") != 0&&strcmp(_newPhoneNumber->getText(),_confirmPhoneNumber->getText()) == 0){
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeCommand(StringUtil::itos(getItemPropId()),_newPhoneNumber->getText(),"",""));
+            }else{
+                ShopHintDialog* shop = ShopHintDialog::create();
+                shop->showText("请输入正确的信息!");
+                addChild(shop);
+
+            }
         }else{
             ShopHintDialog* shop = ShopHintDialog::create();
             shop->showText(ChineseWord("dialog_text_8"));
-            addChild(shop);        }
+            addChild(shop);
+        }
     }else{
-        if(NULL != getChildByTag(1003) && !getChildByTag(1003)->isVisible()&&_xiangXiDiZhi->getText() != "" && _lianXiRen->getText() != ""){
+        if(NULL != getChildByTag(1003) && !getChildByTag(1003)->isVisible()&&strcmp(_xiangXiDiZhi->getText(),"") != 0 && strcmp(_lianXiRen->getText(),"") != 0 && strcmp(_shouJiHao->getText(),"") != 0){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeCommand(StringUtil::itos(getItemPropId()),_shouJiHao->getText(),_lianXiRen->getText(),_xiangXiDiZhi->getText()));
         }else{
             ShopHintDialog* shop = ShopHintDialog::create();
-			shop->showText(ChineseWord("dialog_text_8"));
+            shop->showText("请输入正确的信息!");
             addChild(shop);
         }
     }

@@ -136,7 +136,8 @@ void ExchangeHuafeiItem::confirm(Ref* ref){
     }else{
         ShopHintDialog* shop = ShopHintDialog::create();
         shop->showText(ChineseWord("dialog_text_8"));
-        addChild(shop);        }
+        addChild(shop);
+    }
 }
 
 void ExchangeHuafeiItem::closeView(){
