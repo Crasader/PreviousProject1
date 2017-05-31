@@ -86,7 +86,7 @@ void GuiLayer::drawGameInfo(){
     if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
         roomInfoBg->setScaleY(0.4);
         auto matchname = Label::createWithSystemFont(StringUtils::format("%s元话费赛",GAMEDATA::getInstance()->getCompetitionPride().c_str()), "arial", 25);
-        matchname->setPosition(1200,710);
+        matchname->setPosition(1200,690);
         matchname->setColor(Color3B(233,209,112));
         addChild(matchname);
     }else{
@@ -131,7 +131,8 @@ void GuiLayer::drawGameInfo(){
             roomIdNum->setColor(Color3B(233,209,112));
             addChild(roomIdNum);
             roomId->setPosition(1160,680);
-            roomIdNum->setPosition(1185,678);        if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
+            roomIdNum->setPosition(1185,678);
+            if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
                 roomInfoBg->setScale(1.0f, 0.4f);
             }
         }else{

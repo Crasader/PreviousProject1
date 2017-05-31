@@ -21,6 +21,7 @@ bool CompetitionResult::init(){
     auto reslut_bg = Sprite::create("result/result_bg.jpg");
     reslut_bg->setPosition(640, 360);
     addChild(reslut_bg,-1);
+    GAMEDATA::getInstance()->setIsCompetitionState(false);
     return true;
 }
 

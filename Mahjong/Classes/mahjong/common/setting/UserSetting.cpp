@@ -122,9 +122,9 @@ void UserSetting::drawDialog(){
             auto dissolveMenu = Menu::create(dissolve,NULL);
             dissolveMenu->setPosition(930,185);
             addChild(dissolveMenu);
-            if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
-                dissolveMenu->setVisible(false);
-            }
+//            if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
+//                dissolveMenu->setVisible(false);
+//            }
         }
         
     }

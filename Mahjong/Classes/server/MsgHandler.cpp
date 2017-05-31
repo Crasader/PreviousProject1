@@ -1444,6 +1444,7 @@ void MsgHandler::removePlayerNotify(std::string msg){
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             GAMEDATA::getInstance()->setShowRoomDismiss(true);
         }
+        GAMEDATA::getInstance()->setIsCompetitionState(false);
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, nullptr);
