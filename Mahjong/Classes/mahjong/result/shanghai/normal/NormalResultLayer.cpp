@@ -200,13 +200,13 @@ void NormalResultLayer::showLayerBtn(){
             myMneu->setPosition(640,60);
             addChild(myMneu);
             
-            auto timeText = Sprite::create("competition/daojishi.png");
-            timeText->setPosition(830,55);
-            addChild(timeText);
+//            auto timeText = Sprite::create("competition/daojishi.png");
+//            timeText->setPosition(830,55);
+//            addChild(timeText);
             
             timeLabel->setVisible(true);
             timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE);
-            timeLabel->setPosition(910,55);
+            timeLabel->setPosition(850,55);
             
 //            auto stetx = Sprite::create("competition/daojishi_s.png");
 //            stetx->setPosition(930,55);

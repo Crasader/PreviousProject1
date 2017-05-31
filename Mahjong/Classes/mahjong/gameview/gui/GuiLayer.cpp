@@ -84,9 +84,20 @@ void GuiLayer::drawGameInfo(){
     roomInfoBg->setPosition(1275,710);
     addChild(roomInfoBg);
     if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
-        roomInfoBg->setScaleY(0.4);
+        roomInfoBg->setScaleY(0.6);
+        
+        auto name = Label::createWithSystemFont("", "arial", 25);
+        if(GAMEDATA::getInstance()->getCompetitionId() == StringUtils::format("%d",CompetitionRoomId::Shanghai_High)||GAMEDATA::getInstance()->getCompetitionId() == StringUtils::format("%d",CompetitionRoomId::Shanghai_Normal)){
+            name->setString("上海敲麻");
+        }else{
+            name->setString("红中麻将");
+        }
+        name->setPosition(1200,685);
+        name->setColor(Color3B(233,209,112));
+        addChild(name);
+
         auto matchname = Label::createWithSystemFont(StringUtils::format("%s元话费赛",GAMEDATA::getInstance()->getCompetitionPride().c_str()), "arial", 25);
-        matchname->setPosition(1200,690);
+        matchname->setPosition(1200,655);
         matchname->setColor(Color3B(233,209,112));
         addChild(matchname);
     }else{

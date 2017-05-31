@@ -1163,16 +1163,16 @@ void HongZhongView::onEnter(){
                 }
                 auto startSprite1 = Sprite::create("competition/competition_start_1.png");
                 startSprite1->setPosition(320,350);
-                startSprite1->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                startSprite1->runAction(Sequence::create(MoveTo::create(1.0f, Point(-400,350)),CallFunc::create([=](){
                     startSprite1->removeFromParent();
                 }), NULL));
-                addChild(startSprite1);
+                addChild(startSprite1,100);
                 auto startSprite2 = Sprite::create("competition/competition_start_2.png");
                 startSprite2->setPosition(960,320);
-                startSprite2->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                startSprite2->runAction(Sequence::create(MoveTo::create(1.0f, Point(1680,350)),CallFunc::create([=](){
                     startSprite2->removeFromParent();
                 }), NULL));
-                addChild(startSprite2);
+                addChild(startSprite2,100);
                 delay = 1.5f;
             }
         }
@@ -1198,7 +1198,6 @@ void HongZhongView::onEnter(){
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;
         schedule([=](float dt){
-            
             DealJongAnim* anim = DealJongAnim::create();
             anim->setTag(1000);
             anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
@@ -1776,7 +1775,9 @@ void HongZhongView::onEnter(){
         }else if(clientId == ClientSeatId::right){
             playerRight->setIsOffLine(data.flag == "1"?true:false);
         }else {
+            hideHuGangControllPad();
             playerHero->drawPlayerTrue(data.flag == "1"?true:false);
+            
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(truNotifyListener, 1);

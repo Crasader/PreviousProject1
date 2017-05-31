@@ -1268,16 +1268,16 @@ void MahjongView::onEnter(){
                 }
                 auto startSprite1 = Sprite::create("competition/competition_start_1.png");
                 startSprite1->setPosition(320,350);
-                startSprite1->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                startSprite1->runAction(Sequence::create(MoveTo::create(1.0f, Point(-400,350)),CallFunc::create([=](){
                     startSprite1->removeFromParent();
                 }), NULL));
-                addChild(startSprite1);
+                addChild(startSprite1,100);
                 auto startSprite2 = Sprite::create("competition/competition_start_2.png");
                 startSprite2->setPosition(960,320);
-                startSprite2->runAction(Sequence::create(DelayTime::create(1.5f),CallFunc::create([=](){
+                startSprite2->runAction(Sequence::create(MoveTo::create(1.0f, Point(1680,350)),CallFunc::create([=](){
                     startSprite2->removeFromParent();
                 }), NULL));
-                addChild(startSprite2);
+                addChild(startSprite2,100);
                 delay = 1.5f;
             }
             
@@ -1848,6 +1848,7 @@ void MahjongView::onEnter(){
         }else if(clientId == ClientSeatId::right){
             playerRight->setIsOffLine(data.flag == "1"?true:false);
         }else {
+            hideTingGangControllPad();
             playerHero->drawPlayerTrue(data.flag == "1"?true:false);
         }
     });

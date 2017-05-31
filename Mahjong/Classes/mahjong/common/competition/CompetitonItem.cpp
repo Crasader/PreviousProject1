@@ -89,6 +89,8 @@ void CompetitonItem::joinCompetition(Ref* ref){
     GAMEDATA::getInstance()->setCompetitionRule(getFangka());
     GAMEDATA::getInstance()->setCompetitionFee(getRule());
     GAMEDATA::getInstance()->setPrivateLezi(StringUtils::format("%d", LeziType::type55c));
+    GAMEDATA::getInstance()->setFanMa("1");
+    GAMEDATA::getInstance()->setHZDiFen("5");
     FriendOpenRoomRespData opdata;
     opdata.prjushu = "4";
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
