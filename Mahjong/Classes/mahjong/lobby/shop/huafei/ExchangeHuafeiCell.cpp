@@ -35,7 +35,7 @@ bool ExchangeHuafeiCell::init(std::string propId,std::string url,std::string pri
     }
     setpropName(name);
     setpropPrice(price);
-    
+    setPropUrl(url);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
     bg->setPosition(0,0);
     addChild(bg);
@@ -46,7 +46,7 @@ bool ExchangeHuafeiCell::init(std::string propId,std::string url,std::string pri
     
     auto cell = Sprite::create();
     cell->setTag(1998);
-    std::string filepath = UrlImageMannger::getInstance()->loadHeadImgByUrl(url);
+    std::string filepath = UrlImageMannger::getInstance()->loadShopImgByUrl(url);
     if(IAMGE_LOADING != filepath){
         cell->setTexture(filepath);
     }
@@ -80,8 +80,9 @@ bool ExchangeHuafeiCell::init(std::string propId,std::string url,std::string pri
 void ExchangeHuafeiCell::onEnter(){
     Sprite::onEnter();
     shopPropListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(StringUtils::format("MSG_UPDATE_SHOP_PROP_IMAG_%s",getPropUrl().c_str()), [=](EventCustom* event){
+       
         if(NULL != getChildByTag(1998)){
-            std::string filepath = UrlImageMannger::getInstance()->loadHeadImgByUrl(getPropUrl());
+            std::string filepath = UrlImageMannger::getInstance()->loadShopImgByUrl(getPropUrl());
             ((Sprite*)getChildByTag(1998))->setTexture(filepath);
         }
     });

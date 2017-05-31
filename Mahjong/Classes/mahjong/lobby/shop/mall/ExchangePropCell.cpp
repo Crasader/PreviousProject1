@@ -34,6 +34,7 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName,std::s
     }
     setLequanNum(lequanNum);
     setPropType(propType);
+    setPropUrl(url);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
     bg->setPosition(0,0);
     addChild(bg);
@@ -44,7 +45,7 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName,std::s
     
     auto cell = Sprite::create();
     cell->setTag(1998);
-    std::string filepath = UrlImageMannger::getInstance()->loadHeadImgByUrl(url);
+    std::string filepath = UrlImageMannger::getInstance()->loadShopImgByUrl(url);
     if(IAMGE_LOADING != filepath){
         cell->setTexture(filepath);
     }
@@ -92,7 +93,7 @@ void ExchangePropCell::onEnter(){
     Sprite::onEnter();
     shopPropListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(StringUtils::format("MSG_UPDATE_SHOP_PROP_IMAG_%s",getPropUrl().c_str()), [=](EventCustom* event){
         if(NULL != getChildByTag(1998)){
-            std::string filepath = UrlImageMannger::getInstance()->loadHeadImgByUrl(getPropUrl());
+            std::string filepath = UrlImageMannger::getInstance()->loadShopImgByUrl(getPropUrl());
             ((Sprite*)getChildByTag(1998))->setTexture(filepath);
         }
     });
@@ -108,7 +109,6 @@ void ExchangePropCell::confirmChange(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
     //判断乐券是否足够
     if(UserData::getInstance()->getTicket()>=getLequanNum()){
-        log("HHHHHHHHHHHHH %s",getPropType().c_str());
         ExchangeItem* item = ExchangeItem::create(temp->getTag(),temp->getName(),getPropType());
         getParent()->addChild(item);
     }else{

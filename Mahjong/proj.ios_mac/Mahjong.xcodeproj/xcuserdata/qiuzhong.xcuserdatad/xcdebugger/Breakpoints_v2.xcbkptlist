@@ -5044,11 +5044,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/http/image/UrlImageMannger.cpp"
-            timestampString = "509008033.299072"
+            timestampString = "517913123.302303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "UrlImageMannger::downloadQunImgByUrl(std::string url,bool recover)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5060,11 +5060,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/http/image/UrlImageMannger.cpp"
-            timestampString = "509008042.659668"
+            timestampString = "517913123.302303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "UrlImageMannger::downloadQunImgByUrl(std::string url,bool recover)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6710,6 +6710,256 @@
             startingLineNumber = "51"
             endingLineNumber = "51"
             landmarkName = "HuafeiExchangeRecord::onEnter()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/lobby/shop/huafei/ExchangeHuafeiCell.cpp"
+            timestampString = "517913325.91793"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "ExchangeHuafeiCell::onEnter()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ExchangeHuafeiCell::onEnter()"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/mahjong/lobby/shop/huafei/ExchangeHuafeiCell.cpp"
+                  timestampString = "517912554.50961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ExchangeHuafeiCell::onEnter()::$_0::operator()(cocos2d::EventCustom*) const"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/mahjong/lobby/shop/huafei/ExchangeHuafeiCell.cpp"
+                  timestampString = "517912554.511544"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/http/image/UrlImageMannger.cpp"
+            timestampString = "517913123.302303"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "UrlImageMannger::loadShopImgByUrl(std::string url)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912783.11418"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "408">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)::$_2::operator()(cocos2d::EventCustom*) const"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912783.115452"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "772">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/http/image/UrlImageMannger.cpp"
+            timestampString = "517912762.772681"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "UrlImageMannger::loadShopImgByUrl(std::string url)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912969.520796"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)::$_2::~$_2()"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912969.522677"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)::$_2::~$_2()"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912969.524316"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)::$_2::$_2($_2&amp;&amp;)"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912969.526018"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)::$_2::$_2($_2&amp;&amp;)"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912969.527708"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)::$_2::$_2($_2 const&amp;)"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912969.529251"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)::$_2::$_2($_2 const&amp;)"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912969.530544"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UrlImageMannger::loadShopImgByUrl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)::$_2::operator()(cocos2d::EventCustom*) const"
+                  moduleName = "Mahjong-mobile"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qiuzhong/GitHub/PoxiaoGame1/Mahjong/Classes/http/image/UrlImageMannger.cpp"
+                  timestampString = "517912969.531798"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/http/image/UrlImageMannger.cpp"
+            timestampString = "517912816.582601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "UrlImageMannger::loadShopImgByUrl(std::string url)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
