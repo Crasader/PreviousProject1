@@ -13,6 +13,7 @@
 #include "mahjong/common/utils/StringUtil.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
+#include "mahjong/lobby/shop/huafei/HuafeiChangeConfirm.hpp"
 
 
 ExchangeHuafeiItem* ExchangeHuafeiItem::create(int propId,std::string propName){
@@ -31,6 +32,7 @@ bool ExchangeHuafeiItem::init(int propId,std::string propName){
         return false;
     }
     setItemPropId(propId);
+    setPropName(propName);
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
@@ -58,23 +60,23 @@ bool ExchangeHuafeiItem::init(int propId,std::string propName){
 void ExchangeHuafeiItem::showVirtualItem(int propId,std::string propName){
     setIsVirtual(true);
     auto textInfo = Sprite::create("shop/duihuan_tianxie.png");
-    textInfo->setPosition(610,530);
+    textInfo->setPosition(610,480);
     addChild(textInfo);
     
     auto labe = Label::createWithSystemFont(propName,"arial",30);
     labe->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    labe->setPosition(540,530);
+    labe->setPosition(540,480);
     addChild(labe);
     
     auto bound_phone = Sprite::create("shop/shoujihao.png");
-    bound_phone->setPosition(406,415);
+    bound_phone->setPosition(406,365);
     addChild(bound_phone);
     
     auto input_bg_1 = Sprite::create("shop/shuru_box_2.png");
-    input_bg_1->setPosition(720, 415);
+    input_bg_1->setPosition(720, 365);
     addChild(input_bg_1);
     _newPhoneNumber = ui::EditBox::create(Size(220, 81), ui::Scale9Sprite::create());
-    _newPhoneNumber->setPosition(Point(635, 415));
+    _newPhoneNumber->setPosition(Point(635, 365));
     _newPhoneNumber->setInputMode(ui::EditBox::InputMode::PHONE_NUMBER);
     _newPhoneNumber->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
     _newPhoneNumber->setTag(0);
@@ -82,35 +84,14 @@ void ExchangeHuafeiItem::showVirtualItem(int propId,std::string propName){
     _newPhoneNumber->setDelegate(this);
     addChild(_newPhoneNumber);
     
-    
     auto phone_hint_info1 = Sprite::create("playerinfo/phone_error_hint.png");
-    phone_hint_info1->setPosition(510, 355);
+    phone_hint_info1->setPosition(510, 305);
     phone_hint_info1->setVisible(false);
     phone_hint_info1->setTag(1001);
     phone_hint_info1->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(phone_hint_info1);
     
-    auto phone_hint_info2 = Sprite::create("playerinfo/phone_error_hint.png");
-    phone_hint_info2->setPosition(510, 255);
-    phone_hint_info2->setVisible(false);
-    phone_hint_info2->setTag(1002);
-    phone_hint_info2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    addChild(phone_hint_info2);
-    
-    auto verification = Sprite::create("shop/shoujihao.png");
-    verification->setPosition(410, 305);
-    addChild(verification);
-    auto input_bg_2 = Sprite::create("shop/shuru_box_2.png");
-    input_bg_2->setPosition(720, 305);
-    addChild(input_bg_2);
-    _confirmPhoneNumber = ui::EditBox::create(Size(230, 81), ui::Scale9Sprite::create());
-    _confirmPhoneNumber->setPosition(Point(635, 305));
-    _confirmPhoneNumber->setInputMode(ui::EditBox::InputMode::PHONE_NUMBER);
-    _confirmPhoneNumber->setReturnType(ui::EditBox::KeyboardReturnType::DONE);
-    _confirmPhoneNumber->setTag(1);
-    _confirmPhoneNumber->setFont("arial", 24);
-    _confirmPhoneNumber->setDelegate(this);
-    addChild(_confirmPhoneNumber);
+
     
     auto hintText = Sprite::create();
     hintText->setPosition(640,230);
@@ -131,8 +112,9 @@ void ExchangeHuafeiItem::showVirtualItem(int propId,std::string propName){
 
 
 void ExchangeHuafeiItem::confirm(Ref* ref){
-    if(NULL != getChildByTag(1001) && !getChildByTag(1001)->isVisible()&& NULL != getChildByTag(1002) && !getChildByTag(1002)->isVisible()){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiDuiHuanCommand(StringUtil::itos(getItemPropId()),_newPhoneNumber->getText()));
+    if(NULL != getChildByTag(1001) && !getChildByTag(1001)->isVisible()&&strcmp("", _newPhoneNumber->getText())!=0){
+        HuafeiChangeConfirm* confirm = HuafeiChangeConfirm::create(StringUtils::format("%d",getItemPropId()),getPropName(), _newPhoneNumber->getText());
+        addChild(confirm);
     }else{
         ShopHintDialog* shop = ShopHintDialog::create();
         shop->showText(ChineseWord("dialog_text_8"));
@@ -159,31 +141,6 @@ void ExchangeHuafeiItem::editBoxEditingDidEnd(ui::EditBox* editBox){
         else{
             if(NULL != getChildByTag(1001)){
                 getChildByTag(1001)->setVisible(false);
-            }
-        }
-    }
-    else if (editBox->getTag() == 1){
-        std::string phone1 = _newPhoneNumber->getText();
-        std::string phone2 = _confirmPhoneNumber->getText();
-        if (phone1 != phone2){
-            if(NULL != getChildByTag(1002)){
-                getChildByTag(1002)->setVisible(true);
-            }
-        }
-        else{
-            if(NULL != getChildByTag(1002)){
-                getChildByTag(1002)->setVisible(false);
-            }
-        }
-    }else if (editBox->getTag() == 12){
-        if (!StringUtil::checkPhone(editBox->getText())){
-            if(NULL != getChildByTag(1003)){
-                getChildByTag(1003)->setVisible(true);
-            }
-        }
-        else{
-            if(NULL != getChildByTag(1003)){
-                getChildByTag(1003)->setVisible(false);
             }
         }
     }

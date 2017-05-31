@@ -28,6 +28,7 @@ private:
     ui::EditBox* _confirmPhoneNumber;
     
     CC_SYNTHESIZE(int , itemPropId, ItemPropId);
+    CC_SYNTHESIZE(std::string , propName, PropName);
     CC_SYNTHESIZE(bool, isVirtual, IsVirtual);
     
     void showVirtualItem(int propId,std::string propName);

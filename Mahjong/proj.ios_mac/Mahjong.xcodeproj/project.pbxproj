@@ -51,6 +51,8 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
 		D20474B91E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
+		D20E97C11EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */; };
+		D20E97C21EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */; };
 		D212D53C1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
 		D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
 		D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
@@ -492,6 +494,8 @@
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwitchHttp.cpp; sourceTree = "<group>"; };
 		D20474B71E5D36F7001F7121 /* SwitchHttp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwitchHttp.hpp; sourceTree = "<group>"; };
+		D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuafeiChangeConfirm.cpp; sourceTree = "<group>"; };
+		D20E97C01EDEA61900F51A7F /* HuafeiChangeConfirm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuafeiChangeConfirm.hpp; sourceTree = "<group>"; };
 		D212D53B1E14A0BA00C29C00 /* batteryInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = batteryInfo; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* PxSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PxSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
@@ -1797,6 +1801,8 @@
 				D2E035071ED7C38C00291282 /* ExchangeHuafeiCell.hpp */,
 				D29BE26B1ED686CF00EED3A0 /* HuafeiShop.cpp */,
 				D29BE26C1ED686CF00EED3A0 /* HuafeiShop.hpp */,
+				D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */,
+				D20E97C01EDEA61900F51A7F /* HuafeiChangeConfirm.hpp */,
 			);
 			path = huafei;
 			sourceTree = "<group>";
@@ -2329,6 +2335,7 @@
 				D27F06081E94BFE50085438A /* HongZhongView.cpp in Sources */,
 				D2FD5B621EA711510016FCCC /* VoiceMgr.cpp in Sources */,
 				D252FB5E1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
+				D20E97C11EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */,
 				D252FCAE1E7FB77F00937322 /* CallIOSMethod.mm in Sources */,
 				D2B1D9221E9E026800EB8FB0 /* GameResultCell.cpp in Sources */,
 				D2FD5B541EA711510016FCCC /* CallVoiceAndroidMethod.cpp in Sources */,
@@ -2468,6 +2475,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D2A713AF1ED2B830000EE572 /* CompetitonItem.cpp in Sources */,
 				D252FB9F1E7FA5EC00937322 /* DailyPride.cpp in Sources */,
+				D20E97C21EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */,
 				D2B1D91F1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */,
 				D252FBA71E7FA5EC00937322 /* GoldRoomPlate.cpp in Sources */,
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
