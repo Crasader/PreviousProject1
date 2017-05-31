@@ -17,6 +17,8 @@ USING_NS_CC;
 class CompetitionResult : public Layer{
 public:
     virtual bool init();
+    void onEnter() override;
+    void onExit() override;
     void showCompetiotionResult(std::string type,std::string rank,std::string pride,std::string score);
     CREATE_FUNC(CompetitionResult);
 private:
@@ -26,7 +28,7 @@ private:
     void quit();
     void continueCompetition();
     void afterCaptured(bool succeed, const std::string &outputFile);
-
+    EventListenerCustom* joinResp;
 };
 
 #endif /* CompetitionResult_hpp */

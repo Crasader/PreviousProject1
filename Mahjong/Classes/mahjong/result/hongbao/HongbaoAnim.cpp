@@ -20,7 +20,7 @@ bool HongbaoAnim::init(){
 }
 
 
-void HongbaoAnim::initView(std::string hongNum){
+void HongbaoAnim::initView(std::string hongNum,int type){
     
     //红包主体
     auto hongbao = Sprite::create("hongbao/hongbao_1.png");
@@ -110,6 +110,19 @@ void HongbaoAnim::initView(std::string hongNum){
     addChild(menu2);
     menu2->setVisible(false);
     menu2->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){menu2->setVisible(true);}),NULL));
+    
+    auto title = Sprite::create();
+    if(type == 1){
+        title->setTexture("hongbao/da_yin_jia.png");
+    }else if(type == 2){
+        title->setTexture("hongbao/da_yin_jia.png");
+    }else{
+        title->setTexture("hongbao/fang_zhu.png");
+    }
+    title->setPosition(-220,660);
+    addChild(title);
+    title->runAction(Sequence::create(DelayTime::create(2.0f),MoveTo::create(0.5, Point(640,660)), NULL));
+
 }
 
 
@@ -120,10 +133,30 @@ void HongbaoAnim::goBack(){
 
 
 void HongbaoAnim::share(){
-    
-    
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(CC_CALLBACK_2(CompetitionResult::afterCaptured, this) ,path);
+#endif
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(CC_CALLBACK_2(CompetitionResult::afterCaptured, this) ,path);
+#endif
 }
 
+void HongbaoAnim::afterCaptured(bool succeed, const std::string &outputFile)
+{
+    if (succeed) {
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        CallAndroidMethod::getInstance()->shareImageToWeChat("mahjong_screen_shot.png", false);
+#endif
+        
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 0);
+#endif
+    }
+}
 
 
 

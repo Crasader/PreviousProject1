@@ -13,14 +13,14 @@ USING_NS_CC;
 
 
 class HongbaoAnim : public Layer{
-public :
+    public :
     virtual bool init();
     CREATE_FUNC(HongbaoAnim);
-    void initView(std::string hongNum);
+    void initView(std::string hongNum,int type);
 private:
     void goBack();
     void share();
-//    void 
+    void afterCaptured(bool succeed, const std::string &outputFile);
     
 };
 #endif /* HongbaoAnim_hpp */

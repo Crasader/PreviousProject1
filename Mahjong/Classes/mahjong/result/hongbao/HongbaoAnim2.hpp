@@ -20,6 +20,6 @@ public :
 private:
     void goBack();
     void share();
-    
+    void afterCaptured(bool succeed, const std::string &outputFile);
 };
 #endif /* HongbaoAnim_hpp */

@@ -13,6 +13,7 @@
 #include "server/NetworkManage.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
+#include "mahjong/lobby/shop/fangka/FangkaNotEnoughDialog.hpp"
 
 bool CompetitionResult::init(){
     if(!Layer::init()){
@@ -171,10 +172,10 @@ void CompetitionResult::showWin(std::string type,std::string rank,std::string pr
     auto setp05 = ScaleTo::create(0.4, 1.0f);
     rankNum->runAction(Sequence::create(setp03,setp04,setp05,NULL));
     
-    auto kuohao =Sprite::create("competition/kuohao.png");
-    kuohao->setPosition(720,360);
-    kuohao->setOpacity(0);
-    addChild(kuohao);
+    //    auto kuohao =Sprite::create("competition/kuohao.png");
+    //    kuohao->setPosition(720,360);
+    //    kuohao->setOpacity(0);
+    //    addChild(kuohao);
     auto icon = Sprite::create("mjitem/jifen_icon.png");
     addChild(icon);
     icon->setPosition(680,360);
@@ -184,7 +185,7 @@ void CompetitionResult::showWin(std::string type,std::string rank,std::string pr
     int sco = atoi(score.c_str());
     if(sco>=0){
         jifen = LabelAtlas::create(StringUtils::format(":%d",sco),"competition/score_num_1.png",22,30,'0');
-
+        
     }else{
         jifen = LabelAtlas::create(StringUtils::format(":%d",abs(sco)),"competition/score_num_2.png",22,30,'0');
     }
@@ -193,10 +194,10 @@ void CompetitionResult::showWin(std::string type,std::string rank,std::string pr
     jifen->setOpacity(0);
     addChild(jifen);
     auto setp06 = DelayTime::create(1.8f);
-    auto setp07_1 = Spawn::create(MoveTo::create(0.3,Point(840,360)),FadeTo::create(0.3, 255) ,NULL);
+    //    auto setp07_1 = Spawn::create(MoveTo::create(0.3,Point(840,360)),FadeTo::create(0.3, 255) ,NULL);
     auto setp07_2 = Spawn::create(MoveTo::create(0.3,Point(800,360)),FadeTo::create(0.3, 255) ,NULL);
     auto setp07_3 = Spawn::create(MoveTo::create(0.3,Point(810,360)),FadeTo::create(0.3, 255) ,NULL);
-    kuohao->runAction(Sequence::create(setp06,setp07_1, NULL));
+    //    kuohao->runAction(Sequence::create(setp06,setp07_1, NULL));
     icon->runAction(Sequence::create(setp06,setp07_2, NULL));
     jifen->runAction(Sequence::create(setp06,setp07_3, NULL));
     
@@ -260,7 +261,7 @@ void CompetitionResult::showLose(std::string type,std::string rank,std::string p
     title1->setPosition(640,600);
     addChild(title1,3);
     
-
+    
     auto congratulation = Sprite::create("competition/yi_han.png");
     congratulation->setPosition(640,480);
     addChild(congratulation);
@@ -318,7 +319,7 @@ void CompetitionResult::showLose(std::string type,std::string rank,std::string p
     huaPride->setAnchorPoint(Point::ANCHOR_MIDDLE);
     huaPride->setPosition(640,190);
     addChild(huaPride,1);
-
+    
 }
 
 void CompetitionResult::continueCompetition(){
@@ -326,12 +327,56 @@ void CompetitionResult::continueCompetition(){
     FriendOpenRoomRespData opdata;
     opdata.prjushu = "4";
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
-    CompetitonLayer* lay = CompetitonLayer::create();
-    lay->initView((CompetitionRoomId)atoi(GAMEDATA::getInstance()->getCompetitionId().c_str()),GAMEDATA::getInstance()->getCompetitionPride(),GAMEDATA::getInstance()->getCompetitionRule(),GAMEDATA::getInstance()->getCompetitionFee());
-    getParent()->addChild(lay,5);
-
+    //    CompetitonLayer* lay = CompetitonLayer::create();
+    //    lay->initView((CompetitionRoomId)atoi(GAMEDATA::getInstance()->getCompetitionId().c_str()),GAMEDATA::getInstance()->getCompetitionPride(),GAMEDATA::getInstance()->getCompetitionRule(),GAMEDATA::getInstance()->getCompetitionFee());
+    //    getParent()->addChild(lay,5);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%s",GAMEDATA::getInstance()->getCompetitionId().c_str())));
+    
 }
 
+
+void CompetitionResult::onEnter(){
+    Layer::onEnter();
+    joinResp = EventListenerCustom::create(MSG_JOIN_COMPETITION_RESP, [=](EventCustom* event){
+        JoinCompetitionData* result = static_cast<JoinCompetitionData*>(event->getUserData());
+        JoinCompetitionData newData = *result;
+        if(newData.result == 1){
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            GAMEDATA::getInstance()->setCompetitionId(newData.roomId);
+            GAMEDATA::getInstance()->setCompetitionText(newData.text);
+            GAMEDATA::getInstance()->setCompetitionNumber(newData.num);
+            if(atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_High||atoi(newData.roomId.c_str()) == CompetitionRoomId::Shanghai_Normal){
+                GAMEDATA::getInstance()->setIsCompetitionQueue(true);
+                GAMEDATA::getInstance()->setGameType(1);
+                Director::getInstance()->replaceScene(TransitionFade::create(0.1, MjGameScene::create()));
+            }else{
+                GAMEDATA::getInstance()->setIsCompetitionQueue(true);
+                GAMEDATA::getInstance()->setGameType(3);
+                Director::getInstance()->replaceScene(TransitionFade::create(0.1, MjGameScene::create()));
+            }
+        }else{
+            if(NULL != getChildByTag(1024)){
+                getChildByTag(1024)->removeFromParentAndCleanup(true);
+            }
+            FangkaNotEnoughDialog* da =  FangkaNotEnoughDialog::create();
+            if(GAMEDATA::getInstance()->getCompetitionId() == StringUtils::format("%d",CompetitionRoomId::Shanghai_High)||
+               GAMEDATA::getInstance()->getCompetitionId() == StringUtils::format("%d",CompetitionRoomId::Hongzhong_High)){
+                da->initView(5,24);
+                
+            }else{
+                da->initView(5,1);
+            }
+            addChild(da);
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(joinResp, 1);
+    
+}
+
+void CompetitionResult::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(joinResp);
+}
 
 void CompetitionResult::quit(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());

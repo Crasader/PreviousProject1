@@ -5554,11 +5554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "517918210.59946"
+            timestampString = "517918591.298432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1670"
-            endingLineNumber = "1670"
+            startingLineNumber = "1652"
+            endingLineNumber = "1652"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5570,11 +5570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "517918210.59946"
+            timestampString = "517918591.298432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1673"
-            endingLineNumber = "1673"
+            startingLineNumber = "1655"
+            endingLineNumber = "1655"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5586,11 +5586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "517918210.59946"
+            timestampString = "517918591.298432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1672"
-            endingLineNumber = "1672"
+            startingLineNumber = "1654"
+            endingLineNumber = "1654"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5682,11 +5682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "517918210.59946"
+            timestampString = "517918591.298432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1723"
-            endingLineNumber = "1723"
+            startingLineNumber = "1705"
+            endingLineNumber = "1705"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5698,11 +5698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "517918210.59946"
+            timestampString = "517918591.298432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1724"
-            endingLineNumber = "1724"
+            startingLineNumber = "1706"
+            endingLineNumber = "1706"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>

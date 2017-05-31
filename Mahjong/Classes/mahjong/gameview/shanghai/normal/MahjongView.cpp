@@ -1849,7 +1849,9 @@ void MahjongView::onEnter(){
             playerRight->setIsOffLine(data.flag == "1"?true:false);
         }else {
             hideTingGangControllPad();
-            playerHero->drawPlayerTrue(data.flag == "1"?true:false);
+            bool result = data.flag == "1"?true:false;
+            playerHero->drawPlayerTrue(result);
+            GAMEDATA::getInstance()->setIsTrusteeship(result);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(truNotifyListener, 1);
