@@ -101,7 +101,7 @@ void ExchangeHuafeiCell::confirmChange(Ref* ref){
         getParent()->addChild(item);
     }else{
         ShopHintDialog* dia = ShopHintDialog::create();
-        dia->showImage("shop/lequanbugou.png");
+        dia->showImage("shop/hua_fei_not_enough.png");
         getParent()->addChild(dia,2);
     }
 }
