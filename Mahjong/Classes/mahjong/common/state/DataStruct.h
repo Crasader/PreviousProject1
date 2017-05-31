@@ -550,6 +550,8 @@ struct LeChangeRecord{
 struct HuaRecord{
     std::string propId;
     std::string state;
+    std::string time;
+    std::string phone;
 };
 
 struct HuaChangeRecord{

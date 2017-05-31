@@ -19,7 +19,7 @@ bool HuafeiExchangeRecord::init(){
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
-        
+    
     auto dialog_bg = Sprite::create("shop/shop_bg.png");
     dialog_bg->setPosition(640,360);
     addChild(dialog_bg);
@@ -48,8 +48,18 @@ bool HuafeiExchangeRecord::init(){
 void HuafeiExchangeRecord::onEnter(){
     Layer::onEnter();
     recordListener = EventListenerCustom::create(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, [=](EventCustom* event){
-        if(NULL != getChildByTag(1001)){
-            ((TableView*)getChildByTag(1001))->reloadData();
+        if(GAMEDATA::getInstance()->getHuaChangeRecord().records.size()>0){
+            if(NULL != getChildByTag(1001)){
+                ((TableView*)getChildByTag(1001))->reloadData();
+            }
+        }else{
+            auto bg = Sprite::create("shop/no_record_bg.png");
+            bg->setPosition(640,340);
+            addChild(bg);
+            auto text = Sprite::create("shop/no_record_text.png");
+            text->setPosition(640,360);
+            addChild(text);
+            
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(recordListener, 1);
@@ -62,7 +72,7 @@ void HuafeiExchangeRecord::onExit(){
 };
 
 void HuafeiExchangeRecord::showLequanExchangeRecord(){
-   //TODO
+    //TODO
 }
 
 std::string HuafeiExchangeRecord::getPropName(std::string id){
@@ -91,7 +101,7 @@ void HuafeiExchangeRecord::closeView(){
 }
 
 void HuafeiExchangeRecord::tableCellTouched(TableView* table,TableViewCell* cell){
-
+    
 }
 
 
@@ -121,7 +131,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         propName->setPosition(200,80);
         cell->addChild(propName);
         
-		auto propConfuse = Label::createWithSystemFont(ChineseWord("xioahao") + getPropConsume(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId) + ChineseWord("lequan"), "Arial", 20);
+        auto propConfuse = Label::createWithSystemFont(ChineseWord("xioahao") + getPropConsume(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId) + ChineseWord("lequan"), "Arial", 20);
         propConfuse->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         propConfuse->setTag(102);
         propConfuse->setPosition(200,50);
@@ -145,7 +155,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
 }
 
 ssize_t HuafeiExchangeRecord::numberOfCellsInTableView(TableView *table){
-   return GAMEDATA::getInstance()->getHuaChangeRecord().records.size();
+    return GAMEDATA::getInstance()->getHuaChangeRecord().records.size();
 }
 
 
