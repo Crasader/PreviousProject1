@@ -22,7 +22,7 @@ bool HongbaoAnim2::init(){
 }
 
 
-void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,bool shuang){
+void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bool shuang){
     for (int i=0; i<1000; i++) {
         //飘带
         auto piao = Sprite::create();
@@ -90,6 +90,9 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,bool shuang
     hongbao2->setVisible(false);
     addChild(hongbao2,1);
     hongbao2->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){hongbao2->setVisible(true);}),NULL));
+    auto myTitle = Sprite::create("hongbao/wz_fangzhu.png");
+    myTitle->setPosition(120,110);
+    hongbao2->addChild(myTitle);
     
     int pos  =   hongNum.find(".");
     if(pos>0){
@@ -157,6 +160,17 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,bool shuang
     hongbao20->setVisible(false);
     addChild(hongbao20,1);
     hongbao20->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){hongbao20->setVisible(true);}),NULL));
+    auto myTitle2 = Sprite::create();
+    if(type == 1){
+        myTitle2->setTexture("hongbao/wz_dyj.png");
+    }else if(type == 2){
+        myTitle2->setTexture("hongbao/wz_dsj.png");
+    }else{
+        myTitle2->setTexture("hongbao/wz_fangzhu.png");
+    }
+    myTitle2->setPosition(120,110);
+    hongbao20->addChild(myTitle2);
+    
     
     int pos0  =   hongNum2.find(".");
     if(pos0>0){

@@ -75,17 +75,17 @@ void HZSpecialResultLayer::showGameReslut(){
         //双喜临门
         if(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee != "0"){
             HongbaoAnim2* ami = HongbaoAnim2::create();
-            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,true);
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,true);
             addChild(ami,10);
         }else{
             HongbaoAnim2* ami = HongbaoAnim2::create();
-            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,false);
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,false);
             addChild(ami,10);
         }
         
     }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()){
         HongbaoAnim2* ami = HongbaoAnim2::create();
-        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,false);
+        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,2,false);
         addChild(ami,10);
     }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee != "0"){
         HongbaoAnim* ami = HongbaoAnim::create();

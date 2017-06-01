@@ -453,7 +453,7 @@ void GuiLayer::testButtonClick(){
     //    }
     //    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_HU_ACTION,&cpgData);
     
-    HongbaoAnim2* ami = HongbaoAnim2::create();
-    ami->initView("20", "20",false);
+    HongbaoAnim* ami = HongbaoAnim::create();
+    ami->initView("20",1);
     addChild(ami,10);
 }

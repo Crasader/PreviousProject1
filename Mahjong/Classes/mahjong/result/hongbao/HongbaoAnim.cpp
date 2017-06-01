@@ -29,9 +29,12 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     hongbao->setPosition(640,910);
     addChild(hongbao,1);
     
+
+//    hongbao->addChild(myTitle);
+    
     hongbao->setScaleY(0.9);
     hongbao->setRotation(10);
-
+    
     auto step_1_1 = MoveTo::create(0.3f, Point(640,380));
     
     auto step_1_2_1 = Spawn::create(ScaleTo::create(0.1, 1),RotateTo::create(0.1,0), NULL);
@@ -49,7 +52,7 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     auto step_2_2 = ScaleTo::create(0.15, 1.0f,0.9f);
     auto step_2_3 = ScaleTo::create(0.15, 1.0f,1.05f);
     auto step_2_4 = ScaleTo::create(0.15, 1.0f);
-
+    
     auto step_2 = Sequence::create(step_2_1,step_2_2,step_2_3,step_2_4, NULL);
     
     auto fianlSetp = Sequence::create(setp_1,step_2, NULL);
@@ -89,9 +92,22 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     hongbao2->setVisible(false);
     addChild(hongbao2,1);
     hongbao2->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){hongbao2->setVisible(true);}),NULL));
+    auto myTitle = Sprite::create();
+    if(type == 1){
+        myTitle->setTexture("hongbao/wz_dyj.png");
+    }else if(type == 2){
+        myTitle->setTexture("hongbao/wz_dsj.png");
+    }else{
+        myTitle->setTexture("hongbao/wz_fangzhu.png");
+    }
+    myTitle->setPosition(120,110);
+    hongbao2->addChild(myTitle);
     
     int pos  =   hongNum.find(".");
-    hongNum.replace(pos, pos, ":");
+    if(pos>0){
+        hongNum.replace(pos, pos, ":");
+    }
+    
     auto hongbaoNum = LabelAtlas::create(hongNum,"hongbao/shu_zi.png",34,49,'0');
     hongbaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     hongbaoNum->setPosition(690,450);
@@ -124,7 +140,7 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     title->setPosition(-220,660);
     addChild(title);
     title->runAction(Sequence::create(DelayTime::create(2.0f),MoveTo::create(0.5, Point(640,660)), NULL));
-
+    
 }
 
 
