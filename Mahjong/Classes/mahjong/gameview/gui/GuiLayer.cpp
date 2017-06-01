@@ -378,7 +378,7 @@ void GuiLayer::testButtonClick(){
         }
         resultData.gold = 100;
         resultData.diamond = 100;
-        resultData.jifen =10;
+        resultData.jifen = -10;
         resultData.lequan = 10;
         resultData.golddelta = 200000;
         resultData.diamonddelta =2;
@@ -409,7 +409,7 @@ void GuiLayer::testButtonClick(){
     opendata.prjushu ="8";
     opendata.prjucount ="2";
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
-    char* buf = const_cast<char*>("1");
+    char* buf = const_cast<char*>("2");
 //    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_RESULT,buf);
     _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
     

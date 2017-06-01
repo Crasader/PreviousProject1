@@ -123,8 +123,8 @@ void UserSetting::drawDialog(){
             dissolveMenu->setPosition(930,185);
             addChild(dissolveMenu);
             if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
-//                dissolveMenu->setVisible(false);
-//                myMneu->setPosition(640,185);
+                dissolveMenu->setVisible(false);
+                myMneu->setPosition(640,185);
             }
         }
         

@@ -196,7 +196,7 @@ void CompetitionResult::showWin(std::string type,std::string rank,std::string pr
     auto setp06 = DelayTime::create(1.8f);
     //    auto setp07_1 = Spawn::create(MoveTo::create(0.3,Point(840,360)),FadeTo::create(0.3, 255) ,NULL);
     auto setp07_2 = Spawn::create(MoveTo::create(0.3,Point(800,360)),FadeTo::create(0.3, 255) ,NULL);
-    auto setp07_3 = Spawn::create(MoveTo::create(0.3,Point(810,360)),FadeTo::create(0.3, 255) ,NULL);
+    auto setp07_3 = Spawn::create(MoveTo::create(0.3,Point(815,360)),FadeTo::create(0.3, 255) ,NULL);
     //    kuohao->runAction(Sequence::create(setp06,setp07_1, NULL));
     icon->runAction(Sequence::create(setp06,setp07_2, NULL));
     jifen->runAction(Sequence::create(setp06,setp07_3, NULL));
@@ -295,16 +295,23 @@ void CompetitionResult::showLose(std::string type,std::string rank,std::string p
     rankNum->setPosition(640,388);
     addChild(rankNum);
     
-    auto kuohao =Sprite::create("competition/kuohao.png");
-    kuohao->setPosition(840,360);
-    addChild(kuohao);
+//    auto kuohao =Sprite::create("competition/kuohao.png");
+//    kuohao->setPosition(840,360);
+//    addChild(kuohao);
     auto icon = Sprite::create("mjitem/jifen_icon.png");
     icon->setPosition(800,360);
     icon->setScale(0.6f);
     addChild(icon);
-    auto jifen = LabelAtlas::create(StringUtils::format(":%s",score.c_str()),"competition/score_num_1.png",22,30,'0');
+    LabelAtlas* jifen;
+    int sco = atoi(score.c_str());
+    if(sco>=0){
+        jifen = LabelAtlas::create(StringUtils::format(":%d",sco),"competition/score_num_1.png",22,30,'0');
+        
+    }else{
+        jifen = LabelAtlas::create(StringUtils::format(":%d",abs(sco)),"competition/score_num_2.png",22,30,'0');
+    }
     jifen->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    jifen->setPosition(810,360);
+    jifen->setPosition(815,360);
     addChild(jifen);
     
     auto light = Sprite::create("competition/light_bg.png");
@@ -327,9 +334,6 @@ void CompetitionResult::continueCompetition(){
     FriendOpenRoomRespData opdata;
     opdata.prjushu = "4";
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
-    //    CompetitonLayer* lay = CompetitonLayer::create();
-    //    lay->initView((CompetitionRoomId)atoi(GAMEDATA::getInstance()->getCompetitionId().c_str()),GAMEDATA::getInstance()->getCompetitionPride(),GAMEDATA::getInstance()->getCompetitionRule(),GAMEDATA::getInstance()->getCompetitionFee());
-    //    getParent()->addChild(lay,5);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%s",GAMEDATA::getInstance()->getCompetitionId().c_str())));
     
 }

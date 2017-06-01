@@ -73,6 +73,16 @@ bool GameResultCell::init(GameResultData data){
         addChild(title,30);
     }
     
+    if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj ==data.poxiaoId){
+        auto winTitle = Sprite::create("hongbao/win_title.png");
+        winTitle->setPosition(80,180);
+        addChild(winTitle,30);
+    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == data.poxiaoId){
+        auto loseTitle = Sprite::create("hongbao/lose_titile.png");
+        loseTitle->setPosition(80,180);
+        addChild(loseTitle,30);
+    }
+    
     if(data.jifen>0){
         bg->setTexture("result/win_game_bg.png");
         Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("result/game_result_win_num.png");

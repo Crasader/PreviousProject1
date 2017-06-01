@@ -67,6 +67,7 @@ void SpecialResultLayer::showGameReslut(){
     
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
     for (int i=0; i<results.size();i++) {
+        int type = 0;
         GameResultCell* cell = GameResultCell::create(results.at(i));
         cell->setPosition(250+260*i,340);
         addChild(cell);
