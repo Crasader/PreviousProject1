@@ -92,7 +92,9 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,bool shuang
     hongbao2->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){hongbao2->setVisible(true);}),NULL));
     
     int pos  =   hongNum.find(".");
-    hongNum.replace(pos, pos, ":");
+    if(pos>0){
+        hongNum.replace(pos, pos, ":");
+    }
     auto hongbaoNum = LabelAtlas::create(hongNum,"hongbao/shu_zi.png",34,49,'0');
     hongbaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     hongbaoNum->setPosition(370,450);
@@ -157,7 +159,9 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,bool shuang
     hongbao20->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){hongbao20->setVisible(true);}),NULL));
     
     int pos0  =   hongNum2.find(".");
-    hongNum2.replace(pos0, pos0, ":");
+    if(pos0>0){
+        hongNum2.replace(pos0, pos0, ":");
+    }
     auto hongbaoNum0 = LabelAtlas::create(hongNum2,"hongbao/shu_zi.png",34,49,'0');
     hongbaoNum0->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     hongbaoNum0->setPosition(1010,450);
@@ -184,7 +188,7 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,bool shuang
     menu1->setPosition(450,100);
     addChild(menu1);
     menu1->setVisible(false);
-     menu1->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){menu1->setVisible(true);}),NULL));
+    menu1->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){menu1->setVisible(true);}),NULL));
     
     auto sha = MenuItemImage::create("hongbao/share.png","hongbao/share.png",CC_CALLBACK_0(HongbaoAnim2::share, this));
     auto menu2 = Menu::create(sha,NULL);
@@ -192,7 +196,7 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,bool shuang
     addChild(menu2);
     menu2->setVisible(false);
     menu2->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){menu2->setVisible(true);}),NULL));
-
+    
 }
 
 
