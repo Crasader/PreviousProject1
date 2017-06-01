@@ -42,8 +42,8 @@ bool GameFeedDialog::init(){
     input_bg->setPosition(640, 390);
     addChild(input_bg);
     
-    auto _editName = ui::EditBox::create(Size(680, 200), ui::Scale9Sprite::create());
-    _editName->setPosition(Point(660, 400));
+    auto _editName = ui::EditBox::create(Size(670, 200), ui::Scale9Sprite::create());
+    _editName->setPosition(Point(655, 400));
     _editName->setTag(0);
     _editName->setFont("arial", 24);
     _editName->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);
