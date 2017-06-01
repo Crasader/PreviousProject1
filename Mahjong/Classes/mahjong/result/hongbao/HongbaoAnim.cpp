@@ -116,6 +116,12 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     hongbaoNum->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){hongbaoNum->setVisible(true);}),NULL));
     
     auto back = MenuItemImage::create("hongbao/hongbao_anim_back.png","hongbao/hongbao_anim_back.png",CC_CALLBACK_0(HongbaoAnim::goBack, this));
+    if(true){
+        auto imge = Sprite::create("hongbao/give_up_1.png");
+        back->setNormalImage(imge);
+        auto imge2 = Sprite::create("hongbao/give_up_2.png");
+        back->setSelectedImage(imge2);
+    }
     auto menu1 = Menu::create(back,NULL);
     menu1->setPosition(450,100);
     addChild(menu1);
@@ -123,6 +129,12 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     menu1->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){menu1->setVisible(true);}),NULL));
     
     auto sha = MenuItemImage::create("hongbao/share.png","hongbao/share.png",CC_CALLBACK_0(HongbaoAnim::share, this));
+    if(true){
+        auto imge3 = Sprite::create("hongbao/share_btn_1.png");
+        sha->setNormalImage(imge3);
+        auto imge4 = Sprite::create("hongbao/share_btn_2.png");
+        sha->setSelectedImage(imge4);
+    }
     auto menu2 = Menu::create(sha,NULL);
     menu2->setPosition(750,100);
     addChild(menu2);
