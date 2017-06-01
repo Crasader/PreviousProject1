@@ -1032,14 +1032,14 @@ void Audio::playSoundPengNormal(int gender){
     if(gender==1){
         AudioEngine::play2d("audio/nan/peng3.mp3",false,UserData::getInstance()->getSoundValue());
     }else{
-        AudioEngine::play2d("audio/nv/wzhong.mp3",false,UserData::getInstance()->getSoundValue());
+        AudioEngine::play2d("audio/nv/wpeng.mp3",false,UserData::getInstance()->getSoundValue());
     }
 }
 
 
 void Audio::playSoundGangNormal(int gender){
     if(gender==1){
-        AudioEngine::play2d("audio/nan/wpeng.mp3",false,UserData::getInstance()->getSoundValue());
+        AudioEngine::play2d("audio/nan/gang1.mp3",false,UserData::getInstance()->getSoundValue());
     }else{
         AudioEngine::play2d("audio/nv/wgang.mp3",false,UserData::getInstance()->getSoundValue());
     }
