@@ -459,7 +459,7 @@ void MsgHandler::distribute(int code, std::string msg){
             break;
         case MSGCODE_FEE_EXCHANGE_RESPONSE:
         {
-             handleHuafeiChangeResp(msg);
+            handleHuafeiChangeResp(msg);
         }
             break;
         case MSGCODE_FEE_EXCHANGE_RECORD_RESPONSE:
@@ -2989,7 +2989,7 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
     }
     if(_mDoc.HasMember("hu")){
         tingData.hu = 1;//红中麻将可胡
-//        GAMEDATA::getInstance()->setHongZhongHuState(true);
+        //        GAMEDATA::getInstance()->setHongZhongHuState(true);
     }else{
         tingData.hu = 0;
     }
@@ -3189,7 +3189,7 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
         competitionData.paiming = _mDoc["paiming"].GetString();
         GAMEDATA::getInstance()->setCompetitionResultData(competitionData);
     }
-
+    
     if(_mDoc.HasMember("poker")){
         GAMEDATA::getInstance()->setDiaopao(_mDoc["poker"].GetString());
     }else{
@@ -3531,6 +3531,8 @@ void MsgHandler::handleCompetiotnQueueResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
+    UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
     const rapidjson::Value &result = _mDoc["id"];
     GAMEDATA::getInstance()->setCompetitionId(result.GetString());
     if(_mDoc.HasMember("wait")){
@@ -3591,11 +3593,11 @@ void MsgHandler::handleHuafeiChangeListResp(std::string msg){
     }
     GAMEDATA::getInstance()->setHuafeiChangeList(data);
     postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_LIST, nullptr);
-
+    
 }
 
 void MsgHandler::handleHuafeiChangeResp(std::string msg){
-
+    
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
@@ -3609,7 +3611,7 @@ void MsgHandler::handleHuafeiChangeResp(std::string msg){
     }
     GAMEDATA::getInstance()->setHuafeiChangeResult(myResult);
     postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_RESP, nullptr);
-
+    
 }
 
 
