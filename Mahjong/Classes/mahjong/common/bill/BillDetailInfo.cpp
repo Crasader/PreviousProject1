@@ -23,6 +23,7 @@ bool BillDetailInfo::init()
     this->addChild(bg);
     
     
+    
     auto  dialogBg = Sprite::create("bill/bill_all_bg.png");
     dialogBg->setPosition(640, 360);
     this->addChild(dialogBg);
@@ -41,13 +42,19 @@ bool BillDetailInfo::init()
     this->addChild(bg3);
     
     BillInfoData data = GAMEDATA::getInstance()->getBillInfoData();
-    
+    bool isMatch = false;
+    if(data.gameType == "2"){
+        isMatch =true;
+    }
     Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
     gameType->setTag(90);
     gameType->setColor(Color3B(93,182,215));
     gameType->setAnchorPoint(Vec2::ZERO);
     gameType->setPosition(Vec2(290, 585));
     addChild(gameType);
+    if(isMatch){
+        gameType->setString(data.atype);
+    }
 
     
     Label* date = Label::createWithSystemFont(data.date,"Arial",22);
@@ -55,12 +62,18 @@ bool BillDetailInfo::init()
     date->setColor(Color3B(93,182,215));
     date->setPosition(440,585);
     addChild(date);
+    if(isMatch){
+        date->setPosition(540,585);
+    }
     
     Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
     fanghao->setColor(Color3B(93,182,215));
     fanghao->setAnchorPoint(Vec2::ZERO);
     fanghao->setPosition(Vec2(670,585));
     addChild(fanghao);
+    if(isMatch){
+        fanghao->setVisible(false);
+    }
     
     
     Label* prID = Label::createWithSystemFont(data.prid,"Arial",22);
@@ -68,6 +81,9 @@ bool BillDetailInfo::init()
     prID->setAnchorPoint(Vec2::ZERO);
     prID->setPosition(Vec2(720, 585));
     addChild(prID);
+    if(isMatch){
+        prID->setVisible(false);
+    }
     
     Label* ju = Label::createWithSystemFont("局数:","Arial",22);
     ju->setColor(Color3B(93,182,215));

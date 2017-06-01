@@ -48,7 +48,7 @@ bool BillInfo::init()
     tableView->reloadData();
     
     auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::screenShot, this));
-     auto fupan = MenuItemImage::create("bill/chakan_fupan_1.png","bill/chakan_fupan_2.png",CC_CALLBACK_0(BillInfo::checkFupan, this));
+    auto fupan = MenuItemImage::create("bill/chakan_fupan_1.png","bill/chakan_fupan_2.png",CC_CALLBACK_0(BillInfo::checkFupan, this));
     auto shareBtn = Menu::create(fupan,xuanyao,NULL);
     shareBtn->alignItemsHorizontallyWithPadding(50);
     shareBtn->setTag(2016);
@@ -107,7 +107,10 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
     BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
     
     BillInfoData data = info.bills.at(idx);
-    
+    bool isMatch = false;
+    if(data.gameType == "2"){
+        isMatch = true;
+    }
     TableViewCell *cell = table->dequeueCell();
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
@@ -119,6 +122,9 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         
         
         Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
+        if(isMatch){
+            gameType->setString(data.atype);
+        }
         gameType->setTag(90);
         gameType->setColor(Color3B(93,182,215));
         gameType->setAnchorPoint(Vec2::ZERO);
@@ -131,13 +137,20 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         date->setAnchorPoint(Vec2::ZERO);
         date->setPosition(Vec2(230, 105));
         cell->addChild(date);
+        if(isMatch){
+            date->setPosition(Vec2(330, 105));
+        }
+        
         
         Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
         fanghao->setColor(Color3B(93,182,215));
         fanghao->setAnchorPoint(Vec2::ZERO);
         fanghao->setPosition(Vec2(450, 105));
+        fanghao->setTag(600);
         cell->addChild(fanghao);
-        
+        if(isMatch){
+            fanghao->setVisible(false);
+        }
         
         Label* prID = Label::createWithSystemFont(data.prid,"Arial",22);
         prID->setTag(400);
@@ -145,6 +158,9 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         prID->setAnchorPoint(Vec2::ZERO);
         prID->setPosition(Vec2(515, 105));
         cell->addChild(prID);
+        if(isMatch){
+            prID->setVisible(false);
+        }
         
         Label* ju = Label::createWithSystemFont("局数:","Arial",22);
         ju->setColor(Color3B(93,182,215));
@@ -159,6 +175,10 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         }else if(data.atype == "2"){
             jushuNum = "16";
         }
+        if(isMatch){
+            jushuNum = "4";
+        }
+        
         Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",jushuNum.c_str()),"Arial",22);
         jushu->setTag(401);
         jushu->setColor(Color3B(93,182,215));
@@ -209,6 +229,14 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         }else if(data.atype == "2"){
             jushuNum = "16";
         }
+        if(isMatch){
+            ((Label*)cell->getChildByTag(90))->setString(data.atype);
+            ((Label*)cell->getChildByTag(100))->setPosition(Vec2(330, 105));
+            ((Sprite*)cell->getChildByTag(600))->setVisible(false);
+            ((Sprite*)cell->getChildByTag(400))->setVisible(false);
+            jushuNum = "4";
+        }
+        
         ((Label*)cell->getChildByTag(401))->setString(jushuNum);
         std::vector<BillContent> conBill = sortBillInfo(data.content);
         for (int i = 0; i < conBill.size(); i++){
@@ -292,22 +320,22 @@ std::vector<BillContent> BillInfo::sortBillInfo(std::vector<BillContent> content
 
 void BillInfo::setShowPosition(){
     GAMEDATA::getInstance()->setShowFuPanBtn(false);
-//    if(NULL != getChildByTag(2016))
-        getChildByTag(2016)->setVisible(false);
+    //    if(NULL != getChildByTag(2016))
+    getChildByTag(2016)->setVisible(false);
     auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::screenShot, this));
     auto shareBtn = Menu::create(xuanyao,NULL);
     shareBtn->alignItemsHorizontallyWithPadding(50);
     shareBtn->setPosition(640,80);
     addChild(shareBtn);
-
-//    this->setIsPrivateBill(true);
-//    getChildByTag(101)->setPositionX(890);
-//    getChildByTag(102)->setPositionX(1230);
-//    getChildByTag(104)->setPositionX(890);
-//    getChildByTag(105)->setPositionX(525);
-//    getChildByTag(2016)->setPositionX(605);
-//    if(NULL != getChildByTag(1001))
-//        getChildByTag(1001)->setPositionX(900);
+    
+    //    this->setIsPrivateBill(true);
+    //    getChildByTag(101)->setPositionX(890);
+    //    getChildByTag(102)->setPositionX(1230);
+    //    getChildByTag(104)->setPositionX(890);
+    //    getChildByTag(105)->setPositionX(525);
+    //    getChildByTag(2016)->setPositionX(605);
+    //    if(NULL != getChildByTag(1001))
+    //        getChildByTag(1001)->setPositionX(900);
 }
 
 
