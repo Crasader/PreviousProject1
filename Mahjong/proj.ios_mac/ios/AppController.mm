@@ -92,7 +92,7 @@ static AppDelegate s_sharedApplication;
     
     app->run();
     // 向微信注册
-    [WXApi registerApp:AppID];
+    [WXApi registerApp:AppID enableMTA:false];
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES ] ;
     return YES;
@@ -107,9 +107,11 @@ static AppDelegate s_sharedApplication;
     NSLog(@"URL scheme:%@", [url scheme]);
     NSLog(@"URL query: %@", [url query]);
     return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
-    return false;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary*)options{
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
