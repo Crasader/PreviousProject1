@@ -102,63 +102,60 @@ void NormalResultLayer::showRoomInfo(){
             fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             fanghaoNum->setPosition(940,560);
             addChild(fanghaoNum);
-            
-            auto wukaibao  = Sprite::create("result/public_wu_kaibao.png");
-            wukaibao->setVisible(false);
-            addChild(wukaibao);
-            if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
-                wukaibao->setVisible(true);
-            }
-            auto lezi = Sprite::create();
-            addChild(lezi);
-            if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1100)){
-                lezi->setTexture("result/lezi_1100.png");
-            }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1120)){
-                lezi->setTexture("result/lezi_1120.png");
-            }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1150)){
-                lezi->setTexture("result/lezi_1150.png");
-            }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2200)){
-                lezi->setTexture("result/lezi_2200.png");
-            }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2240)){
-                lezi->setTexture("result/lezi_2240.png");
-            }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type22100)){
-                lezi->setTexture("result/lezi_22100.png");
-            }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type55c)){
-                lezi->setTexture("competition/55wulezi_2.png");
-            }
-            auto emsc =  Sprite::create("result/public_2mo_3chong.png");
-            emsc->setVisible(false);
-            addChild(emsc);
-            if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
-                emsc->setVisible(true);
-            }
-            auto jucount = Sprite::create();
-            addChild(jucount);
-            
-            if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "4"){
-                jucount->setTexture("result/4ju_bg.png");
-            }else if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "16"){
-                jucount->setTexture("result/16ju_bg.png");
-            }else{
-                jucount->setTexture("result/8ju_bg.png");
-            }
-            auto juNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str()),"result/ju_num.png" , 16, 22, '0');
-            addChild(juNum);
-            
-            int wid = lezi->getContentSize().width + jucount->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
-            wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2-(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
-            wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
-            lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
-            emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            jucount->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2+(emsc->isVisible()?(emsc->getContentSize().width):0),560);
-            jucount->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            juNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-            juNum->setPosition(jucount->getPositionX()+45,jucount->getPositionY());
-            
         }
+        auto wukaibao  = Sprite::create("result/public_wu_kaibao.png");
+        wukaibao->setVisible(false);
+        addChild(wukaibao);
+        if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
+            wukaibao->setVisible(true);
+        }
+        auto lezi = Sprite::create();
+        addChild(lezi);
+        if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1100)){
+            lezi->setTexture("result/lezi_1100.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1120)){
+            lezi->setTexture("result/lezi_1120.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1150)){
+            lezi->setTexture("result/lezi_1150.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2200)){
+            lezi->setTexture("result/lezi_2200.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2240)){
+            lezi->setTexture("result/lezi_2240.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type22100)){
+            lezi->setTexture("result/lezi_22100.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type55c)){
+            lezi->setTexture("competition/55wulezi_2.png");
+        }
+        auto emsc =  Sprite::create("result/public_2mo_3chong.png");
+        emsc->setVisible(false);
+        addChild(emsc);
+        if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
+            emsc->setVisible(true);
+        }
+        auto jucount = Sprite::create();
+        addChild(jucount);
         
+        if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "4"){
+            jucount->setTexture("result/4ju_bg.png");
+        }else if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "16"){
+            jucount->setTexture("result/16ju_bg.png");
+        }else{
+            jucount->setTexture("result/8ju_bg.png");
+        }
+        auto juNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str()),"result/ju_num.png" , 16, 22, '0');
+        addChild(juNum);
+        
+        int wid = lezi->getContentSize().width + jucount->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
+        wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2-(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
+        wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
+        lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2,560);
+        emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        jucount->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)/2+(emsc->isVisible()?(emsc->getContentSize().width):0),560);
+        jucount->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        juNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        juNum->setPosition(jucount->getPositionX()+45,jucount->getPositionY());
       
     }else{
         auto xioahao = Sprite::create("result/mei_ju_xiao_hao.png");
