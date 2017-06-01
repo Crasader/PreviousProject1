@@ -7,6 +7,8 @@
 //
 
 #include "mahjong/result/hongbao/HongbaoAnim.hpp"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 
 bool HongbaoAnim::init(){
@@ -136,12 +138,12 @@ void HongbaoAnim::share(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     log("screenShot path = %s",path.c_str());
-    utils::captureScreen(CC_CALLBACK_2(CompetitionResult::afterCaptured, this) ,path);
+    utils::captureScreen(CC_CALLBACK_2(HongbaoAnim::afterCaptured, this) ,path);
 #endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
     log("screenShot path = %s",path.c_str());
-    utils::captureScreen(CC_CALLBACK_2(CompetitionResult::afterCaptured, this) ,path);
+    utils::captureScreen(CC_CALLBACK_2(HongbaoAnim::afterCaptured, this) ,path);
 #endif
 }
 
