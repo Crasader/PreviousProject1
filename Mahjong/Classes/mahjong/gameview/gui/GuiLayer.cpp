@@ -32,7 +32,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-    //    drawTestButton();
+    drawTestButton();
     scheduleUpdate();
 }
 
@@ -95,7 +95,7 @@ void GuiLayer::drawGameInfo(){
         name->setPosition(1200,685);
         name->setColor(Color3B(233,209,112));
         addChild(name);
-
+        
         auto matchname = Label::createWithSystemFont(StringUtils::format("%s元话费赛",GAMEDATA::getInstance()->getCompetitionPride().c_str()), "arial", 25);
         matchname->setPosition(1200,655);
         matchname->setColor(Color3B(233,209,112));

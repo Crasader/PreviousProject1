@@ -117,7 +117,7 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     if(type == 1){
         title->setTexture("hongbao/da_yin_jia.png");
     }else if(type == 2){
-        title->setTexture("hongbao/da_yin_jia.png");
+        title->setTexture("hongbao/da_shu_jia.png");
     }else{
         title->setTexture("hongbao/fang_zhu.png");
     }
