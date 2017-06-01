@@ -1025,6 +1025,26 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &idcard = _mDoc["idcard"];
             GAMEDATA::getInstance()->setCertification(idcard.GetInt()==1?true:false);
         }
+        GameHongBaoPride pride;
+        if(_mDoc.HasMember("dyj")){
+            pride.dyj = _mDoc["dyj"].GetString();
+        }
+        if(_mDoc.HasMember("dyjfee")){
+            pride.dyjfee = _mDoc["dyjfee"].GetString();
+        }
+        if(_mDoc.HasMember("dsj")){
+            pride.dsj = _mDoc["dsj"].GetString();
+        }
+        if(_mDoc.HasMember("dsjfee")){
+            pride.dsjfee = _mDoc["dsjfee"].GetString();
+        }
+        if(_mDoc.HasMember("fzfee")){
+            pride.fzfee = _mDoc["fzfee"].GetString();
+        }
+        if(_mDoc.HasMember("sxlmfee")){
+            pride.sxlmfee = _mDoc["sxlmfee"].GetString();
+        }
+        GAMEDATA::getInstance()->setGameHongBaoPride(pride);
         char* buf = const_cast<char*>(LOGIN_SUCCESS);
         postNotifyMessage(MSG_LOGIN_RESP, buf);
     }
