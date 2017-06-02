@@ -63,7 +63,7 @@
             //分享成功返回结果
             WxLoginHandler::getInstance()->shareSuccess();
         }else{
-            WxLoginHandler::getInstance()->shareFail()();
+            WxLoginHandler::getInstance()->shareFail();
         }
     }
 

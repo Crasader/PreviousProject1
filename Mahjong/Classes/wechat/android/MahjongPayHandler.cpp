@@ -60,10 +60,8 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid,std::string unioni
 
 void MahjongPayHandler:: shareHongbaoPride(bool result){
     if(result){
-        log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
     }else{
-        log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
     }
     
