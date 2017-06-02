@@ -34,6 +34,8 @@
 #include "mahjong/GameConfig.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
+#include "mahjong/result/hongbao/HongbaoAnim.hpp"
+#include "mahjong/result/hongbao/HongbaoAnim2.hpp"
 
 
 bool LobbyScene::init()
@@ -621,6 +623,42 @@ void LobbyScene::onEnterTransitionDidFinish(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
+    if(GAMEDATA::getInstance()->getNeedShowHongbaoResult()){
+        GAMEDATA::getInstance()->setNeedShowHongbaoResult(false);
+        if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()){
+            //双喜临门
+            if(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee != "0"){
+                HongbaoAnim2* ami = HongbaoAnim2::create();
+                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,true);
+                addChild(ami,10);
+            }else{
+                HongbaoAnim2* ami = HongbaoAnim2::create();
+                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,false);
+                addChild(ami,10);
+            }
+            
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()){
+            HongbaoAnim2* ami = HongbaoAnim2::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,2,false);
+            addChild(ami,10);
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee != "0"){
+            HongbaoAnim* ami = HongbaoAnim::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee,2);
+            addChild(ami,10);
+            
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().dyj != "0"){
+            HongbaoAnim* ami = HongbaoAnim::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee,1);
+            addChild(ami,10);
+            
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzfee!= "0"){
+            HongbaoAnim* ami = HongbaoAnim::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,0);
+            addChild(ami,10);
+        }
+
+    
+    }
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
         HintDialog* hint  = HintDialog::create(ChineseWord("dialog_text_19"), nullptr);
         addChild(hint,50);

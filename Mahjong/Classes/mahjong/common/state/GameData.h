@@ -117,6 +117,7 @@ public:
     CC_SYNTHESIZE(bool, logingGame, LogingGame);
     CC_SYNTHESIZE(bool, isCompetitionQueue, IsCompetitionQueue);
     CC_SYNTHESIZE(bool, isCompetitionState, IsCompetitionState);
+    CC_SYNTHESIZE(bool, needShowHongbaoResult, NeedShowHongbaoResult);
     CC_SYNTHESIZE(std::string, competitionId, CompetitionId);
     CC_SYNTHESIZE(std::string, competitionText, CompetitionText);
     CC_SYNTHESIZE(std::string, competitionPride, CompetitionPride);

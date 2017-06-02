@@ -37,6 +37,7 @@ void GAMEDATA::init(){
     setKaibao("0");
     setIsCompetitionQueue(false);
     setIsCompetitionState(false);
+    setNeedShowHongbaoResult(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

@@ -1045,6 +1045,7 @@ void MsgHandler::loginResp(std::string msg){
             pride.sxlmfee = _mDoc["sxlmfee"].GetString();
         }
         GAMEDATA::getInstance()->setGameHongBaoPride(pride);
+        GAMEDATA::getInstance()->setNeedShowHongbaoResult(true);
         char* buf = const_cast<char*>(LOGIN_SUCCESS);
         postNotifyMessage(MSG_LOGIN_RESP, buf);
     }
