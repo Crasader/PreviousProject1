@@ -9,6 +9,8 @@
 #include "mahjong/result/hongbao/HongbaoAnim.hpp"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
+#include "server/NetworkManage.h"
+#include "mahjong/lobby/LobbyScene.h"
 
 
 bool HongbaoAnim::init(){
@@ -157,13 +159,15 @@ void HongbaoAnim::initView(std::string hongNum,int type){
 
 
 void HongbaoAnim::goBack(){
-    removeFromParent();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
+    Director::getInstance()->replaceScene(TransitionFade::create(0.5, LobbyScene::create()));
     
 }
 
 
 void HongbaoAnim::share(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    log("hahhahahhaahhaahah %s",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     log("screenShot path = %s",path.c_str());
     utils::captureScreen(CC_CALLBACK_2(HongbaoAnim::afterCaptured, this) ,path);

@@ -80,3 +80,8 @@ Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_getWriteablePath(JNIEnv* env,
 	return jstr;
 }
 
+extern "C" JNIEXPORT jstring JNICALL
+Java_org_cocos2dx_cpp_payment_JniPayCallbackHelper_shareHongbaoPride(JNIEnv* env, jclass jcl,jboolean result)
+{
+	MahjongPayHandler::getInstance()->shareHongbaoPride(result);
+}

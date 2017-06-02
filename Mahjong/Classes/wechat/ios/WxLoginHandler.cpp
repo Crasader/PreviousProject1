@@ -55,3 +55,12 @@ void WxLoginHandler::updatePlayerInfo(std::string result){
     }
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
 }
+
+void WxLoginHandler::shareSuccess(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
+}
+
+
+void WxLoginHandler::shareFail(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
+}

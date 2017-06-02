@@ -9,6 +9,8 @@
 #include "mahjong/result/hongbao/HongbaoAnim2.hpp"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
+#include "server/NetworkManage.h"
+#include "mahjong/lobby/LobbyScene.h"
 
 
 bool HongbaoAnim2::init(){
@@ -228,7 +230,8 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bo
 
 
 void HongbaoAnim2::goBack(){
-    removeFromParent();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
+    Director::getInstance()->replaceScene(TransitionFade::create(0.5, LobbyScene::create()));
     
 }
 

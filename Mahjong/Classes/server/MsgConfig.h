@@ -104,6 +104,11 @@
 #define MSGCODE_FEE_LIST_RESPONSE  1071// 话费兑换列表回复{code:1071,poxiaoId:poxiaoId,list:[{url:"http://web.5278-mobi.com:1112/30.jpg",goods_id:3},{url:"http://web.5278-mobi.com:1112/50.jpg",goods_id:4},{url:"http://web.5278-mobi.com:1112/100.jpg",goods_id:5},{url:"http://web.5278-mobi.com:1112/200.jpg",goods_id:6}]}
 
 
+
+#define MSGCODE_FEE_GET_REQUEST  1072// 红包领取请求{code:1072,poxiaoId:poxiaoId}
+#define MSGCODE_FEE_GET_RESPONSE  1073// 红包领取回复{code:1073,poxiaoId:poxiaoId,result:1}1成功  0失败
+#define MSGCODE_FEE_GIVEUP_REQUEST  1074// 红包领取放弃请求{code:1074,poxiaoId:poxiaoId}
+
 #define MSGCODE_MAJIANG_BACK_OUT_REQUEST 1992//后台切出请求{code:1992,poxiaoId:poxiaoId}
 
 #define MSGCODE_GAME_CHART_REQUEST  1993//游戏内聊天请求{code:1993,poxiaoId:"123",content:"哈哈",pId:"11111"}

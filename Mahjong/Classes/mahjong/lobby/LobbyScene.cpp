@@ -656,7 +656,6 @@ void LobbyScene::onEnterTransitionDidFinish(){
             ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,0);
             addChild(ami,10);
         }
-
     
     }
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){

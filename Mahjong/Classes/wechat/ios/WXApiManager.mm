@@ -59,6 +59,12 @@
     
     if ([resp isKindOfClass:[SendMessageToWXResp class]]){
         SendMessageToWXResp *messageResp = (SendMessageToWXResp *)resp;
+        if(messageResp.errCode == 0){
+            //分享成功返回结果
+            WxLoginHandler::getInstance()->shareSuccess();
+        }else{
+            WxLoginHandler::getInstance()->shareFail()();
+        }
     }
 
 }

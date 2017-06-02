@@ -83,7 +83,11 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 
 			}
 		} else if (ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX == resp.getType()) {
-
+				if(resp.errCode == 0){
+					JniPayCallbackHelper.shareHongbaoPride(true);
+				}else{
+					JniPayCallbackHelper.shareHongbaoPride(false);
+				}
 		}
 		WXEntryActivity.this.finish();
 	}

@@ -83,6 +83,9 @@ public:
     std::string sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone);
     std::string sendHuafeiRecordCommmand();
     std::string sendCancleTruCommand();
+    /** ---------------红包协议--------------------- **/
+    std::string sendGetHongbaoPride();
+    std::string sendGiveupHongbaoPride();
 private:
 	CommandManage();
 	static CommandManage* _instance;
