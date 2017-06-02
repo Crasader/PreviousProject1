@@ -72,8 +72,10 @@ void VoiceMgr::writeVoice(string filename, string voiceData)
 	string recodByte = base64_decode(voiceData.c_str());
 	log("recodByte === %s", recodByte.c_str());
 	string path = VoiceMgr::getInstance()->_voiceMediaPath + filename;
-	FileUtils::getInstance()->writeStringToFile(recodByte, path);
-	VoiceMgr::getInstance()->play(filename);
+    if(recodByte.size()>0&&path.size()>0){
+        FileUtils::getInstance()->writeStringToFile(recodByte, path);
+        VoiceMgr::getInstance()->play(filename);
+    }
 }
 
 void VoiceMgr::clearCache(string filename)
