@@ -5,6 +5,7 @@ import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.tbu.androidtools.Debug;
 import com.tbu.androidtools.app.AppInfo;
 import com.tbu.androidtools.device.DeviceInfo;
 import com.tbu.wx.http.Addresses;
@@ -316,6 +317,7 @@ public class TbuWxUtil {
 					@Override
 					public void callBack(String msg) {
 						WxUserInfo info = new WxUserInfo();
+//						Debug.e("hhhhhhhhhhhhhh "+msg);
 						try {
 							JSONObject obj = new JSONObject(msg);
 							if (obj.getInt("result") != -1) {

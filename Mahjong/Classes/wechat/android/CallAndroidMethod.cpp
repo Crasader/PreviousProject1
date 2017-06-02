@@ -91,7 +91,7 @@ void CallAndroidMethod::weChatLogin(){
     auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
     bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"weChatLogin","()V");
     if(isHave){
-//        jobject jobj;
+//        jobject jobj;getWechatToken
         JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID);
     }
 #endif

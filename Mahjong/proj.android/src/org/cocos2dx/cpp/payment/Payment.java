@@ -93,12 +93,12 @@ public class Payment {
 	 * 发起微信登录
 	 */
 	public static void weChatLogin() {
-		Debug.i("微信登录游戏 weChatLogin...");
+		Debug.e("微信登录游戏 weChatLogin...");
 		TbuWxUtil.getInstance().getWechatCode(getWeChatState(), new QueryCallBack() {
 			@Override
 			public void queryCallBackMsg(WxUserInfo info) {
 				if (null != info&&!info.isResult()) {
-					Debug.i("微信登录游戏...");
+					Debug.e("微信登录游戏...");
 					JniPayCallbackHelper.loginThirdPlatform(info.getOpenId(),info.getUnionid(),
 							info.getHeadImage(), info.getSex(), info.getNickName(), DeviceInfo.getProduct(),
 							DeviceInfo.getModle(), DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());

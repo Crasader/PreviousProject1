@@ -65,7 +65,7 @@ public class HttpUtil {
 		}
 		try {
 			URL url = new URL(urlStr + "?" + strContent);
-
+//			Debug.e("URL = "+url);
 			HttpURLConnection urlConnection = (HttpURLConnection) url
 					.openConnection();
 			urlConnection.setRequestMethod("GET");
