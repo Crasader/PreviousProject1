@@ -756,6 +756,10 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerHero->recoverHand(data.hand,data.lastpoker);
             playerHero->recoverPlayed(data.outhand);
             playerHero->recoverHua(data.hua);
+            if(data.tru == 1){
+                playerHero->drawPlayerTrue(true);
+                GAMEDATA::getInstance()->setIsTrusteeship(true);
+            }
         }
     }
     else if (type == ClientSeatId::left){
@@ -764,6 +768,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerLeft->initPlayer(playerInfo);
             playerLeft->setPlayerTingState(data.status == 1?true:false);
             playerLeft->setIsOffLine(data.isOnline == 0?true:false);
+            playerLeft->setIsTrusteeship(data.tru == 1?true:false);
             addChild(playerLeft);
             playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
             playerLeft->recoverHand(data.hand);
@@ -783,6 +788,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerRight->recoverHand(data.hand);
             playerRight->recoverPlayed(data.outhand);
             playerRight->recoverHua(data.hua);
+            playerRight->setIsTrusteeship(data.tru == 1?true:false);
             
         }
     }
@@ -797,6 +803,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerOpposite->recoverHand(data.hand);
             playerOpposite->recoverPlayed(data.outhand);
             playerOpposite->recoverHua(data.hua);
+            playerOpposite->setIsTrusteeship(data.tru == 1?true:false);
             
         }
     }
@@ -1842,12 +1849,12 @@ void MahjongView::onEnter(){
         TruStateData data = *tru_seatid;
         int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(data.seatId.c_str()));
         if(clientId == ClientSeatId::left){
-            playerLeft->setIsOffLine(data.flag == "1"?true:false);
+            playerLeft->setIsTrusteeship(data.flag == "1"?true:false);
         }else if(clientId == ClientSeatId::opposite){
-            playerOpposite->setIsOffLine(data.flag == "1"?true:false);
+            playerOpposite->setIsTrusteeship(data.flag == "1"?true:false);
         }else if(clientId == ClientSeatId::right){
-            playerRight->setIsOffLine(data.flag == "1"?true:false);
-        }else {
+            playerRight->setIsTrusteeship(data.flag == "1"?true:false);
+        }else if(clientId == ClientSeatId::hero){
             hideTingGangControllPad();
             bool result = data.flag == "1"?true:false;
             playerHero->drawPlayerTrue(result);

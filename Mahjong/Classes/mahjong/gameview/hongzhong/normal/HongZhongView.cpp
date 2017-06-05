@@ -664,6 +664,10 @@ void HongZhongView::recoverPlayer(PlayerGameData data, int type, Player* playerI
             playerHero->recoverHand(data.hand,data.lastpoker);
             playerHero->recoverPlayed(data.outhand);
             playerHero->recoverHua(data.hua);
+            if(data.tru == 1){
+                playerHero->drawPlayerTrue(true);
+                GAMEDATA::getInstance()->setIsTrusteeship(true);
+            }
         }
     }
     else if (type == ClientSeatId::left){
@@ -677,7 +681,7 @@ void HongZhongView::recoverPlayer(PlayerGameData data, int type, Player* playerI
             playerLeft->recoverHand(data.hand);
             playerLeft->recoverPlayed(data.outhand);
             playerLeft->recoverHua(data.hua);
-            
+            playerLeft->setIsTrusteeship(data.tru == 1?true:false);
         }
     }
     else if (type == ClientSeatId::right){
@@ -691,7 +695,7 @@ void HongZhongView::recoverPlayer(PlayerGameData data, int type, Player* playerI
             playerRight->recoverHand(data.hand);
             playerRight->recoverPlayed(data.outhand);
             playerRight->recoverHua(data.hua);
-            
+            playerRight->setIsTrusteeship(data.tru == 1?true:false);
         }
     }
     else if (type == ClientSeatId::opposite){
@@ -705,7 +709,7 @@ void HongZhongView::recoverPlayer(PlayerGameData data, int type, Player* playerI
             playerOpposite->recoverHand(data.hand);
             playerOpposite->recoverPlayed(data.outhand);
             playerOpposite->recoverHua(data.hua);
-            
+            playerOpposite->setIsTrusteeship(data.tru == 1?true:false);
         }
     }
 }
@@ -1753,12 +1757,12 @@ void HongZhongView::onEnter(){
         TruStateData data = *tru_seatid;
         int clientId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), atoi(data.seatId.c_str()));
         if(clientId == ClientSeatId::left){
-            playerLeft->setIsOffLine(data.flag == "1"?true:false);
+            playerLeft->setIsTrusteeship(data.flag == "1"?true:false);
         }else if(clientId == ClientSeatId::opposite){
-            playerOpposite->setIsOffLine(data.flag == "1"?true:false);
+            playerOpposite->setIsTrusteeship(data.flag == "1"?true:false);
         }else if(clientId == ClientSeatId::right){
-            playerRight->setIsOffLine(data.flag == "1"?true:false);
-        }else {
+            playerRight->setIsTrusteeship(data.flag == "1"?true:false);
+        }else if(clientId == ClientSeatId::hero){
             hideHuGangControllPad();
             bool result = data.flag == "1"?true:false;
             playerHero->drawPlayerTrue(result);
