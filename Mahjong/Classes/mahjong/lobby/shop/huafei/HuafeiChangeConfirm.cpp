@@ -43,8 +43,8 @@ bool HuafeiChangeConfirm::init(std::string propId,std::string propName, std::str
     closeMenu->setPosition(875, 535);
     addChild(closeMenu);
     
-    auto text = Label::createWithSystemFont(StringUtils::format("您兑换了%s至%s,请您仔细核对",propName.c_str(),phone.c_str()),"arial", 30);
-    text->setWidth(250);
+    auto text = Label::createWithSystemFont(StringUtils::format("您兑换了%s至%s,请您仔细核对",propName.c_str(),phone.c_str()),"arial", 34);
+    text->setWidth(280);
     text->setAlignment(cocos2d::TextHAlignment::CENTER);
     text->setColor(Color3B(223,162,182));
     text->setPosition(640,380);

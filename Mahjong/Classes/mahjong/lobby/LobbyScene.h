@@ -32,6 +32,7 @@ private:
     Label* haufeiNum;
     Menu* firstMenu;
     Sprite* ganTanhao;
+    bool isShowRoomlist = false;
     
     EventListenerCustom* enterRoomListener;
     EventListenerCustom* enterFriendRoomListener;

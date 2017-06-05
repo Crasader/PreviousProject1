@@ -605,7 +605,7 @@ void HongZhongView::recoverGame(){
                 info->setGold(0);
                 info->setDiamond(0);
                 info->setNickname("");
-                info->setPicture("3");
+                info->setPicture("");
                 info->setGender("");
                 info->setTicket(0);
                 info->setFangka(0);
@@ -1149,7 +1149,7 @@ void HongZhongView::onEnter(){
                     info->setGold(0);
                     info->setDiamond(0);
                     info->setNickname("");
-                    info->setPicture("3");
+                    info->setPicture("");
                     info->setGender("");
                     info->setScore(0);
                     info->setTicket(0);
@@ -1508,7 +1508,7 @@ void HongZhongView::onEnter(){
                 schedule([=](float dt){
                     playerHero->stopTimeClockAnim();
                     playerHero->drawPlayedJong(poker);
-                },0,0,0.6f,"delay_play_poker_auto");
+                },0,0,0.4f,"delay_play_poker_auto");
             }
         }
     });

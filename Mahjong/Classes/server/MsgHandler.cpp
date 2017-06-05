@@ -608,6 +608,7 @@ void MsgHandler::roomListResp(std::string msg){
             roomlist.matchList.push_back(room);
         }
     }
+    GAMEDATA::getInstance()->setRoomList(roomlist);
     postNotifyMessage(MSG_ROOM_LIST_RESP,&roomlist);
 }
 

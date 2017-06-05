@@ -144,7 +144,7 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         huaNum->setTag(102);
         cell->addChild(huaNum);
         
-        auto quan = Sprite::create("shop/huafei_img.png");
+        auto quan = Sprite::create("shop/lequan_img.png");
         quan->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         quan->setPosition(huaNum->getContentSize().width+huaNum->getPositionX(),90);
         cell->addChild(quan);

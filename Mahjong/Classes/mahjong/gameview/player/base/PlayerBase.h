@@ -39,7 +39,7 @@ public:
     void showPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);//玩家杠牌
     void showPlayerHua(int num);//显示玩家花数
     void setPlayerTingState(bool b);//设置玩家的听牌状态
-     bool getPlayerTingState();
+    bool getPlayerTingState();
     void showCurrentBigJong(int cType);
     void hideCurrentBigJong();
     void setIsReady(bool b);//准备状态

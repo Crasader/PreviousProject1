@@ -696,7 +696,7 @@ void MahjongView::recoverGame(){
                 info->setGold(0);
                 info->setDiamond(0);
                 info->setNickname("");
-                info->setPicture("3");
+                info->setPicture("");
                 info->setGender("");
                 info->setTicket(0);
                 info->setFangka(0);
@@ -1252,7 +1252,7 @@ void MahjongView::onEnter(){
                     info->setGold(0);
                     info->setDiamond(0);
                     info->setNickname("");
-                    info->setPicture("3");
+                    info->setPicture("");
                     info->setGender("");
                     info->setScore(0);
                     info->setTicket(0);

@@ -309,6 +309,28 @@ void LobbyScene::drawSceneMid(){
     scroll->setPosition(600,600);
     addChild(scroll,2);
     
+    if(!isShowRoomlist){
+        RoomListData newData = GAMEDATA::getInstance()->getRoomList();
+        for (int i=0; i<newData.matchList.size();i++) {
+            isShowRoomlist = true;
+            CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
+            CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
+            com->setPosition(240+(i%2)*400,420-180*(i/2));
+            addChild(com);
+        }
+        if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+            GAMEDATA::getInstance()->setRoomList(newData);
+            GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+            plate->setTag(1298);
+            addChild(plate,2);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+            //支付审核
+            plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
+        }
+        
+        
+    }
 }
 
 void LobbyScene::drawSceneBot(){
@@ -550,16 +572,17 @@ void LobbyScene::chargeFangka(){
 
 void LobbyScene::exchangeLequan(){
     Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeListCommand());
     LequanShop* shop = LequanShop::create();
     addChild(shop,3);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getLequanChangeListCommand());
+    
 }
 
 void LobbyScene::exchangeHuafei(){
     Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiExchangeCommand());
     HuafeiShop* shop = HuafeiShop::create();
     addChild(shop,3);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiExchangeCommand());
 }
 
 void LobbyScene::showLoading(){
@@ -656,7 +679,7 @@ void LobbyScene::onEnterTransitionDidFinish(){
             ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,0);
             addChild(ami,10);
         }
-    
+        
     }
     if(GAMEDATA::getInstance()->getShowFangZhuDismiss()){
         HintDialog* hint  = HintDialog::create(ChineseWord("dialog_text_19"), nullptr);
@@ -1054,21 +1077,24 @@ void LobbyScene::addEventListener(){
     roomListRespListener = EventListenerCustom::create(MSG_ROOM_LIST_RESP, [=](EventCustom* event){
         RoomListData* data = static_cast<RoomListData*>(event->getUserData());
         RoomListData newData = *data;
-        for (int i=0; i<newData.matchList.size();i++) {
-            CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
-            CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
-            com->setPosition(240+(i%2)*400,420-180*(i/2));
-            addChild(com);
-        }
-        if(data->rooms.size()>0 && getChildByTag(1298) == NULL){
-            GAMEDATA::getInstance()->setRoomList(newData);
-            GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-            plate->setTag(1298);
-            addChild(plate,2);
+        if(!isShowRoomlist){
+            for (int i=0; i<newData.matchList.size();i++) {
+                isShowRoomlist = true;
+                CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
+                CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
+                com->setPosition(240+(i%2)*400,420-180*(i/2));
+                addChild(com);
+            }
+            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+                GAMEDATA::getInstance()->setRoomList(newData);
+                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+                plate->setTag(1298);
+                addChild(plate,2);
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-            //支付审核
-            plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+                //支付审核
+                plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
 #endif
+            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomListRespListener, 1);

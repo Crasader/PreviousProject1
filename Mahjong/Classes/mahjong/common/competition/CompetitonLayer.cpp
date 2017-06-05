@@ -12,6 +12,7 @@
 #include "server/NetworkManage.h"
 #include "mahjong/common/competition/CompetitionResult.hpp"
 #include "mahjong/lobby/shop/fangka/FangkaNotEnoughDialog.hpp"
+#include "mahjong/common/utils/StringUtil.h"
 
 bool CompetitonLayer::init(){
     
@@ -48,13 +49,6 @@ bool CompetitonLayer::init(){
     auto ruleTitle = Sprite::create("competition/competition_rule.png");
     ruleTitle->setPosition(380,460);
     addChild(ruleTitle);
-    
-    ruleText = Label::createWithSystemFont("", "arial", 28);
-    ruleText->setWidth(338);
-    ruleText->setHorizontalAlignment(cocos2d::TextHAlignment::LEFT);
-    ruleText->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    ruleText->setPosition(560,350);
-    addChild(ruleText);
     
     auto prideTitle = Sprite::create("competition/competition_pride.png");
     prideTitle->setPosition(780,460);
@@ -123,7 +117,18 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     if(roomId == CompetitionRoomId::Hongzhong_High||roomId == Hongzhong_Normal){
         title->setTexture("competition/hongzhong_text.png");
     }
-    ruleText->setString(StringUtils::format("       %s",rule.c_str()));
+    string newRule = "       "+rule;
+    vector<std::string> rules = StringUtil::split(newRule,"|");
+    for(int i= 0; i< rules.size();i++){
+        ruleText = Label::createWithSystemFont("", "arial", 28);
+        ruleText->setWidth(338);
+        ruleText->setHorizontalAlignment(cocos2d::TextHAlignment::LEFT);
+        ruleText->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+        ruleText->setPosition(560,405-40*i);
+        addChild(ruleText);
+        ruleText->setString(StringUtils::format("%s",rules.at(i).c_str()));
+    }
+    
     huafeiNum->setString(huafei);
     prideNum->setString(huafei);
     fee4->setString(StringUtils::format("%s张房卡",fangka.c_str()));

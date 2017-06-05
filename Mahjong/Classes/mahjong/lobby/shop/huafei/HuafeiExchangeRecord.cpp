@@ -136,11 +136,13 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         
         auto haufeiImage = Sprite::create("shop/chong_zhi_ka.png");
         haufeiImage->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        haufeiImage->setTag(98);
         haufeiImage->setPosition(huafeiNum->getContentSize().width+huafeiNum->getPositionX(),88);
         cell->addChild(haufeiImage);
         
         auto xiao = Sprite::create("shop/xiaohao_img.png");
         xiao->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        xiao->setTag(99);
         xiao->setPosition(haufeiImage->getContentSize().width+haufeiImage->getPositionX(),90);
         cell->addChild(xiao);
         
@@ -152,6 +154,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         
         auto quan = Sprite::create("shop/huafei_img.png");
         quan->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        quan->setTag(97);
         quan->setPosition(huaNum->getContentSize().width+huaNum->getPositionX(),90);
         cell->addChild(quan);
         
@@ -193,6 +196,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
             stateImage->setTexture("shop/yiduihuan.png");
         }
     }else{
+        
         if(NULL != cell->getChildByTag(100)){
             ((Sprite*)cell->getChildByTag(100))->setTexture(getImageNameById(atoi(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId.c_str())));
         }
@@ -215,6 +219,19 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
                 ((Sprite*)cell->getChildByTag(105))->setTexture("shop/yiduihuan.png");
             }
         }
+        if(NULL != cell->getChildByTag(98)&&NULL != cell->getChildByTag(101)){
+            cell->getChildByTag(98)->setPosition(cell->getChildByTag(101)->getContentSize().width+cell->getChildByTag(101)->getPositionX(),88);
+        }
+        if(NULL != cell->getChildByTag(98)&&NULL != cell->getChildByTag(99)){
+            cell->getChildByTag(99)->setPosition(cell->getChildByTag(98)->getContentSize().width+cell->getChildByTag(98)->getPositionX(),90);
+        }
+        if(NULL != cell->getChildByTag(99)&&NULL != cell->getChildByTag(102)){
+            cell->getChildByTag(102)->setPosition(cell->getChildByTag(99)->getContentSize().width+cell->getChildByTag(99)->getPositionX(),90);
+        }
+        if(NULL != cell->getChildByTag(97)&&NULL != cell->getChildByTag(102)){
+            cell->getChildByTag(97)->setPosition(cell->getChildByTag(102)->getContentSize().width+cell->getChildByTag(102)->getPositionX(),90);
+        }
+        
     }
     return cell;
 }
