@@ -253,11 +253,11 @@ void HongbaoAnim2::afterCaptured(bool succeed, const std::string &outputFile)
 {
     if (succeed) {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        CallAndroidMethod::getInstance()->shareImageToWeChat(outputFile, false);
+        CallAndroidMethod::getInstance()->shareImageToWeChat(outputFile, true);
 #endif
         
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 0);
+        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
 #endif
     }
 }
