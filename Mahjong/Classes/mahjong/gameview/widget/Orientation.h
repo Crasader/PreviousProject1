@@ -12,6 +12,7 @@ public:
     void showWhoBank(int heroSeatId,int bankId);
     void resetBank();
 private:
+    int timeNumber = 20;
 	Sprite* left;
 	Sprite* right;
 	Sprite* opposite;
@@ -20,5 +21,6 @@ private:
 	void initView();
 	void changeTeture(Sprite* node);
     void recoverTeture(Sprite* node);
+    void updateTime(float dt);
 };
 #endif 

@@ -38,7 +38,6 @@ void PlayerBase::initData(){
     setHuaNum(0);
     setStateCpg(false);
     setIsPlayHuaChi(false);
-    
 }
 
 

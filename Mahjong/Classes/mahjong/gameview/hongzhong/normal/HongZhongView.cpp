@@ -971,7 +971,10 @@ void HongZhongView::onEnterTransitionDidFinish(){
             
             int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
             if(playturn == ClientSeatId::hero){
-                playerHero->startTimeClockAnim();
+                if(!GAMEDATA::getInstance()->getIsTrusteeship()){
+                    playerHero->startTimeClockAnim();
+                }
+                
                 if(!GAMEDATA::getInstance()->getTurnHeroCpg()){
                     playerHero->setIsAllowPlay(true);
                 }
@@ -1169,18 +1172,20 @@ void HongZhongView::onEnter(){
                 }
                 auto startSprite1 = Sprite::create("competition/competition_start_1.png");
                 startSprite1->setPosition(320,350);
-                startSprite1->runAction(Sequence::create(MoveTo::create(1.0f, Point(-400,350)),CallFunc::create([=](){
+                startSprite1->runAction(Sequence::create(MoveTo::create(2.0f, Point(-400,350)),CallFunc::create([=](){
                     startSprite1->removeFromParent();
                 }), NULL));
                 addChild(startSprite1,100);
                 auto startSprite2 = Sprite::create("competition/competition_start_2.png");
                 startSprite2->setPosition(960,320);
-                startSprite2->runAction(Sequence::create(MoveTo::create(1.0f, Point(1680,350)),CallFunc::create([=](){
+                startSprite2->runAction(Sequence::create(MoveTo::create(2.0f, Point(1680,350)),CallFunc::create([=](){
                     startSprite2->removeFromParent();
                 }), NULL));
                 addChild(startSprite2,100);
-                delay = 1.5f;
+                delay = 2.5f;
             }
+        }else{
+            log("此次发牌不是比赛发牌");
         }
         GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
         FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
