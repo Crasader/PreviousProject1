@@ -1253,6 +1253,9 @@ void MahjongView::onEnter(){
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
             ((Orientation*)getChildByTag(123))->resetBank();
+            if(NULL != getChildByTag(9982)){
+                getChildByTag(9982)->removeFromParent();
+            }
             if(GAMEDATA::getInstance()->getPlayersInfo().size()==0){
                 for (int i = 0; i < 4; i++)
                 {
@@ -1272,9 +1275,7 @@ void MahjongView::onEnter(){
                     GAMEDATA::getInstance()->addPlayersInfo(info);
                 }
                 addPlayer2Room();
-                if(NULL != getChildByTag(9982)){
-                    getChildByTag(9982)->removeFromParent();
-                }
+     
                 auto startSprite1 = Sprite::create("competition/competition_start_1.png");
                 startSprite1->setPosition(320,350);
                 startSprite1->runAction(Sequence::create(MoveTo::create(2.0f, Point(-400,350)),CallFunc::create([=](){
@@ -1288,6 +1289,8 @@ void MahjongView::onEnter(){
                 }), NULL));
                 addChild(startSprite2,100);
                 delay = 2.5f;
+            }else{
+                log("此次发牌不是比赛发牌");
             }
             
         }else{

@@ -880,7 +880,7 @@ void PlayerHero::removePlayedIcon(){
 }
 
 void PlayerHero::doEventTimeOver(int type){
-    //TODO
+    setIsAllowPlay(false);
 }
 
 

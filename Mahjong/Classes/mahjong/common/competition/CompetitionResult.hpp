@@ -23,6 +23,7 @@ public:
     CREATE_FUNC(CompetitionResult);
 private:
     EventListenerCustom* networkBreakListener;
+    EventListenerCustom* myCoreLoginRespListener;
     void share();
     void showWin(std::string type,std::string rank,std::string pride,std::string score);
     void showLose(std::string type,std::string rank,std::string pride,std::string score);

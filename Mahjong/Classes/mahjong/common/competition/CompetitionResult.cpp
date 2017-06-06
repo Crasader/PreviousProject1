@@ -296,9 +296,9 @@ void CompetitionResult::showLose(std::string type,std::string rank,std::string p
     rankNum->setPosition(640,388);
     addChild(rankNum);
     
-//    auto kuohao =Sprite::create("competition/kuohao.png");
-//    kuohao->setPosition(840,360);
-//    addChild(kuohao);
+    //    auto kuohao =Sprite::create("competition/kuohao.png");
+    //    kuohao->setPosition(840,360);
+    //    addChild(kuohao);
     auto icon = Sprite::create("mjitem/jifen_icon.png");
     icon->setPosition(800,360);
     icon->setScale(0.6f);
@@ -394,12 +394,21 @@ void CompetitionResult::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
+    myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+        //        Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
+        if(NULL != getChildByTag(2000)){
+            getChildByTag(2000)->removeFromParent();
+        }
+        
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(myCoreLoginRespListener, 1);
 }
 
 void CompetitionResult::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(joinResp);
-     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
 }
 
 void CompetitionResult::quit(){
