@@ -880,7 +880,7 @@ void PlayerHero::removePlayedIcon(){
 }
 
 void PlayerHero::doEventTimeOver(int type){
-    if(GAMEDATA::getInstance()->getIsTrusteeship()){
+    if(GAMEDATA::getInstance()->getIsCompetitionState()             ){
         setIsAllowPlay(false);
     }
 }

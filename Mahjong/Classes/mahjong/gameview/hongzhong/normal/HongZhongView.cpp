@@ -667,7 +667,10 @@ void HongZhongView::recoverPlayer(PlayerGameData data, int type, Player* playerI
             if(data.tru == 1){
                 playerHero->drawPlayerTrue(true);
                 GAMEDATA::getInstance()->setIsTrusteeship(true);
+            }else{
+                GAMEDATA::getInstance()->setIsTrusteeship(false);
             }
+
         }
     }
     else if (type == ClientSeatId::left){

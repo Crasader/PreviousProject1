@@ -759,6 +759,8 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             if(data.tru == 1){
                 playerHero->drawPlayerTrue(true);
                 GAMEDATA::getInstance()->setIsTrusteeship(true);
+            }else{
+                GAMEDATA::getInstance()->setIsTrusteeship(false);
             }
         }
     }
