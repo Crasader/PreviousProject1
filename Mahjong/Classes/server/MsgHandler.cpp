@@ -2223,6 +2223,7 @@ void MsgHandler::playerConnectAgain(std::string msg){
     }
     GAMEDATA::getInstance()->setGameType(1);
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
+    GAMEDATA::getInstance()->setIsCompetitionQueue(false);
     char* buf = const_cast<char*>(StringUtil::itos(seatId.GetInt()).c_str());
     postNotifyMessage(MSG_PLAYER_CONNECT_AGAIN, buf);
 }
@@ -3160,6 +3161,7 @@ void MsgHandler::handleHZGameReconnectNotify(std::string msg){
     }
     GAMEDATA::getInstance()->setLastGameDataBackup(lastGameData);
     char* buf = const_cast<char*>(StringUtil::itos(seatId.GetInt()).c_str());
+    GAMEDATA::getInstance()->setIsCompetitionQueue(false);
     postNotifyMessage(MSG_HZ_PLAYER_CONNECT_AGAIN, buf);
 }
 

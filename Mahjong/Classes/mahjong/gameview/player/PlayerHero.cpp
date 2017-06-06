@@ -33,7 +33,7 @@ void PlayerHero::initData() {
     playedIcon->setVisible(false);
     addChild(playedIcon, 666);
     setCpgPostionX(JONG_POS_START_X);
-
+    
 }
 
 void PlayerHero::onEnter(){
@@ -880,7 +880,9 @@ void PlayerHero::removePlayedIcon(){
 }
 
 void PlayerHero::doEventTimeOver(int type){
-    setIsAllowPlay(false);
+    if(GAMEDATA::getInstance()->getIsTrusteeship()){
+        setIsAllowPlay(false);
+    }
 }
 
 
