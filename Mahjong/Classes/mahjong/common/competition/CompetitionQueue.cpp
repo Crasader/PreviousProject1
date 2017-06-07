@@ -10,6 +10,7 @@
 #include "mahjong/common/loading/Loading.h"
 #include "mahjong/lobby/LobbyScene.h"
 #include "server/NetworkManage.h"
+#include "mahjong/common/state/GameData.h"
 
 
 //competition_queue_bg.png
@@ -97,6 +98,8 @@ bool CompetitionQueue::init(){
         addChild(playerLight);
         index++;
     }
+    //清楚所有玩家数据
+    GAMEDATA::getInstance()->clearPlayersInfo();
     return true;
 }
 
