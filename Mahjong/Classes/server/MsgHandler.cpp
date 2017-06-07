@@ -1044,6 +1044,8 @@ void MsgHandler::loginResp(std::string msg){
         }
         if(_mDoc.HasMember("sxlmfee")){
             pride.sxlmfee = _mDoc["sxlmfee"].GetString();
+        }else{
+            pride.sxlmfee = "0";
         }
         GAMEDATA::getInstance()->setGameHongBaoPride(pride);
         GAMEDATA::getInstance()->setNeedShowHongbaoResult(true);

@@ -96,7 +96,7 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bo
     myTitle->setPosition(120,110);
     hongbao2->addChild(myTitle);
     
-    int pos  =   hongNum.find(".");
+    int pos  =  (int)hongNum.find(".");
     if(pos>0){
         hongNum.replace(pos, pos, ":");
     }
