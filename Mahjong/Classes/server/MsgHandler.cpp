@@ -1544,6 +1544,7 @@ void MsgHandler::getHeroJongs(std::string msg){
         GAMEDATA::getInstance()->setIsCompetitionState(true);
     }
     faPaiData.mjTingData = tingData;
+    GAMEDATA::getInstance()->setIsTrusteeship(false);
     postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
@@ -2956,6 +2957,7 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
         faPaiData.matchId = _mDoc["matchid"].GetString();
         GAMEDATA::getInstance()->setIsCompetitionState(true);
     }
+    GAMEDATA::getInstance()->setIsTrusteeship(false);
     postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
