@@ -2399,49 +2399,55 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
         const rapidjson::Value &myjifen = _mDoc["jifen"];
         GAMEDATA::getInstance()->setScore(myjifen.GetInt());
     }
+    
     GAMEDATA::getInstance()->clearPlayersInfo();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
-    if (_mDoc.HasMember("other")){
-        const rapidjson::Value &pArr = _mDoc["other"];
-        for (int i = 0; i < pArr.Capacity(); ++i){
-            const rapidjson::Value &temp = pArr[i];
-            Player* info = new Player();
-            info->setPoxiaoId(temp["poxiaoId"].GetString());
-            info->setSeatId(temp["seatId"].GetInt());
-            info->setBanker(false);
-            info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
-            info->setGold(temp["gold"].GetInt());
-            info->setTicket(temp["lequan"].GetInt());
-            info->setScore(temp["jifen"].GetInt());
-            info->setGender(temp["gender"].GetInt());
-            info->setNickname(temp["nickname"].GetString());
-            info->setPicture(temp["pic"].GetString());
-            info->setFangka(temp["fangka"].GetDouble());
-            if(temp.HasMember("ip")){
-                info->setIP(temp["ip"].GetString());
+    if(_mDoc.HasMember("matchid")){
+        GAMEDATA::getInstance()->setIsCompetitionState(true);
+        GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
+    }else{
+        if (_mDoc.HasMember("other")){
+            const rapidjson::Value &pArr = _mDoc["other"];
+            for (int i = 0; i < pArr.Capacity(); ++i){
+                const rapidjson::Value &temp = pArr[i];
+                Player* info = new Player();
+                info->setPoxiaoId(temp["poxiaoId"].GetString());
+                info->setSeatId(temp["seatId"].GetInt());
+                info->setBanker(false);
+                info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
+                info->setGold(temp["gold"].GetInt());
+                info->setTicket(temp["lequan"].GetInt());
+                info->setScore(temp["jifen"].GetInt());
+                info->setGender(temp["gender"].GetInt());
+                info->setNickname(temp["nickname"].GetString());
+                info->setPicture(temp["pic"].GetString());
+                info->setFangka(temp["fangka"].GetDouble());
+                if(temp.HasMember("ip")){
+                    info->setIP(temp["ip"].GetString());
+                }
+                if(temp.HasMember("umark")){
+                    info->setUmark(temp["umark"].GetString());
+                }
+                
+                GAMEDATA::getInstance()->addPlayersInfo(info);
             }
-            if(temp.HasMember("umark")){
-                info->setUmark(temp["umark"].GetString());
-            }
-            
-            GAMEDATA::getInstance()->addPlayersInfo(info);
         }
+        Player* info = new Player();
+        info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
+        info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
+        info->setIsReady(false);
+        info->setTicket(UserData::getInstance()->getTicket());
+        info->setGold(UserData::getInstance()->getGold());
+        info->setGender(UserData::getInstance()->getGender());
+        info->setNickname(UserData::getInstance()->getNickName());
+        info->setPicture(UserData::getInstance()->getPicture());
+        info->setFangka(UserData::getInstance()->getFangkaNum());
+        info->setIP(GAMEDATA::getInstance()->getIP());
+        info->setUmark(UserData::getInstance()->getMarkId());
+        info->setScore(GAMEDATA::getInstance()->getScore());
+        GAMEDATA::getInstance()->addPlayersInfo(info);
+        GAMEDATA::getInstance()->setGameType(1);
     }
-    Player* info = new Player();
-    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
-    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
-    info->setIsReady(false);
-    info->setTicket(UserData::getInstance()->getTicket());
-    info->setGold(UserData::getInstance()->getGold());
-    info->setGender(UserData::getInstance()->getGender());
-    info->setNickname(UserData::getInstance()->getNickName());
-    info->setPicture(UserData::getInstance()->getPicture());
-    info->setFangka(UserData::getInstance()->getFangkaNum());
-    info->setIP(GAMEDATA::getInstance()->getIP());
-    info->setUmark(UserData::getInstance()->getMarkId());
-    info->setScore(GAMEDATA::getInstance()->getScore());
-    GAMEDATA::getInstance()->addPlayersInfo(info);
-    GAMEDATA::getInstance()->setGameType(1);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
     postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP, buf);
 }
@@ -2858,47 +2864,53 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     }
     GAMEDATA::getInstance()->clearPlayersInfo();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
-    if (_mDoc.HasMember("other")){
-        const rapidjson::Value &pArr = _mDoc["other"];
-        for (int i = 0; i < pArr.Capacity(); ++i){
-            const rapidjson::Value &temp = pArr[i];
-            Player* info = new Player();
-            info->setPoxiaoId(temp["poxiaoId"].GetString());
-            info->setSeatId(temp["seatId"].GetInt());
-            info->setBanker(false);
-            info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
-            info->setGold(temp["gold"].GetInt());
-            info->setTicket(temp["lequan"].GetInt());
-            info->setScore(temp["jifen"].GetInt());
-            info->setGender(temp["gender"].GetInt());
-            info->setNickname(temp["nickname"].GetString());
-            info->setPicture(temp["pic"].GetString());
-            info->setFangka(temp["fangka"].GetDouble());
-            if(temp.HasMember("ip")){
-                info->setIP(temp["ip"].GetString());
+    if(_mDoc.HasMember("matchid")){
+        GAMEDATA::getInstance()->setIsCompetitionState(true);
+        GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
+    }else{
+        if (_mDoc.HasMember("other")){
+            const rapidjson::Value &pArr = _mDoc["other"];
+            for (int i = 0; i < pArr.Capacity(); ++i){
+                const rapidjson::Value &temp = pArr[i];
+                Player* info = new Player();
+                info->setPoxiaoId(temp["poxiaoId"].GetString());
+                info->setSeatId(temp["seatId"].GetInt());
+                info->setBanker(false);
+                info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
+                info->setGold(temp["gold"].GetInt());
+                info->setTicket(temp["lequan"].GetInt());
+                info->setScore(temp["jifen"].GetInt());
+                info->setGender(temp["gender"].GetInt());
+                info->setNickname(temp["nickname"].GetString());
+                info->setPicture(temp["pic"].GetString());
+                info->setFangka(temp["fangka"].GetDouble());
+                if(temp.HasMember("ip")){
+                    info->setIP(temp["ip"].GetString());
+                }
+                if(temp.HasMember("umark")){
+                    info->setUmark(temp["umark"].GetString());
+                }
+                
+                GAMEDATA::getInstance()->addPlayersInfo(info);
             }
-            if(temp.HasMember("umark")){
-                info->setUmark(temp["umark"].GetString());
-            }
-            
-            GAMEDATA::getInstance()->addPlayersInfo(info);
         }
+        Player* info = new Player();
+        info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
+        info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
+        info->setIsReady(false);
+        info->setTicket(UserData::getInstance()->getTicket());
+        info->setGold(UserData::getInstance()->getGold());
+        info->setGender(UserData::getInstance()->getGender());
+        info->setNickname(UserData::getInstance()->getNickName());
+        info->setPicture(UserData::getInstance()->getPicture());
+        info->setFangka(UserData::getInstance()->getFangkaNum());
+        info->setIP(GAMEDATA::getInstance()->getIP());
+        info->setUmark(UserData::getInstance()->getMarkId());
+        info->setScore(GAMEDATA::getInstance()->getScore());
+        GAMEDATA::getInstance()->addPlayersInfo(info);
+        GAMEDATA::getInstance()->setGameType(3);
+        
     }
-    Player* info = new Player();
-    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
-    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
-    info->setIsReady(false);
-    info->setTicket(UserData::getInstance()->getTicket());
-    info->setGold(UserData::getInstance()->getGold());
-    info->setGender(UserData::getInstance()->getGender());
-    info->setNickname(UserData::getInstance()->getNickName());
-    info->setPicture(UserData::getInstance()->getPicture());
-    info->setFangka(UserData::getInstance()->getFangkaNum());
-    info->setIP(GAMEDATA::getInstance()->getIP());
-    info->setUmark(UserData::getInstance()->getMarkId());
-    info->setScore(GAMEDATA::getInstance()->getScore());
-    GAMEDATA::getInstance()->addPlayersInfo(info);
-    GAMEDATA::getInstance()->setGameType(3);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
     postNotifyMessage(MSG_HZ_ENTER_FRIEND_ROOM_RESP, buf);
     

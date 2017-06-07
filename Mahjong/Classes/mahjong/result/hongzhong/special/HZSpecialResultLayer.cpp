@@ -37,7 +37,6 @@ bool HZSpecialResultLayer::init(){
     addChild(reslut_bg,-1);
     showResultTitle();//结算界面标题
     showGameReslut();
-    showLayerBtn();
     scheduleUpdate();
     return true;
 }
@@ -74,35 +73,54 @@ void HZSpecialResultLayer::showGameReslut(){
     if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()){
         //双喜临门
         if(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee != "0"){
-            HongbaoAnim2* ami = HongbaoAnim2::create();
-            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,true);
-            addChild(ami,10);
+            schedule([=](float dt){
+                HongbaoAnim2* ami = HongbaoAnim2::create();
+                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,true);
+                addChild(ami,10);
+            }, 0, 0, 3, "zhe_li_shi_la_la_1");
+            
         }else{
-            HongbaoAnim2* ami = HongbaoAnim2::create();
-            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,false);
-            addChild(ami,10);
+            schedule([=](float dt){
+                HongbaoAnim2* ami = HongbaoAnim2::create();
+                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,false);
+                addChild(ami,10);
+            }, 0, 0, 3, "zhe_li_shi_la_la_2");
+            
         }
         
     }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()){
-        HongbaoAnim2* ami = HongbaoAnim2::create();
-        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,2,false);
-        addChild(ami,10);
+        schedule([=](float dt){
+            HongbaoAnim2* ami = HongbaoAnim2::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,2,false);
+            addChild(ami,10);
+        }, 0, 0, 3, "zhe_li_shi_la_la_3");
+        
     }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee != "0"){
-        HongbaoAnim* ami = HongbaoAnim::create();
-        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee,2);
-        addChild(ami,10);
+        schedule([=](float dt){
+            HongbaoAnim* ami = HongbaoAnim::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee,2);
+            addChild(ami,10);
+        }, 0, 0, 3, "zhe_li_shi_la_la_4");
+        
         
     }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().dyj != "0"){
-        HongbaoAnim* ami = HongbaoAnim::create();
-        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee,1);
-        addChild(ami,10);
+        schedule([=](float dt){
+            HongbaoAnim* ami = HongbaoAnim::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee,1);
+            addChild(ami,10);
+        }, 0, 0, 3, "zhe_li_shi_la_la_4");
+        
         
     }else if(GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzfee!= "0"){
-        HongbaoAnim* ami = HongbaoAnim::create();
-        ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,0);
-        addChild(ami,10);
+        schedule([=](float dt){
+            HongbaoAnim* ami = HongbaoAnim::create();
+            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,0);
+            addChild(ami,10);
+        }, 0, 0, 3, "zhe_li_shi_la_la_5");
+        
+    }else{
+        showLayerBtn();
     }
-
     //大结算的时候获取玩家信息
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
 }
@@ -183,13 +201,13 @@ void HZSpecialResultLayer::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
-
+    
 }
 
 void HZSpecialResultLayer::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
-     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
 }
 
 void HZSpecialResultLayer::gotoLobby(){
