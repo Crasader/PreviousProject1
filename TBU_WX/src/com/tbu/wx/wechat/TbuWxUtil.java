@@ -270,8 +270,10 @@ public class TbuWxUtil {
 			return;
 		}
 
+		
 		WXImageObject imgObj = new WXImageObject();
 		imgObj.setImagePath(path);
+//		imgObj.imageData  =  Util.bmpToByteArray(thumbBmp, true);
 
 		WXMediaMessage msg = new WXMediaMessage();
 		msg.mediaObject = imgObj;
@@ -280,6 +282,7 @@ public class TbuWxUtil {
 		Bitmap thumbBmp = Bitmap.createScaledBitmap(bmp, THUMB_SIZE, THUMB_SIZE, true);
 		// bmp.compress(format, quality, stream)
 		bmp.recycle();
+	
 		msg.thumbData = Util.bmpToByteArray(thumbBmp, true);
 		SendMessageToWX.Req req = new SendMessageToWX.Req();
 		req.transaction = buildTransaction("img");

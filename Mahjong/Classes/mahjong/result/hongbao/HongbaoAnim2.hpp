@@ -20,6 +20,6 @@ public :
 private:
     void goBack();
     void share();
-    void afterCaptured(bool succeed, const std::string &outputFile);
+     CC_SYNTHESIZE(std::string,hongBaoNum, HongBaoNum);
 };
 #endif /* HongbaoAnim_hpp */

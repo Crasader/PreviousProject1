@@ -1,5 +1,9 @@
 package org.cocos2dx.cpp.payment;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,6 +17,8 @@ import com.tbu.wx.http.data.WxUserInfo;
 import com.tbu.wx.wechat.TbuWxUtil;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 
 public class Payment {
@@ -90,6 +96,31 @@ public class Payment {
 	}
 
 	/**
+	 * 图片分享,需要拷贝到AndroidSD卡
+	 * 
+	 * @param imagePath
+	 * @param friends
+	 */
+	public static void shareSDCardImageToWeChat(String imagePath, boolean friends) {
+		// 读取原路径图片
+		Bitmap bmp = BitmapFactory.decodeFile(imagePath);
+		File file = new File(getSdCardDir(), "helloDouBi.png");
+		try {
+			FileOutputStream out = new FileOutputStream(file);
+			bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+			String newPath = file.getPath();
+			out.flush();
+			out.close();
+			Debug.e("shareImageToWeChat 分享SD卡图片给微信好友 "+newPath);
+			TbuWxUtil.getInstance().shareImage(newPath, friends);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * 发起微信登录
 	 */
 	public static void weChatLogin() {
@@ -97,11 +128,11 @@ public class Payment {
 		TbuWxUtil.getInstance().getWechatCode(getWeChatState(), new QueryCallBack() {
 			@Override
 			public void queryCallBackMsg(WxUserInfo info) {
-				if (null != info&&!info.isResult()) {
+				if (null != info && !info.isResult()) {
 					Debug.e("微信登录游戏...");
-					JniPayCallbackHelper.loginThirdPlatform(info.getOpenId(),info.getUnionid(),
-							info.getHeadImage(), info.getSex(), info.getNickName(), DeviceInfo.getProduct(),
-							DeviceInfo.getModle(), DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());
+					JniPayCallbackHelper.loginThirdPlatform(info.getOpenId(), info.getUnionid(), info.getHeadImage(),
+							info.getSex(), info.getNickName(), DeviceInfo.getProduct(), DeviceInfo.getModle(),
+							DeviceInfo.getImsi(), DeviceInfo.getImei(), AppInfo.getVersion());
 				}
 			}
 

@@ -85,6 +85,21 @@ void CallAndroidMethod::shareImageToWeChat(std::string imagePath,bool friends){
 #endif
 }
 
+void CallAndroidMethod::shareSDCardImageToWeChat(std::string imagePath,bool friends){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path  = String::createWithFormat("%s%s",JAVA_SRC,"/Payment");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"shareSDCardImageToWeChat","(Ljava/lang/String;Z)V");
+    if(isHave){
+        //        jobject jobj;
+        jstring share_url = JniHelper::getEnv()->NewStringUTF(imagePath.c_str());
+        jboolean share_friends = friends;
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url,friends);
+        JniHelper::getEnv()->DeleteLocalRef(share_url);
+    }
+#endif
+}
+
 void CallAndroidMethod::weChatLogin(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     JniMethodInfo methodInfo;

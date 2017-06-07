@@ -11,6 +11,7 @@
 #include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
 #include "mahjong/lobby/LobbyScene.h"
+#include "mahjong/common/widget/HeadImage.hpp"
 
 
 bool HongbaoAnim::init(){
@@ -25,14 +26,14 @@ bool HongbaoAnim::init(){
 
 
 void HongbaoAnim::initView(std::string hongNum,int type){
-    
+    setHongBaoNum(hongNum);
     //红包主体
     auto hongbao = Sprite::create("hongbao/hongbao_1.png");
     hongbao->setPosition(640,910);
     addChild(hongbao,1);
     
-
-//    hongbao->addChild(myTitle);
+    
+    //    hongbao->addChild(myTitle);
     
     hongbao->setScaleY(0.9);
     hongbao->setRotation(10);
@@ -105,9 +106,9 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     myTitle->setPosition(120,110);
     hongbao2->addChild(myTitle);
     
-    int pos  =   hongNum.find(".");
+    int pos  =   (int)hongNum.find(".");
     if(pos>0){
-        hongNum.replace(pos, pos, ":");
+        hongNum.replace(pos, pos-1, ":");
     }
     
     auto hongbaoNum = LabelAtlas::create(hongNum,"hongbao/shu_zi.png",34,49,'0');
@@ -166,22 +167,39 @@ void HongbaoAnim::goBack(){
 
 
 void HongbaoAnim::share(){
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    log("hahhahahhaahhaahah %s",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
-    std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
-    log("screenShot path = %s",path.c_str());
-    utils::captureScreen(CC_CALLBACK_2(HongbaoAnim::afterCaptured, this) ,path);
-#endif
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
-    log("screenShot path = %s",path.c_str());
-    utils::captureScreen(CC_CALLBACK_2(HongbaoAnim::afterCaptured, this) ,path);
-#endif
-}
-
-void HongbaoAnim::afterCaptured(bool succeed, const std::string &outputFile)
-{
-    if (succeed) {
+    
+    auto hongbaobg = Sprite::create("hongbao/share_hong_bao_bg.jpg");
+    hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+    hongbaobg->setPosition(0,0);
+    std::string number = getHongBaoNum();
+    int pos  =  (int)number.find(".");
+    if(pos>0){
+        number.replace(pos,pos-1, ":");
+    }
+    LabelAtlas* hongnum = LabelAtlas::create(number, "hongbao/share_hong_bao_num.png", 24, 40, '0');
+    hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    hongnum->setPosition(190,190);
+    hongbaobg->addChild(hongnum);
+    
+    auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(70,70));
+    headImage->setPosition(150, 100);
+    hongbaobg->addChild(headImage, 10);
+    
+    auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",20);
+    nick->setPosition(150,50);
+    hongbaobg->addChild(nick);
+    
+    auto renderTexture = RenderTexture::create(640, 360, Texture2D::PixelFormat::RGBA8888);
+    //清空并开始获取
+    renderTexture->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+    //遍历场景节点对象，填充纹理到RenderTexture中
+    hongbaobg->visit();
+    //结束获取
+    renderTexture->end();
+    //保存文件
+    std::string outputFile =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());
+    renderTexture->saveToFile("mahjong_screen_shot.png",Image::Format::PNG);
+    schedule([=](float dt){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
         CallAndroidMethod::getInstance()->shareImageToWeChat(outputFile, true);
 #endif
@@ -189,8 +207,10 @@ void HongbaoAnim::afterCaptured(bool succeed, const std::string &outputFile)
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
 #endif
-    }
+    }, 0, 0, 0.2f, "mmp");
+    
 }
+
 
 
 

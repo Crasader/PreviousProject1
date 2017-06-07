@@ -11,6 +11,7 @@
 #include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
 #include "mahjong/lobby/LobbyScene.h"
+#include "mahjong/common/widget/HeadImage.hpp"
 
 
 bool HongbaoAnim2::init(){
@@ -36,6 +37,7 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bo
         piao->runAction(Sequence::create(DelayTime::create(1.0f+random(0, 100)),CallFunc::create([=](){piao->setVisible(true);}),Spawn::create(MoveTo::create(0.5f,Point(piao->getPositionX(),piao->getPositionY()-150)),FadeTo::create(0.5f,0),NULL), NULL));
     }
     
+    setHongBaoNum(StringUtils::format("%d",atoi(hongNum.c_str())+atoi(hongNum2.c_str())));
     
     //红包主体
     auto hongbao = Sprite::create("hongbao/hongbao_1.png");
@@ -98,7 +100,7 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bo
     
     int pos  =  (int)hongNum.find(".");
     if(pos>0){
-        hongNum.replace(pos, pos, ":");
+        hongNum.replace(pos, pos-1, ":");
     }
     auto hongbaoNum = LabelAtlas::create(hongNum,"hongbao/shu_zi.png",34,49,'0');
     hongbaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
@@ -176,7 +178,7 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bo
     
     int pos0  =   hongNum2.find(".");
     if(pos0>0){
-        hongNum2.replace(pos0, pos0, ":");
+        hongNum2.replace(pos0, pos0-1, ":");
     }
     auto hongbaoNum0 = LabelAtlas::create(hongNum2,"hongbao/shu_zi.png",34,49,'0');
     hongbaoNum0->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
@@ -237,21 +239,37 @@ void HongbaoAnim2::goBack(){
 
 
 void HongbaoAnim2::share(){
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
-    log("screenShot path = %s",path.c_str());
-    utils::captureScreen(CC_CALLBACK_2(HongbaoAnim2::afterCaptured, this) ,path);
-#endif
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
-    log("screenShot path = %s",path.c_str());
-    utils::captureScreen(CC_CALLBACK_2(HongbaoAnim2::afterCaptured, this) ,path);
-#endif
-}
+    auto hongbaobg = Sprite::create("hongbao/share_hong_bao_bg.jpg");
+    hongbaobg->setPosition(640,360);
+    auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(70,70));
+    headImage->setPosition(150, 100);
+    hongbaobg->addChild(headImage, 10);
+    
+    auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",20);
+    nick->setPosition(150,50);
+    hongbaobg->addChild(nick);
 
-void HongbaoAnim2::afterCaptured(bool succeed, const std::string &outputFile)
-{
-    if (succeed) {
+    std::string number = getHongBaoNum();
+    int pos  =  (int)number.find(".");
+    if(pos>0){
+        number.replace(pos, pos-1, ":");
+    }
+    
+    LabelAtlas* hongnum = LabelAtlas::create(number, "hongbao/share_hong_bao_num.png", 24, 40, '0');
+    hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    hongnum->setPosition(200,190);
+    hongbaobg->addChild(hongnum);
+    auto renderTexture = RenderTexture::create(1280, 760, Texture2D::PixelFormat::RGBA8888);
+    //清空并开始获取
+    renderTexture->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+    //遍历场景节点对象，填充纹理到RenderTexture中
+    hongbaobg->visit();
+    //结束获取
+    renderTexture->end();
+    //保存文件
+    std::string outputFile =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());
+    renderTexture->saveToFile("mahjong_screen_shot.png",Image::Format::PNG);
+    schedule([=](float dt){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
         CallAndroidMethod::getInstance()->shareImageToWeChat(outputFile, true);
 #endif
@@ -259,8 +277,9 @@ void HongbaoAnim2::afterCaptured(bool succeed, const std::string &outputFile)
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
 #endif
-    }
+    }, 0, 0, 0.2f, "mmp");
 }
+
 
 
 
