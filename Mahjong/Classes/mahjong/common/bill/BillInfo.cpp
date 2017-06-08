@@ -365,7 +365,7 @@ void BillInfo::afterCaptured(bool succeed, const std::string &outputFile)
 #endif
         
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 0);
+        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
 #endif
     }
 }

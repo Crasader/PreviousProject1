@@ -179,6 +179,13 @@ void HZSpecialResultLayer::afterCaptured(bool succeed, const std::string &output
 void HZSpecialResultLayer::onEnter(){
     Layer::onEnter();
     myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+        if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 1){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
+            GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+        }else if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 2){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
+            GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+        }
         Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(myCoreLoginRespListener, 1);

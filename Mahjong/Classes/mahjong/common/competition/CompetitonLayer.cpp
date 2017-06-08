@@ -20,9 +20,10 @@ bool CompetitonLayer::init(){
         return false;
     }
     MenuItem* item1 = MenuItem::create();
-    item1->setContentSize(Size(1280, 720));
+    Size visibileSize = Director::getInstance()->getVisibleSize();
+    item1->setContentSize(visibileSize);
     Menu* menu1 = Menu::create(item1, NULL);
-    this->addChild(menu1);
+    addChild(menu1);
     
     auto comBg = Sprite::create("competition/competition_bg.png");
     comBg->setPosition(640,360);

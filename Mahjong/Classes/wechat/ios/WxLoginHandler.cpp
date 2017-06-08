@@ -7,10 +7,10 @@
 //
 
 #include "wechat/ios/WxLoginHandler.h"
-#include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "http/image/UrlImageMannger.h"
+#include "mahjong/common/state/GameData.h"
 
 
 WxLoginHandler* WxLoginHandler::_instance = 0;
@@ -57,10 +57,13 @@ void WxLoginHandler::updatePlayerInfo(std::string result){
 }
 
 void WxLoginHandler::shareSuccess(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
+//       NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
+    GAMEDATA::getInstance()->setShareHongBaoFriendState(1);
 }
 
 
 void WxLoginHandler::shareFail(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
+    GAMEDATA::getInstance()->setShareHongBaoFriendState(2);
+
 }
