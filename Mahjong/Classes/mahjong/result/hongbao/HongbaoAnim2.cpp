@@ -271,7 +271,7 @@ void HongbaoAnim2::share(){
     renderTexture->saveToFile("mahjong_screen_shot.png",Image::Format::PNG);
     schedule([=](float dt){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        CallAndroidMethod::getInstance()->shareImageToWeChat(outputFile, true);
+        CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(outputFile, true);
 #endif
         
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
