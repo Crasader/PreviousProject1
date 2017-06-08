@@ -1,5 +1,6 @@
 #include "mahjong/gameview/widget/Orientation.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
+#include "mahjong/common/state/GameData.h"
 
 bool Orientation::init(){
 	if (!Node::init()){
@@ -36,7 +37,11 @@ void Orientation::initView(){
     time->setPosition(640,390);
     time->setTag(100);
     addChild(time);
-//    if(G)
+    if(GAMEDATA::getInstance()->getIsCompetitionState()||GAMEDATA::getInstance()->getIsCompetitionQueue()){
+        time->setVisible(true);
+    }else{
+        time->setVisible(false);
+    }
 }
 
 
@@ -108,7 +113,7 @@ void Orientation::showWhoBank(int heroSeatId,int bankId){
 
 
 void Orientation::showPlayerTurn(int heroSeatId, int setaId){
-    timeNumber = 20;
+    timeNumber = 15;
 	int turnId = SeatIdUtil::getClientSeatId(heroSeatId, setaId);
 	light->setVisible(true);
 	if (turnId == ClientSeatId::hero){

@@ -2403,6 +2403,23 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     GAMEDATA::getInstance()->clearPlayersInfo();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     if(_mDoc.HasMember("matchid")){
+        for (int i = 0; i < 4; i++)
+        {
+            Player* info = new Player();
+            info->setSeatId(i+1);
+            info->setGold(0);
+            info->setDiamond(0);
+            info->setNickname("");
+            info->setPicture("");
+            info->setGender("");
+            info->setScore(0);
+            info->setTicket(0);
+            info->setFangka(0);
+            info->setIP("");
+            info->setIsReady(true);
+            info->setUmark("");
+            GAMEDATA::getInstance()->addPlayersInfo(info);
+        }
         GAMEDATA::getInstance()->setIsCompetitionState(true);
         GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
     }else{
@@ -2865,6 +2882,23 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     GAMEDATA::getInstance()->clearPlayersInfo();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
     if(_mDoc.HasMember("matchid")){
+        for (int i = 0; i < 4; i++)
+        {
+            Player* info = new Player();
+            info->setSeatId(i+1);
+            info->setGold(0);
+            info->setDiamond(0);
+            info->setNickname("");
+            info->setPicture("");
+            info->setGender("");
+            info->setScore(0);
+            info->setTicket(0);
+            info->setFangka(0);
+            info->setIP("");
+            info->setIsReady(true);
+            info->setUmark("");
+            GAMEDATA::getInstance()->addPlayersInfo(info);
+        }
         GAMEDATA::getInstance()->setIsCompetitionState(true);
         GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
     }else{

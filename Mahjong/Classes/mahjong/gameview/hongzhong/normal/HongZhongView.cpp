@@ -102,7 +102,7 @@ void HongZhongView::loadView(){
     battery->setPosition(0,0);
     addChild(battery,100);
     //语音聊天
-    if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
+    if(!GAMEDATA::getInstance()->getIsCompetitionQueue()&&!GAMEDATA::getInstance()->getIsCompetitionState()){
         SoundRecordBtn* soun = SoundRecordBtn::create();
         addChild(soun,5);
     }
@@ -1521,12 +1521,11 @@ void HongZhongView::onEnter(){
             playerOpposite->stopTimeClockAnim();
             playerOpposite->drawPlayedJong(poker);
         }else if(seatId == ClientSeatId::hero){
-            if(GAMEDATA::getInstance()->getIsTrusteeship()){
-                schedule([=](float dt){
-                    playerHero->stopTimeClockAnim();
-                    playerHero->drawPlayedJong(poker);
-                },0,0,0.4f,"delay_play_poker_auto");
-            }
+            schedule([=](float dt){
+                playerHero->stopTimeClockAnim();
+                playerHero->drawPlayedJong(poker);
+            },0,0,0.3f,"delay_play_poker_auto");
+
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
