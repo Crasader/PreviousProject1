@@ -47,14 +47,22 @@ bool EnterRoomDialog::init(EnterRoomDialogType msg){
     bg_2->setPosition(645,370);
     addChild(bg_2);
     
+    auto levelMid = Sprite::create("mjlobby/tuhao_text.png");
+    levelMid->setPosition(640, 390);
+    addChild(levelMid);
+    auto levelText = Sprite::create("mjlobby/fangjian_di.png");
+    levelText->setPosition(670, 350);
+    addChild(levelText);
+    auto nume = Label::createWithSystemFont("5000", "arial", 30);
+    nume->setColor(Color3B(241,208,90));
+    nume->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    nume->setPosition(570,350);
+    addChild(nume);
+    
     if (msg == EnterRoomDialogType::goldMoreLeve1){
-        auto levelMid = Sprite::create("mjlobby/gold_enter_mid.png");
-        levelMid->setPosition(640, 360);
-        addChild(levelMid);
+        nume->setString("5000");
     }else if(msg == EnterRoomDialogType::goldMoreLeve2){
-        auto levelHigh = Sprite::create("mjlobby/gold_enter_high.png");
-        levelHigh->setPosition(640, 360);
-        addChild(levelHigh);
+        nume->setString("10000");
     }
     
     auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",

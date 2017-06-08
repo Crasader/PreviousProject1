@@ -395,7 +395,7 @@ void CompetitionResult::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
     myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        //        Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
+        GAMEDATA::getInstance()->setShowProtected(false);
         if(NULL != getChildByTag(2000)){
             getChildByTag(2000)->removeFromParent();
         }
