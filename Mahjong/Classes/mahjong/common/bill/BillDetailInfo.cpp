@@ -42,7 +42,7 @@ bool BillDetailInfo::init()
     this->addChild(bg3);
     
     BillInfoData data = GAMEDATA::getInstance()->getBillInfoData();
-    bool isMatch = false;
+    
     if(data.gameType == "2"){
         isMatch =true;
     }
@@ -231,6 +231,9 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         fupanMenu->addChild(fengxiang);
         if(GAMEDATA::getInstance()->getShowFuPanBtn()){
             fupanMenu->addChild(fupan);
+        }
+        if(isMatch){
+            fupan->setVisible(false);
         }
         fupanMenu->setTag(1001);
         fupanMenu->setName(detail.recordId);

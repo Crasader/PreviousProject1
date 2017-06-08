@@ -28,6 +28,7 @@ public:
     
 	CREATE_FUNC(BillDetailInfo);
 private:
+    bool isMatch = false;
 	TableView* tableView;
     EventListenerCustom* detailBillListener;
 	void closeView();
