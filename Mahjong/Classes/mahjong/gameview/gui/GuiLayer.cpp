@@ -56,6 +56,9 @@ void GuiLayer::drawGuiButton(){
     quit->setTag(1212);
     quit->setPosition(Point(55, 650));
     this->addChild(quit);
+    if(GAMEDATA::getInstance()->getIsCompetitionState()){
+        quit->setVisible(false);
+    }
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         //解散牌局按钮
