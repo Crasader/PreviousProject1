@@ -32,6 +32,9 @@ bool PlayerBase::init(){
 
 void PlayerBase::initData(){
     mCDTime = 20;
+    if(GAMEDATA::getInstance()->getIsCompetitionState()){
+        mCDTime = 15;
+    }
     playerCpgRecords.clear();
     playerHandJongs.clear();
     playerPlayedJongs.clear();
@@ -302,8 +305,10 @@ void PlayerBase::setIsTrusteeship(bool b){
 }
 
 void PlayerBase::showPlayerInfo(){
-    OtherPlayerInfo* dialog = OtherPlayerInfo::create(getPlayerInfo());
-    getParent()->addChild(dialog,100);//添加到父场景,为了解决图层错位的问题
+    if(GAMEDATA::getInstance()->getIsCompetitionState()){
+        OtherPlayerInfo* dialog = OtherPlayerInfo::create(getPlayerInfo());
+        getParent()->addChild(dialog,100);//添加到父场景,为了解决图层错位的问题
+    }
 }
 
 void PlayerBase::updatePlayerInfo(int num){
@@ -338,6 +343,9 @@ void PlayerBase::startTimeClockAnim(){
     timeClock->setString(StringUtils::format("%d", 20));
     this->setTag(-1);
     mCDTime = 20;
+    if(GAMEDATA::getInstance()->getIsCompetitionState()){
+        mCDTime = 15;
+    }
     mProgressTimer->setVisible(true);
     mProgressTimer->setType(ProgressTimer::Type::RADIAL);
     mProgressTimer->stopAllActions();

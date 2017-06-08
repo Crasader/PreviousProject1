@@ -27,7 +27,6 @@ bool GuiLayer::init(){
     return true;
 }
 
-
 void GuiLayer::initView(){
     if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 3){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
@@ -41,6 +40,9 @@ void GuiLayer::initView(){
 void GuiLayer::drawGuiButton(){
     auto chatButton = MenuItemImage::create("gameview/chat_btn_1.png", "gameview/chat_btn_2.png",
                                             CC_CALLBACK_0(GuiLayer::chatButtonClick, this));
+    if(GAMEDATA::getInstance()->getIsCompetitionState()||GAMEDATA::getInstance()->getIsCompetitionQueue()){
+        chatButton->setVisible(false);
+    }
     auto settingButton = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
                                                CC_CALLBACK_0(GuiLayer::settingButtonClick, this));
     Menu* myMenu = Menu::create(chatButton, settingButton, NULL);
@@ -71,6 +73,9 @@ void GuiLayer::drawGuiButton(){
         }
         auto bill = MenuItemImage::create("gameview/bill_btn_1.png", "gameview/bill_btn_2.png",
                                           CC_CALLBACK_0(GuiLayer::showPlayerBill, this));
+        if(GAMEDATA::getInstance()->getIsCompetitionState()||GAMEDATA::getInstance()->getIsCompetitionQueue()){
+            bill->setVisible(false);
+        }
         Menu* billMenu = Menu::create(bill, NULL);
         billMenu->setPosition(Point(1225, 165));
         addChild(billMenu);

@@ -102,8 +102,10 @@ void HongZhongView::loadView(){
     battery->setPosition(0,0);
     addChild(battery,100);
     //语音聊天
-    SoundRecordBtn* soun = SoundRecordBtn::create();
-    addChild(soun,5);
+    if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
+        SoundRecordBtn* soun = SoundRecordBtn::create();
+        addChild(soun,5);
+    }
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         //码和低分

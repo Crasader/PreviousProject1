@@ -95,8 +95,10 @@ void MahjongView::loadView(){
     battery->setPosition(0,0);
     addChild(battery,100);
     //语音聊天
-    SoundRecordBtn* soun = SoundRecordBtn::create();
-    addChild(soun,5);
+    if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
+        SoundRecordBtn* soun = SoundRecordBtn::create();
+        addChild(soun,5);
+    }
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
@@ -1081,7 +1083,7 @@ void MahjongView::onEnterTransitionDidFinish(){
             int playturn = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.turn);
             if(playturn == ClientSeatId::hero){
                 if(!GAMEDATA::getInstance()->getIsTrusteeship()){
-                playerHero->startTimeClockAnim();
+                    playerHero->startTimeClockAnim();
                 }
                 if(!GAMEDATA::getInstance()->getTurnHeroCpg()){
                     playerHero->setIsAllowPlay(true);
@@ -1277,7 +1279,7 @@ void MahjongView::onEnter(){
                     GAMEDATA::getInstance()->addPlayersInfo(info);
                 }
                 addPlayer2Room();
-     
+                
                 auto startSprite1 = Sprite::create("competition/competition_start_1.png");
                 startSprite1->setPosition(320,350);
                 startSprite1->runAction(Sequence::create(MoveTo::create(2.0f, Point(-400,350)),CallFunc::create([=](){
