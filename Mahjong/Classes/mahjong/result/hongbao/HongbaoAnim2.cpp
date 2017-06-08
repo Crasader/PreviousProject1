@@ -37,7 +37,7 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bo
         piao->runAction(Sequence::create(DelayTime::create(1.0f+random(0, 100)),CallFunc::create([=](){piao->setVisible(true);}),Spawn::create(MoveTo::create(0.5f,Point(piao->getPositionX(),piao->getPositionY()-150)),FadeTo::create(0.5f,0),NULL), NULL));
     }
     
-    setHongBaoNum(StringUtils::format("%d",atoi(hongNum.c_str())+atoi(hongNum2.c_str())));
+    setHongBaoNum(StringUtils::format("%.2f",atof(hongNum.c_str())+atof(hongNum2.c_str())));
     
     //红包主体
     auto hongbao = Sprite::create("hongbao/hongbao_1.png");
@@ -99,8 +99,8 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bo
     hongbao2->addChild(myTitle);
     
     int pos  =  (int)hongNum.find(".");
-    if(pos>0){
-        hongNum.replace(pos, pos-1, ":");
+    if(pos>=0){
+        hongNum.replace(pos, 1, ":");
     }
     auto hongbaoNum = LabelAtlas::create(hongNum,"hongbao/shu_zi.png",34,49,'0');
     hongbaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
@@ -176,9 +176,9 @@ void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bo
     hongbao20->addChild(myTitle2);
     
     
-    int pos0  =   hongNum2.find(".");
-    if(pos0>0){
-        hongNum2.replace(pos0, pos0-1, ":");
+    int pos0  =  (int)hongNum2.find(".");
+    if(pos0>=0){
+        hongNum2.replace(pos0,1, ":");
     }
     auto hongbaoNum0 = LabelAtlas::create(hongNum2,"hongbao/shu_zi.png",34,49,'0');
     hongbaoNum0->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
@@ -251,8 +251,8 @@ void HongbaoAnim2::share(){
 
     std::string number = getHongBaoNum();
     int pos  =  (int)number.find(".");
-    if(pos>0){
-        number.replace(pos, pos-1, ":");
+    if(pos>=0){
+        number.replace(pos,1, ":");
     }
     
     LabelAtlas* hongnum = LabelAtlas::create(number, "hongbao/share_hong_bao_num.png", 24, 40, '0');

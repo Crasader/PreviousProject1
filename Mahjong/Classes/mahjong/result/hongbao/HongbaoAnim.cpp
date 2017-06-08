@@ -106,9 +106,9 @@ void HongbaoAnim::initView(std::string hongNum,int type){
     myTitle->setPosition(120,110);
     hongbao2->addChild(myTitle);
     
-    int pos  =   (int)hongNum.find(".");
-    if(pos>0){
-        hongNum.replace(pos, pos-1, ":");
+    int pos  = (int)hongNum.find(".");
+    if(pos>=0){
+        hongNum.replace(pos,1,":");
     }
     
     auto hongbaoNum = LabelAtlas::create(hongNum,"hongbao/shu_zi.png",34,49,'0');
@@ -173,8 +173,8 @@ void HongbaoAnim::share(){
     hongbaobg->setPosition(0,0);
     std::string number = getHongBaoNum();
     int pos  =  (int)number.find(".");
-    if(pos>0){
-        number.replace(pos,pos-1, ":");
+    if(pos>=0){
+        number.replace(pos,1, ":");
     }
     LabelAtlas* hongnum = LabelAtlas::create(number, "hongbao/share_hong_bao_num.png", 24, 40, '0');
     hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
