@@ -648,29 +648,29 @@ void LobbyScene::onEnterTransitionDidFinish(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
     if(GAMEDATA::getInstance()->getNeedShowHongbaoResult()){
         GAMEDATA::getInstance()->setNeedShowHongbaoResult(false);
-        if(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee != "0"){
+        if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee.c_str())>0){
             HongbaoAnim2* ami = HongbaoAnim2::create();
             ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,true);
             addChild(ami,200);
-        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee!="0" && GAMEDATA::getInstance()->getGameHongBaoPride().fzfee != "0"){
+        }else if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee.c_str())>0 && atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
             HongbaoAnim2* ami = HongbaoAnim2::create();
             ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,false);
             addChild(ami,200);
-        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee != "0"&&GAMEDATA::getInstance()->getGameHongBaoPride().fzfee != "0"){
+        }else if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee.c_str())>0&& atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str()) >0){
             HongbaoAnim2* ami = HongbaoAnim2::create();
             ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,2,false);
             addChild(ami,200);
-        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee != "0"){
+        }else if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee.c_str())>0){
             HongbaoAnim* ami = HongbaoAnim::create();
             ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee,2);
             addChild(ami,200);
             
-        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee != "0"){
+        }else if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee.c_str())>0){
             HongbaoAnim* ami = HongbaoAnim::create();
             ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee,1);
             addChild(ami,200);
             
-        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee != "0"){
+        }else if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
             HongbaoAnim* ami = HongbaoAnim::create();
             ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,0);
             addChild(ami,200);
