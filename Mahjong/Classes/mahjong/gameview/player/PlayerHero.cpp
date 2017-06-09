@@ -35,6 +35,7 @@ void PlayerHero::initData() {
     setCpgPostionX(JONG_POS_START_X);
     Trusteeship* tru = Trusteeship::create();
     tru->setTag(1678);
+    tru->setVisible(false);
     addChild(tru,100);
 }
 
