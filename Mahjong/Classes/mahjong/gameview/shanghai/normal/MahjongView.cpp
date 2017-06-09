@@ -1867,9 +1867,9 @@ void MahjongView::onEnter(){
             playerRight->setIsTrusteeship(data.flag == "1"?true:false);
         }else if(clientId == ClientSeatId::hero){
             hideTingGangControllPad();
-            bool result = data.flag == "1"?true:false;
-            playerHero->drawPlayerTrue(result);
+            bool result = (data.flag == "1"?true:false);
             GAMEDATA::getInstance()->setIsTrusteeship(result);
+            playerHero->drawPlayerTrue(result);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(truNotifyListener, 1);

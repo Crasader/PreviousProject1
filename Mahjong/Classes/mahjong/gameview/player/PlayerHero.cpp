@@ -33,7 +33,9 @@ void PlayerHero::initData() {
     playedIcon->setVisible(false);
     addChild(playedIcon, 666);
     setCpgPostionX(JONG_POS_START_X);
-    
+    Trusteeship* tru = Trusteeship::create();
+    tru->setTag(1678);
+    addChild(tru,100);
 }
 
 void PlayerHero::onEnter(){
@@ -61,16 +63,12 @@ void PlayerHero::setIsReady(bool b){
 }
 
 void PlayerHero::drawPlayerTrue(bool state){
-    if(state){
-        if(NULL != getChildByTag(1678)){
-            getChildByTag(1678)->removeFromParent();
-        }
-        Trusteeship* tru = Trusteeship::create();
-        tru->setTag(1678);
-        addChild(tru,100);
+    if(NULL != getChildByTag(1678)&&state){
+        getChildByTag(1678)->setVisible(true);
     }
+    
     if(NULL != getChildByTag(1678)&&!state){
-        getChildByTag(1678)->removeFromParent();
+        getChildByTag(1678)->setVisible(fa);
     }
 }
 
