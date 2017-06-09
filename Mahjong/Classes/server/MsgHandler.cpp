@@ -1029,18 +1029,29 @@ void MsgHandler::loginResp(std::string msg){
         GameHongBaoPride pride;
         if(_mDoc.HasMember("dyj")){
             pride.dyj = _mDoc["dyj"].GetString();
+        }else{
+            pride.dyj = "0";
         }
         if(_mDoc.HasMember("dyjfee")){
             pride.dyjfee = _mDoc["dyjfee"].GetString();
+        }else{
+            pride.dyjfee = "0";
         }
+
         if(_mDoc.HasMember("dsj")){
             pride.dsj = _mDoc["dsj"].GetString();
+        }else{
+            pride.dsj = "0";
         }
         if(_mDoc.HasMember("dsjfee")){
             pride.dsjfee = _mDoc["dsjfee"].GetString();
+        }else{
+            pride.dsjfee = "0";
         }
         if(_mDoc.HasMember("fzfee")){
             pride.fzfee = _mDoc["fzfee"].GetString();
+        }else{
+            pride.fzfee = "0";
         }
         if(_mDoc.HasMember("sxlmfee")){
             pride.sxlmfee = _mDoc["sxlmfee"].GetString();
@@ -1949,23 +1960,34 @@ void MsgHandler::gameResultNotify(std::string msg){
     GameHongBaoPride pride;
     if(_mDoc.HasMember("dyj")){
         pride.dyj = _mDoc["dyj"].GetString();
+    }else{
+        pride.dyj = "0";
     }
     if(_mDoc.HasMember("dyjfee")){
         pride.dyjfee = _mDoc["dyjfee"].GetString();
+    }else{
+        pride.dyjfee = "0";
     }
+    
     if(_mDoc.HasMember("dsj")){
         pride.dsj = _mDoc["dsj"].GetString();
+    }else{
+        pride.dsj = "0";
     }
     if(_mDoc.HasMember("dsjfee")){
         pride.dsjfee = _mDoc["dsjfee"].GetString();
+    }else{
+        pride.dsjfee = "0";
     }
     if(_mDoc.HasMember("fzfee")){
         pride.fzfee = _mDoc["fzfee"].GetString();
+    }else{
+        pride.fzfee = "0";
     }
     if(_mDoc.HasMember("sxlmfee")){
         pride.sxlmfee = _mDoc["sxlmfee"].GetString();
     }else{
-        pride.sxlmfee ="0";
+        pride.sxlmfee = "0";
     }
     if(_mDoc.HasMember("fzId")){
         pride.fzid = _mDoc["fzId"].GetString();
@@ -3298,23 +3320,34 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     GameHongBaoPride pride;
     if(_mDoc.HasMember("dyj")){
         pride.dyj = _mDoc["dyj"].GetString();
+    }else{
+        pride.dyj = "0";
     }
     if(_mDoc.HasMember("dyjfee")){
         pride.dyjfee = _mDoc["dyjfee"].GetString();
+    }else{
+        pride.dyjfee = "0";
     }
+    
     if(_mDoc.HasMember("dsj")){
         pride.dsj = _mDoc["dsj"].GetString();
+    }else{
+        pride.dsj = "0";
     }
     if(_mDoc.HasMember("dsjfee")){
         pride.dsjfee = _mDoc["dsjfee"].GetString();
+    }else{
+        pride.dsjfee = "0";
     }
     if(_mDoc.HasMember("fzfee")){
         pride.fzfee = _mDoc["fzfee"].GetString();
+    }else{
+        pride.fzfee = "0";
     }
     if(_mDoc.HasMember("sxlmfee")){
         pride.sxlmfee = _mDoc["sxlmfee"].GetString();
     }else{
-         pride.sxlmfee = "0";
+        pride.sxlmfee = "0";
     }
     if(_mDoc.HasMember("fzId")){
         pride.fzid = _mDoc["fzId"].GetString();
