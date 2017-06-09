@@ -986,7 +986,7 @@ void Audio::playMahjongNormal(int type,int gender){
         case JongEnum::tong_6:
         {
             if(gender==1){
-                AudioEngine::play2d("audio/nan/mjt2_61.mp3",false,UserData::getInstance()->getSoundValue());
+                AudioEngine::play2d("audio/nan/mjt2_6.mp3",false,UserData::getInstance()->getSoundValue());
             }else{
                 AudioEngine::play2d("audio/nv/w6tong.mp3",false,UserData::getInstance()->getSoundValue());
             }

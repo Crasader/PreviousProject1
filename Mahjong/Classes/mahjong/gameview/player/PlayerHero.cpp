@@ -61,7 +61,10 @@ void PlayerHero::setIsReady(bool b){
 }
 
 void PlayerHero::drawPlayerTrue(bool state){
-    if(NULL == getChildByTag(1678)&&state){
+    if(state){
+        if(NULL != getChildByTag(1678)){
+            getChildByTag(1678)->removeFromParent();
+        }
         Trusteeship* tru = Trusteeship::create();
         tru->setTag(1678);
         addChild(tru,100);

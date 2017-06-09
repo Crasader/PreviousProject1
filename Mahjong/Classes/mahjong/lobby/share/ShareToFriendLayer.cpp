@@ -98,6 +98,7 @@ bool ShareToFriendLayer::init(){
     
     auto boxImage2 = Sprite::create("share/box_image_2.png");
     boxImage2->setPosition(Point(640,330));
+    boxImage2->setScale(0.6);
     shareLayer->addChild(boxImage2);
     
     auto box3 = Sprite::create("share/share_box_bg.png");
