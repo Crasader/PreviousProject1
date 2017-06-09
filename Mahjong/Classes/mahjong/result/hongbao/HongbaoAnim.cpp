@@ -208,7 +208,7 @@ void HongbaoAnim::share(){
         CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
 #endif
     }, 0, 0, 0.2f, "mmp");
-    
+    setVisible(false);
 }
 
 

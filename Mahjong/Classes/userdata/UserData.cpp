@@ -70,7 +70,7 @@ void UserData::setTicket(int num){
 }
 
 float UserData::getHuafeiQuan(){
-    return UserDefault::getInstance()->getIntegerForKey("user_huafei_quan", 0);
+    return UserDefault::getInstance()->getDoubleForKey("user_huafei_quan", 0);
 }
 
 
