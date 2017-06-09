@@ -279,19 +279,21 @@ bool FriendRoom::init()
     
     /** --------------------------红中麻将选择界面ui显示结束-------------------------- **/
     
-    auto fangZhuText = Sprite::create("openroom/fang_zhu_jiang_li.png");
-    fangZhuText->setPosition(600,145);
-    addChild(fangZhuText);
-    
-    auto lequan1 = Sprite::create("common/lequan_icon.png");
-    lequan1->setPosition(515,145);
-    addChild(lequan1);
-    
-    auto leX1 = Sprite::create("friend/fangzhu_x.png");
-    leX1->setPosition(548,147);
-    addChild(leX1);
     
     if(GAMEDATA::getInstance()->getFangzhuLequan() != ""){
+        auto fangZhuText = Sprite::create("openroom/fang_zhu_jiang_li.png");
+        fangZhuText->setPosition(600,145);
+        addChild(fangZhuText);
+        
+        auto lequan1 = Sprite::create("common/lequan_icon.png");
+        lequan1->setPosition(515,145);
+        addChild(lequan1);
+        
+        auto leX1 = Sprite::create("friend/fangzhu_x.png");
+        leX1->setPosition(548,147);
+        addChild(leX1);
+
+        
         vector<std::string> fuZhuLeQuan = StringUtil::split(GAMEDATA::getInstance()->getFangzhuLequan(), ",");
         while(fuZhuLeQuan.size()<3){
             fuZhuLeQuan.push_back("50");

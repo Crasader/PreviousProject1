@@ -305,7 +305,7 @@ void PlayerBase::setIsTrusteeship(bool b){
 }
 
 void PlayerBase::showPlayerInfo(){
-    if(GAMEDATA::getInstance()->getIsCompetitionState()){
+    if(!GAMEDATA::getInstance()->getIsCompetitionState()){
         OtherPlayerInfo* dialog = OtherPlayerInfo::create(getPlayerInfo());
         getParent()->addChild(dialog,100);//添加到父场景,为了解决图层错位的问题
     }

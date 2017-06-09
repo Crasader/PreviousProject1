@@ -18,6 +18,7 @@
 #include "wechat/ios/CallIOSMethod.h"
 #include "mahjong/result/hongbao/HongbaoAnim2.hpp"
 #include "mahjong/result/hongbao/HongbaoAnim.hpp"
+#include "mahjong/common/competition/CompetitionResult.hpp"
 
 bool GuiLayer::init(){
     if (!Layer::init()){
@@ -461,8 +462,11 @@ void GuiLayer::testButtonClick(){
     //    }
     //    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_HU_ACTION,&cpgData);
     
-    HongbaoAnim* ami = HongbaoAnim::create();
-    ami->initView("0.37",1);
-//    ami->initView("0.37","0.37",1,false);
-    addChild(ami,10);
+//    HongbaoAnim* ami = HongbaoAnim::create();
+//    ami->initView("0.37",1);
+////    ami->initView("0.37","0.37",1,false);
+//    addChild(ami,100);
+    CompetitionResult* result = CompetitionResult::create();
+    result->showCompetiotionResult("1","1","36","30");
+    addChild(result,100);
 }

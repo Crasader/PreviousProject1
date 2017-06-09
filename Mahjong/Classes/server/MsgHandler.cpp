@@ -1964,6 +1964,8 @@ void MsgHandler::gameResultNotify(std::string msg){
     }
     if(_mDoc.HasMember("sxlmfee")){
         pride.sxlmfee = _mDoc["sxlmfee"].GetString();
+    }else{
+        pride.sxlmfee ="0";
     }
     if(_mDoc.HasMember("fzId")){
         pride.fzid = _mDoc["fzId"].GetString();
@@ -3311,6 +3313,8 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
     }
     if(_mDoc.HasMember("sxlmfee")){
         pride.sxlmfee = _mDoc["sxlmfee"].GetString();
+    }else{
+         pride.sxlmfee = "0";
     }
     if(_mDoc.HasMember("fzId")){
         pride.fzid = _mDoc["fzId"].GetString();
