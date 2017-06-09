@@ -2456,7 +2456,6 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
                     info->setUmark(temp["umark"].GetString());
                 }
             }else{
-                info->setSeatId(i+1);
                 info->setGold(0);
                 info->setDiamond(0);
                 info->setNickname("");
@@ -2949,7 +2948,6 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
                     info->setUmark(temp["umark"].GetString());
                 }
             }else{
-                info->setSeatId(i+1);
                 info->setGold(0);
                 info->setDiamond(0);
                 info->setNickname("");
