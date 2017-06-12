@@ -26,6 +26,7 @@ bool HongbaoAnim2::init(){
 
 
 void HongbaoAnim2::initView(std::string hongNum,std::string hongNum2,int type,bool shuang){
+   
     for (int i=0; i<1000; i++) {
         //飘带
         auto piao = Sprite::create();
@@ -239,6 +240,7 @@ void HongbaoAnim2::goBack(){
 
 
 void HongbaoAnim2::share(){
+    GAMEDATA::getInstance()->setHasShowHongbaoResult(true);
     auto hongbaobg = Sprite::create("hongbao/share_hong_bao_bg.jpg");
     hongbaobg->setPosition(640,360);
     auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(70,70));

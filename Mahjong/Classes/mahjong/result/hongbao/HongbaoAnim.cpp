@@ -167,7 +167,7 @@ void HongbaoAnim::goBack(){
 
 
 void HongbaoAnim::share(){
-    
+    GAMEDATA::getInstance()->setHasShowHongbaoResult(true);
     auto hongbaobg = Sprite::create("hongbao/share_hong_bao_bg.jpg");
     hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     hongbaobg->setPosition(0,0);

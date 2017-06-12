@@ -39,6 +39,7 @@ void GAMEDATA::init(){
     setIsCompetitionState(false);
     setNeedShowHongbaoResult(false);
     setShareHongBaoFriendState(0);
+    setHasShowHongbaoResult(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){
