@@ -57,7 +57,7 @@ void GuiLayer::drawGuiButton(){
     quit->setTag(1212);
     quit->setPosition(Point(55, 650));
     this->addChild(quit);
-    if(GAMEDATA::getInstance()->getIsCompetitionState()){
+    if(GAMEDATA::getInstance()->getIsCompetitionState()||atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>0){
         quit->setVisible(false);
     }
     

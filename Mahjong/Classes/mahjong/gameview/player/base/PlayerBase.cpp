@@ -352,7 +352,7 @@ void PlayerBase::startTimeClockAnim(){
     mProgressTimer->setType(ProgressTimer::Type::RADIAL);
     mProgressTimer->stopAllActions();
     mProgressTimer->setReverseProgress(true);
-    ActionInterval* action_progress_to = Sequence::create(ProgressFromTo::create(20, 100, 0), nullptr);
+    ActionInterval* action_progress_to = Sequence::create(ProgressFromTo::create(mCDTime, 100, 0), nullptr);
     mProgressTimer->runAction(Sequence::create(action_progress_to, NULL));
     schedule(schedule_selector(PlayerBase::updateTime), 1);
     timeClock->setVisible(true);
