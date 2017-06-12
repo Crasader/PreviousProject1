@@ -646,7 +646,7 @@ void LobbyScene::onEnterTransitionDidFinish(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
-    if(GAMEDATA::getInstance()->getNeedShowHongbaoResult()&& !GAMEDATA::getInstance()->getHasShowHongbaoResult()){
+    if(GAMEDATA::getInstance()->getNeedShowHongbaoResult() && !GAMEDATA::getInstance()->getHasShowHongbaoResult()){
         GAMEDATA::getInstance()->setNeedShowHongbaoResult(false);
         if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee.c_str())>0){
             HongbaoAnim2* ami = HongbaoAnim2::create();

@@ -374,6 +374,9 @@ void PlayerHero::drawReady(bool ready){
         invite->setPosition(Point(640, 235));
         invite->setTag(9998);
         addChild(invite);
+        if(GAMEDATA::getInstance()->getIsCompetitionState()||GAMEDATA::getInstance()->getIsCompetitionQueue()){
+            invite->setVisible(false);
+        }
     }
     if (!ready){
         MenuItemImage* image = MenuItemImage::create("gameview/ready_1.png", "gameview/ready_2.png", CC_CALLBACK_0(PlayerHero::readyGo, this));
