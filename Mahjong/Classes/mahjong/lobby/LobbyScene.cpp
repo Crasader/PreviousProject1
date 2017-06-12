@@ -713,6 +713,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzLobbyConncetAgainListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
     
 }
 
@@ -1113,19 +1114,25 @@ void LobbyScene::addEventListener(){
                 if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
                 }else{
-                    if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 1){
-                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
-                        GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
-                    }else if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 2){
-                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
-                        GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
-                    }
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), UserData::getInstance()->getHsman(), UserData::getInstance()->getHstype(), UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer(),true));                }
             }, 0, 0, delayTime, "socket_reconnect2000");
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
+    
+    coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+        log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 1){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
+            GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+        }else if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 2){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
+            GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
+
     //点击事件
     auto listener = EventListenerKeyboard::create();
     listener->onKeyReleased = [=](EventKeyboard::KeyCode code, Event * e){

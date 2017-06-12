@@ -58,6 +58,7 @@ private:
     EventListenerCustom* roomListRespListener;
     EventListenerCustom* gongGaoInfoListener;
     EventListenerCustom* networkBreakListener;
+    EventListenerCustom* coreLoginRespListener;
     
 	void initView();
 	void drawSceneMid();

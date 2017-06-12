@@ -332,7 +332,7 @@ void CompetitionResult::showLose(std::string type,std::string rank,std::string p
 
 void CompetitionResult::continueCompetition(){
     GAMEDATA::getInstance()->setPrivateLezi(StringUtils::format("%d", LeziType::type55c));
-    FriendOpenRoomRespData opdata;
+    FriendOpenRoomRespData opdata =  GAMEDATA::getInstance()->getFriendOpenRoomResp();
     opdata.prjushu = "4";
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendJoinCompetiotnCommand(StringUtils::format("%s",GAMEDATA::getInstance()->getCompetitionId().c_str())));

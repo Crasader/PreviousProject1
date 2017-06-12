@@ -92,7 +92,7 @@ void CompetitonItem::joinCompetition(Ref* ref){
     GAMEDATA::getInstance()->setPrivateLezi(StringUtils::format("%d", LeziType::type55c));
     GAMEDATA::getInstance()->setFanMaType("1");
     GAMEDATA::getInstance()->setHZDiFen("5");
-    FriendOpenRoomRespData opdata;
+    FriendOpenRoomRespData opdata = GAMEDATA::getInstance()->getFriendOpenRoomResp();
     opdata.prjushu = "4";
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
     CompetitonLayer* lay = CompetitonLayer::create();

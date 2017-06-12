@@ -179,6 +179,13 @@ void SpecialResultLayer::afterCaptured(bool succeed, const std::string &outputFi
 void SpecialResultLayer::onEnter(){
     Layer::onEnter();
     myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+        if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 1){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
+            GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+        }else if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 2){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
+            GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+        }
         Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(myCoreLoginRespListener, 1);
@@ -194,13 +201,6 @@ void SpecialResultLayer::onEnter(){
                 if(UserData::getInstance()->getWxOpenId() ==  "unknow"){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLoginAgain(UserData::getInstance()->getUserName(), UserData::getInstance()->getPassword()));
                 }else{
-                    if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 1){
-                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
-                        GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
-                    }else if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 2){
-                        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
-                        GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
-                    }
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(), UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(), StringUtils::format("%d",UserData::getInstance()->getGender()), UserData::getInstance()->getNickName(), UserData::getInstance()->getHsman(), UserData::getInstance()->getHstype(), UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer(),true));
                 }
             }, 0, 0, delayTime, "socket_reconnect2000");
