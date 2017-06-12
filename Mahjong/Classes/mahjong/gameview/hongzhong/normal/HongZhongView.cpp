@@ -440,7 +440,7 @@ void HongZhongView::showHeroGangUi(Ref* ref){
     }
     if (allGangs.size()>1){
         //对杠牌的大小进行排序
-        for (int j = allGangs.size()-1; j > 0; j--) {
+        for (int j = (int)(allGangs.size()-1); j > 0; j--) {
             for (int k = 0; k < j; k++) {
                 if ( allGangs[k] <  allGangs[k + 1]) {
                     auto temp =  allGangs[k];
@@ -1524,7 +1524,7 @@ void HongZhongView::onEnter(){
             schedule([=](float dt){
                 playerHero->stopTimeClockAnim();
                 playerHero->drawPlayedJong(poker);
-            },0,0,0.3f,"delay_play_poker_auto");
+            },0,0,0.5f,"delay_play_poker_auto");
 
         }
     });
