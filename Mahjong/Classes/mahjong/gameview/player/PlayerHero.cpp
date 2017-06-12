@@ -69,7 +69,7 @@ void PlayerHero::drawPlayerTrue(bool state){
     }
     
     if(NULL != getChildByTag(1678)&&!state){
-        getChildByTag(1678)->setVisible(fa);
+        getChildByTag(1678)->setVisible(false);
     }
 }
 
@@ -882,8 +882,12 @@ void PlayerHero::removePlayedIcon(){
 }
 
 void PlayerHero::doEventTimeOver(int type){
-    if(GAMEDATA::getInstance()->getIsCompetitionState()             ){
+    if(GAMEDATA::getInstance()->getIsCompetitionState()){
         setIsAllowPlay(false);
+        if(virtualJong != NULL){
+            virtualJong->removeFromParent();
+            virtualJong = NULL;
+        }
     }
 }
 
