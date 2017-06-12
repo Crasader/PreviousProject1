@@ -1,0 +1,8 @@
+
+# Ignore Android SDK, NDK, Eclipse plugin and ANT files
+local.properties
+assets/
+gen/
+bin/
+obj/
+local.properties
