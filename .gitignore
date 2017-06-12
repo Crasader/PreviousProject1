@@ -1,0 +1,6 @@
+
+# Ignore Android SDK, NDK, Eclipse plugin and ANT files
+TBU_WX/local.properties
+TBU_WX/assets/
+TBU_WX/gen/
+TBU_WX/bin/
