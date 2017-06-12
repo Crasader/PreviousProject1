@@ -168,32 +168,37 @@ void HongbaoAnim::goBack(){
 
 void HongbaoAnim::share(){
     GAMEDATA::getInstance()->setHasShowHongbaoResult(true);
+    auto hbLayer = Layer::create();
+    
     auto hongbaobg = Sprite::create("hongbao/share_hong_bao_bg.jpg");
     hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     hongbaobg->setPosition(0,0);
+    hbLayer->addChild(hongbaobg);
+    
+    auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(70,70));
+    headImage->setPosition(150, 100);
+    hbLayer->addChild(headImage, 10);
+    
+    auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",20);
+    nick->setPosition(150,50);
+    hbLayer->addChild(nick);
+    
     std::string number = getHongBaoNum();
     int pos  =  (int)number.find(".");
     if(pos>=0){
         number.replace(pos,1, ":");
     }
+    
     LabelAtlas* hongnum = LabelAtlas::create(number, "hongbao/share_hong_bao_num.png", 24, 40, '0');
     hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     hongnum->setPosition(190,190);
-    hongbaobg->addChild(hongnum);
-    
-    auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(70,70));
-    headImage->setPosition(150, 100);
-    hongbaobg->addChild(headImage, 10);
-    
-    auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",20);
-    nick->setPosition(150,50);
-    hongbaobg->addChild(nick);
+    hbLayer->addChild(hongnum);
     
     auto renderTexture = RenderTexture::create(640, 360, Texture2D::PixelFormat::RGBA8888);
     //清空并开始获取
     renderTexture->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
     //遍历场景节点对象，填充纹理到RenderTexture中
-    hongbaobg->visit();
+    hbLayer->visit();
     //结束获取
     renderTexture->end();
     //保存文件
