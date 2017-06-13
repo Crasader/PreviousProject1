@@ -466,7 +466,7 @@ void PlayerHero::sendPokerRequest(int poker){
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayPokerCommmand(poker));
     }else{
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayPokerCommand(StringUtils::format("%d",GAMEDATA::getInstance()->getGameType()), StringUtils::format("%d",poker)));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayPokerCommand(StringUtils::format("%d",poker)));
     }
 }
 
