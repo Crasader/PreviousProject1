@@ -13,6 +13,7 @@
 #include "mahjong/common/competition/CompetitionResult.hpp"
 #include "mahjong/lobby/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "mahjong/common/utils/StringUtil.h"
+#include "mahjong/common/dialog/prompt/HintDialog.hpp"
 
 bool CompetitonLayer::init(){
     
@@ -159,7 +160,11 @@ void CompetitonLayer::onEnter(){
                 GAMEDATA::getInstance()->setGameType(3);
                 Director::getInstance()->replaceScene(TransitionFade::create(0.1, MjGameScene::create()));
             }
-        }else{
+        }else  if(newData.result == 2){
+            HintDialog* dialog = HintDialog::create(newData.tip != ""?newData.tip:"功能暂不可用", nullptr);
+            addChild(dialog,100);
+        }
+        else{
             if(NULL != getChildByTag(1024)){
                 getChildByTag(1024)->removeFromParentAndCleanup(true);
             }

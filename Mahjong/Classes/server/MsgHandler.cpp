@@ -3662,6 +3662,10 @@ void MsgHandler::handleJoinCompetitionResp(std::string msg){
         const rapidjson::Value &num = _mDoc["num"];
         data.num =  num.GetString();
     }
+    if(_mDoc.HasMember("tip")){
+        const rapidjson::Value &tip = _mDoc["tip"];
+        data.tip =  tip.GetString();
+    }
     postNotifyMessage(MSG_JOIN_COMPETITION_RESP, &data);
 }
 

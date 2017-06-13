@@ -720,5 +720,6 @@ struct JoinCompetitionData{
     std::string num;
     std::string roomId;
     std::string text;
+    std::string tip;
 };
 #endif

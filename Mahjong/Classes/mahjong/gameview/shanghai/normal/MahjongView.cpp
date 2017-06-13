@@ -1062,6 +1062,12 @@ void MahjongView::onEnterTransitionDidFinish(){
         }, 0, 0, 0.3f,"continueGame");
     }
     
+    if(GAMEDATA::getInstance()->getIsCompetitionState()){
+        schedule([=](float dt){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+        }, 0, 0, 0.3f,"continueGame2");
+    }
+    
     if (GAMEDATA::getInstance()->getIsRecover()){
         //重新设置庄的位置
         LastGameData data = GAMEDATA::getInstance()->getLastGameDataBackup();
