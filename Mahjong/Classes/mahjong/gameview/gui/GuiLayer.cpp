@@ -57,13 +57,13 @@ void GuiLayer::drawGuiButton(){
     quit->setTag(1212);
     quit->setPosition(Point(55, 650));
     this->addChild(quit);
-    if(GAMEDATA::getInstance()->getIsCompetitionState()||atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>0){
+    if(GAMEDATA::getInstance()->getIsCompetitionState()||(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())>0&&GAMEDATA::getInstance()->getMahjongRoomType()== MahjongRoom::privateRoom)){
         quit->setVisible(false);
     }
     
     if (GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         //解散牌局按钮
-        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str())==0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
+        if(atoi(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjucount.c_str()) == 0 && UserData::getInstance()->getPoxiaoId()==GAMEDATA::getInstance()->getFangZhuId() && !GAMEDATA::getInstance()->getIsPlaying()){
             auto dissolveRoom = MenuItemImage::create("gameview/dissovle_room_btn_1.png","gameview/dissovle_room_btn_2.png",CC_CALLBACK_0(GuiLayer::dissovleRoom, this));
             auto disMenu = Menu::create(dissolveRoom,NULL);
             disMenu->setPosition(1140,85);

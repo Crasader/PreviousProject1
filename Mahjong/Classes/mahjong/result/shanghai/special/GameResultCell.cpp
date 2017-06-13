@@ -73,7 +73,7 @@ bool GameResultCell::init(GameResultData data){
         addChild(title,30);
     }
     
-    if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj ==data.poxiaoId){
+    if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == data.poxiaoId){
         auto winTitle = Sprite::create("hongbao/win_title.png");
         winTitle->setPosition(80,180);
         addChild(winTitle,30);
