@@ -340,8 +340,6 @@ void PlayerBase::showPlayerHua(int num){
 
 
 void PlayerBase::startTimeClockAnim(){
-    
-    
     mCDTime = 20;
     if(GAMEDATA::getInstance()->getIsCompetitionState()){
         mCDTime = 15;
@@ -362,6 +360,9 @@ void PlayerBase::startTimeClockAnim(int time, int type){
     timeClock->setString(StringUtils::format("%d", time));
     this->setTag(type);
     mCDTime = time;
+    if(GAMEDATA::getInstance()->getIsCompetitionState()){
+        time = 15;
+    }
     mProgressTimer->setVisible(true);
     mProgressTimer->setType(ProgressTimer::Type::RADIAL);
     mProgressTimer->stopAllActions();

@@ -359,7 +359,7 @@ Vector<Jong*> PlayerHero::getSelfHandJongs(){
     return this->playerHandJongs;
 }
 
-void PlayerHero::resetHandJongsY(Jong* jong) {
+void PlayerHero::resetHandJongsY(Jong* jong){
     for (int i = 0; i < playerHandJongs.size(); i++) {
         if (playerHandJongs.at(i) != jong)
             playerHandJongs.at(i)->setPosition(
@@ -459,6 +459,7 @@ void PlayerHero::inviteWechatFriend(){
 
 
 void PlayerHero::sendPokerRequest(int poker){
+    log("向服务端发送出牌请求 %d",poker);
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayPokerCommmand(poker));
     }else{

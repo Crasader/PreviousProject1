@@ -5506,11 +5506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "518952514.518727"
+            timestampString = "519014441.309362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1204"
-            endingLineNumber = "1204"
+            startingLineNumber = "1205"
+            endingLineNumber = "1205"
             landmarkName = "PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5776,11 +5776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "518952514.518727"
+            timestampString = "519014441.309362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "941"
-            endingLineNumber = "941"
+            startingLineNumber = "942"
+            endingLineNumber = "942"
             landmarkName = "PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector&lt;string&gt; chipai, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5792,11 +5792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "518952514.518727"
+            timestampString = "519014441.309362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1003"
-            endingLineNumber = "1003"
+            startingLineNumber = "1004"
+            endingLineNumber = "1004"
             landmarkName = "PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector&lt;string&gt; chipai, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5824,11 +5824,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "518952514.518727"
+            timestampString = "519014441.309362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "750"
-            endingLineNumber = "750"
+            startingLineNumber = "751"
+            endingLineNumber = "751"
             landmarkName = "PlayerHero::playerTurnReplace(PlayerTurnData data)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5840,11 +5840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "518952514.518727"
+            timestampString = "519014441.309362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "749"
-            endingLineNumber = "749"
+            startingLineNumber = "750"
+            endingLineNumber = "750"
             landmarkName = "PlayerHero::playerTurnReplace(PlayerTurnData data)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5984,11 +5984,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "518952514.518727"
+            timestampString = "519014441.309362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "820"
-            endingLineNumber = "820"
+            startingLineNumber = "821"
+            endingLineNumber = "821"
             landmarkName = "PlayerHero:: drawPlayedJong(int type)"
             landmarkType = "7">
          </BreakpointContent>
