@@ -442,7 +442,7 @@ void HongZhongView::showHeroGangUi(Ref* ref){
         //对杠牌的大小进行排序
         for (int j = (int)(allGangs.size()-1); j > 0; j--) {
             for (int k = 0; k < j; k++) {
-                if ( allGangs[k] <  allGangs[k + 1]) {
+                if ( allGangs[k] <  allGangs[k + 1]){
                     auto temp =  allGangs[k];
                     allGangs[k] = allGangs[k + 1];
                     allGangs[k + 1] = temp;
