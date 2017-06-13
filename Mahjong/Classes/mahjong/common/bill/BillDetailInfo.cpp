@@ -233,6 +233,7 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             fupanMenu->addChild(fupan);
         }
         if(isMatch){
+            fengxiang->setVisible(false);
             fupan->setVisible(false);
         }
         fupanMenu->setTag(1001);
