@@ -1122,7 +1122,6 @@ void LobbyScene::addEventListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-        log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 1){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
             GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
