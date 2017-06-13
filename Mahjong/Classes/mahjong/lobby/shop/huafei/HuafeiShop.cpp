@@ -70,7 +70,7 @@ void HuafeiShop::onEnter(){
             ShopHintDialog* shop = ShopHintDialog::create();
             shop->showText("兑换成功");
             addChild(shop);
-            UserData::getInstance()->setHuafeiQuan(atoi(GAMEDATA::getInstance()->getHuafeiChangeResult().huafei.c_str()));
+            UserData::getInstance()->setHuafeiQuan(atof(GAMEDATA::getInstance()->getHuafeiChangeResult().huafei.c_str()));
             if(NULL != getChildByTag(962)){
                 ((Label*)getChildByTag(962))->setString(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()));
             }

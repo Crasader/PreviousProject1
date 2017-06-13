@@ -161,7 +161,11 @@ void CompetitonLayer::onEnter(){
                 Director::getInstance()->replaceScene(TransitionFade::create(0.1, MjGameScene::create()));
             }
         }else  if(newData.result == 2){
-            HintDialog* dialog = HintDialog::create(newData.tip != ""?newData.tip:"功能暂不可用", nullptr);
+            HintDialog* dialog = HintDialog::create(newData.tip != ""?newData.tip:"功能暂不可用",[=](Ref* ref){
+                removeFromParent();
+            },[=](Ref* ref){
+                removeFromParent();
+            });
             addChild(dialog,100);
         }
         else{
