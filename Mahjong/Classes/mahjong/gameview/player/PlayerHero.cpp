@@ -71,6 +71,9 @@ void PlayerHero::drawPlayerTrue(bool state){
     if(NULL != getChildByTag(1678)&&!state){
         getChildByTag(1678)->setVisible(false);
     }
+    if(!state){
+        this->setIsAllowTouch(true);
+    }
 }
 
 void PlayerHero::hideInviteButton(){
