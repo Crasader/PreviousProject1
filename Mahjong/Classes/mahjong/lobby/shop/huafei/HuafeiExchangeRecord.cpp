@@ -33,10 +33,10 @@ bool HuafeiExchangeRecord::init(){
     closeMenu->setPosition(1050, 610);
     addChild(closeMenu);
     
-    auto tableView = TableView::create(this, Size(765, 450));
+    auto tableView = TableView::create(this, Size(765, 470));
     tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView->setDirection(ScrollView::Direction::VERTICAL);
-    tableView->setPosition(270, 105);
+    tableView->setPosition(270, 120);
     tableView->setTag(1001);
     tableView->setDelegate(this);
     tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
@@ -106,7 +106,7 @@ void HuafeiExchangeRecord::tableCellTouched(TableView* table,TableViewCell* cell
 
 
 Size HuafeiExchangeRecord::tableCellSizeForIndex(TableView *table, ssize_t idx){
-    return Size(765, 148);
+    return Size(765, 145);
 }
 
 TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t idx){
@@ -118,7 +118,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
-        auto recordBg = Sprite::create("shop/duihuanjilu_box.png");
+        auto recordBg = Sprite::create("shop/duihuanjilu_box2.png");
         recordBg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         cell->addChild(recordBg);
         
