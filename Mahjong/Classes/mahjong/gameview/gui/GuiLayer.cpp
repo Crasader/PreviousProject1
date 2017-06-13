@@ -95,7 +95,6 @@ void GuiLayer::drawGameInfo(){
     addChild(roomInfoBg);
     if(GAMEDATA::getInstance()->getIsCompetitionQueue()||GAMEDATA::getInstance()->getIsCompetitionState()){
         roomInfoBg->setScaleY(0.6);
-        
         auto name = Label::createWithSystemFont("", "arial", 25);
         if(GAMEDATA::getInstance()->getCompetitionId() == StringUtils::format("%d",CompetitionRoomId::Shanghai_High)||GAMEDATA::getInstance()->getCompetitionId() == StringUtils::format("%d",CompetitionRoomId::Shanghai_Normal)){
             name->setString("上海敲麻");

@@ -160,6 +160,7 @@ void HongbaoAnim::initView(std::string hongNum,int type){
 
 
 void HongbaoAnim::goBack(){
+    GAMEDATA::getInstance()->setHasShowHongbaoResult(true);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
     Director::getInstance()->replaceScene(TransitionFade::create(0.5, LobbyScene::create()));
     

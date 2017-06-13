@@ -2417,11 +2417,14 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     }
     if(_mDoc.HasMember("prjucount")){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
-        data.prjucount = prjucount.GetString();
+        data.prjucount = StringUtils::format("%d",atoi(prjucount.GetString())+1);
     }
     if(_mDoc.HasMember("jifen")){
         const rapidjson::Value &myjifen = _mDoc["jifen"];
         GAMEDATA::getInstance()->setScore(myjifen.GetInt());
+    }
+    if(_mDoc.HasMember("prize")){
+        GAMEDATA::getInstance()->setCompetitionPride(_mDoc["prize"].GetString());
     }
     
     GAMEDATA::getInstance()->clearPlayersInfo();
@@ -2909,11 +2912,14 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     }
     if(_mDoc.HasMember("prjucount")){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
-        data.prjucount = prjucount.GetString();
+         data.prjucount = StringUtils::format("%d",atoi(prjucount.GetString())+1);
     }
     if(_mDoc.HasMember("jifen")){
         const rapidjson::Value &myjifen = _mDoc["jifen"];
         GAMEDATA::getInstance()->setScore(myjifen.GetInt());
+    }
+    if(_mDoc.HasMember("prize")){
+        GAMEDATA::getInstance()->setCompetitionPride(_mDoc["prize"].GetString());
     }
     GAMEDATA::getInstance()->clearPlayersInfo();
     GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
