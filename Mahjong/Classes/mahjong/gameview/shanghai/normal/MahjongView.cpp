@@ -1255,7 +1255,7 @@ void MahjongView::onEnter(){
     
     gameFaPaiListener = EventListenerCustom::create(MSG_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getIsPlaying()){
-            return true;
+            return;
         }
         float delay = 0;
         MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());

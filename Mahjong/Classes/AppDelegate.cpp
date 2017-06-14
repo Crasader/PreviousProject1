@@ -88,6 +88,7 @@ void AppDelegate::applicationDidEnterBackground() {
 void AppDelegate::applicationWillEnterForeground() {
     log("applicationWillEnterForeground");
     Director::getInstance()->startAnimation();
+//    SocketDataManage::getInstance()->re
     SocketDataManage::getInstance()->cleanMsg();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     if(resumeIndex == 0){

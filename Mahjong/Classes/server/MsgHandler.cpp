@@ -2133,6 +2133,8 @@ void MsgHandler::playerConnectAgain(std::string msg){
     if(_mDoc.HasMember("matchid")){
         GAMEDATA::getInstance()->setIsCompetitionState(true);
         GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setIsCompetitionState(false);
     }
     if(_mDoc.HasMember("prize")){
         GAMEDATA::getInstance()->setCompetitionPride(_mDoc["prize"].GetString());
@@ -2518,7 +2520,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     }
     
     GAMEDATA::getInstance()->addPlayersInfo(info);
-    
+    GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setGameType(1);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
     postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP, buf);
@@ -3018,6 +3020,7 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     }
     GAMEDATA::getInstance()->addPlayersInfo(info);
     GAMEDATA::getInstance()->setGameType(3);
+    GAMEDATA::getInstance()->setIsPlaying(false);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
     postNotifyMessage(MSG_HZ_ENTER_FRIEND_ROOM_RESP, buf);
     
