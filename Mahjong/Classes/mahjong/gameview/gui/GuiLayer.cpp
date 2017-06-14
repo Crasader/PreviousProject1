@@ -110,7 +110,6 @@ void GuiLayer::drawGameInfo(){
         matchname->setColor(Color3B(233,209,112));
         addChild(matchname);
     }else{
-        
         if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
             auto kaibao = Sprite::create("gameview/kai_bao.png");
             addChild(kaibao);
