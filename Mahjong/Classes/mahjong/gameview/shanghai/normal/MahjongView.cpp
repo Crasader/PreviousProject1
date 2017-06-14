@@ -1680,6 +1680,9 @@ void MahjongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
     
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
+        if(!GAMEDATA::getInstance()->getIsInGame()){
+            return;
+        }
         string flag = static_cast<char*>(event->getUserData());
         if(flag == "1"||flag == "2"){
             GAMEDATA::getInstance()->setIsTrusteeship(false);
@@ -1850,7 +1853,7 @@ void MahjongView::onEnter(){
                 }else{
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }
-                Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(0)));
+                Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
             },0,0,6.0f,"go2Result");
         }else{
             clearRoomPlayer();

@@ -42,6 +42,7 @@ void GAMEDATA::init(){
     setHasShowHongbaoResult(false);
     setNeedShowFaPai(false);
     setNeedShowShareBtn(false);
+    setIsInGame(true);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

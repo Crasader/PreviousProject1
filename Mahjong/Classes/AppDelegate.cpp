@@ -68,6 +68,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
     log("applicationDidEnterBackground");
+    GAMEDATA::getInstance()->setIsInGame(false);
     Director::getInstance()->stopAnimation();
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOutResumeCommand());
@@ -88,7 +89,7 @@ void AppDelegate::applicationDidEnterBackground() {
 void AppDelegate::applicationWillEnterForeground() {
     log("applicationWillEnterForeground");
     Director::getInstance()->startAnimation();
-//    SocketDataManage::getInstance()->re
+    GAMEDATA::getInstance()->setIsInGame(true);
     SocketDataManage::getInstance()->cleanMsg();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     if(resumeIndex == 0){

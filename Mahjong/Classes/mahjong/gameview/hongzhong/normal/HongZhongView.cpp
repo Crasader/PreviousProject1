@@ -1567,6 +1567,9 @@ void HongZhongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
     
     gameResultListener = EventListenerCustom::create(MSG_HZ_GAME_RESULT, [=](EventCustom* event){
+        if(!GAMEDATA::getInstance()->getIsInGame()){
+            return;
+        }
         string flag = static_cast<char*>(event->getUserData());
         if(flag == "1"||flag == "2"){
             GAMEDATA::getInstance()->setIsTrusteeship(false);
