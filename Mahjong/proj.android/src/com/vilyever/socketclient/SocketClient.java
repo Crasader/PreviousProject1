@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import com.tbu.androidtools.Debug;
 import com.vilyever.socketclient.helper.SocketClientAddress;
 import com.vilyever.socketclient.helper.SocketClientDelegate;
 import com.vilyever.socketclient.helper.SocketClientReceivingDelegate;
@@ -1147,8 +1148,11 @@ public class SocketClient {
 						self.setSendingPacket(null);
 						continue;
 					}
-
-					byte[] headerData = self.getSocketConfigure().getSocketPacketHelper().getSendHeaderData();
+					
+					byte[] headerData = null;
+					if(null != self.getSocketConfigure()&&null != self.getSocketConfigure().getSocketPacketHelper() &&null != self.getSocketConfigure().getSocketPacketHelper().getSendHeaderData()){
+						headerData = self.getSocketConfigure().getSocketPacketHelper().getSendHeaderData();
+					}
 					int headerDataLength = headerData == null ? 0 : headerData.length;
 
 					byte[] trailerData = self.getSocketConfigure().getSocketPacketHelper().getSendTrailerData();
