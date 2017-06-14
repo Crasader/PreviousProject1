@@ -1060,13 +1060,13 @@ void MahjongView::onEnterTransitionDidFinish(){
         GAMEDATA::getInstance()->setContinueAgain(false);
         schedule([=](float dt){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
-        }, 0, 0, 0.3f,"continueGame");
+        }, 0, 0, 0.5f,"continueGame");
     }
     
     if(GAMEDATA::getInstance()->getIsCompetitionState()){
         schedule([=](float dt){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
-        }, 0, 0, 0.3f,"continueGame2");
+        }, 0, 0, 0.5f,"continueGame2");
     }
     
     if (GAMEDATA::getInstance()->getIsRecover()){

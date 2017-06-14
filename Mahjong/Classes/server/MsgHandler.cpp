@@ -2385,6 +2385,8 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
     GAMEDATA::getInstance()->setGameType(1);
+    GAMEDATA::getInstance()->setIsCompetitionState(false);
+    GAMEDATA::getInstance()->setIsCompetitionQueue(false);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, nullptr);
 }
 
@@ -2445,6 +2447,9 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
         isCompetition = true;
         GAMEDATA::getInstance()->setIsCompetitionState(true);
         GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setIsCompetitionState(false);
+        GAMEDATA::getInstance()->setIsCompetitionQueue(false);
     }
     if (_mDoc.HasMember("other")){
         const rapidjson::Value &pArr = _mDoc["other"];
@@ -2886,6 +2891,8 @@ void MsgHandler::handleHongZhongEnterRoom(std::string msg){
     info->setUmark(UserData::getInstance()->getMarkId());
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
+    GAMEDATA::getInstance()->setIsCompetitionState(false);
+    GAMEDATA::getInstance()->setIsCompetitionQueue(false);
     postNotifyMessage(MSG_ENTER_FRIEND_ROOM_HONGZHONG_RESP, nullptr);
 }
 
@@ -2939,6 +2946,9 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
         isCompetition = true;
         GAMEDATA::getInstance()->setIsCompetitionState(true);
         GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setIsCompetitionState(false);
+        GAMEDATA::getInstance()->setIsCompetitionQueue(false);
     }
     
     if (_mDoc.HasMember("other")){
