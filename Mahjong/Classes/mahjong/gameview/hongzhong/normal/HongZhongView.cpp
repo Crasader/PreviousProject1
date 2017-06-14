@@ -951,7 +951,7 @@ void HongZhongView::showHandPokerOver(int seatId){
 void HongZhongView::onEnterTransitionDidFinish(){
     if(GAMEDATA::getInstance()->getIsCompetitionState()){
         schedule([=](float dt){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerReadyCommand());
         }, 0, 0, 0.3f,"continueGame2");
     }
     if(GAMEDATA::getInstance()->getContinueAgain()){

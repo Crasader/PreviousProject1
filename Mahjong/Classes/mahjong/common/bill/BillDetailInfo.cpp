@@ -97,6 +97,10 @@ bool BillDetailInfo::init()
     }else if(data.atype == "2"){
         jushuNum = "16";
     }
+    if(isMatch){
+        jushuNum = "4";
+    }
+
     Label* jushu = Label::createWithSystemFont(jushuNum,"Arial",22);
     jushu->setColor(Color3B(93,182,215));
     jushu->setAnchorPoint(Vec2::ZERO);
