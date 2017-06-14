@@ -416,7 +416,7 @@ void NormalResultLayer::onEnter(){
         if (result == "1"){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             GAMEDATA::getInstance()->setGameType(1);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            Director::getInstance()->replaceScene( MjGameScene::create());
         }
     });
     
@@ -427,7 +427,7 @@ void NormalResultLayer::onEnter(){
         if (result == "1"){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             GAMEDATA::getInstance()->setGameType(3);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+            Director::getInstance()->replaceScene(MjGameScene::create());
         }
     });
     
