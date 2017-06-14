@@ -1560,6 +1560,8 @@ void MsgHandler::getHeroJongs(std::string msg){
     }
     faPaiData.mjTingData = tingData;
     GAMEDATA::getInstance()->setIsTrusteeship(false);
+    GAMEDATA::getInstance()->setMahjongFaPaiData(faPaiData);
+    GAMEDATA::getInstance()->setNeedShowFaPai(true);
     postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
@@ -3063,7 +3065,9 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
         GAMEDATA::getInstance()->setIsCompetitionState(true);
     }
     GAMEDATA::getInstance()->setIsTrusteeship(false);
-    postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
+    GAMEDATA::getInstance()->setMahjongFaPaiData(faPaiData);
+    GAMEDATA::getInstance()->setNeedShowFaPai(true);
+        postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
 void MsgHandler::handleHZPlayerPlayPokerNotify(std::string msg){

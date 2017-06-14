@@ -77,6 +77,7 @@ public:
     CC_SYNTHESIZE(TuiGuangRecord, tuiGuangRecord, TuiGuangRecord);
     CC_SYNTHESIZE(GameActivityData, gameActivityData, GameActivityData);
     CC_SYNTHESIZE(CompetitionResultInfo, competitionResultData, CompetitionResultData);
+    CC_SYNTHESIZE(MahjongFaPaiData, mahjongFaPaiData, MahjongFaPaiData);
     //游戏状态
     
     CC_SYNTHESIZE(int, gameType, GameType);//游戏类型:1上海麻将,2上海麻将复盘,3红中麻将,4红中麻将复盘
@@ -120,6 +121,7 @@ public:
     CC_SYNTHESIZE(bool, needShowHongbaoResult, NeedShowHongbaoResult);
     CC_SYNTHESIZE(bool, hasShowHongbaoResult, HasShowHongbaoResult);
     CC_SYNTHESIZE(int, shareHongBaoFriendState, ShareHongBaoFriendState);
+    CC_SYNTHESIZE(bool, needShowFaPai, NeedShowFaPai);
     CC_SYNTHESIZE(std::string, competitionId, CompetitionId);
     CC_SYNTHESIZE(std::string, competitionText, CompetitionText);
     CC_SYNTHESIZE(std::string, competitionPride, CompetitionPride);
