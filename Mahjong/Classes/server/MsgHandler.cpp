@@ -972,6 +972,10 @@ void MsgHandler::loginResp(std::string msg){
         }else{
             UserData::getInstance()->setInviteCodeBind(true);
         }
+        if(_mDoc.HasMember("free")){
+            const rapidjson::Value &free = _mDoc["free"];
+            GAMEDATA::getInstance()->setNeedShowShareBtn((strcmp(free.GetString(),"1") == 0)?true:false);
+        }
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
         const rapidjson::Value &nickname = _mDoc["nickname"];

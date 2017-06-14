@@ -371,7 +371,7 @@ void CompetitionResult::onEnter(){
                 da->initView(5,24);
                 
             }else{
-                da->initView(5,1);
+                da->initView(1,5);
             }
             addChild(da);
         }

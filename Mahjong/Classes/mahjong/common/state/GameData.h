@@ -122,6 +122,7 @@ public:
     CC_SYNTHESIZE(bool, hasShowHongbaoResult, HasShowHongbaoResult);
     CC_SYNTHESIZE(int, shareHongBaoFriendState, ShareHongBaoFriendState);
     CC_SYNTHESIZE(bool, needShowFaPai, NeedShowFaPai);
+    CC_SYNTHESIZE(bool, needShowShareBtn, NeedShowShareBtn);
     CC_SYNTHESIZE(std::string, competitionId, CompetitionId);
     CC_SYNTHESIZE(std::string, competitionText, CompetitionText);
     CC_SYNTHESIZE(std::string, competitionPride, CompetitionPride);

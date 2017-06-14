@@ -57,7 +57,9 @@ bool LobbyScene::init()
 
 
 void LobbyScene::signUpdate(float dt){
-    
+    if(GAMEDATA::getInstance()->getNeedShowShareBtn()){
+        getChildByTag(1987)->setVisible(true);
+    }
     if(GAMEDATA::getInstance()->getShowProtected()){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
@@ -282,21 +284,23 @@ void LobbyScene::drawSceneMid(){
                                              CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto shareMenu = Menu::create(sharefriend, NULL);
     shareMenu->alignItemsHorizontallyWithPadding(15);
-    shareMenu->setPosition(90, 552);
+    shareMenu->setPosition(200, 552);
+    shareMenu->setTag(1987);
+    shareMenu->setVisible(false);
     addChild(shareMenu);
     
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
     firstMenu = Menu::create(first_chaege, NULL);
     firstMenu->alignItemsHorizontallyWithPadding(15);
-    firstMenu->setPosition(200, 552);
+    firstMenu->setPosition(90, 552);
     addChild(firstMenu);
-    firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(200, 562)),MoveTo::create(0.6f,Point(200, 542)),NULL), CC_REPEAT_FOREVER));
+    firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(90, 562)),MoveTo::create(0.6f,Point(90, 542)),NULL), CC_REPEAT_FOREVER));
     //感叹号
     ganTanhao = Sprite::create("mjlobby/gantanhao.png");
-    ganTanhao->setPosition(230,575);
+    ganTanhao->setPosition(120,575);
     addChild(ganTanhao);
-    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(230, 590)),MoveTo::create(0.6f,Point(230, 570)),NULL), CC_REPEAT_FOREVER));
+    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(120, 590)),MoveTo::create(0.6f,Point(120, 570)),NULL), CC_REPEAT_FOREVER));
     if(UserData::getInstance()->isFirstCharge()){
         firstMenu->setVisible(false);
         ganTanhao->setVisible(false);

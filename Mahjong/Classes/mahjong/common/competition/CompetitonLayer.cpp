@@ -160,15 +160,14 @@ void CompetitonLayer::onEnter(){
                 GAMEDATA::getInstance()->setGameType(3);
                 Director::getInstance()->replaceScene(TransitionFade::create(0.1, MjGameScene::create()));
             }
-        }else  if(newData.result == 2){
+        }else  if(newData.result == 2||newData.result == 3){
             HintDialog* dialog = HintDialog::create(newData.tip != ""?newData.tip:"功能暂不可用",[=](Ref* ref){
                 removeFromParent();
             },[=](Ref* ref){
                 removeFromParent();
             });
             addChild(dialog,100);
-        }
-        else{
+        }else{
             if(NULL != getChildByTag(1024)){
                 getChildByTag(1024)->removeFromParentAndCleanup(true);
             }
@@ -178,7 +177,7 @@ void CompetitonLayer::onEnter(){
                 da->initView(5,24);
                 
             }else{
-                da->initView(5,1);
+                da->initView(1,5);
             }
             addChild(da);
         }
