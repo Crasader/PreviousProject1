@@ -30,6 +30,7 @@ bool CompetitionResult::init(){
 
 void CompetitionResult::showCompetiotionResult(std::string type,std::string rank,std::string pride,std::string score){
     setMyPride(pride);
+    setMyRank(rank);
     if(rank == "1"){
         showWin(type, rank, pride, score);
     }else{
@@ -451,7 +452,7 @@ void CompetitionResult::share(){
     pride->setAnchorPoint(Point::ANCHOR_MIDDLE);
     pride->setPosition(335,320);
     hbLayer->addChild(pride);
-
+    
     
     
     auto headImage2 = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(68,68));
@@ -468,21 +469,31 @@ void CompetitionResult::share(){
     guan->setPosition(420,150);
     hbLayer->addChild(guan);
     
-    auto pride2 = Label::createWithSystemFont(StringUtils::format("%s元话费",getMyPride().c_str()),"arial",26);
+    auto pride2 = Label::createWithSystemFont(StringUtils::format("%s元话费赛",getMyPride().c_str()),"arial",26);
     pride2->setColor(Color3B::BLACK);
     pride2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     pride2->setPosition(445,190);
     hbLayer->addChild(pride2);
     
     auto shui = Label::createWithSystemFont("水平最高","arial",26);
+    shui->setColor(Color3B(255,183,64));
     shui->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     shui->setPosition(445,150);
-    shui->setColor(Color3B(255,183,64));
+    
     hbLayer->addChild(shui);
     
     auto ma = Sprite::create("competition/er_wei_ma.png");
     ma->setPosition(920,360);
     hbLayer->addChild(ma);
+    
+    if(getMyRank() != "1"){
+        guan->setTexture("competition/dog_img.png");
+        shui->setString("虐成够");
+        shui->setColor(Color3B(87,87,86));
+        auto cha = Sprite::create("competition/cha_cha.png");
+        cha->setPosition(335,320);
+        hbLayer->addChild(cha);
+    }
     
     auto renderTexture = RenderTexture::create(1280, 720, Texture2D::PixelFormat::RGBA8888);
     //清空并开始获取

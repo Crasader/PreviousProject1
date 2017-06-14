@@ -31,6 +31,7 @@ private:
     void continueCompetition();
     EventListenerCustom* joinResp;
     CC_SYNTHESIZE(std::string, myPride, MyPride);
+    CC_SYNTHESIZE(std::string, myRank, MyRank);
 };
 
 #endif /* CompetitionResult_hpp */
