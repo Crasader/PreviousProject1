@@ -29,8 +29,8 @@ private:
     void showLose(std::string type,std::string rank,std::string pride,std::string score);
     void quit();
     void continueCompetition();
-    void afterCaptured(bool succeed, const std::string &outputFile);
     EventListenerCustom* joinResp;
+    CC_SYNTHESIZE(std::string, myPride, MyPride);
 };
 
 #endif /* CompetitionResult_hpp */
