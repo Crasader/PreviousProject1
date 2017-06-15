@@ -85,7 +85,7 @@ class HongZhongView : public Layer{
     void firstPlayPoker(ReplaceJongVec vec,PlayerCpgtData data);
     PlayerBase* getPlayerBySeatId(int sid);
     
-    EventListenerCustom* gameFaPaiListener;
+//    EventListenerCustom* gameFaPaiListener;
     EventListenerCustom* addOtherReadyListener;
     EventListenerCustom* loginRespListener;
     EventListenerCustom* addPlayersListener;

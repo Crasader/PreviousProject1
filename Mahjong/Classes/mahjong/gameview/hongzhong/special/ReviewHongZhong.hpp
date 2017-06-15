@@ -98,7 +98,7 @@ private:
     void controlUp();
     void controlBack();
     
-    EventListenerCustom* gameFaPaiListener;
+//    EventListenerCustom* gameFaPaiListener;
     EventListenerCustom* addOtherReadyListener;
     EventListenerCustom* loginRespListener;
     EventListenerCustom* addPlayersListener;

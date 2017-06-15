@@ -1566,7 +1566,7 @@ void MsgHandler::getHeroJongs(std::string msg){
     GAMEDATA::getInstance()->setIsTrusteeship(false);
     GAMEDATA::getInstance()->setMahjongFaPaiData(faPaiData);
     GAMEDATA::getInstance()->setNeedShowFaPai(true);
-    postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
+//    postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
 //{"code":2005,"poker":"28","poxiaoId":"e8fec2c3-47ba-4063-ad07-6b7c014c4dca","seatId":3}
@@ -3084,7 +3084,7 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
     GAMEDATA::getInstance()->setIsTrusteeship(false);
     GAMEDATA::getInstance()->setMahjongFaPaiData(faPaiData);
     GAMEDATA::getInstance()->setNeedShowFaPai(true);
-    postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
+//    postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
 void MsgHandler::handleHZPlayerPlayPokerNotify(std::string msg){

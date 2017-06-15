@@ -1092,7 +1092,7 @@ void HongZhongView::onExit()
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     //MyIM::leaveRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
 #endif
-    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
+//    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
@@ -1229,7 +1229,7 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
-    gameFaPaiListener = EventListenerCustom::create(MSG_HZ_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
+//    gameFaPaiListener = EventListenerCustom::create(MSG_HZ_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
         //        if(GAMEDATA::getInstance()->getIsPlaying()){
         //            return;
         //        }
@@ -1309,8 +1309,8 @@ void HongZhongView::onEnter(){
         //            anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
         //            addChild(anim);
         //        },0,0,delay,"hi_jim");
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
+//    });
+//    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
         if(NULL == getChildByTag(2000)){

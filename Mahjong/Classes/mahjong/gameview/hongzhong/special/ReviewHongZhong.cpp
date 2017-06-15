@@ -1038,7 +1038,7 @@ void ReviewHongZhong::onExit()
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     //MyIM::leaveRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
 #endif
-    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
+//    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
@@ -1174,38 +1174,38 @@ void ReviewHongZhong::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
-    gameFaPaiListener = EventListenerCustom::create(MSG_HZ_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
-        if(GAMEDATA::getInstance()->getIsPlaying()){
-            return;
-        }
-        MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
-        MahjongFaPaiData newMsgData = *msgData;
-        GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
-        FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
-        data.prjucount = StringUtils::format("%d",newMsgData.prjucount);
-        GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
-        GAMEDATA::getInstance()->setIsPlaying(true);//游戏状态改为游戏中
-        if(NULL != playerHero){
-            playerHero->setIsReady(false);//关闭准备的显示
-            std::vector<std::string> strvce = StringUtil::split(newMsgData.heroPokers, ",");
-            GAMEDATA::getInstance()->setHeroJongs(strvce);
-        }
-        if(NULL != playerRight)
-            playerRight->setIsReady(false);
-        if(NULL != playerOpposite)
-            playerOpposite->setIsReady(false);
-        if(NULL != playerLeft)
-            playerLeft->setIsReady(false);
-        playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
-        guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
-        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-        vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;
-        DealJongAnim* anim = DealJongAnim::create();
-        anim->setTag(1000);
-        anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
-        addChild(anim);
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
+//    gameFaPaiListener = EventListenerCustom::create(MSG_HZ_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
+//        if(GAMEDATA::getInstance()->getIsPlaying()){
+//            return;
+//        }
+//        MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
+//        MahjongFaPaiData newMsgData = *msgData;
+//        GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
+//        FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+//        data.prjucount = StringUtils::format("%d",newMsgData.prjucount);
+//        GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
+//        GAMEDATA::getInstance()->setIsPlaying(true);//游戏状态改为游戏中
+//        if(NULL != playerHero){
+//            playerHero->setIsReady(false);//关闭准备的显示
+//            std::vector<std::string> strvce = StringUtil::split(newMsgData.heroPokers, ",");
+//            GAMEDATA::getInstance()->setHeroJongs(strvce);
+//        }
+//        if(NULL != playerRight)
+//            playerRight->setIsReady(false);
+//        if(NULL != playerOpposite)
+//            playerOpposite->setIsReady(false);
+//        if(NULL != playerLeft)
+//            playerLeft->setIsReady(false);
+//        playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
+//        guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
+//        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
+//        vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;
+//        DealJongAnim* anim = DealJongAnim::create();
+//        anim->setTag(1000);
+//        anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
+//        addChild(anim);
+//    });
+//    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
         if(NetworkManage::getInstance()->reConnectSocket()){

@@ -79,7 +79,7 @@ private:
     void firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data);//首次杠花
 	PlayerBase* getPlayerBySeatId(int sid);
 
-    EventListenerCustom* gameFaPaiListener;
+//    EventListenerCustom* gameFaPaiListener;
 	EventListenerCustom* addOtherReadyListener;
 	EventListenerCustom* loginRespListener;
 	EventListenerCustom* addPlayersListener;
