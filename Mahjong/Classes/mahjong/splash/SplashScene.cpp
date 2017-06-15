@@ -432,7 +432,7 @@ void SplashScene::onEnter(){
         if (result == "1"){
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-            Director::getInstance()->replaceScene(MjGameScene::create());
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MjGameScene::create()));
         } else if(result == "2")
         {
             RoomFullDialog* doo = RoomFullDialog::create();
@@ -467,7 +467,7 @@ void SplashScene::onEnter(){
         if (result == "1"){
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-            Director::getInstance()->replaceScene(MjGameScene::create());
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MjGameScene::create()));
         } else if(result == "2")
         {
             RoomFullDialog* doo = RoomFullDialog::create();

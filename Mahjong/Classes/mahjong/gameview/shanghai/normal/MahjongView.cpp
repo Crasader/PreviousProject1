@@ -1317,7 +1317,7 @@ void MahjongView::onEnter(){
         if (result == "1"){
             schedule([=](float dt){
                 GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-                Director::getInstance()->replaceScene( MjGameScene::create());
+                Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MjGameScene::create()));
             }, 0, 0, 2.0f,"continueGame223");
         }
     });
