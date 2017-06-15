@@ -488,7 +488,7 @@ void CompetitionResult::share(){
     
     if(getMyRank() != "1"){
         guan->setTexture("competition/dog_img.png");
-        shui->setString("虐成够");
+        shui->setString("虐成狗");
         shui->setColor(Color3B(87,87,86));
         auto cha = Sprite::create("competition/cha_cha.png");
         cha->setPosition(335,320);
