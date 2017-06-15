@@ -1655,6 +1655,10 @@ void MahjongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
     
     turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
+        //收到出牌通知,手里没牌
+        if(playerHero->getSelfHandJongs().size() == 0){
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
+        }
         PlayerTurnData* turnData = static_cast<PlayerTurnData*>(event->getUserData());
         PlayerTurnData newData = *turnData;
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
@@ -1686,6 +1690,7 @@ void MahjongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);
     
     otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
+        
         std::string result = static_cast<char*>(event->getUserData());
         vector<string> res =  StringUtil::split(result, ",");
         int seat = atoi(res.at(0).c_str());

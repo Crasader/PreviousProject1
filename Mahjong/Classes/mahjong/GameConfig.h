@@ -9,7 +9,7 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "19" //ios审核版本20，应用宝审核版本21.
+#define PAY_PLAT_VALUE "24" //ios审核版本24，应用宝审核版本25.
 
 //#define SERVER_ADDRESS "aliyun.5278-mobi.com"
 #define SERVER_ADDRESS "ceshi.5278-mobi.com"

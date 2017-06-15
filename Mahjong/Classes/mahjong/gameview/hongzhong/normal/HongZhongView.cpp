@@ -1556,6 +1556,10 @@ void HongZhongView::onEnter(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
     
     turnListener = EventListenerCustom::create(MSG_HZ_PLAYER_TURN_WHO, [=](EventCustom* event){
+        //收到出牌通知,手里没牌
+        if(playerHero->getSelfHandJongs().size() == 0){
+            Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
+        }
         PlayerTurnData* turnData = static_cast<PlayerTurnData*>(event->getUserData());
         PlayerTurnData newData = *turnData;
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
