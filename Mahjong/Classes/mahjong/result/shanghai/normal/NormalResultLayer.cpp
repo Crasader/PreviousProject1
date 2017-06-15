@@ -329,11 +329,7 @@ void NormalResultLayer::updateTime(float dt){
     }
     
     if(GAMEDATA::getInstance()->getShowProtected()){
-        if(NULL == getChildByTag(2000)){
-            LostNetwork2* net = LostNetwork2::create();
-            net->setTag(2000);
-            addChild(net,200);
-        }
+        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
     }
     
