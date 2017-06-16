@@ -722,4 +722,11 @@ struct JoinCompetitionData{
     std::string text;
     std::string tip;
 };
+
+struct ShareActivityData{
+    std::string result;
+    std::string wx;
+    std::string prize;
+    std::string num;
+};
 #endif

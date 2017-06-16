@@ -36,6 +36,7 @@
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/result/hongbao/HongbaoAnim.hpp"
 #include "mahjong/result/hongbao/HongbaoAnim2.hpp"
+#include "mahjong/lobby/share/ShareActivityLayer.hpp"
 
 
 bool LobbyScene::init()
@@ -494,7 +495,7 @@ void LobbyScene::showFirstCharge(){
 
 void LobbyScene::showRedWallet(){
     Audio::getInstance()->playSoundClick();
-    ShareToFriendLayer* wallet = ShareToFriendLayer::create();
+    ShareActivityLayer* wallet = ShareActivityLayer::create();
     addChild(wallet,3);
 }
 

@@ -1066,6 +1066,25 @@ void MsgHandler::loginResp(std::string msg){
             pride.sxlmfee = "0";
         }
         GAMEDATA::getInstance()->setGameHongBaoPride(pride);
+        
+        ShareActivityData data;
+        if(_mDoc.HasMember("share")){
+         const rapidjson::Value &share = _mDoc["share"];
+            data.result = share.GetString();
+        }
+        if(_mDoc.HasMember("wx")){
+            const rapidjson::Value &wx = _mDoc["wx"];
+            data.wx = wx.GetString();
+        }
+        if(_mDoc.HasMember("prize1")){
+            const rapidjson::Value &prize1 = _mDoc["prize1"];
+            data.prize = prize1.GetString();
+        }
+        if(_mDoc.HasMember("num1")){
+            const rapidjson::Value &num1 = _mDoc["num1"];
+            data.num = num1.GetString();
+        }
+        GAMEDATA::getInstance()->setShareActivityData(data);
         char* buf = const_cast<char*>(LOGIN_SUCCESS);
         postNotifyMessage(MSG_LOGIN_RESP, buf);
     }
