@@ -82,6 +82,9 @@ public:
     bool isInviteCodeBind();
     void setInviteCodeBind(bool bind);
     
+    bool isClickShare();
+    void setIsClickShare(bool bind);
+    
     std::string getInvitePropMoney();
     void setInvitePropMoney(std::string money);
     

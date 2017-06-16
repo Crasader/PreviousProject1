@@ -226,6 +226,15 @@ void UserData::setInviteCodeBind(bool bind){
 }
 
 
+bool UserData::isClickShare(){
+    return UserDefault::getInstance()->getBoolForKey("isClickShare",false);
+}
+
+void UserData::setIsClickShare(bool bind){
+    UserDefault::getInstance()->setBoolForKey("isClickShare",bind);
+}
+
+
 std::string UserData::getInvitePropMoney(){
     return UserDefault::getInstance()->getStringForKey("InvitePropMoney","48");
 }

@@ -105,6 +105,7 @@ void ShareActivityLayer::closeView(){
 }
 
 void ShareActivityLayer::shareToFriend(){
+    UserData::getInstance()->setIsClickShare(true);
     auto hbLayer = Layer::create();
     
     auto hongbaobg = Sprite::create("result/result_bg.jpg");
