@@ -1163,7 +1163,7 @@ void HongZhongView::onEnter(){
     lobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_PLAYER_CONNECT_AGAIN, [=](EventCustom* event){
         //重新绘制玩家的牌和话
         GAMEDATA::getInstance()->setIsRecover(true);
-        Director::getInstance()->replaceScene(TransitionFade::create(0.5f, MjGameScene::create()));
+        Director::getInstance()->replaceScene(MjGameScene::create());
         
     });
     
