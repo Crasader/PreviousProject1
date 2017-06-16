@@ -21,5 +21,6 @@ private:
     void closeView();
     void shareToFriend();
     void copyText();
+    void toast();
 };
 #endif /* WanJiaQunLayer_hpp */

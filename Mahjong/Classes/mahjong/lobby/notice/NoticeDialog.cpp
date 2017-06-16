@@ -11,6 +11,7 @@
 #include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 #include "server/NetworkManage.h"
+#include "mahjong/lobby/share/ShareActivityLayer.hpp"
 
 
 
@@ -55,6 +56,8 @@ void NoticeDialog::onExit(){
 
 
 void NoticeDialog::closeView(){
+    ShareActivityLayer* lau = ShareActivityLayer::create();
+    getParent()->addChild(lau,100);
     removeFromParent();
 }
 

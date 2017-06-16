@@ -116,7 +116,7 @@ void ShareActivityLayer::shareToFriend(){
     hong->setPosition(335,360);
     hbLayer->addChild(hong);
     
-    auto bao = Label::createWithSystemFont("小白相话费红包","arial",26);
+    auto bao = Label::createWithSystemFont("邀您参加小白相36元话费赛","arial",26);
     bao->setColor(Color3B(246,226,176));
     bao->setAnchorPoint(Point::ANCHOR_MIDDLE);
     bao->setPosition(335,600);
@@ -189,4 +189,25 @@ void ShareActivityLayer::copyText(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CallIOSMethod::getInstance()->copyToPasteboard(content);
 #endif
+    toast();
+}
+
+void ShareActivityLayer::toast(){
+    auto bg = Sprite::create("common/toast_bg.png");
+    bg->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    bg->setPosition(650,300);
+    bg->setScaleX(0.2);
+    addChild(bg);
+    auto shui = Label::createWithSystemFont("复制成功","arial",26);
+    shui->setColor(Color3B(255,183,64));
+    shui->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    shui->setPosition(600,300);
+    addChild(shui);
+    
+    bg->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){
+        bg->setVisible(false);
+    }), NULL));
+    shui->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){
+        shui->setVisible(false);
+    }), NULL));
 }
