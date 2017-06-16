@@ -17,6 +17,7 @@ public:
     virtual bool init();
     CREATE_FUNC(ShareActivityLayer);
 private:
+    Label* kefu;
     void closeView();
     void shareToFriend();
     void copyText();

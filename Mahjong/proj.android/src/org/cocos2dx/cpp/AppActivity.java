@@ -30,11 +30,13 @@ import org.cocos2dx.cpp.chat.RecordUtil;
 import org.cocos2dx.cpp.payment.Payment;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.WindowManager;
 
 public class AppActivity extends Cocos2dxActivity {
@@ -43,6 +45,7 @@ public class AppActivity extends Cocos2dxActivity {
 	private static int batteryPer =100; 
 	//	private static AVIMClient chatClient = null;
 //	private static String conversitionId = "";
+	private static Activity myActivity;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 //		com.youme.im.IMEngine.init(this);     
@@ -52,6 +55,7 @@ public class AppActivity extends Cocos2dxActivity {
 		Payment.init(this);
 		RecordUtil.init(this);
 		registerReceiver(batteryReceiver, intentFilter);
+		myActivity = this;
 	}
 
 	@Override
@@ -87,6 +91,17 @@ public class AppActivity extends Cocos2dxActivity {
 	public static String getBatteryPersent(){
 		//		Debug.e("batteryPer = "+batteryPer);
 		return String.valueOf(batteryPer) ;
+	}
+	
+	public static void copyToPasteboard(final String msg){
+		Runnable runnable = new Runnable() {
+				public void run() {
+					ClipboardManager mClipboardManager = (ClipboardManager)myActivity.getSystemService(CLIPBOARD_SERVICE);
+					mClipboardManager.setText(msg);
+				}
+			};
+			myActivity.runOnUiThread(runnable);
+		
 	}
 
 	public static void loginChatServer(final String poxiaoId){

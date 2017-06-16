@@ -158,3 +158,16 @@ std::string CallAndroidMethod::getBatteryPersent(){
 #endif
     return "100";
 }
+
+void CallAndroidMethod::copyToPasteboard(std::string msg){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path  = String::createWithFormat("%s%s","org/cocos2dx/cpp","/AppActivity");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"copyToPasteboard","(Ljava/lang/String;)V");
+    if(isHave){
+        jstring share_url = JniHelper::getEnv()->NewStringUTF(msg.c_str());
+        JniHelper::getEnv()->CallStaticVoidMethod(methodInfo.classID,methodInfo.methodID,share_url);
+        JniHelper::getEnv()->DeleteLocalRef(share_url);
+    }
+#endif
+}

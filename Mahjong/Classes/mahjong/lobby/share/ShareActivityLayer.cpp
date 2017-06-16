@@ -78,7 +78,7 @@ bool ShareActivityLayer::init(){
     addChild(inputbg);
     
     
-    auto kefu = Label::createWithSystemFont(GAMEDATA::getInstance()->getShareActivityData().wx,"arial",35);
+    kefu = Label::createWithSystemFont(GAMEDATA::getInstance()->getShareActivityData().wx,"arial",35);
     kefu->setAnchorPoint(Point::ANCHOR_MIDDLE);
     kefu->setColor(Color3B(182,204,155));
     kefu->setPosition(735,315);
@@ -181,5 +181,12 @@ void ShareActivityLayer::shareToFriend(){
 
 
 void ShareActivityLayer::copyText(){
-
+    std::string content = kefu->getString();
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->copyToPasteboard(content);
+#endif
+    
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->copyToPasteboard(content);
+#endif
 }

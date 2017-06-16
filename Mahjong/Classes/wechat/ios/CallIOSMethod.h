@@ -28,6 +28,7 @@ public:
     void doWechatShareWeb(std::string url,std::string title,std::string content,int scene);
     void doWechatShareApp(std::string title,std::string content);
     void doWechatShareImg(std::string filepath,int scene);
+    void copyToPasteboard(std::string str);
 private:
     CallIOSMethod();
     static CallIOSMethod* _instance;
