@@ -47,6 +47,10 @@ void CompetitionResult::showCompetiotionResult(std::string type,std::string rank
     menu->setPosition(640,60);
     addChild(menu);
     
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        helpImage->setVisible(false);
+    }
+    
 }
 
 void CompetitionResult::showWin(std::string type,std::string rank,std::string pride,std::string score){
