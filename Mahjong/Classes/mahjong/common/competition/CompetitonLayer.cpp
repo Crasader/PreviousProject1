@@ -14,6 +14,7 @@
 #include "mahjong/lobby/shop/fangka/FangkaNotEnoughDialog.hpp"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
+#include "userdata/UserData.h"
 
 bool CompetitonLayer::init(){
     
@@ -64,6 +65,7 @@ bool CompetitonLayer::init(){
     huatext = Sprite::create("competition/hua_fei_text.png");
     huatext->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(huatext);
+    
     
     auto time = Label::createWithSystemFont("比赛时间:", "arial", 28);
     time->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
@@ -139,6 +141,18 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
     }
     text->setPosition(huafeiNum->getPositionX()+huafeiNum->getContentSize().width,606);
     huatext->setPosition(prideNum->getPositionX()+prideNum->getContentSize().width,465);
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        huafeiNum->setVisible(false);
+        prideNum->setVisible(false);
+        text->setTexture("competition/check_fangka_title_2.png");
+        huatext->setTexture("competition/check_fangka_2.png");
+        if(roomId == CompetitionRoomId::Shanghai_High||roomId == CompetitionRoomId::Hongzhong_High){
+            text->setTexture("competition/check_fangka_title_8.png");
+            huatext->setTexture("competition/check_fangka_8.png");
+        }
+        text->setPosition(huafeiNum->getPositionX(),606);
+        huatext->setPosition(prideNum->getPositionX(),465);
+    }
 }
 
 void CompetitonLayer::onEnter(){

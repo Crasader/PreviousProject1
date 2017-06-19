@@ -8,6 +8,7 @@
 
 #include "mahjong/common/competition/CompetitonItem.hpp"
 #include "mahjong/common/competition/CompetitonLayer.hpp"
+#include "userdata/UserData.h"
 
 CompetitonItem* CompetitonItem::create(CompetitionRoomId roomId,std::string haufei,std::string fangka,std::string rule){
     CompetitonItem* cell = new CompetitonItem();
@@ -55,6 +56,15 @@ bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::strin
     content->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     content->setPosition(huafeiNum->getPositionX()+huafeiNum->getContentSize().width/2-10,20);
     addChild(content);
+    
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        huafeiNum->setVisible(false);
+        content->setTexture("mjlobby/check_fangka_2.png");
+        if(roomId ==  CompetitionRoomId::Shanghai_High||roomId ==  CompetitionRoomId::Hongzhong_High){
+            content->setTexture("mjlobby/check_fangka_8.png");
+        }
+        
+    }
     
     auto title = Sprite::create();
     if(roomId ==  CompetitionRoomId::Shanghai_Normal){
