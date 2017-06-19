@@ -6400,11 +6400,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/competition/CompetitionQueue.cpp"
-            timestampString = "518495213.263472"
+            timestampString = "519554323.135274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "CompetitionQueue::init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6992,6 +6992,22 @@
             startingLineNumber = "137"
             endingLineNumber = "137"
             landmarkName = "BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/common/competition/CompetitionResult.cpp"
+            timestampString = "519554218.461096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
+            landmarkName = "CompetitionResult::showLose(std::string type,std::string rank,std::string pride,std::string score)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

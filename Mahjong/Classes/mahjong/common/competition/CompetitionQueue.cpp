@@ -43,6 +43,15 @@ bool CompetitionQueue::init(){
     huatext->setScale(0.8f);
     huatext->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(huatext);
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        prideNum->setVisible(false);
+        if(atoi(GAMEDATA::getInstance()->getCompetitionId().c_str()) == CompetitionRoomId::Shanghai_High||atoi(GAMEDATA::getInstance()->getCompetitionId().c_str()) == CompetitionRoomId::Hongzhong_High){
+            huatext->setTexture("competition/check_fangka_title_8.png");
+        }else{
+            huatext->setTexture("competition/check_fangka_title_2.png");
+        }
+        
+    }
     
     int wid = prideNum->getContentSize().width+huatext->getContentSize().width;
     prideNum->setPosition(640-wid/2*0.8f,685);
@@ -54,6 +63,7 @@ bool CompetitionQueue::init(){
     }else{
         title->setTexture("competition/hongzhong_title.png");
     }
+    
     addChild(title);
     title->setPosition(640,635);
     
@@ -61,8 +71,18 @@ bool CompetitionQueue::init(){
     wait->setPosition(640,455);
     addChild(wait);
     
-    
-    auto info = Label::createWithSystemFont(GAMEDATA::getInstance()->getCompetitionText(), "arial", 30);
+    std::string msg = GAMEDATA::getInstance()->getCompetitionText();
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        int pos1 = (int)msg.find("8元话费");
+        if(pos1>=0){
+            msg.replace(pos1,10,"2张房卡");
+        }
+        int pos2 = (int)msg.find("36元话费");
+        if(pos2>=0){
+            msg.replace(pos2,11, "8张房卡");
+        }
+    }
+    auto info = Label::createWithSystemFont(msg, "arial", 30);
     info->setAnchorPoint(Point::ANCHOR_MIDDLE);
     info->setColor(Color3B(153,226,220));
     info->setPosition(640,210);
@@ -123,7 +143,7 @@ void CompetitionQueue::onEnter(){
     addPlayer  = EventListenerCustom::create(MSG_COMPETITION_ADD_PLAYER_NOTIFY, [=](EventCustom* event){
         std::string num = static_cast<char*>(event->getUserData());
         int number =abs(atoi(num.c_str()));
-      
+        
         for(int i=0; i<number;i++){
             if(index<3){
                 auto playerReady = Sprite::create("gameview/head_image_3.png");
@@ -136,7 +156,7 @@ void CompetitionQueue::onEnter(){
             }
             index++;
         }
-
+        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addPlayer, 1);
     

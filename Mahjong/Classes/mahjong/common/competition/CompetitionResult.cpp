@@ -155,6 +155,15 @@ void CompetitionResult::showWin(std::string type,std::string rank,std::string pr
     num->runAction(Sequence::create(setp01, setp02_1,NULL));
     huafei->runAction(Sequence::create(setp01, setp02_2,NULL));
     
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        num->setVisible(false);
+        if(pride == "36"){
+             huafei->setTexture("competition/check_8_result.png");
+        }else{
+             huafei->setTexture("competition/check_2_result.png");
+        }
+    }
+    
     auto rankText = Sprite::create("competition/rank_text.png");
     rankText->setPosition(640,375);
     addChild(rankText);
@@ -315,6 +324,14 @@ void CompetitionResult::showLose(std::string type,std::string rank,std::string p
     name->setPosition(640-wid/2,482);
     num->setPosition(640-wid/2+name->getContentSize().width,482);
     huafei->setPosition(640-wid/2+name->getContentSize().width+num->getContentSize().width,482);
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        num->setVisible(false);
+        if(pride == "36"){
+            huafei->setTexture("competition/check_8_result.png");
+        }else{
+            huafei->setTexture("competition/check_2_result.png");
+        }
+    }
     
     auto rankText = Sprite::create("competition/rank_text.png");
     rankText->setPosition(640,375);
