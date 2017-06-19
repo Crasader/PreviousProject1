@@ -60,6 +60,7 @@ void SplashScene::onEnterTransitionDidFinish(){
     GAMEDATA::getInstance()->setDaiLiQun("");
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTuiGuangCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
 }
 
 void SplashScene::drawLonginScene(){
