@@ -11,8 +11,8 @@
 
 #define PAY_PLAT_VALUE "24" //ios审核版本24，应用宝审核版本25.
 
-//#define SERVER_ADDRESS "aliyun.5278-mobi.com"
-#define SERVER_ADDRESS "ceshi.5278-mobi.com"
+#define SERVER_ADDRESS "aliyun.5278-mobi.com"
+//#define SERVER_ADDRESS "ceshi.5278-mobi.com"
 #define SERVER_PORT 9999
 //#define SERVER_ADDRESS "172.23.1.35"
 //#define SERVER_PORT 9999
