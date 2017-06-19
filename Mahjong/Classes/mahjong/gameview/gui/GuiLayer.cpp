@@ -109,6 +109,14 @@ void GuiLayer::drawGameInfo(){
         matchname->setPosition(1200,655);
         matchname->setColor(Color3B(233,209,112));
         addChild(matchname);
+        
+        if(!UserData::getInstance()->isWeixinPayOpen()){
+            if(GAMEDATA::getInstance()->getCompetitionPride() == "36"){
+                matchname->setString("8张房卡赛");
+            }else{
+                matchname->setString("2张房卡赛");
+            }
+        }
     }else{
         if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
             auto kaibao = Sprite::create("gameview/kai_bao.png");
