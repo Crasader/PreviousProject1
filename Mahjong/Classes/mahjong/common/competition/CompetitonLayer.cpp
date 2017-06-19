@@ -122,6 +122,16 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
         title->setTexture("competition/hongzhong_text.png");
     }
     string newRule = "       "+rule;
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        int pos1 = newRule.find("8元|话费");
+        if(pos1>=0){
+            newRule.replace(pos1,8,"2张|房卡");
+        }
+        int pos2 = newRule.find("36|元话费");
+        if(pos2>=0){
+            newRule.replace(pos2,9, "8张|房卡");
+        }
+    }
     vector<std::string> rules = StringUtil::split(newRule,"|");
     for(int i= 0; i< rules.size();i++){
         ruleText = Label::createWithSystemFont("", "arial", 28);
