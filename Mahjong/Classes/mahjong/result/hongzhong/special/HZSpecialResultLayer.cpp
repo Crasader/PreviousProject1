@@ -70,58 +70,64 @@ void HZSpecialResultLayer::showGameReslut(){
         cell->setPosition(250+260*i,340);
         addChild(cell);
     }
-    if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee.c_str())>0&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
-        //双喜临门
-        if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee.c_str())>0){
+    
+    if(UserData::getInstance()->isWeixinPayOpen()){
+        if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee.c_str())>0&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
+            //双喜临门
+            if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee.c_str())>0){
+                schedule([=](float dt){
+                    HongbaoAnim2* ami = HongbaoAnim2::create();
+                    ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,true);
+                    addChild(ami,10);
+                }, 0, 0, 3, "zhe_li_shi_la_la_1");
+                
+            }else {
+                schedule([=](float dt){
+                    HongbaoAnim2* ami = HongbaoAnim2::create();
+                    ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,false);
+                    addChild(ami,10);
+                }, 0, 0, 3, "zhe_li_shi_la_la_2");
+                
+            }
+            
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee.c_str())>0&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
             schedule([=](float dt){
                 HongbaoAnim2* ami = HongbaoAnim2::create();
-                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,true);
+                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,2,false);
                 addChild(ami,10);
-            }, 0, 0, 3, "zhe_li_shi_la_la_1");
+                
+            }, 0, 0, 3, "zhe_li_shi_la_la_3");
             
-        }else {
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee.c_str())>0){
             schedule([=](float dt){
-                HongbaoAnim2* ami = HongbaoAnim2::create();
-                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,1,false);
+                HongbaoAnim* ami = HongbaoAnim::create();
+                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee,2);
                 addChild(ami,10);
-            }, 0, 0, 3, "zhe_li_shi_la_la_2");
+            }, 0, 0, 3, "zhe_li_shi_la_la_4");
             
+            
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee.c_str())>0){
+            schedule([=](float dt){
+                HongbaoAnim* ami = HongbaoAnim::create();
+                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee,1);
+                addChild(ami,10);
+            }, 0, 0, 3, "zhe_li_shi_la_la_4");
+            
+            
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
+            schedule([=](float dt){
+                HongbaoAnim* ami = HongbaoAnim::create();
+                ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,0);
+                addChild(ami,10);
+            }, 0, 0, 3, "zhe_li_shi_la_la_5");
+            
+        }else{
+            showLayerBtn();
         }
-        
-    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee.c_str())>0&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
-        schedule([=](float dt){
-            HongbaoAnim2* ami = HongbaoAnim2::create();
-            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee, GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,2,false);
-            addChild(ami,10);
-            
-        }, 0, 0, 3, "zhe_li_shi_la_la_3");
-        
-    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dsj == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee.c_str())>0){
-        schedule([=](float dt){
-            HongbaoAnim* ami = HongbaoAnim::create();
-            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dsjfee,2);
-            addChild(ami,10);
-        }, 0, 0, 3, "zhe_li_shi_la_la_4");
-        
-        
-    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee.c_str())>0){
-        schedule([=](float dt){
-            HongbaoAnim* ami = HongbaoAnim::create();
-            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee,1);
-            addChild(ami,10);
-        }, 0, 0, 3, "zhe_li_shi_la_la_4");
-        
-        
-    }else if(GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
-        schedule([=](float dt){
-            HongbaoAnim* ami = HongbaoAnim::create();
-            ami->initView(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee,0);
-            addChild(ami,10);
-        }, 0, 0, 3, "zhe_li_shi_la_la_5");
-        
     }else{
         showLayerBtn();
     }
+    
     //大结算的时候获取玩家信息
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
 }

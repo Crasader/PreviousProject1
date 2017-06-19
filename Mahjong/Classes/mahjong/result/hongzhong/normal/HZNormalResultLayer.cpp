@@ -95,6 +95,18 @@ void HZNormalResultLayer::showRoomInfo(){
             yuan->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             yuan->setPosition(945,560);
             addChild(yuan);
+            if(!UserData::getInstance()->isWeixinPayOpen()){
+                fanghaoNum->setVisible(false);
+                yuan->setVisible(false);
+                auto spri = Label::createWithSystemFont("", "arial", 22);
+                if(GAMEDATA::getInstance()->getCompetitionPride() == "36"){
+                    spri->setString("8张房卡比赛");
+                }else{
+                    spri->setString("2张房卡比赛");
+                }
+                spri->setPosition(945,560);
+                addChild(spri);
+            }
         }else{
         
             auto fanghao = Sprite::create("result/fang_jian_hao.png");
