@@ -228,35 +228,61 @@ void CompetitionResult::showWin(std::string type,std::string rank,std::string pr
     auto setp9_3 = Spawn::create(FadeTo::create(0.3f,255),MoveTo::create(0.3f,Point(640,290)),NULL);
     prideText->runAction(Sequence::create(setp9_1,setp9_2,setp9_3,NULL));
     
-    auto huaPride = Sprite::create("competition/pride_quan_bg.png");
-    huaPride->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    huaPride->setScale(0.24);
-    huaPride->setOpacity(0);
-    huaPride->setPosition(640,190);
-    addChild(huaPride,1);
-    auto setp0_1 = DelayTime::create(2.3f);
-    auto setp0_2 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
-    auto setp0_3 = ScaleTo::create(0.2f,1.0f);
-    huaPride->runAction(Sequence::create(setp0_1,setp0_2,setp0_3, NULL));
-    auto yuan = Sprite::create("competition/pride_quan_yuan.png");
-    yuan->setScale(0.24);
-    yuan->setOpacity(0);
-    yuan->setPosition(730,170);
-    addChild(yuan,2);
-    auto setp0_4 = DelayTime::create(2.3f);
-    auto setp0_5 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
-    auto setp0_6 = ScaleTo::create(0.2f,1.0f);
-    yuan->runAction(Sequence::create(setp0_4,setp0_5,setp0_6, NULL));
-    auto huaNum = LabelAtlas::create(pride,"competition/pride_quan_num.png",64,84,'0');
-    huaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    huaNum->setScale(0.24);
-    huaNum->setOpacity(0);
-    huaNum->setPosition(645,190);
-    addChild(huaNum,2);
-    auto setp0_7 = DelayTime::create(2.3f);
-    auto setp0_8 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
-    auto setp0_9 = ScaleTo::create(0.2f,1.0f);
-    huaNum->runAction(Sequence::create(setp0_7,setp0_8,setp0_9, NULL));
+    if(UserData::getInstance()->isWeixinPayOpen()){
+        auto huaPride = Sprite::create("competition/pride_quan_bg.png");
+        huaPride->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        huaPride->setScale(0.24);
+        huaPride->setOpacity(0);
+        huaPride->setPosition(640,190);
+        addChild(huaPride,1);
+        auto setp0_1 = DelayTime::create(2.3f);
+        auto setp0_2 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
+        auto setp0_3 = ScaleTo::create(0.2f,1.0f);
+        huaPride->runAction(Sequence::create(setp0_1,setp0_2,setp0_3, NULL));
+        auto yuan = Sprite::create("competition/pride_quan_yuan.png");
+        yuan->setScale(0.24);
+        yuan->setOpacity(0);
+        yuan->setPosition(730,170);
+        addChild(yuan,2);
+        auto setp0_4 = DelayTime::create(2.3f);
+        auto setp0_5 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
+        auto setp0_6 = ScaleTo::create(0.2f,1.0f);
+        yuan->runAction(Sequence::create(setp0_4,setp0_5,setp0_6, NULL));
+        auto huaNum = LabelAtlas::create(pride,"competition/pride_quan_num.png",64,84,'0');
+        huaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        huaNum->setScale(0.24);
+        huaNum->setOpacity(0);
+        huaNum->setPosition(645,190);
+        addChild(huaNum,2);
+        auto setp0_7 = DelayTime::create(2.3f);
+        auto setp0_8 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
+        auto setp0_9 = ScaleTo::create(0.2f,1.0f);
+        huaNum->runAction(Sequence::create(setp0_7,setp0_8,setp0_9, NULL));
+    }else{
+        auto huaPride = Sprite::create("competition/check_fangka.png");
+        huaPride->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        huaPride->setScale(0.24);
+        huaPride->setOpacity(0);
+        huaPride->setPosition(640,190);
+        addChild(huaPride,1);
+        auto setp0_1 = DelayTime::create(2.3f);
+        auto setp0_2 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
+        auto setp0_3 = ScaleTo::create(0.2f,1.0f);
+        huaPride->runAction(Sequence::create(setp0_1,setp0_2,setp0_3, NULL));
+        auto yuan = Sprite::create("competition/check_2.png");
+        if(pride == "36"){
+            yuan->setTexture("competition/check_8.png");
+        }
+        yuan->setScale(0.24);
+        yuan->setOpacity(0);
+        yuan->setPosition(730,170);
+        addChild(yuan,2);
+        auto setp0_4 = DelayTime::create(2.3f);
+        auto setp0_5 = Spawn::create(FadeTo::create(0.3f,255),ScaleTo::create(0.3f,1.2f),NULL);
+        auto setp0_6 = ScaleTo::create(0.2f,1.0f);
+        yuan->runAction(Sequence::create(setp0_4,setp0_5,setp0_6, NULL));
+    }
+   
 }
 
 void CompetitionResult::showLose(std::string type,std::string rank,std::string pride,std::string score){

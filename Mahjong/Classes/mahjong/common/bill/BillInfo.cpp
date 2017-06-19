@@ -123,6 +123,17 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         
         Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
         if(isMatch){
+            if(!UserData::getInstance()->isWeixinPayOpen()){
+                int pos1 = (int)data.atype.find("8元话费");
+                if(pos1>=0){
+                    data.atype.replace(pos1, 10, "2张房卡");
+                }
+                int pos2 = (int)data.atype.find("36元话费");
+                if(pos2>=0){
+                    data.atype.replace(pos2, 11, "8张房卡");
+                    
+                }
+            }
             gameType->setString(data.atype);
         }
         gameType->setTag(90);
@@ -230,6 +241,16 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             jushuNum = "16";
         }
         if(isMatch){
+            if(!UserData::getInstance()->isWeixinPayOpen()){
+                int pos1 = (int)data.atype.find("8元话费");
+                if(pos1>=0){
+                    data.atype.replace(pos1, 10, "2张房卡");
+                }
+                int pos2 = (int)data.atype.find("36元话费");
+                if(pos2>=0){
+                    data.atype.replace(pos2, 11, "8张房卡");
+                }
+            }
             ((Label*)cell->getChildByTag(90))->setString(data.atype);
             ((Label*)cell->getChildByTag(100))->setPosition(Vec2(330, 105));
             ((Sprite*)cell->getChildByTag(600))->setVisible(false);

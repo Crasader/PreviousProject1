@@ -6224,11 +6224,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/bill/BillDetailInfo.cpp"
-            timestampString = "519111674.804132"
+            timestampString = "519552247.262191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6970,12 +6970,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/competition/CompetitonLayer.cpp"
-            timestampString = "519550306.426083"
+            timestampString = "519551062.079045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::string fangka,std::string rule)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/common/bill/BillInfo.cpp"
+            timestampString = "519552247.262191"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

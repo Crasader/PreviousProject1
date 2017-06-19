@@ -53,6 +53,16 @@ bool BillDetailInfo::init()
     gameType->setPosition(Vec2(290, 585));
     addChild(gameType);
     if(isMatch){
+        if(!UserData::getInstance()->isWeixinPayOpen()){
+            int pos1 = (int)data.atype.find("8元话费");
+            if(pos1>=0){
+                data.atype.replace(pos1, 10, "2张房卡");
+            }
+            int pos2 = (int)data.atype.find("36元话费");
+            if(pos2>=0){
+                data.atype.replace(pos2, 11, "8张房卡");
+            }
+        }
         gameType->setString(data.atype);
     }
 
