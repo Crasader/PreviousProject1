@@ -47,7 +47,7 @@ bool LobbyScene::init()
     }
     showDissolveDialog = false;
     initView();
-    showLobbyAnim();
+//    showLobbyAnim();
     //add sprite to scene
     drawSceneTop();
     drawSceneMid();
@@ -217,42 +217,42 @@ void LobbyScene::drawSceneTop(){
     lequan_bg->setTag(901);
     lequan_bg->setPosition(690, 685);
     addChild(lequan_bg);
-    auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
-    lequan_icon->setTag(902);
-    lequan_icon->setPosition(610, 685);
-    addChild(lequan_icon);
-    lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
-                                            "Arial",24);
-    lequanNum->setColor(Color3B(242,227,75));
-    lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequanNum->setPosition(690, 685);
-    addChild(lequanNum);
+//    auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
+//    lequan_icon->setTag(902);
+//    lequan_icon->setPosition(610, 685);
+//    addChild(lequan_icon);
+//    lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
+//                                            "Arial",24);
+//    lequanNum->setColor(Color3B(242,227,75));
+//    lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    lequanNum->setPosition(690, 685);
+//    addChild(lequanNum);
     
-    auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
-    auto chargLequan = Menu::create(lequan_btn, NULL);
-    chargLequan->setTag(903);
-    chargLequan->setPosition(770, 685);
-    addChild(chargLequan);
+//    auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
+//    auto chargLequan = Menu::create(lequan_btn, NULL);
+//    chargLequan->setTag(903);
+//    chargLequan->setPosition(770, 685);
+//    addChild(chargLequan);
     
     //huafei
-    auto huafei_bg = Sprite::create("mjlobby/huafei_bg.png");
-    huafei_bg->setTag(904);
-    huafei_bg->setPosition(900, 685);
-    addChild(huafei_bg);
-    auto huafei_icon = Sprite::create("mjlobby/huafei_icon.png");
-    huafei_icon->setTag(905);
-    huafei_icon->setPosition(840, 685);
-    addChild(huafei_icon);
-    haufeiNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()),"Arial",24);
-    haufeiNum->setColor(Color3B(242,227,75));
-    haufeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    haufeiNum->setPosition(910, 685);
-    addChild(haufeiNum);
-    auto haufei_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeHuafei, this));
-    auto chargHuaFei = Menu::create(haufei_btn, NULL);
-    chargHuaFei->setTag(906);
-    chargHuaFei->setPosition(970, 685);
-    addChild(chargHuaFei);
+//    auto huafei_bg = Sprite::create("mjlobby/huafei_bg.png");
+//    huafei_bg->setTag(904);
+//    huafei_bg->setPosition(900, 685);
+//    addChild(huafei_bg);
+//    auto huafei_icon = Sprite::create("mjlobby/huafei_icon.png");
+//    huafei_icon->setTag(905);
+//    huafei_icon->setPosition(840, 685);
+//    addChild(huafei_icon);
+//    haufeiNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()),"Arial",24);
+//    haufeiNum->setColor(Color3B(242,227,75));
+//    haufeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    haufeiNum->setPosition(910, 685);
+//    addChild(haufeiNum);
+//    auto haufei_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeHuafei, this));
+//    auto chargHuaFei = Menu::create(haufei_btn, NULL);
+//    chargHuaFei->setTag(906);
+//    chargHuaFei->setPosition(970, 685);
+//    addChild(chargHuaFei);
     
     auto btn_0 = MenuItemImage::create("mjlobby/sm_btn_1.png", "mjlobby/sm_btn_2.png", CC_CALLBACK_0(LobbyScene::showShiMing, this));
     auto btn_1 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
@@ -271,14 +271,14 @@ void LobbyScene::drawSceneTop(){
     goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
     chargGold->setVisible(UserData::getInstance()->isWeixinPayOpen());
 #endif
-    lequan_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    lequan_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    chargLequan->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    huafei_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    huafei_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    chargHuaFei->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//    lequan_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//    lequan_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//    lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//    chargLequan->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//    huafei_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//    huafei_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//    haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//    chargHuaFei->setVisible(UserData::getInstance()->isWeixinPayOpen());
 }
 
 void LobbyScene::drawSceneMid(){

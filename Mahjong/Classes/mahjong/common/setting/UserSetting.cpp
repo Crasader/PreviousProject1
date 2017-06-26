@@ -26,14 +26,11 @@ void UserSetting::drawDialog(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(UserSetting::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 580);
+    closeMenu->setPosition(990, 590);
     addChild(closeMenu);
-    
-    auto paodai = Sprite::create("common/piaodai_zi.png");
-    paodai->setPosition(640, 590);
-    this->addChild(paodai);
+ 
     auto titleIcon = Sprite::create("setting/settting_title.png");
-    titleIcon->setPosition(640, 615);
+    titleIcon->setPosition(640, 575);
     addChild(titleIcon);
     
     auto musicBg = Sprite::create("setting/setting_bg.png");

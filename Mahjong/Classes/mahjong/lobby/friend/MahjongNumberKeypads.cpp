@@ -16,13 +16,6 @@ bool MahjongNumberKeypads::init(){
     if(!Layer::init()){
         return false;
     }
-    MenuItem* item1 = MenuItem::create();
-    Size visibileSize = Director::getInstance()->getVisibleSize();
-    item1->setContentSize(visibileSize);
-    Menu* menu1 = Menu::create(item1, NULL);
-    addChild(menu1);
-    
-    
     enterRoomNumber="";
     
     auto numbg = Sprite::create("friend/numberkeypads_bg.png");
@@ -31,13 +24,13 @@ bool MahjongNumberKeypads::init(){
     addChild(numbg);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(MahjongNumberKeypads::closeView, this));
-    closeImage->setScale(0.85f);
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1030, 655);
+    closeMenu->setPosition(1065, 675);
     addChild(closeMenu);
     
     numberShow = Label::createWithSystemFont("", "arial", 68);
     numberShow->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    numberShow->setColor(Color3B(123,36,16));
     numberShow->setPosition(640,550);
     addChild(numberShow);
     
@@ -49,19 +42,24 @@ bool MahjongNumberKeypads::init(){
         numebrBtn->setTag(i);
         numberMenu->addChild(numebrBtn);
         numebrBtn->setPosition(-266+(i%3)*266,60-(i/3)*105);
-        if(i<10){
+        if(i<9){
             auto numberLabel = Label::createWithSystemFont(StringUtils::format("%d",(i+1)%10), "arial", 68);
             numberLabel->setPosition(125,55);
-            numberLabel->setColor(Color3B(239,239,239));
+            numberLabel->setColor(Color3B(120,108,71));
             numebrBtn->addChild(numberLabel);
+        }else if (i==9){
+            auto ok = Sprite::create("friend/num_chongshu.png");
+            ok->setPosition(125,55);
+            numebrBtn->addChild(ok);
         }else if (i==10){
+            auto numberLabel = Label::createWithSystemFont(StringUtils::format("%d",0), "arial", 68);
+            numberLabel->setPosition(125,55);
+            numberLabel->setColor(Color3B(120,108,71));
+            numebrBtn->addChild(numberLabel);
+        }else{
             auto del = Sprite::create("friend/num_deleta.png");
             del->setPosition(125,55);
             numebrBtn->addChild(del);
-        }else{
-            auto ok = Sprite::create("friend/confirm_iamge.png");
-            ok->setPosition(125,55);
-            numebrBtn->addChild(ok);
         }
         
     }
@@ -76,24 +74,24 @@ bool MahjongNumberKeypads::init(){
 void MahjongNumberKeypads::clickNumber(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*) ref;
     int index = temp->getTag();
-    if(index == 11){
-        std::string num = numberShow->getString();
-        if(num.size() == 6){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(num));
-//            if(GAMEDATA::getInstance()->getGameType() == 1){
-//                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(num));
-//            }else if(GAMEDATA::getInstance()->getGameType() == 3){
-//                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZEnterRoomCommand(num));
-//            }
-        }
-        removeFromParent();
-    }else if(index == 10){
+    if(index == 9){
         //delete
+        enterRoomNumber.clear();
+        numberShow->setString(enterRoomNumber);
+    }else if(index == 10){
+        enterRoomNumber = enterRoomNumber+ StringUtils::format("%d",0);
+        numberShow->setString(enterRoomNumber);
+    }else if(index == 11){
+        //back
         enterRoomNumber = enterRoomNumber.substr(0,enterRoomNumber.size()-1);
         numberShow->setString(enterRoomNumber);
     }else{
         enterRoomNumber = enterRoomNumber+ StringUtils::format("%d",(index+1)%10);
         numberShow->setString(enterRoomNumber);
+    }
+    std::string num = numberShow->getString();
+    if(num.size() == 6){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(num));
     }
 }
 
