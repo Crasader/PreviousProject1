@@ -9,18 +9,15 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "24" //ios审核版本24，应用宝审核版本25.
+#define PAY_PLAT_VALUE "22" //ios审核版本24，应用宝审核版本25.
 
-#define SERVER_ADDRESS "aliyun.5278-mobi.com"
-//#define SERVER_ADDRESS "ceshi.5278-mobi.com"
+//#define SERVER_ADDRESS "aliyun.5278-mobi.com"
+#define SERVER_ADDRESS "ceshi.5278-mobi.com"
 #define SERVER_PORT 9999
-//#define SERVER_ADDRESS "172.23.1.35"
-//#define SERVER_PORT 9999
 
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币
 #define ENTER_ROOM_2_GOLD 150000// 进入第2个房间需要的最低金币
 #define ENTER_ROOM_3_GOLD 1200000// 进入第3个房间需要的最低金币
-#define DIAMOND_TO_GOLD_RATE 10//钻石兑换金币的比例
 
 #define APPLE_STORE_PAY_LIST "http://web.5278-mobi.com/pay!getIosPoint.action"
 
