@@ -547,8 +547,6 @@ void LobbyScene::chargeGold(){
 
 void LobbyScene::chargeFangka(){
     Audio::getInstance()->playSoundClick();
-    //    InviteCodeLayer* lay = InviteCodeLayer::create();
-    //    addChild(lay,6);
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
     if(UserData::getInstance()->isWeixinPayOpen()){
         if(!UserData::getInstance()->isInviteCodeBind()){
