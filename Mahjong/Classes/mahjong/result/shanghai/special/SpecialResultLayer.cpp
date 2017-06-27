@@ -36,7 +36,7 @@ bool SpecialResultLayer::init(){
     reslut_bg->setPosition(640, 360);
     addChild(reslut_bg,-1);
     showResultTitle();//结算界面标题
-    showGameReslut();
+//    showGameReslut();
     scheduleUpdate();
     return true;
 }
