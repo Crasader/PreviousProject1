@@ -18,7 +18,7 @@
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/lobby/EnterRoomDialog.hpp"
+#include "mahjong/lobby/dialog/EnterRoomDialog.hpp"
 #include "mahjong/lobby/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/gameview/MjGameScene.h"

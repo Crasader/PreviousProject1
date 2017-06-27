@@ -131,8 +131,6 @@
 		D252FB9F1E7FA5EC00937322 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD21E7FA5EC00937322 /* DailyPride.cpp */; };
 		D252FBA01E7FA5EC00937322 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD41E7FA5EC00937322 /* PrideCell.cpp */; };
 		D252FBA11E7FA5EC00937322 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD41E7FA5EC00937322 /* PrideCell.cpp */; };
-		D252FBA21E7FA5EC00937322 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD61E7FA5EC00937322 /* EnterRoomDialog.cpp */; };
-		D252FBA31E7FA5EC00937322 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD61E7FA5EC00937322 /* EnterRoomDialog.cpp */; };
 		D252FBA41E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD91E7FA5EC00937322 /* GoldRoomButton.cpp */; };
 		D252FBA51E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD91E7FA5EC00937322 /* GoldRoomButton.cpp */; };
 		D252FBA61E7FA5EC00937322 /* GoldRoomPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FADB1E7FA5EC00937322 /* GoldRoomPlate.cpp */; };
@@ -375,6 +373,8 @@
 		D2DB5E7E1E7917490073ABD8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */; };
 		D2DCA7D71ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
 		D2DCA7D81ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
+		D2DDB1BE1F02384600790422 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */; };
+		D2DDB1BF1F02384600790422 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */; };
 		D2E035081ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */; };
 		D2E035091ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */; };
 		D2E0350C1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */; };
@@ -576,8 +576,6 @@
 		D252FAD31E7FA5EC00937322 /* DailyPride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyPride.h; sourceTree = "<group>"; };
 		D252FAD41E7FA5EC00937322 /* PrideCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrideCell.cpp; sourceTree = "<group>"; };
 		D252FAD51E7FA5EC00937322 /* PrideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrideCell.h; sourceTree = "<group>"; };
-		D252FAD61E7FA5EC00937322 /* EnterRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnterRoomDialog.cpp; sourceTree = "<group>"; };
-		D252FAD71E7FA5EC00937322 /* EnterRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnterRoomDialog.hpp; sourceTree = "<group>"; };
 		D252FAD91E7FA5EC00937322 /* GoldRoomButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRoomButton.cpp; sourceTree = "<group>"; };
 		D252FADA1E7FA5EC00937322 /* GoldRoomButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldRoomButton.hpp; sourceTree = "<group>"; };
 		D252FADB1E7FA5EC00937322 /* GoldRoomPlate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRoomPlate.cpp; sourceTree = "<group>"; };
@@ -802,6 +800,8 @@
 		D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D2DCA7D61ECEC067009F9C59 /* competition */ = {isa = PBXFileReference; lastKnownFileType = folder; path = competition; sourceTree = "<group>"; };
+		D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnterRoomDialog.cpp; sourceTree = "<group>"; };
+		D2DDB1BD1F02384600790422 /* EnterRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnterRoomDialog.hpp; sourceTree = "<group>"; };
 		D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeHuafeiCell.cpp; sourceTree = "<group>"; };
 		D2E035071ED7C38C00291282 /* ExchangeHuafeiCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeHuafeiCell.hpp; sourceTree = "<group>"; };
 		D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeHuafeiItem.cpp; sourceTree = "<group>"; };
@@ -1351,10 +1351,9 @@
 		D252FACD1E7FA5EC00937322 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D2DDB1BB1F02384600790422 /* dialog */,
 				D2D894A11EBB2163008C1E5D /* invitecode */,
 				D252FACE1E7FA5EC00937322 /* daily */,
-				D252FAD61E7FA5EC00937322 /* EnterRoomDialog.cpp */,
-				D252FAD71E7FA5EC00937322 /* EnterRoomDialog.hpp */,
 				D252FBFC1E7FABC600937322 /* friend */,
 				D252FAD81E7FA5EC00937322 /* goldroom */,
 				D252FADD1E7FA5EC00937322 /* gonggao */,
@@ -1946,6 +1945,15 @@
 			path = invitecode;
 			sourceTree = "<group>";
 		};
+		D2DDB1BB1F02384600790422 /* dialog */ = {
+			isa = PBXGroup;
+			children = (
+				D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */,
+				D2DDB1BD1F02384600790422 /* EnterRoomDialog.hpp */,
+			);
+			path = dialog;
+			sourceTree = "<group>";
+		};
 		D2E035121ED911ED00291282 /* hongbao */ = {
 			isa = PBXGroup;
 			children = (
@@ -2306,11 +2314,11 @@
 				D2B1D9241E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */,
 				D252FC101E7FABC700937322 /* MahjongNumberKeypads.cpp in Sources */,
 				D252FB3A1E7FA5EC00937322 /* LostNetwork.cpp in Sources */,
-				D252FBA21E7FA5EC00937322 /* EnterRoomDialog.cpp in Sources */,
 				D27F06011E94BDF90085438A /* ReviewGame.cpp in Sources */,
 				D252FB361E7FA5EC00937322 /* QuickChatLayer.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D252FCB11E7FB77F00937322 /* StatusBarTool.m in Sources */,
+				D2DDB1BE1F02384600790422 /* EnterRoomDialog.cpp in Sources */,
 				D252FB441E7FA5EC00937322 /* ToastCell.cpp in Sources */,
 				D252FC611E7FABE900937322 /* PlayerRight.cpp in Sources */,
 				D252FB641E7FA5EC00937322 /* ParticleUtil.cpp in Sources */,
@@ -2491,7 +2499,6 @@
 				D252FBAD1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FB391E7FA5EC00937322 /* BaseDialog.cpp in Sources */,
 				D252FB9D1E7FA5EC00937322 /* DailyEvent.cpp in Sources */,
-				D252FBA31E7FA5EC00937322 /* EnterRoomDialog.cpp in Sources */,
 				D252FBCD1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */,
 				D252FBB91E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
 				D252FC581E7FABE900937322 /* PlayerBase.cpp in Sources */,
@@ -2564,6 +2571,7 @@
 				D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D252FBC71E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
 				D252FBC11E7FA5EC00937322 /* Huode.cpp in Sources */,
+				D2DDB1BF1F02384600790422 /* EnterRoomDialog.cpp in Sources */,
 				D252FC6A1E7FABE900937322 /* Orientation.cpp in Sources */,
 				D252FC5A1E7FABE900937322 /* PlayerHero.cpp in Sources */,
 				D229124A1D12C583005C7167 /* CommandManage.cpp in Sources */,

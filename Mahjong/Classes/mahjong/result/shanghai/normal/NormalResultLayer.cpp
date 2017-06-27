@@ -18,7 +18,7 @@
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/lobby/EnterRoomDialog.hpp"
+#include "mahjong/lobby/dialog/EnterRoomDialog.hpp"
 #include "mahjong/lobby/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"

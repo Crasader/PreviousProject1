@@ -9,7 +9,7 @@
 #include "mahjong/result/hongzhong/special/HZSpecialResultLayer.hpp"
 #include "mahjong/result/hongzhong/special/HZGameResultCell.hpp"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/lobby/EnterRoomDialog.hpp"
+#include "mahjong/lobby/dialog/EnterRoomDialog.hpp"
 #include "mahjong/lobby/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/common/jong/Jong.h"
