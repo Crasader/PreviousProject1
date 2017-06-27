@@ -30,12 +30,12 @@ bool FirstChargeDialog::init(){
     addChild(dialog_bg);
     
     auto title = Sprite::create("shop/first_charge_title.png");
-    title->setPosition(654,615);
+    title->setPosition(654,600);
     addChild(title);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(FirstChargeDialog::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 580);
+    closeMenu->setPosition(1000, 600);
     addChild(closeMenu);
     
     Loading* lod = Loading::create(true);
@@ -64,74 +64,74 @@ void FirstChargeDialog::onExit(){
 
 void FirstChargeDialog::showFirstCharge(){
     
-    LabelAtlas* firNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().money), "shop/first_charge_num.png", 24, 37, '0');
-    firNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    firNum->setPosition(570,520);
-    addChild(firNum);
+//    LabelAtlas* firNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().money), "shop/first_charge_num.png", 24, 37, '0');
+//    firNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+//    firNum->setPosition(605,520);
+//    addChild(firNum);
     
     auto tenyuan = Sprite::create("shop/first_charge_10yuan.png");
-    tenyuan->setPosition(635,520);
+    tenyuan->setPosition(665,540);
     addChild(tenyuan);
     
     auto bg_2 = Sprite::create("shop/first_charge_bg_2.png");
     bg_2->setPosition(645,390);
     addChild(bg_2);
     
-    auto diamondBG = Sprite::create("shop/gold_bg_light.png");
-    diamondBG->setPosition(400,400);
-    addChild(diamondBG);
+//    auto diamondBG = Sprite::create("shop/gold_bg_light.png");
+//    diamondBG->setPosition(400,400);
+//    addChild(diamondBG);
     
-    auto diamond = Sprite::create("shop/fangka_image.png");
-    diamond->setPosition(400,400);
-    addChild(diamond);
+//    auto diamond = Sprite::create("shop/fangka_image.png");
+//    diamond->setPosition(400,400);
+//    addChild(diamond);
     
-    LabelAtlas* fangNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().fangka), "result/fan_num.png", 17, 26, '0');
-    fangNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fangNum->setPosition(360,325);
-    addChild(fangNum);
+//    LabelAtlas* fangNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().fangka), "result/fan_num.png", 17, 26, '0');
+//    fangNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+//    fangNum->setPosition(360,325);
+//    addChild(fangNum);
     
-    auto zuanshi = Sprite::create("shop/fangka_2.png");
-    zuanshi->setPosition(400,325);
-    addChild(zuanshi);
+//    auto zuanshi = Sprite::create("shop/fangka_2.png");
+//    zuanshi->setPosition(400,325);
+//    addChild(zuanshi);
     
-    auto plus1= Sprite::create("shop/plus.png");
-    plus1->setPosition(510,400);
-    addChild(plus1);
+//    auto plus1= Sprite::create("shop/plus.png");
+//    plus1->setPosition(510,400);
+//    addChild(plus1);
     
-    auto goldBg = Sprite::create("shop/gold_bg_light.png");
-    goldBg->setPosition(645,400);
-    addChild(goldBg);
+//    auto goldBg = Sprite::create("shop/gold_bg_light.png");
+//    goldBg->setPosition(645,400);
+//    addChild(goldBg);
     
-    auto goldIcon = Sprite::create("shop/gold_icon_1.png");
-    goldIcon->setPosition(645,400);
-    addChild(goldIcon);
+//    auto goldIcon = Sprite::create("shop/gold_icon_1.png");
+//    goldIcon->setPosition(645,400);
+//    addChild(goldIcon);
     
-    auto goldNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().gold),"shop/prop_num.png",21,28,'0');
-    goldNum->setPosition(645,325);
-    goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    addChild(goldNum);
+//    auto goldNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().gold),"shop/prop_num.png",21,28,'0');
+//    goldNum->setPosition(645,325);
+//    goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+//    addChild(goldNum);
     
-    auto jinbi = Sprite::create("shop/gold_text.png");
-    jinbi->setPosition(685,325);
-    addChild(jinbi);
+//    auto jinbi = Sprite::create("shop/gold_text.png");
+//    jinbi->setPosition(685,325);
+//    addChild(jinbi);
     
-    auto plus2 = Sprite::create("shop/plus.png");
-    plus2->setPosition(740,400);
-    addChild(plus2);
-    
-    auto permission = Sprite::create("shop/permission.png");
-    permission->setPosition(875,400);
-    addChild(permission);
-    
-    auto tuhao = Sprite::create("shop/tuhao_text.png");
-    tuhao->setPosition(875,325);
-    addChild(tuhao);
-    
-    auto image = MenuItemImage::create("shop/charge_btn_1.png","shop/charge_btn_2.png",
-                                       CC_CALLBACK_0(FirstChargeDialog::charge, this));
-    Menu* menu = Menu::create(image,NULL);
-    menu->setPosition(650,200);
-    addChild(menu);
+//    auto plus2 = Sprite::create("shop/plus.png");
+//    plus2->setPosition(740,400);
+//    addChild(plus2);
+//    
+//    auto permission = Sprite::create("shop/permission.png");
+//    permission->setPosition(875,400);
+//    addChild(permission);
+//    
+//    auto tuhao = Sprite::create("shop/tuhao_text.png");
+//    tuhao->setPosition(875,325);
+//    addChild(tuhao);
+//    
+//    auto image = MenuItemImage::create("shop/charge_btn_1.png","shop/charge_btn_2.png",
+//                                       CC_CALLBACK_0(FirstChargeDialog::charge, this));
+//    Menu* menu = Menu::create(image,NULL);
+//    menu->setPosition(650,200);
+//    addChild(menu);
     
 }
 
