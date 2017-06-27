@@ -127,11 +127,11 @@ void FirstChargeDialog::showFirstCharge(){
 //    tuhao->setPosition(875,325);
 //    addChild(tuhao);
 //    
-//    auto image = MenuItemImage::create("shop/charge_btn_1.png","shop/charge_btn_2.png",
-//                                       CC_CALLBACK_0(FirstChargeDialog::charge, this));
-//    Menu* menu = Menu::create(image,NULL);
-//    menu->setPosition(650,200);
-//    addChild(menu);
+    auto image = MenuItemImage::create("shop/charge_btn_1.png","shop/charge_btn_2.png",
+                                       CC_CALLBACK_0(FirstChargeDialog::charge, this));
+    Menu* menu = Menu::create(image,NULL);
+    menu->setPosition(640,160);
+    addChild(menu);
     
 }
 
