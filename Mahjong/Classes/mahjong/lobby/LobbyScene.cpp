@@ -304,7 +304,7 @@ void LobbyScene::drawSceneMid(){
     ScrollTextEx* scroll = ScrollTextEx::create();
     scroll->setAutoScroll(true);
     scroll->setTag(9980);
-    scroll->setPosition(600,600);
+    scroll->setPosition(600,610);
     addChild(scroll,2);
     
     RoomListData newData = GAMEDATA::getInstance()->getRoomList();
@@ -336,8 +336,8 @@ void LobbyScene::drawSceneBot(){
     auto btn_open = MenuItemImage::create("mjlobby/open_room_text.png", "mjlobby/open_room_text.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
     auto btn_enter = MenuItemImage::create("mjlobby/enter_room_text.png", "mjlobby/enter_room_text.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
     auto gameMenu = Menu::create(btn_open,btn_enter, NULL);
-    gameMenu->alignItemsHorizontallyWithPadding(40);
-    gameMenu->setPosition(640, 70);
+    gameMenu->alignItemsHorizontallyWithPadding(120);
+    gameMenu->setPosition(640, 40);
     addChild(gameMenu);
     
     
