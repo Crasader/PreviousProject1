@@ -315,16 +315,16 @@ void LobbyScene::drawSceneMid(){
         com->setPosition(240+(i%2)*400,420-180*(i/2));
         addChild(com);
     }
-    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-        GAMEDATA::getInstance()->setRoomList(newData);
-        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-        plate->setTag(1298);
-        addChild(plate,2);
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-        //支付审核
-        plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
-#endif
-    }
+//    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+//        GAMEDATA::getInstance()->setRoomList(newData);
+//        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+//        plate->setTag(1298);
+//        addChild(plate,2);
+//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+//        //支付审核
+//        plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//#endif
+//    }
 }
 
 void LobbyScene::drawSceneBot(){
@@ -1085,19 +1085,19 @@ void LobbyScene::addEventListener(){
                 isShowRoomlist = true;
                 CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
                 CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
-                com->setPosition(240+(i%2)*400,420-180*(i/2));
+                com->setPosition(835+(i%2)*290,510-175*(i/2));
                 addChild(com);
             }
-            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-                GAMEDATA::getInstance()->setRoomList(newData);
-                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-                plate->setTag(1298);
-                addChild(plate,2);
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-                //支付审核
-                plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
-#endif
-            }
+//            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+//                GAMEDATA::getInstance()->setRoomList(newData);
+//                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+//                plate->setTag(1298);
+//                addChild(plate,2);
+//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+//                //支付审核
+//                plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//#endif
+//            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomListRespListener, 1);
