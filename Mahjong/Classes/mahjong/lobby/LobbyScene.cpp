@@ -60,6 +60,9 @@ bool LobbyScene::init()
 void LobbyScene::signUpdate(float dt){
     if(GAMEDATA::getInstance()->getNeedShowShareBtn()){
         getChildByTag(1987)->setVisible(true);
+    }else{
+        if(NULL != getChildByTag(1988))
+            getChildByTag(1988)->setPosition(600,435);
     }
     if(GAMEDATA::getInstance()->getShowProtected()){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
@@ -160,99 +163,111 @@ void LobbyScene::drawSceneTop(){
     headmenu->setPosition(61, 660);
     addChild(headmenu);
     
-    nickName = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 24);
-    nickName->setPosition(125, 628);
+    nickName = Label::createWithSystemFont(UserData::getInstance()->getNickName(), "arial", 22);
+    nickName->setPosition(115, 690);
+    nickName->setColor(Color3B(255,252,242));
     nickName->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickName->setAlignment(TextHAlignment::LEFT);
     addChild(nickName);
     
-    auto markid = Label::createWithSystemFont(StringUtils::format("ID%s:%s",ChineseWord("hao").c_str(),UserData::getInstance()->getMarkId().c_str()), "arial", 24);
-    markid->setPosition(nickName->getPositionX()+nickName->getContentSize().width+30, 628);
+    auto markid = Label::createWithSystemFont(StringUtils::format("ID:%s",UserData::getInstance()->getMarkId().c_str()), "arial", 22);
+    markid->setPosition(115, 660);
+    markid->setColor(Color3B(255,252,242));
     markid->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     markid->setAlignment(TextHAlignment::LEFT);
     addChild(markid);
     
     //fangka
     auto fangka_bg = Sprite::create("mjlobby/room_info_bg.png");
-    fangka_bg->setPosition(235, 685);
+    fangka_bg->setPosition(365, 687);
     addChild(fangka_bg);
-    auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
-    fangka_icon->setPosition(157, 680);
+    auto fangka_icon = Sprite::create("mjlobby/fangka_icon.png");
+    fangka_icon->setPosition(305, 687);
     addChild(fangka_icon);
     fangkaNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getFangkaNum()),"Arial",24);
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     fangkaNum->setColor(Color3B(242,227,75));
-    fangkaNum->setPosition(232, 685);
+    fangkaNum->setPosition(365, 687);
     addChild(fangkaNum);
-    auto diamond_btn = MenuItemImage::create("mjlobby/charge_btn_1.png", "mjlobby/charge_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeFangka, this));
-    auto chargDiamond = Menu::create(diamond_btn, NULL);
-    chargDiamond->setPosition(315, 682);
-    addChild(chargDiamond);
+    auto fangka_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeFangka, this));
+    auto chargfangka = Menu::create(fangka_btn, NULL);
+    chargfangka->setPosition(425, 687);
+    addChild(chargfangka);
     
     
     //gold
     auto gold_bg = Sprite::create("mjlobby/room_info_bg.png");
-    gold_bg->setPosition(462, 685);
+    gold_bg->setPosition(550, 687);
     gold_bg->setTag(801);
     addChild(gold_bg);
     auto gold_icon = Sprite::create("mjlobby/gold_icon.png");
-    gold_icon->setPosition(380, 685);
+    gold_icon->setPosition(490, 687);
     gold_icon->setTag(802);
     addChild(gold_icon);
-    goldNum = Label::createWithSystemFont(StringUtils::format("%d",UserData::getInstance()->getGold()),"Arial",24);
+    goldNum = Label::createWithSystemFont("0","Arial",24);
+    if(UserData::getInstance()->getGold()>100000000){
+        goldNum->setString(StringUtils::format("%.0f亿",UserData::getInstance()->getGold()/100000000.0));
+    }else if(UserData::getInstance()->getGold()>100000){
+        goldNum->setString(StringUtils::format("%.0f万",UserData::getInstance()->getGold()/10000.0));
+    }else{
+        goldNum->setString(StringUtils::format("%d",UserData::getInstance()->getGold()));
+    }
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     goldNum->setColor(Color3B(242,227,75));
-    goldNum->setPosition(462, 685);
+    goldNum->setPosition(550, 687);
     addChild(goldNum);
     auto gold_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::chargeGold, this));
     auto chargGold = Menu::create(gold_btn, NULL);
-    chargGold->setPosition(543, 685);
+    chargGold->setPosition(610, 687);
     chargGold->setTag(803);
     addChild(chargGold);
     
-    
+    //huafei
+    auto huafei_bg = Sprite::create("mjlobby/room_info_bg.png");
+    huafei_bg->setTag(904);
+    huafei_bg->setPosition(735, 687);
+    addChild(huafei_bg);
+    auto huafei_icon = Sprite::create("mjlobby/huafei_icon.png");
+    huafei_icon->setTag(905);
+    huafei_icon->setPosition(675, 687);
+    addChild(huafei_icon);
+    haufeiNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()),"Arial",24);
+    haufeiNum->setColor(Color3B(242,227,75));
+    haufeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    haufeiNum->setPosition(735, 687);
+    addChild(haufeiNum);
+    auto haufei_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeHuafei, this));
+    auto chargHuaFei = Menu::create(haufei_btn, NULL);
+    chargHuaFei->setTag(906);
+    chargHuaFei->setPosition(795, 687);
+    addChild(chargHuaFei);
     
     //lequan
     auto lequan_bg = Sprite::create("mjlobby/room_info_bg.png");
     lequan_bg->setTag(901);
-    lequan_bg->setPosition(690, 685);
+    lequan_bg->setPosition(910, 687);
     addChild(lequan_bg);
-    //    auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
-    //    lequan_icon->setTag(902);
-    //    lequan_icon->setPosition(610, 685);
-    //    addChild(lequan_icon);
-    //    lequanNum = Label::createWithSystemFont(StringUtils::format("%d", UserData::getInstance()->getTicket()),
-    //                                            "Arial",24);
-    //    lequanNum->setColor(Color3B(242,227,75));
-    //    lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    lequanNum->setPosition(690, 685);
-    //    addChild(lequanNum);
-    
-    //    auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
-    //    auto chargLequan = Menu::create(lequan_btn, NULL);
-    //    chargLequan->setTag(903);
-    //    chargLequan->setPosition(770, 685);
-    //    addChild(chargLequan);
-    
-    //huafei
-    //    auto huafei_bg = Sprite::create("mjlobby/huafei_bg.png");
-    //    huafei_bg->setTag(904);
-    //    huafei_bg->setPosition(900, 685);
-    //    addChild(huafei_bg);
-    //    auto huafei_icon = Sprite::create("mjlobby/huafei_icon.png");
-    //    huafei_icon->setTag(905);
-    //    huafei_icon->setPosition(840, 685);
-    //    addChild(huafei_icon);
-    //    haufeiNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()),"Arial",24);
-    //    haufeiNum->setColor(Color3B(242,227,75));
-    //    haufeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    haufeiNum->setPosition(910, 685);
-    //    addChild(haufeiNum);
-    //    auto haufei_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeHuafei, this));
-    //    auto chargHuaFei = Menu::create(haufei_btn, NULL);
-    //    chargHuaFei->setTag(906);
-    //    chargHuaFei->setPosition(970, 685);
-    //    addChild(chargHuaFei);
+    auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
+    lequan_icon->setTag(902);
+    lequan_icon->setPosition(850, 687);
+    addChild(lequan_icon);
+    lequanNum = Label::createWithSystemFont("0","Arial",24);
+    if(UserData::getInstance()->getTicket()>100000000){
+        lequanNum->setString(StringUtils::format("%.0f亿",UserData::getInstance()->getTicket()/100000000.0));
+    }else if(UserData::getInstance()->getGold()>100000){
+        lequanNum->setString(StringUtils::format("%.0f万",UserData::getInstance()->getTicket()/10000.0));
+    }else{
+        lequanNum->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
+    }
+    lequanNum->setColor(Color3B(242,227,75));
+    lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    lequanNum->setPosition(910, 687);
+    addChild(lequanNum);
+    auto lequan_btn = MenuItemImage::create("mjlobby/plus_btn_1.png", "mjlobby/plus_btn_2.png", CC_CALLBACK_0(LobbyScene::exchangeLequan, this));
+    auto chargLequan = Menu::create(lequan_btn, NULL);
+    chargLequan->setTag(903);
+    chargLequan->setPosition(970, 687);
+    addChild(chargLequan);
     
     //支付审核专用
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
@@ -261,24 +276,34 @@ void LobbyScene::drawSceneTop(){
     goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
     chargGold->setVisible(UserData::getInstance()->isWeixinPayOpen());
 #endif
-    //    lequan_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    //    lequan_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    //    lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    //    chargLequan->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    //    huafei_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    //    huafei_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    //    haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    //    chargHuaFei->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    lequan_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    lequan_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    chargLequan->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    huafei_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    huafei_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    chargHuaFei->setVisible(UserData::getInstance()->isWeixinPayOpen());
 }
 
 void LobbyScene::drawSceneMid(){
     
     
+    auto dayTask = MenuItemImage::create("mjlobby/dailytask1.png", "mjlobby/dailytask2.png",
+                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
+    auto dayTaskMenu = Menu::create(dayTask, NULL);
+    dayTaskMenu->alignItemsHorizontallyWithPadding(15);
+    dayTaskMenu->setPosition(600, 535);
+    addChild(dayTaskMenu);
+    auto text = Sprite::create("mjlobby/day_task_text.png");
+    text->setPosition(600, 535);
+    addChild(text);
+    
     auto sharefriend = MenuItemImage::create("mjlobby/red_wallet_1.png", "mjlobby/red_wallet_2.png",
                                              CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto shareMenu = Menu::create(sharefriend, NULL);
     shareMenu->alignItemsHorizontallyWithPadding(15);
-    shareMenu->setPosition(200, 552);
+    shareMenu->setPosition(600, 435);
     shareMenu->setTag(1987);
     shareMenu->setVisible(false);
     addChild(shareMenu);
@@ -287,24 +312,26 @@ void LobbyScene::drawSceneMid(){
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
     firstMenu = Menu::create(first_chaege, NULL);
     firstMenu->alignItemsHorizontallyWithPadding(15);
-    firstMenu->setPosition(90, 552);
+    firstMenu->setTag(1988);
+    firstMenu->setPosition(600, 330);
     addChild(firstMenu);
-    firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(90, 562)),MoveTo::create(0.6f,Point(90, 542)),NULL), CC_REPEAT_FOREVER));
-    //感叹号
-    ganTanhao = Sprite::create("mjlobby/gantanhao.png");
-    ganTanhao->setPosition(120,575);
-    addChild(ganTanhao);
-    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(120, 590)),MoveTo::create(0.6f,Point(120, 570)),NULL), CC_REPEAT_FOREVER));
+    
+//    firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(90, 562)),MoveTo::create(0.6f,Point(90, 542)),NULL), CC_REPEAT_FOREVER));
+//    //感叹号
+//    ganTanhao = Sprite::create("mjlobby/gantanhao.png");
+//    ganTanhao->setPosition(120,575);
+//    addChild(ganTanhao);
+//    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(120, 590)),MoveTo::create(0.6f,Point(120, 570)),NULL), CC_REPEAT_FOREVER));
     if(UserData::getInstance()->isFirstCharge()){
         firstMenu->setVisible(false);
-        ganTanhao->setVisible(false);
+//        ganTanhao->setVisible(false);
     }
     
     //跑马灯
     ScrollTextEx* scroll = ScrollTextEx::create();
     scroll->setAutoScroll(true);
     scroll->setTag(9980);
-    scroll->setPosition(600,610);
+    scroll->setPosition(600,620);
     addChild(scroll,2);
     
     RoomListData newData = GAMEDATA::getInstance()->getRoomList();
@@ -315,16 +342,16 @@ void LobbyScene::drawSceneMid(){
         com->setPosition(240+(i%2)*400,420-180*(i/2));
         addChild(com);
     }
-//    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-//        GAMEDATA::getInstance()->setRoomList(newData);
-//        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-//        plate->setTag(1298);
-//        addChild(plate,2);
-//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-//        //支付审核
-//        plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
-//#endif
-//    }
+    //    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+    //        GAMEDATA::getInstance()->setRoomList(newData);
+    //        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+    //        plate->setTag(1298);
+    //        addChild(plate,2);
+    //#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    //        //支付审核
+    //        plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    //#endif
+    //    }
 }
 
 void LobbyScene::drawSceneBot(){
@@ -371,10 +398,23 @@ void LobbyScene::drawSceneBot(){
 void LobbyScene::updateHeroInfo(){
     ((HeadImage*)getChildByTag(962))->updateImage();
     nickName->setString(UserData::getInstance()->getNickName());
-    goldNum ->setString(StringUtils::format("%d",UserData::getInstance()->getGold()));
+    if(UserData::getInstance()->getGold()>100000000){
+        goldNum->setString(StringUtils::format("%.0f亿",UserData::getInstance()->getGold()/100000000.0));
+    }else if(UserData::getInstance()->getGold()>100000){
+        goldNum->setString(StringUtils::format("%.0f万",UserData::getInstance()->getGold()/10000.0));
+    }else{
+        goldNum->setString(StringUtils::format("%d",UserData::getInstance()->getGold()));
+    }
     fangkaNum->setString(StringUtils::format("%0.1f",UserData::getInstance()->getFangkaNum()));
-    if(NULL != lequanNum)
-        lequanNum->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
+    if(NULL != lequanNum){
+        if(UserData::getInstance()->getTicket()>100000000){
+            lequanNum->setString(StringUtils::format("%.0f亿",UserData::getInstance()->getTicket()/100000000.0));
+        }else if(UserData::getInstance()->getGold()>100000){
+            lequanNum->setString(StringUtils::format("%.0f万",UserData::getInstance()->getTicket()/10000.0));
+        }else{
+            lequanNum->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
+        }
+    }
     if(NULL != haufeiNum)
         haufeiNum->setString(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()));
 }
@@ -1088,16 +1128,16 @@ void LobbyScene::addEventListener(){
                 com->setPosition(835+(i%2)*290,510-175*(i/2));
                 addChild(com);
             }
-//            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-//                GAMEDATA::getInstance()->setRoomList(newData);
-//                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-//                plate->setTag(1298);
-//                addChild(plate,2);
-//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-//                //支付审核
-//                plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
-//#endif
-//            }
+            //            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+            //                GAMEDATA::getInstance()->setRoomList(newData);
+            //                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+            //                plate->setTag(1298);
+            //                addChild(plate,2);
+            //#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+            //                //支付审核
+            //                plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+            //#endif
+            //            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomListRespListener, 1);
