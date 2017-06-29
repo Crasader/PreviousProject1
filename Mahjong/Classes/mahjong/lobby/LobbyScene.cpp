@@ -289,10 +289,8 @@ void LobbyScene::drawSceneTop(){
 void LobbyScene::drawSceneMid(){
     
     
-    auto dayTask = MenuItemImage::create("mjlobby/dailytask1.png", "mjlobby/dailytask2.png",
-                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
+    auto dayTask = MenuItemImage::create("mjlobby/dailytask1.png", "mjlobby/dailytask2.png",CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto dayTaskMenu = Menu::create(dayTask, NULL);
-    dayTaskMenu->alignItemsHorizontallyWithPadding(15);
     dayTaskMenu->setPosition(600, 535);
     addChild(dayTaskMenu);
     auto text = Sprite::create("mjlobby/day_task_text.png");
