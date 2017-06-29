@@ -245,8 +245,6 @@
 		D25329571CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
 		D25329581CC0D33600DDAD97 /* ChineseWords.plist in Resources */ = {isa = PBXBuildFile; fileRef = D25329411CC0D33600DDAD97 /* ChineseWords.plist */; };
 		D25329591CC0D33600DDAD97 /* ChineseWords.plist in Resources */ = {isa = PBXBuildFile; fileRef = D25329411CC0D33600DDAD97 /* ChineseWords.plist */; };
-		D253295A1CC0D33600DDAD97 /* common in Resources */ = {isa = PBXBuildFile; fileRef = D25329421CC0D33600DDAD97 /* common */; };
-		D253295B1CC0D33600DDAD97 /* common in Resources */ = {isa = PBXBuildFile; fileRef = D25329421CC0D33600DDAD97 /* common */; };
 		D253295C1CC0D33600DDAD97 /* daily in Resources */ = {isa = PBXBuildFile; fileRef = D25329431CC0D33600DDAD97 /* daily */; };
 		D253295D1CC0D33600DDAD97 /* daily in Resources */ = {isa = PBXBuildFile; fileRef = D25329431CC0D33600DDAD97 /* daily */; };
 		D25329601CC0D33600DDAD97 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = D25329451CC0D33600DDAD97 /* fonts */; };
@@ -263,8 +261,6 @@
 		D253296D1CC0D33600DDAD97 /* loading in Resources */ = {isa = PBXBuildFile; fileRef = D253294B1CC0D33600DDAD97 /* loading */; };
 		D253296E1CC0D33600DDAD97 /* mainlogin in Resources */ = {isa = PBXBuildFile; fileRef = D253294C1CC0D33600DDAD97 /* mainlogin */; };
 		D253296F1CC0D33600DDAD97 /* mainlogin in Resources */ = {isa = PBXBuildFile; fileRef = D253294C1CC0D33600DDAD97 /* mainlogin */; };
-		D25329701CC0D33600DDAD97 /* mjitem in Resources */ = {isa = PBXBuildFile; fileRef = D253294D1CC0D33600DDAD97 /* mjitem */; };
-		D25329711CC0D33600DDAD97 /* mjitem in Resources */ = {isa = PBXBuildFile; fileRef = D253294D1CC0D33600DDAD97 /* mjitem */; };
 		D25329721CC0D33600DDAD97 /* mjlobby in Resources */ = {isa = PBXBuildFile; fileRef = D253294E1CC0D33600DDAD97 /* mjlobby */; };
 		D25329731CC0D33600DDAD97 /* mjlobby in Resources */ = {isa = PBXBuildFile; fileRef = D253294E1CC0D33600DDAD97 /* mjlobby */; };
 		D25329741CC0D33600DDAD97 /* playerinfo in Resources */ = {isa = PBXBuildFile; fileRef = D253294F1CC0D33600DDAD97 /* playerinfo */; };
@@ -281,6 +277,8 @@
 		D25DEE421CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
 		D26263E11F04A0E2002A1C28 /* shiming in Resources */ = {isa = PBXBuildFile; fileRef = D26263E01F04A0E2002A1C28 /* shiming */; };
 		D26263E21F04A0E2002A1C28 /* shiming in Resources */ = {isa = PBXBuildFile; fileRef = D26263E01F04A0E2002A1C28 /* shiming */; };
+		D26263EB1F0508AC002A1C28 /* common in Resources */ = {isa = PBXBuildFile; fileRef = D26263EA1F0508AC002A1C28 /* common */; };
+		D26263EC1F0508AC002A1C28 /* common in Resources */ = {isa = PBXBuildFile; fileRef = D26263EA1F0508AC002A1C28 /* common */; };
 		D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -694,7 +692,6 @@
 		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
-		D25329421CC0D33600DDAD97 /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
 		D25329431CC0D33600DDAD97 /* daily */ = {isa = PBXFileReference; lastKnownFileType = folder; path = daily; sourceTree = "<group>"; };
 		D25329451CC0D33600DDAD97 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		D25329461CC0D33600DDAD97 /* friend */ = {isa = PBXFileReference; lastKnownFileType = folder; path = friend; sourceTree = "<group>"; };
@@ -703,7 +700,6 @@
 		D253294A1CC0D33600DDAD97 /* jong */ = {isa = PBXFileReference; lastKnownFileType = folder; path = jong; sourceTree = "<group>"; };
 		D253294B1CC0D33600DDAD97 /* loading */ = {isa = PBXFileReference; lastKnownFileType = folder; path = loading; sourceTree = "<group>"; };
 		D253294C1CC0D33600DDAD97 /* mainlogin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mainlogin; sourceTree = "<group>"; };
-		D253294D1CC0D33600DDAD97 /* mjitem */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mjitem; sourceTree = "<group>"; };
 		D253294E1CC0D33600DDAD97 /* mjlobby */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mjlobby; sourceTree = "<group>"; };
 		D253294F1CC0D33600DDAD97 /* playerinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = playerinfo; sourceTree = "<group>"; };
 		D25329511CC0D33600DDAD97 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
@@ -712,6 +708,7 @@
 		D25DEE361CC0F56A007D428A /* bill */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bill; sourceTree = "<group>"; };
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
 		D26263E01F04A0E2002A1C28 /* shiming */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shiming; sourceTree = "<group>"; };
+		D26263EA1F0508AC002A1C28 /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
 		D278ADB61DFFC23400C90B25 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		D278ADB81DFFC23400C90B25 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -1017,6 +1014,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D26263EA1F0508AC002A1C28 /* common */,
 				D26263E01F04A0E2002A1C28 /* shiming */,
 				D2E035171ED914D400291282 /* hongbao */,
 				D2DCA7D61ECEC067009F9C59 /* competition */,
@@ -1026,7 +1024,6 @@
 				D25DEE361CC0F56A007D428A /* bill */,
 				D25329401CC0D33600DDAD97 /* chat */,
 				D25329411CC0D33600DDAD97 /* ChineseWords.plist */,
-				D25329421CC0D33600DDAD97 /* common */,
 				D25329431CC0D33600DDAD97 /* daily */,
 				D2B1D8FD1E9DF95B00EB8FB0 /* fanma */,
 				D25329451CC0D33600DDAD97 /* fonts */,
@@ -1039,7 +1036,6 @@
 				D253294A1CC0D33600DDAD97 /* jong */,
 				D253294B1CC0D33600DDAD97 /* loading */,
 				D253294C1CC0D33600DDAD97 /* mainlogin */,
-				D253294D1CC0D33600DDAD97 /* mjitem */,
 				D253294E1CC0D33600DDAD97 /* mjlobby */,
 				D252FD671E80F3A500937322 /* openroom */,
 				D253294F1CC0D33600DDAD97 /* playerinfo */,
@@ -2212,6 +2208,7 @@
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				D25329661CC0D33600DDAD97 /* gameview in Resources */,
+				D26263EB1F0508AC002A1C28 /* common in Resources */,
 				D253296E1CC0D33600DDAD97 /* mainlogin in Resources */,
 				D253295C1CC0D33600DDAD97 /* daily in Resources */,
 				D2B1D8FE1E9DF95B00EB8FB0 /* fanma in Resources */,
@@ -2235,7 +2232,6 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				D253296A1CC0D33600DDAD97 /* jong in Resources */,
-				D253295A1CC0D33600DDAD97 /* common in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				D25DEE411CC4AE78007D428A /* shop in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
@@ -2245,7 +2241,6 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				D252FD681E80F3A500937322 /* openroom in Resources */,
 				D2FB85211E07B9F700257EE1 /* Images.xcassets in Resources */,
-				D25329701CC0D33600DDAD97 /* mjitem in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				D281A3901E5442C8007FF30E /* share in Resources */,
 				D25329781CC0D33600DDAD97 /* res in Resources */,
@@ -2265,10 +2260,10 @@
 				D22F1C191CC5CB67007270B2 /* setting in Resources */,
 				D253295D1CC0D33600DDAD97 /* daily in Resources */,
 				D29E859A1E320EB100AFACEE /* fupan in Resources */,
+				D26263EC1F0508AC002A1C28 /* common in Resources */,
 				D25DEE381CC0F56A007D428A /* bill in Resources */,
 				D253296D1CC0D33600DDAD97 /* loading in Resources */,
 				D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */,
-				D253295B1CC0D33600DDAD97 /* common in Resources */,
 				D25329571CC0D33600DDAD97 /* chat in Resources */,
 				D25329551CC0D33600DDAD97 /* bignum in Resources */,
 				D25329591CC0D33600DDAD97 /* ChineseWords.plist in Resources */,
@@ -2280,7 +2275,6 @@
 				D25329791CC0D33600DDAD97 /* res in Resources */,
 				D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */,
 				D2B1D8FF1E9DF95B00EB8FB0 /* fanma in Resources */,
-				D25329711CC0D33600DDAD97 /* mjitem in Resources */,
 				D281A3911E5442C8007FF30E /* share in Resources */,
 				D2E035191ED914D400291282 /* hongbao in Resources */,
 				D25329611CC0D33600DDAD97 /* fonts in Resources */,

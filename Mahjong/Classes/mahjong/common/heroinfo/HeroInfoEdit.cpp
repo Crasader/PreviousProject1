@@ -45,21 +45,18 @@ void HeroInfoEdit::drawHeroInfoEdit(int type){
     
     
     
-//    auto  dialogBg = Sprite::create("common/dialog_bg.png");
-//    dialogBg->setPosition(640, 360);
-//    this->addChild(dialogBg);
+    auto  dialogBg = Sprite::create("common/dialog_bg.png");
+    dialogBg->setPosition(640, 360);
+    this->addChild(dialogBg);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(HeroInfoEdit::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 580);
+    closeMenu->setPosition(990, 590);
     addChild(closeMenu);
     
-//    auto paodai = Sprite::create("common/piaodai_zi.png");
-//    paodai->setPosition(640, 590);
-//    this->addChild(paodai);
-//    auto icon = Sprite::create("playerinfo/hero_info.png");
-//    icon->setPosition(640, 615);
-//    addChild(icon);
+    auto icon = Sprite::create("playerinfo/hero_info.png");
+    icon->setPosition(640, 615);
+    addChild(icon);
     
     userInfoLayer = UserInfo::create();
     addChild(userInfoLayer);

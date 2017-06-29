@@ -181,7 +181,7 @@ void LobbyScene::drawSceneTop(){
     auto fangka_bg = Sprite::create("mjlobby/room_info_bg.png");
     fangka_bg->setPosition(365, 687);
     addChild(fangka_bg);
-    auto fangka_icon = Sprite::create("mjlobby/fangka_icon.png");
+    auto fangka_icon = Sprite::create("common/fangka_icon.png");
     fangka_icon->setPosition(305, 687);
     addChild(fangka_icon);
     fangkaNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getFangkaNum()),"Arial",24);
@@ -227,7 +227,7 @@ void LobbyScene::drawSceneTop(){
     huafei_bg->setTag(904);
     huafei_bg->setPosition(735, 687);
     addChild(huafei_bg);
-    auto huafei_icon = Sprite::create("mjlobby/huafei_icon.png");
+    auto huafei_icon = Sprite::create("common/huafei_icon.png");
     huafei_icon->setTag(905);
     huafei_icon->setPosition(675, 687);
     addChild(huafei_icon);
@@ -247,7 +247,7 @@ void LobbyScene::drawSceneTop(){
     lequan_bg->setTag(901);
     lequan_bg->setPosition(910, 687);
     addChild(lequan_bg);
-    auto lequan_icon = Sprite::create("mjlobby/lequan_icon.png");
+    auto lequan_icon = Sprite::create("common/lequan_icon.png");
     lequan_icon->setTag(902);
     lequan_icon->setPosition(850, 687);
     addChild(lequan_icon);
