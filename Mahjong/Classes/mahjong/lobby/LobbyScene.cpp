@@ -314,15 +314,15 @@ void LobbyScene::drawSceneMid(){
     firstMenu->setPosition(600, 330);
     addChild(firstMenu);
     
-//    firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(90, 562)),MoveTo::create(0.6f,Point(90, 542)),NULL), CC_REPEAT_FOREVER));
-//    //感叹号
-//    ganTanhao = Sprite::create("mjlobby/gantanhao.png");
-//    ganTanhao->setPosition(120,575);
-//    addChild(ganTanhao);
-//    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(120, 590)),MoveTo::create(0.6f,Point(120, 570)),NULL), CC_REPEAT_FOREVER));
+    //    firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(90, 562)),MoveTo::create(0.6f,Point(90, 542)),NULL), CC_REPEAT_FOREVER));
+    //    //感叹号
+    //    ganTanhao = Sprite::create("mjlobby/gantanhao.png");
+    //    ganTanhao->setPosition(120,575);
+    //    addChild(ganTanhao);
+    //    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(120, 590)),MoveTo::create(0.6f,Point(120, 570)),NULL), CC_REPEAT_FOREVER));
     if(UserData::getInstance()->isFirstCharge()){
         firstMenu->setVisible(false);
-//        ganTanhao->setVisible(false);
+        //        ganTanhao->setVisible(false);
     }
     
     //跑马灯
@@ -340,16 +340,16 @@ void LobbyScene::drawSceneMid(){
         com->setPosition(240+(i%2)*400,420-180*(i/2));
         addChild(com);
     }
-    //    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-    //        GAMEDATA::getInstance()->setRoomList(newData);
-    //        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-    //        plate->setTag(1298);
-    //        addChild(plate,2);
-    //#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    //        //支付审核
-    //        plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    //#endif
-    //    }
+    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+        GAMEDATA::getInstance()->setRoomList(newData);
+        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+        plate->setTag(1298);
+        addChild(plate,2);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        //支付审核
+        plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
+    }
 }
 
 void LobbyScene::drawSceneBot(){
@@ -1126,16 +1126,16 @@ void LobbyScene::addEventListener(){
                 com->setPosition(835+(i%2)*290,510-175*(i/2));
                 addChild(com);
             }
-            //            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-            //                GAMEDATA::getInstance()->setRoomList(newData);
-            //                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-            //                plate->setTag(1298);
-            //                addChild(plate,2);
-            //#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-            //                //支付审核
-            //                plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
-            //#endif
-            //            }
+            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+                GAMEDATA::getInstance()->setRoomList(newData);
+                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+                plate->setTag(1298);
+                addChild(plate,2);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+                //支付审核
+                plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
+            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomListRespListener, 1);

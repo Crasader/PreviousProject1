@@ -26,7 +26,7 @@ bool GoldRoomButton::init(int roomid, int base, int hua){
     if(!Sprite::init()){
         return false;
     }
-    auto room_1 = MenuItemImage::create("mjlobby/competition_1_2.png", "mjlobby/competition_1_2.png", CC_CALLBACK_1(GoldRoomButton::openGoldRoom, this));
+    auto room_1 = MenuItemImage::create("mjlobby/gold_room_bnt_1.png", "mjlobby/gold_room_bnt_2.png", CC_CALLBACK_1(GoldRoomButton::openGoldRoom, this));
     room_1->setTag(roomid);
     auto roomSelect = Menu::create(room_1,NULL);
     roomSelect->setPosition(0,0);

@@ -27,7 +27,7 @@ bool ShiMingLayer::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ShiMingLayer::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 580);
+    closeMenu->setPosition(990, 590);
     addChild(closeMenu);
     
     auto paodai = Sprite::create("shiming/shi_ming_title.png");

@@ -33,68 +33,68 @@ bool ShareActivityLayer::init(){
     closeMenu->setPosition(1050, 615);
     addChild(closeMenu);
     
-    auto titleIcon = Sprite::create("share/activity_titile.png");
-    titleIcon->setPosition(640, 645);
-    addChild(titleIcon);
+//    auto titleIcon = Sprite::create("share/activity_titile.png");
+//    titleIcon->setPosition(640, 645);
+//    addChild(titleIcon);
     
-    auto titleNum = LabelAtlas::create(GAMEDATA::getInstance()->getShareActivityData().num,"share/zan_number.png",36,55,'0');
-    titleNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    titleNum->setPosition(615,585);
-    addChild(titleNum);
-    
-    auto keng = Sprite::create("share/keng.png");
-    keng->setPosition(640,360);
-    addChild(keng);
-    
-    auto zanTetx = Sprite::create("share/zan_text.png");
-    zanTetx->setPosition(640,585);
-    addChild(zanTetx);
-    
-    
-    auto hbback = Sprite::create("share/activity_hb.png");
-    hbback->setPosition(410,360);
-    addChild(hbback);
-    
-    auto hbNum = LabelAtlas::create(GAMEDATA::getInstance()->getShareActivityData().prize, "share/hb_number.png", 36, 57, '0');
-    hbNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    hbNum->setPosition(390,310);
-    addChild(hbNum);
-    
-    auto yuan = Sprite::create("share/yuna_hb.png");
-    yuan->setPosition(450,310);
-    addChild(yuan);
-    
-    auto guanwei = Label::createWithSystemFont("加官方客服微信号领取红包奖励","arial",30);
-    guanwei->setPosition(815,410);
-    addChild(guanwei);
-    
-    auto text = Label::createWithSystemFont(StringUtils::format("分享并集%s个赞可获得",GAMEDATA::getInstance()->getShareActivityData().num.c_str()), "arial", 26);
-    text->setPosition(410,215);
-    text->setColor(Color3B::BLACK);
-    addChild(text);
-    
-    auto inputbg = Sprite::create("share/support_bg.png");
-    inputbg->setPosition(815,315);
-    addChild(inputbg);
-    
-    
-    kefu = Label::createWithSystemFont(GAMEDATA::getInstance()->getShareActivityData().wx,"arial",35);
-    kefu->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    kefu->setColor(Color3B(182,204,155));
-    kefu->setPosition(735,315);
-    addChild(kefu);
-    
-    auto copyWxImg  = MenuItemImage::create("share/copy_1.png", "share/copy_2.png", CC_CALLBACK_0(ShareActivityLayer::copyText,this));
-    auto copyMenu = Menu::create(copyWxImg,NULL);
-    copyMenu->setPosition(945,315);
-    addChild(copyMenu);
-    
-    
-    
-    auto shareBtnImg = MenuItemImage::create("share/fx_pyq_1.png", "share/fx_pyq_2.png", CC_CALLBACK_0(ShareActivityLayer::shareToFriend,this));
-    auto shareMenu = Menu::create(shareBtnImg,NULL);
-    shareMenu->setPosition(640,125);
-    addChild(shareMenu);
+//    auto titleNum = LabelAtlas::create(GAMEDATA::getInstance()->getShareActivityData().num,"share/zan_number.png",36,55,'0');
+//    titleNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    titleNum->setPosition(615,585);
+//    addChild(titleNum);
+//    
+//    auto keng = Sprite::create("share/keng.png");
+//    keng->setPosition(640,360);
+//    addChild(keng);
+//    
+//    auto zanTetx = Sprite::create("share/zan_text.png");
+//    zanTetx->setPosition(640,585);
+//    addChild(zanTetx);
+//    
+//    
+//    auto hbback = Sprite::create("share/activity_hb.png");
+//    hbback->setPosition(410,360);
+//    addChild(hbback);
+//    
+//    auto hbNum = LabelAtlas::create(GAMEDATA::getInstance()->getShareActivityData().prize, "share/hb_number.png", 36, 57, '0');
+//    hbNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+//    hbNum->setPosition(390,310);
+//    addChild(hbNum);
+//    
+//    auto yuan = Sprite::create("share/yuna_hb.png");
+//    yuan->setPosition(450,310);
+//    addChild(yuan);
+//    
+//    auto guanwei = Label::createWithSystemFont("加官方客服微信号领取红包奖励","arial",30);
+//    guanwei->setPosition(815,410);
+//    addChild(guanwei);
+//    
+//    auto text = Label::createWithSystemFont(StringUtils::format("分享并集%s个赞可获得",GAMEDATA::getInstance()->getShareActivityData().num.c_str()), "arial", 26);
+//    text->setPosition(410,215);
+//    text->setColor(Color3B::BLACK);
+//    addChild(text);
+//    
+//    auto inputbg = Sprite::create("share/support_bg.png");
+//    inputbg->setPosition(815,315);
+//    addChild(inputbg);
+//    
+//    
+//    kefu = Label::createWithSystemFont(GAMEDATA::getInstance()->getShareActivityData().wx,"arial",35);
+//    kefu->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    kefu->setColor(Color3B(182,204,155));
+//    kefu->setPosition(735,315);
+//    addChild(kefu);
+//    
+//    auto copyWxImg  = MenuItemImage::create("share/copy_1.png", "share/copy_2.png", CC_CALLBACK_0(ShareActivityLayer::copyText,this));
+//    auto copyMenu = Menu::create(copyWxImg,NULL);
+//    copyMenu->setPosition(945,315);
+//    addChild(copyMenu);
+//    
+//    
+//    
+//    auto shareBtnImg = MenuItemImage::create("share/fx_pyq_1.png", "share/fx_pyq_2.png", CC_CALLBACK_0(ShareActivityLayer::shareToFriend,this));
+//    auto shareMenu = Menu::create(shareBtnImg,NULL);
+//    shareMenu->setPosition(640,125);
+//    addChild(shareMenu);
     
     return true;
 }
