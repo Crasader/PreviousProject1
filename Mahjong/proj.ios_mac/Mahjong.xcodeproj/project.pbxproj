@@ -279,6 +279,8 @@
 		D25DEE381CC0F56A007D428A /* bill in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE361CC0F56A007D428A /* bill */; };
 		D25DEE411CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
 		D25DEE421CC4AE78007D428A /* shop in Resources */ = {isa = PBXBuildFile; fileRef = D25DEE401CC4AE78007D428A /* shop */; };
+		D26263E11F04A0E2002A1C28 /* shiming in Resources */ = {isa = PBXBuildFile; fileRef = D26263E01F04A0E2002A1C28 /* shiming */; };
+		D26263E21F04A0E2002A1C28 /* shiming in Resources */ = {isa = PBXBuildFile; fileRef = D26263E01F04A0E2002A1C28 /* shiming */; };
 		D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -709,6 +711,7 @@
 		D25329531CC0D33600DDAD97 /* trusteeship */ = {isa = PBXFileReference; lastKnownFileType = folder; path = trusteeship; sourceTree = "<group>"; };
 		D25DEE361CC0F56A007D428A /* bill */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bill; sourceTree = "<group>"; };
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
+		D26263E01F04A0E2002A1C28 /* shiming */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shiming; sourceTree = "<group>"; };
 		D278ADB61DFFC23400C90B25 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		D278ADB81DFFC23400C90B25 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -1014,6 +1017,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D26263E01F04A0E2002A1C28 /* shiming */,
 				D2E035171ED914D400291282 /* hongbao */,
 				D2DCA7D61ECEC067009F9C59 /* competition */,
 				D281E5A01DACF35600D3E44E /* audio */,
@@ -2248,6 +2252,7 @@
 				D253297C1CC0D33600DDAD97 /* trusteeship in Resources */,
 				D2E035181ED914D400291282 /* hongbao in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				D26263E11F04A0E2002A1C28 /* shiming in Resources */,
 				D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2280,6 +2285,7 @@
 				D2E035191ED914D400291282 /* hongbao in Resources */,
 				D25329611CC0D33600DDAD97 /* fonts in Resources */,
 				D2DCA7D81ECEC067009F9C59 /* competition in Resources */,
+				D26263E21F04A0E2002A1C28 /* shiming in Resources */,
 				D25329731CC0D33600DDAD97 /* mjlobby in Resources */,
 				D25329631CC0D33600DDAD97 /* friend in Resources */,
 				D286A53F1DD30E46001369C1 /* wanjiaqun in Resources */,

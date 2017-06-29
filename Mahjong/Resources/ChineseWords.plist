@@ -236,9 +236,9 @@
 		<key>dialog_text_12</key>
 		<string>未达成抽奖条件</string>
 		<key>dialog_text_13</key>
-		<string>请输入姓名</string>
+		<string>请输入您的真实姓名</string>
 		<key>dialog_text_14</key>
-		<string>请输入身份证号码</string>
+		<string>请输入您的身份证号</string>
 		<key>dialog_text_15</key>
 		<string>输入的身份证号码不正确</string>
 		<key>dialog_text_16</key>

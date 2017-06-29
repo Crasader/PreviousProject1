@@ -30,40 +30,27 @@ bool ShiMingLayer::init(){
     closeMenu->setPosition(980, 580);
     addChild(closeMenu);
     
-    auto paodai = Sprite::create("mjlobby/shi_ming_title.png");
+    auto paodai = Sprite::create("shiming/shi_ming_title.png");
     paodai->setPosition(640, 590);
     this->addChild(paodai);
     
-    auto xingming = Sprite::create("mjlobby/xin_ming.png");
+    auto xingming = Sprite::create("shiming/xin_ming.png");
     xingming->setPosition(410,460);
     addChild(xingming);
-    auto input_bg_1 = ui::Scale9Sprite::create("common/input_box_bg.png");
+    auto input_bg_1 = ui::Scale9Sprite::create("shiming/input_box_bg.png");
     input_bg_1->setContentSize(Size(430,81));
     input_bg_1->setPosition(710, 460);
     addChild(input_bg_1);
     
-    auto sfz = Sprite::create("mjlobby/xin_ming.png");
+    auto sfz = Sprite::create("shiming/shen_fen_zhen.png");
     sfz->setPosition(410,350);
     addChild(sfz);
-    auto input_bg_2 = ui::Scale9Sprite::create("common/input_box_bg.png");
+    auto input_bg_2 = ui::Scale9Sprite::create("shiming/input_box_bg.png");
     input_bg_2->setContentSize(Size(430, 81));
     input_bg_2->setPosition(710, 350);
     addChild(input_bg_2);
     
-    if(GAMEDATA::getInstance()->getCertification()){
-        //    Label* accountLabel = Label::createWithSystemFont("aaaa", "arial", 30);
-        //    accountLabel->setColor(Color3B(93,172,221));
-        //    accountLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        //    accountLabel->setPosition(630, 460);
-        //    addChild(accountLabel);
-        
-        //    auto nickNameLabel = Label::createWithSystemFont("aaaaaaa", "arial", 30);
-        //    nickNameLabel->setColor(Color3B(93, 172, 221));
-        //    nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        //    nickNameLabel->setPosition(630, 350);
-        //    addChild(nickNameLabel);
-        
-    }else{
+    if(!GAMEDATA::getInstance()->getCertification()){
         _editName1 = ui::EditBox::create(Size(400, 50), ui::Scale9Sprite::create());
         _editName1->setPosition(Point(710, 460));
         _editName1->setTag(100);
@@ -79,7 +66,7 @@ bool ShiMingLayer::init(){
         _editName2->setPosition(Point(710, 350));
         _editName2->setTag(200);
         _editName2->setFont("arial", 24);
-		_editName2->setPlaceHolder(ChineseWord("dialog_text_14").c_str());
+        _editName2->setPlaceHolder(ChineseWord("dialog_text_14").c_str());
         _editName2->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);
         _editName2->setInputFlag(cocos2d::ui::EditBox::InputFlag::SENSITIVE);
         _editName2->setReturnType(cocos2d::ui::EditBox::KeyboardReturnType::DONE);
@@ -91,15 +78,13 @@ bool ShiMingLayer::init(){
         myMneu->setPosition(640,200);
         addChild(myMneu);
         
-		Label* error = Label::createWithSystemFont(ChineseWord("dialog_text_15"), "arial", 20);
+        auto error = Sprite::create("shiming/error_code.png");
         error->setTag(300);
-        error->setColor(Color3B::RED);
-        error->setPosition(640,300);
+        error->setPosition(640,290);
         error->setVisible(false);
         addChild(error);
+        
     }
-    
-    
     
     return true;
 }
