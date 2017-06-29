@@ -340,14 +340,20 @@ void LobbyScene::drawSceneMid(){
         com->setPosition(240+(i%2)*400,420-180*(i/2));
         addChild(com);
     }
+    auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
+    auto jinMenu =  Menu ::create(jinImg,NULL);
+    jinMenu->setPosition(1135,183);
+    jinMenu->setTag(1297);
+    addChild(jinMenu);
     if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
         GAMEDATA::getInstance()->setRoomList(newData);
         GoldRoomPlate* plate = GoldRoomPlate::create(newData);
         plate->setTag(1298);
+        plate->setVisible(false);
         addChild(plate,2);
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         //支付审核
-        plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
 #endif
     }
 }
@@ -658,7 +664,7 @@ void LobbyScene::joinRoom(){
 }
 
 
-void LobbyScene::showGoldRoomPad(){
+void LobbyScene::spreadGoldRoom(){
     if(NULL != getChildByTag(1298)){
         getChildByTag(1298)->setVisible(!getChildByTag(1298)->isVisible());
     }
@@ -1126,14 +1132,20 @@ void LobbyScene::addEventListener(){
                 com->setPosition(835+(i%2)*290,510-175*(i/2));
                 addChild(com);
             }
+            auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
+            auto jinMenu =  Menu ::create(jinImg,NULL);
+            jinMenu->setPosition(1135,183);
+            jinMenu->setTag(1297);
+            addChild(jinMenu);
             if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
                 GAMEDATA::getInstance()->setRoomList(newData);
                 GoldRoomPlate* plate = GoldRoomPlate::create(newData);
                 plate->setTag(1298);
+                plate->setVisible(false);
                 addChild(plate,2);
 #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
                 //支付审核
-                plate->setVisible(UserData::getInstance()->isWeixinPayOpen());
+                jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
 #endif
             }
         }

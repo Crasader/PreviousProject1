@@ -66,7 +66,6 @@ private:
 	void drawSceneBot();
     void openRoom();
     void joinRoom();
-    void showGoldRoomPad();
     void chargeGold();
     void chargeFangka();
     void exchangeLequan();
@@ -81,6 +80,7 @@ private:
 	void showHotActivity();
 	void showHeroInfo();
     void showLoading();
+    void spreadGoldRoom();
     void removeLoading();
     void showLobbyAnim();
 	void addEventListener();

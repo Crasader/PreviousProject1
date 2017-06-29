@@ -34,7 +34,7 @@ bool GoldRoomPlate::init(RoomListData data){
     //绘制界面
     for(int i=(int)(data.rooms.size()-1);i>=0;i--){
         GoldRoomButton* button = GoldRoomButton::create(data.rooms.at(i).roomId, data.rooms.at(i).hua, data.rooms.at(i).base);
-        button->setPosition(1040,240+((int)data.rooms.size()-1-i)*180);
+        button->setPosition(675+((int)data.rooms.size()-1-i)*250,190);
         addChild(button);
     }
     return true;
