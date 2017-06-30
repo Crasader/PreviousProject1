@@ -39,7 +39,7 @@ bool ChargeGold::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChargeGold::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1140, 550);
+    closeMenu->setPosition(1170, 570);
     addChild(closeMenu);
     
     if(!GAMEDATA::getInstance()->getGoldChangeList().needInit){
@@ -120,55 +120,50 @@ void ChargeGold::showChargeGold(){
             diamond->setTexture("shop/gold_icon_2.png");
         }else{
             diamond->setTexture("shop/gold_icon_3.png");
-            
         }
         diamond->setPosition(205+175*i,370);
         this->addChild(diamond);
+    
         
-        auto piao = Sprite::create();
-        piao->setPosition(205+175*i,280);
-        addChild(piao);
-        
-        if(i==0){
-            piao->setTexture("shop/purple_piaodai.png");
-        }else if(i==1||i==2){
-            piao->setTexture("shop/red_piaodai.png");
+        float goldN = list.list.at(i).gold/10000;
+        LabelAtlas* diamondNum = LabelAtlas::create("0","shop/change_gold_num.png",22,29,'0');
+        if(goldN>=1){
+            diamondNum->setString(StringUtils::format(":%d",(int)goldN));
         }else{
-            piao->setTexture("shop/yellow_piaodai.png");
-            
+            std::string number = StringUtils::format("%0.1f",goldN);
+            int pos  =  (int)number.find(".");
+            if(pos>=0){
+                number.replace(pos,1, ";");
+            }
+            diamondNum->setString(StringUtils::format(":%s",number.c_str()));
         }
-        
-        LabelAtlas* diamondNum = LabelAtlas::create(StringUtils::format("%d",list.list.at(i).gold/10000),"shop/prop_num.png",21,28,'0');
-        diamondNum->setPosition(190+175*i,291);
+        diamondNum->setPosition(235+175*i,340);
         diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(diamondNum);
-        
         auto fontWan = Sprite::create("shop/font_wan.png");
         addChild(fontWan);
-        fontWan->setPosition(200+175*i,291);
+        fontWan->setPosition(250+175*i,340);
         
-        auto zhuan = Sprite::create("shop/gold_text.png");
-        zhuan->setPosition(245+175*i,291);
-        addChild(zhuan);
+        auto xiaohao = Sprite::create("shop/xiao_hao_text.png");
+        xiaohao->setPosition(205+175*i,307);
+        addChild(xiaohao);
         
-        
-        auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(ChargeGold::chargeGoldBtn, this));
+        auto btnImage = MenuItemImage::create("shop/buy_gold_btn_1.png","shop/buy_gold_btn_2.png",CC_CALLBACK_1(ChargeGold::chargeGoldBtn, this));
         btnImage->setTag(list.list.at(i).gold);
         auto myMenu = Menu::create(btnImage,NULL);
         myMenu->setPosition(205+175*i,225);
         addChild(myMenu);
         
-        auto yuan = Sprite::create("mjitem/fangka_icon.png");
+        auto yuan = Sprite::create("shop/fangka_num_text.png");
         yuan->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         addChild(yuan);
         
-        LabelAtlas* money=LabelAtlas::create(StringUtils::format(":%d",list.list.at(i).fangka),"shop/charge_btn_num.png",26,32,'0');
-        
+        LabelAtlas* money=LabelAtlas::create(StringUtils::format(":%d",list.list.at(i).fangka),"shop/prop_num.png",22,34,'0');
         money->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(money);
         
         int width = yuan->getContentSize().width+money->getContentSize().width;
-        yuan->setPosition(205+176*i-width/2,222);
-        money->setPosition(200+176*i+width/2,227);
+        money->setPosition(175+176*i,275);
+        yuan->setPosition(175+176*i,275);
     }
 }

@@ -30,7 +30,7 @@ bool ShareActivityLayer::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ShareActivityLayer::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1050, 615);
+    closeMenu->setPosition(1070, 635);
     addChild(closeMenu);
     
 //    auto titleIcon = Sprite::create("share/activity_titile.png");

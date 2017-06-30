@@ -31,18 +31,18 @@ bool ChargeFangka::init(){
     this->addChild(menu1);
     
     
-    auto dialog_bg = ui::Scale9Sprite::create("shop/gold_not_enough.png",Rect(0, 0, 639, 444), Rect(100, 0, 100, 0));
+    auto dialog_bg = Sprite::create("common/dialog_bg.png");
     dialog_bg->setTag(1024);
     dialog_bg->setPosition(640,360);
     addChild(dialog_bg);
     
     auto title = Sprite::create("shop/charge_title.png");
-    title->setPosition(640,560);
+    title->setPosition(640,580);
     addChild(title);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChargeFangka::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(910, 540);
+    closeMenu->setPosition(1015, 600);
     closeMenu->setTag(1025);
     addChild(closeMenu);
     
@@ -78,14 +78,6 @@ void ChargeFangka::showChargeDialog(){
                 swap(list.list.at(i), list.list.at(i+1));
             }
         }
-    }
-    if(NULL != getChildByTag(1025)){
-        int width2 = (list.list.size()-2)*140;
-        getChildByTag(1025)->setPosition(getChildByTag(1025)->getPosition().x+width2/2,getChildByTag(1025)->getPosition().y);
-    }
-    if(NULL != getChildByTag(1024)){
-        int width = (list.list.size()-2)*140;
-        getChildByTag(1024)->setContentSize(Size(640+(width>0?width:0),444));
     }
     for(int i=0;i<list.list.size();i++){
         int posx = (1280-(list.list.size()-1)*230)/2;

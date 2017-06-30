@@ -29,7 +29,7 @@ bool ChargeItem::init(int price, int fangakNum,int payId){
     if(!Sprite::init()){
         return false;
     }
-    auto propBg =  Sprite::create("shop/prop_bg.png");
+    auto propBg =  Sprite::create("shop/shop_prop_bg.png");
     propBg->setPosition(0,0);
     addChild(propBg);
     
@@ -41,31 +41,22 @@ bool ChargeItem::init(int price, int fangakNum,int payId){
     icon_fk->setPosition(0,25);
     addChild(icon_fk);
     
-    
-    LabelAtlas* fangkaNum = LabelAtlas::create(StringUtils::format("%d",fangakNum),"result/fan_num.png",17,26,'0');
+    LabelAtlas* fangkaNum = LabelAtlas::create(StringUtils::format("%d",fangakNum),"shop/prop_num.png",22,34,'0');
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fangkaNum->setPosition(-32,-52);
+    fangkaNum->setPosition(-25,-52);
     addChild(fangkaNum,2);
     auto fangkatext = Sprite::create();
     fangkatext->setTexture("shop/fangka_num_text.png");
     fangkatext->setPosition(22,-52);
     this->addChild(fangkatext,2);
     
-    auto piao = Sprite::create();
-    piao->setPosition(0,-65);
-    addChild(piao);
-     piao->setTexture("shop/purple_piaodai.png");
-    if(fangakNum>=FANGKA_NUM){
-        piao->setTexture("shop/red_piaodai.png");
-    }
-    
-    auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(ChargeItem::confirmCharge, this));
+    auto btnImage = MenuItemImage::create("shop/button_bg_1.png","shop/button_bg_2.png",CC_CALLBACK_1(ChargeItem::confirmCharge,this));
     btnImage->setTag(payId);
     auto myMenu = Menu::create(btnImage,NULL);
     myMenu->setPosition(0,-118);
     addChild(myMenu);
-    
-    LabelAtlas* money = LabelAtlas::create(StringUtils::format("%d",price/100),"shop/charge_btn_num.png",26,32,'0');
+
+    LabelAtlas* money = LabelAtlas::create(StringUtils::format("%d",price/100),"shop/button_num.png",24,36,'0');
     money->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(money);
     
@@ -75,19 +66,10 @@ bool ChargeItem::init(int price, int fangakNum,int payId){
     
     int width2 = money->getContentSize().width + yuan->getContentSize().width;
     money->setPosition(-width2/2,-115);
-    yuan->setPosition(width2/2,-115);
-    
-    if(fangakNum>FANGKA_NUM){
-        auto discount = Sprite::create("shop/discount_96.png");
-        discount->setPosition(70,110);
-        addChild(discount);
-    }
-    
+    yuan->setPosition(width2/2,-117);
     
     return true;
 }
-
-
 
 void ChargeItem::confirmCharge(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*) ref;
