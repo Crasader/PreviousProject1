@@ -30,7 +30,7 @@ bool LequanExchangeRecord::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(LequanExchangeRecord::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1050, 610);
+    closeMenu->setPosition(1070, 630);
     addChild(closeMenu);
     
     auto tableView = TableView::create(this, Size(765, 450));
@@ -128,17 +128,17 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         
         auto myPropName = Label::createWithSystemFont(propName, "arial", 30);
         myPropName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+        myPropName->setColor(Color3B(208,46,29));
         myPropName->setTag(101);
         myPropName->setPosition(190,90);
         cell->addChild(myPropName);
     
-        
         auto xiao = Sprite::create("shop/xiaohao_img.png");
         xiao->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         xiao->setPosition(myPropName->getContentSize().width+myPropName->getPositionX(),90);
         cell->addChild(xiao);
         
-        auto huaNum = LabelAtlas::create(getPropConsume(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId), "shop/chong_zhi_ka_num.png", 22, 34, '0');
+        auto huaNum = LabelAtlas::create(getPropConsume(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).propId), "shop/dui_huan_num.png", 22, 32, '0');
         huaNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         huaNum->setPosition(xiao->getContentSize().width+xiao->getPositionX(),90);
         huaNum->setTag(102);
@@ -146,32 +146,32 @@ TableViewCell* LequanExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         
         auto quan = Sprite::create("shop/lequan_img.png");
         quan->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        quan->setPosition(huaNum->getContentSize().width+huaNum->getPositionX(),90);
+        quan->setPosition(huaNum->getContentSize().width+huaNum->getPositionX(),85);
         cell->addChild(quan);
         
         
         auto shijian = Label::createWithSystemFont("兑换时间:","arial", 22);
         shijian->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        shijian->setColor(Color3B(223,162,182));
+        shijian->setColor(Color3B(132,42,22));
         shijian->setPosition(190,60);
         cell->addChild(shijian);
-        
+
         auto time = Label::createWithSystemFont(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).time,"arial", 22);
         time->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        time->setColor(Color3B(223,162,182));
+        time->setColor(Color3B(132,42,22));
         time->setPosition(300,60);
         time->setTag(103);
         cell->addChild(time);
         
         auto shouji = Label::createWithSystemFont("兑换手机号:","arial", 22);
         shouji->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        shouji->setColor(Color3B(223,162,182));
+        shouji->setColor(Color3B(132,42,22));
         shouji->setPosition(190,30);
         cell->addChild(shouji);
         
         auto phoneNum = Label::createWithSystemFont(GAMEDATA::getInstance()->getLeChangeRecord().records.at(idx).phone,"arial", 22);
         phoneNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        phoneNum->setColor(Color3B(223,162,182));
+        phoneNum->setColor(Color3B(132,42,22));
         phoneNum->setPosition(320,30);
         phoneNum->setTag(104);
         cell->addChild(phoneNum);
@@ -219,28 +219,16 @@ ssize_t LequanExchangeRecord::numberOfCellsInTableView(TableView *table){
 
 
 std::string LequanExchangeRecord::getImageNameById(int id){
-    //后期可以做成从网络获取数据,目前在客户端写死
     switch (id) {
         case 1:
             return "shop/huafei_30.png";
         case 2:
-            return "shop/huafei_30.png";
-        case 3:
-            return "shop/huafei_30.png";
-        case 4:
-            return "shop/huafei_30.png";
+            return "shop/huafei_50.png";
         case 5:
             return "shop/huafei_100.png";
         case 6:
-            return "shop/huafei_50.png";
-        case 7:
-            return "shop/huafei_50.png";
-        case 11:
-            return "shop/liuliang_50.png";
-        case 21:
-            return "shop/ipones_6s.png";
+            return "shop/huafei_200.png";
         default:
             return "shop/huafei_30.png";
     }
-    
 }
