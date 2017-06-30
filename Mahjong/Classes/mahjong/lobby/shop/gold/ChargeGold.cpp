@@ -161,8 +161,6 @@ void ChargeGold::showChargeGold(){
         LabelAtlas* money=LabelAtlas::create(StringUtils::format(":%d",list.list.at(i).fangka),"shop/prop_num.png",22,34,'0');
         money->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(money);
-        
-        int width = yuan->getContentSize().width+money->getContentSize().width;
         money->setPosition(175+176*i,275);
         yuan->setPosition(175+176*i,275);
     }

@@ -32,12 +32,12 @@ bool LequanShop::init(){
     addChild(dialog_bg);
     
     auto title = Sprite::create("shop/title_shop.png");
-    title->setPosition(654,600);
+    title->setPosition(654,552);
     addChild(title);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(LequanShop::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1050, 550);
+    closeMenu->setPosition(1070, 570);
     addChild(closeMenu);
     
     if(GAMEDATA::getInstance()->getLequanChangeList().list.size()==0){
@@ -92,23 +92,25 @@ void LequanShop::onExit(){
 void LequanShop::showLequanShop(){
     
     auto btnBg = Sprite::create("shop/record_btn_bg.png");
-    btnBg->setPosition(640,510);
+    btnBg->setScaleX(0.5f);
+    btnBg->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    btnBg->setPosition(225,502);
     addChild(btnBg);
     
     auto recordImage = MenuItemImage::create("shop/exchange_record_1.png","shop/exchange_record_1.png",CC_CALLBACK_0(LequanShop::showRecord, this));
     recordImage->setScale(0.7f);
     auto recordMenu = Menu::create(recordImage, NULL);
-    recordMenu->setPosition(272,512);
+    recordMenu->setPosition(280,502);
     addChild(recordMenu);
     
-    auto lequanIcon = Sprite::create("shop/lequan_icon.png");
-    lequanIcon->setPosition(385,512);
+    auto lequanIcon = Sprite::create("common/lequan_icon.png");
+    lequanIcon->setPosition(385,502);
     addChild(lequanIcon);
     
-    LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format("%d",UserData::getInstance()->getTicket()),"shop/prop_num.png",21,28,'0');
+    LabelAtlas* lequanNum = LabelAtlas::create(StringUtils::format("%d",UserData::getInstance()->getTicket()),"shop/prop_num.png",22,34,'0');
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setTag(962);
-    lequanNum->setPosition(416,512);
+    lequanNum->setPosition(416,502);
     addChild(lequanNum);
     
     for(int i=0;i<GAMEDATA::getInstance()->getLequanChangeList().list.size();i++){

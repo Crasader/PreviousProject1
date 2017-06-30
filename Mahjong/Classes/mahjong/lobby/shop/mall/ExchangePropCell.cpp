@@ -54,30 +54,22 @@ bool ExchangePropCell::init(int propId,int lequanNum,std::string propName,std::s
     
     
     
-    auto consume_lequan = Sprite::create();
-    consume_lequan->setPosition(0,-50);
-    addChild(consume_lequan);
-    if(lequanNum == 10000){
-        consume_lequan->setTexture("shop/resume_10000.png");
-    }else if(lequanNum == 17000){
-        consume_lequan->setTexture("shop/resume_17000.png");
-    }else if(lequanNum == 34000){
-        consume_lequan->setTexture("shop/resume_34000.png");
-    }else if(lequanNum == 1500000){
-        consume_lequan->setTexture("shop/resume_1500000.png");
-    }else{
-        auto lequan = Label::createWithSystemFont(ChineseWord("xioahao"),"arial",24);
-        lequan->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        lequan->setColor(Color3B(240,228,45));
-        lequan->setPosition(0,-35);
-        addChild(lequan);
-        auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%d%s", lequanNum, ChineseWord("lequan").c_str()), "arial", 24);
-        lequanXiao->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        lequanXiao->setColor(Color3B(240,228,45));
-        lequanXiao->setPosition(0,-65);
-        addChild(lequanXiao);
-    }
+    auto xiaohao = Sprite::create("shop/xiao_hao_text.png");
+    xiaohao->setPosition(0,-25);
+    addChild(xiaohao);
     
+    auto yuan = Sprite::create("shop/lequan_text.png");
+    yuan->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    addChild(yuan);
+    
+    LabelAtlas* money=LabelAtlas::create(StringUtils::format(":%d",lequanNum),"shop/prop_num.png",22,34,'0');
+    money->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    addChild(money);
+    
+    int width2 = money->getContentSize().width + yuan->getContentSize().width;
+    money->setPosition(-width2/2,-60);
+    yuan->setPosition(width2/2,-60);
+
     auto btnImage = MenuItemImage::create("shop/btn_buy_1.png","shop/btn_buy_2.png",CC_CALLBACK_1(ExchangePropCell::confirmChange, this));
     btnImage->setTag(propId);
     btnImage->setName(propName);
