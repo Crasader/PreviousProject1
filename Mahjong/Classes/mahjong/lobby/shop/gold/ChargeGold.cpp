@@ -34,7 +34,7 @@ bool ChargeGold::init(){
     addChild(dialog_bg);
     
     auto title = Sprite::create("shop/buy_gold_title.png");
-    title->setPosition(654,560);
+    title->setPosition(654,555);
     addChild(title);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChargeGold::closeView, this));
