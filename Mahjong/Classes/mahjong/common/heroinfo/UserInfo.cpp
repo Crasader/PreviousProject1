@@ -107,9 +107,8 @@ void UserInfo::showUserInfo(){
     auto gold_bg = Sprite::create("playerinfo/room_info_bg.png");
     gold_bg->setPosition(645, 230);
     addChild(gold_bg);
-    auto gold_icon = Sprite::create("common/gold_iocn.png");
+    auto gold_icon = Sprite::create("common/gold_icon.png");
     gold_icon->setPosition(570, 230);
-    gold_icon->setScale(0.72f);
     addChild(gold_icon);
     auto goldNum = Label::createWithSystemFont(StringUtils::format("%d",UserData::getInstance()->getGold()),"Arial",25);
     goldNum->setColor(Color3B(127, 37, 7));
