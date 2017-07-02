@@ -28,19 +28,19 @@ bool BillInfo::init()
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(BillInfo::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1040, 660);
+    closeMenu->setPosition(1075, 672);
     closeMenu->setTag(102);
     addChild(closeMenu);
     
     auto icon = Sprite::create("bill/bill_title.png");
-    icon->setPosition(640, 668);
+    icon->setPosition(640, 648);
     icon->setTag(104);
     addChild(icon);
     
-    tableView = TableView::create(this, Size(832, 500));
+    tableView = TableView::create(this, Size(832, 485));
     tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView->setDirection(ScrollView::Direction::VERTICAL);
-    tableView->setPosition(225, 125);
+    tableView->setPosition(225, 120);
     tableView->setTag(105);
     tableView->setDelegate(this);
     tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
