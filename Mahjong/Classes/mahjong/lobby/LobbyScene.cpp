@@ -288,7 +288,6 @@ void LobbyScene::drawSceneTop(){
 
 void LobbyScene::drawSceneMid(){
     
-    
     auto dayTask = MenuItemImage::create("mjlobby/dailytask1.png", "mjlobby/dailytask2.png",CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto dayTaskMenu = Menu::create(dayTask, NULL);
     dayTaskMenu->setPosition(600, 535);
@@ -313,16 +312,8 @@ void LobbyScene::drawSceneMid(){
     firstMenu->setTag(1988);
     firstMenu->setPosition(600, 330);
     addChild(firstMenu);
-    
-    //    firstMenu->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(90, 562)),MoveTo::create(0.6f,Point(90, 542)),NULL), CC_REPEAT_FOREVER));
-    //    //感叹号
-    //    ganTanhao = Sprite::create("mjlobby/gantanhao.png");
-    //    ganTanhao->setPosition(120,575);
-    //    addChild(ganTanhao);
-    //    ganTanhao->runAction(Repeat::create(Sequence::create(MoveTo::create(0.6f,Point(120, 590)),MoveTo::create(0.6f,Point(120, 570)),NULL), CC_REPEAT_FOREVER));
     if(UserData::getInstance()->isFirstCharge()){
         firstMenu->setVisible(false);
-        //        ganTanhao->setVisible(false);
     }
     
     //跑马灯

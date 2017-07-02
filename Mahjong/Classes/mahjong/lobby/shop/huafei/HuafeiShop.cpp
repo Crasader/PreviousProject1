@@ -35,6 +35,12 @@ bool HuafeiShop::init(){
     yebg->setPosition(640,585);
     addChild(yebg);
     
+    huaFeiLayer = Layer::create();
+    addChild(huaFeiLayer);
+    
+    fangKaLayer = Layer::create();
+    fangKaLayer->setVisible(false);
+    addChild(fangKaLayer);
     
     auto btnImage1 = Sprite::create("shop/huafei_duihuan_btn.png");
     btnImage1->setTag(1001);
@@ -140,11 +146,10 @@ void HuafeiShop::showHuafeiShop(){
     lequanNum->setTag(962);
     lequanNum->setPosition(420,512);
     addChild(lequanNum);
-    
     for(int i=0;i<GAMEDATA::getInstance()->getHuafeiChangeList().list.size();i++){
         ExchangeHuafeiCell* cell = ExchangeHuafeiCell::create(GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).propId,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).url,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).propPrice,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).name);
         cell->setPosition(312+(i%4)*220,315);
-        addChild(cell);
+        huaFeiLayer->addChild(cell);
     }
 }
 
@@ -159,6 +164,8 @@ void HuafeiShop::exchange(Ref* ref){
 void HuafeiShop::showHuaFeiChange(Ref* ref){
     haufeiToggle->setSelectedIndex(0);
     fangkaToggle->setSelectedIndex(1);
+    huaFeiLayer->setVisible(true);
+    fangKaLayer->setVisible(false);
     if(NULL != getChildByTag(1001)){
         getChildByTag(1001)->setVisible(true);
     }
@@ -171,6 +178,8 @@ void HuafeiShop::showHuaFeiChange(Ref* ref){
 void HuafeiShop::showFangKaChange(Ref* ref){
     haufeiToggle->setSelectedIndex(1);
     fangkaToggle->setSelectedIndex(0);
+    huaFeiLayer->setVisible(false);
+    fangKaLayer->setVisible(true);
     if(NULL != getChildByTag(1001)){
         getChildByTag(1001)->setVisible(false);
     }

@@ -23,6 +23,8 @@ private:
     EventListenerCustom* huafeiChangeResp;
     MenuItemToggle* fangkaToggle;
     MenuItemToggle*  haufeiToggle;
+    Layer* huaFeiLayer;
+    Layer* fangKaLayer;
     void showHuafeiShop();
     void exchange(Ref* ref);
     void showRecord();

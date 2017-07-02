@@ -49,6 +49,8 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D2030EFA1F08E2D3001568BD /* ExchangeFangKaCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2030EF81F08E2D3001568BD /* ExchangeFangKaCell.cpp */; };
+		D2030EFB1F08E2D3001568BD /* ExchangeFangKaCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2030EF81F08E2D3001568BD /* ExchangeFangKaCell.cpp */; };
 		D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
 		D20474B91E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
 		D20E97C11EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */; };
@@ -494,6 +496,8 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D2030EF81F08E2D3001568BD /* ExchangeFangKaCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeFangKaCell.cpp; sourceTree = "<group>"; };
+		D2030EF91F08E2D3001568BD /* ExchangeFangKaCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ExchangeFangKaCell.hpp; sourceTree = "<group>"; };
 		D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SwitchHttp.cpp; sourceTree = "<group>"; };
 		D20474B71E5D36F7001F7121 /* SwitchHttp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwitchHttp.hpp; sourceTree = "<group>"; };
 		D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuafeiChangeConfirm.cpp; sourceTree = "<group>"; };
@@ -1800,16 +1804,18 @@
 		D29BE26A1ED686AA00EED3A0 /* huafei */ = {
 			isa = PBXGroup;
 			children = (
-				D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */,
-				D2E0350F1ED90CF000291282 /* HuafeiExchangeRecord.hpp */,
-				D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */,
+				D2030EF81F08E2D3001568BD /* ExchangeFangKaCell.cpp */,
+				D2030EF91F08E2D3001568BD /* ExchangeFangKaCell.hpp */,
 				D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */,
 				D2E035071ED7C38C00291282 /* ExchangeHuafeiCell.hpp */,
+				D2E0350A1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp */,
 				D2E0350B1ED7CCDA00291282 /* ExchangeHuafeiItem.hpp */,
-				D29BE26B1ED686CF00EED3A0 /* HuafeiShop.cpp */,
-				D29BE26C1ED686CF00EED3A0 /* HuafeiShop.hpp */,
 				D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */,
 				D20E97C01EDEA61900F51A7F /* HuafeiChangeConfirm.hpp */,
+				D2E0350E1ED90CF000291282 /* HuafeiExchangeRecord.cpp */,
+				D2E0350F1ED90CF000291282 /* HuafeiExchangeRecord.hpp */,
+				D29BE26B1ED686CF00EED3A0 /* HuafeiShop.cpp */,
+				D29BE26C1ED686CF00EED3A0 /* HuafeiShop.hpp */,
 			);
 			path = huafei;
 			sourceTree = "<group>";
@@ -2332,6 +2338,7 @@
 				D252FB5A1E7FA5EC00937322 /* Chinese.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D2FD5B591EA711510016FCCC /* CallVoiceApi.mm in Sources */,
+				D2030EFA1F08E2D3001568BD /* ExchangeFangKaCell.cpp in Sources */,
 				D252FB561E7FA5EC00937322 /* UserSetting.cpp in Sources */,
 				D252FC4D1E7FABE900937322 /* OutFogAnim.cpp in Sources */,
 				D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */,
@@ -2510,6 +2517,7 @@
 				D252FC521E7FABE900937322 /* GuiLayer.cpp in Sources */,
 				D252FB3D1E7FA5EC00937322 /* LostNetwork2.cpp in Sources */,
 				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
+				D2030EFB1F08E2D3001568BD /* ExchangeFangKaCell.cpp in Sources */,
 				D252FB571E7FA5EC00937322 /* UserSetting.cpp in Sources */,
 				D252FC4E1E7FABE900937322 /* OutFogAnim.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
