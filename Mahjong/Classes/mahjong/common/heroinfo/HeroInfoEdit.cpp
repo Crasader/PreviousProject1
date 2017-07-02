@@ -55,7 +55,7 @@ void HeroInfoEdit::drawHeroInfoEdit(int type){
     addChild(closeMenu);
     
     auto icon = Sprite::create("playerinfo/hero_info.png");
-    icon->setPosition(640, 615);
+    icon->setPosition(640, 580);
     addChild(icon);
     
     userInfoLayer = UserInfo::create();

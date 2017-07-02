@@ -100,7 +100,7 @@ void UserInfo::showUserInfo(){
     auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getFangkaNum()),"Arial",25);
     fangkaNum->setColor(Color3B(127, 37, 7));
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fangkaNum->setPosition(420, 230);
+    fangkaNum->setPosition(390, 230);
     addChild(fangkaNum);
 
 //    //gold
@@ -113,7 +113,7 @@ void UserInfo::showUserInfo(){
     auto goldNum = Label::createWithSystemFont(StringUtils::format("%d",UserData::getInstance()->getGold()),"Arial",25);
     goldNum->setColor(Color3B(127, 37, 7));
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    goldNum->setPosition(614, 230);
+    goldNum->setPosition(600, 230);
     addChild(goldNum);
 
 //    //lequan
@@ -123,10 +123,10 @@ void UserInfo::showUserInfo(){
     auto lequan_icon = Sprite::create("common/lequan_icon.png");
     lequan_icon->setPosition(800, 230);
     this->addChild(lequan_icon);
-    auto lequanNum = Label::createWithSystemFont(StringUtils::format("%df",UserData::getInstance()->getTicket()),"Arial",25);
+    auto lequanNum = Label::createWithSystemFont(StringUtils::format("%d",UserData::getInstance()->getTicket()),"Arial",25);
     lequanNum->setColor(Color3B(127, 37, 7));
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum->setPosition(844, 230);
+    lequanNum->setPosition(830, 230);
     this->addChild(lequanNum);
     
     auto accountquit = MenuItemImage::create("playerinfo/quit_account_1.png","playerinfo/quit_account_2.png",CC_CALLBACK_0(UserInfo::cleanAccountRercord, this));

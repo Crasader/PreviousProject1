@@ -34,9 +34,6 @@ bool GameGongGaoLayer::init(GameGongGao gonggaoData){
     day_bg->setPosition(640, 360);
     addChild(day_bg);
     
-    auto title = Sprite::create("mjlobby/gong_gao_title.png");
-    title->setPosition(640,640);
-    addChild(title);
     
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        CC_CALLBACK_0(GameGongGaoLayer::closeView, this));
