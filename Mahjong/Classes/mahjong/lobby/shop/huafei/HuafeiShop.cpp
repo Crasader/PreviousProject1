@@ -27,17 +27,41 @@ bool HuafeiShop::init(){
     Menu* menu1 = Menu::create(item1, NULL);
     addChild(menu1);
     
-    auto dialog_bg = Sprite::create("shop/charge_bg.png");
+    auto dialog_bg = Sprite::create("shop/duihuan_bg.png");
     dialog_bg->setPosition(640,360);
     addChild(dialog_bg);
     
-    auto title = Sprite::create("shop/huafei_title.png");
-    title->setPosition(654,600);
-    addChild(title);
+    auto yebg = Sprite::create("shop/haufei_duihuan_bg.png");
+    yebg->setPosition(640,585);
+    addChild(yebg);
+    
+    
+    auto btnImage1 = Sprite::create("shop/huafei_duihuan_btn.png");
+    btnImage1->setTag(1001);
+    btnImage1->setPosition(533,585);
+    addChild(btnImage1);
+    auto huafei_normal = MenuItemImage::create("shop/duihuan_fangka_1.png", "shop/duihuan_fangka_1.png");
+    auto haufei_selected = MenuItemImage::create("shop/duihuan_huafei_2.png", "shop/duihuan_huafei_2.png");
+    haufeiToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(HuafeiShop::showHuaFeiChange, this), huafei_normal, haufei_selected, NULL);
+    auto menu = Menu::create(haufeiToggle, NULL);
+    menu->setPosition(533,585);
+    addChild(menu,1);
+    auto btnImage2 = Sprite::create("shop/huafei_duihuan_btn.png");
+    btnImage2->setPosition(760,585);
+    btnImage2->setTag(1002);
+    btnImage2->setVisible(false);
+    addChild(btnImage2);
+    auto fangka_normal = MenuItemImage::create("shop/duihuan_fangka_1.png", "shop/duihuan_fangka_1.png");
+    auto fangka_selected = MenuItemImage::create("shop/duihuan_fangka_2.png", "shop/duihuan_fangka_2.png");
+    fangkaToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(HuafeiShop::showFangKaChange, this), fangka_normal, fangka_selected, NULL);
+    fangkaToggle->setSelectedIndex(1);
+    auto menu2 = Menu::create(fangkaToggle, NULL);
+    menu2->setPosition(760,585);
+    addChild(menu2,1);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(HuafeiShop::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1050, 550);
+    closeMenu->setPosition(1070, 570);
     addChild(closeMenu);
     
     if(GAMEDATA::getInstance()->getLequanChangeList().list.size()==0){
@@ -105,11 +129,16 @@ void HuafeiShop::showHuafeiShop(){
     lequanIcon->setPosition(385,508);
     addChild(lequanIcon);
     
-    Label* lequanNum = Label::createWithSystemFont(StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan()), "arial", 30);
-    lequanNum->setColor(Color3B(255,214,88));
+    std::string number = StringUtils::format("%0.1f",UserData::getInstance()->getHuafeiQuan());
+    int pos = number.find(".0");
+    if(pos>0){
+        number.replace(pos, 2, "");
+    }
+    Label* lequanNum = Label::createWithSystemFont(number, "arial", 30);
+    lequanNum->setColor(Color3B::RED);
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     lequanNum->setTag(962);
-    lequanNum->setPosition(416,512);
+    lequanNum->setPosition(420,512);
     addChild(lequanNum);
     
     for(int i=0;i<GAMEDATA::getInstance()->getHuafeiChangeList().list.size();i++){
@@ -124,6 +153,30 @@ void HuafeiShop::exchange(Ref* ref){
     
     
     
+}
+
+
+void HuafeiShop::showHuaFeiChange(Ref* ref){
+    haufeiToggle->setSelectedIndex(0);
+    fangkaToggle->setSelectedIndex(1);
+    if(NULL != getChildByTag(1001)){
+        getChildByTag(1001)->setVisible(true);
+    }
+    if(NULL != getChildByTag(1002)){
+        getChildByTag(1002)->setVisible(false);
+    }
+}
+
+
+void HuafeiShop::showFangKaChange(Ref* ref){
+    haufeiToggle->setSelectedIndex(1);
+    fangkaToggle->setSelectedIndex(0);
+    if(NULL != getChildByTag(1001)){
+        getChildByTag(1001)->setVisible(false);
+    }
+    if(NULL != getChildByTag(1002)){
+        getChildByTag(1002)->setVisible(true);
+    }
 }
 
 void HuafeiShop::showRecord(){

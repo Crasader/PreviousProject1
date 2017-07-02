@@ -21,10 +21,14 @@ public:
 private:
     EventListenerCustom* huafeiChangeList;
     EventListenerCustom* huafeiChangeResp;
+    MenuItemToggle* fangkaToggle;
+    MenuItemToggle*  haufeiToggle;
     void showHuafeiShop();
     void exchange(Ref* ref);
     void showRecord();
     void closeView();
+    void showHuaFeiChange(Ref* ref);
+    void showFangKaChange(Ref* ref);
 };
 
 #endif /* LequanShop_hpp */
