@@ -46,7 +46,7 @@ bool HuafeiShop::init(){
     btnImage1->setTag(1001);
     btnImage1->setPosition(533,585);
     addChild(btnImage1);
-    auto huafei_normal = MenuItemImage::create("shop/duihuan_fangka_1.png", "shop/duihuan_fangka_1.png");
+    auto huafei_normal = MenuItemImage::create("shop/duihuan_huafei_1.png", "shop/duihuan_huafei_1.png");
     auto haufei_selected = MenuItemImage::create("shop/duihuan_huafei_2.png", "shop/duihuan_huafei_2.png");
     haufeiToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(HuafeiShop::showHuaFeiChange, this), huafei_normal, haufei_selected, NULL);
     auto menu = Menu::create(haufeiToggle, NULL);
