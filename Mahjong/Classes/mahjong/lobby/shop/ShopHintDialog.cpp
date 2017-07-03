@@ -22,14 +22,14 @@ void ShopHintDialog::showDialog(){
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg);
     
-    auto tishiBg = Sprite::create("shop/shop_bg_4.png");
-    tishiBg->setPosition(640,360);
-    tishiBg->setScale(0.7f);
-    addChild(tishiBg);
-    
-    auto title = Sprite::create("common/tishi_icon.png");
-    title->setPosition(640,480);
-    addChild(title);
+//    auto tishiBg = Sprite::create("shop/shop_bg_4.png");
+//    tishiBg->setPosition(640,360);
+//    tishiBg->setScale(0.7f);
+//    addChild(tishiBg);
+//    
+//    auto title = Sprite::create("common/tishi_icon.png");
+//    title->setPosition(640,480);
+//    addChild(title);
     
 
     
