@@ -33,13 +33,13 @@ bool CompetitonLayer::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(CompetitonLayer::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1150, 642);
+    closeMenu->setPosition(1180, 672);
     addChild(closeMenu);
     title = Sprite::create("competition/shanghai_text.png");
     title->setPosition(415,600);
     addChild(title);
     
-    huafeiNum = LabelAtlas::create("0", "competition/huafei_num.png", 48, 76, '0');
+    huafeiNum = LabelAtlas::create("0", "competition/huafei_num.png", 44, 76, '0');
     huafeiNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     huafeiNum->setPosition(530,606);
     addChild(huafeiNum);
