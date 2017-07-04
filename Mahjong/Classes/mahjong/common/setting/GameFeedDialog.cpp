@@ -18,7 +18,7 @@ bool GameFeedDialog::init(){
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg,-1);
-
+    
     
     auto  dialogBg = Sprite::create("common/dialog_bg.png");
     dialogBg->setPosition(640, 360);
@@ -26,19 +26,16 @@ bool GameFeedDialog::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(GameFeedDialog::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 580);
+    closeMenu->setPosition(990, 590);
     addChild(closeMenu);
     
-    auto paodai = Sprite::create("common/piaodai_zi.png");
-    paodai->setPosition(640, 590);
-    this->addChild(paodai);
-    auto icon = Sprite::create("setting/user_feedback_title.png");
-    icon->setPosition(640, 615);
+    auto icon = Sprite::create("rule/usr_feedback_title.png");
+    icon->setPosition(640, 585);
     addChild(icon);
-
     
-    auto input_bg = ui::Scale9Sprite::create("common/input_box_bg.png");
-    input_bg->setContentSize(Size(700,300));
+    
+    auto input_bg = ui::Scale9Sprite::create("rule/input_box_bg.png");
+    input_bg->setContentSize(Size(700,320));
     input_bg->setPosition(640, 390);
     addChild(input_bg);
     
@@ -46,16 +43,17 @@ bool GameFeedDialog::init(){
     _editName->setPosition(Point(655, 400));
     _editName->setTag(0);
     _editName->setFont("arial", 24);
+    _editName->setColor(Color3B(124,37,7));
     _editName->setInputMode(cocos2d::ui::EditBox::InputMode::ANY);
     _editName->setInputFlag(cocos2d::ui::EditBox::InputFlag::SENSITIVE);
     _editName->setReturnType(cocos2d::ui::EditBox::KeyboardReturnType::DONE);
     _editName->setDelegate(this);
     addChild(_editName);
-
     
-    auto text = Sprite::create("setting/input_your_advice.png");
+    
+    auto text = Sprite::create("rule/input_your_advice.png");
     text->setTag(1000);
-    text->setPosition(640,360);
+    text->setPosition(640,380);
     addChild(text);
     
     auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",
@@ -73,8 +71,8 @@ bool GameFeedDialog::init(){
 void GameFeedDialog::onEnter() {
     Layer::onEnter();
     feedListener = EventListenerCustom::create("", [=](EventCustom* event){
-    
-    
+        
+        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(feedListener, 1);
 }

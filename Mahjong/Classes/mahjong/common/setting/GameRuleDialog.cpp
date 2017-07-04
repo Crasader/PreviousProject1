@@ -28,6 +28,10 @@ bool GameRuleDialog::init(){
     closeMenu->setPosition(1000, 670);
     addChild(closeMenu);
     
+    auto icon = Sprite::create("rule/game_rule_text.png");
+    icon->setPosition(640, 655);
+    addChild(icon);
+    
     auto input_bg = Sprite::create("rule/content_bg.png");
     input_bg->setPosition(640, 320);
     addChild(input_bg);
