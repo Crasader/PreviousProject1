@@ -40,35 +40,35 @@ bool FriendRoom::init()
     
     auto fangka8 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka8, this));
     auto fangka8Menu = Menu::create(fangka8,NULL);
-    fangka8Menu->setPosition(458,475);
+    fangka8Menu->setPosition(470,405);
     addChild(fangka8Menu);
     
     auto select8 = Sprite::create("openroom/icon_right.png");
     select8->setTag(1024);
-    select8->setPosition(458,475);
+    select8->setPosition(470,405);
     select8->setVisible(true);
     addChild(select8);
     
     auto fangka4 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka4, this));
     auto fangka4Menu = Menu::create(fangka4,NULL);
-    fangka4Menu->setPosition(695,475);
+    fangka4Menu->setPosition(705,405);
     addChild(fangka4Menu);
     
     auto select4 = Sprite::create("openroom/icon_right.png");
     select4->setTag(1025);
-    select4->setPosition(695,475);
+    select4->setPosition(705,405);
     select4->setVisible(false);
     addChild(select4);
     
     
     auto fangka16 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka16, this));
     auto fangka16Menu = Menu::create(fangka16,NULL);
-    fangka16Menu->setPosition(950,475);
+    fangka16Menu->setPosition(960,405);
     addChild(fangka16Menu);
     
     auto select16 = Sprite::create("openroom/icon_right.png");
     select16->setTag(1026);
-    select16->setPosition(950,475);
+    select16->setPosition(960,405);
     select16->setVisible(false);
     addChild(select16);
     
@@ -83,12 +83,12 @@ bool FriendRoom::init()
     auto leziwu11 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType1, this));
     auto leziwuMenu11 = Menu::create(leziwu11,NULL);
     leziwuMenu11->setTag(2023);
-    leziwuMenu11->setPosition(458,390);
+    leziwuMenu11->setPosition(470,320);
     addChild(leziwuMenu11);
     
     auto leziwuImg11 = Sprite::create("openroom/icon_right.png");
     leziwuImg11->setTag(2024);
-    leziwuImg11->setPosition(458,390);
+    leziwuImg11->setPosition(470,320);
     leziwuImg11->setVisible(true);
     addChild(leziwuImg11);
     
@@ -96,12 +96,12 @@ bool FriendRoom::init()
     auto lezi1120 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType2, this));
     auto lezi1120Menu = Menu::create(lezi1120,NULL);
     lezi1120Menu->setTag(2025);
-    lezi1120Menu->setPosition(695,390);
+    lezi1120Menu->setPosition(705,320);
     addChild(lezi1120Menu);
     
     auto lezi1120Img = Sprite::create("openroom/icon_right.png");
     lezi1120Img->setTag(2026);
-    lezi1120Img->setPosition(695,390);
+    lezi1120Img->setPosition(705,320);
     lezi1120Img->setVisible(false);
     addChild(lezi1120Img);
     
@@ -110,12 +110,12 @@ bool FriendRoom::init()
     auto lezi1150 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType3, this));
     auto lezi1150Menu = Menu::create(lezi1150,NULL);
     lezi1150Menu->setTag(2027);
-    lezi1150Menu->setPosition(950,390);
+    lezi1150Menu->setPosition(960,320);
     addChild(lezi1150Menu);
     
     auto lezi1150Img = Sprite::create("openroom/icon_right.png");
     lezi1150Img->setTag(2028);
-    lezi1150Img->setPosition(950,390);
+    lezi1150Img->setPosition(960,320);
     lezi1150Img->setVisible(false);
     addChild(lezi1150Img);
 
@@ -126,12 +126,12 @@ bool FriendRoom::init()
     auto lezi2240 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType5, this));
     auto lezi2240Menu = Menu::create(lezi2240,NULL);
     lezi2240Menu->setTag(2031);
-    lezi2240Menu->setPosition(458,310);
+    lezi2240Menu->setPosition(470,240);
     addChild(lezi2240Menu);
     
     auto lezi2240Img = Sprite::create("openroom/icon_right.png");
     lezi2240Img->setTag(2032);
-    lezi2240Img->setPosition(458,310);
+    lezi2240Img->setPosition(470,240);
     lezi2240Img->setVisible(false);
     addChild(lezi2240Img);
     
@@ -139,12 +139,12 @@ bool FriendRoom::init()
     auto lezi22100 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectLeziType6, this));
     auto lezi22100Menu = Menu::create(lezi22100,NULL);
     lezi22100Menu->setTag(2033);
-    lezi22100Menu->setPosition(695,310);
+    lezi22100Menu->setPosition(705,240);
     addChild(lezi22100Menu);
     
     auto lezi22100Img = Sprite::create("openroom/icon_right.png");
     lezi22100Img->setTag(2034);
-    lezi22100Img->setPosition(695,310);
+    lezi22100Img->setPosition(705,240);
     lezi22100Img->setVisible(false);
     addChild(lezi22100Img);
     
@@ -152,25 +152,25 @@ bool FriendRoom::init()
     auto wukaibao = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectWukaibao, this));
     auto wukaibaoMenu = Menu::create(wukaibao,NULL);
     wukaibaoMenu->setTag(2035);
-    wukaibaoMenu->setPosition(458,230);
+    wukaibaoMenu->setPosition(470,160);
     addChild(wukaibaoMenu);
     
     auto selectWukaibao = Sprite::create("openroom/icon_right.png");
     selectWukaibao->setTag(2036);
-    selectWukaibao->setPosition(458,230);
+    selectWukaibao->setPosition(470,160);
     selectWukaibao->setVisible(false);
     addChild(selectWukaibao);
     
     //二摸三冲
     auto mo2chong3 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::select2mo3chong, this));
     auto mo2chong3Menu = Menu::create(mo2chong3,NULL);
-    mo2chong3Menu->setPosition(695,230);
+    mo2chong3Menu->setPosition(705,160);
     mo2chong3Menu->setTag(2037);
     addChild(mo2chong3Menu);
     
     auto selectmo2chong3 = Sprite::create("openroom/icon_right.png");
     selectmo2chong3->setTag(2038);
-    selectmo2chong3->setPosition(695,230);
+    selectmo2chong3->setPosition(705,160);
     selectmo2chong3->setVisible(false);
     addChild(selectmo2chong3);
     /** --------------------------上海麻将选择界面ui显示结束-------------------------- **/
@@ -184,65 +184,65 @@ bool FriendRoom::init()
     auto ma159zh = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectMa159zh, this));
     auto ma159zhMenu = Menu::create(ma159zh,NULL);
     ma159zhMenu->setTag(3023);
-    ma159zhMenu->setPosition(458,387);
+    ma159zhMenu->setPosition(470,317);
     addChild(ma159zhMenu);
     ma159zhMenu->setVisible(false);
     
     auto ma159zhImg = Sprite::create("openroom/icon_right.png");
     ma159zhImg->setTag(3024);
-    ma159zhImg->setPosition(458,387);
+    ma159zhImg->setPosition(470,317);
     addChild(ma159zhImg);
     ma159zhImg->setVisible(false);
     
     auto ma159 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectMa159, this));
     auto ma159Menu = Menu::create(ma159,NULL);
     ma159Menu->setTag(3025);
-    ma159Menu->setPosition(695,387);
+    ma159Menu->setPosition(705,317);
     addChild(ma159Menu);
     ma159Menu->setVisible(false);
     
     auto ma159Img = Sprite::create("openroom/icon_right.png");
     ma159Img->setTag(3026);
-    ma159Img->setPosition(695,387);
+    ma159Img->setPosition(705,317);
     addChild(ma159Img);
     ma159Img->setVisible(false);
     
     auto ma1 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectMa1, this));
     auto ma1Menu = Menu::create(ma1,NULL);
     ma1Menu->setTag(3027);
-    ma1Menu->setPosition(950,387);
+    ma1Menu->setPosition(960,317);
     addChild(ma1Menu);
     ma1Menu->setVisible(false);
     
     auto ma1Img = Sprite::create("openroom/icon_right.png");
     ma1Img->setTag(3028);
-    ma1Img->setPosition(950,387);
+    ma1Img->setPosition(960,317);
     addChild(ma1Img);
     ma1Img->setVisible(false);
     
     auto di2 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectDifen2, this));
     auto di2Menu = Menu::create(di2,NULL);
     di2Menu->setTag(3029);
-    di2Menu->setPosition(458,235);
+    di2Menu->setPosition(470,165);
     addChild(di2Menu);
     di2Menu->setVisible(false);
     
     auto di2Img = Sprite::create("openroom/icon_right.png");
     di2Img->setTag(3030);
-    di2Img->setPosition(458,235);
+    di2Img->setPosition(470,165);
     addChild(di2Img);
     di2Img->setVisible(false);
     
     auto di1 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectDifen1, this));
     auto di1Menu = Menu::create(di1,NULL);
     di1Menu->setTag(3031);
-    di1Menu->setPosition(695,235);
+    di1Menu->setPosition(705,165);
     addChild(di1Menu);
     di1Menu->setVisible(false);
     
     auto di1Img = Sprite::create("openroom/icon_right.png");
     di1Img->setTag(3032);
-    di1Img->setPosition(695,235);
+    di1Img->setPosition(705,165);
     addChild(di1Img);
     di1Img->setVisible(false);
     
@@ -250,13 +250,13 @@ bool FriendRoom::init()
     auto di5 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectDifen5, this));
     auto di5Menu = Menu::create(di5,NULL);
     di5Menu->setTag(3033);
-    di5Menu->setPosition(950,235);
+    di5Menu->setPosition(960,165);
     addChild(di5Menu);
     di5Menu->setVisible(false);
     
     auto di5Img = Sprite::create("openroom/icon_right.png");
     di5Img->setTag(3034);
-    di5Img->setPosition(950,235);
+    di5Img->setPosition(960,165);
     addChild(di5Img);
     di5Img->setVisible(false);
     
@@ -267,7 +267,7 @@ bool FriendRoom::init()
     
     auto openBtn = MenuItemImage::create("openroom/open_room_btn_img_1.png", "openroom/open_room_btn_img_2.png", CC_CALLBACK_0(FriendRoom::openRoom, this));
     auto openMenu = Menu::create(openBtn,NULL);
-    openMenu->setPosition(640,105);
+    openMenu->setPosition(640,85);
     addChild(openMenu);
     
     auto touchListener = EventListenerTouchOneByOne::create();
@@ -426,7 +426,7 @@ void FriendRoom::openRoom(){
                 ifemsc = "0";
             }
         }
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(ftype,StringUtils::format("%d",iflezi),ifkb,ifemsc));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(ftype,StringUtils::format("%d",iflezi),ifkb,ifemsc,"4"));
     }else{
         std::string fanma = "0";//0表示没有159zhong,1表示有159,2表示1码
         std::string difen = "2";
