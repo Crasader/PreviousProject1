@@ -254,7 +254,7 @@ void LobbyScene::drawSceneTop(){
     lequanNum = Label::createWithSystemFont("0","Arial",24);
     if(UserData::getInstance()->getTicket()>100000000){
         lequanNum->setString(StringUtils::format("%.0f亿",UserData::getInstance()->getTicket()/100000000.0));
-    }else if(UserData::getInstance()->getGold()>100000){
+    }else if(UserData::getInstance()->getTicket()>100000){
         lequanNum->setString(StringUtils::format("%.0f万",UserData::getInstance()->getTicket()/10000.0));
     }else{
         lequanNum->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));
@@ -404,7 +404,7 @@ void LobbyScene::updateHeroInfo(){
     if(NULL != lequanNum){
         if(UserData::getInstance()->getTicket()>100000000){
             lequanNum->setString(StringUtils::format("%.0f亿",UserData::getInstance()->getTicket()/100000000.0));
-        }else if(UserData::getInstance()->getGold()>100000){
+        }else if(UserData::getInstance()->getTicket()>100000){
             lequanNum->setString(StringUtils::format("%.0f万",UserData::getInstance()->getTicket()/10000.0));
         }else{
             lequanNum->setString(StringUtils::format("%d",UserData::getInstance()->getTicket()));

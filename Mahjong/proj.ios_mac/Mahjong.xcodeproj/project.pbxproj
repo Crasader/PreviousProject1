@@ -361,6 +361,8 @@
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
 		D2C3FA5A1D9909AE00CFC80E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */; };
 		D2C3FA5C1D9909EC00CFC80E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */; };
+		D2D704811F0B3177006B5C6D /* rule in Resources */ = {isa = PBXBuildFile; fileRef = D2D704801F0B3177006B5C6D /* rule */; };
+		D2D704821F0B3177006B5C6D /* rule in Resources */ = {isa = PBXBuildFile; fileRef = D2D704801F0B3177006B5C6D /* rule */; };
 		D2D894A41EBB217D008C1E5D /* InviteCodeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */; };
 		D2D894A51EBB217D008C1E5D /* InviteCodeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */; };
 		D2DB5DEB1E790B290073ABD8 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5DEA1E790B290073ABD8 /* libc++.1.tbd */; };
@@ -789,6 +791,7 @@
 		D2C3FA571D99081100CFC80E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		D2C3FA591D9909AE00CFC80E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D2C3FA5B1D9909EC00CFC80E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
+		D2D704801F0B3177006B5C6D /* rule */ = {isa = PBXFileReference; lastKnownFileType = folder; path = rule; sourceTree = "<group>"; };
 		D2D894A21EBB217D008C1E5D /* InviteCodeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InviteCodeLayer.cpp; sourceTree = "<group>"; };
 		D2D894A31EBB217D008C1E5D /* InviteCodeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InviteCodeLayer.hpp; sourceTree = "<group>"; };
 		D2DB5DEA1E790B290073ABD8 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
@@ -1018,6 +1021,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2D704801F0B3177006B5C6D /* rule */,
 				D26263EA1F0508AC002A1C28 /* common */,
 				D26263E01F04A0E2002A1C28 /* shiming */,
 				D2E035171ED914D400291282 /* hongbao */,
@@ -2216,6 +2220,7 @@
 				D25329661CC0D33600DDAD97 /* gameview in Resources */,
 				D26263EB1F0508AC002A1C28 /* common in Resources */,
 				D253296E1CC0D33600DDAD97 /* mainlogin in Resources */,
+				D2D704811F0B3177006B5C6D /* rule in Resources */,
 				D253295C1CC0D33600DDAD97 /* daily in Resources */,
 				D2B1D8FE1E9DF95B00EB8FB0 /* fanma in Resources */,
 				D25329681CC0D33600DDAD97 /* headportrait in Resources */,
@@ -2262,6 +2267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D704821F0B3177006B5C6D /* rule in Resources */,
 				D253297B1CC0D33600DDAD97 /* result in Resources */,
 				D22F1C191CC5CB67007270B2 /* setting in Resources */,
 				D253295D1CC0D33600DDAD97 /* daily in Resources */,
