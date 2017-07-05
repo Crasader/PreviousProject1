@@ -23,10 +23,8 @@ Scene* LoadResource::createScene()
 
 bool LoadResource::init(){
     if(!Layer::init()){
-        
         return false;
     }
-    showHealthLayer();
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     showHealthLayer();
     std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
@@ -35,6 +33,7 @@ bool LoadResource::init(){
 #endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     showNormalLayer();
+    showLoadLayerAnim();
     std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
     log("screenShot path = %s",path.c_str());
     utils::captureScreen(NULL ,path);
@@ -58,42 +57,16 @@ void LoadResource::showNormalLayer(){
     loadBg->setPosition(640,360);
     addChild(loadBg);
     
-    auto dragon = Sprite::create("mainlogin/loading_dragon.png");
-    dragon->setPosition(640,360);
-    addChild(dragon);
-    
-    auto mahjong = Sprite::create("mainlogin/feipai.png");
-    mahjong->setPosition(640,360);
-    addChild(mahjong);
-    
-    auto girl = Sprite::create("mainlogin/loading_image.png");
-    girl->setPosition(640,360);
-    addChild(girl);
-    
-    auto loadBotBg = Sprite::create("mainlogin/loading_bot_bg.png");
-    loadBotBg->setPosition(640,360);
-    addChild(loadBotBg);
-    
-    for(int i=1;i<11;i++){
-        auto loadText = Sprite::create();
-        loadText->setTag(100+i);
-        int index =0;
-        if(i>=8){
-            index = 8;
-        }else{
-            index = i;
-        }
-        loadText->setTexture(StringUtils::format("mainlogin/loading_text_%d.png",index));
-        loadText->setPosition(120+i*45,130);
-        addChild(loadText);
-    }
+    auto desk = Sprite::create("mainlogin/login_desk.png");
+    desk->setPosition(640,30);
+    addChild(desk);
     
     auto loadProBg = Sprite::create("mainlogin/loading_pro_bg.png");
-    loadProBg->setPosition(640,60);
+    loadProBg->setPosition(640,130);
     addChild(loadProBg);
     
     auto loadProgerss = ProgressTimer::create(Sprite::create("mainlogin/loading_pro_1.png"));
-    loadProgerss->setPosition(640,60);
+    loadProgerss->setPosition(640,130);
     addChild(loadProgerss,1);
     loadProgerss->setType(ProgressTimer::Type::BAR);
     loadProgerss->setBarChangeRate(Point(1,0));//设置进程条的变化速率
@@ -105,3 +78,16 @@ void LoadResource::showNormalLayer(){
     }),NULL));
 }
 
+void LoadResource::showLoadLayerAnim(){
+    auto poker1 = Sprite::create("mainlogin/pai_img_3.png");
+    poker1->setPosition(250,320);
+    addChild(poker1,2);
+    
+    auto poker2 = Sprite::create("mainlogin/pai_img_2.png");
+    poker2->setPosition(1050,308);
+    addChild(poker2,2);
+    
+    auto poker3 = Sprite::create("mainlogin/pai_img_1.png");
+    poker3->setPosition(1075,612);
+    addChild(poker3,2);
+}

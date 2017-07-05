@@ -68,18 +68,10 @@ void SplashScene::drawLonginScene(){
     splash_bg->setPosition(640,360);
     this->addChild(splash_bg, -1);
     
-    auto girl = Sprite::create("mainlogin/login_girl.png");
-    girl->setPosition(480,320);
-    addChild(girl);
-    
-    auto feipai = Sprite::create("mainlogin/feipai.png");
-    feipai->setPosition(490,400);
-    addChild(feipai);
-    
     auto desk = Sprite::create("mainlogin/login_desk.png");
-    desk->setPosition(640,215);
+    desk->setPosition(640,30);
     addChild(desk);
-    
+
 }
 
 
@@ -132,231 +124,22 @@ void SplashScene::removeLoading(){
 
 void SplashScene::showSplashAnim(){
     
-    //    auto gameTitle = Sprite::create("common/game_icon.png");
-    //    gameTitle->setPosition(1070, 640);
-    //    this->addChild(gameTitle);
-    //眨眼动画
-    //    auto levelMidEye = Sprite::create();
-    //    levelMidEye->setPosition(480,320);
-    //    addChild(levelMidEye,3);
-    //    auto yepoint = Sprite::create("mainlogin/yellow_point.png");
-    //    yepoint->setVisible(false);
-    //    yepoint->setPosition(420,540);
-    //    addChild(yepoint);
-    //    levelMidEye->runAction(Repeat::create(Sequence::create(
-    //                                                           CallFunc::create([=](){
-    //        levelMidEye->setTexture("mainlogin/loading_eye_1.png");
-    //    }),
-    //                                                           DelayTime::create(2.0/24),
-    //                                                           CallFunc::create([=](){
-    //        levelMidEye->setTexture("mainlogin/loading_eye_2.png");
-    //    }),
-    //                                                           DelayTime::create(2.0/24),
-    //                                                           CallFunc::create([=](){
-    //        levelMidEye->setTexture("mainlogin/loading_eye_1.png");
-    //    }),
-    //                                                           DelayTime::create(2.0/24),
-    //                                                           CallFunc::create([=](){
-    //        levelMidEye->setTexture("");
-    //    }),
-    //                                                           DelayTime::create(2.0/24),
-    //                                                           CallFunc::create([=](){
-    //        levelMidEye->setTexture("mainlogin/loading_eye_1.png");
-    //    }),
-    //                                                           DelayTime::create(2.0/24),
-    //                                                           CallFunc::create([=](){
-    //        levelMidEye->setTexture("mainlogin/loading_eye_2.png");
-    //    }),
-    //                                                           DelayTime::create(2.0/24),
-    //                                                           CallFunc::create([=](){
-    //        levelMidEye->setTexture("mainlogin/loading_eye_1.png");
-    //    }),
-    //                                                           DelayTime::create(2.0/24),
-    //                                                           CallFunc::create([=](){
-    //        levelMidEye->setTexture("");
-    //    }),
-    //                                                           CallFunc::create([=](){
-    //        yepoint->setVisible(true);
-    //        yepoint->setScale(0.1f);
-    //        yepoint->setOpacity(70);
-    //        yepoint->runAction(Sequence::create(Spawn::create(FadeTo::create(4.0/24, 200),ScaleTo::create(4.0/24, 1.2f),RotateTo::create(6.0f/24, 144), NULL),CallFunc::create([=](){yepoint->setRotation(144);}), RotateTo::create(6.0f/24, 216),Spawn::create(FadeTo::create(4.0/24, 70),ScaleTo::create(4.0/24, 0.5f), NULL),CallFunc::create([=](){yepoint->setVisible(false);yepoint->setRotation(0);}), NULL));
-    //    }),
-    //                                                           DelayTime::create(96.0/24),
-    //                                                           NULL), CC_REPEAT_FOREVER));
-    //
-    //
-    //    //logo光效
-    //    auto logoLight = Sprite::create();
-    //    logoLight->setPosition(1070, 645);
-    //    addChild(logoLight);
-    //    auto animation = Animation::create();
-    //    for( int i=1;i<4;i++)
-    //    {
-    //        std::string imageName = StringUtils::format("common/lobby_logo_light_%d.png",i);
-    //        animation->addSpriteFrameWithFile(imageName);
-    //    }
-    //    // should last 1 seconds. And there are 24 frames.
-    //    animation->setDelayPerUnit(4.0f/ 24.0f);
-    //    animation->setRestoreOriginalFrame(true);
-    //    auto action = Animate::create(animation);
-    //    logoLight->runAction(Sequence::create(Repeat::create(Sequence::create(action,DelayTime::create(12.0f/24), NULL), CC_REPEAT_FOREVER), NULL));
-    //
-    //    //文字光效
-    //    auto logoText = Sprite::create();
-    //    logoText->setPosition(1070, 645);
-    //    addChild(logoText);
-    //    auto animation2 = Animation::create();
-    //    for( int j=1;j<5;j++)
-    //    {
-    //        std::string imageName = StringUtils::format("common/lobby_logo_text_%d.png",j);
-    //        animation2->addSpriteFrameWithFile(imageName);
-    //    }
-    //    // should last 1 seconds. And there are 24 frames.
-    //    animation2->setDelayPerUnit(3.0f / 24.0f);
-    //    animation2->setRestoreOriginalFrame(true);
-    //    auto action2 = Animate::create(animation2);
-    //    logoText->runAction(Sequence::create(Repeat::create(Sequence::create(action2,DelayTime::create(24.0/24), NULL), CC_REPEAT_FOREVER), NULL));
-    //
-    //    //光效
-    //    auto lobbyLight_1 = Sprite::create("common/lobby_light_1.png");
-    //    lobbyLight_1->setPosition(640, 360);
-    //    addChild(lobbyLight_1);
-    //    lobbyLight_1->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    //
-    //    auto lobbyLight_2 = Sprite::create("common/lobby_light_2.png");
-    //    lobbyLight_2->setPosition(640, 360);
-    //    addChild(lobbyLight_2);
-    //    lobbyLight_2->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    //
-    //    auto lobbyLight_3 = Sprite::create("common/lobby_light_3.png");
-    //    lobbyLight_3->setPosition(640, 360);
-    //    addChild(lobbyLight_3);
-    //    lobbyLight_3->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    //
-    //    //光斑
-    //    auto lightSpot1 = Sprite::create("common/light_spot.png");
-    //    lightSpot1->setPosition(640,360);
-    //    lightSpot1->setTag(602);
-    //    addChild(lightSpot1);
-    //    auto lightSpot = Sprite::create("common/light_spot.png");
-    //    lightSpot->setPosition(-640,360);
-    //    lightSpot1->setTag(603);
-    //    addChild(lightSpot);
-    //    schedule(schedule_selector(SplashScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
+    auto poker1 = Sprite::create("mainlogin/pai_img_3.png");
+    poker1->setPosition(250,320);
+    addChild(poker1,2);
     
-    //
-    //#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    //    if(CallIOSMethod::getInstance()->isWenxinInstalled()){
-    //
-    //        //按钮光效
-    //        auto btnlight = Sprite::create("mainlogin/login_btn_light.png");
-    //        btnlight->setPosition(640,111);
-    //        addChild(btnlight,5);
-    //        btnlight->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 30),FadeTo::create(1.0f, 200),DelayTime::create(3.0f), NULL), CC_REPEAT_FOREVER),NULL));
-    //        auto btnpoint = Sprite::create("mainlogin/yellow_point.png");
-    //        btnpoint->setPosition(495,160);
-    //        addChild(btnpoint,7);
-    //        btnpoint->setVisible(false);
-    //        btnpoint->runAction(Repeat::create(Sequence::create(CallFunc::create([=](){
-    //            btnpoint->setScale(0.1f);
-    //            btnpoint->setOpacity(70);
-    //            btnpoint->setVisible(true);
-    //        }), Spawn::create(FadeTo::create(4.0/24, 200),ScaleTo::create(4.0/24, 1.2f),RotateTo::create(6.0f/24, 144), NULL),
-    //                                                            CallFunc::create([=](){yepoint->setRotation(144);}),
-    //                                                            RotateTo::create(6.0f/24, 216),
-    //                                                            Spawn::create(FadeTo::create(4.0/24, 70),ScaleTo::create(4.0/24, 0.5f), NULL),
-    //                                                            CallFunc::create([=](){yepoint->setVisible(false);yepoint->setRotation(0);}),DelayTime::create(96.0/24), NULL), CC_REPEAT_FOREVER));
-    //
-    //        auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
-    //                                                CC_CALLBACK_0(SplashScene::loginByWechat, this));
-    //        auto loginMenu = Menu::create(visitorBtn, NULL);
-    //        loginMenu->setPosition(0, 0);
-    //        //获取尺寸大小
-    //        Size clipSize = loginMenu->getContentSize();
-    //
-    //        //[3].创建底板的发光图片 : spark
-    //        Sprite* spark = Sprite::create("mainlogin/shua_light.png");
-    //        spark->setRotation(80);
-    //        spark->setPosition(-clipSize.width+20, 15);
-    //
-    //        //[4].创建裁剪节点 : clippingNode
-    //        ClippingNode* clippingNode = ClippingNode::create();
-    //        clippingNode->setPosition(640,108);
-    //        addChild(clippingNode,10);
-    //
-    //        clippingNode->setAlphaThreshold(0.05f); //设置alpha闸值
-    //        clippingNode->setContentSize(clipSize); //设置尺寸大小
-    //        clippingNode->setStencil(loginMenu);   //设置模板stencil
-    //        clippingNode->addChild(loginMenu, 1);  //先添加标题,会完全显示出来,因为跟模板一样大小
-    //        spark->setScale(0.70);
-    //        clippingNode->addChild(spark,2);       //会被裁减
-    //
-    //        //[5].左右移动spark
-    //        MoveTo* moveAction = MoveTo::create(5.0f, Vec2(clipSize.width-20, 15));
-    //        spark->runAction(RepeatForever::create(Sequence::create(moveAction,CallFunc::create([=](){
-    //            spark->setPosition(-clipSize.width, 15);
-    //        }), NULL)));
-    //    }else{
-    //        auto visitorBtn = MenuItemImage::create("mainlogin/visitor_login_btn.png", "mainlogin/visitor_login_btn.png",
-    //                                                CC_CALLBACK_0(SplashScene::loginByVisitor, this));
-    //        auto loginMenu = Menu::create(visitorBtn, NULL);
-    //        loginMenu->setPosition(640, 108);
-    //        addChild(loginMenu);
-    //    }
-    //#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID||CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-    //
-    //    //按钮光效
-    //    auto btnlight = Sprite::create("mainlogin/login_btn_light.png");
-    //    btnlight->setPosition(640,111);
-    //    addChild(btnlight,5);
-    //    btnlight->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 30),FadeTo::create(1.0f, 200),DelayTime::create(3.0f), NULL), CC_REPEAT_FOREVER),NULL));
-    //    auto btnpoint = Sprite::create("mainlogin/yellow_point.png");
-    //    btnpoint->setPosition(495,160);
-    //    addChild(btnpoint,7);
-    //    btnpoint->setVisible(false);
-    //    btnpoint->runAction(Repeat::create(Sequence::create(CallFunc::create([=](){
-    //        btnpoint->setScale(0.1f);
-    //        btnpoint->setOpacity(70);
-    //        btnpoint->setVisible(true);
-    //    }), Spawn::create(FadeTo::create(4.0/24, 200),ScaleTo::create(4.0/24, 1.2f),RotateTo::create(6.0f/24, 144), NULL),
-    //                                                        CallFunc::create([=](){yepoint->setRotation(144);}),
-    //                                                        RotateTo::create(6.0f/24, 216),
-    //                                                        Spawn::create(FadeTo::create(4.0/24, 70),ScaleTo::create(4.0/24, 0.5f), NULL),
-    //                                                        CallFunc::create([=](){yepoint->setVisible(false);yepoint->setRotation(0);}),DelayTime::create(96.0/24), NULL), CC_REPEAT_FOREVER));
-    //
-    //    auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
-    //                                            CC_CALLBACK_0(SplashScene::loginByWechat, this));
-    //    auto loginMenu = Menu::create(visitorBtn, NULL);
-    //    loginMenu->setPosition(0, 0);
-    //    //获取尺寸大小
-    //    Size clipSize = loginMenu->getContentSize();
-    //
-    //    //[3].创建底板的发光图片 : spark
-    //    Sprite* spark = Sprite::create("mainlogin/shua_light.png");
-    //    spark->setRotation(80);
-    //    spark->setPosition(-clipSize.width+20, 15);
-    //
-    //    //[4].创建裁剪节点 : clippingNode
-    //    ClippingNode* clippingNode = ClippingNode::create();
-    //    clippingNode->setPosition(640,108);
-    //    addChild(clippingNode,10);
-    //
-    //    clippingNode->setAlphaThreshold(0.05f); //设置alpha闸值
-    //    clippingNode->setContentSize(clipSize); //设置尺寸大小
-    //    clippingNode->setStencil(loginMenu);   //设置模板stencil
-    //    clippingNode->addChild(loginMenu, 1);  //先添加标题,会完全显示出来,因为跟模板一样大小
-    //    spark->setScale(0.70);
-    //    clippingNode->addChild(spark,2);       //会被裁减
-    //
-    //    //[5].左右移动spark
-    //    MoveTo* moveAction = MoveTo::create(5.0f, Vec2(clipSize.width-20, 15));
-    //    spark->runAction(RepeatForever::create(Sequence::create(moveAction,CallFunc::create([=](){
-    //        spark->setPosition(-clipSize.width, 15);
-    //    }), NULL)));
-    //#endif
+    auto poker2 = Sprite::create("mainlogin/pai_img_2.png");
+    poker2->setPosition(1050,308);
+    addChild(poker2,2);
+    
+    auto poker3 = Sprite::create("mainlogin/pai_img_1.png");
+    poker3->setPosition(1075,612);
+    addChild(poker3,2);
+
     auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
                                             CC_CALLBACK_0(SplashScene::loginByWechat, this));
     auto loginMenu = Menu::create(visitorBtn, NULL);
+    loginMenu->setPosition(640,140);
     addChild(loginMenu);
     
 }

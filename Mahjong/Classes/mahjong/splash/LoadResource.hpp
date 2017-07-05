@@ -20,5 +20,6 @@ public:
 private:
     void showHealthLayer();
     void showNormalLayer();
+    void showLoadLayerAnim();
 };
 #endif /* LoadResource_hpp */
