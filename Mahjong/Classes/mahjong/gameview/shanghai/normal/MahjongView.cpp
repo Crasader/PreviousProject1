@@ -1129,12 +1129,19 @@ void MahjongView::showHandPokerOver(int seatId){
         }
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
-            playerOpposite->hideHandJongs();
-            playerOpposite->updateHandJongs(oppositeJongs,false);
-            playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs,false);
-            playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs,false);
+            if(NULL != playerOpposite){
+                playerOpposite->hideHandJongs();
+                playerOpposite->updateHandJongs(oppositeJongs,false);
+            }
+            if(NULL != playerRight){
+                playerRight->hideHandJongs();
+                playerRight->updateHandJongs(rightJongs,false);
+            }
+            if(NULL != playerLeft){
+                playerLeft->hideHandJongs();
+                playerLeft->updateHandJongs(leftJongs,false);
+            }
+
         }, 0, 0, 15.0f/24,"fanpai");
     }
     
@@ -1711,6 +1718,7 @@ void MahjongView::onEnter(){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
             playerRight->drawPlayedJong(poker);
+            
             if(poker == playerHero->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
             }else if(poker == playerOpposite->getLastPoker()){
@@ -1721,10 +1729,12 @@ void MahjongView::onEnter(){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
             playerOpposite->drawPlayedJong(poker);
-            if(poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
-            }else if(poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
+            if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
+                if(poker == playerRight->getLastPoker()){
+                    Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
+                }else if(poker == playerLeft->getLastPoker()){
+                    Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
+                }
             }
         }else if(seatId == ClientSeatId::hero){
             schedule([=](float dt){

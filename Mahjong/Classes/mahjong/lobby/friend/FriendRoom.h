@@ -39,5 +39,7 @@ private:
     void selectDifen2();
     void selectDifen1();
     void selectDifen5();
+    void select2People();
+    void select4People();
 };
 #endif

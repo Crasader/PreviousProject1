@@ -43,6 +43,7 @@ void GAMEDATA::init(){
     setNeedShowFaPai(false);
     setNeedShowShareBtn(false);
     setIsInGame(true);
+    setMyGameModel(GameModel::FOURPLAYER);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

@@ -38,6 +38,36 @@ bool FriendRoom::init()
     vertical->setPosition(332,355);
     addChild(vertical);
     
+    /* 房间人数选择 */
+    
+    auto erLen4 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::select4People, this));
+    auto siLenMenu = Menu::create(erLen4,NULL);
+    siLenMenu->setPosition(470,490);
+    addChild(siLenMenu);
+    
+    auto select4Peo = Sprite::create("openroom/icon_right.png");
+    select4Peo->setTag(1010);
+    select4Peo->setPosition(470,490);
+    select4Peo->setVisible(true);
+    addChild(select4Peo);
+    
+    
+    auto erLen2 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::select2People, this));
+    auto erLenMenu = Menu::create(erLen2,NULL);
+    erLenMenu->setPosition(705,495);
+    addChild(erLenMenu);
+    
+    auto select2Peo = Sprite::create("openroom/icon_right.png");
+    select2Peo->setTag(1011);
+    select2Peo->setPosition(705,495);
+    select2Peo->setVisible(false);
+    addChild(select2Peo);
+    
+    
+    
+    
+    
+    /* 房间局数选择 */
     auto fangka8 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka8, this));
     auto fangka8Menu = Menu::create(fangka8,NULL);
     fangka8Menu->setPosition(470,405);
@@ -118,7 +148,7 @@ bool FriendRoom::init()
     lezi1150Img->setPosition(960,320);
     lezi1150Img->setVisible(false);
     addChild(lezi1150Img);
-
+    
     
     
     // 2/2 40勒子
@@ -263,7 +293,7 @@ bool FriendRoom::init()
     
     /** --------------------------红中麻将选择界面ui显示结束-------------------------- **/
     
-   
+    
     
     auto openBtn = MenuItemImage::create("openroom/open_room_btn_img_1.png", "openroom/open_room_btn_img_2.png", CC_CALLBACK_0(FriendRoom::openRoom, this));
     auto openMenu = Menu::create(openBtn,NULL);
@@ -318,8 +348,6 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
         getChildByTag(2026)->setVisible(false);
         getChildByTag(2027)->setVisible(true);
         getChildByTag(2028)->setVisible(false);
-//        getChildByTag(2029)->setVisible(true);
-//        getChildByTag(2030)->setVisible(false);
         getChildByTag(2031)->setVisible(true);
         getChildByTag(2032)->setVisible(false);
         getChildByTag(2033)->setVisible(true);
@@ -354,8 +382,6 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
         getChildByTag(2026)->setVisible(false);
         getChildByTag(2027)->setVisible(false);
         getChildByTag(2028)->setVisible(false);
-//        getChildByTag(2029)->setVisible(false);
-//        getChildByTag(2030)->setVisible(false);
         getChildByTag(2031)->setVisible(false);
         getChildByTag(2032)->setVisible(false);
         getChildByTag(2033)->setVisible(false);
@@ -380,6 +406,15 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
 }
 
 void FriendRoom::openRoom(){
+    std::string size = "4";
+    if(NULL != getChildByTag(1010)&& NULL != getChildByTag(1011)){
+        if(getChildByTag(1011)->isVisible()){
+            size = "2";
+        }else{
+            size = "4";
+        }
+    }
+    
     std::string ftype = "1";//1表示8局，2表示4局，3表示16局
     if(NULL != getChildByTag(1024)&& NULL != getChildByTag(1025)&& NULL != getChildByTag(1026)){
         if(getChildByTag(1025)->isVisible()){
@@ -403,9 +438,6 @@ void FriendRoom::openRoom(){
         }else if(NULL != getChildByTag(2028)&&getChildByTag(2028)->isVisible()){
             iflezi = LeziType::type1150;
         }
-//        else if(NULL != getChildByTag(2030)&&getChildByTag(2030)->isVisible()){
-//            iflezi = LeziType::type2200;
-//        }
         else if(NULL != getChildByTag(2032)&&getChildByTag(2032)->isVisible()){
             iflezi = LeziType::type2240;
         }else if(NULL != getChildByTag(2034)&&getChildByTag(2034)->isVisible()){
@@ -426,7 +458,7 @@ void FriendRoom::openRoom(){
                 ifemsc = "0";
             }
         }
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(ftype,StringUtils::format("%d",iflezi),ifkb,ifemsc,"4"));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(ftype,StringUtils::format("%d",iflezi),ifkb,ifemsc,size));
     }else{
         std::string fanma = "0";//0表示没有159zhong,1表示有159,2表示1码
         std::string difen = "2";
@@ -445,7 +477,7 @@ void FriendRoom::openRoom(){
         }else if(NULL != getChildByTag(3034)&&getChildByTag(3034)->isVisible()){
             difen = "5";
         }
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterHongZhongCommand(ftype, fanma,difen));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterHongZhongCommand(ftype, fanma,difen,size));
     }
 }
 
@@ -502,9 +534,6 @@ void FriendRoom::selectLeziType1(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-//    if(NULL != getChildByTag(2030)){
-//        getChildByTag(2030)->setVisible(false);
-//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -523,9 +552,6 @@ void FriendRoom::selectLeziType2(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-//    if(NULL != getChildByTag(2030)){
-//        getChildByTag(2030)->setVisible(false);
-//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -544,9 +570,6 @@ void FriendRoom::selectLeziType3(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(true);
     }
-//    if(NULL != getChildByTag(2030)){
-//        getChildByTag(2030)->setVisible(false);
-//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -565,9 +588,6 @@ void FriendRoom::selectLeziType4(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-//    if(NULL != getChildByTag(2030)){
-//        getChildByTag(2030)->setVisible(true);
-//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -586,9 +606,6 @@ void FriendRoom::selectLeziType5(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-//    if(NULL != getChildByTag(2030)){
-//        getChildByTag(2030)->setVisible(false);
-//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(true);
     }
@@ -607,9 +624,6 @@ void FriendRoom::selectLeziType6(){
     if(NULL != getChildByTag(2028)){
         getChildByTag(2028)->setVisible(false);
     }
-//    if(NULL != getChildByTag(2030)){
-//        getChildByTag(2030)->setVisible(false);
-//    }
     if(NULL != getChildByTag(2032)){
         getChildByTag(2032)->setVisible(false);
     }
@@ -703,6 +717,24 @@ void FriendRoom::selectDifen5(){
     }
     if(NULL != getChildByTag(3034)){
         getChildByTag(3034)->setVisible(true);
-    }}
+    }
+}
 
+void FriendRoom::select2People(){
+    if(NULL != getChildByTag(1010)){
+        getChildByTag(1010)->setVisible(false);
+    }
+    if(NULL != getChildByTag(1011)){
+        getChildByTag(1011)->setVisible(true);
+    }
+}
+
+void FriendRoom::select4People(){
+    if(NULL != getChildByTag(1010)){
+        getChildByTag(1010)->setVisible(true);
+    }
+    if(NULL != getChildByTag(1011)){
+        getChildByTag(1011)->setVisible(false);
+    }
+}
 

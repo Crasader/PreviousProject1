@@ -46,4 +46,5 @@
 #define SHARE_TEXT_1 "小白相上海敲麻——正宗敲麻，红中麻将随意选择。"
 #define SHARE_TEXT_2 "最方便的手机麻将馆，随时组局，简单好玩！点击即可下载游戏!"
 #define SHARE_TEXT_3 "来来来,房间开好了,麻将搓起来!"
+
 #endif /* GameConfig_h */

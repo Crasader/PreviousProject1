@@ -31,17 +31,14 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMe
 	Menu* menu1 = Menu::create(item1, nullptr);
     this->addChild(menu1);
     
-    auto dialogBg = Sprite::create("common/dialog_bg_small.png");
-    dialogBg->setPosition(640, 360);
-    this->addChild(dialogBg);
-    
-    auto title = Sprite::create("common/tishi_icon.png");
-    title->setPosition(640, 500);
-    this->addChild(title);
-    
-    auto thishiBg = Sprite::create("common/thishi_bg.png");
-    thishiBg->setPosition(640, 375);
-    addChild(thishiBg);
+//    auto dialogBg = Sprite::create("common/dialog_bg_small.png");
+//    dialogBg->setPosition(640, 360);
+//    this->addChild(dialogBg);
+//    
+//    
+//    auto thishiBg = Sprite::create("common/thishi_bg.png");
+//    thishiBg->setPosition(640, 375);
+//    addChild(thishiBg);
     
     Label* text = Label::createWithSystemFont(msg, "Arial", 30);
     text->setWidth(300);

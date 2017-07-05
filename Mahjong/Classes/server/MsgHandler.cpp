@@ -2149,6 +2149,10 @@ void MsgHandler::playerConnectAgain(std::string msg){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
     }
+    if(_mDoc.HasMember("size")){
+        const rapidjson::Value &size = _mDoc["size"];
+        GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
+    }
     if(_mDoc.HasMember("matchid")){
         GAMEDATA::getInstance()->setIsCompetitionState(true);
         GAMEDATA::getInstance()->setCompetitionId(_mDoc["matchid"].GetString());
@@ -2361,6 +2365,10 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         const rapidjson::Value &ip = _mDoc["ip"];
         GAMEDATA::getInstance()->setIP(ip.GetString());
     }
+    if(_mDoc.HasMember("size")){
+        const rapidjson::Value &size = _mDoc["size"];
+        GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
+    }
     const rapidjson::Value &result = _mDoc["result"];
     data.result = result.GetInt();
     GAMEDATA::getInstance()->clearPlayersInfo();
@@ -2421,6 +2429,10 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     if(_mDoc.HasMember("poxiaoId")){
         const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
         UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
+    }
+    if(_mDoc.HasMember("size")){
+        const rapidjson::Value &size = _mDoc["size"];
+        GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
     }
     if(_mDoc.HasMember("ifkb")){
         GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());

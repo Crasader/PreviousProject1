@@ -6,6 +6,13 @@
 #include "mahjong/common/jong/Jong.h"
 USING_NS_CC;
 
+//游戏人数模式
+enum GameModel{
+    TWOPLAYER = 2,
+    FOURPLAYER = 4
+};
+
+//游戏房间类型
 enum MahjongRoom{
     publicRoom,
     privateRoom
