@@ -347,8 +347,6 @@ void SplashScene::onEnter(){
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
     });
-    
-    
 }
 
 
@@ -361,7 +359,4 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReConnectAgain);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReEnterFriendRoomListener);
-    
-    
-    
 }

@@ -34,14 +34,7 @@ bool TextHintDialog::init(std::string msg){
     auto dialogBg = Sprite::create("common/dialog_bg_small.png");
     dialogBg->setPosition(640, 360);
     addChild(dialogBg);
-    
-    auto title = Sprite::create("common/tishi_icon.png");
-    title->setPosition(640, 500);
-    addChild(title);
-    
-    auto thishiBg = Sprite::create("common/thishi_bg.png");
-    thishiBg->setPosition(640, 375);
-    addChild(thishiBg);
+
     
     Label* text = Label::createWithSystemFont(msg, "Arial", 30);
     text->setColor(Color3B(38,158,228));
