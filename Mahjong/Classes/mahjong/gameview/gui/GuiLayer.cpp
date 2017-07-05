@@ -33,7 +33,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-    drawTestButton();
+//    drawTestButton();
     scheduleUpdate();
 }
 
@@ -427,6 +427,7 @@ void GuiLayer::testButtonClick(){
     GAMEDATA::getInstance()->setFanMa("1,2");
     GAMEDATA::getInstance()->setFanMaType("1");
     GAMEDATA::getInstance()->setHZDiFen("10");
+    GAMEDATA::getInstance()->setGameType(3);
     FriendOpenRoomRespData opendata;
     opendata.prjushu ="8";
     opendata.prjucount ="2";

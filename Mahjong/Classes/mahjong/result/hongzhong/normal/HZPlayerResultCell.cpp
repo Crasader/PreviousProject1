@@ -36,7 +36,7 @@ bool HZPlayerResultCell::init(GameResultData data){
     if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
         headImage->updateImageByName("");
     }
-    headImage->setPosition(-440, 0);
+    headImage->setPosition(-470, 0);
     addChild(headImage, 10);
     
     auto nickName = Label::createWithSystemFont(data.nickName,"Arial",20);
@@ -44,12 +44,12 @@ bool HZPlayerResultCell::init(GameResultData data){
     if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
         nickName->setVisible(false);
     }
-    nickName->setPosition(-375,15);
+    nickName->setPosition(-405,15);
     addChild(nickName);
     
     auto idNumber = Label::createWithSystemFont(StringUtils::format("ID:%s",data.umark.c_str()),"Arial",20);
     idNumber->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-    idNumber->setPosition(-200,15);
+    idNumber->setPosition(-230,15);
     addChild(idNumber);
     if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
         idNumber->setVisible(false);
@@ -58,19 +58,19 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     auto fanNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getHZMaShu().c_str()), "result/fan_num.png", 17, 26, '0');
     fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fanNum->setPosition(190,-15);
+    fanNum->setPosition(160,-15);
     addChild(fanNum);
     auto fanText = Sprite::create("result/ma.png");
-    fanText->setPosition(135,-15);
+    fanText->setPosition(105,-15);
     addChild(fanText);
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        fanNum->setPosition(210,-15);
-        fanText->setPosition(155,-15);
+        fanNum->setPosition(180,-15);
+        fanText->setPosition(125,-15);
     }
     
     if(GAMEDATA::getInstance()->getCurrentBank() ==  data.seatId){
         auto bank = Sprite::create("result/zhaung.png");
-        bank->setPosition(-520,0);
+        bank->setPosition(-580,0);
         addChild(bank);
     }
     
@@ -79,7 +79,7 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     if(data.gangfen !=""){
         auto gangfenText = Sprite::create("result/gang_fen.png");
-        gangfenText->setPosition(160,20);
+        gangfenText->setPosition(130,20);
         addChild(gangfenText);
         
         int fen = atoi(data.gangfen.c_str());
@@ -89,11 +89,11 @@ bool HZPlayerResultCell::init(GameResultData data){
         }else{
             fuhao->setTexture("result/gang_fen_jian.png");
         }
-        fuhao->setPosition(200,20);
+        fuhao->setPosition(180,20);
         addChild(fuhao);
         
         auto juNum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
-        juNum->setPosition(210,10);
+        juNum->setPosition(180,10);
         addChild(juNum);
     }else{
         log("GangFen is null");
@@ -129,7 +129,7 @@ bool HZPlayerResultCell::init(GameResultData data){
             }
             auto hutype = Label::createWithSystemFont(StringUtils::format("%s",hu.c_str()),"Arial",20);
             hutype->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-            hutype->setColor(Color3B(230,215,30));
+            hutype->setColor(Color3B(200,215,30));
             hutype->setPosition(-60,15);
             addChild(hutype);
         }
@@ -150,7 +150,7 @@ bool HZPlayerResultCell::init(GameResultData data){
         showPokers.push_back(GAMEDATA::getInstance()->getDiaopao());
         auto chuchong = Sprite::create("gameview/font_hu.png");
         chuchong->setScale(0.4f);
-        chuchong->setPosition(550,-10);
+        chuchong->setPosition(520,-10);
         addChild(chuchong);
         
     }else{
@@ -192,12 +192,12 @@ bool HZPlayerResultCell::init(GameResultData data){
             jong->showJong(heroplayed, atoi(finalShowPoker.at(i).at(j).c_str()));
             if(i == finalShowPoker.size()-1){
                 if(j == finalShowPoker.at(i).size()-1&&win){
-                    jong->setPosition(-350+pokerNum * 33+22+4*i, -20);
+                    jong->setPosition(-390+pokerNum * 33+22+4*i, -20);
                 }else{
-                    jong->setPosition(-350+pokerNum * 33+4*i+14, -20);
+                    jong->setPosition(-390+pokerNum * 33+4*i+14, -20);
                 }
             }else{
-                jong->setPosition(-350+pokerNum * 33+4*i, -20);
+                jong->setPosition(-390+pokerNum * 33+4*i, -20);
             }
             addChild(jong, 35 - i);
             pokerNum++;
@@ -207,9 +207,9 @@ bool HZPlayerResultCell::init(GameResultData data){
         
         auto goldIcon =  Sprite::create("mjlobby/gold_icon.png");
         goldIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        goldIcon->setPosition(240,-10);
+        goldIcon->setPosition(210,-10);
         addChild(goldIcon);
-        resultNum->setPosition(300,-10);
+        resultNum->setPosition(270,-10);
         resultNum->setScale(0.7f);
         resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         if(data.lequandelta>0){
@@ -217,12 +217,12 @@ bool HZPlayerResultCell::init(GameResultData data){
             resultNum->setPositionY(20);
             auto lequanIcon =  Sprite::create("mjlobby/lequan_icon.png");
             lequanIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            lequanIcon->setPosition(240,-25);
+            lequanIcon->setPosition(210,-25);
             addChild(lequanIcon);
             auto lequanNum = LabelAtlas::create(StringUtils::format(":%d",data.lequandelta), "result/game_result_win_num.png", 40, 64, '0');
             lequanNum->setScale(0.7f);
             lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            lequanNum->setPosition(300,-25);
+            lequanNum->setPosition(270,-25);
             addChild(lequanNum);
             
         }
@@ -231,12 +231,12 @@ bool HZPlayerResultCell::init(GameResultData data){
         
         auto jifenIcon =  Sprite::create("common/jifen_icon.png");
         jifenIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        jifenIcon->setPosition(250,-10);
+        jifenIcon->setPosition(220,-10);
         addChild(jifenIcon);
         
         resultNum->setScale(1.0f);
         resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        resultNum->setPosition(320,-10);
+        resultNum->setPosition(290,-10);
     }
     
     return true;
