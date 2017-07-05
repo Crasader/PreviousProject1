@@ -55,6 +55,9 @@
 #define MSGCODE_YQM_REQUEST  169// 输入邀请码请求{code:169,poxiaoId:poxiaoId,yqm:"1235"}
 #define MSGCODE_YQM_RESPONSE  170// 输入邀请码回复{code:170,poxiaoId:poxiaoId,result:0}  0输入错误 1正确
 
+#define MSGCODE_PHB_REQUEST  178// 排行榜请求{code:178,poxiaoId:poxiaoId}
+#define MSGCODE_PHB_RESPONSE  179// 排行榜回复{code:179,poxiaoId:poxiaoId,name1:"",tab1:[{key:"",value:""},{key:"",value:""}],name2:"",tab2:[{key:"",value:""},{key:"",value:""}],name3:"",tab3:[{key:"",value:""},{key:"",value:""}]}
+
 #define MSGCODE_THIRED_LOGIN_REQUEST  999//第三方登录请求{code:999,open_id:123,type:1,hsman:厂商,hstype:机型,imsi:imsi,imei:imei} typ为1表示微信
 #define MSGCODE_INTO_ROOMSTYLE_REQUEST  1000 //进入房间请求{code:1000,poxiaoId:poxiaoId,rsid:1111,gameid:"1"}
 #define MSGCODE_INTO_ROOMSTYLE_RESPONSE 1001 //进入房间回复{code:1001,poxiaoId:poxiaoId,result:"0",seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1}]} result1为成功 2为金币低于下限 3为金币高于上线 4为其他错误

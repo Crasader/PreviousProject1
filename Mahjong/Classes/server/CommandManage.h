@@ -86,6 +86,8 @@ public:
     /** ---------------红包协议--------------------- **/
     std::string sendGetHongbaoPride();
     std::string sendGiveupHongbaoPride();
+    /** --------------- 排行榜 ---------------------- **/
+    std::string sendLobbyPaiHangCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

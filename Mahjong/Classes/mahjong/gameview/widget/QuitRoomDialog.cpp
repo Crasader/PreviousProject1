@@ -31,14 +31,6 @@ void QuitRoomDialog::showDialog(){
     quitBg->setPosition(640,360);
     addChild(quitBg);
     
-    auto title = Sprite::create("common/tishi_icon.png");
-    title->setPosition(640,500);
-    addChild(title);
-    
-    auto tishiBg = Sprite::create("common/thishi_bg.png");
-    tishiBg->setPosition(640,380);
-    addChild(tishiBg);
-    
     auto text = Sprite::create("gameview/quit_room_text.png");
     text->setPosition(640,380);
     addChild(text);

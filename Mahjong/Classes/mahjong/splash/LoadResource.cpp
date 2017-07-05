@@ -34,7 +34,7 @@ bool LoadResource::init(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     showNormalLayer();
     showLoadLayerAnim();
-    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::sharedFileUtils()->getWritablePath().c_str());
+    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());
     log("screenShot path = %s",path.c_str());
     utils::captureScreen(NULL ,path);
 #endif
