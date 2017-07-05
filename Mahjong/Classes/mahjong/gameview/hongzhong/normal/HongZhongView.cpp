@@ -870,8 +870,10 @@ void HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
         playerOpposite->drawHandJong();
     if(NULL != playerLeft)
         playerLeft->drawHandJong();
-    if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
-        firstPlayPoker(vec,data);
+    if(NULL != playerHero  && NULL != playerOpposite ){
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER||(NULL != playerLeft&& NULL != playerRight))
+            firstPlayPoker(vec,data);
+    }
     if(NULL != playerRight)
         playerRight->setIsReady(false);
     if(NULL != playerOpposite)
@@ -1020,10 +1022,14 @@ void HongZhongView::showHandPokerOver(int seatId){
         schedule([=](float dt){
             playerOpposite->hideHandJongs();
             playerOpposite->updateHandJongs(oppositeJongs,false);
-            playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs,false);
-            playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs,false);
+            if(NULL != playerRight){
+                playerRight->hideHandJongs();
+                playerRight->updateHandJongs(rightJongs,false);
+            }
+            if(NULL != playerLeft){
+                playerLeft->hideHandJongs();
+                playerLeft->updateHandJongs(leftJongs,false);
+            }
         }, 0, 0, 15.0f/24,"fanpai");
     }
     
@@ -1776,16 +1782,18 @@ void HongZhongView::onEnter(){
             
             schedule([=](float dt){
                 PlayerCpgRecShow showRec;
-                CpgPokerRec pokerRecL;
-                pokerRecL.clientseatid =  ClientSeatId::left;
-                for(auto left:playerLeft->playerCpgRecords){
-                    std::vector<int> p;
-                    for(auto pokers : left.pokersRecord){
-                        p.push_back(pokers->getJongType());
+                if(NULL != playerLeft){
+                    CpgPokerRec pokerRecL;
+                    pokerRecL.clientseatid =  ClientSeatId::left;
+                    for(auto left:playerLeft->playerCpgRecords){
+                        std::vector<int> p;
+                        for(auto pokers : left.pokersRecord){
+                            p.push_back(pokers->getJongType());
+                        }
+                        pokerRecL.cpg.push_back(p);
                     }
-                    pokerRecL.cpg.push_back(p);
+                    showRec.playercpg.push_back(pokerRecL);
                 }
-                showRec.playercpg.push_back(pokerRecL);
                 
                 CpgPokerRec pokerRecO;
                 pokerRecO.clientseatid =  ClientSeatId::opposite;
@@ -1797,18 +1805,18 @@ void HongZhongView::onEnter(){
                     pokerRecO.cpg.push_back(p1);
                 }
                 showRec.playercpg.push_back(pokerRecO);
-                
-                CpgPokerRec pokerRecR;
-                pokerRecR.clientseatid =  ClientSeatId::right;
-                for(auto right:playerRight->playerCpgRecords){
-                    std::vector<int> p2;
-                    for(auto pokers : right.pokersRecord){
-                        p2.push_back(pokers->getJongType());
+                if(NULL != playerRight){
+                    CpgPokerRec pokerRecR;
+                    pokerRecR.clientseatid =  ClientSeatId::right;
+                    for(auto right:playerRight->playerCpgRecords){
+                        std::vector<int> p2;
+                        for(auto pokers : right.pokersRecord){
+                            p2.push_back(pokers->getJongType());
+                        }
+                        pokerRecR.cpg.push_back(p2);
                     }
-                    pokerRecR.cpg.push_back(p2);
+                    showRec.playercpg.push_back(pokerRecR);
                 }
-                showRec.playercpg.push_back(pokerRecR);
-                
                 CpgPokerRec pokerRecH;
                 pokerRecH.clientseatid =  ClientSeatId::hero;
                 for(auto hero:playerHero->playerCpgRecords){

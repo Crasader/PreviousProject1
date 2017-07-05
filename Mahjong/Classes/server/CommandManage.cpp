@@ -521,6 +521,7 @@ std::string CommandManage::getEnterHongZhongCommand(std::string ftype,std::strin
     keyValue.insert(map<string, string>::value_type("difen",difen));
     keyValue.insert(map<string, string>::value_type("fanma",ma));
     keyValue.insert(map<string, string>::value_type("ftype",ftype));
+    keyValue.insert(map<string, string>::value_type("size",size));
     return commandString(keyValue);
 }
 

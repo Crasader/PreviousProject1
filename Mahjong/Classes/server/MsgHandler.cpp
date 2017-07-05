@@ -2844,6 +2844,10 @@ void MsgHandler::handleHongZhongEnterRoom(std::string msg){
         const rapidjson::Value &umark = _mDoc["umark"];
         UserData::getInstance()->setMarkId(umark.GetString());
     }
+    if(_mDoc.HasMember("size")){
+        const rapidjson::Value &size = _mDoc["size"];
+        GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
+    }
     
     if(_mDoc.HasMember("fanma")){
         GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
@@ -2942,6 +2946,10 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     }
     if(_mDoc.HasMember("fanma")){
         GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
+    }
+    if(_mDoc.HasMember("size")){
+        const rapidjson::Value &size = _mDoc["size"];
+        GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
     }
     
     if(_mDoc.HasMember("difen")){
@@ -3215,6 +3223,10 @@ void MsgHandler::handleHZGameReconnectNotify(std::string msg){
     }
     if(_mDoc.HasMember("prize")){
         GAMEDATA::getInstance()->setCompetitionPride(_mDoc["prize"].GetString());
+    }
+    if(_mDoc.HasMember("size")){
+        const rapidjson::Value &size = _mDoc["size"];
+        GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
     }
     FriendOpenRoomRespData opdata;
     if(_mDoc.HasMember("prjushu")){
