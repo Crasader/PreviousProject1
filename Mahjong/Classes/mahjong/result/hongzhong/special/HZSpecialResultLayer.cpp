@@ -9,6 +9,7 @@
 #include "mahjong/result/hongzhong/special/HZSpecialResultLayer.hpp"
 #include "mahjong/result/hongzhong/special/HZGameResultCell.hpp"
 #include "mahjong/lobby/LobbyScene.h"
+#include "mahjong/lobby/dialog/EnterRoomDialog.hpp"
 #include "mahjong/lobby/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/common/jong/Jong.h"
@@ -49,24 +50,21 @@ void HZSpecialResultLayer::showResultTitle(){
 
 
 void HZSpecialResultLayer::showGameReslut(){
-    auto infoBg = Sprite::create("result/result_game_bg.png");
-    infoBg->setPosition(640, 340);
-    addChild(infoBg);
     
-    auto fanghao = Sprite::create("result/fang_jian_hao.png");
-    fanghao->setPosition(940,570);
-    addChild(fanghao,1);
-    
-    auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
-    fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fanghaoNum->setPosition(980,570);
-    addChild(fanghaoNum);
+//    auto fanghao = Sprite::create("result/fang_jian_hao.png");
+//    fanghao->setPosition(940,570);
+//    addChild(fanghao,1);
+//    
+//    auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
+//    fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//    fanghaoNum->setPosition(980,570);
+//    addChild(fanghaoNum);
     
     
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
     for (int i=0; i<results.size();i++) {
         HZGameResultCell* cell = HZGameResultCell::create(results.at(i));
-        cell->setPosition(250+260*i,340);
+        cell->setPosition(215+285*i,340);
         addChild(cell);
     }
     
