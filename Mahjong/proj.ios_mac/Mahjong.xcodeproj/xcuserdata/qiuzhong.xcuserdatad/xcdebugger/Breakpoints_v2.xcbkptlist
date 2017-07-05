@@ -7002,11 +7002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/competition/CompetitionResult.cpp"
-            timestampString = "519559139.392007"
+            timestampString = "520944723.77886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "CompetitionResult::showLose(std::string type,std::string rank,std::string pride,std::string score)"
             landmarkType = "7">
          </BreakpointContent>

@@ -189,11 +189,7 @@ void CompetitionResult::showWin(std::string type,std::string rank,std::string pr
     auto setp05 = ScaleTo::create(0.4, 1.0f);
     rankNum->runAction(Sequence::create(setp03,setp04,setp05,NULL));
     
-    //    auto kuohao =Sprite::create("competition/kuohao.png");
-    //    kuohao->setPosition(720,360);
-    //    kuohao->setOpacity(0);
-    //    addChild(kuohao);
-    auto icon = Sprite::create("mjitem/jifen_icon.png");
+    auto icon = Sprite::create("common/jifen_icon.png");
     addChild(icon);
     icon->setPosition(680,360);
     icon->setScale(0.6f);
