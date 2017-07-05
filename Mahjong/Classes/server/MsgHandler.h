@@ -101,5 +101,6 @@ private:
     void handleHuafeiChangeResp(std::string msg);
     void handleHuafeiChangeRecord(std::string msg);
     void handleTruNotify(std::string msg);
+    void handleLobbyPaiHang(std::string msg);
 };
 #endif

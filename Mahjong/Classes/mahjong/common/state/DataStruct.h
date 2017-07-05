@@ -736,4 +736,18 @@ struct ShareActivityData{
     std::string prize;
     std::string num;
 };
+
+struct PlayerRank{
+    std::string key;
+    std::string value;
+};
+
+struct LobbyPaiHangData{
+    std::string name1;
+    std::string name2;
+    std::string name3;
+    std::vector<PlayerRank> content1;
+    std::vector<PlayerRank> content2;
+    std::vector<PlayerRank> content3;
+};
 #endif

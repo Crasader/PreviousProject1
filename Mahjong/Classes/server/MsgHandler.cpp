@@ -470,6 +470,9 @@ void MsgHandler::distribute(int code, std::string msg){
         case MSGCODE_MAJIANG_TRUSTEESHIP_NOTIFY:{
             handleTruNotify(msg);
         }
+        case MSGCODE_PHB_RESPONSE:{
+            
+        }
         default:
             break;
     }
@@ -1069,7 +1072,7 @@ void MsgHandler::loginResp(std::string msg){
         
         ShareActivityData data;
         if(_mDoc.HasMember("share")){
-         const rapidjson::Value &share = _mDoc["share"];
+            const rapidjson::Value &share = _mDoc["share"];
             data.result = share.GetString();
         }
         if(_mDoc.HasMember("wx")){
@@ -1585,7 +1588,7 @@ void MsgHandler::getHeroJongs(std::string msg){
     GAMEDATA::getInstance()->setIsTrusteeship(false);
     GAMEDATA::getInstance()->setMahjongFaPaiData(faPaiData);
     GAMEDATA::getInstance()->setNeedShowFaPai(true);
-//    postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
+    //    postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
 //{"code":2005,"poker":"28","poxiaoId":"e8fec2c3-47ba-4063-ad07-6b7c014c4dca","seatId":3}
@@ -3123,7 +3126,7 @@ void MsgHandler::handleHZFaPaiNotify(std::string msg){
     GAMEDATA::getInstance()->setIsTrusteeship(false);
     GAMEDATA::getInstance()->setMahjongFaPaiData(faPaiData);
     GAMEDATA::getInstance()->setNeedShowFaPai(true);
-//    postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
+    //    postNotifyMessage(MSG_HZ_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
 void MsgHandler::handleHZPlayerPlayPokerNotify(std::string msg){
@@ -3864,5 +3867,55 @@ void MsgHandler::handleTruNotify(std::string msg){
         const rapidjson::Value &flag = _mDoc["flag"];
         data.flag = flag.GetString();
         postNotifyMessage(MSG_PLAYER_TRU_NOTIFY, &data);
+    }
+}
+
+void MsgHandler::handleLobbyPaiHang(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    LobbyPaiHangData data;
+    if(_mDoc.HasMember("name1")){
+        const rapidjson::Value &name1 = _mDoc["name1"];
+        data.name1 = name1.GetString();
+    }
+    if(_mDoc.HasMember("tab1")){
+        const rapidjson::Value &tab1 = _mDoc["tab1"];
+        for(int a = 0; a<tab1.Capacity();a++){
+            PlayerRank rank;
+            const rapidjson::Value &temp = tab1[a];
+            rank.key = temp["key"].GetString();
+            rank.value = temp["value"].GetString();
+            data.content1.push_back(rank);
+        }
+    }
+    if(_mDoc.HasMember("name2")){
+        const rapidjson::Value &name2 = _mDoc["name2"];
+        data.name2 = name2.GetString();
+    }
+    if(_mDoc.HasMember("tab2")){
+        const rapidjson::Value &tab2 = _mDoc["tab2"];
+        for(int a = 0; a<tab2.Capacity();a++){
+            PlayerRank rank;
+            const rapidjson::Value &temp = tab2[a];
+            rank.key = temp["key"].GetString();
+            rank.value = temp["value"].GetString();
+            data.content2.push_back(rank);
+        }
+    }
+    if(_mDoc.HasMember("name3")){
+        const rapidjson::Value &name3 = _mDoc["name3"];
+        data.name3 = name3.GetString();
+    }
+    if(_mDoc.HasMember("tab3")){
+        const rapidjson::Value &tab3 = _mDoc["tab3"];
+        for(int a = 0; a<tab3.Capacity();a++){
+            PlayerRank rank;
+            const rapidjson::Value &temp = tab3[a];
+            rank.key = temp["key"].GetString();
+            rank.value = temp["value"].GetString();
+            data.content3.push_back(rank);
+        }
     }
 }

@@ -677,6 +677,7 @@ void LobbyScene::onEnterTransitionDidFinish(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendLobbyPaiHangCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
     if(GAMEDATA::getInstance()->getNeedShowHongbaoResult() && !GAMEDATA::getInstance()->getHasShowHongbaoResult()){
         GAMEDATA::getInstance()->setNeedShowHongbaoResult(false);

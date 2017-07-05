@@ -79,6 +79,7 @@ public:
     CC_SYNTHESIZE(CompetitionResultInfo, competitionResultData, CompetitionResultData);
     CC_SYNTHESIZE(MahjongFaPaiData, mahjongFaPaiData, MahjongFaPaiData);
     CC_SYNTHESIZE(ShareActivityData, shareActivityData, ShareActivityData);
+    CC_SYNTHESIZE(LobbyPaiHangData, lobbyPaiHangData, LobbyPaiHangData);
   
     //游戏状态
     CC_SYNTHESIZE(int, gameModel, MyGameModel);
