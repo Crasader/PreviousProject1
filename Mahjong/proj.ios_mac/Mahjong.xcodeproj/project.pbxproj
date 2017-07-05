@@ -241,8 +241,6 @@
 		D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FCAC1E7FB77F00937322 /* WxLoginHandler.cpp */; };
 		D252FD681E80F3A500937322 /* openroom in Resources */ = {isa = PBXBuildFile; fileRef = D252FD671E80F3A500937322 /* openroom */; };
 		D252FD691E80F3A500937322 /* openroom in Resources */ = {isa = PBXBuildFile; fileRef = D252FD671E80F3A500937322 /* openroom */; };
-		D25329541CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
-		D25329551CC0D33600DDAD97 /* bignum in Resources */ = {isa = PBXBuildFile; fileRef = D253293F1CC0D33600DDAD97 /* bignum */; };
 		D25329561CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
 		D25329571CC0D33600DDAD97 /* chat in Resources */ = {isa = PBXBuildFile; fileRef = D25329401CC0D33600DDAD97 /* chat */; };
 		D25329581CC0D33600DDAD97 /* ChineseWords.plist in Resources */ = {isa = PBXBuildFile; fileRef = D25329411CC0D33600DDAD97 /* ChineseWords.plist */; };
@@ -695,7 +693,6 @@
 		D252FCAC1E7FB77F00937322 /* WxLoginHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WxLoginHandler.cpp; sourceTree = "<group>"; };
 		D252FCAD1E7FB77F00937322 /* WxLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WxLoginHandler.h; sourceTree = "<group>"; };
 		D252FD671E80F3A500937322 /* openroom */ = {isa = PBXFileReference; lastKnownFileType = folder; path = openroom; sourceTree = "<group>"; };
-		D253293F1CC0D33600DDAD97 /* bignum */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bignum; sourceTree = "<group>"; };
 		D25329401CC0D33600DDAD97 /* chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = chat; sourceTree = "<group>"; };
 		D25329411CC0D33600DDAD97 /* ChineseWords.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChineseWords.plist; sourceTree = "<group>"; };
 		D25329431CC0D33600DDAD97 /* daily */ = {isa = PBXFileReference; lastKnownFileType = folder; path = daily; sourceTree = "<group>"; };
@@ -1028,7 +1025,6 @@
 				D2DCA7D61ECEC067009F9C59 /* competition */,
 				D281E5A01DACF35600D3E44E /* audio */,
 				D212D53B1E14A0BA00C29C00 /* batteryInfo */,
-				D253293F1CC0D33600DDAD97 /* bignum */,
 				D25DEE361CC0F56A007D428A /* bill */,
 				D25329401CC0D33600DDAD97 /* chat */,
 				D25329411CC0D33600DDAD97 /* ChineseWords.plist */,
@@ -2239,7 +2235,6 @@
 				D253297A1CC0D33600DDAD97 /* result in Resources */,
 				D29E85991E320EB100AFACEE /* fupan in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
-				D25329541CC0D33600DDAD97 /* bignum in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				D253296A1CC0D33600DDAD97 /* jong in Resources */,
@@ -2277,7 +2272,6 @@
 				D253296D1CC0D33600DDAD97 /* loading in Resources */,
 				D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */,
 				D25329571CC0D33600DDAD97 /* chat in Resources */,
-				D25329551CC0D33600DDAD97 /* bignum in Resources */,
 				D25329591CC0D33600DDAD97 /* ChineseWords.plist in Resources */,
 				D253297D1CC0D33600DDAD97 /* trusteeship in Resources */,
 				D253296F1CC0D33600DDAD97 /* mainlogin in Resources */,

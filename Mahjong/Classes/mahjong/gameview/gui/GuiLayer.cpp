@@ -297,6 +297,12 @@ void GuiLayer::drawPlayerInvite(){
     oppositePlayerInvite = Menu::create(opp, NULL);
     oppositePlayerInvite->setPosition(Point(945, 642));
     addChild(oppositePlayerInvite);
+    
+    //二人模式
+    if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+        leftPlayerInvite->setVisible(false);
+        rightPlayerInvite->setVisible(false);
+    }
 }
 
 void GuiLayer::invitePlayer(Ref* ref){

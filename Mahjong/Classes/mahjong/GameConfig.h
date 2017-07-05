@@ -17,7 +17,7 @@
 
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币
 #define ENTER_ROOM_2_GOLD 150000// 进入第2个房间需要的最低金币
-#define ENTER_ROOM_3_GOLD 1200000// 进入第3个房间需要的最低金币
+#define ENTER_ROOM_3_GOLD 1200000// 进入第3个房间需要的最低金币userbk
 
 #define APPLE_STORE_PAY_LIST "http://web.5278-mobi.com/pay!getIosPoint.action"
 
