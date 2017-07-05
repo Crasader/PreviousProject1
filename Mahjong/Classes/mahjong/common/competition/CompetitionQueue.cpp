@@ -34,7 +34,7 @@ bool CompetitionQueue::init(){
     queueTitle->setPosition(640,720);
     addChild(queueTitle);
     
-    auto prideNum = LabelAtlas::create(GAMEDATA::getInstance()->getCompetitionPride(), "competition/huafei_num.png", 48, 76, '0');
+    auto prideNum = LabelAtlas::create(GAMEDATA::getInstance()->getCompetitionPride(), "competition/huafei_num.png", 44, 76, '0');
     prideNum->setScale(0.8);
     prideNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(prideNum);

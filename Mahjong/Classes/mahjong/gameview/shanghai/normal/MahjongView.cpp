@@ -1097,8 +1097,10 @@ void MahjongView::showHandPokerOver(int seatId){
         playerLeft->updateHandJongs(leftJongs,true);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
-            playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs,false);
+            if(NULL != playerRight){
+                playerRight->hideHandJongs();
+                playerRight->updateHandJongs(rightJongs,false);
+            }
             playerOpposite->hideHandJongs();
             playerOpposite->updateHandJongs(oppositeJongs,false);
             playerHero->hideHandJongs();
@@ -1109,10 +1111,14 @@ void MahjongView::showHandPokerOver(int seatId){
         playerOpposite->updateHandJongs(oppositeJongs,true);
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
-            playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs,false);
-            playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs,false);
+            if(NULL != playerRight){
+                playerRight->hideHandJongs();
+                playerRight->updateHandJongs(rightJongs,false);
+            }
+            if(NULL != playerRight){
+                playerLeft->hideHandJongs();
+                playerLeft->updateHandJongs(leftJongs,false);
+            }
             playerHero->hideHandJongs();
             playerHero->updateHandJongs(heroJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");
@@ -1123,8 +1129,10 @@ void MahjongView::showHandPokerOver(int seatId){
         schedule([=](float dt){
             playerOpposite->hideHandJongs();
             playerOpposite->updateHandJongs(oppositeJongs,false);
-            playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs,false);
+            if(NULL != playerLeft){
+                playerLeft->hideHandJongs();
+                playerLeft->updateHandJongs(leftJongs,false);
+            }
             playerHero->hideHandJongs();
             playerHero->updateHandJongs(heroJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");

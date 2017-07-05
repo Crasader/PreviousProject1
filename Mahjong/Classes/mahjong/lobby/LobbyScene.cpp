@@ -328,7 +328,7 @@ void LobbyScene::drawSceneMid(){
         isShowRoomlist = true;
         CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
         CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
-        com->setPosition(240+(i%2)*400,420-180*(i/2));
+        com->setPosition(835+(i%2)*290,510-175*(i/2));
         addChild(com);
     }
     auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
