@@ -18,7 +18,6 @@
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/lobby/dialog/EnterRoomDialog.hpp"
 #include "mahjong/lobby/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
@@ -212,11 +211,19 @@ void HZNormalResultLayer::showLayerBtn(){
             myMneu->addChild(feedImage);
             myMneu->setPosition(640,60);
             addChild(myMneu);
-
+            
+//            auto timeText = Sprite::create("competition/daojishi.png");
+//            timeText->setPosition(830,55);
+//            addChild(timeText);
             
             timeLabel->setVisible(true);
             timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             timeLabel->setPosition(850,55);
+            
+//            auto stetx = Sprite::create("competition/daojishi_s.png");
+//            stetx->setPosition(timeLabel->getPositionX()+timeLabel->getContentSize().width,55);
+//            stetx->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//            addChild(stetx);
 
             
         }else{
