@@ -21,17 +21,17 @@ bool DissovleRoomDialog::init(){
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
     
-    auto dialogBg = Sprite::create("common/dialog_bg_small.png");
-    dialogBg->setPosition(640, 360);
-    this->addChild(dialogBg);
+//    auto dialogBg = Sprite::create("common/dialog_bg_small.png");
+//    dialogBg->setPosition(640, 360);
+//    this->addChild(dialogBg);
+//    
+//    auto title = Sprite::create("common/tishi_icon.png");
+//    title->setPosition(640, 500);
+//    this->addChild(title);
     
-    auto title = Sprite::create("common/tishi_icon.png");
-    title->setPosition(640, 500);
-    this->addChild(title);
-    
-    auto thishiBg = Sprite::create("common/thishi_bg.png");
-    thishiBg->setPosition(640, 375);
-    addChild(thishiBg);
+//    auto thishiBg = Sprite::create("common/thishi_bg.png");
+//    thishiBg->setPosition(640, 375);
+//    addChild(thishiBg);
     
     nickNameText = Label::createWithSystemFont("", "Arial", 30);
     nickNameText->setColor(Color3B(38,158,228));

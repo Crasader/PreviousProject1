@@ -421,28 +421,34 @@ int  MahjongView::getNumbersByPoker(string pokers){
     for (auto  hero: playerHero->playerHandJongs) {
         allKnowPokers.pushBack(hero);
     }
-    for (auto  left: playerLeft->playerPlayedJongs) {
-        allKnowPokers.pushBack(left);
+    if(NULL != playerLeft){
+        for (auto  left: playerLeft->playerPlayedJongs) {
+            allKnowPokers.pushBack(left);
+        }
+        for (auto  leftCpg: playerLeft->playerCpgRecords) {
+            for(auto poke1:leftCpg.pokersRecord){
+                allKnowPokers.pushBack(poke1);
+            }
+        }
     }
+    
     for (auto  opposite: playerOpposite->playerPlayedJongs) {
         allKnowPokers.pushBack(opposite);
     }
-    for (auto  right: playerRight->playerPlayedJongs) {
-        allKnowPokers.pushBack(right);
-    }
-    for (auto  leftCpg: playerLeft->playerCpgRecords) {
-        for(auto poke1:leftCpg.pokersRecord){
-            allKnowPokers.pushBack(poke1);
+    if(NULL != playerRight){
+        for (auto  right: playerRight->playerPlayedJongs) {
+            allKnowPokers.pushBack(right);
+        }
+        for (auto rightCpg: playerRight->playerCpgRecords) {
+            for(auto poke3:rightCpg.pokersRecord){
+                allKnowPokers.pushBack(poke3);
+            }
         }
     }
+    
     for (auto  oppsiteCpg: playerOpposite->playerCpgRecords) {
         for(auto poke2:oppsiteCpg.pokersRecord){
             allKnowPokers.pushBack(poke2);
-        }
-    }
-    for (auto rightCpg: playerRight->playerCpgRecords) {
-        for(auto poke3:rightCpg.pokersRecord){
-            allKnowPokers.pushBack(poke3);
         }
     }
     for (auto  heroCpg: playerHero->playerCpgRecords) {
@@ -723,7 +729,7 @@ void MahjongView::playerTingAnim(int seatId){
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setPlayerTingState(true);
-            if(playerRight->playerPlayedJongs.size()>0)
+            if((NULL!=playerRight && playerRight->playerPlayedJongs.size()>0)||GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER)
                 playerOpposite->playerPlayedJongs.at(playerOpposite->playerPlayedJongs.size()-1)->showTingIcon(oppositeplayed);
         }
         else
@@ -988,8 +994,10 @@ void MahjongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
         playerOpposite->drawHandJong();
     if(NULL != playerLeft)
         playerLeft->drawHandJong();
-    if(NULL != playerHero && NULL != playerRight && NULL != playerOpposite && NULL != playerLeft)
-        firstReplaceFlower(vec,data);
+    if(NULL != playerHero  && NULL != playerOpposite ){
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER||(NULL != playerLeft&& NULL != playerRight))
+            firstReplaceFlower(vec,data);
+    }
     if(NULL != playerRight)
         playerRight->setIsReady(false);
     if(NULL != playerOpposite)
@@ -1141,7 +1149,7 @@ void MahjongView::showHandPokerOver(int seatId){
                 playerLeft->hideHandJongs();
                 playerLeft->updateHandJongs(leftJongs,false);
             }
-
+            
         }, 0, 0, 15.0f/24,"fanpai");
     }
     
@@ -1636,7 +1644,12 @@ void MahjongView::onEnter(){
         shmjHeroCpgtData.playCpgt.ting = newHeroData.playCpgt.ting;
         playerHero->hideCurrentBigJong();
         std::vector<string> chipai = StringUtil::split(newHeroData.playCpgt.chi[0], ",");
-        playerHero->drawHeroChi(newHeroData, chipai, playerLeft);
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+            playerHero->drawHeroChi(newHeroData, chipai, playerOpposite);
+        }else{
+            playerHero->drawHeroChi(newHeroData, chipai, playerLeft);
+        }
+        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroChiRespListener, 1);
     
@@ -1740,10 +1753,12 @@ void MahjongView::onEnter(){
             schedule([=](float dt){
                 playerHero->stopTimeClockAnim();
                 playerHero->drawPlayedJong(poker);
-                if(poker == playerLeft->getLastPoker()){
-                    Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-                }else if(poker == playerRight->getLastPoker()){
-                    Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
+                if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
+                    if(poker == playerLeft->getLastPoker()){
+                        Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
+                    }else if(poker == playerRight->getLastPoker()){
+                        Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
+                    }
                 }
             },0,0,0.6f,"delay_play_poker_auto");
         }
@@ -1895,17 +1910,19 @@ void MahjongView::onEnter(){
             }
             schedule([=](float dt){
                 PlayerCpgRecShow showRec;
-                CpgPokerRec pokerRecL;
-                pokerRecL.clientseatid =  ClientSeatId::left;
-                for(auto left:playerLeft->playerCpgRecords){
-                    std::vector<int> p;
-                    for(auto pokers : left.pokersRecord){
-                        p.push_back(pokers->getJongType());
+                if(NULL!= playerLeft){
+                    CpgPokerRec pokerRecL;
+                    pokerRecL.clientseatid =  ClientSeatId::left;
+                    for(auto left:playerLeft->playerCpgRecords){
+                        std::vector<int> p;
+                        for(auto pokers : left.pokersRecord){
+                            p.push_back(pokers->getJongType());
+                        }
+                        pokerRecL.cpg.push_back(p);
                     }
-                    pokerRecL.cpg.push_back(p);
+                    showRec.playercpg.push_back(pokerRecL);
+                    
                 }
-                showRec.playercpg.push_back(pokerRecL);
-                
                 CpgPokerRec pokerRecO;
                 pokerRecO.clientseatid =  ClientSeatId::opposite;
                 for(auto oppsite:playerOpposite->playerCpgRecords){
@@ -1916,18 +1933,18 @@ void MahjongView::onEnter(){
                     pokerRecO.cpg.push_back(p1);
                 }
                 showRec.playercpg.push_back(pokerRecO);
-                
-                CpgPokerRec pokerRecR;
-                pokerRecR.clientseatid =  ClientSeatId::right;
-                for(auto right:playerRight->playerCpgRecords){
-                    std::vector<int> p2;
-                    for(auto pokers : right.pokersRecord){
-                        p2.push_back(pokers->getJongType());
+                if(NULL!= playerRight){
+                    CpgPokerRec pokerRecR;
+                    pokerRecR.clientseatid =  ClientSeatId::right;
+                    for(auto right:playerRight->playerCpgRecords){
+                        std::vector<int> p2;
+                        for(auto pokers : right.pokersRecord){
+                            p2.push_back(pokers->getJongType());
+                        }
+                        pokerRecR.cpg.push_back(p2);
                     }
-                    pokerRecR.cpg.push_back(p2);
+                    showRec.playercpg.push_back(pokerRecR);
                 }
-                showRec.playercpg.push_back(pokerRecR);
-                
                 CpgPokerRec pokerRecH;
                 pokerRecH.clientseatid =  ClientSeatId::hero;
                 for(auto hero:playerHero->playerCpgRecords){
