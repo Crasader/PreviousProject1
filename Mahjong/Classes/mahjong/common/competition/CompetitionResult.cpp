@@ -496,8 +496,6 @@ void CompetitionResult::share(){
     pride->setPosition(335,320);
     hbLayer->addChild(pride);
     
-    
-    
     auto headImage2 = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(68,68));
     headImage2->setPosition(145, 170);
     hbLayer->addChild(headImage2, 10);

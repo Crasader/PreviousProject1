@@ -110,12 +110,196 @@ void RankLayer::onExit(){
 }
 
 void RankLayer::shareToFriend(){
-    
+//    auto hbLayer = Layer::create();
+//    
+//    auto hongbaobg = Sprite::create("result/result_bg.jpg");
+//    hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+//    hongbaobg->setPosition(0,0);
+//    hbLayer->addChild(hongbaobg);
+//    
+//    auto hong = Sprite::create("competition/hongbao_bg.png");
+//    hong->setPosition(335,360);
+//    hbLayer->addChild(hong);
+//    
+//    auto bao = Label::createWithSystemFont("小白相话费红包","arial",26);
+//    bao->setColor(Color3B(246,226,176));
+//    bao->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    bao->setPosition(335,600);
+//    hbLayer->addChild(bao);
+//    
+//    auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(140,140));
+//    headImage->setPosition(335, 480);
+//    hbLayer->addChild(headImage, 10);
+//    
+//    auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",26);
+//    nick->setColor(Color3B::BLACK);
+//    nick->setPosition(330,384);
+//    hbLayer->addChild(nick);
+//    
+//    auto pride = Label::createWithSystemFont(StringUtils::format("%s元话费",getMyPride().c_str()),"arial",80);
+//    pride->setColor(Color3B(170,44,0));
+//    pride->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    pride->setPosition(335,320);
+//    hbLayer->addChild(pride);
+//    
+//    
+//    
+//    auto headImage2 = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(68,68));
+//    headImage2->setPosition(145, 170);
+//    hbLayer->addChild(headImage2, 10);
+//    
+//    auto nick2 = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",20);
+//    nick2->setColor(Color3B::BLACK);
+//    nick2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//    nick2->setPosition(185,185);
+//    hbLayer->addChild(nick2);
+//    
+//    auto guan = Sprite::create("competition/huang_guan.png");
+//    guan->setPosition(420,150);
+//    hbLayer->addChild(guan);
+//    
+//    auto pride2 = Label::createWithSystemFont(StringUtils::format("%s元话费赛",getMyPride().c_str()),"arial",26);
+//    pride2->setColor(Color3B::BLACK);
+//    pride2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//    pride2->setPosition(445,190);
+//    hbLayer->addChild(pride2);
+//    
+//    auto shui = Label::createWithSystemFont("水平最高","arial",26);
+//    shui->setColor(Color3B(255,183,64));
+//    shui->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//    shui->setPosition(445,150);
+//    
+//    hbLayer->addChild(shui);
+//    
+//    auto ma = Sprite::create("competition/er_wei_ma.png");
+//    ma->setPosition(920,360);
+//    hbLayer->addChild(ma);
+//    
+//    if(getMyRank() != "1"){
+//        guan->setTexture("competition/dog_img.png");
+//        shui->setString("虐成狗");
+//        shui->setColor(Color3B(87,87,86));
+//        auto cha = Sprite::create("competition/cha_cha.png");
+//        cha->setPosition(335,320);
+//        hbLayer->addChild(cha);
+//    }
+//    
+//    auto renderTexture = RenderTexture::create(1280, 720, Texture2D::PixelFormat::RGBA8888);
+//    //清空并开始获取
+//    renderTexture->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+//    //遍历场景节点对象，填充纹理到RenderTexture中
+//    hbLayer->visit();
+//    //结束获取
+//    renderTexture->end();
+//    //保存文件
+//    std::string outputFile =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());
+//    renderTexture->saveToFile("mahjong_screen_shot.png",Image::Format::PNG);
+//    schedule([=](float dt){
+//#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//        CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(outputFile, true);
+//#endif
+//        
+//#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
+//#endif
+//    }, 0, 0, 0.2f, "mmp");
 }
 
 
 void RankLayer::shareToSocial(){
-    
+//    auto hbLayer = Layer::create();
+//    
+//    auto hongbaobg = Sprite::create("result/result_bg.jpg");
+//    hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+//    hongbaobg->setPosition(0,0);
+//    hbLayer->addChild(hongbaobg);
+//    
+//    auto hong = Sprite::create("competition/hongbao_bg.png");
+//    hong->setPosition(335,360);
+//    hbLayer->addChild(hong);
+//    
+//    auto bao = Label::createWithSystemFont("小白相话费红包","arial",26);
+//    bao->setColor(Color3B(246,226,176));
+//    bao->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    bao->setPosition(335,600);
+//    hbLayer->addChild(bao);
+//    
+//    auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(140,140));
+//    headImage->setPosition(335, 480);
+//    hbLayer->addChild(headImage, 10);
+//    
+//    auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",26);
+//    nick->setColor(Color3B::BLACK);
+//    nick->setPosition(330,384);
+//    hbLayer->addChild(nick);
+//    
+//    auto pride = Label::createWithSystemFont(StringUtils::format("%s元话费",getMyPride().c_str()),"arial",80);
+//    pride->setColor(Color3B(170,44,0));
+//    pride->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    pride->setPosition(335,320);
+//    hbLayer->addChild(pride);
+//    
+//    
+//    
+//    auto headImage2 = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(68,68));
+//    headImage2->setPosition(145, 170);
+//    hbLayer->addChild(headImage2, 10);
+//    
+//    auto nick2 = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",20);
+//    nick2->setColor(Color3B::BLACK);
+//    nick2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//    nick2->setPosition(185,185);
+//    hbLayer->addChild(nick2);
+//    
+//    auto guan = Sprite::create("competition/huang_guan.png");
+//    guan->setPosition(420,150);
+//    hbLayer->addChild(guan);
+//    
+//    auto pride2 = Label::createWithSystemFont(StringUtils::format("%s元话费赛",getMyPride().c_str()),"arial",26);
+//    pride2->setColor(Color3B::BLACK);
+//    pride2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//    pride2->setPosition(445,190);
+//    hbLayer->addChild(pride2);
+//    
+//    auto shui = Label::createWithSystemFont("水平最高","arial",26);
+//    shui->setColor(Color3B(255,183,64));
+//    shui->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//    shui->setPosition(445,150);
+//    
+//    hbLayer->addChild(shui);
+//    
+//    auto ma = Sprite::create("competition/er_wei_ma.png");
+//    ma->setPosition(920,360);
+//    hbLayer->addChild(ma);
+//    
+//    if(getMyRank() != "1"){
+//        guan->setTexture("competition/dog_img.png");
+//        shui->setString("虐成狗");
+//        shui->setColor(Color3B(87,87,86));
+//        auto cha = Sprite::create("competition/cha_cha.png");
+//        cha->setPosition(335,320);
+//        hbLayer->addChild(cha);
+//    }
+//    
+//    auto renderTexture = RenderTexture::create(1280, 720, Texture2D::PixelFormat::RGBA8888);
+//    //清空并开始获取
+//    renderTexture->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+//    //遍历场景节点对象，填充纹理到RenderTexture中
+//    hbLayer->visit();
+//    //结束获取
+//    renderTexture->end();
+//    //保存文件
+//    std::string outputFile =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());
+//    renderTexture->saveToFile("mahjong_screen_shot.png",Image::Format::PNG);
+//    schedule([=](float dt){
+//#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//        CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(outputFile, true);
+//#endif
+//        
+//#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
+//#endif
+//    }, 0, 0, 0.2f, "mmp");
     
 }
 
