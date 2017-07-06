@@ -739,6 +739,7 @@ struct ShareActivityData{
 
 struct PlayerRank{
     std::string key;
+    std::string pic;
     std::string value;
 };
 

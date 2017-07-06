@@ -471,7 +471,7 @@ void MsgHandler::distribute(int code, std::string msg){
             handleTruNotify(msg);
         }
         case MSGCODE_PHB_RESPONSE:{
-            
+            handleLobbyPaiHang(msg);
         }
         default:
             break;
@@ -3887,6 +3887,7 @@ void MsgHandler::handleLobbyPaiHang(std::string msg){
             const rapidjson::Value &temp = tab1[a];
             rank.key = temp["key"].GetString();
             rank.value = temp["value"].GetString();
+            rank.pic = temp["pic"].GetString();
             data.content1.push_back(rank);
         }
     }
@@ -3901,6 +3902,7 @@ void MsgHandler::handleLobbyPaiHang(std::string msg){
             const rapidjson::Value &temp = tab2[a];
             rank.key = temp["key"].GetString();
             rank.value = temp["value"].GetString();
+            rank.pic = temp["pic"].GetString();
             data.content2.push_back(rank);
         }
     }
@@ -3915,7 +3917,10 @@ void MsgHandler::handleLobbyPaiHang(std::string msg){
             const rapidjson::Value &temp = tab3[a];
             rank.key = temp["key"].GetString();
             rank.value = temp["value"].GetString();
+            rank.pic = temp["pic"].GetString();
             data.content3.push_back(rank);
         }
     }
+    GAMEDATA::getInstance()->setLobbyPaiHangData(data);
+    postNotifyMessage(MSG_UPDATE_LOBBY_RANK, nullptr);
 }

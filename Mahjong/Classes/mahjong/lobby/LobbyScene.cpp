@@ -21,6 +21,7 @@
 #include "mahjong/lobby/shop/ShopHintDialog.hpp"
 #include "mahjong/lobby/share/ShareToFriendLayer.hpp"
 #include "mahjong/lobby/invitecode/InviteCodeLayer.hpp"
+#include "mahjong/lobby/rank/RankLayer.hpp"
 #include "mahjong/common/heroinfo/HeroInfoEdit.h"
 #include "mahjong/common/bill/BillInfo.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
@@ -290,7 +291,7 @@ void LobbyScene::drawSceneMid(){
     
     auto dayTask = MenuItemImage::create("mjlobby/dailytask1.png", "mjlobby/dailytask2.png",CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto dayTaskMenu = Menu::create(dayTask, NULL);
-    dayTaskMenu->setPosition(600, 535);
+    dayTaskMenu->setPosition(610, 535);
     addChild(dayTaskMenu);
     auto text = Sprite::create("mjlobby/day_task_text.png");
     text->setPosition(600, 535);
@@ -300,7 +301,7 @@ void LobbyScene::drawSceneMid(){
                                              CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto shareMenu = Menu::create(sharefriend, NULL);
     shareMenu->alignItemsHorizontallyWithPadding(15);
-    shareMenu->setPosition(600, 435);
+    shareMenu->setPosition(610, 435);
     shareMenu->setTag(1987);
     shareMenu->setVisible(false);
     addChild(shareMenu);
@@ -310,7 +311,7 @@ void LobbyScene::drawSceneMid(){
     firstMenu = Menu::create(first_chaege, NULL);
     firstMenu->alignItemsHorizontallyWithPadding(15);
     firstMenu->setTag(1988);
-    firstMenu->setPosition(600, 330);
+    firstMenu->setPosition(610, 330);
     addChild(firstMenu);
     if(UserData::getInstance()->isFirstCharge()){
         firstMenu->setVisible(false);
@@ -322,6 +323,9 @@ void LobbyScene::drawSceneMid(){
     scroll->setTag(9980);
     scroll->setPosition(600,620);
     addChild(scroll,2);
+    
+    RankLayer* rlayer = RankLayer::create(GAMEDATA::getInstance()->getLobbyPaiHangData());
+    addChild(rlayer);
     
     RoomListData newData = GAMEDATA::getInstance()->getRoomList();
     for (int i=0; i<newData.matchList.size();i++) {
@@ -347,6 +351,8 @@ void LobbyScene::drawSceneMid(){
         jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
 #endif
     }
+    
+    
 }
 
 void LobbyScene::drawSceneBot(){
@@ -677,8 +683,8 @@ void LobbyScene::onEnterTransitionDidFinish(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendLobbyPaiHangCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getNoticeCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendLobbyPaiHangCommand());
     if(GAMEDATA::getInstance()->getNeedShowHongbaoResult() && !GAMEDATA::getInstance()->getHasShowHongbaoResult()){
         GAMEDATA::getInstance()->setNeedShowHongbaoResult(false);
         if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee.c_str())>0){
