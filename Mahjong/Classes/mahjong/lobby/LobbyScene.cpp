@@ -270,6 +270,14 @@ void LobbyScene::drawSceneTop(){
     chargLequan->setPosition(970, 687);
     addChild(chargLequan);
     
+    
+    auto huodong = MenuItemImage::create("mjlobby/task_btn_1.png","mjlobby/task_btn_2.png",CC_CALLBACK_0(LobbyScene::showHotActivity, this));
+    auto gongzh = MenuItemImage::create("mjlobby/gzh_btn1.png","mjlobby/gzh_btn2.png",CC_CALLBACK_0(LobbyScene::showGongZhongHao, this));
+    auto mymenu = Menu::create(huodong,gongzh,NULL);
+    mymenu->setPosition(1185,680);
+    mymenu->alignItemsHorizontallyWithPadding(20);
+    addChild(mymenu);
+    
     //支付审核专用
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     gold_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
@@ -521,6 +529,9 @@ void LobbyScene:: scrollLightSpot(float dt){
     }
 }
 
+void LobbyScene::showGongZhongHao(){
+
+}
 
 void LobbyScene::showFirstCharge(){
     Audio::getInstance()->playSoundClick();

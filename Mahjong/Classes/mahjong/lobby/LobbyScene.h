@@ -87,5 +87,6 @@ private:
     void scrollLightSpot(float dt);
     void signUpdate(float dt);
     void updateHeroInfo();
+    void showGongZhongHao();
 };
 #endif
