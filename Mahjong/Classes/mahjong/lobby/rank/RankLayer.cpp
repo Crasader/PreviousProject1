@@ -22,6 +22,7 @@ RankLayer* RankLayer::create(LobbyPaiHangData data){
 
 
 bool RankLayer::init(LobbyPaiHangData data){
+
     auto rank_bg = Sprite::create("mjlobby/rank_bg.png");
     rank_bg->setPosition(280,360);
     addChild(rank_bg);
@@ -71,17 +72,9 @@ bool RankLayer::init(LobbyPaiHangData data){
     rankName3->setPosition(435,545);
     addChild(rankName3,1);
     
-    ranA = RankListA::create();
+    ranA = RankList::create();
     ranA->updateRankLayer(data.content1);
     addChild(ranA);
-    
-    ranB = RankListB::create();
-    ranB->updateRankLayer(data.content2);
-    addChild(ranB);
-    
-    ranC = RankListC::create();
-    ranC->updateRankLayer(data.content3);
-    addChild(ranC);
     
     auto peng = MenuItemImage::create("mjlobby/send_haoyou.png", "mjlobby/send_quan.png", CC_CALLBACK_0(RankLayer::shareToFriend,this));
     auto quan = MenuItemImage::create("mjlobby/send_quan.png", "mjlobby/send_quan.png", CC_CALLBACK_0(RankLayer::shareToSocial,this));
@@ -100,13 +93,12 @@ void RankLayer::onEnter(){
     Layer::onEnter();
     updateRank =  EventListenerCustom::create(MSG_UPDATE_LOBBY_RANK, [=](EventCustom* event){
         LobbyPaiHangData data = GAMEDATA::getInstance()->getLobbyPaiHangData();
+        
         tab1->setOpacity(255);
         rankName1->setString(data.name1);
         rankName2->setString(data.name2);
         rankName3->setString(data.name3);
         ranA->updateRankLayer(data.content1);
-        ranB->updateRankLayer(data.content2);
-        ranC->updateRankLayer(data.content3);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(updateRank, 1);
 }
@@ -134,6 +126,7 @@ void RankLayer::showRank1(){
     rankName1->setColor(Color3B(177,88,8));
     rankName2->setColor(Color3B(255,252,248));
     rankName3->setColor(Color3B(255,252,248));
+    ranA->updateRankLayer(GAMEDATA::getInstance()->getLobbyPaiHangData().content1);
 }
 void RankLayer::showRank2(){
     tab1->setOpacity(0);
@@ -142,6 +135,7 @@ void RankLayer::showRank2(){
     rankName2->setColor(Color3B(177,88,8));
     rankName1->setColor(Color3B(255,252,248));
     rankName3->setColor(Color3B(255,252,248));
+    ranA->updateRankLayer(GAMEDATA::getInstance()->getLobbyPaiHangData().content2);
 }
 void RankLayer::showRank3(){
     tab1->setOpacity(0);
@@ -150,4 +144,5 @@ void RankLayer::showRank3(){
     rankName3->setColor(Color3B(177,88,8));
     rankName2->setColor(Color3B(255,252,248));
     rankName1->setColor(Color3B(255,252,248));
+    ranA->updateRankLayer(GAMEDATA::getInstance()->getLobbyPaiHangData().content3);
 }

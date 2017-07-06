@@ -7096,11 +7096,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/rank/RankLayer.cpp"
-            timestampString = "521019286.509599"
+            timestampString = "521025003.524245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "RankLayer::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7112,11 +7112,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/rank/RankLayer.cpp"
-            timestampString = "521019286.509599"
+            timestampString = "521024930.558057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "RankLayer::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7128,11 +7128,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/rank/RankLayer.cpp"
-            timestampString = "521019286.509599"
+            timestampString = "521025003.524245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "RankLayer::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7144,11 +7144,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/rank/RankLayer.cpp"
-            timestampString = "521019286.509599"
+            timestampString = "521024930.558057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "RankLayer::onEnterTransitionDidFinish()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7160,11 +7160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/rank/RankLayer.cpp"
-            timestampString = "521019286.509599"
+            timestampString = "521024930.558057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "RankLayer::init(LobbyPaiHangData data)"
             landmarkType = "7">
          </BreakpointContent>

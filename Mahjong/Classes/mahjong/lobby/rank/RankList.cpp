@@ -6,17 +6,17 @@
 //
 //
 
-#include "mahjong/lobby/rank/RankListA.hpp"
+#include "mahjong/lobby/rank/RankList.hpp"
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/common/widget/HeadImage.hpp"
 
 
-void RankListA::updateRankLayer(std::vector<PlayerRank> rank){
+void RankList::updateRankLayer(std::vector<PlayerRank> rank){
     myRank = rank;
     tableView1->reloadData();
 }
 
-bool RankListA::init(){
+bool RankList::init(){
     tableView1 = TableView::create(this, Size(486, 305));
     tableView1->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView1->setDirection(ScrollView::Direction::VERTICAL);
@@ -28,16 +28,16 @@ bool RankListA::init(){
     return true;
 }
 
-void RankListA::tableCellTouched(TableView* table, TableViewCell* cell){
+void RankList::tableCellTouched(TableView* table, TableViewCell* cell){
     
 }
 
-Size RankListA::tableCellSizeForIndex(TableView *table, ssize_t idx){
+Size RankList::tableCellSizeForIndex(TableView *table, ssize_t idx){
     return Size(486, 88);
 }
 
 
-TableViewCell* RankListA::tableCellAtIndex(TableView *table, ssize_t idx){
+TableViewCell* RankList::tableCellAtIndex(TableView *table, ssize_t idx){
     TableViewCell *cell = table->dequeueCell();
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
@@ -144,6 +144,6 @@ TableViewCell* RankListA::tableCellAtIndex(TableView *table, ssize_t idx){
 }
 
 
-ssize_t RankListA::numberOfCellsInTableView(TableView *table){
+ssize_t RankList::numberOfCellsInTableView(TableView *table){
     return myRank.size();
 }

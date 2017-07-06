@@ -11,9 +11,7 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "mahjong/common/state/GameData.h"
-#include "mahjong/lobby/rank/RankListA.hpp"
-#include "mahjong/lobby/rank/RankListB.hpp"
-#include "mahjong/lobby/rank/RankListC.hpp"
+#include "mahjong/lobby/rank/RankList.hpp"
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -32,9 +30,7 @@ private:
     MenuItemImage* tab1;
     MenuItemImage* tab2;
     MenuItemImage* tab3;
-    RankListA* ranA ;
-    RankListB* ranB;
-    RankListC* ranC ;
+    RankList* ranA ;
     void shareToFriend();
     void shareToSocial();
     void showRank1();

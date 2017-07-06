@@ -1,13 +1,13 @@
 //
-//  RankListC.hpp
+//  RankListA.hpp
 //  Mahjong
 //
 //  Created by qiuzhong on 2017/7/6.
 //
 //
 
-#ifndef RankListC_hpp
-#define RankListC_hpp
+#ifndef RankList_hpp
+#define RankList_hpp
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
@@ -15,12 +15,13 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-class RankListC : public Layer,public TableViewDelegate, public TableViewDataSource{
+class RankList : public Layer,public TableViewDelegate, public TableViewDataSource{
 public:
     bool init();
     void updateRankLayer(std::vector<PlayerRank> rank);
-    CREATE_FUNC(RankListC);
+    CREATE_FUNC(RankList);
 private:
+    std::vector<PlayerRank> myRank;
     EventListenerCustom* updateRank;
     TableView* tableView1 ;
     virtual void tableCellTouched(TableView* table, TableViewCell* cell);
@@ -32,4 +33,4 @@ private:
 };
 
 
-#endif /* RankListC_hpp */
+#endif /* RankListA_hpp */

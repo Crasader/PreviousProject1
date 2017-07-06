@@ -356,12 +356,8 @@
 		D2B1D9251E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B1D9141E9E026800EB8FB0 /* SpecialResultLayer.cpp */; };
 		D2B291B81F0DD3810084F379 /* RankLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291B61F0DD3810084F379 /* RankLayer.cpp */; };
 		D2B291B91F0DD3810084F379 /* RankLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291B61F0DD3810084F379 /* RankLayer.cpp */; };
-		D2B291BC1F0E18C40084F379 /* RankListA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291BA1F0E18C40084F379 /* RankListA.cpp */; };
-		D2B291BD1F0E18C40084F379 /* RankListA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291BA1F0E18C40084F379 /* RankListA.cpp */; };
-		D2B291C01F0E18E10084F379 /* RankListB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291BE1F0E18E10084F379 /* RankListB.cpp */; };
-		D2B291C11F0E18E10084F379 /* RankListB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291BE1F0E18E10084F379 /* RankListB.cpp */; };
-		D2B291C41F0E18EF0084F379 /* RankListC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291C21F0E18EF0084F379 /* RankListC.cpp */; };
-		D2B291C51F0E18EF0084F379 /* RankListC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291C21F0E18EF0084F379 /* RankListC.cpp */; };
+		D2B291BC1F0E18C40084F379 /* RankList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291BA1F0E18C40084F379 /* RankList.cpp */; };
+		D2B291BD1F0E18C40084F379 /* RankList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B291BA1F0E18C40084F379 /* RankList.cpp */; };
 		D2B3DD981E6ED2F70099B97E /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD961E6ED2F70099B97E /* Base64.cpp */; };
 		D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3DD961E6ED2F70099B97E /* Base64.cpp */; };
 		D2C3FA581D99081100CFC80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C3FA571D99081100CFC80E /* CoreTelephony.framework */; };
@@ -792,12 +788,8 @@
 		D2B1D9151E9E026800EB8FB0 /* SpecialResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpecialResultLayer.hpp; sourceTree = "<group>"; };
 		D2B291B61F0DD3810084F379 /* RankLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RankLayer.cpp; sourceTree = "<group>"; };
 		D2B291B71F0DD3810084F379 /* RankLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RankLayer.hpp; sourceTree = "<group>"; };
-		D2B291BA1F0E18C40084F379 /* RankListA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RankListA.cpp; sourceTree = "<group>"; };
-		D2B291BB1F0E18C40084F379 /* RankListA.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RankListA.hpp; sourceTree = "<group>"; };
-		D2B291BE1F0E18E10084F379 /* RankListB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RankListB.cpp; sourceTree = "<group>"; };
-		D2B291BF1F0E18E10084F379 /* RankListB.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RankListB.hpp; sourceTree = "<group>"; };
-		D2B291C21F0E18EF0084F379 /* RankListC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RankListC.cpp; sourceTree = "<group>"; };
-		D2B291C31F0E18EF0084F379 /* RankListC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RankListC.hpp; sourceTree = "<group>"; };
+		D2B291BA1F0E18C40084F379 /* RankList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RankList.cpp; sourceTree = "<group>"; };
+		D2B291BB1F0E18C40084F379 /* RankList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RankList.hpp; sourceTree = "<group>"; };
 		D2B3DD961E6ED2F70099B97E /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Base64.cpp; sourceTree = "<group>"; };
 		D2B3DD971E6ED2F70099B97E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		D2C3FA401D94FC0A00CFC80E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
@@ -1955,12 +1947,8 @@
 			children = (
 				D2B291B61F0DD3810084F379 /* RankLayer.cpp */,
 				D2B291B71F0DD3810084F379 /* RankLayer.hpp */,
-				D2B291BA1F0E18C40084F379 /* RankListA.cpp */,
-				D2B291BB1F0E18C40084F379 /* RankListA.hpp */,
-				D2B291BE1F0E18E10084F379 /* RankListB.cpp */,
-				D2B291BF1F0E18E10084F379 /* RankListB.hpp */,
-				D2B291C21F0E18EF0084F379 /* RankListC.cpp */,
-				D2B291C31F0E18EF0084F379 /* RankListC.hpp */,
+				D2B291BA1F0E18C40084F379 /* RankList.cpp */,
+				D2B291BB1F0E18C40084F379 /* RankList.hpp */,
 			);
 			path = rank;
 			sourceTree = "<group>";
@@ -2363,7 +2351,6 @@
 				D252FB601E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,
 				D278ADC01DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
 				D2E035101ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */,
-				D2B291C41F0E18EF0084F379 /* RankListC.cpp in Sources */,
 				D252FB9C1E7FA5EC00937322 /* DailyEvent.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D252FC531E7FABE900937322 /* MjGameScene.cpp in Sources */,
@@ -2378,7 +2365,6 @@
 				D252FB301E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
 				D252FC081E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */,
 				D252FC5D1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
-				D2B291C01F0E18E10084F379 /* RankListB.cpp in Sources */,
 				D252FC571E7FABE900937322 /* PlayerBase.cpp in Sources */,
 				D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -2426,7 +2412,7 @@
 				D252FB461E7FA5EC00937322 /* HeadImageDialog.cpp in Sources */,
 				D2B3DD981E6ED2F70099B97E /* Base64.cpp in Sources */,
 				D2E035151ED9120700291282 /* HongbaoAnim.cpp in Sources */,
-				D2B291BC1F0E18C40084F379 /* RankListA.cpp in Sources */,
+				D2B291BC1F0E18C40084F379 /* RankList.cpp in Sources */,
 				D252FB541E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D252FBB21E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */,
 				D299F8D81E27640000D10B0D /* SocketDataBack.cpp in Sources */,
@@ -2613,9 +2599,7 @@
 				D2E0351D1ED92BE700291282 /* HongbaoAnim2.cpp in Sources */,
 				D252FC8D1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */,
 				D252FBAF1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
-				D2B291C11F0E18E10084F379 /* RankListB.cpp in Sources */,
 				D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */,
-				D2B291C51F0E18EF0084F379 /* RankListC.cpp in Sources */,
 				D252FBC71E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
 				D252FBC11E7FA5EC00937322 /* Huode.cpp in Sources */,
 				D2DDB1BF1F02384600790422 /* EnterRoomDialog.cpp in Sources */,
@@ -2628,7 +2612,7 @@
 				D2E035161ED9120700291282 /* HongbaoAnim.cpp in Sources */,
 				D252FBD31E7FA5EC00937322 /* ResultScene.cpp in Sources */,
 				D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */,
-				D2B291BD1F0E18C40084F379 /* RankListA.cpp in Sources */,
+				D2B291BD1F0E18C40084F379 /* RankList.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D252FB451E7FA5EC00937322 /* ToastCell.cpp in Sources */,
 				D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */,
