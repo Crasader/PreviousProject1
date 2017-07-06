@@ -975,6 +975,46 @@ void MsgHandler::loginResp(std::string msg){
         }else{
             UserData::getInstance()->setInviteCodeBind(true);
         }
+        if(_mDoc.HasMember("share1")){
+            const rapidjson::Value &share1 = _mDoc["share1"];
+            MahjongShareData1 data1;
+            data1.pic = share1["pic"].GetString();
+            data1.url = share1["url"].GetString();
+            data1.content = share1["content"].GetString();
+            GAMEDATA::getInstance()->setMahjongShareData1(data1);
+        }
+        if(_mDoc.HasMember("share2")){
+             const rapidjson::Value &share2 = _mDoc["share2"];
+            MahjongShareData2 data2;
+            data2.pic = share2["pic"].GetString();
+            data2.url = share2["url"].GetString();
+            data2.content = share2["content"].GetString();
+            GAMEDATA::getInstance()->setMahjongShareData2(data2);
+        }
+        if(_mDoc.HasMember("share3")){
+            const rapidjson::Value &share3 = _mDoc["share3"];
+            MahjongShareData3 data3;
+            data3.pic = share3["pic"].GetString();
+            data3.url = share3["url"].GetString();
+            data3.content = share3["content"].GetString();
+            GAMEDATA::getInstance()->setMahjongShareData3(data3);
+        }
+        if(_mDoc.HasMember("share4")){
+            const rapidjson::Value &share4 = _mDoc["share3"];
+            MahjongShareData4 data4;
+            data4.pic = share4["pic"].GetString();
+            data4.url = share4["url"].GetString();
+            data4.content = share4["content"].GetString();
+            GAMEDATA::getInstance()->setMahjongShareData4(data4);
+        }
+        if(_mDoc.HasMember("share5")){
+            const rapidjson::Value &share5 = _mDoc["share3"];
+            MahjongShareData5 data5;
+            data5.pic = share5["pic"].GetString();
+            data5.url = share5["url"].GetString();
+            data5.content = share5["content"].GetString();
+            GAMEDATA::getInstance()->setMahjongShareData5(data5);
+        }
         if(_mDoc.HasMember("free")){
             const rapidjson::Value &free = _mDoc["free"];
             GAMEDATA::getInstance()->setNeedShowShareBtn((strcmp(free.GetString(),"1") == 0)?true:false);

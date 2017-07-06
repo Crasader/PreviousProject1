@@ -80,6 +80,11 @@ public:
     CC_SYNTHESIZE(MahjongFaPaiData, mahjongFaPaiData, MahjongFaPaiData);
     CC_SYNTHESIZE(ShareActivityData, shareActivityData, ShareActivityData);
     CC_SYNTHESIZE(LobbyPaiHangData, lobbyPaiHangData, LobbyPaiHangData);
+    CC_SYNTHESIZE(MahjongShareData1, mahjongShareData1, MahjongShareData1);
+    CC_SYNTHESIZE(MahjongShareData2, mahjongShareData2, MahjongShareData2);
+    CC_SYNTHESIZE(MahjongShareData3, mahjongShareData3, MahjongShareData3);
+    CC_SYNTHESIZE(MahjongShareData4, mahjongShareData4, MahjongShareData4);
+    CC_SYNTHESIZE(MahjongShareData5, mahjongShareData5, MahjongShareData5);
   
     //游戏状态
     CC_SYNTHESIZE(int, gameModel, MyGameModel);
