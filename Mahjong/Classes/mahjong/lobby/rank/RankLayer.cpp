@@ -76,12 +76,12 @@ bool RankLayer::init(LobbyPaiHangData data){
     ranA->updateRankLayer(data.content1);
     addChild(ranA);
     
-    auto peng = MenuItemImage::create("mjlobby/send_haoyou.png", "mjlobby/send_quan.png", CC_CALLBACK_0(RankLayer::shareToFriend,this));
-    auto quan = MenuItemImage::create("mjlobby/send_quan.png", "mjlobby/send_quan.png", CC_CALLBACK_0(RankLayer::shareToSocial,this));
-    auto  menu = Menu::create(peng,quan,NULL);
-    menu->setPosition(375,167);
-    menu->alignItemsHorizontallyWithPadding(10);
-    addChild(menu);
+//    auto peng = MenuItemImage::create("mjlobby/send_haoyou.png", "mjlobby/send_quan.png", CC_CALLBACK_0(RankLayer::shareToFriend,this));
+//    auto quan = MenuItemImage::create("mjlobby/send_quan.png", "mjlobby/send_quan.png", CC_CALLBACK_0(RankLayer::shareToSocial,this));
+//    auto  menu = Menu::create(peng,quan,NULL);
+//    menu->setPosition(375,167);
+//    menu->alignItemsHorizontallyWithPadding(10);
+//    addChild(menu);
     return true;
 }
 
