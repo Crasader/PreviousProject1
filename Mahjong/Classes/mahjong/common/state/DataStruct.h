@@ -753,26 +753,31 @@ struct LobbyPaiHangData{
 };
 
 struct MahjongShareData1{
+    std::string head;
     std::string pic;
     std::string url;
     std::string content;
 };
 struct MahjongShareData2{
+    std::string head;
     std::string pic;
     std::string url;
     std::string content;
 };
 struct MahjongShareData3{
+    std::string head;
     std::string pic;
     std::string url;
     std::string content;
 };
 struct MahjongShareData4{
+    std::string head;
     std::string pic;
     std::string url;
     std::string content;
 };
 struct MahjongShareData5{
+    std::string head;
     std::string pic;
     std::string url;
     std::string content;

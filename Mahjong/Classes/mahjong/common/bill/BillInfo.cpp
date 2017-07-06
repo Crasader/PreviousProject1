@@ -119,8 +119,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         sprite1->setAnchorPoint(Vec2::ZERO);
         sprite1->setPosition(Vec2(0, 0));
         cell->addChild(sprite1);
-        
-        
+    
         Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
         if(isMatch){
             if(!UserData::getInstance()->isWeixinPayOpen()){

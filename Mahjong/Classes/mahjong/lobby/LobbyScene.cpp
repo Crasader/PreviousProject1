@@ -33,11 +33,12 @@
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/GameConfig.h"
-#include "wechat/android/CallAndroidMethod.h"
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/result/hongbao/HongbaoAnim.hpp"
 #include "mahjong/result/hongbao/HongbaoAnim2.hpp"
 #include "mahjong/lobby/share/ShareActivityLayer.hpp"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 
 bool LobbyScene::init()
@@ -59,12 +60,12 @@ bool LobbyScene::init()
 
 
 void LobbyScene::signUpdate(float dt){
-    if(GAMEDATA::getInstance()->getNeedShowShareBtn()){
-        getChildByTag(1987)->setVisible(true);
-    }else{
-        if(NULL != getChildByTag(1988))
-            getChildByTag(1988)->setPosition(600,435);
-    }
+//    if(GAMEDATA::getInstance()->getNeedShowShareBtn()){
+//        getChildByTag(1987)->setVisible(true);
+//    }else{
+//        if(NULL != getChildByTag(1988))
+//            getChildByTag(1988)->setPosition(600,435);
+//    }
     if(GAMEDATA::getInstance()->getShowProtected()){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
@@ -297,21 +298,12 @@ void LobbyScene::drawSceneTop(){
 
 void LobbyScene::drawSceneMid(){
     
-    auto dayTask = MenuItemImage::create("mjlobby/dailytask1.png", "mjlobby/dailytask2.png",CC_CALLBACK_0(LobbyScene::showRedWallet, this));
-    auto dayTaskMenu = Menu::create(dayTask, NULL);
-    dayTaskMenu->setPosition(610, 535);
-    addChild(dayTaskMenu);
-    auto text = Sprite::create("mjlobby/day_task_text.png");
-    text->setPosition(600, 535);
-    addChild(text);
-    
-    auto sharefriend = MenuItemImage::create("mjlobby/red_wallet_1.png", "mjlobby/red_wallet_2.png",
+    auto sharefriend = MenuItemImage::create("mjlobby/share_1.png", "mjlobby/share_2.png",
                                              CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto shareMenu = Menu::create(sharefriend, NULL);
     shareMenu->alignItemsHorizontallyWithPadding(15);
-    shareMenu->setPosition(610, 435);
+    shareMenu->setPosition(610, 535);
     shareMenu->setTag(1987);
-    shareMenu->setVisible(false);
     addChild(shareMenu);
     
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
@@ -319,7 +311,7 @@ void LobbyScene::drawSceneMid(){
     firstMenu = Menu::create(first_chaege, NULL);
     firstMenu->alignItemsHorizontallyWithPadding(15);
     firstMenu->setTag(1988);
-    firstMenu->setPosition(610, 330);
+    firstMenu->setPosition(610, 435);
     addChild(firstMenu);
     if(UserData::getInstance()->isFirstCharge()){
         firstMenu->setVisible(false);
@@ -541,9 +533,15 @@ void LobbyScene::showFirstCharge(){
 }
 
 void LobbyScene::showRedWallet(){
+    //    ShareActivityLayer* wallet = ShareActivityLayer::create();
+    //    addChild(wallet,3);
     Audio::getInstance()->playSoundClick();
-    ShareActivityLayer* wallet = ShareActivityLayer::create();
-    addChild(wallet,3);
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareToWeChat(WECHAT_SHARE_FRIEND_URL,StringUtils::format("房号%s就等侬了!",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str()),roomtype,false);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->doWechatShareWeb(GAMEDATA::getInstance()->getMahjongShareData1().url,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,0);
+#endif
 }
 
 void LobbyScene::showWanJiaQun(){
