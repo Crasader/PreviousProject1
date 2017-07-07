@@ -445,7 +445,7 @@ struct TodayPrideData{
 
 struct TurnTableData{
     std::string result;
-    PrideData pride;
+    std::vector<PrideData> prides;
 };
 
 struct BoundPhoneData{

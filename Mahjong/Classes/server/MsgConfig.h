@@ -57,6 +57,11 @@
 
 #define MSGCODE_DZP_REQUEST  171// 大转盘请求{code:171,poxiaoId:poxiaoId}
 #define MSGCODE_DZP_RESPONSE  172// 大转盘回复{code:172,poxiaoId:poxiaoId,result:1,content:[{fangka:1,ratio:385},{fangka:5,ratio:40},{fangka:20,ratio:3},{fee:1.88,ratio:230},{fee:2.88,ratio:77},{fee:5.88,ratio:23},{fee:18.88,ratio:7},{fee:88.88,ratio:1},{iphone7:1,ratio:0},{nothing:1,ratio:234}]}
+#define MSGCODE_DZP_Z_REQUEST  173// 大转盘转起来请求{code:173,poxiaoId:poxiaoId}
+#define MSGCODE_DZP_Z_RESPONSE  174// 大转盘转起来回复{code:173,poxiaoId:poxiaoId,result:1,content:{fangka:1,ratio:385}} result为0则大转盘关闭
+#define MSGCODE_DZP_Z_SHARE_REQUEST  175;// 大转盘转起来分享成功请求{code:175,poxiaoId:poxiaoId}
+#define MSGCODE_DZP_B_SHARE_REQUEST  176// 大转盘分享成功请求{code:176,poxiaoId:poxiaoId}
+#define MSGCODE_DZP_B_SHARE_RESPONSE  177// 大转盘分享成功回复{code:177,poxiaoId:poxiaoId,result:"1"} 1为有转盘机会 0表示没有
 
 #define MSGCODE_PHB_REQUEST  178// 排行榜请求{code:178,poxiaoId:poxiaoId}
 #define MSGCODE_PHB_RESPONSE  179// 排行榜回复{code:179,poxiaoId:poxiaoId,name1:"",tab1:[{key:"",value:""},{key:"",value:""}],name2:"",tab2:[{key:"",value:""},{key:"",value:""}],name3:"",tab3:[{key:"",value:""},{key:"",value:""}]}

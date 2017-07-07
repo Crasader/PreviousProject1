@@ -7,6 +7,8 @@
 #include "mahjong/common/utils/Chinese.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/CallIOSMethod.h"
 #include "math.h"
 
 
@@ -15,21 +17,21 @@ bool DailyPride::init(){
         return false;
     }
     showDailyPrideLayer();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableCommmand());
     return true;
-    
 }
 
 void DailyPride::onEnter(){
     Layer::onEnter();
     
-    prideCallBackListener1 = EventListenerCustom::create(MSG_PLAYER_DAILY_PRIDE, [=](EventCustom* event){
+    prideCallBackListener1 = EventListenerCustom::create(MSG_PLAYER_TURNTABLE_PRIDE, [=](EventCustom* event){
         updateData();
     });
     _eventDispatcher->addEventListenerWithFixedPriority(prideCallBackListener1, 1);
     
     prideCallBackListener2 = EventListenerCustom::create(MSG_PLAYER_TODAY_PRIDE, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getTodayPrideData().result == "2"){
-			HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_11"), nullptr, nullptr);
+            HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_11"), nullptr, nullptr);
             addChild(hit,10);
             m_turnBg->stopAllActions();
         }else{
@@ -47,10 +49,10 @@ void DailyPride::onEnter(){
                             this->getParent()->addChild(util,5);
                         }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::fangka){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::fangkaOnly);
-							this->getParent()->addChild(util, 5);
+                            this->getParent()->addChild(util, 5);
                         }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
                             ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
-							this->getParent()->addChild(util, 5);
+                            this->getParent()->addChild(util, 5);
                         }
                         if(NULL != getChildByTag(1000)){
                             ((LabelAtlas*)getChildByTag(1000))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTodayPrideData().rest));
@@ -72,77 +74,69 @@ void DailyPride::onExit(){
     
 }
 
+void DailyPride::onEnterTransitionDidFinish(){
+    Layer::onEnterTransitionDidFinish();
+}
+
 
 void DailyPride::showDailyPrideLayer(){
-    auto bigtitle = Sprite::create("daily/every_day_pride.png");
-    bigtitle->setPosition(640,650);
-    addChild(bigtitle);
     
-    auto text_bg = Sprite::create("daily/pride/text_info_bg.png");
-    text_bg->setPosition(850, 370);
-    addChild(text_bg);
+    auto bg = LayerColor::create(Color4B(0, 0, 0, 80), 1280, 720);
+    addChild(bg);
     
-    auto piao = Sprite::create("daily/pride/piao_dai.png");
-    piao->setPosition(900, 480);
-    addChild(piao);
+    auto rightGirl = Sprite::create("daily/right_girl.png");
+    rightGirl->setPosition(780,380);
+    addChild(rightGirl);
     
-    auto title = Sprite::create("daily/pride/god_text.png");
-    title->setPosition(900, 500);
-    addChild(title);
+    auto shareText = Sprite::create("daily/text_info.png");
+    shareText->setPosition(857,270);
+    addChild(shareText);
     
-    auto hint = Sprite::create("daily/pride/chance_text.png");
-    hint->setPosition(900, 420);
-    addChild(hint);
+    auto shareBtn = MenuItemImage::create("daily/share_pride_bnt_1.png", "daily/share_pride_bnt_2.png",CC_CALLBACK_0(DailyPride::shareTurntable, this));
+    auto menu = Menu::create(shareBtn,NULL);
+    menu->setPosition(850,180);
+    addChild(menu);
     
-    auto num = LabelAtlas::create(GAMEDATA::getInstance()->getDailyPrideData().count, "competition/rank_num.png", 98, 124, '0');
-    num->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    num->setPosition(910,425);
-    num->setTag(1000);
-    num->setScale(0.4);
-    addChild(num);
-    
-    auto text = Sprite::create("daily/pride/text_info.png");
-    text->setPosition(890, 320);
-    addChild(text);
-    
-    auto luck_bg = Sprite::create("daily/pride/luck_bg.png");
+    auto luck_bg = Sprite::create("daily/luck_bg.png");
     luck_bg->setPosition(463, 325);
     addChild(luck_bg);
     
-    m_turnBg = Sprite::create("daily/pride/circle_bg.png");
-    m_turnBg->setPosition(463, 325);
+    m_turnBg = Sprite::create("daily/circle_bg.png");
+    m_turnBg->setPosition(463, 332);
     addChild(m_turnBg);
     
-    DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
+    TurnTableData data = GAMEDATA::getInstance()->getTurnTableData();
     for (int i = 0; i < data.prides.size(); i++){
         PrideCell* cell = PrideCell::create(data.prides.at(i).type, data.prides.at(i).number);
-        cell->setRotation(90-i*45);
+        cell->setRotation(90-i*36+18);
         cell->setTag(100+i);
-        cell->setPosition(getPosByRotation(Point(219,219), 100, i * 45));
+        cell->setPosition(getPosByRotation(Point(219,219), 100, i * 36-18));
         m_turnBg->addChild(cell);
     }
-    
-    auto arrows = Sprite::create("daily/pride/arrows.png");
-    arrows->setPosition(463, 335);
-    addChild(arrows);
-    
-    auto itemImage = MenuItemImage::create("daily/pride/go_btn_1.png", "daily/pride/go_btn_2.png",
+    auto itemImage = MenuItemImage::create("daily/go_btn_1.png", "daily/go_btn_2.png",
                                            CC_CALLBACK_1(DailyPride::beginPride, this));
     startMenu = Menu::create(itemImage, NULL);
-    startMenu->setPosition(463, 325);
+    startMenu->setPosition(463, 340);
     addChild(startMenu);
-    
-    
+}
+
+
+void DailyPride::shareTurntable(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableShareCommand());
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//    CallAndroidMethod::getInstance()->shareToWeChat(GAMEDATA::getInstance()->getMahjongShareData2().url,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,true);
+//#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//    CallIOSMethod::getInstance()->doWechatShareWeb(GAMEDATA::getInstance()->getMahjongShareData2().url,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
+//#endif
 }
 
 void DailyPride::updateData(){
-    ((LabelAtlas*)getChildByTag(1000))->setString(GAMEDATA::getInstance()->getDailyPrideData().count);
-    DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
+    TurnTableData data = GAMEDATA::getInstance()->getTurnTableData();
     for (int i = 0; i < data.prides.size(); i++){
         PrideCell* cell = PrideCell::create(data.prides.at(i).type, data.prides.at(i).number);
-        cell->setRotation(90-i*45);
+        cell->setRotation(90-i*36+18);
         cell->setTag(100+i);
-        cell->setPosition(getPosByRotation(Point(219,219), 100, i * 45));
+        cell->setPosition(getPosByRotation(Point(219,219), 100, i * 36-18));
         m_turnBg->addChild(cell);
     }
 }
@@ -150,83 +144,17 @@ void DailyPride::updateData(){
 
 void DailyPride::beginPride(Ref* ref){
     
-    if(atoi(GAMEDATA::getInstance()->getDailyPrideData().count.c_str())>0){
-        if(UserData::getInstance()->getGold()<50000){
-			HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_10"), nullptr, nullptr);
-            addChild(hit);
-        }else{
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTodayPrideCommand());
-            startMenu->setEnabled(false);
-            srand(unsigned(time(NULL)));
-            float angleZ = rand() % 720 + 720;
-            auto pAction = EaseExponentialIn::create(RotateBy::create(2, Vec3(0, 0, angleZ)));
-            auto roate = RotateBy::create(2, Vec3(0, 0, angleZ));
-            auto repeat = Repeat::create(roate, CC_REPEAT_FOREVER);
-            auto sequence = Sequence::create(pAction, repeat,NULL);
-            m_turnBg->runAction(sequence);
-        }
-    }else{
-		HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_12"), nullptr, nullptr);
-        addChild(hit);
-    }
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableStartCommand());
+    startMenu->setEnabled(false);
+    srand(unsigned(time(NULL)));
+    float angleZ = rand() % 720 + 720;
+    auto pAction = EaseExponentialIn::create(RotateBy::create(2, Vec3(0, 0, angleZ)));
+    auto roate = RotateBy::create(2, Vec3(0, 0, angleZ));
+    auto repeat = Repeat::create(roate, CC_REPEAT_FOREVER);
+    auto sequence = Sequence::create(pAction, repeat,NULL);
+    m_turnBg->runAction(sequence);
 }
 
-//std::string DailyPride::getImageNameById(int id){
-//    std::string dayImage = "bignum/zero_1.png";
-//    switch (id)
-//    {
-//        case 0:
-//            dayImage = "bignum/zero_1.png";
-//            
-//            break;
-//        case 1:
-//            
-//            dayImage = "bignum/one_1.png";
-//            
-//            break;
-//        case 2:
-//            
-//            dayImage = "bignum/two_1.png";
-//            
-//            break;
-//        case 3:
-//            
-//            dayImage = "bignum/three_1.png";
-//            
-//            break;
-//        case 4:
-//            
-//            dayImage = "bignum/four_1.png";
-//            
-//            break;
-//        case 5:
-//            
-//            dayImage = "bignum/five_1.png";
-//            
-//            break;
-//        case 6:
-//            
-//            dayImage = "bignum/six_1.png";
-//            
-//            break;
-//        case 7:
-//            
-//            dayImage = "bignum/seven_1.png";
-//            
-//            break;
-//        case 8:
-//            
-//            dayImage = "bignum/eight_1.png";
-//            
-//            break;
-//        case 9:
-//            
-//            dayImage = "bignum/nine_1.png";
-//            
-//            break;
-//    }
-//    return dayImage;
-//}
 
 Point DailyPride::getPosByRotation(Point pos, float r, float a){
     return Point(pos.x + cos(CC_DEGREES_TO_RADIANS(a))*r, pos.y + sin(CC_DEGREES_TO_RADIANS(a))*r);

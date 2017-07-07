@@ -89,6 +89,8 @@ public:
     /** --------------- 排行榜 ---------------------- **/
     std::string sendLobbyPaiHangCommand();
     std::string sendTurntableCommmand();
+    std::string sendTurntableShareCommand();
+    std::string sendTurntableStartCommand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

@@ -23,25 +23,30 @@ bool PrideCell::init(PrideType propId, int propNum){
     auto prop = Sprite::create(getImageNameById(propId));
     prop->setPosition(0, 65);
     addChild(prop);
-    LabelAtlas* num = LabelAtlas::create("0", "daily/pride/pride_num.png", 16, 24, '0');
-    num->setPosition(-15, -2);
+    LabelAtlas* num = LabelAtlas::create(StringUtils::format("%d", propNum), "daily/pride_num.png", 12, 22, '0');
+    num->setPosition(-17, -2);
     addChild(num);
-    if (propNum / 10000 >= 1){
-        num->setString(StringUtils::format("%d", propNum / 10000));
-        num->setPosition(-20,-2);
-        auto wan = Sprite::create("daily/pride/wan.png");
-        wan->setPosition(10,10);
-        addChild(wan);
-    }
-    else{
-        num->setString(StringUtils::format("%d", propNum));
-    }
-    if(propId == 3){
-        prop->setScale(0.6f);
+    if(propId == PrideType::fangka){
         auto zhang = Sprite::create("daily/zhang_text.png");
-        zhang->setPosition(10,10);
+        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
         addChild(zhang);
-        
+    }else  if(propId == PrideType::fee){
+        auto zhang = Sprite::create("daily/yuan_text.png");
+        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
+        addChild(zhang);
+    }else  if(propId == PrideType::prop){
+        auto zhang = Sprite::create("daily/ge_text.png");
+        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
+        addChild(zhang);
+    }else  if(propId == PrideType::nothing){
+        num->setVisible(false);
+        auto zhang = Sprite::create("daily/xie_xie.png");
+        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        zhang->setPosition(-30,10);
+        addChild(zhang);
     }
     return true;
 }
@@ -50,19 +55,23 @@ std::string PrideCell::getImageNameById(PrideType id){
     std::string imageName;
     switch (id)
     {
-        case 0:
-            imageName = "mjitem/gold_iocn.png";
+        case PrideType::gold:
+            imageName = "common/gold_icon.png";
             break;
-        case 1:
-            imageName = "mjitem/lequan_icon.png";
+        case PrideType::lequan:
+            imageName = "common/lequan_icon.png";
             break;
-        case 2:
-            imageName = "mjitem/jifen_icon.png";
+        case PrideType::fangka:
+            imageName = "common/fangka_icon.png";
             break;
-        case 3:
-            imageName = "shop/fangka_image.png";
+        case PrideType::prop:
+            imageName = "daily/iphone.png";
+            break;
+        case PrideType::fee:
+            imageName = "daily/hongbao.png";
             break;
         default:
+            imageName = "daily/nothing.png";
             break;
     }
     return imageName;

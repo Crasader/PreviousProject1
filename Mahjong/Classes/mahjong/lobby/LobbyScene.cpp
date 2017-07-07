@@ -21,6 +21,7 @@
 #include "mahjong/lobby/share/ShareToFriendLayer.hpp"
 #include "mahjong/lobby/invitecode/InviteCodeLayer.hpp"
 #include "mahjong/lobby/rank/RankLayer.hpp"
+#include "mahjong/lobby/turntable/DailyPride.h"
 #include "mahjong/common/heroinfo/HeroInfoEdit.h"
 #include "mahjong/common/bill/BillInfo.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
@@ -575,6 +576,8 @@ void LobbyScene::showGameSetting(){
 
 void LobbyScene::showHotActivity(){
     Audio::getInstance()->playSoundClick();
+    DailyPride* pride = DailyPride::create();
+    addChild(pride,10);
 }
 
 void LobbyScene::showHeroInfo(){

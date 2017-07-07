@@ -103,5 +103,6 @@ private:
     void handleTruNotify(std::string msg);
     void handleLobbyPaiHang(std::string msg);
     void handleTurntableData(std::string msg);
+    void handleTurntableResult(std::string msg);
 };
 #endif
