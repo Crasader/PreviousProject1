@@ -7240,11 +7240,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/turntable/DailyPride.cpp"
-            timestampString = "521104943.725197"
+            timestampString = "521111679.907406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "DailyPride::onEnterTransitionDidFinish()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7277,7 +7277,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "PrideCell::init(PrideType propId, int propNum)"
+            landmarkName = "PrideCell::init(PrideType propId, float propNum)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7304,11 +7304,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/turntable/DailyPride.cpp"
-            timestampString = "521105123.81521"
+            timestampString = "521111679.907406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "DailyPride::showDailyPrideLayer()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7320,11 +7320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/turntable/DailyPride.cpp"
-            timestampString = "521105163.680056"
+            timestampString = "521111679.907406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "DailyPride::showDailyPrideLayer()"
             landmarkType = "7">
          </BreakpointContent>

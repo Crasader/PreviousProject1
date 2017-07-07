@@ -381,7 +381,7 @@ struct DailyTaskData{
 
 struct PrideData{
     PrideType type;
-    int number;
+    std::string number;
 };
 
 struct DailySignData{
@@ -446,6 +446,11 @@ struct TodayPrideData{
 struct TurnTableData{
     std::string result;
     std::vector<PrideData> prides;
+};
+
+struct TurnTablePrideData{
+    std::string result;
+    PrideData pride;
 };
 
 struct BoundPhoneData{

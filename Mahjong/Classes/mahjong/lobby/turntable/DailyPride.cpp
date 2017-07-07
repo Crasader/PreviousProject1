@@ -29,7 +29,7 @@ void DailyPride::onEnter(){
     });
     _eventDispatcher->addEventListenerWithFixedPriority(prideCallBackListener1, 1);
     
-    prideCallBackListener2 = EventListenerCustom::create(MSG_PLAYER_TODAY_PRIDE, [=](EventCustom* event){
+    prideCallBackListener2 = EventListenerCustom::create(MSG_PLAYER_TURNTABLE_PRIDE_RESULT, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getTodayPrideData().result == "2"){
             HintDialog* hit = HintDialog::create(ChineseWord("dialog_text_11"), nullptr, nullptr);
             addChild(hit,10);
@@ -39,28 +39,12 @@ void DailyPride::onEnter(){
                 //刷新用户信息
                 NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
                 m_turnBg->stopAllActions();
-                DailyPrideData data = GAMEDATA::getInstance()->getDailyPrideData();
+                TurnTableData data = GAMEDATA::getInstance()->getTurnTableData();
                 for (int i = 0; i < data.prides.size(); i++){
-                    if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTodayPrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTodayPrideData().pride.number){
+                    if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTurnTablePrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTurnTablePrideData().pride.number){
                         m_turnBg->setRotation(-90+45*i);
-                        startMenu->setEnabled(true);
-                        if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::gold){
-                            ParticleUtil* util = ParticleUtil::create(MyParticleType::goldOnly);
-                            this->getParent()->addChild(util,5);
-                        }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::fangka){
-                            ParticleUtil* util = ParticleUtil::create(MyParticleType::fangkaOnly);
-                            this->getParent()->addChild(util, 5);
-                        }else if(GAMEDATA::getInstance()->getTodayPrideData().pride.type == PrideType::lequan){
-                            ParticleUtil* util = ParticleUtil::create(MyParticleType::lequanOnly);
-                            this->getParent()->addChild(util, 5);
-                        }
-                        if(NULL != getChildByTag(1000)){
-                            ((LabelAtlas*)getChildByTag(1000))->setString(StringUtils::format("%d",GAMEDATA::getInstance()->getTodayPrideData().rest));
-                        }
                     }
                 }
-                data.count = StringUtils::format("%d",atoi(data.count.c_str())-1);
-                GAMEDATA::getInstance()->setDailyPrideData(data);
             },0.0f,0,2.0f,"m_turnBg");
         }
     });
@@ -80,6 +64,11 @@ void DailyPride::onEnterTransitionDidFinish(){
 
 
 void DailyPride::showDailyPrideLayer(){
+    
+    MenuItem* item1 = MenuItem::create();
+    item1->setContentSize(Size(1280, 720));
+    Menu* menu1 = Menu::create(item1, NULL);
+    this->addChild(menu1);
     
     auto bg = LayerColor::create(Color4B(0, 0, 0, 80), 1280, 720);
     addChild(bg);

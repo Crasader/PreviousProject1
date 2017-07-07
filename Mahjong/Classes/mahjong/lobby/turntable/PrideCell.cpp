@@ -1,7 +1,7 @@
 #include "mahjong/lobby/turntable/PrideCell.h"
 
 
-PrideCell* PrideCell::create(PrideType propId, int propNum){
+PrideCell* PrideCell::create(PrideType propId, std::string propNum){
     PrideCell* bet = new PrideCell();
     if (bet&&bet->init(propId, propNum)){
         bet->autorelease();
@@ -14,7 +14,7 @@ PrideCell* PrideCell::create(PrideType propId, int propNum){
     }
 }
 
-bool PrideCell::init(PrideType propId, int propNum){
+bool PrideCell::init(PrideType propId, std::string propNum){
     if (!Sprite::init()){
         return false;
     }
@@ -23,7 +23,7 @@ bool PrideCell::init(PrideType propId, int propNum){
     auto prop = Sprite::create(getImageNameById(propId));
     prop->setPosition(0, 65);
     addChild(prop);
-    LabelAtlas* num = LabelAtlas::create(StringUtils::format("%d", propNum), "daily/pride_num.png", 12, 22, '0');
+    LabelAtlas* num = LabelAtlas::create(StringUtils::format("%s", propNum.c_str()), "daily/pride_num.png", 12, 22, '0');
     num->setPosition(-17, -2);
     addChild(num);
     if(propId == PrideType::fangka){

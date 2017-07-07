@@ -6,10 +6,10 @@ USING_NS_CC;
 
 class PrideCell : public Sprite{
 public:
-	virtual bool init(PrideType propId,int propNum);
-	static PrideCell* create(PrideType propId, int propNum);
+    virtual bool init(PrideType propId,std::string propNum);
+	static PrideCell* create(PrideType propId, std::string propNum);
     CC_SYNTHESIZE(PrideType, propId, PropId);
-    CC_SYNTHESIZE(int, propNum, PropNum)
+    CC_SYNTHESIZE(std::string, propNum, PropNum)
 private:
 	std::string getImageNameById(PrideType id);
     

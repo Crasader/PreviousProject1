@@ -3998,27 +3998,27 @@ void MsgHandler::handleTurntableData(std::string msg){
             const rapidjson::Value &temp = prize[i];
             if (temp.HasMember("gold")){
                 info.type = PrideType::gold;
-                info.number = temp["gold"].GetInt();
+                info.number = temp["gold"].GetString();
             }
             if (temp.HasMember("lequan")){
                 info.type = PrideType::lequan;
-                info.number = temp["lequan"].GetInt();
+                info.number = temp["lequan"].GetString();
             }
             if (temp.HasMember("fangka")){
                 info.type = PrideType::fangka;
-                info.number = temp["fangka"].GetDouble();
+                info.number = temp["fangka"].GetString();
             }
             if (temp.HasMember("fee")){
                 info.type = PrideType::fee;
-                info.number = temp["fee"].GetDouble();
+                info.number = temp["fee"].GetString();
             }
             if (temp.HasMember("iphone7")){
                 info.type = PrideType::prop;
-                info.number = temp["iphone7"].GetInt();
+                info.number = temp["iphone7"].GetString();
             }
             if (temp.HasMember("nothing")){
                 info.type = PrideType::nothing;
-                info.number = temp["nothing"].GetInt();
+                info.number = temp["nothing"].GetString();
             }
             data.prides.push_back(info);
         }
@@ -4034,42 +4034,39 @@ void MsgHandler::handleTurntableResult(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    TurnTableData  data;
+    TurnTablePrideData  data;
     if (_mDoc.HasMember("result")){
         data.result = _mDoc["result"].GetString();
     }
     if (_mDoc.HasMember("content")){
-        const rapidjson::Value &prize = _mDoc["content"];
-        for (int i = 0; i < prize.Capacity(); i++){
-            PrideData info;
-            const rapidjson::Value &temp = prize[i];
-            if (temp.HasMember("gold")){
-                info.type = PrideType::gold;
-                info.number = temp["gold"].GetInt();
-            }
-            if (temp.HasMember("lequan")){
-                info.type = PrideType::lequan;
-                info.number = temp["lequan"].GetInt();
-            }
-            if (temp.HasMember("fangka")){
-                info.type = PrideType::fangka;
-                info.number = temp["fangka"].GetDouble();
-            }
-            if (temp.HasMember("fee")){
-                info.type = PrideType::fee;
-                info.number = temp["fee"].GetDouble();
-            }
-            if (temp.HasMember("iphone7")){
-                info.type = PrideType::prop;
-                info.number = temp["iphone7"].GetInt();
-            }
-            if (temp.HasMember("nothing")){
-                info.type = PrideType::nothing;
-                info.number = temp["nothing"].GetInt();
-            }
-            data.prides.push_back(info);
+        const rapidjson::Value &temp = _mDoc["content"];
+        PrideData info;
+        if (temp.HasMember("gold")){
+            info.type = PrideType::gold;
+            info.number = temp["gold"].GetString();
         }
+        if (temp.HasMember("lequan")){
+            info.type = PrideType::lequan;
+            info.number = temp["lequan"].GetString();
+        }
+        if (temp.HasMember("fangka")){
+            info.type = PrideType::fangka;
+            info.number = temp["fangka"].GetString();
+        }
+        if (temp.HasMember("fee")){
+            info.type = PrideType::fee;
+            info.number = temp["fee"].GetString();
+        }
+        if (temp.HasMember("iphone7")){
+            info.type = PrideType::prop;
+            info.number = temp["iphone7"].GetString();
+        }
+        if (temp.HasMember("nothing")){
+            info.type = PrideType::nothing;
+            info.number = temp["nothing"].GetString();
+        }
+        data.pride = info;
     }
-    GAMEDATA::getInstance()->setTurnTableData(data);
-    postNotifyMessage(MSG_PLAYER_TURNTABLE_PRIDE, nullptr);
+    GAMEDATA::getInstance()->setTurnTablePrideData(data);
+    postNotifyMessage(MSG_PLAYER_TURNTABLE_PRIDE_RESULT, nullptr);
 }
