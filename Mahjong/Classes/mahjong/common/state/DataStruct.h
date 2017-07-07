@@ -21,8 +21,10 @@ enum MahjongRoom{
 enum PrideType{
     gold,
     lequan,
-   	lockDiammond,
-    fangka
+    fangka,
+    fee,
+    prop,
+    nothing
 };
 
 enum CpgType
@@ -439,6 +441,11 @@ struct TodayPrideData{
     std::string result;
     PrideData pride;
     int rest;
+};
+
+struct TurnTableData{
+    std::string result;
+    PrideData pride;
 };
 
 struct BoundPhoneData{

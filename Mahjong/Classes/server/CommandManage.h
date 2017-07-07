@@ -88,6 +88,7 @@ public:
     std::string sendGiveupHongbaoPride();
     /** --------------- 排行榜 ---------------------- **/
     std::string sendLobbyPaiHangCommand();
+    std::string sendTurntableCommmand();
 private:
 	CommandManage();
 	static CommandManage* _instance;

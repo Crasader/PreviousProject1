@@ -473,6 +473,9 @@ void MsgHandler::distribute(int code, std::string msg){
         case MSGCODE_PHB_RESPONSE:{
             handleLobbyPaiHang(msg);
         }
+        case MSGCODE_DZP_RESPONSE:{
+            handleTurntableData(msg);
+        }
         default:
             break;
     }
@@ -985,7 +988,7 @@ void MsgHandler::loginResp(std::string msg){
             GAMEDATA::getInstance()->setMahjongShareData1(data1);
         }
         if(_mDoc.HasMember("share2")){
-             const rapidjson::Value &share2 = _mDoc["share2"];
+            const rapidjson::Value &share2 = _mDoc["share2"];
             MahjongShareData2 data2;
             data2.pic = share2["pic"].GetString();
             data2.url = share2["url"].GetString();
@@ -1227,88 +1230,88 @@ void MsgHandler::dailyPrideResp(std::string msg){
     // 金币抽奖情况获取回复{code:1023,poxiaoId:poxiaoId,result:"1",gold:"50000",
     //prize:[{gold:30000},{lequan:300},{lequan:800},{lequan:100},{bangzuan:80},{bangzuan:50},{bangzuan:20},{gold:60000},{diamond:11}],
     //count:"1",max:"5"} result1为可以参加，0为不可参加 ，count为可以抽奖几次，max为最多能抽奖几次，prize奖品里面数值为整数
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    DailyPrideData data;
-    if (_mDoc.HasMember("result")){
-        data.result = _mDoc["result"].GetString();
-    }
-    if (_mDoc.HasMember("gold")){
-        data.needGold = _mDoc["gold"].GetString();
-    }
-    if (_mDoc.HasMember("count")){
-        data.count = _mDoc["count"].GetString();
-    }
-    if (_mDoc.HasMember("max")){
-        data.max = _mDoc["max"].GetString();
-    }
-    if (_mDoc.HasMember("prize")){
-        const rapidjson::Value &prize = _mDoc["prize"];
-        for (int i = 0; i < prize.Capacity(); i++){
-            PrideData info;
-            const rapidjson::Value &temp = prize[i];
-            if (temp.HasMember("gold")){
-                info.type = PrideType::gold;
-                info.number = temp["gold"].GetInt();
-            }
-            if (temp.HasMember("lequan")){
-                info.type = PrideType::lequan;
-                info.number = temp["lequan"].GetInt();
-            }
-            if (temp.HasMember("bangzuan")){
-                info.type = PrideType::lockDiammond;
-                info.number = temp["bangzuan"].GetInt();
-            }
-            if (temp.HasMember("fangka")){
-                info.type = PrideType::fangka;
-                info.number = temp["fangka"].GetDouble();
-            }
-            data.prides.push_back(info);
-        }
-    }
-    GAMEDATA::getInstance()->setDailyPrideData(data);
-    postNotifyMessage(MSG_PLAYER_DAILY_PRIDE, nullptr);
+//    rapidjson::Document _mDoc;
+//    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+//    _mDoc.Parse<0>(msg.c_str());
+//    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+//    DailyPrideData data;
+//    if (_mDoc.HasMember("result")){
+//        data.result = _mDoc["result"].GetString();
+//    }
+//    if (_mDoc.HasMember("gold")){
+//        data.needGold = _mDoc["gold"].GetString();
+//    }
+//    if (_mDoc.HasMember("count")){
+//        data.count = _mDoc["count"].GetString();
+//    }
+//    if (_mDoc.HasMember("max")){
+//        data.max = _mDoc["max"].GetString();
+//    }
+//    if (_mDoc.HasMember("prize")){
+//        const rapidjson::Value &prize = _mDoc["prize"];
+//        for (int i = 0; i < prize.Capacity(); i++){
+//            PrideData info;
+//            const rapidjson::Value &temp = prize[i];
+//            if (temp.HasMember("gold")){
+//                info.type = PrideType::gold;
+//                info.number = temp["gold"].GetInt();
+//            }
+//            if (temp.HasMember("lequan")){
+//                info.type = PrideType::lequan;
+//                info.number = temp["lequan"].GetInt();
+//            }
+//            if (temp.HasMember("bangzuan")){
+//                info.type = PrideType::lockDiammond;
+//                info.number = temp["bangzuan"].GetInt();
+//            }
+//            if (temp.HasMember("fangka")){
+//                info.type = PrideType::fangka;
+//                info.number = temp["fangka"].GetDouble();
+//            }
+//            data.prides.push_back(info);
+//        }
+//    }
+//    GAMEDATA::getInstance()->setDailyPrideData(data);
+//    postNotifyMessage(MSG_PLAYER_DAILY_PRIDE, nullptr);
 }
 
 void MsgHandler::todayPrideResp(std::string msg){
     // 金币抽奖奖励领取回复{code:1025,poxiaoId:poxiaoId,result:"1",prize:{gold:10}}
     //1为成功 0失败,prize为抽到的奖品，奖品里面数值为整数
-    rapidjson::Document _mDoc;
-    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
-    _mDoc.Parse<0>(msg.c_str());
-    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    TodayPrideData  data;
-    if (_mDoc.HasMember("result")){
-        data.result = _mDoc["result"].GetString();
-    }
-    if (_mDoc.HasMember("rest")){
-        data.rest = _mDoc["rest"].GetInt();
-    }
-    if (_mDoc.HasMember("prize")){
-        PrideData info;
-        const rapidjson::Value &temp = _mDoc["prize"];
-        if (temp.HasMember("gold")){
-            info.type = PrideType::gold;
-            info.number = temp["gold"].GetInt();
-        }
-        if (temp.HasMember("lequan")){
-            info.type = PrideType::lequan;
-            info.number = temp["lequan"].GetInt();
-        }
-        if (temp.HasMember("bangzuan")){
-            info.type = PrideType::lockDiammond;
-            info.number = temp["bangzuan"].GetInt();
-        }
-        if (temp.HasMember("fangka")){
-            info.type = PrideType::fangka;
-            info.number = temp["fangka"].GetDouble();
-        }
-        data.pride = info;
-    }
-    GAMEDATA::getInstance()->setTodayPrideData(data);
-    postNotifyMessage(MSG_PLAYER_TODAY_PRIDE, nullptr);
+//    rapidjson::Document _mDoc;
+//    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+//    _mDoc.Parse<0>(msg.c_str());
+//    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+//    TodayPrideData  data;
+//    if (_mDoc.HasMember("result")){
+//        data.result = _mDoc["result"].GetString();
+//    }
+//    if (_mDoc.HasMember("rest")){
+//        data.rest = _mDoc["rest"].GetInt();
+//    }
+//    if (_mDoc.HasMember("prize")){
+//        PrideData info;
+//        const rapidjson::Value &temp = _mDoc["prize"];
+//        if (temp.HasMember("gold")){
+//            info.type = PrideType::gold;
+//            info.number = temp["gold"].GetInt();
+//        }
+//        if (temp.HasMember("lequan")){
+//            info.type = PrideType::lequan;
+//            info.number = temp["lequan"].GetInt();
+//        }
+//        if (temp.HasMember("bangzuan")){
+//            info.type = PrideType::lockDiammond;
+//            info.number = temp["bangzuan"].GetInt();
+//        }
+//        if (temp.HasMember("fangka")){
+//            info.type = PrideType::fangka;
+//            info.number = temp["fangka"].GetDouble();
+//        }
+//        data.pride = info;
+//    }
+//    GAMEDATA::getInstance()->setTodayPrideData(data);
+//    postNotifyMessage(MSG_PLAYER_TODAY_PRIDE, nullptr);
 }
 
 
@@ -3968,4 +3971,47 @@ void MsgHandler::handleLobbyPaiHang(std::string msg){
     }
     GAMEDATA::getInstance()->setLobbyPaiHangData(data);
     postNotifyMessage(MSG_UPDATE_LOBBY_RANK, nullptr);
+}
+
+void MsgHandler::handleTurntableData(std::string msg){
+    //玩家大转盘
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    TurnTableData  data;
+    if (_mDoc.HasMember("result")){
+        data.result = _mDoc["result"].GetString();
+    }
+    if (_mDoc.HasMember("content")){
+        PrideData info;
+        const rapidjson::Value &temp = _mDoc["prize"];
+        if (temp.HasMember("gold")){
+            info.type = PrideType::gold;
+            info.number = temp["gold"].GetInt();
+        }
+        if (temp.HasMember("lequan")){
+            info.type = PrideType::lequan;
+            info.number = temp["lequan"].GetInt();
+        }
+        if (temp.HasMember("fangka")){
+            info.type = PrideType::fangka;
+            info.number = temp["fangka"].GetDouble();
+        }
+        if (temp.HasMember("fee")){
+            info.type = PrideType::fee;
+            info.number = temp["fee"].GetDouble();
+        }
+        if (temp.HasMember("iphone7")){
+            info.type = PrideType::prop;
+            info.number = temp["iphone7"].GetInt();
+        }
+        if (temp.HasMember("nothing")){
+            info.type = PrideType::nothing;
+            info.number = temp["nothing"].GetInt();
+        }
+        data.pride = info;
+    }
+    GAMEDATA::getInstance()->setTurnTableData(data);
+    postNotifyMessage(MSG_PLAYER_TURNTABLE_PRIDE, nullptr);
 }

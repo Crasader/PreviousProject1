@@ -11,7 +11,6 @@
 #include "mahjong/lobby/notice/NoticeDialog.hpp"
 #include "mahjong/lobby/gonggao/GameGongGaoLayer.hpp"
 #include "mahjong/lobby/shiming/ShiMingLayer.hpp"
-#include "mahjong/lobby/daily/DailyEvent.h"
 #include "mahjong/lobby/shop/FirstChageDialog.hpp"
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
 #include "mahjong/lobby/shop/fangka/ChargeFangka.hpp"
@@ -554,9 +553,9 @@ void LobbyScene::showWanJiaQun(){
 
 void LobbyScene::showDayTask(){
     Audio::getInstance()->playSoundClick();
-    DailyEvent* day = DailyEvent::create();
-    day->showDailyEvent(DailyType::pride);
-    addChild(day,3);
+//    DailyEvent* day = DailyEvent::create();
+//    day->showDailyEvent(DailyType::pride);
+//    addChild(day,3);
 }
 
 

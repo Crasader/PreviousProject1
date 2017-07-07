@@ -46,6 +46,7 @@ public:
     CC_SYNTHESIZE(WelfareGold, welfareGold, WelfareGold);
     CC_SYNTHESIZE(DailyPrideData, dailyPrideData, DailyPrideData);
     CC_SYNTHESIZE(TodayPrideData, todayPrideData, TodayPrideData);
+    CC_SYNTHESIZE(TurnTableData, turnTableData, TurnTableData);
     CC_SYNTHESIZE(BoundPhoneData, boundPhoneData, BoundPhoneData);
     CC_SYNTHESIZE(FirstChargeData, firstChargeData, FirstChargeData);
     CC_SYNTHESIZE(GoldChangeList, goldChangeList, GoldChangeList);

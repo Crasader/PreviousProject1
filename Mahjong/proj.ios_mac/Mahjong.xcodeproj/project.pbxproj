@@ -127,12 +127,6 @@
 		D252FB651E7FA5EC00937322 /* ParticleUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA891E7FA5EC00937322 /* ParticleUtil.cpp */; };
 		D252FB661E7FA5EC00937322 /* ScrollTextEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA8B1E7FA5EC00937322 /* ScrollTextEx.cpp */; };
 		D252FB671E7FA5EC00937322 /* ScrollTextEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FA8B1E7FA5EC00937322 /* ScrollTextEx.cpp */; };
-		D252FB9C1E7FA5EC00937322 /* DailyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FACF1E7FA5EC00937322 /* DailyEvent.cpp */; };
-		D252FB9D1E7FA5EC00937322 /* DailyEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FACF1E7FA5EC00937322 /* DailyEvent.cpp */; };
-		D252FB9E1E7FA5EC00937322 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD21E7FA5EC00937322 /* DailyPride.cpp */; };
-		D252FB9F1E7FA5EC00937322 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD21E7FA5EC00937322 /* DailyPride.cpp */; };
-		D252FBA01E7FA5EC00937322 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD41E7FA5EC00937322 /* PrideCell.cpp */; };
-		D252FBA11E7FA5EC00937322 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD41E7FA5EC00937322 /* PrideCell.cpp */; };
 		D252FBA41E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD91E7FA5EC00937322 /* GoldRoomButton.cpp */; };
 		D252FBA51E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAD91E7FA5EC00937322 /* GoldRoomButton.cpp */; };
 		D252FBA61E7FA5EC00937322 /* GoldRoomPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FADB1E7FA5EC00937322 /* GoldRoomPlate.cpp */; };
@@ -399,6 +393,10 @@
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E6A2931EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
+		D2E79DBE1F0F34EB00DD3999 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */; };
+		D2E79DBF1F0F34EB00DD3999 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */; };
+		D2E79DC01F0F34EB00DD3999 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBC1F0F34EB00DD3999 /* PrideCell.cpp */; };
+		D2E79DC11F0F34EB00DD3999 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBC1F0F34EB00DD3999 /* PrideCell.cpp */; };
 		D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
 		D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */; };
 		D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
@@ -578,12 +576,6 @@
 		D252FA8B1E7FA5EC00937322 /* ScrollTextEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollTextEx.cpp; sourceTree = "<group>"; };
 		D252FA8C1E7FA5EC00937322 /* ScrollTextEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextEx.h; sourceTree = "<group>"; };
 		D252FA8D1E7FA5EC00937322 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
-		D252FACF1E7FA5EC00937322 /* DailyEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyEvent.cpp; sourceTree = "<group>"; };
-		D252FAD01E7FA5EC00937322 /* DailyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyEvent.h; sourceTree = "<group>"; };
-		D252FAD21E7FA5EC00937322 /* DailyPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyPride.cpp; sourceTree = "<group>"; };
-		D252FAD31E7FA5EC00937322 /* DailyPride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyPride.h; sourceTree = "<group>"; };
-		D252FAD41E7FA5EC00937322 /* PrideCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrideCell.cpp; sourceTree = "<group>"; };
-		D252FAD51E7FA5EC00937322 /* PrideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrideCell.h; sourceTree = "<group>"; };
 		D252FAD91E7FA5EC00937322 /* GoldRoomButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRoomButton.cpp; sourceTree = "<group>"; };
 		D252FADA1E7FA5EC00937322 /* GoldRoomButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GoldRoomButton.hpp; sourceTree = "<group>"; };
 		D252FADB1E7FA5EC00937322 /* GoldRoomPlate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoldRoomPlate.cpp; sourceTree = "<group>"; };
@@ -831,6 +823,10 @@
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
 		D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareActivityLayer.cpp; sourceTree = "<group>"; };
 		D2E6A2921EF3CEFA0065C3F0 /* ShareActivityLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareActivityLayer.hpp; sourceTree = "<group>"; };
+		D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyPride.cpp; sourceTree = "<group>"; };
+		D2E79DBB1F0F34EB00DD3999 /* DailyPride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyPride.h; sourceTree = "<group>"; };
+		D2E79DBC1F0F34EB00DD3999 /* PrideCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrideCell.cpp; sourceTree = "<group>"; };
+		D2E79DBD1F0F34EB00DD3999 /* PrideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrideCell.h; sourceTree = "<group>"; };
 		D2F05F2B1D8E2B22006E5A4C /* UrlImageMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UrlImageMannger.cpp; sourceTree = "<group>"; };
 		D2F05F2C1D8E2B22006E5A4C /* UrlImageMannger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageMannger.h; sourceTree = "<group>"; };
 		D2F05F461D8E360B006E5A4C /* MD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MD5.cpp; sourceTree = "<group>"; };
@@ -1363,10 +1359,10 @@
 		D252FACD1E7FA5EC00937322 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D2E79DB91F0F34D000DD3999 /* turntable */,
 				D2B291B51F0DD3810084F379 /* rank */,
 				D2DDB1BB1F02384600790422 /* dialog */,
 				D2D894A11EBB2163008C1E5D /* invitecode */,
-				D252FACE1E7FA5EC00937322 /* daily */,
 				D252FBFC1E7FABC600937322 /* friend */,
 				D252FAD81E7FA5EC00937322 /* goldroom */,
 				D252FADD1E7FA5EC00937322 /* gonggao */,
@@ -1379,27 +1375,6 @@
 				D252FB091E7FA5EC00937322 /* wanjiaqun */,
 			);
 			path = lobby;
-			sourceTree = "<group>";
-		};
-		D252FACE1E7FA5EC00937322 /* daily */ = {
-			isa = PBXGroup;
-			children = (
-				D252FACF1E7FA5EC00937322 /* DailyEvent.cpp */,
-				D252FAD01E7FA5EC00937322 /* DailyEvent.h */,
-				D252FAD11E7FA5EC00937322 /* pride */,
-			);
-			path = daily;
-			sourceTree = "<group>";
-		};
-		D252FAD11E7FA5EC00937322 /* pride */ = {
-			isa = PBXGroup;
-			children = (
-				D252FAD21E7FA5EC00937322 /* DailyPride.cpp */,
-				D252FAD31E7FA5EC00937322 /* DailyPride.h */,
-				D252FAD41E7FA5EC00937322 /* PrideCell.cpp */,
-				D252FAD51E7FA5EC00937322 /* PrideCell.h */,
-			);
-			path = pride;
 			sourceTree = "<group>";
 		};
 		D252FAD81E7FA5EC00937322 /* goldroom */ = {
@@ -2000,6 +1975,17 @@
 			path = trusteeship;
 			sourceTree = "<group>";
 		};
+		D2E79DB91F0F34D000DD3999 /* turntable */ = {
+			isa = PBXGroup;
+			children = (
+				D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */,
+				D2E79DBB1F0F34EB00DD3999 /* DailyPride.h */,
+				D2E79DBC1F0F34EB00DD3999 /* PrideCell.cpp */,
+				D2E79DBD1F0F34EB00DD3999 /* PrideCell.h */,
+			);
+			path = turntable;
+			sourceTree = "<group>";
+		};
 		D2F05F281D8E2B22006E5A4C /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -2339,6 +2325,7 @@
 				D252FC691E7FABE900937322 /* Orientation.cpp in Sources */,
 				D2B1D9241E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */,
 				D252FC101E7FABC700937322 /* MahjongNumberKeypads.cpp in Sources */,
+				D2E79DBE1F0F34EB00DD3999 /* DailyPride.cpp in Sources */,
 				D252FB3A1E7FA5EC00937322 /* LostNetwork.cpp in Sources */,
 				D27F06011E94BDF90085438A /* ReviewGame.cpp in Sources */,
 				D252FB361E7FA5EC00937322 /* QuickChatLayer.cpp in Sources */,
@@ -2351,7 +2338,7 @@
 				D252FB601E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,
 				D278ADC01DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
 				D2E035101ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */,
-				D252FB9C1E7FA5EC00937322 /* DailyEvent.cpp in Sources */,
+				D2E79DC01F0F34EB00DD3999 /* PrideCell.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D252FC531E7FABE900937322 /* MjGameScene.cpp in Sources */,
 				D252FC5B1E7FABE900937322 /* Player.cpp in Sources */,
@@ -2374,7 +2361,6 @@
 				D252FB5C1E7FA5EC00937322 /* SeatIdUtil.cpp in Sources */,
 				D252FC4B1E7FABE900937322 /* LiuJuAnim.cpp in Sources */,
 				D252FC0E1E7FABC700937322 /* FriendRoom.cpp in Sources */,
-				D252FBA01E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B1A8F91CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
 				D27F06081E94BFE50085438A /* HongZhongView.cpp in Sources */,
 				D2FD5B621EA711510016FCCC /* VoiceMgr.cpp in Sources */,
@@ -2427,7 +2413,6 @@
 				D252FBB81E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
 				D252FC0A1E7FABC600937322 /* RoomFullDialog.cpp in Sources */,
 				D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
-				D252FB9E1E7FA5EC00937322 /* DailyPride.cpp in Sources */,
 				D2A713AC1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */,
 				D252FC0C1E7FABC600937322 /* RoomIdErrorDialog.cpp in Sources */,
 				D252FBAC1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
@@ -2520,7 +2505,6 @@
 				D27F06001E94BDF90085438A /* MahjongView.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D2A713AF1ED2B830000EE572 /* CompetitonItem.cpp in Sources */,
-				D252FB9F1E7FA5EC00937322 /* DailyPride.cpp in Sources */,
 				D20E97C21EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */,
 				D2B291B91F0DD3810084F379 /* RankLayer.cpp in Sources */,
 				D2B1D91F1E9E026800EB8FB0 /* NormalResultLayer.cpp in Sources */,
@@ -2528,7 +2512,6 @@
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D252FBAD1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FB391E7FA5EC00937322 /* BaseDialog.cpp in Sources */,
-				D252FB9D1E7FA5EC00937322 /* DailyEvent.cpp in Sources */,
 				D252FBCD1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */,
 				D252FBB91E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
 				D252FC581E7FABE900937322 /* PlayerBase.cpp in Sources */,
@@ -2558,6 +2541,7 @@
 				D252FC681E7FABE900937322 /* HuPaiHintLayer.cpp in Sources */,
 				D252FB211E7FA5EC00937322 /* BillDetailInfo.cpp in Sources */,
 				D252FC0B1E7FABC600937322 /* RoomFullDialog.cpp in Sources */,
+				D2E79DC11F0F34EB00DD3999 /* PrideCell.cpp in Sources */,
 				D2B1D9251E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */,
 				D252FC091E7FABC600937322 /* DissovleRoomDialog.cpp in Sources */,
 				D252FB251E7FA5EC00937322 /* FupanDialog.cpp in Sources */,
@@ -2583,7 +2567,6 @@
 				D252FB491E7FA5EC00937322 /* HeroInfoEdit.cpp in Sources */,
 				D2B1D9171E9E026800EB8FB0 /* HZNormalResultLayer.cpp in Sources */,
 				D2B1D8FC1E9DF64100EB8FB0 /* FanMaAnim.cpp in Sources */,
-				D252FBA11E7FA5EC00937322 /* PrideCell.cpp in Sources */,
 				D2B3DD991E6ED2F70099B97E /* Base64.cpp in Sources */,
 				D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
 				D252FC0D1E7FABC600937322 /* RoomIdErrorDialog.cpp in Sources */,
@@ -2611,6 +2594,7 @@
 				D252FB551E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D2E035161ED9120700291282 /* HongbaoAnim.cpp in Sources */,
 				D252FBD31E7FA5EC00937322 /* ResultScene.cpp in Sources */,
+				D2E79DBF1F0F34EB00DD3999 /* DailyPride.cpp in Sources */,
 				D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */,
 				D2B291BD1F0E18C40084F379 /* RankList.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,

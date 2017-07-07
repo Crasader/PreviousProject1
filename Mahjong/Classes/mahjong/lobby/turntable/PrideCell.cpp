@@ -1,4 +1,4 @@
-#include "mahjong/lobby/daily/pride/PrideCell.h"
+#include "mahjong/lobby/turntable/PrideCell.h"
 
 
 PrideCell* PrideCell::create(PrideType propId, int propNum){

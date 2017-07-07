@@ -55,6 +55,9 @@
 #define MSGCODE_YQM_REQUEST  169// 输入邀请码请求{code:169,poxiaoId:poxiaoId,yqm:"1235"}
 #define MSGCODE_YQM_RESPONSE  170// 输入邀请码回复{code:170,poxiaoId:poxiaoId,result:0}  0输入错误 1正确
 
+#define MSGCODE_DZP_REQUEST  171// 大转盘请求{code:171,poxiaoId:poxiaoId}
+#define MSGCODE_DZP_RESPONSE  172// 大转盘回复{code:172,poxiaoId:poxiaoId,result:1,content:[{fangka:1,ratio:385},{fangka:5,ratio:40},{fangka:20,ratio:3},{fee:1.88,ratio:230},{fee:2.88,ratio:77},{fee:5.88,ratio:23},{fee:18.88,ratio:7},{fee:88.88,ratio:1},{iphone7:1,ratio:0},{nothing:1,ratio:234}]}
+
 #define MSGCODE_PHB_REQUEST  178// 排行榜请求{code:178,poxiaoId:poxiaoId}
 #define MSGCODE_PHB_RESPONSE  179// 排行榜回复{code:179,poxiaoId:poxiaoId,name1:"",tab1:[{key:"",value:""},{key:"",value:""}],name2:"",tab2:[{key:"",value:""},{key:"",value:""}],name3:"",tab3:[{key:"",value:""},{key:"",value:""}]}
 
@@ -352,4 +355,5 @@
 #define MSG_PLAYER_HAUFEI_EXCHANGE_RECORD "MSG_PLAYER_HAUFEI_EXCHANGE_RECORD"
 #define MSG_PLAYER_TRU_NOTIFY "MSG_PLAYER_TRU_NOTIFY"
 #define MSG_UPDATE_LOBBY_RANK "MSG_UPDATE_LOBBY_RANK"
+#define MSG_PLAYER_TURNTABLE_PRIDE "MSG_PLAYER_TURNTABLE_PRIDE"
 #endif
