@@ -465,7 +465,6 @@ void CompetitionResult::quit(){
 
 void CompetitionResult::share(){
     auto hbLayer = Layer::create();
-    addChild(hbLayer);
     
     auto hongbaobg = Sprite::create("share/share_bg_com.jpg");
     hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
