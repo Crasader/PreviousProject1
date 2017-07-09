@@ -29,7 +29,7 @@ bool GameGongGaoLayer::init(GameGongGao gonggaoData){
 
     
     myGongGao = gonggaoData;
-    auto day_bg = Sprite::create("daily/daily_bg.png");
+    auto day_bg = Sprite::create("common/dialog_bg.png");
     day_bg->setTag(1024);
     day_bg->setPosition(640, 360);
     addChild(day_bg);

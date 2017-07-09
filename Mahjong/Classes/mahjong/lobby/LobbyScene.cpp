@@ -521,7 +521,10 @@ void LobbyScene:: scrollLightSpot(float dt){
 }
 
 void LobbyScene::showGongZhongHao(){
-
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGongGaoCommand());
+    Loading* load = Loading::create();
+    load->setTag(1209);
+    addChild(load,5);
 }
 
 void LobbyScene::showFirstCharge(){
