@@ -7277,7 +7277,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "PrideCell::init(PrideType propId, float propNum)"
+            landmarkName = "PrideCell::init(PrideType propId, std::string propNum)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

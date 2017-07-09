@@ -42,7 +42,7 @@ void DailyPride::onEnter(){
                 TurnTableData data = GAMEDATA::getInstance()->getTurnTableData();
                 for (int i = 0; i < data.prides.size(); i++){
                     if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTurnTablePrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTurnTablePrideData().pride.number){
-                        m_turnBg->setRotation(-90+45*i);
+                        m_turnBg->setRotation(-90+36*i-18);
                     }
                 }
             },0.0f,0,2.0f,"m_turnBg");
