@@ -37,8 +37,7 @@
 #include "mahjong/result/hongbao/HongbaoAnim.hpp"
 #include "mahjong/result/hongbao/HongbaoAnim2.hpp"
 #include "mahjong/lobby/share/ShareActivityLayer.hpp"
-#include "wechat/android/CallAndroidMethod.h"
-#include "wechat/ios/CallIOSMethod.h"
+#include "mahjong/lobby/share/ShareSelectLayer.hpp"
 
 
 bool LobbyScene::init()
@@ -533,15 +532,9 @@ void LobbyScene::showFirstCharge(){
 }
 
 void LobbyScene::showRedWallet(){
-    //    ShareActivityLayer* wallet = ShareActivityLayer::create();
-    //    addChild(wallet,3);
     Audio::getInstance()->playSoundClick();
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(GAMEDATA::getInstance()->getMahjongShareData1().url,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,false);
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CallIOSMethod::getInstance()->doWechatShareWeb(GAMEDATA::getInstance()->getMahjongShareData1().url,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,0);
-#endif
+    ShareSelectLayer* laye = ShareSelectLayer::create();
+    addChild(laye,100);
 }
 
 void LobbyScene::showWanJiaQun(){

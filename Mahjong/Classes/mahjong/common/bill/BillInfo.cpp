@@ -216,7 +216,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             }
             std::string myScore =  ":"+StringUtil::itos(abs(score));
             
-            LabelAtlas* playNum = LabelAtlas::create(myScore,imageName,20,30,'0');
+            LabelAtlas* playNum = LabelAtlas::create(myScore,imageName,14,22,'0');
             playNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
             playNum->setPosition(Vec2(100 + 205 * i, 35));
             playNum->setTag(300+i);
@@ -340,22 +340,12 @@ std::vector<BillContent> BillInfo::sortBillInfo(std::vector<BillContent> content
 
 void BillInfo::setShowPosition(){
     GAMEDATA::getInstance()->setShowFuPanBtn(false);
-    //    if(NULL != getChildByTag(2016))
     getChildByTag(2016)->setVisible(false);
     auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::screenShot, this));
     auto shareBtn = Menu::create(xuanyao,NULL);
     shareBtn->alignItemsHorizontallyWithPadding(50);
     shareBtn->setPosition(640,80);
     addChild(shareBtn);
-    
-    //    this->setIsPrivateBill(true);
-    //    getChildByTag(101)->setPositionX(890);
-    //    getChildByTag(102)->setPositionX(1230);
-    //    getChildByTag(104)->setPositionX(890);
-    //    getChildByTag(105)->setPositionX(525);
-    //    getChildByTag(2016)->setPositionX(605);
-    //    if(NULL != getChildByTag(1001))
-    //        getChildByTag(1001)->setPositionX(900);
 }
 
 

@@ -57,6 +57,8 @@
 		D20E97C21EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */; };
 		D212D53C1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
 		D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
+		D217FE9C1F127E76008F5D4B /* ShareSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */; };
+		D217FE9D1F127E76008F5D4B /* ShareSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */; };
 		D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
@@ -505,6 +507,8 @@
 		D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuafeiChangeConfirm.cpp; sourceTree = "<group>"; };
 		D20E97C01EDEA61900F51A7F /* HuafeiChangeConfirm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuafeiChangeConfirm.hpp; sourceTree = "<group>"; };
 		D212D53B1E14A0BA00C29C00 /* batteryInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = batteryInfo; sourceTree = "<group>"; };
+		D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareSelectLayer.cpp; sourceTree = "<group>"; };
+		D217FE9B1F127E76008F5D4B /* ShareSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareSelectLayer.hpp; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* PxSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PxSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
@@ -1415,6 +1419,8 @@
 				D2E6A2921EF3CEFA0065C3F0 /* ShareActivityLayer.hpp */,
 				D252FAE81E7FA5EC00937322 /* ShareToFriendLayer.cpp */,
 				D252FAE91E7FA5EC00937322 /* ShareToFriendLayer.hpp */,
+				D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */,
+				D217FE9B1F127E76008F5D4B /* ShareSelectLayer.hpp */,
 			);
 			path = share;
 			sourceTree = "<group>";
@@ -2336,6 +2342,7 @@
 				D252FC611E7FABE900937322 /* PlayerRight.cpp in Sources */,
 				D252FB641E7FA5EC00937322 /* ParticleUtil.cpp in Sources */,
 				D252FB601E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,
+				D217FE9C1F127E76008F5D4B /* ShareSelectLayer.cpp in Sources */,
 				D278ADC01DFFC23400C90B25 /* CocoaSocket.mm in Sources */,
 				D2E035101ED90CF000291282 /* HuafeiExchangeRecord.cpp in Sources */,
 				D2E79DC01F0F34EB00DD3999 /* PrideCell.cpp in Sources */,
@@ -2563,6 +2570,7 @@
 				D252FB231E7FA5EC00937322 /* BillInfo.cpp in Sources */,
 				D252FBBB1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
 				D252FB311E7FA5EC00937322 /* FaceChatLayer.cpp in Sources */,
+				D217FE9D1F127E76008F5D4B /* ShareSelectLayer.cpp in Sources */,
 				D252FBC31E7FA5EC00937322 /* ExchangeItem.cpp in Sources */,
 				D252FB491E7FA5EC00937322 /* HeroInfoEdit.cpp in Sources */,
 				D2B1D9171E9E026800EB8FB0 /* HZNormalResultLayer.cpp in Sources */,

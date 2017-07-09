@@ -148,7 +148,7 @@ bool BillDetailInfo::init()
             imageName="bill/purper_num.png";
         }
         std::string myScore =  ":"+StringUtil::itos(abs(score));
-        LabelAtlas* playNum = LabelAtlas::create(myScore,imageName,20,30,'0');
+        LabelAtlas* playNum = LabelAtlas::create(myScore,imageName,14,22,'0');
         playNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         playNum->setPosition(Vec2(385+i*150, 150));
         addChild(playNum);
