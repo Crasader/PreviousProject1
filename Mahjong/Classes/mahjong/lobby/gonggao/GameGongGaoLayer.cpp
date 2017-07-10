@@ -34,6 +34,9 @@ bool GameGongGaoLayer::init(GameGongGao gonggaoData){
     day_bg->setPosition(640, 360);
     addChild(day_bg);
     
+    auto title = Sprite::create("gonggao/gonggao_title.png");
+    title->setPosition(640,620);
+    addChild(title);
     
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        CC_CALLBACK_0(GameGongGaoLayer::closeView, this));
@@ -42,22 +45,9 @@ bool GameGongGaoLayer::init(GameGongGao gonggaoData){
     menu->setPosition(1070,630);
     addChild(menu,3);
     
-    auto title = Sprite::create("gongzhonghao/gzh_title.png");
-    title->setPosition(640,610);
-    addChild(title);
-    
-    
-    auto girl = Sprite::create("gongzhonghao/ren.png");
-    girl->setPosition(300,350);
-    addChild(girl);
-    
-    auto weixin = Sprite::create("gongzhonghao/zi_wx_gzh.png");
-    weixin->setPosition(600,545);
-    addChild(weixin);
-    
     showIndex =0;
-    for(int i=0;i<totalPage;i++){
-        GongGaoItem* gonggao = GongGaoItem::create(i);
+    for(int i=0;i<gonggaoData.gongGaoData.size();i++){
+        GongGaoItem* gonggao = GongGaoItem::create(gonggaoData.gongGaoData.at(i));
         gonggao->setTag(i);
         addChild(gonggao);
         if(i==0){
@@ -72,35 +62,12 @@ bool GameGongGaoLayer::init(GameGongGao gonggaoData){
         addChild(bulbble,2);
         bubbles.push_back(bulbble);
         if(i==0){
-            bubbles.at(i)->setTexture("gongzhonghao/bubble_2.png");
+            bubbles.at(i)->setTexture("mjlobby/bubble_2.png");
         }else{
-            bubbles.at(i)->setTexture("gongzhonghao/bubble_1.png");
+            bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
         }
         
     }
-//    for(int i=0;i<gonggaoData.gongGaoData.size();i++){
-//        GongGaoItem* gonggao = GongGaoItem::create(gonggaoData.gongGaoData.at(i));
-//        gonggao->setTag(i);
-//        addChild(gonggao);
-//        if(i==0){
-//            gonggao->setVisible(true);
-//        }else{
-//            gonggao->setVisible(false);
-//        }
-//        contents.push_back(gonggao);
-//        
-//        auto bulbble = Sprite::create();
-//        bulbble->setPosition(getBubblePos(gonggaoData.gongGaoData.size(),i));
-//        addChild(bulbble,2);
-//        bubbles.push_back(bulbble);
-//        if(i==0){
-//            bubbles.at(i)->setTexture("gongzhonghao/bubble_2.png");
-//        }else{
-//            bubbles.at(i)->setTexture("gongzhonghao/bubble_1.png");
-//        }
-//        
-//    }
-
     schedule(schedule_selector(GameGongGaoLayer::updateGongGao), atoi(gonggaoData.gongGaoData.at(0).showTime.c_str()), CC_REPEAT_FOREVER, 0);
     
     auto touchListener = EventListenerTouchOneByOne::create();
@@ -117,11 +84,11 @@ void GameGongGaoLayer::closeView(){
 }
 
 Point GameGongGaoLayer::getBubblePos(int size,int index){
-    return Point(int(820-32*(size-index)),110);
+    return Point(int(1064-32*(size-index)),140);
 }
 
 void GameGongGaoLayer::updateGongGao(float dt){
-    showIndex =  (showIndex+1)%totalPage;
+    showIndex =  (showIndex+1)%myGongGao.gongGaoData.size();
     for(auto var : contents){
         if(showIndex == var->getTag()){
             var->setVisible(true);
@@ -131,9 +98,9 @@ void GameGongGaoLayer::updateGongGao(float dt){
     }
     for (int i=0 ;i<bubbles.size();i++) {
         if(i==showIndex){
-            bubbles.at(i)->setTexture("gongzhonghao/bubble_2.png");
+            bubbles.at(i)->setTexture("mjlobby/bubble_2.png");
         }else{
-            bubbles.at(i)->setTexture("gongzhonghao/bubble_1.png");
+            bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
         }
     }
 }
@@ -158,13 +125,13 @@ void GameGongGaoLayer::onTouchEnded(Touch *touch, Event  *event){
     float dis = getDistance(lastPos,currentPos);
     if(dis>50){
         if(currentPos.x>lastPos.x){
-            showIndex =  (showIndex+1)%totalPage;
+            showIndex =  (showIndex+1)%myGongGao.gongGaoData.size();
         }else{
             int temp = showIndex-1;
             if(temp<0){
                 temp = (int)contents.size()-1;
             }
-            showIndex =  temp%totalPage;
+            showIndex =  temp%myGongGao.gongGaoData.size();
         }
         
         for(auto var : contents){
@@ -176,9 +143,9 @@ void GameGongGaoLayer::onTouchEnded(Touch *touch, Event  *event){
         }
         for (int i=0 ;i<bubbles.size();i++) {
             if(i==showIndex){
-                bubbles.at(i)->setTexture("gongzhonghao/bubble_2.png");
+                bubbles.at(i)->setTexture("mjlobby/bubble_2.png");
             }else{
-                bubbles.at(i)->setTexture("gongzhonghao/bubble_1.png");
+                bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
             }
         }
 
