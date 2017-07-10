@@ -17,6 +17,7 @@ public:
     void initView(int num,int fee);
     CREATE_FUNC(FangkaNotEnoughDialog);
 private:
+    LabelAtlas* fangkanum0;
     LabelAtlas* fangkanum;
     LabelAtlas* xuyaunnum;
     void closeView();
