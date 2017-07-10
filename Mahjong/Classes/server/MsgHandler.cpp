@@ -986,6 +986,10 @@ void MsgHandler::loginResp(std::string msg){
         }else{
             UserData::getInstance()->setInviteCodeBind(true);
         }
+        if(_mDoc.HasMember("scon")){
+            const rapidjson::Value &scon = _mDoc["scon"];
+            GAMEDATA::getInstance()->setShareTextContent(scon.GetString());
+        }
         if(_mDoc.HasMember("share1")){
             const rapidjson::Value &share1 = _mDoc["share1"];
             MahjongShareData1 data1;

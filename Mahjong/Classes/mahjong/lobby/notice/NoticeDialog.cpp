@@ -11,7 +11,7 @@
 #include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 #include "server/NetworkManage.h"
-#include "mahjong/lobby/share/ShareActivityLayer.hpp"
+//#include "mahjong/lobby/share/ShareActivityLayer.hpp"
 #include "userdata/UserData.h"
 
 
@@ -57,10 +57,10 @@ void NoticeDialog::onExit(){
 
 
 void NoticeDialog::closeView(){
-    if(GAMEDATA::getInstance()->getShareActivityData().result == "1"&&!UserData::getInstance()->isClickShare()){
-        ShareActivityLayer* lau = ShareActivityLayer::create();
-        getParent()->addChild(lau,100);
-    }
+//    if(GAMEDATA::getInstance()->getShareActivityData().result == "1"&&!UserData::getInstance()->isClickShare()){
+//        ShareActivityLayer* lau = ShareActivityLayer::create();
+//        getParent()->addChild(lau,100);
+//    }
     removeFromParent();
 }
 
@@ -81,10 +81,10 @@ void NoticeDialog::setContentImage(std::string fileName,std::string showTime){
             addChild(myMenu);
         }
         schedule([=](float dt){
-            if(GAMEDATA::getInstance()->getShareActivityData().result == "1"&&!UserData::getInstance()->isClickShare()){
-                ShareActivityLayer* lau = ShareActivityLayer::create();
-                getParent()->addChild(lau,100);
-            }
+//            if(GAMEDATA::getInstance()->getShareActivityData().result == "1"&&!UserData::getInstance()->isClickShare()){
+//                ShareActivityLayer* lau = ShareActivityLayer::create();
+//                getParent()->addChild(lau,100);
+//            }
             removeFromParent();
         }, 0, 0, atoi(showTime.c_str()),"dismiss");
     }

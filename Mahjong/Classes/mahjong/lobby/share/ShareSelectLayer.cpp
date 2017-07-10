@@ -34,13 +34,24 @@ bool ShareSelectLayer::init(){
     auto titile = Sprite::create("share/share_title.png");
     titile->setPosition(645,582);
     addChild(titile);
+    
+    auto textlabel = Label::createWithSystemFont(GAMEDATA::getInstance()->getShareTextContent(),"arial",24);
+    textlabel->setWidth(700);
+    textlabel->setAlignment(cocos2d::TextHAlignment::CENTER);
+    textlabel->setPosition(640,500);
+    textlabel->setColor(Color3B(196,106,22));
+    addChild(textlabel);
 
+    auto tuiguang = Sprite::create("share/tuiguang_num.png");
+    tuiguang->setPosition(640,155);
+    addChild(tuiguang);
+    
     auto quanMenu = MenuItemImage::create("share/share_quan.png","share/share_quan.png",CC_CALLBACK_0(ShareSelectLayer::shareToQuan, this));
     auto friendMenu = MenuItemImage::create("share/share_friend.png","share/share_friend.png",CC_CALLBACK_0(ShareSelectLayer::shareToFriend, this));
     
     auto menu = Menu::create(quanMenu,friendMenu,NULL);
     menu->alignItemsHorizontallyWithPadding(50);
-    menu->setPosition(640,360);
+    menu->setPosition(640,320);
     addChild(menu);
     return true;
 }

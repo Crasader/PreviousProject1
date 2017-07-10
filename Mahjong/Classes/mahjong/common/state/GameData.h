@@ -161,6 +161,7 @@ public:
     CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
     CC_SYNTHESIZE(string, dissolveName, DissolveName);
     CC_SYNTHESIZE(string, resultFangzhuId, ResultFangzhuId);
+    CC_SYNTHESIZE(std::string, shareTextContent, ShareTextContent);
 private:
     GAMEDATA();
     void init();
