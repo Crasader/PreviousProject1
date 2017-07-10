@@ -120,7 +120,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         sprite1->setPosition(Vec2(0, 0));
         cell->addChild(sprite1);
     
-        Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
+        Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",24);
         if(isMatch){
             if(!UserData::getInstance()->isWeixinPayOpen()){
                 int pos1 = (int)data.atype.find("8元话费");
@@ -136,14 +136,14 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             gameType->setString(data.atype);
         }
         gameType->setTag(90);
-        gameType->setColor(Color3B(93,182,215));
+        gameType->setColor(Color3B(120,111,8));
         gameType->setAnchorPoint(Vec2::ZERO);
         gameType->setPosition(Vec2(65, 105));
         cell->addChild(gameType);
         
-        Label* date = Label::createWithSystemFont(data.date,"Arial",22);
+        Label* date = Label::createWithSystemFont(data.date,"Arial",24);
         date->setTag(100);
-        date->setColor(Color3B(93,182,215));
+        date->setColor(Color3B(120,111,8));
         date->setAnchorPoint(Vec2::ZERO);
         date->setPosition(Vec2(230, 105));
         cell->addChild(date);
@@ -152,8 +152,8 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         }
         
         
-        Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
-        fanghao->setColor(Color3B(93,182,215));
+        Label* fanghao = Label::createWithSystemFont("房号:","Arial",24);
+        fanghao->setColor(Color3B(120,111,8));
         fanghao->setAnchorPoint(Vec2::ZERO);
         fanghao->setPosition(Vec2(450, 105));
         fanghao->setTag(600);
@@ -162,9 +162,9 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             fanghao->setVisible(false);
         }
         
-        Label* prID = Label::createWithSystemFont(data.prid,"Arial",22);
+        Label* prID = Label::createWithSystemFont(data.prid,"Arial",24);
         prID->setTag(400);
-        prID->setColor(Color3B(93,182,215));
+        prID->setColor(Color3B(120,111,8));
         prID->setAnchorPoint(Vec2::ZERO);
         prID->setPosition(Vec2(515, 105));
         cell->addChild(prID);
@@ -172,8 +172,8 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             prID->setVisible(false);
         }
         
-        Label* ju = Label::createWithSystemFont("局数:","Arial",22);
-        ju->setColor(Color3B(93,182,215));
+        Label* ju = Label::createWithSystemFont("局数:","Arial",24);
+        ju->setColor(Color3B(120,111,8));
         ju->setAnchorPoint(Vec2::ZERO);
         ju->setPosition(Vec2(640, 105));
         cell->addChild(ju);
@@ -189,9 +189,9 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             jushuNum = "4";
         }
         
-        Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",jushuNum.c_str()),"Arial",22);
+        Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",jushuNum.c_str()),"Arial",24);
         jushu->setTag(401);
-        jushu->setColor(Color3B(93,182,215));
+        jushu->setColor(Color3B(120,111,8));
         jushu->setAnchorPoint(Vec2::ZERO);
         jushu->setPosition(Vec2(695, 105));
         cell->addChild(jushu);
@@ -203,9 +203,9 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             name->setAnchorPoint(Point::ANCHOR_MIDDLE);
             name->setPosition(Vec2(100+205*i, 70));
             if(conBill.at(i).nickName == UserData::getInstance()->getNickName()){
-                name->setColor(Color3B(91,220,168));
+                name->setColor(Color3B(158,52,37));
             }else{
-                name->setColor(Color3B(38,158,228));
+                name->setColor(Color3B(112,80,0));
             }
             cell->addChild(name);
             

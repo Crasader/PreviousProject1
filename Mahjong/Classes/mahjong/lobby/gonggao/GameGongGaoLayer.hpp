@@ -23,6 +23,7 @@ public:
     void onTouchMoved(Touch *touch, Event  *event) override;
     void onTouchEnded(Touch *touch, Event  *event) override;
 private:
+    int totalPage = 4;
     int showIndex ;
     Point lastPos;
     GameGongGao myGongGao;

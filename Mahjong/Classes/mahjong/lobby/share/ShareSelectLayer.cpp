@@ -7,6 +7,7 @@
 //
 
 #include "mahjong/lobby/share/ShareSelectLayer.hpp"
+#include "mahjong/common/state/GameData.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
 

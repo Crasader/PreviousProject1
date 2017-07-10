@@ -3914,12 +3914,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2743"
-            endingLineNumber = "2743"
-            landmarkName = "MsgHandler::handleFupanPlayerInfo(std::string msg)"
+            startingLineNumber = "2740"
+            endingLineNumber = "2740"
+            landmarkName = "MsgHandler::handleDissovleRoomSelectedNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5289,7 +5289,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "517"
             endingLineNumber = "517"
-            landmarkName = "MsgHandler::playerChatNotify(std::string msg)"
+            landmarkName = "MsgHandler::handleWanJiaQunResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5442,11 +5442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2893"
-            endingLineNumber = "2893"
+            startingLineNumber = "2890"
+            endingLineNumber = "2890"
             landmarkName = "MsgHandler::handleHongZhongEnterRoom(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5463,7 +5463,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "309"
             endingLineNumber = "309"
-            landmarkName = "GuiLayer::dissovleRoom()"
+            landmarkName = "GuiLayer::invitePlayer(Ref* ref)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5522,12 +5522,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3422"
-            endingLineNumber = "3422"
-            landmarkName = "MsgHandler::handleHZGameResultNotify(std::string msg)"
+            startingLineNumber = "3419"
+            endingLineNumber = "3419"
+            landmarkName = "MsgHandler::handleHZPlayerActionNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5538,12 +5538,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3421"
-            endingLineNumber = "3421"
-            landmarkName = "MsgHandler::handleHZGameResultNotify(std::string msg)"
+            startingLineNumber = "3418"
+            endingLineNumber = "3418"
+            landmarkName = "MsgHandler::handleHZPlayerActionNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5733,7 +5733,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
             endingLineNumber = "46"
-            landmarkName = "LeziType"
+            landmarkName = "HuType"
             landmarkType = "13">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5808,11 +5808,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/shanghai/normal/MahjongView.cpp"
-            timestampString = "519184699.587348"
+            timestampString = "521346903.891176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1631"
-            endingLineNumber = "1631"
+            startingLineNumber = "1628"
+            endingLineNumber = "1628"
             landmarkName = "MahjongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5856,12 +5856,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3138"
-            endingLineNumber = "3138"
-            landmarkName = "MsgHandler::handleHZDispatchPokerNotify(std::string msg)"
+            startingLineNumber = "3135"
+            endingLineNumber = "3135"
+            landmarkName = "MsgHandler::handleHZReadyNoyify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5920,12 +5920,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2797"
-            endingLineNumber = "2797"
-            landmarkName = "MsgHandler::handleFupanPlayerInfo(std::string msg)"
+            startingLineNumber = "2794"
+            endingLineNumber = "2794"
+            landmarkName = "MsgHandler::handleFupanInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5936,12 +5936,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2796"
-            endingLineNumber = "2796"
-            landmarkName = "MsgHandler::handleFupanPlayerInfo(std::string msg)"
+            startingLineNumber = "2793"
+            endingLineNumber = "2793"
+            landmarkName = "MsgHandler::handleFupanInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5957,7 +5957,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1722"
             endingLineNumber = "1722"
-            landmarkName = "MsgHandler::heroPengResp(std::string msg)"
+            landmarkName = "MsgHandler::heroChiResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5968,11 +5968,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/shanghai/normal/MahjongView.cpp"
-            timestampString = "519184699.587348"
+            timestampString = "521346903.891176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1643"
-            endingLineNumber = "1643"
+            startingLineNumber = "1640"
+            endingLineNumber = "1640"
             landmarkName = "MahjongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6085,7 +6085,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1718"
             endingLineNumber = "1718"
-            landmarkName = "MsgHandler::heroPengResp(std::string msg)"
+            landmarkName = "MsgHandler::heroChiResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6096,11 +6096,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/shanghai/normal/MahjongView.cpp"
-            timestampString = "519184699.587348"
+            timestampString = "521346903.891176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1641"
-            endingLineNumber = "1641"
+            startingLineNumber = "1638"
+            endingLineNumber = "1638"
             landmarkName = "MahjongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6149,7 +6149,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1431"
             endingLineNumber = "1431"
-            landmarkName = "MsgHandler::gameContinueResp(std::string msg)"
+            landmarkName = "MsgHandler:: goldChangeResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6384,11 +6384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/shanghai/normal/MahjongView.cpp"
-            timestampString = "519184699.587348"
+            timestampString = "521346903.891176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1426"
-            endingLineNumber = "1426"
+            startingLineNumber = "1423"
+            endingLineNumber = "1423"
             landmarkName = "MahjongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6416,12 +6416,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3699"
-            endingLineNumber = "3699"
-            landmarkName = "MsgHandler::handleJoinCompetitionResp(std::string msg)"
+            startingLineNumber = "3696"
+            endingLineNumber = "3696"
+            landmarkName = "MsgHandler::handleHZDissovleRoomSelectedNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6432,12 +6432,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3752"
-            endingLineNumber = "3752"
-            landmarkName = "MsgHandler::handleCompetitionAddPalyer(std::string msg)"
+            startingLineNumber = "3749"
+            endingLineNumber = "3749"
+            landmarkName = "MsgHandler::handleHZGameContinueResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6448,12 +6448,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3753"
-            endingLineNumber = "3753"
-            landmarkName = "MsgHandler::handleCompetitionAddPalyer(std::string msg)"
+            startingLineNumber = "3750"
+            endingLineNumber = "3750"
+            landmarkName = "MsgHandler::handleHZGameContinueResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6464,12 +6464,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "520758951.223876"
+            timestampString = "521348729.216118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3754"
-            endingLineNumber = "3754"
-            landmarkName = "MsgHandler::handleCompetitionAddPalyer(std::string msg)"
+            startingLineNumber = "3751"
+            endingLineNumber = "3751"
+            landmarkName = "MsgHandler::handleHZGameContinueResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6496,11 +6496,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/gonggao/GameGongGaoLayer.cpp"
-            timestampString = "517559655.909014"
+            timestampString = "521344675.336009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "GameGongGaoLayer::onTouchBegan(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6512,11 +6512,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/gonggao/GameGongGaoLayer.cpp"
-            timestampString = "517559655.909014"
+            timestampString = "521344675.336009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "GameGongGaoLayer::onTouchBegan(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6528,11 +6528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/gonggao/GameGongGaoLayer.cpp"
-            timestampString = "517559655.909014"
+            timestampString = "521344675.336009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "GameGongGaoLayer::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6544,11 +6544,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/gonggao/GameGongGaoLayer.cpp"
-            timestampString = "517559655.909014"
+            timestampString = "521344675.336009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "GameGongGaoLayer::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6560,11 +6560,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/shanghai/normal/MahjongView.cpp"
-            timestampString = "519209556.22901"
+            timestampString = "521346903.891176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1960"
-            endingLineNumber = "1960"
+            startingLineNumber = "1957"
+            endingLineNumber = "1957"
             landmarkName = "MahjongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6576,11 +6576,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/shanghai/normal/MahjongView.cpp"
-            timestampString = "519209556.22901"
+            timestampString = "521346903.891176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1959"
-            endingLineNumber = "1959"
+            startingLineNumber = "1956"
+            endingLineNumber = "1956"
             landmarkName = "MahjongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>

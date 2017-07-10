@@ -2681,9 +2681,6 @@ void MsgHandler::billDetailResp(std::string msg){
             if(temp0.HasMember("recordId")){
                 data.recordId = temp0["recordId"].GetString();
             }
-            //             if(temp0.HasMember("t")){
-            //                 data.gameType = temp0["t"].GetString();
-            //             }
             detailAll.detail.push_back(data);
         }
         GAMEDATA::getInstance()->setBillInfoDetailAll(detailAll);

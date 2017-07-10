@@ -48,7 +48,7 @@ bool BillDetailInfo::init()
     }
     Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
     gameType->setTag(90);
-    gameType->setColor(Color3B(93,182,215));
+    gameType->setColor(Color3B(120,111,8));
     gameType->setAnchorPoint(Vec2::ZERO);
     gameType->setPosition(Vec2(290, 585));
     addChild(gameType);
@@ -69,7 +69,7 @@ bool BillDetailInfo::init()
     
     Label* date = Label::createWithSystemFont(data.date,"Arial",22);
     date->setAnchorPoint(Vec2::ZERO);
-    date->setColor(Color3B(93,182,215));
+    date->setColor(Color3B(120,111,8));
     date->setPosition(440,585);
     addChild(date);
     if(isMatch){
@@ -77,7 +77,7 @@ bool BillDetailInfo::init()
     }
     
     Label* fanghao = Label::createWithSystemFont("房号:","Arial",22);
-    fanghao->setColor(Color3B(93,182,215));
+    fanghao->setColor(Color3B(120,111,8));
     fanghao->setAnchorPoint(Vec2::ZERO);
     fanghao->setPosition(Vec2(670,585));
     addChild(fanghao);
@@ -87,7 +87,7 @@ bool BillDetailInfo::init()
     
     
     Label* prID = Label::createWithSystemFont(data.prid,"Arial",22);
-    prID->setColor(Color3B(93,182,215));
+    prID->setColor(Color3B(120,111,8));
     prID->setAnchorPoint(Vec2::ZERO);
     prID->setPosition(Vec2(720, 585));
     addChild(prID);
@@ -96,7 +96,7 @@ bool BillDetailInfo::init()
     }
     
     Label* ju = Label::createWithSystemFont("局数:","Arial",22);
-    ju->setColor(Color3B(93,182,215));
+    ju->setColor(Color3B(120,111,8));
     ju->setAnchorPoint(Vec2::ZERO);
     ju->setPosition(Vec2(850, 585));
     addChild(ju);
@@ -112,14 +112,14 @@ bool BillDetailInfo::init()
     }
 
     Label* jushu = Label::createWithSystemFont(jushuNum,"Arial",22);
-    jushu->setColor(Color3B(93,182,215));
+    jushu->setColor(Color3B(120,111,8));
     jushu->setAnchorPoint(Vec2::ZERO);
     jushu->setPosition(Vec2(900, 585));
     addChild(jushu);
     
     
     Label* panshu = Label::createWithSystemFont(ChineseWord("panshu"),"arial",20);
-    panshu->setColor(Color3B(38,158,228));
+    panshu->setColor(Color3B(112,80,0));
     panshu->setPosition(270,560);
     addChild(panshu);
     
@@ -128,20 +128,20 @@ bool BillDetailInfo::init()
         Label* player1 = Label::createWithSystemFont(conBill.at(i).nickName,"arial",20);
         player1->setPosition(385+150*i,560);
         if(conBill.at(i).nickName == UserData::getInstance()->getNickName()){
-            player1->setColor(Color3B(91,220,168));
+            player1->setColor(Color3B(158,52,37));
         }else{
-            player1->setColor(Color3B(38,158,228));
+            player1->setColor(Color3B(112,80,0));
         }
         
         addChild(player1);
     }
     
     Label* heji = Label::createWithSystemFont(ChineseWord("heji"),"arial",20);
-    heji->setColor(Color3B(38,158,228));
+    heji->setColor(Color3B(112,80,0));
     heji->setPosition(270,150);
     addChild(heji);
     
-    for(int i=0;i<4;i++){
+    for(int i=0;i<conBill.size();i++){
         std::string imageName ="bill/yellow_num.png";
         int score =atoi(conBill.at(i).score.c_str());
         if(score<0){
@@ -220,7 +220,7 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->autorelease();
         Label* panId = Label::createWithSystemFont(StringUtils::format("%ld",idx+1),"arial",28);
         panId->setTag(99);
-        panId->setColor(Color3B(38,158,228));
+        panId->setColor(Color3B(112,80,0));
         panId->setAnchorPoint(Point::ANCHOR_MIDDLE);
         panId->setPosition(15,30);
         cell->addChild(panId);
@@ -231,7 +231,7 @@ TableViewCell* BillDetailInfo::tableCellAtIndex(TableView *table, ssize_t idx)
                 imageName="bill/purper_num.png";
             }
             std::string myScore =  ":"+StringUtil::itos(abs(score));
-            LabelAtlas* playerNum = LabelAtlas::create(myScore,imageName,20,30,'0');
+            LabelAtlas* playerNum = LabelAtlas::create(myScore,imageName,14,22,'0');
             playerNum->setTag(100+i);
             playerNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
             playerNum->setPosition(Vec2(130+i*150, 30));
