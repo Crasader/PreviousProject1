@@ -5399,7 +5399,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "365"
             endingLineNumber = "365"
-            landmarkName = "FriendRoom::onTouchBegan(Touch *touch, Event *event)"
+            landmarkName = "FriendRoom::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5415,7 +5415,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "342"
             endingLineNumber = "342"
-            landmarkName = "FriendRoom::init()"
+            landmarkName = "FriendRoom::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5431,7 +5431,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "364"
             endingLineNumber = "364"
-            landmarkName = "FriendRoom::onTouchBegan(Touch *touch, Event *event)"
+            landmarkName = "FriendRoom::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

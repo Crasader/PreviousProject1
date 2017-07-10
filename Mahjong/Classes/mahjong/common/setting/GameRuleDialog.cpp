@@ -14,97 +14,84 @@ bool GameRuleDialog::init(){
         return false;
     }
     
-    MenuItem* item = MenuItem::create();
-    item->setContentSize(Size(1280, 720));
-    Menu* bg = Menu::create(item, NULL);
-    this->addChild(bg,-1);
+    auto dialog_bg = Sprite::create("openroom/open_room_bg.png");
+    dialog_bg->setPosition(640,350);
+    addChild(dialog_bg);
     
-    auto  dialogBg = Sprite::create("rule/dialog_bg.png");
-    dialogBg->setPosition(640, 360);
-    this->addChild(dialogBg);
+    
+    auto title = Sprite::create("setting/rule_info.png");
+    title->setPosition(640,640);
+    addChild(title);
+    
+    auto guizheBg = Sprite::create("rule/text_bg.png");
+    guizheBg->setPosition(754,292);
+    addChild(guizheBg);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(GameRuleDialog::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1000, 670);
+    closeMenu->setPosition(1170, 660);
     addChild(closeMenu);
     
-    auto icon = Sprite::create("rule/game_rule_text.png");
-    icon->setPosition(640, 655);
-    addChild(icon);
+    shangHai = Sprite::create("openroom/shang_hai_btn_1.png");
+    shangHai->setPosition(225,535);
+    addChild(shangHai);
     
-    auto input_bg = Sprite::create("rule/content_bg.png");
-    input_bg->setPosition(640, 320);
-    addChild(input_bg);
+    hongZhong = Sprite::create("openroom/hong_zhong_btn_2.png");
+    hongZhong->setPosition(225,430);
+    addChild(hongZhong);
     
- 
-    auto shnaghai = Sprite::create("rule/text_sh_1.png");
-    shnaghai->setTag(1024);
-    shnaghai->setPosition(390,590);
-    addChild(shnaghai,2);
     
-    auto hongzhong = Sprite::create("rule/text_hz_2.png");
-    hongzhong->setTag(2024);
-    hongzhong->setPosition(555,590);
-    addChild(hongzhong,2);
-
-    auto qun_normal = MenuItemImage::create("rule/tab_btn_1.png", "rule/tab_btn_1.png");
-    auto qun_selected = MenuItemImage::create("rule/tab_btn_2.png", "rule/tab_btn_2.png");
-    qunToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showShangHai, this), qun_normal, qun_selected, NULL);
+    auto gz_normal = MenuItemImage::create("rule/tab_btn_1.png", "rule/tab_btn_1.png");
+    auto gz_selected = MenuItemImage::create("rule/tab_btn_2.png", "rule/tab_btn_2.png");
+    gzToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showJiBenGuiZhe, this), gz_normal, gz_selected, NULL);
     
-    auto fangka_normal = MenuItemImage::create("rule/tab_btn_1.png", "rule/tab_btn_1.png");
-    auto fangka_selected = MenuItemImage::create("rule/tab_btn_2.png", "rule/tab_btn_2.png");
-    fangkaToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showHongZhong, this), fangka_normal, fangka_selected, NULL);
-    fangkaToggle->setSelectedIndex(1);
-    auto menu = Menu::create(qunToggle, fangkaToggle, NULL);
+    auto px_normal = MenuItemImage::create("rule/tab_btn_1.png", "rule/tab_btn_1.png");
+    auto px_selected = MenuItemImage::create("rule/tab_btn_2.png", "rule/tab_btn_2.png");
+    pxToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showJiBenPaiXing, this), px_normal, px_selected, NULL);
+    pxToggle->setSelectedIndex(1);
+    
+    auto ts_normal = MenuItemImage::create("rule/tab_btn_1.png", "rule/tab_btn_1.png");
+    auto ts_selected = MenuItemImage::create("rule/tab_btn_2.png", "rule/tab_btn_2.png");
+    tsToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showTeShuPaiXing, this), ts_normal, ts_selected, NULL);
+    tsToggle->setSelectedIndex(1);
+    
+    auto js_normal = MenuItemImage::create("rule/tab_btn_1.png", "rule/tab_btn_1.png");
+    auto js_selected = MenuItemImage::create("rule/tab_btn_2.png", "rule/tab_btn_2.png");
+    jsToggle = MenuItemToggle::createWithCallback(CC_CALLBACK_1(GameRuleDialog::showYouXiJieSuan, this), js_normal, js_selected, NULL);
+    jsToggle->setSelectedIndex(1);
+    
+    auto menu = Menu::create(gzToggle, pxToggle,tsToggle,jsToggle, NULL);
     menu->alignItemsHorizontallyWithPadding(0);
-    menu->setPosition(465,596);
+    menu->setPosition(680,565);
     addChild(menu,1);
     
+    guizhe1 = Sprite::create("rule/btn_gz_1.png");
+    guizhe1->setPosition(416,560);
+    addChild(guizhe1,2);
     
-    listView = ListView::create();
-    listView->setDirection(ui::ScrollView::Direction::VERTICAL);//设置ListView布局方向
-    listView->setTouchEnabled(true);//可触摸
-    listView->setContentSize(Size(720,470));//设置ListView大小
-    listView->ignoreContentAdaptWithSize(false);//开启锚点设置，false可更改锚点，true不可更改，Layer默认为point(0,0),其他Node为Point(0.5,0.5)
-    listView->setAnchorPoint(Vec2(0.5, 0.5));//设置锚点，即锚点放在节点setPosition的位置，0，0：表示节点左下角；1，1：表示节点右上角；0.5，0.5表示节点中点
-    listView->setPosition(Point(640,325));
-    addChild(listView);
+    guizhe2 = Sprite::create("rule/btn_px_2.png");
+    guizhe2->setPosition(591,560);
+    addChild(guizhe2,2);
     
-    for(auto var: getGameRulesShangHai()){
-        Layout *customItem = Layout::create();
-        customItem->setLayoutType(Layout::Type::ABSOLUTE);
-        customItem->setContentSize(Size(720,40));
-        listView->pushBackCustomItem(customItem);
-        
-        auto text = Label::createWithSystemFont(var,"arial",26);
-        text->setColor(Color3B(177,121,33));
-        text->setAnchorPoint(Point::ANCHOR_TOP_LEFT);
-        text->setPosition(40,30);
-        customItem->addChild(text);
-    }
+    guizhe3 = Sprite::create("rule/btn_ts_2.png");
+    guizhe3->setPosition(767,560);
+    addChild(guizhe3,2);
     
-    listViewHz = ListView::create();
-    listViewHz->setDirection(ui::ScrollView::Direction::VERTICAL);//设置ListView布局方向
-    listViewHz->setTouchEnabled(true);//可触摸
-    listViewHz->setContentSize(Size(720,470));//设置ListView大小
-    listViewHz->ignoreContentAdaptWithSize(false);//开启锚点设置，false可更改锚点，true不可更改，Layer默认为point(0,0),其他Node为Point(0.5,0.5)
-    listViewHz->setAnchorPoint(Vec2(0.5, 0.5));//设置锚点，即锚点放在节点setPosition的位置，0，0：表示节点左下角；1，1：表示节点右上角；0.5，0.5表示节点中点
-    listViewHz->setPosition(Point(640,325));
-    addChild(listViewHz);
-    listViewHz->setVisible(false);
+    guizhe4 = Sprite::create("rule/btn_js_2.png");
+    guizhe4->setPosition(940,560);
+    addChild(guizhe4,2);
     
-    for(auto var: getGameRulesHongZhong()){
-        Layout *customItem = Layout::create();
-        customItem->setLayoutType(Layout::Type::ABSOLUTE);
-        customItem->setContentSize(Size(720,40));
-        listViewHz->pushBackCustomItem(customItem);
-        
-        auto text = Label::createWithSystemFont(var,"arial",26);
-        text->setColor(Color3B(177,121,33));
-        text->setAnchorPoint(Point::ANCHOR_TOP_LEFT);
-        text->setPosition(40,30);
-        customItem->addChild(text);
-    }
+    content = Sprite::create();
+    content->setTexture("rule/rule_sh_1.png");
+    content->setPosition(750,360);
+    addChild(content);
+    
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->setSwallowTouches(true);
+    touchListener->onTouchBegan = CC_CALLBACK_2(GameRuleDialog::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(GameRuleDialog::onTouchMoved, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(GameRuleDialog::onTouchEnded, this);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener,this);
     
     return true;
 }
@@ -115,78 +102,71 @@ void GameRuleDialog::closeView(){
 }
 
 
-void GameRuleDialog::showShangHai(Ref* ref){
-    qunToggle->setSelectedIndex(0);
-    fangkaToggle->setSelectedIndex(1);
-    if(NULL != getChildByTag(1024)){
-        ((Sprite*)getChildByTag(1024))->setTexture("rule/text_sh_1.png");
-    }
-    if(NULL != getChildByTag(2024)){
-        ((Sprite*)getChildByTag(2024))->setTexture("rule/text_hz_2.png");
-    }
-    listView->setVisible(true);
-    listViewHz->setVisible(false);
+void GameRuleDialog::showJiBenGuiZhe(Ref* ref){
+    guizhe1->setTexture("rule/btn_gz_1.png");
+    guizhe2->setTexture("rule/btn_px_2.png");
+    guizhe3->setTexture("rule/btn_ts_2.png");
+    guizhe4->setTexture("rule/btn_js_2.png");
+    gzToggle->setSelectedIndex(0);
+    pxToggle->setSelectedIndex(1);
+    tsToggle->setSelectedIndex(1);
+    jsToggle->setSelectedIndex(1);
 }
 
-void GameRuleDialog::showHongZhong(Ref* ref){
-    qunToggle->setSelectedIndex(1);
-    fangkaToggle->setSelectedIndex(0);
-    if(NULL != getChildByTag(1024)){
-        ((Sprite*)getChildByTag(1024))->setTexture("rule/text_sh_2.png");
-    }
-    if(NULL != getChildByTag(2024)){
-        ((Sprite*)getChildByTag(2024))->setTexture("rule/text_hz_1.png");
-    }
-    listView->setVisible(false);
-    listViewHz->setVisible(true);
-}
-
-std::vector<std::string> GameRuleDialog::getGameRulesShangHai(){
-    std::vector<std::string> rules;
-    rules.push_back(ChineseWord("rule_text_1"));
-    rules.push_back(ChineseWord("rule_text_2"));
-    rules.push_back(ChineseWord("rule_text_3"));
-    rules.push_back(ChineseWord("rule_text_4"));
-    rules.push_back(ChineseWord("rule_text_5"));
-    rules.push_back(ChineseWord("rule_text_6"));
-    rules.push_back(ChineseWord("rule_text_7"));
-    rules.push_back(ChineseWord("rule_text_8"));
-    rules.push_back(ChineseWord("rule_text_9"));
-    rules.push_back(ChineseWord("rule_text_10"));
-    rules.push_back(ChineseWord("rule_text_11"));
-    rules.push_back(ChineseWord("rule_text_12"));
-    rules.push_back(ChineseWord("rule_text_13"));
-    rules.push_back(ChineseWord("rule_text_14"));
-    rules.push_back(ChineseWord("rule_text_15"));
-    rules.push_back(ChineseWord("rule_text_16"));
-    rules.push_back(ChineseWord("rule_text_17"));
-    rules.push_back(ChineseWord("rule_text_18"));
-    rules.push_back(ChineseWord("rule_text_19"));
-    rules.push_back(ChineseWord("rule_text_20"));
-    rules.push_back(ChineseWord("rule_text_21"));
-    return rules;
-}
-
-std::vector<std::string> GameRuleDialog::getGameRulesHongZhong(){
-    std::vector<std::string> rules;
-    rules.push_back(ChineseWord("rule_text_22"));
-    rules.push_back(ChineseWord("rule_text_23"));
-    rules.push_back(ChineseWord("rule_text_24"));
-    rules.push_back(ChineseWord("rule_text_25"));
-    rules.push_back(ChineseWord("rule_text_26"));
-    rules.push_back(ChineseWord("rule_text_27"));
-    rules.push_back(ChineseWord("rule_text_28"));
-    rules.push_back(ChineseWord("rule_text_29"));
-    rules.push_back(ChineseWord("rule_text_30"));
-    rules.push_back(ChineseWord("rule_text_31"));
-    rules.push_back(ChineseWord("rule_text_32"));
-    rules.push_back(ChineseWord("rule_text_33"));
-    rules.push_back(ChineseWord("rule_text_34"));
-    rules.push_back(ChineseWord("rule_text_35"));
-    rules.push_back(ChineseWord("rule_text_36"));
-    rules.push_back(ChineseWord("rule_text_37"));
-    rules.push_back(ChineseWord("rule_text_38"));
-    return rules;
+void GameRuleDialog::showJiBenPaiXing(Ref* ref){
+    guizhe1->setTexture("rule/btn_gz_2.png");
+    guizhe2->setTexture("rule/btn_px_1.png");
+    guizhe3->setTexture("rule/btn_ts_2.png");
+    guizhe4->setTexture("rule/btn_js_2.png");
+    gzToggle->setSelectedIndex(1);
+    pxToggle->setSelectedIndex(0);
+    tsToggle->setSelectedIndex(1);
+    jsToggle->setSelectedIndex(1);
 }
 
 
+void GameRuleDialog::showTeShuPaiXing(Ref* ref){
+    guizhe1->setTexture("rule/btn_gz_2.png");
+    guizhe2->setTexture("rule/btn_px_2.png");
+    guizhe3->setTexture("rule/btn_ts_1.png");
+    guizhe4->setTexture("rule/btn_js_2.png");
+    gzToggle->setSelectedIndex(1);
+    pxToggle->setSelectedIndex(1);
+    tsToggle->setSelectedIndex(0);
+    jsToggle->setSelectedIndex(1);
+}
+
+
+void GameRuleDialog::showYouXiJieSuan(Ref* ref){
+    guizhe1->setTexture("rule/btn_gz_2.png");
+    guizhe2->setTexture("rule/btn_px_2.png");
+    guizhe3->setTexture("rule/btn_ts_2.png");
+    guizhe4->setTexture("rule/btn_js_1.png");
+    gzToggle->setSelectedIndex(1);
+    pxToggle->setSelectedIndex(1);
+    tsToggle->setSelectedIndex(1);
+    jsToggle->setSelectedIndex(0);
+}
+
+bool GameRuleDialog::onTouchBegan(Touch *touch, Event  *event){
+    return true;
+}
+
+
+void GameRuleDialog::onTouchMoved(Touch *touch, Event  *event){
+    
+    
+}
+
+void GameRuleDialog::onTouchEnded(Touch *touch, Event  *event){
+    if(shangHai->getBoundingBox().containsPoint(touch->getLocation())){
+        shangHaiSelected = true;
+        shangHai->setTexture("openroom/shang_hai_btn_1.png");
+        hongZhong->setTexture("openroom/hong_zhong_btn_2.png");
+    }
+    if(hongZhong->getBoundingBox().containsPoint(touch->getLocation())){
+        shangHaiSelected = false;
+        shangHai->setTexture("openroom/shang_hai_btn_2.png");
+        hongZhong->setTexture("openroom/hong_zhong_btn_1.png");
+    }
+}

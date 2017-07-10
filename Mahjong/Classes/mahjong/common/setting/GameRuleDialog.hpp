@@ -21,16 +21,27 @@ using namespace cocos2d::ui;
 class GameRuleDialog : public Layer{
 public:
     virtual bool init();
+    bool onTouchBegan(Touch *touch, Event  *event) override;
+    void onTouchMoved(Touch *touch, Event  *event) override;
+    void onTouchEnded(Touch *touch, Event  *event) override;
     CREATE_FUNC(GameRuleDialog);
 private:
-    MenuItemToggle* qunToggle;
-    MenuItemToggle* fangkaToggle;
-    ListView* listView;
-    ListView* listViewHz;
+    Sprite* hongZhong;
+    Sprite* shangHai;
+    Sprite* guizhe1;
+    Sprite* guizhe2;
+    Sprite* guizhe3;
+    Sprite* guizhe4;
+    Sprite* content;
+    MenuItemToggle* gzToggle;
+    MenuItemToggle* pxToggle;
+    MenuItemToggle* tsToggle;
+    MenuItemToggle* jsToggle;
+        bool  shangHaiSelected = true;
     void closeView();
-    std::vector<std::string> getGameRulesShangHai();
-    std::vector<std::string> getGameRulesHongZhong();
-    void showShangHai(Ref* ref);
-    void showHongZhong(Ref* ref);
+    void showJiBenGuiZhe(Ref* ref);
+    void showJiBenPaiXing(Ref* ref);
+    void showTeShuPaiXing(Ref* ref);
+    void showYouXiJieSuan(Ref* ref);
 };
 #endif /* GameRuleDialog_hpp */
