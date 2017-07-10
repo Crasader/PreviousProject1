@@ -62,9 +62,9 @@ bool GameGongGaoLayer::init(GameGongGao gonggaoData){
         addChild(bulbble,2);
         bubbles.push_back(bulbble);
         if(i==0){
-            bubbles.at(i)->setTexture("mjlobby/bubble_2.png");
+            bubbles.at(i)->setTexture("gonggao/bubble_2.png");
         }else{
-            bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
+            bubbles.at(i)->setTexture("gonggao/bubble_1.png");
         }
         
     }
@@ -98,9 +98,9 @@ void GameGongGaoLayer::updateGongGao(float dt){
     }
     for (int i=0 ;i<bubbles.size();i++) {
         if(i==showIndex){
-            bubbles.at(i)->setTexture("mjlobby/bubble_2.png");
+            bubbles.at(i)->setTexture("gonggao/bubble_2.png");
         }else{
-            bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
+            bubbles.at(i)->setTexture("gonggao/bubble_1.png");
         }
     }
 }
@@ -143,9 +143,9 @@ void GameGongGaoLayer::onTouchEnded(Touch *touch, Event  *event){
         }
         for (int i=0 ;i<bubbles.size();i++) {
             if(i==showIndex){
-                bubbles.at(i)->setTexture("mjlobby/bubble_2.png");
+                bubbles.at(i)->setTexture("gonggao/bubble_2.png");
             }else{
-                bubbles.at(i)->setTexture("mjlobby/bubble_1.png");
+                bubbles.at(i)->setTexture("gonggao/bubble_1.png");
             }
         }
 

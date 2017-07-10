@@ -162,6 +162,7 @@ public:
     CC_SYNTHESIZE(string, dissolveName, DissolveName);
     CC_SYNTHESIZE(string, resultFangzhuId, ResultFangzhuId);
     CC_SYNTHESIZE(std::string, shareTextContent, ShareTextContent);
+    CC_SYNTHESIZE(std::string, shareTextContentNum, ShareTextContentNum);
 private:
     GAMEDATA();
     void init();

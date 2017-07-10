@@ -46,6 +46,11 @@ bool ShareSelectLayer::init(){
     tuiguang->setPosition(640,155);
     addChild(tuiguang);
     
+    auto num = LabelAtlas::create(GAMEDATA::getInstance()->getShareTextContentNum(), "share/wei_xin_num.png", 30, 50, '0');
+    num->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    num->setPosition(640,155);
+    addChild(num);
+    
     auto quanMenu = MenuItemImage::create("share/share_quan.png","share/share_quan.png",CC_CALLBACK_0(ShareSelectLayer::shareToQuan, this));
     auto friendMenu = MenuItemImage::create("share/share_friend.png","share/share_friend.png",CC_CALLBACK_0(ShareSelectLayer::shareToFriend, this));
     
