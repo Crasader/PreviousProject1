@@ -104,5 +104,6 @@ private:
     void handleLobbyPaiHang(std::string msg);
     void handleTurntableData(std::string msg);
     void handleTurntableResult(std::string msg);
+    void handleTurntableShare(std::string msg);
 };
 #endif

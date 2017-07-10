@@ -484,6 +484,11 @@ void MsgHandler::distribute(int code, std::string msg){
             handleTurntableResult(msg);
              break;
         }
+            
+        case MSGCODE_DZP_B_SHARE_RESPONSE:{
+            handleTurntableShare(msg);
+            break;
+        }
         default:
             break;
     }
@@ -993,6 +998,10 @@ void MsgHandler::loginResp(std::string msg){
         if(_mDoc.HasMember("sconnum")){
             const rapidjson::Value &scon = _mDoc["sconnum"];
             GAMEDATA::getInstance()->setShareTextContentNum(scon.GetString());
+        }
+        if(_mDoc.HasMember("dzpc")){
+            const rapidjson::Value &dzpc = _mDoc["dzpc"];
+            GAMEDATA::getInstance()->setTurntableNumber(dzpc.GetString());
         }
         if(_mDoc.HasMember("share1")){
             const rapidjson::Value &share1 = _mDoc["share1"];
@@ -4074,4 +4083,16 @@ void MsgHandler::handleTurntableResult(std::string msg){
     }
     GAMEDATA::getInstance()->setTurnTablePrideData(data);
     postNotifyMessage(MSG_PLAYER_TURNTABLE_PRIDE_RESULT, nullptr);
+}
+
+void MsgHandler::handleTurntableShare(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if (_mDoc.HasMember("result")){
+        auto result = _mDoc["result"].GetString();
+        char* buf = const_cast<char*>(result);
+        postNotifyMessage(MSG_PLAYER_TURNTABLE_PRIDE_SHARE, buf);
+    }
 }

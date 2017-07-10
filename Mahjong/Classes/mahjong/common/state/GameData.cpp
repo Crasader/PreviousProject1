@@ -44,6 +44,7 @@ void GAMEDATA::init(){
     setNeedShowShareBtn(false);
     setIsInGame(true);
     setMyGameModel(GameModel::FOURPLAYER);
+    setIsTurnTableShare(false);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){

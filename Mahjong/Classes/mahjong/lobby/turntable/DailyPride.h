@@ -21,5 +21,6 @@ private:
 	void showDailyPrideLayer();
 	void beginPride(Ref* ref);
     void shareTurntable();
+    void closeView();
 	Point getPosByRotation(Point pos,float r,float a);//
 };

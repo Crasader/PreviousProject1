@@ -77,14 +77,13 @@ void DailyPride::showDailyPrideLayer(){
     rightGirl->setPosition(780,380);
     addChild(rightGirl);
     
-    auto shareText = Sprite::create("daily/text_info.png");
-    shareText->setPosition(857,270);
-    addChild(shareText);
     
-    auto shareBtn = MenuItemImage::create("daily/share_pride_bnt_1.png", "daily/share_pride_bnt_2.png",CC_CALLBACK_0(DailyPride::shareTurntable, this));
-    auto menu = Menu::create(shareBtn,NULL);
-    menu->setPosition(850,180);
-    addChild(menu);
+    
+    auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
+                                       CC_CALLBACK_0(DailyPride::closeView, this));
+    auto closeMenu = Menu::create(close, NULL);
+    closeMenu->setPosition(1050, 357);
+    this->addChild(closeMenu);
     
     auto luck_bg = Sprite::create("daily/luck_bg.png");
     luck_bg->setPosition(463, 325);
@@ -107,16 +106,42 @@ void DailyPride::showDailyPrideLayer(){
     startMenu = Menu::create(itemImage, NULL);
     startMenu->setPosition(463, 340);
     addChild(startMenu);
+    
+    if(GAMEDATA::getInstance()->getTurntableNumber() == "0"){
+        
+        auto shareText = Sprite::create("daily/text_info.png");
+        shareText->setPosition(857,270);
+        addChild(shareText);
+        
+        auto shareBtn = MenuItemImage::create("daily/share_pride_bnt_1.png", "daily/share_pride_bnt_2.png",CC_CALLBACK_0(DailyPride::shareTurntable, this));
+        auto menu = Menu::create(shareBtn,NULL);
+        menu->setPosition(850,180);
+        addChild(menu);
+        
+    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "1"){
+        auto number = LabelAtlas::create("1", "daily/pride_num_red.png", 32, 46, '0');
+        number->setPosition(807,240);
+        addChild(number);
+        auto shareText = Sprite::create("daily/chance_text.png");
+        shareText->setPosition(857,240);
+        addChild(shareText);
+        
+    }else{
+        auto shareText = Sprite::create("daily/no_chance_text.png");
+        shareText->setPosition(857,240);
+        addChild(shareText);
+    }
+    
 }
 
 
 void DailyPride::shareTurntable(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableShareCommand());
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    CallAndroidMethod::getInstance()->shareToWeChat(GAMEDATA::getInstance()->getMahjongShareData2().url,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,true);
-//#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//    CallIOSMethod::getInstance()->doWechatShareWeb(GAMEDATA::getInstance()->getMahjongShareData2().url,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
-//#endif
+    GAMEDATA::getInstance()->setIsTurnTableShare(true);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareToWeChat(GAMEDATA::getInstance()->getMahjongShareData2().url,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,true);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->doWechatShareWeb(GAMEDATA::getInstance()->getMahjongShareData2().url,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
+#endif
 }
 
 void DailyPride::updateData(){
@@ -147,4 +172,9 @@ void DailyPride::beginPride(Ref* ref){
 
 Point DailyPride::getPosByRotation(Point pos, float r, float a){
     return Point(pos.x + cos(CC_DEGREES_TO_RADIANS(a))*r, pos.y + sin(CC_DEGREES_TO_RADIANS(a))*r);
+}
+
+
+void DailyPride::closeView(){
+    removeFromParent();
 }

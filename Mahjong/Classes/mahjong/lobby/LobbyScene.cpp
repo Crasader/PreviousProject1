@@ -60,12 +60,12 @@ bool LobbyScene::init()
 
 
 void LobbyScene::signUpdate(float dt){
-//    if(GAMEDATA::getInstance()->getNeedShowShareBtn()){
-//        getChildByTag(1987)->setVisible(true);
-//    }else{
-//        if(NULL != getChildByTag(1988))
-//            getChildByTag(1988)->setPosition(600,435);
-//    }
+    //    if(GAMEDATA::getInstance()->getNeedShowShareBtn()){
+    //        getChildByTag(1987)->setVisible(true);
+    //    }else{
+    //        if(NULL != getChildByTag(1988))
+    //            getChildByTag(1988)->setPosition(600,435);
+    //    }
     if(GAMEDATA::getInstance()->getShowProtected()){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
@@ -549,9 +549,9 @@ void LobbyScene::showWanJiaQun(){
 
 void LobbyScene::showDayTask(){
     Audio::getInstance()->playSoundClick();
-//    DailyEvent* day = DailyEvent::create();
-//    day->showDailyEvent(DailyType::pride);
-//    addChild(day,3);
+    //    DailyEvent* day = DailyEvent::create();
+    //    day->showDailyEvent(DailyType::pride);
+    //    addChild(day,3);
 }
 
 
@@ -1184,8 +1184,14 @@ void LobbyScene::addEventListener(){
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 1){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
-            GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+            if(GAMEDATA::getInstance()->getIsTurnTableShare()){
+                GAMEDATA::getInstance()->setIsTurnTableShare(false);
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableShareCommand());
+            }else{
+                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
+                GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+            }
+            
         }else if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 2){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
             GAMEDATA::getInstance()->setShareHongBaoFriendState(0);

@@ -134,6 +134,7 @@ public:
     CC_SYNTHESIZE(bool, needShowFaPai, NeedShowFaPai);
     CC_SYNTHESIZE(bool, needShowShareBtn, NeedShowShareBtn);
     CC_SYNTHESIZE(bool, isInGame, IsInGame);
+    CC_SYNTHESIZE(bool, isTurnTableShare, IsTurnTableShare);
     CC_SYNTHESIZE(std::string, competitionId, CompetitionId);
     CC_SYNTHESIZE(std::string, competitionText, CompetitionText);
     CC_SYNTHESIZE(std::string, competitionPride, CompetitionPride);
@@ -163,6 +164,7 @@ public:
     CC_SYNTHESIZE(string, resultFangzhuId, ResultFangzhuId);
     CC_SYNTHESIZE(std::string, shareTextContent, ShareTextContent);
     CC_SYNTHESIZE(std::string, shareTextContentNum, ShareTextContentNum);
+    CC_SYNTHESIZE(std::string, turntableNumber, TurntableNumber);
 private:
     GAMEDATA();
     void init();
