@@ -67,6 +67,8 @@
 		D217FEAB1F13509B008F5D4B /* GongZhongHaoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FEA61F13509B008F5D4B /* GongZhongHaoLayer.cpp */; };
 		D217FEAF1F135393008F5D4B /* gonggao in Resources */ = {isa = PBXBuildFile; fileRef = D217FEAE1F135393008F5D4B /* gonggao */; };
 		D217FEB01F135393008F5D4B /* gonggao in Resources */ = {isa = PBXBuildFile; fileRef = D217FEAE1F135393008F5D4B /* gonggao */; };
+		D217FEB21F135C89008F5D4B /* dissolve in Resources */ = {isa = PBXBuildFile; fileRef = D217FEB11F135C89008F5D4B /* dissolve */; };
+		D217FEB31F135C89008F5D4B /* dissolve in Resources */ = {isa = PBXBuildFile; fileRef = D217FEB11F135C89008F5D4B /* dissolve */; };
 		D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
@@ -523,6 +525,7 @@
 		D217FEA61F13509B008F5D4B /* GongZhongHaoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GongZhongHaoLayer.cpp; sourceTree = "<group>"; };
 		D217FEA71F13509B008F5D4B /* GongZhongHaoLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GongZhongHaoLayer.hpp; sourceTree = "<group>"; };
 		D217FEAE1F135393008F5D4B /* gonggao */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gonggao; sourceTree = "<group>"; };
+		D217FEB11F135C89008F5D4B /* dissolve */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dissolve; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* PxSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PxSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
@@ -1040,6 +1043,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D217FEB11F135C89008F5D4B /* dissolve */,
 				D217FEAE1F135393008F5D4B /* gonggao */,
 				D217FEA01F1312EA008F5D4B /* gongzhonghao */,
 				D2D704801F0B3177006B5C6D /* rule */,
@@ -2259,6 +2263,7 @@
 				D253296E1CC0D33600DDAD97 /* mainlogin in Resources */,
 				D2D704811F0B3177006B5C6D /* rule in Resources */,
 				D253295C1CC0D33600DDAD97 /* daily in Resources */,
+				D217FEB21F135C89008F5D4B /* dissolve in Resources */,
 				D2B1D8FE1E9DF95B00EB8FB0 /* fanma in Resources */,
 				D25329681CC0D33600DDAD97 /* headportrait in Resources */,
 				D281E5A11DACF35600D3E44E /* audio in Resources */,
@@ -2337,6 +2342,7 @@
 				D25329691CC0D33600DDAD97 /* headportrait in Resources */,
 				D25DEE421CC4AE78007D428A /* shop in Resources */,
 				D252FD691E80F3A500937322 /* openroom in Resources */,
+				D217FEB31F135C89008F5D4B /* dissolve in Resources */,
 				D294FE201D9CFBE1005FB8A2 /* Icon-180.png in Resources */,
 				D25329751CC0D33600DDAD97 /* playerinfo in Resources */,
 			);
