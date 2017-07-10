@@ -38,6 +38,7 @@
 #include "mahjong/result/hongbao/HongbaoAnim2.hpp"
 #include "mahjong/lobby/share/ShareActivityLayer.hpp"
 #include "mahjong/lobby/share/ShareSelectLayer.hpp"
+#include "mahjong/lobby/gongzhonghao/GongZhongHaoLayer.hpp"
 
 
 bool LobbyScene::init()
@@ -521,10 +522,8 @@ void LobbyScene:: scrollLightSpot(float dt){
 }
 
 void LobbyScene::showGongZhongHao(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGongGaoCommand());
-    Loading* load = Loading::create();
-    load->setTag(1209);
-    addChild(load,5);
+    GongZhongHaoLayer* hao = GongZhongHaoLayer::create();
+    addChild(hao,100);
 }
 
 void LobbyScene::showFirstCharge(){

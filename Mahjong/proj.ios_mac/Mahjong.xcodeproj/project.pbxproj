@@ -61,6 +61,10 @@
 		D217FE9D1F127E76008F5D4B /* ShareSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */; };
 		D217FEA11F1312EA008F5D4B /* gongzhonghao in Resources */ = {isa = PBXBuildFile; fileRef = D217FEA01F1312EA008F5D4B /* gongzhonghao */; };
 		D217FEA21F1312EA008F5D4B /* gongzhonghao in Resources */ = {isa = PBXBuildFile; fileRef = D217FEA01F1312EA008F5D4B /* gongzhonghao */; };
+		D217FEA81F13509B008F5D4B /* GongZhongHaoItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FEA41F13509B008F5D4B /* GongZhongHaoItem.cpp */; };
+		D217FEA91F13509B008F5D4B /* GongZhongHaoItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FEA41F13509B008F5D4B /* GongZhongHaoItem.cpp */; };
+		D217FEAA1F13509B008F5D4B /* GongZhongHaoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FEA61F13509B008F5D4B /* GongZhongHaoLayer.cpp */; };
+		D217FEAB1F13509B008F5D4B /* GongZhongHaoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FEA61F13509B008F5D4B /* GongZhongHaoLayer.cpp */; };
 		D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
@@ -512,6 +516,10 @@
 		D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareSelectLayer.cpp; sourceTree = "<group>"; };
 		D217FE9B1F127E76008F5D4B /* ShareSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareSelectLayer.hpp; sourceTree = "<group>"; };
 		D217FEA01F1312EA008F5D4B /* gongzhonghao */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gongzhonghao; sourceTree = "<group>"; };
+		D217FEA41F13509B008F5D4B /* GongZhongHaoItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GongZhongHaoItem.cpp; sourceTree = "<group>"; };
+		D217FEA51F13509B008F5D4B /* GongZhongHaoItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GongZhongHaoItem.hpp; sourceTree = "<group>"; };
+		D217FEA61F13509B008F5D4B /* GongZhongHaoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GongZhongHaoLayer.cpp; sourceTree = "<group>"; };
+		D217FEA71F13509B008F5D4B /* GongZhongHaoLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GongZhongHaoLayer.hpp; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* PxSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PxSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
@@ -1132,6 +1140,17 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		D217FEA31F13509B008F5D4B /* gongzhonghao */ = {
+			isa = PBXGroup;
+			children = (
+				D217FEA41F13509B008F5D4B /* GongZhongHaoItem.cpp */,
+				D217FEA51F13509B008F5D4B /* GongZhongHaoItem.hpp */,
+				D217FEA61F13509B008F5D4B /* GongZhongHaoLayer.cpp */,
+				D217FEA71F13509B008F5D4B /* GongZhongHaoLayer.hpp */,
+			);
+			path = gongzhonghao;
+			sourceTree = "<group>";
+		};
 		D223FAE81E07784E00270969 /* android */ = {
 			isa = PBXGroup;
 			children = (
@@ -1367,6 +1386,7 @@
 		D252FACD1E7FA5EC00937322 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D217FEA31F13509B008F5D4B /* gongzhonghao */,
 				D2E79DB91F0F34D000DD3999 /* turntable */,
 				D2B291B51F0DD3810084F379 /* rank */,
 				D2DDB1BB1F02384600790422 /* dialog */,
@@ -2426,12 +2446,14 @@
 				D252FBB81E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
 				D252FC0A1E7FABC600937322 /* RoomFullDialog.cpp in Sources */,
 				D2F05F2F1D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,
+				D217FEAA1F13509B008F5D4B /* GongZhongHaoLayer.cpp in Sources */,
 				D2A713AC1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */,
 				D252FC0C1E7FABC600937322 /* RoomIdErrorDialog.cpp in Sources */,
 				D252FBAC1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FC4F1E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
 				D2B1D9181E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */,
 				D252FBB01E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
+				D217FEA81F13509B008F5D4B /* GongZhongHaoItem.cpp in Sources */,
 				D2A713AE1ED2B830000EE572 /* CompetitonItem.cpp in Sources */,
 				D252FB521E7FA5EC00937322 /* GameFeedDialog.cpp in Sources */,
 				D252FB621E7FA5EC00937322 /* HeadImage.cpp in Sources */,
@@ -2564,6 +2586,8 @@
 				D2A713B11ED2B830000EE572 /* CompetitonLayer.cpp in Sources */,
 				D252FBA51E7FA5EC00937322 /* GoldRoomButton.cpp in Sources */,
 				D252FB471E7FA5EC00937322 /* HeadImageDialog.cpp in Sources */,
+				D217FEAB1F13509B008F5D4B /* GongZhongHaoLayer.cpp in Sources */,
+				D217FEA91F13509B008F5D4B /* GongZhongHaoItem.cpp in Sources */,
 				D252FB591E7FA5EC00937322 /* GameData.cpp in Sources */,
 				D252FB5D1E7FA5EC00937322 /* SeatIdUtil.cpp in Sources */,
 				D2B1D9231E9E026800EB8FB0 /* GameResultCell.cpp in Sources */,
