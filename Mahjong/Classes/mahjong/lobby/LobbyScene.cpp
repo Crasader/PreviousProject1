@@ -4,7 +4,6 @@
 #include "mahjong/lobby/wanjiaqun/WanJiaQunLayer.hpp"
 #include "mahjong/lobby/friend/dialog/RoomFullDialog.hpp"
 #include "mahjong/lobby/friend/FriendRoom.h"
-#include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/common/competition/CompetitonItem.hpp"
 #include "mahjong/lobby/goldroom/GoldRoomPlate.hpp"
 #include "mahjong/lobby/dialog/EnterRoomDialog.hpp"
@@ -39,6 +38,7 @@
 #include "mahjong/lobby/share/ShareActivityLayer.hpp"
 #include "mahjong/lobby/share/ShareSelectLayer.hpp"
 #include "mahjong/lobby/gongzhonghao/GongZhongHaoLayer.hpp"
+#include "mahjong/gameview/dissolve/DissovleRoomDialog.hpp"
 
 
 bool LobbyScene::init()
@@ -119,8 +119,6 @@ void LobbyScene::signUpdate(float dt){
     
     if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        std::string name = GAMEDATA::getInstance()->getDissolveName();
-        dis->setNickName(name);
         addChild(dis,1000);
         showDissolveDialog = true;
     }

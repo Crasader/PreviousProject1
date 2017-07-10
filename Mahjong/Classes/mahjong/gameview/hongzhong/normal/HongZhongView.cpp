@@ -17,7 +17,6 @@
 #include "mahjong/gameview/anim/OutFogAnim.hpp"
 #include "mahjong/gameview/anim/FanMaAnim.hpp"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
@@ -31,7 +30,7 @@
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/competition/CompetitionQueue.hpp"
-
+#include "mahjong/gameview/dissolve/DissovleRoomDialog.hpp"
 bool HongZhongView::init(){
     if (!Layer::init())
     {
@@ -205,8 +204,6 @@ void HongZhongView::update(float dt){
     }
     if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        std::string name = GAMEDATA::getInstance()->getDissolveName();
-        dis->setNickName(name);
         addChild(dis,1000);
         GAMEDATA::getInstance()->setShowDissolveDialog(true);
     }

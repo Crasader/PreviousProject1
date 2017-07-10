@@ -21,14 +21,13 @@
 #include "mahjong/lobby/dialog/EnterRoomDialog.hpp"
 #include "mahjong/lobby/shop/gold/GoldNotEnoughDialog.hpp"
 #include "mahjong/lobby/shop/gold/ChargeGold.hpp"
-#include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/gameview/MjGameScene.h"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "server/NetworkManage.h"
 #include "server/CommandManage.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
-
+#include "mahjong/gameview/dissolve/DissovleRoomDialog.hpp"
 
 
 bool HZNormalResultLayer::init(){
@@ -342,7 +341,6 @@ void HZNormalResultLayer::updateTime(float dt){
     if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
         std::string name = GAMEDATA::getInstance()->getDissolveName();
-        dis->setNickName(name);
         addChild(dis,1000);
         showDissolveDialog = true;
     }
@@ -372,7 +370,6 @@ void HZNormalResultLayer::onEnter(){
     dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
         DissovleRoomDialog* dis = DissovleRoomDialog::create();
         std::string name = static_cast<char*>(event->getUserData());
-        dis->setNickName(name);
         addChild(dis,1000);
     });
     

@@ -17,7 +17,6 @@
 #include "mahjong/gameview/anim/OutFogAnim.hpp"
 #include "mahjong/gameview/anim/FanMaAnim.hpp"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"

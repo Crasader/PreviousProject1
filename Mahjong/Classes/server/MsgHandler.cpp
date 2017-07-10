@@ -4092,7 +4092,10 @@ void MsgHandler::handleTurntableShare(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     if (_mDoc.HasMember("result")){
         auto result = _mDoc["result"].GetString();
-        char* buf = const_cast<char*>(result);
-        postNotifyMessage(MSG_PLAYER_TURNTABLE_PRIDE_SHARE, buf);
+        if(result == "1"){
+            GAMEDATA::getInstance()->setTurntableNumber("1");
+        }else{
+            GAMEDATA::getInstance()->setTurntableNumber("0");
+        }
     }
 }

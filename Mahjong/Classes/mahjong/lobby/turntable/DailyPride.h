@@ -22,5 +22,6 @@ private:
 	void beginPride(Ref* ref);
     void shareTurntable();
     void closeView();
+    void update(float dt);
 	Point getPosByRotation(Point pos,float r,float a);//
 };

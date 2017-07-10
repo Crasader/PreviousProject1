@@ -107,31 +107,53 @@ void DailyPride::showDailyPrideLayer(){
     startMenu->setPosition(463, 340);
     addChild(startMenu);
     
-    if(GAMEDATA::getInstance()->getTurntableNumber() == "0"){
-        
-        auto shareText = Sprite::create("daily/text_info.png");
-        shareText->setPosition(857,270);
-        addChild(shareText);
-        
-        auto shareBtn = MenuItemImage::create("daily/share_pride_bnt_1.png", "daily/share_pride_bnt_2.png",CC_CALLBACK_0(DailyPride::shareTurntable, this));
-        auto menu = Menu::create(shareBtn,NULL);
-        menu->setPosition(850,180);
-        addChild(menu);
-        
-    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "1"){
-        auto number = LabelAtlas::create("1", "daily/pride_num_red.png", 32, 46, '0');
-        number->setPosition(807,240);
-        addChild(number);
-        auto shareText = Sprite::create("daily/chance_text.png");
-        shareText->setPosition(857,240);
-        addChild(shareText);
-        
-    }else{
-        auto shareText = Sprite::create("daily/no_chance_text.png");
-        shareText->setPosition(857,240);
-        addChild(shareText);
-    }
+    auto shareText = Sprite::create("daily/text_info.png");
+    shareText->setTag(1000);
+    shareText->setPosition(857,270);
+    addChild(shareText);
     
+    auto shareBtn = MenuItemImage::create("daily/share_pride_bnt_1.png", "daily/share_pride_bnt_2.png",CC_CALLBACK_0(DailyPride::shareTurntable, this));
+    auto menu = Menu::create(shareBtn,NULL);
+    menu->setTag(1001);
+    menu->setPosition(850,180);
+    addChild(menu);
+    
+    auto number = LabelAtlas::create("1", "daily/pride_num_red.png", 32, 46, '0');
+    number->setPosition(807,240);
+    number->setTag(1002);
+    addChild(number);
+    auto shareText2 = Sprite::create("daily/chance_text.png");
+    shareText2->setPosition(857,240);
+    shareText2->setTag(1003);
+    addChild(shareText2);
+
+    
+    auto shareText3 = Sprite::create("daily/no_chance_text.png");
+    shareText3->setPosition(857,240);
+    shareText3->setTag(1004);
+    addChild(shareText3);
+
+    
+    if(GAMEDATA::getInstance()->getTurntableNumber() == "0"){
+        shareText->setVisible(true);
+        menu->setVisible(true);
+        number->setVisible(false);
+        shareText2->setVisible(false);
+        shareText3->setVisible(false);
+    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "1"){
+        shareText->setVisible(false);
+        menu->setVisible(false);
+        number->setVisible(true);
+        shareText2->setVisible(true);
+        shareText3->setVisible(false);
+    }else{
+        shareText->setVisible(false);
+        menu->setVisible(false);
+        number->setVisible(false);
+        shareText2->setVisible(false);
+        shareText3->setVisible(true);
+    }
+    scheduleUpdate();
 }
 
 
@@ -177,4 +199,26 @@ Point DailyPride::getPosByRotation(Point pos, float r, float a){
 
 void DailyPride::closeView(){
     removeFromParent();
+}
+
+void DailyPride::update(float dt){
+    if(GAMEDATA::getInstance()->getTurntableNumber() == "0"){
+        getChildByTag(1000)->setVisible(true);
+        getChildByTag(1001)->setVisible(true);
+        getChildByTag(1002)->setVisible(false);
+        getChildByTag(1003)->setVisible(false);
+        getChildByTag(1004)->setVisible(false);
+    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "1"){
+        getChildByTag(1000)->setVisible(false);
+        getChildByTag(1001)->setVisible(false);
+        getChildByTag(1002)->setVisible(true);
+        getChildByTag(1003)->setVisible(true);
+        getChildByTag(1004)->setVisible(false);
+    }else{
+        getChildByTag(1000)->setVisible(false);
+        getChildByTag(1001)->setVisible(false);
+        getChildByTag(1002)->setVisible(false);
+        getChildByTag(1003)->setVisible(false);
+        getChildByTag(1004)->setVisible(true);
+    }
 }

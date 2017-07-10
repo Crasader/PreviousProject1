@@ -13,7 +13,6 @@
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/widget/batteryInfo/BatteryInfo.h"
 #include "mahjong/lobby/LobbyScene.h"
-#include "mahjong/lobby/friend/dialog/DissovleRoomDialog.hpp"
 #include "mahjong/result/ResultScene.hpp"
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
