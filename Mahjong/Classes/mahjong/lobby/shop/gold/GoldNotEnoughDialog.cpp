@@ -36,76 +36,53 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     Menu* menu0 = Menu::create(item1, NULL);
     this->addChild(menu0);
     
-    auto dialogBg = Sprite::create("shop/gold_not_enough.png");
+    auto dialogBg = Sprite::create("shop/first_chage_bg.png");
     dialogBg->setPosition(640, 360);
     this->addChild(dialogBg);
-    
-    auto title = Sprite::create("shop/charge/get_gold_title.png");
-    title->setPosition(640, 580);
-    this->addChild(title);
-    
-    auto bg_2 = Sprite::create("shop/first_charge_bg_2.png");
-    bg_2->setPosition(645,375);
-    addChild(bg_2);
-    
-    
-    int goldShowNum =atoi(newRespData.min.c_str());
-    
-    auto goldNum0 = LabelAtlas::create(StringUtils::format("%d",goldShowNum>1000000?goldShowNum/10000:goldShowNum),"shop/charge/charge_num.png",21,30,'0');
-    goldNum0->setScale(0.8f);
-    goldNum0->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    goldNum0->setPosition(560,375);
-    addChild(goldNum0);
-    if(goldShowNum>1000000){
-        auto content = Sprite::create();
-        content->setTexture("shop/charge/jinbibuzhu.png");
-        content->setPosition(640,400);
-        addChild(content);
-    }else{
-        auto content_1 = Sprite::create();
-        content_1->setTexture("shop/charge/jinbibuzhu_1.png");
-        content_1->setPosition(640,420);
-        addChild(content_1);
-        auto content_2 = Sprite::create();
-        content_2->setTexture("shop/charge/jinbibuzhu_2.png");
-        content_2->setPosition(470,375);
-        addChild(content_2);
-        auto content_3 = Sprite::create();
-        content_3->setTexture("shop/charge/jinbibuzhu_3.png");
-        content_3->setPosition(720,375);
-        addChild(content_3);
-    }
-    
-    auto goldNum1 = LabelAtlas::create(StringUtils::format(":%s",newRespData.gold.c_str()),"shop/charge/charge_num.png",21,30,'0');
-    goldNum1->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    goldNum1->setPosition(690,320);
-    addChild(goldNum1);
-    
-    auto goldIcon = Sprite::create("shop/charge/jingbi_icon.png");
-    goldIcon->setPosition(goldNum1->getPositionX()-goldNum1->getContentSize().width,315);
-    goldIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    addChild(goldIcon);
-    
-    
-    auto xuyan = Sprite::create("shop/charge/xu_yuan.png");
-    xuyan->setPosition(750,320);
-    addChild(xuyan);
-    auto money = LabelAtlas::create(StringUtils::format("%d",atoi(newRespData.money.c_str())/100),"shop/charge/charge_num.png",21,30,'0');
-    money->setPosition(760,320);
-    money->setScale(0.65f);
-    money->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    addChild(money);
     
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        CC_CALLBACK_0(GoldNotEnoughDialog::closeView, this));
     auto closeMenu = Menu::create(close, NULL);
-    closeMenu->setPosition(905, 535);
+    closeMenu->setPosition(1000, 590);
     this->addChild(closeMenu);
     
+    auto title = Sprite::create("shop/charge/get_gold_title.png");
+    title->setPosition(640, 590);
+    this->addChild(title);
+    
+    auto jinbiContent = Sprite::create("shop/charge/jinbibuzu.png");
+    jinbiContent->setPosition(640,400);
+    addChild(jinbiContent);
+    
+    int goldShowNum =atoi(newRespData.min.c_str());
+    
+    auto fangkanum0 = LabelAtlas::create(StringUtils::format("%d",goldShowNum),"shop/charge/charge_num.png",24,36,'0');
+    fangkanum0->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    fangkanum0->setPosition(537,400);
+    addChild(fangkanum0);
+    
+
+    
+    auto fangkanum = LabelAtlas::create(StringUtils::format(":%d",goldShowNum),"shop/charge/charge_num.png",24,36,'0');
+    fangkanum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fangkanum->setPosition(645,332);
+    addChild(fangkanum);
+    
+    auto fangka = Sprite::create("common/gold_icon.png");
+    fangka->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fangka->setPosition(fangkanum->getPositionX()-fangkanum->getContentSize().width,330);
+    addChild(fangka);
+    
+    auto xuyaunnum = LabelAtlas::create(StringUtils::format("%d",5),"shop/charge/charge_num.png",24,36,'0');
+    xuyaunnum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    xuyaunnum->setScale(0.8f);
+    xuyaunnum->setPosition(712,330);
+    addChild(xuyaunnum);
+
     auto confirm = MenuItemImage::create("shop/charge/charge_btn_1.png", "shop/charge/charge_btn_2.png",
                                          CC_CALLBACK_0(GoldNotEnoughDialog::chargeGold, this));
     auto confirmMenu = Menu::create(confirm, NULL);
-    confirmMenu->setPosition(640, 220);
+    confirmMenu->setPosition(640, 160);
     addChild(confirmMenu);
     
     return true;
