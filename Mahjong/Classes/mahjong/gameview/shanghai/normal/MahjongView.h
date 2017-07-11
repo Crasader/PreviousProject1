@@ -113,5 +113,6 @@ private:
     EventListenerCustom* fangZhuLeaveListener;
     EventListenerCustom* networkBreakListener;
     EventListenerCustom* truNotifyListener;
+    EventListenerCustom* dissovleRoomNew;
 };
 #endif

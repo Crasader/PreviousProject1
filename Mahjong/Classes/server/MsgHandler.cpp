@@ -2793,7 +2793,7 @@ void MsgHandler::handleDissovleRoomNotify(std::string msg){
         const rapidjson::Value &nickName = _mDoc["nickName"];
         std::string name = nickName.GetString();
         GAMEDATA::getInstance()->setDissolveName(name);
-        GAMEDATA::getInstance()->setIsSelected(false);
+        postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW, nullptr);
     }
 }
 

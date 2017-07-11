@@ -71,6 +71,8 @@
 		D217FEB31F135C89008F5D4B /* dissolve in Resources */ = {isa = PBXBuildFile; fileRef = D217FEB11F135C89008F5D4B /* dissolve */; };
 		D217FEDA1F14C5C5008F5D4B /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FED81F14C5C5008F5D4B /* DissovleRoomDialog.cpp */; };
 		D217FEDB1F14C5C5008F5D4B /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FED81F14C5C5008F5D4B /* DissovleRoomDialog.cpp */; };
+		D217FEDE1F14D862008F5D4B /* DissolveItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FEDC1F14D862008F5D4B /* DissolveItem.cpp */; };
+		D217FEDF1F14D862008F5D4B /* DissolveItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FEDC1F14D862008F5D4B /* DissolveItem.cpp */; };
 		D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
@@ -526,6 +528,8 @@
 		D217FEB11F135C89008F5D4B /* dissolve */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dissolve; sourceTree = "<group>"; };
 		D217FED81F14C5C5008F5D4B /* DissovleRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DissovleRoomDialog.cpp; sourceTree = "<group>"; };
 		D217FED91F14C5C5008F5D4B /* DissovleRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DissovleRoomDialog.hpp; sourceTree = "<group>"; };
+		D217FEDC1F14D862008F5D4B /* DissolveItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DissolveItem.cpp; sourceTree = "<group>"; };
+		D217FEDD1F14D862008F5D4B /* DissolveItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DissolveItem.hpp; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* PxSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PxSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
@@ -1160,6 +1164,8 @@
 			children = (
 				D217FED81F14C5C5008F5D4B /* DissovleRoomDialog.cpp */,
 				D217FED91F14C5C5008F5D4B /* DissovleRoomDialog.hpp */,
+				D217FEDC1F14D862008F5D4B /* DissolveItem.cpp */,
+				D217FEDD1F14D862008F5D4B /* DissolveItem.hpp */,
 			);
 			path = dissolve;
 			sourceTree = "<group>";
@@ -2444,6 +2450,7 @@
 				D252FB461E7FA5EC00937322 /* HeadImageDialog.cpp in Sources */,
 				D2B3DD981E6ED2F70099B97E /* Base64.cpp in Sources */,
 				D2E035151ED9120700291282 /* HongbaoAnim.cpp in Sources */,
+				D217FEDE1F14D862008F5D4B /* DissolveItem.cpp in Sources */,
 				D2B291BC1F0E18C40084F379 /* RankList.cpp in Sources */,
 				D252FB541E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D252FBB21E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */,
@@ -2590,6 +2597,7 @@
 				D252FC681E7FABE900937322 /* HuPaiHintLayer.cpp in Sources */,
 				D252FB211E7FA5EC00937322 /* BillDetailInfo.cpp in Sources */,
 				D252FC0B1E7FABC600937322 /* RoomFullDialog.cpp in Sources */,
+				D217FEDF1F14D862008F5D4B /* DissolveItem.cpp in Sources */,
 				D2E79DC11F0F34EB00DD3999 /* PrideCell.cpp in Sources */,
 				D2B1D9251E9E026800EB8FB0 /* SpecialResultLayer.cpp in Sources */,
 				D252FB251E7FA5EC00937322 /* FupanDialog.cpp in Sources */,

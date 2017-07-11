@@ -44,9 +44,6 @@ bool MahjongView::init(){
     return true;
 }
 
-
-
-
 void MahjongView::initData(){
     playerHero = NULL;
     playerLeft = NULL;
@@ -228,11 +225,11 @@ void MahjongView::update(float dt){
             addChild(dialog,5);
         }
     }
-    if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        addChild(dis,1000);
-        GAMEDATA::getInstance()->setShowDissolveDialog(true);
-    }
+//    if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
+//        DissovleRoomDialog* dis = DissovleRoomDialog::create();
+//        addChild(dis,1000);
+//        GAMEDATA::getInstance()->setShowDissolveDialog(true);
+//    }
     
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
@@ -363,7 +360,6 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerLeft->initPlayer(playerInfo);
             playerLeft->setIsReady(playerInfo->getIsReady());
             addChild(playerLeft,1);
-            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
     else if (type == ClientSeatId::right){
@@ -372,7 +368,6 @@ void MahjongView::updatePlayerView(int type, Player* playerInfo){
             playerRight->initPlayer(playerInfo);
             playerRight->setIsReady(playerInfo->getIsReady());
             addChild(playerRight,1);
-            //            ChatAndroidMethod::getInstance()->addMember(UserData::getInstance()->getPoxiaoId(), playerInfo->getPoxiaoId());
         }
     }
     else if (type == ClientSeatId::opposite){
@@ -2004,5 +1999,12 @@ void MahjongView::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(truNotifyListener, 1);
+    
+    dissovleRoomNew =  EventListenerCustom::create(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW, [=](EventCustom* event){
+        DissovleRoomDialog* dialog = DissovleRoomDialog::create();
+        addChild(dialog,10);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dissovleRoomNew, 1);
+
 }
 

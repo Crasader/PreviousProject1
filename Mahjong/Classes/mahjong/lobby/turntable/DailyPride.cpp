@@ -184,7 +184,6 @@ void DailyPride::updateData(){
 void DailyPride::beginPride(Ref* ref){
     if(atoi(GAMEDATA::getInstance()->getTurntableNumber().c_str())>0){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableStartCommand());
-        startMenu->setEnabled(false);
         srand(unsigned(time(NULL)));
         float angleZ = rand() % 720 + 720;
         auto pAction = EaseExponentialIn::create(RotateBy::create(2, Vec3(0, 0, angleZ)));

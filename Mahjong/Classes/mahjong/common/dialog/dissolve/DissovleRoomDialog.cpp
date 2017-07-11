@@ -7,7 +7,8 @@
 //
 
 #include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
-
+#include "mahjong/common/state/GameData.h"
+#include "userdata/UserData.h"
 
 bool DissovleRoomDialog::init(){
 
@@ -28,20 +29,51 @@ bool DissovleRoomDialog::init(){
     titleIcon->setPosition(640, 575);
     addChild(titleIcon);
     
-    auto dissovlebg1 = Sprite::create("dissolve/dissovle_bg.png");
-    dissovlebg1->setPosition(475,440);
-    addChild(dissovlebg1);
-    auto dissovlebg2 = Sprite::create("dissolve/dissovle_bg.png");
-    dissovlebg2->setPosition(475,340);
-    addChild(dissovlebg2);
-    auto dissovlebg3 = Sprite::create("dissolve/dissovle_bg.png");
-    dissovlebg3->setPosition(805,440);
-    addChild(dissovlebg3);
-    auto dissovlebg4 = Sprite::create("dissolve/dissovle_bg.png");
-    dissovlebg4->setPosition(805,340);
-    addChild(dissovlebg4);
-
+    //显示谁主动提出解散房间
+    auto wanjia = Label::createWithSystemFont(StringUtils::format("玩家%s要求解散房间,是否同意",GAMEDATA::getInstance()->getDissolveName().c_str()), "arial", 30);
+    wanjia->setColor(Color3B(70,40,20));
+    wanjia->setPosition(327,525);
+    wanjia->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    addChild(wanjia);
+    
+    auto time = Label::createWithSystemFont(StringUtils::format("%d后自动同意",residueTime), "arial", 30);
+    time->setColor(Color3B(70,40,20));
+    time->setPosition(640,275);
+    addChild(time);
+    
+    for(int i=0;i<GAMEDATA::getInstance()->getPlayersInfo().size();i++){
+        DissolveItem* item = DissolveItem::create(GAMEDATA::getInstance()->getPlayersInfo().at(i)->getNickname());
+        item->setPosition(475+330*(i%2),440-(i/2)*100);
+        addChild(item);
+        items.push_back(item);
+    }
+    
+    auto img1 = MenuItemImage::create("dissolve/agree_1.png", "dissolve/agree_2.png", CC_CALLBACK_0(DissovleRoomDialog::doAgree,this));
+    auto img2 = MenuItemImage::create("dissolve/dis_agree_1.png", "dissolve/dis_agree_2.png", CC_CALLBACK_0(DissovleRoomDialog::doNotAgree, this));
+    auto menu = Menu::create(img1,img2,NULL);
+    menu->alignItemsHorizontallyWithPadding(50);
+    menu->setPosition(640,200);
+    addChild(menu);
     return true;
+}
+
+void DissovleRoomDialog::doAgree(){
+    for(int i=0; i<items.size();i++){
+        if(items.at(i)->getNickName() == UserData::getInstance()->getNickName()){
+            items.at(i)->updateState(1);
+        }
+    }
+    //TODO 发送协议
+}
+
+
+void DissovleRoomDialog::doNotAgree(){
+    for(int i=0; i<items.size();i++){
+        if(items.at(i)->getNickName() == UserData::getInstance()->getNickName()){
+            items.at(i)->updateState(2);
+        }
+    }
+    //TODO 发送协议
 }
 
 
