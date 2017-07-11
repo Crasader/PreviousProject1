@@ -27,7 +27,7 @@
 #include "server/CommandManage.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
-#include "mahjong/gameview/dissolve/DissovleRoomDialog.hpp"
+#include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
 
 
 bool NormalResultLayer::init(){

@@ -6,7 +6,7 @@
 //
 //
 
-#include "mahjong/gameview/dissolve/DissovleRoomDialog.hpp"
+#include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
 
 
 bool DissovleRoomDialog::init(){

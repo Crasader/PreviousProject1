@@ -38,7 +38,7 @@
 #include "mahjong/lobby/share/ShareActivityLayer.hpp"
 #include "mahjong/lobby/share/ShareSelectLayer.hpp"
 #include "mahjong/lobby/gongzhonghao/GongZhongHaoLayer.hpp"
-#include "mahjong/gameview/dissolve/DissovleRoomDialog.hpp"
+#include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
 
 
 bool LobbyScene::init()

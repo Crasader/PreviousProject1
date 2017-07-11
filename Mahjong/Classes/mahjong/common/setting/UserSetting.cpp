@@ -5,7 +5,7 @@
 #include "mahjong/common/audio/Audio.h"
 #include "userdata/UserData.h"
 #include "server/NetworkManage.h"
-#include "mahjong/gameview/dissolve/DissovleRoomDialog.hpp"
+#include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
 
 bool UserSetting::init(){
     if (!BaseDialog::init()){

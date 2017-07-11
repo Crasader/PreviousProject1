@@ -69,8 +69,8 @@
 		D217FEB01F135393008F5D4B /* gonggao in Resources */ = {isa = PBXBuildFile; fileRef = D217FEAE1F135393008F5D4B /* gonggao */; };
 		D217FEB21F135C89008F5D4B /* dissolve in Resources */ = {isa = PBXBuildFile; fileRef = D217FEB11F135C89008F5D4B /* dissolve */; };
 		D217FEB31F135C89008F5D4B /* dissolve in Resources */ = {isa = PBXBuildFile; fileRef = D217FEB11F135C89008F5D4B /* dissolve */; };
-		D217FED41F13D5AE008F5D4B /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FED21F13D5AE008F5D4B /* DissovleRoomDialog.cpp */; };
-		D217FED51F13D5AE008F5D4B /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FED21F13D5AE008F5D4B /* DissovleRoomDialog.cpp */; };
+		D217FEDA1F14C5C5008F5D4B /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FED81F14C5C5008F5D4B /* DissovleRoomDialog.cpp */; };
+		D217FEDB1F14C5C5008F5D4B /* DissovleRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FED81F14C5C5008F5D4B /* DissovleRoomDialog.cpp */; };
 		D223FAF21E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D223FAE91E07784E00270969 /* PxSocketManage.cpp */; };
 		D22912491D12C583005C7167 /* CommandManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D22912471D12C583005C7167 /* CommandManage.cpp */; };
@@ -524,8 +524,8 @@
 		D217FEA71F13509B008F5D4B /* GongZhongHaoLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GongZhongHaoLayer.hpp; sourceTree = "<group>"; };
 		D217FEAE1F135393008F5D4B /* gonggao */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gonggao; sourceTree = "<group>"; };
 		D217FEB11F135C89008F5D4B /* dissolve */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dissolve; sourceTree = "<group>"; };
-		D217FED21F13D5AE008F5D4B /* DissovleRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DissovleRoomDialog.cpp; sourceTree = "<group>"; };
-		D217FED31F13D5AE008F5D4B /* DissovleRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DissovleRoomDialog.hpp; sourceTree = "<group>"; };
+		D217FED81F14C5C5008F5D4B /* DissovleRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DissovleRoomDialog.cpp; sourceTree = "<group>"; };
+		D217FED91F14C5C5008F5D4B /* DissovleRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DissovleRoomDialog.hpp; sourceTree = "<group>"; };
 		D223FAE91E07784E00270969 /* PxSocketManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PxSocketManage.cpp; sourceTree = "<group>"; };
 		D223FAEA1E07784E00270969 /* PxSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxSocketManage.h; sourceTree = "<group>"; };
 		D22912471D12C583005C7167 /* CommandManage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandManage.cpp; sourceTree = "<group>"; };
@@ -1155,11 +1155,11 @@
 			path = gongzhonghao;
 			sourceTree = "<group>";
 		};
-		D217FED11F13D589008F5D4B /* dissolve */ = {
+		D217FED71F14C5C5008F5D4B /* dissolve */ = {
 			isa = PBXGroup;
 			children = (
-				D217FED21F13D5AE008F5D4B /* DissovleRoomDialog.cpp */,
-				D217FED31F13D5AE008F5D4B /* DissovleRoomDialog.hpp */,
+				D217FED81F14C5C5008F5D4B /* DissovleRoomDialog.cpp */,
+				D217FED91F14C5C5008F5D4B /* DissovleRoomDialog.hpp */,
 			);
 			path = dissolve;
 			sourceTree = "<group>";
@@ -1254,6 +1254,7 @@
 		D252FA4F1E7FA5EC00937322 /* dialog */ = {
 			isa = PBXGroup;
 			children = (
+				D217FED71F14C5C5008F5D4B /* dissolve */,
 				D252FA501E7FA5EC00937322 /* base */,
 				D252FA531E7FA5EC00937322 /* network */,
 				D252FA581E7FA5EC00937322 /* prompt */,
@@ -1585,7 +1586,6 @@
 		D252FC121E7FABE900937322 /* gameview */ = {
 			isa = PBXGroup;
 			children = (
-				D217FED11F13D589008F5D4B /* dissolve */,
 				D2E0351E1ED957C400291282 /* trusteeship */,
 				D27F05F71E94BDF90085438A /* hongzhong */,
 				D27F05F81E94BDF90085438A /* shanghai */,
@@ -2429,7 +2429,6 @@
 				D252FC471E7FABE900937322 /* HuaAnim.cpp in Sources */,
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D252FB4E1E7FA5EC00937322 /* Jong.cpp in Sources */,
-				D217FED41F13D5AE008F5D4B /* DissovleRoomDialog.cpp in Sources */,
 				D252FBCC1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */,
 				D252FBAA1E7FA5EC00937322 /* GongGaoItem.cpp in Sources */,
 				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
@@ -2488,6 +2487,7 @@
 				D252FCAF1E7FB77F00937322 /* LoginByWechat.mm in Sources */,
 				D2FD5B581EA711510016FCCC /* wav.mm in Sources */,
 				D278ADCD1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */,
+				D217FEDA1F14C5C5008F5D4B /* DissovleRoomDialog.cpp in Sources */,
 				D2A713B41ED2BCCF000EE572 /* CompetitionResult.cpp in Sources */,
 				D252FB221E7FA5EC00937322 /* BillInfo.cpp in Sources */,
 				D2E035211ED9581100291282 /* Trusteeship.cpp in Sources */,
@@ -2624,6 +2624,7 @@
 				D252FB411E7FA5EC00937322 /* TextHintDialog.cpp in Sources */,
 				D252FB4F1E7FA5EC00937322 /* Jong.cpp in Sources */,
 				D2E035221ED9581100291282 /* Trusteeship.cpp in Sources */,
+				D217FEDB1F14C5C5008F5D4B /* DissovleRoomDialog.cpp in Sources */,
 				D252FBB51E7FA5EC00937322 /* ChargeFangka.cpp in Sources */,
 				D252FB1F1E7FA5EC00937322 /* Audio.cpp in Sources */,
 				D2B1D91B1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */,
@@ -2645,7 +2646,6 @@
 				D252FB551E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D2E035161ED9120700291282 /* HongbaoAnim.cpp in Sources */,
 				D252FBD31E7FA5EC00937322 /* ResultScene.cpp in Sources */,
-				D217FED51F13D5AE008F5D4B /* DissovleRoomDialog.cpp in Sources */,
 				D2E79DBF1F0F34EB00DD3999 /* DailyPride.cpp in Sources */,
 				D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */,
 				D2B291BD1F0E18C40084F379 /* RankList.cpp in Sources */,

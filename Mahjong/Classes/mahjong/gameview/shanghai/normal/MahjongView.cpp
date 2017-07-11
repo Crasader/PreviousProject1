@@ -21,7 +21,7 @@
 #include "server/NetworkManage.h"
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/competition/CompetitionQueue.hpp"
-#include "mahjong/gameview/dissolve/DissovleRoomDialog.hpp"
+#include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
 
 
 bool MahjongView::init(){

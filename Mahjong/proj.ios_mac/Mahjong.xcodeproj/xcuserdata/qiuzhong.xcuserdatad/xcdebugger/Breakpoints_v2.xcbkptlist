@@ -5474,11 +5474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "521394513.016243"
+            timestampString = "521455222.475405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "861"
-            endingLineNumber = "861"
+            startingLineNumber = "862"
+            endingLineNumber = "862"
             landmarkName = "HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5554,11 +5554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "521394513.016243"
+            timestampString = "521455222.475405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1758"
-            endingLineNumber = "1758"
+            startingLineNumber = "1759"
+            endingLineNumber = "1759"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5570,27 +5570,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "521394513.016243"
+            timestampString = "521455222.475405"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1762"
+            endingLineNumber = "1762"
+            landmarkName = "HongZhongView::onEnter()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
+            timestampString = "521455222.475405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1761"
             endingLineNumber = "1761"
-            landmarkName = "HongZhongView::onEnter()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "521394513.016243"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1760"
-            endingLineNumber = "1760"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5682,11 +5682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "521394513.016243"
+            timestampString = "521455222.475405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1811"
-            endingLineNumber = "1811"
+            startingLineNumber = "1812"
+            endingLineNumber = "1812"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5698,11 +5698,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "521394513.016243"
+            timestampString = "521455222.475405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1812"
-            endingLineNumber = "1812"
+            startingLineNumber = "1813"
+            endingLineNumber = "1813"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5744,11 +5744,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "521394513.016243"
+            timestampString = "521455222.475405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "883"
-            endingLineNumber = "883">
+            startingLineNumber = "884"
+            endingLineNumber = "884">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -6926,11 +6926,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/hongzhong/normal/HongZhongView.cpp"
-            timestampString = "521394513.016243"
+            timestampString = "521455222.475405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1229"
-            endingLineNumber = "1229"
+            startingLineNumber = "1230"
+            endingLineNumber = "1230"
             landmarkName = "HongZhongView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
