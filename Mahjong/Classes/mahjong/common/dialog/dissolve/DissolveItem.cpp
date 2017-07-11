@@ -9,9 +9,9 @@
 #include "mahjong/common/dialog/dissolve/DissolveItem.hpp"
 
 
-DissolveItem* DissolveItem::create(std::string name){
+DissolveItem* DissolveItem::create(std::string name,std::string poxiaoid){
     DissolveItem* ret = new DissolveItem();
-    if(ret &&ret->init(name)){
+    if(ret &&ret->init(name,poxiaoid)){
         ret->autorelease();
         return ret;
     }else{
@@ -20,10 +20,12 @@ DissolveItem* DissolveItem::create(std::string name){
     }
 }
 
-bool DissolveItem::init(std::string name){
+bool DissolveItem::init(std::string name,std::string poxiaoid){
     if(!Sprite::init()){
         return false;
     }
+    setConfirm(0);
+    setPoxiaoId(poxiaoid);
     setNickName(name);
     auto dissovlebg1 = Sprite::create("dissolve/dissovle_bg.png");
     dissovlebg1->setPosition(0,0);
@@ -36,18 +38,22 @@ bool DissolveItem::init(std::string name){
     addChild(nickName);
     
     state = Sprite::create("dissolve/wen_hao.png");
-    state->setPosition(135,0);
+    state->setPosition(120,0);
     addChild(state);
     
     return true;
 }
 
 void DissolveItem::updateState(int sta){
+    
     if(sta == 1){
+        setConfirm(1);
         state->setTexture("dissolve/agree_img.png");
     }else if(sta == 2){
+        setConfirm(2);
         state->setTexture("dissolve/dis_agree_img.png");
     }else{
+        setConfirm(0);
         state->setTexture("dissolve/wen_hao.png");
     }
 }

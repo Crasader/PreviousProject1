@@ -771,6 +771,7 @@ struct MahjongShareData1{
     std::string pcontent;
     std::string pic;
     std::string url;
+    std::string type;
     
 };
 struct MahjongShareData2{
@@ -780,6 +781,7 @@ struct MahjongShareData2{
     std::string content;
     std::string phead;
     std::string pcontent;
+    std::string type;
 };
 struct MahjongShareData3{
     std::string head;
@@ -788,6 +790,7 @@ struct MahjongShareData3{
     std::string content;
     std::string phead;
     std::string pcontent;
+    std::string type;
 };
 struct MahjongShareData4{
     std::string head;

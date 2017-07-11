@@ -1240,7 +1240,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovleRoomNew);
     Director::getInstance()->getEventDispatcher()->removeEventListener(viewIntnetListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreOpenFriendRoomListener);
@@ -1264,22 +1264,6 @@ void MahjongView::onEnter(){
             exit(0);
         });
         addChild(hin,5);
-    });
-    
-    
-    dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
-        DissolveData data = GAMEDATA::getInstance()->getDissolveData();
-        std::string  name ="";
-        for(auto var :GAMEDATA::getInstance()->getPlayersInfo()){
-            if(data.pid == var->getPoxiaoId()){
-                name =var->getNickname();
-            }
-        }
-        if(data.agree == "0"){
-            tao->addToast(StringUtils::format("%s%s",name.c_str(),ChineseWord("dialog_text_6").c_str()));
-        }else{
-            tao->addToast(StringUtils::format("%s%s", name.c_str(), ChineseWord("dialog_text_7").c_str()));
-        }
     });
     
     //断线续玩
@@ -1352,92 +1336,6 @@ void MahjongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
-    //    gameFaPaiListener = EventListenerCustom::create(MSG_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
-    //        if(GAMEDATA::getInstance()->getIsPlaying()){
-    //            return;
-    //        }
-    //        float delay = 0;
-    //        MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
-    //        MahjongFaPaiData newMsgData = *msgData;
-    //        GAMEDATA::getInstance()->setIsCompetitionQueue(false);
-    //        if(GAMEDATA::getInstance()->getIsCompetitionState()){
-    //            ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
-    //            ((Orientation*)getChildByTag(123))->resetBank();
-    //            if(NULL != getChildByTag(9982)){
-    //                getChildByTag(9982)->removeFromParent();
-    //            }
-    //            if(GAMEDATA::getInstance()->getPlayersInfo().size()==0){
-    //                for (int i = 0; i < 4; i++)
-    //                {
-    //                    Player* info = new Player();
-    //                    info->setSeatId(i+1);
-    //                    info->setGold(0);
-    //                    info->setDiamond(0);
-    //                    info->setNickname("");
-    //                    info->setPicture("");
-    //                    info->setGender("");
-    //                    info->setScore(0);
-    //                    info->setTicket(0);
-    //                    info->setFangka(0);
-    //                    info->setIP("");
-    //                    info->setIsReady(true);
-    //                    info->setUmark("");
-    //                    GAMEDATA::getInstance()->addPlayersInfo(info);
-    //                }
-    //                addPlayer2Room();
-    //
-    //                auto startSprite1 = Sprite::create("competition/competition_start_1.png");
-    //                startSprite1->setPosition(320,350);
-    //                startSprite1->runAction(Sequence::create(MoveTo::create(2.0f, Point(-400,350)),CallFunc::create([=](){
-    //                    startSprite1->removeFromParent();
-    //                }), NULL));
-    //                addChild(startSprite1,100);
-    //                auto startSprite2 = Sprite::create("competition/competition_start_2.png");
-    //                startSprite2->setPosition(960,320);
-    //                startSprite2->runAction(Sequence::create(MoveTo::create(2.0f, Point(1680,350)),CallFunc::create([=](){
-    //                    startSprite2->removeFromParent();
-    //                }), NULL));
-    //                addChild(startSprite2,100);
-    //                delay = 2.5f;
-    //            }else{
-    //                log("此次发牌不是比赛发牌");
-    //            }
-    //
-    //        }else{
-    //            log("此次发牌不是比赛发牌");
-    //        }
-    //        GAMEDATA::getInstance()->setKaibao(newMsgData.kaibao);
-    //        GAMEDATA::getInstance()->setHuangfan(newMsgData.huangfan);
-    //        GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
-    //        FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
-    //        data.prjucount = StringUtils::format("%d",newMsgData.prjucount);
-    //        GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
-    //        GAMEDATA::getInstance()->setIsPlaying(true);//游戏状态改为游戏中
-    //        if(NULL != playerHero){
-    //            playerHero->setIsReady(false);//关闭准备的显示
-    //            std::vector<std::string> strvce = StringUtil::split(newMsgData.heroPokers, ",");
-    //            GAMEDATA::getInstance()->setHeroJongs(strvce);
-    //        }
-    //        if(NULL != playerRight)
-    //            playerRight->setIsReady(false);
-    //        if(NULL != playerOpposite)
-    //            playerOpposite->setIsReady(false);
-    //        if(NULL != playerLeft)
-    //            playerLeft->setIsReady(false);
-    //        if(!GAMEDATA::getInstance()->getIsCompetitionState())
-    //            playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
-    //        guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
-    //        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-    //        vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;
-    //        schedule([=](float dt){
-    //            DealJongAnim* anim = DealJongAnim::create();
-    //            anim->setTag(1000);
-    //            anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
-    //            addChild(anim);
-    //        },0,0,delay,"hi_jim");
-    //
-    //    });
-    //    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
         if(NULL == getChildByTag(2000)){

@@ -78,8 +78,6 @@ private:
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data);//首次杠花
 	PlayerBase* getPlayerBySeatId(int sid);
-
-//    EventListenerCustom* gameFaPaiListener;
 	EventListenerCustom* addOtherReadyListener;
 	EventListenerCustom* loginRespListener;
 	EventListenerCustom* addPlayersListener;
@@ -103,7 +101,6 @@ private:
     EventListenerCustom* playerOffLineListener;
     EventListenerCustom* playerResumeListener;
     EventListenerCustom* playerReplaceLoginListener;
-    EventListenerCustom* dissovelRoomSelectNotifyListener;
     EventListenerCustom* lobbyConncetAgainListener;
     EventListenerCustom* viewIntnetListener;
     EventListenerCustom* scrollTetxListener;

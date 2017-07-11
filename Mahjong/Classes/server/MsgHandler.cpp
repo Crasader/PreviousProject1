@@ -1017,6 +1017,9 @@ void MsgHandler::loginResp(std::string msg){
             data1.url = share1["url"].GetString();
             data1.content = share1["content"].GetString();
             data1.head = share1["head"].GetString();
+            if(share1.HasMember("type")){
+                data1.type = share1["type"].GetString();
+            }
             if(share1.HasMember("phead")){
                 data1.phead = share1["phead"].GetString();
             }
@@ -1038,6 +1041,9 @@ void MsgHandler::loginResp(std::string msg){
             if(share2.HasMember("pcontent")){
                 data2.pcontent = share2["pcontent"].GetString();
             }
+            if(share2.HasMember("type")){
+                data2.type = share2["type"].GetString();
+            }
             GAMEDATA::getInstance()->setMahjongShareData2(data2);
         }
         if(_mDoc.HasMember("share3")){
@@ -1052,6 +1058,9 @@ void MsgHandler::loginResp(std::string msg){
             }
             if(share3.HasMember("pcontent")){
                 data3.pcontent = share3["pcontent"].GetString();
+            }
+            if(share3.HasMember("type")){
+                data3.type = share3["type"].GetString();
             }
             GAMEDATA::getInstance()->setMahjongShareData3(data3);
         }

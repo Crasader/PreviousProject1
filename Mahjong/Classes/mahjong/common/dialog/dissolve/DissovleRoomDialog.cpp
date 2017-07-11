@@ -9,9 +9,10 @@
 #include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "userdata/UserData.h"
+#include "server/NetworkManage.h"
 
 bool DissovleRoomDialog::init(){
-
+    
     if(!Layer::init()){
         return false;
     }
@@ -42,38 +43,98 @@ bool DissovleRoomDialog::init(){
     addChild(time);
     
     for(int i=0;i<GAMEDATA::getInstance()->getPlayersInfo().size();i++){
-        DissolveItem* item = DissolveItem::create(GAMEDATA::getInstance()->getPlayersInfo().at(i)->getNickname());
+        DissolveItem* item = DissolveItem::create(GAMEDATA::getInstance()->getPlayersInfo().at(i)->getNickname(),GAMEDATA::getInstance()->getPlayersInfo().at(i)->getPoxiaoId());
         item->setPosition(475+330*(i%2),440-(i/2)*100);
         addChild(item);
         items.push_back(item);
+        if(GAMEDATA::getInstance()->getPlayersInfo().at(i)->getNickname() == GAMEDATA::getInstance()->getDissolveName()){
+            item->updateState(1);
+        }
     }
     
-    auto img1 = MenuItemImage::create("dissolve/agree_1.png", "dissolve/agree_2.png", CC_CALLBACK_0(DissovleRoomDialog::doAgree,this));
-    auto img2 = MenuItemImage::create("dissolve/dis_agree_1.png", "dissolve/dis_agree_2.png", CC_CALLBACK_0(DissovleRoomDialog::doNotAgree, this));
+    img1 = MenuItemImage::create("dissolve/agree_1.png", "dissolve/agree_2.png","dissolve/agree_3.png",CC_CALLBACK_0(DissovleRoomDialog::doAgree,this));
+    img2 = MenuItemImage::create("dissolve/dis_agree_1.png", "dissolve/dis_agree_2.png", "dissolve/dis_agree_3.png",CC_CALLBACK_0(DissovleRoomDialog::doNotAgree, this));
     auto menu = Menu::create(img1,img2,NULL);
     menu->alignItemsHorizontallyWithPadding(50);
     menu->setPosition(640,200);
     addChild(menu);
+    if(UserData::getInstance()->getNickName() == GAMEDATA::getInstance()->getDissolveName()){
+        img1->setEnabled(false);
+        img2->setEnabled(false);
+    }
+    scheduleUpdate();
     return true;
 }
 
 void DissovleRoomDialog::doAgree(){
+    img1->setEnabled(false);
+    img2->setEnabled(false);
     for(int i=0; i<items.size();i++){
-        if(items.at(i)->getNickName() == UserData::getInstance()->getNickName()){
+        if(items.at(i)->getPoxiaoId() == UserData::getInstance()->getPoxiaoId()){
             items.at(i)->updateState(1);
         }
     }
-    //TODO 发送协议
+    // 发送协议
+    if(GAMEDATA::getInstance()->getGameType() == 1){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("1"));
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("1"));
+    }
+    checkAllConfirm();
 }
 
 
 void DissovleRoomDialog::doNotAgree(){
+    img1->setEnabled(false);
+    img2->setEnabled(false);
     for(int i=0; i<items.size();i++){
-        if(items.at(i)->getNickName() == UserData::getInstance()->getNickName()){
+        if(items.at(i)->getPoxiaoId() == UserData::getInstance()->getPoxiaoId()){
             items.at(i)->updateState(2);
         }
     }
-    //TODO 发送协议
+    // 发送协议
+    if(GAMEDATA::getInstance()->getGameType() == 1){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomSelectCommand("0"));
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("0"));
+    }
+    checkAllConfirm();
+}
+
+void DissovleRoomDialog::onEnter(){
+    Layer::onEnter();
+    dissovleListener = EventListenerCustom::create(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
+        for(int i=0; i<items.size();i++){
+            if(items.at(i)->getPoxiaoId() == GAMEDATA::getInstance()->getDissolveData().pid){
+                items.at(i)->updateState(GAMEDATA::getInstance()->getDissolveData().agree == "1"?1:2);
+            }
+        }
+        checkAllConfirm();
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dissovleListener, 1);
 }
 
 
+void DissovleRoomDialog::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovleListener);
+}
+
+void DissovleRoomDialog::update(float dt){
+    
+}
+
+void DissovleRoomDialog::checkAllConfirm(){
+    bool needRemove =  false;
+    int count = 0;
+    for(int i=0; i<items.size();i++){
+        if(items.at(i)->getConfirm() == 2){
+            needRemove =  true;
+        }else if(items.at(i)->getConfirm() > 0){
+            count++;
+        }
+    }
+    if(needRemove||count == items.size()){
+        removeFromParent();
+    }
+}

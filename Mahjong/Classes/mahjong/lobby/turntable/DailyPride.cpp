@@ -118,7 +118,7 @@ void DailyPride::showDailyPrideLayer(){
     menu->setPosition(850,180);
     addChild(menu);
     
-    auto number = LabelAtlas::create(GAMEDATA::getInstance()->getTurntableNumber(), "daily/pride_num_red.png", 32, 46, '0');
+    auto number = LabelAtlas::create("0", "daily/pride_num_red.png", 32, 46, '0');
     number->setPosition(807,240);
     number->setTag(1002);
     addChild(number);
@@ -153,6 +153,7 @@ void DailyPride::showDailyPrideLayer(){
         shareText->setVisible(false);
         menu->setVisible(false);
         number->setVisible(true);
+        number->setString(GAMEDATA::getInstance()->getTurntableNumber());
         shareText2->setVisible(true);
         shareText3->setVisible(false);
     }
@@ -162,10 +163,14 @@ void DailyPride::showDailyPrideLayer(){
 
 void DailyPride::shareTurntable(){
     GAMEDATA::getInstance()->setIsTurnTableShare(true);
+    std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData1().url;
+    if(GAMEDATA::getInstance()->getMahjongShareData1().type == "1"){
+        shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
+    }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(GAMEDATA::getInstance()->getMahjongShareData2().url,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,true);
+    CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CallIOSMethod::getInstance()->doWechatShareWeb(GAMEDATA::getInstance()->getMahjongShareData2().url,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
+    CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
 #endif
 }
 
