@@ -23,24 +23,31 @@ bool PrideCell::init(PrideType propId, std::string propNum){
     auto prop = Sprite::create(getImageNameById(propId));
     prop->setPosition(0, 65);
     addChild(prop);
-    LabelAtlas* num = LabelAtlas::create(StringUtils::format("%s", propNum.c_str()), "daily/pride_num.png", 12, 22, '0');
-    num->setPosition(-17, -2);
+    std::string number = StringUtils::format("%s", propNum.c_str());
+    int pos  =  (int)number.find(".");
+    if(pos>=0){
+        number.replace(pos,1, ":");
+    }
+    LabelAtlas* num = LabelAtlas::create(number,"daily/pride_num.png", 8, 12, '0');
     addChild(num);
     if(propId == PrideType::fangka){
         auto zhang = Sprite::create("daily/zhang_text.png");
         zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
         addChild(zhang);
+        num->setPosition(-((num->getContentSize().width/2+zhang->getContentSize().width/2)), 5);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
     }else  if(propId == PrideType::fee){
         auto zhang = Sprite::create("daily/yuan_text.png");
         zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
         addChild(zhang);
+        num->setPosition(-((num->getContentSize().width/2+zhang->getContentSize().width/2)), 5);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
     }else  if(propId == PrideType::prop){
         auto zhang = Sprite::create("daily/ge_text.png");
         zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
         addChild(zhang);
+        num->setPosition(-((num->getContentSize().width/2+zhang->getContentSize().width/2)), 5);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,10);
     }else  if(propId == PrideType::nothing){
         num->setVisible(false);
         auto zhang = Sprite::create("daily/xie_xie.png");
