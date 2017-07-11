@@ -3919,7 +3919,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2770"
             endingLineNumber = "2770"
-            landmarkName = "MsgHandler::handleDissovleRoomSelectedNotify(std::string msg)"
+            landmarkName = "MsgHandler::hanleFangzhuDismissRoom(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5447,7 +5447,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2920"
             endingLineNumber = "2920"
-            landmarkName = "MsgHandler::handleHongZhongEnterRoom(std::string msg)"
+            landmarkName = "MsgHandler::handleFupanPlayerInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5527,7 +5527,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3449"
             endingLineNumber = "3449"
-            landmarkName = "MsgHandler::handleHZPlayerActionNotify(std::string msg)"
+            landmarkName = "MsgHandler::handleHZGameReconnectNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5543,7 +5543,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3448"
             endingLineNumber = "3448"
-            landmarkName = "MsgHandler::handleHZPlayerActionNotify(std::string msg)"
+            landmarkName = "MsgHandler::handleHZGameReconnectNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5857,7 +5857,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3165"
             endingLineNumber = "3165"
-            landmarkName = "MsgHandler::handleHZReadyNoyify(std::string msg)"
+            landmarkName = "MsgHandler::handleHZEnterRoomResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5920,9 +5920,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2824"
-            endingLineNumber = "2824"
-            landmarkName = "MsgHandler::handleFupanInfo(std::string msg)"
-            landmarkType = "7">
+            endingLineNumber = "2824">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5936,9 +5934,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2823"
-            endingLineNumber = "2823"
-            landmarkName = "MsgHandler::handleFupanInfo(std::string msg)"
-            landmarkType = "7">
+            endingLineNumber = "2823">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5953,7 +5949,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1747"
             endingLineNumber = "1747"
-            landmarkName = "MsgHandler::heroChiResp(std::string msg)"
+            landmarkName = "MsgHandler::showCpgNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6081,7 +6077,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1743"
             endingLineNumber = "1743"
-            landmarkName = "MsgHandler::heroChiResp(std::string msg)"
+            landmarkName = "MsgHandler::showCpgNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6145,7 +6141,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1456"
             endingLineNumber = "1456"
-            landmarkName = "MsgHandler:: goldChangeResp(std::string msg)"
+            landmarkName = "MsgHandler::goldChangeListResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6369,7 +6365,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1600"
             endingLineNumber = "1600"
-            landmarkName = "MsgHandler::getHeroJongs(std::string msg)"
+            landmarkName = "MsgHandler::removePlayerNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6417,7 +6413,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3729"
             endingLineNumber = "3729"
-            landmarkName = "MsgHandler::handleHZDissovleRoomSelectedNotify(std::string msg)"
+            landmarkName = "MsgHandler::handleHZPlayerHuNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -305,8 +305,6 @@
 		D281A3911E5442C8007FF30E /* share in Resources */ = {isa = PBXBuildFile; fileRef = D281A38F1E5442C8007FF30E /* share */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
-		D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
-		D286A53F1DD30E46001369C1 /* wanjiaqun in Resources */ = {isa = PBXBuildFile; fileRef = D286A53D1DD30E46001369C1 /* wanjiaqun */; };
 		D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
@@ -747,7 +745,6 @@
 		D27F06071E94BFE50085438A /* HongZhongView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongZhongView.hpp; sourceTree = "<group>"; };
 		D281A38F1E5442C8007FF30E /* share */ = {isa = PBXFileReference; lastKnownFileType = folder; path = share; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
-		D286A53D1DD30E46001369C1 /* wanjiaqun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wanjiaqun; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
 		D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientUtill.h; sourceTree = "<group>"; };
 		D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMannger.cpp; sourceTree = "<group>"; };
@@ -1077,7 +1074,6 @@
 				D281A38F1E5442C8007FF30E /* share */,
 				D25DEE401CC4AE78007D428A /* shop */,
 				D25329531CC0D33600DDAD97 /* trusteeship */,
-				D286A53D1DD30E46001369C1 /* wanjiaqun */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -2309,7 +2305,6 @@
 				D2E035181ED914D400291282 /* hongbao in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				D26263E11F04A0E2002A1C28 /* shiming in Resources */,
-				D286A53E1DD30E46001369C1 /* wanjiaqun in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2345,7 +2340,6 @@
 				D26263E21F04A0E2002A1C28 /* shiming in Resources */,
 				D25329731CC0D33600DDAD97 /* mjlobby in Resources */,
 				D25329631CC0D33600DDAD97 /* friend in Resources */,
-				D286A53F1DD30E46001369C1 /* wanjiaqun in Resources */,
 				D281E5A21DACF35600D3E44E /* audio in Resources */,
 				D25329691CC0D33600DDAD97 /* headportrait in Resources */,
 				D25DEE421CC4AE78007D428A /* shop in Resources */,
