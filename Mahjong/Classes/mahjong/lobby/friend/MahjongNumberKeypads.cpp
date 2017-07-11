@@ -16,6 +16,11 @@ bool MahjongNumberKeypads::init(){
     if(!Layer::init()){
         return false;
     }
+    MenuItem* item1 = MenuItem::create();
+    item1->setContentSize(Size(1280, 720));
+    Menu* menu1 = Menu::create(item1, NULL);
+    this->addChild(menu1);
+    
     enterRoomNumber="";
     
     auto numbg = Sprite::create("friend/numberkeypads_bg.png");

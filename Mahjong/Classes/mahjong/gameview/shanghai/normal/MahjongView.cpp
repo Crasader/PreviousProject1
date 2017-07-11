@@ -213,24 +213,11 @@ void MahjongView::update(float dt){
     if(GAMEDATA::getInstance()->getIsGotoLobby()){
         GAMEDATA::getInstance()->setIsGotoLobby(false);
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            HintDialog* dialog = HintDialog::create(ChineseWord("dialog_text_4"), [=](Ref* ref){
-                GAMEDATA::getInstance()->clearPlayersInfo();
-                GAMEDATA::getInstance()->setIsPlaying(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            },[=](Ref* ref){
-                GAMEDATA::getInstance()->clearPlayersInfo();
-                GAMEDATA::getInstance()->setIsPlaying(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            });
-            addChild(dialog,5);
+            GAMEDATA::getInstance()->clearPlayersInfo();
+            GAMEDATA::getInstance()->setIsPlaying(false);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }
     }
-//    if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
-//        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-//        addChild(dis,1000);
-//        GAMEDATA::getInstance()->setShowDissolveDialog(true);
-//    }
-    
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
         for (int i = 0; i < players.size(); i++){
@@ -1869,12 +1856,14 @@ void MahjongView::onEnter(){
                 }
             },0,0,6.0f,"go2Result");
         }else{
-            clearRoomPlayer();
-            GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
-            GAMEDATA::getInstance()->setFangZhuId("");
-            GAMEDATA::getInstance()->setPrivateGameNum("0");
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            Director::getInstance()->replaceScene(TransitionFade::create(0.8f, LobbyScene::create()));
+            schedule([=](float dt){
+                clearRoomPlayer();
+                GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
+                GAMEDATA::getInstance()->setFangZhuId("");
+                GAMEDATA::getInstance()->setPrivateGameNum("0");
+                GAMEDATA::getInstance()->clearPlayersInfo();
+                Director::getInstance()->replaceScene(TransitionFade::create(0.8f, LobbyScene::create()));
+            }, 0, 0, 2,"CCKKFF");
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
@@ -1903,6 +1892,6 @@ void MahjongView::onEnter(){
         addChild(dialog,10);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dissovleRoomNew, 1);
-
+    
 }
 

@@ -45,6 +45,11 @@ bool NormalResultLayer::init(){
     showPlayerResluts();
     showLayerBtn();
     updatePlayerData();
+    if(!GAMEDATA::getInstance()->getDissovleDialogRemove()){
+        GAMEDATA::getInstance()->setDissolveName(GAMEDATA::getInstance()->getDissolveName());
+        DissovleRoomDialog* dia = DissovleRoomDialog::create();
+        addChild(dia,20);
+    }
     return true;
 }
 
@@ -336,12 +341,6 @@ void NormalResultLayer::updateTime(float dt){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
     }
-    
-    if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        addChild(dis,1000);
-        showDissolveDialog = true;
-    }
 }
 
 void NormalResultLayer::onEnter(){
@@ -364,12 +363,6 @@ void NormalResultLayer::onEnter(){
         });
         addChild(hin,5);
     });
-    
-    dissovelRoomNotifyListener  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_NOTIFY, [=](EventCustom* event){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        addChild(dis,1000);
-    });
-    
     myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
     });
@@ -433,7 +426,6 @@ void NormalResultLayer::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);

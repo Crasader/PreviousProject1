@@ -38,7 +38,6 @@
 #include "mahjong/lobby/share/ShareActivityLayer.hpp"
 #include "mahjong/lobby/share/ShareSelectLayer.hpp"
 #include "mahjong/lobby/gongzhonghao/GongZhongHaoLayer.hpp"
-#include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
 
 
 bool LobbyScene::init()
@@ -115,12 +114,6 @@ void LobbyScene::signUpdate(float dt){
         addChild(charge,30);
         GAMEDATA::getInstance()->setShowDialogType(-1);
 #endif
-    }
-    
-    if(!GAMEDATA::getInstance()->getIsSelected()&& !showDissolveDialog){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        addChild(dis,1000);
-        showDissolveDialog = true;
     }
     
 }

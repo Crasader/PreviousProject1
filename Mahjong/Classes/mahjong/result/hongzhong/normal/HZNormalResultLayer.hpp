@@ -21,7 +21,6 @@ public:
 private:
     EventListenerCustom* continueAgainLisetner;
     EventListenerCustom* playerReplaceLoginListener;
-    EventListenerCustom* dissovelRoomNotifyListener;
     EventListenerCustom* myCoreLoginRespListener;
     EventListenerCustom* networkBreakListener;
     EventListenerCustom* openFriendRoomListener;

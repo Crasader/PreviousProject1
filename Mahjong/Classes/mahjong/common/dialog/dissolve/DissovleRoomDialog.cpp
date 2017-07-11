@@ -10,12 +10,14 @@
 #include "mahjong/common/state/GameData.h"
 #include "userdata/UserData.h"
 #include "server/NetworkManage.h"
+#include "mahjong/lobby/LobbyScene.h"
 
 bool DissovleRoomDialog::init(){
-    
     if(!Layer::init()){
         return false;
     }
+    GAMEDATA::getInstance()->setDissovleDialogRemove(false);
+    
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
@@ -121,7 +123,7 @@ void DissovleRoomDialog::onExit(){
 }
 
 void DissovleRoomDialog::update(float dt){
-    
+
 }
 
 void DissovleRoomDialog::checkAllConfirm(){
@@ -135,6 +137,8 @@ void DissovleRoomDialog::checkAllConfirm(){
         }
     }
     if(needRemove||count == items.size()){
-        removeFromParent();
+        schedule([=](float dt){
+            removeFromParent();
+        }, 0, 0, 2,"KKKKK");
     }
 }

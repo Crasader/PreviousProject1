@@ -47,6 +47,7 @@ void GAMEDATA::init(){
     setIsTurnTableShare(false);
     setHuiGuiLiBao("");
     setNeedShowTurnTable(false);
+    setDissovleDialogRemove(true);
 }
 
 GAMEDATA* GAMEDATA::getInstance(){
@@ -58,6 +59,12 @@ GAMEDATA* GAMEDATA::getInstance(){
 
 void GAMEDATA::addPlayersInfo(Player* player){
 	m_mutex.lock();
+    for(auto var : playerVector){
+        if(var->getPoxiaoId() == player->getPoxiaoId()){
+            m_mutex.unlock();
+            return;
+        }
+    }
 	playerVector.push_back(player);
     log("add player room  %d",(int)playerVector.size());
 	m_mutex.unlock();

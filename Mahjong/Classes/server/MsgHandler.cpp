@@ -1627,14 +1627,17 @@ void MsgHandler::removePlayerNotify(std::string msg){
         GAMEDATA::getInstance()->erasePlayersInfo(data.pid);
     }else{
         log("hero is out room");
-        GAMEDATA::getInstance()->clearPlayersInfo();
-        GAMEDATA::getInstance()->setIsGotoLobby(true);
-        GAMEDATA::getInstance()->setFangZhuId("");
-        GAMEDATA::getInstance()->setPrivateGameNum("0");
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            GAMEDATA::getInstance()->setShowRoomDismiss(true);
-        }
-        GAMEDATA::getInstance()->setIsCompetitionState(false);
+        schedule([=](float dt){
+            GAMEDATA::getInstance()->clearPlayersInfo();
+            GAMEDATA::getInstance()->setIsGotoLobby(true);
+            GAMEDATA::getInstance()->setFangZhuId("");
+            GAMEDATA::getInstance()->setPrivateGameNum("0");
+            GAMEDATA::getInstance()->setDissovleDialogRemove(true);
+            if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+                GAMEDATA::getInstance()->setShowRoomDismiss(true);
+            }
+            GAMEDATA::getInstance()->setIsCompetitionState(false);
+        }, 0, 0, 2,"KKFFCC");
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, nullptr);

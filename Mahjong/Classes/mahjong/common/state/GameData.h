@@ -169,6 +169,7 @@ public:
     CC_SYNTHESIZE(std::string, daYingJiaPic, DaYingJiaPic);
     CC_SYNTHESIZE(std::string, huiGuiLiBao, HuiGuiLiBao);
     CC_SYNTHESIZE(std::string, bottomText, BottomText);
+    CC_SYNTHESIZE(bool, dissovleDialogRemove, DissovleDialogRemove);
 private:
     GAMEDATA();
     void init();

@@ -191,16 +191,9 @@ void HongZhongView::update(float dt){
     if(GAMEDATA::getInstance()->getIsGotoLobby()){
         GAMEDATA::getInstance()->setIsGotoLobby(false);
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            HintDialog* dialog = HintDialog::create(ChineseWord("dialog_text_4"), [=](Ref* ref){
-                GAMEDATA::getInstance()->clearPlayersInfo();
-                GAMEDATA::getInstance()->setIsPlaying(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            },[=](Ref* ref){
-                GAMEDATA::getInstance()->clearPlayersInfo();
-                GAMEDATA::getInstance()->setIsPlaying(false);
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            });
-            addChild(dialog,5);
+            GAMEDATA::getInstance()->clearPlayersInfo();
+            GAMEDATA::getInstance()->setIsPlaying(false);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }
     }
     if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
@@ -1850,12 +1843,15 @@ void HongZhongView::onEnter(){
                 }
             },0,0,8.0f,"go2Result");
         }else{
-            clearRoomPlayer();
-            GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
-            GAMEDATA::getInstance()->setFangZhuId("");
-            GAMEDATA::getInstance()->setPrivateGameNum("0");
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            Director::getInstance()->replaceScene(TransitionFade::create(0.8f, LobbyScene::create()));
+            schedule([=](float dt){
+                clearRoomPlayer();
+                GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
+                GAMEDATA::getInstance()->setFangZhuId("");
+                GAMEDATA::getInstance()->setPrivateGameNum("0");
+                GAMEDATA::getInstance()->clearPlayersInfo();
+                Director::getInstance()->replaceScene(TransitionFade::create(0.8f, LobbyScene::create()));
+            }, 0, 0, 2,"CCKKFF");
+          
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameResultListener, 1);
