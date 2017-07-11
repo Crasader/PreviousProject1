@@ -118,7 +118,7 @@ void DailyPride::showDailyPrideLayer(){
     menu->setPosition(850,180);
     addChild(menu);
     
-    auto number = LabelAtlas::create("1", "daily/pride_num_red.png", 32, 46, '0');
+    auto number = LabelAtlas::create(GAMEDATA::getInstance()->getTurntableNumber(), "daily/pride_num_red.png", 32, 46, '0');
     number->setPosition(807,240);
     number->setTag(1002);
     addChild(number);
@@ -135,23 +135,26 @@ void DailyPride::showDailyPrideLayer(){
 
     
     if(GAMEDATA::getInstance()->getTurntableNumber() == "0"){
+        //需要分享获取次数
         shareText->setVisible(true);
         menu->setVisible(true);
         number->setVisible(false);
         shareText2->setVisible(false);
         shareText3->setVisible(false);
-    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "1"){
-        shareText->setVisible(false);
-        menu->setVisible(false);
-        number->setVisible(true);
-        shareText2->setVisible(true);
-        shareText3->setVisible(false);
-    }else{
+    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "-1"){
+        //次数已经用完了
         shareText->setVisible(false);
         menu->setVisible(false);
         number->setVisible(false);
         shareText2->setVisible(false);
         shareText3->setVisible(true);
+    }else{
+        //拥有次数
+        shareText->setVisible(false);
+        menu->setVisible(false);
+        number->setVisible(true);
+        shareText2->setVisible(true);
+        shareText3->setVisible(false);
     }
     scheduleUpdate();
 }
@@ -179,16 +182,17 @@ void DailyPride::updateData(){
 
 
 void DailyPride::beginPride(Ref* ref){
-    
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableStartCommand());
-    startMenu->setEnabled(false);
-    srand(unsigned(time(NULL)));
-    float angleZ = rand() % 720 + 720;
-    auto pAction = EaseExponentialIn::create(RotateBy::create(2, Vec3(0, 0, angleZ)));
-    auto roate = RotateBy::create(2, Vec3(0, 0, angleZ));
-    auto repeat = Repeat::create(roate, CC_REPEAT_FOREVER);
-    auto sequence = Sequence::create(pAction, repeat,NULL);
-    m_turnBg->runAction(sequence);
+    if(atoi(GAMEDATA::getInstance()->getTurntableNumber().c_str())>0){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableStartCommand());
+        startMenu->setEnabled(false);
+        srand(unsigned(time(NULL)));
+        float angleZ = rand() % 720 + 720;
+        auto pAction = EaseExponentialIn::create(RotateBy::create(2, Vec3(0, 0, angleZ)));
+        auto roate = RotateBy::create(2, Vec3(0, 0, angleZ));
+        auto repeat = Repeat::create(roate, CC_REPEAT_FOREVER);
+        auto sequence = Sequence::create(pAction, repeat,NULL);
+        m_turnBg->runAction(sequence);
+    }
 }
 
 
@@ -208,17 +212,18 @@ void DailyPride::update(float dt){
         getChildByTag(1002)->setVisible(false);
         getChildByTag(1003)->setVisible(false);
         getChildByTag(1004)->setVisible(false);
-    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "1"){
-        getChildByTag(1000)->setVisible(false);
-        getChildByTag(1001)->setVisible(false);
-        getChildByTag(1002)->setVisible(true);
-        getChildByTag(1003)->setVisible(true);
-        getChildByTag(1004)->setVisible(false);
-    }else{
+    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "-1"){
         getChildByTag(1000)->setVisible(false);
         getChildByTag(1001)->setVisible(false);
         getChildByTag(1002)->setVisible(false);
         getChildByTag(1003)->setVisible(false);
         getChildByTag(1004)->setVisible(true);
+    }else{
+        getChildByTag(1000)->setVisible(false);
+        getChildByTag(1001)->setVisible(false);
+        getChildByTag(1002)->setVisible(true);
+        ((LabelAtlas*)getChildByTag(1002))->setString(GAMEDATA::getInstance()->getTurntableNumber());
+        getChildByTag(1003)->setVisible(true);
+        getChildByTag(1004)->setVisible(false);
     }
 }

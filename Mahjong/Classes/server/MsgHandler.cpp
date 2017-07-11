@@ -1052,6 +1052,10 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &dyjpic = _mDoc["dyjpic"];
             GAMEDATA::getInstance()->setDaYingJiaPic(dyjpic.GetString());
         }
+        if(_mDoc.HasMember("bottom")){
+            const rapidjson::Value &bottom = _mDoc["bottom"];
+            GAMEDATA::getInstance()->setBottomText(bottom.GetString());
+        }
         if(_mDoc.HasMember("free")){
             const rapidjson::Value &free = _mDoc["free"];
             GAMEDATA::getInstance()->setNeedShowShareBtn((strcmp(free.GetString(),"1") == 0)?true:false);
@@ -2103,6 +2107,11 @@ void MsgHandler::gameResultNotify(std::string msg){
         pride.fzid = "-999";
     }
     GAMEDATA::getInstance()->setGameHongBaoPride(pride);
+    
+    if(_mDoc.HasMember("hgdlb")){
+        const rapidjson::Value &hgdlb = _mDoc["hgdlb"];
+        GAMEDATA::getInstance()->setHuiGuiLiBao(hgdlb.GetString());
+    }
     
     if(_mDoc.HasMember("prjucount")){
         GAMEDATA::getInstance()->setPrivateRoomType(_mDoc["prjucount"].GetString());
@@ -3506,7 +3515,10 @@ void MsgHandler::handleHZGameResultNotify(std::string msg){
         pride.fzid = "-999";
     }
     GAMEDATA::getInstance()->setGameHongBaoPride(pride);
-    
+    if(_mDoc.HasMember("hgdlb")){
+        const rapidjson::Value &hgdlb = _mDoc["hgdlb"];
+        GAMEDATA::getInstance()->setHuiGuiLiBao(hgdlb.GetString());
+    }
     if(_mDoc.HasMember("prjucount")){
         GAMEDATA::getInstance()->setPrivateRoomType(_mDoc["prjucount"].GetString());
     }
@@ -4056,6 +4068,10 @@ void MsgHandler::handleTurntableResult(std::string msg){
     if (_mDoc.HasMember("result")){
         data.result = _mDoc["result"].GetString();
     }
+    if(_mDoc.HasMember("rest")){
+        const rapidjson::Value &rest = _mDoc["rest"];
+        GAMEDATA::getInstance()->setTurntableNumber(rest.GetString());
+    }
     if (_mDoc.HasMember("content")){
         const rapidjson::Value &temp = _mDoc["content"];
         PrideData info;
@@ -4094,12 +4110,8 @@ void MsgHandler::handleTurntableShare(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    if (_mDoc.HasMember("result")){
-        auto result = _mDoc["result"].GetString();
-        if(result == "1"){
-            GAMEDATA::getInstance()->setTurntableNumber("1");
-        }else{
-            GAMEDATA::getInstance()->setTurntableNumber("0");
-        }
+    if(_mDoc.HasMember("dzpc")){
+        const rapidjson::Value &dzpc = _mDoc["dzpc"];
+        GAMEDATA::getInstance()->setTurntableNumber(dzpc.GetString());
     }
 }

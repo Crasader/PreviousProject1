@@ -391,6 +391,20 @@ void LobbyScene::drawSceneBot(){
     gameMenu3->alignItemsHorizontallyWithPadding(5);
     gameMenu3->setPosition(1060, 60);
     addChild(gameMenu3);
+    
+    if(GAMEDATA::getInstance()->getBottomText() != ""){
+        auto textbg = Sprite::create("mjlobby/ti_shi_kuang.png");
+        textbg->setPosition(900,112);
+        addChild(textbg);
+    
+        auto text = Label::createWithSystemFont(GAMEDATA::getInstance()->getBottomText(), "arial", 20);
+        text->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        text->setColor(Color3B(255,247,217));
+        text->setPosition(900,118);
+        addChild(text);
+    }
+    
+
 }
 
 //刷新显示的用户信息

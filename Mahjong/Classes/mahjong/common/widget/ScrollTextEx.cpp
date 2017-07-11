@@ -10,9 +10,9 @@ bool ScrollTextEx::init() {
         pMask = Sprite::create("gameview/sroll_bg.png");
         pMask->setOpacity(0);
 
-        pMoved = Label::create("","arial",24);
+        pMoved = Label::createWithSystemFont("","arial",24);
         pMoved->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        pMoved->setColor(Color3B::YELLOW);
+        pMoved->setColor(Color3B::WHITE);
         pMoved->setPosition(0,0);
 
 		pFrame = LayerColor::create(Color4B(76,70,90,150), pMoved->getContentSize().width, pMoved->getContentSize().height);

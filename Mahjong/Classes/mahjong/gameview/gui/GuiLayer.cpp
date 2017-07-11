@@ -476,7 +476,7 @@ void GuiLayer::testButtonClick(){
     //    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_HU_ACTION,&cpgData);
     
     HongbaoAnim* ami = HongbaoAnim::create();
-    ami->initView("0.37",1);
+    ami->initView("0.37",3);
 //    ami->initView("0.37","0.37",1,false);
     addChild(ami,100);
 //    CompetitionResult* result = CompetitionResult::create();

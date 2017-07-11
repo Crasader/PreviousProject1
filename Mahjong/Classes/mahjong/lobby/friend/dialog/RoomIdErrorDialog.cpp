@@ -18,7 +18,7 @@ bool RoomIdErrorDialog::init(){
     Menu* bg = Menu::create(item, NULL);
     this->addChild(bg);
     
-    auto dialog_bg = Sprite::create("shop/gold_not_enough.png");
+    auto dialog_bg = Sprite::create("common/dialog_bg_small.png");
     dialog_bg->setPosition(640,350);
     addChild(dialog_bg);
     

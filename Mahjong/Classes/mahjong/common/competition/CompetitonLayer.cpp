@@ -69,43 +69,51 @@ bool CompetitonLayer::init(){
     
     auto time = Label::createWithSystemFont("比赛时间:", "arial", 28);
     time->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    time->setColor(Color3B(124,37,7));
     time->setPosition(845,400);
     addChild(time);
     
     auto time2 = Label::createWithSystemFont("满4人开赛", "arial", 28);
     time2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    time2->setColor(Color3B(124,37,7));
     time2->setPosition(860,400);
     addChild(time2);
     
     auto fee1 = Label::createWithSystemFont("报", "arial", 28);
     fee1->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     fee1->setPosition(752,345);
+    fee1->setColor(Color3B(124,37,7));
     addChild(fee1);
     
     auto fee2 = Label::createWithSystemFont("名", "arial", 28);
     fee2->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fee2->setColor(Color3B(124,37,7));
     fee2->setPosition(793,345);
     addChild(fee2);
     
     auto fee3 = Label::createWithSystemFont("费:", "arial", 28);
     fee3->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     fee3->setPosition(845,345);
+    fee3->setColor(Color3B(124,37,7));
     addChild(fee3);
     
     fee4 = Label::createWithSystemFont("", "arial", 28);
     fee4->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     fee4->setPosition(860,345);
+    fee4->setColor(Color3B(124,37,7));
     addChild(fee4);
     
     
     auto difen = Label::createWithSystemFont("房间底分:", "arial", 28);
     difen->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     difen->setPosition(845,285);
+    difen->setColor(Color3B(124,37,7));
     addChild(difen);
     
     difen2 = Label::createWithSystemFont("5/5无勒子", "arial", 28);
     difen2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     difen2->setPosition(860,285);
+    difen2->setColor(Color3B(124,37,7));
     addChild(difen2);
     
     auto joinBtn = MenuItemImage::create("competition/competition_btn_1.png", "competition/competition_btn_2.png", CC_CALLBACK_1(CompetitonLayer::joinCompetiton,this));
@@ -139,6 +147,7 @@ void CompetitonLayer::initView(CompetitionRoomId roomId,std::string huafei,std::
         ruleText->setHorizontalAlignment(cocos2d::TextHAlignment::LEFT);
         ruleText->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         ruleText->setPosition(560,405-40*i);
+        ruleText->setColor(Color3B(124,37,7));
         addChild(ruleText);
         ruleText->setString(StringUtils::format("%s",rules.at(i).c_str()));
     }

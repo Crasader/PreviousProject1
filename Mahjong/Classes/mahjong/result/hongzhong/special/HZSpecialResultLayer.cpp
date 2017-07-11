@@ -51,14 +51,14 @@ void HZSpecialResultLayer::showResultTitle(){
 
 void HZSpecialResultLayer::showGameReslut(){
     
-//    auto fanghao = Sprite::create("result/fang_jian_hao.png");
-//    fanghao->setPosition(940,570);
-//    addChild(fanghao,1);
-//    
-//    auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
-//    fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-//    fanghaoNum->setPosition(980,570);
-//    addChild(fanghaoNum);
+    //    auto fanghao = Sprite::create("result/fang_jian_hao.png");
+    //    fanghao->setPosition(940,570);
+    //    addChild(fanghao,1);
+    //
+    //    auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
+    //    fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    //    fanghaoNum->setPosition(980,570);
+    //    addChild(fanghaoNum);
     
     
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
@@ -69,7 +69,11 @@ void HZSpecialResultLayer::showGameReslut(){
     }
     
     if(UserData::getInstance()->isWeixinPayOpen()){
-        if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee.c_str())>0&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
+        if(atoi(GAMEDATA::getInstance()->getHuiGuiLiBao().c_str())>0){
+            HongbaoAnim* ami = HongbaoAnim::create();
+            ami->initView(GAMEDATA::getInstance()->getHuiGuiLiBao(),3);
+            addChild(ami,10);
+        }else if(GAMEDATA::getInstance()->getGameHongBaoPride().dyj == UserData::getInstance()->getPoxiaoId()&&GAMEDATA::getInstance()->getGameHongBaoPride().fzid == UserData::getInstance()->getPoxiaoId()&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().dyjfee.c_str())>0&&atof(GAMEDATA::getInstance()->getGameHongBaoPride().fzfee.c_str())>0){
             //双喜临门
             if(atof(GAMEDATA::getInstance()->getGameHongBaoPride().sxlmfee.c_str())>0){
                 schedule([=](float dt){

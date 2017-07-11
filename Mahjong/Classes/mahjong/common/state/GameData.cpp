@@ -45,6 +45,7 @@ void GAMEDATA::init(){
     setIsInGame(true);
     setMyGameModel(GameModel::FOURPLAYER);
     setIsTurnTableShare(false);
+    setHuiGuiLiBao("");
 }
 
 GAMEDATA* GAMEDATA::getInstance(){
