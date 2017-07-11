@@ -12,6 +12,7 @@
 #include "server/NetworkManage.h"
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/common/widget/HeadImage.hpp"
+#include "http/image/UrlImageMannger.h"
 
 
 bool HongbaoAnim2::init(){
@@ -243,112 +244,115 @@ void HongbaoAnim2::goBack(){
 void HongbaoAnim2::share(){
     GAMEDATA::getInstance()->setHasShowHongbaoResult(true);
     auto hbLayer = Layer::create();
-    
-    int num = random(0,3);
-    if(num ==0){
-        auto hongbaobg = Sprite::create("share/share_bg_1.jpg");
-        hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        hongbaobg->setPosition(0,0);
-        hbLayer->addChild(hongbaobg);
-        
-        auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(150,150));
-        headImage->setPosition(360, 530);
-        hbLayer->addChild(headImage, 10);
-        
-        auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",36);
-        nick->setPosition(360,425);
-        hbLayer->addChild(nick);
-        
-        std::string number = getHongBaoNum();
-        int pos  =  (int)number.find(".");
-        if(pos>=0){
-            number.replace(pos,1, ":");
+    if(GAMEDATA::getInstance()->getDaYingJiaPic()== ""){
+        int num = random(0,3);
+        if(num ==0){
+            auto hongbaobg = Sprite::create("share/share_bg_1.jpg");
+            hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+            hongbaobg->setPosition(0,0);
+            hbLayer->addChild(hongbaobg);
+            
+            auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(150,150));
+            headImage->setPosition(360, 530);
+            hbLayer->addChild(headImage, 10);
+            
+            auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",36);
+            nick->setPosition(360,425);
+            hbLayer->addChild(nick);
+            
+            std::string number = getHongBaoNum();
+            int pos  =  (int)number.find(".");
+            if(pos>=0){
+                number.replace(pos,1, ":");
+            }
+            
+            LabelAtlas* hongnum = LabelAtlas::create(number, "share/hongbao_num.png",54,94, '0');
+            hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+            hongnum->setPosition(455,730);
+            hbLayer->addChild(hongnum);
+            
+        }
+        else if(num == 1){
+            auto hongbaobg = Sprite::create("share/share_bg_2.jpg");
+            hongbaobg->setPosition(360,640);
+            hbLayer->addChild(hongbaobg);
+            
+            auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(150,150));
+            headImage->setPosition(165, 635);
+            hbLayer->addChild(headImage, 10);
+            
+            auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",40);
+            nick->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+            nick->setColor(Color3B(5,90,107));
+            nick->setPosition(255,590);
+            hbLayer->addChild(nick);
+            
+            Label* hongnum = Label::createWithSystemFont(getHongBaoNum(), "arial",100);
+            hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+            hongnum->setColor(Color3B(237,82,86));
+            hongnum->setPosition(370,440);
+            hbLayer->addChild(hongnum);
+            
+        }else if(num == 2){
+            auto hongbaobg = Sprite::create("share/share_bg_3.jpg");
+            hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+            hongbaobg->setPosition(0,0);
+            hbLayer->addChild(hongbaobg);
+            
+            Label* hongnum = Label::createWithSystemFont(getHongBaoNum(), "arial",90);
+            hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+            hongnum->setColor(Color3B(255,90,84));
+            hongnum->setPosition(360,420);
+            hbLayer->addChild(hongnum);
+            
+        }else {
+            auto hongbaobg = Sprite::create("share/share_bg_4.jpg");
+            hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
+            hongbaobg->setPosition(0,0);
+            hbLayer->addChild(hongbaobg);
+            
+            auto gongxi = Label::createWithSystemFont(StringUtils::format("恭喜%s在",UserData::getInstance()->getNickName().c_str()),"arial",36);
+            gongxi->setColor(Color3B::WHITE);
+            gongxi->setAnchorPoint(Point::ANCHOR_MIDDLE);
+            gongxi->setPosition(360,590);
+            hbLayer->addChild(gongxi);
+            
+            auto pride = Label::createWithSystemFont(StringUtils::format("好友房游戏中成为大赢家,奖励"),"arial",36);
+            pride->setColor(Color3B::WHITE);
+            pride->setAnchorPoint(Point::ANCHOR_MIDDLE);
+            pride->setPosition(360,530);
+            hbLayer->addChild(pride);
+            
+            Label* hongnum = Label::createWithSystemFont(getHongBaoNum(), "arial",50);
+            hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+            hongnum->setColor(Color3B::WHITE);
+            hongnum->setPosition(395,360);
+            hbLayer->addChild(hongnum);
         }
         
-        LabelAtlas* hongnum = LabelAtlas::create(number, "share/hongbao_num.png",54,94, '0');
-        hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        hongnum->setPosition(455,730);
-        hbLayer->addChild(hongnum);
-        
-    }
-    else if(num == 1){
-        auto hongbaobg = Sprite::create("share/share_bg_2.jpg");
-        hongbaobg->setPosition(360,640);
-        hbLayer->addChild(hongbaobg);
-        
-        auto headImage = HeadImage::createByImage(UserData::getInstance()->getPicture(),Size(150,150));
-        headImage->setPosition(165, 635);
-        hbLayer->addChild(headImage, 10);
-        
-        auto nick = Label::createWithSystemFont(UserData::getInstance()->getNickName(),"arial",40);
-        nick->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        nick->setColor(Color3B(5,90,107));
-        nick->setPosition(255,590);
-        hbLayer->addChild(nick);
-        
-        Label* hongnum = Label::createWithSystemFont(getHongBaoNum(), "arial",100);
-        hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        hongnum->setColor(Color3B(237,82,86));
-        hongnum->setPosition(370,440);
-        hbLayer->addChild(hongnum);
-        
-    }else if(num == 2){
-        auto hongbaobg = Sprite::create("share/share_bg_3.jpg");
-        hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        hongbaobg->setPosition(0,0);
-        hbLayer->addChild(hongbaobg);
-        
-        Label* hongnum = Label::createWithSystemFont(getHongBaoNum(), "arial",90);
-        hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        hongnum->setColor(Color3B(255,90,84));
-        hongnum->setPosition(360,420);
-        hbLayer->addChild(hongnum);
-        
-    }else {
-        auto hongbaobg = Sprite::create("share/share_bg_4.jpg");
-        hongbaobg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        hongbaobg->setPosition(0,0);
-        hbLayer->addChild(hongbaobg);
-        
-        auto gongxi = Label::createWithSystemFont(StringUtils::format("恭喜%s在",UserData::getInstance()->getNickName().c_str()),"arial",36);
-        gongxi->setColor(Color3B::WHITE);
-        gongxi->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        gongxi->setPosition(360,590);
-        hbLayer->addChild(gongxi);
-        
-        auto pride = Label::createWithSystemFont(StringUtils::format("好友房游戏中成为大赢家,奖励"),"arial",36);
-        pride->setColor(Color3B::WHITE);
-        pride->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        pride->setPosition(360,530);
-        hbLayer->addChild(pride);
-        
-        Label* hongnum = Label::createWithSystemFont(getHongBaoNum(), "arial",50);
-        hongnum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-        hongnum->setColor(Color3B::WHITE);
-        hongnum->setPosition(395,360);
-        hbLayer->addChild(hongnum);
-    }
-    
-    auto renderTexture = RenderTexture::create(640, 360, Texture2D::PixelFormat::RGBA8888);
-    //清空并开始获取
-    renderTexture->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
-    //遍历场景节点对象，填充纹理到RenderTexture中
-    hbLayer->visit();
-    //结束获取
-    renderTexture->end();
-    //保存文件
-    std::string outputFile =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());
-    renderTexture->saveToFile("mahjong_screen_shot.png",Image::Format::PNG);
-    schedule([=](float dt){
+        auto renderTexture = RenderTexture::create(640, 360, Texture2D::PixelFormat::RGBA8888);
+        //清空并开始获取
+        renderTexture->beginWithClear(0.0f, 0.0f, 0.0f, 0.0f);
+        //遍历场景节点对象，填充纹理到RenderTexture中
+        hbLayer->visit();
+        //结束获取
+        renderTexture->end();
+        //保存文件
+        std::string outputFile =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());
+        renderTexture->saveToFile("mahjong_screen_shot.png",Image::Format::PNG);
+        schedule([=](float dt){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(outputFile, true);
+            CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(outputFile, true);
 #endif
-        
+            
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
+            CallIOSMethod::getInstance()->doWechatShareImg(outputFile, 1);
 #endif
-    }, 0, 0, 0.2f, "mmp");
-    setVisible(false);
+        }, 0, 0, 0.2f, "mmp");
+    }else{
+        UrlImageMannger::getInstance()->downloadDaYingJiaImgByUrl(GAMEDATA::getInstance()->getDaYingJiaPic());
+    }
+       setVisible(false);
 }
 
 

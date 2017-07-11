@@ -165,6 +165,7 @@ public:
     CC_SYNTHESIZE(std::string, shareTextContent, ShareTextContent);
     CC_SYNTHESIZE(std::string, shareTextContentNum, ShareTextContentNum);
     CC_SYNTHESIZE(std::string, turntableNumber, TurntableNumber);
+    CC_SYNTHESIZE(std::string, daYingJiaPic, DaYingJiaPic);
 private:
     GAMEDATA();
     void init();

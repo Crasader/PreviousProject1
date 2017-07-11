@@ -474,15 +474,15 @@ void MsgHandler::distribute(int code, std::string msg){
         }
         case MSGCODE_PHB_RESPONSE:{
             handleLobbyPaiHang(msg);
-             break;
+            break;
         }
         case MSGCODE_DZP_RESPONSE:{
             handleTurntableData(msg);
-             break;
+            break;
         }
         case MSGCODE_DZP_Z_RESPONSE:{
             handleTurntableResult(msg);
-             break;
+            break;
         }
             
         case MSGCODE_DZP_B_SHARE_RESPONSE:{
@@ -1047,6 +1047,10 @@ void MsgHandler::loginResp(std::string msg){
             data5.head = share5["head"].GetString();
             data5.content = share5["content"].GetString();
             GAMEDATA::getInstance()->setMahjongShareData5(data5);
+        }
+        if(_mDoc.HasMember("dyjpic")){
+            const rapidjson::Value &dyjpic = _mDoc["dyjpic"];
+            GAMEDATA::getInstance()->setDaYingJiaPic(dyjpic.GetString());
         }
         if(_mDoc.HasMember("free")){
             const rapidjson::Value &free = _mDoc["free"];
