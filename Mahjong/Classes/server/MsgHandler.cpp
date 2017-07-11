@@ -1003,6 +1003,13 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &dzpc = _mDoc["dzpc"];
             GAMEDATA::getInstance()->setTurntableNumber(dzpc.GetString());
         }
+        if(_mDoc.HasMember("dzpw")){
+            const rapidjson::Value &dzpw = _mDoc["dzpw"];
+            if(strcmp(dzpw.GetString(),"2") == 0){
+                GAMEDATA::getInstance()->setNeedShowTurnTable(true);
+            }
+        }
+        
         if(_mDoc.HasMember("share1")){
             const rapidjson::Value &share1 = _mDoc["share1"];
             MahjongShareData1 data1;

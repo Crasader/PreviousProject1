@@ -742,6 +742,10 @@ void LobbyScene::onEnterTransitionDidFinish(){
         addChild(hint,50);
         GAMEDATA::getInstance()->setShowRoomDismiss(false);
     }
+    if(GAMEDATA::getInstance()->getNeedShowTurnTable()){
+        DailyPride* pride = DailyPride::create();
+        addChild(pride,10);
+    }
 }
 
 void LobbyScene::onExit(){
