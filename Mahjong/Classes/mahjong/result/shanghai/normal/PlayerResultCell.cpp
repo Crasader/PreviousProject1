@@ -86,7 +86,7 @@ bool PlayerResultCell::init(GameResultData data){
         addChild(bank);
     }
     
-    auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 40, 64, '0');
+    auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 37, 53, '0');
     addChild(resultNum);
     
     std::vector<std::string> showPokers = StringUtil::split(data.showPoker, ",");
@@ -152,7 +152,7 @@ bool PlayerResultCell::init(GameResultData data){
         showPokers.push_back(GAMEDATA::getInstance()->getDiaopao());
         auto chuchong = Sprite::create("gameview/font_hu.png");
         chuchong->setScale(0.4f);
-        chuchong->setPosition(510,-10);
+        chuchong->setPosition(500,-10);
         addChild(chuchong);
         
     }else{
@@ -167,7 +167,7 @@ bool PlayerResultCell::init(GameResultData data){
         }
         if(data.result == 2){
             auto chuchong = Sprite::create("result/chuchong.png");
-            chuchong->setPosition(520,-10);
+            chuchong->setPosition(485,-10);
             addChild(chuchong);
         }
     }
