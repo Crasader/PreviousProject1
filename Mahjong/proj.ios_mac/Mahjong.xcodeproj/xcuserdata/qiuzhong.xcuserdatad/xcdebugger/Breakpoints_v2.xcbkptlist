@@ -5376,11 +5376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/friend/FriendRoom.cpp"
-            timestampString = "518668652.949205"
+            timestampString = "521531133.173538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "FriendRoom::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5392,11 +5392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/friend/FriendRoom.cpp"
-            timestampString = "518668652.949205"
+            timestampString = "521531133.173538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "FriendRoom::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5408,11 +5408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/friend/FriendRoom.cpp"
-            timestampString = "518668652.949205"
+            timestampString = "521531133.173538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "FriendRoom::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5424,11 +5424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/friend/FriendRoom.cpp"
-            timestampString = "518668652.949205"
+            timestampString = "521531133.173538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
             landmarkName = "FriendRoom::onTouchEnded(Touch *touch, Event *event)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5918,7 +5918,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2847"
-            endingLineNumber = "2847">
+            endingLineNumber = "2847"
+            landmarkName = "MsgHandler::openRoomEnquireResp(std::string msg)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5932,7 +5934,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2846"
-            endingLineNumber = "2846">
+            endingLineNumber = "2846"
+            landmarkName = "MsgHandler::openRoomEnquireResp(std::string msg)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

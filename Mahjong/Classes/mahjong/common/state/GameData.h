@@ -142,7 +142,10 @@ public:
     CC_SYNTHESIZE(std::string, competitionFee, CompetitionFee);
     CC_SYNTHESIZE(std::string, competitionScore, CompetitionScore);
     CC_SYNTHESIZE(std::string, competitionNumber, CompetitionNumber);
-    CC_SYNTHESIZE(string, fangzhuLequan, FangzhuLequan);
+    CC_SYNTHESIZE(std::string, fangzhuLequan, FangzhuLequan);
+    CC_SYNTHESIZE(std::string, kaiFangXiaoHao4, KaiFangXiaoHao4);
+    CC_SYNTHESIZE(std::string, kaiFangXiaoHao8, KaiFangXiaoHao8);
+    CC_SYNTHESIZE(std::string, kaiFangXiaoHao16, KaiFangXiaoHao16);
     CC_SYNTHESIZE(string, privateGameNum, PrivateGameNum);//私人房间游戏局数
     CC_SYNTHESIZE(string, wanJiaQun, WanJiaQun);//私人房间游戏局数
     CC_SYNTHESIZE(string, daiLiQun, DaiLiQun);//私人房间游戏局数

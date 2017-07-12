@@ -2841,6 +2841,19 @@ void MsgHandler::openRoomEnquireResp(std::string msg){
         auto &lequan = _mDoc["le"];
         GAMEDATA::getInstance()->setFangzhuLequan(lequan.GetString());
     }
+//    4f  8f  16f
+    if(_mDoc.HasMember("4f")){
+        auto &f4 = _mDoc["4f"];
+        GAMEDATA::getInstance()->setKaiFangXiaoHao4(f4.GetString());
+    }
+    if(_mDoc.HasMember("8f")){
+        auto &f8 = _mDoc["8f"];
+        GAMEDATA::getInstance()->setKaiFangXiaoHao8(f8.GetString());
+    }
+    if(_mDoc.HasMember("16f")){
+        auto &f16 = _mDoc["16f"];
+        GAMEDATA::getInstance()->setKaiFangXiaoHao16(f16.GetString());
+    }
     postNotifyMessage(MSG_LOBBY_ASK_OPEN_ROOM, nullptr);
 }
 
