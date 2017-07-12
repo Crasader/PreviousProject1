@@ -211,6 +211,8 @@
 		<string>,1码</string>
 		<key>room_info_16</key>
 		<string>,底分</string>
+		<key>room_info_17</key>
+		<string>,二人模式</string>
 		<key>dialog_text_1</key>
 		<string>返回大厅,如需解散房间,请按解散房间按钮</string>
 		<key>dialog_text_2</key>

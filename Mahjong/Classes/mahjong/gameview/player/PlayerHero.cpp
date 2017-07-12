@@ -416,6 +416,9 @@ void PlayerHero::inviteWechatFriend(){
     }else{
         roomtype += ChineseWord("game_type_2");
     }
+    if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+        roomtype += ChineseWord("room_info_17");
+    }
     roomtype += ChineseWord("room_info_1");
     roomtype += GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu;
     if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){

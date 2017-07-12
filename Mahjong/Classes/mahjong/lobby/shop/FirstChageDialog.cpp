@@ -77,46 +77,31 @@ void FirstChargeDialog::showFirstCharge(){
     bg_2->setPosition(645,390);
     addChild(bg_2);
     
+    // 房卡
     auto diamond = Sprite::create("shop/fangka_image.png");
-    diamond->setPosition(400,400);
+    diamond->setPosition(500,400);
     addChild(diamond);
     
     LabelAtlas* fangNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().fangka), "shop/charge/charge_num.png", 24, 36, '0');
     fangNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fangNum->setPosition(362,328);
+    fangNum->setPosition(462,328);
     addChild(fangNum);
     
     auto zuanshi = Sprite::create("shop/fangka_2.png");
-    zuanshi->setPosition(400,325);
+    zuanshi->setPosition(500,325);
     addChild(zuanshi);
     
-    auto plus1= Sprite::create("shop/plus.png");
-    plus1->setPosition(510,400);
-    addChild(plus1);
-    
-    auto goldIcon = Sprite::create("shop/gold_icon_1.png");
-    goldIcon->setPosition(645,400);
-    addChild(goldIcon);
-    
-    auto goldNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().gold),"shop/charge/charge_num.png",24,36,'0');
-    goldNum->setPosition(645,328);
-    goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    addChild(goldNum);
-    
-    auto jinbi = Sprite::create("shop/gold_text.png");
-    jinbi->setPosition(685,325);
-    addChild(jinbi);
     
     auto plus2 = Sprite::create("shop/plus.png");
-    plus2->setPosition(740,400);
+    plus2->setPosition(640,400);
     addChild(plus2);
 
     auto permission = Sprite::create("shop/permission.png");
-    permission->setPosition(875,400);
+    permission->setPosition(805,400);
     addChild(permission);
 
     auto tuhao = Sprite::create("shop/tuhao_text.png");
-    tuhao->setPosition(875,325);
+    tuhao->setPosition(805,325);
     addChild(tuhao);
     
     auto image = MenuItemImage::create("shop/charge_btn_1.png","shop/charge_btn_2.png",
