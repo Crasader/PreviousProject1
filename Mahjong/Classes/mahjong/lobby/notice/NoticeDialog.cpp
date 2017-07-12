@@ -11,7 +11,6 @@
 #include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 #include "server/NetworkManage.h"
-//#include "mahjong/lobby/share/ShareActivityLayer.hpp"
 #include "userdata/UserData.h"
 
 

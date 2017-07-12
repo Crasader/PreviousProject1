@@ -59,12 +59,6 @@ bool LobbyScene::init()
 
 
 void LobbyScene::signUpdate(float dt){
-    //    if(GAMEDATA::getInstance()->getNeedShowShareBtn()){
-    //        getChildByTag(1987)->setVisible(true);
-    //    }else{
-    //        if(NULL != getChildByTag(1988))
-    //            getChildByTag(1988)->setPosition(600,435);
-    //    }
     if(GAMEDATA::getInstance()->getShowProtected()){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
@@ -738,6 +732,7 @@ void LobbyScene::onEnterTransitionDidFinish(){
     if(GAMEDATA::getInstance()->getNeedShowTurnTable()){
         DailyPride* pride = DailyPride::create();
         addChild(pride,10);
+        GAMEDATA::getInstance()->setNeedShowTurnTable(false);
     }
 }
 
