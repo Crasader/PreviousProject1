@@ -23,6 +23,10 @@ bool MahjongNumberKeypads::init(){
     
     enterRoomNumber="";
     
+    FriendOpenRoomRespData resp;
+    resp.prjucount = "0";
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(resp);
+    
     auto numbg = Sprite::create("friend/numberkeypads_bg.png");
     numbg->setTag(962);
     numbg->setPosition(640,350);

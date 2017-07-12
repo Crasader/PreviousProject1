@@ -3917,7 +3917,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2884"
             endingLineNumber = "2884"
-            landmarkName = "MsgHandler::hanleFangzhuDismissRoom(std::string msg)"
+            landmarkName = "MsgHandler::handleDissovleRoomNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5951,7 +5951,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1861"
             endingLineNumber = "1861"
-            landmarkName = "MsgHandler::showCpgNotify(std::string msg)"
+            landmarkName = "MsgHandler::heroChiResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6078,9 +6078,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1857"
-            endingLineNumber = "1857"
-            landmarkName = "MsgHandler::showCpgNotify(std::string msg)"
-            landmarkType = "7">
+            endingLineNumber = "1857">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
