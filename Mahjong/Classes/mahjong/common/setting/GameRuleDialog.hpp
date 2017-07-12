@@ -32,16 +32,18 @@ private:
     Sprite* guizhe2;
     Sprite* guizhe3;
     Sprite* guizhe4;
-    Sprite* content;
     MenuItemToggle* gzToggle;
     MenuItemToggle* pxToggle;
     MenuItemToggle* tsToggle;
     MenuItemToggle* jsToggle;
-        bool  shangHaiSelected = true;
+    ListView* contentView;
+    bool  shangHaiSelected = true;
+    int selcetIndex = 1;
     void closeView();
     void showJiBenGuiZhe(Ref* ref);
     void showJiBenPaiXing(Ref* ref);
     void showTeShuPaiXing(Ref* ref);
     void showYouXiJieSuan(Ref* ref);
+    void updateRuleImage(bool shanghai,int index);
 };
 #endif /* GameRuleDialog_hpp */

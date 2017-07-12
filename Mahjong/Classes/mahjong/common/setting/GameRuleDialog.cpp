@@ -24,7 +24,7 @@ bool GameRuleDialog::init(){
     addChild(title);
     
     auto guizheBg = Sprite::create("rule/text_bg.png");
-    guizheBg->setPosition(754,292);
+    guizheBg->setPosition(754,290);
     addChild(guizheBg);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(GameRuleDialog::closeView, this));
@@ -81,10 +81,24 @@ bool GameRuleDialog::init(){
     guizhe4->setPosition(940,560);
     addChild(guizhe4,2);
     
-    content = Sprite::create();
-    content->setTexture("rule/rule_sh_1.png");
-    content->setPosition(750,360);
-    addChild(content);
+    auto framesize = guizheBg->getContentSize();
+    contentView = ListView::create();
+    contentView->setDirection(ui::ScrollView::Direction::VERTICAL);
+    contentView->setTouchEnabled(true);
+    contentView->setContentSize(framesize+Size(0,-30));
+    contentView->ignoreContentAdaptWithSize(false);
+    contentView->setAnchorPoint(Vec2(0.5, 0.5));
+    contentView->setPosition(Point(754,292));
+    addChild(contentView);
+    
+    auto text = Sprite::create("rule/rule_sh_1.png");
+    text->setPosition(435,(text->getContentSize().height+50)/2);
+    Layout *customItem = Layout::create();
+    customItem->setLayoutType(Layout::Type::ABSOLUTE);
+    customItem->setContentSize(Size(850, text->getContentSize().height+50));
+    contentView->pushBackCustomItem(customItem);
+    customItem->addChild(text);
+    
     
     auto touchListener = EventListenerTouchOneByOne::create();
     touchListener->setSwallowTouches(true);
@@ -111,6 +125,8 @@ void GameRuleDialog::showJiBenGuiZhe(Ref* ref){
     pxToggle->setSelectedIndex(1);
     tsToggle->setSelectedIndex(1);
     jsToggle->setSelectedIndex(1);
+    selcetIndex = 1;
+    updateRuleImage(shangHaiSelected,1);
 }
 
 void GameRuleDialog::showJiBenPaiXing(Ref* ref){
@@ -122,6 +138,8 @@ void GameRuleDialog::showJiBenPaiXing(Ref* ref){
     pxToggle->setSelectedIndex(0);
     tsToggle->setSelectedIndex(1);
     jsToggle->setSelectedIndex(1);
+    selcetIndex = 2;
+    updateRuleImage(shangHaiSelected,2);
 }
 
 
@@ -134,6 +152,8 @@ void GameRuleDialog::showTeShuPaiXing(Ref* ref){
     pxToggle->setSelectedIndex(1);
     tsToggle->setSelectedIndex(0);
     jsToggle->setSelectedIndex(1);
+    selcetIndex = 3;
+    updateRuleImage(shangHaiSelected,3);
 }
 
 
@@ -146,6 +166,8 @@ void GameRuleDialog::showYouXiJieSuan(Ref* ref){
     pxToggle->setSelectedIndex(1);
     tsToggle->setSelectedIndex(1);
     jsToggle->setSelectedIndex(0);
+    selcetIndex = 4;
+    updateRuleImage(shangHaiSelected,4);
 }
 
 bool GameRuleDialog::onTouchBegan(Touch *touch, Event  *event){
@@ -163,10 +185,29 @@ void GameRuleDialog::onTouchEnded(Touch *touch, Event  *event){
         shangHaiSelected = true;
         shangHai->setTexture("openroom/shang_hai_btn_1.png");
         hongZhong->setTexture("openroom/hong_zhong_btn_2.png");
+        updateRuleImage(shangHaiSelected,selcetIndex);
     }
     if(hongZhong->getBoundingBox().containsPoint(touch->getLocation())){
         shangHaiSelected = false;
         shangHai->setTexture("openroom/shang_hai_btn_2.png");
         hongZhong->setTexture("openroom/hong_zhong_btn_1.png");
+        updateRuleImage(shangHaiSelected,selcetIndex);
     }
+}
+
+
+void GameRuleDialog::updateRuleImage(bool shanghai,int index){
+    contentView->removeAllItems();
+    auto text = Sprite::create();
+    if(shanghai){
+        text->setTexture(StringUtils::format("rule/rule_sh_%d.png",index));
+    }else{
+        text->setTexture(StringUtils::format("rule/rule_hz_%d.png",index));
+    }
+    text->setPosition(435,(text->getContentSize().height+50)/2);
+    Layout *customItem = Layout::create();
+    customItem->setLayoutType(Layout::Type::ABSOLUTE);
+    customItem->setContentSize(Size(850, text->getContentSize().height+50));
+    contentView->pushBackCustomItem(customItem);
+    customItem->addChild(text);
 }
