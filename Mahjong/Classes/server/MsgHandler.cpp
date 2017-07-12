@@ -728,7 +728,90 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         const rapidjson::Value &ip = _mDoc["ip"];
         GAMEDATA::getInstance()->setIP(ip.GetString());
     }
-    
+    if(_mDoc.HasMember("share1")){
+        const rapidjson::Value &share1 = _mDoc["share1"];
+        MahjongShareData1 data1;
+        data1.pic = share1["pic"].GetString();
+        data1.url = share1["url"].GetString();
+        data1.content = share1["content"].GetString();
+        data1.head = share1["head"].GetString();
+        if(share1.HasMember("type")){
+            data1.type = share1["type"].GetString();
+        }
+        if(share1.HasMember("phead")){
+            data1.phead = share1["phead"].GetString();
+        }
+        if(share1.HasMember("pcontent")){
+            data1.pcontent = share1["pcontent"].GetString();
+        }
+        GAMEDATA::getInstance()->setMahjongShareData1(data1);
+    }
+    if(_mDoc.HasMember("share2")){
+        const rapidjson::Value &share2 = _mDoc["share2"];
+        MahjongShareData2 data2;
+        data2.pic = share2["pic"].GetString();
+        data2.url = share2["url"].GetString();
+        data2.content = share2["content"].GetString();
+        data2.head = share2["head"].GetString();
+        if(share2.HasMember("phead")){
+            data2.phead = share2["phead"].GetString();
+        }
+        if(share2.HasMember("pcontent")){
+            data2.pcontent = share2["pcontent"].GetString();
+        }
+        if(share2.HasMember("type")){
+            data2.type = share2["type"].GetString();
+        }
+        GAMEDATA::getInstance()->setMahjongShareData2(data2);
+    }
+    if(_mDoc.HasMember("share3")){
+        const rapidjson::Value &share3 = _mDoc["share3"];
+        MahjongShareData3 data3;
+        data3.pic = share3["pic"].GetString();
+        data3.url = share3["url"].GetString();
+        data3.head = share3["head"].GetString();
+        data3.content = share3["content"].GetString();
+        if(share3.HasMember("phead")){
+            data3.phead = share3["phead"].GetString();
+        }
+        if(share3.HasMember("pcontent")){
+            data3.pcontent = share3["pcontent"].GetString();
+        }
+        if(share3.HasMember("type")){
+            data3.type = share3["type"].GetString();
+        }
+        GAMEDATA::getInstance()->setMahjongShareData3(data3);
+    }
+    if(_mDoc.HasMember("share4")){
+        const rapidjson::Value &share4 = _mDoc["share3"];
+        MahjongShareData4 data4;
+        data4.pic = share4["pic"].GetString();
+        data4.url = share4["url"].GetString();
+        data4.head = share4["head"].GetString();
+        data4.content = share4["content"].GetString();
+        if(share4.HasMember("phead")){
+            data4.phead = share4["phead"].GetString();
+        }
+        if(share4.HasMember("pcontent")){
+            data4.pcontent = share4["pcontent"].GetString();
+        }
+        GAMEDATA::getInstance()->setMahjongShareData4(data4);
+    }
+    if(_mDoc.HasMember("share5")){
+        const rapidjson::Value &share5 = _mDoc["share3"];
+        MahjongShareData5 data5;
+        data5.pic = share5["pic"].GetString();
+        data5.url = share5["url"].GetString();
+        data5.head = share5["head"].GetString();
+        data5.content = share5["content"].GetString();
+        if(share5.HasMember("phead")){
+            data5.phead = share5["phead"].GetString();
+        }
+        if(share5.HasMember("pcontent")){
+            data5.pcontent = share5["pcontent"].GetString();
+        }
+        GAMEDATA::getInstance()->setMahjongShareData5(data5);
+    }
 }
 
 
@@ -1016,7 +1099,7 @@ void MsgHandler::loginResp(std::string msg){
                 GAMEDATA::getInstance()->setNeedShowTurnTable(true);
             }
         }
-        
+        //微信分享配置
         if(_mDoc.HasMember("share1")){
             const rapidjson::Value &share1 = _mDoc["share1"];
             MahjongShareData1 data1;
