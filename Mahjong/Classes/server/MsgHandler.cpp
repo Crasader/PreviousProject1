@@ -1005,9 +1005,10 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &scon = _mDoc["sconnum"];
             UserData::getInstance()->setShareTextContentNum(scon.GetString());
         }
+        //用户当前拥有的抽奖次数
         if(_mDoc.HasMember("dzpc")){
             const rapidjson::Value &dzpc = _mDoc["dzpc"];
-            GAMEDATA::getInstance()->setTurntableNumber(dzpc.GetString());
+            UserData::getInstance()->setTurntableNumber(dzpc.GetString());
         }
         if(_mDoc.HasMember("dzpw")){
             const rapidjson::Value &dzpw = _mDoc["dzpw"];
@@ -4155,7 +4156,7 @@ void MsgHandler::handleTurntableResult(std::string msg){
     }
     if(_mDoc.HasMember("rest")){
         const rapidjson::Value &rest = _mDoc["rest"];
-        GAMEDATA::getInstance()->setTurntableNumber(rest.GetString());
+        UserData::getInstance()->setTurntableNumber(rest.GetString());
     }
     if (_mDoc.HasMember("content")){
         const rapidjson::Value &temp = _mDoc["content"];
@@ -4197,6 +4198,6 @@ void MsgHandler::handleTurntableShare(std::string msg){
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
     if(_mDoc.HasMember("dzpc")){
         const rapidjson::Value &dzpc = _mDoc["dzpc"];
-        GAMEDATA::getInstance()->setTurntableNumber(dzpc.GetString());
+        UserData::getInstance()->setTurntableNumber(dzpc.GetString());
     }
 }

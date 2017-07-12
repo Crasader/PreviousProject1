@@ -116,6 +116,9 @@ public:
     std::string getShareTextContentNum();
     void setShareTextContentNum(std::string msg);
     
+    std::string getTurntableNumber();
+    void setTurntableNumber(std::string msg);
+    
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();

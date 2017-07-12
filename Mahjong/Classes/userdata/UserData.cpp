@@ -300,7 +300,7 @@ void UserData::setAppVer(std::string ver){
 }
 
 std::string UserData::getShareTextContent(){
-    return UserDefault::getInstance()->getStringForKey("share_text","1.0.0");
+    return UserDefault::getInstance()->getStringForKey("share_text","");
 }
 void UserData::setShareTextContent(std::string num){
     UserDefault::getInstance()->setStringForKey("share_text",num);
@@ -308,8 +308,15 @@ void UserData::setShareTextContent(std::string num){
 
 
 std::string UserData::getShareTextContentNum(){
-    return UserDefault::getInstance()->getStringForKey("share_text_num","1.0.0");
+    return UserDefault::getInstance()->getStringForKey("share_text_num","0");
 }
 void UserData::setShareTextContentNum(std::string msg){
     UserDefault::getInstance()->setStringForKey("share_text_num",msg);
+}
+
+std::string UserData::getTurntableNumber(){
+    return UserDefault::getInstance()->getStringForKey("share_turntable_num","0");
+}
+void UserData::setTurntableNumber(std::string msg){
+    UserDefault::getInstance()->setStringForKey("share_turntable_num",msg);
 }

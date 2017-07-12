@@ -134,14 +134,14 @@ void DailyPride::showDailyPrideLayer(){
     addChild(shareText3);
 
     
-    if(GAMEDATA::getInstance()->getTurntableNumber() == "0"){
+    if(UserData::getInstance()->getTurntableNumber() == "0"){
         //需要分享获取次数
         shareText->setVisible(true);
         menu->setVisible(true);
         number->setVisible(false);
         shareText2->setVisible(false);
         shareText3->setVisible(false);
-    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "-1"){
+    }else if(UserData::getInstance()->getTurntableNumber() == "-1"){
         //次数已经用完了
         shareText->setVisible(false);
         menu->setVisible(false);
@@ -153,7 +153,7 @@ void DailyPride::showDailyPrideLayer(){
         shareText->setVisible(false);
         menu->setVisible(false);
         number->setVisible(true);
-        number->setString(GAMEDATA::getInstance()->getTurntableNumber());
+        number->setString(UserData::getInstance()->getTurntableNumber());
         shareText2->setVisible(true);
         shareText3->setVisible(false);
     }
@@ -187,7 +187,7 @@ void DailyPride::updateData(){
 
 
 void DailyPride::beginPride(Ref* ref){
-    if(atoi(GAMEDATA::getInstance()->getTurntableNumber().c_str())>0){
+    if(atoi(UserData::getInstance()->getTurntableNumber().c_str())>0){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableStartCommand());
         srand(unsigned(time(NULL)));
         float angleZ = rand() % 720 + 720;
@@ -210,13 +210,13 @@ void DailyPride::closeView(){
 }
 
 void DailyPride::update(float dt){
-    if(GAMEDATA::getInstance()->getTurntableNumber() == "0"){
+    if(UserData::getInstance()->getTurntableNumber() == "0"){
         getChildByTag(1000)->setVisible(true);
         getChildByTag(1001)->setVisible(true);
         getChildByTag(1002)->setVisible(false);
         getChildByTag(1003)->setVisible(false);
         getChildByTag(1004)->setVisible(false);
-    }else if(GAMEDATA::getInstance()->getTurntableNumber() == "-1"){
+    }else if(UserData::getInstance()->getTurntableNumber() == "-1"){
         getChildByTag(1000)->setVisible(false);
         getChildByTag(1001)->setVisible(false);
         getChildByTag(1002)->setVisible(false);
@@ -226,7 +226,7 @@ void DailyPride::update(float dt){
         getChildByTag(1000)->setVisible(false);
         getChildByTag(1001)->setVisible(false);
         getChildByTag(1002)->setVisible(true);
-        ((LabelAtlas*)getChildByTag(1002))->setString(GAMEDATA::getInstance()->getTurntableNumber());
+        ((LabelAtlas*)getChildByTag(1002))->setString(UserData::getInstance()->getTurntableNumber());
         getChildByTag(1003)->setVisible(true);
         getChildByTag(1004)->setVisible(false);
     }
