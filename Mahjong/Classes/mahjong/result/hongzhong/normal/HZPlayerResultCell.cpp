@@ -74,7 +74,7 @@ bool HZPlayerResultCell::init(GameResultData data){
         addChild(bank);
     }
     
-    auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 40, 64, '0');
+    auto resultNum = LabelAtlas::create(StringUtils::format("%s","0"), "result/game_result_win_num.png", 37, 53, '0');
     addChild(resultNum);
     
     if(data.gangfen !=""){
@@ -150,7 +150,7 @@ bool HZPlayerResultCell::init(GameResultData data){
         showPokers.push_back(GAMEDATA::getInstance()->getDiaopao());
         auto chuchong = Sprite::create("gameview/font_hu.png");
         chuchong->setScale(0.4f);
-        chuchong->setPosition(520,-10);
+        chuchong->setPosition(500,-10);
         addChild(chuchong);
         
     }else{
@@ -219,7 +219,7 @@ bool HZPlayerResultCell::init(GameResultData data){
             lequanIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             lequanIcon->setPosition(210,-25);
             addChild(lequanIcon);
-            auto lequanNum = LabelAtlas::create(StringUtils::format(":%d",data.lequandelta), "result/game_result_win_num.png", 40, 64, '0');
+            auto lequanNum = LabelAtlas::create(StringUtils::format(":%d",data.lequandelta), "result/game_result_win_num.png", 37, 53, '0');
             lequanNum->setScale(0.7f);
             lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
             lequanNum->setPosition(270,-25);
