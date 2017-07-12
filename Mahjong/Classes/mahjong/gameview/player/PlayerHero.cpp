@@ -486,7 +486,7 @@ Point PlayerHero::getHeroPlayedJongsPos(int index) {
         return Point(originPos.x + 35 * line, originPos.y);
     }
     else  {
-        return Point(originPos.x + 35 * line, originPos.y - 42);
+        return Point(originPos.x + 35 * line, originPos.y - 42*row);
     }
     
 }
