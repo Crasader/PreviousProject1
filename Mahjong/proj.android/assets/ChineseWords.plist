@@ -211,6 +211,8 @@
 		<string>,1码</string>
 		<key>room_info_16</key>
 		<string>,底分</string>
+		<key>room_info_17</key>
+		<string>,二人模式</string>
 		<key>dialog_text_1</key>
 		<string>返回大厅,如需解散房间,请按解散房间按钮</string>
 		<key>dialog_text_2</key>
@@ -236,15 +238,15 @@
 		<key>dialog_text_12</key>
 		<string>未达成抽奖条件</string>
 		<key>dialog_text_13</key>
-		<string>请输入姓名</string>
+		<string>请输入您的真实姓名</string>
 		<key>dialog_text_14</key>
-		<string>请输入身份证号码</string>
+		<string>请输入您的身份证号</string>
 		<key>dialog_text_15</key>
 		<string>输入的身份证号码不正确</string>
 		<key>dialog_text_16</key>
 		<string>游戏金币不足</string>
 		<key>dialog_text_17</key>
-		<string>分享游戏给好友可获得房卡</string>
+		<string>加客服微信majiang01免费获得房卡</string>
 		<key>dialog_text_18</key>
 		<string>你已经完成实名认证</string>
 		<key>dialog_text_19</key>
