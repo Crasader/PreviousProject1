@@ -39,7 +39,7 @@ bool DissovleRoomDialog::init(){
     wanjia->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(wanjia);
     
-    auto time = Label::createWithSystemFont(StringUtils::format("%d后自动同意",residueTime), "arial", 30);
+    auto time = Label::createWithSystemFont(StringUtils::format("(%d秒后自动同意)",residueTime), "arial", 30);
     time->setColor(Color3B(70,40,20));
     time->setPosition(640,275);
     addChild(time);
