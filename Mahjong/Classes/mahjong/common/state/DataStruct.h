@@ -173,6 +173,13 @@ struct GameHongBaoPride{
     std::string sxlmfee;
 };
 
+struct GameHongBaoPride2{
+    std::string dyjfee;
+    std::string dsjfee;
+    std::string fzfee ;
+    std::string sxlmfee;
+};
+
 struct GameResultData
 {
     int result;//0打酱油,1自摸,3胡牌,2点炮

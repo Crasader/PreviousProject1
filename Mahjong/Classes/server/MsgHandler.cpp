@@ -1255,17 +1255,7 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &idcard = _mDoc["idcard"];
             GAMEDATA::getInstance()->setCertification(idcard.GetInt()==1?true:false);
         }
-        GameHongBaoPride pride;
-        if(_mDoc.HasMember("dyj")){
-            pride.dyj = _mDoc["dyj"].GetString();
-        }else{
-            pride.dyj = "-999";
-        }
-        if(_mDoc.HasMember("dsj")){
-            pride.dsj = _mDoc["dsj"].GetString();
-        }else{
-            pride.dsj = "-999";
-        }
+        GameHongBaoPride2 pride;
         if(_mDoc.HasMember("dyjfee")){
             pride.dyjfee = _mDoc["dyjfee"].GetString();
             GAMEDATA::getInstance()->setNeedShowHongbaoResult(true);
@@ -1290,7 +1280,7 @@ void MsgHandler::loginResp(std::string msg){
         }else{
             pride.sxlmfee = "0";
         }
-        GAMEDATA::getInstance()->setGameHongBaoPride(pride);
+        GAMEDATA::getInstance()->setGameHongBaoPride2(pride);
         
         ShareActivityData data;
         if(_mDoc.HasMember("share")){
