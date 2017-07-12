@@ -120,6 +120,13 @@
 #define MSGCODE_FEE_GET_RESPONSE  1073// 红包领取回复{code:1073,poxiaoId:poxiaoId,result:1}1成功  0失败
 #define MSGCODE_FEE_GIVEUP_REQUEST  1074// 红包领取放弃请求{code:1074,poxiaoId:poxiaoId}
 
+#define MSGCODE_FEE_TO_FANGKA_LIST_REQUEST  1075// 话费兑换房卡列表请求{code:1075,poxiaoId:poxiaoId}
+#define MSGCODE_FEE_TO_FANGKA_LIST_RESPONSE  1076// 话费兑换房卡列表回复{code:1076,poxiaoId:poxiaoId,list1:[{url:"http://web.5278-mobi.com:1112/30.jpg",fee:30,tofangka:30},{url:"http://web.5278-mobi.com:1112/50.jpg",fee:50,tofangka:50},{url:"http://web.5278-mobi.com:1112/100.jpg",fee:100,tofangka:100},{url:"http://web.5278-mobi.com:1112/200.jpg",fee:200,tofangka:200}],list2:[{url:"http://web.5278-mobi.com:1112/30.jpg",fangka:30,tofee:30},{url:"http://web.5278-mobi.com:1112/50.jpg",fangka:50,tofee:50},{url:"http://web.5278-mobi.com:1112/100.jpg",fangka:100,tofee:100},{url:"http://web.5278-mobi.com:1112/200.jpg",fangka:200,tofee:200}]}
+#define MSGCODE_FEE_TO_FANGKA_REQUEST = 1077// 话费兑换房卡请求{code:1077,poxiaoId:poxiaoId,fee:"30"}
+#define MSGCODE_FEE_TO_FANGKA_RESPONSE = 1078// 话费兑换房卡回复{code:1078,poxiaoId:poxiaoId,result:"1",fangka:"1",fee:"2"} 1成功0失败
+#define MSGCODE_FANGKA_TO_FEE_REQUEST = 1079// 房卡兑换房卡请求{code:1079,poxiaoId:poxiaoId,fangka:"30"}
+#define MSGCODE_FANGKA_TO_FEE_RESPONSE = 1080// 话费兑换房卡回复{code:1080,poxiaoId:poxiaoId,result:"1",fangka:"1",fee:"2"} 1成功0失败
+
 #define MSGCODE_MAJIANG_BACK_OUT_REQUEST 1992//后台切出请求{code:1992,poxiaoId:poxiaoId}
 
 #define MSGCODE_GAME_CHART_REQUEST  1993//游戏内聊天请求{code:1993,poxiaoId:"123",content:"哈哈",pId:"11111"}

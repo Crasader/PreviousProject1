@@ -58,12 +58,12 @@ bool ExchangeHuafeiCell::init(std::string propId,std::string url,std::string pri
     addChild(consume_lequan);
     auto lequan = Label::createWithSystemFont(ChineseWord("xioahao"),"arial",24);
     lequan->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequan->setColor(Color3B(240,228,45));
+    lequan->setColor(Color3B::RED);
     lequan->setPosition(0,-35);
     addChild(lequan);
     auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%s%s", price.c_str(), "话费券"), "arial", 24);
     lequanXiao->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequanXiao->setColor(Color3B(240,228,45));
+    lequanXiao->setColor(Color3B::RED);
     lequanXiao->setPosition(0,-65);
     addChild(lequanXiao);
     
