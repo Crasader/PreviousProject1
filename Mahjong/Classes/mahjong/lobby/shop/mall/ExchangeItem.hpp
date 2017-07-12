@@ -30,7 +30,7 @@ private:
     CC_SYNTHESIZE(int , itemPropId, ItemPropId);
     CC_SYNTHESIZE(bool, isVirtual, IsVirtual);
     
-    void showRealItem(int propId,std::string propName);
+//    void showRealItem(int propId,std::string propName);
     void showVirtualItem(int propId,std::string propName);
     void confirm(Ref* ref);
     void closeView();

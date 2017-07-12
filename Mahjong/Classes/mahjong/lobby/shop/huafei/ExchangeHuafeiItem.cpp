@@ -39,17 +39,17 @@ bool ExchangeHuafeiItem::init(int propId,std::string propName){
     this->addChild(menu1);
     
     
-    auto dialog_bg = Sprite::create("shop/shop_bg_2.png");
+    auto dialog_bg = Sprite::create("common/dialog_bg.png");
     dialog_bg->setPosition(640,360);
     addChild(dialog_bg);
     
     auto title = Sprite::create("shop/title_info.png");
-    title->setPosition(654,630);
+    title->setPosition(654,580);
     addChild(title);
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ExchangeHuafeiItem::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 580);
+    closeMenu->setPosition(990, 590);
     addChild(closeMenu);
     
     showVirtualItem(propId,propName);
@@ -64,15 +64,16 @@ void ExchangeHuafeiItem::showVirtualItem(int propId,std::string propName){
     addChild(textInfo);
     
     auto labe = Label::createWithSystemFont(propName,"arial",30);
+    labe->setColor(Color3B::RED);
     labe->setAnchorPoint(Point::ANCHOR_MIDDLE);
     labe->setPosition(540,480);
     addChild(labe);
     
     auto bound_phone = Sprite::create("shop/shoujihao.png");
-    bound_phone->setPosition(406,365);
+    bound_phone->setPosition(456,365);
     addChild(bound_phone);
     
-    auto input_bg_1 = Sprite::create("shop/shuru_box_2.png");
+    auto input_bg_1 = Sprite::create("playerinfo/input_box_bg.png");
     input_bg_1->setPosition(720, 365);
     addChild(input_bg_1);
     _newPhoneNumber = ui::EditBox::create(Size(220, 81), ui::Scale9Sprite::create());

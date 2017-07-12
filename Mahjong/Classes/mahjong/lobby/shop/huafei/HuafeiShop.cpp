@@ -36,11 +36,11 @@ bool HuafeiShop::init(){
     addChild(yebg);
     
     huaFeiLayer = Layer::create();
-    addChild(huaFeiLayer);
+    addChild(huaFeiLayer,90);
     
     fangKaLayer = Layer::create();
     fangKaLayer->setVisible(false);
-    addChild(fangKaLayer);
+    addChild(fangKaLayer,90);
     
     auto btnImage1 = Sprite::create("shop/huafei_duihuan_btn.png");
     btnImage1->setTag(1001);
