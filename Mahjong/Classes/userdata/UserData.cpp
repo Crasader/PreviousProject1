@@ -75,7 +75,7 @@ float UserData::getHuafeiQuan(){
 
 
 void UserData::setHuafeiQuan(float num){
-     UserDefault::getInstance()->setDoubleForKey("user_huafei_quan", num);
+    UserDefault::getInstance()->setDoubleForKey("user_huafei_quan", num);
 }
 
 std::string UserData::getUserName(){
@@ -272,7 +272,7 @@ std::string UserData::getHstype(){
 }
 
 void UserData::setHstype(std::string hstype){
-     UserDefault::getInstance()->setStringForKey("Android_Hstype",hstype);
+    UserDefault::getInstance()->setStringForKey("Android_Hstype",hstype);
 }
 
 
@@ -289,13 +289,27 @@ std::string UserData::getImei(){
 }
 
 void UserData::setImei(std::string imei){
-     UserDefault::getInstance()->setStringForKey("Android_Imei",imei);
+    UserDefault::getInstance()->setStringForKey("Android_Imei",imei);
 }
 
 std::string UserData::getAppVer(){
     return UserDefault::getInstance()->getStringForKey("Android_AppVer","1.0.0");
 }
 void UserData::setAppVer(std::string ver){
-     UserDefault::getInstance()->setStringForKey("Android_AppVer",ver);
+    UserDefault::getInstance()->setStringForKey("Android_AppVer",ver);
 }
 
+std::string UserData::getShareTextContent(){
+    return UserDefault::getInstance()->getStringForKey("share_text","1.0.0");
+}
+void UserData::setShareTextContent(std::string num){
+    UserDefault::getInstance()->setStringForKey("share_text",num);
+}
+
+
+std::string UserData::getShareTextContentNum(){
+    return UserDefault::getInstance()->getStringForKey("share_text_num","1.0.0");
+}
+void UserData::setShareTextContentNum(std::string msg){
+    UserDefault::getInstance()->setStringForKey("share_text_num",msg);
+}

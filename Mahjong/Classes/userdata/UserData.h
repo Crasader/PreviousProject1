@@ -110,7 +110,11 @@ public:
     std::string getAppVer();
     void setAppVer(std::string num);
 
-
+    std::string getShareTextContent();
+    void setShareTextContent(std::string num);
+    
+    std::string getShareTextContentNum();
+    void setShareTextContentNum(std::string msg);
     
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:

@@ -995,13 +995,15 @@ void MsgHandler::loginResp(std::string msg){
         }else{
             UserData::getInstance()->setInviteCodeBind(true);
         }
+        //分享界面信息
         if(_mDoc.HasMember("scon")){
             const rapidjson::Value &scon = _mDoc["scon"];
-            GAMEDATA::getInstance()->setShareTextContent(scon.GetString());
+            UserData::getInstance()->setShareTextContent(scon.GetString());
         }
+        //推广的用户数量
         if(_mDoc.HasMember("sconnum")){
             const rapidjson::Value &scon = _mDoc["sconnum"];
-            GAMEDATA::getInstance()->setShareTextContentNum(scon.GetString());
+            UserData::getInstance()->setShareTextContentNum(scon.GetString());
         }
         if(_mDoc.HasMember("dzpc")){
             const rapidjson::Value &dzpc = _mDoc["dzpc"];

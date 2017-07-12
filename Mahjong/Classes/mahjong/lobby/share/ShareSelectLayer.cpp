@@ -35,7 +35,7 @@ bool ShareSelectLayer::init(){
     titile->setPosition(645,582);
     addChild(titile);
     
-    auto textlabel = Label::createWithSystemFont(GAMEDATA::getInstance()->getShareTextContent(),"arial",24);
+    auto textlabel = Label::createWithSystemFont(UserData::getInstance()->getShareTextContent(),"arial",24);
     textlabel->setWidth(700);
     textlabel->setAlignment(cocos2d::TextHAlignment::CENTER);
     textlabel->setPosition(640,500);
@@ -46,7 +46,7 @@ bool ShareSelectLayer::init(){
     tuiguang->setPosition(640,155);
     addChild(tuiguang);
     
-    auto num = LabelAtlas::create(GAMEDATA::getInstance()->getShareTextContentNum(), "share/wei_xin_num.png", 30, 50, '0');
+    auto num = LabelAtlas::create(UserData::getInstance()->getShareTextContentNum(), "share/wei_xin_num.png", 30, 50, '0');
     num->setAnchorPoint(Point::ANCHOR_MIDDLE);
     num->setPosition(640,155);
     addChild(num);
