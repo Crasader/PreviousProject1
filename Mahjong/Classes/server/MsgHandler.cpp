@@ -489,6 +489,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleTurntableShare(msg);
             break;
         }
+        case MSGCODE_HH_FRIEND_DISMISS_AGREE_RESULT_NOTIFY:{
+            handleHZDissovleRoomNotify(msg);
+         break;
+        }
         default:
             break;
     }
@@ -3763,7 +3767,7 @@ void MsgHandler::handleHZPlayerDissovleNotify(std::string msg){
         const rapidjson::Value &nickName = _mDoc["nickName"];
         std::string name = nickName.GetString();
         GAMEDATA::getInstance()->setDissolveName(name);
-        GAMEDATA::getInstance()->setIsSelected(false);
+         postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_HZ, nullptr);
     }
 }
 
@@ -3781,6 +3785,23 @@ void MsgHandler::handleHZDissovleRoomSelectedNotify(std::string msg){
     }
     GAMEDATA::getInstance()->setDissolveData(data);
     postNotifyMessage(MSG_HZ_DISSOVLE_ROOM_SELECTED_NOTIFY, nullptr);
+}
+
+void MsgHandler::handleHZDissovleRoomNotify(std::string msg){
+    //私人房间是否同意解散通知{code:2051,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    DissolveData data;
+    const rapidjson::Value &pId = _mDoc["pId"];
+    data.pid = pId.GetString();
+    if(_mDoc.HasMember("agree")){
+        const rapidjson::Value &agree = _mDoc["agree"];
+        data.agree = agree.GetString();
+    }
+    GAMEDATA::getInstance()->setDissolveData(data);
+    postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, nullptr);
 }
 
 void MsgHandler::handleHZGameContinueResp(std::string msg){

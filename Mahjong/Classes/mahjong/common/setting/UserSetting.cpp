@@ -160,7 +160,7 @@ void UserSetting::feedBack(){
 void UserSetting::dissolveRoom(){
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomRequestCommand());
-    }else{
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomInGameCommand());
     }
     GAMEDATA::getInstance()->setDissolveName(UserData::getInstance()->getNickName());

@@ -90,6 +90,7 @@ private:
     void handleHZPlayerHuNotify(std::string msg);
     void handleHZPlayerDissovleNotify(std::string msg);
     void handleHZDissovleRoomSelectedNotify(std::string msg);
+    void handleHZDissovleRoomNotify(std::string msg);
     void handleHZGameContinueResp(std::string msg);
     void handleInviteCodeResp(std::string msg);
     void handleJoinCompetitionResp(std::string msg);
