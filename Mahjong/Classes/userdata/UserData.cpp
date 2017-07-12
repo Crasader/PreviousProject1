@@ -320,3 +320,10 @@ std::string UserData::getTurntableNumber(){
 void UserData::setTurntableNumber(std::string msg){
     UserDefault::getInstance()->setStringForKey("share_turntable_num",msg);
 }
+
+std::string UserData::getGongZhongHao(){
+    return UserDefault::getInstance()->getStringForKey("gong_zhong_hao","");
+}
+void UserData::setGongZhongHao(std::string msg){
+    UserDefault::getInstance()->setStringForKey("gong_zhong_hao",msg);
+}

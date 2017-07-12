@@ -119,6 +119,9 @@ public:
     std::string getTurntableNumber();
     void setTurntableNumber(std::string msg);
     
+    std::string getGongZhongHao();
+    void setGongZhongHao(std::string msg);
+    
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();

@@ -7,8 +7,11 @@
 //
 
 #include "mahjong/lobby/gongzhonghao/GongZhongHaoLayer.hpp"
-#include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
+#include "mahjong/GameConfig.h"
+#include "userdata/UserData.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 GongZhongHaoLayer* GongZhongHaoLayer::create(){
     auto gongGao = new GongZhongHaoLayer();
@@ -26,7 +29,7 @@ bool GongZhongHaoLayer::init(){
     if(!Layer::init()){
         return false;
     }
-
+    
     
     auto day_bg = Sprite::create("shop/shop_bg.png");
     day_bg->setTag(1024);
@@ -54,6 +57,17 @@ bool GongZhongHaoLayer::init(){
     weixin->setPosition(600,545);
     addChild(weixin);
     
+    haoma = Label::createWithSystemFont(UserData::getInstance()->getGongZhongHao(), "arial", 32);
+    haoma->setColor(Color3B(153,39,0));
+    haoma->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    haoma->setPosition(685,545);
+    addChild(haoma);
+    
+    auto copyWxImg  = MenuItemImage::create("gongzhonghao/copy_1.png", "gongzhonghao/copy_2.png", CC_CALLBACK_0(GongZhongHaoLayer::copyText,this));
+    auto copyMenu = Menu::create(copyWxImg,NULL);
+    copyMenu->setPosition(945,550);
+    addChild(copyMenu);
+    
     showIndex =0;
     for(int i=0;i<totalPage;i++){
         GongZhongHaoItem* gonggao = GongZhongHaoItem::create(i);
@@ -77,7 +91,7 @@ bool GongZhongHaoLayer::init(){
         }
         
     }
-
+    
     schedule(schedule_selector(GongZhongHaoLayer::updateGongGao),6, CC_REPEAT_FOREVER, 0);
     
     auto touchListener = EventListenerTouchOneByOne::create();
@@ -127,7 +141,7 @@ bool GongZhongHaoLayer::onTouchBegan(Touch *touch, Event  *event){
 
 void GongZhongHaoLayer::onTouchMoved(Touch *touch, Event  *event){
     
-    }
+}
 
 
 void GongZhongHaoLayer::onTouchEnded(Touch *touch, Event  *event){
@@ -158,11 +172,43 @@ void GongZhongHaoLayer::onTouchEnded(Touch *touch, Event  *event){
                 bubbles.at(i)->setTexture("gongzhonghao/bubble_1.png");
             }
         }
-
+        
     }
 }
 
 float GongZhongHaoLayer::getDistance(Point s, Point e){
     return sqrt(pow(e.x-s.x, 2)+pow(e.y-s.y, 2));
+    
+}
 
+void GongZhongHaoLayer::copyText(){
+    std::string content = haoma->getString();
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->copyToPasteboard(content);
+#endif
+    
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->copyToPasteboard(content);
+#endif
+    toast();
+}
+
+void GongZhongHaoLayer::toast(){
+    auto bg = Sprite::create("common/toast_bg.png");
+    bg->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    bg->setPosition(650,300);
+    bg->setScaleX(0.2);
+    addChild(bg);
+    auto shui = Label::createWithSystemFont("复制成功","arial",26);
+    shui->setColor(Color3B(255,183,64));
+    shui->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    shui->setPosition(600,300);
+    addChild(shui);
+    
+    bg->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){
+        bg->setVisible(false);
+    }), NULL));
+    shui->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){
+        shui->setVisible(false);
+    }), NULL));
 }

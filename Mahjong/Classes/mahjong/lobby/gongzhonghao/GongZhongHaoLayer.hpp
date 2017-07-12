@@ -18,7 +18,7 @@ USING_NS_CC;
 class GongZhongHaoLayer : public Layer{
 public:
     static GongZhongHaoLayer* create();
-    bool init();
+    bool init() override ;
     bool onTouchBegan(Touch *touch, Event  *event) override;
     void onTouchMoved(Touch *touch, Event  *event) override;
     void onTouchEnded(Touch *touch, Event  *event) override;
@@ -26,12 +26,15 @@ private:
     int totalPage = 4;
     int showIndex ;
     Point lastPos;
+    Label* haoma;
     std::vector<GongZhongHaoItem*> contents;
     std::vector<Sprite*> bubbles;
     Point getBubblePos(int size,int index);
     void updateGongGao(float dt);
     void closeView();
     float getDistance(Point s, Point e);
+    void copyText();
+    void toast();
 };
 
 #endif /* GameGongGao_hpp */

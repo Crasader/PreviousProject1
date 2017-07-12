@@ -1088,6 +1088,11 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &scon = _mDoc["sconnum"];
             UserData::getInstance()->setShareTextContentNum(scon.GetString());
         }
+        //公众号
+        if(_mDoc.HasMember("gongzhonghao")){
+            const rapidjson::Value &gongzhonghao = _mDoc["gongzhonghao"];
+            UserData::getInstance()->setGongZhongHao(gongzhonghao.GetString());
+        }
         //用户当前拥有的抽奖次数
         if(_mDoc.HasMember("dzpc")){
             const rapidjson::Value &dzpc = _mDoc["dzpc"];
