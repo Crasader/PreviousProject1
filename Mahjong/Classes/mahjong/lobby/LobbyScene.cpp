@@ -548,9 +548,6 @@ void LobbyScene::showWanJiaQun(){
 
 void LobbyScene::showDayTask(){
     Audio::getInstance()->playSoundClick();
-    //    DailyEvent* day = DailyEvent::create();
-    //    day->showDailyEvent(DailyType::pride);
-    //    addChild(day,3);
 }
 
 
@@ -992,23 +989,8 @@ void LobbyScene::addEventListener(){
     //开房询问
     openRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_OPEN_ROOM, [=](EventCustom* event){
         removeLoading();
-        if(UserData::getInstance()->getFangkaNum()>0){
-            FriendRoom* friendroom = FriendRoom::create();
-            addChild(friendroom,10);
-        }else{
-#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-            if(UserData::getInstance()->isWeixinPayOpen()){
-                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-                addChild(charge,14);
-            }else{
-                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
-                addChild(hint,14);
-            }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
-            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-            addChild(charge,14);
-#endif
-        }
+        FriendRoom* friendroom = FriendRoom::create();
+        addChild(friendroom,10);
     });
     
     //进入房间询问
