@@ -6931,7 +6931,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
-            landmarkName = "HuafeiShop::onEnter()"
+            landmarkName = "HuafeiShop::init()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

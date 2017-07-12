@@ -191,7 +191,7 @@ void HuafeiShop::showFangKaChange(Ref* ref){
 void HuafeiShop::showRecord(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiRecordCommmand());
     HuafeiExchangeRecord* record  = HuafeiExchangeRecord::create();
-    addChild(record);
+    addChild(record,100);
 }
 
 void  HuafeiShop:: closeView(){
