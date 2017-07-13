@@ -89,7 +89,7 @@ bool HZPlayerResultCell::init(GameResultData data){
         }else{
             fuhao->setTexture("result/gang_fen_jian.png");
         }
-        fuhao->setPosition(230,20);
+        fuhao->setPosition(225,20);
         addChild(fuhao);
         
         auto juNum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
@@ -231,12 +231,12 @@ bool HZPlayerResultCell::init(GameResultData data){
         
         auto jifenIcon =  Sprite::create("common/jifen_icon.png");
         jifenIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        jifenIcon->setPosition(220,-10);
+        jifenIcon->setPosition(240,-10);
         addChild(jifenIcon);
         
         resultNum->setScale(1.0f);
         resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        resultNum->setPosition(290,-10);
+        resultNum->setPosition(310,-10);
     }
     
     return true;
