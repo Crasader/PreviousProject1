@@ -822,52 +822,44 @@ void ReviewGame::addCoustomListener(){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
             playerLeft->drawPlayedJongMingpai(poker);
-            if(poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
-            }else if(poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
-            }
         }
         else if (seatId == ClientSeatId::right){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
             playerRight->drawPlayedJongMingpai(poker);
-            if(poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
-            }else if(poker== playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
-            }
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
             playerOpposite->drawPlayedJongMingpai(poker);
-            if(poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
-            }else if(poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
-            }
         }else if(seatId == ClientSeatId::hero){
             playerHero->stopTimeClockAnim();
             playerHero->drawPlayedJongMingpai(poker);
-            if(poker == playerLeft->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-            }else if(poker == playerRight->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
-            }
         }
         if(fupanStep>= currentMaxStep){
             //记录玩家的手牌
             PlayMingpaiRecord record;
             record.step = fupanStep;
-            PlayerMingpai leftpai;
-            leftpai.seatId = ClientSeatId::left;
-            leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
-            leftpai.playerHandJongs = playerLeft->playerHandJongs;
-            leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
-            leftpai.hua = playerLeft->getHuaNum();
-            leftpai.isTing =  playerLeft->getPlayerTingState();
-            record.record.push_back(leftpai);
+            if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
+                PlayerMingpai leftpai;
+                leftpai.seatId = ClientSeatId::left;
+                leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
+                leftpai.playerHandJongs = playerLeft->playerHandJongs;
+                leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
+                leftpai.hua = playerLeft->getHuaNum();
+                leftpai.isTing =  playerLeft->getPlayerTingState();
+                record.record.push_back(leftpai);
+                
+                PlayerMingpai rightpai;
+                rightpai.seatId = ClientSeatId::right;
+                rightpai.playerCpgRecords = playerRight->playerCpgRecords;
+                rightpai.playerHandJongs = playerRight->playerHandJongs;
+                rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
+                rightpai.hua = playerRight->getHuaNum();
+                rightpai.isTing =  playerRight->getPlayerTingState();
+                record.record.push_back(rightpai);
+                
+            }
             PlayerMingpai oppsitepai;
             oppsitepai.seatId = ClientSeatId::opposite;
             oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
@@ -876,14 +868,6 @@ void ReviewGame::addCoustomListener(){
             oppsitepai.hua = playerOpposite->getHuaNum();
             oppsitepai.isTing =  playerOpposite->getPlayerTingState();
             record.record.push_back(oppsitepai);
-            PlayerMingpai rightpai;
-            rightpai.seatId = ClientSeatId::right;
-            rightpai.playerCpgRecords = playerRight->playerCpgRecords;
-            rightpai.playerHandJongs = playerRight->playerHandJongs;
-            rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
-            rightpai.hua = playerRight->getHuaNum();
-            rightpai.isTing =  playerRight->getPlayerTingState();
-            record.record.push_back(rightpai);
             PlayerMingpai heropai;
             heropai.seatId = ClientSeatId::hero;
             heropai.playerCpgRecords = playerHero->playerCpgRecords;

@@ -2968,7 +2968,7 @@ void MsgHandler::fangZhuLeaveRoom(std::string msg){
     }
 }
 
-//复盘玩家数据code:10000
+//复盘玩家数据
 void MsgHandler::handleFupanInfo(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -2980,18 +2980,25 @@ void MsgHandler::handleFupanInfo(std::string msg){
     }
     if(_mDoc.HasMember("playback")){
         const rapidjson::Value &playback = _mDoc["playback"];
-        
         for(int i=0;i<playback.Capacity();i++){
             const rapidjson::Value &temp = playback[i];
             if(temp.HasMember("key")){
                 info.playBackInfo.push_back(temp["key"].GetString());
             }
         }
-        
     }
     if(_mDoc.HasMember("who")){
         const rapidjson::Value &who = _mDoc["who"];
         info.heroid =who.GetString();
+    }
+    if(_mDoc.HasMember("size")){
+        log("AAAAAAAAAAAAAAAAAAAAAAAA");
+        const rapidjson::Value &who = _mDoc["size"];
+        if(strcmp(who.GetString(), "2") == 0){
+            GAMEDATA::getInstance()->setMyGameModel(GameModel::TWOPLAYER);
+        }else{
+            GAMEDATA::getInstance()->setMyGameModel(GameModel::FOURPLAYER);
+        }
     }
     if(_mDoc.HasMember("t")){
         const rapidjson::Value &temp = _mDoc["t"];

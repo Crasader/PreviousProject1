@@ -1037,7 +1037,7 @@ void ReviewHongZhong::onExit()
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
     //MyIM::leaveRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
 #endif
-//    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
+    //    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
@@ -1158,7 +1158,7 @@ void ReviewHongZhong::onEnter(){
     
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-//        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        //        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
     fangZhuLeaveListener = EventListenerCustom::create(MSG_GAME_FANG_ZHU_LEAVE, [=](EventCustom* event){
@@ -1173,38 +1173,7 @@ void ReviewHongZhong::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fangZhuLeaveListener, 1);
     
-//    gameFaPaiListener = EventListenerCustom::create(MSG_HZ_GAME_START_FAPAI_NOTIFY, [=](EventCustom* event){
-//        if(GAMEDATA::getInstance()->getIsPlaying()){
-//            return;
-//        }
-//        MahjongFaPaiData* msgData = static_cast<MahjongFaPaiData*>(event->getUserData());
-//        MahjongFaPaiData newMsgData = *msgData;
-//        GAMEDATA::getInstance()->setCurrentBank(newMsgData.start);
-//        FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
-//        data.prjucount = StringUtils::format("%d",newMsgData.prjucount);
-//        GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
-//        GAMEDATA::getInstance()->setIsPlaying(true);//游戏状态改为游戏中
-//        if(NULL != playerHero){
-//            playerHero->setIsReady(false);//关闭准备的显示
-//            std::vector<std::string> strvce = StringUtil::split(newMsgData.heroPokers, ",");
-//            GAMEDATA::getInstance()->setHeroJongs(strvce);
-//        }
-//        if(NULL != playerRight)
-//            playerRight->setIsReady(false);
-//        if(NULL != playerOpposite)
-//            playerOpposite->setIsReady(false);
-//        if(NULL != playerLeft)
-//            playerLeft->setIsReady(false);
-//        playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
-//        guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
-//        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
-//        vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;
-//        DealJongAnim* anim = DealJongAnim::create();
-//        anim->setTag(1000);
-//        anim->showDealJong(SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank()) ,atoi(dice2.at(0).c_str()),atoi(dice2.at(1).c_str()),newMsgData.mjReplaceVec,newMsgData.mjTingData);
-//        addChild(anim);
-//    });
-//    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(gameFaPaiListener, 1);
+
     
     networkBreakListener = EventListenerCustom::create(MSG_NETWORK_BREAK_INFO, [=](EventCustom* event){
         if(NetworkManage::getInstance()->reConnectSocket()){
@@ -1468,53 +1437,42 @@ void ReviewHongZhong::onEnter(){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
             playerLeft->drawPlayedJongMingpai(poker);
-//            if(poker == playerOpposite->getLastPoker()){
-//                Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
-//            }else if(poker == playerHero->getLastPoker()){
-//                Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
-//            }
         }
         else if (seatId == ClientSeatId::right){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
             playerRight->drawPlayedJongMingpai(poker);
-//            if(poker == playerHero->getLastPoker()){
-//                Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
-//            }else if(poker == playerOpposite->getLastPoker()){
-//                Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
-//            }
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
             playerOpposite->drawPlayedJongMingpai(poker);
-//            if(poker == playerRight->getLastPoker()){
-//                Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
-//            }else if(poker == playerLeft->getLastPoker()){
-//                Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
-//            }
         }else if(seatId == ClientSeatId::hero){
             playerHero->stopTimeClockAnim();
             playerHero->drawPlayedJongMingpai(poker);
-//            if(poker == playerLeft->getLastPoker()){
-//                Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
-//            }else if(poker == playerRight->getLastPoker()){
-//                Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
-//            }
-            
         }
         if(fupanStep>= currentMaxStep){
             //记录玩家的手牌
             PlayMingpaiRecord record;
             record.step = fupanStep;
-            PlayerMingpai leftpai;
-            leftpai.seatId = ClientSeatId::left;
-            leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
-            leftpai.playerHandJongs = playerLeft->playerHandJongs;
-            leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
-            leftpai.hua = playerLeft->getHuaNum();
-            leftpai.isTing =  playerLeft->getPlayerTingState();
-            record.record.push_back(leftpai);
+            if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
+                PlayerMingpai leftpai;
+                leftpai.seatId = ClientSeatId::left;
+                leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
+                leftpai.playerHandJongs = playerLeft->playerHandJongs;
+                leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
+                leftpai.hua = playerLeft->getHuaNum();
+                leftpai.isTing =  playerLeft->getPlayerTingState();
+                record.record.push_back(leftpai);
+                PlayerMingpai rightpai;
+                rightpai.seatId = ClientSeatId::right;
+                rightpai.playerCpgRecords = playerRight->playerCpgRecords;
+                rightpai.playerHandJongs = playerRight->playerHandJongs;
+                rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
+                rightpai.hua = playerRight->getHuaNum();
+                rightpai.isTing =  playerRight->getPlayerTingState();
+                record.record.push_back(rightpai);
+            }
             PlayerMingpai oppsitepai;
             oppsitepai.seatId = ClientSeatId::opposite;
             oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
@@ -1523,14 +1481,6 @@ void ReviewHongZhong::onEnter(){
             oppsitepai.hua = playerOpposite->getHuaNum();
             oppsitepai.isTing =  playerOpposite->getPlayerTingState();
             record.record.push_back(oppsitepai);
-            PlayerMingpai rightpai;
-            rightpai.seatId = ClientSeatId::right;
-            rightpai.playerCpgRecords = playerRight->playerCpgRecords;
-            rightpai.playerHandJongs = playerRight->playerHandJongs;
-            rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
-            rightpai.hua = playerRight->getHuaNum();
-            rightpai.isTing =  playerRight->getPlayerTingState();
-            record.record.push_back(rightpai);
             PlayerMingpai heropai;
             heropai.seatId = ClientSeatId::hero;
             heropai.playerCpgRecords = playerHero->playerCpgRecords;
@@ -1752,14 +1702,25 @@ void ReviewHongZhong::onEnter(){
         //记录玩家的手牌
         PlayMingpaiRecord record;
         record.step = fupanStep;
-        PlayerMingpai leftpai;
-        leftpai.seatId = ClientSeatId::left;
-        leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
-        leftpai.playerHandJongs = playerLeft->playerHandJongs;
-        leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
-        leftpai.hua = playerLeft->getHuaNum();
-        leftpai.isTing =  false;
-        record.record.push_back(leftpai);
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
+            PlayerMingpai leftpai;
+            leftpai.seatId = ClientSeatId::left;
+            leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
+            leftpai.playerHandJongs = playerLeft->playerHandJongs;
+            leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
+            leftpai.hua = playerLeft->getHuaNum();
+            leftpai.isTing =  false;
+            record.record.push_back(leftpai);
+            PlayerMingpai rightpai;
+            rightpai.seatId = ClientSeatId::right;
+            rightpai.playerCpgRecords = playerRight->playerCpgRecords;
+            rightpai.playerHandJongs = playerRight->playerHandJongs;
+            rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
+            rightpai.hua = playerRight->getHuaNum();
+            rightpai.isTing =  false;
+            record.record.push_back(rightpai);
+            
+        }
         PlayerMingpai oppsitepai;
         oppsitepai.seatId = ClientSeatId::opposite;
         oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
@@ -1768,14 +1729,6 @@ void ReviewHongZhong::onEnter(){
         oppsitepai.hua = playerOpposite->getHuaNum();
         oppsitepai.isTing =  false;
         record.record.push_back(oppsitepai);
-        PlayerMingpai rightpai;
-        rightpai.seatId = ClientSeatId::right;
-        rightpai.playerCpgRecords = playerRight->playerCpgRecords;
-        rightpai.playerHandJongs = playerRight->playerHandJongs;
-        rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
-        rightpai.hua = playerRight->getHuaNum();
-        rightpai.isTing =  false;
-        record.record.push_back(rightpai);
         PlayerMingpai heropai;
         heropai.seatId = ClientSeatId::hero;
         heropai.playerCpgRecords = playerHero->playerCpgRecords;
