@@ -51,20 +51,22 @@ void SpecialResultLayer::showResultTitle(){
 
 void SpecialResultLayer::showGameReslut(){
     
-//    auto fanghao = Sprite::create("result/fang_jian_hao.png");
-//    fanghao->setPosition(940,570);
-//    addChild(fanghao,1);
-    
-//    auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
-//    fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-//    fanghaoNum->setPosition(980,570);
-//    addChild(fanghaoNum);
-    
+    auto fanghao = Sprite::create("result/fang_jian_hao.png");
+    fanghao->setPosition(1000,600);
+    addChild(fanghao,1);
+    auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
+    fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    fanghaoNum->setPosition(1045,600);
+    addChild(fanghaoNum);
     
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
     for (int i=0; i<results.size();i++) {
         GameResultCell* cell = GameResultCell::create(results.at(i));
-        cell->setPosition(215+285*i,340);
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+            cell->setPosition(320+320*i,340);
+        }else{
+            cell->setPosition(215+285*i,340);
+        }
         addChild(cell);
     }
     if(UserData::getInstance()->isWeixinPayOpen()){

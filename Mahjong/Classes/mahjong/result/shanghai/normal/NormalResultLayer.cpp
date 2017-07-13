@@ -171,7 +171,7 @@ void NormalResultLayer::showRoomInfo(){
         jucount->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         juNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
         juNum->setPosition(jucount->getPositionX()+45,jucount->getPositionY());
-      
+        
     }else{
         auto xioahao = Sprite::create("result/mei_ju_xiao_hao.png");
         xioahao->setPosition(640,560);
@@ -187,7 +187,11 @@ void NormalResultLayer::showPlayerResluts(){
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
     for (int i=0; i<results.size();i++) {
         PlayerResultCell* cell = PlayerResultCell::create(results.at(i));
-        cell->setPosition(640,490-110*i);
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+            cell->setPosition(640,470-180*i);
+        }else{
+            cell->setPosition(640,490-110*i);
+        }
         addChild(cell);
     }
 }
@@ -213,12 +217,12 @@ void NormalResultLayer::showLayerBtn(){
             myMneu->addChild(feedImage);
             myMneu->setPosition(640,60);
             addChild(myMneu);
-        
+            
             
             timeLabel->setVisible(true);
             timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE);
             timeLabel->setPosition(850,55);
-        
+            
             
         }else{
             auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(NormalResultLayer::gotoLobby, this));

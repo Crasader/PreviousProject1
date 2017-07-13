@@ -190,7 +190,11 @@ void HZNormalResultLayer::showPlayerResluts(){
     vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
     for (int i=0; i<results.size();i++) {
         HZPlayerResultCell* cell = HZPlayerResultCell::create(results.at(i));
-        cell->setPosition(640,490-110*i);
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+            cell->setPosition(640,470-180*i);
+        }else{
+            cell->setPosition(640,490-110*i);
+        }
         addChild(cell);
     }
 }
