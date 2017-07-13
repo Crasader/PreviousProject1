@@ -31,8 +31,6 @@ private:
     MenuItemImage* tab2;
     MenuItemImage* tab3;
     RankList* ranA ;
-    void shareToFriend();
-    void shareToSocial();
     void showRank1();
     void showRank2();
     void showRank3();

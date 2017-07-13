@@ -1075,17 +1075,6 @@ void MsgHandler::loginResp(std::string msg){
     
     const rapidjson::Value &result = _mDoc["result"];
     if (result.GetInt() == 1){
-        if(_mDoc.HasMember("yq")){
-            UserData::getInstance()->setInviteCodeBind(false);
-            if(_mDoc.HasMember("type")){
-                UserData::getInstance()->setInvitePropType(_mDoc["type"].GetString());
-            }
-            if(_mDoc.HasMember("num")){
-                UserData::getInstance()->setInvitePropNum(_mDoc["num"].GetString());
-            }
-        }else{
-            UserData::getInstance()->setInviteCodeBind(true);
-        }
         //分享界面信息
         if(_mDoc.HasMember("scon")){
             const rapidjson::Value &scon = _mDoc["scon"];

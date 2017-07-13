@@ -881,7 +881,6 @@ void LobbyScene::addEventListener(){
         GAMEDATA::getInstance()->setGameType(1);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
-            //            ChatAndroidMethod::getInstance()->createChatRoom(UserData::getInstance()->getPoxiaoId());
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }else if(resp.result == 2){
@@ -1069,10 +1068,8 @@ void LobbyScene::addEventListener(){
         }
         if(UserData::getInstance()->isFirstCharge()){
             firstMenu->setVisible(false);
-            ganTanhao->setVisible(false);
         }else{
             firstMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
-            ganTanhao->setVisible(UserData::getInstance()->isWeixinPayOpen());
         }
 #endif
     });
