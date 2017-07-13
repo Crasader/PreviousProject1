@@ -137,6 +137,7 @@ void DissovleRoomDialog::checkAllConfirm(){
         }
     }
     if(needRemove||count == items.size()){
+        GAMEDATA::getInstance()->setDissovleDialogRemove(true);
         schedule([=](float dt){
             removeFromParent();
         }, 0, 0, 2,"KKKKK");

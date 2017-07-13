@@ -767,7 +767,7 @@ void LobbyScene::addEventListener(){
     //进入房间回复
     enterRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_ROOM_RESP, [=](EventCustom* event){
         removeLoading();
-        
+        GAMEDATA::getInstance()->setMyGameModel(GameModel::FOURPLAYER);
         EnterRoomResp* respData = static_cast<EnterRoomResp*>(event->getUserData());
         EnterRoomResp newRespData = *respData;
         if (newRespData.result == "1"){
