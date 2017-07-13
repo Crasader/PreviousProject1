@@ -70,7 +70,7 @@ void DailyPride::showDailyPrideLayer(){
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
     
-    auto bg = LayerColor::create(Color4B(0, 0, 0, 150), 1280, 720);
+    auto bg = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
     addChild(bg);
     
     auto rightGirl = Sprite::create("daily/right_girl.png");

@@ -58,14 +58,14 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     auto fanNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getHZMaShu().c_str()), "result/fan_num.png", 17, 26, '0');
     fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fanNum->setPosition(160,-15);
+    fanNum->setPosition(210,-15);
     addChild(fanNum);
     auto fanText = Sprite::create("result/ma.png");
-    fanText->setPosition(105,-15);
+    fanText->setPosition(155,-15);
     addChild(fanText);
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         fanNum->setPosition(180,-15);
-        fanText->setPosition(125,-15);
+        fanText->setPosition(175,-15);
     }
     
     if(GAMEDATA::getInstance()->getCurrentBank() ==  data.seatId){
@@ -79,7 +79,7 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     if(data.gangfen !=""){
         auto gangfenText = Sprite::create("result/gang_fen.png");
-        gangfenText->setPosition(130,20);
+        gangfenText->setPosition(180,20);
         addChild(gangfenText);
         
         int fen = atoi(data.gangfen.c_str());
@@ -89,11 +89,11 @@ bool HZPlayerResultCell::init(GameResultData data){
         }else{
             fuhao->setTexture("result/gang_fen_jian.png");
         }
-        fuhao->setPosition(180,20);
+        fuhao->setPosition(230,20);
         addChild(fuhao);
         
         auto juNum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
-        juNum->setPosition(180,10);
+        juNum->setPosition(230,10);
         addChild(juNum);
     }else{
         log("GangFen is null");

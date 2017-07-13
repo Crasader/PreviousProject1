@@ -587,10 +587,10 @@ void LobbyScene::chargeFangka(){
     Audio::getInstance()->playSoundClick();
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
     if(UserData::getInstance()->isWeixinPayOpen()){
-        if(!UserData::getInstance()->isInviteCodeBind()){
-            InviteCodeLayer* lay = InviteCodeLayer::create();
-            addChild(lay,6);
-        }
+//        if(!UserData::getInstance()->isInviteCodeBind()){
+//            InviteCodeLayer* lay = InviteCodeLayer::create();
+//            addChild(lay,6);
+//        }
         ChargeFangka* charge = ChargeFangka::create();
         addChild(charge,3);
     }else{
@@ -598,10 +598,10 @@ void LobbyScene::chargeFangka(){
         addChild(hint,3);
     }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-    if(!UserData::getInstance()->isInviteCodeBind()){
-        InviteCodeLayer* lay = InviteCodeLayer::create();
-        addChild(lay,6);
-    }
+//    if(!UserData::getInstance()->isInviteCodeBind()){
+//        InviteCodeLayer* lay = InviteCodeLayer::create();
+//        addChild(lay,6);
+//    }
     ChargeFangka* charge = ChargeFangka::create();
     addChild(charge,3);
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)

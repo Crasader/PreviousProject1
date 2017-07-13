@@ -15,6 +15,8 @@ bool HuafeiExchangeRecord::init(){
     if(!Layer::init()){
         return false;
     }
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 100), 1280, 720);
+    addChild(bg0);
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);

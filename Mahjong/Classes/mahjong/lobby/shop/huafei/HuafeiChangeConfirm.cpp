@@ -27,6 +27,8 @@ bool HuafeiChangeConfirm::init(std::string propId,std::string propName, std::str
     if(!Layer::init()){
         return false;
     }
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 100), 1280, 720);
+    addChild(bg0);
     setItemPropId(propId);
     setPhoneNum(phone);
     MenuItem* item = MenuItem::create();

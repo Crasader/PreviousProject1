@@ -23,6 +23,9 @@ bool HuafeiShop::init(){
         
         return false;
     }
+    auto bg = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg);
+    
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
