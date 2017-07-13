@@ -1100,7 +1100,12 @@ void MsgHandler::loginResp(std::string msg){
         //用户当前的支付方式
         if(_mDoc.HasMember("payway")){
             const rapidjson::Value &payway = _mDoc["payway"];
-            UserData::getInstance()->setGongZhongHao(payway.GetString());
+            UserData::getInstance()->setUserPayWay(payway.GetString());
+        }
+        //微信公众号折扣信息
+        if(_mDoc.HasMember("gzh")){
+            const rapidjson::Value &gzh = _mDoc["gzh"];
+            UserData::getInstance()->setDiscountInfo(gzh.GetString());
         }
         //用户当前拥有的抽奖次数
         if(_mDoc.HasMember("dzpc")){

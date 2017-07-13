@@ -125,6 +125,9 @@ public:
     std::string getUserPayWay();
     void setUserPayWay(std::string msg);
     
+    std::string getDiscountInfo();
+    void setDiscountInfo(std::string msg);
+    
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();

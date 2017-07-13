@@ -124,8 +124,7 @@ void ChargeGold::showChargeGold(){
         diamond->setPosition(205+175*i,370);
         this->addChild(diamond);
     
-        
-        float goldN = list.list.at(i).gold/10000;
+        float goldN = list.list.at(i).gold/10000.0f;
         LabelAtlas* diamondNum = LabelAtlas::create("0","shop/change_gold_num.png",22,29,'0');
         if(goldN>=1){
             diamondNum->setString(StringUtils::format(":%d",(int)goldN));
@@ -137,12 +136,12 @@ void ChargeGold::showChargeGold(){
             }
             diamondNum->setString(StringUtils::format(":%s",number.c_str()));
         }
-        diamondNum->setPosition(235+175*i,340);
+        diamondNum->setPosition(230+175*i,340);
         diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(diamondNum);
         auto fontWan = Sprite::create("shop/font_wan.png");
         addChild(fontWan);
-        fontWan->setPosition(250+175*i,340);
+        fontWan->setPosition(245+175*i,340);
         
         auto xiaohao = Sprite::create("shop/xiao_hao_text.png");
         xiaohao->setPosition(205+175*i,307);

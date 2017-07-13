@@ -332,5 +332,12 @@ std::string UserData::getUserPayWay(){
     return UserDefault::getInstance()->getStringForKey("user_pay_way","2");//1为微信 2苹果
 }
 void UserData::setUserPayWay(std::string msg){
-     UserDefault::getInstance()->setStringForKey("user_pay_way",msg);
+    UserDefault::getInstance()->setStringForKey("user_pay_way",msg);
+}
+
+std::string UserData::getDiscountInfo(){
+    return UserDefault::getInstance()->getStringForKey("user_discount_info","");
+}
+void UserData::setDiscountInfo(std::string msg){
+    UserDefault::getInstance()->setStringForKey("user_discount_info",msg);
 }
