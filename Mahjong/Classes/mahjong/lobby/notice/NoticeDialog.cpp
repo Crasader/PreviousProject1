@@ -28,25 +28,35 @@ bool NoticeDialog::init(){
     bg->setPosition(640,360);
     addChild(bg);
     
+    
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        CC_CALLBACK_0(NoticeDialog::closeView, this));
     
     auto menu =Menu::create(close,NULL);
-    menu->setPosition(1050,610);
-    addChild(menu,1);
+    menu->setPosition(1080,640);
+    addChild(menu,3);
     
     content = Sprite::create();
     content->setPosition(640,360);
+    content->setVisible(false);
     addChild(content);
+    
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    contentWebView = cocos2d::experimental::ui::WebView::create();
+    contentWebView->setContentSize(bg->getContentSize()*0.9);
+    contentWebView->setPosition(Point(640,360));
+    contentWebView->setVisible(false);
+    addChild(contentWebView);
+#endif
     return true;
 }
 
 void NoticeDialog::onEnter(){
-   Layer::onEnter();
+    Layer::onEnter();
     updateContentImg  = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_GONG_GAO_SHOW_DIALOG, [=](EventCustom* event){
-        setContentImage(GAMEDATA::getInstance()->getGameActivityData().imageUrl,GAMEDATA::getInstance()->getGameActivityData().showTime);
+        setContentImage(GAMEDATA::getInstance()->getGameActivityData().imageUrl,GAMEDATA::getInstance()->getGameActivityData().imageUrl2,GAMEDATA::getInstance()->getGameActivityData().showTime);
     });
-
+    
 }
 
 void NoticeDialog::onExit(){
@@ -56,35 +66,44 @@ void NoticeDialog::onExit(){
 
 
 void NoticeDialog::closeView(){
-//    if(GAMEDATA::getInstance()->getShareActivityData().result == "1"&&!UserData::getInstance()->isClickShare()){
-//        ShareActivityLayer* lau = ShareActivityLayer::create();
-//        getParent()->addChild(lau,100);
-//    }
     removeFromParent();
 }
 
 
-void NoticeDialog::setContentImage(std::string fileName,std::string showTime){
-    std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(fileName);
-    if(showTime == "")
-        showTime = "6";
-    if(path != IAMGE_LOADING){
-        content->setTexture(path);
-        if("" != GAMEDATA::getInstance()->getGameActivityData().jumpUrl){
-            MenuItem* clickUrl = MenuItem::create([=](Ref* ref){
-                Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().jumpUrl);
-            });
-            clickUrl->setContentSize(content->getContentSize());
-            Menu* myMenu = Menu::create(clickUrl,NULL);
-            myMenu->setPosition(640,360);
-            addChild(myMenu);
+void NoticeDialog::setContentImage(std::string url,std::string url2,std::string showTime){
+    if(url2 != ""){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        if(showTime == ""){
+            showTime = "6";
         }
+        contentWebView->setVisible(true);
+        contentWebView->loadURL(url2);
         schedule([=](float dt){
-//            if(GAMEDATA::getInstance()->getShareActivityData().result == "1"&&!UserData::getInstance()->isClickShare()){
-//                ShareActivityLayer* lau = ShareActivityLayer::create();
-//                getParent()->addChild(lau,100);
-//            }
             removeFromParent();
         }, 0, 0, atoi(showTime.c_str()),"dismiss");
+#endif
+    }else{
+        std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url);
+        if(showTime == "")
+            showTime = "6";
+        if(path != IAMGE_LOADING){
+            content->setVisible(true);
+            content->setTexture(path);
+            if("" != GAMEDATA::getInstance()->getGameActivityData().jumpUrl){
+                MenuItem* clickUrl = MenuItem::create([=](Ref* ref){
+                    Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().jumpUrl);
+                });
+                clickUrl->setContentSize(content->getContentSize());
+                Menu* myMenu = Menu::create(clickUrl,NULL);
+                myMenu->setPosition(640,360);
+                addChild(myMenu);
+                if(showTime == ""){
+                    showTime = "6";
+                }
+                schedule([=](float dt){
+                    removeFromParent();
+                }, 0, 0, atoi(showTime.c_str()),"dismiss");
+            }
+        }
     }
 }

@@ -1029,7 +1029,7 @@ void LobbyScene::addEventListener(){
         GAMEDATA::getInstance()->setGameActivityData(newData);
         if(!GAMEDATA::getInstance()->getHaveShowNotice()){
             NoticeDialog* nod = NoticeDialog::create();
-            nod->setContentImage(newData.imageUrl,newData.showTime);
+            nod->setContentImage(newData.imageUrl,newData.imageUrl2,newData.showTime);
             addChild(nod,100);
             GAMEDATA::getInstance()->setHaveShowNotice(true);
         }

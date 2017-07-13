@@ -670,6 +670,10 @@ void MsgHandler::handleNoticeResp(std::string msg){
         auto &content = _mDoc["content"];
         data->imageUrl = content.GetString();
     }
+    if(_mDoc.HasMember("content1")){
+        auto &content1 = _mDoc["content1"];
+        data->imageUrl2 = content1.GetString();
+    }
     if(_mDoc.HasMember("url")){
         auto &url = _mDoc["url"];
         data->jumpUrl = url.GetString();

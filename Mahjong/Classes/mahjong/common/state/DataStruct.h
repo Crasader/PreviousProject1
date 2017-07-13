@@ -743,6 +743,7 @@ struct MahjongFaPaiData{
 
 struct GameActivityData{
     std::string imageUrl;
+    std::string imageUrl2;
     std::string showTime;
     std::string jumpUrl;
 };
