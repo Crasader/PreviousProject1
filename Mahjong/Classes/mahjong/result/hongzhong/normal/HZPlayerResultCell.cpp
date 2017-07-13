@@ -228,7 +228,6 @@ bool HZPlayerResultCell::init(GameResultData data){
         }
     }else{
         
-        
         auto jifenIcon =  Sprite::create("common/jifen_icon.png");
         jifenIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         jifenIcon->setPosition(240,-10);
