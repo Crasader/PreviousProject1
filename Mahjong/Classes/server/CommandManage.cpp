@@ -659,12 +659,12 @@ std::string CommandManage::sendQuitCompetitionCommand(std::string competitionId)
     return commandString(keyValue);
 }
 
-std::string CommandManage::sendHuafeiExchangeCommand(){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_LIST_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    return commandString(keyValue);
-}
+//std::string CommandManage::sendHuafeiExchangeCommand(){
+//    std::map<std::string, std::string> keyValue;
+//    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_LIST_REQUEST)));
+//    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+//    return commandString(keyValue);
+//}
 
 std::string CommandManage::sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone){
     std::map<std::string, std::string> keyValue;
@@ -729,6 +729,13 @@ std::string CommandManage::sendTurntableShareCommand(){
 std::string CommandManage::sendTurntableStartCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_DZP_Z_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::sendExchangeHuaFeiCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_TO_FANGKA_LIST_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     return commandString(keyValue);
 }

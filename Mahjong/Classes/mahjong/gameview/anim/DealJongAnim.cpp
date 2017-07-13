@@ -78,19 +78,19 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
         }
     }) ,NULL));
     //step 3 发牌
-    Sprite* moon = Sprite::create();
-    moon->setPosition(640,360);
-    addChild(moon);
-    currentSeadId =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
-    moon->runAction(Sequence::create(DelayTime::create(80.0f/24),Repeat::create(Sequence::create(CallFunc::create([=](){
-        faPaiAction(currentSeadId,index);
-        index++;
-        currentSeadId= getNextSeatId(currentSeadId);
-    }), DelayTime::create(6.0/24), NULL), 12), NULL));
+//    Sprite* moon = Sprite::create();
+//    moon->setPosition(640,360);
+//    addChild(moon);
+//    currentSeadId =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
+//    moon->runAction(Sequence::create(DelayTime::create(80.0f/24),Repeat::create(Sequence::create(CallFunc::create([=](){
+//        faPaiAction(currentSeadId,index);
+//        index++;
+//        currentSeadId= getNextSeatId(currentSeadId);
+//    }), DelayTime::create(6.0/24), NULL), 12), NULL));
     //setp 4 牌开始展示
     auto lastStep = Sprite::create();
     addChild(lastStep);
-    lastStep->runAction(Sequence::create(DelayTime::create(144.0/24),CallFunc::create([=](){
+    lastStep->runAction(Sequence::create(DelayTime::create(72.0/24),CallFunc::create([=](){
         if(GAMEDATA::getInstance()->getGameType() == 1){
             if(NULL != ((MahjongView*)getParent()))
                 ((MahjongView*)getParent())->showPaiduiNum(91);

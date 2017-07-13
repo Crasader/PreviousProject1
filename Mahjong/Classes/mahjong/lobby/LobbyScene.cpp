@@ -622,7 +622,7 @@ void LobbyScene::exchangeHuafei(){
     Audio::getInstance()->playSoundClick();
     HuafeiShop* shop = HuafeiShop::create();
     addChild(shop,3);
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiExchangeCommand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendExchangeHuaFeiCommand());
 }
 
 void LobbyScene::showLoading(){

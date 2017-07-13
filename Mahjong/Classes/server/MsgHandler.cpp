@@ -453,7 +453,7 @@ void MsgHandler::distribute(int code, std::string msg){
             handleCompetitionAddPalyer(msg);
         }
             break;
-        case MSGCODE_FEE_LIST_RESPONSE:{
+        case MSGCODE_FEE_TO_FANGKA_LIST_RESPONSE:{
             handleHuafeiChangeListResp(msg);
         }
             break;
@@ -491,7 +491,7 @@ void MsgHandler::distribute(int code, std::string msg){
         }
         case MSGCODE_HH_FRIEND_DISMISS_AGREE_RESULT_NOTIFY:{
             handleHZDissovleRoomNotify(msg);
-         break;
+            break;
         }
         default:
             break;
@@ -2922,7 +2922,7 @@ void MsgHandler::openRoomEnquireResp(std::string msg){
         auto &lequan = _mDoc["le"];
         GAMEDATA::getInstance()->setFangzhuLequan(lequan.GetString());
     }
-//    4f  8f  16f
+    //    4f  8f  16f
     if(_mDoc.HasMember("4f")){
         auto &f4 = _mDoc["4f"];
         GAMEDATA::getInstance()->setKaiFangXiaoHao4(f4.GetString());
@@ -3861,7 +3861,7 @@ void MsgHandler::handleHZPlayerDissovleNotify(std::string msg){
         const rapidjson::Value &nickName = _mDoc["nickName"];
         std::string name = nickName.GetString();
         GAMEDATA::getInstance()->setDissolveName(name);
-         postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_HZ, nullptr);
+        postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_HZ, nullptr);
     }
 }
 
@@ -4047,19 +4047,34 @@ void MsgHandler::handleHuafeiChangeListResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-    const rapidjson::Value &mall = _mDoc["list"];
-    HuafeiChangeList data;
-    data.needInit = true;
-    for(int i=0;i<mall.Capacity();i++){
-        const rapidjson::Value &temp = mall[i];
-        HuafeiChange change;
-        change.propId = StringUtils::format("%d",temp["goods_id"].GetInt());
-        change.propPrice = temp["prize"].GetString();
-        change.url = temp["url"].GetString();
-        change.name =  temp["name"].GetString();
-        data.list.push_back(change);
-    }
-    GAMEDATA::getInstance()->setHuafeiChangeList(data);
+//    if(_mDoc.HasMember("list1")){
+//        const rapidjson::Value &mall = _mDoc["list1"];
+//        HuafeiChangeList data;
+//        data.needInit = true;
+//        for(int i=0;i<mall.Capacity();i++){
+//            const rapidjson::Value &temp = mall[i];
+//            HuafeiChange change;
+//            change.url = temp["url"].GetString();
+//            change.propPrice = temp["fee"].GetInt();
+//            change.tofee =  temp["tofee"].GetInt();
+//            data.list.push_back(change);
+//        }
+//        GAMEDATA::getInstance()->setHuafeiChangeList(data);
+//    }
+//    if(_mDoc.HasMember("list2")){
+//        const rapidjson::Value &mall = _mDoc["list1"];
+//        HuafeiChangeList data;
+//        data.needInit = true;
+//        for(int i=0;i<mall.Capacity();i++){
+//            const rapidjson::Value &temp = mall[i];
+//            HuafeiChange change;
+//            change.url = temp["url"].GetString();
+//            change.propPrice = temp["fangka"].GetInt();
+//            change.name =  temp["tofee"].GetInt();
+//            data.list.push_back(change);
+//        }
+//        GAMEDATA::getInstance()->setHuafeiChangeList(data);
+//    }
     postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_LIST, nullptr);
     
 }
