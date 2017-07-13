@@ -493,6 +493,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHZDissovleRoomNotify(msg);
             break;
         }
+        case MSGCODE_FANGKA_TO_FEE_RESPONSE:{
+            handleHuafeiChangeFangka(msg);
+            break;
+        }
         default:
             break;
     }
@@ -4093,8 +4097,8 @@ void MsgHandler::handleHuafeiChangeResp(std::string msg){
     const rapidjson::Value &result = _mDoc["result"];
     HuafeiChangeResult myResult;
     myResult.result = result.GetString();
-    if(_mDoc.HasMember("rest")){
-        const rapidjson::Value &lequan = _mDoc["rest"];
+    if(_mDoc.HasMember("fee")){
+        const rapidjson::Value &lequan = _mDoc["fee"];
         myResult.huafei = lequan.GetString();
     }
     GAMEDATA::getInstance()->setHuafeiChangeResult(myResult);
@@ -4287,6 +4291,22 @@ void MsgHandler::handleTurntableResult(std::string msg){
     }
     GAMEDATA::getInstance()->setTurnTablePrideData(data);
     postNotifyMessage(MSG_PLAYER_TURNTABLE_PRIDE_RESULT, nullptr);
+}
+
+void MsgHandler::handleHuafeiChangeFangka(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    HuafeiChangeResult myResult;
+    myResult.result = result.GetString();
+    if(_mDoc.HasMember("fee")){
+        const rapidjson::Value &lequan = _mDoc["fee"];
+        myResult.huafei = lequan.GetString();
+    }
+    GAMEDATA::getInstance()->setHuafeiChangeResult(myResult);
+    postNotifyMessage(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, nullptr);
 }
 
 void MsgHandler::handleTurntableShare(std::string msg){

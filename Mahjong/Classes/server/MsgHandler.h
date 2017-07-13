@@ -106,5 +106,6 @@ private:
     void handleTurntableData(std::string msg);
     void handleTurntableResult(std::string msg);
     void handleTurntableShare(std::string msg);
+    void handleHuafeiChangeFangka(std::string msg);
 };
 #endif

@@ -104,8 +104,8 @@ void ExchangeFangKaCell::confirmChange(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
     //判断券是否足够
     if(UserData::getInstance()->getHuafeiQuan()>=atoi(getpropPrice().c_str())){
-        ExchangeHuafeiItem* item = ExchangeHuafeiItem::create(temp->getTag(),temp->getName());
-        getParent()->addChild(item);
+        //发起兑换请求
+        
     }else{
         ShopHintDialog* dia = ShopHintDialog::create();
         dia->showImage("shop/hua_fei_not_enough.png");

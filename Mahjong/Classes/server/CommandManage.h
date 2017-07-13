@@ -93,6 +93,7 @@ public:
     std::string sendTurntableStartCommand();
     std::string sendExchangeHuaFeiCommand();
     std::string sendDuiHuanHuafeiCommand(std::string fee,std::string phone);
+    std::string sendDuiHuanFangkaCommand(std::string fee);
 private:
 	CommandManage();
 	static CommandManage* _instance;

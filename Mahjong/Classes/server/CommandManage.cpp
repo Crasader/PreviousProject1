@@ -749,6 +749,14 @@ std::string CommandManage::sendDuiHuanHuafeiCommand(std::string fee,std::string 
     return commandString(keyValue);
 }
 
+std::string CommandManage::sendDuiHuanFangkaCommand(std::string fee){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FANGKA_TO_FEE_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("fee", fee));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();
