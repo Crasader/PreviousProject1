@@ -309,7 +309,7 @@ void ReviewGame::showHeroGangUi(Ref* ref){
         std::string temp2 = "";
         for(auto gang : temp){
             if(temp2 != gang){
-               allGangs.push_back(gang);
+                allGangs.push_back(gang);
                 temp2 = gang;
             }
         }
@@ -372,7 +372,7 @@ void ReviewGame::heroDoPeng(Ref* ref){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
     PlayerCpgtData* cpg = static_cast<PlayerCpgtData*>(((MenuItemImage*)ref)->getUserData());
-   NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg->peng, atoi(cpg->poker.c_str())));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(cpg->peng, atoi(cpg->poker.c_str())));
 }
 
 void ReviewGame::heroDoGang(Ref* ref){
@@ -467,7 +467,7 @@ void ReviewGame::clearRoomPlayer(){
 void ReviewGame::showOriention(){
     Orientation* ori = Orientation::create();
     ori->setTag(123);
-
+    
     addChild(ori);
 }
 
@@ -657,7 +657,7 @@ void ReviewGame::addCoustomListener(){
     });
     
     coreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
-//        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+        //  TODO
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
     
@@ -733,14 +733,26 @@ void ReviewGame::addCoustomListener(){
         //记录玩家的手牌
         PlayMingpaiRecord record;
         record.step = fupanStep;
-        PlayerMingpai leftpai;
-        leftpai.seatId = ClientSeatId::left;
-        leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
-        leftpai.playerHandJongs = playerLeft->playerHandJongs;
-        leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
-        leftpai.hua = playerLeft->getHuaNum();
-        leftpai.isTing =  false;
-        record.record.push_back(leftpai);
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
+            PlayerMingpai leftpai;
+            leftpai.seatId = ClientSeatId::left;
+            leftpai.playerCpgRecords = playerLeft->playerCpgRecords;
+            leftpai.playerHandJongs = playerLeft->playerHandJongs;
+            leftpai.playerPlayedJongs =playerLeft->playerPlayedJongs;
+            leftpai.hua = playerLeft->getHuaNum();
+            leftpai.isTing =  false;
+            record.record.push_back(leftpai);
+            
+            PlayerMingpai rightpai;
+            rightpai.seatId = ClientSeatId::right;
+            rightpai.playerCpgRecords = playerRight->playerCpgRecords;
+            rightpai.playerHandJongs = playerRight->playerHandJongs;
+            rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
+            rightpai.hua = playerRight->getHuaNum();
+            rightpai.isTing =  false;
+            record.record.push_back(rightpai);
+            
+        }
         PlayerMingpai oppsitepai;
         oppsitepai.seatId = ClientSeatId::opposite;
         oppsitepai.playerCpgRecords = playerOpposite->playerCpgRecords;
@@ -749,14 +761,6 @@ void ReviewGame::addCoustomListener(){
         oppsitepai.hua = playerOpposite->getHuaNum();
         oppsitepai.isTing =  false;
         record.record.push_back(oppsitepai);
-        PlayerMingpai rightpai;
-        rightpai.seatId = ClientSeatId::right;
-        rightpai.playerCpgRecords = playerRight->playerCpgRecords;
-        rightpai.playerHandJongs = playerRight->playerHandJongs;
-        rightpai.playerPlayedJongs =playerRight->playerPlayedJongs;
-        rightpai.hua = playerRight->getHuaNum();
-        rightpai.isTing =  false;
-        record.record.push_back(rightpai);
         PlayerMingpai heropai;
         heropai.seatId = ClientSeatId::hero;
         heropai.playerCpgRecords = playerHero->playerCpgRecords;
@@ -770,7 +774,7 @@ void ReviewGame::addCoustomListener(){
         image1= MenuItemImage::create("fupan/down_1.png", "fupan/down_2.png","fupan/down_3.png",CC_CALLBACK_0(ReviewGame::controlDown, this));
         auto image2 = MenuItemImage::create("fupan/pause_1.png", "fupan/pause_2.png",CC_CALLBACK_0(ReviewGame::controlPause, this));
         image2->setTag(1087);
-         image3 = MenuItemImage::create("fupan/up_1.png", "fupan/up_2.png","fupan/up_3.png",CC_CALLBACK_0(ReviewGame::controlUp, this));
+        image3 = MenuItemImage::create("fupan/up_1.png", "fupan/up_2.png","fupan/up_3.png",CC_CALLBACK_0(ReviewGame::controlUp, this));
         MenuItemImage* image4 = MenuItemImage::create("fupan/back_1.png", "fupan/back_2.png",CC_CALLBACK_0(ReviewGame::controlBack, this));
         auto menucontrol = Menu::create(image1,image2,image3,image4,NULL);
         menucontrol->alignItemsHorizontallyWithPadding(50);
@@ -1065,7 +1069,7 @@ void ReviewGame::addCoustomListener(){
                 playerHero->drawHeroGang(shmjHeroCpgtData, playerLeft);
             }
         }
-
+        
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
