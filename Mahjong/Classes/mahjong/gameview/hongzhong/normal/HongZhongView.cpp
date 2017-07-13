@@ -196,11 +196,6 @@ void HongZhongView::update(float dt){
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }
     }
-    if(!GAMEDATA::getInstance()->getIsSelected()&& !GAMEDATA::getInstance()->getShowDissolveDialog()){
-        DissovleRoomDialog* dis = DissovleRoomDialog::create();
-        addChild(dis,1000);
-        GAMEDATA::getInstance()->setShowDissolveDialog(true);
-    }
     
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();

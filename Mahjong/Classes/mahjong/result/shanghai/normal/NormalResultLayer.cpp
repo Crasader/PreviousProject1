@@ -148,9 +148,8 @@ void NormalResultLayer::showRoomInfo(){
         if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
             emsc->setVisible(true);
         }
-        auto jucount = Sprite::create("");
+        auto jucount = Sprite::create();
         addChild(jucount);
-        
         if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "4"){
             jucount->setTexture("result/4ju_bg.png");
         }else if(GAMEDATA::getInstance()->getFriendOpenRoomResp().prjushu == "16"){
