@@ -106,8 +106,8 @@
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_REQUEST  1056// 乐券商城兑换记录请求{code:1056,poxiaoId:poxiaoId}
 #define MSGCODE_LEQUAN_MALL_EXCHANGE_RECORD_RESPONSE  1057// 乐券商城兑换记录回复{code:1057,poxiaoId:poxiaoId,list:[{id:"1",status:"1"},{id:"2",status:"2"}]} //0兑换中 1已兑换
 
-#define MSGCODE_FEE_EXCHANGE_REQUEST  1066// 话费兑换请求{code:1066,poxiaoId:poxiaoId,phone:"13999999",goodsId:"1"}  goodsId 3为30话费 4为50话费 5为100话费
-#define MSGCODE_FEE_EXCHANGE_RESPONSE  1067// 话费兑换回复{code:1067,poxiaoId:poxiaoId,result:"1"} 1成功0失败
+//#define MSGCODE_FEE_EXCHANGE_REQUEST  1066// 话费兑换请求{code:1066,poxiaoId:poxiaoId,phone:"13999999",goodsId:"1"}  goodsId 3为30话费 4为50话费 5为100话费
+//#define MSGCODE_FEE_EXCHANGE_RESPONSE  1067// 话费兑换回复{code:1067,poxiaoId:poxiaoId,result:"1"} 1成功0失败
 #define MSGCODE_FEE_EXCHANGE_RECORD_REQUEST  1068// 话费兑换记录请求{code:1068,poxiaoId:poxiaoId}
 #define MSGCODE_FEE_EXCHANGE_RECORD_RESPONSE  1069// 话费兑换记录回复{code:1069,poxiaoId:poxiaoId,list:[{id:"3",status:"1"},{id:"4",status:"2"}]} //0兑换中 1已兑换
 
@@ -122,10 +122,10 @@
 
 #define MSGCODE_FEE_TO_FANGKA_LIST_REQUEST  1075// 话费兑换房卡列表请求{code:1075,poxiaoId:poxiaoId}
 #define MSGCODE_FEE_TO_FANGKA_LIST_RESPONSE  1076// 话费兑换房卡列表回复{code:1076,poxiaoId:poxiaoId,list1:[{url:"http://web.5278-mobi.com:1112/30.jpg",fee:30,tofangka:30},{url:"http://web.5278-mobi.com:1112/50.jpg",fee:50,tofangka:50},{url:"http://web.5278-mobi.com:1112/100.jpg",fee:100,tofangka:100},{url:"http://web.5278-mobi.com:1112/200.jpg",fee:200,tofangka:200}],list2:[{url:"http://web.5278-mobi.com:1112/30.jpg",fangka:30,tofee:30},{url:"http://web.5278-mobi.com:1112/50.jpg",fangka:50,tofee:50},{url:"http://web.5278-mobi.com:1112/100.jpg",fangka:100,tofee:100},{url:"http://web.5278-mobi.com:1112/200.jpg",fangka:200,tofee:200}]}
-#define MSGCODE_FEE_TO_FANGKA_REQUEST = 1077// 话费兑换房卡请求{code:1077,poxiaoId:poxiaoId,fee:"30"}
-#define MSGCODE_FEE_TO_FANGKA_RESPONSE = 1078// 话费兑换房卡回复{code:1078,poxiaoId:poxiaoId,result:"1",fangka:"1",fee:"2"} 1成功0失败
-#define MSGCODE_FANGKA_TO_FEE_REQUEST = 1079// 房卡兑换房卡请求{code:1079,poxiaoId:poxiaoId,fangka:"30"}
-#define MSGCODE_FANGKA_TO_FEE_RESPONSE = 1080// 话费兑换房卡回复{code:1080,poxiaoId:poxiaoId,result:"1",fangka:"1",fee:"2"} 1成功0失败
+#define MSGCODE_FEE_TO_FANGKA_REQUEST  1077// 话费兑换房卡请求{code:1077,poxiaoId:poxiaoId,fee:"30",phone:""}
+#define MSGCODE_FEE_TO_FANGKA_RESPONSE  1078// 话费兑换房卡回复{code:1078,poxiaoId:poxiaoId,result:"1",fangka:"1",fee:"2"} 1成功0失败
+#define MSGCODE_FANGKA_TO_FEE_REQUEST  1079// 房卡兑换房卡请求{code:1079,poxiaoId:poxiaoId,fangka:"30"}
+#define MSGCODE_FANGKA_TO_FEE_RESPONSE  1080// 话费兑换房卡回复{code:1080,poxiaoId:poxiaoId,result:"1",fangka:"1",fee:"2"} 1成功0失败
 
 #define MSGCODE_MAJIANG_BACK_OUT_REQUEST 1992//后台切出请求{code:1992,poxiaoId:poxiaoId}
 

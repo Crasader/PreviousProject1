@@ -33,6 +33,7 @@ bool ExchangeFangKaCell::init(std::string number,std::string url,std::string pri
     if(!Sprite::init()){
         return false;
     }
+    setpropNumner(number);
     setpropPrice(price);
     setPropUrl(url);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
@@ -52,6 +53,12 @@ bool ExchangeFangKaCell::init(std::string number,std::string url,std::string pri
     cell->setPosition(0,42);
     addChild(cell);
     
+    auto fangkaNum = LabelAtlas::create(StringUtils::format(":%s",number.c_str()), "shop/change_gold_num.png", 22, 29, '0');
+    fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    fangkaNum->setPosition(0,22);
+    addChild(fangkaNum);
+    
+    
     auto consume_lequan = Sprite::create();
     consume_lequan->setPosition(0,-50);
     addChild(consume_lequan);
@@ -68,7 +75,7 @@ bool ExchangeFangKaCell::init(std::string number,std::string url,std::string pri
     
     auto btnImage = MenuItemImage::create("shop/btn_buy_1.png","shop/btn_buy_2.png",CC_CALLBACK_1(ExchangeFangKaCell::confirmChange, this));
     btnImage->setTag(atoi(price.c_str()));
-    btnImage->setName(propName);
+    btnImage->setName(StringUtils::format("%s张房卡",number.c_str()));
     auto menu = Menu::create(btnImage,NULL);
     menu->setPosition(0,-115);
     addChild(menu);

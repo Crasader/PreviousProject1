@@ -33,6 +33,7 @@ bool ExchangeHuafeiCell::init(std::string number,std::string url,std::string pri
     if(!Sprite::init()){
         return false;
     }
+    setpropNumner(number);
     setpropPrice(price);
     setPropUrl(url);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
@@ -68,7 +69,7 @@ bool ExchangeHuafeiCell::init(std::string number,std::string url,std::string pri
     
     auto btnImage = MenuItemImage::create("shop/btn_buy_1.png","shop/btn_buy_2.png",CC_CALLBACK_1(ExchangeHuafeiCell::confirmChange, this));
     btnImage->setTag(atoi(price.c_str()));
-    btnImage->setName(propName);
+    btnImage->setName(StringUtils::format("%s元话费",number.c_str()));
     auto menu = Menu::create(btnImage,NULL);
     menu->setPosition(0,-115);
     addChild(menu);

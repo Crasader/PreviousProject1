@@ -457,7 +457,7 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHuafeiChangeListResp(msg);
         }
             break;
-        case MSGCODE_FEE_EXCHANGE_RESPONSE:
+        case MSGCODE_FEE_TO_FANGKA_RESPONSE:
         {
             handleHuafeiChangeResp(msg);
         }

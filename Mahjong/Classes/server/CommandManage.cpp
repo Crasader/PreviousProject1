@@ -666,14 +666,14 @@ std::string CommandManage::sendQuitCompetitionCommand(std::string competitionId)
 //    return commandString(keyValue);
 //}
 
-std::string CommandManage::sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone){
-    std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_EXCHANGE_REQUEST)));
-    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-    keyValue.insert(map<string, string>::value_type("goodsId", goodsId));
-    keyValue.insert(map<string, string>::value_type("phone", phone));
-    return commandString(keyValue);
-}
+//std::string CommandManage::sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone){
+//    std::map<std::string, std::string> keyValue;
+//    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_EXCHANGE_REQUEST)));
+//    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+//    keyValue.insert(map<string, string>::value_type("goodsId", goodsId));
+//    keyValue.insert(map<string, string>::value_type("phone", phone));
+//    return commandString(keyValue);
+//}
 
 std::string CommandManage::sendHuafeiRecordCommmand(){
     std::map<std::string, std::string> keyValue;
@@ -737,6 +737,15 @@ std::string CommandManage::sendExchangeHuaFeiCommand(){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_TO_FANGKA_LIST_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::sendDuiHuanHuafeiCommand(std::string fee,std::string phone){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_TO_FANGKA_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("fee", fee));
+    keyValue.insert(map<string, string>::value_type("phone", phone));
     return commandString(keyValue);
 }
 

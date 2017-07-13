@@ -80,7 +80,7 @@ public:
     std::string sendJoinCompetiotnCommand(std::string competitionId);
     std::string sendQuitCompetitionCommand(std::string competitionId);
 //    std::string sendHuafeiExchangeCommand();
-    std::string sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone);
+//    std::string sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone);
     std::string sendHuafeiRecordCommmand();
     std::string sendCancleTruCommand();
     /** ---------------红包协议--------------------- **/
@@ -92,6 +92,7 @@ public:
     std::string sendTurntableShareCommand();
     std::string sendTurntableStartCommand();
     std::string sendExchangeHuaFeiCommand();
+    std::string sendDuiHuanHuafeiCommand(std::string fee,std::string phone);
 private:
 	CommandManage();
 	static CommandManage* _instance;
