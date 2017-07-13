@@ -33,8 +33,8 @@ bool ExchangeHuafeiCell::init(std::string number,std::string url,std::string pri
     if(!Sprite::init()){
         return false;
     }
-    setpropNumner(number);
-    setpropPrice(price);
+    setPropNumner(number);
+    setPropPrice(price);
     setPropUrl(url);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
     bg->setPosition(0,0);
@@ -97,7 +97,7 @@ void ExchangeHuafeiCell::onExit(){
 void ExchangeHuafeiCell::confirmChange(Ref* ref){
     MenuItemImage* temp = (MenuItemImage*)ref;
     //判断券是否足够
-    if(UserData::getInstance()->getHuafeiQuan()>=atoi(getpropPrice().c_str())){
+    if(UserData::getInstance()->getHuafeiQuan()>=atoi(getPropPrice().c_str())){
         ExchangeHuafeiItem* item = ExchangeHuafeiItem::create(temp->getTag(),temp->getName());
         getParent()->addChild(item,1000);
     }else{

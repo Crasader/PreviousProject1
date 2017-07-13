@@ -287,6 +287,8 @@
 		D26263E21F04A0E2002A1C28 /* shiming in Resources */ = {isa = PBXBuildFile; fileRef = D26263E01F04A0E2002A1C28 /* shiming */; };
 		D26263EB1F0508AC002A1C28 /* common in Resources */ = {isa = PBXBuildFile; fileRef = D26263EA1F0508AC002A1C28 /* common */; };
 		D26263EC1F0508AC002A1C28 /* common in Resources */ = {isa = PBXBuildFile; fileRef = D26263EA1F0508AC002A1C28 /* common */; };
+		D2677D6A1F174B1F003D27D9 /* FangkaChangeConfirm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2677D681F174B1F003D27D9 /* FangkaChangeConfirm.cpp */; };
+		D2677D6B1F174B1F003D27D9 /* FangkaChangeConfirm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2677D681F174B1F003D27D9 /* FangkaChangeConfirm.cpp */; };
 		D278ADBC1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBD1DFFC23400C90B25 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D278ADBE1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D278ADB91DFFC23400C90B25 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -731,6 +733,8 @@
 		D25DEE401CC4AE78007D428A /* shop */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shop; sourceTree = "<group>"; };
 		D26263E01F04A0E2002A1C28 /* shiming */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shiming; sourceTree = "<group>"; };
 		D26263EA1F0508AC002A1C28 /* common */ = {isa = PBXFileReference; lastKnownFileType = folder; path = common; sourceTree = "<group>"; };
+		D2677D681F174B1F003D27D9 /* FangkaChangeConfirm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FangkaChangeConfirm.cpp; sourceTree = "<group>"; };
+		D2677D691F174B1F003D27D9 /* FangkaChangeConfirm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FangkaChangeConfirm.hpp; sourceTree = "<group>"; };
 		D278ADB61DFFC23400C90B25 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		D278ADB71DFFC23400C90B25 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		D278ADB81DFFC23400C90B25 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
@@ -1836,6 +1840,8 @@
 		D29BE26A1ED686AA00EED3A0 /* huafei */ = {
 			isa = PBXGroup;
 			children = (
+				D2677D681F174B1F003D27D9 /* FangkaChangeConfirm.cpp */,
+				D2677D691F174B1F003D27D9 /* FangkaChangeConfirm.hpp */,
 				D2030EF81F08E2D3001568BD /* ExchangeFangKaCell.cpp */,
 				D2030EF91F08E2D3001568BD /* ExchangeFangKaCell.hpp */,
 				D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */,
@@ -2443,6 +2449,7 @@
 				D2E035081ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */,
 				D252FBBC1E7FA5EC00937322 /* ChargeGold.cpp in Sources */,
 				D252FBBE1E7FA5EC00937322 /* GoldNotEnoughDialog.cpp in Sources */,
+				D2677D6A1F174B1F003D27D9 /* FangkaChangeConfirm.cpp in Sources */,
 				D252FBCA1E7FA5EC00937322 /* ShopHintDialog.cpp in Sources */,
 				D252FB4C1E7FA5EC00937322 /* UserInfo.cpp in Sources */,
 				D2B1D8FB1E9DF64100EB8FB0 /* FanMaAnim.cpp in Sources */,
@@ -2552,6 +2559,7 @@
 				D278ADC61DFFCBCF00C90B25 /* GameSocketManage.cpp in Sources */,
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2E035091ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */,
+				D2677D6B1F174B1F003D27D9 /* FangkaChangeConfirm.cpp in Sources */,
 				D252FBC91E7FA5EC00937322 /* LequanShop.cpp in Sources */,
 				D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */,

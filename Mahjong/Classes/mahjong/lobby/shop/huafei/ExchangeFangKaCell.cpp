@@ -13,6 +13,7 @@
 #include "mahjong/GameConfig.h"
 #include "http/image/UrlImageMannger.h"
 #include "userdata/UserData.h"
+#include "mahjong/lobby/shop/huafei/FangkaChangeConfirm.hpp"
 
 
 
@@ -33,8 +34,8 @@ bool ExchangeFangKaCell::init(std::string number,std::string url,std::string pri
     if(!Sprite::init()){
         return false;
     }
-    setpropNumner(number);
-    setpropPrice(price);
+    setPropNumner(number);
+    setPropPrice(price);
     setPropUrl(url);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
     bg->setPosition(0,0);
@@ -101,11 +102,12 @@ void ExchangeFangKaCell::onExit(){
 }
 
 void ExchangeFangKaCell::confirmChange(Ref* ref){
-    MenuItemImage* temp = (MenuItemImage*)ref;
+//    MenuItemImage* temp = (MenuItemImage*)ref;
     //判断券是否足够
-    if(UserData::getInstance()->getHuafeiQuan()>=atoi(getpropPrice().c_str())){
+    if(UserData::getInstance()->getHuafeiQuan()>=atoi(getPropPrice().c_str())){
         //发起兑换请求
-        
+        FangkaChangeConfirm* con = FangkaChangeConfirm::create(getPropNumner().c_str());
+        getParent()->addChild(con,10);
     }else{
         ShopHintDialog* dia = ShopHintDialog::create();
         dia->showImage("shop/hua_fei_not_enough.png");

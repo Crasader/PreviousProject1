@@ -24,7 +24,7 @@ private:
     std::string getImageNameById(int id);
     void confirmChange(Ref* ref);
     CC_SYNTHESIZE(std::string, propUrl, PropUrl);
-    CC_SYNTHESIZE(std::string, propNumner, propNumner);
-    CC_SYNTHESIZE(std::string, propPrice, propPrice);
+    CC_SYNTHESIZE(std::string, propNumner, PropNumner);
+    CC_SYNTHESIZE(std::string, propPrice, PropPrice);
 };
 #endif /* ExchangePropCell_hpp */

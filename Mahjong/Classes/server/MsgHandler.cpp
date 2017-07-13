@@ -4311,7 +4311,7 @@ void MsgHandler::handleHuafeiChangeFangka(std::string msg){
         myResult.huafei = lequan.GetString();
     }
     GAMEDATA::getInstance()->setHuafeiChangeResult(myResult);
-    postNotifyMessage(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, nullptr);
+    postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_RESP, nullptr);
 }
 
 void MsgHandler::handleTurntableShare(std::string msg){
