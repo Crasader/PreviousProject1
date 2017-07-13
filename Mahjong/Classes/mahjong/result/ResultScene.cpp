@@ -33,9 +33,7 @@ Scene* ResultScene::createScene(int type)
     auto scene = Scene::create();
     if(GAMEDATA::getInstance()->getGameType()==1){
         if(type == 0){
-//            NormalResultLayer* layer = NormalResultLayer::create();
-//            scene->addChild(layer);
-            HZNormalResultLayer* layer = HZNormalResultLayer::create();
+            NormalResultLayer* layer = NormalResultLayer::create();
             scene->addChild(layer);
         }else if(type == 2){
             CompetitionResult* res = CompetitionResult::create();
