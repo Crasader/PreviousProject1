@@ -122,6 +122,9 @@ public:
     std::string getGongZhongHao();
     void setGongZhongHao(std::string msg);
     
+    std::string getUserPayWay();
+    void setUserPayWay(std::string msg);
+    
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
 	UserData();

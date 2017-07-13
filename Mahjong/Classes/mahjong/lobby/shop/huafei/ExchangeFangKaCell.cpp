@@ -16,10 +16,10 @@
 
 
 
-ExchangeFangKaCell* ExchangeFangKaCell::create(std::string propId,std::string url,std::string price,std::string name){
+ExchangeFangKaCell* ExchangeFangKaCell::create(std::string number,std::string url,std::string price){
     
     ExchangeFangKaCell* ret = new ExchangeFangKaCell();
-    if(ret &&ret->init(propId,url,price,name)){
+    if(ret &&ret->init(number,url,price)){
         ret->autorelease();
         return ret;
     }else{
@@ -29,11 +29,10 @@ ExchangeFangKaCell* ExchangeFangKaCell::create(std::string propId,std::string ur
     }
 }
 
-bool ExchangeFangKaCell::init(std::string propId,std::string url,std::string price,std::string name){
+bool ExchangeFangKaCell::init(std::string number,std::string url,std::string price){
     if(!Sprite::init()){
         return false;
     }
-    setpropName(name);
     setpropPrice(price);
     setPropUrl(url);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
@@ -58,17 +57,17 @@ bool ExchangeFangKaCell::init(std::string propId,std::string url,std::string pri
     addChild(consume_lequan);
     auto lequan = Label::createWithSystemFont(ChineseWord("xioahao"),"arial",24);
     lequan->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequan->setColor(Color3B(240,228,45));
+    lequan->setColor(Color3B::RED);
     lequan->setPosition(0,-35);
     addChild(lequan);
     auto lequanXiao = Label::createWithSystemFont(StringUtils::format("%s%s", price.c_str(), "话费券"), "arial", 24);
     lequanXiao->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    lequanXiao->setColor(Color3B(240,228,45));
+    lequanXiao->setColor(Color3B::RED);
     lequanXiao->setPosition(0,-65);
     addChild(lequanXiao);
     
     auto btnImage = MenuItemImage::create("shop/btn_buy_1.png","shop/btn_buy_2.png",CC_CALLBACK_1(ExchangeFangKaCell::confirmChange, this));
-    btnImage->setTag(atoi(propId.c_str()));
+    btnImage->setTag(atoi(price.c_str()));
     btnImage->setName(propName);
     auto menu = Menu::create(btnImage,NULL);
     menu->setPosition(0,-115);

@@ -327,3 +327,10 @@ std::string UserData::getGongZhongHao(){
 void UserData::setGongZhongHao(std::string msg){
     UserDefault::getInstance()->setStringForKey("gong_zhong_hao",msg);
 }
+
+std::string UserData::getUserPayWay(){
+    return UserDefault::getInstance()->getStringForKey("user_pay_way","2");//1为微信 2苹果
+}
+void UserData::setUserPayWay(std::string msg){
+     UserDefault::getInstance()->setStringForKey("user_pay_way",msg);
+}

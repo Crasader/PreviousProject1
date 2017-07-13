@@ -16,10 +16,10 @@
 
 
 
-ExchangeHuafeiCell* ExchangeHuafeiCell::create(std::string propId,std::string url,std::string price,std::string name){
+ExchangeHuafeiCell* ExchangeHuafeiCell::create(std::string number,std::string url,std::string price){
     
     ExchangeHuafeiCell* ret = new ExchangeHuafeiCell();
-    if(ret &&ret->init(propId,url,price,name)){
+    if(ret &&ret->init(number,url,price)){
         ret->autorelease();
         return ret;
     }else{
@@ -29,11 +29,10 @@ ExchangeHuafeiCell* ExchangeHuafeiCell::create(std::string propId,std::string ur
     }
 }
 
-bool ExchangeHuafeiCell::init(std::string propId,std::string url,std::string price,std::string name){
+bool ExchangeHuafeiCell::init(std::string number,std::string url,std::string price){
     if(!Sprite::init()){
         return false;
     }
-    setpropName(name);
     setpropPrice(price);
     setPropUrl(url);
     auto bg = Sprite::create("shop/shop_prop_bg.png");
@@ -68,7 +67,7 @@ bool ExchangeHuafeiCell::init(std::string propId,std::string url,std::string pri
     addChild(lequanXiao);
     
     auto btnImage = MenuItemImage::create("shop/btn_buy_1.png","shop/btn_buy_2.png",CC_CALLBACK_1(ExchangeHuafeiCell::confirmChange, this));
-    btnImage->setTag(atoi(propId.c_str()));
+    btnImage->setTag(atoi(price.c_str()));
     btnImage->setName(propName);
     auto menu = Menu::create(btnImage,NULL);
     menu->setPosition(0,-115);

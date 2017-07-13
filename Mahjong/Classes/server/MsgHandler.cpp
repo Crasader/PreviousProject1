@@ -1093,6 +1093,11 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &gongzhonghao = _mDoc["gongzhonghao"];
             UserData::getInstance()->setGongZhongHao(gongzhonghao.GetString());
         }
+        //用户当前的支付方式
+        if(_mDoc.HasMember("payway")){
+            const rapidjson::Value &payway = _mDoc["payway"];
+            UserData::getInstance()->setGongZhongHao(payway.GetString());
+        }
         //用户当前拥有的抽奖次数
         if(_mDoc.HasMember("dzpc")){
             const rapidjson::Value &dzpc = _mDoc["dzpc"];
@@ -4047,34 +4052,34 @@ void MsgHandler::handleHuafeiChangeListResp(std::string msg){
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
     _mDoc.Parse<0>(msg.c_str());
     RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
-//    if(_mDoc.HasMember("list1")){
-//        const rapidjson::Value &mall = _mDoc["list1"];
-//        HuafeiChangeList data;
-//        data.needInit = true;
-//        for(int i=0;i<mall.Capacity();i++){
-//            const rapidjson::Value &temp = mall[i];
-//            HuafeiChange change;
-//            change.url = temp["url"].GetString();
-//            change.propPrice = temp["fee"].GetInt();
-//            change.tofee =  temp["tofee"].GetInt();
-//            data.list.push_back(change);
-//        }
-//        GAMEDATA::getInstance()->setHuafeiChangeList(data);
-//    }
-//    if(_mDoc.HasMember("list2")){
-//        const rapidjson::Value &mall = _mDoc["list1"];
-//        HuafeiChangeList data;
-//        data.needInit = true;
-//        for(int i=0;i<mall.Capacity();i++){
-//            const rapidjson::Value &temp = mall[i];
-//            HuafeiChange change;
-//            change.url = temp["url"].GetString();
-//            change.propPrice = temp["fangka"].GetInt();
-//            change.name =  temp["tofee"].GetInt();
-//            data.list.push_back(change);
-//        }
-//        GAMEDATA::getInstance()->setHuafeiChangeList(data);
-//    }
+    if(_mDoc.HasMember("list2")){
+        const rapidjson::Value &mall = _mDoc["list2"];
+        HuafeiChangeList data;
+        data.needInit = true;
+        for(int i=0;i<mall.Capacity();i++){
+            const rapidjson::Value &temp = mall[i];
+            HuafeiChange change;
+            change.url = temp["url"].GetString();
+            change.fee = StringUtils::format("%d",temp["fee"].GetInt());
+            change.tofee =  StringUtils::format("%d",temp["tofee"].GetInt());
+            data.list.push_back(change);
+        }
+        GAMEDATA::getInstance()->setHuafeiChangeList(data);
+    }
+    if(_mDoc.HasMember("list1")){
+        const rapidjson::Value &mall = _mDoc["list1"];
+        FangkaChangeList data;
+        data.needInit = true;
+        for(int i=0;i<mall.Capacity();i++){
+            const rapidjson::Value &temp = mall[i];
+            FangkaChange change;
+            change.url = temp["url"].GetString();
+            change.fee = StringUtils::format("%d",temp["fee"].GetInt());
+            change.tofangka = StringUtils::format("%d",temp["tofangka"].GetInt());
+            data.list.push_back(change);
+        }
+        GAMEDATA::getInstance()->setFangkaChangeList(data);
+    }
     postNotifyMessage(MSG_PLAYER_HUAFEI_CHANGE_LIST, nullptr);
     
 }

@@ -55,6 +55,7 @@ public:
     CC_SYNTHESIZE(FangkaChargeList, fangkaChargeList, FangkaChargeList);
     CC_SYNTHESIZE(LequanChangeList, lequanChangeList, LequanChangeList);
     CC_SYNTHESIZE(HuafeiChangeList, huafeiChangeList, HuafeiChangeList);
+    CC_SYNTHESIZE(FangkaChangeList, fangkaChangeList, FangkaChangeList);
     CC_SYNTHESIZE(HuaChangeRecord, huaChangeRecord, HuaChangeRecord);
     CC_SYNTHESIZE(LequanChangeResult, lequanChangeResult, LequanChangeResult);
     CC_SYNTHESIZE(HuafeiChangeResult, huafeiChangeResult, HuafeiChangeResult);

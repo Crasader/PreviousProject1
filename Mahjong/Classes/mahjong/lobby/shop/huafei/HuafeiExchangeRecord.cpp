@@ -77,22 +77,22 @@ void HuafeiExchangeRecord::showLequanExchangeRecord(){
 
 std::string HuafeiExchangeRecord::getPropName(std::string id){
     vector<HuafeiChange> list = GAMEDATA::getInstance()->getHuafeiChangeList().list;
-    for(auto var:list){
-        if(id == var.propId){
-            return var.name;
-        }
-    }
+//    for(auto var:list){
+//        if(id == var.propId){
+//            return var.name;
+//        }
+//    }
     return "";
 }
 
 
 std::string HuafeiExchangeRecord::getPropConsume(std::string id){
     vector<HuafeiChange> list = GAMEDATA::getInstance()->getHuafeiChangeList().list;
-    for(auto var:list){
-        if(id == var.propId){
-            return var.propPrice;
-        }
-    }
+//    for(auto var:list){
+//        if(id == var.propId){
+//            return var.propPrice;
+//        }
+//    }
     return "";
 }
 

@@ -509,15 +509,25 @@ struct LequanChangeList{
 };
 
 struct HuafeiChange{
-    std::string propId;
-    std::string propPrice;
+    std::string fee;
     std::string url;
-    std::string name;
+    std::string tofee;
 };
 
 struct HuafeiChangeList{
     bool needInit;
     std::vector<HuafeiChange> list;
+};
+
+struct FangkaChange{
+    std::string fee;
+    std::string url;
+    std::string tofangka;
+};
+
+struct FangkaChangeList{
+    bool needInit;
+    std::vector<FangkaChange> list;
 };
 
 struct LequanChangeResult{

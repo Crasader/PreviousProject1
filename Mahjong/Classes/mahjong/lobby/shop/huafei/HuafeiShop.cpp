@@ -8,6 +8,7 @@
 
 #include "mahjong/lobby/shop/huafei/HuafeiShop.hpp"
 #include "mahjong/lobby/shop/huafei/ExchangeHuafeiCell.hpp"
+#include "mahjong/lobby/shop/huafei/ExchangeFangKaCell.hpp"
 #include "mahjong/lobby/shop/huafei/HuafeiExchangeRecord.hpp"
 #include "mahjong/lobby/shop/ShopHintDialog.hpp"
 #include "mahjong/common/state/GameData.h"
@@ -147,9 +148,16 @@ void HuafeiShop::showHuafeiShop(){
     lequanNum->setPosition(420,512);
     addChild(lequanNum);
     for(int i=0;i<GAMEDATA::getInstance()->getHuafeiChangeList().list.size();i++){
-        ExchangeHuafeiCell* cell = ExchangeHuafeiCell::create(GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).propId,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).url,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).propPrice,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).name);
+        ExchangeHuafeiCell* cell = ExchangeHuafeiCell::create(GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).tofee,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).url,GAMEDATA::getInstance()->getHuafeiChangeList().list.at(i).fee);
         cell->setPosition(312+(i%4)*220,315);
         huaFeiLayer->addChild(cell);
+    }
+    
+    for(int j=0;j<GAMEDATA::getInstance()->getFangkaChangeList().list.size();j++){
+        ExchangeFangKaCell* cell = ExchangeFangKaCell::create(GAMEDATA::getInstance()->getFangkaChangeList().list.at(j).tofangka,GAMEDATA::getInstance()->getFangkaChangeList().list.at(j).url,GAMEDATA::getInstance()->getFangkaChangeList().list.at(j).fee);
+        cell->setPosition(312+(j%4)*220,315);
+        fangKaLayer->addChild(cell);
+        
     }
 }
 
