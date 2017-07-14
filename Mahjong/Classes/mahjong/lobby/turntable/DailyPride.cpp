@@ -74,7 +74,7 @@ void DailyPride::showDailyPrideLayer(){
     addChild(bg);
     
     auto rightGirl = Sprite::create("daily/right_girl.png");
-    rightGirl->setPosition(780,380);
+    rightGirl->setPosition(810,380);
     addChild(rightGirl);
     
     
@@ -82,15 +82,15 @@ void DailyPride::showDailyPrideLayer(){
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        CC_CALLBACK_0(DailyPride::closeView, this));
     auto closeMenu = Menu::create(close, NULL);
-    closeMenu->setPosition(1050, 357);
+    closeMenu->setPosition(1090, 372);
     this->addChild(closeMenu);
     
     auto luck_bg = Sprite::create("daily/luck_bg.png");
-    luck_bg->setPosition(463, 325);
+    luck_bg->setPosition(433, 325);
     addChild(luck_bg);
     
     m_turnBg = Sprite::create("daily/circle_bg.png");
-    m_turnBg->setPosition(463, 332);
+    m_turnBg->setPosition(433, 332);
     addChild(m_turnBg);
     
     TurnTableData data = GAMEDATA::getInstance()->getTurnTableData();
@@ -98,38 +98,38 @@ void DailyPride::showDailyPrideLayer(){
         PrideCell* cell = PrideCell::create(data.prides.at(i).type, data.prides.at(i).number);
         cell->setRotation(90-i*36+18);
         cell->setTag(100+i);
-        cell->setPosition(getPosByRotation(Point(219,219), 100, i * 36-18));
+        cell->setPosition(getPosByRotation(Point(219,219), 140, i * 36-18));
         m_turnBg->addChild(cell);
     }
     auto itemImage = MenuItemImage::create("daily/go_btn_1.png", "daily/go_btn_2.png",
                                            CC_CALLBACK_1(DailyPride::beginPride, this));
     startMenu = Menu::create(itemImage, NULL);
-    startMenu->setPosition(463, 340);
+    startMenu->setPosition(433, 340);
     addChild(startMenu);
     
     auto shareText = Sprite::create("daily/text_info.png");
     shareText->setTag(1000);
-    shareText->setPosition(857,270);
+    shareText->setPosition(887,270);
     addChild(shareText);
     
     auto shareBtn = MenuItemImage::create("daily/share_pride_bnt_1.png", "daily/share_pride_bnt_2.png",CC_CALLBACK_0(DailyPride::shareTurntable, this));
     auto menu = Menu::create(shareBtn,NULL);
     menu->setTag(1001);
-    menu->setPosition(850,180);
+    menu->setPosition(880,180);
     addChild(menu);
     
     auto number = LabelAtlas::create("0", "daily/pride_num_red.png", 32, 46, '0');
-    number->setPosition(807,240);
+    number->setPosition(837,240);
     number->setTag(1002);
     addChild(number);
     auto shareText2 = Sprite::create("daily/chance_text.png");
-    shareText2->setPosition(857,240);
+    shareText2->setPosition(887,240);
     shareText2->setTag(1003);
     addChild(shareText2);
 
     
     auto shareText3 = Sprite::create("daily/no_chance_text.png");
-    shareText3->setPosition(857,240);
+    shareText3->setPosition(887,240);
     shareText3->setTag(1004);
     addChild(shareText3);
 
@@ -180,7 +180,7 @@ void DailyPride::updateData(){
         PrideCell* cell = PrideCell::create(data.prides.at(i).type, data.prides.at(i).number);
         cell->setRotation(90-i*36+18);
         cell->setTag(100+i);
-        cell->setPosition(getPosByRotation(Point(219,219), 100, i * 36-18));
+        cell->setPosition(getPosByRotation(Point(285,285), 150, i * 36-18));
         m_turnBg->addChild(cell);
     }
 }
