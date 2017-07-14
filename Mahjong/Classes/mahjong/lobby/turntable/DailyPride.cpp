@@ -283,10 +283,6 @@ void DailyPride::showTurntableResult(PrideType propId,std::string number){
         zhang->setPosition(num->getPositionX()+num->getContentSize().width,308);
     }else  if(propId == PrideType::nothing){
         num->setVisible(false);
-        auto zhang = Sprite::create("daily/xie_xie.png");
-        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        zhang->setPosition(640,308);
-        addChild(zhang);
     }
     
     
