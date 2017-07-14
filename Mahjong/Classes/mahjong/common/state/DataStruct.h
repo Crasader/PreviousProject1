@@ -584,7 +584,8 @@ struct LeChangeRecord{
 };
 
 struct HuaRecord{
-    std::string propId;
+    std::string fee;
+    std::string url;
     std::string state;
     std::string time;
     std::string phone;
@@ -592,6 +593,16 @@ struct HuaRecord{
 
 struct HuaChangeRecord{
     std::vector<HuaRecord> records;
+};
+
+struct FangkaRecord{
+    std::string url;
+    std::string fee;
+    std::string time;
+};
+
+struct FangkaChangeRecord{
+    std::vector<FangkaRecord> records;
 };
 
 struct PlayerResumeData{

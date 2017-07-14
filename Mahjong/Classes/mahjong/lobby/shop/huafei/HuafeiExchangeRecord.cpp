@@ -77,27 +77,6 @@ void HuafeiExchangeRecord::showLequanExchangeRecord(){
     //TODO
 }
 
-std::string HuafeiExchangeRecord::getPropName(std::string id){
-    vector<HuafeiChange> list = GAMEDATA::getInstance()->getHuafeiChangeList().list;
-//    for(auto var:list){
-//        if(id == var.propId){
-//            return var.name;
-//        }
-//    }
-    return "";
-}
-
-
-std::string HuafeiExchangeRecord::getPropConsume(std::string id){
-    vector<HuafeiChange> list = GAMEDATA::getInstance()->getHuafeiChangeList().list;
-//    for(auto var:list){
-//        if(id == var.propId){
-//            return var.propPrice;
-//        }
-//    }
-    return "";
-}
-
 void HuafeiExchangeRecord::closeView(){
     removeFromParent();
 }
@@ -114,9 +93,7 @@ Size HuafeiExchangeRecord::tableCellSizeForIndex(TableView *table, ssize_t idx){
 TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t idx){
     auto string = StringUtils::format("%ld", idx);
     TableViewCell *cell = table->dequeueCell();
-    std::string propName =getPropName(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId);
-    int pos = (int)propName.find("元");
-    std::string newName = propName.substr(0,pos);
+    std::string newName ="";
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
@@ -124,7 +101,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         recordBg->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         cell->addChild(recordBg);
         
-        auto content = Sprite::create(getImageNameById(atoi(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId.c_str())));
+        auto content = Sprite::create();
         content->setTag(100);
         content->setPosition(20,20);
         content->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
@@ -173,7 +150,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         time->setPosition(300,60);
         time->setTag(103);
         cell->addChild(time);
-
+        
         auto shouji = Label::createWithSystemFont("兑换手机号:","arial", 22);
         shouji->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         shouji->setColor(Color3B(133,54,33));
@@ -197,9 +174,9 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         }else{
             stateImage->setTexture("shop/yiduihuan.png");
         }
-    }else{      
+    }else{
         if(NULL != cell->getChildByTag(100)){
-            ((Sprite*)cell->getChildByTag(100))->setTexture(getImageNameById(atoi(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).propId.c_str())));
+            //            ((Sprite*)cell->getChildByTag(100))->setTexture();
         }
         if(NULL != cell->getChildByTag(101)){
             ((LabelAtlas*)cell->getChildByTag(101))->setString(newName);
@@ -239,28 +216,4 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
 
 ssize_t HuafeiExchangeRecord::numberOfCellsInTableView(TableView *table){
     return GAMEDATA::getInstance()->getHuaChangeRecord().records.size();
-}
-
-
-std::string HuafeiExchangeRecord::getImageNameById(int id){
-    //后期可以做成从网络获取数据,目前在客户端写死
-    switch (id) {
-        case 1:
-            return "shop/huafei_30.png";
-        case 2:
-            return "shop/huafei_30.png";
-        case 3:
-            return "shop/huafei_30.png";
-        case 4:
-            return "shop/huafei_50.png";
-        case 5:
-            return "shop/huafei_100.png";
-        case 6:
-            return "shop/huafei_200.png";
-        case 21:
-            return "shop/ipones_6s.png";
-        default:
-            return "shop/huafei_30.png";
-    }
-    
 }

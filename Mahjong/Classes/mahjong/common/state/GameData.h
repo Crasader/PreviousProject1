@@ -57,6 +57,7 @@ public:
     CC_SYNTHESIZE(HuafeiChangeList, huafeiChangeList, HuafeiChangeList);
     CC_SYNTHESIZE(FangkaChangeList, fangkaChangeList, FangkaChangeList);
     CC_SYNTHESIZE(HuaChangeRecord, huaChangeRecord, HuaChangeRecord);
+    CC_SYNTHESIZE(FangkaChangeRecord, fangkaChangeRecord, FangkaChangeRecord);
     CC_SYNTHESIZE(LequanChangeResult, lequanChangeResult, LequanChangeResult);
     CC_SYNTHESIZE(HuafeiChangeResult, huafeiChangeResult, HuafeiChangeResult);
     CC_SYNTHESIZE(RedWalletRespData, redWalletRespData, RedWalletRespData);
@@ -89,7 +90,7 @@ public:
     CC_SYNTHESIZE(MahjongShareData3, mahjongShareData3, MahjongShareData3);
     CC_SYNTHESIZE(MahjongShareData4, mahjongShareData4, MahjongShareData4);
     CC_SYNTHESIZE(MahjongShareData5, mahjongShareData5, MahjongShareData5);
-  
+    
     //游戏状态
     CC_SYNTHESIZE(int, gameModel, MyGameModel);
     CC_SYNTHESIZE(int, gameType, GameType);//游戏类型:1上海麻将,2上海麻将复盘,3红中麻将,4红中麻将复盘
@@ -167,9 +168,9 @@ public:
     CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
     CC_SYNTHESIZE(string, dissolveName, DissolveName);
     CC_SYNTHESIZE(string, resultFangzhuId, ResultFangzhuId);
-//    CC_SYNTHESIZE(std::string, shareTextContent, ShareTextContent);
-//    CC_SYNTHESIZE(std::string, shareTextContentNum, ShareTextContentNum);
-//    CC_SYNTHESIZE(std::string, turntableNumber, TurntableNumber);
+    //    CC_SYNTHESIZE(std::string, shareTextContent, ShareTextContent);
+    //    CC_SYNTHESIZE(std::string, shareTextContentNum, ShareTextContentNum);
+    //    CC_SYNTHESIZE(std::string, turntableNumber, TurntableNumber);
     CC_SYNTHESIZE(bool, needShowTurnTable, NeedShowTurnTable);
     CC_SYNTHESIZE(std::string, daYingJiaPic, DaYingJiaPic);
     CC_SYNTHESIZE(std::string, huiGuiLiBao, HuiGuiLiBao);

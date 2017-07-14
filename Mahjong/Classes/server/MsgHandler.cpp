@@ -4111,7 +4111,7 @@ void MsgHandler::handleHuafeiChangeResp(std::string msg){
     
 }
 
-
+// 话费兑换\房卡兑换记录回复{code:1069,poxiaoId:poxiaoId,list:[{id:"3",url:"",status:"1",fee:"",time:""},{id:"4",url:"",status:"2",fee:"",time:""}],list1:[{fangka:"3",url:"",time:""},{fangka:"4",url:"",time:""}]} //0兑换中 1已兑换
 void MsgHandler::handleHuafeiChangeRecord(std::string msg){
     rapidjson::Document _mDoc;
     RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
@@ -4123,7 +4123,8 @@ void MsgHandler::handleHuafeiChangeRecord(std::string msg){
         for(int i=0;i<list.Capacity();i++){
             HuaRecord rec;
             const rapidjson::Value &temp = list[i];
-            rec.propId =temp["id"].GetString();
+            rec.url =temp["url"].GetString();
+            rec.fee =temp["fee"].GetString();
             rec.state = temp["status"].GetString();
             rec.time =temp["time"].GetString();
             rec.phone = temp["phone"].GetString();
@@ -4131,6 +4132,19 @@ void MsgHandler::handleHuafeiChangeRecord(std::string msg){
         }
     }
     GAMEDATA::getInstance()->setHuaChangeRecord(records);
+    FangkaChangeRecord fangRecord;
+    if(_mDoc.HasMember("list1")){
+        const rapidjson::Value &list = _mDoc["list1"];
+        for(int i=0;i<list.Capacity();i++){
+            FangkaRecord rec;
+            const rapidjson::Value &temp = list[i];
+            rec.fee =temp["fee"].GetString();
+            rec.time =temp["time"].GetString();
+            rec.url = temp["url"].GetString();
+            fangRecord.records.push_back(rec);
+        }
+    }
+    GAMEDATA::getInstance()->setFangkaChangeRecord(fangRecord);
     postNotifyMessage(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, nullptr);
 }
 
