@@ -31,31 +31,33 @@ Scene* ResultScene::createScene(int type)
 {
     //    initTestData();
     auto scene = Scene::create();
-    if(GAMEDATA::getInstance()->getGameType()==1){
-        if(type == 0){
-            NormalResultLayer* layer = NormalResultLayer::create();
-            scene->addChild(layer);
-        }else if(type == 2){
-            CompetitionResult* res = CompetitionResult::create();
-            res->showCompetiotionResult(GAMEDATA::getInstance()->getCompetitionResultData().matchid, GAMEDATA::getInstance()->getCompetitionResultData().paiming, GAMEDATA::getInstance()->getCompetitionResultData().pride, GAMEDATA::getInstance()->getCompetitionScore());
-            scene->addChild(res);
-        }else{
-            SpecialResultLayer* layer = SpecialResultLayer::create();
-            scene->addChild(layer);
-        }
-    }else if(GAMEDATA::getInstance()->getGameType() == 3){
-        if(type == 0){
-            HZNormalResultLayer* layer = HZNormalResultLayer::create();
-            scene->addChild(layer);
-        }else if(type == 2){
-            CompetitionResult* res = CompetitionResult::create();
-            res->showCompetiotionResult(GAMEDATA::getInstance()->getCompetitionResultData().matchid, GAMEDATA::getInstance()->getCompetitionResultData().paiming, GAMEDATA::getInstance()->getCompetitionResultData().pride,GAMEDATA::getInstance()->getCompetitionScore());
-            scene->addChild(res);
-        }else{
-            HZSpecialResultLayer* layer = HZSpecialResultLayer::create();
-            scene->addChild(layer);
-        }
-    }
+//    if(GAMEDATA::getInstance()->getGameType()==1){
+//        if(type == 0){
+//            NormalResultLayer* layer = NormalResultLayer::create();
+//            scene->addChild(layer);
+//        }else if(type == 2){
+//            CompetitionResult* res = CompetitionResult::create();
+//            res->showCompetiotionResult(GAMEDATA::getInstance()->getCompetitionResultData().matchid, GAMEDATA::getInstance()->getCompetitionResultData().paiming, GAMEDATA::getInstance()->getCompetitionResultData().pride, GAMEDATA::getInstance()->getCompetitionScore());
+//            scene->addChild(res);
+//        }else{
+//            SpecialResultLayer* layer = SpecialResultLayer::create();
+//            scene->addChild(layer);
+//        }
+//    }else if(GAMEDATA::getInstance()->getGameType() == 3){
+//        if(type == 0){
+//            HZNormalResultLayer* layer = HZNormalResultLayer::create();
+//            scene->addChild(layer);
+//        }else if(type == 2){
+//            CompetitionResult* res = CompetitionResult::create();
+//            res->showCompetiotionResult(GAMEDATA::getInstance()->getCompetitionResultData().matchid, GAMEDATA::getInstance()->getCompetitionResultData().paiming, GAMEDATA::getInstance()->getCompetitionResultData().pride,GAMEDATA::getInstance()->getCompetitionScore());
+//            scene->addChild(res);
+//        }else{
+//            HZSpecialResultLayer* layer = HZSpecialResultLayer::create();
+//            scene->addChild(layer);
+//        }
+//    }
+    HZNormalResultLayer* layer = HZNormalResultLayer::create();
+    scene->addChild(layer);
     GAMEDATA::getInstance()->setLogingGame(true);
     return scene;
 }

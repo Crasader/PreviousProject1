@@ -366,4 +366,24 @@ void SplashScene::showLoadLayerAnim(){
     poker3->setPosition(1075,612);
     addChild(poker3,2);
     poker3->runAction(Repeat::create(Sequence::create(MoveTo::create(0.7,Point(1075,595)),MoveTo::create(0.7,Point(1075,612)),NULL), CC_REPEAT_FOREVER));
+    
+    auto hua1 = Sprite::create("mainlogin/flower_1.png");
+    hua1->setPosition(270,730);
+    addChild(hua1);
+    hua1->runAction(Spawn::create(MoveTo::create(2,Point(960,420)),FadeTo::create(2,0),NULL));
+    
+    auto hua2 = Sprite::create("mainlogin/flower_2.png");
+    hua2->setPosition(-10,420);
+    addChild(hua2);
+    hua2->runAction(Spawn::create(MoveTo::create(2,Point(480,200)),FadeTo::create(2,0),NULL));
+    
+    auto hua3 = Sprite::create("mainlogin/flower_2.png");
+    hua3->setPosition(500,730);
+    addChild(hua3);
+    hua3->runAction(Spawn::create(MoveTo::create(2,Point(1060,510)),FadeTo::create(2,0),NULL));
+    
+    auto hua4 = Sprite::create("mainlogin/flower_3.png");
+    hua4->setPosition(-10,260);
+    addChild(hua4);
+    hua4->runAction(Spawn::create(MoveTo::create(2,Point(770,110)),FadeTo::create(2,0),NULL));
 }

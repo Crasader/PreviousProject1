@@ -33,7 +33,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-    drawTestButton();
+//    drawTestButton();
     scheduleUpdate();
 }
 
@@ -413,6 +413,7 @@ void GuiLayer::testButtonClick(){
         resultData.fan = "10";
         resultData.showPoker = "1,2,3,4,5,6,7,8";
         resultData.huType = "3,4,13";
+        resultData.gangfen = 10;
         resultData.nickName = StringUtils::format("这里是装电视台%d",i+1);
         gameResults.push_back(resultData);
     }
