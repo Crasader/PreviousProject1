@@ -101,6 +101,7 @@ void HuafeiShop::onEnter(){
             showHuafeiShop();
         }
         if(GAMEDATA::getInstance()->getHuafeiChangeResult().result == "1"){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
             ShopHintDialog* shop = ShopHintDialog::create();
             shop->showText("兑换成功");
             getParent()->addChild(shop,10);

@@ -58,14 +58,14 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     auto fanNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getHZMaShu().c_str()), "result/fan_num.png", 17, 26, '0');
     fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fanNum->setPosition(210,-15);
+    fanNum->setPosition(240,-15);
     addChild(fanNum);
     auto fanText = Sprite::create("result/ma.png");
-    fanText->setPosition(155,-15);
+    fanText->setPosition(185,-15);
     addChild(fanText);
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        fanNum->setPosition(180,-15);
-        fanText->setPosition(175,-15);
+        fanNum->setPosition(210,-15);
+        fanText->setPosition(205,-15);
     }
     
     if(GAMEDATA::getInstance()->getCurrentBank() ==  data.seatId){
@@ -79,7 +79,7 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     if(data.gangfen !=""){
         auto gangfenText = Sprite::create("result/gang_fen.png");
-        gangfenText->setPosition(180,20);
+        gangfenText->setPosition(210,20);
         addChild(gangfenText);
         
         int fen = atoi(data.gangfen.c_str());
@@ -89,11 +89,11 @@ bool HZPlayerResultCell::init(GameResultData data){
         }else{
             fuhao->setTexture("result/gang_fen_jian.png");
         }
-        fuhao->setPosition(225,20);
+        fuhao->setPosition(255,20);
         addChild(fuhao);
         
         auto juNum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
-        juNum->setPosition(230,10);
+        juNum->setPosition(260,10);
         addChild(juNum);
     }else{
         log("GangFen is null");
@@ -230,12 +230,12 @@ bool HZPlayerResultCell::init(GameResultData data){
         
         auto jifenIcon =  Sprite::create("common/jifen_icon.png");
         jifenIcon->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        jifenIcon->setPosition(240,-10);
+        jifenIcon->setPosition(270,-10);
         addChild(jifenIcon);
         
         resultNum->setScale(1.0f);
         resultNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        resultNum->setPosition(310,-10);
+        resultNum->setPosition(340,-10);
     }
     
     return true;
