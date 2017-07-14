@@ -428,6 +428,11 @@ void HZNormalResultLayer::onEnter(){
         }
     });
     
+    dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_HZ, [=](EventCustom* event){
+        DissovleRoomDialog* dialog = DissovleRoomDialog::create();
+        addChild(dialog,10);
+    });
+    
 }
 
 void HZNormalResultLayer::onExit(){
@@ -439,4 +444,6 @@ void HZNormalResultLayer::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
+
 }

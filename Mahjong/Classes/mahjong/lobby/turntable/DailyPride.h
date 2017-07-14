@@ -1,6 +1,7 @@
 #pragma once
 
 #include "cocos2d.h"
+#include "mahjong/common/state/GameData.h"
 USING_NS_CC;
 
 class DailyPride :public Layer{
@@ -22,6 +23,9 @@ private:
 	void beginPride(Ref* ref);
     void shareTurntable();
     void closeView();
-    void update(float dt);
-	Point getPosByRotation(Point pos,float r,float a);//
+    void showTurntableResult(PrideType type,std::string num);
+    void update(float dt) override;
+	Point getPosByRotation(Point pos,float r,float a);
+    void getTurnTablePride();
+    std::string getImageNameById(PrideType id);
 };

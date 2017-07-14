@@ -1,7 +1,6 @@
 #include "mahjong/lobby/turntable/DailyPride.h"
 #include "mahjong/lobby/turntable/PrideCell.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
-#include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/common/utils/Chinese.h"
@@ -37,12 +36,12 @@ void DailyPride::onEnter(){
         }else{
             schedule([=](float dt){
                 //刷新用户信息
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
                 m_turnBg->stopAllActions();
                 TurnTableData data = GAMEDATA::getInstance()->getTurnTableData();
                 for (int i = 0; i < data.prides.size(); i++){
                     if( ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropId() == GAMEDATA::getInstance()->getTurnTablePrideData().pride.type && ((PrideCell*)m_turnBg->getChildByTag(100+i))->getPropNum() ==GAMEDATA::getInstance()->getTurnTablePrideData().pride.number){
                         m_turnBg->setRotation(-90+36*i-18);
+                        showTurntableResult(GAMEDATA::getInstance()->getTurnTablePrideData().pride.type,GAMEDATA::getInstance()->getTurnTablePrideData().pride.number);
                     }
                 }
             },0.0f,0,2.0f,"m_turnBg");
@@ -98,7 +97,7 @@ void DailyPride::showDailyPrideLayer(){
         PrideCell* cell = PrideCell::create(data.prides.at(i).type, data.prides.at(i).number);
         cell->setRotation(90-i*36+18);
         cell->setTag(100+i);
-        cell->setPosition(getPosByRotation(Point(219,219), 140, i * 36-18));
+        cell->setPosition(getPosByRotation(Point(285,285), 150, i * 36-18));
         m_turnBg->addChild(cell);
     }
     auto itemImage = MenuItemImage::create("daily/go_btn_1.png", "daily/go_btn_2.png",
@@ -126,7 +125,7 @@ void DailyPride::showDailyPrideLayer(){
     shareText2->setPosition(887,240);
     shareText2->setTag(1003);
     addChild(shareText2);
-
+    
     
     auto shareText3 = Sprite::create("daily/no_chance_text.png");
     shareText3->setPosition(887,240);
@@ -244,3 +243,87 @@ void DailyPride::update(float dt){
         getChildByTag(1005)->setPosition(433, 312);
     }
 }
+
+void DailyPride::showTurntableResult(PrideType propId,std::string number){
+    auto bg = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg);
+    
+    auto gongxi = Sprite::create("daily/gongxi.png");
+    gongxi->setPosition(640,520);
+    addChild(gongxi);
+    
+    auto pridebg = Sprite::create("daily/pride_bg.png");
+    pridebg->setPosition(640,360);
+    addChild(pridebg);
+
+    auto prop = Sprite::create(getImageNameById(propId));
+    prop->setPosition(640, 360);
+    addChild(prop);
+    
+    LabelAtlas* num = LabelAtlas::create(number,"daily/pride_num.png", 19, 28, '0');
+    num->setPosition(620,300);
+    addChild(num);
+    if(propId == PrideType::fangka){
+        auto zhang = Sprite::create("daily/zhang_text.png");
+        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        addChild(zhang);
+        num->setPosition((640-(num->getContentSize().width/2+zhang->getContentSize().width/2)), 295);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,308);
+    }else  if(propId == PrideType::fee){
+        auto zhang = Sprite::create("daily/yuan_text.png");
+        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        addChild(zhang);
+        num->setPosition((640-(num->getContentSize().width/2+zhang->getContentSize().width/2)), 295);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,308);
+    }else  if(propId == PrideType::prop){
+        auto zhang = Sprite::create("daily/ge_text.png");
+        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        addChild(zhang);
+        num->setPosition((640-(num->getContentSize().width/2+zhang->getContentSize().width/2)),295);
+        zhang->setPosition(num->getPositionX()+num->getContentSize().width,308);
+    }else  if(propId == PrideType::nothing){
+        num->setVisible(false);
+        auto zhang = Sprite::create("daily/xie_xie.png");
+        zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        zhang->setPosition(640,308);
+        addChild(zhang);
+    }
+    
+    
+    auto getPride = MenuItemImage::create("daily/get_pride_btn_1.png", "daily/get_pride_btn_2.png", CC_CALLBACK_0(DailyPride::getTurnTablePride, this));
+    auto menu = Menu::create(getPride,NULL);
+    menu->setPosition(640,180);
+    addChild(menu);
+}
+
+void DailyPride::getTurnTablePride(){
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
+    removeFromParent();
+}
+
+std::string DailyPride::getImageNameById(PrideType id){
+    std::string imageName;
+    switch (id)
+    {
+        case PrideType::gold:
+            imageName = "common/gold_icon.png";
+            break;
+        case PrideType::lequan:
+            imageName = "common/lequan_icon.png";
+            break;
+        case PrideType::fangka:
+            imageName = "shop/fangka_image.png";
+            break;
+        case PrideType::prop:
+            imageName = "daily/iphone.png";
+            break;
+        case PrideType::fee:
+            imageName = "daily/hongbao.png";
+            break;
+        default:
+            imageName = "daily/nothing.png";
+            break;
+    }
+    return imageName;
+}
+

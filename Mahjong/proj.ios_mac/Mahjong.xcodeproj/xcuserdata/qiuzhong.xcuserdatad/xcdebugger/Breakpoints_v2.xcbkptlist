@@ -6990,11 +6990,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/turntable/DailyPride.cpp"
-            timestampString = "521715714.634699"
+            timestampString = "521719550.322141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "DailyPride::updateData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7006,11 +7006,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/turntable/DailyPride.cpp"
-            timestampString = "521715714.634699"
+            timestampString = "521719550.322141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "DailyPride::beginPride(Ref* ref)"
             landmarkType = "7">
          </BreakpointContent>
