@@ -16,6 +16,9 @@ bool BillInfo::init()
     {
         return false;
     }
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg0);
+    
     MenuItem* item = MenuItem::create();
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
