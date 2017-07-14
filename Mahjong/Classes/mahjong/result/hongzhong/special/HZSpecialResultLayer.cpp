@@ -64,7 +64,7 @@ void HZSpecialResultLayer::showGameReslut(){
     for (int i=0; i<results.size();i++) {
         HZGameResultCell* cell = HZGameResultCell::create(results.at(i));
         if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
-            cell->setPosition(475+320*i,340);
+            cell->setPosition(500+320*i,340);
         }else{
             cell->setPosition(215+285*i,340);
         }

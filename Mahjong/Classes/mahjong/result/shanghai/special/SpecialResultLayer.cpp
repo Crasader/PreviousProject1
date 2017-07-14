@@ -63,7 +63,7 @@ void SpecialResultLayer::showGameReslut(){
     for (int i=0; i<results.size();i++) {
         GameResultCell* cell = GameResultCell::create(results.at(i));
         if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
-            cell->setPosition(320+320*i,340);
+            cell->setPosition(500+320*i,340);
         }else{
             cell->setPosition(215+285*i,340);
         }
