@@ -63,10 +63,10 @@ bool GongZhongHaoLayer::init(){
     haoma->setPosition(685,545);
     addChild(haoma);
     
-    auto copyWxImg  = MenuItemImage::create("gongzhonghao/copy_1.png", "gongzhonghao/copy_2.png", CC_CALLBACK_0(GongZhongHaoLayer::copyText,this));
-    auto copyMenu = Menu::create(copyWxImg,NULL);
-    copyMenu->setPosition(945,550);
-    addChild(copyMenu);
+//    auto copyWxImg  = MenuItemImage::create("gongzhonghao/copy_1.png", "gongzhonghao/copy_2.png", CC_CALLBACK_0(GongZhongHaoLayer::copyText,this));
+//    auto copyMenu = Menu::create(copyWxImg,NULL);
+//    copyMenu->setPosition(945,550);
+//    addChild(copyMenu);
     
     showIndex =0;
     for(int i=0;i<totalPage;i++){

@@ -126,22 +126,18 @@ void ChargeGold::showChargeGold(){
     
         float goldN = list.list.at(i).gold/10000.0f;
         LabelAtlas* diamondNum = LabelAtlas::create("0","shop/change_gold_num.png",22,29,'0');
-        if(goldN>=1){
-            diamondNum->setString(StringUtils::format(":%d",(int)goldN));
-        }else{
-            std::string number = StringUtils::format("%0.1f",goldN);
-            int pos  =  (int)number.find(".");
-            if(pos>=0){
-                number.replace(pos,1, ";");
-            }
-            diamondNum->setString(StringUtils::format(":%s",number.c_str()));
+        std::string number = StringUtils::format("%0.1f",goldN);
+        int pos  =  (int)number.find(".");
+        if(pos>=0){
+            number.replace(pos,1, ";");
         }
-        diamondNum->setPosition(230+175*i,340);
+        diamondNum->setString(StringUtils::format(":%s",number.c_str()));
+        diamondNum->setPosition(240+175*i,340);
         diamondNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
         addChild(diamondNum);
         auto fontWan = Sprite::create("shop/font_wan.png");
         addChild(fontWan);
-        fontWan->setPosition(245+175*i,340);
+        fontWan->setPosition(255+175*i,340);
         
         auto xiaohao = Sprite::create("shop/xiao_hao_text.png");
         xiaohao->setPosition(205+175*i,307);

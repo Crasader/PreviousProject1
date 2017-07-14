@@ -57,14 +57,14 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     
     auto fanNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getHZMaShu().c_str()), "result/fan_num.png", 17, 26, '0');
-    fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    fanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     fanNum->setPosition(240,-15);
     addChild(fanNum);
     auto fanText = Sprite::create("result/ma.png");
     fanText->setPosition(185,-15);
     addChild(fanText);
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-        fanNum->setPosition(210,-15);
+        fanNum->setPosition(230,-15);
         fanText->setPosition(205,-15);
     }
     
