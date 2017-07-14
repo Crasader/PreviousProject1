@@ -50,14 +50,14 @@ bool CompetitonItem::init(CompetitionRoomId roomId,std::string haufei,std::strin
     content->setPosition(huafeiNum->getPositionX()+huafeiNum->getContentSize().width-5,50);
     addChild(content);
     
-    //    if(!UserData::getInstance()->isWeixinPayOpen()){
-    //        huafeiNum->setVisible(false);
-    //        content->setTexture("mjlobby/check_fangka_2.png");
-    //        if(roomId ==  CompetitionRoomId::Shanghai_High||roomId ==  CompetitionRoomId::Hongzhong_High){
-    //            content->setTexture("mjlobby/check_fangka_8.png");
-    //        }
-    //
-    //    }
+    if(!UserData::getInstance()->isWeixinPayOpen()){
+        huafeiNum->setVisible(false);
+        content->setTexture("mjlobby/check_fangka_2.png");
+        if(roomId ==  CompetitionRoomId::Shanghai_High||roomId ==  CompetitionRoomId::Hongzhong_High){
+            content->setTexture("mjlobby/check_fangka_8.png");
+        }
+        
+    }
     
     auto title = Sprite::create();
     if(roomId ==  CompetitionRoomId::Shanghai_Normal||roomId ==  CompetitionRoomId::Shanghai_High){
