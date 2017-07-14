@@ -255,7 +255,7 @@ void DailyPride::showTurntableResult(PrideType propId,std::string number){
     auto pridebg = Sprite::create("daily/pride_bg.png");
     pridebg->setPosition(640,360);
     addChild(pridebg);
-
+    
     auto prop = Sprite::create(getImageNameById(propId));
     prop->setPosition(640, 360);
     addChild(prop);
