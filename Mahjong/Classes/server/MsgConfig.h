@@ -109,8 +109,7 @@
 //#define MSGCODE_FEE_EXCHANGE_REQUEST  1066// 话费兑换请求{code:1066,poxiaoId:poxiaoId,phone:"13999999",goodsId:"1"}  goodsId 3为30话费 4为50话费 5为100话费
 //#define MSGCODE_FEE_EXCHANGE_RESPONSE  1067// 话费兑换回复{code:1067,poxiaoId:poxiaoId,result:"1"} 1成功0失败
 #define MSGCODE_FEE_EXCHANGE_RECORD_REQUEST  1068// 话费兑换记录请求{code:1068,poxiaoId:poxiaoId}
-#define MSGCODE_FEE_EXCHANGE_RECORD_RESPONSE  1069// 话费兑换记录回复{code:1069,poxiaoId:poxiaoId,list:[{id:"3",status:"1"},{id:"4",status:"2"}]} //0兑换中 1已兑换
-
+#define MSGCODE_FEE_EXCHANGE_RECORD_RESPONSE  1069// 话费兑换\房卡兑换记录回复{code:1069,poxiaoId:poxiaoId,list:[{id:"3",url:"",status:"1",fee:"",time:""},{id:"4",url:"",status:"2",fee:"",time:""}],list1:[{fangka:"3",url:"",time:""},{fangka:"4",url:"",time:""}]} //0兑换中 1已兑换
 #define MSGCODE_FEE_LIST_REQUEST  1070// 话费兑换列表请求{code:1070,poxiaoId:poxiaoId}
 #define MSGCODE_FEE_LIST_RESPONSE  1071// 话费兑换列表回复{code:1071,poxiaoId:poxiaoId,list:[{url:"http://web.5278-mobi.com:1112/30.jpg",goods_id:3},{url:"http://web.5278-mobi.com:1112/50.jpg",goods_id:4},{url:"http://web.5278-mobi.com:1112/100.jpg",goods_id:5},{url:"http://web.5278-mobi.com:1112/200.jpg",goods_id:6}]}
 
