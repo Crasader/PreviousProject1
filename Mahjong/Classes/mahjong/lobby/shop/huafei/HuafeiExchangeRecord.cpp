@@ -10,6 +10,8 @@
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/Chinese.h"
 #include "server/NetworkManage.h"
+#include "http/image/UrlImageMannger.h"
+#include "mahjong/GameConfig.h"
 
 bool HuafeiExchangeRecord::init(){
     if(!Layer::init()){
@@ -93,7 +95,7 @@ Size HuafeiExchangeRecord::tableCellSizeForIndex(TableView *table, ssize_t idx){
 TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t idx){
     auto string = StringUtils::format("%ld", idx);
     TableViewCell *cell = table->dequeueCell();
-    std::string newName ="";
+    std::string newName =StringUtils::format("%s",GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).fee.c_str());
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
@@ -102,6 +104,10 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         cell->addChild(recordBg);
         
         auto content = Sprite::create();
+        std::string filepath = UrlImageMannger::getInstance()->loadShopImgByUrl(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).url);
+        if(IAMGE_LOADING != filepath){
+            content->setTexture(filepath);
+        }
         content->setTag(100);
         content->setPosition(20,20);
         content->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
