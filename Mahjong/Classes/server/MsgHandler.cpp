@@ -4133,14 +4133,15 @@ void MsgHandler::handleHuafeiChangeRecord(std::string msg){
     }
     GAMEDATA::getInstance()->setHuaChangeRecord(records);
     FangkaChangeRecord fangRecord;
-    if(_mDoc.HasMember("list1")){
-        const rapidjson::Value &list = _mDoc["list1"];
+    if(_mDoc.HasMember("list2")){
+        const rapidjson::Value &list = _mDoc["list2"];
         for(int i=0;i<list.Capacity();i++){
             FangkaRecord rec;
             const rapidjson::Value &temp = list[i];
-            rec.fee =temp["fee"].GetString();
+            rec.fee =StringUtils::format("%d",atoi(temp["fangka"].GetString()));
             rec.time =temp["time"].GetString();
-            rec.url = temp["url"].GetString();
+            if(temp.HasMember("url"))
+                rec.url = temp["url"].GetString();
             fangRecord.records.push_back(rec);
         }
     }

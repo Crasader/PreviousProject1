@@ -6,14 +6,14 @@
 //
 //
 
-#include "mahjong/lobby/shop/huafei/HuafeiExchangeRecord.hpp"
+#include "mahjong/lobby/shop/huafei/FangkaExchangeRecord.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/Chinese.h"
 #include "server/NetworkManage.h"
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/GameConfig.h"
 
-bool HuafeiExchangeRecord::init(){
+bool FangkaExchangeRecord::init(){
     if(!Layer::init()){
         return false;
     }
@@ -32,7 +32,7 @@ bool HuafeiExchangeRecord::init(){
     title->setPosition(654,620);
     addChild(title);
     
-    auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(HuafeiExchangeRecord::closeView, this));
+    auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(FangkaExchangeRecord::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
     closeMenu->setPosition(1070, 630);
     addChild(closeMenu);
@@ -49,7 +49,7 @@ bool HuafeiExchangeRecord::init(){
 }
 
 
-void HuafeiExchangeRecord::onEnter(){
+void FangkaExchangeRecord::onEnter(){
     Layer::onEnter();
     recordListener = EventListenerCustom::create(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, [=](EventCustom* event){
         if(GAMEDATA::getInstance()->getHuaChangeRecord().records.size()>0){
@@ -70,33 +70,33 @@ void HuafeiExchangeRecord::onEnter(){
 };
 
 
-void HuafeiExchangeRecord::onExit(){
+void FangkaExchangeRecord::onExit(){
     Layer::onExit();
     Director::getInstance()->getEventDispatcher()->removeEventListener(recordListener);
 };
 
-void HuafeiExchangeRecord::showLequanExchangeRecord(){
+void FangkaExchangeRecord::showLequanExchangeRecord(){
     //TODO
 }
 
-void HuafeiExchangeRecord::closeView(){
+void FangkaExchangeRecord::closeView(){
     removeFromParent();
 }
 
-void HuafeiExchangeRecord::tableCellTouched(TableView* table,TableViewCell* cell){
+void FangkaExchangeRecord::tableCellTouched(TableView* table,TableViewCell* cell){
     
 }
 
 
-Size HuafeiExchangeRecord::tableCellSizeForIndex(TableView *table, ssize_t idx){
+Size FangkaExchangeRecord::tableCellSizeForIndex(TableView *table, ssize_t idx){
     return Size(765, 145);
 }
 
-TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t idx){
+TableViewCell* FangkaExchangeRecord::tableCellAtIndex(TableView *table, ssize_t idx){
     auto string = StringUtils::format("%ld", idx);
     TableViewCell *cell = table->dequeueCell();
-    std::string newName =StringUtils::format("%s",GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).fee.c_str());
-    std::string filepath = UrlImageMannger::getInstance()->loadShopImgByUrl(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).url);
+    std::string newName =StringUtils::format("%s",GAMEDATA::getInstance()->getFangkaChangeRecord().records.at(idx).fee.c_str());
+    std::string filepath = UrlImageMannger::getInstance()->loadShopImgByUrl(GAMEDATA::getInstance()->getFangkaChangeRecord().records.at(idx).url);
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
@@ -119,7 +119,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         huafeiNum->setPosition(190,90);
         cell->addChild(huafeiNum);
         
-        auto haufeiImage = Sprite::create("shop/chong_zhi_ka.png");
+        auto haufeiImage = Sprite::create("shop/fangka_num_text.png");
         haufeiImage->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         haufeiImage->setTag(98);
         haufeiImage->setPosition(huafeiNum->getContentSize().width+huafeiNum->getPositionX(),88);
@@ -150,36 +150,13 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
         shijian->setPosition(190,60);
         cell->addChild(shijian);
         
-        auto time = Label::createWithSystemFont(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).time,"arial", 22);
+        auto time = Label::createWithSystemFont(GAMEDATA::getInstance()->getFangkaChangeRecord().records.at(idx).time,"arial", 22);
         time->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
         time->setColor(Color3B(133,54,33));
         time->setPosition(300,60);
         time->setTag(103);
         cell->addChild(time);
         
-        auto shouji = Label::createWithSystemFont("兑换手机号:","arial", 22);
-        shouji->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        shouji->setColor(Color3B(133,54,33));
-        shouji->setPosition(190,30);
-        cell->addChild(shouji);
-        
-        auto phoneNum = Label::createWithSystemFont(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).phone,"arial", 22);
-        phoneNum->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        phoneNum->setColor(Color3B(133,54,33));
-        phoneNum->setPosition(320,30);
-        phoneNum->setTag(104);
-        cell->addChild(phoneNum);
-        
-        auto stateImage = Sprite::create();
-        stateImage->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-        stateImage->setTag(105);
-        stateImage->setPosition(600,50);
-        cell->addChild(stateImage);
-        if(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).state == "0"){
-            stateImage->setTexture("shop/duihuanzhong.png");
-        }else{
-            stateImage->setTexture("shop/yiduihuan.png");
-        }
     }else{
         if(NULL != cell->getChildByTag(100)){
             if(IAMGE_LOADING != filepath){
@@ -194,17 +171,7 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
             ((LabelAtlas*)cell->getChildByTag(102))->setString(newName);
         }
         if(NULL != cell->getChildByTag(103)){
-            ((Label*)cell->getChildByTag(103))->setString(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).time);
-        }
-        if(NULL != cell->getChildByTag(104)){
-            ((Label*)cell->getChildByTag(104))->setString(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).phone);
-        }
-        if(NULL != cell->getChildByTag(105)){
-            if(GAMEDATA::getInstance()->getHuaChangeRecord().records.at(idx).state == "0"){
-                ((Sprite*)cell->getChildByTag(105))->setTexture("shop/duihuanzhong.png");
-            }else{
-                ((Sprite*)cell->getChildByTag(105))->setTexture("shop/yiduihuan.png");
-            }
+            ((Label*)cell->getChildByTag(103))->setString(GAMEDATA::getInstance()->getFangkaChangeRecord().records.at(idx).time);
         }
         if(NULL != cell->getChildByTag(98)&&NULL != cell->getChildByTag(101)){
             cell->getChildByTag(98)->setPosition(cell->getChildByTag(101)->getContentSize().width+cell->getChildByTag(101)->getPositionX(),88);
@@ -223,6 +190,6 @@ TableViewCell* HuafeiExchangeRecord::tableCellAtIndex(TableView *table, ssize_t 
     return cell;
 }
 
-ssize_t HuafeiExchangeRecord::numberOfCellsInTableView(TableView *table){
-    return GAMEDATA::getInstance()->getHuaChangeRecord().records.size();
+ssize_t FangkaExchangeRecord::numberOfCellsInTableView(TableView *table){
+    return GAMEDATA::getInstance()->getFangkaChangeRecord().records.size();
 }

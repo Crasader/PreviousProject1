@@ -55,6 +55,8 @@
 		D20474B91E5D36F7001F7121 /* SwitchHttp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20474B61E5D36F7001F7121 /* SwitchHttp.cpp */; };
 		D20E97C11EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */; };
 		D20E97C21EDEA61900F51A7F /* HuafeiChangeConfirm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */; };
+		D212B3781F18A75D00647B18 /* FangkaExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212B3761F18A75D00647B18 /* FangkaExchangeRecord.cpp */; };
+		D212B3791F18A75D00647B18 /* FangkaExchangeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D212B3761F18A75D00647B18 /* FangkaExchangeRecord.cpp */; };
 		D212D53C1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
 		D212D53D1E14A0BA00C29C00 /* batteryInfo in Resources */ = {isa = PBXBuildFile; fileRef = D212D53B1E14A0BA00C29C00 /* batteryInfo */; };
 		D217FE9C1F127E76008F5D4B /* ShareSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */; };
@@ -518,6 +520,8 @@
 		D20474B71E5D36F7001F7121 /* SwitchHttp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwitchHttp.hpp; sourceTree = "<group>"; };
 		D20E97BF1EDEA61900F51A7F /* HuafeiChangeConfirm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuafeiChangeConfirm.cpp; sourceTree = "<group>"; };
 		D20E97C01EDEA61900F51A7F /* HuafeiChangeConfirm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuafeiChangeConfirm.hpp; sourceTree = "<group>"; };
+		D212B3761F18A75D00647B18 /* FangkaExchangeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FangkaExchangeRecord.cpp; sourceTree = "<group>"; };
+		D212B3771F18A75D00647B18 /* FangkaExchangeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FangkaExchangeRecord.hpp; sourceTree = "<group>"; };
 		D212D53B1E14A0BA00C29C00 /* batteryInfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = batteryInfo; sourceTree = "<group>"; };
 		D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareSelectLayer.cpp; sourceTree = "<group>"; };
 		D217FE9B1F127E76008F5D4B /* ShareSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareSelectLayer.hpp; sourceTree = "<group>"; };
@@ -1840,6 +1844,8 @@
 		D29BE26A1ED686AA00EED3A0 /* huafei */ = {
 			isa = PBXGroup;
 			children = (
+				D212B3761F18A75D00647B18 /* FangkaExchangeRecord.cpp */,
+				D212B3771F18A75D00647B18 /* FangkaExchangeRecord.hpp */,
 				D2677D681F174B1F003D27D9 /* FangkaChangeConfirm.cpp */,
 				D2677D691F174B1F003D27D9 /* FangkaChangeConfirm.hpp */,
 				D2030EF81F08E2D3001568BD /* ExchangeFangKaCell.cpp */,
@@ -2392,6 +2398,7 @@
 				D2DDB1BE1F02384600790422 /* EnterRoomDialog.cpp in Sources */,
 				D252FB441E7FA5EC00937322 /* ToastCell.cpp in Sources */,
 				D252FC611E7FABE900937322 /* PlayerRight.cpp in Sources */,
+				D212B3781F18A75D00647B18 /* FangkaExchangeRecord.cpp in Sources */,
 				D252FB641E7FA5EC00937322 /* ParticleUtil.cpp in Sources */,
 				D252FB601E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,
 				D217FE9C1F127E76008F5D4B /* ShareSelectLayer.cpp in Sources */,
@@ -2540,6 +2547,7 @@
 				D252FC5E1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
 				D252FBDB1E7FA5EC00937322 /* SplashScene.cpp in Sources */,
 				D2B1A8FA1CCDF0F400A20896 /* MsgHandler.cpp in Sources */,
+				D212B3791F18A75D00647B18 /* FangkaExchangeRecord.cpp in Sources */,
 				D252FB4B1E7FA5EC00937322 /* OtherPlayerInfo.cpp in Sources */,
 				D252FC5C1E7FABE900937322 /* Player.cpp in Sources */,
 				D252FB291E7FA5EC00937322 /* ChatDialog.cpp in Sources */,

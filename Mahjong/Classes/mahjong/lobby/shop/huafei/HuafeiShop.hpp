@@ -31,6 +31,7 @@ private:
     void closeView();
     void showHuaFeiChange(Ref* ref);
     void showFangKaChange(Ref* ref);
+    bool huaFeiTabSelected = true;
 };
 
 #endif /* LequanShop_hpp */

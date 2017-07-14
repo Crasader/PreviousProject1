@@ -10,6 +10,7 @@
 #include "mahjong/lobby/shop/huafei/ExchangeHuafeiCell.hpp"
 #include "mahjong/lobby/shop/huafei/ExchangeFangKaCell.hpp"
 #include "mahjong/lobby/shop/huafei/HuafeiExchangeRecord.hpp"
+#include "mahjong/lobby/shop/huafei/FangkaExchangeRecord.hpp"
 #include "mahjong/lobby/shop/ShopHintDialog.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/loading/Loading.h"
@@ -174,6 +175,7 @@ void HuafeiShop::exchange(Ref* ref){
 
 
 void HuafeiShop::showHuaFeiChange(Ref* ref){
+    huaFeiTabSelected = true;
     haufeiToggle->setSelectedIndex(0);
     fangkaToggle->setSelectedIndex(1);
     huaFeiLayer->setVisible(true);
@@ -188,6 +190,7 @@ void HuafeiShop::showHuaFeiChange(Ref* ref){
 
 
 void HuafeiShop::showFangKaChange(Ref* ref){
+    huaFeiTabSelected = false;
     haufeiToggle->setSelectedIndex(1);
     fangkaToggle->setSelectedIndex(0);
     huaFeiLayer->setVisible(false);
@@ -202,8 +205,13 @@ void HuafeiShop::showFangKaChange(Ref* ref){
 
 void HuafeiShop::showRecord(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendHuafeiRecordCommmand());
-    HuafeiExchangeRecord* record  = HuafeiExchangeRecord::create();
-    addChild(record,100);
+    if(huaFeiTabSelected){
+        HuafeiExchangeRecord* record  = HuafeiExchangeRecord::create();
+        addChild(record,100);
+    }else{
+        FangkaExchangeRecord* recod = FangkaExchangeRecord::create();
+        addChild(recod,100);
+    }
 }
 
 void  HuafeiShop:: closeView(){
