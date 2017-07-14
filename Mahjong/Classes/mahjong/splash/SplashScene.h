@@ -35,5 +35,6 @@ private:
     void scrollLightSpot(float dt);
 	void showLoading();
 	void removeLoading();
+    void showLoadLayerAnim();
 };
 #endif

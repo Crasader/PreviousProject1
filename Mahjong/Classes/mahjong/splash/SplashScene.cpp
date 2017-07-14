@@ -124,17 +124,7 @@ void SplashScene::removeLoading(){
 
 void SplashScene::showSplashAnim(){
     
-    auto poker1 = Sprite::create("mainlogin/pai_img_3.png");
-    poker1->setPosition(250,320);
-    addChild(poker1,2);
-    
-    auto poker2 = Sprite::create("mainlogin/pai_img_2.png");
-    poker2->setPosition(1050,308);
-    addChild(poker2,2);
-    
-    auto poker3 = Sprite::create("mainlogin/pai_img_1.png");
-    poker3->setPosition(1075,612);
-    addChild(poker3,2);
+    showLoadLayerAnim();
 
     auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
                                             CC_CALLBACK_0(SplashScene::loginByWechat, this));
@@ -359,4 +349,21 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReConnectAgain);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReEnterFriendRoomListener);
+}
+
+void SplashScene::showLoadLayerAnim(){
+    auto poker1 = Sprite::create("mainlogin/pai_img_3.png");
+    poker1->setPosition(250,320);
+    addChild(poker1,2);
+    poker1->runAction(Repeat::create(Sequence::create(MoveTo::create(0.8,Point(250,300)),MoveTo::create(0.8,Point(250,320)),NULL), CC_REPEAT_FOREVER));
+    
+    auto poker2 = Sprite::create("mainlogin/pai_img_2.png");
+    poker2->setPosition(1050,308);
+    addChild(poker2,2);
+    poker2->runAction(Repeat::create(Sequence::create(MoveTo::create(0.9,Point(1050,280)),MoveTo::create(0.9,Point(1050,308)),NULL), CC_REPEAT_FOREVER));
+    
+    auto poker3 = Sprite::create("mainlogin/pai_img_1.png");
+    poker3->setPosition(1075,612);
+    addChild(poker3,2);
+    poker3->runAction(Repeat::create(Sequence::create(MoveTo::create(0.7,Point(1075,595)),MoveTo::create(0.7,Point(1075,612)),NULL), CC_REPEAT_FOREVER));
 }

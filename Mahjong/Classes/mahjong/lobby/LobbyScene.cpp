@@ -383,7 +383,7 @@ void LobbyScene::drawSceneBot(){
         auto textbg = Sprite::create("mjlobby/ti_shi_kuang.png");
         textbg->setPosition(900,112);
         addChild(textbg);
-    
+        
         auto text = Label::createWithSystemFont(GAMEDATA::getInstance()->getBottomText(), "arial", 20);
         text->setAnchorPoint(Point::ANCHOR_MIDDLE);
         text->setColor(Color3B(255,247,217));
@@ -391,7 +391,7 @@ void LobbyScene::drawSceneBot(){
         addChild(text);
     }
     
-
+    
 }
 
 //刷新显示的用户信息
@@ -587,10 +587,10 @@ void LobbyScene::chargeFangka(){
     Audio::getInstance()->playSoundClick();
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
     if(UserData::getInstance()->isWeixinPayOpen()){
-//        if(!UserData::getInstance()->isInviteCodeBind()){
-//            InviteCodeLayer* lay = InviteCodeLayer::create();
-//            addChild(lay,6);
-//        }
+        //        if(!UserData::getInstance()->isInviteCodeBind()){
+        //            InviteCodeLayer* lay = InviteCodeLayer::create();
+        //            addChild(lay,6);
+        //        }
         ChargeFangka* charge = ChargeFangka::create();
         addChild(charge,3);
     }else{
@@ -598,10 +598,10 @@ void LobbyScene::chargeFangka(){
         addChild(hint,3);
     }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-//    if(!UserData::getInstance()->isInviteCodeBind()){
-//        InviteCodeLayer* lay = InviteCodeLayer::create();
-//        addChild(lay,6);
-//    }
+    //    if(!UserData::getInstance()->isInviteCodeBind()){
+    //        InviteCodeLayer* lay = InviteCodeLayer::create();
+    //        addChild(lay,6);
+    //    }
     ChargeFangka* charge = ChargeFangka::create();
     addChild(charge,3);
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)

@@ -21,5 +21,6 @@ private:
     void showHealthLayer();
     void showNormalLayer();
     void showLoadLayerAnim();
+    void showDiceAnim(Sprite* spr);
 };
 #endif /* LoadResource_hpp */
