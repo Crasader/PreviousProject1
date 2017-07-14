@@ -132,12 +132,18 @@ void DailyPride::showDailyPrideLayer(){
     shareText3->setPosition(887,240);
     shareText3->setTag(1004);
     addChild(shareText3);
-
+    
+    auto shou1 = Sprite::create("daily/shou.png");
+    shou1->setPosition(880,130);
+    addChild(shou1);
+    shou1->setTag(1005);
+    shou1->runAction(Repeat::create(Sequence::create(ScaleTo::create(1.0, 1.2f),ScaleTo::create(1.0, 1.0f),NULL), CC_REPEAT_FOREVER));
     
     if(UserData::getInstance()->getTurntableNumber() == "0"){
         //需要分享获取次数
         shareText->setVisible(true);
         menu->setVisible(true);
+        shou1->setVisible(true);
         number->setVisible(false);
         shareText2->setVisible(false);
         shareText3->setVisible(false);
@@ -145,6 +151,7 @@ void DailyPride::showDailyPrideLayer(){
         //次数已经用完了
         shareText->setVisible(false);
         menu->setVisible(false);
+        shou1->setVisible(false);
         number->setVisible(false);
         shareText2->setVisible(false);
         shareText3->setVisible(true);
@@ -153,6 +160,8 @@ void DailyPride::showDailyPrideLayer(){
         shareText->setVisible(false);
         menu->setVisible(false);
         number->setVisible(true);
+        shou1->setPosition(433, 312);
+        shou1->setVisible(true);
         number->setString(UserData::getInstance()->getTurntableNumber());
         shareText2->setVisible(true);
         shareText3->setVisible(false);
@@ -216,12 +225,14 @@ void DailyPride::update(float dt){
         getChildByTag(1002)->setVisible(false);
         getChildByTag(1003)->setVisible(false);
         getChildByTag(1004)->setVisible(false);
+        getChildByTag(1005)->setVisible(true);
     }else if(UserData::getInstance()->getTurntableNumber() == "-1"){
         getChildByTag(1000)->setVisible(false);
         getChildByTag(1001)->setVisible(false);
         getChildByTag(1002)->setVisible(false);
         getChildByTag(1003)->setVisible(false);
         getChildByTag(1004)->setVisible(true);
+        getChildByTag(1005)->setVisible(false);
     }else{
         getChildByTag(1000)->setVisible(false);
         getChildByTag(1001)->setVisible(false);
@@ -229,5 +240,7 @@ void DailyPride::update(float dt){
         ((LabelAtlas*)getChildByTag(1002))->setString(UserData::getInstance()->getTurntableNumber());
         getChildByTag(1003)->setVisible(true);
         getChildByTag(1004)->setVisible(false);
+        getChildByTag(1005)->setVisible(true);
+        getChildByTag(1005)->setPosition(433, 312);
     }
 }

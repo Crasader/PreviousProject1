@@ -52,6 +52,7 @@ bool PrideCell::init(PrideType propId, std::string propNum){
         num->setVisible(false);
         auto zhang = Sprite::create("daily/xie_xie.png");
         zhang->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+//        zhang->setFlippedY(true);
         zhang->setPosition(-50,98);
         addChild(zhang);
     }
