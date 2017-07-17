@@ -82,7 +82,7 @@ void FirstChargeDialog::showFirstCharge(){
     diamond->setPosition(500,400);
     addChild(diamond);
     
-    LabelAtlas* fangNum = LabelAtlas::create(StringUtils::format("%d",8), "shop/charge/charge_num.png", 24, 36, '0');
+    LabelAtlas* fangNum = LabelAtlas::create(StringUtils::format("%d",GAMEDATA::getInstance()->getFirstChargeData().fangka), "shop/charge/charge_num.png", 24, 36, '0');
     fangNum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     fangNum->setPosition(462,328);
     addChild(fangNum);
