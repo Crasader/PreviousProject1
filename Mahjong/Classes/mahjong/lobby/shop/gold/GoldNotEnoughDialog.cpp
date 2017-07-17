@@ -60,16 +60,20 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     
     int goldShowNum =atoi(newRespData.min.c_str());
     
-    auto fangkanum0 = LabelAtlas::create(StringUtils::format("%d",goldShowNum),"shop/charge/charge_num.png",24,36,'0');
+    
+    auto fangkanum0 = LabelAtlas::create(StringUtils::format("%d",goldShowNum/10000),"shop/charge/charge_num.png",24,36,'0');
     fangkanum0->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fangkanum0->setPosition(517,400);
+    fangkanum0->setPosition(525,400);
     addChild(fangkanum0);
     
-
+    auto wan = Sprite::create("shop/charge/text_wan.png");
+    wan->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    wan->setPosition(fangkanum0->getPositionX()+fangkanum0->getContentSize().width,395);
+    addChild(wan);
     
     auto fangkanum = LabelAtlas::create(StringUtils::format(":%d",64000),"shop/charge/charge_num.png",24,36,'0');
     fangkanum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
-    fangkanum->setPosition(645,332);
+    fangkanum->setPosition(655,332);
     addChild(fangkanum);
     
     auto fangka = Sprite::create("common/gold_icon.png");
