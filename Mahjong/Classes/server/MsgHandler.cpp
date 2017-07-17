@@ -2599,6 +2599,30 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         const rapidjson::Value &size = _mDoc["size"];
         GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
     }
+    
+    PayPointInfo pointInfo;
+    if(_mDoc.HasMember("point")){
+        const rapidjson::Value &point = _mDoc["point"];
+        pointInfo.point = point.GetString();
+    }
+    if(_mDoc.HasMember("fee")){
+        const rapidjson::Value &fee = _mDoc["fee"];
+        pointInfo.fee = fee.GetString();
+    }
+    if(_mDoc.HasMember("fangka")){
+        const rapidjson::Value &fangka = _mDoc["fangka"];
+        pointInfo.fangka = fangka.GetString();
+    }
+    if(_mDoc.HasMember("applefangka")){
+        const rapidjson::Value &applefangka = _mDoc["applefangka"];
+        pointInfo.applefangka = applefangka.GetString();
+    }
+    if(_mDoc.HasMember("applefee")){
+        const rapidjson::Value &applefee = _mDoc["applefee"];
+        pointInfo.applefee = applefee.GetString();
+    }
+    GAMEDATA::getInstance()->setPayPointInfo(pointInfo);
+    
     const rapidjson::Value &result = _mDoc["result"];
     data.result = result.GetInt();
     GAMEDATA::getInstance()->clearPlayersInfo();
@@ -3130,6 +3154,30 @@ void MsgHandler::handleHongZhongEnterRoom(std::string msg){
         const rapidjson::Value &ip = _mDoc["ip"];
         GAMEDATA::getInstance()->setIP(ip.GetString());
     }
+    
+    PayPointInfo pointInfo;
+    if(_mDoc.HasMember("point")){
+        const rapidjson::Value &point = _mDoc["point"];
+        pointInfo.point = point.GetString();
+    }
+    if(_mDoc.HasMember("fee")){
+        const rapidjson::Value &fee = _mDoc["fee"];
+        pointInfo.fee = fee.GetString();
+    }
+    if(_mDoc.HasMember("fangka")){
+        const rapidjson::Value &fangka = _mDoc["fangka"];
+        pointInfo.fangka = fangka.GetString();
+    }
+    if(_mDoc.HasMember("applefangka")){
+        const rapidjson::Value &applefangka = _mDoc["applefangka"];
+        pointInfo.applefangka = applefangka.GetString();
+    }
+    if(_mDoc.HasMember("applefee")){
+        const rapidjson::Value &applefee = _mDoc["applefee"];
+        pointInfo.applefee = applefee.GetString();
+    }
+    GAMEDATA::getInstance()->setPayPointInfo(pointInfo);
+    
     const rapidjson::Value &result = _mDoc["result"];
     data.result = result.GetInt();
     GAMEDATA::getInstance()->clearPlayersInfo();
@@ -4005,6 +4053,28 @@ void MsgHandler::handleJoinCompetitionResp(std::string msg){
         const rapidjson::Value &tip = _mDoc["tip"];
         data.tip =  tip.GetString();
     }
+    PayPointInfo pointInfo;
+    if(_mDoc.HasMember("point")){
+        const rapidjson::Value &point = _mDoc["point"];
+        pointInfo.point = point.GetString();
+    }
+    if(_mDoc.HasMember("fee")){
+        const rapidjson::Value &fee = _mDoc["fee"];
+        pointInfo.fee = fee.GetString();
+    }
+    if(_mDoc.HasMember("fangka")){
+        const rapidjson::Value &fangka = _mDoc["fangka"];
+        pointInfo.fangka = fangka.GetString();
+    }
+    if(_mDoc.HasMember("applefangka")){
+        const rapidjson::Value &applefangka = _mDoc["applefangka"];
+        pointInfo.applefangka = applefangka.GetString();
+    }
+    if(_mDoc.HasMember("applefee")){
+        const rapidjson::Value &applefee = _mDoc["applefee"];
+        pointInfo.applefee = applefee.GetString();
+    }
+    GAMEDATA::getInstance()->setPayPointInfo(pointInfo);
     postNotifyMessage(MSG_JOIN_COMPETITION_RESP, &data);
 }
 

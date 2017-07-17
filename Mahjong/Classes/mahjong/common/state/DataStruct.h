@@ -837,4 +837,12 @@ struct MahjongShareData5{
     std::string phead;
     std::string pcontent;
 };
+
+struct PayPointInfo{
+    std::string fee;
+    std::string fangka;
+    std::string point;
+    std::string applefangka;
+    std::string applefee;
+};
 #endif

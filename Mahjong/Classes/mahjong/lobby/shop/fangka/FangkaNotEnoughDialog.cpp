@@ -10,6 +10,7 @@
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
+#include "mahjong/common/state/GameData.h"
 
 
 
@@ -79,8 +80,13 @@ bool FangkaNotEnoughDialog::init(){
 }
 
 void FangkaNotEnoughDialog::initView(int num,int fee){
-    fangkanum->setString(StringUtils::format(":%d",num));
-    xuyaunnum->setString(StringUtils::format("%d",fee));
+    if(UserData::getInstance()->getUserPayWay() == "2"){
+        fangkanum->setString(StringUtils::format(":%s",GAMEDATA::getInstance()->getPayPointInfo().applefangka.c_str()));
+        xuyaunnum->setString(StringUtils::format("%s",GAMEDATA::getInstance()->getPayPointInfo().applefee.c_str()));
+    }else{
+        fangkanum->setString(StringUtils::format(":%s",GAMEDATA::getInstance()->getPayPointInfo().fangka.c_str()));
+        xuyaunnum->setString(StringUtils::format("%s",GAMEDATA::getInstance()->getPayPointInfo().fee.c_str()));
+    }
 }
 
 void FangkaNotEnoughDialog::closeView(){
