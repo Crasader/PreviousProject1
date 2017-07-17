@@ -30,6 +30,10 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     if(!Layer::init()){
         return false;
     }
+    
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg0);
+    
     setRoomType(type);
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
@@ -58,12 +62,12 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     
     auto fangkanum0 = LabelAtlas::create(StringUtils::format("%d",goldShowNum),"shop/charge/charge_num.png",24,36,'0');
     fangkanum0->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fangkanum0->setPosition(537,400);
+    fangkanum0->setPosition(517,400);
     addChild(fangkanum0);
     
 
     
-    auto fangkanum = LabelAtlas::create(StringUtils::format(":%d",goldShowNum),"shop/charge/charge_num.png",24,36,'0');
+    auto fangkanum = LabelAtlas::create(StringUtils::format(":%d",64000),"shop/charge/charge_num.png",24,36,'0');
     fangkanum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     fangkanum->setPosition(645,332);
     addChild(fangkanum);
@@ -73,10 +77,10 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     fangka->setPosition(fangkanum->getPositionX()-fangkanum->getContentSize().width,330);
     addChild(fangka);
     
-    auto xuyaunnum = LabelAtlas::create(StringUtils::format("%d",5),"shop/charge/charge_num.png",24,36,'0');
+    auto xuyaunnum = LabelAtlas::create(StringUtils::format("%d",12),"shop/charge/charge_num.png",24,36,'0');
     xuyaunnum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     xuyaunnum->setScale(0.8f);
-    xuyaunnum->setPosition(712,330);
+    xuyaunnum->setPosition(742,330);
     addChild(xuyaunnum);
 
     auto confirm = MenuItemImage::create("shop/charge/charge_btn_1.png", "shop/charge/charge_btn_2.png",
