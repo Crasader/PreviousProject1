@@ -71,7 +71,7 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     wan->setPosition(fangkanum0->getPositionX()+fangkanum0->getContentSize().width,395);
     addChild(wan);
     
-    auto fangkanum = LabelAtlas::create(StringUtils::format(":%d",64000),"shop/charge/charge_num.png",24,36,'0');
+    auto fangkanum = LabelAtlas::create(StringUtils::format(":%d",goldShowNum),"shop/charge/charge_num.png",24,36,'0');
     fangkanum->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
     fangkanum->setPosition(655,332);
     addChild(fangkanum);
@@ -81,7 +81,7 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     fangka->setPosition(fangkanum->getPositionX()-fangkanum->getContentSize().width,330);
     addChild(fangka);
     
-    auto xuyaunnum = LabelAtlas::create(StringUtils::format("%d",12),"shop/charge/charge_num.png",24,36,'0');
+    auto xuyaunnum = LabelAtlas::create(StringUtils::format("%d",5),"shop/charge/charge_num.png",24,36,'0');
     xuyaunnum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     xuyaunnum->setScale(0.8f);
     xuyaunnum->setPosition(742,330);

@@ -89,12 +89,12 @@ void ChargeFangka::showChargeDialog(){
     
     for(int i=0;i<list.list.size();i++){
         int posx = (1280-(list.list.size()-1)*230)/2;
-        list.list.at(0).money = 600;
-        list.list.at(1).money = 3000;
-        list.list.at(2).money = 6000;
-        list.list.at(0).fangka = 4;
-        list.list.at(1).fangka = 24;
-        list.list.at(2).fangka = 40;
+//        list.list.at(0).money = 600;
+//        list.list.at(1).money = 3000;
+//        list.list.at(2).money = 6000;
+//        list.list.at(0).fangka = 4;
+//        list.list.at(1).fangka = 24;
+//        list.list.at(2).fangka = 40;
         ChargeItem* item = ChargeItem::create(list.list.at(i).money, list.list.at(i).fangka,list.list.at(i).payId);
         item->setPosition(posx+230*i,345);
         addChild(item);

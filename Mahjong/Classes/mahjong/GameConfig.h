@@ -14,6 +14,7 @@
 //#define SERVER_ADDRESS "aliyun.5278-mobi.com"
 #define SERVER_ADDRESS "ceshi.5278-mobi.com"
 //#define SERVER_ADDRESS "86ztt4xtm3w7n9nb.gfvip01ap.com"
+//#define SERVER_ADDRESS "106.15.61.53"
 #define SERVER_PORT 9999
 
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币

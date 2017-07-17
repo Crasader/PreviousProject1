@@ -71,27 +71,26 @@ void SplashScene::drawLonginScene(){
     auto desk = Sprite::create("mainlogin/login_desk.png");
     desk->setPosition(640,30);
     addChild(desk);
-
+    
 }
 
 
 void SplashScene::loginByWechat(){
     Audio::getInstance()->playSoundClick();
     showLoading();
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-//    //oTIvfwqK9YwoAi1dANUQjhlhOAZ4 shanjun
-//    //oTIvfwm1C14AtD2bnuoQrXtGWzhY xinkai
-//    //oTIvfwnO4yCaBasG7qJedNbiGuG0  ziji
-//    //oTIvfwmTH71Oqx_XRJTPB4p2TjkU 魂斗罗
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwmTH71Oqx_XRJTPB4p2TjkU","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
-//#endif
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//    CallIOSMethod::getInstance()->doWechatLogin();
-//#endif
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    CallAndroidMethod::getInstance()->weChatLogin();
-//#endif
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getVistorLogin());
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+    //oTIvfwqK9YwoAi1dANUQjhlhOAZ4 shanjun
+    //oTIvfwm1C14AtD2bnuoQrXtGWzhY xinkai
+    //oTIvfwnO4yCaBasG7qJedNbiGuG0  ziji
+    //oTIvfwmTH71Oqx_XRJTPB4p2TjkU 魂斗罗
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwmTH71Oqx_XRJTPB4p2TjkU","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->doWechatLogin();
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->weChatLogin();
+#endif
 }
 
 void SplashScene::loginByVisitor(){
@@ -126,7 +125,7 @@ void SplashScene::removeLoading(){
 void SplashScene::showSplashAnim(){
     
     showLoadLayerAnim();
-
+    
     auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
                                             CC_CALLBACK_0(SplashScene::loginByWechat, this));
     auto loginMenu = Menu::create(visitorBtn, NULL);
