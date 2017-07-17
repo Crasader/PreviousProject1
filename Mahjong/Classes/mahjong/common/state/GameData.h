@@ -91,6 +91,7 @@ public:
     CC_SYNTHESIZE(MahjongShareData4, mahjongShareData4, MahjongShareData4);
     CC_SYNTHESIZE(MahjongShareData5, mahjongShareData5, MahjongShareData5);
     CC_SYNTHESIZE(PayPointInfo, payPointInfo, PayPointInfo);
+     CC_SYNTHESIZE(PayGoldPoint, payGoldPoint, PayGoldPoint);
     
     //游戏状态
     CC_SYNTHESIZE(int, gameModel, MyGameModel);

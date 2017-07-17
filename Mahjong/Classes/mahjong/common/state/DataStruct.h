@@ -845,4 +845,11 @@ struct PayPointInfo{
     std::string applefangka;
     std::string applefee;
 };
+
+struct PayGoldPoint{
+    std::string fee;
+    std::string applefee;
+    std::string gold;
+    std::string applegold;
+};
 #endif

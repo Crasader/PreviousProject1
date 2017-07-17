@@ -1002,6 +1002,25 @@ void MsgHandler::enterRoomResp(std::string msg){
         const rapidjson::Value &min = _mDoc["min"];
         resp.min = min.GetString();
     }
+    PayGoldPoint pointInfo;
+    if(_mDoc.HasMember("fee")){
+        const rapidjson::Value &fee = _mDoc["fee"];
+        pointInfo.fee = fee.GetString();
+    }
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &fangka = _mDoc["gold"];
+        pointInfo.gold = fangka.GetString();
+    }
+    if(_mDoc.HasMember("applegold")){
+        const rapidjson::Value &applefangka = _mDoc["applegold"];
+        pointInfo.applegold = applefangka.GetString();
+    }
+    if(_mDoc.HasMember("applefee")){
+        const rapidjson::Value &applefee = _mDoc["applefee"];
+        pointInfo.applefee = applefee.GetString();
+    }
+    GAMEDATA::getInstance()->setPayGoldPoint(pointInfo);
+    
     //进入房间成功才会有其他玩家的数据
     if (result.GetInt() == 1){
         const rapidjson::Value &seatId = _mDoc["seatId"];

@@ -93,6 +93,15 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     confirmMenu->setPosition(640, 160);
     addChild(confirmMenu);
     
+    if(UserData::getInstance()->getUserPayWay() == "2"){
+        fangkanum->setString(StringUtils::format(":%s",GAMEDATA::getInstance()->getPayGoldPoint().applegold.c_str()));
+        xuyaunnum->setString(StringUtils::format("%s",GAMEDATA::getInstance()->getPayGoldPoint().applefee.c_str()));
+    }else{
+        fangkanum->setString(StringUtils::format(":%s",GAMEDATA::getInstance()->getPayGoldPoint().gold.c_str()));
+        xuyaunnum->setString(StringUtils::format("%s",GAMEDATA::getInstance()->getPayGoldPoint().fee.c_str()));
+    }
+
+    
     return true;
 }
 
