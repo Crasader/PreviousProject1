@@ -32,11 +32,11 @@ void Orientation::initView(){
 	light = Sprite::create("gameview/light.png");
 	light->setVisible(false);
 	addChild(light,2);
-    auto time = LabelAtlas::create(StringUtils::format("%d",timeNumber), "gameview/time_num_mid.png", 23, 36, '0');
-    time->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    time->setPosition(640,390);
-    time->setTag(100);
-    addChild(time,5);
+//    auto time = LabelAtlas::create(StringUtils::format("%d",timeNumber), "gameview/time_num_mid.png", 23, 36, '0');
+//    time->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    time->setPosition(640,390);
+//    time->setTag(100);
+//    addChild(time,5);
 }
 
 
@@ -108,7 +108,7 @@ void Orientation::showWhoBank(int heroSeatId,int bankId){
 
 
 void Orientation::showPlayerTurn(int heroSeatId, int setaId){
-    timeNumber = 15;
+//    timeNumber = 15;
 	int turnId = SeatIdUtil::getClientSeatId(heroSeatId, setaId);
 	light->setVisible(true);
 	if (turnId == ClientSeatId::hero){
@@ -197,10 +197,10 @@ void Orientation::recoverTeture(Sprite* node){
 }
 
 void Orientation::updateTime(float dt){
-    if(timeNumber>0){
-        timeNumber--;
-        if(NULL != getChildByTag(100)){
-            ((LabelAtlas*)getChildByTag(100))->setString(StringUtils::format("%d",timeNumber));
-        }
-    }
+//    if(timeNumber>0){
+//        timeNumber--;
+//        if(NULL != getChildByTag(100)){
+//            ((LabelAtlas*)getChildByTag(100))->setString(StringUtils::format("%d",timeNumber));
+//        }
+//    }
 }

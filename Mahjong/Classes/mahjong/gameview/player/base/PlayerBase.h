@@ -17,6 +17,7 @@ public:
     static Sprite* biaoji;//每次打出的黄色小标记
     static Sprite* currentBigJongBg;//打出的牌展示背景
     static Jong* currentBigJong;//打出的牌放大展示牌
+    static LabelAtlas* centerTime;
     static set<int> playedPokers;//全部玩家打出过的牌
     int huaIndex;//换花计数
     Vector<Jong*> playerHandJongs;//玩家手牌

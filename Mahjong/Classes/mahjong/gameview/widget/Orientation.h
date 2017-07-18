@@ -12,7 +12,7 @@ public:
     void showWhoBank(int heroSeatId,int bankId);
     void resetBank();
 private:
-    int timeNumber = 15;
+//    int timeNumber = 15;
 	Sprite* left;
 	Sprite* right;
 	Sprite* opposite;

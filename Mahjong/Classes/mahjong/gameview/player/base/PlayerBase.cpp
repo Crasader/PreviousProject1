@@ -17,6 +17,7 @@
 Sprite* PlayerBase::biaoji = NULL;
 Sprite* PlayerBase::currentBigJongBg = NULL;
 Jong* PlayerBase::currentBigJong = NULL;
+LabelAtlas* PlayerBase:: centerTime = NULL;
 set<int> PlayerBase:: playedPokers;
 
 bool PlayerBase::init(){
@@ -130,6 +131,11 @@ void PlayerBase::initPlayer(Player* playerInfo){
     playerHuaCount->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     addChild(playerHuaCount);
     
+    centerTime = LabelAtlas::create(StringUtils::format("%d",mCDTime), "gameview/time_num_mid.png", 23, 36, '0');
+    centerTime->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    centerTime->setPosition(638,390);
+    addChild(centerTime,5);
+    
     biaoji->setVisible(false);
     currentBigJongBg->setVisible(false);
     currentBigJong->setVisible(false);
@@ -137,6 +143,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     tingTitle->setVisible(false);
     mProgressTimer->setVisible(false);
     timeClock->setVisible(false);
+    centerTime->setVisible(false);
     playerHua->setVisible(false);
     playerHuaCount->setVisible(false);
 }
@@ -340,6 +347,7 @@ void PlayerBase::startTimeClockAnim(){
     mCDTime = 15;
     this->setTag(-1);
     timeClock->setString(StringUtils::format("%d", mCDTime));
+    centerTime->setString(StringUtils::format("%d", mCDTime));
     mProgressTimer->setVisible(true);
     mProgressTimer->setType(ProgressTimer::Type::RADIAL);
     mProgressTimer->stopAllActions();
@@ -348,10 +356,12 @@ void PlayerBase::startTimeClockAnim(){
     mProgressTimer->runAction(Sequence::create(action_progress_to, NULL));
     schedule(schedule_selector(PlayerBase::updateTime), 1);
     timeClock->setVisible(true);
+    centerTime->setVisible(true);
 }
 
 void PlayerBase::startTimeClockAnim(int time, int type){
     timeClock->setString(StringUtils::format("%d", time));
+    centerTime->setString(StringUtils::format("%d", time));
     this->setTag(type);
     mCDTime = time;
     mProgressTimer->setVisible(true);
@@ -362,12 +372,14 @@ void PlayerBase::startTimeClockAnim(int time, int type){
     mProgressTimer->runAction(Sequence::create(action_progress_to, NULL));
     schedule(schedule_selector(PlayerBase::updateTime), 1);
     timeClock->setVisible(true);
+    centerTime->setVisible(true);
 }
 
 
 void  PlayerBase::stopTimeClockAnim(){
     mProgressTimer->setVisible(false);
     timeClock->setVisible(false);
+    centerTime->setVisible(false);
     mCDTime = 9876543210;
     unschedule(schedule_selector(PlayerBase::updateTime));
 }
@@ -402,6 +414,7 @@ void PlayerBase::updateTime(float dt){
     mCDTime--;
     if (mCDTime > 0){
         timeClock->setString(StringUtils::format("%d", mCDTime));
+        centerTime->setString(StringUtils::format("%d", mCDTime));
     }
     else{
         timeClock->setVisible(false);
