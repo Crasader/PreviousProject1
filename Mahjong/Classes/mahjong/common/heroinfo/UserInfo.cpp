@@ -32,8 +32,7 @@ void UserInfo::onExit(){
 }
 
 void UserInfo::showUserInfo(){
-    auto bg = LayerColor::create(Color4B(0, 0, 0, 150), 1280, 720);
-    addChild(bg);
+
     
     auto headBg = Sprite::create("playerinfo/head_bg.png");
     headBg->setPosition(415,405);

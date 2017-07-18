@@ -122,7 +122,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         sprite1->setAnchorPoint(Vec2::ZERO);
         sprite1->setPosition(Vec2(0, 0));
         cell->addChild(sprite1);
-    
+        
         Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",24);
         if(isMatch){
             if(!UserData::getInstance()->isWeixinPayOpen()){
@@ -263,17 +263,20 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         ((Label*)cell->getChildByTag(401))->setString(jushuNum);
         std::vector<BillContent> conBill = sortBillInfo(data.content);
         for (int i = 0; i < conBill.size(); i++){
-            ((Label*)cell->getChildByTag(200+i))->setString(conBill.at(i).nickName);
+            if(cell->getChildByTag(200+i) != NULL )
+                ((Label*)cell->getChildByTag(200+i))->setString(conBill.at(i).nickName);
             int score =atoi(conBill.at(i).score.c_str());
             std::string myScore =  ":"+StringUtil::itos(abs(score));
+            Texture2D *texture;
             if(score<0){
-                Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("bill/purper_num.png");
-                ((LabelAtlas*)cell->getChildByTag(300+i))->setTexture(texture);
+                texture = Director::getInstance()->getTextureCache()->addImage("bill/purper_num.png");
             }else{
-                Texture2D *texture = Director::getInstance()->getTextureCache()->addImage("bill/yellow_num.png");
-                ((LabelAtlas*)cell->getChildByTag(300+i))->setTexture(texture);
+                texture = Director::getInstance()->getTextureCache()->addImage("bill/yellow_num.png");
             }
-            ((LabelAtlas*)cell->getChildByTag(300+i))->setString(myScore);
+            if(NULL != cell->getChildByTag(300+i)){
+                ((LabelAtlas*)cell->getChildByTag(300+i))->setTexture(texture);
+                ((LabelAtlas*)cell->getChildByTag(300+i))->setString(myScore);
+            }
         }
         cell->setName(data.billId);
     }

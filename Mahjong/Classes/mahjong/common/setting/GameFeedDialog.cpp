@@ -13,6 +13,8 @@ bool GameFeedDialog::init(){
     if(!Layer::init()){
         return false;
     }
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 150), 1280, 720);
+    addChild(bg0);
     
     MenuItem* item = MenuItem::create();
     item->setContentSize(Size(1280, 720));

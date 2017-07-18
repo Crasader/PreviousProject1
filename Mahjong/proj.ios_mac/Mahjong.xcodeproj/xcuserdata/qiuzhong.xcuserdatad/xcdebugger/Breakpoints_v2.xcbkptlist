@@ -7022,11 +7022,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/dialog/dissolve/DissovleRoomDialog.cpp"
-            timestampString = "521473201.342316"
+            timestampString = "522057340.072893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "DissovleRoomDialog::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7038,11 +7038,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/dialog/dissolve/DissovleRoomDialog.cpp"
-            timestampString = "521473201.342316"
+            timestampString = "522057340.072893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "DissovleRoomDialog::init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7054,11 +7054,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/dialog/dissolve/DissovleRoomDialog.cpp"
-            timestampString = "521473201.342316"
+            timestampString = "522057340.072893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "DissovleRoomDialog::init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7070,11 +7070,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/dialog/dissolve/DissovleRoomDialog.cpp"
-            timestampString = "521474894.193358"
+            timestampString = "522057340.072893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "DissovleRoomDialog::checkAllConfirm()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7102,11 +7102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/setting/GameRuleDialog.cpp"
-            timestampString = "521538571.906204"
+            timestampString = "522057340.072893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "GameRuleDialog::showJiBenPaiXing(Ref* ref)"
             landmarkType = "7">
          </BreakpointContent>

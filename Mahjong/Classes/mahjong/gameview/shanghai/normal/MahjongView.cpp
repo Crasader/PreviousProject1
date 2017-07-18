@@ -1889,7 +1889,7 @@ void MahjongView::onEnter(){
     
     dissovleRoomNew =  EventListenerCustom::create(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW, [=](EventCustom* event){
         DissovleRoomDialog* dialog = DissovleRoomDialog::create();
-        addChild(dialog,10);
+        addChild(dialog,100);
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(dissovleRoomNew, 1);
     

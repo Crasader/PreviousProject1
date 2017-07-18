@@ -38,6 +38,10 @@ void HeroInfoEdit::onExit(){
 }
 
 void HeroInfoEdit::drawHeroInfoEdit(int type){
+    
+    auto bg = LayerColor::create(Color4B(0, 0, 0, 150), 1280, 720);
+    addChild(bg,-1);
+    
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);

@@ -29,6 +29,9 @@ bool ChatDialog::init(){
     if(!Layer::init()){
         return false;
     }
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 100), 1280, 720);
+    addChild(bg0);
+    
     MenuItem* item = MenuItem::create();
     item->setContentSize(Size(1280, 720));
     Menu* bg = Menu::create(item, NULL);
@@ -40,7 +43,7 @@ bool ChatDialog::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(ChatDialog::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(980, 660);
+    closeMenu->setPosition(1000, 680);
     addChild(closeMenu);
     
     auto inputText = ui::Scale9Sprite::create("mainlogin/bottom_bg.png");
@@ -62,8 +65,8 @@ bool ChatDialog::init(){
     inputBg->setPosition(Point(640,85));
     addChild(inputBg);
     
-    auto inputField =  ui::Scale9Sprite::create("mainlogin/bottom_bg.png");
-    inputField->setContentSize(Size(560,71));
+    auto inputField =  ui::Scale9Sprite::create("chat/bottom_bg.png");
+    inputField->setContentSize(Size(557,71));
     inputField->setPosition(Point(565,85));
     addChild(inputField);
     

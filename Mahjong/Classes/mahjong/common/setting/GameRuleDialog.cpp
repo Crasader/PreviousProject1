@@ -13,6 +13,8 @@ bool GameRuleDialog::init(){
     if(!Layer::init()){
         return false;
     }
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 150), 1280, 720);
+    addChild(bg0);
     
     auto dialog_bg = Sprite::create("openroom/open_room_bg.png");
     dialog_bg->setPosition(640,350);
