@@ -70,7 +70,7 @@ bool OtherPlayerInfo::init(Player* player){
     
     
     auto nickNameLabel = Label::createWithSystemFont(player->getNickname(), "arial", 20);
-    nickNameLabel->setColor(Color3B(87, 195, 186));
+    nickNameLabel->setColor(Color3B(116, 90, 61));
     nickNameLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     nickNameLabel->setPosition(130, 190);
     dialogBg->addChild(nickNameLabel);
@@ -84,13 +84,13 @@ bool OtherPlayerInfo::init(Player* player){
     
     
     auto playerID= Label::createWithSystemFont(StringUtils::format("ID:%s",player->getUmark().c_str()), "arial", 20);
-    playerID->setColor(Color3B(87, 195, 186));
+    playerID->setColor(Color3B(116, 90, 61));
     playerID->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     playerID->setPosition(130, 160);
     dialogBg->addChild(playerID);
     
     auto playerIP= Label::createWithSystemFont(StringUtils::format("IP:%s",player->getIP().c_str()), "arial", 20);
-    playerIP->setColor(Color3B(87, 195, 186));
+    playerIP->setColor(Color3B(116, 90, 61));
     playerIP->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
     playerIP->setPosition(130, 130);
     dialogBg->addChild(playerIP);
@@ -99,14 +99,14 @@ bool OtherPlayerInfo::init(Player* player){
     auto fangka_bg = Sprite::create("gameview/other_player_num_bg.png");
     fangka_bg->setPosition(90, 80);
     dialogBg->addChild(fangka_bg);
-    auto fangka_icon = Sprite::create("mjitem/fangka_icon.png");
+    auto fangka_icon = Sprite::create("common/fangka_icon.png");
     fangka_icon->setPosition(50, 75);
     fangka_icon->setScale(0.7f);
     dialogBg->addChild(fangka_icon);
     auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%0.1f", player->getFangka()),
                                                  "arial",20);
     fangkaNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fangkaNum->setColor(Color3B(87, 195, 186));
+    fangkaNum->setColor(Color3B::WHITE);
     fangkaNum->setPosition(75, 80);
     dialogBg->addChild(fangkaNum);
     //gold
@@ -122,19 +122,19 @@ bool OtherPlayerInfo::init(Player* player){
     }
     auto goldNum = Label::createWithSystemFont(gold_num,"arial",20);
     goldNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    goldNum->setColor(Color3B(87, 195, 186));
-    goldNum->setPosition(198, 80);
+    goldNum->setColor(Color3B::WHITE);
+    goldNum->setPosition(205, 80);
     dialogBg->addChild(goldNum);
     //lequan
     auto lequan_bg = Sprite::create("gameview/other_player_num_bg.png");
     lequan_bg->setPosition(90, 40);
     dialogBg->addChild(lequan_bg);
-    auto lequan_icon = Sprite::create("gameview/other_player_lequan.png");
+    auto lequan_icon = Sprite::create("common/lequan_icon.png");
     lequan_icon->setPosition(50, 35);
     dialogBg->addChild(lequan_icon);
     auto lequanNum = Label::createWithSystemFont(StringUtils::format("%d", player->getTicket()),"arial",20);
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    lequanNum->setColor(Color3B(87, 195, 186));
+    lequanNum->setColor(Color3B::WHITE);
     lequanNum->setPosition(75, 40);
     dialogBg->addChild(lequanNum);
     

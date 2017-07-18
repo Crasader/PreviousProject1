@@ -2624,12 +2624,12 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
         const rapidjson::Value &point = _mDoc["point"];
         pointInfo.point = point.GetString();
     }
-    if(_mDoc.HasMember("fee")){
-        const rapidjson::Value &fee = _mDoc["fee"];
+    if(_mDoc.HasMember("wxfee")){
+        const rapidjson::Value &fee = _mDoc["wxfee"];
         pointInfo.fee = fee.GetString();
     }
-    if(_mDoc.HasMember("fangka")){
-        const rapidjson::Value &fangka = _mDoc["fangka"];
+    if(_mDoc.HasMember("wxfangka")){
+        const rapidjson::Value &fangka = _mDoc["wxfangka"];
         pointInfo.fangka = fangka.GetString();
     }
     if(_mDoc.HasMember("applefangka")){
@@ -3179,12 +3179,12 @@ void MsgHandler::handleHongZhongEnterRoom(std::string msg){
         const rapidjson::Value &point = _mDoc["point"];
         pointInfo.point = point.GetString();
     }
-    if(_mDoc.HasMember("fee")){
-        const rapidjson::Value &fee = _mDoc["fee"];
+    if(_mDoc.HasMember("wxfee")){
+        const rapidjson::Value &fee = _mDoc["wxfee"];
         pointInfo.fee = fee.GetString();
     }
-    if(_mDoc.HasMember("fangka")){
-        const rapidjson::Value &fangka = _mDoc["fangka"];
+    if(_mDoc.HasMember("wxfangka")){
+        const rapidjson::Value &fangka = _mDoc["wxfangka"];
         pointInfo.fangka = fangka.GetString();
     }
     if(_mDoc.HasMember("applefangka")){
