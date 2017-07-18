@@ -193,7 +193,9 @@ void HongZhongView::update(float dt){
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             GAMEDATA::getInstance()->clearPlayersInfo();
             GAMEDATA::getInstance()->setIsPlaying(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            schedule([=](float dt){
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            }, 0, 0, 2,"KKFFCC001");
         }
     }
     
@@ -288,7 +290,6 @@ void HongZhongView::update(float dt){
         if(!GAMEDATA::getInstance()->getIsCompetitionQueue())
             playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
         guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
-        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;
         schedule([=](float dt){
             DealJongAnim* anim = DealJongAnim::create();
@@ -848,6 +849,7 @@ void HongZhongView::showPaiduiNum(int num){
 }
 
 void HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
+    ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
     if(NULL != playerHero)
         playerHero->drawPlayerHero();
     if(NULL != playerRight)
@@ -929,103 +931,103 @@ void HongZhongView::showHuPaiXing(std::string paixing){
 }
 
 void HongZhongView::showHandPokerOver(int seatId){
-        vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
-        string leftJongs="";
-        string rightJongs="";
-        string oppositeJongs="";
-        string heroJongs="";
-        int max =0;
-        string maxHuType="";
-        for (GameResultData data: results) {
-            int seat = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
-            if(seat == ClientSeatId::left){
-                leftJongs =data.showPoker;
-            }else if(seat == ClientSeatId::opposite){
-                oppositeJongs =data.showPoker;
-            }else if(seat == ClientSeatId::right){
-                rightJongs =data.showPoker;
-            }else{
-                heroJongs =data.showPoker;
-            }
-            //获取一炮多响情况下胡的最大的数据
-            if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
-                if(data.jifendelta >= max){
-                    maxHuType = data.huType;
-                    max = data.jifendelta;
-                }
-            }else{
-                if(data.golddelta >= max){
-                    maxHuType = data.huType;
-                    max =data.golddelta;
-                }
-            }
-        }
-        //翻牌
-        if(seatId == ClientSeatId::left){
-            playerLeft->hideHandJongs();
-            playerLeft->updateHandJongs(leftJongs,true);
-            showHuPaiXing(maxHuType);
-            schedule([=](float dt){
-                if(NULL != playerRight){
-                    playerRight->hideHandJongs();
-                    playerRight->updateHandJongs(rightJongs,false);
-                }
-                playerOpposite->hideHandJongs();
-                playerOpposite->updateHandJongs(oppositeJongs,false);
-                playerHero->hideHandJongs();
-                playerHero->updateHandJongs(heroJongs,false);
-            }, 0, 0, 15.0f/24,"fanpai");
-        }else if(seatId == ClientSeatId::opposite){
-            playerOpposite->hideHandJongs();
-            playerOpposite->updateHandJongs(oppositeJongs,true);
-            showHuPaiXing(maxHuType);
-            schedule([=](float dt){
-                if(NULL != playerRight){
-                    playerRight->hideHandJongs();
-                    playerRight->updateHandJongs(rightJongs,false);
-                }
-                if(NULL != playerLeft){
-                    playerLeft->hideHandJongs();
-                    playerLeft->updateHandJongs(leftJongs,false);
-                }
-                playerHero->hideHandJongs();
-                playerHero->updateHandJongs(heroJongs,false);
-            }, 0, 0, 15.0f/24,"fanpai");
-        }else if(seatId == ClientSeatId::right){
-            playerRight->hideHandJongs();
-            playerRight->updateHandJongs(rightJongs,true);
-            showHuPaiXing(maxHuType);
-            schedule([=](float dt){
-                playerOpposite->hideHandJongs();
-                playerOpposite->updateHandJongs(oppositeJongs,false);
-                if(NULL != playerLeft){
-                    playerLeft->hideHandJongs();
-                    playerLeft->updateHandJongs(leftJongs,false);
-                }
-                playerHero->hideHandJongs();
-                playerHero->updateHandJongs(heroJongs,false);
-            }, 0, 0, 15.0f/24,"fanpai");
+    vector<GameResultData> results = GAMEDATA::getInstance()->getGameResults();
+    string leftJongs="";
+    string rightJongs="";
+    string oppositeJongs="";
+    string heroJongs="";
+    int max =0;
+    string maxHuType="";
+    for (GameResultData data: results) {
+        int seat = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), data.seatId);
+        if(seat == ClientSeatId::left){
+            leftJongs =data.showPoker;
+        }else if(seat == ClientSeatId::opposite){
+            oppositeJongs =data.showPoker;
+        }else if(seat == ClientSeatId::right){
+            rightJongs =data.showPoker;
         }else{
-            playerHero->hideHandJongs();
-            if(GAMEDATA::getInstance()->getIsLiuJu()){
-                playerHero->updateHandJongs(heroJongs,false);
-            }else{
-                playerHero->updateHandJongs(heroJongs,true);
-            }
-            showHuPaiXing(maxHuType);
-            schedule([=](float dt){
-                playerOpposite->hideHandJongs();
-                playerOpposite->updateHandJongs(oppositeJongs,false);
-                if(NULL != playerRight){
-                    playerRight->hideHandJongs();
-                    playerRight->updateHandJongs(rightJongs,false);
-                }
-                if(NULL != playerLeft){
-                    playerLeft->hideHandJongs();
-                    playerLeft->updateHandJongs(leftJongs,false);
-                }
-            }, 0, 0, 15.0f/24,"fanpai");
+            heroJongs =data.showPoker;
         }
+        //获取一炮多响情况下胡的最大的数据
+        if(GAMEDATA::getInstance()->getMahjongRoomType()==MahjongRoom::privateRoom){
+            if(data.jifendelta >= max){
+                maxHuType = data.huType;
+                max = data.jifendelta;
+            }
+        }else{
+            if(data.golddelta >= max){
+                maxHuType = data.huType;
+                max =data.golddelta;
+            }
+        }
+    }
+    //翻牌
+    if(seatId == ClientSeatId::left){
+        playerLeft->hideHandJongs();
+        playerLeft->updateHandJongs(leftJongs,true);
+        showHuPaiXing(maxHuType);
+        schedule([=](float dt){
+            if(NULL != playerRight){
+                playerRight->hideHandJongs();
+                playerRight->updateHandJongs(rightJongs,false);
+            }
+            playerOpposite->hideHandJongs();
+            playerOpposite->updateHandJongs(oppositeJongs,false);
+            playerHero->hideHandJongs();
+            playerHero->updateHandJongs(heroJongs,false);
+        }, 0, 0, 15.0f/24,"fanpai");
+    }else if(seatId == ClientSeatId::opposite){
+        playerOpposite->hideHandJongs();
+        playerOpposite->updateHandJongs(oppositeJongs,true);
+        showHuPaiXing(maxHuType);
+        schedule([=](float dt){
+            if(NULL != playerRight){
+                playerRight->hideHandJongs();
+                playerRight->updateHandJongs(rightJongs,false);
+            }
+            if(NULL != playerLeft){
+                playerLeft->hideHandJongs();
+                playerLeft->updateHandJongs(leftJongs,false);
+            }
+            playerHero->hideHandJongs();
+            playerHero->updateHandJongs(heroJongs,false);
+        }, 0, 0, 15.0f/24,"fanpai");
+    }else if(seatId == ClientSeatId::right){
+        playerRight->hideHandJongs();
+        playerRight->updateHandJongs(rightJongs,true);
+        showHuPaiXing(maxHuType);
+        schedule([=](float dt){
+            playerOpposite->hideHandJongs();
+            playerOpposite->updateHandJongs(oppositeJongs,false);
+            if(NULL != playerLeft){
+                playerLeft->hideHandJongs();
+                playerLeft->updateHandJongs(leftJongs,false);
+            }
+            playerHero->hideHandJongs();
+            playerHero->updateHandJongs(heroJongs,false);
+        }, 0, 0, 15.0f/24,"fanpai");
+    }else{
+        playerHero->hideHandJongs();
+        if(GAMEDATA::getInstance()->getIsLiuJu()){
+            playerHero->updateHandJongs(heroJongs,false);
+        }else{
+            playerHero->updateHandJongs(heroJongs,true);
+        }
+        showHuPaiXing(maxHuType);
+        schedule([=](float dt){
+            playerOpposite->hideHandJongs();
+            playerOpposite->updateHandJongs(oppositeJongs,false);
+            if(NULL != playerRight){
+                playerRight->hideHandJongs();
+                playerRight->updateHandJongs(rightJongs,false);
+            }
+            if(NULL != playerLeft){
+                playerLeft->hideHandJongs();
+                playerLeft->updateHandJongs(leftJongs,false);
+            }
+        }, 0, 0, 15.0f/24,"fanpai");
+    }
 }
 
 
@@ -1670,7 +1672,7 @@ void HongZhongView::onEnter(){
             
             schedule([=](float dt){
                 if(GAMEDATA::getInstance()->getFanMa() != ""){
-//                    log("HongZhong Mahjong FanMa %s",GAMEDATA::getInstance()->getFanMa().c_str());
+                    //                    log("HongZhong Mahjong FanMa %s",GAMEDATA::getInstance()->getFanMa().c_str());
                     vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
                     FanMaAnim* fan = FanMaAnim::create(ma);
                     addChild(fan,20);

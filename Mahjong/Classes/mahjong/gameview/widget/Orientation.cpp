@@ -37,11 +37,6 @@ void Orientation::initView(){
     time->setPosition(640,390);
     time->setTag(100);
     addChild(time,5);
-    if(GAMEDATA::getInstance()->getIsCompetitionState()||GAMEDATA::getInstance()->getIsCompetitionQueue()){
-        time->setVisible(true);
-    }else{
-        time->setVisible(false);
-    }
 }
 
 

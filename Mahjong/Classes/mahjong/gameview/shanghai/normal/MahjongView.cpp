@@ -215,7 +215,9 @@ void MahjongView::update(float dt){
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             GAMEDATA::getInstance()->clearPlayersInfo();
             GAMEDATA::getInstance()->setIsPlaying(false);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            schedule([=](float dt){
+                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+            }, 0, 0, 2,"KKFFCC001");
         }
     }
     if(!GAMEDATA::getInstance()->getIsPlaying()){
@@ -313,7 +315,6 @@ void MahjongView::update(float dt){
         if(!GAMEDATA::getInstance()->getIsCompetitionState())
             playerHero->hideInviteButton();//隐藏玩家的邀请按钮45
         guiLayer->hideDissovleBtn();//隐藏房主的解散按钮
-        ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         vector<string> dice2 =StringUtil::split(newMsgData.dice, ",") ;
         schedule([=](float dt){
             DealJongAnim* anim = DealJongAnim::create();
@@ -966,6 +967,7 @@ void MahjongView::showPaiduiNum(int num){
 }
 
 void MahjongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data){
+    ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
     if(NULL != playerHero)
         playerHero->drawPlayerHero();
     if(NULL != playerRight)

@@ -31,10 +31,7 @@ bool PlayerBase::init(){
 
 
 void PlayerBase::initData(){
-    mCDTime = 20;
-    if(GAMEDATA::getInstance()->getIsCompetitionState()){
-        mCDTime = 15;
-    }
+    mCDTime = 15;
     playerCpgRecords.clear();
     playerHandJongs.clear();
     playerPlayedJongs.clear();
@@ -340,10 +337,7 @@ void PlayerBase::showPlayerHua(int num){
 
 
 void PlayerBase::startTimeClockAnim(){
-    mCDTime = 20;
-    if(GAMEDATA::getInstance()->getIsCompetitionState()){
-        mCDTime = 15;
-    }
+    mCDTime = 15;
     this->setTag(-1);
     timeClock->setString(StringUtils::format("%d", mCDTime));
     mProgressTimer->setVisible(true);
@@ -360,9 +354,6 @@ void PlayerBase::startTimeClockAnim(int time, int type){
     timeClock->setString(StringUtils::format("%d", time));
     this->setTag(type);
     mCDTime = time;
-    if(GAMEDATA::getInstance()->getIsCompetitionState()){
-        time = 15;
-    }
     mProgressTimer->setVisible(true);
     mProgressTimer->setType(ProgressTimer::Type::RADIAL);
     mProgressTimer->stopAllActions();
@@ -552,7 +543,7 @@ void PlayerBase::playSoundHuPai(int type){
         Audio::getInstance()->playSoundHuNormal(getPlayerInfo()->getGender());
         
     }else{
-       Audio::getInstance()->playSoundHu(type, getPlayerInfo()->getGender());
+        Audio::getInstance()->playSoundHu(type, getPlayerInfo()->getGender());
         
     }
 }

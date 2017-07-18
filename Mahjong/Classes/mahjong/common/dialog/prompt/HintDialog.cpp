@@ -55,7 +55,7 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMe
 	auto closeMenu = Menu::create(close, nullptr);
     
     
-    closeMenu->setPosition(860, 490);
+    closeMenu->setPosition(890, 520);
     this->addChild(closeMenu);
     
     auto confirm = MenuItemImage::create("common/confirm_btn_1.png", "common/confirm_btn_2.png",
@@ -66,7 +66,7 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMe
         });
     }
 	auto confirmMenu = Menu::create(confirm, nullptr);
-    confirmMenu->setPosition(640, 240);
+    confirmMenu->setPosition(640, 255);
     addChild(confirmMenu);
     
     return true;

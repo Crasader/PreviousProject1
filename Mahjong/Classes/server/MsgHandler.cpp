@@ -1738,17 +1738,15 @@ void MsgHandler::removePlayerNotify(std::string msg){
         GAMEDATA::getInstance()->erasePlayersInfo(data.pid);
     }else{
         log("hero is out room");
-        schedule([=](float dt){
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            GAMEDATA::getInstance()->setIsGotoLobby(true);
-            GAMEDATA::getInstance()->setFangZhuId("");
-            GAMEDATA::getInstance()->setPrivateGameNum("0");
-            GAMEDATA::getInstance()->setDissovleDialogRemove(true);
-            if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-                GAMEDATA::getInstance()->setShowRoomDismiss(true);
-            }
-            GAMEDATA::getInstance()->setIsCompetitionState(false);
-        }, 0, 0, 2,"KKFFCC");
+        GAMEDATA::getInstance()->clearPlayersInfo();
+        GAMEDATA::getInstance()->setIsGotoLobby(true);
+        GAMEDATA::getInstance()->setFangZhuId("");
+        GAMEDATA::getInstance()->setPrivateGameNum("0");
+        GAMEDATA::getInstance()->setDissovleDialogRemove(true);
+        GAMEDATA::getInstance()->setIsCompetitionState(false);
+        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+            GAMEDATA::getInstance()->setShowRoomDismiss(true);
+        }
     }
     GAMEDATA::getInstance()->setRemovePlayer(data);
     postNotifyMessage(MSG_PLAYER_REMOVE, nullptr);
@@ -1829,7 +1827,6 @@ void MsgHandler::getHeroJongs(std::string msg){
     GAMEDATA::getInstance()->setIsTrusteeship(false);
     GAMEDATA::getInstance()->setMahjongFaPaiData(faPaiData);
     GAMEDATA::getInstance()->setNeedShowFaPai(true);
-    //    postNotifyMessage(MSG_GAME_START_FAPAI_NOTIFY, &faPaiData);
 }
 
 //{"code":2005,"poker":"28","poxiaoId":"e8fec2c3-47ba-4063-ad07-6b7c014c4dca","seatId":3}

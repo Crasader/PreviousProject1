@@ -811,6 +811,7 @@ void LobbyScene::addEventListener(){
         if (result == "1"){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             GAMEDATA::getInstance()->setGameType(1);
+            GAMEDATA::getInstance()->setFangZhuId("");
             Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MjGameScene::create()));
         } else if(result == "2")
         {

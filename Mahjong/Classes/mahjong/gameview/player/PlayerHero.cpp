@@ -105,7 +105,7 @@ bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
                     HuPaiHintLayer* huPai =  HuPaiHintLayer::create(var,this);
                     huPai->setTag(6689);
                     addChild(huPai,5);
-                    startTimeClockAnim(20, 2);
+                    startTimeClockAnim(15, 2);
                 }
             }
             if(!findPoker){
