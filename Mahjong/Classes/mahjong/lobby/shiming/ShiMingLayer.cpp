@@ -31,7 +31,7 @@ bool ShiMingLayer::init(){
     addChild(closeMenu);
     
     auto paodai = Sprite::create("shiming/shi_ming_title.png");
-    paodai->setPosition(640, 590);
+    paodai->setPosition(640, 585);
     this->addChild(paodai);
     
     auto xingming = Sprite::create("shiming/xin_ming.png");
