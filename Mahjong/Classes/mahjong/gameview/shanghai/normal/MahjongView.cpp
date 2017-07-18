@@ -258,6 +258,7 @@ void MahjongView::update(float dt){
                 for (int i = 0; i < 4; i++)
                 {
                     Player* info = new Player();
+                    info->setPoxiaoId(StringUtils::format("%d",i+1024));
                     info->setSeatId(i+1);
                     info->setGold(0);
                     info->setDiamond(0);

@@ -236,6 +236,7 @@ void HongZhongView::update(float dt){
                 for (int i = 0; i < 4; i++)
                 {
                     Player* info = new Player();
+                    info->setPoxiaoId(StringUtils::format("%d",i+1024));
                     info->setSeatId(i+1);
                     info->setGold(0);
                     info->setDiamond(0);
@@ -673,6 +674,7 @@ void HongZhongView::recoverGame(){
             info->setPoxiaoId(player.poxiaoId);
             info->setScore(player.jifen);
             if(GAMEDATA::getInstance()->getIsCompetitionState()){
+                info->setPoxiaoId(StringUtils::format("%d",i+1024));
                 info->setGold(0);
                 info->setDiamond(0);
                 info->setNickname("");

@@ -359,9 +359,8 @@ void GuiLayer::drawTestButton(){
     auto testIamge = MenuItemImage::create("gameview/setting_btn_1.png", "gameview/setting_btn_2.png",
                                            CC_CALLBACK_0(GuiLayer::testButtonClick, this));
     Menu* testMenu = Menu::create(testIamge, NULL);
-    testMenu->setPosition(640,380);
+    testMenu->setPosition(640,390);
     addChild(testMenu);
-    
 }
 
 //测试方法
@@ -481,7 +480,7 @@ void GuiLayer::testButtonClick(){
 //    ami->initView("0.37",3);
 //    ami->initView("0.37","0.37",1,false);
 //    addChild(ami,100);
-//    CompetitionResult* result = CompetitionResult::create();
-//    result->showCompetiotionResult("1","1","36","30");
-//    getParent()->addChild(result,100);
+    CompetitionResult* result = CompetitionResult::create();
+    result->showCompetiotionResult("1","1","36","30");
+    getParent()->addChild(result,100);
 }

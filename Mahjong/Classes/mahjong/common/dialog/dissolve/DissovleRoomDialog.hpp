@@ -23,7 +23,7 @@ private:
     EventListenerCustom* dissovleListener;
     MenuItemImage* img1;
     MenuItemImage* img2;
-    int residueTime = 100;
+    int residueTime = 60;
     void doAgree();
     void doNotAgree();
     void checkAllConfirm();
