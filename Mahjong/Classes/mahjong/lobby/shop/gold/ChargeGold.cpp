@@ -71,13 +71,13 @@ void ChargeGold::onEnter(){
         std::string buf = static_cast<char*>(event->getUserData());
         ShopHintDialog* da = ShopHintDialog::create();
         if(buf == "1"){
-            da->showText(ChineseWord("dialog_text_21"));
+            da->showText("兑换成功");
             ParticleUtil* par = ParticleUtil::create(MyParticleType::goldOnly);
             addChild(par,2);
             //刷新用户信息
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
         }else{
-			da->showText(ChineseWord("dialog_text_22"));
+			da->showText("兑换失败");
         }
         addChild(da);
     });
