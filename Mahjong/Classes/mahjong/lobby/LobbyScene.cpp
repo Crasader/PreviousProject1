@@ -815,27 +815,27 @@ void LobbyScene::addEventListener(){
         } else if(result == "2")
         {
             RoomFullDialog* doo = RoomFullDialog::create();
-            addChild(doo);
+            addChild(doo,200);
         }
         else if(result == "3")
         {
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
             if(UserData::getInstance()->isWeixinPayOpen()){
                 FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-                addChild(charge,14);
+                addChild(charge,200);
                 GAMEDATA::getInstance()->setShowDialogType(-1);
             }else{
                 HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
-                addChild(hint,14);
+                addChild(hint,200);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
             FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-            addChild(charge,14);
+            addChild(charge,200);
 #endif
         }
         else if(result == "4"){
             RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
-            addChild(idd,14);
+            addChild(idd,200);
         }
     });
     
@@ -850,27 +850,27 @@ void LobbyScene::addEventListener(){
         } else if(result == "2")
         {
             RoomFullDialog* doo = RoomFullDialog::create();
-            addChild(doo);
+            addChild(doo,200);
         }
         else if(result == "3")
         {
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
             if(UserData::getInstance()->isWeixinPayOpen()){
                 FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-                addChild(charge,14);
+                addChild(charge,200);
                 GAMEDATA::getInstance()->setShowDialogType(-1);
             }else{
                 HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
-                addChild(hint,14);
+                addChild(hint,200);
             }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
             FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-            addChild(charge,14);
+            addChild(charge,200);
 #endif
         }
         else if(result == "4"){
             RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
-            addChild(idd,14);
+            addChild(idd,200);
         }
     });
     

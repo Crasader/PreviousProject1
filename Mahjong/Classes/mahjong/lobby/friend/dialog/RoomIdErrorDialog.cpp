@@ -25,7 +25,7 @@ bool RoomIdErrorDialog::init(){
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(RoomIdErrorDialog::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(910, 525);
+    closeMenu->setPosition(890, 505);
     addChild(closeMenu);
     
     
@@ -35,13 +35,13 @@ bool RoomIdErrorDialog::init(){
     
     
     auto chargeImage = Sprite::create("friend/wu_fang_hao.png");
-    chargeImage->setPosition(640,360);
+    chargeImage->setPosition(640,380);
     addChild(chargeImage);
     
     auto image = MenuItemImage::create("common/confirm_btn_1.png","common/confirm_btn_2.png",
                                        CC_CALLBACK_0(RoomIdErrorDialog::closeView, this));
     Menu* menu = Menu::create(image,NULL);
-    menu->setPosition(640,210);
+    menu->setPosition(640,240);
     addChild(menu);
     
     return true;
