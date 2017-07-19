@@ -111,6 +111,10 @@ void DissovleRoomDialog::doNotAgree(){
 void DissovleRoomDialog::onEnter(){
     Layer::onEnter();
     dissovleListener = EventListenerCustom::create(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY, [=](EventCustom* event){
+        if(GAMEDATA::getInstance()->getDissolveData().pid == UserData::getInstance()->getPoxiaoId()){
+            img1->setEnabled(false);
+            img2->setEnabled(false);
+        }
         for(int i=0; i<items.size();i++){
             if(items.at(i)->getPoxiaoId() == GAMEDATA::getInstance()->getDissolveData().pid){
                 items.at(i)->updateState(GAMEDATA::getInstance()->getDissolveData().agree == "1"?1:2);

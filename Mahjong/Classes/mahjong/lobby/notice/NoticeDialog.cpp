@@ -77,9 +77,9 @@ void NoticeDialog::setContentImage(std::string url,std::string url2,std::string 
         }
         contentWebView->setVisible(true);
         contentWebView->loadURL(url2);
-        schedule([=](float dt){
-            removeFromParent();
-        }, 0, 0, atoi(showTime.c_str()),"dismiss");
+//        schedule([=](float dt){
+//            removeFromParent();
+//        }, 0, 0, atoi(showTime.c_str()),"dismiss");
 #endif
     }else{
         std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url);

@@ -168,9 +168,9 @@ bool BillDetailInfo::init()
     
     MenuItemImage* share = MenuItemImage::create("bill/share_bill_1.png", "bill/share_bill_2.png",
                                                  CC_CALLBACK_0(BillDetailInfo::shareBill, this));
-    MenuItemImage* goback = MenuItemImage::create("bill/return_btn_1.png", "bill/return_btn_2.png",
-                                                  CC_CALLBACK_0(BillDetailInfo::goBack, this));
-    auto billMenu = Menu::create(share,goback, NULL);
+//    MenuItemImage* goback = MenuItemImage::create("bill/return_btn_1.png", "bill/return_btn_2.png",
+//                                                  CC_CALLBACK_0(BillDetailInfo::goBack, this));
+    auto billMenu = Menu::create(share, NULL);
     billMenu->alignItemsHorizontallyWithPadding(50);
     billMenu->setPosition(640, 80);
     addChild(billMenu, 20);

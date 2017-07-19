@@ -25,6 +25,8 @@ bool CompetitionQueue::init(){
     view_bg->setPosition(visibleSize.width / 2, visibleSize.height / 2);
     addChild(view_bg, -1);
     
+    GAMEDATA::getInstance()->setMyGameModel(GameModel::FOURPLAYER);
+    
     auto queueBg = Sprite::create("competition/competition_queue_bg.png");
     queueBg->setPosition(640,360);
     addChild(queueBg);
