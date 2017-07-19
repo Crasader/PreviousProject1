@@ -1178,10 +1178,14 @@ void LobbyScene::addEventListener(){
         if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 1){
             if(GAMEDATA::getInstance()->getIsTurnTableShare()){
                 GAMEDATA::getInstance()->setIsTurnTableShare(false);
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableShareCommand());
+                schedule([=](float dt){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendTurntableShareCommand());
+                },0,0,2,"share_1314");
             }else{
-                NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
                 GAMEDATA::getInstance()->setShareHongBaoFriendState(0);
+                schedule([=](float dt){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGetHongbaoPride());
+                },0,0,2,"share_1314");
             }
             
         }else if(GAMEDATA::getInstance()->getShareHongBaoFriendState() == 2){
