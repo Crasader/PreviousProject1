@@ -33,17 +33,17 @@ bool HZPlayerResultCell::init(GameResultData data){
     
     
     auto headImage = HeadImage::createByImage(data.pic,Size(90,90));
-    if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
-        headImage->updateImageByName("");
-    }
+    //    if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
+    //        headImage->updateImageByName("");
+    //    }
     headImage->setPosition(-470, 0);
     addChild(headImage, 10);
     
     auto nickName = Label::createWithSystemFont(data.nickName,"Arial",20);
     nickName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-    if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
-        nickName->setVisible(false);
-    }
+    //    if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
+    //        nickName->setVisible(false);
+    //    }
     nickName->setPosition(-405,15);
     addChild(nickName);
     
@@ -51,9 +51,9 @@ bool HZPlayerResultCell::init(GameResultData data){
     idNumber->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
     idNumber->setPosition(-230,15);
     addChild(idNumber);
-    if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
-        idNumber->setVisible(false);
-    }
+    //    if(GAMEDATA::getInstance()->getIsCompetitionState()&&data.nickName != UserData::getInstance()->getNickName()){
+    //        idNumber->setVisible(false);
+    //    }
     
     
     auto fanNum = LabelAtlas::create(StringUtils::format("%s",GAMEDATA::getInstance()->getHZMaShu().c_str()), "result/fan_num.png", 17, 26, '0');
