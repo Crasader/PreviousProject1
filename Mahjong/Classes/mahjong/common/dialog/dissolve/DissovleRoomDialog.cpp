@@ -66,6 +66,7 @@ bool DissovleRoomDialog::init(){
     if(UserData::getInstance()->getNickName() == GAMEDATA::getInstance()->getDissolveName()){
         img1->setEnabled(false);
         img2->setEnabled(false);
+        GAMEDATA::getInstance()->setDissovleDialogRemove(true);
     }
     scheduleUpdate();
     return true;
@@ -114,6 +115,7 @@ void DissovleRoomDialog::onEnter(){
         if(GAMEDATA::getInstance()->getDissolveData().pid == UserData::getInstance()->getPoxiaoId()){
             img1->setEnabled(false);
             img2->setEnabled(false);
+            GAMEDATA::getInstance()->setDissovleDialogRemove(true);
         }
         for(int i=0; i<items.size();i++){
             if(items.at(i)->getPoxiaoId() == GAMEDATA::getInstance()->getDissolveData().pid){
