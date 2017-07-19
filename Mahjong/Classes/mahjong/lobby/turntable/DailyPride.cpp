@@ -260,6 +260,10 @@ void DailyPride::showTurntableResult(PrideType propId,std::string number){
     prop->setPosition(640, 360);
     addChild(prop);
     
+    int pos  =  (int)number.find(".");
+    if(pos>=0){
+        number.replace(pos,1, ":");
+    }
     LabelAtlas* num = LabelAtlas::create(number,"daily/pride_num.png", 19, 28, '0');
     num->setPosition(620,300);
     addChild(num);
