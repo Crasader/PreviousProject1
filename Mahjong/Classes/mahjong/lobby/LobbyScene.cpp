@@ -731,10 +731,11 @@ void LobbyScene::onEnterTransitionDidFinish(){
         addChild(hint,50);
         GAMEDATA::getInstance()->setShowRoomDismiss(false);
     }
-    if(GAMEDATA::getInstance()->getNeedShowTurnTable()){
+    if(GAMEDATA::getInstance()->getNeedShowTurnTable() && !GAMEDATA::getInstance()->getHasShowTurnTable()){
         DailyPride* pride = DailyPride::create();
         addChild(pride,10);
         GAMEDATA::getInstance()->setNeedShowTurnTable(false);
+        GAMEDATA::getInstance()->setHasShowTurnTable(true);
     }
 }
 

@@ -29,7 +29,7 @@ bool FupanDialog::init(){
     fupantext->setPosition(550, 420);
     addChild(fupantext);
     
-    auto input_bg = Sprite::create("bill/shuru_kuang_bg.png");
+    auto input_bg = Sprite::create("playerinfo/input_box_bg.png");
     input_bg->setPosition(640, 340);
     addChild(input_bg);
     

@@ -28,7 +28,6 @@ bool NoticeDialog::init(){
     bg->setPosition(640,360);
     addChild(bg);
     
-    
     auto close = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png",
                                        CC_CALLBACK_0(NoticeDialog::closeView, this));
     

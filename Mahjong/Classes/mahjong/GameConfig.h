@@ -12,8 +12,8 @@
 #define PAY_PLAT_VALUE "28" //ios审核版本29，应用宝审核版本30.
 
 //#define SERVER_ADDRESS "aliyun.5278-mobi.com"
-#define SERVER_ADDRESS "ceshi1.5278-mobi.com"
-#define SERVER_ADDRESS_2 "86ztt4xtm3w7n9nb.gfvip01ap.com"
+#define SERVER_ADDRESS_2 "aliyun.kx5278.com"
+#define SERVER_ADDRESS "ceshi.5278-mobi.com"
 #define SERVER_PORT 9999
 
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币

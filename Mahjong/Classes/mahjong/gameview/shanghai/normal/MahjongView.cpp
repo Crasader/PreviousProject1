@@ -210,16 +210,16 @@ void MahjongView::update(float dt){
         addPlayer2Room();
         GAMEDATA::getInstance()->setNeedAddPlayer(false);
     }
-    if(GAMEDATA::getInstance()->getIsGotoLobby()){
-        GAMEDATA::getInstance()->setIsGotoLobby(false);
-        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-            GAMEDATA::getInstance()->clearPlayersInfo();
-            GAMEDATA::getInstance()->setIsPlaying(false);
-            schedule([=](float dt){
-                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            }, 0, 0, 2,"KKFFCC001");
-        }
-    }
+    //    if(GAMEDATA::getInstance()->getIsGotoLobby()){
+    //        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+    //            GAMEDATA::getInstance()->clearPlayersInfo();
+    //            GAMEDATA::getInstance()->setIsPlaying(false);
+    //            schedule([=](float dt){
+    //                GAMEDATA::getInstance()->setIsGotoLobby(false);
+    //                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+    //            }, 0, 0, 2,"KKFFCC001");
+    //        }
+    //    }
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
         for (int i = 0; i < players.size(); i++){

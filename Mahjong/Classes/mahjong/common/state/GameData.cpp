@@ -23,6 +23,7 @@ void GAMEDATA::init(){
     setShowRoomDismiss(false);
     setShowProtected(false);
     setHaveShowNotice(false);
+    setHasShowTurnTable(false);
     setNeedShowLastResult(false);
     setShowFangZhuDismiss(false);
     setTurnHeroCpg(false);
