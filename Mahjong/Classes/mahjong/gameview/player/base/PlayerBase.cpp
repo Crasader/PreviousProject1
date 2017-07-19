@@ -418,6 +418,7 @@ void PlayerBase::updateTime(float dt){
     }
     else{
         timeClock->setVisible(false);
+        centerTime->setString(StringUtils::format("%d", 0));
         if (mCDTime <=0){
             doEventTimeOver(this->getTag());
             unschedule(schedule_selector(PlayerBase::updateTime));

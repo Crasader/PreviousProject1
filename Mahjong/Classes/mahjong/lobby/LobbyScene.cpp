@@ -258,19 +258,17 @@ void LobbyScene::drawSceneTop(){
     
     
     auto huodong = MenuItemImage::create("mjlobby/task_btn_1.png","mjlobby/task_btn_2.png",CC_CALLBACK_0(LobbyScene::showHotActivity, this));
-    auto gongzh = MenuItemImage::create("mjlobby/gzh_btn1.png","mjlobby/gzh_btn2.png",CC_CALLBACK_0(LobbyScene::showGongZhongHao, this));
-    auto mymenu = Menu::create(huodong,gongzh,NULL);
-    mymenu->setPosition(1185,680);
-    mymenu->alignItemsHorizontallyWithPadding(20);
+    auto mymenu = Menu::create(huodong,NULL);
+    mymenu->setPosition(1145,680);
+    mymenu->setTag(1980);
     addChild(mymenu);
     
+    auto gongzh = MenuItemImage::create("mjlobby/gzh_btn1.png","mjlobby/gzh_btn2.png",CC_CALLBACK_0(LobbyScene::showGongZhongHao, this));
+    auto mymenu2 = Menu::create(gongzh,NULL);
+    mymenu2->setPosition(1225,680);
+    addChild(mymenu2);
+    
     //支付审核专用
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    gold_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    gold_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    chargGold->setVisible(UserData::getInstance()->isWeixinPayOpen());
-#endif
     lequan_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
     lequan_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
     lequanNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
@@ -279,6 +277,13 @@ void LobbyScene::drawSceneTop(){
     huafei_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
     haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
     chargHuaFei->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    mymenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    gold_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    gold_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    goldNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
+    chargGold->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
 }
 
 void LobbyScene::drawSceneMid(){
@@ -1048,6 +1053,8 @@ void LobbyScene::addEventListener(){
             getChildByTag(904)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != getChildByTag(905))
             getChildByTag(905)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != getChildByTag(1980))
+            getChildByTag(1980)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != haufeiNum)
             haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != lequanNum)

@@ -316,15 +316,12 @@ void CompetitionResult::showLose(std::string type,std::string rank,std::string p
     rankText->setPosition(640,375);
     addChild(rankText);
     
-    auto rankNum = LabelAtlas::create(rank, "competition/rank_num.png", 98, 124, '0');
+    auto rankNum = LabelAtlas::create(rank, "competition/rank_num.png", 77, 113, '0');
     rankNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
     rankNum->setPosition(640,388);
     addChild(rankNum);
     
-    //    auto kuohao =Sprite::create("competition/kuohao.png");
-    //    kuohao->setPosition(840,360);
-    //    addChild(kuohao);
-    auto icon = Sprite::create("mjitem/jifen_icon.png");
+    auto icon = Sprite::create("common/jifen_icon.png");
     icon->setPosition(800,360);
     icon->setScale(0.6f);
     addChild(icon);

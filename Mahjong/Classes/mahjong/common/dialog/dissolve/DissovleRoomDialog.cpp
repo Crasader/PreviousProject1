@@ -85,6 +85,7 @@ void DissovleRoomDialog::doAgree(){
     }else if(GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("1"));
     }
+    GAMEDATA::getInstance()->setDissovleDialogRemove(true);
     checkAllConfirm();
 }
 
@@ -103,6 +104,7 @@ void DissovleRoomDialog::doNotAgree(){
     }else if(GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomSelectCommand("0"));
     }
+    GAMEDATA::getInstance()->setDissovleDialogRemove(true);
     checkAllConfirm();
 }
 
@@ -140,7 +142,6 @@ void DissovleRoomDialog::checkAllConfirm(){
         }
     }
     if(needRemove||count == items.size()){
-        GAMEDATA::getInstance()->setDissovleDialogRemove(true);
         schedule([=](float dt){
             removeFromParent();
         }, 0, 0, 2,"KKKKK");

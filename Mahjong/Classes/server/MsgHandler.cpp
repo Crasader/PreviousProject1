@@ -2761,8 +2761,8 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
             Player* info = new Player();
             info->setScore(temp["jifen"].GetInt());
             info->setSeatId(temp["seatId"].GetInt());
+            info->setPoxiaoId(temp["poxiaoId"].GetString());
             if(!isCompetition){
-                info->setPoxiaoId(temp["poxiaoId"].GetString());
                 info->setBanker(false);
                 info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
                 info->setGold(temp["gold"].GetInt());
@@ -3310,8 +3310,8 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
             Player* info = new Player();
             info->setScore(temp["jifen"].GetInt());
             info->setSeatId(temp["seatId"].GetInt());
+            info->setPoxiaoId(temp["poxiaoId"].GetString());
             if(!isCompetition){
-                info->setPoxiaoId(temp["poxiaoId"].GetString());
                 info->setBanker(false);
                 info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
                 info->setGold(temp["gold"].GetInt());

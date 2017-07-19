@@ -481,6 +481,6 @@ void GuiLayer::testButtonClick(){
 //    ami->initView("0.37","0.37",1,false);
 //    addChild(ami,100);
     CompetitionResult* result = CompetitionResult::create();
-    result->showCompetiotionResult("1","1","36","30");
+    result->showCompetiotionResult("2","2","36","30");
     getParent()->addChild(result,100);
 }
