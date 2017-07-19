@@ -329,10 +329,19 @@ void UserData::setGongZhongHao(std::string msg){
 }
 
 std::string UserData::getUserPayWay(){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     return UserDefault::getInstance()->getStringForKey("user_pay_way","2");//1为微信 2苹果
+#else
+    return UserDefault::getInstance()->getStringForKey("user_pay_way","1");//1为微信 2苹果
+#endif
 }
 void UserData::setUserPayWay(std::string msg){
+    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     UserDefault::getInstance()->setStringForKey("user_pay_way",msg);
+#else
+    UserDefault::getInstance()->getStringForKey("user_pay_way","1");//1为微信 2苹果
+#endif
 }
 
 std::string UserData::getDiscountInfo(){
