@@ -78,3 +78,12 @@ void GameSocketManage::disConnectSelf(){
     PxSocketManage::getInstance()->disConnectSelf();
 #endif
 }
+
+bool GameSocketManage::changeSocketAddress(std::string address){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    return  CocoaSocketManage::getInstance()->connectSocket(address,SERVER_PORT);
+#elif CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+    return PxSocketManage::getInstance()->connectSocket(address,SERVER_PORT);
+#endif
+    return true;
+}

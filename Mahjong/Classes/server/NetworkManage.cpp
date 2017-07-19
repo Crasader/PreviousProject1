@@ -16,6 +16,10 @@ NetworkManage::NetworkManage() {
     GameSocketManage::getInstance()->socketConnect();
 }
 
+void NetworkManage::changeSocketAddress(std::string address){
+    GameSocketManage::getInstance()->changeSocketAddress(address);
+}
+
 void NetworkManage::sendMsg(std::string code) {
     if(code.size()>0&&code != ""){
         GameSocketManage::getInstance()->sendScoketData(code);

@@ -3,6 +3,7 @@
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "http/image/UrlImageMannger.h"
+#include "mahjong/GameConfig.h"
 
 static MahjongPayHandler* _instance = nullptr;
 MahjongPayHandler* MahjongPayHandler::getInstance() {
@@ -53,6 +54,7 @@ void MahjongPayHandler::loginThirdPlatform(std::string openid,std::string unioni
                                                                              openid,unionid, url,sex,nickname,hsman,hstype,imsi,imei,ver1);
         if (msg != "") {
             NetworkManage::getInstance()->sendMsg(msg);
+            schedule(schedule_selector(MahjongPayHandler::updateCount), 0, 0, 10);
         }
     }
 }
@@ -65,6 +67,11 @@ void MahjongPayHandler:: shareHongbaoPride(bool result){
         GAMEDATA::getInstance()->setShareHongBaoFriendState(2);
     }
     
+}
+
+void MahjongPayHandler::updateCount(float dt){
+    NetworkManage::getInstance()->changeSocketAddress(SERVER_ADDRESS_2);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
 }
 
 

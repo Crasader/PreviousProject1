@@ -12,6 +12,7 @@
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
+#include "mahjong/GameConfig.h"
 //#include "youmi/MyIM.h"
 
 Scene* SplashScene::createScene()
@@ -39,7 +40,9 @@ bool SplashScene::init()
 
 void SplashScene::onEnterTransitionDidFinish(){
     if(UserData::getInstance()->getWxOpenId()!= "unknow"){
+        showLoading();
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
+        schedule(schedule_selector(SplashScene::updateCount), 0, 0, 10);
     }
     GAMEDATA::getInstance()->setLogingGame(false);
     if(Audio::getInstance()->getBgmId()<0)
@@ -134,22 +137,10 @@ void SplashScene::showSplashAnim(){
     
 }
 
-void SplashScene :: scrollLightSpot(float dt){
-    if(NULL!=getChildByTag(602)){
-        if(getChildByTag(602)->getPositionX()>1920){
-            getChildByTag(602)->setPosition(-640,360);
-        }else{
-            getChildByTag(602)->setPosition(getChildByTag(602)->getPosition().x+1,getChildByTag(602)->getPosition().y);
-        }
-    }
-    if(NULL!=getChildByTag(603)){
-        if(getChildByTag(603)->getPositionX()>1920){
-            getChildByTag(603)->setPosition(-640,360);
-        }
-        getChildByTag(603)->setPosition(getChildByTag(603)->getPosition().x+1,getChildByTag(603)->getPosition().y);
-    }
+void SplashScene::updateCount(float dt){
+    NetworkManage::getInstance()->changeSocketAddress(SERVER_ADDRESS_2);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
 }
-
 
 void SplashScene::addTocuhListener(){
     auto listener = EventListenerKeyboard::create();
@@ -171,13 +162,14 @@ void SplashScene::addTocuhListener(){
 
 void SplashScene::onEnter(){
     Layer::onEnter();
+    unschedule(schedule_selector(SplashScene::updateCount));
     loginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         removeLoading();
+       
         if (result == LOGIN_SUCCESS){
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-            
         }
         else{
             

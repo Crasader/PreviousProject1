@@ -21,6 +21,7 @@ public:
     void resetBeatCount();
     void disConnectSocket();
     void disConnectSelf();
+    bool changeSocketAddress(std::string address);
 private:
     GameSocketManage();
     static GameSocketManage* _instance;

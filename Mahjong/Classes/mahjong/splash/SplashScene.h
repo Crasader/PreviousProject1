@@ -18,7 +18,6 @@ public:
 	CREATE_FUNC(SplashScene);
 
 private:
-    
 	EventListenerCustom* loginRespListener;
 	EventListenerCustom* reConnectAgain;
     EventListenerCustom* hzReConnectAgain;
@@ -32,9 +31,9 @@ private:
 	void addTocuhListener();
 	void drawLonginScene();
     void showSplashAnim();
-    void scrollLightSpot(float dt);
 	void showLoading();
 	void removeLoading();
     void showLoadLayerAnim();
+    void updateCount(float dt);
 };
 #endif

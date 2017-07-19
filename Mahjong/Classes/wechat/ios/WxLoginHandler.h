@@ -12,7 +12,7 @@
 #include "cocos2d.h"
 using namespace cocos2d;
 
-class WxLoginHandler{
+class WxLoginHandler : public Node{
 public:
     static WxLoginHandler* getInstance();
     void doGameLogin(std::string openid,std::string unionid,std::string pic,std::string sex,std::string nickname,std::string hsman,std::string hstype,std::string imsi,std::string imei,std::string ver1);
@@ -22,7 +22,8 @@ public:
 private:
     WxLoginHandler();
     static WxLoginHandler* _instance;
-    void init();
+    bool init();
+    void updateCount(float dt);
 };
 
 #endif /* WxLoginHandler_hpp */

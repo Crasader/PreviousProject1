@@ -11,6 +11,7 @@
 #include "userdata/UserData.h"
 #include "http/image/UrlImageMannger.h"
 #include "mahjong/common/state/GameData.h"
+#include "mahjong/GameConfig.h"
 
 
 WxLoginHandler* WxLoginHandler::_instance = 0;
@@ -19,8 +20,8 @@ WxLoginHandler::WxLoginHandler(){
     this->init();
 }
 
-void WxLoginHandler::init(){
-    //TODO
+bool WxLoginHandler::init(){
+    return true;
 }
 
 WxLoginHandler* WxLoginHandler::getInstance(){
@@ -44,6 +45,7 @@ void WxLoginHandler::doGameLogin(std::string openid,std::string unionid,std::str
         std::string msg =CommandManage::getInstance()->getThirdLoginCommand(openid,unionid,pic,sex,nickname,hsman,hstype,imsi,imei,ver1);
         if(msg != ""){
             NetworkManage::getInstance()->sendMsg(msg);
+            schedule(schedule_selector(WxLoginHandler::updateCount), 0, 0, 10);
         }
     }
 }
@@ -66,4 +68,9 @@ void WxLoginHandler::shareFail(){
 //    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendGiveupHongbaoPride());
     GAMEDATA::getInstance()->setShareHongBaoFriendState(2);
 
+}
+
+void WxLoginHandler::updateCount(float dt){
+    NetworkManage::getInstance()->changeSocketAddress(SERVER_ADDRESS_2);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
 }
