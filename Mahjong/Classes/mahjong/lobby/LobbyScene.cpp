@@ -298,7 +298,7 @@ void LobbyScene::drawSceneMid(){
         text->setColor(Color3B(255,247,217));
         text->setPosition(90,30);
         textbg->addChild(text);
-        textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(1.0f,Point(750,580)),MoveTo::create(1.0f,Point(750,570)),NULL), CC_REPEAT_FOREVER));
+        textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(0.92f,Point(750,580)),MoveTo::create(0.92f,Point(750,570)),NULL), CC_REPEAT_FOREVER));
     }
     
     
@@ -410,7 +410,7 @@ void LobbyScene::drawSceneBot(){
         text->setColor(Color3B(255,247,217));
         text->setPosition(220,40);
         textbg->addChild(text);
-        textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(1.1f,Point(782,117)),MoveTo::create(1.1f,Point(782,107)),NULL), CC_REPEAT_FOREVER));
+        textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(0.9f,Point(782,117)),MoveTo::create(0.9f,Point(782,107)),NULL), CC_REPEAT_FOREVER));
     }
 }
 
