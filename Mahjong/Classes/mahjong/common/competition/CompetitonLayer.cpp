@@ -9,12 +9,12 @@
 #include "mahjong/common/competition/CompetitonLayer.hpp"
 #include "mahjong/common/loading/Loading.h"
 #include"mahjong/gameview/MjGameScene.h"
-#include "server/NetworkManage.h"
 #include "mahjong/common/competition/CompetitionResult.hpp"
 #include "mahjong/lobby/shop/fangka/FangkaNotEnoughDialog.hpp"
-#include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "userdata/UserData.h"
+#include "server/NetworkManage.h"
+#include "mahjong/common/utils/StringUtil.h"
 
 bool CompetitonLayer::init(){
     

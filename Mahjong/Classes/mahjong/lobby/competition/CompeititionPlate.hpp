@@ -14,8 +14,11 @@ USING_NS_CC;
 class CompeititionPlate : public Layer{
 public:
     bool init();
+    void onEnter();
+    void onExit();
     CREATE_FUNC(CompeititionPlate);
 private:
+     EventListenerCustom* joinResp;
     void closeView();
 };
 #endif /* CompeititionPlate_hpp */

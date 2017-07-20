@@ -38,6 +38,7 @@
 #include "mahjong/lobby/share/ShareActivityLayer.hpp"
 #include "mahjong/lobby/share/ShareSelectLayer.hpp"
 #include "mahjong/lobby/gongzhonghao/GongZhongHaoLayer.hpp"
+#include "mahjong/lobby/competition/CompeititionPlate.hpp"
 
 
 bool LobbyScene::init()
@@ -671,7 +672,8 @@ void LobbyScene::spreadGoldRoom(){
 }
 
 void LobbyScene::showCompetitionLayer(){
-
+    CompeititionPlate* plate = CompeititionPlate::create();
+    addChild(plate,1000);
 }
 
 void LobbyScene::onEnter(){
