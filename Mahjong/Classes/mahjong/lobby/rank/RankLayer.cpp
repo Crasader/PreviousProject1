@@ -24,52 +24,52 @@ RankLayer* RankLayer::create(LobbyPaiHangData data){
 bool RankLayer::init(LobbyPaiHangData data){
 
     auto rank_bg = Sprite::create("mjlobby/rank_bg.png");
-    rank_bg->setPosition(280,360);
+    rank_bg->setPosition(310,360);
     addChild(rank_bg);
     
     auto yeqian = Sprite::create("mjlobby/tab_bg.png");
-    yeqian->setPosition(280,547);
+    yeqian->setPosition(310,547);
     addChild(yeqian);
     
     auto fen1 = Sprite::create("mjlobby/fen_ge.png");
-    fen1->setPosition(200,547);
+    fen1->setPosition(230,547);
     addChild(fen1);
     
     auto fen2 = Sprite::create("mjlobby/fen_ge.png");
-    fen2->setPosition(362,547);
+    fen2->setPosition(392,547);
     addChild(fen2);
     
     tab1 = MenuItemImage::create("mjlobby/rank_btn_1.png", "mjlobby/rank_btn_1.png", CC_CALLBACK_0(RankLayer::showRank1,this));
     auto tabMenu = Menu::create(tab1,NULL);
     tab1->setOpacity(0);
-    tabMenu->setPosition(125,545);
+    tabMenu->setPosition(155,545);
     addChild(tabMenu);
     
     tab2 = MenuItemImage::create("mjlobby/rank_btn_1.png", "mjlobby/rank_btn_1.png", CC_CALLBACK_0(RankLayer::showRank2,this));
     tab2->setOpacity(0);
     auto tabMenu2 = Menu::create(tab2,NULL);
-    tabMenu2->setPosition(280,545);
+    tabMenu2->setPosition(310,545);
     addChild(tabMenu2);
     
     tab3 = MenuItemImage::create("mjlobby/rank_btn_1.png", "mjlobby/rank_btn_1.png", CC_CALLBACK_0(RankLayer::showRank3,this));
     tab3->setOpacity(0);
     auto tabMenu3 = Menu::create(tab3,NULL);
-    tabMenu3->setPosition(435,545);
+    tabMenu3->setPosition(465,545);
     addChild(tabMenu3);
     
     rankName1 = Label::createWithSystemFont(data.name1, "arial", 25);
     rankName1->setColor(Color3B(177,88,8));
-    rankName1->setPosition(125,545);
+    rankName1->setPosition(155,545);
     addChild(rankName1,1);
     
     rankName2 = Label::createWithSystemFont(data.name2, "arial", 25);
     rankName2->setColor(Color3B(255,252,248));
-    rankName2->setPosition(280,545);
+    rankName2->setPosition(310,545);
     addChild(rankName2,1);
     
     rankName3 = Label::createWithSystemFont(data.name3, "arial", 25);
     rankName3->setColor(Color3B(255,252,248));
-    rankName3->setPosition(435,545);
+    rankName3->setPosition(465,545);
     addChild(rankName3,1);
     
     ranA = RankList::create();

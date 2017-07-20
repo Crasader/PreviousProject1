@@ -20,7 +20,7 @@ bool RankList::init(){
     tableView1 = TableView::create(this, Size(486, 305));
     tableView1->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView1->setDirection(ScrollView::Direction::VERTICAL);
-    tableView1->setPosition(35,205);
+    tableView1->setPosition(65,205);
     tableView1->setTag(105);
     tableView1->setDelegate(this);
     tableView1->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
