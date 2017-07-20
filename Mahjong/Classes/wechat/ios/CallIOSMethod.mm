@@ -36,7 +36,7 @@ CallIOSMethod* CallIOSMethod::getInstance(){
 void CallIOSMethod::doPayEvent(std::string poxiaoId,int payId){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     //获取商品的编号
-    if(UserData::getInstance()->isWeixinPayOpen()){
+    if(UserData::getInstance()->isWeixinPayOpen() && UserData::getInstance()->getUserPayWay() == "1"){
         //微信支付
         NSString* pyid = [[NSString alloc] initWithFormat:@"%s",poxiaoId.c_str()];
         NSString *poid=  [[NSString alloc] initWithFormat:@"%d",payId];

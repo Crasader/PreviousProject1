@@ -9,7 +9,7 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "28" //ios审核版本29，应用宝审核版本30.
+#define PAY_PLAT_VALUE "28" //ios审核版本32，应用宝审核版本33. 偶数是IOS,奇数是Android
 
 //#define SERVER_ADDRESS "aliyun.5278-mobi.com"
 #define SERVER_ADDRESS_2 "aliyun.kx5278.com"
