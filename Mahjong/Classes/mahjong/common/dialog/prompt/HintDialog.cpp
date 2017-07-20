@@ -40,7 +40,7 @@ bool HintDialog::init(std::string msg,const ccMenuCallback& callback1,const ccMe
     text->setWidth(300);
     text->setAnchorPoint(Point::ANCHOR_MIDDLE);
     text->setColor(Color3B(124,37,7));
-    text->setPosition(640, 360);
+    text->setPosition(640, 380);
     addChild(text);
     
     

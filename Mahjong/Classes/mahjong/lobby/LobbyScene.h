@@ -83,6 +83,7 @@ private:
     void spreadGoldRoom();
     void removeLoading();
     void showLobbyAnim();
+    void showCompetitionLayer();
 	void addEventListener();
     void scrollLightSpot(float dt);
     void signUpdate(float dt);

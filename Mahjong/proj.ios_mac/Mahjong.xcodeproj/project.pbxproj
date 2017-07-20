@@ -326,6 +326,8 @@
 		D29C47791D1D07DF00E3B91E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29C47781D1D07DF00E3B91E /* StoreKit.framework */; };
 		D29E85991E320EB100AFACEE /* fupan in Resources */ = {isa = PBXBuildFile; fileRef = D29E85981E320EB100AFACEE /* fupan */; };
 		D29E859A1E320EB100AFACEE /* fupan in Resources */ = {isa = PBXBuildFile; fileRef = D29E85981E320EB100AFACEE /* fupan */; };
+		D2A0C2DB1F205D0300203FEF /* CompeititionPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A0C2D91F205D0300203FEF /* CompeititionPlate.cpp */; };
+		D2A0C2DC1F205D0300203FEF /* CompeititionPlate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A0C2D91F205D0300203FEF /* CompeititionPlate.cpp */; };
 		D2A713AC1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713A61ED2B830000EE572 /* CompetitionQueue.cpp */; };
 		D2A713AD1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713A61ED2B830000EE572 /* CompetitionQueue.cpp */; };
 		D2A713AE1ED2B830000EE572 /* CompetitonItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2A713A81ED2B830000EE572 /* CompetitonItem.cpp */; };
@@ -770,6 +772,8 @@
 		D29BE26C1ED686CF00EED3A0 /* HuafeiShop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuafeiShop.hpp; sourceTree = "<group>"; };
 		D29C47781D1D07DF00E3B91E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D29E85981E320EB100AFACEE /* fupan */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fupan; sourceTree = "<group>"; };
+		D2A0C2D91F205D0300203FEF /* CompeititionPlate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompeititionPlate.cpp; sourceTree = "<group>"; };
+		D2A0C2DA1F205D0300203FEF /* CompeititionPlate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompeititionPlate.hpp; sourceTree = "<group>"; };
 		D2A713A61ED2B830000EE572 /* CompetitionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitionQueue.cpp; sourceTree = "<group>"; };
 		D2A713A71ED2B830000EE572 /* CompetitionQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CompetitionQueue.hpp; sourceTree = "<group>"; };
 		D2A713A81ED2B830000EE572 /* CompetitonItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompetitonItem.cpp; sourceTree = "<group>"; };
@@ -1414,6 +1418,7 @@
 		D252FACD1E7FA5EC00937322 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D2A0C2D81F205CC500203FEF /* competition */,
 				D217FEA31F13509B008F5D4B /* gongzhonghao */,
 				D2E79DB91F0F34D000DD3999 /* turntable */,
 				D2B291B51F0DD3810084F379 /* rank */,
@@ -1862,6 +1867,15 @@
 				D29BE26C1ED686CF00EED3A0 /* HuafeiShop.hpp */,
 			);
 			path = huafei;
+			sourceTree = "<group>";
+		};
+		D2A0C2D81F205CC500203FEF /* competition */ = {
+			isa = PBXGroup;
+			children = (
+				D2A0C2D91F205D0300203FEF /* CompeititionPlate.cpp */,
+				D2A0C2DA1F205D0300203FEF /* CompeititionPlate.hpp */,
+			);
+			path = competition;
 			sourceTree = "<group>";
 		};
 		D2A713A51ED2B830000EE572 /* competition */ = {
@@ -2487,6 +2501,7 @@
 				D252FC4F1E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
 				D2B1D9181E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */,
 				D252FBB01E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
+				D2A0C2DB1F205D0300203FEF /* CompeititionPlate.cpp in Sources */,
 				D217FEA81F13509B008F5D4B /* GongZhongHaoItem.cpp in Sources */,
 				D2A713AE1ED2B830000EE572 /* CompetitonItem.cpp in Sources */,
 				D252FB521E7FA5EC00937322 /* GameFeedDialog.cpp in Sources */,
@@ -2648,6 +2663,7 @@
 				D252FB411E7FA5EC00937322 /* TextHintDialog.cpp in Sources */,
 				D252FB4F1E7FA5EC00937322 /* Jong.cpp in Sources */,
 				D2E035221ED9581100291282 /* Trusteeship.cpp in Sources */,
+				D2A0C2DC1F205D0300203FEF /* CompeititionPlate.cpp in Sources */,
 				D217FEDB1F14C5C5008F5D4B /* DissovleRoomDialog.cpp in Sources */,
 				D252FBB51E7FA5EC00937322 /* ChargeFangka.cpp in Sources */,
 				D252FB1F1E7FA5EC00937322 /* Audio.cpp in Sources */,

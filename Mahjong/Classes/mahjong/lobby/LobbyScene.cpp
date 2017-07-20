@@ -309,38 +309,41 @@ void LobbyScene::drawSceneMid(){
     addChild(rlayer);
     
     
-        auto btn_open = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
-        auto btn_enter = MenuItemImage::create("mjlobby/enter_room_btn_1.png", "mjlobby/enter_room_btn_2.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
-        auto gameMenu = Menu::create(btn_open,btn_enter, NULL);
-        gameMenu->alignItemsVerticallyWithPadding(5);
-        gameMenu->setPosition(1025, 465);
-        addChild(gameMenu);
-    
-//    RoomListData newData = GAMEDATA::getInstance()->getRoomList();
-//    for (int i=0; i<newData.matchList.size();i++) {
-//        isShowRoomlist = true;
-//        CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
-//        CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
-//        com->setPosition(835+(i%2)*290,510-175*(i/2));
-//        addChild(com);
-//    }
-//    auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
-//    auto jinMenu =  Menu ::create(jinImg,NULL);
-//    jinMenu->setPosition(1135,183);
-//    jinMenu->setTag(1297);
-//    addChild(jinMenu);
-//    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-//        GAMEDATA::getInstance()->setRoomList(newData);
-//        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-//        plate->setTag(1298);
-//        plate->setVisible(false);
-//        addChild(plate,2);
-//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-//        //支付审核
-//        jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
-//#endif
-//    }
-    
+    auto btn_open = MenuItemImage::create("mjlobby/open_room_btn_1.png", "mjlobby/open_room_btn_2.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
+    auto btn_enter = MenuItemImage::create("mjlobby/enter_room_btn_1.png", "mjlobby/enter_room_btn_2.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
+    auto gameMenu = Menu::create(btn_open,btn_enter, NULL);
+    gameMenu->alignItemsVerticallyWithPadding(2);
+    gameMenu->setPosition(1025, 475);
+    addChild(gameMenu);
+    if(atoi(GAMEDATA::getInstance()->getPrivateGameNum().c_str())>0||GAMEDATA::getInstance()->getFangZhuId() == UserData::getInstance()->getPoxiaoId()){
+        Sprite* frame = Sprite::create("mjlobby/go_to_friend_room_1.png");
+        btn_open->setNormalImage(frame);
+        Sprite* frame2 = Sprite::create("mjlobby/go_to_friend_room_2.png");
+        btn_open->setSelectedImage(frame2);
+    }
+    RoomListData newData = GAMEDATA::getInstance()->getRoomList();
+    if(newData.matchList.size()>0 && UserData::getInstance()->isWeixinPayOpen()){
+        auto competitionImg = MenuItemImage::create("mjlobby/com_btn_1.png", "mjlobby/com_btn_2.png", CC_CALLBACK_0(LobbyScene:: showCompetitionLayer,this));
+        auto comMenu = Menu::create(competitionImg,NULL);
+        comMenu->setPosition(1025,290);
+        addChild(comMenu);
+    }
+    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+        auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
+        auto jinMenu =  Menu ::create(jinImg,NULL);
+        jinMenu->setPosition(1115,180);
+        jinMenu->setTag(1297);
+        addChild(jinMenu);
+        
+        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+        plate->setTag(1298);
+        plate->setVisible(false);
+        addChild(plate,2);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+        //支付审核
+        jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
+    }
 }
 
 void LobbyScene::drawSceneBot(){
@@ -665,6 +668,10 @@ void LobbyScene::spreadGoldRoom(){
     if(NULL != getChildByTag(1298)){
         getChildByTag(1298)->setVisible(!getChildByTag(1298)->isVisible());
     }
+}
+
+void LobbyScene::showCompetitionLayer(){
+
 }
 
 void LobbyScene::onEnter(){
@@ -1114,29 +1121,27 @@ void LobbyScene::addEventListener(){
         RoomListData* data = static_cast<RoomListData*>(event->getUserData());
         RoomListData newData = *data;
         if(!isShowRoomlist){
-//            for (int i=0; i<newData.matchList.size();i++) {
-//                isShowRoomlist = true;
-//                CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
-//                CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
-//                com->setPosition(835+(i%2)*290,510-175*(i/2));
-//                addChild(com);
-//            }
-//            auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
-//            auto jinMenu =  Menu ::create(jinImg,NULL);
-//            jinMenu->setPosition(1135,183);
-//            jinMenu->setTag(1297);
-//            addChild(jinMenu);
-//            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-//                GAMEDATA::getInstance()->setRoomList(newData);
-//                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-//                plate->setTag(1298);
-//                plate->setVisible(false);
-//                addChild(plate,2);
-//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-//                //支付审核
-//                jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
-//#endif
-//            }
+            if(newData.matchList.size()>0 && UserData::getInstance()->isWeixinPayOpen()){
+                auto competitionImg = MenuItemImage::create("mjlobby/com_btn_1.png", "mjlobby/com_btn_2.png", CC_CALLBACK_0(LobbyScene:: showCompetitionLayer,this));
+                auto comMenu = Menu::create(competitionImg,NULL);
+                comMenu->setPosition(1025,290);
+                addChild(comMenu);
+            }
+            if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+                auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
+                auto jinMenu =  Menu ::create(jinImg,NULL);
+                jinMenu->setPosition(1115,180);
+                jinMenu->setTag(1297);
+                addChild(jinMenu);
+                GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+                plate->setTag(1298);
+                plate->setVisible(false);
+                addChild(plate,2);
+#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+                //支付审核
+                jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
+#endif
+            }
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(roomListRespListener, 1);
