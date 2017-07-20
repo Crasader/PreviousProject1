@@ -33,11 +33,11 @@ bool BillDetailInfo::init()
     
     auto closeImage = MenuItemImage::create("common/close_btn_1.png", "common/close_btn_1.png", CC_CALLBACK_0(BillDetailInfo::closeView, this));
     auto closeMenu = Menu::create(closeImage, NULL);
-    closeMenu->setPosition(1040, 660);
+    closeMenu->setPosition(1075, 672);
     addChild(closeMenu);
     
     auto icon = Sprite::create("bill/bill_deetial_title.png");
-    icon->setPosition(640, 668);
+    icon->setPosition(640, 648);
     addChild(icon);
     
     auto bg3 = Sprite::create("bill/detail_bg.png");
@@ -157,14 +157,14 @@ bool BillDetailInfo::init()
         addChild(playNum);
     }
     
-    tableView = TableView::create(this, Size(800, 360));
-    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    tableView->setDirection(ScrollView::Direction::VERTICAL);
-    tableView->setPosition(255, 175);
-    tableView->setDelegate(this);
-    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-    addChild(tableView);
-    tableView->reloadData();
+//    tableView = TableView::create(this, Size(800, 360));
+//    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
+//    tableView->setDirection(ScrollView::Direction::VERTICAL);
+//    tableView->setPosition(255, 175);
+//    tableView->setDelegate(this);
+//    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
+//    addChild(tableView);
+//    tableView->reloadData();
     
     MenuItemImage* share = MenuItemImage::create("bill/share_bill_1.png", "bill/share_bill_2.png",
                                                  CC_CALLBACK_0(BillDetailInfo::shareBill, this));
@@ -299,7 +299,13 @@ void BillDetailInfo::updateBillDetail(){
     if(NULL != getChildByTag(1000)){
         getChildByTag(1000)->removeFromParent();
     }
-    
+    tableView = TableView::create(this, Size(800, 360));
+    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    tableView->setDirection(ScrollView::Direction::VERTICAL);
+    tableView->setPosition(255, 175);
+    tableView->setDelegate(this);
+    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
+    addChild(tableView);
     tableView->reloadData();
 }
 
