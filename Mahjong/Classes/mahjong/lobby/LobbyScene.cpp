@@ -289,7 +289,7 @@ void LobbyScene::drawSceneMid(){
     shareMenu->setTag(1987);
     addChild(shareMenu);
     
-    if(GAMEDATA::getInstance()->getBottomText() != ""){
+    if(GAMEDATA::getInstance()->getBottomText() != "" && UserData::getInstance()->isWeixinPayOpen()){
         auto textbg = Sprite::create("mjlobby/ti_shi_2.png");
         textbg->setPosition(750,570);
         addChild(textbg);
@@ -401,7 +401,7 @@ void LobbyScene::drawSceneBot(){
     addChild(settingMenu);
     
     //显示公告小信息
-    if(GAMEDATA::getInstance()->getBottomText() != ""){
+    if(GAMEDATA::getInstance()->getBottomText() != ""&& UserData::getInstance()->isWeixinPayOpen()){
         auto textbg = Sprite::create("mjlobby/ti_shi_kuang.png");
         textbg->setPosition(782,107);
         addChild(textbg);

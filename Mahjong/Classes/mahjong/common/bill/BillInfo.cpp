@@ -47,7 +47,7 @@ bool BillInfo::init()
     tableView->setTag(105);
     tableView->setDelegate(this);
     tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-    this->addChild(tableView);
+    addChild(tableView);
     tableView->reloadData();
     
     auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::screenShot, this));
@@ -113,6 +113,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
     bool isMatch = false;
     if(data.gameType == "2"){
         isMatch = true;
+        log("HHHHHHHHHHHHH %s",data.prid.c_str());
     }
     TableViewCell *cell = table->dequeueCell();
     if (!cell) {
@@ -124,20 +125,6 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->addChild(sprite1);
         
         Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",24);
-        if(isMatch){
-            if(!UserData::getInstance()->isWeixinPayOpen()){
-                int pos1 = (int)data.atype.find("8元话费");
-                if(pos1>=0){
-                    data.atype.replace(pos1, 10, "2张房卡");
-                }
-                int pos2 = (int)data.atype.find("36元话费");
-                if(pos2>=0){
-                    data.atype.replace(pos2, 11, "8张房卡");
-                    
-                }
-            }
-            gameType->setString(data.atype);
-        }
         gameType->setTag(90);
         gameType->setColor(Color3B(120,111,8));
         gameType->setAnchorPoint(Vec2::ZERO);
@@ -150,10 +137,6 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         date->setAnchorPoint(Vec2::ZERO);
         date->setPosition(Vec2(230, 105));
         cell->addChild(date);
-        if(isMatch){
-            date->setPosition(Vec2(330, 105));
-        }
-        
         
         Label* fanghao = Label::createWithSystemFont("房号:","Arial",24);
         fanghao->setColor(Color3B(120,111,8));
@@ -161,9 +144,6 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         fanghao->setPosition(Vec2(450, 105));
         fanghao->setTag(600);
         cell->addChild(fanghao);
-        if(isMatch){
-            fanghao->setVisible(false);
-        }
         
         Label* prID = Label::createWithSystemFont(data.prid,"Arial",24);
         prID->setTag(400);
@@ -171,9 +151,6 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         prID->setAnchorPoint(Vec2::ZERO);
         prID->setPosition(Vec2(515, 105));
         cell->addChild(prID);
-        if(isMatch){
-            prID->setVisible(false);
-        }
         
         Label* ju = Label::createWithSystemFont("局数:","Arial",24);
         ju->setColor(Color3B(120,111,8));
@@ -187,9 +164,6 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             jushuNum = "4";
         }else if(data.atype == "2"){
             jushuNum = "16";
-        }
-        if(isMatch){
-            jushuNum = "4";
         }
         
         Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",jushuNum.c_str()),"Arial",24);
@@ -232,16 +206,7 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         myMenu->setPosition(800,115);
         cell->addChild(myMenu);
         cell->setName(data.billId);
-    }else{
-        ((Label*)cell->getChildByTag(90))->setString(data.gameType == "1"?"红中麻将":"上海敲麻");
-        ((Label*)cell->getChildByTag(100))->setString(data.date);
-        ((Label*)cell->getChildByTag(400))->setString(data.prid);
-        std::string jushuNum = "8";
-        if(data.atype == "1"){
-            jushuNum = "4";
-        }else if(data.atype == "2"){
-            jushuNum = "16";
-        }
+        
         if(isMatch){
             if(!UserData::getInstance()->isWeixinPayOpen()){
                 int pos1 = (int)data.atype.find("8元话费");
@@ -251,13 +216,24 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
                 int pos2 = (int)data.atype.find("36元话费");
                 if(pos2>=0){
                     data.atype.replace(pos2, 11, "8张房卡");
+                    
                 }
             }
-            ((Label*)cell->getChildByTag(90))->setString(data.atype);
-            ((Label*)cell->getChildByTag(100))->setPosition(Vec2(330, 105));
-            ((Sprite*)cell->getChildByTag(600))->setVisible(false);
-            ((Sprite*)cell->getChildByTag(400))->setVisible(false);
+            gameType->setString(data.atype);
+            date->setPosition(Vec2(330, 105));
+            fanghao->setVisible(false);
+            prID->setVisible(false);
             jushuNum = "4";
+        }
+    }else{
+        ((Label*)cell->getChildByTag(90))->setString(data.gameType == "1"?"红中麻将":"上海敲麻");
+        ((Label*)cell->getChildByTag(100))->setString(data.date);
+        ((Label*)cell->getChildByTag(400))->setString(data.prid);
+        std::string jushuNum = "8";
+        if(data.atype == "1"){
+            jushuNum = "4";
+        }else if(data.atype == "2"){
+            jushuNum = "16";
         }
         
         ((Label*)cell->getChildByTag(401))->setString(jushuNum);
@@ -279,6 +255,24 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             }
         }
         cell->setName(data.billId);
+        
+        if(isMatch){
+            if(!UserData::getInstance()->isWeixinPayOpen()){
+                int pos1 = (int)data.atype.find("8元话费");
+                if(pos1>=0){
+                    data.atype.replace(pos1, 10, "2张房卡");
+                }
+                int pos2 = (int)data.atype.find("36元话费");
+                if(pos2>=0){
+                    data.atype.replace(pos2, 11, "8张房卡");
+                }
+            }
+            ((Label*)cell->getChildByTag(90))->setString(data.atype);
+            ((Label*)cell->getChildByTag(100))->setPosition(Vec2(330, 105));
+            ((Sprite*)cell->getChildByTag(600))->setVisible(false);
+            ((Sprite*)cell->getChildByTag(400))->setVisible(false);
+            jushuNum = "4";
+        }
     }
     return cell;
 }
