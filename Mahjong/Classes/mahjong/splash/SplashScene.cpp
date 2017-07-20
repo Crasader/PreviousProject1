@@ -13,7 +13,6 @@
 #include "wechat/ios/CallIOSMethod.h"
 #include "server/NetworkManage.h"
 #include "mahjong/GameConfig.h"
-//#include "youmi/MyIM.h"
 
 Scene* SplashScene::createScene()
 {
@@ -132,12 +131,29 @@ void SplashScene::removeLoading(){
 void SplashScene::showSplashAnim(){
     
     showLoadLayerAnim();
+
     
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+    if(!CallIOSMethod::getInstance()->isWenxinInstalled()){
+        auto visitorBtn = MenuItemImage::create("mainlogin/youke_chat_btn_1.png", "mainlogin/youke_chat_btn_1.png",
+                                                CC_CALLBACK_0(SplashScene::loginByVisitor, this));
+        auto loginMenu = Menu::create(visitorBtn, NULL);
+        loginMenu->setPosition(640,140);
+        addChild(loginMenu);
+    }else{
+        auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
+                                                CC_CALLBACK_0(SplashScene::loginByWechat, this));
+        auto loginMenu = Menu::create(visitorBtn, NULL);
+        loginMenu->setPosition(640,140);
+        addChild(loginMenu);
+    }
+#else
     auto visitorBtn = MenuItemImage::create("mainlogin/we_chat_btn_1.png", "mainlogin/we_chat_btn_2.png",
                                             CC_CALLBACK_0(SplashScene::loginByWechat, this));
     auto loginMenu = Menu::create(visitorBtn, NULL);
     loginMenu->setPosition(640,140);
     addChild(loginMenu);
+#endif
     
 }
 
