@@ -9,11 +9,11 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "28" //ios审核版本32，应用宝审核版本33. 偶数是IOS,奇数是Android
+#define PAY_PLAT_VALUE "27" //ios审核版本31，应用宝审核版本32. 奇数是IOS,偶数是Android
 
 //#define SERVER_ADDRESS "aliyun.5278-mobi.com"
-#define SERVER_ADDRESS_2 "aliyun.kx5278.com"
 #define SERVER_ADDRESS "ceshi.5278-mobi.com"
+#define SERVER_ADDRESS_2 "aliyun.kx5278.com"
 #define SERVER_PORT 9999
 
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币
