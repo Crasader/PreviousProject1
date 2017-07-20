@@ -67,9 +67,13 @@ void SplashScene::onEnterTransitionDidFinish(){
 
 void SplashScene::drawLonginScene(){
     //add game bg to layer
-    Sprite* splash_bg = Sprite::create("mainlogin/splah_bg_.jpg");
+    Sprite* splash_bg = Sprite::create("common/shang_hai_bg.jpg");
     splash_bg->setPosition(640,360);
     this->addChild(splash_bg, -1);
+    
+    auto log = Sprite::create("mainlogin/logo.png");
+    log->setPosition(640,530);
+    addChild(log);
     
     auto desk = Sprite::create("mainlogin/login_desk.png");
     desk->setPosition(640,30);

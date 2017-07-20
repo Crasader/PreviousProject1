@@ -52,9 +52,13 @@ void LoadResource::showHealthLayer(){
 }
 
 void LoadResource::showNormalLayer(){
-    auto loadBg = Sprite::create("mainlogin/splah_bg_.jpg");
+    auto loadBg = Sprite::create("common/shang_hai_bg.jpg");
     loadBg->setPosition(640,360);
     addChild(loadBg);
+    
+    auto log = Sprite::create("mainlogin/logo.png");
+    log->setPosition(640,530);
+    addChild(log);
     
     auto desk = Sprite::create("mainlogin/login_desk.png");
     desk->setPosition(640,30);

@@ -75,7 +75,7 @@ bool FangkaNotEnoughDialog::init(){
     Menu* menu = Menu::create(image,NULL);
     menu->setPosition(640,150);
     addChild(menu);
-
+    initView(5,5);
     return true;
 }
 

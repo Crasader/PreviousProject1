@@ -117,7 +117,7 @@ void LobbyScene::signUpdate(float dt){
 void LobbyScene::initView(){
     //add game bg to layer
     Size visibleSize = Director::getInstance()->getVisibleSize();
-    Sprite* lobby_bg = Sprite::create("mjlobby/lobby_bg.jpg");
+    Sprite* lobby_bg = Sprite::create("common/shang_hai_bg.jpg");
     lobby_bg->setPosition(visibleSize.width / 2, visibleSize.height / 2);
     addChild(lobby_bg, -1);
     if(getChildByTag(2000)!=NULL){
@@ -256,18 +256,6 @@ void LobbyScene::drawSceneTop(){
     chargLequan->setPosition(970, 687);
     addChild(chargLequan);
     
-    
-    auto huodong = MenuItemImage::create("mjlobby/task_btn_1.png","mjlobby/task_btn_2.png",CC_CALLBACK_0(LobbyScene::showHotActivity, this));
-    auto mymenu = Menu::create(huodong,NULL);
-    mymenu->setPosition(1145,680);
-    mymenu->setTag(1980);
-    addChild(mymenu);
-    
-    auto gongzh = MenuItemImage::create("mjlobby/gzh_btn1.png","mjlobby/gzh_btn2.png",CC_CALLBACK_0(LobbyScene::showGongZhongHao, this));
-    auto mymenu2 = Menu::create(gongzh,NULL);
-    mymenu2->setPosition(1225,680);
-    addChild(mymenu2);
-    
     //支付审核专用
     lequan_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
     lequan_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
@@ -277,7 +265,6 @@ void LobbyScene::drawSceneTop(){
     huafei_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
     haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
     chargHuaFei->setVisible(UserData::getInstance()->isWeixinPayOpen());
-    mymenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     gold_bg->setVisible(UserData::getInstance()->isWeixinPayOpen());
     gold_icon->setVisible(UserData::getInstance()->isWeixinPayOpen());
@@ -299,13 +286,17 @@ void LobbyScene::drawSceneMid(){
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
     firstMenu = Menu::create(first_chaege, NULL);
-    firstMenu->alignItemsHorizontallyWithPadding(15);
     firstMenu->setTag(1988);
     firstMenu->setPosition(610, 435);
     addChild(firstMenu);
-    if(UserData::getInstance()->isFirstCharge()){
-        firstMenu->setVisible(false);
-    }
+    firstMenu->setVisible(UserData::getInstance()->isFirstCharge()?false:true);
+    
+    auto huodong = MenuItemImage::create("mjlobby/red_wallet_1.png","mjlobby/red_wallet_2.png",CC_CALLBACK_0(LobbyScene::showHotActivity, this));
+    auto mymenu = Menu::create(huodong,NULL);
+    mymenu->setPosition(610,335);
+    mymenu->setTag(1980);
+    addChild(mymenu);
+    mymenu->setVisible(UserData::getInstance()->isWeixinPayOpen());//审核版本相关显示设置
     
     //跑马灯
     ScrollTextEx* scroll = ScrollTextEx::create();
@@ -317,31 +308,30 @@ void LobbyScene::drawSceneMid(){
     RankLayer* rlayer = RankLayer::create(GAMEDATA::getInstance()->getLobbyPaiHangData());
     addChild(rlayer);
     
-    RoomListData newData = GAMEDATA::getInstance()->getRoomList();
-    for (int i=0; i<newData.matchList.size();i++) {
-        isShowRoomlist = true;
-        CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
-        CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
-        com->setPosition(835+(i%2)*290,510-175*(i/2));
-        addChild(com);
-    }
-    auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
-    auto jinMenu =  Menu ::create(jinImg,NULL);
-    jinMenu->setPosition(1135,183);
-    jinMenu->setTag(1297);
-    addChild(jinMenu);
-    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
-        GAMEDATA::getInstance()->setRoomList(newData);
-        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
-        plate->setTag(1298);
-        plate->setVisible(false);
-        addChild(plate,2);
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-        //支付审核
-        jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
-#endif
-    }
-    
+//    RoomListData newData = GAMEDATA::getInstance()->getRoomList();
+//    for (int i=0; i<newData.matchList.size();i++) {
+//        isShowRoomlist = true;
+//        CompetitionRoomId roomId = (CompetitionRoomId)atoi(newData.matchList.at(i).roomId.c_str());
+//        CompetitonItem* com = CompetitonItem::create(roomId,newData.matchList.at(i).prize, newData.matchList.at(i).fangka,newData.matchList.at(i).rule);
+//        com->setPosition(835+(i%2)*290,510-175*(i/2));
+//        addChild(com);
+//    }
+//    auto jinImg = MenuItemImage::create("mjlobby/gold_room_btn_1.png","mjlobby/gold_room_btn_1.png",CC_CALLBACK_0(LobbyScene:: spreadGoldRoom,this));
+//    auto jinMenu =  Menu ::create(jinImg,NULL);
+//    jinMenu->setPosition(1135,183);
+//    jinMenu->setTag(1297);
+//    addChild(jinMenu);
+//    if(newData.rooms.size()>0 && getChildByTag(1298) == NULL){
+//        GAMEDATA::getInstance()->setRoomList(newData);
+//        GoldRoomPlate* plate = GoldRoomPlate::create(newData);
+//        plate->setTag(1298);
+//        plate->setVisible(false);
+//        addChild(plate,2);
+//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+//        //支付审核
+//        jinMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
+//#endif
+//    }
     
 }
 
@@ -351,52 +341,54 @@ void LobbyScene::drawSceneBot(){
     bottomBg->setPosition(640,0);
     addChild(bottomBg);
     
-    auto btn_open = MenuItemImage::create("mjlobby/open_room_text.png", "mjlobby/open_room_text.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
-    auto btn_enter = MenuItemImage::create("mjlobby/enter_room_text.png", "mjlobby/enter_room_text.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
-    auto gameMenu = Menu::create(btn_open,btn_enter, NULL);
-    gameMenu->alignItemsHorizontallyWithPadding(120);
-    gameMenu->setPosition(640, 40);
-    addChild(gameMenu);
+//    auto btn_open = MenuItemImage::create("mjlobby/open_room_text.png", "mjlobby/open_room_text.png", CC_CALLBACK_0(LobbyScene::openRoom, this));
+//    auto btn_enter = MenuItemImage::create("mjlobby/enter_room_text.png", "mjlobby/enter_room_text.png", CC_CALLBACK_0(LobbyScene::joinRoom, this));
+//    auto gameMenu = Menu::create(btn_open,btn_enter, NULL);
+//    gameMenu->alignItemsHorizontallyWithPadding(120);
+//    gameMenu->setPosition(640, 40);
+//    addChild(gameMenu);
     
     
     auto btn_1 = MenuItemImage::create("mjlobby/sm_btn_1.png", "mjlobby/sm_btn_2.png", CC_CALLBACK_0(LobbyScene::showShiMing, this));
     auto gameMenu2 = Menu::create(btn_1, NULL);
-    gameMenu2->alignItemsHorizontallyWithPadding(5);
-    gameMenu2->setPosition(210, 60);
+    gameMenu2->setPosition(320, 50);
     addChild(gameMenu2);
+    
+    auto gongzh = MenuItemImage::create("mjlobby/gzh_btn1.png","mjlobby/gzh_btn2.png",CC_CALLBACK_0(LobbyScene::showGongZhongHao, this));
+    auto mymenu2 = Menu::create(gongzh,NULL);
+    mymenu2->setPosition(480,50);
+    addChild(mymenu2);
     
     auto btn_bill = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_1.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto billMenu = Menu::create(btn_bill, NULL);
     
-    billMenu->setPosition(290,50);
+    billMenu->setPosition(640,50);
     addChild(billMenu);
-    
-    
-    auto btn_setting = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_1.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
-    auto settingMenu = Menu::create(btn_setting, NULL);
-    
-    settingMenu->setPosition(980,50);
-    addChild(settingMenu);
     
     auto btn_2 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
     auto gameMenu3 = Menu::create(btn_2, NULL);
     gameMenu3->alignItemsHorizontallyWithPadding(5);
-    gameMenu3->setPosition(1060, 60);
+    gameMenu3->setPosition(800, 50);
     addChild(gameMenu3);
     
+    auto btn_setting = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_1.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
+    auto settingMenu = Menu::create(btn_setting, NULL);
+    
+    settingMenu->setPosition(975,50);
+    addChild(settingMenu);
+    
+    //显示公告小信息
     if(GAMEDATA::getInstance()->getBottomText() != ""){
         auto textbg = Sprite::create("mjlobby/ti_shi_kuang.png");
-        textbg->setPosition(900,112);
+        textbg->setPosition(782,107);
         addChild(textbg);
         
         auto text = Label::createWithSystemFont(GAMEDATA::getInstance()->getBottomText(), "arial", 20);
         text->setAnchorPoint(Point::ANCHOR_MIDDLE);
         text->setColor(Color3B(255,247,217));
-        text->setPosition(900,118);
+        text->setPosition(782,113);
         addChild(text);
     }
-    
-    
 }
 
 //刷新显示的用户信息
