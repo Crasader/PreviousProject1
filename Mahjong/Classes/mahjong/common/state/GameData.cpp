@@ -47,7 +47,7 @@ void GAMEDATA::init(){
     setMyGameModel(GameModel::FOURPLAYER);
     setIsTurnTableShare(false);
     setHuiGuiLiBao("");
-    setNeedShowTurnTable(false);
+    setShowTurnTableState(0);
     setDissovleDialogRemove(true);
 }
 

@@ -111,6 +111,11 @@ void LobbyScene::signUpdate(float dt){
 #endif
     }
     
+    if(NULL != getChildByTag(1988) && !getChildByTag(1988)->isVisible()){
+        if(NULL != getChildByTag(1980)){
+            getChildByTag(1980)->setPosition(650, 435);
+        }
+    }
 }
 
 
@@ -284,6 +289,19 @@ void LobbyScene::drawSceneMid(){
     shareMenu->setTag(1987);
     addChild(shareMenu);
     
+    if(GAMEDATA::getInstance()->getBottomText() != ""){
+        auto textbg = Sprite::create("mjlobby/ti_shi_2.png");
+        textbg->setPosition(750,570);
+        addChild(textbg);
+        
+        auto text = Label::createWithSystemFont("分享有钱拿!", "arial", 20);
+        text->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        text->setColor(Color3B(255,247,217));
+        text->setPosition(760,570);
+        addChild(text);
+    }
+
+    
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
     firstMenu = Menu::create(first_chaege, NULL);
@@ -297,7 +315,7 @@ void LobbyScene::drawSceneMid(){
     mymenu->setPosition(650,335);
     mymenu->setTag(1980);
     addChild(mymenu);
-    mymenu->setVisible(UserData::getInstance()->isWeixinPayOpen());//审核版本相关显示设置
+    mymenu->setVisible(false);
     
     //跑马灯
     ScrollTextEx* scroll = ScrollTextEx::create();
@@ -733,10 +751,9 @@ void LobbyScene::onEnterTransitionDidFinish(){
         addChild(hint,50);
         GAMEDATA::getInstance()->setShowRoomDismiss(false);
     }
-    if(GAMEDATA::getInstance()->getNeedShowTurnTable() && !GAMEDATA::getInstance()->getHasShowTurnTable()){
+    if(GAMEDATA::getInstance()->getShowTurnTableState() == 2 && !GAMEDATA::getInstance()->getHasShowTurnTable()){
         DailyPride* pride = DailyPride::create();
         addChild(pride,10);
-        GAMEDATA::getInstance()->setNeedShowTurnTable(false);
         GAMEDATA::getInstance()->setHasShowTurnTable(true);
     }
 }
@@ -1056,8 +1073,12 @@ void LobbyScene::addEventListener(){
             getChildByTag(904)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != getChildByTag(905))
             getChildByTag(905)->setVisible(UserData::getInstance()->isWeixinPayOpen());
-        if(NULL != getChildByTag(1980))
+        if(NULL != getChildByTag(1980)){
             getChildByTag(1980)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+            if(GAMEDATA::getInstance()->getShowTurnTableState() == 0){
+                getChildByTag(1980)->setVisible(false);
+            }
+        }
         if(NULL != haufeiNum)
             haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != lequanNum)

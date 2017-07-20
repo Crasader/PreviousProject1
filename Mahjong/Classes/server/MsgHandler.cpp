@@ -1126,9 +1126,7 @@ void MsgHandler::loginResp(std::string msg){
         }
         if(_mDoc.HasMember("dzpw")){
             const rapidjson::Value &dzpw = _mDoc["dzpw"];
-            if(strcmp(dzpw.GetString(),"2") == 0){
-                GAMEDATA::getInstance()->setNeedShowTurnTable(true);
-            }
+            GAMEDATA::getInstance()->setShowTurnTableState(atoi(dzpw.GetString()));
         }
         //微信分享配置
         if(_mDoc.HasMember("share1")){

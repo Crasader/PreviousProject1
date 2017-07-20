@@ -173,7 +173,7 @@ public:
     //    CC_SYNTHESIZE(std::string, shareTextContent, ShareTextContent);
     //    CC_SYNTHESIZE(std::string, shareTextContentNum, ShareTextContentNum);
     //    CC_SYNTHESIZE(std::string, turntableNumber, TurntableNumber);
-    CC_SYNTHESIZE(bool, needShowTurnTable, NeedShowTurnTable);
+    CC_SYNTHESIZE(int, showTurnTableState, ShowTurnTableState);
     CC_SYNTHESIZE(bool, hasShowTurnTable, HasShowTurnTable);
     CC_SYNTHESIZE(std::string, daYingJiaPic, DaYingJiaPic);
     CC_SYNTHESIZE(std::string, huiGuiLiBao, HuiGuiLiBao);
