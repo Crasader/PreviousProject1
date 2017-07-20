@@ -293,14 +293,14 @@ void LobbyScene::drawSceneMid(){
         auto textbg = Sprite::create("mjlobby/ti_shi_2.png");
         textbg->setPosition(750,570);
         addChild(textbg);
-        
         auto text = Label::createWithSystemFont("分享有钱拿!", "arial", 20);
         text->setAnchorPoint(Point::ANCHOR_MIDDLE);
         text->setColor(Color3B(255,247,217));
-        text->setPosition(760,570);
-        addChild(text);
+        text->setPosition(90,30);
+        textbg->addChild(text);
+        textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(1.0f,Point(750,580)),MoveTo::create(1.0f,Point(750,570)),NULL), CC_REPEAT_FOREVER));
     }
-
+    
     
     auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
                                               CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
@@ -405,12 +405,12 @@ void LobbyScene::drawSceneBot(){
         auto textbg = Sprite::create("mjlobby/ti_shi_kuang.png");
         textbg->setPosition(782,107);
         addChild(textbg);
-        
         auto text = Label::createWithSystemFont(GAMEDATA::getInstance()->getBottomText(), "arial", 20);
         text->setAnchorPoint(Point::ANCHOR_MIDDLE);
         text->setColor(Color3B(255,247,217));
-        text->setPosition(782,113);
-        addChild(text);
+        text->setPosition(220,40);
+        textbg->addChild(text);
+        textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(1.1f,Point(782,117)),MoveTo::create(1.1f,Point(782,107)),NULL), CC_REPEAT_FOREVER));
     }
 }
 
