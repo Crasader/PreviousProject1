@@ -6942,11 +6942,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/bill/BillInfo.cpp"
-            timestampString = "522298607.392165"
+            timestampString = "522300631.827606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)"
             landmarkType = "7">
          </BreakpointContent>

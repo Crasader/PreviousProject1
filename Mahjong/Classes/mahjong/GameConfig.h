@@ -11,8 +11,8 @@
 
 #define PAY_PLAT_VALUE "29" //ios审核版本31，应用宝审核版本32. 奇数是IOS,偶数是Android
 
-//#define SERVER_ADDRESS "aliyun.5278-mobi.com"
-#define SERVER_ADDRESS "ceshi.5278-mobi.com"
+#define SERVER_ADDRESS "aliyun.5278-mobi.com"
+//#define SERVER_ADDRESS "ceshi.5278-mobi.com"
 #define SERVER_ADDRESS_2 "aliyun.kx5278.com"
 #define SERVER_PORT 9999
 
