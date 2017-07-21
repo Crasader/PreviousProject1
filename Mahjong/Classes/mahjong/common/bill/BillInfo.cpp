@@ -40,15 +40,15 @@ bool BillInfo::init()
     icon->setTag(104);
     addChild(icon);
     
-    tableView = TableView::create(this, Size(832, 485));
-    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    tableView->setDirection(ScrollView::Direction::VERTICAL);
-    tableView->setPosition(225, 120);
-    tableView->setTag(105);
-    tableView->setDelegate(this);
-    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-    addChild(tableView);
-    tableView->reloadData();
+    //    tableView = TableView::create(this, Size(832, 485));
+    //    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    //    tableView->setDirection(ScrollView::Direction::VERTICAL);
+    //    tableView->setPosition(225, 120);
+    //    tableView->setTag(105);
+    //    tableView->setDelegate(this);
+    //    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
+    //    addChild(tableView);
+    //    tableView->reloadData();
     
     auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::screenShot, this));
     auto fupan = MenuItemImage::create("bill/chakan_fupan_1.png","bill/chakan_fupan_2.png",CC_CALLBACK_0(BillInfo::checkFupan, this));
@@ -75,6 +75,7 @@ void BillInfo::onEnter(){
         updateBillInfo();
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerBillListener, 1);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
 }
 
 void BillInfo::onExit(){
@@ -96,7 +97,7 @@ void BillInfo::tableCellTouched(TableView* table, TableViewCell* cell)
         }
     }
     BillDetailInfo* detail = BillDetailInfo::create();
-    this->addChild(detail);
+    addChild(detail);
 }
 
 Size BillInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
@@ -106,19 +107,19 @@ Size BillInfo::tableCellSizeForIndex(TableView *table, ssize_t idx)
 
 TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
 {
-    auto string = StringUtils::format("%ld", idx);
     BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
-    
-    BillInfoData data = info.bills.at(idx);
-    bool isMatch = false;
-    if(data.gameType == "2"){
-        isMatch = true;
-        log("HHHHHHHHHHHHH %s",data.prid.c_str());
-    }
     TableViewCell *cell = table->dequeueCell();
+    if (cell)
+    {
+        cell->removeFromParentAndCleanup(true);
+        cell = nullptr;
+    }
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
+        BillInfoData data = info.bills.at(idx);
+        std::vector<BillContent> conBill = sortBillInfo(data.content);
+        
         auto sprite1 = Sprite::create("bill/bill_bg.png");
         sprite1->setAnchorPoint(Vec2::ZERO);
         sprite1->setPosition(Vec2(0, 0));
@@ -158,22 +159,6 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         ju->setPosition(Vec2(640, 105));
         cell->addChild(ju);
         
-        //客户端写死de值
-        std::string jushuNum = "8";
-        if(data.atype == "1"){
-            jushuNum = "4";
-        }else if(data.atype == "2"){
-            jushuNum = "16";
-        }
-        
-        Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",jushuNum.c_str()),"Arial",24);
-        jushu->setTag(401);
-        jushu->setColor(Color3B(120,111,8));
-        jushu->setAnchorPoint(Vec2::ZERO);
-        jushu->setPosition(Vec2(695, 105));
-        cell->addChild(jushu);
-        
-        std::vector<BillContent> conBill = sortBillInfo(data.content);
         for (int i = 0; i < conBill.size(); i++){
             Label* name = Label::createWithSystemFont(conBill.at(i).nickName, "Arial", 24);
             name->setTag(200+i);
@@ -207,7 +192,14 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->addChild(myMenu);
         cell->setName(data.billId);
         
-        if(isMatch){
+        //客户端写死de值
+        std::string jushuNum = "8";
+        if(data.atype == "1"){
+            jushuNum = "4";
+        }else if(data.atype == "2"){
+            jushuNum = "16";
+        }
+        if(data.gameType == "2"){
             if(!UserData::getInstance()->isWeixinPayOpen()){
                 int pos1 = (int)data.atype.find("8元话费");
                 if(pos1>=0){
@@ -225,18 +217,19 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             prID->setVisible(false);
             jushuNum = "4";
         }
+        
+        Label* jushu = Label::createWithSystemFont(StringUtils::format("%s局",jushuNum.c_str()),"Arial",24);
+        jushu->setTag(401);
+        jushu->setColor(Color3B(120,111,8));
+        jushu->setAnchorPoint(Vec2::ZERO);
+        jushu->setPosition(Vec2(695, 105));
+        cell->addChild(jushu);
+        
     }else{
+        BillInfoData data = info.bills.at(idx);
         ((Label*)cell->getChildByTag(90))->setString(data.gameType == "1"?"红中麻将":"上海敲麻");
         ((Label*)cell->getChildByTag(100))->setString(data.date);
         ((Label*)cell->getChildByTag(400))->setString(data.prid);
-        std::string jushuNum = "8";
-        if(data.atype == "1"){
-            jushuNum = "4";
-        }else if(data.atype == "2"){
-            jushuNum = "16";
-        }
-        
-        ((Label*)cell->getChildByTag(401))->setString(jushuNum);
         std::vector<BillContent> conBill = sortBillInfo(data.content);
         for (int i = 0; i < conBill.size(); i++){
             if(cell->getChildByTag(200+i) != NULL )
@@ -255,8 +248,13 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             }
         }
         cell->setName(data.billId);
-        
-        if(isMatch){
+        std::string jushuNum = "8";
+        if(data.atype == "1"){
+            jushuNum = "4";
+        }else if(data.atype == "2"){
+            jushuNum = "16";
+        }
+        if(data.gameType == "2"){
             if(!UserData::getInstance()->isWeixinPayOpen()){
                 int pos1 = (int)data.atype.find("8元话费");
                 if(pos1>=0){
@@ -269,10 +267,11 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
             }
             ((Label*)cell->getChildByTag(90))->setString(data.atype);
             ((Label*)cell->getChildByTag(100))->setPosition(Vec2(330, 105));
-            ((Sprite*)cell->getChildByTag(600))->setVisible(false);
-            ((Sprite*)cell->getChildByTag(400))->setVisible(false);
+            ((Label*)cell->getChildByTag(600))->setVisible(false);
+            ((Label*)cell->getChildByTag(400))->setVisible(false);
             jushuNum = "4";
         }
+        ((Label*)cell->getChildByTag(401))->setString(jushuNum);
     }
     return cell;
 }
@@ -285,13 +284,12 @@ ssize_t BillInfo::numberOfCellsInTableView(TableView *table)
 
 
 void BillInfo::showDetailInfo(Ref* ref){
-    //    MenuItemImage* image = (MenuItemImage*)ref;
-    //    BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
+    
 }
 
 void BillInfo::closeView(){
     GAMEDATA::getInstance()->setShowFuPanBtn(true);
-    this->removeFromParent();
+    this->removeFromParentAndCleanup(true);
 }
 
 
@@ -300,6 +298,14 @@ void BillInfo::updateBillInfo(){
         getChildByTag(1000)->removeFromParent();
     }
     showKongBill();
+    tableView = TableView::create(this, Size(832, 485));
+    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    tableView->setDirection(ScrollView::Direction::VERTICAL);
+    tableView->setPosition(225, 120);
+    tableView->setTag(105);
+    tableView->setDelegate(this);
+    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
+    addChild(tableView);
     tableView->reloadData();
 }
 

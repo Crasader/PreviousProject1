@@ -573,9 +573,8 @@ void LobbyScene::showDayTask(){
 
 void LobbyScene::showPlayerBill(){
     Audio::getInstance()->playSoundClick();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
+//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
     BillInfo* billInfoView = BillInfo::create();
-    billInfoView->setTag(526);
     addChild(billInfoView,3);
 }
 
