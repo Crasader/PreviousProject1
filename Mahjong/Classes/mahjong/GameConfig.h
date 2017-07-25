@@ -20,17 +20,17 @@
 #define ENTER_ROOM_2_GOLD 150000// 进入第2个房间需要的最低金币
 #define ENTER_ROOM_3_GOLD 1200000// 进入第3个房间需要的最低金币userbk
 
-#define APPLE_STORE_PAY_LIST "http://web.5278-mobi.com/pay!getIosPoint.action"
+#define APPLE_STORE_PAY_LIST "http://pay.5278-mobi.com/pay!getIosPoint.action"
 
-#define APP_WECHAT_LOGIN "http://web.5278-mobi.com/pay!getWxAccessToken.action"
+#define APP_WECHAT_LOGIN "http://pay.5278-mobi.com/pay!getWxAccessToken.action"
 
-#define APP_STORE_PAY_ORDER "http://web.5278-mobi.com/pay!iosOrderVerify.action"
+#define APP_STORE_PAY_ORDER "http://pay.5278-mobi.com/pay!iosOrderVerify.action"
 
-#define APP_WECHAT_TOKEN_CHECK "http://web.5278-mobi.com/login!getIfExpire.action"
+#define APP_WECHAT_TOKEN_CHECK "http://pay.5278-mobi.com/login!getIfExpire.action"
 
-#define APP_WECHAT_PAY "http://web.5278-mobi.com/pay!generateOrd.action"
+#define APP_WECHAT_PAY "http://pay.5278-mobi.com/pay!generateOrd.action"
 
-#define PAY_WECHAT_QUERY_ORDER "http://web.5278-mobi.com/pay!findOrd.action"
+#define PAY_WECHAT_QUERY_ORDER "http://pay.5278-mobi.com/pay!findOrd.action"
 
 #define WECHAT_SHARE_BILL_DETAIL "http://web1.5278-mobi.com:1112/hongbao.jsp"
 
