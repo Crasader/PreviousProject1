@@ -9,7 +9,7 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "29" //ios审核版本31，应用宝审核版本32. 奇数是IOS,偶数是Android
+#define PAY_PLAT_VALUE "20" //ios审核版本31，应用宝审核版本32. 奇数是IOS,偶数是Android
 
 #define SERVER_ADDRESS "aliyun.5278-mobi.com"
 //#define SERVER_ADDRESS "ceshi.5278-mobi.com"
@@ -32,13 +32,7 @@
 
 #define PAY_WECHAT_QUERY_ORDER "http://web.5278-mobi.com/pay!findOrd.action"
 
-#define WECHAT_SHARE_HONGBAO_URL "http://web.5278-mobi.com:1112/hongbao.jsp"
-
-#define WECHAT_SHARE_FRIEND_URL "http://web.5278-mobi.com:1112/majiang.html"
-
-#define WECHAT_WAN_JIA_QUN_URL "http://web.5278-mobi.com:1112/qunewm.png"
-
-#define WECHAT_DAI_LI_QUN_URL "http://web.5278-mobi.com:1112/dlewm.png"
+#define WECHAT_SHARE_BILL_DETAIL "http://web1.5278-mobi.com:1112/hongbao.jsp"
 
 #define WECHAT_SHARE_LINK_PATH_1 "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfce3a9ed72a95342&redirect_uri=http%3a%2f%2fwyhl.5278-mobi.com%2fcallback!getWxUserInfo.action&response_type=code&scope=snsapi_userinfo&state="
 #define WECHAT_SHARE_LINK_PATH_2 "&connect_redirect=1#wechat_redirect"

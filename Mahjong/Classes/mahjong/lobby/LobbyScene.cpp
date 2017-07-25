@@ -1,7 +1,6 @@
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/lobby/friend/MahjongNumberKeypads.hpp"
 #include "mahjong/lobby/friend/dialog/RoomIdErrorDialog.hpp"
-#include "mahjong/lobby/wanjiaqun/WanJiaQunLayer.hpp"
 #include "mahjong/lobby/friend/dialog/RoomFullDialog.hpp"
 #include "mahjong/lobby/friend/FriendRoom.h"
 #include "mahjong/common/competition/CompetitonItem.hpp"
@@ -772,7 +771,6 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(openRoomAskListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomAskListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(wanjiaqunListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(noticeUrlLitener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(upateLequanShopLitener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(showLoobyLoadingLayer);
@@ -1034,16 +1032,6 @@ void LobbyScene::addEventListener(){
         schedule([=](float dt){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
         }, 0, 0, 300,"ask_tui_guang");
-    });
-    
-    //玩家群
-    wanjiaqunListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_WAN_JIA_WEI_XIN_QUN, [=](EventCustom* event){
-        if(GAMEDATA::getInstance()->getWanJiaQunVer()>UserData::getInstance()->getWanJiaQunVersion()){
-            UrlImageMannger::getInstance()->downloadQunImgByUrl(WECHAT_WAN_JIA_QUN_URL,true);
-        }
-        if(GAMEDATA::getInstance()->getDailiQunVer()>UserData::getInstance()->getDailiQunVersion()){
-            UrlImageMannger::getInstance()->downloadDailiImgByUrl(WECHAT_DAI_LI_QUN_URL,true);
-        }
     });
     
     //游戏广告

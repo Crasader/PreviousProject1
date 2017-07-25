@@ -185,8 +185,6 @@
 		D252FBC91E7FA5EC00937322 /* LequanShop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB051E7FA5EC00937322 /* LequanShop.cpp */; };
 		D252FBCA1E7FA5EC00937322 /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB071E7FA5EC00937322 /* ShopHintDialog.cpp */; };
 		D252FBCB1E7FA5EC00937322 /* ShopHintDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB071E7FA5EC00937322 /* ShopHintDialog.cpp */; };
-		D252FBCC1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB0A1E7FA5EC00937322 /* WanJiaQunLayer.cpp */; };
-		D252FBCD1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB0A1E7FA5EC00937322 /* WanJiaQunLayer.cpp */; };
 		D252FBD21E7FA5EC00937322 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB121E7FA5EC00937322 /* ResultScene.cpp */; };
 		D252FBD31E7FA5EC00937322 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB121E7FA5EC00937322 /* ResultScene.cpp */; };
 		D252FBD81E7FA5EC00937322 /* LoadResource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FB1A1E7FA5EC00937322 /* LoadResource.cpp */; };
@@ -649,8 +647,6 @@
 		D252FB061E7FA5EC00937322 /* LequanShop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LequanShop.hpp; sourceTree = "<group>"; };
 		D252FB071E7FA5EC00937322 /* ShopHintDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShopHintDialog.cpp; sourceTree = "<group>"; };
 		D252FB081E7FA5EC00937322 /* ShopHintDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShopHintDialog.hpp; sourceTree = "<group>"; };
-		D252FB0A1E7FA5EC00937322 /* WanJiaQunLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WanJiaQunLayer.cpp; sourceTree = "<group>"; };
-		D252FB0B1E7FA5EC00937322 /* WanJiaQunLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WanJiaQunLayer.hpp; sourceTree = "<group>"; };
 		D252FB121E7FA5EC00937322 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultScene.cpp; sourceTree = "<group>"; };
 		D252FB131E7FA5EC00937322 /* ResultScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResultScene.hpp; sourceTree = "<group>"; };
 		D252FB1A1E7FA5EC00937322 /* LoadResource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadResource.cpp; sourceTree = "<group>"; };
@@ -1433,7 +1429,6 @@
 				D252FAE71E7FA5EC00937322 /* share */,
 				D252FAEA1E7FA5EC00937322 /* shiming */,
 				D252FAED1E7FA5EC00937322 /* shop */,
-				D252FB091E7FA5EC00937322 /* wanjiaqun */,
 			);
 			path = lobby;
 			sourceTree = "<group>";
@@ -1545,15 +1540,6 @@
 				D252FB061E7FA5EC00937322 /* LequanShop.hpp */,
 			);
 			path = mall;
-			sourceTree = "<group>";
-		};
-		D252FB091E7FA5EC00937322 /* wanjiaqun */ = {
-			isa = PBXGroup;
-			children = (
-				D252FB0A1E7FA5EC00937322 /* WanJiaQunLayer.cpp */,
-				D252FB0B1E7FA5EC00937322 /* WanJiaQunLayer.hpp */,
-			);
-			path = wanjiaqun;
 			sourceTree = "<group>";
 		};
 		D252FB0C1E7FA5EC00937322 /* result */ = {
@@ -2462,7 +2448,6 @@
 				D252FC471E7FABE900937322 /* HuaAnim.cpp in Sources */,
 				D2B1A9051CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D252FB4E1E7FA5EC00937322 /* Jong.cpp in Sources */,
-				D252FBCC1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */,
 				D252FBAA1E7FA5EC00937322 /* GongGaoItem.cpp in Sources */,
 				D2F05F481D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D252FC591E7FABE900937322 /* PlayerHero.cpp in Sources */,
@@ -2599,7 +2584,6 @@
 				D299F8D91E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D252FBAD1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FB391E7FA5EC00937322 /* BaseDialog.cpp in Sources */,
-				D252FBCD1E7FA5EC00937322 /* WanJiaQunLayer.cpp in Sources */,
 				D252FBB91E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
 				D252FC581E7FABE900937322 /* PlayerBase.cpp in Sources */,
 				D252FBB71E7FA5EC00937322 /* ChargeItem.cpp in Sources */,

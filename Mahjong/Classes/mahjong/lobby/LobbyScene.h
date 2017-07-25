@@ -50,7 +50,6 @@ private:
     EventListenerCustom* openRoomAskListener;
     EventListenerCustom* enterRoomAskListener;
     EventListenerCustom* scrollTetxListener;
-    EventListenerCustom* wanjiaqunListener;
     EventListenerCustom* noticeUrlLitener;
     EventListenerCustom* upateLequanShopLitener;
     EventListenerCustom* showLoobyLoadingLayer;
