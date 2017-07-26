@@ -12,6 +12,7 @@
 @property(nonatomic, readonly) RootViewController* viewController;
 
 - (void)replyPushNotificationAuthorization:(UIApplication *)application;
+- (void)createLocalizedUserNotification;
 
 @end
 
