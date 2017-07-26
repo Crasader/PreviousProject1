@@ -407,6 +407,7 @@
 		D2E035221ED9581100291282 /* Trusteeship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E0351F1ED9581100291282 /* Trusteeship.cpp */; };
 		D2E133A91DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
 		D2E133AA1DF45FF800418E67 /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E133A81DF45FF800418E67 /* Icon-87.png */; };
+		D2E4BC5B1F28624E00A34067 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E4BC5A1F28624E00A34067 /* UserNotifications.framework */; };
 		D2E6A2931EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E79DBE1F0F34EB00DD3999 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */; };
@@ -851,6 +852,7 @@
 		D2E035201ED9581100291282 /* Trusteeship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trusteeship.h; sourceTree = "<group>"; };
 		D2E133A81DF45FF800418E67 /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
 		D2E133AB1DF4F8FC00418E67 /* Mahjong-mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Mahjong-mobile.entitlements"; path = "Mahjong-mobile/Mahjong-mobile.entitlements"; sourceTree = "<group>"; };
+		D2E4BC5A1F28624E00A34067 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
 		D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareActivityLayer.cpp; sourceTree = "<group>"; };
 		D2E6A2921EF3CEFA0065C3F0 /* ShareActivityLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareActivityLayer.hpp; sourceTree = "<group>"; };
 		D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyPride.cpp; sourceTree = "<group>"; };
@@ -901,6 +903,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2E4BC5B1F28624E00A34067 /* UserNotifications.framework in Frameworks */,
 				D2F2DF2E1EDFF0B60002203A /* libWeChatSDK.a in Frameworks */,
 				D2FD5C8C1EA74A5C0016FCCC /* libopencore-amrnb.a in Frameworks */,
 				D2FD5C8D1EA74A5C0016FCCC /* libopencore-amrwb.a in Frameworks */,
@@ -1007,6 +1010,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2E4BC5A1F28624E00A34067 /* UserNotifications.framework */,
 				D2F2DF2F1EDFF1700002203A /* libc++abi.tbd */,
 				D2DB5E791E7917000073ABD8 /* AddressBook.framework */,
 				D2DB5DF41E790BDA0073ABD8 /* AddressBook.framework */,
