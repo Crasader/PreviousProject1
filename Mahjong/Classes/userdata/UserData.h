@@ -1,6 +1,7 @@
 #ifndef __USER_DATA_H__
 #define __USER_DATA_H__
 #include "cocos2d.h"
+#include "mahjong/common/state/DataStruct.h"
 USING_NS_CC;
 
 class UserData{
@@ -127,6 +128,10 @@ public:
     
     std::string getDiscountInfo();
     void setDiscountInfo(std::string msg);
+    
+    //记录玩家最近的游戏类型
+    GameMahjongType getLatelyMahjongType();
+    void setLatelyMahjongType(GameMahjongType type);
     
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:

@@ -350,3 +350,11 @@ std::string UserData::getDiscountInfo(){
 void UserData::setDiscountInfo(std::string msg){
     UserDefault::getInstance()->setStringForKey("user_discount_info",msg);
 }
+
+GameMahjongType UserData::getLatelyMahjongType(){
+    return (GameMahjongType)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_type",GameMahjongType::ShangHai);
+}
+
+void UserData::setLatelyMahjongType(GameMahjongType type){
+    UserDefault::getInstance()->setIntegerForKey("lately_mahjong_type",type);
+}

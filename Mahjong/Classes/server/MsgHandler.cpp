@@ -2684,6 +2684,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     GAMEDATA::getInstance()->setGameType(1);
     GAMEDATA::getInstance()->setIsCompetitionState(false);
     GAMEDATA::getInstance()->setIsCompetitionQueue(false);
+    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ShangHai);
     postNotifyMessage(MSG_FRIEND_OPEN_ROOM_RESP, nullptr);
 }
 
@@ -2822,6 +2823,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setGameType(1);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
+    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ShangHai);
     postNotifyMessage(MSG_ENTER_FRIEND_ROOM_RESP, buf);
 }
 
@@ -3239,6 +3241,7 @@ void MsgHandler::handleHongZhongEnterRoom(std::string msg){
     GAMEDATA::getInstance()->addPlayersInfo(info);
     GAMEDATA::getInstance()->setIsCompetitionState(false);
     GAMEDATA::getInstance()->setIsCompetitionQueue(false);
+    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::HongZhong);
     postNotifyMessage(MSG_ENTER_FRIEND_ROOM_HONGZHONG_RESP, nullptr);
 }
 
@@ -3370,6 +3373,7 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     GAMEDATA::getInstance()->setGameType(3);
     GAMEDATA::getInstance()->setIsPlaying(false);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
+    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::HongZhong);
     postNotifyMessage(MSG_HZ_ENTER_FRIEND_ROOM_RESP, buf);
     
 }

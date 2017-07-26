@@ -18,6 +18,23 @@ enum MahjongRoom{
     privateRoom
 };
 
+//比赛类型
+enum CompetitionRoomId{
+    Competition_Error,
+    Shanghai_Normal,
+    Shanghai_High,
+    Hongzhong_Normal,
+    Hongzhong_High,
+};
+
+//游戏麻将类型
+enum GameMahjongType{
+    ShangHai = 1,
+    HongZhong,
+    ChongMing,
+    NanHui,
+};
+
 enum PrideType{
     gold,
     lequan,
@@ -61,13 +78,7 @@ enum LeziType{
     type55c = 10//比赛专用
 };
 
-enum CompetitionRoomId{
-    Competition_Error,
-    Shanghai_Normal,
-    Shanghai_High,
-    Hongzhong_Normal,
-    Hongzhong_High,
-};
+
 
 //麻将游戏状态
 enum MahjongState{
