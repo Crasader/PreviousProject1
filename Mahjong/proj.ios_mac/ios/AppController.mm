@@ -274,13 +274,12 @@ static AppDelegate s_sharedApplication;
     NSString *title = content.title;
     
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        //此处省略一万行需求代码。。。。。。
         NSLog(@"iOS10 收到远程通知:%@",userInfo);
         
     }else {
         // 判断为本地通知
         //此处省略一万行需求代码。。。。。。
-        NSLog(@"iOS10 收到本地通知:{\\\\nbody:%@，\\\\ntitle:%@,\\\\nsubtitle:%@,\\\\nbadge：%@，\\\\nsound：%@，\\\\nuserInfo：%@\\\\n}",body,title,subtitle,badge,sound,userInfo);
+        NSLog(@"iOS10 收到本地通知:{nbody:%@,ntitle:%@,nsubtitle:%@,nbadge:%@,nsound:%@,nuserInfo:%@}",body,title,subtitle,badge,sound,userInfo);
     }
     
     
@@ -320,12 +319,10 @@ static AppDelegate s_sharedApplication;
     
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         NSLog(@"iOS10 收到远程通知:%@",userInfo);
-        //此处省略一万行需求代码。。。。。。
         
     }else {
         // 判断为本地通知
-        //此处省略一万行需求代码。。。。。。
-        NSLog(@"iOS10 收到本地通知:{\\\\nbody:%@，\\\\ntitle:%@,\\\\nsubtitle:%@,\\\\nbadge：%@，\\\\nsound：%@，\\\\nuserInfo：%@\\\\n}",body,title,subtitle,badge,sound,userInfo);
+        NSLog(@"iOS10 收到本地通知:{nbody:%@,ntitle:%@,nsubtitle:%@,nbadge:%@,nsound:%@,nuserInfo:%@}",body,title,subtitle,badge,sound,userInfo);
     }
     
     //2016-09-27 14:42:16.353978 UserNotificationsDemo[1765:800117] Warning: UNUserNotificationCenter delegate received call to -userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler: but the completion handler was never called.
