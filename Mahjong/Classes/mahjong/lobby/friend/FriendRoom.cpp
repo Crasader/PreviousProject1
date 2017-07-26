@@ -143,6 +143,12 @@ bool FriendRoom::init()
     laye2->setTag(1001);
     addChild(laye2);
     
+    if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::ShangHai){
+        showShangHaiMahjong();
+    }else if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::HongZhong){
+        showHongZhongMahjong();
+    }
+    
     auto openBtn = MenuItemImage::create("openroom/open_room_btn_img_1.png", "openroom/open_room_btn_img_2.png", CC_CALLBACK_0(FriendRoom::openRoom, this));
     auto openMenu = Menu::create(openBtn,NULL);
     openMenu->setPosition(640,85);
