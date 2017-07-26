@@ -340,7 +340,7 @@ void LobbyScene::drawSceneMid(){
         btn_open->setSelectedImage(frame2);
     }
     RoomListData newData = GAMEDATA::getInstance()->getRoomList();
-    if(newData.matchList.size()>0 && UserData::getInstance()->isWeixinPayOpen()){
+    if(newData.matchList.size()>0 && UserData::getInstance()->isWeixinPayOpen()&&UserData::getInstance()->getNeedShowCompetition()){
         auto competitionImg = MenuItemImage::create("mjlobby/com_btn_1.png", "mjlobby/com_btn_2.png", CC_CALLBACK_0(LobbyScene:: showCompetitionLayer,this));
         auto comMenu = Menu::create(competitionImg,NULL);
         comMenu->setPosition(1025,290);
@@ -1131,7 +1131,7 @@ void LobbyScene::addEventListener(){
         RoomListData* data = static_cast<RoomListData*>(event->getUserData());
         RoomListData newData = *data;
         if(!isShowRoomlist){
-            if(newData.matchList.size()>0 && UserData::getInstance()->isWeixinPayOpen()){
+            if(newData.matchList.size()>0 && UserData::getInstance()->isWeixinPayOpen()&&UserData::getInstance()->getNeedShowCompetition()){
                 auto competitionImg = MenuItemImage::create("mjlobby/com_btn_1.png", "mjlobby/com_btn_2.png", CC_CALLBACK_0(LobbyScene:: showCompetitionLayer,this));
                 auto comMenu = Menu::create(competitionImg,NULL);
                 comMenu->setPosition(1025,290);

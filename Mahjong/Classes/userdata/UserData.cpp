@@ -351,6 +351,15 @@ void UserData::setDiscountInfo(std::string msg){
     UserDefault::getInstance()->setStringForKey("user_discount_info",msg);
 }
 
+
+bool UserData::getNeedShowCompetition(){
+    return UserDefault::getInstance()->getBoolForKey("competition_state",false);
+}
+
+void UserData::setNeedShowCompetition(bool need){
+    UserDefault::getInstance()->setBoolForKey("competition_state",need);
+}
+
 GameMahjongType UserData::getLatelyMahjongType(){
     return (GameMahjongType)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_type",GameMahjongType::ShangHai);
 }

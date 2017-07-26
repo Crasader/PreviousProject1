@@ -1128,6 +1128,13 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &dzpw = _mDoc["dzpw"];
             GAMEDATA::getInstance()->setShowTurnTableState(atoi(dzpw.GetString()));
         }
+        //比赛开关
+        if(_mDoc.HasMember("matchsw")){
+            const rapidjson::Value &matchsw = _mDoc["matchsw"];
+            UserData::getInstance()->setNeedShowCompetition((strcmp(matchsw.GetString(),"1") == 0)?true:false);
+        }else{
+            UserData::getInstance()->setNeedShowCompetition(false);
+        }
         //微信分享配置
         if(_mDoc.HasMember("share1")){
             const rapidjson::Value &share1 = _mDoc["share1"];

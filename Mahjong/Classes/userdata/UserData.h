@@ -129,6 +129,9 @@ public:
     std::string getDiscountInfo();
     void setDiscountInfo(std::string msg);
     
+    bool getNeedShowCompetition();
+    void setNeedShowCompetition(bool need);
+    
     //记录玩家最近的游戏类型
     GameMahjongType getLatelyMahjongType();
     void setLatelyMahjongType(GameMahjongType type);
