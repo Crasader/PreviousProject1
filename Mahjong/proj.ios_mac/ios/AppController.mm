@@ -174,7 +174,7 @@ static AppDelegate s_sharedApplication;
             if (!error && granted) {
                 //用户点击允许
                 NSLog(@"推送注册成功");
-                //                [self createLocalizedUserNotification];
+                [self createLocalizedUserNotification];
             }else{
                 //用户点击不允许
                 NSLog(@"推送注册失败");
@@ -218,28 +218,178 @@ static AppDelegate s_sharedApplication;
 - (void)createLocalizedUserNotification{
     
     // 设置触发条件 UNNotificationTrigger
-    UNTimeIntervalNotificationTrigger *timeTrigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:15.0f repeats:NO];
     
+    NSDateComponents *components1 = [[NSDateComponents alloc] init];
+    components1.weekday =1;
+    components1.hour = 12;
+    components1.minute = 0;
+    UNCalendarNotificationTrigger *timeTrigger1 = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components1 repeats:YES];
     // 创建通知内容 UNMutableNotificationContent, 注意不是 UNNotificationContent ,此对象为不可变对象。
-    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-    content.title = @"Dely 时间提醒 - title";
-    content.subtitle = [NSString stringWithFormat:@"Dely 装逼大会竞选时间提醒 - subtitle"];
-    content.body = @"Dely 装逼大会总决赛时间到，欢迎你参加总决赛！希望你一统X界 - body";
-    content.badge = @1;
-    content.sound = [UNNotificationSound defaultSound];
-    content.userInfo = @{@"key1":@"value1",@"key2":@"value2"};
-    
+    UNMutableNotificationContent *content1 = [[UNMutableNotificationContent alloc] init];
+    content1.title = @"小白相上海麻将";
+    content1.subtitle = [NSString stringWithFormat:@""];
+    content1.body = @"崇明拉西胡、南汇拉西胡全新上线，二人模式无作弊";
+    content1.badge = @0;
+    content1.sound = [UNNotificationSound defaultSound];
+    content1.userInfo = @{@"key1":@"value1",@"key2":@"value2"};
     // 创建通知标示
-    NSString *requestIdentifier = @"Dely.X.time";
+    NSString *requestIdentifier1 = @"Mahjong.Week.Sunday";
+    // 创建通知请求 UNNotificationRequest 将触发条件和通知内容添加到请求中
+    UNNotificationRequest *request1 = [UNNotificationRequest requestWithIdentifier:requestIdentifier1 content:content1 trigger:timeTrigger1];
+    
+    
+    NSDateComponents *components2 = [[NSDateComponents alloc] init];
+    components2.weekday =2;
+    components2.hour = 12;
+    components2.minute = 0;
+    UNCalendarNotificationTrigger *timeTrigger2 = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components2 repeats:YES];
+    // 创建通知内容 UNMutableNotificationContent, 注意不是 UNNotificationContent ,此对象为不可变对象。
+    UNMutableNotificationContent *content2 = [[UNMutableNotificationContent alloc] init];
+    content2.title = @"小白相上海麻将";
+    content2.subtitle = [NSString stringWithFormat:@""];
+    content2.body = @"躺着做老板！年入10万+，4000元创业基金+金牌培训师，小白相上海麻将诚招代理";
+    content2.badge = @0;
+    content2.sound = [UNNotificationSound defaultSound];
+    content2.userInfo = @{@"key1":@"value1",@"key2":@"value2"};
+    // 创建通知标示
+    NSString *requestIdentifier2 = @"Mahjong.Week.Monday";
     
     // 创建通知请求 UNNotificationRequest 将触发条件和通知内容添加到请求中
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:timeTrigger];
+    UNNotificationRequest *request2 = [UNNotificationRequest requestWithIdentifier:requestIdentifier2 content:content2 trigger:timeTrigger2];
+    
+
+    NSDateComponents *components3 = [[NSDateComponents alloc] init];
+    components3.weekday =3;
+    components3.hour = 12;
+    components3.minute = 0;
+    UNCalendarNotificationTrigger *timeTrigger3 = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components3 repeats:YES];
+    // 创建通知内容 UNMutableNotificationContent, 注意不是 UNNotificationContent ,此对象为不可变对象。
+    UNMutableNotificationContent *content3 = [[UNMutableNotificationContent alloc] init];
+    content3.title = @"小白相上海麻将";
+    content3.subtitle = [NSString stringWithFormat:@""];
+    content3.body = @"崇明拉西胡、南汇拉西胡全新上线，二人模式无作弊";
+    content3.badge = @0;
+    content3.sound = [UNNotificationSound defaultSound];
+    content3.userInfo = @{@"key1":@"value1",@"key2":@"value2"};
+    // 创建通知标示
+    NSString *requestIdentifier3 = @"Mahjong.Week.Tuesday";
+    // 创建通知请求 UNNotificationRequest 将触发条件和通知内容添加到请求中
+    UNNotificationRequest *request3 = [UNNotificationRequest requestWithIdentifier:requestIdentifier3 content:content3 trigger:timeTrigger3];
+
+    
+    NSDateComponents *components4 = [[NSDateComponents alloc] init];
+    components4.weekday =4;
+    components4.hour = 12;
+    components4.minute = 0;
+    UNCalendarNotificationTrigger *timeTrigger4 = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components4 repeats:YES];
+    // 创建通知内容 UNMutableNotificationContent, 注意不是 UNNotificationContent ,此对象为不可变对象。
+    UNMutableNotificationContent *content4 = [[UNMutableNotificationContent alloc] init];
+    content4.title = @"小白相上海麻将";
+    content4.subtitle = [NSString stringWithFormat:@""];
+    content4.body = @"躺着做老板！年入10万+，4000元创业基金+金牌培训师，小白相上海麻将诚招代理";
+    content4.badge = @0;
+    content4.sound = [UNNotificationSound defaultSound];
+    content4.userInfo = @{@"key1":@"value1",@"key2":@"value2"};
+    // 创建通知标示
+    NSString *requestIdentifier4 = @"Mahjong.Week.Wednesday";
+    
+    // 创建通知请求 UNNotificationRequest 将触发条件和通知内容添加到请求中
+    UNNotificationRequest *request4 = [UNNotificationRequest requestWithIdentifier:requestIdentifier4 content:content4 trigger:timeTrigger4];
+    
+    
+    NSDateComponents *components5 = [[NSDateComponents alloc] init];
+    components5.weekday =5;
+    components5.hour = 12;
+    components5.minute = 0;
+    UNCalendarNotificationTrigger *timeTrigger5 = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components5 repeats:YES];
+    // 创建通知内容 UNMutableNotificationContent, 注意不是 UNNotificationContent ,此对象为不可变对象。
+    UNMutableNotificationContent *content5 = [[UNMutableNotificationContent alloc] init];
+    content5.title = @"小白相上海麻将";
+    content5.subtitle = [NSString stringWithFormat:@""];
+    content5.body = @"崇明拉西胡、南汇拉西胡全新上线，二人模式无作弊";
+    content5.badge = @0;
+    content5.sound = [UNNotificationSound defaultSound];
+    content5.userInfo = @{@"key1":@"value1",@"key2":@"value2"};
+    // 创建通知标示
+    NSString *requestIdentifier5 = @"Mahjong.Week.Thursday";
+    // 创建通知请求 UNNotificationRequest 将触发条件和通知内容添加到请求中
+    UNNotificationRequest *request5 = [UNNotificationRequest requestWithIdentifier:requestIdentifier5 content:content5 trigger:timeTrigger5];
+    
+    
+    NSDateComponents *components6 = [[NSDateComponents alloc] init];
+    components6.weekday =6;
+    components6.hour = 12;
+    components6.minute = 0;
+    UNCalendarNotificationTrigger *timeTrigger6 = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components6 repeats:YES];
+    // 创建通知内容 UNMutableNotificationContent, 注意不是 UNNotificationContent ,此对象为不可变对象。
+    UNMutableNotificationContent *content6 = [[UNMutableNotificationContent alloc] init];
+    content6.title = @"小白相上海麻将";
+    content6.subtitle = [NSString stringWithFormat:@""];
+    content6.body = @"躺着做老板！年入10万+，4000元创业基金+金牌培训师，小白相上海麻将诚招代理";
+    content6.badge = @0;
+    content6.sound = [UNNotificationSound defaultSound];
+    content6.userInfo = @{@"key1":@"value1",@"key2":@"value2"};
+    // 创建通知标示
+    NSString *requestIdentifier6 = @"Mahjong.Week.Friday";
+    
+    // 创建通知请求 UNNotificationRequest 将触发条件和通知内容添加到请求中
+    UNNotificationRequest *request6 = [UNNotificationRequest requestWithIdentifier:requestIdentifier6 content:content6 trigger:timeTrigger6];
+    
+    
+    
+    NSDateComponents *components7 = [[NSDateComponents alloc] init];
+    components7.weekday =7;
+    components7.hour = 12;
+    components7.minute = 0;
+    UNCalendarNotificationTrigger *timeTrigger7 = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components7 repeats:YES];
+    // 创建通知内容 UNMutableNotificationContent, 注意不是 UNNotificationContent ,此对象为不可变对象。
+    UNMutableNotificationContent *content7 = [[UNMutableNotificationContent alloc] init];
+    content7.title = @"小白相上海麻将";
+    content7.subtitle = [NSString stringWithFormat:@""];
+    content7.body = @"崇明拉西胡、南汇拉西胡全新上线，二人模式无作弊";
+    content7.badge = @0;
+    content7.sound = [UNNotificationSound defaultSound];
+    content7.userInfo = @{@"key1":@"value1",@"key2":@"value2"};
+    // 创建通知标示
+    NSString *requestIdentifier7 = @"Mahjong.Week.Saturday";
+    // 创建通知请求 UNNotificationRequest 将触发条件和通知内容添加到请求中
+    UNNotificationRequest *request7 = [UNNotificationRequest requestWithIdentifier:requestIdentifier7 content:content7 trigger:timeTrigger7];
     
     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
     // 将通知请求 add 到 UNUserNotificationCenter
-    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+    [center addNotificationRequest:request1 withCompletionHandler:^(NSError * _Nullable error) {
         if (!error) {
-            NSLog(@"推送已添加成功 %@", requestIdentifier);
+            NSLog(@"推送已添加成功 %@", requestIdentifier1);
+        }
+    }];
+    [center addNotificationRequest:request2 withCompletionHandler:^(NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"推送已添加成功 %@", requestIdentifier2);
+        }
+    }];
+    [center addNotificationRequest:request3 withCompletionHandler:^(NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"推送已添加成功 %@", requestIdentifier3);
+        }
+    }];
+    [center addNotificationRequest:request4 withCompletionHandler:^(NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"推送已添加成功 %@", requestIdentifier4);
+        }
+    }];
+    [center addNotificationRequest:request5 withCompletionHandler:^(NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"推送已添加成功 %@", requestIdentifier5);
+        }
+    }];
+    [center addNotificationRequest:request6 withCompletionHandler:^(NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"推送已添加成功 %@", requestIdentifier6);
+        }
+    }];
+    [center addNotificationRequest:request7 withCompletionHandler:^(NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"推送已添加成功 %@", requestIdentifier7);
         }
     }];
 }
@@ -324,8 +474,6 @@ static AppDelegate s_sharedApplication;
         // 判断为本地通知
         NSLog(@"iOS10 收到本地通知:{nbody:%@,ntitle:%@,nsubtitle:%@,nbadge:%@,nsound:%@,nuserInfo:%@}",body,title,subtitle,badge,sound,userInfo);
     }
-    
-    //2016-09-27 14:42:16.353978 UserNotificationsDemo[1765:800117] Warning: UNUserNotificationCenter delegate received call to -userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler: but the completion handler was never called.
     completionHandler(); // 系统要求执行这个方法
 }
 

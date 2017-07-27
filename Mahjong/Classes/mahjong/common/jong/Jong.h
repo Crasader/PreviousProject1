@@ -53,7 +53,7 @@ public:
     static std::string getContextImage(int ctype);//获取内容图片
 	virtual bool init();
 	void showJong(int bType,int cType,bool show = true);//显示牌
-	Rect getJongBoundingBox();//获取牌的区域
+	cocos2d::Rect getJongBoundingBox();//获取牌的区域
     std::string getJongName(int type);//获取牌的名字
     void setJongSelectIcon(bool show);//选择框
     void setTingJongHint(bool show,std::string texure ="");//听牌箭头
@@ -72,7 +72,7 @@ private:
     float getBackgroundScaleByType(int bType);//背景缩放比例
 	void setFlipByType(Sprite* sprite,int bType);//水平翻转
 	float getRotationByType(int bType);//旋转
-	Point getContentPosition(int bType,Point bpos);//内容的坐标
+	cocos2d::Point getContentPosition(int bType,cocos2d::Point bpos);//内容的坐标
 	std::string getBackgroundImage(int btype);//获取背景图片
 };
 #endif
