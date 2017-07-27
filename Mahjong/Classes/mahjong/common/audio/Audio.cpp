@@ -1054,6 +1054,98 @@ void Audio::playSoundHuNormal(int gender){
     }
 }
 
+void Audio::playSoundQuickChat(int gender,int chatId){
+    if(gender==1){
+        if(chatId == 1){
+            AudioEngine::play2d("audio/quick_nan/sound_1.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 2){
+            AudioEngine::play2d("audio/quick_nan/sound_2.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 3){
+            AudioEngine::play2d("audio/quick_nan/sound_3.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 4){
+            AudioEngine::play2d("audio/quick_nan/sound_4.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 5){
+            AudioEngine::play2d("audio/quick_nan/sound_5.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 6){
+            AudioEngine::play2d("audio/quick_nan/sound_6.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 7){
+            AudioEngine::play2d("audio/quick_nan/sound_7.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 8){
+            AudioEngine::play2d("audio/quick_nan/sound_8.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 9){
+            AudioEngine::play2d("audio/quick_nan/sound_9.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 10){
+            AudioEngine::play2d("audio/quick_nan/sound_10.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 11){
+            AudioEngine::play2d("audio/quick_nan/sound_11.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 12){
+            AudioEngine::play2d("audio/quick_nan/sound_12.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 13){
+            AudioEngine::play2d("audio/quick_nan/sound_13.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 14){
+            AudioEngine::play2d("audio/quick_nan/sound_14.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 15){
+            AudioEngine::play2d("audio/quick_nan/sound_15.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 16){
+            AudioEngine::play2d("audio/quick_nan/sound_16.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 17){
+            AudioEngine::play2d("audio/quick_nan/sound_17.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 18){
+            AudioEngine::play2d("audio/quick_nan/sound_18.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 19){
+            AudioEngine::play2d("audio/quick_nan/sound_19.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 20){
+            AudioEngine::play2d("audio/quick_nan/sound_20.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 21){
+            AudioEngine::play2d("audio/quick_nan/sound_21.mp3",false,UserData::getInstance()->getSoundValue());
+        }
+    }else{
+        if(chatId == 1){
+            AudioEngine::play2d("audio/quick_nv/sound_1.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 2){
+            AudioEngine::play2d("audio/quick_nv/sound_2.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 3){
+            AudioEngine::play2d("audio/quick_nv/sound_3.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 4){
+            AudioEngine::play2d("audio/quick_nv/sound_4.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 5){
+            AudioEngine::play2d("audio/quick_nv/sound_5.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 6){
+            AudioEngine::play2d("audio/quick_nv/sound_6.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 7){
+            AudioEngine::play2d("audio/quick_nv/sound_7.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 8){
+            AudioEngine::play2d("audio/quick_nv/sound_8.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 9){
+            AudioEngine::play2d("audio/quick_nv/sound_9.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 10){
+            AudioEngine::play2d("audio/quick_nv/sound_10.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 11){
+            AudioEngine::play2d("audio/quick_nv/sound_11.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 12){
+            AudioEngine::play2d("audio/quick_nv/sound_12.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 13){
+            AudioEngine::play2d("audio/quick_nv/sound_13.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 14){
+            AudioEngine::play2d("audio/quick_nv/sound_14.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 15){
+            AudioEngine::play2d("audio/quick_nv/sound_15.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 16){
+            AudioEngine::play2d("audio/quick_nv/sound_16.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 17){
+            AudioEngine::play2d("audio/quick_nv/sound_17.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 18){
+            AudioEngine::play2d("audio/quick_nv/sound_18.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 19){
+            AudioEngine::play2d("audio/quick_nv/sound_19.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 20){
+            AudioEngine::play2d("audio/quick_nv/sound_20.mp3",false,UserData::getInstance()->getSoundValue());
+        }else if(chatId == 21){
+            AudioEngine::play2d("audio/quick_nv/sound_21.mp3",false,UserData::getInstance()->getSoundValue());
+        }
+    }
+}
+
 
 
 

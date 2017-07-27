@@ -97,6 +97,7 @@ private:
     Point getBigJongPos(int type);
     Point getHuaNumPos(int type);
     Point getVec2BySeatId(int seatId);
+    void checkQuickChatSound(std::string msg);
 };
 
 #endif

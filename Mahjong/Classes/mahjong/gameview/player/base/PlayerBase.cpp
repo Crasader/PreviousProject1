@@ -4,7 +4,9 @@
 #include "mahjong/common/heroinfo/OtherPlayerInfo.hpp"
 #include "mahjong/common/chat/PlayerChatManage.hpp"
 #include "mahjong/common/widget/HeadImage.hpp"
+#include "mahjong/common/utils/Chinese.h"
 #include "server/NetworkManage.h"
+#include "mahjong/common/audio/Audio.h"
 #include "userdata/UserData.h"
 #include "http/base64/Base64.h"
 #include "ui/UIImageView.h"
@@ -591,7 +593,6 @@ void PlayerBase::onEnter(){
                 if((data.poxiaoId != UserData::getInstance()->getPoxiaoId())){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
                     VoiceMgr::getInstance()->writeVoice("record.amr",data.content);
-                    
 #endif
                 }
                 auto sound = Sprite::create("gameview/sound_pop.png");
@@ -611,6 +612,7 @@ void PlayerBase::onEnter(){
                 }
             }else{
                 std::string content = data.content;
+                checkQuickChatSound(content);
                 vector<std::string> msgs =PlayerChatManage::getInstance()->splitContentByFace(content);
                 RichText* text = RichText ::create();
                 text->setAnchorPoint(Point::ANCHOR_MIDDLE);
@@ -662,5 +664,51 @@ void PlayerBase::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(roomChatListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(wechatImageListener);
     
+}
+
+void PlayerBase::checkQuickChatSound(std::string msg){
+    if(strcmp(msg.c_str(), ChineseWord("text_info_1").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),1);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_2").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),2);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_3").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),3);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_4").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),4);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_5").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),5);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_6").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),6);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_7").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),7);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_8").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),8);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_9").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),9);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_10").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),10);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_11").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),11);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_12").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),12);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_13").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),13);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_14").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),14);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_15").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),15);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_16").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),16);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_17").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),17);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_18").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),18);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_19").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),19);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_20").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),20);
+    }else if(strcmp(msg.c_str(), ChineseWord("text_info_21").c_str())== 0){
+        Audio::getInstance()->playSoundQuickChat(UserData::getInstance()->getGender(),21);
+    }
 }
 
