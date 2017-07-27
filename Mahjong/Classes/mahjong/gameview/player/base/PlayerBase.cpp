@@ -580,7 +580,6 @@ void PlayerBase::onEnter(){
         if(playerInfo->getSeatId() == GAMEDATA::getInstance()->getHeroSeatId()){
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_PLAYER_ROOM_CHAT_SHOW);
             chatShowLayer->removeAllChildren();//清空界面
-            
             ChatData data = GAMEDATA::getInstance()->getChatData();
             int seatId = GAMEDATA::getInstance()->getHeroSeatId();
             for(auto play:GAMEDATA::getInstance()->getPlayersInfo()){
@@ -588,13 +587,10 @@ void PlayerBase::onEnter(){
                     seatId = play->getSeatId();
                 }
             }
-            
             if(data.mark ){
-                if((data.poxiaoId != UserData::getInstance()->getPoxiaoId())){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-                    VoiceMgr::getInstance()->writeVoice("record.amr",data.content);
+                VoiceMgr::getInstance()->writeVoice("record.amr",data.content);
 #endif
-                }
                 auto sound = Sprite::create("gameview/sound_pop.png");
                 sound->setPosition(getVec2BySeatId(seatId));
                 chatShowLayer->addChild(sound);
