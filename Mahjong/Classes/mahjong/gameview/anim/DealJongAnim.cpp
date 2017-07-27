@@ -22,9 +22,9 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
     addChild(fapa);
     fapa->runAction(Sequence::create(
                                      CallFunc::create([=](){showFapai(fapa);}),
-                                     DelayTime::create(14.0/24),
+                                     DelayTime::create(12.0/36),
                                      CallFunc::create([=](){showFapai(fapa);}),
-                                     DelayTime::create(14.0/24),
+                                     DelayTime::create(12.0/36),
                                      CallFunc::create([=](){
         auto paidui = Sprite::create("gameview/fapai_6.png");
         paidui->setTag(100);
@@ -36,23 +36,23 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
     Sprite* base = Sprite::create();
     base->setPosition(640,340);
     addChild(base,1);
-    base->runAction(Sequence::create(DelayTime::create(42.0f/24),CallFunc::create([=](){
+    base->runAction(Sequence::create(DelayTime::create(24.0f/36),CallFunc::create([=](){
         Audio::getInstance()->playSoundTouzi();
         showDiceAnim(base);
-    }),DelayTime::create(11.0f/24),CallFunc::create([=](){
+    }),DelayTime::create(12.0f/ 36),CallFunc::create([=](){
         base->setVisible(false);
         auto diec1 = Sprite::create(StringUtils::format("gameview/dice_%d.png",dian1));
         diec1->setPosition(640,320);
         diec1->setTag(200);
         addChild(diec1);
         diec1->setScale(0.6f);
-        diec1->runAction(Sequence::create(ScaleTo::create(1.0/24*3,1.0f),ScaleTo::create(1.0/24*2,0.8f), NULL));
+        diec1->runAction(Sequence::create(ScaleTo::create(1.0/ 36*3,1.0f),ScaleTo::create(1.0/ 36*2,0.8f), NULL));
         auto diec2 = Sprite::create(StringUtils::format("gameview/dice_%d.png",dian2));
         diec2->setPosition(740,335);
         addChild(diec2);
         diec2->setScale(0.6f);
         diec2->setTag(300);
-        diec2->runAction(Sequence::create(DelayTime::create(1.0/12),ScaleTo::create(1.0/24*3,1.0f),ScaleTo::create(1.0/24*2,0.8f),DelayTime::create(2.0/12.0),CallFunc::create([=](){
+        diec2->runAction(Sequence::create(DelayTime::create(1.0/12),ScaleTo::create(1.0/ 36*3,1.0f),ScaleTo::create(1.0/ 36*2,0.8f),DelayTime::create(2.0/12.0),CallFunc::create([=](){
             auto spr = Sprite::create();
             spr->setTag(400);
             spr->setPosition(640,500);
@@ -63,7 +63,7 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
                 }
             }
         }), NULL));
-    }),DelayTime::create(24.0f/24),CallFunc::create([=](){
+    }),DelayTime::create(36.0f/36),CallFunc::create([=](){
         if(getChildByTag(100)!=NULL){
             getChildByTag(100)->removeFromParent();
         }
@@ -77,20 +77,10 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
             getChildByTag(400)->removeFromParent();
         }
     }) ,NULL));
-    //step 3 发牌
-//    Sprite* moon = Sprite::create();
-//    moon->setPosition(640,360);
-//    addChild(moon);
-//    currentSeadId =SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), GAMEDATA::getInstance()->getCurrentBank());
-//    moon->runAction(Sequence::create(DelayTime::create(80.0f/24),Repeat::create(Sequence::create(CallFunc::create([=](){
-//        faPaiAction(currentSeadId,index);
-//        index++;
-//        currentSeadId= getNextSeatId(currentSeadId);
-//    }), DelayTime::create(6.0/24), NULL), 12), NULL));
-    //setp 4 牌开始展示
+    //setp 3 牌开始展示
     auto lastStep = Sprite::create();
     addChild(lastStep);
-    lastStep->runAction(Sequence::create(DelayTime::create(72.0/24),CallFunc::create([=](){
+    lastStep->runAction(Sequence::create(DelayTime::create(72.0/36), CallFunc::create([=](){
         if(GAMEDATA::getInstance()->getGameType() == 1){
             if(NULL != ((MahjongView*)getParent()))
                 ((MahjongView*)getParent())->showPaiduiNum(91);
@@ -98,8 +88,6 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
             if(NULL != ((HongZhongView*)getParent()))
                 ((HongZhongView*)getParent())->showPaiduiNum(91);
         }
-        
-    }), DelayTime::create(6.0f/24), CallFunc::create([=](){
         paishuLayer->removeFromParent();
         if(GAMEDATA::getInstance()->getGameType() == 1){
             if(NULL != ((MahjongView*)getParent()))
@@ -212,7 +200,7 @@ Point DealJongAnim::caluMove2Pos(int type){
     else{
         CCLOG("DealJongAnim -> caluMove2Pos : error");
     }
-    
+    return NULL;
 }
 
 
@@ -220,11 +208,10 @@ void DealJongAnim::showDiceAnim(Sprite* sprite){
     auto animation = Animation::create();
     for( int i=1;i<12;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("gameview/dice_seq_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("gameview/dice_seq_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
-    // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(1.0f / 24.0f);
+    animation->setDelayPerUnit(1.0f / 36.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action,CallFunc::create([=](){
@@ -246,11 +233,10 @@ void DealJongAnim::showKaibaoAnim(Sprite* sprite){
         }else{
             index=i;
         }
-        std::string imageName = cocos2d::String::createWithFormat("gameview/kaibao_%d.png",index)->_string;
+        std::string imageName = StringUtils::format("gameview/kaibao_%d.png",index);
         animation->addSpriteFrameWithFile(imageName);
     }
-    // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(1.0f / 24.0f);
+    animation->setDelayPerUnit(1.0f / 36.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action, NULL));
@@ -260,11 +246,10 @@ void DealJongAnim::showFapai(Sprite* sprite){
     auto animation = Animation::create();
     for( int i=1;i<13;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("gameview/fapai_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("gameview/fapai_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
-    // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(1.0f / 24.0f);
+    animation->setDelayPerUnit(1.0f / 36.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action, NULL));
@@ -274,7 +259,7 @@ void DealJongAnim::faPaiAction(int seatId,int round){
     auto th000 = createJong4();
     th000->setPosition(640,360);
     paishuLayer->addChild(th000);
-    th000->runAction(Sequence::create(MoveTo::create(6.0/24, getPaiduiPos(seatId,round/4)),CallFunc::create([=](){
+    th000->runAction(Sequence::create(MoveTo::create(6.0/ 36, getPaiduiPos(seatId,round/4)),CallFunc::create([=](){
         th000->setVisible(false);
     }),CallFunc::create([=](){
         Audio::getInstance()->playSoundFapai();
@@ -289,7 +274,7 @@ void DealJongAnim::faPaiAction(int seatId,int round){
             sky->setPosition(1100,200+130*round/4);
             sky->setLocalZOrder(4-round);
         }else{
-            sky->setPosition(200+247*round/4,70);
+            sky->setPosition(200+ 367*round/4,70);
         }
         
     }) ,NULL));
