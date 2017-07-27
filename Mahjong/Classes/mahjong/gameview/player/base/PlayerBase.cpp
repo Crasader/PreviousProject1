@@ -417,6 +417,9 @@ void PlayerBase::updateTime(float dt){
     if (mCDTime > 0){
         timeClock->setString(StringUtils::format("%d", mCDTime));
         centerTime->setString(StringUtils::format("%d", mCDTime));
+        if(mCDTime<=5){
+            Audio::getInstance()->playSoundDaoJiShi();
+        }
     }
     else{
         timeClock->setVisible(false);

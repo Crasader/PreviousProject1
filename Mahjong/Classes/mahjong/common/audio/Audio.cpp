@@ -1146,6 +1146,9 @@ void Audio::playSoundQuickChat(int gender,int chatId){
     }
 }
 
+void Audio::playSoundDaoJiShi(){
+    AudioEngine::play2d("audio/dao_ji_shi.mp3",false,UserData::getInstance()->getSoundValue());
+}
 
 
 

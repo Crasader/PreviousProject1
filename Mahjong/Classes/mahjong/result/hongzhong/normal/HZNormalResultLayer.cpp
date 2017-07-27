@@ -213,6 +213,10 @@ void HZNormalResultLayer::showLayerBtn(){
         }
     }else{
         schedule(schedule_selector(HZNormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
+        timeLabel->setVisible(true);
+        timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        timeLabel->setPosition(850,55);
+        
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             auto feedImage = MenuItemImage::create("result/start_game_btn_1.png","result/start_game_btn_2.png",
                                                    CC_CALLBACK_0(HZNormalResultLayer::continueGame, this));
@@ -220,13 +224,6 @@ void HZNormalResultLayer::showLayerBtn(){
             myMneu->addChild(feedImage);
             myMneu->setPosition(640,60);
             addChild(myMneu);
-
-            
-            timeLabel->setVisible(true);
-            timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            timeLabel->setPosition(850,55);
-
-            
         }else{
             auto quitImage = MenuItemImage::create("result/quit_btn_1.png","result/quit_btn_1.png",CC_CALLBACK_0(HZNormalResultLayer::gotoLobby, this));
             
@@ -339,7 +336,7 @@ void HZNormalResultLayer::updateTime(float dt){
     if(totalTime>=0){
         timeLabel->setString(StringUtils::format("%d",totalTime));
     }
-    if(totalTime<=0&&GAMEDATA::getInstance()->getIsCompetitionState()){
+    if(totalTime<=0){
         continueGame();
     }
     if(GAMEDATA::getInstance()->getShowProtected()){

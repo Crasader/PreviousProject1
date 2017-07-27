@@ -34,6 +34,7 @@ public:
     void playSoundClick();//点击按钮
     void playSoundHuMusic(int type);//胡牌音效
     void playSoundQuickChat(int gender,int chatId);
+    void playSoundDaoJiShi();
     void setBGMValue(float value);//设置音效
     void setEffectValue(float value);
     
