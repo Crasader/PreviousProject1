@@ -1673,13 +1673,15 @@ void HongZhongView::onEnter(){
             
             schedule([=](float dt){
                 if(GAMEDATA::getInstance()->getFanMa() != ""){
-                    //                    log("HongZhong Mahjong FanMa %s",GAMEDATA::getInstance()->getFanMa().c_str());
                     vector<std::string> ma = StringUtil::split(GAMEDATA::getInstance()->getFanMa(), ",");
                     FanMaAnim* fan = FanMaAnim::create(ma);
                     addChild(fan,20);
                 }
             },0,0,4.0f,"fanma");
-            
+            float delayTime = 4;
+            if(GAMEDATA::getInstance()->getFanMa() != ""){
+                delayTime = 6;
+            }
             schedule([=](float dt){
                 PlayerCpgRecShow showRec;
                 if(NULL != playerLeft){
@@ -1743,7 +1745,7 @@ void HongZhongView::onEnter(){
                 if(GAMEDATA::getInstance()->getIsInGame()){
                     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
                 }
-            },0,0,8.0f,"go2Result");
+            },0,0,delayTime,"go2Result");
         }else{
             schedule([=](float dt){
                 clearRoomPlayer();

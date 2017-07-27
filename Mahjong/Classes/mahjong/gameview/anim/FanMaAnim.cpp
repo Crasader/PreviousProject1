@@ -32,7 +32,7 @@ bool FanMaAnim::init(std::vector<std::string> mas){
         showTextAnim(text);
     });
     
-    auto animStep2 = DelayTime::create(1.2f);
+    auto animStep2 = DelayTime::create(1.0f);
     
     auto animStep3 = CallFunc::create([=](){
         for(int i =0; i<mas.size();i++ ){
@@ -67,7 +67,7 @@ void FanMaAnim::showTextAnim(Sprite* sprite){
         animation->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(2.0f / 24.0f);
+    animation->setDelayPerUnit(2.0f / 36.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action,CallFunc::create([=](){
@@ -85,7 +85,7 @@ void FanMaAnim::showFanPai(Sprite* sprite){
         animation->addSpriteFrameWithFile(imageName);
     }
     // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(3.0f / 24.0f);
+    animation->setDelayPerUnit(3.0f / 36.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action,CallFunc::create([=](){

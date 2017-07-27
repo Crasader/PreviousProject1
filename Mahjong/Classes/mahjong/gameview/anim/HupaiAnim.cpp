@@ -85,14 +85,14 @@ void HupaiAnim::showPokersLight(int seatId){
     }
     
     guangXiao1->setPosition(pos1);
-    guangXiao1->runAction(Sequence::create(Spawn::create(ScaleTo::create(5.0/24, scaleX,1.2f),MoveTo::create(5.0/24, pos2),
-                                                         FadeTo::create(5.0/24, 200),NULL),
-                                           Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0), NULL),
+    guangXiao1->runAction(Sequence::create(Spawn::create(ScaleTo::create(5.0/ 36, scaleX,1.2f),MoveTo::create(5.0/ 36, pos2),
+                                                         FadeTo::create(5.0/ 36, 200),NULL),
+                                           Spawn::create(ScaleTo::create(5.0/ 36, 1.0f,1.0f),MoveTo::create(5.0/ 36, pos2), FadeTo::create(5.0/ 36, 0), NULL),
                                            NULL));
     
     guangXiao2->setPosition(pos2);
-    guangXiao2->runAction(Sequence::create(Spawn::create(ScaleTo::create(5.0/24,scaleX,1.2f),MoveTo::create(5.0/24, pos1), FadeTo::create(5.0/24, 200),NULL),
-                                           Spawn::create(ScaleTo::create(5.0/24, 1.0f,1.0f),MoveTo::create(5.0/24, pos2), FadeTo::create(5.0/24, 0),NULL),NULL));
+    guangXiao2->runAction(Sequence::create(Spawn::create(ScaleTo::create(5.0/ 36,scaleX,1.2f),MoveTo::create(5.0/ 36, pos1), FadeTo::create(5.0/ 36, 200),NULL),
+                                           Spawn::create(ScaleTo::create(5.0/ 36, 1.0f,1.0f),MoveTo::create(5.0/ 36, pos2), FadeTo::create(5.0/ 36, 0),NULL),NULL));
 }
 
 
@@ -109,11 +109,11 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     spec->setPosition(getPosbySeat(seatid));
     addChild(spec);
     
-    auto sequ0 =Sequence::create(DelayTime::create(5.0f/24),CallFunc::create([=](){
+    auto sequ0 =Sequence::create(DelayTime::create(5.0f/ 36),CallFunc::create([=](){
         bgLight->setVisible(true);
-    }), Spawn::create(ScaleTo::create(2.0f/24,2.0f),FadeTo::create(2.0f/24,255), NULL), ScaleTo::create(2.0/24, 0.8f), ScaleTo::create(2.0/24, 1.0f),Repeat::create(Sequence::create(CallFunc::create([=](){
+    }), Spawn::create(ScaleTo::create(2.0f/ 36,2.0f),FadeTo::create(2.0f/ 36,255), NULL), ScaleTo::create(2.0/ 36, 0.8f), ScaleTo::create(2.0/ 36, 1.0f),Repeat::create(Sequence::create(CallFunc::create([=](){
         showBgLight(spec);
-    }),DelayTime::create(6.0f/24), NULL), 20),NULL);
+    }),DelayTime::create(6.0f/ 36), NULL), 20),NULL);
     bgLight->runAction(sequ0);
     
     
@@ -122,7 +122,7 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     addChild(bg1);
     bg1->setScale(0.25f);
     bg1->setOpacity(77);
-    auto sequ1 =Sequence::create(Spawn::create(ScaleTo::create(3.0f/24,1.2),FadeTo::create(3.0f/24,255), NULL), ScaleTo::create(2.0/24, 1.0f),NULL);
+    auto sequ1 =Sequence::create(Spawn::create(ScaleTo::create(3.0f/ 36,1.2),FadeTo::create(3.0f/ 36,255), NULL), ScaleTo::create(2.0/ 36, 1.0f),NULL);
     bg1->runAction(sequ1);
     
     Sprite* light1 = Sprite::create("gameview/circle_light_3.png");
@@ -130,13 +130,13 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     addChild(light1);
     light1->setScale(0.25f);
     light1->setOpacity(77);
-    auto sequ2 =Sequence::create(Spawn::create(ScaleTo::create(3.0f/24,1.2),FadeTo::create(3.0f/24,255), NULL), CallFunc::create([=](){
+    auto sequ2 =Sequence::create(Spawn::create(ScaleTo::create(3.0f/ 36,1.2),FadeTo::create(3.0f/ 36,255), NULL), CallFunc::create([=](){
         light1->setTexture("gameview/circle_light_1.png");
-    }),ScaleTo::create(2.0/24, 1.0f),CallFunc::create([=](){
+    }),ScaleTo::create(2.0/ 36, 1.0f),CallFunc::create([=](){
         light1->setTexture("gameview/circle_light_2.png");
     }),Repeat::create(Sequence::create(CallFunc::create([=](){
         showLightAnim(light1);
-    }), DelayTime::create(3.0/24), NULL), 20), NULL);
+    }), DelayTime::create(3.0/ 36), NULL), 20), NULL);
     light1->runAction(sequ2);
     
     Sprite* bg2 = Sprite::create("gameview/purple_bg.png");
@@ -145,9 +145,9 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
     bg2->setVisible(false);
     bg2->setScale(0.5f);
     bg2->setOpacity(77);
-    auto sequ3 =Sequence::create(DelayTime::create(7.0f/24),CallFunc::create([=](){
+    auto sequ3 =Sequence::create(DelayTime::create(7.0f/ 36),CallFunc::create([=](){
         bg2->setVisible(true);
-    }), Spawn::create(ScaleTo::create(4.0f/24,1.0),FadeTo::create(3.0f/24,255), NULL),NULL);
+    }), Spawn::create(ScaleTo::create(4.0f/ 36,1.0),FadeTo::create(3.0f/ 36,255), NULL),NULL);
     bg2->runAction(sequ3);
     
     
@@ -156,9 +156,9 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
         gang->setPosition(getPosbySeat(seatid).x+15,getPosbySeat(seatid).y);
         addChild(gang);
         gang->setVisible(false);
-        gang->runAction(Sequence::create(DelayTime::create(2.0/24),CallFunc::create([=](){
+        gang->runAction(Sequence::create(DelayTime::create(2.0/ 36),CallFunc::create([=](){
             gang->setVisible(true);
-        }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        }),Spawn::create(ScaleTo::create(2.0f/ 36,0.6f),FadeTo::create(2.0f/ 36,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             if(GAMEDATA::getInstance()->getGameType() == 1){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
@@ -166,53 +166,53 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
             }
             
-        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
         auto kai = Sprite::create("gameview/gang_kai2.png");
         kai->setPosition(getPosbySeat(seatid).x-15,getPosbySeat(seatid).y);
         addChild(kai);
         kai->setVisible(false);
-        kai->runAction(Sequence::create(DelayTime::create(5.0/24),CallFunc::create([=](){
+        kai->runAction(Sequence::create(DelayTime::create(5.0/ 36),CallFunc::create([=](){
             kai->setVisible(true);
-        }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        }),Spawn::create(ScaleTo::create(2.0f/ 36,0.6f),FadeTo::create(2.0f/ 36,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             if(GAMEDATA::getInstance()->getGameType() == 1){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
             }
-        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
     }else if(hutype == MahjongHuType::qianggangHu){
         auto gang = Sprite::create("gameview/qg_font_qiang.png");
         gang->setPosition(getPosbySeat(seatid).x+20,getPosbySeat(seatid).y);
         addChild(gang);
         gang->setVisible(false);
-        gang->runAction(Sequence::create(DelayTime::create(2.0/24),CallFunc::create([=](){
+        gang->runAction(Sequence::create(DelayTime::create(2.0/ 36),CallFunc::create([=](){
             gang->setVisible(true);
-        }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        }),Spawn::create(ScaleTo::create(2.0f/ 36,0.6f),FadeTo::create(2.0f/ 36,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             if(GAMEDATA::getInstance()->getGameType() == 1){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
             }
-        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
         auto kai = Sprite::create("gameview/qg_font_gang.png");
         kai->setPosition(getPosbySeat(seatid).x-20,getPosbySeat(seatid).y);
         addChild(kai);
         kai->setVisible(false);
-        kai->runAction(Sequence::create(DelayTime::create(5.0/24),CallFunc::create([=](){
+        kai->runAction(Sequence::create(DelayTime::create(5.0/ 36),CallFunc::create([=](){
             kai->setVisible(true);
-        }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        }),Spawn::create(ScaleTo::create(2.0f/ 36,0.6f),FadeTo::create(2.0f/ 36,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             if(GAMEDATA::getInstance()->getGameType() == 1){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
             }
-        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
     }else if(hutype == MahjongHuType::zimoHu){
         auto fontZi = Sprite::create("gameview/font_zi.png");
@@ -221,16 +221,16 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
         fontZi->setScale(1.6f);
         fontZi->setOpacity(80);
         addChild(fontZi,1);
-        fontZi->runAction(Sequence::create(DelayTime::create(2.0/24),CallFunc::create([=](){
+        fontZi->runAction(Sequence::create(DelayTime::create(2.0/ 36),CallFunc::create([=](){
             fontZi->setVisible(true);
-        }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        }),Spawn::create(ScaleTo::create(2.0f/ 36,0.6f),FadeTo::create(2.0f/ 36,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             if(GAMEDATA::getInstance()->getGameType() == 1){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
             }
-        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
         
         auto fontMo = Sprite::create("gameview/font_mo.png");
@@ -239,16 +239,16 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
         fontMo->setScale(1.6f);
         fontMo->setOpacity(80);
         addChild(fontMo,1);
-        fontMo->runAction(Sequence::create(DelayTime::create(5.0/24),CallFunc::create([=](){
+        fontMo->runAction(Sequence::create(DelayTime::create(5.0/ 36),CallFunc::create([=](){
             fontMo->setVisible(true);
-        }),Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        }),Spawn::create(ScaleTo::create(2.0f/ 36,0.6f),FadeTo::create(2.0f/ 36,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             if(GAMEDATA::getInstance()->getGameType() == 1){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
             }
-        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL));
+        }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
     }else if(hutype == MahjongHuType::putongHu){
         auto huText = Sprite::create("gameview/font_hu.png");
@@ -256,20 +256,20 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
         addChild(huText);
         huText->setOpacity(77);
         huText->setScale(2.2);
-        auto sequ4 =Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,0.6f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+        auto sequ4 =Sequence::create(Spawn::create(ScaleTo::create(2.0f/ 36,0.6f),FadeTo::create(2.0f/ 36,255), NULL),CallFunc::create([=](){
             showPokersLight(seatid);
             if(GAMEDATA::getInstance()->getGameType() == 1){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
             }
-        }), ScaleTo::create(2.0/24, 1.5f),ScaleTo::create(2.0/24, 1.0f), NULL);
+        }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL);
         huText->runAction(sequ4);
     }
     
     auto remove = Sprite::create();
     addChild(remove);
-    remove->runAction(Sequence::create(DelayTime::create(60.0/24),CallFunc::create([=](){
+    remove->runAction(Sequence::create(DelayTime::create(60.0/ 36),CallFunc::create([=](){
         this->removeFromParent();
     }), NULL));
     
@@ -284,7 +284,7 @@ void HupaiAnim::showDianpaoAnim(int seatId1,int seatId2,int jongTyep ){
     addChild(lighting);
     lighting->setOpacity(77);
     lighting->setScale(2.0f);
-    lighting->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/24,1.0f),FadeTo::create(2.0f/24,255), NULL),CallFunc::create([=](){
+    lighting->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.0f/ 36,1.0f),FadeTo::create(2.0f/ 36,255), NULL),CallFunc::create([=](){
         showLighting(lighting);
     }), NULL));
     Jong* jong = Jong::create();
@@ -292,9 +292,9 @@ void HupaiAnim::showDianpaoAnim(int seatId1,int seatId2,int jongTyep ){
     jong->showJong(herohand,jongTyep);
     addChild(jong);
     jong->setVisible(false);
-    jong->runAction(Sequence::create(DelayTime::create(5.0f/24),CallFunc::create([=](){
+    jong->runAction(Sequence::create(DelayTime::create(5.0f/ 36),CallFunc::create([=](){
         jong->setVisible(true);
-    }),DelayTime::create(10.0f/24),MoveTo::create(5.0f/24, getPosbySeat(seatId2)),CallFunc::create([=](){
+    }),DelayTime::create(10.0f/ 36),MoveTo::create(5.0f/ 36, getPosbySeat(seatId2)),CallFunc::create([=](){
         jong->setVisible(false);
     }), NULL));
     
@@ -318,11 +318,11 @@ void HupaiAnim::showLightAnim(Sprite* sprite){
     auto animation = Animation::create();
     for( int i=1;i<4;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("gameview/circle_light_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("gameview/circle_light_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
-    // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(2.0f / 24.0f);
+    // should last 1 seconds. And there are  36 frames.
+    animation->setDelayPerUnit(2.0f /  36.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action, NULL));
@@ -333,11 +333,11 @@ void HupaiAnim::showBgLight(Sprite* sprite){
     auto animation = Animation::create();
     for( int i=1;i<4;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("gameview/bg_light_yellow_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("gameview/bg_light_yellow_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
-    // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(2.0f / 24.0f);
+    // should last 1 seconds. And there are  36 frames.
+    animation->setDelayPerUnit(2.0f /  36.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     sprite->runAction(Sequence::create(action, NULL));
@@ -347,11 +347,11 @@ void HupaiAnim::showLighting(Sprite* lighting){
     auto animation = Animation::create();
     for( int i=1;i<9;i++)
     {
-        std::string imageName = cocos2d::String::createWithFormat("gameview/lighting_%d.png",i)->_string;
+        std::string imageName = StringUtils::format("gameview/lighting_%d.png",i);
         animation->addSpriteFrameWithFile(imageName);
     }
-    // should last 1 seconds. And there are 24 frames.
-    animation->setDelayPerUnit(2.0f / 24.0f);
+    // should last 1 seconds. And there are  36 frames.
+    animation->setDelayPerUnit(2.0f /  36.0f);
     animation->setRestoreOriginalFrame(false);
     auto action = Animate::create(animation);
     lighting->runAction(Sequence::create(action,CallFunc::create([=](){

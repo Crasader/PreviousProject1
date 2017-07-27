@@ -210,16 +210,6 @@ void MahjongView::update(float dt){
         addPlayer2Room();
         GAMEDATA::getInstance()->setNeedAddPlayer(false);
     }
-    //    if(GAMEDATA::getInstance()->getIsGotoLobby()){
-    //        if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
-    //            GAMEDATA::getInstance()->clearPlayersInfo();
-    //            GAMEDATA::getInstance()->setIsPlaying(false);
-    //            schedule([=](float dt){
-    //                GAMEDATA::getInstance()->setIsGotoLobby(false);
-    //                Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-    //            }, 0, 0, 2,"KKFFCC001");
-    //        }
-    //    }
     if(!GAMEDATA::getInstance()->getIsPlaying()){
         vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
         for (int i = 0; i < players.size(); i++){
@@ -385,11 +375,6 @@ void MahjongView::checkPlayerIpRepetition(){
         for(int j=i+1;j<players.size();j++){
             if(players.at(i)->getIP()==players.at(j)->getIP()){
                 //发现有相同的IP,发出通知
-                /*if(!showRepeatDialog){
-                 HintDialog* hint3 = HintDialog::create(StringUtils::format("%s和%sIP相同",players.at(i)->getNickname().c_str(),players.at(j)->getNickname().c_str()),nullptr);
-                 addChild(hint3,100);
-                 showRepeatDialog = true;
-                 }*/
             }
         }
     }
@@ -1857,7 +1842,7 @@ void MahjongView::onEnter(){
                 if(GAMEDATA::getInstance()->getIsInGame()){
                     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
                 }
-            },0,0,6.0f,"go2Result");
+            },0,0,4.0f,"go2Result");
         }else{
             schedule([=](float dt){
                 clearRoomPlayer();
