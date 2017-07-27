@@ -38,7 +38,8 @@ bool NormalResultLayer::init(){
     reslut_bg->setPosition(640, 360);
     addChild(reslut_bg,-1);
     timeLabel = LabelAtlas::create(StringUtils::format("%d",totalTime),"competition/daojishi_num.png",31,45,'0');
-    timeLabel->setVisible(false);
+    timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    timeLabel->setPosition(850,55);
     addChild(timeLabel);
     showGameResult();//结算界面标题
     showRoomInfo();
@@ -209,12 +210,8 @@ void NormalResultLayer::showLayerBtn(){
             }, 0, 0, 5,"KillBill");
         }
     }else{
+
         schedule(schedule_selector(NormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
-        
-        timeLabel->setVisible(true);
-        timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        timeLabel->setPosition(850,55);
-        
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             auto feedImage = MenuItemImage::create("result/start_game_btn_1.png","result/start_game_btn_2.png",
                                                    CC_CALLBACK_0(NormalResultLayer::continueGame, this));
