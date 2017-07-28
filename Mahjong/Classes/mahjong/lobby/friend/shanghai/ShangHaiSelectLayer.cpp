@@ -184,6 +184,7 @@ void ShangHaiSelectLayer::selectDiHua22(){
     if(NULL != getChildByTag(2004)){
         getChildByTag(2004)->setVisible(false);
     }
+    selectLezi50();
 }
 
 void ShangHaiSelectLayer::selectDiHua62(){
@@ -199,6 +200,7 @@ void ShangHaiSelectLayer::selectDiHua62(){
     if(NULL != getChildByTag(2004)){
         getChildByTag(2004)->setVisible(false);
     }
+    selectLezi50();
 }
 
 void ShangHaiSelectLayer::selectDiHua55(){
@@ -214,6 +216,7 @@ void ShangHaiSelectLayer::selectDiHua55(){
     if(NULL != getChildByTag(2004)){
         getChildByTag(2004)->setVisible(true);
     }
+    selectLezi100();
 }
 
 void ShangHaiSelectLayer::selectLezi20(){
