@@ -206,11 +206,11 @@ void HZNormalResultLayer::showLayerBtn(){
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             schedule([=](float dt){
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(2)));
-            }, 0, 0, 5,"KillBill");
+            }, 0, 0, 3,"KillBill");
         }else{
             schedule([=](float dt){
                 Director::getInstance()->replaceScene(TransitionFade::create(0.8f,ResultScene::createScene(1)));
-            }, 0, 0, 5,"KillBill");
+            }, 0, 0, 3,"KillBill");
         }
     }else{
         schedule(schedule_selector(HZNormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
