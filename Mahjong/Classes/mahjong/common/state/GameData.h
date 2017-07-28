@@ -166,6 +166,9 @@ public:
     CC_SYNTHESIZE(string, hzDiFen, HZDiFen);
     CC_SYNTHESIZE(string, hzMaShu, HZMaShu);
     CC_SYNTHESIZE(string, privateLezi, PrivateLezi);
+    CC_SYNTHESIZE(string, privateDihua, PrivateDihua);
+    CC_SYNTHESIZE(string, privateFcy, PrivateFcy);
+    CC_SYNTHESIZE(string, privateFcyValue, PrivateFcyValue);
     CC_SYNTHESIZE(string, privateKaibao, PrivateKaibao);
     CC_SYNTHESIZE(string, privateEmsc, PrivateEmsc);
     CC_SYNTHESIZE(string, dissolveName, DissolveName);

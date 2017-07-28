@@ -2230,6 +2230,9 @@ void MsgHandler::gameResultNotify(std::string msg){
     if(_mDoc.HasMember("ifemsc")){
         GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
     }
+    if(_mDoc.HasMember("fcyp")){
+        GAMEDATA::getInstance()->setPrivateFcyValue(_mDoc["fcyp"].GetString());
+    }
     GameHongBaoPride pride;
     if(_mDoc.HasMember("dyj")){
         pride.dyj = _mDoc["dyj"].GetString();
@@ -2579,8 +2582,14 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     if(_mDoc.HasMember("ifemsc")){
         GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
     }
-    if(_mDoc.HasMember("iflezi")){
-        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+    if(_mDoc.HasMember("lz")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lz"].GetString());
+    }
+    if(_mDoc.HasMember("dihua")){
+        GAMEDATA::getInstance()->setPrivateDihua(_mDoc["dihua"].GetString());
+    }
+    if(_mDoc.HasMember("fcy")){
+        GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
     }
     FriendOpenRoomRespData data;
     if(_mDoc.HasMember("kb")){
@@ -2716,8 +2725,14 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     if(_mDoc.HasMember("ifemsc")){
         GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
     }
-    if(_mDoc.HasMember("iflezi")){
-        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+    if(_mDoc.HasMember("lz")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lz"].GetString());
+    }
+    if(_mDoc.HasMember("dihua")){
+        GAMEDATA::getInstance()->setPrivateDihua(_mDoc["dihua"].GetString());
+    }
+    if(_mDoc.HasMember("fcy")){
+        GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
     }
     const rapidjson::Value &result = _mDoc["result"];
     FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
