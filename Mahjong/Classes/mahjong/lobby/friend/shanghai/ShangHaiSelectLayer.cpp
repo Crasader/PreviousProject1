@@ -9,6 +9,7 @@
 #include "mahjong/lobby/friend/shanghai/ShangHaiSelectLayer.hpp"
 #include "server/NetworkManage.h"
 #include "mahjong/common/state/GameData.h"
+#include "userdata/UserData.h"
 
 
 bool ShangHaiSelectLayer::init(){
@@ -153,7 +154,51 @@ bool ShangHaiSelectLayer::init(){
     addChild(selectmo2chong3);
     
     //显示用户的日常习惯
-//    if(Us)
+    if(UserData::getInstance()->getLatelySHDiHua() == "0"){
+        selectDiHua11();
+    }else if(UserData::getInstance()->getLatelySHDiHua() == "1"){
+        selectDiHua22();
+    }else if(UserData::getInstance()->getLatelySHDiHua() == "2"){
+        selectDiHua62();
+    } else if(UserData::getInstance()->getLatelySHDiHua() == "3"){
+        selectDiHua55();
+    }
+    if(UserData::getInstance()->getLatelySHLeZhi() == "0"){
+        selectLezi20();
+    }else if(UserData::getInstance()->getLatelySHLeZhi() == "1"){
+        selectLezi50();
+    }else if(UserData::getInstance()->getLatelySHLeZhi() == "2"){
+        selectLezi100();
+    }else if(UserData::getInstance()->getLatelySHLeZhi() == "3"){
+        selectLeziWu();
+    }
+    if(UserData::getInstance()->getLatelySHKaiBao() == "0"){
+        if(NULL != getChildByTag(4001)){
+            getChildByTag(4001)->setVisible(false);
+        }
+    }else{
+        if(NULL != getChildByTag(4001)){
+            getChildByTag(4001)->setVisible(true);
+        }
+    }
+    if(UserData::getInstance()->getLatelySHFcy() == "0"){
+        if(NULL != getChildByTag(4002)){
+            getChildByTag(4002)->setVisible(false);
+        }
+    }else{
+        if(NULL != getChildByTag(4002)){
+            getChildByTag(4002)->setVisible(true);
+        }
+    }
+    if(UserData::getInstance()->getLatelySHEmsc() == "0"){
+        if(NULL != getChildByTag(4003)){
+            getChildByTag(4003)->setVisible(false);
+        }
+    }else{
+        if(NULL != getChildByTag(4003)){
+            getChildByTag(4003)->setVisible(true);
+        }
+    }
     
     return true;
 }
@@ -344,8 +389,8 @@ std::string ShangHaiSelectLayer::getKaibao(){
 
 std::string ShangHaiSelectLayer::getFeiChangYin(){
     std::string ifcy = "1";//0表示没有，1表示有
-    if(NULL != getChildByTag(2036)){
-        if(getChildByTag(2036)->isVisible()){
+    if(NULL != getChildByTag(4002)){
+        if(getChildByTag(4002)->isVisible()){
             ifcy = "1";
         }else{
             ifcy = "0";
@@ -356,8 +401,8 @@ std::string ShangHaiSelectLayer::getFeiChangYin(){
 
 std::string ShangHaiSelectLayer::getEmsc(){
     std::string ifemsc = "0";//0表示没有，1表示有
-    if(NULL != getChildByTag(2038)){
-        if(getChildByTag(2038)->isVisible()){
+    if(NULL != getChildByTag(4003)){
+        if(getChildByTag(4003)->isVisible()){
             ifemsc = "1";
         }else{
             ifemsc = "0";

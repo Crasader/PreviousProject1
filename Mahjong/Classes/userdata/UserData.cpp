@@ -414,7 +414,7 @@ std::string UserData::getLatelySHFcy(){
     return UserDefault::getInstance()->getStringForKey("sh_fcy","0");
 }
 void UserData::setLatelySHFcy(std::string num){
-    UserDefault::getInstance()->getStringForKey("sh_fcy",num);
+    UserDefault::getInstance()->setStringForKey("sh_fcy",num);
 }
 
 std::string UserData::getLatelyHZDi(){

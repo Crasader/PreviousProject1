@@ -9,6 +9,7 @@
 #include "mahjong/lobby/friend/hongzhong/HongZhongSelectLayer.hpp"
 #include "server/NetworkManage.h"
 #include "mahjong/common/state/GameData.h"
+#include "userdata/UserData.h"
 
 bool HongZhongSelectLayer::init(){
     if(!Layer::init()){
@@ -87,6 +88,22 @@ bool HongZhongSelectLayer::init(){
     ma1Img->setPosition(1020,420);
     ma1Img->setVisible(false);
     addChild(ma1Img);
+    
+    //显示用户的日常习惯
+    if(UserData::getInstance()->getLatelyHZDi() == "2"){
+        selectDifen2();
+    }else if(UserData::getInstance()->getLatelyHZDi() == "1"){
+        selectDifen1();
+    }else if(UserData::getInstance()->getLatelyHZDi() == "5"){
+        selectDifen5();
+    }
+    if(UserData::getInstance()->getLatelyHZFanMa() == "4"){
+        selectMa159zh();
+    }else if(UserData::getInstance()->getLatelyHZFanMa() == "3"){
+        selectMa159();
+    }else if(UserData::getInstance()->getLatelyHZFanMa() == "1"){
+        selectMa1();
+    }
     
     return true;
 }
