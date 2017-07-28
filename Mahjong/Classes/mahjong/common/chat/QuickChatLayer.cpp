@@ -87,64 +87,67 @@ std::string QuickChatLayer::getQuickChatById(int id){
     std::string chatInfo;
     switch (id) {
         case 0:
-			chatInfo = ChineseWord("text_info_1");
+			chatInfo = ChineseWord("text_info_21");
             break;
         case 1:
-			chatInfo = ChineseWord("text_info_2");
+			chatInfo = ChineseWord("text_info_1");
             break;
         case 2:
-			chatInfo = ChineseWord("text_info_3");
+			chatInfo = ChineseWord("text_info_2");
             break;
         case 3:
-			chatInfo = ChineseWord("text_info_4");
+			chatInfo = ChineseWord("text_info_3");
             break;
         case 4:
-			chatInfo = ChineseWord("text_info_5");
+			chatInfo = ChineseWord("text_info_4");
             break;
         case 5:
-			chatInfo = ChineseWord("text_info_6");
+			chatInfo = ChineseWord("text_info_5");
             break;
         case 6:
-			chatInfo = ChineseWord("text_info_7");
+			chatInfo = ChineseWord("text_info_6");
             break;
         case 7:
-			chatInfo = ChineseWord("text_info_8");
+			chatInfo = ChineseWord("text_info_7");
             break;
         case 8:
-			chatInfo = ChineseWord("text_info_9");
+			chatInfo = ChineseWord("text_info_8");
             break;
         case 9:
-			chatInfo = ChineseWord("text_info_10");
+			chatInfo = ChineseWord("text_info_9");
             break;
         case 10:
-			chatInfo = ChineseWord("text_info_11");
+			chatInfo = ChineseWord("text_info_10");
             break;
         case 11:
-			chatInfo = ChineseWord("text_info_12");
+			chatInfo = ChineseWord("text_info_11");
             break;
         case 12:
-			chatInfo = ChineseWord("text_info_13");
+			chatInfo = ChineseWord("text_info_12");
             break;
         case 13:
-			chatInfo = ChineseWord("text_info_14");
+			chatInfo = ChineseWord("text_info_13");
             break;
         case 14:
-			chatInfo = ChineseWord("text_info_15");
+			chatInfo = ChineseWord("text_info_14");
             break;
         case 15:
-			chatInfo = ChineseWord("text_info_16");
+			chatInfo = ChineseWord("text_info_15");
             break;
         case 16:
-			chatInfo = ChineseWord("text_info_17");
+			chatInfo = ChineseWord("text_info_16");
             break;
         case 17:
-			chatInfo = ChineseWord("text_info_18");
+			chatInfo = ChineseWord("text_info_17");
             break;
         case 18:
-			chatInfo = ChineseWord("text_info_19");
+			chatInfo = ChineseWord("text_info_18");
             break;
         case 19:
-			chatInfo = ChineseWord("text_info_20");
+			chatInfo = ChineseWord("text_info_19");
+            break;
+        case 20:
+            chatInfo = ChineseWord("text_info_20");
             break;
         default:
             break;

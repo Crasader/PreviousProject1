@@ -48,7 +48,7 @@ bool LobbyScene::init()
     }
     showDissolveDialog = false;
     initView();
-    //    showLobbyAnim();
+    showLobbyAnim();
     //add sprite to scene
     drawSceneTop();
     drawSceneMid();
@@ -440,22 +440,6 @@ void LobbyScene::updateHeroInfo(){
 
 void LobbyScene::showLobbyAnim(){
     
-    //光效
-    auto lobbyLight_1 = Sprite::create("mjlobby/lobby_light_1.png");
-    lobbyLight_1->setPosition(640, 360);
-    addChild(lobbyLight_1);
-    lobbyLight_1->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    
-    auto lobbyLight_2 = Sprite::create("mjlobby/lobby_light_2.png");
-    lobbyLight_2->setPosition(640, 360);
-    addChild(lobbyLight_2);
-    lobbyLight_2->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    
-    auto lobbyLight_3 = Sprite::create("mjlobby/lobby_light_3.png");
-    lobbyLight_3->setPosition(640, 360);
-    addChild(lobbyLight_3);
-    lobbyLight_3->runAction(Sequence::create(Repeat::create(Sequence::create(FadeTo::create(1.0f, 0),FadeTo::create(1.0f, 255),NULL), CC_REPEAT_FOREVER),NULL));
-    
     //光斑
     auto lightSpot1 = Sprite::create("mjlobby/light_spot.png");
     lightSpot1->setPosition(640,360);
@@ -467,59 +451,126 @@ void LobbyScene::showLobbyAnim(){
     addChild(lightSpot);
     schedule(schedule_selector(LobbyScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
     
-    auto star = Sprite::create("competition/star.png");
-    star->setPosition(365,112);
-    star->setOpacity(0);
-    addChild(star,1);
-    star->runAction(Repeat::create(Sequence::create(FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(7), NULL),CC_REPEAT_FOREVER));
+    // 星星闪烁
+    auto star1 = Sprite::create("mjlobby/star.png");
+    star1->setPosition(615,550);
+    star1->setOpacity(0);
+    addChild(star1,1);
+    star1->runAction(Repeat::create(Sequence::create(DelayTime::create(1),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(11), NULL),CC_REPEAT_FOREVER));
     
-    auto blink = Sprite::create("mjlobby/light_btn_anim_2.png");
-    blink->setPosition(430,65);
+    auto star2 = Sprite::create("mjlobby/star.png");
+    star2->setPosition(610,525);
+    star2->setOpacity(0);
+    star2->setScale(0.5f);
+    addChild(star2,1);
+    star2->runAction(Repeat::create(Sequence::create(DelayTime::create(2),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(10), NULL),CC_REPEAT_FOREVER));
+    
+    auto star3 = Sprite::create("mjlobby/star.png");
+    star3->setPosition(675,550);
+    star3->setOpacity(0);
+    addChild(star3,1);
+    star3->runAction(Repeat::create(Sequence::create(DelayTime::create(1),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(11), NULL),CC_REPEAT_FOREVER));
+    
+    auto star4 = Sprite::create("mjlobby/star.png");
+    star4->setPosition(615,550);
+    star4->setOpacity(0);
+    addChild(star4,1);
+    star4->runAction(Repeat::create(Sequence::create(DelayTime::create(3),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(9), NULL),CC_REPEAT_FOREVER));
+    
+    if(NULL != getChildByTag(1988)){
+        auto star5 = Sprite::create("mjlobby/star.png");
+        star5->setPosition(612,461);
+        star5->setOpacity(0);
+        addChild(star5,1);
+        star5->runAction(Repeat::create(Sequence::create(DelayTime::create(4),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(8), NULL),CC_REPEAT_FOREVER));
+        
+        auto star6 = Sprite::create("mjlobby/star.png");
+        star6->setPosition(609,434);
+        star6->setOpacity(0);
+        star6->setScale(0.5f);
+        addChild(star6,1);
+        star6->runAction(Repeat::create(Sequence::create(DelayTime::create(6),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(6), NULL),CC_REPEAT_FOREVER));
+        
+        auto star7 = Sprite::create("mjlobby/star.png");
+        star7->setPosition(666,468);
+        star7->setOpacity(0);
+        addChild(star7,1);
+        star7->runAction(Repeat::create(Sequence::create(DelayTime::create(5),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(7), NULL),CC_REPEAT_FOREVER));
+        
+        auto star8 = Sprite::create("mjlobby/star.png");
+        star8->setPosition(615,461);
+        star8->setOpacity(0);
+        addChild(star8,1);
+        star8->runAction(Repeat::create(Sequence::create(DelayTime::create(7),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(5), NULL),CC_REPEAT_FOREVER));
+
+    }
+    if(NULL != getChildByTag(1980)){
+        auto star9 = Sprite::create("mjlobby/star.png");
+        star9->setPosition(615,361);
+        star9->setOpacity(0);
+        addChild(star9,1);
+        star9->runAction(Repeat::create(Sequence::create(DelayTime::create(8),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(4), NULL),CC_REPEAT_FOREVER));
+        
+        auto star10 = Sprite::create("mjlobby/star.png");
+        star10->setPosition(609,334);
+        star10->setOpacity(0);
+        star10->setScale(0.5f);
+        addChild(star10,1);
+        star10->runAction(Repeat::create(Sequence::create(DelayTime::create(10),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(2), NULL),CC_REPEAT_FOREVER));
+        
+        auto star11 = Sprite::create("mjlobby/star.png");
+        star11->setPosition(670,351);
+        star11->setOpacity(0);
+        addChild(star11,1);
+        star11->runAction(Repeat::create(Sequence::create(DelayTime::create(9),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(3), NULL),CC_REPEAT_FOREVER));
+        
+        auto star12 = Sprite::create("mjlobby/star.png");
+        star12->setPosition(615,361);
+        star12->setOpacity(0);
+        addChild(star12,1);
+        star12->runAction(Repeat::create(Sequence::create(DelayTime::create(11),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(1), NULL),CC_REPEAT_FOREVER));
+    }
+    
+    auto btnlight1 = Sprite::create("mjlobby/light_btn_anim_1.png");
+    btnlight1->setPosition(1023,534);
+    addChild(btnlight1,1);
+    btnlight1->runAction(Repeat::create(Sequence::create(DelayTime::create(1),CallFunc::create([=](){
+        btnlight1->setVisible(true);
+    }),Blink::create(1,1),CallFunc::create([=](){
+        btnlight1->setVisible(false);
+    }),DelayTime::create(6), NULL),CC_REPEAT_FOREVER));
+    
+    auto btnlight2 = Sprite::create("mjlobby/light_btn_anim_1.png");
+    btnlight2->setPosition(1024,409);
+    addChild(btnlight2,1);
+    btnlight2->runAction(Repeat::create(Sequence::create(DelayTime::create(2),CallFunc::create([=](){
+        btnlight2->setVisible(true);
+    }),Blink::create(1, 1),CallFunc::create([=](){
+        btnlight2->setVisible(false);
+    }),DelayTime::create(5), NULL),CC_REPEAT_FOREVER));
+
+    auto blink = Sprite::create("mjlobby/light_btn_anim.png");
+    blink->setPosition(1031,530);
     addChild(blink,1);
     blink->setVisible(false);
-    blink->runAction(Repeat::create(Sequence::create(DelayTime::create(1),CallFunc::create([=](){
+    blink->runAction(Repeat::create(Sequence::create(DelayTime::create(3),CallFunc::create([=](){
         blink->setVisible(true);
-        blink->setPosition(430,65);
-    }),MoveTo::create(1.5,Point(810,65)),CallFunc::create([=](){
+        blink->setPosition(831,530);
+    }),MoveTo::create(1.5,Point(1131,530)),CallFunc::create([=](){
         blink->setVisible(false);
-    }),DelayTime::create(5.5), NULL),CC_REPEAT_FOREVER));
-    auto blink2 = Sprite::create("mjlobby/light_btn_anim_2.png");
-    blink2->setPosition(470,65);
+    }),DelayTime::create(3.5), NULL),CC_REPEAT_FOREVER));
+    
+    auto blink2 = Sprite::create("mjlobby/light_btn_anim.png");
+    blink2->setPosition(1031,405);
     addChild(blink2,1);
     blink2->setVisible(false);
-    blink2->runAction(Repeat::create(Sequence::create(DelayTime::create(1),CallFunc::create([=](){
-        blink2->setPosition(470,65);
+    blink2->runAction(Repeat::create(Sequence::create(DelayTime::create(4.5f),CallFunc::create([=](){
+        blink2->setPosition(831,405);
         blink2->setVisible(true);
-    }),MoveTo::create(1.5,Point(850,65)),CallFunc::create([=](){
+    }),MoveTo::create(1.5,Point(1131,405)),CallFunc::create([=](){
         blink2->setVisible(false);
-    }),DelayTime::create(5.5), NULL),CC_REPEAT_FOREVER));
-    
-    auto btnlight = Sprite::create("mjlobby/light_btn_anim_1.png");
-    btnlight->setPosition(640,70);
-    addChild(btnlight,1);
-    btnlight->runAction(Repeat::create(Sequence::create(DelayTime::create(1),Blink::create(2, 2),DelayTime::create(5), NULL),CC_REPEAT_FOREVER));
-    
-    auto blue = Sprite::create("mjlobby/btn_blue_light.png");
-    blue->setPosition(1025,58);
-    addChild(blue,1);
-    blue->setVisible(false);
-    blue->runAction(Repeat::create(Sequence::create(DelayTime::create(3),CallFunc::create([=](){
-        blue->setVisible(true);
-    }),Blink::create(2, 2),CallFunc::create([=](){
-        blue->setVisible(false);
-    }), DelayTime::create(3),NULL),CC_REPEAT_FOREVER));
-    
-    
-    auto blue2 = Sprite::create("mjlobby/btn_blue_light.png");
-    blue->setFlippedX(true);
-    blue2->setPosition(255,58);
-    addChild(blue2,1);
-    blue2->setVisible(false);
-    blue2->runAction(Repeat::create(Sequence::create(DelayTime::create(3),CallFunc::create([=](){
-        blue2->setVisible(true);
-    }),Blink::create(2, 2),CallFunc::create([=](){
-        blue2->setVisible(false);
-    }), DelayTime::create(3),NULL),CC_REPEAT_FOREVER));
+    }),DelayTime::create(2), NULL),CC_REPEAT_FOREVER));
+
 }
 
 
