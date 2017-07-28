@@ -30,7 +30,6 @@ private:
 	Label* fangkaNum;
 	Label* lequanNum;
     Label* haufeiNum;
-    Menu* firstMenu;
     Sprite* ganTanhao;
     bool isShowRoomlist = false;
     
@@ -46,7 +45,6 @@ private:
     EventListenerCustom* payDialogListener;
     EventListenerCustom* payResultListener;
     EventListenerCustom* imageUpdateListener;
-    EventListenerCustom* firstChargeListenr;
     EventListenerCustom* openRoomAskListener;
     EventListenerCustom* enterRoomAskListener;
     EventListenerCustom* scrollTetxListener;

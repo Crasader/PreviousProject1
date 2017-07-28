@@ -48,12 +48,10 @@ bool LobbyScene::init()
     }
     showDissolveDialog = false;
     initView();
-    showLobbyAnim();
     //add sprite to scene
     drawSceneTop();
     drawSceneMid();
     drawSceneBot();
-    
     return true;
 }
 
@@ -110,11 +108,6 @@ void LobbyScene::signUpdate(float dt){
 #endif
     }
     
-    if(NULL != getChildByTag(1988) && !getChildByTag(1988)->isVisible()){
-        if(NULL != getChildByTag(1980)){
-            getChildByTag(1980)->setPosition(650, 435);
-        }
-    }
 }
 
 
@@ -300,18 +293,9 @@ void LobbyScene::drawSceneMid(){
         textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(0.92f,Point(750,580)),MoveTo::create(0.92f,Point(750,570)),NULL), CC_REPEAT_FOREVER));
     }
     
-    
-    auto first_chaege = MenuItemImage::create("mjlobby/first_charge_btn_1.png", "mjlobby/first_charge_btn_2.png",
-                                              CC_CALLBACK_0(LobbyScene::showFirstCharge, this));
-    firstMenu = Menu::create(first_chaege, NULL);
-    firstMenu->setTag(1988);
-    firstMenu->setPosition(650, 435);
-    addChild(firstMenu);
-    firstMenu->setVisible(UserData::getInstance()->isFirstCharge()?false:true);
-    
     auto huodong = MenuItemImage::create("mjlobby/red_wallet_1.png","mjlobby/red_wallet_2.png",CC_CALLBACK_0(LobbyScene::showHotActivity, this));
     auto mymenu = Menu::create(huodong,NULL);
-    mymenu->setPosition(650,335);
+    mymenu->setPosition(650,435);
     mymenu->setTag(1980);
     addChild(mymenu);
     mymenu->setVisible(false);
@@ -477,7 +461,7 @@ void LobbyScene::showLobbyAnim(){
     addChild(star4,1);
     star4->runAction(Repeat::create(Sequence::create(DelayTime::create(3),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(9), NULL),CC_REPEAT_FOREVER));
     
-    if(NULL != getChildByTag(1988)){
+    if(NULL != getChildByTag(1980) && getChildByTag(1980)->isVisible()){
         auto star5 = Sprite::create("mjlobby/star.png");
         star5->setPosition(612,461);
         star5->setOpacity(0);
@@ -502,33 +486,7 @@ void LobbyScene::showLobbyAnim(){
         star8->setOpacity(0);
         addChild(star8,1);
         star8->runAction(Repeat::create(Sequence::create(DelayTime::create(7),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(5), NULL),CC_REPEAT_FOREVER));
-
-    }
-    if(NULL != getChildByTag(1980)){
-        auto star9 = Sprite::create("mjlobby/star.png");
-        star9->setPosition(615,361);
-        star9->setOpacity(0);
-        addChild(star9,1);
-        star9->runAction(Repeat::create(Sequence::create(DelayTime::create(8),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(4), NULL),CC_REPEAT_FOREVER));
         
-        auto star10 = Sprite::create("mjlobby/star.png");
-        star10->setPosition(609,334);
-        star10->setOpacity(0);
-        star10->setScale(0.5f);
-        addChild(star10,1);
-        star10->runAction(Repeat::create(Sequence::create(DelayTime::create(10),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(2), NULL),CC_REPEAT_FOREVER));
-        
-        auto star11 = Sprite::create("mjlobby/star.png");
-        star11->setPosition(670,351);
-        star11->setOpacity(0);
-        addChild(star11,1);
-        star11->runAction(Repeat::create(Sequence::create(DelayTime::create(9),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(3), NULL),CC_REPEAT_FOREVER));
-        
-        auto star12 = Sprite::create("mjlobby/star.png");
-        star12->setPosition(615,361);
-        star12->setOpacity(0);
-        addChild(star12,1);
-        star12->runAction(Repeat::create(Sequence::create(DelayTime::create(11),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(1), NULL),CC_REPEAT_FOREVER));
     }
     
     auto btnlight1 = Sprite::create("mjlobby/light_btn_anim_1.png");
@@ -548,7 +506,7 @@ void LobbyScene::showLobbyAnim(){
     }),Blink::create(1, 1),CallFunc::create([=](){
         btnlight2->setVisible(false);
     }),DelayTime::create(5), NULL),CC_REPEAT_FOREVER));
-
+    
     auto blink = Sprite::create("mjlobby/light_btn_anim.png");
     blink->setPosition(1031,530);
     addChild(blink,1);
@@ -570,7 +528,7 @@ void LobbyScene::showLobbyAnim(){
     }),MoveTo::create(1.5,Point(1131,405)),CallFunc::create([=](){
         blink2->setVisible(false);
     }),DelayTime::create(2), NULL),CC_REPEAT_FOREVER));
-
+    
 }
 
 
@@ -623,7 +581,7 @@ void LobbyScene::showDayTask(){
 
 void LobbyScene::showPlayerBill(){
     Audio::getInstance()->playSoundClick();
-//    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
+    //    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
     BillInfo* billInfoView = BillInfo::create();
     addChild(billInfoView,3);
 }
@@ -818,7 +776,6 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(payDialogListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(payResultListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(imageUpdateListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(firstChargeListenr);
     Director::getInstance()->getEventDispatcher()->removeEventListener(openRoomAskListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterRoomAskListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(scrollTetxListener);
@@ -1053,12 +1010,6 @@ void LobbyScene::addEventListener(){
             ((HeadImage*)getChildByTag(962))->updateImage();
     });
     
-    //首冲礼包
-    firstChargeListenr =  Director::getInstance()->getEventDispatcher()->addCustomEventListener("hide_first_charge_btn", [=](EventCustom* event){
-        firstMenu->setVisible(false);
-        ganTanhao->setVisible(false);
-    });
-    
     //开房询问
     openRoomAskListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_ASK_OPEN_ROOM, [=](EventCustom* event){
         removeLoading();
@@ -1136,12 +1087,8 @@ void LobbyScene::addEventListener(){
         if(NULL != getChildByTag(6656)){
             getChildByTag(6656)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         }
-        if(UserData::getInstance()->isFirstCharge()){
-            firstMenu->setVisible(false);
-        }else{
-            firstMenu->setVisible(UserData::getInstance()->isWeixinPayOpen());
-        }
 #endif
+        showLobbyAnim();
     });
     
     showLoobyLoadingLayer = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_LOBBY_SHOW_LOADING_LAYER, [=](EventCustom* event){
