@@ -373,7 +373,7 @@ GameModel UserData::getLatelyGameModel(){
     return (GameModel)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_model",GameModel::FOURPLAYER);
 }
 void UserData::setLatelyGameModel(GameModel model){
-    UserDefault::getInstance()->getIntegerForKey("lately_mahjong_model",model);
+    UserDefault::getInstance()->setIntegerForKey("lately_mahjong_model",model);
 }
 
 std::string UserData::getLatelyGameJuShu(){

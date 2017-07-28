@@ -152,6 +152,9 @@ bool ShangHaiSelectLayer::init(){
     selectmo2chong3->setVisible(false);
     addChild(selectmo2chong3);
     
+    //显示用户的日常习惯
+//    if(Us)
+    
     return true;
 }
 

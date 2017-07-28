@@ -150,11 +150,7 @@ bool FriendRoom::init()
     laye3->setTag(1002);
     addChild(laye3);
     
-    if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::ShangHai){
-        showShangHaiMahjong();
-    }else if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::HongZhong){
-        showHongZhongMahjong();
-    }
+    
     
     auto openBtn = MenuItemImage::create("openroom/open_room_btn_img_1.png", "openroom/open_room_btn_img_2.png", CC_CALLBACK_0(FriendRoom::openRoom, this));
     auto openMenu = Menu::create(openBtn,NULL);
@@ -168,6 +164,24 @@ bool FriendRoom::init()
     touchListener->onTouchEnded = CC_CALLBACK_2(FriendRoom::onTouchEnded, this);
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener,this);
     
+    //显示用户的日常习惯
+    if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::ShangHai){
+        showShangHaiMahjong();
+    }else if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::HongZhong){
+        showHongZhongMahjong();
+    }
+    if(UserData::getInstance()->getLatelyGameModel() == GameModel::TWOPLAYER){
+        select2People();
+    }else{
+        select4People();
+    }
+    if(UserData::getInstance()->getLatelyGameJuShu()=="4"){
+        selectFangka4();
+    }else if(UserData::getInstance()->getLatelyGameJuShu()=="16"){
+        selectFangka16();
+    }else{
+        selectFangka8();
+    }
     return true;
 }
 

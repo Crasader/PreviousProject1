@@ -2578,18 +2578,23 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     }
     if(_mDoc.HasMember("ifkb")){
         GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+        UserData::getInstance()->setLatelySHKaiBao(_mDoc["ifkb"].GetString());
     }
     if(_mDoc.HasMember("ifemsc")){
         GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+        UserData::getInstance()->setLatelySHEmsc(_mDoc["ifemsc"].GetString());
     }
     if(_mDoc.HasMember("lz")){
         GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lz"].GetString());
+        UserData::getInstance()->setLatelySHLeZhi(_mDoc["lz"].GetString());
     }
     if(_mDoc.HasMember("dihua")){
         GAMEDATA::getInstance()->setPrivateDihua(_mDoc["dihua"].GetString());
+        UserData::getInstance()->setLatelySHDiHua(_mDoc["dihua"].GetString());
     }
     if(_mDoc.HasMember("fcy")){
         GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
+        UserData::getInstance()->setLatelySHFcy(_mDoc["fcy"].GetString());
     }
     FriendOpenRoomRespData data;
     if(_mDoc.HasMember("kb")){
@@ -2603,6 +2608,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     if(_mDoc.HasMember("prjushu")){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
         data.prjushu = prjushu.GetString();
+        UserData::getInstance()->setLatelyGameJuShu(prjushu.GetString());
     }
     if(_mDoc.HasMember("prJucount")){
         const rapidjson::Value &prjucount = _mDoc["prJucount"];
@@ -2628,6 +2634,7 @@ void MsgHandler::friendOpenRoomResp(std::string msg){
     if(_mDoc.HasMember("size")){
         const rapidjson::Value &size = _mDoc["size"];
         GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
+        UserData::getInstance()->setLatelyGameModel(atoi(size.GetString()) == 2?GameModel::TWOPLAYER:GameModel::FOURPLAYER);
     }
     
     PayPointInfo pointInfo;
@@ -2718,21 +2725,27 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     if(_mDoc.HasMember("size")){
         const rapidjson::Value &size = _mDoc["size"];
         GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
+        UserData::getInstance()->setLatelyGameModel(atoi(size.GetString()) == 2?GameModel::TWOPLAYER:GameModel::FOURPLAYER);
     }
     if(_mDoc.HasMember("ifkb")){
         GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+        UserData::getInstance()->setLatelySHKaiBao(_mDoc["ifkb"].GetString());
     }
     if(_mDoc.HasMember("ifemsc")){
         GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+        UserData::getInstance()->setLatelySHEmsc(_mDoc["ifemsc"].GetString());
     }
     if(_mDoc.HasMember("lz")){
         GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lz"].GetString());
+        UserData::getInstance()->setLatelySHLeZhi(_mDoc["lz"].GetString());
     }
     if(_mDoc.HasMember("dihua")){
         GAMEDATA::getInstance()->setPrivateDihua(_mDoc["dihua"].GetString());
+        UserData::getInstance()->setLatelySHDiHua(_mDoc["dihua"].GetString());
     }
     if(_mDoc.HasMember("fcy")){
         GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
+        UserData::getInstance()->setLatelySHFcy(_mDoc["fcy"].GetString());
     }
     const rapidjson::Value &result = _mDoc["result"];
     FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
@@ -2751,6 +2764,7 @@ void MsgHandler::friendEnterRoomResp(std::string msg){
     if (_mDoc.HasMember("prjushu")){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
         data.prjushu = prjushu.GetString();
+        UserData::getInstance()->setLatelyGameJuShu(prjushu.GetString());
     }
     if(_mDoc.HasMember("prjucount")){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
@@ -3156,20 +3170,24 @@ void MsgHandler::handleHongZhongEnterRoom(std::string msg){
     if(_mDoc.HasMember("size")){
         const rapidjson::Value &size = _mDoc["size"];
         GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
+        UserData::getInstance()->setLatelyGameModel(atoi(size.GetString()) == 2?GameModel::TWOPLAYER:GameModel::FOURPLAYER);
     }
     
     if(_mDoc.HasMember("fanma")){
         GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
+        UserData::getInstance()->setLatelyHZFanMa(_mDoc["fanma"].GetString());
     }
     
     if(_mDoc.HasMember("difen")){
         GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
+        UserData::getInstance()->setLatelyHZDi(_mDoc["difen"].GetString());
     }
     
     FriendOpenRoomRespData data;
     if(_mDoc.HasMember("prjushu")){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
         data.prjushu = prjushu.GetString();
+        UserData::getInstance()->setLatelyGameJuShu(prjushu.GetString());
     }
     if(_mDoc.HasMember("prJucount")){
         const rapidjson::Value &prjucount = _mDoc["prJucount"];
@@ -3280,14 +3298,17 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     }
     if(_mDoc.HasMember("fanma")){
         GAMEDATA::getInstance()->setFanMaType(_mDoc["fanma"].GetString());
+        UserData::getInstance()->setLatelyHZFanMa(_mDoc["fanma"].GetString());
     }
     if(_mDoc.HasMember("size")){
         const rapidjson::Value &size = _mDoc["size"];
         GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
+        UserData::getInstance()->setLatelyGameModel(atoi(size.GetString()) == 2?GameModel::TWOPLAYER:GameModel::FOURPLAYER);
     }
     
     if(_mDoc.HasMember("difen")){
         GAMEDATA::getInstance()->setHZDiFen(_mDoc["difen"].GetString());
+        UserData::getInstance()->setLatelyHZDi(_mDoc["difen"].GetString());
     }
     const rapidjson::Value &result = _mDoc["result"];
     FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();
@@ -3302,6 +3323,7 @@ void MsgHandler::handleHZEnterRoomResp(std::string msg){
     if (_mDoc.HasMember("prjushu")){
         const rapidjson::Value &prjushu = _mDoc["prjushu"];
         data.prjushu = prjushu.GetString();
+        UserData::getInstance()->setLatelyGameJuShu(prjushu.GetString());
     }
     if(_mDoc.HasMember("prjucount")){
         const rapidjson::Value &prjucount = _mDoc["prjucount"];
