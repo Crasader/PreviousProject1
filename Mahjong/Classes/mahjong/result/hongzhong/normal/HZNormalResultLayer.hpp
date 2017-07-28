@@ -27,7 +27,7 @@ private:
     EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* hzEnterFriendRoomListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
-    int totalTime = 10;
+    int totalTime = 5;
     LabelAtlas* timeLabel;
     bool showDissolveDialog = false;
     void showGameResult();
