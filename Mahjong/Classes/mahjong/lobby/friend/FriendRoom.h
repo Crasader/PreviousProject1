@@ -17,6 +17,7 @@ private:
     int selectLayerIndex = 0;
     Sprite* hongZhong;
     Sprite* shangHai;
+     Sprite* chongMing;
     Sprite* vertical;
     Sprite* shangHaiRoomText;
     Sprite* hongZhongRoomText;
@@ -30,6 +31,5 @@ private:
     void showShangHaiMahjong();
     void showHongZhongMahjong();
     void showChongMingMahjong();
-    void showNanHuiMahjong();
 };
 #endif

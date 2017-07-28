@@ -412,6 +412,8 @@
 		D2E4BC6C1F2883EC00A34067 /* ShangHaiSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC691F2883EC00A34067 /* ShangHaiSelectLayer.cpp */; };
 		D2E4BC6F1F28840400A34067 /* HongZhongSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC6D1F28840400A34067 /* HongZhongSelectLayer.cpp */; };
 		D2E4BC701F28840400A34067 /* HongZhongSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC6D1F28840400A34067 /* HongZhongSelectLayer.cpp */; };
+		D2E4BC741F2B28AC00A34067 /* ChongMingSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC721F2B28AC00A34067 /* ChongMingSelectLayer.cpp */; };
+		D2E4BC751F2B28AC00A34067 /* ChongMingSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC721F2B28AC00A34067 /* ChongMingSelectLayer.cpp */; };
 		D2E6A2931EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E79DBE1F0F34EB00DD3999 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */; };
@@ -861,6 +863,8 @@
 		D2E4BC6A1F2883EC00A34067 /* ShangHaiSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShangHaiSelectLayer.hpp; sourceTree = "<group>"; };
 		D2E4BC6D1F28840400A34067 /* HongZhongSelectLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongZhongSelectLayer.cpp; sourceTree = "<group>"; };
 		D2E4BC6E1F28840400A34067 /* HongZhongSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongZhongSelectLayer.hpp; sourceTree = "<group>"; };
+		D2E4BC721F2B28AC00A34067 /* ChongMingSelectLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChongMingSelectLayer.cpp; sourceTree = "<group>"; };
+		D2E4BC731F2B28AC00A34067 /* ChongMingSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChongMingSelectLayer.hpp; sourceTree = "<group>"; };
 		D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareActivityLayer.cpp; sourceTree = "<group>"; };
 		D2E6A2921EF3CEFA0065C3F0 /* ShareActivityLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareActivityLayer.hpp; sourceTree = "<group>"; };
 		D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyPride.cpp; sourceTree = "<group>"; };
@@ -2053,6 +2057,8 @@
 		D2E4BC651F2883EC00A34067 /* chongming */ = {
 			isa = PBXGroup;
 			children = (
+				D2E4BC721F2B28AC00A34067 /* ChongMingSelectLayer.cpp */,
+				D2E4BC731F2B28AC00A34067 /* ChongMingSelectLayer.hpp */,
 			);
 			path = chongming;
 			sourceTree = "<group>";
@@ -2450,6 +2456,7 @@
 				D2E79DC01F0F34EB00DD3999 /* PrideCell.cpp in Sources */,
 				D2B1A86F1CCDF0F400A20896 /* AppDelegate.cpp in Sources */,
 				D252FC531E7FABE900937322 /* MjGameScene.cpp in Sources */,
+				D2E4BC741F2B28AC00A34067 /* ChongMingSelectLayer.cpp in Sources */,
 				D252FC5B1E7FABE900937322 /* Player.cpp in Sources */,
 				D252FB5A1E7FA5EC00937322 /* Chinese.cpp in Sources */,
 				D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */,
@@ -2726,6 +2733,7 @@
 				D252FBB31E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */,
 				D252FB531E7FA5EC00937322 /* GameFeedDialog.cpp in Sources */,
 				D252FC501E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
+				D2E4BC751F2B28AC00A34067 /* ChongMingSelectLayer.cpp in Sources */,
 				D252FC481E7FABE900937322 /* HuaAnim.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

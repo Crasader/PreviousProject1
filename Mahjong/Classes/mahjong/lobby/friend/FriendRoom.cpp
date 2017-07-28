@@ -4,6 +4,7 @@
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/lobby/friend/hongzhong/HongZhongSelectLayer.hpp"
 #include "mahjong/lobby/friend/shanghai/ShangHaiSelectLayer.hpp"
+#include "mahjong/lobby/friend/chongming/ChongMingSelectLayer.hpp"
 
 
 bool FriendRoom::init()
@@ -36,6 +37,10 @@ bool FriendRoom::init()
     hongZhong = Sprite::create("openroom/hong_zhong_btn_2.png");
     hongZhong->setPosition(215,430);
     addChild(hongZhong);
+    
+    chongMing = Sprite::create("openroom/hong_zhong_btn_2.png");
+    chongMing->setPosition(215,325);
+    addChild(chongMing);
     
     vertical = Sprite::create("openroom/vertical_line_1.png");
     vertical->setPosition(322,355);
@@ -140,6 +145,11 @@ bool FriendRoom::init()
     laye2->setTag(1001);
     addChild(laye2);
     
+    ChongMingSelectLayer* laye3 = ChongMingSelectLayer::create();
+    laye3->setVisible(false);
+    laye3->setTag(1002);
+    addChild(laye3);
+    
     if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::ShangHai){
         showShangHaiMahjong();
     }else if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::HongZhong){
@@ -192,6 +202,9 @@ void FriendRoom::onTouchEnded(Touch *touch, Event  *event){
     if(hongZhong->getBoundingBox().containsPoint(touch->getLocation())){
         showHongZhongMahjong();
     }
+    if(chongMing->getBoundingBox().containsPoint(touch->getLocation())){
+        showChongMingMahjong();
+    }
 }
 
 
@@ -199,30 +212,43 @@ void FriendRoom::showShangHaiMahjong(){
     selectLayerIndex = 0;
     shangHai->setTexture("openroom/shang_hai_btn_1.png");
     hongZhong->setTexture("openroom/hong_zhong_btn_2.png");
+     chongMing->setTexture("openroom/chong_ming_btn_2.png");
     vertical->setTexture("openroom/vertical_line_1.png");
     if(NULL != getChildByTag(1000))
         getChildByTag(1000)->setVisible(true);
     if(NULL != getChildByTag(1001))
         getChildByTag(1001)->setVisible(false);
+    if(NULL != getChildByTag(1002))
+        getChildByTag(1002)->setVisible(false);
 }
 
 void FriendRoom::showHongZhongMahjong(){
     selectLayerIndex = 1;
     shangHai->setTexture("openroom/shang_hai_btn_2.png");
     hongZhong->setTexture("openroom/hong_zhong_btn_1.png");
+     chongMing->setTexture("openroom/chong_ming_btn_2.png");
     vertical->setTexture("openroom/vertical_line_2.png");
     if(NULL != getChildByTag(1000))
         getChildByTag(1000)->setVisible(false);
     if(NULL != getChildByTag(1001))
         getChildByTag(1001)->setVisible(true);
+    if(NULL != getChildByTag(1002))
+        getChildByTag(1002)->setVisible(false);
 }
 void FriendRoom::showChongMingMahjong(){
-    
+    selectLayerIndex = 2;
+    shangHai->setTexture("openroom/shang_hai_btn_2.png");
+    hongZhong->setTexture("openroom/hong_zhong_btn_2.png");
+    chongMing->setTexture("openroom/chong_ming_btn_1.png");
+    vertical->setTexture("openroom/vertical_line_3.png");
+    if(NULL != getChildByTag(1000))
+        getChildByTag(1000)->setVisible(false);
+    if(NULL != getChildByTag(1001))
+        getChildByTag(1001)->setVisible(false);
+    if(NULL != getChildByTag(1002))
+        getChildByTag(1002)->setVisible(true);
 }
 
-void FriendRoom::showNanHuiMahjong(){
-    
-}
 
 
 void FriendRoom::closeView(){
