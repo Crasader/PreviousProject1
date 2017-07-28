@@ -310,7 +310,7 @@ std::string ShangHaiSelectLayer::getDiHua(){
 }
 
 std::string ShangHaiSelectLayer::getLeizi(){
-    std::string iflezi = 0;//0表示20,1表示50,2表示100,3表示无勒子
+    std::string iflezi = "0";//0表示20,1表示50,2表示100,3表示无勒子
     if(NULL != getChildByTag(3001)&&getChildByTag(3001)->isVisible()){
         iflezi = "0";
     }else if(NULL != getChildByTag(3002)&&getChildByTag(3002)->isVisible()){

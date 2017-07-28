@@ -180,12 +180,14 @@ std::string CommandManage::getChangeHeadCommand(std::string pic){
     return commandString(keyValue);
 }
 
-std::string CommandManage::getOpenRoomCommand(std::string ftype,std::string iflezi,std::string ifkb,std::string ifemsc,std::string size){
+std::string CommandManage::getOpenRoomCommand(std::string ftype,std::string dihua,std::string lz,std::string fcy,std::string ifkb,std::string ifemsc,std::string size){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FRIEND_GAME_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("pId", ""));
-    keyValue.insert(map<string, string>::value_type("iflezi", iflezi));
+    keyValue.insert(map<string, string>::value_type("dihua", dihua));
+    keyValue.insert(map<string, string>::value_type("lz", lz));
+    keyValue.insert(map<string, string>::value_type("fcy", fcy));
     keyValue.insert(map<string, string>::value_type("ftype", ftype));
     keyValue.insert(map<string, string>::value_type("ifkb", ifkb));
     keyValue.insert(map<string, string>::value_type("ifemsc", ifemsc));

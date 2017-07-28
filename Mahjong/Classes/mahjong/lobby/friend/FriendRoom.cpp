@@ -212,7 +212,7 @@ void FriendRoom::showShangHaiMahjong(){
     selectLayerIndex = 0;
     shangHai->setTexture("openroom/shang_hai_btn_1.png");
     hongZhong->setTexture("openroom/hong_zhong_btn_2.png");
-     chongMing->setTexture("openroom/chong_ming_btn_2.png");
+    chongMing->setTexture("openroom/chong_ming_btn_2.png");
     vertical->setTexture("openroom/vertical_line_1.png");
     if(NULL != getChildByTag(1000))
         getChildByTag(1000)->setVisible(true);
@@ -226,7 +226,7 @@ void FriendRoom::showHongZhongMahjong(){
     selectLayerIndex = 1;
     shangHai->setTexture("openroom/shang_hai_btn_2.png");
     hongZhong->setTexture("openroom/hong_zhong_btn_1.png");
-     chongMing->setTexture("openroom/chong_ming_btn_2.png");
+    chongMing->setTexture("openroom/chong_ming_btn_2.png");
     vertical->setTexture("openroom/vertical_line_2.png");
     if(NULL != getChildByTag(1000))
         getChildByTag(1000)->setVisible(false);
@@ -331,16 +331,24 @@ void FriendRoom :: openRoom(){
     }
     if(selectLayerIndex == 0){
         if(NULL != getChildByTag(1000)){
-            std::string iflezi = ((ShangHaiSelectLayer*)getChildByTag(1000))->getLeizi();
+            std::string dihua = ((ShangHaiSelectLayer*)getChildByTag(1000))->getDiHua();
+            std::string lezi = ((ShangHaiSelectLayer*)getChildByTag(1000))->getLeizi();
+            std::string fcy = ((ShangHaiSelectLayer*)getChildByTag(1000))->getFeiChangYin();
             std::string ifemsc = ((ShangHaiSelectLayer*)getChildByTag(1000))->getEmsc();
             std::string ifkb = ((ShangHaiSelectLayer*)getChildByTag(1000))->getKaibao();
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(ftype,iflezi,ifkb,ifemsc,size));
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOpenRoomCommand(ftype,dihua,lezi,fcy,ifkb,ifemsc,size));
         }
         
     }else if(selectLayerIndex == 1){
         std::string fanma = ((HongZhongSelectLayer*)getChildByTag(1001))->getFanMa();
         std::string difen = ((HongZhongSelectLayer*)getChildByTag(1001))->getDiFen();
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterHongZhongCommand(ftype,fanma,difen,size));
+    }
+    else if(selectLayerIndex == 2){
+        std::string dihua = ((ChongMingSelectLayer*)getChildByTag(1002))->getDiHua();
+        std::string lezi = ((ChongMingSelectLayer*)getChildByTag(1002))->getLeizi();
+        std::string fcy = ((ChongMingSelectLayer*)getChildByTag(1002))->getFeiChangYin();
+        std::string ifkb = ((ChongMingSelectLayer*)getChildByTag(1002))->getKaibao();
     }
 }
 
