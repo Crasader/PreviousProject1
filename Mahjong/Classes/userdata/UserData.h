@@ -6,52 +6,52 @@ USING_NS_CC;
 
 class UserData{
 public:
-	static UserData* getInstance();
-
-	std::string getPoxiaoId();
-	void setPoxiaoId(std::string poxiaoId);
-
-	int getGold();
-	void setGold(int gold);
+    static UserData* getInstance();
+    
+    std::string getPoxiaoId();
+    void setPoxiaoId(std::string poxiaoId);
+    
+    int getGold();
+    void setGold(int gold);
     
     float getFangkaNum();
     void setFangkaNum(float num);
-
-	int getDiamond();
-	void setDiamond(int num);
+    
+    int getDiamond();
+    void setDiamond(int num);
     
     int getLockDiamond();
     void setLockDiamond(int num);
     
     float getHuafeiQuan();
     void setHuafeiQuan(float num);
-
-	int getTicket();
-	void setTicket(int num);
-
-	std::string getUserName();
-	void setUserName(std::string name);
-
-	std::string getNickName();
-	void setNickName(std::string name);
-
-	std::string getPassword();
-	void setPassword(std::string pwd);
-
-	int getGender();
-	void setGender(int gender);
-
-	std::string getBoundPhone();
-	void setBoundPhone(std::string phone);
-
-	std::string getPicture();
-	void setPicture(std::string pic);
-
-	bool isFirstCharge();
-	void setFirstCharge(bool firstcharge);
-
-	bool isChangeName();
-	void setChangeName(bool firstcharge);
+    
+    int getTicket();
+    void setTicket(int num);
+    
+    std::string getUserName();
+    void setUserName(std::string name);
+    
+    std::string getNickName();
+    void setNickName(std::string name);
+    
+    std::string getPassword();
+    void setPassword(std::string pwd);
+    
+    int getGender();
+    void setGender(int gender);
+    
+    std::string getBoundPhone();
+    void setBoundPhone(std::string phone);
+    
+    std::string getPicture();
+    void setPicture(std::string pic);
+    
+    bool isFirstCharge();
+    void setFirstCharge(bool firstcharge);
+    
+    bool isChangeName();
+    void setChangeName(bool firstcharge);
     
     float getMusicValue();
     void setMusicValue(float value);
@@ -100,7 +100,7 @@ public:
     
     std::string getHstype();
     void setHstype(std::string num);
-
+    
     
     std::string getImsi();
     void setImsi(std::string num);
@@ -110,7 +110,7 @@ public:
     
     std::string getAppVer();
     void setAppVer(std::string num);
-
+    
     std::string getShareTextContent();
     void setShareTextContent(std::string num);
     
@@ -135,11 +135,43 @@ public:
     //记录玩家最近的游戏类型
     GameMahjongType getLatelyMahjongType();
     void setLatelyMahjongType(GameMahjongType type);
+    //记录玩家游戏人数的选择
+    GameModel getLatelyGameModel();
+    void setLatelyGameModel(GameModel model);
+    //记录玩家游戏局数的选择
+    std::string getLatelyGameJuShu();
+    void setLatelyGameJuShu(std::string num);
+    //记录玩家在上海麻将上的底花选择
+    std::string getLatelySHDiHua();
+    void setLatelySHDiHua(std::string num);
+    //记录玩家在上海麻将上的勒子选择
+    std::string getLatelySHLeZhi();
+    void setLatelySHLeZhi(std::string num);
+    //记录玩家在上海麻将上的开宝选择
+    std::string getLatelySHKaiBao();
+    void setLatelySHKaiBao(std::string num);
+    //记录玩家在上海麻将上的二模三冲选择
+    std::string getLatelySHEmsc();
+    void setLatelySHEmsc(std::string num);
+    //记录玩家在上海麻将上的飞苍蝇选择
+    std::string getLatelySHFcy();
+    void setLatelySHFcy(std::string num);
+    //记录玩家在红中麻将上的底分选择
+    std::string getLatelyHZDi();
+    void setLatelyHZDi(std::string num);
+    //记录玩家在红中麻将上的翻码选择
+    std::string getLatelyHZFanMa();
+    void setLatelyHZFanMa(std::string num);
+    //记录玩家在崇明麻将上的底花选择
+    //记录玩家在崇明麻将上的勒子选择
+    //记录玩家在崇明麻将上的开宝选择
+    //记录玩家在崇明麻将上的飞苍蝇选择
+    
     
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);
 private:
-	UserData();
-	static UserData* _instance;	
-	void init();
+    UserData();
+    static UserData* _instance;
+    void init();
 };
 #endif

@@ -367,3 +367,67 @@ GameMahjongType UserData::getLatelyMahjongType(){
 void UserData::setLatelyMahjongType(GameMahjongType type){
     UserDefault::getInstance()->setIntegerForKey("lately_mahjong_type",type);
 }
+
+
+GameModel UserData::getLatelyGameModel(){
+    return (GameModel)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_model",GameModel::FOURPLAYER);
+}
+void UserData::setLatelyGameModel(GameModel model){
+    UserDefault::getInstance()->getIntegerForKey("lately_mahjong_model",model);
+}
+
+std::string UserData::getLatelyGameJuShu(){
+    return UserDefault::getInstance()->getStringForKey("game_ju_num","1");
+}
+void UserData::setLatelyGameJuShu(std::string num){
+    UserDefault::getInstance()->setStringForKey("game_ju_num",num);
+}
+
+std::string UserData::getLatelySHDiHua(){
+    return UserDefault::getInstance()->getStringForKey("sh_di_hua","1");
+}
+void UserData::setLatelySHDiHua(std::string num){
+    UserDefault::getInstance()->setStringForKey("sh_di_hua",num);
+}
+std::string UserData::getLatelySHLeZhi(){
+    return UserDefault::getInstance()->getStringForKey("sh_le_zi","0");
+}
+void UserData::setLatelySHLeZhi(std::string num){
+    UserDefault::getInstance()->setStringForKey("sh_le_zi",num);
+}
+
+std::string UserData::getLatelySHKaiBao(){
+    return UserDefault::getInstance()->getStringForKey("sh_kai_bao","1");
+}
+void UserData::setLatelySHKaiBao(std::string num){
+    UserDefault::getInstance()->setStringForKey("sh_kai_bao",num);
+}
+
+std::string UserData::getLatelySHEmsc(){
+    return UserDefault::getInstance()->getStringForKey("sh_emsc","0");
+}
+void UserData::setLatelySHEmsc(std::string num){
+    UserDefault::getInstance()->setStringForKey("sh_emsc",num);
+}
+
+std::string UserData::getLatelySHFcy(){
+    return UserDefault::getInstance()->getStringForKey("sh_fcy","0");
+}
+void UserData::setLatelySHFcy(std::string num){
+    UserDefault::getInstance()->getStringForKey("sh_fcy",num);
+}
+
+std::string UserData::getLatelyHZDi(){
+    return UserDefault::getInstance()->getStringForKey("hz_di_fen","2");
+}
+void UserData::setLatelyHZDi(std::string num){
+    UserDefault::getInstance()->setStringForKey("hz_di_fen",num);
+}
+
+std::string UserData::getLatelyHZFanMa(){
+    return UserDefault::getInstance()->getStringForKey("hz_fan_ma","4");
+}
+void UserData::setLatelyHZFanMa(std::string num){
+    UserDefault::getInstance()->setStringForKey("hz_fan_ma",num);
+}
+
