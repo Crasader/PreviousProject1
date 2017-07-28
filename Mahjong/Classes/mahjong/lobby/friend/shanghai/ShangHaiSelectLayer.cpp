@@ -18,245 +18,335 @@ bool ShangHaiSelectLayer::init(){
     
     
     auto shangHaiRoomText = Sprite::create("openroom/shang_hai_text.png");
-    shangHaiRoomText->setPosition(755,375);
+    shangHaiRoomText->setPosition(745,355);
     addChild(shangHaiRoomText);
     
-    // 1/1无勒子
-    auto leziwu11 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLeziType1, this));
-    auto leziwuMenu11 = Menu::create(leziwu11,NULL);
-    leziwuMenu11->setTag(2023);
-    leziwuMenu11->setPosition(470,320);
-    addChild(leziwuMenu11);
-    
-    auto leziwuImg11 = Sprite::create("openroom/icon_right.png");
-    leziwuImg11->setTag(2024);
-    leziwuImg11->setPosition(470,320);
-    leziwuImg11->setVisible(true);
-    addChild(leziwuImg11);
-    
-    // 1/1 20勒子
-    auto lezi1120 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLeziType2, this));
-    auto lezi1120Menu = Menu::create(lezi1120,NULL);
-    lezi1120Menu->setTag(2025);
-    lezi1120Menu->setPosition(705,320);
-    addChild(lezi1120Menu);
-    
-    auto lezi1120Img = Sprite::create("openroom/icon_right.png");
-    lezi1120Img->setTag(2026);
-    lezi1120Img->setPosition(705,320);
-    lezi1120Img->setVisible(false);
-    addChild(lezi1120Img);
-    
-    // 1/1 50勒子
-    
-    auto lezi1150 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLeziType3, this));
-    auto lezi1150Menu = Menu::create(lezi1150,NULL);
-    lezi1150Menu->setTag(2027);
-    lezi1150Menu->setPosition(960,320);
-    addChild(lezi1150Menu);
-    
-    auto lezi1150Img = Sprite::create("openroom/icon_right.png");
-    lezi1150Img->setTag(2028);
-    lezi1150Img->setPosition(960,320);
-    lezi1150Img->setVisible(false);
-    addChild(lezi1150Img);
+    /* 底和花的选择  */
+    auto di_bg_1 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectDiHua11, this));
+    auto menuDi_1 = Menu::create(di_bg_1,NULL);
+    menuDi_1->setPosition(455,568);
+    addChild(menuDi_1);
+    //底花1/1
+    auto diHuaImg11 = Sprite::create("openroom/circle_select.png");
+    diHuaImg11->setTag(2001);
+    diHuaImg11->setPosition(455,568);
+    diHuaImg11->setVisible(true);
+    addChild(diHuaImg11);
     
     
+    auto di_bg_2 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectDiHua22, this));
+    auto menuDi_2 = Menu::create(di_bg_2,NULL);
+    menuDi_2->setPosition(655,568);
+    addChild(menuDi_2);
+    //底花2/2
+    auto diHuaImg22 = Sprite::create("openroom/circle_select.png");
+    diHuaImg22->setTag(2002);
+    diHuaImg22->setPosition(655,568);
+    diHuaImg22->setVisible(false);
+    addChild(diHuaImg22);
     
-    // 2/2 40勒子
     
-    auto lezi2240 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLeziType5, this));
-    auto lezi2240Menu = Menu::create(lezi2240,NULL);
-    lezi2240Menu->setTag(2031);
-    lezi2240Menu->setPosition(470,240);
-    addChild(lezi2240Menu);
+    auto di_bg_3 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectDiHua62, this));
+    auto menuDi_3 = Menu::create(di_bg_3,NULL);
+    menuDi_3->setPosition(845,568);
+    addChild(menuDi_3);
+    //底花6/2
+    auto diHuaImg62 = Sprite::create("openroom/circle_select.png");
+    diHuaImg62->setTag(2003);
+    diHuaImg62->setPosition(845,568);
+    diHuaImg62->setVisible(false);
+    addChild(diHuaImg62);
     
-    auto lezi2240Img = Sprite::create("openroom/icon_right.png");
-    lezi2240Img->setTag(2032);
-    lezi2240Img->setPosition(470,240);
-    lezi2240Img->setVisible(false);
-    addChild(lezi2240Img);
     
-    // 2/2 100勒子
-    auto lezi22100 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLeziType6, this));
-    auto lezi22100Menu = Menu::create(lezi22100,NULL);
-    lezi22100Menu->setTag(2033);
-    lezi22100Menu->setPosition(705,240);
-    addChild(lezi22100Menu);
+    auto di_bg_4 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectDiHua55, this));
+    auto menuDi_4 = Menu::create(di_bg_4,NULL);
+    menuDi_4->setPosition(1020,568);
+    addChild(menuDi_4);
+    //底花5/5
+    auto diHuaImg55 = Sprite::create("openroom/circle_select.png");
+    diHuaImg55->setTag(2004);
+    diHuaImg55->setPosition(1020,568);
+    diHuaImg55->setVisible(false);
+    addChild(diHuaImg55);
     
-    auto lezi22100Img = Sprite::create("openroom/icon_right.png");
-    lezi22100Img->setTag(2034);
-    lezi22100Img->setPosition(705,240);
-    lezi22100Img->setVisible(false);
-    addChild(lezi22100Img);
+    /* 勒子选择 */
+    auto le_bg_1 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLezi20, this));
+    auto menuLe_1 = Menu::create(le_bg_1,NULL);
+    menuLe_1->setPosition(455,495);
+    addChild(menuLe_1);
+    // 20勒子
+    auto leZhiImg20 = Sprite::create("openroom/circle_select.png");
+    leZhiImg20->setTag(3001);
+    leZhiImg20->setPosition(455,495);
+    leZhiImg20->setVisible(true);
+    addChild(leZhiImg20);
     
-    //无开宝
+    auto le_bg_2 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLezi50, this));
+    auto menuLe_2 = Menu::create(le_bg_2,NULL);
+    menuLe_2->setPosition(655,495);
+    addChild(menuLe_2);
+    // 50勒子
+    auto leZhiImg50 = Sprite::create("openroom/circle_select.png");
+    leZhiImg50->setTag(3002);
+    leZhiImg50->setPosition(655,495);
+    leZhiImg50->setVisible(false);
+    addChild(leZhiImg50);
+    
+    auto le_bg_3 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLezi100, this));
+    auto menuLe_3 = Menu::create(le_bg_3,NULL);
+    menuLe_3->setPosition(845,495);
+    addChild(menuLe_3);
+    // 100勒子
+    auto leZhiImg100 = Sprite::create("openroom/circle_select.png");
+    leZhiImg100->setTag(3003);
+    leZhiImg100->setPosition(845,495);
+    leZhiImg100->setVisible(false);
+    addChild(leZhiImg100);
+    
+    auto le_bg_4 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLeziWu, this));
+    auto menuLe_4 = Menu::create(le_bg_4,NULL);
+    menuLe_4->setPosition(1020,495);
+    addChild(menuLe_4);
+    // 20勒子
+    auto leZhiImgWu = Sprite::create("openroom/circle_select.png");
+    leZhiImgWu->setTag(3004);
+    leZhiImgWu->setPosition(1020,495);
+    leZhiImgWu->setVisible(false);
+    addChild(leZhiImgWu);
+    
+    
+    //开宝
     auto wukaibao = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectWukaibao, this));
     auto wukaibaoMenu = Menu::create(wukaibao,NULL);
-    wukaibaoMenu->setTag(2035);
-    wukaibaoMenu->setPosition(470,160);
+    wukaibaoMenu->setPosition(460,420);
     addChild(wukaibaoMenu);
     
     auto selectWukaibao = Sprite::create("openroom/icon_right.png");
-    selectWukaibao->setTag(2036);
-    selectWukaibao->setPosition(470,160);
-    selectWukaibao->setVisible(false);
+    selectWukaibao->setTag(4001);
+    selectWukaibao->setPosition(460,420);
+    selectWukaibao->setVisible(true);
     addChild(selectWukaibao);
+    
+    //飞苍蝇
+    auto feicy = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectFeiChangYin, this));
+    auto feicyMenu = Menu::create(feicy,NULL);
+    feicyMenu->setPosition(655,420);
+    addChild(feicyMenu);
+    
+    auto selectFeicy = Sprite::create("openroom/icon_right.png");
+    selectFeicy->setTag(4002);
+    selectFeicy->setPosition(655,420);
+    selectFeicy->setVisible(false);
+    addChild(selectFeicy);
+    
     
     //二摸三冲
     auto mo2chong3 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(ShangHaiSelectLayer::select2mo3chong, this));
     auto mo2chong3Menu = Menu::create(mo2chong3,NULL);
-    mo2chong3Menu->setPosition(705,160);
-    mo2chong3Menu->setTag(2037);
+    mo2chong3Menu->setPosition(840,420);
     addChild(mo2chong3Menu);
     
     auto selectmo2chong3 = Sprite::create("openroom/icon_right.png");
-    selectmo2chong3->setTag(2038);
-    selectmo2chong3->setPosition(705,160);
+    selectmo2chong3->setTag(4003);
+    selectmo2chong3->setPosition(840,420);
     selectmo2chong3->setVisible(false);
     addChild(selectmo2chong3);
     
     return true;
 }
 
-void ShangHaiSelectLayer::selectLeziType1(){
-    if(NULL != getChildByTag(2024)){
-        getChildByTag(2024)->setVisible(true);
+
+void ShangHaiSelectLayer::selectDiHua11(){
+    if(NULL != getChildByTag(2001)){
+        getChildByTag(2001)->setVisible(true);
     }
-    if(NULL != getChildByTag(2026)){
-        getChildByTag(2026)->setVisible(false);
+    if(NULL != getChildByTag(2002)){
+        getChildByTag(2002)->setVisible(false);
     }
-    if(NULL != getChildByTag(2028)){
-        getChildByTag(2028)->setVisible(false);
+    if(NULL != getChildByTag(2003)){
+        getChildByTag(2003)->setVisible(false);
     }
-    if(NULL != getChildByTag(2032)){
-        getChildByTag(2032)->setVisible(false);
-    }
-    if(NULL != getChildByTag(2034)){
-        getChildByTag(2034)->setVisible(false);
+    if(NULL != getChildByTag(2004)){
+        getChildByTag(2004)->setVisible(false);
     }
 }
 
-void ShangHaiSelectLayer::selectLeziType2(){
-    if(NULL != getChildByTag(2024)){
-        getChildByTag(2024)->setVisible(false);
+void ShangHaiSelectLayer::selectDiHua22(){
+    if(NULL != getChildByTag(2001)){
+        getChildByTag(2001)->setVisible(false);
     }
-    if(NULL != getChildByTag(2026)){
-        getChildByTag(2026)->setVisible(true);
+    if(NULL != getChildByTag(2002)){
+        getChildByTag(2002)->setVisible(true);
     }
-    if(NULL != getChildByTag(2028)){
-        getChildByTag(2028)->setVisible(false);
+    if(NULL != getChildByTag(2003)){
+        getChildByTag(2003)->setVisible(false);
     }
-    if(NULL != getChildByTag(2032)){
-        getChildByTag(2032)->setVisible(false);
-    }
-    if(NULL != getChildByTag(2034)){
-        getChildByTag(2034)->setVisible(false);
+    if(NULL != getChildByTag(2004)){
+        getChildByTag(2004)->setVisible(false);
     }
 }
 
-void ShangHaiSelectLayer::selectLeziType3(){
-    if(NULL != getChildByTag(2024)){
-        getChildByTag(2024)->setVisible(false);
+void ShangHaiSelectLayer::selectDiHua62(){
+    if(NULL != getChildByTag(2001)){
+        getChildByTag(2001)->setVisible(false);
     }
-    if(NULL != getChildByTag(2026)){
-        getChildByTag(2026)->setVisible(false);
+    if(NULL != getChildByTag(2002)){
+        getChildByTag(2002)->setVisible(false);
     }
-    if(NULL != getChildByTag(2028)){
-        getChildByTag(2028)->setVisible(true);
+    if(NULL != getChildByTag(2003)){
+        getChildByTag(2003)->setVisible(true);
     }
-    if(NULL != getChildByTag(2032)){
-        getChildByTag(2032)->setVisible(false);
-    }
-    if(NULL != getChildByTag(2034)){
-        getChildByTag(2034)->setVisible(false);
+    if(NULL != getChildByTag(2004)){
+        getChildByTag(2004)->setVisible(false);
     }
 }
 
-void ShangHaiSelectLayer::selectLeziType4(){
-    if(NULL != getChildByTag(2024)){
-        getChildByTag(2024)->setVisible(false);
+void ShangHaiSelectLayer::selectDiHua55(){
+    if(NULL != getChildByTag(2001)){
+        getChildByTag(2001)->setVisible(false);
     }
-    if(NULL != getChildByTag(2026)){
-        getChildByTag(2026)->setVisible(false);
+    if(NULL != getChildByTag(2002)){
+        getChildByTag(2002)->setVisible(false);
     }
-    if(NULL != getChildByTag(2028)){
-        getChildByTag(2028)->setVisible(false);
+    if(NULL != getChildByTag(2003)){
+        getChildByTag(2003)->setVisible(false);
     }
-    if(NULL != getChildByTag(2032)){
-        getChildByTag(2032)->setVisible(false);
-    }
-    if(NULL != getChildByTag(2034)){
-        getChildByTag(2034)->setVisible(false);
+    if(NULL != getChildByTag(2004)){
+        getChildByTag(2004)->setVisible(true);
     }
 }
 
-void ShangHaiSelectLayer::selectLeziType5(){
-    if(NULL != getChildByTag(2024)){
-        getChildByTag(2024)->setVisible(false);
+void ShangHaiSelectLayer::selectLezi20(){
+    if(NULL != getChildByTag(3001)){
+        getChildByTag(3001)->setVisible(true);
     }
-    if(NULL != getChildByTag(2026)){
-        getChildByTag(2026)->setVisible(false);
+    if(NULL != getChildByTag(3002)){
+        getChildByTag(3002)->setVisible(false);
     }
-    if(NULL != getChildByTag(2028)){
-        getChildByTag(2028)->setVisible(false);
+    if(NULL != getChildByTag(3003)){
+        getChildByTag(3003)->setVisible(false);
     }
-    if(NULL != getChildByTag(2032)){
-        getChildByTag(2032)->setVisible(true);
-    }
-    if(NULL != getChildByTag(2034)){
-        getChildByTag(2034)->setVisible(false);
+    if(NULL != getChildByTag(3004)){
+        getChildByTag(3004)->setVisible(false);
     }
 }
 
-void ShangHaiSelectLayer::selectLeziType6(){
-    if(NULL != getChildByTag(2024)){
-        getChildByTag(2024)->setVisible(false);
+void ShangHaiSelectLayer::selectLezi50(){
+    if(NULL != getChildByTag(3001)){
+        getChildByTag(3001)->setVisible(false);
     }
-    if(NULL != getChildByTag(2026)){
-        getChildByTag(2026)->setVisible(false);
+    if(NULL != getChildByTag(3002)){
+        getChildByTag(3002)->setVisible(true);
     }
-    if(NULL != getChildByTag(2028)){
-        getChildByTag(2028)->setVisible(false);
+    if(NULL != getChildByTag(3003)){
+        getChildByTag(3003)->setVisible(false);
     }
-    if(NULL != getChildByTag(2032)){
-        getChildByTag(2032)->setVisible(false);
-    }
-    if(NULL != getChildByTag(2034)){
-        getChildByTag(2034)->setVisible(true);
+    if(NULL != getChildByTag(3004)){
+        getChildByTag(3004)->setVisible(false);
     }
 }
 
+void ShangHaiSelectLayer::selectLezi100(){
+    if(NULL != getChildByTag(3001)){
+        getChildByTag(3001)->setVisible(false);
+    }
+    if(NULL != getChildByTag(3002)){
+        getChildByTag(3002)->setVisible(false);
+    }
+    if(NULL != getChildByTag(3003)){
+        getChildByTag(3003)->setVisible(true);
+    }
+    if(NULL != getChildByTag(3004)){
+        getChildByTag(3004)->setVisible(false);
+    }
+}
+
+void ShangHaiSelectLayer::selectLeziWu(){
+    if(NULL != getChildByTag(3001)){
+        getChildByTag(3001)->setVisible(false);
+    }
+    if(NULL != getChildByTag(3002)){
+        getChildByTag(3002)->setVisible(false);
+    }
+    if(NULL != getChildByTag(3003)){
+        getChildByTag(3003)->setVisible(false);
+    }
+    if(NULL != getChildByTag(3004)){
+        getChildByTag(3004)->setVisible(true);
+    }
+}
 
 void ShangHaiSelectLayer::selectWukaibao(){
-    if(NULL != getChildByTag(2036)){
-        getChildByTag(2036)->setVisible(!getChildByTag(2036)->isVisible());
+    if(NULL != getChildByTag(4001)){
+        getChildByTag(4001)->setVisible(!getChildByTag(4001)->isVisible());
+    }
+}
+
+void ShangHaiSelectLayer::selectFeiChangYin(){
+    if(NULL != getChildByTag(4002)){
+        getChildByTag(4002)->setVisible(!getChildByTag(4002)->isVisible());
     }
 }
 
 void ShangHaiSelectLayer::select2mo3chong(){
-    if(NULL != getChildByTag(2038)){
-        getChildByTag(2038)->setVisible(!getChildByTag(2038)->isVisible());
+    if(NULL != getChildByTag(4003)){
+        getChildByTag(4003)->setVisible(!getChildByTag(4003)->isVisible());
     }
+}
+
+std::string ShangHaiSelectLayer::getDiHua(){
+    std::string dihua = "0";//0表示1/1 ,   1 表示 2/2 ,2表示 6/2 ,3表示 5/5
+    if(NULL != getChildByTag(2001)&&getChildByTag(2001)->isVisible()){
+        dihua = "0";
+    }else if(NULL != getChildByTag(2002)&&getChildByTag(2002)->isVisible()){
+        dihua = "1";
+    }else if(NULL != getChildByTag(2003)&&getChildByTag(2003)->isVisible()){
+        dihua = "2";
+    }
+    else if(NULL != getChildByTag(2004)&&getChildByTag(2004)->isVisible()){
+        dihua = "3";
+    }
+    return dihua;
 }
 
 std::string ShangHaiSelectLayer::getLeizi(){
-    int iflezi = 0;//0表示(1/1 无勒子),1表示(1/1 20勒子),2表示(1/1 50勒子),3表示(2/2 无勒子),4表示(2/2 40勒子),5表示(2/2 100勒子)
-    if(NULL != getChildByTag(2024)&&getChildByTag(2024)->isVisible()){
-        iflezi = LeziType::type1100;
-    }else if(NULL != getChildByTag(2026)&&getChildByTag(2026)->isVisible()){
-        iflezi = LeziType::type1120;
-    }else if(NULL != getChildByTag(2028)&&getChildByTag(2028)->isVisible()){
-        iflezi = LeziType::type1150;
+    std::string iflezi = 0;//0表示20,1表示50,2表示100,3表示无勒子
+    if(NULL != getChildByTag(3001)&&getChildByTag(3001)->isVisible()){
+        iflezi = "0";
+    }else if(NULL != getChildByTag(3002)&&getChildByTag(3002)->isVisible()){
+        iflezi = "1";
+    }else if(NULL != getChildByTag(3003)&&getChildByTag(3003)->isVisible()){
+        iflezi = "2";
     }
-    else if(NULL != getChildByTag(2032)&&getChildByTag(2032)->isVisible()){
-        iflezi = LeziType::type2240;
-    }else if(NULL != getChildByTag(2034)&&getChildByTag(2034)->isVisible()){
-        iflezi = LeziType::type22100;
+    else if(NULL != getChildByTag(3004)&&getChildByTag(3004)->isVisible()){
+        iflezi = "3";
     }
-    return StringUtils::format("%d",iflezi) ;
+    return iflezi ;
 }
 
+std::string ShangHaiSelectLayer::getKaibao(){
+    std::string ifkb = "1";//0表示没有，1表示有
+    if(NULL != getChildByTag(4001)){
+        if(getChildByTag(4001)->isVisible()){
+            ifkb = "1";
+        }else{
+            ifkb = "0";
+        }
+    }
+    return ifkb;
+}
+
+std::string ShangHaiSelectLayer::getFeiChangYin(){
+    std::string ifcy = "1";//0表示没有，1表示有
+    if(NULL != getChildByTag(2036)){
+        if(getChildByTag(2036)->isVisible()){
+            ifcy = "1";
+        }else{
+            ifcy = "0";
+        }
+    }
+    return ifcy;
+}
 
 std::string ShangHaiSelectLayer::getEmsc(){
     std::string ifemsc = "0";//0表示没有，1表示有
@@ -268,19 +358,6 @@ std::string ShangHaiSelectLayer::getEmsc(){
         }
     }
     return ifemsc;
-}
-
-
-std::string ShangHaiSelectLayer::getKaibao(){
-    std::string ifkb = "1";//0表示没有，1表示有
-    if(NULL != getChildByTag(2036)){
-        if(getChildByTag(2036)->isVisible()){
-            ifkb = "0";
-        }else{
-            ifkb = "1";
-        }
-    }
-    return ifkb;
 }
 
 

@@ -30,106 +30,103 @@ bool FriendRoom::init()
     
     
     shangHai = Sprite::create("openroom/shang_hai_btn_1.png");
-    shangHai->setPosition(225,535);
+    shangHai->setPosition(215,535);
     addChild(shangHai);
     
     hongZhong = Sprite::create("openroom/hong_zhong_btn_2.png");
-    hongZhong->setPosition(225,430);
+    hongZhong->setPosition(215,430);
     addChild(hongZhong);
     
     vertical = Sprite::create("openroom/vertical_line_1.png");
-    vertical->setPosition(332,355);
+    vertical->setPosition(322,355);
     addChild(vertical);
-    //开房消耗显示
     
-    auto fang8 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao8().c_str()), "arial", 23);
-    fang8->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fang8->setColor(Color3B(124,37,7));
-    fang8->setPosition(595,412);
-    addChild(fang8);
-    auto kuohao2 = Sprite::create("openroom/kuohao.png");
-    kuohao2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    kuohao2->setPosition(fang8->getPositionX()+fang8->getContentSize().width,412);
-    addChild(kuohao2);
-    
-    auto fang4 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao4().c_str()), "arial", 23);
-    fang4->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fang4->setColor(Color3B(124,37,7));
-    fang4->setPosition(835,412);
-    addChild(fang4);
-    auto kuohao1 = Sprite::create("openroom/kuohao.png");
-    kuohao1->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    kuohao1->setPosition(fang4->getPositionX()+fang4->getContentSize().width,412);
-    addChild(kuohao1);
-    
-    auto fang16 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao16().c_str()), "arial", 23);
-    fang16->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    fang16->setColor(Color3B(124,37,7));
-    fang16->setPosition(1100,412);
-    addChild(fang16);
-    
-    auto kuohao3 = Sprite::create("openroom/kuohao.png");
-    kuohao3->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    kuohao3->setPosition(fang16->getPositionX()+fang16->getContentSize().width,412);
-    addChild(kuohao3);
+    //    //开房消耗显示
+    //    auto fang8 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao8().c_str()), "arial", 23);
+    //    fang8->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    //    fang8->setColor(Color3B(124,37,7));
+    //    fang8->setPosition(595,412);
+    //    addChild(fang8);
+    //    auto kuohao2 = Sprite::create("openroom/kuohao.png");
+    //    kuohao2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    //    kuohao2->setPosition(fang8->getPositionX()+fang8->getContentSize().width,412);
+    //    addChild(kuohao2);
+    //
+    //    auto fang4 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao4().c_str()), "arial", 23);
+    //    fang4->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    //    fang4->setColor(Color3B(124,37,7));
+    //    fang4->setPosition(835,412);
+    //    addChild(fang4);
+    //    auto kuohao1 = Sprite::create("openroom/kuohao.png");
+    //    kuohao1->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    //    kuohao1->setPosition(fang4->getPositionX()+fang4->getContentSize().width,412);
+    //    addChild(kuohao1);
+    //
+    //    auto fang16 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao16().c_str()), "arial", 23);
+    //    fang16->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    //    fang16->setColor(Color3B(124,37,7));
+    //    fang16->setPosition(1100,412);
+    //    addChild(fang16);
+    //
+    //    auto kuohao3 = Sprite::create("openroom/kuohao.png");
+    //    kuohao3->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    //    kuohao3->setPosition(fang16->getPositionX()+fang16->getContentSize().width,412);
+    //    addChild(kuohao3);
+    //
     /* 房间人数选择 */
-    
-    auto erLen4 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::select4People, this));
+    auto erLen4 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(FriendRoom::select4People, this));
     auto siLenMenu = Menu::create(erLen4,NULL);
-    siLenMenu->setPosition(470,490);
+    siLenMenu->setPosition(455,305);
     addChild(siLenMenu);
     
-    auto select4Peo = Sprite::create("openroom/icon_right.png");
+    auto select4Peo = Sprite::create("openroom/circle_select.png");
     select4Peo->setTag(1010);
-    select4Peo->setPosition(470,490);
+    select4Peo->setPosition(455,305);
     select4Peo->setVisible(true);
     addChild(select4Peo);
     
-    
-    auto erLen2 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::select2People, this));
+    auto erLen2 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(FriendRoom::select2People, this));
     auto erLenMenu = Menu::create(erLen2,NULL);
-    erLenMenu->setPosition(705,495);
+    erLenMenu->setPosition(655,305);
     addChild(erLenMenu);
     
-    auto select2Peo = Sprite::create("openroom/icon_right.png");
+    auto select2Peo = Sprite::create("openroom/circle_select.png");
     select2Peo->setTag(1011);
-    select2Peo->setPosition(705,495);
+    select2Peo->setPosition(655,305);
     select2Peo->setVisible(false);
     addChild(select2Peo);
     
-    
     /* 房间局数选择 */
-    auto fangka8 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka8, this));
+    auto fangka8 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(FriendRoom::selectFangka8, this));
     auto fangka8Menu = Menu::create(fangka8,NULL);
-    fangka8Menu->setPosition(470,405);
+    fangka8Menu->setPosition(455,230);
     addChild(fangka8Menu);
     
-    auto select8 = Sprite::create("openroom/icon_right.png");
+    auto select8 = Sprite::create("openroom/circle_select.png");
     select8->setTag(1024);
-    select8->setPosition(470,405);
+    select8->setPosition(455,230);
     select8->setVisible(true);
     addChild(select8);
     
-    auto fangka4 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka4, this));
+    auto fangka4 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(FriendRoom::selectFangka4, this));
     auto fangka4Menu = Menu::create(fangka4,NULL);
-    fangka4Menu->setPosition(705,405);
+    fangka4Menu->setPosition(655,230);
     addChild(fangka4Menu);
     
-    auto select4 = Sprite::create("openroom/icon_right.png");
+    auto select4 = Sprite::create("openroom/circle_select.png");
     select4->setTag(1025);
-    select4->setPosition(705,405);
+    select4->setPosition(655,230);
     select4->setVisible(false);
     addChild(select4);
     
-    
-    auto fangka16 = MenuItemImage::create("openroom/select_box_normal.png","openroom/select_box_normal.png",CC_CALLBACK_0(FriendRoom::selectFangka16, this));
+    auto fangka16 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(FriendRoom::selectFangka16, this));
     auto fangka16Menu = Menu::create(fangka16,NULL);
-    fangka16Menu->setPosition(960,405);
+    fangka16Menu->setPosition(845,230);
     addChild(fangka16Menu);
     
-    auto select16 = Sprite::create("openroom/icon_right.png");
+    auto select16 = Sprite::create("openroom/circle_select.png");
     select16->setTag(1026);
-    select16->setPosition(960,405);
+    select16->setPosition(845,230);
     select16->setVisible(false);
     addChild(select16);
     

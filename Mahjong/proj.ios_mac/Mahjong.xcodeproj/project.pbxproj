@@ -1582,7 +1582,6 @@
 			children = (
 				D2E4BC651F2883EC00A34067 /* chongming */,
 				D2E4BC661F2883EC00A34067 /* hongzhong */,
-				D2E4BC671F2883EC00A34067 /* nanhui */,
 				D2E4BC681F2883EC00A34067 /* shanghai */,
 				D252FBFD1E7FABC600937322 /* dialog */,
 				D252FC041E7FABC600937322 /* FriendRoom.cpp */,
@@ -2065,13 +2064,6 @@
 				D2E4BC6E1F28840400A34067 /* HongZhongSelectLayer.hpp */,
 			);
 			path = hongzhong;
-			sourceTree = "<group>";
-		};
-		D2E4BC671F2883EC00A34067 /* nanhui */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = nanhui;
 			sourceTree = "<group>";
 		};
 		D2E4BC681F2883EC00A34067 /* shanghai */ = {
