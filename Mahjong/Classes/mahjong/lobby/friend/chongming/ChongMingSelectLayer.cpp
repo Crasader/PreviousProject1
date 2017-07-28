@@ -171,6 +171,7 @@ void ChongMingSelectLayer::selectDiHua22(){
     if(NULL != getChildByTag(2004)){
         getChildByTag(2004)->setVisible(false);
     }
+    selectLezi50();
 }
 
 void ChongMingSelectLayer::selectDiHua62(){
@@ -186,6 +187,7 @@ void ChongMingSelectLayer::selectDiHua62(){
     if(NULL != getChildByTag(2004)){
         getChildByTag(2004)->setVisible(false);
     }
+    selectLezi50();
 }
 
 void ChongMingSelectLayer::selectDiHua55(){
@@ -201,6 +203,7 @@ void ChongMingSelectLayer::selectDiHua55(){
     if(NULL != getChildByTag(2004)){
         getChildByTag(2004)->setVisible(true);
     }
+    selectLezi100();
 }
 
 void ChongMingSelectLayer::selectLezi20(){
