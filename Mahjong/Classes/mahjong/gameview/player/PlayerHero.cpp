@@ -410,6 +410,7 @@ void PlayerHero::readyGo(){
 
 
 void PlayerHero::inviteWechatFriend(){
+    std::string gameName = "上海敲麻";
     std::string roomtype = ChineseWord("room_info_0");
     if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
         roomtype += ChineseWord("game_type_1");
@@ -427,6 +428,15 @@ void PlayerHero::inviteWechatFriend(){
         }else{
             roomtype += ChineseWord("room_info_3");
         }
+        if(GAMEDATA::getInstance()->getPrivateDihua()=="0"){
+            roomtype += ",1/1";
+        }else if(GAMEDATA::getInstance()->getPrivateDihua()=="1"){
+            roomtype += ",2/2";
+        }else if(GAMEDATA::getInstance()->getPrivateDihua()=="2"){
+            roomtype += ",6/2";
+        }else if(GAMEDATA::getInstance()->getPrivateDihua()=="3"){
+            roomtype += ",5/5";
+        }
         if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
             roomtype += ChineseWord("room_info_7");
         }else if(GAMEDATA::getInstance()->getPrivateLezi()=="1"){
@@ -436,15 +446,15 @@ void PlayerHero::inviteWechatFriend(){
             roomtype += ChineseWord("room_info_9");
         }else if(GAMEDATA::getInstance()->getPrivateLezi()=="3"){
             roomtype += ChineseWord("room_info_10");
-        }else if(GAMEDATA::getInstance()->getPrivateLezi()=="4"){
-            roomtype += ChineseWord("room_info_11");
-        }else if(GAMEDATA::getInstance()->getPrivateLezi()=="5"){
-            roomtype += ChineseWord("room_info_12");
         }
         if(GAMEDATA::getInstance()->getPrivateEmsc()=="1"){
             roomtype += ChineseWord("room_info_6");
         }
+        if(GAMEDATA::getInstance()->getPrivateFcy()=="1"){
+            roomtype += "飞苍蝇";
+        }
     }else if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
+        gameName = "红中麻将";
         if(GAMEDATA::getInstance()->getFanMaType() == "4"){
             roomtype += ChineseWord("room_info_13");
         }else if(GAMEDATA::getInstance()->getFanMaType() == "3"){
@@ -461,9 +471,9 @@ void PlayerHero::inviteWechatFriend(){
         shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
     }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,StringUtils::format("上海敲麻 房号:%s %s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),StringUtils::format("%s %s",roomtype.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),false);
+    CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,StringUtils::format("小白相%s 房号:%s %s",gameName.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),StringUtils::format("%s %s",roomtype.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,StringUtils::format("上海敲麻 房号:%s %s",GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),StringUtils::format("%s %s",roomtype.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),0);
+    CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,StringUtils::format("小白相%s 房号:%s %s",gameName.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),StringUtils::format("%s %s",roomtype.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),0);
 #endif
 }
 
