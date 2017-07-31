@@ -28,6 +28,7 @@ public:
 private:
     Sprite* hongZhong;
     Sprite* shangHai;
+    Sprite* chongMing;
     Sprite* guizhe1;
     Sprite* guizhe2;
     Sprite* guizhe3;
@@ -37,13 +38,13 @@ private:
     MenuItemToggle* tsToggle;
     MenuItemToggle* jsToggle;
     ListView* contentView;
-    bool  shangHaiSelected = true;
+    int  ruleSelected = 0;
     int selcetIndex = 1;
     void closeView();
     void showJiBenGuiZhe(Ref* ref);
     void showJiBenPaiXing(Ref* ref);
     void showTeShuPaiXing(Ref* ref);
     void showYouXiJieSuan(Ref* ref);
-    void updateRuleImage(bool shanghai,int index);
+    void updateRuleImage(int indexSelect,int index);
 };
 #endif /* GameRuleDialog_hpp */

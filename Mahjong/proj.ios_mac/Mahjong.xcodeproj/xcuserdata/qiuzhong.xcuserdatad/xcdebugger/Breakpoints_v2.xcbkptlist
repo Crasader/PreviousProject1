@@ -7022,11 +7022,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/common/setting/GameRuleDialog.cpp"
-            timestampString = "522057340.072893"
+            timestampString = "523189274.665359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "GameRuleDialog::showJiBenPaiXing(Ref* ref)"
             landmarkType = "7">
          </BreakpointContent>
