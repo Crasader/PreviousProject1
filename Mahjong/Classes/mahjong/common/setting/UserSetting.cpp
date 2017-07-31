@@ -100,7 +100,7 @@ void UserSetting::drawDialog(){
                                                           "setting/slide_btn_1.png");
     slide_control2->setMinimumValue(0.0f);//设置最小值
     slide_control2->setMaximumValue(100.0f);//设置最大值
-    slide_control2->setValue(UserData::getInstance()->getMusicValue()*100);//设置初始值
+    slide_control2->setValue(UserData::getInstance()->getMusicValue()*90+5);//设置初始值
     slide_control2->setTag(30);
     slide_control2->addTargetWithActionForControlEvents(this,cccontrol_selector(UserSetting::slideCallback),Control::EventType::VALUE_CHANGED);//设置拖动回调
     slide_control2->setPosition(720,290);
@@ -137,12 +137,18 @@ void UserSetting::slideCallback(Ref *sender, Control::EventType controlEvent)
 {
     auto slide_control = (ControlSlider*)sender;//通过回调参数sender 获得ControlSlider
     int current_value = slide_control->getValue();//获取slide当前的值
+    if(current_value<5){
+        slide_control->setValue(5);
+    }else if(current_value>95){
+        slide_control->setValue(95);
+    }
+    int current_value2 = slide_control->getValue();
     if(slide_control->getTag() == 30){
-        Audio::getInstance()->setBGMValue(current_value/100.0f);
+        Audio::getInstance()->setBGMValue((current_value2-5)/90.0f);
     }
     
     if(slide_control->getTag() == 20){
-        Audio::getInstance()->setEffectValue(current_value/100.0f);
+        Audio::getInstance()->setEffectValue((current_value2-5)/90.0f);
     }
     
 }
