@@ -29,6 +29,6 @@ private:
 #endif
     EventListenerCustom* updateContentImg;
     void closeView();
-    
+    void download();
 };
 #endif /* NoticeDialog_hpp */
