@@ -1062,6 +1062,8 @@ void LobbyScene::addEventListener(){
             getChildByTag(904)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != getChildByTag(905))
             getChildByTag(905)->setVisible(UserData::getInstance()->isWeixinPayOpen());
+        if(NULL != getChildByTag(906))
+            getChildByTag(906)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != getChildByTag(1980)){
             getChildByTag(1980)->setVisible(UserData::getInstance()->isWeixinPayOpen());
             if(GAMEDATA::getInstance()->getShowTurnTableState() == 0){
