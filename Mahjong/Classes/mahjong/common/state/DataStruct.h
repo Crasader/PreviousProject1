@@ -768,6 +768,7 @@ struct GameActivityData{
     std::string imageUrl2;
     std::string showTime;
     std::string jumpUrl;
+    std::string downLoadUrl;
 };
 
 struct GameGongGao{

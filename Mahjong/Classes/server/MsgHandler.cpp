@@ -686,6 +686,12 @@ void MsgHandler::handleNoticeResp(std::string msg){
     }else{
         data->showTime = "";
     }
+    if(_mDoc.HasMember("down")){
+        auto &down = _mDoc["down"];
+        data->downLoadUrl = down.GetString();
+    }else{
+        data->downLoadUrl = "";
+    }
     postNotifyMessage(MSG_WAN_JIA_GONG_GAO, data);
 }
 
