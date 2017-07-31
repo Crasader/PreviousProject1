@@ -46,38 +46,7 @@ bool FriendRoom::init()
     vertical->setPosition(322,355);
     addChild(vertical);
     
-    //    //开房消耗显示
-    //    auto fang8 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao8().c_str()), "arial", 23);
-    //    fang8->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    //    fang8->setColor(Color3B(124,37,7));
-    //    fang8->setPosition(595,412);
-    //    addChild(fang8);
-    //    auto kuohao2 = Sprite::create("openroom/kuohao.png");
-    //    kuohao2->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    //    kuohao2->setPosition(fang8->getPositionX()+fang8->getContentSize().width,412);
-    //    addChild(kuohao2);
-    //
-    //    auto fang4 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao4().c_str()), "arial", 23);
-    //    fang4->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    //    fang4->setColor(Color3B(124,37,7));
-    //    fang4->setPosition(835,412);
-    //    addChild(fang4);
-    //    auto kuohao1 = Sprite::create("openroom/kuohao.png");
-    //    kuohao1->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    //    kuohao1->setPosition(fang4->getPositionX()+fang4->getContentSize().width,412);
-    //    addChild(kuohao1);
-    //
-    //    auto fang16 = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao16().c_str()), "arial", 23);
-    //    fang16->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    //    fang16->setColor(Color3B(124,37,7));
-    //    fang16->setPosition(1100,412);
-    //    addChild(fang16);
-    //
-    //    auto kuohao3 = Sprite::create("openroom/kuohao.png");
-    //    kuohao3->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    //    kuohao3->setPosition(fang16->getPositionX()+fang16->getContentSize().width,412);
-    //    addChild(kuohao3);
-    //
+    
     /* 房间人数选择 */
     auto erLen4 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(FriendRoom::select4People, this));
     auto siLenMenu = Menu::create(erLen4,NULL);
@@ -134,6 +103,19 @@ bool FriendRoom::init()
     select16->setPosition(845,230);
     select16->setVisible(false);
     addChild(select16);
+    
+    //开房消耗显示
+    auto fangka = Label::createWithSystemFont(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao8().c_str()), "arial", 26);
+    fangka->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    fangka->setColor(Color3B(124,37,7));
+    fangka->setPosition(500,155);
+    fangka->setTag(1314);
+    addChild(fangka);
+    auto xiaohao = Sprite::create("openroom/fang_fee_text.png");
+    xiaohao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    xiaohao->setTag(1315);
+    xiaohao->setPosition(fangka->getPositionX()+fangka->getContentSize().width,157);
+    addChild(xiaohao);
     
     
     ShangHaiSelectLayer* laye1 = ShangHaiSelectLayer::create();
@@ -279,6 +261,8 @@ void FriendRoom::selectFangka8(){
     if(NULL != getChildByTag(1026)){
         getChildByTag(1026)->setVisible(false);
     }
+    ((Label*)getChildByTag(1314))->setString(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao8().c_str()));
+    getChildByTag(1315)->setPosition(getChildByTag(1314)->getPositionX()+getChildByTag(1314)->getContentSize().width,157);
 }
 
 void FriendRoom::selectFangka4(){
@@ -291,6 +275,8 @@ void FriendRoom::selectFangka4(){
     if(NULL != getChildByTag(1026)){
         getChildByTag(1026)->setVisible(false);
     }
+    ((Label*)getChildByTag(1314))->setString(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao4().c_str()));
+    getChildByTag(1315)->setPosition(getChildByTag(1314)->getPositionX()+getChildByTag(1314)->getContentSize().width,157);
 }
 
 void FriendRoom::selectFangka16(){
@@ -303,6 +289,8 @@ void FriendRoom::selectFangka16(){
     if(NULL != getChildByTag(1026)){
         getChildByTag(1026)->setVisible(true);
     }
+    ((Label*)getChildByTag(1314))->setString(StringUtils::format("X%s",GAMEDATA::getInstance()->getKaiFangXiaoHao16().c_str()));
+    getChildByTag(1315)->setPosition(getChildByTag(1314)->getPositionX()+getChildByTag(1314)->getContentSize().width,157);
 }
 
 void FriendRoom::select2People(){

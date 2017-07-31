@@ -79,7 +79,7 @@ bool ShangHaiSelectLayer::init(){
     auto leZhiImg20 = Sprite::create("openroom/circle_select.png");
     leZhiImg20->setTag(3001);
     leZhiImg20->setPosition(455,495);
-    leZhiImg20->setVisible(true);
+    leZhiImg20->setVisible(false);
     addChild(leZhiImg20);
     
     auto le_bg_2 = MenuItemImage::create("openroom/select_box_normal_b.png","openroom/select_box_normal_b.png",CC_CALLBACK_0(ShangHaiSelectLayer::selectLezi50, this));
@@ -108,11 +108,11 @@ bool ShangHaiSelectLayer::init(){
     auto menuLe_4 = Menu::create(le_bg_4,NULL);
     menuLe_4->setPosition(1020,495);
     addChild(menuLe_4);
-    // 20勒子
+    //无勒子
     auto leZhiImgWu = Sprite::create("openroom/circle_select.png");
     leZhiImgWu->setTag(3004);
     leZhiImgWu->setPosition(1020,495);
-    leZhiImgWu->setVisible(false);
+    leZhiImgWu->setVisible(true);
     addChild(leZhiImgWu);
     
     
@@ -152,6 +152,8 @@ bool ShangHaiSelectLayer::init(){
     selectmo2chong3->setPosition(840,420);
     selectmo2chong3->setVisible(false);
     addChild(selectmo2chong3);
+    
+    
     
     //显示用户的日常习惯
     if(UserData::getInstance()->getLatelySHDiHua() == "0"){
@@ -217,6 +219,7 @@ void ShangHaiSelectLayer::selectDiHua11(){
     if(NULL != getChildByTag(2004)){
         getChildByTag(2004)->setVisible(false);
     }
+    selectLeziWu();
 }
 
 void ShangHaiSelectLayer::selectDiHua22(){

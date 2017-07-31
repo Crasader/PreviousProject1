@@ -196,6 +196,7 @@ void ChongMingSelectLayer::selectDiHua11(){
     if(NULL != getChildByTag(2004)){
         getChildByTag(2004)->setVisible(false);
     }
+    selectLezi20();
 }
 
 void ChongMingSelectLayer::selectDiHua22(){
