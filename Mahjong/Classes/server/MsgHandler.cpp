@@ -2449,8 +2449,17 @@ void MsgHandler::playerConnectAgain(std::string msg){
     if(_mDoc.HasMember("ifemsc")){
         GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
     }
-    if(_mDoc.HasMember("iflezi")){
-        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+    if(_mDoc.HasMember("lz")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lz"].GetString());
+        UserData::getInstance()->setLatelySHLeZhi(_mDoc["lz"].GetString());
+    }
+    if(_mDoc.HasMember("dihua")){
+        GAMEDATA::getInstance()->setPrivateDihua(_mDoc["dihua"].GetString());
+        UserData::getInstance()->setLatelySHDiHua(_mDoc["dihua"].GetString());
+    }
+    if(_mDoc.HasMember("fcy")){
+        GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
+        UserData::getInstance()->setLatelySHFcy(_mDoc["fcy"].GetString());
     }
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opdata);
     const rapidjson::Value &seatId = _mDoc["seatId"];
