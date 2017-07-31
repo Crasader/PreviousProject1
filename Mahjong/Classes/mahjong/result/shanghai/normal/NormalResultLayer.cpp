@@ -112,12 +112,12 @@ void NormalResultLayer::showRoomInfo(){
             }
         }else{
             auto fanghao = Sprite::create("result/fang_jian_hao.png");
-            fanghao->setPosition(900,560);
+            fanghao->setPosition(910,560);
             addChild(fanghao,1);
             
             auto fanghaoNum = LabelAtlas::create(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid, "result/ju_num.png",16,22,'0');
             fanghaoNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-            fanghaoNum->setPosition(940,560);
+            fanghaoNum->setPosition(950,560);
             addChild(fanghaoNum);
         }
         auto wukaibao  = Sprite::create("result/public_wu_kaibao.png");
