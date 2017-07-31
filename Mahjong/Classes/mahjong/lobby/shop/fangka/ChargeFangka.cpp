@@ -46,7 +46,7 @@ bool ChargeFangka::init(){
     closeMenu->setTag(1025);
     addChild(closeMenu);
     
-    if(!UserData::getInstance()->isWeixinPayOpen()||UserData::getInstance()->getUserPayWay() == "1"){
+    if(UserData::getInstance()->isWeixinPayOpen()&&UserData::getInstance()->getUserPayWay() == "2"){
         auto label = Label::createWithSystemFont(UserData::getInstance()->getDiscountInfo(), "arial", 20);
         label->setPosition(640,160);
         label->setColor(Color3B::RED);
