@@ -109,7 +109,8 @@ bool OtherPlayerInfo::init(Player* player){
     fangkaNum->setColor(Color3B::WHITE);
     fangkaNum->setPosition(75, 80);
     dialogBg->addChild(fangkaNum);
-    //gold
+    
+    //话费券
     auto gold_bg = Sprite::create("gameview/other_player_num_bg.png");
     gold_bg->setPosition(220, 80);
     dialogBg->addChild(gold_bg);
@@ -125,6 +126,7 @@ bool OtherPlayerInfo::init(Player* player){
     goldNum->setColor(Color3B::WHITE);
     goldNum->setPosition(205, 80);
     dialogBg->addChild(goldNum);
+    
     //lequan
     auto lequan_bg = Sprite::create("gameview/other_player_num_bg.png");
     lequan_bg->setPosition(90, 40);
