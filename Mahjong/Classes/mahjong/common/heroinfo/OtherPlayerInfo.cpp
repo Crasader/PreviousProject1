@@ -100,7 +100,7 @@ bool OtherPlayerInfo::init(Player* player){
     fangka_bg->setPosition(90, 80);
     dialogBg->addChild(fangka_bg);
     auto fangka_icon = Sprite::create("common/fangka_icon.png");
-    fangka_icon->setPosition(50, 75);
+    fangka_icon->setPosition(50, 77);
     fangka_icon->setScale(0.7f);
     dialogBg->addChild(fangka_icon);
     auto fangkaNum = Label::createWithSystemFont(StringUtils::format("%0.1f", player->getFangka()),
@@ -115,7 +115,7 @@ bool OtherPlayerInfo::init(Player* player){
     gold_bg->setPosition(220, 80);
     dialogBg->addChild(gold_bg);
     auto gold_icon = Sprite::create("gameview/other_player_gold.png");
-    gold_icon->setPosition(180, 75);
+    gold_icon->setPosition(178, 78);
     dialogBg->addChild(gold_icon);
     std::string gold_num = StringUtils::format("%d", player->getGold());
     if(player->getGold()>9999999){
@@ -132,7 +132,8 @@ bool OtherPlayerInfo::init(Player* player){
     lequan_bg->setPosition(90, 40);
     dialogBg->addChild(lequan_bg);
     auto lequan_icon = Sprite::create("common/lequan_icon.png");
-    lequan_icon->setPosition(50, 35);
+    lequan_icon->setPosition(50, 37);
+    lequan_icon->setScale(0.8f);
     dialogBg->addChild(lequan_icon);
     auto lequanNum = Label::createWithSystemFont(StringUtils::format("%d", player->getTicket()),"arial",20);
     lequanNum->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
