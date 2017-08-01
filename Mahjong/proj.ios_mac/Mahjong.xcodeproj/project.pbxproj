@@ -414,6 +414,10 @@
 		D2E4BC701F28840400A34067 /* HongZhongSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC6D1F28840400A34067 /* HongZhongSelectLayer.cpp */; };
 		D2E4BC741F2B28AC00A34067 /* ChongMingSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC721F2B28AC00A34067 /* ChongMingSelectLayer.cpp */; };
 		D2E4BC751F2B28AC00A34067 /* ChongMingSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC721F2B28AC00A34067 /* ChongMingSelectLayer.cpp */; };
+		D2E4BC8A1F30262C00A34067 /* ChongMingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC851F30262C00A34067 /* ChongMingView.cpp */; };
+		D2E4BC8B1F30262C00A34067 /* ChongMingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC851F30262C00A34067 /* ChongMingView.cpp */; };
+		D2E4BC8C1F30262C00A34067 /* ReviewChongMing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC881F30262C00A34067 /* ReviewChongMing.cpp */; };
+		D2E4BC8D1F30262C00A34067 /* ReviewChongMing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC881F30262C00A34067 /* ReviewChongMing.cpp */; };
 		D2E6A2931EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E79DBE1F0F34EB00DD3999 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */; };
@@ -865,6 +869,10 @@
 		D2E4BC6E1F28840400A34067 /* HongZhongSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongZhongSelectLayer.hpp; sourceTree = "<group>"; };
 		D2E4BC721F2B28AC00A34067 /* ChongMingSelectLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChongMingSelectLayer.cpp; sourceTree = "<group>"; };
 		D2E4BC731F2B28AC00A34067 /* ChongMingSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChongMingSelectLayer.hpp; sourceTree = "<group>"; };
+		D2E4BC851F30262C00A34067 /* ChongMingView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChongMingView.cpp; sourceTree = "<group>"; };
+		D2E4BC861F30262C00A34067 /* ChongMingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChongMingView.h; sourceTree = "<group>"; };
+		D2E4BC881F30262C00A34067 /* ReviewChongMing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewChongMing.cpp; sourceTree = "<group>"; };
+		D2E4BC891F30262C00A34067 /* ReviewChongMing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewChongMing.h; sourceTree = "<group>"; };
 		D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareActivityLayer.cpp; sourceTree = "<group>"; };
 		D2E6A2921EF3CEFA0065C3F0 /* ShareActivityLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareActivityLayer.hpp; sourceTree = "<group>"; };
 		D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyPride.cpp; sourceTree = "<group>"; };
@@ -1610,6 +1618,7 @@
 		D252FC121E7FABE900937322 /* gameview */ = {
 			isa = PBXGroup;
 			children = (
+				D2E4BC831F30260B00A34067 /* chongming */,
 				D2E0351E1ED957C400291282 /* trusteeship */,
 				D27F05F71E94BDF90085438A /* hongzhong */,
 				D27F05F81E94BDF90085438A /* shanghai */,
@@ -2081,6 +2090,33 @@
 			path = shanghai;
 			sourceTree = "<group>";
 		};
+		D2E4BC831F30260B00A34067 /* chongming */ = {
+			isa = PBXGroup;
+			children = (
+				D2E4BC841F30262C00A34067 /* normal */,
+				D2E4BC871F30262C00A34067 /* special */,
+			);
+			path = chongming;
+			sourceTree = "<group>";
+		};
+		D2E4BC841F30262C00A34067 /* normal */ = {
+			isa = PBXGroup;
+			children = (
+				D2E4BC851F30262C00A34067 /* ChongMingView.cpp */,
+				D2E4BC861F30262C00A34067 /* ChongMingView.h */,
+			);
+			path = normal;
+			sourceTree = "<group>";
+		};
+		D2E4BC871F30262C00A34067 /* special */ = {
+			isa = PBXGroup;
+			children = (
+				D2E4BC881F30262C00A34067 /* ReviewChongMing.cpp */,
+				D2E4BC891F30262C00A34067 /* ReviewChongMing.h */,
+			);
+			path = special;
+			sourceTree = "<group>";
+		};
 		D2E79DB91F0F34D000DD3999 /* turntable */ = {
 			isa = PBXGroup;
 			children = (
@@ -2430,6 +2466,7 @@
 				D252FC651E7FABE900937322 /* CardStack.cpp in Sources */,
 				D252FBB41E7FA5EC00937322 /* ChargeFangka.cpp in Sources */,
 				D27F05FF1E94BDF90085438A /* MahjongView.cpp in Sources */,
+				D2E4BC8C1F30262C00A34067 /* ReviewChongMing.cpp in Sources */,
 				D2B1D9161E9E026800EB8FB0 /* HZNormalResultLayer.cpp in Sources */,
 				D2B1D91A1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */,
 				D252FB1E1E7FA5EC00937322 /* Audio.cpp in Sources */,
@@ -2551,6 +2588,7 @@
 				D252FBAE1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D2B1D91C1E9E026800EB8FB0 /* HZSpecialResultLayer.cpp in Sources */,
 				D252FB581E7FA5EC00937322 /* GameData.cpp in Sources */,
+				D2E4BC8A1F30262C00A34067 /* ChongMingView.cpp in Sources */,
 				D252FC491E7FABE900937322 /* HupaiAnim.cpp in Sources */,
 				D252FBD81E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D2E4BC6B1F2883EC00A34067 /* ShangHaiSelectLayer.cpp in Sources */,
@@ -2639,6 +2677,7 @@
 				D2E4BC6C1F2883EC00A34067 /* ShangHaiSelectLayer.cpp in Sources */,
 				D252FBB91E7FA5EC00937322 /* FangkaNotEnoughDialog.cpp in Sources */,
 				D252FC581E7FABE900937322 /* PlayerBase.cpp in Sources */,
+				D2E4BC8B1F30262C00A34067 /* ChongMingView.cpp in Sources */,
 				D252FBB71E7FA5EC00937322 /* ChargeItem.cpp in Sources */,
 				D252FC6E1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */,
 				D2B1D9211E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */,
@@ -2714,6 +2753,7 @@
 				D252FBAF1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D252FBC71E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
+				D2E4BC8D1F30262C00A34067 /* ReviewChongMing.cpp in Sources */,
 				D252FBC11E7FA5EC00937322 /* Huode.cpp in Sources */,
 				D2DDB1BF1F02384600790422 /* EnterRoomDialog.cpp in Sources */,
 				D252FC6A1E7FABE900937322 /* Orientation.cpp in Sources */,
