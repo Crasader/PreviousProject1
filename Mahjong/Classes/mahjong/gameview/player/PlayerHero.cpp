@@ -730,6 +730,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
     if (data.replace != "" && replace.size() > 0 && data.handNum>getSelfHandJongs().size()){
         Jong* turnJong = Jong::create();
         turnJong->showJong(herohand, data.poker);
+        turnJong->setPosition(NEW_JONG_POS_X,JONG_POS_Y);
         addChild(turnJong);
         playerHandJongs.pushBack(turnJong);
         schedule([=](float dt){
