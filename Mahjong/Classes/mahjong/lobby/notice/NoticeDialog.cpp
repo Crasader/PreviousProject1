@@ -25,7 +25,11 @@ bool NoticeDialog::init(){
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
     
-    auto bg = Sprite::create("shop/shop_bg.png");
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 150), 1280, 720);
+    addChild(bg0);
+    
+    auto bg = Sprite::create();
+    bg->setContentSize(Size(929,604));
     bg->setPosition(640,360);
     addChild(bg);
     
@@ -33,28 +37,13 @@ bool NoticeDialog::init(){
                                        CC_CALLBACK_0(NoticeDialog::closeView, this));
     
     auto menu =Menu::create(close,NULL);
-    menu->setPosition(1080,640);
-    addChild(menu,3);
+    menu->setPosition(1070,630);
+    addChild(menu,10);
     
     content = Sprite::create();
     content->setPosition(640,360);
     content->setVisible(false);
     addChild(content);
-    
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    contentWebView = cocos2d::experimental::ui::WebView::create();
-    contentWebView->setContentSize(bg->getContentSize()*0.9);
-    contentWebView->setPosition(Point(640,360));
-    contentWebView->setVisible(false);
-    addChild(contentWebView);
-#endif
-    
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    auto cilckMenu = MenuItem::create(CC_CALLBACK_0(NoticeDialog::download, this));
-    cilckMenu->setContentSize(bg->getContentSize()*0.9);
-    auto downMenu = Menu::create(cilckMenu,NULL);
-    addChild(downMenu,2);
-#endif
     
     return true;
 }
@@ -79,10 +68,18 @@ void NoticeDialog::closeView(){
 
 
 void NoticeDialog::setContentImage(std::string url,std::string url2,std::string showTime){
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    if(url2 != ""){
-        contentWebView->setVisible(true);
-        contentWebView->loadURL(url2);
+    
+    if(url2 == ""){
+        std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url);
+        if(path != IAMGE_LOADING){
+            content->setVisible(true);
+            content->setTexture(path);
+        }
+        auto cilckMenu = MenuItem::create(CC_CALLBACK_0(NoticeDialog::download, this));
+        cilckMenu->setContentSize(Size(920,600));
+        auto downMenu = Menu::create(cilckMenu,NULL);
+        downMenu->setPosition(640,360);
+        addChild(downMenu,2);
     }else{
         std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url);
         if(showTime == "")
@@ -107,35 +104,14 @@ void NoticeDialog::setContentImage(std::string url,std::string url2,std::string 
             }
         }
     }
-#endif
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url);
-    if(showTime == "")
-        showTime = "6";
-    if(path != IAMGE_LOADING){
-        content->setVisible(true);
-        content->setTexture(path);
-        if("" != GAMEDATA::getInstance()->getGameActivityData().jumpUrl){
-            MenuItem* clickUrl = MenuItem::create([=](Ref* ref){
-                Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().jumpUrl);
-            });
-            clickUrl->setContentSize(content->getContentSize());
-            Menu* myMenu = Menu::create(clickUrl,NULL);
-            myMenu->setPosition(640,360);
-            addChild(myMenu);
-            if(showTime == ""){
-                showTime = "6";
-            }
-            schedule([=](float dt){
-                removeFromParent();
-            }, 0, 0, atoi(showTime.c_str()),"dismiss");
-        }
-    }
-#endif
 }
 
 void NoticeDialog::download(){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     if(GAMEDATA::getInstance()->getGameActivityData().downLoadUrl != ""){
         CallAndroidMethod::getInstance()->downLoadAndroidApk(GAMEDATA::getInstance()->getGameActivityData().downLoadUrl);
     }
+#else
+    Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().jumpUrl);//IOS
+#endif
 }

@@ -24,9 +24,6 @@ public:
     void setContentImage(std::string url1,std::string url2,std::string showTime);
 private:
     Sprite* content;
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    cocos2d::experimental::ui::WebView* contentWebView;
-#endif
     EventListenerCustom* updateContentImg;
     void closeView();
     void download();
