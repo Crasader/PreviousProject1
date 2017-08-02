@@ -19,7 +19,6 @@
 
 bool LequanShop::init(){
     if(!Layer::init()){
-        
         return false;
     }
     MenuItem* item1 = MenuItem::create();

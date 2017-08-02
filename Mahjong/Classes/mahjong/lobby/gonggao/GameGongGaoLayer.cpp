@@ -26,7 +26,8 @@ bool GameGongGaoLayer::init(GameGongGao gonggaoData){
     if(!Layer::init()){
         return false;
     }
-
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg0);
     
     myGongGao = gonggaoData;
     auto day_bg = Sprite::create("shop/shop_bg.png");

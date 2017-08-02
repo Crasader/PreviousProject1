@@ -20,6 +20,8 @@ bool ShiMingLayer::init(){
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
     
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg0);
     
     auto  dialogBg = Sprite::create("common/dialog_bg.png");
     dialogBg->setPosition(640, 360);

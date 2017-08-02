@@ -30,6 +30,8 @@ bool GongZhongHaoLayer::init(){
         return false;
     }
     
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg0);
     
     auto day_bg = Sprite::create("shop/shop_bg.png");
     day_bg->setTag(1024);
