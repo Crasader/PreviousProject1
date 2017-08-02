@@ -299,6 +299,19 @@ void NormalResultLayer::showPrideAnim(GameResultData data){
     }
 }
 
+void NormalResultLayer::showCangYin(){
+    if(GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
+        auto mabg = Sprite::create("result/cangying_di.png");
+        mabg->setPosition(150,650);
+        addChild(mabg);
+        auto jong = Jong::create();
+        jong->showJong(herohand,atoi(GAMEDATA::getInstance()->getPrivateFcyValue().c_str()));
+        jong->setPosition(150,650);
+        jong->setScale(0.8f);
+        addChild(jong);
+    }
+}
+
 
 void NormalResultLayer::shareResult(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
