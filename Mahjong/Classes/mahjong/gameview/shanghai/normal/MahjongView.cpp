@@ -22,7 +22,7 @@
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/competition/CompetitionQueue.hpp"
 #include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
-#include "mahjong/gameview/anim/FanMaAnim.hpp"
+#include "mahjong/gameview/anim/CangYinAnim.hpp"
 
 
 bool MahjongView::init(){
@@ -1806,9 +1806,7 @@ void MahjongView::onEnter(){
             if(GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
                 delayTime = 6;
                 schedule([=](float dt){
-                    vector<std::string> ma;
-                    ma.push_back(GAMEDATA::getInstance()->getPrivateFcyValue());
-                    FanMaAnim* fan = FanMaAnim::create(ma);
+                    CangYinAnim* fan = CangYinAnim::create(GAMEDATA::getInstance()->getPrivateFcyValue());
                     addChild(fan,20);
                 },0,0,4.0f,"fanma");
             }

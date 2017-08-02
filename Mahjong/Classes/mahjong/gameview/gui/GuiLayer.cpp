@@ -33,7 +33,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-//    drawTestButton();
+    drawTestButton();
     scheduleUpdate();
 }
 
@@ -433,7 +433,7 @@ void GuiLayer::testButtonClick(){
     opendata.prjushu ="8";
     opendata.prjucount ="2";
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
-    char* buf = const_cast<char*>("2");
+    char* buf = const_cast<char*>("1");
 //    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_RESULT,buf);
     _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
     
@@ -480,7 +480,7 @@ void GuiLayer::testButtonClick(){
 //    ami->initView("0.37",3);
 //    ami->initView("0.37","0.37",1,false);
 //    addChild(ami,100);
-    CompetitionResult* result = CompetitionResult::create();
-    result->showCompetiotionResult("2","2","36","30");
-    getParent()->addChild(result,100);
+//    CompetitionResult* result = CompetitionResult::create();
+//    result->showCompetiotionResult("2","2","36","30");
+//    getParent()->addChild(result,100);
 }

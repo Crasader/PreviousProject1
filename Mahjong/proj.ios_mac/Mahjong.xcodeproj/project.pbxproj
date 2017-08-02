@@ -426,6 +426,8 @@
 		D2E4BCA61F30295300A34067 /* CMNormalResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BCA11F30295300A34067 /* CMNormalResultLayer.cpp */; };
 		D2E4BCA71F30295300A34067 /* CMPlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BCA31F30295300A34067 /* CMPlayerResultCell.cpp */; };
 		D2E4BCA81F30295300A34067 /* CMPlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BCA31F30295300A34067 /* CMPlayerResultCell.cpp */; };
+		D2E4BCAD1F316DA900A34067 /* CangYinAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BCAB1F316DA900A34067 /* CangYinAnim.cpp */; };
+		D2E4BCAE1F316DA900A34067 /* CangYinAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BCAB1F316DA900A34067 /* CangYinAnim.cpp */; };
 		D2E6A2931EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E79DBE1F0F34EB00DD3999 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */; };
@@ -889,6 +891,8 @@
 		D2E4BCA21F30295300A34067 /* CMNormalResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CMNormalResultLayer.hpp; sourceTree = "<group>"; };
 		D2E4BCA31F30295300A34067 /* CMPlayerResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMPlayerResultCell.cpp; sourceTree = "<group>"; };
 		D2E4BCA41F30295300A34067 /* CMPlayerResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CMPlayerResultCell.hpp; sourceTree = "<group>"; };
+		D2E4BCAB1F316DA900A34067 /* CangYinAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CangYinAnim.cpp; sourceTree = "<group>"; };
+		D2E4BCAC1F316DA900A34067 /* CangYinAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CangYinAnim.hpp; sourceTree = "<group>"; };
 		D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareActivityLayer.cpp; sourceTree = "<group>"; };
 		D2E6A2921EF3CEFA0065C3F0 /* ShareActivityLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareActivityLayer.hpp; sourceTree = "<group>"; };
 		D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyPride.cpp; sourceTree = "<group>"; };
@@ -1652,6 +1656,8 @@
 		D252FC131E7FABE900937322 /* anim */ = {
 			isa = PBXGroup;
 			children = (
+				D2E4BCAB1F316DA900A34067 /* CangYinAnim.cpp */,
+				D2E4BCAC1F316DA900A34067 /* CangYinAnim.hpp */,
 				D252FC141E7FABE900937322 /* DealJongAnim.cpp */,
 				D252FC151E7FABE900937322 /* DealJongAnim.h */,
 				D252FC161E7FABE900937322 /* HuaAnim.cpp */,
@@ -2574,6 +2580,7 @@
 				D252FB421E7FA5EC00937322 /* InfoToast.cpp in Sources */,
 				D252FBBA1E7FA5EC00937322 /* FirstChageDialog.cpp in Sources */,
 				D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
+				D2E4BCAD1F316DA900A34067 /* CangYinAnim.cpp in Sources */,
 				D252FBC21E7FA5EC00937322 /* ExchangeItem.cpp in Sources */,
 				D2FD5A6B1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */,
 				D2B1D9201E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */,
@@ -2710,6 +2717,7 @@
 				D2B1A9061CCDF0F400A20896 /* UserData.cpp in Sources */,
 				D2E035091ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */,
 				D2677D6B1F174B1F003D27D9 /* FangkaChangeConfirm.cpp in Sources */,
+				D2E4BCAE1F316DA900A34067 /* CangYinAnim.cpp in Sources */,
 				D252FBC91E7FA5EC00937322 /* LequanShop.cpp in Sources */,
 				D223FAF31E07784E00270969 /* PxSocketManage.cpp in Sources */,
 				D2A86CE91E01286C00B67F86 /* NetworkManage.cpp in Sources */,

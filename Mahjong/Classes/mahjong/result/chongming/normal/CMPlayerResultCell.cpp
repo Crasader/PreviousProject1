@@ -38,12 +38,12 @@ bool CMPlayerResultCell::init(GameResultData data){
     
     auto nickName = Label::createWithSystemFont(data.nickName,"Arial",20);
     nickName->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-    nickName->setPosition(-405,15);
+    nickName->setPosition(-405,20);
     addChild(nickName);
     
     auto idNumber = Label::createWithSystemFont(StringUtils::format("ID:%s",data.umark.c_str()),"Arial",20);
     idNumber->setAnchorPoint(Point::ANCHOR_BOTTOM_LEFT);
-    idNumber->setPosition(-230,15);
+    idNumber->setPosition(-230,20);
     addChild(idNumber);
     
     if(data.lz == "0"){
@@ -58,12 +58,19 @@ bool CMPlayerResultCell::init(GameResultData data){
             fanNum->setPosition(160,-15);
             fanText->setPosition(180,-15);
         }
+        if(GAMEDATA::getInstance()->getPrivateFcy() == "1"&&GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
+            fanNum->setPositionY(-25);
+            fanText->setPositionY(-25);
+        }
     }else if(data.lz == "1"){
         auto lezi = Sprite::create("result/1beilezi.png");
         lezi->setPosition(160,-15);
         addChild(lezi);
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             lezi->setPosition(180,-15);
+        }
+        if(GAMEDATA::getInstance()->getPrivateFcy() == "1"&&GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
+            lezi->setPositionY(-25);
         }
     }else if(data.lz == "2"){
         auto lezi = Sprite::create("result/2beilezi.png");
@@ -72,6 +79,9 @@ bool CMPlayerResultCell::init(GameResultData data){
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             lezi->setPosition(180,-15);
         }
+        if(GAMEDATA::getInstance()->getPrivateFcy() == "1"&&GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
+            lezi->setPositionY(-25);
+        }
     }else if(data.lz == "4"){
         auto lezi = Sprite::create("result/4beilezi.png");
         lezi->setPosition(160,-15);
@@ -79,7 +89,30 @@ bool CMPlayerResultCell::init(GameResultData data){
         if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             lezi->setPosition(180,-15);
         }
+        if(GAMEDATA::getInstance()->getPrivateFcy() == "1"&&GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
+            lezi->setPositionY(-25);
+        }
     }
+    if(GAMEDATA::getInstance()->getPrivateFcy() == "1"&&GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
+        auto cangyinfen =  Sprite::create("result/cangying_fen.png");
+        cangyinfen->setPosition(150,0);
+        addChild(cangyinfen);
+        
+        int fen = 2;
+        auto fuhao = Sprite::create();
+        if(fen>=0){
+            fuhao->setTexture("result/gang_fen_jia.png");
+        }else{
+            fuhao->setTexture("result/gang_fen_jian.png");
+        }
+        fuhao->setPosition(200,0);
+        addChild(fuhao);
+        
+        auto cangyinnum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
+        cangyinnum->setPosition(210,-10);
+        addChild(cangyinnum);
+    }
+    
     if(GAMEDATA::getInstance()->getCurrentBank() ==  data.seatId){
         auto bank = Sprite::create("result/zhaung.png");
         bank->setPosition(-580,0);
