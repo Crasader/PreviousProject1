@@ -131,7 +131,7 @@ void SplashScene::removeLoading(){
 void SplashScene::showSplashAnim(){
     
     showLoadLayerAnim();
-
+    
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
     if(!CallIOSMethod::getInstance()->isWenxinInstalled()){
@@ -186,15 +186,14 @@ void SplashScene::onEnter(){
     loginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         std::string result = static_cast<char*>(event->getUserData());
         removeLoading();
-       
+        
         if (result == LOGIN_SUCCESS){
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }
         else{
-            
-            HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_25"),nullptr);
-            addChild(hint,6);
+            showLoading();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(loginRespListener, 1);
@@ -223,31 +222,10 @@ void SplashScene::onEnter(){
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        } else if(result == "2")
+        } else
         {
-            RoomFullDialog* doo = RoomFullDialog::create();
-            addChild(doo,100);
-        }
-        else if(result == "3")
-        {
-            removeLoading();
-#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-            if(UserData::getInstance()->isWeixinPayOpen()){
-                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-                addChild(charge,100);
-            }else{
-                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",nullptr);
-                addChild(hint,100);
-            }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-            addChild(charge,100);
-#endif
-        }
-        else if(result == "4"){
-            removeLoading();
-            RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
-            addChild(idd,100);
+            showLoading();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
         }
     });
     
@@ -258,31 +236,10 @@ void SplashScene::onEnter(){
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        } else if(result == "2")
+        } else
         {
-            RoomFullDialog* doo = RoomFullDialog::create();
-            addChild(doo,100);
-        }
-        else if(result == "3")
-        {
-            removeLoading();
-#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-            if(UserData::getInstance()->isWeixinPayOpen()){
-                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-                addChild(charge,100);
-            }else{
-                HintDialog* hint = HintDialog::create("房卡有一定几率在游戏中掉落",nullptr);
-                addChild(hint,100);
-            }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-            addChild(charge,100);
-#endif
-        }
-        else if(result == "4"){
-            removeLoading();
-            RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
-            addChild(idd,100);
+            showLoading();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
         }
     });
     
@@ -295,21 +252,10 @@ void SplashScene::onEnter(){
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }else if(resp.result == 2){
-#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-            if(UserData::getInstance()->isWeixinPayOpen()){
-                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-                addChild(charge,100);
-            }else{
-                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),nullptr);
-                addChild(hint,100);
-            }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-            addChild(charge,100);
-#endif
+        }else {
+            showLoading();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
         }
-        
     });
     
     //好友开房红中麻将
@@ -320,20 +266,9 @@ void SplashScene::onEnter(){
         if(resp.result == 1){
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }else if(resp.result == 2){
-#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-            if(UserData::getInstance()->isWeixinPayOpen()){
-                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-                addChild(charge,14);
-                GAMEDATA::getInstance()->setShowDialogType(-1);
-            }else{
-                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
-                addChild(hint,14);
-            }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
-            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
-            addChild(charge,14);
-#endif
+        }else {
+            showLoading();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
         }
     });
     
