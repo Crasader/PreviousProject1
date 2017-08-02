@@ -22,6 +22,7 @@
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/competition/CompetitionQueue.hpp"
 #include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
+#include "mahjong/gameview/anim/FanMaAnim.hpp"
 
 
 bool ChongMingView::init(){
@@ -154,7 +155,7 @@ void ChongMingView::loadView(){
         emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10,160);
         
         feicy->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10+(emsc->isVisible()?(emsc->getContentSize().width):0),160);
-       
+        
     }
     
     if(GAMEDATA::getInstance()->getIsCompetitionQueue()){
@@ -1800,6 +1801,17 @@ void ChongMingView::onEnter(){
                 addChild(liuju,3);
                 GAMEDATA::getInstance()->setIsLiuJu(true);
             }
+            float delayTime = 4;
+            if(GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
+                delayTime = 6;
+                schedule([=](float dt){
+                    vector<std::string> ma;
+                    ma.push_back(GAMEDATA::getInstance()->getPrivateFcyValue());
+                    FanMaAnim* fan = FanMaAnim::create(ma);
+                    addChild(fan,20);
+                },0,0,4.0f,"fanma");
+            }
+            
             schedule([=](float dt){
                 PlayerCpgRecShow showRec;
                 if(NULL!= playerLeft){
@@ -1863,7 +1875,7 @@ void ChongMingView::onEnter(){
                 if(GAMEDATA::getInstance()->getIsInGame()){
                     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
                 }
-            },0,0,4.0f,"go2Result");
+            },0,0,delayTime,"go2Result");
         }else{
             schedule([=](float dt){
                 clearRoomPlayer();

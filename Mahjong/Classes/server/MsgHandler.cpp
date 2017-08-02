@@ -2238,6 +2238,8 @@ void MsgHandler::gameResultNotify(std::string msg){
     }
     if(_mDoc.HasMember("fcyp")){
         GAMEDATA::getInstance()->setPrivateFcyValue(_mDoc["fcyp"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setPrivateFcyValue("");
     }
     GameHongBaoPride pride;
     if(_mDoc.HasMember("dyj")){

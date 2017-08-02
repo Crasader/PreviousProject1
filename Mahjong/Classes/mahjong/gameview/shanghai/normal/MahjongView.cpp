@@ -22,6 +22,7 @@
 #include "mahjong/common/utils/Chinese.h"
 #include "mahjong/common/competition/CompetitionQueue.hpp"
 #include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
+#include "mahjong/gameview/anim/FanMaAnim.hpp"
 
 
 bool MahjongView::init(){
@@ -1800,6 +1801,17 @@ void MahjongView::onEnter(){
                 addChild(liuju,3);
                 GAMEDATA::getInstance()->setIsLiuJu(true);
             }
+            //
+            float delayTime = 4;
+            if(GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
+                delayTime = 6;
+                schedule([=](float dt){
+                    vector<std::string> ma;
+                    ma.push_back(GAMEDATA::getInstance()->getPrivateFcyValue());
+                    FanMaAnim* fan = FanMaAnim::create(ma);
+                    addChild(fan,20);
+                },0,0,4.0f,"fanma");
+            }
             schedule([=](float dt){
                 PlayerCpgRecShow showRec;
                 if(NULL!= playerLeft){
@@ -1863,7 +1875,7 @@ void MahjongView::onEnter(){
                 if(GAMEDATA::getInstance()->getIsInGame()){
                     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
                 }
-            },0,0,4.0f,"go2Result");
+            },0,0,delayTime,"go2Result");
         }else{
             schedule([=](float dt){
                 clearRoomPlayer();
