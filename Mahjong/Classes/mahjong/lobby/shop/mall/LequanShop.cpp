@@ -27,6 +27,9 @@ bool LequanShop::init(){
     Menu* menu1 = Menu::create(item1, NULL);
     addChild(menu1);
     
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg0);
+    
     auto dialog_bg = Sprite::create("shop/charge_bg.png");
     dialog_bg->setPosition(640,360);
     addChild(dialog_bg);

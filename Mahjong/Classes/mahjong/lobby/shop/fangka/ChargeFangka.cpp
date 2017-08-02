@@ -30,6 +30,8 @@ bool ChargeFangka::init(){
     Menu* menu1 = Menu::create(item1, NULL);
     this->addChild(menu1);
     
+    auto bg0 = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
+    addChild(bg0);
     
     auto dialog_bg = Sprite::create("common/dialog_bg.png");
     dialog_bg->setTag(1024);
@@ -48,7 +50,9 @@ bool ChargeFangka::init(){
     
     if(UserData::getInstance()->isWeixinPayOpen()&&UserData::getInstance()->getUserPayWay() == "2"){
         auto label = Label::createWithSystemFont(UserData::getInstance()->getDiscountInfo(), "arial", 20);
-        label->setPosition(640,160);
+        label->setWidth(600);
+        label->setAlignment(cocos2d::TextHAlignment::CENTER);
+        label->setPosition(640,155);
         label->setColor(Color3B::RED);
         addChild(label);
     }

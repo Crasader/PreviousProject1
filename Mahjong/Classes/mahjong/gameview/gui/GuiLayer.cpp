@@ -33,7 +33,7 @@ void GuiLayer::initView(){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
-    drawTestButton();
+    //    drawTestButton();
     scheduleUpdate();
 }
 
@@ -366,12 +366,12 @@ void GuiLayer::drawTestButton(){
 //测试方法
 void GuiLayer::testButtonClick(){
     
-//#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-//    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"0");//从2开始
-//#endif
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//    CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),0);
-//#endif
+    //#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    //    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(),"0");//从2开始
+    //#endif
+    //#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    //    CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),0);
+    //#endif
     //    PlayerCpgtData cpgData;
     //    cpgData.poker = "23";
     //    cpgData.seatId = 3;
@@ -428,13 +428,13 @@ void GuiLayer::testButtonClick(){
     GAMEDATA::getInstance()->setFanMaType("1");
     GAMEDATA::getInstance()->setHZDiFen("10");
     GAMEDATA::getInstance()->setHZMaShu("4");
-//    GAMEDATA::getInstance()->setGameType(3);
+    //    GAMEDATA::getInstance()->setGameType(3);
     FriendOpenRoomRespData opendata;
     opendata.prjushu ="8";
     opendata.prjucount ="2";
     GAMEDATA::getInstance()->setFriendOpenRoomResp(opendata);
     char* buf = const_cast<char*>("1");
-//    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_RESULT,buf);
+    //    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_RESULT,buf);
     _eventDispatcher->dispatchCustomEvent(MSG_GAME_RESULT,buf);
     
     
@@ -476,11 +476,11 @@ void GuiLayer::testButtonClick(){
     //    }
     //    _eventDispatcher->dispatchCustomEvent(MSG_HZ_GAME_HU_ACTION,&cpgData);
     
-//    HongbaoAnim* ami = HongbaoAnim::create();
-//    ami->initView("0.37",3);
-//    ami->initView("0.37","0.37",1,false);
-//    addChild(ami,100);
-//    CompetitionResult* result = CompetitionResult::create();
-//    result->showCompetiotionResult("2","2","36","30");
-//    getParent()->addChild(result,100);
+    //    HongbaoAnim* ami = HongbaoAnim::create();
+    //    ami->initView("0.37",3);
+    //    ami->initView("0.37","0.37",1,false);
+    //    addChild(ami,100);
+    //    CompetitionResult* result = CompetitionResult::create();
+    //    result->showCompetiotionResult("2","2","36","30");
+    //    getParent()->addChild(result,100);
 }
