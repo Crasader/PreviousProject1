@@ -42,14 +42,20 @@ bool ShareSelectLayer::init(){
     textlabel->setColor(Color3B(196,106,22));
     addChild(textlabel);
     
-    auto tuiguang = Sprite::create("share/tuiguang_num.png");
-    tuiguang->setPosition(640,155);
+    auto tuiguang = Sprite::create("share/tuiguang_num_1.png");
     addChild(tuiguang);
     
     auto num = LabelAtlas::create(UserData::getInstance()->getShareTextContentNum(), "share/wei_xin_num.png", 30, 50, '0');
     num->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    num->setPosition(640,155);
     addChild(num);
+    
+    auto tuiguang2 = Sprite::create("share/tuiguang_num_2.png");
+    addChild(tuiguang2);
+    
+    int wid = tuiguang->getContentSize().width +num->getContentSize().width+tuiguang2->getContentSize().width;
+    tuiguang->setPosition(640-wid/2+tuiguang->getContentSize().width/2,155);
+    num->setPosition(640-wid/2+tuiguang->getContentSize().width+num->getContentSize().width/2,155);
+    tuiguang2->setPosition(640-wid/2+tuiguang->getContentSize().width+num->getContentSize().width+tuiguang2->getContentSize().width/2,155);
     
     auto quanMenu = MenuItemImage::create("share/share_quan.png","share/share_quan.png",CC_CALLBACK_0(ShareSelectLayer::shareToQuan, this));
     auto friendMenu = MenuItemImage::create("share/share_friend.png","share/share_friend.png",CC_CALLBACK_0(ShareSelectLayer::shareToFriend, this));
