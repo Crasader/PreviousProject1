@@ -29,6 +29,7 @@ bool CangYinAnim::init(std::string mas){
         auto text  = Sprite::create();
         text->setPosition(640,320);
         addChild(text,2);
+         showTextAnim(text);
     });
     
     auto animStep2 = DelayTime::create(1.0f);
@@ -47,6 +48,24 @@ bool CangYinAnim::init(std::string mas){
     shuzhu->runAction(seq2);
     
     return  true;
+}
+
+
+void CangYinAnim::showTextAnim(Sprite* sprite){
+    auto animation = Animation::create();
+    for( int i=1;i<=16;i++)
+    {
+
+        std::string imageName = StringUtils::format ("fanma/fcy_%d.png",i);
+        animation->addSpriteFrameWithFile(imageName);
+    }
+    // should last 1 seconds. And there are 24 frames.
+    animation->setDelayPerUnit(2.0f / 36.0f);
+    animation->setRestoreOriginalFrame(false);
+    auto action = Animate::create(animation);
+    sprite->runAction(Sequence::create(action,CallFunc::create([=](){
+        sprite->setVisible(false);
+    }), NULL));
 }
 
 

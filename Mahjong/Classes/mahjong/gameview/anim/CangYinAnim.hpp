@@ -18,5 +18,6 @@ public:
 private:
     int index =0;
     void showFanPai(Sprite* sprite);
+    void showTextAnim(Sprite* sprite);
 };
 #endif /* FanMaAnim_hpp */
