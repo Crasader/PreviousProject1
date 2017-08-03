@@ -60,8 +60,6 @@ void SplashScene::onEnterTransitionDidFinish(){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
         schedule(schedule_selector(SplashScene::updateCount), 0, 0, 10);
     }
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getWanJiaQunCommand());
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getTuiGuangCommand());
 }
 
 void SplashScene::drawLonginScene(){
