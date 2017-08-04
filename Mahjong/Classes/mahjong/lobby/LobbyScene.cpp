@@ -790,7 +790,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzLobbyConncetAgainListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
-    
+    Director::getInstance()->getEventDispatcher()->removeEventListener(cmOpenRoomListener);
 }
 
 void LobbyScene::addEventListener(){
@@ -1202,6 +1202,32 @@ void LobbyScene::addEventListener(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
+    
+    cmOpenRoomListener  = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+        
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        GAMEDATA::getInstance()->setGameType(5);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else if(resp.result == 2){
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,14);
+                GAMEDATA::getInstance()->setShowDialogType(-1);
+            }else{
+                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
+                addChild(hint,14);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,14);
+#endif
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(cmOpenRoomListener, 1);
     
     //点击事件
     auto listener = EventListenerKeyboard::create();

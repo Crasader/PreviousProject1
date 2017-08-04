@@ -266,7 +266,7 @@
 #define MSGCODE_HH_IFHU_REQUEST  3038// 晃晃麻将胡牌请求{code:3038,poxiaoId:"123",flag:"1"} flag为1是确认胡牌，2是取消胡牌
 
 
-
+/*  崇明麻将的协议   */
 #define MSGCODE_CM_MAJIANG_BACK_OUT_REQUEST 4000  //后台切出请求{code:4000,poxiaoId:poxiaoId}
 #define MSGCODE_CM_MAJIANG_AGAIN_REQUEST 4001  //再来一局请求{code:4001,poxiaoId:poxiaoId}
 #define MSGCODE_CM_MAJIANG_AGAIN_RESPONSE 4002  //再来一局回复{code:4002,poxiaoId:poxiaoId,result:1,rsid:1000,kb:"1"}1为成功 2为金币小于下限 3为金币高于上限rsid为跳转房间
@@ -302,7 +302,6 @@
 #define MSGCODE_CM_MAJIANG_OUTLINE_RESUME_NOTIFY 4031
 //断线续完{code:4031,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,hua:"1",chi:[{chi:"1,2,3",poker:"3"},{chi:"11,12,13",poker:"13"}],peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",status:1,prId:"123",fzId:"456",prjucount:"1",prjushu:"2"}],matchname:"10元比赛"} status1为听牌
 #define MSGCODE_CM_FRIEND_GAME_REQUEST   4032  // 好友开房请求{code:4032,poxiaoId:"123",ftype:"1",ifkb:"0",size:"4",fcy:"1",dihua:"1",lz:"1"} ftype 1为打八局 2为打4局3为16局 ifkb 0为无开宝,1为有开宝 size4为4人2为2人,fcy飞苍蝇0为无,1为有,dihua 0为1/1 1为2/2 2为6/2 3为5/5,lz0为20勒子 1为50勒子 2为100勒子 3为无勒子
-#define MSGCODE_CM_FRIEND_GAME_NOTIFY   4033  // 好友开房通知{code:4033,poxiaoId:"123",nickname:"aaa",pId:"456"}
 #define MSGCODE_CM_FRIEND_GAME_RESPONSE  4034  //好友开房回复{code:4034,poxiaoId:poxiaoId,result:"0",seatId:1,prId:"1234",prjushu:"8"} prjushu 8\16
 #define MSGCODE_CM_FRIEND_JOIN_GAME_REQUEST   4035  // 好友加入房间请求{code:4035,poxiaoId:"123",pId:"456"}
 #define MSGCODE_CM_FRIEND_JOIN_GAME_RESPONSE   4036  //好友进入房间回复{code:4036,poxiaoId:poxiaoId,result:0,seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1,pic:"1"}],prId:"1234",prjushu:"8",iflezi:"0"} iflezi为0表示无勒子1表示有勒子 result 0为自己在游戏中 1为成功 2为房间已满
@@ -422,4 +421,5 @@
 #define MSG_PLAYER_TURNTABLE_PRIDE_RESULT "MSG_PLAYER_TURNTABLE_PRIDE_RESULT"
 #define MSG_PLAYER_TURNTABLE_PRIDE_SHARE "MSG_PLAYER_TURNTABLE_PRIDE_SHARE"
 #define MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW "MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW"
+#define MSG_CM_FRIEND_OPEN_ROOM_RESP "MSG_CM_FRIEND_OPEN_ROOM_RESP"
 #endif

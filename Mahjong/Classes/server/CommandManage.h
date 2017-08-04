@@ -75,6 +75,11 @@ public:
     std::string getHZOutResumeCommand();
     std::string getHZQuitRoomCommand();
     /** ------------------------------红中麻将协议结束 ------------------- **/
+    
+    /* -------------- 崇明麻将协议开始 ------ */
+     std::string getCMOpenRoomCommand(std::string ftype,std::string dihua,std::string lz,std::string fcy,std::string ifkb,std::string size);//开设房间
+    /* ______________ 崇明麻将协议结束 ------ */
+    
     std::string sendInviteCodeCommand(std::string code);
     /** ---------------------- 比赛协议 ---------------------------**/
     std::string sendJoinCompetiotnCommand(std::string competitionId);

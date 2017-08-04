@@ -351,6 +351,7 @@ void FriendRoom :: openRoom(){
         std::string lezi = ((ChongMingSelectLayer*)getChildByTag(1002))->getLeizi();
         std::string fcy = ((ChongMingSelectLayer*)getChildByTag(1002))->getFeiChangYin();
         std::string ifkb = ((ChongMingSelectLayer*)getChildByTag(1002))->getKaibao();
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMOpenRoomCommand(ftype,dihua,lezi,fcy,ifkb,size));
     }
 }
 

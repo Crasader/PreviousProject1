@@ -4488,3 +4488,148 @@ void MsgHandler::handleTurntableShare(std::string msg){
         UserData::getInstance()->setTurntableNumber(dzpc.GetString());
     }
 }
+
+void MsgHandler:: handleCMOpenRoomResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("poxiaoId")){
+        const rapidjson::Value &poxiaoId = _mDoc["poxiaoId"];
+        UserData::getInstance()->setPoxiaoId(poxiaoId.GetString());
+    }
+    if(_mDoc.HasMember("umark")){
+        const rapidjson::Value &umark = _mDoc["umark"];
+        UserData::getInstance()->setMarkId(umark.GetString());
+    }
+    if(_mDoc.HasMember("ifkb")){
+        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+        UserData::getInstance()->setLatelySHKaiBao(_mDoc["ifkb"].GetString());
+    }
+    if(_mDoc.HasMember("lz")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lz"].GetString());
+        UserData::getInstance()->setLatelySHLeZhi(_mDoc["lz"].GetString());
+    }
+    if(_mDoc.HasMember("dihua")){
+        GAMEDATA::getInstance()->setPrivateDihua(_mDoc["dihua"].GetString());
+        UserData::getInstance()->setLatelySHDiHua(_mDoc["dihua"].GetString());
+    }
+    if(_mDoc.HasMember("fcy")){
+        GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
+        UserData::getInstance()->setLatelySHFcy(_mDoc["fcy"].GetString());
+    }
+    FriendOpenRoomRespData data;
+    if(_mDoc.HasMember("kb")){
+        const rapidjson::Value &kb = _mDoc["kb"];
+        data.kb = kb.GetString();
+    }
+    if(_mDoc.HasMember("huangfan")){
+        const rapidjson::Value &huangfan = _mDoc["huangfan"];
+        data.huangfan = huangfan.GetString();
+    }
+    if(_mDoc.HasMember("prjushu")){
+        const rapidjson::Value &prjushu = _mDoc["prjushu"];
+        data.prjushu = prjushu.GetString();
+        UserData::getInstance()->setLatelyGameJuShu(prjushu.GetString());
+    }
+    if(_mDoc.HasMember("prJucount")){
+        const rapidjson::Value &prjucount = _mDoc["prJucount"];
+        data.prjucount = prjucount.GetString();
+    }
+    if(_mDoc.HasMember("prId")){
+        const rapidjson::Value &prid = _mDoc["prId"];
+        data.prid = prid.GetString();
+    }
+    if(_mDoc.HasMember("jifen")){
+        const rapidjson::Value &jifen = _mDoc["jifen"];
+        GAMEDATA::getInstance()->setScore(jifen.GetInt());
+    }
+    if(_mDoc.HasMember("seatId")){
+        const rapidjson::Value &seatId = _mDoc["seatId"];
+        data.seatId = seatId.GetInt();
+        GAMEDATA::getInstance()->setHeroSeatId(seatId.GetInt());
+    }
+    if(_mDoc.HasMember("ip")){
+        const rapidjson::Value &ip = _mDoc["ip"];
+        GAMEDATA::getInstance()->setIP(ip.GetString());
+    }
+    if(_mDoc.HasMember("size")){
+        const rapidjson::Value &size = _mDoc["size"];
+        GAMEDATA::getInstance()->setMyGameModel(atoi(size.GetString()));
+        UserData::getInstance()->setLatelyGameModel(atoi(size.GetString()) == 2?GameModel::TWOPLAYER:GameModel::FOURPLAYER);
+    }
+    
+    PayPointInfo pointInfo;
+    if(_mDoc.HasMember("point")){
+        const rapidjson::Value &point = _mDoc["point"];
+        pointInfo.point = point.GetString();
+    }
+    if(_mDoc.HasMember("wxfee")){
+        const rapidjson::Value &fee = _mDoc["wxfee"];
+        pointInfo.fee = fee.GetString();
+    }
+    if(_mDoc.HasMember("wxfangka")){
+        const rapidjson::Value &fangka = _mDoc["wxfangka"];
+        pointInfo.fangka = fangka.GetString();
+    }
+    if(_mDoc.HasMember("applefangka")){
+        const rapidjson::Value &applefangka = _mDoc["applefangka"];
+        pointInfo.applefangka = applefangka.GetString();
+    }
+    if(_mDoc.HasMember("applefee")){
+        const rapidjson::Value &applefee = _mDoc["applefee"];
+        pointInfo.applefee = applefee.GetString();
+    }
+    GAMEDATA::getInstance()->setPayPointInfo(pointInfo);
+    
+    const rapidjson::Value &result = _mDoc["result"];
+    data.result = result.GetInt();
+    GAMEDATA::getInstance()->clearPlayersInfo();
+    GAMEDATA::getInstance()->setFriendOpenRoomResp(data);
+    if (_mDoc.HasMember("other")){
+        const rapidjson::Value &pArr = _mDoc["other"];
+        for (int i = 0; i < pArr.Capacity(); ++i){
+            const rapidjson::Value &temp = pArr[i];
+            Player* info = new Player();
+            info->setPoxiaoId(temp["poxiaoId"].GetString());
+            info->setSeatId(temp["seatId"].GetInt());
+            info->setBanker(false);
+            info->setIsReady(temp["ifready"].GetInt() == 0 ? false : true);
+            
+            info->setGold(temp["gold"].GetInt());
+            info->setTicket(temp["lequan"].GetInt());
+            info->setScore(temp["jifen"].GetInt());
+            info->setGender(temp["gender"].GetInt());
+            info->setNickname(temp["nickname"].GetString());
+            info->setPicture(temp["pic"].GetString());
+            info->setFangka(temp["fangka"].GetDouble());
+            if(temp.HasMember("ip")){
+                info->setIP(temp["ip"].GetString());
+            }
+            if(temp.HasMember("umark")){
+                info->setUmark(temp["umark"].GetString());
+            }
+            GAMEDATA::getInstance()->addPlayersInfo(info);
+        }
+    }
+    Player* info = new Player();
+    info->setSeatId(GAMEDATA::getInstance()->getHeroSeatId());
+    info->setPoxiaoId(UserData::getInstance()->getPoxiaoId());
+    info->setIsReady(false);
+    info->setTicket(UserData::getInstance()->getTicket());
+    info->setGold(UserData::getInstance()->getGold());
+    info->setGender(UserData::getInstance()->getGender());
+    info->setNickname(UserData::getInstance()->getNickName());
+    info->setPicture(UserData::getInstance()->getPicture());
+    info->setFangka(UserData::getInstance()->getFangkaNum());
+    info->setIP(GAMEDATA::getInstance()->getIP());
+    info->setUmark(UserData::getInstance()->getMarkId());
+    info->setScore(GAMEDATA::getInstance()->getScore());
+    GAMEDATA::getInstance()->addPlayersInfo(info);
+    GAMEDATA::getInstance()->setGameType(1);
+    GAMEDATA::getInstance()->setIsCompetitionState(false);
+    GAMEDATA::getInstance()->setIsCompetitionQueue(false);
+    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ShangHai);
+    postNotifyMessage(MSG_CM_FRIEND_OPEN_ROOM_RESP, nullptr);
+
+}

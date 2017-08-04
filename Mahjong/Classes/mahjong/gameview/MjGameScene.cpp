@@ -3,6 +3,8 @@
 #include "mahjong/gameview/shanghai/special/ReviewGame.h"
 #include "mahjong/gameview/hongzhong/normal/HongZhongView.hpp"
 #include "mahjong/gameview/hongzhong/special/ReviewHongZhong.hpp"
+#include "mahjong/gameview/chongming/normal/ChongMingView.h"
+#include "mahjong/gameview/chongming/special/ReviewChongMing.h"
 
 bool MjGameScene::init(){
     if (!Scene::init()){
@@ -17,6 +19,12 @@ bool MjGameScene::init(){
     }else if(GAMEDATA::getInstance()->getGameType() == 4){
         ReviewHongZhong* view = ReviewHongZhong::create();
         addChild(view);
+    }else if(GAMEDATA::getInstance()->getGameType() == 5){
+        ChongMingView* mjView = ChongMingView::create();
+        addChild(mjView);
+    }else if(GAMEDATA::getInstance()->getGameType() == 6){
+        ReviewChongMing* mjView = ReviewChongMing::create();
+        addChild(mjView);
     }else{
         MahjongView* mjView = MahjongView::create();
         addChild(mjView);
@@ -27,7 +35,7 @@ bool MjGameScene::init(){
 
 void MjGameScene::onEnter(){
     Scene::onEnter();
-   }
+}
 
 
 void MjGameScene::onExit(){

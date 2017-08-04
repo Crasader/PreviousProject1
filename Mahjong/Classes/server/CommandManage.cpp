@@ -191,7 +191,7 @@ std::string CommandManage::getOpenRoomCommand(std::string ftype,std::string dihu
     keyValue.insert(map<string, string>::value_type("ftype", ftype));
     keyValue.insert(map<string, string>::value_type("ifkb", ifkb));
     keyValue.insert(map<string, string>::value_type("ifemsc", ifemsc));
-     keyValue.insert(map<string, string>::value_type("size", size));
+    keyValue.insert(map<string, string>::value_type("size", size));
     return commandString(keyValue);
 }
 
@@ -661,21 +661,6 @@ std::string CommandManage::sendQuitCompetitionCommand(std::string competitionId)
     return commandString(keyValue);
 }
 
-//std::string CommandManage::sendHuafeiExchangeCommand(){
-//    std::map<std::string, std::string> keyValue;
-//    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_LIST_REQUEST)));
-//    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-//    return commandString(keyValue);
-//}
-
-//std::string CommandManage::sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone){
-//    std::map<std::string, std::string> keyValue;
-//    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FEE_EXCHANGE_REQUEST)));
-//    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
-//    keyValue.insert(map<string, string>::value_type("goodsId", goodsId));
-//    keyValue.insert(map<string, string>::value_type("phone", phone));
-//    return commandString(keyValue);
-//}
 
 std::string CommandManage::sendHuafeiRecordCommmand(){
     std::map<std::string, std::string> keyValue;
@@ -756,6 +741,19 @@ std::string CommandManage::sendDuiHuanFangkaCommand(std::string fee){
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_FANGKA_TO_FEE_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     keyValue.insert(map<string, string>::value_type("fee", fee));
+    return commandString(keyValue);
+}
+
+std::string CommandManage::getCMOpenRoomCommand(std::string ftype,std::string dihua,std::string lz,std::string fcy,std::string ifkb,std::string size){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_FRIEND_GAME_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("dihua", dihua));
+    keyValue.insert(map<string, string>::value_type("lz", lz));
+    keyValue.insert(map<string, string>::value_type("fcy", fcy));
+    keyValue.insert(map<string, string>::value_type("ftype", ftype));
+    keyValue.insert(map<string, string>::value_type("ifkb", ifkb));
+    keyValue.insert(map<string, string>::value_type("size", size));
     return commandString(keyValue);
 }
 

@@ -107,5 +107,6 @@ private:
     void handleTurntableResult(std::string msg);
     void handleTurntableShare(std::string msg);
     void handleHuafeiChangeFangka(std::string msg);
+    void handleCMOpenRoomResp(std::string msg);
 };
 #endif

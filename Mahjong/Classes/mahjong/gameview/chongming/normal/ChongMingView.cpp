@@ -164,6 +164,10 @@ void ChongMingView::loadView(){
         addChild(queue,10);
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
     }
+    
+    auto lab = Label::createWithSystemFont("崇明麻将", "arial", 30);
+    lab->setPosition(640,360);
+    addChild(lab);
 }
 
 void ChongMingView::startGameFirst(){
