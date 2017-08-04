@@ -270,6 +270,21 @@ void SplashScene::onEnter(){
         }
     });
     
+    cmOpenRoomListener  = EventListenerCustom::create(MSG_CM_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
+        
+        GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+        GAMEDATA::getInstance()->setGameType(5);
+        FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
+        if(resp.result == 1){
+            GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        }else {
+            showLoading();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
+        }
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(cmOpenRoomListener, 1);
+    
     competitionQueueListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_COMPETITION_QUEUE_RESP, [=](EventCustom* event){
         std::string roomId = static_cast<char*>(event->getUserData());
         if(atoi(roomId.c_str()) == CompetitionRoomId::Shanghai_High||atoi(roomId.c_str()) == CompetitionRoomId::Shanghai_Normal){
@@ -294,6 +309,8 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReConnectAgain);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReEnterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(cmOpenRoomListener);
+    
 }
 
 void SplashScene::showLoadLayerAnim(){

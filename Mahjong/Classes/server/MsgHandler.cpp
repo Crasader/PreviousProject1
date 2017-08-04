@@ -497,6 +497,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHuafeiChangeFangka(msg);
             break;
         }
+        case MSGCODE_CM_FRIEND_GAME_RESPONSE:{
+            handleCMOpenRoomResp(msg);
+            break;
+        }
         default:
             break;
     }

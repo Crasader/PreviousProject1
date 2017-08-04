@@ -29,7 +29,8 @@ bool GuiLayer::init(){
 }
 
 void GuiLayer::initView(){
-    if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 3){
+    if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 3
+       ||GAMEDATA::getInstance()->getGameType() == 5){
         drawGuiButton();//设置,账单,聊天，解散房间，退出
     }
     drawGameInfo(); //开宝，荒番，房间号的绘制
@@ -72,7 +73,7 @@ void GuiLayer::drawGuiButton(){
         }
         
         if(!GAMEDATA::getInstance()->GAMEDATA::getInstance()->getIsRecover()||GAMEDATA::getInstance()->getLastGameDataBackup().result == 0){
-            if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 3)
+            if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 3||GAMEDATA::getInstance()->getGameType() == 5)
                 drawPlayerInvite();
         }
         auto bill = MenuItemImage::create("gameview/bill_btn_1.png", "gameview/bill_btn_2.png",
@@ -118,7 +119,8 @@ void GuiLayer::drawGameInfo(){
             }
         }
     }else{
-        if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
+        if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2
+           ||GAMEDATA::getInstance()->getGameType() == 5 || GAMEDATA::getInstance()->getGameType() == 6){
             auto kaibao = Sprite::create("gameview/kai_bao.png");
             addChild(kaibao);
             

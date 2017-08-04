@@ -1203,7 +1203,7 @@ void LobbyScene::addEventListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(coreLoginRespListener, 1);
     
-    cmOpenRoomListener  = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
+    cmOpenRoomListener  = EventListenerCustom::create(MSG_CM_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
         
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         GAMEDATA::getInstance()->setGameType(5);
