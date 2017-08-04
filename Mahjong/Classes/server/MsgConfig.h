@@ -59,7 +59,7 @@
 #define MSGCODE_DZP_RESPONSE  172// 大转盘回复{code:172,poxiaoId:poxiaoId,result:1,content:[{fangka:1,ratio:385},{fangka:5,ratio:40},{fangka:20,ratio:3},{fee:1.88,ratio:230},{fee:2.88,ratio:77},{fee:5.88,ratio:23},{fee:18.88,ratio:7},{fee:88.88,ratio:1},{iphone7:1,ratio:0},{nothing:1,ratio:234}]}
 #define MSGCODE_DZP_Z_REQUEST  173// 大转盘转起来请求{code:173,poxiaoId:poxiaoId}
 #define MSGCODE_DZP_Z_RESPONSE  174// 大转盘转起来回复{code:173,poxiaoId:poxiaoId,result:1,content:{fangka:1,ratio:385}} result为0则大转盘关闭
-#define MSGCODE_DZP_Z_SHARE_REQUEST  175;// 大转盘转起来分享成功请求{code:175,poxiaoId:poxiaoId}
+#define MSGCODE_DZP_Z_SHARE_REQUEST  175  // 大转盘转起来分享成功请求{code:175,poxiaoId:poxiaoId}
 #define MSGCODE_DZP_B_SHARE_REQUEST  176// 大转盘分享成功请求{code:176,poxiaoId:poxiaoId}
 #define MSGCODE_DZP_B_SHARE_RESPONSE  177// 大转盘分享成功回复{code:177,poxiaoId:poxiaoId,result:"1"} 1为有转盘机会 0表示没有
 
@@ -134,7 +134,7 @@
 #define MSGCODE_MAJIANG_AGAIN_REQUEST 1995//再来一局请求{code:1995,poxiaoId:poxiaoId}
 #define MSGCODE_MAJIANG_AGAIN_RESPONSE 1996//再来一局回复{code:1996,poxiaoId:poxiaoId,result:1,rsid:1000}1为成功 2为金币小于下限 3为金币高于上限rsid为跳转房间
 //#define MSGCODE_MAJIANG_BACK_RESUME_REQUEST 1997//后台切回请求{code:1997,poxiaoId:poxiaoId}
-//#define MSGCODE_MAJIANG_BACK_RESUME_RESPONSE 1998//后台切回回复{code:1998,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,hua:"1",chi:[{chi:"1,2,3",poker:"3"},{chi:"11,12,13",poker:"13"}],peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",status:1}]} status1为听牌 
+//#define MSGCODE_MAJIANG_BACK_RESUME_RESPONSE 1998//后台切回回复{code:1998,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,hua:"1",chi:[{chi:"1,2,3",poker:"3"},{chi:"11,12,13",poker:"13"}],peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",status:1}]} status1为听牌
 #define MSGCODE_MAJIANG_KICKOUT_REQUEST  2000// 剔除玩家请求{code:2000,poxiaoId:poxiaoId,seatId:seatId}
 #define MSGCODE_MAJIANG_KICKOUT_NOTIFY  2001// 剔除玩家通知{code:2001,poxiaoId:poxiaoId,seatId:seatId}
 #define MSGCODE_MAJIANG_DISCARD_NOTIFY  2002// 开始游戏，发牌通知{code:2002,poxiaoId:poxiaoId,start:1,dice:"3,6",poker:1,2,4,5,6} start为开始的玩家座位号
@@ -266,6 +266,57 @@
 #define MSGCODE_HH_IFHU_REQUEST  3038// 晃晃麻将胡牌请求{code:3038,poxiaoId:"123",flag:"1"} flag为1是确认胡牌，2是取消胡牌
 
 
+
+#define MSGCODE_CM_MAJIANG_BACK_OUT_REQUEST 4000  //后台切出请求{code:4000,poxiaoId:poxiaoId}
+#define MSGCODE_CM_MAJIANG_AGAIN_REQUEST 4001  //再来一局请求{code:4001,poxiaoId:poxiaoId}
+#define MSGCODE_CM_MAJIANG_AGAIN_RESPONSE 4002  //再来一局回复{code:4002,poxiaoId:poxiaoId,result:1,rsid:1000,kb:"1"}1为成功 2为金币小于下限 3为金币高于上限rsid为跳转房间
+#define MSGCODE_CM_READY_REQUEST   4003  // 崇明麻将客户端到服务端准备请求{code:4003,poxiaoId:poxiaoId}
+#define MSGCODE_CM_READY_RESPONSE   4004  // 崇明麻将服务端到客户端准备回复{code:4004,poxiaoId:poxiaoId,result:1,rsid:'1111'}
+#define MSGCODE_CM_LOGIN_NOTIFY   4005  // 崇明麻将服务端到客户端登陆通知{code:4005,result:0,poxiaoId:poxiaoId,seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0,pId:pId} gender性别0女1男 ifready准备0未准备1准备
+#define MSGCODE_CM_READY_NOTIFY   4006  // 崇明麻将服务端到客户端准备通知{code:5006,poxiaoId:poxiaoId,seatId:1}
+#define MSGCODE_CM_MAJIANG_FIRSTHUA_REQUEST   4007  // 首次清理花牌请求{code:4007,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_CM_MAJIANG_DISCARD_NOTIFY   4008  // 开始游戏,发牌通知{code:4008,poxiaoId:poxiaoId,start:1,dice:"3,6",poker:"1,2,4,5,6",kb:"1",hf:"2",prjucount:1,matchname:"10元比赛"} 私人房间进行到的局数prjucount
+#define MSGCODE_CM_MAJIANG_CLEARHUA_NOTIFY   4009  // 首次清理手牌中的花牌{code:4009,poxiaoId:poxiaoId,seatId:1,poker:[{poker:1,2,replace:3,4},{poker:4,replace:5}]}
+#define MSGCODE_CM_MAJIANG_DISPATCH_REQUEST   4010  // 出牌请求{code:4010,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
+#define MSGCODE_CM_MAJIANG_DISPATCH_NOTIFY   4011  // 出牌通知{code:4011,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
+#define MSGCODE_CM_MAJIANG_PLAYER_CPG_NOTIFY   4012  //玩家胡吃碰杠通知{code:4012,poxiaoId:poxiaoId,seatId:seatId,poker:1,hu:"1",chi:[{chi:1,2,3},{chi:2,3,4}],peng:"1,2,3",gang:"1,1,1,1"}
+#define MSGCODE_CM_MAJIANG_CHI_REQUEST   4013  // 确认吃牌请求{code:4013,poxiaoId:poxiaoId,seatId:seatId,chi:"1,2",poker:poker}
+#define MSGCODE_CM_MAJIANG_CHI_RESPONSE   4014  // 吃牌回复{code:4014,poxiaoId:poxiaoId,seatId:seatId,result:1}  1成功0失败
+#define MSGCODE_CM_MAJIANG_CHI_NOTIFY   4015  // 吃牌通知{code:4015,poxiaoId:poxiaoId,seatId:seatId,chi:"1,2",poker:poker,sId:2} seatId为吃牌人的座位号
+#define MSGCODE_CM_MAJIANG_PENG_REQUEST   4016  // 碰牌请求{code:4016,poxiaoId:poxiaoId,seatId:seatId,peng:"1,2",poker:poker}
+#define MSGCODE_CM_MAJIANG_PENG_RESPONSE   4017  // 碰牌回复{code:4017,poxiaoId:poxiaoId,seatId:seatId,result:1,ting:"1,2,3"}  1成功0失败
+#define MSGCODE_CM_MAJIANG_PENG_NOTIFY   4018  // 碰牌通知{code:4018,poxiaoId:poxiaoId,seatId:seatId,peng:"1,2",poker:poker,sId:2} seatId为碰牌人的座位号
+#define MSGCODE_CM_MAJIANG_GANG_REQUEST   4019  // 杠牌请求{code:4019,poxiaoId:poxiaoId,seatId:seatId,gang:"1,1,1",poker:poker,flag:0} flag 0为明杠1为暗杠,2碰杠
+#define MSGCODE_CM_MAJIANG_GANG_RESPONSE   4020  // 杠牌回复{code:4020,poxiaoId:poxiaoId,seatId:seatId,result:1}  1成功0失败
+#define MSGCODE_CM_MAJIANG_GANG_NOTIFY   4021  // 杠牌通知{code:4021,poxiaoId:poxiaoId,seatId:seatId,gang:"1,1,1",poker:poker,flag:0,sId:2} seatId为杠牌人的座位号 1暗杠 2碰杠 0普通杠
+#define MSGCODE_CM_MAJIANG_NO_CHI_PENG_GANG_REQUEST   4022  // 取消吃碰杠牌请求{code:4022,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_CM_MAJIANG_NO_CHI_PENG_GANG_RESPONSE   4023  // 取消吃碰杠回复{code:4023,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_CM_MAJIANG_POKER_NOTIFY   4024  //游戏中发牌{code:4024,poxiaoId:poxiaoId,seatId:seatId,poker:{poker:1,hua:32,33},hu:"1",angang:"",penggang:""}poker为花时替换牌,hu为是否可以胡牌,angang暗杠 penggang 碰杠
+#define MSGCODE_CM_MAJIANG_TING_GANG_NOTIFY   4025  // 杠牌通知{code:4025,poxiaoId:poxiaoId,seatId:seatId,ting:"1,2,3",angang:"1,1,1,1",penggang:"1"} ting为打掉那张牌可以听牌
+#define MSGCODE_CM_MAJIANG_NO_TING_GANG_REQUEST   4026  // 取消杠牌请求{code:4026,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_CM_MAJIANG_NO_TING_GANG_RESPONSE   4027  // 取消杠牌回复{code:4027,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_CM_MAJIANG_FINISH_NOTIFY   4028  //结算通知 ,结算,result0为平,1为自摸,2为放炮 3胡牌  4输
+//{code:4028,flag:"1",poxiaoId:poxiaoId,seatId:seatId,poker:1,finish:[{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0,hua:1,poker:1,2,3},{result:1,hutype:1,2,3,seatId:1,nickname:"rr",gold:0,diamond:0,jifen:0,lequan:0,golddelta:0,diamonddelta:0,jifendelta:0,lequandelta:0,hua:1,poker:1,2,3}]}
+#define MSGCODE_CM_MAJIANG_OUT_REQUEST   4029  //退出游戏请求{code:4029,poxiaoId:poxiaoId,seatId:seatId}
+#define MSGCODE_CM_MAJIANG_OUT_RESPONSE   4030  // 退出游戏回复{code:4030,poxiaoId:poxiaoId,seatId:seatId,result:1}
+#define MSGCODE_CM_MAJIANG_OUTLINE_RESUME_NOTIFY 4031
+//断线续完{code:4031,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,hua:"1",chi:[{chi:"1,2,3",poker:"3"},{chi:"11,12,13",poker:"13"}],peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",status:1,prId:"123",fzId:"456",prjucount:"1",prjushu:"2"}],matchname:"10元比赛"} status1为听牌
+#define MSGCODE_CM_FRIEND_GAME_REQUEST   4032  // 好友开房请求{code:4032,poxiaoId:"123",ftype:"1",ifkb:"0",size:"4",fcy:"1",dihua:"1",lz:"1"} ftype 1为打八局 2为打4局3为16局 ifkb 0为无开宝,1为有开宝 size4为4人2为2人,fcy飞苍蝇0为无,1为有,dihua 0为1/1 1为2/2 2为6/2 3为5/5,lz0为20勒子 1为50勒子 2为100勒子 3为无勒子
+#define MSGCODE_CM_FRIEND_GAME_NOTIFY   4033  // 好友开房通知{code:4033,poxiaoId:"123",nickname:"aaa",pId:"456"}
+#define MSGCODE_CM_FRIEND_GAME_RESPONSE  4034  //好友开房回复{code:4034,poxiaoId:poxiaoId,result:"0",seatId:1,prId:"1234",prjushu:"8"} prjushu 8\16
+#define MSGCODE_CM_FRIEND_JOIN_GAME_REQUEST   4035  // 好友加入房间请求{code:4035,poxiaoId:"123",pId:"456"}
+#define MSGCODE_CM_FRIEND_JOIN_GAME_RESPONSE   4036  //好友进入房间回复{code:4036,poxiaoId:poxiaoId,result:0,seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1,pic:"1"}],prId:"1234",prjushu:"8",iflezi:"0"} iflezi为0表示无勒子1表示有勒子 result 0为自己在游戏中 1为成功 2为房间已满
+#define MSGCODE_CM_FRIEND_JOIN_GAME_FJH_REQUEST   4037  // 好友输入房间号加入房间请求{code:4037,poxiaoId:"123",prId:"456"}
+
+#define MSGCODE_CM_FRIEND_DISMISS_NOTIFY   4038  // 私人房间可以解散通知{code:4038,poxiaoId:"123"}
+#define MSGCODE_CM_FRIEND_DISMISS_FZAGREE_REQUEST   4039  //私人房间解散请求{code:4039,poxiaoId:poxiaoId}
+#define MSGCODE_CM_FRIEND_DISMISS_AGREE_NOTIFY   4040  // 私人房间是否同意解散通知{code:4040,poxiaoId:"123"}
+#define MSGCODE_CM_FRIEND_DISMISS_AGREE_REQUEST   4041  //私人房间是否同意解散请求{code:4041,poxiaoId:poxiaoId,agree:0} 0为不同意 1为同意
+#define MSGCODE_CM_FRIEND_DISMISS_AGREE_RESULT_NOTIFY   4042  //私人房间是否同意解散通知{code:4042,poxiaoId:poxiaoId,pId:11,agree:0} 0为不同意 1为同意,pId为谁同意了或则不同意了
+#define MSGCODE_CM_FRIEND_DISMISS_FZ_REQUEST   4043  //私人房间房主解散请求{code:4043,poxiaoId:poxiaoId}
+#define MSGCODE_CM_IFHU_NOTIFY   4044  // 崇明麻将可以胡通知{code:4044,poxiaoId:"123"}
+#define MSGCODE_CM_IFHU_REQUEST   4045  // 崇明麻将胡牌请求{code:4045,poxiaoId:"123",flag:"1"} flag为1是确认胡牌，2是取消胡牌
+
 #define LOGIN_SUCCESS "login_success"
 #define MSG_VISITOR_LOGIN_RESP  "msg_visitor_login_resp"
 #define MSG_LOGIN_RESP  "msg_login_resp"
@@ -359,7 +410,7 @@
 #define MSG_INVITE_CODE_RESP "MSG_INVITE_CODE_RESP"
 #define MSG_JOIN_COMPETITION_RESP "MSG_JOIN_COMPETITION_RESP"
 #define MSG_COMPETITION_QUEUE_RESP "MSG_COMPETITION_QUEUE_RESP"
-#define MSG_QUIT_COMPETITON_RESP "MSG_QUIT_COMPETITON_RESP" 
+#define MSG_QUIT_COMPETITON_RESP "MSG_QUIT_COMPETITON_RESP"
 #define MSG_COMPETITION_START_NOTIFY "MSG_COMPETITION_START_NOTIFY"
 #define MSG_COMPETITION_ADD_PLAYER_NOTIFY "MSG_COMPETITION_ADD_PLAYER_NOTIFY"
 #define MSG_PLAYER_HUAFEI_CHANGE_LIST  "MSG_PLAYER_HUAFEI_CHANGE_LIST"
