@@ -6,29 +6,29 @@ USING_NS_CC;
 
 class CommandManage{
 public:
-	static CommandManage* getInstance();
-	std::string getHeartCommmand();//心跳
+    static CommandManage* getInstance();
+    std::string getHeartCommmand();//心跳
     std::string getHeartRespCommmand();//心跳回复
-	std::string getGiveUpCpgCommmand();//放弃吃碰杠
-	std::string getReadyCommmand();//准备
-	std::string getPlayPokerCommmand(int poker);//打牌
-	std::string getChiCommand(std::string chi,int poker);//吃
-	std::string getPengCommand(std::string peng ,int poker);//碰
-	std::string getGangCommand(std::string gang, int poker,int flag);//杠
-	std::string getGiveUpTingCommand();//放弃听牌
-	std::string getTingCommand(int poker);//听牌
-	std::string getRoomListCommand(std::string gameId);//房间列表
-	std::string getEnterRoomCommand(std::string gameId, std::string roomId);//进入房间请求
-	std::string getQuitRoomCommand();//退出房间
-	std::string getChangeHeadCommand(std::string pic);//更换头像
+    std::string getGiveUpCpgCommmand();//放弃吃碰杠
+    std::string getReadyCommmand();//准备
+    std::string getPlayPokerCommmand(int poker);//打牌
+    std::string getChiCommand(std::string chi,int poker);//吃
+    std::string getPengCommand(std::string peng ,int poker);//碰
+    std::string getGangCommand(std::string gang, int poker,int flag);//杠
+    std::string getGiveUpTingCommand();//放弃听牌
+    std::string getTingCommand(int poker);//听牌
+    std::string getRoomListCommand(std::string gameId);//房间列表
+    std::string getEnterRoomCommand(std::string gameId, std::string roomId);//进入房间请求
+    std::string getQuitRoomCommand();//退出房间
+    std::string getChangeHeadCommand(std::string pic);//更换头像
     std::string getChangeGenderCommand(std::string gender);//更换性别
     std::string getOpenRoomCommand(std::string ftype,std::string dihua,std::string lz,std::string fcy,std::string ifkb,std::string ifemsc,std::string size);//开设房间
-	std::string getEnterFriendRoomCommand(std::string pid);//进入私人房间
-	std::string getBillCommand();//账单
-	std::string getBillDetailCommand(std::string billId);//账单明细
-	std::string getLobbyQuitCommand();//退出大厅
-	std::string getDailyPrideCommand();//抽奖情况
-	std::string getTodayPrideCommand();//当次抽奖
+    std::string getEnterFriendRoomCommand(std::string pid);//进入私人房间
+    std::string getBillCommand();//账单
+    std::string getBillDetailCommand(std::string billId);//账单明细
+    std::string getLobbyQuitCommand();//退出大厅
+    std::string getDailyPrideCommand();//抽奖情况
+    std::string getTodayPrideCommand();//当次抽奖
     std::string getFirstChargeInfoCommand();//首冲
     std::string getGoldChargeListCommand();//金币充值列表
     std::string getGoldChangeCommand(std::string fangka);//金币兑换列表
@@ -77,15 +77,14 @@ public:
     /** ------------------------------红中麻将协议结束 ------------------- **/
     
     /* -------------- 崇明麻将协议开始 ------ */
-     std::string getCMOpenRoomCommand(std::string ftype,std::string dihua,std::string lz,std::string fcy,std::string ifkb,std::string size);//开设房间
+    std::string getCMOpenRoomCommand(std::string ftype,std::string dihua,std::string lz,std::string fcy,std::string ifkb,std::string size);//开设房间
+    std::string getCMDissovleRoomReq();
     /* ______________ 崇明麻将协议结束 ------ */
     
     std::string sendInviteCodeCommand(std::string code);
     /** ---------------------- 比赛协议 ---------------------------**/
     std::string sendJoinCompetiotnCommand(std::string competitionId);
     std::string sendQuitCompetitionCommand(std::string competitionId);
-//    std::string sendHuafeiExchangeCommand();
-//    std::string sendHuafeiDuiHuanCommand(std::string goodsId,std::string phone);
     std::string sendHuafeiRecordCommmand();
     std::string sendCancleTruCommand();
     /** ---------------红包协议--------------------- **/
@@ -100,9 +99,9 @@ public:
     std::string sendDuiHuanHuafeiCommand(std::string fee,std::string phone);
     std::string sendDuiHuanFangkaCommand(std::string fee);
 private:
-	CommandManage();
-	static CommandManage* _instance;
-	std::string commandString(std::map<std::string, std::string> keyValue);
-	std::string itos(int target);
+    CommandManage();
+    static CommandManage* _instance;
+    std::string commandString(std::map<std::string, std::string> keyValue);
+    std::string itos(int target);
 };
 #endif

@@ -317,7 +317,10 @@ void GuiLayer::dissovleRoom(){
         GAMEDATA::getInstance()->clearPlayersInfo();
         if(GAMEDATA::getInstance()->getGameType() == 3){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomCommand());
-        }else{
+        }else if(GAMEDATA::getInstance()->getGameType() == 5){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMDissovleRoomReq());
+        }
+        else{
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
         }
     });

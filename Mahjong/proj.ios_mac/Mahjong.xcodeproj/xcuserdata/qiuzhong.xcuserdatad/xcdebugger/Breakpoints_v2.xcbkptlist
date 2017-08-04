@@ -5520,11 +5520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
-            timestampString = "523525076.009723"
+            timestampString = "523525989.647874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "GuiLayer::testButtonClick()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7392,6 +7392,22 @@
             startingLineNumber = "187"
             endingLineNumber = "187"
             landmarkName = "ChongMingView::startGameFirst()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/mahjong/gameview/gui/GuiLayer.cpp"
+            timestampString = "523525945.19808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
+            landmarkName = "GuiLayer::dissovleRoom()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
