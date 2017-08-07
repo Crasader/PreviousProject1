@@ -162,7 +162,7 @@ void ChongMingView::loadView(){
         CompetitionQueue* queue = CompetitionQueue::create();
         queue->setTag(9982);
         addChild(queue,10);
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendCmReadyCommand());
     }
     
     auto lab = Label::createWithSystemFont("崇明麻将", "arial", 30);
@@ -1163,13 +1163,13 @@ void ChongMingView::onEnterTransitionDidFinish(){
     if(GAMEDATA::getInstance()->getContinueAgain()){
         GAMEDATA::getInstance()->setContinueAgain(false);
         schedule([=](float dt){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendCmReadyCommand());
         }, 0, 0, 0.5f,"continueGame");
     }
     
     if(GAMEDATA::getInstance()->getIsCompetitionState()){
         schedule([=](float dt){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendCmReadyCommand());
         }, 0, 0, 0.5f,"continueGame2");
     }
     

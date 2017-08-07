@@ -82,6 +82,8 @@ public:
     /* ______________ 崇明麻将协议结束 ------ */
     
     std::string sendInviteCodeCommand(std::string code);
+    std::string sendCmReadyCommand();
+    
     /** ---------------------- 比赛协议 ---------------------------**/
     std::string sendJoinCompetiotnCommand(std::string competitionId);
     std::string sendQuitCompetitionCommand(std::string competitionId);

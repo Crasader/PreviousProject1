@@ -98,7 +98,7 @@ bool CMPlayerResultCell::init(GameResultData data){
         cangyinfen->setPosition(150,0);
         addChild(cangyinfen);
         
-        int fen = 2;
+        int fen = atoi(GAMEDATA::getInstance()->getPrivateFcyValue().c_str());;
         auto fuhao = Sprite::create();
         if(fen>=0){
             fuhao->setTexture("result/gang_fen_jia.png");
