@@ -431,3 +431,33 @@ void UserData::setLatelyHZFanMa(std::string num){
     UserDefault::getInstance()->setStringForKey("hz_fan_ma",num);
 }
 
+//记录玩家在崇明麻将上的底花选择
+std::string UserData::getLatelyCMDiHua(){
+    return UserDefault::getInstance()->getStringForKey("cm_di_hua","1");
+    
+}
+void UserData::setLatelyCMDiHua(std::string num){
+    UserDefault::getInstance()->setStringForKey("cm_di_hua",num);
+}
+//记录玩家在崇明麻将上的勒子选择
+std::string UserData::getLatelyCMLezi(){
+    return UserDefault::getInstance()->getStringForKey("cm_le_zi","0");
+}
+void UserData::setLatelyCMLezi(std::string num){
+    UserDefault::getInstance()->setStringForKey("cm_le_zi",num);
+}
+//记录玩家在崇明麻将上的开宝选择
+std::string UserData::getLatelyCMKaibao(){
+    return UserDefault::getInstance()->getStringForKey("cm_kai_bao","1");
+}
+void UserData::setLatelyCMKaibao(std::string num){
+    UserDefault::getInstance()->setStringForKey("cm_kai_bao","1");
+}
+//记录玩家在崇明麻将上的飞苍蝇选择
+std::string UserData::getLatelyCMFcy(){
+    return UserDefault::getInstance()->getStringForKey("cm_fcy","0");
+}
+void UserData::setLatelyCMFcy(std::string num){
+    UserDefault::getInstance()->setStringForKey("cm_fcy","0");
+}
+

@@ -163,9 +163,17 @@ public:
     std::string getLatelyHZFanMa();
     void setLatelyHZFanMa(std::string num);
     //记录玩家在崇明麻将上的底花选择
+    std::string getLatelyCMDiHua();
+    void setLatelyCMDiHua(std::string num);
     //记录玩家在崇明麻将上的勒子选择
+    std::string getLatelyCMLezi();
+    void setLatelyCMLezi(std::string num);
     //记录玩家在崇明麻将上的开宝选择
+    std::string getLatelyCMKaibao();
+    void setLatelyCMKaibao(std::string num);
     //记录玩家在崇明麻将上的飞苍蝇选择
+    std::string getLatelyCMFcy();
+    void setLatelyCMFcy(std::string num);
     
     
     CC_SYNTHESIZE(std::string, poxiaoOrderID, PoxiaoOrderID);

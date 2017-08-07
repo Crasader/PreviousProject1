@@ -151,6 +151,8 @@ bool FriendRoom::init()
         showShangHaiMahjong();
     }else if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::HongZhong){
         showHongZhongMahjong();
+    }else if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::ChongMing){
+        showChongMingMahjong();
     }
     if(UserData::getInstance()->getLatelyGameModel() == GameModel::TWOPLAYER){
         select2People();

@@ -4508,19 +4508,19 @@ void MsgHandler:: handleCMOpenRoomResp(std::string msg){
     }
     if(_mDoc.HasMember("ifkb")){
         GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
-        UserData::getInstance()->setLatelySHKaiBao(_mDoc["ifkb"].GetString());
+        UserData::getInstance()->setLatelyCMKaibao(_mDoc["ifkb"].GetString());
     }
     if(_mDoc.HasMember("lz")){
         GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lz"].GetString());
-        UserData::getInstance()->setLatelySHLeZhi(_mDoc["lz"].GetString());
+        UserData::getInstance()->setLatelyCMLezi(_mDoc["lz"].GetString());
     }
     if(_mDoc.HasMember("dihua")){
         GAMEDATA::getInstance()->setPrivateDihua(_mDoc["dihua"].GetString());
-        UserData::getInstance()->setLatelySHDiHua(_mDoc["dihua"].GetString());
+        UserData::getInstance()->setLatelyCMDiHua(_mDoc["dihua"].GetString());
     }
     if(_mDoc.HasMember("fcy")){
         GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
-        UserData::getInstance()->setLatelySHFcy(_mDoc["fcy"].GetString());
+        UserData::getInstance()->setLatelyCMFcy(_mDoc["fcy"].GetString());
     }
     FriendOpenRoomRespData data;
     if(_mDoc.HasMember("kb")){
@@ -4633,7 +4633,7 @@ void MsgHandler:: handleCMOpenRoomResp(std::string msg){
     GAMEDATA::getInstance()->setGameType(1);
     GAMEDATA::getInstance()->setIsCompetitionState(false);
     GAMEDATA::getInstance()->setIsCompetitionQueue(false);
-    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ShangHai);
+    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ChongMing);
     postNotifyMessage(MSG_CM_FRIEND_OPEN_ROOM_RESP, nullptr);
 
 }
