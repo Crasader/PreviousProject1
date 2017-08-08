@@ -785,7 +785,7 @@ void ReviewChongMing::addCoustomListener(){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(fupanPlayerInfoListener, 1);
     
     
-    turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
+    turnListener = EventListenerCustom::create(MSG_CM_PLAYER_TURN_WHO, [=](EventCustom* event){
         PlayerTurnData* data = static_cast<PlayerTurnData*>(event->getUserData());
         PlayerTurnData newData = *data;
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);

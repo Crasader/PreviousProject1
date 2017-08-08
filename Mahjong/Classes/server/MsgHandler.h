@@ -113,5 +113,6 @@ private:
     void handleCMReConnectResp(std::string msg);
     void handleCMDissovleRoomNotify(std::string msg);
     void showCMOtherPlayedJong(std::string msg);
+    void cmNextPlayer(std::string msg);
 };
 #endif

@@ -1571,7 +1571,7 @@ void ChongMingView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
     
-    turnListener = EventListenerCustom::create(MSG_PLAYER_TURN_WHO, [=](EventCustom* event){
+    turnListener = EventListenerCustom::create(MSG_CM_PLAYER_TURN_WHO, [=](EventCustom* event){
         //收到出牌通知,手里没牌
         if(playerHero->getSelfHandJongs().size() == 0){
             Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
