@@ -1606,7 +1606,7 @@ void ChongMingView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);
     
-    otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
+    otherListener = EventListenerCustom::create(MSG_CM_OTHER_PALYER_JONG, [=](EventCustom* event){
         
         std::string result = static_cast<char*>(event->getUserData());
         vector<string> res =  StringUtil::split(result, ",");

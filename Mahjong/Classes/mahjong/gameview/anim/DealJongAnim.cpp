@@ -1,6 +1,7 @@
 #include "mahjong/gameview/anim/DealJongAnim.h"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/gameview/hongzhong/normal/HongZhongView.hpp"
+#include "mahjong/gameview/chongming/normal/ChongMingView.h"
 #include "mahjong/common/jong/Jong.h"
 #include "server/MsgConfig.h"
 
@@ -87,6 +88,9 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
         }else if(GAMEDATA::getInstance()->getGameType() == 3){
             if(NULL != ((HongZhongView*)getParent()))
                 ((HongZhongView*)getParent())->showPaiduiNum(91);
+        }else if(GAMEDATA::getInstance()->getGameType() == 5){
+            if(NULL != ((ChongMingView*)getParent()))
+                ((ChongMingView*)getParent())->showPaiduiNum(91);
         }
         paishuLayer->removeFromParent();
         if(GAMEDATA::getInstance()->getGameType() == 1){
@@ -95,6 +99,9 @@ void DealJongAnim::showDealJong(int seatId, int dian1, int dian2,ReplaceJongVec 
         }else if(GAMEDATA::getInstance()->getGameType() == 3){
             if(NULL != ((HongZhongView*)getParent()))
                 ((HongZhongView*)getParent())->dealJongFinish(vec,cpgtData);
+        }else if(GAMEDATA::getInstance()->getGameType() == 5){
+            if(NULL != ((ChongMingView*)getParent()))
+                ((ChongMingView*)getParent())->dealJongFinish(vec,cpgtData);
         }
     }), NULL));
 }

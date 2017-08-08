@@ -786,6 +786,16 @@ std::string CommandManage::getCMDissolveRoomSelectCommand(std::string agree){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getCMPlayPokeCommand(int po){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_MAJIANG_DISPATCH_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("seatId", StringUtil::itos(GAMEDATA::getInstance()->getHeroSeatId())));
+    keyValue.insert(map<string, string>::value_type("GID", StringUtil::itos(1)));
+    keyValue.insert(map<string, string>::value_type("poker", StringUtil::itos(po)));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;
     rapidjson::Document::AllocatorType& allocator = document.GetAllocator();

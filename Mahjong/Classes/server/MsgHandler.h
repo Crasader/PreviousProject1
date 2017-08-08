@@ -112,5 +112,6 @@ private:
     void handleCMEnterRoomResp(std::string msg);
     void handleCMReConnectResp(std::string msg);
     void handleCMDissovleRoomNotify(std::string msg);
+    void showCMOtherPlayedJong(std::string msg);
 };
 #endif

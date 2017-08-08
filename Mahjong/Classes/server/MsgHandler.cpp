@@ -519,7 +519,11 @@ void MsgHandler::distribute(int code, std::string msg){
             handleDissovleRoomSelectedNotify(msg);
             break;
         }
-
+        case MSGCODE_CM_MAJIANG_DISPATCH_NOTIFY:
+        {
+            showCMOtherPlayedJong(msg);
+            break;
+        }
         default:
             break;
     }
@@ -5049,4 +5053,16 @@ void MsgHandler::handleCMDissovleRoomNotify(std::string msg){
         GAMEDATA::getInstance()->setDissolveName(name);
         postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW, nullptr);
     }
+}
+
+void MsgHandler::showCMOtherPlayedJong(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &poker = _mDoc["poker"];
+    const rapidjson::Value &seatId = _mDoc["seatId"];
+    std::string resultMsg = StringUtils::format("%d,%s",seatId.GetInt(),poker.GetString());
+    char* buf = const_cast<char*>(resultMsg.c_str());
+    postNotifyMessage(MSG_CM_OTHER_PALYER_JONG, buf);
 }

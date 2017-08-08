@@ -272,7 +272,6 @@
 #define MSGCODE_CM_READY_REQUEST   4003  // 崇明麻将客户端到服务端准备请求{code:4003,poxiaoId:poxiaoId}
 #define MSGCODE_CM_LOGIN_NOTIFY   4005  // 崇明麻将服务端到客户端登陆通知{code:4005,result:0,poxiaoId:poxiaoId,seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0,pId:pId} gender性别0女1男 ifready准备0未准备1准备
 #define MSGCODE_CM_READY_NOTIFY   4006  // 崇明麻将服务端到客户端准备通知{code:5006,poxiaoId:poxiaoId,seatId:1}
-#define MSGCODE_CM_MAJIANG_FIRSTHUA_REQUEST   4007  // 首次清理花牌请求{code:4007,poxiaoId:poxiaoId,seatId:seatId}
 #define MSGCODE_CM_MAJIANG_DISCARD_NOTIFY   4008  // 开始游戏,发牌通知{code:4008,poxiaoId:poxiaoId,start:1,dice:"3,6",poker:"1,2,4,5,6",kb:"1",hf:"2",prjucount:1,matchname:"10元比赛"} 私人房间进行到的局数prjucount
 
 #define MSGCODE_CM_MAJIANG_DISPATCH_REQUEST   4010  // 出牌请求{code:4010,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
@@ -422,4 +421,5 @@
 #define MSG_CM_FRIEND_OPEN_ROOM_RESP "MSG_CM_FRIEND_OPEN_ROOM_RESP"
 #define MSG_CM_ENTER_FRIEND_ROOM_RESP "MSG_CM_ENTER_FRIEND_ROOM_RESP"
 #define MSG_PLAYER_CM_CONNECT_AGAIN "MSG_PLAYER_CM_CONNECT_AGAIN"
+#define MSG_CM_OTHER_PALYER_JONG "MSG_CM_OTHER_PALYER_JONG"
 #endif

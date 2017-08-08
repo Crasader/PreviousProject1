@@ -3912,11 +3912,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3007"
-            endingLineNumber = "3007"
+            startingLineNumber = "3011"
+            endingLineNumber = "3011"
             landmarkName = "MsgHandler::handleDissovleRoomNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4424,11 +4424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1095"
-            endingLineNumber = "1095"
+            startingLineNumber = "1099"
+            endingLineNumber = "1099"
             landmarkName = "MsgHandler::enterRoomResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5010,11 +5010,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1189"
-            endingLineNumber = "1189"
+            startingLineNumber = "1193"
+            endingLineNumber = "1193"
             landmarkName = "MsgHandler::loginResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5266,11 +5266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "553"
-            endingLineNumber = "553"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
             landmarkName = "MsgHandler::handleWanJiaQunResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5282,11 +5282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1197"
-            endingLineNumber = "1197"
+            startingLineNumber = "1201"
+            endingLineNumber = "1201"
             landmarkName = "MsgHandler::loginResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5360,11 +5360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3164"
-            endingLineNumber = "3164"
+            startingLineNumber = "3168"
+            endingLineNumber = "3168"
             landmarkName = "MsgHandler::handleFupanPlayerInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5424,12 +5424,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "523865101.816679"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1229"
-            endingLineNumber = "1229"
-            landmarkName = "PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase)"
+            startingLineNumber = "1231"
+            endingLineNumber = "1231"
+            landmarkName = "PlayerHero::sendPokerRequest(int poker)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5440,11 +5440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3727"
-            endingLineNumber = "3727"
+            startingLineNumber = "3731"
+            endingLineNumber = "3731"
             landmarkName = "MsgHandler::handleHZGameReconnectNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5456,11 +5456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3726"
-            endingLineNumber = "3726"
+            startingLineNumber = "3730"
+            endingLineNumber = "3730"
             landmarkName = "MsgHandler::handleHZGameReconnectNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5692,12 +5692,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "523865101.816679"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "966"
-            endingLineNumber = "966"
-            landmarkName = "PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector&lt;string&gt; chipai, PlayerBase* playerBase)"
+            startingLineNumber = "968"
+            endingLineNumber = "968"
+            landmarkName = "PlayerHero::sendPokerRequest(int poker)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5708,12 +5708,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "523865101.816679"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1028"
-            endingLineNumber = "1028"
-            landmarkName = "PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector&lt;string&gt; chipai, PlayerBase* playerBase)"
+            startingLineNumber = "1030"
+            endingLineNumber = "1030"
+            landmarkName = "PlayerHero::sendPokerRequest(int poker)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5740,12 +5740,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "523865101.816679"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "775"
-            endingLineNumber = "775"
-            landmarkName = "PlayerHero::playerTurnReplace(PlayerTurnData data)"
+            startingLineNumber = "777"
+            endingLineNumber = "777"
+            landmarkName = "PlayerHero::sendPokerRequest(int poker)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5756,12 +5756,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "523865101.816679"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "774"
-            endingLineNumber = "774"
-            landmarkName = "PlayerHero::playerTurnReplace(PlayerTurnData data)"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
+            landmarkName = "PlayerHero::sendPokerRequest(int poker)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5772,11 +5772,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3442"
-            endingLineNumber = "3442"
+            startingLineNumber = "3446"
+            endingLineNumber = "3446"
             landmarkName = "MsgHandler::handleHZEnterRoomResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5836,11 +5836,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3061"
-            endingLineNumber = "3061"
+            startingLineNumber = "3065"
+            endingLineNumber = "3065"
             landmarkName = "MsgHandler::openRoomEnquireResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5852,11 +5852,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3060"
-            endingLineNumber = "3060"
+            startingLineNumber = "3064"
+            endingLineNumber = "3064"
             landmarkName = "MsgHandler::openRoomEnquireResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5868,11 +5868,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1918"
-            endingLineNumber = "1918"
+            startingLineNumber = "1922"
+            endingLineNumber = "1922"
             landmarkName = "MsgHandler::heroChiResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5900,12 +5900,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerHero.cpp"
-            timestampString = "523865101.816679"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "845"
-            endingLineNumber = "845"
-            landmarkName = "PlayerHero:: drawPlayedJong(int type)"
+            startingLineNumber = "847"
+            endingLineNumber = "847"
+            landmarkName = "PlayerHero::sendPokerRequest(int poker)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5996,11 +5996,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1914"
-            endingLineNumber = "1914">
+            startingLineNumber = "1918"
+            endingLineNumber = "1918">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -6058,11 +6058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1627"
-            endingLineNumber = "1627"
+            startingLineNumber = "1631"
+            endingLineNumber = "1631"
             landmarkName = "MsgHandler::goldChangeListResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6266,11 +6266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1771"
-            endingLineNumber = "1771"
+            startingLineNumber = "1775"
+            endingLineNumber = "1775"
             landmarkName = "MsgHandler::removePlayerNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6298,11 +6298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4007"
-            endingLineNumber = "4007"
+            startingLineNumber = "4011"
+            endingLineNumber = "4011"
             landmarkName = "MsgHandler::handleHZPlayerHuNotify(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6314,11 +6314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4077"
-            endingLineNumber = "4077"
+            startingLineNumber = "4081"
+            endingLineNumber = "4081"
             landmarkName = "MsgHandler::handleHZGameContinueResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6330,11 +6330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4078"
-            endingLineNumber = "4078"
+            startingLineNumber = "4082"
+            endingLineNumber = "4082"
             landmarkName = "MsgHandler::handleHZGameContinueResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6346,11 +6346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4079"
-            endingLineNumber = "4079"
+            startingLineNumber = "4083"
+            endingLineNumber = "4083"
             landmarkName = "MsgHandler::handleHZGameContinueResp(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7102,11 +7102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3110"
-            endingLineNumber = "3110"
+            startingLineNumber = "3114"
+            endingLineNumber = "3114"
             landmarkName = "MsgHandler::handleFupanInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7118,11 +7118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3124"
-            endingLineNumber = "3124"
+            startingLineNumber = "3128"
+            endingLineNumber = "3128"
             landmarkName = "MsgHandler::handleFupanInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7134,11 +7134,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3113"
-            endingLineNumber = "3113"
+            startingLineNumber = "3117"
+            endingLineNumber = "3117"
             landmarkName = "MsgHandler::handleFupanInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7150,11 +7150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgHandler.cpp"
-            timestampString = "523868135.432358"
+            timestampString = "523869660.822196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3112"
-            endingLineNumber = "3112"
+            startingLineNumber = "3116"
+            endingLineNumber = "3116"
             landmarkName = "MsgHandler::handleFupanInfo(std::string msg)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7372,11 +7372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/server/MsgConfig.h"
-            timestampString = "523865462.252685"
+            timestampString = "523868643.929337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319">
+            startingLineNumber = "318"
+            endingLineNumber = "318">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

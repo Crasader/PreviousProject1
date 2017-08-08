@@ -485,8 +485,10 @@ void PlayerHero::sendPokerRequest(int poker){
     log("向服务端发送出牌请求 %d",poker);
     if(GAMEDATA::getInstance()->getGameType() == 1){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayPokerCommmand(poker));
-    }else{
+    }else if(GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayPokerCommand(StringUtils::format("%d",poker)));
+    }else if(GAMEDATA::getInstance()->getGameType() == 5){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMPlayPokeCommand(poker));
     }
 }
 

@@ -83,6 +83,7 @@ public:
     std::string sendCmReadyCommand();
     std::string sendCMDissovleRoomRequest();
     std::string getCMDissolveRoomSelectCommand(std::string agr);
+    std::string getCMPlayPokeCommand(int po);
      /* ______________ 崇明麻将协议结束 ------ */
     
     /** ---------------------- 比赛协议 ---------------------------**/
