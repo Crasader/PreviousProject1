@@ -98,7 +98,6 @@ private:
     void controlUp();
     void controlBack();
     
-//    EventListenerCustom* gameFaPaiListener;
     EventListenerCustom* addOtherReadyListener;
     EventListenerCustom* loginRespListener;
     EventListenerCustom* addPlayersListener;
@@ -115,7 +114,6 @@ private:
     EventListenerCustom* trusteeshipRespListener;
     EventListenerCustom* trusteeshipNotifyListener;
     EventListenerCustom* trusteeshipCancelListener;
-    EventListenerCustom* heroChiRespListener;
     EventListenerCustom* heroPengRespListener;
     EventListenerCustom* heroGangRespListener;
     EventListenerCustom* playerRemoveListener;

@@ -114,5 +114,12 @@ private:
     void handleCMDissovleRoomNotify(std::string msg);
     void showCMOtherPlayedJong(std::string msg);
     void cmNextPlayer(std::string msg);
+    void showCMCpgNotify(std::string msg);
+    void cmHeroChiResp(std::string msg);
+    void showCMOtherChiNotify(std::string msg);
+    void cmHeroPengResp(std::string msg);
+    void showCMOtherPengNotify(std::string msg);
+    void cmHeroGangResp(std::string msg);
+    void showCMOtherGangNotify(std::string msg);
 };
 #endif

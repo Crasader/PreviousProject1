@@ -84,6 +84,10 @@ public:
     std::string sendCMDissovleRoomRequest();
     std::string getCMDissolveRoomSelectCommand(std::string agr);
     std::string getCMPlayPokeCommand(int po);
+    std::string getCMPlayerChiCommand(std::string chi,int poker);
+    std::string getCMPengCommand(std::string peng ,int poker);//碰
+    std::string getCMGangCommand(std::string gang, int poker,int flag);//杠
+    std::string getCMGiveUpCommand();//放弃听牌
      /* ______________ 崇明麻将协议结束 ------ */
     
     /** ---------------------- 比赛协议 ---------------------------**/

@@ -365,7 +365,7 @@ void ReviewChongMing::heroDoChi(Ref* psend){
     MenuItemImage* item = (MenuItemImage*)psend;
     selectedChi = shmjPlayerCpgtData.chi[item->getTag()];
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(selectedChi, atoi(shmjPlayerCpgtData.poker.c_str())));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMPlayerChiCommand(selectedChi, atoi(shmjPlayerCpgtData.poker.c_str())));
 }
 
 void ReviewChongMing::heroDoPeng(Ref* ref){
@@ -1057,7 +1057,7 @@ void ReviewChongMing::addCoustomListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
-    playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
+    playerCpgListener = EventListenerCustom::create(MSG_CM_PLAYER_CPG, [=](EventCustom* event){
         HeroCpgRespData* cpgData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData newCpgData = *cpgData;
         drawCpgControllPad(newCpgData.playCpgt);

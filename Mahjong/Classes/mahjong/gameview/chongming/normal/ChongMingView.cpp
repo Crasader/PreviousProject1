@@ -647,7 +647,7 @@ void ChongMingView::heroDoChi(Ref* psend){
     }
     MenuItemImage* item = (MenuItemImage*)psend;
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getChiCommand(shmjHeroCpgtData.playCpgt.chi[item->getTag()], atoi( shmjHeroCpgtData.playCpgt.poker.c_str())));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMPlayerChiCommand(shmjHeroCpgtData.playCpgt.chi[item->getTag()], atoi( shmjHeroCpgtData.playCpgt.poker.c_str())));
 }
 
 void ChongMingView::heroDoPeng(Ref* psend){
@@ -1662,7 +1662,7 @@ void ChongMingView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
     
-    playerCpgListener = EventListenerCustom::create(MSG_PLAYER_CPG, [=](EventCustom* event){
+    playerCpgListener = EventListenerCustom::create(MSG_CM_PLAYER_CPG, [=](EventCustom* event){
         HeroCpgRespData* cpgData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData mewCpgData = *cpgData;
         drawCpgControllPad(mewCpgData.playCpgt);
