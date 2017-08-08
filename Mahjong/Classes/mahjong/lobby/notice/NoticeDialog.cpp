@@ -69,7 +69,7 @@ void NoticeDialog::closeView(){
 
 void NoticeDialog::setContentImage(std::string url,std::string url2,std::string showTime){
     
-    if(url2 == ""){
+    if(url2 != ""){
         std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url2);
         if(path != IAMGE_LOADING){
             content->setVisible(true);

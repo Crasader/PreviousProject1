@@ -405,6 +405,8 @@ void PlayerHero::readyGo(){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getReadyCommmand());
     }else if (GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayerReadyCommand());
+    }else if(GAMEDATA::getInstance()->getGameType() == 5){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendCmReadyCommand());
     }
 }
 

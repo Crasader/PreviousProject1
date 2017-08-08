@@ -72,7 +72,6 @@
 #define  MSGCODE_LOGIN_REQUEST  1003//{code:1003,username:username,password:password,hsman:厂商,hstype:机型,imsi:imsi,imei:imei}
 #define MSGCODE_LOGIN_RESPONSE  1005// 服务端到客户端登陆回复{code:1005,result:0,poxiaoId:poxiaoId,username:"avc",password:"123",result:1,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0,moblie:"1111"}result1成功 2 用户名已存在 3验证码错误  4其他错误   gender性别0女1男 ifready准备0未准备1准备
 #define MSGCODE_READY_REQUEST  1006// 客户端到服务端准备请求{code:1006,poxiaoId:poxiaoId}
-#define MSGCODE_READY_RESPONSE  1007// 服务端到客户端准备回复{code:1007,poxiaoId:poxiaoId,result:0}
 #define MSGCODE_LOGIN_NOTIFY  1008// 服务端到客户端登陆通知{code:1008,result:0,poxiaoId:poxiaoId,seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0} gender性别0女1男 ifready准备0未准备1准备
 #define MSGCODE_READY_NOTIFY  1009// 服务端到客户端准备通知{code:1009,poxiaoId:poxiaoId,seatId:1}
 #define MSGCODE_DX_NOTIFY  1010// 服务端到客户端掉线通知{code:1010,poxiaoId:poxiaoId}
@@ -271,12 +270,11 @@
 #define MSGCODE_CM_MAJIANG_AGAIN_REQUEST 4001  //再来一局请求{code:4001,poxiaoId:poxiaoId}
 #define MSGCODE_CM_MAJIANG_AGAIN_RESPONSE 4002  //再来一局回复{code:4002,poxiaoId:poxiaoId,result:1,rsid:1000,kb:"1"}1为成功 2为金币小于下限 3为金币高于上限rsid为跳转房间
 #define MSGCODE_CM_READY_REQUEST   4003  // 崇明麻将客户端到服务端准备请求{code:4003,poxiaoId:poxiaoId}
-#define MSGCODE_CM_READY_RESPONSE   4004  // 崇明麻将服务端到客户端准备回复{code:4004,poxiaoId:poxiaoId,result:1,rsid:'1111'}
 #define MSGCODE_CM_LOGIN_NOTIFY   4005  // 崇明麻将服务端到客户端登陆通知{code:4005,result:0,poxiaoId:poxiaoId,seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:0,pId:pId} gender性别0女1男 ifready准备0未准备1准备
 #define MSGCODE_CM_READY_NOTIFY   4006  // 崇明麻将服务端到客户端准备通知{code:5006,poxiaoId:poxiaoId,seatId:1}
 #define MSGCODE_CM_MAJIANG_FIRSTHUA_REQUEST   4007  // 首次清理花牌请求{code:4007,poxiaoId:poxiaoId,seatId:seatId}
 #define MSGCODE_CM_MAJIANG_DISCARD_NOTIFY   4008  // 开始游戏,发牌通知{code:4008,poxiaoId:poxiaoId,start:1,dice:"3,6",poker:"1,2,4,5,6",kb:"1",hf:"2",prjucount:1,matchname:"10元比赛"} 私人房间进行到的局数prjucount
-#define MSGCODE_CM_MAJIANG_CLEARHUA_NOTIFY   4009  // 首次清理手牌中的花牌{code:4009,poxiaoId:poxiaoId,seatId:1,poker:[{poker:1,2,replace:3,4},{poker:4,replace:5}]}
+
 #define MSGCODE_CM_MAJIANG_DISPATCH_REQUEST   4010  // 出牌请求{code:4010,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
 #define MSGCODE_CM_MAJIANG_DISPATCH_NOTIFY   4011  // 出牌通知{code:4011,poxiaoId:poxiaoId,seatId:seatId,poker:poker}
 #define MSGCODE_CM_MAJIANG_PLAYER_CPG_NOTIFY   4012  //玩家胡吃碰杠通知{code:4012,poxiaoId:poxiaoId,seatId:seatId,poker:1,hu:"1",chi:[{chi:1,2,3},{chi:2,3,4}],peng:"1,2,3",gang:"1,1,1,1"}
@@ -303,7 +301,7 @@
 //断线续完{code:4031,poxiaoId:poxiaoId,seatId:1,lord:1,rest:"123",status:1,all:[{seatId:1,hua:"1",chi:[{chi:"1,2,3",poker:"3"},{chi:"11,12,13",poker:"13"}],peng:[{peng:"11",peId:"1"},{peng:"12",peId:"2"}],gang:[{gang:"11",gaId:"1"},{gang:"12",gaId:"2"}],angang:"6",out:"11,22,33,44",gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',hand:"2",status:1,prId:"123",fzId:"456",prjucount:"1",prjushu:"2"}],matchname:"10元比赛"} status1为听牌
 #define MSGCODE_CM_FRIEND_GAME_REQUEST   4032  // 好友开房请求{code:4032,poxiaoId:"123",ftype:"1",ifkb:"0",size:"4",fcy:"1",dihua:"1",lz:"1"} ftype 1为打八局 2为打4局3为16局 ifkb 0为无开宝,1为有开宝 size4为4人2为2人,fcy飞苍蝇0为无,1为有,dihua 0为1/1 1为2/2 2为6/2 3为5/5,lz0为20勒子 1为50勒子 2为100勒子 3为无勒子
 #define MSGCODE_CM_FRIEND_GAME_RESPONSE  4034  //好友开房回复{code:4034,poxiaoId:poxiaoId,result:"0",seatId:1,prId:"1234",prjushu:"8"} prjushu 8\16
-#define MSGCODE_CM_FRIEND_JOIN_GAME_REQUEST   4035  // 好友加入房间请求{code:4035,poxiaoId:"123",pId:"456"}
+
 #define MSGCODE_CM_FRIEND_JOIN_GAME_RESPONSE   4036  //好友进入房间回复{code:4036,poxiaoId:poxiaoId,result:0,seatId:1,other:[{seatId:seatId,gold:0,diamond:0,jifen:0,lequan:0,gender:0,nickname:'aaa',ifready:1,pic:"1"}],prId:"1234",prjushu:"8",iflezi:"0"} iflezi为0表示无勒子1表示有勒子 result 0为自己在游戏中 1为成功 2为房间已满
 #define MSGCODE_CM_FRIEND_JOIN_GAME_FJH_REQUEST   4037  // 好友输入房间号加入房间请求{code:4037,poxiaoId:"123",prId:"456"}
 
@@ -422,4 +420,6 @@
 #define MSG_PLAYER_TURNTABLE_PRIDE_SHARE "MSG_PLAYER_TURNTABLE_PRIDE_SHARE"
 #define MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW "MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW"
 #define MSG_CM_FRIEND_OPEN_ROOM_RESP "MSG_CM_FRIEND_OPEN_ROOM_RESP"
+#define MSG_CM_ENTER_FRIEND_ROOM_RESP "MSG_CM_ENTER_FRIEND_ROOM_RESP"
+#define MSG_PLAYER_CM_CONNECT_AGAIN "MSG_PLAYER_CM_CONNECT_AGAIN"
 #endif

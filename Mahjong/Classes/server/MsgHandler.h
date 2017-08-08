@@ -109,5 +109,7 @@ private:
     void handleHuafeiChangeFangka(std::string msg);
     void handleCMOpenRoomResp(std::string msg);
     void handleCMFapaiNotify(std::string msg);
+    void handleCMEnterRoomResp(std::string msg);
+    void handleCMReConnectResp(std::string msg);
 };
 #endif

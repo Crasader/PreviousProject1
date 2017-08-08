@@ -759,7 +759,7 @@ std::string CommandManage::getCMOpenRoomCommand(std::string ftype,std::string di
 
 std::string CommandManage::getCMDissovleRoomReq(){
     std::map<std::string, std::string> keyValue;
-    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_FRIEND_DISMISS_FZAGREE_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_FRIEND_DISMISS_FZ_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
     return commandString(keyValue);
 }
@@ -788,5 +788,4 @@ std::string CommandManage::commandString(std::map<std::string, std::string> keyV
     std::string result = buffer.GetString();
     return result;
 }
-
 

@@ -13,7 +13,7 @@ SocketDataManage* SocketDataManage::getInstance(){
 }
 
 bool SocketDataManage::init(){
-    Director::getInstance()->getScheduler()->schedule(schedule_selector(SocketDataManage::update), this, 0.108f, false);
+    Director::getInstance()->getScheduler()->schedule(schedule_selector(SocketDataManage::update), this, 0.016f, false);
     return true;
 }
 

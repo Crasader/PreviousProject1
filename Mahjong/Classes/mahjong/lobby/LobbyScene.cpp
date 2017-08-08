@@ -791,6 +791,9 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzLobbyConncetAgainListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(coreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(cmOpenRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(cmEnterFriendRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(cmLobbyConncetAgainListener);
+    
 }
 
 void LobbyScene::addEventListener(){
@@ -905,6 +908,44 @@ void LobbyScene::addEventListener(){
         }
     });
     
+    //进入好友房间回复
+    cmEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_CM_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        removeLoading();
+        if (result == "1"){
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            GAMEDATA::getInstance()->setGameType(5);
+            GAMEDATA::getInstance()->setFangZhuId("");
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MjGameScene::create()));
+        } else if(result == "2")
+        {
+            RoomFullDialog* doo = RoomFullDialog::create();
+            addChild(doo,200);
+        }
+        else if(result == "3")
+        {
+#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
+            if(UserData::getInstance()->isWeixinPayOpen()){
+                FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+                addChild(charge,200);
+                GAMEDATA::getInstance()->setShowDialogType(-1);
+            }else{
+                HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_17"),NULL);
+                addChild(hint,200);
+            }
+#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
+            FangkaNotEnoughDialog* charge = FangkaNotEnoughDialog::create();
+            addChild(charge,200);
+#endif
+        }
+        else if(result == "4"){
+            RoomIdErrorDialog* idd = RoomIdErrorDialog::create();
+            addChild(idd,200);
+        }
+    });
+
+    
     
     //好友开房上海麻将
     openFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
@@ -971,6 +1012,14 @@ void LobbyScene::addEventListener(){
         GAMEDATA::getInstance()->setGameType(3);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
+    
+    //断线续玩CM
+    cmLobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CM_CONNECT_AGAIN, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setIsRecover(true);
+        GAMEDATA::getInstance()->setGameType(5);
+        Director::getInstance()->replaceScene(MjGameScene::create());
+    });
+    
     
     //登录地址变更
     loginReplaceListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){

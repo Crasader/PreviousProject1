@@ -87,7 +87,7 @@ void SplashScene::loginByWechat(){
     //oTIvfwm1C14AtD2bnuoQrXtGWzhY xinkai
     //oTIvfwnO4yCaBasG7qJedNbiGuG0  ziji
     //oTIvfwmTH71Oqx_XRJTPB4p2TjkU 魂斗罗
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwnO4yCaBasG7qJedNbiGuG0","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwmTH71Oqx_XRJTPB4p2TjkU","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CallIOSMethod::getInstance()->doWechatLogin();
@@ -212,6 +212,13 @@ void SplashScene::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(hzReConnectAgain, 1);
     
+    //断线续玩CM
+    cmLobbyConncetAgainListener=  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_CM_CONNECT_AGAIN, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setIsRecover(true);
+        NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+        Director::getInstance()->replaceScene(MjGameScene::create());
+    });
+    
     //进入好友房间回复
     reEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
         char* buf = static_cast<char*>(event->getUserData());
@@ -310,6 +317,7 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReConnectAgain);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(cmOpenRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(cmLobbyConncetAgainListener);
     
 }
 

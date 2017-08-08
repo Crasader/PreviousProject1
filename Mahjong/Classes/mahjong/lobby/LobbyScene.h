@@ -57,6 +57,8 @@ private:
     EventListenerCustom* networkBreakListener;
     EventListenerCustom* coreLoginRespListener;
     EventListenerCustom* cmOpenRoomListener;
+    EventListenerCustom* cmEnterFriendRoomListener;
+    EventListenerCustom* cmLobbyConncetAgainListener;
     
 	void initView();
 	void drawSceneMid();
