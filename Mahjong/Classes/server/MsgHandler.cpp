@@ -511,6 +511,15 @@ void MsgHandler::distribute(int code, std::string msg){
             handleCMReConnectResp(msg);
             break;
         }
+        case MSGCODE_CM_FRIEND_DISMISS_AGREE_NOTIFY:{
+            handleCMDissovleRoomNotify(msg);
+            break;
+        }
+        case MSGCODE_CM_FRIEND_DISMISS_AGREE_RESULT_NOTIFY:{
+            handleDissovleRoomSelectedNotify(msg);
+            break;
+        }
+
         default:
             break;
     }
@@ -5027,4 +5036,17 @@ void MsgHandler::handleCMReConnectResp(std::string msg){
     char* buf = const_cast<char*>(StringUtil::itos(seatId.GetInt()).c_str());
     postNotifyMessage(MSG_PLAYER_CM_CONNECT_AGAIN, buf);
 
+}
+
+void MsgHandler::handleCMDissovleRoomNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("nickName")){
+        const rapidjson::Value &nickName = _mDoc["nickName"];
+        std::string name = nickName.GetString();
+        GAMEDATA::getInstance()->setDissolveName(name);
+        postNotifyMessage(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_NEW, nullptr);
+    }
 }

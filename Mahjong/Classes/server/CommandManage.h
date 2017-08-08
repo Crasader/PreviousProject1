@@ -81,8 +81,8 @@ public:
     std::string getCMDissovleRoomReq();
     std::string sendInviteCodeCommand(std::string code);
     std::string sendCmReadyCommand();
-    
-    
+    std::string sendCMDissovleRoomRequest();
+    std::string getCMDissolveRoomSelectCommand(std::string agr);
      /* ______________ 崇明麻将协议结束 ------ */
     
     /** ---------------------- 比赛协议 ---------------------------**/

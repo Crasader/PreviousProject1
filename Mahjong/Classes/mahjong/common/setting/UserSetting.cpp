@@ -170,7 +170,10 @@ void UserSetting::dissolveRoom(){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomRequestCommand());
     }else if(GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZDissolveRoomInGameCommand());
+    }else if(GAMEDATA::getInstance()->getGameType() == 5){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendCMDissovleRoomRequest());
     }
+    
     GAMEDATA::getInstance()->setDissolveName(UserData::getInstance()->getNickName());
     DissovleRoomDialog* dia = DissovleRoomDialog::create();
     getParent()->addChild(dia,20);

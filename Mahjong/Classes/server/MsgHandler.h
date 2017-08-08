@@ -111,5 +111,6 @@ private:
     void handleCMFapaiNotify(std::string msg);
     void handleCMEnterRoomResp(std::string msg);
     void handleCMReConnectResp(std::string msg);
+    void handleCMDissovleRoomNotify(std::string msg);
 };
 #endif
