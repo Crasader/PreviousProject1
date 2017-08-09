@@ -297,8 +297,8 @@ void LobbyScene::drawSceneMid(){
     auto mymenu = Menu::create(huodong,NULL);
     mymenu->setPosition(650,435);
     mymenu->setTag(1980);
-    addChild(mymenu);
     mymenu->setVisible(false);
+    addChild(mymenu);
     
     //跑马灯
     ScrollTextEx* scroll = ScrollTextEx::create();
@@ -586,7 +586,7 @@ void LobbyScene::showDayTask(){
 
 
 void LobbyScene::showTeamwork(){
-
+    
 }
 
 void LobbyScene::showPlayerBill(){
@@ -954,7 +954,7 @@ void LobbyScene::addEventListener(){
             addChild(idd,200);
         }
     });
-
+    
     
     
     //好友开房上海麻将

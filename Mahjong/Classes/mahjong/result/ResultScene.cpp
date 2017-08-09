@@ -11,6 +11,8 @@
 #include "mahjong/result/shanghai/special/SpecialResultLayer.hpp"
 #include "mahjong/result/hongzhong/normal/HZNormalResultLayer.hpp"
 #include "mahjong/result/hongzhong/special/HZSpecialResultLayer.hpp"
+#include "mahjong/result/chongming/normal/CMNormalResultLayer.hpp"
+#include "mahjong/result/chongming/special/CMSpecialResultLayer.hpp"
 #include "mahjong/common/jong/Jong.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
 #include "mahjong/common/utils/SeatIdUtil.h"
@@ -55,6 +57,18 @@ Scene* ResultScene::createScene(int type)
             scene->addChild(res);
         }else{
             HZSpecialResultLayer* layer = HZSpecialResultLayer::create();
+            scene->addChild(layer);
+        }
+    }if(GAMEDATA::getInstance()->getGameType()==5){
+        if(type == 0){
+            CMNormalResultLayer* layer = CMNormalResultLayer::create();
+            scene->addChild(layer);
+        }else if(type == 2){
+            CompetitionResult* res = CompetitionResult::create();
+            res->showCompetiotionResult(GAMEDATA::getInstance()->getCompetitionResultData().matchid, GAMEDATA::getInstance()->getCompetitionResultData().paiming, GAMEDATA::getInstance()->getCompetitionResultData().pride, GAMEDATA::getInstance()->getCompetitionScore());
+            scene->addChild(res);
+        }else{
+            CMSpecialResultLayer* layer = CMSpecialResultLayer::create();
             scene->addChild(layer);
         }
     }

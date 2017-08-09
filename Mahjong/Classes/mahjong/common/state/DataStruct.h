@@ -207,6 +207,7 @@ struct GameResultData
     int bangzuandelta;
     int hua;
     std::string gangfen;
+    std::string cyf;
     std::string lz;
     std::string win;
     std::string lost;

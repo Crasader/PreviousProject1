@@ -45,6 +45,7 @@ bool NormalResultLayer::init(){
     showRoomInfo();
     showPlayerResluts();
     showLayerBtn();
+    showCangYin();
     updatePlayerData();
     if(!GAMEDATA::getInstance()->getDissovleDialogRemove()){
         GAMEDATA::getInstance()->setDissolveName(GAMEDATA::getInstance()->getDissolveName());

@@ -471,6 +471,14 @@ void ChongMingView::drawCpgControllPad(PlayerCpgtData newData){
     MenuItemImage* gang = nullptr;
     MenuItemImage* hu = nullptr;
     int buttonCount = 1;
+    
+    if (newData.hu == 1){
+        hu = MenuItemImage::create("gameview/hz_hu_btn.png", "gameview/hz_hu_btn.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
+        hu->setPosition(Point(-buttonCount * 160, 0));
+        controllPad->addChild(hu);
+        buttonCount++;
+    }
+    
     if (newData.chi[0] != ""){
         chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_1(ChongMingView::showHeroChiUi, this));
         chi->setPosition(Point(-buttonCount * 160, 0));
@@ -489,12 +497,7 @@ void ChongMingView::drawCpgControllPad(PlayerCpgtData newData){
         gang->setPosition(Point(-buttonCount * 160, 0));
         controllPad->addChild(gang);
     }
-    if (newData.hu == 1){
-        hu = MenuItemImage::create("gameview/hz_hu_btn.png", "gameview/hz_hu_btn.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
-        hu->setPosition(Point(-buttonCount * 140, 0));
-        controllPad->addChild(hu);
-        buttonCount++;
-    }
+
 
     controllPad->setVisible(true);
 }
@@ -1227,7 +1230,7 @@ void ChongMingView::heroDoQiHu(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
     playerHero->startTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMHuActionCommand("0"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMGiveUpCommand());
     playerHero->setIsAllowPlay(true);
     playerHero->setIsAllowTouch(true);
     
@@ -1241,7 +1244,6 @@ void ChongMingView::playerApplyHu(){
 void ChongMingView::onExit()
 {
     Layer::onExit();
-    //    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);

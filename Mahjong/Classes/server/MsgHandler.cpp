@@ -2375,6 +2375,9 @@ void MsgHandler::gameResultNotify(std::string msg){
         if (temp.HasMember("golddelta")){
             resultData.golddelta = temp["golddelta"].GetInt();
         }
+        if (temp.HasMember("cyf")){
+            resultData.cyf = temp["cyf"].GetString();
+        }
         if (temp.HasMember("jifen")){
             resultData.jifen = temp["jifen"].GetInt();
         }
@@ -5506,6 +5509,10 @@ void MsgHandler::gameCMResultNotify(std::string msg){
         GameResultData resultData;
         const rapidjson::Value &temp = finish[i];
         resultData.result = temp["result"].GetInt();
+        
+        if (temp.HasMember("cyf")){
+            resultData.cyf = temp["cyf"].GetString();
+        }
         if (temp.HasMember("gold")){
             resultData.gold = temp["gold"].GetInt();
         }
