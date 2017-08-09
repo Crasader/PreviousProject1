@@ -88,6 +88,7 @@ public:
     std::string getCMPengCommand(std::string peng ,int poker);//碰
     std::string getCMGangCommand(std::string gang, int poker,int flag);//杠
     std::string getCMGiveUpCommand();//放弃听牌
+    std::string getCMHuActionCommand(std::string hu);
      /* ______________ 崇明麻将协议结束 ------ */
     
     /** ---------------------- 比赛协议 ---------------------------**/

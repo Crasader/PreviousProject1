@@ -843,6 +843,14 @@ std::string CommandManage::getCMGiveUpCommand(){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getCMHuActionCommand(std::string msg){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_IFHU_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("flag", msg));
+    return commandString(keyValue);
+}
+
 
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;

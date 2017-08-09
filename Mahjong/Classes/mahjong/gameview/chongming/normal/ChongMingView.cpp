@@ -469,6 +469,7 @@ void ChongMingView::drawCpgControllPad(PlayerCpgtData newData){
     MenuItemImage* chi = nullptr;
     MenuItemImage* peng = nullptr;
     MenuItemImage* gang = nullptr;
+    MenuItemImage* hu = nullptr;
     int buttonCount = 1;
     if (newData.chi[0] != ""){
         chi = MenuItemImage::create("gameview/mj_chi.png", "gameview/mj_chi.png", CC_CALLBACK_1(ChongMingView::showHeroChiUi, this));
@@ -488,6 +489,13 @@ void ChongMingView::drawCpgControllPad(PlayerCpgtData newData){
         gang->setPosition(Point(-buttonCount * 160, 0));
         controllPad->addChild(gang);
     }
+    if (newData.hu == 1){
+        hu = MenuItemImage::create("gameview/hz_hu_btn.png", "gameview/hz_hu_btn.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
+        hu->setPosition(Point(-buttonCount * 140, 0));
+        controllPad->addChild(hu);
+        buttonCount++;
+    }
+
     controllPad->setVisible(true);
 }
 
@@ -680,7 +688,7 @@ void ChongMingView::heroDoGang(Ref* psend){
 void ChongMingView::heroDoCpgQi(){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpCpgCommmand());
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMGiveUpCommand());
 }
 
 void ChongMingView::heroDoTing(){
@@ -1219,7 +1227,7 @@ void ChongMingView::heroDoQiHu(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
     playerHero->startTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("0"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMHuActionCommand("0"));
     playerHero->setIsAllowPlay(true);
     playerHero->setIsAllowTouch(true);
     
@@ -1227,7 +1235,7 @@ void ChongMingView::heroDoQiHu(){
 
 void ChongMingView::playerApplyHu(){
     hideHuGangControllPad();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("1"));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMHuActionCommand("1"));
 }
 
 void ChongMingView::onExit()

@@ -563,7 +563,7 @@ void MsgHandler::distribute(int code, std::string msg){
             break;
         }
         case MSGCODE_CM_IFHU_NOTIFY:{
-            
+            handleCMPlayerHuNotify(msg);
             break;
         }
         default:
@@ -5205,6 +5205,11 @@ void MsgHandler::showCMCpgNotify(std::string msg){
         gangData.gang = gang.GetString();
         gangData.flag = 0;
         cpgData.playerGang.push_back(gangData);
+    }
+    if(_mDoc.HasMember("hu")){
+        cpgData.hu = 1;//红中麻将可胡
+    }else{
+        cpgData.hu = 0;
     }
     cpgRespData.playCpgt = cpgData;
     postNotifyMessage(MSG_CM_PLAYER_CPG,&cpgRespData);

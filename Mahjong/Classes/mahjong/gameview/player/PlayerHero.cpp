@@ -1,6 +1,7 @@
 #include "mahjong/gameview/player/PlayerHero.h"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/gameview/hongzhong/normal/HongZhongView.hpp"
+#include "mahjong/gameview/chongming/normal/ChongMingView.h"
 #include "mahjong/gameview/widget/HuPaiHintLayer.hpp"
 #include "mahjong/gameview/anim/HuaAnim.hpp"
 #include "mahjong/common/utils/StringUtil.h"
@@ -772,11 +773,12 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         if(GAMEDATA::getInstance()->getGameType() == 1 && data.hastinggang){
             ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
         }
-        
         if(GAMEDATA::getInstance()->getGameType() == 3 && (data.cpgData.hu == 1 ||data.hastinggang)){
             ((HongZhongView*)getParent())->showHuGangControllPad(cpgData);
         }
-        
+        if(GAMEDATA::getInstance()->getGameType() == 5 && (data.cpgData.hu == 1 ||data.hastinggang)){
+            ((ChongMingView*)getParent())->showHuGangControllPad(cpgData);
+        }
         if (!(GAMEDATA::getInstance()->getIsTingState())){
             setIsAllowPlay(true);
         }
