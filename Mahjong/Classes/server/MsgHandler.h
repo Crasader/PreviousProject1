@@ -121,5 +121,7 @@ private:
     void showCMOtherPengNotify(std::string msg);
     void cmHeroGangResp(std::string msg);
     void showCMOtherGangNotify(std::string msg);
+    void gameCMResultNotify(std::string msg);
+    void handleCMPlayerHuNotify(std::string msg);
 };
 #endif

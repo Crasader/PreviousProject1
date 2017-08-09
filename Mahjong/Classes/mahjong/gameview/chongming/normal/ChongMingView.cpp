@@ -491,26 +491,26 @@ void ChongMingView::drawCpgControllPad(PlayerCpgtData newData){
     controllPad->setVisible(true);
 }
 
-void ChongMingView::showTingGangControllPad(PlayerCpgtData tingData){
+void ChongMingView:: showHuGangControllPad(PlayerCpgtData tingData){
     shmjHeroCpgtData.playCpgt = tingData;
     playerHero->stopTimeClockAnim();
     controllPad->removeAllChildrenWithCleanup(true);
-    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(ChongMingView::heroDoTingQi, this));
+    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(ChongMingView::heroDoQiHu, this));
     qi->setPosition(Point(0, 0));
     controllPad->addChild(qi);
     MenuItemImage* ting = nullptr;
-    MenuItemImage* penggang = nullptr;
+    MenuItemImage* gang = nullptr;
     int buttonCount = 1;
-    if (tingData.ting != ""){
-        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(ChongMingView::heroDoTing, this));
+    if (tingData.hu == 1){
+        ting = MenuItemImage::create("gameview/hz_hu_btn.png", "gameview/hz_hu_btn.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
         ting->setPosition(Point(-buttonCount * 140, 0));
         controllPad->addChild(ting);
         buttonCount++;
     }
     if (tingData.playerGang.size()>0){
-        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(ChongMingView::showHeroGangUi, this));
-        penggang->setPosition(Point(-buttonCount * 140, 0));
-        controllPad->addChild(penggang);
+        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(ChongMingView::showHeroGangUi, this));
+        gang->setPosition(Point(-buttonCount * 160, 0));
+        controllPad->addChild(gang);
         buttonCount++;
     }
     controllPad->setVisible(true);
@@ -519,7 +519,7 @@ void ChongMingView::showTingGangControllPad(PlayerCpgtData tingData){
     playerHero->startTimeClockAnim(9, 2);
 }
 
-void ChongMingView::hideTingGangControllPad(){
+void ChongMingView::hideHuGangControllPad(){
     controllPad->setVisible(false);
     choiceMenu->removeAllChildren();
     choiceMenu->setVisible(false);
@@ -653,7 +653,7 @@ void ChongMingView::heroDoChi(Ref* psend){
 void ChongMingView::heroDoPeng(Ref* psend){
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPengCommand(shmjHeroCpgtData.playCpgt.peng, atoi(shmjHeroCpgtData.playCpgt.poker.c_str())));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMPengCommand(shmjHeroCpgtData.playCpgt.peng, atoi(shmjHeroCpgtData.playCpgt.poker.c_str())));
 }
 
 void ChongMingView::heroDoGang(Ref* psend){
@@ -674,7 +674,7 @@ void ChongMingView::heroDoGang(Ref* psend){
     }
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(StringUtils::format("%d",tag), tag, gangData.flag));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMGangCommand(StringUtils::format("%d",tag), tag, gangData.flag));
 }
 
 void ChongMingView::heroDoCpgQi(){
@@ -960,7 +960,7 @@ void ChongMingView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
             }else if(clientId == ClientSeatId::hero){
                 if(data.playerGang.size()>0||data.ting!=""){
                     if (data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-                        showTingGangControllPad(data);
+                          showHuGangControllPad(data);
                         playerHero->startTimeClockAnim(9, 2);
                     }
                 }else{
@@ -1215,6 +1215,21 @@ void ChongMingView::onEnterTransitionDidFinish(){
     
 }
 
+void ChongMingView::heroDoQiHu(){
+    playerHero->stopTimeClockAnim();
+    controllPad->setVisible(false);
+    playerHero->startTimeClockAnim();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("0"));
+    playerHero->setIsAllowPlay(true);
+    playerHero->setIsAllowTouch(true);
+    
+}
+
+void ChongMingView::playerApplyHu(){
+    hideHuGangControllPad();
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZHuActionCommand("1"));
+}
+
 void ChongMingView::onExit()
 {
     Layer::onExit();
@@ -1251,6 +1266,7 @@ void ChongMingView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(truNotifyListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(playeHuActionListener);
     
 }
 
@@ -1462,19 +1478,19 @@ void ChongMingView::onEnter(){
         setCurrentJongVisible(newData.sId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
         if (seatId == ClientSeatId::left){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerLeft->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerRight->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
@@ -1489,17 +1505,17 @@ void ChongMingView::onEnter(){
         setCurrentJongVisible(newData.sId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
         if (seatId == ClientSeatId::left){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerLeft->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerRight->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
         else if (seatId == ClientSeatId::opposite){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             playerOpposite->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
         }
@@ -1518,7 +1534,7 @@ void ChongMingView::onEnter(){
         HeroCpgRespData* cpgtData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData newData = *cpgtData;
         if (newData.playCpgt.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-            showTingGangControllPad(newData.playCpgt);
+              showHuGangControllPad(newData.playCpgt);
             playerHero->startTimeClockAnim(9, 2);
         }
     });
@@ -1691,6 +1707,15 @@ void ChongMingView::onEnter(){
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(addOtherReadyListener, 1);
+    
+    playeHuActionListener = EventListenerCustom::create(MSG_CM_GAME_HU_ACTION, [=](EventCustom* event){
+        PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
+        PlayerCpgtData temp = *data;
+        schedule([=](float dt){
+            showHuGangControllPad(temp);
+        },0,0,1.2f,"showHuText");
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playeHuActionListener, 1);
     
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
         string flag = static_cast<char*>(event->getUserData());
@@ -1902,7 +1927,7 @@ void ChongMingView::onEnter(){
         }else if(clientId == ClientSeatId::right){
             playerRight->setIsTrusteeship(data.flag == "1"?true:false);
         }else if(clientId == ClientSeatId::hero){
-            hideTingGangControllPad();
+            hideHuGangControllPad();
             bool result = (data.flag == "1"?true:false);
             GAMEDATA::getInstance()->setIsTrusteeship(result);
             playerHero->drawPlayerTrue(result);

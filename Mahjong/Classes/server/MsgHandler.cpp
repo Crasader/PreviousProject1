@@ -558,6 +558,14 @@ void MsgHandler::distribute(int code, std::string msg){
             showCMOtherGangNotify(msg);
             break;
         }
+        case MSGCODE_CM_MAJIANG_FINISH_NOTIFY:{
+            gameCMResultNotify(msg);
+            break;
+        }
+        case MSGCODE_CM_IFHU_NOTIFY:{
+            
+            break;
+        }
         default:
             break;
     }
@@ -3614,7 +3622,6 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
     }
     if(_mDoc.HasMember("hu")){
         tingData.hu = 1;//红中麻将可胡
-        //        GAMEDATA::getInstance()->setHongZhongHuState(true);
     }else{
         tingData.hu = 0;
     }
@@ -5143,7 +5150,12 @@ void MsgHandler::cmNextPlayer(std::string msg){
         gangData.flag = 2;
         tingData.playerGang.push_back(gangData);
     }
-    if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")){
+    if(_mDoc.HasMember("hu")){
+        tingData.hu = 1;//红中麻将可胡
+    }else{
+        tingData.hu = 0;
+    }
+    if (_mDoc.HasMember("ting") || _mDoc.HasMember("angang") || _mDoc.HasMember("penggang")||_mDoc.HasMember("hu")){
         playerTurnData.hastinggang = true;
     }
     if (_mDoc.HasMember("ting1")){
@@ -5398,4 +5410,197 @@ void MsgHandler::showCMOtherGangNotify(std::string msg){
     cpgData.playerGang.push_back(gangData);
     postNotifyMessage(MSG_OTHER_PLAYER_GANG, &cpgData);
 }
+
+void MsgHandler::gameCMResultNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    if(_mDoc.HasMember("matchid")){
+        CompetitionResultInfo competitionData;
+        competitionData.matchid = _mDoc["matchid"].GetString();
+        competitionData.pride = _mDoc["prize"].GetString();
+        competitionData.paiming = _mDoc["paiming"].GetString();
+        GAMEDATA::getInstance()->setCompetitionResultData(competitionData);
+    }
+    if(_mDoc.HasMember("poker")){
+        GAMEDATA::getInstance()->setDiaopao(_mDoc["poker"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setDiaopao("");
+    }
+    if(_mDoc.HasMember("lezi")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lezi"].GetString());
+    }
+    if(_mDoc.HasMember("ifkb")){
+        GAMEDATA::getInstance()->setPrivateKaibao(_mDoc["ifkb"].GetString());
+    }
+    if(_mDoc.HasMember("ifemsc")){
+        GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+    }
+    if(_mDoc.HasMember("fcyp")){
+        GAMEDATA::getInstance()->setPrivateFcyValue(_mDoc["fcyp"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setPrivateFcyValue("");
+    }
+    GameHongBaoPride pride;
+    if(_mDoc.HasMember("dyj")){
+        pride.dyj = _mDoc["dyj"].GetString();
+    }else{
+        pride.dyj = "-999";
+    }
+    if(_mDoc.HasMember("dyjfee")){
+        pride.dyjfee = _mDoc["dyjfee"].GetString();
+    }else{
+        pride.dyjfee = "0";
+    }
+    
+    if(_mDoc.HasMember("dsj")){
+        pride.dsj = _mDoc["dsj"].GetString();
+    }else{
+        pride.dsj = "-999";
+    }
+    if(_mDoc.HasMember("dsjfee")){
+        pride.dsjfee = _mDoc["dsjfee"].GetString();
+    }else{
+        pride.dsjfee = "0";
+    }
+    if(_mDoc.HasMember("fzfee")){
+        pride.fzfee = _mDoc["fzfee"].GetString();
+    }else{
+        pride.fzfee = "0";
+    }
+    if(_mDoc.HasMember("sxlmfee")){
+        pride.sxlmfee = _mDoc["sxlmfee"].GetString();
+    }else{
+        pride.sxlmfee = "0";
+    }
+    if(_mDoc.HasMember("fzId")){
+        pride.fzid = _mDoc["fzId"].GetString();
+        GAMEDATA::getInstance()->setFangZhuId(_mDoc["fzId"].GetString());
+    }else{
+        pride.fzid = "-999";
+    }
+    GAMEDATA::getInstance()->setGameHongBaoPride(pride);
+    
+    if(_mDoc.HasMember("hgdlb")){
+        const rapidjson::Value &hgdlb = _mDoc["hgdlb"];
+        GAMEDATA::getInstance()->setHuiGuiLiBao(hgdlb.GetString());
+    }
+    
+    if(_mDoc.HasMember("prjucount")){
+        GAMEDATA::getInstance()->setPrivateRoomType(_mDoc["prjucount"].GetString());
+    }
+    if(_mDoc.HasMember("fee")){
+        GAMEDATA::getInstance()->setFee(_mDoc["fee"].GetString());
+    }
+    
+    const rapidjson::Value &flag = _mDoc["flag"];
+    const rapidjson::Value &finish = _mDoc["finish"];
+    vector<GameResultData> gameResults;
+    for (int i = 0; i < finish.Capacity(); ++i){
+        GameResultData resultData;
+        const rapidjson::Value &temp = finish[i];
+        resultData.result = temp["result"].GetInt();
+        if (temp.HasMember("gold")){
+            resultData.gold = temp["gold"].GetInt();
+        }
+        if (temp.HasMember("golddelta")){
+            resultData.golddelta = temp["golddelta"].GetInt();
+        }
+        if (temp.HasMember("jifen")){
+            resultData.jifen = temp["jifen"].GetInt();
+        }
+        if (temp.HasMember("jifendelta")){
+            resultData.jifendelta = temp["jifendelta"].GetInt();
+        }
+        if (temp.HasMember("lequan")){
+            resultData.lequan = temp["lequan"].GetInt();
+        }
+        if (temp.HasMember("lequandelta")){
+            resultData.lequandelta = temp["lequandelta"].GetInt();
+        }
+        if(temp.HasMember("pic")){
+            resultData.pic = temp["pic"].GetString();
+        }
+        resultData.seatId = temp["seatId"].GetInt();
+        resultData.showPoker = temp["poker"].GetString();
+        if (temp.HasMember("hua")){
+            resultData.hua = temp["hua"].GetInt();
+        }
+        if (temp.HasMember("hutype")){
+            resultData.huType = temp["hutype"].GetString();
+        }
+        else{
+            resultData.huType = "";
+        }
+        if (temp.HasMember("umark")){
+            resultData.umark = temp["umark"].GetString();
+        }
+        if (temp.HasMember("fan")){
+            resultData.fan = temp["fan"].GetString();
+        }
+        if (temp.HasMember("nickname")){
+            resultData.nickName = temp["nickname"].GetString();
+        }
+        if (temp.HasMember("lost")){
+            resultData.lost = temp["lost"].GetString();
+        }
+        if (temp.HasMember("win")){
+            resultData.win = temp["win"].GetString();
+        }
+        if (temp.HasMember("even")){
+            resultData.even = temp["even"].GetString();
+        }
+        if (temp.HasMember("lz")){
+            resultData.lz = temp["lz"].GetString();
+        }
+        if (temp.HasMember("poxiaoId")){
+            resultData.poxiaoId = temp["poxiaoId"].GetString();
+        }
+        gameResults.push_back(resultData);
+    }
+    //对GameResult进行一次排序
+    vector<GameResultData> rankGameResults;
+    for(int i= 0;i<gameResults.size();i++){
+        if(gameResults.at(i).seatId ==  GAMEDATA::getInstance()->getHeroSeatId()){
+            for(int j=i;j<gameResults.size();j++){
+                rankGameResults.push_back(gameResults.at(j));
+            }
+            for(int k=0;k<i;k++){
+                rankGameResults.push_back(gameResults.at(k));
+            }
+        }
+    }
+    GAMEDATA::getInstance()->setGameResults(rankGameResults);
+    char* buf = const_cast<char*>(flag.GetString());
+    postNotifyMessage(MSG_GAME_RESULT, buf);
+}
+
+void MsgHandler::handleCMPlayerHuNotify(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    PlayerCpgtData cpgData;
+    cpgData.hu = 1;
+    if(_mDoc.HasMember("angang")){
+        const rapidjson::Value &angang = _mDoc["angang"];
+        GangData gangData;
+        gangData.gang = angang.GetString();
+        gangData.flag = 1;
+        cpgData.playerGang.push_back(gangData);
+        cpgData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    }
+    if(_mDoc.HasMember("penggang")){
+        const rapidjson::Value &angang = _mDoc["penggang"];
+        GangData gangData;
+        gangData.gang = angang.GetString();
+        gangData.flag = 2;
+        cpgData.playerGang.push_back(gangData);
+        cpgData.seatId = GAMEDATA::getInstance()->getHeroSeatId();
+    }
+    //    log("收到了服务端的胡牌协议1");
+    postNotifyMessage(MSG_CM_GAME_HU_ACTION, &cpgData);
+}
+
 

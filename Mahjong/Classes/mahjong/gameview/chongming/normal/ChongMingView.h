@@ -27,8 +27,8 @@ public:
 	virtual void onEnter() override;
 	virtual void onExit() override;
     void onEnterTransitionDidFinish() override;
-	void showTingGangControllPad(PlayerCpgtData cpg);
-	void hideTingGangControllPad();
+	void showHuGangControllPad(PlayerCpgtData cpg);
+	void hideHuGangControllPad();
 	void showGuiLayer();
 	void startGameAgain();
     void startGameFirst();
@@ -76,6 +76,8 @@ private:
     void showOriention();
     void showHuPaiXing(std::string paixing);
     void firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data);//首次杠花
+    void heroDoQiHu();
+    void playerApplyHu();
 	PlayerBase* getPlayerBySeatId(int sid);
 	EventListenerCustom* addOtherReadyListener;
 	EventListenerCustom* loginRespListener;
@@ -110,5 +112,6 @@ private:
     EventListenerCustom* networkBreakListener;
     EventListenerCustom* truNotifyListener;
     EventListenerCustom* dissovleRoomNew;
+    EventListenerCustom* playeHuActionListener;
 };
 #endif
