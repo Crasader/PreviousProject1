@@ -272,7 +272,7 @@ void PlayerHero::playPokerByHand(Jong* jong){
     });
     CallFunc* callback2 = CallFunc::create([=](){
         showCurrentPlayedJongIcon(true);
-        if(GAMEDATA::getInstance()->getGameType() == 1){
+        if(GAMEDATA::getInstance()->getGameType() == 1||GAMEDATA::getInstance()->getGameType() == 5){
             //打完牌后取消不可出牌的保护
             for(auto var:getSelfHandJongs()){
                 var->showBackShadow(false);
