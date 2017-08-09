@@ -75,6 +75,7 @@ private:
     void showShiMing();
     void showWanJiaQun();
 	void showDayTask();
+    void showTeamwork();
 	void showPlayerBill();
 	void showGameSetting();
 	void showHotActivity();

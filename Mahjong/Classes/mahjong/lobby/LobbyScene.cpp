@@ -351,36 +351,42 @@ void LobbyScene::drawSceneMid(){
 void LobbyScene::drawSceneBot(){
     auto bottomBg = Sprite::create("mjlobby/open_room_bg_bot.png");
     bottomBg->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+    bottomBg->setScale(1.1f);
     bottomBg->setPosition(640,0);
     addChild(bottomBg);
     
     
     auto btn_1 = MenuItemImage::create("mjlobby/sm_btn_1.png", "mjlobby/sm_btn_2.png", CC_CALLBACK_0(LobbyScene::showShiMing, this));
-    auto gameMenu2 = Menu::create(btn_1, NULL);
-    gameMenu2->setPosition(320, 50);
+    auto gameMenu1 = Menu::create(btn_1, NULL);
+    gameMenu1->setPosition(240, 50);
+    addChild(gameMenu1);
+    
+    auto btn_2 = MenuItemImage::create("mjlobby/hezuo_1.png", "mjlobby/hezuo_2.png", CC_CALLBACK_0(LobbyScene::showTeamwork, this));
+    auto gameMenu2 = Menu::create(btn_2, NULL);
+    gameMenu2->setPosition(400, 50);
     addChild(gameMenu2);
     
     auto gongzh = MenuItemImage::create("mjlobby/gzh_btn1.png","mjlobby/gzh_btn2.png",CC_CALLBACK_0(LobbyScene::showGongZhongHao, this));
     auto mymenu2 = Menu::create(gongzh,NULL);
-    mymenu2->setPosition(480,50);
+    mymenu2->setPosition(560,50);
     addChild(mymenu2);
     
     auto btn_bill = MenuItemImage::create("mjlobby/bill_btn_1.png", "mjlobby/bill_btn_1.png", CC_CALLBACK_0(LobbyScene::showPlayerBill, this));
     auto billMenu = Menu::create(btn_bill, NULL);
     
-    billMenu->setPosition(640,50);
+    billMenu->setPosition(720,50);
     addChild(billMenu);
     
-    auto btn_2 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
-    auto gameMenu3 = Menu::create(btn_2, NULL);
+    auto btn_3 = MenuItemImage::create("mjlobby/wan_jia_quan_1.png", "mjlobby/wan_jia_quan_2.png", CC_CALLBACK_0(LobbyScene::showWanJiaQun, this));
+    auto gameMenu3 = Menu::create(btn_3, NULL);
     gameMenu3->alignItemsHorizontallyWithPadding(5);
-    gameMenu3->setPosition(800, 50);
+    gameMenu3->setPosition(880, 50);
     addChild(gameMenu3);
     
     auto btn_setting = MenuItemImage::create("mjlobby/setting_btn_1.png", "mjlobby/setting_btn_1.png", CC_CALLBACK_0(LobbyScene::showGameSetting, this));
     auto settingMenu = Menu::create(btn_setting, NULL);
     
-    settingMenu->setPosition(975,50);
+    settingMenu->setPosition(1040,50);
     addChild(settingMenu);
     
     //显示公告小信息
@@ -578,6 +584,10 @@ void LobbyScene::showDayTask(){
     Audio::getInstance()->playSoundClick();
 }
 
+
+void LobbyScene::showTeamwork(){
+
+}
 
 void LobbyScene::showPlayerBill(){
     Audio::getInstance()->playSoundClick();
