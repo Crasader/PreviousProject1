@@ -335,7 +335,9 @@ void HZNormalResultLayer::updateTime(float dt){
         timeLabel->setString(StringUtils::format("%d",totalTime));
     }
     if(totalTime<=0){
-        continueGame();
+        if(totalTime== -1){
+            continueGame();
+        }
     }
     if(GAMEDATA::getInstance()->getShowProtected()){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);

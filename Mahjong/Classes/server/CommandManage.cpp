@@ -851,6 +851,21 @@ std::string CommandManage::getCMHuActionCommand(std::string msg){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getCMOutResumeCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_MAJIANG_BACK_OUT_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
+std::string CommandManage:: getCMContinueGameCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_MAJIANG_AGAIN_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("plat", PAY_PLAT_VALUE));
+    return commandString(keyValue);
+}
+
 
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;

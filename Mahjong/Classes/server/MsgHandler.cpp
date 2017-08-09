@@ -566,6 +566,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleCMPlayerHuNotify(msg);
             break;
         }
+        case MSGCODE_CM_MAJIANG_AGAIN_RESPONSE:{
+            gameCMContinueResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -4924,7 +4928,7 @@ void MsgHandler::handleCMEnterRoomResp(std::string msg){
     GAMEDATA::getInstance()->setIsPlaying(false);
     GAMEDATA::getInstance()->setGameType(1);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
-    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ShangHai);
+    UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ChongMing);
     postNotifyMessage(MSG_CM_ENTER_FRIEND_ROOM_RESP, buf);
 }
 
@@ -5614,5 +5618,65 @@ void MsgHandler::handleCMPlayerHuNotify(std::string msg){
     //    log("收到了服务端的胡牌协议1");
     postNotifyMessage(MSG_CM_GAME_HU_ACTION, &cpgData);
 }
+
+void MsgHandler::gameCMContinueResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    EnterRoomResp resp;
+    const rapidjson::Value &result = _mDoc["result"];
+    resp.result = StringUtil::itos(result.GetInt());
+    
+    if(_mDoc.HasMember("rsid")){
+        const rapidjson::Value &rsid = _mDoc["rsid"];
+        resp.rsid = rsid.GetString();
+    }
+    if(_mDoc.HasMember("money")){
+        const rapidjson::Value &money = _mDoc["money"];
+        resp.money = money.GetString();
+    }
+    if(_mDoc.HasMember("gold")){
+        const rapidjson::Value &gold = _mDoc["gold"];
+        resp.gold = gold.GetString();
+    }
+    if(_mDoc.HasMember("id")){
+        const rapidjson::Value &payid = _mDoc["id"];
+        resp.payid = payid.GetString();
+    }
+    if(_mDoc.HasMember("min")){
+        const rapidjson::Value &min = _mDoc["min"];
+        resp.min = min.GetString();
+    }
+    if(_mDoc.HasMember("kb")){
+        const rapidjson::Value &kb = _mDoc["kb"];
+        resp.kb = kb.GetString();
+    }
+    if(_mDoc.HasMember("huangfan")){
+        const rapidjson::Value &huangfan = _mDoc["huangfan"];
+        resp.huangfan = huangfan.GetString();
+    }
+    if(_mDoc.HasMember("all")){
+        const rapidjson::Value &all = _mDoc["all"];
+        for (int i = 0; i < all.Capacity(); ++i){
+            const rapidjson::Value &temp = all[i];
+            PlayerReady ready;
+            if(temp.HasMember("ifready")){
+                ready.ifready = temp["ifready"].GetInt();
+            }
+            if(temp.HasMember("poxiaoId")){
+                ready.poxiaoId = temp["poxiaoId"].GetString();
+            }
+            if(temp.HasMember("seatId")){
+                ready.seatId = temp["seatId"].GetInt();
+            }
+            resp.playerReadys.push_back(ready);
+        }
+    }
+    GAMEDATA::getInstance()->setShowDialogType(result.GetInt());
+    GAMEDATA::getInstance()->setEnterRoomResp(resp);
+    postNotifyMessage(MSG_HERO_CONTINUE_RESP, nullptr);
+}
+
 
 

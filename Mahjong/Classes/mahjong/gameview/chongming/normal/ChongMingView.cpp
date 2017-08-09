@@ -473,7 +473,7 @@ void ChongMingView::drawCpgControllPad(PlayerCpgtData newData){
     int buttonCount = 1;
     
     if (newData.hu == 1){
-        hu = MenuItemImage::create("gameview/hz_hu_btn.png", "gameview/hz_hu_btn.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
+        hu = MenuItemImage::create("gameview/mj_hu.png", "gameview/mj_hu.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
         hu->setPosition(Point(-buttonCount * 160, 0));
         controllPad->addChild(hu);
         buttonCount++;
@@ -513,7 +513,7 @@ void ChongMingView:: showHuGangControllPad(PlayerCpgtData tingData){
     MenuItemImage* gang = nullptr;
     int buttonCount = 1;
     if (tingData.hu == 1){
-        ting = MenuItemImage::create("gameview/hz_hu_btn.png", "gameview/hz_hu_btn.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
+        ting = MenuItemImage::create("gameview/mj_hu.png", "gameview/mj_hu.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
         ting->setPosition(Point(-buttonCount * 140, 0));
         controllPad->addChild(ting);
         buttonCount++;

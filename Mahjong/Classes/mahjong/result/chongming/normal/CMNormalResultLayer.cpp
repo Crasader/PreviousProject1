@@ -352,7 +352,7 @@ void CMNormalResultLayer::continueGame(){
             }
         }
         schedule([=](float dt){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getContinueGameCommand());
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMContinueGameCommand());
         }, 0.0f, 0.0f, 0.8f,"delayGame");
     }
 }
@@ -364,7 +364,9 @@ void CMNormalResultLayer::updateTime(float dt){
         timeLabel->setString(StringUtils::format("%d",totalTime));
     }
     if(totalTime<=0){
-        continueGame();
+        if(totalTime== -1){
+                continueGame();
+        }
     }
     
     if(GAMEDATA::getInstance()->getShowProtected()){

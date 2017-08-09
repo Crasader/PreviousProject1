@@ -74,6 +74,8 @@ void AppDelegate::applicationDidEnterBackground() {
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getOutResumeCommand());
     }else if(GAMEDATA::getInstance()->getGameType() == 3){
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZOutResumeCommand());
+    }else if(GAMEDATA::getInstance()->getGameType() == 5){
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMOutResumeCommand());
     }
     if(GAMEDATA::getInstance()->getLogingGame()){
         log("主动断开socket");
