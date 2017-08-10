@@ -130,13 +130,6 @@ void ChongMingView::loadView(){
         }else if(GAMEDATA::getInstance()->getPrivateLezi() == "3"){
             lezi->setTexture("gameview/wulezi.png");
         }
-        auto emsc =  Sprite::create("gameview/2mo3chong.png");
-        emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        emsc->setVisible(false);
-        addChild(emsc);
-        if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
-            emsc->setVisible(true);
-        }
         auto feicy = Sprite::create("gameview/feicangying.png");
         feicy->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         feicy->setVisible(false);
@@ -145,16 +138,14 @@ void ChongMingView::loadView(){
             feicy->setVisible(true);
         }
         
-        int wid = diHua->getContentSize().width+ lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0)+(feicy->isVisible()?(feicy->getContentSize().width):0);
+        int wid = diHua->getContentSize().width+ lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(feicy->isVisible()?(feicy->getContentSize().width):0);
         wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
         wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         diHua->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
         
         lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10,160);
         
-        emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10,160);
-        
-        feicy->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10+(emsc->isVisible()?(emsc->getContentSize().width):0),160);
+        feicy->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10,160);
         
     }
     
