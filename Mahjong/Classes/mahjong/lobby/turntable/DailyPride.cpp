@@ -171,8 +171,8 @@ void DailyPride::showDailyPrideLayer(){
 
 void DailyPride::shareTurntable(){
     GAMEDATA::getInstance()->setIsTurnTableShare(true);
-    std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData1().url;
-    if(GAMEDATA::getInstance()->getMahjongShareData1().type == "1"){
+    std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData2().url;
+    if(GAMEDATA::getInstance()->getMahjongShareData2().type == "1"){
         shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
     }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

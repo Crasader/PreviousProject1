@@ -360,6 +360,21 @@ void UserData::setNeedShowCompetition(bool need){
     UserDefault::getInstance()->setBoolForKey("competition_state",need);
 }
 
+bool UserData::getNeedShowJiZanButton(){
+    return UserDefault::getInstance()->getBoolForKey("need_show_jizan",false);
+}
+
+void UserData::setNeedShowJiZanButton(bool need){
+    UserDefault::getInstance()->setBoolForKey("need_show_jizan",need);
+}
+
+bool UserData::getNeedShowYaoQingButton(){
+    return UserDefault::getInstance()->getBoolForKey("need_show_yaoqing",false);
+}
+void UserData::setNeedShowYaoQingButton(bool need){
+    UserDefault::getInstance()->setBoolForKey("need_show_yaoqing",need);
+}
+
 GameMahjongType UserData::getLatelyMahjongType(){
     return (GameMahjongType)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_type",GameMahjongType::ShangHai);
 }

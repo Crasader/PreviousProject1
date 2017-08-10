@@ -278,8 +278,48 @@ void LobbyScene::drawSceneMid(){
     auto shareMenu = Menu::create(sharefriend, NULL);
     shareMenu->alignItemsHorizontallyWithPadding(15);
     shareMenu->setPosition(650, 535);
-    shareMenu->setTag(1987);
+    shareMenu->setTag(1981);
     addChild(shareMenu);
+    shareMenu->setVisible(false);
+    if(UserData::getInstance()->getNeedShowYaoQingButton()&&UserData::getInstance()->isWeixinPayOpen()){
+        shareMenu->setVisible(true);
+    }
+    
+    auto jizhanItem = MenuItemImage::create("mjlobby/share_1.png", "mjlobby/share_1.png",
+                                            CC_CALLBACK_0(LobbyScene::showRedWallet, this));
+    auto jizhanMenu = Menu::create(jizhanItem, NULL);
+    jizhanMenu->alignItemsHorizontallyWithPadding(15);
+    
+    jizhanMenu->setTag(1982);
+    
+    addChild(jizhanMenu);
+    if(shareMenu->isVisible()){
+        jizhanMenu->setPosition(650, 435);
+    }else{
+        jizhanMenu->setPosition(650, 535);
+    }
+    jizhanMenu->setVisible(false);
+    if(UserData::getInstance()->getNeedShowJiZanButton()&&UserData::getInstance()->isWeixinPayOpen()){
+        jizhanMenu->setVisible(true);
+    }
+    
+    auto huodong = MenuItemImage::create("mjlobby/red_wallet_1.png","mjlobby/red_wallet_2.png",CC_CALLBACK_0(LobbyScene::showHotActivity, this));
+    auto mymenu = Menu::create(huodong,NULL);
+    mymenu->setPosition(650,335);
+    mymenu->setTag(1983);
+    
+    addChild(mymenu);
+    if(shareMenu->isVisible()&&jizhanMenu->isVisible()){
+        jizhanMenu->setPosition(650, 335);
+    }else if((shareMenu->isVisible()&&!jizhanMenu->isVisible())||(!shareMenu->isVisible()&&jizhanMenu->isVisible())){
+        jizhanMenu->setPosition(650, 435);
+    }else{
+        jizhanMenu->setPosition(650, 535);
+    }
+    mymenu->setVisible(false);
+    if(UserData::getInstance()->isWeixinPayOpen()&&GAMEDATA::getInstance()->getShowTurnTableState() == 0){
+        mymenu->setVisible(true);
+    }
     
     if(GAMEDATA::getInstance()->getBottomText() != "" && UserData::getInstance()->isWeixinPayOpen()){
         auto textbg = Sprite::create("mjlobby/ti_shi_2.png");
@@ -292,22 +332,6 @@ void LobbyScene::drawSceneMid(){
         textbg->addChild(text);
         textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(0.92f,Point(750,580)),MoveTo::create(0.92f,Point(750,570)),NULL), CC_REPEAT_FOREVER));
     }
-    
-    auto jizhanItem = MenuItemImage::create("mjlobby/share_1.png", "mjlobby/share_1.png",
-                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
-    auto jizhanMenu = Menu::create(jizhanItem, NULL);
-    jizhanMenu->alignItemsHorizontallyWithPadding(15);
-    jizhanMenu->setPosition(650, 435);
-    jizhanMenu->setTag(1989);
-    addChild(jizhanMenu);
-    
-    
-    auto huodong = MenuItemImage::create("mjlobby/red_wallet_1.png","mjlobby/red_wallet_2.png",CC_CALLBACK_0(LobbyScene::showHotActivity, this));
-    auto mymenu = Menu::create(huodong,NULL);
-    mymenu->setPosition(650,335);
-//    mymenu->setTag(1980);
-//    mymenu->setVisible(false);
-    addChild(mymenu);
     
     //跑马灯
     ScrollTextEx* scroll = ScrollTextEx::create();
@@ -451,32 +475,34 @@ void LobbyScene::showLobbyAnim(){
     schedule(schedule_selector(LobbyScene:: scrollLightSpot), 0, CC_REPEAT_FOREVER, 0);
     
     // 星星闪烁
-    auto star1 = Sprite::create("mjlobby/star.png");
-    star1->setPosition(615,550);
-    star1->setOpacity(0);
-    addChild(star1,1);
-    star1->runAction(Repeat::create(Sequence::create(DelayTime::create(1),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(11), NULL),CC_REPEAT_FOREVER));
+    if(NULL != getChildByTag(1981) && getChildByTag(1981)->isVisible()){
+        auto star1 = Sprite::create("mjlobby/star.png");
+        star1->setPosition(615,550);
+        star1->setOpacity(0);
+        addChild(star1,1);
+        star1->runAction(Repeat::create(Sequence::create(DelayTime::create(1),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(11), NULL),CC_REPEAT_FOREVER));
+        
+        auto star2 = Sprite::create("mjlobby/star.png");
+        star2->setPosition(610,525);
+        star2->setOpacity(0);
+        star2->setScale(0.5f);
+        addChild(star2,1);
+        star2->runAction(Repeat::create(Sequence::create(DelayTime::create(2),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(10), NULL),CC_REPEAT_FOREVER));
+        
+        auto star3 = Sprite::create("mjlobby/star.png");
+        star3->setPosition(675,550);
+        star3->setOpacity(0);
+        addChild(star3,1);
+        star3->runAction(Repeat::create(Sequence::create(DelayTime::create(1),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(11), NULL),CC_REPEAT_FOREVER));
+        
+        auto star4 = Sprite::create("mjlobby/star.png");
+        star4->setPosition(615,550);
+        star4->setOpacity(0);
+        addChild(star4,1);
+        star4->runAction(Repeat::create(Sequence::create(DelayTime::create(3),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(9), NULL),CC_REPEAT_FOREVER));
+    }
     
-    auto star2 = Sprite::create("mjlobby/star.png");
-    star2->setPosition(610,525);
-    star2->setOpacity(0);
-    star2->setScale(0.5f);
-    addChild(star2,1);
-    star2->runAction(Repeat::create(Sequence::create(DelayTime::create(2),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(10), NULL),CC_REPEAT_FOREVER));
-    
-    auto star3 = Sprite::create("mjlobby/star.png");
-    star3->setPosition(675,550);
-    star3->setOpacity(0);
-    addChild(star3,1);
-    star3->runAction(Repeat::create(Sequence::create(DelayTime::create(1),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(11), NULL),CC_REPEAT_FOREVER));
-    
-    auto star4 = Sprite::create("mjlobby/star.png");
-    star4->setPosition(615,550);
-    star4->setOpacity(0);
-    addChild(star4,1);
-    star4->runAction(Repeat::create(Sequence::create(DelayTime::create(3),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(9), NULL),CC_REPEAT_FOREVER));
-    
-    if(NULL != getChildByTag(1980) && getChildByTag(1980)->isVisible()){
+    if(NULL != getChildByTag(1982) && getChildByTag(1982)->isVisible()){
         auto star5 = Sprite::create("mjlobby/star.png");
         star5->setPosition(612,461);
         star5->setOpacity(0);
@@ -503,6 +529,34 @@ void LobbyScene::showLobbyAnim(){
         star8->runAction(Repeat::create(Sequence::create(DelayTime::create(7),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(5), NULL),CC_REPEAT_FOREVER));
         
     }
+    if(NULL != getChildByTag(1983) && getChildByTag(1983)->isVisible()){
+        auto star5 = Sprite::create("mjlobby/star.png");
+        star5->setPosition(612,361);
+        star5->setOpacity(0);
+        addChild(star5,1);
+        star5->runAction(Repeat::create(Sequence::create(DelayTime::create(4),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(8), NULL),CC_REPEAT_FOREVER));
+        
+        auto star6 = Sprite::create("mjlobby/star.png");
+        star6->setPosition(609,334);
+        star6->setOpacity(0);
+        star6->setScale(0.5f);
+        addChild(star6,1);
+        star6->runAction(Repeat::create(Sequence::create(DelayTime::create(6),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(6), NULL),CC_REPEAT_FOREVER));
+        
+        auto star7 = Sprite::create("mjlobby/star.png");
+        star7->setPosition(666,368);
+        star7->setOpacity(0);
+        addChild(star7,1);
+        star7->runAction(Repeat::create(Sequence::create(DelayTime::create(5),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(7), NULL),CC_REPEAT_FOREVER));
+        
+        auto star8 = Sprite::create("mjlobby/star.png");
+        star8->setPosition(615,361);
+        star8->setOpacity(0);
+        addChild(star8,1);
+        star8->runAction(Repeat::create(Sequence::create(DelayTime::create(7),FadeTo::create(0.5, 255),FadeTo::create(0.5,0),DelayTime::create(5), NULL),CC_REPEAT_FOREVER));
+        
+    }
+    
     
     auto btnlight1 = Sprite::create("mjlobby/light_btn_anim_1.png");
     btnlight1->setPosition(1023,534);
@@ -600,7 +654,6 @@ void LobbyScene::showTeamwork(){
 
 void LobbyScene::showPlayerBill(){
     Audio::getInstance()->playSoundClick();
-    //    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
     BillInfo* billInfoView = BillInfo::create();
     addChild(billInfoView,3);
 }
@@ -633,10 +686,6 @@ void LobbyScene::chargeFangka(){
     Audio::getInstance()->playSoundClick();
 #if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
     if(UserData::getInstance()->isWeixinPayOpen()){
-        //        if(!UserData::getInstance()->isInviteCodeBind()){
-        //            InviteCodeLayer* lay = InviteCodeLayer::create();
-        //            addChild(lay,6);
-        //        }
         ChargeFangka* charge = ChargeFangka::create();
         addChild(charge,3);
     }else{
@@ -644,10 +693,6 @@ void LobbyScene::chargeFangka(){
         addChild(hint,3);
     }
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-    //    if(!UserData::getInstance()->isInviteCodeBind()){
-    //        InviteCodeLayer* lay = InviteCodeLayer::create();
-    //        addChild(lay,6);
-    //    }
     ChargeFangka* charge = ChargeFangka::create();
     addChild(charge,3);
 #elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
@@ -1132,12 +1177,6 @@ void LobbyScene::addEventListener(){
             getChildByTag(905)->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != getChildByTag(906))
             getChildByTag(906)->setVisible(UserData::getInstance()->isWeixinPayOpen());
-        if(NULL != getChildByTag(1980)){
-            getChildByTag(1980)->setVisible(UserData::getInstance()->isWeixinPayOpen());
-            if(GAMEDATA::getInstance()->getShowTurnTableState() == 0){
-                getChildByTag(1980)->setVisible(false);
-            }
-        }
         if(NULL != haufeiNum)
             haufeiNum->setVisible(UserData::getInstance()->isWeixinPayOpen());
         if(NULL != lequanNum)

@@ -132,6 +132,12 @@ public:
     bool getNeedShowCompetition();
     void setNeedShowCompetition(bool need);
     
+    bool getNeedShowJiZanButton();
+    void setNeedShowJiZanButton(bool need);
+    
+    bool getNeedShowYaoQingButton();
+    void setNeedShowYaoQingButton(bool need);
+    
     //记录玩家最近的游戏类型
     GameMahjongType getLatelyMahjongType();
     void setLatelyMahjongType(GameMahjongType type);

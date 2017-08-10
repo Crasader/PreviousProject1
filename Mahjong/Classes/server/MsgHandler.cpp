@@ -1214,6 +1214,15 @@ void MsgHandler::loginResp(std::string msg){
         }else{
             UserData::getInstance()->setNeedShowCompetition(false);
         }
+        //
+        if(_mDoc.HasMember("lys")){
+            const rapidjson::Value &lys = _mDoc["lys"];
+            UserData::getInstance()->setNeedShowYaoQingButton((strcmp(lys.GetString(),"1") == 0)?true:false);
+        }
+        if(_mDoc.HasMember("lss")){
+            const rapidjson::Value &lss = _mDoc["lss"];
+            UserData::getInstance()->setNeedShowJiZanButton((strcmp(lss.GetString(),"1") == 0)?true:false);
+        }
         //微信分享配置
         if(_mDoc.HasMember("share1")){
             const rapidjson::Value &share1 = _mDoc["share1"];

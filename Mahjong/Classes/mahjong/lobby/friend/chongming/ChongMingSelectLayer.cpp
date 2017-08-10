@@ -362,9 +362,9 @@ std::string ChongMingSelectLayer::getKaibao(){
 }
 
 std::string ChongMingSelectLayer::getFeiChangYin(){
-    std::string ifcy = "1";//0表示没有，1表示有
-    if(NULL != getChildByTag(2036)){
-        if(getChildByTag(2036)->isVisible()){
+    std::string ifcy = "0";//0表示没有，1表示有
+    if(NULL != getChildByTag(4002)){
+        if(getChildByTag(4002)->isVisible()){
             ifcy = "1";
         }else{
             ifcy = "0";

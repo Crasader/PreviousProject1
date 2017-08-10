@@ -124,6 +124,8 @@
 #define MSGCODE_FEE_TO_FANGKA_RESPONSE  1078// 话费兑换房卡回复{code:1078,poxiaoId:poxiaoId,result:"1",fangka:"1",fee:"2"} 1成功0失败
 #define MSGCODE_FANGKA_TO_FEE_REQUEST  1079// 房卡兑换房卡请求{code:1079,poxiaoId:poxiaoId,fangka:"30"}
 #define MSGCODE_FANGKA_TO_FEE_RESPONSE  1080// 话费兑换房卡回复{code:1080,poxiaoId:poxiaoId,result:"1",fangka:"1",fee:"2"} 1成功0失败
+#define MSGCODE_SPREAD_RESULT_REQUEST  1081// 获取推广结果请求{code:1081,poxiaoId:poxiaoId}
+#define MSGCODE_SPREAD_RESULT_RESPONSE  1082//获取推广结果回复{code:1082,poxiaoId:poxiaoId,desc:"上方文字",content: [{nickname:"123",count:"1",money:"1"}]}
 
 #define MSGCODE_MAJIANG_BACK_OUT_REQUEST 1992//后台切出请求{code:1992,poxiaoId:poxiaoId}
 
