@@ -273,7 +273,7 @@ void LobbyScene::drawSceneTop(){
 
 void LobbyScene::drawSceneMid(){
     
-    auto sharefriend = MenuItemImage::create("mjlobby/share_1.png", "mjlobby/share_2.png",
+    auto sharefriend = MenuItemImage::create("mjlobby/hongbao_1.png", "mjlobby/hongbao_1.png",
                                              CC_CALLBACK_0(LobbyScene::showRedWallet, this));
     auto shareMenu = Menu::create(sharefriend, NULL);
     shareMenu->alignItemsHorizontallyWithPadding(15);
@@ -293,11 +293,20 @@ void LobbyScene::drawSceneMid(){
         textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(0.92f,Point(750,580)),MoveTo::create(0.92f,Point(750,570)),NULL), CC_REPEAT_FOREVER));
     }
     
+    auto jizhanItem = MenuItemImage::create("mjlobby/share_1.png", "mjlobby/share_1.png",
+                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
+    auto jizhanMenu = Menu::create(jizhanItem, NULL);
+    jizhanMenu->alignItemsHorizontallyWithPadding(15);
+    jizhanMenu->setPosition(650, 435);
+    jizhanMenu->setTag(1989);
+    addChild(jizhanMenu);
+    
+    
     auto huodong = MenuItemImage::create("mjlobby/red_wallet_1.png","mjlobby/red_wallet_2.png",CC_CALLBACK_0(LobbyScene::showHotActivity, this));
     auto mymenu = Menu::create(huodong,NULL);
-    mymenu->setPosition(650,435);
-    mymenu->setTag(1980);
-    mymenu->setVisible(false);
+    mymenu->setPosition(650,335);
+//    mymenu->setTag(1980);
+//    mymenu->setVisible(false);
     addChild(mymenu);
     
     //跑马灯
