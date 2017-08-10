@@ -138,6 +138,9 @@ public:
     bool getNeedShowYaoQingButton();
     void setNeedShowYaoQingButton(bool need);
     
+    std::string getCollaborateUrl();
+    void setCollaborateUrl(std::string msg);
+    
     //记录玩家最近的游戏类型
     GameMahjongType getLatelyMahjongType();
     void setLatelyMahjongType(GameMahjongType type);

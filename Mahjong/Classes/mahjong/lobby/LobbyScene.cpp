@@ -310,11 +310,11 @@ void LobbyScene::drawSceneMid(){
     
     addChild(mymenu);
     if(shareMenu->isVisible()&&jizhanMenu->isVisible()){
-        jizhanMenu->setPosition(650, 335);
+        mymenu->setPosition(650, 335);
     }else if((shareMenu->isVisible()&&!jizhanMenu->isVisible())||(!shareMenu->isVisible()&&jizhanMenu->isVisible())){
-        jizhanMenu->setPosition(650, 435);
+        mymenu->setPosition(650, 435);
     }else{
-        jizhanMenu->setPosition(650, 535);
+        mymenu->setPosition(650, 535);
     }
     mymenu->setVisible(false);
     if(UserData::getInstance()->isWeixinPayOpen()&&GAMEDATA::getInstance()->getShowTurnTableState() == 0){

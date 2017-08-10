@@ -375,6 +375,13 @@ void UserData::setNeedShowYaoQingButton(bool need){
     UserDefault::getInstance()->setBoolForKey("need_show_yaoqing",need);
 }
 
+std::string UserData::getCollaborateUrl(){
+    return UserDefault::getInstance()->getStringForKey("collaborate_url","");
+}
+void UserData::setCollaborateUrl(std::string msg){
+    UserDefault::getInstance()->setStringForKey("collaborate_url",msg);
+}
+
 GameMahjongType UserData::getLatelyMahjongType(){
     return (GameMahjongType)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_type",GameMahjongType::ShangHai);
 }
