@@ -95,7 +95,7 @@ bool CMPlayerResultCell::init(GameResultData data){
     }
     if(GAMEDATA::getInstance()->getPrivateFcy() == "1"&&GAMEDATA::getInstance()->getPrivateFcyValue() != ""){
         auto cangyinfen =  Sprite::create("result/cangying_fen.png");
-        cangyinfen->setPosition(150,0);
+        cangyinfen->setPosition(145,0);
         addChild(cangyinfen);
         
         int fen = atoi(data.cyf.c_str());;
@@ -105,11 +105,11 @@ bool CMPlayerResultCell::init(GameResultData data){
         }else{
             fuhao->setTexture("result/gang_fen_jian.png");
         }
-        fuhao->setPosition(200,0);
+        fuhao->setPosition(195,0);
         addChild(fuhao);
         
         auto cangyinnum = LabelAtlas::create(StringUtils::format("%d",abs(fen)),"result/ju_num.png" , 16, 22, '0');
-        cangyinnum->setPosition(210,-10);
+        cangyinnum->setPosition(205,-10);
         addChild(cangyinnum);
     }
     

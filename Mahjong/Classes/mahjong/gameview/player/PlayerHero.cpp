@@ -415,11 +415,13 @@ void PlayerHero::readyGo(){
 void PlayerHero::inviteWechatFriend(){
     std::string gameName = "上海敲麻";
     std::string roomtype = ChineseWord("room_info_0");
-    if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
-        roomtype += ChineseWord("game_type_1");
-    }else{
-        roomtype += ChineseWord("game_type_2");
-    }
+    //    if(GAMEDATA::getInstance()->getGameType() == 1 || GAMEDATA::getInstance()->getGameType() == 2){
+    //        roomtype += ChineseWord("game_type_1");
+    //    }else if(GAMEDATA::getInstance()->getGameType() == 3 || GAMEDATA::getInstance()->getGameType() == 4){
+    //        roomtype += ChineseWord("game_type_2");
+    //    }else if(GAMEDATA::getInstance()->getGameType() == 5 || GAMEDATA::getInstance()->getGameType() == 6){
+    //        roomtype += "崇明麻将";
+    //    }
     if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
         roomtype += ChineseWord("room_info_17");
     }
@@ -467,7 +469,35 @@ void PlayerHero::inviteWechatFriend(){
         }
         roomtype += ChineseWord("room_info_16");
         roomtype += StringUtils::format("%s",GAMEDATA::getInstance()->getHZDiFen().c_str());
-        
+    }else  if(GAMEDATA::getInstance()->getGameType() == 5 || GAMEDATA::getInstance()->getGameType() == 6){
+        gameName = "崇明麻将";
+        if(GAMEDATA::getInstance()->getPrivateKaibao()=="0"){
+            roomtype += ChineseWord("room_info_2");
+        }else{
+            roomtype += ChineseWord("room_info_3");
+        }
+        if(GAMEDATA::getInstance()->getPrivateDihua()=="0"){
+            roomtype += ",1/1";
+        }else if(GAMEDATA::getInstance()->getPrivateDihua()=="1"){
+            roomtype += ",2/2";
+        }else if(GAMEDATA::getInstance()->getPrivateDihua()=="2"){
+            roomtype += ",6/2";
+        }else if(GAMEDATA::getInstance()->getPrivateDihua()=="3"){
+            roomtype += ",5/5";
+        }
+        if(GAMEDATA::getInstance()->getPrivateLezi()=="0"){
+            roomtype += ChineseWord("room_info_7");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi()=="1"){
+            roomtype += ChineseWord("room_info_8");
+        }
+        else if(GAMEDATA::getInstance()->getPrivateLezi()=="2"){
+            roomtype += ChineseWord("room_info_9");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi()=="3"){
+            roomtype += ChineseWord("room_info_10");
+        }
+        if(GAMEDATA::getInstance()->getPrivateFcy()=="1"){
+            roomtype += "飞苍蝇";
+        }
     }
     std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData1().url;
     if(GAMEDATA::getInstance()->getMahjongShareData1().type == "1"){
