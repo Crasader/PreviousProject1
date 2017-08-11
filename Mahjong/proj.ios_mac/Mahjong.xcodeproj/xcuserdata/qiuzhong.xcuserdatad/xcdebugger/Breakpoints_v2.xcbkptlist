@@ -5916,11 +5916,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerLeft.cpp"
-            timestampString = "514726269.888126"
+            timestampString = "524114048.841381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "PlayerLeft::drawPlayedJong(int ctype)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5932,11 +5932,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerOpposite.cpp"
-            timestampString = "514819593.191486"
+            timestampString = "524114048.841381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "PlayerOpposite::drawPlayedJong(int ctype)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5948,11 +5948,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerRight.cpp"
-            timestampString = "515490347.37831"
+            timestampString = "524114048.841381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "PlayerRight::drawPlayedJong(int ctype)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5964,11 +5964,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerRight.cpp"
-            timestampString = "515490347.37831"
+            timestampString = "524114048.841381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "PlayerRight::drawPlayedJong(int ctype)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5980,11 +5980,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/player/PlayerRight.cpp"
-            timestampString = "514726160.76673"
+            timestampString = "524114048.841381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "PlayerRight::drawPlayedJong(int ctype)"
             landmarkType = "7">
          </BreakpointContent>
