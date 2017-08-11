@@ -101,6 +101,10 @@ void HongZhongView::loadView(){
     BatteryInfo* battery = BatteryInfo::create();
     battery->setPosition(0,0);
     addChild(battery,100);
+    
+    auto gameName = Sprite::create("gameview/text_hz.png");
+    gameName->setPosition(640,488);
+    addChild(gameName);
     //语音聊天
     if(!GAMEDATA::getInstance()->getIsCompetitionQueue()&&!GAMEDATA::getInstance()->getIsCompetitionState()){
         SoundRecordBtn* soun = SoundRecordBtn::create();

@@ -97,6 +97,9 @@ void ChongMingView::loadView(){
         SoundRecordBtn* soun = SoundRecordBtn::create();
         addChild(soun,5);
     }
+    auto gameName = Sprite::create("gameview/text_cm.png");
+    gameName->setPosition(640,488);
+    addChild(gameName);
     
     if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
@@ -155,10 +158,6 @@ void ChongMingView::loadView(){
         addChild(queue,10);
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendCmReadyCommand());
     }
-    
-    auto lab = Label::createWithSystemFont("崇明麻将", "arial", 30);
-    lab->setPosition(640,360);
-    addChild(lab);
 }
 
 void ChongMingView::startGameFirst(){
