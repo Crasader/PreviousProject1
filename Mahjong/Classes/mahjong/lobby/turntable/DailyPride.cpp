@@ -100,12 +100,12 @@ void DailyPride::showDailyPrideLayer(){
         cell->setPosition(getPosByRotation(Point(285,285), 150, i * 36-18));
         m_turnBg->addChild(cell);
     }
-    auto itemImage = MenuItemImage::create("daily/go_btn_1.png", "daily/go_btn_2.png",
+        auto itemImage = MenuItemImage::create("daily/go_btn_1.png", "daily/go_btn_2.png",
                                            CC_CALLBACK_1(DailyPride::beginPride, this));
     startMenu = Menu::create(itemImage, NULL);
-    startMenu->setPosition(433, 340);
+    startMenu->setPosition(433, 360);
     addChild(startMenu);
-    
+
     auto shareText = Sprite::create("daily/text_info.png");
     shareText->setTag(1000);
     shareText->setPosition(887,270);

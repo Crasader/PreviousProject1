@@ -70,7 +70,7 @@ std::string PrideCell::getImageNameById(PrideType id){
             imageName = "common/lequan_icon.png";
             break;
         case PrideType::fangka:
-            imageName = "shop/fangka_image.png";
+            imageName = "daily/fangka_biaoqian.png";
             break;
         case PrideType::prop:
             imageName = "daily/iphone.png";
