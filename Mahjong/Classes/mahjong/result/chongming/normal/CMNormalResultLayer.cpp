@@ -69,7 +69,7 @@ void CMNormalResultLayer::showGameResult(){
                 vector<std::string> hu = StringUtil::split(data.huType, ",");
                 for(auto var:hu){
                     if(var == "3"){
-                        resultTitle->setTexture("result/game_result_gangkai.png");
+                        resultTitle->setTexture("result/public_gangkai.png");
                         return;
                     }
                 }
