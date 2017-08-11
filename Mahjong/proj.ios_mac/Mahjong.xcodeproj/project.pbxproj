@@ -389,6 +389,8 @@
 		D2DB5E7E1E7917490073ABD8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */; };
 		D2DCA7D71ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
 		D2DCA7D81ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
+		D2DD46211F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD461F1F3D81A7004F8510 /* CollaborateDialog.cpp */; };
+		D2DD46221F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD461F1F3D81A7004F8510 /* CollaborateDialog.cpp */; };
 		D2DDB1BE1F02384600790422 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */; };
 		D2DDB1BF1F02384600790422 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */; };
 		D2E035081ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */; };
@@ -855,6 +857,8 @@
 		D2DB5E7B1E7917270073ABD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2DB5E7D1E7917490073ABD8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D2DCA7D61ECEC067009F9C59 /* competition */ = {isa = PBXFileReference; lastKnownFileType = folder; path = competition; sourceTree = "<group>"; };
+		D2DD461F1F3D81A7004F8510 /* CollaborateDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollaborateDialog.cpp; sourceTree = "<group>"; };
+		D2DD46201F3D81A7004F8510 /* CollaborateDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CollaborateDialog.hpp; sourceTree = "<group>"; };
 		D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnterRoomDialog.cpp; sourceTree = "<group>"; };
 		D2DDB1BD1F02384600790422 /* EnterRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnterRoomDialog.hpp; sourceTree = "<group>"; };
 		D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeHuafeiCell.cpp; sourceTree = "<group>"; };
@@ -1458,6 +1462,7 @@
 		D252FACD1E7FA5EC00937322 /* lobby */ = {
 			isa = PBXGroup;
 			children = (
+				D2DD461E1F3D817B004F8510 /* collaborate */,
 				D2A0C2D81F205CC500203FEF /* competition */,
 				D217FEA31F13509B008F5D4B /* gongzhonghao */,
 				D2E79DB91F0F34D000DD3999 /* turntable */,
@@ -2057,6 +2062,15 @@
 			path = invitecode;
 			sourceTree = "<group>";
 		};
+		D2DD461E1F3D817B004F8510 /* collaborate */ = {
+			isa = PBXGroup;
+			children = (
+				D2DD461F1F3D81A7004F8510 /* CollaborateDialog.cpp */,
+				D2DD46201F3D81A7004F8510 /* CollaborateDialog.hpp */,
+			);
+			path = collaborate;
+			sourceTree = "<group>";
+		};
 		D2DDB1BB1F02384600790422 /* dialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -2612,6 +2626,7 @@
 				D2B291BC1F0E18C40084F379 /* RankList.cpp in Sources */,
 				D252FB541E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D252FBB21E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */,
+				D2DD46211F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */,
 				D299F8D81E27640000D10B0D /* SocketDataBack.cpp in Sources */,
 				D2E6A2931EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -2707,6 +2722,7 @@
 				D252FB5B1E7FA5EC00937322 /* Chinese.cpp in Sources */,
 				D252FC111E7FABC700937322 /* MahjongNumberKeypads.cpp in Sources */,
 				D252FC621E7FABE900937322 /* PlayerRight.cpp in Sources */,
+				D2DD46221F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */,
 				D252FB4D1E7FA5EC00937322 /* UserInfo.cpp in Sources */,
 				D2A713B51ED2BCCF000EE572 /* CompetitionResult.cpp in Sources */,
 				D2F05F301D8E2B22006E5A4C /* UrlImageMannger.cpp in Sources */,

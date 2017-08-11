@@ -38,6 +38,8 @@
 #include "mahjong/lobby/share/ShareSelectLayer.hpp"
 #include "mahjong/lobby/gongzhonghao/GongZhongHaoLayer.hpp"
 #include "mahjong/lobby/competition/CompeititionPlate.hpp"
+#include "mahjong/lobby/collaborate/CollaborateDialog.hpp"
+
 
 
 bool LobbyScene::init()
@@ -649,7 +651,8 @@ void LobbyScene::showDayTask(){
 
 
 void LobbyScene::showTeamwork(){
-    
+    CollaborateDialog* dia = CollaborateDialog::create();
+    addChild(dia,5);
 }
 
 void LobbyScene::showPlayerBill(){
