@@ -6896,11 +6896,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/turntable/DailyPride.cpp"
-            timestampString = "524131021.734336"
+            timestampString = "524134654.262152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "DailyPride::updateData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6912,11 +6912,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/turntable/DailyPride.cpp"
-            timestampString = "524131021.734336"
+            timestampString = "524134654.262152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "DailyPride::beginPride(Ref* ref)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7008,11 +7008,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/result/shanghai/normal/NormalResultLayer.cpp"
-            timestampString = "523965635.352426"
+            timestampString = "524134654.262152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "464"
-            endingLineNumber = "464"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "NormalResultLayer::onExit()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7056,11 +7056,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/result/shanghai/normal/NormalResultLayer.cpp"
-            timestampString = "523965635.352426"
+            timestampString = "524134654.262152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "NormalResultLayer::onEnter()"
             landmarkType = "7">
          </BreakpointContent>

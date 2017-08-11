@@ -365,7 +365,9 @@ void NormalResultLayer::updateTime(float dt){
     }
     if(totalTime<=0){
         if(totalTime== -1){
-            continueGame();
+            if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
+                continueGame();
+            }
         }
     }
     
