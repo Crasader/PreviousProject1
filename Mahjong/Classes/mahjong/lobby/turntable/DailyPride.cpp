@@ -116,6 +116,9 @@ void DailyPride::showDailyPrideLayer(){
     menu->setTag(1001);
     menu->setPosition(880,180);
     addChild(menu);
+//    auto btnLight = Sprite::create("daily/btn_light.png");
+//    menu->addChild(btnLight);
+//    btnLight->runAction(Repeat::create(Sequence::create(ScaleTo::create(1.0, 1.2f),ScaleTo::create(1.0, 1.0f),NULL), CC_REPEAT_FOREVER));
     
     auto number = LabelAtlas::create("0", "daily/pride_num_red.png", 32, 46, '0');
     number->setPosition(837,240);
@@ -138,6 +141,24 @@ void DailyPride::showDailyPrideLayer(){
     shou1->setTag(1005);
     shou1->runAction(Repeat::create(Sequence::create(ScaleTo::create(1.0, 1.2f),ScaleTo::create(1.0, 1.0f),NULL), CC_REPEAT_FOREVER));
     
+    auto tableLight = Sprite::create();
+    tableLight->setPosition(432,328);
+    addChild(tableLight);
+    tableLight->runAction(Repeat::create(Sequence::create(CallFunc::create([=](){
+        tableLight->setTexture("daily/btn_light_1.png");
+    }),DelayTime::create(0.5f),CallFunc::create([=](){
+        tableLight->setTexture("daily/btn_light_2.png");
+    }),DelayTime::create(0.5f),NULL), CC_REPEAT_FOREVER));
+    
+    auto tableLight2 = Sprite::create();
+    tableLight2->setPosition(432,328);
+    addChild(tableLight2);
+    tableLight2->runAction(Repeat::create(Sequence::create(CallFunc::create([=](){
+        tableLight2->setTexture("daily/table_light_1.png");
+    }),DelayTime::create(0.5f),CallFunc::create([=](){
+        tableLight2->setTexture("daily/table_light_2.png");
+    }),DelayTime::create(0.5f),NULL), CC_REPEAT_FOREVER));
+    
     if(UserData::getInstance()->getTurntableNumber() == "0"){
         //需要分享获取次数
         shareText->setVisible(true);
@@ -146,6 +167,9 @@ void DailyPride::showDailyPrideLayer(){
         number->setVisible(false);
         shareText2->setVisible(false);
         shareText3->setVisible(false);
+        tableLight->setVisible(false);
+        tableLight2->setVisible(false);
+
     }else if(UserData::getInstance()->getTurntableNumber() == "-1"){
         //次数已经用完了
         shareText->setVisible(false);
@@ -154,6 +178,8 @@ void DailyPride::showDailyPrideLayer(){
         number->setVisible(false);
         shareText2->setVisible(false);
         shareText3->setVisible(true);
+        tableLight->setVisible(false);
+        tableLight2->setVisible(false);
     }else{
         //拥有次数
         shareText->setVisible(false);
@@ -164,6 +190,9 @@ void DailyPride::showDailyPrideLayer(){
         number->setString(UserData::getInstance()->getTurntableNumber());
         shareText2->setVisible(true);
         shareText3->setVisible(false);
+        tableLight->setVisible(true);
+        tableLight2->setVisible(true);
+        
     }
     scheduleUpdate();
 }
