@@ -150,9 +150,6 @@ void PlayerBase::initPlayer(Player* playerInfo){
     playerHuaCount->setVisible(false);
 }
 
-
-
-
 void PlayerBase::replaceHandHua(JongViewType tpye){
     ReplaceJong rejong = getReplacePoker();
     std::vector<Jong*> needReplace;

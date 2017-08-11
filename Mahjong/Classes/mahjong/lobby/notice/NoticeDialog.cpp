@@ -108,10 +108,10 @@ void NoticeDialog::setContentImage(std::string url,std::string url2,std::string 
 
 void NoticeDialog::download(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    if(GAMEDATA::getInstance()->getGameActivityData().downLoadUrl != ""){
-        CallAndroidMethod::getInstance()->downLoadAndroidApk(GAMEDATA::getInstance()->getGameActivityData().downLoadUrl);
+    if(GAMEDATA::getInstance()->getGameActivityData().downLoadUrlAndroid != ""){
+        CallAndroidMethod::getInstance()->downLoadAndroidApk(GAMEDATA::getInstance()->getGameActivityData().downLoadUrlAndroid);
     }
 #else
-    Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().jumpUrl);//IOS
+    Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().downLoadUrlIOS);
 #endif
 }

@@ -766,10 +766,11 @@ struct MahjongFaPaiData{
 
 struct GameActivityData{
     std::string imageUrl;
-    std::string imageUrl2;
     std::string showTime;
     std::string jumpUrl;
-    std::string downLoadUrl;
+    std::string imageUrl2;
+    std::string downLoadUrlIOS;
+    std::string downLoadUrlAndroid;
 };
 
 struct GameGongGao{

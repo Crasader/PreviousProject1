@@ -743,10 +743,6 @@ void MsgHandler::handleNoticeResp(std::string msg){
         auto &content = _mDoc["content"];
         data->imageUrl = content.GetString();
     }
-    if(_mDoc.HasMember("content1")){
-        auto &content1 = _mDoc["content1"];
-        data->imageUrl2 = content1.GetString();
-    }
     if(_mDoc.HasMember("url")){
         auto &url = _mDoc["url"];
         data->jumpUrl = url.GetString();
@@ -759,11 +755,17 @@ void MsgHandler::handleNoticeResp(std::string msg){
     }else{
         data->showTime = "";
     }
-    if(_mDoc.HasMember("down")){
-        auto &down = _mDoc["down"];
-        data->downLoadUrl = down.GetString();
-    }else{
-        data->downLoadUrl = "";
+    if(_mDoc.HasMember("cc")){
+        auto &cc = _mDoc["cc"];
+        if(cc.HasMember("pic")){
+            data->imageUrl2 = cc["pic"].GetString();
+        }
+        if(cc.HasMember("android")){
+            data->downLoadUrlAndroid = cc["android"].GetString();
+        }
+        if(cc.HasMember("apple")){
+            data->downLoadUrlIOS = cc["apple"].GetString();
+        }
     }
     postNotifyMessage(MSG_WAN_JIA_GONG_GAO, data);
 }
