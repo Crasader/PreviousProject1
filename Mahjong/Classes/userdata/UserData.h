@@ -141,6 +141,12 @@ public:
     std::string getCollaborateUrl();
     void setCollaborateUrl(std::string msg);
     
+    std::string getJiZanText();
+    void setJiZanText(std::string msg);
+    
+    std::string getJiZanKefu();
+    void setJiZanKefu(std::string msg);
+    
     //记录玩家最近的游戏类型
     GameMahjongType getLatelyMahjongType();
     void setLatelyMahjongType(GameMahjongType type);

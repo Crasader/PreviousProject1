@@ -35,19 +35,42 @@ bool ShareSelectLayer::init(){
     titile->setPosition(645,582);
     addChild(titile);
     
-    auto textlabel = Label::createWithSystemFont(UserData::getInstance()->getShareTextContent(),"arial",24);
-    textlabel->setWidth(700);
-    textlabel->setAlignment(cocos2d::TextHAlignment::CENTER);
-    textlabel->setPosition(640,500);
+    std::string temp0 = UserData::getInstance()->getJiZanText();
+    int pos  = (int)temp0.find(UserData::getInstance()->getJiZanKefu());
+    std::string temp1 = temp0.substr(0,pos);
+    std::string temp3 = temp0.substr(pos+UserData::getInstance()->getJiZanKefu().size(),temp0.size());
+
+    
+    auto textlabel2 = Label::createWithSystemFont(UserData::getInstance()->getJiZanKefu(),"arial",24);
+    textlabel2->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    textlabel2->setPosition(840,500);
+    textlabel2->setColor(Color3B(67,128,238));
+    addChild(textlabel2);
+    
+    auto textlabel = Label::createWithSystemFont(temp1,"arial",24);
+    textlabel->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
+    textlabel->setPosition(textlabel2->getPositionX()-textlabel2->getContentSize().width,500);
     textlabel->setColor(Color3B(196,106,22));
     addChild(textlabel);
+
+    auto textlabel3 = Label::createWithSystemFont(temp3,"arial",24);
+    textlabel3->setAlignment(cocos2d::TextHAlignment::CENTER);
+    textlabel3->setPosition(640,470);
+    textlabel3->setColor(Color3B(196,106,22));
+    addChild(textlabel3);
     
+    auto copyImage = MenuItemImage::create("share/btn_share_copy_1.png","share/btn_share_copy_2.png",CC_CALLBACK_0(ShareSelectLayer::copyText, this));
+    auto copyMenu = Menu::create(copyImage,NULL);
+    copyMenu->alignItemsHorizontallyWithPadding(50);
+    copyMenu->setPosition(920,500);
+    addChild(copyMenu);
+
     auto quanMenu = MenuItemImage::create("share/share_quan.png","share/share_quan.png",CC_CALLBACK_0(ShareSelectLayer::shareToQuan, this));
     auto friendMenu = MenuItemImage::create("share/share_friend.png","share/share_friend.png",CC_CALLBACK_0(ShareSelectLayer::shareToFriend, this));
     
     auto menu = Menu::create(quanMenu,friendMenu,NULL);
     menu->alignItemsHorizontallyWithPadding(50);
-    menu->setPosition(640,320);
+    menu->setPosition(640,310);
     addChild(menu);
     return true;
 }
@@ -76,6 +99,38 @@ void ShareSelectLayer::shareToFriend(){
     CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().phead,GAMEDATA::getInstance()->getMahjongShareData1().pcontent,0);
 #endif
 }
+
+void ShareSelectLayer::copyText(){
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->copyToPasteboard(UserData::getInstance()->getJiZanKefu());
+#endif
+    
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->copyToPasteboard(UserData::getInstance()->getJiZanKefu());
+#endif
+    toast();
+}
+
+void ShareSelectLayer::toast(){
+    auto bg = Sprite::create("common/toast_bg.png");
+    bg->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    bg->setPosition(650,300);
+    bg->setScaleX(0.2);
+    addChild(bg);
+    auto shui = Label::createWithSystemFont("复制成功","arial",26);
+    shui->setColor(Color3B(255,183,64));
+    shui->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    shui->setPosition(600,300);
+    addChild(shui);
+    
+    bg->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){
+        bg->setVisible(false);
+    }), NULL));
+    shui->runAction(Sequence::create(DelayTime::create(1.0f),CallFunc::create([=](){
+        shui->setVisible(false);
+    }), NULL));
+}
+
 
 void ShareSelectLayer::closeView(){
     removeFromParent();

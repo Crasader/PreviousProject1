@@ -1229,6 +1229,15 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &oper = _mDoc["oper"];
             UserData::getInstance()->setCollaborateUrl(oper.GetString());
         }
+        //集赞领奖
+        if(_mDoc.HasMember("wxs")){
+            const rapidjson::Value &wxs = _mDoc["wxs"];
+            UserData::getInstance()->setJiZanText(wxs.GetString());
+        }
+        if(_mDoc.HasMember("wxk")){
+            const rapidjson::Value &wxk = _mDoc["wxk"];
+            UserData::getInstance()->setJiZanKefu(wxk.GetString());
+        }
         
         //微信分享配置
         if(_mDoc.HasMember("share1")){

@@ -21,6 +21,8 @@ private:
     void shareToQuan();
     void shareToFriend();
     void closeView();
+    void copyText();
+    void toast();
 };
 
 #endif /* ShareSelectlayer_hpp */

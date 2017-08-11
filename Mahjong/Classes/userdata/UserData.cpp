@@ -382,6 +382,20 @@ void UserData::setCollaborateUrl(std::string msg){
     UserDefault::getInstance()->setStringForKey("collaborate_url",msg);
 }
 
+std::string UserData::getJiZanText(){
+    return UserDefault::getInstance()->getStringForKey("jizan_text","");
+}
+void UserData::setJiZanText(std::string msg){
+    UserDefault::getInstance()->setStringForKey("jizan_text",msg);
+}
+
+std::string UserData::getJiZanKefu(){
+    return UserDefault::getInstance()->getStringForKey("jizan_kefu","");
+}
+void UserData::setJiZanKefu(std::string msg){
+    UserDefault::getInstance()->setStringForKey("jizan_kefu",msg);
+}
+
 GameMahjongType UserData::getLatelyMahjongType(){
     return (GameMahjongType)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_type",GameMahjongType::ShangHai);
 }
