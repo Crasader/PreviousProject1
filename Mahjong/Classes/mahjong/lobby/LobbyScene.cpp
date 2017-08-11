@@ -425,14 +425,14 @@ void LobbyScene::drawSceneBot(){
     //显示公告小信息
     if(GAMEDATA::getInstance()->getBottomText() != ""&& UserData::getInstance()->isWeixinPayOpen()){
         auto textbg = Sprite::create("mjlobby/ti_shi_kuang.png");
-        textbg->setPosition(782,107);
+        textbg->setPosition(862,107);
         addChild(textbg);
         auto text = Label::createWithSystemFont(GAMEDATA::getInstance()->getBottomText(), "arial", 20);
         text->setAnchorPoint(Point::ANCHOR_MIDDLE);
         text->setColor(Color3B(255,247,217));
         text->setPosition(220,40);
         textbg->addChild(text);
-        textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(0.9f,Point(782,117)),MoveTo::create(0.9f,Point(782,107)),NULL), CC_REPEAT_FOREVER));
+        textbg->runAction(Repeat::create(Sequence::create(MoveTo::create(0.9f,Point(862,117)),MoveTo::create(0.9f,Point(862,107)),NULL), CC_REPEAT_FOREVER));
     }
 }
 
