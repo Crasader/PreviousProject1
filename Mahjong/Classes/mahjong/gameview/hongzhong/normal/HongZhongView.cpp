@@ -1186,8 +1186,8 @@ void HongZhongView::onEnter(){
         if(resp.result == 1){
             schedule([=](float dt){
                 GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
-                Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
-            }, 0, 0, 2.0f,"continueGame223");
+                Director::getInstance()->replaceScene(MjGameScene::create());
+            }, 0, 0, 1.0f,"continueGame223");
         }
     });
     

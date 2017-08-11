@@ -1304,7 +1304,7 @@ void ChongMingView::onEnter(){
     
     //好友房间游戏未开始重新连接
     coreOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_CM_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
-        GAMEDATA::getInstance()->setGameType(1);
+        GAMEDATA::getInstance()->setGameType(5);
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         for(auto var: GAMEDATA::getInstance()->getPlayersInfo()){
@@ -1315,8 +1315,8 @@ void ChongMingView::onEnter(){
         if(resp.result == 1){
             schedule([=](float dt){
                 GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
-                Director::getInstance()->replaceScene(TransitionFade::create(0.8f, MjGameScene::create()));
-            }, 0, 0, 2.0f,"continueGame223");
+                Director::getInstance()->replaceScene(MjGameScene::create());
+            }, 0, 0, 1.0f,"continueGame223");
         }
     });
     
