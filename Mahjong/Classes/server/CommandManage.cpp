@@ -808,7 +808,6 @@ std::string CommandManage::getCMPlayerChiCommand(std::string chi, int poker){
 }
 
 std::string CommandManage::getCMPengCommand(std::string peng, int poker){
-    //{code:2007, poxiaoId : poxiaoId, seatId : seatId, chi : "1,2", poker : poker}
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_MAJIANG_PENG_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
@@ -821,7 +820,6 @@ std::string CommandManage::getCMPengCommand(std::string peng, int poker){
 
 
 std::string CommandManage::getCMGangCommand(std::string gang, int poker, int flag){
-    //{code:2007, poxiaoId : poxiaoId, seatId : seatId, chi : "1,2", poker : poker}
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_MAJIANG_GANG_REQUEST)));
     keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));

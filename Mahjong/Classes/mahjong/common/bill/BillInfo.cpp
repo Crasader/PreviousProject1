@@ -40,16 +40,6 @@ bool BillInfo::init()
     icon->setTag(104);
     addChild(icon);
     
-    //    tableView = TableView::create(this, Size(832, 485));
-    //    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    tableView->setDirection(ScrollView::Direction::VERTICAL);
-    //    tableView->setPosition(225, 120);
-    //    tableView->setTag(105);
-    //    tableView->setDelegate(this);
-    //    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-    //    addChild(tableView);
-    //    tableView->reloadData();
-    
     auto xuanyao = MenuItemImage::create("bill/share_bill_1.png","bill/share_bill_2.png",CC_CALLBACK_0(BillInfo::screenShot, this));
     auto fupan = MenuItemImage::create("bill/chakan_fupan_1.png","bill/chakan_fupan_2.png",CC_CALLBACK_0(BillInfo::checkFupan, this));
     auto shareBtn = Menu::create(fupan,xuanyao,NULL);
@@ -125,7 +115,13 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         sprite1->setPosition(Vec2(0, 0));
         cell->addChild(sprite1);
         
-        Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",24);
+        std::string gameName = "上海敲麻";
+        if(data.gameType == "1"){
+            gameName = "红中麻将";
+        }else if(data.gameType == "3"){
+            gameName = "崇明麻将";
+        }
+        Label* gameType = Label::createWithSystemFont(gameName,"Arial",24);
         gameType->setTag(90);
         gameType->setColor(Color3B(120,111,8));
         gameType->setAnchorPoint(Vec2::ZERO);
@@ -227,7 +223,13 @@ TableViewCell* BillInfo::tableCellAtIndex(TableView *table, ssize_t idx)
         
     }else{
         BillInfoData data = info.bills.at(idx);
-        ((Label*)cell->getChildByTag(90))->setString(data.gameType == "1"?"红中麻将":"上海敲麻");
+        std::string gameName = "上海敲麻";
+        if(data.gameType == "1"){
+            gameName = "红中麻将";
+        }else if(data.gameType == "3"){
+            gameName = "崇明麻将";
+        }
+        ((Label*)cell->getChildByTag(90))->setString(gameName);
         ((Label*)cell->getChildByTag(100))->setString(data.date);
         ((Label*)cell->getChildByTag(400))->setString(data.prid);
         std::vector<BillContent> conBill = sortBillInfo(data.content);
