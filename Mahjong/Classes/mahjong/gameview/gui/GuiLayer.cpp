@@ -277,7 +277,7 @@ void GuiLayer::showPlayerBill(){
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getBillCommand());
     BillInfo* bill = BillInfo::create();
     bill->setShowPosition();
-    getParent()->addChild(bill,50);
+    getParent()->addChild(bill,350);
 }
 
 void GuiLayer::drawPlayerInvite(){
