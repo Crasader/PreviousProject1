@@ -504,7 +504,7 @@ void ChongMingView:: showHuGangControllPad(PlayerCpgtData tingData){
     int buttonCount = 1;
     if (tingData.hu == 1){
         ting = MenuItemImage::create("gameview/mj_hu.png", "gameview/mj_hu.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
-        ting->setPosition(Point(-buttonCount * 140, 0));
+        ting->setPosition(Point(-buttonCount * 160, 0));
         controllPad->addChild(ting);
         buttonCount++;
     }
