@@ -87,7 +87,7 @@ public:
     std::string getCMPlayerChiCommand(std::string chi,int poker);
     std::string getCMPengCommand(std::string peng ,int poker);//碰
     std::string getCMGangCommand(std::string gang, int poker,int flag);//杠
-    std::string getCMGiveUpCommand();//放弃听牌
+    std::string getCMGiveUpCommand();
     std::string getCMHuActionCommand(std::string hu);
     std::string getCMOutResumeCommand();
     std::string getCMContinueGameCommand();

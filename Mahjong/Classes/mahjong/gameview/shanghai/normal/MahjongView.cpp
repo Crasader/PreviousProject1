@@ -697,6 +697,7 @@ void MahjongView::heroDoTing(){
 void MahjongView::heroDoTingQi(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
     playerHero->actionQi();
     playerHero->startTimeClockAnim();
 }

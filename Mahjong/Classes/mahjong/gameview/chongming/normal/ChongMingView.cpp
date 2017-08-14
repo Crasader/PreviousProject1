@@ -698,6 +698,7 @@ void ChongMingView::heroDoTing(){
 void ChongMingView::heroDoTingQi(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMGiveUpCommand());
     playerHero->actionQi();
     playerHero->startTimeClockAnim();
 }

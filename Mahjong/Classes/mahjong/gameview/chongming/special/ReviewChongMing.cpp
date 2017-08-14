@@ -663,42 +663,57 @@ void ReviewChongMing::addCoustomListener(){
     
     fupanPlayerInfoListener = EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
         //复盘功能只存在于私人房间
+        auto gameName = Sprite::create("gameview/text_cm.png");
+        gameName->setPosition(640,488);
+        addChild(gameName);
+        
         auto wukaibao  = Sprite::create("gameview/wu_kaibao.png");
         wukaibao->setVisible(false);
         addChild(wukaibao);
         if(GAMEDATA::getInstance()->getPrivateKaibao() == "0"){
             wukaibao->setVisible(true);
         }
+        auto diHua = Sprite::create();
+        diHua->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        addChild(diHua);
+        if(GAMEDATA::getInstance()->getPrivateDihua() == "0"){
+            diHua->setTexture("gameview/dihua_11.png");
+        }else if(GAMEDATA::getInstance()->getPrivateDihua() == "1"){
+            diHua->setTexture("gameview/dihua_22.png");
+        }else if(GAMEDATA::getInstance()->getPrivateDihua() == "2"){
+            diHua->setTexture("gameview/dihua_62.png");
+        }else if(GAMEDATA::getInstance()->getPrivateDihua() == "3"){
+            diHua->setTexture("gameview/dihua_55.png");
+        }
+        
         auto lezi = Sprite::create();
+        lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
         addChild(lezi);
-        if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1100)){
-            lezi->setTexture("gameview/lezi_1100.png");
-        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1120)){
-            lezi->setTexture("gameview/lezi_1120.png");
-        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type1150)){
-            lezi->setTexture("gameview/lezi_1150.png");
-        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2200)){
-            lezi->setTexture("gameview/lezi_2200.png");
-        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type2240)){
-            lezi->setTexture("gameview/lezi_2240.png");
-        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type22100)){
-            lezi->setTexture("gameview/lezi_22100.png");
-        }else if(GAMEDATA::getInstance()->getPrivateLezi() == StringUtils::format("%d",LeziType::type55c)){
-            lezi->setTexture("competition/55wulezi_1.png");
+        if(GAMEDATA::getInstance()->getPrivateLezi() == "0"){
+            lezi->setTexture("gameview/lezi_20.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == "1"){
+            lezi->setTexture("gameview/lezi_50.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == "2"){
+            lezi->setTexture("gameview/lezi_100.png");
+        }else if(GAMEDATA::getInstance()->getPrivateLezi() == "3"){
+            lezi->setTexture("gameview/wulezi.png");
         }
-        auto emsc =  Sprite::create("gameview/2mo3chong.png");
-        emsc->setVisible(false);
-        addChild(emsc);
-        if(GAMEDATA::getInstance()->getPrivateEmsc() == "1"){
-            emsc->setVisible(true);
+        auto feicy = Sprite::create("gameview/feicangying.png");
+        feicy->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        feicy->setVisible(false);
+        addChild(feicy);
+        if(GAMEDATA::getInstance()->getPrivateFcy() == "1"){
+            feicy->setVisible(true);
         }
-        int wid = lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(emsc->isVisible()?(emsc->getContentSize().width):0);
+        
+        int wid = diHua->getContentSize().width+ lezi->getContentSize().width +(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+(feicy->isVisible()?(feicy->getContentSize().width):0);
         wukaibao->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2,160);
         wukaibao->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
-        lezi->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-        emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
-        emsc->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+        diHua->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0),160);
+        
+        lezi->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10,160);
+        
+        feicy->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10,160);
         ((Orientation*)getChildByTag(123))->showOrientation(GAMEDATA::getInstance()->getHeroSeatId());
         ((Orientation*)getChildByTag(123))->showWhoBank(GAMEDATA::getInstance()->getHeroSeatId(),GAMEDATA::getInstance()->getCurrentBank());
         guiLayer->updateData();
@@ -811,7 +826,7 @@ void ReviewChongMing::addCoustomListener(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(turnListener, 1);
     
-    otherListener = EventListenerCustom::create(MSG_OTHER_PALYER_JONG, [=](EventCustom* event){
+    otherListener = EventListenerCustom::create(MSG_CM_OTHER_PALYER_JONG, [=](EventCustom* event){
         
         std::string result = static_cast<char*>(event->getUserData());
         vector<string> res =  StringUtil::split(result, ",");

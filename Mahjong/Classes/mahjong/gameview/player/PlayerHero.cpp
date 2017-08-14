@@ -990,7 +990,6 @@ void PlayerHero::actionQi(){
     for(auto var:playerHandJongs){
         var->setTingJongHint(false);
     }
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGiveUpTingCommand());
     setIsAllowTouch(true);
     resetHandJongsY(NULL);
     GAMEDATA::getInstance()->setIsTingProcess(false);

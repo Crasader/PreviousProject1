@@ -25,7 +25,6 @@ public:
     void onEnterTransitionDidFinish() override;
 	void showTingGangControllPad(PlayerCpgtData tingData);
 	void hideTingGangControllPad();
-    void heroPlayPokerAuto(int poker);
     void showGuiLayer();
 	void removeHeroPlayedIcon();
     void showPaiduiNum(int num);

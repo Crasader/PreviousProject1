@@ -3186,7 +3186,6 @@ void MsgHandler::handleFupanInfo(std::string msg){
         info.heroid =who.GetString();
     }
     if(_mDoc.HasMember("size")){
-        log("AAAAAAAAAAAAAAAAAAAAAAAA");
         const rapidjson::Value &who = _mDoc["size"];
         if(strcmp(who.GetString(), "2") == 0){
             GAMEDATA::getInstance()->setMyGameModel(GameModel::TWOPLAYER);
@@ -3240,9 +3239,19 @@ void MsgHandler::handleFupanPlayerInfo(std::string msg){
     }
     if(_mDoc.HasMember("ifemsc")){
         GAMEDATA::getInstance()->setPrivateEmsc(_mDoc["ifemsc"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setPrivateEmsc("");
     }
-    if(_mDoc.HasMember("iflezi")){
-        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["iflezi"].GetString());
+    if(_mDoc.HasMember("lz")){
+        GAMEDATA::getInstance()->setPrivateLezi(_mDoc["lz"].GetString());
+    }
+    if(_mDoc.HasMember("dihua")){
+        GAMEDATA::getInstance()->setPrivateDihua(_mDoc["dihua"].GetString());
+    }
+    if(_mDoc.HasMember("fcy")){
+        GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
+    }else{
+        GAMEDATA::getInstance()->setPrivateFcy("");
     }
     
     const rapidjson::Value &all = _mDoc["all"];

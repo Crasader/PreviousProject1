@@ -1213,8 +1213,11 @@ void LobbyScene::addEventListener(){
             if(GAMEDATA::getInstance()->getPlaybackInfo().gameType == "0"){
                 GAMEDATA::getInstance()->setGameType(2);
                 Director::getInstance()->replaceScene(MjGameScene::create());
-            }else{
+            }else if(GAMEDATA::getInstance()->getPlaybackInfo().gameType == "1"){
                 GAMEDATA::getInstance()->setGameType(4);
+                Director::getInstance()->replaceScene(MjGameScene::create());
+            }else if(GAMEDATA::getInstance()->getPlaybackInfo().gameType == "3"){
+                GAMEDATA::getInstance()->setGameType(6);
                 Director::getInstance()->replaceScene(MjGameScene::create());
             }
         }
