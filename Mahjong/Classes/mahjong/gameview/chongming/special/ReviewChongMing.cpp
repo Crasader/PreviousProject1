@@ -389,7 +389,7 @@ void ReviewChongMing::heroDoGang(Ref* ref){
     }
     controllPad->setVisible(false);
     playerHero->stopTimeClockAnim();
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGangCommand(StringUtils::format("%d",tag), tag, gangData.flag));
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMGangCommand(StringUtils::format("%d",tag), tag, gangData.flag));
 }
 
 void ReviewChongMing::heroDoCpgQi(){

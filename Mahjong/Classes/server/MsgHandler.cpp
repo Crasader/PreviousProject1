@@ -4735,7 +4735,7 @@ void MsgHandler:: handleCMOpenRoomResp(std::string msg){
     info->setUmark(UserData::getInstance()->getMarkId());
     info->setScore(GAMEDATA::getInstance()->getScore());
     GAMEDATA::getInstance()->addPlayersInfo(info);
-    GAMEDATA::getInstance()->setGameType(1);
+    GAMEDATA::getInstance()->setGameType(5);
     GAMEDATA::getInstance()->setIsCompetitionState(false);
     GAMEDATA::getInstance()->setIsCompetitionQueue(false);
     UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ChongMing);
@@ -4960,7 +4960,7 @@ void MsgHandler::handleCMEnterRoomResp(std::string msg){
     
     GAMEDATA::getInstance()->addPlayersInfo(info);
     GAMEDATA::getInstance()->setIsPlaying(false);
-    GAMEDATA::getInstance()->setGameType(1);
+    GAMEDATA::getInstance()->setGameType(5);
     char* buf = const_cast<char*>(StringUtil::itos(result.GetInt()).c_str());
     UserData::getInstance()->setLatelyMahjongType(GameMahjongType::ChongMing);
     postNotifyMessage(MSG_CM_ENTER_FRIEND_ROOM_RESP, buf);
