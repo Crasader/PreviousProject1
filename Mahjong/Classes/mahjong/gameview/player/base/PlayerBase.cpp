@@ -320,7 +320,8 @@ void PlayerBase::updatePlayerInfo(int num){
 
 
 void PlayerBase::showPlayerHua(int num){
-    if(GAMEDATA::getInstance()->getGameType()==1||GAMEDATA::getInstance()->getGameType()==2){
+    if(GAMEDATA::getInstance()->getGameType()==1||GAMEDATA::getInstance()->getGameType()==2
+       ||GAMEDATA::getInstance()->getGameType()==5||GAMEDATA::getInstance()->getGameType()==6){
         if(num>5 && !getIsPlayHuaChi()){
             Audio::getInstance()->playSoundHuaChi(getPlayerInfo()->getGender());
             setIsPlayHuaChi(true);
