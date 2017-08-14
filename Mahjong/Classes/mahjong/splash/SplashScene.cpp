@@ -248,6 +248,21 @@ void SplashScene::onEnter(){
         }
     });
     
+    cmReEnterFriendRoomListener  =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_CM_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
+        char* buf = static_cast<char*>(event->getUserData());
+        std::string result = buf;
+        if (result == "1"){
+            NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
+            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
+            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        } else
+        {
+            showLoading();
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand(UserData::getInstance()->getWxOpenId(),UserData::getInstance()->getWxUnionid(),UserData::getInstance()->getPicture(),StringUtils::format("%d",UserData::getInstance()->getGender()),UserData::getInstance()->getNickName(),UserData::getInstance()->getHsman(),UserData::getInstance()->getHstype(),UserData::getInstance()->getImsi(),UserData::getInstance()->getImei(),UserData::getInstance()->getAppVer()));
+        }
+    });
+
+    
     
     reOpenFriendRoomListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_FRIEND_OPEN_ROOM_RESP, [=](EventCustom* event){
         GAMEDATA::getInstance()->setGameType(1);
@@ -317,6 +332,7 @@ void SplashScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReConnectAgain);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzReEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(cmOpenRoomListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(cmReEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(cmLobbyConncetAgainListener);
     
 }

@@ -27,6 +27,7 @@ private:
     EventListenerCustom* hzOpenFriendRoomListener;
     EventListenerCustom* competitionQueueListener;
     EventListenerCustom* cmOpenRoomListener;
+    EventListenerCustom* cmReEnterFriendRoomListener;
     EventListenerCustom* cmLobbyConncetAgainListener;
     void loginByWechat();
     void loginByVisitor();
