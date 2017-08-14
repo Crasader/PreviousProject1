@@ -23,8 +23,6 @@ private:
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* myCoreLoginRespListener;
     EventListenerCustom* networkBreakListener;
-    EventListenerCustom* openFriendRoomListener;
-    EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* hzEnterFriendRoomListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
     int totalTime = 5;

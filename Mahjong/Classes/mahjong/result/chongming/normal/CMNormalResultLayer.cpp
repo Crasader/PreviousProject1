@@ -425,7 +425,7 @@ void CMNormalResultLayer::onEnter(){
         GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
         FriendOpenRoomRespData resp = GAMEDATA::getInstance()->getFriendOpenRoomResp();
         if(resp.result == 1){
-            GAMEDATA::getInstance()->setGameType(1);
+            GAMEDATA::getInstance()->setGameType(5);
             GAMEDATA::getInstance()->setFangZhuId(UserData::getInstance()->getPoxiaoId());
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         }
@@ -436,21 +436,11 @@ void CMNormalResultLayer::onEnter(){
         std::string result = buf;
         if (result == "1"){
             GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-            GAMEDATA::getInstance()->setGameType(1);
+            GAMEDATA::getInstance()->setGameType(5);
             Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MjGameScene::create()));
         }
     });
     
-    
-    hzEnterFriendRoomListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_HZ_ENTER_FRIEND_ROOM_RESP, [=](EventCustom* event){
-        char* buf = static_cast<char*>(event->getUserData());
-        std::string result = buf;
-        if (result == "1"){
-            GAMEDATA::getInstance()->setMahjongRoomType(MahjongRoom::privateRoom);
-            GAMEDATA::getInstance()->setGameType(3);
-            Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MjGameScene::create()));
-        }
-    });
     
     dissovelRoomSelectNotifyListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_DISSOVLE_ROOM_SELECTED_NOTIFY_HZ, [=](EventCustom* event){
         DissovleRoomDialog* dialog = DissovleRoomDialog::create();
@@ -466,6 +456,5 @@ void CMNormalResultLayer::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(openFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(enterFriendRoomListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
 }

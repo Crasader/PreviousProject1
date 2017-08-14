@@ -25,7 +25,6 @@ private:
     EventListenerCustom* networkBreakListener;
     EventListenerCustom* openFriendRoomListener;
     EventListenerCustom* enterFriendRoomListener;
-    EventListenerCustom* hzEnterFriendRoomListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
     int totalTime = 5;
     LabelAtlas* timeLabel;
