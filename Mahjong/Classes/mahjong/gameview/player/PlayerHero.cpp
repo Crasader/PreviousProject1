@@ -785,8 +785,12 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             currentJong = turnJong;
             settleHandJongs(getHandPosX());
             setIsAllowPlay(true);
-            if(data.hastinggang){
+            if(GAMEDATA::getInstance()->getGameType() == 1 && data.hastinggang){
                 ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
+            }else if(GAMEDATA::getInstance()->getGameType() == 3 && (data.cpgData.hu == 1 ||data.hastinggang)){
+                ((HongZhongView*)getParent())->showHuGangControllPad(cpgData);
+            }else if(GAMEDATA::getInstance()->getGameType() == 5 && (data.cpgData.hu == 1 ||data.hastinggang)){
+                ((ChongMingView*)getParent())->showHuGangControllPad(cpgData);
             }
         }, 0, 0, 0.6f*replace.size(),"hua2pokerdelay");
     }
@@ -802,11 +806,9 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
         
         if(GAMEDATA::getInstance()->getGameType() == 1 && data.hastinggang){
             ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
-        }
-        if(GAMEDATA::getInstance()->getGameType() == 3 && (data.cpgData.hu == 1 ||data.hastinggang)){
+        }else if(GAMEDATA::getInstance()->getGameType() == 3 && (data.cpgData.hu == 1 ||data.hastinggang)){
             ((HongZhongView*)getParent())->showHuGangControllPad(cpgData);
-        }
-        if(GAMEDATA::getInstance()->getGameType() == 5 && (data.cpgData.hu == 1 ||data.hastinggang)){
+        }else if(GAMEDATA::getInstance()->getGameType() == 5 && (data.cpgData.hu == 1 ||data.hastinggang)){
             ((ChongMingView*)getParent())->showHuGangControllPad(cpgData);
         }
         if (!(GAMEDATA::getInstance()->getIsTingState())){

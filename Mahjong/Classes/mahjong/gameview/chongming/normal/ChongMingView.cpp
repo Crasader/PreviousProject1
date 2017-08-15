@@ -7,7 +7,9 @@
 #include "mahjong/gameview/anim/PlayerCpgAnim.hpp"
 #include "mahjong/gameview/anim/LiuJuAnim.hpp"
 #include "mahjong/gameview/anim/OutFogAnim.hpp"
+#include "mahjong/gameview/anim/CangYinAnim.hpp"
 #include "mahjong/lobby/LobbyScene.h"
+#include "mahjong/result/ResultScene.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 #include "mahjong/common/dialog/prompt/HintDialog.hpp"
@@ -16,14 +18,10 @@
 #include "mahjong/common/widget/ScrollTextEx.h"
 #include "mahjong/common/widget/batteryInfo/BatteryInfo.h"
 #include "mahjong/common/utils/StringUtil.h"
-#include "mahjong/result/ResultScene.hpp"
+#include "mahjong/common/utils/Chinese.h"
+#include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
 #include "server/SocketDataManage.h"
 #include "server/NetworkManage.h"
-#include "mahjong/common/utils/Chinese.h"
-#include "mahjong/common/competition/CompetitionQueue.hpp"
-#include "mahjong/common/dialog/dissolve/DissovleRoomDialog.hpp"
-#include "mahjong/gameview/anim/CangYinAnim.hpp"
-
 
 bool ChongMingView::init(){
     if (!Layer::init())
@@ -150,13 +148,6 @@ void ChongMingView::loadView(){
         
         feicy->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10,160);
         
-    }
-    
-    if(GAMEDATA::getInstance()->getIsCompetitionQueue()){
-        CompetitionQueue* queue = CompetitionQueue::create();
-        queue->setTag(9982);
-        addChild(queue,10);
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendCmReadyCommand());
     }
     
 }
@@ -695,13 +686,13 @@ void ChongMingView::heroDoTing(){
     controllPad->setVisible(false);
     playerHero->actionTing(shmjHeroCpgtData);
     controllPad->removeAllChildrenWithCleanup(true);
-    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(ChongMingView::heroDoTingQi, this));
+    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(ChongMingView::heroDoHuQi, this));
     qi->setPosition(Point(0, 50));
     qi->setScale(0.8f);
     controllPad->addChild(qi);
     controllPad->setVisible(true);
 }
-void ChongMingView::heroDoTingQi(){
+void ChongMingView::heroDoHuQi(){
     playerHero->stopTimeClockAnim();
     controllPad->setVisible(false);
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMGiveUpCommand());

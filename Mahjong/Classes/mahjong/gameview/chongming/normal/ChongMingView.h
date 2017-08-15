@@ -7,9 +7,9 @@
 #include "mahjong/gameview/player/PlayerOpposite.h"
 #include "mahjong/gameview/player/PlayerHero.h"
 #include "mahjong/gameview/player/playerinfo/Player.h"
-#include "mahjong/common/jong/Jong.h"
 #include "mahjong/common/dialog/toast/InfoToast.hpp"
 #include "mahjong/common/state/DataStruct.h"
+#include "mahjong/common/jong/Jong.h"
 #include "userdata/UserData.h"
 
 #include "cocos2d.h"
@@ -67,7 +67,7 @@ private:
 	void heroDoGang(Ref* psend);
 	void heroDoCpgQi();
 	void heroDoTing();
-	void heroDoTingQi();
+	void heroDoHuQi();
 	void setCurrentJongVisible(int seatId);
 	void playerTingAnim(int seatId);
 	void clearRoomPlayer();
