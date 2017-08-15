@@ -72,6 +72,7 @@ private:
     void exchangeHuafei();
 	void showFirstCharge();
 	void showRedWallet();
+    void showLaXinLayer();
     void showShiMing();
     void showWanJiaQun();
 	void showDayTask();

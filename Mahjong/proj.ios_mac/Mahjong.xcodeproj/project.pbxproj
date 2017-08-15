@@ -391,6 +391,8 @@
 		D2DCA7D81ECEC067009F9C59 /* competition in Resources */ = {isa = PBXBuildFile; fileRef = D2DCA7D61ECEC067009F9C59 /* competition */; };
 		D2DD46211F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD461F1F3D81A7004F8510 /* CollaborateDialog.cpp */; };
 		D2DD46221F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD461F1F3D81A7004F8510 /* CollaborateDialog.cpp */; };
+		D2DD46261F42C1A5004F8510 /* LaXinLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD46241F42C1A5004F8510 /* LaXinLayer.cpp */; };
+		D2DD46271F42C1A5004F8510 /* LaXinLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD46241F42C1A5004F8510 /* LaXinLayer.cpp */; };
 		D2DDB1BE1F02384600790422 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */; };
 		D2DDB1BF1F02384600790422 /* EnterRoomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */; };
 		D2E035081ED7C38C00291282 /* ExchangeHuafeiCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */; };
@@ -859,6 +861,8 @@
 		D2DCA7D61ECEC067009F9C59 /* competition */ = {isa = PBXFileReference; lastKnownFileType = folder; path = competition; sourceTree = "<group>"; };
 		D2DD461F1F3D81A7004F8510 /* CollaborateDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollaborateDialog.cpp; sourceTree = "<group>"; };
 		D2DD46201F3D81A7004F8510 /* CollaborateDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CollaborateDialog.hpp; sourceTree = "<group>"; };
+		D2DD46241F42C1A5004F8510 /* LaXinLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LaXinLayer.cpp; sourceTree = "<group>"; };
+		D2DD46251F42C1A5004F8510 /* LaXinLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LaXinLayer.hpp; sourceTree = "<group>"; };
 		D2DDB1BC1F02384600790422 /* EnterRoomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnterRoomDialog.cpp; sourceTree = "<group>"; };
 		D2DDB1BD1F02384600790422 /* EnterRoomDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnterRoomDialog.hpp; sourceTree = "<group>"; };
 		D2E035061ED7C38C00291282 /* ExchangeHuafeiCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExchangeHuafeiCell.cpp; sourceTree = "<group>"; };
@@ -1522,6 +1526,8 @@
 				D252FAE91E7FA5EC00937322 /* ShareToFriendLayer.hpp */,
 				D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */,
 				D217FE9B1F127E76008F5D4B /* ShareSelectLayer.hpp */,
+				D2DD46241F42C1A5004F8510 /* LaXinLayer.cpp */,
+				D2DD46251F42C1A5004F8510 /* LaXinLayer.hpp */,
 			);
 			path = share;
 			sourceTree = "<group>";
@@ -2624,6 +2630,7 @@
 				D2E035151ED9120700291282 /* HongbaoAnim.cpp in Sources */,
 				D217FEDE1F14D862008F5D4B /* DissolveItem.cpp in Sources */,
 				D2B291BC1F0E18C40084F379 /* RankList.cpp in Sources */,
+				D2DD46261F42C1A5004F8510 /* LaXinLayer.cpp in Sources */,
 				D252FB541E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D252FBB21E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */,
 				D2DD46211F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */,
@@ -2714,6 +2721,7 @@
 				D212B3791F18A75D00647B18 /* FangkaExchangeRecord.cpp in Sources */,
 				D252FB4B1E7FA5EC00937322 /* OtherPlayerInfo.cpp in Sources */,
 				D252FC5C1E7FABE900937322 /* Player.cpp in Sources */,
+				D2DD46271F42C1A5004F8510 /* LaXinLayer.cpp in Sources */,
 				D252FB291E7FA5EC00937322 /* ChatDialog.cpp in Sources */,
 				D2E0350D1ED7CCDA00291282 /* ExchangeHuafeiItem.cpp in Sources */,
 				D252FB611E7FA5EC00937322 /* BatteryInfo.cpp in Sources */,

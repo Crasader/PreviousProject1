@@ -39,6 +39,7 @@
 #include "mahjong/lobby/gongzhonghao/GongZhongHaoLayer.hpp"
 #include "mahjong/lobby/competition/CompeititionPlate.hpp"
 #include "mahjong/lobby/collaborate/CollaborateDialog.hpp"
+#include "mahjong/lobby/share/LaXinLayer.hpp"
 
 
 
@@ -63,7 +64,6 @@ void LobbyScene::signUpdate(float dt){
         Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(MSG_NETWORK_BREAK_INFO);
         GAMEDATA::getInstance()->setShowProtected(false);
     }
-    
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
         for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
             if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
@@ -276,7 +276,7 @@ void LobbyScene::drawSceneTop(){
 void LobbyScene::drawSceneMid(){
     
     auto sharefriend = MenuItemImage::create("mjlobby/hongbao_1.png", "mjlobby/hongbao_1.png",
-                                             CC_CALLBACK_0(LobbyScene::showRedWallet, this));
+                                             CC_CALLBACK_0(LobbyScene::showLaXinLayer, this));
     auto shareMenu = Menu::create(sharefriend, NULL);
     shareMenu->alignItemsHorizontallyWithPadding(15);
     shareMenu->setPosition(650, 535);
@@ -635,6 +635,11 @@ void LobbyScene::showRedWallet(){
     Audio::getInstance()->playSoundClick();
     ShareSelectLayer* laye = ShareSelectLayer::create();
     addChild(laye,100);
+}
+
+void LobbyScene::showLaXinLayer(){
+    LaXinLayer* lay = LaXinLayer::create();
+    addChild(lay,50);
 }
 
 void LobbyScene::showWanJiaQun(){
