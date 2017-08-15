@@ -33,6 +33,8 @@ public:
 
 private:
     void closeView();
+    void shareToFriend();
+    void shareToQuan();
 };
 
 #endif /* LaXinLayer_hpp */

@@ -9,6 +9,8 @@
 #include "mahjong/lobby/share/LaXinLayer.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "userdata/UserData.h"
+#include "wechat/android/CallAndroidMethod.h"
+#include "wechat/ios/CallIOSMethod.h"
 
 bool LaXinLayer::init(){
     if(!Layer::init()){
@@ -37,16 +39,52 @@ bool LaXinLayer::init(){
     auto yaoqingtext = Label::createWithSystemFont(UserData::getInstance()->getShareTextContent(), "arial", 24);
     yaoqingtext->setWidth(700);
     yaoqingtext->setAlignment(cocos2d::TextHAlignment::CENTER);
-    yaoqingtext->setPosition(640,500);
+    yaoqingtext->setPosition(640,510);
     yaoqingtext->setColor(Color3B(196,106,22));
     addChild(yaoqingtext);
     
+    auto tabelViewBg = Sprite::create("share/yq_bg.png");
+    tabelViewBg->setPosition(640,340);
+    addChild(tabelViewBg);
+    
+    
+    auto friendImg = MenuItemImage::create("share/share_btn_1.png", "share/share_btn_2.png",CC_CALLBACK_0(LaXinLayer::shareToFriend, this));
+    auto quanImg = MenuItemImage::create("share/friend_btn_1.png", "share/friend_btn_2.png",CC_CALLBACK_0(LaXinLayer::shareToQuan, this));
+    auto mymenu = Menu::create(friendImg,quanImg,NULL);
+    mymenu->alignItemsHorizontallyWithPadding(30);
+    mymenu->setPosition(640,165);
+    addChild(mymenu);
     
     return true;
 }
 
 void LaXinLayer::closeView(){
     removeFromParent();
+}
+
+void LaXinLayer::shareToFriend(){
+    std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData1().url;
+    if(GAMEDATA::getInstance()->getMahjongShareData1().type == "1"){
+        shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
+    }
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().phead,GAMEDATA::getInstance()->getMahjongShareData1().pcontent,false);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().phead,GAMEDATA::getInstance()->getMahjongShareData1().pcontent,0);
+#endif
+}
+
+
+void LaXinLayer::shareToQuan(){
+    std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData1().url;
+    if(GAMEDATA::getInstance()->getMahjongShareData1().type == "1"){
+        shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
+    }
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,true);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,1);
+#endif
 }
 
 ssize_t LaXinLayer::numberOfCellsInTableView(TableView *table)
