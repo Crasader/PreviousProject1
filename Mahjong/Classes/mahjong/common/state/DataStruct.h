@@ -230,6 +230,16 @@ struct PlayerCpgRecord
     Vector<Jong*> pokersRecord;
 };
 
+struct TuiGuangData{
+    std::string name;
+    std::string count;
+    std::string money;
+};
+
+struct YongHuTuiGuang{
+    std::string showText;
+    std::vector<TuiGuangData> datas;
+};
 
 struct PlayerChiData{
     std::string chi;

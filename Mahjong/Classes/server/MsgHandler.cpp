@@ -570,6 +570,10 @@ void MsgHandler::distribute(int code, std::string msg){
             gameCMContinueResp(msg);
             break;
         }
+        case MSGCODE_SPREAD_RESULT_RESPONSE:{
+            gameTuiGuangResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -5712,5 +5716,26 @@ void MsgHandler::gameCMContinueResp(std::string msg){
     postNotifyMessage(MSG_HERO_CONTINUE_RESP, nullptr);
 }
 
-
+void MsgHandler::gameTuiGuangResp(std::string msg){
+    //获取推广结果回复{code:1082,poxiaoId:poxiaoId,desc:"上方文字",content: [{nickname:"123",count:"1",money:"1"}]}
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    YongHuTuiGuang tuiGuang;
+    const rapidjson::Value &text = _mDoc["desc"];
+    tuiGuang.showText = text.GetString();
+    if(_mDoc.HasMember("content")){
+        const rapidjson::Value &content = _mDoc["content"];
+        for(int i=0;i<content.Capacity();i++){
+            TuiGuangData dat;
+            const rapidjson::Value &temp =content[i];
+            dat.count =temp["count"].GetString();
+            dat.money =temp["money"].GetString();
+            dat.name =temp["nickname"].GetString();
+            tuiGuang.datas.push_back(dat);
+        }
+    }
+    postNotifyMessage(MSG_PLAYER_LA_XIN_DATA, &tuiGuang);
+}
 

@@ -124,5 +124,6 @@ private:
     void gameCMResultNotify(std::string msg);
     void handleCMPlayerHuNotify(std::string msg);
     void gameCMContinueResp(std::string msg);
+    void gameTuiGuangResp(std::string msg);
 };
 #endif

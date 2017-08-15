@@ -18,6 +18,10 @@ class LaXinLayer : public Layer,public TableViewDelegate, public TableViewDataSo
 public:
     bool init() override;
     CREATE_FUNC(LaXinLayer);
+    
+    void onEnter() override;
+    void onExit() override;
+    
     virtual void tableCellTouched(TableView* table, TableViewCell* cell);
     
     virtual Size tableCellSizeForIndex(TableView *table, ssize_t idx);

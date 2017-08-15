@@ -11,11 +11,14 @@
 #include "userdata/UserData.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
+#include "mahjong/common/loading/Loading.h"
+#include "server/NetworkManage.h"
 
 bool LaXinLayer::init(){
     if(!Layer::init()){
         return false;
     }
+    
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu1 = Menu::create(item1, NULL);
@@ -36,11 +39,12 @@ bool LaXinLayer::init(){
     addChild(titile);
     
     
-    auto yaoqingtext = Label::createWithSystemFont(UserData::getInstance()->getShareTextContent(), "arial", 24);
+    auto yaoqingtext = Label::createWithSystemFont("", "arial", 24);
     yaoqingtext->setWidth(700);
     yaoqingtext->setAlignment(cocos2d::TextHAlignment::CENTER);
     yaoqingtext->setPosition(640,510);
     yaoqingtext->setColor(Color3B(196,106,22));
+    yaoqingtext->setTag(1024);
     addChild(yaoqingtext);
     
     auto tabelViewBg = Sprite::create("share/yq_bg.png");
@@ -55,7 +59,33 @@ bool LaXinLayer::init(){
     mymenu->setPosition(640,165);
     addChild(mymenu);
     
+    Loading* lod = Loading::create(true);
+    lod->setTag(1000);
+    addChild(lod);
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendLaXinDataCommand());
+    
     return true;
+}
+
+
+void LaXinLayer::onEnter(){
+    Layer::onEnter();
+    Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_LA_XIN_DATA, [=](EventCustom* event){
+        if(NULL != getChildByTag(1000)){
+            getChildByTag(1000)->removeFromParent();
+        }
+        YongHuTuiGuang* heroData = static_cast<YongHuTuiGuang*>(event->getUserData());
+        YongHuTuiGuang tempData = *heroData;
+        if(NULL != getChildByTag(1024)){
+            ((Label*)getChildByTag(1024))->setString(tempData.showText);
+        }
+    });
+}
+
+
+void LaXinLayer::onExit(){
+    Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(MSG_PLAYER_LA_XIN_DATA);
 }
 
 void LaXinLayer::closeView(){
