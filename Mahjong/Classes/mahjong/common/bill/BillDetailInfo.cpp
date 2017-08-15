@@ -330,10 +330,10 @@ void BillDetailInfo::shareFupan(Ref* ref){
     std::string fupanid = temp->getParent()->getName();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_BILL_DETAIL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
-    CallAndroidMethod::getInstance()->shareToWeChat(url,"我在小白相上海敲麻搓麻将了，输复盘码看回放.",StringUtils::format("复盘码:%s",fupanid.c_str()) ,false);
+    CallAndroidMethod::getInstance()->shareToWeChat(url,"我在小白相上海麻将搓麻将了，输复盘码看回放.",StringUtils::format("复盘码:%s",fupanid.c_str()) ,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     std::string url = StringUtils::format("%s?hbcode=%s",WECHAT_SHARE_BILL_DETAIL,GAMEDATA::getInstance()->getRedWalletRespData().hbcode.c_str());
-    CallIOSMethod::getInstance()->doWechatShareWeb(url,"我在小白相上海敲麻搓麻将了，输复盘码看回放.", StringUtils::format("复盘码:%s",fupanid.c_str()),0);
+    CallIOSMethod::getInstance()->doWechatShareWeb(url,"我在小白相上海麻将搓麻将了，输复盘码看回放.", StringUtils::format("复盘码:%s",fupanid.c_str()),0);
 #endif
 }
 
