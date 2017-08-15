@@ -59,6 +59,17 @@ bool LaXinLayer::init(){
     mymenu->setPosition(640,165);
     addChild(mymenu);
     
+    tableView = TableView::create(this, Size(720, 270));
+    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    tableView->setDirection(ScrollView::Direction::VERTICAL);
+    tableView->setPosition(225, 120);
+    tableView->setTag(105);
+    tableView->setDelegate(this);
+    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
+    addChild(tableView);
+    tableView->reloadData();
+
+    
     Loading* lod = Loading::create(true);
     lod->setTag(1000);
     addChild(lod);
@@ -119,8 +130,7 @@ void LaXinLayer::shareToQuan(){
 
 ssize_t LaXinLayer::numberOfCellsInTableView(TableView *table)
 {
-    BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
-    return info.bills.size();
+    return 5;
 }
 void LaXinLayer::tableCellTouched(TableView* table, TableViewCell* cell)
 {
@@ -129,7 +139,7 @@ void LaXinLayer::tableCellTouched(TableView* table, TableViewCell* cell)
 
 Size LaXinLayer::tableCellSizeForIndex(TableView *table, ssize_t idx)
 {
-    return Size(832, 138);
+    return Size(720, 210);
 }
 
 TableViewCell* LaXinLayer::tableCellAtIndex(TableView *table, ssize_t idx)

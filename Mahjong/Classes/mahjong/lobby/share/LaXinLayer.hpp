@@ -22,6 +22,8 @@ public:
     void onEnter() override;
     void onExit() override;
     
+    TableView* tableView;
+    
     virtual void tableCellTouched(TableView* table, TableViewCell* cell);
     
     virtual Size tableCellSizeForIndex(TableView *table, ssize_t idx);

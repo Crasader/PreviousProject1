@@ -87,7 +87,8 @@ void SplashScene::loginByWechat(){
     //oTIvfwm1C14AtD2bnuoQrXtGWzhY xinkai
     //oTIvfwnO4yCaBasG7qJedNbiGuG0  ziji
     //oTIvfwmTH71Oqx_XRJTPB4p2TjkU 魂斗罗
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwmTH71Oqx_XRJTPB4p2TjkU","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
+    //oTIvfwn1BAU-wWCZjKmRVlmwYHqA
+    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getThirdLoginCommand("oTIvfwn1BAU-wWCZjKmRVlmwYHqA","1131111","http://wx.qlogo.cn/mmopen/iaS020Z6hznYwWiacdX0aia7ia9XANXWGKReDZYCjSM8Jt1MFqtnaPRL4ugpZK8cU2bhVmgHs24KB3LDicrQ1cxjeQngXmburObUM/0","1","Poli","APPLE","iphone","11111111111","11111111111","1.0.4"));
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CallIOSMethod::getInstance()->doWechatLogin();

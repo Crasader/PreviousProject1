@@ -158,6 +158,7 @@ void ChongMingView::loadView(){
         addChild(queue,10);
         NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendCmReadyCommand());
     }
+    
 }
 
 void ChongMingView::startGameFirst(){
@@ -211,7 +212,12 @@ void ChongMingView::startGameAgain(){
 }
 
 void ChongMingView::update(float dt){
-    
+
+    if(GAMEDATA::getInstance()->getGameType() == 1 ||GAMEDATA::getInstance()->getGameType() == 2){
+        auto label = Label::createWithSystemFont("上海麻将","arial",30);
+        label->setPosition(640,360);
+        addChild(label);
+    }
     
     if(GAMEDATA::getInstance()->getShowProtected()){
         if(NULL == getChildByTag(2000)){
@@ -487,8 +493,8 @@ void ChongMingView::drawCpgControllPad(PlayerCpgtData newData){
         gang->setPosition(Point(-buttonCount * 160, 0));
         controllPad->addChild(gang);
     }
-
-
+    
+    
     controllPad->setVisible(true);
 }
 
@@ -962,7 +968,7 @@ void ChongMingView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
             }else if(clientId == ClientSeatId::hero){
                 if(data.playerGang.size()>0||data.ting!=""){
                     if (data.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-                          showHuGangControllPad(data);
+                        showHuGangControllPad(data);
                         playerHero->startTimeClockAnim(9, 2);
                     }
                 }else{
@@ -1535,7 +1541,7 @@ void ChongMingView::onEnter(){
         HeroCpgRespData* cpgtData = static_cast<HeroCpgRespData*>(event->getUserData());
         HeroCpgRespData newData = *cpgtData;
         if (newData.playCpgt.seatId == GAMEDATA::getInstance()->getHeroSeatId()){
-              showHuGangControllPad(newData.playCpgt);
+            showHuGangControllPad(newData.playCpgt);
             playerHero->startTimeClockAnim(9, 2);
         }
     });
