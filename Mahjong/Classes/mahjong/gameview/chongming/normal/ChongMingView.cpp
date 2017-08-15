@@ -213,11 +213,11 @@ void ChongMingView::startGameAgain(){
 
 void ChongMingView::update(float dt){
 
-    if(GAMEDATA::getInstance()->getGameType() == 1 ||GAMEDATA::getInstance()->getGameType() == 2){
-        auto label = Label::createWithSystemFont("上海麻将","arial",30);
-        label->setPosition(640,360);
-        addChild(label);
-    }
+//    if(GAMEDATA::getInstance()->getGameType() == 1 ||GAMEDATA::getInstance()->getGameType() == 2){
+//        auto label = Label::createWithSystemFont("上海麻将","arial",30);
+//        label->setPosition(640,360);
+//        addChild(label);
+//    }
     
     if(GAMEDATA::getInstance()->getShowProtected()){
         if(NULL == getChildByTag(2000)){
