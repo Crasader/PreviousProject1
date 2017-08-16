@@ -7,7 +7,6 @@
 //
 
 #include "mahjong/lobby/share/LaXinLayer.hpp"
-#include "mahjong/common/state/GameData.h"
 #include "userdata/UserData.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
@@ -59,16 +58,14 @@ bool LaXinLayer::init(){
     mymenu->setPosition(640,165);
     addChild(mymenu);
     
-    tableView = TableView::create(this, Size(720, 270));
+    tableView = TableView::create(this, Size(720, 250));
     tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
     tableView->setDirection(ScrollView::Direction::VERTICAL);
-    tableView->setPosition(225, 120);
+    tableView->setPosition(285,215);
     tableView->setTag(105);
     tableView->setDelegate(this);
     tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
     addChild(tableView);
-    tableView->reloadData();
-
     
     Loading* lod = Loading::create(true);
     lod->setTag(1000);
@@ -90,6 +87,9 @@ void LaXinLayer::onEnter(){
         if(NULL != getChildByTag(1024)){
             ((Label*)getChildByTag(1024))->setString(tempData.showText);
         }
+        setYongHuTuiGuang(tempData);
+        tableView->reloadData();
+
     });
 }
 
@@ -130,7 +130,7 @@ void LaXinLayer::shareToQuan(){
 
 ssize_t LaXinLayer::numberOfCellsInTableView(TableView *table)
 {
-    return 5;
+    return getYongHuTuiGuang().datas.size();
 }
 void LaXinLayer::tableCellTouched(TableView* table, TableViewCell* cell)
 {
@@ -139,12 +139,11 @@ void LaXinLayer::tableCellTouched(TableView* table, TableViewCell* cell)
 
 Size LaXinLayer::tableCellSizeForIndex(TableView *table, ssize_t idx)
 {
-    return Size(720, 210);
+    return Size(720, 90);
 }
 
 TableViewCell* LaXinLayer::tableCellAtIndex(TableView *table, ssize_t idx)
 {
-    BillInfoAll info = GAMEDATA::getInstance()->getBillInfoAll();
     TableViewCell *cell = table->dequeueCell();
     if (cell)
     {
@@ -154,6 +153,27 @@ TableViewCell* LaXinLayer::tableCellAtIndex(TableView *table, ssize_t idx)
     if (!cell) {
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
+//        getYongHuTuiGuang().datas.at(idx);
+        
+        auto pro_bg = Sprite::create("share/jdt_bg.png");
+        pro_bg->setPosition(360,45);
+        cell->addChild(pro_bg);
+        
+        auto hed = Sprite::create("share/yqhy.png");
+        hed->setPosition(50,45);
+        cell->addChild(hed);
+        
+        auto touzi = Sprite::create("share/tz.png");
+        touzi->setPosition(230,45);
+        cell->addChild(touzi);
+        
+        auto hongbao = Sprite::create("share/hb.png");
+        hongbao->setPosition(460,45);
+        cell->addChild(hongbao);
+        
+        auto result = Sprite::create("share/ad.png");
+        result->setPosition(660,45);
+        cell->addChild(result);
     }
     return cell;
 }

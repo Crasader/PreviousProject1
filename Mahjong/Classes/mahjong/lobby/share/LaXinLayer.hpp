@@ -10,6 +10,7 @@
 #define LaXinLayer_hpp
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "mahjong/common/state/GameData.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -41,6 +42,7 @@ private:
     void closeView();
     void shareToFriend();
     void shareToQuan();
+    CC_SYNTHESIZE(YongHuTuiGuang, yongHuTuiGuang, YongHuTuiGuang);
 };
 
 #endif /* LaXinLayer_hpp */
