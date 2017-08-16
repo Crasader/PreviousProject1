@@ -131,6 +131,9 @@ void LaXinLayer::shareToQuan(){
 
 ssize_t LaXinLayer::numberOfCellsInTableView(TableView *table)
 {
+    if(getYongHuTuiGuang().datas.size() == 0){
+        return 3;
+    }
     return getYongHuTuiGuang().datas.size();
 }
 void LaXinLayer::tableCellTouched(TableView* table, TableViewCell* cell)
@@ -152,7 +155,10 @@ TableViewCell* LaXinLayer::tableCellAtIndex(TableView *table, ssize_t idx)
         cell = nullptr;
     }
     if (!cell) {
-        auto data = getYongHuTuiGuang().datas.at(idx);
+        TuiGuangData data;
+        if(getYongHuTuiGuang().datas.size() >0){
+            data = getYongHuTuiGuang().datas.at(idx);
+        }
         
         cell = new (std::nothrow) TableViewCell();
         cell->autorelease();
@@ -167,25 +173,26 @@ TableViewCell* LaXinLayer::tableCellAtIndex(TableView *table, ssize_t idx)
         pro->setScale(atof(data.count.c_str())/atof(data.total.c_str()), 1.0f);
         cell->addChild(pro);
         
-        auto hed = Sprite::create("share/yqhy.png");
-        hed->setPosition(50,45);
-        cell->addChild(hed);
-        
-        //需要进行一次裁剪
-        auto holesClipper = ClippingNode::create();
-        holesClipper->setPosition(50,45);
-        cell->addChild(holesClipper);
-        holesClipper->setInverted(false);        //倒置显示，未被裁剪下来的剩余部分
-        holesClipper->setAlphaThreshold(0.5f);  //设置alpha透明度闸值
-        //[3].创建模板 : holesStencil
-        auto holesStencil = Node::create();
-        holesClipper->setStencil(holesStencil); //设置模板节点
-        //添加一个模板遮罩 ball
-        holesStencil->addChild(Sprite::create("share/yqhy.png"), -1);
-        //[4].创建底板 : holes
-        auto holes = HeadImage::createByImage(data.pic, Size(74,74));
-        holesClipper->addChild(holes); //设置底板
-        
+        if(atoi(data.count.c_str())>0){
+            //需要进行一次裁剪
+            auto holesClipper = ClippingNode::create();
+            holesClipper->setPosition(50,45);
+            cell->addChild(holesClipper);
+            holesClipper->setInverted(false);        //倒置显示，未被裁剪下来的剩余部分
+            holesClipper->setAlphaThreshold(0.5f);  //设置alpha透明度闸值
+            //[3].创建模板 : holesStencil
+            auto holesStencil = Node::create();
+            holesClipper->setStencil(holesStencil); //设置模板节点
+            //添加一个模板遮罩 ball
+            holesStencil->addChild(Sprite::create("share/yqhy.png"), -1);
+            //[4].创建底板 : holes
+            auto holes = HeadImage::createByImage(data.pic, Size(74,74));
+            holesClipper->addChild(holes); //设置底板
+        }else{
+            auto hed = Sprite::create("share/yqhy.png");
+            hed->setPosition(50,45);
+            cell->addChild(hed);
+        }
         
         auto touzi = Sprite::create("share/tz.png");
         touzi->setPosition(230,62);
@@ -220,7 +227,7 @@ TableViewCell* LaXinLayer::tableCellAtIndex(TableView *table, ssize_t idx)
             auto daoZhang = Sprite::create("share/ydz.png");
             daoZhang->setPosition(660,45);
             cell->addChild(daoZhang);
-        }else{
+        }else if(atoi(data.money.c_str())>0){
             auto num = LabelAtlas::create(StringUtils::format("%s:%s",data.money.c_str(),data.total.c_str()),"share/jd_sz.png",15,21,'0');
             num->setAnchorPoint(Point::ANCHOR_MIDDLE);
             num->setPosition(660,45);
