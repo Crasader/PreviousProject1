@@ -31,10 +31,7 @@
 
 Scene* ResultScene::createScene(int type)
 {
-    //    initTestData();
     auto scene = Scene::create();
-    //    HZNormalResultLayer* layer = HZNormalResultLayer::create();
-    //    scene->addChild(layer);
     if(GAMEDATA::getInstance()->getGameType()==1){
         if(type == 0){
             NormalResultLayer* layer = NormalResultLayer::create();

@@ -37,9 +37,12 @@ bool HZNormalResultLayer::init(){
     auto reslut_bg = Sprite::create("result/result_bg.jpg");
     reslut_bg->setPosition(640, 360);
     addChild(reslut_bg,-1);
+    auto gu  = Sprite::create("result/gu.png");
+    gu->setPosition(1050,65);
+    addChild(gu);
     timeLabel = LabelAtlas::create(StringUtils::format("%d",totalTime),"competition/daojishi_num.png",31,45,'0');
     timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    timeLabel->setPosition(850,55);
+    timeLabel->setPosition(1050,70);
     addChild(timeLabel);
     showGameResult();//结算界面标题
     showRoomInfo();

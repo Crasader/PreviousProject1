@@ -203,12 +203,12 @@ void ChongMingView::startGameAgain(){
 }
 
 void ChongMingView::update(float dt){
-
-//    if(GAMEDATA::getInstance()->getGameType() == 1 ||GAMEDATA::getInstance()->getGameType() == 2){
-//        auto label = Label::createWithSystemFont("上海麻将","arial",30);
-//        label->setPosition(640,360);
-//        addChild(label);
-//    }
+    
+    //    if(GAMEDATA::getInstance()->getGameType() == 1 ||GAMEDATA::getInstance()->getGameType() == 2){
+    //        auto label = Label::createWithSystemFont("上海麻将","arial",30);
+    //        label->setPosition(640,360);
+    //        addChild(label);
+    //    }
     
     if(GAMEDATA::getInstance()->getShowProtected()){
         if(NULL == getChildByTag(2000)){
@@ -1117,8 +1117,10 @@ void ChongMingView::showHandPokerOver(int seatId){
             playerHero->updateHandJongs(heroJongs,false);
         }, 0, 0, 15.0f/24,"fanpai");
     }else if(seatId == ClientSeatId::right){
-        playerRight->hideHandJongs();
-        playerRight->updateHandJongs(rightJongs,true);
+        if(NULL != playerRight){
+            playerRight->hideHandJongs();
+            playerRight->updateHandJongs(rightJongs,true);
+        }
         showHuPaiXing(maxHuType);
         schedule([=](float dt){
             playerOpposite->hideHandJongs();
