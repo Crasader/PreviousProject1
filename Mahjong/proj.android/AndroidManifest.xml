@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.poxiao.mahjong"
     android:installLocation="auto"
-    android:versionCode="22"
-    android:versionName="1.8.4" >
+    android:versionCode="24"
+    android:versionName="1.8.6" >
 
     <uses-sdk android:minSdkVersion="10" />
     <uses-sdk android:targetSdkVersion="19" />

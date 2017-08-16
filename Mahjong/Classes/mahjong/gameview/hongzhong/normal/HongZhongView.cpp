@@ -1749,7 +1749,11 @@ void HongZhongView::onEnter(){
                     GAMEDATA::getInstance()->setNeedShowLastResult(false);
                 }
                 if(GAMEDATA::getInstance()->getIsInGame()){
-                    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
+                    if(GAMEDATA::getInstance()->getIsLiuJu()){
+                        Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(3)));
+                    }else{
+                        Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
+                    }
                 }
             },0,0,delayTime,"go2Result");
         }else{
