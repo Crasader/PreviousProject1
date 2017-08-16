@@ -49,7 +49,13 @@ bool BillDetailInfo::init()
     if(data.gameType == "2"){
         isMatch =true;
     }
-    Label* gameType = Label::createWithSystemFont(data.gameType == "1"?"红中麻将":"上海敲麻","Arial",22);
+    std::string gameName = "上海敲麻";
+    if(data.gameType == "1"){
+        gameName = "红中麻将";
+    }else if(data.gameType == "3"){
+        gameName = "崇明麻将";
+    }
+    Label* gameType = Label::createWithSystemFont(gameName,"Arial",22);
     gameType->setTag(90);
     gameType->setColor(Color3B(120,111,8));
     gameType->setAnchorPoint(Vec2::ZERO);
@@ -157,21 +163,10 @@ bool BillDetailInfo::init()
         addChild(playNum);
     }
     
-//    tableView = TableView::create(this, Size(800, 360));
-//    tableView->setAnchorPoint(Point::ANCHOR_MIDDLE);
-//    tableView->setDirection(ScrollView::Direction::VERTICAL);
-//    tableView->setPosition(255, 175);
-//    tableView->setDelegate(this);
-//    tableView->setVerticalFillOrder(TableView::VerticalFillOrder::TOP_DOWN);
-//    addChild(tableView);
-//    tableView->reloadData();
     
     MenuItemImage* share = MenuItemImage::create("bill/share_bill_1.png", "bill/share_bill_2.png",
                                                  CC_CALLBACK_0(BillDetailInfo::shareBill, this));
-//    MenuItemImage* goback = MenuItemImage::create("bill/return_btn_1.png", "bill/return_btn_2.png",
-//                                                  CC_CALLBACK_0(BillDetailInfo::goBack, this));
     auto billMenu = Menu::create(share, NULL);
-    billMenu->alignItemsHorizontallyWithPadding(50);
     billMenu->setPosition(640, 80);
     addChild(billMenu, 20);
     
