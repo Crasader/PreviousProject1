@@ -933,6 +933,7 @@ void MahjongView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
     for (int i = 0; i < vec.times.size(); i++){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), vec.times.at(i).seatId);
         if (seatId == ClientSeatId::hero){
+            playerHero->showPlayerHua(0);
             playerHero->setReplacePoker(vec.times.at(i));
             playerHero->replaceFlower();
         }
