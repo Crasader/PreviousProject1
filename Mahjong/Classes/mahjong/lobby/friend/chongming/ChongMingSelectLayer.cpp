@@ -141,25 +141,25 @@ bool ChongMingSelectLayer::init(){
     addChild(selectFeicy);
     
     //显示用户的日常习惯
-    if(UserData::getInstance()->getLatelySHDiHua() == "0"){
+    if(UserData::getInstance()->getLatelyCMDiHua() == "0"){
         selectDiHua11();
-    }else if(UserData::getInstance()->getLatelySHDiHua() == "1"){
+    }else if(UserData::getInstance()->getLatelyCMDiHua() == "1"){
         selectDiHua22();
-    }else if(UserData::getInstance()->getLatelySHDiHua() == "2"){
+    }else if(UserData::getInstance()->getLatelyCMDiHua() == "2"){
         selectDiHua62();
-    } else if(UserData::getInstance()->getLatelySHDiHua() == "3"){
+    } else if(UserData::getInstance()->getLatelyCMDiHua() == "3"){
         selectDiHua55();
     }
-    if(UserData::getInstance()->getLatelySHLeZhi() == "0"){
+    if(UserData::getInstance()->getLatelyCMLezi() == "0"){
         selectLezi20();
-    }else if(UserData::getInstance()->getLatelySHLeZhi() == "1"){
+    }else if(UserData::getInstance()->getLatelyCMLezi() == "1"){
         selectLezi50();
-    }else if(UserData::getInstance()->getLatelySHLeZhi() == "2"){
+    }else if(UserData::getInstance()->getLatelyCMLezi() == "2"){
         selectLezi100();
-    }else if(UserData::getInstance()->getLatelySHLeZhi() == "3"){
+    }else if(UserData::getInstance()->getLatelyCMLezi() == "3"){
         selectLeziWu();
     }
-    if(UserData::getInstance()->getLatelySHKaiBao() == "0"){
+    if(UserData::getInstance()->getLatelyCMKaibao() == "0"){
         if(NULL != getChildByTag(4001)){
             getChildByTag(4001)->setVisible(false);
         }
@@ -168,7 +168,7 @@ bool ChongMingSelectLayer::init(){
             getChildByTag(4001)->setVisible(true);
         }
     }
-    if(UserData::getInstance()->getLatelySHFcy() == "0"){
+    if(UserData::getInstance()->getLatelyCMFcy() == "0"){
         if(NULL != getChildByTag(4002)){
             getChildByTag(4002)->setVisible(false);
         }

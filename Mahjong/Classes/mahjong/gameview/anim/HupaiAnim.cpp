@@ -9,6 +9,7 @@
 #include "mahjong/gameview/anim/HupaiAnim.hpp"
 #include "mahjong/gameview/shanghai/normal/MahjongView.h"
 #include "mahjong/gameview/hongzhong/normal/HongZhongView.hpp"
+#include "mahjong/gameview/chongming/normal/ChongMingView.h"
 #include "mahjong/common/jong/Jong.h"
 #include "mahjong/common/utils/SeatIdUtil.h"
 
@@ -164,6 +165,8 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
+            }else if(GAMEDATA::getInstance()->getGameType() == 5){
+                ((ChongMingView*)getParent())->showHandPokerOver(seatid);
             }
             
         }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
@@ -180,6 +183,8 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
+            }else if(GAMEDATA::getInstance()->getGameType() == 5){
+                ((ChongMingView*)getParent())->showHandPokerOver(seatid);
             }
         }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
@@ -196,6 +201,8 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
+            }else if(GAMEDATA::getInstance()->getGameType() == 5){
+                ((ChongMingView*)getParent())->showHandPokerOver(seatid);
             }
         }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
@@ -211,6 +218,8 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
+            }else if(GAMEDATA::getInstance()->getGameType() == 5){
+                ((ChongMingView*)getParent())->showHandPokerOver(seatid);
             }
         }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
@@ -229,6 +238,8 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
+            }else if(GAMEDATA::getInstance()->getGameType() == 5){
+                ((ChongMingView*)getParent())->showHandPokerOver(seatid);
             }
         }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
@@ -247,6 +258,8 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
+            }else if(GAMEDATA::getInstance()->getGameType() == 5){
+                ((ChongMingView*)getParent())->showHandPokerOver(seatid);
             }
         }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL));
         
@@ -262,6 +275,8 @@ void HupaiAnim::showHuAnim(MahjongHuType hutype,int seatid){
                 ((MahjongView*)getParent())->showHandPokerOver(seatid);
             }else if(GAMEDATA::getInstance()->getGameType() == 3){
                 ((HongZhongView*)getParent())->showHandPokerOver(seatid);
+            }else if(GAMEDATA::getInstance()->getGameType() == 5){
+                ((ChongMingView*)getParent())->showHandPokerOver(seatid);
             }
         }), ScaleTo::create(2.0/ 36, 1.5f),ScaleTo::create(2.0/ 36, 1.0f), NULL);
         huText->runAction(sequ4);
