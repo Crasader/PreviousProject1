@@ -871,6 +871,13 @@ std::string CommandManage:: getCMContinueGameCommand(){
     return commandString(keyValue);
 }
 
+std::string CommandManage::getCMQuitRoomCommand(){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_MAJIANG_OUT_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    return commandString(keyValue);
+}
+
 
 std::string CommandManage::commandString(std::map<std::string, std::string> keyValue){
     rapidjson::Document document;

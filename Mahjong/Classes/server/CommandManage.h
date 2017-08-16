@@ -91,6 +91,7 @@ public:
     std::string getCMHuActionCommand(std::string hu);
     std::string getCMOutResumeCommand();
     std::string getCMContinueGameCommand();
+    std::string getCMQuitRoomCommand();
      /* ______________ 崇明麻将协议结束 ------ */
     
     /** ---------------------- 比赛协议 ---------------------------**/

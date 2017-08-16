@@ -196,6 +196,8 @@ void GuiLayer::quitButtonClick(){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
                 }else if (GAMEDATA::getInstance()->getGameType() == 3){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZQuitRoomCommand());
+                }else if (GAMEDATA::getInstance()->getGameType() == 5){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMQuitRoomCommand());
                 }
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
@@ -207,6 +209,8 @@ void GuiLayer::quitButtonClick(){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getQuitRoomCommand());
                 }else if (GAMEDATA::getInstance()->getGameType() == 3){
                     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZQuitRoomCommand());
+                }else if (GAMEDATA::getInstance()->getGameType() == 5){
+                    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMQuitRoomCommand());
                 }
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
