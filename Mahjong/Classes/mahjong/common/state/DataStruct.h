@@ -234,6 +234,8 @@ struct TuiGuangData{
     std::string name;
     std::string count;
     std::string money;
+    std::string pic;
+    std::string total;
 };
 
 struct YongHuTuiGuang{

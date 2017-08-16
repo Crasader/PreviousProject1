@@ -5733,6 +5733,8 @@ void MsgHandler::gameTuiGuangResp(std::string msg){
             dat.count =temp["count"].GetString();
             dat.money =temp["money"].GetString();
             dat.name =temp["nickname"].GetString();
+            dat.pic =temp["pic"].GetString();
+            dat.total =temp["total"].GetString();
             tuiGuang.datas.push_back(dat);
         }
     }
