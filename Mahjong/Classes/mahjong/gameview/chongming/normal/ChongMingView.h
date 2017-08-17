@@ -34,7 +34,7 @@ public:
     void startGameFirst();
 	void removeHeroPlayedIcon();
     void dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data);
-    void showHandPokerOver(int seatId);//翻牌
+    void showHandPokerOver(int seatId);//翻牌 
     void showPaiduiNum(int num);
     void checkPlayerIpRepetition();
     int  getNumbersByPoker(string pokers);
