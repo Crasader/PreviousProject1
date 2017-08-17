@@ -87,7 +87,7 @@ public:
     CC_SYNTHESIZE(LobbyPaiHangData, lobbyPaiHangData, LobbyPaiHangData);
     CC_SYNTHESIZE(MahjongShareData1, mahjongShareData1, MahjongShareData1);//大厅拉新
     CC_SYNTHESIZE(MahjongShareData2, mahjongShareData2, MahjongShareData2);//大转盘
-    CC_SYNTHESIZE(MahjongShareData3, mahjongShareData3, MahjongShareData3);//开房结算
+    CC_SYNTHESIZE(MahjongShareData3, mahjongShareData3, MahjongShareData3);//邀请好友进房间
     CC_SYNTHESIZE(MahjongShareData4, mahjongShareData4, MahjongShareData4);//集赞领奖
     CC_SYNTHESIZE(MahjongShareData5, mahjongShareData5, MahjongShareData5);
     CC_SYNTHESIZE(PayPointInfo, payPointInfo, PayPointInfo);
