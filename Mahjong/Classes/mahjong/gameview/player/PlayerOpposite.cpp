@@ -173,9 +173,18 @@ Point PlayerOpposite::getHuaJongPos(int number){
 }
 
 Point PlayerOpposite::getPlayedJongPos(int count){
-    int row = count / 10;
-    int line = count % 10;
-    Point originPos = Point(800, 520);
+    int row ;
+    int line;
+    Point originPos;
+    if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+        row = count / 13;
+        line = count % 13;
+        originPos = Point(747, 520);
+    }else{
+        row = count / 10;
+        line = count % 10;
+        originPos = Point(800, 520);
+    }
     if (row == 0) {
         return Point(originPos.x - 35 * line, originPos.y);
     }

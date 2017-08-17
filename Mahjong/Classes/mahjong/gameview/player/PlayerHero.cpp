@@ -525,9 +525,18 @@ void PlayerHero::sendPokerRequest(int poker){
 
 
 Point PlayerHero::getHeroPlayedJongsPos(int index) {
-    int row = index / 10;
-    int line = index % 10;
-    Point originPos = Point(475, 275);
+    int row;
+    int line;
+    Point originPos;
+    if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+        row = index / 13;
+        line = index % 13;
+        originPos = Point(422, 275);
+    }else{
+        row = index / 10;
+        line = index % 10;
+        originPos = Point(475, 275);
+    }
     if (row == 0) {
         return Point(originPos.x + 35 * line, originPos.y);
     }
