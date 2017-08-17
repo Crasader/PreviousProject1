@@ -128,9 +128,14 @@ struct OtherPlayedJong
     int seatId;
 };
 
+struct HuPokerData{
+    std::string num;
+    std::string poker;
+};
+
 struct HeroHuPaiData{
     int poker;
-    std::string hu;
+    std::vector<HuPokerData> data;
 };
 
 struct GangData{

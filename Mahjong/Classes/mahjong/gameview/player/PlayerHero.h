@@ -94,6 +94,7 @@ private:
     void sendPokerRequest(int poker);
     void playPokerByHand(Jong* jong);//手动出牌
     void updateSelectedInfo(Jong* jong);
+    void showHuPaiTiShi(std::vector<HeroHuPaiData> heroHu);
     float distance(Point pos1, Point pos2);
     Point getHeroPlayedJongsPos(int index);
     Vector<Jong*>  upsetJongs(Vector<Jong*> jongs);

@@ -1928,8 +1928,15 @@ void MsgHandler::getHeroJongs(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             tingData.heroHu.push_back(huPaiData);
         }
@@ -2038,8 +2045,15 @@ void MsgHandler::heroChiResp(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             playerCpg.heroHu.push_back(huPaiData);
         }
@@ -2115,8 +2129,15 @@ void MsgHandler::heroPengResp(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             playerCpg.heroHu.push_back(huPaiData);
         }
@@ -2257,8 +2278,15 @@ void MsgHandler::nextPlayer(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             tingData.heroHu.push_back(huPaiData);
         }
@@ -3684,8 +3712,15 @@ void MsgHandler::handleHZDispatchPokerNotify(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             tingData.heroHu.push_back(huPaiData);
         }
@@ -4809,8 +4844,15 @@ void MsgHandler::handleCMFapaiNotify(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             tingData.heroHu.push_back(huPaiData);
         }
@@ -5214,8 +5256,15 @@ void MsgHandler::cmNextPlayer(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             tingData.heroHu.push_back(huPaiData);
         }
@@ -5307,8 +5356,15 @@ void MsgHandler::cmHeroChiResp(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             playerCpg.heroHu.push_back(huPaiData);
         }
@@ -5382,8 +5438,15 @@ void MsgHandler::cmHeroPengResp(std::string msg){
             if(temp.HasMember("poker")){
                 huPaiData.poker = temp["poker"].GetInt();
             }
-            if(temp.HasMember("hu")){
-                huPaiData.hu = temp["hu"].GetString();
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
             }
             playerCpg.heroHu.push_back(huPaiData);
         }

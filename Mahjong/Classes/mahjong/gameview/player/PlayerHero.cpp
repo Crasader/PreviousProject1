@@ -96,25 +96,26 @@ bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
             selectJong->setPosition(selectJong->getPositionX(),JONG_POS_Y+40);
             //其余的牌Y轴高度回落
             resetHandJongsY(selectJong);
-            bool findPoker = false;
-            for(auto var : heroHuData){
-                if(var.poker == selectJong->getJongType()){
-                    findPoker = true;
-                    if(NULL != getChildByTag(6689)){
-                        getChildByTag(6689)->removeFromParent();
-                    }
-                    HuPaiHintLayer* huPai =  HuPaiHintLayer::create(var,this);
-                    huPai->setTag(6689);
-                    addChild(huPai,5);
-                    startTimeClockAnim(15, 2);
-                }
-            }
-            if(!findPoker){
+        }
+        bool findPoker = false;
+        for(auto var : heroHuData){
+            if(var.poker == selectJong->getJongType()){
+                findPoker = true;
                 if(NULL != getChildByTag(6689)){
                     getChildByTag(6689)->removeFromParent();
                 }
+                HuPaiHintLayer* huPai =  HuPaiHintLayer::create(var,this);
+                huPai->setTag(6689);
+                addChild(huPai,5);
+                startTimeClockAnim(15, 2);
             }
         }
+        if(!findPoker){
+            if(NULL != getChildByTag(6689)){
+                getChildByTag(6689)->removeFromParent();
+            }
+        }
+        
     }else{
         selectJong = NULL;
     }
@@ -793,6 +794,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             currentJong = turnJong;
             settleHandJongs(getHandPosX());
             setIsAllowPlay(true);
+            showHuPaiTiShi(data.cpgData.heroHu);
             if(GAMEDATA::getInstance()->getGameType() == 1 && data.hastinggang){
                 ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
             }else if(GAMEDATA::getInstance()->getGameType() == 3 && (data.cpgData.hu == 1 ||data.hastinggang)){
@@ -811,7 +813,7 @@ void PlayerHero::playerTurnReplace(PlayerTurnData data){
             currentJong = jong;
             settleHandJongs(getHandPosX());
         }
-        
+        showHuPaiTiShi(data.cpgData.heroHu);
         if(GAMEDATA::getInstance()->getGameType() == 1 && data.hastinggang){
             ((MahjongView*)getParent())->showTingGangControllPad(cpgData);
         }else if(GAMEDATA::getInstance()->getGameType() == 3 && (data.cpgData.hu == 1 ||data.hastinggang)){
@@ -967,22 +969,42 @@ void PlayerHero::doEventTimeOver(int type){
 void PlayerHero::actionTing(HeroCpgRespData tingData){
     setIsAllowTouch(true);
     GAMEDATA::getInstance()->setIsTingProcess(true);
-    heroHuData = tingData.playCpgt.heroHu;
+    
+    showHuPaiTiShi(tingData.playCpgt.heroHu);
+}
+
+void PlayerHero::showHuPaiTiShi(std::vector<HeroHuPaiData> heroHu){
     //对heroHuData进行自动排序
+    heroHuData = heroHu;
+    if(heroHu.size() == 0){
+        return ;
+    }
     int max = 1;
-    for(int k=0;k<heroHuData.size();k++){
-        if(getNumbersByPoker(heroHuData.at(k).hu) > max){
-            max = getNumbersByPoker(heroHuData.at(k).hu);
+    for(int k=0;k<heroHu.size();k++){
+        int total = 0;
+        for (int l=0; l<heroHu.at(k).data.size(); l++) {
+            total += atoi(heroHu.at(k).data.at(l).num.c_str());
         }
+        if(total> max){
+            max = total;
+        }
+        
     }
     for (int i = 0; i < playerHandJongs.size(); i++){
-        for (int j=0; j<tingData.playCpgt.heroHu.size(); j++) {
-            if(playerHandJongs.at(i)->getJongType() == tingData.playCpgt.heroHu.at(j).poker){
-                if(getNumbersByPoker(tingData.playCpgt.heroHu.at(j).hu) == max){
+        for (int j=0; j<heroHu.size(); j++) {
+            if(playerHandJongs.at(i)->getJongType() == heroHu.at(j).poker){
+                int total2;
+                if(heroHu.at(j).data.size()>0){
+                    for (int m=0; m<heroHu.at(j).data.size(); m++) {
+                        total2 += atoi(heroHu.at(j).data.at(m).num.c_str());
+                    }
+                }
+                if(total2 == max){
                     playerHandJongs.at(i)->setTingJongHint(true,"gameview/hu_jong_hint_2.png");
                 }else{
                     playerHandJongs.at(i)->setTingJongHint(true);
                 }
+                
             }
         }
     }

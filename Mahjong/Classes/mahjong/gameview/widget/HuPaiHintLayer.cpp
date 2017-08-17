@@ -29,32 +29,32 @@ bool HuPaiHintLayer::init(HeroHuPaiData heroHu,PlayerHero* playerHero){
     if(!Layer::init()){
         return false;
     }
-    std::vector<std::string> huPai = StringUtil::split(heroHu.hu, ",");
     //开始绘制听牌提示界面
     auto huBg = ui::Scale9Sprite::create("gameview/hu_hint_bg.png");
-    huBg->setContentSize(Size(100+huPai.size()*72+(huPai.size()==1?40:0),172));
+    huBg->setContentSize(Size(100+heroHu.data.size()*72+(heroHu.data.size()==1?40:0),172));
     huBg->setPosition(640,380);
     addChild(huBg);
     
     auto huText = Sprite::create("gameview/hu_pai_text.png");
     huText->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    huText->setPosition(640-(85+huPai.size()*70)/2+5,380);
+    huText->setPosition(640-(85+heroHu.data.size()*70)/2+5,380);
     addChild(huText);
     
-    int num =  playerHero->getNumbersByPoker(heroHu.hu);
-    auto huNum = LabelAtlas::create(StringUtils::format("%d",num), "gameview/hu_pai_num.png", 16, 24, '0');
-    huNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    huNum->setPosition(640-(85+huPai.size()*70)/2+45,345);
-    addChild(huNum);
+
     
     //绘制可以胡的牌
-    for (int j=0; j<huPai.size(); j++) {
+    for (int j=0; j<heroHu.data.size(); j++) {
         auto jong = Jong::create();
         jong->setScale(0.7f);
         huBg->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        jong->showJong(herohand, atoi(huPai.at(j).c_str()));
-        jong->setPosition(640-(85+huPai.size()*70)/2+120+70*j,380);
+        jong->showJong(herohand, atoi(heroHu.data.at(j).poker.c_str()));
+        jong->setPosition(640-(85+heroHu.data.size()*70)/2+120+70*j,380);
         addChild(jong);
+        
+        auto huNum = LabelAtlas::create(StringUtils::format("%s",heroHu.data.at(j).num.c_str()),"gameview/hu_pai_num.png", 16, 24, '0');
+        huNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        huNum->setPosition(640-(85+heroHu.data.size()*70)/2+120+70*j,345);
+        addChild(huNum);
     }
     
     return true;
