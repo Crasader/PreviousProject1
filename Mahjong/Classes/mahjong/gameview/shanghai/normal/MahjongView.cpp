@@ -938,14 +938,17 @@ void MahjongView::firstReplaceFlower(ReplaceJongVec vec,PlayerCpgtData data) {
             playerHero->replaceFlower();
         }
         else if (seatId == ClientSeatId::left){
+            playerLeft->showPlayerHua(0);
             playerLeft->setReplacePoker(vec.times.at(i));
             playerLeft->replaceHandHua(leftplayed);
         }
         else if (seatId == ClientSeatId::right){
+            playerRight->showPlayerHua(0);
             playerRight->setReplacePoker(vec.times.at(i));
             playerRight->replaceHandHua(rightplayed);
         }
         else if (seatId == ClientSeatId::opposite){
+            playerOpposite->showPlayerHua(0);
             playerOpposite->setReplacePoker(vec.times.at(i));
             playerOpposite->replaceHandHua(oppositeplayed);
         }
