@@ -68,13 +68,19 @@ void PlayerOpposite::drawPlayedJong(int ctype){
     lastPlayedJong->showJong(oppositeplayed, ctype);
     lastPlayedJong->setPosition(Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y));
     playerPlayedJongs.pushBack(lastPlayedJong);
-    if (playerPlayedJongs.size() / 10 == 0){
+    int mu = 10;
+    if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+        mu = 13;
+    }
+    if (playerPlayedJongs.size() / mu == 0){
+        addChild(lastPlayedJong, 4);
+    }
+    else if (playerPlayedJongs.size() / mu == 1){
         addChild(lastPlayedJong, 3);
     }
-    else if (playerPlayedJongs.size() / 10 == 1){
+    else if (playerPlayedJongs.size() / mu == 2){
         addChild(lastPlayedJong, 2);
-    }
-    else{
+    }else{
         addChild(lastPlayedJong, 1);
     }
     Point startPoint = Point(OPPOSITE_POS_X - 43, OPPOSITE_POS_Y);
@@ -667,14 +673,20 @@ void PlayerOpposite::recoverPlayed(std::string played){
         Jong* lastPlayedJong = Jong::create();
         lastPlayedJong->showJong(oppositeplayed, atoi(playeds.at(i).c_str()));
         lastPlayedJong->setPosition(getPlayedJongPos((int)playerPlayedJongs.size()));
-        if (playerPlayedJongs.size() / 10 == 0){
-            this->addChild(lastPlayedJong, 3);
+        int mu = 10;
+        if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::TWOPLAYER){
+            mu = 13;
         }
-        else if (playerPlayedJongs.size() / 10 == 1){
-            this->addChild(lastPlayedJong, 2);
+        if (playerPlayedJongs.size() / mu == 0){
+            addChild(lastPlayedJong, 4);
         }
-        else{
-            this->addChild(lastPlayedJong, 1);
+        else if (playerPlayedJongs.size() / mu == 1){
+            addChild(lastPlayedJong, 3);
+        }
+        else if (playerPlayedJongs.size() / mu == 2){
+            addChild(lastPlayedJong, 2);
+        }else{
+            addChild(lastPlayedJong, 1);
         }
         playerPlayedJongs.pushBack(lastPlayedJong);
     }
