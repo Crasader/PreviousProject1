@@ -32,6 +32,7 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 
 import com.tbu.androidtools.Debug;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -40,6 +41,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.text.ClipboardManager;
 import android.view.WindowManager;
 
@@ -108,7 +110,7 @@ public class AppActivity extends Cocos2dxActivity {
 		myActivity.runOnUiThread(runnable);
 
 	}
-
+//	private static String[] myPermissions = {Manifest.permission.RECORD_AUDIO};
 	public static boolean hasAudioPermission() {
 		PackageManager pm = myActivity.getPackageManager();
 		boolean permission = (PackageManager.PERMISSION_GRANTED == pm.checkPermission("android.permission.RECORD_AUDIO",
@@ -116,6 +118,8 @@ public class AppActivity extends Cocos2dxActivity {
 		if (permission) {
 			return true;
 		}
+		//获取一次权限
+//		ActivityCompat.requestPermissions(myActivity,myPermissions, 1);
 		return false;
 	}
 
