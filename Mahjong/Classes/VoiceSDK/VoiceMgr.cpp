@@ -37,7 +37,7 @@ Data VoiceMgr::decode(string data)
 
 void VoiceMgr::prepare(string filename)
 {
-	clearCache(filename);  // todov
+	clearCache(filename);
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
 	CallVoiceAndroidMethod::getInstance()->prepare(filename);
 #endif

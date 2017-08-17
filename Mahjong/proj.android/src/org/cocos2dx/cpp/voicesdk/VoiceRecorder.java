@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import org.cocos2dx.cpp.AppActivity;
 import org.cocos2dx.cpp.MahjongAplication;
 
 import android.media.MediaRecorder;
@@ -31,20 +32,18 @@ public class VoiceRecorder {
 	public static void setOnAudioStageListener(AudioStageListener listener) {
 		mListener = listener;
 	}
-	
-	public static void setStorageDir(String fileDir){
+
+	public static void setStorageDir(String fileDir) {
 		mDirString = fileDir;
 	}
-	
-	public static String getStorageDir(){
+
+	public static String getStorageDir() {
 		return mDirString;
 	}
 
 	// 准备方法
 	public static void prepare(String fileNameString) {
-		if(!MahjongAplication.getInstance().hasAudioPermission()){
-			return;
-		}
+
 		try {
 			// 一开始应该是false的
 			isPrepared = false;
@@ -69,6 +68,7 @@ public class VoiceRecorder {
 			mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
 			// 严格遵守google官方api给出的mediaRecorder的状态流程图
+
 			mRecorder.prepare();
 
 			mRecorder.start();
@@ -103,7 +103,7 @@ public class VoiceRecorder {
 	// 获得声音的level
 	public static int getVoiceLevel(int maxLevel) {
 		// mRecorder.getMaxAmplitude()这个是音频的振幅范围，值域是1-32767
-		if (isPrepared && mRecorder!=null) {
+		if (isPrepared && mRecorder != null) {
 			try {
 				// 取证+1，否则去不到7
 				return maxLevel * mRecorder.getMaxAmplitude() / 32768 + 1;
@@ -119,10 +119,10 @@ public class VoiceRecorder {
 	// 释放资源
 	public static void release() {
 		// 严格按照api流程进行
-		if(mRecorder != null){
+		if (mRecorder != null) {
 			mRecorder.stop();
 			mRecorder.release();
-			mRecorder = null;			
+			mRecorder = null;
 		}
 	}
 

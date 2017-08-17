@@ -17,6 +17,7 @@ public:
 	void stop();
 	void getVoiceLevel();
 	void setStorageDir(std::string dir);
+    bool hasAudioPermission();
 
 	static CallVoiceAndroidMethod* getInstance();
     std::string getSdCardDir();

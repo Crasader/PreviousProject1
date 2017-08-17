@@ -10,6 +10,9 @@
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
 #include "voicesdk/VoiceMgr.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID )
+#include "voicesdk/android/CallVoiceAndroidMethod.h"
+#endif
 
 bool SoundRecordBtn::init(){
     if(!Layer::init()){
@@ -35,13 +38,13 @@ bool SoundRecordBtn::onTouchBegan(Touch *touch, Event  *event){
     if(statProtected)
         return true;
     if(playBtn->getBoundingBox().containsPoint(touch->getLocation())){
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         playBtn->setTexture("gameview/chat_sound_2.png");
         auto soudn = Sprite::create("gameview/record_sound_ing.png");
         soudn->setPosition(640,320);
         soudn->setTag(1789);
         addChild(soudn,5);
         startRecord = true;
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
         VoiceMgr::getInstance()->prepare(AUDIO_RECOR_PATH);
 #endif
     }

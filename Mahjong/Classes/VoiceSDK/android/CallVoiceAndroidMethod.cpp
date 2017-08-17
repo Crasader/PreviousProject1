@@ -236,6 +236,17 @@ int CallVoiceAndroidMethod::getBatteryPersent(){
 	}
 	return r;
 #endif
-	return 50;
+}
+
+bool CallVoiceAndroidMethod::hasAudioPermission(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    jboolean r = false;
+    JniMethodInfo t;
+    if (JniHelper::getStaticMethodInfo(t,"org/cocos2dx/cpp/AppActivity", "hasAudioPermission", "()Z")) {
+        r = t.env->CallBooleanMethod(t.classID, t.methodID);
+        t.env->DeleteLocalRef(t.classID);
+    }
+    return r;
+#endif
 }
 

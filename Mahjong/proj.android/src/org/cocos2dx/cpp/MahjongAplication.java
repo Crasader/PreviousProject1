@@ -32,15 +32,7 @@ public class MahjongAplication extends Application{
 		return instance;
 	}
 	
-	public boolean hasAudioPermission(){
-		PackageManager pm = getPackageManager();  
-        boolean permission = (PackageManager.PERMISSION_GRANTED ==   
-                pm.checkPermission("android.permission.RECORD_AUDIO", "packageName"));  
-        if (permission) {  
-            return true;
-        }
-        return false;
-	}
+	
 	
 	
 }
