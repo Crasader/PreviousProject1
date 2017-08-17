@@ -41,7 +41,7 @@ bool HZNormalResultLayer::init(){
     gu->setPosition(1050,65);
     addChild(gu);
     timeLabel = LabelAtlas::create(StringUtils::format("%d",totalTime),"competition/daojishi_num.png",31,45,'0');
-    timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
+    timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE);
     timeLabel->setPosition(1050,70);
     addChild(timeLabel);
     showGameResult();//结算界面标题
