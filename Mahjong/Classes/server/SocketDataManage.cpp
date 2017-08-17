@@ -13,18 +13,22 @@ SocketDataManage* SocketDataManage::getInstance(){
 }
 
 bool SocketDataManage::init(){
+    
     Director::getInstance()->getScheduler()->schedule(schedule_selector(SocketDataManage::update), this, 0.016f, false);
     return true;
 }
 
 void SocketDataManage::update(float dt){
-    m_mutex.lock();
-    if(!m_msgList.empty()){
-        MsgHandler::getInstance()->handleMsg(m_msgList.front());
-        m_msgList.pop();
+    if (Director::getInstance()->getEventDispatcher()->isEnabled())
+    {
+        m_mutex.lock();
+        if(!m_msgList.empty()){
+            MsgHandler::getInstance()->handleMsg(m_msgList.front());
+            m_msgList.pop();
+        }
+        m_mutex.unlock();
     }
     
-    m_mutex.unlock();
 }
 
 void SocketDataManage::pushMsg(std::string msg){

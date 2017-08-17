@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import org.cocos2dx.cpp.MahjongAplication;
+
 import android.media.MediaRecorder;
-import android.os.Environment;
 
 public class VoiceRecorder {
 
@@ -41,6 +42,9 @@ public class VoiceRecorder {
 
 	// 准备方法
 	public static void prepare(String fileNameString) {
+		if(!MahjongAplication.getInstance().hasAudioPermission()){
+			return;
+		}
 		try {
 			// 一开始应该是false的
 			isPrepared = false;

@@ -10,6 +10,7 @@ import com.tbu.androidtools.Debug;
 import com.tbu.androidtools.TbuAndroidTools;
 
 import android.app.Application;
+import android.content.pm.PackageManager;
 
 public class MahjongAplication extends Application{
 	
@@ -30,5 +31,16 @@ public class MahjongAplication extends Application{
 	public static MahjongAplication getInstance(){		
 		return instance;
 	}
+	
+	public boolean hasAudioPermission(){
+		PackageManager pm = getPackageManager();  
+        boolean permission = (PackageManager.PERMISSION_GRANTED ==   
+                pm.checkPermission("android.permission.RECORD_AUDIO", "packageName"));  
+        if (permission) {  
+            return true;
+        }
+        return false;
+	}
+	
 	
 }
