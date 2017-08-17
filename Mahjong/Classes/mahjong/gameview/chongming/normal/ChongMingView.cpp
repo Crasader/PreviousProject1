@@ -1720,7 +1720,7 @@ void ChongMingView::onEnter(){
     
     gameResultListener = EventListenerCustom::create(MSG_GAME_RESULT, [=](EventCustom* event){
         string flag = static_cast<char*>(event->getUserData());
-        if(flag == "1"||flag == "2"){
+        if(flag == "1"||flag == "2"||flag == "3"){
             GAMEDATA::getInstance()->setIsTrusteeship(false);
             //播放动画
             //step检测胡牌类型
@@ -1897,17 +1897,26 @@ void ChongMingView::onEnter(){
                     GAMEDATA::getInstance()->setNeedShowLastResult(true);
                     GAMEDATA::getInstance()->setPrivateGameNum("0");
                     GAMEDATA::getInstance()->clearPlayersInfo();
-                }else{
-                    GAMEDATA::getInstance()->setNeedShowLastResult(false);
-                }
-                
-                if(GAMEDATA::getInstance()->getIsInGame()){
-                    if(GAMEDATA::getInstance()->getIsLiuJu()){
+                    if(GAMEDATA::getInstance()->getIsInGame()){
+                        Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
+                    }
+                }else if(flag == "3"){
+                    GAMEDATA::getInstance()->setResultFangzhuId(GAMEDATA::getInstance()->getFangZhuId());
+                    GAMEDATA::getInstance()->setFangZhuId("");
+                    GAMEDATA::getInstance()->setNeedShowLastResult(true);
+                    GAMEDATA::getInstance()->setPrivateGameNum("0");
+                    GAMEDATA::getInstance()->clearPlayersInfo();
+                    if(GAMEDATA::getInstance()->getIsInGame()){
                         Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(3)));
-                    }else{
+                    }
+                }
+                else{
+                    GAMEDATA::getInstance()->setNeedShowLastResult(false);
+                    if(GAMEDATA::getInstance()->getIsInGame()){
                         Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
                     }
                 }
+                
             },0,0,delayTime,"go2Result");
         }else{
             schedule([=](float dt){
