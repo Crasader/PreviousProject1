@@ -9,7 +9,7 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "27" //ios审核版本31，应用宝审核版本32. 奇数是IOS,偶数是Android
+#define PAY_PLAT_VALUE "51" //ios审核版本51，应用宝审核版本52. 奇数是IOS,偶数是Android
 
 //#define SERVER_ADDRESS "aliyun.5278-mobi.com"
 #define SERVER_ADDRESS "ceshi.5278-mobi.com"

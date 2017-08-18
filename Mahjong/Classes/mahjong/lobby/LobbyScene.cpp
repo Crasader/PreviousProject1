@@ -317,7 +317,7 @@ void LobbyScene::drawSceneMid(){
         mymenu->setPosition(650, 535);
     }
     mymenu->setVisible(false);
-    if(UserData::getInstance()->isWeixinPayOpen()&&GAMEDATA::getInstance()->getShowTurnTableState() == 0){
+    if(UserData::getInstance()->isWeixinPayOpen()&&GAMEDATA::getInstance()->getShowTurnTableState() != 0){
         mymenu->setVisible(true);
     }
     
