@@ -1250,6 +1250,18 @@ void MsgHandler::loginResp(std::string msg){
             UserData::getInstance()->setJiZanKefu(wxk.GetString());
         }
         
+        if(_mDoc.HasMember("wxt")){
+            const rapidjson::Value &wxt = _mDoc["wxt"];
+            if(wxt.HasMember("wxkf")){
+                const rapidjson::Value &wxkf = wxt["wxkf"];
+                UserData::getInstance()->setWeiXinKeFu(wxkf.GetString());
+            }
+            if(wxt.HasMember("wxtip")){
+                const rapidjson::Value &wxtip = wxt["wxtip"];
+                UserData::getInstance()->setWeiXinPayText(wxtip.GetString());
+            }
+            
+        }
         //微信分享配置
         if(_mDoc.HasMember("share1")){
             const rapidjson::Value &share1 = _mDoc["share1"];
@@ -4901,7 +4913,7 @@ void MsgHandler::handleCMEnterRoomResp(std::string msg){
     }
     if(_mDoc.HasMember("fcy")){
         GAMEDATA::getInstance()->setPrivateFcy(_mDoc["fcy"].GetString());
-        UserData::getInstance()->setLatelySHFcy(_mDoc["fcy"].GetString());
+        UserData::getInstance()->setLatelyCMFcy(_mDoc["fcy"].GetString());
     }
     const rapidjson::Value &result = _mDoc["result"];
     FriendOpenRoomRespData data = GAMEDATA::getInstance()->getFriendOpenRoomResp();

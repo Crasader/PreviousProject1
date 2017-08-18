@@ -147,6 +147,12 @@ public:
     std::string getJiZanKefu();
     void setJiZanKefu(std::string msg);
     
+    std::string getWeiXinKeFu();
+    void setWeiXinKeFu(std::string msg);
+    
+    std::string getWeiXinPayText();
+    void setWeiXinPayText(std::string msg);
+    
     //记录玩家最近的游戏类型
     GameMahjongType getLatelyMahjongType();
     void setLatelyMahjongType(GameMahjongType type);

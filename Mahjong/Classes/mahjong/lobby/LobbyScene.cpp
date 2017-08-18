@@ -321,7 +321,7 @@ void LobbyScene::drawSceneMid(){
         mymenu->setVisible(true);
     }
     
-    if(GAMEDATA::getInstance()->getBottomText() != "" && UserData::getInstance()->isWeixinPayOpen()){
+    if(GAMEDATA::getInstance()->getBottomText() != "" && UserData::getInstance()->isWeixinPayOpen()&&shareMenu->isVisible()){
         auto textbg = Sprite::create("mjlobby/ti_shi_2.png");
         textbg->setPosition(750,570);
         addChild(textbg);

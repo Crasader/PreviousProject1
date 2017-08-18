@@ -24,6 +24,8 @@ public :
 private:
     void showChargeDialog();
     void closeView();
+    void copyText();
+    void toast();
 
 };
 #endif /* ChargeDiamond_hpp */

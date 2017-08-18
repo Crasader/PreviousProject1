@@ -396,6 +396,21 @@ void UserData::setJiZanKefu(std::string msg){
     UserDefault::getInstance()->setStringForKey("jizan_kefu",msg);
 }
 
+
+std::string UserData::getWeiXinKeFu(){
+    return UserDefault::getInstance()->getStringForKey("weixin_pay_kefu","");
+}
+void UserData::setWeiXinKeFu(std::string msg){
+    UserDefault::getInstance()->setStringForKey("weixin_pay_kefu",msg);
+}
+
+std::string UserData::getWeiXinPayText(){
+    return UserDefault::getInstance()->getStringForKey("weixin_pay_kefu_text","");
+}
+void UserData::setWeiXinPayText(std::string msg){
+    UserDefault::getInstance()->setStringForKey("weixin_pay_kefu_text",msg);
+}
+
 GameMahjongType UserData::getLatelyMahjongType(){
     return (GameMahjongType)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_type",GameMahjongType::ShangHai);
 }
