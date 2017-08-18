@@ -574,6 +574,10 @@ void MsgHandler::distribute(int code, std::string msg){
             gameTuiGuangResp(msg);
             break;
         }
+        case MSGCODE_HH_MAJIANG_PENG_RESPONSE:{
+            handleHzPengResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -5807,3 +5811,51 @@ void MsgHandler::gameTuiGuangResp(std::string msg){
     postNotifyMessage(MSG_PLAYER_LA_XIN_DATA, &tuiGuang);
 }
 
+void MsgHandler::handleHzPengResp(std::string msg){
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    HeroCpgRespData cpgRespData;
+    PlayerCpgtData playerCpg;
+    if (_mDoc.HasMember("poker")){
+        const rapidjson::Value &poker = _mDoc["poker"];
+        playerCpg.poker = poker.GetString();
+    }
+    if (_mDoc.HasMember("seatId")){
+        const rapidjson::Value &seatId = _mDoc["seatId"];
+        playerCpg.seatId = seatId.GetInt();
+    }
+    if (_mDoc.HasMember("peng")){
+        const rapidjson::Value &pengPoker = _mDoc["peng"];
+        playerCpg.peng = pengPoker.GetString();
+    }
+    if (_mDoc.HasMember("sId")){
+        const rapidjson::Value &sId = _mDoc["sId"];
+        playerCpg.sId = sId.GetInt();
+    }
+    
+    if (_mDoc.HasMember("ting1")){
+        const rapidjson::Value &ting1 = _mDoc["ting1"];
+        for(int i=0;i<ting1.Capacity();i++){
+            HeroHuPaiData huPaiData;
+            auto &temp = ting1[i];
+            if(temp.HasMember("poker")){
+                huPaiData.poker = temp["poker"].GetInt();
+            }
+            if(temp.HasMember("hu1")){
+                const rapidjson::Value &data =  temp["hu1"];
+                for (int i=0; i<data.Capacity(); i++) {
+                    const rapidjson::Value &tem = data[i];
+                    HuPokerData pd;
+                    pd.poker = tem["hu"].GetString();
+                    pd.num = tem["num"].GetString();
+                    huPaiData.data.push_back(pd);
+                }
+            }
+            playerCpg.heroHu.push_back(huPaiData);
+        }
+    }
+    cpgRespData.playCpgt = playerCpg;
+    postNotifyMessage(MSG_HZ_PLAYER_PENG_RESP, &cpgRespData);
+}

@@ -997,11 +997,9 @@ void PlayerHero::showHuPaiTiShi(std::vector<HeroHuPaiData> heroHu){
     for (int i = 0; i < playerHandJongs.size(); i++){
         for (int j=0; j<heroHu.size(); j++) {
             if(playerHandJongs.at(i)->getJongType() == heroHu.at(j).poker){
-                int total2;
-                if(heroHu.at(j).data.size()>0){
-                    for (int m=0; m<heroHu.at(j).data.size(); m++) {
-                        total2 += atoi(heroHu.at(j).data.at(m).num.c_str());
-                    }
+                int total2 = 0;
+                for (int m=0; m<heroHu.at(j).data.size(); m++) {
+                    total2 += atoi(heroHu.at(j).data.at(m).num.c_str());
                 }
                 if(total2 == max){
                     playerHandJongs.at(i)->setTingJongHint(true,"gameview/hu_jong_hint_2.png");

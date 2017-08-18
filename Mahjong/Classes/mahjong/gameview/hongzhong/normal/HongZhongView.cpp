@@ -1135,7 +1135,7 @@ void HongZhongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playeHuActionListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(vhzOpenFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(truNotifyListener);
-    
+    Director::getInstance()->getEventDispatcher()->removeEventListener(hzPengRespListener);
 }
 
 void HongZhongView::onEnter(){
@@ -1368,17 +1368,23 @@ void HongZhongView::onEnter(){
             playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
-        }else if (seatId == ClientSeatId::hero){
-            hideHuGangControllPad();
-            HeroCpgRespData heroCpgData;
-            heroCpgData.result = 1;
-            heroCpgData.playCpgt = newData;
-            playerHero->drawHeroPeng(heroCpgData, getPlayerBySeatId(newData.sId));
-            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
         }
         
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
+    
+    hzPengRespListener = EventListenerCustom::create(MSG_HZ_PLAYER_PENG_RESP, [=](EventCustom* event){
+        HeroCpgRespData* cpgRespData  = static_cast<HeroCpgRespData*>(event->getUserData());
+        HeroCpgRespData newCpgRespData = *cpgRespData;
+        playerHero->hideCurrentBigJong();
+        hideHuGangControllPad();
+        HeroCpgRespData heroCpgData;
+        heroCpgData.result = 1;
+        heroCpgData.playCpgt = newCpgRespData.playCpgt;
+        playerHero->drawHeroPeng(heroCpgData, getPlayerBySeatId(newCpgRespData.playCpgt.sId));
+        playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
+    });
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(hzPengRespListener, 1);
     
     othersGangListener = EventListenerCustom::create(MSG_HZ_PLAYER_GANG, [=](EventCustom* event){
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());

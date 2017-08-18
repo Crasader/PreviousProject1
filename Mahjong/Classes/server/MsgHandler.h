@@ -125,5 +125,6 @@ private:
     void handleCMPlayerHuNotify(std::string msg);
     void gameCMContinueResp(std::string msg);
     void gameTuiGuangResp(std::string msg);
+    void handleHzPengResp(std::string msg);
 };
 #endif
