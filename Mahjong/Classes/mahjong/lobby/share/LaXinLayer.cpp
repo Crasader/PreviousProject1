@@ -108,12 +108,16 @@ void LaXinLayer::shareToFriend(){
     std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData1().url;
     if(GAMEDATA::getInstance()->getMahjongShareData1().type == "1"){
         shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
-    }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().phead,GAMEDATA::getInstance()->getMahjongShareData1().pcontent,false);
+        CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().phead,GAMEDATA::getInstance()->getMahjongShareData1().pcontent,false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().phead,GAMEDATA::getInstance()->getMahjongShareData1().pcontent,0);
+        CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().phead,GAMEDATA::getInstance()->getMahjongShareData1().pcontent,0);
 #endif
+    }else{
+        //TODO
+    
+    }
+
 }
 
 
@@ -121,12 +125,13 @@ void LaXinLayer::shareToQuan(){
     std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData1().url;
     if(GAMEDATA::getInstance()->getMahjongShareData1().type == "1"){
         shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
-    }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,true);
+        CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,1);
+        CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,1);
 #endif
+    }
+
 }
 
 ssize_t LaXinLayer::numberOfCellsInTableView(TableView *table)

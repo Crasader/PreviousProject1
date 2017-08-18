@@ -509,14 +509,13 @@ void PlayerHero::inviteWechatFriend(){
         }
     }
     std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData3().url;
-    if(GAMEDATA::getInstance()->getMahjongShareData3().type == "1"){
-        shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
-    }
+    shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,StringUtils::format("小白相%s 房号:%s %s",gameName.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),StringUtils::format("%s %s",roomtype.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),false);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,StringUtils::format("小白相%s 房号:%s %s",gameName.c_str(),GAMEDATA::getInstance()->getFriendOpenRoomResp().prid.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),StringUtils::format("%s %s",roomtype.c_str(),GAMEDATA::getInstance()->getMahjongShareData3().head.c_str()),0);
 #endif
+    
 }
 
 

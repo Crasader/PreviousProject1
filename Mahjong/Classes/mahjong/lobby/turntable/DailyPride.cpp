@@ -203,12 +203,13 @@ void DailyPride::shareTurntable(){
     std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData2().url;
     if(GAMEDATA::getInstance()->getMahjongShareData2().type == "1"){
         shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
-    }
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,true);
+        CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
+        CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
 #endif
+    }
+
 }
 
 void DailyPride::updateData(){
