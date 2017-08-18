@@ -1102,6 +1102,7 @@ void PlayerHero::drawHeroChi(HeroCpgRespData cpgResp, std::vector<string> chipai
             setIsAllowPlay(true);
             startTimeClockAnim();
         }
+        showHuPaiTiShi(cpgResp.playCpgt.heroHu);
     }
     else{
         stopTimeClockAnim();
@@ -1201,6 +1202,7 @@ void PlayerHero::drawHeroPeng(HeroCpgRespData resp, PlayerBase* playerBase){
         setIsAllowPlay(true);
         startTimeClockAnim();
     }
+    showHuPaiTiShi(resp.playCpgt.heroHu);
 }
 
 void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
