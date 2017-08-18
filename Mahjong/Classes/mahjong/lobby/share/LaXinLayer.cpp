@@ -13,6 +13,7 @@
 #include "mahjong/common/loading/Loading.h"
 #include "server/NetworkManage.h"
 #include "mahjong/common/widget/HeadImage.hpp"
+#include "http/image/UrlImageMannger.h"
 
 bool LaXinLayer::init(){
     if(!Layer::init()){
@@ -114,8 +115,7 @@ void LaXinLayer::shareToFriend(){
         CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().phead,GAMEDATA::getInstance()->getMahjongShareData1().pcontent,0);
 #endif
     }else{
-        //TODO
-    
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(shareUrl);
     }
 
 }
@@ -130,6 +130,8 @@ void LaXinLayer::shareToQuan(){
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData1().head,GAMEDATA::getInstance()->getMahjongShareData1().content,1);
 #endif
+    }else{
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(shareUrl);
     }
 
 }

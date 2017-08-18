@@ -211,13 +211,13 @@ std::string UrlImageMannger::downloadGongGaoImgByUrl(std::string url){
 }
 
 
-void UrlImageMannger::downloadDaYingJiaImgByUrl(std::string url){
+void UrlImageMannger::downloadShareImageByUrl(std::string url){
     std::string path = getImgNameByUrl(url);
     if (FileUtils::getInstance()->isFileExist(path))
     {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
         CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(path, true);
-#endif        
+#endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CallIOSMethod::getInstance()->doWechatShareImg(path, 1);
 #endif
@@ -240,6 +240,7 @@ void UrlImageMannger::downloadDaYingJiaImgByUrl(std::string url){
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
 }
+
 
 void UrlImageMannger::uploadImage2Server(CallFunc* callBack){
     //TODO 调用七牛SDK(android或者ios)

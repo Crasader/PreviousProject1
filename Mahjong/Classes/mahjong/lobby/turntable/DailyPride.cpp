@@ -4,6 +4,7 @@
 #include "mahjong/common/utils/StringUtil.h"
 #include "mahjong/common/widget/ParticleUtil.hpp"
 #include "mahjong/common/utils/Chinese.h"
+#include "http/image/UrlImageMannger.h"
 #include "server/NetworkManage.h"
 #include "userdata/UserData.h"
 #include "wechat/android/CallAndroidMethod.h"
@@ -208,6 +209,8 @@ void DailyPride::shareTurntable(){
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
 #endif
+    }else{
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(shareUrl);
     }
 
 }

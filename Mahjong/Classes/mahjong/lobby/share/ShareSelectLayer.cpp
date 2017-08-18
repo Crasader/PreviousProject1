@@ -10,6 +10,7 @@
 #include "mahjong/common/state/GameData.h"
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
+#include "http/image/UrlImageMannger.h"
 
 bool ShareSelectLayer::init(){
     
@@ -39,7 +40,7 @@ bool ShareSelectLayer::init(){
     int pos  = (int)temp0.find(UserData::getInstance()->getJiZanKefu());
     std::string temp1 = temp0.substr(0,pos);
     std::string temp3 = temp0.substr(pos+UserData::getInstance()->getJiZanKefu().size(),temp0.size());
-
+    
     
     auto textlabel2 = Label::createWithSystemFont(UserData::getInstance()->getJiZanKefu(),"arial",24);
     textlabel2->setAnchorPoint(Point::ANCHOR_MIDDLE_RIGHT);
@@ -52,7 +53,7 @@ bool ShareSelectLayer::init(){
     textlabel->setPosition(textlabel2->getPositionX()-textlabel2->getContentSize().width,500);
     textlabel->setColor(Color3B(196,106,22));
     addChild(textlabel);
-
+    
     auto textlabel3 = Label::createWithSystemFont(temp3,"arial",24);
     textlabel3->setAlignment(cocos2d::TextHAlignment::CENTER);
     textlabel3->setPosition(640,470);
@@ -64,7 +65,7 @@ bool ShareSelectLayer::init(){
     copyMenu->alignItemsHorizontallyWithPadding(50);
     copyMenu->setPosition(920,500);
     addChild(copyMenu);
-
+    
     auto quanMenu = MenuItemImage::create("share/share_quan.png","share/share_quan.png",CC_CALLBACK_0(ShareSelectLayer::shareToQuan, this));
     auto friendMenu = MenuItemImage::create("share/share_friend.png","share/share_friend.png",CC_CALLBACK_0(ShareSelectLayer::shareToFriend, this));
     
@@ -85,6 +86,8 @@ void ShareSelectLayer::shareToQuan(){
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData4().head,GAMEDATA::getInstance()->getMahjongShareData4().content,1);
 #endif
+    }else{
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(shareUrl);
     }
 }
 
@@ -97,6 +100,8 @@ void ShareSelectLayer::shareToFriend(){
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData4().phead,GAMEDATA::getInstance()->getMahjongShareData4().pcontent,0);
 #endif
+    }else{
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(shareUrl);
     }
 }
 
