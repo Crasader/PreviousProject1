@@ -31,13 +31,13 @@ bool HuPaiHintLayer::init(HeroHuPaiData heroHu,PlayerHero* playerHero){
     }
     //开始绘制听牌提示界面
     auto huBg = ui::Scale9Sprite::create("gameview/hu_hint_bg.png");
-    huBg->setContentSize(Size(102+heroHu.data.size()*72+(heroHu.data.size()==1?20:0),152));
+    huBg->setContentSize(Size(90+heroHu.data.size()*72+(heroHu.data.size()==1?40:0),152));
     huBg->setPosition(640,380);
     addChild(huBg);
     
     auto huText = Sprite::create("gameview/hu_pai_text.png");
     huText->setAnchorPoint(Point::ANCHOR_MIDDLE_LEFT);
-    huText->setPosition(640-(102+heroHu.data.size()*70)/2,392);
+    huText->setPosition(640-(90+heroHu.data.size()*70)/2,392);
     addChild(huText);
     
 
@@ -48,16 +48,16 @@ bool HuPaiHintLayer::init(HeroHuPaiData heroHu,PlayerHero* playerHero){
         jong->setScale(0.7f);
         huBg->setAnchorPoint(Point::ANCHOR_MIDDLE);
         jong->showJong(herohand, atoi(heroHu.data.at(j).poker.c_str()));
-        jong->setPosition(640-(102+heroHu.data.size()*70)/2+130+70*j,392);
+        jong->setPosition(640-(90+heroHu.data.size()*70)/2+120+70*j,392);
         addChild(jong);
         
         auto huNum = LabelAtlas::create(StringUtils::format("%s",heroHu.data.at(j).num.c_str()),"gameview/hu_pai_num.png", 16, 24, '0');
         huNum->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        huNum->setPosition(640-(102+heroHu.data.size()*70)/2+120+70*j,332);
+        huNum->setPosition(640-(90+heroHu.data.size()*70)/2+110+70*j,332);
         addChild(huNum);
         
         auto zhang = Sprite::create("gameview/hu_pai_text2.png");
-        zhang->setPosition(640-(102+heroHu.data.size()*70)/2+140+70*j,332);
+        zhang->setPosition(640-(90+heroHu.data.size()*70)/2+130+70*j,332);
         addChild(zhang);
     }
     

@@ -97,25 +97,24 @@ bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
             //其余的牌Y轴高度回落
             resetHandJongsY(selectJong);
         }
-        bool findPoker = false;
-        for(auto var : heroHuData){
-            if(var.poker == selectJong->getJongType()){
-                findPoker = true;
+        if(isAllowPlay){
+            for(auto var : heroHuData){
+                if(var.poker == selectJong->getJongType()){
+                    if(NULL != getChildByTag(6689)){
+                        getChildByTag(6689)->removeFromParent();
+                    }
+                    HuPaiHintLayer* huPai =  HuPaiHintLayer::create(var,this);
+                    huPai->setTag(6689);
+                    addChild(huPai,5);
+                    startTimeClockAnim(15, 2);
+                }
+            }
+            if(GAMEDATA::getInstance()->getGameType() == 1&&!GAMEDATA::getInstance()->getIsTingProcess()){
                 if(NULL != getChildByTag(6689)){
                     getChildByTag(6689)->removeFromParent();
                 }
-                HuPaiHintLayer* huPai =  HuPaiHintLayer::create(var,this);
-                huPai->setTag(6689);
-                addChild(huPai,5);
-                startTimeClockAnim(15, 2);
             }
         }
-        if(!findPoker){
-            if(NULL != getChildByTag(6689)){
-                getChildByTag(6689)->removeFromParent();
-            }
-        }
-        
     }else{
         selectJong = NULL;
     }
@@ -229,8 +228,17 @@ void PlayerHero::playPokerByHand(Jong* jong){
     if(NULL != virtualJong){
         virtualJong = NULL;
     }
-    if(NULL != getChildByTag(6689)){
-        getChildByTag(6689)->removeFromParent();
+    //如果打出牌是允许胡的牌,继续显示胡牌提示,否则取消显示
+    bool huEnable = false;
+    for (int i=0; i<heroHuData.size(); i++) {
+        if(heroHuData.at(i).poker == jong->getJongType()){
+            huEnable = true;
+        }
+    }
+    if(!huEnable){
+        if(NULL != getChildByTag(6689)){
+            getChildByTag(6689)->removeFromParent();
+        }
     }
     for(auto var:playerHandJongs){
         var->setTingJongHint(false);
@@ -849,9 +857,6 @@ void PlayerHero::playerTurnReplaceMingpai(PlayerTurnData data){
 
 void PlayerHero:: drawPlayedJong(int type){
     PlayerBase::showPlayedJong(type);
-    if(NULL != getChildByTag(6689)){
-        getChildByTag(6689)->removeFromParent();
-    }
     for(auto var:playerHandJongs){
         var->setTingJongHint(false);
     }
