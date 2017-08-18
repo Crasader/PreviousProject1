@@ -157,8 +157,6 @@
 		D252FBAD1E7FA5EC00937322 /* LobbyScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAE21E7FA5EC00937322 /* LobbyScene.cpp */; };
 		D252FBAE1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAE51E7FA5EC00937322 /* NoticeDialog.cpp */; };
 		D252FBAF1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAE51E7FA5EC00937322 /* NoticeDialog.cpp */; };
-		D252FBB01E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAE81E7FA5EC00937322 /* ShareToFriendLayer.cpp */; };
-		D252FBB11E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAE81E7FA5EC00937322 /* ShareToFriendLayer.cpp */; };
 		D252FBB21E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAEB1E7FA5EC00937322 /* ShiMingLayer.cpp */; };
 		D252FBB31E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAEB1E7FA5EC00937322 /* ShiMingLayer.cpp */; };
 		D252FBB41E7FA5EC00937322 /* ChargeFangka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D252FAEF1E7FA5EC00937322 /* ChargeFangka.cpp */; };
@@ -432,8 +430,6 @@
 		D2E4BCA81F30295300A34067 /* CMPlayerResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BCA31F30295300A34067 /* CMPlayerResultCell.cpp */; };
 		D2E4BCAD1F316DA900A34067 /* CangYinAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BCAB1F316DA900A34067 /* CangYinAnim.cpp */; };
 		D2E4BCAE1F316DA900A34067 /* CangYinAnim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BCAB1F316DA900A34067 /* CangYinAnim.cpp */; };
-		D2E6A2931EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
-		D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */; };
 		D2E79DBE1F0F34EB00DD3999 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */; };
 		D2E79DBF1F0F34EB00DD3999 /* DailyPride.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */; };
 		D2E79DC01F0F34EB00DD3999 /* PrideCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E79DBC1F0F34EB00DD3999 /* PrideCell.cpp */; };
@@ -644,8 +640,6 @@
 		D252FAE31E7FA5EC00937322 /* LobbyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyScene.h; sourceTree = "<group>"; };
 		D252FAE51E7FA5EC00937322 /* NoticeDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoticeDialog.cpp; sourceTree = "<group>"; };
 		D252FAE61E7FA5EC00937322 /* NoticeDialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NoticeDialog.hpp; sourceTree = "<group>"; };
-		D252FAE81E7FA5EC00937322 /* ShareToFriendLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareToFriendLayer.cpp; sourceTree = "<group>"; };
-		D252FAE91E7FA5EC00937322 /* ShareToFriendLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareToFriendLayer.hpp; sourceTree = "<group>"; };
 		D252FAEB1E7FA5EC00937322 /* ShiMingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiMingLayer.cpp; sourceTree = "<group>"; };
 		D252FAEC1E7FA5EC00937322 /* ShiMingLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShiMingLayer.hpp; sourceTree = "<group>"; };
 		D252FAEF1E7FA5EC00937322 /* ChargeFangka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChargeFangka.cpp; sourceTree = "<group>"; };
@@ -901,8 +895,6 @@
 		D2E4BCA41F30295300A34067 /* CMPlayerResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CMPlayerResultCell.hpp; sourceTree = "<group>"; };
 		D2E4BCAB1F316DA900A34067 /* CangYinAnim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CangYinAnim.cpp; sourceTree = "<group>"; };
 		D2E4BCAC1F316DA900A34067 /* CangYinAnim.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CangYinAnim.hpp; sourceTree = "<group>"; };
-		D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShareActivityLayer.cpp; sourceTree = "<group>"; };
-		D2E6A2921EF3CEFA0065C3F0 /* ShareActivityLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShareActivityLayer.hpp; sourceTree = "<group>"; };
 		D2E79DBA1F0F34EB00DD3999 /* DailyPride.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DailyPride.cpp; sourceTree = "<group>"; };
 		D2E79DBB1F0F34EB00DD3999 /* DailyPride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyPride.h; sourceTree = "<group>"; };
 		D2E79DBC1F0F34EB00DD3999 /* PrideCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrideCell.cpp; sourceTree = "<group>"; };
@@ -1520,10 +1512,6 @@
 		D252FAE71E7FA5EC00937322 /* share */ = {
 			isa = PBXGroup;
 			children = (
-				D2E6A2911EF3CEFA0065C3F0 /* ShareActivityLayer.cpp */,
-				D2E6A2921EF3CEFA0065C3F0 /* ShareActivityLayer.hpp */,
-				D252FAE81E7FA5EC00937322 /* ShareToFriendLayer.cpp */,
-				D252FAE91E7FA5EC00937322 /* ShareToFriendLayer.hpp */,
 				D217FE9A1F127E76008F5D4B /* ShareSelectLayer.cpp */,
 				D217FE9B1F127E76008F5D4B /* ShareSelectLayer.hpp */,
 				D2DD46241F42C1A5004F8510 /* LaXinLayer.cpp */,
@@ -2635,7 +2623,6 @@
 				D252FBB21E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */,
 				D2DD46211F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */,
 				D299F8D81E27640000D10B0D /* SocketDataBack.cpp in Sources */,
-				D2E6A2931EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D2A86CE81E01286C00B67F86 /* NetworkManage.cpp in Sources */,
 				D252FB661E7FA5EC00937322 /* ScrollTextEx.cpp in Sources */,
@@ -2652,7 +2639,6 @@
 				D252FBAC1E7FA5EC00937322 /* LobbyScene.cpp in Sources */,
 				D252FC4F1E7FABE900937322 /* PlayerCpgAnim.cpp in Sources */,
 				D2B1D9181E9E026800EB8FB0 /* HZPlayerResultCell.cpp in Sources */,
-				D252FBB01E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
 				D2A0C2DB1F205D0300203FEF /* CompeititionPlate.cpp in Sources */,
 				D217FEA81F13509B008F5D4B /* GongZhongHaoItem.cpp in Sources */,
 				D2A713AE1ED2B830000EE572 /* CompetitonItem.cpp in Sources */,
@@ -2833,7 +2819,6 @@
 				D252FB1F1E7FA5EC00937322 /* Audio.cpp in Sources */,
 				D2B1D91B1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */,
 				D252FB3F1E7FA5EC00937322 /* HintDialog.cpp in Sources */,
-				D252FBB11E7FA5EC00937322 /* ShareToFriendLayer.cpp in Sources */,
 				D252FBC51E7FA5EC00937322 /* ExchangePropCell.cpp in Sources */,
 				D2E0351D1ED92BE700291282 /* HongbaoAnim2.cpp in Sources */,
 				D252FC8D1E7FB76700937322 /* MahjongPayHandler.cpp in Sources */,
@@ -2853,7 +2838,6 @@
 				D2E035161ED9120700291282 /* HongbaoAnim.cpp in Sources */,
 				D252FBD31E7FA5EC00937322 /* ResultScene.cpp in Sources */,
 				D2E79DBF1F0F34EB00DD3999 /* DailyPride.cpp in Sources */,
-				D2E6A2941EF3CEFA0065C3F0 /* ShareActivityLayer.cpp in Sources */,
 				D2B291BD1F0E18C40084F379 /* RankList.cpp in Sources */,
 				D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */,
 				D252FB451E7FA5EC00937322 /* ToastCell.cpp in Sources */,
