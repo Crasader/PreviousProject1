@@ -1211,6 +1211,9 @@ void PlayerHero::drawHeroGang(HeroCpgRespData resp, PlayerBase* playerBase){
         Audio::getInstance()->playSoundGang(UserData::getInstance()->getGender());
         
     }
+    for(auto var:playerHandJongs){
+        var->setTingJongHint(false);
+    }
     updateSelectedInfo(NULL);
     if(resp.playCpgt.playerGang.at(0).flag == 0){
         //明杠
