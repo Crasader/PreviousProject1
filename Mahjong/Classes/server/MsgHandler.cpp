@@ -1330,6 +1330,9 @@ void MsgHandler::loginResp(std::string msg){
             if(share4.HasMember("pcontent")){
                 data4.pcontent = share4["pcontent"].GetString();
             }
+            if(share4.HasMember("type")){
+                data4.type = share4["type"].GetString();
+            }
             GAMEDATA::getInstance()->setMahjongShareData4(data4);
         }
         if(_mDoc.HasMember("share5")){
