@@ -910,6 +910,9 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         if(share5.HasMember("pcontent")){
             data5.pcontent = share5["pcontent"].GetString();
         }
+        if(share5.HasMember("type")){
+            data5.type = share5["type"].GetString();
+        }
         GAMEDATA::getInstance()->setMahjongShareData5(data5);
     }
 }
@@ -1347,6 +1350,9 @@ void MsgHandler::loginResp(std::string msg){
             }
             if(share5.HasMember("pcontent")){
                 data5.pcontent = share5["pcontent"].GetString();
+            }
+            if(share5.HasMember("type")){
+                data5.type = share5["type"].GetString();
             }
             GAMEDATA::getInstance()->setMahjongShareData5(data5);
         }
