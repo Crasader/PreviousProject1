@@ -174,6 +174,11 @@ TableViewCell* LaXinLayer::tableCellAtIndex(TableView *table, ssize_t idx)
         cell->addChild(pro);
         
         if(atoi(data.count.c_str())>0){
+            
+            auto nickname = Label::createWithSystemFont(data.name, "arial", 13);
+            nickname->setPosition(110,65);
+            nickname->setColor(Color3B(126,97,55));
+            cell->addChild(nickname);
             //需要进行一次裁剪
             auto holesClipper = ClippingNode::create();
             holesClipper->setPosition(50,45);

@@ -43,7 +43,7 @@ public class VoiceRecorder {
 
 	// 准备方法
 	public static void prepare(String fileNameString) {
-
+		
 		try {
 			// 一开始应该是false的
 			isPrepared = false;
