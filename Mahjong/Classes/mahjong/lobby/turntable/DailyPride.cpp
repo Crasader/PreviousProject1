@@ -210,7 +210,7 @@ void DailyPride::shareTurntable(){
         CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData2().head,GAMEDATA::getInstance()->getMahjongShareData2().content,1);
 #endif
     }else{
-        UrlImageMannger::getInstance()->downloadShareImageByUrl(shareUrl);
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(GAMEDATA::getInstance()->getMahjongShareData2().pic,true);
     }
 
 }

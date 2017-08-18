@@ -880,7 +880,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         GAMEDATA::getInstance()->setMahjongShareData3(data3);
     }
     if(_mDoc.HasMember("share4")){
-        const rapidjson::Value &share4 = _mDoc["share3"];
+        const rapidjson::Value &share4 = _mDoc["share4"];
         MahjongShareData4 data4;
         data4.pic = share4["pic"].GetString();
         data4.url = share4["url"].GetString();
@@ -898,7 +898,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         GAMEDATA::getInstance()->setMahjongShareData4(data4);
     }
     if(_mDoc.HasMember("share5")){
-        const rapidjson::Value &share5 = _mDoc["share3"];
+        const rapidjson::Value &share5 = _mDoc["share5"];
         MahjongShareData5 data5;
         data5.pic = share5["pic"].GetString();
         data5.url = share5["url"].GetString();
@@ -1306,7 +1306,7 @@ void MsgHandler::loginResp(std::string msg){
             GAMEDATA::getInstance()->setMahjongShareData3(data3);
         }
         if(_mDoc.HasMember("share4")){
-            const rapidjson::Value &share4 = _mDoc["share3"];
+            const rapidjson::Value &share4 = _mDoc["share4"];
             MahjongShareData4 data4;
             data4.pic = share4["pic"].GetString();
             data4.url = share4["url"].GetString();
@@ -1321,7 +1321,7 @@ void MsgHandler::loginResp(std::string msg){
             GAMEDATA::getInstance()->setMahjongShareData4(data4);
         }
         if(_mDoc.HasMember("share5")){
-            const rapidjson::Value &share5 = _mDoc["share3"];
+            const rapidjson::Value &share5 = _mDoc["share5"];
             MahjongShareData5 data5;
             data5.pic = share5["pic"].GetString();
             data5.url = share5["url"].GetString();

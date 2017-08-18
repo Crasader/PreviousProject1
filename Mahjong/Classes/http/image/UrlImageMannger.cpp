@@ -211,33 +211,33 @@ std::string UrlImageMannger::downloadGongGaoImgByUrl(std::string url){
 }
 
 
-void UrlImageMannger::downloadShareImageByUrl(std::string url){
+void UrlImageMannger::downloadShareImageByUrl(std::string url,bool quan){
     std::string path = getImgNameByUrl(url);
     if (FileUtils::getInstance()->isFileExist(path))
     {
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(path, true);
+        CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(path, quan);
 #endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        CallIOSMethod::getInstance()->doWechatShareImg(path, 1);
+        CallIOSMethod::getInstance()->doWechatShareImg(path,quan==true?1:0);
 #endif
         return;
     }
-    EventListenerCustom* _listener2 = EventListenerCustom::create(url, [=](EventCustom* event){
+    EventListenerCustom* _listener20 = EventListenerCustom::create(url, [=](EventCustom* event){
         std::vector<char>*buffer = static_cast<std::vector<char>*>(event->getUserData());
         std::string buff(buffer->begin(), buffer->end());
         FILE *fp = fopen(path.c_str(), "wb+");
         fwrite(buff.c_str(), 1, buffer->size(), fp);
         fclose(fp);
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(path, true);
+        CallAndroidMethod::getInstance()->shareSDCardImageToWeChat(path, quan);
 #endif
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        CallIOSMethod::getInstance()->doWechatShareImg(path, 1);
+        CallIOSMethod::getInstance()->doWechatShareImg(path, quan==true?1:0);
 #endif
         Director::getInstance()->getEventDispatcher()->removeCustomEventListeners(url);
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener2, 1);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_listener20, 1);
     HttpMannger::getInstance()->httpToPostRequestToGetUrlImg(url);
 }
 

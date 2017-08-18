@@ -20,7 +20,7 @@ public:
     std::string downloadQunImgByUrl(std::string url,bool recover = false);//下载图片到SD卡
     std::string downloadDailiImgByUrl(std::string url,bool recover = false);//下载图片到SD卡
     std::string downloadGongGaoImgByUrl(std::string url);
-    void downloadShareImageByUrl(std::string url);
+    void downloadShareImageByUrl(std::string url,bool quan);
 private:
 	UrlImageMannger();
 	static UrlImageMannger* _instance;

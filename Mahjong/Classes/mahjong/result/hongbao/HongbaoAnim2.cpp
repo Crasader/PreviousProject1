@@ -350,7 +350,7 @@ void HongbaoAnim2::share(){
 #endif
         }, 0, 0, 0.2f, "mmp");
     }else{
-        UrlImageMannger::getInstance()->downloadShareImageByUrl(GAMEDATA::getInstance()->getDaYingJiaPic());
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(GAMEDATA::getInstance()->getDaYingJiaPic(),true);
     }
        setVisible(false);
 }

@@ -87,7 +87,7 @@ void ShareSelectLayer::shareToQuan(){
         CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData4().head,GAMEDATA::getInstance()->getMahjongShareData4().content,1);
 #endif
     }else{
-        UrlImageMannger::getInstance()->downloadShareImageByUrl(shareUrl);
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(GAMEDATA::getInstance()->getMahjongShareData4().pic,true);
     }
 }
 
@@ -101,7 +101,7 @@ void ShareSelectLayer::shareToFriend(){
         CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData4().phead,GAMEDATA::getInstance()->getMahjongShareData4().pcontent,0);
 #endif
     }else{
-        UrlImageMannger::getInstance()->downloadShareImageByUrl(shareUrl);
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(GAMEDATA::getInstance()->getMahjongShareData4().pic,false);
     }
 }
 
