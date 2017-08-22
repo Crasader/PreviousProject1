@@ -201,16 +201,16 @@ void DailyPride::showDailyPrideLayer(){
 
 void DailyPride::shareTurntable(){
     GAMEDATA::getInstance()->setIsTurnTableShare(true);
-    std::string shareUrl = GAMEDATA::getInstance()->getgetMahjongShareData6().url;
-    if(GAMEDATA::getInstance()->getgetMahjongShareData6().type == "1"){
+    std::string shareUrl = GAMEDATA::getInstance()->getMahjongShareData6().url;
+    if(GAMEDATA::getInstance()->getMahjongShareData6().type == "1"){
         shareUrl = StringUtils::format("%s%s",shareUrl.c_str(),UserData::getInstance()->getPoxiaoId().c_str());
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getgetMahjongShareData6().head,GAMEDATA::getInstance()->getgetMahjongShareData6().content,true);
+        CallAndroidMethod::getInstance()->shareToWeChat(shareUrl,GAMEDATA::getInstance()->getMahjongShareData6().head,GAMEDATA::getInstance()->getMahjongShareData6().content,true);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getgetMahjongShareData6().head,GAMEDATA::getInstance()->getgetMahjongShareData6().content,1);
+        CallIOSMethod::getInstance()->doWechatShareWeb(shareUrl,GAMEDATA::getInstance()->getMahjongShareData6().head,GAMEDATA::getInstance()->getMahjongShareData6().content,1);
 #endif
     }else{
-        UrlImageMannger::getInstance()->downloadShareImageByUrl(GAMEDATA::getInstance()->getgetMahjongShareData6().pic,true);
+        UrlImageMannger::getInstance()->downloadShareImageByUrl(GAMEDATA::getInstance()->getMahjongShareData6().pic,true);
     }
 
 }
