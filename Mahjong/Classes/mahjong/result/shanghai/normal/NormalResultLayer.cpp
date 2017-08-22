@@ -37,6 +37,13 @@ bool NormalResultLayer::init(){
     auto reslut_bg = Sprite::create("result/result_bg.jpg");
     reslut_bg->setPosition(640, 360);
     addChild(reslut_bg,-1);
+
+    showGameResult();//结算界面标题
+    showRoomInfo();
+    showPlayerResluts();
+    showLayerBtn();
+    showCangYin();
+    updatePlayerData();
     auto gu  = Sprite::create("result/gu.png");
     gu->setPosition(1050,65);
     addChild(gu);
@@ -44,16 +51,9 @@ bool NormalResultLayer::init(){
     timeLabel->setAnchorPoint(Point::ANCHOR_MIDDLE);
     timeLabel->setPosition(1050,70);
     addChild(timeLabel);
-    showGameResult();//结算界面标题
-    showRoomInfo();
-    showPlayerResluts();
-    showLayerBtn();
-    showCangYin();
-    updatePlayerData();
-    if(!GAMEDATA::getInstance()->getDissovleDialogRemove()){
-        GAMEDATA::getInstance()->setDissolveName(GAMEDATA::getInstance()->getDissolveName());
-        DissovleRoomDialog* dia = DissovleRoomDialog::create();
-        addChild(dia,20);
+    if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::publicRoom){
+        gu->setVisible(false);
+        timeLabel->setVisible(false);
     }
     return true;
 }
@@ -382,6 +382,11 @@ void NormalResultLayer::updateTime(float dt){
 
 void NormalResultLayer::onEnter(){
     Layer::onEnter();
+    if(!GAMEDATA::getInstance()->getDissovleDialogRemove()){
+        GAMEDATA::getInstance()->setDissolveName(GAMEDATA::getInstance()->getDissolveName());
+        DissovleRoomDialog* dia = DissovleRoomDialog::create();
+        addChild(dia,20);
+    }
     continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_CONTINUE_RESP, [=](EventCustom* event){
         if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
             //返回正常可以继续游戏
