@@ -176,13 +176,13 @@ void GuiLayer::drawGameInfo(){
 
 void GuiLayer::chatButtonClick(){
     auto gameChat = ChatDialog::create();
-    getParent()->addChild(gameChat,50);
+    getParent()->addChild(gameChat,350);
 }
 
 void GuiLayer::settingButtonClick(){
     Audio::getInstance()->playSoundClick();
     UserSetting* setting = UserSetting::create();
-    getParent()->addChild(setting,50);
+    getParent()->addChild(setting,350);
 }
 
 void GuiLayer::quitButtonClick(){
@@ -201,7 +201,7 @@ void GuiLayer::quitButtonClick(){
                 }
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
-            getParent()->addChild(dia,50);
+            getParent()->addChild(dia,350);
         }else if(GAMEDATA::getInstance()->getMahjongRoomType() == MahjongRoom::privateRoom){
             HintDialog* dia = HintDialog::create(ChineseWord("dialog_text_2"), [=](Ref* ref){
                 GAMEDATA::getInstance()->clearPlayersInfo();
@@ -214,7 +214,7 @@ void GuiLayer::quitButtonClick(){
                 }
                 Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
             });
-            getParent()->addChild(dia,50);
+            getParent()->addChild(dia,350);
         }else{
             GAMEDATA::getInstance()->clearPlayersInfo();
             if(GAMEDATA::getInstance()->getGameType() == 1){
@@ -227,7 +227,7 @@ void GuiLayer::quitButtonClick(){
         }
     }else{
         QuitRoomDialog* dialog = QuitRoomDialog::create();
-        getParent()->addChild(dialog,50);
+        getParent()->addChild(dialog,350);
     }
 }
 
@@ -328,7 +328,7 @@ void GuiLayer::dissovleRoom(){
             NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getDissolveRoomCommand());
         }
     });
-    getParent()->addChild(dia,50);
+    getParent()->addChild(dia,350);
 }
 
 

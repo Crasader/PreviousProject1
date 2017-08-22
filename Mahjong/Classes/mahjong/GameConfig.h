@@ -11,9 +11,10 @@
 
 #define PAY_PLAT_VALUE "51" //ios审核版本51，应用宝审核版本52. 奇数是IOS,偶数是Android
 
-//#define SERVER_ADDRESS "aliyun.5278-mobi.com"
-#define SERVER_ADDRESS "ceshi.5278-mobi.com"
-#define SERVER_ADDRESS_2 "aliyun.kx5278.com"
+//#define SERVER_ADDRESS "aliyun.5278-mobi.com" //ceshi.5278-mobi.com 现网有出过包,版本号1.8.6
+//#define SERVER_ADDRESS_2 "aliyun.kx5278.com"
+#define SERVER_ADDRESS "cs.5278-mobi.com"
+#define SERVER_ADDRESS_2 "cs.5278-mobi.com"
 #define SERVER_PORT 9999
 
 #define ENTER_ROOM_1_GOLD 60000// 进入第1个房间需要的最低金币
