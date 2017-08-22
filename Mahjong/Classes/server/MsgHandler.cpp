@@ -933,7 +933,7 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         }
         GAMEDATA::getInstance()->setMahjongShareData6(data6);
     }
-
+    
 }
 
 
@@ -4476,6 +4476,7 @@ void MsgHandler::handleHuafeiChangeRecord(std::string msg){
         }
     }
     GAMEDATA::getInstance()->setHuaChangeRecord(records);
+    
     FangkaChangeRecord fangRecord;
     if(_mDoc.HasMember("list2")){
         const rapidjson::Value &list = _mDoc["list2"];
@@ -4490,6 +4491,7 @@ void MsgHandler::handleHuafeiChangeRecord(std::string msg){
         }
     }
     GAMEDATA::getInstance()->setFangkaChangeRecord(fangRecord);
+    
     postNotifyMessage(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, nullptr);
 }
 

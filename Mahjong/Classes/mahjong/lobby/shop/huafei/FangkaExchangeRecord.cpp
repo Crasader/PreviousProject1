@@ -53,7 +53,7 @@ bool FangkaExchangeRecord::init(){
 void FangkaExchangeRecord::onEnter(){
     Layer::onEnter();
     recordListener = EventListenerCustom::create(MSG_PLAYER_HAUFEI_EXCHANGE_RECORD, [=](EventCustom* event){
-        if(GAMEDATA::getInstance()->getHuaChangeRecord().records.size()>0){
+        if(GAMEDATA::getInstance()->getFangkaChangeRecord().records.size()>0){
             if(NULL != getChildByTag(1001)){
                 ((TableView*)getChildByTag(1001))->reloadData();
             }
@@ -64,7 +64,6 @@ void FangkaExchangeRecord::onEnter(){
             auto text = Sprite::create("shop/no_record_text.png");
             text->setPosition(640,360);
             addChild(text);
-            
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(recordListener, 1);
