@@ -99,7 +99,6 @@ public:
     CC_SYNTHESIZE(int, gameType, GameType);//游戏类型:1上海麻将,2上海麻将复盘,3红中麻将,4红中麻将复盘,5崇明麻将，6崇明麻将复盘
     CC_SYNTHESIZE(int, heroSeatId, HeroSeatId);
     CC_SYNTHESIZE(int, currentBank, CurrentBank);
-    CC_SYNTHESIZE(int, currentSelectRoomId, CurrentSelectRoomId);
     CC_SYNTHESIZE(int, playRoomID, PlayRoomID);
     CC_SYNTHESIZE(int, reliveNumber, ReliveNumber);
     CC_SYNTHESIZE(bool, isSelected, IsSelected);

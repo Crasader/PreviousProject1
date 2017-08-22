@@ -63,22 +63,8 @@ void LobbyScene::signUpdate(float dt){
         GAMEDATA::getInstance()->setShowProtected(false);
     }
     if(GAMEDATA::getInstance()->getShowDialogType() == 2){
-        for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
-            if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-                if(UserData::getInstance()->isWeixinPayOpen()){
-                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                    addChild(gold,30);
-                }else{
-                    HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_16"),NULL);
-                    addChild(hint,100);
-                }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS)
-                GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp(),GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                addChild(gold,30);
-#endif
-            }
-        }
+        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(GAMEDATA::getInstance()->getEnterRoomResp());
+        addChild(gold,30);
         GAMEDATA::getInstance()->setShowDialogType(-1);
     }
     else if(GAMEDATA::getInstance()->getShowDialogType() == 3){
@@ -878,23 +864,8 @@ void LobbyScene::addEventListener(){
             GAMEDATA::getInstance()->setIsCompetitionQueue(false);
             Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
         } else if(newRespData.result == "2"){
-            for(auto var : GAMEDATA::getInstance()->getRoomList().rooms){
-                if(GAMEDATA::getInstance()->getCurrentSelectRoomId() == var.roomId){
-#if(CC_TARGET_PLATFORM ==  CC_PLATFORM_ANDROID)
-                    if(UserData::getInstance()->isWeixinPayOpen()){
-                        GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(newRespData,GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                        addChild(gold,4);
-                    }else{
-                        HintDialog* hint = HintDialog::create(ChineseWord("dialog_text_16"),NULL);
-                        addChild(hint,100);
-                    }
-#elif(CC_TARGET_PLATFORM ==  CC_PLATFORM_IOS||CC_TARGET_PLATFORM ==  CC_PLATFORM_MAC)
-                    GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(newRespData,GAMEDATA::getInstance()->getCurrentSelectRoomId());
-                    addChild(gold,4);
-#endif
-                }
-            }
-        }
+            GoldNotEnoughDialog* gold = GoldNotEnoughDialog::create(newRespData);
+            addChild(gold,4);        }
         else if(newRespData.result == "3"){
             if(atoi(respData->rsid.c_str()) == ROOM_2){
                 EnterRoomDialog* dia = EnterRoomDialog::create(EnterRoomDialogType::goldMoreLeve1);

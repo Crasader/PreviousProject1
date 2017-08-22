@@ -14,9 +14,9 @@
 #include "wechat/android/CallAndroidMethod.h"
 #include "wechat/ios/CallIOSMethod.h"
 
-GoldNotEnoughDialog* GoldNotEnoughDialog::create(EnterRoomResp newRespData,int type){
+GoldNotEnoughDialog* GoldNotEnoughDialog::create(EnterRoomResp newRespData){
     GoldNotEnoughDialog* ret = new GoldNotEnoughDialog();
-    if(ret &&ret->init(newRespData,type)){
+    if(ret &&ret->init(newRespData)){
         ret->autorelease();
         return ret;
     }else{
@@ -26,7 +26,7 @@ GoldNotEnoughDialog* GoldNotEnoughDialog::create(EnterRoomResp newRespData,int t
     }
 }
 
-bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
+bool GoldNotEnoughDialog::init(EnterRoomResp newRespData){
     if(!Layer::init()){
         return false;
     }
@@ -34,7 +34,6 @@ bool GoldNotEnoughDialog::init( EnterRoomResp newRespData,int type){
     auto bg0 = LayerColor::create(Color4B(0, 0, 0, 204), 1280, 720);
     addChild(bg0);
     
-    setRoomType(type);
     MenuItem* item1 = MenuItem::create();
     item1->setContentSize(Size(1280, 720));
     Menu* menu0 = Menu::create(item1, NULL);
@@ -111,46 +110,9 @@ void GoldNotEnoughDialog::closeView(){
 
 
 void GoldNotEnoughDialog::chargeGold(){
-    if(UserData::getInstance()->getFangkaNum() >= getMinGoldEnterRoom(getRoomType())/40000){
-        ChargeGold* gold = ChargeGold::create();
-        getParent()-> addChild(gold,4);
-        removeFromParent();
-    }else{
-        if (getRoomType() == ROOM_1){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-            CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "4");
+    CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), GAMEDATA::getInstance()->getPayGoldPoint().payId);
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),atoi(GAMEDATA::getInstance()->getPayGoldPoint().payId.c_str()));
 #endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-            CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),4);
-#endif
-        }else if(getRoomType() == ROOM_2){
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-            CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "5");
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-            CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),5);
-#endif
-        }
-        else if(getRoomType() == ROOM_3){
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-            CallAndroidMethod::getInstance()->requestEvent(UserData::getInstance()->getPoxiaoId(), "6");
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-            CallIOSMethod::getInstance()->doPayEvent(UserData::getInstance()->getPoxiaoId(),6);
-#endif
-        }
-    }
-}
-
-int GoldNotEnoughDialog::getMinGoldEnterRoom(int type){
-    if (type == ROOM_1){
-        return ENTER_ROOM_1_GOLD;
-    }else if(type == ROOM_2){
-        return ENTER_ROOM_2_GOLD;
-        
-    }else if(type == ROOM_3){
-        return ENTER_ROOM_3_GOLD;
-    }else {
-        return 0;
-    }
 }

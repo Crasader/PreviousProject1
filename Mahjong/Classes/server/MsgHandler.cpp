@@ -1133,6 +1133,10 @@ void MsgHandler::enterRoomResp(std::string msg){
         const rapidjson::Value &applefee = _mDoc["applefee"];
         pointInfo.applefee = applefee.GetString();
     }
+    if(_mDoc.HasMember("point")){
+        const rapidjson::Value &point = _mDoc["point"];
+        pointInfo.payId = point.GetString();
+    }
     GAMEDATA::getInstance()->setPayGoldPoint(pointInfo);
     
     //进入房间成功才会有其他玩家的数据

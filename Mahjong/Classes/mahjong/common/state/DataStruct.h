@@ -893,5 +893,6 @@ struct PayGoldPoint{
     std::string applefee;
     std::string gold;
     std::string applegold;
+    std::string payId;
 };
 #endif

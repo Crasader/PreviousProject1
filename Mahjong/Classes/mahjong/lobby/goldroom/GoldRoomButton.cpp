@@ -66,7 +66,6 @@ void GoldRoomButton::openGoldRoom(Ref* ref){
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&imageEvent);
     MenuItemImage* temp  = (MenuItemImage*) ref;
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomCommand("1",StringUtils::format("%d",temp->getTag())));
-    GAMEDATA::getInstance()->setCurrentSelectRoomId(temp->getTag());
 }
 
 
