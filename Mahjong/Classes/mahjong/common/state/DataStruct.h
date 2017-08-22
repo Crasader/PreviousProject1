@@ -870,6 +870,15 @@ struct MahjongShareData5{
     std::string pcontent;
     std::string type;
 };
+struct MahjongShareData6{
+    std::string head;
+    std::string pic;
+    std::string url;
+    std::string content;
+    std::string phead;
+    std::string pcontent;
+    std::string type;
+};
 
 struct PayPointInfo{
     std::string fee;

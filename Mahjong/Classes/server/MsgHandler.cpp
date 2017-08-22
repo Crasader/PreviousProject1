@@ -915,6 +915,25 @@ void MsgHandler::getPlayerInfoResp(std::string msg){
         }
         GAMEDATA::getInstance()->setMahjongShareData5(data5);
     }
+    if(_mDoc.HasMember("share6")){
+        const rapidjson::Value &share6 = _mDoc["share6"];
+        MahjongShareData6 data6;
+        data6.pic = share6["pic"].GetString();
+        data6.url = share6["url"].GetString();
+        data6.head = share6["head"].GetString();
+        data6.content = share6["content"].GetString();
+        if(share6.HasMember("phead")){
+            data6.phead = share6["phead"].GetString();
+        }
+        if(share6.HasMember("pcontent")){
+            data6.pcontent = share6["pcontent"].GetString();
+        }
+        if(share6.HasMember("type")){
+            data6.type = share6["type"].GetString();
+        }
+        GAMEDATA::getInstance()->setMahjongShareData6(data6);
+    }
+
 }
 
 
