@@ -65,7 +65,7 @@ bool GongZhongHaoLayer::init(){
     haoma->setPosition(685,545);
     addChild(haoma);
     
-    auto copyWxImg  = MenuItemImage::create("gongzhonghao/copy_1.png", "gongzhonghao/copy_2.png", CC_CALLBACK_0(GongZhongHaoLayer::copyText,this));
+    auto copyWxImg  = MenuItemImage::create("share/btn_share_copy_1.png", "share/btn_share_copy_2.png", CC_CALLBACK_0(GongZhongHaoLayer::copyText,this));
     auto copyMenu = Menu::create(copyWxImg,NULL);
     copyMenu->setPosition(945,550);
     addChild(copyMenu);

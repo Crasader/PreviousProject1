@@ -62,9 +62,10 @@ bool ChargeFangka::init(){
         label->setPosition(610,155);
         label->setColor(Color3B::RED);
         addChild(label);
-        auto copyWxImg  = MenuItemImage::create("shop/copy_btn_1.png", "shop/copy_btn_2.png", CC_CALLBACK_0(ChargeFangka::copyText,this));
+        auto copyWxImg  = MenuItemImage::create("share/btn_share_copy_1.png", "share/btn_share_copy_2.png", CC_CALLBACK_0(ChargeFangka::copyText,this));
+        copyWxImg->setScaleX(0.8f);
         auto copyMenu = Menu::create(copyWxImg,NULL);
-        copyMenu->setPosition(952,145);
+        copyMenu->setPosition(948,145);
         addChild(copyMenu);
     }
 
