@@ -153,6 +153,9 @@ public:
     std::string getWeiXinPayText();
     void setWeiXinPayText(std::string msg);
     
+    std::string getServerAppVersion();
+    void setServerAppVersion(std::string msg);
+    
     //记录玩家最近的游戏类型
     GameMahjongType getLatelyMahjongType();
     void setLatelyMahjongType(GameMahjongType type);

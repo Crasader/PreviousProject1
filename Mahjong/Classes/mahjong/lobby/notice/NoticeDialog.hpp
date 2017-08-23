@@ -27,5 +27,6 @@ private:
     EventListenerCustom* updateContentImg;
     void closeView();
     void download();
+    bool compareVersion(std::string max,std::string min);
 };
 #endif /* NoticeDialog_hpp */

@@ -411,6 +411,14 @@ void UserData::setWeiXinPayText(std::string msg){
     UserDefault::getInstance()->setStringForKey("weixin_pay_kefu_text",msg);
 }
 
+std::string UserData::getServerAppVersion(){
+    return UserDefault::getInstance()->getStringForKey("server_app_version","190");
+}
+
+void UserData::setServerAppVersion(std::string msg){
+    UserDefault::getInstance()->setStringForKey("server_app_version",msg);
+}
+
 GameMahjongType UserData::getLatelyMahjongType(){
     return (GameMahjongType)UserDefault::getInstance()->getIntegerForKey("lately_mahjong_type",GameMahjongType::ShangHai);
 }

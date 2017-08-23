@@ -1266,6 +1266,11 @@ void MsgHandler::loginResp(std::string msg){
             const rapidjson::Value &oper = _mDoc["oper"];
             UserData::getInstance()->setCollaborateUrl(oper.GetString());
         }
+        //服务端提供最新的app版本号
+        if(_mDoc.HasMember("newv")){
+            const rapidjson::Value &newv = _mDoc["newv"];
+            UserData::getInstance()->setServerAppVersion(newv.GetString());
+        }
         //集赞领奖
         if(_mDoc.HasMember("wxs")){
             const rapidjson::Value &wxs = _mDoc["wxs"];

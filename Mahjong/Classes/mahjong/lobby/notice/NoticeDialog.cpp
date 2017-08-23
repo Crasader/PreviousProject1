@@ -68,43 +68,54 @@ void NoticeDialog::closeView(){
 
 
 void NoticeDialog::setContentImage(std::string url,std::string url2,std::string showTime){
-    
-    if(url2 != ""){
-        std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url2);
-        if(path != IAMGE_LOADING){
-            content->setVisible(true);
-            content->setTexture(path);
+    float localVer = atof(UserData::getInstance()->getAppVer().c_str());
+    float serverVer =  atof(UserData::getInstance()->getServerAppVersion().c_str());
+    if(serverVer>localVer){
+        //新版本链接
+        if(url2!= ""){
+            std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url2);
+            if(path != IAMGE_LOADING){
+                content->setVisible(true);
+                content->setTexture(path);
+            }
+            auto cilckMenu = MenuItem::create(CC_CALLBACK_0(NoticeDialog::download, this));
+            cilckMenu->setContentSize(Size(920,600));
+            auto downMenu = Menu::create(cilckMenu,NULL);
+            downMenu->setPosition(640,360);
+            addChild(downMenu,2);
         }
-        auto cilckMenu = MenuItem::create(CC_CALLBACK_0(NoticeDialog::download, this));
-        cilckMenu->setContentSize(Size(920,600));
-        auto downMenu = Menu::create(cilckMenu,NULL);
-        downMenu->setPosition(640,360);
-        addChild(downMenu,2);
     }else{
-        std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url);
-        if(showTime == "")
-            showTime = "6";
-        if(path != IAMGE_LOADING){
-            content->setVisible(true);
-            content->setTexture(path);
-            if("" != GAMEDATA::getInstance()->getGameActivityData().jumpUrl){
-                MenuItem* clickUrl = MenuItem::create([=](Ref* ref){
-                    Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().jumpUrl);
-                });
-                clickUrl->setContentSize(content->getContentSize());
-                Menu* myMenu = Menu::create(clickUrl,NULL);
-                myMenu->setPosition(640,360);
-                addChild(myMenu);
-                if(showTime == ""){
-                    showTime = "6";
+        if(url != ""){
+            std::string path = UrlImageMannger::getInstance()->loadNoticeImgByUrl(url);
+            if(showTime == "")
+                showTime = "6";
+            if(path != IAMGE_LOADING){
+                content->setVisible(true);
+                content->setTexture(path);
+                if("" != GAMEDATA::getInstance()->getGameActivityData().jumpUrl){
+                    MenuItem* clickUrl = MenuItem::create([=](Ref* ref){
+                        Application::getInstance()->openURL(GAMEDATA::getInstance()->getGameActivityData().jumpUrl);
+                    });
+                    clickUrl->setContentSize(content->getContentSize());
+                    Menu* myMenu = Menu::create(clickUrl,NULL);
+                    myMenu->setPosition(640,360);
+                    addChild(myMenu);
+                    if(showTime == ""){
+                        showTime = "6";
+                    }
+                    schedule([=](float dt){
+                        removeFromParent();
+                    }, 0, 0, atoi(showTime.c_str()),"dismiss");
                 }
-                schedule([=](float dt){
-                    removeFromParent();
-                }, 0, 0, atoi(showTime.c_str()),"dismiss");
             }
         }
     }
 }
+
+//true 参数1大于参数2
+//bool NoticeDialog::compareVersion(std::string max,std::string min){
+//    std::vector<std::string> maxs = StringCompare
+//}
 
 void NoticeDialog::download(){
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
