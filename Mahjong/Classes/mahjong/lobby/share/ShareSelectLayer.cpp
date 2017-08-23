@@ -61,6 +61,7 @@ bool ShareSelectLayer::init(){
     addChild(textlabel3);
     
     auto copyImage = MenuItemImage::create("share/btn_share_copy_1.png","share/btn_share_copy_2.png",CC_CALLBACK_0(ShareSelectLayer::copyText, this));
+    copyImage->setScale(0.7f);
     auto copyMenu = Menu::create(copyImage,NULL);
     copyMenu->alignItemsHorizontallyWithPadding(50);
     copyMenu->setPosition(920,500);

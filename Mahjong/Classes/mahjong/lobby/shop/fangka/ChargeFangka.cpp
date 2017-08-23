@@ -53,17 +53,17 @@ bool ChargeFangka::init(){
         label->setWidth(600);
         label->setAlignment(cocos2d::TextHAlignment::CENTER);
         label->setPosition(640,155);
-        label->setColor(Color3B::RED);
+        label->setColor(Color3B(167,43,0));
         addChild(label);
     }else if(UserData::getInstance()->isWeixinPayOpen()&&UserData::getInstance()->getUserPayWay() == "1"){
         auto label = Label::createWithSystemFont(UserData::getInstance()->getWeiXinPayText(), "arial", 20);
         label->setWidth(580);
         label->setAlignment(cocos2d::TextHAlignment::CENTER);
         label->setPosition(610,155);
-        label->setColor(Color3B::RED);
+        label->setColor(Color3B(167,43,0));
         addChild(label);
         auto copyWxImg  = MenuItemImage::create("share/btn_share_copy_1.png", "share/btn_share_copy_2.png", CC_CALLBACK_0(ChargeFangka::copyText,this));
-        copyWxImg->setScaleX(0.8f);
+        copyWxImg->setScale(0.6f);
         auto copyMenu = Menu::create(copyWxImg,NULL);
         copyMenu->setPosition(948,145);
         addChild(copyMenu);

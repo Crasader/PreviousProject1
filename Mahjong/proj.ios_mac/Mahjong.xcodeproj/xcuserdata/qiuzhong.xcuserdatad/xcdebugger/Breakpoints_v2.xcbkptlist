@@ -7670,11 +7670,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/share/ShareSelectLayer.cpp"
-            timestampString = "524732591.004544"
+            timestampString = "525152427.206189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "ShareSelectLayer::shareToFriend()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7734,11 +7734,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/share/ShareSelectLayer.cpp"
-            timestampString = "524741954.933248"
+            timestampString = "525152427.206189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "ShareSelectLayer::shareToQuan()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7750,11 +7750,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/share/ShareSelectLayer.cpp"
-            timestampString = "524741956.91327"
+            timestampString = "525152427.206189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "ShareSelectLayer::shareToFriend()"
             landmarkType = "7">
          </BreakpointContent>
