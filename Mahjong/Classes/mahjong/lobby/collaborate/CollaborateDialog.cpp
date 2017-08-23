@@ -37,7 +37,7 @@ bool CollaborateDialog::init(){
                                        CC_CALLBACK_0(CollaborateDialog::closeView, this));
     
     auto menu =Menu::create(close,NULL);
-    menu->setPosition(1070,630);
+    menu->setPosition(1170,680);
     addChild(menu,10);
     
     content = Sprite::create();
