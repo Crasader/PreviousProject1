@@ -111,6 +111,7 @@ public:
     std::string sendDuiHuanHuafeiCommand(std::string fee,std::string phone);
     std::string sendDuiHuanFangkaCommand(std::string fee);
     std::string sendLaXinDataCommand();
+    std::string sendObserverGameCommand(std::string fanghao,std::string mima);
 private:
     CommandManage();
     static CommandManage* _instance;

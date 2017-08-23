@@ -8,6 +8,9 @@
 #define MSGCODE_QUNEWM_REQUEST  5//玩家群二维码版本号请求 {code:5,poxiaoId:"123"}
 #define MSGCODE_QUNEWM_RESPONSE  6// 玩家群二维码版本号回复 {code:6,version:"1",desc:"33"}
 
+#define MSGCODE_REDIRECT_REQUEST  95//直播请求 {code:95,poxiaoId:"123",fanghao:"1234",secret:"123456"}
+#define MSGCODE_REDIRECT_RESPONSE  96//直播回复 {code:96,poxiaoId:"123",result:"1"} result 1未开始请等待  2房间号不正确
+
 #define MSGCODE_GET_GAME_LIST_REQUEST  102//获取游戏列表请求{code:102,poxiaoId:poxiaoId}
 #define MSGCODE_GET_GAME_LIST_RESPONSE  103//返回游戏列表回复{code:103,poxiaoId:poxiaoId,game:[{gameid:"1",gamename:"上海麻将"},{gameid:"2",gamename:"长沙麻将"}]}
 #define MSGCODE_CHART_REQUEST  104//聊天请求{code:104,poxiaoId:"123",content:"哈哈"}

@@ -751,6 +751,15 @@ std::string CommandManage::sendLaXinDataCommand(){
     return commandString(keyValue);
 }
 
+std::string CommandManage::sendObserverGameCommand(std::string fanghao,std::string mima){
+    std::map<std::string, std::string> keyValue;
+    keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_REDIRECT_REQUEST)));
+    keyValue.insert(map<string, string>::value_type("poxiaoId", UserData::getInstance()->getPoxiaoId()));
+    keyValue.insert(map<string, string>::value_type("fanghao", fanghao));
+    keyValue.insert(map<string, string>::value_type("secret", mima));
+    return commandString(keyValue);
+}
+
 std::string CommandManage::getCMOpenRoomCommand(std::string ftype,std::string dihua,std::string lz,std::string fcy,std::string ifkb,std::string size){
     std::map<std::string, std::string> keyValue;
     keyValue.insert(map<string, string>::value_type("code", StringUtil::itos(MSGCODE_CM_FRIEND_GAME_REQUEST)));
