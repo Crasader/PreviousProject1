@@ -83,7 +83,7 @@ void UserSetting::drawDialog(){
                                                          "setting/slide_btn_1.png");
     slide_control->setMinimumValue(0.0f);//设置最小值
     slide_control->setMaximumValue(100.0f);//设置最大值
-    slide_control->setValue(UserData::getInstance()->getMusicValue()*90+5);//设置初始值
+    slide_control->setValue(UserData::getInstance()->getSoundValue()*90+5);//设置初始值
     slide_control->setTag(20);
     slide_control->addTargetWithActionForControlEvents(this,cccontrol_selector(UserSetting::slideCallback),Control::EventType::VALUE_CHANGED);//设置拖动回调
     slide_control->setPosition(720,380);
