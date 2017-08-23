@@ -7846,11 +7846,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/notice/NoticeDialog.cpp"
-            timestampString = "525151217.563389"
+            timestampString = "525161313.490361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "NoticeDialog::setContentImage(std::string url,std::string url2,std::string showTime)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7862,11 +7862,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/notice/NoticeDialog.cpp"
-            timestampString = "525151217.563389"
+            timestampString = "525161313.490361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "NoticeDialog::setContentImage(std::string url,std::string url2,std::string showTime)"
             landmarkType = "7">
          </BreakpointContent>
@@ -7878,11 +7878,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/lobby/notice/NoticeDialog.cpp"
-            timestampString = "525151217.563389"
+            timestampString = "525161313.490361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "NoticeDialog::setContentImage(std::string url,std::string url2,std::string showTime)"
             landmarkType = "7">
          </BreakpointContent>

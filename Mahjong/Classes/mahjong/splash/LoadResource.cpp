@@ -26,12 +26,21 @@ bool LoadResource::init(){
         return false;
     }
 #if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CallAndroidMethod::getInstance()->updateClientAppVersion();
     showHealthLayer();
     std::string path =StringUtils::format("%s/mahjong_screen_shot.png",CallAndroidMethod::getInstance()->getSdCardDir().c_str());
     log("screenShot path = %s",path.c_str());
     utils::captureScreen(NULL ,path);
 #endif
-#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS||CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CallIOSMethod::getInstance()->updateClientAppVersion();
+    showNormalLayer();
+    showLoadLayerAnim();
+    std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());
+    log("screenShot path = %s",path.c_str());
+    utils::captureScreen(NULL ,path);
+#endif
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     showNormalLayer();
     showLoadLayerAnim();
     std::string path =StringUtils::format("%smahjong_screen_shot.png",FileUtils::getInstance()->getWritablePath().c_str());

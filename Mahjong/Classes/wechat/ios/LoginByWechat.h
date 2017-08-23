@@ -34,4 +34,6 @@
 
 - (BOOL) queryPayResult;
 
+- (void) updateClientAppVersion;
+
 @end

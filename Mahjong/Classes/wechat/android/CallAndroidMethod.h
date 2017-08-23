@@ -17,6 +17,7 @@ public:
     void shareImageToWeChat(std::string imagePath,bool friends);
     void shareSDCardImageToWeChat(std::string imagePath,bool friends);
     void copyToPasteboard(std::string msg);
+    void updateClientAppVersion();
     void downLoadAndroidApk(std::string url);
     std::string getBatteryPersent();
     std::string getSdCardDir();

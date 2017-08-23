@@ -184,3 +184,19 @@ void CallAndroidMethod::downLoadAndroidApk(std::string url){
     }
 #endif
 }
+
+void CallAndroidMethod::updateClientAppVersion(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo methodInfo;
+    auto path  = String::createWithFormat("%s%s","org/cocos2dx/cpp","/AppActivity");
+    bool isHave = JniHelper::getStaticMethodInfo(methodInfo,path->getCString(),"getAndroidAppVersion","()Ljava/lang/String;");
+    if(isHave){
+        jstring str = (jstring)JniHelper::getEnv()->CallStaticObjectMethod(methodInfo.classID, methodInfo.methodID);
+        JniHelper::getEnv()->DeleteLocalRef(methodInfo.classID);
+        CCString *ret = new CCString(JniHelper::jstring2string(str).c_str());
+        ret->autorelease();
+        JniHelper::getEnv()->DeleteLocalRef(str);
+        UserData::getInstance()->setAppVer(ret->getCString());
+    }
+#endif
+}

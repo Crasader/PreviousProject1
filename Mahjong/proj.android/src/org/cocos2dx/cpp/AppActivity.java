@@ -31,6 +31,8 @@ import org.cocos2dx.cpp.payment.Payment;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import com.tbu.androidtools.Debug;
+import com.tbu.androidtools.TbuAndroidTools;
+import com.tbu.androidtools.app.AppInfo;
 
 import android.Manifest;
 import android.app.Activity;
@@ -129,5 +131,9 @@ public class AppActivity extends Cocos2dxActivity {
 		Uri content_url = Uri.parse(url);
 		intent.setData(content_url);
 		myActivity.startActivity(Intent.createChooser(intent, "请选择推荐浏览器"));
+	}
+	
+	public static String getAndroidAppVersion(){	
+		return AppInfo.getVersion();
 	}
 }

@@ -282,6 +282,10 @@ static NSString *DEVICESTRING= @"iphone";
     [WXApi sendReq:req];
 }
 
+- (void) updateClientAppVersion {
+    UserData::getInstance()->setAppVer(std::string([GAME_VERSION UTF8String]));
+}
+
 -(void) payWeChat:(NSString*) poxiaoId PayPoint:(NSString*) payPoint{
     NSString* urlString= [NSString stringWithFormat:@"%s?charge_type=1&tbu_id=201617&pay_platform=apple&game_version=1&hsman=ios&hstype=ios&imei=123456789&imsi=46000&channel_id=apple&request_pay_amount=1&poxiao_id=%@&pay_point=%@",APP_WECHAT_PAY,poxiaoId,payPoint];
     NSLog(@"url:%@",urlString);

@@ -118,6 +118,11 @@ void CallIOSMethod::copyToPasteboard(std::string str){
     pasteboard.string = nsMessage;
 }
 
+void CallIOSMethod::updateClientAppVersion(){
+    LoginByWechat* loginByWechat = [LoginByWechat sharedManager];
+    [loginByWechat updateClientAppVersion];
+}
+
 
 void CallIOSMethod::getProductId(std::string poxiaoId,std::string payId){
     HttpRequest* request = new HttpRequest();
@@ -168,4 +173,6 @@ void CallIOSMethod::onHttpRequestCompleted(HttpClient *sender, HttpResponse *res
         [alerView2 show];
     }
 }
+
+
 
