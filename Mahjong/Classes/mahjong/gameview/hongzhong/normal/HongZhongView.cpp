@@ -196,7 +196,7 @@ void HongZhongView::startGameAgain(){
         GAMEDATA::getInstance()->addPlayersInfo(info);
         recoverPlayer(player,SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId),info);
     }
-
+    
 }
 
 void HongZhongView::update(float dt){
@@ -1388,6 +1388,13 @@ void HongZhongView::onEnter(){
             playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
+        }else if (seatId == ClientSeatId::hero){
+            hideHuGangControllPad();
+            HeroCpgRespData heroCpgData;
+            heroCpgData.result = 1;
+            heroCpgData.playCpgt = newData;
+            playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newData.sId));
+            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
         }
         
     });
@@ -1790,7 +1797,7 @@ void HongZhongView::onEnter(){
                         Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(0)));
                     }
                 }
-
+                
             },0,0,delayTime,"go2Result");
         }else{
             schedule([=](float dt){
