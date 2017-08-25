@@ -218,6 +218,29 @@ void MahjongView::startGameAgain(){
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
     GAMEDATA::getInstance()->setIsTingState(false);
+    
+    FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();
+    for (int i = 0; i < data.players.size(); i++)
+    {
+        PlayerGameData player = data.players.at(i);
+        Player* info = new Player();
+        info->setSeatId(player.seatId);
+        info->setGold(player.gold);
+        info->setDiamond(player.diamond);
+        info->setNickname(player.nickname);
+        info->setPicture(player.pic);
+        info->setGender(player.gender);
+        info->setScore(player.jifen);
+        info->setTicket(player.lequan);
+        info->setLockDiamond(player.bangzuan);
+        info->setPoxiaoId(player.poxiaoId);
+        info->setFangka(player.fangka);
+        info->setIP(player.ip);
+        info->setIsReady(true);
+        info->setUmark(player.umark);
+        GAMEDATA::getInstance()->addPlayersInfo(info);
+        recoverPlayer(player,SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId),info);
+    }
 }
 
 void MahjongView::update(float dt){

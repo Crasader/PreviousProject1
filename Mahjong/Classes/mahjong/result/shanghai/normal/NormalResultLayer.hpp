@@ -19,7 +19,6 @@ public:
     virtual void onExit() override;
     CREATE_FUNC(NormalResultLayer);
 private:
-    EventListenerCustom* continueAgainLisetner;
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* myCoreLoginRespListener;
     EventListenerCustom* networkBreakListener;
@@ -27,6 +26,7 @@ private:
     EventListenerCustom* enterFriendRoomListener;
     EventListenerCustom* hzEnterFriendRoomListener;
     EventListenerCustom* dissovelRoomSelectNotifyListener;
+    EventListenerCustom* thiefLisetner;
     int totalTime = 5;
     LabelAtlas* timeLabel;
     bool showDissolveDialog = false;

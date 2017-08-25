@@ -345,19 +345,19 @@ void CMNormalResultLayer::afterCaptured(bool succeed, const std::string &outputF
 }
 
 void CMNormalResultLayer::continueGame(){
-    if(GAMEDATA::getInstance()->getIsGotoLobby()){
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-    }else{
-        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-        for (int i = 0; i < players.size(); i++){
-            if(players.at(i)->getSeatId() != GAMEDATA::getInstance()->getHeroSeatId()){
-                players.at(i)->setIsReady(false);
-            }
-        }
-        schedule([=](float dt){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMContinueGameCommand());
-        }, 0.0f, 0.0f, 0.8f,"delayGame");
-    }
+//    if(GAMEDATA::getInstance()->getIsGotoLobby()){
+//        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+//    }else{
+//        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+//        for (int i = 0; i < players.size(); i++){
+//            if(players.at(i)->getSeatId() != GAMEDATA::getInstance()->getHeroSeatId()){
+//                players.at(i)->setIsReady(false);
+//            }
+//        }
+//        schedule([=](float dt){
+//            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getCMContinueGameCommand());
+//        }, 0.0f, 0.0f, 0.8f,"delayGame");
+//    }
 }
 
 
@@ -380,16 +380,11 @@ void CMNormalResultLayer::updateTime(float dt){
 
 void CMNormalResultLayer::onEnter(){
     Layer::onEnter();
-    continueAgainLisetner =  EventListenerCustom::create(MSG_HERO_CONTINUE_RESP, [=](EventCustom* event){
-        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
-            //返回正常可以继续游戏
-            GAMEDATA::getInstance()->setContinueAgain(true);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }else{
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        }
+    thiefLisetner =  EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setContinueAgain(true);
+        Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(thiefLisetner, 1);
     
     //登录地址变更
     playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
@@ -453,7 +448,7 @@ void CMNormalResultLayer::onEnter(){
 
 void CMNormalResultLayer::onExit(){
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(thiefLisetner);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);

@@ -174,6 +174,29 @@ void HongZhongView::startGameAgain(){
     ((Orientation*)getChildByTag(123))->resetBank();
     GAMEDATA::getInstance()->setIsTingProcess(false);
     GAMEDATA::getInstance()->setIsTingState(false);
+    FupanGameData data = GAMEDATA::getInstance()->getFupanGameData();
+    for (int i = 0; i < data.players.size(); i++)
+    {
+        PlayerGameData player = data.players.at(i);
+        Player* info = new Player();
+        info->setSeatId(player.seatId);
+        info->setGold(player.gold);
+        info->setDiamond(player.diamond);
+        info->setNickname(player.nickname);
+        info->setPicture(player.pic);
+        info->setGender(player.gender);
+        info->setScore(player.jifen);
+        info->setTicket(player.lequan);
+        info->setLockDiamond(player.bangzuan);
+        info->setPoxiaoId(player.poxiaoId);
+        info->setFangka(player.fangka);
+        info->setIP(player.ip);
+        info->setIsReady(true);
+        info->setUmark(player.umark);
+        GAMEDATA::getInstance()->addPlayersInfo(info);
+        recoverPlayer(player,SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), player.seatId),info);
+    }
+
 }
 
 void HongZhongView::update(float dt){
@@ -757,7 +780,7 @@ void HongZhongView::recoverPlayer(PlayerGameData data, int type, Player* playerI
             playerLeft->setIsOffLine(data.isOnline == 0?true:false);
             addChild(playerLeft);
             playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerLeft->recoverHand(data.hand);
+            playerLeft->drawMingPai(data.hand);
             playerLeft->recoverPlayed(data.outhand);
             playerLeft->recoverHua(data.hua);
             playerLeft->setIsTrusteeship(data.tru == 1?true:false);
@@ -771,7 +794,7 @@ void HongZhongView::recoverPlayer(PlayerGameData data, int type, Player* playerI
             playerRight->setIsOffLine(data.isOnline == 0?true:false);
             addChild(playerRight);
             playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerRight->recoverHand(data.hand);
+            playerRight->drawMingPai(data.hand);
             playerRight->recoverPlayed(data.outhand);
             playerRight->recoverHua(data.hua);
             playerRight->setIsTrusteeship(data.tru == 1?true:false);
@@ -785,7 +808,7 @@ void HongZhongView::recoverPlayer(PlayerGameData data, int type, Player* playerI
             playerOpposite->setIsOffLine(data.isOnline == 0?true:false);
             addChild(playerOpposite);
             playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerOpposite->recoverHand(data.hand);
+            playerOpposite->drawMingPai(data.hand);
             playerOpposite->recoverPlayed(data.outhand);
             playerOpposite->recoverHua(data.hua);
             playerOpposite->setIsTrusteeship(data.tru == 1?true:false);
@@ -1488,17 +1511,17 @@ void HongZhongView::onEnter(){
             }
         }
         else if (seatId == ClientSeatId::left){
-            playerLeft->drawLeftPlayerTurn();
+            playerLeft->drawLeftPlayerTurnMingpai(newData.poker);
             playerLeft->replaceTurnHua(newData);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->drawRightPlayerTurn();
+            playerRight->drawRightPlayerTurnMingpai(newData.poker);
             playerRight->replaceTurnHua(newData);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawOppositePlayerTurn();
+            playerOpposite->drawOppositePlayerTurnMingpai(newData.poker);
             playerOpposite->replaceTurnHua(newData);
             playerOpposite->startTimeClockAnim();
         }

@@ -10,7 +10,7 @@ bool MjGameScene::init(){
     if(GAMEDATA::getInstance()->getGameType() == 3){
         HongZhongView* view = HongZhongView::create();
         addChild(view);
-    } if(GAMEDATA::getInstance()->getGameType() == 5){
+    }else if(GAMEDATA::getInstance()->getGameType() == 5){
         ChongMingView* mjView = ChongMingView::create();
         addChild(mjView);
     }else{

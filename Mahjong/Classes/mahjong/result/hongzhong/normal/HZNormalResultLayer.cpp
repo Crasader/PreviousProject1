@@ -116,7 +116,7 @@ void HZNormalResultLayer::showRoomInfo(){
                 addChild(spri);
             }
         }else{
-        
+            
             auto fanghao = Sprite::create("result/fang_jian_hao.png");
             fanghao->setPosition(900,560);
             addChild(fanghao,1);
@@ -217,7 +217,7 @@ void HZNormalResultLayer::showLayerBtn(){
         }
     }else{
         schedule(schedule_selector(HZNormalResultLayer::updateTime), 1.0f, kRepeatForever, 0);
-
+        
         if(GAMEDATA::getInstance()->getIsCompetitionState()){
             auto feedImage = MenuItemImage::create("result/start_game_btn_1.png","result/start_game_btn_2.png",
                                                    CC_CALLBACK_0(HZNormalResultLayer::continueGame, this));
@@ -316,19 +316,19 @@ void HZNormalResultLayer::afterCaptured(bool succeed, const std::string &outputF
 }
 
 void HZNormalResultLayer::continueGame(){
-    if(GAMEDATA::getInstance()->getIsGotoLobby()){
-        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-    }else{
-        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
-        for (int i = 0; i < players.size(); i++){
-            if(players.at(i)->getSeatId() != GAMEDATA::getInstance()->getHeroSeatId()){
-                players.at(i)->setIsReady(false);
-            }
-        }
-        schedule([=](float dt){
-            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayGameAgain());
-        }, 0.0f, 0.0f, 0.8f,"delayGame");
-    }
+    //    if(GAMEDATA::getInstance()->getIsGotoLobby()){
+    //        Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
+    //    }else{
+    //        vector<Player*> players = GAMEDATA::getInstance()->getPlayersInfo();
+    //        for (int i = 0; i < players.size(); i++){
+    //            if(players.at(i)->getSeatId() != GAMEDATA::getInstance()->getHeroSeatId()){
+    //                players.at(i)->setIsReady(false);
+    //            }
+    //        }
+    //        schedule([=](float dt){
+    //            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getHZPlayGameAgain());
+    //        }, 0.0f, 0.0f, 0.8f,"delayGame");
+    //    }
 }
 
 
@@ -351,16 +351,12 @@ void HZNormalResultLayer::updateTime(float dt){
 
 void HZNormalResultLayer::onEnter(){
     Layer::onEnter();
-    continueAgainLisetner =  EventListenerCustom::create(MSG_HZ_HERO_CONTINUE_RESP, [=](EventCustom* event){
-        if (GAMEDATA::getInstance()->getEnterRoomResp().result == "1"){
-            //返回正常可以继续游戏
-            GAMEDATA::getInstance()->setContinueAgain(true);
-            Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
-        }else{
-            Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
-        }
+    thiefLisetner =  EventListenerCustom::create(MSG_GAME_FU_PAN_PLAYER_NOTIFY, [=](EventCustom* event){
+        GAMEDATA::getInstance()->setContinueAgain(true);
+        Director::getInstance()->replaceScene(TransitionFade::create(1, MjGameScene::create()));
+        
     });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(continueAgainLisetner, 1);
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(thiefLisetner, 1);
     
     //登录地址变更
     playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
@@ -369,7 +365,7 @@ void HZNormalResultLayer::onEnter(){
         });
         addChild(hin,5);
     });
-
+    
     
     myCoreLoginRespListener = EventListenerCustom::create(MSG_LOGIN_RESP, [=](EventCustom* event){
         Director::getInstance()->replaceScene(TransitionFade::create(0.3, LobbyScene::create()));
@@ -416,11 +412,11 @@ void HZNormalResultLayer::onEnter(){
 
 void HZNormalResultLayer::onExit(){
     Layer::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(continueAgainLisetner);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(thiefLisetner);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerReplaceLoginListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(myCoreLoginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(networkBreakListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(hzEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(dissovelRoomSelectNotifyListener);
-
+    
 }

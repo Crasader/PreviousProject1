@@ -19,7 +19,7 @@ public:
     virtual void onExit() override;
     CREATE_FUNC(CMNormalResultLayer);
 private:
-    EventListenerCustom* continueAgainLisetner;
+    EventListenerCustom* thiefLisetner;
     EventListenerCustom* playerReplaceLoginListener;
     EventListenerCustom* myCoreLoginRespListener;
     EventListenerCustom* networkBreakListener;
