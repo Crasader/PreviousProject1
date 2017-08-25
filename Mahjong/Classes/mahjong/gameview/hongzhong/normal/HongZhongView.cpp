@@ -1140,9 +1140,6 @@ void HongZhongView::onExit()
 
 void HongZhongView::onEnter(){
     Layer::onEnter();
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    //MyIM::joinRoom(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
-#endif
     //登录地址变更
     playerReplaceLoginListener = Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_PLAYER_REPLACE_LOGIN, [=](EventCustom* event){
         HintDialog* hin = HintDialog::create(ChineseWord("dialog_text_5"),[=](Ref* ref){

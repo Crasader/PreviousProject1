@@ -100,8 +100,8 @@ void MahjongNumberKeypads::clickNumber(Ref* ref){
     }
     std::string num = numberShow->getString();
     if(num.size() == 6){
-        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(num));
-//        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendObserverGameCommand(num,"654321"));
+//        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getEnterRoomByIdCommand(num));
+        NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->sendObserverGameCommand(num,"654321"));
     }
 }
 
