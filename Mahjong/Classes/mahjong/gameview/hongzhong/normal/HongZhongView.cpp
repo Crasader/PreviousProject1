@@ -1545,17 +1545,17 @@ void HongZhongView::onEnter(){
         if (seatId == ClientSeatId::left){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
-            playerLeft->drawPlayedJong(poker);
+            playerLeft->drawPlayedJongMingpai(poker);
         }
         else if (seatId == ClientSeatId::right){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
-            playerRight->drawPlayedJong(poker);
+            playerRight->drawPlayedJongMingpai(poker);
         }
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
-            playerOpposite->drawPlayedJong(poker);
+            playerOpposite->drawPlayedJongMingpai(poker);
         }else if(seatId == ClientSeatId::hero){
             schedule([=](float dt){
                 playerHero->stopTimeClockAnim();

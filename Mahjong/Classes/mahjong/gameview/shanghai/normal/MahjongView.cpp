@@ -1662,7 +1662,7 @@ void MahjongView::onEnter(){
         if (seatId == ClientSeatId::left){
             playerLeft->setIsOffLine(false);
             playerLeft->stopTimeClockAnim();
-            playerLeft->drawPlayedJong(poker);
+            playerLeft->drawPlayedJongMingpai(poker);
             if(poker == playerOpposite->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
             }else if(poker == playerHero->getLastPoker()){
@@ -1672,7 +1672,7 @@ void MahjongView::onEnter(){
         else if (seatId == ClientSeatId::right){
             playerRight->setIsOffLine(false);
             playerRight->stopTimeClockAnim();
-            playerRight->drawPlayedJong(poker);
+            playerRight->drawPlayedJongMingpai(poker);
             
             if(poker == playerHero->getLastPoker()){
                 Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
@@ -1683,7 +1683,7 @@ void MahjongView::onEnter(){
         else if (seatId == ClientSeatId::opposite){
             playerOpposite->setIsOffLine(false);
             playerOpposite->stopTimeClockAnim();
-            playerOpposite->drawPlayedJong(poker);
+            playerOpposite->drawPlayedJongMingpai(poker);
             if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
                 if(poker == playerRight->getLastPoker()){
                     Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
