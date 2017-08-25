@@ -86,121 +86,121 @@ void PlayerHero::hideInviteButton(){
 }
 
 bool PlayerHero::onTouchBegan(Touch *touch, Event *event) {
-    if (!this->getIsAllowTouch() || GAMEDATA::getInstance()->getIsTingState()){
-        return false;
-    }
-    selectJong = getTouchJong(touch);
-    if(NULL != selectJong&&!selectJong->getIsProtected()){
-        updateSelectedInfo(selectJong);
-        if(GAMEDATA::getInstance()->getIsTingProcess()){
-            selectJong->setPosition(selectJong->getPositionX(),JONG_POS_Y+40);
-            //其余的牌Y轴高度回落
-            resetHandJongsY(selectJong);
-        }
-        if(isAllowPlay){
-            for(auto var : heroHuData){
-                if(var.poker == selectJong->getJongType()){
-                    if(NULL != getChildByTag(6689)){
-                        getChildByTag(6689)->removeFromParent();
-                    }
-                    HuPaiHintLayer* huPai =  HuPaiHintLayer::create(var,this);
-                    huPai->setTag(6689);
-                    addChild(huPai,5);
-                    startTimeClockAnim(15, 2);
-                }
-            }
-            if(GAMEDATA::getInstance()->getGameType() == 1&&!GAMEDATA::getInstance()->getIsTingProcess()){
-                if(NULL != getChildByTag(6689)){
-                    getChildByTag(6689)->removeFromParent();
-                }
-            }
-        }
-    }else{
-        selectJong = NULL;
-    }
-    if(NULL != virtualJong){
-        virtualJong->removeFromParent();
-        virtualJong = NULL;
-    }
-    
+    //    if (!this->getIsAllowTouch() || GAMEDATA::getInstance()->getIsTingState()){
+    //        return false;
+    //    }
+    //    selectJong = getTouchJong(touch);
+    //    if(NULL != selectJong&&!selectJong->getIsProtected()){
+    //        updateSelectedInfo(selectJong);
+    //        if(GAMEDATA::getInstance()->getIsTingProcess()){
+    //            selectJong->setPosition(selectJong->getPositionX(),JONG_POS_Y+40);
+    //            //其余的牌Y轴高度回落
+    //            resetHandJongsY(selectJong);
+    //        }
+    //        if(isAllowPlay){
+    //            for(auto var : heroHuData){
+    //                if(var.poker == selectJong->getJongType()){
+    //                    if(NULL != getChildByTag(6689)){
+    //                        getChildByTag(6689)->removeFromParent();
+    //                    }
+    //                    HuPaiHintLayer* huPai =  HuPaiHintLayer::create(var,this);
+    //                    huPai->setTag(6689);
+    //                    addChild(huPai,5);
+    //                    startTimeClockAnim(15, 2);
+    //                }
+    //            }
+    //            if(GAMEDATA::getInstance()->getGameType() == 1&&!GAMEDATA::getInstance()->getIsTingProcess()){
+    //                if(NULL != getChildByTag(6689)){
+    //                    getChildByTag(6689)->removeFromParent();
+    //                }
+    //            }
+    //        }
+    //    }else{
+    //        selectJong = NULL;
+    //    }
+    //    if(NULL != virtualJong){
+    //        virtualJong->removeFromParent();
+    //        virtualJong = NULL;
+    //    }
+    //
     return true;
 }
 
 void PlayerHero::onTouchMoved(Touch *touch, Event *event) {
-    if (virtualJong == NULL){
-        selectJong = getTouchJong(touch);
-        if(NULL == selectJong||selectJong->getIsProtected()){
-            selectJong = NULL;
-        }
-        resetHandJongsY(selectJong);
-    }
-    if (touch->getLocation().y >= JONG_SEL_POS_Y){
-        if (isAllowPlay) {
-            if (virtualJong == NULL&&selectJong != NULL) {
-                virtualJong = Jong::create();
-                virtualJong->setPosition(selectJong->getPosition());
-                virtualJong->showJong(herohand, selectJong->getJongType());
-                virtualJong->setOpacity(100);
-                virtualJong->setCascadeColorEnabled(true);
-                virtualJong->setCascadeOpacityEnabled(true);
-                addChild(virtualJong);
-            }
-            if (virtualJong != NULL)
-                virtualJong->setPosition(touch->getLocation() - touch->getPreviousLocation() + virtualJong->getPosition());
-        }
-    }
-    else{
-        if (selectJong != NULL){
-            if (touch->getLocation().y >= 90){
-                selectJong->setPosition(selectJong->getPositionX(), touch->getLocation().y);
-            }
-            else{
-                selectJong->setPosition(selectJong->getPositionX(), JONG_POS_Y);
-            }
-            if(!selectJong->getIsProtected()){
-                updateSelectedInfo(selectJong);
-            }else{
-                selectJong = NULL;
-            }
-        }
-        if (virtualJong != NULL){
-            virtualJong->removeFromParent();
-            virtualJong = NULL;
-        }
-    }
+    //    if (virtualJong == NULL){
+    //        selectJong = getTouchJong(touch);
+    //        if(NULL == selectJong||selectJong->getIsProtected()){
+    //            selectJong = NULL;
+    //        }
+    //        resetHandJongsY(selectJong);
+    //    }
+    //    if (touch->getLocation().y >= JONG_SEL_POS_Y){
+    //        if (isAllowPlay) {
+    //            if (virtualJong == NULL&&selectJong != NULL) {
+    //                virtualJong = Jong::create();
+    //                virtualJong->setPosition(selectJong->getPosition());
+    //                virtualJong->showJong(herohand, selectJong->getJongType());
+    //                virtualJong->setOpacity(100);
+    //                virtualJong->setCascadeColorEnabled(true);
+    //                virtualJong->setCascadeOpacityEnabled(true);
+    //                addChild(virtualJong);
+    //            }
+    //            if (virtualJong != NULL)
+    //                virtualJong->setPosition(touch->getLocation() - touch->getPreviousLocation() + virtualJong->getPosition());
+    //        }
+    //    }
+    //    else{
+    //        if (selectJong != NULL){
+    //            if (touch->getLocation().y >= 90){
+    //                selectJong->setPosition(selectJong->getPositionX(), touch->getLocation().y);
+    //            }
+    //            else{
+    //                selectJong->setPosition(selectJong->getPositionX(), JONG_POS_Y);
+    //            }
+    //            if(!selectJong->getIsProtected()){
+    //                updateSelectedInfo(selectJong);
+    //            }else{
+    //                selectJong = NULL;
+    //            }
+    //        }
+    //        if (virtualJong != NULL){
+    //            virtualJong->removeFromParent();
+    //            virtualJong = NULL;
+    //        }
+    //    }
 }
 
 void PlayerHero::onTouchEnded(Touch *touch, Event *event) {
-    if (virtualJong != NULL&&selectJong != NULL){
-        virtualJong->setOpacity(255);
-        playPokerByHand(virtualJong);
-        arrangeHandJongs();
-    }
-    if (isAllowPlay) {
-        if (doubleClickJong == NULL){
-            doubleClickJong = getTouchJong(touch);
-            //保护中的牌，无法选中
-            if(doubleClickJong!=NULL&&doubleClickJong->getIsProtected()){
-                doubleClickJong = NULL;
-            }
-        }
-        else{
-            if (doubleClickJong == getTouchJong(touch)){
-                Jong* jong = Jong::create();
-                jong->setPosition(doubleClickJong->getPosition());
-                jong->showJong(herohand, doubleClickJong->getJongType());
-                addChild(jong);
-                selectJong = doubleClickJong;
-                playPokerByHand(jong);
-                arrangeHandJongs();
-                doubleClickJong = NULL;
-            }else{
-                doubleClickJong = getTouchJong(touch);
-                if(NULL != doubleClickJong)
-                    updateSelectedInfo(doubleClickJong);
-            }
-        }
-    }
+    //    if (virtualJong != NULL&&selectJong != NULL){
+    //        virtualJong->setOpacity(255);
+    //        playPokerByHand(virtualJong);
+    //        arrangeHandJongs();
+    //    }
+    //    if (isAllowPlay) {
+    //        if (doubleClickJong == NULL){
+    //            doubleClickJong = getTouchJong(touch);
+    //            //保护中的牌，无法选中
+    //            if(doubleClickJong!=NULL&&doubleClickJong->getIsProtected()){
+    //                doubleClickJong = NULL;
+    //            }
+    //        }
+    //        else{
+    //            if (doubleClickJong == getTouchJong(touch)){
+    //                Jong* jong = Jong::create();
+    //                jong->setPosition(doubleClickJong->getPosition());
+    //                jong->showJong(herohand, doubleClickJong->getJongType());
+    //                addChild(jong);
+    //                selectJong = doubleClickJong;
+    //                playPokerByHand(jong);
+    //                arrangeHandJongs();
+    //                doubleClickJong = NULL;
+    //            }else{
+    //                doubleClickJong = getTouchJong(touch);
+    //                if(NULL != doubleClickJong)
+    //                    updateSelectedInfo(doubleClickJong);
+    //            }
+    //        }
+    //    }
 }
 
 
@@ -1861,11 +1861,6 @@ void PlayerHero::recoverHand(std::string hand,std::string lastpoker){
         playerHandJongs.pushBack(jong);
     }
     currentJong = playerHandJongs.at(playerHandJongs.size()-1);
-    //    for(auto protect:playerHandJongs){
-    //        if(protect->getJongType() == JongEnum::hz){
-    //            protect->showBackShadow(true);
-    //        }
-    //    }
 }
 
 void PlayerHero::updateMingpai(Vector<Jong*> myPlayerHandJongs,Vector<Jong*> myPlayerPlayedJongs,std::vector<PlayerCpgRecord> myPlayerCpgRecords){

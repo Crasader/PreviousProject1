@@ -299,8 +299,6 @@
 		D278ADCE1DFFCF5800C90B25 /* CocoaSocketManage.mm in Sources */ = {isa = PBXBuildFile; fileRef = D278ADCB1DFFCF5800C90B25 /* CocoaSocketManage.mm */; };
 		D27F05FF1E94BDF90085438A /* MahjongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F05FA1E94BDF90085438A /* MahjongView.cpp */; };
 		D27F06001E94BDF90085438A /* MahjongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F05FA1E94BDF90085438A /* MahjongView.cpp */; };
-		D27F06011E94BDF90085438A /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F05FD1E94BDF90085438A /* ReviewGame.cpp */; };
-		D27F06021E94BDF90085438A /* ReviewGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F05FD1E94BDF90085438A /* ReviewGame.cpp */; };
 		D27F06081E94BFE50085438A /* HongZhongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F06061E94BFE50085438A /* HongZhongView.cpp */; };
 		D27F06091E94BFE50085438A /* HongZhongView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27F06061E94BFE50085438A /* HongZhongView.cpp */; };
 		D281A3901E5442C8007FF30E /* share in Resources */ = {isa = PBXBuildFile; fileRef = D281A38F1E5442C8007FF30E /* share */; };
@@ -418,8 +416,6 @@
 		D2E4BC751F2B28AC00A34067 /* ChongMingSelectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC721F2B28AC00A34067 /* ChongMingSelectLayer.cpp */; };
 		D2E4BC8A1F30262C00A34067 /* ChongMingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC851F30262C00A34067 /* ChongMingView.cpp */; };
 		D2E4BC8B1F30262C00A34067 /* ChongMingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC851F30262C00A34067 /* ChongMingView.cpp */; };
-		D2E4BC8C1F30262C00A34067 /* ReviewChongMing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC881F30262C00A34067 /* ReviewChongMing.cpp */; };
-		D2E4BC8D1F30262C00A34067 /* ReviewChongMing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC881F30262C00A34067 /* ReviewChongMing.cpp */; };
 		D2E4BC9D1F3027A500A34067 /* CMGameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC951F3027A500A34067 /* CMGameResultCell.cpp */; };
 		D2E4BC9E1F3027A500A34067 /* CMGameResultCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC951F3027A500A34067 /* CMGameResultCell.cpp */; };
 		D2E4BC9F1F3027A500A34067 /* CMSpecialResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2E4BC971F3027A500A34067 /* CMSpecialResultLayer.cpp */; };
@@ -440,8 +436,6 @@
 		D2F05F491D8E360B006E5A4C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F05F461D8E360B006E5A4C /* MD5.cpp */; };
 		D2F2DF2E1EDFF0B60002203A /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F2DF291EDFF07F0002203A /* libWeChatSDK.a */; };
 		D2FB85211E07B9F700257EE1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2FB85201E07B9F700257EE1 /* Images.xcassets */; };
-		D2FD5A6B1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhong.cpp */; };
-		D2FD5A6C1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5A6A1EA64B420016FCCC /* ReviewHongZhong.cpp */; };
 		D2FD5B541EA711510016FCCC /* CallVoiceAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */; };
 		D2FD5B571EA711510016FCCC /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B381EA711510016FCCC /* amrFileCodec.mm */; };
 		D2FD5B581EA711510016FCCC /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2FD5B3A1EA711510016FCCC /* wav.mm */; };
@@ -768,8 +762,6 @@
 		D278ADCC1DFFCF5800C90B25 /* CocoaSocketManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSocketManage.h; sourceTree = "<group>"; };
 		D27F05FA1E94BDF90085438A /* MahjongView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MahjongView.cpp; sourceTree = "<group>"; };
 		D27F05FB1E94BDF90085438A /* MahjongView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MahjongView.h; sourceTree = "<group>"; };
-		D27F05FD1E94BDF90085438A /* ReviewGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewGame.cpp; sourceTree = "<group>"; };
-		D27F05FE1E94BDF90085438A /* ReviewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewGame.h; sourceTree = "<group>"; };
 		D27F06061E94BFE50085438A /* HongZhongView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HongZhongView.cpp; sourceTree = "<group>"; };
 		D27F06071E94BFE50085438A /* HongZhongView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongZhongView.hpp; sourceTree = "<group>"; };
 		D281A38F1E5442C8007FF30E /* share */ = {isa = PBXFileReference; lastKnownFileType = folder; path = share; sourceTree = "<group>"; };
@@ -883,8 +875,6 @@
 		D2E4BC731F2B28AC00A34067 /* ChongMingSelectLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ChongMingSelectLayer.hpp; sourceTree = "<group>"; };
 		D2E4BC851F30262C00A34067 /* ChongMingView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChongMingView.cpp; sourceTree = "<group>"; };
 		D2E4BC861F30262C00A34067 /* ChongMingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChongMingView.h; sourceTree = "<group>"; };
-		D2E4BC881F30262C00A34067 /* ReviewChongMing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewChongMing.cpp; sourceTree = "<group>"; };
-		D2E4BC891F30262C00A34067 /* ReviewChongMing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewChongMing.h; sourceTree = "<group>"; };
 		D2E4BC951F3027A500A34067 /* CMGameResultCell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMGameResultCell.cpp; sourceTree = "<group>"; };
 		D2E4BC961F3027A500A34067 /* CMGameResultCell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CMGameResultCell.hpp; sourceTree = "<group>"; };
 		D2E4BC971F3027A500A34067 /* CMSpecialResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMSpecialResultLayer.cpp; sourceTree = "<group>"; };
@@ -910,8 +900,6 @@
 		D2F2DF2C1EDFF07F0002203A /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		D2F2DF2F1EDFF1700002203A /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/lib/libc++abi.tbd"; sourceTree = DEVELOPER_DIR; };
 		D2FB85201E07B9F700257EE1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Mahjong-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
-		D2FD5A691EA64B420016FCCC /* ReviewHongZhong.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ReviewHongZhong.hpp; sourceTree = "<group>"; };
-		D2FD5A6A1EA64B420016FCCC /* ReviewHongZhong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ReviewHongZhong.cpp; sourceTree = "<group>"; };
 		D2FD5B301EA711510016FCCC /* CallVoiceAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallVoiceAndroidMethod.cpp; sourceTree = "<group>"; };
 		D2FD5B311EA711510016FCCC /* CallVoiceAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallVoiceAndroidMethod.h; sourceTree = "<group>"; };
 		D2FD5B371EA711510016FCCC /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
@@ -1813,7 +1801,6 @@
 		D27F05F71E94BDF90085438A /* hongzhong */ = {
 			isa = PBXGroup;
 			children = (
-				D2FD5A681EA64B420016FCCC /* special */,
 				D27F06051E94BFBA0085438A /* normal */,
 			);
 			path = hongzhong;
@@ -1823,7 +1810,6 @@
 			isa = PBXGroup;
 			children = (
 				D27F05F91E94BDF90085438A /* normal */,
-				D27F05FC1E94BDF90085438A /* special */,
 			);
 			path = shanghai;
 			sourceTree = "<group>";
@@ -1835,15 +1821,6 @@
 				D27F05FB1E94BDF90085438A /* MahjongView.h */,
 			);
 			path = normal;
-			sourceTree = "<group>";
-		};
-		D27F05FC1E94BDF90085438A /* special */ = {
-			isa = PBXGroup;
-			children = (
-				D27F05FD1E94BDF90085438A /* ReviewGame.cpp */,
-				D27F05FE1E94BDF90085438A /* ReviewGame.h */,
-			);
-			path = special;
 			sourceTree = "<group>";
 		};
 		D27F06051E94BFBA0085438A /* normal */ = {
@@ -2125,7 +2102,6 @@
 			isa = PBXGroup;
 			children = (
 				D2E4BC841F30262C00A34067 /* normal */,
-				D2E4BC871F30262C00A34067 /* special */,
 			);
 			path = chongming;
 			sourceTree = "<group>";
@@ -2137,15 +2113,6 @@
 				D2E4BC861F30262C00A34067 /* ChongMingView.h */,
 			);
 			path = normal;
-			sourceTree = "<group>";
-		};
-		D2E4BC871F30262C00A34067 /* special */ = {
-			isa = PBXGroup;
-			children = (
-				D2E4BC881F30262C00A34067 /* ReviewChongMing.cpp */,
-				D2E4BC891F30262C00A34067 /* ReviewChongMing.h */,
-			);
-			path = special;
 			sourceTree = "<group>";
 		};
 		D2E4BC8E1F3027A500A34067 /* chongming */ = {
@@ -2206,15 +2173,6 @@
 				D2F05F471D8E360B006E5A4C /* MD5.hpp */,
 			);
 			path = MD5;
-			sourceTree = "<group>";
-		};
-		D2FD5A681EA64B420016FCCC /* special */ = {
-			isa = PBXGroup;
-			children = (
-				D2FD5A691EA64B420016FCCC /* ReviewHongZhong.hpp */,
-				D2FD5A6A1EA64B420016FCCC /* ReviewHongZhong.cpp */,
-			);
-			path = special;
 			sourceTree = "<group>";
 		};
 		D2FD5B2E1EA711510016FCCC /* voicesdk */ = {
@@ -2528,7 +2486,6 @@
 				D252FC651E7FABE900937322 /* CardStack.cpp in Sources */,
 				D252FBB41E7FA5EC00937322 /* ChargeFangka.cpp in Sources */,
 				D27F05FF1E94BDF90085438A /* MahjongView.cpp in Sources */,
-				D2E4BC8C1F30262C00A34067 /* ReviewChongMing.cpp in Sources */,
 				D2B1D9161E9E026800EB8FB0 /* HZNormalResultLayer.cpp in Sources */,
 				D2B1D91A1E9E026800EB8FB0 /* HZGameResultCell.cpp in Sources */,
 				D252FB1E1E7FA5EC00937322 /* Audio.cpp in Sources */,
@@ -2539,7 +2496,6 @@
 				D252FC101E7FABC700937322 /* MahjongNumberKeypads.cpp in Sources */,
 				D2E79DBE1F0F34EB00DD3999 /* DailyPride.cpp in Sources */,
 				D252FB3A1E7FA5EC00937322 /* LostNetwork.cpp in Sources */,
-				D27F06011E94BDF90085438A /* ReviewGame.cpp in Sources */,
 				D252FB361E7FA5EC00937322 /* QuickChatLayer.cpp in Sources */,
 				D22912491D12C583005C7167 /* CommandManage.cpp in Sources */,
 				D252FCB11E7FB77F00937322 /* StatusBarTool.m in Sources */,
@@ -2590,7 +2546,6 @@
 				D20474B81E5D36F7001F7121 /* SwitchHttp.cpp in Sources */,
 				D2E4BCAD1F316DA900A34067 /* CangYinAnim.cpp in Sources */,
 				D252FBC21E7FA5EC00937322 /* ExchangeItem.cpp in Sources */,
-				D2FD5A6B1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */,
 				D2B1D9201E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */,
 				D252FC5F1E7FABE900937322 /* PlayerOpposite.cpp in Sources */,
 				D252FB381E7FA5EC00937322 /* BaseDialog.cpp in Sources */,
@@ -2754,7 +2709,6 @@
 				D252FC6E1E7FABE900937322 /* SoundRecordBtn.cpp in Sources */,
 				D2B1D9211E9E026800EB8FB0 /* PlayerResultCell.cpp in Sources */,
 				D252FB5F1E7FA5EC00937322 /* StringUtil.cpp in Sources */,
-				D2FD5A6C1EA64B420016FCCC /* ReviewHongZhong.cpp in Sources */,
 				D252FC521E7FABE900937322 /* GuiLayer.cpp in Sources */,
 				D252FB3D1E7FA5EC00937322 /* LostNetwork2.cpp in Sources */,
 				D278ADBF1DFFC23400C90B25 /* GCDAsyncUdpSocket.m in Sources */,
@@ -2762,7 +2716,6 @@
 				D252FB571E7FA5EC00937322 /* UserSetting.cpp in Sources */,
 				D252FC4E1E7FABE900937322 /* OutFogAnim.cpp in Sources */,
 				D2B1A8FE1CCDF0F400A20896 /* SocketDataManage.cpp in Sources */,
-				D27F06021E94BDF90085438A /* ReviewGame.cpp in Sources */,
 				D2A713AD1ED2B830000EE572 /* CompetitionQueue.cpp in Sources */,
 				D28A4A121D0565C200741FD0 /* HttpMannger.cpp in Sources */,
 				D252FC601E7FABE900937322 /* PlayerOpposite.cpp in Sources */,
@@ -2826,7 +2779,6 @@
 				D252FBAF1E7FA5EC00937322 /* NoticeDialog.cpp in Sources */,
 				D252FBD91E7FA5EC00937322 /* LoadResource.cpp in Sources */,
 				D252FBC71E7FA5EC00937322 /* LequanExchangeRecord.cpp in Sources */,
-				D2E4BC8D1F30262C00A34067 /* ReviewChongMing.cpp in Sources */,
 				D252FBC11E7FA5EC00937322 /* Huode.cpp in Sources */,
 				D2DDB1BF1F02384600790422 /* EnterRoomDialog.cpp in Sources */,
 				D252FC6A1E7FABE900937322 /* Orientation.cpp in Sources */,

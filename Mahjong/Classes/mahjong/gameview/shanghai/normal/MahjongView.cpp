@@ -862,7 +862,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerLeft->setIsTrusteeship(data.tru == 1?true:false);
             addChild(playerLeft);
             playerLeft->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerLeft->recoverHand(data.hand);
+            playerLeft->drawMingPai(data.hand);
             playerLeft->recoverPlayed(data.outhand);
             playerLeft->recoverHua(data.hua);
             
@@ -876,7 +876,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerRight->setIsOffLine(data.isOnline == 0?true:false);
             addChild(playerRight);
             playerRight->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerRight->recoverHand(data.hand);
+            playerRight->drawMingPai(data.hand);
             playerRight->recoverPlayed(data.outhand);
             playerRight->recoverHua(data.hua);
             playerRight->setIsTrusteeship(data.tru == 1?true:false);
@@ -891,7 +891,7 @@ void MahjongView::recoverPlayer(PlayerGameData data, int type, Player* playerInf
             playerOpposite->setIsOffLine(data.isOnline == 0?true:false);
             addChild(playerOpposite);
             playerOpposite->recoverCpg(data.chiData ,data.pengData , data.gangData,data.angang);
-            playerOpposite->recoverHand(data.hand);
+            playerOpposite->drawMingPai(data.hand);
             playerOpposite->recoverPlayed(data.outhand);
             playerOpposite->recoverHua(data.hua);
             playerOpposite->setIsTrusteeship(data.tru == 1?true:false);
@@ -1458,6 +1458,14 @@ void MahjongView::onEnter(){
             playerOpposite->drawPlayerChi(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::chi, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
+        }else if (seatId == ClientSeatId::hero){
+            hideTingGangControllPad();
+            HeroCpgRespData heroTingData;
+            heroTingData.result =1;
+            std::vector<string> chipai = StringUtil::split(newData.chi[0], ",");
+            playerHero->drawHeroChiMingpai(heroTingData,chipai,getPlayerBySeatId(newData.sId));
+            playerHero->playerCpgAnim(CpgType::chi, ClientSeatId::hero);
+            
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersChiListener, 1);
@@ -1485,6 +1493,13 @@ void MahjongView::onEnter(){
             playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
+        } else if (seatId == ClientSeatId::hero){
+            hideTingGangControllPad();
+            HeroCpgRespData heroCpgData;
+            heroCpgData.result = 1;
+            heroCpgData.playCpgt = newData;
+            playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newData.sId));
+            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
@@ -1596,17 +1611,17 @@ void MahjongView::onEnter(){
             }
         }
         else if (seatId == ClientSeatId::left){
-            playerLeft->drawLeftPlayerTurn();
+            playerLeft->drawLeftPlayerTurnMingpai(newData.poker);
             playerLeft->replaceTurnHua(newData);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->drawRightPlayerTurn();
+            playerRight->drawRightPlayerTurnMingpai(newData.poker);
             playerRight->replaceTurnHua(newData);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawOppositePlayerTurn();
+            playerOpposite->drawOppositePlayerTurnMingpai(newData.poker);
             playerOpposite->replaceTurnHua(newData);
             playerOpposite->startTimeClockAnim();
         }
