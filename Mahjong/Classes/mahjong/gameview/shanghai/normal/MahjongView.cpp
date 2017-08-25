@@ -515,31 +515,31 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData newData){
 }
 
 void MahjongView::showTingGangControllPad(PlayerCpgtData tingData){
-    shmjHeroCpgtData.playCpgt = tingData;
-    playerHero->stopTimeClockAnim();
-    controllPad->removeAllChildrenWithCleanup(true);
-    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
-    qi->setPosition(Point(0, 0));
-    controllPad->addChild(qi);
-    MenuItemImage* ting = nullptr;
-    MenuItemImage* penggang = nullptr;
-    int buttonCount = 1;
-    if (tingData.ting != ""){
-        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
-        ting->setPosition(Point(-buttonCount * 140, 0));
-        controllPad->addChild(ting);
-        buttonCount++;
-    }
-    if (tingData.playerGang.size()>0){
-        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(MahjongView::showHeroGangUi, this));
-        penggang->setPosition(Point(-buttonCount * 140, 0));
-        controllPad->addChild(penggang);
-        buttonCount++;
-    }
-    controllPad->setVisible(true);
-    playerHero->setIsAllowTouch(false);
-    playerHero->setIsAllowPlay(true);
-    playerHero->startTimeClockAnim(9, 2);
+//    shmjHeroCpgtData.playCpgt = tingData;
+//    playerHero->stopTimeClockAnim();
+//    controllPad->removeAllChildrenWithCleanup(true);
+//    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
+//    qi->setPosition(Point(0, 0));
+//    controllPad->addChild(qi);
+//    MenuItemImage* ting = nullptr;
+//    MenuItemImage* penggang = nullptr;
+//    int buttonCount = 1;
+//    if (tingData.ting != ""){
+//        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
+//        ting->setPosition(Point(-buttonCount * 140, 0));
+//        controllPad->addChild(ting);
+//        buttonCount++;
+//    }
+//    if (tingData.playerGang.size()>0){
+//        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(MahjongView::showHeroGangUi, this));
+//        penggang->setPosition(Point(-buttonCount * 140, 0));
+//        controllPad->addChild(penggang);
+//        buttonCount++;
+//    }
+//    controllPad->setVisible(true);
+//    playerHero->setIsAllowTouch(false);
+//    playerHero->setIsAllowPlay(true);
+//    playerHero->startTimeClockAnim(9, 2);
 }
 
 void MahjongView::hideTingGangControllPad(){

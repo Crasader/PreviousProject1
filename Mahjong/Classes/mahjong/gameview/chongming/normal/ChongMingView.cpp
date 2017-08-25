@@ -507,31 +507,31 @@ void ChongMingView::drawCpgControllPad(PlayerCpgtData newData){
 }
 
 void ChongMingView:: showHuGangControllPad(PlayerCpgtData tingData){
-    shmjHeroCpgtData.playCpgt = tingData;
-    playerHero->stopTimeClockAnim();
-    controllPad->removeAllChildrenWithCleanup(true);
-    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(ChongMingView::heroDoQiHu, this));
-    qi->setPosition(Point(0, 0));
-    controllPad->addChild(qi);
-    MenuItemImage* ting = nullptr;
-    MenuItemImage* gang = nullptr;
-    int buttonCount = 1;
-    if (tingData.hu == 1){
-        ting = MenuItemImage::create("gameview/mj_hu.png", "gameview/mj_hu.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
-        ting->setPosition(Point(-buttonCount * 160, 0));
-        controllPad->addChild(ting);
-        buttonCount++;
-    }
-    if (tingData.playerGang.size()>0){
-        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(ChongMingView::showHeroGangUi, this));
-        gang->setPosition(Point(-buttonCount * 160, 0));
-        controllPad->addChild(gang);
-        buttonCount++;
-    }
-    controllPad->setVisible(true);
-    playerHero->setIsAllowTouch(false);
-    playerHero->setIsAllowPlay(true);
-    playerHero->startTimeClockAnim(9, 2);
+//    shmjHeroCpgtData.playCpgt = tingData;
+//    playerHero->stopTimeClockAnim();
+//    controllPad->removeAllChildrenWithCleanup(true);
+//    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(ChongMingView::heroDoQiHu, this));
+//    qi->setPosition(Point(0, 0));
+//    controllPad->addChild(qi);
+//    MenuItemImage* ting = nullptr;
+//    MenuItemImage* gang = nullptr;
+//    int buttonCount = 1;
+//    if (tingData.hu == 1){
+//        ting = MenuItemImage::create("gameview/mj_hu.png", "gameview/mj_hu.png", CC_CALLBACK_0(ChongMingView::playerApplyHu, this));
+//        ting->setPosition(Point(-buttonCount * 160, 0));
+//        controllPad->addChild(ting);
+//        buttonCount++;
+//    }
+//    if (tingData.playerGang.size()>0){
+//        gang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(ChongMingView::showHeroGangUi, this));
+//        gang->setPosition(Point(-buttonCount * 160, 0));
+//        controllPad->addChild(gang);
+//        buttonCount++;
+//    }
+//    controllPad->setVisible(true);
+//    playerHero->setIsAllowTouch(false);
+//    playerHero->setIsAllowPlay(true);
+//    playerHero->startTimeClockAnim(9, 2);
 }
 
 void ChongMingView::hideHuGangControllPad(){
