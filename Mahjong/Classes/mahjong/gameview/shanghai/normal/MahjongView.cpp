@@ -1225,7 +1225,6 @@ void MahjongView::onEnterTransitionDidFinish(){
 void MahjongView::onExit()
 {
     Layer::onExit();
-    //    Director::getInstance()->getEventDispatcher()->removeEventListener(gameFaPaiListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addOtherReadyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(loginRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(addPlayersListener);
