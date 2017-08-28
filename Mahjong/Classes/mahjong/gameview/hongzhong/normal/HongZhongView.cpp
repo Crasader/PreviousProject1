@@ -1134,7 +1134,7 @@ void HongZhongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerCpgListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(othersPengListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(othersGangListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(othersChiListener);
+    
     Director::getInstance()->getEventDispatcher()->removeEventListener(tingNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(tingRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipRespListener);
@@ -1341,29 +1341,6 @@ void HongZhongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(playerResumeListener, 1);
     
-    othersChiListener = EventListenerCustom::create(MSG_OTHER_PLAYER_CHI, [=](EventCustom* event){
-        PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
-        PlayerCpgtData newData = *data;
-        int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
-        setCurrentJongVisible(data->sId);
-        ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
-        if (seatId == ClientSeatId::left){
-            playerLeft->drawPlayerChi(newData, getPlayerBySeatId(data->sId));
-            playerLeft->playerCpgAnim(CpgType::chi, ClientSeatId::left);
-            playerLeft->startTimeClockAnim();
-        }
-        else if (seatId == ClientSeatId::right){
-            playerRight->drawPlayerChi(newData, getPlayerBySeatId(data->sId));
-            playerRight->playerCpgAnim(CpgType::chi, ClientSeatId::right);
-            playerRight->startTimeClockAnim();
-        }
-        else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawPlayerChi(newData, getPlayerBySeatId(data->sId));
-            playerOpposite->playerCpgAnim(CpgType::chi, ClientSeatId::opposite);
-            playerOpposite->startTimeClockAnim();
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersChiListener, 1);
     
     othersPengListener = EventListenerCustom::create(MSG_HZ_PLAYER_PENG, [=](EventCustom* event){
         PlayerCpgtData* data = static_cast<PlayerCpgtData*>(event->getUserData());
@@ -1373,19 +1350,19 @@ void HongZhongView::onEnter(){
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
         if (seatId == ClientSeatId::left){
             hideHuGangControllPad();
-            playerLeft->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             hideHuGangControllPad();
-            playerRight->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             hideHuGangControllPad();
-            playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
         }else if (seatId == ClientSeatId::hero){
@@ -1420,15 +1397,15 @@ void HongZhongView::onEnter(){
         setCurrentJongVisible(newData.sId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
         if (seatId == ClientSeatId::left){
-            playerLeft->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
         }else if (seatId == ClientSeatId::hero){
             HeroCpgRespData heroTingData;

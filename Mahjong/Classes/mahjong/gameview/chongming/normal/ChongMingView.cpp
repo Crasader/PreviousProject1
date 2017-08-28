@@ -1508,19 +1508,19 @@ void ChongMingView::onEnter(){
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
         if (seatId == ClientSeatId::left){
             hideHuGangControllPad();
-            playerLeft->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             hideHuGangControllPad();
-            playerRight->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             hideHuGangControllPad();
-            playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
         }
@@ -1535,17 +1535,17 @@ void ChongMingView::onEnter(){
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
         if (seatId == ClientSeatId::left){
             hideHuGangControllPad();
-            playerLeft->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
             hideHuGangControllPad();
-            playerRight->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
         else if (seatId == ClientSeatId::opposite){
             hideHuGangControllPad();
-            playerOpposite->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
         }
         

@@ -1468,17 +1468,17 @@ void MahjongView::onEnter(){
         setCurrentJongVisible(data->sId);
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
         if (seatId == ClientSeatId::left){
-            playerLeft->drawPlayerChi(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiChi(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::chi, ClientSeatId::left);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->drawPlayerChi(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiChi(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::chi, ClientSeatId::right);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->drawPlayerChi(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiChi(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::chi, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
         }else if (seatId == ClientSeatId::hero){
@@ -1501,19 +1501,19 @@ void MahjongView::onEnter(){
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(),newData.seatId);
         if (seatId == ClientSeatId::left){
             hideTingGangControllPad();
-            playerLeft->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::peng, ClientSeatId::left);
             playerLeft->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::right){
             hideTingGangControllPad();
-            playerRight->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::peng, ClientSeatId::right);
             playerRight->startTimeClockAnim();
         }
         else if (seatId == ClientSeatId::opposite){
             hideTingGangControllPad();
-            playerOpposite->drawPlayerPeng(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
         } else if (seatId == ClientSeatId::hero){
@@ -1535,17 +1535,17 @@ void MahjongView::onEnter(){
         ((Orientation*)getChildByTag(123))->showPlayerTurn(GAMEDATA::getInstance()->getHeroSeatId(), newData.seatId);
         if (seatId == ClientSeatId::left){
             hideTingGangControllPad();
-            playerLeft->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerLeft->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerLeft->playerCpgAnim(CpgType::gang, ClientSeatId::left);
         }
         else if (seatId == ClientSeatId::right){
             hideTingGangControllPad();
-            playerRight->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerRight->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerRight->playerCpgAnim(CpgType::gang, ClientSeatId::right);
         }
         else if (seatId == ClientSeatId::opposite){
             hideTingGangControllPad();
-            playerOpposite->drawPlayerGang(newData, getPlayerBySeatId(data->sId));
+            playerOpposite->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
         }
         

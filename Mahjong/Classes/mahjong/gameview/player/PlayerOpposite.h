@@ -15,9 +15,6 @@ public:
     void drawHandJong();
     void drawPlayedJong(int ctype);
 	void drawOppositePlayerTurn();
-	void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
-	void drawPlayerPeng(PlayerCpgtData data, PlayerBase* playerBase);
-	void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
 	Point getPlayedJongPos(int count);
 	void recoverHua(int hua);
 	void recoverPlayed(std::string played);

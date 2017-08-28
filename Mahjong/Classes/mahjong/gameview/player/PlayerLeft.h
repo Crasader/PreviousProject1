@@ -16,9 +16,6 @@ public:
     void doEventTimeOver(int type) override;
     void drawLeftPlayerTurn();
     
-    void drawPlayerChi(PlayerCpgtData data, PlayerBase* playerBase);
-    void drawPlayerPeng(PlayerCpgtData data,PlayerBase* playerBase);
-    void drawPlayerGang(PlayerCpgtData data, PlayerBase* playerBase);
     void recoverHua(int hua);
     void recoverPlayed(std::string played);
     void recoverCpg(vector<PlayerChiData> chi,vector<PlayerPengData> peng,vector<PlayerGangData> gang,std::string angang);
