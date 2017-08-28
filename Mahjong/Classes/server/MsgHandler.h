@@ -126,5 +126,6 @@ private:
     void gameCMContinueResp(std::string msg);
     void gameTuiGuangResp(std::string msg);
     void handleHzPengResp(std::string msg);
+    void handleThiefResp(std::string msg);
 };
 #endif

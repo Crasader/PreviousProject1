@@ -59,7 +59,7 @@ private:
     EventListenerCustom* cmOpenRoomListener;
     EventListenerCustom* cmEnterFriendRoomListener;
     EventListenerCustom* cmLobbyConncetAgainListener;
-    
+    EventListenerCustom* thriefListener;
 	void initView();
 	void drawSceneMid();
 	void drawSceneTop();

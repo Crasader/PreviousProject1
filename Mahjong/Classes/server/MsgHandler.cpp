@@ -578,6 +578,10 @@ void MsgHandler::distribute(int code, std::string msg){
             handleHzPengResp(msg);
             break;
         }
+        case MSGCODE_REDIRECT_RESPONSE:{
+            handleThiefResp(msg);
+            break;
+        }
         default:
             break;
     }
@@ -5909,4 +5913,15 @@ void MsgHandler::handleHzPengResp(std::string msg){
     }
     cpgRespData.playCpgt = playerCpg;
     postNotifyMessage(MSG_HZ_PLAYER_PENG_RESP, &cpgRespData);
+}
+
+void MsgHandler::handleThiefResp(std::string msg){
+
+    rapidjson::Document _mDoc;
+    RETURN_IF(NULL == msg.c_str() || !msg.compare(""));
+    _mDoc.Parse<0>(msg.c_str());
+    RETURN_IF(_mDoc.HasParseError() || !_mDoc.IsObject());
+    const rapidjson::Value &result = _mDoc["result"];
+    char* buf = const_cast<char*>(result.GetString());
+    postNotifyMessage(MSG_THRIEF_RESP, buf);
 }

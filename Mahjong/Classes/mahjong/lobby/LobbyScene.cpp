@@ -849,6 +849,7 @@ void LobbyScene::onExit(){
     Director::getInstance()->getEventDispatcher()->removeEventListener(cmOpenRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(cmEnterFriendRoomListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(cmLobbyConncetAgainListener);
+    Director::getInstance()->getEventDispatcher()->removeEventListener(thriefListener);
     
 }
 
@@ -1060,6 +1061,24 @@ void LobbyScene::addEventListener(){
         GAMEDATA::getInstance()->setGameType(5);
         Director::getInstance()->replaceScene(MjGameScene::create());
     });
+    
+    thriefListener =  Director::getInstance()->getEventDispatcher()->addCustomEventListener(MSG_THRIEF_RESP, [=](EventCustom* event){
+        
+        std::string res =  static_cast<char*>(event->getUserData());
+        if(res == "1"){
+            HintDialog* hin = HintDialog::create("对局未开始",[=](Ref* ref){
+                exit(0);
+            });
+            addChild(hin,500);
+        }else if(res == "2"){
+            HintDialog* hin = HintDialog::create("房间号不存在",[=](Ref* ref){
+                exit(0);
+            });
+            addChild(hin,500);
+        }
+        
+    });
+    
     
     
     //登录地址变更

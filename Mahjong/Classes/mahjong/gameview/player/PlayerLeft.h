@@ -37,7 +37,7 @@ public:
     CREATE_FUNC(PlayerLeft);
 private:
     static const int LEFT_POS_X = 170;
-    static const int LEFT_POS_Y = 250;
+    static const int LEFT_POS_Y = 230;
     static const int LEFT_POKER_WIDTH = 27;
     Point getHuaJongPos(int number);
 };
