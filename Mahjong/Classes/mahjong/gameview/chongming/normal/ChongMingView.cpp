@@ -1271,7 +1271,6 @@ void ChongMingView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipCancelListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroChiRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
@@ -1523,6 +1522,14 @@ void ChongMingView::onEnter(){
             playerOpposite->drawPlayerMingpaiPeng(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::peng, ClientSeatId::opposite);
             playerOpposite->startTimeClockAnim();
+        }else if (seatId == ClientSeatId::hero){
+            hideHuGangControllPad();
+            HeroCpgRespData heroCpgData;
+            heroCpgData.result = 1;
+            heroCpgData.playCpgt = newData;
+            playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newData.sId));
+            playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
+            
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(othersPengListener, 1);
@@ -1594,35 +1601,6 @@ void ChongMingView::onEnter(){
         
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroChiRespListener, 1);
-    
-    heroPengRespListener = EventListenerCustom::create(MSG_HERO_PENG_RESP, [=](EventCustom* event){
-        HeroCpgRespData* cpgRespData  = static_cast<HeroCpgRespData*>(event->getUserData());
-        HeroCpgRespData newCpgRespData = *cpgRespData;
-        shmjHeroCpgtData.playCpgt.heroHu =  newCpgRespData.playCpgt.heroHu;
-        shmjHeroCpgtData.playCpgt.ting = newCpgRespData.playCpgt.ting;
-        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newCpgRespData.playCpgt.sId);
-        playerHero->hideCurrentBigJong();
-        if(cpgRespData->result == 1||cpgRespData->result == 2){
-            if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroPeng(newCpgRespData, playerRight);
-            }
-            else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroPeng(newCpgRespData, playerOpposite);
-            }
-            else if (clientSeatId == ClientSeatId::left){
-                playerHero->drawHeroPeng(newCpgRespData, playerLeft);
-            } else if (clientSeatId == ClientSeatId::hero){
-                hideHuGangControllPad();
-                HeroCpgRespData heroCpgData;
-                heroCpgData.result = 1;
-                heroCpgData.playCpgt = newCpgRespData.playCpgt;
-                playerHero->drawHeroPengMingpai(heroCpgData, getPlayerBySeatId(newCpgRespData.playCpgt.sId));
-                playerHero->playerCpgAnim(CpgType::peng, ClientSeatId::hero);
-                
-            }
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroPengRespListener, 1);
     
     turnListener = EventListenerCustom::create(MSG_CM_PLAYER_TURN_WHO, [=](EventCustom* event){
         //收到出牌通知,手里没牌

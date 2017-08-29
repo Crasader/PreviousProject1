@@ -3900,9 +3900,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3173"
-            endingLineNumber = "3173"
-            landmarkName = "MsgHandler::handleDissovleRoomNotify(std::string msg)"
-            landmarkType = "7">
+            endingLineNumber = "3173">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5808,9 +5806,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2060"
-            endingLineNumber = "2060"
-            landmarkName = "MsgHandler::heroChiResp(std::string msg)"
-            landmarkType = "7">
+            endingLineNumber = "2060">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5920,7 +5916,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2056"
-            endingLineNumber = "2056">
+            endingLineNumber = "2056"
+            landmarkName = "MsgHandler::showCpgNotify(std::string msg)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -7240,11 +7238,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/mahjong/gameview/chongming/normal/ChongMingView.cpp"
-            timestampString = "525325476.519948"
+            timestampString = "525682492.547455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1329"
-            endingLineNumber = "1329"
+            startingLineNumber = "1328"
+            endingLineNumber = "1328"
             landmarkName = "ChongMingView::onEnter()"
             landmarkType = "7">
          </BreakpointContent>
