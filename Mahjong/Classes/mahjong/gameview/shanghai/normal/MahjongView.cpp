@@ -159,7 +159,7 @@ void MahjongView::loadView(){
         emsc->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10,160);
         
         feicy->setPosition((Director::getInstance()->getVisibleSize().width-wid)/2+lezi->getContentSize().width+(wukaibao->isVisible()?(wukaibao->getContentSize().width):0)+diHua->getContentSize().width+10+(emsc->isVisible()?(emsc->getContentSize().width):0),160);
-       
+        
     }
     
     if(GAMEDATA::getInstance()->getIsCompetitionQueue()){
@@ -515,31 +515,31 @@ void MahjongView::drawCpgControllPad(PlayerCpgtData newData){
 }
 
 void MahjongView::showTingGangControllPad(PlayerCpgtData tingData){
-//    shmjHeroCpgtData.playCpgt = tingData;
-//    playerHero->stopTimeClockAnim();
-//    controllPad->removeAllChildrenWithCleanup(true);
-//    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
-//    qi->setPosition(Point(0, 0));
-//    controllPad->addChild(qi);
-//    MenuItemImage* ting = nullptr;
-//    MenuItemImage* penggang = nullptr;
-//    int buttonCount = 1;
-//    if (tingData.ting != ""){
-//        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
-//        ting->setPosition(Point(-buttonCount * 140, 0));
-//        controllPad->addChild(ting);
-//        buttonCount++;
-//    }
-//    if (tingData.playerGang.size()>0){
-//        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(MahjongView::showHeroGangUi, this));
-//        penggang->setPosition(Point(-buttonCount * 140, 0));
-//        controllPad->addChild(penggang);
-//        buttonCount++;
-//    }
-//    controllPad->setVisible(true);
-//    playerHero->setIsAllowTouch(false);
-//    playerHero->setIsAllowPlay(true);
-//    playerHero->startTimeClockAnim(9, 2);
+    //    shmjHeroCpgtData.playCpgt = tingData;
+    //    playerHero->stopTimeClockAnim();
+    //    controllPad->removeAllChildrenWithCleanup(true);
+    //    auto qi = MenuItemImage::create("gameview/mj_qi.png", "gameview/mj_qi.png", CC_CALLBACK_0(MahjongView::heroDoTingQi, this));
+    //    qi->setPosition(Point(0, 0));
+    //    controllPad->addChild(qi);
+    //    MenuItemImage* ting = nullptr;
+    //    MenuItemImage* penggang = nullptr;
+    //    int buttonCount = 1;
+    //    if (tingData.ting != ""){
+    //        ting = MenuItemImage::create("gameview/mj_ting.png", "gameview/mj_ting.png", CC_CALLBACK_0(MahjongView::heroDoTing, this));
+    //        ting->setPosition(Point(-buttonCount * 140, 0));
+    //        controllPad->addChild(ting);
+    //        buttonCount++;
+    //    }
+    //    if (tingData.playerGang.size()>0){
+    //        penggang = MenuItemImage::create("gameview/mj_gang.png", "gameview/mj_gang.png", CC_CALLBACK_1(MahjongView::showHeroGangUi, this));
+    //        penggang->setPosition(Point(-buttonCount * 140, 0));
+    //        controllPad->addChild(penggang);
+    //        buttonCount++;
+    //    }
+    //    controllPad->setVisible(true);
+    //    playerHero->setIsAllowTouch(false);
+    //    playerHero->setIsAllowPlay(true);
+    //    playerHero->startTimeClockAnim(9, 2);
 }
 
 void MahjongView::hideTingGangControllPad(){
@@ -1660,37 +1660,44 @@ void MahjongView::onEnter(){
         int seatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), seat);
         
         if (seatId == ClientSeatId::left){
-            playerLeft->setIsOffLine(false);
-            playerLeft->stopTimeClockAnim();
-            playerLeft->drawPlayedJongMingpai(poker);
-            if(poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
-            }else if(poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
-            }
+            
+            schedule([=](float dt){
+                playerLeft->setIsOffLine(false);
+                playerLeft->stopTimeClockAnim();
+                playerLeft->drawPlayedJongMingpai(poker);
+                if(poker == playerOpposite->getLastPoker()){
+                    Audio::getInstance()->playSoundGengShang(playerLeft->getPlayerInfo()->getGender());
+                }else if(poker == playerHero->getLastPoker()){
+                    Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
+                }
+            }, 0, 0, 0.5f, "yun");
         }
         else if (seatId == ClientSeatId::right){
-            playerRight->setIsOffLine(false);
-            playerRight->stopTimeClockAnim();
-            playerRight->drawPlayedJongMingpai(poker);
-            
-            if(poker == playerHero->getLastPoker()){
-                Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
-            }else if(poker == playerOpposite->getLastPoker()){
-                Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
-            }
+            schedule([=](float dt){
+                playerRight->setIsOffLine(false);
+                playerRight->stopTimeClockAnim();
+                playerRight->drawPlayedJongMingpai(poker);
+                
+                if(poker == playerHero->getLastPoker()){
+                    Audio::getInstance()->playSoundGengShang(playerRight->getPlayerInfo()->getGender());
+                }else if(poker == playerOpposite->getLastPoker()){
+                    Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
+                }
+            }, 0, 0, 0.5f, "yun");
         }
         else if (seatId == ClientSeatId::opposite){
-            playerOpposite->setIsOffLine(false);
-            playerOpposite->stopTimeClockAnim();
-            playerOpposite->drawPlayedJongMingpai(poker);
-            if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
-                if(poker == playerRight->getLastPoker()){
-                    Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
-                }else if(poker == playerLeft->getLastPoker()){
-                    Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
+            schedule([=](float dt){
+                playerOpposite->setIsOffLine(false);
+                playerOpposite->stopTimeClockAnim();
+                playerOpposite->drawPlayedJongMingpai(poker);
+                if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
+                    if(poker == playerRight->getLastPoker()){
+                        Audio::getInstance()->playSoundGengShang(playerOpposite->getPlayerInfo()->getGender());
+                    }else if(poker == playerLeft->getLastPoker()){
+                        Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
+                    }
                 }
-            }
+            }, 0, 0, 0.5f, "yun");
         }else if(seatId == ClientSeatId::hero){
             schedule([=](float dt){
                 playerHero->stopTimeClockAnim();

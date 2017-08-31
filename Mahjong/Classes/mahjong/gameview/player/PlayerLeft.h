@@ -9,12 +9,10 @@ class PlayerLeft : public PlayerBase{
 public:
     virtual bool init() override;
     void drawHandJong();
-    void drawPlayedJong(int ctype);
     
     void removeLastJong() override;
     void showCurrentPlayedJongIcon(bool isShow) override;
     void doEventTimeOver(int type) override;
-    void drawLeftPlayerTurn();
     
     void recoverHua(int hua);
     void recoverPlayed(std::string played);

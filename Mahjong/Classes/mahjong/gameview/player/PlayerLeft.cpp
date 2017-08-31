@@ -28,19 +28,6 @@ void PlayerLeft::drawHandJong(){
     }
 }
 
-
-void PlayerLeft::drawLeftPlayerTurn(){
-    Jong* jong = Jong::create();
-    jong->setTag(111);
-    jong->showJong(lefthand, -1,false);
-    jong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 32));
-    addChild(jong,61);
-    playerHandJongs.pushBack(jong);
-    MoveTo* move = MoveTo::create(0.2f, Point(LEFT_POS_X, LEFT_POS_Y - 35));
-    ActionInterval* dou = EaseBackInOut::create(move);
-    jong->runAction(dou);
-}
-
 void PlayerLeft::drawLeftPlayerTurnMingpai(int jongtype){
     Jong* jong = Jong::create();
     jong->setTag(111);
@@ -50,45 +37,6 @@ void PlayerLeft::drawLeftPlayerTurnMingpai(int jongtype){
     playerHandJongs.pushBack(jong);
 }
 
-void PlayerLeft::drawPlayedJong(int ctype){
-    PlayerBase::showPlayedJong(ctype);
-    Jong* lastPlayedJong = Jong::create();
-    lastPlayedJong->showJong(leftplayed, ctype);
-    lastPlayedJong->setPosition(Point(LEFT_POS_X, LEFT_POS_Y - 35));
-    addChild(lastPlayedJong);
-    playerPlayedJongs.pushBack(lastPlayedJong);
-    Point startPoint = Point(LEFT_POS_X, LEFT_POS_Y - 35);
-    Point endPoint = getPlayedJongPos((int)playerPlayedJongs.size() - 1);
-    ccBezierConfig bezier;
-    bezier.controlPoint_1 = startPoint;
-    bezier.controlPoint_2 = Point(startPoint.x + (endPoint.x - startPoint.x) * 0.5,
-                                  startPoint.y + (endPoint.y - startPoint.x)*0.5);
-    bezier.endPosition = endPoint;
-    BezierTo *actionMove = BezierTo::create(0.3f, bezier);
-    CallFunc* callback = CallFunc::create([=](){
-        if (GAMEDATA::getInstance()->getGameType() == 1){
-            ((MahjongView*)getParent())->removeHeroPlayedIcon();
-        }else if(GAMEDATA::getInstance()->getGameType() == 3){
-            ((HongZhongView*)getParent())->removeHeroPlayedIcon();
-        }else if(GAMEDATA::getInstance()->getGameType() == 5){
-            ((ChongMingView*)getParent())->removeHeroPlayedIcon();
-        }
-        showCurrentPlayedJongIcon(true);
-    });
-    Sequence* sequence = Sequence::create(Spawn::create(actionMove,CallFunc::create([=](){
-        if(NULL!=getChildByTag(111)){
-            playerHandJongs.eraseObject((Jong*)getChildByTag(111));
-            getChildByTag(111)->removeFromParent();
-        }
-        if(getStateCpg()){
-            playerHandJongs.at(playerHandJongs.size() - 1)->removeFromParent();
-            playerHandJongs.eraseObject(playerHandJongs.at(playerHandJongs.size() - 1));
-            setStateCpg(false);
-        }
-    }), NULL) ,callback, NULL);
-    lastPlayedJong->runAction(sequence);
-    showCurrentBigJong(ctype);
-}
 
 void PlayerLeft::drawPlayedJongMingpai(int ctype){
     if((GAMEDATA::getInstance()->getGameType() == 3 ||GAMEDATA::getInstance()->getGameType() == 4) && !UserData::getInstance()->isFangYan()){
