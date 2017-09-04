@@ -3,7 +3,7 @@
     package="com.poxiao.mahjong"
     android:installLocation="auto"
     android:versionCode="26"
-    android:versionName="1.9.0" >
+    android:versionName="1.9.2" >
 
     <uses-sdk android:minSdkVersion="10" />
     <uses-sdk android:targetSdkVersion="19" />
