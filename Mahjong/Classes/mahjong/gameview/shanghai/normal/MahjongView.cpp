@@ -1266,7 +1266,7 @@ void MahjongView::onExit()
     Director::getInstance()->getEventDispatcher()->removeEventListener(trusteeshipCancelListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroChiRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(heroPengRespListener);
-    Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
+//    Director::getInstance()->getEventDispatcher()->removeEventListener(heroGangRespListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerTingNotifyListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerRemoveListener);
     Director::getInstance()->getEventDispatcher()->removeEventListener(playerResumeListener);
@@ -1388,27 +1388,27 @@ void MahjongView::onEnter(){
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(networkBreakListener, 1);
     
-    heroGangRespListener = EventListenerCustom::create(MSG_HERO_GANG_RESP, [=](EventCustom* event){
-        HeroCpgRespData* resp = static_cast<HeroCpgRespData*>(event->getUserData());
-        HeroCpgRespData newResp = *resp;
-        playerHero->hideCurrentBigJong();
-        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newResp.playCpgt.sId);
-        if (newResp.result == 0){
-            playerHero->stopTimeClockAnim();
-        }
-        else{
-            if (clientSeatId == ClientSeatId::right){
-                playerHero->drawHeroGang(newResp, playerRight);
-            }
-            else if (clientSeatId == ClientSeatId::opposite){
-                playerHero->drawHeroGang(newResp, playerOpposite);
-            }
-            else{
-                playerHero->drawHeroGang(newResp, playerLeft);
-            }
-        }
-    });
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
+//    heroGangRespListener = EventListenerCustom::create(MSG_HERO_GANG_RESP, [=](EventCustom* event){
+//        HeroCpgRespData* resp = static_cast<HeroCpgRespData*>(event->getUserData());
+//        HeroCpgRespData newResp = *resp;
+//        playerHero->hideCurrentBigJong();
+//        int clientSeatId = SeatIdUtil::getClientSeatId(GAMEDATA::getInstance()->getHeroSeatId(), newResp.playCpgt.sId);
+//        if (newResp.result == 0){
+//            playerHero->stopTimeClockAnim();
+//        }
+//        else{
+//            if(clientSeatId == ClientSeatId::right){
+//                playerHero->drawHeroGangMingpai(newResp, playerRight);
+//            }
+//            else if(clientSeatId == ClientSeatId::opposite){
+//                playerHero->drawHeroGangMingpai(newResp, playerOpposite);
+//            }
+//            else{
+//                playerHero->drawHeroGangMingpai(newResp, playerLeft);
+//            }
+//        }
+//    });
+//    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(heroGangRespListener, 1);
     
     playerRemoveListener = EventListenerCustom::create(MSG_PLAYER_REMOVE, [=](EventCustom* event){
         if(!GAMEDATA::getInstance()->getIsPlaying()){
@@ -1547,6 +1547,13 @@ void MahjongView::onEnter(){
             hideTingGangControllPad();
             playerOpposite->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
+        }else if (seatId == ClientSeatId::hero){
+            hideTingGangControllPad();
+            HeroCpgRespData heroTingData;
+            heroTingData.result = 1;
+            heroTingData.playCpgt = newData;
+            playerHero->drawHeroGangMingpai(heroTingData, getPlayerBySeatId(newData.sId));
+            playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
         }
         
     });

@@ -1554,6 +1554,13 @@ void ChongMingView::onEnter(){
             hideHuGangControllPad();
             playerOpposite->drawPlayerMingpaiGang(newData, getPlayerBySeatId(data->sId));
             playerOpposite->playerCpgAnim(CpgType::gang, ClientSeatId::opposite);
+        }else if (seatId == ClientSeatId::hero){
+            hideHuGangControllPad();
+            HeroCpgRespData heroTingData;
+            heroTingData.result = 1;
+            heroTingData.playCpgt = newData;
+            playerHero->drawHeroGangMingpai(heroTingData, getPlayerBySeatId(newData.sId));
+            playerHero->playerCpgAnim(CpgType::gang, ClientSeatId::hero);
         }
         
     });

@@ -95,7 +95,7 @@ private:
 	EventListenerCustom* trusteeshipCancelListener;
 	EventListenerCustom* heroChiRespListener;
 	EventListenerCustom* heroPengRespListener;
-	EventListenerCustom* heroGangRespListener;
+//	EventListenerCustom* heroGangRespListener;
     EventListenerCustom* playerRemoveListener;
     EventListenerCustom* playerOffLineListener;
     EventListenerCustom* playerResumeListener;
