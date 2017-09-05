@@ -7801,7 +7801,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
             endingLineNumber = "174"
-            landmarkName = "PlayerLeft::drawPlayerMingpaiChi(PlayerCpgtData data, PlayerBase* playerBase)"
+            landmarkName = "PlayerLeft::drawPlayerMingpaiPeng(PlayerCpgtData data, PlayerBase* playerBase)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

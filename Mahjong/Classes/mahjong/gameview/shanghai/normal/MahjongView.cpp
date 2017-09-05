@@ -1670,7 +1670,7 @@ void MahjongView::onEnter(){
                 }else if(poker == playerHero->getLastPoker()){
                     Audio::getInstance()->playSoundXiaGeng(playerLeft->getPlayerInfo()->getGender());
                 }
-            }, 0, 0, 0.5f, "yun");
+            }, 0, 0, 0.3f, "yun1");
         }
         else if (seatId == ClientSeatId::right){
             schedule([=](float dt){
@@ -1683,7 +1683,7 @@ void MahjongView::onEnter(){
                 }else if(poker == playerOpposite->getLastPoker()){
                     Audio::getInstance()->playSoundXiaGeng(playerRight->getPlayerInfo()->getGender());
                 }
-            }, 0, 0, 0.5f, "yun");
+            }, 0, 0, 0.3f, "yun2");
         }
         else if (seatId == ClientSeatId::opposite){
             schedule([=](float dt){
@@ -1697,11 +1697,11 @@ void MahjongView::onEnter(){
                         Audio::getInstance()->playSoundXiaGeng(playerOpposite->getPlayerInfo()->getGender());
                     }
                 }
-            }, 0, 0, 0.5f, "yun");
+            }, 0, 0, 0.3f, "yun3");
         }else if(seatId == ClientSeatId::hero){
             schedule([=](float dt){
                 playerHero->stopTimeClockAnim();
-                playerHero->drawPlayedJong(poker);
+                playerHero->drawPlayedJongMingpai(poker);
                 if(GAMEDATA::getInstance()->getMyGameModel() == GameModel::FOURPLAYER){
                     if(poker == playerLeft->getLastPoker()){
                         Audio::getInstance()->playSoundGengShang(playerHero->getPlayerInfo()->getGender());
@@ -1709,7 +1709,7 @@ void MahjongView::onEnter(){
                         Audio::getInstance()->playSoundXiaGeng(playerHero->getPlayerInfo()->getGender());
                     }
                 }
-            },0,0,0.6f,"delay_play_poker_auto");
+            },0,0,0.3f,"delay_play_poker_auto");
         }
     });
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(otherListener, 1);
