@@ -35,7 +35,7 @@ public:
 	CREATE_FUNC(PlayerRight);
 
 private:
-	static const int RIGHT_POS_X = 1110;
+	static const int RIGHT_POS_X = 1095;
 	static const int RIGHT_POS_Y = 640;
     static const int RIGHT_POKER_WIDTH = 27;
 	Point getHuaJongPos(int number);
