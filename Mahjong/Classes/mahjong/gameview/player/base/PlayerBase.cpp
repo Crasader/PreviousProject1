@@ -88,7 +88,7 @@ void PlayerBase::initPlayer(Player* playerInfo){
     money->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width)/2-10, getPostionBySeat(clientSeatId).y - 62);
     moneyNumber->setPosition(getPostionBySeat(clientSeatId).x -(moneyNumber->getContentSize().width-money->getContentSize().width)/2, getPostionBySeat(clientSeatId).y - 62);
     
-    auto readyTitle = Sprite::create("gameview/ready_title.png");
+    auto readyTitle = Sprite::create();
     readyTitle->setTag(1001);
     readyTitle->setPosition(getReadyPosBySeat(clientSeatId));
     this->addChild(readyTitle);
