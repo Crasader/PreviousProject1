@@ -187,6 +187,7 @@ void SplashScene::onEnter(){
         removeLoading();
         
         if (result == LOGIN_SUCCESS){
+            NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
             NetworkManage::getInstance()->startSocketBeat(CommandManage::getInstance()->getHeartCommmand());
             Director::getInstance()->replaceScene(TransitionFade::create(1, LobbyScene::create()));
         }

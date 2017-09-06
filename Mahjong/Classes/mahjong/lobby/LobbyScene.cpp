@@ -769,7 +769,6 @@ void LobbyScene::onEnter(){
 }
 
 void LobbyScene::onEnterTransitionDidFinish(){
-    NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getGamePayType());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getRoomListCommand("1"));
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getPlayerInfoCommand());
     NetworkManage::getInstance()->sendMsg(CommandManage::getInstance()->getScrollTextCommand());
@@ -1131,7 +1130,7 @@ void LobbyScene::addEventListener(){
         GameActivityData* data = static_cast<GameActivityData*>(event->getUserData());
         GameActivityData newData = *data;
         GAMEDATA::getInstance()->setGameActivityData(newData);
-        if(!GAMEDATA::getInstance()->getHaveShowNotice()){
+        if(!GAMEDATA::getInstance()->getHaveShowNotice()&&UserData::getInstance()->isWeixinPayOpen()){
             NoticeDialog* nod = NoticeDialog::create();
             nod->setContentImage(newData.imageUrl,newData.imageUrl2,newData.showTime);
             addChild(nod,100);
