@@ -5889,7 +5889,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "PlayerLeft::drawPlayedJong(int ctype)"
+            landmarkName = "PlayerLeft::drawPlayedJongMingpai(int ctype)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6063,7 +6063,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "767"
             endingLineNumber = "767"
-            landmarkName = "MahjongView::recoverGame()"
+            landmarkName = "MahjongView::clearRoomPlayer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6079,7 +6079,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "766"
             endingLineNumber = "766"
-            landmarkName = "MahjongView::recoverGame()"
+            landmarkName = "MahjongView::clearRoomPlayer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7389,7 +7389,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "996"
             endingLineNumber = "996"
-            landmarkName = "ChongMingView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data)"
+            landmarkName = "ChongMingView::showPaiduiNum(int num)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7405,7 +7405,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "997"
             endingLineNumber = "997"
-            landmarkName = "ChongMingView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data)"
+            landmarkName = "ChongMingView::showPaiduiNum(int num)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

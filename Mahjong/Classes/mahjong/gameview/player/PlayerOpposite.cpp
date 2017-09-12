@@ -29,8 +29,10 @@ void PlayerOpposite::drawHandJong(){
 
 
 void PlayerOpposite::showCurrentPlayedJongIcon(bool isShow){
-    biaoji->setPosition(getPlayedJongPos(playerPlayedJongs.size() - 1).x,getPlayedJongPos((int)playerPlayedJongs.size() - 1).y + 20);
-    biaoji->setVisible(isShow);
+    if(playerPlayedJongs.size()>=1){
+        biaoji->setPosition(getPlayedJongPos(playerPlayedJongs.size() - 1).x,getPlayedJongPos((int)playerPlayedJongs.size() - 1).y + 20);
+        biaoji->setVisible(isShow);
+    }
 }
 
 Point PlayerOpposite::getCpgShowPostion(int index){
