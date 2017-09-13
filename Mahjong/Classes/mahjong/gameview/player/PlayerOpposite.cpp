@@ -153,7 +153,7 @@ void PlayerOpposite::drawPlayedJongMingpai(int ctype){
 
 void PlayerOpposite::settleJongMingpai(){
     int size = (int)playerHandJongs.size();
-    for (int i = 0; i < size - 1; i++) {
+    for (int i = size - 1; i >=0 ; i--) {
         for (int j = size - 1; j > i; j--) {
             if (playerHandJongs.at(j)->getJongType() < playerHandJongs.at(j - 1)->getJongType()) {
                 playerHandJongs.swap(playerHandJongs.at(j), playerHandJongs.at(j - 1));
