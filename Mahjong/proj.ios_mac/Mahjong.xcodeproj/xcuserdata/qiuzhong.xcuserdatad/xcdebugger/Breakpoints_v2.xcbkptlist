@@ -5365,7 +5365,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "856"
             endingLineNumber = "856"
-            landmarkName = "HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data)"
+            landmarkName = "HongZhongView::firstPlayPoker(ReplaceJongVec vec,PlayerCpgtData data)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -5634,7 +5634,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "879"
-            endingLineNumber = "879">
+            endingLineNumber = "879"
+            landmarkName = "HongZhongView::dealJongFinish(ReplaceJongVec vec,PlayerCpgtData data)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

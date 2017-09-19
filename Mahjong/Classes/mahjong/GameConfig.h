@@ -11,10 +11,10 @@
 
 #define PAY_PLAT_VALUE "53" //ios审核版本53，应用宝审核版本54. 奇数是IOS,偶数是Android
 
-//#define SERVER_ADDRESS "aliyun.5278-mobi.com" //ceshi.5278-mobi.com 现网有出过包,版本号1.8.6
-//#define SERVER_ADDRESS_2 "aliyun.kx5278.com"
-#define SERVER_ADDRESS "cs.5278-mobi.com"
-#define SERVER_ADDRESS_2 "cs.5278-mobi.com"
+#define SERVER_ADDRESS "aliyun.5278-mobi.com" //ceshi.5278-mobi.com 现网有出过包,版本号1.8.6
+#define SERVER_ADDRESS_2 "aliyun.kx5278.com"
+//#define SERVER_ADDRESS "cs.5278-mobi.com"
+//#define SERVER_ADDRESS_2 "cs.5278-mobi.com"
 #define SERVER_PORT 9999
 
 #define APPLE_STORE_PAY_LIST "http://pay.5278-mobi.com/pay!getIosPoint.action"
