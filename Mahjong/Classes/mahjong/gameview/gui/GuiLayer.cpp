@@ -233,14 +233,12 @@ void GuiLayer::quitButtonClick(){
 
 
 void GuiLayer::updateData(){
-    if(!GAMEDATA::getInstance()->getIsCompetitionQueue()&&!GAMEDATA::getInstance()->getIsCompetitionState()){
-        if(GAMEDATA::getInstance()->getGameType() != 3 && GAMEDATA::getInstance()->getGameType() != 4){
-            kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
-            haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
-        }
-        if(NULL != getChildByTag(1088)){
-            ((Label*)getChildByTag(1088))->setString(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
-        }
+    if(GAMEDATA::getInstance()->getGameType() != 3 && GAMEDATA::getInstance()->getGameType() != 4){
+        kaibaoNum->setString("X "+GAMEDATA::getInstance()->getKaibao());
+        haungNum->setString("X "+GAMEDATA::getInstance()->getHuangfan());
+    }
+    if(NULL != getChildByTag(1088)){
+        ((Label*)getChildByTag(1088))->setString(GAMEDATA::getInstance()->getFriendOpenRoomResp().prid);
     }
 }
 

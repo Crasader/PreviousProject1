@@ -202,11 +202,6 @@ void MahjongView::startGameAgain(){
             players.at(i)->setIsReady(true);
         }
     }
-    if(GAMEDATA::getInstance()->getEnterRoomResp().kb == "1"){
-        GAMEDATA::getInstance()->setKaibao("1");
-    }else{
-        GAMEDATA::getInstance()->setKaibao("0");
-    }
     
     if(GAMEDATA::getInstance()->getEnterRoomResp().huangfan == "1"){
         GAMEDATA::getInstance()->setHuangfan("1");
