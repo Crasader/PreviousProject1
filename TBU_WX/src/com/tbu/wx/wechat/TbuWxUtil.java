@@ -30,8 +30,10 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
 
@@ -49,7 +51,7 @@ public class TbuWxUtil {
 	private static final String WECHAT_LOGIN_OPENID = "poxiao_game";
 	private static final String OPEN_ID_INIT = "OPEN_ID_INIT";
 	private static final String UNION_ID_INIT = "UNION_ID_INIT";
-	
+
 	public static TbuWxUtil getInstance() {
 		if (null == instance) {
 			instance = new TbuWxUtil();
@@ -85,25 +87,31 @@ public class TbuWxUtil {
 					@Override
 					public void callBack(String msg) {
 
-						try {
-							JSONObject object = new JSONObject(msg);
-							if (object.getInt("result") == 0) {
-								WxOrderInfo orderInfo = new WxOrderInfo();
-								orderInfo.setPxOrderId(object.getString("px_order_id"));
-								orderInfo.setWxPrepayid(object.getString("wx_prepayid"));
-								orderInfo.setWxSign(object.getString("wx_sign"));
-								orderInfo.setWxTimestamp(object.getString("wx_timestamp"));
-								orderInfo.setWxNonceStr(object.getString("wx_nonce_str"));
-								orderInfo.setWxpartneri(WxAppInfo.getWxInfo().getPartnerId());
-								callback.wxPayCallback(orderInfo.getPxOrderId());
+						// try {
+						// JSONObject object = new JSONObject(msg);
+						// if (object.getInt("result") == 0) {
+						// WxOrderInfo orderInfo = new WxOrderInfo();
+						// orderInfo.setPxOrderId(object.getString("px_order_id"));
+						// orderInfo.setWxPrepayid(object.getString("wx_prepayid"));
+						// orderInfo.setWxSign(object.getString("wx_sign"));
+						// orderInfo.setWxTimestamp(object.getString("wx_timestamp"));
+						// orderInfo.setWxNonceStr(object.getString("wx_nonce_str"));
+						// orderInfo.setWxpartneri(WxAppInfo.getWxInfo().getPartnerId());
+						// callback.wxPayCallback(orderInfo.getPxOrderId());
+						//
+						// pay2Wx(orderInfo);
+						// } else {
+						// callback.wxPayCallback(null);
+						// }
+						// } catch (Exception e) {
+						// callback.wxPayCallback(null);
+						// }
+						Intent intent = new Intent();
+						intent.setAction(Intent.ACTION_VIEW);
+						Uri content_url = Uri.parse(msg);
+						intent.setData(content_url);
+						TbuWxUtil.payActivity.startActivity(Intent.createChooser(intent, "请选择推荐浏览器"));
 
-								pay2Wx(orderInfo);
-							} else {
-								callback.wxPayCallback(null);
-							}
-						} catch (Exception e) {
-							callback.wxPayCallback(null);
-						}
 					}
 				});
 			}
@@ -270,10 +278,9 @@ public class TbuWxUtil {
 			return;
 		}
 
-		
 		WXImageObject imgObj = new WXImageObject();
 		imgObj.setImagePath(path);
-//		imgObj.imageData  =  Util.bmpToByteArray(thumbBmp, true);
+		// imgObj.imageData = Util.bmpToByteArray(thumbBmp, true);
 
 		WXMediaMessage msg = new WXMediaMessage();
 		msg.mediaObject = imgObj;
@@ -282,7 +289,7 @@ public class TbuWxUtil {
 		Bitmap thumbBmp = Bitmap.createScaledBitmap(bmp, THUMB_SIZE, THUMB_SIZE, true);
 		// bmp.compress(format, quality, stream)
 		bmp.recycle();
-	
+
 		msg.thumbData = Util.bmpToByteArray(thumbBmp, true);
 		SendMessageToWX.Req req = new SendMessageToWX.Req();
 		req.transaction = buildTransaction("img");
@@ -320,24 +327,24 @@ public class TbuWxUtil {
 					@Override
 					public void callBack(String msg) {
 						WxUserInfo info = new WxUserInfo();
-//						Debug.e("hhhhhhhhhhhhhh "+msg);
+						// Debug.e("hhhhhhhhhhhhhh "+msg);
 						try {
 							JSONObject obj = new JSONObject(msg);
 							if (obj.getInt("result") != -1) {
 								info.setOpenId(obj.getString("openid"));
-				                info.setHeadImage(obj.getString("headimgurl"));
-				                info.setSex(obj.getString("sex") == "2" ? "0" : "1");
-				                info.setNickName(obj.getString("nickname"));
-				                if (obj.has("unionid")) {
-				                  info.setUnionid(obj.getString("unionid"));
-//				                  setWeChatUnionid(obj.getString("unionid"));
-				                } else {
-				                  info.setUnionid("null");
-				                }
-//				                setWeChatOpenId(obj.getString("openid"));
+								info.setHeadImage(obj.getString("headimgurl"));
+								info.setSex(obj.getString("sex") == "2" ? "0" : "1");
+								info.setNickName(obj.getString("nickname"));
+								if (obj.has("unionid")) {
+									info.setUnionid(obj.getString("unionid"));
+									// setWeChatUnionid(obj.getString("unionid"));
+								} else {
+									info.setUnionid("null");
+								}
+								// setWeChatOpenId(obj.getString("openid"));
 							} else {
 								info.setOpenId(TOKEN_OUT_TIME);
-//								setWeChatOpenId(OPEN_ID_INIT);
+								// setWeChatOpenId(OPEN_ID_INIT);
 							}
 						} catch (JSONException e) {
 							e.printStackTrace();
@@ -392,36 +399,44 @@ public class TbuWxUtil {
 		return (type == null) ? String.valueOf(System.currentTimeMillis()) : type + System.currentTimeMillis();
 	}
 
-//	public String getWeChatOpenId() {
-//		SharedPreferences prefer = payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID, Context.MODE_PRIVATE);
-//		return prefer.getString("wechat_openid", OPEN_ID_INIT);
-//	}
-//
-//	public void setWeChatOpenId(String openid) {
-//		SharedPreferences prefer = payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID, Context.MODE_PRIVATE);
-//		Editor edit = prefer.edit();
-//		edit.putString("wechat_openid", openid);
-//		edit.commit();
-//	}
-//	
-//	public String getWeChatUnionid() {
-//		SharedPreferences prefer = payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID, Context.MODE_PRIVATE);
-//		return prefer.getString("wechat_unionid", OPEN_ID_INIT);
-//	}
-//
-//	public void setWeChatUnionid(String unionid) {
-//		SharedPreferences prefer = payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID, Context.MODE_PRIVATE);
-//		Editor edit = prefer.edit();
-//		edit.putString("wechat_unionid", unionid);
-//		edit.commit();
-//	}
+	// public String getWeChatOpenId() {
+	// SharedPreferences prefer =
+	// payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID,
+	// Context.MODE_PRIVATE);
+	// return prefer.getString("wechat_openid", OPEN_ID_INIT);
+	// }
+	//
+	// public void setWeChatOpenId(String openid) {
+	// SharedPreferences prefer =
+	// payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID,
+	// Context.MODE_PRIVATE);
+	// Editor edit = prefer.edit();
+	// edit.putString("wechat_openid", openid);
+	// edit.commit();
+	// }
+	//
+	// public String getWeChatUnionid() {
+	// SharedPreferences prefer =
+	// payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID,
+	// Context.MODE_PRIVATE);
+	// return prefer.getString("wechat_unionid", OPEN_ID_INIT);
+	// }
+	//
+	// public void setWeChatUnionid(String unionid) {
+	// SharedPreferences prefer =
+	// payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID,
+	// Context.MODE_PRIVATE);
+	// Editor edit = prefer.edit();
+	// edit.putString("wechat_unionid", unionid);
+	// edit.commit();
+	// }
 
 	/**
 	 * 清除 openID
 	 */
 	public void clearOpenId() {
-//		setWeChatOpenId(OPEN_ID_INIT);
-//		setWeChatUnionid(UNION_ID_INIT);
+		// setWeChatOpenId(OPEN_ID_INIT);
+		// setWeChatUnionid(UNION_ID_INIT);
 	}
 
 	/**
