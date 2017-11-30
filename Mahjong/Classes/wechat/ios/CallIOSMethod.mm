@@ -62,7 +62,15 @@ bool CallIOSMethod::isWenxinInstalled(){
 }
 
 std::string CallIOSMethod::getBatteryPersent(){
-    NSArray *infoArray = [[[[UIApplication sharedApplication] valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"] subviews];
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *infoArray = nil;
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    CGFloat maxHeight = MAX(size.width, size.height);
+    if (maxHeight == 812) {
+        infoArray = [[[[app valueForKey:@"statusBar"] valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];
+    } else {
+        infoArray = [[[app valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];
+    }
     
     for (id info in infoArray)
     {
