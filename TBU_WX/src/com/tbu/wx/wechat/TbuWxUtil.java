@@ -5,7 +5,6 @@ import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.tbu.androidtools.Debug;
 import com.tbu.androidtools.app.AppInfo;
 import com.tbu.androidtools.device.DeviceInfo;
 import com.tbu.wx.http.Addresses;
@@ -30,7 +29,10 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -48,9 +50,7 @@ public class TbuWxUtil {
 	private static final String PACKAGEVALUE = "Sign=WXPay";
 	// private static final String WECHAT_LOGIN_OPENID = "WECHAT_LOGIN_OPENID";
 
-	private static final String WECHAT_LOGIN_OPENID = "poxiao_game";
-	private static final String OPEN_ID_INIT = "OPEN_ID_INIT";
-	private static final String UNION_ID_INIT = "UNION_ID_INIT";
+	private static final String PLAYER_LOCATION_INFO = "poxiao_game";
 
 	public static TbuWxUtil getInstance() {
 		if (null == instance) {
@@ -399,37 +399,29 @@ public class TbuWxUtil {
 		return (type == null) ? String.valueOf(System.currentTimeMillis()) : type + System.currentTimeMillis();
 	}
 
-	// public String getWeChatOpenId() {
-	// SharedPreferences prefer =
-	// payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID,
-	// Context.MODE_PRIVATE);
-	// return prefer.getString("wechat_openid", OPEN_ID_INIT);
-	// }
-	//
-	// public void setWeChatOpenId(String openid) {
-	// SharedPreferences prefer =
-	// payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID,
-	// Context.MODE_PRIVATE);
-	// Editor edit = prefer.edit();
-	// edit.putString("wechat_openid", openid);
-	// edit.commit();
-	// }
-	//
-	// public String getWeChatUnionid() {
-	// SharedPreferences prefer =
-	// payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID,
-	// Context.MODE_PRIVATE);
-	// return prefer.getString("wechat_unionid", OPEN_ID_INIT);
-	// }
-	//
-	// public void setWeChatUnionid(String unionid) {
-	// SharedPreferences prefer =
-	// payActivity.getSharedPreferences(WECHAT_LOGIN_OPENID,
-	// Context.MODE_PRIVATE);
-	// Editor edit = prefer.edit();
-	// edit.putString("wechat_unionid", unionid);
-	// edit.commit();
-	// }
+	public String getPlayerLocationLongitude() {
+		SharedPreferences prefer = payActivity.getSharedPreferences(PLAYER_LOCATION_INFO, Context.MODE_PRIVATE);
+		return prefer.getString("player_location_longitude", "0");
+	}
+
+	public void setPlayerLocationLongitude(String openid) {
+		SharedPreferences prefer = payActivity.getSharedPreferences(PLAYER_LOCATION_INFO, Context.MODE_PRIVATE);
+		Editor edit = prefer.edit();
+		edit.putString("player_location_longitude", openid);
+		edit.commit();
+	}
+
+	public String getPlayerLocationLatitude() {
+		SharedPreferences prefer = payActivity.getSharedPreferences(PLAYER_LOCATION_INFO, Context.MODE_PRIVATE);
+		return prefer.getString("player_location_latitude", "0");
+	}
+
+	public void setPlayerLocationLatitude(String unionid) {
+		SharedPreferences prefer = payActivity.getSharedPreferences(PLAYER_LOCATION_INFO, Context.MODE_PRIVATE);
+		Editor edit = prefer.edit();
+		edit.putString("player_location_latitude", unionid);
+		edit.commit();
+	}
 
 	/**
 	 * 清除 openID
