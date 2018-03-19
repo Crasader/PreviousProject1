@@ -1,0 +1,5 @@
+platform :ios,'8.0'
+target 'SuZhouMahjong-mobile' do
+pod 'MagicWindowSDK'
+pod 'WechatOpenSDK'
+end

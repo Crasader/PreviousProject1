@@ -1,0 +1,976 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\http">
+      <UniqueIdentifier>{e02e9d4f-e839-4673-9707-9ae408934167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong">
+      <UniqueIdentifier>{9ce0d2e9-1599-4ea7-b482-33ef02d4be5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\server">
+      <UniqueIdentifier>{cec457dc-556c-4868-a015-76e5d7b75d14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\socket">
+      <UniqueIdentifier>{093e6b78-621e-4ced-8c47-093b59ce1b0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\userdata">
+      <UniqueIdentifier>{08db54d7-dbf7-463e-9c07-63a6d12b172b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\http\MD5">
+      <UniqueIdentifier>{2feb8571-67d8-4c74-b888-09c2d077132b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\http\image">
+      <UniqueIdentifier>{c76f5aa8-273f-4745-9268-99cc12e91057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\socket\android">
+      <UniqueIdentifier>{5a64ba03-7096-4ee1-81ed-02e2f519c4d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\socket\ios">
+      <UniqueIdentifier>{13340486-2c9b-4122-8492-4c8a76b00b61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\socket\android\native">
+      <UniqueIdentifier>{2fc76e7f-731a-49c1-ba7b-6a670902f614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\socket\ios\cocoa">
+      <UniqueIdentifier>{87de4eb4-dc32-40ca-a6b1-b2994ae5abb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\http\base64">
+      <UniqueIdentifier>{bf0e679a-7ffd-40d5-84ee-bf434f0f3021}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\wechat">
+      <UniqueIdentifier>{aea0e19a-6a1f-470e-978e-1e5df4ace9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\wechat\android">
+      <UniqueIdentifier>{b0a34263-56a0-461a-8231-22b0c86c7454}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\wechat\ios">
+      <UniqueIdentifier>{51d5bcee-bacf-4030-b86f-a17f27736ee4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\wechat\ios\wechat">
+      <UniqueIdentifier>{bbb3f74a-6361-4476-962f-b7b053b51160}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview">
+      <UniqueIdentifier>{150e9d8d-f240-494f-bbae-446743c52d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common">
+      <UniqueIdentifier>{0e26f5f5-ff62-4db6-bca5-1c9bf7e4dacd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby">
+      <UniqueIdentifier>{e164d0e6-8979-42e0-9d53-a50301cd2cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\splash">
+      <UniqueIdentifier>{55c95cab-805c-4bb5-bab7-c25b6b58739f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\result">
+      <UniqueIdentifier>{6bac8a9d-24f8-48f1-bd44-32fab033acf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\bill">
+      <UniqueIdentifier>{3d6b8929-569e-4bb7-b14b-6b386c84c324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\bill\fpdialog">
+      <UniqueIdentifier>{8bb74957-d5e5-4a54-b002-a8d1df1f76fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\audio">
+      <UniqueIdentifier>{e3e820b1-d9e8-4967-a3e8-7fa90d7612c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\chat">
+      <UniqueIdentifier>{2a731bfb-1c5a-45b8-81be-356ca06722b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\chat\chatAndroid">
+      <UniqueIdentifier>{afa19efb-80fd-4ab2-8c1c-a19e7574a232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\chat\chatIOS">
+      <UniqueIdentifier>{d5b762bf-33c9-4f57-bdb2-24458184a33b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\dialog">
+      <UniqueIdentifier>{12426a4d-16d5-4ad3-b1a9-d258b573f588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\dialog\base">
+      <UniqueIdentifier>{6d8170c8-5717-42a9-9da2-6555ced8e0ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\dialog\network">
+      <UniqueIdentifier>{ca1a845d-fd1a-4472-a0e3-39f40fb988c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\dialog\prompt">
+      <UniqueIdentifier>{365cba48-f622-4f4e-becd-a56131fd5e55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\dialog\toast">
+      <UniqueIdentifier>{a1d8d39e-d98d-4c2c-b469-a068e4bf407d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\heroinfo">
+      <UniqueIdentifier>{6fc76491-7042-4f56-8d6f-05aa6cb55c30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\jong">
+      <UniqueIdentifier>{92187c32-6364-40d1-b77c-2a6e184db584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\loading">
+      <UniqueIdentifier>{c2a2d7a0-7221-415d-a815-4ea0960a8874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\setting">
+      <UniqueIdentifier>{9de8d769-f833-40c1-9b58-0a42752b42c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\state">
+      <UniqueIdentifier>{12e70a3e-a84e-4579-9959-f7f3726bea06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\utils">
+      <UniqueIdentifier>{1e6d8d1b-f665-479c-a9b4-9d6350e3e59f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\widget">
+      <UniqueIdentifier>{3899c69c-8849-41d9-bbab-bf585ed17a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\common\widget\batteryInfo">
+      <UniqueIdentifier>{574d5b00-1937-44c5-bd4d-ad7604dcb094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\daily">
+      <UniqueIdentifier>{7237317c-ec12-40fb-9bab-bcbe6f1650d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\friend">
+      <UniqueIdentifier>{ba0f9db2-4908-417f-9e89-1dc967c566de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\goldroom">
+      <UniqueIdentifier>{e66e3fa7-8269-4c2e-8421-2b3fe95a27e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\gonggao">
+      <UniqueIdentifier>{5334d380-82b4-4049-baef-226dae9b2dd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\notice">
+      <UniqueIdentifier>{b5b07678-7462-432a-b7e6-f99788e1ddc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\share">
+      <UniqueIdentifier>{dbe8dc2d-e509-42f2-bf70-263f1abbdd6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\shiming">
+      <UniqueIdentifier>{386f3371-1da7-4eab-9ee1-4c9ce0305276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\shop">
+      <UniqueIdentifier>{2e8064c3-10c4-4996-a58b-5f3ffebcdd34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\wanjiaqun">
+      <UniqueIdentifier>{9e8511db-1562-44a1-be4a-2111dd6e601b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\daily\pride">
+      <UniqueIdentifier>{74119bf7-220e-4706-8a15-15dbe94e8e7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\friend\dialog">
+      <UniqueIdentifier>{c45903dd-b37e-473e-a46a-5904af615a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\shop\fangka">
+      <UniqueIdentifier>{926e439c-4488-4ceb-8e78-c12a6723dbaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\shop\gold">
+      <UniqueIdentifier>{7effc6de-811e-49ed-9a41-2883b065d37c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\lobby\shop\mall">
+      <UniqueIdentifier>{b34c636a-dfe3-4a2e-ada9-72446686f959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\result\normal">
+      <UniqueIdentifier>{a1601313-d4a4-4207-93c2-3e1eadb03221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\result\special">
+      <UniqueIdentifier>{57a27e1a-50f3-41cc-b6be-d682183c4048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview\anim">
+      <UniqueIdentifier>{64fbea84-49da-46da-9433-6d7ff5c33051}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview\gui">
+      <UniqueIdentifier>{3d8fbde0-d3f2-4dad-b36b-cc6cc9472a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview\normal">
+      <UniqueIdentifier>{abbd40ba-3e1c-408d-a1e1-e785b2416d71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview\player">
+      <UniqueIdentifier>{2916c91f-2d39-4460-aebb-3689ed2aaec0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview\special">
+      <UniqueIdentifier>{b4aff208-941c-4ed3-a9e8-cc7af7ad34c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview\widget">
+      <UniqueIdentifier>{8b9827c2-f58c-46cc-a654-84246ae908c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview\player\base">
+      <UniqueIdentifier>{6662e021-e5af-4b47-af61-49b7b2ae36ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mahjong\gameview\player\playerinfo">
+      <UniqueIdentifier>{50a12f7a-cd45-4ed5-9cc3-5167d90f5afa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\userdata\UserData.cpp">
+      <Filter>src\userdata</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\http\HttpClientUtill.cpp">
+      <Filter>src\http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\http\HttpMannger.cpp">
+      <Filter>src\http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\http\MD5\MD5.cpp">
+      <Filter>src\http\MD5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\http\image\UrlImageMannger.cpp">
+      <Filter>src\http\image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\server\CommandManage.cpp">
+      <Filter>src\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\server\MsgHandler.cpp">
+      <Filter>src\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\server\NetworkManage.cpp">
+      <Filter>src\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\server\SocketDataManage.cpp">
+      <Filter>src\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\socket\android\PxSocketManage.cpp">
+      <Filter>src\socket\android</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\socket\android\native\CallAndroidSocket.cpp">
+      <Filter>src\socket\android\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\socket\android\native\SocketDataBack.cpp">
+      <Filter>src\socket\android\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\http\base64\Base64.cpp">
+      <Filter>src\http\base64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\bill\BillDetailInfo.cpp">
+      <Filter>src\mahjong\common\bill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\bill\BillInfo.cpp">
+      <Filter>src\mahjong\common\bill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\bill\fpdialog\FupanDialog.cpp">
+      <Filter>src\mahjong\common\bill\fpdialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\audio\Audio.cpp">
+      <Filter>src\mahjong\common\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\chat\ChatDialog.cpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\chat\FaceChatLayer.cpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\chat\GameRecordAudioManage.cpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\chat\PlayerChatManage.cpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\chat\QuickChatLayer.cpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\chat\chatAndroid\ChatAndroidMethod.cpp">
+      <Filter>src\mahjong\common\chat\chatAndroid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\dialog\base\BaseDialog.cpp">
+      <Filter>src\mahjong\common\dialog\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\dialog\network\LostNetwork.cpp">
+      <Filter>src\mahjong\common\dialog\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\dialog\network\LostNetwork2.cpp">
+      <Filter>src\mahjong\common\dialog\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\dialog\prompt\HintDialog.cpp">
+      <Filter>src\mahjong\common\dialog\prompt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\dialog\prompt\TextHintDialog.cpp">
+      <Filter>src\mahjong\common\dialog\prompt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\dialog\toast\InfoToast.cpp">
+      <Filter>src\mahjong\common\dialog\toast</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\dialog\toast\ToastCell.cpp">
+      <Filter>src\mahjong\common\dialog\toast</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\heroinfo\HeadImageDialog.cpp">
+      <Filter>src\mahjong\common\heroinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\heroinfo\HeroInfoEdit.cpp">
+      <Filter>src\mahjong\common\heroinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\heroinfo\OtherPlayerInfo.cpp">
+      <Filter>src\mahjong\common\heroinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\heroinfo\UserInfo.cpp">
+      <Filter>src\mahjong\common\heroinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\jong\Jong.cpp">
+      <Filter>src\mahjong\common\jong</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\loading\Loading.cpp">
+      <Filter>src\mahjong\common\loading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\setting\GameFeedDialog.cpp">
+      <Filter>src\mahjong\common\setting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\setting\GameRuleDialog.cpp">
+      <Filter>src\mahjong\common\setting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\setting\UserSetting.cpp">
+      <Filter>src\mahjong\common\setting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\state\GameData.cpp">
+      <Filter>src\mahjong\common\state</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\utils\Chinese.cpp">
+      <Filter>src\mahjong\common\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\utils\SeatIdUtil.cpp">
+      <Filter>src\mahjong\common\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\utils\StringUtil.cpp">
+      <Filter>src\mahjong\common\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\widget\HeadImage.cpp">
+      <Filter>src\mahjong\common\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\widget\ParticleUtil.cpp">
+      <Filter>src\mahjong\common\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\widget\ScrollTextEx.cpp">
+      <Filter>src\mahjong\common\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\common\widget\batteryInfo\BatteryInfo.cpp">
+      <Filter>src\mahjong\common\widget\batteryInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\EnterRoomDialog.cpp">
+      <Filter>src\mahjong\lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\LobbyScene.cpp">
+      <Filter>src\mahjong\lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\daily\DailyEvent.cpp">
+      <Filter>src\mahjong\lobby\daily</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\daily\pride\DailyPride.cpp">
+      <Filter>src\mahjong\lobby\daily\pride</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\daily\pride\PrideCell.cpp">
+      <Filter>src\mahjong\lobby\daily\pride</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\friend\FriendRoom.cpp">
+      <Filter>src\mahjong\lobby\friend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\friend\MahjongNumberKeypads.cpp">
+      <Filter>src\mahjong\lobby\friend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\friend\dialog\DissovleRoomDialog.cpp">
+      <Filter>src\mahjong\lobby\friend\dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\friend\dialog\RoomFullDialog.cpp">
+      <Filter>src\mahjong\lobby\friend\dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\friend\dialog\RoomIdErrorDialog.cpp">
+      <Filter>src\mahjong\lobby\friend\dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\goldroom\GoldRoomButton.cpp">
+      <Filter>src\mahjong\lobby\goldroom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\goldroom\GoldRoomPlate.cpp">
+      <Filter>src\mahjong\lobby\goldroom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\gonggao\GameGongGaoLayer.cpp">
+      <Filter>src\mahjong\lobby\gonggao</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\gonggao\GongGaoItem.cpp">
+      <Filter>src\mahjong\lobby\gonggao</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\wanjiaqun\WanJiaQunLayer.cpp">
+      <Filter>src\mahjong\lobby\wanjiaqun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\notice\NoticeDialog.cpp">
+      <Filter>src\mahjong\lobby\notice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\share\ShareToFriendLayer.cpp">
+      <Filter>src\mahjong\lobby\share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shiming\ShiMingLayer.cpp">
+      <Filter>src\mahjong\lobby\shiming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\FirstChageDialog.cpp">
+      <Filter>src\mahjong\lobby\shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\Huode.cpp">
+      <Filter>src\mahjong\lobby\shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\ShopHintDialog.cpp">
+      <Filter>src\mahjong\lobby\shop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\fangka\ChargeFangka.cpp">
+      <Filter>src\mahjong\lobby\shop\fangka</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\fangka\ChargeItem.cpp">
+      <Filter>src\mahjong\lobby\shop\fangka</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\fangka\FangkaNotEnoughDialog.cpp">
+      <Filter>src\mahjong\lobby\shop\fangka</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\gold\ChargeGold.cpp">
+      <Filter>src\mahjong\lobby\shop\gold</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\gold\GoldNotEnoughDialog.cpp">
+      <Filter>src\mahjong\lobby\shop\gold</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\mall\ExchangeItem.cpp">
+      <Filter>src\mahjong\lobby\shop\mall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\mall\ExchangePropCell.cpp">
+      <Filter>src\mahjong\lobby\shop\mall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\mall\LequanExchangeRecord.cpp">
+      <Filter>src\mahjong\lobby\shop\mall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\lobby\shop\mall\LequanShop.cpp">
+      <Filter>src\mahjong\lobby\shop\mall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\result\ResultScene.cpp">
+      <Filter>src\mahjong\result</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\result\normal\NormalResultLayer.cpp">
+      <Filter>src\mahjong\result\normal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\result\normal\PlayerResultCell.cpp">
+      <Filter>src\mahjong\result\normal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\result\special\GameResultCell.cpp">
+      <Filter>src\mahjong\result\special</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\result\special\SpecialResultLayer.cpp">
+      <Filter>src\mahjong\result\special</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\splash\LoadResource.cpp">
+      <Filter>src\mahjong\splash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\splash\SplashScene.cpp">
+      <Filter>src\mahjong\splash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\wechat\android\CallAndroidMethod.cpp">
+      <Filter>src\wechat\android</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\wechat\android\MahjongPayHandler.cpp">
+      <Filter>src\wechat\android</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\wechat\ios\WxLoginHandler.cpp">
+      <Filter>src\wechat\ios</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\MjGameScene.cpp">
+      <Filter>src\mahjong\gameview</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\anim\DealJongAnim.cpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\anim\HuaAnim.cpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\anim\HupaiAnim.cpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\anim\LiuJuAnim.cpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\anim\OutFogAnim.cpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\anim\PlayerCpgAnim.cpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\gui\GuiLayer.cpp">
+      <Filter>src\mahjong\gameview\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\widget\CardStack.cpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\widget\HuPaiHintLayer.cpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\widget\Orientation.cpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\widget\QuitRoomDialog.cpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\widget\SoundRecordBtn.cpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\special\ReviewGame.cpp">
+      <Filter>src\mahjong\gameview\special</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\normal\MahjongView.cpp">
+      <Filter>src\mahjong\gameview\normal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\player\PlayerHero.cpp">
+      <Filter>src\mahjong\gameview\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\player\PlayerLeft.cpp">
+      <Filter>src\mahjong\gameview\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\player\PlayerOpposite.cpp">
+      <Filter>src\mahjong\gameview\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\player\PlayerRight.cpp">
+      <Filter>src\mahjong\gameview\player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\player\base\PlayerBase.cpp">
+      <Filter>src\mahjong\gameview\player\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\mahjong\gameview\player\playerinfo\Player.cpp">
+      <Filter>src\mahjong\gameview\player\playerinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\socket\GameSocketManage.cpp">
+      <Filter>src\socket</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\userdata\UserData.h">
+      <Filter>src\userdata</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\http\HttpClientUtill.h">
+      <Filter>src\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\http\HttpMannger.h">
+      <Filter>src\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\http\MD5\MD5.hpp">
+      <Filter>src\http\MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\http\image\UrlImageMannger.h">
+      <Filter>src\http\image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\server\CommandManage.h">
+      <Filter>src\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\server\MsgConfig.h">
+      <Filter>src\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\server\MsgHandler.h">
+      <Filter>src\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\server\NetworkManage.h">
+      <Filter>src\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\server\SocketDataManage.h">
+      <Filter>src\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\android\PxSocketManage.h">
+      <Filter>src\socket\android</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\android\native\CallAndroidSocket.hpp">
+      <Filter>src\socket\android\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\android\native\SocketDataBack.h">
+      <Filter>src\socket\android\native</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\ios\CocoaSocket.h">
+      <Filter>src\socket\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\ios\CocoaSocketManage.h">
+      <Filter>src\socket\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\ios\cocoa\GCDAsyncSocket.h">
+      <Filter>src\socket\ios\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\ios\cocoa\GCDAsyncUdpSocket.h">
+      <Filter>src\socket\ios\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\http\base64\Base64.h">
+      <Filter>src\http\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\GameConfig.h">
+      <Filter>src\mahjong</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\bill\BillDetailInfo.h">
+      <Filter>src\mahjong\common\bill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\bill\BillInfo.h">
+      <Filter>src\mahjong\common\bill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\bill\fpdialog\FupanDialog.hpp">
+      <Filter>src\mahjong\common\bill\fpdialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\audio\Audio.h">
+      <Filter>src\mahjong\common\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\ChatDialog.hpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\FaceChatLayer.hpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\GameRecordAudioManage.h">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\PlayerChatManage.hpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\QuickChatLayer.hpp">
+      <Filter>src\mahjong\common\chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\chatAndroid\ChatAndroidMethod.h">
+      <Filter>src\mahjong\common\chat\chatAndroid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\chatIOS\AudioRecordManager.h">
+      <Filter>src\mahjong\common\chat\chatIOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\chatIOS\CallRcordMecordios.h">
+      <Filter>src\mahjong\common\chat\chatIOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\chat\chatIOS\LVRecordTool.h">
+      <Filter>src\mahjong\common\chat\chatIOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\dialog\base\BaseDialog.h">
+      <Filter>src\mahjong\common\dialog\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\dialog\network\LostNetwork.hpp">
+      <Filter>src\mahjong\common\dialog\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\dialog\network\LostNetwork2.hpp">
+      <Filter>src\mahjong\common\dialog\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\dialog\prompt\HintDialog.hpp">
+      <Filter>src\mahjong\common\dialog\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\dialog\prompt\TextHintDialog.hpp">
+      <Filter>src\mahjong\common\dialog\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\dialog\toast\InfoToast.hpp">
+      <Filter>src\mahjong\common\dialog\toast</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\dialog\toast\ToastCell.hpp">
+      <Filter>src\mahjong\common\dialog\toast</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\heroinfo\HeadImageDialog.h">
+      <Filter>src\mahjong\common\heroinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\heroinfo\HeroInfoEdit.h">
+      <Filter>src\mahjong\common\heroinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\heroinfo\OtherPlayerInfo.hpp">
+      <Filter>src\mahjong\common\heroinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\heroinfo\UserInfo.h">
+      <Filter>src\mahjong\common\heroinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\jong\Jong.h">
+      <Filter>src\mahjong\common\jong</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\loading\Loading.h">
+      <Filter>src\mahjong\common\loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\setting\GameFeedDialog.hpp">
+      <Filter>src\mahjong\common\setting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\setting\GameRuleDialog.hpp">
+      <Filter>src\mahjong\common\setting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\setting\UserSetting.h">
+      <Filter>src\mahjong\common\setting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\state\DataStruct.h">
+      <Filter>src\mahjong\common\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\state\GameData.h">
+      <Filter>src\mahjong\common\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\utils\Chinese.h">
+      <Filter>src\mahjong\common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\utils\SeatIdUtil.h">
+      <Filter>src\mahjong\common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\utils\StringUtil.h">
+      <Filter>src\mahjong\common\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\widget\HeadImage.hpp">
+      <Filter>src\mahjong\common\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\widget\ParticleUtil.hpp">
+      <Filter>src\mahjong\common\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\widget\ScrollTextEx.h">
+      <Filter>src\mahjong\common\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\common\widget\batteryInfo\BatteryInfo.h">
+      <Filter>src\mahjong\common\widget\batteryInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\EnterRoomDialog.hpp">
+      <Filter>src\mahjong\lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\LobbyScene.h">
+      <Filter>src\mahjong\lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\daily\DailyEvent.h">
+      <Filter>src\mahjong\lobby\daily</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\daily\pride\DailyPride.h">
+      <Filter>src\mahjong\lobby\daily\pride</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\daily\pride\PrideCell.h">
+      <Filter>src\mahjong\lobby\daily\pride</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\friend\FriendRoom.h">
+      <Filter>src\mahjong\lobby\friend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\friend\MahjongNumberKeypads.hpp">
+      <Filter>src\mahjong\lobby\friend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\friend\dialog\DissovleRoomDialog.hpp">
+      <Filter>src\mahjong\lobby\friend\dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\friend\dialog\RoomFullDialog.hpp">
+      <Filter>src\mahjong\lobby\friend\dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\friend\dialog\RoomIdErrorDialog.hpp">
+      <Filter>src\mahjong\lobby\friend\dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\goldroom\GoldRoomButton.hpp">
+      <Filter>src\mahjong\lobby\goldroom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\goldroom\GoldRoomPlate.hpp">
+      <Filter>src\mahjong\lobby\goldroom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\gonggao\GameGongGaoLayer.hpp">
+      <Filter>src\mahjong\lobby\gonggao</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\gonggao\GongGaoItem.hpp">
+      <Filter>src\mahjong\lobby\gonggao</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\wanjiaqun\WanJiaQunLayer.hpp">
+      <Filter>src\mahjong\lobby\wanjiaqun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\notice\NoticeDialog.hpp">
+      <Filter>src\mahjong\lobby\notice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\share\ShareToFriendLayer.hpp">
+      <Filter>src\mahjong\lobby\share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shiming\ShiMingLayer.hpp">
+      <Filter>src\mahjong\lobby\shiming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\FirstChageDialog.hpp">
+      <Filter>src\mahjong\lobby\shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\Huode.hpp">
+      <Filter>src\mahjong\lobby\shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\ShopHintDialog.hpp">
+      <Filter>src\mahjong\lobby\shop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\fangka\ChargeFangka.hpp">
+      <Filter>src\mahjong\lobby\shop\fangka</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\fangka\ChargeItem.hpp">
+      <Filter>src\mahjong\lobby\shop\fangka</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\fangka\FangkaNotEnoughDialog.hpp">
+      <Filter>src\mahjong\lobby\shop\fangka</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\gold\ChargeGold.hpp">
+      <Filter>src\mahjong\lobby\shop\gold</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\gold\GoldNotEnoughDialog.hpp">
+      <Filter>src\mahjong\lobby\shop\gold</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\mall\ExchangeItem.hpp">
+      <Filter>src\mahjong\lobby\shop\mall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\mall\ExchangePropCell.hpp">
+      <Filter>src\mahjong\lobby\shop\mall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\mall\LequanExchangeRecord.hpp">
+      <Filter>src\mahjong\lobby\shop\mall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\lobby\shop\mall\LequanShop.hpp">
+      <Filter>src\mahjong\lobby\shop\mall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\result\ResultScene.hpp">
+      <Filter>src\mahjong\result</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\result\normal\NormalResultLayer.hpp">
+      <Filter>src\mahjong\result\normal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\result\normal\PlayerResultCell.hpp">
+      <Filter>src\mahjong\result\normal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\result\special\GameResultCell.hpp">
+      <Filter>src\mahjong\result\special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\result\special\SpecialResultLayer.hpp">
+      <Filter>src\mahjong\result\special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\splash\LoadResource.hpp">
+      <Filter>src\mahjong\splash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\splash\SplashScene.h">
+      <Filter>src\mahjong\splash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\android\CallAndroidMethod.h">
+      <Filter>src\wechat\android</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\android\MahjongPayHandler.h">
+      <Filter>src\wechat\android</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\CallIOSMethod.h">
+      <Filter>src\wechat\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\LoginByWechat.h">
+      <Filter>src\wechat\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\RechargeVC.h">
+      <Filter>src\wechat\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\StatusBarTool.h">
+      <Filter>src\wechat\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\WXApiManager.h">
+      <Filter>src\wechat\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\WxLoginHandler.h">
+      <Filter>src\wechat\ios</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\wechat\WechatAuthSDK.h">
+      <Filter>src\wechat\ios\wechat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\wechat\WXApi.h">
+      <Filter>src\wechat\ios\wechat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\wechat\ios\wechat\WXApiObject.h">
+      <Filter>src\wechat\ios\wechat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\MjGameScene.h">
+      <Filter>src\mahjong\gameview</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\anim\DealJongAnim.h">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\anim\HuaAnim.hpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\anim\HupaiAnim.hpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\anim\LiuJuAnim.hpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\anim\OutFogAnim.hpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\anim\PlayerCpgAnim.hpp">
+      <Filter>src\mahjong\gameview\anim</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\gui\GuiLayer.h">
+      <Filter>src\mahjong\gameview\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\widget\CardStack.hpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\widget\HuPaiHintLayer.hpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\widget\Orientation.h">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\widget\QuitRoomDialog.hpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\widget\SoundRecordBtn.hpp">
+      <Filter>src\mahjong\gameview\widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\special\ReviewGame.h">
+      <Filter>src\mahjong\gameview\special</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\normal\MahjongView.h">
+      <Filter>src\mahjong\gameview\normal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\player\PlayerHero.h">
+      <Filter>src\mahjong\gameview\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\player\PlayerLeft.h">
+      <Filter>src\mahjong\gameview\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\player\PlayerOpposite.h">
+      <Filter>src\mahjong\gameview\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\player\PlayerRight.h">
+      <Filter>src\mahjong\gameview\player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\player\base\PlayerBase.h">
+      <Filter>src\mahjong\gameview\player\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\mahjong\gameview\player\playerinfo\Player.h">
+      <Filter>src\mahjong\gameview\player\playerinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\socket\GameSocketManage.hpp">
+      <Filter>src\socket</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Classes\socket\ios\CocoaSocket.mm">
+      <Filter>src\socket\ios</Filter>
+    </None>
+    <None Include="..\Classes\socket\ios\CocoaSocketManage.mm">
+      <Filter>src\socket\ios</Filter>
+    </None>
+    <None Include="..\Classes\socket\ios\cocoa\GCDAsyncSocket.m">
+      <Filter>src\socket\ios\cocoa</Filter>
+    </None>
+    <None Include="..\Classes\socket\ios\cocoa\GCDAsyncUdpSocket.m">
+      <Filter>src\socket\ios\cocoa</Filter>
+    </None>
+    <None Include="..\Classes\mahjong\common\chat\chatIOS\AudioRecordManager.m">
+      <Filter>src\mahjong\common\chat\chatIOS</Filter>
+    </None>
+    <None Include="..\Classes\mahjong\common\chat\chatIOS\CallRcordMecordios.mm">
+      <Filter>src\mahjong\common\chat\chatIOS</Filter>
+    </None>
+    <None Include="..\Classes\mahjong\common\chat\chatIOS\LVRecordTool.m">
+      <Filter>src\mahjong\common\chat\chatIOS</Filter>
+    </None>
+    <None Include="..\Classes\wechat\ios\CallIOSMethod.mm">
+      <Filter>src\wechat\ios</Filter>
+    </None>
+    <None Include="..\Classes\wechat\ios\LoginByWechat.mm">
+      <Filter>src\wechat\ios</Filter>
+    </None>
+    <None Include="..\Classes\wechat\ios\RechargeVC.mm">
+      <Filter>src\wechat\ios</Filter>
+    </None>
+    <None Include="..\Classes\wechat\ios\StatusBarTool.m">
+      <Filter>src\wechat\ios</Filter>
+    </None>
+    <None Include="..\Classes\wechat\ios\WXApiManager.mm">
+      <Filter>src\wechat\ios</Filter>
+    </None>
+    <None Include="..\Classes\wechat\ios\wechat\libWeChatSDK.a">
+      <Filter>src\wechat\ios\wechat</Filter>
+    </None>
+  </ItemGroup>
+</Project>

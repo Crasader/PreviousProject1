@@ -1,0 +1,943 @@
+#ifndef __DATA_STRUCT_H__
+#define __DATA_STRUCT_H__
+#include "cocos2d.h"
+#include "json/document.h"
+#include "json/rapidjson.h"
+#include "mahjong/common/jong/Jong.h"
+USING_NS_CC;
+
+//游戏人数模式
+enum GameModel{
+    TWOPLAYER = 2,
+    FOURPLAYER = 4
+};
+
+//游戏房间类型
+enum MahjongRoom{
+    publicRoom,
+    privateRoom
+};
+
+//比赛类型
+enum CompetitionRoomId{
+    Competition_Error,
+    Shanghai_Normal,
+    Shanghai_High,
+    Hongzhong_Normal,
+    Hongzhong_High,
+};
+
+//游戏麻将类型
+enum GameMahjongType{
+    SuZhou= 1,
+    HongZhong,
+    BaiDa,
+    FanPai,
+};
+
+enum PrideType{
+    gold,
+    lequan,
+    fangka,
+    fee,
+    prop,
+    nothing
+};
+
+enum CpgType
+{
+    chi,
+    peng,
+    gang,
+    angang,
+    penggang,
+    ting
+};
+
+enum HuType{
+    kaibao  = 1,
+    huangfan,
+    gangkai,
+    mengqing,
+    hunpeng,
+    qingpeng,
+    dadiaoche,
+    qingyise,
+    hunyise,
+    pengpenghu,
+    lajihu
+};
+
+enum LeziType{
+    type1100 = 0,// 1/1 无勒子
+    type1120,// 1/1 20勒子
+    type1150,// 1/1 50勒子
+    type2200,// 2/2 无勒子
+    type2240,// 2/2 40勒子
+    type22100,// 2/2 100勒子
+    type55c = 10//比赛专用
+};
+
+
+
+//麻将游戏状态
+enum MahjongState{
+    heroChi,//吃牌
+    heroPeng,//碰牌
+    heroGang,//杠牌
+    heroPreTing,//预备听（玩家点击听牌）
+    heroTing,//听牌
+    readyGo,//已准备
+    playing,//游戏中
+    continueAgain//断线续玩
+};
+
+struct PlayerReady{
+    int ifready;
+    int seatId;
+    std::string poxiaoId;
+};
+
+struct EnterRoomResp{
+    std::string result;
+    std::string rsid;
+    std::string kb;
+    std::string huangfan;
+    std::string money;
+    std::string gold;
+    std::string payid;
+    std::string min;
+    std::vector<PlayerReady> playerReadys;
+};
+
+struct OtherPlayedJong
+{
+    int poker;
+    int seatId;
+};
+
+struct HuPokerData{
+    std::string num;
+    std::string poker;
+};
+
+struct HeroHuPaiData{
+    int poker;
+    std::vector<HuPokerData> data;
+};
+
+struct GangData{
+    int flag;//0明杠，1暗杠，2碰杠
+    std::string gang;
+};
+
+struct PlayerCpgtData
+{
+    int seatId;
+    int sId;
+    int hu;
+    std::string poker;
+    std::string peng;
+    std::vector<GangData> playerGang;
+    std::vector<HeroHuPaiData> heroHu;
+};
+
+struct HeroCpgRespData{
+    int result;
+    std::string forbit;
+    PlayerCpgtData playCpgt;
+};
+
+struct PlayerTurnData
+{
+    int seatId;
+    int poker;
+    int handNum;
+    std::string rest;
+    std::string replace;
+    bool hastinggang = false;
+    PlayerCpgtData cpgData;
+};
+
+struct CompetitionResultInfo{
+    std::string matchid;
+    std::string pride;
+    std::string paiming;
+};
+
+struct GameHongBaoPride{
+    std::string dyj;
+    std::string dyjfee;
+    std::string dsj;
+    std::string dsjfee;
+    std::string fzid ;
+    std::string fzfee ;
+    std::string sxlmfee;
+};
+
+struct GameHongBaoPride2{
+    std::string dyjfee;
+    std::string dsjfee;
+    std::string fzfee ;
+    std::string sxlmfee;
+};
+
+struct GameResultData
+{
+    int result;//0打酱油,1自摸,3胡牌,2点炮
+    int seatId;
+    int gold;
+    int diamond;
+    int jifen;
+    int lequan;
+    int golddelta;
+    int diamonddelta;
+    int jifendelta;
+    int lequandelta;
+    int bangzuan;
+    int bangzuandelta;
+    int hua;
+    std::string gangfen;
+    std::string lz;
+    std::string win;
+    std::string lost;
+    std::string even;
+    std::string fan;
+    std::string umark;
+    std::string pic;
+    std::string nickName;
+    std::string huType;
+    std::string showPoker;
+    std::string poxiaoId;
+    std::string tip;
+    std::string zimocount;
+    std::string jiepaocount;
+    std::string dianpaocount;
+    std::string angangcount;
+    std::string minggangcount;
+};
+
+struct PlayerCpgRecord
+{
+    int pengDir;//碰牌方向
+    int type;//吃碰杠类型
+    int gangValue;//杠的值
+    bool anGangFan = false;
+    Vector<Jong*> pokersRecord;
+};
+
+struct TuiGuangData{
+    std::string name;
+    std::string count;
+    std::string money;
+    std::string pic;
+    std::string total;
+};
+
+struct YongHuTuiGuang{
+    std::string showText;
+    std::vector<TuiGuangData> datas;
+};
+
+struct PlayerChiData{
+    std::string chi;
+    std::string poker;
+};
+
+struct PlayerPengData{
+    std::string peng;
+    std::string peId;
+};
+
+struct PlayerGangData{
+    std::string gang;
+    std::string gaId;
+};
+
+struct PlayerGameData{
+    int seatId;
+    int gold;
+    int diamond;
+    int jifen;
+    int bangzuan;
+    int fangka;
+    int gender;
+    int lequan;
+    int status;
+    int tru;
+    int isOnline;
+    int ifready;
+    std::vector<PlayerChiData> chiData;
+    std::vector<PlayerPengData> pengData;
+    std::vector<PlayerGangData> gangData;
+    std::string angang;
+    std::string outhand;
+    std::string nickname;
+    std::string money;
+    std::string hand;
+    std::string hua;
+    std::string lastpoker;
+    std::string pic;
+    std::string poxiaoId;
+    std::string umark;
+    std::string ip;
+};
+
+struct LastGameData
+{
+    int result;
+    int seatId;
+    int pre;
+    int loard;
+    int kb;
+    int hf;
+    int turn;
+    MahjongRoom roomType;
+    std::string rest;
+    std::string hand;
+    std::vector <PlayerGameData> players;
+};
+
+struct RoomData{
+    int roomId;
+    int maxGold;
+    int minGold;
+    int base;
+    int hua;
+};
+
+struct CompetitionRoom{
+    std::string name;
+    std::string fangka;
+    std::string roomId;
+    std::string prize;
+    std::string rule;
+};
+
+struct RoomListData
+{
+    std::vector <RoomData> rooms;
+    std::vector <CompetitionRoom> matchList;
+};
+
+
+
+
+
+struct FriendInfo{
+    std::string poxiaoId;
+    std::string image;
+    std::string nickname;
+    std::string pic;
+    int diamond;
+    int lockDiamond;
+    int gold;
+    int lequan;
+    bool isOnLine;
+};
+
+struct FriendListData{
+    std::vector<FriendInfo> friends;
+};
+
+struct FriendSearchData{
+    std::vector<FriendInfo> friends;
+};
+
+struct RemovePlayerData{
+    int setaId;
+    std::string pid;
+};
+
+struct FriendOpenRoomRespData{
+    bool agency;
+    int seatId;
+    int result;
+    std::string kb;
+    std::string huangfan;
+    std::string prjushu;
+    std::string prjucount;
+    std::string prid;
+};
+
+struct FriendOpenRoomNotifyData{
+    std::string nickname;
+    std::string pid;
+};
+
+struct BillContent{
+    std::string nickName;
+    std::string score;
+};
+
+struct BillInfoData{
+    std::string gameType;
+    std::string date;
+    std::string billId;
+    std::string prid;
+    std::string atype;
+    std::vector<BillContent> content;
+};
+
+
+struct BillInfoAll{
+    bool needInit = true;
+    std::vector<BillInfoData> bills;
+};
+
+struct BillInfoDetail
+{
+    std::vector<BillContent> detail;
+    std::string recordId;
+};
+
+struct BillInfoDetailAll
+{
+    bool needInit = true;
+    std::vector<BillInfoDetail> detail;
+};
+
+struct DailyTaskData{
+    std::string task1;
+    std::string task2;
+    std::string task3;
+    std::string task4;
+    std::string extra;
+};
+
+
+
+struct PrideData{
+    PrideType type;
+    std::string number;
+};
+
+struct DailySignData{
+    std::string day;
+    std::vector<PrideData> pride;
+    std::string result;
+};
+
+struct TodaySignData{
+    std::string day;
+    std::vector<PrideData> pride;
+};
+
+struct TruStateData{
+    std::string seatId;
+    std::string flag;
+};
+
+struct WelfareData{
+    bool needInit;
+    std::string jjj_count;
+    std::string jjj_used;
+    std::string jjj_gold;
+    std::string jjj_result;
+    std::string wx_result;
+    std::string wx_gold;
+    std::string wx_bangzuan;
+    std::string bzjjj_count;
+    std::string bzjjj_used;
+    std::string bzjjj_bangzuan;
+    std::string bzjjj_result;
+    std::string mobile_result;
+    std::string mobile_gold;
+};
+
+
+struct WelfareBZ{
+    std::string result;
+    std::string bangzuan;
+};
+
+struct WelfareGold{
+    std::string result;
+    std::string gold;
+};
+
+
+struct DailyPrideData{
+    std::string needGold;
+    std::string result;
+    std::string count;
+    std::string max;
+    std::vector<PrideData> prides;
+};
+
+struct TodayPrideData{
+    std::string result;
+    PrideData pride;
+    int rest;
+};
+
+struct TurnTableData{
+    std::string result;
+    std::vector<PrideData> prides;
+};
+
+struct TurnTablePrideData{
+    std::string result;
+    PrideData pride;
+};
+
+struct BoundPhoneData{
+    int result;
+    std::string phoneNum;
+};
+
+
+struct FirstChargeData{
+    bool needInit;
+    int gold;
+    int money;
+    int fangka;
+};
+
+struct GoldChange{
+    int gold;
+    int diamond;
+    int fangka;
+};
+
+struct GoldChangeList{
+    bool needInit;
+    std::vector<GoldChange> list;
+};
+
+struct FangkaCharge{
+    int money;
+    int fangka;
+    int payId;
+};
+
+struct FangkaChargeList{
+    bool needInit;
+    std::vector<FangkaCharge> list;
+};
+
+struct LequanChange{
+    std::string propId;
+    std::string propPrice;
+    std::string propName;
+    std::string propType;
+    std::string url;
+};
+
+struct LequanChangeList{
+    bool needInit;
+    std::vector<LequanChange> list;
+};
+
+struct HuafeiChange{
+    std::string fee;
+    std::string url;
+    std::string tofee;
+};
+
+struct HuafeiChangeList{
+    bool needInit;
+    std::vector<HuafeiChange> list;
+};
+
+struct FangkaChange{
+    std::string fee;
+    std::string url;
+    std::string tofangka;
+};
+
+struct FangkaChangeList{
+    bool needInit;
+    std::vector<FangkaChange> list;
+};
+
+struct LequanChangeResult{
+    std::string result;
+    int  lequan;
+};
+
+struct HuafeiChangeResult{
+    std::string result;
+    std::string  huafei;
+};
+
+struct RedShareFriend{
+    std::string pId;
+    std::string nickname;
+    std::string status;
+};
+
+struct RedWalletRespData{
+    bool needInit;
+    std::string hbcode;
+    std::string lequan;
+    std::string gold;
+    std::string diamond;
+    std::string count;
+    std::string lequan2;
+    std::string gold2;
+    std::string diamond2;
+    std::vector<RedShareFriend> friends;
+};
+
+struct ReciveRedWallet{
+    std::string result;
+    std::string gold;
+    std::string lequan;
+    std::string diamond;
+    std::string bangzuan;
+};
+
+struct LoginAccPwd{
+    std::string account;
+    std::string password;
+};
+
+struct LeRecord{
+    std::string propId;
+    std::string state;
+    std::string time;
+    std::string phone;
+};
+
+struct LeChangeRecord{
+    std::vector<LeRecord> records;
+};
+
+struct HuaRecord{
+    std::string fee;
+    std::string url;
+    std::string state;
+    std::string time;
+    std::string phone;
+};
+
+struct HuaChangeRecord{
+    std::vector<HuaRecord> records;
+};
+
+struct FangkaRecord{
+    std::string url;
+    std::string fee;
+    std::string time;
+};
+
+struct FangkaChangeRecord{
+    std::vector<FangkaRecord> records;
+};
+
+struct PlayerResumeData{
+    int seatId;
+    int hua;
+    int status;
+    int tru;
+    int isOnline;
+    std::string angang;
+    std::string outhand;
+    std::string hand;
+    std::string lastpoker;
+    std::vector<PlayerChiData> chiData;
+    std::vector<PlayerPengData> pengData;
+    std::vector<PlayerGangData> gangData;
+};
+
+struct GameResumeData
+{
+    int kb;
+    int hf;
+    int turn;
+    std::string rest;
+    std::vector <PlayerResumeData> players;
+};
+
+struct ChatData{
+    std::string nickname;
+    std::string content;
+    std::string poxiaoId;
+    bool mark;
+    bool isRead;
+};
+
+struct RoomChatMsgList{
+    std::vector<ChatData> msgList;
+};
+
+struct FriendChatData{
+    std::string poxiaoId;
+    std::vector<ChatData> msgList;
+};
+
+struct FriendChatMsgList{
+    std::vector<FriendChatData> friendMsgList;
+};
+
+struct InviteRespData{
+    std::string nickname;
+    std::string result;
+};
+
+struct ActivityRank{
+    std::string nickname;
+    std::string lequan;
+};
+
+struct ActivityRankList{
+    std::vector<ActivityRank> rank;
+    std::string weekName;
+    std::string weekLequan;
+};
+
+struct ActivityTime{
+    std::string start;
+    std::string end;
+};
+
+struct ActivityPride{
+    int rid;
+    std::string pid;
+    std::string status;
+    std::string name;
+};
+
+struct ActivityPrideList{
+    std::vector<ActivityPride> prideList;
+};
+
+struct DissolveData{
+    std::string pid;
+    std::string agree;
+};
+
+struct CpgPokerRec{
+    int clientseatid;
+    std::vector<std::vector<int>> cpg;
+};
+
+struct PlayerCpgRecShow{
+    std::vector<CpgPokerRec> playercpg;
+};
+
+
+struct PlayBackInfo{
+    int result;
+    std::string gameType;
+    std::string heroid;
+    std::vector<std::string> playBackInfo;
+};
+
+struct FupanGameData
+{
+    std::vector <PlayerGameData> players;
+};
+
+struct PlayerMingpai{
+    bool  isTing = false;
+    int seatId;
+    Vector<Jong*> playerHandJongs;//玩家手牌
+    Vector<Jong*> playerPlayedJongs;
+    Vector<Jong*> playerHuaJongs;
+    std::vector<PlayerCpgRecord>  playerCpgRecords;//玩家吃碰杠记录
+};
+
+struct PlayMingpaiRecord{
+    std::vector<PlayerMingpai> record;//4个玩家的牌
+    int step;
+};
+
+struct TuiGuangReward{
+    int gold;
+    int fangka;
+};
+
+struct TuiGuangPride{
+    int gold;
+    int fangka;
+};
+
+struct TuiGuangRecord{
+    int gold;
+    int fangka;
+};
+
+struct HuaData{
+    std::string setaId;
+    std::string poxiaoId;
+    std::string hua;
+};
+
+struct MahjongFaPaiData{
+    bool hasGang = false;
+    int start;
+    int prjucount;
+    std::string heroPokers;
+    std::string baozi;
+    std::string dice;
+    std::string ting;
+    std::string huangfan;
+    std::string diling;
+    std::string matchId;
+    std::string rest;
+    std::vector<HuaData> huas;
+    PlayerCpgtData mjHuData;
+};
+
+struct GameActivityData{
+    std::string imageUrl;
+    std::string showTime;
+    std::string jumpUrl;
+    std::string imageUrl2;
+    std::string downLoadUrlIOS;
+    std::string downLoadUrlAndroid;
+};
+
+struct GameGongGao{
+    std::vector<GameActivityData> gongGaoData;
+};
+
+struct JoinCompetitionData{
+    int result;
+    std::string num;
+    std::string roomId;
+    std::string text;
+    std::string tip;
+};
+
+struct ShareActivityData{
+    std::string result;
+    std::string wx;
+    std::string prize;
+    std::string num;
+};
+
+struct PlayerRank{
+    std::string key;
+    std::string pic;
+    std::string value;
+};
+
+struct LobbyPaiHangData{
+    std::string name1;
+    std::string name2;
+    std::string name3;
+    std::vector<PlayerRank> content1;
+    std::vector<PlayerRank> content2;
+    std::vector<PlayerRank> content3;
+};
+
+struct MahjongShareData1{
+    std::string head;
+    std::string content;
+    std::string phead;
+    std::string pcontent;
+    std::string pic;
+    std::string url;
+    std::string type;
+    
+};
+struct MahjongShareData2{
+    std::string head;
+    std::string pic;
+    std::string url;
+    std::string content;
+    std::string phead;
+    std::string pcontent;
+    std::string type;
+};
+struct MahjongShareData3{
+    std::string head;
+    std::string pic;
+    std::string url;
+    std::string content;
+    std::string phead;
+    std::string pcontent;
+    std::string type;
+};
+struct MahjongShareData4{
+    std::string head;
+    std::string pic;
+    std::string url;
+    std::string content;
+    std::string phead;
+    std::string pcontent;
+    std::string type;
+};
+struct MahjongShareData5{
+    std::string head;
+    std::string pic;
+    std::string url;
+    std::string content;
+    std::string phead;
+    std::string pcontent;
+    std::string type;
+};
+struct MahjongShareData6{
+    std::string head;
+    std::string pic;
+    std::string url;
+    std::string content;
+    std::string phead;
+    std::string pcontent;
+    std::string type;
+};
+
+struct PayPointInfo{
+    std::string fee;
+    std::string fangka;
+    std::string point;
+    std::string applefangka;
+    std::string applefee;
+};
+
+struct PayGoldPoint{
+    std::string fee;
+    std::string applefee;
+    std::string gold;
+    std::string applegold;
+    std::string payId;
+};
+
+struct AgencyRoomData{
+    std::string type;
+    std::string roomid;
+    std::string gameInfo;
+    std::string createtime;
+    std::string playername;
+    std::string progress;
+    std::string js;
+    std::string rs;
+};
+
+struct AgencyRoomList{
+    std::vector<AgencyRoomData> roomlist;
+};
+
+struct AgencyRecordData{
+    std::string type;
+    std::string roomid;
+    std::string gameInfo;
+    std::string createtime;
+    std::string playername;
+    std::string progress;
+};
+
+struct AgencyRecordList{
+    std::vector<AgencyRecordData> roomlist;
+};
+
+struct IPConflictData{
+    std::string line;
+    std::string IP1;
+    std::vector<std::string> conflict;
+};
+
+struct AgencyResultData{
+    std::string name;
+    std::string count;
+    std::string fangka;
+};
+
+struct AgencyResultList{
+    std::string time;
+    std::vector<AgencyResultData> results;
+};
+#endif

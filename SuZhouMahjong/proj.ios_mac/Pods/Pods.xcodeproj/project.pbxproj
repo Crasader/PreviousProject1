@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		71FA88A10B8E3C361EC1146DC59995AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		A9BF5C35C9BF8D190C24721A588943C1 /* Pods-SuZhouMahjong-mobile-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C5095AE9B3CCC2AC79044CADAE9AA6C /* Pods-SuZhouMahjong-mobile-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		076D23D1A0E93203CFD2DECFE4732DB2 /* Pods-SuZhouMahjong-mobile-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SuZhouMahjong-mobile-acknowledgements.plist"; sourceTree = "<group>"; };
+		1C5095AE9B3CCC2AC79044CADAE9AA6C /* Pods-SuZhouMahjong-mobile-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SuZhouMahjong-mobile-dummy.m"; sourceTree = "<group>"; };
+		1CCAC405809252DBADADB3EA7E016673 /* Pods-SuZhouMahjong-mobile-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SuZhouMahjong-mobile-acknowledgements.markdown"; sourceTree = "<group>"; };
+		29EBD5D2F998A616E7D47863B12459F9 /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = OpenSDK1.8.1/WXApi.h; sourceTree = "<group>"; };
+		45DBFCB88BBF2251232DC775C5859F16 /* MWApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MWApiObject.h; path = MagicWindowSDK/MagicWindowSDK/MWApiObject.h; sourceTree = "<group>"; };
+		56A311EDC9AD9967A856499F2DAFA3BC /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = OpenSDK1.8.1/WXApiObject.h; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6AFFBF8C3859AC6D7B51FD4A64783E3D /* Pods-SuZhouMahjong-mobile-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SuZhouMahjong-mobile-frameworks.sh"; sourceTree = "<group>"; };
+		7B158C5453678AB9E0B81FF1A70084D1 /* MWCampaignConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MWCampaignConfig.h; path = MagicWindowSDK/MagicWindowSDK/MWCampaignConfig.h; sourceTree = "<group>"; };
+		8740EBFCE6C275B8403DC62C0599C274 /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = OpenSDK1.8.1/libWeChatSDK.a; sourceTree = "<group>"; };
+		90C2B1DDA723AF6A287E39B5BE1D06FC /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = OpenSDK1.8.1/WechatAuthSDK.h; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B2C911E21D4E149C4AFED15DE1EFAC0B /* MagicWindow.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = MagicWindow.bundle; path = MagicWindowSDK/MagicWindowSDK/MagicWindow.bundle; sourceTree = "<group>"; };
+		B9B8D6395132BD08667251EC87C005B4 /* Pods-SuZhouMahjong-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SuZhouMahjong-mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		BED40DDD1590934AB6F7F05C1B1F85DE /* Pods-SuZhouMahjong-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SuZhouMahjong-mobile.release.xcconfig"; sourceTree = "<group>"; };
+		C1D9B8AD2489F4FD5712C0D5D8AF3077 /* libMagicWindowSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libMagicWindowSDK.a; path = MagicWindowSDK/MagicWindowSDK/libMagicWindowSDK.a; sourceTree = "<group>"; };
+		D08B678F3782AFFAF12CA98726AE5F8F /* Pods-SuZhouMahjong-mobile-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SuZhouMahjong-mobile-resources.sh"; sourceTree = "<group>"; };
+		D5AB81A19C6DB183F36BF99068D9B1B3 /* libPods-SuZhouMahjong-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SuZhouMahjong-mobile.a"; path = "libPods-SuZhouMahjong-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDEB3245BAF2E99EAFCBEBB252720831 /* MWFloatView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MWFloatView.h; path = MagicWindowSDK/MagicWindowSDK/MWFloatView.h; sourceTree = "<group>"; };
+		E0076F6D5696FC34D74CAD5798E14460 /* MWApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MWApi.h; path = MagicWindowSDK/MagicWindowSDK/MWApi.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B728FFB5172A2694E6E4094E44A13633 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71FA88A10B8E3C361EC1146DC59995AF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A595613D55D719CA39D6916C518108F /* MagicWindowSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E0076F6D5696FC34D74CAD5798E14460 /* MWApi.h */,
+				45DBFCB88BBF2251232DC775C5859F16 /* MWApiObject.h */,
+				7B158C5453678AB9E0B81FF1A70084D1 /* MWCampaignConfig.h */,
+				DDEB3245BAF2E99EAFCBEBB252720831 /* MWFloatView.h */,
+				F6AEAC2759D26C1725A38AB614C9CC61 /* Frameworks */,
+				8245A3B424B161710DAAFA333E98C1C3 /* Resources */,
+			);
+			name = MagicWindowSDK;
+			path = MagicWindowSDK;
+			sourceTree = "<group>";
+		};
+		1C666D318E4CAE83B8E8CA26C59158A0 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				703D6AFF48E42698FBCADF082B4EEC74 /* Pods-SuZhouMahjong-mobile */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		4BB2ECB2DBFB00C3417F585A0190F0D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8740EBFCE6C275B8403DC62C0599C274 /* libWeChatSDK.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		703D6AFF48E42698FBCADF082B4EEC74 /* Pods-SuZhouMahjong-mobile */ = {
+			isa = PBXGroup;
+			children = (
+				1CCAC405809252DBADADB3EA7E016673 /* Pods-SuZhouMahjong-mobile-acknowledgements.markdown */,
+				076D23D1A0E93203CFD2DECFE4732DB2 /* Pods-SuZhouMahjong-mobile-acknowledgements.plist */,
+				1C5095AE9B3CCC2AC79044CADAE9AA6C /* Pods-SuZhouMahjong-mobile-dummy.m */,
+				6AFFBF8C3859AC6D7B51FD4A64783E3D /* Pods-SuZhouMahjong-mobile-frameworks.sh */,
+				D08B678F3782AFFAF12CA98726AE5F8F /* Pods-SuZhouMahjong-mobile-resources.sh */,
+				B9B8D6395132BD08667251EC87C005B4 /* Pods-SuZhouMahjong-mobile.debug.xcconfig */,
+				BED40DDD1590934AB6F7F05C1B1F85DE /* Pods-SuZhouMahjong-mobile.release.xcconfig */,
+			);
+			name = "Pods-SuZhouMahjong-mobile";
+			path = "Target Support Files/Pods-SuZhouMahjong-mobile";
+			sourceTree = "<group>";
+		};
+		77975BD078A039B0931B344E6463365A /* WechatOpenSDK */ = {
+			isa = PBXGroup;
+			children = (
+				90C2B1DDA723AF6A287E39B5BE1D06FC /* WechatAuthSDK.h */,
+				29EBD5D2F998A616E7D47863B12459F9 /* WXApi.h */,
+				56A311EDC9AD9967A856499F2DAFA3BC /* WXApiObject.h */,
+				4BB2ECB2DBFB00C3417F585A0190F0D8 /* Frameworks */,
+			);
+			name = WechatOpenSDK;
+			path = WechatOpenSDK;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				C27A3B86F3192B5AF5FCAC9A524467F4 /* Pods */,
+				8CB7EC3446A95D3D87D0B11FE82768FB /* Products */,
+				1C666D318E4CAE83B8E8CA26C59158A0 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8245A3B424B161710DAAFA333E98C1C3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B2C911E21D4E149C4AFED15DE1EFAC0B /* MagicWindow.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8CB7EC3446A95D3D87D0B11FE82768FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5AB81A19C6DB183F36BF99068D9B1B3 /* libPods-SuZhouMahjong-mobile.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C27A3B86F3192B5AF5FCAC9A524467F4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A595613D55D719CA39D6916C518108F /* MagicWindowSDK */,
+				77975BD078A039B0931B344E6463365A /* WechatOpenSDK */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F6AEAC2759D26C1725A38AB614C9CC61 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1D9B8AD2489F4FD5712C0D5D8AF3077 /* libMagicWindowSDK.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E14036FE9FFEA640F78C5975BBE3907 /* Pods-SuZhouMahjong-mobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB45647830F5C48EBDD778645D9BEE33 /* Build configuration list for PBXNativeTarget "Pods-SuZhouMahjong-mobile" */;
+			buildPhases = (
+				9622D9367C6E80D9BF4C40657C36BF67 /* Sources */,
+				B728FFB5172A2694E6E4094E44A13633 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SuZhouMahjong-mobile";
+			productName = "Pods-SuZhouMahjong-mobile";
+			productReference = D5AB81A19C6DB183F36BF99068D9B1B3 /* libPods-SuZhouMahjong-mobile.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 8CB7EC3446A95D3D87D0B11FE82768FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E14036FE9FFEA640F78C5975BBE3907 /* Pods-SuZhouMahjong-mobile */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9622D9367C6E80D9BF4C40657C36BF67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BF5C35C9BF8D190C24721A588943C1 /* Pods-SuZhouMahjong-mobile-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		98B2F71B8BB779D935118EF80C51A95E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9B8D6395132BD08667251EC87C005B4 /* Pods-SuZhouMahjong-mobile.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B254DAA6CF0CE39F4A3D11B90A7E059A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		DDD303F46FEBDB2C98320E711179432D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BED40DDD1590934AB6F7F05C1B1F85DE /* Pods-SuZhouMahjong-mobile.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E4B68EE12B21C47CB798D9B1ECA6D7A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B68EE12B21C47CB798D9B1ECA6D7A7 /* Debug */,
+				B254DAA6CF0CE39F4A3D11B90A7E059A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB45647830F5C48EBDD778645D9BEE33 /* Build configuration list for PBXNativeTarget "Pods-SuZhouMahjong-mobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98B2F71B8BB779D935118EF80C51A95E /* Debug */,
+				DDD303F46FEBDB2C98320E711179432D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
