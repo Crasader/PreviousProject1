@@ -92,8 +92,6 @@
 		D22F1C191CC5CB67007270B2 /* setting in Resources */ = {isa = PBXBuildFile; fileRef = D22F1C171CC5CB67007270B2 /* setting */; };
 		D233CFDC2028667100D5C34C /* libPods-SuZhouMahjong-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D233CFDD2028667100D5C34C /* libPods-SuZhouMahjong-mobile.a */; };
 		D233CFE62029949700D5C34C /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D233CFE52029949700D5C34C /* libstdc++.6.0.9.tbd */; };
-		D233CFE8202994B700D5C34C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D233CFE7202994B700D5C34C /* AdSupport.framework */; };
-		D233CFEB2029957800D5C34C /* BMKLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D233CFEA2029957800D5C34C /* BMKLocationKit.framework */; };
 		D23E65F9204D1C8500D5A625 /* fangzuobi in Resources */ = {isa = PBXBuildFile; fileRef = D23E65F8204D1C8500D5A625 /* fangzuobi */; };
 		D23E65FA204D1C8500D5A625 /* fangzuobi in Resources */ = {isa = PBXBuildFile; fileRef = D23E65F8204D1C8500D5A625 /* fangzuobi */; };
 		D241A6C71F60F16500C46329 /* SuZhouView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D241A6C21F60F16500C46329 /* SuZhouView.cpp */; };
@@ -455,7 +453,6 @@
 		D2F15E6F1F7DFCB50043EEF2 /* LaunchScreenBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F15E6E1F7DFC9F0043EEF2 /* LaunchScreenBackground.png */; };
 		D2F15E701F7DFCB50043EEF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2677C021F7B443A00B2EED5 /* LaunchScreen.storyboard */; };
 		D2F4D0B7202AA0E3009AE42E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F4D0B6202AA0E3009AE42E /* CoreGraphics.framework */; };
-		D2F4D0B9202AA142009AE42E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F4D0B8202AA141009AE42E /* CoreLocation.framework */; };
 		D2F4D0BB202AA196009AE42E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F4D0BA202AA196009AE42E /* SystemConfiguration.framework */; };
 		D2F4D0BD202AA1AF009AE42E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F4D0BC202AA1AF009AE42E /* Security.framework */; };
 		D2F4D0BF202AA1CC009AE42E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F4D0BE202AA1CC009AE42E /* CoreTelephony.framework */; };
@@ -982,10 +979,7 @@
 				D2F4D0BF202AA1CC009AE42E /* CoreTelephony.framework in Frameworks */,
 				D2F4D0BD202AA1AF009AE42E /* Security.framework in Frameworks */,
 				D2F4D0BB202AA196009AE42E /* SystemConfiguration.framework in Frameworks */,
-				D2F4D0B9202AA142009AE42E /* CoreLocation.framework in Frameworks */,
 				D2F4D0B7202AA0E3009AE42E /* CoreGraphics.framework in Frameworks */,
-				D233CFEB2029957800D5C34C /* BMKLocationKit.framework in Frameworks */,
-				D233CFE8202994B700D5C34C /* AdSupport.framework in Frameworks */,
 				D233CFE62029949700D5C34C /* libstdc++.6.0.9.tbd in Frameworks */,
 				D233CFDC2028667100D5C34C /* libPods-SuZhouMahjong-mobile.a in Frameworks */,
 				D2E4BC5B1F28624E00A34067 /* UserNotifications.framework in Frameworks */,
