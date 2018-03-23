@@ -6,8 +6,8 @@
 #include "mahjong/lobby/LobbyScene.h"
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
-#import "baidu/ios/BaiDuLocationAPI.h"
-#include "baidu/android/CallBDAndroidMethod.h"
+//#import "baidu/ios/BaiDuLocationAPI.h"
+//#include "baidu/android/CallBDAndroidMethod.h"
 
 
 bool FriendOpenRoom::init()
@@ -90,13 +90,13 @@ bool FriendOpenRoom::init()
         }else if(UserData::getInstance()->getLatelyMahjongType() == GameMahjongType::FanPai){
             showFanPaiBaiDaMahjong();
         }
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    BaiDuLocationAPI::getInstance()->getPlayerLocation();
-#endif
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    CallBDAndroidMethod::getInstance()->updateLongitude();
-    CallBDAndroidMethod::getInstance()->updateLatitude();
-#endif
+//#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+//    BaiDuLocationAPI::getInstance()->getPlayerLocation();
+//#endif
+//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+//    CallBDAndroidMethod::getInstance()->updateLongitude();
+//    CallBDAndroidMethod::getInstance()->updateLatitude();
+//#endif
     return true;
 }
 

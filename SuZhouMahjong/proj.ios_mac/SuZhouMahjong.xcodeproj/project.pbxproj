@@ -319,9 +319,6 @@
 		D281A3911E5442C8007FF30E /* share in Resources */ = {isa = PBXBuildFile; fileRef = D281A38F1E5442C8007FF30E /* share */; };
 		D281E5A11DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
 		D281E5A21DACF35600D3E44E /* audio in Resources */ = {isa = PBXBuildFile; fileRef = D281E5A01DACF35600D3E44E /* audio */; };
-		D282E5DD204D50D100908B17 /* BDApiManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D282E5DB204D50D100908B17 /* BDApiManager.mm */; };
-		D282E5DE204D50D100908B17 /* BaiDuLocationAPI.mm in Sources */ = {isa = PBXBuildFile; fileRef = D282E5DC204D50D100908B17 /* BaiDuLocationAPI.mm */; };
-		D282E5E2204D58DD00908B17 /* CallBDAndroidMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D282E5E1204D58DD00908B17 /* CallBDAndroidMethod.cpp */; };
 		D28A4A0F1D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A101D0565C200741FD0 /* HttpClientUtill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */; };
 		D28A4A111D0565C200741FD0 /* HttpMannger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */; };
@@ -803,12 +800,6 @@
 		D27F06071E94BFE50085438A /* HongZhongView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HongZhongView.hpp; sourceTree = "<group>"; };
 		D281A38F1E5442C8007FF30E /* share */ = {isa = PBXFileReference; lastKnownFileType = folder; path = share; sourceTree = "<group>"; };
 		D281E5A01DACF35600D3E44E /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
-		D282E5D9204D50D100908B17 /* BaiDuLocationAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiDuLocationAPI.h; sourceTree = "<group>"; };
-		D282E5DA204D50D100908B17 /* BDApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDApiManager.h; sourceTree = "<group>"; };
-		D282E5DB204D50D100908B17 /* BDApiManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BDApiManager.mm; sourceTree = "<group>"; };
-		D282E5DC204D50D100908B17 /* BaiDuLocationAPI.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaiDuLocationAPI.mm; sourceTree = "<group>"; };
-		D282E5E0204D58DD00908B17 /* CallBDAndroidMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallBDAndroidMethod.h; sourceTree = "<group>"; };
-		D282E5E1204D58DD00908B17 /* CallBDAndroidMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CallBDAndroidMethod.cpp; sourceTree = "<group>"; };
 		D28A4A0B1D0565C200741FD0 /* HttpClientUtill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientUtill.cpp; sourceTree = "<group>"; };
 		D28A4A0C1D0565C200741FD0 /* HttpClientUtill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientUtill.h; sourceTree = "<group>"; };
 		D28A4A0D1D0565C200741FD0 /* HttpMannger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpMannger.cpp; sourceTree = "<group>"; };
@@ -1215,7 +1206,6 @@
 			children = (
 				D2B1A7AF1CCDF0F300A20896 /* AppDelegate.cpp */,
 				D2B1A7B01CCDF0F300A20896 /* AppDelegate.h */,
-				D282E5D7204D50D100908B17 /* baidu */,
 				D28A4A0A1D0565C200741FD0 /* http */,
 				D252FA2D1E7FA5EC00937322 /* mahjong */,
 				D2B1A85A1CCDF0F300A20896 /* server */,
@@ -1989,35 +1979,6 @@
 			path = normal;
 			sourceTree = "<group>";
 		};
-		D282E5D7204D50D100908B17 /* baidu */ = {
-			isa = PBXGroup;
-			children = (
-				D282E5DF204D58B600908B17 /* android */,
-				D282E5D8204D50D100908B17 /* ios */,
-			);
-			path = baidu;
-			sourceTree = "<group>";
-		};
-		D282E5D8204D50D100908B17 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				D282E5D9204D50D100908B17 /* BaiDuLocationAPI.h */,
-				D282E5DC204D50D100908B17 /* BaiDuLocationAPI.mm */,
-				D282E5DA204D50D100908B17 /* BDApiManager.h */,
-				D282E5DB204D50D100908B17 /* BDApiManager.mm */,
-			);
-			path = ios;
-			sourceTree = "<group>";
-		};
-		D282E5DF204D58B600908B17 /* android */ = {
-			isa = PBXGroup;
-			children = (
-				D282E5E1204D58DD00908B17 /* CallBDAndroidMethod.cpp */,
-				D282E5E0204D58DD00908B17 /* CallBDAndroidMethod.h */,
-			);
-			path = android;
-			sourceTree = "<group>";
-		};
 		D28A4A0A1D0565C200741FD0 /* http */ = {
 			isa = PBXGroup;
 			children = (
@@ -2703,7 +2664,6 @@
 				D2677DB11F7B849800B2EED5 /* BaiDaReview.h in Sources */,
 				D2677DB21F7B849800B2EED5 /* HongZhongReview.cpp in Sources */,
 				D2677DB31F7B849800B2EED5 /* HongZhongReview.hpp in Sources */,
-				D282E5DE204D50D100908B17 /* BaiDuLocationAPI.mm in Sources */,
 				D2677DB41F7B849800B2EED5 /* SuZhouReview.cpp in Sources */,
 				D2677DB51F7B849800B2EED5 /* SuZhouReview.h in Sources */,
 				D2D4F9601FB2D2040002A278 /* FPPlayerResultCell.cpp in Sources */,
@@ -2751,7 +2711,6 @@
 				D252FC5D1E7FABE900937322 /* PlayerLeft.cpp in Sources */,
 				D252FC571E7FABE900937322 /* PlayerBase.cpp in Sources */,
 				D252FCB41E7FB77F00937322 /* WxLoginHandler.cpp in Sources */,
-				D282E5DD204D50D100908B17 /* BDApiManager.mm in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D252FB4A1E7FA5EC00937322 /* OtherPlayerInfo.cpp in Sources */,
 				D2B291B81F0DD3810084F379 /* RankLayer.cpp in Sources */,
@@ -2809,7 +2768,6 @@
 				D2DD46261F42C1A5004F8510 /* LaXinLayer.cpp in Sources */,
 				D252FB541E7FA5EC00937322 /* GameRuleDialog.cpp in Sources */,
 				D252FBB21E7FA5EC00937322 /* ShiMingLayer.cpp in Sources */,
-				D282E5E2204D58DD00908B17 /* CallBDAndroidMethod.cpp in Sources */,
 				D2DD46211F3D81A7004F8510 /* CollaborateDialog.cpp in Sources */,
 				D2DC2D461F6A213100D7450A /* PlayerInfo.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

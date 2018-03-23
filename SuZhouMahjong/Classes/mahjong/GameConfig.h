@@ -9,7 +9,7 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define PAY_PLAT_VALUE "16" //ios审核版本16
+#define PAY_PLAT_VALUE "18" //ios审核版本18
 
 #define SERVER_ADDRESS "cs.5278-mobi.com"
 #define SERVER_ADDRESS_2 "cs.5278-mobi.com"

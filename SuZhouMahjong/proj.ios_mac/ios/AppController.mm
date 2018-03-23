@@ -33,7 +33,7 @@
 #import "WXApiManager.h"
 #import "MWApi.h"
 #include "userdata/UserData.h"
-#import "baidu/ios/BaiDuLocationAPI.h"
+//#import "baidu/ios/BaiDuLocationAPI.h"
 
 
 #define IOS10_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0)
@@ -116,7 +116,7 @@ static AppDelegate s_sharedApplication;
             WxLoginHandler::getInstance()->addRoomByInvited(roomid);
         });
     }];
-    BaiDuLocationAPI::getInstance()->checkPermisionWithKey();
+//    BaiDuLocationAPI::getInstance()->checkPermisionWithKey();
     
     return YES;
 }

@@ -9,8 +9,8 @@
 #include "mahjong/lobby/openroom/MahjongNumberKeypads.hpp"
 #include "mahjong/common/state/GameData.h"
 #include "server/NetworkManage.h"
-#import "baidu/ios/BaiDuLocationAPI.h"
-#include "baidu/android/CallBDAndroidMethod.h"
+//#import "baidu/ios/BaiDuLocationAPI.h"
+//#include "baidu/android/CallBDAndroidMethod.h"
 
 bool MahjongNumberKeypads::init(){
     
@@ -77,13 +77,13 @@ bool MahjongNumberKeypads::init(){
     touchListener->onTouchBegan = CC_CALLBACK_2(MahjongNumberKeypads::onTouchBegan, this);
     touchListener->onTouchEnded = CC_CALLBACK_2(MahjongNumberKeypads::onTouchEnded, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener,this);
-#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-    BaiDuLocationAPI::getInstance()->getPlayerLocation();
-#endif
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
-    CallBDAndroidMethod::getInstance()->updateLongitude();
-    CallBDAndroidMethod::getInstance()->updateLatitude();
-#endif
+//#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+//    BaiDuLocationAPI::getInstance()->getPlayerLocation();
+//#endif
+//#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+//    CallBDAndroidMethod::getInstance()->updateLongitude();
+//    CallBDAndroidMethod::getInstance()->updateLatitude();
+//#endif
     return true;
 }
 
